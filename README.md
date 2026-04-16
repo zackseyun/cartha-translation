@@ -1,35 +1,51 @@
 # The Cartha Translation
 
-A new English translation of the Bible, produced with transparent, auditable,
-commit-level provenance for every translation decision.
+**An open, transparent English Bible translated directly from the original
+Greek and Hebrew, with auditable provenance for every decision.**
 
-## Why this exists
+Released under **CC-BY 4.0** — anyone may use, adapt, redistribute, or
+commercialize this translation with attribution. **See [PHILOSOPHY.md](PHILOSOPHY.md)
+for the full statement on openness, transparency, and our theological
+commitments.**
 
-Every major modern English Bible translation is a closed process. A committee
-decides what the text should say; readers receive the output; disagreements
-are handled in private correspondence, if at all. The reasoning behind any
-given word choice is rarely surfaced to the reader.
+## Three things that make this different
 
-The Cartha Translation inverts that. Every verse carries a machine-readable
-record of:
+1. **We translate from the originals, not from other English translations.**
+   Source texts are the SBLGNT (Greek NT) and the Westminster Leningrad
+   Codex / unfoldingWord Hebrew Bible (Hebrew OT) — the openly-licensed
+   critical editions closest to what the NT and OT authors actually wrote.
 
-- The source text consulted (SBLGNT for NT, WLC / unfoldingWord Hebrew Bible for OT).
-- The lexical decisions made (which Greek or Hebrew word, which lexicon entry,
-  which English gloss, what alternatives were considered and why they were rejected).
-- Any theologically contested readings with alternatives preserved in footnotes.
-- The AI model, prompt, and timestamp that produced the draft.
-- Cross-check results across multiple LLMs.
-- The human reviewer who signed off, with their credentials and signature.
-- A link to public discussion on the verse.
+2. **Every translation decision is publicly documented.** Every verse is a
+   file in this repository with the source text, the English rendering, the
+   key lexical choices (source word, chosen gloss, alternatives considered,
+   lexicon entry, rationale), any contested theological readings with
+   alternatives preserved, the AI model and prompt that drafted it, the
+   cross-check scores across three frontier models, and the named human
+   reviewer's signature.
 
-Every change is a signed git commit. Every disagreement has a permanent URL.
-Every verse is reproducible — given the same source, prompt, and model, you
-can re-run the draft yourself and confirm the output.
+3. **Every verse is reproducible.** Given the source text, the prompt hash,
+   and the model identifier, any third party can re-run the LLM pipeline
+   and verify our documented draft. No other English Bible in history has
+   offered this.
+
+## Why this is possible now
+
+Open-source infrastructure, frontier AI models as drafting tools, and modern
+reproducibility standards together enable a kind of transparent translation
+that was not feasible in any previous era. The AI is not the translator —
+named human scholars review and sign every verse. The AI makes the
+scholar's bottleneck tractable so the work can be done in the open.
+
+See [PHILOSOPHY.md](PHILOSOPHY.md) for the theological and historical
+rationale.
 
 ## License
 
-The translation is released under **CC-BY 4.0**. You may use it for any
-purpose, including commercial, with attribution. See [LICENSE](LICENSE).
+The translation is released under **CC-BY 4.0** — the canonical open-content
+license. You may use, adapt, redistribute, or commercialize this work with
+attribution. **Anyone may fork it, translate it into other languages,
+include it in commercial products, or build derivatives without permission.**
+We never paywall scripture. See [LICENSE](LICENSE) and [PHILOSOPHY.md](PHILOSOPHY.md).
 
 Source texts retain their original licenses (see [sources/README.md](sources/README.md)).
 
@@ -76,6 +92,7 @@ release is `v0.1-preview`.
 
 ```
 cartha-translation/
+├── PHILOSOPHY.md        Why this translation exists, open-source posture, commitments
 ├── DOCTRINE.md          Theological commitments driving translation decisions
 ├── METHODOLOGY.md       Drafting, review, and signing process
 ├── REVIEWERS.md         Named review board with credentials
