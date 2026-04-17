@@ -2,7 +2,8 @@
 """
 run_phase.py — Generate and commit a phase of Cartha Open Bible drafts.
 
-Phase 0 currently targets Philippians only, with one commit per verse.
+Phase 0 uses a single substantive pilot commit after local drafting.
+Phase 1 and beyond can use chapter-sized commits for steadier progress.
 """
 
 from __future__ import annotations
@@ -36,6 +37,15 @@ PHASES: dict[str, dict[str, Any]] = {
         "lint_phase_name": "phase0-philippians",
         "lint_report": REPO_ROOT / "lint_reports" / "phase0-philippians.md",
         "commit_mode": "verse",
+    },
+    "phase1": {
+        "label": "Phase 1 — Pauline epistles",
+        "books": ["ROM", "1CO", "2CO", "GAL", "EPH", "COL", "1TH", "2TH", "1TI", "2TI", "TIT", "PHM"],
+        "testament": "nt",
+        "tag": "v0.2-pauline",
+        "lint_phase_name": "phase1-pauline",
+        "lint_report": REPO_ROOT / "lint_reports" / "phase1-pauline.md",
+        "commit_mode": "chapter",
     },
 }
 
@@ -84,6 +94,51 @@ def verse_commit_message(record: dict[str, Any]) -> str:
     )
 
 
+def chapter_commit_message(
+    book_code: str,
+    chapter: int,
+    records: list[dict[str, Any]],
+) -> str:
+    if not records:
+        raise ValueError("chapter_commit_message requires at least one record")
+
+    verses = [
+        int(str(record["id"]).split(".")[2])
+        for record in records
+    ]
+    verses.sort()
+    verse_span = f"{verses[0]}:{verses[0]}"  # temporary placeholder
+    if verses[0] == verses[-1]:
+        reference_part = f"{chapter}:{verses[0]}"
+    else:
+        reference_part = f"{chapter}:{verses[0]}-{verses[-1]}"
+
+    lexical_bits: list[str] = []
+    seen: set[str] = set()
+    for record in records:
+        for decision in (record.get("lexical_decisions") or [])[:3]:
+            source = str(decision.get("source_word", "") or "").strip()
+            chosen = str(decision.get("chosen", "") or "").strip()
+            pair = f"{source}→{chosen}"
+            if source and chosen and pair not in seen:
+                lexical_bits.append(pair)
+                seen.add(pair)
+            if len(lexical_bits) >= 6:
+                break
+        if len(lexical_bits) >= 6:
+            break
+
+    summary = "; ".join(lexical_bits[:6]) if lexical_bits else "Chapter draft batch with lexical decisions recorded in YAML."
+    if len(summary) > 260:
+        summary = summary[:257] + "..."
+
+    return (
+        f"draft: {book_code} {reference_part} via GPT 5.4\n\n"
+        f"{summary}\n\n"
+        "Generated-By: codex-gpt-5.4\n"
+    )
+
+
 def commit_paths(paths: list[pathlib.Path], message: str) -> None:
     git("add", *[str(path.relative_to(REPO_ROOT)) for path in paths])
     subprocess.run(
@@ -116,6 +171,17 @@ def collect_phase_records(phase: dict[str, Any]) -> list[dict[str, Any]]:
         for path in sorted(book_root.glob("*/*.yaml")):
             records.append(yaml.safe_load(path.read_text(encoding="utf-8")))
     return records
+
+
+def resolve_active_books(phase: dict[str, Any], selected_books: list[str] | None) -> list[str]:
+    if not selected_books:
+        return list(phase["books"])
+    unknown = [book for book in selected_books if book not in phase["books"]]
+    if unknown:
+        raise RuntimeError(
+            f"Selected books {unknown} are not in {phase['label']}. Allowed: {phase['books']}"
+        )
+    return list(selected_books)
 
 
 def build_phase_stats(phase: dict[str, Any]) -> dict[str, Any]:
@@ -213,13 +279,15 @@ def update_changelog(phase: dict[str, Any], stats: dict[str, Any], lint_report: 
 def finalize_phase(
     phase_name: str,
     *,
+    selected_books: list[str] | None = None,
     no_commit: bool = False,
 ) -> dict[str, Any]:
     phase = PHASES[phase_name]
+    active_books = resolve_active_books(phase, selected_books)
     flags, lint_report, _scanned = consistency_lint.run_lint(
         phase=phase["lint_phase_name"],
         testament=phase["testament"],
-        book_filters={sblgnt.NT_BOOKS[book_code][1] for book_code in phase["books"]},
+        book_filters={sblgnt.NT_BOOKS[book_code][1] for book_code in active_books},
         output_path=phase["lint_report"],
     )
     if flags:
@@ -227,7 +295,9 @@ def finalize_phase(
             f"Consistency lint found {len(flags)} unresolved flag(s). See {lint_report.relative_to(REPO_ROOT)}"
         )
 
-    stats = build_phase_stats(phase)
+    scoped_phase = dict(phase)
+    scoped_phase["books"] = active_books
+    stats = build_phase_stats(scoped_phase)
     update_changelog(phase, stats, lint_report)
 
     if not no_commit:
@@ -256,16 +326,50 @@ def run_phase(
     model: str,
     temperature: float,
     prompt_id: str,
+    selected_books: list[str] | None,
     limit: int | None,
+    max_chapters: int | None,
     no_commit: bool,
 ) -> dict[str, Any]:
     phase = PHASES[phase_name]
+    active_books = resolve_active_books(phase, selected_books)
     failed_verses: list[str] = []
     drafted_count = 0
     created_paths: list[pathlib.Path] = []
+    chapter_commits = 0
+    current_chapter_key: tuple[str, int] | None = None
+    chapter_paths: list[pathlib.Path] = []
+    chapter_records: list[dict[str, Any]] = []
 
-    for book_code in phase["books"]:
+    def flush_chapter_batch() -> None:
+        nonlocal chapter_commits, chapter_paths, chapter_records, current_chapter_key
+        if phase["commit_mode"] != "chapter":
+            chapter_paths = []
+            chapter_records = []
+            current_chapter_key = None
+            return
+        if chapter_paths and not no_commit and current_chapter_key is not None:
+            book_code, chapter = current_chapter_key
+            commit_paths(
+                chapter_paths,
+                chapter_commit_message(book_code, chapter, chapter_records),
+            )
+            chapter_commits += 1
+        chapter_paths = []
+        chapter_records = []
+        current_chapter_key = None
+
+    for book_code in active_books:
         for verse in sblgnt.iter_verses(book_code, draft.SOURCES_ROOT):
+            chapter_key = (book_code, verse.chapter)
+            if current_chapter_key is None:
+                current_chapter_key = chapter_key
+            elif chapter_key != current_chapter_key:
+                flush_chapter_batch()
+                current_chapter_key = chapter_key
+                if max_chapters is not None and chapter_commits >= max_chapters:
+                    break
+
             if limit is not None and drafted_count >= limit:
                 break
 
@@ -290,9 +394,15 @@ def run_phase(
             created_paths.append(result.output_path)
             print(f"Wrote {result.output_path.relative_to(REPO_ROOT)}")
 
-            if not no_commit:
+            if phase["commit_mode"] == "verse" and not no_commit:
                 commit_paths([result.output_path], verse_commit_message(result.record))
+            elif phase["commit_mode"] == "chapter":
+                chapter_paths.append(result.output_path)
+                chapter_records.append(result.record)
 
+        flush_chapter_batch()
+        if max_chapters is not None and chapter_commits >= max_chapters:
+            break
         if limit is not None and drafted_count >= limit:
             break
 
@@ -313,8 +423,14 @@ def run_phase(
             "drafted_count": drafted_count,
             "created_paths": created_paths,
         }
+    if max_chapters is not None:
+        return {
+            "drafted_count": drafted_count,
+            "created_paths": created_paths,
+            "chapter_commits": chapter_commits,
+        }
 
-    return finalize_phase(phase_name, no_commit=no_commit)
+    return finalize_phase(phase_name, selected_books=active_books, no_commit=no_commit)
 
 
 def main() -> int:
@@ -330,7 +446,9 @@ def main() -> int:
     parser.add_argument("--model", default=draft.DEFAULT_MODEL_ID)
     parser.add_argument("--temperature", type=float, default=draft.DEFAULT_TEMPERATURE)
     parser.add_argument("--prompt-id", default=draft.DEFAULT_PROMPT_ID)
+    parser.add_argument("--books", nargs="*", help="Optional subset of phase book codes to process")
     parser.add_argument("--limit", type=int, help="Only draft the first N missing verses, then stop")
+    parser.add_argument("--max-chapters", type=int, help="Stop after drafting/committing N chapter batches")
     parser.add_argument("--no-commit", action="store_true", help="Write files but skip git commits and tagging")
     args = parser.parse_args()
 
@@ -350,7 +468,9 @@ def main() -> int:
             model=args.model,
             temperature=args.temperature,
             prompt_id=args.prompt_id,
+            selected_books=args.books,
             limit=args.limit,
+            max_chapters=args.max_chapters,
             no_commit=args.no_commit,
         )
     except Exception as exc:
@@ -359,6 +479,12 @@ def main() -> int:
 
     if args.limit is not None:
         print(f"Drafted {result['drafted_count']} verse(s) in limited mode.")
+        return 0
+    if args.max_chapters is not None:
+        print(
+            f"Drafted {result['drafted_count']} verse(s) across "
+            f"{result['chapter_commits']} chapter batch(es)."
+        )
         return 0
 
     print(f"Completed {PHASES[args.phase]['label']}")

@@ -12,7 +12,7 @@ linting the Cartha Open Bible.
 | `cross_check.py` | stub | Runs draft against Claude + GPT + Gemini in parallel, scores agreement, flags divergences. Spec in METHODOLOGY.md Stage 3. |
 | `verify.py` | not yet written | Re-runs the documented pipeline for a published verse. Confirms AI draft reproduces, cross-check reproduces, signature validates, reviewer is in `REVIEWERS.md`. |
 | `consistency_lint.py` | implemented | Checks internal consistency across drafted YAMLs. Flags undocumented lexical variance, contested-term doctrine gaps/overrides, approved verses missing reviewers, and empty source text; writes Markdown reports to `lint_reports/`. |
-| `run_phase.py` | implemented | Resumable phase runner. Drafts missing verses for a configured phase, retries failures, records `failed_verses.txt`, commits per verse for the Philippians pilot, runs `consistency_lint.py`, updates `CHANGELOG.md`, and tags the completed phase. |
+| `run_phase.py` | implemented | Resumable phase runner. Drafts missing verses for a configured phase, retries failures, records `failed_verses.txt`, supports book subsets and chapter-batch limits, runs `consistency_lint.py`, updates `CHANGELOG.md`, and tags the completed phase. |
 | `sign.py` | not yet written | Generates ed25519 signatures for reviewer sign-off. Private key stays local; public key + signature are committed. |
 | `wlc.py` | implemented | OT parser scaffold for WLC/OSHB OSIS XML, mirroring `sblgnt.py` so later OT drafting can reuse the same prompt/validation pipeline. |
 
@@ -58,3 +58,12 @@ python3 tools/run_phase.py --phase phase0 --backend codex-cli
 ```
 
 This is resumable: already-written verse YAMLs are skipped on rerun.
+
+## Start Phase 1 in chapter batches
+
+```bash
+# Draft and commit the next Romans chapter only.
+python3 tools/run_phase.py --phase phase1 --backend codex-cli --books ROM --max-chapters 1
+```
+
+Then rerun to continue the next chapter/book. Completed verses are skipped automatically.
