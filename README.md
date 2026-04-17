@@ -1,6 +1,10 @@
 # The Cartha Open Bible
 *Translated from the original Greek and Hebrew*
 
+> God bless all believers, and all who are earnestly drawn to God and
+> seeking Him. The hope of this translation is to create more critical
+> thought and more open discussion of God's Word. — see [DEDICATION.md](DEDICATION.md)
+
 **An open, transparent English Bible with auditable, commit-level
 provenance for every translation decision.**
 
@@ -93,6 +97,7 @@ release is `v0.1-preview`.
 
 ```
 cartha-open-bible/
+├── DEDICATION.md        Blessing and hope — to whom this work is offered
 ├── PHILOSOPHY.md        Why this translation exists, open-source posture, commitments
 ├── DOCTRINE.md          Theological commitments driving translation decisions
 ├── METHODOLOGY.md       Drafting, review, and signing process
