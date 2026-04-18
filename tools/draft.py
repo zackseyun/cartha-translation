@@ -19,6 +19,10 @@ Environment:
                             otherwise openai-sdk)
     OPENAI_API_KEY          required only for openai-sdk backend
     OPENROUTER_API_KEY      required only for openrouter-sdk backend
+    AZURE_OPENAI_ENDPOINT   required only for azure-openai backend
+    AZURE_OPENAI_API_KEY    required only for azure-openai backend
+    AZURE_OPENAI_DEPLOYMENT_ID optional (default: gpt-5-4-deployment)
+    AZURE_OPENAI_API_VERSION optional (default: 2025-04-01-preview)
     CARTHA_OPENROUTER_MODEL optional (default: openai/gpt-5.4)
     CARTHA_MODEL_ID         optional (default: gpt-5.4)
     CARTHA_PROMPT_ID        optional (default: nt_draft_v1)
@@ -42,6 +46,8 @@ import sys
 import tempfile
 import time
 import unicodedata
+import urllib.error
+import urllib.request
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from typing import Any, Iterable
@@ -73,11 +79,20 @@ DEFAULT_CODEX_REASONING_EFFORT = os.environ.get(
 )
 BACKEND_OPENAI = "openai-sdk"
 BACKEND_OPENROUTER = "openrouter-sdk"
+BACKEND_AZURE = "azure-openai"
 BACKEND_CODEX = "codex-cli"
 OPENROUTER_BASE_URL = "https://openrouter.ai/api/v1"
 DEFAULT_OPENROUTER_MODEL_ID = os.environ.get(
     "CARTHA_OPENROUTER_MODEL",
     "openai/gpt-5.4",
+)
+DEFAULT_AZURE_DEPLOYMENT_ID = os.environ.get(
+    "AZURE_OPENAI_DEPLOYMENT_ID",
+    "gpt-5-4-deployment",
+)
+DEFAULT_AZURE_API_VERSION = os.environ.get(
+    "AZURE_OPENAI_API_VERSION",
+    "2025-04-01-preview",
 )
 
 TOOL_NAME = "submit_verse_draft"
@@ -895,6 +910,120 @@ def call_openrouter(
     return prune_nulls(parsed_arguments), model_version, raw_arguments
 
 
+def call_azure_openai(
+    *,
+    system: str,
+    user: str,
+    model: str,
+    temperature: float,
+    max_completion_tokens: int = DEFAULT_MAX_COMPLETION_TOKENS,
+) -> tuple[dict[str, Any], str, str]:
+    endpoint = os.environ.get("AZURE_OPENAI_ENDPOINT", "").rstrip("/")
+    api_key = os.environ.get("AZURE_OPENAI_API_KEY", "")
+    deployment = os.environ.get(
+        "AZURE_OPENAI_DEPLOYMENT_ID",
+        DEFAULT_AZURE_DEPLOYMENT_ID,
+    )
+    api_version = os.environ.get(
+        "AZURE_OPENAI_API_VERSION",
+        DEFAULT_AZURE_API_VERSION,
+    )
+
+    if not endpoint:
+        raise RuntimeError("AZURE_OPENAI_ENDPOINT not set")
+    if not api_key:
+        raise RuntimeError("AZURE_OPENAI_API_KEY not set")
+    if not deployment:
+        raise RuntimeError("AZURE_OPENAI_DEPLOYMENT_ID not set")
+
+    url = (
+        f"{endpoint}/openai/deployments/{deployment}/chat/completions"
+        f"?api-version={api_version}"
+    )
+    payload = {
+        "messages": [
+            {"role": "system", "content": system},
+            {"role": "user", "content": user},
+        ],
+        "temperature": temperature,
+        "max_completion_tokens": max_completion_tokens,
+        "parallel_tool_calls": False,
+        "tool_choice": {"type": "function", "function": {"name": TOOL_NAME}},
+        "tools": [openrouter_submit_tool()],
+    }
+    request = urllib.request.Request(
+        url,
+        data=json.dumps(payload).encode("utf-8"),
+        headers={
+            "api-key": api_key,
+            "Content-Type": "application/json",
+        },
+        method="POST",
+    )
+
+    try:
+        with urllib.request.urlopen(request, timeout=120) as response:
+            response_body = response.read().decode("utf-8")
+    except urllib.error.HTTPError as exc:
+        detail = exc.read().decode("utf-8", errors="replace")
+        raise RuntimeError(f"Azure OpenAI HTTP {exc.code}: {detail}") from exc
+    except urllib.error.URLError as exc:
+        raise RuntimeError(f"Azure OpenAI request failed: {exc}") from exc
+
+    try:
+        parsed_response = json.loads(response_body)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(f"Azure OpenAI returned invalid JSON: {exc}") from exc
+
+    choices = parsed_response.get("choices") or []
+    if len(choices) != 1:
+        raise RuntimeError(
+            f"Azure OpenAI must return exactly one choice; got {len(choices)}"
+        )
+
+    message = choices[0].get("message") or {}
+    tool_calls = message.get("tool_calls") or []
+    if len(tool_calls) != 1:
+        raise RuntimeError(
+            f"Azure OpenAI must return exactly one tool call; got {len(tool_calls)}"
+        )
+
+    tool_call = tool_calls[0]
+    function = tool_call.get("function") or {}
+    if tool_call.get("type") != "function" or function.get("name") != TOOL_NAME:
+        raise RuntimeError(
+            f"Azure OpenAI called unexpected tool: {function.get('name')!r}"
+        )
+
+    content = message.get("content")
+    if isinstance(content, str):
+        content_text = content.strip()
+    elif isinstance(content, list):
+        content_text = "".join(
+            part.get("text", "")
+            for part in content
+            if isinstance(part, dict) and part.get("type") == "text"
+        ).strip()
+    else:
+        content_text = ""
+
+    if content_text:
+        raise RuntimeError(
+            "Azure OpenAI returned assistant text in addition to the function call"
+        )
+
+    raw_arguments = function.get("arguments") or "{}"
+    try:
+        parsed_arguments = json.loads(raw_arguments)
+    except json.JSONDecodeError as exc:
+        raise RuntimeError(
+            f"Azure OpenAI function-call arguments were not valid JSON: {exc}"
+        ) from exc
+
+    model_version = str(parsed_response.get("model") or model)
+    return prune_nulls(parsed_arguments), model_version, raw_arguments
+
+
 def call_codex_cli(
     *,
     system: str,
@@ -983,6 +1112,15 @@ def call_model(
 
     if backend == BACKEND_OPENROUTER:
         tool_input, model_version, raw_output = call_openrouter(
+            system=system,
+            user=user,
+            model=model,
+            temperature=temperature,
+        )
+        return tool_input, model_version, raw_output, temperature
+
+    if backend == BACKEND_AZURE:
+        tool_input, model_version, raw_output = call_azure_openai(
             system=system,
             user=user,
             model=model,

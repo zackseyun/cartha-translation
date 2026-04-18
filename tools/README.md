@@ -29,6 +29,9 @@ Required environment variables:
 ANTHROPIC_API_KEY=...    # for Claude drafts / cross-check
 OPENAI_API_KEY=...       # for GPT drafts / cross-check
 OPENROUTER_API_KEY=...   # for OpenRouter GPT drafts
+AZURE_OPENAI_ENDPOINT=... # for Azure OpenAI GPT drafts
+AZURE_OPENAI_API_KEY=...  # for Azure OpenAI GPT drafts
+AZURE_OPENAI_DEPLOYMENT_ID=... # optional, defaults to gpt-5-4-deployment
 GOOGLE_API_KEY=...       # for Gemini cross-check
 ```
 
@@ -41,6 +44,12 @@ python3 tools/draft.py --ref "Philippians 1:1" --dry-run
 # Real run via OpenRouter GPT-5.4:
 export OPENROUTER_API_KEY=...
 python3 tools/draft.py --ref "Philippians 1:1" --backend openrouter-sdk --model openai/gpt-5.4
+
+# Real run via Azure OpenAI GPT-5.4:
+export AZURE_OPENAI_ENDPOINT=...
+export AZURE_OPENAI_API_KEY=...
+export AZURE_OPENAI_DEPLOYMENT_ID=gpt-5-4-deployment
+python3 tools/draft.py --ref "Philippians 1:1" --backend azure-openai --model gpt-5.4
 ```
 
 Model, temperature, and prompt ID are configurable via CLI flags or
