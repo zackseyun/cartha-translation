@@ -113,6 +113,38 @@ verses). Footnotes, lexical_decisions, and theological_decisions were
 left untouched so they continue to preserve "Christ" as the traditional
 alternative where the drafter documented it.
 
+### Χριστός → Messiah: liturgical carve-outs (accepted 2026-04-18)
+
+After the mechanical pass, two classes of verse were reverted from
+"Jesus the Messiah" back to "Jesus Christ" because the phrases function
+as fixed liturgical forms in English-speaking Christian use, not as
+fresh theological claims where the titular force of Χριστός is in
+play:
+
+1. **Pauline benediction formulas** — the closing "the grace of our
+   Lord Jesus Christ [be with you]" appears as a fixed liturgical
+   stamp at the end of most Pauline letters and is used verbatim in
+   church benedictions. Reverted verses: Rom 16:20, Rom 16:24,
+   2 Cor 13:13, Gal 6:18, Phil 4:23, 1 Thess 5:28, 2 Thess 3:18,
+   Philemon 25. Also 2 Cor 8:9 ("the grace of our Lord Jesus Christ,
+   that though he was rich…"), which functions as a mid-letter fixed
+   phrase rather than an argued titular claim.
+2. **The Phil 2:11 confession** — "Jesus Christ is Lord" (`κύριος
+   Ἰησοῦς Χριστός`) is the earliest recorded Christian creed and is
+   recited verbatim in liturgy across traditions. Keeping "Messiah"
+   here would sound like a scholarly gloss intruding on a confession.
+
+All other occurrences of `Ἰησοῦς Χριστός` remain as "Jesus the
+Messiah" per the normalization rule. The carve-outs are narrow and
+named: benediction formulas and the Phil 2:11 confession. Any future
+carve-out must be documented here with rationale.
+
+**Execution.** A second mechanical script
+(`/tmp/renormalize_liturgical.py` at time of writing; not committed)
+applied three phrase-level reverts across the 10 verses above.
+Footnotes and `lexical_decisions.alternatives` continue to preserve
+"Messiah" as the alternative rendering.
+
 ## Roles
 
 | Model | Role |
