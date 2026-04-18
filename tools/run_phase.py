@@ -497,7 +497,12 @@ def main() -> int:
     parser.add_argument(
         "--backend",
         default=draft.DEFAULT_BACKEND,
-        choices=[draft.BACKEND_CODEX, draft.BACKEND_OPENAI, draft.BACKEND_OPENROUTER],
+        choices=[
+            draft.BACKEND_CODEX,
+            draft.BACKEND_OPENAI,
+            draft.BACKEND_OPENROUTER,
+            draft.BACKEND_AZURE,
+        ],
     )
     parser.add_argument("--model", default=draft.DEFAULT_MODEL_ID)
     parser.add_argument("--temperature", type=float, default=draft.DEFAULT_TEMPERATURE)
@@ -513,6 +518,15 @@ def main() -> int:
         return 2
     if args.backend == draft.BACKEND_OPENROUTER and not os.environ.get("OPENROUTER_API_KEY"):
         print("ERROR: OPENROUTER_API_KEY not set for openrouter-sdk backend.", file=sys.stderr)
+        return 2
+    if args.backend == draft.BACKEND_AZURE and (
+        not os.environ.get("AZURE_OPENAI_ENDPOINT")
+        or not os.environ.get("AZURE_OPENAI_API_KEY")
+    ):
+        print(
+            "ERROR: AZURE_OPENAI_ENDPOINT/AZURE_OPENAI_API_KEY not set for azure-openai backend.",
+            file=sys.stderr,
+        )
         return 2
     if args.backend == draft.BACKEND_CODEX and not draft.codex_login_available():
         print("ERROR: codex-cli backend requested but Codex is not logged in.", file=sys.stderr)
