@@ -28,6 +28,31 @@ import wlc  # noqa: E402
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 LINT_REPORTS_ROOT = REPO_ROOT / "lint_reports"
+LOW_SIGNAL_LEMMAS = {
+    draft.normalize_term(term)
+    for term in (
+        "ὁ",
+        "καί",
+        "δέ",
+        "γάρ",
+        "οὐ",
+        "μή",
+        "ἐν",
+        "εἰς",
+        "ἐκ",
+        "πρός",
+        "διά",
+        "ὡς",
+        "εἰ",
+        "ἵνα",
+        "τίς",
+        "τις",
+        "οὗτος",
+        "αὐτός",
+        "ἐγώ",
+        "σύ",
+    )
+}
 
 
 @dataclass
@@ -98,8 +123,18 @@ def has_documented_variance(rationale: str) -> bool:
     return draft.explicit_override_rationale(rationale)
 
 
+def is_function_pos(tag: str) -> bool:
+    tag = (tag or "").upper()
+    if not tag:
+        return False
+    function_tags = {"ART", "CONJ", "PREP", "PRT"}
+    function_prefixes = ("C-", "I-", "P-", "T-", "D-")
+    return tag in function_tags or tag.startswith(function_prefixes)
+
+
 def gloss_variance_flags(records: list[tuple[pathlib.Path, dict[str, Any]]]) -> list[LintFlag]:
     by_lemma: dict[str, list[dict[str, str]]] = defaultdict(list)
+    function_like_by_lemma: dict[str, list[bool]] = defaultdict(list)
 
     for _path, record in records:
         verse_id = str(record.get("id", ""))
@@ -113,6 +148,7 @@ def gloss_variance_flags(records: list[tuple[pathlib.Path, dict[str, Any]]]) -> 
             if not norm or not chosen:
                 continue
             matched_lemmas: list[tuple[str, str]] = []
+            matched_functional: list[bool] = []
             if source_verse is not None:
                 seen: set[str] = set()
                 for word in source_verse.words:
@@ -121,10 +157,13 @@ def gloss_variance_flags(records: list[tuple[pathlib.Path, dict[str, Any]]]) -> 
                         lemma_norm = draft.normalize_term(word.lemma)
                         if lemma_norm and lemma_norm not in seen:
                             matched_lemmas.append((lemma_norm, word.lemma))
+                            matched_functional.append(
+                                is_function_pos(str(getattr(word, "pos", "")))
+                            )
                             seen.add(lemma_norm)
 
             targets = matched_lemmas or [(norm, source_word)]
-            for lemma_norm, lemma_display in targets:
+            for index, (lemma_norm, lemma_display) in enumerate(targets):
                 by_lemma[lemma_norm].append(
                     {
                         "source_word": source_word,
@@ -136,9 +175,21 @@ def gloss_variance_flags(records: list[tuple[pathlib.Path, dict[str, Any]]]) -> 
                         "reference": reference,
                     }
                 )
+                if matched_lemmas:
+                    function_like_by_lemma[lemma_norm].append(
+                        matched_functional[index]
+                    )
+                else:
+                    function_like_by_lemma[lemma_norm].append(
+                        lemma_norm in LOW_SIGNAL_LEMMAS
+                    )
 
     flags: list[LintFlag] = []
-    for entries in by_lemma.values():
+    for lemma_norm, entries in by_lemma.items():
+        if lemma_norm in LOW_SIGNAL_LEMMAS:
+            continue
+        if function_like_by_lemma.get(lemma_norm) and all(function_like_by_lemma[lemma_norm]):
+            continue
         glosses = {entry["chosen_norm"] for entry in entries if entry["chosen_norm"]}
         if len(glosses) <= 1:
             continue
@@ -148,12 +199,17 @@ def gloss_variance_flags(records: list[tuple[pathlib.Path, dict[str, Any]]]) -> 
         gloss_counter = Counter(entry["chosen"] for entry in entries)
         lemma = entries[0]["lemma"]
         sample_refs = ", ".join(sorted({entry["reference"] for entry in entries})[:4])
+        gloss_examples = sorted(gloss_counter)
+        if len(gloss_examples) > 8:
+            gloss_render = f"{gloss_examples[:8]} +{len(gloss_examples) - 8} more"
+        else:
+            gloss_render = str(gloss_examples)
         flags.append(
             LintFlag(
                 category="Undocumented gloss variance",
                 verse_id=entries[0]["verse_id"],
                 message=(
-                    f"{lemma} has multiple glosses {sorted(gloss_counter)} "
+                    f"{lemma} has multiple glosses {gloss_render} "
                     f"without strong rationale coverage across the set ({sample_refs})."
                 ),
             )
