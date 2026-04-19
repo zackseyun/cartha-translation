@@ -1,39 +1,97 @@
 {
   "$schema": "https://cartha.ai/schemas/swete-page-index.v1.json",
-  "description": "Map scan-page numbers in Swete LXX (1909-1930) to book + chapter ranges. Populated as pages are transcribed. Used by tools/lxx_swete.py (planned) to resolve book_code+chapter -> source file.",
+  "description": "Maps scan-page numbers in Swete LXX (1909-1930) to book + chapter ranges. Ranges discovered via a 51-page probe run 2026-04-18. Ranges marked 'approximate' until the bulk transcription completes and book boundaries are confirmed to the page.",
   "volumes": {
     "1": {
       "basename": "oldtestamentingr01swet",
-      "label": "Swete LXX Vol. I — Genesis through 4 Kingdoms (= 2 Kings)",
+      "label": "Swete LXX Vol. I - Genesis through 4 Kingdoms (= 2 Kings)",
+      "scope": "Protestant-canonical OT (out of scope for Phase 8 - these books come from WLC/UHB Hebrew, not Swete Greek)",
       "pages": []
     },
     "2": {
       "basename": "oldtestamentingr02swet",
-      "label": "Swete LXX Vol. II — Chronicles through Ecclesiasticus (Sirach)",
-      "pages": [
-        {"scan_page": 60, "print_page": 43, "book_code": "1CH", "chapters": "20-21", "notes": "pilot transcription — Protestant canon"}
+      "label": "Swete LXX Vol. II - Chronicles through the deuterocanonical wisdom/historical corpus",
+      "book_order_discovered": [
+        "1-2 Chronicles (ΠΑΡΑΛΕΙΠΟΜΕΝΩΝ Α,Β)",
+        "1 Esdras (ΕΣΔΡΑΣ Α)",
+        "Ezra-Nehemiah (ΕΣΔΡΑΣ Β / ΝΕΕΜΙΑΣ)",
+        "Psalms (ΨΑΛΜΟΙ)",
+        "Proverbs (ΠΑΡΟΙΜΙΑΙ)",
+        "Ecclesiastes (ΕΚΚΛΗΣΙΑΣΤΗΣ)",
+        "Song of Songs (ΑΣΜΑ)",
+        "Job (ΙΩΒ)",
+        "Wisdom of Solomon (ΣΟΦΙΑ ΣΑΛΩΜΩΝΟΣ)",
+        "Sirach (ΣΟΦΙΑ ΣΕΙΡΑΧ)",
+        "Greek Esther (ΕΣΘΗΡ) - with Greek additions",
+        "Judith (ΙΟΥΔΕΙΘ)",
+        "Tobit (ΤΩΒΕΙΤ)",
+        "Apparatus appendix (selected books)"
+      ],
+      "book_ranges": [
+        {"book_code": "1CH", "label": "1 Chronicles",     "scan_pages": "~47-95",   "canonical": true,  "in_phase8": false},
+        {"book_code": "2CH", "label": "2 Chronicles",     "scan_pages": "~95-145",  "canonical": true,  "in_phase8": false},
+        {"book_code": "1ES", "label": "1 Esdras",         "scan_pages": "~148-192", "canonical": "orthodox_appendix + protestant_apocrypha", "in_phase8": true},
+        {"book_code": "EZR", "label": "Ezra",             "scan_pages": "~193-215", "canonical": true,  "in_phase8": false},
+        {"book_code": "NEH", "label": "Nehemiah",         "scan_pages": "~215-240", "canonical": true,  "in_phase8": false},
+        {"book_code": "PSA", "label": "Psalms",           "scan_pages": "~242-432", "canonical": true,  "in_phase8": false, "note": "Psalm 151 may be appended after PSA 150 - requires targeted probe"},
+        {"book_code": "PRO", "label": "Proverbs",         "scan_pages": "~434-497", "canonical": true,  "in_phase8": false},
+        {"book_code": "ECC", "label": "Ecclesiastes",     "scan_pages": "~499-523", "canonical": true,  "in_phase8": false},
+        {"book_code": "SNG", "label": "Song of Songs (ΑΣΜΑ)", "scan_pages": "~525-537", "canonical": true, "in_phase8": false},
+        {"book_code": "JOB", "label": "Job",              "scan_pages": "~539-625", "canonical": true,  "in_phase8": false},
+        {"book_code": "WIS", "label": "Wisdom of Solomon", "scan_pages": "626-665", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true},
+        {"book_code": "SIR", "label": "Sirach (Ben Sira / Ecclesiasticus) - Greek", "scan_pages": "668-783", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true, "note": "For Phase 8 we also use Hebrew Schechter 1899 where available"},
+        {"book_code": "ADE", "label": "Greek Esther (with additions)", "scan_pages": "785-795", "canonical": "catholic + orthodox + protestant_apocrypha (additions only)", "in_phase8": true},
+        {"book_code": "JDT", "label": "Judith",           "scan_pages": "795-840", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true},
+        {"book_code": "TOB", "label": "Tobit",            "scan_pages": "843-862", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true}
       ]
     },
     "3": {
       "basename": "theoldtestamenti03swetuoft",
-      "label": "Swete LXX Vol. III — Hosea through 4 Maccabees",
-      "pages": []
+      "label": "Swete LXX Vol. III - Prophets + deuterocanonical historical books + non-canonical appendix",
+      "book_order_discovered": [
+        "Minor Prophets (ΩΣΗΕ...ΜΑΛΑΧΙΑΣ)",
+        "Isaiah (ΗΣΑΙΑΣ)",
+        "Jeremiah (ΙΕΡΕΜΙΑΣ)",
+        "Baruch (ΒΑΡΟΥΧ)",
+        "Lamentations (ΘΡΗΝΟΙ)",
+        "Ezekiel (ΙΕΖΕΚΙΗΛ)",
+        "Daniel + Greek Additions - Theodotion version (ΔΑΝΙΗΛ Θ.)",
+        "Susanna - Old Greek (ΣΟΥΣΑΝΝΑ Ο´)",
+        "Bel and the Dragon (ΒΗΛ ΚΑΙ ΔΡΑΚΩΝ)",
+        "1 Maccabees (ΜΑΚΚΑΒΑΙΩΝ Α)",
+        "2 Maccabees (ΜΑΚΚΑΒΑΙΩΝ Β)",
+        "3 Maccabees (ΜΑΚΚΑΒΑΙΩΝ Γ)",
+        "4 Maccabees (ΜΑΚΚΑΒΑΙΩΝ Δ)",
+        "Psalms of Solomon (ΨΑΛΜΟΙ ΣΟΛΟΜΩΝΤΟΣ) - out of scope",
+        "1 Enoch (ΕΝΩΧ) - out of scope",
+        "Appendix - variant readings + Letter of Jeremiah (ΕΠΙΣΤΟΛΗ ΙΕΡΕΜΙΟΥ)"
+      ],
+      "book_ranges": [
+        {"book_code": "MINOR_PROPHETS", "label": "Hosea through Malachi", "scan_pages": "~47-135", "canonical": true, "in_phase8": false},
+        {"book_code": "ISA", "label": "Isaiah",                       "scan_pages": "~136-295", "canonical": true, "in_phase8": false},
+        {"book_code": "JER", "label": "Jeremiah",                     "scan_pages": "~296-378", "canonical": true, "in_phase8": false},
+        {"book_code": "BAR", "label": "Baruch",                       "scan_pages": "379-398",  "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true, "note": "Letter of Jeremiah is printed separately in vol III appendix ~895-915, NOT as chapter 6 here"},
+        {"book_code": "LAM", "label": "Lamentations",                 "scan_pages": "~399-408", "canonical": true, "in_phase8": false},
+        {"book_code": "EZK", "label": "Ezekiel",                      "scan_pages": "~409-540", "canonical": true, "in_phase8": false},
+        {"book_code": "DAN_TH", "label": "Daniel Theodotion",         "scan_pages": "~542-597", "canonical": true, "in_phase8": false, "note": "Contains Prayer of Azariah + Song of the Three embedded in ch. 3 (~pp. 555-565) - these are deuterocanonical"},
+        {"book_code": "ADA_PR3", "label": "Prayer of Azariah + Song of the Three (embedded in Daniel 3)", "scan_pages": "~555-565", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true, "extraction": "extract from within DAN_TH pages"},
+        {"book_code": "ADA_SUS", "label": "Susanna - Old Greek",      "scan_pages": "~598-608", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true},
+        {"book_code": "ADA_BEL", "label": "Bel and the Dragon",       "scan_pages": "~610-615", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true},
+        {"book_code": "1MA", "label": "1 Maccabees",                  "scan_pages": "615-680",  "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true},
+        {"book_code": "2MA", "label": "2 Maccabees",                  "scan_pages": "680-740",  "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true},
+        {"book_code": "3MA", "label": "3 Maccabees",                  "scan_pages": "740-752",  "canonical": "orthodox", "in_phase8": true},
+        {"book_code": "4MA", "label": "4 Maccabees",                  "scan_pages": "752-790",  "canonical": "orthodox_appendix", "in_phase8": true},
+        {"book_code": "PSS", "label": "Psalms of Solomon",            "scan_pages": "~795-815", "canonical": false, "in_phase8": false, "note": "pseudepigrapha - not in any major canon, skip"},
+        {"book_code": "1EN", "label": "1 Enoch",                      "scan_pages": "~815-855", "canonical": "ethiopic_only", "in_phase8": false, "note": "Ethiopian Orthodox only - separate future phase if ever"},
+        {"book_code": "LJE", "label": "Letter of Jeremiah (appendix)", "scan_pages": "~895-915", "canonical": "catholic + orthodox + protestant_apocrypha", "in_phase8": true, "note": "In Swete vol III this is printed as a separate book in the APP section, not as Baruch 6"}
+      ]
     }
   },
-  "book_ranges_to_discover": [
-    {"vol": 2, "book_code": "TOB", "label": "Tobit",                                 "status": "pending discovery"},
-    {"vol": 2, "book_code": "JDT", "label": "Judith",                                "status": "pending discovery"},
-    {"vol": 2, "book_code": "ADE", "label": "Greek Additions to Esther",             "status": "pending discovery"},
-    {"vol": 2, "book_code": "WIS", "label": "Wisdom of Solomon",                     "status": "pending discovery"},
-    {"vol": 2, "book_code": "SIR", "label": "Sirach (Ecclesiasticus) — Greek",       "status": "pending discovery"},
-    {"vol": 3, "book_code": "BAR", "label": "Baruch + Letter of Jeremiah",           "status": "pending discovery"},
-    {"vol": 3, "book_code": "ADA", "label": "Greek Additions to Daniel",             "status": "pending discovery"},
-    {"vol": 3, "book_code": "1MA", "label": "1 Maccabees",                           "status": "pending discovery"},
-    {"vol": 3, "book_code": "2MA", "label": "2 Maccabees",                           "status": "pending discovery"},
-    {"vol": 3, "book_code": "3MA", "label": "3 Maccabees",                           "status": "pending discovery"},
-    {"vol": 3, "book_code": "4MA", "label": "4 Maccabees",                           "status": "pending discovery"},
-    {"vol": 2, "book_code": "1ES", "label": "1 Esdras",                              "status": "pending discovery"},
-    {"vol": 3, "book_code": "MAN", "label": "Prayer of Manasseh",                    "status": "pending discovery"},
-    {"vol": 3, "book_code": "PS151", "label": "Psalm 151",                           "status": "pending discovery"}
+  "still_to_locate": [
+    {"book_code": "PS151", "label": "Psalm 151", "hypothesis": "After Psalm 150 at vol II p. ~430 or in odes appendix; targeted probe needed"},
+    {"book_code": "MAN",   "label": "Prayer of Manasseh", "hypothesis": "Traditionally in an Odes appendix; not found in primary probe - check vol III appendix pp. 860-920 or vol II end-matter"}
+  ],
+  "probe_history": [
+    {"date": "2026-04-18", "run": "initial", "probes": 51, "pages_transcribed": 48, "note": "Sparse grid at every ~50 pages + targeted bisections to find book boundaries"}
   ]
 }
