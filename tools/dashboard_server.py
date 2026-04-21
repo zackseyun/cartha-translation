@@ -110,19 +110,21 @@ def recent_main_commits(limit: int = 12) -> list[dict[str, str]]:
 
 def gemini_review_status() -> dict[str, Any]:
     """Return a snapshot of the review_jobs table for the dashboard."""
+    empty = {
+        "summary": [], "running": [], "failed": [], "worst_agreements": [],
+        "recent": [], "throughput": {},
+        "quality_hist": {}, "category_counts": {},
+        "major_findings": [], "top_books": [],
+    }
     if gemini_review_queue is None:
-        return {"summary": [], "running": [], "failed": [], "worst_agreements": []}
+        return empty
     try:
         with chapter_queue.connect(DB_PATH) as conn:
             chapter_queue.ensure_schema(conn)
             gemini_review_queue.ensure_schema(conn)
             summary = [dict(r) for r in conn.execute(
-                """
-                SELECT strategy, status, COUNT(*) AS count
-                FROM review_jobs
-                GROUP BY strategy, status
-                ORDER BY strategy, status
-                """
+                "SELECT strategy, status, COUNT(*) AS count FROM review_jobs "
+                "GROUP BY strategy, status ORDER BY strategy, status"
             ).fetchall()]
             running = [dict(r) for r in conn.execute(
                 "SELECT * FROM review_jobs WHERE status='running' ORDER BY claimed_at DESC LIMIT 12"
@@ -131,33 +133,93 @@ def gemini_review_status() -> dict[str, Any]:
                 "SELECT * FROM review_jobs WHERE status='failed' ORDER BY updated_at DESC LIMIT 10"
             ).fetchall()]
             worst = [dict(r) for r in conn.execute(
-                """
-                SELECT testament, book_slug, chapter, verse, strategy,
-                       agreement_score, issues_found, review_path
-                FROM review_jobs
-                WHERE status='completed' AND agreement_score IS NOT NULL
-                ORDER BY agreement_score ASC, issues_found DESC
-                LIMIT 20
-                """
+                "SELECT testament, book_slug, chapter, verse, strategy, "
+                "agreement_score, issues_found, review_path "
+                "FROM review_jobs WHERE status='completed' AND agreement_score IS NOT NULL "
+                "ORDER BY agreement_score ASC, issues_found DESC LIMIT 25"
             ).fetchall()]
             recent = [dict(r) for r in conn.execute(
-                """
-                SELECT testament, book_slug, chapter, verse, strategy,
-                       agreement_score, issues_found, completed_at
-                FROM review_jobs
-                WHERE status='completed'
-                ORDER BY completed_at DESC
-                LIMIT 12
-                """
+                "SELECT testament, book_slug, chapter, verse, strategy, "
+                "agreement_score, issues_found, completed_at "
+                "FROM review_jobs WHERE status='completed' "
+                "ORDER BY completed_at DESC LIMIT 15"
             ).fetchall()]
-    except sqlite3.OperationalError:  # table doesn't exist yet
-        return {"summary": [], "running": [], "failed": [], "worst_agreements": [], "recent": []}
+            # Throughput over multiple windows
+            throughput: dict[str, int] = {}
+            for mins in (3, 10, 30):
+                cutoff_iso = (dt.datetime.now(dt.timezone.utc) - dt.timedelta(minutes=mins)).strftime("%Y-%m-%dT%H:%M:%SZ")
+                throughput[f"last_{mins}m"] = conn.execute(
+                    "SELECT COUNT(*) FROM review_jobs WHERE completed_at >= ?",
+                    (cutoff_iso,),
+                ).fetchone()[0]
+            # Quality histogram
+            quality_hist = {"perfect": 0, "high": 0, "moderate": 0, "actionable": 0}
+            for row in conn.execute(
+                "SELECT agreement_score FROM review_jobs "
+                "WHERE agreement_score IS NOT NULL"
+            ):
+                s = row[0]
+                if s is None:
+                    continue
+                if s >= 1.0:
+                    quality_hist["perfect"] += 1
+                elif s >= 0.9:
+                    quality_hist["high"] += 1
+                elif s >= 0.7:
+                    quality_hist["moderate"] += 1
+                else:
+                    quality_hist["actionable"] += 1
+            # Top books by review count
+            top_books = [dict(r) for r in conn.execute(
+                "SELECT book_slug, COUNT(*) AS reviewed, "
+                "AVG(agreement_score) AS avg_score, "
+                "SUM(CASE WHEN agreement_score < 0.7 THEN 1 ELSE 0 END) AS actionable "
+                "FROM review_jobs WHERE status='completed' "
+                "GROUP BY book_slug ORDER BY reviewed DESC LIMIT 10"
+            ).fetchall()]
+    except sqlite3.OperationalError:
+        return empty
+
+    # Category counts + top major findings (read review JSONs for worst verses)
+    category_counts: dict[str, int] = {}
+    major_findings: list[dict[str, Any]] = []
+    for r in worst:
+        rp = r.get("review_path")
+        if not rp:
+            continue
+        try:
+            path = REPO_ROOT / rp
+            if not path.exists():
+                continue
+            data = json.loads(path.read_text(encoding="utf-8"))
+            for issue in data.get("issues") or []:
+                cat = (issue.get("category") or "other")
+                category_counts[cat] = category_counts.get(cat, 0) + 1
+                sev = issue.get("severity") or ""
+                if sev == "major" and len(major_findings) < 12:
+                    major_findings.append({
+                        "loc": f"{r['book_slug']} {r['chapter']}:{r['verse']}",
+                        "score": r.get("agreement_score"),
+                        "category": cat,
+                        "span": (issue.get("span") or "")[:80],
+                        "current": (issue.get("current_rendering") or "")[:180],
+                        "suggest": (issue.get("suggested_rewrite") or "")[:180],
+                        "rationale": (issue.get("rationale") or "")[:240],
+                    })
+        except Exception:
+            continue
+
     return {
         "summary": summary,
         "running": running,
         "failed": failed,
         "worst_agreements": worst,
         "recent": recent,
+        "throughput": throughput,
+        "quality_hist": quality_hist,
+        "category_counts": category_counts,
+        "major_findings": major_findings,
+        "top_books": top_books,
     }
 
 
@@ -441,6 +503,19 @@ def html_page() -> str:
     .pill { display:inline-block; padding:2px 6px; border-radius:6px; background:#1f2a53; color:#cbd5e1; font-size:11px; margin-right:6px; }
     .bar { width: 220px; height: 10px; background: #1f2a53; border-radius: 999px; overflow: hidden; }
     .bar > span { display: block; height: 100%; background: linear-gradient(90deg, #22c55e, #10b981); }
+    .qbar { display: flex; width: 100%; height: 20px; background: #1f2a53; border-radius: 10px; overflow: hidden; box-shadow: inset 0 1px 3px rgba(0,0,0,0.3); }
+    .qbar > span { display: block; height: 100%; }
+    .qseg-perfect { background: #10b981; }
+    .qseg-high { background: #60a5fa; }
+    .qseg-mod { background: #f59e0b; }
+    .qseg-act { background: #ef4444; }
+    .dot { display: inline-block; width: 10px; height: 10px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+    .dot-perfect { background: #10b981; }
+    .dot-high { background: #60a5fa; }
+    .dot-mod { background: #f59e0b; }
+    .dot-act { background: #ef4444; }
+    .finding { background: #0d1328; border: 1px solid #23305f; border-radius: 10px; padding: 12px; margin-bottom: 10px; }
+    .finding-hdr { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
     .small { font-size: 12px; color: #cbd5e1; }
     .section { margin-top: 24px; }
   </style>
@@ -517,6 +592,62 @@ async function refresh() {
         <td class="small mono">${j.strategy}</td>
       </tr>`;
   }).join('') || '<tr><td colspan="4" class="small">No reviews with low agreement yet.</td></tr>';
+
+  // Quality histogram
+  const qh = gemReviews.quality_hist || {};
+  const qhTotal = (qh.perfect||0) + (qh.high||0) + (qh.moderate||0) + (qh.actionable||0);
+  const qhPct = (k) => qhTotal ? Math.round((qh[k]||0)/qhTotal*100) : 0;
+  const qhBars = `
+    <div class="qbar"><span class="qseg-perfect" style="width:${qhPct('perfect')}%" title="${qh.perfect||0} perfect (1.00)"></span><span class="qseg-high" style="width:${qhPct('high')}%" title="${qh.high||0} high (0.90-0.99)"></span><span class="qseg-mod" style="width:${qhPct('moderate')}%" title="${qh.moderate||0} moderate (0.70-0.89)"></span><span class="qseg-act" style="width:${qhPct('actionable')}%" title="${qh.actionable||0} actionable (<0.70)"></span></div>
+    <div class="small" style="margin-top:4px;">
+      <span class="dot dot-perfect"></span>${qh.perfect||0} perfect
+      &nbsp;&nbsp;<span class="dot dot-high"></span>${qh.high||0} high
+      &nbsp;&nbsp;<span class="dot dot-mod"></span>${qh.moderate||0} mod
+      &nbsp;&nbsp;<span class="dot dot-act"></span>${qh.actionable||0} actionable
+    </div>`;
+
+  // Throughput
+  const tp = gemReviews.throughput || {};
+  const tpHtml = `
+    <div class="mono">${((tp.last_10m||0)/10).toFixed(1)} verses/min <span class="small">(10-min avg)</span></div>
+    <div class="small mono">last 3m: ${tp.last_3m||0} · last 10m: ${tp.last_10m||0} · last 30m: ${tp.last_30m||0}</div>`;
+
+  // Category breakdown
+  const cats = gemReviews.category_counts || {};
+  const catTotal = Object.values(cats).reduce((a,b)=>a+b, 0) || 1;
+  const catOrder = ['mistranslation','lexical','theological_weight','consistency','missing_nuance','awkward_english','other'];
+  const catRows = catOrder.filter(k => cats[k]).map(k =>
+    `<tr><td class="mono">${k}</td><td class="mono">${cats[k]}</td><td>
+      <div class="bar"><span style="width:${Math.round(cats[k]/catTotal*100)}%"></span></div>
+    </td></tr>`).join('') || '<tr><td colspan="3" class="small">No categorized issues yet.</td></tr>';
+
+  // Top books reviewed
+  const topBooks = gemReviews.top_books || [];
+  const topBookRows = topBooks.map(b => {
+    const avg = b.avg_score != null ? b.avg_score.toFixed(2) : '—';
+    const scoreClass = b.avg_score >= 0.95 ? 'completed' : (b.avg_score >= 0.85 ? 'pending' : 'failed');
+    return `<tr>
+      <td class="mono">${b.book_slug}</td>
+      <td class="mono">${b.reviewed}</td>
+      <td><span class="badge ${scoreClass}">${avg}</span></td>
+      <td class="mono">${b.actionable||0}</td>
+    </tr>`;
+  }).join('') || '<tr><td colspan="4" class="small">No reviews yet.</td></tr>';
+
+  // Major findings (real issue text)
+  const findings = gemReviews.major_findings || [];
+  const findingsHtml = findings.slice(0, 8).map(f => `
+    <div class="finding">
+      <div class="finding-hdr">
+        <span class="mono">${f.loc}</span>
+        <span class="badge failed">${f.score != null ? f.score.toFixed(2) : '—'}</span>
+        <span class="pill">${f.category||'other'}</span>
+      </div>
+      <div class="small" style="margin-top:6px;"><strong>Span:</strong> <span class="mono">${f.span||''}</span></div>
+      <div class="small" style="margin-top:4px;"><strong>GPT-5.4:</strong> <span class="mono">${(f.current||'').replace(/</g,'&lt;')}</span></div>
+      <div class="small" style="margin-top:4px;"><strong>Gemini:</strong> <span class="mono" style="color:#86efac;">${(f.suggest||'').replace(/</g,'&lt;')}</span></div>
+      <div class="small" style="margin-top:4px; color:#cbd5e1;"><strong>Why:</strong> ${(f.rationale||'').replace(/</g,'&lt;')}</div>
+    </div>`).join('') || '<div class="small">No major findings surfaced yet.</div>';
 
   const cards = `
     <div class=\"grid cards\">
@@ -603,6 +734,28 @@ async function refresh() {
         <tbody>${gemTableRows}</tbody>
       </table>
     </div>
+
+    <div class=\"section grid cards\">
+      <div class=\"card\">
+        <h2>📊 Agreement distribution</h2>
+        ${qhBars}
+      </div>
+      <div class=\"card\">
+        <h2>⚡ Throughput</h2>
+        ${tpHtml}
+      </div>
+      <div class=\"card\">
+        <h2>🏷 Issue categories</h2>
+        <table><thead><tr><th>Category</th><th>Count</th><th>Share</th></tr></thead><tbody>${catRows}</tbody></table>
+      </div>
+    </div>
+
+    <div class=\"section card\">
+      <h2>🎯 Major findings (Gemini's actual corrections)</h2>
+      <p class=\"small muted\">Issues flagged as <code>major</code> severity in recent low-agreement reviews. These are real Gemini-proposed improvements awaiting adjudication.</p>
+      ${findingsHtml}
+    </div>
+
     <div class=\"section grid cards\">
       <div class=\"card\">
         <h2>🏃 Running review workers</h2>
@@ -615,6 +768,10 @@ async function refresh() {
       <div class=\"card\">
         <h2>⚠️ Lowest-agreement verses</h2>
         <table><thead><tr><th>Verse</th><th>Score</th><th>Issues</th><th>Strategy</th></tr></thead><tbody>${gemWorstRows}</tbody></table>
+      </div>
+      <div class=\"card\">
+        <h2>📚 Top reviewed books</h2>
+        <table><thead><tr><th>Book</th><th>Reviewed</th><th>Avg</th><th>Actionable</th></tr></thead><tbody>${topBookRows}</tbody></table>
       </div>
     </div>
     <div class=\"section grid cards\">
