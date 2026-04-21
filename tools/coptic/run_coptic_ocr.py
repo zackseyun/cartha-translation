@@ -17,7 +17,7 @@ import requests
 
 from common import OCR_JOBS_ROOT, REPO_ROOT, load_json, rel, utc_now, write_json
 
-DEFAULT_MODEL = 'gemini-3-pro-preview'
+DEFAULT_MODEL = 'gemini-3.1-pro-preview'
 AI_STUDIO_BASE = 'https://generativelanguage.googleapis.com/v1beta/models'
 USER_AGENT = 'Mozilla/5.0 (compatible; Phase-E-Coptic-OCR/1.0)'
 IMAGE_EXTS = {'.png', '.jpg', '.jpeg', '.webp', '.gif', '.tif', '.tiff'}
