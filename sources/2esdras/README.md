@@ -112,6 +112,13 @@ Current OCR status:
 - **Violet 1910 vol. 1**: initial pilot pages OCR'd into
   `raw_ocr/violet1910-vol1/`
 
+Next cleanup substrate:
+
+- `../../tools/2esdras/extract_bensly_body.py` extracts just the
+  `[BODY]` sections from the raw Bensly OCR into
+  `latin/intermediate/bensly1895_body_pages/` plus a combined
+  `latin/intermediate/bensly1895_body_main_text.txt`
+
 Cleaned per-witness transcription and verse indexing are still
 pending. Translation drafting begins after Phase 9 (LXX
 deuterocanon) completes — see `2ESDRAS.md` for the full phased plan.
