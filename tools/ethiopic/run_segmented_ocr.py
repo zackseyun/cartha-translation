@@ -29,7 +29,7 @@ OUTPUT_ROOT = REPO_ROOT / 'sources' / 'enoch' / 'ethiopic' / 'transcribed' / 'se
 
 def _gemini_plaintext(image_bytes: bytes, prompt: str, *, thinking_budget: int = 512, max_output_tokens: int = 3000) -> dict[str, Any]:
     api_key = ocr_geez.resolve_gemini_api_key()
-    url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={api_key}'
+    url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={api_key}'
     body = {
         'contents': [{'parts': [
             {'text': prompt},

@@ -422,8 +422,8 @@ def main() -> int:
     )
     ap.add_argument(
         "--gemini-25-model",
-        default="gemini-2.5-pro",
-        help="Gemini 2.5 Pro baseline model id (default: gemini-2.5-pro)",
+        default="gemini-3.1-pro-preview",
+        help="Gemini 3.1 Pro baseline model id (default: gemini-3.1-pro-preview)",
     )
     args = ap.parse_args()
 
@@ -480,7 +480,7 @@ def main() -> int:
         r = call_gemini(image, prompt, model=args.gemini_25_model)
         print(f"  finish={r.finish_reason} chars={len(r.text)} dur={r.duration_seconds}s err={r.error or '-'}")
         write_engine_output(out_dir, r, scan_meta=scan_meta)
-        runs.append(("gemini-2.5-pro", r))
+        runs.append(("gemini-3.1-pro-preview", r))
 
     # Measure each against hand-truth
     scoreboard: list[dict[str, Any]] = []
