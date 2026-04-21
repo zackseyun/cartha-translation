@@ -9,7 +9,8 @@ Cartha Open Bible.
 |---|---|---|
 | `sblgnt.py` | implemented | Parses the MorphGNT SBLGNT text files; exposes `load_verse(book, chapter, verse)` and `morphology_lines(verse)`. |
 | `wlc.py` | implemented | Parses the Westminster Leningrad Codex / unfoldingWord Hebrew Bible for OT verses. |
-| `draft.py` | implemented | Produces an AI-drafted verse YAML for a single verse. Reads source text, extracts relevant DOCTRINE.md sections, calls a frontier LLM with a tool definition enforcing structured output, writes a schema-valid YAML to `translation/<testament>/<book>/<chapter>/<verse>.yaml`. Supports `--dry-run` for prompt inspection without an API call. |
+| `build_translation_prompt.py` | implemented | Builds the Phase 9 deuterocanon prompt block from the adjudicated Swete corpus, Hebrew/MT parallels, Zone 2 consult registry, and doctrine/philosophy excerpts. Supports `--json` for prompt + metadata inspection. |
+| `draft.py` | implemented | Produces an AI-drafted verse YAML for a single verse. Reads source text, extracts relevant DOCTRINE.md sections, calls a frontier LLM with a tool definition enforcing structured output, writes a schema-valid YAML to `translation/<testament>/<book>/<chapter>/<verse>.yaml`. Supports `--dry-run` for prompt inspection without an API call, and now supports deuterocanonical books through the dedicated prompt builder. |
 | `cross_check.py` | stub | Runs draft against Claude + GPT + Gemini in parallel, scores agreement, surfaces divergences. Spec in METHODOLOGY.md Stage 3. |
 | `verify.py` | not yet written | Re-runs the documented pipeline for a published verse. Confirms AI draft reproduces and cross-check reproduces. |
 | `consistency_lint.py` | implemented | Checks internal consistency across drafted YAMLs. Flags undocumented lexical variance, contested-term doctrine gaps/overrides, and empty source text; writes Markdown reports to `lint_reports/`. |
@@ -58,6 +59,10 @@ export AZURE_OPENAI_ENDPOINT=...
 export AZURE_OPENAI_API_KEY=...
 export AZURE_OPENAI_DEPLOYMENT_ID=gpt-5-4-deployment
 python3 tools/draft.py --ref "Philippians 1:1" --backend azure-openai --model gpt-5.4
+
+# Deuterocanon prompt dry run:
+python3 tools/build_translation_prompt.py --book 1MA --chapter 1 --verse 1 --json
+python3 tools/draft.py --book SIR --chapter 1 --verse 1 --dry-run
 ```
 
 

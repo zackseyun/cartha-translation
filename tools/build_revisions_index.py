@@ -63,6 +63,9 @@ except ImportError:
     print("PyYAML required. pip install pyyaml", file=sys.stderr)
     sys.exit(1)
 
+sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
+import lxx_swete  # noqa: E402
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 OUT_PATH = REPO_ROOT / "revisions.json"
@@ -116,6 +119,10 @@ BOOK_META: dict[str, tuple[str, str, str]] = {
         "1_john": ("1 John", "1JN"), "2_john": ("2 John", "2JN"),
         "3_john": ("3 John", "3JN"), "jude": ("Jude", "JUD"),
         "revelation": ("Revelation", "REV"),
+    },
+    "deuterocanon": {
+        meta[4]: (meta[3], code)
+        for code, meta in lxx_swete.DEUTEROCANONICAL_BOOKS.items()
     },
 }
 
