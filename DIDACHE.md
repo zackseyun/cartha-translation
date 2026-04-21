@@ -76,5 +76,5 @@ The shared local-PDF OCR tool for this track is
 
 ## Immediate next steps
 
-1. Build the Didache prompt builder on top of the normalized chapter files
-2. Draft + revise
+1. Begin drafting from the normalized chapter files
+2. Revise + audit
