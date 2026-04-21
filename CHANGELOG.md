@@ -105,6 +105,10 @@ Psalms of Solomon as the already-exercised Swete-side pilot.
   - builds a chapter-level translation prompt from the normalized
     source layer, doctrine excerpt, philosophy excerpt, and source
     provenance
+- **Didache drafting started**:
+  - `tools/draft_didache.py`
+  - first chapter draft written to
+    `translation/extra_canonical/didache/001.yaml`
 - **Shepherd of Hermas + Testaments source trees** added:
   - `sources/shepherd_of_hermas/README.md` + `MANIFEST.md`
   - `sources/testaments_twelve_patriarchs/README.md` + `MANIFEST.md`
