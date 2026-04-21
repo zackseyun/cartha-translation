@@ -119,6 +119,10 @@ class SwtVerse:
     verse: int
     greek_text: str = ""
     source_page: int | None = None  # scan page the verse was parsed from
+    source_pages: list[int] = field(default_factory=list)
+    source_confidence: str | None = None
+    source_validation: str | None = None
+    source_warnings: list[str] = field(default_factory=list)
     translation: str = "lxx-swete-1909"
 
     @property
@@ -864,7 +868,9 @@ def parse_pages_to_verses(
         yield v
 
 
-FINAL_CORPUS_DIR = REPO_ROOT / "sources" / "lxx" / "swete" / "final_corpus"
+FINAL_CORPUS_DIR = (
+    REPO_ROOT / "sources" / "lxx" / "swete" / "final_corpus_adjudicated"
+)
 
 
 def _load_final_corpus(book_code: str) -> list[SwtVerse] | None:
@@ -887,17 +893,46 @@ def _load_final_corpus(book_code: str) -> list[SwtVerse] | None:
                     chapter=int(rec["chapter"]),
                     verse=int(rec["verse"]),
                     greek_text=rec["greek"],
-                    source_page=rec.get("source_page"),
-                    # Keep the translation label distinguishable: "ours"
-                    # = our OCR+parser pipeline; "first1kgreek" = First
-                    # Thousand Years of Greek TEI-XML source.
-                    translation=(
-                        "swete-1909-ocr" if rec.get("source") == "ours"
-                        else "swete-1909-first1kgreek"
+                    source_page=(
+                        rec.get("source_page")
+                        or (rec.get("source_pages") or [None])[0]
                     ),
+                    source_pages=list(rec.get("source_pages") or []),
+                    source_confidence=(
+                        (rec.get("adjudication") or {}).get("confidence")
+                        or ("high" if rec.get("validation") == "agree" else None)
+                    ),
+                    source_validation=rec.get("validation"),
+                    source_warnings=_source_warnings_for_record(rec),
+                    translation="swete-1909-adjudicated",
                 )
             )
     return out
+
+
+def _source_warnings_for_record(rec: dict) -> list[str]:
+    warnings: list[str] = []
+    book = str(rec.get("book") or "")
+    chapter = int(rec.get("chapter") or 0)
+    verse = int(rec.get("verse") or 0)
+    source_pages = list(rec.get("source_pages") or [])
+
+    if not source_pages:
+        warnings.append(
+            "No source_pages recorded for this adjudicated verse; verify the page linkage before publishing."
+        )
+
+    if book == "BAR" and chapter == 5 and verse >= 10:
+        warnings.append(
+            "Known numbering contamination: BAR 5:10-66 currently spills into Lamentations material and should not be drafted until normalized."
+        )
+
+    if book == "WIS" and chapter == 19 and verse >= 28:
+        warnings.append(
+            "Known numbering contamination: WIS 19:28-30 currently reflects adjacent Sirach material and should not be drafted until normalized."
+        )
+
+    return warnings
 
 
 def iter_source_verses(book_code: str) -> Iterator[SwtVerse]:
