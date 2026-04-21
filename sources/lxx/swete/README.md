@@ -23,8 +23,9 @@ contains every deuterocanonical book we need:
   Judith, Greek Esther with additions, Wisdom of Solomon, and Sirach.
 - **Vol. III** — Hosea through 4 Maccabees. Includes 1-4 Maccabees,
   Baruch + Letter of Jeremiah, Greek Daniel with additions (Susanna,
-  Bel, Prayer of Azariah, Song of the Three), plus Psalms of Solomon
-  (not deuterocanonical but bundled).
+  Bel, Prayer of Azariah, Song of the Three), plus **Psalms of
+  Solomon** (not deuterocanonical but bundled, and now a dedicated
+  extra-canonical track in COB).
 
 Swete used a different manuscript base than Rahlfs (primarily Codex Vaticanus
 with Sinaiticus and Alexandrinus as variants, vs. Rahlfs's broader eclectic

@@ -40,7 +40,8 @@ We prioritize the deuterocanonical sections of each volume:
   Solomon, Sirach.
 - **Vol. III** — 1-4 Maccabees, Baruch + Letter of Jeremiah, Greek
   Additions to Daniel (Pr Azariah, Song of the Three, Susanna, Bel),
-  Prayer of Manasseh, Psalm 151.
+  Prayer of Manasseh, Psalm 151, and **Psalms of Solomon**
+  (`vol3_p0788`–`vol3_p0810`).
 
 The Protestant canonical books that Swete also contains (Genesis
 through Malachi) are *not* a priority for vision transcription — those

@@ -78,7 +78,7 @@ Apocrypha, Vulgate appendix).
 | **2 Esdras (4 Ezra)** | Hebrew (lost) → Greek (lost) → Latin | Latin (Bensly 1895) + 6 daughter translations | 16 chapters | See [`2ESDRAS.md`](2ESDRAS.md) |
 | **1 Enoch** | Aramaic (fragments at Qumran) → Greek (partial) → Ge'ez | Ethiopic (Charles 1906) | 108 chapters | Charles 1906, Charles 1912, Flemming 1902. **Pipeline setup already in progress as Phase 8c** — see [`ENOCH.md`](ENOCH.md) |
 | **Jubilees** | Hebrew (fragments at Qumran) → Greek (fragments) → Ge'ez | Ethiopic (Charles 1895) | 50 chapters | Charles 1895, Charles 1902, Rönsch 1874 (Latin fragments). **Shared Ethiopic pipeline setup now documented** — see [`JUBILEES.md`](JUBILEES.md) |
-| **Psalms of Solomon** | Hebrew (lost) → Greek → (Syriac partial) | Greek | 18 psalms | Ryle & James 1891; may already be in Swete vol III |
+| **Psalms of Solomon** | Hebrew (lost) → Greek → (Syriac partial) | Greek | 18 psalms | Ryle & James 1891; **Swete vol. III pages 788–810 now fully transcribed** — see [`PSALMS_OF_SOLOMON.md`](PSALMS_OF_SOLOMON.md) |
 
 ### Tier 2 — Apostolic Fathers, Jewish apocalyptic, and pseudepigrapha
 
@@ -129,12 +129,15 @@ reuses. Grouping by pipeline makes the phased plan natural.
 - Didache
 - 1 Clement
 - Shepherd of Hermas
-- Psalms of Solomon (check Swete vol III first; may be essentially free)
+- Psalms of Solomon (already in Swete vol III; full page span now transcribed)
 - Testaments of the Twelve Patriarchs
 
 **Shared infra:** vision OCR of Greek typeset text, 4-source
 triangulation against independent transcriptions where they exist,
 scan-grounded adjudication against the scan image.
+For the non-Swete Group A books, see
+[`GREEK_EXTRA_CANONICAL.md`](GREEK_EXTRA_CANONICAL.md) and
+`tools/greek_extra_pdf_ocr.py`.
 
 ### Group B — reuses 2 Esdras multi-witness pipeline (Phase 8b infra)
 
@@ -190,6 +193,8 @@ after Phase 9 (LXX deuterocanon) completes:
 | **8b** | 2 Esdras — source + pipeline setup | B (Latin + 6 daughters) | ✓ source PDFs vendored, scope doc written, scaffolding in place |
 | **8c** | 1 Enoch — source + pipeline setup | C (new Ethiopic pipeline) | ✓ source PDFs vendored, OCR backend selected (Gemini 2.5 Pro plaintext mode; Azure GPT-5 and Gemini Flash fail on Ge'ez), scope doc, scaffolding |
 | **8d** | Jubilees — source + shared Ethiopic pipeline setup | C (reuses/shared with Enoch) | ✓ source PDFs vendored, scope doc written, shared `tools/ethiopic/ocr_geez.py` batch CLI in place, scaffolding added |
+| **Phase 8e** | Psalms of Solomon — Swete source transcription + scope setup | A (reuses Swete Greek infra) | ✓ full Swete page span transcribed; dedicated scope doc + helper scaffold |
+| **8f** | Shared Greek extra-canonical pipeline setup | A (Greek reuse beyond Swete) | ✓ group scope doc + generic local-PDF Greek OCR scaffold + planned source tree |
 | **Phase 9** | LXX deuterocanon drafting | Existing LXX infra | Ready to begin |
 | **Phase 10** | 2 Esdras drafting | B | Gated on Phase 9 |
 | **Phase 11** | 1 Enoch drafting | C | Gated on Phase 9 |
