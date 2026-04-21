@@ -139,6 +139,122 @@ Adapted from `METHODOLOGY.md` and `REFERENCE_SOURCES.md`:
 5. **Per-verse provenance YAML** follows the same schema as the rest
    of COB, with additional fields for each witness's reading.
 
+## Reader-facing presentation
+
+Because 2 Esdras is not canonical in the Catholic, Orthodox, or
+Protestant traditions and its compositional layers matter to an
+honest reading, the book ships with explicit reader-facing labeling
+rather than as an unmarked translation.
+
+### Appendix designation
+
+2 Esdras is presented as an **Appendix** book in the Cartha Open
+Bible, distinct from the 13 LXX-based deuterocanonical books. It
+appears after the last Apocrypha book in the reading order with a
+visible "Appendix" tag. It is **not counted** toward the Apocrypha
+completion metric in `status.json`; it is tracked as its own
+Appendix track.
+
+### Book-level headnote (rendered above chapter 1)
+
+> **2 Esdras (Appendix)**
+>
+> *Also called 4 Ezra or the Ezra Apocalypse. Not canonical in
+> modern Catholic, Orthodox, or Protestant Bibles. Canonical in
+> the Ethiopian Orthodox tradition and preserved in the appendix
+> of the Latin Vulgate. Included in the Apocrypha of the 1611
+> King James Bible. Presented here because of its long reception
+> history in the Christian tradition and its profound wrestling
+> with evil, judgment, resurrection, and Messiah.*
+>
+> *The book is a composite. The core (chapters 3–14) is a Jewish
+> apocalypse written in Hebrew or Aramaic around 100 AD, after
+> the fall of the Second Temple under Rome. The Semitic original
+> is lost; the text survives through Latin, Syriac, Ethiopic,
+> Arabic, Armenian, and Georgian translations of a lost Greek
+> intermediary. Chapters 1–2 and 15–16 are later Christian
+> additions preserved only in Latin. All three layers are
+> translated and labeled rather than blended.*
+>
+> *This translation is based on Bensly's 1895 critical Latin
+> edition (Cambridge Texts and Studies III.2), with the daughter-
+> language witnesses consulted via Violet's 1910 parallel-column
+> edition for chapters 3–14. The "lost fragment" of 7:36–105,
+> missing from the KJV 1611 and from most medieval Latin
+> manuscripts, is restored to its place from Bensly 1875.*
+
+### Section headers inside the book
+
+Three visible section breaks mark the compositional layers.
+
+**Before chapter 1 — "5 Ezra":**
+
+> *Christian addition preserved only in Latin, c. 2nd–3rd century
+> AD. These two chapters are distinct in origin from the Jewish
+> apocalypse that follows; they recast Ezra as a prophet rejected
+> by Israel, with God turning to the Gentiles. Included here
+> because the KJV 1611 Apocrypha prints them in this position.*
+
+**Before chapter 3 — "4 Ezra", the core Jewish apocalypse:**
+
+> *The original Jewish apocalypse, c. 100 AD. Composed in Hebrew
+> or Aramaic after the fall of the Second Temple under Rome. The
+> Semitic original is lost; the book survives through Latin,
+> Syriac, Ethiopic, Arabic, Armenian, and Georgian translations
+> of a lost Greek intermediary. Seven visions of the seer Ezra,
+> answered by the angel Uriel — wrestling with God's justice in
+> the aftermath of catastrophe.*
+
+**Before chapter 15 — "6 Ezra":**
+
+> *Christian addition preserved only in Latin, c. 3rd century AD.
+> Prophetic oracles against the nations, appended to the Latin
+> tradition of 4 Ezra. Distinct in authorship and register from
+> the core apocalypse. Included here because the KJV 1611
+> Apocrypha includes them.*
+
+### Inline footnotes
+
+**At 7:28 ("my son the Messiah"):**
+
+> *The Latin reads* filius meus Christus*: "my son the Messiah."
+> The passage describes the Messiah reigning with the righteous
+> for 400 years and then dying, followed by seven days of
+> primeval silence and then resurrection. Among the most striking
+> Jewish messianic passages from roughly the era of the New
+> Testament. The Syriac and Ethiopic witnesses preserve similar
+> readings, though later Latin manuscripts sometimes adjusted the
+> numeral.*
+
+**At 7:36 ("the recovered section"):**
+
+> *Verses 7:36–105 are Bensly's "Missing Fragment." Cut from most
+> medieval Latin manuscripts — almost certainly because this
+> section teaches that intercession for the damned is refused,
+> which later Christian piety found difficult — and therefore
+> absent from the Vulgate and from the KJV 1611, where verse 7:35
+> was followed directly by what older editions numbered as verse
+> 7:36 some seventy verses later. Robert Bensly recovered the
+> fragment from a Spanish manuscript in 1875 and it is now
+> restored in all modern critical editions.*
+
+### What the translator prompt must honor
+
+The `build_translation_prompt.py` builder enforces these
+reader-facing decisions at draft time:
+
+- The book-level headnote is emitted as the book's `intro`
+  field in the publishing JSON, not as chapter 1 text.
+- Section headers are emitted as structural markers ahead of
+  verses 1:1, 3:1, and 15:1.
+- The 7:28 and 7:36 footnotes are emitted as `footnotes[]` on
+  the corresponding verse YAML, not inlined into the verse
+  body.
+- The harder-teaching passages (7:45–61, 7:102–115, 8:38–41,
+  9:13–22) are rendered faithfully without smoothing; the
+  translator prompt explicitly forbids softening Uriel's
+  answers.
+
 ## Pipeline components (to be built)
 
 | Component | Status | Purpose |
