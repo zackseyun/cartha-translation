@@ -27,14 +27,70 @@
             "UHB",
             "Rahlfs-LXX",
             "lxx-swete-1909",
+            "sefaria-ben-sira-kahana",
+            "neubauer-tobit-1878",
             "hebrew-sirach-schechter-1899",
             "aramaic-tobit-qumran"
           ],
-          "description": "Source edition identifier. SBLGNT = Greek NT; WLC/UHB = Masoretic Hebrew; lxx-swete-1909 = Swete's Septuagint for deuterocanonical books; hebrew-sirach-schechter-1899 = Cairo Genizah MSS A+B for Hebrew Sirach; aramaic-tobit-qumran = Qumran Aramaic Tobit fragments."
+          "description": "Source edition identifier. SBLGNT = Greek NT; WLC/UHB = Masoretic Hebrew; lxx-swete-1909 = Swete's Septuagint for deuterocanonical books; sefaria-ben-sira-kahana = Kahana / Sefaria Hebrew Sirach; neubauer-tobit-1878 = Neubauer's Hebrew Tobit; hebrew-sirach-schechter-1899 = Cairo Genizah MSS A+B for Hebrew Sirach; aramaic-tobit-qumran = Qumran Aramaic Tobit fragments."
         },
         "text": {
           "type": "string",
           "description": "The verbatim source-language text"
+        },
+        "language": {
+          "type": "string",
+          "description": "Human-readable language label for the primary source witness"
+        },
+        "note": {
+          "type": "string",
+          "description": "Optional note about how this witness should be used"
+        },
+        "numbering_note": {
+          "type": "string",
+          "description": "Optional note when the source's internal chapter/verse numbering differs from common reader editions"
+        },
+        "confidence": {
+          "type": "string",
+          "enum": ["high", "medium", "low"],
+          "description": "Confidence level for the source-text reading when preserved from the corpus layer"
+        },
+        "validation": {
+          "type": "string",
+          "description": "Corpus-layer validation status carried forward from the source preparation stage"
+        },
+        "pages": {
+          "type": "array",
+          "description": "Source scan pages associated with this verse when known",
+          "items": { "type": "integer" }
+        },
+        "parallel_sources": {
+          "type": "array",
+          "description": "Additional Zone 1 witnesses used at draft time alongside the primary source",
+          "items": {
+            "type": "object",
+            "required": ["edition", "text"],
+            "properties": {
+              "edition": {
+                "type": "string",
+                "enum": [
+                  "SBLGNT",
+                  "WLC",
+                  "UHB",
+                  "Rahlfs-LXX",
+                  "lxx-swete-1909",
+                  "sefaria-ben-sira-kahana",
+                  "neubauer-tobit-1878",
+                  "hebrew-sirach-schechter-1899",
+                  "aramaic-tobit-qumran"
+                ]
+              },
+              "text": { "type": "string" },
+              "kind": { "type": "string" },
+              "note": { "type": "string" },
+              "reference": { "type": "string" }
+            }
+          }
         },
         "apparatus": {
           "type": "array",
@@ -156,6 +212,25 @@
         "raw_output_ref": {
           "type": "string",
           "description": "Git LFS or storage reference to the raw model output (optional)"
+        },
+        "zone1_sources_at_draft": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "zone2_consults_known": {
+          "type": "array",
+          "items": { "type": "string" }
+        },
+        "revision_candidates": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "required": ["reason", "trigger"],
+            "properties": {
+              "reason": { "type": "string" },
+              "trigger": { "type": "string" }
+            }
+          }
         }
       }
     },

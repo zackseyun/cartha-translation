@@ -59,6 +59,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import sblgnt  # noqa: E402
 import wlc  # noqa: E402
 import lxx_swete  # noqa: E402
+import build_translation_prompt  # noqa: E402
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -109,6 +110,9 @@ _REF_RE = re.compile(r"^\s*([123]?\s*[A-Za-z]+)\s+(\d+)\s*:\s*(\d+)\s*$")
 
 ALL_BOOK_NAME_TO_CODE: dict[str, str] = dict(sblgnt.BOOK_NAME_TO_CODE)
 for code, (_osis, slug, title, _filename) in wlc.OT_BOOKS.items():
+    ALL_BOOK_NAME_TO_CODE[title.lower()] = code
+    ALL_BOOK_NAME_TO_CODE[slug.replace("_", " ")] = code
+for code, (_vol, _first, _last, title, slug) in lxx_swete.DEUTEROCANONICAL_BOOKS.items():
     ALL_BOOK_NAME_TO_CODE[title.lower()] = code
     ALL_BOOK_NAME_TO_CODE[slug.replace("_", " ")] = code
 
@@ -351,7 +355,7 @@ def source_edition_for_book(book_code: str) -> str:
     if book_code in wlc.OT_BOOKS:
         return "WLC"
     if book_code in lxx_swete.DEUTEROCANONICAL_BOOKS:
-        return "Swete LXX 1909"
+        return "lxx-swete-1909"
     raise ValueError(f"Unknown book code: {book_code}")
 
 
@@ -664,14 +668,17 @@ def build_verse_record(
     prompt_sha256: str,
     temperature: float | None,
     output_hash: str,
+    source_override: dict[str, Any] | None = None,
+    ai_draft_extra: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
+    source_payload = source_override or {
+        "edition": source_edition_for_book(verse.book_code),
+        "text": source_text_for_verse(verse),
+    }
     record: dict[str, Any] = {
         "id": verse.canonical_id,
         "reference": verse.reference,
-        "source": {
-            "edition": source_edition_for_book(verse.book_code),
-            "text": source_text_for_verse(verse),
-        },
+        "source": source_payload,
         "translation": {
             "text": str(tool_input["english_text"]).strip(),
             "philosophy": tool_input["translation_philosophy"],
@@ -699,7 +706,10 @@ def build_verse_record(
     if temperature is not None:
         record["ai_draft"]["temperature"] = temperature
 
-    return record
+    if ai_draft_extra:
+        record["ai_draft"].update(ai_draft_extra)
+
+    return prune_nulls(record)
 
 
 def validate_record(record: dict[str, Any]) -> None:
@@ -1179,9 +1189,21 @@ def draft_verse(
     model: str = DEFAULT_MODEL_ID,
     temperature: float = DEFAULT_TEMPERATURE,
     prompt_id: str = DEFAULT_PROMPT_ID,
+    allow_source_integrity_issues: bool = False,
     write: bool = True,
 ) -> DraftResult:
-    user_prompt = build_user_prompt(verse)
+    prompt_bundle: build_translation_prompt.PromptBundle | None = None
+    effective_prompt_id = prompt_id
+    if verse.book_code in lxx_swete.DEUTEROCANONICAL_BOOKS:
+        prompt_bundle = build_translation_prompt.build_deuterocanon_prompt(
+            verse,
+            allow_integrity_issues=allow_source_integrity_issues,
+        )
+        user_prompt = prompt_bundle.prompt
+        if prompt_id == DEFAULT_PROMPT_ID:
+            effective_prompt_id = "deuterocanon_draft_v1"
+    else:
+        user_prompt = build_user_prompt(verse)
     prompt_sha = sha256_hex(SYSTEM_PROMPT + "\n\n---\n\n" + user_prompt)
 
     tool_input, model_version, _raw_arguments, recorded_temperature = call_model(
@@ -1199,10 +1221,20 @@ def draft_verse(
         tool_input,
         model_id=model,
         model_version=model_version,
-        prompt_id=prompt_id,
+        prompt_id=effective_prompt_id,
         prompt_sha256=prompt_sha,
         temperature=recorded_temperature,
         output_hash=output_hash,
+        source_override=(prompt_bundle.source_payload if prompt_bundle else None),
+        ai_draft_extra=(
+            {
+                "zone1_sources_at_draft": prompt_bundle.zone1_sources_at_draft,
+                "zone2_consults_known": prompt_bundle.zone2_consults_known,
+                "revision_candidates": prompt_bundle.revision_candidates,
+            }
+            if prompt_bundle
+            else None
+        ),
     )
     validate_record(record)
 
@@ -1227,6 +1259,7 @@ def retry_draft_verse(
     model: str = DEFAULT_MODEL_ID,
     temperature: float = DEFAULT_TEMPERATURE,
     prompt_id: str = DEFAULT_PROMPT_ID,
+    allow_source_integrity_issues: bool = False,
     max_attempts: int = 3,
     initial_backoff_seconds: float = 2.0,
 ) -> DraftResult:
@@ -1241,7 +1274,10 @@ def retry_draft_verse(
                 model=model,
                 temperature=temperature,
                 prompt_id=prompt_id,
+                allow_source_integrity_issues=allow_source_integrity_issues,
             )
+        except ValueError:
+            raise
         except Exception as exc:
             last_error = exc
             if attempt == max_attempts:
@@ -1284,7 +1320,7 @@ def main() -> int:
     parser.add_argument(
         "--backend",
         default=DEFAULT_BACKEND,
-        choices=[BACKEND_CODEX, BACKEND_OPENAI, BACKEND_OPENROUTER],
+        choices=[BACKEND_CODEX, BACKEND_OPENAI, BACKEND_OPENROUTER, BACKEND_AZURE],
         help=f"Drafting backend (default: {DEFAULT_BACKEND})",
     )
     parser.add_argument(
@@ -1299,6 +1335,11 @@ def main() -> int:
         help=f"Sampling temperature (default: {DEFAULT_TEMPERATURE})",
     )
     parser.add_argument("--prompt-id", default=DEFAULT_PROMPT_ID)
+    parser.add_argument(
+        "--allow-source-integrity-issues",
+        action="store_true",
+        help="Allow drafting deuterocanonical verses that have known source-integrity warnings.",
+    )
     parser.add_argument(
         "--dry-run",
         action="store_true",
@@ -1320,10 +1361,15 @@ def main() -> int:
         parser.error("Provide either --ref 'Book C:V' or --book/--chapter/--verse.")
         return 2
 
-    if book_code not in sblgnt.NT_BOOKS and book_code not in wlc.OT_BOOKS:
+    if (
+        book_code not in sblgnt.NT_BOOKS
+        and book_code not in wlc.OT_BOOKS
+        and book_code not in lxx_swete.DEUTEROCANONICAL_BOOKS
+    ):
         parser.error(
             f"Unknown book code: {book_code}. Known NT: {sorted(sblgnt.NT_BOOKS)}; "
-            f"Known OT: {sorted(wlc.OT_BOOKS)}"
+            f"Known OT: {sorted(wlc.OT_BOOKS)}; "
+            f"Known deuterocanon: {sorted(lxx_swete.DEUTEROCANONICAL_BOOKS)}"
         )
         return 2
 
@@ -1333,7 +1379,18 @@ def main() -> int:
         print(f"ERROR: failed to load verse: {exc}", file=sys.stderr)
         return 3
 
-    user_prompt = build_user_prompt(verse)
+    try:
+        if book_code in lxx_swete.DEUTEROCANONICAL_BOOKS:
+            prompt_bundle = build_translation_prompt.build_deuterocanon_prompt(
+                verse,
+                allow_integrity_issues=args.allow_source_integrity_issues,
+            )
+            user_prompt = prompt_bundle.prompt
+        else:
+            user_prompt = build_user_prompt(verse)
+    except ValueError as exc:
+        print(f"ERROR: validation failed: {exc}", file=sys.stderr)
+        return 5
     prompt_sha = sha256_hex(SYSTEM_PROMPT + "\n\n---\n\n" + user_prompt)
 
     if args.dry_run:
@@ -1354,6 +1411,13 @@ def main() -> int:
     if args.backend == BACKEND_OPENROUTER and not os.environ.get("OPENROUTER_API_KEY"):
         print("ERROR: OPENROUTER_API_KEY not set for openrouter-sdk backend.", file=sys.stderr)
         return 2
+    if args.backend == BACKEND_AZURE:
+        if not os.environ.get("AZURE_OPENAI_ENDPOINT"):
+            print("ERROR: AZURE_OPENAI_ENDPOINT not set for azure-openai backend.", file=sys.stderr)
+            return 2
+        if not os.environ.get("AZURE_OPENAI_API_KEY"):
+            print("ERROR: AZURE_OPENAI_API_KEY not set for azure-openai backend.", file=sys.stderr)
+            return 2
     if args.backend == BACKEND_CODEX and not codex_login_available():
         print("ERROR: codex-cli backend requested but Codex is not logged in.", file=sys.stderr)
         return 2
@@ -1365,6 +1429,7 @@ def main() -> int:
             model=args.model,
             temperature=args.temperature,
             prompt_id=args.prompt_id,
+            allow_source_integrity_issues=args.allow_source_integrity_issues,
         )
     except ValueError as exc:
         print(f"ERROR: validation failed: {exc}", file=sys.stderr)

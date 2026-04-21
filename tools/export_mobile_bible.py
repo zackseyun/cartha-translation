@@ -43,6 +43,7 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import draft  # noqa: E402
 import sblgnt  # noqa: E402
 import wlc  # noqa: E402
+import lxx_swete  # noqa: E402
 
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
@@ -65,67 +66,37 @@ CANONICAL_BOOK_ORDER: list[str] = [
     "JUD", "REV",
 ]
 
-# Deuterocanonical / Apocrypha export. Walks `translation/apocrypha/<slug>/`
-# directly instead of going through `draft.iter_source_verses(...)` because
-# these books have no SBLGNT or WLC entry — their source is the LXX (and
-# in a few cases Latin / Syriac witnesses). The canonical export still
-# needs the source files for completeness checks; Apocrypha instead uses
-# whatever verse YAMLs are published and requires a contiguous 1..N
-# sequence per chapter.
-#
-# Book codes, titles, and directory slugs are kept in sync with the
-# cartha.website and cartha.ai.mobile canonical book lists. If you add
-# a new Apocryphal book here, also extend:
-#   - cartha.ai.mobile/lib/screens/bible/bible_catalog.dart (canonicalBibleBooks)
-#   - cartha.website/src/app/(main)/cartha-open-bible/bibleData.js (CANONICAL_BOOKS + APOCRYPHA_NORMALIZED)
-# so the frontends partition and render the new book correctly.
-APOCRYPHA_ROOT = TRANSLATION_ROOT / "apocrypha"
+# Deuterocanonical export. Walks `translation/deuterocanon/<slug>/`
+# directly so the draft output path and mobile export stay on the same
+# internal contract.
+APOCRYPHA_ROOT = TRANSLATION_ROOT / "deuterocanon"
 
 APOCRYPHA_BOOK_ORDER: list[str] = [
-    "TOB", "JDT", "ESG", "WIS", "SIR", "BAR", "LJE", "PAZ", "SUS", "BEL",
-    "1MA", "2MA", "3MA", "4MA", "1ES", "2ES", "MAN", "PS2",
+    "TOB", "JDT", "ADE", "WIS", "SIR", "BAR", "LJE", "ADA",
+    "1MA", "2MA", "3MA", "4MA", "1ES", "MAN", "PS151",
 ]
 
 APOCRYPHA_BOOK_TITLES: dict[str, str] = {
     "TOB": "Tobit",
     "JDT": "Judith",
-    "ESG": "Additions to Esther",
+    "ADE": "Greek Esther",
     "WIS": "Wisdom of Solomon",
     "SIR": "Sirach",
     "BAR": "Baruch",
     "LJE": "Letter of Jeremiah",
-    "PAZ": "Prayer of Azariah",
-    "SUS": "Susanna",
-    "BEL": "Bel and the Dragon",
+    "ADA": "Greek Additions to Daniel",
     "1MA": "1 Maccabees",
     "2MA": "2 Maccabees",
     "3MA": "3 Maccabees",
     "4MA": "4 Maccabees",
     "1ES": "1 Esdras",
-    "2ES": "2 Esdras",
     "MAN": "Prayer of Manasseh",
-    "PS2": "Psalm 151",
+    "PS151": "Psalm 151",
 }
 
 APOCRYPHA_BOOK_SLUGS: dict[str, str] = {
-    "TOB": "tobit",
-    "JDT": "judith",
-    "ESG": "additions_to_esther",
-    "WIS": "wisdom_of_solomon",
-    "SIR": "sirach",
-    "BAR": "baruch",
-    "LJE": "letter_of_jeremiah",
-    "PAZ": "prayer_of_azariah",
-    "SUS": "susanna",
-    "BEL": "bel_and_the_dragon",
-    "1MA": "1_maccabees",
-    "2MA": "2_maccabees",
-    "3MA": "3_maccabees",
-    "4MA": "4_maccabees",
-    "1ES": "1_esdras",
-    "2ES": "2_esdras",
-    "MAN": "prayer_of_manasseh",
-    "PS2": "psalm_151",
+    code: meta[4]
+    for code, meta in lxx_swete.DEUTEROCANONICAL_BOOKS.items()
 }
 
 
@@ -207,7 +178,7 @@ def export_book(book_code: str) -> dict[str, Any] | None:
 
 
 def export_apocrypha_book(book_code: str) -> dict[str, Any] | None:
-    """Walk `translation/apocrypha/<slug>/<NNN>/<VVV>.yaml` directly.
+    """Walk `translation/deuterocanon/<slug>/<NNN>/<VVV>.yaml` directly.
     Apocrypha books have no SBLGNT/WLC source to validate completeness
     against, so `expected_chapter_map` can't be used. Instead we include
     each chapter whose published verse YAMLs form a contiguous 1..N
