@@ -165,6 +165,16 @@ from the **public-domain digital Latin 4 Esdras text** at
 used for supplementation. OCR-derived / fragment-derived text was
 retained wherever already present.
 
+To move back toward fuller **scan-grounded provenance**, see:
+
+- `latin/transcribed/SCAN_GROUNDING_QUEUE.md`
+- `latin/transcribed/SCAN_GROUNDING_QUEUE.json`
+
+That queue now tracks which verses still depend on the PD supplement
+rather than having been manually re-segmented from the Bensly page
+text. Chapters 1 and 2 have already received the first manual
+scan-grounded rescue pass.
+
 Note: in the 1875 run, pages **75–76** are notes/apparatus-only in our
 OCR output and therefore yield no `[BODY]` extraction, which is the
 expected result rather than a failed parse.
