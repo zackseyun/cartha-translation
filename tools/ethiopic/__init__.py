@@ -9,7 +9,7 @@ reading Ge'ez printed text. Moving this code into one place means:
   3. Both books benefit from any upgrade (e.g. a better OCR model
      when one becomes available, a specialist rescue pipeline, etc.).
 
-OCR BACKEND: **Gemini 2.5 Pro** in plaintext mode with low thinking
+OCR BACKEND: **Gemini 3.1 Pro** in plaintext mode with low thinking
 budget (~512 tokens). Validated 2026-04-21 on Enoch ch 1 against the
 Beta maṣāḥǝft ground-truth digital text.
 

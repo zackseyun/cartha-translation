@@ -25,7 +25,7 @@ OUTPUT_ROOT = REPO_ROOT / 'sources' / 'enoch' / 'ethiopic' / 'transcribed' / 'li
 
 def _gemini_line(image_bytes: bytes, *, page: int, line_id: str) -> dict[str, Any]:
     api_key = ocr_geez.resolve_gemini_api_key()
-    url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-pro:generateContent?key={api_key}'
+    url = f'https://generativelanguage.googleapis.com/v1beta/models/gemini-3.1-pro-preview:generateContent?key={api_key}'
     prompt = (
         f'This is one Ethiopic main-text line from Charles 1906 1 Enoch page {page}, line region {line_id}. '
         'Transcribe ONLY the visible Ethiopic text on this line. '

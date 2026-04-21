@@ -1,4 +1,4 @@
-"""ocr_geez.py — Gemini 2.5 Pro Geʿez OCR, plaintext mode.
+"""ocr_geez.py — Gemini 3.1 Pro Geʿez OCR, plaintext mode.
 
 Validated 2026-04-21 on Enoch ch 1 (Dillmann 1851 page 7).
 
@@ -114,7 +114,7 @@ def call_gemini_pro_geez(
     thinking_budget: int = 512,
     max_output_tokens: int = 20000,
 ) -> OcrResult:
-    """OCR a single scan page via Gemini 2.5 Pro, plaintext mode.
+    """OCR a single scan page via Gemini 3.1 Pro, plaintext mode.
 
     - book_hint: e.g. "Dillmann 1851 Liber Henoch" or "Charles 1895 Jubilees"
     - chapter_hint: e.g. "chapter 1 (ምዕራፍ ፩)"
@@ -142,7 +142,7 @@ def call_gemini_pro_geez(
     prompt = " ".join(prompt_parts)
 
     url = ("https://generativelanguage.googleapis.com/v1beta/models/"
-           "gemini-2.5-pro:generateContent?key=" + api_key)
+           "gemini-3.1-pro-preview:generateContent?key=" + api_key)
     body = {
         "contents": [{"parts": [
             {"text": prompt},
@@ -352,7 +352,7 @@ def write_output_files(
 
 def build_arg_parser() -> ArgumentParser:
     parser = ArgumentParser(
-        description="OCR Geʿez pages from a PDF via Gemini 2.5 Pro plaintext mode."
+        description="OCR Geʿez pages from a PDF via Gemini 3.1 Pro plaintext mode."
     )
     parser.add_argument("pdf_path", help="Path to the source PDF")
     parser.add_argument(
@@ -437,7 +437,7 @@ if __name__ == "__main__":
 
     print(f"📖 PDF:   {pdf}")
     print(f"📄 Pages: {', '.join(str(p) for p in pages)}")
-    print(f"🧠 Model: Gemini 2.5 Pro plaintext mode (thinkingBudget={args.thinking_budget})")
+    print(f"🧠 Model: Gemini 3.1 Pro plaintext mode (thinkingBudget={args.thinking_budget})")
     if out_dir:
         print(f"💾 Out:   {out_dir}")
     if args.dry_run:

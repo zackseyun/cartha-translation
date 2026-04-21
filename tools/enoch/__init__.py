@@ -4,7 +4,7 @@ Architecturally separate from tools/ (LXX), tools/2esdras/ (Latin).
 The Enoch pipeline is distinct because:
 
   - Primary source is Ethiopic (Ge'ez), not Greek or Latin
-  - OCR backend is Gemini 2.5 Pro in plaintext mode (Azure GPT-5 and
+  - OCR backend is Gemini 3.1 Pro in plaintext mode (Azure GPT-5 and
     Gemini 2.5 Flash fail on Ge'ez script)
   - Zone 1 validation oracle is the Beta maṣāḥǝft digital TEI XML
     (kept local, not vendored) rather than an in-repo reference
