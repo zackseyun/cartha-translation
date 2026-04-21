@@ -220,7 +220,7 @@ corpus even though the Greek remains primary.
 | Judith | Hebrew (lost) | Swete LXX vol. II (PD, our OCR) | Moore 1985; Göttingen | ✓ Swete transcribed |
 | Baruch + Letter of Jeremiah | Hebrew (lost) | Swete LXX vol. III (PD, our OCR) | Moore 1977; Göttingen | ✓ Swete transcribed |
 | **1 Esdras** | Greek (Semitic Vorlage lost) | Swete LXX vol. II (PD, our OCR) + **WLC MT parallel alignment** (Zone 1 lookup for 2 Chr / Ezra / Neh) | Myers 1974; Talshir 2001; Hanhart 1974 | ✓ Swete transcribed; MT alignment vendored |
-| Prayer of Manasseh | Greek | Swete LXX vol. III (PD, our OCR) | Göttingen | ✓ Swete transcribed |
+| Prayer of Manasseh | Greek | **Charles 1913 APOT Vol 1 (PD, our OCR)** — NOT Swete (Vaticanus lacks this text). See [`PRAYER_OF_MANASSEH.md`](PRAYER_OF_MANASSEH.md) | Göttingen | ✓ source acquired (Charles 1913), Greek corpus built (15 verses), drafted |
 | Psalm 151 | Hebrew (partial at 11QPsa) | Swete LXX (PD) | 11QPsa (access blocked by IAA) | ⚠ Hebrew fragment blocked; Greek primary |
 | 3 Maccabees | Greek | Swete LXX vol. III (PD, our OCR) | Emmet 1913 (PD) | ✓ Swete transcribed |
 | 4 Maccabees | Greek | Swete LXX vol. III (PD, our OCR) | Hadas 1953; deSilva 2006 | ✓ Swete transcribed |
@@ -306,7 +306,7 @@ is lost or damaged), and its overall readiness to enter Phase C
 | 1 Maccabees | Hebrew (lost entirely) | Swete LXX | — (is primary) | ✓ Swete transcribed; ready for Phase C |
 | 2 Maccabees | Greek (original) | Swete LXX | — | ✓ Swete transcribed; ready for Phase C |
 | 1 Esdras | Greek (Semitic Vorlage lost) | Swete LXX + **WLC MT parallel alignment** (Zone 1 lookup for 2 Chr / Ezra / Neh) | — (is primary) | ✓ Swete transcribed; ✓ MT alignment vendored; ready for Phase C |
-| Prayer of Manasseh | Greek | Swete LXX | — | ✓ Swete transcribed; ready for Phase C |
+| Prayer of Manasseh | Greek | **Charles 1913 APOT Vol 1** (PD) — not in Swete/Vaticanus. See [`PRAYER_OF_MANASSEH.md`](PRAYER_OF_MANASSEH.md) | — (is primary) | ✓ source acquired, Greek corpus built (15 verses), drafted |
 | Psalm 151 | Hebrew (partial at 11QPsa, blocked) | Swete LXX | — | ✓ Swete transcribed; Hebrew fragment blocked; Greek-primary ready for Phase C |
 | 3 Maccabees | Greek | Swete LXX | — | ✓ Swete transcribed; ready for Phase C |
 | 4 Maccabees | Greek | Swete LXX | — | ✓ Swete transcribed; ready for Phase C |

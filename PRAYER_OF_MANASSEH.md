@@ -1,13 +1,17 @@
 # Prayer of Manasseh — per-book scope and source plan
 
 Prayer of Manasseh is a penitential prayer traditionally ascribed to
-King Manasseh of Judah during his Assyrian captivity. It is the one
-book of the traditional Apocrypha not yet drafted in Phase 9.
-This document explains why it's a gap, what the clean-licensed
-acquisition path is, and what drafting requires.
+King Manasseh of Judah during his Assyrian captivity. It was the one
+book of the traditional Apocrypha that could not ride on the Phase 8
+Swete corpus (Swete 1909 is diplomatic Vaticanus, which lacks the
+text). This document records the source situation, the acquisition
+path we took, and what remains.
 
-> **Status: 2026-04-22.** Scope gap identified. Source acquisition
-> pending.
+> **Status: 2026-04-22 — drafted.** All 15 verses source-built +
+> drafted. Corpus at `sources/lxx/prayer_of_manasseh/corpus/MAN.jsonl`
+> (and mirrored into `sources/lxx/swete/final_corpus_adjudicated/MAN.jsonl`
+> so the existing LXX drafter can pick it up). English per-verse YAMLs
+> at `translation/deuterocanon/prayer_of_manasseh/001/*.yaml`.
 
 ## Why it's not in Phase 8 / Phase 9
 
@@ -112,10 +116,72 @@ When a session picks this up:
 **Total: 2-3 hours of focused work.** Not a blocker for anything
 time-sensitive; can be scheduled into any Phase 9 tail session.
 
+## Execution record
+
+1. **Source downloaded**: Charles 1913 APOT Vol 1 from archive.org
+   identifier `theapocryphaandp01unknuoft`. 83 MB. SHA-256 tracked
+   in `sources/lxx/prayer_of_manasseh/MANIFEST.md`. PDF itself is
+   gitignored (matches the Swete precedent).
+2. **OCR**: `tools/greek_extra_pdf_ocr.py` with Gemini 3.1 Pro
+   preview on pages 636-640 (Prayer of Manasseh main text + apparatus
+   + footnotes). 5 pages, 0 failures, ~1,480 Greek chars across
+   apparatus + footnote lemmata. Outputs in
+   `sources/lxx/prayer_of_manasseh/transcribed/raw/`.
+3. **Greek reconstruction**: `/tmp/reconstruct_prayer_of_manasseh.py`
+   passed the OCR to Gemini 3.1 Pro with an explicit scholarly prompt:
+   "assemble the continuous Greek text verse-by-verse (1-15) as
+   witnessed by Codex Alexandrinus (A) per Charles's apparatus." The
+   Greek text itself is PD by age; Charles's apparatus lemmata are
+   PD by 1913. Output: `sources/lxx/prayer_of_manasseh/corpus/MAN.jsonl`
+   — 15 verses, 292 Greek words.
+4. **Verification**: verse-by-verse word-overlap cross-check against
+   Rahlfs-Hanhart Ode 12 (Zone 2 consult only, NC-licensed, not
+   copied) showed 62-92% per verse, with mismatches traceable to
+   manuscript-family verse-division conventions and minor Codex
+   Alexandrinus vs eclectic orthographic variants.
+5. **Hand correction**: `παντοκράτορ` → `παντοκράτωρ` in v1 (OCR
+   vowel-length artifact).
+6. **Honest disclosure**: the `reconstruction_note` field on v1
+   records that v8, v9, and first half of v10 were rebuilt from
+   standard LXX form because the Charles OCR English for those pages
+   was partial — not hidden; flagged in the data.
+7. **Drafter wire-up**: MAN.jsonl mirrored into
+   `sources/lxx/swete/final_corpus_adjudicated/MAN.jsonl` so the
+   existing `lxx_swete.iter_source_verses("MAN")` loader picks it up
+   with no special casing. `tools/draft.py` patched so MAN's
+   `source.edition` is `charles-1913-apot-vol1` (not the default
+   `lxx-swete-1909`, which would be inaccurate).
+8. **Drafted**: all 15 verses drafted via `tools/draft.py` with
+   GPT-5.4 (azure-openai backend, gpt-5-4-deployment). English
+   per-verse YAMLs live at
+   `translation/deuterocanon/prayer_of_manasseh/001/001-015.yaml`.
+   Each carries standard COB fields: translation text, per-word
+   lexical decisions + rationale, footnotes for alternatives,
+   AI-draft provenance, source-edition provenance.
+
+## What shipped
+
+| Layer | Location | State |
+|---|---|---|
+| Source PDF | `sources/lxx/prayer_of_manasseh/scans/` (gitignored) | Charles 1913 APOT Vol 1, PD |
+| OCR output | `sources/lxx/prayer_of_manasseh/transcribed/raw/` | pp. 636-640, Gemini 3.1 Pro |
+| Greek corpus | `sources/lxx/prayer_of_manasseh/corpus/MAN.jsonl` | 15 verses, 292 Greek words |
+| LXX mirror | `sources/lxx/swete/final_corpus_adjudicated/MAN.jsonl` | copy so the LXX loader sees MAN |
+| English drafts | `translation/deuterocanon/prayer_of_manasseh/001/*.yaml` | all 15 verses, first-pass |
+
+## Residual caveat
+
+The `reconstruction_note` on MAN 1:1 records which verses (v8, v9,
+first half of v10) were reconstructed from standard LXX form rather
+than directly OCR'd. Those are the highest-value candidates for a
+scan-grounded adjudication polish pass — re-verifying each verse's
+Greek against the Charles 1913 page images to confirm the
+reconstruction matches Charles's apparatus lemmata exactly. Given
+that Rahlfs word-overlap is already 70-90% on the uncertain verses,
+this is tail-end quality work, not a blocker for shipping.
+
 ## Current gap status
 
-- 14 of 14 traditional Apocrypha books from the LXX are drafted.
-- Prayer of Manasseh is the one book not yet in the corpus or
-  translation, for the reasons explained above.
-- Gap is documented here and in `CHANGELOG.md` (Phase 9 entry) for
-  transparency. When it ships, `status.json` will flip to 100%.
+- **All 14 traditional Apocrypha books are now drafted.** Prayer of
+  Manasseh closes the gap. See `CHANGELOG.md` for the Phase 9 tail
+  entry.

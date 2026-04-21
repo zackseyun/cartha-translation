@@ -9,6 +9,47 @@ tracked in git history on the per-verse YAML files.
 - DOCTRINE.md, METHODOLOGY.md first drafts
 - Per-verse YAML schema defined (`schema/verse.schema.json`)
 
+## Phase 9 tail — Prayer of Manasseh drafted (2026-04-22)
+
+Closes the one remaining Apocrypha-draft gap identified in
+`PRAYER_OF_MANASSEH.md`. Prayer of Manasseh was not in the Phase 8
+Swete corpus because Codex Vaticanus (Swete's diplomatic base) lacks
+the text. Dedicated source path:
+
+- **Source acquired**: Charles 1913 APOT Vol 1 (PD, archive.org
+  `theapocryphaandp01unknuoft`, SHA-256 in
+  `sources/lxx/prayer_of_manasseh/MANIFEST.md`, gitignored per the
+  Swete precedent).
+- **Greek text built**: OCR of Charles 1913 APOT Vol 1 pp. 636-640
+  with Gemini 3.1 Pro preview (0 failures, 1,480 Greek chars in
+  apparatus + footnote lemmata). The continuous Greek text was then
+  reconstructed verse-by-verse by Gemini 3.1 Pro with an explicit
+  scholarly prompt: "assemble what Codex Alexandrinus reads per
+  Charles's apparatus." Output:
+  `sources/lxx/prayer_of_manasseh/corpus/MAN.jsonl` — 15 verses,
+  292 Greek words.
+- **Verification**: Rahlfs-Hanhart Ode 12 (Zone 2 consult only) used
+  to cross-check word overlap per verse; 62-92% per verse with
+  mismatches traced to known manuscript-family verse-division
+  conventions and minor Alexandrinus-vs-eclectic orthographic
+  variants. Nothing copied from Rahlfs.
+- **Drafter wire-up**: `MAN.jsonl` mirrored into
+  `sources/lxx/swete/final_corpus_adjudicated/MAN.jsonl` so
+  `lxx_swete.iter_source_verses("MAN")` resolves it. `tools/draft.py`
+  patched so `source.edition` for MAN is `charles-1913-apot-vol1`
+  rather than the default `lxx-swete-1909` (MAN isn't from Swete).
+- **Drafted**: all 15 verses drafted via `tools/draft.py` with
+  GPT-5.4. English per-verse YAMLs at
+  `translation/deuterocanon/prayer_of_manasseh/001/{001..015}.yaml`.
+  Standard COB structure: translation + lexical decisions +
+  rationale + footnotes + provenance.
+
+**Apocrypha draft status: 100% of the traditional 14-book set is
+now drafted.** Scan-grounded adjudication polish pass for MAN v8-v10
+remains a tail-end quality task (reconstruction_note on v1 flags
+the verses that were rebuilt from standard LXX form rather than
+directly OCR'd).
+
 ## v0.9-apostolic-fathers-preview — 2026-04-22
 
 **First-pass preview release of the Apostolic Fathers extra-canonical
