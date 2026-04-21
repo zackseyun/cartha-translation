@@ -358,6 +358,12 @@ text survives only via Latin + 6 daughter translations.
     **0 missing-opening gaps, 0 internal gaps, 0 empty verses,
     0 crop markers, 0 ellipsis markers, 0 digit-bleed artifacts,
     0 hyphen-break artifacts**
+  - `tools/2esdras/report_scan_grounding_queue.py` now generates
+    `sources/2esdras/latin/transcribed/SCAN_GROUNDING_QUEUE.md` and
+    `.json`
+  - first manual Bensly-grounded rescue pass completed for:
+    - chapter 1 verses 1–11, 23, 25–26
+    - chapter 2 verses 1–17, 44–45
 - **Translation drafting deferred** until Phase 9 (LXX deuterocanon)
   completes. 2 Esdras work is setup/preparation only until then.
 
