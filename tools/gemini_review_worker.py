@@ -87,12 +87,16 @@ def _load_service_account_credentials() -> tuple[object, str] | None:
     return creds, project_id
 
 
-def _vertex_access_token() -> tuple[str, str]:
-    """Get (access_token, project_id) for Vertex AI. Cached in-process."""
+def _vertex_access_token(force_refresh: bool = False) -> tuple[str, str]:
+    """Get (access_token, project_id) for Vertex AI. Cached in-process.
+    Treat tokens as expired 5 minutes before actual expiry to avoid the
+    boundary where a long Gemini call outlives its token.
+    """
     now = time.time()
     if (
-        _vertex_cached_token["token"]
-        and _vertex_cached_token["expiry"] > now + 30
+        not force_refresh
+        and _vertex_cached_token["token"]
+        and _vertex_cached_token["expiry"] > now + 300  # 5-min safety margin
     ):
         return _vertex_cached_token["token"], _vertex_cached_token["project"]
     loaded = _load_service_account_credentials()
@@ -112,9 +116,9 @@ def _vertex_access_token() -> tuple[str, str]:
     return token, project_id
 
 
-def _vertex_endpoint(model: str) -> tuple[str, dict[str, str]]:
+def _vertex_endpoint(model: str, force_refresh: bool = False) -> tuple[str, dict[str, str]]:
     """Return (URL, headers) for a Vertex AI generateContent call."""
-    token, project_id = _vertex_access_token()
+    token, project_id = _vertex_access_token(force_refresh=force_refresh)
     url = (
         f"https://{VERTEX_LOCATION}-aiplatform.googleapis.com/v1/"
         f"projects/{project_id}/locations/{VERTEX_LOCATION}/"
@@ -344,11 +348,13 @@ def call_gemini_review(
     # exponential backoff with jitter. Parse Retry-After header if present.
     backoff_schedule = [15, 45, 90, 180, 300, 600]  # seconds; up to 10 min
     last_err: Exception | None = None
+    force_token_refresh = False
     for attempt in range(retries):
         # Refresh URL+headers each attempt so we pick up rotated Vertex
         # OAuth tokens if the previous one expired.
         if os.environ.get("GOOGLE_APPLICATION_CREDENTIALS"):
-            url, headers = _vertex_endpoint(model)
+            url, headers = _vertex_endpoint(model, force_refresh=force_token_refresh)
+            force_token_refresh = False  # reset; only force on 401
         req = urllib.request.Request(
             url,
             data=json.dumps(payload).encode("utf-8"),
@@ -362,19 +368,23 @@ def call_gemini_review(
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")
             last_err = RuntimeError(f"Gemini HTTP {exc.code}: {detail[:400]}")
+            # 401 = expired OAuth token. Force a refresh and retry immediately.
+            if exc.code == 401 and attempt < retries - 1:
+                force_token_refresh = True
+                time.sleep(1 + random.uniform(0, 2))
+                continue
             if exc.code in (429, 500, 502, 503, 504) and attempt < retries - 1:
-                # Honor Retry-After header if present
                 retry_after = exc.headers.get("Retry-After") if exc.headers else None
                 if retry_after and retry_after.isdigit():
                     wait = min(int(retry_after), 600)
                 else:
                     wait = backoff_schedule[min(attempt, len(backoff_schedule) - 1)]
-                wait += random.uniform(0, 5)  # jitter
+                wait += random.uniform(0, 5)
                 time.sleep(wait)
                 continue
             raise last_err
-        except urllib.error.URLError as exc:
-            last_err = RuntimeError(f"Gemini request failed: {exc}")
+        except (urllib.error.URLError, ConnectionResetError, TimeoutError) as exc:
+            last_err = RuntimeError(f"Gemini request failed: {type(exc).__name__}: {exc}")
             if attempt < retries - 1:
                 wait = backoff_schedule[min(attempt, len(backoff_schedule) - 1)]
                 time.sleep(wait + random.uniform(0, 3))
