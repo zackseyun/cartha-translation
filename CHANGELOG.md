@@ -100,6 +100,11 @@ Psalms of Solomon as the already-exercised Swete-side pilot.
   - normalized outputs now exist at
     `sources/didache/transcribed/ch01.txt` … `ch16.txt` plus
     `chapter_map.json`
+- **Didache prompt-builder added**:
+  - `tools/build_didache_prompt.py`
+  - builds a chapter-level translation prompt from the normalized
+    source layer, doctrine excerpt, philosophy excerpt, and source
+    provenance
 - **Shepherd of Hermas + Testaments source trees** added:
   - `sources/shepherd_of_hermas/README.md` + `MANIFEST.md`
   - `sources/testaments_twelve_patriarchs/README.md` + `MANIFEST.md`
@@ -251,6 +256,22 @@ text survives only via Latin + 6 daughter translations.
 - **Prompts added**:
   - `tools/prompts/transcribe_2esdras_bensly_latin.md`
   - `tools/prompts/transcribe_2esdras_violet_parallel.md`
+- **Live OCR runs completed**:
+  - Bensly 1895 main-text span (PDF pages 97–178) OCR'd into
+    `sources/2esdras/raw_ocr/bensly1895/`
+  - Bensly 1875 Missing Fragment span (PDF pages 65–83) OCR'd into
+    `sources/2esdras/raw_ocr/bensly1875/`
+  - Violet 1910 vol. 1 pilot pages OCR'd into
+    `sources/2esdras/raw_ocr/violet1910-vol1/`
+- **Intermediate Latin cleanup layers added**:
+  - `tools/2esdras/extract_bensly_body.py` now supports both
+    `bensly1895` and `bensly1875`
+  - body-only working text for the 1895 main text now lives in
+    `sources/2esdras/latin/intermediate/bensly1895_body_*`
+  - body-only working text for the 1875 Missing Fragment now lives in
+    `sources/2esdras/latin/intermediate/bensly1875_body_*`
+  - Bensly 1895 chapter-candidate segmentation now lives in
+    `sources/2esdras/latin/intermediate/bensly1895_chapter_candidates/`
 - **Translation drafting deferred** until Phase 9 (LXX deuterocanon)
   completes. 2 Esdras work is setup/preparation only until then.
 
