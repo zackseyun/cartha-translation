@@ -47,13 +47,16 @@ Phase 8 release.
 - **ADE 4:28 corrected from the scan**: direct page recheck showed that
   Swete prints the line **without** `ἐπὶ` before `τράπεζαν Ἁμάν`; the
   verse was promoted from `medium` to `high`.
-- **Residual state after rescue**: **6,335 high**, **2 medium**,
+- **1ES 9 tail block realigned at the source layer**: the residual at
+  `1ES 9:35` exposed a broader AI-parse numbering drift in the tail of
+  chapter 9. The fix was applied to `parsed_ai/1ES_009.json`, stale
+  adjudications for that mis-keyed span were discarded, and the 1ES
+  corpus was rebuilt from the corrected source.
+- **Residual state after rescue**: **6,336 high**, **1 medium**,
   **0 low** in the current final corpus.
 - **Remaining honest residuals**:
   - `BAR 1:1` — breathing/orthography-level ambiguity still too small to
     promote beyond `medium`
-  - `1ES 9:35` — exposed as part of a wider tail-block verse-numbering
-    drift in 1 Esdras 9, not just an isolated one-verse uncertainty
 - **Method now documented**: see
   `docs/PHASE8_CORPUS_QUALITY_RESCUE.md` for the repeatable rescue loop
   used to make these improvements.

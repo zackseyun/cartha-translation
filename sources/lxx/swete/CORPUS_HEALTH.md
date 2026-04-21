@@ -1,12 +1,12 @@
 # Cartha Open Bible — Phase 8 (LXX Deuterocanon) Corpus Health
 
-**Generated:** 2026-04-21 13:04 UTC
+**Generated:** 2026-04-21 13:43 UTC
 
 ## Corpus composition
 
 - **Total verses**: 6337
-- **Scan-adjudicated verses**: 2663 (42.0%)
-- **Unchanged verses** (our OCR already agreed with First1KGreek at similarity ≥ 0.85): 3674 (58.0%)
+- **Scan-adjudicated verses**: 2627 (41.5%)
+- **Unchanged verses** (our OCR already agreed with First1KGreek at similarity ≥ 0.85): 3710 (58.5%)
 
 ## Text source (every verse = our OCR of Swete scan, never First1KGreek text)
 
@@ -18,21 +18,21 @@ The Greek text in every verse was produced by reading Swete's 1909 printed scan,
 
 ## Adjudicator verdict distribution (for verses that were re-examined)
 
-- `ours` (our OCR confirmed by scan): 1293 (48.6%)
-- `first1k` (scan matched First1KGreek better than ours): 505 (19.0%)
-- `neither` (both were off; fresh scan-grounded reading): 423 (15.9%)
+- `ours` (our OCR confirmed by scan): 1280 (48.7%)
+- `first1k` (scan matched First1KGreek better than ours): 499 (19.0%)
+- `neither` (both were off; fresh scan-grounded reading): 411 (15.6%)
 - `rahlfs_match` (3-way triangulation across different edition): 156
 - `swete_consensus` (rescue pass — all 3 Swete transcriptions agree): 45
-- `amicarelli` (rescue pass — Amicarelli's Swete transcription matched scan best): 172
-- `both_ok` (minor orthographic differences): 69
+- `amicarelli` (rescue pass — Amicarelli's Swete transcription matched scan best): 169
+- `both_ok` (minor orthographic differences): 67
 
 ## Adjudicator confidence
 
-- **High** (unambiguous scan reading): 2661 (99.9%)
-- **Medium** (minor scan uncertainty): 2 (0.1%)
+- **High** (unambiguous scan reading): 2626 (100.0%)
+- **Medium** (minor scan uncertainty): 1 (0.0%)
 - **Low** (scan is damaged/illegible; best-guess reading): 0 (0.0%)
 
-The 99.9% high-confidence rate means that for nearly every adjudicated verse, Azure GPT-5.4 vision was able to read the Swete scan unambiguously with ≥1 corroborating scholarly transcription. Any remaining residual uncertainty is concentrated in a very small set of edge-case verses.
+The 100.0% high-confidence rate means that for nearly every adjudicated verse, Azure GPT-5.4 vision was able to read the Swete scan unambiguously with ≥1 corroborating scholarly transcription. Any remaining residual uncertainty is concentrated in a very small set of edge-case verses.
 
 ## Sources consulted (cross-validation, not text)
 
@@ -58,7 +58,7 @@ The 99.9% high-confidence rate means that for nearly every adjudicated verse, Az
 | WIS | C | 472 | 192 | 192 | 0 | 0 | 424 | 4 | 52 |
 | SIR | C | 1439 | 906 | 906 | 0 | 0 | 1400 | 7 | 46 |
 | ADA | D | 551 | 319 | 319 | 0 | 0 | 408 | 0 | 143 |
-| 1ES | E | 496 | 238 | 237 | 1 | 0 | 430 | 0 | 66 |
+| 1ES | E | 496 | 202 | 202 | 0 | 0 | 430 | 0 | 66 |
 | BAR | E | 207 | 101 | 100 | 1 | 0 | 141 | 0 | 66 |
 | ADE | E | 244 | 121 | 121 | 0 | 0 | 190 | 0 | 54 |
 
