@@ -39,6 +39,44 @@ rollout (Phases 10-16 after Phase 9) documented in
 README and DEUTEROCANONICAL.md updated with the new extra-canonical
 section and cross-links between scope docs.
 
+## Phase 8e — Psalms of Solomon source setup (in progress, 2026-04-21)
+
+Focused extra-canonical Greek track for **Psalms of Solomon**, using
+the existing Swete infrastructure rather than a new source pipeline.
+
+- **Swete transcription completed** for the book's full page span in
+  vol. III: `vol3_p0788`–`vol3_p0810`
+- **Boundary clarified**: page 811 is the transition away from Psalms
+  of Solomon into Enoch appendix material and is **not** part of the
+  book's source range
+- **Dedicated scope doc** added at `PSALMS_OF_SOLOMON.md`
+- **Helper scaffold** added at `tools/psalms_of_solomon.py` to expose
+  page range + transcription completeness while the book-specific
+  parser is built
+- **Page index corrected**: `sources/lxx/swete/transcribed/page_index.json`
+  now records the actual Psalms-of-Solomon span (`788-810`) instead of
+  the earlier rough probe estimate
+
+## Phase 8f — shared Greek extra-canonical pipeline setup (in progress, 2026-04-21)
+
+Group A infrastructure work for the extra-canonical texts that can
+reuse our Greek OCR / transcription stack: **Didache, 1 Clement,
+Shepherd of Hermas, Testaments of the Twelve Patriarchs**, with
+Psalms of Solomon as the already-exercised Swete-side pilot.
+
+- **Group scope doc** at `GREEK_EXTRA_CANONICAL.md`: defines the shared
+  Greek pipeline, explains why these texts belong together, and lays
+  out the practical work order across Phase 13 / 14.
+- **Shared local-PDF OCR tool** at `tools/greek_extra_pdf_ocr.py`:
+  generic Azure GPT-5 Greek OCR for public-domain local PDFs outside
+  the Swete corpus.
+- **Shared prompt** at
+  `tools/prompts/transcribe_greek_extra_generic.md` for late-19th /
+  early-20th century Greek scholarly editions.
+- **Planned source tree** documented at `sources/greek_extra/README.md`
+  for Didache, 1 Clement, Shepherd of Hermas, and Testaments of the
+  Twelve Patriarchs.
+
 ## Phase 8d — Jubilees pipeline + Ge'ez OCR correction (2026-04-21)
 
 Extends the Ethiopic track started in Phase 8c to include Jubilees
