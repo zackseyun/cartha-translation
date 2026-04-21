@@ -361,6 +361,11 @@ def get_api_key() -> str:
     # Value may be the raw string or a JSON object with a field
     if raw.startswith("{"):
         j = json.loads(raw)
+        keys = j.get("api_keys")
+        if isinstance(keys, list):
+            for key in keys:
+                if isinstance(key, str) and key.strip():
+                    return key.strip()
         for k in ("api_key", "apiKey", "key", "GEMINI_API_KEY"):
             if k in j:
                 return j[k]

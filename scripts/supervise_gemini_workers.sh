@@ -12,17 +12,20 @@
 set -euo pipefail
 
 REPO_ROOT="$(cd "$(dirname "$0")/.." && pwd)"
-TARGET="${TARGET:-20}"
+TARGET="${TARGET:-60}"
 STOP_FLAG="/tmp/cob-gemini-stop"
 LOG_DIR="/tmp/cob-gemini-review"
 KEY_PATH="${GOOGLE_APPLICATION_CREDENTIALS:-$HOME/.config/cartha/gemini-vertex-sa.json}"
+GEMINI_SECRET_ID="${GEMINI_SECRET_ID:-/cartha/openclaw/gemini_api_key}"
 CHECK_INTERVAL_SECONDS=30
-MAX_SPAWN_PER_CYCLE="${MAX_SPAWN_PER_CYCLE:-5}"
+MAX_SPAWN_PER_CYCLE="${MAX_SPAWN_PER_CYCLE:-10}"
 SPAWN_STAGGER_SECONDS="${SPAWN_STAGGER_SECONDS:-3}"
 WORKER_SLEEP_SECONDS="${WORKER_SLEEP_SECONDS:-0.75}"
 LOCATION_MODE="${LOCATION_MODE:-global}"
+PROVIDER_MODE="${PROVIDER_MODE:-aistudio}"
 
 REGIONS=(us-central1 us-east1 us-west1 us-west4 europe-west4)
+declare -a GEMINI_KEYS=()
 
 mkdir -p "$LOG_DIR"
 cd "$REPO_ROOT"
@@ -43,6 +46,62 @@ next_worker_id() {
     | sort -n | tail -1
 }
 
+load_api_keys() {
+  if (( ${#GEMINI_KEYS[@]} > 0 )); then
+    return 0
+  fi
+  local raw
+  local parsed
+  raw="$(aws secretsmanager get-secret-value \
+    --secret-id "$GEMINI_SECRET_ID" --region us-west-2 \
+    --query SecretString --output text)"
+  parsed="$(printf '%s' "$raw" | python3 -c '
+import sys, json
+raw = sys.stdin.read().strip()
+keys = []
+if not raw:
+    raise SystemExit(0)
+try:
+    obj = json.loads(raw)
+except Exception:
+    keys = [raw]
+else:
+    if isinstance(obj, dict):
+        if isinstance(obj.get("api_keys"), list):
+            keys.extend(str(x).strip() for x in obj["api_keys"] if str(x).strip())
+        for k in ("api_key", "apiKey", "key", "GEMINI_API_KEY"):
+            v = obj.get(k)
+            if isinstance(v, str) and v.strip():
+                keys.append(v.strip())
+                break
+    elif isinstance(obj, list):
+        keys.extend(str(x).strip() for x in obj if str(x).strip())
+seen = set()
+for k in keys:
+    if k and k not in seen:
+        seen.add(k)
+        print(k)
+'
+  )"
+  while IFS= read -r line; do
+    [[ -n "$line" ]] && GEMINI_KEYS+=("$line")
+  done <<< "$parsed"
+  if (( ${#GEMINI_KEYS[@]} == 0 )); then
+    echo "no Gemini API keys resolved from $GEMINI_SECRET_ID" >&2
+    return 1
+  fi
+}
+
+selected_api_key() {
+  local wid="$1"
+  local idx=$(( (wid - 1) % ${#GEMINI_KEYS[@]} ))
+  printf '%s' "${GEMINI_KEYS[$idx]}"
+}
+
+requeue_failed() {
+  python3 "$REPO_ROOT/tools/gemini_review_queue.py" requeue >/dev/null 2>&1 || true
+}
+
 spawn_worker() {
   local wid="$1"
   local location
@@ -53,20 +112,38 @@ spawn_worker() {
   else
     location="global"
   fi
-  nohup env \
-    GOOGLE_APPLICATION_CREDENTIALS="$KEY_PATH" \
-    GCP_LOCATION="$location" \
-    python3 "$REPO_ROOT/tools/gemini_review_worker.py" \
-      --worker-id "w$wid" \
-      --max-jobs 100000 \
-      --sleep "$WORKER_SLEEP_SECONDS" \
-    > "$LOG_DIR/worker-w$wid.log" 2>&1 &
-  echo "  spawned w$wid @ $location"
+  if [[ "$PROVIDER_MODE" == "aistudio" ]]; then
+    load_api_keys
+    local api_key
+    local key_slot
+    api_key="$(selected_api_key "$wid")"
+    key_slot=$(( ((wid - 1) % ${#GEMINI_KEYS[@]}) + 1 ))
+    nohup env \
+      GOOGLE_APPLICATION_CREDENTIALS="" \
+      GEMINI_API_KEY="$api_key" \
+      GCP_LOCATION="global" \
+      python3 "$REPO_ROOT/tools/gemini_review_worker.py" \
+        --worker-id "w$wid" \
+        --max-jobs 100000 \
+        --sleep "$WORKER_SLEEP_SECONDS" \
+      > "$LOG_DIR/worker-w$wid.log" 2>&1 &
+    echo "  spawned w$wid @ global (aistudio key ${key_slot}/${#GEMINI_KEYS[@]})"
+  else
+    nohup env \
+      GOOGLE_APPLICATION_CREDENTIALS="$KEY_PATH" \
+      GCP_LOCATION="$location" \
+      python3 "$REPO_ROOT/tools/gemini_review_worker.py" \
+        --worker-id "w$wid" \
+        --max-jobs 100000 \
+        --sleep "$WORKER_SLEEP_SECONDS" \
+      > "$LOG_DIR/worker-w$wid.log" 2>&1 &
+    echo "  spawned w$wid @ $location (vertex)"
+  fi
 }
 
 echo "[$(date +%H:%M:%S)] supervise_gemini_workers starting; target=$TARGET"
 echo "   stop with: touch $STOP_FLAG"
-echo "   location_mode=$LOCATION_MODE stagger=${SPAWN_STAGGER_SECONDS}s max_spawn_per_cycle=$MAX_SPAWN_PER_CYCLE"
+echo "   provider_mode=$PROVIDER_MODE location_mode=$LOCATION_MODE stagger=${SPAWN_STAGGER_SECONDS}s max_spawn_per_cycle=$MAX_SPAWN_PER_CYCLE"
 
 while true; do
   if [[ -f "$STOP_FLAG" ]]; then
@@ -74,6 +151,7 @@ while true; do
     rm -f "$STOP_FLAG"
     exit 0
   fi
+  requeue_failed
 
   alive=$(count_alive)
   if (( alive < TARGET )); then
