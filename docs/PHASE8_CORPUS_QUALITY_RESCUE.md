@@ -132,16 +132,26 @@ the scan and promoted from `low` to `high`.
 The important point was simple: Swete prints the line **without** `ἐπὶ`
 before `τράπεζαν Ἁμάν`. That made the prior medium reading unnecessary.
 
-### 1 Esdras 9:35: not just a one-verse problem
+### 1 Esdras 9 tail block: source-layer realignment
 
-Inspection of the page showed that `1ES 9:35` sits inside a broader
-late-chapter verse-number drift in the tail of 1 Esdras 9. That means it
-should not be “fixed” by pretending only one verse is in question.
+Inspection of the page showed that `1ES 9:35` was not an isolated medium
+verse at all. It sat inside a broader late-chapter verse-number drift in
+the tail of 1 Esdras 9, introduced by the AI parse for
+`parsed_ai/1ES_009.json`.
 
-If this block is revised later, it should be treated as a **tail-block
-realignment problem**, not as an isolated punctuation tweak.
+That problem was later fixed at the **source layer**:
 
-### Baruch 1:1: real remaining ambiguity
+- the affected tail block in `parsed_ai/1ES_009.json` was realigned to
+  the raw page parser for pp. 176–177,
+- the p. 178 continuation was manually re-transcribed from the scan,
+- stale adjudications for the mis-keyed tail span were discarded, and
+- the 1ES corpus outputs were regenerated from the corrected source.
+
+The lesson is important: when a residual exposes a whole mis-numbered
+span, the right fix is to repair the chapter source and rebuild — not to
+paper over one verse at a time.
+
+### Baruch 1:1: the final real remaining ambiguity
 
 `BAR 1:1` stayed `medium` even after direct exact-page inspection on
 **vol3 p374**. The remaining issue is not page targeting; it is the tiny
