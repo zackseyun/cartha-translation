@@ -9,11 +9,11 @@ Layout mode: **ceriani_region_assembled**
 
 | PDF page | TXT | Meta | Output chars | Duration (s) |
 |---:|---|---|---:|---:|
-| 187 | `ceriani1871_p0187.txt` | `ceriani1871_p0187.meta.json` | 1429 | 175.98 |
-| 190 | `ceriani1871_p0190.txt` | `ceriani1871_p0190.meta.json` | 1503 | 166.09 |
-| 195 | `ceriani1871_p0195.txt` | `ceriani1871_p0195.meta.json` | 1393 | 178.73 |
-| 205 | `ceriani1871_p0205.txt` | `ceriani1871_p0205.meta.json` | 1502 | 217.12 |
-| 220 | `ceriani1871_p0220.txt` | `ceriani1871_p0220.meta.json` | 1386 | 273.26 |
+| 187 | `ceriani1871_p0187.txt` | `ceriani1871_p0187.meta.json` | 1428 | 175.98 |
+| 190 | `ceriani1871_p0190.txt` | `ceriani1871_p0190.meta.json` | 1563 | 166.09 |
+| 195 | `ceriani1871_p0195.txt` | `ceriani1871_p0195.meta.json` | 1367 | 178.73 |
+| 205 | `ceriani1871_p0205.txt` | `ceriani1871_p0205.meta.json` | 1578 | 217.12 |
+| 220 | `ceriani1871_p0220.txt` | `ceriani1871_p0220.meta.json` | 1398 | 273.26 |
 
 ## Main decision
 
@@ -37,7 +37,10 @@ reintroducing column-level regressions.
 
 - The calibration output is good enough to prove the Ceriani layout and
   provenance path work.
-- Some lower-apparatus lines remain noisy and will need cleanup or more
-  targeted prompting in later passes.
+- A follow-up **manual line-level rescue** was applied to the lower
+  apparatus across all five pages from trimmed apparatus crop images.
+- Some lower-apparatus uncertainty still remains at the very edges of a
+  few cropped lines, but the apparatus layer is materially cleaner than
+  the first-pass OCR.
 - Natural next step: add another Ceriani batch plus a small Kmosko
   control batch for witness comparison.
