@@ -94,7 +94,7 @@ EXTRA_CANONICAL_BOOKS: list[tuple[str, str, int, int, str]] = [
     # standard divisions (Lightfoot / Funk / Niederwimmer).
     ("Didache", "DID", 16, 100, "didache"),
     ("1 Clement", "1CLEM", 65, 395, "1_clement"),
-    ("2 Esdras", "2ES", 16, 892, "2_esdras"),
+    ("2 Esdras", "2ES", 16, 942, "2_esdras"),
 ]
 
 # Books in EXTRA_CANONICAL_BOOKS that are presented as an Appendix
