@@ -70,6 +70,7 @@ _ETH_DIGIT_CHARS = "".join(_ETH_DIGIT_MAP.keys())
 _VERSE_MARKER_RE = re.compile(
     rf"(^|\s)(?P<marker>[{_ETH_DIGIT_CHARS}](?:[ወ፡]*[{_ETH_DIGIT_CHARS}])*)\s*$"
 )
+_ARABIC_START_RE = re.compile(r"^\s*(?P<marker>\d{1,3})\s+(?P<body>.*)$")
 
 # Superscript footnote markers (Unicode superscripts ² ³ ... and regular digits
 # used as superscripts in the OCR, plus the `*` and `'` variant delimiters)
@@ -124,6 +125,65 @@ def find_markers_per_line(lines: list[str]) -> list[tuple[int, str]]:
     return out
 
 
+def find_arabic_start_markers(lines: list[str]) -> list[tuple[int, int]]:
+    out: list[tuple[int, int]] = []
+    for idx, line in enumerate(lines):
+        m = _ARABIC_START_RE.match(line.rstrip())
+        if not m:
+            continue
+        num = int(m.group("marker"))
+        if 1 <= num <= 200:
+            out.append((idx, num))
+    return out
+
+
+def parse_page_arabic_start(ocr_text: str, source_page: int) -> list[JubileesVerseRow]:
+    """Parse later Jubilees pages where Arabic verse numbers start each line."""
+    text = ocr_text.strip()
+    if not text:
+        return []
+
+    lines = [ln.rstrip() for ln in text.splitlines() if ln.strip()]
+    # Drop the repeating running head if OCR captured it.
+    if lines and lines[0].strip() == "መጽሐፈ፡ ኩፋሌ፡":
+        lines = lines[1:]
+    if not lines:
+        return []
+
+    markers = find_arabic_start_markers(lines)
+    if not markers:
+        body = strip_apparatus("\n".join(lines))
+        return [JubileesVerseRow(verse=0, marker_raw="", text=body, source_page=source_page)] if body else []
+
+    result: list[JubileesVerseRow] = []
+    first_marker_line_idx = markers[0][0]
+    if first_marker_line_idx > 0:
+        pre_text = strip_apparatus("\n".join(lines[:first_marker_line_idx]))
+        if pre_text:
+            result.append(JubileesVerseRow(verse=0, marker_raw="", text=pre_text, source_page=source_page))
+
+    for i, (line_idx, verse_num) in enumerate(markers):
+        next_line_idx = markers[i + 1][0] if i + 1 < len(markers) else len(lines)
+        body_lines = list(lines[line_idx:next_line_idx])
+        if not body_lines:
+            continue
+        m = _ARABIC_START_RE.match(body_lines[0])
+        if m:
+            body_lines[0] = m.group("body").strip()
+        body = strip_apparatus("\n".join(body_lines))
+        if not body:
+            continue
+        result.append(
+            JubileesVerseRow(
+                verse=verse_num,
+                marker_raw=str(verse_num),
+                text=body,
+                source_page=source_page,
+            )
+        )
+    return result
+
+
 def parse_page(ocr_text: str, source_page: int) -> list[JubileesVerseRow]:
     """Parse a single page of Jubilees OCR into verse rows.
 
@@ -134,6 +194,12 @@ def parse_page(ocr_text: str, source_page: int) -> list[JubileesVerseRow]:
     text = ocr_text.strip()
     if not text:
         return []
+
+    flat_lines = [ln.rstrip() for ln in text.splitlines() if ln.strip()]
+    arabic_markers = find_arabic_start_markers(flat_lines)
+    geez_markers = find_markers_per_line(flat_lines)
+    if len(arabic_markers) >= 3 and len(arabic_markers) >= len(geez_markers):
+        return parse_page_arabic_start(text, source_page)
 
     # Split on explicit blank-line paragraphs so the prologue/title is
     # clearly delineated. Charles 1895 p37 structure:

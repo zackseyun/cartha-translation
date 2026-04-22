@@ -32,6 +32,7 @@ import bakeoff_geez_ocr  # type: ignore
 PAGE_MAP = REPO_ROOT / "sources" / "jubilees" / "page_map.json"
 CACHE_ROOT = REPO_ROOT / "sources" / "jubilees" / "ethiopic" / "chapter_detection"
 DEFAULT_MODEL = "gemini-3.1-pro-preview"
+DEFAULT_BACKEND = "vertex"
 CHAPTER_LINE_RE = re.compile(r"^\s*(\d{1,2})\s*$")
 DEFAULT_PAGES = "37-210"
 
@@ -103,7 +104,7 @@ def parse_classification(text: str) -> tuple[str, list[int]]:
     return ("chapter_start", chapters) if chapters else ("error", [])
 
 
-def classify_page(pdf_path: pathlib.Path, page_num: int, *, dpi: int, model: str) -> PageClassification:
+def classify_page(pdf_path: pathlib.Path, page_num: int, *, dpi: int, model: str, backend: str) -> PageClassification:
     image = bakeoff_geez_ocr.render_page_png(pdf_path, page_num, dpi=dpi)
     started = time.time()
     result = bakeoff_geez_ocr.call_gemini(
@@ -112,6 +113,7 @@ def classify_page(pdf_path: pathlib.Path, page_num: int, *, dpi: int, model: str
         model=model,
         thinking_budget=512,
         max_output_tokens=256,
+        backend=backend,
     )
     raw = (result.text or "").strip()
     kind, chapters = parse_classification(raw) if raw else ("error", [])
@@ -159,7 +161,7 @@ def save_cache(edition: str, data: dict[str, Any]) -> None:
     cache_path(edition).write_text(json.dumps(data, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
 
-def run(edition: str, *, pages: list[int], force: bool, workers: int, dpi: int, model: str) -> dict[str, Any]:
+def run(edition: str, *, pages: list[int], force: bool, workers: int, dpi: int, model: str, backend: str) -> dict[str, Any]:
     mapping = load_map()["editions"][edition]
     pdf_path = REPO_ROOT / mapping["pdf"]
     if not pdf_path.exists():
@@ -180,9 +182,10 @@ def run(edition: str, *, pages: list[int], force: bool, workers: int, dpi: int, 
         return cache
 
     cache["model"] = model
+    cache["backend"] = backend
     completed = 0
     with ThreadPoolExecutor(max_workers=max(1, workers)) as ex:
-        futures = {ex.submit(classify_page, pdf_path, p, dpi=dpi, model=model): p for p in to_do}
+        futures = {ex.submit(classify_page, pdf_path, p, dpi=dpi, model=model, backend=backend): p for p in to_do}
         for fut in as_completed(futures):
             p = futures[fut]
             try:
@@ -227,6 +230,7 @@ def main() -> int:
     ap.add_argument("--workers", type=int, default=4)
     ap.add_argument("--dpi", type=int, default=200)
     ap.add_argument("--model", default=DEFAULT_MODEL)
+    ap.add_argument("--backend", choices=["studio", "vertex"], default=DEFAULT_BACKEND)
     args = ap.parse_args()
 
     mapping = load_map()["editions"][args.edition]
@@ -234,7 +238,7 @@ def main() -> int:
     pages = parse_page_spec(args.pages, total)
     print(
         f"[detect] {args.edition}: PDF {total} pages, classifying {len(pages)} "
-        f"via {args.model} @ {args.dpi} DPI, {args.workers} workers"
+        f"via {args.model} ({args.backend}) @ {args.dpi} DPI, {args.workers} workers"
     )
     cache = run(
         args.edition,
@@ -243,6 +247,7 @@ def main() -> int:
         workers=args.workers,
         dpi=args.dpi,
         model=args.model,
+        backend=args.backend,
     )
 
     kinds: dict[str, int] = {"chapter_start": 0, "continuation": 0, "non-geez": 0, "error": 0}
