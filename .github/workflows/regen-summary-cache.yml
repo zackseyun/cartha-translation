@@ -1,0 +1,94 @@
+name: Regenerate BibleSummaryCache
+
+# Fills any missing chapter- and book-level summaries in the
+# BibleSummaryCache-alpha DynamoDB table whenever new verses land in
+# translation/. tools/gemini_summary_prewarm.py walks translation/{nt,ot,
+# deuterocanon,extra_canonical}, compares the full key set against the
+# cache, and generates only what's missing via Gemini on Vertex AI
+# (cartha-bible-2 project — no per-day preview cap). Re-runs are cheap:
+# if every expected key is present, the script exits within seconds.
+#
+# Auth: GitHub → AWS OIDC federation. The workflow assumes an IAM role
+# whose trust policy is pinned to this repo's main branch, so no
+# long-lived credentials live in GitHub.
+#
+# Required AWS permissions (narrow):
+#   - dynamodb: GetItem, BatchGetItem, PutItem, DescribeTable
+#       on  arn:aws:dynamodb:us-west-2:*:table/BibleSummaryCache-alpha
+#   - secretsmanager: GetSecretValue
+#       on  arn:aws:secretsmanager:us-west-2:*:secret:/cartha/openclaw/gemini_api_key_2*
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'translation/**'
+      - 'tools/gemini_summary_prewarm.py'
+  schedule:
+    - cron: '37 * * * *'  # hourly backup, 37 past the hour to miss status regen (17) + merge tide
+  workflow_dispatch:
+    inputs:
+      workers:
+        description: Parallel worker count (Vertex)
+        default: '10'
+        required: false
+      dry_run:
+        description: Count gaps without generating
+        default: 'false'
+        required: false
+
+concurrency:
+  group: regen-summary-cache
+  cancel-in-progress: false
+
+permissions:
+  id-token: write   # for OIDC federation with AWS
+  contents: read
+
+env:
+  AWS_REGION: us-west-2
+  # Use the fresh cartha-bible-2 project for automated fills so this can't
+  # collide with the review fleet's Vertex DSQ bucket on the primary project.
+  PREWARM_SECRET_IDS: /cartha/openclaw/gemini_api_key_2
+
+jobs:
+  regen:
+    if: "!contains(github.event.head_commit.message, '[skip ci]')"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install dependencies
+        run: |
+          python3 -m pip install --upgrade pip
+          python3 -m pip install boto3 pyyaml google-auth
+
+      - name: Configure AWS credentials (OIDC)
+        uses: aws-actions/configure-aws-credentials@v4
+        with:
+          # Set this in repo Settings → Variables to the IAM role ARN, e.g.
+          # arn:aws:iam::<account-id>:role/github-oidc-cartha-translation-prewarm
+          role-to-assume: ${{ vars.GITHUB_OIDC_PREWARM_ROLE_ARN }}
+          aws-region: ${{ env.AWS_REGION }}
+
+      - name: Count gaps (dry-run)
+        id: gaps
+        run: |
+          python3 tools/gemini_summary_prewarm.py \
+            --dry-run \
+            --secret-ids "$PREWARM_SECRET_IDS" \
+          | tee gap-report.txt
+          line=$(grep -E '^gaps:' gap-report.txt || echo 'gaps: 0 chapter + 0 book')
+          echo "$line" >> $GITHUB_STEP_SUMMARY
+
+      - name: Fill missing summaries
+        if: github.event.inputs.dry_run != 'true'
+        run: |
+          python3 tools/gemini_summary_prewarm.py \
+            --backend vertex \
+            --workers ${{ github.event.inputs.workers || '10' }} \
+            --secret-ids "$PREWARM_SECRET_IDS"
