@@ -29,6 +29,11 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES_ROOT = REPO_ROOT / "sources" / "testaments_twelve_patriarchs"
 RAW_DIR = SOURCES_ROOT / "transcribed" / "raw"
 NORMALIZED_DIR = SOURCES_ROOT / "transcribed" / "normalized"
+RAW_PREFIXES = (
+    "t12p_sinker1879",
+    "t12p_sinker1879_g31",
+    "t12p_charles1908gk",
+)
 
 BODY_RE = re.compile(
     r"\[BODY\]\s*\n(.*?)(?=\n\[(?:RUNNING HEAD|APPARATUS|FOOTNOTES|MARGINALIA|BLANK|PLATE)\]|\n---END-PAGE---|\Z)",
@@ -111,10 +116,17 @@ ROMAN_NUMERALS: dict[str, int] = {
     "XXV": 25,
     "XXVI": 26,
 }
-ROMAN_HEADING_RE = re.compile(
-    r"^\s*(?P<num>XXVI|XXV|XXIV|XXIII|XXII|XXI|XX|XIX|XVIII|XVII|XVI|XV|XIV|XIII|XII|XI|X|IX|VIII|VII|VI|V|IV|III|II|I)\.\s*",
-    re.MULTILINE,
-)
+ROMAN_HEADING_RE = re.compile(r"^\s*(?P<num>[IVXLCDMΙ]+)\.\s*", re.MULTILINE)
+
+
+def _normalize_heading_token(token: str) -> str:
+    """Normalize OCR variants used in chapter numerals.
+
+    The Charles 1908 OCR often emits Greek capital iota ``Ι`` instead of Latin
+    ``I`` inside Roman numerals (e.g. ``Ι.`` or ``ΙΙ.``). For heading parsing
+    those are equivalent.
+    """
+    return token.replace("Ι", "I")
 
 
 def extract_running_head(page_text: str) -> str:
@@ -129,18 +141,16 @@ def extract_body(page_text: str) -> str:
 
 def available_raw_pages() -> list[int]:
     pages: set[int] = set()
-    for path in RAW_DIR.glob("t12p_sinker1879*_p*.txt"):
-        match = re.search(r"_p(\d{4})\.txt$", path.name)
-        if match:
-            pages.add(int(match.group(1)))
+    for prefix in RAW_PREFIXES:
+        for path in RAW_DIR.glob(f"{prefix}_p*.txt"):
+            match = re.search(r"_p(\d{4})\.txt$", path.name)
+            if match:
+                pages.add(int(match.group(1)))
     return sorted(pages)
 
 
 def raw_page_path(page: int) -> pathlib.Path | None:
-    for pattern in (
-        f"t12p_sinker1879_p{page:04d}.txt",
-        f"t12p_sinker1879_g31_p{page:04d}.txt",
-    ):
+    for pattern in tuple(f"{prefix}_p{page:04d}.txt" for prefix in RAW_PREFIXES):
         candidate = RAW_DIR / pattern
         if candidate.exists():
             return candidate
@@ -306,8 +316,18 @@ def parse_testament_text(testament_slug: str, raw_text: str) -> tuple[list[Testa
         )
 
     chapters: list[TestamentChapter] = []
+    last_chapter_num = 0
     for idx, match in enumerate(matches):
-        chapter_num = ROMAN_NUMERALS[match.group("num")]
+        normalized_num = _normalize_heading_token(match.group("num"))
+        if normalized_num not in ROMAN_NUMERALS:
+            warnings.append(f"Skipping unrecognized chapter heading token: {match.group('num')!r}.")
+            continue
+        chapter_num = ROMAN_NUMERALS[normalized_num]
+        if chapter_num <= last_chapter_num:
+            warnings.append(
+                f"Ignoring non-increasing heading token {match.group('num')!r} parsed as chapter {chapter_num} after chapter {last_chapter_num}."
+            )
+            continue
         next_start = matches[idx + 1].start() if idx + 1 < len(matches) else len(normalized)
         chapter_text = normalized[match.end() : next_start].strip()
         chapter_text = MULTISPACE_RE.sub(" ", chapter_text).strip()
@@ -322,6 +342,7 @@ def parse_testament_text(testament_slug: str, raw_text: str) -> tuple[list[Testa
                 marker_raw=match.group(0).strip(),
             )
         )
+        last_chapter_num = chapter_num
 
     chapter_numbers = [chapter.chapter for chapter in chapters]
     if chapter_numbers and chapter_numbers[0] != 1:
