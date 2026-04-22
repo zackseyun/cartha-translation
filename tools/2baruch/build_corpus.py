@@ -14,9 +14,10 @@ corpus layer that later chapter/verse alignment can build on:
 
 Why page-level first instead of chapter-level immediately?
 
-Because the OCR work now committed is only a sparse calibration set (5 pages), not a
-full continuous sweep. The right bridge is therefore *OCR -> stable page corpus*, not
-pretending we already have a fully chapter-aligned Syriac text.
+Because even with the full primary sweep on disk, the right bridge is still
+*OCR -> stable page corpus* before pretending we already have a fully
+chapter-aligned Syriac text. Page-level provenance remains the safer substrate
+for later chapter / verse alignment.
 """
 from __future__ import annotations
 
@@ -42,6 +43,9 @@ MULTISPACE_RE = re.compile(r"\s+")
 
 SOURCE_EDITION = "Ceriani 1871 primary Syriac edition (raw OCR bridged into working corpus)"
 VALIDATION_LABEL = "2baruch_ceriani_ocr_bridge_v1"
+CERIANI_PRINTED_PAGE_SUM = 342
+CERIANI_EXPECTED_PRINTED_MIN = 113
+CERIANI_EXPECTED_PRINTED_MAX = 180
 
 
 @dataclass(frozen=True)
@@ -122,6 +126,23 @@ def printed_page_from_running_head(running_head_raw: str) -> int | None:
     return int(m.group(1)) if m else None
 
 
+def inferred_printed_page(pdf_page: int) -> int:
+    return CERIANI_PRINTED_PAGE_SUM - pdf_page
+
+
+def sane_printed_page(pdf_page: int, running_head_raw: str) -> int | None:
+    inferred = inferred_printed_page(pdf_page)
+    # The OCR running heads are useful as raw provenance, but they are much noisier
+    # than the empirically stable page-map relation for this Google scan:
+    #   printed_page + pdf_page ≈ 342
+    # Use the inferred mapping as the committed printed-page signal and keep the raw
+    # running-head text alongside it for later audit.
+    if CERIANI_EXPECTED_PRINTED_MIN <= inferred <= CERIANI_EXPECTED_PRINTED_MAX:
+        return inferred
+    candidate = printed_page_from_running_head(running_head_raw)
+    return candidate
+
+
 def load_meta(path: pathlib.Path) -> dict[str, Any] | None:
     meta_path = path.with_suffix(".meta.json")
     if not meta_path.exists():
@@ -145,7 +166,7 @@ def parse_raw_page(path: pathlib.Path) -> CerianiPage:
     return CerianiPage(
         pdf_page=pdf_page_from_path(path),
         running_head_raw=running_head_raw,
-        printed_page=printed_page_from_running_head(running_head_raw),
+        printed_page=sane_printed_page(pdf_page_from_path(path), running_head_raw),
         physical_left_lines=physical_left_lines,
         physical_right_lines=physical_right_lines,
         reading_order_lines=reading_order_lines,

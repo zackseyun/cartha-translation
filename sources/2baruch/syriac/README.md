@@ -15,11 +15,11 @@ raw_ocr/ceriani1871/*.txt
 
 Important design choice:
 
-- The current committed OCR is only a **sparse calibration set**, not a continuous
-  full-book sweep.
-- So this bridge is **page-level on purpose**. It preserves stable, cleaned Syriac
-  page text in logical reading order while deferring chapter/verse mapping until the
-  OCR coverage is broader.
+- The current committed OCR now covers the **full Ceriani primary sweep** for
+  PDF pages 162–228.
+- This bridge still stays **page-level on purpose**. It preserves stable, cleaned
+  Syriac page text in logical reading order while deferring chapter/verse mapping
+  until the next dedicated segmentation pass.
 
 Reading order note:
 
