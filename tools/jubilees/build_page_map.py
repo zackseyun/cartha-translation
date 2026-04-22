@@ -56,6 +56,28 @@ def load_detection(edition: str, cache_path: pathlib.Path | None = None) -> dict
     return {int(k): v for k, v in pages.items()}
 
 
+def apply_manual_starts(
+    classifications: dict[int, dict[str, Any]],
+    manual_overrides: dict[int, dict[str, Any]],
+) -> dict[int, dict[str, Any]]:
+    out = copy.deepcopy(classifications)
+    for page, meta in manual_overrides.items():
+        chapter = int(meta["chapter"])
+        note = str(meta.get("basis") or "manual override")
+        out[page] = {
+            "page_number": page,
+            "kind": "chapter_start",
+            "chapters": [chapter],
+            "raw_response": str(chapter),
+            "finish_reason": "manual_override",
+            "duration_seconds": 0.0,
+            "tokens_out": 0,
+            "error": "",
+            "manual_basis": note,
+        }
+    return out
+
+
 def assemble_chapters(classifications: dict[int, dict[str, Any]], *, edition: str) -> tuple[dict[int, list[int]], list[str]]:
     warnings: list[str] = []
     chapter_pages: dict[int, list[int]] = {}
@@ -70,6 +92,17 @@ def assemble_chapters(classifications: dict[int, dict[str, Any]], *, edition: st
             if not chapters:
                 warnings.append(f"{edition} p{page}: chapter_start with empty chapters")
                 continue
+            usable = [c for c in chapters if c >= last_seen_chapter]
+            if not usable and chapters:
+                warnings.append(
+                    f"{edition} p{page}: backward-only chapter_start {chapters} after chapter {last_seen_chapter}; ignoring as likely numeral misread"
+                )
+                continue
+            if usable != chapters:
+                warnings.append(
+                    f"{edition} p{page}: filtered backward chapter candidates {chapters} -> {usable}"
+                )
+            chapters = usable
             for chapter in chapters:
                 chapter_pages.setdefault(chapter, [])
                 if page not in chapter_pages[chapter]:
@@ -93,9 +126,8 @@ def assemble_chapters(classifications: dict[int, dict[str, Any]], *, edition: st
         elif kind == "error":
             warnings.append(
                 f"{edition} p{page}: classification error "
-                f"({(entry.get('error') or '?')[:80]}); breaks continuation"
+                f"({(entry.get('error') or '?')[:80]}); preserving current chapter {current_chapter}"
             )
-            current_chapter = None
     return chapter_pages, warnings
 
 
@@ -167,6 +199,7 @@ def main() -> int:
     ap = argparse.ArgumentParser(description=__doc__)
     ap.add_argument("--edition", default="charles_1895", choices=["charles_1895"])
     ap.add_argument("--cache-path", type=pathlib.Path, help="Override detection cache JSON path")
+    ap.add_argument("--manual-starts-json", type=pathlib.Path, help="Optional page->chapter override JSON")
     args = ap.parse_args()
 
     existing = load_existing_map()
@@ -174,6 +207,10 @@ def main() -> int:
     proposed["updated"] = dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%d")
 
     classifications = load_detection(args.edition, cache_path=args.cache_path)
+    if args.manual_starts_json:
+        raw = json.loads(args.manual_starts_json.read_text(encoding="utf-8"))
+        manual = {int(page): meta for page, meta in raw.items()}
+        classifications = apply_manual_starts(classifications, manual)
     chapter_pages, warnings = assemble_chapters(classifications, edition=args.edition)
     existing_section = existing.get("editions", {}).get(args.edition, {})
     proposed.setdefault("editions", {})[args.edition] = build_edition_section(args.edition, chapter_pages, existing_section)

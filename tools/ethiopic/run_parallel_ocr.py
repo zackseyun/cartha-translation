@@ -1,9 +1,10 @@
 #!/usr/bin/env python3
-"""run_parallel_ocr.py — fan out Ge'ez OCR across multiple Gemini API keys.
+"""run_parallel_ocr.py — fan out Ge'ez OCR across multiple Gemini credentials.
 
 This wraps `tools/ethiopic/ocr_geez.py` with multiple worker subprocesses.
-Each worker gets a single raw API key in `GEMINI_API_KEY` and a disjoint page
-chunk, so large OCR jobs can finish much faster than the single-process path.
+Each worker gets a single credential slot (AI Studio key or Vertex secret id)
+and a disjoint page chunk, so large OCR jobs can finish much faster than the
+single-process path.
 
 Typical usage with a secret JSON that contains `api_keys: [...]`:
 
@@ -39,7 +40,7 @@ import ocr_geez  # type: ignore
 @dataclass
 class WorkerPlan:
     worker_id: int
-    api_key_index: int
+    credential_index: int
     pages: list[int]
     log_path: pathlib.Path
 
@@ -47,7 +48,7 @@ class WorkerPlan:
 @dataclass
 class WorkerResult:
     worker_id: int
-    api_key_index: int
+    credential_index: int
     page_count: int
     exit_code: int
     duration_seconds: float
@@ -102,19 +103,19 @@ def pending_pages(
 def build_worker_plans(
     *,
     pages: list[int],
-    api_keys: list[str],
+    credentials: list[str],
     workers_per_key: int,
     logs_dir: pathlib.Path,
 ) -> list[WorkerPlan]:
-    worker_count = len(api_keys) * max(1, workers_per_key)
+    worker_count = len(credentials) * max(1, workers_per_key)
     chunks = chunk_evenly(pages, worker_count)
     plans: list[WorkerPlan] = []
     for i, chunk in enumerate(chunks, start=1):
-        api_key_index = (i - 1) % len(api_keys)
+        credential_index = (i - 1) % len(credentials)
         plans.append(
             WorkerPlan(
                 worker_id=i,
-                api_key_index=api_key_index,
+                credential_index=credential_index,
                 pages=chunk,
                 log_path=logs_dir / f"worker_{i:02d}.log",
             )
@@ -126,7 +127,7 @@ def launch_worker(
     plan: WorkerPlan,
     *,
     args: argparse.Namespace,
-    api_keys: list[str],
+    credentials: list[str],
     ocr_script: pathlib.Path,
 ) -> subprocess.Popen[bytes]:
     cmd = [
@@ -138,6 +139,10 @@ def launch_worker(
         str(args.out_dir),
         "--book-hint",
         args.book_hint,
+        "--backend",
+        args.backend,
+        "--model",
+        args.model,
         "--dpi",
         str(args.dpi),
         "--thinking-budget",
@@ -157,7 +162,12 @@ def launch_worker(
         cmd.append("--resume")
 
     env = os.environ.copy()
-    env["GEMINI_API_KEY"] = api_keys[plan.api_key_index]
+    if args.backend == "studio":
+        env["GEMINI_API_KEY"] = credentials[plan.credential_index]
+    elif args.backend == "vertex":
+        env["VERTEX_SECRET_ID"] = credentials[plan.credential_index]
+    else:
+        raise SystemExit(f"Unsupported backend: {args.backend}")
     log_fh = plan.log_path.open("wb")
     return subprocess.Popen(cmd, stdout=log_fh, stderr=subprocess.STDOUT, env=env)
 
@@ -167,6 +177,8 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument("pdf_path", type=pathlib.Path)
     ap.add_argument("pages", help="Page spec like '37-210' or '37,40-44'")
     ap.add_argument("--out-dir", type=pathlib.Path, required=True)
+    ap.add_argument("--backend", choices=["studio", "vertex"], default=ocr_geez.DEFAULT_BACKEND)
+    ap.add_argument("--model", default="gemini-3.1-pro-preview")
     ap.add_argument("--book-hint", default="a classical Ethiopic book")
     ap.add_argument("--chapter-hint", default="")
     ap.add_argument("--opening-hint", default="")
@@ -185,12 +197,17 @@ def parse_args() -> argparse.Namespace:
     ap.add_argument(
         "--api-key-env-var",
         default="GEMINI_API_KEY",
-        help="Environment variable to resolve. Its JSON may contain api_keys[].",
+        help="Environment variable to resolve for studio backend. Its JSON may contain api_keys[].",
     )
     ap.add_argument(
         "--api-key-indices",
         default="all",
-        help="1-based indices into the resolved key list, e.g. '1' or '1,3'. Default: all",
+        help="1-based indices into the resolved studio key list, e.g. '1' or '1,3'. Default: all",
+    )
+    ap.add_argument(
+        "--vertex-secret-ids",
+        default=os.environ.get("VERTEX_SECRET_IDS", ocr_geez.DEFAULT_VERTEX_SECRET_ID),
+        help="Comma-separated Vertex secret ids for vertex backend",
     )
     ap.add_argument(
         "--logs-dir",
@@ -234,20 +251,26 @@ def main() -> int:
     logs_dir.mkdir(parents=True, exist_ok=True)
     ocr_script = REPO_ROOT / "tools" / "ethiopic" / "ocr_geez.py"
 
-    raw_env = os.environ.get(args.api_key_env_var, "").strip()
-    if not raw_env:
-        raise SystemExit(f"{args.api_key_env_var} not set")
-    os.environ["GEMINI_API_KEY"] = raw_env
-    api_keys = select_api_keys(ocr_geez.resolve_gemini_api_keys(), args.api_key_indices)
-    if not api_keys:
-        raise SystemExit("No Gemini API keys resolved")
+    if args.backend == "studio":
+        raw_env = os.environ.get(args.api_key_env_var, "").strip()
+        if not raw_env:
+            raise SystemExit(f"{args.api_key_env_var} not set")
+        os.environ["GEMINI_API_KEY"] = raw_env
+        credentials = select_api_keys(ocr_geez.resolve_gemini_api_keys(), args.api_key_indices)
+        credential_label = f"${args.api_key_env_var}"
+    else:
+        credentials = [token.strip() for token in args.vertex_secret_ids.split(",") if token.strip()]
+        if not credentials:
+            raise SystemExit("No Vertex secret ids resolved")
+        credential_label = "VERTEX_SECRET_IDS"
 
     all_pages = ocr_geez.parse_page_spec(args.pages)
     todo = pending_pages(all_pages, out_dir=args.out_dir, pdf_path=pdf_path, resume=args.resume)
 
     print(f"[parallel-ocr] pdf={pdf_path}")
     print(f"[parallel-ocr] requested={len(all_pages)} pages, pending={len(todo)}, resume={args.resume}")
-    print(f"[parallel-ocr] resolved_keys={len(api_keys)} via ${args.api_key_env_var}")
+    print(f"[parallel-ocr] backend={args.backend} model={args.model}")
+    print(f"[parallel-ocr] resolved_credentials={len(credentials)} via {credential_label}")
     print(f"[parallel-ocr] workers_per_key={args.workers_per_key}")
     print(f"[parallel-ocr] out_dir={args.out_dir}")
     print(f"[parallel-ocr] logs_dir={logs_dir}")
@@ -257,13 +280,13 @@ def main() -> int:
 
     plans = build_worker_plans(
         pages=todo,
-        api_keys=api_keys,
+        credentials=credentials,
         workers_per_key=args.workers_per_key,
         logs_dir=logs_dir,
     )
     for plan in plans:
         print(
-            f"  worker {plan.worker_id:02d}: key#{plan.api_key_index + 1} "
+            f"  worker {plan.worker_id:02d}: credential#{plan.credential_index + 1} "
             f"pages={pages_to_spec(plan.pages)} log={plan.log_path}"
         )
     if args.dry_run:
@@ -272,7 +295,7 @@ def main() -> int:
     procs: list[tuple[WorkerPlan, subprocess.Popen[bytes], float]] = []
     for plan in plans:
         started = time.time()
-        proc = launch_worker(plan, args=args, api_keys=api_keys, ocr_script=ocr_script)
+        proc = launch_worker(plan, args=args, credentials=credentials, ocr_script=ocr_script)
         procs.append((plan, proc, started))
 
     failures = 0
@@ -281,7 +304,7 @@ def main() -> int:
         duration = round(time.time() - started, 2)
         result = WorkerResult(
             worker_id=plan.worker_id,
-            api_key_index=plan.api_key_index,
+            credential_index=plan.credential_index,
             page_count=len(plan.pages),
             exit_code=exit_code,
             duration_seconds=duration,
@@ -289,7 +312,7 @@ def main() -> int:
         )
         status = "OK" if exit_code == 0 else "FAIL"
         print(
-            f"[parallel-ocr] worker {result.worker_id:02d} key#{result.api_key_index + 1}: "
+            f"[parallel-ocr] worker {result.worker_id:02d} credential#{result.credential_index + 1}: "
             f"{status} pages={result.page_count} dur={result.duration_seconds}s "
             f"log={result.log_path}"
         )

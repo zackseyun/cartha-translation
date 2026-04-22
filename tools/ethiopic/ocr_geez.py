@@ -44,6 +44,11 @@ from argparse import ArgumentParser
 from dataclasses import dataclass
 from typing import Any
 
+DEFAULT_VERTEX_SECRET_ID = "/cartha/openclaw/gemini_api_key_2"
+DEFAULT_VERTEX_LOCATION = "global"
+DEFAULT_BACKEND = os.environ.get("GEMINI_BACKEND", "vertex")
+_VERTEX_CACHE: dict[str, object] = {"token": "", "expiry": 0.0, "project": ""}
+
 
 def resolve_gemini_api_keys() -> list[str]:
     raw = os.environ.get("GEMINI_API_KEY", "").strip()
@@ -72,6 +77,58 @@ def resolve_gemini_api_keys() -> list[str]:
 
 def resolve_gemini_api_key() -> str:
     return resolve_gemini_api_keys()[0]
+
+
+def resolve_vertex_service_account_info() -> dict[str, object]:
+    raw = os.environ.get("VERTEX_SA_JSON", "").strip()
+    if not raw and os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", "").strip():
+        cred_path = pathlib.Path(os.environ["GOOGLE_APPLICATION_CREDENTIALS"]).expanduser()
+        if cred_path.exists():
+            raw = cred_path.read_text(encoding="utf-8")
+    if not raw:
+        raw = subprocess.check_output(
+            [
+                "aws",
+                "secretsmanager",
+                "get-secret-value",
+                "--secret-id",
+                os.environ.get("VERTEX_SECRET_ID", DEFAULT_VERTEX_SECRET_ID),
+                "--query",
+                "SecretString",
+                "--output",
+                "text",
+            ],
+            text=True,
+        ).strip()
+    obj = json.loads(raw)
+    if not isinstance(obj, dict) or not obj.get("project_id"):
+        raise RuntimeError("Vertex service-account secret is not a valid service-account JSON object")
+    return obj
+
+
+def vertex_access_token() -> tuple[str, str]:
+    now = time.time()
+    cached_token = str(_VERTEX_CACHE.get("token") or "")
+    cached_project = str(_VERTEX_CACHE.get("project") or "")
+    cached_expiry = float(_VERTEX_CACHE.get("expiry") or 0.0)
+    if cached_token and cached_project and cached_expiry > now + 300:
+        return cached_token, cached_project
+
+    from google.oauth2 import service_account  # type: ignore
+    from google.auth.transport.requests import Request  # type: ignore
+
+    info = resolve_vertex_service_account_info()
+    creds = service_account.Credentials.from_service_account_info(
+        info,
+        scopes=["https://www.googleapis.com/auth/cloud-platform"],
+    )
+    creds.refresh(Request())
+    token = str(creds.token or "")
+    expiry = creds.expiry.timestamp() if getattr(creds, "expiry", None) else (now + 3000)
+    _VERTEX_CACHE["token"] = token
+    _VERTEX_CACHE["expiry"] = float(expiry)
+    _VERTEX_CACHE["project"] = str(info["project_id"])
+    return token, str(info["project_id"])
 
 
 @dataclass
@@ -122,6 +179,8 @@ def call_gemini_pro_geez(
     opening_hint: str = "",
     thinking_budget: int = 512,
     max_output_tokens: int = 20000,
+    backend: str = DEFAULT_BACKEND,
+    model: str = "gemini-3.1-pro-preview",
 ) -> OcrResult:
     """OCR a single scan page via Gemini 3.1 Pro, plaintext mode.
 
@@ -129,8 +188,6 @@ def call_gemini_pro_geez(
     - chapter_hint: e.g. "chapter 1 (ምዕራፍ ፩)"
     - opening_hint: first few words of expected Geʿez to anchor the model
     """
-    api_key = resolve_gemini_api_key()
-
     b64 = base64.b64encode(image_bytes).decode("ascii")
     prompt_parts = [
         f"This is a page from {book_hint}.",
@@ -150,25 +207,41 @@ def call_gemini_pro_geez(
     ])
     prompt = " ".join(prompt_parts)
 
-    url = ("https://generativelanguage.googleapis.com/v1beta/models/"
-           "gemini-3.1-pro-preview:generateContent?key=" + api_key)
     body = {
-        "contents": [{"parts": [
-            {"text": prompt},
-            {"inline_data": {"mime_type": "image/png", "data": b64}},
-        ]}],
+        "contents": [{
+            "role": "user",
+            "parts": [
+                {"text": prompt},
+                {"inline_data": {"mime_type": "image/png", "data": b64}},
+            ],
+        }],
         "generationConfig": {
             "temperature": 0.0,
             "max_output_tokens": max_output_tokens,
             "thinkingConfig": {"thinkingBudget": thinking_budget},
         },
     }
+    if backend == "vertex":
+        token, project_id = vertex_access_token()
+        location = os.environ.get("VERTEX_LOCATION", DEFAULT_VERTEX_LOCATION)
+        api_host = "aiplatform.googleapis.com" if location == "global" else f"{location}-aiplatform.googleapis.com"
+        url = (
+            f"https://{api_host}/v1/projects/{project_id}/locations/{location}/"
+            f"publishers/google/models/{model}:generateContent"
+        )
+        headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+    elif backend == "studio":
+        api_key = resolve_gemini_api_key()
+        url = f"https://generativelanguage.googleapis.com/v1beta/models/{model}:generateContent?key={api_key}"
+        headers = {"Content-Type": "application/json"}
+    else:
+        raise RuntimeError(f"Unsupported Gemini backend: {backend!r}")
 
     for attempt in range(6):
         try:
             req = urllib.request.Request(
                 url, data=json.dumps(body).encode(),
-                headers={"Content-Type": "application/json"},
+                headers=headers,
             )
             with urllib.request.urlopen(req, timeout=300) as r:
                 resp = json.loads(r.read())
@@ -318,11 +391,15 @@ def result_to_dict(
     dpi: int,
     book_hint: str,
     hints: PageHints,
+    backend: str,
+    model: str,
 ) -> dict[str, Any]:
     return {
         "page_number": result.page_number,
         "source_pdf": str(pdf_path),
         "render_dpi": dpi,
+        "backend": backend,
+        "model": model,
         "book_hint": book_hint,
         "chapter_hint": hints.chapter_hint,
         "opening_hint": hints.opening_hint,
@@ -345,6 +422,8 @@ def ocr_pdf_page(
     hints: PageHints,
     thinking_budget: int,
     max_output_tokens: int,
+    backend: str,
+    model: str,
 ) -> OcrResult:
     image_bytes = render_page_png(pdf_path, page_num, dpi=dpi)
     result = call_gemini_pro_geez(
@@ -354,6 +433,8 @@ def ocr_pdf_page(
         opening_hint=hints.opening_hint,
         thinking_budget=thinking_budget,
         max_output_tokens=max_output_tokens,
+        backend=backend,
+        model=model,
     )
     result.page_number = page_num
     return result
@@ -367,13 +448,23 @@ def write_output_files(
     dpi: int,
     book_hint: str,
     hints: PageHints,
+    backend: str,
+    model: str,
 ) -> tuple[pathlib.Path, pathlib.Path]:
     out_dir.mkdir(parents=True, exist_ok=True)
     txt_path, meta_path = output_paths(out_dir, pdf_path, result.page_number)
     txt_path.write_text(result.geez_text, encoding="utf-8")
     meta_path.write_text(
         json.dumps(
-            result_to_dict(result, pdf_path=pdf_path, dpi=dpi, book_hint=book_hint, hints=hints),
+            result_to_dict(
+                result,
+                pdf_path=pdf_path,
+                dpi=dpi,
+                book_hint=book_hint,
+                hints=hints,
+                backend=backend,
+                model=model,
+            ),
             ensure_ascii=False,
             indent=2,
         ) + "\n",
@@ -412,6 +503,17 @@ def build_arg_parser() -> ArgumentParser:
         help="JSON file mapping page numbers to chapter/opening hints",
     )
     parser.add_argument("--dpi", type=int, default=400, help="Render DPI (default: 400)")
+    parser.add_argument(
+        "--backend",
+        choices=["studio", "vertex"],
+        default=DEFAULT_BACKEND,
+        help=f"Gemini backend (default: {DEFAULT_BACKEND})",
+    )
+    parser.add_argument(
+        "--model",
+        default="gemini-3.1-pro-preview",
+        help="Gemini model id (default: gemini-3.1-pro-preview)",
+    )
     parser.add_argument(
         "--thinking-budget",
         type=int,
@@ -469,7 +571,7 @@ if __name__ == "__main__":
 
     print(f"📖 PDF:   {pdf}")
     print(f"📄 Pages: {', '.join(str(p) for p in pages)}")
-    print(f"🧠 Model: Gemini 3.1 Pro plaintext mode (thinkingBudget={args.thinking_budget})")
+    print(f"🧠 Model: {args.model} via {args.backend} (thinkingBudget={args.thinking_budget})")
     if out_dir:
         print(f"💾 Out:   {out_dir}")
     if args.dry_run:
@@ -500,6 +602,8 @@ if __name__ == "__main__":
                 hints=hints,
                 thinking_budget=args.thinking_budget,
                 max_output_tokens=args.max_output_tokens,
+                backend=args.backend,
+                model=args.model,
             )
         except Exception as exc:  # noqa: BLE001 - CLI should keep going page-to-page
             failed += 1
@@ -514,6 +618,8 @@ if __name__ == "__main__":
                 dpi=args.dpi,
                 book_hint=args.book_hint,
                 hints=hints,
+                backend=args.backend,
+                model=args.model,
             )
             print(
                 f"  ✓ page {page_num}: {result.confidence} "

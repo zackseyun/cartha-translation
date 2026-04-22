@@ -52,6 +52,10 @@ from normalize import normalize_for_alignment, normalize_for_comparison  # type:
 TRUTH_ROOT = REPO_ROOT / "sources" / "enoch" / "ethiopic" / "hand_truth"
 REPORTS_ROOT = REPO_ROOT / "sources" / "enoch" / "ethiopic" / "reports"
 BETAMASAHEFT = pathlib.Path.home() / "cartha-reference-local" / "enoch_betamasaheft" / "LIT1340EnochE.xml"
+DEFAULT_VERTEX_SECRET_ID = "/cartha/openclaw/gemini_api_key_2"
+DEFAULT_VERTEX_LOCATION = "global"
+DEFAULT_GEMINI_BACKEND = os.environ.get("GEMINI_BACKEND", "vertex")
+_VERTEX_CACHE: dict[str, object] = {"token": "", "expiry": 0.0, "project": ""}
 
 
 # ---------------------------------------------------------------------------
@@ -133,6 +137,50 @@ def resolve_gemini_key() -> str:
                 if isinstance(item, str) and item.strip():
                     return item.strip()
     return str(obj).strip()
+
+
+def resolve_vertex_service_account_info() -> dict[str, object]:
+    raw = os.environ.get("VERTEX_SA_JSON", "").strip()
+    if not raw and os.environ.get("GOOGLE_APPLICATION_CREDENTIALS", "").strip():
+        cred_path = pathlib.Path(os.environ["GOOGLE_APPLICATION_CREDENTIALS"]).expanduser()
+        if cred_path.exists():
+            raw = cred_path.read_text(encoding="utf-8")
+    if not raw:
+        raw = _run([
+            "aws", "secretsmanager", "get-secret-value",
+            "--secret-id", os.environ.get("VERTEX_SECRET_ID", DEFAULT_VERTEX_SECRET_ID),
+            "--region", "us-west-2",
+            "--query", "SecretString", "--output", "text",
+        ])
+    obj = json.loads(raw)
+    if not isinstance(obj, dict) or not obj.get("project_id"):
+        raise RuntimeError("Vertex service-account secret is not a valid service-account JSON object")
+    return obj
+
+
+def vertex_access_token() -> tuple[str, str]:
+    now = time.time()
+    cached_token = str(_VERTEX_CACHE.get("token") or "")
+    cached_project = str(_VERTEX_CACHE.get("project") or "")
+    cached_expiry = float(_VERTEX_CACHE.get("expiry") or 0.0)
+    if cached_token and cached_project and cached_expiry > now + 300:
+        return cached_token, cached_project
+
+    from google.oauth2 import service_account  # type: ignore
+    from google.auth.transport.requests import Request  # type: ignore
+
+    info = resolve_vertex_service_account_info()
+    creds = service_account.Credentials.from_service_account_info(
+        info,
+        scopes=["https://www.googleapis.com/auth/cloud-platform"],
+    )
+    creds.refresh(Request())
+    token = str(creds.token or "")
+    expiry = creds.expiry.timestamp() if getattr(creds, "expiry", None) else (now + 3000)
+    _VERTEX_CACHE["token"] = token
+    _VERTEX_CACHE["expiry"] = float(expiry)
+    _VERTEX_CACHE["project"] = str(info["project_id"])
+    return token, str(info["project_id"])
 
 
 # ---------------------------------------------------------------------------
@@ -239,18 +287,17 @@ def call_gemini(
     model: str,
     thinking_budget: int = 512,
     max_output_tokens: int = 20000,
+    backend: str = DEFAULT_GEMINI_BACKEND,
 ) -> EngineResult:
-    api_key = resolve_gemini_key()
     b64 = base64.b64encode(image_bytes).decode("ascii")
-    url = (
-        "https://generativelanguage.googleapis.com/v1beta/models/"
-        f"{model}:generateContent?key={api_key}"
-    )
     body = {
-        "contents": [{"parts": [
-            {"text": prompt},
-            {"inline_data": {"mime_type": "image/png", "data": b64}},
-        ]}],
+        "contents": [{
+            "role": "user",
+            "parts": [
+                {"text": prompt},
+                {"inline_data": {"mime_type": "image/png", "data": b64}},
+            ],
+        }],
         "generationConfig": {
             "temperature": 0.0,
             "responseMimeType": "text/plain",
@@ -258,11 +305,37 @@ def call_gemini(
             "thinkingConfig": {"thinkingBudget": thinking_budget},
         },
     }
+    if backend == "vertex":
+        token, project_id = vertex_access_token()
+        location = os.environ.get("VERTEX_LOCATION", DEFAULT_VERTEX_LOCATION)
+        api_host = "aiplatform.googleapis.com" if location == "global" else f"{location}-aiplatform.googleapis.com"
+        url = (
+            f"https://{api_host}/v1/projects/{project_id}/locations/{location}/"
+            f"publishers/google/models/{model}:generateContent"
+        )
+        headers = {"Authorization": f"Bearer {token}", "Content-Type": "application/json"}
+        engine_name = f"gemini-vertex::{model}"
+    elif backend == "studio":
+        api_key = resolve_gemini_key()
+        url = (
+            "https://generativelanguage.googleapis.com/v1beta/models/"
+            f"{model}:generateContent?key={api_key}"
+        )
+        headers = {"Content-Type": "application/json"}
+        engine_name = f"gemini::{model}"
+    else:
+        return EngineResult(
+            engine=f"gemini::{model}",
+            model_id=model,
+            text="",
+            finish_reason="error",
+            error=f"unknown backend: {backend}",
+        )
     started = time.time()
     req = urllib.request.Request(
         url,
         data=json.dumps(body).encode("utf-8"),
-        headers={"Content-Type": "application/json"},
+        headers=headers,
         method="POST",
     )
     try:
@@ -271,7 +344,7 @@ def call_gemini(
     except urllib.error.HTTPError as exc:
         detail = exc.read().decode("utf-8", errors="replace")[:500]
         return EngineResult(
-            engine=f"gemini::{model}",
+            engine=engine_name,
             model_id=model,
             text="",
             finish_reason="error",
@@ -284,7 +357,7 @@ def call_gemini(
     text = "".join(p.get("text", "") for p in parts if isinstance(p, dict)).strip()
     usage = resp.get("usageMetadata", {})
     return EngineResult(
-        engine=f"gemini::{model}",
+        engine=engine_name,
         model_id=resp.get("modelVersion", model),
         text=text,
         finish_reason=cand.get("finishReason", "?"),

@@ -127,6 +127,13 @@ def build_records(
         pages = chapter_pages(page_map, chapter)
         page_texts, missing, labels_used = load_page_texts(chapter, pages, allow_missing_pages=allow_missing_pages)
         rows = verse_parser.parse_chapter_pages(page_texts)
+        if chapter > 1:
+            first_ones = [i for i, row in enumerate(rows) if row.verse == 1]
+            if first_ones:
+                rows = rows[first_ones[0]:]
+            second_ones = [i for i, row in enumerate(rows[1:], start=1) if row.verse == 1]
+            if second_ones:
+                rows = rows[:second_ones[0]]
         if missing:
             warnings.append(f"ch{chapter:02d}: missing OCR pages {missing}")
         if len(labels_used) > 1:
