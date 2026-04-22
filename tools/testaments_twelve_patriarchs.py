@@ -21,6 +21,7 @@ import argparse
 import json
 import pathlib
 import re
+import unicodedata
 from dataclasses import asdict, dataclass
 from typing import Iterable
 
@@ -87,6 +88,20 @@ TESTAMENTS: list[TestamentMeta] = [
     TestamentMeta(12, "benjamin", "Testament of Benjamin", 12),
 ]
 TESTAMENT_BY_SLUG = {meta.slug: meta for meta in TESTAMENTS}
+TITLE_MARKERS: dict[str, tuple[str, ...]] = {
+    "reuben": ("ΔΙΑΘΗΚΗ ΡΟΥΒ", "ΔΙΑΘΗΚΗ ΡΟΥΒΗΜ"),
+    "simeon": ("ΔΙΑΘΗΚΗ ΣΥΜΕ", "ΔΙΑΘΗΚΗ ΣΥΜΕΩΝ"),
+    "levi": ("ΔΙΑΘΗΚΗ ΛΕΥ", "ΔΙΑΘΗΚΗ ΛΕΥΙ"),
+    "judah": ("ΔΙΑΘΗΚΗ ΙΟΥΔ", "ΔΙΑΘΗΚΗ IOYΔ", "ΔΙΑΘΗΚΗ IOYAA"),
+    "issachar": ("ΔΙΑΘΗΚΗ ΙΣΑΧ", "ΔΙΑΘΗΚΗ IZSAX", "ΔΙΑΘΗΚΗ ΙΣΣΑΧ"),
+    "zebulun": ("ΔΙΑΘΗΚΗ ΖΑΒ", "ΔΙΑΘΗΚΗ ZAB", "ΔΙΑΘΗΚΗ ZEB"),
+    "dan": ("ΔΙΑΘΗΚΗ ΔΑΝ",),
+    "naphtali": ("ΔΙΑΘΗΚΗ ΝΕΦ", "ΔΙΑΘΗΚΗ NEΦ"),
+    "gad": ("ΔΙΑΘΗΚΗ ΓΑΔ",),
+    "asher": ("ΔΙΑΘΗΚΗ ΑΣΗΡ", "ΔΙΑΘΗΚΗ ASH"),
+    "joseph": ("ΔΙΑΘΗΚΗ ΙΩΣΗ", "ΔΙΑΘΗΚΗ IΩΣΗ", "ΔΙΑΘΗΚΗ ΙΩΣΗΦ"),
+    "benjamin": ("ΔΙΑΘΗΚΗ ΒΕΝ",),
+}
 
 ROMAN_NUMERALS: dict[str, int] = {
     "I": 1,
@@ -130,6 +145,12 @@ def _normalize_heading_token(token: str) -> str:
     those are equivalent.
     """
     return token.replace("Ι", "I")
+
+
+def _strip_diacritics(text: str) -> str:
+    return "".join(
+        ch for ch in unicodedata.normalize("NFD", text) if unicodedata.category(ch) != "Mn"
+    )
 
 
 def extract_running_head(page_text: str) -> str:
@@ -289,11 +310,22 @@ def _strip_leading_title_lines(lines: list[str], testament_slug: str) -> list[st
     return out
 
 
+def _trim_before_testament_title(raw_text: str, testament_slug: str) -> str:
+    upper = _strip_diacritics(raw_text).upper()
+    markers = TITLE_MARKERS.get(testament_slug, ())
+    starts = [upper.find(_strip_diacritics(marker).upper()) for marker in markers if upper.find(_strip_diacritics(marker).upper()) != -1]
+    if not starts:
+        return raw_text
+    start = min(starts)
+    return raw_text[start:]
+
+
 def parse_testament_text(testament_slug: str, raw_text: str) -> tuple[list[TestamentChapter], list[str]]:
     meta = TESTAMENT_BY_SLUG.get(testament_slug)
     if meta is None:
         raise KeyError(f"Unknown testament slug: {testament_slug!r}")
 
+    raw_text = _trim_before_testament_title(raw_text, testament_slug)
     lines = _strip_leading_title_lines(raw_text.splitlines(), testament_slug)
     normalized = "\n".join(lines).strip()
     warnings: list[str] = []
