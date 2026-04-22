@@ -89,6 +89,11 @@ DEUTEROCANONICAL_BOOKS: dict[str, tuple[int, int, int, str, str]] = {
     # enqueueing drafts.
     "MAN":   (0, 0, 0, "Prayer of Manasseh",                   "prayer_of_manasseh"),
     "PS151": (0, 0, 0, "Psalm 151",                            "psalm_151"),
+    # Psalms of Solomon — Swete prints it in the vol 3 appendix even
+    # though it's absent from Codex Vaticanus. See PSALMS_OF_SOLOMON.md
+    # for source rationale. Verse parser lives in tools/psalms_of_solomon.py
+    # and writes the final corpus JSONL directly.
+    "PSS":   (3, 788, 810, "Psalms of Solomon",                "psalms_of_solomon"),
 }
 
 # Known chapter counts per book — used as a hard ceiling when parsing to
@@ -116,6 +121,7 @@ BOOK_CHAPTER_COUNT: dict[str, int] = {
     "4MA": 18,
     "MAN": 1,
     "PS151": 1,
+    "PSS": 18,
 }
 
 
