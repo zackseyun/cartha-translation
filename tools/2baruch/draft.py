@@ -482,14 +482,28 @@ def parse_chapter_spec(spec: str) -> list[int]:
 def draft_chapter(chapter: int, *, backend: str, model: str, temperature: float, prompt_id: str, force: bool) -> DraftResult:
     if existing_translation_text(chapter) and not force:
         raise RuntimeError(f'2 Baruch chapter {chapter} already has translation text; pass --force to overwrite')
-    prompt = baruch_prompt.build_prompt(chapter)
-    prompt_sha = sha256_hex(SYSTEM_PROMPT + '\n\n---\n\n' + prompt)
-    tool_input, model_version, raw_arguments, actual_temp = call_model(backend=backend, system=SYSTEM_PROMPT, user=prompt, model=model, temperature=temperature)
-    validate_tool_input(tool_input)
-    output_hash = sha256_hex(canonical_json(tool_input))
-    record = build_record(chapter, tool_input, model_id=model, model_version=model_version, prompt_id=prompt_id, prompt_sha256=prompt_sha, temperature=actual_temp, output_hash=output_hash)
-    output_path = write_yaml(record, chapter)
-    return DraftResult(chapter=chapter, record=record, output_path=output_path, prompt_sha256=prompt_sha, model_version=model_version)
+    base_prompt = baruch_prompt.build_prompt(chapter)
+    prompts = [
+        base_prompt,
+        base_prompt + "\n\nIMPORTANT REPAIR INSTRUCTION: Your previous output failed validation. You MUST include a non-empty `lexical_decisions` array with concrete source words, chosen renderings, and rationales. Return the function call only.\n",
+        base_prompt + "\n\nSTRICT REQUIREMENT: Do not omit `lexical_decisions`. If the chapter is difficult, choose the 5-8 most important lexical decisions and supply them explicitly. Return the function call only.\n",
+    ]
+
+    last_error: Exception | None = None
+    for prompt in prompts:
+        prompt_sha = sha256_hex(SYSTEM_PROMPT + '\n\n---\n\n' + prompt)
+        tool_input, model_version, raw_arguments, actual_temp = call_model(backend=backend, system=SYSTEM_PROMPT, user=prompt, model=model, temperature=temperature)
+        try:
+            validate_tool_input(tool_input)
+        except Exception as exc:  # noqa: BLE001
+            last_error = exc
+            continue
+        output_hash = sha256_hex(canonical_json(tool_input))
+        record = build_record(chapter, tool_input, model_id=model, model_version=model_version, prompt_id=prompt_id, prompt_sha256=prompt_sha, temperature=actual_temp, output_hash=output_hash)
+        output_path = write_yaml(record, chapter)
+        return DraftResult(chapter=chapter, record=record, output_path=output_path, prompt_sha256=prompt_sha, model_version=model_version)
+
+    raise RuntimeError(f'2 Baruch chapter {chapter} failed validation after retries: {last_error}')
 
 
 def main() -> int:
