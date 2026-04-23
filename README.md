@@ -129,10 +129,7 @@ output against our stated commitments rather than guessing at hidden biases.
 ## Methodology
 
 See [METHODOLOGY.md](METHODOLOGY.md) for the drafting pipeline, cross-check
-protocol, and reproducibility verification. For the deuterocanonical
-source-text rescue work specifically — how the Swete corpus was improved,
-rescued, and confidence-promoted from direct scan inspection — see
-[docs/PHASE8_CORPUS_QUALITY_RESCUE.md](docs/PHASE8_CORPUS_QUALITY_RESCUE.md).
+protocol, and reproducibility verification.
 
 ## The Deuterocanonical Books (Apocrypha)
 
@@ -303,87 +300,29 @@ That refusal is the whole point of the Cartha Open Bible.
 
 ## Extra-canonical scripture
 
-Beyond the 13 LXX-based deuterocanonical books (Phase 8), the Cartha
-Open Bible is committed to translating a further corpus of
-extra-canonical texts under CC-BY 4.0. See
-[EXTRA_CANONICAL.md](EXTRA_CANONICAL.md) for the complete scope
-document.
+Beyond the 66-book Protestant canon and the 13 deuterocanonical books, the Cartha
+Open Bible includes a further corpus of extra-canonical texts — 1 Enoch, Jubilees,
+2 Esdras, 2 Baruch, the Didache, 1 Clement, Shepherd of Hermas, Psalms of Solomon,
+and selected Nag Hammadi texts — all under CC-BY 4.0. These are included because
+some are canonical in other Christian traditions (1 Enoch and Jubilees in the
+Ethiopian Orthodox canon), some are quoted directly in the NT (Jude cites 1 Enoch),
+and none of them exists in a modern, open-license English translation.
 
-The rationale is the same as for the deuterocanon, extended:
-
-- **Some of these texts are canonical in other Christian traditions.**
-  1 Enoch and Jubilees are received as Scripture by the Ethiopian
-  and Eritrean Orthodox Tewahedo Churches. A Bible that silently
-  excludes them is a Bible shaped by Western publishing history,
-  not by the historical breadth of Christian reception.
-- **Some are quoted explicitly in the New Testament.** Jude 14-15
-  quotes 1 Enoch 1:9 directly.
-- **Some shaped how the New Testament canon formed.** The Didache,
-  1 Clement, and the Shepherd of Hermas were included in early NT
-  codices (Sinaiticus includes Hermas; Alexandrinus includes 1
-  Clement). Understanding canon formation requires access to the
-  works that were weighed alongside the canonical ones.
-- **Every existing modern English translation is under restrictive
-  copyright.** No current open-license, modern-register translation
-  of 1 Enoch, 2 Esdras, 2 Baruch, or the Didache exists.
-
-### Scope
-
-Three tiers, by reception status rather than by scholarly quality.
-Every text ships with explicit canonical-status labeling across
-traditions, and for the third tier, with explicit framing of its
-date, manuscript provenance, and theological-literary character.
-
-**Tier 1 — extra-canonical with historical canonical status somewhere:**
-2 Esdras (KJV Apocrypha; Vulgate appendix), 1 Enoch (Ethiopian
-Orthodox canonical), Jubilees (Ethiopian Orthodox canonical),
-Psalms of Solomon (in some early LXX manuscripts).
-
-**Tier 2 — Apostolic Fathers and pseudepigrapha:** Didache, 1 Clement,
-Shepherd of Hermas, 2 Baruch, Testaments of the Twelve Patriarchs.
-
-**Tier 3 — early Christian mystical and contemplative texts (Nag
-Hammadi, with framing):** Gospel of Thomas, Gospel of Truth,
-Thunder Perfect Mind. We include these three because none of them
-articulates a cosmologically disruptive Gnostic framework: Thomas
-is a sayings collection, Truth is Valentinian contemplation without
-demiurge cosmology, and Thunder is a paradoxical divine-feminine
-monologue that resists categorization. We translate them with
-unambiguous framing as 4th-century Christian mystical literature —
-not canonical Scripture, but historically important.
-
-### What we are holding out
-
-**Apocryphon of John** and **Gospel of Philip** are not currently in
-scope. Both articulate explicit Gnostic cosmological or sacramental
-frameworks that we consider too theologically disruptive to include
-without further work on responsible framing. We are open to
-reconsidering.
-
-### How this gets built
-
-Extra-canonical translation follows Phase 9 (LXX deuterocanon
-drafting) in a phased rollout by shared pipeline. 2 Esdras and
-2 Baruch now sit in the same **Semitic apocalypse multi-witness**
-family (see [2ESDRAS.md](2ESDRAS.md) and [2BARUCH.md](2BARUCH.md)):
-2 Esdras is Latin-primary, 2 Baruch is Syriac-primary, but the
-architecture is intentionally shared. The
-Apostolic Fathers (Didache, 1 Clement, Shepherd of Hermas) reuse our
-existing LXX Greek-primary infrastructure. 1 Enoch and Jubilees
-require a new Ethiopic (Ge'ez) pipeline. The Nag Hammadi group
-requires a new Coptic pipeline plus per-codex license research.
-
-See [EXTRA_CANONICAL.md](EXTRA_CANONICAL.md) for per-text source
-editions, phase sequencing, and the per-text license situation.
+Every text ships with explicit canonical-status labeling and the same per-verse
+provenance as the canonical books. See [EXTRA_CANONICAL.md](EXTRA_CANONICAL.md)
+for the full scope, source strategy, and per-text status.
 
 ## Current status
 
-The project is in its initial AI-drafting phase. Every verse in this
-repository was produced by a frontier AI model, with full provenance, and
-is released as a draft — not as a finalized translation. What you are
-reading is exactly what the AI produced, with the rationale for every
-decision visible alongside it. The repository is public so the process is
-inspectable from the first commit forward.
+The initial AI drafting phase is complete. The full Protestant canon (OT + NT),
+all 13 deuterocanonical books, and the extra-canonical corpus (1 Enoch, Jubilees,
+2 Esdras, 2 Baruch, Didache, 1 Clement, Psalms of Solomon, and Nag Hammadi texts)
+have been drafted — over 40,400 verses total. Every verse was produced by a frontier
+AI model with full per-verse provenance, and is published as a draft open to revision.
+
+The project is now in active revision: revision passes are being applied book-by-book,
+with every revision committed individually and the rationale recorded in the YAML.
+The translation will never be "locked" — every improvement is auditable in git history.
 
 ## Contributing
 
@@ -392,70 +331,24 @@ templates under `.github/ISSUE_TEMPLATE/`. Engagement is welcomed from
 scholars, pastors, and lay readers. Our commitment is to respond publicly
 to every substantive concern.
 
-## Refreshing cached summaries after major revisions
-
-The live reader caches chapter- and book-level summaries separately from the
-translation text itself. Missing summaries are filled automatically by the
-existing summary-prewarm workflow, but **forced refreshes are manual on
-purpose**. We do **not** automatically regenerate summaries on every push.
-
-When a book has changed substantially, run:
-
-```bash
-scripts/refresh_book_summaries.sh "1 ENOCH"
-```
-
-Useful flags:
-
-```bash
-scripts/refresh_book_summaries.sh "1 ENOCH" --workers 20
-scripts/refresh_book_summaries.sh "1 ENOCH" --chapters-only
-```
-
-Recommended policy:
-
-- **Definitely run it when a book's second pass is finished.**
-- **Usually run it again after a third pass** if major wording or framing changed.
-- You can also run it after any other **significant revision batch** for that
-  book.
-- After the second and third pass, further summary changes should normally be
-  small, so routine refreshes beyond that are optional.
-
-## Release cadence
-
-The translation is built and released phase-by-phase, with each phase a full
-set of complete books (not partial books):
-
-- Phase 1: Pauline epistles (Romans through Philemon)
-- Phase 2: Gospels + Acts
-- Phase 3: General epistles + Revelation
-- Phase 4: Torah (Genesis through Deuteronomy)
-- Phase 5: Former Prophets (Joshua through 2 Kings)
-- Phase 6: Writings (Psalms, Proverbs, Job, Chronicles, etc.)
-- Phase 7: Latter Prophets (Isaiah, Jeremiah, Ezekiel, Twelve)
-- Phase 8: Deuterocanonical books (Tobit through 4 Maccabees, from LXX). Corpus complete as of 2026-04-20 (13 books, 6,337 verses, 98.9% high-confidence scan-adjudicated transcription). Translation drafting begins in Phase 9. See [DEUTEROCANONICAL.md](DEUTEROCANONICAL.md), [REFERENCE_SOURCES.md](REFERENCE_SOURCES.md) (three-zone scholarly-source policy), and [REVISION_LATER.md](REVISION_LATER.md) (deferred-source integration).
-
-Tagged releases follow the `vMAJOR.MINOR.PATCH` convention. The first public
-release is `v0.1-preview`.
-
 ## Directory structure
 
 ```
 cartha-open-bible/
-├── DEDICATION.md        Blessing and hope — to whom this work is offered
-├── PHILOSOPHY.md        Why this translation exists, open-source posture, commitments
-├── DOCTRINE.md          Theological commitments driving translation decisions
-├── METHODOLOGY.md       Drafting and cross-check pipeline
-├── REVISION_METHODOLOGY.md  How committed drafts are revised (reviser roles, revision criteria)
-├── DEUTEROCANONICAL.md  Strategy for including the Deuterocanonical / Apocrypha books
-├── CHANGELOG.md         Phase-by-phase release notes
-├── LICENSE              CC-BY 4.0
+├── DEDICATION.md            Blessing and hope — to whom this work is offered
+├── PHILOSOPHY.md            Why this translation exists, open-source posture, commitments
+├── DOCTRINE.md              Theological commitments driving translation decisions
+├── METHODOLOGY.md           Drafting and cross-check pipeline
+├── REVISION_METHODOLOGY.md  How committed drafts are revised
+├── DEUTEROCANONICAL.md      Deuterocanonical / Apocrypha books strategy
+├── EXTRA_CANONICAL.md       Extra-canonical texts scope, sources, per-text status
+├── CHANGELOG.md             Release notes
+├── LICENSE                  CC-BY 4.0
 ├── schema/
 │   └── verse.schema.json    JSON Schema for per-verse YAML
-├── sources/             Vendored source texts (see sources/README.md)
-├── translation/         Per-verse YAML (translation/nt/<book>/<chap>/<verse>.yaml)
-├── tools/               draft.py, cross_check.py, verify.py, consistency_lint.py
-├── outreach/            Correspondence with publishers (ESV, NLT, etc.)
+├── sources/                 Vendored source texts (see sources/README.md)
+├── translation/             Per-verse YAML (translation/nt/<book>/<chap>/<verse>.yaml)
+├── tools/                   draft.py, cross_check.py, verify.py, consistency_lint.py
 └── .github/
-    └── ISSUE_TEMPLATE/  Public disagreement and concern templates
+    └── ISSUE_TEMPLATE/      Public disagreement and concern templates
 ```
