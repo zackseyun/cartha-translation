@@ -69,6 +69,7 @@ STRATEGY_ENHANCED_REVIEW = "enhanced_review"               # v2 prompt + context
 STRATEGY_PHASE10_GREEK_APOCRYPHA = "phase10_greek_apocrypha"
 STRATEGY_PHASE10_ETHIOPIC_PSEUDEPIGRAPHA = "phase10_ethiopic_pseudepigrapha"
 STRATEGY_PHASE10_COPTIC_GNOSTIC = "phase10_coptic_gnostic"
+STRATEGY_PHASE10_SYRIAC_APOCALYPSE = "phase10_syriac_apocalypse"
 
 # Books drawn in the "high-scrutiny" strategy. Book slugs match the
 # `translation/<testament>/<slug>/` directory structure.
@@ -497,6 +498,7 @@ def main() -> int:
             STRATEGY_PHASE10_GREEK_APOCRYPHA,
             STRATEGY_PHASE10_ETHIOPIC_PSEUDEPIGRAPHA,
             STRATEGY_PHASE10_COPTIC_GNOSTIC,
+            STRATEGY_PHASE10_SYRIAC_APOCALYPSE,
         ],
     )
     p_submit.add_argument("--model", default="gemini-3.1-pro-preview")
@@ -544,6 +546,7 @@ def main() -> int:
                 STRATEGY_PHASE10_GREEK_APOCRYPHA,
                 STRATEGY_PHASE10_ETHIOPIC_PSEUDEPIGRAPHA,
                 STRATEGY_PHASE10_COPTIC_GNOSTIC,
+                STRATEGY_PHASE10_SYRIAC_APOCALYPSE,
             ):
                 if not args.books:
                     raise SystemExit(f"--books required for {args.strategy}, e.g. 'deuterocanon:prayer_of_manasseh'")
