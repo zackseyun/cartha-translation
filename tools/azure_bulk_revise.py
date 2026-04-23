@@ -154,6 +154,7 @@ def call_azure(
     source_text: str,
     source_language: str,
     current_translation: str,
+    context_block: str = "",
 ) -> dict[str, Any]:
     """Call Azure GPT-5.4 for a revision pass. Returns parsed tool args."""
     deployment = os.environ.get("AZURE_OPENAI_DEPLOYMENT_ID", DEFAULT_DEPLOYMENT)
@@ -164,6 +165,7 @@ def call_azure(
         f"Reference: {reference}\n"
         f"Source ({source_language}):\n{source_text}\n\n"
         f"Current draft:\n{current_translation}"
+        + context_block
     )
 
     payload = {
@@ -247,6 +249,33 @@ def revise_verse(
     if not source_text or not current_text:
         return {"path": str(path), "error": "missing source or translation text"}
 
+    # Build context: lexical decisions, footnotes, prior revisions
+    context_parts = []
+    lexical = data.get("lexical_decisions") or []
+    if lexical:
+        lex_lines = []
+        for ld in lexical[:6]:  # cap at 6 to stay within token budget
+            word = ld.get("source_word", "")
+            chosen = ld.get("chosen", "")
+            rationale = str(ld.get("rationale") or "")[:200]
+            alts = ", ".join(ld.get("alternatives") or [])
+            lex_lines.append(f"  {word} → '{chosen}' (alts: {alts})\n    Rationale: {rationale}")
+        context_parts.append("ESTABLISHED LEXICAL DECISIONS (do not override these):\n" + "\n".join(lex_lines))
+    footnotes = (translation.get("footnotes") or [])
+    if footnotes:
+        fn_lines = [f"  [{f.get('marker')}] {str(f.get('text',''))[:150]}" for f in footnotes[:4]]
+        context_parts.append("TRANSLATION FOOTNOTES (reflect translator intent):\n" + "\n".join(fn_lines))
+    prior_revisions = data.get("revisions") or []
+    if prior_revisions:
+        last = prior_revisions[-1]
+        context_parts.append(
+            f"MOST RECENT REVISION ({last.get('adjudicator','?')}):\n"
+            f"  Changed: {str(last.get('from',''))[:100]!r}\n"
+            f"  To:      {str(last.get('to',''))[:100]!r}\n"
+            f"  Reason:  {str(last.get('rationale',''))[:150]}"
+        )
+    context_block = ("\n\n" + "\n\n".join(context_parts)) if context_parts else ""
+
     try:
         args = call_azure(
             endpoint,
@@ -255,6 +284,7 @@ def revise_verse(
             source_text=source_text,
             source_language=source_language,
             current_translation=current_text,
+            context_block=context_block,
         )
     except Exception as exc:
         return {"path": str(path), "error": str(exc)}

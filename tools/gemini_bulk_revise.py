@@ -105,13 +105,15 @@ def resolve_gemini_key() -> str:
 
 
 def call_gemini(api_key: str, reference: str, source_text: str,
-                source_language: str, current_translation: str) -> dict[str, Any]:
+                source_language: str, current_translation: str,
+                context_block: str = "") -> dict[str, Any]:
     url = f"{AI_STUDIO_BASE}/{GEMINI_MODEL}:generateContent?key={api_key}"
 
     user_text = (
         f"Reference: {reference}\n"
         f"Source ({source_language}):\n{source_text}\n\n"
         f"Current draft:\n{current_translation}"
+        + context_block
     )
 
     payload = {
@@ -186,6 +188,32 @@ def revise_verse(path: pathlib.Path, api_key: str) -> dict[str, Any]:
     if not source_text or not current_text:
         return {"path": str(path), "error": "missing source or translation text"}
 
+    context_parts = []
+    lexical = data.get("lexical_decisions") or []
+    if lexical:
+        lex_lines = []
+        for ld in lexical[:6]:
+            word = ld.get("source_word", "")
+            chosen = ld.get("chosen", "")
+            rationale = str(ld.get("rationale") or "")[:200]
+            alts = ", ".join(ld.get("alternatives") or [])
+            lex_lines.append(f"  {word} → '{chosen}' (alts: {alts})\n    Rationale: {rationale}")
+        context_parts.append("ESTABLISHED LEXICAL DECISIONS (do not override these):\n" + "\n".join(lex_lines))
+    footnotes = (translation.get("footnotes") or [])
+    if footnotes:
+        fn_lines = [f"  [{f.get('marker')}] {str(f.get('text',''))[:150]}" for f in footnotes[:4]]
+        context_parts.append("TRANSLATION FOOTNOTES (reflect translator intent):\n" + "\n".join(fn_lines))
+    prior_revisions = data.get("revisions") or []
+    if prior_revisions:
+        last = prior_revisions[-1]
+        context_parts.append(
+            f"MOST RECENT REVISION ({last.get('adjudicator','?')}):\n"
+            f"  Changed: {str(last.get('from',''))[:100]!r}\n"
+            f"  To:      {str(last.get('to',''))[:100]!r}\n"
+            f"  Reason:  {str(last.get('rationale',''))[:150]}"
+        )
+    context_block = ("\n\n" + "\n\n".join(context_parts)) if context_parts else ""
+
     try:
         result = call_gemini(
             api_key,
@@ -193,6 +221,7 @@ def revise_verse(path: pathlib.Path, api_key: str) -> dict[str, Any]:
             source_text=source_text,
             source_language=source_language,
             current_translation=current_text,
+            context_block=context_block,
         )
     except Exception as exc:
         return {"path": str(path), "error": str(exc)}
