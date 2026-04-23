@@ -75,6 +75,7 @@ V3_STRATEGIES = {
     "phase10_greek_apocrypha",
     "phase10_ethiopic_pseudepigrapha",
     "phase10_coptic_gnostic",
+    "phase10_syriac_apocalypse",
 }
 
 
