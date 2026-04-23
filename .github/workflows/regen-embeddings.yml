@@ -86,7 +86,11 @@ jobs:
           TESTAMENT_ARGS=$(echo "$TESTAMENTS" | tr ',' '\n' | awk 'NF{printf "--testament %s ", $0}')
           TESTAMENT_ARGS_B64=$(printf "%s" "$TESTAMENT_ARGS" | base64 -w0)
           export JOB_NAME COMMIT_SHA WORKERS TESTAMENT_ARGS_B64
-          envsubst < .github/workflows/embedding-job-template.yaml > /tmp/embed-job.yaml
+          # Restrict substitution to known vars so shell vars in the
+          # container script (e.g. $T_ARGS) are NOT replaced by envsubst.
+          envsubst '$JOB_NAME $COMMIT_SHA $WORKERS $TESTAMENT_ARGS_B64' \
+            < .github/workflows/embedding-job-template.yaml \
+            > /tmp/embed-job.yaml
           echo "---- rendered Job ----"
           head -40 /tmp/embed-job.yaml
           kubectl apply -f /tmp/embed-job.yaml
