@@ -29,7 +29,16 @@ from copy import deepcopy
 from ruamel.yaml import YAML
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
-BOOK_DIR = REPO_ROOT / "translation" / "extra_canonical" / "2_baruch"
+EC_ROOT = REPO_ROOT / "translation" / "extra_canonical"
+
+# Books that may need verse splitting.  Add entries here as new books are drafted.
+BOOK_CONFIGS: dict[str, tuple[str, str, int]] = {
+    "2_baruch":  ("2 Baruch",  "2BA",   87),
+    "1_clement": ("1 Clement", "1CLEM", 65),
+}
+
+# Legacy single-book defaults (kept for backwards compat with --chapter flag)
+BOOK_DIR = EC_ROOT / "2_baruch"
 BOOK_NAME = "2 Baruch"
 BOOK_CODE = "2BA"
 
@@ -73,9 +82,13 @@ def split_text(text: str, chapter: int = 0) -> list[tuple[int, str]]:
     if not matches:
         return [(1, text)]
 
+    # If text starts before the first verse-number marker, that's verse 1.
+    verse_dict: dict[int, str] = {}
+    if matches[0].start() > 0:
+        verse_dict[1] = text[: matches[0].start()].strip()
+
     # Build a dict so duplicate verse numbers are resolved with "last wins".
     # Some chapters have duplicate drafts; the final occurrence is authoritative.
-    verse_dict: dict[int, str] = {}
     for i, m in enumerate(matches):
         start = m.end()
         end = matches[i + 1].start() if i + 1 < len(matches) else len(text)
@@ -91,20 +104,21 @@ def build_verse_record(
     verse_text: str,
     source_record: dict,
     is_first: bool,
+    book_name: str,
+    book_code: str,
 ) -> dict:
     src = deepcopy(source_record.get("source") or {})
     src["verse"] = verse_num
     src.pop("verse_count", None)
-    # Only carry full Syriac source text on verse 1 (chapter-level, not per-verse)
     if not is_first:
         src.pop("text", None)
         src.pop("note", None)
 
     rec: dict = {
-        "id": f"{BOOK_CODE}.{chapter}.{verse_num}",
-        "reference": f"{BOOK_NAME} {chapter}:{verse_num}",
+        "id": f"{book_code}.{chapter}.{verse_num}",
+        "reference": f"{book_name} {chapter}:{verse_num}",
         "unit": "verse",
-        "book": BOOK_NAME,
+        "book": book_name,
         "source": src,
         "translation": {
             "text": verse_text,
@@ -113,7 +127,6 @@ def build_verse_record(
         "status": source_record.get("status", "ai_draft"),
     }
 
-    # Carry provenance fields only on verse 1
     if is_first:
         for key in ("lexical_decisions", "theological_decisions", "footnotes",
                     "ai_draft", "ai_draft_provenance", "revision_pass", "revisions"):
@@ -123,9 +136,16 @@ def build_verse_record(
     return rec
 
 
-def process_chapter(ch: int, dry_run: bool, yaml_rt: YAML) -> int:
+def process_chapter(
+    ch: int, dry_run: bool, yaml_rt: YAML,
+    book_dir: pathlib.Path | None = None,
+    book_name: str = BOOK_NAME,
+    book_code: str = BOOK_CODE,
+) -> int:
     """Return number of verse files written (0 if chapter already split or skipped)."""
-    chapter_dir = BOOK_DIR / f"{ch:03d}"
+    if book_dir is None:
+        book_dir = BOOK_DIR
+    chapter_dir = book_dir / f"{ch:03d}"
     mirror_path = chapter_dir / "001.yaml"
     if not mirror_path.exists():
         return 0
@@ -153,7 +173,8 @@ def process_chapter(ch: int, dry_run: bool, yaml_rt: YAML) -> int:
     # Write per-verse files
     written_paths = set()
     for i, (vnum, vtext) in enumerate(verses):
-        rec = build_verse_record(ch, vnum, vtext, record, is_first=(i == 0))
+        rec = build_verse_record(ch, vnum, vtext, record, is_first=(i == 0),
+                                 book_name=book_name, book_code=book_code)
         out_path = chapter_dir / f"{vnum:03d}.yaml"
         with out_path.open("w", encoding="utf-8") as fh:
             yaml_rt.dump(rec, fh)
@@ -178,18 +199,27 @@ def main() -> int:
     yaml_rt.preserve_quotes = True
     yaml_rt.width = 4096
 
-    chapters = [args.chapter] if args.chapter else range(1, 88)
     total_split = already_done = 0
 
-    for ch in chapters:
-        n = process_chapter(ch, dry_run=args.dry_run, yaml_rt=yaml_rt)
-        if n > 1:
-            total_split += 1
-        elif n == 1:
-            already_done += 1
+    if args.chapter:
+        # Legacy: single-chapter mode defaults to 2 Baruch
+        n = process_chapter(args.chapter, dry_run=args.dry_run, yaml_rt=yaml_rt)
+        total_split += int(n > 1)
+        already_done += int(n == 1)
+    else:
+        for slug, (bname, bcode, max_ch) in BOOK_CONFIGS.items():
+            bdir = EC_ROOT / slug
+            print(f"\n{bname} ({slug}):")
+            for ch in range(1, max_ch + 1):
+                n = process_chapter(ch, dry_run=args.dry_run, yaml_rt=yaml_rt,
+                                    book_dir=bdir, book_name=bname, book_code=bcode)
+                if n > 1:
+                    total_split += 1
+                elif n == 1:
+                    already_done += 1
 
     label = "would split" if args.dry_run else "split"
-    print(f"\n{label}: {total_split} chapters (multi-verse); {already_done} single-verse (skipped)")
+    print(f"\n{label}: {total_split} chapters (multi-verse); {already_done} single-verse (cleaned)")
     return 0
 
 
