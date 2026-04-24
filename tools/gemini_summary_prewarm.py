@@ -154,6 +154,10 @@ _PSEUDEPIGRAPHAL_BOOKS = {
     "ENOCH", "1 ENOCH", "2 ENOCH", "3 ENOCH",
     "JUBILEES",
     "TESTAMENTS OF THE TWELVE PATRIARCHS", "TESTAMENTS",
+    "TESTAMENT OF REUBEN", "TESTAMENT OF SIMEON", "TESTAMENT OF LEVI",
+    "TESTAMENT OF JUDAH", "TESTAMENT OF ISSACHAR", "TESTAMENT OF ZEBULUN",
+    "TESTAMENT OF DAN", "TESTAMENT OF NAPHTALI", "TESTAMENT OF GAD",
+    "TESTAMENT OF ASHER", "TESTAMENT OF JOSEPH", "TESTAMENT OF BENJAMIN",
     "2 ESDRAS", "4 EZRA",
     "2 BARUCH",
     "ASCENSION OF ISAIAH",
@@ -564,7 +568,20 @@ BOOK_LABEL_OVERRIDES = {
     "2_kings": "2 KINGS",
     "1_chronicles": "1 CHRONICLES",
     "2_chronicles": "2 CHRONICLES",
-    "song_of_songs": "SONG OF SONGS",
+    "song_of_songs": "SONG OF SOLOMON",
+    # Testaments of the Twelve Patriarchs — nested under a collection dir
+    "testaments_twelve_patriarchs/reuben":   "TESTAMENT OF REUBEN",
+    "testaments_twelve_patriarchs/simeon":   "TESTAMENT OF SIMEON",
+    "testaments_twelve_patriarchs/levi":     "TESTAMENT OF LEVI",
+    "testaments_twelve_patriarchs/judah":    "TESTAMENT OF JUDAH",
+    "testaments_twelve_patriarchs/issachar": "TESTAMENT OF ISSACHAR",
+    "testaments_twelve_patriarchs/zebulun":  "TESTAMENT OF ZEBULUN",
+    "testaments_twelve_patriarchs/dan":      "TESTAMENT OF DAN",
+    "testaments_twelve_patriarchs/naphtali": "TESTAMENT OF NAPHTALI",
+    "testaments_twelve_patriarchs/gad":      "TESTAMENT OF GAD",
+    "testaments_twelve_patriarchs/asher":    "TESTAMENT OF ASHER",
+    "testaments_twelve_patriarchs/joseph":   "TESTAMENT OF JOSEPH",
+    "testaments_twelve_patriarchs/benjamin": "TESTAMENT OF BENJAMIN",
 }
 
 
@@ -575,6 +592,73 @@ def slug_to_label(slug: str) -> str:
 
 
 # ── chapter loader ─────────────────────────────────────────────────────
+
+def _load_book_chapters(book_dir: pathlib.Path, book_label: str,
+                        translation_code: str, chapters: list) -> None:
+    """Append chapter dicts from a single book directory into *chapters*."""
+    nested_ch_nums: set[int] = set()
+    for _e in book_dir.iterdir():
+        if _e.is_dir():
+            try:
+                nested_ch_nums.add(int(_e.name))
+            except ValueError:
+                pass
+    for ch_entry in sorted(book_dir.iterdir()):
+        if ch_entry.is_dir():
+            try:
+                ch_num = int(ch_entry.name)
+            except ValueError:
+                continue
+            verse_files = sorted(ch_entry.glob("*.yaml"))
+            if not verse_files:
+                continue
+            verses = []
+            for vf in verse_files:
+                try:
+                    data = yaml.safe_load(vf.read_text(encoding="utf-8"))
+                except Exception as exc:
+                    print(f"[warn] failed to parse {vf}: {exc}", file=sys.stderr)
+                    continue
+                try:
+                    vnum = int(vf.stem)
+                except ValueError:
+                    continue
+                text = ((data or {}).get("translation") or {}).get("text") or ""
+                if not text.strip():
+                    continue
+                verses.append({
+                    "book": book_label,
+                    "chapter": ch_num,
+                    "verse": vnum,
+                    "text": text,
+                    "translation": translation_code,
+                })
+            if verses:
+                chapters.append({"book_label": book_label, "chapter": ch_num, "verses": verses})
+        elif ch_entry.suffix == ".yaml" and ch_entry.is_file():
+            try:
+                ch_num = int(ch_entry.stem)
+            except ValueError:
+                continue
+            if ch_num in nested_ch_nums:
+                continue
+            try:
+                data = yaml.safe_load(ch_entry.read_text(encoding="utf-8"))
+            except Exception as exc:
+                print(f"[warn] failed to parse {ch_entry}: {exc}", file=sys.stderr)
+                continue
+            text = ((data or {}).get("translation") or {}).get("text") or ""
+            if not text.strip():
+                continue
+            yaml_book = (data or {}).get("book") or ""
+            effective_label = normalize_token(yaml_book) if yaml_book else book_label
+            chapters.append({
+                "book_label": effective_label,
+                "chapter": ch_num,
+                "verses": [{"book": effective_label, "chapter": ch_num, "verse": 1,
+                             "text": text, "translation": translation_code}],
+            })
+
 
 def load_chapters(translation_code: str) -> list[dict]:
     """Return list of {book_label, chapter, verses:[{book,chapter,verse,text,translation}]}."""
@@ -590,84 +674,22 @@ def load_chapters(translation_code: str) -> list[dict]:
         for book_dir in sorted(base.iterdir()):
             if not book_dir.is_dir():
                 continue
+            # Detect "collection" dirs whose sub-dirs are named books (not chapter nums).
+            # e.g. testaments_twelve_patriarchs/{reuben,simeon,...}/{001,002,...}/verses
+            named_subdirs = [d for d in sorted(book_dir.iterdir())
+                             if d.is_dir() and not d.name.isdigit()]
+            numeric_subdirs = [d for d in book_dir.iterdir()
+                               if d.is_dir() and d.name.isdigit()]
+            if named_subdirs and not numeric_subdirs:
+                # Collection: recurse, treating each named sub-dir as a book
+                for sub_book_dir in named_subdirs:
+                    sub_slug = f"{book_dir.name}/{sub_book_dir.name}"
+                    sub_label = slug_to_label(sub_slug)
+                    _load_book_chapters(sub_book_dir, sub_label, translation_code, chapters)
+                continue
+
             book_label = slug_to_label(book_dir.name)
-            # Flat .yaml sibling files are skipped when a same-numbered dir exists.
-            nested_ch_nums = set()
-            for _e in book_dir.iterdir():
-                if _e.is_dir():
-                    try:
-                        nested_ch_nums.add(int(_e.name))
-                    except ValueError:
-                        pass
-            for ch_entry in sorted(book_dir.iterdir()):
-                if ch_entry.is_dir():
-                    # Standard nested structure: book/NNN/VVV.yaml
-                    try:
-                        ch_num = int(ch_entry.name)
-                    except ValueError:
-                        continue
-                    verse_files = sorted(ch_entry.glob("*.yaml"))
-                    if not verse_files:
-                        continue
-                    verses = []
-                    for vf in verse_files:
-                        try:
-                            data = yaml.safe_load(vf.read_text(encoding="utf-8"))
-                        except Exception as exc:
-                            print(f"[warn] failed to parse {vf}: {exc}", file=sys.stderr)
-                            continue
-                        try:
-                            vnum = int(vf.stem)
-                        except ValueError:
-                            continue
-                        text = ((data or {}).get("translation") or {}).get("text") or ""
-                        if not text.strip():
-                            continue
-                        verses.append({
-                            "book": book_label,
-                            "chapter": ch_num,
-                            "verse": vnum,
-                            "text": text,
-                            "translation": translation_code,
-                        })
-                    if verses:
-                        chapters.append({
-                            "book_label": book_label,
-                            "chapter": ch_num,
-                            "verses": verses,
-                        })
-                elif ch_entry.suffix == ".yaml" and ch_entry.is_file():
-                    # Flat structure: book/NNN.yaml (extra_canonical sections).
-                    # Skip if the same chapter number already has a nested dir.
-                    try:
-                        ch_num = int(ch_entry.stem)
-                    except ValueError:
-                        continue
-                    if ch_num in nested_ch_nums:
-                        continue
-                    try:
-                        data = yaml.safe_load(ch_entry.read_text(encoding="utf-8"))
-                    except Exception as exc:
-                        print(f"[warn] failed to parse {ch_entry}: {exc}", file=sys.stderr)
-                        continue
-                    text = ((data or {}).get("translation") or {}).get("text") or ""
-                    if not text.strip():
-                        continue
-                    # Read book label from YAML field when available so it matches
-                    # the label used in DynamoDB (e.g. "Shepherd of Hermas" not slug).
-                    yaml_book = (data or {}).get("book") or ""
-                    effective_label = normalize_token(yaml_book) if yaml_book else book_label
-                    chapters.append({
-                        "book_label": effective_label,
-                        "chapter": ch_num,
-                        "verses": [{
-                            "book": effective_label,
-                            "chapter": ch_num,
-                            "verse": 1,
-                            "text": text,
-                            "translation": translation_code,
-                        }],
-                    })
+            _load_book_chapters(book_dir, book_label, translation_code, chapters)
     return chapters
 
 
