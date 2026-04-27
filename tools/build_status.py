@@ -130,8 +130,23 @@ DEUTEROCANON_BOOKS: list[tuple[str, str, int, int, str]] = [
 ]
 
 
+# Display-name → on-disk slug overrides for OT/NT books whose
+# directory name diverges from the auto-derived slug. The
+# deuterocanon catalog already carries an explicit slug per row,
+# but NT/OT relied on a name→slug derivation. "Song of Solomon"
+# breaks that: the directory is translation/ot/song_of_songs/
+# (matching the Hebrew Shir HaShirim naming used elsewhere in
+# the repo) so the auto-derived "song_of_solomon" finds nothing
+# and status.json reports the book as 0/117 drafted when it is
+# actually fully drafted and reviewed. Add an entry here for
+# any future divergence rather than renaming directories.
+OT_NT_SLUG_OVERRIDES: dict[str, str] = {
+    "Song of Solomon": "song_of_songs",
+}
+
+
 def book_slug(name: str) -> str:
-    return name.lower().replace(" ", "_")
+    return OT_NT_SLUG_OVERRIDES.get(name) or name.lower().replace(" ", "_")
 
 
 def count_book(
