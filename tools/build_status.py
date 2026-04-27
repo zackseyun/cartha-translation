@@ -114,7 +114,12 @@ DEUTEROCANON_BOOKS: list[tuple[str, str, int, int, str]] = [
     ("Additions to Esther", "ESG", 6, 107, "additions_to_esther"),
     ("Wisdom of Solomon", "WIS", 19, 436, "wisdom_of_solomon"),
     ("Sirach", "SIR", 51, 1467, "sirach"),
-    ("Baruch", "BAR", 5, 213, "baruch"),
+    # Baruch is the standard 5-chapter book (141 verses). The catalog
+    # previously had 213, which double-counted Letter of Jeremiah
+    # (separate row, 72 verses) — some traditions print LJE as
+    # Baruch chapter 6. With Baruch counted on its own, drafting is
+    # complete (141/141) and reviewed.
+    ("Baruch", "BAR", 5, 141, "baruch"),
     ("Letter of Jeremiah", "LJE", 1, 72, "letter_of_jeremiah"),
     ("Prayer of Azariah and Song of the Three", "PAZ", 1, 68, "prayer_of_azariah"),
     ("Susanna", "SUS", 1, 64, "susanna"),
