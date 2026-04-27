@@ -57,6 +57,44 @@ state *as of* the pinned SHA, before the snapshot was committed.
 **Schema:** see `tools/build_status.py` for the authoritative shape.
 Bump `schema_version` when adding fields the frontend must branch on.
 
+## Regenerating `revisions.json`
+
+`revisions.json` powers the public [revisions page](https://cartha.com/cartha-open-bible/revisions).
+It carries two distinct signals:
+
+1. **Applied edits** (the `revisions:` array on each verse YAML) —
+   visible to anyone with the repo, regenerable on GitHub Actions.
+2. **Review-pass coverage** (every verdict from `state/reviews/**`,
+   including "agree" verdicts where no edit was applied) — this is the
+   honest answer to "how many verses got a second pair of eyes." Lives
+   only on the maintainer's Mac because `state/` is gitignored.
+
+If you regenerate from a tree without `state/reviews/` populated
+(GitHub Actions, a fresh clone), the script preserves whatever
+`review_coverage` block was last published rather than overwriting it
+with zeros.
+
+**The flywheel** (lives on the maintainer's Mac, see
+`scripts/com.cartha.cob-revisions-flywheel.plist`):
+
+```bash
+# install once:
+cp scripts/cob-revisions-flywheel.sh ~/scripts/
+cp scripts/com.cartha.cob-revisions-flywheel.plist ~/Library/LaunchAgents/
+launchctl load ~/Library/LaunchAgents/com.cartha.cob-revisions-flywheel.plist
+```
+
+It runs every 30 min, regenerates `revisions.json`, and pushes if any
+counts changed (with `pull --rebase --autostash` to coexist with the
+hourly `regen-status.yml` workflow). Logs at
+`/tmp/cob-revisions-flywheel-stdout.log`.
+
+**Manual one-shot:**
+```bash
+python3 tools/build_revisions_index.py
+git add revisions.json && git commit -m "revisions: regenerate" && git push
+```
+
 ## Publishing to clients — CDN pipeline
 
 The website and mobile apps do **not** read this repo directly for

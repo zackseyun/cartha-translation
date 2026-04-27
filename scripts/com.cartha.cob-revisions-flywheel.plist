@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.cartha.cob-revisions-flywheel</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/Users/zackseyun/scripts/cob-revisions-flywheel.sh</string>
+    </array>
+    <!-- Every 30 minutes. state/reviews/ is local-only because state/
+         is gitignored (see CLAUDE.md). The remote regen-status.yml
+         workflow runs hourly for the drafting numbers; this one
+         covers the review-pass numbers that GH Actions can't see. -->
+    <key>StartInterval</key>
+    <integer>1800</integer>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/tmp/cob-revisions-flywheel-stdout.log</string>
+    <key>StandardErrorPath</key>
+    <string>/tmp/cob-revisions-flywheel-stderr.log</string>
+    <key>ProcessType</key>
+    <string>Background</string>
+</dict>
+</plist>
