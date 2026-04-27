@@ -136,30 +136,28 @@ as of the most recent snapshot:
 Every verse remains a draft. What has changed since the project began is
 the depth of the review pipeline, not the claim about finality:
 
-- **Drafting:** GPT-5.4 produces the first English rendering for each
-  verse, anchored in the doctrine prompt and the verse's source-language
-  text (Greek, Hebrew, or Aramaic depending on the book).
-- **Cross-model review:** Gemini 2.5 Pro reads each draft against the
-  source text and flags lexical disagreements, awkward English, and
-  category-1 grammar issues. Reviews land in `state/reviews/` as
-  inspectable JSON.
-- **Revision pass:** an automated GPT-5.4 revision pass adjudicates
-  the cross-model feedback and either applies the change or marks
-  the verse `unchanged`. Every revision is recorded in the verse YAML's
-  `revisions` array with `from`, `to`, rationale, and a model attribution
-  — so anyone reading the file can see the full negotiation history.
-- **Regression checks:** a Claude Sonnet regression-fix layer catches
-  cases where an automated revision violates a documented project policy
-  (e.g., Χριστός being silently changed back to "Christ" against
-  DOCTRINE.md). Those reverts are also visible in the same `revisions`
-  array.
+- **Drafting:** a frontier drafter model produces the first English
+  rendering for each verse, anchored in the doctrine prompt and the
+  verse's source-language text (Greek, Hebrew, or Aramaic depending on
+  the book).
+- **Revision pass:** **Gemini 3.1 Pro** reads each draft against the
+  source text, identifies lexical disagreements, awkward English, and
+  category-1 grammar issues, and adjudicates whether to apply a change
+  or mark the verse `unchanged`. Every revision is recorded in the verse
+  YAML's `revisions` array with `from`, `to`, rationale, and a model
+  attribution — so anyone reading the file can see the full negotiation
+  history.
+- **Regression checks:** a regression-fix layer catches cases where an
+  automated revision silently violates a documented project policy
+  (e.g., Χριστός being changed back to "Christ" against DOCTRINE.md).
+  Those reverts are also visible in the same `revisions` array.
 - **Direct human review** (still informal): commits land in `main`
   through standard git workflow with public diffs. Issue tracker is open;
   every revision can be challenged.
 
-This is no longer "what one AI produced." It is what one drafter wrote,
-two reviewers critiqued, an adjudicator decided, and a regression check
-audited — with the entire negotiation persisted in version control.
+This is no longer "what one AI produced." It is a drafter, an
+independent revision pass on a different model family, and a policy
+audit — with the entire negotiation persisted in version control.
 
 What it is **not** yet: signed off by a credentialed scholar with named
 authority over the rendering. We do not pretend to that, and the commit
