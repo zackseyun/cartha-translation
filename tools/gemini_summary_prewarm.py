@@ -569,6 +569,10 @@ BOOK_LABEL_OVERRIDES = {
     "1_chronicles": "1 CHRONICLES",
     "2_chronicles": "2 CHRONICLES",
     "song_of_songs": "SONG OF SOLOMON",
+    # Deuterocanon — slug doesn't include the second clause of the
+    # canonical book name, so the cache key would never match what the
+    # reader queries with ("Prayer of Azariah and Song of the Three").
+    "prayer_of_azariah": "PRAYER OF AZARIAH AND SONG OF THE THREE",
     # Testaments of the Twelve Patriarchs — nested under a collection dir
     "testaments_twelve_patriarchs/reuben":   "TESTAMENT OF REUBEN",
     "testaments_twelve_patriarchs/simeon":   "TESTAMENT OF SIMEON",
