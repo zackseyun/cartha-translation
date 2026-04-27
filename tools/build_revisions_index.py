@@ -68,8 +68,17 @@ import lxx_swete  # noqa: E402
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
+REVIEWS_ROOT = REPO_ROOT / "state" / "reviews"
 OUT_PATH = REPO_ROOT / "revisions.json"
-SCHEMA_VERSION = 1
+# Bumped to 2 when the review_coverage block was added. The block
+# captures every review pass we ran (one record per verse per
+# reviewer), independent of whether the pass produced an applied
+# edit. Without it the public count missed every "agree" verdict —
+# i.e., the majority of the work — and made it look like only ~9%
+# of verses had been touched. The frontend should treat the absence
+# of review_coverage as "old snapshot, only applied-edit counts
+# available" and fall back gracefully.
+SCHEMA_VERSION = 2
 
 # 3-letter codes (SBL / Paratext style) keyed by slug — drives the
 # canonical_id prefix (GEN, EXO, ...) and provides display names.
@@ -200,6 +209,99 @@ def walk_verses() -> list[dict[str, Any]]:
     return out
 
 
+def walk_review_records() -> dict[str, Any]:
+    """Aggregate state/reviews/**.json into a public coverage block.
+
+    Each review file is one verse-level pass by a reviewer model and
+    represents work done regardless of whether an edit was applied.
+    state/ is gitignored, so this only produces meaningful output when
+    run from a working tree that has the review records present (i.e.,
+    locally on the maintainer's machine — see the launchd flywheel
+    com.cartha.cob-revisions-flywheel.plist). When run on GitHub
+    Actions the dir is empty and we return zeros, which is honest:
+    the public snapshot is stale until the local flywheel pushes.
+
+    Schema returned:
+      {
+        "verses_reviewed": int,           # distinct verse IDs
+        "review_passes_total": int,        # total pass files
+        "by_verdict": {verdict: count},
+        "by_reviewer_model": {model: count},
+        "by_strategy": {strategy: count},
+        "by_book": {slug: {
+            "display": str, "testament": str,
+            "verses_reviewed": int, "passes": int}},
+      }
+    """
+    coverage: dict[str, Any] = {
+        "verses_reviewed": 0,
+        "review_passes_total": 0,
+        "by_verdict": {},
+        "by_reviewer_model": {},
+        "by_strategy": {},
+        "by_book": {},
+    }
+    if not REVIEWS_ROOT.exists():
+        return coverage
+
+    by_verdict: Counter = Counter()
+    by_reviewer: Counter = Counter()
+    by_strategy: Counter = Counter()
+    by_book_slug: dict[str, dict[str, Any]] = {}
+    distinct_verses: set[str] = set()
+    passes_total = 0
+
+    for jf in REVIEWS_ROOT.rglob("*.json"):
+        try:
+            data = json.loads(jf.read_text(encoding="utf-8"))
+        except Exception:
+            continue
+        if not isinstance(data, dict):
+            continue
+        vid = data.get("id")
+        if not vid:
+            # Older Didache/2 Esdras records use chapter-only ids; skip
+            # for now — they're double-covered by per-verse reviews on
+            # the same passages.
+            continue
+        passes_total += 1
+        by_verdict[data.get("verdict") or "unknown"] += 1
+        by_reviewer[data.get("reviewer_model") or "unknown"] += 1
+        by_strategy[data.get("strategy") or "unknown"] += 1
+        distinct_verses.add(vid)
+
+        slug = data.get("book_slug") or vid.split(".")[0].lower()
+        testament = data.get("testament") or "unknown"
+        display, _code = display_name_for(slug, testament) if testament in BOOK_META else (slug.replace("_", " ").title(), slug.upper()[:3])
+        info = by_book_slug.setdefault(slug, {
+            "display": display,
+            "testament": testament,
+            "passes": 0,
+            "_distinct_verses": set(),
+        })
+        info["passes"] += 1
+        info["_distinct_verses"].add(vid)
+
+    by_book: dict[str, Any] = {}
+    for slug, info in by_book_slug.items():
+        by_book[slug] = {
+            "display": info["display"],
+            "testament": info["testament"],
+            "verses_reviewed": len(info["_distinct_verses"]),
+            "passes": info["passes"],
+        }
+
+    coverage.update({
+        "verses_reviewed": len(distinct_verses),
+        "review_passes_total": passes_total,
+        "by_verdict": dict(by_verdict),
+        "by_reviewer_model": dict(by_reviewer),
+        "by_strategy": dict(by_strategy),
+        "by_book": by_book,
+    })
+    return coverage
+
+
 def build_index() -> dict[str, Any]:
     revisions = walk_verses()
     # Sort newest first
@@ -241,6 +343,24 @@ def build_index() -> dict[str, Any]:
             "revision_count": info["revision_count"],
         }
 
+    review_coverage = walk_review_records()
+
+    # If state/reviews/ is empty (e.g. running on GitHub Actions where
+    # state/ is gitignored and absent), don't blow away the
+    # review_coverage block that the local flywheel last published.
+    # The block is only authoritative when produced from a tree that
+    # actually has the review records; otherwise we'd be overwriting
+    # 50k+ data points with zeros and the page would lie again.
+    if review_coverage["review_passes_total"] == 0 and OUT_PATH.exists():
+        try:
+            prior = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+            prior_coverage = prior.get("review_coverage")
+            if prior_coverage and prior_coverage.get("review_passes_total", 0) > 0:
+                review_coverage = prior_coverage
+                review_coverage["preserved_from_prior_snapshot"] = True
+        except Exception:
+            pass
+
     return {
         "generated_at": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "commit_sha": head_commit_sha(),
@@ -253,6 +373,7 @@ def build_index() -> dict[str, Any]:
             "by_adjudicator": dict(by_adjudicator),
             "by_reviewer_model": dict(by_reviewer),
         },
+        "review_coverage": review_coverage,
         "by_book": by_book,
         "revisions": revisions,
     }
@@ -265,12 +386,16 @@ def main() -> int:
         encoding="utf-8",
     )
     t = index["totals"]
+    rc = index["review_coverage"]
     print(f"Wrote {OUT_PATH}")
-    print(f"  {t['total_revisions']} revisions across {t['verses_with_revisions']} verses")
+    print(f"  applied edits: {t['total_revisions']} across {t['verses_with_revisions']} verses")
+    print(f"  review passes: {rc['review_passes_total']} across {rc['verses_reviewed']} verses")
     print(f"  by_category: {t['by_category']}")
     print(f"  by_tier: {t['by_tier']}")
     print(f"  by_adjudicator: {t['by_adjudicator']}")
-    print(f"  books touched: {len(index['by_book'])}")
+    print(f"  by_verdict: {rc['by_verdict']}")
+    print(f"  books touched (applied): {len(index['by_book'])}")
+    print(f"  books touched (reviewed): {len(rc['by_book'])}")
     return 0
 
 
