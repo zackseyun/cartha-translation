@@ -111,9 +111,16 @@ APPENDIX_SLUGS: frozenset[str] = frozenset({"2_esdras"})
 DEUTEROCANON_BOOKS: list[tuple[str, str, int, int, str]] = [
     ("Tobit", "TOB", 14, 244, "tobit"),
     ("Judith", "JDT", 16, 339, "judith"),
-    ("Additions to Esther", "ESG", 6, 107, "additions_to_esther"),
+    # Verse counts realigned from NRSV reference numbers to the
+    # project's actual source editions. The drafted texts follow
+    # Swete LXX (and Cairo Geniza Hebrew for Sirach where it
+    # survives), which split verses differently than NRSV at the
+    # chapter level. Without this realignment the catalog reports
+    # phantom "missing" verses when the sources just don't have
+    # them.
+    ("Additions to Esther", "ESG", 6, 104, "additions_to_esther"),
     ("Wisdom of Solomon", "WIS", 19, 436, "wisdom_of_solomon"),
-    ("Sirach", "SIR", 51, 1467, "sirach"),
+    ("Sirach", "SIR", 51, 1439, "sirach"),
     # Baruch is the standard 5-chapter book (141 verses). The catalog
     # previously had 213, which double-counted Letter of Jeremiah
     # (separate row, 72 verses) — some traditions print LJE as
@@ -121,7 +128,7 @@ DEUTEROCANON_BOOKS: list[tuple[str, str, int, int, str]] = [
     # complete (141/141) and reviewed.
     ("Baruch", "BAR", 5, 141, "baruch"),
     ("Letter of Jeremiah", "LJE", 1, 72, "letter_of_jeremiah"),
-    ("Prayer of Azariah and Song of the Three", "PAZ", 1, 68, "prayer_of_azariah"),
+    ("Prayer of Azariah and Song of the Three", "PAZ", 1, 67, "prayer_of_azariah"),
     ("Susanna", "SUS", 1, 64, "susanna"),
     ("Bel and the Dragon", "BEL", 1, 42, "bel_and_the_dragon"),
     ("1 Maccabees", "1MA", 16, 924, "1_maccabees"),
