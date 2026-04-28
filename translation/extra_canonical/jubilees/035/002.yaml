@@ -4,9 +4,8 @@ unit: verse
 book: Jubilees
 source:
   edition: charles_1895
-  language: Geez
-  text: መዋዕለ፡ ሕይወቱ፡ ለያዕቆብ። ወይቤ፡ ያዕቆብ፡ እገብር፡ ኵሎ፡ ዘከመ፡ አዘዝክኒ፡ እስመ፡ ክብር፡ ወዕበይ፡ ሊተ፡ ዝንቱ፡
-    ነገር፡ ወጽድቅ፡ ሊተ፡ በቅድመ፡ እግዚአብሔር፡ ከመ፡ አክብሮሙ።
+  language: Geʿez
+  text: ወይቤ፡ ያዕቆብ፡ እገብር፡ ኵሎ፡ ዘከመ፡ አዘዝክኒ፡ እስመ፡ ክብር፡ ወዕበይ፡ ሊተ፡ ዝንቱ፡ ነገር፡ ወጽድቅ፡ ሊተ፡ በቅድመ፡ እግዚአብሔር፡ ከመ፡ አክብሮሙ።
   pages:
   - 220
   - 222
@@ -15,13 +14,13 @@ source:
   validation_modes:
   - jubilees_verse_parser
 translation:
-  text: And Jacob said, “I will do everything just as you have commanded me, for this
-    matter is honor and greatness to me, and righteousness before the LORD, that I
-    should honor them.”
+  text: And Jacob said, “I will do everything just as you have commanded me, for this matter is honor and greatness to me, and righteousness for me before God,[a] that I should honor them.”
   philosophy: optimal-equivalence
-note: Derived mechanically from the chapter-level reviewed draft at translation/extra_canonical/jubilees/035.yaml
-  by tools/jubilees/split_into_verses.py. The chapter-level YAML remains the authoritative
-  draft/review record; these verse YAMLs exist for reader surfaces and per-verse linking.
+  footnotes:
+  - marker: a
+    text: Or "before the Lord". The Geʿez term እግዚአብሔር (ʾəgziʾabḥer) is the standard translation for both "God" and "Lord".
+    reason: lexical_choice
+note: Derived mechanically from the chapter-level reviewed draft at translation/extra_canonical/jubilees/035.yaml by tools/jubilees/split_into_verses.py. The chapter-level YAML remains the authoritative draft/review record; these verse YAMLs exist for reader surfaces and per-verse linking.
 ai_draft_provenance:
   model_id: gpt-5.4
   model_version: gpt-5.4-2026-03-05
@@ -42,10 +41,7 @@ ai_draft_chapter_review_passes:
 - reviewer_model: gemini-3.1-pro-preview
   timestamp: '2026-04-22T08:36:54Z'
   prompt_sha256: 9e195fe828200f84f8650d4c715dd82bd94afa606e3f667d37cfcf9c0da3eef7
-  summary: The draft translation is solid and accurately reflects the Ge'ez source
-    text provided. The segmentation matches the source rows, and the lexical choices
-    are well-reasoned and consistent with the project's philosophy. No major revisions
-    were necessary.
+  summary: The draft translation is solid and accurately reflects the Ge'ez source text provided. The segmentation matches the source rows, and the lexical choices are well-reasoned and consistent with the project's philosophy. No major revisions were necessary.
   issues_found:
   - None. The draft is well-formed and adheres to the translation guidelines.
   model_version: gemini-3.1-pro-preview
@@ -53,10 +49,7 @@ ai_draft_chapter_review_passes:
   review_kind: deep_reference_pass
   timestamp: '2026-04-22T09:13:14Z'
   prompt_sha256: c2f0ba8d0ee59687a3a2a5c096a9f42127ae08fd9cdd714e2b6f69ec223132fb
-  summary: The draft translation is excellent and accurately reflects the Ge'ez source
-    text. The segmentation correctly handles the embedded verse numbers in the final
-    Ge'ez row. Lexical and theological decisions are well-reasoned and consistent
-    with the project's philosophy. No major revisions were necessary.
+  summary: The draft translation is excellent and accurately reflects the Ge'ez source text. The segmentation correctly handles the embedded verse numbers in the final Ge'ez row. Lexical and theological decisions are well-reasoned and consistent with the project's philosophy. No major revisions were necessary.
   issues_found:
   - None. The draft is well-formed and adheres to the translation guidelines.
   model_version: gemini-3.1-pro-preview
@@ -65,4 +58,22 @@ revision_pass:
   timestamp: '2026-04-23T14:52:30Z'
   unchanged: true
   changes_summary: No changes needed.
-status: revised
+status: redrafted_after_chunk_error
+lexical_decisions:
+- source_word: እግዚአብሔር
+  chosen: God
+  alternatives:
+  - the LORD
+  lexicon: Leslau
+  rationale: Standard Geʿez term for God, translating the underlying Greek/Hebrew divine name or title.
+theological_decisions: []
+revisions:
+- id: redraft-chunk-20260428T080604Z
+  timestamp: '2026-04-28T08:06:04Z'
+  category: verse_boundary_redraft
+  tier: 3
+  adjudicator: vertex-gemini-3.1-pro-redraft-chunk
+  reviewer_model: gemini-3.1-pro-preview
+  from_summary: verse-boundary chunking error — previous draft contained content from other verses
+  to_summary: Removed the phrase 'መዋዕለ፡ ሕይወቱ፡ ለያዕቆብ።' from the source text, as it correctly belongs to the end of verse 1, and provided the accurate source text and translation for verse 2.
+  rationale: Verse YAML missing the phrase 'the days of the life of Jacob' which belongs to the end of verse 1; verse 2 content is incomplete.

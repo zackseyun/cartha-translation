@@ -4,8 +4,8 @@ unit: verse
 book: Jubilees
 source:
   edition: charles_1895
-  language: Geez
-  text: ''
+  language: Geʿez
+  text: ወበሳድስ፡ ዓመት፡ ወለደት፡ ሎቱ፡ ወልደ፡ ወሰመየ፡ ስሞ፡ ፋሌክ፡ እስመ፡ በመዋዕሊሁ፡ እንተ፡ ተወልደ፡ ባቲ፡ አኀዙ፡ ደቂቀ፡ ኖኅ፡ ይትካፈሉ፡ ምድረ፡ በበይናቲሆሙ፡ ወበእንተዝ፡ ሰመየ፡ ስሞ፡ ፋሌክ።
   pages:
   - 66
   - 67
@@ -43,16 +43,13 @@ source:
   validation_modes:
   - jubilees_verse_parser
 translation:
-  text: And Shelah grew up and took a wife for himself, and her name was Mu'ak, the
-    daughter of Kesed, his father's brother, in the first year of the fifth week of
-    the thirty-first jubilee. And in the fifth year she bore him a son, and he called
-    his name Eber. And Eber took a wife for himself, and her name was Azurad, the
-    daughter of Nebrod, in the third year of the seventh week of the thirty-second
-    jubilee.
+  text: And in the sixth year she bore him a son, and he called his name Peleg;[a] for in the days when he was born, the children of Noah began to divide the earth among themselves. For this reason he called his name Peleg.
   philosophy: optimal-equivalence
-note: Derived mechanically from the chapter-level reviewed draft at translation/extra_canonical/jubilees/008.yaml
-  by tools/jubilees/split_into_verses.py. The chapter-level YAML remains the authoritative
-  draft/review record; these verse YAMLs exist for reader surfaces and per-verse linking.
+  footnotes:
+  - marker: a
+    text: 'The name Peleg (Ge''ez: ፋሌክ, Fālēk) reflects the Hebrew root פלג (plg), meaning ''to divide'' or ''to split'', corresponding to the division of the earth described in this verse.'
+    reason: lexical_choice
+note: Derived mechanically from the chapter-level reviewed draft at translation/extra_canonical/jubilees/008.yaml by tools/jubilees/split_into_verses.py. The chapter-level YAML remains the authoritative draft/review record; these verse YAMLs exist for reader surfaces and per-verse linking.
 ai_draft_provenance:
   model_id: gpt-5.4
   model_version: gpt-5.4-2026-03-05
@@ -73,24 +70,35 @@ ai_draft_chapter_review_passes:
 - reviewer_model: gemini-3.1-pro-preview
   timestamp: '2026-04-22T08:34:06Z'
   prompt_sha256: a2949e202f17cd8c3b2adf10627988dddad360cc69dca1395525815c56b5f233
-  summary: Reviewed draft for consistency with Ge'ez chronological and geographical
-    terminology. Maintained Watchers terminology and blood prohibitions. The English
-    text is highly polished and accurately reflects the source.
+  summary: Reviewed draft for consistency with Ge'ez chronological and geographical terminology. Maintained Watchers terminology and blood prohibitions. The English text is highly polished and accurately reflects the source.
   issues_found:
-  - The provided English draft and Ge'ez source appear to contain material from both
-    Jubilees 7 and 8 (e.g., Noah's commands regarding blood and firstfruits). Verse
-    numbering extends to 54, which exceeds the standard 30 verses of Jubilees 8. Retained
-    the provided structure to prevent data loss.
+  - The provided English draft and Ge'ez source appear to contain material from both Jubilees 7 and 8 (e.g., Noah's commands regarding blood and firstfruits). Verse numbering extends to 54, which exceeds the standard 30 verses of Jubilees 8. Retained the provided structure to prevent data loss.
   model_version: gemini-3.1-pro-preview
 - reviewer_model: gemini-3.1-pro-preview
   review_kind: deep_reference_pass
   timestamp: '2026-04-22T09:09:02Z'
   prompt_sha256: cf97ba69deec6aeb58d37da9e9977355a5b8cbd89eea428c534c3d5bced5fead
-  summary: Conducted a light review of the draft. The English text is highly polished
-    and accurately reflects the source. Retained the extended verse numbering (1-54)
-    which includes material from Jubilees 7, as noted in prior reviews, to prevent
-    data loss.
+  summary: Conducted a light review of the draft. The English text is highly polished and accurately reflects the source. Retained the extended verse numbering (1-54) which includes material from Jubilees 7, as noted in prior reviews, to prevent data loss.
   issues_found:
-  - Draft contains verses 1-54, exceeding the traditional 30 verses of Jubilees 8,
-    likely merging Jubilees 7 and 8. Retained to match source payload.
+  - Draft contains verses 1-54, exceeding the traditional 30 verses of Jubilees 8, likely merging Jubilees 7 and 8. Retained to match source payload.
   model_version: gemini-3.1-pro-preview
+lexical_decisions:
+- source_word: ይትካፈሉ
+  chosen: to divide
+  alternatives:
+  - to apportion
+  - to share
+  lexicon: Leslau
+  rationale: The verb ተካፈለ (takāfala) means to divide among oneself or share. 'Divide' is the traditional and most direct translation here, aligning with the etymological explanation of Peleg.
+theological_decisions: []
+revisions:
+- id: redraft-chunk-20260428T080437Z
+  timestamp: '2026-04-28T08:04:37Z'
+  category: verse_boundary_redraft
+  tier: 3
+  adjudicator: vertex-gemini-3.1-pro-redraft-chunk
+  reviewer_model: gemini-3.1-pro-preview
+  from_summary: verse-boundary chunking error — previous draft contained content from other verses
+  to_summary: The previous draft incorrectly contained the text of verses 5-6 (the marriages and offspring of Shelah and Eber); this redraft correctly provides the text of verse 7, which describes the birth of Peleg and the division of the earth.
+  rationale: Verse YAML contains content from verses 5-6 (marriages and offspring of Shelah and Eber). Verse 7 should describe the birth of Peleg and the division of the earth.
+status: redrafted_after_chunk_error
