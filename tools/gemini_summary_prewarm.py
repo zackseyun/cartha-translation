@@ -64,11 +64,26 @@ AI_STUDIO_URL = (
 )
 
 # Vertex AI backend defaults — used when --backend=vertex is passed.
-# Vertex bills Gemini calls against the GCP project tied to the service
-# account in `/cartha/openclaw/gemini_api_key_2`, bypassing AI Studio's
-# 250 req/model/day free-tier cap.
-VERTEX_LOCATION_DEFAULT = "us-central1"
-VERTEX_MODEL_DEFAULT = "gemini-2.5-pro"
+#
+# Auth path (preferred): Application Default Credentials. Run
+# `gcloud auth application-default login` once; the credential lives at
+# ~/.config/gcloud/application_default_credentials.json and the script
+# picks it up automatically. The legacy SA-JSON-from-Secrets-Manager
+# path is still supported via --vertex-secret-id but is no longer
+# default — the SA secret was marked-for-deletion in AWS, and ADC is
+# what the runbook (~/Gemini\ functional.md) actually documents.
+#
+# Project: cartha-bible-vertex (linked to the billing account that
+# carries the Vertex GenAI Offer 2025 credit). Calls billed against
+# this project consume the credit instead of the maintainer's card.
+# AI Studio API-key calls are NOT credit-eligible, so prefer Vertex.
+#
+# Model/location: Gemini 3.1 Pro Preview lives only at the `global`
+# endpoint (regional 404s on previews). The slug has a dot:
+# gemini-3.1-pro-preview, not gemini-3-pro-preview.
+VERTEX_PROJECT_DEFAULT = "cartha-bible-vertex"
+VERTEX_LOCATION_DEFAULT = "global"
+VERTEX_MODEL_DEFAULT = "gemini-3.1-pro-preview"
 VERTEX_OAUTH_SCOPES = ["https://www.googleapis.com/auth/cloud-platform"]
 
 
@@ -759,20 +774,45 @@ def call_gemini(api_key: str, system_prompt: str, user_prompt: str, max_tokens: 
 # the cached token.
 
 class VertexClient:
-    def __init__(self, service_account_json: dict, project_id: str,
+    def __init__(self, project_id: str,
                  location: str = VERTEX_LOCATION_DEFAULT,
-                 model: str = VERTEX_MODEL_DEFAULT):
-        from google.oauth2 import service_account as sa
+                 model: str = VERTEX_MODEL_DEFAULT,
+                 service_account_json: dict | None = None):
+        """Two auth paths:
+
+        - Application Default Credentials (default, recommended): pass
+          service_account_json=None and the SDK reads
+          ~/.config/gcloud/application_default_credentials.json. Set up
+          once with `gcloud auth application-default login`.
+        - Service-account JSON (legacy, --vertex-secret-id): pass the
+          parsed SA JSON dict explicitly.
+        """
         from google.auth.transport.requests import Request as GoogleAuthRequest
         self._request_cls = GoogleAuthRequest
-        self._creds = sa.Credentials.from_service_account_info(
-            service_account_json, scopes=VERTEX_OAUTH_SCOPES,
-        )
+        if service_account_json is not None:
+            from google.oauth2 import service_account as sa
+            self._creds = sa.Credentials.from_service_account_info(
+                service_account_json, scopes=VERTEX_OAUTH_SCOPES,
+            )
+        else:
+            import google.auth as gauth
+            creds, adc_project = gauth.default(scopes=VERTEX_OAUTH_SCOPES)
+            self._creds = creds
+            if not project_id and adc_project:
+                project_id = adc_project
         self._project_id = project_id
         self._location = location
         self._model = model
+        # Preview models live only at the `global` endpoint; stable models
+        # live at <region>-aiplatform.googleapis.com. The runbook
+        # (~/Gemini functional.md) calls this out as gotcha #2.
+        host = (
+            "aiplatform.googleapis.com"
+            if location == "global"
+            else f"{location}-aiplatform.googleapis.com"
+        )
         self._url = (
-            f"https://{location}-aiplatform.googleapis.com/v1/"
+            f"https://{host}/v1/"
             f"projects/{project_id}/locations/{location}/publishers/"
             f"google/models/{model}:generateContent"
         )
@@ -848,26 +888,38 @@ class VertexClient:
         raise last_err or RuntimeError("unknown vertex call failure")
 
 
-def load_vertex_client(secret_id: str, location: str, model: str) -> "VertexClient":
-    """Pull a service account JSON from Secrets Manager and build a Vertex
-    client. Raises if the secret isn't a valid SA JSON so the caller can
-    decide whether to fall back to AI Studio."""
-    sm = boto3.client("secretsmanager", region_name="us-west-2")
-    raw = sm.get_secret_value(SecretId=secret_id)["SecretString"]
-    sa_json = json.loads(raw)
-    if sa_json.get("type") != "service_account":
-        raise RuntimeError(
-            f"secret {secret_id} isn't a Google service-account JSON "
-            f"(type={sa_json.get('type')!r})"
+def load_vertex_client(secret_id: str | None, project: str, location: str,
+                       model: str) -> "VertexClient":
+    """Build a Vertex client.
+
+    If [secret_id] is given, pulls a service-account JSON from AWS
+    Secrets Manager (legacy path). Otherwise uses Application Default
+    Credentials — set up once with `gcloud auth application-default
+    login` against an account on the credit-bearing project.
+    """
+    if secret_id:
+        sm = boto3.client("secretsmanager", region_name="us-west-2")
+        raw = sm.get_secret_value(SecretId=secret_id)["SecretString"]
+        sa_json = json.loads(raw)
+        if sa_json.get("type") != "service_account":
+            raise RuntimeError(
+                f"secret {secret_id} isn't a Google service-account JSON "
+                f"(type={sa_json.get('type')!r})"
+            )
+        sa_project = sa_json.get("project_id")
+        if not sa_project:
+            raise RuntimeError(f"secret {secret_id} missing project_id")
+        return VertexClient(
+            project_id=project or sa_project,
+            location=location,
+            model=model,
+            service_account_json=sa_json,
         )
-    project = sa_json.get("project_id")
-    if not project:
-        raise RuntimeError(f"secret {secret_id} missing project_id")
     return VertexClient(
-        service_account_json=sa_json,
         project_id=project,
         location=location,
         model=model,
+        service_account_json=None,
     )
 
 
@@ -1288,18 +1340,41 @@ def main() -> int:
     )
     ap.add_argument(
         "--vertex-secret-id",
-        default="/cartha/openclaw/gemini_api_key_2",
-        help="Secrets Manager ID holding the Google service-account JSON for Vertex.",
+        default=None,
+        help=(
+            "Optional: Secrets Manager ID holding a Google service-account "
+            "JSON for Vertex. If omitted, the script uses Application "
+            "Default Credentials — set up once with "
+            "`gcloud auth application-default login`. ADC is the default "
+            "path because the SA secret was deprecated."
+        ),
+    )
+    ap.add_argument(
+        "--vertex-project",
+        default=VERTEX_PROJECT_DEFAULT,
+        help=(
+            "GCP project for Vertex calls. Defaults to "
+            "`cartha-bible-vertex` — the project linked to the billing "
+            "account that carries the Vertex GenAI Offer 2025 credit."
+        ),
     )
     ap.add_argument(
         "--vertex-location",
         default=VERTEX_LOCATION_DEFAULT,
-        help="Vertex region, e.g. us-central1.",
+        help=(
+            "Vertex location. Defaults to `global` because Gemini 3.1 "
+            "Pro Preview only resolves at the global endpoint; regional "
+            "endpoints 404 for preview models. Use a region only for "
+            "stable models (e.g. us-central1)."
+        ),
     )
     ap.add_argument(
         "--vertex-model",
         default=VERTEX_MODEL_DEFAULT,
-        help="Vertex model id, e.g. gemini-2.5-pro.",
+        help=(
+            "Vertex model id. Defaults to `gemini-3.1-pro-preview` "
+            "(note the dot — `gemini-3-pro-preview` returns 404)."
+        ),
     )
     ap.add_argument(
         "--azure-secret-id",
@@ -1379,6 +1454,7 @@ def main() -> int:
     if args.backend == "vertex":
         backend = load_vertex_client(
             secret_id=args.vertex_secret_id,
+            project=args.vertex_project,
             location=args.vertex_location,
             model=args.vertex_model,
         )
