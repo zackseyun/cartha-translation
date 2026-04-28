@@ -84,12 +84,23 @@ def apply_revision(
         "reason": "previous_rendering",
     })
 
-    # Record the revision event at top level.
+    # Record the revision event at top level. Reviewer model is read
+    # from the source review JSON so we don't hardcode the older
+    # gemini-2.5-pro string when newer models (gemini-3.1-pro-preview,
+    # azure-gpt-5.4, etc.) actually produced the finding.
+    reviewer_model = "unknown"
+    if review_path:
+        try:
+            import json
+            review_data = json.loads(pathlib.Path(review_path).read_text(encoding="utf-8"))
+            reviewer_model = review_data.get("reviewer_model") or "unknown"
+        except Exception:
+            pass
     revisions = data.setdefault("revisions", [])
     revisions.append({
         "timestamp": dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ"),
         "adjudicator": "claude-opus-4-7",
-        "reviewer_model": "gemini-2.5-pro",
+        "reviewer_model": reviewer_model,
         "source_review": review_path,
         "category": issue_category,
         "from": find,
