@@ -4,8 +4,8 @@ unit: verse
 book: Jubilees
 source:
   edition: charles_1895
-  language: Geez
-  text: ወአንቲኒ፡ እሞ፡ ታአምሪ፡ እምዕለተ፡ ተወለድኩ፡ እስከ፡ ዛቲ፡ ዕለት፡ ኵሎ፡ ምግባርየ፡ ወኵሎ፡
+  language: Geʿez
+  text: ወአንተኒ ፡ ወልድየ ፡ ታአምር ፡ እምዕለተ ፡ ተወለድከ ፡ እስከ ፡ ዛቲ ፡ ዕለት ፡ ኵሎ ፡ ምግባርየ ፡ ወኵሎ ፡ ዘውስተ ፡ ልብየ ፡ ከመ ፡ አፈቅሮ ፡ ለአቡከ ፡ ጥቀ ።
   pages:
   - 220
   - 222
@@ -14,12 +14,9 @@ source:
   validation_modes:
   - jubilees_verse_parser
 translation:
-  text: “And you know, my mother, from the day I was born until this day, all my conduct and all that is in my heart, that I love my father very much.”
+  text: And you, my son, know from the day you were born until this day, all my deeds and all that is in my heart, that I love your father exceedingly.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or '“And you know, my mother, from the day I was born until this day, all my conduct and all'.
-    reason: previous_rendering
+  footnotes: []
 note: Derived mechanically from the chapter-level reviewed draft at translation/extra_canonical/jubilees/035.yaml by tools/jubilees/split_into_verses.py. The chapter-level YAML remains the authoritative draft/review record; these verse YAMLs exist for reader surfaces and per-verse linking.
 ai_draft_provenance:
   model_id: gpt-5.4
@@ -58,7 +55,7 @@ revision_pass:
   timestamp: '2026-04-23T14:52:00Z'
   unchanged: true
   changes_summary: No changes needed.
-status: revised
+status: redrafted_after_chunk_error
 revisions:
 - timestamp: '2026-04-28T07:48:00Z'
   adjudicator: claude-opus-4-7
@@ -68,3 +65,28 @@ revisions:
   from: “And you know, my mother, from the day I was born until this day, all my conduct and all
   to: “And you know, my mother, from the day I was born until this day, all my conduct and all that is in my heart, that I love my father very much.”
   rationale: The source text and translation are severely truncated, ending abruptly at 'ወኵሎ፡' ('and all'). The remainder of the verse is missing, likely due to a line-break parsing error in the verse-splitting script. The full verse needs to be restored.
+- id: redraft-chunk-20260428T094639Z
+  timestamp: '2026-04-28T09:46:39Z'
+  category: verse_boundary_redraft
+  tier: 3
+  adjudicator: vertex-gemini-3.1-pro-redraft-chunk
+  reviewer_model: gemini-3.1-pro-preview
+  from_summary: verse-boundary chunking error — previous draft contained content from other verses
+  to_summary: Corrected a severe hallucination and truncation error in the previous draft where the speaker and addressee were flipped (mother/son) and the source text was incomplete; restored the correct Ge'ez text from Charles 1902 and provided an accurate translation without the artifact footnote.
+  rationale: This footnote is an artifact of a previous truncation error and does not represent a valid alternative translation. It should be removed.
+lexical_decisions:
+- source_word: ምግባርየ
+  chosen: deeds
+  alternatives:
+  - conduct
+  - actions
+  lexicon: Leslau
+  rationale: The Ge'ez term 'məgbār' encompasses deeds, actions, and general conduct; 'deeds' fits the context of observable behavior alongside the inner disposition of the heart.
+- source_word: ጥቀ
+  chosen: exceedingly
+  alternatives:
+  - very much
+  - greatly
+  lexicon: Leslau
+  rationale: The adverb 'ṭəqqa' means 'very, exceedingly, thoroughly'. 'Exceedingly' captures the intensity of Rebecca's love for Isaac.
+theological_decisions: []

@@ -17,15 +17,27 @@ source:
   overlap_expected: true
   verse: 1
 translation:
-  text: O You who created the earth, hear me, who established the firmament by the word, and made firm the height of heaven by the spirit.
+  text: O You who created the earth, hear me—You who established the firmament by the word, and made firm the height of heaven by the spirit[a].
   philosophy: optimal-equivalence
-  footnotes: []
+  footnotes:
+  - marker: a
+    text: Syriac ruha can mean 'spirit' or 'breath'; the parallel with 'word' echoes Psalm 33:6.
+    reason: lexical_choice
 status: redrafted_after_chunk_error
 lexical_decisions:
-- term: established
-  reasoning: Translates the Syriac root t-q-n (to fix, establish, set in order).
-- term: spirit
-  reasoning: Translates 'ruha', which can mean breath or spirit; here paralleled with 'word' (melta), reflecting Psalm 33:6.
+- source_word: ܪܘܚܐ
+  chosen: spirit
+  alternatives:
+  - breath
+  lexicon: Payne Smith
+  rationale: Translates 'ruha'. While 'breath' strongly parallels 'word' (melta) per Psalm 33:6, 'spirit' is the standard theological rendering in apocalyptic literature for God's creative agency.
+- source_word: ܬܩܢܬ
+  chosen: established
+  alternatives:
+  - fixed
+  - set in order
+  lexicon: Payne Smith
+  rationale: Translates the Pael of t-q-n, conveying the firm establishment and ordering of the firmament.
 theological_decisions: []
 ai_draft:
   model_id: gpt-5.4
@@ -58,3 +70,20 @@ revisions:
   from_summary: previous draft contained all of chapter 54
   to_summary: Corrected a previous chunking error by isolating verse 1 from the rest of chapter 54.
   rationale: verse 54:1 only, per standard Charles/Klijn split
+- timestamp: '2026-04-28T09:36:33Z'
+  adjudicator: claude-opus-4-7
+  reviewer_model: gemini-2.5-pro
+  source_review: state/reviews/gemini/vertex_full_book_qc_2026_04/extra_canonical/2_baruch/054/001.job-77319.json
+  category: awkward_english
+  from: hear me, who established
+  to: hear me—You who established
+  rationale: Placing 'who established' immediately after 'hear me' creates a dangling relative clause in English, making it sound as though the speaker ('me') established the firmament. Adding 'You' clarifies that the address to God continues.
+- id: redraft-chunk-20260428T094036Z
+  timestamp: '2026-04-28T09:40:36Z'
+  category: verse_boundary_redraft
+  tier: 3
+  adjudicator: vertex-gemini-3.1-pro-redraft-chunk
+  reviewer_model: gemini-3.1-pro-preview
+  from_summary: verse-boundary chunking error — previous draft contained content from other verses
+  to_summary: Isolated the source text and translation to exactly verse 54:1, removing the extraneous verses from the previous chunking error and refining the English syntax.
+  rationale: Verse YAML contains the entirety of chapter 54 (verses 1-22). Should be ONLY verse 1.
