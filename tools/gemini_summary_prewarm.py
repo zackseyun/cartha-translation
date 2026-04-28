@@ -1329,13 +1329,16 @@ def main() -> int:
     ap.add_argument(
         "--backend",
         choices=["studio", "vertex", "azure"],
-        default="studio",
+        default="vertex",
         help=(
-            "Which generation endpoint to call. 'studio' = AI Studio raw "
-            "?key=<> (daily per-key quota applies). 'vertex' = Vertex AI "
-            "via service-account JSON (project-billed). 'azure' = Azure "
-            "OpenAI GPT-5 (writes under the canonical gpt-5.4 cache key so "
-            "regular reads hit without the Gemini fallback)."
+            "Which generation endpoint to call. 'vertex' (default) = "
+            "Vertex AI via ADC, billed against cartha-bible-vertex which "
+            "carries the Vertex GenAI Offer 2025 credit. 'studio' = AI "
+            "Studio raw ?key=<> (NOT credit-eligible — only use as a "
+            "fallback if Vertex is down; the prepay drained 2026-04-27). "
+            "'azure' = Azure OpenAI GPT-5 (writes under the canonical "
+            "gpt-5.4 cache key so regular reads hit without the Gemini "
+            "fallback)."
         ),
     )
     ap.add_argument(
