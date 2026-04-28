@@ -98,6 +98,11 @@ EXTRA_CANONICAL_BOOKS: list[tuple[str, str, int, int, str]] = [
     ("1 Enoch", "ENO", 108, 843, "1_enoch"),
     ("Jubilees", "JUB", 50, 1023, "jubilees"),
     ("2 Esdras", "2ES", 16, 942, "2_esdras"),
+    # 2 Baruch (Syriac Apocalypse of Baruch). 87 chapters / 359 verses
+    # currently drafted from translation/extra_canonical/2_baruch/.
+    # Added 2026-04-27 — book had been silently drafted but not in
+    # the public catalog so it was invisible on /progress.
+    ("2 Baruch", "2BAR", 87, 359, "2_baruch"),
 ]
 
 # Books in EXTRA_CANONICAL_BOOKS that are presented as an Appendix

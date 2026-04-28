@@ -209,6 +209,85 @@ def walk_verses() -> list[dict[str, Any]]:
     return out
 
 
+# Reviewer-model name prefixes that count as the original drafter
+# (NOT as independent eyes). A revision_pass block whose model starts
+# with one of these is the drafter self-checking, not a second model.
+DRAFTER_MODEL_PREFIXES: tuple[str, ...] = ("gpt-5", "gpt-4")
+
+
+def _is_independent_reviewer(model_name: str) -> bool:
+    """True if a model name represents an independent reviewer (Azure /
+    Gemini / Claude / etc.), False if it's the original drafter
+    self-pass. Used so the verses_reviewed count includes Azure
+    revision-pass and future Vertex Gemini work even when those land
+    in the verse YAML rather than state/reviews/."""
+    if not model_name:
+        return False
+    name = model_name.lower()
+    if any(name.startswith(p) for p in DRAFTER_MODEL_PREFIXES):
+        return False
+    return True
+
+
+def walk_yaml_independent_reviews() -> dict[tuple[str, str], set[str]]:
+    """Walk verse YAMLs for independent revision-pass evidence.
+
+    A verse counts as "independently reviewed" if EITHER:
+      - its `revision_pass.model` is non-drafter (Azure, Gemini, Claude…), OR
+      - its `revisions:` array contains an entry whose adjudicator or
+        reviewer_model is non-drafter.
+
+    Returns: {(testament, slug): {verse_id, ...}} of distinct verses
+    with independent YAML evidence. The keys mirror the layout used by
+    walk_review_records() so the two can be unioned downstream.
+
+    Slow walk (~few-min on Google Drive) but produces nothing the
+    maintainer machine can't already cache. Skipped when translation/
+    is missing.
+    """
+    out: dict[tuple[str, str], set[str]] = {}
+    if not TRANSLATION_ROOT.exists():
+        return out
+    for testament_dir in TRANSLATION_ROOT.iterdir():
+        if not testament_dir.is_dir():
+            continue
+        testament = testament_dir.name
+        for book_dir in testament_dir.iterdir():
+            if not book_dir.is_dir():
+                continue
+            slug = book_dir.name
+            display, code = display_name_for(slug, testament)
+            for chap_dir in book_dir.iterdir():
+                if not chap_dir.is_dir() or not chap_dir.name.isdigit():
+                    continue
+                chap = int(chap_dir.name)
+                for yp in chap_dir.glob("*.yaml"):
+                    if not yp.stem.isdigit():
+                        continue
+                    verse = int(yp.stem)
+                    try:
+                        data = yaml.safe_load(yp.read_text(encoding="utf-8"))
+                    except Exception:
+                        continue
+                    if not isinstance(data, dict):
+                        continue
+                    independent = False
+                    rp = data.get("revision_pass") or {}
+                    if isinstance(rp, dict) and _is_independent_reviewer(rp.get("model") or ""):
+                        independent = True
+                    if not independent:
+                        for r in (data.get("revisions") or []):
+                            if not isinstance(r, dict):
+                                continue
+                            if _is_independent_reviewer(r.get("adjudicator") or "") or _is_independent_reviewer(r.get("reviewer_model") or ""):
+                                independent = True
+                                break
+                    if independent:
+                        vid = f"{code}.{chap}.{verse}"
+                        out.setdefault((testament, slug), set()).add(vid)
+    return out
+
+
 def walk_review_records() -> dict[str, Any]:
     """Aggregate state/reviews/**.json into a public coverage block.
 
@@ -223,8 +302,8 @@ def walk_review_records() -> dict[str, Any]:
 
     Schema returned:
       {
-        "verses_reviewed": int,           # distinct verse IDs
-        "review_passes_total": int,        # total pass files
+        "verses_reviewed": int,           # distinct verse IDs (state/reviews ∪ YAML)
+        "review_passes_total": int,        # total pass files (state/reviews only)
         "by_verdict": {verdict: count},
         "by_reviewer_model": {model: count},
         "by_strategy": {strategy: count},
@@ -232,6 +311,11 @@ def walk_review_records() -> dict[str, Any]:
             "display": str, "testament": str,
             "verses_reviewed": int, "passes": int}},
       }
+
+    The verses_reviewed count UNIONS state/reviews/ with YAML
+    revision_pass / revisions[] evidence from non-drafter models, so
+    Azure GPT-5.4 revision passes and future Vertex Gemini reviews
+    count even though they don't write to state/reviews/.
     """
     coverage: dict[str, Any] = {
         "verses_reviewed": 0,
@@ -242,6 +326,24 @@ def walk_review_records() -> dict[str, Any]:
         "by_book": {},
     }
     if not REVIEWS_ROOT.exists():
+        # Even with no state/reviews/, YAML evidence may exist.
+        yaml_extra = walk_yaml_independent_reviews()
+        if yaml_extra:
+            by_book: dict[str, Any] = {}
+            total_verses = 0
+            for (testament, slug), verses in yaml_extra.items():
+                display, _ = display_name_for(slug, testament)
+                by_book[slug] = {
+                    "display": display,
+                    "testament": testament,
+                    "verses_reviewed": len(verses),
+                    "passes": len(verses),
+                }
+                total_verses += len(verses)
+            coverage.update({
+                "verses_reviewed": total_verses,
+                "by_book": by_book,
+            })
         return coverage
 
     by_verdict: Counter = Counter()
@@ -282,6 +384,36 @@ def walk_review_records() -> dict[str, Any]:
         info["passes"] += 1
         info["_distinct_verses"].add(vid)
 
+    # Union with YAML-side independent revision evidence (Azure
+    # GPT-5.4, future Vertex Gemini, Claude adjudications…). Without
+    # this, ~18k verses where Azure landed an applied revision but no
+    # state/reviews/ entry exists would be undercounted as not
+    # reviewed even though they have independent eyes recorded in the
+    # YAML.
+    yaml_extra = walk_yaml_independent_reviews()
+    yaml_only_verses_added = 0
+    for (testament, slug), verses in yaml_extra.items():
+        info = by_book_slug.setdefault(slug, {
+            "display": display_name_for(slug, testament)[0] if testament in BOOK_META else slug.replace("_", " ").title(),
+            "testament": testament,
+            "passes": 0,
+            "_distinct_verses": set(),
+        })
+        # state/reviews ids are lowercase ("matthew.1.1") and YAML
+        # extras are 3-letter-code uppercase ("MAT.1.1"). Normalize
+        # both into the per-book set so we don't double-count.
+        existing_norm = {
+            v.split(".", 1)[1] if "." in v else v
+            for v in info["_distinct_verses"]
+        }
+        for vid in verses:
+            tail = vid.split(".", 1)[1] if "." in vid else vid
+            if tail not in existing_norm:
+                info["_distinct_verses"].add(vid)
+                existing_norm.add(tail)
+                yaml_only_verses_added += 1
+                distinct_verses.add(vid)
+
     by_book: dict[str, Any] = {}
     for slug, info in by_book_slug.items():
         by_book[slug] = {
@@ -298,6 +430,7 @@ def walk_review_records() -> dict[str, Any]:
         "by_reviewer_model": dict(by_reviewer),
         "by_strategy": dict(by_strategy),
         "by_book": by_book,
+        "yaml_only_verses_added": yaml_only_verses_added,
     })
     return coverage
 
