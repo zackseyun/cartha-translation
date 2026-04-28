@@ -40,8 +40,14 @@ STATUS_PATH = REPO_ROOT / "status.json"
 NT_BOOKS: list[tuple[str, str, int, int]] = [
     ("Matthew", "MAT", 28, 1071), ("Mark", "MRK", 16, 678),
     ("Luke", "LUK", 24, 1151), ("John", "JHN", 21, 879),
-    ("Acts", "ACT", 28, 1007), ("Romans", "ROM", 16, 433),
-    ("1 Corinthians", "1CO", 16, 437), ("2 Corinthians", "2CO", 13, 257),
+    # Acts catalog target was the Byzantine total (1007). SBLGNT/NA28
+    # has 1006 — Acts 19:41 is folded into 19:40 in the critical text.
+    # Project drafts from SBLGNT, so 1006 is the correct denominator.
+    ("Acts", "ACT", 28, 1006), ("Romans", "ROM", 16, 433),
+    # 2 Corinthians 13: KJV/Byzantine has 14 verses, splitting "the
+    # grace of the Lord Jesus" as v14. SBLGNT/NA28 keeps it as v13
+    # (combined ending). Project follows SBLGNT, so 256 is correct.
+    ("1 Corinthians", "1CO", 16, 437), ("2 Corinthians", "2CO", 13, 256),
     ("Galatians", "GAL", 6, 149), ("Ephesians", "EPH", 6, 155),
     ("Philippians", "PHP", 4, 104), ("Colossians", "COL", 4, 95),
     ("1 Thessalonians", "1TH", 5, 89), ("2 Thessalonians", "2TH", 3, 47),
@@ -50,8 +56,14 @@ NT_BOOKS: list[tuple[str, str, int, int]] = [
     ("Hebrews", "HEB", 13, 303), ("James", "JAS", 5, 108),
     ("1 Peter", "1PE", 5, 105), ("2 Peter", "2PE", 3, 61),
     ("1 John", "1JN", 5, 105), ("2 John", "2JN", 1, 13),
-    ("3 John", "3JN", 1, 14), ("Jude", "JUD", 1, 25),
-    ("Revelation", "REV", 22, 404),
+    # 3 John: split conventions vary — KJV/Byzantine has 14 verses,
+    # NA28 has 15 (splits the closing greeting). Project drafts the
+    # NA28 split, so 15 is correct.
+    ("3 John", "3JN", 1, 15), ("Jude", "JUD", 1, 25),
+    # Revelation 12:18 is its own verse in NA28 (introducing 13),
+    # combined into 12:17 in the Byzantine. Project drafts the NA28
+    # split, so 405 is correct.
+    ("Revelation", "REV", 22, 405),
 ]
 
 OT_BOOKS: list[tuple[str, str, int, int]] = [
