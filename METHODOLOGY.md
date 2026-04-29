@@ -210,7 +210,8 @@ apparatus or witness parallels recorded for that book.
 
 Draft metadata recorded per verse:
 
-- `model_id` — e.g., `gpt-5.4`, `gemini-3.1-pro-preview`
+- `model_id` — e.g., `gpt-5.4`, `gemini-3.1-pro-preview`,
+  `claude-opus-4-7` (used for occasional spot fixes)
 - `model_version` — knowledge cutoff + release tag
 - `prompt_id` — versioned prompt identifier (e.g., `nt_draft_v1`)
 - `prompt_sha256` — hash of the exact prompt used
@@ -238,7 +239,9 @@ per-verse path. The honest description is:
    off Gemini 3.1 Pro OCR transcripts; specific verses with content
    filtering issues were redrafted with Gemini 3.1 Pro as a fallback
    (97 Azure-blocked verses in 4 Maccabees and other martyrdom
-   passages, processed 2026-04-23).
+   passages, processed 2026-04-23). Claude Opus 4.7 has been used
+   for occasional spot fixes on individual verses where another
+   set of eyes was useful.
 2. **Revision pass (Phase 10).** Gemini 3.1 Pro running on Vertex AI
    reads each draft against the source text, identifies lexical
    disagreements, awkward English, and category-1 grammar issues,
