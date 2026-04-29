@@ -208,3 +208,43 @@ project-level decision for reader transparency.
   and produce an alternative.
 - Silent. Every revision is a git commit with rationale. Critics can
   read the commit log to see exactly what changed and why.
+
+## Sentinels in adjudicator output (READ BEFORE APPLYING ANY REVISION)
+
+Adjudicator agents (`claude-opus-4-7-doctrine-aware`,
+`gemini-3.1-pro-preview`, etc.) sometimes emit a finding whose `to:`
+field is not a literal replacement string but a *command* describing
+the structural edit they want applied. These look like ALL-CAPS
+imperatives (e.g. `DELETE FOOTNOTE`, `REMOVE MARKER`, `DROP ENTRY`).
+
+**Never write the sentinel string into a YAML field.** A sentinel is
+an instruction *to the human or agent applying the finding*, not the
+new value. Writing it verbatim ships the literal word "DELETE" to the
+CDN, where readers see it in their Bible app. (This actually happened
+on Jubilees 26:25 in the 2026-04-28 doctrine-aware pass — the heal is
+documented in `translation/extra_canonical/jubilees/026/025.yaml`.)
+
+When `to:` is a sentinel, do the structural edit, not a string
+replacement:
+
+| Sentinel | Correct action |
+|---|---|
+| `DELETE FOOTNOTE` | Remove the entry from `translation.footnotes[]` whose `marker` matches, AND strip the corresponding `[marker]` anchor from `translation.text`. |
+| `REMOVE MARKER` | Strip the `[marker]` from `translation.text` only; keep the footnote entry. |
+| `DROP ENTRY` (in `lexical_decisions`) | Remove that list element. Don't replace it. |
+
+If you encounter an unfamiliar ALL-CAPS imperative in `to:`, treat it
+as a sentinel and stop. Don't guess the structural edit — escalate to
+the human maintainer. A literal sentinel that has already leaked into
+a YAML field is a regression, not a translation choice; heal it by
+restoring the pre-sentinel state and re-evaluating the original
+finding from scratch.
+
+**Self-check before applying a revision pass:**
+
+```bash
+git grep -nE '^\s+text:\s+(DELETE|REMOVE|DROP|TODO|FIXME)\b' translation/
+```
+
+Should return zero hits. If it returns anything, a sentinel has been
+written to a real field — fix it before the next CDN publish.
