@@ -262,36 +262,21 @@ mechanical lint on policy violations, produces a more trustworthy
 verse than any single model run in isolation. Disagreements are not
 a bug — they are the signal we want to surface.
 
-When the comparison-of-three-models run is invoked (typically for
-verses that the lint or adjudicator flagged repeatedly), agreement
-is scored on:
-
-- **Normalized Levenshtein edit distance** on the English rendering
-  (after whitespace normalization, punctuation collapse, and
-  case-folding).
-- **Lexical-key overlap** on the `lexical_decisions` keys (the
-  Greek/Hebrew lemmata each model chose to gloss).
-
-Thresholds for that selective comparison:
-
-- **≥ 0.90 agreement**: the draft proceeds with divergences noted
-  as alternatives in the YAML.
-- **0.75–0.90 agreement**: divergences are surfaced as footnotes
-  and documented in the verse YAML.
-- **< 0.75 agreement**: the disagreement is escalated into a
-  public GitHub issue for community discussion.
-
-The cross-check tooling lives in `tools/cross_check.py`; the
-revision-pass tooling lives in `tools/gemini_bulk_revise.py` and
+For verses that the lint or adjudicator has flagged repeatedly, a
+selective comparison-of-three-models run is invoked, scored on
+edit-distance + lexical-key overlap. The scoring thresholds and
+escalation rules live with the tooling rather than on this page;
+see `tools/cross_check.py`. The revision-pass tooling lives in
+`tools/gemini_bulk_revise.py` and
 `tools/adjudicate_escalated_gemini.py`.
 
 ## Stage 4 — Publication
 
 Drafted and revised verses are committed to the `main` branch.
 Each commit message references the related source range and the
-model that produced the draft. Tagged releases (`v0.1-preview`,
-`v0.2-pauline`, `v0.9-apostolic-fathers-preview`) correspond to
-historical phase milestones; current state is well beyond all three.
+model that produced the draft. Earlier preview tags exist in the
+git history as historical milestones; current state of the
+translation is well beyond them.
 
 Every verse in the repository is marked `status: draft`. The Cartha
 Open Bible does not currently have a formal scholarly review
