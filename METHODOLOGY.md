@@ -29,82 +29,77 @@ lexical defaults, see [DOCTRINE.md](DOCTRINE.md) and
 [PHILOSOPHY.md](PHILOSOPHY.md). For the source-licensing inventory,
 see [REFERENCE_SOURCES.md](REFERENCE_SOURCES.md).
 
-## Phases
+## How the work was actually built
 
-The translation was built in numbered phases, but the numbers are not
-strictly sequential. Phase 0 was a pilot. Phase 1 was the first
-full-scale draft. The bulk of the canonical 66 books was then drafted
-as a long continuous run with no formal phase numbers. Phase 8
-restarted formal numbering when the deuterocanon forced a new kind of
-work — *source rescue* — that didn't fit the canonical drafting flow.
-After Phase 8, phase numbers track corpora rather than calendar order;
-several phases ran concurrently.
+The translation came together in four overlapping bodies of work,
+not in tidy sequence. Internally we tracked these as numbered phases;
+the phase numbers are kept in commit messages and in the operational
+phase docs under `docs/`, but the public-facing narrative is more
+honestly told as four chapters.
 
-The honest narrative, in four chapters:
+### Chapter 1 — Canonical drafting
 
-### Chapter 1 — Canonical drafting (Phases 0, 1, and the long run)
-
-| Phase | Corpus | What it solved |
+| Stage | Corpus | What it solved |
 |---|---|---|
-| 0 | Philippians | Pilot. Proved the four-stage per-verse loop end-to-end on one short epistle. |
-| 1 | Pauline epistles (Romans → Philemon, ~1,925 verses) | First full-scale draft. The first revision runbook ([docs/PHASE1_REVISION_RUNBOOK.md](docs/PHASE1_REVISION_RUNBOOK.md)) was written here, and the global Χριστός → Messiah and μετανοέω rule decisions were made off the back of this corpus. |
-| (continuous) | The remaining 53 canonical books — Gospels, Acts, Catholic Epistles, Revelation, plus the entire Hebrew Bible (Genesis through Malachi) | Drafted continuously after Phase 1, without further phase numbering. ~28,000 verses. Same per-verse pipeline; same drafter (GPT-5.4); same DOCTRINE-anchored prompt. |
+| Pilot | Philippians | Proved the four-stage per-verse loop end-to-end on one short epistle. |
+| First full-scale draft | Pauline epistles (Romans → Philemon, ~1,925 verses) | First production-scale draft. The first revision runbook ([docs/PHASE1_REVISION_RUNBOOK.md](docs/PHASE1_REVISION_RUNBOOK.md)) was written here, and the global Χριστός → Messiah and μετανοέω rule decisions were made off the back of this corpus. |
+| Continuous run | The remaining 53 canonical books — Gospels, Acts, Catholic Epistles, Revelation, plus the entire Hebrew Bible (Genesis through Malachi) | Drafted continuously after the Pauline pass, without further milestone tagging. ~28,000 verses. Same per-verse pipeline; same drafter (GPT-5.4); same DOCTRINE-anchored prompt. |
 
 This continuous canonical run is the largest single body of work in
-the project (about two-thirds of all verses) and the part most often
-elided by phase-table summaries. It is included here for honesty.
+the project — about two-thirds of all verses — and the part most
+often elided by phase-table summaries. It is included here for
+honesty.
 
-### Chapter 2 — Deuterocanon (Phases 8 and 9)
+### Chapter 2 — Deuterocanon
 
 The deuterocanon broke the canonical pipeline because no
-openly-licensed scan-grounded source corpus existed. Phase 8 became
-about *source preparation* before drafting could even start; Phase 9
-was the drafting itself.
+openly-licensed scan-grounded source corpus existed. Source
+preparation became its own project before drafting could even start.
 
-| Phase | Corpus | What it solved |
+| Stage | Corpus | What it solved |
 |---|---|---|
-| 8 | Deuterocanonical OT (Swete LXX 12 books, 6,337 verses) | Source-text rescue, not drafting. Established the scan-grounded adjudication loop ([docs/PHASE8_CORPUS_QUALITY_RESCUE.md](docs/PHASE8_CORPUS_QUALITY_RESCUE.md)). Ended with 98.9% high-confidence verses (3,425/3,464 adjudicated). |
-| 9 | Apocrypha drafting — all 18 deuterocanonical books, 6,047 verses, plus Psalms of Solomon and Prayer of Manasseh | Drafting after Phase 8's source rescue. Introduced the Gemini-reviewer pass for author-intent corrections (216 auto-applied; 451 Azure tier-3 adjudications). Prayer of Manasseh is a diplomatic reconstruction of Codex Alexandrinus from Charles 1913 APOT vol 1 pp. 636–640. |
+| Source rescue | Deuterocanonical OT (Swete LXX 12 books, 6,337 verses) | Source-text rescue, not drafting. Established the scan-grounded adjudication loop ([docs/PHASE8_CORPUS_QUALITY_RESCUE.md](docs/PHASE8_CORPUS_QUALITY_RESCUE.md)). Ended with 98.9% high-confidence verses (3,425/3,464 adjudicated). |
+| Drafting | Apocrypha drafting — all 18 deuterocanonical books, 6,047 verses, plus Psalms of Solomon and Prayer of Manasseh | Drafting after the source rescue. Introduced the Gemini-reviewer pass for author-intent corrections (216 auto-applied; 451 Azure tier-3 adjudications). Prayer of Manasseh is a diplomatic reconstruction of Codex Alexandrinus from Charles 1913 APOT vol 1 pp. 636–640. |
 
-### Chapter 3 — Extra-canonical witnesses (Phases 8b–8f, 11, 12, 14, E)
+### Chapter 3 — Extra-canonical witnesses
 
 Extra-canonical material is translated for transparency about the
 Jewish/early-Christian textual world — not claimed as scripture, but
 surfaced so readers can see what existed alongside the canonical
-books. Each language family forced a different OCR + parser stack,
-which is why this work fragmented into so many sub-phases.
+books. Each language family forced a different OCR + parser stack.
 
-| Phase | Corpus | Status / What it solved |
-|---|---|---|
-| 8b | 2 Esdras — Latin Bensly 1895 + 6 daughter witnesses (Syriac, Ethiopic, Arabic, Armenian, Georgian) | Drafted. Established the multi-witness pipeline pattern for non-Greek primary sources. |
-| 8e | Psalms of Solomon (Swete vol 3, 18 chapters, 330 verses) | Drafted. Proved the Swete pipeline extends to extra-canonical Greek. |
-| 8f | Greek Apostolic Fathers — Didache, 1 Clement, Shepherd of Hermas, Testaments of the Twelve Patriarchs (initial OCR) | Established the shared Greek extra-canonical pipeline. Didache, 1 Clement, and Shepherd of Hermas drafted. Released as preview tag `v0.9` at the start of this phase; current state is well past preview. |
-| 11 | 1 Enoch — Charles 1906 (critical, 23 MSS) + Dillmann 1851 | Ge'ez OCR established (Phase 11a bake-off, 2026-04-22, picked Gemini 3.1 Pro), full chapter OCR completed (Phase 11b), full verse-level draft completed (Phase 11c). |
-| 12 | Jubilees — Charles 1895 (critical, 4 MSS) | Drafted end-to-end in Ge'ez → English at corpus scale (Phases 12c, 12d). Output committed under `translation/extra_canonical/jubilees/`. |
-| 14 | Testaments of the Twelve Patriarchs (Greek, Sinker 1879) | Drafted across all 12 testaments (final worker batch: 72 chapters). Greek normalization complete. |
-| E | Nag Hammadi (Coptic) — Gospel of Thomas, Gospel of Truth, Thunder Perfect Mind | OCR via Gemini 3.1 Pro (Coptic-aware). Gospel of Thomas redrafted using cross-family Coptic comparison (38/38 sayings). |
+| Corpus | Status |
+|---|---|
+| 2 Esdras — Latin Bensly 1895 + 6 daughter witnesses (Syriac, Ethiopic, Arabic, Armenian, Georgian) | Drafted. Established the multi-witness pipeline pattern for non-Greek primary sources. |
+| Psalms of Solomon (Swete vol 3, 18 chapters, 330 verses) | Drafted. Proved the Swete pipeline extends to extra-canonical Greek. |
+| Greek Apostolic Fathers — Didache, 1 Clement, Shepherd of Hermas | Drafted. Established the shared Greek extra-canonical pipeline. |
+| 1 Enoch — Charles 1906 (critical, 23 MSS) + Dillmann 1851 | Drafted end-to-end in Ge'ez → English at corpus scale. |
+| Jubilees — Charles 1895 (critical, 4 MSS) | Drafted end-to-end in Ge'ez → English at corpus scale. Output under `translation/extra_canonical/jubilees/`. |
+| Testaments of the Twelve Patriarchs (Greek, Sinker 1879) | Drafted across all 12 testaments. Greek normalization complete. |
+| Nag Hammadi (Coptic) — Gospel of Thomas, Gospel of Truth, Thunder Perfect Mind | OCR via Gemini 3.1 Pro (Coptic-aware). Gospel of Thomas redrafted using cross-family Coptic comparison (38/38 sayings). |
 
 A note on the Ge'ez story, because it is the OCR finding most often
 cited from this project: an earlier version of this document said
 "Gemini 2.5 Pro in plaintext mode (not JSON) succeeds." That was true
 in March 2026 and is documented in the commit history. It was
-superseded on 2026-04-22 by a three-engine bake-off
-(commit `babae1e14`) which found Gemini 3.1 Pro at 80% page accuracy
-versus Azure GPT-5.4 at 46% on Charles 1906 Ge'ez. Gemini 3.1 Pro is
-now the primary OCR engine for all COB OCR (Ge'ez, Coptic, and Greek
-where Cambridge typography is not the easier choice). Azure GPT-5.4
-remains a useful second-pass adjudicator.
+superseded on 2026-04-22 by a three-engine bake-off which found
+Gemini 3.1 Pro at 80% page accuracy versus Azure GPT-5.4 at 46% on
+Charles 1906 Ge'ez. Gemini 3.1 Pro is now the primary OCR engine for
+all COB OCR (Ge'ez, Coptic, and Greek where Cambridge typography is
+not the easier choice). Azure GPT-5.4 remains a useful second-pass
+adjudicator.
 
-### Chapter 4 — Standing review pipeline (Phase 10 and the flywheel)
+### Chapter 4 — Standing review pipeline
 
-| Phase | Scope | What it does |
-|---|---|---|
-| 10 | Stacked-review pipeline applied across the full corpus, beginning with the Apocrypha and extra-canonical books | Each verse gets a per-book author-intent context pass with **Gemini 3.1 Pro** (run on Vertex AI on the credit-funded `cartha-bible-vertex` project). Corrections auto-apply where evidence is strong; weaker findings escalate to a manually-adjudicated tier. The full negotiation history (`from`, `to`, rationale, reviewer model) is persisted in the verse YAML's `revisions` array. |
-| (ongoing) | Whole corpus | A revisions flywheel runs every 30 minutes, regenerating `revisions.json` and pushing if any counts changed. As of the most recent snapshot, ~22,000 applied edits across ~18,700 verses, with ~60,000 review-pass verdicts logged across ~41,000 verses (including "agree" verdicts where no edit was applied). |
+| Layer | What it does |
+|---|---|
+| Stacked-review pass | Each verse gets a per-book author-intent context pass with **Gemini 3.1 Pro** (run on Vertex AI on the credit-funded `cartha-bible-vertex` project). Corrections auto-apply where evidence is strong; weaker findings escalate to a manually-adjudicated tier. The full negotiation history (`from`, `to`, rationale, reviewer model) is persisted in the verse YAML's `revisions` array. |
+| Flywheel | A revisions flywheel runs every 30 minutes, regenerating `revisions.json` and pushing if any counts changed. As of the most recent snapshot, ~22,000 applied edits across ~18,700 verses, with ~60,000 review-pass verdicts logged across ~41,000 verses (including "agree" verdicts where no edit was applied). |
 
-Phase 10 is the project's current center of gravity. If you load a
-verse YAML at random today, the most likely thing you'll see beyond
-the original draft is a Phase-10 revision block.
+The standing review pipeline is the project's current center of
+gravity. If you load a verse YAML at random today, the most likely
+thing you'll see beyond the original draft is a revision block from
+this pass.
 
 ## Stage 1 — Source text preparation
 
@@ -138,7 +133,7 @@ preserved in the phase docs for historical completeness.
 | Prayer of Manasseh | Charles 1913 APOT vol 1 pp. 636–640 | Gemini 3.1 Pro | Apparatus-and-footnote reconstruction; needed structured semantic understanding |
 | Psalm 151 | Swete vol 2 p. 432 | Azure GPT-5.4 | Standard Swete path |
 | 2 Esdras | Bensly 1895 (critical Latin) + Violet 1910 (6 daughter witnesses in parallel columns) | Azure GPT-5.4 vision | Columnar Latin + parallel witness placement |
-| 1 Enoch | Charles 1906 (critical, 23 MSS) + Dillmann 1851 | Gemini 3.1 Pro | Selected by Phase 11a bake-off (3.1 Pro 80% vs Azure 46%); replaced earlier "Gemini 2.5 Pro plaintext" pipeline |
+| 1 Enoch | Charles 1906 (critical, 23 MSS) + Dillmann 1851 | Gemini 3.1 Pro | Selected by 2026-04-22 OCR bake-off (3.1 Pro 80% vs Azure 46%); replaced earlier "Gemini 2.5 Pro plaintext" pipeline |
 | Jubilees | Charles 1895 (critical, 4 MSS) | Gemini 3.1 Pro | Same Ge'ez constraint as 1 Enoch |
 | Didache | Hitchcock & Brown 1884 | Azure GPT-5.4 + Gemini 3.1 Pro reviewer | Polytonic Greek; Gemini spot-checks Azure's drafts |
 | 1 Clement | Funk 1901 (critical with notes) | Azure GPT-5.4 | Polytonic + interleaved Latin handled cleanly |
@@ -179,10 +174,11 @@ The confidence rubric:
 - **low** — unverifiable from the available scans; deferred or held
   out of the drafter input.
 
-Phase 8 ended with 98.9% high (3,425/3,464 adjudicated), 1.1%
-medium, 0% low. The full rescue methodology — including the failure
-taxonomy (wrong-page targeting, verse-number drift, edition-specific
-numbering, true paleographic ambiguity) — is documented in
+The deuterocanon source rescue ended with 98.9% high (3,425/3,464
+adjudicated), 1.1% medium, 0% low. The full rescue methodology —
+including the failure taxonomy (wrong-page targeting, verse-number
+drift, edition-specific numbering, true paleographic ambiguity) —
+is documented in
 [docs/PHASE8_CORPUS_QUALITY_RESCUE.md](docs/PHASE8_CORPUS_QUALITY_RESCUE.md).
 
 The tooling: `tools/adjudicate_corpus.py`,
@@ -242,7 +238,7 @@ per-verse path. The honest description is:
    passages, processed 2026-04-23). Claude Opus 4.7 has been used
    for occasional spot fixes on individual verses where another
    set of eyes was useful.
-2. **Revision pass (Phase 10).** Gemini 3.1 Pro running on Vertex AI
+2. **Revision pass.** Gemini 3.1 Pro running on Vertex AI
    reads each draft against the source text, identifies lexical
    disagreements, awkward English, and category-1 grammar issues,
    and adjudicates whether to apply a change or mark the verse
@@ -251,8 +247,8 @@ per-verse path. The honest description is:
    rationale, and `reviewer_model`.
 3. **Tier-3 adjudicator.** Verses where the primary drafter and the
    revision pass disagree on something doctrinally salient are
-   escalated to Azure GPT-5.4 for a third opinion. Phase 9 saw 451
-   such adjudications.
+   escalated to Azure GPT-5.4 for a third opinion. The deuterocanon
+   drafting pass produced 451 such adjudications.
 4. **Doctrine + grammar lint.** A regression layer catches cases
    where an automated revision silently violates a documented
    project policy (e.g., Χριστός being changed back to "Christ"
