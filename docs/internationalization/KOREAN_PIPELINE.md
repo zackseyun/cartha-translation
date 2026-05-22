@@ -174,7 +174,7 @@ python3 tools/korean_pipeline.py validate nt --only-existing
 python3 tools/korean_pipeline.py draft nt/john/001 --limit 5 --concurrency 2
 
 # Review existing records and apply only low-risk model-proposed fixes
-python3 tools/korean_pipeline.py review nt/jude --limit 5 --apply-revisions --keep-going
+python3 tools/korean_pipeline.py review nt/jude --limit 5 --concurrency 2 --apply-revisions --keep-going
 ```
 
 For broad scale-out, prefer chapter/book shards first (e.g. John 1-14, John

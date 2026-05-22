@@ -951,29 +951,35 @@ def cmd_review(args: argparse.Namespace) -> int:
         return 0
     print(
         f"[ko-review] reviewing up to {len(sources)} verses via {args.deployment} "
-        f"(apply_revisions={args.apply_revisions}, force={args.force})"
+        f"(concurrency={args.concurrency}, apply_revisions={args.apply_revisions}, force={args.force})"
     )
     fetch_azure_key()
     ok = err = skip = 0
-    for i, sp in enumerate(sources, 1):
-        status, msg = review_one(
-            sp,
-            deployment=args.deployment,
-            model_id=args.model_id,
-            apply_revisions=args.apply_revisions,
-            force=args.force,
-            max_completion=args.max_completion,
-        )
-        if status == "ok":
-            ok += 1
-            print(f"  OK [{i}/{len(sources)}] {msg}")
-        elif status == "skip":
-            skip += 1
-        else:
-            err += 1
-            print(f"  ERR [{i}/{len(sources)}] {msg}")
-            if not args.keep_going:
-                break
+    with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as ex:
+        futures = {
+            ex.submit(
+                review_one,
+                sp,
+                deployment=args.deployment,
+                model_id=args.model_id,
+                apply_revisions=args.apply_revisions,
+                force=args.force,
+                max_completion=args.max_completion,
+            ): sp
+            for sp in sources
+        }
+        for i, fut in enumerate(concurrent.futures.as_completed(futures), 1):
+            status, msg = fut.result()
+            if status == "ok":
+                ok += 1
+                print(f"  OK [{i}/{len(sources)}] {msg}")
+            elif status == "skip":
+                skip += 1
+            else:
+                err += 1
+                print(f"  ERR [{i}/{len(sources)}] {msg}")
+                if not args.keep_going:
+                    break
     print(f"[ko-review] done. ok={ok} err={err} skip={skip}")
     return 0 if err == 0 else 1
 
@@ -1047,6 +1053,7 @@ def main() -> int:
     pr.add_argument("scope", nargs="+", help="Book / chapter / verse path (e.g. nt/john)")
     pr.add_argument("--deployment", default=DEFAULT_DEPLOYMENT)
     pr.add_argument("--model-id", default=DEFAULT_MODEL_ID)
+    pr.add_argument("--concurrency", type=int, default=2)
     pr.add_argument("--limit", type=int, default=1, help="0 = no limit")
     pr.add_argument("--force", action="store_true")
     pr.add_argument("--apply-revisions", action="store_true")
