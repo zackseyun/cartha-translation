@@ -24,6 +24,7 @@ import datetime as dt
 import json
 import os
 import pathlib
+import re
 import subprocess
 import sys
 import time
@@ -670,7 +671,43 @@ def build_record(
     }
     record["source_grounding"] = {"english_pob_role": "consult_only"}
     record["status"] = "draft"
+    normalize_korean_footnote_markers(record)
     return record
+
+
+def normalize_korean_footnote_markers(record: dict[str, Any]) -> None:
+    """Anchor model-supplied footnotes using the repo's `[a]` marker style.
+
+    The Spanish/Korean source-grounded pipelines require footnote markers to
+    appear in `translation.text` as `[a]`, `[b]`, etc. GPT drafts sometimes
+    emit a bare marker like `...했습니다.a`. Normalize those obvious cases and,
+    as a last resort, append the marker so the first-draft YAML remains
+    structurally valid instead of dropping the verse from the batch.
+    """
+    translation = record.get("translation") or {}
+    text = str(translation.get("text") or "")
+    footnotes = translation.get("footnotes") or []
+    if not text or not isinstance(footnotes, list):
+        return
+    for note in footnotes:
+        if not isinstance(note, dict):
+            continue
+        marker = str(note.get("marker") or "").strip()
+        if not marker or f"[{marker}]" in text:
+            continue
+        escaped = re.escape(marker)
+        # Common model shape: Korean sentence punctuation followed by bare
+        # marker (`.a`, `다.a`, `니다.a`, quote-close + marker).
+        text, replacements = re.subn(
+            rf"(?<![A-Za-z0-9\[]){escaped}(?=([\s\"'”’」』\)\].,;:!?。！？]|$))",
+            f"[{marker}]",
+            text,
+            count=1,
+        )
+        if replacements:
+            continue
+        text = f"{text.rstrip()}[{marker}]"
+    translation["text"] = text
 
 
 def write_korean_yaml(target_path: pathlib.Path, record: dict[str, Any]) -> None:
