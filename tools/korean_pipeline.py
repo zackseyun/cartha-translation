@@ -3,7 +3,7 @@
 
 Like spanish_pipeline.py: drafts each Korean record from the original
 Greek/Hebrew source with the English POB rendering as consult-only audit
-context. Targets a GPT-5.5 Azure OpenAI deployment on
+context. Targets a GPT-5.4-mini Azure OpenAI deployment on
 cartha-aoai-truth-1c9177c8 (rg-cartha-truth-openai, eastus2).
 
 Authoritative style + glossary lives in
@@ -37,15 +37,17 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 KOREAN_ROOT = REPO_ROOT / "translation_ko"
 
-DEFAULT_MODEL_ID = os.environ.get("CARTHA_KO_MODEL", "gpt-5.5")
+DEFAULT_MODEL_ID = os.environ.get("CARTHA_KO_MODEL", "gpt-5.4-mini")
 DEFAULT_AZURE_RESOURCE_GROUP = os.environ.get(
     "CARTHA_KO_AZURE_RESOURCE_GROUP", "rg-cartha-truth-openai"
 )
 DEFAULT_AZURE_ACCOUNT = os.environ.get(
     "CARTHA_KO_AZURE_ACCOUNT", "cartha-aoai-truth-1c9177c8"
 )
-DEFAULT_DEPLOYMENT = os.environ.get("CARTHA_KO_DEPLOYMENT", "gpt-5-5-ko")
-REQUIRED_MODEL_FRAGMENT = os.environ.get("CARTHA_KO_REQUIRED_MODEL_FRAGMENT", "5.5")
+DEFAULT_DEPLOYMENT = os.environ.get("CARTHA_KO_DEPLOYMENT", "gpt-5-4-mini-ko")
+REQUIRED_MODEL_FRAGMENT = os.environ.get(
+    "CARTHA_KO_REQUIRED_MODEL_FRAGMENT", "gpt54mini"
+)
 DEFAULT_API_VERSION = os.environ.get(
     "AZURE_OPENAI_API_VERSION", "2025-04-01-preview"
 )
@@ -516,20 +518,25 @@ def fetch_azure_key() -> str:
 
 
 def enforce_model_policy(*, deployment: str, model_id: str) -> None:
-    """Prevent accidental continuation on older mini deployments.
+    """Prevent accidental continuation on the wrong mini deployment.
 
-    Zack asked that Korean drafting use GPT-5.5 from now on. The old
+    Zack clarified that Korean drafting should use GPT-5.4-mini. The old
     `gpt-5-mini-atlas` path can still be forced only with an explicit env
     override for emergency/manual comparisons.
     """
-    if os.environ.get("CARTHA_KO_ALLOW_NON_55") == "1":
+    if os.environ.get("CARTHA_KO_ALLOW_NON_54_MINI") == "1":
         return
-    haystack = f"{deployment} {model_id}".lower()
-    if REQUIRED_MODEL_FRAGMENT and REQUIRED_MODEL_FRAGMENT not in haystack and "5-5" not in haystack:
+
+    def policy_token(value: str) -> str:
+        return "".join(ch for ch in value.lower() if ch.isalnum())
+
+    haystack = policy_token(f"{deployment} {model_id}")
+    required = policy_token(REQUIRED_MODEL_FRAGMENT)
+    if required and required not in haystack:
         raise SystemExit(
-            "Korean pipeline is pinned to GPT-5.5 from now on. "
+            "Korean pipeline is pinned to GPT-5.4-mini from now on. "
             f"Refusing deployment={deployment!r} model_id={model_id!r}. "
-            "Set CARTHA_KO_ALLOW_NON_55=1 only for an intentional override."
+            "Set CARTHA_KO_ALLOW_NON_54_MINI=1 only for an intentional override."
         )
 
 
@@ -1072,7 +1079,7 @@ def cmd_summary(args: argparse.Namespace) -> int:
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description="Korean POB drafting via Azure GPT-5 mini")
+    p = argparse.ArgumentParser(description="Korean POB drafting via Azure GPT-5.4 mini")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     pd = sub.add_parser("draft", help="Draft missing Korean YAMLs for the given scope")
