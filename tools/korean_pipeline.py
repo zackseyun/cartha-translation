@@ -3,7 +3,7 @@
 
 Like spanish_pipeline.py: drafts each Korean record from the original
 Greek/Hebrew source with the English POB rendering as consult-only audit
-context. Targets the current Azure OpenAI gpt-5-mini deployment on
+context. Targets a GPT-5.5 Azure OpenAI deployment on
 cartha-aoai-truth-1c9177c8 (rg-cartha-truth-openai, eastus2).
 
 Authoritative style + glossary lives in
@@ -37,14 +37,15 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 KOREAN_ROOT = REPO_ROOT / "translation_ko"
 
-DEFAULT_MODEL_ID = os.environ.get("CARTHA_KO_MODEL", "gpt-5-mini")
+DEFAULT_MODEL_ID = os.environ.get("CARTHA_KO_MODEL", "gpt-5.5")
 DEFAULT_AZURE_RESOURCE_GROUP = os.environ.get(
     "CARTHA_KO_AZURE_RESOURCE_GROUP", "rg-cartha-truth-openai"
 )
 DEFAULT_AZURE_ACCOUNT = os.environ.get(
     "CARTHA_KO_AZURE_ACCOUNT", "cartha-aoai-truth-1c9177c8"
 )
-DEFAULT_DEPLOYMENT = os.environ.get("CARTHA_KO_DEPLOYMENT", "gpt-5-mini-atlas")
+DEFAULT_DEPLOYMENT = os.environ.get("CARTHA_KO_DEPLOYMENT", "gpt-5-5-ko")
+REQUIRED_MODEL_FRAGMENT = os.environ.get("CARTHA_KO_REQUIRED_MODEL_FRAGMENT", "5.5")
 DEFAULT_API_VERSION = os.environ.get(
     "AZURE_OPENAI_API_VERSION", "2025-04-01-preview"
 )
@@ -514,6 +515,24 @@ def fetch_azure_key() -> str:
     )
 
 
+def enforce_model_policy(*, deployment: str, model_id: str) -> None:
+    """Prevent accidental continuation on older mini deployments.
+
+    Zack asked that Korean drafting use GPT-5.5 from now on. The old
+    `gpt-5-mini-atlas` path can still be forced only with an explicit env
+    override for emergency/manual comparisons.
+    """
+    if os.environ.get("CARTHA_KO_ALLOW_NON_55") == "1":
+        return
+    haystack = f"{deployment} {model_id}".lower()
+    if REQUIRED_MODEL_FRAGMENT and REQUIRED_MODEL_FRAGMENT not in haystack and "5-5" not in haystack:
+        raise SystemExit(
+            "Korean pipeline is pinned to GPT-5.5 from now on. "
+            f"Refusing deployment={deployment!r} model_id={model_id!r}. "
+            "Set CARTHA_KO_ALLOW_NON_55=1 only for an intentional override."
+        )
+
+
 def call_azure(
     *,
     system_prompt: str,
@@ -792,6 +811,7 @@ def cmd_draft(args: argparse.Namespace) -> int:
         f"[ko-draft] {len(sources)} verses to draft via {args.deployment} "
         f"(concurrency={args.concurrency}, overwrite={args.overwrite})"
     )
+    enforce_model_policy(deployment=args.deployment, model_id=args.model_id)
     # Resolve credentials once before worker threads start so they do not all
     # race the Azure CLI key lookup.
     fetch_azure_key()
@@ -969,6 +989,7 @@ def cmd_review(args: argparse.Namespace) -> int:
         f"[ko-review] reviewing up to {len(sources)} verses via {args.deployment} "
         f"(concurrency={args.concurrency}, apply_revisions={args.apply_revisions}, force={args.force})"
     )
+    enforce_model_policy(deployment=args.deployment, model_id=args.model_id)
     fetch_azure_key()
     ok = err = skip = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as ex:

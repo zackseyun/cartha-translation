@@ -142,7 +142,7 @@ session (no Azure cost; throughput bounded by Max-plan usage limits). Process:
    schema validation will land with `tools/korean_pipeline.py` later).
 6. Commit per book/chapter with no Claude trailer (repo policy).
 
-## Drafting process (Phase 2 — Azure mini + review layer)
+## Drafting process (Phase 2 — Azure GPT-5.5 + review layer)
 
 `tools/korean_pipeline.py` is the durable Azure path for finishing the remaining
 New Testament coverage and adding a second-pass review layer. It builds
@@ -154,8 +154,15 @@ Default Azure target:
 
 - Resource: `cartha-aoai-truth-1c9177c8`
 - Resource group: `rg-cartha-truth-openai`
-- Deployment: `gpt-5-mini-atlas`
-- Model label: `gpt-5-mini`
+- Deployment: `gpt-5-5-ko`
+- Model label: `gpt-5.5`
+
+Important: do **not** continue Korean drafting on `gpt-5-mini-atlas`. The
+script is pinned to GPT-5.5 by default and refuses non-5.5 deployments unless
+`CARTHA_KO_ALLOW_NON_55=1` is intentionally set for a one-off comparison.
+As of the 2026-05-22 Azure check, this account exposes `gpt-5.5` but not a
+separate `gpt-5.5-mini` SKU; GPT-5.5 quota/deployment must exist before broad
+drafting resumes.
 
 The script reads `AZURE_OPENAI_API_KEY` first. If not set, it can fetch a key
 from the logged-in Azure CLI for the resource above; `CARTHA_KO_KEY_FILE` is
