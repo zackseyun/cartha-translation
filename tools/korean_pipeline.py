@@ -519,7 +519,7 @@ def call_azure(
     endpoint: str = DEFAULT_ENDPOINT,
     max_completion_tokens: int = DEFAULT_MAX_COMPLETION,
     timeout: int = DEFAULT_TIMEOUT,
-    retries: int = 2,
+    retries: int = 4,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     api_key = fetch_azure_key()
     endpoint = endpoint.rstrip("/")
@@ -562,9 +562,18 @@ def call_azure(
         except urllib.error.HTTPError as exc:
             body = exc.read().decode("utf-8", errors="replace")
             last_error = RuntimeError(f"HTTP {exc.code} from Azure: {body[:500]}")
+            if exc.code == 429 and attempt < retries:
+                retry_after = exc.headers.get("retry-after")
+                try:
+                    sleep_for = int(retry_after) if retry_after else 20 * (attempt + 1)
+                except ValueError:
+                    sleep_for = 20 * (attempt + 1)
+                time.sleep(sleep_for)
+                continue
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, RuntimeError) as exc:
             last_error = exc
-        time.sleep(2 ** attempt)
+        if attempt < retries:
+            time.sleep(2 ** attempt)
     raise last_error if last_error else RuntimeError("Azure call failed without specific error")
 
 
