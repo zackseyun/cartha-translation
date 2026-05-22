@@ -164,13 +164,6 @@ As of the 2026-05-22 Azure check, this account exposes `gpt-5.5` but not a
 separate `gpt-5.5-mini` SKU; GPT-5.5 quota/deployment must exist before broad
 drafting resumes.
 
-2026-05-22 interim capacity decision: while GPT-5.5 quota is pending, Zack
-explicitly approved finishing the first Korean draft on Azure `gpt-4.1-mini`
-Standard deployments. Use only with `CARTHA_KO_ALLOW_NON_55=1`, keep
-`ai_draft.model_id: gpt-4.1-mini` and `ai_draft.azure_deployment` provenance
-on every generated YAML, and treat the result as a first-draft layer that will
-receive a later GPT-5.5 / stronger-model revision pass.
-
 The script reads `AZURE_OPENAI_API_KEY` first. If not set, it can fetch a key
 from the logged-in Azure CLI for the resource above; `CARTHA_KO_KEY_FILE` is
 available as an explicit override.

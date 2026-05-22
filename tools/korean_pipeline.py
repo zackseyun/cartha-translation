@@ -131,11 +131,6 @@ decision explaining the Korean rendering. Footnote markers in `korean_text`
 must align with footnotes in the `footnotes` array (markers a, b, c, ...,
 never reused). If no anchor belongs in the text for a footnote, don't
 create that footnote.
-If you create any footnote, the exact bracketed marker (for example `[a]`)
-MUST appear in `korean_text`. Do not copy an English/base footnote into the
-Korean record unless you also place the matching Korean marker naturally in
-the Korean sentence. When in doubt, omit the footnote rather than creating an
-unanchored note.
 
 Keep the audit layer concise enough to scale: include the highest-signal
 decisions, not every ordinary word. Prefer 1-4 lexical decisions and 0-2
@@ -525,9 +520,7 @@ def enforce_model_policy(*, deployment: str, model_id: str) -> None:
 
     Zack asked that Korean drafting use GPT-5.5 from now on. The old
     `gpt-5-mini-atlas` path can still be forced only with an explicit env
-    override for emergency/manual comparisons. A temporary GPT-4.1 mini
-    first-draft swarm is allowed only when the operator sets
-    CARTHA_KO_ALLOW_NON_55=1 and records model_id/deployment provenance.
+    override for emergency/manual comparisons.
     """
     if os.environ.get("CARTHA_KO_ALLOW_NON_55") == "1":
         return
@@ -1079,7 +1072,7 @@ def cmd_summary(args: argparse.Namespace) -> int:
 
 
 def main() -> int:
-    p = argparse.ArgumentParser(description="Korean POB drafting via Azure GPT-5.5, or an explicitly approved Azure fallback")
+    p = argparse.ArgumentParser(description="Korean POB drafting via Azure GPT-5 mini")
     sub = p.add_subparsers(dest="cmd", required=True)
 
     pd = sub.add_parser("draft", help="Draft missing Korean YAMLs for the given scope")
