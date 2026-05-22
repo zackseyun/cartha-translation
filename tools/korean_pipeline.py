@@ -130,6 +130,11 @@ decision explaining the Korean rendering. Footnote markers in `korean_text`
 must align with footnotes in the `footnotes` array (markers a, b, c, ...,
 never reused). If no anchor belongs in the text for a footnote, don't
 create that footnote.
+
+Keep the audit layer concise enough to scale: include the highest-signal
+decisions, not every ordinary word. Prefer 1-4 lexical decisions and 0-2
+theological decisions for normal verses; use one-sentence rationales unless the
+source text is genuinely difficult.
 """.strip()
 
 DRAFT_SYSTEM_PROMPT = f"""You are producing a source-grounded Korean draft for the People's Open Bible.
@@ -414,7 +419,8 @@ Return exactly one `submit_korean_draft` function call.
 The main `korean_text` should be publication-readable modern formal-polite
 Korean (합쇼체). Lexical and theological decisions should explain Korean
 choices from the original source, using the English POB audit trail as
-context.
+context. Keep the output compact: do not add a footnote or decision unless it
+helps a future reviewer audit a real source-language choice.
 """.strip()
 
 
