@@ -441,6 +441,7 @@ def build_review_user_prompt(
             "theological_decisions": korean_record.get("theological_decisions") or [],
             "status": korean_record.get("status"),
         },
+        "current_validation_errors": validate_korean_data(korean_record),
     }
     return f"""# Korean source-grounded review task
 
