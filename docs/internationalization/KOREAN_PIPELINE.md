@@ -142,18 +142,45 @@ session (no Azure cost; throughput bounded by Max-plan usage limits). Process:
    schema validation will land with `tools/korean_pipeline.py` later).
 6. Commit per book/chapter with no Claude trailer (repo policy).
 
-## Drafting process (Phase 2 — `tools/korean_pipeline.py`)
+## Drafting process (Phase 2 — Azure mini + review layer)
 
-A `korean_pipeline.py` mirroring `spanish_pipeline.py` will land once the pilot
-is validated. It will:
+`tools/korean_pipeline.py` is the durable Azure path for finishing the remaining
+New Testament coverage and adding a second-pass review layer. It builds
+per-verse drafting/review briefs from the original source payload plus the
+English POB audit trail, writes `translation_ko/...` YAML records, validates
+footnote anchors, and records token usage.
 
-- Build per-verse drafting briefs (source + EN consult packet)
-- Validate Korean records against the schema
-- Shard across parallel workers when an API path is added
-- Produce a per-book cost/coverage summary
+Default Azure target:
 
-Until then, drafting happens inline + via parallel Agent subagents in the same
-Claude Code session.
+- Resource: `cartha-aoai-truth-1c9177c8`
+- Resource group: `rg-cartha-truth-openai`
+- Deployment: `gpt-5-mini-atlas`
+- Model label: `gpt-5-mini`
+
+The script reads `AZURE_OPENAI_API_KEY` first. If not set, it can fetch a key
+from the logged-in Azure CLI for the resource above; `CARTHA_KO_KEY_FILE` is
+available as an explicit override.
+
+Useful commands:
+
+```bash
+# Coverage/review status
+python3 tools/korean_pipeline.py summary nt
+
+# Validate existing Korean YAMLs without failing on the remaining missing scope
+python3 tools/korean_pipeline.py validate nt --only-existing
+
+# Draft a small pilot / continuation batch
+python3 tools/korean_pipeline.py draft nt/john/001 --limit 5 --concurrency 2
+
+# Review existing records and apply only low-risk model-proposed fixes
+python3 tools/korean_pipeline.py review nt/jude --limit 5 --apply-revisions --keep-going
+```
+
+For broad scale-out, prefer chapter/book shards first (e.g. John 1-14, John
+19-21, Luke 7-8, Luke 23-24, Matthew 17-21) and keep review running as a
+separate lane. If Azure returns 429s, reduce review concurrency before reducing
+draft throughput.
 
 ## Status reporting
 
