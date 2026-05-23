@@ -400,7 +400,200 @@ def prune_empty(obj: Any) -> Any:
     return obj
 
 
-def normalized_source_payload(record: dict[str, Any]) -> dict[str, Any]:
+_JUBILEES_VERTEX_CACHE: dict[tuple[int, int], dict[str, Any]] | None = None
+_BARUCH_PAGE_CACHE: dict[int, dict[str, Any]] | None = None
+_HERMAS_UNIT_CACHE: dict[str, dict[str, Any]] | None = None
+
+
+def _int_or_none(value: Any) -> int | None:
+    try:
+        return int(value)
+    except (TypeError, ValueError):
+        return None
+
+
+def _source_row_text(source: dict[str, Any], *, verse: int | None = None) -> str:
+    rows = source.get("rows")
+    if not isinstance(rows, list):
+        return ""
+    wanted = _int_or_none(verse if verse is not None else source.get("verse"))
+    selected: list[dict[str, Any]] = []
+    for row in rows:
+        if not isinstance(row, dict):
+            continue
+        row_verse = _int_or_none(row.get("verse"))
+        if wanted is not None and row_verse != wanted:
+            continue
+        selected.append(row)
+    if not selected and wanted is None:
+        selected = [row for row in rows if isinstance(row, dict)]
+    chunks: list[str] = []
+    text_keys = (
+        "geez",
+        "syriac",
+        "greek",
+        "hebrew",
+        "aramaic",
+        "latin",
+        "coptic",
+        "text",
+        "source_text",
+        "transcription",
+        "normalized",
+    )
+    for row in selected:
+        label = f"verse {row.get('verse')}" if row.get("verse") not in (None, "") else "row"
+        parts = []
+        for key in text_keys:
+            value = str(row.get(key) or "").strip()
+            if value:
+                parts.append(f"{key}: {value}")
+        if parts:
+            chunks.append(f"[{label}]\n" + "\n".join(parts))
+    return "\n\n".join(chunks)
+
+
+def _load_jubilees_vertex_cache() -> dict[tuple[int, int], dict[str, Any]]:
+    global _JUBILEES_VERTEX_CACHE
+    if _JUBILEES_VERTEX_CACHE is not None:
+        return _JUBILEES_VERTEX_CACHE
+    cache: dict[tuple[int, int], dict[str, Any]] = {}
+    path = REPO_ROOT / "sources/jubilees/ethiopic/corpus/JUBILEES.vertex.jsonl"
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            chapter = _int_or_none(row.get("chapter"))
+            verse = _int_or_none(row.get("verse"))
+            if chapter is not None and verse is not None:
+                cache[(chapter, verse)] = row
+    _JUBILEES_VERTEX_CACHE = cache
+    return cache
+
+
+def _load_baruch_page_cache() -> dict[int, dict[str, Any]]:
+    global _BARUCH_PAGE_CACHE
+    if _BARUCH_PAGE_CACHE is not None:
+        return _BARUCH_PAGE_CACHE
+    cache: dict[int, dict[str, Any]] = {}
+    path = REPO_ROOT / "sources/2baruch/syriac/corpus/CERIANI_WORKING.jsonl"
+    if path.exists():
+        for line in path.read_text(encoding="utf-8").splitlines():
+            if not line.strip():
+                continue
+            try:
+                row = json.loads(line)
+            except json.JSONDecodeError:
+                continue
+            for key in ("source_pdf_page", "source_printed_page"):
+                page = _int_or_none(row.get(key))
+                if page is not None:
+                    cache[page] = row
+    _BARUCH_PAGE_CACHE = cache
+    return cache
+
+
+def _load_hermas_unit_cache() -> dict[str, dict[str, Any]]:
+    global _HERMAS_UNIT_CACHE
+    if _HERMAS_UNIT_CACHE is not None:
+        return _HERMAS_UNIT_CACHE
+    cache: dict[str, dict[str, Any]] = {}
+    path = REPO_ROOT / "sources/shepherd_of_hermas/transcribed/unit_map.json"
+    if path.exists():
+        try:
+            payload = json.loads(path.read_text(encoding="utf-8"))
+        except json.JSONDecodeError:
+            payload = {}
+        for unit in payload.get("units") or []:
+            if isinstance(unit, dict) and unit.get("unit_id"):
+                cache[str(unit["unit_id"])] = unit
+    _HERMAS_UNIT_CACHE = cache
+    return cache
+
+
+def _paragraphs(text: str) -> list[str]:
+    return [p.strip() for p in re.split(r"\n\s*\n+", text or "") if p.strip()]
+
+
+def _external_source_text(source: dict[str, Any]) -> tuple[str, str]:
+    language = str(source.get("language") or "").lower()
+    edition = str(source.get("edition") or "").lower()
+
+    chapter = _int_or_none(source.get("chapter"))
+    verse = _int_or_none(source.get("verse"))
+    if "geez" in language or "charles_1895" in edition:
+        if chapter is not None and verse is not None:
+            row = _load_jubilees_vertex_cache().get((chapter, verse))
+            if row and str(row.get("geez") or "").strip():
+                return (str(row["geez"]).strip(), "sources.jubilees.vertex_jsonl")
+
+    if "syriac" in language and source.get("pages"):
+        cache = _load_baruch_page_cache()
+        chunks: list[str] = []
+        for page_value in source.get("pages") or []:
+            page = _int_or_none(page_value)
+            if page is None or page not in cache:
+                continue
+            row = cache[page]
+            text = str(row.get("syriac_inline") or row.get("syriac") or "").strip()
+            if text:
+                chunks.append(f"[page {page}]\n{text}")
+        if chunks:
+            return ("\n\n".join(chunks), "sources.2baruch.ceriani_page_context")
+
+    unit_id = str(source.get("unit_id") or "")
+    if unit_id:
+        unit = _load_hermas_unit_cache().get(unit_id)
+        if unit and unit.get("text_path"):
+            text_path = REPO_ROOT / str(unit["text_path"])
+            if text_path.exists():
+                text = text_path.read_text(encoding="utf-8").strip()
+                segment = _int_or_none(source.get("reader_segment"))
+                paras = _paragraphs(text)
+                if segment is not None and 1 <= segment <= len(paras):
+                    return (paras[segment - 1], "sources.hermas.unit_map_paragraph")
+                if text:
+                    return (text, "sources.hermas.unit_map_unit")
+
+    return ("", "")
+
+
+def _parent_source_payload(source_path: pathlib.Path | None, child_source: dict[str, Any]) -> dict[str, Any]:
+    if source_path is None:
+        return {}
+    parent_path = source_path.parent.with_suffix(".yaml")
+    if not parent_path.exists() or parent_path == source_path:
+        return {}
+    try:
+        parent = load_yaml(parent_path)
+    except Exception:  # noqa: BLE001
+        return {}
+    parent_source = parent.get("source") or {}
+    if isinstance(parent_source, dict):
+        row_text = _source_row_text(parent_source, verse=_int_or_none(child_source.get("verse")))
+        if row_text:
+            return {
+                "edition": parent_source.get("edition"),
+                "language": parent_source.get("language"),
+                "text": row_text,
+                "text_source": f"parent_rows:{rel(parent_path)}",
+            }
+    payload = normalized_source_payload(parent, parent_path)
+    if payload.get("text"):
+        payload = dict(payload)
+        payload["text_source"] = f"parent_source:{rel(parent_path)}"
+        return payload
+    return {}
+
+
+def normalized_source_payload(
+    record: dict[str, Any],
+    source_path: pathlib.Path | None = None,
+) -> dict[str, Any]:
     """Return a compact source payload with a usable `text` field.
 
     Most verse records store the original-language text at `source.text`.
@@ -468,6 +661,22 @@ def normalized_source_payload(record: dict[str, Any]) -> dict[str, Any]:
             out["english_consult_text"] = source["consult_text"]
         return out
 
+    row_text = _source_row_text(source)
+    if row_text:
+        out["text"] = row_text
+        out["text_source"] = "source.rows"
+        return out
+
+    external_text, external_source = _external_source_text(source)
+    if external_text:
+        out["text"] = external_text
+        out["text_source"] = external_source
+        return out
+
+    parent_payload = _parent_source_payload(source_path, source)
+    if parent_payload.get("text"):
+        return parent_payload
+
     return out
 
 
@@ -481,7 +690,7 @@ def build_user_prompt(source_path: pathlib.Path, record: dict[str, Any]) -> str:
         "source_yaml_path": rel(source_path),
         "id": record.get("id"),
         "reference": record.get("reference"),
-        "source_payload": normalized_source_payload(record),
+        "source_payload": normalized_source_payload(record, source_path),
         "english_pob_translation": {
             "text": translation.get("text"),
             "footnotes": translation.get("footnotes") or [],
@@ -522,7 +731,7 @@ def build_compact_user_prompt(source_path: pathlib.Path, record: dict[str, Any])
     the verse can still be drafted by GPT-5.4-mini without switching models.
     """
     translation = record.get("translation") or {}
-    source = normalized_source_payload(record)
+    source = normalized_source_payload(record, source_path)
     context = {
         "source_yaml_path": rel(source_path),
         "id": record.get("id"),
