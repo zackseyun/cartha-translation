@@ -63,6 +63,7 @@ DEFAULT_KEY_FILE = (
 LEGACY_KEY_FILE = pathlib.Path("/tmp/aoai_key.txt")
 DEFAULT_MAX_COMPLETION = 8000
 DEFAULT_TIMEOUT = 180
+DEFAULT_AZURE_RETRIES = int(os.environ.get("CARTHA_KO_AZURE_RETRIES", "8"))
 
 PROMPT_ID = "korean_source_grounded_draft_azure_v1"
 REVIEW_PROMPT_ID = "korean_source_review_azure_v1"
@@ -645,7 +646,7 @@ def call_azure(
     endpoint: str = DEFAULT_ENDPOINT,
     max_completion_tokens: int = DEFAULT_MAX_COMPLETION,
     timeout: int = DEFAULT_TIMEOUT,
-    retries: int = 4,
+    retries: int = DEFAULT_AZURE_RETRIES,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
     api_key = fetch_azure_key()
     endpoint = endpoint.rstrip("/")
