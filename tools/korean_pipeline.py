@@ -428,6 +428,50 @@ helps a future reviewer audit a real source-language choice.
 """.strip()
 
 
+def build_compact_user_prompt(source_path: pathlib.Path, record: dict[str, Any]) -> str:
+    """Smaller fallback prompt for Azure content-filter false positives.
+
+    Some perfectly ordinary Bible verses trip Azure's content filter when the
+    full English audit trail includes stacked lexical notes, review metadata,
+    or repeated hostile/violent wording. This fallback keeps the same source-
+    grounded task and model policy, but removes the extra English audit layer so
+    the verse can still be drafted by GPT-5.4-mini without switching models.
+    """
+    translation = record.get("translation") or {}
+    source = record.get("source") or {}
+    context = {
+        "source_yaml_path": rel(source_path),
+        "id": record.get("id"),
+        "reference": record.get("reference"),
+        "source_payload": {
+            "edition": source.get("edition"),
+            "language": source.get("language"),
+            "text": source.get("text"),
+        },
+        "english_pob_text_for_context_only": translation.get("text"),
+        "english_pob_footnotes_for_context_only": translation.get("footnotes") or [],
+    }
+    return f"""# Korean source-grounded draft task
+
+Draft a Korean POB record for this one verse.
+
+The Azure content filter rejected the larger audit prompt, so this retry is
+intentionally compact. Work from the original-language `source_payload.text`
+first. Use the English POB text only as consult-only context, not as the source.
+
+{compact_yaml(prune_empty(context))}
+
+Return exactly one `submit_korean_draft` function call. Preserve source meaning
+closely, keep Korean modern formal-polite where appropriate, and include only
+high-signal lexical/theological decisions.
+""".strip()
+
+
+def is_content_filter_error(exc: Exception) -> bool:
+    text = str(exc)
+    return "content_filter" in text or "ResponsibleAIPolicyViolation" in text
+
+
 def build_review_user_prompt(
     source_path: pathlib.Path,
     en_record: dict[str, Any],
@@ -805,12 +849,26 @@ def draft_one(
         validation_note = ""
         last_errors: list[str] = []
         for attempt in range(validation_retries + 1):
-            draft, usage = call_azure(
-                system_prompt=DRAFT_SYSTEM_PROMPT,
-                user_prompt=user_prompt + validation_note,
-                deployment=deployment,
-                max_completion_tokens=max_completion,
-            )
+            prompt_for_attempt = user_prompt + validation_note
+            try:
+                draft, usage = call_azure(
+                    system_prompt=DRAFT_SYSTEM_PROMPT,
+                    user_prompt=prompt_for_attempt,
+                    deployment=deployment,
+                    max_completion_tokens=max_completion,
+                )
+            except Exception as exc:  # noqa: BLE001
+                if not is_content_filter_error(exc):
+                    raise
+                compact_prompt = build_compact_user_prompt(source_path, en_record)
+                if validation_note:
+                    compact_prompt = compact_prompt + validation_note
+                draft, usage = call_azure(
+                    system_prompt=DRAFT_SYSTEM_PROMPT,
+                    user_prompt=compact_prompt,
+                    deployment=deployment,
+                    max_completion_tokens=max_completion,
+                )
             record = build_record(
                 source_path=source_path,
                 en_record=en_record,
