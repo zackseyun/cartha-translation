@@ -21,12 +21,14 @@ import argparse
 import copy
 import concurrent.futures
 import datetime as dt
+import itertools
 import json
 import os
 import pathlib
 import re
 import subprocess
 import sys
+import threading
 import time
 import urllib.error
 import urllib.request
@@ -64,6 +66,16 @@ LEGACY_KEY_FILE = pathlib.Path("/tmp/aoai_key.txt")
 DEFAULT_MAX_COMPLETION = 8000
 DEFAULT_TIMEOUT = 180
 DEFAULT_AZURE_RETRIES = int(os.environ.get("CARTHA_KO_AZURE_RETRIES", "8"))
+AZURE_TARGETS_FILE = (
+    pathlib.Path(os.environ["CARTHA_KO_AZURE_TARGETS_FILE"])
+    if os.environ.get("CARTHA_KO_AZURE_TARGETS_FILE")
+    else None
+)
+AZURE_TARGETS_JSON = os.environ.get("CARTHA_KO_AZURE_TARGETS_JSON")
+
+_AZURE_TARGETS_CACHE: tuple[dict[str, str], ...] | None = None
+_AZURE_TARGETS_LOCK = threading.Lock()
+_AZURE_TARGET_COUNTER = itertools.count()
 
 PROMPT_ID = "korean_source_grounded_draft_azure_v1"
 REVIEW_PROMPT_ID = "korean_source_review_azure_v1"
@@ -634,6 +646,73 @@ def fetch_azure_key() -> str:
     )
 
 
+def _policy_token(value: str) -> str:
+    return "".join(ch for ch in value.lower() if ch.isalnum())
+
+
+def load_azure_targets(*, deployment: str, endpoint: str) -> tuple[dict[str, str], ...]:
+    """Return one or more Azure targets for load-balanced GPT-5.4-mini calls.
+
+    `CARTHA_KO_AZURE_TARGETS_FILE` / `CARTHA_KO_AZURE_TARGETS_JSON` may contain a
+    JSON array of objects:
+      {"endpoint": "...", "deployment": "gpt-5-4-mini-ko", "api_key": "..."}
+
+    The file lives under ignored `state/` during high-volume drafting so keys
+    are never committed. Without a targets file we preserve the historical
+    single-endpoint behavior.
+    """
+    global _AZURE_TARGETS_CACHE
+    with _AZURE_TARGETS_LOCK:
+        if _AZURE_TARGETS_CACHE is not None:
+            return _AZURE_TARGETS_CACHE
+
+        raw = ""
+        if AZURE_TARGETS_JSON:
+            raw = AZURE_TARGETS_JSON
+        elif AZURE_TARGETS_FILE and AZURE_TARGETS_FILE.exists():
+            raw = AZURE_TARGETS_FILE.read_text(encoding="utf-8")
+
+        targets: list[dict[str, str]] = []
+        if raw.strip():
+            data = json.loads(raw)
+            if not isinstance(data, list):
+                raise RuntimeError("CARTHA_KO_AZURE_TARGETS must be a JSON array")
+            for i, item in enumerate(data, 1):
+                if not isinstance(item, dict):
+                    raise RuntimeError(f"Azure target #{i} is not an object")
+                target_endpoint = str(item.get("endpoint") or "").strip().rstrip("/")
+                target_deployment = str(item.get("deployment") or deployment).strip()
+                target_key = str(item.get("api_key") or item.get("key") or "").strip()
+                if not target_endpoint or not target_deployment or not target_key:
+                    raise RuntimeError(
+                        f"Azure target #{i} must include endpoint, deployment, and api_key"
+                    )
+                required = _policy_token(REQUIRED_MODEL_FRAGMENT)
+                if required and required not in _policy_token(target_deployment):
+                    raise RuntimeError(
+                        f"Azure target #{i} deployment {target_deployment!r} violates "
+                        "the GPT-5.4-mini-only Korean policy."
+                    )
+                targets.append(
+                    {
+                        "endpoint": target_endpoint,
+                        "deployment": target_deployment,
+                        "api_key": target_key,
+                    }
+                )
+        else:
+            targets.append(
+                {
+                    "endpoint": endpoint.rstrip("/"),
+                    "deployment": deployment,
+                    "api_key": fetch_azure_key(),
+                }
+            )
+
+        _AZURE_TARGETS_CACHE = tuple(targets)
+        return _AZURE_TARGETS_CACHE
+
+
 def enforce_model_policy(*, deployment: str, model_id: str) -> None:
     """Prevent accidental continuation on the wrong mini deployment.
 
@@ -644,11 +723,8 @@ def enforce_model_policy(*, deployment: str, model_id: str) -> None:
     if os.environ.get("CARTHA_KO_ALLOW_NON_54_MINI") == "1":
         return
 
-    def policy_token(value: str) -> str:
-        return "".join(ch for ch in value.lower() if ch.isalnum())
-
-    haystack = policy_token(f"{deployment} {model_id}")
-    required = policy_token(REQUIRED_MODEL_FRAGMENT)
+    haystack = _policy_token(f"{deployment} {model_id}")
+    required = _policy_token(REQUIRED_MODEL_FRAGMENT)
     if required and required not in haystack:
         raise SystemExit(
             "Korean pipeline is pinned to GPT-5.4-mini from now on. "
@@ -670,9 +746,7 @@ def call_azure(
     timeout: int = DEFAULT_TIMEOUT,
     retries: int = DEFAULT_AZURE_RETRIES,
 ) -> tuple[dict[str, Any], dict[str, Any]]:
-    api_key = fetch_azure_key()
-    endpoint = endpoint.rstrip("/")
-    url = f"{endpoint}/openai/deployments/{deployment}/chat/completions?api-version={api_version}"
+    targets = load_azure_targets(deployment=deployment, endpoint=endpoint)
     payload: dict[str, Any] = {
         "messages": [
             {"role": "system", "content": system_prompt},
@@ -685,11 +759,20 @@ def call_azure(
     }
     encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     last_error: Exception | None = None
+    with _AZURE_TARGETS_LOCK:
+        target_base = next(_AZURE_TARGET_COUNTER)
     for attempt in range(retries + 1):
+        target = targets[(target_base + attempt) % len(targets)]
+        target_endpoint = target["endpoint"].rstrip("/")
+        target_deployment = target["deployment"]
+        url = (
+            f"{target_endpoint}/openai/deployments/{target_deployment}"
+            f"/chat/completions?api-version={api_version}"
+        )
         req = urllib.request.Request(
             url,
             data=encoded,
-            headers={"Content-Type": "application/json", "api-key": api_key},
+            headers={"Content-Type": "application/json", "api-key": target["api_key"]},
             method="POST",
         )
         try:
@@ -714,9 +797,13 @@ def call_azure(
             if exc.code == 429 and attempt < retries:
                 retry_after = exc.headers.get("retry-after")
                 try:
-                    sleep_for = int(retry_after) if retry_after else 20 * (attempt + 1)
+                    sleep_for = (
+                        int(retry_after)
+                        if retry_after
+                        else (2 * (attempt + 1) if len(targets) > 1 else 20 * (attempt + 1))
+                    )
                 except ValueError:
-                    sleep_for = 20 * (attempt + 1)
+                    sleep_for = 2 * (attempt + 1) if len(targets) > 1 else 20 * (attempt + 1)
                 time.sleep(sleep_for)
                 continue
         except (urllib.error.URLError, TimeoutError, json.JSONDecodeError, RuntimeError) as exc:
