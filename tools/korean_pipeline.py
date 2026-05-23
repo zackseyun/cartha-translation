@@ -387,6 +387,55 @@ def prune_empty(obj: Any) -> Any:
     return obj
 
 
+def normalized_source_payload(record: dict[str, Any]) -> dict[str, Any]:
+    """Return a compact source payload with a usable `text` field.
+
+    Most verse records store the original-language text at `source.text`.
+    A few extra-canonical section records, especially Nag Hammadi OCR units,
+    instead keep source text under `source.primary_page_texts[*].text`. The
+    Korean pipeline still needs to draft them source-first, so normalize those
+    page texts into a single compact payload instead of treating the record as
+    untranslatable.
+    """
+    source = record.get("source") or {}
+    if not isinstance(source, dict):
+        return {}
+    if str(source.get("text") or "").strip():
+        return source
+
+    out: dict[str, Any] = {}
+    for key in (
+        "edition",
+        "language",
+        "section_id",
+        "section_label",
+        "codex_pages",
+        "witness",
+        "source_id",
+    ):
+        if source.get(key) not in (None, "", [], {}):
+            out[key] = source[key]
+
+    page_chunks: list[str] = []
+    for page in source.get("primary_page_texts") or []:
+        if not isinstance(page, dict):
+            continue
+        text = str(page.get("text") or "").strip()
+        if not text:
+            continue
+        page_num = page.get("page_num")
+        label = f"page {page_num}" if page_num not in (None, "") else "page"
+        page_chunks.append(f"[{label}]\n{text}")
+    if page_chunks:
+        out["text"] = "\n\n".join(page_chunks)
+        out["text_source"] = "source.primary_page_texts"
+        if source.get("consult_excerpt"):
+            out["english_consult_excerpt"] = source["consult_excerpt"]
+        return out
+
+    return out
+
+
 def utc_now() -> str:
     return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
 
@@ -397,7 +446,7 @@ def build_user_prompt(source_path: pathlib.Path, record: dict[str, Any]) -> str:
         "source_yaml_path": rel(source_path),
         "id": record.get("id"),
         "reference": record.get("reference"),
-        "source_payload": record.get("source") or {},
+        "source_payload": normalized_source_payload(record),
         "english_pob_translation": {
             "text": translation.get("text"),
             "footnotes": translation.get("footnotes") or [],
@@ -438,7 +487,7 @@ def build_compact_user_prompt(source_path: pathlib.Path, record: dict[str, Any])
     the verse can still be drafted by GPT-5.4-mini without switching models.
     """
     translation = record.get("translation") or {}
-    source = record.get("source") or {}
+    source = normalized_source_payload(record)
     context = {
         "source_yaml_path": rel(source_path),
         "id": record.get("id"),
@@ -843,7 +892,7 @@ def draft_one(
         return ("skip", rel(target_path))
     try:
         en_record = load_yaml(source_path)
-        if not en_record.get("source", {}).get("text"):
+        if not str(normalized_source_payload(en_record).get("text") or "").strip():
             return ("error", f"{rel(source_path)} missing source.text")
         user_prompt = build_user_prompt(source_path, en_record)
         validation_note = ""
