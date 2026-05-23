@@ -434,6 +434,28 @@ def normalized_source_payload(record: dict[str, Any]) -> dict[str, Any]:
             out["english_consult_excerpt"] = source["consult_excerpt"]
         return out
 
+    # Coptic Scriptorium/Nag Hammadi records can store the source in
+    # language-specific fields rather than `source.text`.
+    coptic_parts: list[str] = []
+    for key in ("coptic_orig", "coptic_norm", "approx_ocr_excerpt"):
+        value = str(source.get(key) or "").strip()
+        if value:
+            coptic_parts.append(f"[{key}]\n{value}")
+    if isinstance(source.get("lines"), list):
+        line_text = "\n".join(
+            str(line).strip()
+            for line in source.get("lines") or []
+            if str(line).strip()
+        )
+        if line_text:
+            coptic_parts.append(f"[lines]\n{line_text}")
+    if coptic_parts:
+        out["text"] = "\n\n".join(coptic_parts)
+        out["text_source"] = "source.coptic_or_ocr_fields"
+        if source.get("consult_text"):
+            out["english_consult_text"] = source["consult_text"]
+        return out
+
     return out
 
 
