@@ -1211,7 +1211,7 @@ def draft_one(
         return ("skip", rel(target_path))
     try:
         en_record = load_yaml(source_path)
-        if not str(normalized_source_payload(en_record).get("text") or "").strip():
+        if not str(normalized_source_payload(en_record, source_path).get("text") or "").strip():
             return ("error", f"{rel(source_path)} missing source.text")
         user_prompt = build_user_prompt(source_path, en_record)
         validation_note = ""
