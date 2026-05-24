@@ -72,6 +72,10 @@ AZURE_TARGETS_FILE = (
     else None
 )
 AZURE_TARGETS_JSON = os.environ.get("CARTHA_KO_AZURE_TARGETS_JSON")
+LOCAL_MLX_ENDPOINT = os.environ.get("CARTHA_KO_LOCAL_ENDPOINT")
+LOCAL_MLX_MODEL = os.environ.get(
+    "CARTHA_KO_LOCAL_MODEL", "mlx-community/Qwen3.5-35B-A3B-4bit"
+)
 
 _AZURE_TARGETS_CACHE: tuple[dict[str, str], ...] | None = None
 _AZURE_TARGETS_LOCK = threading.Lock()
@@ -173,6 +177,19 @@ Never:
 - invent lexicon entry numbers.
 
 {KOREAN_STYLE_AND_GLOSSARY}
+"""
+
+LOCAL_DRAFT_SYSTEM_PROMPT = """You are producing a source-grounded Korean draft for the People's Open Bible.
+
+Return exactly one valid JSON object and no extra text.
+The JSON object must contain:
+- korean_text: string
+- translation_philosophy: one of formal, dynamic, optimal-equivalence
+- lexical_decisions: array of objects with source_word, english_pob_choice, chosen_korean, alternatives_korean, lexicon, rationale
+- theological_decisions: array of objects with decision, rationale
+- footnotes: array of objects with marker, text, source
+
+Keep the Korean modern formal-polite (합쇼체), source-grounded, and concise.
 """
 
 DRAFT_TOOL: dict[str, Any] = {
@@ -1022,6 +1039,93 @@ def call_azure(
     raise last_error if last_error else RuntimeError("Azure call failed without specific error")
 
 
+def call_local_mlx(
+    *,
+    system_prompt: str,
+    user_prompt: str,
+    model: str = LOCAL_MLX_MODEL,
+    endpoint: str = LOCAL_MLX_ENDPOINT,
+    max_completion_tokens: int = DEFAULT_MAX_COMPLETION,
+    timeout: int = DEFAULT_TIMEOUT,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    if not endpoint:
+        raise RuntimeError("CARTHA_KO_LOCAL_ENDPOINT is not set")
+    payload: dict[str, Any] = {
+        "model": model,
+        "messages": [
+            {"role": "system", "content": system_prompt},
+            {"role": "user", "content": user_prompt},
+        ],
+        "max_tokens": max_completion_tokens,
+        "temperature": 0,
+    }
+    encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
+    url = endpoint.rstrip("/") + "/chat/completions"
+    req = urllib.request.Request(
+        url,
+        data=encoded,
+        headers={"Content-Type": "application/json"},
+        method="POST",
+    )
+    with urllib.request.urlopen(req, timeout=timeout) as response:
+        body = json.loads(response.read().decode("utf-8"))
+    choices = body.get("choices") or []
+    if not choices:
+        raise RuntimeError(f"Local MLX response had no choices: {body}")
+    message = choices[0].get("message") or {}
+    text = str(message.get("content") or "").strip()
+    if not text:
+        raise RuntimeError(f"Local MLX response had empty content: {body}")
+    text = text.strip()
+    if text.startswith("```"):
+        text = re.sub(r"^```(?:json)?\\s*|\\s*```$", "", text.strip(), flags=re.DOTALL).strip()
+    try:
+        draft = json.loads(text)
+    except json.JSONDecodeError as exc:
+        start = text.find("{")
+        end = text.rfind("}")
+        if start >= 0 and end > start:
+            draft = json.loads(text[start : end + 1])
+        else:
+            raise RuntimeError(f"Local MLX response was not valid JSON: {text[:1000]}") from exc
+    usage = body.get("usage") or {}
+    return draft, usage
+
+
+def call_drafting_model(
+    *,
+    system_prompt: str,
+    user_prompt: str,
+    deployment: str,
+    tool: dict[str, Any] = DRAFT_TOOL,
+    tool_name: str = "submit_korean_draft",
+    api_version: str = DEFAULT_API_VERSION,
+    endpoint: str = DEFAULT_ENDPOINT,
+    max_completion_tokens: int = DEFAULT_MAX_COMPLETION,
+    timeout: int = DEFAULT_TIMEOUT,
+    retries: int = DEFAULT_AZURE_RETRIES,
+) -> tuple[dict[str, Any], dict[str, Any]]:
+    if LOCAL_MLX_ENDPOINT:
+        return call_local_mlx(
+            system_prompt=LOCAL_DRAFT_SYSTEM_PROMPT,
+            user_prompt=user_prompt,
+            max_completion_tokens=max_completion_tokens,
+            timeout=timeout,
+        )
+    return call_azure(
+        system_prompt=system_prompt,
+        user_prompt=user_prompt,
+        deployment=deployment,
+        tool=tool,
+        tool_name=tool_name,
+        api_version=api_version,
+        endpoint=endpoint,
+        max_completion_tokens=max_completion_tokens,
+        timeout=timeout,
+        retries=retries,
+    )
+
+
 def normalize_usage(usage: dict[str, Any]) -> dict[str, Any]:
     details = usage.get("completion_tokens_details") or {}
     return {
@@ -1213,13 +1317,17 @@ def draft_one(
         en_record = load_yaml(source_path)
         if not str(normalized_source_payload(en_record, source_path).get("text") or "").strip():
             return ("error", f"{rel(source_path)} missing source.text")
-        user_prompt = build_user_prompt(source_path, en_record)
+        user_prompt = (
+            build_compact_user_prompt(source_path, en_record)
+            if LOCAL_MLX_ENDPOINT
+            else build_user_prompt(source_path, en_record)
+        )
         validation_note = ""
         last_errors: list[str] = []
         for attempt in range(validation_retries + 1):
             prompt_for_attempt = user_prompt + validation_note
             try:
-                draft, usage = call_azure(
+                draft, usage = call_drafting_model(
                     system_prompt=DRAFT_SYSTEM_PROMPT,
                     user_prompt=prompt_for_attempt,
                     deployment=deployment,
@@ -1231,7 +1339,7 @@ def draft_one(
                 compact_prompt = build_compact_user_prompt(source_path, en_record)
                 if validation_note:
                     compact_prompt = compact_prompt + validation_note
-                draft, usage = call_azure(
+                draft, usage = call_drafting_model(
                     system_prompt=DRAFT_SYSTEM_PROMPT,
                     user_prompt=compact_prompt,
                     deployment=deployment,
@@ -1283,8 +1391,9 @@ def cmd_draft(args: argparse.Namespace) -> int:
     )
     enforce_model_policy(deployment=args.deployment, model_id=args.model_id)
     # Resolve credentials once before worker threads start so they do not all
-    # race the Azure CLI key lookup.
-    fetch_azure_key()
+    # race the Azure CLI key lookup. Skip when using the local MLX fallback.
+    if not LOCAL_MLX_ENDPOINT:
+        fetch_azure_key()
     start = time.time()
     ok = err = skip = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as ex:
