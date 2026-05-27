@@ -20,6 +20,7 @@ People's Open Bible.
 | `chapter_merge.py` | implemented | Cherry-picks completed worker chapter commits onto `main` in canonical order and records merge state. |
 | `dashboard_server.py` | implemented | Serves a local live dashboard showing active queue workers, claimed chapters, progress percentages, ready-to-merge jobs, and recent commits. |
 | `validate_reader_corpus.py` | implemented | Pre-publish reader guardrail: validates corpus YAML, blocks synthetic chapter-as-verse-1 mirrors from coexisting with real per-verse files, and catches verse 1 containing later verse text. |
+| `simplified_pob_pipeline.py` | implemented | Drafts the Simplified People's Open Bible (SPOB) as a plain-language English derivative of POB under `translation_simplified/`, preserving POB reasoning layers as audit guardrails. |
 | `transcribe_source.py` | implemented | Transcribes Swete Greek and Schechter Hebrew source pages from archival scans via GPT-5.4 vision, writing UTF-8 text plus provenance sidecars. |
 | `review_transcription.py` | implemented | Reviews an existing Swete transcription against the scan image via GPT-5.4, returning structured corrections-only function output and per-page review metadata. |
 | `summarize_transcription_reviews.py` | implemented | Aggregates GPT-5.4 and Claude review outputs, reports parseability, correction counts, and high-risk pages for adjudication. |

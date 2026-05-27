@@ -11,7 +11,8 @@ methods, and code are published as openly as possible.
 
 [Read the Bible](https://cartha.com/peoples-open-bible/) ·
 [About the project](https://cartha.com/peoples-open-bible/about/) ·
-[Our philosophy](https://cartha.com/peoples-open-bible/docs/philosophy/)
+[Our philosophy](https://cartha.com/peoples-open-bible/docs/philosophy/) ·
+[Simplified POB](SPOB.md)
 
 ## What makes this different
 
