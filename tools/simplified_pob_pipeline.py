@@ -1017,8 +1017,8 @@ def draft_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
                         timeout_seconds=args.timeout_seconds,
                         retries=args.retries,
                     )
-                model_id = args.vertex_model
-                deployment = f"vertex:{args.vertex_location}"
+                    model_id = args.vertex_model
+                    deployment = f"vertex:{args.vertex_location}"
             if not str(tool_input.get("simplified_text") or "").strip():
                 last_errors = ["model response missing simplified_text"]
                 validation_note = (
