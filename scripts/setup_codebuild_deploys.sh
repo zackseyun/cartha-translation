@@ -469,9 +469,9 @@ aws events put-targets \
 aws events put-rule \
   --region "$REGION" \
   --name "$SUMMARY_RULE" \
-  --schedule-expression 'cron(37 * * * ? *)' \
+  --schedule-expression 'cron(37 9 * * ? *)' \
   --state ENABLED \
-  --description "Hourly BibleSummaryCache regeneration for ${REPO_OWNER}/${REPO_NAME} via CodeBuild" >/dev/null
+  --description "Daily BibleSummaryCache regeneration for ${REPO_OWNER}/${REPO_NAME} via CodeBuild" >/dev/null
 aws events put-targets \
   --region "$REGION" \
   --rule "$SUMMARY_RULE" \
