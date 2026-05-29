@@ -42,6 +42,10 @@ phases:
           publish-response.json
         cat publish-response.json
       - |
+        if [[ -f .skip-publish ]]; then
+          echo "Manifest wait skipped; publish was skipped for [skip ci]."
+          exit 0
+        fi
         for i in $(seq 1 30); do
           BODY="$(curl -sL --max-time 15 "$CDN_MANIFEST_URL" || true)"
           if [[ -n "$BODY" ]]; then
