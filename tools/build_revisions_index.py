@@ -202,10 +202,46 @@ BOOK_META: dict[str, tuple[str, str, str]] = {
 def head_commit_sha() -> str:
     try:
         return subprocess.check_output(
-            ["git", "rev-parse", "HEAD"], cwd=REPO_ROOT, text=True
+            [
+                "git",
+                "rev-list",
+                "-1",
+                "HEAD",
+                "--",
+                "translation",
+                "translation_es",
+                "translation_ko",
+                "translation_simplified",
+                "book_metadata.json",
+            ],
+            cwd=REPO_ROOT,
+            text=True,
         ).strip()
     except Exception:
-        return ""
+        try:
+            return subprocess.check_output(
+                ["git", "rev-parse", "HEAD"], cwd=REPO_ROOT, text=True
+            ).strip()
+        except Exception:
+            return ""
+
+
+def comparable_index(index: dict[str, Any]) -> dict[str, Any]:
+    comparable = dict(index)
+    comparable.pop("generated_at", None)
+    return comparable
+
+
+def preserve_generated_at_if_unchanged(index: dict[str, Any]) -> dict[str, Any]:
+    if not OUT_PATH.exists():
+        return index
+    try:
+        previous = json.loads(OUT_PATH.read_text(encoding="utf-8"))
+    except Exception:
+        return index
+    if comparable_index(previous) == comparable_index(index):
+        index["generated_at"] = previous.get("generated_at", index["generated_at"])
+    return index
 
 
 def display_name_for(book_slug: str, testament: str) -> tuple[str, str]:
@@ -756,7 +792,7 @@ def build_summary(index: dict[str, Any]) -> dict[str, Any]:
 
 
 def main() -> int:
-    index = build_index()
+    index = preserve_generated_at_if_unchanged(build_index())
     OUT_PATH.write_text(
         json.dumps(index, ensure_ascii=False, indent=2) + "\n",
         encoding="utf-8",
