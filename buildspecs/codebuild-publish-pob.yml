@@ -22,13 +22,17 @@ phases:
       - |
         if [[ "$HEAD_MESSAGE" == *"[skip ci]"* ]]; then
           echo "Skipping publish because commit message contains [skip ci]."
-          exit 0
+          touch .skip-publish
         fi
   build:
     commands:
-      - set -euo pipefail
-      - export TARGET_SHA="${CODEBUILD_RESOLVED_SOURCE_VERSION:-$(git rev-parse HEAD)}"
       - |
+        set -euo pipefail
+        if [[ -f .skip-publish ]]; then
+          echo "Publish skipped; not invoking Lambda or website pipeline."
+          exit 0
+        fi
+        export TARGET_SHA="${CODEBUILD_RESOLVED_SOURCE_VERSION:-$(git rev-parse HEAD)}"
         aws lambda invoke \
           --region "$AWS_REGION" \
           --function-name "$LAMBDA_NAME" \

@@ -25,26 +25,32 @@ phases:
       - |
         if [[ "$HEAD_MESSAGE" == *"[skip ci]"* ]]; then
           echo "Skipping status regeneration because commit message contains [skip ci]."
-          exit 0
+          touch .skip-status
         fi
-      - git remote set-url origin git@github.com:zackseyun/peoples-open-bible.git
-      - git fetch origin main --tags --force
-      - git checkout -B main origin/main
+      - |
+        if [[ ! -f .skip-status ]]; then
+          git remote set-url origin git@github.com:zackseyun/peoples-open-bible.git
+          git fetch origin main --tags --force
+          git checkout -B main origin/main
+        fi
   build:
     commands:
-      - set -euo pipefail
-      - python3 tools/build_status.py
       - |
+        set -euo pipefail
+        if [[ -f .skip-status ]]; then
+          echo "Status regeneration skipped; not committing a new [skip ci] snapshot."
+          exit 0
+        fi
+        python3 tools/build_status.py
         if git diff --quiet status.json; then
           echo "status.json unchanged — nothing to commit."
           exit 0
         fi
-      - git config user.name 'codebuild-peoples-open-bible[bot]'
-      - git config user.email 'codebuild-peoples-open-bible@users.noreply.github.com'
-      - git add status.json
-      - |
+        git config user.name 'codebuild-peoples-open-bible[bot]'
+        git config user.email 'codebuild-peoples-open-bible@users.noreply.github.com'
+        git add status.json
         git commit -m 'status: regenerate snapshot [skip ci]'
-      - git push origin HEAD:main
+        git push origin HEAD:main
   post_build:
     commands:
       - rm -f ~/.ssh/id_ed25519
