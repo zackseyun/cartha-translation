@@ -13,6 +13,8 @@ Other readers need the same meaning in clearer, more immediate English. SPOB is 
 SPOB aims to be:
 
 - **clear** — common modern English, fewer academic turns of phrase;
+- **actually simpler** — difficult main-text wording should be rewritten into
+  an understandable representation, not merely lightly polished;
 - **faithful** — no flattening of POB's documented source decisions;
 - **dignified** — readable without becoming casual, childish, or devotional paraphrase;
 - **auditable** — every simplified verse points back to its POB source record.

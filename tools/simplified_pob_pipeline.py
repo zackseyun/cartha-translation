@@ -57,6 +57,8 @@ SPOB_STYLE_GUIDE = """
 Audience: a modern, common English reader who may be new to biblical language.
 Use clear, natural English. Prefer short sentences when the POB sentence is hard
 to follow. Keep the gravity of Scripture; do not make it casual, cute, or vague.
+This is a readability translation, not a conservative copyedit. If the draft
+mostly preserves POB's wording and sentence structure, it has failed.
 
 Relationship to POB:
 - POB is the controlling base text and audit trail.
@@ -70,12 +72,24 @@ Relationship to POB:
 
 Default simplification rules:
 - Replace academic or archaic phrasing with common wording.
+- Replace opaque historical, legal, ritual, currency, measure, and idiomatic
+  terms with understandable modern wording in the main text. Keep the original
+  term only in a footnote or retained-term note when needed for auditability.
 - Break dense clauses into simpler sentences when helpful.
+- Recast awkward participles and literal clause order into ordinary English
+  when that makes the same meaning easier to understand.
 - Keep names, divine names, and major theological titles stable unless POB's own
   rationale permits a clearer equivalent.
 - Keep footnotes only when they help a normal reader understand an important
   alternate reading, textual issue, cross-reference, or translation choice.
 - Do not harmonize, doctrinally smooth, or over-resolve tension that POB keeps.
+
+Examples of the kind of main-text simplification expected:
+- "quadrans" -> "smallest coin" / "last small coin"
+- "alms" -> "charity" / "help for the poor"
+- "having come under confinement" -> "when he is put in prison/custody"
+- "examined concerning the things he did" -> "questioned about what he did"
+- "not having need" -> "when he does not need help"
 """.strip()
 
 DRAFT_SYSTEM_PROMPT = f"""You are drafting the Simplified People's Open Bible (SPOB).
@@ -83,6 +97,10 @@ DRAFT_SYSTEM_PROMPT = f"""You are drafting the Simplified People's Open Bible (S
 SPOB is an English derivative of the People's Open Bible for modern common
 readers. Your task is to simplify one POB verse/section while preserving the POB
 meaning and its audited reasoning layers.
+
+The output should read like a real plain-language edition. Do not merely polish
+POB with a few synonym swaps. Actively rewrite difficult wording into a clearer
+representation a normal reader can understand on the first read.
 
 You must call `submit_simplified_draft` exactly once and output no other text.
 

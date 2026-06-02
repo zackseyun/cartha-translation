@@ -6,6 +6,10 @@ SPOB is a **plain-language English derivative** of the People's Open Bible. It e
 
 - **Derivative of POB, not a replacement source translation.** POB remains the controlling base text.
 - **Modern common English.** Clear, direct, dignified, not childish or slangy.
+- **Real readability rewrite.** SPOB should not merely preserve POB's structure
+  with a few synonym swaps; opaque words, dense clauses, idioms, measures,
+  currency, legal phrasing, and inherited church terms should become immediately
+  understandable in the main text when the meaning can be preserved.
 - **Faithful compression.** SPOB may compress or simplify wording, but it must preserve the main POB decision, important ambiguities, source-language images, and theological tensions.
 - **Still auditable.** Each SPOB record points back to the POB YAML and carries simplification decisions explaining what was compressed and what reasoning layer protected the meaning.
 
@@ -74,3 +78,7 @@ A SPOB verse is acceptable only if a reviewer can answer “yes” to all three:
 1. Does the simplified wording preserve the POB meaning?
 2. Does it preserve documented ambiguity or theological tension where POB preserved it?
 3. Would a normal modern reader understand it more easily than POB without being misled?
+
+If a verse still leaves words like `quadrans` in the main sentence without a
+plain equivalent such as “last small coin,” it should be treated as
+under-simplified and regenerated or revised.
