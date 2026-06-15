@@ -20,6 +20,22 @@ PIPELINE_IDLE_SECONDS="${POB_WEBSITE_PIPELINE_IDLE_SECONDS:-10}"
 
 say() { printf '[website-sync] %s\n' "$*"; }
 
+manifest_contains_target() {
+  local manifest_sha="$1"
+  local target_sha="$2"
+  if [[ -z "$manifest_sha" || -z "$target_sha" ]]; then
+    return 1
+  fi
+  if [[ "$manifest_sha" == "$target_sha" ]]; then
+    return 0
+  fi
+  if ! command -v git >/dev/null 2>&1; then
+    return 1
+  fi
+  git fetch --depth=100 origin "$manifest_sha" >/dev/null 2>&1 || true
+  git merge-base --is-ancestor "$target_sha" "$manifest_sha" >/dev/null 2>&1
+}
+
 resolve_target_sha() {
   if [[ -n "${TARGET_SHA:-}" ]]; then
     printf '%s\n' "$TARGET_SHA"
@@ -50,8 +66,9 @@ if [[ -n "$TARGET_SHA_RESOLVED" ]]; then
       VERSION="$(python3 -c 'import json,sys; d=json.load(sys.stdin); print(d.get("version") or "")' <<<"$BODY" 2>/dev/null || true)"
     fi
     say "attempt=$i manifest_sha=${SHA:-missing} version=${VERSION:-missing}"
-    if [[ "$SHA" == "$TARGET_SHA_RESOLVED" ]]; then
+    if manifest_contains_target "$SHA" "$TARGET_SHA_RESOLVED"; then
       matched=1
+      TARGET_SHA_RESOLVED="$SHA"
       break
     fi
     sleep "$MANIFEST_WAIT_SECONDS"

@@ -59,6 +59,11 @@ phases:
               TARGET_SHA="$TARGET_SHA" scripts/trigger_website_pob_sync.sh
               exit 0
             fi
+            if [[ -n "$SHA" ]] && git fetch --depth=100 origin "$SHA" >/dev/null 2>&1 && git merge-base --is-ancestor "$TARGET_SHA" "$SHA"; then
+              echo "CDN manifest is a descendant of pushed commit; using manifest SHA for website sync."
+              TARGET_SHA="$SHA" scripts/trigger_website_pob_sync.sh
+              exit 0
+            fi
           else
             echo "attempt=$i manifest unavailable"
           fi
