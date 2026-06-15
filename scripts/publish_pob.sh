@@ -12,6 +12,7 @@ echo "[publish] forcing ${LAMBDA_NAME} at $(date -u +%FT%TZ)" >> "$LOG"
 
 if [[ "${POB_SKIP_READER_VALIDATION:-0}" != "1" ]]; then
   echo "[publish] validating reader corpus before Lambda invoke" | tee -a "$LOG"
+  "$PYTHON_BIN" "$REPO_ROOT/tools/lint_psalm_numbering.py" --strict 2>&1 | tee -a "$LOG"
   "$PYTHON_BIN" "$REPO_ROOT/tools/validate_reader_corpus.py" --quiet --malformed-yaml warn 2>&1 | tee -a "$LOG"
 fi
 

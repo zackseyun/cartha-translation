@@ -37,152 +37,7 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 PSALMS_DIR = REPO_ROOT / "translation" / "ot" / "psalms"
 
 # ── Content detection ──────────────────────────────────────────────────────
-# A verse has *content* if it contains a main predication — Yahweh/God doing
-# something, first-person prayer, imperatives of praise/lament, beatitudes, etc.
-# Superscription clauses are purely nominal/attributive with no such predicate.
-
-_CONTENT_RE = re.compile(
-    r"""(
-        # Vocative address to God — always content, never superscription
-        \bO\s+(Yahweh|God|Lord|my\s+God)\b
-        |\bYahweh,\s+(my|our|your|O|hear|answer|arise)\b
-        # Yahweh / God as subject with any predicate
-        |\bYahweh\s+(is\b|are\b|will\b|shall\b|has\b|have\b|was\b|were\b
-                    |my\b|your\b|comes?\b|came\b|speaks?\b|spoke\b
-                    |delivers?\b|delivered\b|saves?\b|saved\b
-                    |reigns?\b|reigned\b|dwells?\b|stands?\b|judges?\b
-                    |loves?\b|hears?\b|sees?\b|gives?\b|takes?\b)
-        |\bGod\s+(is\b|are\b|will\b|has\b|my\b|your\b|hears?\b|sees?\b
-                  |stands?\b|reigns?\b|judges?\b|speaks?\b|gives?\b)
-        # First-person subject (prayer / testimony voice)
-        |\bI\s+(will\b|have\b|am\b|was\b|shall\b|call\b|cry\b|praise\b
-                |lift\b|trust\b|take\b|seek\b|wait\b|put\b|rest\b
-                |declare\b|love\b|say\b|know\b|believe\b|walk\b|fear\b)
-        |\bmy\s+(soul\b|heart\b|strength\b|God\b|King\b|help\b
-                 |refuge\b|rock\b|shield\b|portion\b|prayer\b|cry\b)
-        # Second-person address / imperatives to God
-        |\b(Hear\s+(my|me|o|a)\b|Save\s+me\b|Help\s+me\b
-            |Deliver\s+me\b|Vindicate\s+me\b|Arise\b|Awake\b
-            |Contend\b|Give\s+(your|me|ear|thanks|glory)\b
-            |Do\s+not\s+(forsake|hide|forget|be\b)\b
-            |Answer\s+me\b|Look\s+(on|upon)\b)
-        # Lament / question openers
-        |\b(How\s+long\b|Why\s+(do|have|has|did|O)\b
-            |Blessed\s+(is|are)\b
-            |Shout\s+(for|to)\b|Praise\s+(the|Yahweh|God)\b
-            |Sing\s+(to|a)\b)
-        # Doctrinal / narrative statements
-        |\bThe\s+(earth\b|heavens\b|nations\b|fool\b|righteous\b|wicked\b
-                  |Mighty\s+One\b|LORD\s+is\b)
-        |\bAll\s+the\s+(nations\b|earth\b|peoples\b)
-        |\bSurely\s+(God|Yahweh)\b
-    )""",
-    re.IGNORECASE | re.VERBOSE,
-)
-
-# Sentence starters that indicate the clause is attributive (superscription),
-# not predicative (content). Used when splitting fused verses.
-_SUPER_CLAUSE_START = re.compile(
-    r"""^(
-        for\s+the\s+(choir\s+director|choirmaster|director\s+of\s+music)
-        |a\s+(psalm|song|prayer|miktam|maskil|shiggaion|hymn|petition)
-        |a\s+song\s+of\s+(ascents|degrees)
-        |of\s+(david|asaph|solomon|moses|ethan|heman)
-        |of\s+the\s+sons\s+of\s+korah|by\s+the\s+sons\s+of\s+korah
-        |according\s+to\b
-        |on\s+the\s+(sheminith|gittith|alamoth)
-        |with\s+(stringed\s+instruments|flutes)
-        |when\s+(he|david|saul|the\s+philistines|joab)\b
-        |for\s+(remembrance|the\s+memorial\s+offering|memorial)
-    )\b""",
-    re.IGNORECASE | re.VERBOSE,
-)
-
-
-def is_superscription(text: str) -> bool:
-    """Return True if text is entirely a superscription (no content verse)."""
-    return not _has_content(text.strip()) if text.strip() else False
-
-
-def _has_content(text: str) -> bool:
-    # Primary: explicit content-marker regex
-    if _CONTENT_RE.search(text):
-        return True
-    # Secondary: split into period-delimited clauses; if ANY clause cannot be
-    # identified as a superscription phrase, the verse contains content.
-    # This catches past-tense forms ("I called", "he answered"), narrative
-    # openers ("By the rivers of", "His foundation is"), etc.
-    clauses = [c.strip().rstrip(".;:,—") for c in re.split(r"\.\s+", text) if c.strip()]
-    for clause in clauses:
-        if clause and not _SUPER_CLAUSE_START.match(clause):
-            return True
-    return False
-
-
-def classify_verse1(text: str) -> str:
-    """
-    Returns:
-      'standalone'  — entire verse is a superscription, no content
-      'fused'       — superscription prefix + content in same verse
-      'content'     — no superscription, pure content (Ps 1, 2, etc.)
-    """
-    t = text.strip()
-    if not t:
-        return "content"
-
-    if not _has_content(t):
-        return "standalone"
-
-    # Has content — check if it also starts with a superscription clause
-    # Split by ". " to get sentence fragments
-    first_clause = re.split(r"\.\s+", t)[0].strip()
-    if _SUPER_CLAUSE_START.match(first_clause):
-        return "fused"
-    return "content"
-
-
-def split_fused(text: str) -> tuple[str, str]:
-    """
-    Split a fused verse text into (superscription, content).
-    E.g. "A psalm of David. Yahweh is my shepherd; I will not lack."
-      → ("A psalm of David.", "Yahweh is my shepherd; I will not lack.")
-    """
-    # Split on period+space boundaries
-    parts = re.split(r"(\.\s+)", text)
-    # Reassemble into full sentences: ['A psalm of David', '. ', 'Yahweh is...']
-    sentences: list[str] = []
-    i = 0
-    while i < len(parts):
-        s = parts[i]
-        if i + 1 < len(parts) and parts[i + 1].startswith("."):
-            sentences.append(s + parts[i + 1].rstrip())
-            i += 2
-        else:
-            if s.strip():
-                sentences.append(s)
-            i += 1
-
-    super_parts: list[str] = []
-    content_parts: list[str] = []
-    in_content = False
-    for sent in sentences:
-        if in_content:
-            content_parts.append(sent)
-            continue
-        clause = sent.rstrip(". ")
-        if not _has_content(sent) and _SUPER_CLAUSE_START.match(clause.strip()):
-            super_parts.append(sent.rstrip() if sent.endswith(". ") else sent)
-        else:
-            in_content = True
-            content_parts.append(sent)
-
-    super_text = " ".join(super_parts).strip()
-    content_text = " ".join(content_parts).strip()
-    # Ensure superscription ends with a period
-    if super_text and not super_text.endswith("."):
-        super_text += "."
-    return super_text, content_text
-
+from psalm_numbering import classify_verse1, is_superscription, split_fused
 
 def _update_fields(data: dict, new_verse: int) -> None:
     """Update id, reference, and verse-number fields to new_verse."""
@@ -222,9 +77,29 @@ def process_psalm(psalm_dir: pathlib.Path, dry_run: bool, yaml: YAML
         return psalm_num, kind
 
     if kind == "standalone":
-        # Rename 001 → 000, 002 → 001, etc. (ascending order: each target slot was
-        # just vacated by the previous step, so no collision)
-        verse_files = sorted(psalm_dir.glob("*.yaml"), key=lambda p: int(p.stem))
+        # Rename 001 → 000, 002 → 001, etc.
+        #
+        # Some historical runs already created 000.yaml but left the original
+        # superscription behind as 001.yaml. In that partially-normalized state
+        # 000.yaml is the canonical header, so only remove the duplicate 001 and
+        # shift 002+ down by one. Never include 000.yaml in the shift set or it
+        # would become -01.yaml.
+        existing_v0 = psalm_dir / "000.yaml"
+        if existing_v0.exists():
+            v1_path.unlink()
+            verse_files = sorted(
+                (p for p in psalm_dir.glob("*.yaml") if p.stem.isdigit() and int(p.stem) >= 2),
+                key=lambda p: int(p.stem),
+            )
+        else:
+            verse_files = sorted(
+                (p for p in psalm_dir.glob("*.yaml") if p.stem.isdigit() and int(p.stem) >= 1),
+                key=lambda p: int(p.stem),
+            )
+
+        # Ascending order is safe because each target slot was just vacated by
+        # the previous step (or, for partial-normalization repair, by deleting
+        # the duplicate 001.yaml first).
         for vf in verse_files:
             old_num = int(vf.stem)
             new_num = old_num - 1

@@ -26,6 +26,8 @@ from typing import Any
 
 import yaml
 
+from psalm_numbering import is_superscription
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 
@@ -248,6 +250,55 @@ def check_reader_chapters(
     return issues, len(groups)
 
 
+def is_psalm_chapter_dir(chapter_dir: pathlib.Path) -> bool:
+    return (
+        chapter_dir.name.isdigit()
+        and chapter_dir.parent.name == "psalms"
+        and chapter_dir.parent.parent.name == "ot"
+        and chapter_dir.parent.parent.parent.name == "translation"
+    )
+
+
+def check_psalm_numbering(records: dict[pathlib.Path, CorpusRecord]) -> list[Issue]:
+    """Fail if a Psalm content verse slot still contains a superscription."""
+    groups: dict[pathlib.Path, list[CorpusRecord]] = {}
+    for record in records.values():
+        if record.yaml_kind == "reader_verse" and is_psalm_chapter_dir(record.path.parent):
+            groups.setdefault(record.path.parent, []).append(record)
+
+    issues: list[Issue] = []
+    for chapter_dir, chapter_records in sorted(groups.items()):
+        by_stem = {record.path.stem: record for record in chapter_records}
+        verse_one = by_stem.get("001")
+        if not verse_one:
+            continue
+        if not is_superscription(verse_one.text):
+            continue
+
+        verse_zero = by_stem.get("000")
+        if verse_zero:
+            details = (
+                "Psalm 000.yaml already exists, but 001.yaml is still a "
+                "superscription; this leaves the reader showing duplicate "
+                "header text before the real content verse"
+            )
+        else:
+            details = (
+                "Psalm 001.yaml is a superscription; Psalm headers must be "
+                "stored as 000.yaml so reader verse numbering starts at 1"
+            )
+        issues.append(
+            Issue(
+                rule="psalm-verse1-superscription",
+                path=verse_one.path,
+                related_path=verse_zero.path if verse_zero else None,
+                details=details,
+                sample=preview(verse_one.text),
+            )
+        )
+    return issues
+
+
 def print_issues(issues: list[Issue], *, report_limit: int) -> None:
     for issue in issues[:report_limit]:
         print(f"\n  RULE: {issue.rule}")
@@ -318,7 +369,8 @@ def main() -> int:
         min_containment_extra_chars=args.min_containment_extra_chars,
         min_flat_match_chars=args.min_flat_match_chars,
     )
-    issues = (yaml_issues if args.malformed_yaml == "error" else []) + reader_issues
+    psalm_issues = check_psalm_numbering(records)
+    issues = (yaml_issues if args.malformed_yaml == "error" else []) + reader_issues + psalm_issues
     elapsed = time.perf_counter() - started
 
     if issues:
@@ -349,6 +401,7 @@ def main() -> int:
         print(f"  Reader chapter directories checked: {reader_chapter_count}")
         print("  Synthetic mirror collisions: 0")
         print("  Verse-1 later-verse containment hits: 0")
+        print("  Psalm superscription numbering: ok")
         print(f"  Elapsed: {elapsed:.1f}s")
     return 0
 

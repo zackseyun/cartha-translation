@@ -21,9 +21,9 @@ import yaml
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 PSALMS_DIR = REPO_ROOT / "translation" / "ot" / "psalms"
 
-# Import detection from the normalization script to keep logic in one place
+# Import shared detection logic without pulling in the YAML rewrite machinery.
 sys.path.insert(0, str(REPO_ROOT / "tools"))
-from renumber_psalm_superscriptions import is_superscription
+from psalm_numbering import is_superscription
 
 
 def main() -> int:

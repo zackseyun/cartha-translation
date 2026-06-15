@@ -278,11 +278,78 @@ def load_translation_record(book_code: str, chapter: int, verse: int) -> dict[st
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
+def _export_record_verse(verse_num: int, record: dict[str, Any]) -> dict[str, Any] | None:
+    text = str(((record.get("translation") or {}).get("text", "")) or "").strip()
+    if not text:
+        return None
+    out: dict[str, Any] = {
+        "verse": verse_num,
+        "text": text,
+    }
+    if record.get("is_superscription") or verse_num == 0:
+        out["is_superscription"] = True
+    return out
+
+
+def export_psalms_book() -> dict[str, Any] | None:
+    """Export Psalms from the normalized reader files.
+
+    WLC counts many Psalm superscriptions as source verse 1. POB stores those
+    as reader headers in 000.yaml and shifts the body so English verse numbering
+    starts at 1. Walking the normalized files prevents mobile exports from
+    treating the source-edition verse count as a missing final English verse.
+    """
+    psalms_dir = TRANSLATION_ROOT / "ot" / "psalms"
+    if not psalms_dir.exists():
+        return None
+
+    chapters_out: list[dict[str, Any]] = []
+    for chapter_dir in sorted(psalms_dir.iterdir(), key=lambda d: int(d.name) if d.name.isdigit() else 999):
+        if not chapter_dir.is_dir() or not chapter_dir.name.isdigit():
+            continue
+        chapter_num = int(chapter_dir.name)
+        by_verse: dict[int, dict[str, Any]] = {}
+        for verse_file in sorted(chapter_dir.glob("*.yaml")):
+            if not verse_file.stem.isdigit():
+                continue
+            verse_num = int(verse_file.stem)
+            record = yaml.safe_load(verse_file.read_text(encoding="utf-8")) or {}
+            verse_out = _export_record_verse(verse_num, record)
+            if verse_out is not None:
+                by_verse[verse_num] = verse_out
+
+        body_nums = sorted(v for v in by_verse if v > 0)
+        if not body_nums:
+            continue
+        if body_nums != list(range(1, body_nums[-1] + 1)):
+            continue
+
+        verses_out: list[dict[str, Any]] = []
+        if 0 in by_verse:
+            verses_out.append(by_verse[0])
+        verses_out.extend(by_verse[v] for v in body_nums)
+        chapters_out.append({
+            "chapter": chapter_num,
+            "verses": verses_out,
+        })
+
+    if not chapters_out:
+        return None
+
+    return {
+        "name": book_title("PSA"),
+        "chapters": chapters_out,
+    }
+
+
 def export_book(book_code: str) -> dict[str, Any] | None:
     """Include every chapter that is fully drafted. Skip chapters with
     gaps rather than failing fast — a later complete chapter should not
     be withheld just because an earlier one is still being drafted.
     This matches the CDN publisher Lambda's behaviour."""
+    if book_code == "PSA":
+        return export_psalms_book()
+
     expected = expected_chapter_map(book_code)
     chapters_out: list[dict[str, Any]] = []
 

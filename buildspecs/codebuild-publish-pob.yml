@@ -13,6 +13,7 @@ phases:
       - set -euo pipefail
       - aws --version
       - jq --version
+      - python3 -m pip install --user pyyaml
   pre_build:
     commands:
       - set -euo pipefail
@@ -32,6 +33,8 @@ phases:
           echo "Publish skipped; not invoking Lambda or website pipeline."
           exit 0
         fi
+        python3 tools/lint_psalm_numbering.py --strict
+        python3 tools/validate_reader_corpus.py --skip-yaml-syntax --quiet --malformed-yaml warn
         export TARGET_SHA="${CODEBUILD_RESOLVED_SOURCE_VERSION:-$(git rev-parse HEAD)}"
         aws lambda invoke \
           --region "$AWS_REGION" \
