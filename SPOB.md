@@ -37,3 +37,13 @@ POB is the controlling base. SPOB may compress, clarify, or split difficult word
 - tension that POB intentionally leaves unresolved.
 
 The result should read like a separate English Bible edition, but one whose public audit trail remains anchored in POB.
+
+## Translation doctrine
+
+The operational rules for understanding-first rendering, interpretive expansion,
+and the use of named teachers or traditions are defined in
+[SPOB_DOCTRINE.md](SPOB_DOCTRINE.md).
+
+The short version is: SPOB may express a passage's contextual meaning more
+directly than POB, but every interpretive addition must be warranted and recorded.
+No individual teacher or denomination controls the main text.

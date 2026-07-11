@@ -4,6 +4,11 @@ Generated: 2026-05-27 22:48 UTC
 
 This pilot calibrates the Simplified People's Open Bible style before scaling to the full corpus.
 
+> **2026-07-10 update:** The understanding-first doctrine and GPT-5.6
+> Sol/Terra/Luna comparison are documented in
+> [SPOB_GPT56_CALIBRATION.md](SPOB_GPT56_CALIBRATION.md). Sol is the calibrated
+> primary drafter; Terra and Luna serve distinct review roles.
+
 ## Scope
 
 - Records generated: **36**

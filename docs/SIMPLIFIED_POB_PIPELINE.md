@@ -2,6 +2,11 @@
 
 SPOB is a **plain-language English derivative** of the People's Open Bible. It exists for the modern common reader: clearer sentences, less academic friction, and more immediate understanding — while keeping POB's source-grounded choices and reasoning layers intact.
 
+The normative policy is [SPOB_DOCTRINE.md](../SPOB_DOCTRINE.md). In particular,
+SPOB targets **maximum warranted understanding**: contextual meaning may be made
+explicit, but every interpretive expansion must be auditable and no named teacher
+or tradition may silently control the text.
+
 ## What SPOB is
 
 - **Derivative of POB, not a replacement source translation.** POB remains the controlling base text.
@@ -27,7 +32,11 @@ Each record stores:
 - `base_translation` with the POB YAML path, current POB text, footnotes, and revision metadata
 - `translation.language: en` and the simplified English `translation.text`
 - `simplification_decisions` describing POB phrase → simplified phrase, preserved meaning, and rationale
-- `retained_terms` for terms intentionally not flattened
+- `interpretive_expansions` recording any meaning made more explicit, its evidence,
+  confidence, preserved alternatives, and any external interpretive witnesses
+- optional retained-term and translation-note metadata when a later review pass
+  needs it; the primary compact audit is carried by simplification decisions,
+  interpretive expansions, and risk flags
 - `source_grounding.pob_role: primary_derivative_base`
 - `ai_draft.usage.estimated_cost_usd`
 

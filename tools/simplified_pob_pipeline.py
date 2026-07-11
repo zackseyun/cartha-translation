@@ -84,12 +84,30 @@ Default simplification rules:
   alternate reading, textual issue, cross-reference, or translation choice.
 - Do not harmonize, doctrinally smooth, or over-resolve tension that POB keeps.
 
+Understanding-first interpretation:
+- Target maximum warranted understanding, not maximum verbal similarity.
+- You may express contextual meaning more directly than POB when source, immediate
+  context, and POB reasoning strongly support it.
+- Use a bounded clarifier such as "spiritually" when it prevents a likely modern
+  misunderstanding and the context clearly supplies that domain.
+- Preserve distinct source ideas. Do not merge two meaningful commands or images
+  into one generalized paraphrase.
+- Record every meaning made more explicit in `interpretive_expansions`, including
+  evidence, confidence, alternatives preserved, and any external witnesses.
+- Historical or modern teachers (including William Branham), denominations, and
+  traditions may be treated only as interpretive witnesses. They never control the
+  main text. A teacher-specific conclusion belongs outside the translation unless
+  source, context, and POB reasoning independently establish it.
+
 Examples of the kind of main-text simplification expected:
 - "quadrans" -> "smallest coin" / "last small coin"
 - "alms" -> "charity" / "help for the poor"
 - "having come under confinement" -> "when he is put in prison/custody"
 - "examined concerning the things he did" -> "questioned about what he did"
 - "not having need" -> "when he does not need help"
+- 1 Peter 5:8 "Be clear-minded; stay alert" -> "Keep a clear mind and stay
+  spiritually awake" (preserve both commands; make the spiritual-attack context
+  explicit rather than replacing both ideas with a vague paraphrase)
 """.strip()
 
 DRAFT_SYSTEM_PROMPT = f"""You are drafting the Simplified People's Open Bible (SPOB).
@@ -103,6 +121,10 @@ POB with a few synonym swaps. Actively rewrite difficult wording into a clearer
 representation a normal reader can understand on the first read.
 
 You must call `submit_simplified_draft` exactly once and output no other text.
+
+Keep the audit compact. Use no more than three simplification decisions, two
+interpretive expansions, and two risk flags. Each rationale and evidence item
+should be one short, non-repetitive sentence.
 
 Never:
 - ignore the POB lexical/theological decisions;
@@ -128,10 +150,7 @@ DRAFT_TOOL: dict[str, Any] = {
                 "translation_philosophy",
                 "footnotes",
                 "simplification_decisions",
-                "retained_terms",
-                "source_alignment_notes",
-                "readability_notes",
-                "compression_notes",
+                "interpretive_expansions",
                 "risk_flags",
             ],
             "properties": {
@@ -163,6 +182,7 @@ DRAFT_TOOL: dict[str, Any] = {
                 },
                 "simplification_decisions": {
                     "type": "array",
+                    "maxItems": 3,
                     "items": {
                         "type": "object",
                         "required": ["pob_phrase", "simplified_phrase", "preserved_meaning", "reasoning_layer_used", "rationale"],
@@ -176,23 +196,36 @@ DRAFT_TOOL: dict[str, Any] = {
                         "additionalProperties": False,
                     },
                 },
-                "retained_terms": {
+                "interpretive_expansions": {
                     "type": "array",
+                    "maxItems": 2,
+                    "description": "Meanings stated more explicitly than POB. Use an empty array when none are added.",
                     "items": {
                         "type": "object",
-                        "required": ["term", "reason"],
+                        "required": [
+                            "pob_phrase",
+                            "rendering",
+                            "claim",
+                            "evidence",
+                            "confidence",
+                            "alternatives_preserved",
+                            "external_witnesses",
+                        ],
                         "properties": {
-                            "term": {"type": "string"},
-                            "reason": {"type": "string"},
+                            "pob_phrase": {"type": "string"},
+                            "rendering": {"type": "string"},
+                            "claim": {"type": "string"},
+                            "evidence": {"type": "array", "maxItems": 3, "items": {"type": "string"}},
+                            "confidence": {"type": "string", "enum": ["high", "moderate", "low"]},
+                            "alternatives_preserved": {"type": "array", "maxItems": 3, "items": {"type": "string"}},
+                            "external_witnesses": {"type": "array", "maxItems": 3, "items": {"type": "string"}},
                         },
                         "additionalProperties": False,
                     },
                 },
-                "source_alignment_notes": {"type": "string"},
-                "readability_notes": {"type": "array", "items": {"type": "string"}},
-                "compression_notes": {"type": "array", "items": {"type": "string"}},
                 "risk_flags": {
                     "type": "array",
+                    "maxItems": 2,
                     "items": {
                         "type": "object",
                         "required": ["risk", "mitigation"],
@@ -400,6 +433,7 @@ def fetch_azure_env() -> None:
                 "text",
             ],
             text=True,
+            stderr=subprocess.DEVNULL,
         )
     except Exception as exc:
         try:
@@ -460,6 +494,10 @@ def model_prices(model_id: str) -> dict[str, float]:
         # Gemini pricing is not kept here yet; keep usage tokens but avoid fake
         # cost precision until we add a current price table.
         return {"input": 0.0, "output": 0.0, "cached_input": 0.0}
+    if "gpt-5.6" in normalized:
+        # Do not attribute GPT-5.4 prices to the GPT-5.6 variants. Add official
+        # Azure prices here once they are published for this subscription/region.
+        return {"input": 0.0, "output": 0.0, "cached_input": 0.0}
     if "mini" in normalized:
         return MODEL_PRICES_USD_PER_MTOK["gpt-5.4-mini"]
     return MODEL_PRICES_USD_PER_MTOK["gpt-5.4"]
@@ -518,6 +556,7 @@ def call_azure_tool(
     encoded = json.dumps(payload, ensure_ascii=False).encode("utf-8")
     last_error: Exception | None = None
     for attempt in range(retries + 1):
+        retry_after_seconds = 0.0
         req = urllib.request.Request(
             url,
             data=encoded,
@@ -545,10 +584,21 @@ def call_azure_tool(
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")
             last_error = RuntimeError(f"HTTP {exc.code}: {detail[:1200]}")
+            if exc.code == 429:
+                try:
+                    retry_after_seconds = float(exc.headers.get("Retry-After") or 0)
+                except (TypeError, ValueError):
+                    retry_after_seconds = 0.0
         except Exception as exc:  # noqa: BLE001
             last_error = exc
         if attempt < retries:
-            time.sleep(2 + attempt * 5)
+            # Azure commonly applies a one-minute rolling window. A short fixed
+            # retry loop only repeats the same 429, so honor Retry-After when it
+            # is present and otherwise back off far enough for that window.
+            fallback_delay = 2 + attempt * 5
+            if "HTTP 429" in str(last_error):
+                fallback_delay = max(fallback_delay, 20 * (attempt + 1))
+            time.sleep(max(fallback_delay, retry_after_seconds))
     assert last_error is not None
     raise last_error
 
@@ -786,6 +836,9 @@ def build_simplified_record(
     simplification_decisions = normalize_simplification_decisions(
         tool_input.get("simplification_decisions") or []
     )
+    interpretive_expansions = normalize_interpretive_expansions(
+        tool_input.get("interpretive_expansions") or []
+    )
     retained_terms = normalize_retained_terms(tool_input.get("retained_terms") or [])
     translation_block: dict[str, Any] = {
         "language": "en",
@@ -815,6 +868,7 @@ def build_simplified_record(
         },
         "translation": translation_block,
         "simplification_decisions": simplification_decisions,
+        "interpretive_expansions": interpretive_expansions,
         "retained_terms": retained_terms,
         "translation_notes": {
             "source_alignment_notes": tool_input.get("source_alignment_notes"),
@@ -933,6 +987,33 @@ def normalize_retained_terms(raw: list[Any]) -> list[dict[str, str]]:
     return out
 
 
+def normalize_interpretive_expansions(raw: Any) -> list[dict[str, Any]]:
+    out: list[dict[str, Any]] = []
+    items = raw if isinstance(raw, list) else []
+    for item in items:
+        if not isinstance(item, dict):
+            continue
+        claim = str(item.get("claim") or "").strip()
+        rendering = str(item.get("rendering") or "").strip()
+        if not claim or not rendering:
+            continue
+        confidence = str(item.get("confidence") or "moderate").strip().lower()
+        if confidence not in {"high", "moderate", "low"}:
+            confidence = "moderate"
+        out.append(
+            {
+                "pob_phrase": str(item.get("pob_phrase") or "").strip(),
+                "rendering": rendering,
+                "claim": claim,
+                "evidence": normalize_string_list(item.get("evidence") or []),
+                "confidence": confidence,
+                "alternatives_preserved": normalize_string_list(item.get("alternatives_preserved") or []),
+                "external_witnesses": normalize_string_list(item.get("external_witnesses") or []),
+            }
+        )
+    return prune_empty(out)
+
+
 def validate_simplified_record(path: pathlib.Path) -> list[str]:
     errors: list[str] = []
     try:
@@ -953,6 +1034,17 @@ def validate_simplified_record(path: pathlib.Path) -> list[str]:
         errors.append("simplification_decisions missing/non-list")
     elif len(text.split()) >= 5 and not record.get("simplification_decisions"):
         errors.append("simplification_decisions empty for non-trivial text")
+    expansions = record.get("interpretive_expansions")
+    if expansions is not None and not isinstance(expansions, list):
+        errors.append("interpretive_expansions non-list")
+    for index, expansion in enumerate(expansions or []):
+        if not isinstance(expansion, dict):
+            errors.append(f"interpretive_expansions[{index}] non-object")
+            continue
+        if not expansion.get("evidence"):
+            errors.append(f"interpretive_expansions[{index}] evidence missing")
+        if expansion.get("confidence") == "low":
+            errors.append(f"interpretive_expansions[{index}] low-confidence expansion cannot enter main text")
     footnotes = ((record.get("translation") or {}).get("footnotes") or [])
     markers = [str(note.get("marker") or "").strip().strip("[]") for note in footnotes if isinstance(note, dict)]
     if len(markers) != len(set(markers)):
@@ -1259,9 +1351,9 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--gemini-model", default=DEFAULT_GEMINI_MODEL)
     p.add_argument("--vertex-model", default=DEFAULT_VERTEX_MODEL)
     p.add_argument("--vertex-location", default=DEFAULT_VERTEX_LOCATION)
-    p.add_argument("--prompt-id", default="simplified_pob_draft_v1")
+    p.add_argument("--prompt-id", default="simplified_pob_understanding_first_compact_v3")
     p.add_argument("--temperature", type=float, default=DEFAULT_TEMPERATURE)
-    p.add_argument("--max-completion-tokens", type=int, default=8000)
+    p.add_argument("--max-completion-tokens", type=int, default=3000)
     p.add_argument("--timeout-seconds", type=int, default=DEFAULT_TIMEOUT_SECONDS)
     p.add_argument("--retries", type=int, default=2)
     p.add_argument("--validation-retries", type=int, default=1)
