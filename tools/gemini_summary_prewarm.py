@@ -1281,13 +1281,24 @@ def _backend_model_version(backend) -> str:
     return GEMINI_MODEL_VERSION
 
 
+def normalize_summary_output(text: str) -> str:
+    """Keep cache prose plain because current reader cards do not render Markdown."""
+    text = text.strip()
+    text = re.sub(r"\*\*([^*\n]+)\*\*", r"\1", text)
+    text = re.sub(r"(?<!\*)\*([^*\n]+)\*(?!\*)", r"\1", text)
+    text = re.sub(r"`([^`\n]+)`", r"\1", text)
+    return text.strip()
+
+
 def generate_chapter(ddb, table: str, api_key_or_keys, chapter_data: dict, tool: str) -> str:
     book = chapter_data["book_label"]
     chap = chapter_data["chapter"]
     verses = chapter_data["verses"]
     sys_prompt = summary_system_prompt(tool, SCOPE_CHAPTER, book)
     user_prompt = format_chapter_passage("POB", book, chap, verses)
-    text = _generate_via_backend(api_key_or_keys, sys_prompt, user_prompt, max_tokens=2048)
+    text = normalize_summary_output(
+        _generate_via_backend(api_key_or_keys, sys_prompt, user_prompt, max_tokens=2048)
+    )
     mv = _backend_model_version(api_key_or_keys)
     key = summary_key("POB", "unspecified", SCOPE_CHAPTER, book, chap, tool,
                       PROMPT_VERSION, mv)
@@ -1322,7 +1333,9 @@ def generate_book(ddb, table: str, api_key_or_keys, chapters_of_book: list[dict]
         chapter_summaries.append((ch["chapter"], out))
     sys_prompt = summary_system_prompt(tool, SCOPE_BOOK, book)
     user_prompt = format_book_passage("POB", book, chapter_summaries)
-    text = _generate_via_backend(api_key_or_keys, sys_prompt, user_prompt, max_tokens=2560)
+    text = normalize_summary_output(
+        _generate_via_backend(api_key_or_keys, sys_prompt, user_prompt, max_tokens=2560)
+    )
     mv = _backend_model_version(api_key_or_keys)
     key = summary_key("POB", "unspecified", SCOPE_BOOK, book, 0, tool,
                       PROMPT_VERSION, mv)
