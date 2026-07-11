@@ -1,0 +1,66 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/zackseyun/peoples-open-bible/schema/extra_canonical_section.schema.json",
+  "title": "POB Extra-Canonical Section Record",
+  "type": "object",
+  "required": [
+    "id", "reference", "unit", "book", "reader_navigation", "source",
+    "translation", "ai_draft", "status", "source_language_review"
+  ],
+  "properties": {
+    "id": {"type": "string", "pattern": "^[A-Z0-9]{2,8}\\.[0-9]{3}$"},
+    "reference": {"type": "string", "minLength": 1},
+    "unit": {"enum": ["chapter", "editorial_section", "fragment"]},
+    "book": {"type": "string", "minLength": 1},
+    "reader_navigation": {
+      "type": "object",
+      "required": ["division_kind", "order", "authoritative_division"],
+      "properties": {
+        "division_kind": {"enum": ["chapter", "editorial_section", "fragment"]},
+        "order": {"type": "integer", "minimum": 1},
+        "heading": {"type": "string"},
+        "authoritative_division": {"const": false},
+        "note": {"type": "string"}
+      },
+      "additionalProperties": true
+    },
+    "source": {
+      "type": "object",
+      "required": ["manuscript", "ancient_language", "drafting_basis"],
+      "properties": {
+        "manuscript": {"type": "string", "minLength": 1},
+        "ancient_language": {"type": "string", "minLength": 1},
+        "drafting_basis": {"type": "string", "minLength": 1},
+        "witness_url": {"type": "string"},
+        "witness_translator": {"type": "string"},
+        "witness_license": {"type": "string"},
+        "english_witness": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": true
+    },
+    "translation": {
+      "type": "object",
+      "required": ["text", "philosophy"],
+      "properties": {
+        "text": {"type": "string", "minLength": 1},
+        "philosophy": {"type": "string", "minLength": 1},
+        "translator_notes": {"type": "array", "items": {"type": "string"}},
+        "footnotes": {"type": "array"}
+      },
+      "additionalProperties": true
+    },
+    "ai_draft": {"type": "object"},
+    "status": {"type": "string", "minLength": 1},
+    "source_language_review": {"type": "string", "minLength": 1},
+    "grounding_review": {
+      "type": "object",
+      "required": ["verdict"],
+      "properties": {
+        "verdict": {"enum": ["accept", "revise"]},
+        "issues": {"type": "array"}
+      },
+      "additionalProperties": true
+    }
+  },
+  "additionalProperties": true
+}

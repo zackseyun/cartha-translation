@@ -15,11 +15,16 @@ from typing import Any
 
 import yaml
 
+try:
+    from tools.extra_texts.catalog import flat_export_entries
+except ModuleNotFoundError:  # Executed as a file from ``tools/``.
+    from extra_texts.catalog import flat_export_entries
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation" / "extra_canonical"
 
-BOOKS: dict[str, dict[str, str]] = {
+LEGACY_BOOKS: dict[str, dict[str, str]] = {
     "didache": {
         "id": "DID",
         "name": "Didache",
@@ -37,19 +42,22 @@ BOOKS: dict[str, dict[str, str]] = {
         "slug": "gospel_of_truth",
         "unit": "section",
     },
-    "gospel_of_philip": {
-        "id": "GPHIL",
-        "name": "Gospel of Philip",
-        "slug": "gospel_of_philip",
-        "unit": "editorial_section",
-    },
-    "gospel_of_mary": {
-        "id": "GMARY",
-        "name": "Gospel of Mary",
-        "slug": "gospel_of_mary",
-        "unit": "editorial_section",
-    },
 }
+
+
+def catalog_books() -> dict[str, dict[str, str]]:
+    return {
+        entry["id"]: {
+            "id": entry["code"],
+            "name": entry["title"],
+            "slug": entry["id"],
+            "unit": entry["unit"],
+        }
+        for entry in flat_export_entries()
+    }
+
+
+BOOKS: dict[str, dict[str, str]] = {**LEGACY_BOOKS, **catalog_books()}
 
 
 def reader_navigation_fields(record: dict[str, Any]) -> dict[str, Any]:

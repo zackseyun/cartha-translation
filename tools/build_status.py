@@ -26,6 +26,11 @@ import pathlib
 import subprocess
 from typing import Any
 
+try:
+    from tools.extra_texts.catalog import expected_units, published_entries
+except ModuleNotFoundError:  # Executed as ``python tools/build_status.py``.
+    from extra_texts.catalog import expected_units, published_entries
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 STATUS_PATH = REPO_ROOT / "status.json"
@@ -107,7 +112,7 @@ OT_BOOKS: list[tuple[str, str, int, int]] = [
 # translation block. Verse totals here are "number of chapters" for
 # consistency with the mobile export (each chapter ships as a single
 # synthetic verse).
-EXTRA_CANONICAL_BOOKS: list[tuple[str, str, int, int, str]] = [
+LEGACY_EXTRA_CANONICAL_BOOKS: list[tuple[str, str, int, int, str]] = [
     # Verse totals reflect the actual per-verse split produced by
     # tools/split_extra_canonical_into_verses.py at the scholarly-
     # standard divisions (Lightfoot / Funk / Niederwimmer), plus the
@@ -120,7 +125,7 @@ EXTRA_CANONICAL_BOOKS: list[tuple[str, str, int, int, str]] = [
     # does not render each section as one giant synthetic verse.
     ("Shepherd of Hermas", "HERM", 63, 331, "shepherd_of_hermas"),
     ("1 Enoch", "ENO", 108, 843, "1_enoch"),
-    ("Jubilees", "JUB", 50, 1023, "jubilees"),
+    ("Jubilees", "JUB", 50, 1154, "jubilees"),
     ("2 Esdras", "2ES", 16, 942, "2_esdras"),
     # 2 Baruch (Syriac Apocalypse of Baruch). 87 chapters / 364 reader-facing
     # verse YAMLs currently drafted from translation/extra_canonical/2_baruch/.
@@ -128,13 +133,25 @@ EXTRA_CANONICAL_BOOKS: list[tuple[str, str, int, int, str]] = [
     # the public catalog so it was invisible on /progress.
     ("2 Baruch", "2BAR", 87, 364, "2_baruch"),
     # Pseudepigrapha + Nag Hammadi additions promoted 2026-05-07.
-    ("Testaments of the Twelve Patriarchs", "T12P", 142, 945, "testaments_twelve_patriarchs"),
+    ("Testaments of the Twelve Patriarchs", "T12P", 142, 988, "testaments_twelve_patriarchs"),
     ("Gospel of Thomas", "GOSTH", 115, 115, "gospel_of_thomas"),
     ("Thunder, Perfect Mind", "THUN", 123, 123, "thunder_perfect_mind"),
     ("Gospel of Truth", "GOSTR", 16, 16, "gospel_of_truth"),
-    ("Gospel of Philip", "GPHIL", 18, 18, "gospel_of_philip"),
-    ("Gospel of Mary", "GMARY", 5, 5, "gospel_of_mary"),
 ]
+
+
+def catalog_extra_canonical_books() -> list[tuple[str, str, int, int, str]]:
+    """Build status rows for publishable flat works from the shared catalog."""
+    rows: list[tuple[str, str, int, int, str]] = []
+    for entry in published_entries():
+        units = expected_units(entry)
+        rows.append((entry["title"], entry["code"], units, units, entry["id"]))
+    return rows
+
+
+EXTRA_CANONICAL_BOOKS = (
+    LEGACY_EXTRA_CANONICAL_BOOKS + catalog_extra_canonical_books()
+)
 
 # Books in EXTRA_CANONICAL_BOOKS that are presented as an Appendix
 # rather than as peers of the Apostolic Fathers. Per 2ESDRAS.md these
@@ -410,6 +427,16 @@ def build_extra_canonical_books(
     rows: list[dict[str, Any]] = []
     for name, code, chapters_total, verses_total, slug in catalog:
         counts = count_extra_canonical_book(slug)
+        if counts["chapters_drafted"] > chapters_total:
+            raise ValueError(
+                f"{slug}: chapters_drafted ({counts['chapters_drafted']}) exceeds "
+                f"chapters_total ({chapters_total}); update the catalog denominator"
+            )
+        if counts["verses_drafted"] > verses_total:
+            raise ValueError(
+                f"{slug}: verses_drafted ({counts['verses_drafted']}) exceeds "
+                f"verses_total ({verses_total}); update the catalog denominator"
+            )
         row = {
             "book": name,
             "code": code,

@@ -9,13 +9,12 @@ dedicated Latin-primary sub-phase for 2 Esdras), and
 [`REFERENCE_SOURCES.md`](REFERENCE_SOURCES.md) (the three-zone
 scholarly-source policy applied throughout).
 
-> **Status: scope document.** The texts catalogued here are on the
-> People's Open Bible roadmap. Source acquisition, pipeline build, and
-> drafting happen in phases after Phase 9 (LXX deuterocanon). Each
-> text gets its own verse-level provenance at release time — we do
-> not ship these as vague historical-interest reprints; we translate
-> them with the same rigor and transparency as every canonical book
-> in POB.
+> **Status: active provisional expansion (2026-07-11).** The shared
+> catalog now tracks 25 early-Christian works: Gospel of Philip and
+> Gospel of Mary plus the 23-work expansion documented below. Source
+> acquisition, bridge drafting, grounding review, metadata, and client
+> publication are independently gated. A prepared or published bridge
+> is **not** a claim of final direct source-language translation.
 
 ## Why we include these
 
@@ -120,6 +119,60 @@ The authoritative ordered backlog now lives in
 responsible framing determine when a work can ship; theological
 disagreement by itself does not remove a text from consideration.
 
+### 23-work provisional expansion
+
+The following works are being prepared as a single catalog-backed
+expansion. All are labeled **non-canonical** in POB. “Public-domain
+bridge” means that POB may produce a fresh, openly licensed provisional
+rendering from an identified public-domain witness; it does not mean
+that the draft has completed direct review against Coptic or Greek.
+
+| Group | Works | Initial public-domain basis | Direct review gate |
+|---|---|---|---|
+| **Nag Hammadi (11)** | Treatise on the Resurrection; Dialogue of the Savior; Exegesis on the Soul; Book of Thomas the Contender; Tripartite Tractate; Apocryphon of John; Hypostasis of the Archons; On the Origin of the World; Sophia of Jesus Christ; Gospel of the Egyptians; Letter of Peter to Philip | Explicitly public-domain English witnesses from the Mattison / Luminescence / Other Gospels project, captured with per-work URL, author, manuscript, and license metadata | Direct Coptic review against a lawfully usable transcription; comparison of parallel recensions where they survive |
+| **Other early Christian apocrypha (5)** | Gospel of Judas; Protoevangelium of James; Infancy Gospel of Thomas; Acts of Paul and Thecla; Gospel of Peter | Explicitly public-domain modern witnesses where available; otherwise identified public-domain historic editions/translations recorded in each manifest | Coptic review for Judas; Greek review and recension control for James, Infancy Thomas, Thecla, and Peter |
+| **Apostolic Fathers completion (7)** | 2 Clement; Epistle of Barnabas; Letters of Ignatius; Polycarp to the Philippians; Martyrdom of Polycarp; Epistle to Diognetus; Fragments of Papias | Public-domain Lightfoot and other historic editions, with the exact edition and pages recorded in each manifest | Direct Greek/Latin review; the Ignatian collection is limited to the accepted middle recension, and Papias remains a collection of later quotations rather than a reconstructed continuous book |
+
+#### What “provisional” requires
+
+1. **No canonical ambiguity.** Each work is presented as a historical
+   early Christian writing, not as an additional New Testament book.
+2. **No authorship overclaim.** Traditional titles such as “Gospel of
+   Peter” or “Epistle of Barnabas” are retained for discovery, while
+   metadata states when authorship is anonymous or pseudonymous.
+3. **No source-language overclaim.** A public-domain English bridge is
+   labeled `provisional_source_bridge`; it may be useful and readable,
+   but it is not called a direct Coptic or Greek translation.
+4. **Independent grounding review.** Every bridge unit receives a
+   separate review before publication, with source-language review
+   remaining pending until completed by the appropriate pipeline.
+5. **Stable editorial divisions.** Reader “chapters” may be editorial
+   sections, letters, fragments, or ancient chapters. Those divisions
+   are identified as navigation aids and are not represented as
+   manuscript chapter numbers when the witness has none.
+
+#### Manuscript damage and editorial punctuation
+
+Fragmentary witnesses must look readable without pretending that the
+missing text survives. The source record and translation record retain
+the distinction among:
+
+- **lacuna / illegible text** — a genuine manuscript gap, represented in
+  source data as a lacuna marker and rendered by clients as a labeled
+  gap rather than unexplained raw `[...]`;
+- **restored text** — letters or words reconstructed by an editor,
+  visibly marked as a restoration and available in provenance;
+- **supplied words** — words added for intelligible English, marked as a
+  translator supplement rather than manuscript text;
+- **ordinary parentheses** — reserved for parenthetical content that is
+  actually present in the witness, not used as a generic uncertainty
+  marker.
+
+No drafting or display layer may silently invent wording across a
+lacuna. A smooth reading may explain the surrounding sense, but the
+translation text and provenance must preserve the boundary of what is
+lost, uncertain, restored, or supplied.
+
 ## Pipeline groupings
 
 Implementation cost depends on which source-text pipeline a text
@@ -215,11 +268,12 @@ step** rather than jumping to OCR:
    or (b) a Coptic Scriptorium partnership to accelerate their
    Nag Hammadi roadmap for the three specific texts we need. Both
    are months-scale processes.
-5. **Until Zone 1 is cleanly established, do not begin OCR or
-   drafting for the three texts.** Unlike the Yadin case, there is
-   no LXX-pipeline-style workaround — without a PD Coptic primary,
-   a translation from Zone 2 scholarly transcriptions would be a
-   derivative work of that scholarship.
+5. **Until Zone 1 is cleanly established, do not describe a bridge as
+   a direct Coptic translation or begin Coptic OCR from a restricted
+   transcription.** An explicitly public-domain English witness may be
+   used for a clearly labeled provisional bridge, but it does not
+   satisfy the source-language review gate and cannot erase manuscript
+   uncertainty inherited from that witness.
 
 This explicit gate is why Group D is the last pipeline in the
 phased rollout. We do not want the project to ship Gnostic texts

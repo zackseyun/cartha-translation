@@ -343,11 +343,24 @@ Instead, every work is labeled by manuscript, approximate date,
 literary form, and theological tradition, and is explicitly separated
 from canonical Scripture.
 
-Gospel of Philip and Gospel of Mary initially use clearly identified
-public-domain English witnesses as provisional drafting bridges. They
-remain marked as pending direct Coptic/Greek review and must not be
-described as finalized source-language translations until that review
-is complete.
+The active expansion adds **23 historically important works**: eleven
+Nag Hammadi works, five other early Christian apocrypha, and seven
+Apostolic Fathers works. The catalog is the authoritative list and
+publication gate. A catalog entry can be prepared, drafted, reviewed,
+and tested without being presented as canonical Scripture or as a
+finished direct translation.
+
+The expansion uses only identified public-domain witnesses for its
+initial bridge drafts: explicitly public-domain modern English
+witnesses for many Coptic and apocryphal works, and public-domain
+historic editions/translations for the Apostolic Fathers. These drafts
+are adaptation-and-translation bridges, not substitutes for the lost
+Greek originals or for direct review of the surviving Coptic/Greek.
+Every work remains visibly provisional until its source-language review
+gate is completed. Lacunae, uncertain restorations, and supplied words
+must remain distinguishable rather than being silently smoothed into
+the text. See [EXTRA_CANONICAL.md](EXTRA_CANONICAL.md) for the complete
+list and conventions.
 
 ### How this gets built
 
@@ -360,7 +373,9 @@ architecture is intentionally shared. The
 Apostolic Fathers (Didache, 1 Clement, Shepherd of Hermas) reuse our
 existing LXX Greek-primary infrastructure. 1 Enoch and Jubilees
 require a new Ethiopic (Ge'ez) pipeline. The Nag Hammadi group
-requires a new Coptic pipeline plus per-codex license research.
+requires a Coptic review pipeline plus per-codex license research.
+Public-domain English bridges allow responsible early reader access,
+but do not remove that source-language gate.
 
 See [EXTRA_CANONICAL.md](EXTRA_CANONICAL.md) for per-text source
 editions, phase sequencing, and the per-text license situation.

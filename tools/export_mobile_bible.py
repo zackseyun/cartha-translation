@@ -45,6 +45,11 @@ import sblgnt  # noqa: E402
 import wlc  # noqa: E402
 import lxx_swete  # noqa: E402
 
+try:
+    from tools.extra_texts.catalog import flat_export_entries
+except ModuleNotFoundError:  # Executed as ``python tools/export_mobile_bible.py``.
+    from extra_texts.catalog import flat_export_entries
+
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
@@ -113,7 +118,7 @@ APOCRYPHA_BOOK_SLUGS: dict[str, str] = {
 # so the mobile reader gets one continuous-prose chapter unit.
 EXTRA_CANONICAL_ROOT = TRANSLATION_ROOT / "extra_canonical"
 
-EXTRA_CANONICAL_BOOK_ORDER: list[str] = [
+LEGACY_EXTRA_CANONICAL_BOOK_ORDER: list[str] = [
     "DID",     # Didache
     "1CLEM",   # 1 Clement
     "HERM",    # Shepherd of Hermas
@@ -121,11 +126,9 @@ EXTRA_CANONICAL_BOOK_ORDER: list[str] = [
     "JUB",     # Jubilees
     "2BAR",    # 2 Baruch (Syriac Apocalypse)
     "GOSTR",   # Gospel of Truth
-    "GPHIL",   # Gospel of Philip
-    "GMARY",   # Gospel of Mary
 ]
 
-EXTRA_CANONICAL_BOOK_TITLES: dict[str, str] = {
+LEGACY_EXTRA_CANONICAL_BOOK_TITLES: dict[str, str] = {
     "DID":   "Didache",
     "1CLEM": "1 Clement",
     "HERM":  "Shepherd of Hermas",
@@ -133,11 +136,9 @@ EXTRA_CANONICAL_BOOK_TITLES: dict[str, str] = {
     "JUB":   "Jubilees",
     "2BAR":  "2 Baruch",
     "GOSTR": "Gospel of Truth",
-    "GPHIL": "Gospel of Philip",
-    "GMARY": "Gospel of Mary",
 }
 
-EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
+LEGACY_EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
     "DID":   "didache",
     "1CLEM": "1_clement",
     "HERM":  "shepherd_of_hermas",
@@ -145,8 +146,19 @@ EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
     "JUB":   "jubilees",
     "2BAR":  "2_baruch",
     "GOSTR": "gospel_of_truth",
-    "GPHIL": "gospel_of_philip",
-    "GMARY": "gospel_of_mary",
+}
+
+_CATALOG_FLAT_ENTRIES = flat_export_entries()
+EXTRA_CANONICAL_BOOK_ORDER: list[str] = LEGACY_EXTRA_CANONICAL_BOOK_ORDER + [
+    entry["code"] for entry in _CATALOG_FLAT_ENTRIES
+]
+EXTRA_CANONICAL_BOOK_TITLES: dict[str, str] = {
+    **LEGACY_EXTRA_CANONICAL_BOOK_TITLES,
+    **{entry["code"]: entry["title"] for entry in _CATALOG_FLAT_ENTRIES},
+}
+EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
+    **LEGACY_EXTRA_CANONICAL_BOOK_SLUGS,
+    **{entry["code"]: entry["id"] for entry in _CATALOG_FLAT_ENTRIES},
 }
 
 # Extra-canonical books that only have chapter-level YAMLs (single
@@ -163,7 +175,9 @@ EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
 # can be added here for single-synthetic-verse emission without
 # invoking the verse splitter. 2 Baruch is intentionally not listed:
 # it now has reader-facing per-verse YAMLs under 2_baruch/NNN/VVV.yaml.
-EXTRA_CANONICAL_CHAPTER_LEVEL: set[str] = {"GOSTR", "GPHIL", "GMARY"}
+EXTRA_CANONICAL_CHAPTER_LEVEL: set[str] = {"GOSTR"} | {
+    entry["code"] for entry in _CATALOG_FLAT_ENTRIES
+}
 
 
 def reader_navigation_fields(record: dict[str, Any]) -> dict[str, Any]:

@@ -6,9 +6,9 @@ yet openly licensed.  It never presents the result as a direct Coptic/Greek
 translation: every YAML records the public-domain English witness and keeps a
 source-language review gate open.
 
-Supported first wave:
-  - Gospel of Philip (gospels.net/philip)
-  - Gospel of Mary (gospels.net/mary)
+Supported sources are selected from ``sources/early_christian_texts/catalog.json``.
+This bridge currently accepts catalog entries using the
+``gospels_net_centered_paragraphs`` parser strategy.
 
 Azure GPT-5.6 Sol produces the provisional rendering.  GPT-5.6 Terra may be
 used as a grounding reviewer with ``--review``.
@@ -30,6 +30,11 @@ from typing import Any
 
 import yaml
 
+try:
+    from tools.extra_texts.catalog import load_entries
+except ModuleNotFoundError:  # Executed as a file from this directory.
+    from catalog import load_entries
+
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SOURCE_ROOT = ROOT / "sources" / "early_christian_texts"
@@ -39,28 +44,31 @@ SOL_DEPLOYMENT = os.environ.get("AZURE_OPENAI_SOL_DEPLOYMENT_ID", "gpt-5-6-sol-a
 TERRA_DEPLOYMENT = os.environ.get("AZURE_OPENAI_TERRA_DEPLOYMENT_ID", "gpt-5-6-terra-atlas")
 
 
-TEXTS: dict[str, dict[str, Any]] = {
-    "gospel_of_philip": {
-        "title": "Gospel of Philip",
-        "code": "GPHIL",
-        "url": "https://www.gospels.net/philip",
-        "collection": "nag_hammadi",
-        "manuscript": "Nag Hammadi Codex II,3, 51.29-86.19",
-        "source_language": "Coptic (source-language review pending)",
-        "witness_author": "Mark M. Mattison",
-        "start_heading": "Gentiles, Hebrews, and Christians",
-    },
-    "gospel_of_mary": {
-        "title": "Gospel of Mary",
-        "code": "GMARY",
-        "url": "https://www.gospels.net/mary",
-        "collection": "early_christian_apocrypha",
-        "manuscript": "Papyrus Berolinensis 8502,1, with Greek fragments",
-        "source_language": "Coptic/Greek (source-language review pending)",
-        "witness_author": "Mark M. Mattison",
-        "start_heading": "An Eternal Perspective",
-    },
-}
+def bridge_texts() -> dict[str, dict[str, Any]]:
+    texts: dict[str, dict[str, Any]] = {}
+    for entry in load_entries():
+        source = entry["source"]
+        if source.get("strategy") != "gospels_net_centered_paragraphs":
+            continue
+        required = ("url", "witness_author", "start_heading")
+        if any(not source.get(field) for field in required):
+            continue
+        texts[entry["id"]] = {
+            "title": entry["title"],
+            "code": entry["code"],
+            "url": source["url"],
+            "collection": entry["category"],
+            "manuscript": source["manuscript"],
+            "source_language": source["source_language"],
+            "witness_author": source["witness_author"],
+            "witness_license": source["license"],
+            "start_heading": source["start_heading"],
+            "unit": entry["unit"],
+        }
+    return texts
+
+
+TEXTS = bridge_texts()
 
 
 def now() -> str:
@@ -205,11 +213,11 @@ def write_manifest(text_id: str, config: dict[str, Any], sections: list[dict[str
             "kind": "public_domain_english_translation_witness",
             "url": config["url"],
             "translator": config["witness_author"],
-            "license": "Public Domain dedication stated on source page",
+            "license": config["witness_license"],
             "raw_snapshot": str(raw_path.relative_to(ROOT)),
         },
         "direct_source_language_review": "required_before_final",
-        "unit": "editorial_section",
+        "unit": config["unit"],
         "expected_units": len(sections),
         "generated_at": now(),
     }
@@ -245,10 +253,10 @@ def render_record(
     record: dict[str, Any] = {
         "id": f"{config['code']}.{section_num:03d}",
         "reference": f"{config['title']} — {section['heading']}",
-        "unit": "editorial_section",
+        "unit": config["unit"],
         "book": config["title"],
         "reader_navigation": {
-            "division_kind": "editorial_section",
+            "division_kind": config["unit"],
             "order": section_num,
             "heading": section["heading"],
             "authoritative_division": False,
@@ -260,7 +268,7 @@ def render_record(
             "drafting_basis": "Public-domain English translation witness; direct source-language review pending",
             "witness_url": config["url"],
             "witness_translator": config["witness_author"],
-            "witness_license": "Public Domain dedication stated on source page",
+            "witness_license": config["witness_license"],
             "english_witness": witness,
         },
         "translation": {

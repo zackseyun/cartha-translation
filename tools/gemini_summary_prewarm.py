@@ -158,6 +158,7 @@ CORPUS_BIBLICAL = "biblical"
 CORPUS_PATRISTIC = "patristic"
 CORPUS_PSEUDEPIGRAPHAL = "pseudepigraphal"
 CORPUS_GNOSTIC = "gnostic"
+CORPUS_EARLY_CHRISTIAN_APOCRYPHA = "early_christian_apocrypha"
 
 _PATRISTIC_BOOKS = {
     "DIDACHE", "1 CLEMENT", "2 CLEMENT",
@@ -217,11 +218,24 @@ _GNOSTIC_BOOKS = {
     "PRAYER OF THANKSGIVING",
     "ASCLEPIUS",
     "MELCHIZEDEK",
+    "TREATISE ON THE RESURRECTION",
+    "TRIPARTITE TRACTATE",
+    "BOOK OF THOMAS THE CONTENDER",
+    "GOSPEL OF JUDAS",
+}
+_EARLY_CHRISTIAN_APOCRYPHA_BOOKS = {
+    "GOSPEL OF MARY",
+    "PROTOEVANGELIUM OF JAMES",
+    "INFANCY GOSPEL OF THOMAS",
+    "ACTS OF PAUL AND THECLA",
+    "GOSPEL OF PETER",
 }
 
 
 def book_corpus(book: str) -> str:
     key = normalize_token(book)
+    if key in _EARLY_CHRISTIAN_APOCRYPHA_BOOKS:
+        return CORPUS_EARLY_CHRISTIAN_APOCRYPHA
     if key in _GNOSTIC_BOOKS:
         return CORPUS_GNOSTIC
     if key in _PATRISTIC_BOOKS:
@@ -233,6 +247,8 @@ def book_corpus(book: str) -> str:
 
 def summary_system_prompt(tool: str, scope: str, book: str = "") -> str:
     corpus = book_corpus(book) if book else CORPUS_BIBLICAL
+    if corpus == CORPUS_EARLY_CHRISTIAN_APOCRYPHA:
+        return _early_christian_apocrypha_prompt(tool, scope)
     if corpus == CORPUS_GNOSTIC:
         return _gnostic_prompt(tool, scope)
     if corpus == CORPUS_PATRISTIC:
@@ -240,6 +256,33 @@ def summary_system_prompt(tool: str, scope: str, book: str = "") -> str:
     if corpus == CORPUS_PSEUDEPIGRAPHAL:
         return _pseudepigraphal_prompt(tool, scope)
     return _biblical_prompt(tool, scope)
+
+
+def _early_christian_apocrypha_prompt(tool: str, scope: str) -> str:
+    framing = (
+        "This is an early Christian writing outside the biblical canon. "
+        "Describe what the document says without presenting it as canonical Scripture, "
+        "without harmonizing it with the New Testament, and without treating its claims "
+        "as established history. Preserve manuscript gaps and genuine uncertainty. "
+    )
+    if scope == SCOPE_CHAPTER and tool == TOOL_SIMPLIFY:
+        return (
+            "You are a historical-text study assistant in the Cartha app. " + framing +
+            "Restate the entire section in clear modern English in 3 to 6 sentences. "
+            "Name the main people, actions, and argument; define unfamiliar ideas briefly. "
+            "Do not preach, defend, refute, or add details. Output only the summary."
+        )
+    if scope == SCOPE_BOOK and tool == TOOL_SIMPLIFY:
+        return (
+            "You are a historical-text study assistant in the Cartha app. " + framing +
+            "Using the supplied section summaries, explain the whole work in under 350 words: "
+            "its narrative or argument, major themes, and surviving-text limitations. "
+            "Output only the overview."
+        )
+    return (
+        "You are a historical-text study assistant in the Cartha app. " + framing +
+        "Explain the requested context concisely and neutrally. Output only the answer."
+    )
 
 
 def _gnostic_prompt(tool: str, scope: str) -> str:
@@ -1314,6 +1357,12 @@ def main() -> int:
     ap.add_argument("--dry-run", action="store_true", help="enumerate gaps but don't call Gemini")
     ap.add_argument("--chapters-only", action="store_true", help="skip book-level summaries")
     ap.add_argument(
+        "--tool",
+        action="append",
+        choices=TOOLS,
+        help="Only prewarm the selected tool (repeatable). Defaults to all tools.",
+    )
+    ap.add_argument(
         "--force-refresh",
         action="store_true",
         help=(
@@ -1425,6 +1474,9 @@ def main() -> int:
         print(f"filtered to {len(chapters)} chapters for book={bk}")
 
     expected = compute_expected_keys(chapters, include_books=not args.chapters_only)
+    if args.tool:
+        selected_tools = set(args.tool)
+        expected = [entry for entry in expected if entry[4] in selected_tools]
     # Build gemini variant keys
     keys_primary = [e[0] for e in expected]
     keys_gemini = [k.replace(PRIMARY_MODEL_VERSION, GEMINI_MODEL_VERSION) for k in keys_primary]

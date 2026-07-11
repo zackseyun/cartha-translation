@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/zackseyun/peoples-open-bible/schema/early_christian_texts_catalog.schema.json",
+  "title": "Early Christian Texts Catalog",
+  "type": "object",
+  "required": [
+    "schema_version",
+    "policy",
+    "nag_hammadi_order",
+    "early_christian_apocrypha_order",
+    "apostolic_fathers_completion_order"
+  ],
+  "properties": {
+    "schema_version": {"const": 2},
+    "policy": {"type": "string", "minLength": 1},
+    "nag_hammadi_order": {"$ref": "#/$defs/entries"},
+    "early_christian_apocrypha_order": {"$ref": "#/$defs/entries"},
+    "apostolic_fathers_completion_order": {"$ref": "#/$defs/entries"}
+  },
+  "additionalProperties": false,
+  "$defs": {
+    "entries": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/entry"}
+    },
+    "entry": {
+      "type": "object",
+      "required": [
+        "id", "code", "title", "status", "category", "summary_corpus",
+        "unit", "reader_layout", "source_manifest", "publish", "source"
+      ],
+      "properties": {
+        "id": {"type": "string", "pattern": "^[a-z0-9]+(?:_[a-z0-9]+)*$"},
+        "code": {"type": "string", "pattern": "^[A-Z0-9]{2,8}$"},
+        "title": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "category": {
+          "enum": ["nag_hammadi", "early_christian_apocrypha", "apostolic_fathers"]
+        },
+        "summary_corpus": {
+          "enum": ["gnostic", "early_christian_apocrypha", "patristic"]
+        },
+        "unit": {"enum": ["chapter", "editorial_section", "fragment"]},
+        "reader_layout": {"const": "flat"},
+        "source_manifest": {
+          "type": "string",
+          "pattern": "^sources/early_christian_texts/.+/manifest\\.json$"
+        },
+        "publish": {"type": "boolean"},
+        "source": {"$ref": "#/$defs/source"}
+      },
+      "additionalProperties": false
+    },
+    "source": {
+      "type": "object",
+      "required": ["strategy", "status", "license", "manuscript", "source_language"],
+      "properties": {
+        "strategy": {"type": "string", "minLength": 1},
+        "status": {"type": "string", "minLength": 1},
+        "url": {"type": ["string", "null"], "format": "uri"},
+        "path": {"type": "string", "minLength": 1},
+        "witness_author": {"type": "string", "minLength": 1},
+        "license": {"type": "string", "minLength": 1},
+        "manuscript": {"type": "string", "minLength": 1},
+        "source_language": {"type": "string", "minLength": 1},
+        "start_heading": {"type": "string", "minLength": 1},
+        "printed_pages": {"type": "string", "minLength": 1},
+        "notes": {"type": "string", "minLength": 1}
+      },
+      "additionalProperties": false,
+      "anyOf": [
+        {"required": ["url"]},
+        {"required": ["path"]}
+      ]
+    }
+  }
+}

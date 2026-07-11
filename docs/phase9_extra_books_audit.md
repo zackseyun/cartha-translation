@@ -1,4 +1,58 @@
-# Phase 9 extra-book audit — unfinished books (2026-04-22)
+# Phase 9 extra-book audit — unfinished books (2026-04-22; expanded 2026-07-11)
+
+## 2026-07-11: 23-work early-Christian expansion
+
+The earlier audit below remains useful for the five older Phase 9
+workstreams, but it no longer describes the whole extra-canonical
+queue. `sources/early_christian_texts/catalog.json` is now the
+authoritative registry for a separate 23-work expansion:
+
+- **Nag Hammadi (11):** Treatise on the Resurrection, Dialogue of the
+  Savior, Exegesis on the Soul, Book of Thomas the Contender,
+  Tripartite Tractate, Apocryphon of John, Hypostasis of the Archons,
+  On the Origin of the World, Sophia of Jesus Christ, Gospel of the
+  Egyptians, and Letter of Peter to Philip.
+- **Other early Christian apocrypha (5):** Gospel of Judas,
+  Protoevangelium of James, Infancy Gospel of Thomas, Acts of Paul and
+  Thecla, and Gospel of Peter.
+- **Apostolic Fathers completion (7):** 2 Clement, Epistle of Barnabas,
+  Letters of Ignatius, Polycarp to the Philippians, Martyrdom of
+  Polycarp, Epistle to Diognetus, and Fragments of Papias.
+
+### Publication contract
+
+These 23 works are historical reading, **not an expanded New Testament
+canon**. Each title must have cautious author/audience/date metadata,
+an exact source manifest, a public-domain basis, non-canonical reader
+labeling, and an independent grounding review. Public-domain English
+witnesses can support provisional bridge drafts; public-domain
+Lightfoot-era editions support the Apostolic Fathers lane. Neither
+route permits the project to claim final direct translation.
+
+The release gate remains direct review against lawfully usable source
+language material: Coptic for the Nag Hammadi and Judas witnesses;
+Greek, and Latin where relevant, for the remaining works. Variant
+recensions must be named instead of blended silently.
+
+### Damage and reconstruction contract
+
+Lacunae are data, not typographic clutter. Raw `[...]`, restored words,
+and translator supplements must remain distinct in provenance and be
+renderable as reader-friendly labeled states. Drafting must not fill a
+physical gap by inference. Editorial sections used as “chapters” are
+navigation aids and must be marked non-authoritative.
+
+### Metadata completion
+
+`book_metadata.json` now carries academically cautious English and
+Spanish author, audience, and date fields for every work in this
+23-title expansion. Titles preserve familiar discovery names while the
+metadata explicitly corrects unsupported apostolic authorship claims
+and distinguishes composition date from surviving manuscript date.
+
+---
+
+## Earlier five-book audit
 
 This note narrows in on the unfinished non-Jubilees Phase 9 / post-Phase-9
 extra books that were under discussion on 2026-04-22:
