@@ -29,7 +29,7 @@ possible application as the text's meaning.
 
 Use this authority order: source/textual evidence; immediate context; POB audit
 trail; broader canonical usage; external interpreters only as non-controlling
-witnesses. William Branham or any other named teacher cannot control the main text.
+witnesses. No named teacher or interpretive tradition can control the main text.
 
 Judge both sides: flag unsupported expansion, but also flag under-simplification
 that leaves modern readers unable to understand the actual meaning.
@@ -173,15 +173,32 @@ def selected_paths(args: argparse.Namespace) -> list[pathlib.Path]:
     if args.book:
         wanted = {b.lower().replace(" ", "_").replace("-", "_") for b in args.book}
         paths = [p for p in paths if p.parents[1].name.lower() in wanted]
+    if args.chapter:
+        wanted_chapters = {f"{chapter:03}" for chapter in args.chapter}
+        paths = [p for p in paths if p.parent.name in wanted_chapters]
     if args.only_expansions:
         paths = [p for p in paths if (draft_pipeline.safe_load_yaml(p).get("interpretive_expansions") or [])]
+    if args.revised_after:
+        paths = [
+            p for p in paths
+            if any(
+                str(entry.get("timestamp") or "") >= args.revised_after
+                for entry in (draft_pipeline.safe_load_yaml(p).get("spob_revision_history") or [])
+                if isinstance(entry, dict)
+            )
+        ]
     return paths[: args.limit or None]
 
 
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--book", action="append")
+    parser.add_argument("--chapter", action="append", type=int)
     parser.add_argument("--only-expansions", action="store_true")
+    parser.add_argument(
+        "--revised-after",
+        help="review only records with an SPOB revision-history timestamp at or after this ISO-8601 value",
+    )
     parser.add_argument("--limit", type=int, default=0)
     parser.add_argument("--model", default="gpt-5.6-terra")
     parser.add_argument("--deployment", default="gpt-5-6-terra-atlas")

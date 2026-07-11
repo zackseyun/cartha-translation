@@ -94,10 +94,10 @@ Understanding-first interpretation:
   into one generalized paraphrase.
 - Record every meaning made more explicit in `interpretive_expansions`, including
   evidence, confidence, alternatives preserved, and any external witnesses.
-- Historical or modern teachers (including William Branham), denominations, and
-  traditions may be treated only as interpretive witnesses. They never control the
-  main text. A teacher-specific conclusion belongs outside the translation unless
-  source, context, and POB reasoning independently establish it.
+- Historical or modern teachers, denominations, and traditions may be treated only
+  as interpretive witnesses. They never control the main text. An interpreter-
+  specific conclusion belongs outside the translation unless source, context, and
+  POB reasoning independently establish it.
 
 Examples of the kind of main-text simplification expected:
 - "quadrans" -> "smallest coin" / "last small coin"
@@ -105,9 +105,13 @@ Examples of the kind of main-text simplification expected:
 - "having come under confinement" -> "when he is put in prison/custody"
 - "examined concerning the things he did" -> "questioned about what he did"
 - "not having need" -> "when he does not need help"
-- 1 Peter 5:8 "Be clear-minded; stay alert" -> "Keep a clear mind and stay
-  spiritually awake" (preserve both commands; make the spiritual-attack context
-  explicit rather than replacing both ideas with a vague paraphrase)
+- Ecclesiastes 1:2 "Breath of breaths ... all is mere breath" -> "Vapor of
+  vapors ... Everything is vapor—brief, impossible to hold onto, and often not
+  what we expect" (preserve the concrete image while recovering its transient,
+  elusive, and ironic force; do not flatten it to nihilistic "meaninglessness")
+- Luke 17:21 "the kingdom of God is in your midst" -> wording that makes the
+  kingdom's present nearness among the hearers understandable without reducing it
+  to a merely private inward feeling
 """.strip()
 
 DRAFT_SYSTEM_PROMPT = f"""You are drafting the Simplified People's Open Bible (SPOB).
@@ -1058,8 +1062,21 @@ def validate_simplified_record(path: pathlib.Path) -> list[str]:
 
 
 def draft_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
+    if src.target_path.exists() and getattr(args, "skip_if_prompt_id", None):
+        try:
+            current = safe_load_yaml(src.target_path)
+            if ((current.get("ai_draft") or {}).get("prompt_id")) == args.skip_if_prompt_id:
+                return False
+        except Exception:  # noqa: BLE001
+            pass
     if src.target_path.exists() and not args.force:
         return False
+    previous_record: dict[str, Any] | None = None
+    if src.target_path.exists() and args.force:
+        try:
+            previous_record = safe_load_yaml(src.target_path)
+        except Exception:  # noqa: BLE001
+            previous_record = None
     lock = acquire_lock(src.target_path, args.worker_id)
     if lock is None:
         return False
@@ -1149,6 +1166,20 @@ def draft_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
                 usage=usage,
                 deployment=deployment,
             )
+            if previous_record:
+                history = list(previous_record.get("spob_revision_history") or [])
+                history.append(
+                    {
+                        "timestamp": utc_now(),
+                        "previous_text": ((previous_record.get("translation") or {}).get("text")),
+                        "previous_model": ((previous_record.get("ai_draft") or {}).get("model_id")),
+                        "previous_prompt_id": ((previous_record.get("ai_draft") or {}).get("prompt_id")),
+                        "reason": "forced doctrine-calibrated redraft",
+                    }
+                )
+                out_record["spob_revision_history"] = history
+                if previous_record.get("editorial_adjudications"):
+                    out_record["editorial_adjudications"] = previous_record["editorial_adjudications"]
             write_yaml_atomic(src.target_path, out_record)
             errors = validate_simplified_record(src.target_path)
             if not errors:
@@ -1358,6 +1389,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--retries", type=int, default=2)
     p.add_argument("--validation-retries", type=int, default=1)
     p.add_argument("--force", action="store_true")
+    p.add_argument("--skip-if-prompt-id", help="Skip an existing target already drafted with this prompt id")
     p.add_argument("--keep-going", action="store_true")
     p.add_argument("--dry-run-prompt", action="store_true")
     p.set_defaults(func=command_draft)

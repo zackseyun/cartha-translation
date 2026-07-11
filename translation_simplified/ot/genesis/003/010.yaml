@@ -31,53 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Genesis 3:10 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''your sound''].'
 translation:
   language: en
-  text: He said, "I heard the sound of you[a] in the garden, and I was afraid because I was naked, so I hid myself."
+  text: He said, “I heard a sound from you in the garden. I was afraid because I was naked, so I hid.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “your voice.” The Hebrew word can mean either “sound” or “voice.”
+    text: Or “I heard your voice in the garden.” The Hebrew word can mean either “sound” or “voice.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Removed the introductory conjunction 'And' to start the narrative response in a more direct, modern English format.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the introductory conjunction 'And' to start the narrative response in a more direct, modern English format.
-- preserved_meaning: Aligned with the POB master theological decision to render 'qol' as 'sound' to avoid prematurely assuming articulated speech. We modified 'your sound' to 'the sound of you' to make it sound idiomatic and natural to a modern reader.
-  reasoning_layer_used: POB audit trail
-  rationale: Aligned with the POB master theological decision to render 'qol' as 'sound' to avoid prematurely assuming articulated speech. We modified 'your sound' to 'the sound of you' to make it sound idiomatic and natural to a modern reader.
-retained_terms:
-- term: sound
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: naked
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: hid myself
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: your sound
+  simplified_phrase: a sound from you
+  preserved_meaning: Adam heard something associated with God without specifying speech or how the sound was produced.
+  reasoning_layer_used: Lexical and theological decisions on Hebrew qol
+  rationale: This is natural English while preserving the deliberately broad sense of “sound.”
+- pob_phrase: so I hid myself
+  simplified_phrase: so I hid
+  preserved_meaning: Adam concealed himself because he was afraid.
+  reasoning_layer_used: Lexical decision on the reflexive verb
+  rationale: In this context, “hid” naturally means that Adam concealed himself.
+- pob_phrase: one long quoted sentence
+  simplified_phrase: two short quoted sentences
+  preserved_meaning: Adam explains his fear and the action that followed.
+  reasoning_layer_used: POB syntax and causal relationships
+  rationale: The sentence break makes his explanation easier to follow without changing its logic.
 translation_notes:
-  source_alignment_notes: We carefully adhered to the POB lexical and theological decisions, which prioritize 'sound' in the main text over 'voice' (which is relegated to the footnote). This maintains the interpretive ambiguity of the Hebrew noun 'qol' in this context.
-  readability_notes:
-  - The phrase 'the sound of you' is highly readable and natural in modern English, replacing the slightly awkward 'your sound'. The removal of 'And' at the sentence start improves contemporary narrative flow.
-  compression_notes:
-  - No major compression was applied, as the verse is short and every clause is vital to the theological narrative of the Fall. Only the sentence-starting 'And' was removed.
   risk_flags:
-  - risk: None. The choice of 'sound' over 'voice' is theologically sensitive but matches the POB's audit trail, and the footnote provides the necessary context for the traditional reading.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “A sound from you” is less idiomatic than “your voice.”
+    mitigation: It preserves the broader Hebrew meaning, while the footnote gives the natural traditional alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/003/010.yaml
   source_text_sha256: b5a1ec06c7598b508d1d74f5c58802747273b114c2f3b01a67b9b61dbc36eb99
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: f2c6a6e7b26580634a914bf0a4b939eb2de32e1f
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 28abf6d0661190b84547c24c9c7ae3154ce4da3c51788f70d32ca6b840eb3683
-  timestamp: '2026-05-28T08:09:12Z'
-  output_hash: d374b14955f3b07b7e3091808353f0b93bd0ab37914e9ca8a07258a4ddb5477a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c177369eaac9ef84a42138eef73a86cd0fca24344e1444a89e29114cf505d4e8
+  timestamp: '2026-07-11T06:49:28Z'
+  output_hash: bc060e012f127f6c7561c3442550a099419a0350afde23996fbf76d3d15ec40f
   usage:
-    prompt_tokens: 2102
-    completion_tokens: 570
-    total_tokens: 7495
+    prompt_tokens: 3704
+    completion_tokens: 355
+    total_tokens: 4059
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-11T06:07:14Z'
+  previous_text: He said, "I heard the sound of you[a] in the garden, and I was afraid because I was naked, so I hid myself."
+  previous_model: gemini-3.5-flash
+  previous_prompt_id: simplified_pob_draft_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-07-11T06:49:28Z'
+  previous_text: He said, “I heard the sound you made in the garden. I was afraid because I was naked, so I hid.”[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: de0f3335983adf6d4d732bcf6b863548e144b8aa863680f5c0ee37dcf1d7f7ce
+  review_summary: The shorter sentences and “so I hid” are clear and preserve Adam’s explanation and resulting action. However, “the sound you made” introduces an unneeded claim about God making a particular sound. “A sound from you” remains natural for modern readers, retains the POB’s deliberately broad rendering of qol, and leaves the kind and production of the sound unspecified.

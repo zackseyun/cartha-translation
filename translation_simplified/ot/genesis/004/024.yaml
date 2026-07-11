@@ -34,53 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If Cain is avenged seven times[a], then Lamech seventy-seven times[b].
+  text: For Cain is avenged seven times over, and Lamech is avenged seventy-seven times over.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'will be avenged'; the Hebrew verb can be understood as expressing assured future vengeance.
-    reason: simplification_note
+    text: This may also be translated “will be avenged,” expressing certain future vengeance.
+    reason: lexical_alternative
   - marker: b
-    text: Hebrew 'seventy and seven'; that is, 'seventy-sevenfold.' Some English versions render 'seventy-seven times.'
-    reason: simplification_note
+    text: The Hebrew means “seventy-seven,” not “seventy times seven.”
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Changed the 'For... and...' construction to 'If... then...' to make the comparative boast clearer for modern English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed the 'For... and...' construction to 'If... then...' to make the comparative boast clearer for modern English readers.
-- preserved_meaning: Rendered 'sevenfold' and 'seventy-sevenfold' as 'seven times' and 'seventy-seven times' to replace slightly archaic terminology with standard modern phrasing.
-  reasoning_layer_used: POB audit trail
-  rationale: Rendered 'sevenfold' and 'seventy-sevenfold' as 'seven times' and 'seventy-seven times' to replace slightly archaic terminology with standard modern phrasing.
-retained_terms:
-- term: Cain
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: Lamech
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: avenged
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: sevenfold
+  simplified_phrase: seven times over
+  preserved_meaning: Vengeance for Cain has a sevenfold measure.
+  reasoning_layer_used: Lexical decision for שִׁבְעָתַיִם.
+  rationale: The common phrase makes the same intensification easier to understand.
+- pob_phrase: and Lamech seventy-sevenfold
+  simplified_phrase: and Lamech is avenged seventy-seven times over
+  preserved_meaning: The linked comparison escalates vengeance from Cain’s sevenfold measure to Lamech’s seventy-sevenfold measure.
+  reasoning_layer_used: Lexical and theological decisions for וְלֶמֶךְ and שִׁבְעִים וְשִׁבְעָה.
+  rationale: Repeating the implied verb clarifies the comparison while preserving the simple link and the number seventy-seven.
 translation_notes:
-  source_alignment_notes: The Hebrew conditional-comparative meaning of the 'ki... ve...' clause is accurately represented by 'If... then...'. The passive verb 'yuqqam' (is avenged) is preserved.
-  readability_notes:
-  - Replacing 'sevenfold' with 'seven times' makes the verse much easier to read aloud and comprehend, while keeping the dramatic escalation of Lamech's threat.
-  compression_notes:
-  - No lexical or theological nuances were lost in this simplification. The extreme disproportion of the vengeance is fully intact.
+  risk_flags:
+  - risk: “Times over” could sound like a count of separate acts rather than a measure of vengeance.
+    mitigation: The parallel wording retains the escalation, and footnote b protects the exact Hebrew number.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/004/024.yaml
   source_text_sha256: 82da98e267bcc9b556c1b3804ee58a12aa9a5cfd21c2febdbc129df60ef56548
-  pob_commit_sha: 935ebfbdc4b548b16b520169ee256eafcc740f23
+  pob_commit_sha: f2c6a6e7b26580634a914bf0a4b939eb2de32e1f
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: d7ecbbcde6d5b2b5fa46a4bd617697c3c6dfb801eb7ad7fb6a9ae4daeeeb0ea1
-  timestamp: '2026-05-28T08:29:00Z'
-  output_hash: 4d4da8a1b79352503d7d3ea7d102251d7c6b41114e6131953789ee9ea3bdf606
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b8585366130b551845297a6687f824dbb8aa31c505a859097148734e9aa8ce64
+  timestamp: '2026-07-11T06:57:50Z'
+  output_hash: 74da16b62cc2539c5f8bdd8f10f9a2a5e835dbfe845b2bff1e918f58f79acf67
   usage:
-    prompt_tokens: 1705
-    completion_tokens: 398
-    total_tokens: 6599
+    prompt_tokens: 3165
+    completion_tokens: 368
+    total_tokens: 3533
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-11T06:11:53Z'
+  previous_text: If Cain is avenged seven times[a], then Lamech seventy-seven times[b].
+  previous_model: gemini-3.5-flash
+  previous_prompt_id: simplified_pob_draft_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-07-11T06:57:50Z'
+  previous_text: For Cain is avenged seven times over, but Lamech is avenged seventy-seven times over.[a][b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 495792cd9fb7bc0ea32a29a8d3f01c23a88faa0f7b82e77c0e151021ae52e621
+  review_summary: “Seven times over” is a warranted, clearer rendering of “sevenfold,” and supplying the understood verb for Lamech makes the elliptical comparison accessible without adding doctrine. Retain “and,” however, rather than “but,” because the source and POB audit trail give a linking conjunction; the escalation remains clear from the numbers themselves.

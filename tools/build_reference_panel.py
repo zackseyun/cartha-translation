@@ -7,6 +7,7 @@ Sources (all vendored from /tmp/cob_refs/<corpus>/<corpus>_vpl.txt — see
 
   - BSB        Berean Standard Bible       (CC0 / Public Domain)   bereanbible.com
   - WEB        World English Bible         (Public Domain)         ebible.org
+  - ASV        American Standard Version   (Public Domain)         ebible.org
   - Brenton    Brenton's LXX               (Public Domain, 1851)   ebible.org
   - KJV        King James Version (2006)   (Public Domain in US)   ebible.org
 
@@ -28,22 +29,36 @@ REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 REFS_DIR = REPO_ROOT / "sources" / "references"
 CORPUS_ROOT = pathlib.Path("/tmp/cob_refs")
 
-# Map COB book slugs to USFM-style codes used in ebible VPL files.
-# A book slug may need multiple codes per panel (e.g. Psalm 151 is "PSX" in
-# WEB but "PSA 151:N" in Brenton).
+# Map COB book slugs to USFM-style codes used in eBible VPL files.
+BOOK_USFM_CODES: dict[str, str] = {
+    "genesis": "GEN", "exodus": "EXO", "leviticus": "LEV", "numbers": "NUM",
+    "deuteronomy": "DEU", "joshua": "JOS", "judges": "JDG", "ruth": "RUT",
+    "1_samuel": "1SA", "2_samuel": "2SA", "1_kings": "1KI", "2_kings": "2KI",
+    "1_chronicles": "1CH", "2_chronicles": "2CH", "ezra": "EZR", "nehemiah": "NEH",
+    "esther": "EST", "job": "JOB", "psalms": "PSA", "proverbs": "PRO",
+    "ecclesiastes": "ECC", "song_of_songs": "SNG", "isaiah": "ISA", "jeremiah": "JER",
+    "lamentations": "LAM", "ezekiel": "EZK", "daniel": "DAN", "hosea": "HOS",
+    "joel": "JOL", "amos": "AMO", "obadiah": "OBA", "jonah": "JON",
+    "micah": "MIC", "nahum": "NAM", "habakkuk": "HAB", "zephaniah": "ZEP",
+    "haggai": "HAG", "zechariah": "ZEC", "malachi": "MAL",
+    "matthew": "MAT", "mark": "MRK", "luke": "LUK", "john": "JHN", "acts": "ACT",
+    "romans": "ROM", "1_corinthians": "1CO", "2_corinthians": "2CO", "galatians": "GAL",
+    "ephesians": "EPH", "philippians": "PHP", "colossians": "COL",
+    "1_thessalonians": "1TH", "2_thessalonians": "2TH", "1_timothy": "1TI",
+    "2_timothy": "2TI", "titus": "TIT", "philemon": "PHM", "hebrews": "HEB",
+    "james": "JAS", "1_peter": "1PE", "2_peter": "2PE", "1_john": "1JN",
+    "2_john": "2JN", "3_john": "3JN", "jude": "JUD", "revelation": "REV",
+}
+
+REFERENCE_PANELS = ("bsb", "web", "asv", "kjv")
+OLD_TESTAMENT_BOOKS = set(list(BOOK_USFM_CODES)[:39])
+
 PANEL_CODES: dict[str, dict[str, str]] = {
-    "psalms": {
-        "bsb": "PSA",
-        "web": "PSA",
-        "brenton": "PSA",
-        "kjv": "PSA",
-    },
-    "ezekiel": {
-        "bsb": "EZE",
-        "web": "EZE",
-        "brenton": "EZE",
-        "kjv": "EZE",
-    },
+    slug: {panel: code for panel in REFERENCE_PANELS}
+    | ({"brenton": code} if slug in OLD_TESTAMENT_BOOKS else {})
+    for slug, code in BOOK_USFM_CODES.items()
+}
+PANEL_CODES.update({
     "psalm_151": {
         # Most Bibles do not carry Ps 151; only WEB-with-Apocrypha and
         # Brenton's LXX include it. WEB labels it PSX, Brenton inlines it
@@ -51,7 +66,7 @@ PANEL_CODES: dict[str, dict[str, str]] = {
         "web": "PSX",
         "brenton": "PSA",
     },
-}
+})
 
 # COB chapter/verse → panel chapter/verse override. None = use COB ch/v as-is.
 # `psalm_151` is one chapter in Brenton numbered as 151 but in COB is chapter 1.
@@ -61,6 +76,17 @@ def panel_chapter(book_slug: str, panel: str, cob_chapter: int) -> int:
     return cob_chapter
 
 
+def panel_reference(book_slug: str, panel: str, cob_chapter: int, cob_verse: int) -> tuple[int, int]:
+    """Map POB's source-oriented versification to common English panels."""
+    if book_slug == "genesis" and cob_chapter == 32:
+        # POB follows the Hebrew chapter division: English Genesis 31:55 is
+        # Genesis 32:1, so the remainder of English chapter 32 is offset by one.
+        return (31, 55) if cob_verse == 1 else (32, cob_verse - 1)
+    chapter = panel_chapter(book_slug, panel, cob_chapter)
+    verse = 1 if cob_verse == 0 else cob_verse
+    return chapter, verse
+
+
 def fetch_corpora() -> None:
     """Download VPL archives if missing. Idempotent. Run by hand once."""
     import subprocess
@@ -68,6 +94,7 @@ def fetch_corpora() -> None:
     targets = {
         "engbsb":      "https://ebible.org/Scriptures/engbsb_vpl.zip",
         "eng-web":     "https://ebible.org/Scriptures/eng-web_vpl.zip",
+        "eng-asv":     "https://ebible.org/Scriptures/eng-asv_vpl.zip",
         "eng-Brenton": "https://ebible.org/Scriptures/eng-Brenton_vpl.zip",
         "eng-kjv2006": "https://ebible.org/Scriptures/eng-kjv2006_vpl.zip",
     }
@@ -106,6 +133,7 @@ def load_vpl(path: pathlib.Path) -> dict[tuple[str, int, int], str]:
 PANEL_FILES = {
     "bsb":     CORPUS_ROOT / "engbsb"      / "engbsb_vpl.txt",
     "web":     CORPUS_ROOT / "eng-web"     / "eng-web_vpl.txt",
+    "asv":     CORPUS_ROOT / "eng-asv"     / "eng-asv_vpl.txt",
     "brenton": CORPUS_ROOT / "eng-Brenton" / "eng-Brenton_vpl.txt",
     "kjv":     CORPUS_ROOT / "eng-kjv2006" / "eng-kjv2006_vpl.txt",
 }
@@ -120,11 +148,10 @@ def panel_lookup(panels: dict, book_slug: str, cob_chapter: int, cob_verse: int)
     out: dict[str, str] = {}
     code_map = PANEL_CODES.get(book_slug, {})
     for panel_name, usfm in code_map.items():
-        ch = panel_chapter(book_slug, panel_name, cob_chapter)
+        ch, v_lookup = panel_reference(book_slug, panel_name, cob_chapter, cob_verse)
         # COB superscriptions are verse 0; published Bibles bake them
         # into verse 1. Pull verse 1 with a "(includes superscription)"
         # disclaimer.
-        v_lookup = 1 if cob_verse == 0 else cob_verse
         text = panels[panel_name].get((usfm, ch, v_lookup))
         if text:
             if cob_verse == 0:
@@ -137,6 +164,7 @@ def panel_lookup(panels: dict, book_slug: str, cob_chapter: int, cob_verse: int)
 PANEL_CITATIONS = {
     "bsb":     "Berean Standard Bible (Public Domain / CC0). bereanbible.com.",
     "web":     "World English Bible (Public Domain). ebible.org/web/.",
+    "asv":     "American Standard Version (1901; Public Domain). ebible.org/asv/.",
     "brenton": "Brenton's translation of the Septuagint (1844/1851; Public Domain). ebible.org/eng-Brenton/.",
     "kjv":     "King James Version, ebible.org 2006 transcription (Public Domain in US).",
 }
@@ -153,7 +181,10 @@ def build_book_json(book_slug: str, verse_pairs: Iterable[tuple[int, int]],
         verses[f"{ch}:{v}"] = renderings
     return {
         "book": book_slug,
-        "source_language": "Hebrew" if book_slug != "psalm_151" else "Greek",
+        "source_language": (
+            "Greek" if book_slug == "psalm_151" or book_slug not in OLD_TESTAMENT_BOOKS
+            else "Hebrew"
+        ),
         "license": "All vendored renderings are public domain or CC0.",
         "sources": sources,
         "verses": verses,

@@ -22,8 +22,8 @@ class SpobDoctrinePromptTests(unittest.TestCase):
         prompt = PIPELINE.DRAFT_SYSTEM_PROMPT
         self.assertIn("maximum warranted understanding", prompt)
         self.assertIn("interpretive_expansions", prompt)
-        self.assertIn("William Branham", prompt)
-        self.assertIn("Keep a clear mind and stay", prompt)
+        self.assertIn("They never control the main text", prompt)
+        self.assertIn("Vapor of", prompt)
 
     def test_normalizes_interpretive_expansion(self):
         result = PIPELINE.normalize_interpretive_expansions(

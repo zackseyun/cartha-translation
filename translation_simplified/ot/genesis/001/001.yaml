@@ -37,51 +37,60 @@ base_translation:
     changes_summary: Adopted the NRSV-UE-style hybrid rendering 'In the beginning, when God created the heavens and the earth—' which preserves רֵאשִׁית (the lexical content the book of Bereshit is named for) while still reading the clause as dependent. Footnote 'a' tightened to four lines naming the traditional alternative, the grammatical case, and where the main clause lands (v.3).
 translation:
   language: en
-  text: In the beginning, when God created the heavens and the earth[a]—
+  text: When God began to create the heavens and the earth[a]—
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 'Traditionally translated as a complete sentence: ''In the beginning, God created the heavens and the earth.'' The original Hebrew phrasing reads most naturally as an introduction leading up to verse 3 (''God said, "Let there be light"'').'
-    reason: simplification_note
+    text: 'The traditional translation treats this as a complete sentence: “In the beginning, God created the heavens and the earth.” The Hebrew more naturally introduces what follows, with the main action, “God said,” in verse 3.'
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Preserved POB's primary structural decision to translate the opening as a dependent temporal clause ('when God created...'), which captures the grammar of the Hebrew text.
-  reasoning_layer_used: POB audit trail
-  rationale: Preserved POB's primary structural decision to translate the opening as a dependent temporal clause ('when God created...'), which captures the grammar of the Hebrew text.
-- preserved_meaning: Simplified the explanatory footnote by removing technical linguistic terms ('anarthrous', 'finite verb', 'dependent temporal clause') while keeping the core meaning and the traditional alternative phrasing clear for a general audience.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the explanatory footnote by removing technical linguistic terms ('anarthrous', 'finite verb', 'dependent temporal clause') while keeping the core meaning and the traditional alternative phrasing clear for a general audience.
-retained_terms:
-- term: heavens
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: earth
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: In the beginning, when God created
+  simplified_phrase: When God began to create
+  preserved_meaning: God’s creation introduces the main action that follows in verse 3.
+  reasoning_layer_used: Lexical decision and approved syntax revision
+  rationale: This audit-listed wording makes the dependent opening immediately clear.
+- pob_phrase: The Hebrew (anarthrous בְּרֵאשִׁית + finite verb בָּרָא) reads more naturally as a dependent temporal clause
+  simplified_phrase: The Hebrew more naturally introduces what follows
+  preserved_meaning: Verse 1 functions as a temporal introduction rather than necessarily as a complete sentence.
+  reasoning_layer_used: Footnote and theological decision on opening syntax
+  rationale: The note removes technical grammar while preserving the translation issue.
 translation_notes:
-  source_alignment_notes: The translation reflects the Hebrew construct state of 'bereshit' (beginning) followed by the verb, preserving the POB's carefully audited syntactic flow leading to verse 3.
-  readability_notes:
-  - Used an em-dash at the end of the verse to clearly guide the reader's eye forward, indicating that this opening statement is an introductory clause.
-  compression_notes:
-  - The footnote was compressed by 50% to focus on translation options and narrative flow rather than technical Hebrew syntax rules.
   risk_flags:
-  - risk: The dependent-clause structure diverges from traditional translations like the KJV or ESV, which may surprise some readers. The simplified footnote mitigates this by explaining the choice clearly.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Began to create” may be mistaken for a claim about the mechanism or duration of creation.
+    mitigation: The wording marks temporal syntax only, while “create” retains the POB lexical choice.
+  - risk: The unfinished clause may sound unusual when verse 1 is read alone.
+    mitigation: The dash and footnote explain that the main action comes in verse 3.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/001/001.yaml
   source_text_sha256: 7d9b6463a80f004d4c777996989bb7060f1824553a12c688deb9481ef77e14f9
-  pob_commit_sha: 3cf6b47ac5a5d322a39d9bd2408371f7dddc3301
+  pob_commit_sha: f2c6a6e7b26580634a914bf0a4b939eb2de32e1f
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: gemini-api
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 6b2c0980898dcf3924774b1e6eeb39da549c21cfc49c88c83ce6e7fc11f98f78
-  timestamp: '2026-05-27T22:27:21Z'
-  output_hash: 028e0501aedbd898364956ed361125561452fa4840cccaedf270affb1de27ecc
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0287ba3a600956d8b9722e12d7476209e2665bdec44539521096f242deac531c
+  timestamp: '2026-07-11T06:48:23Z'
+  output_hash: efa5e0b525d04f3a7c6b4c7bf2f34225bd88cf9ef5e35942f37958c74b09277e
   usage:
-    prompt_tokens: 2332
-    completion_tokens: 395
-    total_tokens: 4623
+    prompt_tokens: 3900
+    completion_tokens: 376
+    total_tokens: 4276
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-11T06:02:41Z'
+  previous_text: In the beginning, when God created the heavens and the earth[a]—
+  previous_model: gemini-3.5-flash
+  previous_prompt_id: simplified_pob_draft_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-07-11T06:48:23Z'
+  previous_text: In the beginning, when God created the heavens and the earth[a]—
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e01a3f0ab9c997b42686d2722a6661a2611bb9291c2bc52c297a929ec104f7aa
+  review_summary: The draft accurately preserves POB’s source-supported dependent-clause reading and does not introduce doctrinal material. Its footnote is clearer than POB’s technical note. However, the main verse is unchanged from POB, so it does not meet the stated requirement for a meaningfully clearer SPOB rendering. “When God began to create” is an audit-listed alternative that makes the unfinished temporal clause immediately understandable while remaining within the documented syntactic range.

@@ -106,16 +106,24 @@ Rules for Zone 2:
    would propagate the source's license to every downstream consumer
    of POB. Consultation is private to the translator's workspace.
 
-### Zone 3 — Forbidden
+### Zone 3 — Forbidden during drafting
 
 A small set of sources that we actively avoid consulting:
 
-- **Translations under commercial copyright** (NIV, NLT, ESV). We do
-  not consult these — our English must not track their word choices,
-  and the cleanest way to avoid derivative-work exposure is to not
-  read them during drafting.
+- **Translations under commercial copyright** (including NKJV, NIV, NLT, and
+  ESV). We do not expose these to the drafter — our English must not track their
+  word choices, and the cleanest drafting boundary is not to include them in an
+  LLM prompt.
 - **Sources where the license explicitly prohibits even internal use**
   (none currently).
+
+An explicitly licensed commercial translation may be used **after drafting** in
+an isolated evaluation process. `tools/build_translation_divergence.py` accepts
+a private, gitignored NKJV/NIV/NLT bundle and emits only numeric similarity
+scores. It never emits the licensed wording, never feeds that wording back into
+the drafting prompt, and never lets a commercial translation determine the
+review-priority score. This preserves the clean-room drafting boundary while
+allowing licensed comparative research.
 
 ## How this flows into the translation prompt
 

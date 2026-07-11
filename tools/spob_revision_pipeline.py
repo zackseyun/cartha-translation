@@ -35,6 +35,7 @@ def review_files(args: argparse.Namespace) -> list[pathlib.Path]:
     selected: list[pathlib.Path] = []
     wanted_books = {b.lower().replace(" ", "_").replace("-", "_") for b in (args.book or [])}
     excluded_references = {str(ref).strip().lower() for ref in (args.exclude_reference or [])}
+    wanted_chapters = {f"{chapter:03}" for chapter in (args.chapter or [])}
     for path in paths:
         payload = json.loads(path.read_text(encoding="utf-8"))
         if ((payload.get("review") or {}).get("verdict")) not in {"revise", "block"}:
@@ -45,6 +46,8 @@ def review_files(args: argparse.Namespace) -> list[pathlib.Path]:
         if not spob_path.exists():
             continue
         if wanted_books and spob_path.parents[1].name.lower() not in wanted_books:
+            continue
+        if wanted_chapters and spob_path.parent.name not in wanted_chapters:
             continue
         review_hash = str(payload.get("output_hash") or "")
         current = pipeline.safe_load_yaml(spob_path)
@@ -150,6 +153,7 @@ while retaining every warranted clarity improvement.
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--book", action="append")
+    parser.add_argument("--chapter", action="append", type=int)
     parser.add_argument("--exclude-reference", action="append")
     parser.add_argument("--review-model", default="gpt-5.6-terra")
     parser.add_argument("--model", default="gpt-5.6-sol")

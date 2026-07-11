@@ -35,10 +35,10 @@ Every interpretive rendering must follow this order:
 5. **Historical and modern interpreters** as witnesses, never as controlling
    authorities.
 
-An interpretation associated with William Branham, a church father, a reformer,
-a denomination, or any modern teacher may alert reviewers to a possible meaning.
+An interpretation associated with a historical teacher, church tradition,
+denomination, or modern interpreter may alert reviewers to a possible meaning.
 It enters SPOB's main text only when the higher layers independently support it.
-If the interpretation depends on that teacher's larger doctrinal system rather
+If the interpretation depends on an interpreter's larger doctrinal system rather
 than the passage itself, it belongs in attributed study material, not in the
 translation.
 
@@ -67,31 +67,52 @@ Understanding-first translation does not mean reducing several ideas to one.
 When the source uses two meaningful terms, SPOB should normally keep two ideas in
 clear English.
 
-### Calibration example: 1 Peter 5:8
+### Calibration example: Ecclesiastes 1:2
 
 POB:
 
-> Be clear-minded; stay alert. Your adversary, the devil, walks around like a
-> roaring lion, seeking someone to devour.
+> Breath of breaths, says Qoheleth; breath of breaths, all is mere breath.
 
 Preferred SPOB direction:
 
-> **Keep a clear mind and stay spiritually awake. Your enemy, the devil, prowls
-> around like a roaring lion, looking for someone to devour.**
+> **“Vapor of vapors,” says Qoheleth. “Everything is vapor—brief, impossible to
+> hold onto, and often not what we expect.”**
 
 Why this is warranted:
 
-- `νήψατε` contributes clear-minded self-possession.
-- `γρηγορήσατε` contributes wakeful vigilance in the explicit setting of
-  spiritual attack.
-- “Spiritually awake” makes the contextual force understandable, but it does not
-  replace the separate command to keep a clear mind.
-- “Prowls” and “looking for” express the lion image naturally without inventing a
-  new event or doctrine.
+- Hebrew `הֶבֶל` (*hevel*) literally evokes breath or vapor, not modern “vanity”
+  as self-admiration.
+- Across Ecclesiastes, the image carries transience, elusiveness, and the mismatch
+  between what people expect and what actually happens.
+- “Vapor” preserves the concrete image. The bounded explanation helps readers
+  understand the author's recurring point without turning it into the stronger
+  claim that absolutely nothing has meaning.
+- “Gas” may be useful in conversation, but “vapor” is the better main-text word:
+  gas sounds scientific and stable, while *hevel* evokes something visible for a
+  moment that cannot be held.
 
-An under-translation would keep “sober-minded” without explaining its figurative
-force. An over-translation would replace both imperatives with a teacher-specific
-claim about spiritual discernment, end-times revelation, or a particular church.
+An under-translation would retain “vanity” or “breath” without helping modern
+readers recover the image's force. An over-translation would reduce the whole book
+to “nothing matters,” which Qoheleth's argument does not require.
+
+### Additional calibration examples
+
+- **Genesis 1:1** — preserve the live relation between the opening creation
+  statement and the following description rather than pretending every English
+  translation resolves the syntax identically.
+- **Isaiah 7:14** — make the immediate historical wording understandable while
+  preserving the textual and Christian reception questions normally represented
+  by “young woman” and “virgin.”
+- **Luke 17:21** — explain that God's kingdom is present “among” or “in the midst
+  of” the hearers when context supports that sense; do not silently turn the saying
+  into only an inward private experience.
+- **Romans 3:25** — explain the atonement/mercy-seat image without forcing a single
+  later theory into the verse.
+- **Philippians 2:6** — make the difficult “something to be grasped/exploited”
+  phrase understandable while preserving the interpretive decision in the audit.
+- **1 Timothy 2:12** — do not hide the disputed force of the rare authority verb;
+  the main text and note must distinguish what is established from what remains
+  debated.
 
 ## 5. Main-text permissions
 
@@ -127,10 +148,9 @@ External interpreters can affect SPOB in only three auditable ways:
 3. **Attributed alternative** — a study note records the interpretation and names
    its source without putting it into the Bible text.
 
-No model prompt should say “translate according to William Branham” or any other
-single teacher. If a teacher's interpretation is supplied during review, the
-record should name it under `external_witnesses` and explain whether the text
-independently supports it.
+No model prompt should say “translate according to” any single teacher. If an
+interpreter's reading is supplied during review, the record should identify it
+under `external_witnesses` and explain whether the text independently supports it.
 
 ## 7. Required review questions
 

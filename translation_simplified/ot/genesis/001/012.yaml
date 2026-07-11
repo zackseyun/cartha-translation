@@ -34,53 +34,71 @@ base_translation:
     changes_summary: Removed the colon for smoother formal English and revised 'with their seed in it' to 'in which is their seed' to more closely reflect the source wording while maintaining naturalness.
 translation:
   language: en
-  text: 'The earth brought forth vegetation: plants that yield seed according to their kinds[a], and trees that bear fruit with their seed in it, according to their kinds. And God saw that it was good.'
+  text: The earth brought forth vegetation, plants that produce seed according to their kinds, and trees that bear fruit with seed inside the fruit, according to their kinds.[a] God saw that it was good.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew expression refers to broad categories of created things rather than modern scientific classifications like 'species'.
-    reason: simplification_note
+    text: “Kinds” means created categories, not the modern scientific term “species.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Changed the participle 'yielding' to a relative clause 'that yield' to make the sentence structure flow more naturally in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed the participle 'yielding' to a relative clause 'that yield' to make the sentence structure flow more naturally in modern English.
-- preserved_meaning: Simplified the formal relative clause 'in which is their seed' to the more natural phrasing 'with their seed in it', restoring a tested and readable POB revision direction.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the formal relative clause 'in which is their seed' to the more natural phrasing 'with their seed in it', restoring a tested and readable POB revision direction.
-retained_terms:
-- term: brought forth
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: vegetation
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: kinds
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: plants yielding seed
+  simplified_phrase: plants that produce seed
+  preserved_meaning: The plants have the ongoing capacity to produce seed.
+  reasoning_layer_used: POB lexical decision for מַזְרִיעַ זֶרַע
+  rationale: A present-tense relative clause is easier to read while preserving reproductive capacity.
+- pob_phrase: trees bearing fruit in which is their seed
+  simplified_phrase: trees that bear fruit with seed inside the fruit
+  preserved_meaning: The trees characteristically bear fruit that contains seed.
+  reasoning_layer_used: POB lexical decisions and applied revisions for וְעֵץ עֹשֶׂה פְּרִי and אֲשֶׁר זַרְעוֹ בוֹ
+  rationale: The wording clearly identifies the fruit as the place containing the seed.
+- pob_phrase: vegetation, plants ... and trees
+  simplified_phrase: vegetation, plants ... and trees
+  preserved_meaning: The earth brings forth three coordinated forms of plant growth.
+  reasoning_layer_used: Source syntax and independent grounding review
+  rationale: A comma-separated list keeps the categories coordinated rather than making one define the others.
+interpretive_expansions:
+- pob_phrase: in which is their seed
+  rendering: with seed inside the fruit
+  claim: The seed is contained within the fruit.
+  evidence:
+  - The POB lexical rationale says the clause specifies that the seed is contained within the fruit or tree product.
+  - The applied revision identifies “it” as referring to the fruit.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Maintained 'brought forth' to preserve the generative aspect of the Hiphil verb (yatsa). Retained 'according to their kinds' to honor the Hebrew 'min' without importing modern biological taxonomy.
-  readability_notes:
-  - Used natural relative clauses ('that yield', 'that bear') and phrasing ('with their seed in it') to replace formal, archaic, or overly literal grammar.
-  compression_notes:
-  - No content was compressed or omitted; the detailed parallel classification structure of the Hebrew text is fully preserved.
   risk_flags:
-  - risk: None. The simplified text maintains high alignment with the POB and standard modern translations while improving clarity.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Readers may take “kinds” as a precise modern biological category.
+    mitigation: The footnote states that the term refers to created categories rather than technical species.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/001/012.yaml
   source_text_sha256: b5000ac706bb3a94eb05292d5a815c8537c90a5b99c5d028f5efb431dc976d2d
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
+  pob_commit_sha: f2c6a6e7b26580634a914bf0a4b939eb2de32e1f
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: dda6faf04931748addeb58616e02b66310294ec90d6f4e2fe4f957c9f67bdd93
-  timestamp: '2026-05-28T07:28:57Z'
-  output_hash: c346bb74772fd2f714b518f838b4a764b3c2c2078612fcf7a348ffcfc0ea1cc1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bd79390e0a1737053c185f0257e65cf3af46df11a5110eb23d455b52b29bfa07
+  timestamp: '2026-07-11T06:48:11Z'
+  output_hash: f2805e270637b2e24b2e75113a3c0d9710968bc68aeb0a6df6db1fbe84670122
   usage:
-    prompt_tokens: 2570
-    completion_tokens: 463
-    total_tokens: 6630
+    prompt_tokens: 4137
+    completion_tokens: 498
+    total_tokens: 4635
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-11T06:03:26Z'
+  previous_text: 'The earth brought forth vegetation: plants that yield seed according to their kinds[a], and trees that bear fruit with their seed in it, according to their kinds. And God saw that it was good.'
+  previous_model: gemini-3.5-flash
+  previous_prompt_id: simplified_pob_draft_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-07-11T06:48:11Z'
+  previous_text: 'The earth brought forth vegetation: plants that produced seed according to their kinds, and trees that bore fruit with seed inside it, according to their kinds.[a] God saw that it was good.'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6ff45a6940177bf783f09d1ffb2061fc0f6fd23cbe0920b35406cdefd772186b
+  review_summary: The draft usefully replaces difficult participial phrases with relative clauses and clearly explains that the seed is in the fruit; this clarification is warranted by the POB audit trail. However, the colon merges the coordinated creation categories, and the past-tense verbs weaken the source’s descriptive reproductive nuance. Retain the comma-separated list and use present-tense “produce” and “bear.”
