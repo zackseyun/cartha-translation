@@ -187,6 +187,7 @@ _GNOSTIC_BOOKS = {
     "GOSPEL OF TRUTH",
     "GOSPEL OF THOMAS",
     "GOSPEL OF PHILIP",
+    "GOSPEL OF MARY",
     "THUNDER PERFECT MIND",       # slug form
     "THUNDER, PERFECT MIND",      # comma form used in YAML book: field
     "APOCRYPHON OF JOHN", "SECRET BOOK OF JOHN",
@@ -1032,11 +1033,27 @@ class AzureOpenAIClient:
 def load_azure_client(secret_id: str,
                       reasoning_effort: str = AZURE_REASONING_EFFORT_DEFAULT,
                       verbosity: str = AZURE_VERBOSITY_DEFAULT) -> "AzureOpenAIClient":
-    """Pull Azure OpenAI creds from Secrets Manager. Expects a JSON secret
-    with keys api_key, endpoint, deployment_name (+ optional api_version)."""
-    sm = boto3.client("secretsmanager", region_name="us-west-2")
-    raw = sm.get_secret_value(SecretId=secret_id)["SecretString"]
-    creds = json.loads(raw)
+    """Load Azure OpenAI credentials from environment or Secrets Manager.
+
+    Local corpus work commonly authenticates with Azure CLI and exports the
+    endpoint/key directly, while CI keeps using the JSON AWS secret. Supporting
+    both paths avoids coupling summary generation to a particular AWS account.
+    """
+    env_creds = {
+        "api_key": os.environ.get("AZURE_OPENAI_API_KEY"),
+        "endpoint": os.environ.get("AZURE_OPENAI_ENDPOINT"),
+        "deployment_name": (
+            os.environ.get("AZURE_OPENAI_DEPLOYMENT_ID")
+            or os.environ.get("AZURE_OPENAI_SOL_DEPLOYMENT_ID")
+        ),
+        "api_version": os.environ.get("AZURE_OPENAI_API_VERSION"),
+    }
+    if env_creds["api_key"] and env_creds["endpoint"] and env_creds["deployment_name"]:
+        creds = env_creds
+    else:
+        sm = boto3.client("secretsmanager", region_name="us-west-2")
+        raw = sm.get_secret_value(SecretId=secret_id)["SecretString"]
+        creds = json.loads(raw)
     api_key = creds.get("api_key")
     endpoint = creds.get("endpoint")
     deployment = creds.get("deployment_name") or creds.get("deployment")

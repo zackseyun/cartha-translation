@@ -37,6 +37,18 @@ BOOKS: dict[str, dict[str, str]] = {
         "slug": "gospel_of_truth",
         "unit": "section",
     },
+    "gospel_of_philip": {
+        "id": "GPHIL",
+        "name": "Gospel of Philip",
+        "slug": "gospel_of_philip",
+        "unit": "editorial_section",
+    },
+    "gospel_of_mary": {
+        "id": "GMARY",
+        "name": "Gospel of Mary",
+        "slug": "gospel_of_mary",
+        "unit": "editorial_section",
+    },
 }
 
 

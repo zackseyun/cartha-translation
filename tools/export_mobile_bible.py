@@ -121,6 +121,8 @@ EXTRA_CANONICAL_BOOK_ORDER: list[str] = [
     "JUB",     # Jubilees
     "2BAR",    # 2 Baruch (Syriac Apocalypse)
     "GOSTR",   # Gospel of Truth
+    "GPHIL",   # Gospel of Philip
+    "GMARY",   # Gospel of Mary
 ]
 
 EXTRA_CANONICAL_BOOK_TITLES: dict[str, str] = {
@@ -131,6 +133,8 @@ EXTRA_CANONICAL_BOOK_TITLES: dict[str, str] = {
     "JUB":   "Jubilees",
     "2BAR":  "2 Baruch",
     "GOSTR": "Gospel of Truth",
+    "GPHIL": "Gospel of Philip",
+    "GMARY": "Gospel of Mary",
 }
 
 EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
@@ -141,6 +145,8 @@ EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
     "JUB":   "jubilees",
     "2BAR":  "2_baruch",
     "GOSTR": "gospel_of_truth",
+    "GPHIL": "gospel_of_philip",
+    "GMARY": "gospel_of_mary",
 }
 
 # Extra-canonical books that only have chapter-level YAMLs (single
@@ -157,7 +163,7 @@ EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
 # can be added here for single-synthetic-verse emission without
 # invoking the verse splitter. 2 Baruch is intentionally not listed:
 # it now has reader-facing per-verse YAMLs under 2_baruch/NNN/VVV.yaml.
-EXTRA_CANONICAL_CHAPTER_LEVEL: set[str] = {"GOSTR"}
+EXTRA_CANONICAL_CHAPTER_LEVEL: set[str] = {"GOSTR", "GPHIL", "GMARY"}
 
 
 def reader_navigation_fields(record: dict[str, Any]) -> dict[str, Any]:

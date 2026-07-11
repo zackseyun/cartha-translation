@@ -96,28 +96,29 @@ historical-context reading by scholars.
 | **2 Baruch (Syriac Apocalypse of Baruch)** | Hebrew (lost) → Greek (mostly lost) → Syriac | Syriac (Ceriani 1871) | 87 chapters | Ceriani 1871; Kmosko 1907; Violet 1924 (GCS 32); Charles 1896 |
 | **Testaments of the Twelve Patriarchs** | Greek primary; Armenian + Slavonic + Hebrew fragments | Greek | 12 testaments | Charles 1908 critical edition |
 
-### Tier 3 — Early Christian mystical and contemplative texts (Nag Hammadi, with framing)
+### Tier 3 — Early Christian mystical, apocryphal, and Nag Hammadi texts (with framing)
 
-Three texts from the Nag Hammadi library that are **not explicitly
-cosmologically Gnostic**. We include them as 4th-century Christian
-mystical/contemplative literature, with clear framing of their
-textual date, manuscript situation, and reception history. We **do
-not** present them as Scripture in the canonical sense; each is
-labeled as historical-context early Christian mystical writing at
-release.
+These works are included because they are historically important, not
+because POB endorses their theology. We identify the date of the work
+separately from the date of its surviving manuscript, preserve damaged
+or reconstructed passages, and state the work's literary and
+theological character. We **do not** present them as Scripture in the
+canonical sense.
 
 | Text | Character | Primary | Secondary |
 |---|---|---|---|
 | **Gospel of Thomas** | Sayings collection attributed to Jesus, inward-turning and mystical in tone. Not a demiurge cosmology — no evil creator god. Ambiguous theologically; scholars disagree whether to classify it as proto-Gnostic or an independent early Christian wisdom tradition. | Coptic (NHC II.2, 4th c. MS; Greek Vorlage dated 1st-2nd c.) | Greek fragments P.Oxy. 1, 654, 655 (Grenfell & Hunt 1897, 1904 — PD) |
 | **Gospel of Truth** | Meditative homily (often attributed to Valentinus), philosophical/contemplative in register. Talks about "ignorance" and "error" in abstract terms. No villainous creator; no full Gnostic cosmology. More a poetic reflection on the Father, the Word, and knowledge than a theological system. | Coptic (NHC I.3 + XII.2) | — |
 | **Thunder, Perfect Mind** | Paradoxical divine-feminine monologue ("I am the first and the last; I am the honored one and the scorned one..."). Does not fit any theological system cleanly — not obviously Gnostic, not obviously Jewish wisdom tradition, not obviously Christian. Genuinely uncategorizable. | Coptic (NHC VI.2) | — |
+| **Gospel of Philip** | Valentinian sacramental and theological collection; not a narrative gospel. Requires explicit framing of its bridal-chamber language and damaged passages. | Coptic (NHC II.3) | Public-domain Mattison English witness for provisional drafting only |
+| **Gospel of Mary** | Revelatory dialogue preserved outside Nag Hammadi in the Berlin Codex, with Greek fragments. Included in the broader early-Christian-apocrypha track. | Coptic (BG 8502.1) | Greek fragments; public-domain Mattison English witness for provisional drafting only |
 
-#### What we are NOT including (open to reconsider)
+#### Expansion order
 
-| Text | Reason held out |
-|---|---|
-| **Apocryphon of John** | Full Yaldabaoth / ignorant-demiurge cosmology explicitly re-casting the Old Testament creator God as a flawed or malevolent figure. Theologically disruptive in a way that the three texts above are not. Open to reconsider if framing can responsibly contextualize it. |
-| **Gospel of Philip** | Valentinian sacramental and ontological framework (bridal chamber, five sacraments theology) that would be genuinely theologically disruptive for most Christian readers. Same open-to-reconsider posture. |
+The authoritative ordered backlog now lives in
+`sources/early_christian_texts/catalog.json`. Source availability and
+responsible framing determine when a work can ship; theological
+disagreement by itself does not remove a text from consideration.
 
 ## Pipeline groupings
 

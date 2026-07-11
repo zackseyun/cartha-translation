@@ -7,6 +7,7 @@ Phase E source registry for Nag Hammadi translation prep.
 - Gospel of Thomas
 - Gospel of Truth
 - Thunder, Perfect Mind
+- Gospel of Philip (provisional public-domain English-witness bridge; direct Coptic review pending)
 
 ## Directory notes
 

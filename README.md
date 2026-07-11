@@ -334,23 +334,20 @@ Psalms of Solomon (in some early LXX manuscripts).
 **Tier 2 — Apostolic Fathers and pseudepigrapha:** Didache, 1 Clement,
 Shepherd of Hermas, 2 Baruch, Testaments of the Twelve Patriarchs.
 
-**Tier 3 — early Christian mystical and contemplative texts (Nag
-Hammadi, with framing):** Gospel of Thomas, Gospel of Truth,
-Thunder Perfect Mind. We include these three because none of them
-articulates a cosmologically disruptive Gnostic framework: Thomas
-is a sayings collection, Truth is Valentinian contemplation without
-demiurge cosmology, and Thunder is a paradoxical divine-feminine
-monologue that resists categorization. We translate them with
-unambiguous framing as 4th-century Christian mystical literature —
-not canonical Scripture, but historically important.
+**Tier 3 — early Christian mystical, apocryphal, and Nag Hammadi
+texts (with framing):** Gospel of Thomas, Gospel of Truth, Thunder,
+Perfect Mind, Gospel of Philip, Gospel of Mary, and the prioritized
+expansion catalog under `sources/early_christian_texts/catalog.json`.
+Theological difference is not a reason to hide a historical text.
+Instead, every work is labeled by manuscript, approximate date,
+literary form, and theological tradition, and is explicitly separated
+from canonical Scripture.
 
-### What we are holding out
-
-**Apocryphon of John** and **Gospel of Philip** are not currently in
-scope. Both articulate explicit Gnostic cosmological or sacramental
-frameworks that we consider too theologically disruptive to include
-without further work on responsible framing. We are open to
-reconsidering.
+Gospel of Philip and Gospel of Mary initially use clearly identified
+public-domain English witnesses as provisional drafting bridges. They
+remain marked as pending direct Coptic/Greek review and must not be
+described as finalized source-language translations until that review
+is complete.
 
 ### How this gets built
 
