@@ -4,6 +4,20 @@ The divergence system is ready to compare POB and SPOB with NKJV, NIV, and NLT,
 but those translations are copyrighted. Their complete wording must not be
 committed, scraped from public websites, or placed in the SPOB drafting prompt.
 
+## Comparison targets
+
+- **POB:** NIV and NKJV are the primary modern-English comparison targets.
+- **SPOB:** NLT is the primary understanding-first comparison target.
+- POB-to-SPOB similarity remains an internal descriptive metric only. It does
+  not rank the public "Most divergent verses" report.
+- Rows shorter than eight POB tokens, or rows whose verse segmentation does not
+  align with at least three reference texts, are excluded from public rankings.
+
+When all three licensed targets are present, the targeted review priority is
+55% POB-vs-NIV/NKJV divergence, 35% SPOB-vs-NLT divergence, and 10% documented
+textual/interpretive risk. Until then, any public-domain ranking must be labeled
+provisional rather than presented as the target comparison report.
+
 ## Safe operating boundary
 
 1. Obtain a license that expressly covers Cartha's commercial and AI-assisted

@@ -31,6 +31,7 @@ OUTPUT_ROOT = ROOT / "analysis" / "translation_divergence"
 SUMMARY_PATH = ROOT / "translation-divergence-summary.json"
 CONSENSUS_PANELS = ("bsb", "web", "asv", "kjv")
 LICENSED_TARGETS = ("nkjv", "niv", "nlt")
+MIN_RANKING_TOKENS = 8
 
 ARCHAIC_NORMALIZATION = {
     "thou": "you", "thee": "you", "ye": "you", "thy": "your", "thine": "your",
@@ -138,6 +139,65 @@ def licensed_comparisons(
     return comparisons
 
 
+def ranking_alignment(text: str, renderings: dict[str, str]) -> dict[str, Any]:
+    """Reject tiny or badly segmented rows from public-facing rankings."""
+    pob_tokens = len(normalize_tokens(text))
+    reference_tokens = {
+        name: len(normalize_tokens(rendering))
+        for name, rendering in renderings.items()
+        if name in CONSENSUS_PANELS and rendering
+    }
+    comparable = [
+        name for name, count in reference_tokens.items()
+        if pob_tokens
+        and count >= MIN_RANKING_TOKENS
+        and 0.5 <= count / pob_tokens <= 2.0
+    ]
+    reasons: list[str] = []
+    if pob_tokens < MIN_RANKING_TOKENS:
+        reasons.append("pob_fragment_too_short")
+    if len(comparable) < 3:
+        reasons.append("reference_segmentation_mismatch")
+    return {
+        "ranking_eligible": not reasons,
+        "confidence": "high" if not reasons else "low",
+        "pob_token_count": pob_tokens,
+        "comparable_reference_count": len(comparable),
+        "reasons": reasons,
+    }
+
+
+def licensed_target_metrics(
+    comparisons: dict[str, dict[str, float | None]],
+    documented_risk_score: float,
+) -> dict[str, float | None]:
+    """Score POB against NIV/NKJV and SPOB against NLT, never each other."""
+    pob_target_values = [
+        float(comparisons[name]["pob_similarity"])
+        for name in ("niv", "nkjv")
+        if name in comparisons and comparisons[name].get("pob_similarity") is not None
+    ]
+    nlt = comparisons.get("nlt") or {}
+    spob_nlt_similarity = nlt.get("spob_similarity")
+    pob_target_similarity = mean(pob_target_values) if len(pob_target_values) == 2 else None
+    pob_target_divergence = 100 * (1 - pob_target_similarity) if pob_target_similarity is not None else None
+    spob_target_divergence = 100 * (1 - float(spob_nlt_similarity)) if spob_nlt_similarity is not None else None
+    targeted_priority = None
+    if pob_target_divergence is not None and spob_target_divergence is not None:
+        targeted_priority = (
+            0.55 * pob_target_divergence
+            + 0.35 * spob_target_divergence
+            + 0.10 * documented_risk_score
+        )
+    return {
+        "pob_niv_nkjv_similarity": round(pob_target_similarity, 4) if pob_target_similarity is not None else None,
+        "pob_niv_nkjv_divergence": round(pob_target_divergence, 2) if pob_target_divergence is not None else None,
+        "spob_nlt_similarity": round(float(spob_nlt_similarity), 4) if spob_nlt_similarity is not None else None,
+        "spob_nlt_divergence": round(spob_target_divergence, 2) if spob_target_divergence is not None else None,
+        "targeted_review_priority": round(targeted_priority, 2) if targeted_priority is not None else None,
+    }
+
+
 def documented_risk(record: dict[str, Any]) -> tuple[float, list[str]]:
     translation = record.get("translation") or {}
     footnotes = translation.get("footnotes") or []
@@ -226,13 +286,19 @@ def score_verse(
         str(record.get("id") or ""), text, spob_text, licensed_bundle or {"translations": {}}
     )
     risk_score, risk_signals = documented_risk(record)
+    alignment = ranking_alignment(text, consensus_refs)
+    target_metrics = {
+        name: value
+        for name, value in licensed_target_metrics(licensed, risk_score).items()
+        if value is not None
+    }
     reference_divergence = 100 * (1 - consensus)
     pob_distinctiveness = 100 * (1 - pob_mean)
     spob_distinctiveness = None
     if spob_panel:
         spob_distinctiveness = 100 * (1 - mean(spob_panel.values()))
     priority = 0.50 * reference_divergence + 0.30 * pob_distinctiveness + 0.20 * risk_score
-    signals = list(risk_signals)
+    signals = [*risk_signals, *alignment["reasons"]]
     if reference_divergence >= 45:
         signals.append("high_reference_wording_divergence")
     if pob_distinctiveness >= 55:
@@ -258,6 +324,8 @@ def score_verse(
             "pob_nlt_similarity": (licensed.get("nlt") or {}).get("pob_similarity"),
             "spob_nlt_similarity": (licensed.get("nlt") or {}).get("spob_similarity"),
             "spob_nlt_similarity_gain": (licensed.get("nlt") or {}).get("spob_minus_pob"),
+            **target_metrics,
+            "ranking_eligible": alignment["ranking_eligible"],
             "documented_risk": round(risk_score, 2),
             "review_priority": round(priority, 2),
             "review_priority_band": score_band(priority),
@@ -301,6 +369,13 @@ def build_book(
             "documented_risk_weight": 0.20,
             "normalization": "case, punctuation, footnote markers, and common KJV archaisms normalized",
             "licensed_references_affect_review_priority": False,
+            "public_ranking_guard": f"minimum {MIN_RANKING_TOKENS} POB tokens and three length-compatible references",
+            "targeted_ranking": {
+                "pob_targets": ["niv", "nkjv"],
+                "spob_targets": ["nlt"],
+                "weights": {"pob": 0.55, "spob": 0.35, "documented_risk": 0.10},
+                "requires_private_licensed_inputs": True,
+            },
         },
         "sources": {name: refs.PANEL_CITATIONS[name] for name in refs.PANEL_FILES},
         "licensed_reference_sources": licensed_reference_metadata(licensed_bundle),
@@ -316,11 +391,25 @@ def compact_summary(books: list[dict[str, Any]], top: int) -> dict[str, Any]:
         for book in books
         for row in book["verses"]
     ]
-    ranked = sorted(rows, key=lambda row: row["scores"]["review_priority"], reverse=True)
+    eligible = [row for row in rows if row["scores"].get("ranking_eligible")]
+    licensed_ranked = [
+        row for row in eligible
+        if row["scores"].get("targeted_review_priority") is not None
+    ]
+    ranking_mode = "niv_nkjv_nlt_targets" if licensed_ranked else "public_domain_provisional"
+    ranked = sorted(
+        licensed_ranked or eligible,
+        key=lambda row: row["scores"][
+            "targeted_review_priority" if licensed_ranked else "review_priority"
+        ],
+        reverse=True,
+    )
     return {
         "schema_version": 1,
         "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "description": "Highest-priority wording-divergence review candidates. Scores identify where to investigate; they do not identify the correct translation.",
+        "ranking_mode": ranking_mode,
+        "ranking_targets": {"pob": ["NIV", "NKJV"], "spob": ["NLT"]},
         "books": [
             {"book": book["book"], "verse_count": book["verse_count"], "spob_verse_count": book["spob_verse_count"]}
             for book in books

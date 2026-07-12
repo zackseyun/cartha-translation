@@ -83,6 +83,34 @@ class TranslationDivergenceTests(unittest.TestCase):
             with self.assertRaises(ValueError):
                 DIVERGENCE.load_licensed_references(path)
 
+    def test_short_fragment_is_excluded_from_public_ranking(self):
+        alignment = DIVERGENCE.ranking_alignment(
+            "known from of old",
+            {
+                "bsb": "that have been known for ages",
+                "web": "All of God's works are known to him from eternity",
+                "asv": "The Lord makes these things known from of old",
+                "kjv": "Known unto God are all his works from the beginning of the world",
+            },
+        )
+        self.assertFalse(alignment["ranking_eligible"])
+        self.assertIn("pob_fragment_too_short", alignment["reasons"])
+
+    def test_targeted_metrics_compare_pob_to_niv_nkjv_and_spob_to_nlt(self):
+        metrics = DIVERGENCE.licensed_target_metrics(
+            {
+                "niv": {"pob_similarity": 0.8, "spob_similarity": 0.7},
+                "nkjv": {"pob_similarity": 0.6, "spob_similarity": 0.5},
+                "nlt": {"pob_similarity": 0.5, "spob_similarity": 0.9},
+            },
+            20,
+        )
+        self.assertEqual(metrics["pob_niv_nkjv_similarity"], 0.7)
+        self.assertEqual(metrics["pob_niv_nkjv_divergence"], 30.0)
+        self.assertEqual(metrics["spob_nlt_similarity"], 0.9)
+        self.assertEqual(metrics["spob_nlt_divergence"], 10.0)
+        self.assertEqual(metrics["targeted_review_priority"], 22.0)
+
 
 if __name__ == "__main__":
     unittest.main()
