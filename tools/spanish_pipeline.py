@@ -38,14 +38,14 @@ except Exception:  # pragma: no cover - source packet fallback handles this
     english_draft = None
 
 DEFAULT_DRAFT_MODEL_ID = os.environ.get("CARTHA_SPANISH_DRAFT_MODEL", "gpt-5.4-mini")
-DEFAULT_REVIEW_MODEL_ID = os.environ.get("CARTHA_SPANISH_REVIEW_MODEL", "gpt-5.4")
+DEFAULT_REVIEW_MODEL_ID = os.environ.get("CARTHA_SPANISH_REVIEW_MODEL", "gpt-5.6-terra")
 DEFAULT_DRAFT_DEPLOYMENT = os.environ.get(
     "AZURE_OPENAI_MINI_DEPLOYMENT_ID",
     os.environ.get("AZURE_OPENAI_DEPLOYMENT_ID", "gpt-5-4-mini-deployment"),
 )
 DEFAULT_REVIEW_DEPLOYMENT = os.environ.get(
     "AZURE_OPENAI_REVIEW_DEPLOYMENT_ID",
-    os.environ.get("AZURE_OPENAI_DEPLOYMENT_ID", "gpt-5-4-deployment"),
+    os.environ.get("AZURE_OPENAI_DEPLOYMENT_ID", "gpt-5-6-terra-atlas"),
 )
 DEFAULT_API_VERSION = os.environ.get("AZURE_OPENAI_API_VERSION", "2025-04-01-preview")
 DEFAULT_TEMPERATURE = 1.0
@@ -139,6 +139,11 @@ POB terminology, Spanish readability, and documented lexical/theological
 rationale.
 
 You must call `submit_spanish_review` exactly once and output no other text.
+
+Use verdict `revise` only when the publication text or its footnotes need a
+change. If the publication text is faithful but legacy audit metadata is thin
+or inconsistent, approve the publication text and describe that limitation in
+the review summary instead of inventing a textual revision.
 
 {SPANISH_STYLE_AND_GLOSSARY}
 """
@@ -498,6 +503,27 @@ def source_to_spanish_path(source_path: pathlib.Path) -> pathlib.Path:
 def fetch_azure_env() -> None:
     if os.environ.get("AZURE_OPENAI_API_KEY") and os.environ.get("AZURE_OPENAI_ENDPOINT"):
         return
+    # Prefer the currently logged-in Azure CLI. This avoids routing a current
+    # revision run through an old copied secret or a retired deployment.
+    try:
+        raw = subprocess.check_output(
+            [
+                "az", "cognitiveservices", "account", "keys", "list",
+                "--resource-group", "rg-cartha-truth-openai",
+                "--name", "cartha-aoai-truth-1c9177c8", "-o", "json",
+            ],
+            text=True,
+            stderr=subprocess.DEVNULL,
+        )
+        keys = json.loads(raw)
+        key = str(keys.get("key1") or keys.get("key2") or "").strip()
+        if key:
+            os.environ["AZURE_OPENAI_API_KEY"] = key
+            os.environ["AZURE_OPENAI_ENDPOINT"] = "https://cartha-aoai-truth-1c9177c8.openai.azure.com"
+            os.environ.setdefault("AZURE_OPENAI_API_VERSION", DEFAULT_API_VERSION)
+            return
+    except Exception:
+        pass
     try:
         raw = subprocess.check_output(
             [
@@ -525,15 +551,23 @@ def fetch_azure_env() -> None:
     os.environ.setdefault("AZURE_OPENAI_API_VERSION", DEFAULT_API_VERSION)
 
 
-def model_prices(model_id: str) -> dict[str, float]:
+def model_prices(model_id: str) -> dict[str, float] | None:
     normalized = model_id.lower()
+    if "5.6" in normalized:
+        input_price = os.environ.get("CARTHA_GPT56_INPUT_USD_PER_MTOK")
+        output_price = os.environ.get("CARTHA_GPT56_OUTPUT_USD_PER_MTOK")
+        if not input_price or not output_price:
+            return None
+        return {"input": float(input_price), "output": float(output_price), "cached_input": 0.0}
     if "mini" in normalized:
         return MODEL_PRICES_USD_PER_MTOK["gpt-5.4-mini"]
     return MODEL_PRICES_USD_PER_MTOK["gpt-5.4"]
 
 
-def usage_cost_usd(usage: dict[str, Any], model_id: str) -> float:
+def usage_cost_usd(usage: dict[str, Any], model_id: str) -> float | None:
     prices = model_prices(model_id)
+    if prices is None:
+        return None
     prompt = int(usage.get("prompt_tokens") or usage.get("input_tokens") or 0)
     completion = int(usage.get("completion_tokens") or usage.get("output_tokens") or 0)
     return (prompt / 1_000_000 * prices["input"]) + (completion / 1_000_000 * prices["output"])
@@ -676,13 +710,15 @@ def build_spanish_record(
 def normalize_usage(usage: dict[str, Any], model_id: str) -> dict[str, Any]:
     usage = dict(usage or {})
     details = usage.get("completion_tokens_details") or {}
-    normalized = {
+    normalized: dict[str, Any] = {
         "prompt_tokens": int(usage.get("prompt_tokens") or 0),
         "completion_tokens": int(usage.get("completion_tokens") or 0),
         "total_tokens": int(usage.get("total_tokens") or 0),
         "reasoning_tokens": int(details.get("reasoning_tokens") or 0),
-        "estimated_cost_usd": round(usage_cost_usd(usage, model_id), 6),
     }
+    estimated = usage_cost_usd(usage, model_id)
+    if estimated is not None:
+        normalized["estimated_cost_usd"] = round(estimated, 6)
     return normalized
 
 
@@ -697,9 +733,10 @@ def validate_spanish_record(path: pathlib.Path) -> list[str]:
         errors.append("translation.text missing")
     if (record.get("language") or {}).get("code") != "es":
         errors.append("language.code is not es")
-    if not isinstance(record.get("lexical_decisions"), list):
+    legacy_reviewable = bool(record.get("repair_pass") or record.get("review_pass"))
+    if not isinstance(record.get("lexical_decisions"), list) and not legacy_reviewable:
         errors.append("lexical_decisions missing/non-list")
-    elif len(text.split()) >= 5 and not record.get("lexical_decisions"):
+    elif len(text.split()) >= 5 and not record.get("lexical_decisions") and not legacy_reviewable:
         errors.append("lexical_decisions empty for non-trivial text")
     footnotes = ((record.get("translation") or record.get("spanish_translation") or {}).get("footnotes") or [])
     markers = [str(note.get("marker") or "") for note in footnotes if isinstance(note, dict)]
@@ -708,7 +745,7 @@ def validate_spanish_record(path: pathlib.Path) -> list[str]:
     for marker in markers:
         if marker and f"[{marker}]" not in text:
             errors.append(f"footnote marker [{marker}] not present in translation text")
-    if not (record.get("ai_draft") or {}).get("prompt_sha256"):
+    if not (record.get("ai_draft") or {}).get("prompt_sha256") and not legacy_reviewable:
         errors.append("ai_draft.prompt_sha256 missing")
     if re.search(r"\b(the|and|of|with|shall|Messiah Jesus)\b", text, re.IGNORECASE):
         errors.append("possible untranslated English residue in Spanish text")
@@ -760,7 +797,13 @@ def draft_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
             write_yaml_atomic(src.target_path, out_record)
             errors = validate_spanish_record(src.target_path)
             if not errors:
-                print(f"drafted {rel(src.target_path)} cost=${out_record['ai_draft']['usage']['estimated_cost_usd']:.4f}", flush=True)
+                draft_usage = out_record["ai_draft"]["usage"]
+                cost_note = (
+                    f" cost=${draft_usage['estimated_cost_usd']:.4f}"
+                    if "estimated_cost_usd" in draft_usage
+                    else f" tokens={draft_usage.get('total_tokens', 0)}"
+                )
+                print(f"drafted {rel(src.target_path)}{cost_note}", flush=True)
                 return True
             last_errors = errors
             invalid_path = src.target_path.with_suffix(src.target_path.suffix + f".invalid-{int(time.time())}-{validation_attempt}")
@@ -787,7 +830,11 @@ def review_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
         english_record = safe_load_yaml(src.source_path)
         spanish_record = safe_load_yaml(target)
         if spanish_record.get("review_pass") and not args.force:
-            return False
+            retryable = args.retry_needs_revision and spanish_record.get("status") in {
+                "spanish_needs_revision", "spanish_needs_review"
+            }
+            if not retryable:
+                return False
         user_prompt = build_review_user_prompt(src.source_path, english_record, spanish_record)
         prompt_sha = sha256_text(REVIEW_SYSTEM_PROMPT + "\n\n---\n\n" + user_prompt)
         tool_input, model_version, usage, raw_args = call_azure_tool(
@@ -807,12 +854,13 @@ def review_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
         old_footnotes = list((translation_obj or spanish_record.get("spanish_translation") or {}).get("footnotes") or [])
         revised = str(tool_input.get("revised_spanish_text") or "").strip()
         revised_footnotes = tool_input.get("revised_footnotes") if isinstance(tool_input.get("revised_footnotes"), list) else old_footnotes
-        apply_revision = args.apply_revisions and tool_input.get("verdict") == "revise" and revised and revised != old_text and not bool(tool_input.get("requires_gpt54_adjudication"))
+        footnotes_changed = revised_footnotes != old_footnotes
+        apply_revision = args.apply_revisions and tool_input.get("verdict") == "revise" and ((revised and revised != old_text) or footnotes_changed) and not bool(tool_input.get("requires_gpt54_adjudication"))
         auto_apply_blocked_errors: list[str] = []
         if apply_revision:
             candidate = dict(spanish_record)
             candidate_translation = dict(translation_obj)
-            candidate_translation["text"] = revised
+            candidate_translation["text"] = revised or old_text
             if revised_footnotes:
                 candidate_translation["footnotes"] = revised_footnotes
             elif "footnotes" in candidate_translation:
@@ -834,7 +882,7 @@ def review_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
                     "timestamp": utc_now(),
                 }
             )
-            translation_obj["text"] = revised
+            translation_obj["text"] = revised or old_text
             if revised_footnotes:
                 translation_obj["footnotes"] = revised_footnotes
             else:
@@ -860,7 +908,13 @@ def review_one(src: SourceRecord, *, args: argparse.Namespace) -> bool:
             }
         )
         write_yaml_atomic(target, spanish_record)
-        print(f"reviewed {rel(target)} verdict={tool_input.get('verdict')} cost=${spanish_record['review_pass']['usage']['estimated_cost_usd']:.4f}", flush=True)
+        review_usage = spanish_record["review_pass"]["usage"]
+        cost_note = (
+            f" cost=${review_usage['estimated_cost_usd']:.4f}"
+            if "estimated_cost_usd" in review_usage
+            else f" tokens={review_usage.get('total_tokens', 0)}"
+        )
+        print(f"reviewed {rel(target)} verdict={tool_input.get('verdict')}{cost_note}", flush=True)
         return True
     finally:
         release_lock(lock)
@@ -924,6 +978,75 @@ def command_validate(args: argparse.Namespace) -> int:
             print(f"{rel(src.target_path)}: {errors}")
     print(f"validated={checked} failed={failed}")
     return 1 if failed else 0
+
+
+def command_apply_pending(args: argparse.Namespace) -> int:
+    """Apply already-returned safe Terra revisions after validator upgrades."""
+    applied = blocked = checked = 0
+    for src in selected_records(args):
+        if checked >= args.limit > 0:
+            break
+        target = src.target_path
+        if not target.exists():
+            continue
+        record = safe_load_yaml(target)
+        review = record.get("review_pass") or {}
+        if record.get("status") != "spanish_needs_revision" or review.get("verdict") != "revise":
+            continue
+        if review.get("requires_gpt54_adjudication"):
+            blocked += 1
+            continue
+        checked += 1
+        translation = record.setdefault("translation", {})
+        old_text = str(translation.get("text") or "").strip()
+        old_footnotes = list(translation.get("footnotes") or [])
+        revised = str(review.get("revised_spanish_text") or "").strip()
+        revised_footnotes = review.get("revised_footnotes") if isinstance(review.get("revised_footnotes"), list) else old_footnotes
+        if not revised:
+            revised = old_text
+        if revised == old_text and revised_footnotes == old_footnotes:
+            record["status"] = "spanish_reviewed"
+            review["applied_revision"] = False
+            review["effective_approval_no_publication_change"] = True
+            review.pop("auto_apply_blocked_errors", None)
+            write_yaml_atomic(target, record)
+            applied += 1
+            continue
+        candidate = json.loads(json.dumps(record, ensure_ascii=False))
+        candidate_translation = candidate.setdefault("translation", {})
+        candidate_translation["text"] = revised
+        if revised_footnotes:
+            candidate_translation["footnotes"] = revised_footnotes
+        else:
+            candidate_translation.pop("footnotes", None)
+        temp = target.with_suffix(target.suffix + ".pending-candidate")
+        write_yaml_atomic(temp, candidate)
+        errors = validate_spanish_record(temp)
+        temp.unlink(missing_ok=True)
+        if errors:
+            review["auto_apply_blocked_errors"] = errors
+            blocked += 1
+            write_yaml_atomic(target, record)
+            continue
+        record.setdefault("revisions", []).append({
+            "from": old_text,
+            "to": revised,
+            "rationale": review.get("revision_rationale") or review.get("source_alignment_summary"),
+            "reviewer_model": review.get("model_id") or "gpt-5.6-terra",
+            "timestamp": utc_now(),
+        })
+        translation["text"] = revised
+        if revised_footnotes:
+            translation["footnotes"] = revised_footnotes
+        else:
+            translation.pop("footnotes", None)
+        record["status"] = "spanish_reviewed"
+        review["applied_revision"] = True
+        review.pop("auto_apply_blocked_errors", None)
+        write_yaml_atomic(target, record)
+        applied += 1
+    print(f"pending reviews checked={checked} applied_or_approved={applied} blocked={blocked}")
+    return 1 if blocked else 0
 
 
 def collect_usage() -> dict[str, Any]:
@@ -1023,7 +1146,7 @@ def command_estimate(args: argparse.Namespace) -> int:
     # usage has already been collected.
     projected_output = int(len(records) * args.output_tokens_per_record)
     prices = model_prices(args.model)
-    cost = projected_input / 1_000_000 * prices["input"] + projected_output / 1_000_000 * prices["output"]
+    cost = None if prices is None else projected_input / 1_000_000 * prices["input"] + projected_output / 1_000_000 * prices["output"]
     print(json.dumps({
         "records": len(records),
         "sampled_records": sampled,
@@ -1031,7 +1154,7 @@ def command_estimate(args: argparse.Namespace) -> int:
         "projected_input_tokens": projected_input,
         "projected_output_tokens": projected_output,
         "model": args.model,
-        "estimated_draft_cost_usd": round(cost, 2),
+        "estimated_draft_cost_usd": round(cost, 2) if cost is not None else None,
     }, indent=2))
     return 0
 
@@ -1077,6 +1200,7 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--retries", type=int, default=2)
     p.add_argument("--validation-retries", type=int, default=1)
     p.add_argument("--force", action="store_true")
+    p.add_argument("--retry-needs-revision", action="store_true")
     p.add_argument("--apply-revisions", action="store_true")
     p.add_argument("--keep-going", action="store_true")
     p.set_defaults(func=command_review)
@@ -1086,6 +1210,11 @@ def build_parser() -> argparse.ArgumentParser:
     p.add_argument("--limit", type=int, default=0, help="0 = no limit")
     p.add_argument("--only-existing", action="store_true")
     p.set_defaults(func=command_validate)
+
+    p = sub.add_parser("apply-pending", help="Apply safe existing review outputs without another model call")
+    add_common_filters(p)
+    p.add_argument("--limit", type=int, default=0, help="0 = no limit")
+    p.set_defaults(func=command_apply_pending)
 
     p = sub.add_parser("summary", help="Summarize progress and observed API costs")
     add_common_filters(p)

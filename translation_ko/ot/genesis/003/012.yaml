@@ -17,12 +17,8 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 사람이 말했습니다. “당신이 나와 함께 있게 하신 그 여자가 그 나무의 열매를 내게 주어서 내가 먹었습니다.”[a]
+  text: 그 사람이 말했습니다. “당신이 나와 함께 있게 하신 그 여자 — 바로 그 여자가 그 나무에서 내게 주었고, 나는 먹었습니다.”
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: ‘그 나무의 열매’를 보충했습니다. 히브리어에는 ‘열매’가 직접 적혀 있지 않지만, 문맥상 금지된 나무의 소산을 가리킨다고 이해됩니다.
-    reason: lexical_alternative
 lexical_decisions:
 - source_word: הָאָדָם
   english_pob_choice: the man
@@ -84,4 +80,35 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: korean_reviewed
+revisions:
+- from: 사람이 말했습니다. “당신이 나와 함께 있게 하신 그 여자가 그 나무의 열매를 내게 주어서 내가 먹었습니다.”[a]
+  to: 그 사람이 말했습니다. “당신이 나와 함께 있게 하신 그 여자 — 바로 그 여자가 그 나무에서 내게 주었고, 나는 먹었습니다.”
+  rationale: 원문에 명시되지 않은 ‘열매’와 그 각주를 제거하고, ‘그 나무에서 내게 주었습니다’로 מִן הָעֵץ를 직접 옮겼습니다. ‘바로 그 여자’와 대시로 הִוא의 강조 및 책임 전가의 날카로운 흐름을 보존했으며, הָאָדָם의 특정 지시성을 ‘그 사람’으로 반영했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-12T20:18:49Z'
+review_pass:
+  verdict: revise
+  source_alignment_summary: 초안은 אדם을 ‘사람’, אשה를 ‘그 여자’, ‘나와 함께 있게 하신’을 통해 대체로 충실히 옮기며, 하나님께 책임을 돌리는 발화의 긴장도 보존합니다. 그러나 강조 독립대명사 הִוא(‘그 여자가/바로 그 여자가’)가 빠져 있고, מִן הָעֵץ는 원문처럼 ‘그 나무에서’로 유지할 수 있으므로 ‘열매’ 보충과 그에 따른 각주를 제거하는 편이 더 source-direct합니다.
+  korean_quality_summary: ‘사람이 말했습니다’와 합쇼체 서술은 자연스럽습니다. ‘그 여자가 그 나무의 열매를 내게 주어서 내가 먹었습니다’는 읽기 쉽지만, 강조를 살린 대시와 ‘그 나무에서 내게 주었습니다’가 원문에 더 가깝고 한국어로도 명료합니다.
+  glossary_alignment: 프로젝트 용어와 충돌은 없습니다. הָאָדָם을 ‘사람’으로 둔 것은 문맥상 가능하나, 특정 남성 인물을 가리키는 정관사 표현을 반영해 ‘그 사람이’가 더 정확합니다.
+  issues:
+  - severity: medium
+    issue: מִן הָעֵץ에 없는 ‘열매’를 본문에 보충함
+    rationale: 히브리어는 직역해도 ‘그 나무에서 내게 주었습니다’라고 한국어 문장을 완결할 수 있습니다. 영어의 목적어 보충 필요성은 한국어에는 적용되지 않으므로, 원문에 없는 ‘열매’를 삽입하지 않는 것이 낫습니다.
+  - severity: low
+    issue: 강조 독립대명사 הִוא가 충분히 드러나지 않음
+    rationale: ‘그 여자가’ 뒤에 ‘바로 그 여자가’를 두거나 대시를 사용하면, 여자를 특별히 지목하는 원문의 강조를 자연스럽게 보존할 수 있습니다.
+  revised_korean_text: 그 사람이 말했습니다. “당신이 나와 함께 있게 하신 그 여자 — 바로 그 여자가 그 나무에서 내게 주었고, 나는 먹었습니다.”
+  revision_rationale: 원문에 명시되지 않은 ‘열매’와 그 각주를 제거하고, ‘그 나무에서 내게 주었습니다’로 מִן הָעֵץ를 직접 옮겼습니다. ‘바로 그 여자’와 대시로 הִוא의 강조 및 책임 전가의 날카로운 흐름을 보존했으며, הָאָדָם의 특정 지시성을 ‘그 사람’으로 반영했습니다.
+  requires_full_adjudication: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: korean_source_review_azure_v1
+  timestamp: '2026-07-12T20:18:49Z'
+  usage:
+    prompt_tokens: 3974
+    completion_tokens: 625
+    total_tokens: 4599
+    reasoning_tokens: 0
+  applied_revision: true

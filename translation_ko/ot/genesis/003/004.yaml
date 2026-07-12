@@ -20,15 +20,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그러나 뱀이 여자에게 말했습니다. “너희는 결코 죽지 않을 것이다.”[a][b]
+  text: 그러나 뱀이 여자에게 말했습니다. “너희는 결코 죽지 않을 것이다.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 직역하면 ‘죽는 것으로 너희가 죽을 것이다’라는 강조형 표현입니다.
-    reason: source_note
-  - marker: b
-    text: 문맥상 ‘뱀’은 하나의 동물 명칭이지만, 이 서사에서는 유혹자/대적자의 역할을 합니다.
-    reason: theological_note
+    text: 히브리어는 직역하면 ‘너희는 결코 죽는 것으로 죽지 않을 것이다’이며, 부정사 절대형과 동사를 함께 써서 뱀의 부정을 강조합니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיֹּאמֶר
   english_pob_choice: But ... said
@@ -73,4 +70,39 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: korean_reviewed
+revisions:
+- from: 그러나 뱀이 여자에게 말했습니다. “너희는 결코 죽지 않을 것이다.”[a][b]
+  to: 그러나 뱀이 여자에게 말했습니다. “너희는 결코 죽지 않을 것이다.”[a]
+  rationale: 본문은 유지하되, 히브리어의 부정된 강조 구문을 정확히 설명하도록 각주 a를 고치고 본문에 없는 신학적 각주 b를 삭제했습니다. ‘결코’는 하나님의 앞선 경고를 뱀이 정면으로 부정하는 강도를 보존합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-12T20:18:35Z'
+review_pass:
+  verdict: revise
+  source_alignment_summary: 본문은 접속 waw의 대조적 흐름, נָחָשׁ의 ‘뱀’, 그리고 לֹא + 부정사 절대형 + 유한동사가 만드는 뱀의 단호한 부정을 대체로 충실히 보존합니다. 다만 현 각주 a는 히브리어의 부정(‘not’)을 빠뜨려 원문의 강조된 부정을 정확히 설명하지 못합니다.
+  korean_quality_summary: ‘그러나 뱀이 여자에게 말했습니다. “너희는 결코 죽지 않을 것이다.”’는 현대 표준 한국어로 자연스럽고, 인용문 안의 평서체는 뱀이 여자에게 직접 말하는 장면에 적절합니다. 본문에 근거하지 않은 신학적 설명 각주 b는 삭제하는 편이 좋습니다.
+  glossary_alignment: נָחָשׁ을 ‘뱀’으로, הָאִשָּׁה를 ‘여자’로 옮긴 것은 이 문맥에서 적절합니다. ‘결코 죽지 않을 것이다’는 강조된 부정을 잘 살리며, 전통적 표현으로 완화하지 않습니다.
+  issues:
+  - severity: medium
+    issue: 각주 a가 히브리어 부정을 누락합니다.
+    rationale: לֹא מוֹת תְּמֻתוּן은 단순히 ‘죽는 것으로 너희가 죽을 것이다’가 아니라 ‘너희는 결코 죽지 않을 것이다’라는 부정된 강조 구조입니다. 각주는 강조가 뱀의 부정에 걸린다는 점을 밝혀야 합니다.
+  - severity: low
+    issue: 각주 b가 본문 번역에 필요한 근거나 기능 없이 해석을 덧붙입니다.
+    rationale: 이 절의 נָחָשׁ은 우선 ‘뱀’이며, ‘유혹자/대적자’라는 신학적 규정은 이 본문의 어휘 주석으로 제시할 필요가 없습니다. 영어 POB 감사 기록에도 대응 각주가 없습니다.
+  revised_korean_text: 그러나 뱀이 여자에게 말했습니다. “너희는 결코 죽지 않을 것이다.”[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 직역하면 ‘너희는 결코 죽는 것으로 죽지 않을 것이다’이며, 부정사 절대형과 동사를 함께 써서 뱀의 부정을 강조합니다.
+    reason: lexical_alternative
+  revision_rationale: 본문은 유지하되, 히브리어의 부정된 강조 구문을 정확히 설명하도록 각주 a를 고치고 본문에 없는 신학적 각주 b를 삭제했습니다. ‘결코’는 하나님의 앞선 경고를 뱀이 정면으로 부정하는 강도를 보존합니다.
+  requires_full_adjudication: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: korean_source_review_azure_v1
+  timestamp: '2026-07-12T20:18:35Z'
+  usage:
+    prompt_tokens: 3665
+    completion_tokens: 842
+    total_tokens: 4507
+    reasoning_tokens: 174
+  applied_revision: true

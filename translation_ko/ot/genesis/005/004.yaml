@@ -17,12 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 셋을 낳은 뒤에, 아담은 팔백 년을 살며 아들들과 딸들을 낳았습니다.[a]
+  text: 아담은 셋을 낳은 뒤[a] 팔백 년을 더 살았고, 아들들과 딸들을 낳았습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 직역하면 ‘셋을 낳은 뒤 아담의 날들은 팔백 년이었다’는 뜻입니다.
-    reason: alternative_reading
+    text: 히브리어를 직역하면 ‘셋을 낳은 뒤 아담의 날들은 팔백 년이었다’입니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּהְיוּ יְמֵי אָדָם ... שְׁמֹנֶה מֵאֹת שָׁנָה
   english_pob_choice: Adam lived eight hundred years
@@ -75,4 +75,39 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: korean_reviewed
+revisions:
+- from: 그가 셋을 낳은 뒤에, 아담은 팔백 년을 살며 아들들과 딸들을 낳았습니다.[a]
+  to: 아담은 셋을 낳은 뒤[a] 팔백 년을 더 살았고, 아들들과 딸들을 낳았습니다.
+  rationale: 히브리어의 ‘아담의 날들은 …이었다’라는 수명 관용구는 자연스러운 한국어인 ‘팔백 년을 더 살았고’로 옮기되, 순차적 계보 서술을 ‘살며’가 아닌 ‘살았고’로 보존했습니다. ‘더’는 셋을 낳은 뒤의 기간이라는 אַחֲרֵי의 시간 관계를 명시합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-12T20:19:36Z'
+review_pass:
+  verdict: revise
+  source_alignment_summary: 초안은 셋을 낳은 뒤의 팔백 년과 아들들과 딸들을 낳았다는 핵심 의미를 보존합니다. 그러나 ‘살며’는 두 동작을 동시·수반 관계로 들리게 하므로, 히브리어의 순차적 와우 서술을 ‘살았고’로 명확히 하는 편이 낫습니다.
+  korean_quality_summary: ‘그가’의 선행사를 이름으로 밝혀 계보 문맥에서 더 명료하게 하고, ‘팔백 년을 더 살았고’로 자연스럽고 정확한 한국어 시간 관계를 드러냈습니다.
+  glossary_alignment: 아담과 셋은 통용되는 성서 인명 표기를 유지했습니다. בנים ובנות의 성별 명시는 ‘아들들과 딸들’로 보존했습니다.
+  issues:
+  - severity: low
+    issue: ‘살며’의 연결 표현
+    rationale: 히브리어는 아담이 팔백 년을 산 후/그 기간에 이어 아들들과 딸들을 낳았다는 계보 서술을 와우로 연결합니다. ‘살며’는 동시성을 불필요하게 강조하므로 ‘살았고’가 더 충실하고 자연스럽습니다.
+  - severity: low
+    issue: ‘그가’의 지시 대상
+    rationale: 직전 문맥상 아담을 가리키지만, 절 내부에서 ‘아담은 셋을 낳은 뒤’로 명시하면 독해가 더 분명합니다.
+  revised_korean_text: 아담은 셋을 낳은 뒤[a] 팔백 년을 더 살았고, 아들들과 딸들을 낳았습니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어를 직역하면 ‘셋을 낳은 뒤 아담의 날들은 팔백 년이었다’입니다.
+    reason: lexical_alternative
+  revision_rationale: 히브리어의 ‘아담의 날들은 …이었다’라는 수명 관용구는 자연스러운 한국어인 ‘팔백 년을 더 살았고’로 옮기되, 순차적 계보 서술을 ‘살며’가 아닌 ‘살았고’로 보존했습니다. ‘더’는 셋을 낳은 뒤의 기간이라는 אַחֲרֵי의 시간 관계를 명시합니다.
+  requires_full_adjudication: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: korean_source_review_azure_v1
+  timestamp: '2026-07-12T20:19:36Z'
+  usage:
+    prompt_tokens: 3577
+    completion_tokens: 787
+    total_tokens: 4364
+    reasoning_tokens: 226
+  applied_revision: true

@@ -41,6 +41,7 @@ TRANSLATION_ROOT = REPO_ROOT / "translation"
 KOREAN_ROOT = REPO_ROOT / "translation_ko"
 
 DEFAULT_MODEL_ID = os.environ.get("CARTHA_KO_MODEL", "gpt-5.4-mini")
+DEFAULT_REVIEW_MODEL_ID = os.environ.get("CARTHA_KO_REVIEW_MODEL", "gpt-5.6-terra")
 DEFAULT_AZURE_RESOURCE_GROUP = os.environ.get(
     "CARTHA_KO_AZURE_RESOURCE_GROUP", "rg-cartha-truth-openai"
 )
@@ -48,6 +49,9 @@ DEFAULT_AZURE_ACCOUNT = os.environ.get(
     "CARTHA_KO_AZURE_ACCOUNT", "cartha-aoai-truth-1c9177c8"
 )
 DEFAULT_DEPLOYMENT = os.environ.get("CARTHA_KO_DEPLOYMENT", "gpt-5-4-mini-ko")
+DEFAULT_REVIEW_DEPLOYMENT = os.environ.get(
+    "CARTHA_KO_REVIEW_DEPLOYMENT", "gpt-5-6-terra-atlas"
+)
 REQUIRED_MODEL_FRAGMENT = os.environ.get(
     "CARTHA_KO_REQUIRED_MODEL_FRAGMENT", "gpt54mini"
 )
@@ -1234,6 +1238,18 @@ def write_korean_yaml(target_path: pathlib.Path, record: dict[str, Any]) -> None
     )
 
 
+def acquire_record_lock(target_path: pathlib.Path, operation: str) -> pathlib.Path | None:
+    """Prevent duplicate workers from reviewing the same record concurrently."""
+    lock_path = target_path.with_suffix(target_path.suffix + f".{operation}.lock")
+    try:
+        fd = os.open(str(lock_path), os.O_CREAT | os.O_EXCL | os.O_WRONLY)
+    except FileExistsError:
+        return None
+    with os.fdopen(fd, "w", encoding="utf-8") as handle:
+        handle.write(json.dumps({"pid": os.getpid(), "operation": operation, "timestamp": utc_now()}))
+    return lock_path
+
+
 def validate_korean_data(data: dict[str, Any]) -> list[str]:
     errors: list[str] = []
     if not isinstance(data, dict):
@@ -1467,6 +1483,9 @@ def review_one(
     target_path = source_to_korean_path(source_path)
     if not target_path.exists():
         return ("skip", rel(target_path))
+    lock_path = acquire_record_lock(target_path, "review")
+    if lock_path is None:
+        return ("skip", rel(target_path))
     try:
         en_record = load_yaml(source_path)
         korean_record = load_yaml(target_path)
@@ -1491,18 +1510,18 @@ def review_one(
             else old_footnotes
         )
 
+        footnotes_changed = revised_footnotes != old_footnotes
         apply_revision = (
             apply_revisions
             and review.get("verdict") == "revise"
-            and revised
-            and revised != old_text
+            and ((revised and revised != old_text) or footnotes_changed)
             and not bool(review.get("requires_full_adjudication"))
         )
         auto_apply_blocked_errors: list[str] = []
         if apply_revision:
             candidate = copy.deepcopy(korean_record)
             candidate_translation = candidate.setdefault("translation", {})
-            candidate_translation["text"] = revised
+            candidate_translation["text"] = revised or old_text
             if revised_footnotes:
                 candidate_translation["footnotes"] = revised_footnotes
             else:
@@ -1522,7 +1541,7 @@ def review_one(
                     "timestamp": utc_now(),
                 }
             )
-            translation["text"] = revised
+            translation["text"] = revised or old_text
             if revised_footnotes:
                 translation["footnotes"] = revised_footnotes
             else:
@@ -1553,6 +1572,8 @@ def review_one(
         return ("ok", f"{rel(target_path)} verdict={review.get('verdict')}")
     except Exception as exc:  # noqa: BLE001
         return ("error", f"{rel(source_path)}: {exc}")
+    finally:
+        lock_path.unlink(missing_ok=True)
 
 
 def cmd_review(args: argparse.Namespace) -> int:
@@ -1568,7 +1589,8 @@ def cmd_review(args: argparse.Namespace) -> int:
         f"[ko-review] reviewing up to {len(sources)} verses via {args.deployment} "
         f"(concurrency={args.concurrency}, apply_revisions={args.apply_revisions}, force={args.force})"
     )
-    enforce_model_policy(deployment=args.deployment, model_id=args.model_id)
+    # Drafting remains model-pinned; independent revision deliberately uses
+    # the stronger Terra reviewer and therefore does not apply the draft pin.
     fetch_azure_key()
     ok = err = skip = 0
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as ex:
@@ -1667,8 +1689,8 @@ def main() -> int:
 
     pr = sub.add_parser("review", help="Review existing Korean YAMLs and optionally apply small revisions")
     pr.add_argument("scope", nargs="+", help="Book / chapter / verse path (e.g. nt/john)")
-    pr.add_argument("--deployment", default=DEFAULT_DEPLOYMENT)
-    pr.add_argument("--model-id", default=DEFAULT_MODEL_ID)
+    pr.add_argument("--deployment", default=DEFAULT_REVIEW_DEPLOYMENT)
+    pr.add_argument("--model-id", default=DEFAULT_REVIEW_MODEL_ID)
     pr.add_argument("--concurrency", type=int, default=2)
     pr.add_argument("--limit", type=int, default=1, help="0 = no limit")
     pr.add_argument("--force", action="store_true")
