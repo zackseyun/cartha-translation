@@ -92,6 +92,21 @@ class EarlyChristianTextsCatalogTests(unittest.TestCase):
         self.assertEqual(mary["name"], "Gospel of Mary")
         self.assertEqual(len(mary["chapters"]), 5)
 
+    def test_acts_of_paul_and_thecla_exports_real_verse_rows(self):
+        book = mobile_export.export_extra_canonical_book("APTH")
+        self.assertIsNotNone(book)
+        chapter_one = next(
+            chapter for chapter in book["chapters"] if chapter["chapter"] == 1
+        )
+
+        self.assertEqual(len(chapter_one["verses"]), 22)
+        self.assertEqual(chapter_one["verses"][0]["verse"], 1)
+        self.assertTrue(
+            chapter_one["verses"][0]["text"].startswith("When Paul went up to Iconium")
+        )
+        self.assertFalse(chapter_one["verses"][0]["text"].startswith("1:1 "))
+        self.assertFalse(chapter_one["verses"][1]["text"].startswith("1:2 "))
+
 
 if __name__ == "__main__":
     unittest.main()

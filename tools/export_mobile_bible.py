@@ -33,6 +33,7 @@ from __future__ import annotations
 import argparse
 import json
 import pathlib
+import re
 import sys
 from collections import defaultdict
 from typing import Any
@@ -205,6 +206,41 @@ def reader_navigation_fields(record: dict[str, Any]) -> dict[str, Any]:
 
 def _paragraphs(text: str) -> list[str]:
     return [p.strip() for p in str(text or "").splitlines() if p.strip()]
+
+
+def _split_explicit_chapter_verses(text: str, chapter: int) -> list[dict[str, Any]]:
+    """Split legacy chapter blobs whose paragraphs start with ``C:V``.
+
+    Some public-domain witnesses arrive as one chapter YAML even though their
+    wording already contains explicit verse boundaries (for example ``1:1``
+    and ``1:2``). Emitting that blob as synthetic verse 1 makes readers show a
+    duplicate prefix such as ``1 1:1`` and prevents verse-level selection.
+
+    Require at least two increasing markers for the current chapter so prose
+    containing an ordinary scripture reference is never split accidentally.
+    """
+    source = str(text or "")
+    matches = list(re.finditer(r"(?:^|\n\s*\n)(\d+):(\d+)\s+", source))
+    if len(matches) < 2:
+        return []
+    if any(int(match.group(1)) != chapter for match in matches):
+        return []
+
+    verse_numbers = [int(match.group(2)) for match in matches]
+    if verse_numbers[0] != 1 or any(
+        current <= previous
+        for previous, current in zip(verse_numbers, verse_numbers[1:])
+    ):
+        return []
+
+    verses: list[dict[str, Any]] = []
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(source)
+        body = source[match.end():end].strip()
+        if not body:
+            return []
+        verses.append({"verse": verse_numbers[index], "text": body})
+    return verses
 
 
 def _reader_sections(record: dict[str, Any]) -> list[dict[str, Any]]:
@@ -522,7 +558,9 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
             text = str(((record.get("translation") or {}).get("text", "")) or "").strip()
             if not text:
                 continue
-            reader_verses = _split_reader_sections(text, _reader_sections(record))
+            reader_verses = _split_explicit_chapter_verses(text, chapter_num)
+            if not reader_verses:
+                reader_verses = _split_reader_sections(text, _reader_sections(record))
             if not reader_verses:
                 # Emit as a single synthetic verse-1 block so legacy
                 # chapter-level books still render as continuous prose.
