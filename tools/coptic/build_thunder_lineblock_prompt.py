@@ -69,6 +69,8 @@ def build_thunder_lineblock_prompt(segment_id: str) -> PromptBundle:
     source_payload = {
         'edition': 'Nag Hammadi Codex VI.2 facsimile OCR (Vertex Gemini 3.1 Pro)',
         'language': 'Coptic',
+        'text': block['approx_ocr_excerpt'],
+        'text_scope': 'aligned_source_language_ocr_excerpt',
         'segment_id': segment_id,
         'chapter_title': block['chapter_title'],
         'block_index': block['block_index'],

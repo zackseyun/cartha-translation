@@ -263,6 +263,10 @@ def render_record(
             "note": "Heading and section break are modern navigation aids, not ancient verse divisions.",
         },
         "source": {
+            "edition": f"{config['witness_author']} public-domain English witness",
+            "language": "English",
+            "text": witness,
+            "text_scope": "public_domain_english_witness",
             "manuscript": config["manuscript"],
             "ancient_language": config["source_language"],
             "drafting_basis": "Public-domain English translation witness; direct source-language review pending",

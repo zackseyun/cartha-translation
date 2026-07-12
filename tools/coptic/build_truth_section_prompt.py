@@ -100,6 +100,12 @@ def build_truth_section_prompt(section_id: str) -> PromptBundle:
     source_payload = {
         'edition': 'Nag Hammadi Codex I.3 facsimile OCR (Vertex Gemini 3.1 Pro)',
         'language': 'Coptic',
+        'text': '\n\n'.join(
+            str(page.get('text') or '').strip()
+            for page in section.get('primary_page_texts', [])
+            if str(page.get('text') or '').strip()
+        ),
+        'text_scope': 'source_page_ocr_for_editorial_section',
         'section_id': section_id,
         'section_label': section['label'],
         'codex_pages': section.get('consult_codex_pages', []),

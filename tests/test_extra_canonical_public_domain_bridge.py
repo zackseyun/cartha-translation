@@ -20,6 +20,10 @@ class PublicDomainBridgeCorpusTests(unittest.TestCase):
                 self.assertEqual(record["status"], "provisional_source_bridge")
                 self.assertEqual(record["source_language_review"], "pending")
                 self.assertTrue(record["source"]["english_witness"].strip())
+                self.assertEqual(
+                    record["source"]["text"],
+                    record["source"]["english_witness"],
+                )
                 self.assertTrue(record["translation"]["text"].strip())
                 self.assertIn(
                     record["grounding_review"]["verdict"], {"accept", "revise"}

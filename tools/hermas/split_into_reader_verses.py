@@ -69,6 +69,8 @@ def derived_record(parent: dict[str, Any], chapter: int, verse: int, text: str) 
         "book": "Shepherd of Hermas",
         "source": {
             "edition": source.get("edition"),
+            "text": source.get("text"),
+            "text_scope": "parent_section_source",
             "language": source.get("language") or "Greek",
             "pages": source.get("pages") or [],
             "unit_id": source.get("unit_id"),

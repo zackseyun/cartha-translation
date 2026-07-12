@@ -416,6 +416,9 @@ def build_record(
         "book": "Gospel of Thomas",
         "source": {
             "edition": bundle.source_payload["edition"],
+            "text": bundle.source_payload["coptic_norm"]
+            or bundle.source_payload["coptic_orig"],
+            "text_scope": "normalized_source_language_text",
             "license": bundle.source_payload["license"],
             "urn": bundle.source_payload["urn"],
             "language": bundle.source_payload["language"],

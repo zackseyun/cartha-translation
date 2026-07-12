@@ -96,8 +96,19 @@ def split_chapter(path: pathlib.Path) -> int:
     if not translation_verses:
         raise ValueError(f"{path}: no verse markers found in translation text")
 
-    # Normalize chapter YAML text too so the flat file stops carrying serialized lists.
+    ordered_source_rows = [source_rows[key] for key in sorted(source_rows)]
+    ordered_translation_verses = sorted(translation_verses)
+    chapter_source_text = "\n".join(
+        f"{row['verse']}. {row.get('geez', '').strip()}"
+        for row in ordered_source_rows
+        if str(row.get('geez') or '').strip()
+    )
+
+    # Normalize chapter YAML text and publish the source rows through the common
+    # source.text provenance field used by reader surfaces.
     doc["translation"]["text"] = translation_text
+    doc["source"]["text"] = chapter_source_text
+    doc["source"]["text_scope"] = "chapter_source_rows"
     path.write_text(
         yaml.safe_dump(doc, allow_unicode=True, sort_keys=False),
         encoding="utf-8",
@@ -107,8 +118,13 @@ def split_chapter(path: pathlib.Path) -> int:
     out_dir.mkdir(parents=True, exist_ok=True)
     footnotes = (doc.get("translation") or {}).get("footnotes", []) or []
     written = 0
-    for verse_num in sorted(translation_verses):
+    for verse_num in ordered_translation_verses:
         source_row = source_rows.get(verse_num, {})
+        if (
+            not str(source_row.get("geez") or "").strip()
+            and len(ordered_source_rows) == len(ordered_translation_verses)
+        ):
+            source_row = ordered_source_rows[ordered_translation_verses.index(verse_num)]
         verse_text = translation_verses[verse_num]
         verse_footnotes = [
             fn for fn in footnotes
@@ -123,7 +139,13 @@ def split_chapter(path: pathlib.Path) -> int:
             "source": {
                 "edition": doc["source"].get("edition"),
                 "language": doc["source"].get("language"),
-                "text": source_row.get("geez", ""),
+                "text": source_row.get("geez") or chapter_source_text,
+                "text_scope": (
+                    "source_row"
+                    if source_row.get("geez")
+                    else "parent_chapter_source_rows"
+                ),
+                "source_row_verse": source_row.get("verse"),
                 "pages": doc["source"].get("pages", []),
                 "validation_modes": doc["source"].get("validation_modes", []),
             },
