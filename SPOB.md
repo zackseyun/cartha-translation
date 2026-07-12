@@ -44,6 +44,9 @@ The operational rules for understanding-first rendering, interpretive expansion,
 and the use of named teachers or traditions are defined in
 [SPOB_DOCTRINE.md](SPOB_DOCTRINE.md).
 
+The reader-facing summary of the edition's translation philosophy and production
+method is in [SPOB_PHILOSOPHY.md](SPOB_PHILOSOPHY.md).
+
 The short version is: SPOB may express a passage's contextual meaning more
 directly than POB, but every interpretive addition must be warranted and recorded.
 No individual teacher or denomination controls the main text.
