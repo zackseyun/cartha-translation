@@ -57,6 +57,9 @@ python3 tools/multilingual_pipeline.py wave --language pt --limit-records 100 --
 
 # Validate every generated pilot record
 python3 tools/multilingual_pipeline.py validate --language all
+
+# Localize reader UI, selected book metadata, and critical SPOB passages
+python3 tools/multilingual_localization_pipeline.py --language all --concurrency 8
 ```
 
 Scaling beyond the pilot requires a recorded native-speaker/register decision
@@ -78,3 +81,22 @@ deliberately.
 - The source tree currently contains 43,402 records across the full Cartha
   library. New-language waves are designed to target this entire source tree,
   not only the 66-book Protestant canon.
+
+## Reader-localization and critical-text checkpoint — 2026-07-12
+
+All 32 non-English target languages now have an Azure-generated, independently
+reviewed calibration bundle in `localization/<language>/calibration.yaml`.
+Each bundle contains:
+
+- localized titles, author/audience/date metadata, and grounded short summaries
+  for Genesis, John, and the Gospel of Thomas;
+- localized picker labels for language selection and rollout status; and
+- understanding-first SPOB renderings of Genesis 1:1, Ecclesiastes 1:2,
+  John 1:1, Romans 3:25, and 1 Peter 1:13, with translator notes preserving
+  disputed possibilities.
+
+These bundles are the audited calibration layer for UI and critical-text
+localization. They do **not** claim that the 30 new language corpora are already
+complete. English, Spanish, and Korean remain the only reader-selectable
+corpora until each additional language passes native-speaker calibration and a
+full resumable 43,402-record source-tree wave.
