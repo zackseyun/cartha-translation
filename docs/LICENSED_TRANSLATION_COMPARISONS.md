@@ -13,10 +13,28 @@ committed, scraped from public websites, or placed in the SPOB drafting prompt.
 - Rows shorter than eight POB tokens, or rows whose verse segmentation does not
   align with at least three reference texts, are excluded from public rankings.
 
-When all three licensed targets are present, the targeted review priority is
-55% POB-vs-NIV/NKJV divergence, 35% SPOB-vs-NLT divergence, and 10% documented
-textual/interpretive risk. Until then, any public-domain ranking must be labeled
-provisional rather than presented as the target comparison report.
+POB and SPOB are ranked separately. POB uses mean divergence from NIV and NKJV;
+SPOB uses divergence from NLT. Documented textual or interpretive risk stays in
+the internal editor queue and never boosts the public headline score. Until the
+licensed inputs are configured, the POB list uses a clearly labeled provisional
+public-domain score: `novelty × sqrt(reference consensus)`. SPOB has no public
+target ranking until NLT is present.
+
+## Versification safety
+
+POB follows source-oriented Hebrew/MT numbering in the Old Testament and
+NA/SBLG-style numbering at the small set of New Testament differences, while
+the comparison APIs use standard English numbering.
+`tools/sync_stepbible_versification.py` derives a shared mapping from
+STEPBible's CC BY 4.0 TVTMS dataset. Both the public reference panel and the
+API.Bible fetcher pass every source reference through this map before
+comparison. Psalm titles receive an additional normalization because POB
+stores them as verse 0.
+
+The divergence build also runs a unanimous-neighbor verifier. A row is
+quarantined if at least three reference panels all match the same neighboring
+verse materially better, and a normal build fails while any such offset
+survives. `--allow-alignment-quarantine` is only for diagnosis.
 
 ## Safe operating boundary
 
@@ -28,6 +46,10 @@ provisional rather than presented as the target comparison report.
 4. Commit only the resulting numeric scores and non-sensitive source metadata.
 5. Keep licensed translations out of the public-reference consensus and out of
    `review_priority`; agreement is not proof that a rendering is correct.
+6. If licensed wording is displayed in the product rather than analyzed
+   privately, implement the provider's required copyright attribution, cache
+   limits, and FUMS reporting. The static analysis bundle intentionally cannot
+   satisfy those runtime display requirements by itself.
 
 Official routes to evaluate:
 
@@ -114,3 +136,10 @@ The report exposes per-translation `pob_similarity`, `spob_similarity`, and
 `spob_minus_pob`, but never the licensed verse text. NLT additionally appears in
 the convenience fields `pob_nlt_similarity`, `spob_nlt_similarity`, and
 `spob_nlt_similarity_gain`.
+
+Before fetching, regenerate or verify the current mapping:
+
+```bash
+python3 tools/sync_stepbible_versification.py
+python3 tests/test_translation_divergence.py
+```

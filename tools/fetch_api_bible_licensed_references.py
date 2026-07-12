@@ -18,9 +18,15 @@ import urllib.parse
 import urllib.request
 
 import build_translation_divergence as divergence
+import build_reference_panel as refs
 
 
 API_ROOT = "https://rest.api.bible/v1"
+
+
+def api_verse_id(book: str, chapter: int, verse: int) -> str:
+    mapped_chapter, mapped_verse = refs.panel_reference(book, "bsb", chapter, verse)
+    return f"{refs.BOOK_USFM_CODES[book]}.{mapped_chapter}.{mapped_verse}"
 
 
 def load_config(path: pathlib.Path) -> dict:
@@ -57,14 +63,18 @@ def fetch_verse(api_key: str, bible_id: str, verse_id: str) -> str:
     return content
 
 
-def verse_ids(books: list[str]) -> list[str]:
-    ids: list[str] = []
+def verse_ids(books: list[str]) -> list[tuple[str, str]]:
+    ids: list[tuple[str, str]] = []
     for book in books:
         for path in divergence.verse_paths(book):
             import yaml
             record = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
             if record.get("id"):
-                ids.append(str(record["id"]).upper())
+                pob_id = str(record["id"]).upper()
+                chapter, verse = int(path.parent.name), int(path.stem)
+                if verse == 0:
+                    continue
+                ids.append((pob_id, api_verse_id(book, chapter, verse)))
     return ids
 
 
@@ -100,8 +110,8 @@ def main() -> int:
     for raw_name, entry in config["translations"].items():
         name = raw_name.lower()
         verses: dict[str, str] = {}
-        for index, verse_id in enumerate(ids, start=1):
-            verses[verse_id] = fetch_verse(api_key, str(entry["bible_id"]), verse_id)
+        for index, (pob_id, api_verse_id) in enumerate(ids, start=1):
+            verses[pob_id] = fetch_verse(api_key, str(entry["bible_id"]), api_verse_id)
             if index % 100 == 0:
                 print(f"{name}: fetched {index}/{len(ids)} verses")
         output["translations"][name] = {

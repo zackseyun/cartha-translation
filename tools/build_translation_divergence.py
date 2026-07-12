@@ -41,7 +41,7 @@ ARCHAIC_NORMALIZATION = {
 
 
 def normalize_tokens(text: str) -> list[str]:
-    text = re.sub(r"\[[a-z0-9]+\]", " ", str(text).lower())
+    text = re.sub(r"\[[^\]]+\]", " ", str(text).lower())
     tokens = re.findall(r"[a-z0-9]+(?:'[a-z]+)?", text)
     return [ARCHAIC_NORMALIZATION.get(token, token) for token in tokens]
 
@@ -59,7 +59,7 @@ def wording_similarity(a: str, b: str) -> float:
     # Pathrusites/Pathrusim from outranking genuine rendering disagreements.
     return max(
         0.0,
-        min(1.0, 0.30 * sequence + 0.20 * jaccard + 0.35 * character_sequence + 0.15 * length_balance),
+        min(1.0, 0.35 * sequence + 0.20 * jaccard + 0.40 * character_sequence + 0.05 * length_balance),
     )
 
 
@@ -169,7 +169,6 @@ def ranking_alignment(text: str, renderings: dict[str, str]) -> dict[str, Any]:
 
 def licensed_target_metrics(
     comparisons: dict[str, dict[str, float | None]],
-    documented_risk_score: float,
 ) -> dict[str, float | None]:
     """Score POB against NIV/NKJV and SPOB against NLT, never each other."""
     pob_target_values = [
@@ -182,20 +181,59 @@ def licensed_target_metrics(
     pob_target_similarity = mean(pob_target_values) if len(pob_target_values) == 2 else None
     pob_target_divergence = 100 * (1 - pob_target_similarity) if pob_target_similarity is not None else None
     spob_target_divergence = 100 * (1 - float(spob_nlt_similarity)) if spob_nlt_similarity is not None else None
-    targeted_priority = None
-    if pob_target_divergence is not None and spob_target_divergence is not None:
-        targeted_priority = (
-            0.55 * pob_target_divergence
-            + 0.35 * spob_target_divergence
-            + 0.10 * documented_risk_score
-        )
     return {
         "pob_niv_nkjv_similarity": round(pob_target_similarity, 4) if pob_target_similarity is not None else None,
         "pob_niv_nkjv_divergence": round(pob_target_divergence, 2) if pob_target_divergence is not None else None,
         "spob_nlt_similarity": round(float(spob_nlt_similarity), 4) if spob_nlt_similarity is not None else None,
         "spob_nlt_divergence": round(spob_target_divergence, 2) if spob_target_divergence is not None else None,
-        "targeted_review_priority": round(targeted_priority, 2) if targeted_priority is not None else None,
     }
+
+def public_headline_metrics(text: str, renderings: dict[str, str]) -> dict[str, Any]:
+    similarities = similarity_panel(text, renderings)
+    if not similarities: return {}
+    nearest_name, nearest_similarity = max(similarities.items(), key=lambda item: item[1])
+    consensus = pairwise_consensus(renderings)
+    novelty = 1 - nearest_similarity
+    return {"nearest_reference": nearest_name, "nearest_reference_similarity": round(nearest_similarity, 4), "novelty": round(novelty, 4), "headline_divergence": round(100 * novelty * math.sqrt(max(0.0, consensus)), 2)}
+
+def surviving_neighbor_offset(text: str, panels: dict[str, dict], book: str, chapter: int, verse: int, radius: int = 12) -> dict[str, Any] | None:
+    code_map, offsets, gains = refs.PANEL_CODES.get(book, {}), [], []
+    for panel in CONSENSUS_PANELS:
+        code = code_map.get(panel)
+        if not code or panel not in panels: continue
+        mapped_chapter, mapped_verse = refs.panel_reference(book, panel, chapter, verse)
+        aligned = panels[panel].get((code, mapped_chapter, mapped_verse))
+        if not aligned: continue
+        aligned_score = wording_similarity(text, aligned)
+        candidates = [(wording_similarity(text, panels[panel][(code, mapped_chapter, mapped_verse + off)]), off) for off in range(-radius, radius + 1) if off and mapped_verse + off >= 1 and (code, mapped_chapter, mapped_verse + off) in panels[panel]]
+        if not candidates: continue
+        best_score, best_offset = max(candidates)
+        offsets.append(best_offset); gains.append(best_score - aligned_score)
+    if len(offsets) < 3 or len(set(offsets)) != 1 or mean(gains) < .20 or min(gains) < .10: return None
+    return {"offset": offsets[0], "mean_gain": round(mean(gains), 4), "panel_count": len(offsets)}
+
+def surviving_segmentation_merge(text: str, panels: dict[str, dict], book: str, chapter: int, verse: int) -> dict[str, Any] | None:
+    """Detect a POB row that contains its aligned English verse plus a neighbor."""
+    code_map, directions, gains = refs.PANEL_CODES.get(book, {}), [], []
+    for panel in CONSENSUS_PANELS:
+        code = code_map.get(panel)
+        if not code or panel not in panels: continue
+        mapped_chapter, mapped_verse = refs.panel_reference(book, panel, chapter, verse)
+        aligned = panels[panel].get((code, mapped_chapter, mapped_verse))
+        if not aligned: continue
+        base = wording_similarity(text, aligned)
+        candidates = []
+        previous = panels[panel].get((code, mapped_chapter, mapped_verse - 1))
+        following = panels[panel].get((code, mapped_chapter, mapped_verse + 1))
+        if previous: candidates.append((wording_similarity(text, f"{previous} {aligned}"), "previous+aligned"))
+        if following: candidates.append((wording_similarity(text, f"{aligned} {following}"), "aligned+next"))
+        if not candidates: continue
+        best, direction = max(candidates)
+        directions.append(direction); gains.append(best - base)
+    # Even partial spillover can materially distort a lexical score; this
+    # verifier only runs when POB is already >35% longer than the panel.
+    if len(directions) < 3 or len(set(directions)) != 1 or mean(gains) < .035 or min(gains) < .01: return None
+    return {"direction": directions[0], "mean_gain": round(mean(gains), 4), "panel_count": len(directions)}
 
 
 def documented_risk(record: dict[str, Any]) -> tuple[float, list[str]]:
@@ -287,11 +325,28 @@ def score_verse(
     )
     risk_score, risk_signals = documented_risk(record)
     alignment = ranking_alignment(text, consensus_refs)
+    if verse == 0:
+        alignment["ranking_eligible"] = False; alignment["confidence"] = "low"; alignment["reasons"].append("superscription_not_comparable")
+    if book == "psalms" and verse == 1 and refs._psalm_title_verse_count(chapter):
+        alignment["ranking_eligible"] = False; alignment["confidence"] = "low"; alignment["reasons"].append("reference_title_merged")
     target_metrics = {
         name: value
-        for name, value in licensed_target_metrics(licensed, risk_score).items()
+        for name, value in licensed_target_metrics(licensed).items()
         if value is not None
     }
+    pob_headline = public_headline_metrics(text, consensus_refs)
+    spob_headline = public_headline_metrics(spob_text, consensus_refs) if spob_text else {}
+    neighbor_offset = None
+    if verse != 0 and max(pob_panel.values(), default=0.0) < .55:
+        neighbor_offset = surviving_neighbor_offset(text, panels, book, chapter, verse)
+    if neighbor_offset:
+        alignment["ranking_eligible"] = False; alignment["confidence"] = "low"; alignment["reasons"].append("unanimous_neighbor_offset")
+    segmentation_merge = None
+    reference_token_counts = [len(normalize_tokens(value)) for value in consensus_refs.values()]
+    if verse != 0 and reference_token_counts and len(normalize_tokens(text)) > 1.35 * mean(reference_token_counts):
+        segmentation_merge = surviving_segmentation_merge(text, panels, book, chapter, verse)
+    if segmentation_merge:
+        alignment["ranking_eligible"] = False; alignment["confidence"] = "low"; alignment["reasons"].append("unanimous_segmentation_merge")
     reference_divergence = 100 * (1 - consensus)
     pob_distinctiveness = 100 * (1 - pob_mean)
     spob_distinctiveness = None
@@ -315,9 +370,17 @@ def score_verse(
             "reference_wording_divergence": round(reference_divergence, 2),
             "reference_wording_divergence_band": score_band(reference_divergence),
             "pob_reference_similarity": round(pob_mean, 4),
+            "pob_nearest_reference": pob_headline.get("nearest_reference"),
+            "pob_nearest_reference_similarity": pob_headline.get("nearest_reference_similarity"),
+            "pob_novelty": pob_headline.get("novelty"),
+            "pob_headline_divergence": pob_headline.get("headline_divergence"),
             "pob_distinctiveness": round(pob_distinctiveness, 2),
             "pob_distinctiveness_band": score_band(pob_distinctiveness),
             "spob_reference_similarity": round(mean(spob_panel.values()), 4) if spob_panel else None,
+            "spob_nearest_reference": spob_headline.get("nearest_reference"),
+            "spob_nearest_reference_similarity": spob_headline.get("nearest_reference_similarity"),
+            "spob_novelty": spob_headline.get("novelty"),
+            "spob_public_provisional_divergence": spob_headline.get("headline_divergence"),
             "spob_distinctiveness": round(spob_distinctiveness, 2) if spob_distinctiveness is not None else None,
             "spob_distinctiveness_band": score_band(spob_distinctiveness) if spob_distinctiveness is not None else None,
             "pob_spob_similarity": round(pob_spob, 4) if pob_spob is not None else None,
@@ -326,6 +389,10 @@ def score_verse(
             "spob_nlt_similarity_gain": (licensed.get("nlt") or {}).get("spob_minus_pob"),
             **target_metrics,
             "ranking_eligible": alignment["ranking_eligible"],
+            "alignment_neighbor_offset": neighbor_offset.get("offset") if neighbor_offset else None,
+            "alignment_neighbor_gain": neighbor_offset.get("mean_gain") if neighbor_offset else None,
+            "alignment_segmentation_direction": segmentation_merge.get("direction") if segmentation_merge else None,
+            "alignment_segmentation_gain": segmentation_merge.get("mean_gain") if segmentation_merge else None,
             "documented_risk": round(risk_score, 2),
             "review_priority": round(priority, 2),
             "review_priority_band": score_band(priority),
@@ -373,9 +440,10 @@ def build_book(
             "targeted_ranking": {
                 "pob_targets": ["niv", "nkjv"],
                 "spob_targets": ["nlt"],
-                "weights": {"pob": 0.55, "spob": 0.35, "documented_risk": 0.10},
+                "ranked_separately": True,
                 "requires_private_licensed_inputs": True,
             },
+            "public_headline": "POB novelty × square-root(reference consensus); documented risk is excluded",
         },
         "sources": {name: refs.PANEL_CITATIONS[name] for name in refs.PANEL_FILES},
         "licensed_reference_sources": licensed_reference_metadata(licensed_bundle),
@@ -392,40 +460,33 @@ def compact_summary(books: list[dict[str, Any]], top: int) -> dict[str, Any]:
         for row in book["verses"]
     ]
     eligible = [row for row in rows if row["scores"].get("ranking_eligible")]
-    licensed_ranked = [
-        row for row in eligible
-        if row["scores"].get("targeted_review_priority") is not None
-    ]
-    ranking_mode = "niv_nkjv_nlt_targets" if licensed_ranked else "public_domain_provisional"
-    ranked = sorted(
-        licensed_ranked or eligible,
+    licensed_pob = [row for row in eligible if row["scores"].get("pob_niv_nkjv_divergence") is not None]
+    licensed_spob = [row for row in eligible if row["scores"].get("spob_nlt_divergence") is not None]
+    pob_ranked = sorted(
+        licensed_pob or eligible,
         key=lambda row: row["scores"][
-            "targeted_review_priority" if licensed_ranked else "review_priority"
+            "pob_niv_nkjv_divergence" if licensed_pob else "pob_headline_divergence"
         ],
         reverse=True,
     )
+    spob_ranked = sorted(licensed_spob, key=lambda row: row["scores"]["spob_nlt_divergence"], reverse=True)
+    def compact_row(row):
+        return {"book":row["book"],"id":row["id"],"reference":row["reference"],"scores":row["scores"],"signals":row["signals"],"pob_text":row["pob"]["text"],"spob_text":(row.get("spob") or {}).get("text"),"public_domain_references":row["public_domain_references"],"licensed_comparisons":row["licensed_comparisons"]}
     return {
         "schema_version": 1,
         "generated_at": dt.datetime.now(dt.timezone.utc).replace(microsecond=0).isoformat().replace("+00:00", "Z"),
         "description": "Highest-priority wording-divergence review candidates. Scores identify where to investigate; they do not identify the correct translation.",
-        "ranking_mode": ranking_mode,
+        "ranking_mode": {"pob":"niv_nkjv" if licensed_pob else "public_domain_provisional","spob":"nlt" if licensed_spob else "awaiting_nlt"},
         "ranking_targets": {"pob": ["NIV", "NKJV"], "spob": ["NLT"]},
+        "scope": {"scored":len(rows),"ranking_eligible":len(eligible),"quarantined":len(rows)-len(eligible),"surviving_neighbor_offsets":sum("unanimous_neighbor_offset" in (row.get("signals") or []) for row in rows)},
         "books": [
             {"book": book["book"], "verse_count": book["verse_count"], "spob_verse_count": book["spob_verse_count"]}
             for book in books
         ],
         "licensed_reference_sources": books[0].get("licensed_reference_sources", {}) if books else {},
-        "top_review_candidates": [
-            {
-                "book": row["book"], "id": row["id"], "reference": row["reference"],
-                "scores": row["scores"], "signals": row["signals"],
-                "pob_text": row["pob"]["text"],
-                "spob_text": (row.get("spob") or {}).get("text"),
-                "public_domain_references": row["public_domain_references"],
-                "licensed_comparisons": row["licensed_comparisons"],
-            }
-            for row in ranked[:top]
-        ],
+        "top_review_candidates": [compact_row(row) for row in pob_ranked[:top]],
+        "pob_top_candidates": [compact_row(row) for row in pob_ranked[:top]],
+        "spob_top_candidates": [compact_row(row) for row in spob_ranked[:top]],
     }
 
 
@@ -434,6 +495,7 @@ def main() -> int:
     parser.add_argument("--books", nargs="+", default=["genesis", "luke"])
     parser.add_argument("--fetch", action="store_true")
     parser.add_argument("--top", type=int, default=100)
+    parser.add_argument("--allow-alignment-quarantine", action="store_true")
     parser.add_argument("--output-root", type=pathlib.Path, default=OUTPUT_ROOT)
     parser.add_argument("--summary", type=pathlib.Path, default=SUMMARY_PATH)
     parser.add_argument(
@@ -468,6 +530,9 @@ def main() -> int:
     summary = compact_summary(books, args.top)
     args.summary.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"summary -> {args.summary}")
+    survivors = summary["scope"]["surviving_neighbor_offsets"]
+    if survivors and not args.allow_alignment_quarantine:
+        raise SystemExit(f"Alignment verifier found {survivors} unanimous neighboring-verse offsets; fix the versification map or rerun explicitly with --allow-alignment-quarantine")
     return 0
 
 

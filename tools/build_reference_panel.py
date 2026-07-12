@@ -19,15 +19,20 @@ books to be expressed as { "verses": { "<chap>:<verse>": {...} } }.
 from __future__ import annotations
 
 import argparse
+import functools
 import json
 import pathlib
 import re
 import sys
 from typing import Iterable
 
+import yaml
+from psalm_numbering import is_superscription
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 REFS_DIR = REPO_ROOT / "sources" / "references"
 CORPUS_ROOT = pathlib.Path("/tmp/cob_refs")
+VERSIFICATION_PATH = REPO_ROOT / "sources" / "versification" / "hebrew_to_english.json"
 
 # Map COB book slugs to USFM-style codes used in eBible VPL files.
 BOOK_USFM_CODES: dict[str, str] = {
@@ -68,6 +73,53 @@ PANEL_CODES.update({
     },
 })
 
+TVTMS_CODES = {slug: code.title() for slug, code in BOOK_USFM_CODES.items()}
+TVTMS_CODES.update({"judges":"Jdg","song_of_songs":"Sng","ezekiel":"Ezk","joel":"Jol","nahum":"Nam","mark":"Mrk","john":"Jhn","philippians":"Php","philemon":"Phm","james":"Jas","1_john":"1Jn","2_john":"2Jn","3_john":"3Jn","psalms":"Psa"})
+
+def _load_versification() -> dict[str, str]:
+    if not VERSIFICATION_PATH.exists(): return {}
+    return dict(json.loads(VERSIFICATION_PATH.read_text(encoding="utf-8")).get("mappings") or {})
+
+HEBREW_TO_ENGLISH = _load_versification()
+
+def _psalm_title_verse_count(chapter: int) -> int:
+    """Number of Hebrew source verses folded into the English Psalm title."""
+    count = 0
+    while HEBREW_TO_ENGLISH.get(f"Psa.{chapter}:{count + 1}") == f"Psa.{chapter}:Title":
+        count += 1
+    return count
+
+@functools.lru_cache(maxsize=None)
+def _psalm_source_offset(chapter: int) -> int:
+    """Recover raw-MT numbering after POB's verse-0 normalization."""
+    title_count = _psalm_title_verse_count(chapter)
+    retained_title_rows = 0
+    root = REPO_ROOT / "translation" / "ot" / "psalms" / f"{chapter:03d}"
+    for verse in range(1, title_count + 1):
+        path = root / f"{verse:03d}.yaml"
+        if not path.exists(): break
+        record = yaml.safe_load(path.read_text(encoding="utf-8")) or {}
+        text = str(((record.get("translation") or {}).get("text") or "")).strip()
+        title_continuation = bool(
+            re.match(r"(?i)^(when|after)\b", text)
+            and not re.search(r"(?i)\b(answer|hear|save|deliver|god|yahweh|lord|prayer|refuge|praise|sing)\b", text)
+        )
+        if text and (is_superscription(text) or title_continuation):
+            retained_title_rows += 1
+        else: break
+    return max(0, title_count - retained_title_rows)
+
+def standard_reference(book_slug: str, cob_chapter: int, cob_verse: int) -> tuple[int, int | str]:
+    code = TVTMS_CODES.get(book_slug)
+    if not code: return cob_chapter, cob_verse
+    source_verse = cob_verse + (_psalm_source_offset(cob_chapter) if book_slug == "psalms" else 0)
+    source = f"{code}.{cob_chapter}:{source_verse}"
+    target = HEBREW_TO_ENGLISH.get(source, source)
+    tail = target.split(".", 1)[-1]
+    chapter_text, verse_text = tail.split(":", 1)
+    verse_text = verse_text.split("!", 1)[0]
+    return int(chapter_text), (verse_text if verse_text == "Title" else int(verse_text))
+
 # COB chapter/verse → panel chapter/verse override. None = use COB ch/v as-is.
 # `psalm_151` is one chapter in Brenton numbered as 151 but in COB is chapter 1.
 def panel_chapter(book_slug: str, panel: str, cob_chapter: int) -> int:
@@ -78,13 +130,10 @@ def panel_chapter(book_slug: str, panel: str, cob_chapter: int) -> int:
 
 def panel_reference(book_slug: str, panel: str, cob_chapter: int, cob_verse: int) -> tuple[int, int]:
     """Map POB's source-oriented versification to common English panels."""
-    if book_slug == "genesis" and cob_chapter == 32:
-        # POB follows the Hebrew chapter division: English Genesis 31:55 is
-        # Genesis 32:1, so the remainder of English chapter 32 is offset by one.
-        return (31, 55) if cob_verse == 1 else (32, cob_verse - 1)
+    mapped_chapter, mapped_verse = standard_reference(book_slug, cob_chapter, cob_verse)
+    if mapped_verse == "Title": return mapped_chapter, 1
     chapter = panel_chapter(book_slug, panel, cob_chapter)
-    verse = 1 if cob_verse == 0 else cob_verse
-    return chapter, verse
+    return mapped_chapter if mapped_chapter != cob_chapter else chapter, int(mapped_verse)
 
 
 def fetch_corpora() -> None:
@@ -154,10 +203,7 @@ def panel_lookup(panels: dict, book_slug: str, cob_chapter: int, cob_verse: int)
         # disclaimer.
         text = panels[panel_name].get((usfm, ch, v_lookup))
         if text:
-            if cob_verse == 0:
-                out[panel_name] = f"[v1, includes superscription] {text}"
-            else:
-                out[panel_name] = text
+            out[panel_name] = text
     return out
 
 
