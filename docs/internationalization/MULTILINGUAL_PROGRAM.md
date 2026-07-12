@@ -66,7 +66,8 @@ deliberately.
 
 ## First calibration checkpoint — 2026-07-12
 
-- All 30 new language projects produced and independently reviewed Genesis 1:1.
+- All 30 new language projects produced and independently reviewed the complete
+  three-record calibration set: Genesis 1:1, John 1:1, and Ecclesiastes 1:2.
 - Portuguese also completed a reviewed whole-library wave probe on 1 Esdras 1:1.
 - Every resulting YAML record passed structural and footnote-anchor validation.
 - Spanish completed 304 GPT-5.6 Terra reviews in this checkpoint after repair of
