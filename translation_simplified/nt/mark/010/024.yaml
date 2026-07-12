@@ -31,41 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The disciples were amazed at his words. But Jesus said to them again, “Children, how hard it is to enter the kingdom of God!”
+  text: The disciples were amazed at his words. But Jesus said to them again, “Children, how hard it is to enter the kingdom of God!”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts read, “Children, how hard it is for those who trust in riches to enter the kingdom of God.”
+    reason: textual_variant
 simplification_decisions:
-- pob_phrase: But the disciples were astonished at his words. Jesus answered again and said to them[a], “Children, how difficult it is to enter the kingdom of God!”
-  simplified_phrase: The disciples were amazed at his words. But Jesus said to them again, “Children, how hard it is to enter the kingdom of God!”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: kingdom of God
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: were astonished at his words
+  simplified_phrase: were amazed at his words
+  preserved_meaning: The disciples continue to react with strong surprise to what Jesus said.
+  reasoning_layer_used: POB lexical decision for ἐθαμβοῦντο
+  rationale: “Amazed” is a source-supported alternative that is immediately familiar to common readers.
+- pob_phrase: Jesus answered again and said to them
+  simplified_phrase: Jesus said to them again
+  preserved_meaning: Jesus speaks to the disciples once more in response to their reaction.
+  reasoning_layer_used: POB lexical decisions for πάλιν and ἀποκριθεὶς λέγει
+  rationale: The simpler wording removes a repetitive narrative expression while preserving renewed responsive speech.
+- pob_phrase: how difficult it is
+  simplified_phrase: how hard it is
+  preserved_meaning: Jesus strongly emphasizes the difficulty of entering God’s kingdom.
+  reasoning_layer_used: POB lexical decision for πῶς δύσκολόν ἐστιν
+  rationale: “How hard it is” keeps the exclamatory force in more common English.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: The longer manuscript reading narrows the statement to those who trust in riches.
+    mitigation: The shorter SBLGNT reading remains in the main text, and the significant variant is retained in footnote [a].
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/024.yaml
   source_text_sha256: 8303eb2042d14b58c8d955e5b8075b394832aef74ba7573555ca5d56443f2850
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 2112afa9767d2135db24e96bf1ea8a6a48ede7f48cab6a22bba023b54ba6fdb9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 418dcea5b5a7a33b49a5d38ec79e5d2f9408ad8c98af29b480b4728219855614
+  timestamp: '2026-07-12T07:23:24Z'
+  output_hash: 0f5891c6c026369279c2d72252ef5bd5e52134a90e254f77728ea900eecd1f07
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3404
+    completion_tokens: 480
+    total_tokens: 3884
+    reasoning_tokens: 63
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: kingdom of God
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:24Z'
+  previous_text: The disciples were amazed at his words. But Jesus said to them again, “Children, how hard it is to enter the kingdom of God!”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8316c2bca73bbf17ae37d7aefad99f8d43967ab76917c2bdd0339695cfdd9f9f
+  review_summary: 'The main text is faithful and somewhat more immediately readable: “amazed” and “hard” are source-supported alternatives, and simplifying the idiomatic “answered again and said” to “said to them again” does not materially alter the narrative. However, the draft must retain a reader-facing textual-variant footnote. Its omission removes a documented alternative reading that significantly narrows the scope of Jesus’ statement.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

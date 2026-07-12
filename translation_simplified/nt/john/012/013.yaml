@@ -37,39 +37,68 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 12:13 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the branches of the palm trees''].'
 translation:
   language: en
-  text: They took palm branches and went out to meet him. They shouted, "Hosanna! Blessed is the one who comes in the name of the Lord, even the King of Israel!"
+  text: They took palm branches and went out to meet him. They kept shouting, “Hosanna![a] Blessed is the one who comes in the name of the Lord, even the King of Israel![b]”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Hosanna is a Hebrew-derived shout meaning “save now” or “please save”; by this time, it was also used as a shout of praise.
+    reason: lexical_alternative
+  - marker: b
+    text: Or “and the King of Israel.”
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-retained_terms:
-- term: Hosanna
-  reason: Keeps the Hebrew-derived acclamation from the POB base text.
+- pob_phrase: the palm branches
+  simplified_phrase: palm branches
+  preserved_meaning: The crowd carried branches from palm trees.
+  reasoning_layer_used: POB lexical decision for βαΐα τῶν φοινίκων
+  rationale: The shorter phrase is natural English and retains both the object and the kind of tree.
+- pob_phrase: and they were crying out
+  simplified_phrase: They kept shouting
+  preserved_meaning: The crowd’s shouting continued or was repeated.
+  reasoning_layer_used: POB lexical decision for ἐκραύγαζον
+  rationale: “Kept shouting” clearly preserves the imperfect verb’s ongoing or repeated force.
+- pob_phrase: one long coordinated sentence
+  simplified_phrase: two sentences
+  preserved_meaning: The crowd went to meet Jesus and repeatedly voiced the same acclamation.
+  reasoning_layer_used: SPOB readability rules and POB syntax
+  rationale: The sentence break makes the action easier to follow without separating any source ideas.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Even” may be understood differently from the possible coordinating sense of καί.
+    mitigation: Footnote [b] preserves the documented alternative “and the King of Israel.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/013.yaml
   source_text_sha256: f87d42aa71e714ebc8f653dd94054e13f35027360f3ec754c3fc3a9b4053ea8d
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: 170bbfdddb96974ababd342bc66d5ab3139f8afa5171a996e541f78634253eea
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 53c20ac16be96667d5ce7b986c5ecac8421c15aaac27303dba2c7c92e3eed967
+  timestamp: '2026-07-12T07:19:47Z'
+  output_hash: 72350606f501dfacb42d1ead17e1bcd49b1d092efeca9f72aefabc33f01a132a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4031
+    completion_tokens: 613
+    total_tokens: 4644
+    reasoning_tokens: 191
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Hosanna
+  reason: Keeps the Hebrew-derived acclamation from the POB base text.
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:47Z'
+  previous_text: They took palm branches and went out to meet him. They shouted, "Hosanna! Blessed is the one who comes in the name of the Lord, even the King of Israel!"
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 769f4fdc3967b72998cd4235cf91c7c069a2f6a401ca09eac49a3c69393a96c1
+  review_summary: The draft rightly retains the crowd’s royal-messianic acclamation without doctrinal expansion, and “palm branches” and the sentence break are clear. Revise to preserve the repeated/ongoing force of the crowd’s cry and to retain a brief explanation of “Hosanna,” whose meaning is otherwise opaque to many modern readers.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

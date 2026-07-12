@@ -34,36 +34,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 15:15 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''as reminding you again''].'
 translation:
   language: en
-  text: Still, I have written to you rather boldly about some things, to remind you again, because of the grace God gave me,
+  text: Still, I have written to you rather boldly about some things,[a] to remind you again, because of the grace God gave me.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “more boldly … in part.” The phrase may refer to Paul's greater boldness or to the particular matters he addressed.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: But
+  simplified_phrase: Still
+  preserved_meaning: Paul makes a mild contrast with his preceding commendation.
+  reasoning_layer_used: POB lexical decision for δέ
+  rationale: “Still” makes the rhetorical turn natural in modern English.
+- pob_phrase: rather boldly in part
+  simplified_phrase: rather boldly about some things[a]
+  preserved_meaning: Paul wrote boldly concerning at least part of what he addressed, while the footnote preserves the phrase's ambiguity.
+  reasoning_layer_used: POB lexical decision and footnote for ἀπὸ μέρους
+  rationale: The main text is clearer, and the note retains the alternate scope.
+- pob_phrase: as reminding you again
+  simplified_phrase: to remind you again
+  preserved_meaning: Paul's bold writing serves to remind his readers again.
+  reasoning_layer_used: POB lexical decision for ὡς ἐπαναμιμνῄσκων ὑμᾶς
+  rationale: An ordinary purpose clause replaces the awkward participial construction.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “About some things” could appear to settle the scope of ἀπὸ μέρους.
+    mitigation: Footnote [a] preserves the documented alternative interpretation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/015.yaml
   source_text_sha256: 31a7b664b782f7cfb4817c4ff6b46f939d2928c824c515f9b1e6ef67fb9834e6
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: b02509c5e0a623f5bd908727fb5868ba03bd551b073c2331ef17089e5c95f912
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4e771922b6d9a6a06d1fe55875b784a835ca6f0d811d63bdcce955f7a215a488
+  timestamp: '2026-07-12T07:42:44Z'
+  output_hash: 7c78a753ef48edf0327b342e5eee728039f7dfbbf4b9ad368881fbec1f1ac675
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3639
+    completion_tokens: 503
+    total_tokens: 4142
+    reasoning_tokens: 112
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:44Z'
+  previous_text: Still, I have written to you rather boldly about some things, to remind you again, because of the grace God gave me,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4617093d04c4543b697083b45d398881bac819074c5e073426cf6a8ece2a5a4d
+  review_summary: The SPOB wording is substantially clearer and its explanation of God’s grace is not doctrinally overextended; it appropriately retains “grace” rather than replacing it with “commission.” “Still” is an acceptable mild rhetorical transition, and “to remind you again” accurately conveys the compound verb. However, “about some things” selects a documented lexical option for ἀπὸ μέρους without preserving the remaining live ambiguity. Retain this clear wording, but add a concise footnote reflecting the POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

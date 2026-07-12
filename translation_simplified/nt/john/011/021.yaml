@@ -31,36 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Martha said to Jesus, “Lord, if you had been here, my brother would not have died.”
+  text: So Martha said to Jesus, “Lord, if you had been here, my brother would not have died.”[Lord]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: Lord
+    text: The Greek word can also mean “Sir,” but “Lord” preserves both respectful address and possible theological significance.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: So Martha said to Jesus
+  simplified_phrase: So Martha said to Jesus
+  preserved_meaning: The narrative connection and direct address remain explicit.
+  reasoning_layer_used: POB lexical decisions for οὖν, εἶπεν, and πρὸς τὸν Ἰησοῦν
+  rationale: The POB wording is already the clearest natural rendering, so further rewriting would reduce precision.
+- pob_phrase: if you had been here, my brother would not have died
+  simplified_phrase: if you had been here, my brother would not have died
+  preserved_meaning: Martha describes an unreal past condition and its expected result.
+  reasoning_layer_used: POB lexical decisions for εἰ ἦς ὧδε and οὐκ ἂν ἀπέθανεν
+  rationale: This familiar English form clearly preserves the Greek contrary-to-fact statement.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The verse remains identical to POB because its wording is already plain modern English.
+    mitigation: The source connective “So” is retained, and no forced paraphrase is introduced merely to create verbal difference.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/021.yaml
   source_text_sha256: 008991c007b4d31c1090009d513ea102bacfbd17d6b458629514d3b8a6db965d
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:37Z'
-  output_hash: 4ccabb4c092ac9d59f9bb760053f56ea41cb6e8a73aaa553cfd39bdea73e9321
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ea39433921b1cda204c2b7aa8f2685701a136d1fe2665b46bb0bcde232342c68
+  timestamp: '2026-07-12T07:15:58Z'
+  output_hash: ba20629cbf33e6c406aed33dc903042625fd8a6b078d007c0f222081cb6cb50e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3165
+    completion_tokens: 354
+    total_tokens: 3519
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:58Z'
+  previous_text: Martha said to Jesus, “Lord, if you had been here, my brother would not have died.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d6af31913e977d8b573d101e1fd273518541f2cc425292bcdc605041ceaca36e
+  review_summary: 'Revise. The wording is otherwise faithful, clear, and doctrinally appropriate: “Lord” preserves the source term''s respectful address and possible Johannine theological resonance without forcing either sense. Restore “So” to retain οὖν''s narrative connection. Since no further simplification is warranted by this verse, the publication-ready SPOB replacement should match the clear POB wording.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+  - 'retained otherwise-unanchored footnote markers at the end of the revised text: [Lord]'

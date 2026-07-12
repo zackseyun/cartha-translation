@@ -31,52 +31,72 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 14:19 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''blessed them''].'
 translation:
   language: en
-  text: After ordering the crowds to sit down on the grass[a], Jesus took the five loaves and the two fish, looked up to heaven, blessed them, broke the loaves, and gave them to the disciples. Then the disciples gave them to the crowds.
+  text: After directing the crowds to sit down on the grass[a], Jesus took the five loaves and the two fish. He looked up to heaven, blessed[b], broke the loaves, and gave them to the disciples. Then the disciples gave them to the crowds.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: The Greek describes reclining on the grass, the normal posture for eating in that setting.
     reason: simplification_note
+  - marker: b
+    text: Or “blessed God” or “said a blessing.” The Greek does not state what or whom Jesus blessed.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: recline on the grass
-  simplified_phrase: sit down on the grass
-  preserved_meaning: Keeps the meal-position command while using ordinary modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: A footnote preserves the more literal reclining posture for readers who need the cultural detail.
-- pob_phrase: blessed
-  simplified_phrase: blessed them
-  preserved_meaning: Follows the POB theological decision that Jesus blessed the loaves and fish.
-  reasoning_layer_used: POB audit trail
-  rationale: The object is clear from context and improves readability.
-retained_terms:
-- term: looked up to heaven
-  reason: Retains the gesture in the source.
-- term: blessed them
-  reason: Retains the POB theological decision about the object of blessing.
+- pob_phrase: after ordering the crowds to recline on the grass
+  simplified_phrase: After directing the crowds to sit down on the grass
+  preserved_meaning: Jesus instructed the crowds to take their places for the meal.
+  reasoning_layer_used: POB lexical decisions for κελεύσας and ἀνακλιθῆναι
+  rationale: Common wording clarifies the action while the note preserves the reclining posture.
+- pob_phrase: he took the five loaves and the two fish, looked up to heaven, blessed, and after breaking the loaves he gave them to the disciples
+  simplified_phrase: Jesus took the five loaves and the two fish. He looked up to heaven, blessed, broke the loaves, and gave them to the disciples.
+  preserved_meaning: The full sequence of taking, looking up, blessing, breaking, and giving remains intact.
+  reasoning_layer_used: POB lexical decisions and narrative sequence
+  rationale: Two shorter sentences and finite verbs make the sequence easier to follow.
+- pob_phrase: and the disciples to the crowds
+  simplified_phrase: Then the disciples gave them to the crowds.
+  preserved_meaning: The disciples distributed the loaves they received to the crowds.
+  reasoning_layer_used: POB lexical decision for the Greek verbal ellipsis
+  rationale: Supplying the understood verb produces complete, natural English.
 translation_notes:
-  source_alignment_notes: Preserves the ordering of the crowd, the five loaves and two fish, looking to heaven, blessing, breaking, and distribution through the disciples.
-  readability_notes:
-  - Splits the long sequence into two sentences.
-  compression_notes:
-  - No action in the sequence was omitted.
+  risk_flags:
+  - risk: The objectless word “blessed” may sound unusual in modern English.
+    mitigation: Footnote b preserves the unstated object and explains the main alternatives.
+  - risk: “Sit down” does not fully convey reclining for a meal.
+    mitigation: Footnote a retains the cultural and meal-setting nuance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/014/019.yaml
   source_text_sha256: c75958ddebe797e8df60c8c15cbf34bcf55a3aa6ed0827c707fc1f73b1710349
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:51:39Z'
-  output_hash: 5c1abca4bc299b6fa9ac17e0a1eba29c402f1463952e24f756dc8dcaa5cb6ad7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f9a5d7beef76e200d82a90034e8a3c4cc1fbed4db376dbb2a09d5044e1783852
+  timestamp: '2026-07-12T07:37:08Z'
+  output_hash: 83fc4933a7f3217985bcfac202c688cded0cf6d69c3c9c05c7a71b5a33df8c96
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 4183
+    completion_tokens: 523
+    total_tokens: 4706
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: looked up to heaven
+  reason: Retains the gesture in the source.
+- term: blessed them
+  reason: Retains the POB theological decision about the object of blessing.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:08Z'
+  previous_text: After ordering the crowds to sit down on the grass[a], Jesus took the five loaves and the two fish, looked up to heaven, blessed them, broke the loaves, and gave them to the disciples. Then the disciples gave them to the crowds.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ecd90c502c464c8fe6f6bb1817f554e1f7d32cda9ff77ee3c8bb0b0253dc5851
+  review_summary: Changing “recline” to “sit down” is a warranted and useful simplification; the note adequately retains the meal-posture detail. Making the disciples’ implied action explicit is also warranted and improves readability. However, “blessed them” resolves an ambiguity that POB explicitly preserves. Retain an objectless “blessed” and include a brief note explaining the alternatives.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

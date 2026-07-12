@@ -31,36 +31,49 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 11:46 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''went away''].'
 translation:
   language: en
-  text: But some of them went to the Pharisees and told them what Jesus had done.
+  text: But some of them went to the Pharisees and told them what Jesus did.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: what Jesus had done
+  simplified_phrase: what Jesus did
+  preserved_meaning: They reported Jesus’ completed actions to the Pharisees.
+  reasoning_layer_used: POB lexical decision for ἐποίησεν and independent grounding review
+  rationale: Simple past is more natural here, and the narrative already makes the sequence clear.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may assume that the messengers were hostile to Jesus.
+    mitigation: The wording remains neutral because the Greek does not explicitly state their motive.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/046.yaml
   source_text_sha256: 0f14599e951efb2d99090f3a468a4f937c986204441d18634f9622c0f66da235
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: a7f75bcee62ed04c0bf67dc1ea955f22fa2df499aa2899bf06c942b500b775d8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e18f33678f524f978a282cb0652b28f9b46adb03a5d8c4b7a8094ed7d94da474
+  timestamp: '2026-07-12T07:16:05Z'
+  output_hash: 459cf17cec1d566b04694b136ad82daef6f6d288a85236ca2ad6209926b15aef
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3425
+    completion_tokens: 177
+    total_tokens: 3602
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:05Z'
+  previous_text: But some of them went to the Pharisees and told them what Jesus had done.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 49855b492568342ee2cebf902bf13cfce50742599a32c1c70ad6959198e594f6
+  review_summary: Revise for actual readability value. “What Jesus did” is clearer and more natural in modern English than the past-perfect phrasing while retaining the same reported content and sequence in context. The text appropriately remains neutral about the messengers’ motive; it must not say they informed against or betrayed Jesus.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,38 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They will mock him, spit on him, flog him, and kill him. After three days he will rise.”
+  text: They will mock him, spit on him, flog him, and kill him. After three days he will rise.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they will mock him[a], and spit on him, and flog him, and kill him, and after three days he will rise.
-  simplified_phrase: They will mock him, spit on him, flog him, and kill him. After three days he will rise.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: And they will mock him, and spit on him, and flog him, and kill him, and after three days he will rise.
+  simplified_phrase: They will mock him, spit on him, flog him, and kill him. After three days he will rise.
+  preserved_meaning: All four acts of abuse and death remain in sequence, followed by his rising after three days.
+  reasoning_layer_used: POB translation, lexical decisions, and resurrection wording decision
+  rationale: Removing repeated conjunctions and dividing the long sentence makes the sequence easier to read without changing its meaning.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: The timing could be harmonized to “on the third day.”
+    mitigation: The main text retains Mark’s source-driven wording, “after three days.”
+  - risk: Resurrection wording could be changed to “will be raised” or expanded with “again.”
+    mitigation: The text preserves the POB’s intransitive wording, “he will rise.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/034.yaml
   source_text_sha256: a8536b6bdd5fdb7f5705479bdfb0c75d729e5b0a923043b3512ae7cc744b0daf
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: f6acbf7149860d869325c5e48d3c58b84f1a601c32f6583dd28ebe6239ea915b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 21affa758eaf4c9115823ebbebddeaca92d0547c5cbe40350fc80b57409d6c5f
+  timestamp: '2026-07-12T07:21:09Z'
+  output_hash: 6f3d4aa8adfcae6b41ea0594bc6b2cf48fc2c30c0a9d4d6254707bbc105691f9
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3116
+    completion_tokens: 277
+    total_tokens: 3393
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:09Z'
+  previous_text: They will mock him, spit on him, flog him, and kill him. After three days he will rise.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 10a70a82439e7464834df4757dfbeca6db744db0fadb56bde42d0ee283ff9d2a
+  review_summary: The sentence break and removal of repeated conjunctions make the sequence easier to read without changing its meaning. The draft retains all four actions, the stated timing (“after three days”), and the intransitive resurrection wording (“he will rise”), so it neither harmonizes the timing nor resolves the theological wording differently from POB. Revise only to remove the unmatched closing quotation mark.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,41 +34,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 11:2 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''no one among men has yet sat''].'
 translation:
   language: en
-  text: He said to them, “Go into the village across from you. As soon as you enter it, you will find a colt tied there that no one has ever ridden. Untie it and bring it.”
+  text: He said to them, “Go into the village across from you. As soon as you enter it, you will find a colt tied there that no person has ridden yet. Untie it and bring it.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he says to them[a], “Go into the village opposite you, and as soon as you enter it, you will find a colt tied there, on which no one has yet sat[b]. Untie it and bring it.”
-  simplified_phrase: He said to them, “Go into the village across from you. As soon as you enter it, you will find a colt tied there that no one has ever ridden. Untie it and bring it.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: colt
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: the village opposite you
+  simplified_phrase: the village across from you
+  preserved_meaning: The village is opposite the disciples’ present location.
+  reasoning_layer_used: POB lexical decision for τὴν κατέναντι ὑμῶν
+  rationale: “Across from you” is more natural common English than “opposite you.”
+- pob_phrase: a colt tied there, on which no one has yet sat
+  simplified_phrase: a colt tied there that no person has ridden yet
+  preserved_meaning: The tied colt has not yet been ridden by any human.
+  reasoning_layer_used: Greek source, POB footnote b, and lexical rationale for οὔπω and ἀνθρώπων
+  rationale: “Ridden” fits an animal naturally, while “no person” and “yet” retain the explicit human reference and time limit.
+- pob_phrase: Go into the village opposite you, and as soon as you enter it, you will find
+  simplified_phrase: Go into the village across from you. As soon as you enter it, you will find
+  preserved_meaning: The disciples will find the colt upon entering the village.
+  reasoning_layer_used: POB syntax and lexical decision for εὐθὺς
+  rationale: Two sentences make the instructions easier to follow without separating their sequence.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Ridden” is more specific in English than the literal image of sitting on the colt.
+    mitigation: In this context, sitting on the animal means riding it, while the POB footnote identifies it as the animal Jesus will ride.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/002.yaml
   source_text_sha256: c3d128cb18cc4fe11ba77da4f6a4916652c7961ad36253e655a5878aab3b4145
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 8bbaf9230a766f26a709158f4f9fe8fb14ec3481f625a4edf72d0b1386e5808d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 76224b250ed8ad1f34831946d2e1037b19a2e71f139bd1daa2d87debf9008bce
+  timestamp: '2026-07-12T07:21:19Z'
+  output_hash: f06feac4092df7b7eb1f464d83e8df1dd1d036426331b6bb52b6f1b14ce0429b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 4019
+    completion_tokens: 436
+    total_tokens: 4455
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: colt
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:19Z'
+  previous_text: He said to them, “Go into the village across from you. As soon as you enter it, you will find a colt tied there that no one has ever ridden. Untie it and bring it.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: daf8806382c498653606ca15018b254d0f1bfa4ef52f7266e4f1fa934dc3bd1c
+  review_summary: The draft meaningfully improves readability through shorter sentences and “across from you,” both warranted by the source and POB audit trail. However, “has ever ridden” conflicts with the stated lexical rationale for οὔπω by replacing “not yet” with a stronger, unrestricted past-time claim. Restoring “yet” and retaining the explicit human reference resolves the issue.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

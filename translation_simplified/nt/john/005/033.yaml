@@ -31,47 +31,67 @@ base_translation:
     changes_summary: Changed 'sent' to 'have sent' to better reflect the Greek perfect tense ἀπεστάλκατε; retained the rest as accurate and natural.
 translation:
   language: en
-  text: You have sent to John, and he has testified to the truth.
+  text: You have sent messengers to John, and he has testified to the truth.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Retained 'have sent' to respect the perfect tense of the Greek 'ἀπεστάλκατε' as established in the POB revision. While some modern translations add 'messengers,' we avoided this to prevent adding unwritten words to the source text.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'have sent' to respect the perfect tense of the Greek 'ἀπεστάλκατε' as established in the POB revision. While some modern translations add 'messengers,' we avoided this to prevent adding unwritten words to the source text.
-- preserved_meaning: Retained 'testified' as it is a clear, modern forensic term. The alternative 'borne witness' from the POB footnote was omitted as it is too archaic for a modern common reader.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'testified' as it is a clear, modern forensic term. The alternative 'borne witness' from the POB footnote was omitted as it is too archaic for a modern common reader.
-retained_terms:
-- term: testified
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: the truth
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: You have sent to John
+  simplified_phrase: You have sent messengers to John
+  preserved_meaning: The audience sent people to John to question him.
+  reasoning_layer_used: Immediate narrative context and POB lexical decision
+  rationale: Supplying “messengers” resolves the awkward English ellipsis without changing the action.
+- pob_phrase: he has testified to the truth
+  simplified_phrase: he has testified to the truth
+  preserved_meaning: John’s past testimony remains relevant and concerns the truth.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The clear modern term “testified” preserves the witness language and “the truth” retains its Johannine weight.
+interpretive_expansions:
+- pob_phrase: sent to John
+  rendering: sent messengers to John
+  claim: The unstated people sent to John were representatives of the audience.
+  evidence:
+  - John 1:19 identifies priests and Levites sent from Jerusalem to question John.
+  - John 5:33 refers back to the audience’s inquiry and John’s testimony.
+  confidence: high
+  alternatives_preserved:
+  - sent representatives to John
+  - sent people to John
 translation_notes:
-  source_alignment_notes: Maintained the perfect tense verbs 'have sent' (ἀπεστάλκατε) and 'has testified' (μεμαρτύρηκε) to honor POB's grammar-focused revision history. Avoided inserting speculative nouns like 'messengers' to remain aligned with the Greek text.
-  readability_notes:
-  - The sentence structure is active, direct, and uses modern vocabulary ('testified' instead of 'borne witness') to ensure immediate comprehension for the target audience.
-  compression_notes:
-  - No semantic compression was necessary as the original verse is already highly concise and direct.
   risk_flags:
-  - risk: The phrase 'sent to John' lacks an explicit direct object (like 'messengers' or 'envoys'), which is an ellipsis present in the Greek. Adding an object would improve readability but risks over-interpreting the source.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Messengers” makes an object explicit that is unstated in the Greek clause.
+    mitigation: The immediate narrative context identifies a delegation sent to question John.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/005/033.yaml
   source_text_sha256: 1b63c1429e9960220dad8ead704062c054e0a2b5f3a2720ba7b1884c72894152
-  pob_commit_sha: 56d44a06d426abff18e599660a5a86f213e4514c
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: f528bc28165045b85d6b1adfab716240d3f1c20eda5fdb9f6b30e1a0a7b6e658
-  timestamp: '2026-05-28T06:37:37Z'
-  output_hash: 285e0bfe1547a964148e840e539000e9a76c0f5288019baecfae6b84b7ce2562
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 356c78d7e0cadb1dfb7598b4798ce9dbd6581c4765fa452a2f5408b4cdcf7e71
+  timestamp: '2026-07-12T07:14:21Z'
+  output_hash: 587be336aff70d932fb23db5b2b905215abf867b4e412b4a8c00d4f5b0d38fe1
   usage:
-    prompt_tokens: 1649
-    completion_tokens: 457
-    total_tokens: 4704
+    prompt_tokens: 3315
+    completion_tokens: 351
+    total_tokens: 3666
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: testified
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: the truth
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:21Z'
+  previous_text: You have sent to John, and he has testified to the truth.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: eb2b416371e5dd296e8f5ff75edeb370e0b50ebfd78390fa83497a26659e4b64
+  review_summary: Revise for reader-facing clarity. The draft preserves the meaning of the POB and does not introduce doctrinal expansion, but it is not meaningfully clearer than the POB and leaves an awkward English ellipsis. “Messengers” is warranted by the immediate narrative context and makes explicit the ordinary, contextually supplied object of “sent.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

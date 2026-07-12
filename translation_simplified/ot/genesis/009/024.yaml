@@ -31,39 +31,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When Noah woke from his wine, he knew what his youngest son had done to him.
+  text: When Noah woke from his wine, he found out what his youngest son had done to him.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “his younger son.” The Hebrew word can mean small, young, or youngest, depending on the context.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Noah awakens from the wine and knows what his youngest son had done.
-  reasoning_layer_used: POB audit trail
-  rationale: Preserved the generic wording of the act and POB's 'youngest son' choice.
-retained_terms:
-- term: youngest son
-  reason: Retains POB's main-text rendering of the Hebrew adjective.
+- pob_phrase: When Noah awoke
+  simplified_phrase: When Noah woke
+  preserved_meaning: Noah awakened from sleep.
+  reasoning_layer_used: POB lexical decision for וַיִּיקֶץ
+  rationale: “Woke” is the common modern equivalent of “awoke.”
+- pob_phrase: he knew
+  simplified_phrase: he found out
+  preserved_meaning: Noah came to know about the earlier action.
+  reasoning_layer_used: POB lexical rationale and narrative sequence
+  rationale: “Found out” clearly conveys his coming to know after waking.
+- pob_phrase: what his youngest son had done to him
+  simplified_phrase: what his youngest son had done to him
+  preserved_meaning: The son’s act remains unspecified, and “youngest” remains the main contextual choice.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The wording preserves both the deliberate ambiguity about the act and the chosen family-age sense.
+interpretive_expansions:
+- pob_phrase: he knew
+  rendering: he found out
+  claim: Noah came to know what had happened after he woke.
+  evidence:
+  - The POB rationale says the verb can imply coming to know.
+  - The narrative places this knowledge after Noah wakes.
+  confidence: high
+  alternatives_preserved:
+  - he knew
+  - he learned
 translation_notes:
-  source_alignment_notes: Preserves awakening from wine and knowledge of the son's action.
-  readability_notes:
-  - The wording remains deliberately non-specific, matching the source restraint.
-  compression_notes:
-  - No interpretation of the act was added.
+  risk_flags:
+  - risk: “Found out” makes the sequential sense more explicit than the Hebrew verb alone.
+    mitigation: The POB rationale and immediate narrative sequence both support this sense.
+  - risk: “Youngest” may sound more definite than the Hebrew adjective requires.
+    mitigation: The footnote preserves “younger son” and explains the lexical range.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/024.yaml
   source_text_sha256: 5afe6ffe160b6ed640a2106a036f6d031f23b09a327a728ef4d03f471eba1a0a
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:48Z'
-  output_hash: 504b63be893294977c9140073b8e556097976b6414c695be70a93b6a22c39b0d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c156127f628719e4169c70060c2c59f59fb28921dc3753577d62331b75fa446a
+  timestamp: '2026-07-12T09:23:21Z'
+  output_hash: 5d8265153a3cb4fe931581cd6dbde0f8592a280ac1ec85212ad12f597da0f22b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3324
+    completion_tokens: 469
+    total_tokens: 3793
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: youngest son
+  reason: Retains POB's main-text rendering of the Hebrew adjective.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:21Z'
+  previous_text: When Noah woke from his wine, he knew what his youngest son had done to him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e4eb875fc4232d9bfdede65feafaed053f3808f53a12762df20e27b401df5cae
+  review_summary: The draft commendably preserves the text’s deliberate silence about what was done to Noah and introduces no doctrinal interpretation. However, it drops POB’s important lexical-alternative note for “youngest,” and its sole wording change (“awoke” to “woke”) is not by itself a meaningful understanding gain. Retain the ambiguity note and use “found out” to communicate the warranted sequential sense of Noah’s coming to know.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

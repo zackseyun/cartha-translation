@@ -37,14 +37,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The crowds ahead of Jesus and those following him kept shouting, “Hosanna to the Son of David! Blessed is the one who comes in the name of the Lord! Hosanna in the highest!”
+  text: The crowds ahead of Jesus and those following him kept shouting, “Hosanna[a] to the Son of David! Blessed is the one who comes in the name of the Lord! Hosanna in the highest!”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “Hosanna” comes from a Hebrew plea meaning “save, please” or “save now,” but here it is also a shout of praise.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: were crying out
+- pob_phrase: the crowds going ahead of him and those following
+  simplified_phrase: the crowds ahead of Jesus and those following him
+  preserved_meaning: The crowds remain positioned both before and behind Jesus in the procession.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: This removes the awkward participle and names Jesus as the clear referent.
+- pob_phrase: were crying out, saying
   simplified_phrase: kept shouting
-  preserved_meaning: Preserves the ongoing public acclamation in direct modern language.
-  reasoning_layer_used: POB lexical and theological decisions
-  rationale: Retains 'Hosanna,' 'Son of David,' and 'Lord' because POB marks them as important theological and scriptural terms.
+  preserved_meaning: The crowd's acclamation was loud and ongoing.
+  reasoning_layer_used: POB lexical decision for ἔκραζον λέγοντες
+  rationale: The simpler wording preserves the imperfect verb's continuing force.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person at the center of the procession is Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the one moving with the crowds.
+  confidence: high
+- pob_phrase: Hosanna
+  rendering: Hosanna[a]
+  claim: The acclamation carries the Hebrew-derived plea “save now” while functioning here as praise.
+  evidence:
+  - The POB lexical note gives both the underlying plea and its praising function in this context.
+  confidence: high
+  alternatives_preserved:
+  - save, please
+  - save now
+translation_notes:
+  risk_flags:
+  - risk: Readers may treat “Hosanna” only as praise and miss its underlying plea.
+    mitigation: The footnote gives both senses without replacing the scriptural acclamation.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/021/009.yaml
+  source_text_sha256: 8a52aa2ea85cb73aa2006ef9ddc4b57e534f9d103c7f17f8825a5af7f90a7a4f
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 224a771617fb248d6410f015d2f42977a5b3150e9b87b8136910af3d09ed3242
+  timestamp: '2026-07-12T07:37:22Z'
+  output_hash: a51f91acbd9d69d45f09b5fdaa0b038f73d3b62460a80add3f4cfbe8bd8db3dc
+  usage:
+    prompt_tokens: 3808
+    completion_tokens: 741
+    total_tokens: 4549
+    reasoning_tokens: 271
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Hosanna
   reason: Retained as POB's chosen transliteration.
@@ -52,30 +102,13 @@ retained_terms:
   reason: Retained as a royal messianic title.
 - term: Lord
   reason: Retained in the Psalm echo.
-translation_notes:
-  source_alignment_notes: Preserves the crowd placement and the full acclamation.
-  readability_notes:
-  - Uses 'ahead of Jesus' rather than 'going ahead of him' for clarity.
-  compression_notes:
-  - No phrase from the acclamation is removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/021/009.yaml
-  source_text_sha256: 8a52aa2ea85cb73aa2006ef9ddc4b57e534f9d103c7f17f8825a5af7f90a7a4f
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:14:46Z'
-  output_hash: 6b697a7d84bd06e1187571f0ef898223d9641aab84f8f4d8cb7a81f764304dc3
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:22Z'
+  previous_text: The crowds ahead of Jesus and those following him kept shouting, “Hosanna to the Son of David! Blessed is the one who comes in the name of the Lord! Hosanna in the highest!”
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fd7c79804818e43122baa88a545d0f7ef6bf79fde6a8fec25d44c633bd445064
+  review_summary: “Kept shouting” appropriately preserves the ongoing force of the imperfect, and identifying the antecedent as Jesus is a warranted readability improvement. The draft otherwise faithfully retains the Davidic title, Psalm wording, and the open-ended “in the highest.” Revision is needed because removing the POB footnote leaves the central acclamation “Hosanna” unexplained; the recommended text supplies its lexical sense without replacing the title or reducing the acclamation to a mere request.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,51 +31,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But you do not believe[a], because you are not among my sheep.
+  text: But you do not believe me,[a] because you are not among my sheep.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, 'But you do not believe that you are not among my sheep.' The Greek word translated 'because' can also mean 'that'.
-    reason: simplification_note
+    text: Or, “But you do not believe that you are not among my sheep.” The Greek word translated “because” can also mean “that.”
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Retained the primary causal translation ('because...') to preserve the logical argument of the passage.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the primary causal translation ('because...') to preserve the logical argument of the passage.
-- preserved_meaning: Preserved the phrase 'among my sheep' as it accurately conveys group identity in clear, modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Preserved the phrase 'among my sheep' as it accurately conveys group identity in clear, modern English.
-- preserved_meaning: Simplified the explanation of the Greek conjunction 'hoti' in the footnote to be understandable to a general audience without using technical grammatical terms.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the explanation of the Greek conjunction 'hoti' in the footnote to be understandable to a general audience without using technical grammatical terms.
-retained_terms:
-- term: believe
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: sheep
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: you do not believe
+  simplified_phrase: you do not believe me
+  preserved_meaning: They refuse to believe Jesus and what he has told them.
+  reasoning_layer_used: Immediate context and POB lexical rationale
+  rationale: Adding “me” supplies the implied object and makes the statement natural in English.
+- pob_phrase: because you are not among my sheep
+  simplified_phrase: because you are not among my sheep
+  preserved_meaning: Their unbelief is explained by their not belonging to Jesus’ flock.
+  reasoning_layer_used: POB theological decision
+  rationale: The causal reading and sheep image remain because they carry the verse’s central meaning.
+- pob_phrase: The Greek conjunction can also be read as introducing content rather than cause
+  simplified_phrase: The Greek word translated “because” can also mean “that”
+  preserved_meaning: The source permits a content reading as well as the preferred causal reading.
+  reasoning_layer_used: POB footnote and lexical decision
+  rationale: The footnote states the ambiguity without technical grammar.
+interpretive_expansions:
+- pob_phrase: you do not believe
+  rendering: you do not believe me
+  claim: Jesus is the implied object of their unbelief.
+  evidence:
+  - John 10:25 says that Jesus told them and they did not believe.
+  - The POB rationale describes their refusal to believe Jesus’ testimony.
+  confidence: high
+  alternatives_preserved:
+  - The footnote retains the reading in which the following clause supplies the content of “believe.”
 translation_notes:
-  source_alignment_notes: Maintained the exact clausal relationship of the source text. The emphasis of 'you' (hymeis) is conveyed naturally through the context and word order.
-  readability_notes:
-  - The text uses simple, direct phrasing suitable for a modern common reader while maintaining the dignity and gravity of the original statement.
-  compression_notes:
-  - No words were omitted or heavily compressed, as the verse is already brief and each element carries significant theological weight.
+  risk_flags:
+  - risk: Adding “me” is not verbally explicit in this Greek verse.
+    mitigation: The immediate context and POB rationale clearly identify Jesus and his testimony as the object.
+  - risk: The conjunction may introduce content rather than cause.
+    mitigation: The main text follows POB’s causal choice, while the alternative remains in the footnote.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/010/026.yaml
   source_text_sha256: 567b1da5cf584b6c9080c96dc524fd571acfbf7acf516ae4d437fbd9704c6d37
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 3dcf7eb76cb8057b40fd0901f79d2cf961cf1c7aa2b320d007a49fa324776041
-  timestamp: '2026-05-28T09:31:00Z'
-  output_hash: 2c39a109f120720be97c4235d4f35c03660e991f9bc97e2038a05309bc32d463
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2359cbca3efbe1f3defaf7cd7f8242cd4de3d963de7f9d48dfcba65ca764e5b9
+  timestamp: '2026-07-12T07:15:47Z'
+  output_hash: 30b3150918c197ffafc413fe4e4a88ba118a0d052836d67a5a8e37d690e842f2
   usage:
-    prompt_tokens: 1731
-    completion_tokens: 321
-    total_tokens: 4837
+    prompt_tokens: 3320
+    completion_tokens: 508
+    total_tokens: 3828
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: believe
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: sheep
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:47Z'
+  previous_text: But you do not believe[a], because you are not among my sheep.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 36c13292d9b5cd95db1298f03490fa5199eab847df9f98662de90d22159444ba
+  review_summary: The causal rendering and its alternative footnote are source-grounded and appropriately preserve the interpretive tension without importing a doctrinal system. However, retaining POB's main wording verbatim does not meet the stated SPOB requirement of being meaningfully clearer. “Believe me” is a warranted contextual clarification from Jesus' immediately preceding statement and improves modern readability while retaining the sheep metaphor and the grammatical alternative.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,38 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to him, “Why do you call me good? No one is good except God alone.”
+  text: But Jesus said to him, “Why do you call me good? No one is good except God alone.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But Jesus said to him[a], “Why do you call me good? No one is good except one—God.”
-  simplified_phrase: Jesus said to him, “Why do you call me good? No one is good except God alone.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: No one is good except one—God.
+  simplified_phrase: No one is good except God alone.
+  preserved_meaning: God remains the one unique exception without resolving the statement’s Christological tension.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “God alone” expresses the emphatic exception in natural English.
+- pob_phrase: But Jesus said to him
+  simplified_phrase: But Jesus said to him
+  preserved_meaning: The responsive turn marked by the Greek connective is retained.
+  reasoning_layer_used: POB lexical decision for δὲ and grounding review
+  rationale: Keeping “But” preserves the mild contrast with the man’s address.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “God alone” could be read as resolving the Christological question.
+    mitigation: The wording adds no claim about whether Jesus is included in or excluded from divine goodness.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/018.yaml
   source_text_sha256: 09a66b2149b20c45bbe9c4ed52aedba7b8fc8e9b562da858e2345ca15d369c5d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: bbb6e19d4f52a66ae96a39a07b882b72731f43a4d363df511cb4d5c842c6a192
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c9cbf7d7c5fb504d73fb3a57e6bb243533f25de16c320feda60649505858769d
+  timestamp: '2026-07-12T07:21:07Z'
+  output_hash: caadc6681b7ad59bf1154cac527702a590cc7061fbd4bed4da439de549462a69
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3156
+    completion_tokens: 259
+    total_tokens: 3415
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:07Z'
+  previous_text: Jesus said to him, “Why do you call me good? No one is good except God alone.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 652020d6654bfca8f9a778e61a3beadba9de52aee78485b3b0e70a1602f3ea56
+  review_summary: “God alone” is a clear, warranted English expression of the unique exception in “except one—God”; it does not settle the Christological question beyond the text. Retain “But,” however, because its removal loses the mild responsive transition explicitly preserved in the POB audit trail. This revision remains readable while retaining all source-supported discourse meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

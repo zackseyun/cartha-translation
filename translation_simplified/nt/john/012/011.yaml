@@ -40,36 +40,66 @@ base_translation:
     changes_summary: Replaced 'on account of him' with the more natural 'because of him' while preserving the sense; otherwise retained the draft's accurate wording.
 translation:
   language: en
-  text: because, on account of him, many of the Jews were leaving and believing in Jesus.
+  text: because many of the Jews[a] were leaving because of Lazarus and were believing in Jesus.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “Judeans.” Here the phrase refers to many people within the Jewish population, not to all Jews.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: many of the Jews were going away
+  simplified_phrase: many of the Jews were leaving
+  preserved_meaning: People were continuing to move away from the position or influence of those opposing Jesus.
+  reasoning_layer_used: POB lexical decision for ὑπῆγον
+  rationale: “Were leaving” is natural English and keeps the ongoing movement without calling it formal apostasy.
+- pob_phrase: were going away because of him and were believing
+  simplified_phrase: were leaving because of Lazarus and were believing
+  preserved_meaning: Lazarus was the reason for their departure, while leaving and believing remain distinct ongoing actions.
+  reasoning_layer_used: POB lexical decisions and independent grounding review
+  rationale: Repeating “were” preserves the separate force of both imperfect verbs.
+interpretive_expansions:
+- pob_phrase: because of him
+  rendering: because of Lazarus
+  claim: The pronoun refers to Lazarus.
+  evidence:
+  - Verse 10 names Lazarus as the person whose influence prompted the chief priests’ plan.
+  - The immediate context describes people responding to Lazarus’s raising.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Leaving” does not state an explicit object and may sound like simple physical travel.
+    mitigation: The wording preserves the source image and avoids over-interpreting it as formal apostasy.
+  - risk: “The Jews” could be misread as referring to all Jewish people.
+    mitigation: The footnote explains that the phrase describes a subset and preserves “Judeans” as an alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/011.yaml
   source_text_sha256: 8c9778d2137739c63c328506a8cfd727e7e32789e15b0c359a150e0e7ed82f3d
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:53Z'
-  output_hash: f0273c486c517455c50b51d4f0e20d2cc8a267439abace830a1e85f21d07ef44
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3a097186c861944c39dade361a600f99e78c095823159429e06699d9049fe908
+  timestamp: '2026-07-12T07:16:20Z'
+  output_hash: 6ec83c20ab6fa39959dcc6225c804dcd44e05a5c6b25a1edfa8e765c11a080ea
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3901
+    completion_tokens: 765
+    total_tokens: 4666
+    reasoning_tokens: 321
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:20Z'
+  previous_text: because, on account of him, many of the Jews were leaving and believing in Jesus.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b62a362200dfb9c6c81e631f9bd18a15a5355165a7762e191dfb5eb6b46aec3a
+  review_summary: Revision is needed because the draft's doubled causal opener is not clearer common English. Naming Lazarus is warranted by the immediate context (v. 10 and the preceding account) and makes the pronoun clear without adding doctrine. The replacement keeps both causal levels, preserves the text's limited claim of belief without equating it with salvation or discipleship, and retains the ongoing sense of both verbs.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

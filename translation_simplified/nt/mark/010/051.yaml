@@ -31,41 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus answered him, “What do you want me to do for you?” The blind man said to him, “Rabboni, I want to see again.”
+  text: Jesus answered him, “What do you want me to do for you?” The blind man said, “My teacher, I want to see again.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And answering him[a], Jesus said, “What do you want me to do for you?” And the blind man said to him, “Rabboni, that I may see again.”
-  simplified_phrase: Jesus answered him, “What do you want me to do for you?” The blind man said to him, “Rabboni, I want to see again.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: Rabboni
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: And answering him, Jesus said
+  simplified_phrase: Jesus answered him
+  preserved_meaning: Jesus responds directly to the blind man.
+  reasoning_layer_used: POB lexical decision for ἀποκριθεὶς
+  rationale: A finite verb expresses the Greek reply naturally in modern English.
+- pob_phrase: Rabboni
+  simplified_phrase: My teacher
+  preserved_meaning: The man addresses Jesus with the meaning of the Aramaic title.
+  reasoning_layer_used: POB lexical footnote and theological decision
+  rationale: The POB-approved meaning makes the unfamiliar title understandable without a footnote.
+- pob_phrase: that I may see again
+  simplified_phrase: I want to see again
+  preserved_meaning: The man asks Jesus to restore his sight.
+  reasoning_layer_used: POB lexical decision for ἵνα ἀναβλέψω and immediate dialogue
+  rationale: The direct request clearly conveys the purpose of his answer.
+interpretive_expansions:
+- pob_phrase: Rabboni
+  rendering: My teacher
+  claim: The Aramaic form of address means “my teacher.”
+  evidence:
+  - The POB footnote gives “my teacher” as a meaning of Rabboni.
+  - The POB lexical and theological decisions permit this equivalent.
+  confidence: high
+  alternatives_preserved:
+  - My master
+  - Rabboni
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Translating Rabboni removes some of its distinctive historical texture.
+    mitigation: The rendering retains the title’s POB-approved meaning and avoids leaving readers without an explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/051.yaml
   source_text_sha256: 4196279e5531ea1f48317cc7f2044efe4fabcaed3af0645d694bcb33c3990252
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: b63a2f6d0508833e39be10fbfb3ffcf633a8f980b2999690273c973250c272d1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 74992514a15af95b1a56cb6f39e3461575af7ef4e284f61b580b7cb663615a9d
+  timestamp: '2026-07-12T07:21:17Z'
+  output_hash: a88ac9cc4bb36b1c6ad4b669c20ad4fc36504b0b39fa72b4c477aa29799cb7ea
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3139
+    completion_tokens: 411
+    total_tokens: 3550
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Rabboni
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:17Z'
+  previous_text: Jesus answered him, “What do you want me to do for you?” The blind man said to him, “Rabboni, I want to see again.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c0f6786b87ef7a457762fc4914bd655ab119546b660d81673c6358a55d0becaf
+  review_summary: The simplification of “answering ... said” to “answered” and of “that I may see again” to “I want to see again” is source-compatible and naturally clear. However, removing the only explanation of “Rabboni” without translating it undercuts SPOB’s understanding-first purpose. Rendering the address as “My teacher” follows the POB’s own lexical note and makes the verse readable without introducing doctrine.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

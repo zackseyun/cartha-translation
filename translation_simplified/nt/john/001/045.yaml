@@ -34,15 +34,45 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 1:45 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''wrote about''].'
 translation:
   language: en
-  text: 'Philip found Nathanael and said to him, "We have found the one Moses wrote about in the Law, and whom the prophets also wrote about: Jesus, son of Joseph, from Nazareth."'
+  text: Philip found Nathanael and said to him, “We have found the one Moses wrote about in the Law. The prophets also wrote about him. He is Jesus, son of Joseph, from Nazareth.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: The original phrasing uses an archaic relative pronoun construction ('him of whom... wrote') that is difficult for modern readers to parse. Splitting this into parallel clauses ('the one Moses wrote about... and whom the prophets also wrote about') maintains the canonical witness of both Moses and the prophets while using standard English syntax.
-  reasoning_layer_used: POB audit trail
-  rationale: The original phrasing uses an archaic relative pronoun construction ('him of whom... wrote') that is difficult for modern readers to parse. Splitting this into parallel clauses ('the one Moses wrote about... and whom the prophets also wrote about') maintains the canonical witness of both Moses and the prophets while using standard English syntax.
-- preserved_meaning: Added a comma after 'Jesus' for natural modern pausing, while strictly maintaining the historical designation 'son of Joseph' and the literal translation of origin 'from Nazareth' as demanded by POB's theological and lexical guidelines.
-  reasoning_layer_used: POB audit trail
-  rationale: Added a comma after 'Jesus' for natural modern pausing, while strictly maintaining the historical designation 'son of Joseph' and the literal translation of origin 'from Nazareth' as demanded by POB's theological and lexical guidelines.
+- pob_phrase: him of whom Moses in the Law and also the prophets wrote
+  simplified_phrase: the one Moses wrote about in the Law. The prophets also wrote about him.
+  preserved_meaning: Both Moses in the Law and the prophets wrote about the same person Philip says they have found.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Two short sentences remove the awkward relative construction while preserving both scriptural witnesses.
+- pob_phrase: Jesus son of Joseph, from Nazareth
+  simplified_phrase: He is Jesus, son of Joseph, from Nazareth.
+  preserved_meaning: Philip identifies Jesus by his ordinary social designation and his association with Nazareth.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: A direct identifying sentence clarifies the apposition without doctrinally modifying “son of Joseph.”
+translation_notes:
+  risk_flags:
+  - risk: Breaking Philip’s statement into short sentences could make the scriptural witnesses seem less closely joined.
+    mitigation: The repeated reference to the same person keeps Moses and the prophets united in one identification.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/001/045.yaml
+  source_text_sha256: 3efcec4cc236e1762bb4d15434565e64c3062e4151568d7a0fc7738777c53d83
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 12faaa23313f09be7e189d1109142cf643c45146145d6d080b5d1e9e3f750bad
+  timestamp: '2026-07-12T07:13:40Z'
+  output_hash: b80d517573138ab1a7fe528b4d124fc81e78def2109aa87b541766c3d5201d03
+  usage:
+    prompt_tokens: 4444
+    completion_tokens: 709
+    total_tokens: 5153
+    reasoning_tokens: 389
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Nathanael
   reason: Retained to preserve POB's source-grounded terminology.
@@ -58,33 +88,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Nazareth
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The Greek structure has been fully preserved. By clearly indicating that both Moses and the prophets wrote about Jesus, the translation respects the subjects of the Greek sentence (Μωϋσῆς... καὶ οἱ προφῆται). The historical presents (εὑρίσκει and λέγει) are translated as simple pasts ('found', 'said') to fit English narrative style, matching the POB audit trail.
-  readability_notes:
-  - The revised sentence flow removes the nested inversion of the POB ('him of whom... wrote'), making it easy to read aloud or comprehend on first pass. The tone remains dignified and scriptural.
-  compression_notes:
-  - No semantic content has been compressed or removed. Footnotes regarding alternate formal translations and traditional English variants ('of Nazareth') were omitted because the main text now communicates these points clearly and directly.
-  risk_flags:
-  - risk: None. The translation avoids any doctrinal smoothing of Philip's statement ('son of Joseph') in order to keep the narrative perspective intact, as mandated by the POB theological decisions.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/001/045.yaml
-  source_text_sha256: 3efcec4cc236e1762bb4d15434565e64c3062e4151568d7a0fc7738777c53d83
-  pob_commit_sha: fc05e64faf1b92155d466deea9dc70de3b50075e
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 6ced298cf2e4866e6560667ec4e37076dd206a54f52a5cdd25e06388a2c98667
-  timestamp: '2026-05-28T08:21:37Z'
-  output_hash: ac25542468a2704c55f2f502d9209a9ca82eefeee285bfc5c58940b654ba5224
-  usage:
-    prompt_tokens: 2657
-    completion_tokens: 617
-    total_tokens: 6701
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:40Z'
+  previous_text: 'Philip found Nathanael and said to him, "We have found the one Moses wrote about in the Law, and whom the prophets also wrote about: Jesus, son of Joseph, from Nazareth."'
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8eabca2785704fdfb9ee86bfd783282150493f574b2a79763cd31b6bebc208df
+  review_summary: Revise for smoother, genuinely simplified English. The draft’s expansion of the shared Greek relative clause is source-grounded and preserves Philip’s claim, the distinct references to Moses/the Law and the prophets, and the ordinary narrative designation “son of Joseph.” But the mixed relative syntax (“the one ... and whom”) is needlessly awkward. The recommended wording retains the same warranted clarification in a natural parallel construction.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,40 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then some of the scribes and Pharisees answered him, saying, “Teacher, we want to see a sign from you.”[a]
+  text: Then some teachers of the religious law and some Pharisees said to him, “Teacher, we want to see a sign from you.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "a miraculous sign." The Greek word can denote a sign with miraculous significance, but the main text keeps the broader term.
+    text: Or “a miraculous sign.” The Greek word can refer to a sign with miraculous meaning, but the main text keeps the broader word “sign.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: some of the scribes and Pharisees
+  simplified_phrase: some teachers of the religious law and some Pharisees
+  preserved_meaning: 'The speakers are a subset drawn from two distinct groups: law teachers and Pharisees.'
+  reasoning_layer_used: POB lexical decision for γραμματεῖς and source τινες
+  rationale: This explains the scribes’ role and repeats “some” to avoid implying that all Pharisees spoke.
+- pob_phrase: answered him, saying
+  simplified_phrase: said to him
+  preserved_meaning: They responded to Jesus by addressing him directly.
+  reasoning_layer_used: POB lexical decisions for ἀπεκρίθησαν, αὐτῷ, and λέγοντες
+  rationale: A single common speech phrase removes repetitive wording without requiring a preceding question.
+interpretive_expansions:
+- pob_phrase: scribes
+  rendering: teachers of the religious law
+  claim: The scribes are identified by their role as teachers of Jewish religious law.
+  evidence:
+  - The POB lexical audit lists “teachers of the law” as a warranted alternative for γραμματεῖς.
+  - The grounding review confirms that this functional clarification fits the Matthean setting.
+  confidence: high
+  alternatives_preserved:
+  - scribes
+  - experts in the law
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Teachers of the religious law” explains the role rather than retaining the traditional group label “scribes.”
+    mitigation: The rendering follows an alternative already documented in the POB lexical audit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/038.yaml
   source_text_sha256: 12be749ce5ae7d74a8a8818861caf9bdbe6edff874b7c961c2670e36fcce4c24
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:35Z'
-  output_hash: 96eb9896565f5b7f7a406c4521dab02ac35c4c9f3c7ec0014c2739ecffaadd98
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 62ccacebd61f51b5fc6288570b06411ab69b8d6579e350ae6b309ab6f40e49c3
+  timestamp: '2026-07-12T07:36:34Z'
+  output_hash: 524f88996925c9d531bdfc3cb81fe8910be92d00b4b61ea6365c62470356b0b4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3502
+    completion_tokens: 451
+    total_tokens: 3953
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:34Z'
+  previous_text: Then some of the scribes and Pharisees answered him, saying, “Teacher, we want to see a sign from you.”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: db7fb136eeb833c9dad2ba925297a1900a3a5e46d09578e931b3893056167820
+  review_summary: Revise for actual SPOB simplification. The draft preserves the POB meaning and introduces no doctrinal problem, but its main text is unchanged and leaves “scribes” unexplained. “Religious-law teachers” gives the contextual function of γραμματεῖς without collapsing the distinct groups or forcing “sign” to mean only a miracle.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

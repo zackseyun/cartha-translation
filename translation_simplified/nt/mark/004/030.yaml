@@ -31,43 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 4:30 in what parable / should we set it forth. Restored drafter ''in what parable should we set it forth'' (preserving the chosen ''in what parable'' rendering and ''set it forth'' verb) per chosen renderings.'
 translation:
   language: en
-  text: He also said, “How should we compare the kingdom of God? What parable should we use to describe it?
+  text: He said, “How should we compare the kingdom of God? What parable should we use to describe it?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he was saying[a], “How should we compare the kingdom of God, or in what parable should we set it forth?”
-  simplified_phrase: He also said, “How should we compare the kingdom of God? What parable should we use to describe it?
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: kingdom of God
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
-- term: parable
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: And he was saying
+  simplified_phrase: He said
+  preserved_meaning: Introduces Jesus’ speech without adding an unsupported additive sense.
+  reasoning_layer_used: POB lexical decision for ἔλεγεν and grounding review
+  rationale: The simple past is natural narrative English and remains an allowed lexical alternative.
+- pob_phrase: or in what parable should we set it forth?
+  simplified_phrase: What parable should we use to describe it?
+  preserved_meaning: Asks which parable should serve as the means of presenting God’s kingdom.
+  reasoning_layer_used: POB footnote and lexical decisions for ἐν τίνι παραβολῇ and θῶμεν
+  rationale: The active wording clearly expresses the documented instrumental sense while retaining “parable.”
+- pob_phrase: How should we compare the kingdom of God, or
+  simplified_phrase: How should we compare the kingdom of God?
+  preserved_meaning: Keeps the first deliberative question distinct while treating the second as its alternative formulation.
+  reasoning_layer_used: POB lexical decisions for Πῶς, ὁμοιώσωμεν, and ἢ
+  rationale: Two short questions are easier to follow than one coordinated formal sentence.
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: Using “said” does not display the imperfect’s ongoing or iterative aspect.
+    mitigation: The POB lexical audit explicitly permits “he said,” and the context does not require the aspect to be made explicit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/030.yaml
   source_text_sha256: a19cac7b71a35e78aa0b6fcc920c20bf4e9e9b88a81eee8e9cd49013608d6304
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 7952525975ae0eead994d38188b16475c9abd9b3451b31345b0514e841c6cf69
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6eea6b99a96f77968fb842a6bbf2a48ba61357a436dc2607720f08dfecbd4d0a
+  timestamp: '2026-07-12T07:22:25Z'
+  output_hash: c26e5795985e51c812ecafce02050f6eb6b0e567142409b85339710b94af3c31
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3560
+    completion_tokens: 388
+    total_tokens: 3948
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: kingdom of God
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- term: parable
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:25Z'
+  previous_text: He also said, “How should we compare the kingdom of God? What parable should we use to describe it?
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 45ea2dbbfb92234e7f483c40ded94b04a28e5a4a0d47bf105649faea20f06fdf
+  review_summary: The second question is a warranted, clearer rendering of the POB’s idiom “in what parable should we set it forth,” consistent with the POB footnote’s “with what parable should we present it?” Retaining “kingdom of God” and “parable” preserves the source-grounded concepts. Revise the unsupported additive “also” and supply the missing closing quotation mark.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

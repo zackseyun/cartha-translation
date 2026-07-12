@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/005/021.yaml
-  text: so that[a], just as sin reigned in death[c][b], so also grace might reign through righteousness to eternal life through Jesus Messiah our Lord.
+  text: so that[a], just as sin reigned in death[c][b], so also grace might reign through righteousness to eternal life through Jesus the Messiah our Lord.
   footnotes:
   - marker: a
     text: Or, 'through justice.'
@@ -36,15 +36,63 @@ base_translation:
     changes_summary: 'Replaced ''the Messiah'' with ''Christ'' for more standard rendering of Ἰησοῦ Χριστοῦ in this epistolary context, and removed the comma before ''our Lord'' for smoother formal English. No other changes needed. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: So just as sin ruled in death, grace might also rule through righteousness[a] to bring eternal life through Jesus the Messiah[b], our Lord.
+  text: So that, just as sin ruled in death, grace also might rule through righteousness[a], leading to eternal life through Jesus the Messiah, our Lord.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “through justice.”
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: ruled
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: So just as... grace might also rule
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: Jesus the Messiah
-  reasoning_layer_used: POB audit trail
+- pob_phrase: sin reigned in death
+  simplified_phrase: sin ruled in death
+  preserved_meaning: Sin is personified as exercising royal power within the sphere of death.
+  reasoning_layer_used: POB lexical decision for ἐβασίλευσεν and ἐν τῷ θανάτῳ
+  rationale: “Ruled” makes the royal metaphor immediately clear while retaining “in death” as its sphere.
+- pob_phrase: so also grace might reign
+  simplified_phrase: grace also might rule
+  preserved_meaning: Grace is personified as ruling in deliberate contrast with sin.
+  reasoning_layer_used: POB lexical decision for ἡ χάρις and βασιλεύσῃ
+  rationale: The simpler verb preserves both the personification and the purpose/result nuance.
+- pob_phrase: Jesus the Messiah our Lord
+  simplified_phrase: Jesus the Messiah, our Lord
+  preserved_meaning: Messiah remains a title for Jesus, who is also identified as our Lord.
+  reasoning_layer_used: POB theological decision for Χριστός and applied appositional revision
+  rationale: The comma makes the two titles easier to distinguish in English.
+interpretive_expansions:
+- pob_phrase: to eternal life
+  rendering: leading to eternal life
+  claim: Eternal life is the direction and outcome of grace’s rule through righteousness.
+  evidence:
+  - The POB lexical decision says εἰς preserves directional force.
+  - The clause links grace’s rule through righteousness with eternal life.
+  confidence: high
+  alternatives_preserved:
+  - to eternal life
+translation_notes:
+  risk_flags:
+  - risk: “Leading to” makes the directional relationship more explicit than the compact POB phrase.
+    mitigation: It avoids making grace’s rule directly causative while preserving εἰς as movement toward an outcome.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/005/021.yaml
+  source_text_sha256: e33e4cb5a9d03a674aebd6e658dae286f184f0bac7939877b550a52d6be5fd72
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 28b863db3e3d7968c11bc7806f9c9422a069a4d3f4c5767d814330f1206f36dd
+  timestamp: '2026-07-12T07:41:23Z'
+  output_hash: 9ecf88fbb34fcf21836c2ae3976a4cd5f1c79d9b624b47ed2cd32a4765fe9e7b
+  usage:
+    prompt_tokens: 4313
+    completion_tokens: 695
+    total_tokens: 5008
+    reasoning_tokens: 205
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: righteousness
   reason: Retained as the default translation of dikaiosynē in Pauline passages, with 'justice' noted as an alternative.
@@ -52,33 +100,13 @@ retained_terms:
   reason: Retained as a fundamental theological term representing God's unmerited favor.
 - term: Messiah
   reason: Retained to emphasize the titular nature of Christos in this context.
-translation_notes:
-  source_alignment_notes: Maintains alignment with SBLGNT by translating 'en tō thanatō' as 'in death' (identifying death as the sphere of sin's rule) and translating the subjunctive 'basileusē' as 'might rule'.
-  readability_notes:
-  - Replaced the heavy structure 'so that, just as... so also' with the more direct 'So just as... also...'. This improves comprehension for a modern audience unfamiliar with dense biblical style.
-  compression_notes:
-  - Slightly streamlined 'to eternal life' to 'to bring eternal life' to clarify the active goal of grace's rule.
-  risk_flags:
-  - risk: Translating Christos as 'the Messiah' rather than 'Christ' may deviate from traditional familiarity, but it is necessary to uphold the theological precision of POB's titular decision.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/005/021.yaml
-  source_text_sha256: e33e4cb5a9d03a674aebd6e658dae286f184f0bac7939877b550a52d6be5fd72
-  pob_commit_sha: 9a43b560d15b9a8ba1bbb0ce2d35be2bcbc997ea
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 5339b9f38d908b71c6b5e13e81cfdc38d6d339d55c4c2adcb76f5862efb35ee2
-  timestamp: '2026-05-28T07:38:24Z'
-  output_hash: 1790cbd590b5345b18f108b6f56cf99a032fec074a15fbfbfec1e516f2fe4ef9
-  usage:
-    prompt_tokens: 2546
-    completion_tokens: 680
-    total_tokens: 7304
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:23Z'
+  previous_text: So just as sin ruled in death, grace might also rule through righteousness[a] to bring eternal life through Jesus the Messiah[b], our Lord.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9442aa969357575c198c8509849cf2f8de65f48d05c252e4c55ad4dc3c6e1b7d
+  review_summary: “Ruled” is a warranted and clearer rendering of Paul’s royal metaphor, and “Jesus the Messiah, our Lord” appropriately makes Χριστός transparent as a title. Revision is needed to retain the source’s explicit purpose/result connection and, importantly, to restore the POB-required Pauline footnote preserving “justice” as an alternative for δικαιοσύνη.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,67 @@ base_translation:
     changes_summary: 'Changed ''Messiah'' to ''Christ'' for natural rendering of ἐν Χριστῷ in this context; retained ''those of the household of Aristobulus'' to represent τοὺς ἐκ τῶν Ἀριστοβούλου clearly and idiomatically. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Greet Apelles, who has been proven faithful in Messiah. Greet those who belong to the household of Aristobulus.
+  text: Greet Apelles, who has been tested and approved in Messiah.[a] Greet those in Aristobulus’s household.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or, more traditionally, “in Christ.”
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: the approved one in Messiah
+  simplified_phrase: who has been tested and approved in Messiah
+  preserved_meaning: Apelles has been found genuine and worthy of approval in relation to Messiah.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The relative clause is natural English, while “tested and approved” preserves the full commendatory force of δόκιμος.
+- pob_phrase: those of the household of Aristobulus
+  simplified_phrase: those in Aristobulus’s household
+  preserved_meaning: The greeting is for people associated with Aristobulus’s household rather than necessarily Aristobulus himself.
+  reasoning_layer_used: POB lexical rationale and grounding review
+  rationale: The revised wording states the household association directly without suggesting ownership.
+interpretive_expansions:
+- pob_phrase: the approved one
+  rendering: who has been tested and approved
+  claim: The approval follows the sense of being tested and found genuine, without naming a particular approved quality.
+  evidence:
+  - The POB lexical rationale defines δόκιμος as someone tested and found genuine or approved.
+  - The grounding review rejects narrowing the commendation specifically to faithfulness.
+  confidence: high
+  alternatives_preserved:
+  - who is approved
+  - who has proven genuine
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Tested” could be heard as referring to one known formal test.
+    mitigation: The wording leaves the nature and circumstances of the testing unspecified, as the source does.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/010.yaml
   source_text_sha256: 50ee2c819f0e64b3b69a6359c476ad22a2203ba96771173a66db685be403e671
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:31Z'
-  output_hash: c17ec075c6672d721aa2efda65499a6821cc3beef12b52f5b46dfe582b6cebee
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2eeee2dd7d5e1f71849b5f12a1ed50fe6202717b057bd2dd4e3bffccf6f44858
+  timestamp: '2026-07-12T07:42:54Z'
+  output_hash: 5a6fda840c8311126ce265333f8f441c0dbda4a1823eb628697aee38d0260853
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3414
+    completion_tokens: 681
+    total_tokens: 4095
+    reasoning_tokens: 268
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:54Z'
+  previous_text: Greet Apelles, who has been proven faithful in Messiah. Greet those who belong to the household of Aristobulus.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b4546214c244592b666fbb367122eec27d333e56b85d4e7ac13f3a09ebfce1c4
+  review_summary: The household clarification is warranted and improves comprehension. The revision should not replace the broad commendation “approved” with the more specific trait “faithful.” “Tested and approved” clearly conveys the source sense and is explicitly supported by the POB audit trail.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 3:34 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''those seated in a circle around him''].'
 translation:
   language: en
-  text: Looking around at those seated in a circle around him, he said, “Look—my mother and my brothers!”
+  text: Looking around at those seated in a circle around him, he says, “Look—my mother and my brothers![a]”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “siblings.” The Greek says “brothers,” though the group around Jesus may also have included women.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: And looking around at those seated around him in a circle
+  simplified_phrase: Looking around at those seated in a circle around him
+  preserved_meaning: Jesus deliberately looks at the people seated all around him.
+  reasoning_layer_used: POB lexical decision for περιβλεψάμενος and the spatial phrase
+  rationale: The reordered phrase is easier to read while preserving the deliberate gaze and circle image.
+- pob_phrase: he says
+  simplified_phrase: he says
+  preserved_meaning: Mark's vivid historical-present narration remains intact.
+  reasoning_layer_used: POB lexical decision for λέγει and grounding review
+  rationale: Keeping the present tense resolves the review issue without reducing clarity.
+- pob_phrase: Behold, my mother and my brothers!
+  simplified_phrase: Look—my mother and my brothers!
+  preserved_meaning: Jesus directs attention to the people he identifies as his family.
+  reasoning_layer_used: POB lexical and theological decisions for Ἴδε and ἀδελφοί
+  rationale: “Look” modernizes the attention-getter, while “brothers” retains the source-shaped familial term.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Brothers” may be read as excluding women in the surrounding group.
+    mitigation: The footnote preserves “siblings” as the documented broader alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/003/034.yaml
   source_text_sha256: d8c77b22fe2ceec4883722a95e118a49a5bc281ca66be3a7c4d463cdf83cace7
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:00:13Z'
-  output_hash: 1f48c1a44533cbdb8e31337ad52f449ff00293b3fdadb8594b0568cad27028ba
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5584bb98e92dd348ad00b5ed7eba4a64805168a94d5f21e3cb134bc93bf48d6e
+  timestamp: '2026-07-12T07:20:08Z'
+  output_hash: 2c7e8dcd16874131f7b57fc5ce92c19546316842556804ba152035d8324d5450
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3302
+    completion_tokens: 577
+    total_tokens: 3879
+    reasoning_tokens: 175
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:08Z'
+  previous_text: Looking around at those seated in a circle around him, he said, “Look—my mother and my brothers!”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d2a43a39f73a4311cfff6c80fe73a9cbdab732483a2f63fa488790f65495409f
+  review_summary: The replacement is clear common English and appropriately simplifies POB's “Behold” to “Look” without adding interpretation. Retain “he says” to preserve the source's historical-present narration and the controlling POB decision. “Brothers” remains source-shaped and does not impose a doctrinal interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

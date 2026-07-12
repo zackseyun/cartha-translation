@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/011/055.yaml
-  text: Now the Passover of the Jews was near[b][a], and many went up to Jerusalem from the countryside before the Passover to purify themselves.
+  text: The Passover of the Jews was near[b][a], and many went up to Jerusalem from the countryside before the Passover to purify themselves.
   footnotes:
   - marker: a
     text: Or 'the Jewish Passover.' The Greek more literally reads 'the Passover of the Jews,' a recurring expression in John.
@@ -34,36 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now the Jewish Passover was near, and many people went up from the countryside to Jerusalem before the Passover to purify themselves.
+  text: The Jewish Passover was near, and many people from the countryside went up to Jerusalem before the Passover to purify themselves.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: That is, to undergo ritual purification in preparation for the Passover.
+    reason: cultural_note
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: The Passover of the Jews
+  simplified_phrase: The Jewish Passover
+  preserved_meaning: John’s designation of Passover as the Jewish festival remains intact.
+  reasoning_layer_used: POB lexical decision for τὸ πάσχα τῶν Ἰουδαίων
+  rationale: The audited alternative is clearer and more natural for common readers.
+- pob_phrase: many went up to Jerusalem from the countryside
+  simplified_phrase: many people from the countryside went up to Jerusalem
+  preserved_meaning: Many rural travelers made the customary journey up to Jerusalem.
+  reasoning_layer_used: POB lexical decisions for πολλοὶ, ἀνέβησαν, and ἐκ τῆς χώρας
+  rationale: Adding “people” and moving their origin earlier makes the sentence easier to follow.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Purify themselves” could be mistaken for inward moral cleansing.
+    mitigation: The footnote identifies it as ritual preparation for Passover.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/055.yaml
   source_text_sha256: 8f451165702f00842eab19aaf11af9655857332dab548d93c05ad31fad66b768
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:39Z'
-  output_hash: a2150218ada731ced0dbb3a15af1a1e2e04d070ffd05d90dc5fded7f72c6fc0e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ac20005e0a9704376eb5e877582c3affb800e191348829190b5e2eb5f05a4459
+  timestamp: '2026-07-12T07:16:08Z'
+  output_hash: 48551e47b10ef1429cfa47e99cf793007d526c955987789073e7af663a6147e3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3582
+    completion_tokens: 318
+    total_tokens: 3900
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:08Z'
+  previous_text: Now the Jewish Passover was near, and many people went up from the countryside to Jerusalem before the Passover to purify themselves.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5f84f8a4f7ed7cd6d2fd7addfdb1d6a45f700602483cc408caf174aa4d13271c
+  review_summary: The draft usefully simplifies “the Passover of the Jews” to “the Jewish Passover” and makes the substantival “many” explicit as “many people.” Retain those improvements. Remove “Now” in accordance with the POB’s explicit discourse decision, and retain a brief cultural note so readers understand that the purification is ritual Passover preparation rather than a claim about inward moral cleansing.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

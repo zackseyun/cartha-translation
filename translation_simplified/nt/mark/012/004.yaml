@@ -37,38 +37,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Again he sent another servant to them, and they struck him on the head and dishonored him.
+  text: Again, he sent another servant to them, and they struck him on the head and treated him shamefully.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And again he sent another servant to them[c][b][a], and they struck him on the head and dishonored him.
-  simplified_phrase: Again he sent another servant to them, and they struck him on the head and dishonored him.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+- pob_phrase: And again he sent another servant to them
+  simplified_phrase: Again, he sent another servant to them
+  preserved_meaning: The owner sends a further servant in the continuing sequence of the parable.
+  reasoning_layer_used: POB lexical decisions for πάλιν, ἀπέστειλεν, and ἄλλον δοῦλον
+  rationale: The revised opening uses natural English order while keeping the repeated action and the servant relationship.
+- pob_phrase: dishonored him
+  simplified_phrase: treated him shamefully
+  preserved_meaning: They actively subjected the servant to degrading and shameful treatment.
+  reasoning_layer_used: POB lexical decision and footnote for ἠτίμασαν
+  rationale: The POB-supported alternative makes the active mistreatment clearer than the abstract word “dishonored.”
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: The rare head-related verb could be mistaken for beheading.
+    mitigation: “Struck him on the head” preserves the POB decision that the violence targeted his head without implying decapitation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/004.yaml
   source_text_sha256: 045d36acd1a8cbfe0c06ea6b5b0698cd0e5c52eddfb3d5e45e2d06e88eb689d8
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: e775fbb15b2405a10fa2e8f0a0cd4dbf33d7d549f98ac435f6f0d5d25e454a9e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7e5adf03aa03dbb4060324d2caf2b7b638f2a010abc09fb5632709ba4d613036
+  timestamp: '2026-07-12T07:21:34Z'
+  output_hash: 32147811abc5292072cfb53f43f32c8723d6e6a788af53bb6291a6fa5a059ccb
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3264
+    completion_tokens: 544
+    total_tokens: 3808
+    reasoning_tokens: 242
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:34Z'
+  previous_text: Again he sent another servant to them, and they struck him on the head and dishonored him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 145eef8a8f9efd5743e8fe3e83f7a60eb3871063a511b36c18c971341ff71311
+  review_summary: The draft preserves the verse’s sequence and violence faithfully and introduces no doctrinal expansion. Revision is needed because “dishonored him” remains less transparent than the audit-supported “treated him shamefully,” while dropping “And” alone is not a meaningful clarity gain. The recommended text is a complete, source-warranted common-English rendering.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,38 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But Jesus was in the stern, asleep on the cushion. They woke him and said to him, “Teacher, do you not care that we are perishing?”
+  text: But Jesus himself was in the back of the boat, asleep on a cushion. They woke him and said, “Teacher, do you not care that we are perishing?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But he himself was in the stern[a], asleep on the cushion; and they woke him and said to him, “Teacher, do you not care that we are perishing?”
-  simplified_phrase: But Jesus was in the stern, asleep on the cushion. They woke him and said to him, “Teacher, do you not care that we are perishing?”
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
+- pob_phrase: he himself was in the stern
+  simplified_phrase: Jesus himself was in the back of the boat
+  preserved_meaning: Names Jesus clearly, retains the emphatic contrast, and identifies the boat’s rear in common language.
+  reasoning_layer_used: POB lexical decisions for αὐτός and πρύμνα
+  rationale: “Jesus himself” preserves the emphasis, while “back of the boat” makes “stern” immediately clear.
+- pob_phrase: asleep on the cushion; and they woke him and said to him
+  simplified_phrase: asleep on a cushion. They woke him and said
+  preserved_meaning: Keeps Jesus’ sleeping state and the disciples’ actions while dividing the long sentence.
+  reasoning_layer_used: POB translation and lexical decisions for καθεύδων, ἐγείρουσιν, and λέγουσιν
+  rationale: Two sentences and less repetition produce natural English without changing the sequence.
+- pob_phrase: do you not care that we are perishing?
+  simplified_phrase: do you not care that we are perishing?
+  preserved_meaning: Retains the disciples’ urgent, accusatory question and their fear of imminent death.
+  reasoning_layer_used: POB theological decision and lexical decisions for οὐ μέλει σοι and ἀπολλύμεθα
+  rationale: The forceful wording remains because softening it would erase the narrative tension.
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: “Back of the boat” is less technical than “stern.”
+    mitigation: It directly expresses the same location for readers unfamiliar with nautical language.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/038.yaml
   source_text_sha256: 786384ba350fab50f0fdcc1080540299767bcc1a17f772dedd9b9f74415936af
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 50f0e9aacf3c6b856a86372b7a7579dd3849377208f6cb8b3a609d9a85a9a848
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1d191abc7cfde52257aeda613eea799f5b8b801ba467523c43110c5d7376be9e
+  timestamp: '2026-07-12T07:20:14Z'
+  output_hash: 8bfaccf2742c3231b7a0852faba59ca104a7cb284e997521145ec61296d918c3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3346
+    completion_tokens: 422
+    total_tokens: 3768
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:14Z'
+  previous_text: But Jesus was in the stern, asleep on the cushion. They woke him and said to him, “Teacher, do you not care that we are perishing?”
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 86ffe924d6705abf8b84732c5597422333dd8b8a58ea19a5bbf2c5e55e6e8160
+  review_summary: The draft appropriately clarifies the pronoun by naming Jesus and improves readability by dividing the sentence. It introduces no doctrinal interpretation and preserves the disciples’ urgent accusation. Retain “himself,” however, because the POB audit trail identifies the Greek pronoun as emphatic; “Jesus himself” keeps both the clarification and the source-text force.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

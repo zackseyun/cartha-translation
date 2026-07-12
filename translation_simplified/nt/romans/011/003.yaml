@@ -31,13 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Lord, they killed your prophets, tore down your altars, and I am the only one left; now they are trying to kill me.
+  text: Lord, they killed your prophets, tore down your altars, and I was the only one left; they are trying to kill me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: trying to kill me
-  preserved_meaning: Preserves the idiom 'seeking my life'.
-  reasoning_layer_used: POB audit trail
-  rationale: Modern readers immediately understand the threat without needing the literal idiom.
+- pob_phrase: I alone was left
+  simplified_phrase: I was the only one left
+  preserved_meaning: Elijah says that he alone remained after the others were killed.
+  reasoning_layer_used: POB lexical decision for ὑπελείφθην μόνος
+  rationale: This keeps the past passive sense and numerical exclusivity in more natural English.
+- pob_phrase: they are seeking my life
+  simplified_phrase: they are trying to kill me
+  preserved_meaning: Elijah's enemies are making an ongoing attempt on his life.
+  reasoning_layer_used: POB lexical and theological decisions for ζητοῦσιν τὴν ψυχήν μου
+  rationale: This states the threat directly without suggesting that they seek his immaterial soul.
+interpretive_expansions:
+- pob_phrase: they are seeking my life
+  rendering: they are trying to kill me
+  claim: The idiom describes an attempt to kill Elijah.
+  evidence:
+  - The POB rationale says ψυχή refers to Elijah's life in this threat formula.
+  - The POB lists “they are trying to kill me” as a contextual alternative.
+  confidence: high
+  alternatives_preserved:
+  - they are seeking my life
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/011/003.yaml
+  source_text_sha256: e0de04c253346c53f4b2dfd77b035a3c600d1481402ba87f4d2846329678b216
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fedd16862e7c9cb398ed89d26e8e085b8b8b7b85b7050f0718872c17d0ba9c37
+  timestamp: '2026-07-12T07:42:02Z'
+  output_hash: d065e553498652d882523a60bfb4558e51ed3145680ed6899f05da4da126f534
+  usage:
+    prompt_tokens: 3205
+    completion_tokens: 338
+    total_tokens: 3543
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Lord
   reason: Retained from the cited prayer.
@@ -45,30 +83,13 @@ retained_terms:
   reason: Retained as the persecuted messengers.
 - term: altars
   reason: Retained as part of Elijah's complaint.
-translation_notes:
-  source_alignment_notes: Keeps the quoted complaint to God while simplifying the final idiom.
-  readability_notes:
-  - Uses a semicolon to separate Elijah's isolation from the new threat.
-  compression_notes:
-  - No core detail is removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/011/003.yaml
-  source_text_sha256: e0de04c253346c53f4b2dfd77b035a3c600d1481402ba87f4d2846329678b216
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:46:06Z'
-  output_hash: 6f19db0c439aa50c416efb745638cafc790b08d7f4ae7883a7781e9a1481c848
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:02Z'
+  previous_text: Lord, they killed your prophets, tore down your altars, and I am the only one left; now they are trying to kill me.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5876eecd8c6c5205fc9d717ba08a7d3292e4acfdebb403da4e7ed26acd56aadd
+  review_summary: 'The draft successfully makes the threat idiom immediately clear: in this context, “trying to kill me” is a warranted unpacking of the idiom “seeking my life,” and it does not impose a doctrinal reading. It also preserves the concrete references to prophets and altars. Revise the remaining clause to preserve the source/POB past aorist and omit the unsupported temporal addition “now.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

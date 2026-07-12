@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/011/002.yaml
-  text: Now it was Mary who had anointed the Lord with perfume and wiped his feet with her hair[a], whose brother Lazarus was sick.
+  text: It was Mary who had anointed the Lord with perfume and wiped his feet with her hair[a], whose brother Lazarus was sick.
   footnotes:
   - marker: a
     text: Or 'with ointment' or 'with fragrant oil'; the Greek term refers to perfumed oil/ointment.
@@ -31,36 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: This was the Mary who had anointed the Lord with perfume and wiped his feet with her hair. Her brother Lazarus was sick.
+  text: Mary was the one who had anointed the Lord with perfume and wiped his feet with her hair. Her brother Lazarus was sick.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: It was Mary who had anointed
+  simplified_phrase: Mary was the one who had anointed
+  preserved_meaning: Mary is identified by her earlier act of anointing the Lord.
+  reasoning_layer_used: POB lexical decision for ἦν δὲ and ἡ ἀλείψασα
+  rationale: The recast opening expresses the same identification in natural modern English.
+- pob_phrase: whose brother Lazarus was sick
+  simplified_phrase: Her brother Lazarus was sick.
+  preserved_meaning: Lazarus was Mary's brother and was physically ill.
+  reasoning_layer_used: POB lexical decisions for ἧς ὁ ἀδελφὸς Λάζαρος and ἠσθένει
+  rationale: A separate sentence removes the crowded relative clause without changing either relationship or condition.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/002.yaml
   source_text_sha256: 198f210456d3c568a2601c6bd96812e824e0b04866604838bbbe4196da8a2e2d
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:36Z'
-  output_hash: 95b5ea19239af5e7589e1a3c26ad33fc5965bf81fdce0dcdd27a4fcea932ad86
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 143edf1625a1d9b281184df179594b08aa5562b81be3837efaed95cbbe1d92d3
+  timestamp: '2026-07-12T07:15:52Z'
+  output_hash: e884e5aca53fd1a8c36a4f50eb6987431483058e71d6c327b9277a81e2f8e32b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3368
+    completion_tokens: 263
+    total_tokens: 3631
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:52Z'
+  previous_text: This was the Mary who had anointed the Lord with perfume and wiped his feet with her hair. Her brother Lazarus was sick.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8839f9f2bb58c36c65d34253e0b5e12c914575da9f527c7d25ba649265c51415
+  review_summary: 'The draft rightly preserves the anointing, the wiping of Jesus’ feet with Mary’s hair, the title “Lord,” and Lazarus’s illness. Splitting the final relative clause into a second sentence is a warranted clarity improvement and does not add interpretation. Revise the opening, however: “This was the Mary” is less idiomatic and less clear than the POB’s identification. The recommended wording retains the source’s identificational force in common English.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,14 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They said, “Some say John the Baptist, others Elijah, and others Jeremiah or one of the prophets.”
+  text: They answered, “Some say that you are John the Baptist. Others say Elijah, and still others say Jeremiah or one of the prophets.”
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And they said
-  simplified_phrase: They said
-  preserved_meaning: The disciples report the same public opinions about Jesus.
-  reasoning_layer_used: POB translation
-  rationale: The opening and is unnecessary in modern English here.
+  simplified_phrase: They answered
+  preserved_meaning: The disciples respond to Jesus’ question by reporting what people say.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: “Answered” makes the exchange natural without changing the response.
+- pob_phrase: Some say John the Baptist
+  simplified_phrase: Some say that you are John the Baptist
+  preserved_meaning: Some people identify Jesus as John the Baptist.
+  reasoning_layer_used: POB footnote and theological decision
+  rationale: Supplying the implied words makes the identification clear in English.
+- pob_phrase: others Elijah, and others Jeremiah
+  simplified_phrase: Others say Elijah, and still others say Jeremiah
+  preserved_meaning: Different groups offer Elijah and Jeremiah as further identifications.
+  reasoning_layer_used: POB lexical decisions
+  rationale: Repeating “say” and using “still others” makes the sequence easy to follow.
+interpretive_expansions:
+- pob_phrase: Some say John the Baptist
+  rendering: Some say that you are John the Baptist
+  claim: The reported opinions concern who Jesus is.
+  evidence:
+  - Jesus’ preceding question supplies “you” as the implied object.
+  - The POB footnote explicitly permits this fuller English wording.
+  confidence: high
+  alternatives_preserved:
+  - Some say John the Baptist
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/016/014.yaml
+  source_text_sha256: c183b56dee9177c14b7bc121b9b32747e3c574868e382d6ec93ebaea32689a0c
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 093309348860c94364d0a093b17c93a68d21085481af719b0b03eba2ac6d2e04
+  timestamp: '2026-07-12T07:36:41Z'
+  output_hash: b5d30413967e2a8f60bf12d03427971d49d5b0e468663680d382d2efd72ccf69
+  usage:
+    prompt_tokens: 3137
+    completion_tokens: 367
+    total_tokens: 3504
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: John the Baptist
   reason: Retained as a named public answer.
@@ -46,30 +88,13 @@ retained_terms:
   reason: Retained as a named public answer.
 - term: Jeremiah
   reason: Retained as a named public answer.
-translation_notes:
-  source_alignment_notes: Preserves all named answers and the broader category of prophets.
-  readability_notes:
-  - Keeps the direct quoted list.
-  compression_notes:
-  - No name or category is removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/016/014.yaml
-  source_text_sha256: c183b56dee9177c14b7bc121b9b32747e3c574868e382d6ec93ebaea32689a0c
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:59:24Z'
-  output_hash: 7173e3e395a1d2c586de90b2423526528a702636da7d295a5a59c78e1de1778b
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:41Z'
+  previous_text: They said, “Some say John the Baptist, others Elijah, and others Jeremiah or one of the prophets.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ff499b2fc74bbf44cec90d6c160470aefdcd613dc2ac8b7ed875200deb36338d
+  review_summary: The draft preserves the source meaning and introduces no doctrinal problem, but removing “And” alone is too slight to satisfy SPOB’s understanding-first purpose. The recommended wording uses the contextually supplied object explicitly, as the POB audit trail permits, without adding an interpretation or collapsing any ambiguity.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

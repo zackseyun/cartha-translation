@@ -34,52 +34,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You ask and do not receive, because you ask wrongly[a], so that you may spend it on your pleasures[b].
+  text: 'You ask but do not receive because you ask for the wrong purpose: to spend what you receive on your own pleasures.[a]'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'ask with wrong motives' or 'ask amiss'.
-    reason: simplification_note
-  - marker: b
-    text: Or 'on your passions' or 'self-indulgent desires'.
-    reason: simplification_note
+    text: Or “ask with wrong motives” or “ask amiss.” “Pleasures” can also mean self-indulgent desires or passions.
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: wrongly
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: pleasures
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: because you ask wrongly
+  simplified_phrase: because you ask for the wrong purpose
+  preserved_meaning: Their asking is wrong, and the following clause identifies its improper aim.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: This makes the clause connection clear without reducing “wrongly” to motives alone.
+- pob_phrase: so that you may spend it
+  simplified_phrase: to spend what you receive
+  preserved_meaning: They seek to use the requested benefit for their pleasures.
+  reasoning_layer_used: Greek purpose clause and POB lexical rationale
+  rationale: This removes the unclear pronoun while preserving the purpose expressed by the Greek.
+- pob_phrase: on your pleasures
+  simplified_phrase: on your own pleasures
+  preserved_meaning: The requested benefit is intended for their self-directed enjoyment.
+  reasoning_layer_used: POB lexical decision for ἐν ταῖς ἡδοναῖς ὑμῶν
+  rationale: “Own” naturally highlights the possessive force without replacing the concrete term “pleasures.”
+interpretive_expansions:
+- pob_phrase: you ask wrongly, so that you may spend it
+  rendering: 'you ask for the wrong purpose: to spend what you receive'
+  claim: The stated spending purpose explains how the asking is wrong.
+  evidence:
+  - The Greek ἵνα clause states the purpose of the asking.
+  - The POB rationale says the following clause explains the wrongful nature of the asking.
+  confidence: high
+  alternatives_preserved:
+  - ask with wrong motives
+  - ask amiss
 translation_notes:
-  source_alignment_notes:
-  - The translation respects the Greek parallelism between the active 'αἰτεῖτε' and middle 'αἰτεῖσθε' by rendering both as 'you ask', avoiding redundant reflexive phrases like 'you ask for yourselves' which could distract the reader.
-  readability_notes:
-  - The sentence flow has been kept clean and direct, matching modern English syntax while maintaining the solemn and corrective tone of James.
-  compression_notes:
-  - No content was compressed or omitted, as the verse is already highly concise and easily understood when rendered in modern syntax.
   risk_flags:
-  - risk: Low risk. The primary risk was over-translating 'wrongly' as 'with wrong motives', which has been mitigated by adhering to the POB main-text choice and moving the motive option to a footnote.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Wrong purpose” may sound narrower than the broader adverb “wrongly.”
+    mitigation: The purpose clause grounds this wording, while the footnote preserves broader lexical alternatives.
+  - risk: “What you receive” makes the referent of “it” explicit.
+    mitigation: The immediate ask-and-receive contrast clearly supplies that referent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/james/004/003.yaml
   source_text_sha256: 19be7e3763861e7bf250e1ec00dbc182bd1400d5c607c8dc9b18ce009aa9f280
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: ef8b0d63d33703929a4ad5675cad2910d6209e47db294d30bec4b9bb6cefca3f
-  timestamp: '2026-05-28T08:12:45Z'
-  output_hash: 7afd70267af5920cce756dbc3f3113e6964f056fb4a18583135eb803ff9d95ae
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ac7cd089a25ad1bd3ea73636a3bda836de9f61d0b790003570e48b2ebc13d6b8
+  timestamp: '2026-07-12T07:13:16Z'
+  output_hash: 24361b7b76cfd17989772f665845c140b47f9fd115518b2bdb152b77094e0e96
   usage:
-    prompt_tokens: 1961
-    completion_tokens: 697
-    total_tokens: 5108
+    prompt_tokens: 3540
+    completion_tokens: 528
+    total_tokens: 4068
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: wrongly
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: pleasures
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:16Z'
+  previous_text: You ask and do not receive, because you ask wrongly[a], so that you may spend it on your pleasures[b].
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d45274c58d91884ac7c5ffde9967cffb8cf35244facb624e6e0ca2c980bd02d2
+  review_summary: Revise for actual simplification. The draft preserves the POB accurately and avoids the unsupported narrowing of "wrongly" to motives, but it makes no meaningful main-text improvement over POB. The recommended wording makes explicit the source-supported connection between asking wrongly and the stated purpose, and resolves the pronoun "it" as what is received, while retaining the broader lexical alternatives in a note.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

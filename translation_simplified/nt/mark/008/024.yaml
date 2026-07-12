@@ -19,38 +19,62 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 8:24 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''because'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote'
 translation:
   language: en
-  text: Looking up, he said, “I see people, because I see them walking around like trees.”
+  text: He looked up and said, “I see people. They are walking around, but they look like trees.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And looking up, he said, “I see people, because I see them walking around like trees.”
-  simplified_phrase: Looking up, he said, “I see people, because I see them walking around like trees.”
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
+- pob_phrase: And looking up, he said
+  simplified_phrase: He looked up and said
+  preserved_meaning: The man looks up and then reports what he sees.
+  reasoning_layer_used: Greek source payload and POB translation
+  rationale: A finite verb sequence is more natural and immediately clear in modern English.
+- pob_phrase: I see people, because I see them walking around like trees
+  simplified_phrase: I see people. They are walking around, but they look like trees.
+  preserved_meaning: He recognizes moving people, though their appearance is still tree-like.
+  reasoning_layer_used: POB translation and applied revision preserving the relationship between the observations
+  rationale: Two short sentences clarify his partially restored sight while retaining both people walking and the tree comparison.
+interpretive_expansions:
+- pob_phrase: walking around like trees
+  rendering: They are walking around, but they look like trees.
+  claim: The people are moving, while their visible appearance resembles trees.
+  evidence:
+  - The source applies “walking” to the people and compares what he sees to trees.
+  - The immediate speech identifies the figures as people while describing their blurred appearance.
+  confidence: high
+  alternatives_preserved:
+  - The comparison may reflect indistinct size, shape, or outline rather than a precise visual feature.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: “But” makes the contrast between recognizing people and seeing tree-like forms more explicit than the POB.
+    mitigation: The contrast is directly supported by the two descriptions within the same report.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/024.yaml
   source_text_sha256: 7ac8a284bd0db6b15205a61c3e0ac6e8b4ee8141f8005c828642809802393bc6
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: 2e94be069cdccdd13c1a19c0b1f3641750247d7557e7e33f278a3c5a60eb26e0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 687b58e9c5a490ddf1388f34b37ff32a3b49a53de0a9607c854367f32fecf686
+  timestamp: '2026-07-12T07:20:55Z'
+  output_hash: 1cc5dd6ac1d38f3d924453b6f811a3e3b63580f1946aa7d5e12b84a7875f198c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2590
+    completion_tokens: 388
+    total_tokens: 2978
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:55Z'
+  previous_text: Looking up, he said, “I see people, because I see them walking around like trees.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 469de2a5a2e9a618e57dde425439722cd3f2887097ef8d076b34e0fb9048c28c
+  review_summary: Revise for a real reader-facing simplification. The draft is faithful and introduces no doctrinal or interpretive expansion, but deleting only the connective “And” is not a meaningful clarity gain. The recommended wording makes the man’s impaired visual perception explicit from the simile while retaining the two observations and their relationship; it does not claim a cause beyond what the speech itself conveys.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

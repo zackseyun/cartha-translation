@@ -34,48 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: While they were going, some of the guard came into the city and told the chief priests everything that had happened.
+  text: As the women were on their way, some of the guards came into the city and told the chief priests everything that had happened.
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: While they were going
+  simplified_phrase: As the women were on their way
+  preserved_meaning: Keeps the journey as the time frame and identifies the travelers from the immediate context.
+  reasoning_layer_used: POB lexical decision and Matthew 28:8 context
+  rationale: Naming the women makes the verse clear when read on its own.
+- pob_phrase: some of the guard
+  simplified_phrase: some of the guards
+  preserved_meaning: Still refers to only part of the guard posted at the tomb.
+  reasoning_layer_used: POB lexical decision
+  rationale: The plural personal noun is more natural in common English.
 - pob_phrase: reported to the chief priests
   simplified_phrase: told the chief priests
-  preserved_meaning: Preserved the report while using simpler speech vocabulary.
-  reasoning_layer_used: POB lexical decisions
-  rationale: '''Told'' is direct and clear for common English.'
-- pob_phrase: everything that had happened
-  simplified_phrase: everything that had happened
-  preserved_meaning: Retained the full scope of the guards' report.
-  reasoning_layer_used: POB audit trail
-  rationale: No event summary is narrowed.
-retained_terms:
-- term: guard
-  reason: Retained to identify the reporting group.
-- term: chief priests
-  reason: Retained as the recipients of the report.
+  preserved_meaning: Keeps the sense that the guards delivered information to the authorities.
+  reasoning_layer_used: POB lexical decision
+  rationale: “Told” expresses the report in simpler language.
+interpretive_expansions:
+- pob_phrase: they
+  rendering: the women
+  claim: The travelers are the women who had just left the tomb.
+  evidence:
+  - Matthew 28:8 identifies the women as leaving the tomb to tell the disciples.
+  confidence: high
+  alternatives_preserved:
+  - they
 translation_notes:
-  source_alignment_notes: Keeps the simultaneous timing with the women leaving and the guards reporting to the chief priests.
-  readability_notes:
-  - Replaces 'reported' with 'told' for simpler diction.
-  compression_notes:
-  - The attention marker 'behold' is not retained because the verse remains narratively clear.
+  risk_flags:
+  - risk: Replacing “they” with “the women” makes a contextual referent explicit.
+    mitigation: The identification comes directly from the preceding narrative in Matthew 28:8.
+  - risk: Omitting “behold” reduces the explicit attention signal.
+    mitigation: The sudden shift to the guards is preserved by the new main clause.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/028/011.yaml
   source_text_sha256: dac49560f8c3a3e133f44860ae4d9c495dc943274fad6a08dd3ad17a821636df
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:26:31Z'
-  output_hash: 7b791fd3c8c3d2604152417b9c2277174a9ca8e85ceca0a5fae70a8105d5d7b5
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c15cea301f7f63d81c2bb5c6be038059cedc2321d4d1875e3e53c01d024bb53d
+  timestamp: '2026-07-12T07:38:45Z'
+  output_hash: 40727be7bd3d55eb6b54c3b2ffdc510b66b5083aa484e2f33815660b7fe8592f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3101
+    completion_tokens: 416
+    total_tokens: 3517
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: guard
+  reason: Retained to identify the reporting group.
+- term: chief priests
+  reason: Retained as the recipients of the report.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:45Z'
+  previous_text: While they were going, some of the guard came into the city and told the chief priests everything that had happened.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8e97992f1419a1997043417cd7174d827cda1777d822f909278a13817c158abd
+  review_summary: “Told” is a faithful, clearer simplification of “reported,” and the full scope of the guards’ report is retained. The omitted narrative attention marker (“behold”) does not create a doctrinal or propositional loss. Revision is needed only to make the referent of “they” explicit from the immediate context, so modern readers can understand who was traveling.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

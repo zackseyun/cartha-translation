@@ -34,40 +34,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then he said to the man, “Stretch out your hand.” The man stretched it out, and it was restored, healthy like the other one.[a]
+  text: Then he said to the man, “Stretch out your hand.” The man stretched it out, and his hand was restored to health, just like his other hand.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "it was healed." The Greek emphasizes restoration to a proper condition; "the other one" refers to the man’s other hand.
+    text: Or “was healed.” The Greek emphasizes that the hand was restored to its proper condition.
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: he says to the man
+  simplified_phrase: he said to the man
+  preserved_meaning: Jesus speaks to the man at this point in the narrative.
+  reasoning_layer_used: POB lexical decision for λέγει
+  rationale: The ordinary English past tense makes the narrative easier to follow without changing the event.
+- pob_phrase: and he stretched it out
+  simplified_phrase: The man stretched it out
+  preserved_meaning: The man obeys by stretching out his hand.
+  reasoning_layer_used: Immediate context and POB lexical decision for ἐξέτεινεν
+  rationale: Repeating “the man” removes any possible uncertainty about who acted.
+- pob_phrase: it was restored, healthy like the other one
+  simplified_phrase: his hand was restored to health, just like his other hand
+  preserved_meaning: The disabled hand returned to a healthy condition matching the man's other hand.
+  reasoning_layer_used: POB lexical decisions for ἀπεκατεστάθη, ὑγιής, and ὡς ἡ ἄλλη
+  rationale: Naming both hands makes the established comparison clear in the main text.
+interpretive_expansions:
+- pob_phrase: the other one
+  rendering: his other hand
+  claim: The comparison is with the man's other hand.
+  evidence:
+  - The feminine form in ὡς ἡ ἄλλη points back to χείρ, “hand.”
+  - The POB lexical rationale explicitly identifies the implied referent as the other hand.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/013.yaml
   source_text_sha256: 1ca8368b815a093361a8f93fdc1f7b9f5aa34118e3bd2ea3a1ff67bfb896b795
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: 7f9ad29ab6de32526001658425a9b72dca8082327f3dd1444af9de932b1d7880
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2d4e152a898bfa9e9422b29e875e527e62135166943987f1e9d16a4340bb6e0c
+  timestamp: '2026-07-12T07:48:49Z'
+  output_hash: 79851cb53dbd0080e425bb3f507b0dccf296851d121104432d0b5eb901fd661f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3301
+    completion_tokens: 458
+    total_tokens: 3759
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:48:49Z'
+  previous_text: Then he said to the man, “Stretch out your hand.” The man stretched it out, and it was restored, healthy like the other one.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 18e9545cec0ec9be0432b2f45c3b563731bd1d01b953dccfcba9d3216b094997
+  review_summary: The draft’s changes from historical-present “says” to ordinary past “said” and from a pronoun to “The man” are warranted readability improvements and do not alter the event. However, the main text still uses the vague phrase “the other one,” even though the source and POB audit trail establish that it means the man’s other hand. State that referent in the text for a complete, clear simplification. The healing is described without unwarranted doctrinal expansion.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

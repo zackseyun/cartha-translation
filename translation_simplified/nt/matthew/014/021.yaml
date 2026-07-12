@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/014/021.yaml
-  text: Now those who ate were about five thousand men[a], besides women and children.
+  text: Those who ate were about five thousand men[a], besides women and children.
   footnotes:
   - marker: a
     text: Or 'not counting women and children.'
@@ -31,43 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: About five thousand men ate, besides women and children.
+  text: About five thousand men ate, not counting women and children.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Now those who ate were about five thousand men
+- pob_phrase: Those who ate were about five thousand men
   simplified_phrase: About five thousand men ate
-  preserved_meaning: Preserves the count and the gender-specific term while making the sentence concise.
-  reasoning_layer_used: POB audit trail
-  rationale: The simplified wording is clearer and keeps 'besides women and children.'
-retained_terms:
-- term: men
-  reason: Retains the gender-specific counting term from POB.
-- term: besides women and children
-  reason: Retains the explicit exclusion phrase.
-translation_notes:
-  source_alignment_notes: Preserves the approximate number, men as the counted group, and the additional women and children.
-  readability_notes:
-  - Shortens the sentence without changing the count.
-  compression_notes:
-  - No meaning was omitted.
+  preserved_meaning: Keeps the approximate count and the gender-specific reference to men.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Direct subject-verb order makes the count easier to grasp.
+- pob_phrase: besides women and children
+  simplified_phrase: not counting women and children
+  preserved_meaning: Makes clear that women and children were present but excluded from the five-thousand count.
+  reasoning_layer_used: POB lexical decision for χωρίς and grounding review
+  rationale: Not counting states the numerical exclusion more clearly than besides.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/014/021.yaml
   source_text_sha256: 2c5ac920cde3f72f46d54b1a6261f2df917871fdaeb016581a498bef480315bd
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:51:39Z'
-  output_hash: e62355303af1058da6fe7e11723ed6ed8643931841114552892b7f963dcdd604
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 04d1e793a083dc62781fd2d6b728df35e62b44e4f59bc264ee37b28527c6bc81
+  timestamp: '2026-07-12T07:41:48Z'
+  output_hash: 8e0bfd0a94da6ea5a8be9a862215150539536afe1af202007e825d5b44692a3d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3153
+    completion_tokens: 206
+    total_tokens: 3359
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: men
+  reason: Retains the gender-specific counting term from POB.
+- term: besides women and children
+  reason: Retains the explicit exclusion phrase.
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:48Z'
+  previous_text: About five thousand men ate, besides women and children.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 881cb82f6678db175ef734539beb78651d5837595594143220558737d30cf280
+  review_summary: The concise subject–verb order is faithful and clearer than POB, and it properly retains the male-specific count. Revise only the final phrase so that the exclusion of women and children from the five-thousand figure is explicit rather than potentially loose or idiomatic.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

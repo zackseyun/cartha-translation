@@ -31,39 +31,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: '"Why wasn''t this perfume sold for three hundred denarii and the money given to the poor?"'
+  text: “Why wasn’t this perfume sold for three hundred denarii—about a year’s wages—and the money given to the poor?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-retained_terms:
-- term: denarii
-  reason: Keeps the historical currency while the base footnote explains its value.
+- pob_phrase: three hundred denarii
+  simplified_phrase: three hundred denarii—about a year’s wages
+  preserved_meaning: The historical amount and its substantial economic value are both preserved.
+  reasoning_layer_used: POB cultural note and lexical decision
+  rationale: The wage equivalent makes the unfamiliar currency understandable without replacing it.
+- pob_phrase: and given to the poor
+  simplified_phrase: and the money given to the poor
+  preserved_meaning: The proceeds from selling the perfume would be given to the poor.
+  reasoning_layer_used: Immediate syntax and POB lexical decisions
+  rationale: Naming the money supplies the implied object and prevents an awkward reading.
+interpretive_expansions:
+- pob_phrase: three hundred denarii
+  rendering: three hundred denarii—about a year’s wages
+  claim: The stated price was approximately one laborer’s annual earnings.
+  evidence:
+  - The POB cultural note identifies three hundred denarii as roughly a year’s earnings after days not worked.
+  confidence: high
+  alternatives_preserved:
+  - three hundred denarii
+- pob_phrase: and given to the poor
+  rendering: and the money given to the poor
+  claim: The implied gift is the money received from selling the perfume.
+  evidence:
+  - The sale clause supplies the proceeds that would be given to the poor.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may treat “about a year’s wages” as an exact conversion.
+    mitigation: The word “about” preserves the POB note’s approximation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/005.yaml
   source_text_sha256: f4f54dcc84f8fe21ec537eb88e1a4d806357bbb04a2e72973fb7d167a84fea45
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:53Z'
-  output_hash: a4bed7b9ef4afbc5aaeb1be3e53d3979814745f0844a98a1b9088cdc7a7e2059
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d65a05524c965cbb105d575f9e0e08fef06c27cfe1809cf8d2c5474c1fd8cd83
+  timestamp: '2026-07-12T07:16:45Z'
+  output_hash: d1144a76205c93a500e64fd9280f1f87191c9f8b04541d4c4c460ed2328503b2
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2836
+    completion_tokens: 523
+    total_tokens: 3359
+    reasoning_tokens: 109
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: denarii
+  reason: Keeps the historical currency while the base footnote explains its value.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:45Z'
+  previous_text: '"Why wasn''t this perfume sold for three hundred denarii and the money given to the poor?"'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6de2187edafc1b094b4aac35c27f11f685619014ab32d74ed222d4893ddfcef4
+  review_summary: The draft faithfully preserves the question and its rhetoric. “The money” is a warranted, non-doctrinal clarification of what would be given. Revision is needed because removing the POB cultural explanation leaves “three hundred denarii” opaque and fails to convey the substantial value central to the objection. The recommended wording incorporates the POB-supported approximation without changing the historical currency or adding interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

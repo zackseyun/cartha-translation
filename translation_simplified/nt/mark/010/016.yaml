@@ -34,38 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He took the children in his arms, placed his hands on them, and blessed them.
+  text: He took the children in his arms and blessed them as he laid his hands on them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he took them in his arms and blessed them[b][a], laying his hands on them.
-  simplified_phrase: He took the children in his arms, placed his hands on them, and blessed them.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+- pob_phrase: them
+  simplified_phrase: the children
+  preserved_meaning: The pronoun still refers to the children in the immediate context.
+  reasoning_layer_used: POB lexical decision for αὐτὰ ... αὐτά
+  rationale: Naming the children makes the verse immediately clear without changing its referent.
+- pob_phrase: blessed them, laying his hands on them
+  simplified_phrase: blessed them as he laid his hands on them
+  preserved_meaning: The laying on of hands remains an action accompanying the blessing.
+  reasoning_layer_used: POB lexical rationale for τιθεὶς τὰς χεῖρας ἐπ’ αὐτά and grounding review
+  rationale: Using “as” prevents the gesture from sounding like a separate earlier step.
+interpretive_expansions:
+- pob_phrase: them
+  rendering: the children
+  claim: The pronoun refers to the children mentioned in the immediate context.
+  evidence:
+  - The POB lexical decision identifies the children as the referent.
+  confidence: high
+  alternatives_preserved:
+  - them
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/016.yaml
   source_text_sha256: ed510831b8c2f4a78e09d7654cc043e1c0ba4c7d18a7c2bfb882a7d9a680fafb
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: f93ed4bf8cd3a99b13942ac175f61f3ce4d02e18ab835b273ee61ba471f908fd
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1580965121f0fd26d71ec5d403f889f00cacdf59f9982adc3fc52b862d992263
+  timestamp: '2026-07-12T07:21:07Z'
+  output_hash: 2f0d01da56eaaae4bf63817b29d11cfe56f1835222a9b7d20c8c8a8d151c2d57
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3057
+    completion_tokens: 299
+    total_tokens: 3356
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:07Z'
+  previous_text: He took the children in his arms, placed his hands on them, and blessed them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: bfb3d53ac14cb908ba0c18ab814e9f4222ca533069bc57170f339ec3b4c272d3
+  review_summary: Replacing 'them' with 'the children' is a warranted contextual clarification and improves immediate readability. However, the draft's reordered coordination weakens the source construction in which Jesus blesses the children while laying his hands on them. The recommended wording preserves that relationship while remaining clear and publication-ready.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

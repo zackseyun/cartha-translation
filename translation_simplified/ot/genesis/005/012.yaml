@@ -31,18 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Kenan lived seventy years and fathered Mahalalel.
+  text: Kenan was seventy years old when he fathered Mahalalel.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Retained 'fathered' from the POB translation as the most natural modern equivalent for the Hebrew 'wayyoled', avoiding the archaic 'begot'.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'fathered' from the POB translation as the most natural modern equivalent for the Hebrew 'wayyoled', avoiding the archaic 'begot'.
-- preserved_meaning: Dropped the alternative footnote ('begot') to reduce clutter for modern readers, as 'fathered' is clear and functionally identical.
-  reasoning_layer_used: POB audit trail
-  rationale: Dropped the alternative footnote ('begot') to reduce clutter for modern readers, as 'fathered' is clear and functionally identical.
-- preserved_meaning: Preserved the direct chronological structure 'lived seventy years and fathered' to align with the standard Genesis 5 genealogical pattern.
-  reasoning_layer_used: POB audit trail
-  rationale: Preserved the direct chronological structure 'lived seventy years and fathered' to align with the standard Genesis 5 genealogical pattern.
+- pob_phrase: Kenan lived seventy years and fathered Mahalalel
+  simplified_phrase: Kenan was seventy years old when he fathered Mahalalel
+  preserved_meaning: The seventy years state Kenan’s age when he fathered Mahalalel, not his total lifespan.
+  reasoning_layer_used: POB lexical rationale for שִׁבְעִים שָׁנָה and the Genesis 5 genealogical formula
+  rationale: The revised time clause makes the documented age-at-fathering relationship immediately clear.
+- pob_phrase: fathered
+  simplified_phrase: fathered
+  preserved_meaning: The wording retains the male genealogical sense of the Hebrew verb.
+  reasoning_layer_used: POB lexical decision for וַיּוֹלֶד
+  rationale: “Fathered” is clear modern English and avoids the archaic “begot.”
+interpretive_expansions:
+- pob_phrase: lived seventy years and fathered
+  rendering: was seventy years old when he fathered
+  claim: Seventy years was Kenan’s age at the time he fathered Mahalalel.
+  evidence:
+  - The POB lexical rationale identifies the phrase as Kenan’s age at the begetting.
+  - The Genesis 5 formula directly connects the stated age with the fathering event.
+  confidence: high
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/ot/genesis/005/012.yaml
+  source_text_sha256: 47bc45cd6e8185ac342483da34541733def8feea8105526d8620686e5084377e
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 44a3c712ee341c472c1447c7143b7e25bb80e390691cad44d7525aeee619d7f6
+  timestamp: '2026-07-12T09:22:50Z'
+  output_hash: e1089aa1a5c4e3a79bded840b1d90cac7ec57d4eb527a2d1e97b616ba9122e13
+  usage:
+    prompt_tokens: 3101
+    completion_tokens: 354
+    total_tokens: 3455
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Kenan
   reason: Retained to preserve POB's source-grounded terminology.
@@ -50,33 +81,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: fathered
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains exact structural alignment with the Hebrew text (conjunction + verb + subject + age + conjunction + verb + object).
-  readability_notes:
-  - Highly readable, short, and avoids archaic verbs while retaining the authoritative tone of biblical genealogy.
-  compression_notes:
-  - No theological or narrative details were compressed, as the base text is already concise.
-  risk_flags:
-  - risk: None. The verse contains standard genealogical statements with no active translational controversies.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/ot/genesis/005/012.yaml
-  source_text_sha256: 47bc45cd6e8185ac342483da34541733def8feea8105526d8620686e5084377e
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 08a151d664357c4bc6aec734f6402e49a40f645eaa72147e65ad33c75972e513
-  timestamp: '2026-05-28T08:45:03Z'
-  output_hash: ceb64d96ea2eff345e5cbb00add9994173c805e03a13125811dd0bf4445f580b
-  usage:
-    prompt_tokens: 1478
-    completion_tokens: 297
-    total_tokens: 3947
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T09:22:50Z'
+  previous_text: Kenan lived seventy years and fathered Mahalalel.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7a4ada669cb5b40f1aeabe63786e44c2bb7fd9e06ef2d9ec3fdd76062d1ed4c8
+  review_summary: Revise for a genuine SPOB-level clarity gain. The proposed wording is faithful, but merely repeats POB and leaves the age-at-fathering sense less explicit than modern readers need. The recommended text preserves every source idea while clearly expressing the temporal relationship established by the genealogical formula and documented in POB's audit trail.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,40 +34,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The good man brings good things out of his good treasure, and the evil man brings evil things out of his evil treasure.[a]
+  text: A good man brings good things from the good treasure within him, and an evil man brings evil things from the evil treasure within him.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "person" for "man"; the Greek has a masculine singular form in a representative sense. In context, the good and evil things may especially refer to words.
+    text: Or “person” for “man”; the Greek uses a masculine singular form representatively. In this context, the good and evil things may especially refer to words.
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: from his good treasure
+  simplified_phrase: from the good treasure within him
+  preserved_meaning: The treasure remains an inward moral reserve from which outward things come.
+  reasoning_layer_used: POB lexical decision for θησαυροῦ and theological decision
+  rationale: Adding “within him” prevents readers from mistaking the treasure for literal property.
+- pob_phrase: good things ... evil things
+  simplified_phrase: good things ... evil things
+  preserved_meaning: The broad moral contrast includes speech without being limited to it.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The broad wording is retained because the Greek does not name words or deeds specifically.
+interpretive_expansions:
+- pob_phrase: his good treasure ... his evil treasure
+  rendering: the good treasure within him ... the evil treasure within him
+  claim: The treasure is an inward reserve belonging to the person.
+  evidence:
+  - The POB lexical rationale identifies the treasure as an inner stored reserve.
+  - The immediate context describes what comes out of a person.
+  confidence: high
+  alternatives_preserved:
+  - The resulting things may refer especially to words.
+  - The resulting things may include both words and deeds.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may understand “things” too generally and miss the speech context.
+    mitigation: The footnote notes that the things may especially refer to words.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/035.yaml
   source_text_sha256: 5b8c2b615fa918ec473143dd1a0cc2f9b83439e1a061d351b330fb96635be343
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:35Z'
-  output_hash: bd675d5a71ca47d33a45384afff1514db6a0015c34b43ad84efe6266a6669311
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 348a3aef376ad71a4c85f0b6719455fd6ac4c228ceb2d9bb2165034924ef48a5
+  timestamp: '2026-07-12T07:36:33Z'
+  output_hash: 17c5972ff7a992edbdc82c049ec16891ed070ca1cca34986b907c150430eb550
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3358
+    completion_tokens: 468
+    total_tokens: 3826
+    reasoning_tokens: 46
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:33Z'
+  previous_text: The good man brings good things out of his good treasure, and the evil man brings evil things out of his evil treasure.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a6f625c18881b41311011afa9e6b70b74795092ba692552e1f475fa0c5e4b475
+  review_summary: The draft is faithful and its combined footnote is warranted, but its small word-order change is not a meaningful readability improvement over POB. Making explicit that the treasure is within the person clarifies the intended metaphor without adding a doctrinal system or narrowing the broad “things” to speech alone.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

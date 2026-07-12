@@ -31,46 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: While he was on his way down, his slaves met him and told him that his child was alive.
+  text: While he was already on his way down, his slaves met him and told him that his child[a] was alive.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “son.” The Greek word can mean “child,” “boy,” or, in some contexts, “servant.”
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: While he was on his way down
-  preserved_meaning: Smoothed the narrative transition by removing the wordy 'already' and the coordinate 'And', making the temporal clause flow more naturally in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Smoothed the narrative transition by removing the wordy 'already' and the coordinate 'And', making the temporal clause flow more naturally in modern English.
-- simplified_phrase: met him and told him that
-  preserved_meaning: Converted the literal participle 'saying that' into a natural indirect speech introduction 'told him that'.
-  reasoning_layer_used: POB audit trail
-  rationale: Converted the literal participle 'saying that' into a natural indirect speech introduction 'told him that'.
-retained_terms:
-- term: slaves
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: child
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: And while he was already going down
+  simplified_phrase: While he was already on his way down
+  preserved_meaning: He was already descending toward home when the meeting occurred.
+  reasoning_layer_used: POB lexical decisions for ἤδη and καταβαίνοντος
+  rationale: The rewrite keeps the explicit timing while using natural travel language.
+- pob_phrase: met him, saying that
+  simplified_phrase: met him and told him that
+  preserved_meaning: The slaves delivered the news when they met him.
+  reasoning_layer_used: POB lexical decision for λέγοντες
+  rationale: A finite reporting clause is clearer than the participial construction.
 translation_notes:
-  source_alignment_notes: Retained 'slaves' (douloi) to preserve POB's stance on the bonded social reality of the household. Retained 'child' (pais) to maintain the broad, non-specific semantic range of the source Greek, while keeping the clarifying footnote.
-  readability_notes:
-  - The sentence is restructured from a participial/genitive absolute construction into a natural, flowing English complex sentence with a temporal dependent clause followed by a coordinate main clause.
-  compression_notes:
-  - The redundant 'already' was removed because 'on his way down' sufficiently conveys the ongoing nature of his journey prior to the meeting.
+  risk_flags:
+  - risk: “Child” may be understood more narrowly than the Greek παῖς.
+    mitigation: The footnote preserves the principal alternatives without narrowing the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/004/051.yaml
   source_text_sha256: 6c3d63b39fa6d794e3d3601f4360b8629d2298ef46a5ad4bd828a8f69cd6f9c1
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: dd417d4521159cef16307d1de171be0f38e33b85309412f78f3ef06dfc2fc1de
-  timestamp: '2026-05-28T06:05:49Z'
-  output_hash: b92cc4e44067b0984bf69845fb25645c4931b60caad5a9cf9a96662de94c2de2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 64bc8bcd133c268eb75dcc55906e01d76885c8fb20acfb388044accebffdd656
+  timestamp: '2026-07-12T07:14:07Z'
+  output_hash: c75f7c86259ce00100cf2da10e375b3663d65d52b53fb5194f9ed55446b3891a
   usage:
-    prompt_tokens: 1769
+    prompt_tokens: 3315
     completion_tokens: 416
-    total_tokens: 4835
-    reasoning_tokens: 0
+    total_tokens: 3731
+    reasoning_tokens: 112
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: slaves
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: child
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:07Z'
+  previous_text: While he was on his way down, his slaves met him and told him that his child was alive.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: df97b5acbbe84564bfbeb0af84281134a61989000dfc5009fc661e9d010652d0
+  review_summary: 'The modernization of the participial report to "met him and told him" is clear, natural, and fully supported. Retaining "slaves" and "child" appropriately follows the POB''s source-grounded decisions. However, "already" should be retained: it is an explicit, unobtrusive temporal detail, and including it keeps the simplification faithful without reducing readability.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

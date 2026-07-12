@@ -31,14 +31,55 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 13:3 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''were asking''].'
 translation:
   language: en
-  text: As Jesus was sitting on the Mount of Olives across from the temple, Peter, James, John, and Andrew asked him privately,
+  text: As Jesus was sitting on the Mount of Olives across from the temple, Peter, James, John, and Andrew were asking him privately,
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And as he was sitting on the Mount of Olives opposite the temple, Peter and James and John and Andrew were asking him privately,
-  simplified_phrase: As Jesus was sitting on the Mount of Olives across from the temple, Peter, James, John, and Andrew asked him privately,
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: as he was sitting
+  simplified_phrase: As Jesus was sitting
+  preserved_meaning: The pronoun's referent is made explicit without changing the scene.
+  reasoning_layer_used: Immediate narrative context and POB translation
+  rationale: Naming Jesus helps readers identify the speaker immediately.
+- pob_phrase: opposite the temple
+  simplified_phrase: across from the temple
+  preserved_meaning: Jesus remains positioned facing the temple complex from the Mount of Olives.
+  reasoning_layer_used: POB lexical decision for κατέναντι τοῦ ἱεροῦ
+  rationale: “Across from” is more familiar modern English than “opposite.”
+- pob_phrase: Peter and James and John and Andrew were asking him privately
+  simplified_phrase: Peter, James, John, and Andrew were asking him privately
+  preserved_meaning: All four named disciples ask Jesus apart from the others, with the ongoing action retained.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: Standard list punctuation improves readability while “were asking” preserves the imperfect aspect.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The person sitting and being questioned is Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the referent.
+  confidence: high
+  alternatives_preserved:
+  - he
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/013/003.yaml
+  source_text_sha256: f938a531ba7ecda0fff16af211bc48991eba9e78eba223f50ba0bcf46f24bbbe
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7d1ac1dd14fabe806689284f1d5801d78046ad7504ce3728d75aaf4717e345c8
+  timestamp: '2026-07-12T07:21:42Z'
+  output_hash: 538f5b322b28089ac88154600ed1243c92a89ddf8a0cf3eb114a2b1877d4e1b7
+  usage:
+    prompt_tokens: 3366
+    completion_tokens: 367
+    total_tokens: 3733
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Mount of Olives
   reason: Retained because it is a key POB/source-grounded term in this verse.
@@ -52,30 +93,13 @@ retained_terms:
   reason: Retained because it is a key POB/source-grounded term in this verse.
 - term: Andrew
   reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/013/003.yaml
-  source_text_sha256: f938a531ba7ecda0fff16af211bc48991eba9e78eba223f50ba0bcf46f24bbbe
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 2803acac498c1efe1085f6c621e8c696e35645d7715e35431b7635a51e9e1aa6
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:42Z'
+  previous_text: As Jesus was sitting on the Mount of Olives across from the temple, Peter, James, John, and Andrew asked him privately,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 78fd1a2ed66b82156a9925cb4cb6b9738c72f8cd5ca46c4f4a64425e8292ee7e
+  review_summary: 'Making the referent explicit as “Jesus,” using standard comma-separated names, and changing “opposite” to “across from” are clear, source-compatible simplifications. Revise only the verbal aspect: “were asking” preserves the Greek imperfect and the POB’s audited meaning without reducing accessibility.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

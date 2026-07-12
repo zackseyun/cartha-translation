@@ -31,41 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Be on guard; stay awake, because you do not know when the appointed time will come.
+  text: Be on guard; stay awake, because you do not know when the time is.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Be on guard; stay awake[a], for you do not know when the time is.
-  simplified_phrase: Be on guard; stay awake, because you do not know when the appointed time will come.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: appointed time
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: for you do not know
+  simplified_phrase: because you do not know
+  preserved_meaning: The second clause still gives the reason for both commands.
+  reasoning_layer_used: POB lexical decision for γὰρ
+  rationale: “Because” states the connection more directly in common English.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “The time” may sound broad, though the context may suggest a decisive time.
+    mitigation: Retain POB’s deliberately broad wording rather than promoting a footnoted alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/033.yaml
   source_text_sha256: 77811fd43550c5ee880a973b5ff72db806a199035500c64afb183544f2358cc2
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: f0170edcb4dda0badd5b399318a9f2965442341f4c9a641f12649f2275795402
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c2ec1d3e90323009ce424f600145537d4e6ee62081052b3ecaa9cd5fb00b8e2f
+  timestamp: '2026-07-12T07:21:49Z'
+  output_hash: 67c0d0caa46bce154610fc8e9795c3cf8737ad305952533fa681b8e79f708e3b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3098
+    completion_tokens: 177
+    total_tokens: 3275
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: appointed time
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:49Z'
+  previous_text: Be on guard; stay awake, because you do not know when the appointed time will come.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 00c86fdcdec94f39972e6c678b413a9d354d4822f4299136e0e48ec2c7cc0517
+  review_summary: The draft improves the connective from “for” to the more common “because,” but its two added specifications are not needed for clarity. Retaining “the time is” preserves the source wording and POB’s deliberate restraint while remaining understandable in modern English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

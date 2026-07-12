@@ -34,45 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Some of them wanted to seize him, but no one laid hands on him.
+  text: Some of the crowd wanted to seize him, but no one took hold of him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: Some of them wanted to seize him, but no one laid hands on him.
-  preserved_meaning: Streamlined the double-adversative structure ('But... yet...') into a single, more natural 'but'. Removed the minor lexical footnotes to prevent clutter for a modern general audience.
-  reasoning_layer_used: POB audit trail
-  rationale: Streamlined the double-adversative structure ('But... yet...') into a single, more natural 'but'. Removed the minor lexical footnotes to prevent clutter for a modern general audience.
-retained_terms:
-- term: seize
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: laid hands on
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: some of them
+  simplified_phrase: some of the crowd
+  preserved_meaning: An unspecified group within the divided crowd wanted to act against Jesus.
+  reasoning_layer_used: Immediate context and POB lexical decision for ἐξ αὐτῶν
+  rationale: Naming the crowd makes the reference clear when the verse is read by itself.
+- pob_phrase: laid hands on him
+  simplified_phrase: took hold of him
+  preserved_meaning: No one physically seized Jesus with hostile intent.
+  reasoning_layer_used: POB lexical rationale for ἐπέβαλεν ἐπ’ αὐτὸν τὰς χεῖρας
+  rationale: The direct wording avoids the modern religious ambiguity of “laid hands on.”
+- pob_phrase: But ... yet
+  simplified_phrase: but
+  preserved_meaning: The contrast between their intention and the outcome remains clear.
+  reasoning_layer_used: POB discourse decisions for δὲ and ἀλλ’
+  rationale: One contrast marker is more natural in modern English without weakening the opposition.
+interpretive_expansions:
+- pob_phrase: some of them
+  rendering: some of the crowd
+  claim: The pronoun refers to people within the crowd.
+  evidence:
+  - The immediate context describes division within the crowd in John 7:43–44.
+  - The POB rationale says the phrase identifies a subset of the larger group.
+  confidence: high
+  alternatives_preserved:
+  - some of them
+  - some from among them
 translation_notes:
-  source_alignment_notes: Maintained direct semantic correspondence with the Greek verbs, ensuring that the tension between intent (ἤθελον... πιάσαι) and result (οὐδεὶς ἐπέβαλεν... τὰς χεῖρας) remains clear.
-  readability_notes:
-  - Removing 'But' at the start of the sentence and replacing 'yet' with 'but' makes the transition smoother and improves readability for modern English speakers.
-  compression_notes:
-  - Omitted POB's translational footnotes ('from among them' and 'to arrest him') because they offer near-synonyms that are not critical for a general reader's understanding of this specific verse.
   risk_flags:
-  - risk: The idiom 'laid hands on' is occasionally associated with blessing or healing in contemporary religious contexts, but the hostile context of wanting to 'seize' him prevents any real ambiguity.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Took hold of him” may sound slightly less explicitly hostile than “seize.”
+    mitigation: The preceding clause retains “seize,” which establishes the hostile intent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/007/044.yaml
   source_text_sha256: fc07ed145f321b46b26974acc5a268df4aa89cab9347f40ac067e634a2da8350
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 7b5db17883dfd131692ab69285c79901697151e0e5d2fc3c7164f092c0180bd8
-  timestamp: '2026-05-28T08:47:39Z'
-  output_hash: bea70eabab4ca43a4ea81234101a2c96e97b9ca8d83999b1db38e677fd436298
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 73d53cec457b4f33f468fa0a8c2169b0cc54a4b0f9f2596bc86cacc9c52b3302
+  timestamp: '2026-07-12T07:15:12Z'
+  output_hash: a4735aeb41ef91b6acd98b7049d33b96e3694a08ce2df6084c1f88c90d5aae90
   usage:
-    prompt_tokens: 1546
-    completion_tokens: 478
-    total_tokens: 5161
+    prompt_tokens: 3195
+    completion_tokens: 427
+    total_tokens: 3622
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: seize
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: laid hands on
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:12Z'
+  previous_text: Some of them wanted to seize him, but no one laid hands on him.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a3118a083e5577910f7dbbbd6de8182ac25152b85123556e32f6fd474b11aa55
+  review_summary: The draft faithfully preserves the contrast between the desire to seize Jesus and the fact that no one acted against him; reducing the paired English contrast markers to one “but” is warranted. However, it does not sufficiently simplify the central idiom for SPOB’s general-audience purpose. “Took hold of him” communicates the source idiom’s physical, hostile sense without importing the narrower meaning “arrested.” “The crowd” is supported by the immediate antecedent and makes “them” understandable when the verse is read on its own.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

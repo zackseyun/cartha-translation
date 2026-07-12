@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/mark/013/028.yaml
-  text: 'Now learn the parable from the fig tree: when its branch has already become tender and puts out leaves[a], you know that summer is near.'
+  text: 'Learn the parable from the fig tree: when its branch has already become tender and puts out leaves[a], you know that summer is near.'
   footnotes:
   - marker: a
     text: Or 'lesson' or 'illustration' for 'parable.'
@@ -31,41 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'Now learn the lesson from the fig tree: as soon as its branch becomes tender and puts out leaves, you know summer is near.'
+  text: 'Learn a lesson from the fig tree: when its branch has already become tender and puts out leaves, you know that summer is near.'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: 'Now learn the parable from the fig tree: when its branch has already become tender and puts out leaves[a], you know that summer is near.'
-  simplified_phrase: 'Now learn the lesson from the fig tree: as soon as its branch becomes tender and puts out leaves, you know summer is near.'
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: fig tree
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: Learn the parable from the fig tree
+  simplified_phrase: Learn a lesson from the fig tree
+  preserved_meaning: Jesus tells his hearers to learn from the fig tree as an illustration.
+  reasoning_layer_used: POB lexical and theological decisions for παραβολή
+  rationale: “Lesson” is a documented alternative that makes the illustrative sense clear to common readers.
+- pob_phrase: when its branch has already become tender and puts out leaves
+  simplified_phrase: when its branch has already become tender and puts out leaves
+  preserved_meaning: The general seasonal condition and the onset already underway remain explicit.
+  reasoning_layer_used: POB lexical decisions for ὅταν and ἤδη
+  rationale: Keeping “when” and “already” avoids adding immediacy or losing the timing nuance.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: Using “lesson” may reduce continuity with the Gospel term “parable.”
+    mitigation: The POB audit explicitly recognizes “lesson” as the contextual sense of the illustrative comparison.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/028.yaml
   source_text_sha256: 06218667ed27ab0b698138c303142f0c68c6f4cb57161e5601a253bc8ade0aea
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 906842a252c6a20c867692f2604d11bccbb4fd736b69814e793a1a3fd9d263f3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6351fd61235c25c5a59fa4545cdb8bc68ed1960458d22b27b26f7786c32ba34e
+  timestamp: '2026-07-12T07:21:55Z'
+  output_hash: bf596af154eee753a252b31b516fed76fb848eba83bb5d32e66c7ee862200548
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3766
+    completion_tokens: 449
+    total_tokens: 4215
+    reasoning_tokens: 149
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: fig tree
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:55Z'
+  previous_text: 'Now learn the lesson from the fig tree: as soon as its branch becomes tender and puts out leaves, you know summer is near.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 19d36675333ae79fbd794f0d9b2b266493a362395d843a9d669b3cc31563a0c7
+  review_summary: “Lesson” is a source-supported and clearer contextual rendering of παραβολή here. However, the draft adds an unwarranted temporal “Now,” sharpens “when” into “as soon as,” and omits “already.” The recommended text retains the accessible explanation while preserving the source-based timing and the POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/015/033.yaml
-  text: Now may the God of peace be with all of you. Amen.
+  text: May the God of peace be with all of you. Amen.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -27,36 +27,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now may the God of peace be with all of you. Amen.
+  text: May the God of peace be with all of you. Amen.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: May the God of peace be with all of you. Amen.
+  simplified_phrase: May the God of peace be with all of you. Amen.
+  preserved_meaning: The blessing asks that the God of peace be present with every reader addressed, and it closes solemnly with “Amen.”
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The POB wording is already clear common English, so further rewriting would not improve readability.
+- pob_phrase: Now may the God of peace be with all of you.
+  simplified_phrase: May the God of peace be with all of you.
+  preserved_meaning: The concluding benediction remains intact without implying a temporal meaning absent from the source.
+  reasoning_layer_used: Applied revision and δέ rationale
+  rationale: The opening “Now” is removed in accordance with the POB reader-facing cleanup decision.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/033.yaml
   source_text_sha256: 8c8e56a226a40fc2479b6093c6d653bdb87c5b024cffb26c3e707cac42816c5a
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 93548d0475dd17eea22526b912bc379c10abc7b50bac7bb72751d2e089945bb4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 750dede5e324bcfb03ad32c17b12ae48257c281f09445ef2b1730e4475290009
+  timestamp: '2026-07-12T07:44:53Z'
+  output_hash: ceac92cae60b6640791a24cede0d90fb28357a3955e8690218551e8ad1ee7d1c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2970
+    completion_tokens: 251
+    total_tokens: 3221
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:44:53Z'
+  previous_text: Now may the God of peace be with all of you. Amen.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b88f2d958f1561d3a4881fddf0b17063239850b69f953a2d09be3aee2cc5747e
+  review_summary: The draft faithfully retains the verse’s meaning and is fully understandable, but it does not provide a warranted simplification over POB. Its sole change—adding “Now”—is unnecessary and contrary to the controlling POB audit trail’s final reader-facing decision. Use the publication-ready POB wording unchanged.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

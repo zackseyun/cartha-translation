@@ -34,45 +34,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 13:1 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''was sitting''].'
 translation:
   language: en
-  text: That day Jesus went out of the house and sat beside the sea.[a][b]
+  text: That day, Jesus went out of the house and sat by the sea.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “That same day,” if the phrase stresses the connection with what happened before.
     reason: alternative_reading
   - marker: b
-    text: Or “by the sea”; the wording means Jesus was near the sea without saying exactly how close.
+    text: Or “beside the sea”; the wording means Jesus was near the sea without saying exactly how close.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: On that day
+  simplified_phrase: That day
+  preserved_meaning: The phrase still identifies the day when Jesus left the house.
+  reasoning_layer_used: POB lexical decision for Ἐν τῇ ἡμέρᾳ ἐκείνῃ
+  rationale: Dropping “On” gives the time setting in direct, natural English.
+- pob_phrase: beside the sea
+  simplified_phrase: by the sea
+  preserved_meaning: Jesus was near the sea, with no exact distance specified.
+  reasoning_layer_used: POB lexical decision and footnote for παρὰ τὴν θάλασσαν
+  rationale: “By the sea” is the more familiar modern idiom and is an approved POB alternative.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “By the sea” could be understood as specifying the shoreline.
+    mitigation: Footnote b states that the wording only places Jesus near the sea and does not specify how close.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/001.yaml
   source_text_sha256: c4592823096aca165f8ea7e6fc02b2b04a3b0ff1e9187704e2e38f6240907639
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:57Z'
-  output_hash: c5bc3fe328ce9a55dae143e3257791855b17be174942a0e621b0b01cdca530ec
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9c47b611a9cd5868e3e63cde1bb14678253dbd5783d2f5a97a41115376a2ab1f
+  timestamp: '2026-07-12T07:41:50Z'
+  output_hash: eb4ae0c0817c2cea71c6c922bdba767e467e308e66ebe9eab070a2ee85a54de9
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3483
+    completion_tokens: 344
+    total_tokens: 3827
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:50Z'
+  previous_text: That day Jesus went out of the house and sat beside the sea.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b00a88d573ebbfa5e7082f457e7e9e8034606542898aaa74d01adb7bf7a6ecac
+  review_summary: 'The draft is faithful and introduces no doctrinal expansion, ambiguity loss, or meaning change. However, it does not meet the stated SPOB threshold of being meaningfully clearer than POB: removing “On” alone does not materially improve comprehension. Using the common idiom “by the sea,” supported directly by the POB lexical alternative, provides a modest but real readability gain while preserving the source sense and the location’s intentional lack of precision.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

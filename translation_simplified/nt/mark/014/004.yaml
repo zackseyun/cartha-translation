@@ -34,38 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Some people were angry with one another and said, “Why was this perfume wasted?”
+  text: But some people were angry and said, “Why was this perfume wasted?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: 'But some were indignant among themselves: “Why has this waste of the perfume happened?”[a][b]'
-  simplified_phrase: Some people were angry with one another and said, “Why was this perfume wasted?”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: some were indignant among themselves
+  simplified_phrase: some people were angry and said
+  preserved_meaning: The group strongly disapproved and voiced the complaint without implying they were angry at each other.
+  reasoning_layer_used: POB lexical decisions for τινες, ἀγανακτοῦντες, and πρὸς ἑαυτούς
+  rationale: Common wording preserves the strong reaction while avoiding a false reciprocal meaning.
+- pob_phrase: Why has this waste of the perfume happened?
+  simplified_phrase: Why was this perfume wasted?
+  preserved_meaning: The speakers condemn the use of the perfume as wasteful.
+  reasoning_layer_used: POB lexical decisions for ἀπώλεια, μύρον, and γέγονεν
+  rationale: An active, direct question expresses the same complaint in natural English.
+- pob_phrase: But
+  simplified_phrase: But
+  preserved_meaning: The reaction contrasts with the woman’s preceding action.
+  reasoning_layer_used: POB lexical decision for δέ
+  rationale: Retaining the connective preserves the narrative contrast clearly.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Removing “among themselves” may make the group-internal setting less explicit.
+    mitigation: The plural subject and shared quoted complaint retain the scene without collapsing the documented ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/004.yaml
   source_text_sha256: 48d5e3c1c179ec3577703f01a3141287894c8b2e41a5440d2a527c7a4dd44951
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 592fa2b96d1d9ebeade0f999d1ac0386b507a33ea988c38b800b1a354d6c53bb
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5a7ca8ad16993b5dfdd73e05f0e916ebb93b7bf73b94eb7b59b8d2e8d40fb889
+  timestamp: '2026-07-12T07:24:25Z'
+  output_hash: 23acdddd036958350029c5fda8bcf9eba3162bf68fc545e3d5564947f82be904
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3217
+    completion_tokens: 642
+    total_tokens: 3859
+    reasoning_tokens: 291
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:25Z'
+  previous_text: Some people were angry with one another and said, “Why was this perfume wasted?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6ef83d98967ac35ad4e93869ab3234015d4902568584f4e2edef6d9c12ca2c93
+  review_summary: The draft is clearer in its direct question and modern “perfume,” and “said” is warranted by the quoted complaint. However, “angry with one another” wrongly specifies that they were angry at each other, collapsing the source phrase’s live ambiguity. Retain the contrastive “But” and remove that unsupported relational specification.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

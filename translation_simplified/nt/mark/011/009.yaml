@@ -34,43 +34,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Those going ahead and those following shouted, “Hosanna! Blessed is the one who comes in the name of the Lord!”
+  text: The people in front of Jesus and those behind him were shouting, “Hosanna![a] Blessed is the one who comes in the name of the Lord!”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “Hosanna” means something like “Please save!” or “Save now!” and was also used as a shout of praise.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And those going ahead and those following were crying out[b][a], “Hosanna! Blessed is the one who comes in the name of the Lord!”
-  simplified_phrase: Those going ahead and those following shouted, “Hosanna! Blessed is the one who comes in the name of the Lord!”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: Hosanna
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-- term: Lord
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: those going ahead and those following
+  simplified_phrase: the people in front of Jesus and those behind him
+  preserved_meaning: The crowd remains divided into the groups ahead of and behind Jesus in the procession.
+  reasoning_layer_used: Immediate context and POB lexical rationale
+  rationale: Naming Jesus makes the two groups’ positions clear without changing their relationship to him.
+- pob_phrase: were crying out
+  simplified_phrase: were shouting
+  preserved_meaning: The crowd was repeatedly making a loud public acclamation.
+  reasoning_layer_used: POB lexical decision for ἔκραζον
+  rationale: “Were shouting” is common English and preserves the imperfect verb’s ongoing force.
+- pob_phrase: Hosanna
+  simplified_phrase: Hosanna![a]
+  preserved_meaning: The recognized liturgical cry retains both its scriptural resonance and its plea for salvation.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: The traditional term remains in the text, while the footnote explains it for new readers.
+interpretive_expansions:
+- pob_phrase: those going ahead and those following
+  rendering: the people in front of Jesus and those behind him
+  claim: Jesus is the implied reference point for both groups in the procession.
+  evidence:
+  - Mark 11:8–10 presents Jesus as the procession’s focal person.
+  - The POB rationale describes the following group as the crowd behind him.
+  confidence: high
+  alternatives_preserved:
+  - those going ahead and those following
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Naming Jesus makes an implied reference explicit.
+    mitigation: The immediate context and POB rationale clearly identify him as the procession’s focal person.
+  - risk: “Hosanna” may be unfamiliar to modern readers.
+    mitigation: A brief footnote preserves the term while explaining its plea-and-praise force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/009.yaml
   source_text_sha256: e4f41dc6a68f2e8f3dfa09fffce6a513a67b7212fd3e984c2ecba5c4787dc92f
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: d8ec12e1dad3073ef8ae73993864c806a4219d2fde3351e1e55e11b866946c50
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8a4d073b0704be9d8542fa2dbd761098cf409c4dc65e2f5341b6ec809aa2fef3
+  timestamp: '2026-07-12T07:21:25Z'
+  output_hash: be24f37a4e5300e3e9fcc63c5feef76f878a2dadefed38d703e8bcc4cd76696e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3476
+    completion_tokens: 618
+    total_tokens: 4094
+    reasoning_tokens: 99
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Hosanna
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+- term: Lord
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:25Z'
+  previous_text: Those going ahead and those following shouted, “Hosanna! Blessed is the one who comes in the name of the Lord!”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: bef1d2603a55ed3d8a6822a617bf3ae49448f077060cc390c635b2b6e00ad84e
+  review_summary: The draft avoids doctrinal expansion and correctly preserves the Psalm-shaped acclamation without inserting “Messiah” or “king.” However, its only substantive simplification leaves the procession roles insufficiently anchored for a modern reader and slightly weakens the ongoing acclamation. The recommended wording uses immediate context to identify the people’s relation to Jesus while retaining the source’s two groups, the durative shouting, and the unresolved resonance of “Hosanna.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,36 +34,69 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 14:20 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''for the man''].'
 translation:
   language: en
-  text: Do not tear down God’s work for the sake of food. All things are clean, but it is wrong for someone to eat in a way that causes another person to stumble.
+  text: Do not tear down God’s work for the sake of food. All foods are clean, but it is wrong to eat in a way that causes stumbling.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: for the sake of food, tear down the work of God
+  simplified_phrase: tear down God’s work for the sake of food
+  preserved_meaning: Food is not worth damaging what God is doing.
+  reasoning_layer_used: POB lexical decisions for ἕνεκεν βρώματος, κατάλυε, and τὸ ἔργον τοῦ θεοῦ
+  rationale: Natural word order preserves the contrast and the image of tearing down God’s work.
+- pob_phrase: it is evil for the person who eats
+  simplified_phrase: it is wrong to eat
+  preserved_meaning: Eating becomes morally wrong when done in a way that causes stumbling.
+  reasoning_layer_used: POB lexical decisions for κακὸν and ἐσθίοντι
+  rationale: The direct wording states the same moral warning in common English.
+- pob_phrase: in a way that causes stumbling
+  simplified_phrase: in a way that causes stumbling
+  preserved_meaning: The eating creates a spiritual obstacle or offense without specifying its object.
+  reasoning_layer_used: POB lexical decision for διὰ προσκόμματος and grounding review
+  rationale: Keeping the stumbling image avoids adding an affected person not stated in this verse.
+interpretive_expansions:
+- pob_phrase: All things are indeed clean
+  rendering: All foods are clean
+  claim: In this discussion, the broad expression refers to foods.
+  evidence:
+  - The verse explicitly speaks about food and eating.
+  - The POB footnote permits “All foods are clean.”
+  - The POB theological decision says the expression contextually refers to foods.
+  confidence: high
+  alternatives_preserved:
+  - All things are clean
+  - Everything is clean
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “All foods” narrows the Greek expression “all things” to its immediate subject.
+    mitigation: The food context and POB audit trail explicitly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/020.yaml
   source_text_sha256: d8108c7d5311c8070a7d33c7bc62ddbebad8acee793993ada870d349b47bbbea
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 97eef370d31445c2236415285271eb2a453380c100a8d18a9a8f93347125d3ce
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3c282715d8140e02b2276267db3531066091185624b3cfbb1b3cd9d603065608
+  timestamp: '2026-07-12T07:43:46Z'
+  output_hash: 1bdb2f2d38fe7b5405a56f4fff8f4ab32cfabd8c75aa75b36fd9007e8f856269
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4023
+    completion_tokens: 604
+    total_tokens: 4627
+    reasoning_tokens: 115
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:43:46Z'
+  previous_text: Do not tear down God’s work for the sake of food. All things are clean, but it is wrong for someone to eat in a way that causes another person to stumble.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 125ef54062ca7eb0b61af1df0333d3aac290138ae81f27e20cc61a4c1cb4e6d8
+  review_summary: 'The draft improves accessibility in several places: “God’s work,” “wrong,” and the natural word order are appropriate simplifications. However, it adds “another person” where the source wording and controlling POB text leave the affected party unstated. It also retains “All things are clean,” which is grammatically close but insufficiently clear in a modern standalone reading; the food context warrants “All foods are clean.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

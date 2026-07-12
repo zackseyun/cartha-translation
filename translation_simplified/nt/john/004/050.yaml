@@ -31,18 +31,45 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to him, "Go, your son lives." The man believed the word Jesus spoke to him and went on his way.
+  text: Jesus said to him, “Go. Your son is alive.” The man believed what Jesus said to him and went on his way.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Changed the punctuation in Jesus' statement from a semicolon ('Go; your son lives') to a comma ('Go, your son lives') for a more modern, natural pause.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed the punctuation in Jesus' statement from a semicolon ('Go; your son lives') to a comma ('Go, your son lives') for a more modern, natural pause.
-- preserved_meaning: Omitted the word 'that' from 'the word that Jesus spoke' to streamline the relative clause into 'the word Jesus spoke' for a cleaner narrative flow.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the word 'that' from 'the word that Jesus spoke' to streamline the relative clause into 'the word Jesus spoke' for a cleaner narrative flow.
-- preserved_meaning: Omitted the lexical footnote ('Or trusted...') to avoid cluttering the text for a general reader, as 'believed' is accurate and easily understood.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the lexical footnote ('Or trusted...') to avoid cluttering the text for a general reader, as 'believed' is accurate and easily understood.
+- pob_phrase: “Go; your son lives.”
+  simplified_phrase: “Go. Your son is alive.”
+  preserved_meaning: Jesus commands the man to go and declares that his son is presently alive.
+  reasoning_layer_used: POB lexical decisions for Πορεύου and ζῇ
+  rationale: Two short sentences make the command and assurance immediately clear.
+- pob_phrase: believed the word that Jesus spoke to him
+  simplified_phrase: believed what Jesus said to him
+  preserved_meaning: The man believed Jesus’ spoken statement without defining the nature of his faith more narrowly.
+  reasoning_layer_used: POB lexical and theological decisions for ἐπίστευσεν and τῷ λόγῳ
+  rationale: “What Jesus said” expresses the contextual sense of “the word” in natural English.
+translation_notes:
+  risk_flags:
+  - risk: “Is alive” may sound less compact than the source image “lives.”
+    mitigation: The POB lexical audit explicitly accepts “is alive” as the present sense of ζῇ.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/004/050.yaml
+  source_text_sha256: 6e4f3cbe81a831d90e0709fd805ced42ea619ca7f065800bef0fc47684bf0f71
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6639bce5bd9a579d15e5141d0bccabf88461703e423d026a3ba2eaf30e6e964e
+  timestamp: '2026-07-12T07:14:04Z'
+  output_hash: d0ba5c0eb083d860a0d328dbeb71562cec4b350038969f32e88698f59932adf8
+  usage:
+    prompt_tokens: 3542
+    completion_tokens: 299
+    total_tokens: 3841
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: son (retained to preserve the gender-specific Greek 'υἱός' rather than generalizing to 'child')
   reason: Retained to preserve POB's source-grounded terminology.
@@ -52,30 +79,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: believed (retained to maintain consistency with the translation of the 'pist-' root and preserve theological tension)
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The translation strictly respects the POB's grammatical decisions, including the present indicative 'lives' (ζῇ), the specific noun 'the man' (ὁ ἄνθρωπος), and the continuous aspect of 'went on his way' (ἐπορεύετο).
-  readability_notes:
-  - By removing the relative pronoun 'that' and updating the punctuation, the sentence flows more like modern spoken English while retaining its formal gravity.
-  compression_notes:
-  - Slightly compressed the relative clause 'the word that Jesus spoke' to 'the word Jesus spoke'. No meaning-bearing content was removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/004/050.yaml
-  source_text_sha256: 6e4f3cbe81a831d90e0709fd805ced42ea619ca7f065800bef0fc47684bf0f71
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 5c083bec99be3699e88b46219e1736fb24e54ae9ee123bfb4dcbac26d83dcb3b
-  timestamp: '2026-05-28T06:05:31Z'
-  output_hash: 03d33d7ac4d9389a0c4ad4f6bfdd18e8d7e0848882f87e1894517e51083440a9
-  usage:
-    prompt_tokens: 1833
-    completion_tokens: 473
-    total_tokens: 5202
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:04Z'
+  previous_text: Jesus said to him, "Go, your son lives." The man believed the word Jesus spoke to him and went on his way.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f82948af020632cf7369d5c859e4043357f8580f87f447063bc49dd9ef9cf4b9
+  review_summary: The draft is faithful and does not introduce doctrinal interpretation, but it does not meet the stated approval threshold of being meaningfully clearer than POB. Rendering Jesus’ declaration as two short sentences, using “is alive” for ζῇ, and replacing the idiom “the word Jesus spoke” with “what Jesus said” gives a warranted, source-grounded clarity improvement without resolving the nature of the man’s belief beyond the text.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,16 +31,44 @@ base_translation:
     changes_summary: Replaced the colon after 'John' with a comma to better reflect the Greek sentence flow with ὅτε ('when') and improve natural formal English.
 translation:
   language: en
-  text: This is John’s testimony when the Jews[a] sent priests and Levites from Jerusalem to ask him, "Who are you?"
+  text: This is John’s testimony when the Jews[a] sent priests and Levites from Jerusalem to ask him, “Who are you?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "the Jewish leaders." In the Gospel of John, "the Jews" usually refers to the religious authorities in Judea rather than the Jewish people as a whole.
-    reason: simplification_note
+    text: Or “the Jewish leaders” or “the Judeans.” In the Gospel of John, “the Jews” often refers especially to the Judean religious authorities rather than to the Jewish people as a whole.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Removed the archaic leading 'And' and streamlined the possessive genitive to 'John's testimony' to improve flow and readability for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the archaic leading 'And' and streamlined the possessive genitive to 'John's testimony' to improve flow and readability for modern readers.
+- pob_phrase: And this is the testimony of John
+  simplified_phrase: This is John’s testimony
+  preserved_meaning: John is the one giving the testimony.
+  reasoning_layer_used: POB lexical decision on τοῦ Ἰωάννου and modern English narrative style
+  rationale: The possessive makes the same subjective-genitive meaning easier to read, while the opening conjunction can be omitted naturally in English.
+translation_notes:
+  risk_flags:
+  - risk: “The Jews” could be misread as referring to the entire Jewish people without distinction.
+    mitigation: The footnote preserves the POB’s qualified alternatives and explains that Judean authorities are often especially in view.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/001/019.yaml
+  source_text_sha256: 6eed89cc3795e2bde77d44db4ee793988713d657b61b58d59a16e661a682edcd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 94c2ba389a05cb0ad3ba3aa0b6fb1d5f7019f3881d8628479afdbf27cbd7f059
+  timestamp: '2026-07-12T07:13:24Z'
+  output_hash: e8dbbba7c21636a0983225fff85ac11a997873079b2a016521c634a0e2cabde5
+  usage:
+    prompt_tokens: 3763
+    completion_tokens: 271
+    total_tokens: 4034
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: testimony
   reason: Retained to preserve POB's source-grounded terminology.
@@ -48,33 +76,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: priests and Levites
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained direct alignment with all major lexical choices of the POB (μαρτυρία, οἱ Ἰουδαῖοι, ἱερεῖς καὶ Λευίτας). No semantic content was altered, and the theological guardrails around 'the Jews' were strictly respected.
-  readability_notes:
-  - The sentence flow was enhanced by changing 'the testimony of John, when' to 'John's testimony when' and removing the initial 'And', making it sound like natural modern English while keeping the gravity of the text.
-  compression_notes:
-  - Minimal compression was applied. Only the conjunction 'And' (Καὶ) was dropped to establish a cleaner sentence starter in English narrative style.
-  risk_flags:
-  - risk: The phrase 'the Jews' carries historical sensitivity; this is addressed and mitigated by keeping the explanatory footnote as directed by POB's theological decisions.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/001/019.yaml
-  source_text_sha256: 6eed89cc3795e2bde77d44db4ee793988713d657b61b58d59a16e661a682edcd
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 1a217439a6029144e1c1aba6eb393b3b4156999cc4cd2cbf21363161e5903466
-  timestamp: '2026-05-28T08:10:01Z'
-  output_hash: 712a4d1ad79ff4458142afcbf0c58c1fa6fd95b5a7498001d63e83dc5cbaffd7
-  usage:
-    prompt_tokens: 2075
-    completion_tokens: 557
-    total_tokens: 6105
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:24Z'
+  previous_text: This is John’s testimony when the Jews[a] sent priests and Levites from Jerusalem to ask him, "Who are you?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7b437cbcf97df538bde1b666d7c570d82023753f97df30d2610fac9df8c00ef1
+  review_summary: The streamlined opening and possessive are clear and retain the source sense; removing the initial conjunction does not materially obscure the scene. Revision is required because the SPOB footnote turns POB’s qualified contextual clarification into an overly broad claim and presents the authorities as an either/or substitute for the Jewish people. Restoring “often” and “especially,” while retaining the available lexical alternatives, gives readers the needed safeguard without collapsing the referent.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

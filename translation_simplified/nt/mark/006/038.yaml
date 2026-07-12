@@ -19,41 +19,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 6:38 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''said'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote ma'
 translation:
   language: en
-  text: He said to them, "How many loaves do you have? Go and see." When they found out, they said, "Five, and two fish."
+  text: But he said to them, “How many loaves of bread do you have? Go and see.” When they found out, they said, “Five loaves of bread and two fish.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But he said to them
-  simplified_phrase: He said to them
-  preserved_meaning: Keeps Jesus' reply while avoiding an unnecessary contrast marker in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: The dialogue sequence already supplies the contrast.
-retained_terms:
-- term: loaves
-  reason: Preserves the specific bread form in the feeding account.
-translation_notes:
-  source_alignment_notes: Preserves Jesus' question, command to check, and the answer of five loaves and two fish.
-  readability_notes:
-  - The dialogue is already clear and remains close to POB.
-  compression_notes:
-  - No number or food item is removed.
+- pob_phrase: How many loaves do you have?
+  simplified_phrase: How many loaves of bread do you have?
+  preserved_meaning: Identifies the loaves as bread for readers unfamiliar with biblical usage.
+  reasoning_layer_used: Source payload and immediate context
+  rationale: The question concerns the food available for the crowd.
+- pob_phrase: Five, and two fish.
+  simplified_phrase: Five loaves of bread and two fish.
+  preserved_meaning: Makes the implied counted item explicit without changing the quantities.
+  reasoning_layer_used: Greek ellipsis and immediate context
+  rationale: Repeating “loaves of bread” removes an avoidable English ambiguity.
+interpretive_expansions:
+- pob_phrase: Five
+  rendering: Five loaves of bread
+  claim: The number five counts the loaves mentioned in Jesus’ question.
+  evidence:
+  - The preceding question asks how many loaves they have.
+  - The answer separately counts two fish.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/038.yaml
   source_text_sha256: 1e27b819f4d981d14c057f986cf25b9fe32e1194ed515103b318746596bbf2cc
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:45Z'
-  output_hash: 8348f0fe80fd2d24f6af6e9be865d78870e113bdfda4f4635555e7d1859e7728
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 201f3e751fbceb7e713aa57036968020b5a3a6256df6e8768ac135d593b8368a
+  timestamp: '2026-07-12T07:20:28Z'
+  output_hash: 3b06a084299ce8de5c570af5162e7d81d90e8fcce384d2609423694116a092d8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2722
+    completion_tokens: 304
+    total_tokens: 3026
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: loaves
+  reason: Preserves the specific bread form in the feeding account.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:28Z'
+  previous_text: He said to them, "How many loaves do you have? Go and see." When they found out, they said, "Five, and two fish."
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ee3ba62c0ba2fa62d2dacbc4c0973ef7c76fde67e5cf99804a4d4cf792ab97e5
+  review_summary: Revision is needed because the current draft is not meaningfully clearer than POB under the stated approval standard. Explicitly identifying the counted “five” as loaves of bread is directly supported by the source and the immediate feeding context, and it removes an avoidable English ellipsis without adding doctrine or interpretation. Retaining “But” also preserves the verse’s responsive connection to the preceding dialogue.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

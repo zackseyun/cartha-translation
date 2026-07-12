@@ -31,46 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For in the resurrection people neither marry nor are given in marriage, but are like the angels of God in heaven.
+  text: For in the resurrection, people will neither marry nor be given to someone in marriage. Instead, they will be like God’s angels in heaven.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: For in the resurrection they neither marry nor are given in marriage[a], but are like the angels of God in heaven.
-  simplified_phrase: For in the resurrection people neither marry nor are given in marriage, but are like the angels of God in heaven.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
-retained_terms:
-- term: God
-  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
-- term: resurrection
-  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
+- pob_phrase: they neither marry nor are given in marriage
+  simplified_phrase: people will neither marry nor be given to someone in marriage
+  preserved_meaning: Resurrected people do not enter marriage or have someone arrange a marriage for them.
+  reasoning_layer_used: POB lexical decisions for γαμοῦσιν and γαμίζονται
+  rationale: The wording explains the passive expression while preserving the distinction between the two verbs.
+- pob_phrase: but are like the angels of God in heaven
+  simplified_phrase: Instead, they will be like God’s angels in heaven
+  preserved_meaning: Resurrected people are compared with angels and do not become angels.
+  reasoning_layer_used: POB theological decision on the nature of the comparison
+  rationale: A new sentence improves readability while “like” keeps the comparison limited.
+interpretive_expansions:
+- pob_phrase: they
+  rendering: people will
+  claim: The implied subjects are people living in the resurrection state.
+  evidence:
+  - The immediate context concerns humans after the resurrection.
+  - The POB lexical rationale describes ongoing resurrected life.
+  confidence: high
+- pob_phrase: are given in marriage
+  rendering: be given to someone in marriage
+  claim: The passive verb refers to another party giving a person in marriage.
+  evidence:
+  - The POB lexical decision distinguishes the passive verb from the active verb “marry.”
+  confidence: high
+  alternatives_preserved:
+  - be married off
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: “Given to someone in marriage” may sound historically distant.
+    mitigation: It retains the source’s distinct passive action in clearer modern syntax.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/030.yaml
   source_text_sha256: 0795e430b414463e5944d02a4e97ee51d57ff4ee1cf79fd6a06d4f1b8fee8969
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: a7ab7a0bae7cbbbc29576ef3bf08439cc69089fecc6fad8f25940e929da1b141
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f6df720a9ade2b577b076e35563c7761de8d032314699ce190eecbf65917fe39
+  timestamp: '2026-07-12T07:37:59Z'
+  output_hash: 2a6b33641050fdffb386997296b0e6aaba274822060a37001901e5231c4647a4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3220
+    completion_tokens: 434
+    total_tokens: 3654
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: God
+  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+- term: resurrection
+  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:59Z'
+  previous_text: For in the resurrection people neither marry nor are given in marriage, but are like the angels of God in heaven.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 42ef20a3d261d7bfb08eebd567861a5787d2c9691b8cc11b6d4f27dc8667915e
+  review_summary: “People” appropriately makes the implied human subject explicit and does not imply that people become angels. However, the draft does not sufficiently improve readability because “are given in marriage” remains difficult modern English. The recommended wording explains that passive construction while preserving its distinction from “marry,” retains the resurrection setting, and keeps the limited comparison with God’s angels in heaven.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

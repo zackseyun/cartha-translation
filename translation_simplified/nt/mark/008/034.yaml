@@ -34,41 +34,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After calling the crowd together with his disciples, he said to them, “If anyone wants to come after me, they must deny themselves, take up their cross, and follow me.”
+  text: After calling the crowd and his disciples together, he said to them, “If anyone wants to come after me, they must deny themselves, take up their cross[a], and follow me.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “Take up their cross” keeps the image of a literal cross, not merely carrying a personal burden.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: And after calling the crowd together with his disciples[a], he said to them, “If anyone wants to come after me, let him deny himself, take up his cross[b], and follow me.”
-  simplified_phrase: After calling the crowd together with his disciples, he said to them, “If anyone wants to come after me, they must deny themselves, take up their cross, and follow me.”
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
-retained_terms:
-- term: take up their cross
-  reason: Retained to preserve the concrete cross image rather than flattening it to a general burden.
+- pob_phrase: after calling the crowd together with his disciples
+  simplified_phrase: After calling the crowd and his disciples together
+  preserved_meaning: Jesus gathered both the crowd and his disciples before addressing them.
+  reasoning_layer_used: POB lexical decisions for προσκαλεσάμενος and σὺν τοῖς μαθηταῖς αὐτοῦ
+  rationale: Reordering the phrase makes clear that Jesus called both groups together.
+- pob_phrase: let him deny himself, take up his cross, and follow me
+  simplified_phrase: they must deny themselves, take up their cross, and follow me
+  preserved_meaning: The open invitation is followed by three binding commands for each prospective disciple.
+  reasoning_layer_used: POB theological decision on the force of the discipleship commands
+  rationale: Singular “they” is inclusive modern English, while “must” clearly conveys the imperatives.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: Modern readers may understand “cross” as merely a personal hardship.
+    mitigation: The footnote preserves the concrete image of the literal Roman cross.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/034.yaml
   source_text_sha256: 69c6da5805b9f8d94b9cbee53a630d6a9a9fa45f244d7e5986b154c916dbf585
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: 63ea7a37348f27534be9b9b1c50313797754ac94d21b3ed84d77521cce19e58b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6823cc77463ebc8c3b9196a145560eedf6cca2f88f09820b20bd9cf0f6cdf91d
+  timestamp: '2026-07-12T07:20:50Z'
+  output_hash: d2aef0c6a5c003cb793e2a8054bc002341ec7a47512ab4b443f1f91afacac41f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3618
+    completion_tokens: 350
+    total_tokens: 3968
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: take up their cross
+  reason: Retained to preserve the concrete cross image rather than flattening it to a general burden.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:50Z'
+  previous_text: After calling the crowd together with his disciples, he said to them, “If anyone wants to come after me, they must deny themselves, take up their cross, and follow me.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: cda0b8d0c39e9d11681203752591bec44c88be1052fe9ae59d8a06cd23586fef
+  review_summary: The inclusive singular “they” and the explicit command force of “must” are warranted by the indefinite τις and the following imperatives; they do not add a doctrinal claim. Removing the opening “And” is a harmless English stylistic simplification. However, the retained literal wording “take up their cross” needs the POB’s protective cultural clarification, since contemporary readers can otherwise mistake it for the very “general burden” paraphrase the audit trail rejects.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

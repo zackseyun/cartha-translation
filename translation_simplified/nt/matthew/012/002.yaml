@@ -31,40 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When the Pharisees saw this, they said to him, “Look, your disciples are doing what is not lawful[a] on the Sabbath.”
+  text: But when the Pharisees saw this, they said to him, “Look, your disciples are doing what is not lawful[a] on the Sabbath.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "not permitted."
+    text: Or “not permitted.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: saw it
+  simplified_phrase: saw this
+  preserved_meaning: The Pharisees observed the disciples’ action described in context.
+  reasoning_layer_used: POB lexical decision for ἰδόντες and immediate context
+  rationale: “This” points naturally to the disciples’ action without adding a new interpretation.
+- pob_phrase: what is not lawful to do
+  simplified_phrase: what is not lawful
+  preserved_meaning: The Pharisees accuse the disciples of doing something they consider legally impermissible on the Sabbath.
+  reasoning_layer_used: POB lexical and theological decisions for ὃ οὐκ ἔξεστιν
+  rationale: Removing the repeated “to do” makes the accusation smoother while keeping its legal-religious force.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Not lawful” could be taken as deciding whether biblical law or Pharisaic tradition is meant.
+    mitigation: The text leaves the source of the alleged rule unspecified, as POB requires.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/002.yaml
   source_text_sha256: 94d9a62caa8a432311133c100052d2cc732a8af329203c0fdbdf24434fd013f7
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: e87dfaf1d99e6fad3405202c76b3927669438ba9abe6e20761c3fd8591df8268
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d73449e24ee9c56b56badf6776cb8b515aba0d20d74ff89ffec179913c6ea5b0
+  timestamp: '2026-07-12T07:36:28Z'
+  output_hash: 7e4dd1114c7a27ba1d02997df7cb566210abc139f4c71320fb27e470dae51fd3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3123
+    completion_tokens: 316
+    total_tokens: 3439
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:28Z'
+  previous_text: When the Pharisees saw this, they said to him, “Look, your disciples are doing what is not lawful[a] on the Sabbath.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2f985cd650b3df3064958abda18a82d805e03c6fdadefc0485eeb8b21fd91a10
+  review_summary: 'Changing “saw it” to “saw this” is a warranted contextual clarification: it plainly refers to the disciples’ action and does not add interpretation. The draft should retain “But,” however, because the source and POB audit trail identify δέ as a meaningful contrast marker. No doctrinal expansion or improper resolution of the legal question is present.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

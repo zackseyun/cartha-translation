@@ -34,44 +34,62 @@ base_translation:
     changes_summary: Reordered 'at home' to follow 'paralyzed' for more natural English while preserving the Greek sense. No lexical changes otherwise.
 translation:
   language: en
-  text: and said, “Lord, my servant is lying paralyzed at home, suffering terribly.”
+  text: and said, “Lord, my servant[a] is lying paralyzed at home, suffering terribly.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “my boy” or “my child”; the Greek word can mean a servant or a child.
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: Lord
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: servant
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: and saying
+  simplified_phrase: and said
+  preserved_meaning: The centurion continues by speaking to Jesus.
+  reasoning_layer_used: POB lexical decision for καὶ λέγων
+  rationale: A finite verb gives the same narrative link in more natural English.
+- pob_phrase: my servant
+  simplified_phrase: my servant[a]
+  preserved_meaning: “Servant” remains the best contextual sense while the Greek word’s ambiguity is retained.
+  reasoning_layer_used: POB lexical decision for ὁ παῖς μου and grounding review
+  rationale: The footnote preserves the possible senses “boy” and “child.”
 translation_notes:
-  source_alignment_notes: The rendering 'and said' preserves the speech-introductory function of the Greek participle 'λέγων'. 'Is lying paralyzed' accurately reflects the state described by the perfect passive 'βέβληται' combined with the predicate adjective 'παραλυτικός'.
-  readability_notes:
-  - Smoothed the participial phrase 'and saying' into 'and said' for a more natural narrative transition in English. The phrase 'suffering terribly' is retained from the POB as it is highly readable and accurate.
-  compression_notes:
-  - No semantic content was compressed or omitted. Grammatical restructuring was minimized to preserve the structured style of biblical narrative.
   risk_flags:
-  - risk: None. The theological and lexical decisions from the POB are fully preserved and documented.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Readers may assume the Greek word can only mean “servant.”
+    mitigation: Footnote a preserves the genuine alternatives “boy” and “child.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/008/006.yaml
   source_text_sha256: bf34e6151e2da72f2da91db2ff88c8121b8c4dcbb4ad4c85498f59e0741e83bc
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 244402d9c4e27f766d293755a47fbbd4becdbd5a119a70ceeb97130de60b5a21
-  timestamp: '2026-05-28T08:41:20Z'
-  output_hash: c9282a22b79c01808175cea5d7aa063762c1b5f23738a3ac43e811e05f794158
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 323aa4879d54131b694dcde46cc2f47e08e26a73fdc17f344ea2f2e1534d9211
+  timestamp: '2026-07-12T09:02:05Z'
+  output_hash: e59f49b99e7234420dc27e0a00c747c87d8993b8809a1c83faedb05950e7828a
   usage:
-    prompt_tokens: 1933
-    completion_tokens: 547
-    total_tokens: 5479
+    prompt_tokens: 3426
+    completion_tokens: 283
+    total_tokens: 3709
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Lord
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: servant
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:05Z'
+  previous_text: and said, “Lord, my servant is lying paralyzed at home, suffering terribly.”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1bf35f3a71edd05e60212f295163e78bcf280f116ffcb2c6c36d2ba6f7534e87
+  review_summary: Changing the participial, less natural English phrase “and saying” to “and said” is a warranted readability improvement and does not change the narrative sense. The rest of the wording faithfully retains the POB’s source-grounded choices. However, the SPOB should retain a brief footnote for παῖς so that its genuine servant/child ambiguity is not lost.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

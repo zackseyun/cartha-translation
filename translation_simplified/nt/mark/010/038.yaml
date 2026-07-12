@@ -34,38 +34,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But Jesus said to them, “You do not know what you are asking. Are you able to drink the cup I drink, or to be baptized with the baptism I am baptized with?”
+  text: But Jesus said to them, “You do not know what you are asking. Can you drink the cup I drink, or undergo the baptism that I undergo?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But Jesus said to them[a], “You do not know what you are asking. Are you able to drink the cup that I drink[b], or to be baptized with the baptism with which I am baptized?”
-  simplified_phrase: But Jesus said to them, “You do not know what you are asking. Are you able to drink the cup I drink, or to be baptized with the baptism I am baptized with?”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: Are you able
+  simplified_phrase: Can you
+  preserved_meaning: Keeps the question about their ability to share Jesus’ appointed experience.
+  reasoning_layer_used: POB lexical decision for δύνασθε
+  rationale: “Can you” expresses ability in more natural common English.
+- pob_phrase: to be baptized with the baptism with which I am baptized
+  simplified_phrase: undergo the baptism that I undergo
+  preserved_meaning: Retains the baptism metaphor while presenting the experience in readable English.
+  reasoning_layer_used: POB lexical alternatives and theological decision on metaphor
+  rationale: The approved alternative removes awkward repetition without explaining the baptism too narrowly.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Undergo” reduces the Greek repetition of the baptism word-group.
+    mitigation: The noun “baptism” remains, preserving the central metaphor and its theological resonance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/038.yaml
   source_text_sha256: 41b439ba1c90d9211aa07ee260c67fbd5545412c916db00562f061751a7031da
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: b8092a7bf3d89a8e050e7a5018fb20320a3111132f567fdd1095e7439b3b4bd4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3716b957a072a57305798999d206031618b486ca676544c33f2cf2634c6266fe
+  timestamp: '2026-07-12T07:21:12Z'
+  output_hash: 85c764d8a70c908f876124ebebfba97d22a6b12b1aa1bcc11386ea8847ab57a0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3554
+    completion_tokens: 268
+    total_tokens: 3822
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:12Z'
+  previous_text: But Jesus said to them, “You do not know what you are asking. Are you able to drink the cup I drink, or to be baptized with the baptism I am baptized with?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8af56ca3228c2cb0635df9d5238de8824a3c749e468656982450362f8822d089
+  review_summary: The draft preserves the source meaning and does not add doctrinal content, but its principal simplification is too slight to meet SPOB’s understanding-first purpose. Using “undergo” is explicitly supported by the POB lexical audit, preserves the cup and baptism metaphors, and makes the second question understandable without explaining it as suffering, death, or divine wrath.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

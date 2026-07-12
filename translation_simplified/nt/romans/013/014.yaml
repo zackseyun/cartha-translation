@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/013/014.yaml
-  text: But put on the Lord Jesus Messiah[a], and make no provision for the flesh, for its desires.
+  text: But put on the Lord Jesus the Messiah[a], and make no provision for the flesh, for its desires.
   footnotes:
   - marker: a
     text: Or 'make no provision for the sinful nature.' The Greek says 'flesh,' which Paul often uses for fallen human impulses in contrast to life directed by God.
@@ -31,36 +31,72 @@ base_translation:
     changes_summary: 'Replaced ''the Messiah'' with ''Christ'' for more natural formal register and consistency with the Greek proper name/title sequence; adjusted the final phrase from ''to gratify its desires'' to ''for its desires'' to more closely reflect εἰς ἐπιθυμίας without interpretive expansion. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Instead, put on the Lord Jesus Messiah, and do not make room for the flesh or its desires.
+  text: Instead, put on the Lord Jesus the Messiah, and do not make plans to satisfy the desires of the flesh.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “the sinful nature.” Paul often uses “flesh” for fallen human impulses opposed to life directed by God.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: But
+  simplified_phrase: Instead
+  preserved_meaning: The command contrasts with the sinful conduct described just before it.
+  reasoning_layer_used: Immediate context and POB conjunction
+  rationale: “Instead” makes the contrast clear in natural English.
+- pob_phrase: make no provision
+  simplified_phrase: do not make plans
+  preserved_meaning: The command forbids arranging beforehand to fulfill wrong desires.
+  reasoning_layer_used: POB lexical decision for πρόνοιαν ποιεῖσθε
+  rationale: “Make plans” clearly conveys advance preparation.
+- pob_phrase: for the flesh, for its desires
+  simplified_phrase: to satisfy the desires of the flesh
+  preserved_meaning: The flesh’s desires are the intended result of the planning.
+  reasoning_layer_used: POB lexical rationale for εἰς ἐπιθυμίας
+  rationale: The purpose clause keeps flesh and its desires properly connected.
+interpretive_expansions:
+- pob_phrase: for its desires
+  rendering: to satisfy the desires of the flesh
+  claim: The planning aims at fulfilling desires that belong to the flesh.
+  evidence:
+  - The POB lexical audit says εἰς ἐπιθυμίας expresses purpose or result.
+  - The grounding review confirms that the desires are not a separate object of the prohibition.
+  confidence: high
+  alternatives_preserved:
+  - for its desires
+  - to gratify its desires
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Flesh” may be mistaken for the physical body alone.
+    mitigation: The footnote preserves the ethical Pauline sense without replacing the contested term.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/013/014.yaml
   source_text_sha256: 3a121ae0b9a4d3aa92132a724216c50aeefe7bc39c45ecbea85d45e2f9fdb193
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:41Z'
-  output_hash: 3f00e73753bb5a83a67b9efe7cce0f0b5fe96f01ca39734e0057b1b5188fc43b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 08da2b64fc2eff938af9e80dbcd9b30e6b661ad3399d39d174e51080b82f2acb
+  timestamp: '2026-07-12T07:42:56Z'
+  output_hash: 33956908b2903cf1c9974768c10602abefe9b97d581ad027484a2060f6d78028
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3860
+    completion_tokens: 453
+    total_tokens: 4313
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:56Z'
+  previous_text: Instead, put on the Lord Jesus Messiah, and do not make room for the flesh or its desires.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 43335bf2cae7f257ef85c96701d5c7616b64940ccb9ee44f6cbe94952a5a203c
+  review_summary: Revision is needed. “Instead” appropriately reflects the immediate contrast, and “put on” preserves Paul’s metaphor. However, “make room” weakens the source’s idea of advance provision/planning, while “or its desires” incorrectly separates two linked elements. The recommended wording is common English, preserves “flesh,” and clearly expresses the source’s prohibition against planning to fulfill the flesh’s desires.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

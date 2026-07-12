@@ -34,38 +34,68 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 10:1 after rising / as he was accustomed. Restored drafter ''after rising'' (preserving the chosen ''after'' temporal participle) and ''as he was accustomed'' (preserving the chosen periphrastic rendering) per chosen renderings.'
 translation:
   language: en
-  text: Then Jesus left there and came into the region of Judea and beyond the Jordan. Crowds gathered to him again, and as he usually did, he taught them.
+  text: Then Jesus left there and came into the region of Judea and beyond the Jordan. Crowds gathered to him again, and as he usually did, he again taught them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And from there[a], rising, he comes into the region of Judea and beyond the Jordan, and crowds gather to him again, and as was his custom[b], he again taught them.
-  simplified_phrase: Then Jesus left there and came into the region of Judea and beyond the Jordan. Crowds gathered to him again, and as he usually did, he taught them.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: And from there, rising, he comes
+  simplified_phrase: Then Jesus left there and came
+  preserved_meaning: Jesus got up and departed from the previous place before entering the next region.
+  reasoning_layer_used: POB lexical decisions for ἀναστὰς and ἔρχεται
+  rationale: The ordinary travel wording makes the sequence clear while identifying the known subject.
+- pob_phrase: crowds gather to him again
+  simplified_phrase: Crowds gathered to him again
+  preserved_meaning: Crowds once more converged on Jesus.
+  reasoning_layer_used: POB lexical decisions for συμπορεύονται, ὄχλοι, and πάλιν
+  rationale: Past tense gives natural English narration while retaining the first distinct “again.”
+- pob_phrase: as was his custom, he again taught them
+  simplified_phrase: as he usually did, he again taught them
+  preserved_meaning: Teaching was Jesus’ customary practice, and he taught these crowds once more.
+  reasoning_layer_used: POB lexical decisions for ὡς εἰώθει, πάλιν, and ἐδίδασκεν αὐτούς
+  rationale: The wording clearly preserves both habitual teaching and the second distinct “again.”
+interpretive_expansions:
+- pob_phrase: rising, he comes
+  rendering: Jesus left there and came
+  claim: Here rising describes getting up to depart, not resurrection.
+  evidence:
+  - The POB lexical rationale explicitly identifies departure as the contextual sense.
+  confidence: high
+  alternatives_preserved:
+  - Jesus got up and went
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Past-tense narration does not retain Mark’s historical present.
+    mitigation: Natural English readability is prioritized without changing the event or its sequence.
+  - risk: The geographic phrase can describe two regions or Judea beyond the Jordan.
+    mitigation: The main text keeps POB’s unresolved wording, “the region of Judea and beyond the Jordan.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/001.yaml
   source_text_sha256: ba2501ba7f064bf51cd9b506bff6f47c7e2840d5048631cfe702f2e1b8006ef9
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: c200cf074192cfbf76fca21aaa0e0f08bdccd2bf0c856242b118197d1b817cf7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8d6bca2c978b914d8dcecc88e562163a42a072b344753ab7bc3215b216847ddd
+  timestamp: '2026-07-12T07:21:06Z'
+  output_hash: bee59220ffd02e5fe8f0b17ceebe3fc7e65e6ec81ff3bcb7cfb9180028d2f3a0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 4087
+    completion_tokens: 501
+    total_tokens: 4588
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:06Z'
+  previous_text: Then Jesus left there and came into the region of Judea and beyond the Jordan. Crowds gathered to him again, and as he usually did, he taught them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 62898e2a4fa0eef1532d39853ec8b8a0da9da1641dea6581dcefa9bcdd684985
+  review_summary: The draft substantially improves readability while its explicit “Jesus” and “left there” are warranted by the narrative referent and the participle’s departure sense. It also appropriately leaves the geographic construction unresolved rather than choosing between the live readings noted in the POB audit trail. Revise only to retain the second distinct occurrence of “again.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

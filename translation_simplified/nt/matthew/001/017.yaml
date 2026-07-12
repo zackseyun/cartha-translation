@@ -34,15 +34,47 @@ base_translation:
     changes_summary: 'Added ''all the generations'' to reflect Πᾶσαι οὖν αἱ γενεαί, and changed ''Messiah'' to ''Christ'' for closer correspondence to τοῦ χριστοῦ in this context. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: So there were fourteen generations in total from Abraham to David, fourteen from David to the exile to Babylon, and fourteen from the exile to Babylon to the Messiah.
+  text: So from Abraham to David there were fourteen generations; from David to the exile to Babylon, fourteen generations; and from the exile to Babylon to the Messiah, fourteen generations.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Simplified the repetitive 'all the generations... were fourteen generations' to 'there were fourteen generations in total' to avoid awkward English redundancy while preserving the full quantitative meaning of the Greek 'pasai' (all).
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the repetitive 'all the generations... were fourteen generations' to 'there were fourteen generations in total' to avoid awkward English redundancy while preserving the full quantitative meaning of the Greek 'pasai' (all).
-- preserved_meaning: Used natural English ellipsis in the second and third parallel clauses, omitting the redundant repetition of the word 'generations' while strictly preserving Matthew's tripartite 14-14-14 structure.
-  reasoning_layer_used: POB audit trail
-  rationale: Used natural English ellipsis in the second and third parallel clauses, omitting the redundant repetition of the word 'generations' while strictly preserving Matthew's tripartite 14-14-14 structure.
+- pob_phrase: So all the generations from Abraham to David were fourteen generations
+  simplified_phrase: So from Abraham to David there were fourteen generations
+  preserved_meaning: The first span contains fourteen generations in the genealogy.
+  reasoning_layer_used: POB lexical decisions and applied revisions
+  rationale: This removes awkward repetition without adding the scope-uncertain phrase “in total.”
+- pob_phrase: and from David to the exile to Babylon fourteen generations, and from the exile to Babylon to the Messiah fourteen generations
+  simplified_phrase: from David to the exile to Babylon, fourteen generations; and from the exile to Babylon to the Messiah, fourteen generations
+  preserved_meaning: The three historical spans retain their distinct and equal counts.
+  reasoning_layer_used: POB audit trail and grounding review
+  rationale: Semicolons and repeated “generations” make the deliberate three-part pattern clear.
+- pob_phrase: the Messiah
+  simplified_phrase: the Messiah
+  preserved_meaning: The genealogy culminates in the promised messianic title.
+  reasoning_layer_used: POB theological decision on Χριστός
+  rationale: The title remains “Messiah” rather than the alternative “Christ.”
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/001/017.yaml
+  source_text_sha256: f980afd886d689e4d0f909bf910e4f41edac44f10b3ea2aa1911887a132037d5
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d7e52e59ceace4e002e1e0b480b5d4f43adb9bf0390920883697650190fc030f
+  timestamp: '2026-07-12T07:22:30Z'
+  output_hash: c33b7fee0a30e45d572840d5d951085d7507dde2524688a5e29653fa53cd0cfa
+  usage:
+    prompt_tokens: 4107
+    completion_tokens: 415
+    total_tokens: 4522
+    reasoning_tokens: 76
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Messiah
   reason: Retained to preserve POB's source-grounded terminology.
@@ -52,33 +84,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: David
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the structural alignment of the three historical periods and the specific Greek title 'tou christou' rendered as 'the Messiah' to honor the genealogical climax.
-  readability_notes:
-  - Removing the triple repetition of the noun 'generations' and the clumsy phrasing of the first clause makes the verse flow smoothly and clearly for modern readers.
-  compression_notes:
-  - Compressed 'all the generations... were fourteen generations' into 'there were fourteen generations in total'. No theological, historical, or numerical detail was lost.
-  risk_flags:
-  - risk: None. The translation strictly follows the mandatory theological correction to use 'Messiah' instead of 'Christ'.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/001/017.yaml
-  source_text_sha256: f980afd886d689e4d0f909bf910e4f41edac44f10b3ea2aa1911887a132037d5
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 805e7f01a6621c70a35b06aa64dea24fa109fb7a1205a97ffa83f11cfe4866e7
-  timestamp: '2026-05-28T08:10:08Z'
-  output_hash: f434a6984dd2b8603d09e981b1ac42c9e929f8cbd6767700b02dd055a9f47782
-  usage:
-    prompt_tokens: 2527
-    completion_tokens: 417
-    total_tokens: 6712
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:30Z'
+  previous_text: So there were fourteen generations in total from Abraham to David, fourteen from David to the exile to Babylon, and fourteen from the exile to Babylon to the Messiah.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 214cab3346b3961d08b10797324f0ec74445b27a996250a6472a169cbddf4203
+  review_summary: The draft accurately retains the three fourteen-generation periods, the exile to Babylon, and Messiah. Its ellipsis is understandable, but removing the unnecessary and potentially scope-ambiguous phrase “in total” and retaining “generations” in each parallel clause makes the summary clearer while preserving Matthew’s deliberate tripartite pattern.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

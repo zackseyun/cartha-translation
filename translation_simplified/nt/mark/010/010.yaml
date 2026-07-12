@@ -34,38 +34,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 10:10 when they were back in the house / began asking. Restored drafter ''when they were back in the house, the disciples again began asking'' (preserving the chosen temporal phrase and inceptive ''began'') per chosen renderings.'
 translation:
   language: en
-  text: Later, in the house, the disciples asked him about this again.
+  text: When they were back in the house, the disciples again began asking Jesus about this.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And in the house again[b][a], the disciples were asking him about this.
-  simplified_phrase: Later, in the house, the disciples asked him about this again.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+- pob_phrase: And in the house again
+  simplified_phrase: When they were back in the house
+  preserved_meaning: The scene shifts back to a private setting in the house without adding the unsupported timing implied by “Later.”
+  reasoning_layer_used: POB lexical decisions for Καὶ, εἰς τὴν οἰκίαν, and πάλιν
+  rationale: This natural transition preserves the return implied by the source phrase.
+- pob_phrase: the disciples were asking him about this
+  simplified_phrase: the disciples again began asking Jesus about this
+  preserved_meaning: The disciples resumed questioning Jesus about the matter discussed just before this verse.
+  reasoning_layer_used: POB lexical decisions for πάλιν, ἐπηρώτων, αὐτόν, and περὶ τούτου
+  rationale: Naming Jesus makes the pronoun clear while preserving the audited force of “again began asking.”
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person whom the disciples questioned was Jesus.
+  evidence:
+  - The POB lexical rationale explicitly identifies αὐτόν as referring to Jesus.
+  confidence: high
+  alternatives_preserved:
+  - him
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/010.yaml
   source_text_sha256: 8fd7ef6dbe1c050ff5bab7e4cb40408e627571855fa324fe1c4c195e98463330
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 79ee35dd7611b11bba38209a5c0e4e63530a315e777ef14bed946cf92bc1e725
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 172e97a157cb32e07dd6dabb15e74b5bbf50f0ed5b977bd614e3480431102f92
+  timestamp: '2026-07-12T07:21:38Z'
+  output_hash: 9def587560a1bc61899d390b8ef88a3d6e811cbc85ffb29a1ee5c166be0b161e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3488
+    completion_tokens: 327
+    total_tokens: 3815
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:38Z'
+  previous_text: Later, in the house, the disciples asked him about this again.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0638d40e135b8feb7c8dfda25b179087402f1f0e30808e4ee10bdb0698de83c2
+  review_summary: The draft is clear and does not introduce doctrinal content. However, “Later” is a small unsupported temporal expansion, while “in the house” also leaves out the return-to-private-setting sense identified in the POB audit. The recommended wording is equally accessible and better follows the source and audit trail.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

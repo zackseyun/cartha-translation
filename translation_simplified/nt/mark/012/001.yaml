@@ -40,14 +40,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'Then Jesus began speaking to them in parables: “A man planted a vineyard, put a fence around it, dug a winepress pit, built a tower, leased it to tenant farmers, and went away.”'
+  text: 'Then Jesus began speaking to them in parables: “A man planted a vineyard, put a fence around it, dug a pit for the winepress, built a tower, leased the vineyard to tenant farmers, and went away.”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: 'And he began to speak to them in parables: “A man planted a vineyard[a], and put a fence around it, and dug a winepress pit, and built a tower, and leased it to tenant farmers[d][c][b], and went away.”'
-  simplified_phrase: 'Then Jesus began speaking to them in parables: “A man planted a vineyard, put a fence around it, dug a winepress pit, built a tower, leased it to tenant farmers, and went away.”'
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+- pob_phrase: And he began to speak to them in parables
+  simplified_phrase: Then Jesus began speaking to them in parables
+  preserved_meaning: Jesus begins addressing the same people through parables as the narrative continues.
+  reasoning_layer_used: Immediate narrative context and POB lexical decisions
+  rationale: Naming Jesus clarifies the pronoun, while “Then” naturally carries the narrative forward.
+- pob_phrase: dug a winepress pit
+  simplified_phrase: dug a pit for the winepress
+  preserved_meaning: The man dug the lower pit associated with processing grapes in a winepress.
+  reasoning_layer_used: POB lexical decision and footnote b
+  rationale: The approved alternative explains the agricultural feature more clearly than the technical compound.
+- pob_phrase: leased it to tenant farmers
+  simplified_phrase: leased the vineyard to tenant farmers
+  preserved_meaning: The owner rented his vineyard to farmers who would work land belonging to him.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Repeating “the vineyard” removes an unclear pronoun while preserving the ownership and tenancy distinction.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The speaker is explicitly identified as Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the speaker.
+  - The grounding review approved making the pronoun explicit.
+  confidence: high
+  alternatives_preserved:
+  - he
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/012/001.yaml
+  source_text_sha256: d9c7abeb647d417923350c89da9ad69b693fb704bc8d4bbda9af706351a54b88
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 598d23649979c86d3d8e1237c47254b037b98712e2cda8109fe35c34e5fd3e4e
+  timestamp: '2026-07-12T07:23:25Z'
+  output_hash: 4e4867bbb2332f76b568ff61132cdfbb25b6e5d61db762a852168e81645ea5ec
+  usage:
+    prompt_tokens: 3945
+    completion_tokens: 400
+    total_tokens: 4345
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: parable
   reason: Retained because the POB/source context treats this as important wording or a named concept.
@@ -55,30 +97,13 @@ retained_terms:
   reason: Retained because the POB/source context treats this as important wording or a named concept.
 - term: tenant farmers
   reason: Retained because the POB/source context treats this as important wording or a named concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/012/001.yaml
-  source_text_sha256: d9c7abeb647d417923350c89da9ad69b693fb704bc8d4bbda9af706351a54b88
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 44e56b5b07ba7dddd7ab4c2e37e00dd85d279a03096e35999621b361d6f54b10
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:25Z'
+  previous_text: 'Then Jesus began speaking to them in parables: “A man planted a vineyard, put a fence around it, dug a winepress pit, built a tower, leased it to tenant farmers, and went away.”'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ed4f7c5c4a2563bb3acffb48ac34c5e8f6c8dda3368e7940a7b72f4337260988
+  review_summary: Making the pronoun explicit as “Jesus” is warranted by the immediate narrative context, and “Then” appropriately carries the narrative connection. “Tenant farmers” is also an audit-supported contextual clarification. Revise the one opaque compound “winepress pit” to the POB-supported, more readable “pit for the winepress.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

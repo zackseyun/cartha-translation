@@ -31,38 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'The scribe said to him, “Well said, Teacher. You have spoken truly: he is one, and there is no other besides him.'
+  text: 'The expert in the law said to him, “Well said, Teacher. What you said is true: God is one, and there is no other besides him.”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And the scribe said to him[a], “Well said, Teacher. You have spoken truly that he is one, and there is no other besides him.”
-  simplified_phrase: 'The scribe said to him, “Well said, Teacher. You have spoken truly: he is one, and there is no other besides him.'
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+- pob_phrase: the scribe
+  simplified_phrase: the expert in the law
+  preserved_meaning: He belonged to the recognized class of scholars in Jewish law, not merely to a group of copyists.
+  reasoning_layer_used: POB lexical decision for γραμματεύς
+  rationale: The clearer alternative prevents the common modern misunderstanding of “scribe.”
+- pob_phrase: You have spoken truly
+  simplified_phrase: What you said is true
+  preserved_meaning: The expert affirms that Jesus’ answer was truthful.
+  reasoning_layer_used: POB lexical decisions for ἐπ’ ἀληθείας and εἶπες
+  rationale: The recast clause expresses the same approval in more natural common English.
+- pob_phrase: that he is one
+  simplified_phrase: God is one
+  preserved_meaning: The singular subject is God, as supplied by the preceding discussion of Israel’s one God.
+  reasoning_layer_used: POB footnote and theological decision on εἷς ἐστιν
+  rationale: Naming the clear contextual referent makes the isolated verse immediately understandable.
+interpretive_expansions:
+- pob_phrase: he is one
+  rendering: God is one
+  claim: The implied subject “he” refers to God.
+  evidence:
+  - The POB footnote explicitly offers “God is one” as the contextual expansion.
+  - The POB theological rationale says the immediate context clearly concerns Israel’s one God.
+  confidence: high
+  alternatives_preserved:
+  - he is one
+  - there is one God
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Naming God makes the Greek verse’s elliptical subject explicit.
+    mitigation: The expansion follows the immediate context and is documented in the POB footnote.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/032.yaml
   source_text_sha256: ef2f1e31fbd02ad9cadc532fe811beb85e259d4f5d2232ca41e9e9952bf352ed
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 4ad7438b0da64a7c04c23638b5ca63e579e530529f35664941a1f76231cc7449
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 230fde13febdd6acf6f8ab3ff94d24a3b0571694e22257740a552a4916d7de3c
+  timestamp: '2026-07-12T07:22:52Z'
+  output_hash: 6fc5196ccafea959b733134caddb7f969567e13e1f088c50b6aa781f5e04d5a3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3625
+    completion_tokens: 444
+    total_tokens: 4069
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:52Z'
+  previous_text: 'The scribe said to him, “Well said, Teacher. You have spoken truly: he is one, and there is no other besides him.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7fb0036871ab6d7e76cd8a84167a05a10ef9e943f02eddb31919835abdb48bc8
+  review_summary: Revise. The colon is a reasonable clarity improvement, but the submitted text is incomplete because it lacks a closing quotation mark and otherwise does not sufficiently clarify two terms whose intended meaning is established by the immediate context and the POB audit trail. Explicitly identifying God preserves the verse's meaning without importing a further theological claim.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/010/002.yaml
-  text: 'Now these are the names of the twelve apostles: first[a], Simon who is called Peter, and Andrew his brother; James the son of Zebedee, and John his brother,'
+  text: 'These are the names of the twelve apostles: first[a], Simon who is called Peter, and Andrew his brother; James the son of Zebedee, and John his brother,'
   footnotes:
   - marker: a
     text: Or 'first' may imply prominence among the twelve, not merely first in sequence.
@@ -31,48 +31,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'These are the names of the twelve apostles: first[a], Simon, who is called Peter, and his brother Andrew; James, the son of Zebedee, and his brother John.'
+  text: 'These are the names of the twelve apostles: first[a], Simon, who is called Peter, and his brother Andrew; James, the son of Zebedee, and his brother John,'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'first' may imply prominence or leadership among the twelve, not just the first in order.
-    reason: simplification_note
+    text: Or “first” may imply prominence among the twelve, not merely first in order.
+    reason: alternative_reading
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: apostles
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: first
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: Simon who is called Peter, and Andrew his brother
+  simplified_phrase: Simon, who is called Peter, and his brother Andrew
+  preserved_meaning: Andrew is identified as Simon Peter’s literal brother.
+  reasoning_layer_used: POB lexical decisions
+  rationale: Placing the relationship before Andrew’s name makes the list easier to follow.
+- pob_phrase: James the son of Zebedee, and John his brother
+  simplified_phrase: James, the son of Zebedee, and his brother John
+  preserved_meaning: James is Zebedee’s son, and John is James’s literal brother.
+  reasoning_layer_used: POB lexical decisions
+  rationale: Modern word order clarifies the family relationships without changing them.
+- pob_phrase: first[a]
+  simplified_phrase: first[a]
+  preserved_meaning: Simon appears first in the list, with possible prominence left open.
+  reasoning_layer_used: POB theological decision
+  rationale: The main text and note preserve the documented ambiguity without asserting leadership.
 translation_notes:
-  source_alignment_notes: The literal genitive construction 'the son of Zebedee' and the identification 'who is called Peter' are maintained exactly to preserve historical and familial identifiers.
-  readability_notes:
-  - By converting 'Andrew his brother' and 'John his brother' into pre-positioned possessives ('his brother Andrew/John'), the rhythm of the list becomes significantly smoother for modern readers.
-  compression_notes:
-  - Slight compression was achieved by dropping the initial discourse particle 'Now', which is redundant when initiating a list in modern typography.
   risk_flags:
-  - risk: None. The potential ecclesiological and theological weight of 'first' (protos) is safely guarded by the retained footnote, preventing bias toward either sequential list order or primary apostolic authority.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Readers may take “first” as only sequence or as a claim of authority.
+    mitigation: The footnote preserves possible prominence without defining it as leadership.
+  - risk: The verse ends before the full list of twelve is complete.
+    mitigation: A final comma signals that the list continues in the next verse.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/010/002.yaml
   source_text_sha256: 7c663f4f7ac205bd1a762f8ee614a1827de192cdb5aa593cae1d45716abfd1ee
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 0a787a1e1af2fe247640c1fdf26eef51845febfb2a8367f393c5f4952cb48f3f
-  timestamp: '2026-05-28T08:39:29Z'
-  output_hash: ed4d9fa091dbda5364a7069d8bc8ea632786b2db402c170bf4d47370cb42bcb0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: af70823be8de45e267aba6ab8a3de7b0c6ff47f178feb745a30a2c5ad08b6b8b
+  timestamp: '2026-07-12T07:36:24Z'
+  output_hash: d9d5b87d2bea7193e4a1b8d44016cc028207f842bc1712f8eb7b3d0955702bcd
   usage:
-    prompt_tokens: 1784
-    completion_tokens: 490
-    total_tokens: 4234
+    prompt_tokens: 3680
+    completion_tokens: 406
+    total_tokens: 4086
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: apostles
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: first
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:24Z'
+  previous_text: 'These are the names of the twelve apostles: first[a], Simon, who is called Peter, and his brother Andrew; James, the son of Zebedee, and his brother John.'
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ec4104cf45c85ac002e26fac5522051a83589a76b43fac423ef88ea0442fa63b
+  review_summary: 'The reordering to “his brother Andrew/John” is a clear, source-compatible English clarification: in each case the possessive still refers to the immediately named man. Retain it. Revise the footnote to preserve the POB’s narrower, textually grounded alternative of possible prominence without making leadership the stated implication, and retain the continuing-list punctuation.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

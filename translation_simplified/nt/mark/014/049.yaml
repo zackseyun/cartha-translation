@@ -37,43 +37,60 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 14:49 But this has happened so that / might be fulfilled. Restored drafter ''But this has happened so that the Scriptures might be fulfilled'' (preserving the chosen interpretive paraphrase of ἀλλ'' ἵνα) per chosen renderings.'
 translation:
   language: en
-  text: Day after day I was with you in the temple, teaching, and you did not seize me. But let the Scriptures be fulfilled.”
+  text: Day after day I was with you, teaching in the temple courts, and you did not arrest me. But let the Scriptures be fulfilled.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Day after day I was with you in the temple[a], teaching, and you did not seize me[c][b]. But let the Scriptures be fulfilled.
-  simplified_phrase: Day after day I was with you in the temple, teaching, and you did not seize me. But let the Scriptures be fulfilled.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-retained_terms:
-- term: Scriptures
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-- term: temple
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+- pob_phrase: in the temple, teaching
+  simplified_phrase: teaching in the temple courts
+  preserved_meaning: Jesus taught publicly within the temple complex rather than specifically inside the sanctuary.
+  reasoning_layer_used: POB lexical decision and cultural note for ἐν τῷ ἱερῷ
+  rationale: “Temple courts” makes the location immediately clear and recasts the clause into natural English.
+- pob_phrase: you did not seize me
+  simplified_phrase: you did not arrest me
+  preserved_meaning: They did not take Jesus into custody while he was teaching publicly.
+  reasoning_layer_used: POB lexical alternatives for οὐκ ἐκρατήσατέ με and the arrest context
+  rationale: “Arrest” is clearer in this setting and is an explicitly permitted POB alternative.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Arrest” narrows the broader physical sense possible in “seize.”
+    mitigation: The immediate arrest scene and POB lexical audit directly support this contextual rendering.
+  - risk: “Temple courts” is more specific than the conventional phrase “in the temple.”
+    mitigation: The POB cultural note says the term refers to the temple complex rather than the inner sanctuary.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/049.yaml
   source_text_sha256: 9bfd3bf02349a0af3ea70070d829d4b79fae62de02ef91dfb3b9db17f5003b8b
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: 58512b0048f9bc023632a0010af60cb71c7654260f31052f32372e9f8f067f6a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b85411a9426b4046d8b320de70ac24775d77795e19850514ffb84d95cb70834e
+  timestamp: '2026-07-12T07:23:20Z'
+  output_hash: 654cd16b55621edf31321d72ff93d72abcd7c62c58161a25bcf4b232ae0c9485
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3868
+    completion_tokens: 335
+    total_tokens: 4203
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Scriptures
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+- term: temple
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:20Z'
+  previous_text: Day after day I was with you in the temple, teaching, and you did not seize me. But let the Scriptures be fulfilled.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: abf120f79aecaa19dc5fccc5fd8125024264892ba04ede9df30f7ad40d0d3991
+  review_summary: Revise. The wording remains faithful to the source and preserves the elliptical Scripture-fulfillment clause without imposing a stronger theological claim. However, it is not meaningfully clearer than POB. Replacing 'seize me' with the contextually supported 'arrest me' gives a genuine clarity gain, and the stray closing quotation mark should be removed.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

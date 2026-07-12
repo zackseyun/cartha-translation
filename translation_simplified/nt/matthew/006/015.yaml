@@ -31,45 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But if you do not forgive others, your Father will not forgive your wrongdoings[a] either.
+  text: But if you do not forgive others, your Father will not forgive your wrongdoings either.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or 'trespasses' or 'sins.'
-    reason: simplification_note
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: Father
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: forgive people
+  simplified_phrase: forgive others
+  preserved_meaning: The command concerns forgiving other people.
+  reasoning_layer_used: POB lexical decision for τοῖς ἀνθρώποις
+  rationale: “Others” is more natural here while retaining the generic human reference.
+- pob_phrase: neither will your Father forgive
+  simplified_phrase: your Father will not forgive ... either
+  preserved_meaning: The negative result remains directly tied to the unmet condition.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Modern English word order preserves the emphatic reciprocal structure.
+- pob_phrase: your trespasses
+  simplified_phrase: your wrongdoings
+  preserved_meaning: The phrase names a person’s moral offenses.
+  reasoning_layer_used: POB lexical decision for τὰ παραπτώματα ὑμῶν
+  rationale: “Wrongdoings” communicates the moral sense more clearly than “trespasses.”
 translation_notes:
-  source_alignment_notes: Maintained the strict conditional structure (if you do not... neither will your Father...) to preserve the profound theological tension present in the original Greek (ἐὰν δὲ μὴ... οὐδὲ ὁ πατὴρ ὑμῶν...), resisting any smoothing or theological softening.
-  readability_notes:
-  - Replaced the archaic 'neither will' syntax with 'will not... either' and updated 'trespasses' to 'wrongdoings' to make the warning clear and punchy for modern readers.
-  compression_notes:
-  - No meaning was compressed or lost. The structural reciprocity of the original statement is fully intact.
   risk_flags:
-  - risk: None. The theological conditional relationship is faithfully preserved without doctrinal bias.
-    mitigation: Flag retained for reviewer attention.
+  - risk: The conditional statement may invite competing theological explanations.
+    mitigation: The text retains the direct condition without resolving it doctrinally.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/006/015.yaml
   source_text_sha256: 69f82ce53dcde7f808342521f6c99e25e34cdfae5d838f6818bb1206c091c1bf
-  pob_commit_sha: 596da3b17d97fa6f4043e86c5421db337bf2c1d2
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 8200d34825ff5d0c36939354587bd81cf33bfef593831081f65d0950ed74fd45
-  timestamp: '2026-05-28T06:16:44Z'
-  output_hash: f9244f5091926f2955547d5dde940929785e88d08dc43f9bd1d11ce878b86de6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 83c4f34afed1cf3f79f0d013cebbda457444394b0df2d32ec935dde708a7f32b
+  timestamp: '2026-07-12T07:36:30Z'
+  output_hash: 12d6269404727288ceb7391d18a3b33dfbded466ccef1ff232e6232ce459134e
   usage:
-    prompt_tokens: 1749
-    completion_tokens: 493
-    total_tokens: 5676
+    prompt_tokens: 3283
+    completion_tokens: 309
+    total_tokens: 3592
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Father
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:30Z'
+  previous_text: But if you do not forgive others, your Father will not forgive your wrongdoings[a] either.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 40fb6e5366c726c1ab3b482cceadf9ec6eca53070fe205195da820a779b7e5d3
+  review_summary: The main text is a warranted and clearer simplification. “Others” naturally conveys the people in view, “wrongdoings” clearly communicates παραπτώματα, and the direct conditional statement about the Father’s forgiveness remains intact without theological softening. Revise only by removing the unnecessary and overly broad “sins” footnote (and cleaning the duplicated audit-trail entry).
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

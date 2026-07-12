@@ -37,43 +37,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to them, "A prophet is honored everywhere except in his hometown, among his relatives, and in his own household."
+  text: Jesus said to them, “A prophet is honored except in his hometown, among his relatives, and in his own household.”
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: And Jesus was saying to them
+  simplified_phrase: Jesus said to them
+  preserved_meaning: Jesus spoke this saying to the people present.
+  reasoning_layer_used: POB lexical decision for ἔλεγεν
+  rationale: Simple past is more natural here, though it does not foreground the imperfect aspect.
 - pob_phrase: A prophet is not without honor except
-  simplified_phrase: A prophet is honored everywhere except
-  preserved_meaning: Preserves the proverb's contrast while avoiding the double negative.
-  reasoning_layer_used: POB audit trail
-  rationale: Removing the double negative makes the saying easier for modern readers without changing its logic.
-retained_terms:
-- term: prophet
-  reason: Preserves the role named in Jesus' saying.
-- term: household
-  reason: Preserves the family/house sense distinguished in the POB note.
+  simplified_phrase: A prophet is honored except
+  preserved_meaning: The proverb contrasts normal honor with rejection in familiar circles.
+  reasoning_layer_used: POB lexical decision for ἄτιμος and independent grounding review
+  rationale: Removing the double negative improves clarity without adding the unsupported claim “everywhere.”
 translation_notes:
-  source_alignment_notes: Preserves Jesus' saying about honor in hometown, relatives, and household.
-  readability_notes:
-  - Turns a double negative into a positive statement with the same exception.
-  compression_notes:
-  - The three rejection settings are all retained.
+  risk_flags:
+  - risk: The simple past “said” does not explicitly preserve the ongoing aspect of “was saying.”
+    mitigation: The narrative speech event remains intact, and the POB audit permits “said” as an alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/004.yaml
   source_text_sha256: 8344781f6d0e4df947775309cfcc06aa5462b71cd8cf4c8ade79a916b5291eb9
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:45Z'
-  output_hash: 594614b1ef0615b06ab8c6e5ee3b2294dcdaf7a8facad8113d771aabfcbe5f8e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 22d5c0bfc2f8e89beb2efb475dfec61138208bf8c7755bf012fe89535c1701b1
+  timestamp: '2026-07-12T07:20:23Z'
+  output_hash: 77125cf684daa2bc93b9d9f694147e127b928b8a59f7ac6699f3ba8df97adf17
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3247
+    completion_tokens: 272
+    total_tokens: 3519
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: prophet
+  reason: Preserves the role named in Jesus' saying.
+- term: household
+  reason: Preserves the family/house sense distinguished in the POB note.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:23Z'
+  previous_text: Jesus said to them, "A prophet is honored everywhere except in his hometown, among his relatives, and in his own household."
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e9ea74d26c65643b0d950ac05c281aeb055128d2868ab49a0f8b2c6af562dde8
+  review_summary: The draft successfully makes the proverb clearer and retains its three progressively close social settings. However, “everywhere” is an unnecessary universalizing addition. Removing it preserves the intended positive, single-negative wording without extending the saying’s scope. Rendering the imperfect “was saying” as “said” is an acceptable readability simplification here.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

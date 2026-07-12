@@ -39,15 +39,45 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 1:9 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''with my spirit''].'
 translation:
   language: en
-  text: God is my witness that I continually mention you. I serve him with my spirit in sharing the Good News of his Son.
+  text: For God is my witness that I continually mention you. I serve him with my spirit in the good news of his Son.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Split the single grammatically complex POB sentence containing nested clauses into two shorter, direct sentences.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the single grammatically complex POB sentence containing nested clauses into two shorter, direct sentences.
-- preserved_meaning: Rendered 'in the good news' as 'in sharing the Good News' to clarify the relationship between Paul's spiritual service and the gospel for a modern reader.
-  reasoning_layer_used: POB audit trail
-  rationale: Rendered 'in the good news' as 'in sharing the Good News' to clarify the relationship between Paul's spiritual service and the gospel for a modern reader.
+- pob_phrase: For God, whom I serve with my spirit in the good news of his Son, is my witness that I continually mention you.
+  simplified_phrase: For God is my witness that I continually mention you. I serve him with my spirit in the good news of his Son.
+  preserved_meaning: God witnesses to Paul's continual mention of the believers, and Paul serves God with his spirit in the good news of God's Son.
+  reasoning_layer_used: POB syntax and lexical decisions
+  rationale: Two direct sentences remove the nested clause while preserving both claims.
+- pob_phrase: whom I serve
+  simplified_phrase: I serve him
+  preserved_meaning: Paul's service remains directed toward God.
+  reasoning_layer_used: POB lexical decision for λατρεύω
+  rationale: Replacing the relative clause with a direct statement makes the relationship immediately clear.
+translation_notes:
+  risk_flags:
+  - risk: Splitting the sentence may make Paul's description of serving God seem less closely tied to his appeal to God as witness.
+    mitigation: The sentences remain adjacent and preserve the same subjects, actions, and logical order.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/001/009.yaml
+  source_text_sha256: 508f4eb08b9c6f5f2e2eef6dd267d7fca0a600a6eaf437b22194cdc0a8fa5496
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: dae1a66214186fc1d771e8ed3a4d9158bac98427cce39546135e9886b53684f7
+  timestamp: '2026-07-12T07:40:48Z'
+  output_hash: e3b39d8efcfe17217dc23eec896e197bc525e9df7f57f60b0dbe5becfa42afd2
+  usage:
+    prompt_tokens: 3943
+    completion_tokens: 546
+    total_tokens: 4489
+    reasoning_tokens: 236
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: God
   reason: Retained to preserve POB's source-grounded terminology.
@@ -59,33 +89,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Son
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserved 'with my spirit' in accordance with the POB doctrinal realignment. Retained 'mention you' (μνείαν ὑμῶν ποιοῦμαι) and 'of his Son' (τοῦ υἱοῦ αὐτοῦ) to adhere strictly to POB lexical constraints against overinterpretation ('remember you' or 'about his Son').
-  readability_notes:
-  - By separating the witness oath from the description of Paul's ministry, the syntax is simplified significantly, making the verse much easier to read and comprehend for a modern audience.
-  compression_notes:
-  - Omitted the opening 'For' (γάρ) to allow a more direct and engaging start to the sentence in modern English, without losing the logical connection to the preceding verse.
-  risk_flags:
-  - risk: None. All decisions strictly adhere to the audited POB decisions and preserve the source-language meaning.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/001/009.yaml
-  source_text_sha256: 508f4eb08b9c6f5f2e2eef6dd267d7fca0a600a6eaf437b22194cdc0a8fa5496
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 6cd6ee31a336b63a2e9fae52a0c70f8caab4a33333228cd98aa6319ac095f00c
-  timestamp: '2026-05-28T08:08:55Z'
-  output_hash: 53fc9784e1f64089efcd110611df510aecf45d33e156c9a84852c7567e33f77f
-  usage:
-    prompt_tokens: 2410
-    completion_tokens: 395
-    total_tokens: 8063
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:40:48Z'
+  previous_text: God is my witness that I continually mention you. I serve him with my spirit in sharing the Good News of his Son.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 97718eecdfbb59bcc59380ba473532ebf487c4ceb137ec00bf79798bba3e48fa
+  review_summary: Splitting the sentence is a useful readability improvement and retains the oath-like appeal and Paul’s continual mention of the Roman believers. However, “in sharing” is an unsupported narrowing expansion of Paul’s service in relation to the good news. Remove that added activity while retaining the audited wording and the two-sentence structure.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

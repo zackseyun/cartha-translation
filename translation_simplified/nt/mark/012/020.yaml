@@ -31,38 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: There were seven brothers. The first took a wife, and when he died, he left no offspring.
+  text: There were seven brothers. The first of them married a woman, and when he died, he left no offspring.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: There were seven brothers; and the first took a wife[a], and when he died he left no offspring.
-  simplified_phrase: There were seven brothers. The first took a wife, and when he died, he left no offspring.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: the first took a wife
+  simplified_phrase: the first of them married a woman
+  preserved_meaning: The first brother in sequence entered into marriage.
+  reasoning_layer_used: POB lexical decisions for ὁ πρῶτος and ἔλαβεν γυναῖκα
+  rationale: This replaces a less-common marriage idiom and makes the sequential reference explicit.
+- pob_phrase: There were seven brothers; and
+  simplified_phrase: There were seven brothers. The
+  preserved_meaning: The account concerns seven male siblings and then begins with the first brother.
+  reasoning_layer_used: POB lexical decision for ἑπτὰ ἀδελφοὶ ἦσαν
+  rationale: The sentence break makes the sequence easier to follow without changing the relationship.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/020.yaml
   source_text_sha256: d103ad3636389754ea55c36490a3869e9745fb3bced4d29a9ece81797cd29fac
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 2d82834109c31b6c3d4398066b2f75ff5aec88d5db48a12f650b3f76375dff56
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 54b3b45e17d4e437f2ac8d832fd86878206ca6fa22a78c54822b16cb4f1b895e
+  timestamp: '2026-07-12T07:23:24Z'
+  output_hash: 37d67652e885341ec68440ca1fe18ee25f32a7ad27869a84e020bd37560f152c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2982
+    completion_tokens: 244
+    total_tokens: 3226
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:24Z'
+  previous_text: There were seven brothers. The first took a wife, and when he died, he left no offspring.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0e33c100f48bb127c5370728e8138c711e84585b38311783b4ab25b54e80187d
+  review_summary: The sentence break is faithful, but by itself provides only limited simplification. Replacing the retained marriage idiom with a direct modern expression makes the SPOB text meaningfully clearer while preserving the source meaning, the sequential force of “the first,” and the broad sense of “offspring.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

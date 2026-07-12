@@ -37,18 +37,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: As Jesus was walking on from there, he saw a man named Matthew sitting at the tax booth. He says to him, “Follow me.” And he got up and followed him.
+  text: As Jesus was going on from there, he saw a man named Matthew sitting at the tax booth. He says to him, “Follow me.” Matthew got up and followed him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Changed 'passing on' to 'walking on' to describe Jesus' movement in a more natural, modern idiom.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'passing on' to 'walking on' to describe Jesus' movement in a more natural, modern idiom.
-- preserved_meaning: Changed 'called Matthew' to 'named Matthew' for smoother readability.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'called Matthew' to 'named Matthew' for smoother readability.
-- preserved_meaning: Changed 'he rose' to 'he got up' to replace the formal/archaic verb with standard modern English while preserving the physical response sequence of the aorist participle.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'he rose' to 'he got up' to replace the formal/archaic verb with standard modern English while preserving the physical response sequence of the aorist participle.
+- pob_phrase: was passing on from there
+  simplified_phrase: was going on from there
+  preserved_meaning: Jesus was moving away from the previous place without specifying how he traveled.
+  reasoning_layer_used: POB lexical decision for παράγων and ἐκεῖθεν
+  rationale: “Going on” is clearer than “passing on” and does not narrow the movement to walking.
+- pob_phrase: a man called Matthew
+  simplified_phrase: a man named Matthew
+  preserved_meaning: The man was known by the name Matthew.
+  reasoning_layer_used: POB lexical alternative for Μαθθαῖον λεγόμενον
+  rationale: “Named Matthew” is immediate and natural in modern English.
+- pob_phrase: he rose and followed him
+  simplified_phrase: Matthew got up and followed him
+  preserved_meaning: Matthew physically got up and then responded to Jesus by following him.
+  reasoning_layer_used: POB lexical decisions for ἀναστὰς and ἠκολούθησεν αὐτῷ
+  rationale: “Got up” replaces formal wording, while naming Matthew prevents an unclear pronoun.
+translation_notes:
+  risk_flags:
+  - risk: The historical present “he says” may sound unusual in an otherwise past-tense narrative.
+    mitigation: It is retained because the POB deliberately preserves the Greek narrative vividness.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/009/009.yaml
+  source_text_sha256: c25fc0b5f08914ebd74da7141066c0f097f3626988e8ae68421d970aca53dbec
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6ba96ff971bf2e0a2732a1404179ed06d61d2d9ea88131e66ac06d0b3df2d3ad
+  timestamp: '2026-07-12T07:36:26Z'
+  output_hash: 914349435f33216f5b8093200bbef3b0a159dde829e9fca78de820907783b5fb
+  usage:
+    prompt_tokens: 3506
+    completion_tokens: 371
+    total_tokens: 3877
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: 'tax booth: Retained to maintain historical accuracy and consistency with POB''s lexical choice.'
   reason: Retained to preserve POB's source-grounded terminology.
@@ -56,33 +88,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: 'says: Retained the historical present ''says'' to preserve the narrative vividness of the source text, adhering to POB''s explicit lexical decision.'
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The simplified text remains strictly aligned with the Greek text structure. The sequence of actions—Jesus seeing Matthew, calling him, and Matthew's immediate physical response—is fully intact. The historical present verb 'λέγει' is preserved as 'says'.
-  readability_notes:
-  - The dense clause structure of the original POB sentence has been split into three shorter, natural sentences. This dramatically improves reading comprehension for modern readers without sacrificing the text's gravity.
-  compression_notes:
-  - No lexical semantic details or theological nuances were compressed or deleted.
-  risk_flags:
-  - risk: None. The choice to retain the historical present 'says' maintains grammatical tension as established by the POB editors, avoiding over-harmonization.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/009/009.yaml
-  source_text_sha256: c25fc0b5f08914ebd74da7141066c0f097f3626988e8ae68421d970aca53dbec
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 7df2d1bf6dedfcd24669b8a30a7077955790828d1f37169dd4c71c962096a91d
-  timestamp: '2026-05-28T08:42:54Z'
-  output_hash: fe16801077f6f327c9b279cc4b6d4a23eaaa77d59d45cc169b980de2e5c6e31d
-  usage:
-    prompt_tokens: 1917
-    completion_tokens: 463
-    total_tokens: 5268
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:26Z'
+  previous_text: As Jesus was walking on from there, he saw a man named Matthew sitting at the tax booth. He says to him, “Follow me.” And he got up and followed him.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 504cc60d731e8cffacfa0939b12a2f5b6373294667a18d5282cae9137773accb
+  review_summary: The draft appropriately makes “called Matthew” and “he rose” more immediately understandable as “named Matthew” and “he got up,” while retaining the concise, source-grounded summons “Follow me” and the POB’s deliberate historical present “he says.” Revise only “walking on,” which adds a manner of movement not expressed by the Greek; “going on” is clearer than POB’s “passing on” without narrowing the sense.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

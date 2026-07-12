@@ -34,41 +34,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Whoever sheds the blood of man, by man his blood shall be shed, because God made man in his image.
+  text: Whoever sheds a person's blood, the killer's own blood shall be shed by other people, because God made human beings in his image.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: The verse links human bloodshed, human-administered justice, and the image of God.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept the legal parallelism and POB's 'man' wording while replacing 'for' with 'because' for simpler reading.
-retained_terms:
-- term: man
-  reason: Retains the representative singular legal wording chosen in the POB.
-- term: image
-  reason: Preserves the imago Dei grounding.
+- pob_phrase: the blood of man
+  simplified_phrase: a person's blood
+  preserved_meaning: The victim is any human being, not only a male.
+  reasoning_layer_used: POB lexical decision and generic-adam footnote
+  rationale: “A person's blood” expresses the generic singular clearly in modern English.
+- pob_phrase: by man shall his blood be shed
+  simplified_phrase: the killer's own blood shall be shed by other people
+  preserved_meaning: Human beings are the agents who shed the murderer's blood.
+  reasoning_layer_used: POB lexical and theological decisions on agentive בָּאָדָם
+  rationale: The wording clarifies both whose blood is shed and who carries out the consequence.
+- pob_phrase: for God made man in his image
+  simplified_phrase: because God made human beings in his image
+  preserved_meaning: Humanity bears God's image, which grounds the preceding rule.
+  reasoning_layer_used: POB imago Dei theological decision
+  rationale: “Because” states the reason plainly, and “human beings” prevents a male-only reading.
+interpretive_expansions:
+- pob_phrase: his blood
+  rendering: the killer's own blood
+  claim: The pronoun refers to the person who shed the victim's blood.
+  evidence:
+  - The reciprocal bloodshed structure identifies the first bloodshed's perpetrator as the second bloodshed's subject.
+  - The POB rationale explicitly describes this person as “the murderer.”
+  confidence: high
+  alternatives_preserved:
+  - their own blood
 translation_notes:
-  source_alignment_notes: Preserves both halves of the bloodshed saying and the reason clause.
-  readability_notes:
-  - '''Because'' makes the reason clause clearer for modern readers.'
-  compression_notes:
-  - No legal or theological element was omitted.
+  risk_flags:
+  - risk: “Shall be shed” may sound formal to some readers.
+    mitigation: It preserves the POB's solemn legal force without changing it into an explicit command.
+  - risk: The verse may be read as a complete doctrine of capital punishment.
+    mitigation: The translation states human agency but adds no legal procedure or broader doctrinal claim.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/006.yaml
   source_text_sha256: 0a225ec68b42d4ddae263990de4ced95f3da4e8939006a4dabe1ed44c441b57b
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:37Z'
-  output_hash: 54753b7898d5e4e09a8a5ec00f9c4cda94d1ba659b896f4cf7f7ebe7122169d1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 33dcd9698bf4e28d41db9046dadaa044150fdb069cd169823ce322d118bef1e0
+  timestamp: '2026-07-12T09:24:30Z'
+  output_hash: 27a64de8b07b7d4dd5eb574dac1179af54d1419f652ec1ff1931f04ae2f46085
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3661
+    completion_tokens: 855
+    total_tokens: 4516
+    reasoning_tokens: 372
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: man
+  reason: Retains the representative singular legal wording chosen in the POB.
+- term: image
+  reason: Preserves the imago Dei grounding.
+spob_revision_history:
+- timestamp: '2026-07-12T09:24:30Z'
+  previous_text: Whoever sheds the blood of man, by man his blood shall be shed, because God made man in his image.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9142fa08f9967a5ebf11c9ebe264543947f7e0694726e3010f32159591ec7abb
+  review_summary: “Because” appropriately makes the ground clause clearer without adding doctrine. However, the draft otherwise reproduces POB’s elevated, potentially male-specific generic wording and therefore falls short of SPOB’s understanding-first purpose. The recommended text preserves the source’s threefold human reference, human agency in the stated consequence, and the image-of-God rationale without converting the saying into a fuller doctrinal claim about legal procedure or capital punishment.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

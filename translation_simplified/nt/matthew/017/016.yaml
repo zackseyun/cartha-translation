@@ -31,38 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I brought him to your disciples, but they could not heal him.
+  text: I brought him to your disciples, and they could not heal him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 17 POB wording
-  simplified_phrase: I brought him to your disciples, but they could not heal him.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 17:16 while using simpler modern common English.
-  reasoning_layer_used: POB translation, footnotes, lexical decisions, and theological decisions
-  rationale: Simplifies were not able to heal him to could not heal him.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing POB YAML record for Matthew 17:16; no external LLM or API was used.
-  readability_notes:
-  - Uses short sentences and common modern English while keeping the verse's controlling POB meaning.
-  compression_notes:
-  - Compresses repeated or formal phrasing only where the same meaning remains clear.
+- pob_phrase: they were not able to heal him
+  simplified_phrase: they could not heal him
+  preserved_meaning: The disciples lacked the ability to heal the boy.
+  reasoning_layer_used: POB lexical decision for ἠδυνήθησαν
+  rationale: “Could not” states the same inability in more direct modern English.
+- pob_phrase: And ... and
+  simplified_phrase: I brought ... and they could not
+  preserved_meaning: The two parts of the father’s report remain simply coordinated.
+  reasoning_layer_used: POB lexical decision for καὶ ... καὶ and grounding review
+  rationale: Keeping “and” avoids adding the contrastive force of “but.”
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/017/016.yaml
   source_text_sha256: 414d099521c57f01e097f471027f25379a5a5d4be2e6539b0cdef5214f392c0f
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:23Z'
-  output_hash: d37cb86b3a26d75ee96fbdda552d2b4dfc7906de7ff4a55af3e51b05d91bf177
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 04b7a8bb26273e7d28ed8f35f6c16f8f0e792a563d7cd407b77b6e2b3c7afe12
+  timestamp: '2026-07-12T07:36:44Z'
+  output_hash: 674d3ef76c339121bbffde9b29959617dcc24b3a85f8ff3480ce436882542461
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2947
+    completion_tokens: 215
+    total_tokens: 3162
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:44Z'
+  previous_text: I brought him to your disciples, but they could not heal him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 378aa9077b5e4d8c2b5f90df0f27e4c0771fb4e128eb9fcd3896efe9e10068ac
+  review_summary: The draft usefully simplifies “were not able” to the clearer, source-supported “could not.” However, “but” adds a contrastive relation that neither the Greek coordination nor the POB audit trail states. Retain “and” while keeping the clear modern wording.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

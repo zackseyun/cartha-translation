@@ -31,25 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So when the crowd saw that neither Jesus nor his disciples were there, they got into the boats[a] and went to Capernaum, looking for Jesus.
+  text: So when the crowd saw that neither Jesus nor his disciples were there, they themselves got into the boats[a] and went to Capernaum, looking for Jesus.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'small boats'; the Greek uses a diminutive form.
-    reason: simplification_note
+    text: Or “small boats”; the Greek uses a diminutive form.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Smoothed 'saw that Jesus was not there, nor his disciples' into 'saw that neither Jesus nor his disciples were there' for natural English flow.
-  reasoning_layer_used: POB audit trail
-  rationale: Smoothed 'saw that Jesus was not there, nor his disciples' into 'saw that neither Jesus nor his disciples were there' for natural English flow.
-- preserved_meaning: Omitted the emphatic 'themselves' (αὐτοὶ) to avoid redundant phrasing in modern English, as the context already makes their active role clear.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the emphatic 'themselves' (αὐτοὶ) to avoid redundant phrasing in modern English, as the context already makes their active role clear.
-- preserved_meaning: Changed 'came to Capernaum' to 'went to Capernaum' to better fit the narrative perspective of traveling to a destination.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'came to Capernaum' to 'went to Capernaum' to better fit the narrative perspective of traveling to a destination.
-- preserved_meaning: Relocated the footnote marker [a] from 'there' to 'boats' to correct a clear placement error in the POB source context.
-  reasoning_layer_used: POB audit trail
-  rationale: Relocated the footnote marker [a] from 'there' to 'boats' to correct a clear placement error in the POB source context.
+- pob_phrase: Jesus was not there, nor his disciples
+  simplified_phrase: neither Jesus nor his disciples were there
+  preserved_meaning: Both Jesus and his disciples were absent.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: The correlative structure expresses the same double absence in smoother English.
+- pob_phrase: they themselves got into the boats
+  simplified_phrase: they themselves got into the boats
+  preserved_meaning: The crowd members personally boarded the boats.
+  reasoning_layer_used: POB lexical decision for αὐτοὶ and grounding review
+  rationale: Retaining “themselves” preserves the Greek emphasis without reducing clarity.
+- pob_phrase: came to Capernaum
+  simplified_phrase: went to Capernaum
+  preserved_meaning: The crowd traveled to Capernaum.
+  reasoning_layer_used: POB lexical alternatives and grounding review
+  rationale: “Went” follows the travelers’ narrative viewpoint and remains within the audited alternative.
+translation_notes:
+  risk_flags:
+  - risk: “Went” changes the spatial viewpoint of POB’s “came.”
+    mitigation: The POB audit lists “went” as an acceptable alternative, and the travel event is unchanged.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/006/024.yaml
+  source_text_sha256: 427f1c140336aca054f705194cb0f32232f0d94695e7ad978b2f492e098fe761
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 563960b93290c4c5ef6789824840c28ecab75b738910b149fb1c7b9a7320f252
+  timestamp: '2026-07-12T07:15:07Z'
+  output_hash: 4303b948941232169c046a2cecc7b4516ee09f02ed61c83905eb77f12527664b
+  usage:
+    prompt_tokens: 3694
+    completion_tokens: 366
+    total_tokens: 4060
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: crowd
   reason: Retained to preserve POB's source-grounded terminology.
@@ -59,33 +88,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Jesus
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains the semantic content of the Greek clauses while adjusting the grammar to natural modern English syntax (e.g., using a correlative conjunction 'neither/nor').
-  readability_notes:
-  - The restructured negative clause and the omission of 'themselves' significantly improve reading speed and comprehension for a general audience.
-  compression_notes:
-  - The emphasis in 'they themselves' (αὐτοὶ) was compressed to 'they' to align with modern stylistic preferences.
-  risk_flags:
-  - risk: None. The semantic payload remains fully intact, and the footnote correction fixes a minor error in the base text.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/006/024.yaml
-  source_text_sha256: 427f1c140336aca054f705194cb0f32232f0d94695e7ad978b2f492e098fe761
-  pob_commit_sha: e017bec786169c48fb3916412815ad5ec3a5127f
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 1fd0010352f73fb6335f4a567cc3e8632264871dc30347faf7c00b69027767bb
-  timestamp: '2026-05-28T07:36:13Z'
-  output_hash: 493e35f539f0c83059f31eeb17726fb6ff61f37938b1888bd0bc5287237383e0
-  usage:
-    prompt_tokens: 1852
-    completion_tokens: 434
-    total_tokens: 5445
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:07Z'
+  previous_text: So when the crowd saw that neither Jesus nor his disciples were there, they got into the boats[a] and went to Capernaum, looking for Jesus.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 037abb6893b20130edeac3b399ea8e1c03a51401e2655f1c8d5c581acfd2716c
+  review_summary: The recasting with 'neither Jesus nor his disciples' is a warranted and clearer equivalent, and moving the boats footnote marker corrects its placement. 'Went to Capernaum' is idiomatic and does not materially alter the travel event. Revise only to retain the source's emphatic αὐτοὶ, which POB correctly preserves and which can be expressed plainly without sacrificing readability.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

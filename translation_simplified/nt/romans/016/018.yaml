@@ -37,36 +37,73 @@ base_translation:
     changes_summary: 'Replaced ''Messiah'' with ''Christ'' to reflect Χριστῷ more directly and maintain formal register and likely consistency in Pauline usage. No other changes needed. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: People like that do not serve our Lord Messiah, but their own appetite. By smooth talk and flattery, they deceive unsuspecting hearts.
+  text: People like that do not serve our Lord Messiah. Instead, they serve their own appetites.[a] With smooth talk and flattery, they deceive the hearts of unsuspecting people.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Literally, “their own belly,” a vivid image for self-indulgent desires.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: For such people
+  simplified_phrase: People like that
+  preserved_meaning: The phrase still points back to the divisive people in the previous verse.
+  reasoning_layer_used: POB lexical decision for τοιοῦτοι
+  rationale: The new wording is more natural in common English.
+- pob_phrase: do not serve our Lord Messiah, but their own belly
+  simplified_phrase: do not serve our Lord Messiah. Instead, they serve their own appetites
+  preserved_meaning: The contrast remains between serving the Lord and serving self-indulgent desires.
+  reasoning_layer_used: POB lexical decisions for δουλεύουσιν and κοιλίᾳ
+  rationale: Two sentences clarify the contrast, while the footnote preserves Paul’s concrete image.
+- pob_phrase: the hearts of the unsuspecting
+  simplified_phrase: the hearts of unsuspecting people
+  preserved_meaning: The deceived people are characterized as unsuspecting, and the biblical heart image remains.
+  reasoning_layer_used: POB lexical decisions for καρδίας and ἀκάκων
+  rationale: Adding “people” prevents readers from treating the hearts themselves as unsuspecting.
+interpretive_expansions:
+- pob_phrase: their own belly
+  rendering: their own appetites
+  claim: The belly image refers broadly to the deceivers’ self-indulgent desires.
+  evidence:
+  - The POB lexical rationale identifies the image as self-indulgent desire.
+  - The contrast presents these people as serving themselves rather than the Lord.
+  confidence: high
+  alternatives_preserved:
+  - their own belly
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Rendering “belly” as “appetites” could hide Paul’s vivid metaphor.
+    mitigation: The literal image and its sense are preserved in footnote [a].
+  - risk: “Unsuspecting” can also mean innocent or guileless.
+    mitigation: The wording retains POB’s contextually preferred sense without ruling out the related nuance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/018.yaml
   source_text_sha256: 5649c6457aabb11e4f533cefe1f21412b3a4a35113bb77fdabd5507f4fdf28f3
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:32Z'
-  output_hash: f64962b2cada5a4ba28dfd7892252acb01b703ea196e467a2e5a79a64ec2ea9e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: af146797928c26cb71f66963c045c476f717bc164cde365ffc96d1d412e0bce6
+  timestamp: '2026-07-12T07:42:59Z'
+  output_hash: f00c33258c2edfb597f7478c6dce86b15d931562f627075ded157f409557542e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3785
+    completion_tokens: 851
+    total_tokens: 4636
+    reasoning_tokens: 313
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:59Z'
+  previous_text: People like that do not serve our Lord Messiah, but their own appetite. By smooth talk and flattery, they deceive unsuspecting hearts.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 81ea4ef085dbfcc804930c613ef46d392fcfbd04476017e96297ea0e6393ee03
+  review_summary: 'The draft appropriately makes “such people” more conversational and retains the warranted contrast between serving the Lord and serving oneself. No doctrinal expansion is introduced. Revision is needed because “unsuspecting hearts” does not clearly express the source construction: it is the people whose hearts are deceived who are unsuspecting. “Own appetites” also better communicates the figurative self-indulgent sense than singular “appetite” for modern readers.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

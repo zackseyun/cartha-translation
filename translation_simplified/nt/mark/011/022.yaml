@@ -31,41 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus answered them, “Have faith in God.”
+  text: Jesus replied to them, “Have faith in God.”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: More literally, “Have the faith of God.” The Greek may also mean “Have God’s faithfulness” or “Have faith from God.”
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: And Jesus answered them[a], “Have faith in God.”
-  simplified_phrase: Jesus answered them, “Have faith in God.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: faith in God
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: Jesus answered them
+  simplified_phrase: Jesus replied to them
+  preserved_meaning: Jesus responds directly to the disciples.
+  reasoning_layer_used: POB lexical decision for ἀποκριθεὶς and λέγει
+  rationale: “Replied” expresses the permitted discourse sense in more natural modern English.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Faith in God” resolves an ambiguous Greek construction in the main text.
+    mitigation: The footnote preserves the documented alternative meanings.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/022.yaml
   source_text_sha256: 8ad07916df138674917d01bcc5374eb765d39aba5c2bf075b3ddd9f6c5f170df
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 1a122aeafc0221e4ab0ddb29b9055f4cf0523f75df47d82271760762e42021b9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c632c62d3c564cb35b87a857e4453c57f2b10aeee5c933c1ef53e169fac0db27
+  timestamp: '2026-07-12T07:21:23Z'
+  output_hash: 512cb2872276da9a18e251c42de86970392aa22b5688886481de619001ba673f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3087
+    completion_tokens: 266
+    total_tokens: 3353
+    reasoning_tokens: 47
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: faith in God
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:23Z'
+  previous_text: Jesus answered them, “Have faith in God.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8703ac5d82c40c00c3fdffc8f3a974e0c9a71156ca60927f80a6a8c33d15f168
+  review_summary: The rendering “Have faith in God” is source-grounded and contextually warranted by the POB’s objective-genitive decision; it does not introduce doctrine or erase a distinction beyond the POB’s already documented main-text choice. However, the submitted SPOB text is not meaningfully clearer than POB. Replacing “answered” with the more natural “replied” supplies a modest but real readability improvement while preserving the same discourse function and plural audience.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

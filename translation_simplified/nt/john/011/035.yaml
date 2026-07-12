@@ -31,36 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus wept.
+  text: Jesus shed tears.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Jesus wept.
+  simplified_phrase: Jesus shed tears.
+  preserved_meaning: Jesus genuinely cried, without implying louder wailing or a stronger lament.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The source-supported wording makes the physical tears explicit in common English.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Shed tears” may sound slightly more descriptive than the concise Greek clause.
+    mitigation: The POB lexical audit explicitly recognizes it as an accurate alternative for the verb.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/035.yaml
   source_text_sha256: 3f91f7fed2320e918a6542dc543ebd18addf655a5a80198a8b735e73373e47d8
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: c4d6d18b4a2ef32e9b21b591603ff7e9c7d726c8dea4ca0fc9196300491c0690
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9be977ef720b418621b71b8d5e3813bcb948496f72177da873d24793b30d15d2
+  timestamp: '2026-07-12T07:16:04Z'
+  output_hash: e44c2ea3d6a00ee2bd820ca2ee863e1e2768457013f644145781e796dc5de889
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2559
+    completion_tokens: 160
+    total_tokens: 2719
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:04Z'
+  previous_text: Jesus wept.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4df7f37c28e6618f72f35a664c335e65e4b4e5371c70dbb508ecdc719c74a5cf
+  review_summary: The draft faithfully preserves the Greek’s restrained description of Jesus’ tears and introduces no doctrinal expansion. However, because it simply repeats the POB wording, it does not meet the stated requirement that an SPOB approval be meaningfully clearer than POB. “Jesus shed tears” is a publication-ready, source-warranted clarification that makes the physical expression explicit without importing louder mourning, a cause for the tears, or theological interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

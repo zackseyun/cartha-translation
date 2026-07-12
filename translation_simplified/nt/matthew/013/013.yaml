@@ -31,42 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matt 13:13 though seeing, they do not see / though hearing, they do not hear. Restored drafter ''though seeing, they do not see'' and ''though hearing, they do not hear'' (preserving the chosen concessive ''though'' rendering); kept azure''s comma to avoid colon-in-plain-scalar.'
 translation:
   language: en
-  text: 'That is why I speak to them in parables: though they see, they do not really see; though they hear, they do not really hear or understand.[a]'
+  text: 'That is why I speak to them in parables: though they see, they do not see; though they hear, they do not hear or understand.[a]'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: More formally, “seeing they do not see, and hearing they do not hear.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: For this reason I speak to them in parables, because
+  simplified_phrase: 'That is why I speak to them in parables:'
+  preserved_meaning: Jesus gives the reason he speaks to them in parables.
+  reasoning_layer_used: POB causal decisions for διὰ τοῦτο and ὅτι
+  rationale: A direct opening and colon express the same causal relationship in natural English.
+- pob_phrase: though seeing, they do not see, and though hearing, they do not hear
+  simplified_phrase: though they see, they do not see; though they hear, they do not hear
+  preserved_meaning: The paradox contrasts outward perception with failure to grasp its significance.
+  reasoning_layer_used: POB lexical and theological decisions on the participles
+  rationale: Finite clauses and a semicolon clarify the parallel contrast without adding an unsupported intensifier.
+- pob_phrase: nor do they understand
+  simplified_phrase: or understand
+  preserved_meaning: They fail both to hear in the intended sense and to understand.
+  reasoning_layer_used: POB lexical decision for οὐδὲ and συνίουσιν
+  rationale: Coordinating the final verbs avoids formal inversion while keeping them distinct.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: The repeated seeing and hearing may sound paradoxical to modern readers.
+    mitigation: The concessive “though” and retained repetition preserve the source image without explaining it away.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/013.yaml
   source_text_sha256: e49bacf0f6a1eb60dab73063b7462754ad8e4a04c1bf49b88830131a6904926e
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 7c83c38adf1f97b0067275910faf29c880dc20a2b526989bf566ebe83c14541d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 81c56e815a2dd3f1b9a30b415ba63aca6ea0262277f933e439fec7560410e851
+  timestamp: '2026-07-12T07:36:33Z'
+  output_hash: 7bf1bbe9a436df17265df8ab3d1a84bf95ebe81ba671ecf5ef68cace1bf90433
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3823
+    completion_tokens: 416
+    total_tokens: 4239
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:33Z'
+  previous_text: 'That is why I speak to them in parables: though they see, they do not really see; though they hear, they do not really hear or understand.[a]'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3b586e317fba43c8c57d93fd1dbda3d4d9163417da22330134d98901027fc1da
+  review_summary: The colon and concessive “though” make the sentence more accessible than the POB’s more formal participial sequence and are supported by the POB audit trail. Revise “really” because it adds a potentially misleading intensification and partially explains away the source text’s intentional paradox. The recommended wording remains clear while preserving the repeated seeing/hearing language and the final explicit failure to understand.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

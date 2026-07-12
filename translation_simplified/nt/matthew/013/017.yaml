@@ -31,42 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For truly I tell you, many prophets and righteous people wanted to see what you see but did not see it, and to hear what you hear but did not hear it.[a]
+  text: 'For I tell you the truth: many prophets and righteous people[a] longed to see what you see, but did not see it, and to hear what you hear, but did not hear it.'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “the righteous”; the Greek means righteous persons.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: For truly I say to you that
+  simplified_phrase: 'For I tell you the truth:'
+  preserved_meaning: Preserves the solemn assurance and its explanatory connection to the preceding statement.
+  reasoning_layer_used: POB lexical decisions for ἀμὴν, γὰρ, and λέγω ὑμῖν
+  rationale: The recast formula is clearer modern English without weakening its force.
+- pob_phrase: longed to see what you see and did not see it, and to hear what you hear and did not hear it
+  simplified_phrase: longed to see what you see, but did not see it, and to hear what you hear, but did not hear it
+  preserved_meaning: Keeps the strong desire and the parallel contrast between what earlier faithful people desired and what the disciples experience.
+  reasoning_layer_used: POB lexical decisions for ἐπεθύμησαν and the parallel sight and hearing clauses
+  rationale: Adding “but” makes each contrast immediately clear while retaining “longed” for strong desire.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: Readers may expect the objects of seeing and hearing to be identified explicitly.
+    mitigation: The wording keeps them implicit because the POB theological decision preserves the verse’s own ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/017.yaml
   source_text_sha256: 667ec0bec45013123fd4e3a1a1929c827228b2131916bf113acc49179bc92124
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: ad280d877e1ff8d9d957b11dcb11e288872bec45f499bab2d39628c430af823e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4a4b8af0e4d8be4b5fa7b01659a5da9d1c4c692fba2570df7ccf8f28d595ea35
+  timestamp: '2026-07-12T07:36:33Z'
+  output_hash: 40c59b45f11e0df0dc90518b1f50cbac2e698da61b621d327127c0ee346e2aea
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3655
+    completion_tokens: 382
+    total_tokens: 4037
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:33Z'
+  previous_text: For truly I tell you, many prophets and righteous people wanted to see what you see but did not see it, and to hear what you hear but did not hear it.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: cb13977c0a8f7ad8c094843692ae820d5dea244dedff9dcee7476cae8159b533
+  review_summary: The draft appropriately avoids adding an interpretation of what the disciples see and hear, and “I tell you” is a warranted modern rendering of the formula. However, “wanted” understates the strong longing expressed by ἐπεθύμησαν. Retain “longed,” and move the lexical footnote marker to “righteous people.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -37,39 +37,66 @@ base_translation:
     changes_summary: 'doctrine_realignment: Genesis 10:32 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''were divided''].'
 translation:
   language: en
-  text: These are the family groups of Noah’s sons, according to their family lines and nations. From them, the nations spread out over the earth after the flood.
+  text: These are the family groups descended from Noah’s sons, according to their family lines, within their nations. From these family groups, the nations became separate and spread out over the earth after the flood.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Concludes the Table of Nations by summarizing Noah’s sons and the spread of nations after the flood.
-  reasoning_layer_used: POB audit trail
-  rationale: Uses 'family groups' and 'spread out' to clarify the summary while preserving the post-flood national dispersion.
-retained_terms:
-- term: Noah’s sons
-  reason: Keeps the genealogy anchored in Noah’s family.
+- pob_phrase: the families of the sons of Noah
+  simplified_phrase: the family groups descended from Noah’s sons
+  preserved_meaning: The verse summarizes the kinship groups that came from Noah’s sons.
+  reasoning_layer_used: POB lexical decision for מִשְׁפְּחֹת and the genealogical context
+  rationale: “Family groups” clearly conveys extended kinship divisions without the technical tone of “clans.”
+- pob_phrase: according to their generations, by their nations
+  simplified_phrase: according to their family lines, within their nations
+  preserved_meaning: Family lines and nations remain distinct descriptions of how the groups are identified.
+  reasoning_layer_used: POB lexical decisions for לְתוֹלְדֹתָם and בְּגוֹיֵהֶם
+  rationale: The wording preserves both qualifiers while making “generations” easier to understand.
+- pob_phrase: the nations were separated on the earth
+  simplified_phrase: the nations became separate and spread out over the earth
+  preserved_meaning: The nations divided from one another and dispersed across the earth.
+  reasoning_layer_used: POB lexical decision for נִפְרְדוּ and theological decision on global אֶרֶץ
+  rationale: The phrase keeps the idea of separation while making the resulting worldwide dispersion clear.
+interpretive_expansions:
+- pob_phrase: from these
+  rendering: From these family groups
+  claim: The pronoun refers to the family groups just named.
+  evidence:
+  - The immediate context names Noah’s family groups as the antecedent.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the family, generation, nation, earth, and flood elements of the POB verse.
-  readability_notes:
-  - Splits the conclusion into two clear sentences.
-  compression_notes:
-  - No summary element is removed.
+  risk_flags:
+  - risk: “Spread out” alone could weaken the source verb’s sense of separation.
+    mitigation: “Became separate” retains that force before describing the dispersion.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/032.yaml
   source_text_sha256: 6200a1cde21800439568acdf3c25ff86fffe522eb310768f8d7435252d5eb497
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:03Z'
-  output_hash: 70431234638f02c5f0489f96914253907786ee36213fdaa02d2a597e6c579a26
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e3df1acc1d1845ff6747110011ed69c0577e50da1105a6206f577eca7d02557d
+  timestamp: '2026-07-12T09:23:39Z'
+  output_hash: eb8b5fe93366d1861cd5ae9cf0265ce972f6583de317b562c81a97edc9c4008a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3868
+    completion_tokens: 1017
+    total_tokens: 4885
+    reasoning_tokens: 530
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Noah’s sons
+  reason: Keeps the genealogy anchored in Noah’s family.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:39Z'
+  previous_text: These are the family groups of Noah’s sons, according to their family lines and nations. From them, the nations spread out over the earth after the flood.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a113a0c4809e4f639e6835934f229fd26970e009378aeca220cb82202ce22069
+  review_summary: The draft is clearer than POB in using “family groups” and “spread out,” both of which are contextually warranted in this Table of Nations summary. However, its phrasing merges the distinct family-line and nation qualifiers. The revision preserves those relationships while retaining accessible language and makes the antecedent of “From these” explicit.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

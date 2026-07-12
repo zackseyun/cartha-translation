@@ -31,43 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Some people are like the seed along the road, where the word is sown. When they hear it, Satan immediately comes and takes away the word that was sown in them.
+  text: Some people are like the ground along the road where the word is sown. When they hear it, Satan immediately comes and takes away the word that was sown in them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: 'And these are the ones along the road where the word is sown: when they hear[a], Satan immediately comes and takes away the word that was sown in them.'
-  simplified_phrase: Some people are like the seed along the road, where the word is sown. When they hear it, Satan immediately comes and takes away the word that was sown in them.
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: Satan
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
-- term: the word
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: the ones along the road
+  simplified_phrase: Some people are like the ground along the road
+  preserved_meaning: The people correspond to the roadside ground, not to the seed.
+  reasoning_layer_used: POB lexical decision for οἱ παρὰ τὴν ὁδόν and immediate parable context
+  rationale: Making the implied ground explicit prevents readers from mistaking the people for the seed.
+- pob_phrase: 'where the word is sown: when they hear'
+  simplified_phrase: where the word is sown. When they hear it
+  preserved_meaning: The word is sown, and these people hear that word.
+  reasoning_layer_used: POB translation and lexical decisions for σπείρεται ὁ λόγος and ὅταν ἀκούσωσιν
+  rationale: Two sentences clarify the sequence, while “it” naturally identifies what they hear.
+interpretive_expansions:
+- pob_phrase: the ones along the road
+  rendering: Some people are like the ground along the road
+  claim: The hearers correspond to the roadside ground where the word is sown.
+  evidence:
+  - The POB describes the people by the location where sowing occurs.
+  - The verse identifies the word as what is sown in them.
+  - Mark 4:14 identifies the sower's seed as the word.
+  confidence: high
+  alternatives_preserved:
+  - the ones along the road
+  - those beside the path
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: Adding “ground” makes an implied part of the parable image explicit.
+    mitigation: The wording preserves the POB’s roadside location and keeps the word as the sown entity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/015.yaml
   source_text_sha256: cfda26f4fe8dd957ea3b4d6a3391bc0e4a884c237c7fb173a628b51dd53f5911
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 30a53797db8d94f1bac8d0eb802cd237f559db05aa2a3cb8696190cf90a845c1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2a6082f1f8686476b597e7da057ab72c012876229c8a58082671a631930512bf
+  timestamp: '2026-07-12T07:20:12Z'
+  output_hash: 998c27a61d684c05d7be608b70282a0232b99a91ed2061796ad9dcb83e252b7e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3675
+    completion_tokens: 528
+    total_tokens: 4203
+    reasoning_tokens: 82
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Satan
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- term: the word
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:12Z'
+  previous_text: Some people are like the seed along the road, where the word is sown. When they hear it, Satan immediately comes and takes away the word that was sown in them.
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a0bd328cb3d27fc67933e260ec3ca03ebc18c76f6448e9bd4a7a947658a9987a
+  review_summary: The draft improves readability by making the hearers explicit and by separating the temporal clause into a second sentence. However, its opening reverses the metaphorical roles of the people and the word. The replacement retains the POB's source-supported roadside-location image while making the implied ground explicit for modern readers.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

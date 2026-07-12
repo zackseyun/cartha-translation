@@ -31,36 +31,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The God of peace will soon crush Satan under your feet. The grace of our Lord Jesus Christ be with you.
+  text: The God of peace will soon crush Satan under your feet. May the grace of our Lord Jesus Messiah[a] be with you.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Traditionally, “Jesus Christ.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: The grace of our Lord Jesus Christ be with you
+  simplified_phrase: May the grace of our Lord Jesus Messiah be with you
+  preserved_meaning: The closing words remain a blessing asking that the Lord’s grace accompany the believers.
+  reasoning_layer_used: POB lexical and theological decisions; POB benediction rationale
+  rationale: “May” clearly marks the clause as a blessing, while “Messiah” follows the audited title choice.
+- pob_phrase: will soon crush Satan under your feet
+  simplified_phrase: will soon crush Satan under your feet
+  preserved_meaning: God will soon and decisively defeat Satan, with the believers sharing in the victory.
+  reasoning_layer_used: POB lexical decisions for συντρίψει, ὑπὸ τοὺς πόδας ὑμῶν, and ἐν τάχει
+  rationale: The vivid crushing image and corporate “your feet” are already clear and must not be weakened.
+interpretive_expansions:
+- pob_phrase: The grace ... be with you
+  rendering: May the grace ... be with you
+  claim: The final clause functions as a blessing rather than a plain prediction.
+  evidence:
+  - The POB identifies the clause as a benediction.
+  - The POB notes that the Greek verb is implied and must be supplied in English.
+  confidence: high
+  alternatives_preserved:
+  - The grace ... be with you
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The displayed POB says “Jesus Christ,” but its lexical and theological audit selects “Jesus Messiah.”
+    mitigation: The main text follows the audited decision, while the traditional wording is retained in a footnote.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/020.yaml
   source_text_sha256: bd67a9c448f057701c6c786f86fdcc6e175607984c22123fb0d80ed940088e95
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:32Z'
-  output_hash: eee956d62bc3be681dbdb5d12536aa2a292afcb923e16dbf2d01dbc5de4dbbd8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bd65bf2ad06f5d567649695cb2952d6da6eafcd8c8ede001c812010ac6884d74
+  timestamp: '2026-07-12T07:42:59Z'
+  output_hash: 454d20a02143613f244abcd0f81bcd3169280e45b1dde93dde5dd386b1369268
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3427
+    completion_tokens: 741
+    total_tokens: 4168
+    reasoning_tokens: 285
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:59Z'
+  previous_text: The God of peace will soon crush Satan under your feet. The grace of our Lord Jesus Christ be with you.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 47e7c5cfd83e5f995fe495a45e6548ee986f895302b7b467e943bfaeed1fde1d
+  review_summary: The wording is faithful to the displayed POB and does not introduce doctrinal expansion. However, it is not meaningfully simpler than POB. Adding “May” clearly signals that the final sentence is Paul’s blessing while preserving its content. Resolve and document the POB record’s inconsistent treatment of the closing reading before final publication.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

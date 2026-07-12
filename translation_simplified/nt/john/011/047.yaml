@@ -31,36 +31,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 11:47 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the council''].'
 translation:
   language: en
-  text: So the chief priests and the Pharisees gathered the council and were saying, “What are we doing? This man is doing many signs.”
+  text: So the chief priests and the Pharisees called the council together. They kept saying, “What are we doing? Because this man is doing many signs.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: gathered the council
+  simplified_phrase: called the council together
+  preserved_meaning: The religious leaders convened the Jewish ruling council.
+  reasoning_layer_used: POB lexical and theological decisions for συνήγαγον and συνέδριον
+  rationale: This wording expresses the act of convening the council in ordinary English.
+- pob_phrase: were saying
+  simplified_phrase: kept saying
+  preserved_meaning: Their speech was ongoing or repeated.
+  reasoning_layer_used: POB lexical decision for ἔλεγον
+  rationale: “Kept saying” clearly preserves the imperfect verb’s continuing force.
+- pob_phrase: For this man
+  simplified_phrase: Because this man
+  preserved_meaning: Jesus’ many signs are the reason for their alarmed question.
+  reasoning_layer_used: POB lexical decision for ὅτι and grounding review
+  rationale: “Because” makes the source’s causal connection explicit in common English.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Modern readers may understand “signs” as ordinary notices rather than revelatory works.
+    mitigation: The term is retained because John uses it for works that reveal Jesus’ identity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/047.yaml
   source_text_sha256: 543c25fef3df09efd961213ea1c58257498cdbfa650dd7736cc57af7b9e664b2
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: 42d57286848a05807c5b4a40403c3c1d3ee32384375b69cb21de618ee88d1886
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 975d3f713f6cde1c56b7378afb20204a14d188f904022836aa40cdcd798fd826
+  timestamp: '2026-07-12T07:25:01Z'
+  output_hash: 2b1c9bcc316b250c62e43fd3e214906ef87834d3ce795987825d365245ec0a2e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3703
+    completion_tokens: 1617
+    total_tokens: 5320
+    reasoning_tokens: 1267
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:25:01Z'
+  previous_text: So the chief priests and the Pharisees gathered the council and were saying, “What are we doing? This man is doing many signs.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5e9d53c25e3cf8d4d918b418e13382a846e5d6e171dde34b5ed880d598865590
+  review_summary: Revise to retain the causal connection expressed by ὅτι. “Because” is clearer than POB’s “For” in contemporary common English and does not add interpretation. The remaining wording faithfully preserves the POB’s source-grounded sense, including the ongoing/iterative force of “were saying” and John’s meaningful term “signs.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

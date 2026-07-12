@@ -31,49 +31,64 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 4:33 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''anything to eat''].'
 translation:
   language: en
-  text: So the disciples said to each other[a], "Did someone bring him something to eat?"
+  text: So the disciples were saying to each other, “Surely no one brought him something to eat?”
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or, "Surely no one has brought him something to eat?" The Greek wording suggests they expected the answer to be "no."
-    reason: simplification_note
 simplification_decisions:
-- preserved_meaning: Changed 'were saying to one another' to 'said to each other' to make the narrative flow more naturally in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'were saying to one another' to 'said to each other' to make the narrative flow more naturally in modern English.
-- preserved_meaning: Changed 'Has anyone brought' to 'Did someone bring' to make the question sound more natural and direct.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'Has anyone brought' to 'Did someone bring' to make the question sound more natural and direct.
-- preserved_meaning: Simplified the technical footnote explaining the Greek negative particle 'μή' so a general reader can understand the disciples' skeptical assumption.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the technical footnote explaining the Greek negative particle 'μή' so a general reader can understand the disciples' skeptical assumption.
-retained_terms:
-- term: disciples
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: to one another
+  simplified_phrase: to each other
+  preserved_meaning: The disciples were speaking among themselves.
+  reasoning_layer_used: POB lexical decision for πρὸς ἀλλήλους
+  rationale: “Each other” is more common English and keeps the reciprocal group conversation.
+- pob_phrase: Has anyone brought him something to eat?
+  simplified_phrase: Surely no one brought him something to eat?
+  preserved_meaning: The disciples ask whether someone brought Jesus food while expecting the answer to be no.
+  reasoning_layer_used: POB lexical decision and footnote for μή τις
+  rationale: The negative wording makes the question’s expected answer clear in the main text.
+interpretive_expansions:
+- pob_phrase: Has anyone brought him something to eat?
+  rendering: Surely no one brought him something to eat?
+  claim: The disciples expected that no one had brought Jesus food.
+  evidence:
+  - The POB audit says μή introduces a question expecting a negative answer.
+  confidence: high
+  alternatives_preserved:
+  - Has anyone brought him something to eat?
+  - No one brought him something to eat, did they?
 translation_notes:
-  source_alignment_notes: The translation preserves the narrative link of 'οὖν' ('So') and the plural interaction of 'πρὸς ἀλλήλους' ('to each other'). The underlying grammatical tension of 'μή τις' (expecting a negative answer) is preserved and explained in the footnote rather than forcing a clunky English tag question like 'did they?' into the main text.
-  readability_notes:
-  - Using 'said to each other' instead of 'were saying to one another' significantly improves the readability and pacing of the dialogue for modern readers without losing the core meaning of the scene.
-  compression_notes:
-  - Slightly compressed the imperfect aspect of 'ἔλεγον' ('were saying') into the simple past 'said' for natural flow, as 'were saying' can feel repetitive or overly formal in modern English narrative.
+  risk_flags:
+  - risk: “Surely no one” may sound more emphatic than the Greek construction alone.
+    mitigation: It is a natural English form explicitly listed in the POB audit for a question expecting a negative answer.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/004/033.yaml
   source_text_sha256: 7ae4f310228509a128bfefedb5119a9f8de24954fcfe3d885f170e9d5e293e09
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 9e5f27e608754f0330a81702baed5550611ab43dcf9b10450f00c32ac360da21
-  timestamp: '2026-05-28T05:58:04Z'
-  output_hash: cc6607e2668de35b97576e49e101a6f0d218d5154c930b8a7298256aa2a56274
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 00503952526f0586b18de4ebd7101b746349485b5d91a72e4b5eb429d26cc224
+  timestamp: '2026-07-12T07:14:02Z'
+  output_hash: 2d17de209c6e2202e1d29b729375d08ae7040cbe81420d30165e291b3186b0c9
   usage:
-    prompt_tokens: 1902
-    completion_tokens: 424
-    total_tokens: 5112
+    prompt_tokens: 3597
+    completion_tokens: 365
+    total_tokens: 3962
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: disciples
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:02Z'
+  previous_text: So the disciples said to each other[a], "Did someone bring him something to eat?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 614e5047f009542588be51a502de71b32c32b28ec26fff7f6958d3d00cef683b
+  review_summary: Revise the question so the main text, not only a note, communicates the negative answer the Greek construction expects. This is a warranted source-based clarification, not an added interpretation. Retaining “were saying” also preserves the ongoing group discussion identified in the POB audit trail while remaining clear modern English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

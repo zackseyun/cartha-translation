@@ -37,36 +37,59 @@ base_translation:
     changes_summary: Changed 'filled in part' to 'satisfied in part' for more natural English while preserving the sense of ἐμπλησθῶ; otherwise retained the draft.
 translation:
   language: en
-  text: So whenever I go to Spain, I hope to see you as I pass through and to have you send me on my way there, after I have first enjoyed your company for a while.
+  text: For whenever I go to Spain, I hope to see you as I pass through and have you send me on my way there, if I can first enjoy some of your company.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: for I hope, as I pass through, to see you
+  simplified_phrase: For whenever I go to Spain, I hope to see you as I pass through
+  preserved_meaning: Paul explains his future hope of visiting the Romans while traveling to Spain.
+  reasoning_layer_used: POB lexical decisions for ἐλπίζω γὰρ and διαπορευόμενος
+  rationale: The sentence is reordered into natural English while keeping “For” as the explanatory link.
+- pob_phrase: to be sent on my way there by you
+  simplified_phrase: have you send me on my way there
+  preserved_meaning: Paul expects the Romans to support his onward journey without specifying how.
+  reasoning_layer_used: POB lexical and theological decisions for προπεμφθῆναι
+  rationale: The active wording is easier to read and retains the unspecified onward help.
+- pob_phrase: if first I may be satisfied in part with your company
+  simplified_phrase: if I can first enjoy some of your company
+  preserved_meaning: Paul conditionally hopes for limited fellowship with them before continuing.
+  reasoning_layer_used: POB lexical and theological decisions for ἐὰν, ἐμπλησθῶ, and ἀπὸ μέρους
+  rationale: “Some” preserves the limitation without deciding whether it concerns duration or degree.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Some of your company” is less idiomatic than a duration-based phrase.
+    mitigation: It avoids narrowing the unresolved limitation to “for a while.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/024.yaml
   source_text_sha256: d209c3a6beef3c479369ca15390a75987814ed486c1484170a36dd1c982e3a84
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 7ff25a8d3f020f069df24039ae336d1c6f7a63c9cf8d31a572ff5aa84e5fff24
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8ee010c854916fa4b4511853761c8de09c2b9aeba9b5cf10123214eee9ad93ed
+  timestamp: '2026-07-12T07:42:51Z'
+  output_hash: 6b31f8b49aa6eba531859caa210070ac28a708004586f55439a8fedaed9fccf6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4050
+    completion_tokens: 781
+    total_tokens: 4831
+    reasoning_tokens: 364
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:51Z'
+  previous_text: So whenever I go to Spain, I hope to see you as I pass through and to have you send me on my way there, after I have first enjoyed your company for a while.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5af492c54c1127cc042f0633ba29fb20bf35f25ba56ceef963e36190674da0ae
+  review_summary: The draft is substantially clearer and rightly makes the relational sense of the final phrase understandable. However, “for a while” turns a deliberately unresolved Greek nuance into a duration claim, and “So” weakens the explanatory force of γάρ. The recommended wording retains accessible English while preserving the source’s contingency and broader sense of limited fellowship.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,42 +34,68 @@ base_translation:
     changes_summary: Replaced the dash with a semicolon for more formal punctuation and smoother English; retained the wording otherwise as accurate and complete.
 translation:
   language: en
-  text: He also built Resen, between Nineveh and Calah. This was the great city.
+  text: He also built Resen, between Nineveh and Calah. This was the great city.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “This” may refer to Resen or to the larger city region between Nineveh and Calah.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Resen is named with its location between Nineveh and Calah, followed by the great-city note.
-  reasoning_layer_used: POB audit trail
-  rationale: Supplies 'He also built' from the previous verse for smoother common English.
-retained_terms:
-- term: Resen
-  reason: Preserves the POB place name.
+- pob_phrase: and Resen, between Nineveh and Calah
+  simplified_phrase: He also built Resen, between Nineveh and Calah.
+  preserved_meaning: Resen remains part of the city-building list and is located between Nineveh and Calah.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: A complete sentence makes the list relationship clear in ordinary English.
+- pob_phrase: that is the great city
+  simplified_phrase: This was the great city.[a]
+  preserved_meaning: The place or city region is described as the great city without settling the exact referent.
+  reasoning_layer_used: POB theological decision and alternative-reading footnote
+  rationale: A concise footnote preserves the documented ambiguity that the sentence alone could obscure.
+interpretive_expansions:
+- pob_phrase: and Resen
+  rendering: He also built Resen
+  claim: The implied action and subject continue from the preceding city-building context.
+  evidence:
+  - The POB lexical rationale identifies this as a city-building list.
+  - The conjunction introduces Resen as another item in that sequence.
+  confidence: high
+  alternatives_preserved:
+  - and Resen
 translation_notes:
-  source_alignment_notes: Preserves Resen, its location, and the statement about the great city.
-  readability_notes:
-  - Splits the location and explanation into two short sentences.
-  compression_notes:
-  - No place or explanatory clause is removed.
   risk_flags:
-  - risk: The great-city clause may refer to Resen or the larger urban region.
-    mitigation: The wording stays close to the POB statement without over-explaining.
+  - risk: “This” may sound as though it refers only to Resen.
+    mitigation: The footnote states that the larger city region is also a possible referent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/012.yaml
   source_text_sha256: 1261f0d4e4c8e93b98438960cda91ddf1eb7c9578bf1af4270c470d4b4a9fbe6
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:02Z'
-  output_hash: b58618473dec7ec7ac68c2dece581e72eb2eaad4f084bcfc5d4d869cc96e1d69
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f7174f971b16a4fcc4a7eb8bdae2c4af00dc22d1db014909480734fa68fb15f8
+  timestamp: '2026-07-12T09:23:29Z'
+  output_hash: 5bc2c06759e7f141e9641c7d8c428d6d0dbb0912e7781a9e7ff245e498797dde
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3285
+    completion_tokens: 559
+    total_tokens: 3844
+    reasoning_tokens: 158
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Resen
+  reason: Preserves the POB place name.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:29Z'
+  previous_text: He also built Resen, between Nineveh and Calah. This was the great city.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7756476a5fefe1c01e73b363842d6ce581b1251366daeabc43be35ad4e1bc5da
+  review_summary: “He also built” is warranted by the preceding city-building list and usefully makes the implied subject explicit. However, the final sentence tends to settle an ambiguity that POB deliberately preserves. Retain the clear sentence but add a concise footnote that preserves the two textually plausible referents.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

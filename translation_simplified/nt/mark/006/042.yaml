@@ -27,41 +27,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They all ate and were satisfied.
+  text: Everyone ate and had enough to eat.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they all ate
-  simplified_phrase: They all ate
-  preserved_meaning: Keeps the complete feeding result while removing an unnecessary opening connector.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB sentence is already simple, so the SPOB only trims the initial 'And.'
-retained_terms:
-- term: satisfied
-  reason: Preserves the fullness/result of the miracle.
-translation_notes:
-  source_alignment_notes: Preserves that everyone ate and was satisfied.
-  readability_notes:
-  - The verse remains short and direct.
-  compression_notes:
-  - No content is removed.
+- pob_phrase: they all
+  simplified_phrase: Everyone
+  preserved_meaning: Preserves that the whole crowd ate.
+  reasoning_layer_used: POB lexical decision for πάντες
+  rationale: “Everyone” states the universal scope naturally and directly.
+- pob_phrase: were satisfied
+  simplified_phrase: had enough to eat
+  preserved_meaning: Preserves that the crowd was fully fed.
+  reasoning_layer_used: POB lexical decision for ἐχορτάσθησαν and immediate feeding context
+  rationale: This wording makes clear that their satisfaction came from having enough food.
+interpretive_expansions:
+- pob_phrase: were satisfied
+  rendering: had enough to eat
+  claim: The satisfaction was specifically being sufficiently fed.
+  evidence:
+  - The POB lexical rationale defines ἐχορτάσθησαν as being fully fed or satisfied.
+  - The immediate context is the feeding of the crowd.
+  confidence: high
+  alternatives_preserved:
+  - were satisfied
+  - were fully fed
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/042.yaml
   source_text_sha256: d001cdc848692c303c95d1cc349258278f3a87e75a0b5ba823dc322b87a59c09
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:46Z'
-  output_hash: e472d07af538b59ed58ec88a9795d59a12cced2985d80405f813b8b6c9980544
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 655694039ed5a7a000485e4ce5c8002f38795aacd2b5ed7db4a019cfebdd5af4
+  timestamp: '2026-07-12T07:20:30Z'
+  output_hash: 664972809de9140f36c2f2c8f9a1ce148e38de74307c27c2b2228474b7842520
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2580
+    completion_tokens: 269
+    total_tokens: 2849
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: satisfied
+  reason: Preserves the fullness/result of the miracle.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:30Z'
+  previous_text: They all ate and were satisfied.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5b499ebb9a377cce0b3aae19fa980c87ccf4b3520e35b1fbd1d4e77def68a73f
+  review_summary: The removal of the opening narrative connector is permissible and does not alter the verse’s meaning, but by itself it does not provide a meaningful clarity gain over POB. Specify the food-related sense of “satisfied” so modern readers understand the stated result of the feeding without importing any doctrine or adding details.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

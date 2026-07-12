@@ -31,48 +31,68 @@ base_translation:
     changes_summary: 'Changed ''Messiah'' to ''Christ'' to reflect the Greek term χριστός more directly and maintain formal consistency. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Look, he is speaking openly, and they say nothing to him. Could it be that the rulers really know that this is the Messiah[a]?
+  text: Look, he is speaking openly, and the Jewish rulers say nothing to him. Could they really know that he is the Messiah?
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or, 'Could it be that the rulers really know that this is the Christ?'
-    reason: simplification_note
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: Messiah
-  reason: Retained as a key theological title rather than translating it as 'Christ' to respect the project's guidance on Jewish messianic expectations in the Gospels.
-- term: rulers
-  reason: Retained to accurately denote the specific Jewish ruling authorities ('οἱ ἄρχοντες') rather than modernizing it to a generic word like 'leaders'.
+- pob_phrase: they say nothing to him
+  simplified_phrase: the Jewish rulers say nothing to him
+  preserved_meaning: The governing authorities do not confront Jesus while he speaks publicly.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: Naming the subject in this clause makes the scene and the pronoun clear.
+- pob_phrase: Can it be that the rulers truly know that this is the Messiah?
+  simplified_phrase: Could they really know that he is the Messiah?
+  preserved_meaning: The crowd voices a surprised and tentative suspicion that the rulers recognize Jesus as the Messiah.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The direct question is more natural while keeping the uncertainty and messianic title.
+interpretive_expansions:
+- pob_phrase: the rulers
+  rendering: the Jewish rulers
+  claim: The rulers are the governing Jewish authorities in this setting.
+  evidence:
+  - The POB lexical rationale identifies them as the governing Jewish authorities in context.
+  - John 7:25–26 presents them as those expected to act against Jesus.
+  confidence: high
+  alternatives_preserved:
+  - the rulers
+  - the authorities
+  - the leaders
 translation_notes:
-  source_alignment_notes: Preserved the progressive aspect of the verb 'is speaking' ('λαλεῖ') and the exact direct address 'say nothing to him' ('οὐδὲν αὐτῷ λέγουσιν').
-  readability_notes:
-  - Improved the natural flow of spoken dialogue by streamlining the transition and using modern idioms like 'Could it be' and 'really' while retaining the exact semantic weight of the Greek text.
-  compression_notes:
-  - No clauses or theological nuances were compressed out; the two-clause observation followed by the crowd's speculative question remains fully intact.
   risk_flags:
-  - risk: The translation of 'χριστός' as 'Messiah' is a sensitive theological point; this has been flagged and mitigated by retaining the alternative reading footnote highlighting the term 'Christ'.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Adding “Jewish” could be misread as referring to all Jewish people.
+    mitigation: The noun “rulers” limits the phrase to the governing authorities in this setting.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/007/026.yaml
   source_text_sha256: d2404a430f96d6c644fd14aff96623b3d2417b237dd5799ae4940a3b73cc6d20
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 140bb728d6ebf55c73ac51b758612d3d7ae98e6962a427af17a57fd69e0da648
-  timestamp: '2026-05-28T08:45:46Z'
-  output_hash: c6cb38d48deec55a4d42710f2027036dc372aca78ef64a33d06cd98991c94dec
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9b7b815ab1c55d94e2c80ef640dd458c0d0c585838d60136d549f1cf0aa8f86b
+  timestamp: '2026-07-12T07:14:59Z'
+  output_hash: 58392ce56a2dea41bd49ec0836e9e3eabbea4de81626ba8c998a811468d72540
   usage:
-    prompt_tokens: 2317
-    completion_tokens: 589
-    total_tokens: 5978
+    prompt_tokens: 3951
+    completion_tokens: 368
+    total_tokens: 4319
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Messiah
+  reason: Retained as a key theological title rather than translating it as 'Christ' to respect the project's guidance on Jewish messianic expectations in the Gospels.
+- term: rulers
+  reason: Retained to accurately denote the specific Jewish ruling authorities ('οἱ ἄρχοντες') rather than modernizing it to a generic word like 'leaders'.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:59Z'
+  previous_text: Look, he is speaking openly, and they say nothing to him. Could it be that the rulers really know that this is the Messiah[a]?
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 35ad0cbd5c82af3adee8b4afcea3bb63c10bbbef02c5ca0f08d2283337383ed8
+  review_summary: 'The draft is faithful and doctrinally sound: “Messiah,” the tentative question, and the rulers’ failure to respond are all well preserved. However, it does not yet meet the stated SPOB threshold of being meaningfully clearer than POB. Identifying the rulers as Jewish rulers is a contextually warranted clarification supported by the POB audit trail, and recasting the second sentence removes the less natural indirect-question structure without changing its surprised, tentative force. Omit the non-textual “Christ” alternative footnote from the simplified publication text.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

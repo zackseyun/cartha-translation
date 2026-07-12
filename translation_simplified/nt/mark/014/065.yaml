@@ -34,38 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Some began to spit on him, cover his face, strike him with their fists, and say to him, “Prophesy!” The officers also received him with blows.
+  text: Some began to spit on him, cover his face, strike him with their fists, and say to him, “Prophesy!” The officers struck him too.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And some began to spit on him[a], and to cover his face, and to strike him with their fists, and to say to him[b], “Prophesy!” And the officers received him with blows.
-  simplified_phrase: Some began to spit on him, cover his face, strike him with their fists, and say to him, “Prophesy!” The officers also received him with blows.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: And some began to spit on him, and to cover his face, and to strike him with their fists, and to say to him, “Prophesy!”
+  simplified_phrase: Some began to spit on him, cover his face, strike him with their fists, and say to him, “Prophesy!”
+  preserved_meaning: The same unnamed people perform each act of abuse and mock Jesus with the unexpanded command.
+  reasoning_layer_used: POB translation, lexical decisions, and theological decision
+  rationale: Removing repeated conjunctions makes the sequence natural without merging or omitting any action.
+- pob_phrase: The officers received him with blows.
+  simplified_phrase: The officers struck him too.
+  preserved_meaning: The judicial officers physically hit Jesus as part of the continuing abuse.
+  reasoning_layer_used: POB lexical decisions and lexical-alternative footnote
+  rationale: The POB audit identifies “struck him” as the clear modern sense of the literal Greek idiom.
+interpretive_expansions:
+- pob_phrase: received him with blows
+  rendering: struck him too
+  claim: The officers physically struck Jesus rather than formally receiving him.
+  evidence:
+  - The POB footnote gives “the guards struck him” as an idiomatic alternative.
+  - The lexical decisions identify the officers as judicial guards and the blows as physical abuse.
+  confidence: high
+  alternatives_preserved:
+  - took him with blows
+  - received him with blows
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Rendering the Greek idiom directly as “struck him” loses its unusual literal wording.
+    mitigation: The clear physical sense is supported by the POB footnote and lexical rationale.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/065.yaml
   source_text_sha256: b0bea5543af903f2f3057d40b3807dd94da3d03bd19568f8af52f09db547a575
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: e6f4dcc9fdd5523fb88567efd643ea40cbd81d4a1aa7332ce981213c66a2f2d1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0c76bdc4f4c7f70ae66b8879adae41722294c3d5f3068c6601508684c5fc9f98
+  timestamp: '2026-07-12T07:22:52Z'
+  output_hash: 60e3bf6988dc5050cdf143ebc101323c53d6c2cd64bf5bedb4bb083deff56631
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3687
+    completion_tokens: 664
+    total_tokens: 4351
+    reasoning_tokens: 225
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:52Z'
+  previous_text: Some began to spit on him, cover his face, strike him with their fists, and say to him, “Prophesy!” The officers also received him with blows.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d1dbe5c7bfaebe37179fbb6384a96f037ef9a50c675f2c98f99ebbb154df6d7c
+  review_summary: 'The first sentence is a warranted syntactic simplification: it retains the indefinite “some,” the sequence of abusive acts, the covered face, fist-strikes, and the unexpanded mocking command. No doctrinal claim or ambiguity is improperly resolved. Revision is needed because the final POB idiom “received him with blows” remains opaque to modern readers, whereas “The officers struck him too” plainly conveys the source-context sense and preserves the distinction between the earlier unnamed abusers and the officers. Removing “also” avoids an unneeded explicit addition while “too” naturally conveys the continuing abuse.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

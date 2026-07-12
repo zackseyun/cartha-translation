@@ -31,42 +31,63 @@ base_translation:
     changes_summary: 'Changed ‘slaves’ to ‘servants’ for more natural formal register here, and revised the final question from ‘Where then does it have weeds?’ to ‘Where then do the weeds come from?’ to reflect the Greek more naturally and accurately. [Regression fix applied: slave restored (revision_pass had changed δοῦλος → servant against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: So the slaves of the householder came to him and said, “Lord, didn’t you sow good seed in your field? Then where did the weeds come from?”[a]
+  text: So the slaves of the master of the house came to him and said, “Lord, didn’t you sow good seed in your field? Then where did the weeds come from?”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “tares”; the Greek word likely refers to darnel, a weed that looks like wheat early on.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: did you not sow
+  simplified_phrase: didn’t you sow
+  preserved_meaning: The question still expects the answer that he sowed good seed.
+  reasoning_layer_used: POB lexical decision for οὐχὶ
+  rationale: The contraction makes the question natural without weakening its expected positive answer.
+- pob_phrase: Where then do the weeds come from?
+  simplified_phrase: Then where did the weeds come from?
+  preserved_meaning: The question still asks about the origin of the weeds.
+  reasoning_layer_used: POB lexical decisions for πόθεν οὖν and ἔχει
+  rationale: Ordinary English word order makes the question easier to follow.
+- pob_phrase: master of the house
+  simplified_phrase: master of the house
+  preserved_meaning: The wording keeps both household authority and the slaves’ relationship to their master.
+  reasoning_layer_used: POB lexical decision for οἰκοδεσπότου and grounding review
+  rationale: This clear phrase is retained because “householder” would be less transparent.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Slaves” may sound harsher than “servants” to modern readers.
+    mitigation: It is retained because the POB doctrine and lexical audit require the bonded social status to remain clear.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/027.yaml
   source_text_sha256: 36f341be4b0e1cbbd131b8d625ba25beb8cce2444be95a7cceab403b60ae0c47
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 9ab5e362dbb32ce914b8b141475fcc1df4f5bffc61249d03b37fb4e8dd7009c4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: da631693234ba233c50b4ce18a437be27e221ba06b9d4cc1f9c67067108c0125
+  timestamp: '2026-07-12T07:42:46Z'
+  output_hash: 1403ae35ee18401ea0f00d5b8b521d48d3eb8f540d0851457e49ed87dedb16d6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 4020
+    completion_tokens: 404
+    total_tokens: 4424
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:46Z'
+  previous_text: So the slaves of the householder came to him and said, “Lord, didn’t you sow good seed in your field? Then where did the weeds come from?”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a83a92650b58d5e1b4a94a6a9df05a2ae14cec16543df973bff4ff69f791d8c1
+  review_summary: 'The modernization of “did you not” to “didn’t you” and the recasting of “Where then do the weeds come from?” as “Then where did the weeds come from?” are clear, natural English and preserve the question about the weeds’ origin. The footnote remains warranted. Revise “householder,” however: it reverses POB’s documented clarity decision and leaves the household-master relationship less understandable.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

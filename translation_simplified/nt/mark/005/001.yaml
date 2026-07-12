@@ -31,47 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They came to the other side of the sea, to the region of the Gerasenes[a].
+  text: They came across the sea to the region of the Gerasenes.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Some manuscripts read 'Gadarenes' or 'Gergesenes.'
-    reason: simplification_note
+    text: Some manuscripts read “Gadarenes” or “Gergesenes.”
+    reason: textual_variant
 simplification_decisions:
-- pob_phrase: And they came to the other side of the sea, to the region of the Gerasenes.
-  simplified_phrase: They came to the other side of the sea, to the region of the Gerasenes.
-  preserved_meaning: Keeps the destination and manuscript-sensitive place name while removing the repeated narrative 'And' for smoother modern English.
-  reasoning_layer_used: POB translation and footnote
-  rationale: The POB meaning and textual-variant note are preserved, but the sentence reads more naturally.
-retained_terms:
-- term: Gerasenes
-  reason: Retained because it is the POB's selected place name.
-- term: sea
-  reason: Retained to preserve the Gospel's wording for the Sea of Galilee context.
+- pob_phrase: came to the other side of the sea
+  simplified_phrase: came across the sea
+  preserved_meaning: They crossed the sea and reached its opposite side.
+  reasoning_layer_used: POB lexical decision for εἰς τὸ πέραν τῆς θαλάσσης
+  rationale: “Across the sea” states the crossing idiom more directly in modern English.
+- pob_phrase: And they came
+  simplified_phrase: They came
+  preserved_meaning: Jesus and those with him arrived in the named region.
+  reasoning_layer_used: POB lexical decisions and prior narrative context
+  rationale: Dropping the opening connective makes the standalone verse more direct without changing the event.
 translation_notes:
-  source_alignment_notes: Preserves the POB destination and textual variant awareness while simplifying only the connective style.
-  readability_notes:
-  - Removes an unnecessary opening connector and keeps the sentence direct.
-  compression_notes:
-  - No narrative detail is removed.
+  risk_flags:
+  - risk: Readers may not recognize the place name because manuscripts vary.
+    mitigation: The main text keeps the SBLGNT reading, and the footnote preserves the two major alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/005/001.yaml
   source_text_sha256: d9783bcaa989c94cdebf0796bddf5f82ffbd805f9e8c3bf36ea07e92f42437d4
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-f
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:50:14Z'
-  output_hash: bfa222aed42867f6f09f9e4ae8b54c7bb6d3f4c889646966f2942ec2947c27f8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fc22aaeaf8ad364194551fc29afc975ebf87a5ed63125f8598ccf56c0ebe94c7
+  timestamp: '2026-07-12T07:20:44Z'
+  output_hash: 48d1f0bf26565ffa8fa0bd07b228866c2826bea24ddb2044886771ebda375f1c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3051
+    completion_tokens: 290
+    total_tokens: 3341
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Gerasenes
+  reason: Retained because it is the POB's selected place name.
+- term: sea
+  reason: Retained to preserve the Gospel's wording for the Sea of Galilee context.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:44Z'
+  previous_text: They came to the other side of the sea, to the region of the Gerasenes[a].
+  previous_model: codex-manual-worker-f
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3aecbbd4872cdf8d565c66340973f7823a7ad20216f83a219fd8cc074d82de57
+  review_summary: The draft faithfully preserves the destination, selected textual reading, and variant note, and it introduces no doctrinal or interpretive expansion. However, deleting “And” alone is not a sufficiently meaningful simplification. “They came across the sea” is a clear, source-warranted rendering of the crossing idiom and yields a publication-ready SPOB improvement while retaining the textual-variant footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

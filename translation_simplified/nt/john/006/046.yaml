@@ -31,48 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Not that anyone has seen the Father, except the one who is from God[a]; he has seen the Father.
+  text: This does not mean that anyone has seen the Father. Only the one who is from God[a] has seen the Father.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'from the presence of God' or 'with God.' The Greek wording can mean being close to God as well as coming from him.
-    reason: simplification_note
+    text: Or “from the presence of God” or “with God.” The Greek wording can also emphasize a close personal relation to God.
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: the Father
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: from God
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: Not that anyone has seen the Father
+  simplified_phrase: This does not mean that anyone has seen the Father.
+  preserved_meaning: Jesus corrects a possible misunderstanding of his previous statement.
+  reasoning_layer_used: POB lexical decision for οὐχ ὅτι
+  rationale: The explicit wording makes the corrective force clear in modern English.
+- pob_phrase: except the one who is from God; he has seen the Father
+  simplified_phrase: Only the one who is from God has seen the Father.
+  preserved_meaning: The one from God is the sole exception and has seen the Father.
+  reasoning_layer_used: POB lexical decisions for εἰ μὴ and οὗτος
+  rationale: Using “Only” states the exception directly while preserving its exclusivity.
+interpretive_expansions:
+- pob_phrase: Not that
+  rendering: This does not mean that
+  claim: The phrase explicitly corrects a possible reading of the preceding statement.
+  evidence:
+  - The POB audit identifies οὐχ ὅτι as a clarification or qualification.
+  confidence: high
+  alternatives_preserved:
+  - Not that
+  - It is not that
 translation_notes:
-  source_alignment_notes: The Greek perfect verbs (ἑώρακέν) are preserved as English present perfect ('has seen') to capture the ongoing significance of the action. The exception clause (εἰ μὴ) is properly rendered with 'except' rather than 'unless' to maintain the correct relational logic.
-  readability_notes:
-  - The sentence structure is straightforward and easily readable for a modern audience without losing the gravity of the declaration.
-  compression_notes:
-  - No semantic compression was necessary as the POB base text is already remarkably direct. We resisted the temptation to flatten the repetition of 'the Father' or to over-explain 'the one who is from God' in the main text.
   risk_flags:
-  - risk: None. The Christological weight of the verse is fully preserved, and the alternate spatial reading is kept in the footnote.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Only” changes the grammatical form of the exception clause.
+    mitigation: It preserves the POB finding that εἰ μὴ marks an exclusive exception.
+  - risk: “From God” may be read only as source and not personal proximity.
+    mitigation: The footnote retains the possible proximity nuance without over-specifying the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/006/046.yaml
   source_text_sha256: 67082252a3d1be73528b4b782fb3d1b31054e25034030cfd4caefc03dd24c4cf
-  pob_commit_sha: 3afdf15abc9a96c0093b0f2add5eb20faf8f06b4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 87e6e52410dfb42a39a0154e7e4d60335cc9ba5ef38c84cd3a5a82f9e385ec54
-  timestamp: '2026-05-28T07:46:56Z'
-  output_hash: d9ad7106b2d0bf77a25aa900af1df65a69269d4923a7c08683d2b91443d8d1e7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4be98b5152f221e66bc803d7ff31e7ab2dad62e6e1a8a82c309fc517a9f1072f
+  timestamp: '2026-07-12T07:15:52Z'
+  output_hash: a06967587cc05da180f5b234968e550686027980f4038a82118cc14d180ba266
   usage:
-    prompt_tokens: 1722
-    completion_tokens: 599
-    total_tokens: 6672
+    prompt_tokens: 3318
+    completion_tokens: 440
+    total_tokens: 3758
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: the Father
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: from God
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:52Z'
+  previous_text: Not that anyone has seen the Father, except the one who is from God[a]; he has seen the Father.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 965411d13e5ed62f002c98ead960aad78f23ee462f438b4691f3ca628e71abe6
+  review_summary: The draft preserves the source meaning and does not introduce doctrinal expansion, but it repeats the POB wording rather than making the verse clearer. The recommended text explicitly expresses the corrective force of οὐχ ὅτι and renders the exception as “Only,” while retaining the source-grounded phrase “from God” and its lexical alternative in a restrained footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

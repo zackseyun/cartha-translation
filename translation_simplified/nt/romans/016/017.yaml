@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/016/017.yaml
-  text: Now I urge you[a], brothers, to watch out for those who cause divisions and stumbling blocks contrary to the teaching that you learned, and turn away from them.
+  text: I urge you[a], brothers, to watch out for those who cause divisions and stumbling blocks contrary to the teaching that you learned, and turn away from them.
   footnotes:
   - marker: a
     text: Or 'brothers and sisters'; the Greek says 'brothers' and likely addresses the whole congregation.
@@ -31,36 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now I urge you, brothers, to watch out for people who cause divisions and stumbling blocks against the teaching you learned. Turn away from them.
+  text: I urge you, brothers[a], to watch out for people who cause divisions and stumbling blocks contrary to the teaching you learned. Turn away from them.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “brothers and sisters”; the Greek says “brothers” and likely addresses the whole congregation.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: those who cause
+  simplified_phrase: people who cause
+  preserved_meaning: The warning concerns people who produce division and spiritual obstacles.
+  reasoning_layer_used: POB lexical decision for ποιοῦντας
+  rationale: “People” makes the referent immediately clear without changing its scope.
+- pob_phrase: and turn away from them
+  simplified_phrase: Turn away from them.
+  preserved_meaning: The command retains its imperative force and directional image.
+  reasoning_layer_used: POB lexical decision for ἐκκλίνετε ἀπ’ αὐτῶν
+  rationale: A separate sentence makes the command easier to follow.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/017.yaml
   source_text_sha256: 193c4ac26e84f840ec95af84751bb997eb2e05d63a3e1cb3c11f6b687185047f
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:32Z'
-  output_hash: c250e18737345deff2eef148dd380e2c857f61a4df31524da8fc88eb3bb9369c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b65b40cd042ff2150ba40729d8ed14a1e3a4f3886db8d37004e11118e5f1876d
+  timestamp: '2026-07-12T07:42:54Z'
+  output_hash: 9365e30d091be563782b79dbf9fa994e06edbcaf292c41debcc3dc462e34a98f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3600
+    completion_tokens: 401
+    total_tokens: 4001
+    reasoning_tokens: 134
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:54Z'
+  previous_text: Now I urge you, brothers, to watch out for people who cause divisions and stumbling blocks against the teaching you learned. Turn away from them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2c955aa22f00e8a09eafac319a2abc989b3d5c25605708e38892780328478824
+  review_summary: Revise to remove the unsupported “Now” and restore the POB footnote explaining the congregational force of “brothers.” Replacing “those” with “people” and dividing the final command into its own sentence are warranted readability improvements; they do not alter the warning or its basis in received teaching.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

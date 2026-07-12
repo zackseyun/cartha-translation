@@ -31,41 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Ham, the father of Canaan, saw his father's nakedness and told his two brothers outside.
+  text: Ham, Canaan’s father, saw his father’s nakedness[a] and told his two brothers outside.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: In some Old Testament passages, “his father’s nakedness” can be a sexual euphemism. Here the wording remains literal and does not settle that question.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Ham sees his father's nakedness and reports it to his two brothers outside.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the literal expression 'father's nakedness' without specifying more than the text states.
-retained_terms:
-- term: father's nakedness
-  reason: Preserves POB's literal wording and interpretive restraint.
-- term: Canaan
-  reason: Keeps the narrative identification.
+- pob_phrase: the father of Canaan
+  simplified_phrase: Canaan’s father
+  preserved_meaning: Ham is identified as Canaan’s father.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: The possessive form is more natural while preserving the same relationship.
 translation_notes:
-  source_alignment_notes: Preserves Ham's identification, what he saw, and what he told his brothers.
-  readability_notes:
-  - The sentence remains direct and restrained.
-  compression_notes:
-  - No interpretive detail was added or removed.
+  risk_flags:
+  - risk: Modern readers may take “his father’s nakedness” only as literal exposure.
+    mitigation: The footnote preserves the documented possibility of a sexual euphemism without resolving it.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/022.yaml
   source_text_sha256: f297811cec78723daa8436b7a2e24a84c0eb76ab70868f3b55510c4fd9c2d2ab
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:48Z'
-  output_hash: 5d76c914ab063345f460b40f14bcf4b9de7bde21f427a9ddc892f81d512a5d4b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d231db0f3c956ef474c4870c6e86f48af713d11434b187fba24e72236e8a84d1
+  timestamp: '2026-07-12T09:23:18Z'
+  output_hash: 3a18cda2063c9169f718a65ea4b4ed0aaf182046cc91874933cfba65d75908f3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3131
+    completion_tokens: 306
+    total_tokens: 3437
+    reasoning_tokens: 73
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: father's nakedness
+  reason: Preserves POB's literal wording and interpretive restraint.
+- term: Canaan
+  reason: Keeps the narrative identification.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:18Z'
+  previous_text: Ham, the father of Canaan, saw his father's nakedness and told his two brothers outside.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 27c22180d0142411ade30c57ac601ecfdfacfcd4ea93dd3e5dc199dad6fe1af9
+  review_summary: The draft faithfully preserves the Hebrew wording and appropriately does not turn "his father’s nakedness" into a specified sexual offense. However, apart from dropping "And," it is not meaningfully clearer than POB. Recasting "the father of Canaan" as "Canaan’s father" improves natural readability while preserving the source meaning and the POB’s deliberate interpretive restraint.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

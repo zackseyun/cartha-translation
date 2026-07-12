@@ -34,36 +34,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 3:31 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''calling for him''].'
 translation:
   language: en
-  text: Then Jesus’ mother and brothers came. They stood outside and sent someone in to call him.
+  text: Then Jesus’ mother and brothers came. They stood outside and sent word to him, calling for him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: his mother and his brothers
+  simplified_phrase: Jesus’ mother and brothers
+  preserved_meaning: The family members remain Jesus’ mother and male brothers without defining their exact biological relationship.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Naming Jesus makes the isolated verse immediately clear while retaining “brothers.”
+- pob_phrase: and standing outside they sent word to him, calling him
+  simplified_phrase: They stood outside and sent word to him, calling for him
+  preserved_meaning: They remained outside and communicated that they wanted Jesus to respond to their call.
+  reasoning_layer_used: POB lexical decisions and latest doctrine realignment
+  rationale: A new sentence and finite verb make the sequence easier to follow without adding a messenger or inward movement.
+interpretive_expansions:
+- pob_phrase: his
+  rendering: Jesus’
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the person whose family arrived.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Calling for him” expresses the purpose of the message more directly than “calling him.”
+    mitigation: The wording follows the controlling lexical rationale and does not specify how the message was delivered.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/003/031.yaml
   source_text_sha256: 47c02b42fb8de161591a621940a30a53a03280634ad5755b48ee67a5e73113e3
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:00:13Z'
-  output_hash: 04c8e82a8d7e1a475ee86e0ea586040209ec8f5977e9c8f11b025079929bd21c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cff1de55e9ca3d3cf241c137896cf822dc824211cd37c7a1349ad24649752ffc
+  timestamp: '2026-07-12T07:20:32Z'
+  output_hash: a87bb53b2e63024cf6726e4574947fcaa44e17096164a4702ba9b60b7ceb538d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3454
+    completion_tokens: 336
+    total_tokens: 3790
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:32Z'
+  previous_text: Then Jesus’ mother and brothers came. They stood outside and sent someone in to call him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b1bf48e90d0afc3e651b1516608004891464ad9006749e5e8cd10d4495cba902
+  review_summary: The draft appropriately identifies Jesus and breaks the sentence into clear modern-English units. However, “sent someone in” adds details not specified by the source or controlling POB wording. Retaining “sent word to him” preserves the idiomatic meaning without inventing a singular intermediary or explicit inward movement.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,36 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'And again: “Praise the Lord, all you nations, and let all the peoples praise him.”'
+  text: 'And again: “Praise the Lord, all you nations[a], and let all the peoples praise him.”'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “all you Gentiles.” The Greek word can mean “nations” or “Gentiles”; here the call includes all nations and also fits Paul’s argument about Gentiles.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: all the nations
+  simplified_phrase: all you nations
+  preserved_meaning: Every nation is directly commanded to praise the Lord.
+  reasoning_layer_used: POB lexical decision for πάντα τὰ ἔθνη and the plural imperative
+  rationale: Adding “you” makes the direct address clear in natural English without narrowing its universal scope.
+- pob_phrase: all the peoples
+  simplified_phrase: all the peoples
+  preserved_meaning: The distinct reference to peoples remains parallel to, but not merged with, nations.
+  reasoning_layer_used: POB lexical decision for πάντες οἱ λαοί
+  rationale: The wording is already clear and preserves the Greek distinction between nations and peoples.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Nations” alone could obscure the contextually relevant sense “Gentiles.”
+    mitigation: The footnote preserves that lexical alternative while keeping the POB’s broader main-text choice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/011.yaml
   source_text_sha256: da53b13e866bfe6ef2c91ba79acf605d075e804ba2052115b200bc46f56f0354
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 8dca2f4544cc18dc450cdffbc200b6a7d9c04e69c67d3711f14a76c085d80408
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5a18bfc42a2cafbac3d1378df9b2f4ed65311441fabedd647bd5d71d7e662f6d
+  timestamp: '2026-07-12T07:42:40Z'
+  output_hash: 5a2083bd1fe18a480b741a5c941cca9b052f41cec9db96e8f829463c7a66faf4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3325
+    completion_tokens: 458
+    total_tokens: 3783
+    reasoning_tokens: 132
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:40Z'
+  previous_text: 'And again: “Praise the Lord, all you nations, and let all the peoples praise him.”'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8b37f9cecebdeeac483de7b11f08715034e867a658ede800293e6221f1e6545b
+  review_summary: “All you nations” is a clearer, natural English way to express the plural imperative’s audience and is warranted by the Greek citation’s universal scope. Revise only to retain a concise note for the live nations/Gentiles ambiguity that is materially relevant in Romans 15.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

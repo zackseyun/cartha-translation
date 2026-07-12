@@ -31,36 +31,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And again it says, “Rejoice, Gentiles, with his people.”
+  text: And again, Scripture says, “Rejoice, Gentiles, together with his people.”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “Rejoice, nations, with his people.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: he says
+  simplified_phrase: Scripture says
+  preserved_meaning: The present-tense citation formula introduces another scriptural quotation.
+  reasoning_layer_used: POB lexical decision for λέγει and immediate context
+  rationale: Naming Scripture makes the otherwise implicit speaker clear to modern readers.
+- pob_phrase: with his people
+  simplified_phrase: together with his people
+  preserved_meaning: Gentiles are called to rejoice in association with God’s people.
+  reasoning_layer_used: POB lexical decision for μετὰ τοῦ λαοῦ αὐτοῦ
+  rationale: “Together with” makes the shared rejoicing unmistakable without identifying “his people” more narrowly.
+interpretive_expansions:
+- pob_phrase: he says
+  rendering: Scripture says
+  claim: The speaker in this citation formula is Scripture.
+  evidence:
+  - The verse introduces a scriptural quotation in a sequence of such quotations.
+  - The POB rationale says the formula treats Scripture as presently speaking.
+  confidence: high
+  alternatives_preserved:
+  - he says
+  - it says
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Scripture” makes an implicit subject explicit.
+    mitigation: The immediate context and POB lexical rationale establish that this is a scriptural citation.
+  - risk: “Gentiles” is narrower than the possible rendering “nations.”
+    mitigation: The main text follows Paul’s Jew-Gentile context, while the footnote preserves the broader alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/010.yaml
   source_text_sha256: 0064069641384db94b640840cc88152d827bf3bc5bdc0aa48009caba689829ae
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: e72566d3352a24840766058376f39f26e96b8635261aae4c7a92a5461b854dba
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4d67467ad523736bf5c2ace129e17360b37ea6a0fe3b9d4f859d24b875f18819
+  timestamp: '2026-07-12T07:42:38Z'
+  output_hash: 9330f767d6a31e321129d76f28eb0fb36c56d1a9b9365cdbc7517e2eb854f927
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3166
+    completion_tokens: 471
+    total_tokens: 3637
+    reasoning_tokens: 58
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:38Z'
+  previous_text: And again it says, “Rejoice, Gentiles, with his people.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9152eb205df2752486024b8673ea37167334d69e35c0465bf24e96f8def83cba
+  review_summary: “Gentiles” correctly communicates Paul’s immediate point that non-Jews join God’s covenant people in praise, and no doctrinally unsupported expansion is present. Revision is needed because “it says” is not a meaningful clarity gain over the POB and leaves the speaker unidentified. “Scripture says” makes the established citation function explicit, while “together with” plainly conveys the association expressed by μετά. Retain the POB’s lexical-alternative footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

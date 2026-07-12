@@ -31,46 +31,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said, “Get up, take the child and his mother, and go to the land of Israel, because those who were trying to take the child’s life are dead.”
+  text: The angel said, “Get up, take the child and his mother, and go to the land of Israel, because those seeking to kill the child are dead.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: He said
-  preserved_meaning: Converted the participle 'saying' into the finite phrase 'He said' to create a complete, grammatically standard sentence for readers who may encounter the verse standalone.
-  reasoning_layer_used: POB audit trail
-  rationale: Converted the participle 'saying' into the finite phrase 'He said' to create a complete, grammatically standard sentence for readers who may encounter the verse standalone.
-- simplified_phrase: because those who were trying to take the child’s life are dead
-  preserved_meaning: Clarified the explanatory conjunction 'for' (γάρ) as 'because'. Translated the Semitic idiom 'seeking the life' as 'trying to take the life' to sound more natural to modern readers while preserving the core theological choice of rendering 'ψυχή' as 'life' rather than 'soul'.
-  reasoning_layer_used: POB audit trail
-  rationale: Clarified the explanatory conjunction 'for' (γάρ) as 'because'. Translated the Semitic idiom 'seeking the life' as 'trying to take the life' to sound more natural to modern readers while preserving the core theological choice of rendering 'ψυχή' as 'life' rather than 'soul'.
-retained_terms:
-- term: land of Israel
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: child's life
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: saying
+  simplified_phrase: The angel said
+  preserved_meaning: The angel remains the speaker, and his speech is presented as a complete sentence.
+  reasoning_layer_used: Immediate context and POB lexical rationale
+  rationale: The preceding verse identifies the speaker, avoiding an unclear standalone pronoun.
+- pob_phrase: for those seeking the child’s life are dead
+  simplified_phrase: because those seeking to kill the child are dead
+  preserved_meaning: The reason given is that the people who wanted the child killed are now dead.
+  reasoning_layer_used: POB lexical and theological decisions on γάρ and ψυχή
+  rationale: This makes the mortal-threat idiom clear while retaining the source participle’s verbal description.
+interpretive_expansions:
+- pob_phrase: those seeking the child’s life
+  rendering: those seeking to kill the child
+  claim: Seeking the child’s life means seeking to kill him.
+  evidence:
+  - The immediate narrative describes a mortal threat against the child.
+  - The POB theological rationale explicitly identifies an attempt to kill the child.
+  confidence: high
+  alternatives_preserved:
+  - those seeking the child’s life
 translation_notes:
-  source_alignment_notes: Maintained the POB choice of 'life' for 'ψυχή' (rather than 'soul') and 'land of Israel' for 'γῆν Ἰσραήλ' as required by the source-alignment guidelines.
-  readability_notes:
-  - The resulting sentence flows naturally in modern English without the slightly archaic 'for' and 'seeking the life' structures, making it highly accessible to general readers.
-  compression_notes:
-  - The literal alternative footnote in POB ('those seeking the life of the child have died') was removed because it offers only a formal word-order variation that does not alter the meaning or benefit a modern common reader.
+  risk_flags:
+  - risk: Naming the angel supplies a subject from the preceding verse rather than this verse’s participle alone.
+    mitigation: Matthew 2:19 explicitly identifies the speaker as an angel of the Lord.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/002/020.yaml
   source_text_sha256: b1a76ba65e4974f57a194e8e54d9b0df1ac365045b0c1431d6096aa6661d3a99
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: f9f6c27e23eec2cdbcbd94e61c3ba6e38e176fca9978482e37a72ca946e2c065
-  timestamp: '2026-05-28T08:13:08Z'
-  output_hash: 13605061d5551320f7bb36dcadfec962a3316194b7d052c40e72ee6ad9b6f5e8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b86f1189825a70199649cad1212481316dfb7ffbb4849c9b30ab88a23d381112
+  timestamp: '2026-07-12T07:23:10Z'
+  output_hash: c596556298bdf980e38a334b6c57b9e681a21ddeddcedd01363ff96b190ac623
   usage:
-    prompt_tokens: 1872
-    completion_tokens: 484
-    total_tokens: 6290
+    prompt_tokens: 3690
+    completion_tokens: 373
+    total_tokens: 4063
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: land of Israel
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: child's life
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:10Z'
+  previous_text: He said, “Get up, take the child and his mother, and go to the land of Israel, because those who were trying to take the child’s life are dead.”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fafabcc0e084cef037ddf0955c397b70a79ade620f89f8b6d4f1afa69ce7c53b
+  review_summary: The draft appropriately clarifies γάρ as “because” and accurately makes the life-seeking idiom intelligible as an attempt to kill the child; this does not add doctrine. Revision is needed because “He” is unclear despite the stated standalone-reading goal. Identifying the angel is warranted by the immediately preceding verse. “Seeking to kill” is a clear, source- and context-grounded idiom while avoiding the added past-progressive nuance of “were trying to take.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

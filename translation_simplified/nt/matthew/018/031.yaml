@@ -34,7 +34,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When his fellow slaves[a] saw what had happened, they were deeply grieved. They came and reported to their master[b] everything that had happened.
+  text: So, when his fellow slaves[a] saw what had happened, they were deeply grieved. They came and reported to their master[b] everything that had happened.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -44,11 +44,47 @@ translation:
     text: Greek kyrios can be rendered “lord” or “master” depending on context.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Therefore[a], when his fellow slaves saw what had happened, they were deeply grieved[b], and they came and reported to their lord everything that had happened.
-  simplified_phrase: When his fellow slaves[a] saw what had happened, they were deeply grieved. They came and reported to their master[b] everything that had happened.
-  preserved_meaning: Removed “Therefore” and split the sentence to make the narrative sequence easier to follow.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed “Therefore” and split the sentence to make the narrative sequence easier to follow.
+- pob_phrase: Therefore
+  simplified_phrase: So
+  preserved_meaning: Keeps the link between this response and the preceding event.
+  reasoning_layer_used: POB lexical decision for οὖν
+  rationale: “So” expresses the connective force in simpler narrative English.
+- pob_phrase: they were deeply grieved, and they came and reported
+  simplified_phrase: they were deeply grieved. They came and reported
+  preserved_meaning: Keeps their grief and subsequent report as distinct actions in sequence.
+  reasoning_layer_used: POB syntax and lexical decisions
+  rationale: Two sentences make the sequence easier to follow.
+- pob_phrase: to their lord
+  simplified_phrase: to their master[b]
+  preserved_meaning: Identifies the human superior in the parable without implying a divine title.
+  reasoning_layer_used: POB lexical and theological decision for κύριος
+  rationale: “Master” is clearer for this social setting, while the footnote preserves “lord.”
+translation_notes:
+  risk_flags:
+  - risk: “Slaves” may sound harsher than the traditional “servants.”
+    mitigation: The wording preserves the bonded status central to the parable, and the alternative remains footnoted.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/018/031.yaml
+  source_text_sha256: b68b517a218e50981c5a766a291e40407003375eb672fbc837bcd0bb557efd80
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a83b229d06ddede2953559220543bb7f430dac65d8401f745d92d8c6cb27f741
+  timestamp: '2026-07-12T07:36:56Z'
+  output_hash: 7ff700021b273dd78d3fa6514bb3fc958216c7fe2aea9a0745024666d1606d66
+  usage:
+    prompt_tokens: 3427
+    completion_tokens: 400
+    total_tokens: 3827
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: fellow slaves
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
@@ -58,30 +94,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
 - term: everything that had happened
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
-translation_notes:
-  source_alignment_notes: Preserves the controlling POB meaning and its source-grounded lexical choices while simplifying syntax and wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, clearer word order, and common English where the POB wording is formal or technical.
-  compression_notes:
-  - No central meaning is intentionally removed; technical alternatives are kept in footnotes when needed for review.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/018/031.yaml
-  source_text_sha256: b68b517a218e50981c5a766a291e40407003375eb672fbc837bcd0bb557efd80
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:05Z'
-  output_hash: e7389ecdc03dbeaba73a07d7cf248a10505707253d0a661788e57dd0d989dd16
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:56Z'
+  previous_text: When his fellow slaves[a] saw what had happened, they were deeply grieved. They came and reported to their master[b] everything that had happened.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 49924699335e1b616d01c907236051fa36f63210ad5cab5fd0e992f2b26c4399
+  review_summary: The split into two sentences improves readability without losing the sequence, and “master” is a contextually warranted rendering of κύριος for the human superior in the parable. Retain a simple connective such as “So” to preserve the source text’s οὖν and the narrative/logical link to the preceding action. The footnotes are appropriately concise and do not introduce doctrinal interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

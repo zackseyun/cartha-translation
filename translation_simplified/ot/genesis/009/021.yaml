@@ -34,39 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He drank some of the wine, became drunk, and uncovered himself inside his tent.
+  text: He drank some wine, got drunk, and uncovered himself inside his tent.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Noah drinks wine, becomes drunk, and is exposed inside his tent.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept the descriptive restraint of the POB without adding moral explanation.
-retained_terms:
-- term: uncovered himself
-  reason: Retains POB's reflexive rendering without over-interpreting the event.
-translation_notes:
-  source_alignment_notes: Preserves the sequence of drinking, drunkenness, and exposure in the tent.
-  readability_notes:
-  - The simple action sequence is retained.
-  compression_notes:
-  - No event was omitted.
+- pob_phrase: some of the wine
+  simplified_phrase: some wine
+  preserved_meaning: Noah drank an unspecified amount of the wine.
+  reasoning_layer_used: POB lexical decision for מִן הַיַּיִן
+  rationale: The shorter wording keeps the partitive sense in natural English.
+- pob_phrase: became drunk
+  simplified_phrase: got drunk
+  preserved_meaning: Noah entered a state of intoxication.
+  reasoning_layer_used: POB lexical decision for וַיִּשְׁכָּר
+  rationale: The POB lists this common modern phrase as an equivalent.
+- pob_phrase: uncovered himself inside his tent
+  simplified_phrase: uncovered himself inside his tent
+  preserved_meaning: Noah exposed himself while inside his tent.
+  reasoning_layer_used: POB lexical and theological decisions for וַיִּתְגַּל
+  rationale: This wording retains the reflexive action without adding moral or sexual interpretation.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/021.yaml
   source_text_sha256: b2f2d5128c154e47c942130f1cc9994e0fd5fcaf8c69225a53d76e7b0b2afc7d
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:47Z'
-  output_hash: 6931dd2cbf076b5c5d2fdf43db7b1bfdec7f16d492d2db23d50e738d6ea430e8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a8b2c338acb7ac496fce63893bba54f5664f3fcce119d458a27c8e873e939375
+  timestamp: '2026-07-12T09:24:27Z'
+  output_hash: 21fb932233a739b314f0938d9a30da72ee318bc17b0d6f52e9c429c3f77a1cd9
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2988
+    completion_tokens: 282
+    total_tokens: 3270
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: uncovered himself
+  reason: Retains POB's reflexive rendering without over-interpreting the event.
+spob_revision_history:
+- timestamp: '2026-07-12T09:24:27Z'
+  previous_text: He drank some of the wine, became drunk, and uncovered himself inside his tent.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 037590bb3f6f4dc4c334ee9b27fdd00e057dabf2f70de1b70d233d463aff69b1
+  review_summary: 'The draft is faithful and doctrinally restrained: it reports the drinking, intoxication, and exposure without adding moral or sexualized interpretation. However, because its main text merely duplicates the POB, it does not meet the requested SPOB simplification standard. The recommended wording preserves the partitive sense, the reflexive exposure, and the location while reading more naturally for modern readers.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

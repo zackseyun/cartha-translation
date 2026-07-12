@@ -588,6 +588,11 @@ def call_azure_tool(
         except urllib.error.HTTPError as exc:
             detail = exc.read().decode("utf-8", errors="replace")
             last_error = RuntimeError(f"HTTP {exc.code}: {detail[:1200]}")
+            # A policy rejection is deterministic for the same payload. Retrying
+            # it only burns review capacity and delays the wave; callers can
+            # record an auditable editorial fallback instead.
+            if exc.code == 400 and ("content_filter" in detail or "ResponsibleAIPolicyViolation" in detail):
+                raise last_error
             if exc.code == 429:
                 try:
                     retry_after_seconds = float(exc.headers.get("Retry-After") or 0)

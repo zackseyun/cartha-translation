@@ -34,43 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then one of the synagogue rulers, named Jairus, came. When he saw Jesus, he fell at his feet.
+  text: Then one of the synagogue rulers, named Jairus, came. When he saw Jesus, he fell at Jesus’ feet.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And one of the synagogue rulers, named Jairus, came, and when he saw him, he fell at his feet.
-  simplified_phrase: Then one of the synagogue rulers, named Jairus, came. When he saw Jesus, he fell at his feet.
-  preserved_meaning: Keeps Jairus' role, name, coming to Jesus, and act of falling at Jesus' feet while clarifying the pronoun.
-  reasoning_layer_used: POB translation and revision note
-  rationale: Splitting the sentence helps readers follow the action.
-retained_terms:
-- term: synagogue rulers
-  reason: Retained to preserve Jairus' role.
-- term: Jairus
-  reason: Retained as the named person in the POB.
+  simplified_phrase: Then one of the synagogue rulers, named Jairus, came. When he saw Jesus, he fell at Jesus’ feet.
+  preserved_meaning: Keeps Jairus’s role, name, arrival, and physical act of falling before Jesus.
+  reasoning_layer_used: POB translation, lexical decisions, and theological decision
+  rationale: Two sentences and repeated use of Jesus’ name make the sequence and recipient clear.
+interpretive_expansions:
+- pob_phrase: when he saw him ... at his feet
+  rendering: When he saw Jesus, he fell at Jesus’ feet.
+  claim: Both pronouns refer to Jesus.
+  evidence:
+  - The Greek pronouns refer to the person Jairus approached, whom the immediate context identifies as Jesus.
+  - The POB theological note identifies the action as falling at Jesus’ feet.
+  confidence: high
+  alternatives_preserved:
+  - The posture may express reverence, desperation, or supplication rather than explicit worship.
 translation_notes:
-  source_alignment_notes: Preserves the role, name, and humble posture before Jesus.
-  readability_notes:
-  - Clarifies 'him' as Jesus and separates the actions.
-  compression_notes:
-  - No detail is removed.
+  risk_flags:
+  - risk: Falling at Jesus’ feet could be mistaken for an explicit statement of worship.
+    mitigation: The text preserves the physical action without labeling it worship.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/005/022.yaml
   source_text_sha256: 13b6cd65734c17d7c1da8e7bc0e0a79da8f52e003ceababb8abe8d02dc97fa31
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-f
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:50:14Z'
-  output_hash: c079f6723210aca2d10acbfb9e4e5b36c78f033cf29c6fa15b5a3b565bfa1ab3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 114864ac521a9bcc59c2049d7ce43595d30c36eb919613f1ca6d3c1524b878e7
+  timestamp: '2026-07-12T07:20:20Z'
+  output_hash: 62d1d95e19993596b161983edaafaa5e789a83dadad689e8a8f8d0660e579766
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3347
+    completion_tokens: 340
+    total_tokens: 3687
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: synagogue rulers
+  reason: Retained to preserve Jairus' role.
+- term: Jairus
+  reason: Retained as the named person in the POB.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:20Z'
+  previous_text: Then one of the synagogue rulers, named Jairus, came. When he saw Jesus, he fell at his feet.
+  previous_model: codex-manual-worker-f
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 36e53961db4a76ddb092fc62fdf2c7e78d074f201c93a1d22aa5b4f2641c5093
+  review_summary: The sentence division and identification of Jesus appropriately improve readability and are warranted by the Greek and context. Retaining "synagogue rulers" and describing the posture without calling it worship faithfully preserves the text's meaning and theological restraint. Repeat Jesus’ name in the final phrase to remove the remaining pronoun ambiguity.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

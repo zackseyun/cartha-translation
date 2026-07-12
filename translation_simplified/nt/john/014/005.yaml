@@ -34,43 +34,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Thomas said to him, “Lord, we do not know where you are going. How can we know the way?”
+  text: Thomas said to Jesus, “Lord, we do not know where you are going. How can we know the way?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Thomas said to him[a], “Lord, we do not know where you are going[b]. How can we know the way?”
-  simplified_phrase: Thomas said to him, “Lord, we do not know where you are going. How can we know the way?”
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for John 14 while simplifying wording for modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and footnotes
-  rationale: Manual Codex SPOB drafting used shorter clauses and clearer modern wording while retaining John 14's important theological language and documented ambiguities.
-retained_terms:
-- term: Lord
-  reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 14.
-- term: the way
-  reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 14.
-translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses clearer modern common English while keeping John 14's farewell-discourse flow and theological vocabulary.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+- pob_phrase: Thomas said to him
+  simplified_phrase: Thomas said to Jesus
+  preserved_meaning: Thomas addresses Jesus directly.
+  reasoning_layer_used: Immediate narrative context and grounding review
+  rationale: Naming Jesus replaces a context-dependent pronoun without adding a new claim.
+interpretive_expansions:
+- pob_phrase: to him
+  rendering: to Jesus
+  claim: The person Thomas addresses is Jesus.
+  evidence:
+  - The immediate John 14 context identifies Jesus as the speaker Thomas answers.
+  confidence: high
+  alternatives_preserved:
+  - to him
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/014/005.yaml
   source_text_sha256: 2d1a23fdcb7f9e951ff6ed3759ee925fc8c56a5174074e737108a6fc0a4c4ebf
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:48:19Z'
-  output_hash: 30d9a430396fe61c5d4e5fea90c7e157c6ce35b083ab18a3893452cf07bf622b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 437e64e5883817d366c4bbe4cbac5b8f4ce9a0855a760e8308a77c3c7feea28f
+  timestamp: '2026-07-12T07:16:59Z'
+  output_hash: 3e9b5dd375a9dbada2bcd03d5132509d75a16b60f95ff4dbd8b847125901bc4e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3295
+    completion_tokens: 196
+    total_tokens: 3491
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Lord
+  reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 14.
+- term: the way
+  reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 14.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:59Z'
+  previous_text: Thomas said to him, “Lord, we do not know where you are going. How can we know the way?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f8a2c84c50909cbd65d3a613d992cb90a59cf63a7a0e9e7febea55de8aaa3c6d
+  review_summary: The proposed wording faithfully preserves Thomas's ignorance of Jesus' destination and his resulting question about the way; it adds no unsupported doctrinal explanation and appropriately retains “Lord” and “the way.” However, it is otherwise identical to POB and therefore falls short of the requested understanding-first simplification. Naming Jesus as the antecedent of “him” is a source- and context-warranted, publication-ready clarity improvement.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

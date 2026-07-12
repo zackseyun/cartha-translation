@@ -27,36 +27,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to her, “Did I not tell you that if you believe, you will see the glory of God?”
+  text: Jesus said to her, “Didn't I tell you that if you believe, you will see God show his glory?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Did I not tell you
+  simplified_phrase: Didn't I tell you
+  preserved_meaning: Jesus asks a rhetorical question that expects Martha to agree.
+  reasoning_layer_used: POB lexical decision for Οὐκ εἶπόν σοι
+  rationale: The contraction gives the question natural modern wording without changing its force.
+- pob_phrase: see the glory of God
+  simplified_phrase: see God show his glory
+  preserved_meaning: Martha will witness God's glory being revealed in what follows.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: The active wording clarifies divine self-revelation while retaining the key term “glory.”
+interpretive_expansions:
+- pob_phrase: the glory of God
+  rendering: God show his glory
+  claim: God's glory will be displayed so Martha can witness it.
+  evidence:
+  - The POB rationale identifies glory here with divine self-revelation.
+  - John 11:41–44 immediately presents the raising of Lazarus.
+  confidence: high
+  alternatives_preserved:
+  - The wording does not define the promise as a general rule about faith and miracles.
+  - The wording does not explicitly limit the promise to Lazarus's raising.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Show” makes the revelatory action more explicit than the Greek noun phrase.
+    mitigation: The POB rationale and immediate context support this clarification, while “glory” remains in the text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/040.yaml
   source_text_sha256: ad9399ef83fdd411eacc666c7737daca275a8695e510a4980f165ebb0ecd460d
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: 53c53410fe8b413006e1be884ee6eccedea27abed623b72b4ce1ba9702f84b56
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fe0e9be341717e68a14c6f9e80f516553619f0e25be58f24378db0d09c8aa089
+  timestamp: '2026-07-12T07:16:35Z'
+  output_hash: fce131115d10f7d33824ef5287f625cfa998c0f355e34f9e9d0a6fd30e468366
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2961
+    completion_tokens: 377
+    total_tokens: 3338
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:35Z'
+  previous_text: Jesus said to her, “Did I not tell you that if you believe, you will see the glory of God?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 888758a9272945ff80cac678c1be0c8380499cdf500e8b40ee9db62bcfc153a4
+  review_summary: Revise for actual clarity rather than retaining POB unchanged. “God show his glory” makes explicit the warranted Johannine sense of God’s glory being revealed or displayed, without turning Jesus’ specific promise to Martha into a general doctrine about faith or miracles.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

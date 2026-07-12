@@ -31,43 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then one of the twelve, the one called Judas Iscariot, went to the chief priests
+  text: Then Judas Iscariot, one of Jesus’ twelve disciples, went to the chief priests.
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: one of the twelve, the one called Judas Iscariot
+  simplified_phrase: Judas Iscariot, one of Jesus’ twelve disciples
+  preserved_meaning: Judas is identified by name as a member of the group of twelve.
+  reasoning_layer_used: POB group-designation rationale and immediate Matthean context
+  rationale: Reordering the phrase and naming the group as Jesus’ disciples makes the reference immediately clear.
+interpretive_expansions:
 - pob_phrase: one of the twelve
-  simplified_phrase: one of the twelve
-  preserved_meaning: Retains the group identification and Judas's name.
-  reasoning_layer_used: POB translation text
-  rationale: The POB wording is already clear, so only punctuation flow is preserved.
-retained_terms:
-- term: Judas Iscariot
-  reason: Named participant is essential to the narrative.
-- term: chief priests
-  reason: Institutional title is retained from POB.
+  rendering: one of Jesus’ twelve disciples
+  claim: The twelve are Jesus’ inner group of disciples.
+  evidence:
+  - The POB audit recognizes “the twelve” as a group designation.
+  - The immediate context identifies Judas as one of Jesus’ twelve disciples.
+  confidence: high
+  alternatives_preserved:
+  - one of the twelve
+  - one of the Twelve
 translation_notes:
-  source_alignment_notes: Preserves the movement from the Twelve to the chief priests.
-  readability_notes:
-  - Keeps a simple narrative clause.
-  compression_notes:
-  - No central meaning is removed.
+  risk_flags:
+  - risk: Adding “Jesus’ disciples” makes the implicit group reference explicit.
+    mitigation: The clarification is limited to the established referent in Matthew’s context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/014.yaml
   source_text_sha256: 4d94908d05758ce8d29c6ed2887acdbfbaa70c3b591631767522ade81b12ddcf
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:58Z'
-  output_hash: 533d3e08ac9c65568cee35649b0f7a0541dc66de6d4e06cc72c5b3c8351b6cdf
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 304e80f679bc47e0920ef89417be28ddc0b62d31ed169a739094b2c76e397235
+  timestamp: '2026-07-12T07:38:16Z'
+  output_hash: b1ed2b5463fded825e0788477e5c46beac4907c3a52cb198bf33600c4faf6d47
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2942
+    completion_tokens: 288
+    total_tokens: 3230
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Judas Iscariot
+  reason: Named participant is essential to the narrative.
+- term: chief priests
+  reason: Institutional title is retained from POB.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:16Z'
+  previous_text: Then one of the twelve, the one called Judas Iscariot, went to the chief priests
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1c73233caada16918a53c6b21f3ed725711453ecac2e2ff420abaa05c0681dad
+  review_summary: Revise for meaningful reader-facing clarity. “One of Jesus’ twelve disciples” is a warranted contextual clarification of the source’s established designation, while retaining Judas’s identity, his membership in the group, and his movement to the chief priests. The submitted wording is faithful but provides no substantive simplification over POB.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

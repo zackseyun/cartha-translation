@@ -34,44 +34,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But Jesus, knowing their evil intent, said, “Why are you testing me, hypocrites?”
+  text: But Jesus knew their evil intent and said, “Why are you trying to trap me, you pretenders?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But Jesus[a], knowing their evil intent, said, “Why are you testing me[b], hypocrites?”
-  simplified_phrase: But Jesus, knowing their evil intent, said, “Why are you testing me, hypocrites?”
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
-retained_terms:
-- term: Jesus
-  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+- pob_phrase: knowing their evil intent
+  simplified_phrase: knew their evil intent
+  preserved_meaning: Jesus recognized their hostile motive before answering.
+  reasoning_layer_used: POB lexical and theological decisions for γνοὺς and πονηρίαν
+  rationale: A direct verb is easier to follow than the participial clause.
+- pob_phrase: hypocrites
+  simplified_phrase: you pretenders
+  preserved_meaning: They appeared sincere while hiding hostile motives.
+  reasoning_layer_used: POB lexical decision for ὑποκριταί
+  rationale: “Pretenders” states the accusation in familiar English.
+- pob_phrase: Why are you testing me
+  simplified_phrase: Why are you trying to trap me
+  preserved_meaning: Their question was a hostile attempt to make Jesus incriminate himself.
+  reasoning_layer_used: POB lexical rationale for πειράζετε and Matthew 22:15–17 context
+  rationale: “Trying to trap me” makes the intended hostile test immediately clear.
+interpretive_expansions:
+- pob_phrase: testing me
+  rendering: trying to trap me
+  claim: The test was an attempt to catch Jesus by his answer.
+  evidence:
+  - Matthew 22:15 says the Pharisees planned to trap Jesus by what he said.
+  - The POB lexical rationale identifies the opponents as attempting to trap Jesus.
+  confidence: high
+  alternatives_preserved:
+  - testing me
+  - tempting me
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: “Trap” narrows the broader possible range of πειράζω.
+    mitigation: The immediate context and POB rationale specifically establish entrapment here.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/018.yaml
   source_text_sha256: 904825d42e28b4b0290f5e74bf6cb3069ba1f3d6bec717c6d1be5d9d3f9e3138
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: 3cd0258c64d06d74aa6190d11812e6e08d750c738ece8d50e11821192e9e04f6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5ee2f972a1e0eb131157c8c4ec19c08097fd720791b2676506d75fa785d6d087
+  timestamp: '2026-07-12T07:37:29Z'
+  output_hash: 2fcfb5f865b758ef7c2ccd289f513fb98dfa1d8670e876d38efe82ccd5162eee
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3380
+    completion_tokens: 607
+    total_tokens: 3987
+    reasoning_tokens: 179
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Jesus
+  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:29Z'
+  previous_text: But Jesus, knowing their evil intent, said, “Why are you testing me, hypocrites?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 97f91ee4c41d1453886d66ac3ece24cf286a62b147e5e4839f82e830807997d4
+  review_summary: Revise. The draft is faithful but does not meet the stated SPOB threshold of being meaningfully clearer than POB, since its main text is unchanged. The recommended wording makes explicit the trap-setting sense established by the immediate context and POB audit trail, while “pretenders” communicates the contextual force of “hypocrites” without adding doctrine or collapsing a live ambiguity beyond what the context resolves.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

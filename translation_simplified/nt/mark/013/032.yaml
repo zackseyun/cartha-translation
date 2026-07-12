@@ -31,18 +31,45 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But about that day or hour, no one knows—not the angels in heaven, nor the Son[a], but only the Father.
+  text: But about that day or hour, no one knows—not even the angels in heaven, nor the Son, but only the Father.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The translation preserves the wording “nor the Son” without adding an interpretation to the main text.
-    reason: simplification_note
 simplification_decisions:
-- pob_phrase: But concerning that day or hour[a], no one knows—not even the angels in heaven, nor the Son, but only the Father.
-  simplified_phrase: But about that day or hour, no one knows—not the angels in heaven, nor the Son[a], but only the Father.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: But concerning
+  simplified_phrase: But about
+  preserved_meaning: Keeps the topic shift and mild contrast in natural modern English.
+  reasoning_layer_used: POB lexical decision for Περὶ δὲ
+  rationale: “About” is clearer than “concerning” while expressing the same relation.
+- pob_phrase: not even the angels in heaven, nor the Son
+  simplified_phrase: not even the angels in heaven, nor the Son
+  preserved_meaning: Retains the emphatic progression and the unqualified christological title.
+  reasoning_layer_used: POB lexical and theological decisions for οὐδὲ
+  rationale: Keeping “even” preserves the Greek emphasis without reducing readability.
+translation_notes:
+  risk_flags:
+  - risk: Readers may seek a theological explanation for why the Son does not know.
+    mitigation: The main text preserves the deliberate tension without inserting an interpretation.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/013/032.yaml
+  source_text_sha256: 26629ca5f1c7c19362f03b1a5c5d3fcbd11a4d47ceb846b2e0dde682511d8a1a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3f54afe6f5f0752cda1e022d329637665f6d2ab991a6d1d779349e22a0d8deff
+  timestamp: '2026-07-12T07:21:49Z'
+  output_hash: 4e44919b148b73f78719eba4f64ea9db1c017db8be2b33e8833d44f49790600d
+  usage:
+    prompt_tokens: 3510
+    completion_tokens: 264
+    total_tokens: 3774
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: angels
   reason: Retained because it is a key POB/source-grounded term in this verse.
@@ -50,30 +77,14 @@ retained_terms:
   reason: Retained because it is a key POB/source-grounded term in this verse.
 - term: Father
   reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/013/032.yaml
-  source_text_sha256: 26629ca5f1c7c19362f03b1a5c5d3fcbd11a4d47ceb846b2e0dde682511d8a1a
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 7ec96cf5ce5a16f3dbc2b2c7c1cab7df4bbecb4dc5767666445398177ea85b9f
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:49Z'
+  previous_text: But about that day or hour, no one knows—not the angels in heaven, nor the Son[a], but only the Father.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ad3f674e9b06b104925fc010d0301cb1f471c95f7da11a4cec3874e1d8d2c9e4
+  review_summary: “About” is a warranted, clearer rendering of “concerning,” and the draft rightly retains the unqualified wording “nor the Son” rather than importing a christological explanation. Revise to retain “not even,” which preserves the Greek and POB’s emphatic progression while remaining simple English. Omit the redundant footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

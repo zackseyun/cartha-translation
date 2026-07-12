@@ -27,18 +27,42 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After Mahalalel fathered Jared, he lived 830 years and fathered other sons and daughters.
+  text: After Mahalalel fathered Jared, he lived 830 years and fathered sons and daughters.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Reordered the subject and pronoun from 'After he fathered Jared, Mahalalel...' to 'After Mahalalel fathered Jared, he...' to avoid cataphoric reference and make the sentence flow more naturally in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Reordered the subject and pronoun from 'After he fathered Jared, Mahalalel...' to 'After Mahalalel fathered Jared, he...' to avoid cataphoric reference and make the sentence flow more naturally in modern English.
-- preserved_meaning: Formatted the spelled-out number 'eight hundred and thirty years' as the numeral '830 years' to facilitate easier reading and visual scanning.
-  reasoning_layer_used: POB audit trail
-  rationale: Formatted the spelled-out number 'eight hundred and thirty years' as the numeral '830 years' to facilitate easier reading and visual scanning.
-- preserved_meaning: Inserted the clarifying word 'other' before 'sons and daughters' to naturally indicate that these children were subsequent to Jared, while retaining the precise verb 'fathered' per the POB rationale.
-  reasoning_layer_used: POB audit trail
-  rationale: Inserted the clarifying word 'other' before 'sons and daughters' to naturally indicate that these children were subsequent to Jared, while retaining the precise verb 'fathered' per the POB rationale.
+- pob_phrase: After he fathered Jared, Mahalalel lived
+  simplified_phrase: After Mahalalel fathered Jared, he lived
+  preserved_meaning: Mahalalel remains the one who fathered Jared and then lived for the stated period.
+  reasoning_layer_used: POB translation and lexical decisions
+  rationale: Naming Mahalalel first removes an unclear forward-pointing pronoun.
+- pob_phrase: eight hundred and thirty years
+  simplified_phrase: 830 years
+  preserved_meaning: The total remains exactly eight hundred and thirty years.
+  reasoning_layer_used: POB numerical lexical decision
+  rationale: Digits make the large number easier to scan.
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/ot/genesis/005/016.yaml
+  source_text_sha256: 1814bb22cc13ae00576bfdccf59f3fe226ad3d5e3ddc4f17ff7f91d5bfaced42
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 606192b4b97f807f1057aa0bb1ff38678cb50ee67c156b10ed5055e57ad64f9b
+  timestamp: '2026-07-12T09:22:49Z'
+  output_hash: 4153c81f802773b2b71c1cac0c9945c4b882166f228905250d530198ae0a67aa
+  usage:
+    prompt_tokens: 3321
+    completion_tokens: 213
+    total_tokens: 3534
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Mahalalel
   reason: Retained to preserve POB's source-grounded terminology.
@@ -46,33 +70,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: fathered
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains the Hiphil verb structure of 'ילד' (fathered) twice to preserve the male parental role and lexical consistency from the POB source. Preserves the gender-specific 'sons and daughters' (bānîm ûbānôt) instead of generalizing to 'children'.
-  readability_notes:
-  - The sentence flow is improved by placing the proper noun 'Mahalalel' at the beginning of the clause. Using digits for large numbers matches modern narrative and genealogical formatting preferences.
-  compression_notes:
-  - No source information or theological details were compressed or omitted.
-  risk_flags:
-  - risk: none
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/ot/genesis/005/016.yaml
-  source_text_sha256: 1814bb22cc13ae00576bfdccf59f3fe226ad3d5e3ddc4f17ff7f91d5bfaced42
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 5b71701d4e752aa3b766f41786d7e1776411959ae94e1999a0ed41bf0ed6caef
-  timestamp: '2026-05-28T08:46:13Z'
-  output_hash: 90e7a7e6f519b30510fe68e43c044ab1d38c2a742ab118f09bb2de9fe1d4dcda
-  usage:
-    prompt_tokens: 1562
-    completion_tokens: 369
-    total_tokens: 4875
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T09:22:49Z'
+  previous_text: After Mahalalel fathered Jared, he lived 830 years and fathered other sons and daughters.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4f2e1687fc4189335175aeb92dad9f011ee5e3ddb71fabc4da34e85866ccaae5
+  review_summary: The subject-order revision removes an initially unclear pronoun, and using “830” improves scanability without changing the number. Retain those improvements. Remove “other,” since it is an unnecessary contextual inference rather than wording expressed by the source or retained in the POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

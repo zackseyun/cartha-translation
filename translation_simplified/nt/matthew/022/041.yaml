@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/022/041.yaml
-  text: Now while the Pharisees were gathered together, Jesus asked them,
+  text: While the Pharisees were gathered together, Jesus asked them,
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -27,46 +27,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: While the Pharisees were gathered together, Jesus asked them,
+  text: While the Pharisees were gathered, Jesus asked them,
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Now while the Pharisees were gathered together, Jesus asked them,
-  simplified_phrase: While the Pharisees were gathered together, Jesus asked them,
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
-retained_terms:
-- term: Pharisees
-  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
-- term: Jesus
-  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
-translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
-  risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+- pob_phrase: were gathered together
+  simplified_phrase: were gathered
+  preserved_meaning: The Pharisees were assembled as a group when Jesus spoke to them.
+  reasoning_layer_used: POB lexical decision for Συνηγμένων
+  rationale: Removing “together” avoids redundancy while preserving the collective setting.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/041.yaml
   source_text_sha256: dcfb4fb187d47c59897a7c87e84e2ad4ec416448fca95097ddcc361041f586c6
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: d5f06e26a7c90a1b0244faf2e44e885549c21ca99650ec98659e592260a59e91
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0e93d695d2448bfef2e09982f6eb175130480dc3a2e16a9c602eac3244769c2f
+  timestamp: '2026-07-12T07:37:28Z'
+  output_hash: 53fa3b81505f6f4cbf604909494f47f308f7e9c2e30aa820e859deb8da9618e3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3024
+    completion_tokens: 133
+    total_tokens: 3157
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Pharisees
+  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+- term: Jesus
+  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:28Z'
+  previous_text: While the Pharisees were gathered together, Jesus asked them,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1d8023b74aecc7c3af085c643a3156542dc7efb16003af5bd8c3dcbce816f0c1
+  review_summary: The draft is faithful and doctrinally neutral, retaining the circumstantial setting and Jesus’ action. However, it duplicates the actual POB text and therefore does not meet the requested meaningful-clarity threshold for SPOB. Removing the redundant “together” is a warranted, source-compatible simplification.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

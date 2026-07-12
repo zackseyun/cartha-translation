@@ -31,41 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But they paid no attention and went away, one to his field and another to his business.
+  text: But they ignored the king’s invitation and went away—one to his own field, another to his business.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But they paid no attention and went away[a], one to his own field, another to his business.
-  simplified_phrase: But they paid no attention and went away, one to his field and another to his business.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
-translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
-  risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+- pob_phrase: paid no attention
+  simplified_phrase: ignored the king’s invitation
+  preserved_meaning: They disregarded the summons the king had sent them.
+  reasoning_layer_used: POB footnote and theological decision on the implied object of ἀμελήσαντες
+  rationale: Naming the invitation makes the implied object clear while retaining the dismissive force.
+- pob_phrase: one to his own field, another to his business
+  simplified_phrase: one to his own field, another to his business
+  preserved_meaning: Each person left for a different private concern.
+  reasoning_layer_used: POB lexical decisions for ἴδιον, ἀγρός, and ἐμπορία
+  rationale: The wording keeps “own” because it emphasizes the man's personal concern.
+interpretive_expansions:
+- pob_phrase: paid no attention
+  rendering: ignored the king’s invitation
+  claim: The object they ignored was the king’s invitation.
+  evidence:
+  - The immediate context identifies the king’s invitation as the summons they disregard.
+  - The POB footnote and theological rationale explicitly identify this implied object.
+  confidence: high
+  alternatives_preserved:
+  - paid no attention to the invitation
+  - disregarded the king’s invitation
+  - neglected the invitation
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/005.yaml
   source_text_sha256: beebc96d9e913888cc70e35d3cb26ac1d02006f8bbb36759802686f82dc50ebd
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:51Z'
-  output_hash: 207d69fbde372693cbde8369bd61ce23773f7f00019f9df7672b38fef47a012b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ed96a741e94c0a7a8d6f1cfd01feaa9f8678ffee2209a537bfff360a27928b51
+  timestamp: '2026-07-12T07:37:23Z'
+  output_hash: 55d705621a31df4f1f0879c4fc436e63ec3f7177a221a3a04377ff65185cc557
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3264
+    completion_tokens: 340
+    total_tokens: 3604
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:23Z'
+  previous_text: But they paid no attention and went away, one to his field and another to his business.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fb01851fc1eca589b828a87949f92d3145f3b7166df67e39f4f9dfc5f2824c59
+  review_summary: Revise. The draft is generally faithful, but it removes the meaningful “own” and does not substantially improve on POB’s already clear wording. The immediate context warrants explicitly naming the king’s invitation, which makes the central rejection understandable while preserving the verse’s narrative sense.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

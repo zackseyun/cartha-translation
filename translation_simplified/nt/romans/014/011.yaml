@@ -31,36 +31,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For it is written, “As I live, says the Lord, every knee will bow to me, and every tongue will confess to God.”
+  text: For Scripture says, “As surely as I live,” says the Lord, “every knee will bow to me, and every tongue will confess to God.”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “will acknowledge God” or “will give praise to God.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: For it is written
+  simplified_phrase: For Scripture says
+  preserved_meaning: The words introduce an authoritative Scripture quotation.
+  reasoning_layer_used: POB lexical decision for γέγραπται
+  rationale: This makes the citation formula immediately clear to a modern reader.
+- pob_phrase: As I live
+  simplified_phrase: As surely as I live
+  preserved_meaning: The Lord solemnly guarantees the declaration by his life.
+  reasoning_layer_used: POB lexical rationale for Ζῶ ἐγώ
+  rationale: Adding “surely” communicates the oath-like force of the idiom.
+- pob_phrase: every tongue will confess to God
+  simplified_phrase: every tongue will confess to God
+  preserved_meaning: Everyone will publicly acknowledge God, with possible overtones of praise.
+  reasoning_layer_used: POB lexical decision and footnote for ἐξομολογήσεται
+  rationale: The image and chosen term remain in the text while the note prevents a narrow wrongdoing-only reading.
+interpretive_expansions:
+- pob_phrase: As I live
+  rendering: As surely as I live
+  claim: The expression is a solemn assurance rather than a bare statement that the Lord lives.
+  evidence:
+  - The POB lexical rationale identifies the phrase as an oath-like declaration.
+  confidence: high
+  alternatives_preserved:
+  - As I live
+  - By my life
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Modern readers may understand “confess” only as admitting wrongdoing.
+    mitigation: The footnote preserves the contextual senses of acknowledgment and praise.
+  - risk: The shift from “to me” to “to God” may seem uneven.
+    mitigation: The wording retains this deliberate textual and theological tension without harmonizing it.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/011.yaml
   source_text_sha256: 595a8a37f8ba16f4bd224ee91f8162cd721d8836204e13b7cbaea70d4514fe13
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 828f403d981a35ae6afcc230c42f49c459692fe13855e8d706eba87c5b1f41ba
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 11ea4e325a43b06f34b3069397c961b94ff66a7c0a3c748982e07cae384624f6
+  timestamp: '2026-07-12T07:42:35Z'
+  output_hash: 3afb555b65865a91deb63ef87593c45c8b916a4bb543b8a2927833ea3b172ca7
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3347
+    completion_tokens: 483
+    total_tokens: 3830
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:35Z'
+  previous_text: For it is written, “As I live, says the Lord, every knee will bow to me, and every tongue will confess to God.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8b5d89ffbcabcd7a10519873b6efb705629aa82d6bc9b39f351ff79dc4779d46
+  review_summary: Revise for actual SPOB-level clarity, not for doctrinal reasons. “Scripture says” clearly communicates the citation formula, and “As surely as I live” naturally conveys its solemn oath force. The wording retains the source/audit-trail distinction between “to me” and “to God” and does not resolve the quotation’s theological tension. Retain a brief note for “confess” so readers are not forced into an overly narrow modern sense.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

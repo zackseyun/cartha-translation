@@ -31,14 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: “Blessed is the coming kingdom of our father David! Hosanna in the highest!”
+  text: “Blessed is the kingdom that is coming—the kingdom of our ancestor David! Hosanna in the highest!”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “Hosanna” functions here as a worshipful shout of praise and comes from a plea meaning “Save, please” or “Save now.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Blessed is the coming kingdom of our father David! Hosanna in the highest![a]
-  simplified_phrase: “Blessed is the coming kingdom of our father David! Hosanna in the highest!”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: the coming kingdom of our father David
+  simplified_phrase: the kingdom that is coming—the kingdom of our ancestor David
+  preserved_meaning: David remains the honored forefather associated with the coming kingdom.
+  reasoning_layer_used: POB lexical decision and rationale for τοῦ πατρὸς ἡμῶν Δαυίδ
+  rationale: The recast wording clarifies both the coming kingdom and David’s ancestral title.
+- pob_phrase: Hosanna in the highest![a]
+  simplified_phrase: Hosanna in the highest!”[a]
+  preserved_meaning: The fixed liturgical acclamation remains in the text while its meaning is explained in a note.
+  reasoning_layer_used: POB lexical decisions and footnote for Ὡσαννὰ
+  rationale: Retaining “Hosanna” preserves the biblical worship language without leaving new readers unaided.
+interpretive_expansions:
+- pob_phrase: our father David
+  rendering: our ancestor David
+  claim: David is called an honored forefather, not the crowd’s immediate father.
+  evidence:
+  - The POB lexical rationale identifies the phrase as an ancestral honorific.
+  confidence: high
+  alternatives_preserved:
+  - The wording does not add the interpretive label “messianic kingdom.”
+translation_notes:
+  risk_flags:
+  - risk: Replacing “father” with “ancestor” may reduce the traditional honorific tone.
+    mitigation: The phrase “our ancestor David” keeps both shared descent and respectful identification.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/011/010.yaml
+  source_text_sha256: 7598b3c2b4517e12fe4c667d2b4c0b5926e49489a9edcd47795aeb06baadd5b7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 08f8966261d098be366c73842db875f9e71c5b424b63b39ed5b440726df29ca0
+  timestamp: '2026-07-12T07:21:40Z'
+  output_hash: 6e0769e0b28f694e1d09092775d588aa086cbc871ed312f197391f44708fb0d3
+  usage:
+    prompt_tokens: 3237
+    completion_tokens: 1229
+    total_tokens: 4466
+    reasoning_tokens: 782
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: kingdom
   reason: Retained because it is a key POB/source-grounded term in this verse.
@@ -46,30 +89,13 @@ retained_terms:
   reason: Retained because it is a key POB/source-grounded term in this verse.
 - term: Hosanna
   reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/011/010.yaml
-  source_text_sha256: 7598b3c2b4517e12fe4c667d2b4c0b5926e49489a9edcd47795aeb06baadd5b7
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: a85c98f46eed5b0977982e3effef7b1c9f640603a1ae9726fe45644c5438ad4f
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:40Z'
+  previous_text: “Blessed is the coming kingdom of our father David! Hosanna in the highest!”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c4f2060542f49dbe638756fedd19ff7cc42f1e8e0d417d9bfbf66e80126565ee
+  review_summary: The draft preserves the Greek and POB faithfully and does not introduce doctrine. However, merely deleting POB's footnote marker is not a meaningful simplification and removes the only aid for an opaque key term. The recommended wording clarifies David's ancestral title and the participial phrase without labeling the kingdom "messianic" or otherwise resolving the passage's theological implications; the retained note explains Hosanna without forcing its underlying plea into the main line.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

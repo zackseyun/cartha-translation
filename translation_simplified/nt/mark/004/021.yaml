@@ -34,45 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A lamp does not come in so it can be put under a basket[a] or under a bed, does it? It is meant to be put on the lampstand.
+  text: He went on to say to them, “A lamp does not come so that it can be put under a measuring basket[a] or under a bed, does it? Doesn’t it come to be put on a lampstand?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The word refers to a measuring container, traditionally called a bushel.
+    text: This was a container used to measure dry goods, traditionally called a bushel.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: And he was saying to them[a], “A lamp does not come to be put under a basket or under a bed[b], does it? Is it not to be put on the lampstand?”
-  simplified_phrase: A lamp does not come in so it can be put under a basket[a] or under a bed, does it? It is meant to be put on the lampstand.
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: lampstand
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: And he was saying to them
+  simplified_phrase: He went on to say to them
+  preserved_meaning: Jesus continued speaking to the same hearers.
+  reasoning_layer_used: POB translation and lexical decision for ἔλεγεν
+  rationale: “Went on to say” gives natural English while retaining the imperfect verb’s continuing narrative sense.
+- pob_phrase: under a basket
+  simplified_phrase: under a measuring basket
+  preserved_meaning: The lamp is absurdly hidden beneath a container used for measuring.
+  reasoning_layer_used: POB lexical decision and cultural footnote for μόδιον
+  rationale: Adding “measuring” makes the unfamiliar household object understandable without using the archaic term “bushel.”
+- pob_phrase: Is it not to be put on the lampstand?
+  simplified_phrase: Doesn’t it come to be put on a lampstand?
+  preserved_meaning: A lamp’s proper purpose is to be placed where its light can be seen.
+  reasoning_layer_used: POB translation, lexical decisions, and theological decision on personification
+  rationale: The modern rhetorical question restores the source’s pointed contrast and repeats the vivid image of the lamp coming.
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: The personified wording “a lamp comes” may sound unusual in English.
+    mitigation: It is retained because the POB explicitly protects this vivid source-language image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/021.yaml
   source_text_sha256: d168dc0b998ed6bf698966715737f51485a2ca1ef777ada3659c848ab3f4bd24
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 31f634d27f8481ba02035bc191af1bcbddee7c9765340f28f79eb654ce37f72a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e17f5926f16a3d247289e985c3def1204f4edd3d513f366e7d5b7c154a40a46a
+  timestamp: '2026-07-12T07:20:20Z'
+  output_hash: 75cc922b32333d4842e79b01ed7377dd3b26fff8d844d9c37c257a94d7714319
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3612
+    completion_tokens: 878
+    total_tokens: 4490
+    reasoning_tokens: 452
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: lampstand
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:20Z'
+  previous_text: A lamp does not come in so it can be put under a basket[a] or under a bed, does it? It is meant to be put on the lampstand.
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a2dff61a7ffaac42263bcc1ebe907390585c023c596fa743b751a04aad3c3584
+  review_summary: Revision is needed. The draft is clearer than POB overall, and its purpose wording is source-grounded, but “come in” introduces a location/direction not stated in the text or supported by the POB record. The replacement uses the audit trail’s acknowledged dynamic alternative (“is a lamp brought”), keeps the domestic image and the two rhetorical questions, and reads naturally in modern English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

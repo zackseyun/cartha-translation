@@ -31,45 +31,67 @@ base_translation:
     changes_summary: 'Revised “in my name” to reflect the Greek text more closely, which reads “in [the] name, because you are Christ’s,” not explicitly “my name.” Also adjusted “because you belong to the Messiah” to the more literal “that you are Christ’s,” preserving the source wording and formal register. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: For whoever gives you a cup of water to drink because you belong to Messiah[a], truly I tell you, he will certainly not lose his reward.
+  text: For whoever gives you a cup of water to drink because you belong to the Messiah[a], truly I tell you, he will certainly not lose his reward.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “because you are Christ's.” Messiah and Christ express the same title.
-    reason: simplification_note
+    text: Or, “because you are Christ’s.”
+    reason: alternative_reading
 simplification_decisions:
 - pob_phrase: in the name that you are Messiah's
-  simplified_phrase: because you belong to Messiah
-  preserved_meaning: Keeps the reason for the gift as belonging to Messiah/Christ and preserves the promised reward.
-  reasoning_layer_used: POB translation text and alternative-reading footnote
-  rationale: Uses more natural English for the ownership phrase while retaining the POB's Messiah terminology and noting the Christ alternative.
-retained_terms:
-- term: Messiah
-  reason: Retained because it is the POB's chosen title in the main text.
+  simplified_phrase: because you belong to the Messiah
+  preserved_meaning: The water is given because the recipients belong to the Messiah.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: This makes the causal and possessive sense clear while retaining Messiah as Jesus’ title.
+- pob_phrase: truly I say to you
+  simplified_phrase: truly I tell you
+  preserved_meaning: Jesus introduces the promise with solemn assurance.
+  reasoning_layer_used: POB lexical decision for ἀμὴν λέγω ὑμῖν
+  rationale: “Tell you” is more natural modern English without weakening the formula.
+interpretive_expansions:
+- pob_phrase: in the name that you are Messiah's
+  rendering: because you belong to the Messiah
+  claim: The gift is motivated by the disciples’ belonging to the Messiah.
+  evidence:
+  - The POB lexical decision takes ὅτι causally and explains χριστοῦ ἐστε as belonging to Jesus.
+  confidence: high
+  alternatives_preserved:
+  - because you are Christ’s
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft follows POB Mark 9:41 and preserves its title choice.
-  readability_notes:
-  - Simplifies the difficult phrase 'in the name that you are Messiah's.'
-  compression_notes:
-  - No central promise is removed.
+  risk_flags:
+  - risk: The causal wording does not separately retain the phrase “in the name.”
+    mitigation: The POB reasoning identifies allegiance to Jesus and the following causal clause as the phrase’s contextual force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/009/041.yaml
   source_text_sha256: e19d017c9928db43c0011b89a4963e1339c2657a5534f6c6c82bc5ace8b446ff
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:15:35Z'
-  output_hash: f57d27b0b9e38047dc385258e30fe9e1c5228b8ca4f07040d976550962e61d47
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cc68502acf8fa4f4598f21913009c625e51f9c14e320a0969255102c91fff92b
+  timestamp: '2026-07-12T07:21:00Z'
+  output_hash: d1d14d8623dfa98df199a184f38eaf505bd7441f5bf82e48a293477f6c05bae4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3953
+    completion_tokens: 391
+    total_tokens: 4344
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Messiah
+  reason: Retained because it is the POB's chosen title in the main text.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:00Z'
+  previous_text: For whoever gives you a cup of water to drink because you belong to Messiah[a], truly I tell you, he will certainly not lose his reward.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2f15977431dd1965bda80d89e95e4fc49c133ae83c64871854546323b31a4a06
+  review_summary: 'The causal rendering is warranted: the POB itself records “because you are Christ''s” as the alternative reading, and “belong to” clearly expresses the possessive relation without importing doctrine. It also meaningfully improves on POB''s opaque “in the name that you are Messiah''s.” Revise only for idiomatic title usage (“the Messiah”) and a tighter alternative-reading footnote.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

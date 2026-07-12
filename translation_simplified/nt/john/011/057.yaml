@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/011/057.yaml
-  text: Now the chief priests and the Pharisees had given orders that if anyone knew where he was[a], he should report it[b], so that they might seize him.
+  text: The chief priests and the Pharisees had given orders that if anyone knew where he was[a], he should report it[b], so that they might seize him.
   footnotes:
   - marker: a
     text: Or, more literally, 'where he is.' The Greek has a present tense ('is'), but English often shifts to 'was' after a past reporting verb.
@@ -34,36 +34,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now the chief priests and the Pharisees had given orders that if anyone knew where Jesus was, he should report it, so that they could seize him.
+  text: The chief priests and the Pharisees had ordered everyone who knew where Jesus was to report it, so that they might seize him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: had given orders that if anyone knew
+  simplified_phrase: had ordered everyone who knew
+  preserved_meaning: The leaders issued an authoritative directive applying to anyone with information.
+  reasoning_layer_used: POB lexical decisions for δεδώκεισαν, ἐντολὰς, and ἵνα ἐάν τις γνῷ
+  rationale: The direct construction is easier to read while retaining the prior order and its conditional scope.
+- pob_phrase: where he was
+  simplified_phrase: where Jesus was
+  preserved_meaning: The person whose location was sought is Jesus.
+  reasoning_layer_used: Immediate narrative context and POB pronoun rationale
+  rationale: Naming Jesus makes the verse clear on its own without changing the referent.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative identifies Jesus as the person the authorities seek to seize.
+  - The POB rationale states that αὐτόν refers to Jesus.
+  confidence: high
+  alternatives_preserved:
+  - he
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Changing the conditional wording to “everyone who knew” could sound slightly more categorical.
+    mitigation: The wording still limits the order to people who knew Jesus’ location.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/057.yaml
   source_text_sha256: 53bdb5d83b6970c03e474036bcd4e27756d888cef55d311837f517feb4dd08ac
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:39Z'
-  output_hash: abea7770335f52f350fcec13fbeea3893b86e56bbee5e529e65e15aa818bf648
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8ade2f87c5a9b8d7a4bd031bceb948fd284c830359e5006e39ea2ba68ff78f18
+  timestamp: '2026-07-12T07:16:42Z'
+  output_hash: 8206902f4192c37210685884b811db9256336cfa80ab18ec442ce06b7a6d7137
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3492
+    completion_tokens: 349
+    total_tokens: 3841
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:42Z'
+  previous_text: Now the chief priests and the Pharisees had given orders that if anyone knew where Jesus was, he should report it, so that they could seize him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 763b3e730d975068dd4c66947f38f4792e2c77aaaf2ffcc09604d98e9a344b18
+  review_summary: 'Naming Jesus is a warranted contextual clarification: the pronoun refers unambiguously to Jesus in the immediate narrative, and the explicit name improves standalone readability without adding doctrine. The draft should nevertheless omit “Now,” following the controlling POB reader-facing decision. “Might seize” retains the Greek purpose force more directly than “could seize.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

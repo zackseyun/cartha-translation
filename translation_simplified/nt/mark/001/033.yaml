@@ -31,42 +31,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The whole city gathered at the door.
+  text: The whole city was gathered at the entrance to the house.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: The whole city gathered
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: at the door
-  reasoning_layer_used: POB audit trail
-retained_terms:
-- term: the whole city
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: door
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: And the whole city was gathered at the door.
+  simplified_phrase: The whole city was gathered at the entrance to the house.
+  preserved_meaning: The verse depicts virtually the entire city assembled at the house entrance.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: This keeps the assembled state while making the location immediately clear.
+- pob_phrase: And
+  simplified_phrase: '[omitted]'
+  preserved_meaning: The scene continues without needing an opening conjunction in English.
+  reasoning_layer_used: SPOB readability guidance
+  rationale: Removing the conjunction gives the standalone verse a more natural opening.
+interpretive_expansions:
+- pob_phrase: at the door
+  rendering: at the entrance to the house
+  claim: The door is the entrance of the house where Jesus was staying.
+  evidence:
+  - The POB footnote says the context refers to the crowd gathered at the house entrance.
+  confidence: high
+  alternatives_preserved:
+  - at the door
+  - at the doorway
 translation_notes:
-  source_alignment_notes: Preserves the vivid generalization of 'the whole city' (ὅλη ἡ πόλις) and the exact location at the 'door' (θύρα) from the POB base text, keeping the historical scene intact.
-  readability_notes:
-  - Converting the passive voice to the active voice ('gathered' instead of 'was gathered') creates a cleaner, more direct reading experience without losing the scene's crowd-density implications.
-  compression_notes:
-  - Compressed the opening conjunction and eliminated the academic translation footnote to minimize clutter and optimize readability.
+  risk_flags:
+  - risk: “The whole city” may be read as mathematically exhaustive.
+    mitigation: It is retained as the POB’s vivid generalization rather than weakened.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/001/033.yaml
   source_text_sha256: 74bfbd148f1649f50270f6a6429e1a2ace4f7c54270e67aa4f009aa113a1d5ba
-  pob_commit_sha: 66a0d6d1d3f10cf177e9df856d41d68626c38171
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: debd2662433f00884569f0b9ab23571de572f6258dd767c711abeff5104052ab
-  timestamp: '2026-05-28T08:55:59Z'
-  output_hash: e1ee0190b0534c92ba3db28f046dc59606c7fb63463197374509817766b5bd61
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 83a87dd07bd4f1a6a0a91e4c4ee4e5fd4df96da3698c041a787512710177e830
+  timestamp: '2026-07-12T07:20:11Z'
+  output_hash: e3b8b431a099607d54b4823eb192075bc83216c33673b4867eae91974efd2d97
   usage:
-    prompt_tokens: 1455
-    completion_tokens: 425
-    total_tokens: 4292
+    prompt_tokens: 2881
+    completion_tokens: 315
+    total_tokens: 3196
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: the whole city
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: door
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:11Z'
+  previous_text: The whole city gathered at the door.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3274fcf5482f385dd2785de9597df85af4e58b0edd8ab2722d9c2549aff516fa
+  review_summary: 'Revise to preserve the stative scene conveyed by “was gathered.” “House entrance” is a warranted contextual clarification: the immediate setting is the house, and the POB audit explicitly explains that “door” here refers to its entrance. It also makes clear that the crowd is gathered at the doorway rather than at a detached or abstract “door.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

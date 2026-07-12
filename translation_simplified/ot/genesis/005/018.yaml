@@ -27,15 +27,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jered lived 162 years and fathered Enoch.
+  text: Jered was 162 years old when he fathered Enoch.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Converted the spelled-out number 'one hundred sixty-two' to digits ('162') to improve modern scanning and readability of genealogical data.
-  reasoning_layer_used: POB audit trail
-  rationale: Converted the spelled-out number 'one hundred sixty-two' to digits ('162') to improve modern scanning and readability of genealogical data.
-- preserved_meaning: Retained 'fathered' from POB as a natural, non-archaic rendering of the Hebrew verb that is clear to modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'fathered' from POB as a natural, non-archaic rendering of the Hebrew verb that is clear to modern readers.
+- pob_phrase: Jered lived one hundred sixty-two years and fathered Enoch.
+  simplified_phrase: Jered was 162 years old when he fathered Enoch.
+  preserved_meaning: The 162 years state Jered’s age when Enoch was born, not his total lifespan.
+  reasoning_layer_used: POB lexical rationale and Hebrew genealogy formula
+  rationale: The age relationship is stated directly so modern readers cannot mistake it for Jered’s full lifespan.
+- pob_phrase: one hundred sixty-two
+  simplified_phrase: '162'
+  preserved_meaning: The same age is presented in an easier-to-scan form.
+  reasoning_layer_used: SPOB readability convention
+  rationale: Digits make genealogical ages easier to read.
+interpretive_expansions:
+- pob_phrase: lived one hundred sixty-two years and fathered Enoch
+  rendering: was 162 years old when he fathered Enoch
+  claim: Jered was 162 at the time he fathered Enoch.
+  evidence:
+  - The Hebrew genealogy formula introduces the father’s age at the named son’s birth.
+  - The POB rationale says “lived” introduces the age statement.
+  confidence: high
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/ot/genesis/005/018.yaml
+  source_text_sha256: 52f90b3f5bd4322190a4c2d579b741190b489647b05da4f46eb8c3a291ce5415
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3632f34c03ddae911c5d113809d91c5b44e9c1eef0b84a64a17cb065c2dbe5c1
+  timestamp: '2026-07-12T09:23:02Z'
+  output_hash: 1018c5efa33f9db5409415806409e8b73f45cf9b2044c26fa1160755eb88544d
+  usage:
+    prompt_tokens: 2934
+    completion_tokens: 321
+    total_tokens: 3255
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Jered
   reason: Retained to preserve POB's source-grounded terminology.
@@ -43,33 +77,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: fathered
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The literal Hebrew narrative structure ('lived... and fathered...') has been preserved, keeping the direct genealogical style of Genesis 5 rather than changing it to a circumstantial clause ('When Jered was...').
-  readability_notes:
-  - Using digits ('162') simplifies reading and matches modern formatting for numbers in lists and ages.
-  compression_notes:
-  - No content or nuances have been compressed; the translation remains fully equivalent to the original Hebrew and POB.
-  risk_flags:
-  - risk: None. The verse contains no complex theological debates or ambiguous terms that would be compromised by this simplification.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/ot/genesis/005/018.yaml
-  source_text_sha256: 52f90b3f5bd4322190a4c2d579b741190b489647b05da4f46eb8c3a291ce5415
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 4c115b552b559291c4c3d963139fdb610efcea3dceec5eedf7dd9764775ea8d6
-  timestamp: '2026-05-28T08:46:45Z'
-  output_hash: 34b88e7322aa82c223714f6a9e8f176869e721ed614f51a6728ef6119a17235f
-  usage:
-    prompt_tokens: 1377
-    completion_tokens: 290
-    total_tokens: 4333
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:02Z'
+  previous_text: Jered lived 162 years and fathered Enoch.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 91d01d5c63322de4085eee1137abf11328e3a2ac7bcba82bde32f28e91a88f66
+  review_summary: The draft preserves the source meaning and introduces no doctrinal material, but digit substitution alone is not a sufficiently meaningful clarity improvement over POB. Explicitly stating that 162 was Jered's age when he fathered Enoch communicates the function of the genealogy formula clearly and is warranted by the source and POB rationale.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

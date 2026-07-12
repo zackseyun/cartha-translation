@@ -31,41 +31,66 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 22:35 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''asked him a question''].'
 translation:
   language: en
-  text: One of them, a lawyer, asked him a question to test him.
+  text: One of them, an expert in the Jewish law, asked Jesus a question to test him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And one of them, a lawyer, asked him a question, testing him.
-  simplified_phrase: One of them, a lawyer, asked him a question to test him.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
+- pob_phrase: a lawyer
+  simplified_phrase: an expert in the Jewish law
+  preserved_meaning: The man specialized in the Jewish law rather than modern civil or courtroom law.
+  reasoning_layer_used: POB footnote and lexical decision for νομικός
+  rationale: The explanation is moved into the text to prevent a likely modern misunderstanding.
+- pob_phrase: asked him a question, testing him
+  simplified_phrase: asked Jesus a question to test him
+  preserved_meaning: His question was intended as an adversarial test of Jesus.
+  reasoning_layer_used: POB lexical and theological decisions for πειράζων
+  rationale: The purpose clause makes the participle's contextual force clear in natural English.
+- pob_phrase: And one of them
+  simplified_phrase: One of them
+  preserved_meaning: The speaker still belongs to the group mentioned in the preceding context.
+  reasoning_layer_used: POB lexical decision for καὶ and εἷς ἐξ αὐτῶν
+  rationale: Omitting the initial connective produces a smoother standalone verse without changing the event.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person questioned and tested was Jesus.
+  evidence:
+  - The POB lexical decision identifies αὐτόν as referring to Jesus.
+  confidence: high
+  alternatives_preserved:
+  - him
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: Rendering the participle as purpose may sound slightly more explicit than the Greek construction.
+    mitigation: The POB rationale expressly identifies motive or manner and the hostile context supports purpose.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/035.yaml
   source_text_sha256: cd422c6ed81456c3dcea23cb5328d4326cb259f92d80b17b2706a2486aad854b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: cd2bc137b86e934c9c396091b5540dbe34d22c82ff6d351c70152bf8699f8fdf
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 34ca2ee63b530a720b0ffb6d33e56d4ef3b4d986e364f4f7acd7f072de94b8fc
+  timestamp: '2026-07-12T07:37:35Z'
+  output_hash: 69f1dbc297368673434ebacf96d7d218708f3a89e2dceb941cef3371f40523e8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3297
+    completion_tokens: 401
+    total_tokens: 3698
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:35Z'
+  previous_text: One of them, a lawyer, asked him a question to test him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6fa36bc8c9cf1102f727948f02f86b4717c59d6b7c42987603b167f3eab088bc
+  review_summary: The change from “testing him” to “to test him” is a clear, contextually warranted expression of the participle’s adversarial purpose/motive and does not impose a doctrinal reading. However, deleting the footnote while retaining “lawyer” leaves modern readers with a materially misleading occupation/category. State the Jewish-law expertise directly in the main text.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

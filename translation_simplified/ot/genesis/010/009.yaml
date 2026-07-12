@@ -31,39 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He was a mighty hunter before Yahweh. That is why people say, “Like Nimrod, a mighty hunter before Yahweh.”
+  text: He was a mighty hunter before Yahweh.[a] That is why people say, “Like Nimrod, a mighty hunter before Yahweh.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or possibly, “in defiance of Yahweh,” if the phrase is understood negatively from the broader context.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Nimrod was proverbially known as a mighty hunter before Yahweh.
-  reasoning_layer_used: POB audit trail
-  rationale: Changes 'therefore it is said' to the clearer common phrase 'That is why people say.'
-retained_terms:
-- term: Yahweh
-  reason: Preserves the divine name used by the POB.
+- pob_phrase: therefore it is said
+  simplified_phrase: That is why people say
+  preserved_meaning: Nimrod’s reputation gave rise to a common saying.
+  reasoning_layer_used: POB lexical decision for עַל כֵּן and יֵאָמַר
+  rationale: The active wording makes the proverbial formula clear in common English.
+interpretive_expansions:
+- pob_phrase: it is said
+  rendering: people say
+  claim: The words introduce a saying used by people.
+  evidence:
+  - The POB identifies the passive form as an impersonal expression introducing a proverb.
+  confidence: high
+  alternatives_preserved:
+  - it is said
+  - one says
 translation_notes:
-  source_alignment_notes: Preserves both the description and the proverb-like saying.
-  readability_notes:
-  - Uses two short sentences and common speech wording.
-  compression_notes:
-  - The proverb is retained in full.
+  risk_flags:
+  - risk: “Before Yahweh” may have a hostile sense in this context.
+    mitigation: The main text retains the POB wording, and footnote [a] preserves the possible reading “in defiance of Yahweh.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/009.yaml
   source_text_sha256: 4b75cf480431b1071fcc751d264ef7956c99caaff779999ad8dece510aff45ee
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:02Z'
-  output_hash: 4af0da7e98f3893852e17c4c4829ec13c37f0b3d391d62ee9d8cb1f31db17acc
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bf057b0bae381a56c0ce989489493b6b42f4242fc6ed8256e6bdb716b86053eb
+  timestamp: '2026-07-12T09:23:23Z'
+  output_hash: 1d02e3809aa02bb842143150e7f516e18767c089085b75cb797d062d89d87bc5
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3106
+    completion_tokens: 312
+    total_tokens: 3418
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Yahweh
+  reason: Preserves the divine name used by the POB.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:23Z'
+  previous_text: He was a mighty hunter before Yahweh. That is why people say, “Like Nimrod, a mighty hunter before Yahweh.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a683e0b829baec1d174788c6667e00258f0298bff5eca5ea8c2a90eaa3f4136f
+  review_summary: “That is why people say” is a warranted and meaningful clarification of the proverbial formula “therefore it is said.” Retain the POB’s alternative-reading footnote, however, because its omission collapses a recognized contextual ambiguity without textual warrant.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

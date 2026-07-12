@@ -31,42 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Many will come in my name, saying, ‘I am he[a],’ and they will lead many astray.
+  text: Many people will come claiming to be me. They will say, “I am he[a],” and will lead many people away from the truth.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek wording can also be rendered more literally as “I am,” with the predicate left unstated.
-    reason: simplification_note
+    text: The Greek can also be rendered more literally as “I am,” because it does not state what follows “am.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Many will come in my name[a], saying, ‘I am he,’ and they will lead many astray.
-  simplified_phrase: Many will come in my name, saying, ‘I am he[a],’ and they will lead many astray.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: Many will come in my name
+  simplified_phrase: Many people will come claiming to be me
+  preserved_meaning: They falsely claim the identity or role belonging to Jesus.
+  reasoning_layer_used: POB lexical and theological decisions on “in my name” and “I am he”
+  rationale: The context supports stating the false claim directly instead of leaving the idiom unexplained.
+- pob_phrase: will lead many astray
+  simplified_phrase: will lead many people away from the truth
+  preserved_meaning: They will cause many people to depart from what is true.
+  reasoning_layer_used: POB lexical decision for πλανάω
+  rationale: The wording explains the wandering image while preserving its force.
+interpretive_expansions:
+- pob_phrase: come in my name
+  rendering: come claiming to be me
+  claim: The claimants present themselves as having Jesus’ identity or role.
+  evidence:
+  - The POB rationale says the phrase claims association with or authority connected to Jesus.
+  - The following words “I am he” make the identity claim explicit in context.
+  confidence: high
+  alternatives_preserved:
+  - come under my name
+  - come claiming my authority
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Claiming to be me” narrows the broader idiom “in my name.”
+    mitigation: The immediate statement “I am he” and the POB theological rationale support this contextual meaning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/006.yaml
   source_text_sha256: d95b560ea2a8e701737e8ba2adcf11872531d8aee874d16c9dc444ed1d037701
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 4b1c651ea555269279822d1e905675403cc1b5b008b894a26b24bc8f088cebc3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 95c2eb00ac1a199143ceaf0d33b38da896b5e6a2518054b87022504768c3f453
+  timestamp: '2026-07-12T07:21:44Z'
+  output_hash: f5d41b1ecfe9be300c79b6bafa5b932bda3d61eecdac165ec876a26608211e18
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3413
+    completion_tokens: 417
+    total_tokens: 3830
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:44Z'
+  previous_text: Many will come in my name, saying, ‘I am he[a],’ and they will lead many astray.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f593d7094321a7c147d1e27a1f3734c8e73c45ba246921888c35ef448ad55950
+  review_summary: Revision is needed because the draft provides no meaningful readability gain over POB. The recommended wording makes explicit the claim conveyed by coming in Jesus’ name together with “I am he,” which is warranted by the immediate context and POB audit rationale, while retaining a footnote to preserve the Greek’s unstated predicate. “Deceive” and “many people” are common-English renderings of the same underlying ideas.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

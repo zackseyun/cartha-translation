@@ -31,44 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: “Show me the coin for the tax.” And they brought him a denarius.
+  text: “Show me the coin used to pay the tax.[a]” They brought him a denarius coin.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “poll tax” or “census tax”; the Greek term refers to a Roman imperial tax.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Show me the coin for the tax[a]. And they brought him a denarius.
-  simplified_phrase: “Show me the coin for the tax.” And they brought him a denarius.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
-retained_terms:
-- term: denarius
-  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
+- pob_phrase: the coin for the tax
+  simplified_phrase: the coin used to pay the tax
+  preserved_meaning: The requested coin is the one associated with paying the tax.
+  reasoning_layer_used: POB lexical decision for νόμισμα and τοῦ κήνσου
+  rationale: The fuller wording makes the coin–tax relationship immediately clear.
+- pob_phrase: a denarius
+  simplified_phrase: a denarius coin
+  preserved_meaning: The historically specific coin remains identified as a denarius.
+  reasoning_layer_used: POB lexical decision for δηνάριον
+  rationale: Adding “coin” helps readers recognize what a denarius is without removing its historical name.
+interpretive_expansions:
+- pob_phrase: the coin for the tax
+  rendering: the coin used to pay the tax
+  claim: The coin was the kind used for payment of the tax under discussion.
+  evidence:
+  - The immediate context concerns paying tax to Caesar, and the POB rationale identifies this as the coin for that tax.
+  confidence: high
+  alternatives_preserved:
+  - the coin for the tax
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: “Denarius” may still be unfamiliar to some readers.
+    mitigation: The added word “coin” supplies the essential meaning while preserving historical specificity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/019.yaml
   source_text_sha256: de0e5f4093f6ee9858920dad12a215b95daa42637a44857607d23403d6545f7d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: f7c32ea7db135b3cb12c2f55ddc0bb98d476b0eb838e4ec3668f080c66ebb1cc
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fdc4f8c294c7cf4b5fa5381435d37a2516fba9ad6f560ba11058125a204b2238
+  timestamp: '2026-07-12T07:37:28Z'
+  output_hash: c35879002bdaa48e94144cee3c407c07c46d16721c2fd7f703a31cf498e325ba
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3095
+    completion_tokens: 578
+    total_tokens: 3673
+    reasoning_tokens: 190
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: denarius
+  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:28Z'
+  previous_text: “Show me the coin for the tax.” And they brought him a denarius.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6913abe6df657c4ab05dd97777ec6547e83eaf514e537d82c92f29a72808bb44
+  review_summary: The main wording remains faithful and introduces no doctrinal expansion. Revise because it makes virtually no actual simplification and drops a useful lexical-context footnote. “Coin used to pay the tax” makes the coin–tax relationship explicit without narrowing the tax beyond the source text; retain a concise footnote for the Roman-tax context and lexical alternatives.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

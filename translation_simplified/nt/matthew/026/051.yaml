@@ -31,41 +31,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 26:51 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''cutting off his ear''].'
 translation:
   language: en
-  text: Then one of those with Jesus reached out his hand, drew his sword, struck the high priest’s slave, and cut off his ear.
+  text: Look, one of those with Jesus reached out his hand, drew his sword, struck the high priest’s slave[a], and cut off his ear.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “servant.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: stretched out his hand, drew his sword
-  simplified_phrase: reached out his hand, drew his sword
-  preserved_meaning: Preserves the sequence of violent action in common English.
-  reasoning_layer_used: POB translation text and lexical note
-  rationale: Keeps 'slave' because POB chose it for δοῦλος while base footnote gives servant alternative.
-retained_terms:
-- term: high priest’s slave
-  reason: Retains POB's social/legal term and relationship.
+- pob_phrase: And behold
+  simplified_phrase: Look
+  preserved_meaning: Keeps the sudden attention-getting force of the narrative marker.
+  reasoning_layer_used: POB lexical decision for ἰδού and grounding review
+  rationale: “Look” is clearer modern English than “behold” without adding a temporal meaning.
+- pob_phrase: stretched out his hand
+  simplified_phrase: reached out his hand
+  preserved_meaning: Keeps the physical motion that precedes drawing the sword.
+  reasoning_layer_used: POB lexical decision for ἐκτείνας τὴν χεῖρα
+  rationale: “Reached out” expresses the same action more naturally for common readers.
+- pob_phrase: the high priest’s slave
+  simplified_phrase: the high priest’s slave[a]
+  preserved_meaning: Retains the man’s bonded social status while noting the accepted alternative.
+  reasoning_layer_used: POB lexical and theological decisions for δοῦλος
+  rationale: The main text preserves POB’s source-driven choice, and the footnote gives “servant” as an alternative.
 translation_notes:
-  source_alignment_notes: Keeps the sword strike and injury to the high priest's slave.
-  readability_notes:
-  - Uses more common action wording.
-  compression_notes:
-  - Servant alternative remains in base footnote.
+  risk_flags:
+  - risk: “Look” could be read as a literal command to observe.
+    mitigation: Its sentence-opening position preserves its natural function as a sudden narrative attention marker.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/051.yaml
   source_text_sha256: 5acea448874d5c0806f9e118542942c0a9d6e220ca598512b3fbcc7c6634e722
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:59Z'
-  output_hash: 0167d09d8a77cbae719472dce591af34418d15f481165e1609e191c60336883d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 93acbba7f1be016bfbe5db877758c2fd28cc8c11191af122283d3d358738e8d8
+  timestamp: '2026-07-12T07:38:26Z'
+  output_hash: 361b339b087d7bff81162bce8da677b273b7b82dd5f004c3a7d9be7709c1b01a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3695
+    completion_tokens: 495
+    total_tokens: 4190
+    reasoning_tokens: 115
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: high priest’s slave
+  reason: Retains POB's social/legal term and relationship.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:26Z'
+  previous_text: Then one of those with Jesus reached out his hand, drew his sword, struck the high priest’s slave, and cut off his ear.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e0f3137d38264527bda29844c047357a2603e528bf09b1f3377b84cef0188708
+  review_summary: The update from “stretched out” to “reached out” is a warranted, clearer rendering of the physical action, and the draft appropriately retains “high priest’s slave.” However, replacing “Behold” with “Then” loses the source text’s attention-getting, sudden narrative marker and adds an unwarranted temporal framing. “Look” communicates that marker in clear contemporary English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

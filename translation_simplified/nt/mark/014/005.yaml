@@ -34,41 +34,80 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: It could have been sold for more than three hundred denarii and the money given to the poor.” And they scolded her harshly.
+  text: “This perfume could have been sold for more than three hundred denarii,[a] and the money could have been given to poor people.” And they harshly scolded her.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: A denarius was a Roman coin.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: For this perfume could have been sold for more than three hundred denarii and given to the poor.” And they scolded her[a][b].
-  simplified_phrase: It could have been sold for more than three hundred denarii and the money given to the poor.” And they scolded her harshly.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-retained_terms:
-- term: denarii
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+- pob_phrase: this perfume
+  simplified_phrase: This perfume
+  preserved_meaning: Keeps the explicit aromatic substance rather than replacing it with an unclear pronoun.
+  reasoning_layer_used: Source payload and POB lexical decision for μύρον
+  rationale: Naming the perfume preserves the Greek referent and makes the verse clear on its own.
+- pob_phrase: three hundred denarii
+  simplified_phrase: three hundred denarii,[a]
+  preserved_meaning: Retains the historical coin name while briefly explaining it for modern readers.
+  reasoning_layer_used: POB lexical decision for δηναρίων τριακοσίων
+  rationale: The footnote makes the unfamiliar currency understandable without converting its value.
+- pob_phrase: given to the poor
+  simplified_phrase: the money could have been given to poor people
+  preserved_meaning: Makes clear that the proposed gift was the money from selling the perfume.
+  reasoning_layer_used: Immediate context and POB lexical decision for δοθῆναι τοῖς πτωχοῖς
+  rationale: Ordinary English benefits from naming the sale proceeds and referring plainly to poor people.
+interpretive_expansions:
+- pob_phrase: and given to the poor
+  rendering: and the money could have been given to poor people
+  claim: The proposed gift was the money received from selling the perfume.
+  evidence:
+  - The passive infinitives describe selling the perfume and then giving the resulting proceeds.
+  - The POB already coordinates the proposed sale with the proposed gift.
+  confidence: high
+- pob_phrase: they scolded her
+  rendering: they harshly scolded her
+  claim: Their scolding expressed strong displeasure or stern censure.
+  evidence:
+  - The POB lexical rationale says ἐμβριμάομαι conveys strong displeasure or stern censure.
+  - The POB footnote offers the stronger alternative “they rebuked her.”
+  confidence: high
+  alternatives_preserved:
+  - they rebuked her
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Readers may not know the value of a denarius.
+    mitigation: A brief note identifies it as a Roman coin without asserting a disputed modern equivalent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/005.yaml
   source_text_sha256: 863ebb85add11892f22d807f0c49343e59539e425146e2edba657cb2047e796b
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 4273d503568e93eaf06e6121bb9f882265ed5288b6498aa033be26e72a1e3a23
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d8b5b4815eda91fe15282812d986bb7da658248ac069c0004b2702546d55c6db
+  timestamp: '2026-07-12T07:22:11Z'
+  output_hash: 435f658a08520e6b0ac7fd2877fa8e28e0ff78c2565c3ea18eb3cded51bc43c0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3262
+    completion_tokens: 970
+    total_tokens: 4232
+    reasoning_tokens: 390
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: denarii
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:11Z'
+  previous_text: It could have been sold for more than three hundred denarii and the money given to the poor.” And they scolded her harshly.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ccc1042a3978c5748996bfe72300f1d65328e7bf263d4a4b2212787f86f66ec9
+  review_summary: Revision is needed because the draft’s opening pronoun makes the verse less clear than the POB, despite its otherwise helpful clarification that the sale proceeds would be given to the poor. “Harshly scolded” is warranted by the POB audit’s recognition that ἐνεβριμῶντο conveys strong displeasure or stern censure; it does not introduce a doctrinal interpretation. The recommended text restores the explicit referent and uses “poor people” for common-English clarity while retaining the historically appropriate monetary term.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

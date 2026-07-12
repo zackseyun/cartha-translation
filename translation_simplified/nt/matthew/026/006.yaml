@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/026/006.yaml
-  text: Now while Jesus was in Bethany[a], in the house of Simon the leper[b],
+  text: While Jesus was in Bethany[a], in the house of Simon the leper[b],
   footnotes:
   - marker: a
     text: Or 'when Jesus was in Bethany.' The Greek uses a genitive absolute that sets the scene temporally.
@@ -34,43 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: While Jesus was in Bethany, in the house of Simon the leper,
+  text: While Jesus was in Bethany, at the house of Simon, who was called “the leper,”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Now while Jesus was in Bethany
-  simplified_phrase: While Jesus was in Bethany
-  preserved_meaning: Preserves the temporal scene-setting in simpler wording.
-  reasoning_layer_used: POB translation text and cultural note
-  rationale: Keeps Simon's identifying epithet while leaving the medical-status nuance in the base audit layer.
-retained_terms:
-- term: Bethany
-  reason: Place name is part of the narrative setting.
-- term: Simon the leper
-  reason: POB preserves the identifying epithet from the Greek.
+- pob_phrase: in the house of Simon the leper
+  simplified_phrase: at the house of Simon, who was called “the leper”
+  preserved_meaning: Simon’s traditional identifier is retained without presenting it as a precise diagnosis of his current condition.
+  reasoning_layer_used: POB lexical and theological decisions on τοῦ λεπροῦ
+  rationale: The added wording makes the epithet clear while preserving its unresolved timing and medical scope.
+interpretive_expansions:
+- pob_phrase: Simon the leper
+  rendering: Simon, who was called “the leper”
+  claim: The phrase functions as Simon’s identifying epithet rather than establishing his current medical condition.
+  evidence:
+  - The Greek attaches τοῦ λεπροῦ to Simon as an identifying epithet.
+  - The POB theological decision says the phrase does not specify whether the condition was current or former.
+  confidence: high
+  alternatives_preserved:
+  - Simon may still have had the condition.
+  - Simon may have had the condition formerly.
+  - The ancient term need not identify modern Hansen’s disease precisely.
 translation_notes:
-  source_alignment_notes: Maintains POB's location and identification of Simon.
-  readability_notes:
-  - Drops only the formal opening word.
-  compression_notes:
-  - Cultural nuance about leprosy status remains in base_translation footnotes.
+  risk_flags:
+  - risk: “Who was called” makes the epithet’s function more explicit than the Greek wording alone.
+    mitigation: The POB lexical and theological audit explicitly identifies “the leper” as Simon’s epithet.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/006.yaml
   source_text_sha256: 39a703b816ee39cab0ebcbd7568c17bad041e6ac7bea7cdb6dd42b8203d18038
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:58Z'
-  output_hash: cb37080be2c4a75310525e7afb200fd1e7bc136589c9220f9a209e527f54f5da
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8e68826cbb190b035f609829edc1539e4337d4d1ceade9d3ec1a9d9c43973a61
+  timestamp: '2026-07-12T07:38:21Z'
+  output_hash: 293e6606ad82b3d345e2cc6a55b8fa13c9d4fa0a876118bf558dfd1b541b2e79
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3207
+    completion_tokens: 341
+    total_tokens: 3548
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Bethany
+  reason: Place name is part of the narrative setting.
+- term: Simon the leper
+  reason: POB preserves the identifying epithet from the Greek.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:21Z'
+  previous_text: While Jesus was in Bethany, in the house of Simon the leper,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7a412819f7ea810190902e017d7730abc788fd4e60144cbc1bab8ac3f4e29848
+  review_summary: The draft preserves the Greek scene setting and does not add doctrinal content, but it merely repeats the current POB wording rather than simplifying it. Identifying “the leper” as what Simon was called is a warranted clarification of the appositional epithet and helps prevent an unwarranted conclusion about his present condition, former condition, or a modern medical diagnosis.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

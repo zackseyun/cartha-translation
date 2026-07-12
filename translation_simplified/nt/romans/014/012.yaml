@@ -31,36 +31,54 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 14:12 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''concerning himself''].'
 translation:
   language: en
-  text: So then, each of us will give an account of himself.
+  text: So each of us will have to answer for himself.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: So then
+  simplified_phrase: So
+  preserved_meaning: The statement remains a conclusion drawn from the preceding argument.
+  reasoning_layer_used: POB lexical decision for ἄρα
+  rationale: “So” expresses the conclusion naturally without the heavier “So then.”
+- pob_phrase: will give an account of himself
+  simplified_phrase: will have to answer for himself
+  preserved_meaning: Each person will individually be held accountable concerning himself.
+  reasoning_layer_used: POB lexical decisions for περὶ ἑαυτοῦ and λόγον δώσει
+  rationale: The common idiom “answer for himself” makes the accountability sense immediately clear.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The review proposes “to God,” but those words are absent from the supplied Greek payload and controlling POB text.
+    mitigation: The draft does not insert a recipient unsupported by the provided source record.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/012.yaml
   source_text_sha256: 4dc4e803fed8449aafc02b25dec51596a7a051d48f9f921530bf5543cf1317ab
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 6d97ec85171bf67f7f19b3428aaa43ae56dd8714c1c7c20be12d5524e8a08bc0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 001fdab2332ab9924fb1ac888bdc4f31ac96c38b4c37c53c2f1f6f5597462425
+  timestamp: '2026-07-12T07:42:38Z'
+  output_hash: 5a9507af81a9cc561bc850986515591fd03c22b315b881ba73776f1401e85295
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3257
+    completion_tokens: 483
+    total_tokens: 3740
+    reasoning_tokens: 225
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:38Z'
+  previous_text: So then, each of us will give an account of himself.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 885a973a3bc36d35cfe29e6d19e5dbef2a5046464beec2a0b3b32838742a7638
+  review_summary: Revise. The proposed text retains the POB wording without simplifying it and, more importantly, repeats POB's omission of the explicit phrase "to God." The recommended text restores that source-grounded element while preserving the distributive, singular wording and the sense of giving an account concerning oneself.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

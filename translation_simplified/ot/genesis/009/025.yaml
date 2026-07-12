@@ -37,41 +37,63 @@ base_translation:
     changes_summary: 'Replaced interpretive ''the lowest of slaves'' with the more literal and formal ''a servant of servants,'' which better reflects the Hebrew expression עֶבֶד עֲבָדִים without paraphrase. [Regression fix applied: slave restored (revision_pass had changed δοῦλος → servant against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: And he said, “Canaan is cursed; he shall be a slave of servants to his brothers.”
+  text: And he said, “Canaan is cursed. He will be the lowest of slaves to his brothers.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Noah curses Canaan and declares his extreme servitude to his brothers.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept Canaan as the named object and retained the strong 'slave of servants' wording.
-retained_terms:
-- term: Canaan
-  reason: Retains the explicit object of the curse.
-- term: slave of servants
-  reason: Preserves the intensified servitude expression.
+- pob_phrase: he shall be a slave of servants
+  simplified_phrase: He will be the lowest of slaves
+  preserved_meaning: Canaan will have the most deeply subordinate status among slaves.
+  reasoning_layer_used: POB lexical decision and footnote a
+  rationale: The clear superlative expresses the Hebrew phrase’s intensifying force.
+- pob_phrase: And he said, “Canaan is cursed;
+  simplified_phrase: And he said, “Canaan is cursed.
+  preserved_meaning: The speaker directly declares Canaan cursed before announcing the result.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Two sentences make the solemn declaration easier to follow without shifting the curse to Ham.
+- pob_phrase: he shall be
+  simplified_phrase: He will be
+  preserved_meaning: The curse announces Canaan’s future condition.
+  reasoning_layer_used: POB lexical decision for יִהְיֶה
+  rationale: “Will” states the future result in natural modern English.
 translation_notes:
-  source_alignment_notes: Preserves the speech formula, curse, and servitude declaration.
-  readability_notes:
-  - A semicolon clearly separates curse and consequence.
-  compression_notes:
-  - No curse element was omitted.
+  risk_flags:
+  - risk: “The lowest of slaves” explains rather than reproduces the Hebrew repetition.
+    mitigation: The POB audit explicitly identifies this as the idiom’s superlative force and an approved alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/025.yaml
   source_text_sha256: 1ea6b5ed950620f4c3a0187b00e06a0bcf2efb4f0c97443f210155d169225bdb
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:49Z'
-  output_hash: df80327fe2eaae10f739e910c0c6d6ba9d06af9bb43c122460d45f721a522384
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f7cad1eeca8aefd574198a623cc9e7d8b18587f43960413b89c3857e99a4f7ec
+  timestamp: '2026-07-12T09:25:53Z'
+  output_hash: 34c5f1e8a64b39a50b9dfdfc8455c892b6c14d6dd178ee5aac21a7a878833e22
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3678
+    completion_tokens: 333
+    total_tokens: 4011
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Canaan
+  reason: Retains the explicit object of the curse.
+- term: slave of servants
+  reason: Preserves the intensified servitude expression.
+spob_revision_history:
+- timestamp: '2026-07-12T09:25:53Z'
+  previous_text: And he said, “Canaan is cursed; he shall be a slave of servants to his brothers.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 529fc42af829cb72aedff9dfc0d5e08833d18cbda157aa20c0b576749be596e5
+  review_summary: The draft correctly preserves that Canaan—not Ham—is named as cursed, and it retains the severe servitude pronouncement without importing a doctrinal explanation. However, “slave of servants” is precisely the idiomatic expression whose force the POB audit explains; retaining it unchanged leaves the intended extreme status unclear. “The lowest of slaves” is a POB-attested alternative that makes the Hebrew intensification understandable without adding meaning or resolving an ambiguity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,56 @@ base_translation:
     changes_summary: Changed 'command' to 'commandment' for closer lexical correspondence to ἐντολή and a more formal register; otherwise retained the draft.
 translation:
   language: en
-  text: And I know that his commandment is eternal life. So what I speak, I speak just as the Father has told me.
+  text: And I know that his command is eternal life. So I speak exactly as the Father has told me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: his commandment
+  simplified_phrase: his command
+  preserved_meaning: The Father's authoritative charge remains in view.
+  reasoning_layer_used: POB lexical decision for ἐντολή
+  rationale: “Command” is clearer modern English than the traditional “commandment.”
+- pob_phrase: what I speak, I speak just as
+  simplified_phrase: I speak exactly as
+  preserved_meaning: Jesus' words fully correspond to what the Father told him.
+  reasoning_layer_used: POB lexical decisions for λαλῶ and καθὼς
+  rationale: The shorter sentence removes awkward repetition while preserving exact correspondence.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The compact wording removes the Greek repetition of “I speak.”
+    mitigation: “I speak exactly as” retains both the act of speaking and its correspondence to the Father's instruction.
+  - risk: “His command is eternal life” may sound unusual in English.
+    mitigation: The wording is retained to preserve the Greek equation and its documented theological tension.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/050.yaml
   source_text_sha256: cbc0f2811e586c192169476e4f150b77bd78471805e2f73b522f740d42fa2901
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: ebed925337e34a60744121aefaa32a35f65a88aae0eab028fbccb85571ba3cf9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e6f4ef5c03d15a2eb80730e76635831ea0f3e054c2c0b45c88545b51b5c153bd
+  timestamp: '2026-07-12T07:16:26Z'
+  output_hash: 4d5f365f79735141002781fbbe894cb1df7ac7fe9082539d1da18121d90ed829
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3296
+    completion_tokens: 283
+    total_tokens: 3579
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:26Z'
+  previous_text: And I know that his commandment is eternal life. So what I speak, I speak just as the Father has told me.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4815906817018c60c78a8ffe3994976f8cff9ef913008632072596439a84d067
+  review_summary: The draft faithfully preserves the source wording and appropriately leaves “his commandment is eternal life” unresolved rather than imposing one of the possible explanatory readings. However, replacing POB’s modern, clear “command” with “commandment” is a regression in accessibility, not a warranted SPOB simplification. Restore “command”; the rest is publication-ready.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

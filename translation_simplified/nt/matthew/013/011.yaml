@@ -34,48 +34,78 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 13:11 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''to those people''].'
 translation:
   language: en
-  text: He answered, “You have been given the ability to know the mysteries of the kingdom of heaven, but they have not been given that.”[a][b]
+  text: He answered them, “You have been given knowledge of the mysteries[a] of the kingdom of heaven, but they have not been given this knowledge.[b]”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “the secrets of the kingdom of heaven.”
     reason: lexical_alternative
   - marker: b
-    text: The passive phrase “has been given” leaves the giver unstated; the sense is that God grants this knowledge.
-    reason: cross_reference
+    text: The passive wording leaves the giver unstated; the sense is that God grants this knowledge.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
-retained_terms:
-- term: kingdom of heaven
-  reason: Retained as Matthew's established theological phrase.
+- pob_phrase: To you it has been given to know
+  simplified_phrase: You have been given knowledge of
+  preserved_meaning: The disciples have received the grant of knowing the kingdom’s mysteries.
+  reasoning_layer_used: POB translation and lexical decision for δέδοται and γνῶναι
+  rationale: The noun form gives the passive clause natural modern English without adding an ability concept.
+- pob_phrase: but to them it has not been given
+  simplified_phrase: but they have not been given this knowledge
+  preserved_meaning: The contrasting group has not received the same grant.
+  reasoning_layer_used: POB lexical decision for οὐ δέδοται and the grounding review
+  rationale: Naming the implied content removes the unclear pronoun while preserving the repeated passive contrast.
+- pob_phrase: the mysteries of the kingdom of heaven
+  simplified_phrase: the mysteries of the kingdom of heaven
+  preserved_meaning: The biblical category of truths once hidden and now disclosed remains intact.
+  reasoning_layer_used: POB lexical and theological decision for μυστήρια
+  rationale: The key theological term is retained and its common alternative is supplied in a footnote.
+interpretive_expansions:
+- pob_phrase: it has not been given
+  rendering: they have not been given this knowledge
+  claim: The unstated content of the second grant is the knowledge named in the first clause.
+  evidence:
+  - The second δέδοται mirrors the first within the same contrast.
+  - The POB audit requires corresponding wording for rhetorical balance.
+  confidence: high
+  alternatives_preserved:
+  - it has not been given
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Given knowledge” could be read as receiving information rather than being granted to know.
+    mitigation: The wording directly connects the knowledge to the kingdom’s mysteries and avoids adding capacity or ability.
+  - risk: The divine giver remains implicit and may be missed by some readers.
+    mitigation: Footnote [b] explains the likely divine agency without inserting God into the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/011.yaml
   source_text_sha256: 300056666e268824307020bd8e9bf68dc5ffb3b7b182ce6d51fe5a05ef57bc47
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: f2c971f4c3f61d01de8e39516345e508a911e005de780f0ff618a443823f85bb
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fe2e4fdea5cbdd95d412909472d0dd9ab9da4848e1c94489bf7fbee8425ba0db
+  timestamp: '2026-07-12T07:38:54Z'
+  output_hash: 628fbee0d28e022dd4a50cd4e692c619fc83ddc721b79ddbe8fb984cbc75c59d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4012
+    completion_tokens: 913
+    total_tokens: 4925
+    reasoning_tokens: 348
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: kingdom of heaven
+  reason: Retained as Matthew's established theological phrase.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:54Z'
+  previous_text: He answered, “You have been given the ability to know the mysteries of the kingdom of heaven, but they have not been given that.”[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f6f1a8c9d9e1db6bf2f672b8fcedf033a5d1ab3deac1b9b4854d2db32cbba571
+  review_summary: Revise. The draft improves the first clause’s modern word order, but “ability” is an unwarranted explanatory addition and “that” obscures the contrasted content. The recommended wording keeps the unstated giver and the grant of knowing while making both clauses clear to modern readers.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

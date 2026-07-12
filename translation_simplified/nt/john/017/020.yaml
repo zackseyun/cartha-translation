@@ -34,50 +34,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I am not asking only for these people[a], but also for those who will believe in me through their word[b],
+  text: I am not asking only for these people[a], but also for those who believe in me through their word[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: That is, not only for the disciples who are with Jesus then.
-    reason: clarifying_note
+    reason: simplification_note
   - marker: b
     text: Or “through their message.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: I do not ask concerning these only
   simplified_phrase: I am not asking only for these people
-  preserved_meaning: Preserves the expansion of Jesus' prayer from the immediate disciples to future believers.
-  reasoning_layer_used: POB translation text and lexical notes
-  rationale: '''These people'' makes the referent clear for modern readers without adding a new group.'
-retained_terms:
-- term: believe in me
-  reason: Retained because it is the central response of future believers.
-- term: word
-  reason: Retained because it describes the apostolic witness/message.
+  preserved_meaning: Jesus' request concerns the immediate disciples but extends beyond them.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “For” is natural in a prayer, while “these people” makes the nearby disciples understandable.
+interpretive_expansions:
+- pob_phrase: these
+  rendering: these people
+  claim: The pronoun points to the disciples with Jesus at that time.
+  evidence:
+  - The POB rationale says the phrase likely points back to the immediate disciples.
+  confidence: high
+  alternatives_preserved:
+  - A narrower referent is not specified in the main text.
 translation_notes:
-  source_alignment_notes: Manual SPOB draft keeps the POB transition from present disciples to future believers.
-  readability_notes:
-  - Adds 'people' to avoid a vague 'these only.'
-  compression_notes:
-  - The literal participle note is omitted because the main text clearly expresses future believers in English.
+  risk_flags:
+  - risk: “Those who believe” may be read as only present believers.
+    mitigation: The unmarked present preserves the POB's intentional temporal breadth, including others who come to faith through the disciples' witness.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/017/020.yaml
   source_text_sha256: f1888047fbf7b8233e820faf18fdaae303530d96f93603de23315cd913fd2a3f
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:49Z'
-  output_hash: 3ab789714dc9286b0ebdd52c593c10d170890e5739102566c7afb2cac4afdc1f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b1651c1162dc099779c9ad5a76c0fd6ac669368419c62a09bf8ec8a51d2d320e
+  timestamp: '2026-07-12T07:17:03Z'
+  output_hash: 7bc5a1ded3d4c068efb7349cb505f289e4fe72cd4e6bc9f59c28fb9898a6e31e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3277
+    completion_tokens: 322
+    total_tokens: 3599
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: believe in me
+  reason: Retained because it is the central response of future believers.
+- term: word
+  reason: Retained because it describes the apostolic witness/message.
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:03Z'
+  previous_text: I am not asking only for these people[a], but also for those who will believe in me through their word[b],
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fb2f2230afaf0c03daaa2bde30b920473b563f2288af05d004a2cf54661ceebb
+  review_summary: “These people” is a warranted and useful clarification of the immediate disciples, and “for” communicates the practical sense of Jesus’ request in this prayer context. Revise “those who will believe” to “those who believe” so the SPOB does not turn an implicit, contextually broad scope into an explicit future-only temporal claim.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,7 +34,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The seed sown among the thorns is the person who hears the word, but the worries of this age and the deceitfulness of wealth choke the word, and it becomes unfruitful.[a][b]
+  text: The seed sown among the thorns is the person who hears the word. But the worries of this age[a] and the deceitfulness of wealth[b] choke the word, and he becomes unfruitful.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -44,38 +44,60 @@ translation:
     text: Or “the deceit of riches.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: the one sown among the thorns—this is the one who hears the word
+  simplified_phrase: The seed sown among the thorns is the person who hears the word.
+  preserved_meaning: The sown seed represents the person who hears the proclaimed message.
+  reasoning_layer_used: POB lexical decision on the personal referent
+  rationale: Naming both the seed and the person makes Jesus’ explanation immediately clear while preserving the thorn image.
+- pob_phrase: but the worries of this age and the deceitfulness of wealth choke the word, and he becomes unfruitful
+  simplified_phrase: But the worries of this age and the deceitfulness of wealth choke the word, and he becomes unfruitful.
+  preserved_meaning: Present-age worries and deceptive wealth prevent the message from producing fruit in the hearer.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: A second sentence eases the clause structure while retaining the vivid choking image and personal conclusion.
+interpretive_expansions:
+- pob_phrase: the one sown among the thorns
+  rendering: The seed sown among the thorns is the person
+  claim: The seed in this explanation represents the person who hears the word.
+  evidence:
+  - The POB lexical rationale identifies the masculine singular expression as the person represented by the seed.
+  - The following clause explicitly describes this figure as the one who hears the word.
+  confidence: high
+  alternatives_preserved:
+  - the one sown among the thorns
+  - what was sown among the thorns
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
   risk_flags:
-  - risk: The base POB text contains an apparent non-English word where 'worry' is intended.
-    mitigation: SPOB uses 'worries of this age,' matching the POB footnote and Greek sense.
+  - risk: After “choke the word,” an impersonal pronoun could imply that the word becomes unfruitful.
+    mitigation: The text says “he becomes unfruitful,” preserving the POB’s explicitly personal conclusion.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/022.yaml
   source_text_sha256: 2081e2b14f41e28144c846295b33ab9977e5dfc7c41e31c98fe93f80b584f457
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 7442826c38ff350c26fa5c9abaf7b86c30842c65cc5ca0b2fe3e88ddc44dcd70
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 406439ff9a9af564c3347fe7a6b9dce88b103e7802962ab7d8bc8225776da3c6
+  timestamp: '2026-07-12T07:39:38Z'
+  output_hash: 53bf8675f73c3a39621506e493361f6b806ada3e806baec67707386ad8a107fa
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3665
+    completion_tokens: 820
+    total_tokens: 4485
+    reasoning_tokens: 292
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:38Z'
+  previous_text: The seed sown among the thorns is the person who hears the word, but the worries of this age and the deceitfulness of wealth choke the word, and it becomes unfruitful.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ba74f3428e48726019d2b54f7c78cbe0e16b01bfe5484c543764bbdfa3dc5fb0
+  review_summary: 'The opening clarification, “The seed ... is the person,” is warranted by the parable’s explanatory context and is clearer than POB’s “the one.” “Worries of this age” and “deceitfulness of wealth” faithfully reflect the source and POB audit trail. Revise only the final pronoun: “it” creates an avoidable and materially misleading antecedent ambiguity, whereas the personal “he” preserves the stated referent and the source-contextual meaning.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

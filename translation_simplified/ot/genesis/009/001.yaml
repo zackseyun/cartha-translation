@@ -31,39 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And God blessed Noah and his sons and said to them, “Be fruitful, multiply, and fill the earth.”
+  text: God blessed Noah and his sons. He said to them, “Have children, grow in number, and fill the earth.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: God blesses Noah and his sons and renews the creation mandate after the flood.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept the theological echo of Genesis 1:28 while tightening the coordination for modern readability.
-retained_terms:
-- term: Be fruitful
-  reason: Retained to preserve the deliberate creation-mandate wording.
+- pob_phrase: And God blessed Noah and his sons, and said to them
+  simplified_phrase: God blessed Noah and his sons. He said to them
+  preserved_meaning: God both blesses Noah and his sons and then addresses them.
+  reasoning_layer_used: POB lexical decisions and source syntax
+  rationale: Two sentences remove the crowded coordination without changing the sequence.
+- pob_phrase: Be fruitful and multiply
+  simplified_phrase: Have children, grow in number
+  preserved_meaning: They are commanded to reproduce and become numerous.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The reproductive meaning is made plain while the two Hebrew commands remain distinct.
+interpretive_expansions:
+- pob_phrase: Be fruitful
+  rendering: Have children
+  claim: The command refers to human reproduction.
+  evidence:
+  - The POB lists “Have offspring” as a lexical alternative.
+  - The command is paired with growing in number and filling the earth.
+  - The post-flood setting addresses Noah and his sons.
+  confidence: high
+  alternatives_preserved:
+  - Be fruitful
 translation_notes:
-  source_alignment_notes: Preserves the blessing, addressees, and command to fill the earth.
-  readability_notes:
-  - Uses a shorter command sequence while retaining the familiar biblical phrase.
-  compression_notes:
-  - No central meaning was removed; repeated conjunctions were lightly compressed.
+  risk_flags:
+  - risk: Replacing “Be fruitful and multiply” weakens the verbal echo of Genesis 1:28.
+    mitigation: The three-part creation command remains intact in clear modern wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/001.yaml
   source_text_sha256: 0e48f8e817cacd09212ad789bdeb7970762eda8f1193a84d263e52315a50100e
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:34Z'
-  output_hash: 2dbbd76c5b3196b78ab4311331fae16c8f8e9457714d44601b7c2d8b504acbaa
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 693fca2702cd00e75ec115f3fbe016ed23e279ff39ddf176edd181f75d4b642d
+  timestamp: '2026-07-12T09:23:48Z'
+  output_hash: a931665bfc9fd998b7a351fe92cf993697e19ab2cf7493687edf4bc062e01281
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3267
+    completion_tokens: 647
+    total_tokens: 3914
+    reasoning_tokens: 298
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Be fruitful
+  reason: Retained to preserve the deliberate creation-mandate wording.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:48Z'
+  previous_text: And God blessed Noah and his sons and said to them, “Be fruitful, multiply, and fill the earth.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5d44aaeb1c1af8e4f0ba1085cf32706f7fa6ebd75008252cfe68f3b98adf8008
+  review_summary: Revise for actual SPOB-level clarity. The proposed replacement makes the reproductive and numerical-increase sense of the paired Hebrew imperatives explicit without adding doctrine or reducing the scope of “the earth.” The creation-mandate continuity remains in the repeated substance of the command, while the wording is more readily understood by contemporary readers.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

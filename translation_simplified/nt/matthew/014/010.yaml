@@ -31,41 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So he sent someone and beheaded John in the prison.
+  text: Then he sent someone to behead John in prison.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And he sent and beheaded John
-  simplified_phrase: So he sent someone and beheaded John
-  preserved_meaning: Preserves Herod's command and the execution while making the implied agent clear.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Sent someone'' is natural English for the command action implied by the Greek.'
-retained_terms:
-- term: beheaded John
-  reason: Retains the direct description of the execution.
+  simplified_phrase: Then he sent someone to behead John
+  preserved_meaning: Herod remains responsible for the execution, while someone he sent carries it out.
+  reasoning_layer_used: POB lexical decisions for πέμψας and ἀπεκεφάλισεν
+  rationale: The purpose clause clearly connects the dispatched agent with the beheading.
+- pob_phrase: in the prison
+  simplified_phrase: in prison
+  preserved_meaning: John is beheaded at his place of confinement.
+  reasoning_layer_used: POB lexical decision for ἐν τῇ φυλακῇ
+  rationale: The article is unnecessary in natural English because the context identifies the location.
+interpretive_expansions:
+- pob_phrase: he sent and beheaded John
+  rendering: he sent someone to behead John
+  claim: Herod had a dispatched agent perform the beheading rather than doing it personally.
+  evidence:
+  - The POB audit says the participle implies that an order or agent was dispatched.
+  - The finite verb still attributes responsibility for the act to Herod.
+  confidence: high
+  alternatives_preserved:
+  - Herod remains the subject responsible for John's death.
 translation_notes:
-  source_alignment_notes: Preserves the sending action, the beheading, and the prison location.
-  readability_notes:
-  - Clarifies the implied action without changing the event.
-  compression_notes:
-  - No meaning was omitted.
+  risk_flags:
+  - risk: “Then” makes the narrative sequence slightly more explicit than the simple Greek connective.
+    mitigation: It avoids the unsupported causal force of “So” while providing natural English narration.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/014/010.yaml
   source_text_sha256: 1722209ea03c0a25c248cd7aa1cfce5a9f7584ec943e6469e0e1c150d2060f4b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:51:39Z'
-  output_hash: 228eec5797ae8987bac730372aa1f4415462b52aa89b779a79ee0a9197f098b5
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 226ed5880ee528dfb1599bd452a42b891924206b57ad7b4bacba706a1a609ac1
+  timestamp: '2026-07-12T07:37:47Z'
+  output_hash: 68d1f7cf341c418992afeb0e369037cac4c766c8acb091e150383a8195151a1a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2862
+    completion_tokens: 360
+    total_tokens: 3222
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: beheaded John
+  reason: Retains the direct description of the execution.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:47Z'
+  previous_text: So he sent someone and beheaded John in the prison.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 56d646667233eb49634477f7f9a975f0ec1b9a2e2a7585b32b7ee5047b346ab4
+  review_summary: The clarification that Herod dispatched an agent is warranted by the participial construction and the POB audit trail, and it improves comprehension. The current wording, however, leaves the beheading grammatically assigned to Herod personally. Stating the dispatched person’s purpose makes the intended mediated action clear while retaining Herod’s responsibility for it.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

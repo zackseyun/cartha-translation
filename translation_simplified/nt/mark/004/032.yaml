@@ -34,41 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: but when it is sown, it grows up and becomes larger than all the garden plants. It puts out large branches, so that the birds of the sky can nest in its shade.”
+  text: and when it is sown, it grows up and becomes larger than all the garden plants. It puts out large branches, so that the birds of the sky can nest under its shade.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: and when it is sown[a], it comes up and becomes larger than all the garden plants, and it produces large branches[b], so that the birds of the sky are able to nest under its shade.
-  simplified_phrase: but when it is sown, it grows up and becomes larger than all the garden plants. It puts out large branches, so that the birds of the sky can nest in its shade.”
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: birds of the sky
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
-translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+- pob_phrase: it comes up and becomes larger than all the garden plants
+  simplified_phrase: it grows up and becomes larger than all the garden plants
+  preserved_meaning: The seed emerges and grows beyond the size of the other garden plants.
+  reasoning_layer_used: POB lexical decisions for ἀναβαίνει and μεῖζον πάντων τῶν λαχάνων
+  rationale: “Grows up” states the agricultural development naturally while retaining the garden-scale comparison.
+- pob_phrase: it produces large branches
+  simplified_phrase: It puts out large branches
+  preserved_meaning: The plant develops large branches.
+  reasoning_layer_used: POB lexical decision for ποιεῖ κλάδους μεγάλους
+  rationale: “Puts out” is ordinary English for a plant growing branches.
+- pob_phrase: the birds of the sky are able to nest under its shade
+  simplified_phrase: the birds of the sky can nest under its shade
+  preserved_meaning: Its growth enables birds to find nesting shelter beneath its shade.
+  reasoning_layer_used: POB lexical decisions and theological restraint for ὥστε δύνασθαι and κατασκηνοῦν
+  rationale: “Can nest” removes formal wording without explaining the possible Old Testament allusion in the text.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/032.yaml
   source_text_sha256: 0e6f532ffadedcf9586a14ed34b8948620f78339c8dfae1c4fd2c3335d91ffab
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 9ccda050c825a1b3fd33283620250373a791fb12cc013dea4c25e69988874b2a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 32f6794de9d724dd3af4e680008b389498a1c11d70b8971eceea8f024b1c53be
+  timestamp: '2026-07-12T07:20:12Z'
+  output_hash: 17224aa948ecc1fe8395e0f6c8633a3de45956d9b8c31704437dcb61a9046c4f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3648
+    completion_tokens: 364
+    total_tokens: 4012
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: birds of the sky
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:12Z'
+  previous_text: but when it is sown, it grows up and becomes larger than all the garden plants. It puts out large branches, so that the birds of the sky can nest in its shade.”
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 058e1952569cd27b4fabf05f38ac2d9c0a4404139403f14c300df57fc52d1ae4
+  review_summary: The simplifications “grows up,” “puts out,” and “can nest” are clear, source-compatible, and preserve the POB's deliberate restraint concerning the bird-and-tree imagery. Splitting the long sentence improves readability without merging ideas. Revise only “but” to “and,” since the adversative relation is not supported by the source, context, or POB audit trail; retain “under its shade” to reflect the stated spatial image.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

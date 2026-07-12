@@ -31,43 +31,58 @@ base_translation:
     changes_summary: 'Made the opening more complete by reflecting ἀποκριθεὶς ... ἔλεγεν (''answered and said''), retained the participial teaching context, and rendered Πῶς as ''How do'' rather than ''How can'' for closer lexical accuracy. Also used ''Christ'' for χριστός. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: While teaching in the temple, Jesus responded, “How can the scribes say that the Messiah is the son of David?
+  text: While teaching in the temple, Jesus responded, “How can the scribes say that the Messiah is the son of David?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And Jesus answered and said[a], as he was teaching in the temple, “How do the scribes say that the Messiah is the son of David?”
-  simplified_phrase: While teaching in the temple, Jesus responded, “How can the scribes say that the Messiah is the son of David?
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Messiah
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-- term: son of David
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: And Jesus answered and said, as he was teaching
+  simplified_phrase: While teaching, Jesus responded
+  preserved_meaning: Jesus spoke in response while he was teaching.
+  reasoning_layer_used: POB lexical decisions for ἀποκριθεὶς, ἔλεγεν, and διδάσκων
+  rationale: This removes awkward repetition while preserving both the response and the concurrent teaching.
+- pob_phrase: How do the scribes say
+  simplified_phrase: How can the scribes say
+  preserved_meaning: Jesus challenges the validity of the scribes’ claim.
+  reasoning_layer_used: POB lexical decision for Πῶς
+  rationale: “How can” makes the rhetorical objection clear in natural English.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Responded” could suggest an explicit prior question.
+    mitigation: The POB audit allows a response to the situation or preceding line of thought without a stated question.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/035.yaml
   source_text_sha256: 755d7495747f23ac85ccc47cce7963f1c2fbdf40a1d783404af582ce257edc51
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 917e642c8c1ee2aab1bcd7b6625b0f9988288ead2aa96423999deabdd0486fe0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b1180bb81e03c56968109f6e9c06eda613ced83d61984cc995243f291e3d61cb
+  timestamp: '2026-07-12T07:22:50Z'
+  output_hash: 8fb27124175c6b40aff696feaed35d2d32c49994ce95cc352066cd5dbfdcb80e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3682
+    completion_tokens: 274
+    total_tokens: 3956
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Messiah
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- term: son of David
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:50Z'
+  previous_text: While teaching in the temple, Jesus responded, “How can the scribes say that the Messiah is the son of David?
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f32c0b3f7cffef58fa175eae633ba08bd14684b793faf29ed5d6fc87a4e1d6f2
+  review_summary: The simplification is warranted. “While teaching” preserves the concurrent teaching circumstance, “responded” is supported by the POB audit trail’s treatment of ἀποκριθεὶς as a response to a situation or line of thought, and “How can” follows the POB’s stated rhetorical-force decision. Key messianic language is retained without added interpretation. Revision is required solely to close the direct quotation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 11:16 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''called Twin''].'
 translation:
   language: en
-  text: So Thomas, who was called Didymus, said to the other disciples, “Let us go too, so that we may die with him.”
+  text: So Thomas, who was called the Twin, said to the other disciples, “Let us go too, so that we may die with him.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Thomas, called Didymus
+  simplified_phrase: Thomas, who was called the Twin
+  preserved_meaning: The meaningful Greek designation is presented directly as “Twin.”
+  reasoning_layer_used: POB lexical decision for ὁ λεγόμενος Δίδυμος
+  rationale: Translating the designation avoids leaving modern readers with the opaque name “Didymus.”
+- pob_phrase: his fellow disciples
+  simplified_phrase: the other disciples
+  preserved_meaning: Thomas speaks to the other members of Jesus’ disciple group.
+  reasoning_layer_used: POB lexical decision for τοῖς συμμαθηταῖς and immediate context
+  rationale: “The other disciples” is clearer common English in this setting.
+- pob_phrase: Let us also go
+  simplified_phrase: Let us go too
+  preserved_meaning: Thomas includes himself and the others in going with Jesus.
+  reasoning_layer_used: POB lexical decisions for Ἄγωμεν and καὶ ἡμεῖς
+  rationale: “Let us go too” expresses the same inclusion in more natural speech.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Thomas’s words may suggest courage, resignation, or pessimism.
+    mitigation: The wording adds no emotional label and preserves the POB’s intended ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/016.yaml
   source_text_sha256: 158e8949d0293d3f9ec0046c0f649410a28b438931e0f218d863dd2523a99e53
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:37Z'
-  output_hash: 2a67e7291272a142f4ca316625199e20fad0da25501cb6a8e27f0e5242b8ef92
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b5fe940c63198c2b19a355465ecfd4fb77e362b4c3d7ea1bbc65072519b1bbc9
+  timestamp: '2026-07-12T07:15:58Z'
+  output_hash: a710a10a025c13a5e8300f7f7caa993c36394fdf9adf6193658f92ec2dce6d11
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3558
+    completion_tokens: 354
+    total_tokens: 3912
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:58Z'
+  previous_text: So Thomas, who was called Didymus, said to the other disciples, “Let us go too, so that we may die with him.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3a2fc54e86da70901703c4a368ffc36bfa413a5bcef9dbd5b835f25ce8ed3f7c
+  review_summary: The draft faithfully preserves Thomas’s exhortation, the inclusion expressed by “too,” the purpose/expected-result connection, and the text’s unresolved tone; it introduces no doctrinal expansion. “Other disciples” is a clear, contextually warranted simplification of “his fellow disciples.” However, removing both the POB footnote and the meaning of Didymus leaves an otherwise meaningful designation opaque. Replace it with “the Twin” for a clearer, publication-ready SPOB rendering.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

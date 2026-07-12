@@ -34,36 +34,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Let us live properly, as people who belong to the day—not in wild partying and drunkenness, not in sexual immorality and sensuality, not in fighting and jealousy.
+  text: Let us live properly, as in the daytime—not in wild partying and drunkenness, not in sexual immorality and sensuality, and not in fighting and jealousy.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Greek term translated “jealousy” can also mean “envy”; here it has a negative sense.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Let us walk properly
+  simplified_phrase: Let us live properly
+  preserved_meaning: The command concerns a person’s way of life.
+  reasoning_layer_used: POB lexical decision for περιπατήσωμεν
+  rationale: “Live” makes Paul’s metaphorical use of “walk” immediately clear.
+- pob_phrase: revelries
+  simplified_phrase: wild partying
+  preserved_meaning: The phrase describes riotous feasting or carousing, often involving drink.
+  reasoning_layer_used: POB lexical decision for κώμοις
+  rationale: “Wild partying” is common English and avoids the sexual narrowing of “orgies.”
+- pob_phrase: strife
+  simplified_phrase: fighting
+  preserved_meaning: The vice is discord and contentious conflict.
+  reasoning_layer_used: POB lexical decision for ἔριδι
+  rationale: “Fighting” is more familiar than “strife” while retaining the negative force.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “As in the daytime” may sound unusual in modern English.
+    mitigation: It is retained to preserve the source’s day-and-darkness image without adding an identity claim.
+  - risk: “Sensuality” may be understood too narrowly as sexual desire.
+    mitigation: Its pairing with “sexual immorality” preserves the POB wording for shameless, unrestrained conduct.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/013/013.yaml
   source_text_sha256: 0d5590e4f573350ff329708c098ed66a720a98a2afe2c6d410384412ba9b0829
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:41Z'
-  output_hash: bea9437c32a8dfa3ac712c5c0c24ba414c4c506886947a922559ce6ce5af5546
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1398cf30f6efb6068a2baa6970542057deec266d2b8a3f2cd5e630899742485e
+  timestamp: '2026-07-12T07:42:28Z'
+  output_hash: 94a3567a09b1e412fe01f25f19d60589cbfe942fb7b0b1847b019c5afcbd0102
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3415
+    completion_tokens: 415
+    total_tokens: 3830
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:28Z'
+  previous_text: Let us live properly, as people who belong to the day—not in wild partying and drunkenness, not in sexual immorality and sensuality, not in fighting and jealousy.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ff756234e39e16a6e29ae622388f2984e01efc69ff7ad3f21af8be48f7e4b6b9
+  review_summary: The draft usefully modernizes “walk” to “live,” “revelries” to “wild partying,” and “strife” to “fighting.” However, “people who belong to the day” adds an identity formulation beyond the source comparison and the POB’s stated restraint. Retain the day imagery directly while keeping the otherwise effective simplifications.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+  - 'retained otherwise-unanchored footnote markers at the end of the revised text: [a]'

@@ -31,43 +31,67 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 14:31 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''says to him''].'
 translation:
   language: en
-  text: Immediately Jesus reached out his hand, took hold of him, and said to him, “You of little faith, why did you doubt?”
+  text: Immediately Jesus reached out his hand and took hold of him. He said, “You have little faith. Why did you doubt?[a]”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “Why did you waver?” The Greek can also suggest hesitation or wavering.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: stretched out his hand
   simplified_phrase: reached out his hand
-  preserved_meaning: Preserves Jesus' immediate physical rescue in common English.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Reached out'' is more natural modern wording for the same action.'
-retained_terms:
-- term: You of little faith
-  reason: Retains POB's rendering of Ὀλιγόπιστε.
-- term: doubt
-  reason: Retains POB's main-text rendering of the wavering/doubt verb.
+  preserved_meaning: Jesus extended his hand to rescue Peter.
+  reasoning_layer_used: POB lexical decision
+  rationale: “Reached out” is common modern English and preserves the physical action.
+- pob_phrase: You of little faith
+  simplified_phrase: You have little faith
+  preserved_meaning: Peter’s faith is deficient, but he is not described as faithless.
+  reasoning_layer_used: POB theological decision
+  rationale: The direct statement is clearer while retaining the limited scope of the rebuke.
+- pob_phrase: Immediately Jesus stretched out his hand, took hold of him, and said to him
+  simplified_phrase: Immediately Jesus reached out his hand and took hold of him. He said
+  preserved_meaning: Jesus first catches Peter and then addresses him.
+  reasoning_layer_used: POB syntax and narrative sequence
+  rationale: Two sentences make the sequence easier to follow without omitting an action.
 translation_notes:
-  source_alignment_notes: Preserves Jesus' immediate action, grasping Peter, and rebuke about little faith and doubt.
-  readability_notes:
-  - Uses common English for the rescue action while keeping the key phrase 'little faith.'
-  compression_notes:
-  - No meaning was omitted.
+  risk_flags:
+  - risk: “Doubt” may sound more settled than the Greek verb requires.
+    mitigation: The footnote preserves the possible nuance of wavering or hesitation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/014/031.yaml
   source_text_sha256: 3c7767ce7188c21e0c2251e01b5cbb9b69ddac32186701fa96f020efaa67dbee
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:51:39Z'
-  output_hash: 86090ca916f8b25845ad0753b409d7570134ab2329f2f0a394f443e58460b4a1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d9bcdb021fba9db20efa65bb0da530b62a3a03f044e01765cf9e7b1d03ab9f03
+  timestamp: '2026-07-12T07:40:15Z'
+  output_hash: bdea9f5391643bf4da64d076ab3f42c23bd22b28a0d3958a2c8b5bec26ac7fb3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3682
+    completion_tokens: 547
+    total_tokens: 4229
+    reasoning_tokens: 178
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: You of little faith
+  reason: Retains POB's rendering of Ὀλιγόπιστε.
+- term: doubt
+  reason: Retains POB's main-text rendering of the wavering/doubt verb.
+spob_revision_history:
+- timestamp: '2026-07-12T07:40:15Z'
+  previous_text: Immediately Jesus reached out his hand, took hold of him, and said to him, “You of little faith, why did you doubt?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8d52aefe118aa92c56f7cf25e0770f379179fcb5ead85f11ce7755eb748c7f26
+  review_summary: '“Reached out his hand” is supported by the POB lexical alternatives and naturally conveys the immediate rescue without added interpretation. Revise the vocative to ordinary modern English so the SPOB is genuinely clearer while preserving the rebuke’s limited scope: Peter has little faith, not no faith. Retain a concise alternative for “doubt” to preserve the source verb’s wavering/hesitation nuance.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

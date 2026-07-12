@@ -31,41 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And God said to Noah, “This is the sign of the covenant that I have established between me and all flesh on the earth.”
+  text: God said to Noah, “This is the sign of the covenant I have established between me and all living creatures on the earth.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: God identifies the bow as the sign of the covenant established with all flesh on earth.
-  reasoning_layer_used: POB audit trail
-  rationale: Preserved 'all flesh' and 'established' to maintain POB's covenant scope and formulation.
-retained_terms:
-- term: all flesh
-  reason: Retains the broad animate-earthly-life expression.
-- term: covenant
-  reason: Preserves the covenant formula.
+- pob_phrase: And God said to Noah
+  simplified_phrase: God said to Noah
+  preserved_meaning: God continues the narrative by addressing Noah.
+  reasoning_layer_used: POB lexical decision for וַיֹּאמֶר
+  rationale: Dropping the opening “And” gives natural modern English without changing the speaker or addressee.
+- pob_phrase: all flesh that is on the earth
+  simplified_phrase: all living creatures on the earth
+  preserved_meaning: The covenant includes animate earthly life broadly, not humanity alone.
+  reasoning_layer_used: POB lexical and theological decisions for כָּל בָּשָׂר
+  rationale: The contextual meaning replaces an opaque Hebrew expression while preserving its full scope.
 translation_notes:
-  source_alignment_notes: Preserves the addressee, covenant sign, and covenant parties.
-  readability_notes:
-  - The final covenant summary is already clear and needed only slight tightening.
-  compression_notes:
-  - No covenant scope was narrowed.
+  risk_flags:
+  - risk: “All living creatures” does not retain the literal image “all flesh.”
+    mitigation: The POB explicitly approves this contextual alternative, which prevents readers from wrongly limiting the phrase to humans or bodies.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/017.yaml
   source_text_sha256: 0eef22a9368b35212178fba8725b9ef662e166fd1859540e7dcc1ac04b5b2baf
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:45Z'
-  output_hash: d3a7192c01957dd3c24a3577846704a614e7cb29ee01b1436539003c5afab9f2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5e448562864d602256b9cf2e6002814b48d354001cc66cbd523b194a30ff298b
+  timestamp: '2026-07-12T09:23:48Z'
+  output_hash: c209a24b08a5c8a5a44bc416c46f5a5f3dbe42a58cab04051ffa53bfe27d078a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3317
+    completion_tokens: 282
+    total_tokens: 3599
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: all flesh
+  reason: Retains the broad animate-earthly-life expression.
+- term: covenant
+  reason: Preserves the covenant formula.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:48Z'
+  previous_text: And God said to Noah, “This is the sign of the covenant that I have established between me and all flesh on the earth.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1139659167ae05bc0c8f40da136033b405ce097722dfb9898638fe46f64e691b
+  review_summary: 'The draft is faithful and does not introduce doctrinal expansion, but it does not meet SPOB’s understanding-first purpose: it preserves an opaque Hebrew idiom while removing the POB’s only explanatory aid. Replacing “all flesh” with “all living creatures” is directly warranted by the POB audit trail and the immediate covenant context, while retaining the broad non-human-inclusive scope.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

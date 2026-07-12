@@ -34,25 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to them, “Can the wedding attendants[a] mourn as long as the bridegroom is with them? But the days will come when the bridegroom is taken away from them[b], and then they will fast.”
+  text: Jesus said to them, “The wedding attendants[a] cannot mourn as long as the bridegroom is with them, can they? But days will come when the bridegroom is taken away from them[b], and then they will fast.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Literally, 'the sons of the wedding hall,' an idiom for the bridegroom's companions or wedding attendants.
-    reason: simplification_note
+    text: Literally, “the sons of the wedding hall,” an idiom for the bridegroom’s companions or wedding attendants.
+    reason: lexical_alternative
   - marker: b
-    text: Or 'when the bridegroom is removed from them.' The passive wording suggests more than an ordinary departure.
-    reason: simplification_note
+    text: Or “when the bridegroom is removed from them.” The passive wording suggests more than an ordinary departure.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Transformed the complex rhetorical construction 'The wedding attendants cannot mourn..., can they?' into the more direct and natural 'Can the wedding attendants mourn...?' to improve oral readability while maintaining the same expected negative answer.
-  reasoning_layer_used: POB audit trail
-  rationale: Transformed the complex rhetorical construction 'The wedding attendants cannot mourn..., can they?' into the more direct and natural 'Can the wedding attendants mourn...?' to improve oral readability while maintaining the same expected negative answer.
-- preserved_meaning: Corrected the placement of footnote [a] to sit next to 'wedding attendants' (which it explains) rather than 'them' where it was erroneously placed in the POB source text.
-  reasoning_layer_used: POB audit trail
-  rationale: Corrected the placement of footnote [a] to sit next to 'wedding attendants' (which it explains) rather than 'them' where it was erroneously placed in the POB source text.
-- preserved_meaning: Adjusted 'days will come' to 'the days will come' to conform to natural modern English syntax.
-  reasoning_layer_used: POB audit trail
-  rationale: Adjusted 'days will come' to 'the days will come' to conform to natural modern English syntax.
+- pob_phrase: And Jesus said to them
+  simplified_phrase: Jesus said to them
+  preserved_meaning: Jesus directly answers the people addressed in the preceding context.
+  reasoning_layer_used: English readability
+  rationale: Dropping the opening conjunction makes the sentence more natural without changing the connection.
+- pob_phrase: The wedding attendants cannot mourn as long as the bridegroom is with them, can they?
+  simplified_phrase: The wedding attendants cannot mourn as long as the bridegroom is with them, can they?
+  preserved_meaning: The rhetorical question explicitly expects the answer no.
+  reasoning_layer_used: Greek grammar and POB lexical decision
+  rationale: The negative statement and tag preserve the force of μή that the earlier draft weakened.
+- pob_phrase: But days will come
+  simplified_phrase: But days will come
+  preserved_meaning: A future time will arrive when the present situation changes.
+  reasoning_layer_used: POB lexical decision
+  rationale: The article is omitted because the audited wording is already clear and natural.
+translation_notes:
+  risk_flags:
+  - risk: The idiom behind “wedding attendants” is not visible in the main text.
+    mitigation: Footnote a preserves the literal image and identifies the attendants’ social role.
+  - risk: “Taken away” may imply more than a routine departure without specifying how.
+    mitigation: Footnote b notes the passive force while leaving its precise implication unresolved.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/009/015.yaml
+  source_text_sha256: 94366974c240a41a69a401dea548a72a7dbb79ad85b7471dba28251518c7f684
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b6516ebea70658c02a425736f3e4a82e0575a613ee8732a4ecb35511d51c97fc
+  timestamp: '2026-07-12T07:36:28Z'
+  output_hash: 46be8ddafb7aacd26fa9fb02482843e3665dd186cadde12218787999c35d6fa1
+  usage:
+    prompt_tokens: 3936
+    completion_tokens: 470
+    total_tokens: 4406
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: bridegroom
   reason: Retained to preserve POB's source-grounded terminology.
@@ -60,33 +94,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: fast
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The Greek negative particle 'μή' expecting a negative answer is fully preserved in force by the natural rhetorical question structure. The divine passive of 'ἀπαρθῇ' (suggesting a forceful taking away, foreshadowing the crucifixion) is carefully preserved as 'is taken away' with its accompanying explanatory footnote.
-  readability_notes:
-  - The dialogue flows much more naturally for a modern reader without the clunky 'can they?' tag at the end of the question, which is rarely used in modern speech in this style.
-  compression_notes:
-  - No semantic information or theological weight was removed; the compression is purely syntactic to optimize clarity.
-  risk_flags:
-  - risk: The placement of footnote marker [a] was adjusted to accurately reflect its referent ('the wedding attendants' rather than 'them').
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/009/015.yaml
-  source_text_sha256: 94366974c240a41a69a401dea548a72a7dbb79ad85b7471dba28251518c7f684
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: a4122cd8df6c30e53a4a82ad511bb43ea90ab22ef1b81869aa8321bd6babdf48
-  timestamp: '2026-05-28T08:45:40Z'
-  output_hash: 0bfb3f84f279eb4f1dc4d6a4faaf818233562391c50c1a8683c3ea8d639884ca
-  usage:
-    prompt_tokens: 1967
-    completion_tokens: 553
-    total_tokens: 6488
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:28Z'
+  previous_text: Jesus said to them, “Can the wedding attendants[a] mourn as long as the bridegroom is with them? But the days will come when the bridegroom is taken away from them[b], and then they will fast.”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: bf2b601a043a4128358d7a970794394e989f916a7aeb6360820170d7225cc9f5
+  review_summary: The draft properly retains the source-grounded wedding imagery, fasting, and the passive “is taken away,” without adding doctrinal interpretation. Moving footnote [a] beside “wedding attendants” is also correct. However, the opening simplification weakens the Greek’s explicitly negative rhetorical force, and “the days will come” offers no clarity improvement. Restore the negative rhetorical wording while retaining the improved footnote placement.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

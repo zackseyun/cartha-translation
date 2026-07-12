@@ -34,47 +34,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: and the stars will fall from heaven[a], and the powers in the heavens will be shaken.
+  text: And the stars will fall from heaven[a], and the forces in the heavens will be shaken.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek word can mean heaven or sky depending on context.
-    reason: simplification_note
+    text: The Greek word can mean either “heaven” or “sky” here.
+    reason: lexical_alternative
+  - marker: b
+    text: These forces may be heavenly powers, cosmic forces, or the structures of the heavens; the Greek does not specify.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: And the stars will be falling from heaven[b][a], and the powers in the heavens will be shaken.
-  simplified_phrase: and the stars will fall from heaven[a], and the powers in the heavens will be shaken.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: heaven
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-- term: powers in the heavens
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: will be falling
+  simplified_phrase: will fall
+  preserved_meaning: The stars are pictured as falling in the coming cosmic upheaval.
+  reasoning_layer_used: POB lexical decision for ἔσονται ... πίπτοντες
+  rationale: The simple future is easier to read, though it reduces the vivid ongoing aspect.
+- pob_phrase: the powers in the heavens
+  simplified_phrase: the forces in the heavens
+  preserved_meaning: The phrase remains broad enough to include heavenly powers, cosmic forces, or cosmic structures.
+  reasoning_layer_used: POB lexical and theological decisions for δυνάμεις
+  rationale: “Forces” gives common readers a usable sense without deciding what these powers are.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Will fall” is less vivid and ongoing than the POB wording “will be falling.”
+    mitigation: The simpler wording preserves the event while making the sentence more natural.
+  - risk: “Forces” may sound impersonal even though heavenly beings remain possible.
+    mitigation: Footnote b explicitly preserves the full documented range.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/025.yaml
   source_text_sha256: 88152cff6280d7d3493abc2ea70065339560d1bb0a6d0ed4feeecbf8c2b85ff6
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 5f94d52b668e65aa198f6c9184ebaf301f8459a3298a263c2c7476ecee9af117
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 852bdeb1968dff9ec3742c096397539660f64d225bc14d113f2d367bc05b0c1d
+  timestamp: '2026-07-12T07:21:48Z'
+  output_hash: 7ac9c5935e49978c433455405ec9efc126bdc82e716152cf6b7ebf65ecdf33ee
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3304
+    completion_tokens: 366
+    total_tokens: 3670
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: heaven
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+- term: powers in the heavens
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:48Z'
+  previous_text: and the stars will fall from heaven[a], and the powers in the heavens will be shaken.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8c286a1fa9ada6b28da15e2434651018bc8b49af1892b6c10742c0fe94839d16
+  review_summary: 'Revision is needed because the draft is not meaningfully clearer than POB for a modern reader: its main difficult phrase is reproduced unchanged. “Forces in the heavens” is a source-grounded, ordinary-English clarification of δυνάμεις that does not specify whether the referent is beings, celestial phenomena, or cosmic structures. Changing the vivid future “will be falling” to “will fall” is an acceptable simplification, and the retained heaven/sky footnote preserves the lexical alternative.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

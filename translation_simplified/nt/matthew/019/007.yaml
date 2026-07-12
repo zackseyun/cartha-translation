@@ -31,45 +31,63 @@ base_translation:
     changes_summary: Removed 'us' because it is not present in the Greek. Kept 'certificate of divorce' for βιβλίον ἀποστασίου and 'send her away' for ἀπολῦσαι αὐτήν.
 translation:
   language: en
-  text: They said to him, “Why then did Moses command that a certificate of divorce be given and that she be sent away?”[a]
+  text: They said to him, “Why then did Moses command a man to give his wife a certificate of divorce and send her away?”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or and divorce her. The Greek verb means send away and functions here as divorce language.
+    text: Or “and divorce her.” The Greek verb means “send away” and functions here as divorce language.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: command to give a certificate of divorce and to send her away
-  simplified_phrase: command that a certificate of divorce be given and that she be sent away
-  preserved_meaning: The Pharisees appeal to Moses’ divorce certificate and sending away language.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Keeps both legal elements but makes the English smoother.
-retained_terms:
-- term: certificate of divorce
-  reason: Retained as the POB legal term.
+  simplified_phrase: command a man to give his wife a certificate of divorce and send her away
+  preserved_meaning: Moses is presented as commanding the husband to perform both actions in the divorce scenario.
+  reasoning_layer_used: POB lexical decisions and immediate Deuteronomy 24 context
+  rationale: Naming the implied man and wife restores active agency and makes the scenario immediately clear.
+interpretive_expansions:
+- pob_phrase: command to give ... and to send her away
+  rendering: command a man to give his wife ... and send her away
+  claim: The implied person carrying out both actions is a husband divorcing his wife.
+  evidence:
+  - The feminine pronoun refers to the wife in the divorce scenario.
+  - The Deuteronomy 24 setting presents the husband as giving the certificate and dismissing his wife.
+  confidence: high
+  alternatives_preserved:
+  - The agent may remain unstated in a more formally aligned rendering.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the POB record for Matthew 19:7; no external LLM or API was used.
-  readability_notes:
-  - Uses modern common English while keeping the controlling POB meaning.
-  compression_notes:
-  - Only formal or repeated wording is simplified; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: Adding “a man” and “his wife” makes implied participants explicit.
+    mitigation: The immediate divorce context clearly identifies these roles without adding a new command.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/019/007.yaml
   source_text_sha256: 8d84c1d827ded0fe400f2161bcbbabab1e2489bc497b69e684f3862f1242e0a6
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:30Z'
-  output_hash: 8db963b6ec7fa31c3eff83d567a60c8f7919ab462d0ea4a03ae3b186084cd50e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7ad179135338dcd037a5267a8f6fcc848b62c7456dfda8ea6d3ac603d89efe88
+  timestamp: '2026-07-12T07:36:56Z'
+  output_hash: 1ca0482b6b03934c5ae912c1db488541d9465054b4d3c3f0c10e11b306c05e95
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3402
+    completion_tokens: 367
+    total_tokens: 3769
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: certificate of divorce
+  reason: Retained as the POB legal term.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:56Z'
+  previous_text: They said to him, “Why then did Moses command that a certificate of divorce be given and that she be sent away?”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 42c0bbb5648ebb11484795f8036b3365f7a01c80c49e926cc5db6ab36fa05952
+  review_summary: The draft preserves the two legal actions and correctly retains the Pharisees’ word “command,” without importing Jesus’ correction from the next verse. However, changing both active infinitives into passives (“be given” and “be sent away”) removes an important relationship and agency feature of the source-context scenario. Naming the implied man and his wife is a warranted contextual clarification that makes the sentence more understandable while preserving the Pharisees’ framing.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

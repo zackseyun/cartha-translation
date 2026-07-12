@@ -34,44 +34,58 @@ base_translation:
     changes_summary: Removed the comma after 'Two by two' for smoother formal English and changed 'and into the ark' to 'into the ark' to reflect the single Hebrew preposition repeated before 'Noah' and 'the ark' without adding an unnecessary conjunction.
 translation:
   language: en
-  text: Two by two, male and female, they came to Noah into the ark, just as God had commanded Noah.
+  text: They came to Noah and entered the ark in pairs, male and female, just as God had commanded Noah.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Grouping the descriptive qualities ('Two by two, male and female') at the front of the clause creates a smoother, more unified phrase structure. In the POB source text, placing 'male and female' after the destinations ('to Noah into the ark') results in a disjointed, interrupted flow for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Grouping the descriptive qualities ('Two by two, male and female') at the front of the clause creates a smoother, more unified phrase structure. In the POB source text, placing 'male and female' after the destinations ('to Noah into the ark') results in a disjointed, interrupted flow for modern readers.
-retained_terms:
-- term: Two by two
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: came
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: Two by two they came to Noah into the ark
+  simplified_phrase: They came to Noah and entered the ark in pairs
+  preserved_meaning: They moved toward Noah and went inside the ark as male-female pairs.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: Splitting the two movements removes the unclear sequence of destinations while preserving both.
+- pob_phrase: Two by two
+  simplified_phrase: in pairs
+  preserved_meaning: The animals arrived as paired groups.
+  reasoning_layer_used: POB lexical decision for שְׁנַיִם שְׁנַיִם
+  rationale: “In pairs” states the distributive sense in direct modern English.
 translation_notes:
-  source_alignment_notes: The draft maintains strict alignment with the Hebrew source text, preserving the dual directional phrases ('to Noah' and 'into the ark') as well as the explicit name 'Noah' at the end of the divine command clause.
-  readability_notes:
-  - The punctuation and revised syntax allow the sentence to be read in a single, flowing breath, removing the awkward syntactical breaks found in more literal word-order translations.
-  compression_notes:
-  - No textual or semantic content has been compressed or omitted from the POB translation.
   risk_flags:
-  - risk: Low risk. The minor word-order shift of 'male and female' does not change the theological or narrative meaning of the text.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Using “and entered” makes the relationship between the two Hebrew destination phrases more explicit.
+    mitigation: The wording preserves both movement toward Noah and actual entry into the ark without explaining the mechanism.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/007/009.yaml
   source_text_sha256: 6413903b84252d5b173c196fff3092a8fe8d7a43626665314db82f9e3b8a2b86
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 685bd3589e82fdf8ce6ed883dea881a69df38213ada5fbc2f5bdb8230fdac2dc
-  timestamp: '2026-05-28T09:31:03Z'
-  output_hash: 36b56bf5956a16ec4c0b8712fa5ed977139c15aecd2f178c2a48b1d82af94bc0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8d7f9080ab96a2846f4be58de09705caf56f7c8583e90174adf3b348050f29b4
+  timestamp: '2026-07-12T09:23:12Z'
+  output_hash: d09d7617f1f4e6a83fd6bcac7c0a145c63c4b54f20bb08d5f51018075ac9013c
   usage:
-    prompt_tokens: 2254
-    completion_tokens: 473
-    total_tokens: 6404
-    reasoning_tokens: 0
+    prompt_tokens: 3779
+    completion_tokens: 555
+    total_tokens: 4334
+    reasoning_tokens: 278
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Two by two
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: came
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:12Z'
+  previous_text: Two by two, male and female, they came to Noah into the ark, just as God had commanded Noah.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: cab0c0190a898c86fc87e082585c4f58c74adf637e231c077f267747347a403c
+  review_summary: The draft preserves the verse's pairing, sex distinction, divine command, and unstated mechanism of the animals' arrival; it adds no doctrine. However, its sole simplification—a word-order shift—does not produce a meaningful readability gain and makes the opening more cumbersome. Reorder the destination phrase so modern readers can understand that the animals came to Noah in/into the ark while retaining the source-grounded elements.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

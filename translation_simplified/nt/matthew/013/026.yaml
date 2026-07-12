@@ -31,42 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When the plants sprouted and formed grain, the weeds appeared too.[a]
+  text: But when the plants had sprouted and produced grain, the weeds appeared too.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “tares”; possibly a specific weed such as darnel.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: then the weeds also appeared
+  simplified_phrase: the weeds appeared too
+  preserved_meaning: The weeds became visible at that stage along with the crop.
+  reasoning_layer_used: POB lexical decisions for τότε, ἐφάνη, and καί
+  rationale: Natural English word order preserves the sequence and additive force.
+- pob_phrase: But when the plants had sprouted and produced grain
+  simplified_phrase: But when the plants had sprouted and produced grain
+  preserved_meaning: The crop first sprouted and yielded grain, with a mild contrast to the prior scene.
+  reasoning_layer_used: POB translation and lexical audit
+  rationale: This clear wording retains the audited connective, agricultural sense, and event sequence.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Weeds” does not identify the plant species precisely.
+    mitigation: The footnote preserves “tares” and possible darnel identification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/026.yaml
   source_text_sha256: 1abe40a323b5cb1403edf770417af9c8c41bd50483aab1d4041e07eb592e8620
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 5f050fea5f963938eca92409be9bcf9e1ec425f70b007d1374a11d2cbf7bba8e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a539e8476c37c3b4ede75caf2914593c28ba401c1842ad1e8405cc5e1ccda204
+  timestamp: '2026-07-12T07:36:34Z'
+  output_hash: a51f2e0e9f2735a65de2537f96037fcc1b221be80c1836ea54be2684610a174d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3202
+    completion_tokens: 290
+    total_tokens: 3492
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:34Z'
+  previous_text: When the plants sprouted and formed grain, the weeds appeared too.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 21a1776e385905875c1df30a04616983204780edb6c1f06280c2bc6b87ec53da
+  review_summary: The draft correctly preserves the generic rendering “weeds,” the additive sense of καί (“too”), and the lexical footnote. However, it unnecessarily drops the source-supported δέ connective and replaces the clearer agricultural expression “produced grain” with “formed grain.” The recommended revision retains the accessible SPOB word order while preserving the POB's audited meaning and sequence.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

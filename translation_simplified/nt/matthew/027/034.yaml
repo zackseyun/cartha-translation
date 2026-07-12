@@ -31,38 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They gave him wine mixed with gall to drink, but after tasting it, he would not drink it.
+  text: They gave him wine mixed with gall, a bitter substance, to drink. But after tasting it, he would not drink it.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: They gave him wine mixed with gall to drink[a], but after tasting it, he was unwilling to drink.
-  simplified_phrase: They gave him wine mixed with gall to drink, but after tasting it, he would not drink it.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 27 while simplifying sentence flow and common-reader wording.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source-grounding notes
-  rationale: Manual Codex SPOB drafting kept the passion narrative sequence, legal trial language, crucifixion details, titles for Jesus, death/resurrection signs, burial, and tomb-guard episode while reducing dense clauses and footnote markers into clear modern common English.
+- pob_phrase: wine mixed with gall
+  simplified_phrase: wine mixed with gall, a bitter substance
+  preserved_meaning: Keeps Matthew’s term “gall” while explaining its broader bitter sense.
+  reasoning_layer_used: POB footnote and theological decision on χολή
+  rationale: The brief explanation makes the unfamiliar term understandable without resolving its documented lexical range.
+- pob_phrase: but after tasting it, he was unwilling to drink
+  simplified_phrase: But after tasting it, he would not drink it.
+  preserved_meaning: Preserves that Jesus tasted the wine and then chose not to drink it.
+  reasoning_layer_used: POB lexical decision for γευσάμενος and οὐκ ἠθέλησεν
+  rationale: A separate sentence and common wording make the sequence and willing choice clear.
+interpretive_expansions:
+- pob_phrase: gall
+  rendering: gall, a bitter substance
+  claim: Gall is identified broadly as a bitter substance.
+  evidence:
+  - The POB footnote says χολή can mean “gall” or more generally a bitter substance.
+  confidence: high
+  alternatives_preserved:
+  - literal gall or bile
+  - a bitter substance
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB Matthew 27 base translation as the controlling meaning and uses Greek/source context only as an audit guardrail.
-  readability_notes:
-  - Uses shorter clauses and modern common English while preserving Matthew 27’s trial, crucifixion, death, burial, and guarded-tomb sequence.
-  compression_notes:
-  - POB technical alternatives and footnote markers are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: The appositive may sound as though “gall” has only the broad meaning “bitter substance.”
+    mitigation: Retaining “gall” preserves Matthew’s wording and leaves the documented lexical range open.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/027/034.yaml
   source_text_sha256: 197b866dbf9ac8cd50c0ce82ce47f0e2bcc3ce5fc9095528021e37ac4b7f6adb
-  pob_commit_sha: 5fadc1013bd5a69e4107c4ba5c61c81fe8383fcf
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:21:48Z'
-  output_hash: cb475449a6484bd7e733ed7d346c1f9407018ce3a36d524ea28bc57ee5f7b4fe
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 03fb0b7f02d01a28982ea133bd0e676eeba31b93453f24561a2d7b692246ab72
+  timestamp: '2026-07-12T07:40:48Z'
+  output_hash: 8785c6ab15c9ddd46e28feb0eab46f0c7aa80ea8d46d92e95f6c69f9d0f17e08
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3285
+    completion_tokens: 382
+    total_tokens: 3667
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:40:48Z'
+  previous_text: They gave him wine mixed with gall to drink, but after tasting it, he would not drink it.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 745eb1209c9fa3428f8eeca3beb057da0b46f9cdf34819f133212aa580e2b892
+  review_summary: Changing “he was unwilling to drink” to “he would not drink it” is a warranted, clearer rendering of the volitional refusal and does not introduce a doctrinal claim. However, deleting the POB footnote leaves “gall” unexplained for ordinary readers. A brief appositive—“a bitter substance”—supplies needed comprehension while preserving the POB’s stated lexical range rather than imposing a speculative explanation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

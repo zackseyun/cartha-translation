@@ -34,43 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If you had known what this means—‘I desire mercy and not sacrifice’[a]—you would not have condemned the guiltless.[b]
+  text: If you had understood what this means—“I desire mercy and not sacrifice”[a]—you would not have condemned the innocent.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Jesus quotes Hosea 6:6.
     reason: cross_reference
-  - marker: b
-    text: Or "the innocent."
-    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: if you had known
+  simplified_phrase: if you had understood
+  preserved_meaning: Jesus rebukes them for failing to grasp the quoted Scripture.
+  reasoning_layer_used: POB lexical decision for ἐγνώκειτε
+  rationale: The audited alternative “understood” states the intended kind of knowing more clearly.
+- pob_phrase: the guiltless
+  simplified_phrase: the innocent
+  preserved_meaning: The people they condemned were not guilty.
+  reasoning_layer_used: POB lexical decision and footnote for ἀναιτίους
+  rationale: “Innocent” is an audited alternative and is clearer in modern English.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Innocent” may sound less explicitly forensic than “guiltless.”
+    mitigation: The judicial verb “condemned” preserves the legal contrast.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/007.yaml
   source_text_sha256: ea611b5bd7b2832f1c28db1fa1bc73ee8713717190fae64fd15a265c21f68e11
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: 5ace2206be2de46a8f163f1c2604e6d2df953c0ed9f90f0c966a5f66d5ccea54
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4ade192f4371322f1f64ca110d8872e2ab481d3a2ec7f97d5d6fc4b5ecf90a12
+  timestamp: '2026-07-12T07:36:28Z'
+  output_hash: 2a757e7931e869b2a722183702b5cce410131c36f1b549b9386d687882cfea8c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3117
+    completion_tokens: 280
+    total_tokens: 3397
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:28Z'
+  previous_text: If you had known what this means—‘I desire mercy and not sacrifice’[a]—you would not have condemned the guiltless.[b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fb02b84877816427771d2b430be4334f8314bdf54dea29d8786ce97bcd713737
+  review_summary: The draft is faithful and introduces no doctrinal expansion, but it does not meet the stated SPOB requirement of being meaningfully clearer than POB. Replacing “had known” with “had understood” makes the rebuke’s point explicit, and replacing “the guiltless” with the POB-attested alternative “the innocent” uses ordinary modern English while preserving the forensic contrast with “condemned.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

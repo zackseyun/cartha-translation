@@ -34,36 +34,53 @@ base_translation:
     changes_summary: 'Replaced ''Messiah Jesus'' with ''Christ Jesus'' to reflect the Greek more naturally and consistently in a formal translation; retained the rest unchanged. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Greet Prisca and Aquila, my fellow workers in Messiah Jesus.
+  text: Greet Prisca and Aquila,[a] who work with me in Messiah Jesus.[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Prisca is the formal name; Priscilla is the more familiar form used elsewhere for the same person.
+    reason: alternative_reading
+  - marker: b
+    text: Or “in Christ Jesus.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: my fellow workers
+  simplified_phrase: who work with me
+  preserved_meaning: Prisca and Aquila share in Paul's work.
+  reasoning_layer_used: POB lexical decision for συνεργούς μου
+  rationale: The direct clause makes their collaborative relationship with Paul easier to understand.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/003.yaml
   source_text_sha256: ea8b79c36bdb9dd83bc789b56ef096681c08d229a1ee9d1fc71bce60f46d3a12
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:31Z'
-  output_hash: 175a023dbf9c4ac4283836b57ec6cfc6a92c3078059511813f5ea9e44642f266
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6f653f3d3ef970e366a175739abecba9690840794f9a5eba58b3a21297c2916b
+  timestamp: '2026-07-12T07:42:43Z'
+  output_hash: a23e7e09c0f457fcf465953a76841479790fbe8cde5f0b706542f07b3e3f2cd0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3272
+    completion_tokens: 196
+    total_tokens: 3468
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:43Z'
+  previous_text: Greet Prisca and Aquila, my fellow workers in Messiah Jesus.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fdadb8cbf2a1ba9be62cc0bfd48bf5617fde8fb9f8d640d8f7ef4684c93efdca
+  review_summary: The draft faithfully retains the POB’s meaning and introduces no doctrinal expansion, but it is not meaningfully clearer because it repeats the POB wording unchanged. Recasting “my fellow workers” as “who work with me” preserves Paul’s personal collaborative relationship with Prisca and Aquila while making it more immediately understandable. The source and POB audit trail support this clarification; it does not specify a particular kind of work beyond their shared work in Messiah Jesus.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

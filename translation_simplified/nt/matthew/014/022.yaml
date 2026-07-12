@@ -31,43 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Immediately Jesus made the disciples get into the boat and go ahead of him to the other side, while he dismissed the crowds.
+  text: Immediately Jesus made the disciples get into the boat and go ahead of him to the other side, until he dismissed the crowds.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: compelled the disciples
-  simplified_phrase: made the disciples
-  preserved_meaning: Preserves the force of Jesus directing the disciples to get into the boat.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Made'' is common modern English and still communicates compulsion in context.'
-retained_terms:
-- term: Immediately
-  reason: Retains the urgency of the narrative transition.
-- term: the other side
-  reason: Retains the destination phrase.
+- pob_phrase: he compelled the disciples
+  simplified_phrase: Jesus made the disciples
+  preserved_meaning: Jesus firmly directed the disciples rather than merely suggesting that they leave.
+  reasoning_layer_used: POB lexical decision for ἠνάγκασεν and immediate narrative context
+  rationale: “Made” is common English and retains the force of required action.
+- pob_phrase: until he should dismiss the crowds
+  simplified_phrase: until he dismissed the crowds
+  preserved_meaning: The crowds' dismissal remains the anticipated endpoint of the disciples going ahead.
+  reasoning_layer_used: POB lexical decision for ἕως οὗ ἀπολύσῃ and grounding review
+  rationale: The simple past is natural English, while “until” preserves the prospective temporal relationship.
+interpretive_expansions:
+- pob_phrase: he compelled
+  rendering: Jesus made
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the one directing the disciples and dismissing the crowds.
+  confidence: high
+  alternatives_preserved:
+  - he made
 translation_notes:
-  source_alignment_notes: Preserves immediate action, the disciples entering the boat, going ahead, and Jesus dismissing the crowds.
-  readability_notes:
-  - Uses 'while' for the until/meanwhile relationship in natural English.
-  compression_notes:
-  - No meaning was omitted.
+  risk_flags:
+  - risk: “Made” can sound slightly less forceful than “compelled.”
+    mitigation: The construction “made the disciples get into the boat” still clearly presents the action as required.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/014/022.yaml
   source_text_sha256: 504d52f310307553e7e54db153dc1a0baab51909b8a93e4bb9da72e71a5da039
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:51:39Z'
-  output_hash: 4871c4a346370b4bdefd1c96a8c06a33b02a451913bc279788401de6712d59ab
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4d8f362ae4e2e72bd7d98127e7e9591bda8539f683ba32528a1aadad20c453f8
+  timestamp: '2026-07-12T07:36:41Z'
+  output_hash: b63a7a9d15c43d6f47b8ef576d15a7cb7d2f48e564fb2478cb1f78459f95f3cb
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3253
+    completion_tokens: 608
+    total_tokens: 3861
+    reasoning_tokens: 254
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Immediately
+  reason: Retains the urgency of the narrative transition.
+- term: the other side
+  reason: Retains the destination phrase.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:41Z'
+  previous_text: Immediately Jesus made the disciples get into the boat and go ahead of him to the other side, while he dismissed the crowds.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ad7bdb9dd00c194752084827eea939c3c286a7236702515638a2666948da4155
+  review_summary: Naming Jesus is warranted by the immediate context, and “made the disciples get into the boat” is a clear, adequately forceful simplification of “compelled.” However, replacing “until” with “while” alters the temporal relationship expressed in the Greek and retained in the POB audit trail. Restore “until” while retaining the otherwise clear modernization.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -27,17 +27,42 @@ base_translation:
     changes_summary: Reordered the sentence to reflect the Hebrew structure more closely and restored the explicit phrase “with him” (אִתּוֹ), while keeping natural formal English.
 translation:
   language: en
-  text: Noah, his sons, his wife, and his sons’ wives entered the ark with him because of the floodwaters.
+  text: Noah entered the ark with his sons, his wife, and his sons’ wives because of the floodwaters.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: Noah, his sons, his wife, and his sons’ wives entered the ark with him
-  preserved_meaning: Simplified the nested parenthetical style into a direct list of subjects to improve sentence flow, while retaining the Hebrew emphasis of accompaniment ('with him', אִתּוֹ).
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the nested parenthetical style into a direct list of subjects to improve sentence flow, while retaining the Hebrew emphasis of accompaniment ('with him', אִתּוֹ).
-- simplified_phrase: the floodwaters
-  preserved_meaning: Consolidated the literal Hebrew construct phrase ('waters of the flood') into the standard modern English compound word 'floodwaters' for natural reading.
-  reasoning_layer_used: POB audit trail
-  rationale: Consolidated the literal Hebrew construct phrase ('waters of the flood') into the standard modern English compound word 'floodwaters' for natural reading.
+- pob_phrase: And Noah, with his sons, his wife, and his sons’ wives with him, entered the ark
+  simplified_phrase: Noah entered the ark with his sons, his wife, and his sons’ wives
+  preserved_meaning: Noah entered the ark accompanied by each named family member.
+  reasoning_layer_used: POB lexical decisions and revision audit
+  rationale: Making Noah the subject and placing his family after “with” removes the nested wording while preserving accompaniment.
+- pob_phrase: the waters of the flood
+  simplified_phrase: the floodwaters
+  preserved_meaning: The flood’s waters caused Noah and his family to enter the ark.
+  reasoning_layer_used: POB lexical decision for מֵי הַמַּבּוּל
+  rationale: The compound “floodwaters” expresses both source nouns in familiar modern English.
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/ot/genesis/007/007.yaml
+  source_text_sha256: c4831a9a0835ae15e114c64cb6d05785ec1f28cd5445e7a0ea70218eee2755c0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8361a33e58ac88b953be7cdadada803cf42e4a12fa64ad629f590b131a8f95f0
+  timestamp: '2026-07-12T09:23:06Z'
+  output_hash: a3e545ff22cf6dae276ce6ddaf822265686c3cd81e6122e56deb57ff37839c76
+  usage:
+    prompt_tokens: 3734
+    completion_tokens: 259
+    total_tokens: 3993
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Noah
   reason: Retained to preserve POB's source-grounded terminology.
@@ -45,30 +70,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: sons' wives
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserved the specific Hebrew relational term 'sons' wives' (נְשֵׁי בָנָיו) as required by POB lexical guidelines, resisting the urge to substitute it with 'daughters-in-law' or 'family.' Retained the explicit 'with him' (אִתּוֹ) to align with the latest POB structural revision.
-  readability_notes:
-  - Eliminated the clunky 'And Noah, with..., and... with him...' parenthetical structure. The simplified version uses a clean, serial list of subjects that leads directly to the action.
-  compression_notes:
-  - No narrative or theological elements have been omitted. The change from 'waters of the flood' to 'floodwaters' is purely stylistic and carries identical semantic weight.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/ot/genesis/007/007.yaml
-  source_text_sha256: c4831a9a0835ae15e114c64cb6d05785ec1f28cd5445e7a0ea70218eee2755c0
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: e41b7976f7679316d93359a8d4e83aa65b7fb707c5e9a849805375a01f14bdac
-  timestamp: '2026-05-28T09:30:03Z'
-  output_hash: 33b602b1d17c7deaddd48e90f2c8b0a445acf854e16cc3c9237662986a6c21ca
-  usage:
-    prompt_tokens: 1927
-    completion_tokens: 471
-    total_tokens: 6045
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:06Z'
+  previous_text: Noah, his sons, his wife, and his sons’ wives entered the ark with him because of the floodwaters.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e594cd44e0d06f81747ba25e3e12686f7f1d3831c946038ad910e32a2741d1ad
+  review_summary: Revise. “Floodwaters” is a warranted, clear modernization of “the waters of the flood.” The proposed handling of the family list, however, misplaces “with him” and produces an incoherent or at least distracting self-reference. The recommended wording clearly expresses the Hebrew accompaniment relationship without adding interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

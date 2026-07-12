@@ -34,22 +34,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said to them, "You are from below; I am from above. You are from this world[a]; I am not from this world."
+  text: Jesus was saying to them, “You are from below; I am from above. You are from this world[a]; I am not from this world.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: In the Gospel of John, "the world" often refers to human society in rebellion against God, rather than the physical earth.
+    text: In the Gospel of John, “the world” often means human society opposed to God, not simply the physical earth.
     reason: simplification_note
 simplification_decisions:
-- preserved_meaning: Simplified the narrative introduction from 'And he was saying to them' to 'He said to them' to align with modern English narrative conventions.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the narrative introduction from 'And he was saying to them' to 'He said to them' to align with modern English narrative conventions.
-- preserved_meaning: Omitted the POB academic footnote about 'of what is below' because 'from below' is clear and maintains the vertical contrast without academic clutter.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the POB academic footnote about 'of what is below' because 'from below' is clear and maintains the vertical contrast without academic clutter.
-- preserved_meaning: 'Simplified the explanation of the theological term ''world'' (kosmos) in the remaining footnote, translating ''human order in alienation from God'' into more direct language: ''human society in rebellion against God.'''
-  reasoning_layer_used: POB audit trail
-  rationale: 'Simplified the explanation of the theological term ''world'' (kosmos) in the remaining footnote, translating ''human order in alienation from God'' into more direct language: ''human society in rebellion against God.'''
+- pob_phrase: And he was saying to them
+  simplified_phrase: Jesus was saying to them
+  preserved_meaning: The ongoing or repeated speech and the speaker’s identity remain clear.
+  reasoning_layer_used: POB lexical decision for ἔλεγεν and immediate context
+  rationale: Naming Jesus aids standalone reading while “was saying” preserves the imperfect aspect.
+- pob_phrase: human order in alienation from God
+  simplified_phrase: human society opposed to God
+  preserved_meaning: “World” can describe humanity in estrangement from God rather than the physical earth alone.
+  reasoning_layer_used: POB κόσμος rationale and cultural note
+  rationale: The note uses familiar language without reducing “world” to active rebellion.
+translation_notes:
+  risk_flags:
+  - risk: Naming Jesus replaces the POB pronoun “he.”
+    mitigation: The immediate context identifies Jesus, so the explicit name only clarifies the referent.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/008/023.yaml
+  source_text_sha256: fa06c7a744e438f08be7075627fc40c73de16c14245a25d7f29537828e733ef3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b34cda1681c72b8d0c50316223b54943206aefda9abbbc697c9c0c094fc1ad04
+  timestamp: '2026-07-12T07:16:32Z'
+  output_hash: ae408a3f32e59c3a078a45618f2fbb1335d02fba7788bcdc4f392609c7d72db7
+  usage:
+    prompt_tokens: 3691
+    completion_tokens: 566
+    total_tokens: 4257
+    reasoning_tokens: 246
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: from below / from above (retains the spatial/spiritual contrast of origins)
   reason: Retained to preserve POB's source-grounded terminology.
@@ -57,33 +84,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: world (retained as a key Johannine theological concept, supported by a simplified footnote)
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The simplified draft respects the SBLGNT source by retaining the sharp binary structures of Jesus' speech and the emphasis on origin (represented by the preposition 'from' for 'ek').
-  readability_notes:
-  - Converting the narrative frame to the simple past 'He said' instead of 'And he was saying' vastly improves the conversational flow for modern readers without losing any propositional content.
-  compression_notes:
-  - Dropped the initial conjunction 'And' and compressed the continuous imperfect aspect of the opening verb. Removed the technical footnote on alternative renderings.
-  risk_flags:
-  - risk: There is a very low risk of losing the ongoing nuance of the imperfect verb 'ἔλεγεν', but this is a standard stylistic trade-off for natural English narrative flow.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/008/023.yaml
-  source_text_sha256: fa06c7a744e438f08be7075627fc40c73de16c14245a25d7f29537828e733ef3
-  pob_commit_sha: 8ea7b729fa78c2e7fa922ff80eb13a3bcfc10faa
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 17a48a3a86ba0c8649173486f19879160df889488583b1a6677a7c2a75d3a361
-  timestamp: '2026-05-28T09:20:08Z'
-  output_hash: 4615afcd298f3d30bbede28cb274e564d0a600bc040e44269d24cbf21f7d6611
-  usage:
-    prompt_tokens: 1777
-    completion_tokens: 498
-    total_tokens: 5338
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:32Z'
+  previous_text: He said to them, "You are from below; I am from above. You are from this world[a]; I am not from this world."
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6a6526b990235f91e4e699982a6035cb15fb716a1762166bc0e0b0199e62e563
+  review_summary: The main contrast is accurately retained, and explaining "world" is warranted and useful. Revision is needed because "He said" unnecessarily drops the imperfect aspect that the POB audit trail explicitly preserves. Naming Jesus improves standalone readability, while "was saying" retains the source nuance. The revised footnote remains clear but avoids strengthening alienation into an unqualified definition of rebellion.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

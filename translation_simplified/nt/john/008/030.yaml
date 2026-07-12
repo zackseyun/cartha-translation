@@ -34,41 +34,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: As he was saying these things, many believed in him.
+  text: While Jesus was saying these things, many people believed in him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: The POB text is already written in clear, modern, and accessible English without archaic elements. Modifying 'many' to 'many people' would violate the POB lexical decision which cautions against this interpretive addition. Changing 'believed in him' to 'put their faith in him' is an acceptable alternative but 'believed in him' is more direct and familiar to readers, while maintaining the theological depth of 'πιστεύω εἰς'.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB text is already written in clear, modern, and accessible English without archaic elements. Modifying 'many' to 'many people' would violate the POB lexical decision which cautions against this interpretive addition. Changing 'believed in him' to 'put their faith in him' is an acceptable alternative but 'believed in him' is more direct and familiar to readers, while maintaining the theological depth of 'πιστεύω εἰς'.
-retained_terms:
-- term: believed in him
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: these things
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Perfectly aligned with SBLGNT Greek syntax. The genitive absolute is represented as a temporal clause, and the substantival adjective functions naturally in English.
-  readability_notes:
-  - Extremely high readability. The sentence is short, direct, and avoids archaic vocabulary or complex subordinate clauses.
-  compression_notes:
-  - No compression was necessary as the source sentence is already concise and contains only essential semantic elements.
+- pob_phrase: As he was saying these things
+  simplified_phrase: While Jesus was saying these things
+  preserved_meaning: Their belief arose during Jesus’ ongoing speech.
+  reasoning_layer_used: Source syntax and immediate context
+  rationale: “While” marks simultaneous action, and naming Jesus makes the established speaker clear.
+- pob_phrase: many
+  simplified_phrase: many people
+  preserved_meaning: A large number of persons believed.
+  reasoning_layer_used: POB lexical decision and Greek grammar
+  rationale: “People” makes the substantival adjective explicit without changing its referent.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The speaker is Jesus.
+  evidence:
+  - The immediate context in John 8 identifies Jesus as the speaker.
+  confidence: high
+  alternatives_preserved:
+  - he
+- pob_phrase: many
+  rendering: many people
+  claim: The substantival plural adjective refers to persons.
+  evidence:
+  - Greek πολλοί functions substantivally here.
+  confidence: high
+  alternatives_preserved:
+  - many
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/008/030.yaml
   source_text_sha256: ac12929fbcb3e20284993aa6123f57d68ab2f13d95c8df297a8e25faebb62f95
-  pob_commit_sha: 66a0d6d1d3f10cf177e9df856d41d68626c38171
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 947aa2fa4301528b2f435bb0c14dbe7e92b09f0e167822ea06333e9edf8e3d0f
-  timestamp: '2026-05-28T08:59:44Z'
-  output_hash: c4baa8ec95386143a7caf1d1b98ed38ecc4d904bd4df881012dc8ba1a209ae2d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 19c998e42e3246ec7d8b4fe71caa284eb7c2f96b59dcb8c480d2dae87d8f86d7
+  timestamp: '2026-07-12T07:15:18Z'
+  output_hash: ebc426ff0649737bb3306533ab54d2d13640c36943d589f25ec95f781768fcc5
   usage:
-    prompt_tokens: 1589
-    completion_tokens: 444
-    total_tokens: 4637
+    prompt_tokens: 3143
+    completion_tokens: 298
+    total_tokens: 3441
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: believed in him
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: these things
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:18Z'
+  previous_text: As he was saying these things, many believed in him.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: aeb8abc01a7c977f55625c1f13349c57034b214bf7d6c28c1c081e3080c62839
+  review_summary: Revise for a modest but real SPOB-level clarity gain. "While" naturally conveys the ongoing contemporaneous action of the present participle, while "Jesus" and "many people" make source- and context-determined referents explicit. "Believed in him" should remain unchanged because it preserves John's πιστεύω εἰς construction without importing a stronger or narrower doctrinal formulation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

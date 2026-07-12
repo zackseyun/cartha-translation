@@ -37,18 +37,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Joseph, her husband, was a righteous man. Because he did not want to disgrace her publicly, he intended to divorce her quietly.
+  text: Joseph, her husband, was a righteous man, and he did not want to disgrace her publicly. So he intended to divorce her quietly.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Split the single dense POB sentence into two shorter, more natural sentences.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the single dense POB sentence into two shorter, more natural sentences.
-- preserved_meaning: Simplified the phrase 'expose her to public disgrace' to 'disgrace her publicly' to improve readability while retaining the full lexical force.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the phrase 'expose her to public disgrace' to 'disgrace her publicly' to improve readability while retaining the full lexical force.
-- preserved_meaning: Consolidated the historical and legal footnotes regarding betrothal and divorce into a single clear explanation for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Consolidated the historical and legal footnotes regarding betrothal and divorce into a single clear explanation for modern readers.
+- pob_phrase: Joseph, her husband, being a righteous man and not wanting
+  simplified_phrase: Joseph, her husband, was a righteous man, and he did not want
+  preserved_meaning: Joseph’s righteousness and unwillingness to shame Mary remain coordinated.
+  reasoning_layer_used: POB theological decision and Greek syntax
+  rationale: The two descriptions are kept together as background for his intention.
+- pob_phrase: to expose her to public disgrace
+  simplified_phrase: to disgrace her publicly
+  preserved_meaning: Joseph wanted to avoid exposing Mary to public shame.
+  reasoning_layer_used: POB lexical decision for δειγματίσαι
+  rationale: The shorter wording retains both disgrace and its public nature.
+- pob_phrase: intended to divorce her quietly
+  simplified_phrase: So he intended to divorce her quietly
+  preserved_meaning: Joseph formed a considered plan to end the legally binding relationship privately.
+  reasoning_layer_used: POB lexical and legal-context decisions
+  rationale: A new sentence clarifies the result without narrowing its basis to only one description.
+translation_notes:
+  risk_flags:
+  - risk: “So” may suggest a stronger logical inference than the Greek connective alone expresses.
+    mitigation: The preceding coordinated descriptions and POB rationale support presenting both as background to Joseph’s intention.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/001/019.yaml
+  source_text_sha256: cfe0e54692497810f274a39d4f6badc436eb1ee8f2f38804dd53266d2b79849c
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9ee42c8ed447de35a7c80d6880e7d82e14be87ce6c454bfe1f7e711e8c19d856
+  timestamp: '2026-07-12T07:23:05Z'
+  output_hash: a240744028ef9b449169d9cf7c0b6d01863912545616f314e8c880babaea6386
+  usage:
+    prompt_tokens: 3845
+    completion_tokens: 345
+    total_tokens: 4190
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: righteous
   reason: Retained to preserve POB's source-grounded terminology.
@@ -56,33 +88,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: divorce
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The logical connection of the Greek participles is preserved by starting the second sentence with 'Because' to show how Joseph's desire to avoid shaming Mary motivated his quiet course of action.
-  readability_notes:
-  - Avoiding the nested participle structure ('being... and not wanting...') makes the text significantly easier for a modern reader to digest on first reading.
-  compression_notes:
-  - Slightly tightened 'expose her to public disgrace' to 'disgrace her publicly' without loss of semantic density.
-  risk_flags:
-  - risk: None. The theological tension of 'righteous' and the legal force of the betrothal are fully preserved.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/001/019.yaml
-  source_text_sha256: cfe0e54692497810f274a39d4f6badc436eb1ee8f2f38804dd53266d2b79849c
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 03c49190d680b6a78d4a47894fbb312b004f86b6b4413aee988940b56ceaa5c6
-  timestamp: '2026-05-28T08:11:05Z'
-  output_hash: b1bfc7914874ab49abcb908fd318086970519504fb336c38da9930142099fc11
-  usage:
-    prompt_tokens: 2067
-    completion_tokens: 373
-    total_tokens: 5486
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:05Z'
+  previous_text: Joseph, her husband, was a righteous man. Because he did not want to disgrace her publicly, he intended to divorce her quietly.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 64e87e2bc21693f433a50a00a59a2d8763b5c2dfb6a461fb7e666f332f7fdc22
+  review_summary: The draft is substantially clearer and its wording for public disgrace and divorce is warranted by the POB audit trail. Revise the sentence connection so that Joseph’s righteousness and his refusal to shame Mary remain jointly related to his intended action, as in the source and POB rationale. Also correct the footnote-decision record to reflect that no consolidated footnote appears.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

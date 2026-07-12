@@ -31,38 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'Jesus said to them, “You will all fall away, because it is written: ‘I will strike the shepherd, and the sheep will be scattered.’'
+  text: Jesus said to them, “You will all fall away,[a] because Scripture says, ‘I will strike the shepherd, and the sheep will be scattered.’”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: More literally, “You will all stumble” or “You will all be caused to stumble.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: 'And Jesus says to them[a], “You will all fall away, because it is written: ‘I will strike the shepherd, and the sheep will be scattered.’”'
-  simplified_phrase: 'Jesus said to them, “You will all fall away, because it is written: ‘I will strike the shepherd, and the sheep will be scattered.’'
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: And Jesus says to them
+  simplified_phrase: Jesus said to them
+  preserved_meaning: Jesus speaks this warning directly to the disciples.
+  reasoning_layer_used: POB lexical decision for λέγει and the grounding review
+  rationale: The natural English past tense improves narrative flow without changing the event.
+- pob_phrase: because it is written
+  simplified_phrase: because Scripture says
+  preserved_meaning: Jesus introduces an authoritative quotation from Scripture.
+  reasoning_layer_used: POB lexical decision for γέγραπται
+  rationale: The clearer wording explains what is written while preserving the scriptural appeal.
+interpretive_expansions:
+- pob_phrase: it is written
+  rendering: Scripture says
+  claim: The written words Jesus introduces are Scripture.
+  evidence:
+  - POB identifies the phrase as the standard formula introducing a Scripture citation.
+  confidence: high
+  alternatives_preserved:
+  - it is written
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Fall away” is less literal than the Greek image of stumbling.
+    mitigation: Footnote [a] preserves both literal alternatives recorded by POB.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/027.yaml
   source_text_sha256: 56e4b35509bffeffaec102befdb9a66e4fe3fcefb84f9c0b90bf4d881dbdd94a
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 57548bd52f530de532375da8ac7a0b011dc95ec766055c5af249b6b28149464f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 97a53a4c6988ba402894db23c1c0de24c00c9710e7402372b0b9c977f9f08537
+  timestamp: '2026-07-12T07:22:04Z'
+  output_hash: 7f1b4430e160230e7ff7219077eba636acf42f62f8ae0ec586bfa4413c745b1b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3267
+    completion_tokens: 353
+    total_tokens: 3620
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:04Z'
+  previous_text: 'Jesus said to them, “You will all fall away, because it is written: ‘I will strike the shepherd, and the sheep will be scattered.’'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f3f1429ccfa870d1002ddb23adab81bed47eb57862eb5dcba1466972863f6800
+  review_summary: Changing Mark’s historical-present “says” to the natural past-tense “said” is an acceptable readability simplification and does not alter the event or its force. The wording otherwise follows the POB’s contextually warranted rendering. Revise to close the quotation correctly and retain the POB’s meaningful lexical-alternative note.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

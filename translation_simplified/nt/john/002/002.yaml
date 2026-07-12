@@ -31,47 +31,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus was also invited to the wedding, along with his disciples.
+  text: Jesus also was invited to the wedding, along with his disciples.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: This improves the natural flow of modern English speech without altering the meaning.
-  reasoning_layer_used: POB audit trail
-  rationale: This improves the natural flow of modern English speech without altering the meaning.
-- preserved_meaning: The POB footnote explains a formal syntactic option ('Jesus also was invited, and his disciples...'). This is an academic detail that does not aid the target audience's understanding of the text, so it was removed for clarity.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB footnote explains a formal syntactic option ('Jesus also was invited, and his disciples...'). This is an academic detail that does not aid the target audience's understanding of the text, so it was removed for clarity.
-retained_terms:
-- term: disciples
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: wedding
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The Greek verb 'ἐκλήθη' (was invited) is singular, syntactically focusing on Jesus, with the disciples appended. Retaining 'along with his disciples' rather than converting the phrase to a compound subject ('Jesus and his disciples were...') preserves this source-language syntactic nuance.
-  readability_notes:
-  - The word order 'Jesus was also' sounds more natural to modern readers than 'Jesus also was' and maintains a smooth narrative flow.
-  compression_notes:
-  - No semantic compression of the text was performed. The only omission is the POB's stylistic footnote, which is unnecessary for a general audience.
-  risk_flags:
-  - risk: None. The simplified draft fully preserves the meaning and grammatical nuances of the POB source text.
-    mitigation: Flag retained for reviewer attention.
+- pob_phrase: 'Footnote: “Jesus also was invited, and his disciples, to the wedding.”'
+  simplified_phrase: No footnote retained
+  preserved_meaning: The main text already clearly says that Jesus and his disciples were invited to the wedding.
+  reasoning_layer_used: POB footnote and lexical decisions
+  rationale: The formal word-order alternative would not help a common reader understand the verse.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/002/002.yaml
   source_text_sha256: 9b0d36dc0e22fd5e9ccd16257da324c714ba0c5a596ff6ea4a305e0263e014e7
-  pob_commit_sha: 549512d32b0e476275a6ef305e6b3bc8fb87b638
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: b329ee00b8720798bc15d4cf745bfda12d170d4e61ace94520b2c101d06dd0ec
-  timestamp: '2026-05-28T08:24:57Z'
-  output_hash: b4e3284a7135329d5da121b0febb574f0fee6ed5419294be5d1931877202c84a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 04ae2be34529bbf1e6a927c472bdfc074c032fad4a51dc0896d59c5eba592922
+  timestamp: '2026-07-12T07:23:16Z'
+  output_hash: 240f253063c0cda1776c673dbc8df22e89ad4d6b0d82ed0d94042e496ea780ff
   usage:
-    prompt_tokens: 1415
-    completion_tokens: 469
-    total_tokens: 4798
-    reasoning_tokens: 0
+    prompt_tokens: 3082
+    completion_tokens: 287
+    total_tokens: 3369
+    reasoning_tokens: 130
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: disciples
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: wedding
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:16Z'
+  previous_text: Jesus was also invited to the wedding, along with his disciples.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: cd9c11b7effeb3f60e7f8560b43e3fbb1fb79071c92adf3b9a609511b4528494
+  review_summary: The draft is faithful, doctrinally neutral, and fully understandable. Removing the POB’s syntax-only footnote is appropriate for SPOB. However, the sole textual change is a stylistic repositioning of “also,” and it provides no meaningful clarity gain over the already plain POB sentence. Retain the clear POB wording as the publication-ready SPOB text.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

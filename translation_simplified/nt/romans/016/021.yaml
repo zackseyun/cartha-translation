@@ -31,36 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Timothy, my fellow worker, greets you, and so do Lucius, Jason, and Sosipater, my relatives.
+  text: Timothy, my fellow worker, greets you. Lucius, Jason, and Sosipater, my kinsmen,[a] greet you too.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: This may mean Paul’s relatives or, more broadly, his fellow Jews.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Timothy, my fellow worker, greets you, and so do Lucius and Jason and Sosipater, my kinsmen.
+  simplified_phrase: Timothy, my fellow worker, greets you. Lucius, Jason, and Sosipater, my kinsmen, greet you too.
+  preserved_meaning: Timothy and the three named men all send greetings, and Timothy shares in Paul’s work.
+  reasoning_layer_used: POB syntax and lexical decisions
+  rationale: Two short sentences make the change of subject easier to follow without altering the greeting.
+- pob_phrase: my kinsmen
+  simplified_phrase: my kinsmen,[a]
+  preserved_meaning: The men may be Paul’s relatives or may share his Jewish kinship.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The term and note preserve the documented family-or-ethnic ambiguity.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Modern readers may not immediately understand “kinsmen.”
+    mitigation: The footnote explains both live senses without choosing between them.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/021.yaml
   source_text_sha256: b89ae7f4290b71697ffe71d4b4e5f7a9c0bb3be2ba2bb30afc1bd59688f59c50
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:32Z'
-  output_hash: 1e4246a7b04322c287687ad2ba12676f3f7316b8656c824ad79c7a4a602df97a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b5b042525b0863176287702195916148d1740b697d6a8ec18867e013b9ea02ba
+  timestamp: '2026-07-12T07:42:54Z'
+  output_hash: 7bf2fbfb537db2b01e5ef20fe68c37c7b7d63508b8f01cfc91422918d83de4de
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3094
+    completion_tokens: 463
+    total_tokens: 3557
+    reasoning_tokens: 118
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:54Z'
+  previous_text: Timothy, my fellow worker, greets you, and so do Lucius, Jason, and Sosipater, my relatives.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5a3ff8c180dbb10e14214b6ddb5a3a6a876d2fb8a27c9a916d3ff262edeaa00b
+  review_summary: The draft improves everyday wording, but its use of “my relatives” adopts one possible sense of συγγενεῖς as though it were certain. Retain “my kinsmen,” which preserves the source term’s live family/ethnic ambiguity. Splitting the greeting into two short sentences and using “greet you too” provides a genuine readability gain without changing the meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

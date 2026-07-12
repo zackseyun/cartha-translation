@@ -19,50 +19,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 7:15 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''because'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote'
 translation:
   language: en
-  text: I do not understand what I am doing. I do not do what I want to do; instead, I do the very thing I hate.
+  text: For I do not understand what I am doing, because I do not do what I want to do. Instead, I do the very thing I hate.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Removed the opening 'For' to make the introduction more direct and modern.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the opening 'For' to make the introduction more direct and modern.
-- preserved_meaning: Replaced 'practice' with 'do' to avoid the modern professional or habitual connotations of 'practice'.
-  reasoning_layer_used: POB audit trail
-  rationale: Replaced 'practice' with 'do' to avoid the modern professional or habitual connotations of 'practice'.
-- preserved_meaning: Split the long compound POB sentence into two sentences to reduce grammatical complexity and increase readability.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the long compound POB sentence into two sentences to reduce grammatical complexity and increase readability.
-retained_terms:
-- term: understand
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: hate
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: do not practice what I want
+  simplified_phrase: do not do what I want to do
+  preserved_meaning: Paul fails to carry out what he desires to do.
+  reasoning_layer_used: POB translation and source payload
+  rationale: The common verb “do” avoids the potentially misleading modern senses of “practice.”
+- pob_phrase: because I do not practice what I want; instead
+  simplified_phrase: because I do not do what I want to do. Instead
+  preserved_meaning: The second clause explains the first and contrasts desire with action.
+  reasoning_layer_used: POB audit trail and grounding review
+  rationale: The sentence break improves readability while retaining both logical connectors.
 translation_notes:
-  source_alignment_notes: The source Greek text employs three different verbs for doing/performing actions (κατεργάζομαι, πράσσω, ποιῶ). POB attempted to mirror this with 'doing', 'practice', and 'do'. SPOB collapses the distinction between πράσσω and ποιῶ to 'do' (as 'do what I want' and 'do the very thing I hate') to match natural English usage, which is standard in modern translations.
-  readability_notes:
-  - By splitting the verse into two sentences and simplifying the verb structure, the text gains a rhythmic quality that emphasizes the speaker's frustration and conflict.
-  compression_notes:
-  - The explicit causal marker 'because' from the POB text is rendered implicitly through sentence juxtaposition. This maintains the causal relationship without cluttering the sentence structure.
   risk_flags:
-  - risk: Collapsing the lexical distinction between 'practice' and 'do' loses a minor stylistic feature of the Greek, though they function as synonyms in this context.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Using “do” for multiple Greek action verbs reduces their minor stylistic distinction.
+    mitigation: The repeated common verb expresses the same practical conflict clearly in English.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/007/015.yaml
   source_text_sha256: d69e07ea8689cdeee05bde6527d9f4c91e33030196c15306c22b6d861d98db39
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 9a71a56d02aa0235ebca082e0667bee4b55a02f5af7f54fb55f772c310cae067
-  timestamp: '2026-05-28T09:32:02Z'
-  output_hash: 6fe9799443929943711ced6c220a672f847c18c1127c881adaf38b22b234314d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f97681b3770178332746452d28f08b061bf7da533f24e84ed5a72a57a5770ee7
+  timestamp: '2026-07-12T07:41:30Z'
+  output_hash: 1b46e7744177b0209234e979f2d47d88d2d51dbf9639663fffeb1efd36095e89
   usage:
-    prompt_tokens: 1137
-    completion_tokens: 409
-    total_tokens: 4638
+    prompt_tokens: 2826
+    completion_tokens: 269
+    total_tokens: 3095
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: understand
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: hate
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:30Z'
+  previous_text: I do not understand what I am doing. I do not do what I want to do; instead, I do the very thing I hate.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 43379337c8428a1b65d446968eea323817caaf7a4fa2a114d1c689fb07b284dd
+  review_summary: Replacing “practice” with “do” is a clear, warranted simplification in this context, and the wording is otherwise readily understandable. However, the deletion of “For” and especially “because” removes source-grounded explanatory relationships rather than merely modernizing style. Retain those connections while using “do” for a publication-ready SPOB rendering.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

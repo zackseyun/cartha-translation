@@ -31,43 +31,84 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And if I cast out demons by Beelzebul,[a] by whom do your sons cast them out? Therefore they will be your judges.
+  text: If I cast out demons by Beelzebul,[a] by what power do your own people cast them out? So they will be your judges.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Greek has "Beelzebul"; many English translations have "Beelzebub."
+    text: Greek has “Beelzebul”; many English translations have “Beelzebub.”
     reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-retained_terms:
-- term: Beelzebul
-  reason: Retained to follow the Greek form used by the POB base text.
+- pob_phrase: your sons
+  simplified_phrase: your own people
+  preserved_meaning: The exorcists belong to the hearers’ own group, while the rhetorical contrast remains intact.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: This avoids suggesting that Jesus meant their literal children.
+- pob_phrase: by whom
+  simplified_phrase: by what power
+  preserved_meaning: The question asks what personal power or authority enables their exorcisms.
+  reasoning_layer_used: POB lexical rationale for instrumental ἐν τίνι
+  rationale: This makes the comparison behind the rhetorical question clear.
+- pob_phrase: Therefore
+  simplified_phrase: So
+  preserved_meaning: The exorcists’ actions provide the basis for the conclusion that follows.
+  reasoning_layer_used: POB lexical decision for διὰ τοῦτο
+  rationale: “So” preserves the inference in more common English.
+interpretive_expansions:
+- pob_phrase: your sons
+  rendering: your own people
+  claim: The phrase refers contextually to people associated with the hearers rather than necessarily to biological sons.
+  evidence:
+  - The POB lexical rationale says it likely means members of the hearers’ group or disciples.
+  confidence: moderate
+  alternatives_preserved:
+  - your sons
+  - your followers
+- pob_phrase: by whom
+  rendering: by what power
+  claim: The question concerns the power or authority by which the exorcists act.
+  evidence:
+  - The POB lexical rationale identifies an instrumental or agentive sense and a comparison involving personal power or authority.
+  confidence: high
+  alternatives_preserved:
+  - by whom
+  - by what
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Your own people” does not retain the Greek kinship image literally.
+    mitigation: The audit records “your sons” as an alternative and supports the group-reference meaning.
+  - risk: “By what power” makes the implied agency more explicit than POB.
+    mitigation: The POB rationale directly identifies personal power or authority as the point of comparison.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/027.yaml
   source_text_sha256: 392d9cd497e8e3171a5b6c956786ee1552777060d332f896a52f782a16a36e68
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:35Z'
-  output_hash: 89c81b70054de48cbc8782a49c45e8b845eb518222520405124fe11316fcb535
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 945e80b0811dc9cc73d8a8b2a94848b9725a0e0b3322a68321c14693f486ea42
+  timestamp: '2026-07-12T07:36:35Z'
+  output_hash: de527ce67a9a40a26db04826da0b0573b6f65626644841d184ebba7353ca34ca
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3307
+    completion_tokens: 553
+    total_tokens: 3860
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Beelzebul
+  reason: Retained to follow the Greek form used by the POB base text.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:35Z'
+  previous_text: And if I cast out demons by Beelzebul,[a] by whom do your sons cast them out? Therefore they will be your judges.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 48e3ced26e8a085baca461a4d44a4823b8fb7c8b8ba7e3885d0fcd8b73a1e18c
+  review_summary: Revise for actual SPOB-level clarity. “Your own people” responsibly communicates the contextual sense of the Greek idiom “your sons” without making a doctrinal claim, and “by what power” makes the instrumental comparison intelligible in modern English. The proposed revision preserves the argument, the future judgment statement, and the Beelzebul textual note.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

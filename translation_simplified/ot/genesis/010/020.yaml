@@ -34,39 +34,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: Genesis 10:20 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''in their nations''].'
 translation:
   language: en
-  text: These were the sons of Ham, grouped by their clans, languages, lands, and nations.
+  text: These are Ham’s sons, grouped by their clans and languages, within their lands and nations.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Summarizes Ham’s descendants according to clans, languages, lands, and nations.
-  reasoning_layer_used: POB audit trail
-  rationale: Compresses repeated 'by their' phrases into one clear classification phrase.
-retained_terms:
-- term: sons of Ham
-  reason: Keeps the genealogical summary wording.
+- pob_phrase: the sons of Ham
+  simplified_phrase: Ham’s sons
+  preserved_meaning: Keeps the standard genealogical description of Ham’s sons.
+  reasoning_layer_used: POB lexical decision for בְנֵי חָם
+  rationale: The possessive form is more natural while preserving the same relationship.
+- pob_phrase: by their clans, by their languages
+  simplified_phrase: grouped by their clans and languages
+  preserved_meaning: Retains both bases of classification without repetitive wording.
+  reasoning_layer_used: POB lexical rationales for לְמִשְׁפְּחֹתָם and לִלְשֹׁנֹתָם
+  rationale: “Grouped by” clearly expresses the repeated classificatory force.
+- pob_phrase: in their lands, in their nations
+  simplified_phrase: within their lands and nations
+  preserved_meaning: Keeps lands and nations as distinct locative settings rather than classifications.
+  reasoning_layer_used: POB lexical rationales for בְּאַרְצֹתָם and בְּגוֹיֵהֶם
+  rationale: “Within” preserves the locative sense while allowing a smoother combined phrase.
 translation_notes:
-  source_alignment_notes: Preserves the four categories used to classify Ham’s descendants.
-  readability_notes:
-  - Uses 'grouped by' to clarify the repeated Hebrew prepositions.
-  compression_notes:
-  - Repeated structure is compressed without removing a category.
+  risk_flags:
+  - risk: “Sons” may be understood as immediate children rather than a genealogical line.
+    mitigation: It is retained because POB chose the standard genealogical expression.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/020.yaml
   source_text_sha256: 647e5e72762b5b0787ba3d9934b3ce85f4682b390fa547919d1900010c2f76c4
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:02Z'
-  output_hash: 5d700eb6f9305b70f99e65a1cce37749e9f8d45d1761e54f2b27243a6b0271e7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4078301442ef76e6e5885ce07fcd4085c2d2261ea723520bde77f99d9b4cfca7
+  timestamp: '2026-07-12T09:23:30Z'
+  output_hash: 77b5267a4debf625581ddaa2339a570df840e898effce9b2c27d32c850971c8c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3423
+    completion_tokens: 622
+    total_tokens: 4045
+    reasoning_tokens: 248
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: sons of Ham
+  reason: Keeps the genealogical summary wording.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:30Z'
+  previous_text: These were the sons of Ham, grouped by their clans, languages, lands, and nations.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 851a4797964255664c676cb8e0f989a93bf9afbe13e22968d4f6793b2acb8d70
+  review_summary: The draft usefully compresses the repeated wording, and “grouped” is warranted for clans and languages. However, it extends that classification sense to the distinct locative phrases for lands and nations. Retain the source-supported distinction in a clear modern sentence, and preserve the POB’s present-tense summary.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

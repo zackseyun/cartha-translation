@@ -31,18 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Jesus said to the centurion, "Go; let it be done for you just as you believed." And the servant was healed at that very hour.
+  text: Then Jesus said to the centurion,[a] “Go; let it be done for you just as you believed.” And the servant was healed at that very hour.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “the boy” or “the child.” The Greek word can refer to a servant or to a young person; here, “servant” best fits the centurion’s subordinate.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Changing 'And' to 'Then' creates a more natural narrative flow in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Changing 'And' to 'Then' creates a more natural narrative flow in modern English.
-- preserved_meaning: Using 'just as you believed' clarifies the relationship of his faith to the event in natural modern speech while keeping the verbal force of the Greek aorist.
-  reasoning_layer_used: POB audit trail
-  rationale: Using 'just as you believed' clarifies the relationship of his faith to the event in natural modern speech while keeping the verbal force of the Greek aorist.
-- preserved_meaning: '''At that very hour'' sounds much more natural in modern English narrative while preserving the literal ''hour'' temporal expression per POB guardrails, rather than over-translating to ''moment''.'
-  reasoning_layer_used: POB audit trail
-  rationale: '''At that very hour'' sounds much more natural in modern English narrative while preserving the literal ''hour'' temporal expression per POB guardrails, rather than over-translating to ''moment''.'
+- pob_phrase: And Jesus said
+  simplified_phrase: Then Jesus said
+  preserved_meaning: Jesus’ words follow the centurion’s response in the narrative.
+  reasoning_layer_used: POB source text and immediate context
+  rationale: “Then” gives the narrative sequence in natural modern English.
+- pob_phrase: as you have believed
+  simplified_phrase: just as you believed
+  preserved_meaning: The wording keeps the centurion’s personal act of believing and its relation to what follows.
+  reasoning_layer_used: POB lexical and theological decisions for πιστεύω
+  rationale: The revised clause is easier to say and understand without changing “believed” to a noun.
+- pob_phrase: in that hour
+  simplified_phrase: at that very hour
+  preserved_meaning: The servant was healed at that same time without claiming an exact instant.
+  reasoning_layer_used: POB lexical decision for ἐν τῇ ὥρᾳ ἐκείνῃ
+  rationale: “At that very hour” is natural English and retains the source’s time expression.
+translation_notes:
+  risk_flags:
+  - risk: “Servant” does not display the full lexical range of παῖς in the main text.
+    mitigation: The footnote preserves “boy” and “child” while explaining why “servant” fits the context.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/008/013.yaml
+  source_text_sha256: ffe7cd3e495a8d6ffdd010f1ccc1f0b5184d102b5a4395866c12a0dd913b32cf
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e896e26b58ed7a44a5dda1c55947fa3752a188fbf580f7f69071886e31996d8c
+  timestamp: '2026-07-12T09:02:06Z'
+  output_hash: ef20f8a2e29a1eb06dcb6b321b3b3c6df3a976c0cca49304d8953de732b61725
+  usage:
+    prompt_tokens: 3520
+    completion_tokens: 526
+    total_tokens: 4046
+    reasoning_tokens: 100
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: centurion
   reason: Retained as a precise Roman military title familiar to readers of biblical history.
@@ -50,33 +86,14 @@ retained_terms:
   reason: Retained to maintain standard 'faith/belief' language in accordance with POB's theological decisions.
 - term: servant
   reason: Retained as the most contextually appropriate translation of 'παῖς', supported by a simplified explanatory footnote.
-translation_notes:
-  source_alignment_notes: The jussive force of the passive imperative 'γενηθήτω' ('let it be done') is preserved. The literal temporal noun 'ὥρᾳ' ('hour') is preserved rather than updated to 'moment' to maintain alignment with the POB base text.
-  readability_notes:
-  - The transition words were adjusted for a smoother reading experience. The syntax of the dialogue was formatted with a semicolon to maintain the pacing of the command followed by the promise.
-  compression_notes:
-  - The POB academic footnote about 'παῖς' has been compressed and simplified to quickly inform the general reader of the word's dual meaning ('servant'/'child') without dry scholarly jargon.
-  risk_flags:
-  - risk: none
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/008/013.yaml
-  source_text_sha256: ffe7cd3e495a8d6ffdd010f1ccc1f0b5184d102b5a4395866c12a0dd913b32cf
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 14d4c6c9dfa622bfbdc4c0b0b8017b9b6a81c331fd30f148ab2b1a45937b5026
-  timestamp: '2026-05-28T08:44:32Z'
-  output_hash: 3dc11b946969e2f2cedd55c4abf43a11365d42f599b01fdbe3f3430921138287
-  usage:
-    prompt_tokens: 1713
-    completion_tokens: 660
-    total_tokens: 5198
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:06Z'
+  previous_text: Then Jesus said to the centurion, "Go; let it be done for you just as you believed." And the servant was healed at that very hour.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4f69382c0b66707be39786936e1831a2ac64fb1c1da3e6ce07f6a73220999453
+  review_summary: The reordered wording and “at that very hour” are natural modern-English clarifications and remain warranted by the Greek expression and immediate healing context. However, the draft should retain a concise footnote for παῖς. This does not displace “servant” as the contextual main-text rendering; it preserves the lexical ambiguity that POB judged readers should be able to see.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

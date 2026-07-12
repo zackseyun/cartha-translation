@@ -31,36 +31,75 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 15:26 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''to make some contribution''].'
 translation:
   language: en
-  text: For Macedonia and Achaia were pleased to make a contribution for the poor among the saints in Jerusalem.
+  text: For the believers in Macedonia and Achaia were pleased to give a contribution to the poor among God’s people in Jerusalem.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Macedonia and Achaia
+  simplified_phrase: the believers in Macedonia and Achaia
+  preserved_meaning: The place names refer to the Christian communities in those regions.
+  reasoning_layer_used: POB lexical decision on Μακεδονία καὶ Ἀχαΐα
+  rationale: Naming the implied believers prevents the regions from sounding like people who made a decision.
+- pob_phrase: to make a certain contribution
+  simplified_phrase: to give a contribution
+  preserved_meaning: They willingly provided material support without specifying its amount.
+  reasoning_layer_used: POB lexical decisions on εὐδόκησαν and κοινωνίαν τινὰ ποιήσασθαι
+  rationale: “Give a contribution” is natural English while retaining the practical financial sense and unspecified amount.
+- pob_phrase: among the saints
+  simplified_phrase: among God’s people
+  preserved_meaning: The poor recipients belonged to the community of believers in Jerusalem.
+  reasoning_layer_used: POB theological decision on ἅγιοι
+  rationale: “God’s people” conveys Paul’s ordinary designation for believers without suggesting canonized individuals.
+interpretive_expansions:
+- pob_phrase: Macedonia and Achaia
+  rendering: the believers in Macedonia and Achaia
+  claim: The regions stand for their Christian communities.
+  evidence:
+  - The POB lexical rationale explicitly identifies the place names as metonymy for Christian communities.
+  confidence: high
+  alternatives_preserved:
+  - the churches in Macedonia and Achaia
+- pob_phrase: the saints
+  rendering: God’s people
+  claim: Paul is referring to believers, not a special class of canonized people.
+  evidence:
+  - The POB theological rationale identifies “saints” as Paul’s regular designation for believers.
+  confidence: high
+  alternatives_preserved:
+  - saints
+  - holy ones
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Replacing “saints” may reduce consistency with a key Pauline term.
+    mitigation: The rendering preserves the POB’s stated meaning that the term identifies God’s believing people.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/026.yaml
   source_text_sha256: 432c0189fe835d6ecd5798cf1c39f1338694d0307e8379d130afea97569cb678
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: badcc643c0a2b030a8309ed13c267b581c3078a3f41a0339dc14ff5cf6377180
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6d28e55a90f9510c7eb71e3f42d9acedd2ee956a6c2d68fdc415f5def24b7116
+  timestamp: '2026-07-12T07:42:45Z'
+  output_hash: 531f9426ecb9dc45aeb60fcb0e0972e67360c5efcf8b3aeac8978efff4ea6ffa
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3451
+    completion_tokens: 518
+    total_tokens: 3969
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:45Z'
+  previous_text: For Macedonia and Achaia were pleased to make a contribution for the poor among the saints in Jerusalem.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 18e3b842088233a0ffe8bfdb5f69a00441c68000dd9c74d122219fe674659313
+  review_summary: 'Removing “certain” improves English without materially changing the indefinite ποσότητα signaled by τινά: “a contribution” remains nonspecific. However, the resulting draft is only marginally clearer than POB and leaves its two main implicit referents unexplained. Identifying the regional metonymy as believers and rendering ἅγιοι as “God''s people” are warranted by the POB audit trail and Pauline context, not added doctrine.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

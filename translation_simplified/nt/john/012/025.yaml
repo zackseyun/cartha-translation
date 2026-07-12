@@ -34,36 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: '"The one who loves his life loses it, but the one who hates his life in this world will keep it for eternal life."'
+  text: Whoever loves his life loses it. But whoever hates his life in this world will keep it for eternal life.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “Hates his life” does not mean hating oneself. It means refusing to cling to life in this present world as the highest good.
+    reason: simplification_note
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: The one who loves his life
+  simplified_phrase: Whoever loves his life
+  preserved_meaning: The statement applies generally to any person who remains attached to his present life.
+  reasoning_layer_used: POB lexical decision for ὁ φιλῶν
+  rationale: “Whoever” expresses the generic force more naturally in common English.
+- pob_phrase: and the one who hates
+  simplified_phrase: But whoever hates
+  preserved_meaning: The second response stands in deliberate contrast to loving one’s present life.
+  reasoning_layer_used: POB lexical and theological decisions for ὁ μισῶν
+  rationale: “But” makes the contrast clear while retaining the strong paradox “hates.”
+- pob_phrase: The one who loves his life loses it, and the one who hates his life in this world will keep it
+  simplified_phrase: Whoever loves his life loses it. But whoever hates his life in this world will keep it
+  preserved_meaning: Loving present life leads to loss, while renouncing attachment to it leads to its preservation for eternal life.
+  reasoning_layer_used: POB syntax and theological audit trail
+  rationale: Two sentences make the opposing outcomes easier to follow without merging them.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Modern readers may understand “hates his life” as endorsing self-hatred.
+    mitigation: A concise footnote explains the paradox while preserving its force in the text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/025.yaml
   source_text_sha256: a5914d59f96d065a38e1ad3a6e2b44298bedd56e306ace81816aa8857b1363e6
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: d4f7759af4f49f83c26568080c200218307b3ba3ba298856d5ee4398425e7e56
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: efa05b31c233a48818f0eefbbcc199d3d6b449061d6abe6abb417f900726ac98
+  timestamp: '2026-07-12T07:16:14Z'
+  output_hash: c4ab3a2c4a7eb58930c9ff8deeb6edd648524f54ab86ded69edb603d682aab04
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3542
+    completion_tokens: 425
+    total_tokens: 3967
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:14Z'
+  previous_text: '"The one who loves his life loses it, but the one who hates his life in this world will keep it for eternal life."'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 54c51a3b7d98e4ace59ed8bf0a2a525dc386b97598094cad86aa8ae65dd2a80e
+  review_summary: The wording is faithful, and “but” helpfully makes the contrast explicit. However, it is not sufficiently more understandable than the POB because it removes the POB’s necessary clarification of the deliberately stark “hates his life.” Restore a concise explanatory footnote while retaining the paradox in the main text.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

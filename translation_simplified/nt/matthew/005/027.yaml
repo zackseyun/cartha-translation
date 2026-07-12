@@ -31,44 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You have heard that it was said, ‘You shall not commit adultery.’
+  text: 'You have heard the command: “Do not commit adultery.”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: You shall not commit adultery
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: You have heard that it was said
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: that it was said
+  simplified_phrase: the command
+  preserved_meaning: The audience had heard a quoted command from the Decalogue tradition.
+  reasoning_layer_used: POB theological decision on the Decalogue citation
+  rationale: Naming it as a command makes the function of the quotation immediately clear.
+- pob_phrase: You shall not commit adultery
+  simplified_phrase: Do not commit adultery
+  preserved_meaning: The solemn prohibition against adultery remains unchanged.
+  reasoning_layer_used: POB lexical alternatives for μοιχεύσεις
+  rationale: The direct imperative is natural modern English and is explicitly supported by the audit trail.
+interpretive_expansions:
+- pob_phrase: it was said
+  rendering: the command
+  claim: The quoted words function as a command.
+  evidence:
+  - The POB identifies the quotation as a Decalogue prohibition.
+  confidence: high
+  alternatives_preserved:
+  - it was said
 translation_notes:
-  source_alignment_notes: The rendering 'You have heard' remains faithful to the discourse force of the aorist Ἠκούσατε. 'You shall not commit adultery' accurately reflects the future indicative used as a solemn prohibition (Οὐ μοιχεύσεις), matching the Septuagint citation of Exodus 20:14 / Deuteronomy 5:18.
-  readability_notes:
-  - The text consists of a single, well-balanced sentence that flows naturally in modern spoken or written English.
-  compression_notes:
-  - No textual content was compressed or omitted from the biblical verse itself. Compression was applied strictly to the editorial layer by removing the highly technical, non-essential grammatical footnote.
   risk_flags:
-  - risk: None. The preservation of the formal command style mitigates the risk of losing the Decalogue allusion, while removing the footnote poses no risk to the reader's comprehension of the message.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Replacing the traditional “You shall not” form may make the Decalogue echo less verbally obvious.
+    mitigation: The word “command” preserves the legal and intertextual force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/005/027.yaml
   source_text_sha256: 24a6130d4bf36a9b93c3f6ed28dd36fd9b7b72addfece4f3db90124c4ae97597
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 89d3041c375b0064c4fca9c5e9604ab739d88a8e8f1d4b556fc52e8ebb1158c8
-  timestamp: '2026-05-28T05:48:22Z'
-  output_hash: 2a447c419e383cc2bbf1d4d54121b5a1bc4971eb1dc6c98f0fe0421ca5da013a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 80136ab705309f30d4342c080978bc25394f778727b75aa465289edf288a7563
+  timestamp: '2026-07-12T07:36:25Z'
+  output_hash: 9648c67d1bd82c28e6b8e4b290a451ec99d7636bb62382717e8847cf5045ef63
   usage:
-    prompt_tokens: 1400
-    completion_tokens: 560
-    total_tokens: 4158
+    prompt_tokens: 2900
+    completion_tokens: 310
+    total_tokens: 3210
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: You shall not commit adultery
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: You have heard that it was said
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:25Z'
+  previous_text: You have heard that it was said, ‘You shall not commit adultery.’
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7f073353143b921316dfad5051e2768399fbc57218206cff0dc84c73064241c0
+  review_summary: Revise for actual simplification. The draft is faithful and doctrinally sound, but it merely reproduces POB and so fails the stated SPOB clarity requirement. The recommended wording directly identifies the quoted prohibition as a command and uses natural modern imperative English, while preserving the source sense and the Decalogue allusion.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

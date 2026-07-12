@@ -34,39 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The sons of Cush were Seba, Havilah, Sabtah, Raamah, and Sabteca. The sons of Raamah were Sheba and Dedan.
+  text: Cush’s descendants were Seba, Havilah, Sabtah, Raamah, and Sabteca. Raamah’s descendants were Sheba and Dedan.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Lists Cush’s descendants and then Raamah’s sons.
-  reasoning_layer_used: POB audit trail
-  rationale: Splits the two genealogical lists into two clear sentences.
-retained_terms:
-- term: Sheba and Dedan
-  reason: Preserves the second-generation names under Raamah.
+- pob_phrase: And the sons of Cush
+  simplified_phrase: Cush’s descendants were
+  preserved_meaning: The genealogy traces those who came from Cush without limiting them to immediate biological sons.
+  reasoning_layer_used: POB lexical decision and cultural note on וּבְנֵי
+  rationale: “Descendants” prevents an overly narrow modern reading of the genealogical formula.
+- pob_phrase: And the sons of Raamah
+  simplified_phrase: Raamah’s descendants were
+  preserved_meaning: The second level of the genealogy identifies Sheba and Dedan as coming from Raamah.
+  reasoning_layer_used: POB lexical decision and repeated genealogical structure
+  rationale: A second short sentence keeps the nested family line clear.
 translation_notes:
-  source_alignment_notes: Preserves both levels of genealogy and every name in the POB verse.
-  readability_notes:
-  - Two short sentences make the nested list easier to follow.
-  compression_notes:
-  - No names are omitted.
+  risk_flags:
+  - risk: “Descendants” does not preserve the Hebrew image “sons of” word for word.
+    mitigation: The POB audit explicitly recognizes descendants as the formula’s broader genealogical sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/007.yaml
   source_text_sha256: 1e01d9f1019d4de47e16e22fd3226f9aac245b2936c8b6be029ed668c131bff8
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:02Z'
-  output_hash: 1ab3ab24cb5b537a4dc415d4fbc4af8b625c6e3bb175f7f5940661254b4eedba
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 462be09ebeec7c2b318356672067b8f5ff70b335dd56eb0115035038ac941714
+  timestamp: '2026-07-12T09:23:23Z'
+  output_hash: 2cd6015b8c658729bcd22e540c2f6860f77c7c90c55618dabb487b25c6becbe5
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3160
+    completion_tokens: 285
+    total_tokens: 3445
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Sheba and Dedan
+  reason: Preserves the second-generation names under Raamah.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:23Z'
+  previous_text: The sons of Cush were Seba, Havilah, Sabtah, Raamah, and Sabteca. The sons of Raamah were Sheba and Dedan.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3b288cb1590d3c085b07983f651bd888288a03a65b924dfac6ecaac70860de28
+  review_summary: The two complete sentences improve the list’s readability, and no doctrinal expansion is introduced. However, “sons” without the POB’s explanatory note leaves a significant modern-language misunderstanding in place. “Descendants” is warranted by the source’s genealogical usage and the POB audit trail, while avoiding an assertion that every name is necessarily an immediate biological son.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

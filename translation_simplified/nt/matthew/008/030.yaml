@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/008/030.yaml
-  text: Now a large herd of pigs was feeding some distance away from them[a].
+  text: A large herd of pigs was feeding some distance away from them[a].
   footnotes:
   - marker: a
     text: Or 'far from them.'
@@ -31,41 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A large herd of pigs was feeding some distance away from them.
+  text: Some distance away from them, a large group of pigs was feeding.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “far away from them.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Now a large herd of pigs
-  simplified_phrase: A large herd of pigs
-  preserved_meaning: Keeps the scene-setting information in simple English.
-  reasoning_layer_used: POB audit trail
-  rationale: The verse is already clear; only the discourse marker is dropped.
-retained_terms:
-- term: pigs
-  reason: Keeps the concrete animal reference.
+- pob_phrase: A large herd of pigs
+  simplified_phrase: a large group of pigs
+  preserved_meaning: It still describes many pigs gathered together.
+  reasoning_layer_used: POB lexical decisions for ἀγέλη and πολλῶν
+  rationale: “Large group” is immediately clear to readers unfamiliar with animal-group terms.
+- pob_phrase: was feeding some distance away from them
+  simplified_phrase: Some distance away from them, ... was feeding
+  preserved_meaning: The pigs were eating at a location separated from the people.
+  reasoning_layer_used: POB lexical decisions for μακρὰν ἀπ’ αὐτῶν and βοσκομένη
+  rationale: Moving the location first makes the scene easier to picture while preserving the action and distance.
 translation_notes:
-  source_alignment_notes: Preserves the herd’s presence and distance.
-  readability_notes:
-  - Keeps the sentence plain and direct.
-  compression_notes:
-  - Only the light transition word is omitted.
+  risk_flags:
+  - risk: “Group” is less specific to animals than “herd.”
+    mitigation: “Of pigs” makes the animal grouping clear without changing the scene.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/008/030.yaml
   source_text_sha256: 9871905c949b870773426e0323022c70a4268da7881ef2c0109c09defc3929a8
-  pob_commit_sha: 2a738453de3b20f4b924c640219c52249a85ac89
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:48:12Z'
-  output_hash: bc58ae9c4331bae2d10406df4f512c870488d9d10bc627220a691778edfe9224
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b78e3e7326abd152355cd16837070aecdb0aba6201cd9858e4e0b91a5909ccd8
+  timestamp: '2026-07-12T09:02:09Z'
+  output_hash: 7557ab1091bf808ab305f8979dec953959a695ef3ef909ac328c7542718dcc2d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2938
+    completion_tokens: 500
+    total_tokens: 3438
+    reasoning_tokens: 199
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: pigs
+  reason: Keeps the concrete animal reference.
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:09Z'
+  previous_text: A large herd of pigs was feeding some distance away from them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 653d80d90069f2fb596c5efa65152c99362c50427e8e664cc483636c4306137e
+  review_summary: 'The proposed sentence is faithful, clear, and doctrinally neutral: it preserves the herd, pigs, their feeding, and their distance from the people. However, under the stated SPOB approval criterion, it cannot be approved as a simplification because it exactly duplicates the current POB text. Retain this publication-ready wording, but correct the simplification record or classify the verse as requiring no SPOB change.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

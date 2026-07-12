@@ -31,14 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Judas Iscariot, one of the Twelve, went to the chief priests to hand Jesus over to them.
+  text: And Judas Iscariot, one of the Twelve, went to the chief priests to hand Jesus over to them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And Judas Iscariot[a], one of the Twelve, went to the chief priests in order to hand him over to them.
-  simplified_phrase: Then Judas Iscariot, one of the Twelve, went to the chief priests to hand Jesus over to them.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: in order to hand him over to them
+  simplified_phrase: to hand Jesus over to them
+  preserved_meaning: The wording keeps Judas’s purpose and the broader image of handing Jesus over.
+  reasoning_layer_used: POB lexical and theological decisions on ἵνα and παραδοῖ
+  rationale: The shorter purpose clause is natural English, and naming Jesus makes the clear pronoun reference explicit.
+- pob_phrase: And
+  simplified_phrase: And
+  preserved_meaning: The simple narrative connection remains without adding a stronger sense of sequence.
+  reasoning_layer_used: POB lexical decision on Καὶ and grounding review
+  rationale: Keeping “And” avoids the extra temporal nuance introduced by “Then.”
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person Judas intended to hand over was Jesus.
+  evidence:
+  - Jesus is the clear referent in the immediate narrative context.
+  - The grounding review approved this identification as a useful clarity improvement.
+  confidence: high
+  alternatives_preserved:
+  - him
+translation_notes:
+  risk_flags:
+  - risk: Naming Jesus replaces a pronoun that the Greek leaves implicit by context.
+    mitigation: The immediate context clearly identifies Jesus, so the clarification does not alter the event.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/014/010.yaml
+  source_text_sha256: b58ca4054477600d37650429d4d61fc7fa97cf7b63b465387de8d3789f0e7563
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 518ff524075b36e0046c6ab26068909beb88624878980ef260109dc81dd2e5a9
+  timestamp: '2026-07-12T07:21:56Z'
+  output_hash: 0e95d5f7c482b63ac63a93a790554a513711baa23b9e77687e56ad7ed4c252a7
+  usage:
+    prompt_tokens: 3224
+    completion_tokens: 335
+    total_tokens: 3559
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: chief priests
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
@@ -46,30 +86,13 @@ retained_terms:
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
 - term: the Twelve
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/014/010.yaml
-  source_text_sha256: b58ca4054477600d37650429d4d61fc7fa97cf7b63b465387de8d3789f0e7563
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 5b7767eb5ce4f8dd6e57ade53dbe074ad4c1eb665b02a1210a1b2275e279bc86
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:56Z'
+  previous_text: Then Judas Iscariot, one of the Twelve, went to the chief priests to hand Jesus over to them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ed93072d8244544e4518fecfc6b5537d82406869681d64efb2c9b1f53493e080
+  review_summary: 'The explicit identification of “him” as Jesus is a warranted and useful clarity improvement: Jesus is the clear referent in the immediate context, and it does not add doctrinal content. Replacing “in order to” with “to” also preserves purpose naturally. Revise only “Then” to “And,” following the POB’s audited handling of καί and avoiding a stronger sequential implication than the source requires.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

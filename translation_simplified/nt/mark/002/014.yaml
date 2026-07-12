@@ -31,25 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: As he walked along, he saw Levi, the son of Alphaeus, sitting at the tax booth[a]. He says to him, "Follow me." And he got up and followed him.
+  text: As he was going along, he saw Levi, the son of Alphaeus, sitting at the tax booth[a]. He says to him, “Follow me.” Then Levi got up and followed him.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “toll booth”; a place where taxes or customs duties were collected.
-    reason: simplification_note
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: As he walked along
-  preserved_meaning: Replaced the slightly formal and archaic-sounding 'passing by' with the natural modern equivalent 'walked along' to improve narrative flow.
-  reasoning_layer_used: POB audit trail
-  rationale: Replaced the slightly formal and archaic-sounding 'passing by' with the natural modern equivalent 'walked along' to improve narrative flow.
-- simplified_phrase: he got up
-  preserved_meaning: Changed the formal 'rose' to the common modern idiom 'got up' without losing the action's physical posture and sequence.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed the formal 'rose' to the common modern idiom 'got up' without losing the action's physical posture and sequence.
-- simplified_phrase: He says
-  preserved_meaning: Retained the historical present tense of the POB ('he says') to honor the audited theological/stylistic decision that preserves Mark's vivid storytelling style.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the historical present tense of the POB ('he says') to honor the audited theological/stylistic decision that preserves Mark's vivid storytelling style.
+- pob_phrase: as he was passing by
+  simplified_phrase: as he was going along
+  preserved_meaning: Jesus was moving along without specifying how he traveled.
+  reasoning_layer_used: POB lexical decision for παράγων
+  rationale: This uses the audited alternative and avoids adding that Jesus was walking.
+- pob_phrase: And he rose
+  simplified_phrase: Then Levi got up
+  preserved_meaning: Levi physically stood and responded after Jesus called him.
+  reasoning_layer_used: POB lexical decision for ἀναστὰς and immediate context
+  rationale: “Got up” is common English, while “Levi” makes the pronoun clear.
+- pob_phrase: he says to him
+  simplified_phrase: He says to him
+  preserved_meaning: Mark’s shift to the historical present remains intact.
+  reasoning_layer_used: POB theological decision on narrative tense
+  rationale: The present tense preserves the vivid storytelling style documented by POB.
+translation_notes:
+  risk_flags:
+  - risk: The historical present “He says” may sound unusual beside past-tense narration.
+    mitigation: It is retained because POB explicitly preserves Mark’s vivid tense shift.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/002/014.yaml
+  source_text_sha256: c7628dad2a2d823395f8ff4adfee260c6914abba0d3f6758dcffdd763797af55
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7580e98b423a71f910e01886c4706cd39d013e628ccc66ca0740f23724db29f9
+  timestamp: '2026-07-12T07:19:50Z'
+  output_hash: 1ddbbb109ac458f428096218a12657d84f5261c25c82c22e9fd62939d50ce5a0
+  usage:
+    prompt_tokens: 3611
+    completion_tokens: 365
+    total_tokens: 3976
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Levi
   reason: Retained to preserve POB's source-grounded terminology.
@@ -57,33 +86,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: tax booth
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the narrative sequence of the SBLGNT text exactly. The temporal participle (παράγων) and the action participle (ἀναστὰς) are fully represented in modern, natural English clauses.
-  readability_notes:
-  - By breaking the long, compound sentence into three shorter, punchy sentences, the flow becomes much more natural to modern ears while still retaining the exact gravity and pace of the scripture.
-  compression_notes:
-  - The coordinating conjunction 'And' (καὶ) at the start of the verse was replaced with a cleaner temporal subordinate construction ('As he walked along'), removing redundant English conjunctions without losing any meaning.
-  risk_flags:
-  - risk: Low risk. Keeping the historical present 'He says' might feel slightly unusual in written English, but it maintains Mark's specific style, and the transition to 'got up' prevents the text from sounding overly archaic.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/002/014.yaml
-  source_text_sha256: c7628dad2a2d823395f8ff4adfee260c6914abba0d3f6758dcffdd763797af55
-  pob_commit_sha: c9c89f80b0061793adf976351bb08b934ad624e9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 65f838878cee1b28cce7daab6c1a97a5978834ccca366eac457779645c68d713
-  timestamp: '2026-05-28T09:08:28Z'
-  output_hash: d57fdca822cd8f3114ccbc7ce78e2ec76c4631e5e0dbaa4c747a74f42ff22b42
-  usage:
-    prompt_tokens: 1830
-    completion_tokens: 554
-    total_tokens: 5930
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:50Z'
+  previous_text: As he walked along, he saw Levi, the son of Alphaeus, sitting at the tax booth[a]. He says to him, "Follow me." And he got up and followed him.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5e15a3b6aa40c8296a2a9fe0ce53e9b7d53c30075711e38ef3404402ff37a2cd
+  review_summary: 'The draft appropriately makes “he rose” clearer as “he got up,” retains the source-grounded identification and tax-booth terminology, and preserves Mark’s audited historical present without doctrinal expansion. Revise only the opening: “going along” is natural modern English while avoiding the added specification that Jesus was walking.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

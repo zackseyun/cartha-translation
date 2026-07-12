@@ -31,45 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For whoever wants to save their life will lose it, but whoever loses their life for my sake will find it.[a]
+  text: For whoever wants to save their life will lose it, but whoever loses their life because of me will find it.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or soul. The Greek word can mean life, self, or soul depending on the context.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: save his life will lose it
-  simplified_phrase: save their life will lose it
-  preserved_meaning: 'The paradox remains: trying to preserve life apart from Jesus loses it, while losing life for him finds it.'
-  reasoning_layer_used: POB translation and lexical footnote
-  rationale: The pronouns are modernized while the life/soul issue is retained in a footnote.
-retained_terms:
-- term: for my sake
-  reason: Retained because the reason for losing life is essential.
+- pob_phrase: his life
+  simplified_phrase: their life
+  preserved_meaning: The singular pronoun still refers generally to any person.
+  reasoning_layer_used: Greek grammar and POB pronoun rationale
+  rationale: Singular “their” expresses the representative sense in natural modern English despite POB’s form-based preference for “his.”
+- pob_phrase: for my sake
+  simplified_phrase: because of me
+  preserved_meaning: The person loses their life on account of allegiance to Jesus.
+  reasoning_layer_used: POB lexical decision for ἕνεκεν ἐμοῦ
+  rationale: The documented alternative makes the cause more immediate for common readers.
 translation_notes:
-  source_alignment_notes: Preserves the saving/losing paradox and Jesus-centered reason.
-  readability_notes:
-  - Uses modern representative their.
-  compression_notes:
-  - The life/soul ambiguity is kept in a footnote.
+  risk_flags:
+  - risk: “Because of me” may sound less explicitly purposeful than “for my sake.”
+    mitigation: POB lists it as a supported alternative that preserves the phrase’s causal force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/016/025.yaml
   source_text_sha256: 936a3af405ae8539cce82dc054bb31df3acd3af8a53204cded71f51ca328e052
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:59:24Z'
-  output_hash: d29736495ee93979d316684986c45ee89ecabc03c4b634bdb2c0266939b304c6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 82014c241a4b24f7a8227c792265817b2712260af6c7cbf2bd23a9f79f5bcc23
+  timestamp: '2026-07-12T07:36:43Z'
+  output_hash: 082f03b973050ec8eaadc0f321b857ff0ad41e97f912cd72e67f64d283b26480
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3506
+    completion_tokens: 294
+    total_tokens: 3800
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: for my sake
+  reason: Retained because the reason for losing life is essential.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:43Z'
+  previous_text: For whoever wants to save their life will lose it, but whoever loses their life for my sake will find it.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 40c15fc4532a3abdb9bd190bc4b8021b5e0de24457fd7525e6e1012842d1541a
+  review_summary: Revise rather than approve because the submitted text makes only a minimal pronoun update and does not document its variance from POB’s explicit pronoun rationale. The recommended wording retains the generic singular “their,” which is readable modern English, and adopts the audit-trail-supported “because of me” to make the causal sense more immediate without adding an interpretation. The life/soul footnote appropriately preserves the lexical range and no doctrinal expansion is introduced.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Jesus, again deeply moved within himself, came to the tomb. It was a cave, and a stone was lying against it.
+  text: Then Jesus came to the tomb, again deeply moved within himself.[a] The tomb was a cave, and a stone lay against its entrance.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “indignant within himself” or “greatly disturbed within himself.” The Greek word is unusually strong and may suggest more than sorrow alone.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Jesus, then, again deeply moved within himself, came to the tomb
+  simplified_phrase: Then Jesus came to the tomb, again deeply moved within himself
+  preserved_meaning: Jesus again experienced an intense emotion whose precise nature remains open.
+  reasoning_layer_used: POB lexical and theological decisions on ἐμβριμώμενος
+  rationale: Reordering the clauses gives natural English without narrowing Jesus’ emotion.
+- pob_phrase: Now it was a cave
+  simplified_phrase: The tomb was a cave
+  preserved_meaning: The burial tomb was a cave.
+  reasoning_layer_used: POB lexical decision on σπήλαιον and immediate context
+  rationale: Naming the tomb directly makes the pronoun’s reference clear.
+- pob_phrase: a stone was lying against it
+  simplified_phrase: a stone lay against its entrance
+  preserved_meaning: A stone was positioned against the cave tomb’s opening.
+  reasoning_layer_used: POB lexical decision on ἐπέκειτο ἐπ’ αὐτῷ
+  rationale: The shorter wording clearly describes the stone’s position at the cave opening.
+interpretive_expansions:
+- pob_phrase: against it
+  rendering: against its entrance
+  claim: The stone was positioned at the cave tomb’s entrance.
+  evidence:
+  - The POB rationale identifies the stone as standing against the tomb entrance.
+  - The immediate context describes the tomb as a cave.
+  confidence: high
+  alternatives_preserved:
+  - against it
+  - over it
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Deeply moved” may sound like sorrow alone and understate the Greek term’s disputed force.
+    mitigation: Footnote [a] preserves the possibilities of strong disturbance or indignation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/038.yaml
   source_text_sha256: 424fa3a64bb5f9a7928ec55c7ea7c9248d7ba8b1683fa2af090c978b084cd958
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: 2647bd06324cc5ee7531e024aff2bef98ededb7a1707836a71b9967b776473b6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fc8edfd2dd0bb3b8665051d16d2943b3778ba4852ce1c7a2192a6eeafdbb8cfa
+  timestamp: '2026-07-12T07:17:23Z'
+  output_hash: 52d72467504fc6130e4421913e59fa4f16dd3bdc81f144feef13e2b22afe9a4f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3380
+    completion_tokens: 677
+    total_tokens: 4057
+    reasoning_tokens: 185
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:23Z'
+  previous_text: Then Jesus, again deeply moved within himself, came to the tomb. It was a cave, and a stone was lying against it.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0d494ec73dff330e1b0754ff0de9a285db4ea4f2b3c954f1b91aeb93dcbbb481
+  review_summary: 'The draft’s main text is faithful: it preserves the repeated, intense but unspecified emotional response and accurately describes the cave tomb and stone. However, it is not meaningfully clearer than POB beyond a very small deletion. Reorder the first sentence for natural modern English, and retain a footnote noting that “deeply moved” may also convey strong disturbance or indignation.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

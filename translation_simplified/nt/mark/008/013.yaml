@@ -31,38 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Leaving them, he got back into the boat and went to the other side.
+  text: Then he left them, got into the boat again, and went to the other side.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And leaving them[a], he got back into the boat and went to the other side.
-  simplified_phrase: Leaving them, he got back into the boat and went to the other side.
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
+- pob_phrase: And leaving them
+  simplified_phrase: Then he left them
+  preserved_meaning: Jesus departed from the Pharisees before boarding the boat.
+  reasoning_layer_used: Source syntax and POB lexical decision for ἀφεὶς αὐτούς
+  rationale: A finite verb and “Then” make the sequence easier to follow.
+- pob_phrase: he got back into the boat
+  simplified_phrase: got into the boat again
+  preserved_meaning: Jesus boarded the boat once more.
+  reasoning_layer_used: POB footnote and lexical decision for πάλιν and ἐμβὰς
+  rationale: “Again” clearly expresses repeated boarding without implying an additional destination.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: “Again” selects one documented sense of πάλιν over POB’s main-text “back.”
+    mitigation: The POB footnote permits “again,” and the immediate context confirms renewed boarding.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/013.yaml
   source_text_sha256: 223740ff96ec649cbe1866e6ff7dab5546410bae201b4717ad61acfe53daf0d3
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: eb3d0f41390886be6e2f83b7154eb6414b845d5d79d86bcd90fdf399c15389e9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 946164244b9e00f237792d1d573b6c99cc2c011c7e2a304a1f6a853d43279b5b
+  timestamp: '2026-07-12T07:20:45Z'
+  output_hash: 420559177c10463d4c4f2c647c1062536fe2b640c75aa6a6121ac21cd801f8f2
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3106
+    completion_tokens: 264
+    total_tokens: 3370
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:45Z'
+  previous_text: Leaving them, he got back into the boat and went to the other side.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d9338252210dd5df9a94148058c94b0284d68f3e5d3f81786227857c761a58eb
+  review_summary: Revise for a genuine clarity improvement. The proposed text is faithful and doctrinally neutral, but it is virtually unchanged from POB and retains a less direct participial construction. The recommended wording makes the sequence explicit while preserving the departure, renewed boarding, and crossing to the other side.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

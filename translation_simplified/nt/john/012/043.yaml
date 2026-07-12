@@ -31,36 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For they loved human glory more than God's glory.
+  text: For they loved people's approval more than God's approval.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: the glory of men
+  simplified_phrase: people's approval
+  preserved_meaning: They valued esteem received from other people.
+  reasoning_layer_used: POB lexical decisions, footnote, and immediate context
+  rationale: “Approval” clearly expresses the contextual sense of glory, while “people” avoids a male-exclusive reading.
+- pob_phrase: the glory of God
+  simplified_phrase: God's approval
+  preserved_meaning: The same kind of esteem is contrasted as coming from God.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Repeating “approval” preserves the verse's parallel contrast in clear English.
+- pob_phrase: rather than
+  simplified_phrase: more than
+  preserved_meaning: They preferred approval from people over approval from God.
+  reasoning_layer_used: POB lexical decision for μᾶλλον ἤπερ
+  rationale: “More than” naturally conveys the comparative preference.
+interpretive_expansions:
+- pob_phrase: the glory of men ... the glory of God
+  rendering: people's approval ... God's approval
+  claim: Here glory refers contextually to esteem or approval received from people or from God.
+  evidence:
+  - John 12:42 describes fear of the Pharisees and exclusion from the synagogue.
+  - The POB audit lists “approval” as a contextual sense of δόξα.
+  - The POB footnote explicitly offers “human approval.”
+  confidence: high
+  alternatives_preserved:
+  - glory
+  - praise
+  - honor
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Approval” is narrower than the broader term “glory.”
+    mitigation: The immediate context and POB audit strongly support this contextual sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/043.yaml
   source_text_sha256: 3665612c0ddae3514eac8ef99721973457acf0e76174132a08f78c1d3215a162
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: d4488f4313200f3fcb8e9103dc79fc3914bff58795d500b4487b533f406b23c7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a58f096c5c9060996da58e115d8700ad18fa4f4b85521674f38061bc1484b370
+  timestamp: '2026-07-12T07:17:34Z'
+  output_hash: 34016cc8512838dbdda1c195d4a25f6aefaecfc368f5174582cd128868096648
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3239
+    completion_tokens: 418
+    total_tokens: 3657
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:34Z'
+  previous_text: For they loved human glory more than God's glory.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b3203558a95b4c817ae1e716dd0e1b268ad5b01875a379b200f77b9753f91ba7
+  review_summary: Revise. The draft is shorter, but “human glory” is less intelligible and can convey a different relationship than the contextual meaning. Rendering δόξα as “approval” is warranted here by the immediate fear-of-the-Pharisees context and by the POB audit trail; it makes explicit the human and divine approval contrasted in the verse without adding a doctrinal claim.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

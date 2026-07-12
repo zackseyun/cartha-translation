@@ -31,13 +31,45 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If possible, as far as it depends on you, live at peace with everyone.
+  text: If possible, do everything you can to live at peace with everyone.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: with everyone
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: If possible
-  reasoning_layer_used: POB audit trail
+- pob_phrase: as far as it depends on you
+  simplified_phrase: do everything you can
+  preserved_meaning: You are responsible for pursuing peace only within your own power.
+  reasoning_layer_used: POB lexical and theological decisions on τὸ ἐξ ὑμῶν
+  rationale: The direct wording makes the limit of personal responsibility easier to understand.
+- pob_phrase: with all people
+  simplified_phrase: with everyone
+  preserved_meaning: The command applies universally and is not limited to males.
+  reasoning_layer_used: POB lexical decision on μετὰ πάντων ἀνθρώπων
+  rationale: Everyone is concise, natural English with the same inclusive scope.
+translation_notes:
+  risk_flags:
+  - risk: “Do everything you can” could be heard as guaranteeing peace through sufficient effort.
+    mitigation: “If possible” preserves the explicit warning that peace may remain beyond the reader’s control.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/012/018.yaml
+  source_text_sha256: c2d4f513c1ae35f3091dc1dd53ca69d6862ec7ef204dfe66f3c6c6dbf3c91390
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e1ceb837c985b021a3063d74717680632abd9d7e2f5878a143700967de5a892a
+  timestamp: '2026-07-12T07:42:27Z'
+  output_hash: 681c24f00f33b80dfa597fdff4066ea057108d817449809d5c554e9f589ee609
+  usage:
+    prompt_tokens: 2947
+    completion_tokens: 337
+    total_tokens: 3284
+    reasoning_tokens: 75
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: If possible
   reason: Retained to preserve POB's source-grounded terminology.
@@ -45,33 +77,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: live at peace
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserves the conditional 'εἰ δυνατόν' (If possible) and 'τὸ ἐξ ὑμῶν' (as far as it depends on you) to guard the theological decision that believers are not solely responsible for the outcome of peace, only for their contribution to it.
-  readability_notes:
-  - The sentence flows naturally by using the common pronoun 'everyone' and avoiding archaic or overly formal structure, while maintaining the solemn, advisory tone of the original Pauline exhortation.
-  compression_notes:
-  - The minor stylistic footnote was removed to keep the reading experience streamlined. 'All people' was compressed to 'everyone' to sound more natural in modern English.
-  risk_flags:
-  - risk: None. The simplification does not introduce any historical, theological, or gender-related inaccuracies, and respects all POB lexical boundaries.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/012/018.yaml
-  source_text_sha256: c2d4f513c1ae35f3091dc1dd53ca69d6862ec7ef204dfe66f3c6c6dbf3c91390
-  pob_commit_sha: 596da3b17d97fa6f4043e86c5421db337bf2c1d2
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: c34c41089234aa1e1b5560e135cee096708d53bd306bdc030ad6419f8e0ddf71
-  timestamp: '2026-05-28T06:18:01Z'
-  output_hash: 3a4e0dbd6d1cec15631b0522933a6eac28868625e72bf0dc05e16d0d15e01bb1
-  usage:
-    prompt_tokens: 1460
-    completion_tokens: 461
-    total_tokens: 3969
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:27Z'
+  previous_text: If possible, as far as it depends on you, live at peace with everyone.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ec17e29233f8ce5536ca570f6749cceb5cdcbbc322f4e1eeab8fab1c671cea87
+  review_summary: 'The change from “all people” to “everyone” is faithful, but by itself does not meet the requested understanding-first simplification standard. Replacing “as far as it depends on you” with “do everything you can” makes Paul’s responsibility limitation clear while retaining both qualifications: peace may not be possible, and believers remain responsible for their own efforts.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

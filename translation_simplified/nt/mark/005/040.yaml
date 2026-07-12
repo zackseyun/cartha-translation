@@ -34,41 +34,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They laughed at him. But after putting them all outside, he took the child's father and mother and those with him, and went in where the child was.
+  text: They were laughing at him. But after putting everyone outside, he takes the child's father and mother and the disciples who were with him, and goes in where the child was.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they were laughing at him. But he, after putting them all outside, takes the child's father and mother and those with him, and goes in where the child was.
-  simplified_phrase: They laughed at him. But after putting them all outside, he took the child's father and mother and those with him, and went in where the child was.
-  preserved_meaning: Keeps the mockery, Jesus putting the crowd outside, the parents, those accompanying him, and entry to the child.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: The simplified text preserves the event order and uses smoother past-tense narration.
-retained_terms:
-- term: father and mother
-  reason: Retained to preserve the witnesses Jesus took inside.
+- pob_phrase: after putting them all outside
+  simplified_phrase: after putting everyone outside
+  preserved_meaning: Jesus removes the whole crowd before entering with a small group.
+  reasoning_layer_used: POB lexical decision for ἐκβαλὼν πάντας
+  rationale: “Everyone” makes the scope clearer without suggesting the harsh or exorcistic sense of “cast out.”
+- pob_phrase: those with him
+  simplified_phrase: the disciples who were with him
+  preserved_meaning: The people accompanying Jesus enter with him and the child's parents.
+  reasoning_layer_used: POB footnote b and Mark 5:37 immediate context
+  rationale: Identifying them as disciples resolves an opaque phrase using the POB's own explanation.
+- pob_phrase: takes ... and goes in
+  simplified_phrase: takes ... and goes in
+  preserved_meaning: Mark's vivid historical-present narration remains intact.
+  reasoning_layer_used: POB theological decision on narrative tense and vividness
+  rationale: Keeping the present-tense verbs preserves the source-driven narrative effect.
+interpretive_expansions:
+- pob_phrase: those with him
+  rendering: the disciples who were with him
+  claim: Jesus' companions here are the disciples permitted to accompany him.
+  evidence:
+  - POB footnote b identifies them as the accompanying disciples.
+  - Mark 5:37 names Peter, James, and John as those allowed to accompany Jesus.
+  confidence: high
+  alternatives_preserved:
+  - those with him
+  - his companions
 translation_notes:
-  source_alignment_notes: Preserves the exclusion of the crowd and the small group entering where the child was.
-  readability_notes:
-  - Uses normal past tense and keeps the sentence order clear.
-  compression_notes:
-  - The explanatory note that 'those with him' means the accompanying disciples is implied by context and the POB base footnote remains in the record.
+  risk_flags:
+  - risk: “The disciples” makes an identity explicit that the Greek phrase itself leaves general.
+    mitigation: The immediate context and POB footnote directly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/005/040.yaml
   source_text_sha256: 806835b0ef0eaf1fa855ff3ba6708c9e26b610f1cac65ffaaeae761a0edc656b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-f
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:50:14Z'
-  output_hash: f362fd205e37c2ab555405b83285059d1056f34eb5b5b334aa929d35e8ef7685
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bc19f74481518632d99f47f0de74398a24d5011db221ab6d8e3dbef758bac444
+  timestamp: '2026-07-12T07:21:34Z'
+  output_hash: da6e763557102dc16dee838e493844f841e747bad61888cd9e7d1da6664feaff
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3326
+    completion_tokens: 440
+    total_tokens: 3766
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: father and mother
+  reason: Retained to preserve the witnesses Jesus took inside.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:34Z'
+  previous_text: They laughed at him. But after putting them all outside, he took the child's father and mother and those with him, and went in where the child was.
+  previous_model: codex-manual-worker-f
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: acc9c7e2d90b97dc05d53ca1aa3e9e5cc7ffa5425c95dbb3346ba9d298c3f085
+  review_summary: The draft faithfully preserves the narrative sequence and does not introduce doctrinal material. Its shift to ordinary past tense is an acceptable readability choice, though it no longer reflects Mark’s historical presents or the imperfect’s ongoing nuance. Revision is needed because deleting the POB footnote leaves “those with him” unclear; the context and POB audit trail warrant identifying them as the disciples accompanying Jesus.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

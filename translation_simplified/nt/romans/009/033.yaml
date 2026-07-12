@@ -40,43 +40,82 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: as it is written, "Look, I am placing in Zion a stone of stumbling and a rock of offense, and the one who believes in him will not be put to shame."
+  text: 'As Scripture says: “Look, I am placing in Zion a stone that makes people stumble and a rock that causes offense, and anyone who believes in him will not be put to shame.”[him][shame]'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: him
+    text: The stone image refers to the Messiah in Paul’s context; some translations use “it.”
+    reason: alternative_reading
+  - marker: shame
+    text: Or “will not be disappointed.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: I am laying in Zion
-  simplified_phrase: I am placing in Zion
-  preserved_meaning: God places the stone in Zion as stated in the Isaiah quotation.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Placing'' is common English and preserves the quotation''s action.'
-retained_terms:
-- term: Zion
-  reason: Retained because it is the named location in the prophetic quotation.
-- term: rock of offense
-  reason: Retained to preserve the source image and POB allusion.
+- pob_phrase: As it is written
+  simplified_phrase: As Scripture says
+  preserved_meaning: Paul introduces a quotation from Scripture.
+  reasoning_layer_used: POB lexical decision and citation context
+  rationale: This makes the quotation formula immediately clear in common English.
+- pob_phrase: a stone of stumbling and a rock of offense
+  simplified_phrase: a stone that makes people stumble and a rock that causes offense
+  preserved_meaning: The stone and rock images remain causes of stumbling and offense.
+  reasoning_layer_used: POB lexical alternatives and Romans 9:32–33
+  rationale: Active clauses explain both images without merging them.
+- pob_phrase: the one who believes in him
+  simplified_phrase: anyone who believes in him
+  preserved_meaning: The promise applies generically to every person who believes in the Messiah.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “Anyone” is more natural while retaining the generic scope and personal referent.
+interpretive_expansions:
+- pob_phrase: a stone of stumbling and a rock of offense
+  rendering: a stone that makes people stumble and a rock that causes offense
+  claim: The stone and rock cause the stumbling and offense described.
+  evidence:
+  - The POB lexical alternatives explicitly support causal wording.
+  - Romans 9:32–33 presents the stone as what Israel stumbled over.
+  confidence: high
+  alternatives_preserved:
+  - a stumbling stone
+  - a rock of offense
 translation_notes:
-  source_alignment_notes: Preserves the combined Isaiah quotation, Zion, stumbling/offense imagery, and promise about believing in him.
-  readability_notes:
-  - Keeps the quotation close because the image is central to Paul's argument.
-  compression_notes:
-  - No core meaning intentionally removed.
+  risk_flags:
+  - risk: “People” makes the affected group explicit although the images do not state a noun.
+    mitigation: The generic wording identifies only the human subjects implied by stumbling and offense.
+  - risk: The main text uses “him” where the stone image could be rendered “it.”
+    mitigation: A footnote preserves the alternative, while Paul’s context supports the personal reference to the Messiah.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/009/033.yaml
   source_text_sha256: f84f557fd6c5ff1c4a2772210ce32ef5a61577fd7dfa3a1b77ea5434eeed0080
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:53:15Z'
-  output_hash: 608c68df5016cecec885d55a8c4d6035429cd84fd815e51820064b8ce10482d2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b3525e9def92581ca0304a9b6dd7394eaeadfcac0cdaa71924cbcdc5cdfb23eb
+  timestamp: '2026-07-12T07:41:59Z'
+  output_hash: 4961b65e788f1e024b98feb8e25979c01056d3f787c2261c8a7cb2ec3a67b63b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3452
+    completion_tokens: 535
+    total_tokens: 3987
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Zion
+  reason: Retained because it is the named location in the prophetic quotation.
+- term: rock of offense
+  reason: Retained to preserve the source image and POB allusion.
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:59Z'
+  previous_text: as it is written, "Look, I am placing in Zion a stone of stumbling and a rock of offense, and the one who believes in him will not be put to shame."
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fd00181fa94093331fae02e2ffe703b46d9b0fbe90d4b1a338a34bd44604a183
+  review_summary: The change from 'laying' to 'placing' is faithful, and rendering the stone personally as 'him' is warranted by Paul's immediate christological application and the POB audit trail. However, the draft is not meaningfully clearer overall because it leaves the central metaphors unexplained. The recommended wording clarifies their force without adding a doctrinal interpretation or removing the stone-and-rock imagery.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+  - 'retained otherwise-unanchored footnote markers at the end of the revised text: [him], [shame]'

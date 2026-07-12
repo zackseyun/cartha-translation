@@ -19,38 +19,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 13:25 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the men'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote'
 translation:
   language: en
-  text: But while the men were sleeping, his enemy came, sowed weeds among the wheat, and went away.
+  text: But while the men slept, his enemy came and planted weeds among the wheat. Then he left.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: while the men were sleeping
+  simplified_phrase: while the men slept
+  preserved_meaning: The men were asleep when the enemy acted.
+  reasoning_layer_used: POB translation and applied revision
+  rationale: The shorter clause is more direct while retaining the protected wording “the men.”
+- pob_phrase: sowed weeds among the wheat
+  simplified_phrase: planted weeds among the wheat
+  preserved_meaning: The enemy deliberately introduced weeds into the wheat crop.
+  reasoning_layer_used: POB translation and source payload
+  rationale: “Planted” expresses the farming action in more familiar English without removing the weed-and-wheat contrast.
+- pob_phrase: and went away
+  simplified_phrase: Then he left.
+  preserved_meaning: The enemy departed after planting the weeds.
+  reasoning_layer_used: POB translation and source clause sequence
+  rationale: A separate short sentence makes the sequence easier to follow.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Planted” is less specific than the source image of scattering seed.
+    mitigation: The wording still preserves deliberate sowing among an existing wheat crop.
+  - risk: “Workers” could clarify the setting but would replace the audit-protected wording “the men.”
+    mitigation: The main text retains “the men” while simplifying the surrounding sentence.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/025.yaml
   source_text_sha256: a948cf9d996988b8f88f39443eccc73a8a4f7de47086999dc603f49d5fabd33a
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 9bdaeee2f3aaffe47ca7e723e07ff7e3a57102bbba9e4824418c48ef06be4bc8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 17ea44b4a3a687a94b209cebb47f9075b5fbf36e247a460905446ae5864ae613
+  timestamp: '2026-07-12T07:37:18Z'
+  output_hash: 9c9dc4f1fad18211a72bca124251e0e07ea9809c9ba725202bf6a5198765479a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2552
+    completion_tokens: 694
+    total_tokens: 3246
+    reasoning_tokens: 345
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:18Z'
+  previous_text: But while the men were sleeping, his enemy came, sowed weeds among the wheat, and went away.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 44126566e824082f0e2ba626b0816bbee1c6aaf6d1cb23c1a32d3b57fa79804c
+  review_summary: The proposed wording is faithful and introduces no doctrinal or interpretive expansion, but its punctuation-only revision is not meaningfully clearer than POB as required. “Workers” makes the referent more readily understandable in the parable’s agricultural setting, “asleep” is simpler than “were sleeping,” and “left” is common modern English for “went away,” while preserving the sequence and meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

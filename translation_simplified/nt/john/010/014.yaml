@@ -31,45 +31,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I am the good shepherd. I know my own[a], and my own know me.
+  text: I am the good shepherd. I know those who belong to me, and they know me.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'my sheep.' The Greek says literally 'my own' in both clauses.
-    reason: simplification_note
+    text: Or “my sheep.” The Greek says literally “my own” in both clauses.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: By replacing the first comma and 'and' with a period, we create two balanced sentences. This reduces the run-on structure of the original coordinate clause, making it easier to read aloud or digest, while preserving the exact lexical decisions of POB.
-  reasoning_layer_used: POB audit trail
-  rationale: By replacing the first comma and 'and' with a period, we create two balanced sentences. This reduces the run-on structure of the original coordinate clause, making it easier to read aloud or digest, while preserving the exact lexical decisions of POB.
-retained_terms:
-- term: good shepherd
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: my own
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: I am the good shepherd, and I know
+  simplified_phrase: I am the good shepherd. I know
+  preserved_meaning: Jesus identifies himself as the good shepherd and states his personal knowledge of his people.
+  reasoning_layer_used: POB lexical decisions and readability guidance
+  rationale: A sentence break makes the two linked statements easier to follow without weakening either one.
+- pob_phrase: my own, and my own
+  simplified_phrase: those who belong to me, and they
+  preserved_meaning: The same people belong to Jesus and know him in return.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The fuller wording makes the relational belonging clear while preserving the repeated referent.
+interpretive_expansions:
+- pob_phrase: my own
+  rendering: those who belong to me
+  claim: The possessive expression refers to people who belong to Jesus.
+  evidence:
+  - The POB lexical rationale says the expression refers to those belonging to the shepherd.
+  - John 10:11–16 identifies them within the shepherd-and-sheep image.
+  confidence: high
+  alternatives_preserved:
+  - my own
+  - my sheep
 translation_notes:
-  source_alignment_notes: The translation remains completely faithful to the SBLGNT Greek and the specific POB lexical and theological reasoning. No details have been added or subtracted, and the literal 'my own' is preserved alongside the explanatory footnote.
-  readability_notes:
-  - Converting a compound sentence into two simpler sentences creates a cleaner flow that reads more naturally in modern English without diminishing the gravitas of Jesus' declaration.
-  compression_notes:
-  - We omitted the first 'and' (καί) in favor of a sentence break to enhance modern stylistic flow. This does not change the meaning, as the connection between the statements remains clear and immediate.
+  risk_flags:
+  - risk: The main text makes the implied human referent more explicit than the Greek wording.
+    mitigation: The footnote preserves both the literal expression and the contextual alternative “my sheep.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/010/014.yaml
   source_text_sha256: 5b9668adaf7a2c21bf0c4dece6d53cf2e906c50c18ca65ebcaca0dbe16f11e9c
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 00d17ca1ce5ce68f0dd9fdea5bddc164d08e89fdb6a1a57a44e7f02b3497574c
-  timestamp: '2026-05-28T09:34:38Z'
-  output_hash: 019f2bcc714e0a742a915a641f54d139c6bb2cbee755ba9faf6960ffde559a37
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 620eb657219573a1b9a94f835eaa2684d4d5b40f76025e97d56e48db98d58b4a
+  timestamp: '2026-07-12T07:16:11Z'
+  output_hash: 972b71ef43a1938285afa1c801a36e54ff3ab6283cce402c8a13c0a1b03b1ff0
   usage:
-    prompt_tokens: 1702
-    completion_tokens: 564
-    total_tokens: 4848
+    prompt_tokens: 3203
+    completion_tokens: 389
+    total_tokens: 3592
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: good shepherd
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: my own
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:11Z'
+  previous_text: I am the good shepherd. I know my own[a], and my own know me.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 09fb8def8dc734c0eaeef00d6f49d4dd9f3e533fa1da5791b91ba51dc227ec1b
+  review_summary: The sentence break is faithful, but punctuation alone does not satisfy SPOB’s understanding-first purpose. Rendering the contextually identified referents as “those who belong to me” makes the possessive relationship clear while preserving the verse’s reciprocal personal knowledge and without adding doctrinal claims.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

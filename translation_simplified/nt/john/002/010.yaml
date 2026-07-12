@@ -34,17 +34,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 2:10 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''Every man''].'
 translation:
   language: en
-  text: And he said to him, "Everyone sets out the good wine first, and when the guests have become drunk[a], they serve the inferior wine. But you have kept the good wine until now."
+  text: And he said to him, “Everyone serves the good wine first. Then, after the guests have become drunk[a], the inferior wine is served. But you have kept the good wine until now.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'have drunk freely.' The Greek verb refers to becoming intoxicated. This reflects a common social observation of the time rather than an endorsement of drunkenness.
-    reason: simplification_note
+    text: Or “have drunk freely.” The Greek verb refers to becoming intoxicated; this reports a social observation rather than endorsing drunkenness.
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: and when the guests have become drunk, they serve the inferior wine
-  preserved_meaning: The original Greek text uses a highly compressed ellipsis ('then the inferior'). We supplied the implied words 'the guests' and 'they serve... wine' to make the sentence read naturally in modern English without changing the meaning.
-  reasoning_layer_used: POB audit trail
-  rationale: The original Greek text uses a highly compressed ellipsis ('then the inferior'). We supplied the implied words 'the guests' and 'they serve... wine' to make the sentence read naturally in modern English without changing the meaning.
+- pob_phrase: sets out the good wine
+  simplified_phrase: serves the good wine
+  preserved_meaning: The banquet provider presents the wine to the guests.
+  reasoning_layer_used: POB lexical decision for τίθησιν
+  rationale: “Serves” is the clearest ordinary banquet wording among the audited alternatives.
+- pob_phrase: when they have become drunk, then the inferior
+  simplified_phrase: after the guests have become drunk, the inferior wine is served
+  preserved_meaning: Once the drinkers are intoxicated, the provider brings out wine of lower quality.
+  reasoning_layer_used: POB lexical and theological decisions for μεθυσθῶσιν and ἐλάσσω
+  rationale: The passive wording fills the Greek ellipsis without making the guests the servers.
+interpretive_expansions:
+- pob_phrase: when they have become drunk
+  rendering: after the guests have become drunk
+  claim: The people who become drunk are the banquet guests or drinkers.
+  evidence:
+  - The banquet setting identifies the plural drinkers as those receiving the wine.
+  - The generic provider remains the implied agent who serves the inferior wine.
+  confidence: high
+  alternatives_preserved:
+  - after they have become drunk
+translation_notes:
+  risk_flags:
+  - risk: The passive “is served” leaves the provider unnamed.
+    mitigation: It preserves the Greek ellipsis while preventing the guests from being mistaken for the serving agents.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/002/010.yaml
+  source_text_sha256: 07d93d127e41fb3f6dc9159af343a5f1b7cfb29042c88de9f297fb779ba37981
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: eb2038ba30595ba91e8997075432456d9e5aacccf437089a47ea58d08f70cf1a
+  timestamp: '2026-07-12T07:14:10Z'
+  output_hash: 4977be7a3ae5bdc93b48ccba07302019ef65085b3e2f19760c7820c4fca233fb
+  usage:
+    prompt_tokens: 4174
+    completion_tokens: 513
+    total_tokens: 4687
+    reasoning_tokens: 79
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: become drunk
   reason: Retained to preserve POB's source-grounded terminology.
@@ -52,33 +93,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: kept
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the historical present of the Greek verb as 'said' for natural English narrative flow, and preserved the literal force of the passive verb for drunkenness to respect the audited theological decision.
-  readability_notes:
-  - Resolved the elliptical structure of the original verse to create an easy-to-read sequence for contemporary readers.
-  compression_notes:
-  - The academic footnote about the Greek singular 'Every man' was removed because 'Everyone' is already clear, inclusive, and accurate in modern English.
-  risk_flags:
-  - risk: None. The translation remains strictly aligned with the critical theological boundaries set by the POB.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/002/010.yaml
-  source_text_sha256: 07d93d127e41fb3f6dc9159af343a5f1b7cfb29042c88de9f297fb779ba37981
-  pob_commit_sha: 935ebfbdc4b548b16b520169ee256eafcc740f23
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 61e78f660c3b37109c07909fd2588ae3215febfa2958419580b9e2841425f0a5
-  timestamp: '2026-05-28T08:28:38Z'
-  output_hash: 22ad91cc2750e8f12575fba165c7f9be1e0464d02e6b128b5bb220c8c6b1a6e6
-  usage:
-    prompt_tokens: 2364
-    completion_tokens: 416
-    total_tokens: 7224
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:10Z'
+  previous_text: And he said to him, "Everyone sets out the good wine first, and when the guests have become drunk[a], they serve the inferior wine. But you have kept the good wine until now."
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5c126c8badeace65e4d1037096264570c1463abbf4b447d665b34e28d2e86246
+  review_summary: The draft appropriately retains the unsoftened reference to intoxication and usefully makes the elliptical “the inferior” explicit as “the inferior wine.” However, its added subjects create an agent ambiguity that can make drunken guests appear to be the ones serving the inferior wine. Recast the second clause so the guests are clearly the occasion for, rather than agents of, the inferior wine being served.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

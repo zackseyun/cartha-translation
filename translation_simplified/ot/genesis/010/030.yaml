@@ -31,39 +31,61 @@ base_translation:
     changes_summary: Changed 'extended' to 'was' for closer correspondence to the Hebrew verb, while retaining the natural directional phrase and 'hill country of the east.'
 translation:
   language: en
-  text: Their settlements stretched from Mesha toward Sephar, in the eastern hill country.
+  text: Their settlement area stretched from Mesha toward Sephar, the hill country of the east.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Describes the settlement area of Joktan’s descendants from Mesha toward Sephar in the eastern hill country.
-  reasoning_layer_used: POB audit trail
-  rationale: Uses 'settlements stretched' to express the boundary in clear modern English.
-retained_terms:
-- term: Mesha
-  reason: Preserves the place name marking the settlement range.
+- pob_phrase: their settlement was from Mesha
+  simplified_phrase: Their settlement area stretched from Mesha
+  preserved_meaning: The wording describes the territorial extent of their collective settlement beginning at Mesha.
+  reasoning_layer_used: POB lexical decisions and revision history
+  rationale: “Settlement area stretched” makes the geographic boundary clear while retaining the singular collective sense.
+- pob_phrase: as you go toward Sephar
+  simplified_phrase: toward Sephar
+  preserved_meaning: Sephar remains the direction and endpoint named in the geographic description.
+  reasoning_layer_used: POB lexical decision for בֹּאֲכָה
+  rationale: The shorter directional phrase communicates the same geographic movement in natural English.
+- pob_phrase: Sephar, the hill country of the east
+  simplified_phrase: Sephar, the hill country of the east
+  preserved_meaning: The geographic designation remains attached to Sephar without adding a containment relationship.
+  reasoning_layer_used: POB lexical decisions for הַר and הַקֶּדֶם
+  rationale: Retaining the appositional phrase preserves the audited regional description and avoids an unsupported “in.”
 translation_notes:
-  source_alignment_notes: Preserves both boundary names and the eastern hill-country description.
-  readability_notes:
-  - Uses natural geography wording.
-  compression_notes:
-  - No geographic marker is removed.
+  risk_flags:
+  - risk: “Stretched” is more idiomatic than the POB’s revised verb “was.”
+    mitigation: “Settlement area” and the two place markers limit it to the territorial extent already expressed by the source construction.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/030.yaml
   source_text_sha256: 39cfd4e0283a1d0f6b238e1c6c000e658440186582d249220655f0d352535cc0
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:03Z'
-  output_hash: 4aa7aa054ec2414d75cb8c96150a05fb1182728eac191461deb80578485277ab
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 763338cc89b72620b031b7656e98f45ebb83dc37f64190a4cbc36b2761599baf
+  timestamp: '2026-07-12T09:23:29Z'
+  output_hash: 5b3a2ce4f364b430888e71f25e06a0d2849032e0f89754867700b4b30125c53b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3225
+    completion_tokens: 367
+    total_tokens: 3592
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Mesha
+  reason: Preserves the place name marking the settlement range.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:29Z'
+  previous_text: Their settlements stretched from Mesha toward Sephar, in the eastern hill country.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 72dc508c4b6716af52f903adec63c5d2d77755d4776a2bbd215a5496d68adc7e
+  review_summary: The draft improves readability with “stretched,” but its final phrase adds an unwarranted locative relationship and its plural “settlements” slightly obscures the collective territorial sense. Retain the source-supported geographic designation while using clear modern wording.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,45 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus asked him, “What is your name?” He said, “My name is Legion,[a] because we are many.”
+  text: Jesus was asking him, “What is your name?” He answered, “My name is Legion,[a] because we are many.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: '''Legion'' was a Roman military term for a large unit; here it signals that many demons were present.'
-    reason: simplification_note
+    text: “Legion” was a Roman military term for a large unit; here the name indicates that many demons were present.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: And he was asking him, ‘What is your name?’ And he says to him, ‘My name is Legion, because we are many.’
-  simplified_phrase: Jesus asked him, ‘What is your name?’ He said, ‘My name is Legion, because we are many.’
-  preserved_meaning: Clarifies the speaker and keeps the name Legion with its explanation of plurality.
-  reasoning_layer_used: POB translation and cultural footnote
-  rationale: The key cultural term is retained and explained in simpler language.
-retained_terms:
-- term: Legion
-  reason: Retained because it is the demon's stated name and carries the POB cultural note.
+- pob_phrase: And he was asking him
+  simplified_phrase: Jesus was asking him
+  preserved_meaning: The questioner is identified while the ongoing or repeated sense of the imperfect verb is retained.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: Naming Jesus removes pronoun ambiguity without flattening the verb to simple past.
+- pob_phrase: And he says to him
+  simplified_phrase: He answered
+  preserved_meaning: The demon responds directly to Jesus’ question.
+  reasoning_layer_used: POB translation and narrative context
+  rationale: The ordinary response verb makes the exchange easier to follow.
+- pob_phrase: My name is Legion, because we are many
+  simplified_phrase: My name is Legion, because we are many
+  preserved_meaning: The singular name and plural explanation remain in deliberate tension.
+  reasoning_layer_used: POB theological decision
+  rationale: Keeping both forms preserves the text’s portrayal of many demons speaking through one man.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: Jesus is the one asking the question.
+  evidence:
+  - The immediate narrative identifies Jesus as the speaker addressing the unclean spirit.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the question-answer structure and the meaning of Legion as many demons.
-  readability_notes:
-  - Removes repeated 'And' clauses and clarifies the speaker.
-  compression_notes:
-  - Keeps the cultural note in simplified form.
+  risk_flags:
+  - risk: “He answered” does not retain Mark’s historical present.
+    mitigation: It preserves the response relationship in natural English while the question’s imperfect aspect remains explicit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/005/009.yaml
   source_text_sha256: c6e0273fd809e11e73a8ea8c0f009bfd126910e6cd9ebf7c9cc808785d541fba
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-f
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:50:14Z'
-  output_hash: 67fd09f9a99b94d87c2c1f3185465bf441e61f576301e2649aee85dce6072427
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f956e275aae261bd1fff89db73c02258240546e214168fa6b8f1e21c82b1f4db
+  timestamp: '2026-07-12T07:20:18Z'
+  output_hash: 078aaa379315b8c48f8ebc317f5b3321d4ddbd03e5481cee66b89727c3f87b7f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3172
+    completion_tokens: 416
+    total_tokens: 3588
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Legion
+  reason: Retained because it is the demon's stated name and carries the POB cultural note.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:18Z'
+  previous_text: Jesus asked him, “What is your name?” He said, “My name is Legion,[a] because we are many.”
+  previous_model: codex-manual-worker-f
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 94b31d957470054ab251221db3a64faef8d8ace6f8efc7a9f0d43989775dead6
+  review_summary: Identifying Jesus as the questioner is a warranted contextual clarification and makes the sentence clearer. The footnote is also a faithful, accessible simplification of the POB cultural note; its reference to many demons is supported by the plural reply and the surrounding narrative. However, the draft should retain the imperfect aspect of ἐπηρώτα, as the POB audit trail expressly treats that feature as significant. The singular ‘My name’ and plural ‘we are many’ are properly preserved without doctrinal harmonization.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

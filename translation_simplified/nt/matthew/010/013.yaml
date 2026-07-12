@@ -37,49 +37,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If the household is worthy, let your peace come upon it. But if it is not worthy, let your peace return to you.
+  text: If the household is ready to receive you, let your peace come upon it. But if it is not, let your peace return to you.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: If the household
-  preserved_meaning: Removed the initial 'And' for a cleaner modern start. Changed 'house' to 'household' to make it clear that the people inside, not the physical building, are being evaluated as 'worthy', matching the POB footnote option.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the initial 'And' for a cleaner modern start. Changed 'house' to 'household' to make it clear that the people inside, not the physical building, are being evaluated as 'worthy', matching the POB footnote option.
-- simplified_phrase: But if it is not worthy, let your peace
-  preserved_meaning: Split the compound semicolon-based sentence into two separate sentences to ease readability for modern common readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the compound semicolon-based sentence into two separate sentences to ease readability for modern common readers.
-retained_terms:
-- term: worthy
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: peace
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: the house
+  simplified_phrase: the household
+  preserved_meaning: The term refers to the home and can include the people living there.
+  reasoning_layer_used: POB lexical decision and footnote a
+  rationale: “Household” makes clear that the people, not the building, are being evaluated.
+- pob_phrase: is worthy
+  simplified_phrase: is ready to receive you
+  preserved_meaning: The household is fit to welcome the messengers and their peace, not morally sinless.
+  reasoning_layer_used: POB cultural note b and immediate context
+  rationale: This wording prevents modern readers from mistaking “worthy” for moral merit.
+- pob_phrase: let your peace come upon it; but if it is not worthy
+  simplified_phrase: let your peace come upon it. But if it is not
+  preserved_meaning: The contrast remains between a household that receives the messengers and one that does not.
+  reasoning_layer_used: POB syntax and theological decision
+  rationale: Two sentences improve readability while preserving the concrete movement of peace.
+interpretive_expansions:
+- pob_phrase: is worthy
+  rendering: is ready to receive you
+  claim: The household’s fitness concerns welcoming Jesus’ messengers in this mission context.
+  evidence:
+  - POB note b defines “worthy” as fit to receive the messengers and their peace.
+  - Matthew 10:12 directs the disciples to greet the household.
+  confidence: high
+  alternatives_preserved:
+  - fit to receive you
+  - ready to welcome you
 translation_notes:
-  source_alignment_notes: Maintained the directional 'come upon it' (elthato... ep' auten) and the active-sounding return 'let... return to you' (epistrapheto) to preserve the concrete, objective imagery of peace moving between parties.
-  readability_notes:
-  - Replacing the semicolon with a period and capitalizing 'But' significantly improves modern readability, preventing the sentence from feeling overly academic or archaic.
-  compression_notes:
-  - No major compression of content was performed; we only removed the initial 'And' (kai) which is stylistically redundant in modern English narrative transitions.
   risk_flags:
-  - risk: Minimally risk-prone. Using 'household' instead of 'house' is a minor interpretive choice but is heavily supported by the POB lexical audit trail and cultural context.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Ready to receive you” is more explicit than the broad Greek adjective.
+    mitigation: The wording follows the POB cultural note and immediate context without reducing peace to a mere greeting.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/010/013.yaml
   source_text_sha256: fbeaa57b466f0b4aa69903228f528a3c3ac3e931d647b7cbfcdbf1ad5463787e
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: df42eec383c242c1fc14dc0ef86bbccaeed1041b58039b234e3c8e874364431b
-  timestamp: '2026-05-28T08:44:08Z'
-  output_hash: dad8ec58b772db70150a709e9b29835ec6b87f1e7c09fc3e8a0803d2d2f47d3c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 577248021b8cd56f8605a080ebe4f7afaedcc8634d63a91fb83a5cef6120fac3
+  timestamp: '2026-07-12T07:36:28Z'
+  output_hash: f8bd3b265dee0c0200374ec8a64bd3c6d7e55d0c20eef4ca1b2b0a85f13a2726
   usage:
-    prompt_tokens: 2003
-    completion_tokens: 601
-    total_tokens: 6146
+    prompt_tokens: 3740
+    completion_tokens: 446
+    total_tokens: 4186
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: worthy
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: peace
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:28Z'
+  previous_text: If the household is worthy, let your peace come upon it. But if it is not worthy, let your peace return to you.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 408d9d7ca19be077b0ea544ac7eb89b176c2fec3582373bd4ecd2c904f638309
+  review_summary: '“Household” is warranted by the lexical audit trail and improves the referent. However, the draft does not sufficiently simplify the verse’s central condition: modern readers can easily take “worthy” as moral merit, contrary to the POB’s explicit contextual note. “Ready to receive you” communicates the contextually established sense without turning peace into a mechanical force or adding doctrinal explanation.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

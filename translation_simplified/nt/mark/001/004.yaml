@@ -31,13 +31,57 @@ base_translation:
     changes_summary: Added 'the Baptist' to represent ὁ βαπτίζων ('the one baptizing'), which was omitted in the draft. Kept the rest unchanged as accurate and natural.
 translation:
   language: en
-  text: John the Baptist appeared in the wilderness. He proclaimed a baptism of repentance for the forgiveness of sins.
+  text: John the Baptist appeared in the wilderness. He proclaimed a baptism of repentance—turning away from sin—for the forgiveness of sins.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: John the Baptist appeared in the wilderness. He proclaimed...
-  preserved_meaning: Broke the single, syntactically dense POB sentence into two shorter, punchier sentences. This reduces cognitive load for the reader while maintaining the narrative pace.
-  reasoning_layer_used: POB audit trail
-  rationale: Broke the single, syntactically dense POB sentence into two shorter, punchier sentences. This reduces cognitive load for the reader while maintaining the narrative pace.
+- pob_phrase: John the Baptist appeared in the wilderness, proclaiming
+  simplified_phrase: John the Baptist appeared in the wilderness. He proclaimed
+  preserved_meaning: John came onto the scene in the wilderness and announced his message.
+  reasoning_layer_used: POB lexical decisions for ἐγένετο and κηρύσσων
+  rationale: Two direct sentences make the narrative action easier to follow.
+- pob_phrase: a baptism of repentance
+  simplified_phrase: a baptism of repentance—turning away from sin
+  preserved_meaning: The baptism was characterized by a morally and spiritually decisive turning from sin.
+  reasoning_layer_used: POB lexical rationale for μετανοίας and immediate context
+  rationale: The added phrase explains repentance while retaining the key biblical term.
+interpretive_expansions:
+- pob_phrase: repentance
+  rendering: repentance—turning away from sin
+  claim: Repentance here involves turning away from sin.
+  evidence:
+  - The POB rationale says repentance carries moral and spiritual force.
+  - The immediate phrase explicitly refers to sins.
+  confidence: high
+  alternatives_preserved:
+  - repentance as turning
+  - repentance as a change of mind
+translation_notes:
+  risk_flags:
+  - risk: The wording could be read as defining repentance only as outward behavior.
+    mitigation: Retaining “repentance” preserves its broader moral and spiritual force.
+  - risk: Readers may infer a settled doctrine about how baptism brings forgiveness.
+    mitigation: The phrase “for the forgiveness of sins” remains unchanged and does not specify an instrumental, symbolic, or declarative relation.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/001/004.yaml
+  source_text_sha256: 4d4700bf2ac9ab8e64f21ccb54c40b934ee2e2589b6f2caa27ad0494c2c153dc
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4d114a1c745d1ec7e1f331b478cf17dad096ffaabc2a33cfce99350ddc19a193
+  timestamp: '2026-07-12T07:19:35Z'
+  output_hash: a16dff1d0dbee86cd559e79fcce564d2b6d7ec199a22e32ea69442e9b1ba453a
+  usage:
+    prompt_tokens: 3602
+    completion_tokens: 408
+    total_tokens: 4010
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: wilderness
   reason: Retained to preserve POB's source-grounded terminology.
@@ -45,33 +89,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: repentance
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The split sentence format faithfully represents both the main verb (appeared/ἐγένετο) and the continuous force of the participle (proclaiming/κηρύσσων) in separate clauses.
-  readability_notes:
-  - By converting the participle clause into a new sentence, the text flows more naturally in modern English without losing any details.
-  compression_notes:
-  - The POB footnote discussing the alternative translation 'John the Baptizer' was removed to avoid distracting a common reader with minor lexical/grammatical alternatives.
-  risk_flags:
-  - risk: There is a slight risk that 'repentance' is unfamiliar to some unchurched readers, but it was retained to protect the theological guardrails established in the POB record.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/001/004.yaml
-  source_text_sha256: 4d4700bf2ac9ab8e64f21ccb54c40b934ee2e2589b6f2caa27ad0494c2c153dc
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 41a3e9777d5551ffcdb34198d96d51c6cce3fdfcc2531913781b43922c4ccb18
-  timestamp: '2026-05-28T08:42:13Z'
-  output_hash: 86f2d4979ab397efb93def80ddff8d5c7d2dabe8f3cf574ae4ddd58516fbb5cc
-  usage:
-    prompt_tokens: 1995
-    completion_tokens: 462
-    total_tokens: 5248
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:35Z'
+  previous_text: John the Baptist appeared in the wilderness. He proclaimed a baptism of repentance for the forgiveness of sins.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7c0e9c181b23c0490a04bdec748046af32d40598a3916417bb692d74346ebf70
+  review_summary: The two-sentence form faithfully preserves John's appearance and his proclamation, and it does not resolve the source text's open question about the precise relation of baptism and forgiveness. However, sentence division alone is not enough to make the key theological phrase understandable to the intended audience. A short appositional explanation of repentance improves comprehension while retaining the POB wording and its doctrinal restraint.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

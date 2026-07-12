@@ -31,36 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to her, “I am the resurrection and the life. The one who believes in me will live, even if he dies,”
+  text: Jesus said to her, “I am the resurrection and the life. Anyone who believes in me, even if they die, will live.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: The one who believes in me
+  simplified_phrase: Anyone who believes in me
+  preserved_meaning: The promise applies inclusively to every person characterized by believing in Jesus.
+  reasoning_layer_used: POB lexical decision and representative-masculine theological decision
+  rationale: “Anyone” clearly expresses the general and inclusive sense already recognized by the POB.
+- pob_phrase: even if he dies, will live
+  simplified_phrase: even if they die, will live
+  preserved_meaning: Physical death does not cancel Jesus’ promise of life to the believer.
+  reasoning_layer_used: POB footnote and lexical decisions for κἂν, ἀποθάνῃ, and ζήσεται
+  rationale: Singular “they” removes needless gendered wording while keeping the concession before the promise.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Some readers may treat singular “they” as less formally aligned with the Greek masculine singular.
+    mitigation: The POB footnote explicitly supports this inclusive English rendering of the representative masculine.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/025.yaml
   source_text_sha256: 643ab2da8c4d0ca05cdd9e942b3577cda30484eab88689a9598edf9c89ab6b83
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:37Z'
-  output_hash: 50065d0770dcbcb07d5e30c6ac0fb8590bedcc4f3b287de801a1e045cfbc7454
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8cb6ad2ba5a632b91a97e35d06ea7938cd3f4cdf328e20698af65fa31934ca37
+  timestamp: '2026-07-12T07:19:28Z'
+  output_hash: 13ae25d6fc24c715a4fe93f7a68aa404d70c3916883bb17365c79e6811d06e1d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3491
+    completion_tokens: 299
+    total_tokens: 3790
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:28Z'
+  previous_text: Jesus said to her, “I am the resurrection and the life. The one who believes in me will live, even if he dies,”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6e50b3686e80f0c9e24483139317baf482bddcab79920f8bf7916f65b5db6a2c
+  review_summary: Revise for a real readability improvement. The draft is doctrinally faithful and its reordered concession does not introduce a material meaning change, but “the one who believes” is not simpler than the controlling POB wording. “Anyone who believes” accurately conveys the representative singular, avoids unnecessary gendered phrasing, and is supported by the POB’s own inclusive alternative. The direct claims “I am the resurrection and the life” and “will live” should remain unchanged.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

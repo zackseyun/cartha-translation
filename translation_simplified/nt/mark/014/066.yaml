@@ -31,41 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: While Peter was below in the courtyard, one of the high priest’s servant girls came.
+  text: Meanwhile, Peter was down in the courtyard when one of the high priest’s servant girls[a] came.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “slave girls.” The Greek word can refer to female household servants or slaves.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And while Peter was below in the courtyard[a], one of the high priest’s servant girls came,
-  simplified_phrase: While Peter was below in the courtyard, one of the high priest’s servant girls came.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-retained_terms:
-- term: high priest
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+- pob_phrase: And while Peter was below in the courtyard
+  simplified_phrase: Meanwhile, Peter was down in the courtyard
+  preserved_meaning: Peter remained in the lower courtyard as the surrounding events continued.
+  reasoning_layer_used: POB lexical decisions for the temporal clause and κάτω
+  rationale: “Meanwhile” keeps the narrative link, while “was down” expresses location in ordinary English.
+- pob_phrase: one of the high priest’s servant girls came
+  simplified_phrase: when one of the high priest’s servant girls came
+  preserved_meaning: A female household servant associated with the high priest arrived during this scene.
+  reasoning_layer_used: POB lexical decisions for ἔρχεται, παιδίσκη, and the household genitive
+  rationale: The “when” clause makes the timing easier to follow without changing the event.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Was down” could be mistaken for downward movement.
+    mitigation: Its placement before “in the courtyard” clearly describes Peter’s lower location.
+  - risk: “Servant girl” does not specify whether she was enslaved.
+    mitigation: The footnote preserves the documented lexical alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/066.yaml
   source_text_sha256: 267896753095ee36079b3981376068409bc9de6c203685ca899c4aeebc96503c
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: b9998e2d4519a7d8a508abcd1f014f68686935e04d465782a69536a00ae72f91
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 60fb012139dfb76369fcaeeef385cdb29f0857b346c9ddb697e1863a94cf6ee7
+  timestamp: '2026-07-12T07:22:24Z'
+  output_hash: 2c609a95cb1a846c014510fd82149d137cf81b9abdfe0ad530d84d6cf8ddb430
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2965
+    completion_tokens: 571
+    total_tokens: 3536
+    reasoning_tokens: 219
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: high priest
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:24Z'
+  previous_text: While Peter was below in the courtyard, one of the high priest’s servant girls came.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 041e087b2c882515b641a4ebf198f6976cca1477ccf4c4693b9d8037bd1b6aab
+  review_summary: Revise for a genuinely clearer common-English rendering. “Meanwhile” preserves the narrative transition, “down” naturally conveys the lower location indicated by κάτω, and the sentence remains faithful to the temporal scene-setting and household association in the POB audit trail. No doctrinal or unsupported interpretive expansion is present.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

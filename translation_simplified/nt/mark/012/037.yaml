@@ -34,41 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: David himself calls him Lord, so how is he his son?” And the large crowd listened to him gladly.
+  text: David himself calls him “Lord,” so how can he be David’s son?” The large crowd was listening to him gladly.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: David himself calls him Lord[b][a], so how is he his son? And the large crowd was listening to him gladly.
-  simplified_phrase: David himself calls him Lord, so how is he his son?” And the large crowd listened to him gladly.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Lord
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: how is he his son?
+  simplified_phrase: how can he be David’s son?
+  preserved_meaning: The question still challenges how the Messiah can be David’s son when David calls him Lord.
+  reasoning_layer_used: POB lexical and theological decisions on πόθεν and υἱός
+  rationale: Naming David removes an unclear pronoun without resolving the verse’s intended tension.
+- pob_phrase: And the large crowd was listening to him gladly.
+  simplified_phrase: The large crowd was listening to him gladly.
+  preserved_meaning: The crowd continued listening to Jesus with pleasure.
+  reasoning_layer_used: POB lexical decision on the imperfect ἤκουεν and ἡδέως
+  rationale: Dropping the unnecessary opening conjunction improves flow while retaining the ongoing action.
+interpretive_expansions:
+- pob_phrase: his son
+  rendering: David’s son
+  claim: The possessive pronoun refers to David.
+  evidence:
+  - David is the named person in the question’s immediate context.
+  - The POB footnote connects “son” with the title “son of David.”
+  confidence: high
+  alternatives_preserved:
+  - David’s descendant
+  - his son
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Modern readers may take “son” as an immediate biological relationship rather than a messianic title meaning descendant.
+    mitigation: Retaining “son” preserves the POB’s title and rhetorical contrast without adding an explanation to Jesus’ argument.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/037.yaml
   source_text_sha256: f96363e35213958b3295062e6891a4addca230482344dbf7ea04df92745f434d
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 504d088f5fd4adce052a9a89b335719d648cad5d5f52e54029eb3c300ee8499f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f3b826903250471a454fff9d89ff271d6b5ff7b8a3af8996e8153147c1261773
+  timestamp: '2026-07-12T07:22:59Z'
+  output_hash: 0672e6613080ade02178226028d656a403ba77c8c4cd544228b21c03cc4a840b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3355
+    completion_tokens: 661
+    total_tokens: 4016
+    reasoning_tokens: 273
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Lord
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:59Z'
+  previous_text: David himself calls him Lord, so how is he his son?” And the large crowd listened to him gladly.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a7a2036d64b55bbfe412fc37d7588764b9eba4df0cdd237f53b47e6ce197888b
+  review_summary: The draft preserves the Christological tension and does not add doctrine, but it does not meet the requested SPOB threshold of being meaningfully clearer than POB. Make David explicit in the rhetorical question and retain the ongoing sense of the crowd’s listening.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,41 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said to them, “Whose image is this, and whose inscription?”
+  text: He asked them, “Whose image and inscription are on this coin?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he said to them[a], “Whose image is this, and whose inscription?”
-  simplified_phrase: He said to them, “Whose image is this, and whose inscription?”
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
+- pob_phrase: he said to them
+  simplified_phrase: he asked them
+  preserved_meaning: Jesus spoke the question to the same group.
+  reasoning_layer_used: POB translation and the interrogative form of the source payload
+  rationale: “Asked” naturally introduces the direct question without changing the speech event.
+- pob_phrase: Whose image is this, and whose inscription?
+  simplified_phrase: Whose image and inscription are on this coin?
+  preserved_meaning: The question asks whose likeness and written marking the coin bears.
+  reasoning_layer_used: POB lexical decisions, POB footnote, and immediate context in Matthew 22:19
+  rationale: Combining the two features reflects the shared Greek “whose,” while “coin” makes the established referent clear.
+interpretive_expansions:
+- pob_phrase: this
+  rendering: this coin
+  claim: The object bearing the image and inscription is the coin introduced immediately before this verse.
+  evidence:
+  - Matthew 22:19 immediately introduces the coin used for the tax.
+  - The POB lexical rationales identify the image and inscription as markings on the coin.
+  confidence: high
+  alternatives_preserved:
+  - this
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: Adding “coin” makes the immediate contextual referent explicit rather than leaving the pronoun unchanged.
+    mitigation: Matthew 22:19 and the POB lexical rationales directly identify the object as a coin.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/020.yaml
   source_text_sha256: fb2c8517fd221dca716df1d41f6b2aec1ca62779bf920f2e3d2b7f4b33c50c2a
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: 3f751b25737d23c5eb8d9fc7f48ac4f95c0b1cdae9060aa131fa948f82ef05d2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b6f44263fd43c1872c16b1305afceef0251fbf2f70ed4d257f82d96aa91f632a
+  timestamp: '2026-07-12T07:38:38Z'
+  output_hash: 4e9d7edf79774e500122164605b5ff1d3e8ebf0073423b190caf2128456a8a70
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2907
+    completion_tokens: 365
+    total_tokens: 3272
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:38Z'
+  previous_text: He said to them, “Whose image is this, and whose inscription?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c96332e4ba839154dd998f041236e586b78a0075a38fb4e2b612b245fc5023af
+  review_summary: The draft preserves the source meaning and introduces no doctrinal expansion, but its sole change—dropping “And”—is not a meaningful clarity gain. The recommended wording remains faithful to the single Greek ownership/association question while using the immediately established referent, the coin, to make the question understandable in isolation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

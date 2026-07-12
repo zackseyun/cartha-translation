@@ -37,36 +37,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: '"He has blinded their eyes and hardened their heart, so they would not see with their eyes, understand with their heart, turn, and I would heal them."'
+  text: He has blinded their eyes and hardened their heart, so that they may not see with their eyes, understand with their heart, or turn.[a] If they turned, I would heal them.[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “be converted.”
+    reason: lexical_alternative
+  - marker: b
+    text: The Greek form is future and may be translated “I will heal them,” but here it expresses what would happen if they turned.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: so that they may not see with their eyes and understand with their heart and turn
+  simplified_phrase: so that they may not see with their eyes, understand with their heart, or turn
+  preserved_meaning: The wording retains the purpose/result force and keeps seeing, understanding, and turning distinct.
+  reasoning_layer_used: POB lexical decision for ἵνα μὴ and the source parallelism
+  rationale: Using “or” makes the negative scope clear without weakening the judicial purpose/result.
+- pob_phrase: and I would heal them
+  simplified_phrase: If they turned, I would heal them
+  preserved_meaning: God's healing remains the stated consequence of their turning.
+  reasoning_layer_used: POB lexical rationale for ἰάσομαι and grounding review
+  rationale: A separate conditional sentence prevents readers from mistaking healing for another action being prevented.
+- pob_phrase: He has blinded their eyes and hardened their heart
+  simplified_phrase: He has blinded their eyes and hardened their heart
+  preserved_meaning: The explicit divine agency, completed-action force, and corporate singular “heart” remain intact.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: This difficult wording is retained because simplifying it would soften the source's theological tension.
+interpretive_expansions:
+- pob_phrase: and turn, and I would heal them
+  rendering: or turn. If they turned, I would heal them.
+  claim: The healing is presented as what would happen if they turned.
+  evidence:
+  - The POB audit describes “I would heal them” as contingent in the quoted judgment context.
+  - The immediate clause links turning with the prospect of healing.
+  confidence: high
+  alternatives_preserved:
+  - I will heal them
+  - be healed by me
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Splitting the quotation makes its conditional relation more explicit than the Greek syntax alone.
+    mitigation: The expansion follows the POB's audited contingent reading and preserves the future-form alternative in a footnote.
+  - risk: The singular “heart” may sound unusual with the plural pronoun “their.”
+    mitigation: It is retained to preserve the Greek collective singular and the Isaiah citation's corporate sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/040.yaml
   source_text_sha256: 6e101bda820dca9a86571fa07707bfb1b602d2a56949c2099142d16f0043d77e
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: ec5f3217582f795f70041a01b61228626713f791ad455368bbec0e76291e0dbf
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cc00b72b1cc3f457e748d93bf6ff32367486e6059d9a64742356c9946d6ff775
+  timestamp: '2026-07-12T07:17:06Z'
+  output_hash: 33ed95bfaf2217410ba6990cd4824c08df23a4eb04364cbeb0801ac28db94ca4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3477
+    completion_tokens: 1124
+    total_tokens: 4601
+    reasoning_tokens: 503
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:06Z'
+  previous_text: '"He has blinded their eyes and hardened their heart, so they would not see with their eyes, understand with their heart, turn, and I would heal them."'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 102b724bec75ab56a51c7a8dbc358368159290fcfb26c8d48f25f343fb34f05c
+  review_summary: Revise. The draft’s “so they would not” weakens and shifts the purpose/result relation retained by POB, and its final coordination is unclear. The recommended wording preserves explicit divine agency, the corporate singular “heart,” and the verse’s difficult judicial logic while making the healing consequence understandable in ordinary English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

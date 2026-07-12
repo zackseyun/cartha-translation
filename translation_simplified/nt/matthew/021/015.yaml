@@ -34,14 +34,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But when the chief priests and the scribes saw the wonderful things Jesus did, and heard the children shouting in the temple courts, “Hosanna to the Son of David,” they became indignant.
+  text: But when the chief priests and the scribes saw the wonderful things Jesus did, and saw the children shouting in the temple courts, “Hosanna to the Son of David,” they became indignant.[Hosanna]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: Hosanna
+    text: “Hosanna” means something like “Save, please” or “Save now,” and it was also used as a shout of praise.
+    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: the wonderful things that he did
+  simplified_phrase: the wonderful things Jesus did
+  preserved_meaning: The remarkable deeds remain broad rather than being limited to miracles.
+  reasoning_layer_used: POB lexical decision for τὰ θαυμάσια and immediate context
+  rationale: Naming Jesus makes the pronoun's referent immediately clear.
 - pob_phrase: the children crying out in the temple and saying
   simplified_phrase: the children shouting in the temple courts
-  preserved_meaning: Preserves the children's public praise while simplifying the doubled speech verbs.
-  reasoning_layer_used: POB theological decisions and footnotes
-  rationale: Retains 'Hosanna' and 'Son of David' because POB marks them as significant.
+  preserved_meaning: The children loudly proclaim the quoted acclamation within the temple complex.
+  reasoning_layer_used: POB lexical decisions and cultural note for ἱερόν
+  rationale: The quote supplies what they said, while “temple courts” clarifies the location.
+- pob_phrase: they were indignant
+  simplified_phrase: they became indignant
+  preserved_meaning: The leaders respond with strong, morally charged displeasure.
+  reasoning_layer_used: POB lexical decision for ἠγανάκτησαν
+  rationale: The wording naturally presents their indignation as their reaction to what they saw.
+interpretive_expansions:
+- pob_phrase: he did
+  rendering: Jesus did
+  claim: The person who performed the wonderful things was Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the acting subject.
+  confidence: high
+translation_notes:
+  risk_flags:
+  - risk: Repeating “saw” is less compressed than using an auditory verb.
+    mitigation: The repetition preserves the source's single stated mode of perception without adding “heard.”
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/021/015.yaml
+  source_text_sha256: cceecc3953dd1f8d9998ce4c03375650d8a6239e3ff385336d9ca2272926a7a8
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5c712db07a8a2584fdb759064da8bc557aafe00977ef6d15550f819d8b2f75d7
+  timestamp: '2026-07-12T07:37:16Z'
+  output_hash: 63915cc1d7c779274cc489ae450b64956d9c7adb13693411a287c8fa761d615a
+  usage:
+    prompt_tokens: 3674
+    completion_tokens: 461
+    total_tokens: 4135
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: chief priests
   reason: Leadership title retained from POB.
@@ -51,30 +97,14 @@ retained_terms:
   reason: Retained from POB.
 - term: Son of David
   reason: Retained as the messianic title.
-translation_notes:
-  source_alignment_notes: Preserves what the leaders saw, what the children said, and the leaders' anger.
-  readability_notes:
-  - Uses 'heard' to connect the leaders' reaction to the children's words.
-  compression_notes:
-  - The paired 'crying out and saying' is compressed into 'shouting.'
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/021/015.yaml
-  source_text_sha256: cceecc3953dd1f8d9998ce4c03375650d8a6239e3ff385336d9ca2272926a7a8
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:14:46Z'
-  output_hash: fc792d0e655a92c3c727299275b650fec554c89e52cc019a553f7b9433ba4691
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:16Z'
+  previous_text: But when the chief priests and the scribes saw the wonderful things Jesus did, and heard the children shouting in the temple courts, “Hosanna to the Son of David,” they became indignant.
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 23adcd1e1dbae771af7294b2f8b42f467f2aea6091e4890f2b138c56ab315488
+  review_summary: The draft appropriately makes the implicit referent of “he” explicit as Jesus and usefully renders the temple complex as “the temple courts,” which is supported by the POB cultural note. It also retains the messianically significant title and the established acclamation. Revise only “heard” to “saw” so the simplified text preserves the source’s stated perception without adding a distinct action.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+  - 'retained otherwise-unanchored footnote markers at the end of the revised text: [Hosanna]'

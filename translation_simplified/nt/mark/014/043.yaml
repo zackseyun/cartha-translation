@@ -40,14 +40,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Immediately, while Jesus was still speaking, Judas, one of the Twelve, arrived. With him came a crowd with swords and clubs, sent from the chief priests, scribes, and elders.
+  text: Immediately, while Jesus was still speaking, Judas arrived. He was one of the Twelve. A crowd carrying swords and clubs came with him from the chief priests, the scribes, and the elders.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “From” identifies the leaders as the crowd’s source or authority without specifying how the crowd was dispatched.
+    reason: simplification_note
 simplification_decisions:
-- pob_phrase: And immediately[a], while he was still speaking, Judas arrived, one of the Twelve, and with him a crowd with swords and clubs[d][c][b], from the chief priests and the scribes and the elders.
-  simplified_phrase: Immediately, while Jesus was still speaking, Judas, one of the Twelve, arrived. With him came a crowd with swords and clubs, sent from the chief priests, scribes, and elders.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: Judas arrived, one of the Twelve
+  simplified_phrase: Judas arrived. He was one of the Twelve.
+  preserved_meaning: Judas is identified as a member of Jesus’ inner group of twelve.
+  reasoning_layer_used: POB lexical decision for εἷς τῶν δώδεκα
+  rationale: A separate sentence makes the identification easier to follow.
+- pob_phrase: with him a crowd with swords and clubs
+  simplified_phrase: A crowd carrying swords and clubs came with him
+  preserved_meaning: The crowd accompanied Judas and brought swords and clubs as weapons.
+  reasoning_layer_used: POB lexical decisions for ὄχλος, μάχαιρα, and ξύλα
+  rationale: Ordinary English makes clear that the crowd was carrying the weapons.
+- pob_phrase: from the chief priests and the scribes and the elders
+  simplified_phrase: from the chief priests, the scribes, and the elders
+  preserved_meaning: The crowd came from or under the authority of these leaders without asserting formal dispatch.
+  reasoning_layer_used: POB theological decision on παρά with the genitive
+  rationale: The revision removes the unsupported claim that the leaders explicitly sent the crowd.
+interpretive_expansions:
+- pob_phrase: while he was still speaking
+  rendering: while Jesus was still speaking
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the speaker.
+  confidence: high
+  alternatives_preserved:
+  - while he was still speaking
+translation_notes:
+  risk_flags:
+  - risk: “From” may be read only as physical origin rather than source or authority.
+    mitigation: Footnote [a] preserves the POB’s bounded institutional sense without claiming explicit dispatch.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/014/043.yaml
+  source_text_sha256: e7926ba9800ccf887f339526d670bdb808e76f520777fbba0658830a2fc86bff
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 37134fb617b0c597be7e117fea03ee2c2bf83a3c02d6ddae9ef3a061bac81e89
+  timestamp: '2026-07-12T07:24:26Z'
+  output_hash: e5aef608438a393d33ac7ac20e0a2a6d0722f70453ef586128d4e5408ef0bc98
+  usage:
+    prompt_tokens: 3932
+    completion_tokens: 964
+    total_tokens: 4896
+    reasoning_tokens: 461
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: chief priests
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
@@ -55,30 +103,13 @@ retained_terms:
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
 - term: the Twelve
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/014/043.yaml
-  source_text_sha256: e7926ba9800ccf887f339526d670bdb808e76f520777fbba0658830a2fc86bff
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 1b684515c35eb9bfb833cadb9709734f27e9e698d61639614d96d2182fb97625
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:26Z'
+  previous_text: Immediately, while Jesus was still speaking, Judas, one of the Twelve, arrived. With him came a crowd with swords and clubs, sent from the chief priests, scribes, and elders.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 02d9cfa1a32dfadc2ed4c7034156c275b9020387f0404075deb1a5e754f19db2
+  review_summary: The explicit use of “Jesus” appropriately clarifies the pronoun from the immediate context, and dividing the long POB sentence substantially improves readability without losing its sequence or participants. Revise only “sent from” to “from,” preserving the source text’s stated institutional connection without asserting that the leaders explicitly dispatched the crowd.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

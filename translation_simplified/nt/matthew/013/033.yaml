@@ -37,51 +37,91 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'He told them another parable: “The kingdom of heaven is like leaven, which a woman took and worked into three measures of flour until all the dough was leavened.”[a][b][c]'
+  text: 'He told them another parable: “The kingdom of heaven is like leaven.[a] A woman took some and worked it into[b] a large amount of flour[c] until it was all leavened.”'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “yeast”; the Greek word refers to a leavening agent used in dough.
     reason: lexical_alternative
   - marker: b
-    text: Greek says “three seahs of flour,” a large amount.
-    reason: cultural_note
-  - marker: c
-    text: Greek literally says “hid in”; the sense can be “mixed into” or “worked into.”
+    text: Greek literally says “hid it in”; the sense can be “mixed it into” or “worked it into.”
     reason: lexical_alternative
+  - marker: c
+    text: Greek says “three seahs of flour,” a large quantity.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
-retained_terms:
-- term: leaven
-  reason: Retained from POB while footnote explains the common word yeast.
+- pob_phrase: The kingdom of heaven is like leaven, which a woman took
+  simplified_phrase: The kingdom of heaven is like leaven. A woman took some
+  preserved_meaning: The woman takes the leaven used in the kingdom comparison.
+  reasoning_layer_used: POB translation and lexical decisions for ζύμη and ἣν λαβοῦσα γυνὴ
+  rationale: Two sentences make the parable easier to follow without changing its image.
+- pob_phrase: hid in
+  simplified_phrase: worked it into
+  preserved_meaning: The leaven is placed throughout the flour while the literal hiding image remains in a footnote.
+  reasoning_layer_used: POB lexical decision and footnote for ἐνέκρυψεν εἰς
+  rationale: The documented alternative describes the baking action in familiar English.
+- pob_phrase: three measures of flour
+  simplified_phrase: a large amount of flour
+  preserved_meaning: The woman uses the unusually large quantity indicated by three seahs.
+  reasoning_layer_used: POB cultural footnote and lexical decision for ἀλεύρου σάτα τρία
+  rationale: The main text communicates the quantity clearly while the ancient measure remains in a footnote.
+interpretive_expansions:
+- pob_phrase: hid in
+  rendering: worked it into
+  claim: The hiding occurs by incorporating the leaven into the flour.
+  evidence:
+  - POB lists “worked into” as a contextual lexical alternative.
+  - The immediate context describes leaven permeating flour.
+  confidence: high
+  alternatives_preserved:
+  - hid it in
+  - mixed it into
+- pob_phrase: three measures of flour
+  rendering: a large amount of flour
+  claim: Three seahs represent a large quantity of flour.
+  evidence:
+  - The POB cultural note explicitly identifies it as a large quantity.
+  confidence: high
+  alternatives_preserved:
+  - three measures of flour
+  - three seahs of flour
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Worked it into” does not directly display the Greek image of hiding.
+    mitigation: Footnote [b] preserves the literal wording and another contextual alternative.
+  - risk: “A large amount” omits the exact ancient measure from the main text.
+    mitigation: Footnote [c] retains the quantity as three seahs.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/033.yaml
   source_text_sha256: 0fba9290f93a5bbbca76d15b03a82770f7645b9eb4b0a6c45d9f45deb4d51eb7
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 2984e36f7c29ec28eebbfaf19690df51680878f39022eb0f14ea1de1654bb81e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 03e393d870f64ed2c9c539c60b055f3c5f9b15b5c524fdb1f191c5928b5e162f
+  timestamp: '2026-07-12T09:02:15Z'
+  output_hash: 922b31b08c1c809f0e8cec5067e7c85b0b610fd252a000c66b063c9529b56426
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3613
+    completion_tokens: 1199
+    total_tokens: 4812
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: leaven
+  reason: Retained from POB while footnote explains the common word yeast.
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:15Z'
+  previous_text: 'He told them another parable: “The kingdom of heaven is like leaven, which a woman took and worked into three measures of flour until all the dough was leavened.”[a][b][c]'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 05b19eebe0abd29dbb818b47ed82b7c02bb5f179d3b82742a32f70e71bfa823a
+  review_summary: The draft appropriately uses “worked into,” an audit-trailed lexical alternative that makes the baking action clearer without imposing a theological meaning on leaven. However, “all the dough” adds a particular referent where the source and POB retain a broader collective expression. Retain the clearer action wording but restore “it was all leavened.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

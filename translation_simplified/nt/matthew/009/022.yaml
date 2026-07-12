@@ -40,25 +40,54 @@ base_translation:
     changes_summary: Added commas around the participial phrase for natural English punctuation; otherwise retained the draft, which accurately and completely reflects the Greek.
 translation:
   language: en
-  text: Jesus turned, saw her, and said, “Take courage, daughter! Your faith has saved you.”[a] And from that very moment, the woman was healed.
+  text: Jesus turned, saw her, and said, “Take courage, daughter! Your faith has saved you.”[a] And from that moment, the woman was healed.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'has made you well.' The Greek verb can mean to save, heal, or make well; Jesus' words carry both physical and spiritual meaning.
-    reason: simplification_note
+    text: Or “has made you well” or “has healed you.” The Greek verb can mean save, heal, or make well.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Changed 'But Jesus, turning and seeing her, said' to 'Jesus turned, saw her, and said' to convert participle chains into a more direct, natural modern English narrative sequence.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'But Jesus, turning and seeing her, said' to 'Jesus turned, saw her, and said' to convert participle chains into a more direct, natural modern English narrative sequence.
-- preserved_meaning: Updated 'from that hour' to 'from that very moment' to make the immediate nature of the healing clearer to modern readers while remaining faithful to the temporal idiom.
-  reasoning_layer_used: POB audit trail
-  rationale: Updated 'from that hour' to 'from that very moment' to make the immediate nature of the healing clearer to modern readers while remaining faithful to the temporal idiom.
-- preserved_meaning: Retained 'Take courage' and 'daughter' to preserve the gravity and familial tenderness of Jesus' address.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'Take courage' and 'daughter' to preserve the gravity and familial tenderness of Jesus' address.
-- preserved_meaning: Retained 'saved' in Jesus' speech and 'healed' in the narrative description to preserve the theological tension of σῴζω present in the POB base text, clarified by footnote [a].
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'saved' in Jesus' speech and 'healed' in the narrative description to preserve the theological tension of σῴζω present in the POB base text, clarified by footnote [a].
+- pob_phrase: But Jesus, turning and seeing her, said
+  simplified_phrase: Jesus turned, saw her, and said
+  preserved_meaning: Jesus turns toward the woman, sees her, and then speaks to her.
+  reasoning_layer_used: POB lexical decisions for στραφεὶς and ἰδὼν
+  rationale: Finite verbs make the sequence natural without changing the actions.
+- pob_phrase: from that hour
+  simplified_phrase: from that moment
+  preserved_meaning: The woman’s healing began at that stated time.
+  reasoning_layer_used: POB lexical decision for ἀπὸ τῆς ὥρας ἐκείνης
+  rationale: “Moment” clearly expresses the temporal idiom without adding the unsupported intensifier “very.”
+- pob_phrase: your faith has saved you / the woman was healed
+  simplified_phrase: your faith has saved you / the woman was healed
+  preserved_meaning: Jesus’ words retain the verb’s broader saving resonance while the narrative identifies physical healing.
+  reasoning_layer_used: POB theological decision for σῴζω
+  rationale: The distinct renderings preserve the source’s semantic tension rather than resolving it.
+translation_notes:
+  risk_flags:
+  - risk: Readers may understand “saved” only as physical healing or only as spiritual salvation.
+    mitigation: The narrative says “healed,” while the footnote presents the verb’s broader lexical range without insisting on both meanings.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/009/022.yaml
+  source_text_sha256: f98ed6eb7793cdb503bece273c27515ef74dc143be3f2c9cd68f8e186cfc7fa8
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cb8bcf21aa5cf3e0d3924a55d5d3dd713595c94127b08850e3cb22d1f086071a
+  timestamp: '2026-07-12T07:42:55Z'
+  output_hash: 8b4ae85d94f484cda2a3830deea1461b1864a6a8f5ae16237d4374905b7128a2
+  usage:
+    prompt_tokens: 4518
+    completion_tokens: 427
+    total_tokens: 4945
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: faith
   reason: Retained to preserve POB's source-grounded terminology.
@@ -68,33 +97,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: daughter
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains alignment with the SBLGNT participles (στραφεὶς καὶ ἰδὼν) by translating them as sequential actions ('turned, saw') which flows better in modern English. Preserves the double translation of σῴζω ('saved' in direct speech, 'healed' in narrative) to align with POB's theological handling of the Greek text.
-  readability_notes:
-  - Replaced the formal participial phrase 'turning and seeing her, said' with active past-tense verbs 'turned, saw... and said'. Replaced the archaic temporal idiom 'from that hour' with 'from that very moment' to clearly communicate instantaneous healing to contemporary readers.
-  compression_notes:
-  - Syntactic compression was applied to the sentence structure for improved readability, but no lexical elements or semantic details were omitted.
-  risk_flags:
-  - risk: Slight risk that modern readers might overlook the spiritual dimension of 'saved' if they conflate it entirely with the physical healing, which is mitigated by footnote [a].
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/009/022.yaml
-  source_text_sha256: f98ed6eb7793cdb503bece273c27515ef74dc143be3f2c9cd68f8e186cfc7fa8
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: a16da7fc68202b2c60cf59648513cd6cea1516eda55b98f0eeac1c2db0fd18e0
-  timestamp: '2026-05-28T08:48:24Z'
-  output_hash: c853445c6e6c390df8f50f3d0c5e2b4bc8de2bb8181c79f41a9d70cf1546ddd1
-  usage:
-    prompt_tokens: 2535
-    completion_tokens: 561
-    total_tokens: 7736
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:55Z'
+  previous_text: Jesus turned, saw her, and said, “Take courage, daughter! Your faith has saved you.”[a] And from that very moment, the woman was healed.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0f9f1f6d161d9699481189454a66645252418df7e1a428769ff94bf89027e845
+  review_summary: The direct finite-verb sequence is meaningfully clearer than POB and remains faithful to the participial narrative. Retaining “faith,” “saved,” and “healed” properly preserves the source wording and its contextual tension. Revise the temporal intensifier “very,” which overstates the source expression, and make the footnote describe the verb’s range rather than declare a settled dual physical-and-spiritual meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,43 +34,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: While he was still speaking, Judas, one of the twelve, came. A large crowd with swords and clubs was with him, sent from the chief priests and elders of the people.
+  text: Just then, while he was still speaking, Judas, one of the twelve, arrived. A large crowd from the chief priests and elders of the people came with him, carrying swords and clubs.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: and with him a large crowd with swords and clubs
-  simplified_phrase: A large crowd with swords and clubs was with him
-  preserved_meaning: Preserves Judas's arrival with an armed crowd in clearer sentence structure.
-  reasoning_layer_used: POB translation text and footnotes
-  rationale: Splits the verse and uses the footnote's 'sent from' sense for readability while preserving POB's source relation.
-retained_terms:
-- term: chief priests
-  reason: Institutional title retained from POB.
-- term: elders
-  reason: Leadership group retained from POB.
+- pob_phrase: And while he was still speaking, behold
+  simplified_phrase: Just then, while he was still speaking
+  preserved_meaning: Preserves both the timing and the vivid immediacy of Judas’s arrival.
+  reasoning_layer_used: POB lexical decisions for ἔτι αὐτοῦ λαλοῦντος and ἰδού
+  rationale: “Just then” gives the discourse marker natural force without the archaic “behold.”
+- pob_phrase: Judas, one of the twelve, came, and with him a large crowd
+  simplified_phrase: Judas, one of the twelve, arrived. A large crowd ... came with him
+  preserved_meaning: Preserves Judas’s arrival with the crowd while making the sequence easier to follow.
+  reasoning_layer_used: POB translation and lexical decisions
+  rationale: Two sentences replace the long chain of clauses with clear modern narration.
+- pob_phrase: from the chief priests and elders of the people
+  simplified_phrase: A large crowd from the chief priests and elders of the people
+  preserved_meaning: Preserves the leaders as the crowd’s source without explicitly claiming they sent it.
+  reasoning_layer_used: POB theological decision on ἀπό
+  rationale: Placing “from” beside “crowd” clarifies the connection while retaining the documented degree of implication.
+interpretive_expansions:
+- pob_phrase: with swords and clubs
+  rendering: carrying swords and clubs
+  claim: The crowd had the weapons with them as they came.
+  evidence:
+  - The Greek μετὰ marks the weapons as accompanying the crowd.
+  - The arrest context supports ordinary weapon possession without adding how they were used.
+  confidence: high
+  alternatives_preserved:
+  - with swords and clubs
 translation_notes:
-  source_alignment_notes: Maintains Judas, the crowd, weapons, and leadership source of the group.
-  readability_notes:
-  - Breaks a long verse into two sentences.
-  compression_notes:
-  - Clubs/sticks nuance remains in base footnote.
+  risk_flags:
+  - risk: Readers may understand “from” as either simple origin or implied authorization.
+    mitigation: The wording retains that ambiguity rather than adding an unsupported verb of sending.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/047.yaml
   source_text_sha256: 065bc3c0efa9a9294dbbcf2a281ef96388abc369d51eded1a97f58dae056531f
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:58Z'
-  output_hash: ffced0fa4b0b291a7a4bffa3b230b3299d0930c0eb07294400b68acc2425fddd
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 077afe9824c7944e91cac866d98d182171eb2f786ccc031f36c72fc217fa06c5
+  timestamp: '2026-07-12T07:38:30Z'
+  output_hash: 06d31f9d4a20d3bb451c367500ea41d8608bdd2aa1d291c6b5d7f182ea490c29
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3544
+    completion_tokens: 731
+    total_tokens: 4275
+    reasoning_tokens: 230
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: chief priests
+  reason: Institutional title retained from POB.
+- term: elders
+  reason: Leadership group retained from POB.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:30Z'
+  previous_text: While he was still speaking, Judas, one of the twelve, came. A large crowd with swords and clubs was with him, sent from the chief priests and elders of the people.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 96959918623b596bdfa4c77073cb4d972006f8049c189016ebc866252f318c85
+  review_summary: The sentence split and clearer description of the armed crowd are warranted. However, “sent from” adopts an interpretive alternative that the POB deliberately does not place in the main text; retain “from” to preserve the source wording and its live degree of implication. Restore the narrative marker in a natural form (“Just then”) so the simplified text does not lose the source’s immediacy.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

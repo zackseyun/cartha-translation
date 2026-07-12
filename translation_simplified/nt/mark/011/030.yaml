@@ -34,14 +34,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Was John’s baptism from heaven or from men? Answer me.
+  text: Did John’s baptism come from God or from people? Answer me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Was John's baptism from heaven or from men? Answer me[a][b].
-  simplified_phrase: Was John’s baptism from heaven or from men? Answer me.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: Was John's baptism from heaven or from men?
+  simplified_phrase: Did John’s baptism come from God or from people?
+  preserved_meaning: Preserves the contrast between divine and merely human origin or authority.
+  reasoning_layer_used: POB lexical and theological decisions for ἐξ οὐρανοῦ and ἐξ ἀνθρώπων
+  rationale: The explicit contrast prevents readers from mistaking “heaven” for only a location.
+- pob_phrase: Answer me.
+  simplified_phrase: Answer me.
+  preserved_meaning: Keeps Jesus’ direct demand for a response.
+  reasoning_layer_used: POB lexical decision for ἀποκρίθητέ μοι
+  rationale: The existing wording is already clear and forceful.
+interpretive_expansions:
+- pob_phrase: from heaven
+  rendering: from God
+  claim: The phrase identifies God as the source or authority behind John’s baptism.
+  evidence:
+  - The POB footnote defines “from heaven” as a Jewish idiom for divine origin or authority.
+  - The POB lexical and theological records list “from God” as the supported alternative.
+  confidence: high
+  alternatives_preserved:
+  - from heaven
+translation_notes:
+  risk_flags:
+  - risk: Rendering “from heaven” as “from God” removes the source-language image from the main text.
+    mitigation: The POB audit explicitly authorizes this meaning, and the expansion record preserves the original idiom.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/011/030.yaml
+  source_text_sha256: 9c586555ea3172f4385cd8a8b101f93ab19c881a3dfb9569af3f5ad629b860a7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 68d6d511c2782964829a2d4e1c901d785479035706d1dc65fa0ef3935e3a5bad
+  timestamp: '2026-07-12T07:21:28Z'
+  output_hash: be1ed8f01c10f286ffb921c6c5e711adcd8a8cd05da3b69dd5c7670fd4b4aacc
+  usage:
+    prompt_tokens: 3071
+    completion_tokens: 368
+    total_tokens: 3439
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: John’s baptism
   reason: Retained because it is a key POB/source-grounded term in this verse.
@@ -49,30 +89,13 @@ retained_terms:
   reason: Retained because it is a key POB/source-grounded term in this verse.
 - term: from men
   reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/011/030.yaml
-  source_text_sha256: 9c586555ea3172f4385cd8a8b101f93ab19c881a3dfb9569af3f5ad629b860a7
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 1d1cee08cc39badf79daec4c4c77fc917d77f0c1c3f433f7247e8f55e4d19d70
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:28Z'
+  previous_text: Was John’s baptism from heaven or from men? Answer me.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 13eeb4f2727492b69a57eaaa2ef3240975f385e1bde8a0ac799df4482e3fe8af
+  review_summary: Revise for meaningful clarity. The current draft faithfully retains POB wording but only changes punctuation/footnotes, leaving its central Jewish idiom unexplained. “Come from God or from people” clearly communicates the source-and-authority contrast established by the Greek and POB audit trail without adding doctrinal content.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

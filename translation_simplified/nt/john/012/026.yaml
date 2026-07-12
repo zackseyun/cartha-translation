@@ -31,36 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: '"If anyone serves me, he must follow me. Where I am, my servant will be there too. If anyone serves me, the Father will honor him."'
+  text: If anyone serves me, let him follow me. Where I am, my servant will be there too. If anyone serves me, the Father will honor him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: and where I am, there my servant will be also
+  simplified_phrase: Where I am, my servant will be there too.
+  preserved_meaning: Jesus' servant will be with him where he is.
+  reasoning_layer_used: POB lexical decisions for ὅπου εἰμὶ ἐγώ and ἐκεῖ καί
+  rationale: A separate sentence and “there too” preserve the location and additive force in more natural English.
+- pob_phrase: let him follow me
+  simplified_phrase: let him follow me
+  preserved_meaning: Serving Jesus entails obeying his command to follow him.
+  reasoning_layer_used: POB lexical decision for ἀκολουθείτω and grounding review
+  rationale: Retaining “let him follow” avoids the unwarranted stronger wording “must follow.”
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The generic masculine pronouns may sound male-only to some modern readers.
+    mitigation: “Anyone” signals the inclusive reference while “him” preserves the POB gender-accurate decision.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/026.yaml
   source_text_sha256: bbb7cf7e6f87f1a711b886ec65b08842b9c7245d48e1f6ccacb7244f72629d51
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: e0e45a7ba8a9d6e9d4e968740c0165a4c0c0a28a892bde1eddda3b91ea489074
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bce219286305e827a8877353099eb53430d310e086dcc6c0f7d316ba929852b8
+  timestamp: '2026-07-12T07:16:14Z'
+  output_hash: 9a7185791a23ce0a5c6cec334f288f3d576c9c87c79ebe2031df83aac6128386
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3426
+    completion_tokens: 303
+    total_tokens: 3729
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:14Z'
+  previous_text: '"If anyone serves me, he must follow me. Where I am, my servant will be there too. If anyone serves me, the Father will honor him."'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8e2adedd14690a6177ce666ff54ed43646c1e4d3f4cb340954010bc33c2a6452
+  review_summary: The draft usefully makes “there ... also” more natural as “there too,” and it retains the promise’s breadth without defining the Father’s honor. However, “must” introduces a stronger modal claim than the POB audit trail permits. Restore “let him follow me”; the remaining simplification is clear and source-warranted.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

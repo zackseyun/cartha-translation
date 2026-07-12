@@ -34,41 +34,64 @@ base_translation:
     changes_summary: 'Changed “Messiah” to “Christ” to reflect the Greek χριστόν more directly and maintain formal consistency with the expression “who is called Christ.” [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: 'So when the crowd had gathered, Pilate said to them, “Which one do you want me to release to you: Jesus Barabbas, or Jesus who is called Messiah?”'
+  text: 'So when the crowd had gathered, Pilate said to them, “Which one do you want me to release to you: Jesus Barabbas,[a] or Jesus who is called Messiah?”'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts read simply “Barabbas.”
+    reason: textual_variant
 simplification_decisions:
-- pob_phrase: 'So when they had gathered together[a], Pilate said to them, “Which one do you want me to release to you: Jesus Barabbas[b], or Jesus who is called Messiah?”'
-  simplified_phrase: 'So when the crowd had gathered, Pilate said to them, “Which one do you want me to release to you: Jesus Barabbas, or Jesus who is called Messiah?”'
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 27 while simplifying sentence flow and common-reader wording.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source-grounding notes
-  rationale: Manual Codex SPOB drafting kept the passion narrative sequence, legal trial language, crucifixion details, titles for Jesus, death/resurrection signs, burial, and tomb-guard episode while reducing dense clauses and footnote markers into clear modern common English.
-retained_terms:
-- term: Messiah
-  reason: Retained because it is a named place, title, time marker, or key biblical term in the POB context.
+- pob_phrase: when they had gathered together
+  simplified_phrase: when the crowd had gathered
+  preserved_meaning: The people addressed by Pilate had assembled before he asked them to choose.
+  reasoning_layer_used: Immediate narrative context and POB lexical decision for συνηγμένων
+  rationale: Naming the gathered people as “the crowd” makes the pronoun clear without changing the scene.
+interpretive_expansions:
+- pob_phrase: they
+  rendering: the crowd
+  claim: Those who had gathered and whom Pilate addressed were the crowd in the trial scene.
+  evidence:
+  - The immediate context presents Pilate speaking to the assembled people.
+  - The grounding review approved “the crowd” as a warranted contextual clarification.
+  confidence: high
+  alternatives_preserved:
+  - they
+  - the people
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB Matthew 27 base translation as the controlling meaning and uses Greek/source context only as an audit guardrail.
-  readability_notes:
-  - Uses shorter clauses and modern common English while preserving Matthew 27’s trial, crucifixion, death, burial, and guarded-tomb sequence.
-  compression_notes:
-  - POB technical alternatives and footnote markers are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: Some manuscripts omit “Jesus” before Barabbas.
+    mitigation: The main text follows SBLGNT, while footnote [a] preserves the textual variant.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/027/017.yaml
   source_text_sha256: db8eef08ec637035ffa63c60b2c385e983c2d31736ec8b2bdb6399083cca08f8
-  pob_commit_sha: 5fadc1013bd5a69e4107c4ba5c61c81fe8383fcf
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:21:48Z'
-  output_hash: 9253118d9a29483bc4f9ec95b12a4f179910ec333a48333fa85da55768038ce6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5b5577d4b3aa947020c829b36c2f77ddc34d031af0e37a884f18233e05a47833
+  timestamp: '2026-07-12T07:39:53Z'
+  output_hash: 8f82e5f634591f6046932f3497daf5976c933f2ee22793e439d89e5d57fcb9ba
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3962
+    completion_tokens: 321
+    total_tokens: 4283
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Messiah
+  reason: Retained because it is a named place, title, time marker, or key biblical term in the POB context.
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:53Z'
+  previous_text: 'So when the crowd had gathered, Pilate said to them, “Which one do you want me to release to you: Jesus Barabbas, or Jesus who is called Messiah?”'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f920ded32a8383e7c6415e6a9051fba47895b4f3ead7c99eb90e6cec2bebc0d9
+  review_summary: “The crowd” is a warranted contextual clarification of the assembled people addressed by Pilate in this trial scene and is clearer than the bare pronoun “they.” The rest of the wording faithfully retains the POB’s judicial question and title. Revise only to retain the material textual-variant footnote for “Jesus Barabbas.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

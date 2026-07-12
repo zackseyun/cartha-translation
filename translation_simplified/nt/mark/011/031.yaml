@@ -31,41 +31,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They reasoned among themselves, saying, “What should we say? If we say, ‘From heaven,’ he will say, ‘Why then did you not believe him?’”
+  text: 'They were discussing it among themselves: “What should we say? If we say, ‘It came from heaven—from God,’ he will say, ‘Then why didn’t you believe John?’”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they were reasoning among themselves[a], saying, “What should we say? If we say, ‘From heaven,’ he will say, ‘Why then did you not believe him?’”
-  simplified_phrase: They reasoned among themselves, saying, “What should we say? If we say, ‘From heaven,’ he will say, ‘Why then did you not believe him?’”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: From heaven
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: were reasoning among themselves, saying
+  simplified_phrase: were discussing it among themselves
+  preserved_meaning: The group continued deliberating together.
+  reasoning_layer_used: Greek imperfect and POB lexical rationale
+  rationale: “Were discussing” is common English and keeps the ongoing, mutual action.
+- pob_phrase: From heaven
+  simplified_phrase: It came from heaven—from God
+  preserved_meaning: John’s authority had a divine origin.
+  reasoning_layer_used: POB cultural note and theological decision
+  rationale: The wording preserves the source image while immediately explaining the Jewish idiom.
+- pob_phrase: did you not believe him
+  simplified_phrase: didn’t you believe John
+  preserved_meaning: They had refused to accept John’s testimony.
+  reasoning_layer_used: Immediate context and POB lexical rationale
+  rationale: Naming John removes an unclear pronoun without changing its referent.
+interpretive_expansions:
+- pob_phrase: From heaven
+  rendering: It came from heaven—from God
+  claim: “Heaven” indicates divine origin or authorization.
+  evidence:
+  - The POB cultural note explicitly explains “from heaven” as “from God” or divine origin.
+  confidence: high
+  alternatives_preserved:
+  - From heaven
+- pob_phrase: believe him
+  rendering: believe John
+  claim: The pronoun refers to John.
+  evidence:
+  - The immediate context asks about the origin of John’s baptism.
+  confidence: high
+  alternatives_preserved:
+  - believe him
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Adding “from God” could appear to replace the source image.
+    mitigation: The rendering retains “from heaven” and adds only the POB’s own explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/031.yaml
   source_text_sha256: c642b01b28f669381656d53b3ed4eba6d9000a26c6bb5eebc239cf1a9f0adf0a
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 42d6c6087ffcbc703cb7651b815dbd32b77138cc79005a57d48d219c72ca0399
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4750db52263b5988d74cfc29e06f46f1d9d96251e8daac668500d14fb8cecbba
+  timestamp: '2026-07-12T07:21:38Z'
+  output_hash: 4150d857251ce4fe64d71172196a0bd4fe86f1d515893d837d1455f031b5fbbf
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3584
+    completion_tokens: 823
+    total_tokens: 4407
+    reasoning_tokens: 362
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: From heaven
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:38Z'
+  previous_text: They reasoned among themselves, saying, “What should we say? If we say, ‘From heaven,’ he will say, ‘Why then did you not believe him?’”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 40bf7449d6502b3a554cb529f6983394db00dfe5c9e1be815dcb106dcec9c587
+  review_summary: Revise. The proposed text is doctrinally safe, but it both weakens the ongoing deliberative sense and removes the only explanation of a culturally specific idiom. Rendering the idiom as “from God” and identifying John are warranted by POB’s own audit trail and the immediate context; they clarify rather than impose a doctrinal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

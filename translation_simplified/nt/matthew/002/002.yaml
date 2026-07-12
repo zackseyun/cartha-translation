@@ -34,56 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: saying, “Where is the one who was born king of the Jews? We saw his star in the east[a] and have come to pay him homage.[b]”
+  text: They asked, “Where is the one who was born king of the Jews? Because we saw his star in the east[a], we have come to pay him homage.[b]”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “at its rising.” The Greek phrase can mean “in the east” or refer to the star’s rising.
-    reason: simplification_note
+    reason: alternative_reading
   - marker: b
     text: Or “to worship him.” The Greek verb can mean showing deep respect to a king or worshiping God.
-    reason: simplification_note
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: We saw
-  preserved_meaning: Removed the archaic and stilted conjunction 'For' (γάρ) at the start of the sentence, which sounds unnatural in modern English dialogue, while the explanatory relationship remains clear from the context.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the archaic and stilted conjunction 'For' (γάρ) at the start of the sentence, which sounds unnatural in modern English dialogue, while the explanatory relationship remains clear from the context.
-- simplified_phrase: the one who was born
-  preserved_meaning: Simplified the perfect-passive-sounding English verb phrase to a natural past tense, while strictly respecting the lexical decision to avoid 'newborn' (which imports an infancy nuance not present in the Greek participle).
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the perfect-passive-sounding English verb phrase to a natural past tense, while strictly respecting the lexical decision to avoid 'newborn' (which imports an infancy nuance not present in the Greek participle).
-retained_terms:
-- term: king of the Jews
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: pay him homage
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: saying
+  simplified_phrase: They asked
+  preserved_meaning: The magi introduce their direct question.
+  reasoning_layer_used: POB lexical alternative and immediate context
+  rationale: Because the speech is a question, “They asked” naturally expresses the participle’s function.
+- pob_phrase: the one who has been born
+  simplified_phrase: the one who was born
+  preserved_meaning: The wording focuses on his birth without adding that he was a newborn.
+  reasoning_layer_used: POB lexical decision
+  rationale: The simple past is natural English and avoids the extra infancy nuance of “newborn.”
+- pob_phrase: For we saw his star in the east and have come
+  simplified_phrase: Because we saw his star in the east, we have come
+  preserved_meaning: Seeing the star is explicitly presented as the reason for their journey and present arrival.
+  reasoning_layer_used: POB lexical rationale for γάρ and ἤλθομεν
+  rationale: “Because” preserves the explanatory link in natural modern dialogue.
 translation_notes:
-  source_alignment_notes: Maintained the articular participle representation ('the one who was born') and the possessive 'his star' as dictated by the POB lexical choices.
-  readability_notes:
-  - The dialogue flows much more naturally in modern English by using simple past ('was born') and removing the coordinating conjunction 'For' before 'We saw'.
-  compression_notes:
-  - No semantic content was compressed or omitted, ensuring the rich theological and historical framework is fully intact.
   risk_flags:
-  - risk: None. All key ambiguities (astronomical and christological) are preserved and clarified via the simplified footnotes.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “In the east” may refer instead to the star’s rising.
+    mitigation: Footnote a preserves the documented astronomical alternative.
+  - risk: “Pay him homage” may understate the verb’s possible sense of worship.
+    mitigation: Footnote b preserves the lexical and theological ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/002/002.yaml
   source_text_sha256: 3f8c0860612b35044fe3456026e4259cb9b9248c6346df9d82303045053a6f9f
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 35c643a163141d1d98059c0640a5065d4a728e3d421261a5fdcba8da28c5c1ae
-  timestamp: '2026-05-28T08:04:40Z'
-  output_hash: 659c95c72723638ad5fa93596bcae63a2ddee857dbc808c7c2774da89faada3d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8122a6d90a781446259d72e4a106b8ddf582a708da16ec8641b2ed853f92cce0
+  timestamp: '2026-07-12T07:22:35Z'
+  output_hash: a76f916d9986a4aaa771e84c24fa13c3b942430d28698bdac1b50ce68774bfa0
   usage:
-    prompt_tokens: 1950
-    completion_tokens: 576
-    total_tokens: 5761
+    prompt_tokens: 3868
+    completion_tokens: 450
+    total_tokens: 4318
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: king of the Jews
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: pay him homage
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:35Z'
+  previous_text: saying, “Where is the one who was born king of the Jews? We saw his star in the east[a] and have come to pay him homage.[b]”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b8c48feaf8615c62f84563d1a757d7ccd925d29f32c1210105def21e6a71bd20
+  review_summary: The draft appropriately retains “king of the Jews,” preserves the real ambiguity of ἐν τῇ ἀνατολῇ, and does not force προσκυνέω into either exclusively royal homage or explicit divine worship; the footnotes are suitably clear and doctrinally restrained. Revision is needed only to make the opening genuinely readable and to retain γάρ’s explicit explanatory force in natural modern English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

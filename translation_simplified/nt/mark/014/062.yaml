@@ -37,14 +37,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said, “I am, and you will see the Son of Man seated at the right hand of Power and coming with the clouds of heaven.”
+  text: Jesus said, “Yes, I am.[a] You will see the Son of Man seated at God’s right hand[b] and coming with the clouds of heaven.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “I am he.” The Greek simply says “I am.”
+    reason: alternative_reading
+  - marker: b
+    text: The Greek says “Power,” a reverential way of referring to God.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: And Jesus said[a], “I am[c][b], and you will see the Son of Man seated at the right hand of Power and coming with the clouds of heaven.”
-  simplified_phrase: Jesus said, “I am, and you will see the Son of Man seated at the right hand of Power and coming with the clouds of heaven.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: I am
+  simplified_phrase: Yes, I am
+  preserved_meaning: Jesus directly affirms the high priest’s question without adding an explicit predicate.
+  reasoning_layer_used: POB lexical and theological decisions for Ἐγώ εἰμι
+  rationale: “Yes” makes the affirmative force clear while the footnote preserves the Greek wording and alternative.
+- pob_phrase: at the right hand of Power
+  simplified_phrase: at God’s right hand
+  preserved_meaning: The Son of Man occupies the place of highest honor and authority beside God.
+  reasoning_layer_used: POB lexical decision and cultural note for τῆς δυνάμεως
+  rationale: Naming God makes the reverential reference understandable, while the footnote retains the source image “Power.”
+- pob_phrase: I am, and you will see
+  simplified_phrase: I am. You will see
+  preserved_meaning: Jesus first answers the question and then predicts what his hearers will see.
+  reasoning_layer_used: POB syntax and immediate-context rationale
+  rationale: Two sentences clarify the movement from answer to prediction without weakening their connection.
+interpretive_expansions:
+- pob_phrase: I am
+  rendering: Yes, I am
+  claim: The words function as a direct affirmative answer.
+  evidence:
+  - The POB rationale says the expression directly answers the high priest’s question.
+  confidence: high
+  alternatives_preserved:
+  - I am
+  - I am he
+- pob_phrase: Power
+  rendering: God
+  claim: “Power” refers reverentially to God in this setting.
+  evidence:
+  - The POB cultural note explicitly identifies “Power” as a reverential reference to God.
+  confidence: high
+  alternatives_preserved:
+  - Power
+translation_notes:
+  risk_flags:
+  - risk: Adding “Yes” could be mistaken for supplying a missing Greek word.
+    mitigation: The footnote states that the Greek itself simply says “I am.”
+  - risk: Replacing “Power” in the main text could hide the source’s reverential wording.
+    mitigation: The footnote records “Power” and explains its function.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/014/062.yaml
+  source_text_sha256: 1c1d35f840583f2e0003f02166c2428ddb0f998ba09d6285f79fa77a2b517bf8
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b8514cb896ede828bda6e756da3ebfafedb8c8ca0f5be18c8517e0823923aba7
+  timestamp: '2026-07-12T07:22:25Z'
+  output_hash: 0defbb32b80a2547571dbac654dd8e94fa1aed4aaf14c046a874d2e67db6a503
+  usage:
+    prompt_tokens: 3822
+    completion_tokens: 981
+    total_tokens: 4803
+    reasoning_tokens: 380
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Son of Man
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
@@ -52,30 +114,13 @@ retained_terms:
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
 - term: clouds of heaven
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/014/062.yaml
-  source_text_sha256: 1c1d35f840583f2e0003f02166c2428ddb0f998ba09d6285f79fa77a2b517bf8
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: a606d65a8f3c8e7ddddf0c36ae57f2a9a5750472e3bdfeee1ab50553a41b7133
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:25Z'
+  previous_text: Jesus said, “I am, and you will see the Son of Man seated at the right hand of Power and coming with the clouds of heaven.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 93c7cb017fa0f315d0b167d9e49a8dbf312c2b1c4cc7204a676bf08761d47300
+  review_summary: 'Revise for actual SPOB-level clarity. The proposed changes are warranted by the immediate trial context and POB audit trail: “Yes” clarifies the direct affirmative answer without supplying “he,” and “God’s right hand” makes explicit the referent of the source’s reverential term “Power.” The Son of Man title and Danielic cloud imagery remain intact.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

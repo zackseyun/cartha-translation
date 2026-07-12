@@ -34,36 +34,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: One person believes he may eat anything, but the one who is weak eats only vegetables.
+  text: One person believes he may eat any food, but the one who is weak eats vegetables.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: eat anything
+  simplified_phrase: eat any food
+  preserved_meaning: The person believes no kind of food is forbidden to him.
+  reasoning_layer_used: POB lexical decision for φαγεῖν πάντα
+  rationale: “Any food” makes the dietary context immediately clear.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Weak” could be mistaken for physical weakness.
+    mitigation: The term is retained because the POB preserves Paul’s category and the surrounding context defines it.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/002.yaml
   source_text_sha256: a414a3c4b33da2c7f909ba38fd89782d10ac569627eb1d1fc143712a179f596f
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 5ca6aee2f565cfc9069c9ab5fdabc8df7b1f76bbd389c4e10bb2b721b06e2a0f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 73abe7d860472c3947a300cd00f28d4042c88411a550b45bb2ec73c2e0a278ee
+  timestamp: '2026-07-12T07:42:26Z'
+  output_hash: ecadeb8dae7f7e560c6cd4852c8a91187ab61e004a44030a6b240afaf072f7ad
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3163
+    completion_tokens: 170
+    total_tokens: 3333
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:26Z'
+  previous_text: One person believes he may eat anything, but the one who is weak eats only vegetables.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5f304d69ed5d557b6e5a11cedb7c9fa852a52bf7f7dde4d5c2e44fe803dfdafd
+  review_summary: Revise to remove “only.” The context makes an exclusively vegetable diet plausible, but it remains an inference that the controlling POB audit trail intentionally leaves unstated. “Any food” is a modest contemporary clarification of “anything” while preserving the unrestricted-diet contrast.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

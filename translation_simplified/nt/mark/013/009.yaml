@@ -31,43 +31,75 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But watch yourselves. People will hand you over to councils. You will be beaten in synagogues, and you will stand before governors and kings because of me, as a testimony to them.
+  text: But be on your guard. People will hand you over to councils. You will be beaten in synagogues and brought before governors and kings because of me. This will serve as a testimony to them.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “as a witness to them”; the phrase may also mean “as testimony against them.”
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: But watch yourselves. They will hand you over to councils[a], and you will be beaten in synagogues, and you will stand before governors and kings because of me, as a testimony to them.
-  simplified_phrase: But watch yourselves. People will hand you over to councils. You will be beaten in synagogues, and you will stand before governors and kings because of me, as a testimony to them.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: councils
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-- term: synagogues
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: But watch yourselves.
+  simplified_phrase: But be on your guard.
+  preserved_meaning: Jesus commands the disciples to remain alert to the danger they will face.
+  reasoning_layer_used: POB lexical decision for βλέπετε and its listed alternatives
+  rationale: “Be on your guard” makes the warning force immediately clear in common English.
+- pob_phrase: and you will stand before governors and kings
+  simplified_phrase: and brought before governors and kings
+  preserved_meaning: The disciples will be compelled to appear before both kinds of authorities.
+  reasoning_layer_used: POB lexical decision for σταθήσεσθε and Greek passive form
+  rationale: “Brought before” expresses the formal and involuntary appearance more naturally.
+- pob_phrase: because of me, as a testimony to them
+  simplified_phrase: because of me. This will serve as a testimony to them.
+  preserved_meaning: Allegiance to Jesus causes the persecution, and the resulting appearance becomes testimony to the rulers.
+  reasoning_layer_used: POB lexical and theological decisions for ἕνεκεν ἐμοῦ and εἰς μαρτύριον αὐτοῖς
+  rationale: Two sentences clarify the relationship without resolving the documented ambiguity.
+interpretive_expansions:
+- pob_phrase: They will hand you over
+  rendering: People will hand you over
+  claim: The unspecified agents who surrender the disciples are human persecutors.
+  evidence:
+  - The immediate context describes arrest, beating, and appearances before human authorities.
+  - The independent review approved this clarification of the unspecified agents.
+  confidence: high
+  alternatives_preserved:
+  - The particular people responsible remain unidentified.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Testimony to them” may also have the condemnatory sense “testimony against them.”
+    mitigation: Footnote [a] preserves the alternative without overriding the POB main reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/009.yaml
   source_text_sha256: b9efa4e590d16ffe1765dc09068b4a335f3c645e6b71b401e01edb9e668fc3fc
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: d5ca5df4528f4ccf984aaaf1feb9589b86cd3a28cb55b8fde0b4ecdbeeb82d05
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f7991803bdc7669ad701baac51cf1f9ba0421c884f43a13c72dcfa34768d2936
+  timestamp: '2026-07-12T07:23:04Z'
+  output_hash: 37ee6e66c11b49aabe6a3061e9223e5be49e6688331bb1c782e5d9b61c6ddd7b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3606
+    completion_tokens: 921
+    total_tokens: 4527
+    reasoning_tokens: 390
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: councils
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+- term: synagogues
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:04Z'
+  previous_text: But watch yourselves. People will hand you over to councils. You will be beaten in synagogues, and you will stand before governors and kings because of me, as a testimony to them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3ba8f7c2d7aef2e412aacbe8b217d746953a2a13be32d136b1e72a5f56fe59d8
+  review_summary: Splitting the long coordinated sentence improves readability, and “People will hand you over” is a warranted clarification of the unspecified human agents. However, deleting the POB’s documented alternative for the final witness phrase loses a live ambiguity. Retain a concise footnote while keeping the clearer SPOB wording.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,54 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 3:35 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''this one''].'
 translation:
   language: en
-  text: Whoever does the will of God is my brother and sister and mother.
+  text: For whoever does God’s will is my brother and sister and mother.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: the will of God
+  simplified_phrase: God’s will
+  preserved_meaning: The phrase still means what God desires or commands.
+  reasoning_layer_used: POB lexical decision for τὸ θέλημα τοῦ θεοῦ
+  rationale: The possessive form is clearer everyday English and is listed by POB as accurate.
+- pob_phrase: this one is my brother and sister and mother
+  simplified_phrase: is my brother and sister and mother
+  preserved_meaning: Each person who does God’s will is emphatically identified as belonging to Jesus’ family.
+  reasoning_layer_used: POB lexical and theological decisions for οὗτος and the kinship terms
+  rationale: The direct English construction avoids the awkward “this one” while retaining the singular identification and all three family images.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Omitting the explicit demonstrative may make its emphasis less visible.
+    mitigation: The singular “whoever … is” still directly identifies each qualifying person, and the audit records the source emphasis.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/003/035.yaml
   source_text_sha256: 6a7fb8cf016073417a44dfa76d9432e733c16301594c739775bc22c9cf8248d5
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:00:13Z'
-  output_hash: 73713173f80b2ee9ff95efee3515af0885b4493a96bbe7c1bdf009b482f68ff2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 79eadf3fc6beab4cc9478510e44f00b08d329333bfda467737aa7c2d5befe0bb
+  timestamp: '2026-07-12T07:20:36Z'
+  output_hash: 0315cac7f90416c75e5b7b3a89171a6076558f9e3c0966c064e0dacd44915294
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3682
+    completion_tokens: 521
+    total_tokens: 4203
+    reasoning_tokens: 235
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:36Z'
+  previous_text: Whoever does the will of God is my brother and sister and mother.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a93b918b0693ab1f689fa683b807594384fcf4692b8397e76b4066e83b8035c8
+  review_summary: The draft correctly preserves the inclusive, concrete family terms and does not introduce doctrinal expansion. However, it unnecessarily drops γάρ, an explicit connective supported by the source and immediate context. “God’s will” is a warranted, clearer English form of the POB wording; the natural English construction may omit the awkward literal demonstrative without changing the central meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

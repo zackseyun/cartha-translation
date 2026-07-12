@@ -34,38 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They said to him, “By what authority are you doing these things? Who gave you this authority to do them?”
+  text: They asked him, “By what authority are you doing these things? Or who gave you this authority to do them?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they were saying to him[b][a], “By what authority are you doing these things? Or who gave you this authority to do these things?”
-  simplified_phrase: They said to him, “By what authority are you doing these things? Who gave you this authority to do them?”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: And they were saying to him
+  simplified_phrase: They asked him
+  preserved_meaning: The leaders directly questioned Jesus about his authority.
+  reasoning_layer_used: Greek speech context and POB lexical decision for ἔλεγον
+  rationale: A natural English question introduction is clearer, though it compresses the imperfect aspect.
+- pob_phrase: who gave you this authority to do these things
+  simplified_phrase: who gave you this authority to do them
+  preserved_meaning: The second question still asks who authorized all the actions already mentioned.
+  reasoning_layer_used: POB lexical decisions for ἐξουσία and plural ταῦτα
+  rationale: The pronoun removes repetition without narrowing the plural reference.
+- pob_phrase: Or who gave you this authority
+  simplified_phrase: Or who gave you this authority
+  preserved_meaning: The second question remains an alternative formulation of the same challenge.
+  reasoning_layer_used: POB lexical decision for ἢ and grounding review
+  rationale: Retaining “Or” preserves the explicit relationship between the two questions.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “They asked” does not explicitly show the ongoing or repeated aspect of “were saying.”
+    mitigation: It naturally represents the speech act in English without changing the substance of the challenge.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/028.yaml
   source_text_sha256: 07748342d9cf2d53947ba8eac00bcd31e907ba15ef36e8c7d9854e4e6b8b4823
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 1783f9bd731d7e2b266636129e58d40f8dec8e27f71d8cfdddb80805606b992b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8f4daf5669f166708bc977285d3c1323d043873799b30bc20cd4e88d7d74272e
+  timestamp: '2026-07-12T07:21:32Z'
+  output_hash: 665ad22ce8961d19847f446e5d0a1b9f4ab2c3eacc6fc0ba80951a5ac86dbf61
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3164
+    completion_tokens: 443
+    total_tokens: 3607
+    reasoning_tokens: 89
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:32Z'
+  previous_text: They said to him, “By what authority are you doing these things? Who gave you this authority to do them?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 07d82c7731a92017079927deef446ec0afd3cf6304eaf05ca4a324312b26f55e
+  review_summary: The draft is clear, neutral, and does not add a doctrinal answer to the leaders’ challenge. Recast the speech introduction naturally as “They asked him,” but retain “Or” so the relationship between the two source questions remains explicit.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

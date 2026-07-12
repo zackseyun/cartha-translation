@@ -40,18 +40,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: In seven days I will make it rain on the earth for forty days and forty nights. I will wipe out every living thing I have made from the face of the ground.
+  text: For in seven days I will make it rain on the earth for forty days and forty nights. I will wipe out every living thing I have made from the face of the ground.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Omitted the introductory 'For' and simplified 'seven more days' to 'seven days' for a more direct and natural opening, while preserving the countdown aspect of the Hebrew idiom.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the introductory 'For' and simplified 'seven more days' to 'seven days' for a more direct and natural opening, while preserving the countdown aspect of the Hebrew idiom.
-- preserved_meaning: Removed the relative pronoun 'that' to streamline the sentence flow for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the relative pronoun 'that' to streamline the sentence flow for modern readers.
-- preserved_meaning: Split the verse into two sentences to reduce syntactic density and enhance readability.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the verse into two sentences to reduce syntactic density and enhance readability.
+- pob_phrase: For in seven more days
+  simplified_phrase: For in seven days
+  preserved_meaning: Seven days remain before God sends the rain, and the verse explains the preceding command.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: Removing “more” makes the countdown natural while retaining “For” to preserve the explanatory link.
+- pob_phrase: forty days and forty nights, and I will wipe out
+  simplified_phrase: forty days and forty nights. I will wipe out
+  preserved_meaning: God will cause the prolonged rain and then carry out the stated judgment.
+  reasoning_layer_used: SPOB readability rules
+  rationale: Two sentences make the sequence easier to follow without separating the related actions.
+- pob_phrase: every living thing that I have made
+  simplified_phrase: every living thing I have made
+  preserved_meaning: The judgment reaches the living order God created.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Dropping the optional “that” improves flow while preserving the broad scope and God’s role as creator.
+translation_notes:
+  risk_flags:
+  - risk: “In seven days” is slightly less explicit than “in seven more days” about the remaining interval.
+    mitigation: The countdown meaning remains clear, and the POB audit identifies this as an idiomatic rendering.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/ot/genesis/007/004.yaml
+  source_text_sha256: b804c3fd304778b99f9f1a8a526268155aa7da3e3f2df3bd92f32a5882ae51f0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7cd6e455da63f48d7cce97d3d5b3f3ab6a761d80f502869622ef83ed73cc9ecb
+  timestamp: '2026-07-12T09:23:07Z'
+  output_hash: 8e92342ef13b252cdb1359bb0c8c119c42c4d40f018b37b8840d5e26f1f9559c
+  usage:
+    prompt_tokens: 4009
+    completion_tokens: 368
+    total_tokens: 4377
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: earth
   reason: Retained to preserve POB's source-grounded terminology.
@@ -61,33 +93,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: forty days and forty nights
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the lexical distinction between 'earth' (erets) and 'ground' (adamah) as decided in the POB. Retained 'wipe out' to reflect the active erasing imagery of the Hebrew verb 'macha'.
-  readability_notes:
-  - Splitting the dense compound sentence into two shorter statements dramatically improves comprehension for modern readers without losing any narrative gravity.
-  compression_notes:
-  - Removed 'For' and 'that' to achieve a cleaner, punchier modern cadence.
-  risk_flags:
-  - risk: Minimal risk. The loss of the explicit logical connection ('For') is mitigated by the clear narrative context of the preceding verses.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/ot/genesis/007/004.yaml
-  source_text_sha256: b804c3fd304778b99f9f1a8a526268155aa7da3e3f2df3bd92f32a5882ae51f0
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: e7b679c37edf1d710194c112e4f210f24f50e4a6a56a6629594614743b5d5aa6
-  timestamp: '2026-05-28T09:29:08Z'
-  output_hash: d4dbc1123ff4b7f0c415609d69f1b21054ee575cfeb69a287e4b4814784b8e09
-  usage:
-    prompt_tokens: 2485
-    completion_tokens: 465
-    total_tokens: 6517
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:07Z'
+  previous_text: In seven days I will make it rain on the earth for forty days and forty nights. I will wipe out every living thing I have made from the face of the ground.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1951b8c21c89a956d09ac46c99a3bc2e992184872c4deb9d8c518b760900060c
+  review_summary: The split into two sentences and removal of “that” improve readability without changing the judgment’s scope or God’s agency. “In seven days” adequately expresses the remaining interval in accessible English. However, restore “For” so readers retain the verse’s explanatory link to the preceding command.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

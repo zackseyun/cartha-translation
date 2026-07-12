@@ -31,44 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The eye is the lamp of the body. So if your eye is healthy[a], your whole body will be full of light.
+  text: The eye is like a lamp for the body. So if your eye is healthy[a], your whole body will be full of light.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'single,' 'clear,' or 'sound'; the Greek word can also carry the sense of being undivided or, in some contexts, generous.
-    reason: simplification_note
+    text: Or “single,” “clear,” or “sound.” The Greek word can also suggest being undivided or, in some contexts, generous.
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: lamp
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: healthy
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: The eye is the lamp of the body.
+  simplified_phrase: The eye is like a lamp for the body.
+  preserved_meaning: The eye is pictured as the means by which the body receives light.
+  reasoning_layer_used: POB lexical decision for λύχνος and grounding review
+  rationale: Adding “like” makes the metaphor immediately clear while preserving its concrete lamp image.
+- pob_phrase: Therefore, if
+  simplified_phrase: So if
+  preserved_meaning: The condition follows logically from the statement about the eye as a lamp.
+  reasoning_layer_used: POB lexical decision for ἐὰν οὖν
+  rationale: “So if” expresses the inference in smoother common English.
+interpretive_expansions:
+- pob_phrase: The eye is the lamp of the body.
+  rendering: The eye is like a lamp for the body.
+  claim: The statement presents a comparison rather than identifying the eye as a literal lamp.
+  evidence:
+  - The immediate context uses bodily illumination as a metaphor.
+  - The POB rationale explicitly describes the eye as the body’s source of illumination.
+  confidence: high
+  alternatives_preserved:
+  - The eye is the lamp of the body.
 translation_notes:
-  source_alignment_notes: Perfectly aligned with SBLGNT Matthew 6:22. Every major lexical decision from POB is preserved, including the future tense 'will be' (ἔσται) and the physical-moral metaphor of body and eye.
-  readability_notes:
-  - The sentence flow is improved for modern readers by replacing the stiff transition 'Therefore, if' with the smoother, conversational 'So if'.
-  compression_notes:
-  - No semantic compression was done; the source text's brevity is already ideal for a simplified version.
+  risk_flags:
+  - risk: Adding “like” makes the metaphor’s comparison more explicit than the Greek wording.
+    mitigation: The wording retains both the eye and lamp images without adding a moral interpretation.
+  - risk: “Healthy” does not display every possible nuance of ἁπλοῦς.
+    mitigation: The footnote preserves the documented alternatives and semantic range.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/006/022.yaml
   source_text_sha256: 8c4cc32ba29a3169684aa5a18d194343b1571459192aace18c575a307d5a7e43
-  pob_commit_sha: 596da3b17d97fa6f4043e86c5421db337bf2c1d2
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: ae6facfedd4eaeead7bef1c2674742edfeb8b8ac9da4e9a579a4496d17cac1f2
-  timestamp: '2026-05-28T06:20:54Z'
-  output_hash: c7af76527b0bdcbb87dca411ee4d3de02cb8caa3ce637ade2a6ea32b5c68b89e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7689e4fe09256698ea4f07d80f127e7e3f4abc880e8b373d1d5c7a2beb45c170
+  timestamp: '2026-07-12T07:36:32Z'
+  output_hash: d087d8173d5505fe85e5a5b275816d8ded4efa549cdb8372b4b119757635a374
   usage:
-    prompt_tokens: 1725
-    completion_tokens: 594
-    total_tokens: 5375
+    prompt_tokens: 3182
+    completion_tokens: 447
+    total_tokens: 3629
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: lamp
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: healthy
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:32Z'
+  previous_text: The eye is the lamp of the body. So if your eye is healthy[a], your whole body will be full of light.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 93712bb55ddc1f5cd901a695dfb55f02e6eac75319eef055453801ae18025337
+  review_summary: Revise for a real understanding-first improvement. “So” is warranted for οὖν, but by itself it is too slight to satisfy SPOB’s clarity goal. Adding “like” makes the metaphor explicit without adding doctrine or selecting among the live moral implications of ἁπλοῦς. Retain “healthy” and the footnote, since the POB’s source and contextual rationale supports that main-text rendering while preserving relevant alternatives.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

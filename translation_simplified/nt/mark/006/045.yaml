@@ -34,41 +34,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Immediately Jesus made his disciples get into the boat and go ahead to the other side, toward Bethsaida, while he dismissed the crowd.
+  text: Immediately Jesus made his disciples get into the boat and go ahead of him to the other side, toward Bethsaida. He would stay behind until he had dismissed the crowd.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: compelled his disciples
-  simplified_phrase: made his disciples
-  preserved_meaning: Keeps Jesus' strong direction while using common modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Made'' is simpler than ''compelled'' and still shows that Jesus required them to go.'
-retained_terms:
-- term: Bethsaida
-  reason: Preserves the geographical destination/direction.
+- pob_phrase: he compelled his disciples
+  simplified_phrase: Jesus made his disciples
+  preserved_meaning: Jesus strongly directed his disciples rather than merely suggesting that they leave.
+  reasoning_layer_used: POB lexical decision for ἠνάγκασεν and narrative context
+  rationale: “Made” is common English and retains the force of Jesus’ command.
+- pob_phrase: go ahead
+  simplified_phrase: go ahead of him
+  preserved_meaning: The disciples were to leave before Jesus.
+  reasoning_layer_used: POB lexical decision for προάγειν
+  rationale: Adding “of him” makes the relational meaning immediately clear.
+- pob_phrase: until he himself dismissed the crowd
+  simplified_phrase: He would stay behind until he had dismissed the crowd.
+  preserved_meaning: Jesus personally remained to send the crowd away before following the disciples.
+  reasoning_layer_used: POB lexical decisions for ἕως, αὐτός, and ἀπολύει
+  rationale: A separate sentence clarifies Jesus’ action while preserving the temporal limit expressed by “until.”
+interpretive_expansions:
+- pob_phrase: he himself
+  rendering: He would stay behind
+  claim: Jesus remained with the crowd when the disciples left ahead of him.
+  evidence:
+  - The disciples are told to go ahead, while emphatic αὐτός assigns the dismissal to Jesus personally.
+  - The temporal marker “until” relates their departure to Jesus’ dismissal of the crowd.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves immediacy, Jesus' strong instruction, boat, other side, Bethsaida direction, and dismissal of the crowd.
-  readability_notes:
-  - Uses 'while' to express the simultaneous dismissal clearly.
-  compression_notes:
-  - No travel detail is removed.
+  risk_flags:
+  - risk: “Made” may sound slightly weaker than “compelled.”
+    mitigation: The construction “made his disciples get into the boat” still presents the action as required.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/045.yaml
   source_text_sha256: 146119230fed56f65ebbfdbee5624b9ebaddec3d25acdd4cb7cda55bcedc7314
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:46Z'
-  output_hash: 315bff844cc2fda60ee8148864c18141f34ece50480c2c2cd05bf757841733c4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bf7e5157af3efd87a41a8c00a1ddb999f69356ea20da61d16e975653767782a1
+  timestamp: '2026-07-12T07:20:35Z'
+  output_hash: ffb5144f2f76bdfc4d3bd461d93532a73d6a3be84ffe5df2570dbf3dfe051be4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3321
+    completion_tokens: 442
+    total_tokens: 3763
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Bethsaida
+  reason: Preserves the geographical destination/direction.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:35Z'
+  previous_text: Immediately Jesus made his disciples get into the boat and go ahead to the other side, toward Bethsaida, while he dismissed the crowd.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d478699b490e48d7a8a576034aedc6c2b3f93d944f349ce6e20eeb3bbfe65100
+  review_summary: The draft is clearer in its use of “made” and its explicit identification of Jesus, both of which are warranted by the context. However, “while” weakens and changes the temporal relationship expressed by ἕως. Retain “until” to preserve the source-text relation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

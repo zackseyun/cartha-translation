@@ -31,38 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Some people standing there said to them, “What are you doing, untying the colt?”
+  text: Some people standing there were saying to them, “What are you doing, untying the young donkey?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And some of those standing there were saying to them[a], “What are you doing, untying the colt?”
-  simplified_phrase: Some people standing there said to them, “What are you doing, untying the colt?”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: some of those standing there
+  simplified_phrase: some people standing there
+  preserved_meaning: An unspecified group among the people present questioned the disciples.
+  reasoning_layer_used: POB lexical decision for τινες and τῶν ἐκεῖ ἑστηκότων
+  rationale: This removes formal partitive wording while preserving the unspecified group and their location.
+interpretive_expansions:
+- pob_phrase: the colt
+  rendering: the young donkey
+  claim: The young animal being untied is a donkey.
+  evidence:
+  - The POB footnote says that πῶλος refers to a donkey in this context.
+  - The POB lexical rationale says the parallel accounts clarify that the animal is a donkey.
+  confidence: high
+  alternatives_preserved:
+  - the colt
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Young donkey” is more specific than Mark’s general term for a young animal.
+    mitigation: The POB footnote and lexical rationale explicitly support this contextual identification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/005.yaml
   source_text_sha256: cf405809fabfff069e266cf6b54b128615f290f7f315e678d5a303b0e172aa07
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: a6494e70d2d5b60d916c4e16f5b1b4f239b0a387648095214a79496e86e480c9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ee40222e98037590bc7e55006f6aabeceafd668f5f7d925beaf69ca0e7aef352
+  timestamp: '2026-07-12T07:21:19Z'
+  output_hash: 441a23f369d1556f5bb46781446a6322512207d61106fbd1ba91f2060c19853b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3214
+    completion_tokens: 377
+    total_tokens: 3591
+    reasoning_tokens: 91
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:19Z'
+  previous_text: Some people standing there said to them, “What are you doing, untying the colt?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 44458f650b04c76558baa743fdd86a868826c123af9633299da8beaaabc874fd
+  review_summary: Revise. “Some people standing there” is a clear, warranted simplification of “some of those standing there.” However, with the explanatory footnote removed, “colt” can misleadingly suggest a horse; “young donkey” is supported by the stated contextual evidence and makes the actual referent clear. Retaining “were saying” also preserves the modest imperfect nuance without reducing readability.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

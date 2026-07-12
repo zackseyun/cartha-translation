@@ -27,38 +27,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They came to Bethsaida. People brought a blind man to Jesus and begged him to touch him.
+  text: They came to Bethsaida. They brought a blind man to Jesus and begged him to touch him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they came to Bethsaida. And they brought a blind man to him and begged him to touch him.
-  simplified_phrase: They came to Bethsaida. People brought a blind man to Jesus and begged him to touch him.
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
+- pob_phrase: And they came to Bethsaida. And they brought
+  simplified_phrase: They came to Bethsaida. They brought
+  preserved_meaning: The same unnamed plural subject and sequence of events remain open as in the POB.
+  reasoning_layer_used: POB translation and lexical decisions for καί, ἔρχονται, and φέρουσιν
+  rationale: Removing repeated opening “And” gives natural modern English without identifying the unnamed group.
+- pob_phrase: to him
+  simplified_phrase: to Jesus
+  preserved_meaning: The recipient is explicitly identified as Jesus from the immediate context.
+  reasoning_layer_used: Immediate narrative context and grounding review
+  rationale: Naming Jesus prevents unclear pronoun reference while preserving the contextual referent.
+interpretive_expansions:
+- pob_phrase: to him
+  rendering: to Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the one approached for healing.
+  confidence: high
+  alternatives_preserved:
+  - to him
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: Naming Jesus makes an implicit referent explicit.
+    mitigation: The immediate context clearly identifies him, while the unnamed plural subject remains “they.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/022.yaml
   source_text_sha256: 3e443ac7ae77d0a1211c4626b4fe91fb7ebe9367a3b50681c29c24d2b2e3fcfc
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: 1939daf1190e480df5467e6f305937168174edf324ee34f16d75d8543176788a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 82cd9169eeee845eb30f2bda5756df7774212fc176010ada0d350461738a0d2f
+  timestamp: '2026-07-12T07:20:50Z'
+  output_hash: c47de3ebec8f99efffc8d55ae8958d3744481c1e78fd2ae794b5c23f0670ae88
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3010
+    completion_tokens: 323
+    total_tokens: 3333
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:50Z'
+  previous_text: They came to Bethsaida. People brought a blind man to Jesus and begged him to touch him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8aac6e27ddd74cc03e08c497a05f7928fe425cba050bcf5a18e134d6d4196f67
+  review_summary: Naming Jesus makes the pronoun reference clear and is warranted by the immediate context. However, "People" resolves the source's unstated plural subject and can imply a different group from the preceding "they." Retain the plural pronoun while keeping the contextual clarification "Jesus."
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

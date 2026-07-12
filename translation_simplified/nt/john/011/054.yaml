@@ -31,36 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So Jesus no longer moved about openly among the Jewish people. Instead, he left there for the region near the wilderness, to a city called Ephraim, and stayed there with the disciples.
+  text: So Jesus no longer moved about openly among the Jews[a]. He left there for the region near the wilderness, to a city called Ephraim, and stayed there with the disciples.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “among the Judeans.” In John, “the Jews” can sometimes refer more specifically to people in Judea or to the Judean authorities, depending on context.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: walked openly
+  simplified_phrase: moved about openly
+  preserved_meaning: Jesus stopped appearing and traveling in public view.
+  reasoning_layer_used: POB lexical decision for παρρησίᾳ and περιεπάτει
+  rationale: This expresses the public-movement idiom clearly without losing the walking-about sense.
+- pob_phrase: but departed from there
+  simplified_phrase: He left there
+  preserved_meaning: Jesus went away from his previous location as a consequence of the plot against him.
+  reasoning_layer_used: POB lexical decisions for οὖν and ἀπῆλθεν ἐκεῖθεν
+  rationale: A new sentence makes the movement easier to follow without adding an either-or contrast.
+- pob_phrase: among the Jews
+  simplified_phrase: among the Jews[a]
+  preserved_meaning: Jesus no longer moved publicly among the group described by the context-sensitive term Ἰουδαῖοι.
+  reasoning_layer_used: POB theological decision and alternative-reading footnote
+  rationale: The footnote preserves the plausible regional meaning “Judeans” without settling the ambiguity.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “The Jews” may be misread as referring broadly to all Jewish people.
+    mitigation: The footnote preserves the contextual alternative “the Judeans” and notes the term’s range in John.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/054.yaml
   source_text_sha256: 3219ed51a6239a80af70930a07ba454ae428b9ab38bcf08093ff23fb36504bc1
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:39Z'
-  output_hash: a51685c58456f3d0a37a296e0614c786f669a5f7d771cb60c0d98a2c9ab4a6b0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 55a4cd13a9511e86d7c47addcd15d3a016cdabd5e3b7f65001227cd990331a8c
+  timestamp: '2026-07-12T07:16:17Z'
+  output_hash: db242af7b4e962d5453b4d3774747e6e3dbda7a6d51cf44fcfbd3322a1867811
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3630
+    completion_tokens: 545
+    total_tokens: 4175
+    reasoning_tokens: 114
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:17Z'
+  previous_text: So Jesus no longer moved about openly among the Jewish people. Instead, he left there for the region near the wilderness, to a city called Ephraim, and stayed there with the disciples.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 91971304cc175716e6cb829d47c717ee5feb3e23e99c40dad276707ce5191a54
+  review_summary: “Moved about openly” is a warranted and clearer rendering of the public-movement idiom. Revision is needed because “Jewish people,” especially with the footnote removed, collapses the POB-preserved Jews/Judeans ambiguity. Retain the POB alternative-reading footnote (“Or ‘among the Judeans’”) in publication. Removing “Instead” also avoids adding a stronger contrast than the narrative sequence requires.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

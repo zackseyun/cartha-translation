@@ -34,38 +34,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then he came to the disciples and found them sleeping. He said to Peter, “So, were you not able to stay awake with me for one hour?”
+  text: Then he came to the disciples and found them sleeping. He said to Peter, “So, could you not stay awake with me for one hour?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he comes to the disciples and finds them sleeping
-  simplified_phrase: Then he came to the disciples and found them sleeping
-  preserved_meaning: Preserves Jesus finding the disciples asleep while using simple past narrative.
-  reasoning_layer_used: POB translation text and lexical notes
-  rationale: Keeps the question's force and clarifies it with natural English.
+- pob_phrase: And he comes to the disciples and finds them sleeping, and he says to Peter
+  simplified_phrase: Then he came to the disciples and found them sleeping. He said to Peter
+  preserved_meaning: Jesus returns, finds the disciples sleeping, and addresses Peter.
+  reasoning_layer_used: POB translation and historical-present lexical notes
+  rationale: Past tense and two sentences make the narrative natural without changing the events.
+- pob_phrase: were you not able to stay awake with me for one hour?
+  simplified_phrase: could you not stay awake with me for one hour?
+  preserved_meaning: Jesus rebukes the disciples for lacking the ability to remain awake with him for an hour.
+  reasoning_layer_used: POB lexical decision for οὐκ ἰσχύσατε and theological number decision
+  rationale: “Could you not” is the POB-supported ordinary English equivalent and retains the plural rebuke addressed through Peter.
 translation_notes:
-  source_alignment_notes: Follows POB's scene and Jesus' question to Peter.
-  readability_notes:
-  - Splits the narrative and direct speech into clear sentences.
-  compression_notes:
-  - Watch/stay-awake alternatives remain in base footnotes.
+  risk_flags:
+  - risk: English “you” does not visibly mark that the Greek question is plural.
+    mitigation: Naming Peter while referring to the sleeping disciples preserves the source tension without resolving it.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/040.yaml
   source_text_sha256: 503056108bb344270f783971b3803e0e7d31dd1a3e2ae21e26a93fe7eb2655d9
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:58Z'
-  output_hash: a87901d00191a1d3bbae0156978c9588ee4c76db4dcbf5427334c8031c83dffe
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8d64d78b11ef8854ab5c9a288ee0f5da01c6622f296802a881947d2ad3e58ac8
+  timestamp: '2026-07-12T07:40:30Z'
+  output_hash: e34ce2300a0baab437e79d5b54845f46a5af5b348a8d9981007578c232252fde
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3336
+    completion_tokens: 322
+    total_tokens: 3658
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:40:30Z'
+  previous_text: Then he came to the disciples and found them sleeping. He said to Peter, “So, were you not able to stay awake with me for one hour?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 76153dbcc76fc55f6b783a20deac9284d9b899480612e7ad770b7e3d2e9f18ea
+  review_summary: The shift from historical presents to ordinary past-tense narration is a warranted readability simplification and does not alter the event or its force. The draft also properly preserves the significant singular address to Peter alongside the plural question. Revision is needed only to replace the stiff “were you not able” with the clearer, audit-supported “could you not.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

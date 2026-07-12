@@ -31,38 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But many who are first will be last, and the last will be first.”
+  text: But many who are first will be last, and those who are last will be first.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But many who are first will be last[a], and the last first.
-  simplified_phrase: But many who are first will be last, and the last will be first.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: and the last first
+  simplified_phrase: and those who are last will be first
+  preserved_meaning: It preserves the reversal between first and last while making the implied verb and people explicit.
+  reasoning_layer_used: POB footnote and lexical decisions for οἱ ἔσχατοι and ἔσονται
+  rationale: The fuller wording is easier for a modern reader to understand immediately.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Readers may take the saying as an absolute rule for every person.
+    mitigation: The word “many” preserves the POB's open-ended scope.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/031.yaml
   source_text_sha256: c381cf11370edde9ebfdc24b3a34ec805727e6cdb09f393f3df0a32ad1de3cf9
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 3b4dadc7487b960f33dc2897726e7c850545bac56f93dc23e246e539e517911d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6dec24a2d3d17ea6241ba14d03702acbdcc09ad50ac8bed6f682fb64a5cc8aa3
+  timestamp: '2026-07-12T07:22:20Z'
+  output_hash: 198f5d78a738a4e547926f4831e865fdd5a90246df2341ad1e0ffa9cbac52003
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2977
+    completion_tokens: 195
+    total_tokens: 3172
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:20Z'
+  previous_text: But many who are first will be last, and the last will be first.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 307198dcefb8799f804b7ce57b08cfa05cd2747d2c186b5ba5ad87b3aa3d7330
+  review_summary: Adding “will be” in the second clause clearly supplies English's implied verb without adding a category, doctrine, or application. It is warranted by the Greek future verb governing the coordinated reversal and preserves the POB's deliberately open scope. Remove the stray closing quotation mark.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -19,19 +19,60 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 28:2 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''came up'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote'
 translation:
   language: en
-  text: Suddenly there was a great earthquake. An angel of the Lord had come down from heaven, came to the tomb, rolled away the stone, and was sitting on it.
+  text: Suddenly there was a great earthquake, because an angel of the Lord had come down from heaven, approached the tomb, rolled away the stone, and was sitting on it.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And behold
   simplified_phrase: Suddenly
-  preserved_meaning: Preserved the attention-marking force of the narrative transition in natural English.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Suddenly'' signals the abrupt event without retaining archaic ''behold.'''
+  preserved_meaning: Preserves the attention-grabbing force and abrupt arrival of the event.
+  reasoning_layer_used: POB text and immediate narrative context
+  rationale: “Suddenly” conveys the transition naturally without the archaic “behold.”
+- pob_phrase: for an angel of the Lord had come down from heaven
+  simplified_phrase: because an angel of the Lord had come down from heaven
+  preserved_meaning: Keeps the stated explanatory connection between the earthquake and the angel’s arrival.
+  reasoning_layer_used: POB text and source payload
+  rationale: “Because” makes the force of “for” immediately clear to modern readers.
 - pob_phrase: came up and rolled away the stone
-  simplified_phrase: came to the tomb, rolled away the stone
-  preserved_meaning: Clarified the movement before the angel rolls the stone away.
-  reasoning_layer_used: POB lexical decisions
-  rationale: The simplified wording keeps the same sequence of actions.
+  simplified_phrase: approached the tomb, rolled away the stone
+  preserved_meaning: Keeps the angel’s approach as a distinct action before he rolls away the stone.
+  reasoning_layer_used: Immediate narrative context
+  rationale: The tomb supplies the clear contextual destination while preserving the sequence of actions.
+interpretive_expansions:
+- pob_phrase: came up
+  rendering: approached the tomb
+  claim: The angel approached the tomb before rolling away its stone.
+  evidence:
+  - The immediate context places the women at the tomb.
+  - The stone belongs to the tomb mentioned in the surrounding account.
+  confidence: high
+  alternatives_preserved:
+  - approached
+  - came near
+translation_notes:
+  risk_flags:
+  - risk: Naming the tomb makes an unstated destination explicit.
+    mitigation: The immediate context clearly identifies the tomb and its stone, while “approached” preserves the source action.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/028/002.yaml
+  source_text_sha256: 1cb54f9e69e07f9ab7b9afce6d7ae0bd64b6b61b85502411f87932b444f0252b
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 128cdab9bac68824f55c97990c846e30a5f2bf086e370582e3a4cce18fd3eb85
+  timestamp: '2026-07-12T07:38:43Z'
+  output_hash: c4ef4525eb628c011a8b3fbda9595ea58506c60a1eb1e1c129d0a903f72153e0
+  usage:
+    prompt_tokens: 2772
+    completion_tokens: 428
+    total_tokens: 3200
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: angel of the Lord
   reason: Retained as the source-grounded identity.
@@ -39,30 +80,13 @@ retained_terms:
   reason: Retained to preserve the direction of the angel's descent.
 - term: stone
   reason: Retained as the concrete tomb detail.
-translation_notes:
-  source_alignment_notes: Preserves the angel's descent, the earthquake, the rolling away of the stone, and the angel sitting on it.
-  readability_notes:
-  - Splits the long POB sentence into two shorter sentences.
-  compression_notes:
-  - No event is removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/028/002.yaml
-  source_text_sha256: 1cb54f9e69e07f9ab7b9afce6d7ae0bd64b6b61b85502411f87932b444f0252b
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:26:31Z'
-  output_hash: 02860661bbe2fd177e28d411cd78667fc8232364a60a456ab579dcd8c2ee981d
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:43Z'
+  previous_text: Suddenly there was a great earthquake. An angel of the Lord had come down from heaven, came to the tomb, rolled away the stone, and was sitting on it.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: eb66110448c8f743a8678a9d027ca2762ab0856db7499be8b4e90d0676773a81
+  review_summary: The draft is substantially clearer, and “came to the tomb” is warranted by the immediate tomb-and-stone context, though it should not be attributed to a nonexistent POB lexical decision. Revision is required because omitting “for” removes the verse’s explanatory connection between the earthquake and the angel’s arrival and action. The replacement restores that connection in clear contemporary English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

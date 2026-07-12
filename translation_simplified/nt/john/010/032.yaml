@@ -34,22 +34,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus answered them, "I have shown you many good works from the Father[a]. Which of these works are you stoning me for?"
+  text: Jesus answered them, “I showed you many good works from the Father.[a] Which of these works are you stoning me for?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Some translations say 'from my Father,' but the Greek text says 'from the Father.'
-    reason: simplification_note
+    text: Some translations say “from my Father,” but the Greek text says “from the Father.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Changed 'I showed you' to 'I have shown you' for a more natural conversational flow in modern English when referring to past actions with present consequences.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'I showed you' to 'I have shown you' for a more natural conversational flow in modern English when referring to past actions with present consequences.
-- preserved_meaning: Simplified 'for which of them are you stoning me?' to 'Which of these works are you stoning me for?' to remove the formal and archaic phrasing.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified 'for which of them are you stoning me?' to 'Which of these works are you stoning me for?' to remove the formal and archaic phrasing.
-- preserved_meaning: Maintained the exact pronoun reference by clarifying 'them' as 'these works' for better readability.
-  reasoning_layer_used: POB audit trail
-  rationale: Maintained the exact pronoun reference by clarifying 'them' as 'these works' for better readability.
+- pob_phrase: for which of them
+  simplified_phrase: Which of these works
+  preserved_meaning: The question still asks which one of Jesus’s many works prompted their action.
+  reasoning_layer_used: POB lexical decision on διὰ ποῖον αὐτῶν ἔργον
+  rationale: Repeating “works” makes the pronoun’s referent immediately clear.
+- pob_phrase: I showed you many good works from the Father; for which of them are you stoning me?
+  simplified_phrase: I showed you many good works from the Father. Which of these works are you stoning me for?
+  preserved_meaning: Jesus contrasts his good works from the Father with their attempt to stone him.
+  reasoning_layer_used: POB optimal-equivalence philosophy
+  rationale: Two sentences and natural question order make the contrast easier to follow.
+translation_notes:
+  risk_flags:
+  - risk: Readers may take “from the Father” as an accidental omission of “my.”
+    mitigation: The footnote explains that the Greek text has no possessive pronoun.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/010/032.yaml
+  source_text_sha256: 4fd34e1e67d86d48e24d55917b7fac9a855fefaca4b8337504c772d7624b165e
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 82834af059e7939e50f821b9b90ee5322320941ce69e31e48a3b72f39c1a9dc3
+  timestamp: '2026-07-12T07:16:19Z'
+  output_hash: 8946b5c28ae84e35b96eb70f0aa9fac550551ed59008b836422667682aad0f43
+  usage:
+    prompt_tokens: 3543
+    completion_tokens: 339
+    total_tokens: 3882
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: good works
   reason: Retained to preserve POB's source-grounded terminology.
@@ -57,33 +84,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: stoning
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The phrase 'Which of these works are you stoning me for?' accurately translates 'διὰ ποῖον αὐτῶν ἔργον ἐμὲ λιθάζετε;' by preserving the causal force of 'διὰ' with the accusative, while unpacking the pronoun 'αὐτῶν' as 'these works' to maintain clarity in modern English.
-  readability_notes:
-  - Splitting the POB's single compound sentence into two sentences prevents the question from feeling overly dense, and putting the preposition 'for' at the end of the question aligns with natural spoken English patterns.
-  compression_notes:
-  - No theological or critical components were compressed. The reference to 'works' was repeated in the final clause to clarify what 'them' pointed back to, which avoids ambiguity.
-  risk_flags:
-  - risk: None. The potential risk of theological smoothing (such as changing 'the Father' to 'my Father') has been successfully avoided, with an explanatory footnote included to clarify this choice for the reader.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/010/032.yaml
-  source_text_sha256: 4fd34e1e67d86d48e24d55917b7fac9a855fefaca4b8337504c772d7624b165e
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: be2428775aaf59faf91a17d9560730539b611ced6c4989b2a9c4d2c4fff26d17
-  timestamp: '2026-05-28T09:33:50Z'
-  output_hash: 562cfa5f8774a0cd509b4255c81df1e8c09ca5ac7d2b92b208cbc74429e58315
-  usage:
-    prompt_tokens: 1773
-    completion_tokens: 503
-    total_tokens: 6543
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:19Z'
+  previous_text: Jesus answered them, "I have shown you many good works from the Father[a]. Which of these works are you stoning me for?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 29b181d90c5bdc667b2642ecad1c77f77b152c000be8397a90061d95204cec51
+  review_summary: The explicit “Which of these works” is a warranted and meaningful readability improvement over the pronoun-based POB wording; it accurately identifies the antecedent of “them” without adding an interpretation. Retaining “the Father” appropriately preserves the Greek wording and avoids theological smoothing. Revise only the present perfect “I have shown” to the simple past “I showed,” which follows the source-sensitive POB decision without reducing clarity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,38 +31,62 @@ base_translation:
     changes_summary: Removed the second 'and' before 'prepare' to reflect the Greek more naturally in English while preserving the imperative and all source elements.
 translation:
   language: en
-  text: He will show you a large upstairs room, furnished and ready. Prepare the meal for us there.”
+  text: He himself will show you a large upstairs room, furnished and ready. Prepare the Passover meal for us there.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he himself will show you a large upper room[a], furnished and ready; prepare for us there.
-  simplified_phrase: He will show you a large upstairs room, furnished and ready. Prepare the meal for us there.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: a large upper room
+  simplified_phrase: a large upstairs room
+  preserved_meaning: The room is large and located in the upper part of the house.
+  reasoning_layer_used: POB lexical decision for ἀνάγαιον
+  rationale: “Upstairs room” is clearer to modern readers than “upper room.”
+- pob_phrase: furnished and ready; prepare for us there
+  simplified_phrase: furnished and ready. Prepare the Passover meal for us there.
+  preserved_meaning: The room is arranged for use, but the disciples must complete the Passover preparations there.
+  reasoning_layer_used: POB lexical decisions for ἐστρωμένον, ἕτοιμον, and ἑτοιμάσατε, with immediate narrative context
+  rationale: Two sentences clarify the shift from describing the room to commanding the disciples.
+interpretive_expansions:
+- pob_phrase: prepare for us there
+  rendering: Prepare the Passover meal for us there.
+  claim: The required preparation concerns the Passover meal.
+  evidence:
+  - Mark 14:12 asks where Jesus wants the disciples to prepare the Passover.
+  - Mark 14:16 says the disciples prepared the Passover.
+  confidence: high
+  alternatives_preserved:
+  - Prepare for us there.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Passover meal” makes the object of “prepare” explicit although it is not stated in this verse.
+    mitigation: The immediate context identifies the preparation as the Passover.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/015.yaml
   source_text_sha256: ca2e6a973e749e880b6be01c97346b610543a54b16f814b4a134783b373fbb01
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 052ad7ebc655557092e4b1adf948b23cfdf0c2946e0377316a3cec393b72302a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 12449e9a329c72abbda4bc78537d6cbaa00cea3d86d16ad8bbc30295ad9d691d
+  timestamp: '2026-07-12T07:21:59Z'
+  output_hash: 9492da7a849930f5d6d1c54a5df86b09611d8e9b608a212787811111eba1a356
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3203
+    completion_tokens: 474
+    total_tokens: 3677
+    reasoning_tokens: 80
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:59Z'
+  previous_text: He will show you a large upstairs room, furnished and ready. Prepare the meal for us there.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1e1369203515a3d15ec89ec77cded3b54b8738bba5de8e99caf2c9ece2fd489d
+  review_summary: The sentence break and 'upstairs room' meaningfully improve modern readability. In this immediate Passover-preparation context (Mark 14:12, 16), specifying the Passover meal is a warranted contextual clarification, not a doctrinal addition. Restore 'himself' to retain the source's explicit emphasis.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

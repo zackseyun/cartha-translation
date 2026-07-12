@@ -37,48 +37,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And they took offense at him. But Jesus said to them, “A prophet is honored everywhere except in his hometown and in his own household.”[a][b][c]
+  text: They took offense at him.[a] But Jesus said to them, “A prophet receives honor except in his hometown and in his own household.”[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “they were offended by him”; literally, “they were caused to stumble in him.”
     reason: lexical_alternative
   - marker: b
-    text: Or “native place” or “homeland.”
-    reason: lexical_alternative
-  - marker: c
-    text: Or “in his own house”; the Greek can refer to a house or to a household/family circle.
+    text: Or “in his own house”; the Greek can refer to a house or to a household or family circle.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: A prophet is not without honor except
+  simplified_phrase: A prophet receives honor except
+  preserved_meaning: The proverb contrasts ordinary honor with rejection in a prophet’s hometown and household.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The positive wording removes a difficult double negative without adding the review’s unwarranted “everywhere.”
+- pob_phrase: And they took offense at him
+  simplified_phrase: They took offense at him
+  preserved_meaning: The people reacted to Jesus with personal offense rather than literal stumbling.
+  reasoning_layer_used: POB lexical decision and footnote a
+  rationale: Dropping the opening conjunction makes the sentence more direct while preserving the reaction.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: The positive recasting slightly changes the proverb’s negative rhetorical form.
+    mitigation: The exception remains explicit, and no universal claim about honor everywhere is added.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/057.yaml
   source_text_sha256: f9c56a6338d56dcd86dc8812baf397776601fbd20794f556c334288f7787455c
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: c8ff521eb795a052cf18e43edd0a8a791c0172a2ae2f74508f5e90962f77cda0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b9defc88bbedcd77e77a7efc2e3efc81604a79caae0f210700e16d01d1056381
+  timestamp: '2026-07-12T09:02:13Z'
+  output_hash: 25e9a9cf99c18d7e9d85d6f05254e210bf053ba27fa636796102122cbcf672cd
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3437
+    completion_tokens: 761
+    total_tokens: 4198
+    reasoning_tokens: 411
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:13Z'
+  previous_text: And they took offense at him. But Jesus said to them, “A prophet is honored everywhere except in his hometown and in his own household.”[a][b][c]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 10edf79b1d60be3a8d501d52aba411b34f47d0f15d4fafcd8e12edff23b5d822
+  review_summary: Revision is needed because “everywhere” adds a stronger universal formulation than the POB’s source-sensitive proverb form warrants. “Is honored, except...” gives modern readers the intended contrast directly while retaining the proverb’s scope and avoiding an unnecessary expansion. The rendering of offense, hometown, and household is otherwise supported by the POB audit trail and context.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

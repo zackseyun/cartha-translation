@@ -19,12 +19,55 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 20:8 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''says'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote ma'
 translation:
   language: en
-  text: When evening came, the master of the vineyard said to his steward, ‘Call the workers and pay them their wages, beginning with the last and ending with the first.’
+  text: When evening came, the vineyard owner said to his manager, “Call the workers and pay them their wages, starting with those hired last and ending with those hired first.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Changed 'says' to 'said' for normal English narrative while preserving the payment order exactly.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'says' to 'said' for normal English narrative while preserving the payment order exactly.
+- pob_phrase: the master of the vineyard
+  simplified_phrase: the vineyard owner
+  preserved_meaning: The man remains the person in authority over the vineyard.
+  reasoning_layer_used: Source text and immediate context
+  rationale: “Vineyard owner” states the role in ordinary modern English.
+- pob_phrase: his steward
+  simplified_phrase: his manager
+  preserved_meaning: The servant remains the person entrusted to oversee the work and payment.
+  reasoning_layer_used: Source text
+  rationale: “Manager” makes the overseer's function immediately clear.
+- pob_phrase: beginning with the last and ending with the first
+  simplified_phrase: starting with those hired last and ending with those hired first
+  preserved_meaning: The workers are paid in reverse order from when they were hired.
+  reasoning_layer_used: Immediate context, Matthew 20:1–7
+  rationale: The hiring order identifies who “last” and “first” refer to.
+interpretive_expansions:
+- pob_phrase: the last ... the first
+  rendering: those hired last ... those hired first
+  claim: “Last” and “first” refer here to the order in which the workers were hired.
+  evidence:
+  - Matthew 20:1–7 distinguishes the workers by when they were hired.
+  confidence: high
+  alternatives_preserved:
+  - The parable's wider significance is left unstated.
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/020/008.yaml
+  source_text_sha256: 09ac779decc616564a284fa722c561b3997ecb1482f6f0de88e22400ab5bf585
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7aaa13fc4eacf9eb08cc8ef642a7da85a583a2ce23a1abbd1e3d422f9fb8927d
+  timestamp: '2026-07-12T07:37:03Z'
+  output_hash: a36737e1133dc6741bf1123986127ece98c9d39cad04738ceb9f639ae52bf016
+  usage:
+    prompt_tokens: 2704
+    completion_tokens: 380
+    total_tokens: 3084
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: master of the vineyard
   reason: Retained to preserve POB's source-grounded terminology.
@@ -36,30 +79,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: first
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Keeps the evening setting, the steward's role, and the reversal order of payment.
-  readability_notes:
-  - The verse was already clear, so only narrative tense was smoothed.
-  compression_notes:
-  - No content is compressed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/020/008.yaml
-  source_text_sha256: 09ac779decc616564a284fa722c561b3997ecb1482f6f0de88e22400ab5bf585
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:10:39Z'
-  output_hash: d950d654de64b6f4ddbc0ce2f88b5377d09cb13960d5a5ef48f105436e645769
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:03Z'
+  previous_text: When evening came, the master of the vineyard said to his steward, ‘Call the workers and pay them their wages, beginning with the last and ending with the first.’
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a7a62c0d5d85940880de47c48b0af055bd1e7d9ad8109f3eef0dd32fdbc66e60
+  review_summary: Revise for substantive understanding-first clarity. The tense adjustment is faithful, but by itself is not a meaningful simplification. The recommended wording uses ordinary role terms and clarifies, from the immediate context, that “last” and “first” refer to the order in which the workers were hired; it preserves the stated payment order and adds no doctrinal conclusion.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,14 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They led Jesus away to the high priest, and all the chief priests, elders, and scribes gathered together.
+  text: They led Jesus away to the high priest. All the chief priests, elders, and scribes—religious law teachers—gathered together.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they led Jesus away to the high priest[a], and all the chief priests and the elders and the scribes gathered together.
-  simplified_phrase: They led Jesus away to the high priest, and all the chief priests, elders, and scribes gathered together.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: And they led Jesus away to the high priest, and ... gathered together.
+  simplified_phrase: They led Jesus away to the high priest. All ... gathered together.
+  preserved_meaning: Jesus is taken under custody to the high priest, where the full group of leaders assembles.
+  reasoning_layer_used: POB translation and lexical decisions for ἀπήγαγον and συνέρχονται
+  rationale: Two sentences make the sequence easier to follow while preserving the past-tense narration.
+- pob_phrase: the scribes
+  simplified_phrase: scribes—religious law teachers—
+  preserved_meaning: The recognized scribal leadership group remains named while its religious and legal role is clarified.
+  reasoning_layer_used: POB lexical decision for γραμματεῖς and immediate leadership context
+  rationale: The clarification prevents readers from mistaking scribes for mere copyists without replacing the broader term.
+interpretive_expansions:
+- pob_phrase: the scribes
+  rendering: scribes—religious law teachers—
+  claim: These scribes served as recognized teachers in the religious-law sphere.
+  evidence:
+  - The POB lists “teachers of the law” as a possible but narrower rendering.
+  - The immediate context places the scribes among recognized leadership groups.
+  confidence: high
+  alternatives_preserved:
+  - scribes
+translation_notes:
+  risk_flags:
+  - risk: “Religious law teachers” does not express every aspect of the broader term “scribes.”
+    mitigation: The main term “scribes” is retained, and the added words function only as a brief clarification.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/014/053.yaml
+  source_text_sha256: e6447d5d6b2f869a1a53dd66fc70e47986e4f0ab42717f2ff0a0262669b8d923
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e74485f53277fef61400735f9ba3dab7723842c5e8f447987ff1cea10b3e04ef
+  timestamp: '2026-07-12T07:22:15Z'
+  output_hash: 9f959ec8c1d530dbcf6059846101cd62667912d400ab7cafb2d38610a5e49463
+  usage:
+    prompt_tokens: 3240
+    completion_tokens: 551
+    total_tokens: 3791
+    reasoning_tokens: 135
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: chief priests
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
@@ -46,30 +86,13 @@ retained_terms:
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
 - term: high priest
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/014/053.yaml
-  source_text_sha256: e6447d5d6b2f869a1a53dd66fc70e47986e4f0ab42717f2ff0a0262669b8d923
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: 967ef20b83172c1338b3a1dee461d07750e5a2184fc840e05b659fd8855b2255
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:15Z'
+  previous_text: They led Jesus away to the high priest, and all the chief priests, elders, and scribes gathered together.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fb1246f3cb2166001314878e6cc6c102299202883cd227c6e8d05a1eb39aaee0
+  review_summary: The wording faithfully preserves the custodial movement, the singular high priest, and the comprehensive assembly of the three leadership groups; it introduces no doctrinal expansion or loss of a live ambiguity. However, it is only marginally clearer than POB, chiefly by removing repeated articles. “Scribes” remains insufficiently clear for an understanding-first edition. A parenthetical clarification preserves the broader source category while helping modern readers; “teachers of the law” alone would be too narrow as a replacement.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

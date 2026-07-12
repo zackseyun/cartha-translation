@@ -31,40 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then someone said to him, “Look, your mother and your brothers are standing outside, wanting to speak to you.”[a]
+  text: Then someone said to him, “Look, your mother and your brothers are standing outside. They want to speak to you.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Some manuscripts omit this verse.
     reason: textual_variant
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: are standing outside, seeking to speak to you
+  simplified_phrase: are standing outside. They want to speak to you.
+  preserved_meaning: Their location and their desire to speak remain distinct but connected ideas.
+  reasoning_layer_used: POB lexical decisions and independent grounding review
+  rationale: Two short sentences replace the dense participial clause without changing its meaning.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Want” may sound less active than the source verb “seek.”
+    mitigation: In this setting it clearly expresses their immediate purpose in common English.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/047.yaml
   source_text_sha256: 2379971185240e986053d146c9d4258959ba6976fe2dbf1551f5b0b3b18c59ab
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:35Z'
-  output_hash: 5bf60cb834f8bbcba294ac04f07f896b3c3b37acb78426c8d9422b076fa5a236
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 30786eef929f03b245ae7e6d60e22cabd1e90920002dfd6b9234f27ecf8e29bd
+  timestamp: '2026-07-12T07:36:30Z'
+  output_hash: 8b2cee21327125939365fd4c135626122a5a242bbcbb30678198510ead32c7b8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3082
+    completion_tokens: 215
+    total_tokens: 3297
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:30Z'
+  previous_text: Then someone said to him, “Look, your mother and your brothers are standing outside, wanting to speak to you.”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 51a3150e44088acfc43d46909f4498cc364067a5b8fd5d36173b96e47a45e5ea
+  review_summary: The draft preserves the supplied reading and correctly retains the textual-variant footnote. “Wanting to speak” is a warranted common-English rendering in this context and introduces no doctrinal claim. Revision is recommended because the current wording is only marginally simpler than POB; separating the final clause makes the verse more clearly understandable while preserving both the location and purpose.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

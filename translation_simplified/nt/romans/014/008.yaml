@@ -34,36 +34,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If we live, we live to the Lord; and if we die, we die to the Lord. So whether we live or die, we belong to the Lord.
+  text: For if we live, we live to the Lord; and if we die, we die to the Lord. So whether we live or die, we belong to the Lord.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: So then, whether we live or whether we die
+  simplified_phrase: So whether we live or die
+  preserved_meaning: The conclusion still covers both life and death.
+  reasoning_layer_used: POB lexical decision for οὖν and repeated conditional clauses
+  rationale: Removing repeated words makes the inference more natural without weakening it.
+- pob_phrase: we are the Lord’s
+  simplified_phrase: we belong to the Lord
+  preserved_meaning: Believers remain the Lord’s possession in both life and death.
+  reasoning_layer_used: POB lexical and theological decisions for τοῦ κυρίου ἐσμέν
+  rationale: The explicit verb makes the possessive meaning immediately clear.
+interpretive_expansions:
+- pob_phrase: we are the Lord’s
+  rendering: we belong to the Lord
+  claim: The possessive wording expresses belonging to the Lord.
+  evidence:
+  - The POB identifies the Greek genitive construction as possessive.
+  - The repeated phrases about living and dying to the Lord emphasize relation and belonging.
+  confidence: high
+  alternatives_preserved:
+  - we are the Lord’s
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “To the Lord” may sound less familiar than “for the Lord.”
+    mitigation: It is retained because the POB keeps the relation broad rather than limiting it to service.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/008.yaml
   source_text_sha256: 7498311f679254b57269fd0f384edda13b572a69f2a56d79e6af2b8217272d57
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 01a09b86398fa2603d87d9748a0993fc7b0516dde2e5939fc4c3407b27ce2784
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3fc12199c60d3ca8ec48044df16aa5f8dbb7d8291bddc7c94903f6fd14f01985
+  timestamp: '2026-07-12T07:42:31Z'
+  output_hash: 5b12fa564a20b04595828dc23b948e2d9ca691dea1d8cc9b2946780e4f562891
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3364
+    completion_tokens: 364
+    total_tokens: 3728
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:31Z'
+  previous_text: If we live, we live to the Lord; and if we die, we die to the Lord. So whether we live or die, we belong to the Lord.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f652c318ba1b44ffce192bd9fcb8e5c2fae129fcc6ed5c299d1314be0cd2c23a
+  review_summary: The draft’s “belong to the Lord” is a clear, warranted rendering of “we are the Lord’s,” and its handling of living and dying preserves the source’s relational orientation without importing a narrower doctrine. Retain the opening “For” so the verse continues to state its explicit reason in the flow of Paul’s argument.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

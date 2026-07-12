@@ -34,21 +34,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus spoke to them again. He said, “I am the light of the world. The one who follows me will never walk in the darkness, but will have the light of life.”[a]
+  text: So Jesus spoke to them again. He said, “I am the light of the world. Anyone who follows me will never walk in the darkness, but will have the light of life.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, ‘the light that gives life.’
-    reason: simplification_note
+    text: Or, “the light that gives life.”
+    reason: alternative_reading
 simplification_decisions:
-- simplified_phrase: Jesus spoke to them again. He said,
-  preserved_meaning: Splitting the Greek participle constructions into two sentences improves readability for a modern audience without losing any narrative or semantic meaning.
-  reasoning_layer_used: POB audit trail
-  rationale: Splitting the Greek participle constructions into two sentences improves readability for a modern audience without losing any narrative or semantic meaning.
-- simplified_phrase: will never walk
-  preserved_meaning: The Greek absolute double negation (οὐ μὴ) is strongly emphasized in POB as 'certainly not.' In modern English, 'will never walk' carries this exact absolute force while sounding far more natural.
-  reasoning_layer_used: POB audit trail
-  rationale: The Greek absolute double negation (οὐ μὴ) is strongly emphasized in POB as 'certainly not.' In modern English, 'will never walk' carries this exact absolute force while sounding far more natural.
+- pob_phrase: So Jesus spoke to them again, saying,
+  simplified_phrase: So Jesus spoke to them again. He said,
+  preserved_meaning: Jesus resumes speaking to the same people, and “So” retains the scene’s continuing flow.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: Two sentences replace the awkward participial construction with natural English.
+- pob_phrase: The one who follows me
+  simplified_phrase: Anyone who follows me
+  preserved_meaning: The promise applies to each person who follows Jesus.
+  reasoning_layer_used: POB lexical decision for ὁ ἀκολουθῶν ἐμοὶ
+  rationale: “Anyone” clearly expresses the generic singular sense.
+- pob_phrase: will certainly not walk
+  simplified_phrase: will never walk
+  preserved_meaning: The emphatic Greek negation remains absolute and forceful.
+  reasoning_layer_used: POB lexical decision for οὐ μὴ περιπατήσῃ
+  rationale: “Will never” is more direct and natural in modern English.
+translation_notes:
+  risk_flags:
+  - risk: “The light of life” has more than one possible genitive relationship.
+    mitigation: The main text preserves the phrase, and the footnote gives the principal alternative.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/008/012.yaml
+  source_text_sha256: ae00374c4017a221bc3624b1b106add9b4c301eb204661d9fcb8f9c6a17d62d2
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5f4a0790bc52b430d70eb0490c823b44ca74b8096793524865be7f23fdf9cdd1
+  timestamp: '2026-07-12T07:16:27Z'
+  output_hash: 2328fb9929db6509a520026baf7719ef906e76e69a80fc7f8ce30a27710bfda4
+  usage:
+    prompt_tokens: 3833
+    completion_tokens: 383
+    total_tokens: 4216
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: the light of the world
   reason: Retained to preserve POB's source-grounded terminology.
@@ -58,30 +91,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: the light of life
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the definite article before 'darkness' (τῇ σκοτίᾳ) and kept the literal structure of the genitive phrase 'the light of life' (τὸ φῶς τῆς ζωῆς) to stay aligned with the primary POB textual decisions.
-  readability_notes:
-  - By replacing the formal 'spoke... saying' with direct speech in a new sentence, the flow is simplified. Using 'never' instead of 'certainly not' matches current vernacular cadence while keeping the intense gravity of the warning.
-  compression_notes:
-  - Minimal syntactic compression was applied. The connective 'So' (οὖν) was omitted at the very start of the verse to allow a clean, direct sentence opener, as the narrative flow remains obvious.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/008/012.yaml
-  source_text_sha256: ae00374c4017a221bc3624b1b106add9b4c301eb204661d9fcb8f9c6a17d62d2
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 549b8510776608955ad25132c2b02aeb9b20d60706fe29c77a31ce4ef1afdbc1
-  timestamp: '2026-05-28T08:50:41Z'
-  output_hash: e98d021b1b58b7830a5db61166bddfddcc8e9f39db5cd7b76afd1f3d2910ec19
-  usage:
-    prompt_tokens: 2099
-    completion_tokens: 693
-    total_tokens: 5917
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:27Z'
+  previous_text: Jesus spoke to them again. He said, “I am the light of the world. The one who follows me will never walk in the darkness, but will have the light of life.”[a]
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 49c4037cbe8631b85e4f12b663c88f80eb39e23263371f7b14c79d33eb60d3be
+  review_summary: The sentence split and “will never walk” are warranted, clear renderings; “will never” appropriately conveys the strong οὐ μὴ negation. The retained wording “the light of life,” with an alternative-reading footnote, properly preserves the Greek genitive’s live ambiguity and does not import doctrine. Restore the modest connective “So” to retain the source’s discourse flow. “Anyone who follows me” is a clear, source-faithful way to express the generic singular participle.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

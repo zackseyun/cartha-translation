@@ -31,38 +31,57 @@ base_translation:
     changes_summary: Added the article 'the' before 'slave' for more natural and idiomatic formal English while preserving the Greek sense.
 translation:
   language: en
-  text: and whoever wants to be first among you must be the slave of all.
+  text: And whoever wants to be first among you must be the slave of all.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And whoever wants to be first among you will be the slave of all[a].
-  simplified_phrase: and whoever wants to be first among you must be the slave of all.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: will be the slave of all
+  simplified_phrase: must be the slave of all
+  preserved_meaning: Jesus requires anyone seeking first place to take the lowest position under everyone.
+  reasoning_layer_used: POB lexical and theological decisions on ἔσται and δοῦλος
+  rationale: “Must be” makes the instruction clear, while “slave” preserves the stronger low-status term.
+interpretive_expansions:
+- pob_phrase: will be
+  rendering: must be
+  claim: The future form functions here as a requirement in Jesus’ teaching.
+  evidence:
+  - The POB lexical rationale says the future carries an imperative-like force in context.
+  - The surrounding teaching reverses ordinary ideas of rank and greatness.
+  confidence: high
+  alternatives_preserved:
+  - will be
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Must be” states the imperative force more directly than the Greek future form.
+    mitigation: The POB audit explicitly recognizes this force in the immediate teaching context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/044.yaml
   source_text_sha256: ea664d51085b7cbaa0182d69aeed9a8b4f54baf48a3982276297bc065e422c75
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 70de34461e428a0559fc1e0fc592500aa8fdd52932314d6bb05f356d76fa44b6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 31ed73d7e90062db4336f545717d96b8a56e5b9e0614c9e5c9381878a74c824a
+  timestamp: '2026-07-12T07:24:21Z'
+  output_hash: 4ba36506394c7a460d2cec95c54983787cc26954addbb3315ea8894a51d76d8d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3193
+    completion_tokens: 395
+    total_tokens: 3588
+    reasoning_tokens: 117
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:21Z'
+  previous_text: and whoever wants to be first among you must be the slave of all.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 46d991b9d6d25b08d093fbe4bd1f06d42cd06c2554f0d2ecdb693c0935950dcf
+  review_summary: 'The substitution of “must be” for POB’s future “will be” is warranted as an understanding-first clarification: in this immediate teaching context, the future functions as Jesus’ norm for greatness, and the POB audit trail explicitly recognizes its imperative-like force. “Slave” should be retained because δοῦλος deliberately intensifies the previous verse’s διάκονος (“servant”); it does not add a doctrinal claim. The only needed change is sentence-initial capitalization.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

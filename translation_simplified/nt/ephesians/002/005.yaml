@@ -31,19 +31,49 @@ base_translation:
     changes_summary: 'Replaced “the Messiah” with “Christ” to reflect the Greek τῷ Χριστῷ more naturally and consistently in formal English Bible style; no other changes needed. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Even when we were dead in our sins, he made us alive together with the Messiah[a]—by grace you have been saved—
+  text: Even when we were dead in the wrong things we had done, he made us alive together with the Messiah[a]—by grace you have been saved—
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'with Christ.' The Greek title *Christos* is rendered 'Messiah' here to preserve its meaning; traditional English often has 'Christ.'
-    reason: simplification_note
+    text: Or “with Christ.” The Greek title Christos is rendered “Messiah” here to preserve its meaning; traditional English often has “Christ.”
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: '''Trespasses'' can feel archaic or overly formal to modern readers. ''Sins'' is a widely understood term that accurately conveys the state of moral failure and spiritual death described by the Greek ''παραπτώμασιν''.'
-  reasoning_layer_used: POB audit trail
-  rationale: '''Trespasses'' can feel archaic or overly formal to modern readers. ''Sins'' is a widely understood term that accurately conveys the state of moral failure and spiritual death described by the Greek ''παραπτώμασιν''.'
-- preserved_meaning: Adding the definite article 'the' makes the English phrasing more natural and reinforces that 'Messiah' is a title rather than a proper name, in line with POB's theological guidance.
-  reasoning_layer_used: POB audit trail
-  rationale: Adding the definite article 'the' makes the English phrasing more natural and reinforces that 'Messiah' is a title rather than a proper name, in line with POB's theological guidance.
+- pob_phrase: in our trespasses
+  simplified_phrase: in the wrong things we had done
+  preserved_meaning: The phrase still refers to the wrongful acts in which we were spiritually dead.
+  reasoning_layer_used: POB lexical decision for τοῖς παραπτώμασιν and the immediate context of Ephesians 2:1
+  rationale: This explains “trespasses” plainly without broadening it to the distinct term “sins.”
+- pob_phrase: with Messiah
+  simplified_phrase: with the Messiah
+  preserved_meaning: Messiah remains a title for the one with whom believers are made alive.
+  reasoning_layer_used: POB theological decision for Χριστῷ
+  rationale: The article makes the title sound natural in common English.
+translation_notes:
+  risk_flags:
+  - risk: “The wrong things we had done” is less compact than “trespasses.”
+    mitigation: The wording preserves the focus on concrete offenses and the distinct term used in the context.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/ephesians/002/005.yaml
+  source_text_sha256: 7eafcc22e9d9b805d42e12bebd2cd87842d5aff9f7c319d52b96bd275b4ac32d
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 64e17619b48adc8fa98106b81771a4f28c95e061bc3dd1ead39004485f4462b8
+  timestamp: '2026-07-12T07:12:55Z'
+  output_hash: 10afd31b7109c22563323f917fc0455d0aff418faf79c8ba95eb18b80823f3aa
+  usage:
+    prompt_tokens: 3980
+    completion_tokens: 717
+    total_tokens: 4697
+    reasoning_tokens: 378
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Messiah
   reason: Retained to preserve POB's source-grounded terminology.
@@ -51,33 +81,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: saved
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the first-person plural inclusive pronoun ('we', 'us') and the transition to the second-person plural parenthetical ('you'). Preserved the perfect passive aspect of 'you have been saved' and the compound verbal force of 'made us alive together with'.
-  readability_notes:
-  - The transition from 'trespasses' to 'sins' significantly improves readability for a modern audience. The insertion of 'the' before 'Messiah' makes the sentence read more smoothly in contemporary English.
-  compression_notes:
-  - No theological concepts were omitted or compressed out of existence. The sentence structure matches POB closely.
-  risk_flags:
-  - risk: None.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/ephesians/002/005.yaml
-  source_text_sha256: 7eafcc22e9d9b805d42e12bebd2cd87842d5aff9f7c319d52b96bd275b4ac32d
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 62ab43f4c7ed5a4af2196433e8b36fb54e5671eea285b7f67a87a0249cd11ac7
-  timestamp: '2026-05-28T07:32:07Z'
-  output_hash: 7bd4fdf098ebe03f42344ed1ae01029a65d5ec9e2ed0669d0395c2dc9caf408e
-  usage:
-    prompt_tokens: 2238
-    completion_tokens: 498
-    total_tokens: 6299
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:12:55Z'
+  previous_text: Even when we were dead in our sins, he made us alive together with the Messiah[a]—by grace you have been saved—
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 12be8fee0cd3af1719fbc0f31860e37bc612190c488b851cef4ada8f669d011f
+  review_summary: Revision is needed because “sins” is clearer but overgeneralizes the specific source term for trespasses/offenses and erases a meaningful distinction in the immediate context. The proposed replacement remains accessible, retains the source’s focus on wrongdoing, preserves the POB’s “in” construction, and introduces no doctrinal expansion. The rendering “the Messiah,” the grace parenthesis, and “you have been saved” are warranted and should remain.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

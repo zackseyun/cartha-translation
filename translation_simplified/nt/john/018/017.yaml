@@ -31,14 +31,45 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The servant girl who kept the door said to Peter, “You are not one of this man’s disciples too, are you?” Peter said, “I am not.”
+  text: So the servant girl who kept the door said to Peter, “You are not one of this man’s disciples too, are you?” Peter said, “I am not.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: John 18 POB base wording
-  simplified_phrase: The servant girl who kept the door said to Peter, “You are not one of this man’s disciples too, are you?” Peter said, “I am not.”
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and footnotes
-  rationale: Manual Codex drafting simplified sentence structure, clarified implied subjects where needed, and retained important theological terms without adding new interpretation.
+- pob_phrase: He said
+  simplified_phrase: Peter said
+  preserved_meaning: The speaker remains Peter, now named explicitly for immediate clarity.
+  reasoning_layer_used: POB lexical decision for ἐκεῖνος and immediate narrative context
+  rationale: Naming Peter removes an avoidable pronoun ambiguity without adding new meaning.
+- pob_phrase: You are not also one of this man's disciples, are you?
+  simplified_phrase: You are not one of this man’s disciples too, are you?
+  preserved_meaning: The question still expects a negative answer and asks whether Peter also belongs to Jesus’ disciples.
+  reasoning_layer_used: POB lexical and theological decisions for Μὴ καὶ σὺ
+  rationale: Moving “also” to the natural English position “too” makes the question easier to read.
+translation_notes:
+  risk_flags:
+  - risk: The negative question could be mistaken for a neutral inquiry.
+    mitigation: The tag “are you?” retains the POB’s expectation of a negative answer.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/018/017.yaml
+  source_text_sha256: 21c7daa20d6f4ccad66bd0c6c4c6ae6f2bbdb9839300e2745b06e418dcc4dfa5
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4d5106f34f066c34efb6d167aca7c2238726e2e415be3ff3703bc404287b3f7e
+  timestamp: '2026-07-12T07:17:11Z'
+  output_hash: 65a25c4050bb04445706f7b9fc2767ee9e5551738a51123f29d78b215c812177
+  usage:
+    prompt_tokens: 3291
+    completion_tokens: 297
+    total_tokens: 3588
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: servant girl
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
@@ -48,30 +79,14 @@ retained_terms:
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
 - term: I am not
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
-translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses shorter, clearer clauses and modern common English while keeping John 18's narrative and trial sequence.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/018/017.yaml
-  source_text_sha256: 21c7daa20d6f4ccad66bd0c6c4c6ae6f2bbdb9839300e2745b06e418dcc4dfa5
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:28Z'
-  output_hash: 84d36c7cefbece500bcea17a0fc4a3464875d74caf0110687fbcd9c877ec0d1c
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:11Z'
+  previous_text: The servant girl who kept the door said to Peter, “You are not one of this man’s disciples too, are you?” Peter said, “I am not.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fc52b722463d8e4a7dae02db27bca82610de8ee86609a332594a6ca63c29fd33
+  review_summary: The explicit “Peter said” is a warranted readability clarification, and the repositioned “too” naturally preserves the force of “also” and the negative-question expectation. Restore “So” to retain the narrative connective preserved by the POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,43 +34,67 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 4:22 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''come into the open''].'
 translation:
   language: en
-  text: For nothing is hidden except so it may be revealed, and nothing has been concealed except so it may come to light.
+  text: For nothing is hidden except so that it may be revealed, and nothing has become concealed except so that it may come to light.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 'The Greek may also describe the result: “Nothing is hidden except that it will be revealed, and nothing has become concealed except that it will come to light.”'
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: For nothing is hidden except to be revealed[b][a], nor has anything become concealed except to come to light.
-  simplified_phrase: For nothing is hidden except so it may be revealed, and nothing has been concealed except so it may come to light.
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: revealed
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
-- term: come to light
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: except to be revealed
+  simplified_phrase: except so that it may be revealed
+  preserved_meaning: Hiddenness is ordered toward disclosure without making divine causation explicit.
+  reasoning_layer_used: POB theological decision on the repeated ἵνα clauses
+  rationale: Adding “so that it may” makes the purpose nuance easier to follow in modern English.
+- pob_phrase: nor has anything become concealed
+  simplified_phrase: and nothing has become concealed
+  preserved_meaning: The second clause still describes something coming into a concealed state.
+  reasoning_layer_used: POB lexical decision for ἐγένετο and ἀπόκρυφον
+  rationale: The wording keeps “has become” while replacing the formal connector “nor” with a clearer parallel clause.
+- pob_phrase: except to come to light
+  simplified_phrase: except so that it may come to light
+  preserved_meaning: Concealment is not final but leads toward open disclosure.
+  reasoning_layer_used: POB translation and lexical decision for ἔλθῃ εἰς φανερόν
+  rationale: The fuller connector clarifies the relationship while preserving the movement image in “come to light.”
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: The main text can sound purely purposive even though the Greek may shade toward result.
+    mitigation: Footnote [a] preserves the documented result reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/022.yaml
   source_text_sha256: a4202140f17db41aea06c3f23a953fd384e39db06eee970cd478515b4d43abce
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: aded71bb7113823e3c26a59a5932b73c3e0338b5fe4f686a6d8fe9d518bfd487
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6175a5a4de24531420bdc202b29f24460164c2be26ed38690a856e6e4a07971a
+  timestamp: '2026-07-12T07:20:15Z'
+  output_hash: 62f0d24426c411441690370e0254c2dc1d640e3eafef0c24acfb897474231204
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3829
+    completion_tokens: 667
+    total_tokens: 4496
+    reasoning_tokens: 239
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: revealed
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- term: come to light
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:15Z'
+  previous_text: For nothing is hidden except so it may be revealed, and nothing has been concealed except so it may come to light.
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 07941ca82d0a923641630bf9fd15188f49c720a2534573570fd394e9fb403329
+  review_summary: The draft appropriately retains the POB’s disclosure emphasis and does not add doctrine. However, it weakens the source-grounded distinction in the second clause by replacing “has become concealed” with “has been concealed.” Restoring “has become” preserves the Greek and POB audit trail. Adding “that” makes the purposive wording readable in modern English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

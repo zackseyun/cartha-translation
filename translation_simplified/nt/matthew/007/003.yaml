@@ -37,27 +37,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Why do you see the speck[a] in your brother’s[b] eye, but do not notice the beam[c] in your own eye?
+  text: Why do you see the speck in your brother’s eye but fail to notice the large wooden beam in your own eye?
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or ‘splinter’ or ‘straw’.
-    reason: simplification_note
-  - marker: b
-    text: The Greek word is masculine, referring to a male sibling or fellow believer.
-    reason: simplification_note
-  - marker: c
-    text: Or ‘log’ or ‘plank’.
-    reason: simplification_note
 simplification_decisions:
-- simplified_phrase: Why do you see
-  preserved_meaning: Removed the initial 'But' to make the question more direct and natural in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the initial 'But' to make the question more direct and natural in modern English.
-- simplified_phrase: but do not notice
-  preserved_meaning: Changed 'yet' to 'but' to offer a smoother, more common contrast for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'yet' to 'but' to offer a smoother, more common contrast for modern readers.
+- pob_phrase: yet do not notice
+  simplified_phrase: but fail to notice
+  preserved_meaning: The contrast between seeing another person’s small fault and overlooking one’s own major fault remains intact.
+  reasoning_layer_used: POB lexical decisions for δέ and οὐ κατανοεῖς
+  rationale: “Fail to notice” states the ironic contrast in direct, natural English.
+- pob_phrase: beam
+  simplified_phrase: large wooden beam
+  preserved_meaning: The exaggerated image of a massive piece of wood in the eye is preserved.
+  reasoning_layer_used: POB lexical decision for δοκός
+  rationale: The added description makes the architectural image immediately clear.
+interpretive_expansions:
+- pob_phrase: beam
+  rendering: large wooden beam
+  claim: The beam is a large piece of wood, sharply contrasting with the speck.
+  evidence:
+  - The POB lexical rationale defines δοκός as a large beam of wood.
+  confidence: high
+  alternatives_preserved:
+  - log
+  - plank
+translation_notes:
+  risk_flags:
+  - risk: Adding “large wooden” makes qualities of the beam explicit rather than leaving them implicit.
+    mitigation: Both qualities come directly from the POB lexical rationale for δοκός.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/007/003.yaml
+  source_text_sha256: e01fa9ce8edc9204b59010ee84866e39de71decdf2969d2c26d0b006dc332009
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 150567e4e097358b008a7414b7d0dc1e09c7ae8962e9ad5989dd02ce1400cc66
+  timestamp: '2026-07-12T07:36:34Z'
+  output_hash: 27c7231e54ee795d19b8e35dea7c238c017a4975c998a6bc55d14c1b4f809e0e
+  usage:
+    prompt_tokens: 3695
+    completion_tokens: 628
+    total_tokens: 4323
+    reasoning_tokens: 287
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: speck
   reason: Retained to preserve POB's source-grounded terminology.
@@ -65,30 +92,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: beam
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The text maintains the distinction between βλέπεις ('see', focusing on outward observation) and κατανοεῖς ('notice', focusing on deeper awareness or consideration).
-  readability_notes:
-  - The sentence structure is simplified slightly by removing the opening conjunction 'But' and replacing 'yet' with 'but'. This creates a punchy, balanced rhetorical question suitable for public reading.
-  compression_notes:
-  - Conjunctions were streamlined, but no semantic content, theological nuances, or lexical distinctions were compressed or omitted.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/007/003.yaml
-  source_text_sha256: e01fa9ce8edc9204b59010ee84866e39de71decdf2969d2c26d0b006dc332009
-  pob_commit_sha: 20c1dccbe85dbf1746bf223964859ff573d977d9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: af31cbfa98f6b5256735f258a28ff91478fa3bb24f0ae1bdc1d567a96bfff5d6
-  timestamp: '2026-05-28T07:25:55Z'
-  output_hash: c12feb15d2e7573ca13cd16cd8d77375a9165b5faf1769b8ed26fdca9fb9ef56
-  usage:
-    prompt_tokens: 1874
-    completion_tokens: 583
-    total_tokens: 6218
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:34Z'
+  previous_text: Why do you see the speck[a] in your brother’s[b] eye, but do not notice the beam[c] in your own eye?
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3c200a9a29b5e7b82dba5fcb3cf915a1cc9b0f9340bb0ffd7e643c3e569aea6e
+  review_summary: 'The main wording is faithful: it retains the rhetorical question, the contrast between βλέπεις (“see”) and κατανοεῖς (“notice”), and the deliberately exaggerated speck/beam image. Revision is needed because the submitted wording does not deliver a meaningful simplification beyond POB. The recommended concise form removes redundant auxiliary wording while preserving the source-grounded contrast. If retained, the “brother” note should simply identify the Greek as “brother” or state that it is masculine singular, without making “fellow believer” the note’s asserted meaning.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

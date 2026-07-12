@@ -43,41 +43,83 @@ base_translation:
     changes_summary: Removed the comma after 'blood' for more natural English. The draft is otherwise accurate and complete.
 translation:
   language: en
-  text: And surely I will require an accounting for your blood, for your lives. I will require it from every beast, and from each man—from each man's brother—I will require the life of man.
+  text: And surely I will demand an accounting for your lifeblood. I will demand it from every animal and every human being. I will hold each person accountable for the life of another member of the human family.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: God requires a judicial accounting for bloodshed from animals and humans alike.
-  reasoning_layer_used: POB audit trail
-  rationale: Expanded the repeated 'require' language with 'an accounting' to make the judicial sense clear while keeping the representative 'man' language.
-retained_terms:
-- term: man
-  reason: Retains POB's representative singular rendering of adam.
-- term: life
-  reason: Retains POB's rendering of nephesh in the bloodshed context.
+- pob_phrase: your blood for your lives
+  simplified_phrase: your lifeblood
+  preserved_meaning: The blood in view represents a person's life.
+  reasoning_layer_used: POB lexical decision for דִּמְכֶם לְנַפְשֹׁתֵיכֶם
+  rationale: “Lifeblood” states the blood-and-life relationship clearly without the opaque literal construction.
+- pob_phrase: From the hand of every beast ... and from the hand of man
+  simplified_phrase: from every animal and every human being
+  preserved_meaning: God demands accountability from animals and humans alike.
+  reasoning_layer_used: POB lexical decisions for מִיַּד, כָּל חַיָּה, and הָאָדָם
+  rationale: Direct accountability language carries the force of the Hebrew hand idiom in natural English.
+- pob_phrase: each man's brother
+  simplified_phrase: another member of the human family
+  preserved_meaning: Each person is accountable for the life of another human being.
+  reasoning_layer_used: POB rationale for אִישׁ אָחִיו
+  rationale: “Human family” preserves the kinship image while making its broad human reference clear.
+interpretive_expansions:
+- pob_phrase: I will require
+  rendering: I will demand an accounting / I will hold ... accountable
+  claim: The repeated demand is judicial accountability for bloodshed, not a demand that another life be taken.
+  evidence:
+  - POB footnote b identifies a judicial demand for an accounting.
+  - The POB lexical rationale for אֶדְרֹשׁ specifies accountability for bloodshed.
+  confidence: high
+  alternatives_preserved:
+  - I will require
+  - I will call to account
+- pob_phrase: each man's brother
+  rendering: another member of the human family
+  claim: The kinship expression refers broadly to one human being's responsibility for another's life.
+  evidence:
+  - The POB lexical rationale says the phrase emphasizes interpersonal human accountability.
+  confidence: high
+  alternatives_preserved:
+  - each man's brother
+  - fellow human being
 translation_notes:
-  source_alignment_notes: Preserves the repeated requirement from beast, man, and brother for the life of man.
-  readability_notes:
-  - The repeated clauses remain formal because the Hebrew emphasizes repeated accountability.
-  compression_notes:
-  - No accountability clause was removed.
+  risk_flags:
+  - risk: “Lifeblood” compresses the distinct Hebrew words for blood and life.
+    mitigation: The POB lexical audit explicitly supports “lifeblood” as the clear contextual sense.
+  - risk: “Another member of the human family” interprets the literal brother language.
+    mitigation: The wording retains the kinship image while expressing the POB's documented broad human reference.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/005.yaml
   source_text_sha256: bcbb16ba120f91c30e57c628cb6d867f76e5da5e3fa4290997309e1194a92a45
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:37Z'
-  output_hash: 0b2a3f710995c40412d65bec78f4438b13199f8cc38d550e5e523134bd9338a2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4cb4aaf9dbd20a2c2aee196cf65b9f798b1ce213ffc1979b2db8e2d8b849d20d
+  timestamp: '2026-07-12T09:24:07Z'
+  output_hash: 91d6ec5f43e99e3a427bca4888fb795d431c185deae5607a3604a137aaca096e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4824
+    completion_tokens: 1820
+    total_tokens: 6644
+    reasoning_tokens: 1173
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: man
+  reason: Retains POB's representative singular rendering of adam.
+- term: life
+  reason: Retains POB's rendering of nephesh in the bloodshed context.
+spob_revision_history:
+- timestamp: '2026-07-12T09:24:07Z'
+  previous_text: And surely I will require an accounting for your blood, for your lives. I will require it from every beast, and from each man—from each man's brother—I will require the life of man.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 23b35bd0f3fed833bf3ff4c9d4f6e6302ed45eb2b642901776f11f5463e31930
+  review_summary: The draft rightly makes the judicial sense of דרשׁ explicit, and that clarification is supported by the POB audit trail and immediate bloodshed context. However, it leaves the lifeblood idiom opaque and, more importantly, makes the last clause sound as if God requires a human life rather than an accounting for a life taken. The replacement consistently expresses the warranted judicial sense while retaining the verse’s distinction between animals and humans and its emphasis on human accountability to fellow humans.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

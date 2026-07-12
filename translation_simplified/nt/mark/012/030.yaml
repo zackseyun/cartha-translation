@@ -37,41 +37,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And you shall love the Lord your God with all your heart, all your soul, all your mind, and all your strength.
+  text: You must love the Lord your God with all your heart, all your soul, all your mind, and all your strength.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And you shall love the Lord your God with all your heart and with all your soul and with all your mind and with all your strength[a][b][c].
-  simplified_phrase: And you shall love the Lord your God with all your heart, all your soul, all your mind, and all your strength.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Lord
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: And you shall love
+  simplified_phrase: You must love
+  preserved_meaning: The wording directly expresses the command force of the cited future indicative.
+  reasoning_layer_used: POB lexical decision for ἀγαπήσεις
+  rationale: “Must” makes the command clear in modern English without changing its force.
+- pob_phrase: with all your heart and with all your soul and with all your mind and with all your strength
+  simplified_phrase: with all your heart, all your soul, all your mind, and all your strength
+  preserved_meaning: The four distinct aspects and repeated emphasis on total devotion remain intact.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: A natural English list improves readability while repeating “all” for emphasis.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Removing repeated “with” slightly reduces the Greek clause-by-clause rhythm.
+    mitigation: The repeated “all” and four separate terms preserve the cumulative emphasis.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/030.yaml
   source_text_sha256: dc21632bc849af2007fccbd633757a8c6eb6caa32a76de7de9b9e23124e86a1d
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 8ffab63e5a1c1dea02784d71ac594a37f279d71fdf8bae7ce72f1c456d7d3476
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4d43c776db9a85a14b7f3b2a3e541e06f69ec0b5cad2a98d1c26691e82d9688a
+  timestamp: '2026-07-12T07:21:35Z'
+  output_hash: e7dd00447bece0afcc1f84df94b5b5a3168abcb933040beda83d01420897e406
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3572
+    completion_tokens: 278
+    total_tokens: 3850
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Lord
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:35Z'
+  previous_text: And you shall love the Lord your God with all your heart, all your soul, all your mind, and all your strength.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: df54a728cbc608493011ed88258ba9d5b9e9ef32cc6e6d1e24ab35ef2615a221
+  review_summary: The draft faithfully preserves the fourfold, totalizing command and does not introduce an unsupported interpretation. However, its comma-list formatting alone is too slight a simplification to justify approval as a meaningfully clearer SPOB rendering. “You must love” directly communicates the command force established in the POB audit trail while preserving the Lord/God wording and the repeated emphasis on “all.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

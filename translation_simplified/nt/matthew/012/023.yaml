@@ -34,43 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: All the crowds were astonished and said, “Can this be the Son of David?”[a]
+  text: All the crowds were amazed and asked, “Could this be the Son of David?”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: '"The Son of David" is a messianic title for the promised royal deliverer from David’s line. The Greek question can also imply, "Surely this is not the Son of David, is it?"'
+    text: “The Son of David” is a title for the promised king and deliverer who would come from David’s family line. The Greek question may also suggest, “Surely this is not the Son of David, is it?”
     reason: cross_reference
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-retained_terms:
-- term: Son of David
-  reason: Retained as the messianic title used in the POB source record.
+- pob_phrase: were astonished and said
+  simplified_phrase: were amazed and asked
+  preserved_meaning: The crowds reacted with strong amazement and voiced a question.
+  reasoning_layer_used: POB lexical decisions for ἐξίσταντο and ἔλεγον
+  rationale: Common verbs make the reaction and questioning speech immediately clear.
+- pob_phrase: Can this be
+  simplified_phrase: Could this be
+  preserved_meaning: The crowds wonder hesitantly whether Jesus is the Son of David.
+  reasoning_layer_used: POB lexical decision for Μήτι
+  rationale: “Could this be” is natural English and preserves the question’s uncertainty.
+- pob_phrase: messianic title, referring to the promised royal deliverer
+  simplified_phrase: a title for the promised king and deliverer
+  preserved_meaning: The title identifies the expected ruler and rescuer from David’s line.
+  reasoning_layer_used: POB footnote and theological decision
+  rationale: The note explains the title without requiring readers to know the word “messianic.”
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Could this be” may not fully display the question’s possible negative expectation.
+    mitigation: The footnote preserves the more negative alternative force of the Greek question.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/023.yaml
   source_text_sha256: e388c907b7cf13d34a2140d3e120dd68d3f1c1b109de18df4fc3f8db88fcd64c
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: e1192ca9d7a5290235d963812ab0a89f608e725a85815c4ea530df9875e64b85
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 27d6866386b3c0e8a9ca13a221dd6ddf908cd9667eac899b687d4baeb23f0f59
+  timestamp: '2026-07-12T07:36:32Z'
+  output_hash: df2631c506add0845231d50f8acd6d63c9027389fbcd4bf510ce74d9a47d58b6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3246
+    completion_tokens: 398
+    total_tokens: 3644
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Son of David
+  reason: Retained as the messianic title used in the POB source record.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:32Z'
+  previous_text: All the crowds were astonished and said, “Can this be the Son of David?”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 54f36cc2c3f4d011e083eb11e4918ed6e128400f8eff387af8d061c434f23e55
+  review_summary: The draft is faithful and its combined footnote is warranted by the POB audit trail; it neither adds doctrine nor resolves the question’s ambiguity. However, the main text simply reproduces POB and therefore does not meet the requested SPOB clarity gain. The recommended wording uses more natural common English while preserving the crowds’ amazement, the plural crowds, the questioning speech, and the messianic title.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,43 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: David himself said in the Holy Spirit, ‘The Lord said to my Lord, “Sit at my right hand until I put your enemies under your feet.”’
+  text: 'David himself said this in the Holy Spirit[a]: “The Lord said to my Lord, ‘Sit at my right hand until I put your enemies under your feet.’”[b]'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “by the Holy Spirit.”
+    reason: alternative_reading
+  - marker: b
+    text: This quotation is from Psalm 110:1. In Hebrew, the first “Lord” represents the divine name YHWH, while the second refers to David’s lord.
+    reason: cross_reference
 simplification_decisions:
-- pob_phrase: David himself said in the Holy Spirit[a], ‘The Lord said to my Lord[b], “Sit at my right hand until I put your enemies under your feet.”’
-  simplified_phrase: David himself said in the Holy Spirit, ‘The Lord said to my Lord, “Sit at my right hand until I put your enemies under your feet.”’
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Holy Spirit
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-- term: Lord
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: David himself said in the Holy Spirit
+  simplified_phrase: David himself said this in the Holy Spirit
+  preserved_meaning: David is emphasized as the speaker, and his words are connected with the Holy Spirit without defining the precise mode of inspiration.
+  reasoning_layer_used: POB lexical and theological decisions on αὐτός and ἐν τῷ πνεύματι τῷ ἁγίῳ
+  rationale: Adding “this” and a colon clearly connects the Spirit phrase to the quotation that follows.
+- pob_phrase: The Lord said to my Lord
+  simplified_phrase: The Lord said to my Lord
+  preserved_meaning: The repeated title “Lord” and the christological force of Jesus’ argument remain intact.
+  reasoning_layer_used: POB lexical and theological decisions on κύριος
+  rationale: The wording is retained because replacing either title would obscure the deliberate repetition.
+- pob_phrase: put your enemies under your feet
+  simplified_phrase: put your enemies under your feet
+  preserved_meaning: The concrete image of enemies being subjected remains unchanged.
+  reasoning_layer_used: POB lexical decision on ὑποκάτω τῶν ποδῶν σου
+  rationale: The familiar image is already clear and should not be flattened into an abstract phrase.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “In the Holy Spirit” may sound unusual to modern readers.
+    mitigation: The alternative “by the Holy Spirit” is supplied in a footnote without narrowing the main text.
+  - risk: English readers may assume both uses of “Lord” have exactly the same referent.
+    mitigation: The Psalm footnote distinguishes the divine name from David’s lord while preserving Mark’s repeated wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/036.yaml
   source_text_sha256: f4b10a2968c4e3186056c70c3bff497815b45c1c089d02b444924a4d00da81ab
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 0ff0a229bdd4f87707f06c4f75c0d844d95ac29705871340a8ad4c00f6a18a92
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ebc0e5cdd39eb664d52556a50c52e1579c819776e4a1061760c12d99a6cc116d
+  timestamp: '2026-07-12T07:22:21Z'
+  output_hash: f80d1fbb9e0bde0de3c8010787a8053e2a664468e69d954db90d5e09de48492c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3540
+    completion_tokens: 768
+    total_tokens: 4308
+    reasoning_tokens: 243
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Holy Spirit
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- term: Lord
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:21Z'
+  previous_text: David himself said in the Holy Spirit, ‘The Lord said to my Lord, “Sit at my right hand until I put your enemies under your feet.”’
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 804d0b49bc9b09406ac39026d140e5f129ec309c342e43af6777524904db12a4
+  review_summary: The wording is faithful and doctrinally careful, but the submitted SPOB draft does not meaningfully simplify the POB. Adding “this” and using a colon makes clear that the following quotation is what David said in the Holy Spirit, while retaining the POB’s intentionally non-narrow rendering and all distinctions in the quotation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

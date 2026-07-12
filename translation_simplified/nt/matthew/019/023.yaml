@@ -34,50 +34,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Jesus said to his disciples, “Truly I tell you, a rich person will enter the kingdom of heaven with difficulty.”[a]
+  text: 'Then Jesus told his disciples, “I tell you the truth: a rich man will have difficulty entering the kingdom of heaven.”[a]'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or a wealthy person will hardly enter the kingdom of heaven.
+    text: Or, “A wealthy man will hardly enter the kingdom of heaven.”
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: Jesus said to his disciples
+  simplified_phrase: Jesus told his disciples
+  preserved_meaning: Jesus directly addresses his disciples.
+  reasoning_layer_used: POB lexical decision for εἶπεν
+  rationale: “Told” expresses “said to” in more natural English.
 - pob_phrase: Truly I say to you
-  simplified_phrase: Truly I tell you
-  preserved_meaning: Jesus gives a solemn statement to the disciples.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Tell is common English for say to you.
-- pob_phrase: a rich man
-  simplified_phrase: a rich person
-  preserved_meaning: The warning concerns the wealthy entering the kingdom.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Uses common inclusive English while preserving the generic sense.
-retained_terms:
-- term: kingdom of heaven
-  reason: Retained as Matthew's characteristic phrase.
+  simplified_phrase: I tell you the truth
+  preserved_meaning: Jesus introduces the statement with solemn authority.
+  reasoning_layer_used: POB lexical and theological decisions for Ἀμὴν λέγω ὑμῖν
+  rationale: This common wording clearly conveys the force of Jesus’ solemn formula.
+- pob_phrase: will enter the kingdom of heaven with difficulty
+  simplified_phrase: will have difficulty entering the kingdom of heaven
+  preserved_meaning: Entering God’s kingdom is difficult for a rich man.
+  reasoning_layer_used: POB lexical decisions for δυσκόλως and εἰσελεύσεται
+  rationale: The recast clause is easier to read without strengthening the difficulty into impossibility.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the POB record for Matthew 19:23; no external LLM or API was used.
-  readability_notes:
-  - Uses modern common English while keeping the controlling POB meaning.
-  compression_notes:
-  - Only formal or repeated wording is simplified; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: The representative masculine wording may be read as excluding wealthy women.
+    mitigation: “A rich man” is retained because the POB audit explicitly requires the Greek masculine singular form.
+  - risk: The footnote’s “hardly” may suggest near impossibility more strongly than the main text.
+    mitigation: It is labeled as a lexical alternative, while the main text preserves POB’s more measured “with difficulty.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/019/023.yaml
   source_text_sha256: 9d622f3298393ba8897b8f614c7711b5a0d375b349fa8e870a2633ea2dac6b80
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:30Z'
-  output_hash: bb0339f6bfd7550b195a22c5a1b1b2d71ab3383ee1dd28e5e5a06cfbabb3ab64
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a3936ba949724e9a1d0e3d18c7769639c191273d23e3477131d7eab20df79260
+  timestamp: '2026-07-12T07:37:01Z'
+  output_hash: ef96940db0ee1a91fe99b03f2ec9f2801c1d6a044e4588e4f90fe6bb7c1f44e9
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3391
+    completion_tokens: 426
+    total_tokens: 3817
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: kingdom of heaven
+  reason: Retained as Matthew's characteristic phrase.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:01Z'
+  previous_text: Then Jesus said to his disciples, “Truly I tell you, a rich person will enter the kingdom of heaven with difficulty.”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 62f5d047bf7b489e4459937eb5708b758bd5b290da16bfee97915dfb24929242
+  review_summary: “Truly I tell you” is a warranted, clear modernization of POB's “Truly I say to you.” Retain “a rich man,” however, because the provided source-level and POB audit evidence specifically supports the masculine representative wording; the footnote should correspondingly retain “man.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

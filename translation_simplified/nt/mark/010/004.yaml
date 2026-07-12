@@ -34,41 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They said, “Moses allowed a man to write a divorce certificate and send her away.”
+  text: They said, “Moses allowed us to write a divorce certificate and send her away.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: They said[b][a], “Moses permitted us to write a certificate of divorce and send her away.”
-  simplified_phrase: They said, “Moses allowed a man to write a divorce certificate and send her away.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: Moses
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: Moses permitted us
+  simplified_phrase: Moses allowed us
+  preserved_meaning: Moses gave permission rather than a command, and the speakers include themselves in the claim.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “Allowed” is common English that preserves the source distinction between permission and command.
+- pob_phrase: a certificate of divorce
+  simplified_phrase: a divorce certificate
+  preserved_meaning: The phrase still identifies a formal written document that enacted divorce.
+  reasoning_layer_used: POB lexical decision and lexical-alternative footnote
+  rationale: The reordered phrase is more natural in modern English without losing its legal sense.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Send her away” may sound broader than divorce when read alone.
+    mitigation: “Divorce certificate” immediately establishes the marital and legal context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/004.yaml
   source_text_sha256: bbf10d9c3cea61ce54b9f1de1fef98c3f6ca1d7b7e6b957ed45b4ef816abf363
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 6c4da2af6d96f597e7847d97a37b7ed851bf181c4bf658b07a4ec3ecbbfc3175
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: efdb5041c1027cfc7ca233baa4c592993d7638b81ec31759998d6dbf11339628
+  timestamp: '2026-07-12T07:22:15Z'
+  output_hash: 688f54431d311b863985a1b7a58e5385eb9f0eea507cd826ae68426b66656e7a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3134
+    completion_tokens: 248
+    total_tokens: 3382
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Moses
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:15Z'
+  previous_text: They said, “Moses allowed a man to write a divorce certificate and send her away.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a1e2a5d3ddfb8cec97736f7a538d7cc69166e2b9e986868b99c9b5ca8cb511f2
+  review_summary: “Allowed” and “divorce certificate” are clear, source-supported simplifications, and the wording correctly retains Moses’ action as permission rather than command. Revise only to preserve “us,” which is explicit in the source and important to the speakers’ response.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

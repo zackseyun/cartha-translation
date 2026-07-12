@@ -47,3 +47,20 @@ and the use of named teachers or traditions are defined in
 The short version is: SPOB may express a passage's contextual meaning more
 directly than POB, but every interpretive addition must be warranted and recorded.
 No individual teacher or denomination controls the main text.
+
+## Corpus status
+
+As of July 12, 2026, the repository contains **43,105 schema-valid SPOB
+records**, covering every current POB source record across the canonical,
+deuterocanonical, and extra-canonical collections. Every record completed the
+canon-wide Azure review pass:
+
+- 43,065 received a substantive GPT-5.6 Terra grounding verdict;
+- all 17,137 substantive `revise` or `block` recommendations were applied and
+  revalidated through GPT-5.6 Sol;
+- 40 passages that Azure's content policy would not inspect were separately
+  adjudicated against their POB base and preserved without an automated
+  doctrinal guess.
+
+The completion and editorial-block audit is recorded in
+[docs/SPOB_CANON_WIDE_REVIEW_2026-07-12.md](docs/SPOB_CANON_WIDE_REVIEW_2026-07-12.md).

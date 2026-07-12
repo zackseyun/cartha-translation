@@ -27,10 +27,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said these things while teaching in the synagogue in Capernaum.
+  text: Jesus said these things while he was teaching in the synagogue in Capernaum.
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
+- pob_phrase: He said
+  simplified_phrase: Jesus said
+  preserved_meaning: Jesus remains the speaker of the preceding discourse.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: Naming Jesus removes an unclear pronoun while making explicit the subject securely identified by context.
+- pob_phrase: while teaching
+  simplified_phrase: while he was teaching
+  preserved_meaning: The teaching was ongoing when Jesus said these things.
+  reasoning_layer_used: POB lexical decision for διδάσκων
+  rationale: The full clause is easier for common readers while preserving the participle's timing.
+interpretive_expansions:
+- pob_phrase: He
+  rendering: Jesus
+  claim: The implicit speaker is Jesus.
+  evidence:
+  - The POB audit identifies the contextual subject as Jesus.
+  - John 6:53–58 presents Jesus as the speaker of this discourse.
+  confidence: high
+  alternatives_preserved:
+  - He
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/006/059.yaml
+  source_text_sha256: 189fa11f9f44e4798b2628afd247c2ded99e5aa0f6c4c3c8ac00ae7e7c40c45a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f3abcd63b1afdaded091ce67cbc45d7808387d05abf867ceaca3912722fd3418
+  timestamp: '2026-07-12T07:15:16Z'
+  output_hash: f3e58675f4f945d0b01d7f2dd91d02ca54e1d88ef5fc5c5167a865093d9191d9
+  usage:
+    prompt_tokens: 2751
+    completion_tokens: 268
+    total_tokens: 3019
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: these things
   reason: Preserves the plural force of the source pronoun 'ταῦτα' as prioritized by the POB lexical decisions.
@@ -38,33 +79,13 @@ retained_terms:
   reason: A key historical and theological term for the Jewish place of assembly that cannot be simplified further without losing historical accuracy.
 - term: Capernaum
   reason: A vital geographical name establishing the historical setting of the discourse.
-translation_notes:
-  source_alignment_notes: The text directly mirrors the source SBLGNT structure. 'He said these things' aligns with 'ταῦτα εἶπεν', 'while teaching' represents the adverbial present participle 'διδάσκων', and the location markers align with the prepositional phrases 'ἐν συναγωγῇ' and 'ἐν Καφαρναούμ'.
-  readability_notes:
-  - The sentence is short, active, and flows naturally. It presents no complex grammatical hurdles for a modern reader.
-  compression_notes:
-  - No compression was applied. The verse is already concise, and any omission of historical or spatial markers would degrade the integrity of the text.
-  risk_flags:
-  - risk: None. The translation of this verse is highly stable and uncontroversial.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/006/059.yaml
-  source_text_sha256: 189fa11f9f44e4798b2628afd247c2ded99e5aa0f6c4c3c8ac00ae7e7c40c45a
-  pob_commit_sha: 3afdf15abc9a96c0093b0f2add5eb20faf8f06b4
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 84916684ba29366e7cafa5e4633a8d451c1a3fbf98f56e914676b73413f3766a
-  timestamp: '2026-05-28T07:54:59Z'
-  output_hash: b1dbf8349ec929a8a4c71baa203565378b4aa94f6a272951687377a15d3184e5
-  usage:
-    prompt_tokens: 1313
-    completion_tokens: 513
-    total_tokens: 4164
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:16Z'
+  previous_text: He said these things while teaching in the synagogue in Capernaum.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: eb4c6d920cfe290f6a2b3ccbc41c2521080542c9710ac86fd86d30c43fbc3d4d
+  review_summary: Revise for a small, warranted readability improvement. Naming Jesus makes the implicit Greek subject explicit on the basis of the immediate context, without adding doctrine or changing the meaning. “These things,” “synagogue,” and “Capernaum” should remain as they accurately preserve the discourse reference and historical setting.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

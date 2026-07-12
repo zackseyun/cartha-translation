@@ -31,18 +31,49 @@ base_translation:
     changes_summary: Added a comma before “and I forgive him” to reflect the clause structure more clearly in natural formal English. No lexical changes were needed.
 translation:
   language: en
-  text: Then Peter came to Jesus and said, “Lord, how many times may my brother[a] sin against me and I forgive him? Up to seven times?”
+  text: Then Peter came to Jesus and said, “Lord, how many times should I forgive my brother[a] when he sins against me? Up to seven times?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “brother or sister”; the Greek says “brother” in the masculine singular and may refer broadly to a fellow disciple.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Then Peter came up to him and said[a], “Lord, how many times will my brother sin against me, and I forgive him? Up to seven times?”
-  simplified_phrase: Then Peter came to Jesus and said, “Lord, how many times may my brother[a] sin against me and I forgive him? Up to seven times?”
-  preserved_meaning: Named Jesus as the person Peter approached for clarity and kept Peter’s forgiveness question intact.
-  reasoning_layer_used: POB audit trail
-  rationale: Named Jesus as the person Peter approached for clarity and kept Peter’s forgiveness question intact.
+- pob_phrase: came up to him
+  simplified_phrase: came to Jesus
+  preserved_meaning: Peter approached Jesus before speaking.
+  reasoning_layer_used: POB lexical decision identifying “him” as Jesus
+  rationale: Naming Jesus removes an unclear pronoun without changing its referent.
+- pob_phrase: how many times will my brother sin against me, and I forgive him?
+  simplified_phrase: how many times should I forgive my brother when he sins against me?
+  preserved_meaning: Peter asks how often he should forgive repeated sins committed against him.
+  reasoning_layer_used: Greek clause relationship, POB lexical decisions, and immediate context
+  rationale: Restructuring the clauses makes the forgiveness question clear while preserving both sin and forgiveness.
+translation_notes:
+  risk_flags:
+  - risk: “Should I forgive” recasts the paired Greek future verbs as an obligation question.
+    mitigation: The proposed limit and immediate context show that Peter is asking how often he is to forgive.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/018/021.yaml
+  source_text_sha256: a6ab23cf6a880c56afcc09e75ac2f606e29e9180e73040fe943f2b6bbe4f34fa
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 02ef39d442bcc4a628d07dca068d6b341004417a74a50357db91bf79b17e21dd
+  timestamp: '2026-07-12T07:36:53Z'
+  output_hash: b4fbfbd62505ce82f8815d82389b4af01538b34ec12d3bd39a044f5e630d95fb
+  usage:
+    prompt_tokens: 3834
+    completion_tokens: 326
+    total_tokens: 4160
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Peter
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
@@ -54,30 +85,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
 - term: seven times
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
-translation_notes:
-  source_alignment_notes: Preserves the controlling POB meaning and its source-grounded lexical choices while simplifying syntax and wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, clearer word order, and common English where the POB wording is formal or technical.
-  compression_notes:
-  - No central meaning is intentionally removed; technical alternatives are kept in footnotes when needed for review.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/018/021.yaml
-  source_text_sha256: a6ab23cf6a880c56afcc09e75ac2f606e29e9180e73040fe943f2b6bbe4f34fa
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:05Z'
-  output_hash: 0344ba3f5040c8c9cd7b79489675e24fd04e5d956e7b8d99c8cca4373674f9c9
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:53Z'
+  previous_text: Then Peter came to Jesus and said, “Lord, how many times may my brother[a] sin against me and I forgive him? Up to seven times?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 36b30f4fd7bd41a39cd10145c784ba332ffe03d97192888750739557482e5f5b
+  review_summary: Naming Jesus is a warranted clarity improvement because αὐτῷ refers to Jesus in the immediate narrative. However, “may” introduces a possible permission sense and the resulting coordination is not clear modern English. Recast the question so that Peter’s proposed limit on forgiving a brother’s offenses is explicit, while retaining the gender-scope footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

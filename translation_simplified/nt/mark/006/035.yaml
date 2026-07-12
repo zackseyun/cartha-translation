@@ -34,41 +34,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When it was already very late, his disciples came to him and said, "This place is deserted, and it is already very late."
+  text: When it was already very late, his disciples came to him. They said, “This place is deserted, and it is already very late.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: were saying
-  simplified_phrase: said
-  preserved_meaning: Keeps the disciples' speech while simplifying the narrative verb.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Said'' is clearer and sufficient in modern English.'
-retained_terms:
-- term: deserted
-  reason: Preserves the remote-place concern.
-translation_notes:
-  source_alignment_notes: Preserves the late hour, disciples' approach, and their statement about the deserted place and lateness.
-  readability_notes:
-  - The sentence is kept close to POB because it is already plain.
-  compression_notes:
-  - No time or place detail is removed.
+- pob_phrase: his disciples came to him and were saying
+  simplified_phrase: his disciples came to him. They said
+  preserved_meaning: Preserves their approach and speech as successive actions without implying repeated speech.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: A sentence break clarifies the narrative sequence, while “said” is natural modern English.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/035.yaml
   source_text_sha256: b5f8b2ccef00c251ed2d516b451d4eac65fa8a883c125f8c03ac75a7d3f9f4c0
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:45Z'
-  output_hash: db929c3facb0ba9ec224c2c0cb36d6f2ef81eb61db14803704655924511a197a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0bc514fae63996b18db052bd6ccb965b96e16cce1f3580518f330e83a7ccd1a3
+  timestamp: '2026-07-12T07:22:37Z'
+  output_hash: ef03e11a56c4333d3eecf37b7fbbeeae06ae994108f0b6aac2535440da523c13
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3033
+    completion_tokens: 163
+    total_tokens: 3196
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: deserted
+  reason: Preserves the remote-place concern.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:37Z'
+  previous_text: When it was already very late, his disciples came to him and said, "This place is deserted, and it is already very late."
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a8390c8c916385176fae7a8eaa7546fac58419463e61f9b66e53844033ef6b6a
+  review_summary: 'The draft is faithful and doctrinally neutral: “said” is a reasonable modern-English rendering of the imperfect here, and “deserted” preserves the setting without importing a theological meaning. However, the change from the POB is too slight to be meaningfully clearer on its own. A sentence break provides a clear, publication-ready readability improvement while preserving the source sequence, the isolated setting, and the repeated lateness.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

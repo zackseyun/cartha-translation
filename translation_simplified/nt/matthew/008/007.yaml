@@ -31,49 +31,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He says to him[a], “I will come and heal him.”
+  text: Jesus says to the centurion, “I will come and heal your servant.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “Shall I come and heal him?” Some scholars read Jesus’ response as a question, but the Greek text is most naturally translated as a promise.
-    reason: simplification_note
+    text: Or, “Shall I come and heal him?” Some read Jesus’ response as a question, but the Greek is most naturally read as a statement.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Retained the simple narrative pronouns 'He' and 'him' to remain faithful to the POB baseline.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the simple narrative pronouns 'He' and 'him' to remain faithful to the POB baseline.
-- preserved_meaning: Preserved the historical present 'says' to maintain the vividness of the Greek narrative aspect.
-  reasoning_layer_used: POB audit trail
-  rationale: Preserved the historical present 'says' to maintain the vividness of the Greek narrative aspect.
-- preserved_meaning: Simplified the explanation of the alternative reading in the footnote for a modern reader, removing academic jargon.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the explanation of the alternative reading in the footnote for a modern reader, removing academic jargon.
-retained_terms:
-- term: heal
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: he says to him
+  simplified_phrase: Jesus says to the centurion
+  preserved_meaning: Jesus is the speaker, and the centurion is the person he addresses.
+  reasoning_layer_used: Immediate context and POB audit trail
+  rationale: Naming both participants makes the verse clear without changing their identities.
+- pob_phrase: heal him
+  simplified_phrase: heal your servant
+  preserved_meaning: Jesus offers to heal the centurion’s sick servant.
+  reasoning_layer_used: Immediate context and POB lexical rationale
+  rationale: The context identifies the sick man as the centurion’s servant.
+- pob_phrase: I will come and heal him
+  simplified_phrase: I will come and heal your servant
+  preserved_meaning: Jesus’ words remain a direct statement rather than a question.
+  reasoning_layer_used: POB theological decision
+  rationale: The main text preserves the Greek wording’s natural declarative force.
+interpretive_expansions:
+- pob_phrase: he says to him … heal him
+  rendering: Jesus says to the centurion … heal your servant
+  claim: The unnamed speaker, hearer, and sick man are Jesus, the centurion, and the centurion’s servant.
+  evidence:
+  - Matthew 8:5 identifies Jesus and the centurion.
+  - Matthew 8:6 identifies the sick man as the centurion’s servant.
+  - The POB audit trail identifies the final pronoun as the sick servant.
+  confidence: high
+  alternatives_preserved:
+  - The footnote preserves the possible interrogative reading of Jesus’ words.
 translation_notes:
-  source_alignment_notes: The Greek structure uses an aorist participle ('having come') followed by a future verb ('I will heal'). The translation 'I will come and heal' accurately captures this sequence naturally in modern English.
-  readability_notes:
-  - The phrase 'He says to him' is natural and direct, avoiding overly complex narrative framing.
-  compression_notes:
-  - No compression was applied to the main text because the verse is already highly concise and clear.
+  risk_flags:
+  - risk: Naming referents makes contextual information explicit beyond the wording of this verse alone.
+    mitigation: Each identification comes directly from the immediate context and the POB audit trail.
+  - risk: Some readers understand Jesus’ words as a question.
+    mitigation: The main text follows POB’s declarative choice, while the footnote preserves the alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/008/007.yaml
   source_text_sha256: 8cefcde48df2fec28ebccd7816df8d90c7d408550177920084cfa8436282eb10
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 75aee2c9a89b7b197a28332b4b60f9059bcd4677abb3be4a6aa50e4cbd7fc7f0
-  timestamp: '2026-05-28T08:41:49Z'
-  output_hash: b1ea9d9447b327bfc2a3e92a48632620f0cbeaee16f0d0663bb3ee882e165f4d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d516fbed6acc055867819d9465858f4e40d90fb89b4486e41ee06a33362605e5
+  timestamp: '2026-07-12T07:36:35Z'
+  output_hash: 36c08fe33517ee00f42fdf9be3363aca512f506aed3662ad2aab1befe788a3cb
   usage:
-    prompt_tokens: 1638
-    completion_tokens: 329
-    total_tokens: 4842
-    reasoning_tokens: 0
+    prompt_tokens: 3333
+    completion_tokens: 750
+    total_tokens: 4083
+    reasoning_tokens: 226
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: heal
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:35Z'
+  previous_text: He says to him[a], “I will come and heal him.”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f9d21ee629fb8011d6670bc3a6ac84304e4ae235e064b4445ec91c9f2f510abd
+  review_summary: Revise. Removing “And” alone does not make the POB meaningfully clearer, while the unresolved pronouns obscure the actual participants and object of healing for readers viewing this verse independently. Naming Jesus, the centurion, and his servant is directly warranted by the immediate context and POB audit trail. Retain the declarative main text and simplify the alternative-reading note without describing it as a “promise.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

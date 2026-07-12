@@ -31,38 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But they did not understand the statement, and they were afraid to ask him.
+  text: But they did not understand what he had said, and they were afraid to ask him about it.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: they did not understand the statement, and they were afraid to ask him
-  simplified_phrase: they did not understand the statement, and they were afraid to ask him
-  preserved_meaning: Keeps the disciples' lack of understanding and fear of asking.
-  reasoning_layer_used: POB translation text
-  rationale: The POB wording is already plain modern English.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft follows POB Mark 9:32.
-  readability_notes:
-  - Keeps direct wording.
-  compression_notes:
-  - No compression needed.
+- pob_phrase: the statement
+  simplified_phrase: what he had said
+  preserved_meaning: This remains the spoken message Jesus had just given them.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: The wording directly identifies the statement as Jesus’ preceding speech.
+- pob_phrase: afraid to ask him
+  simplified_phrase: afraid to ask him about it
+  preserved_meaning: The disciples feared asking Jesus about the message they did not understand.
+  reasoning_layer_used: POB lexical decisions and Greek pronoun reference
+  rationale: Adding “about it” makes the object of their question clear in natural English.
+interpretive_expansions:
+- pob_phrase: the statement
+  rendering: what he had said
+  claim: The statement was the message Jesus had just spoken.
+  evidence:
+  - The POB lexical rationale says ῥῆμα refers to the spoken message Jesus had just uttered.
+  - Mark 9:31 contains Jesus’ preceding prediction.
+  confidence: high
+  alternatives_preserved:
+  - the saying
+  - the statement
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/009/032.yaml
   source_text_sha256: 208dfa10fbb779a102749f4d548656d040ca7823e7e630d2959836d871389098
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:15:35Z'
-  output_hash: d94b1716f6679c139e109dc879c2a049369daa5baeebd1299eee9568cfac7ed4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2680f8bff7fb6b41cd454df7fcfb69d298f845f50054a65f56e76445b78d33ee
+  timestamp: '2026-07-12T07:20:57Z'
+  output_hash: 1fb916a146837a55d65b4f2c63f00ed774b7b4f29a5e629bebdbc637d285b53a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2823
+    completion_tokens: 297
+    total_tokens: 3120
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:57Z'
+  previous_text: But they did not understand the statement, and they were afraid to ask him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 25b29b8c0e00f28232767bb77247ecfddd0b7d4b2246a0ce38b5a6160930edd8
+  review_summary: Revise for actual SPOB-level clarity. Replacing “the statement” with “what he said” naturally communicates that the disciples failed to understand Jesus' preceding message without adding an interpretation of its content. The remainder accurately preserves their fear of asking Jesus.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

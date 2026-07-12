@@ -31,36 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I, Tertius, the one who wrote down this letter, greet you in the Lord.
+  text: I, Tertius, who wrote this letter, greet you in the Lord.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: who wrote the letter
+  simplified_phrase: who wrote this letter
+  preserved_meaning: Tertius identifies himself as the person who physically wrote the letter.
+  reasoning_layer_used: POB lexical decision for ὁ γράψας and τὴν ἐπιστολήν
+  rationale: “This letter” makes the immediate reference clear without adding the unsupported nuance of “wrote down.”
+interpretive_expansions:
+- pob_phrase: the letter
+  rendering: this letter
+  claim: The letter Tertius wrote is the present letter to the Romans.
+  evidence:
+  - The immediate context is the closing of the letter Tertius says he wrote.
+  confidence: high
+  alternatives_preserved:
+  - the letter
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “In the Lord” could grammatically modify Tertius’s writing rather than his greeting.
+    mitigation: The main text retains the POB’s more natural attachment to the greeting without further explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/022.yaml
   source_text_sha256: 2c881fa5efde3485eea404a29640c52c95e1e82a7eed81d072006ac5826278b5
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:32Z'
-  output_hash: f0677417d007308668435268df484a39cdd6da90724ab9d8d4ba618a515f81af
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 663717b869ff7eab7effcddc91dbc811f37fde0089e028d953e25d856507565f
+  timestamp: '2026-07-12T07:42:51Z'
+  output_hash: de7b0f019d56aada93f72570547b7d1a49922a43aef73849ce0f4747d36f6691
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2974
+    completion_tokens: 272
+    total_tokens: 3246
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:51Z'
+  previous_text: I, Tertius, the one who wrote down this letter, greet you in the Lord.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 70173dad34570a5251ff51c0cf4374debb3d878a97ed79d534cc954b262f49b5
+  review_summary: The draft retains the POB’s controlling reading of “in the Lord” with the greeting and does not introduce doctrinal content. “This letter” is a clear, contextually warranted clarification. Revise “the one who wrote down” to the simpler and more exact “who wrote,” which preserves the source participle without adding an unnecessary recording nuance.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

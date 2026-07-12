@@ -34,40 +34,77 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 12:4 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''they ate''].'
 translation:
   language: en
-  text: how he entered God’s house and ate the bread of the Presence,[a] which was not lawful for him or for those with him to eat, but only for the priests?
+  text: how he entered God’s house and they ate[a] the bread set before God,[b] though the law allowed only the priests—not him or those with him—to eat it?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The bread of the Presence is traditionally called the showbread; some manuscript/readings differ between "he ate" and "they ate."
+    text: Some manuscripts read “he ate.”
+    reason: textual_variant
+  - marker: b
+    text: This consecrated bread is traditionally called the showbread.
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: the house of God
+  simplified_phrase: God’s house
+  preserved_meaning: The wording still identifies the sacred place as God’s house.
+  reasoning_layer_used: POB lexical decision for εἰσῆλθεν εἰς τὸν οἶκον τοῦ θεοῦ
+  rationale: The possessive form is more natural in modern English.
+- pob_phrase: the bread of the Presence
+  simplified_phrase: the bread set before God
+  preserved_meaning: The wording preserves the image of consecrated bread placed before God.
+  reasoning_layer_used: POB lexical decision for τοὺς ἄρτους τῆς προθέσεως
+  rationale: The descriptive phrase explains an unfamiliar ritual term on first reading.
+- pob_phrase: which it was not lawful for him to eat, nor for those with him, but only for the priests
+  simplified_phrase: though the law allowed only the priests—not him or those with him—to eat it
+  preserved_meaning: The sacred legal restriction excluded David and his companions while reserving the bread for priests.
+  reasoning_layer_used: POB theological decision on the cultic and legal force of ἐξὸν
+  rationale: The active sentence makes the restriction easier to follow without weakening its legal force.
+interpretive_expansions:
+- pob_phrase: it was not lawful
+  rendering: the law allowed only
+  claim: The restriction came from sacred law rather than a mere social custom.
+  evidence:
+  - The POB theological decision identifies a Torah-based legal and priestly restriction.
+  - The immediate clause reserves the bread exclusively for priests.
+  confidence: high
+  alternatives_preserved:
+  - it was not lawful
+  - it was not permitted
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may take “God’s house” to mean a later temple building.
+    mitigation: The wording follows the POB, while the verse’s David narrative supplies the historical setting.
+  - risk: Replacing “bread of the Presence” may reduce recognition of the traditional term.
+    mitigation: The footnote identifies the consecrated bread and its traditional name, “showbread.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/004.yaml
   source_text_sha256: 6d5f4a15edb6368f72ccfcb052b33028b1a8d65317b8ce37b58f7b9c7d272018
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: 50be11ec7d4774f2c84f0e9eab5dcdec7b60456008e970c160e14949f0ce1aec
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 23a9daa0c872d3bc587afa1aa31581d261320248ccd84c3c3c390b2b3b74be4f
+  timestamp: '2026-07-12T07:36:41Z'
+  output_hash: 2ceda59ab8616b44ef52d819c0415a93c8b43dfb6db2ccc7274732686650e324
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3984
+    completion_tokens: 1104
+    total_tokens: 5088
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:41Z'
+  previous_text: how he entered God’s house and ate the bread of the Presence,[a] which was not lawful for him or for those with him to eat, but only for the priests?
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0cd2f70607a826ee5b1ba7a43c593b0ead14f89ad8da8b5a39f4ae0492290fe8
+  review_summary: Revision is required because the draft's singular wording does not preserve the plural reading identified as controlling in the POB audit trail. Rendering the cultic phrase as 'the bread set before God' is a warranted, clearer explanation of 'the bread of the Presence,' and separate notes accurately locate the lexical and textual information.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

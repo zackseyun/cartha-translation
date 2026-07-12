@@ -34,25 +34,57 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 6:10 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''plenty of grass''].'
 translation:
   language: en
-  text: Jesus said, “Have the people sit down[a].” Now there was plenty of grass in that place. So the men[b] sat down, about five thousand in number.
+  text: Jesus said, “Have the people sit down.[a]” There was plenty of grass there. So the men sat down—about five thousand of them.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'recline.' The Greek verb can refer to reclining for a meal, which was the custom of the time.
+    text: Or “recline.” The Greek verb can refer to reclining for a meal.
     reason: lexical_alternative
   - marker: b
-    text: The Greek word here specifically refers to adult males, whereas the word in Jesus’ command is a general term for 'people.'
+    text: The Greek word here specifically refers to adult males, while the word in Jesus’ command is a general term for “people.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Retained 'people' for the general crowd command and 'men' for the specific count to preserve gender-accurate translation.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'people' for the general crowd command and 'men' for the specific count to preserve gender-accurate translation.
-- preserved_meaning: Kept 'sit down' instead of 'recline' for modern readability, noting the literal action in a footnote.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept 'sit down' instead of 'recline' for modern readability, noting the literal action in a footnote.
-- preserved_meaning: Used 'in that place' instead of 'in the place' to make the transition more natural in English.
-  reasoning_layer_used: POB audit trail
-  rationale: Used 'in that place' instead of 'in the place' to make the transition more natural in English.
+- pob_phrase: Now there was plenty of grass in the place.
+  simplified_phrase: There was plenty of grass there.
+  preserved_meaning: The location had abundant grass.
+  reasoning_layer_used: POB lexical decision for χόρτος πολὺς and ἐν τῷ τόπῳ
+  rationale: “There” expresses the location more naturally without changing the detail.
+- pob_phrase: about five thousand in number
+  simplified_phrase: about five thousand of them
+  preserved_meaning: Approximately five thousand men were counted.
+  reasoning_layer_used: POB lexical and theological decisions for οἱ ἄνδρες and ὡς πεντακισχίλιοι
+  rationale: The direct wording keeps both the approximate count and its reference to the men.
+- pob_phrase: the people ... the men
+  simplified_phrase: the people ... the men
+  preserved_meaning: Jesus addressed the whole crowd, but the reported count specifically concerns men.
+  reasoning_layer_used: POB gender-accurate theological decision
+  rationale: The distinct terms are retained because the Greek deliberately shifts from people generally to men specifically.
+translation_notes:
+  risk_flags:
+  - risk: Readers may assume the five thousand included everyone present.
+    mitigation: Footnote [b] explains that the count specifically refers to the men.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/006/010.yaml
+  source_text_sha256: b9d727c0c8f5784e6e052089f927920af93f614c335cc7792060eeed7a6bf6c7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b88a549cb4f36fa161606fd34cc21f4d0b6343fbc589e221f6a9ee8573a79968
+  timestamp: '2026-07-12T07:14:30Z'
+  output_hash: 6d12e8f397b07e7582f402ccc611d0082957b917978e3e6f6f4c20be3619db0c
+  usage:
+    prompt_tokens: 4110
+    completion_tokens: 437
+    total_tokens: 4547
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: people
   reason: Retained to preserve POB's source-grounded terminology.
@@ -60,30 +92,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: five thousand
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the shift from anthropoi (inclusive) to andres (males only) which is crucial to the narrative count. Preserved the approximation 'about five thousand'.
-  readability_notes:
-  - The phrase 'plenty of grass' was retained from POB as it is natural and clear. Changed 'in the place' to 'in that place' to improve narrative flow.
-  compression_notes:
-  - No significant theological details were compressed. The narrative sentence structure was kept intact to preserve the step-by-step reporting of Jesus' instructions and the crowd's response.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/006/010.yaml
-  source_text_sha256: b9d727c0c8f5784e6e052089f927920af93f614c335cc7792060eeed7a6bf6c7
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: b63010468a303fc6d8a56c7748f2dacc5d810094f1f93ed03108d51cf8538a0a
-  timestamp: '2026-05-28T07:29:51Z'
-  output_hash: 9b42a51d0ca4d40358f5ea214850e02dbd6d7c4fa51580e066d217223eff6be4
-  usage:
-    prompt_tokens: 2345
-    completion_tokens: 454
-    total_tokens: 6087
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:30Z'
+  previous_text: Jesus said, “Have the people sit down[a].” Now there was plenty of grass in that place. So the men[b] sat down, about five thousand in number.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8897bd13700642434f6e32cecf92f54ad948a30b39c3be33698fd4e513fa9403
+  review_summary: The gender distinction and the association of the approximately five-thousand count with the men are well supported by the Greek and POB audit trail. Revise the reclining footnote to remove an unnecessary historical generalization and make the final numerical clause more immediately readable.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

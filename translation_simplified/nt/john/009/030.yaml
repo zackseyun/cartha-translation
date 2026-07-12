@@ -34,41 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'The man answered, “That is the remarkable thing: you do not know where he comes from, and yet he opened my eyes!”'
+  text: 'The man answered, “This is what is remarkable: you do not know where he comes from, yet he opened my eyes.”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: remarkable
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: opened my eyes
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: answered and said to them
+  simplified_phrase: answered
+  preserved_meaning: The man responds to the people questioning him.
+  reasoning_layer_used: POB lexical decisions and immediate dialogue context
+  rationale: The shorter speech introduction removes repetition and an obvious audience without changing the exchange.
+- pob_phrase: This is the remarkable thing
+  simplified_phrase: This is what is remarkable
+  preserved_meaning: The contrast that follows is identified as the remarkable matter.
+  reasoning_layer_used: POB lexical decision for Ἐν τούτῳ and ὅτι
+  rationale: The recast wording introduces the explanation more directly in natural English.
+- pob_phrase: and yet he opened my eyes
+  simplified_phrase: yet he opened my eyes
+  preserved_meaning: His healing sharply contrasts with their claim not to know Jesus’ origin.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “Yet” keeps the ironic contrast while the literal healing expression remains unchanged.
 translation_notes:
-  source_alignment_notes: Maintained the adversative force of 'and yet' (καί) and the physical healing metaphor 'opened my eyes' without spiritualizing it directly in the text.
-  readability_notes:
-  - Removed redundant Semitic discourse markers ('answered and said') and modernized the phrasing of the riddle-like statement.
-  compression_notes:
-  - Omitted the explicit indirect object 'to them' in the speech introduction since the context of the dialogue makes the recipient obvious.
+  risk_flags:
+  - risk: “Opened my eyes” may be read only as a metaphor by modern readers.
+    mitigation: The surrounding account establishes physical healing, so the source image is retained without added spiritual explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/009/030.yaml
   source_text_sha256: 4502dda3fd1a7a958d6071031f5c0450732c59aa70d3f9dddf139cdc47e8234e
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 3ba9289e1e8722b106aecb38c3127b338b1e3a76d6d176454e5e11d197a1f038
-  timestamp: '2026-05-28T09:32:29Z'
-  output_hash: 8f2a66a05417c026a070da19b81b46331c448b456628c9b645504dce1a333d60
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 95882ed93b769d2325499e54e14703e1292624c6dffd8d1e378926f58d2237a5
+  timestamp: '2026-07-12T07:15:34Z'
+  output_hash: 3ce917a6bbe26f3acb763ed5c3904863d8e4425ff42af96b52489957087f5733
   usage:
-    prompt_tokens: 2025
-    completion_tokens: 448
-    total_tokens: 5805
+    prompt_tokens: 3475
+    completion_tokens: 333
+    total_tokens: 3808
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: remarkable
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: opened my eyes
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:34Z'
+  previous_text: 'The man answered, “That is the remarkable thing: you do not know where he comes from, and yet he opened my eyes!”'
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f142c73c7d2297566166b614cc2b5090ac1494add3adb6b6ad629cf77ac84164
+  review_summary: The draft preserves the meaning of the man's ironic contrast, and “where he comes from” is warranted by the POB lexical alternative. A small revision improves the actual simplification of the introductory idiom and avoids adding emphatic punctuation not present in the base rendering.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

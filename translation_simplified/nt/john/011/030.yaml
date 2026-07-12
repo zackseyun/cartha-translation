@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/011/030.yaml
-  text: Now Jesus had not yet come into the village[a], but was still in the place where Martha had met him.
+  text: Jesus had not yet come into the village[a], but was still in the place where Martha had met him.
   footnotes:
   - marker: a
     text: Or, more explicitly, 'where Martha had gone out to meet him.'
@@ -31,36 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus had not yet come into the village, but was still at the place where Martha had met him.
+  text: Jesus had not yet entered the village, but was still where Martha had met him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: had not yet come into the village
+  simplified_phrase: had not yet entered the village
+  preserved_meaning: Jesus had not yet gone inside the village.
+  reasoning_layer_used: POB lexical decision for ἐληλύθει
+  rationale: The audited alternative “entered” makes the location clearer in ordinary English.
+- pob_phrase: was still in the place where
+  simplified_phrase: was still where
+  preserved_meaning: Jesus remained at the same location where the meeting occurred.
+  reasoning_layer_used: POB lexical decisions for ἔτι, τόπῳ, and ὅπου
+  rationale: Removing the redundant phrase “in the place” keeps both continued presence and location.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/030.yaml
   source_text_sha256: a23d052f7011a9e8328e9ec76fcd990cc8a5eba38f0d83c033e9506dbd80d34e
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:37Z'
-  output_hash: 312f83ca342d04a73f068539dc70c8f967cec681cb4a17c5c2ab72b68d663384
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bfc4afc60aa563d96f467890ccea7eac62886085d0fb952e3b790680a92c1de3
+  timestamp: '2026-07-12T07:16:01Z'
+  output_hash: 3208f519f9dd82f367d515df082ce8113cfc00993b06d9644023d419e60fb18d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3251
+    completion_tokens: 222
+    total_tokens: 3473
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:01Z'
+  previous_text: Jesus had not yet come into the village, but was still at the place where Martha had met him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b3cfb7ea517b560107303e88aca7e20e48f8de3289176e8d6ece763a099f5508
+  review_summary: 'The draft is faithful and doctrinally sound: it adds no unsupported interpretation and preserves the contrast between Jesus’ not entering the village and remaining at Martha’s meeting place. However, its only change from the POB (“at” for “in”) is too slight to meet the stated standard of meaningful simplification. The recommended wording is more concise and natural while remaining supported by the source, context, and POB alternatives.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

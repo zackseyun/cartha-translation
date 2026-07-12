@@ -34,36 +34,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'Instead, as it is written: “Those who were not told about him will see, and those who have not heard will understand.”'
+  text: 'But, as Scripture says: “Those who were not told about him will see, and those who have not heard will understand.”[a]'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Paul is quoting Isaiah 52:15. In Isaiah, “him” refers to the servant figure; Paul applies the quotation to his proclamation of the gospel.
+    reason: cross_reference
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: but as it is written
+  simplified_phrase: But, as Scripture says
+  preserved_meaning: Introduces Isaiah’s written words as the scriptural basis for Paul’s preceding statement.
+  reasoning_layer_used: POB lexical decision for ἀλλὰ and καθὼς γέγραπται
+  rationale: This keeps the contrastive “but” while making the citation formula immediately clear.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may assume “him” explicitly means Christ in the quotation itself.
+    mitigation: The pronoun remains unchanged, and the footnote explains its contextual use without expanding the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/021.yaml
   source_text_sha256: f3d6c786af3a4c82c96adbb6fa19be5e9ca2d104f74699be7a58e2173347f400
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 56f8fcb3cf7c12b0872a3bee78a4006e8a803b2a32107f3a62f6821319ad9c78
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 16073f3b786ac6f44ad002f4fc4abf5efaac15b8c08e2b4d563f871e76c3be79
+  timestamp: '2026-07-12T07:42:43Z'
+  output_hash: f6924b33a63ab17993e0cd0286d213f53e211d50f9bff96750034f56a5075adb
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3215
+    completion_tokens: 257
+    total_tokens: 3472
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:43Z'
+  previous_text: 'Instead, as it is written: “Those who were not told about him will see, and those who have not heard will understand.”'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d4512c254a68b01ef90c58177ada9b0e47fb84dfcddd2ddd4bc3c2c040f0e921
+  review_summary: Revise “Instead” to “But.” The verse remains clear in common English, preserves the POB’s source-grounded adversative, and does not introduce a stronger implication that the citation replaces the prior ministry statement.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

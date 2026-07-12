@@ -37,41 +37,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They love the places of honor at banquets and the best seats in the synagogues,
+  text: They love having places of honor at banquets and the best seats in synagogues.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 23 POB base wording
-  simplified_phrase: They love the places of honor at banquets and the best seats in the synagogues,
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, source payload, and footnotes
-  rationale: Manual Codex-only drafting simplified sentence structure and clarified dense wording while retaining Matthew 23's commands, rebukes, metaphors, titles, and textual cautions without adding new interpretation.
+- pob_phrase: they love the places of honor
+  simplified_phrase: They love having places of honor
+  preserved_meaning: They strongly desire the honored positions themselves, not merely the locations.
+  reasoning_layer_used: POB lexical decisions for φιλοῦσι and πρωτοκλισίαν, with cultural footnote c
+  rationale: Adding “having” makes their desire for public status immediately clear.
+- pob_phrase: in the synagogues
+  simplified_phrase: in synagogues
+  preserved_meaning: Their desire for the highest-status seats occurs in Jewish assembly settings.
+  reasoning_layer_used: POB lexical decision for ἐν ταῖς συναγωγαῖς
+  rationale: Dropping the English article is natural and does not change the institutional setting.
+interpretive_expansions:
+- pob_phrase: they love the places of honor
+  rendering: They love having places of honor
+  claim: Their desire is to possess honored positions at formal meals.
+  evidence:
+  - The POB lexical rationale defines πρωτοκλισίαν as the most honored reclining places at a meal.
+  - POB cultural footnote c says the wording highlights desire for public status rather than comfort.
+  confidence: high
+  alternatives_preserved:
+  - the chief place at table
+  - the seats of honor
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the local POB Matthew 23 record as the controlling base and uses the Greek/source reasoning only as an audit guardrail; no external LLM, web API, or remote model was used.
-  readability_notes:
-  - Uses shorter clauses, clearer modern common English, and direct subject/action wording while preserving Jesus’ discourse flow in Matthew 23.
-  compression_notes:
-  - Technical alternatives from POB notes are compressed unless needed for normal-reader clarity; no central narrative, command, warning, title, metaphor, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection, style consistency, and verse-continuation punctuation.
-    mitigation: The generated SPOB record preserves the base POB text, footnotes, and source-grounding metadata for audit.
+  - risk: “Having” makes possession of social status more explicit than the POB wording alone.
+    mitigation: The POB lexical rationale and cultural note directly identify honored position and public status as the intended sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/023/006.yaml
   source_text_sha256: 7ce1094d8d045416a8575aee9474a7957e312067e427033ff77adfd132a8b8ad
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:15:48Z'
-  output_hash: 0a81c1a02e2eb426eab18a54e175df5e5ebf3d2e633f2640a8f1c63874e952ad
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 960096b0ee3145b0ec0cbee4d3b9a4bac0163ab66c4b362c7fbe6ee6f2c4fbcc
+  timestamp: '2026-07-12T07:39:48Z'
+  output_hash: b2e9e4cbeeb79b9b0411c6adf2051fe9c77a61279ff0203f190c1d4577fdd93d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3243
+    completion_tokens: 384
+    total_tokens: 3627
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:48Z'
+  previous_text: They love the places of honor at banquets and the best seats in the synagogues,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ec49e41ec3df57eea202b7b42e3aef7a06a5bdea7a03e8696f2aeb4698f81135
+  review_summary: The draft preserves the source-grounded meaning and introduces no doctrinal expansion or loss of ambiguity. However, it does not materially simplify an already clear POB sentence. “Love having” makes the targeted desire for honored positions more immediately clear in natural modern English, while retaining the parallel reference to banquets and synagogues. The removal of the mild Greek connective is acceptable in SPOB.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -19,36 +19,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 13:7 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''fear'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote ma'
 translation:
   language: en
-  text: 'Give everyone what you owe: taxes to whom taxes are due, revenue to whom revenue is due, respect to whom respect is due, and honor to whom honor is due.'
+  text: 'Give everyone what you owe them: taxes to those due taxes, revenue to those due revenue, fear to those due fear, and honor to those due honor.'
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Pay to all what is owed
+  simplified_phrase: Give everyone what you owe them
+  preserved_meaning: Everyone must receive whatever is rightfully due to them.
+  reasoning_layer_used: POB translation and source payload
+  rationale: The wording becomes natural modern English without weakening the command.
+- pob_phrase: to the one due tax, tax; to the one due revenue, revenue
+  simplified_phrase: taxes to those due taxes, revenue to those due revenue
+  preserved_meaning: Both kinds of required government payment remain distinct.
+  reasoning_layer_used: POB translation
+  rationale: The parallel obligations are recast in clear English while preserving both terms.
+- pob_phrase: to the one due fear, fear; to the one due honor, honor
+  simplified_phrase: fear to those due fear, and honor to those due honor
+  preserved_meaning: Fear and honor remain separate responses owed to the appropriate people.
+  reasoning_layer_used: POB applied revision and grounding review
+  rationale: Retaining “fear” preserves the POB’s stronger source-driven choice rather than narrowing it to respect.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Modern readers may understand “fear” as terror alone.
+    mitigation: The main text retains the audited term because replacing it with “respect” would soften its contextual force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/013/007.yaml
   source_text_sha256: 0aab5618332feefa68bf0b652f851f01003dd3a642ad0cc4dc7e02e1151f7597
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:41Z'
-  output_hash: 8c433227138e5cfec5dfc601db7d8241ac8775cf159adec48e08cb19bd9c0049
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: aa06105ca43caa2de330677a35d9462847e034d5eeb58d56d718e8332a40ddf7
+  timestamp: '2026-07-12T07:42:24Z'
+  output_hash: 09b0ee4d83f015f8b9c398f2079753007590cf1eba5480e3d8880d27e6290d66
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2608
+    completion_tokens: 358
+    total_tokens: 2966
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:24Z'
+  previous_text: 'Give everyone what you owe: taxes to whom taxes are due, revenue to whom revenue is due, respect to whom respect is due, and honor to whom honor is due.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5b253b6ac274ce16d51fe1a1e3d2388a470277812038dcdf8464e5e72a7dcc9e
+  review_summary: The draft is generally clearer and preserves the four parallel obligations, but “respect” is not an adequate unqualified simplification of “fear” here. Retain “fear” so that the text’s stronger language and its contextual force are not weakened.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

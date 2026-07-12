@@ -31,38 +31,51 @@ base_translation:
     changes_summary: Removed the redundant second 'you' before 'today' to improve natural English while preserving the emphatic timing expressed in the Greek.
 translation:
   language: en
-  text: Jesus said to him, “Truly I tell you, today—this very night—before a rooster crows twice, you will deny me three times.”
+  text: Jesus says to him, “Truly I tell you, today—this very night—before a rooster crows twice, you will deny me three times.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And Jesus says to him[a], “Truly I tell you, today, this very night, before a rooster crows twice, you will deny me three times.”
-  simplified_phrase: Jesus said to him, “Truly I tell you, today—this very night—before a rooster crows twice, you will deny me three times.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: And Jesus says to him
+  simplified_phrase: Jesus says to him
+  preserved_meaning: Jesus directly addresses Peter, and Mark’s vivid present tense remains intact.
+  reasoning_layer_used: POB lexical and theological decisions on λέγει
+  rationale: Removing the opening “And” gives natural English without changing the action.
+- pob_phrase: today, this very night
+  simplified_phrase: today—this very night—
+  preserved_meaning: Both time expressions remain and emphasize how soon the prediction will happen.
+  reasoning_layer_used: POB theological decision on σήμερον and ταύτῃ τῇ νυκτί
+  rationale: Dashes show that “this very night” sharpens “today” without merging the two expressions.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/030.yaml
   source_text_sha256: 02885d005a84e8982da48ee8ce984907b5fa955e22d829eaa1f36ed6b66e4841
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 24668ba11867976160a3b4e0bed24d73a535355cd29731ca005ec65e809f7478
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a81a336f34af9481077d496269a3471b36960a737935c9064d49db18a2643c71
+  timestamp: '2026-07-12T07:22:01Z'
+  output_hash: 05b95bb93f513ac480a3fa1dc7efc31547ebcdde749a45b4db460bfbc9eb0efb
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3727
+    completion_tokens: 247
+    total_tokens: 3974
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:01Z'
+  previous_text: Jesus said to him, “Truly I tell you, today—this very night—before a rooster crows twice, you will deny me three times.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fbe197a09eeb509f41b572ce92b10c0b42404a2f6158b7fed00791f906c7f0a7
+  review_summary: Revise the tense only. The dash-bracketed “this very night” is a warranted, clear way to present the two Greek time expressions without collapsing either one. But changing “says” to “said” does not materially improve comprehension and overrides a documented POB source-based choice. The denial prediction, its timing, and both numerical details are otherwise preserved accurately.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

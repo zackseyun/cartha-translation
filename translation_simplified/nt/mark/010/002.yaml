@@ -31,38 +31,67 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 10:2 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''his wife''].'
 translation:
   language: en
-  text: Some Pharisees came to test him. They asked, “Is it lawful for a man to divorce his wife?”
+  text: Some Pharisees came to test him. They kept asking him, “Is it lawful for a man to divorce his wife?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they were asking him whether it is lawful for a man to divorce a wife[a], testing him.
-  simplified_phrase: Some Pharisees came to test him. They asked, “Is it lawful for a man to divorce his wife?”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: And they were asking him whether it is lawful for a man to divorce a wife, testing him.
+  simplified_phrase: Some Pharisees came to test him. They kept asking him, “Is it lawful for a man to divorce his wife?”
+  preserved_meaning: The question concerns whether divorce is permitted under the law, and the questioners are testing Jesus.
+  reasoning_layer_used: POB translation, lexical decisions, immediate context, and grounding review
+  rationale: Two direct sentences make the question and hostile purpose clear without changing the legal issue.
+- pob_phrase: were asking
+  simplified_phrase: kept asking him
+  preserved_meaning: The questioning was ongoing or repeated.
+  reasoning_layer_used: POB lexical decision for ἐπηρώτων and grounding review
+  rationale: “Kept asking” naturally preserves the imperfect verb’s ongoing or repeated force.
+- pob_phrase: for a man to divorce a wife
+  simplified_phrase: for a man to divorce his wife
+  preserved_meaning: The generic male subject and the marital meaning of the question remain explicit.
+  reasoning_layer_used: POB lexical and theological decisions for ἀνδρὶ and γυναῖκα
+  rationale: English normally uses “his wife” here while retaining the source-driven generic “a man.”
+interpretive_expansions:
+- pob_phrase: they ... testing him
+  rendering: Some Pharisees came to test him.
+  claim: The unidentified questioners are explicitly identified as Pharisees, and their testing purpose is stated as their reason for approaching.
+  evidence:
+  - The grounding review says the identification is warranted by the verse’s source text and immediate context.
+  - The participle πειράζοντες explicitly describes their action as testing Jesus.
+  confidence: high
+  alternatives_preserved:
+  - They were testing him.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Kept asking” may be heard as emphasizing repetition rather than continuous questioning.
+    mitigation: The POB audit recognizes either ongoing or repeated action as the imperfect verb’s force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/002.yaml
   source_text_sha256: 35ff69efe48333a2620aa82deca7c97bb4fb10bb69cb73bfd082d28d9ed1650c
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 65d8b229b9adc9b1d845eacde1f366204dd860d328eea38c3c263567cba5a0dd
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d20be492ab474a98f6c45c05975076f930d548085c6469b51b2961ea007c3285
+  timestamp: '2026-07-12T07:22:21Z'
+  output_hash: af5c34edfa7110497223f527cb47e0d9fbe8642677362b4b068b0e41846008fa
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3433
+    completion_tokens: 741
+    total_tokens: 4174
+    reasoning_tokens: 234
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:21Z'
+  previous_text: Some Pharisees came to test him. They asked, “Is it lawful for a man to divorce his wife?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 03ff10e7cfd2ebeb986b848f4f362220d18d1d0792ad48df8cfbf101a7e4b530
+  review_summary: The draft is substantially clearer and its explicit identification of the questioners as Pharisees is warranted by the verse’s source text and immediate context. Rendering their motive as “came to test him” is also a defensible, readable expression of the participle πειράζοντες. However, “They asked” unnecessarily loses the ongoing/repeated force preserved in the POB’s “were asking.” “They kept asking him” retains that nuance in natural modern English without adding a doctrinal or interpretive claim.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

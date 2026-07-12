@@ -31,47 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They found him and said, “Everyone is looking for you.”
+  text: They found Jesus and said, “Everyone is looking for you.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Removed the redundant indirect object 'to him' (αὐτῷ) to match natural modern narrative flow, as the address is clear from the direct quote.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the redundant indirect object 'to him' (αὐτῷ) to match natural modern narrative flow, as the address is clear from the direct quote.
-- preserved_meaning: Replaced the opening coordinate conjunction 'And' (καὶ) to make the narrative opening cleaner and more engaging for a modern reader.
-  reasoning_layer_used: POB audit trail
-  rationale: Replaced the opening coordinate conjunction 'And' (καὶ) to make the narrative opening cleaner and more engaging for a modern reader.
-- preserved_meaning: Omitted the POB footnote explaining 'seeking' versus 'looking for' because 'looking for' is perfectly clear and modern, and the academic distinction does not affect comprehension for a general audience.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the POB footnote explaining 'seeking' versus 'looking for' because 'looking for' is perfectly clear and modern, and the academic distinction does not affect comprehension for a general audience.
-retained_terms:
-- term: Everyone
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: looking for
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: they found him
+  simplified_phrase: They found Jesus
+  preserved_meaning: Jesus remains the person whom the disciples found.
+  reasoning_layer_used: Immediate context and POB pronoun alignment
+  rationale: Naming Jesus makes the referent clear when the verse is read by itself.
+- pob_phrase: said to him
+  simplified_phrase: said
+  preserved_meaning: The direct quotation still clearly addresses Jesus.
+  reasoning_layer_used: POB direct-discourse decision
+  rationale: The quotation makes “to him” unnecessary in natural English.
+- pob_phrase: And they found
+  simplified_phrase: They found
+  preserved_meaning: The same narrative event and sequence remain intact.
+  reasoning_layer_used: POB connective alternatives
+  rationale: Dropping the opening connective gives a cleaner standalone sentence without changing the action.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person found is Jesus.
+  evidence:
+  - The POB context identifies the masculine pronoun as referring to Jesus.
+  confidence: high
+  alternatives_preserved:
+  - him
 translation_notes:
-  source_alignment_notes: Preserves the active search meaning of εὗρον ('found') and the continuous/present nature of ζητοῦσίν ('looking for') within the direct discourse.
-  readability_notes:
-  - Shortened the narrative sequence by removing redundant pronouns and coordinate conjunctions, resulting in more immediate and natural English dialogue.
-  compression_notes:
-  - Dropped 'And' and 'to him' to streamline the sentence without losing any semantic information or theological weight.
+  risk_flags:
+  - risk: Naming Jesus replaces a pronoun supplied by the Greek text.
+    mitigation: The immediate context fixes Jesus as the referent, so the clarification adds no new participant.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/001/037.yaml
   source_text_sha256: 22ad0d4179ccaa447e97f7b28c8566027a1aff5d7f02faef7780bb867da2b71f
-  pob_commit_sha: 66a0d6d1d3f10cf177e9df856d41d68626c38171
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: e11665ad6e3d381783487c362b2a8bc8c7945a493c8007c838c828867f2e9d81
-  timestamp: '2026-05-28T08:57:48Z'
-  output_hash: 8a8d50047105e0bb1a94073a0851558104d1fb8c54c30e4cfa64a2ceb6ccadd8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: da9268bdbb11658805b89110e97d63243d19d76d215d0b4d6d94c193e4eef0a1
+  timestamp: '2026-07-12T07:19:41Z'
+  output_hash: a17aeef74b89d50c3ce906035aad1ca9a7bd9bbef50cd76365c7a0be87687f58
   usage:
-    prompt_tokens: 1501
-    completion_tokens: 321
-    total_tokens: 3718
+    prompt_tokens: 3127
+    completion_tokens: 336
+    total_tokens: 3463
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Everyone
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: looking for
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:41Z'
+  previous_text: They found him and said, “Everyone is looking for you.”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3d9d7c6bc925fca3deaa5fef5359ebade1107da8e977dec67acdde215cba9c16
+  review_summary: 'The proposed wording preserves the verse’s meaning: the disciples locate Jesus and report that the people are searching for him. Dropping “to him,” the opening connective, and the lexical footnote is acceptable. However, because the assignment requires a meaningful clarity gain over POB, the draft’s only change is too slight. Naming Jesus makes the pronouns immediately clear for a reader encountering this verse in isolation, without adding interpretation or changing the referent.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

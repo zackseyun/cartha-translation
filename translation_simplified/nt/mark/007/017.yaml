@@ -31,41 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When he went into a house away from the crowd, his disciples asked him about the parable.
+  text: And when he went into a house away from the crowd, his disciples asked him about the parable.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “the saying” or “the illustration.” The Greek word can have these meanings here.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: entered a house away from the crowd
   simplified_phrase: went into a house away from the crowd
-  preserved_meaning: Keeps the movement into a house apart from the crowd.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Went into'' is simpler than ''entered'' in common English.'
-retained_terms:
-- term: parable
-  reason: Preserves the POB term for the saying/illustration.
+  preserved_meaning: Jesus moved into a house and was separated from the crowd.
+  reasoning_layer_used: POB lexical decisions for εἰσῆλθεν εἰς οἶκον and ἀπὸ τοῦ ὄχλου
+  rationale: “Went into” is more common than “entered” while preserving the setting change.
 translation_notes:
-  source_alignment_notes: Preserves the setting shift and the disciples' question.
-  readability_notes:
-  - Uses 'went into' for a simpler verb.
-  compression_notes:
-  - No setting detail is removed.
+  risk_flags:
+  - risk: “Parable” may sound narrower than the brief figurative teaching in context.
+    mitigation: The main text retains POB’s source-driven term, while the footnote preserves broader lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/007/017.yaml
   source_text_sha256: 129181d392881301db40cbbacd1697e538faf74fc90890ffe826981aedc0f041
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:01:59Z'
-  output_hash: 932c277ee453359b05d91832fbcfb395e8eaf265ce5d229ab084e0d1d168e970
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9a44d1fedeefa8c2fdbe5e186bcff794d12e30d8a8345c7c4b5044aca5fc2c08
+  timestamp: '2026-07-12T07:20:38Z'
+  output_hash: 61f1628f73db85f56cba45d159faaa9a85e95de1b7e92387aeb5e6c25823b81b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2967
+    completion_tokens: 258
+    total_tokens: 3225
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: parable
+  reason: Preserves the POB term for the saying/illustration.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:38Z'
+  previous_text: When he went into a house away from the crowd, his disciples asked him about the parable.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fbb694a4c653475768a7f5bbea24ec5ec65da788edc04b4b59c791ea5c330a53
+  review_summary: Changing 'entered' to the more common 'went into' is a warranted, source-faithful readability improvement. Retain 'And,' however, since the source includes it and the POB audit trail specifically preserves Mark's narrative connection; doing so costs no meaningful clarity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

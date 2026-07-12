@@ -34,38 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Woe to those who are pregnant and to those nursing infants in those days.
+  text: But how terrible it will be for those who are pregnant and for those nursing infants in those days!
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But woe to those who are pregnant and to those who are nursing infants in those days[a][b].
-  simplified_phrase: Woe to those who are pregnant and to those nursing infants in those days.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: But woe to
+  simplified_phrase: But how terrible it will be for
+  preserved_meaning: Preserves both the transition and the exclamation of grief and warning about coming distress.
+  reasoning_layer_used: POB lexical decisions for δέ and οὐαί, supported by the immediate context
+  rationale: This makes the prophetic warning understandable without softening its gravity.
+- pob_phrase: those who are nursing infants
+  simplified_phrase: those nursing infants
+  preserved_meaning: Retains the distinct group caring for infants while using smoother English.
+  reasoning_layer_used: POB lexical decision for θηλαζούσαις
+  rationale: Removing the repeated words shortens the sentence without changing its meaning.
+interpretive_expansions:
+- pob_phrase: woe
+  rendering: how terrible it will be
+  claim: The exclamation warns of severe hardship that these people will face.
+  evidence:
+  - The POB rationale identifies οὐαί as an exclamation of lament and warning.
+  - Mark 13:14–19 describes urgent flight during severe distress.
+  confidence: high
+  alternatives_preserved:
+  - woe
+  - alas
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: The future wording makes the impending sense more explicit than the Greek exclamation alone.
+    mitigation: The surrounding future warning and POB rationale strongly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/017.yaml
   source_text_sha256: a003398585b736df75c0149ee367a23f2144d961d4035157913aa92b5c002bab
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 85eaf783957517851b75643bf0c6d411c334c9d6eb3e5ba5776a5ed88a21b742
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a17df3b6fc8d15403800fab590f97627eedbc0312a652fd82cd2454fdfdbe254
+  timestamp: '2026-07-12T07:24:14Z'
+  output_hash: d79bf5a9a66c4f1d75b970fe851969d7b02786354e436af8d73f164719361e35
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3070
+    completion_tokens: 353
+    total_tokens: 3423
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:14Z'
+  previous_text: Woe to those who are pregnant and to those nursing infants in those days.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4c10a8542e3e64b6a0f5ed1c26fb5d35a42d48320ffe1cc80e5b21f3a9412666
+  review_summary: The draft does not introduce doctrinal material and correctly preserves the two groups and the temporal reference. However, replacing the archaic and opaque “Woe” with a clear expression of impending terrible hardship is needed for SPOB’s understanding-first aim; the future sense is supported by the surrounding warning. Retaining “But” also preserves the source’s modest discourse connection.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

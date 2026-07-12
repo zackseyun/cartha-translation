@@ -31,14 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When the chief priests and the Pharisees heard his parables, they knew he was speaking about them.
+  text: When the chief priests and Pharisees heard Jesus’ parables, they realized that he was speaking about them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And when the chief priests and the Pharisees heard his parables
-  simplified_phrase: When the chief priests and the Pharisees heard his parables
-  preserved_meaning: Preserves the leaders' recognition while removing an unnecessary opening conjunction.
-  reasoning_layer_used: POB theological decision
-  rationale: Keeps 'about them' rather than over-interpreting as 'against them.'
+- pob_phrase: the chief priests and the Pharisees
+  simplified_phrase: the chief priests and Pharisees
+  preserved_meaning: Keeps both groups while removing an unnecessary repeated article.
+  reasoning_layer_used: POB lexical decisions
+  rationale: The conventional group names remain clear without repeating “the.”
+- pob_phrase: his parables
+  simplified_phrase: Jesus’ parables
+  preserved_meaning: Identifies the speaker without changing whose parables they heard.
+  reasoning_layer_used: Immediate context and POB source alignment
+  rationale: Naming Jesus makes the pronoun’s referent immediately clear.
+- pob_phrase: they knew
+  simplified_phrase: they realized
+  preserved_meaning: Expresses that hearing the parables led them to recognize their meaning.
+  reasoning_layer_used: POB lexical decision for ἔγνωσαν
+  rationale: “Realized” clearly conveys the documented coming-to-know sense.
+interpretive_expansions:
+- pob_phrase: his parables
+  rendering: Jesus’ parables
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - Jesus is the speaker of the parables in the immediate context.
+  confidence: high
+  alternatives_preserved:
+  - his parables
+translation_notes:
+  risk_flags:
+  - risk: “About them” may sound less openly hostile than the surrounding context suggests.
+    mitigation: Retaining “about them” preserves the Greek preposition and avoids overtranslating it as “against them.”
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/021/045.yaml
+  source_text_sha256: 9495a5019558b91420c8f70f2b5b3d573aa022308794286ce800ea16e686ab74
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a72abe2b9346f8c2180f049a3cb4d451101ce019f513e20b823aa66ec6a2853c
+  timestamp: '2026-07-12T07:37:22Z'
+  output_hash: 726b9355e0263a9aabb356e7cec52905da0912dc262ba505037ac7c0f4423475
+  usage:
+    prompt_tokens: 3045
+    completion_tokens: 380
+    total_tokens: 3425
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: chief priests
   reason: Leadership title retained from POB.
@@ -46,30 +90,13 @@ retained_terms:
   reason: Group name retained from POB.
 - term: parables
   reason: Retained as the established Gospel term.
-translation_notes:
-  source_alignment_notes: Preserves the leaders' recognition that the parables referred to them.
-  readability_notes:
-  - Removes the initial conjunction for natural reading.
-  compression_notes:
-  - No participant or recognition detail is omitted.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/021/045.yaml
-  source_text_sha256: 9495a5019558b91420c8f70f2b5b3d573aa022308794286ce800ea16e686ab74
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:14:47Z'
-  output_hash: add32a209295592dea8fc17619ea9c16ac2111a45baf4721e5c7d397e64cf74b
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:22Z'
+  previous_text: When the chief priests and the Pharisees heard his parables, they knew he was speaking about them.
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9c2ee84f45f9b0d385564a4f9a34c3dfd114e2bf266e2137cafede006eeefa9c
+  review_summary: 'Revise for a genuine understanding-first improvement. “Realized” accurately communicates the aorist recognition, and naming Jesus clarifies the pronoun from the immediate context. “About them” must remain: changing it to “against them” would exceed the lexical wording and the POB audit trail.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: '"You will always have the poor with you, but you will not always have me."'
+  text: “You always have poor people with you, but you do not always have me.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: the poor
+  simplified_phrase: poor people
+  preserved_meaning: The phrase still refers generally to people who are poor.
+  reasoning_layer_used: POB lexical decision for πτωχούς
+  rationale: The approved alternative is clearer to readers unfamiliar with “the poor” as a group label.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The contrast could be misread as making care for poor people unimportant.
+    mitigation: The wording states only the contrast in continuing presence and timing, without adding a judgment about importance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/008.yaml
   source_text_sha256: db8668fcaf8086a7773fb6a5bcf10390ba63099da3421dce085d88a60eab88b2
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:53Z'
-  output_hash: fdf5f94613577bcc2be21301c74362ba695868d0caf005ac35990ecf56a02e2d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3841f377520520d2795ee3564a21fb21935c6bd50d2dc1186d6aa78676799e38
+  timestamp: '2026-07-12T07:16:39Z'
+  output_hash: 3cdd83b6b909e080d50b9b9d5969196698c218003a243ba9a3d5ebd528cc18b6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3113
+    completion_tokens: 179
+    total_tokens: 3292
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:39Z'
+  previous_text: '"You will always have the poor with you, but you will not always have me."'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d9fbc61bce8aa1fe5957c68688d600381c99ec1d52e3c0a053790e27cde26212
+  review_summary: Revise slightly. Quotation marks appropriately clarify that Jesus is speaking, and the verse should retain its factual contrast without implying that care for poor people is unimportant. Use the present-tense wording reflected in the source and POB audit trail; “poor people” is a supported readability improvement.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,17 +34,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The one who eats[a] my flesh and drinks my blood has eternal life, and I will raise him up on the last day.
+  text: Whoever eats[a] my flesh and drinks my blood has eternal life. I will raise him up on the last day.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek word for 'eats' is highly concrete, meaning 'chews' or 'feeds on.'
-    reason: simplification_note
+    text: The Greek word translated “eats” is especially concrete and can also mean “chews” or “feeds on.”
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
+- pob_phrase: The one who eats
+  simplified_phrase: Whoever eats
+  preserved_meaning: It describes any person characterized by this action while retaining the singular reference.
+  reasoning_layer_used: POB lexical decision for ὁ τρώγων
+  rationale: “Whoever” is more natural in common English than the formal phrase “the one who.”
+- pob_phrase: has eternal life, and I will raise him up
+  simplified_phrase: has eternal life. I will raise him up
+  preserved_meaning: The person has eternal life now, and Jesus promises his future resurrection.
+  reasoning_layer_used: POB lexical decisions for ἔχει and ἀναστήσω
+  rationale: Two sentences make the present possession and future promise easier to follow.
+translation_notes:
+  risk_flags:
+  - risk: “Whoever” is less formally tied to the Greek singular construction than “the one who.”
+    mitigation: The following singular pronoun “him” preserves the source text’s singular reference.
+  - risk: The concrete eating and drinking language may invite competing metaphorical or sacramental interpretations.
+    mitigation: The main text retains the literal images and does not choose between those interpretations.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/006/054.yaml
+  source_text_sha256: e1d2d43806524e889f62744b315a5ef935c07ce0522b5e5812ef496be935a438
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 763a779167d6d31945235615c5f4630920685e00a4e1489340ef54fb7994acdb
+  timestamp: '2026-07-12T07:14:46Z'
+  output_hash: b6e1c18fe186cf3d70626bb3e01e970246888ef9a9eb5fbc205f0d8a39f86d28
+  usage:
+    prompt_tokens: 3749
+    completion_tokens: 360
+    total_tokens: 4109
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: flesh
   reason: Retained to preserve POB's source-grounded terminology.
@@ -54,33 +88,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: last day
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The translation mirrors the coordinate present participles (eating/drinking) paired with the present-tense possession of eternal life, followed by the future active resurrection on the last day.
-  readability_notes:
-  - The sentence flows naturally in modern English while maintaining the heavy, solemn tone of the discourse. Archaic syntax is avoided.
-  compression_notes:
-  - No text from the verse itself was compressed or omitted; compression was applied only to the footnotes by removing secondary translational alternatives.
-  risk_flags:
-  - risk: Using the singular masculine pronoun 'him' may feel non-inclusive to readers accustomed to gender-neutral Bible translations, but it is retained to protect source-text grammar per project policy.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/006/054.yaml
-  source_text_sha256: e1d2d43806524e889f62744b315a5ef935c07ce0522b5e5812ef496be935a438
-  pob_commit_sha: 3afdf15abc9a96c0093b0f2add5eb20faf8f06b4
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 42bafe4a33dddcb6d52fa69eb8e22c873ad15d26d94f9489917c3a36b4bf3913
-  timestamp: '2026-05-28T07:51:43Z'
-  output_hash: 2e0732b93400f7d722b1d72e24287a723aa60513addb6ee120265b99d1916eb5
-  usage:
-    prompt_tokens: 2184
-    completion_tokens: 510
-    total_tokens: 4771
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:46Z'
+  previous_text: The one who eats[a] my flesh and drinks my blood has eternal life, and I will raise him up on the last day.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 89f9993532cf75502be651925de76bd9e06ff84eb46acbb92aae5b6f155b932c
+  review_summary: Revise for actual SPOB-level clarity. “Whoever” naturally communicates the generic person denoted by the Greek substantival participle without deciding whether Jesus’ eating-and-drinking language is sacramental or metaphorical. Retaining “flesh,” “blood,” “eternal life,” “last day,” and “him” preserves the source-grounded wording and the POB audit trail. The concrete-eating footnote is warranted by τρώγω and appropriately leaves its rhetorical or theological significance unresolved.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

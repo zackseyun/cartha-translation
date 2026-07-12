@@ -37,41 +37,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: His ears were opened, the bond of his tongue was released, and he spoke plainly.
+  text: His ears were opened, his speech impediment was removed, and he spoke plainly.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: the bond of his tongue was released
-  simplified_phrase: the bond of his tongue was released
-  preserved_meaning: Keeps the source image for the release of his speech impediment.
-  reasoning_layer_used: POB audit trail
-  rationale: The image is meaningful and still understandable, so SPOB leaves it in place.
-retained_terms:
-- term: bond of his tongue
-  reason: Preserves the POB image for the restored speech.
+  simplified_phrase: his speech impediment was removed
+  preserved_meaning: The condition restricting his speech was taken away in the healing.
+  reasoning_layer_used: POB lexical note and independent grounding review
+  rationale: This states the meaning of the Greek metaphor in clear contemporary English.
+interpretive_expansions:
+- pob_phrase: the bond of his tongue was released
+  rendering: his speech impediment was removed
+  claim: The tongue's “bond” refers to the restriction that prevented normal speech.
+  evidence:
+  - The POB lexical note identifies the metaphor as his speech impediment being removed.
+  - The healing context connects the released restriction with speaking plainly.
+  confidence: high
+  alternatives_preserved:
+  - the bond of his tongue was released
+  - his tongue was freed
 translation_notes:
-  source_alignment_notes: Preserves opened ears, released tongue, and plain speech.
-  readability_notes:
-  - Keeps the vivid image because the sentence remains clear.
-  compression_notes:
-  - No healing result is removed.
+  risk_flags:
+  - risk: Replacing the metaphor may reduce the force of the concrete bond image.
+    mitigation: 'The rendering directly preserves its contextual meaning: a restriction was removed.'
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/007/035.yaml
   source_text_sha256: 13c0a232459c1e0ca84f1c0db278877aeb0db014abde8a61c5a49f69d30ef56d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:00Z'
-  output_hash: e69e1792123a38b94eea32bb4b7807f6e4c7338a0e69209bec08cbd752e0e8bf
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 44f42784c60bcae1495846903bf84eaced4ded7bc01471aa25c268a1d46e8606
+  timestamp: '2026-07-12T07:20:44Z'
+  output_hash: 02ba828567115b8c046508de1b69fa3b9d9a9d96102a218ea54ad776a39d23a3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3148
+    completion_tokens: 274
+    total_tokens: 3422
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: bond of his tongue
+  reason: Preserves the POB image for the restored speech.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:44Z'
+  previous_text: His ears were opened, the bond of his tongue was released, and he spoke plainly.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: de845c238ab59a2d7856062898aeeb3816c5bd745f5daa3851eee0beff50471c
+  review_summary: Revise for meaningful readability. “Speech impediment was removed” is a contextually warranted explanation of the Greek metaphor, supported by the POB’s own lexical note, without adding doctrine or changing the healing described.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

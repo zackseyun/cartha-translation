@@ -34,54 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'Jesus answered them, "This is the work of God[a]: that you believe[b] in the one he sent."'
+  text: 'Jesus answered them, “This is the work of God[a]: that you believe[b] in the one he has sent.”'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “the work God requires” or “the work God does.”
     reason: alternative_reading
   - marker: b
-    text: Or “trust.”
+    text: Or “trust in.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Removed the redundant 'and said' construction to sound more natural in modern English while retaining the narrative context.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the redundant 'and said' construction to sound more natural in modern English while retaining the narrative context.
-- preserved_meaning: Simplified the formal relative clause 'whom he has sent' to 'he sent' for smoother, modern readability, while preserving the historical and theological reference to God sending Jesus.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the formal relative clause 'whom he has sent' to 'he sent' for smoother, modern readability, while preserving the historical and theological reference to God sending Jesus.
-retained_terms:
-- term: the work of God
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: believe in
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: Jesus answered and said to them
+  simplified_phrase: Jesus answered them
+  preserved_meaning: Jesus responds directly to the people.
+  reasoning_layer_used: POB lexical decisions
+  rationale: English “answered” already conveys the act of speaking, so the second verb is unnecessary.
+- pob_phrase: the one whom he has sent
+  simplified_phrase: the one he has sent
+  preserved_meaning: God sent Jesus, and that sending remains relevant.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: Removing “whom” improves flow while retaining the present-perfect form chosen by POB.
 translation_notes:
-  source_alignment_notes: Maintained the ambiguous genitive 'the work of God' (τοῦ θεοῦ) to prevent over-resolving the text's intentional theological tension. Preserved the plural aspect of 'that you believe'.
-  readability_notes:
-  - By bypassing the archaic double-verb introduction and removing the relative pronoun 'whom,' the sentence flows much more naturally for a modern reader.
-  compression_notes:
-  - Compressed the speech introduction and shifted the present perfect auxiliary 'has sent' to simple past 'sent' to better match modern English narrative flow.
   risk_flags:
-  - risk: A major risk was over-simplifying 'the work of God' to something like 'what God wants,' which would eliminate the theological ambiguity of whether this work is human action or divine agency. This was avoided by retaining the phrase and keeping the clarifying footnote.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “The work of God” may be understood as either what God requires or what God does.
+    mitigation: The ambiguous wording remains in the text, and footnote a gives both major readings.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/006/029.yaml
   source_text_sha256: 5717d32b11b5dd8e36a3fe0ff8560025ec73d34d332f07fc57748687d3e97f4e
-  pob_commit_sha: 9a43b560d15b9a8ba1bbb0ce2d35be2bcbc997ea
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 06c747a7b5c7a9b2ba27cb091fa8a5063d36aca881643912bf569c7d197651a3
-  timestamp: '2026-05-28T07:38:44Z'
-  output_hash: 62f796da0da2a9ace6647a413b4dc40c135d3e9a423bf72fca5b2899d5b4f559
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2c7fa982ab015f45696e8063f809ef564549f7d0bd90e74525b8b7da7bf68952
+  timestamp: '2026-07-12T07:14:35Z'
+  output_hash: 23c0d7d2d8d21e4143c8e44df210dd340fbc6439b6846e768be52dc50ea92e25
   usage:
-    prompt_tokens: 2037
-    completion_tokens: 502
-    total_tokens: 4749
+    prompt_tokens: 3793
+    completion_tokens: 303
+    total_tokens: 4096
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: the work of God
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: believe in
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:35Z'
+  previous_text: 'Jesus answered them, "This is the work of God[a]: that you believe[b] in the one he sent."'
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 048bba5eb6426d62c392114b0ca557cec32d9213bf58331b4a39b3029c032e6a
+  review_summary: The draft appropriately removes the redundant “and said,” retains the deliberately unresolved phrase “the work of God,” and does not introduce doctrinal explanation into the main text. Revision is limited to retaining “has sent,” which preserves the POB’s source-and-context-grounded aspectual choice without reducing readability. Footnote b should read “Or ‘trust in.’”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

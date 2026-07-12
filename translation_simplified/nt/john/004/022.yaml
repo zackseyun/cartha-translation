@@ -31,17 +31,44 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You worship what you do not know; we worship what we do know[a], because salvation is from the Jews.
+  text: You worship what you do not know; we worship what we do know, because salvation is from the Jews.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'the Jewish people'. Here, Jesus is contrasting Samaritan and Jewish worship, showing that God's plan of salvation comes through the Jewish nation.
+    text: Or “the Jewish people.” Jesus is contrasting Samaritan and Jewish worship. He means that God’s saving work has its historical source in the Jewish people.
     reason: simplification_note
 simplification_decisions:
-- simplified_phrase: we worship what we do know
-  preserved_meaning: Adding the auxiliary 'do' balances the parallel clause 'what you do not know' and makes the contrast sharper and more natural to a modern English reader without altering the meaning of the underlying verb (οἴδαμεν).
-  reasoning_layer_used: POB audit trail
-  rationale: Adding the auxiliary 'do' balances the parallel clause 'what you do not know' and makes the contrast sharper and more natural to a modern English reader without altering the meaning of the underlying verb (οἴδαμεν).
+- pob_phrase: we worship what we know
+  simplified_phrase: we worship what we do know
+  preserved_meaning: The wording preserves the direct contrast between what the Samaritans do not know and what the Jews know in worship.
+  reasoning_layer_used: POB lexical decision for οἴδαμεν and independent grounding review
+  rationale: Adding “do” makes the contrast clearer in natural spoken and written English.
+translation_notes:
+  risk_flags:
+  - risk: “From the Jews” could be mistaken for an ethnic-superiority or modern political claim.
+    mitigation: The footnote identifies the Jewish people as the historical source of God’s saving work without introducing a nation-state category.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/004/022.yaml
+  source_text_sha256: a976035e39ea67091542dc7dabdea983da5fa1667b28d8bd62f400da05b5b906
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3996ebc2124223a7dbaaaada7d27de7ca66c4b56bdf837057a275faa120290ef
+  timestamp: '2026-07-12T07:19:31Z'
+  output_hash: a8e0516a542f2e4da28805aa6dbddab47c62554364e85127812ed9f3fb70be5b
+  usage:
+    prompt_tokens: 3544
+    completion_tokens: 473
+    total_tokens: 4017
+    reasoning_tokens: 208
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: worship
   reason: Retained to preserve POB's source-grounded terminology.
@@ -49,33 +76,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: the Jews
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Retained the neuter 'what' (ὃ) to refer generally to the object of worship, avoiding the overly personalizing 'the one whom' in alignment with the POB lexical decision. Kept the prepositional copula 'is from' (ἐκ... ἐστίν) instead of the interpretive expansion 'comes from' to preserve the historical source-origin aspect.
-  readability_notes:
-  - The parallel structure of the Greek clauses is preserved and strengthened in English by matching 'do not know' with 'do know'. This aids modern oral comprehension.
-  compression_notes:
-  - No text was compressed out of the biblical verse itself, as it is already concise. The academic language in the original footnote (discussing 'salvation history' and 'covenant community') was simplified for a general reader.
-  risk_flags:
-  - risk: The phrase 'from the Jews' carries historical risks of anti-Semitic misinterpretation; this is mitigated by the simplified footnote clarifying that the reference is to the historical Jewish people as the channel of God's rescue plan.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/004/022.yaml
-  source_text_sha256: a976035e39ea67091542dc7dabdea983da5fa1667b28d8bd62f400da05b5b906
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 7d71280a7ef72dcabd83461e3d1e16d6530df68b5cf05cb0ea3572e33eacc3a0
-  timestamp: '2026-05-28T05:53:28Z'
-  output_hash: f4dcc599e80f75012ab3f9ade6c943a96d5fa48a2641336db036f7e6dd474c93
-  usage:
-    prompt_tokens: 1671
-    completion_tokens: 505
-    total_tokens: 4320
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:31Z'
+  previous_text: You worship what you do not know; we worship what we do know[a], because salvation is from the Jews.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3cd1f80dee043dbde2fc89464ab4ff5c4718e9af7286108a565affa8bd0bb0f3
+  review_summary: Revise the explanatory footnote, not the verse itself. The emphatic 'do know' is faithful and idiomatic, but the current note's 'God's plan ... through the Jewish nation' goes beyond the audit trail and introduces an unnecessary national-category framing. The replacement keeps the warranted salvation-history clarification while preserving the source claim's scope.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

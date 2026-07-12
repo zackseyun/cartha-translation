@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/011/005.yaml
-  text: Now Jesus loved Martha and her sister and Lazarus.
+  text: Jesus loved Martha and her sister and Lazarus.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -27,36 +27,46 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now Jesus loved Martha, her sister, and Lazarus.
+  text: Jesus loved Martha, her sister, and Lazarus.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: Martha and her sister and Lazarus
+  simplified_phrase: Martha, her sister, and Lazarus
+  preserved_meaning: Jesus loved each of the three people named in the list.
+  reasoning_layer_used: POB lexical decision for καὶ ... καὶ ... καὶ and grounding review
+  rationale: Standard list punctuation makes the three people easier to distinguish without changing the coordination.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/005.yaml
   source_text_sha256: eb02406abb6dcf993cb4a61526e73b49bbc61c67e8f8f15e1ac81c74a499b55e
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:36Z'
-  output_hash: e3c45ffdc7269f10adfedfb5d3dee9a160eb55a7a5e2f20300cf9cfe9a17db74
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a3bb58b1f60647b03dbcd331ca45833508acc257e5414121589dc096dd9085aa
+  timestamp: '2026-07-12T07:16:20Z'
+  output_hash: ba598368f1fa49eaa7efa29de9479f7d1d98681335cac7e1955798c89feb267e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3059
+    completion_tokens: 149
+    total_tokens: 3208
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:20Z'
+  previous_text: Now Jesus loved Martha, her sister, and Lazarus.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7ae2c8a5f9ed41367afce11129e3984cd7dc1bfaae36479d0ff731eb206faaa1
+  review_summary: Revise to remove “Now.” The verse plainly states Jesus’ continuing love for the three people; no further doctrinal or emotional expansion is needed. Commas make the three-person list easier for modern readers while preserving the source sense and the POB’s meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

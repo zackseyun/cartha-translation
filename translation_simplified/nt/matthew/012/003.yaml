@@ -31,40 +31,58 @@ base_translation:
     changes_summary: Added 'were hungry' to account for the implied verb applying to 'those with him,' making the sentence complete and natural in English.
 translation:
   language: en
-  text: But he said to them, “Have you not read what David did when he and those with him were hungry?[a]”
+  text: But he said to them, “Haven’t you read what David did when he was hungry and the people with him were hungry?”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek singular verb explicitly refers to David, but the wording can be understood with the hunger applying to David and those with him.
+    text: The Greek verb is singular and explicitly refers to David, though the wording can also include the people with him in the hunger.
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Have you not read
+  simplified_phrase: Haven’t you read
+  preserved_meaning: Jesus asks a rhetorical question that appeals to their knowledge of Scripture.
+  reasoning_layer_used: POB lexical decision for Οὐκ ἀνέγνωτε
+  rationale: The contraction makes the familiar question sound natural in modern English without weakening it.
+- pob_phrase: those with him
+  simplified_phrase: the people with him
+  preserved_meaning: The phrase refers to David’s companions without defining their relationship more narrowly.
+  reasoning_layer_used: POB lexical decision for καὶ οἱ μετ’ αὐτοῦ
+  rationale: “The people with him” is immediately clear while avoiding the more interpretive “companions.”
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The main text may suggest that the hunger applies equally and explicitly to David and the people with him.
+    mitigation: The footnote preserves that the singular Greek verb explicitly names David while allowing the broader reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/003.yaml
   source_text_sha256: ad21f92912f26b34e0c68a69c9c3e0511fccc745b724ac36d50304e5c7d7291e
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: 9316683bcc6607ded615f437ed8d47e7cc8df6891c896df6950d8e45e77076eb
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ef031d0e09adff8a0d58bd8ef347ef8b2772a84fba074f57f3aadb816d07c03e
+  timestamp: '2026-07-12T07:36:39Z'
+  output_hash: 1ba631958ad31062525cc4bb208beb13232f25a310368a1da380832fd87369ef
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3167
+    completion_tokens: 895
+    total_tokens: 4062
+    reasoning_tokens: 557
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:39Z'
+  previous_text: But he said to them, “Have you not read what David did when he and those with him were hungry?[a]”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d1243fce29959ccd91f9a771dbc9cc7e0fc49f9a91e6d547bd8f8b58ea68829a
+  review_summary: Revision is needed because the draft’s smoother wording makes a footnoted possible reading the asserted main-text meaning. Retain the POB wording and its lexical-alternative footnote so readers receive the actual source-text ambiguity rather than one selected resolution.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

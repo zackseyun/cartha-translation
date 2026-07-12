@@ -31,47 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When he came down from the mountain, large crowds followed him.
+  text: When Jesus came down from the mountain, large crowds followed him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Retained the POB main text translation directly as it is already highly clear, natural, and accessible to a modern reader.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the POB main text translation directly as it is already highly clear, natural, and accessible to a modern reader.
-- preserved_meaning: Omitted the POB footnote about the literal phrase 'many crowds' to avoid academic clutter, as 'large crowds' is the standard modern idiom and carries the exact same semantic weight.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the POB footnote about the literal phrase 'many crowds' to avoid academic clutter, as 'large crowds' is the standard modern idiom and carries the exact same semantic weight.
-retained_terms:
-- term: mountain
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: large crowds
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: When he came down
+  simplified_phrase: When Jesus came down
+  preserved_meaning: Jesus is the one who came down from the mountain.
+  reasoning_layer_used: Immediate narrative context and POB pronoun alignment
+  rationale: Naming Jesus makes the established subject immediately clear to a new reader.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The preceding mountain discourse identifies Jesus as the speaker who now comes down.
+  confidence: high
 translation_notes:
-  source_alignment_notes: The temporal clause ('When he came down') preserves the genitive absolute construction. The plural 'crowds' is preserved to align with 'ὄχλοι'.
-  readability_notes:
-  - The translation uses simple vocabulary and direct subject-verb syntax, achieving a high readability score suitable for new readers.
-  compression_notes:
-  - No text from the biblical verse was compressed or omitted. The only compression was the removal of the explanatory footnote.
   risk_flags:
-  - risk: None. This is a simple narrative transition with no theological or textual disputes.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Replacing the pronoun with Jesus makes its referent explicit.
+    mitigation: The immediate context clearly identifies Jesus, so no documented ambiguity is lost.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/008/001.yaml
   source_text_sha256: 4193c7122019c718cb940d6b6f18b54e0cd116ebcf57b117266001cd1451233e
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 3626da99d7de369036b63b167cccb0d67319d4f4b04f13ea42897521d1917a65
-  timestamp: '2026-05-28T08:39:12Z'
-  output_hash: 19b98d27e4e9219a871766dd3cc30a0fb3a3e464bedf495331010b22a6beb770
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 766be589a7b842b22ac540c4d9ebe61f3b10f4b00ea07903f40efd587894198f
+  timestamp: '2026-07-12T07:36:29Z'
+  output_hash: a294f3971278ae9aee6a99b75bc04189e81cd7f1ae1df8006ffb170fa0a36e3b
   usage:
-    prompt_tokens: 1406
-    completion_tokens: 290
-    total_tokens: 4057
-    reasoning_tokens: 0
+    prompt_tokens: 2984
+    completion_tokens: 305
+    total_tokens: 3289
+    reasoning_tokens: 79
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: mountain
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: large crowds
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:29Z'
+  previous_text: When he came down from the mountain, large crowds followed him.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 89d0000977f9c1499b3a228230ba23fc493e71bdbc510e5d29032076ab2636f8
+  review_summary: The submitted wording is faithful, natural, and doctrinally unobjectionable, and omitting the lexical-alternative footnote is appropriate for SPOB. However, it is identical to POB and therefore does not meet the stated requirement that approval be reserved for a meaningfully clearer SPOB rendering. Naming Jesus is supported by the immediate context and improves readability without adding interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

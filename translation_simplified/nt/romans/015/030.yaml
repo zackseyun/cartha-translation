@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/015/030.yaml
-  text: Now I urge you[a], brothers, through our Lord Jesus Messiah and through the love of the Spirit, to strive together with me in prayers to God for me[c][b],
+  text: I urge you[a], brothers, through our Lord Jesus the Messiah and through the love of the Spirit, to strive together with me in prayers to God for me[c][b],
   footnotes:
   - marker: a
     text: 'Or ''Christ'': Greek Christos, a title meaning ''Anointed One'' or ''Messiah.'''
@@ -37,36 +37,84 @@ base_translation:
     changes_summary: 'Replaced ''the Messiah'' with ''Christ'' for closer lexical correspondence to Χριστοῦ and more natural consistency in this formal register. No other changes needed. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Now I urge you, brothers and sisters, through our Lord Jesus Messiah and through the love of the Spirit, to struggle together with me in prayers to God for me,
+  text: I urge you, brothers and sisters, through our Lord Jesus the Messiah[a] and through the love of the Spirit[b], to join me in the struggle by praying to God for me.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “Christ”; the Greek title means “Anointed One” or “Messiah.”
+    reason: alternative_reading
+  - marker: b
+    text: “The love of the Spirit” may mean the Spirit’s own love or love produced by the Spirit.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: brothers
+  simplified_phrase: brothers and sisters
+  preserved_meaning: Paul addresses the whole believing community while retaining the family relationship.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The audit says the masculine plural likely includes the whole congregation.
+- pob_phrase: to strive together with me
+  simplified_phrase: to join me in the struggle
+  preserved_meaning: Paul calls the believers to share in strenuous effort with him.
+  reasoning_layer_used: POB lexical decision for συναγωνίσασθαί
+  rationale: This natural phrase preserves both shared action and the verb’s strenuous force.
+- pob_phrase: in prayers to God for me
+  simplified_phrase: by praying to God for me
+  preserved_meaning: The believers share Paul’s struggle through intercessory prayer on his behalf.
+  reasoning_layer_used: Source syntax and POB lexical decisions
+  rationale: The recast clearly shows that prayer is how they join the struggle.
+interpretive_expansions:
+- pob_phrase: brothers
+  rendering: brothers and sisters
+  claim: The address includes the congregation’s women as well as its men.
+  evidence:
+  - The POB audit says ἀδελφοί may address the whole believing community.
+  confidence: high
+  alternatives_preserved:
+  - brothers
+- pob_phrase: to strive together with me in prayers
+  rendering: to join me in the struggle by praying
+  claim: Prayer is the means by which the readers share Paul’s struggle.
+  evidence:
+  - The immediate construction links shared strenuous effort with prayers offered for Paul.
+  - The grounding review confirms this relationship from the syntax and POB audit.
+  confidence: high
+  alternatives_preserved:
+  - to struggle together with me in prayer
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Brothers and sisters” makes the inclusive scope explicit rather than preserving the Greek masculine form.
+    mitigation: The expansion follows the POB’s documented congregation-wide sense.
+  - risk: “The love of the Spirit” remains grammatically ambiguous.
+    mitigation: The footnote preserves the two interpretations documented by POB.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/030.yaml
   source_text_sha256: c24f2ba099a646b6227bb859b4ccb25bb1c059f0541e1edf3afb0a9caadff5da
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 18e76e63b8eb86e8747d39295e4950c67d2de52df5da9bdc79773c5aaea5db5d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 571d22cb6dbf14e2688edf17b379ba436f33bd6eb27ae969c04590b81470388d
+  timestamp: '2026-07-12T07:42:54Z'
+  output_hash: 698966a35b1cc1a04df2fea8c16d251cdea1408fb25f99701002d7e0cc3b7b10
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4420
+    completion_tokens: 925
+    total_tokens: 5345
+    reasoning_tokens: 316
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:54Z'
+  previous_text: Now I urge you, brothers and sisters, through our Lord Jesus Messiah and through the love of the Spirit, to struggle together with me in prayers to God for me,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1d13e2222548c34234cef901b27a03e64b9c2aa74326eb9e27b0cac94af49888
+  review_summary: Revision is needed for clarity. “Brothers and sisters” is a warranted explicit rendering of the congregation-wide address, and “struggle” appropriately retains the strenuous force of the Greek. But the present “struggle together with me in prayers” is not natural common English and leaves the intended participation unclear. The recommended wording makes explicit, from the syntax and POB audit trail, that they join Paul's struggle by praying to God for him, while retaining the Spirit-genitive ambiguity and the twofold appeal through Jesus Messiah and the Spirit's love.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

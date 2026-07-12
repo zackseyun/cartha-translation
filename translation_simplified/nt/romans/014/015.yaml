@@ -37,36 +37,68 @@ base_translation:
     changes_summary: 'Replaced ''the Messiah'' with ''Christ'' to reflect Χριστός more consistently in formal translation and common NT usage; otherwise retained the draft. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: If your brother is hurt because of what you eat, you are no longer walking in love. Do not destroy, by your food, the person for whom Messiah died.
+  text: For if your brother[a] is distressed by what you eat, you are no longer walking as love requires. Do not allow what you eat to destroy[b] the person for whom Messiah died.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Greek word for “brother” may represent a brother or sister in the community of believers.
+    reason: lexical_alternative
+  - marker: b
+    text: Or, “ruin”; the strong Greek verb warns of severe harm without specifying the precise doctrinal outcome.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: is grieved because of food
+  simplified_phrase: is distressed by what you eat
+  preserved_meaning: Another believer experiences sorrow or distress because of the reader’s food choice.
+  reasoning_layer_used: POB lexical decision for λυπεῖται and βρῶμα
+  rationale: “Distressed” and “what you eat” express the same ideas in more natural modern English.
+- pob_phrase: walking according to love
+  simplified_phrase: walking as love requires
+  preserved_meaning: Love remains the standard by which the reader’s conduct is measured.
+  reasoning_layer_used: POB lexical decisions for περιπατεῖς and κατὰ ἀγάπην
+  rationale: This keeps the walking image while making the ethical standard immediately clear.
+- pob_phrase: Do not destroy that one with your food
+  simplified_phrase: Do not allow what you eat to destroy the person
+  preserved_meaning: The reader must not cause severe harm to the other believer through a food choice.
+  reasoning_layer_used: POB lexical and theological decisions for ἀπόλλυε and τῷ βρώματί σου
+  rationale: The recast sentence removes the awkward instrumental word order without weakening the warning.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Destroy” may be read as defining a specific doctrine of final perdition.
+    mitigation: Footnote b preserves the verb’s range and the POB’s unresolved theological tension.
+  - risk: “Do not allow” may sound less direct than the Greek prohibition.
+    mitigation: The wording remains an imperative and directly assigns responsibility for preventing the harm.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/015.yaml
   source_text_sha256: afb9289837528997cf511f9b29d4d3c66218dd94f8b3e90b49ebe6e340f4d5db
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 2f3ef2c842af743c91f06b338bde3ce513234aff79c08821907634a9f16cd5e1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7991a942ea1976de6517692f3f795270bc29747fcf5fbfc8101f5ccb77953e94
+  timestamp: '2026-07-12T07:43:16Z'
+  output_hash: eacd5a92b9e27ad2a5fd959f34b6631daee5744d40aea11ce5e12bac33770696
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4274
+    completion_tokens: 1184
+    total_tokens: 5458
+    reasoning_tokens: 678
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:43:16Z'
+  previous_text: If your brother is hurt because of what you eat, you are no longer walking in love. Do not destroy, by your food, the person for whom Messiah died.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 70261053ff72d1cfcacc624fff450720ce83f935d904f5934bfedc6e5b9d70b1
+  review_summary: The draft rightly keeps the warning strong without resolving the doctrinal scope of “destroy,” and “what you eat” is a warranted, clearer rendering of “food.” Revision is needed because “in love” weakens the explicit standard conveyed by κατὰ ἀγάπην, the final sentence’s comma-heavy word order is less clear, and the inferential “For” should be retained.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

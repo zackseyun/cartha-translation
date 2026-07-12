@@ -31,47 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then children were brought to Jesus so that he could lay his hands on them and pray, but the disciples rebuked the people who brought them.[a]
+  text: Then children were brought to Jesus so that he could lay his hands on them and pray. But the disciples rebuked them.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The final them may refer either to the children or to those who brought them.
+    text: The final “them” may refer either to the children or to those who brought them.
     reason: alternative_reading
 simplification_decisions:
 - pob_phrase: children were brought to him
   simplified_phrase: children were brought to Jesus
-  preserved_meaning: People bring children to Jesus for blessing and prayer.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Names Jesus for clarity in simplified English.
-- pob_phrase: the disciples rebuked them
-  simplified_phrase: the disciples rebuked the people who brought them
-  preserved_meaning: The disciples object to the approach.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Chooses the likely referent for readability while noting the ambiguity.
+  preserved_meaning: The children were brought to the person identified in context as Jesus.
+  reasoning_layer_used: Immediate context and approved grounding review
+  rationale: Naming Jesus makes the referent clear without changing the action.
+- pob_phrase: so that he might lay his hands on them and pray; but
+  simplified_phrase: so that he could lay his hands on them and pray. But
+  preserved_meaning: They wanted Jesus to place his hands on the children and pray, in contrast to the disciples’ response.
+  reasoning_layer_used: POB translation and lexical decisions
+  rationale: Two sentences make the purpose and contrast easier to follow.
+interpretive_expansions:
+- pob_phrase: to him
+  rendering: to Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the person receiving the children.
+  - The grounding review approved naming Jesus for clarity.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the POB record for Matthew 19:13; no external LLM or API was used.
-  readability_notes:
-  - Uses modern common English while keeping the controlling POB meaning.
-  compression_notes:
-  - Only formal or repeated wording is simplified; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: The final “them” can refer to either the children or those who brought them.
+    mitigation: The main text keeps the ambiguous pronoun, and the footnote explains both possibilities.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/019/013.yaml
   source_text_sha256: 6195d766d04d6598c2415b04667b725edf947d779642cb219c9686be09746a50
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:30Z'
-  output_hash: 73a714452d5341431cb291ce6dd145b1f9a54360dda99615f2153275382a8134
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b0b8958ac64b1585b99099b81ff023414e71e23a388337d2eb2fe897ca09b80c
+  timestamp: '2026-07-12T07:36:57Z'
+  output_hash: 41fedb0f88493a0faaef1f90afe27d61a521e7514c6bcf3d038ff28332015950
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3374
+    completion_tokens: 374
+    total_tokens: 3748
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:57Z'
+  previous_text: Then children were brought to Jesus so that he could lay his hands on them and pray, but the disciples rebuked the people who brought them.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6afd9e48aa8fcbce33184846ebe8f5299d0ccff287c1f92ae9138762d4fb0b1e
+  review_summary: Naming Jesus improves clarity and is warranted by the immediate context. However, the revision must preserve the live ambiguity of whom the disciples rebuked, as POB correctly does. Retain the footnote with the revised text.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

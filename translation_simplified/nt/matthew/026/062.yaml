@@ -34,41 +34,69 @@ base_translation:
     changes_summary: Adjusted the second question to more closely reflect τί οὗτοί σου καταμαρτυροῦσιν with the explicit interrogative structure ('What is it that...').
 translation:
   language: en
-  text: The high priest stood up and said to him, “Do you give no answer? What are these men testifying against you?”
+  text: The high priest stood up and said to Jesus, “Will you not answer? What testimony are these men giving against you?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And the high priest stood up and said to him
-  simplified_phrase: The high priest stood up and said to him
-  preserved_meaning: Preserves the high priest's action and questions while removing a formal conjunction.
-  reasoning_layer_used: POB translation text and lexical note
-  rationale: The questions are already clear, so they are kept close to POB.
-retained_terms:
-- term: high priest
-  reason: Official role retained from POB.
+- pob_phrase: said to him
+  simplified_phrase: said to Jesus
+  preserved_meaning: Identifies the same person addressed in the surrounding narrative.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: Naming Jesus removes an unclear pronoun without changing the referent.
+- pob_phrase: Do you give no answer?
+  simplified_phrase: Will you not answer?
+  preserved_meaning: Keeps the high priest's forceful demand that Jesus respond.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: The direct question is easier to understand in modern English.
+- pob_phrase: What is it that these men are testifying against you?
+  simplified_phrase: What testimony are these men giving against you?
+  preserved_meaning: Keeps the ongoing legal testimony directed against Jesus.
+  reasoning_layer_used: POB lexical decisions for τί, σου, and καταμαρτυροῦσιν
+  rationale: The noun-based wording avoids an awkward English question while retaining the courtroom sense.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person addressed is Jesus.
+  evidence:
+  - The immediate narrative identifies Jesus as the accused being questioned.
+  - The POB lexical audit lists “said to Jesus” as the explicit alternative.
+  confidence: high
+  alternatives_preserved:
+  - him
 translation_notes:
-  source_alignment_notes: Maintains the high priest's challenge to Jesus.
-  readability_notes:
-  - Uses direct speech unchanged where clear.
-  compression_notes:
-  - More literal alternative remains in the base footnote.
+  risk_flags:
+  - risk: “Will you not answer?” may sound slightly formal to some readers.
+    mitigation: It clearly conveys the high priest's demand for a response without making the question casual.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/062.yaml
   source_text_sha256: b7fba80007fe5bb1ea7b850e9dd85c6407d2276e7a69560c4227a293ce16f1ac
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:59Z'
-  output_hash: c8afb8d77b38ad707974420e418a2266ae58b610edc2760c0dbe170718ca1bee
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 889431724b627642072ea525ab21ad5c86948158c583691dcaeed71eb94f075d
+  timestamp: '2026-07-12T07:38:34Z'
+  output_hash: 7bc56f8f2743dc47c618c0ff91ac19a6b1b9672702136c967de9189f44485baf
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3480
+    completion_tokens: 766
+    total_tokens: 4246
+    reasoning_tokens: 356
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: high priest
+  reason: Official role retained from POB.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:34Z'
+  previous_text: The high priest stood up and said to him, “Do you give no answer? What are these men testifying against you?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 868b334ba6398e421bd432c09e26e74d5289498c4670323b0977fbf26ff9336c
+  review_summary: Revise. The submitted text remains faithful and introduces no doctrinal problem, but it does not meet the stated threshold of being meaningfully clearer than POB. Naming Jesus from the immediate context and using the direct, natural question “Will you not answer?” improve comprehension while preserving the high priest’s demand for a response and the witnesses’ ongoing testimony against him.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

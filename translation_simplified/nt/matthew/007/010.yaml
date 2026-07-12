@@ -34,42 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Or if he asks for a fish—he won't give him a snake, will he?
+  text: Or suppose he asks for a fish—he would not give him a snake, would he?
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: fish
-  reason: Crucial domestic food element in the analogy.
-- term: snake
-  reason: Retained from POB's decision to prefer 'snake' over the archaic 'serpent' for modern clarity.
+- pob_phrase: Or if he asks for a fish
+  simplified_phrase: Or suppose he asks for a fish
+  preserved_meaning: This remains the second hypothetical example in Jesus’ paired comparison.
+  reasoning_layer_used: POB lexical decision for ἢ καὶ and αἰτήσει
+  rationale: “Suppose” makes the illustrative situation immediately clear in natural English.
+- pob_phrase: he will not give him a snake, will he?
+  simplified_phrase: he would not give him a snake, would he?
+  preserved_meaning: The question still expects the answer no and preserves the contrast between fish and snake.
+  reasoning_layer_used: POB theological decision on rhetorical-question force
+  rationale: “Would not ... would he?” fits the hypothetical introduced by “suppose” while keeping the rhetorical force.
 translation_notes:
-  source_alignment_notes: The tag-question ('he won't... will he?') is strictly maintained to reflect the force of the Greek negative particle 'mē', which expects a negative answer. This preserves Jesus' argument from the lesser to the greater.
-  readability_notes:
-  - The em-dash from the SBLGNT is retained as approved in POB's revision history. It creates a natural rhetorical pause and prevents the sentence from feeling like a run-on.
-  compression_notes:
-  - No semantic compression was required for this verse. Footnotes regarding 'serpent' were removed as 'snake' is universally understood and requires no further clarification.
   risk_flags:
-  - risk: The use of the contraction 'won't' risks slightly lowering the formal register, but it is standard for readable modern speech and avoids sounding overly academic.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Changing future “will” to hypothetical “would” could appear to alter the verb’s force.
+    mitigation: The POB audit treats the example as conditional-like, and the negative-answer expectation remains explicit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/007/010.yaml
   source_text_sha256: 6532b2105dd108e3e0cc9ba6546a6bbc61b3d736062ae695fff183789a577e62
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: df99f3f4f4335cfdf0b86d97ec991a2a5ebc80ef47a4a6150a30c3cc1d5c332c
-  timestamp: '2026-05-28T07:29:27Z'
-  output_hash: ee7fdbcd19202a260525b6869f10bc5bde0a431cb33aa696aebd0f0c2a94fd03
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2b14765aa4dc73c1f8c1468b7bc695ded0a50a916e7c9074193ad67500f4751c
+  timestamp: '2026-07-12T07:37:33Z'
+  output_hash: ed64152368399618e2b5c85ee29bddea44a13e61a08d78f130b7e74ee64129e6
   usage:
-    prompt_tokens: 1829
-    completion_tokens: 436
-    total_tokens: 5649
+    prompt_tokens: 3261
+    completion_tokens: 291
+    total_tokens: 3552
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: fish
+  reason: Crucial domestic food element in the analogy.
+- term: snake
+  reason: Retained from POB's decision to prefer 'snake' over the archaic 'serpent' for modern clarity.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:33Z'
+  previous_text: Or if he asks for a fish—he won't give him a snake, will he?
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b9a11f4b394af5b8488254707ad831638c85364b767e4eb9746eed9a80e1c5ea
+  review_summary: The draft preserves the source meaning and rhetorical negative-answer force, and it introduces no doctrinal expansion. However, changing only “will not” to “won't” is a register adjustment rather than a meaningful understanding-first simplification. “Suppose” makes the illustrative hypothetical immediately recognizable, while “would not ... would he?” keeps the rhetorical expectation that a father would not substitute a harmful snake for requested food.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

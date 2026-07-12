@@ -31,41 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus asked his father, “How long has this been happening to him?” He said, “Since childhood.”
+  text: Jesus asked the boy’s father, “How long has this been happening to him?” The father said, “Since childhood.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he asked his father ... And he said, From childhood
-  simplified_phrase: Jesus asked his father ... He said, Since childhood
-  preserved_meaning: Keeps Jesus' question and the father's answer.
-  reasoning_layer_used: POB translation text and footnote
-  rationale: Uses the POB footnote's natural phrase 'Since childhood' and names Jesus for clarity.
-retained_terms:
-- term: Jesus
-  reason: Retained for clear subject reference.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft follows POB Mark 9:21.
-  readability_notes:
-  - Uses concise dialogue.
-  compression_notes:
-  - No central meaning is removed.
+- pob_phrase: he asked his father
+  simplified_phrase: Jesus asked the boy’s father
+  preserved_meaning: Jesus asks the father of the afflicted boy.
+  reasoning_layer_used: Immediate context and POB lexical rationale for τὸν πατέρα αὐτοῦ
+  rationale: Naming Jesus and the boy removes unclear pronouns without changing who is involved.
+- pob_phrase: And he said
+  simplified_phrase: The father said
+  preserved_meaning: The boy’s father answers Jesus’ question.
+  reasoning_layer_used: Source narrative sequence and independent grounding review
+  rationale: Identifying the speaker prevents confusion between Jesus and the father.
+- pob_phrase: From childhood
+  simplified_phrase: Since childhood
+  preserved_meaning: The condition began in childhood and has continued to the present.
+  reasoning_layer_used: POB lexical decision and lexical-alternative footnote for Ἐκ παιδιόθεν
+  rationale: The approved alternative sounds more natural in an answer about duration.
+interpretive_expansions:
+- pob_phrase: he asked his father ... And he said
+  rendering: Jesus asked the boy’s father ... The father said
+  claim: The first speaker is Jesus, and the respondent is the afflicted boy’s father.
+  evidence:
+  - The immediate context identifies Jesus as the questioner and the afflicted person as a boy.
+  - POB’s lexical rationale says “his” most naturally refers to the afflicted boy.
+  - The narrative sequence makes the father the respondent.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/009/021.yaml
   source_text_sha256: b86c8160e8efa7fd9c8213b8dcf240933c6c5cbacca53156f1e5edac9d9691f8
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:15:34Z'
-  output_hash: 04b6bed606dea32b028cb9c05476accb2c8e43e6dd9eb0c0e3cd791ca34328a7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2b31702ab69652a436027cdebd269890f1b92de465dcb0feb2e3fce1690cc762
+  timestamp: '2026-07-12T07:21:29Z'
+  output_hash: b83c6b577acb12191ea9b8919c1f13df9e59e9b5f271f7cf47549b4d0c511b04
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2932
+    completion_tokens: 395
+    total_tokens: 3327
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Jesus
+  reason: Retained for clear subject reference.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:29Z'
+  previous_text: Jesus asked his father, “How long has this been happening to him?” He said, “Since childhood.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 274ac741a61985f3a6552061585535e3df3860eb004d533f5d91ec99cc7f633a
+  review_summary: 'The draft’s naming of Jesus is warranted by the immediate narrative context, and “Since childhood” is explicitly supported by the POB footnote. Revise only to complete the clarity goal: identify the boy’s father and the father’s reply explicitly, avoiding avoidable pronoun-resolution burden while preserving the source meaning.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

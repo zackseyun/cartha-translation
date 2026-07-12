@@ -31,38 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When the ten heard this, they began to be indignant with James and John.
+  text: When the ten heard this, they became indignant with James and John.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And when the ten heard it[a], they began to be indignant with James and John.
-  simplified_phrase: When the ten heard this, they began to be indignant with James and John.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: And when the ten heard it
+  simplified_phrase: When the ten heard this
+  preserved_meaning: The ten heard what James and John had said, and then reacted.
+  reasoning_layer_used: POB lexical decision for Καὶ and ἀκούσαντες
+  rationale: Dropping the opening connective and using “this” makes the reference natural without changing the sequence.
+- pob_phrase: began to be indignant
+  simplified_phrase: became indignant
+  preserved_meaning: Their strong displeasure began at that point.
+  reasoning_layer_used: POB lexical decisions for ἤρξαντο and ἀγανακτεῖν
+  rationale: “Became indignant” directly preserves both the onset and the strength of their reaction.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “With” may suggest either directed displeasure or indignation occasioned by James and John.
+    mitigation: The wording retains the POB choice without resolving the Greek preposition more narrowly.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/041.yaml
   source_text_sha256: bf89a49ab678e2612a16ab104bc2fd8c8fad1f1b788f7c060e6bf264d61c17b8
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 44174887fd963f132da673defaa519f3222a5b41371c4f20de9eb68ad1ff2cb8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3fac2387b120b5a2546ab2f0c1687ddbb5f8e5e8b2a8372e7f462f2f867b3b88
+  timestamp: '2026-07-12T07:21:12Z'
+  output_hash: ec1f4e647776252a8aee232ea57b95dd563ef29e84054617b8c59cb34c9bdd44
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3041
+    completion_tokens: 275
+    total_tokens: 3316
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:12Z'
+  previous_text: When the ten heard this, they began to be indignant with James and John.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b9afe1c9574909b88a915c91ff3fd2f19571ac5330e17286bdfa8948259e845d
+  review_summary: 'The draft is faithful: “this” appropriately supplies the contextual object, and “with James and John” retains the POB’s chosen, contextually fitting sense of περί without forcing one of the noted alternatives. No doctrinal expansion or ambiguity collapse is present. Revision is recommended solely because replacing “began to be indignant” with “became indignant” gives a more meaningful, publication-ready simplification while retaining the Greek ingressive force and the stronger sense of indignation rather than reducing it to generic anger.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

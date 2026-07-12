@@ -33,53 +33,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You have been set free from sin and have become enslaved[a] to righteousness[b].
+  text: You were set free from sin and were enslaved[a] to righteousness[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “you were made slaves of righteousness.”
-    reason: simplification_note
+    reason: lexical_alternative
   - marker: b
     text: Or “justice.”
-    reason: simplification_note
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: You have been set free from sin
-  preserved_meaning: Converted the subordinate participle clause ('having been freed') into a direct, active-sounding independent clause using 'have been set free', which is more natural in modern English while preserving the divine passive.
-  reasoning_layer_used: POB audit trail
-  rationale: Converted the subordinate participle clause ('having been freed') into a direct, active-sounding independent clause using 'have been set free', which is more natural in modern English while preserving the divine passive.
-- simplified_phrase: and have become enslaved to righteousness
-  preserved_meaning: Changed the simple past 'were enslaved' to the perfect 'have become enslaved' to connect the historical event of salvation to the readers' present reality, smoothing the transition between the two clauses.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed the simple past 'were enslaved' to the perfect 'have become enslaved' to connect the historical event of salvation to the readers' present reality, smoothing the transition between the two clauses.
-retained_terms:
-- term: enslaved
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: righteousness
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: And having been freed from sin
+  simplified_phrase: You were set free from sin
+  preserved_meaning: The completed action was received by the readers rather than performed by them.
+  reasoning_layer_used: POB lexical decision for ἐλευθερωθέντες
+  rationale: A direct finite clause is clearer while retaining the passive force.
+- pob_phrase: you were enslaved to righteousness
+  simplified_phrase: and were enslaved to righteousness
+  preserved_meaning: Paul’s stark slavery metaphor and the received transfer of mastery remain intact.
+  reasoning_layer_used: POB lexical and theological decisions for ἐδουλώθητε
+  rationale: The simple past passive avoids adding the draft’s unsupported present-result emphasis.
 translation_notes:
-  source_alignment_notes: The passive forms (ἐλευθερωθέντες and ἐδουλώθητε) are maintained through 'have been set free' and 'have become enslaved,' preserving the divine passive (the theological reality that God is the one who frees and binds).
-  readability_notes:
-  - Replaced the formal participle construction 'having been freed' with a compound sentence structure ('You have been... and have become...'), which flows much better in modern spoken and written English.
-  compression_notes:
-  - Omitted the mild connective 'And' (δέ) to avoid a clunky sentence start, as the logical connection is clear in the flow of the passage.
+  risk_flags:
+  - risk: “Enslaved” may sound severe to modern readers.
+    mitigation: Its severity is retained because the slavery image is central to Paul’s argument.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/006/018.yaml
   source_text_sha256: 2331c4079f7a7c03dfece5c08e39317930a7b0fd166346a8d0156f1333ffa34c
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 2266c325a44a4d679ab5fa1ee98661f0796cca4c25e7751f3a1f4750839e0e0e
-  timestamp: '2026-05-28T09:29:28Z'
-  output_hash: 311ec5f604104d64c202fb5d9c55cc152c9f36c627f54efc8894860731b55ced
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 321b5a027909d66481d301bd50df63fba853bd16c61568cc5c37ddcfbbe6f9e2
+  timestamp: '2026-07-12T07:41:24Z'
+  output_hash: f5c2530d4e1da0a56aea510c0539936dd9cdd3c3c2c0fadea8eb911b14b0d0d0
   usage:
-    prompt_tokens: 1468
-    completion_tokens: 595
-    total_tokens: 5937
+    prompt_tokens: 3152
+    completion_tokens: 300
+    total_tokens: 3452
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: enslaved
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: righteousness
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:24Z'
+  previous_text: You have been set free from sin and have become enslaved[a] to righteousness[b].
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3f364d16ef7b66743eaf0d6098daae87919af047c8827d63fbf0278ffabda4f8
+  review_summary: 'The first clause is a warranted readability improvement: “were set free” naturally expresses the completed passive action. Revise the second clause to retain the Greek aorist passive. This preserves Paul’s stark transfer of mastery without adding a perfect-result emphasis or weakening the received-action sense. The existing footnotes may be retained with their current markers and content.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

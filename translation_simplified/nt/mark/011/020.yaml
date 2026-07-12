@@ -31,38 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Early in the morning, as they were passing by, they saw the fig tree withered from the roots.
+  text: Early in the morning, as they passed by, they saw that the fig tree had withered from the roots.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And as they were passing by early in the morning[a], they saw the fig tree withered from the roots.
-  simplified_phrase: Early in the morning, as they were passing by, they saw the fig tree withered from the roots.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+- pob_phrase: as they were passing by
+  simplified_phrase: as they passed by
+  preserved_meaning: Their passing and seeing still occur at the same time.
+  reasoning_layer_used: The lexical rationale for παραπορευόμενοι identifies concurrent background action.
+  rationale: The simple past is lighter and more natural in this context.
+- pob_phrase: they saw the fig tree withered
+  simplified_phrase: they saw that the fig tree had withered
+  preserved_meaning: They observed the tree in the resulting state caused by its earlier withering.
+  reasoning_layer_used: The lexical rationale for ἐξηραμμένην emphasizes a present result from prior action.
+  rationale: A that-clause makes the observation and the tree's completed change easier to understand.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/020.yaml
   source_text_sha256: beac52004d4dd49493b588cfc6c10f0fe606ce24fad5cea043de0c2f1b81d34f
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: b543f1657701fe577913bfe078ba79d143800aa30908d44a30362523f4b78d63
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3de356bdfe2eb3d75e66b39a78d9ddbb38d9104ea1faafa0b6addc1f7e5e4320
+  timestamp: '2026-07-12T07:21:22Z'
+  output_hash: a853d03481b23f05816ea09979153e66be19761e49dec74f5d389e81e8bff4f8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2984
+    completion_tokens: 237
+    total_tokens: 3221
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:22Z'
+  previous_text: Early in the morning, as they were passing by, they saw the fig tree withered from the roots.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 08752049d50cf70c52086945f1fb2bf6f7692db444e2fd580afdb837bdb15b65
+  review_summary: The draft introduces no doctrinal addition, loss of ambiguity, or unsupported expansion, and its reordered opening is faithful to the Greek and POB audit trail. However, it is too close to POB to count as a meaningfully clearer SPOB rendering. The recommended wording keeps the early-morning setting, concurrent passing-by action, and completed/resulting state expressed by the perfect participle, while making the observation and condition of the tree more natural for modern readers.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

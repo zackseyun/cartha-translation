@@ -31,41 +31,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 18:34 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''from yourself''].'
 translation:
   language: en
-  text: Jesus answered, “Are you saying this on your own, or did others tell you about me?”
+  text: Jesus answered, “Did you ask this yourself, or did others tell you about me?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: John 18 POB base wording
-  simplified_phrase: Jesus answered, “Are you saying this on your own, or did others tell you about me?”
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and footnotes
-  rationale: Manual Codex drafting simplified sentence structure, clarified implied subjects where needed, and retained important theological terms without adding new interpretation.
-retained_terms:
-- term: Jesus
-  reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
+- pob_phrase: Are you saying this on your own
+  simplified_phrase: Did you ask this yourself
+  preserved_meaning: Jesus asks whether Pilate’s question came from Pilate himself rather than from others.
+  reasoning_layer_used: POB footnote, lexical decisions, theological decision, and immediate context
+  rationale: This wording avoids suggesting that Pilate merely acted alone and clearly identifies his preceding question.
+interpretive_expansions:
+- pob_phrase: saying this
+  rendering: ask this
+  claim: “This” refers to Pilate’s preceding question to Jesus.
+  evidence:
+  - The immediate context is Pilate’s question, and the POB reasoning identifies the issue as whether Pilate’s statement originated with him.
+  confidence: high
+  alternatives_preserved:
+  - saying this
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses shorter, clearer clauses and modern common English while keeping John 18's narrative and trial sequence.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: Rendering “saying” as “ask” makes the conversational function explicit.
+    mitigation: The immediate context identifies Pilate’s words as a question without adding a motive or theological conclusion.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/018/034.yaml
   source_text_sha256: 0b236ee9347d4d99f637a4429caaf2e68a5c1cb0e97ec42c59a90d8d53ae1a44
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:28Z'
-  output_hash: 029c054ba0a910e88fe5ce794c0bee05fa2e07d75faa3a0fb86bf0e74ba63f34
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ecd7f4443362e5351682c380dd723ed761a5f1e6a9ab0a08f6d5de4197a060e4
+  timestamp: '2026-07-12T07:22:04Z'
+  output_hash: 32940add336ba0aebd745c104090fd046badbd730b2bf361dc97ee05c7770c41
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3507
+    completion_tokens: 371
+    total_tokens: 3878
+    reasoning_tokens: 86
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Jesus
+  reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:04Z'
+  previous_text: Jesus answered, “Are you saying this on your own, or did others tell you about me?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 671e95012365e5e0864543b848e961ef236189ad3e975e7f814e18fa4521357b
+  review_summary: 'Revise for genuine simplification. “Did you ask this yourself” naturally identifies Pilate’s preceding question while preserving Jesus’ source-of-information contrast: Pilate’s own question versus what others have told him. It introduces no theological explanation or motive.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

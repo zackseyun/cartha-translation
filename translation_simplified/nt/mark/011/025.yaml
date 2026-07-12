@@ -34,43 +34,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Whenever you stand praying, forgive if you have anything against anyone, so that your Father in the heavens may also forgive your trespasses.
+  text: Whenever you stand praying, if you have anything against anyone, forgive them, so that your Father in heaven may also forgive your wrongs.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And whenever you stand praying[a], forgive, if you have anything against anyone[b], so that your Father who is in the heavens may also forgive you your trespasses.
-  simplified_phrase: Whenever you stand praying, forgive if you have anything against anyone, so that your Father in the heavens may also forgive your trespasses.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: Father in the heavens
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-- term: trespasses
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: forgive, if you have anything against anyone
+  simplified_phrase: if you have anything against anyone, forgive them
+  preserved_meaning: The command still requires forgiveness of every personal grievance.
+  reasoning_layer_used: POB lexical decisions for ἀφίετε and εἴ τι ἔχετε κατά τινος
+  rationale: Reordering the clauses and supplying “them” makes the command immediately clear.
+- pob_phrase: your Father who is in the heavens
+  simplified_phrase: your Father in heaven
+  preserved_meaning: The Father is still identified by his heavenly location.
+  reasoning_layer_used: POB lexical alternative and footnote for ὁ ἐν τοῖς οὐρανοῖς
+  rationale: The POB explicitly permits the familiar and natural singular expression.
+- pob_phrase: your trespasses
+  simplified_phrase: your wrongs
+  preserved_meaning: The phrase still refers to offenses for which the Father’s forgiveness is needed.
+  reasoning_layer_used: POB lexical decision and alternatives for παραπτώματα
+  rationale: “Wrongs” expresses the relational offense in common English without religious jargon.
+interpretive_expansions:
+- pob_phrase: forgive
+  rendering: forgive them
+  claim: The people against whom a grievance is held are the understood object of the command.
+  evidence:
+  - The following clause identifies anyone against whom the hearer has something.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Wrongs” is broader than the traditional image behind “trespasses.”
+    mitigation: It preserves the audited sense of offenses or transgressions in clear English.
+  - risk: Readers may try to weaken the link between forgiving others and receiving the Father’s forgiveness.
+    mitigation: The purpose clause remains direct and unqualified.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/025.yaml
   source_text_sha256: 0872aa3b70f681b33bc9b8d35cbf2ed97d4aafb62c3a7f8ab03210dbc484b08b
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 06b0b9ecab2a6b833a4c458f07d9b056fda4a19fd01b7af95e1d5154a2b4a61d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1eaab7419ae0ddb1165ddb0268e6b9c50a6fadf7d41c41c62274749ba88ed8e4
+  timestamp: '2026-07-12T07:22:39Z'
+  output_hash: b459e0604c60c3b7dac765ffb82195f308697a6e07822f5fcb3447051b8ba84a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3403
+    completion_tokens: 604
+    total_tokens: 4007
+    reasoning_tokens: 137
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Father in the heavens
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+- term: trespasses
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:39Z'
+  previous_text: Whenever you stand praying, forgive if you have anything against anyone, so that your Father in the heavens may also forgive your trespasses.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5d7e0b3830e57599c3e11a81f198b4eccd40cb527e843459c8014d32ac8078a1
+  review_summary: The draft preserves the source-grounded command and the stated linkage between forgiving others and the Father's forgiveness; it does not import a doctrinal explanation or weaken the conditional purpose clause. However, it does not sufficiently advance SPOB readability, especially because "trespasses" remains opaque for many readers. The recommended wording makes the implied object of "forgive" explicit, uses ordinary English for a grievance and for παραπτώματα, and uses the POB footnoted, source-permitted "in heaven" form without changing the verse's meaning.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

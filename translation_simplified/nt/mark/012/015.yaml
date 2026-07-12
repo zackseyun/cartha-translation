@@ -34,41 +34,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But Jesus knew their hypocrisy and said to them, “Why are you testing me? Bring me a denarius so I can look at it.”
+  text: But Jesus knew they were being hypocritical, so he said to them, “Why are you testing me? Bring me a denarius—a Roman silver coin commonly paid for a day’s work—so I can look at it.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But knowing their hypocrisy[a], he said to them[b], “Why are you testing me? Bring me a denarius so that I may see it.”
-  simplified_phrase: But Jesus knew their hypocrisy and said to them, “Why are you testing me? Bring me a denarius so I can look at it.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: denarius
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: knowing their hypocrisy, he said to them
+  simplified_phrase: Jesus knew they were being hypocritical, so he said to them
+  preserved_meaning: Jesus recognized that their apparent sincerity concealed a hostile trap.
+  reasoning_layer_used: POB lexical decision for εἰδὼς and ὑπόκρισιν
+  rationale: The rewrite turns an abstract noun and participial clause into direct, natural English.
+- pob_phrase: a denarius
+  simplified_phrase: a denarius—a Roman silver coin commonly paid for a day’s work
+  preserved_meaning: The historical coin name and its approximate everyday value are both retained.
+  reasoning_layer_used: POB cultural note and lexical decision for δηνάριον
+  rationale: The in-text explanation makes the unfamiliar coin understandable without losing historical specificity.
+- pob_phrase: so that I may see it
+  simplified_phrase: so I can look at it
+  preserved_meaning: Jesus asks for the coin in order to examine it visually.
+  reasoning_layer_used: POB lexical decision for ἵνα ἴδω
+  rationale: Common modern wording replaces the formal purpose clause.
+interpretive_expansions:
+- pob_phrase: a denarius
+  rendering: a denarius—a Roman silver coin commonly paid for a day’s work
+  claim: A denarius was a Roman silver coin commonly used as a day’s wage.
+  evidence:
+  - The POB cultural note gives this identification and customary value.
+  confidence: high
+  alternatives_preserved:
+  - a denarius
+  - a Roman coin
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: The wage comparison may sound like an exact fixed value.
+    mitigation: “Commonly paid” presents it as typical historical use rather than an exact modern equivalent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/015.yaml
   source_text_sha256: fc63bc42ec54a55d26d840ad96d543b2391eb1ab16a07a6cbf2b1a466b314b06
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 62311aec225ef11d5a605b76a440a60d900c3348dd57c40ab81d3ebbed4ce56d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 45a5b1f8a537b915ba75d8f806bf83f98e1a6e5550c135585615800b7092a435
+  timestamp: '2026-07-12T07:23:41Z'
+  output_hash: e5f88a418bd65454c77a2c130e6cc00abcc5de03143221e0ea8c3a33c2f4e3bf
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3215
+    completion_tokens: 469
+    total_tokens: 3684
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: denarius
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:41Z'
+  previous_text: But Jesus knew their hypocrisy and said to them, “Why are you testing me? Bring me a denarius so I can look at it.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: bcc0a8fcd809e12085d0cc13ac1a3bd7b1510dde2fec27f86217b8e0fb311d93
+  review_summary: The changes from “knowing ... he said” to “Jesus knew ... and said,” and from “so that I may see it” to “so I can look at it,” are clear, faithful modern-English renderings. However, removing the only explanation of “denarius” leaves a key cultural term opaque. A brief in-text gloss is warranted by the POB audit note and preserves the historical referent without adding interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

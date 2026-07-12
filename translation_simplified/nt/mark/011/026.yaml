@@ -30,46 +30,73 @@ base_translation:
     changes_summary: Adjusted the relative clause to read more naturally as 'who is in heaven' while preserving the source meaning and all lexical content.
 translation:
   language: en
-  text: But if you do not forgive, neither will your Father who is in heaven forgive your trespasses.
+  text: But if you do not forgive others, your Father in heaven will not forgive the wrongs you have done.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: This sentence is absent from the earliest Greek manuscripts and early Coptic translations, though it appears in many later Greek, Latin, and Syriac manuscripts. It was probably added to bring this passage into line with Matthew 6:15.
+    reason: textual_variant
 simplification_decisions:
-- pob_phrase: But[a] if you do not forgive, neither will your Father who is in heaven forgive your trespasses.
-  simplified_phrase: But if you do not forgive, neither will your Father who is in heaven forgive your trespasses.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: Father
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-- term: trespasses
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: neither will your Father who is in heaven
+  simplified_phrase: your Father in heaven will not
+  preserved_meaning: God's refusal to forgive remains the consequence of refusing to forgive others.
+  reasoning_layer_used: Greek source syntax and POB revision trail
+  rationale: The direct word order is easier to read without changing the conditional warning.
+- pob_phrase: your trespasses
+  simplified_phrase: the wrongs you have done
+  preserved_meaning: The phrase still refers to moral offenses for which a person needs God's forgiveness.
+  reasoning_layer_used: POB lexical decision for παράπτωμα and its listed alternative “wrongdoings”
+  rationale: This replaces an uncommon religious term with ordinary language while retaining its moral force.
+interpretive_expansions:
+- pob_phrase: if you do not forgive
+  rendering: if you do not forgive others
+  claim: The unstated recipients of forgiveness are other people who have wronged the hearers.
+  evidence:
+  - Mark 11:25 immediately directs the hearers to forgive anyone against whom they hold something.
+  - The POB lexical rationale places ἀφίημι in the context of interpersonal offenses.
+  confidence: high
+  alternatives_preserved:
+  - if you do not forgive
+  - if you do not forgive anyone
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
   risk_flags:
-  - risk: The base POB marks this verse as absent from the earliest Greek manuscripts but present in the Byzantine/Latin/Syriac traditions.
-    mitigation: The SPOB draft follows the existing POB record and source payload; the textual-critical caveat remains in base_translation.footnotes.
+  - risk: The verse is absent from the earliest Greek manuscripts and may be a later harmonization.
+    mitigation: A textual-variant footnote keeps this uncertainty visible to readers.
+  - risk: “The wrongs you have done” is less traditional than “trespasses.”
+    mitigation: It follows the POB-listed sense “wrongdoings” while preserving reference to moral offenses.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/026.yaml
   source_text_sha256: 0cc4559901f0860793178759aad7873a33872743ba3f8111f90aae086063d51d
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 753e0088ca7ed894932c221ff1c28fd3e7e38057e6c3fd744aa43b6c49bf5c83
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4d7f18262a0cf0110b5f937a6f7be9ff18a7110b7c4b76572c1119fa84553b21
+  timestamp: '2026-07-12T07:21:37Z'
+  output_hash: d186eed0c7df79dd610b376f80efced827672e46c192b8b6e97f81b965996661
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3122
+    completion_tokens: 708
+    total_tokens: 3830
+    reasoning_tokens: 213
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Father
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+- term: trespasses
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:37Z'
+  previous_text: But if you do not forgive, neither will your Father who is in heaven forgive your trespasses.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a1ef2003fcfbc02ef51521176576e9d90f596d009cca1352af6f74bd4f63711e
+  review_summary: Revise. Explicitly saying “others” is warranted by the immediately preceding instruction about forgiving someone who has wronged you, and “sins” communicates the intended moral sense more clearly than “trespasses.” Retain a concise textual-critical note because this verse is absent from the earliest Greek witnesses; omission of that caveat is not a neutral simplification.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So do not let what is good for you be spoken of as evil.
+  text: So do not let people speak of the good you have as if it were evil.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Therefore
+  simplified_phrase: So
+  preserved_meaning: The verse draws a conclusion from Paul’s preceding argument.
+  reasoning_layer_used: POB lexical decision for οὖν
+  rationale: “So” expresses the same logical connection in more common English.
+- pob_phrase: your good
+  simplified_phrase: the good you have
+  preserved_meaning: The good associated with the believers remains deliberately broad.
+  reasoning_layer_used: POB lexical and theological decisions for ὑμῶν τὸ ἀγαθόν
+  rationale: This avoids narrowing the phrase to what personally benefits them.
+- pob_phrase: do not let your good be spoken of as evil
+  simplified_phrase: do not let people speak of the good you have as if it were evil
+  preserved_meaning: Something genuinely good must not become the object of condemning speech.
+  reasoning_layer_used: POB lexical decision for βλασφημείσθω
+  rationale: The active wording is easier to follow while leaving the speakers unspecified.
+interpretive_expansions:
+- pob_phrase: your good
+  rendering: the good you have
+  claim: The possessive relationship is expressed as good associated with the readers, not merely something beneficial to them.
+  evidence:
+  - The Greek genitive ὑμῶν qualifies “the good.”
+  - The POB audit keeps the referent broad rather than specifying freedom or privilege.
+  confidence: high
+  alternatives_preserved:
+  - your freedom
+  - your privilege
+  - your good teaching or testimony
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Adding “people” could appear to identify an actor absent from the passive Greek.
+    mitigation: The indefinite noun only makes the implied speakers explicit and does not identify a particular group.
+  - risk: “The good you have” could still be mistaken for a specific possession.
+    mitigation: The wording remains broad and does not define the good as freedom, privilege, or personal benefit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/016.yaml
   source_text_sha256: c4d5fa267097afe4547d4edfdbc69e4fa74dbea872fa0902c1e6d248cb6ef2b4
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 58f370437fe40cb2b7cd6e6d83137568c724d6e38b5e210542146324e8a026c9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 05199b9ee557ea87b6b9407fbaf94eb92915e1e88743bfa46e7ae9d701bc1cba
+  timestamp: '2026-07-12T07:44:53Z'
+  output_hash: 67cd6eabc0049824a0ddd510983d607d0dfc12dcff5fd7012c28a077010a236d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3021
+    completion_tokens: 866
+    total_tokens: 3887
+    reasoning_tokens: 386
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:44:53Z'
+  previous_text: So do not let what is good for you be spoken of as evil.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5e7b015ed4ba9fdebda2df3b74ce2c92aea91f817532a59bc6e46447f5be144a
+  review_summary: The change from “Therefore” to “So” is a warranted clarity improvement. However, “what is good for you” narrows and reframes Paul’s deliberately broad “your good” as personal benefit. “The good you have” is more explicit for modern readers while retaining the broad, associated sense preserved in the POB audit trail.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

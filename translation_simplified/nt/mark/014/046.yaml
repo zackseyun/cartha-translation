@@ -34,38 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then they laid hands on Jesus and seized him.
+  text: Then they grabbed Jesus and seized him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Then they laid hands on him and seized him[a][b].
-  simplified_phrase: Then they laid hands on Jesus and seized him.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: laid hands on him
+  simplified_phrase: grabbed Jesus
+  preserved_meaning: They physically took hold of Jesus with hostile intent.
+  reasoning_layer_used: POB lexical decision and footnote on ἐπέβαλαν τὰς χεῖρας αὐτῷ
+  rationale: “Grabbed” makes the arrest-context idiom immediately clear while preserving its force.
+- pob_phrase: seized him
+  simplified_phrase: seized him
+  preserved_meaning: The second verb remains a distinct forceful act of taking and holding Jesus.
+  reasoning_layer_used: POB lexical decision on ἐκράτησαν αὐτόν
+  rationale: Retaining “seized” preserves the vivid force and avoids reducing the action to a procedural arrest.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - Jesus is the unambiguous person being apprehended in the immediate narrative.
+  confidence: high
+  alternatives_preserved:
+  - him
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Grabbed” may sound slightly less formal than “laid hands on.”
+    mitigation: The following “seized” maintains the verse’s gravity and hostile force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/046.yaml
   source_text_sha256: 40ef956152b96f25cbf8ad9a636704eaa26c501228855c09810a07fed9ceeeee
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: 37cb1635bcf50a647cea01fd3c80ec2e60ff0137064fe8f84b3847c54902f419
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a9912c8de93e85ae492107c74b7deedbd225023d60821d565e984e9c20ce804a
+  timestamp: '2026-07-12T07:23:20Z'
+  output_hash: f7e024e5df11313665a83e4a6977c4b0c7e05f108b7403e70f31b8c29ddd1858
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2830
+    completion_tokens: 322
+    total_tokens: 3152
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:20Z'
+  previous_text: Then they laid hands on Jesus and seized him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b39c1ee6ce6ebbd75fd547f0436ce6de270203d879069a402e2d3cea5b4f2537
+  review_summary: Jesus is the unambiguous antecedent in the immediate narrative, so naming him is a warranted clarity improvement and introduces no doctrinal claim. However, the draft does not simplify the key idiom “laid hands on,” despite the POB audit explaining that it means physically taking hold of him in this arrest scene. “Grabbed Jesus and seized him” preserves the verse’s two successive forceful actions without collapsing them into a single procedural term such as “arrested.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,48 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: His disciples had gone into town to buy food.
+  text: For his disciples had gone into town to buy food.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Omitted the introductory 'For' (γάρ) to avoid a stiff or archaic sentence structure in modern English, as the narrative context naturally conveys the explanation.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the introductory 'For' (γάρ) to avoid a stiff or archaic sentence structure in modern English, as the narrative context naturally conveys the explanation.
-- preserved_meaning: Simplified the phrase 'had gone away into' to 'had gone into' to remove redundancy and improve flow.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the phrase 'had gone away into' to 'had gone into' to remove redundancy and improve flow.
-- preserved_meaning: Translated 'the city' (πόλις) as 'town' in accordance with POB Footnote A, which is more contextually fitting for Sychar and sounds more natural in modern English when referring to running errands for food.
-  reasoning_layer_used: POB audit trail
-  rationale: Translated 'the city' (πόλις) as 'town' in accordance with POB Footnote A, which is more contextually fitting for Sychar and sounds more natural in modern English when referring to running errands for food.
-retained_terms:
-- term: disciples
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: For
+  simplified_phrase: For
+  preserved_meaning: Keeps the explicit explanation for why Jesus was alone at the well.
+  reasoning_layer_used: POB lexical decision for γάρ and grounding review
+  rationale: The connective remains clear and natural in this short sentence.
+- pob_phrase: had gone away into the city
+  simplified_phrase: had gone into town
+  preserved_meaning: Preserves their earlier departure and movement to the nearby populated place.
+  reasoning_layer_used: POB lexical decisions and footnote a
+  rationale: “Into town” is ordinary English and uses POB’s documented contextual alternative.
+- pob_phrase: to buy food
+  simplified_phrase: to buy food
+  preserved_meaning: Retains both the purpose of their trip and what they intended to purchase.
+  reasoning_layer_used: POB lexical decisions for ἵνα, τροφάς, and ἀγοράσωσιν
+  rationale: The POB wording is already direct common English.
 translation_notes:
-  source_alignment_notes: Preserved the pluperfect tense ('had gone') of the Greek verb 'ἀπεληλύθεισαν' to show that the disciples' departure happened before Jesus' conversation with the Samaritan woman. Kept 'food' as the standard translation for 'τροφάς'.
-  readability_notes:
-  - Changing 'into the city' to 'into town' significantly improves readability for modern English speakers, as 'going into town to buy food' is a very common idiom.
-  compression_notes:
-  - The minor coordinating conjunction 'For' was removed for modern style, but no narrative or semantic content was lost.
   risk_flags:
-  - risk: Low risk. Removing the explicit coordinate conjunction 'For' is a standard stylistic choice in modern English translation when the parenthetical relationship is obvious from the context.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Town” is less formally close to πόλις than “city.”
+    mitigation: POB footnote a explicitly preserves “town” as a contextual lexical alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/004/008.yaml
   source_text_sha256: b6bc9b953e8e0b02bcee06ebabbcd95fac2fd523088f29ac8cce032e792395df
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 7aa4fb6f34f9df8bd87b29b14c080711e119170c15acbc9116e67695004f80cd
-  timestamp: '2026-05-28T05:47:02Z'
-  output_hash: 63b6cbee85a413b329af0f6884191ad3f0c9d1dc352722102bf231992bce65a3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: eeeac16aae1c7ab17c933702146f34b247f020b8d6ae4a6fe1bd826dab0e91cb
+  timestamp: '2026-07-12T07:14:27Z'
+  output_hash: 1ee44d3f72e9f0b85c0f852a5592c5c3adcb6ac686c8adc4243dfa8ce5974360
   usage:
-    prompt_tokens: 1472
-    completion_tokens: 383
-    total_tokens: 4212
+    prompt_tokens: 3149
+    completion_tokens: 316
+    total_tokens: 3465
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: disciples
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:27Z'
+  previous_text: His disciples had gone into town to buy food.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6714ce89fbccbeeb1d760bb1a4f5b28cf48c394b13529e3c77289096ef50f1fa
+  review_summary: '"Into town" is a warranted, contextually clear use of the POB''s lexical alternative for πόλις, and dropping "away" does not materially reduce the sense of departure. However, the draft should retain the explanatory force of γάρ. The recommended revision preserves that connection while remaining plain and readable.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

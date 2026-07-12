@@ -31,41 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After Jesus had crossed again in the boat to the other side, a large crowd gathered around him beside the sea.
+  text: After Jesus had crossed over again in the boat to the other side, a large crowd gathered around him. He was beside the sea.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: That is, the Sea of Galilee, a lake customarily called a “sea” in the Gospels.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: And after Jesus had crossed over again in the boat to the other side, a large crowd gathered around him, and he was beside the sea.
-  simplified_phrase: After Jesus had crossed again in the boat to the other side, a large crowd gathered around him beside the sea.
-  preserved_meaning: Keeps Jesus' crossing, the boat, the other side, the gathered crowd, and the seaside setting while streamlining the sentence.
-  reasoning_layer_used: POB translation and cultural footnote
-  rationale: The location and movement remain clear in one smooth sentence.
-retained_terms:
-- term: sea
-  reason: Retained as the POB's Gospel setting term.
+- pob_phrase: And after Jesus had crossed over again in the boat to the other side
+  simplified_phrase: After Jesus had crossed over again in the boat to the other side
+  preserved_meaning: The crossing happened again, by boat, before the crowd gathered.
+  reasoning_layer_used: POB translation and lexical decisions for διαπεράσαντος, πάλιν, and ἐν τῷ πλοίῳ
+  rationale: Removing the opening “And” makes the sentence more natural without changing the sequence.
+- pob_phrase: a large crowd gathered around him, and he was beside the sea
+  simplified_phrase: A large crowd gathered around him. He was beside the sea.
+  preserved_meaning: The crowd gathered around Jesus, and Jesus was at the shoreline.
+  reasoning_layer_used: POB translation, source clause structure, and grounding review
+  rationale: Two sentences clearly preserve Jesus as the subject of the location statement.
 translation_notes:
-  source_alignment_notes: Preserves the crossing and the crowd gathering by the sea.
-  readability_notes:
-  - Combines the final location clause into the main sentence.
-  compression_notes:
-  - No setting detail is lost.
+  risk_flags:
+  - risk: Modern readers may assume the “sea” was an ocean rather than the Sea of Galilee.
+    mitigation: The cultural footnote identifies it as a lake while the main text retains the source image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/005/021.yaml
   source_text_sha256: da2d68f1847509fbe72490239940f41c6717cba9b351d559ac9e0c1a57febe6e
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-f
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:50:14Z'
-  output_hash: 9c0d2856fee3aa75d47e73f6ce97bcd62b5638d83db3a6d2ab6a4542aceb7022
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fa9e2e0f5b9878d193d9f37f9e211468be60e248604222c69153b1de63548490
+  timestamp: '2026-07-12T07:20:50Z'
+  output_hash: 19da2cb810a07b92654a6d445330de4f8d6cb865f879dc559f160a4d73e638c7
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3399
+    completion_tokens: 471
+    total_tokens: 3870
+    reasoning_tokens: 103
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: sea
+  reason: Retained as the POB's Gospel setting term.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:50Z'
+  previous_text: After Jesus had crossed again in the boat to the other side, a large crowd gathered around him beside the sea.
+  previous_model: codex-manual-worker-f
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 68336e1e07dee5ec5279f86ec757c63517897f3b25182f4f167fe11fc88fb3c7
+  review_summary: Revise to preserve the source’s separate statement that Jesus was beside the sea and to make the repeated crossing idiomatic and clear. The proposed replacement remains simple, preserves the temporal sequence and boat crossing, and introduces no doctrinal expansion. Retain the POB cultural footnote about the Sea of Galilee where notes are available.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

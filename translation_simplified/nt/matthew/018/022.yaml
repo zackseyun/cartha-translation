@@ -31,18 +31,70 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 18:22 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''seventy-seven times''].'
 translation:
   language: en
-  text: Jesus said to him, “I do not say up to seven times, but up to seventy times seven.[a]”
+  text: Jesus said to Peter, “I am not telling you to forgive only seven times, but seventy-seven times.[a]”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “seventy-seven times”; the Greek expression can be understood either way.
+    text: Or “seventy times seven”; the Greek expression can be understood either way.
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Jesus says to him[a], “I do not say to you, up to seven times, but up to seventy times seven.
-  simplified_phrase: Jesus said to him, “I do not say up to seven times, but up to seventy times seven.[a]”
-  preserved_meaning: Kept “seventy times seven,” preserving the POB wording and its sense of overflowing forgiveness.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept “seventy times seven,” preserving the POB wording and its sense of overflowing forgiveness.
+- pob_phrase: Jesus says to him
+  simplified_phrase: Jesus said to Peter
+  preserved_meaning: Jesus directly answers Peter.
+  reasoning_layer_used: Immediate context and POB lexical rationale
+  rationale: Past tense reads naturally in English, and naming Peter makes the pronoun clear.
+- pob_phrase: I do not say to you, up to seven times
+  simplified_phrase: I am not telling you to forgive only seven times
+  preserved_meaning: Jesus rejects seven as the proposed number of times to forgive.
+  reasoning_layer_used: Immediate context and POB lexical decisions
+  rationale: The wording states the contextual action and uses natural English.
+- pob_phrase: but up to seventy times seven
+  simplified_phrase: but seventy-seven times
+  preserved_meaning: Jesus replaces Peter’s proposed number with the POB audit trail’s chosen reading.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The main text follows the chosen reading while the footnote preserves the alternative.
+interpretive_expansions:
+- pob_phrase: to him
+  rendering: to Peter
+  claim: The pronoun refers to Peter.
+  evidence:
+  - Matthew 18:21 identifies Peter as the speaker whom Jesus answers.
+  confidence: high
+  alternatives_preserved:
+  - to him
+- pob_phrase: up to seven times
+  rendering: to forgive only seven times
+  claim: The counted action is forgiving someone who sins against Peter.
+  evidence:
+  - Peter’s immediately preceding question asks how often he must forgive.
+  confidence: high
+  alternatives_preserved:
+  - up to seven times
+translation_notes:
+  risk_flags:
+  - risk: The Greek numerical expression can mean “seventy-seven times” or “seventy times seven.”
+    mitigation: The main text follows the POB’s chosen reading, and the footnote preserves the alternative.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/018/022.yaml
+  source_text_sha256: a30e73b26d3f99734b25d4ceca8c8aa46357c09c9e01f50dec600c04f7c24465
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 032a41247364d7be284699cbba6b985c3c938780814b3bdfdc692f6ec10f928a
+  timestamp: '2026-07-12T07:37:30Z'
+  output_hash: 0a7d9abe7aa6b5a2823587c1e1b0155a68439d5f5b44b161b3ad02cb4495b1a3
+  usage:
+    prompt_tokens: 3739
+    completion_tokens: 783
+    total_tokens: 4522
+    reasoning_tokens: 286
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Jesus
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
@@ -50,30 +102,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
 - term: seventy times seven
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
-translation_notes:
-  source_alignment_notes: Preserves the controlling POB meaning and its source-grounded lexical choices while simplifying syntax and wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, clearer word order, and common English where the POB wording is formal or technical.
-  compression_notes:
-  - No central meaning is intentionally removed; technical alternatives are kept in footnotes when needed for review.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/018/022.yaml
-  source_text_sha256: a30e73b26d3f99734b25d4ceca8c8aa46357c09c9e01f50dec600c04f7c24465
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:05Z'
-  output_hash: fa549ca0f8f8e899393241411ee2218f0c47e03d20e2eb9edfa6b9365c24ae4a
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:30Z'
+  previous_text: Jesus said to him, “I do not say up to seven times, but up to seventy times seven.[a]”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8cfed54e929e44b5415dda830c27f1fce0facd91725c27aa46997e5b33f6b28b
+  review_summary: Revise. Naming Peter and making forgiveness explicit are warranted by the immediately preceding question and make the response understandable in contemporary English. Retain the numerical ambiguity in a footnote, but align the main text with the POB audit trail’s chosen rendering, “seventy-seven times.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

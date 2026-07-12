@@ -31,42 +31,62 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 13:8 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''one a hundredfold, another sixty, and another thirty''].'
 translation:
   language: en
-  text: But other seed fell on good soil and produced a crop—one seed a hundred times as much, another sixty, and another thirty.[a]
+  text: But other seed fell on good soil and was producing a crop—some a hundred times as much, some sixty times as much, and some thirty times as much.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Greek can also be expressed, “some a hundredfold, some sixty, some thirty.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: was producing fruit
+  simplified_phrase: was producing a crop
+  preserved_meaning: The good soil continued to produce an agricultural yield.
+  reasoning_layer_used: POB lexical decision for ἐδίδου καρπόν
+  rationale: “Crop” is clearer in this farming context, while “was producing” preserves the ongoing aspect.
+- pob_phrase: one a hundredfold, another sixty, and another thirty
+  simplified_phrase: some a hundred times as much, some sixty times as much, and some thirty times as much
+  preserved_meaning: Different portions produced yields of one hundred, sixty, and thirty times the amount sown.
+  reasoning_layer_used: POB footnote and lexical rationale for the Greek distributive expression
+  rationale: “Some” avoids implying a single seed, and repeating the measure makes each yield immediately clear.
+interpretive_expansions:
+- pob_phrase: a hundredfold, another sixty, and another thirty
+  rendering: a hundred times as much, some sixty times as much, and some thirty times as much
+  claim: All three numbers describe multiplied crop yields.
+  evidence:
+  - The POB lexical rationale says the sense is yield multiplication.
+  - The agricultural context concerns the result of seed falling on good soil.
+  confidence: high
+  alternatives_preserved:
+  - one a hundredfold, another sixty, and another thirty
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Crop” replaces the traditional image of “fruit.”
+    mitigation: It retains the concrete agricultural result intended in this sowing context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/008.yaml
   source_text_sha256: 4baab8d990901b6a1dd43560aadddbac0f8a195cceeb93441bb2516aa793e605
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:57Z'
-  output_hash: f50f75eb8110d9aadfc54ed87d736005e7bb1ba41780d85646e02ea4c32b6560
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c432c2bbd08f98ac3dfc1e25e90db08c65d9ff5922cfbd2815e894400577a92e
+  timestamp: '2026-07-12T07:37:50Z'
+  output_hash: 547f3775c09d095c167e053dca6f95c461fb21b83e2d661c3392c7f5ab6fe2c1
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3741
+    completion_tokens: 661
+    total_tokens: 4402
+    reasoning_tokens: 254
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:50Z'
+  previous_text: But other seed fell on good soil and produced a crop—one seed a hundred times as much, another sixty, and another thirty.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 652fedc04f9cfebd0c88437e150fbf5a784c23100df809cf4c9b511a5380e4d8
+  review_summary: Revision is needed. “Crop” is a warranted and clearer contextual rendering of agricultural καρπός, and explicitly repeating “times as much” helps modern readers understand the yield figures. However, “one seed” introduces an unwarranted singular referent, and the simple past weakens the imperfect aspect preserved by POB. The replacement retains the contrast, the agricultural image, the ongoing production, and the three distinct yield levels without adding doctrine or collapsing an ambiguity.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -2,7 +2,9 @@ import importlib.util
 import pathlib
 import sys
 import tempfile
+import types
 import unittest
+import json
 
 import yaml
 
@@ -15,6 +17,14 @@ assert SPEC and SPEC.loader
 PIPELINE = importlib.util.module_from_spec(SPEC)
 sys.modules[SPEC.name] = PIPELINE
 SPEC.loader.exec_module(PIPELINE)
+sys.path.insert(0, str(ROOT / "tools"))
+REVISION_SPEC = importlib.util.spec_from_file_location(
+    "spob_revision_pipeline", ROOT / "tools" / "spob_revision_pipeline.py"
+)
+assert REVISION_SPEC and REVISION_SPEC.loader
+REVISION = importlib.util.module_from_spec(REVISION_SPEC)
+sys.modules[REVISION_SPEC.name] = REVISION
+REVISION_SPEC.loader.exec_module(REVISION)
 
 
 class SpobDoctrinePromptTests(unittest.TestCase):
@@ -66,6 +76,38 @@ class SpobDoctrinePromptTests(unittest.TestCase):
             path.write_text(yaml.safe_dump(record), encoding="utf-8")
             errors = PIPELINE.validate_simplified_record(path)
         self.assertTrue(any("low-confidence expansion" in error for error in errors))
+
+    def test_revision_selection_preserves_editorial_adjudication_without_override(self):
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            spob = root / "translation_simplified/nt/test_book/001/001.yaml"
+            spob.parent.mkdir(parents=True)
+            spob.write_text(yaml.safe_dump({
+                "editorial_adjudications": [{"status": "retain"}],
+                "spob_revision_history": [],
+            }))
+            review = root / "state/spob_reviews/gpt-5_6-terra/nt/test_book/001/001.json"
+            review.parent.mkdir(parents=True)
+            review.write_text(json.dumps({
+                "reference": "Test 1:1",
+                "spob_path": str(spob.relative_to(root)),
+                "output_hash": "review-hash",
+                "review": {"verdict": "revise"},
+            }))
+            original_root, original_review_root = REVISION.ROOT, REVISION.REVIEW_ROOT
+            REVISION.ROOT = root
+            REVISION.REVIEW_ROOT = root / "state/spob_reviews"
+            try:
+                args = types.SimpleNamespace(
+                    review_model="gpt-5.6-terra", book=None, chapter=None,
+                    exclude_reference=None, force=False, limit=0,
+                    override_editorial_adjudications=False,
+                )
+                self.assertEqual(REVISION.review_files(args), [])
+                args.override_editorial_adjudications = True
+                self.assertEqual(REVISION.review_files(args), [review])
+            finally:
+                REVISION.ROOT, REVISION.REVIEW_ROOT = original_root, original_review_root
 
 
 if __name__ == "__main__":

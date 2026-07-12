@@ -31,24 +31,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 21:5 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''fish to eat''].'
 translation:
   language: en
-  text: So Jesus said to them, “Children, you do not have any fish, do you?” They answered him, “No.”
+  text: So Jesus asked them, “Children, you don’t have any fish to eat, do you?” They answered, “No.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Children
-  simplified_phrase: Children
-  preserved_meaning: Retained Jesus' direct address from the POB rather than replacing it with a looser greeting.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained Jesus' direct address from the POB rather than replacing it with a looser greeting.
+- pob_phrase: Jesus said to them
+  simplified_phrase: Jesus asked them
+  preserved_meaning: Jesus directs a question to the disciples.
+  reasoning_layer_used: Immediate syntax and POB dialogue context
+  rationale: “Asked” makes the speech function immediately clear.
+- pob_phrase: you do not have any fish, do you?
+  simplified_phrase: you don’t have any fish to eat, do you?
+  preserved_meaning: The question expects a negative answer and refers contextually to fish as food.
+  reasoning_layer_used: POB lexical decision for μή τι and προσφάγιον
+  rationale: The contraction is natural, while “to eat” restores the source-grounded contextual sense.
+- pob_phrase: They answered him
+  simplified_phrase: They answered
+  preserved_meaning: The disciples give Jesus the same brief negative reply.
+  reasoning_layer_used: POB narrative decision
+  rationale: The recipient is already clear from the dialogue.
+interpretive_expansions:
 - pob_phrase: any fish
-  simplified_phrase: any fish
-  preserved_meaning: Kept the fishing-context meaning of the Greek food term.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept the fishing-context meaning of the Greek food term.
-- pob_phrase: They answered him, No
-  simplified_phrase: They answered him, No
-  preserved_meaning: Kept the brief answer and simple dialogue shape.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept the brief answer and simple dialogue shape.
+  rendering: any fish to eat
+  claim: The fish in question are food.
+  evidence:
+  - The POB lexical audit says προσφάγιον means food eaten with bread and here naturally refers to fish for eating.
+  - John 21:3–6 provides the immediate fishing context.
+  confidence: high
+  alternatives_preserved:
+  - anything to eat
+translation_notes:
+  risk_flags:
+  - risk: “Children” may sound age-specific to modern readers.
+    mitigation: It is retained because the POB audit identifies it as the direct equivalent with an affectionate relational tone.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/021/005.yaml
+  source_text_sha256: 4108aeaa10937d3d7d3b12355707063a537c902ca6731e3da72f6e006cc62801
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8dd52df814d28818eeb8381b1c22a789c6ced93dd4819369d45523e21c7f4baf
+  timestamp: '2026-07-12T07:17:38Z'
+  output_hash: cee96adb315698773119f5eb7becc6fa2a7d38e6b0081011a1add1c817606c10
+  usage:
+    prompt_tokens: 3420
+    completion_tokens: 410
+    total_tokens: 3830
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Jesus
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
@@ -56,31 +91,13 @@ retained_terms:
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
 - term: fish
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
-translation_notes:
-  source_alignment_notes: Preserves the POB verse meaning and its source-grounded choices while simplifying syntax, dialogue, and explanatory wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, common verbs, and clearer pronoun references where helpful.
-  - Keeps John's narrative sequence and repeated dialogue patterns visible.
-  compression_notes:
-  - Compresses only redundant or formal phrasing; no central event, command, title, or theological claim is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/021/005.yaml
-  source_text_sha256: 4108aeaa10937d3d7d3b12355707063a537c902ca6731e3da72f6e006cc62801
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:04:41Z'
-  output_hash: 376e1ad71c9bee52ca4f8643a18d5abc8d8af29a9c5c4bb698bcda6de1f85ed3
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:38Z'
+  previous_text: So Jesus said to them, “Children, you do not have any fish, do you?” They answered him, “No.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ea03b59e1ec14f8948b04bc2246fef5c2433140fbd1523a993c7789056304cfb
+  review_summary: Revise for a real, source-warranted clarity gain. “Fish to eat” makes explicit the contextual sense of προσφάγιον established in the POB audit trail, without introducing doctrine or changing the negative-question force.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They came to Philip, who was from Bethsaida in Galilee, and asked him, "Sir, we want to see Jesus."
+  text: So they came to Philip, who was from Bethsaida in Galilee, and were asking him, “Sir,[a] we want to see Jesus.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Greek word can also be translated “Lord,” but here it is a respectful way of addressing Philip.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: So these came to Philip
+  simplified_phrase: So they came to Philip
+  preserved_meaning: The men mentioned in the previous verse approached Philip as the narrative continued.
+  reasoning_layer_used: POB lexical decisions for οὗτοι, οὖν, and προσῆλθον
+  rationale: “They” is natural English, while “So” preserves the link to the preceding verse.
+- pob_phrase: were asking him, saying
+  simplified_phrase: were asking him
+  preserved_meaning: Their ongoing request is introduced directly without changing its content.
+  reasoning_layer_used: POB lexical decisions for ἠρώτων and λέγοντες
+  rationale: Direct quotation makes “saying” unnecessary, while “were asking” retains the imperfect nuance.
+interpretive_expansions:
+- pob_phrase: Lord
+  rendering: Sir
+  claim: The speakers respectfully address Philip rather than call him their lord.
+  evidence:
+  - The immediate context identifies Philip as the person being addressed.
+  - The POB audit recognizes “Sir” as a plausible contextual meaning of κύριε.
+  confidence: high
+  alternatives_preserved:
+  - Lord
+  - Master
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Sir” departs from the POB main-text default “Lord.”
+    mitigation: A footnote preserves “Lord” and explains the contextual choice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/021.yaml
   source_text_sha256: 9275fe2816ca6499416790e58c6ea5026c39b6e8b99610d008c2831337008bd7
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: e604c57abd3aba9831c78caa0e0f96df488808deae38e33f04c4e91f8e0bbc7e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3c393907ad2770f01bde0e8d5dd61ef070b01bfdc864577d49060b91cf3e5aae
+  timestamp: '2026-07-12T07:16:18Z'
+  output_hash: 90975fceac3150b2c521b3c1d238595803a20bce335c1283d3c2bde0df029045
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3380
+    completion_tokens: 586
+    total_tokens: 3966
+    reasoning_tokens: 178
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:18Z'
+  previous_text: They came to Philip, who was from Bethsaida in Galilee, and asked him, "Sir, we want to see Jesus."
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1737e7c422bd3cbf0ac4c6ccb3b06f29786a1d6be956e8fda822a984d0684a58
+  review_summary: '“Sir” is a warranted contextual clarification: the Greeks address Philip, not Jesus, and κύριε naturally functions here as a respectful address. The draft is clearer than the POB’s more literal phrasing, but it unnecessarily omits the source connective and imperfect verbal aspect. The recommended wording retains those modest features in accessible English.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

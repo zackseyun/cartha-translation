@@ -31,38 +31,71 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matt 16:7 It is because / we did not bring. Restored drafter ''And they were discussing it among themselves, saying, "It is because we did not bring bread."'' (preserving the chosen interpretive ''It is because'' and explicit object ''it'') per chose'
 translation:
   language: en
-  text: They discussed this among themselves and said, “We did not bring bread.”
+  text: They were discussing Jesus’ warning among themselves. They said, “He said that because we did not bring bread.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: they were discussing among themselves
-  simplified_phrase: They discussed this among themselves
-  preserved_meaning: The disciples privately talk about their lack of bread.
-  reasoning_layer_used: POB translation
-  rationale: This keeps the same action with simpler word order.
+- pob_phrase: And they were discussing among themselves, saying
+  simplified_phrase: They were discussing Jesus’ warning among themselves. They said
+  preserved_meaning: The disciples were privately discussing what Jesus had just said.
+  reasoning_layer_used: Immediate context and POB lexical decisions for διελογίζοντο and ἐν ἑαυτοῖς
+  rationale: Two direct sentences clarify the subject of their ongoing private discussion.
+- pob_phrase: It is because we did not bring bread
+  simplified_phrase: He said that because we did not bring bread
+  preserved_meaning: The disciples thought Jesus gave his warning because they had brought no bread.
+  reasoning_layer_used: POB lexical decision for ὅτι and Matthew 16:5–6
+  rationale: The explicit wording restores the causal misunderstanding identified by the audit.
+interpretive_expansions:
+- pob_phrase: discussing among themselves
+  rendering: discussing Jesus’ warning among themselves
+  claim: Their discussion concerned Jesus’ preceding warning.
+  evidence:
+  - Matthew 16:6 contains Jesus’ warning immediately before their discussion.
+  - The POB audit says they were trying to interpret Jesus’ statement.
+  confidence: high
+  alternatives_preserved:
+  - discussing this among themselves
+- pob_phrase: It is because we did not bring bread
+  rendering: He said that because we did not bring bread
+  claim: The disciples understood Jesus’ words as prompted by their failure to bring bread.
+  evidence:
+  - The POB lexical audit treats ὅτι as introducing their inferred explanation.
+  - Matthew 16:5–6 links their forgotten bread with Jesus’ warning.
+  confidence: high
+  alternatives_preserved:
+  - It is because we did not bring bread.
 translation_notes:
-  source_alignment_notes: Preserves the disciples’ misunderstanding about bread.
-  readability_notes:
-  - Uses a direct sentence structure.
-  compression_notes:
-  - No quoted speech is removed.
+  risk_flags:
+  - risk: Naming Jesus’ warning and supplying “He said that” makes contextual referents explicit.
+    mitigation: Both clarifications are directly supported by the preceding verse and the POB lexical audit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/016/007.yaml
   source_text_sha256: a7197328dcada076f52572d822483c1c11d13647b603475382c603faf6a2d0ae
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:59:23Z'
-  output_hash: 2272a7aee03a33049878790a07ccd847d5eecd40d08b5b3abf413d06667a8433
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8b77341206234f8a9a44899195598cf58d9cd706d48dfb46f865826da1a54583
+  timestamp: '2026-07-12T07:37:53Z'
+  output_hash: 9da5b83ff24cf13101842f625572662f947c15eb48508e9930426a701e695e31
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3455
+    completion_tokens: 487
+    total_tokens: 3942
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:53Z'
+  previous_text: They discussed this among themselves and said, “We did not bring bread.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6880634f3d0b3f6862a41a470a8b98f6e933b90c2ae34c5ffeb5d25911483312
+  review_summary: 'Revise. The wording is readable, but it removes the central causal misunderstanding: the disciples think Jesus’ warning was prompted by their failure to bring bread. Restoring that inference is warranted by the Greek, immediate context, and the POB audit trail. The replacement also keeps the ongoing sense of their private discussion.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

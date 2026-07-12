@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/012/020.yaml
-  text: Now there were some Greeks among those going up to worship at the feast[a].
+  text: There were some Greeks among those going up to worship at the feast[a].
   footnotes:
   - marker: a
     text: Or 'certain Greeks'; possibly non-Jews who had come up to worship at the festival.
@@ -31,36 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now some Greeks were among those going up to worship at the feast.
+  text: Some Greeks were among the people traveling up to Jerusalem to worship during the feast.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The text calls them Greeks but does not specify their religious status.
+    reason: source_note
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: among those going up
+  simplified_phrase: among the people traveling up to Jerusalem
+  preserved_meaning: They belonged to the larger group making the pilgrimage to Jerusalem.
+  reasoning_layer_used: POB lexical rationale for ἐκ τῶν ἀναβαινόντων
+  rationale: This makes the pilgrimage idiom clear while retaining the image of going up.
+- pob_phrase: at the feast
+  simplified_phrase: during the feast
+  preserved_meaning: Their worship took place in connection with the Jewish festival.
+  reasoning_layer_used: POB lexical alternatives for ἐν τῇ ἑορτῇ
+  rationale: “During” clearly expresses the festival setting in common English.
+interpretive_expansions:
+- pob_phrase: going up
+  rendering: traveling up to Jerusalem
+  claim: Jerusalem was the destination of the pilgrimage.
+  evidence:
+  - The POB lexical rationale identifies “going up” as the conventional pilgrimage idiom to Jerusalem.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may assume the Greeks’ precise religious identity is known.
+    mitigation: The footnote preserves the POB’s documented ambiguity about their status.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/020.yaml
   source_text_sha256: 71a173b87f6d053ec3bcb188ea605d59130a5690617e65773fe601c9755119a3
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: 212e5d675328ce34deca5b9c294b8c0269ddf7c5352021fbb3aa5e60d897f340
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d5bfbea1ec4eff37d6310d6a28e1520bfb0a565877823c061c3487c40919cf91
+  timestamp: '2026-07-12T07:17:58Z'
+  output_hash: ee27cc63359d2a1af7eb47afc11d14172804537affb7ea3ee0580966207ff004
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3080
+    completion_tokens: 1205
+    total_tokens: 4285
+    reasoning_tokens: 841
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:58Z'
+  previous_text: Now some Greeks were among those going up to worship at the feast.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 221b3679fe2909c9e88f8a744284fae789a63af6071e82b96231321a106c2d6f
+  review_summary: 'Revise to remove “Now.” The remaining wording clearly and faithfully preserves the POB’s controlled meaning: the people are identified as Greeks without prematurely defining their religious or ethnic status, and their purpose in going up is retained.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

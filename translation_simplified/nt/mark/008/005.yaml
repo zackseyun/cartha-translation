@@ -27,38 +27,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He asked them, “How many loaves do you have?” They said, “Seven.”
+  text: He asked his disciples, “How many loaves of bread do you have?” They answered, “Seven.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he asked them, “How many loaves do you have?” They said, “Seven.”
-  simplified_phrase: He asked them, “How many loaves do you have?” They said, “Seven.”
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+- pob_phrase: he asked them
+  simplified_phrase: He asked his disciples
+  preserved_meaning: The people Jesus questioned were his disciples.
+  reasoning_layer_used: Immediate context and POB lexical rationale for αὐτούς
+  rationale: Naming the disciples makes the pronoun clear when the verse is read by itself.
+- pob_phrase: loaves
+  simplified_phrase: loaves of bread
+  preserved_meaning: Jesus asked how many countable bread loaves they had.
+  reasoning_layer_used: POB lexical decision for ἄρτους
+  rationale: Adding “of bread” helps readers immediately understand what kind of loaves are meant.
+- pob_phrase: They said
+  simplified_phrase: They answered
+  preserved_meaning: The disciples gave a direct reply to Jesus’ question.
+  reasoning_layer_used: POB lexical alternative for οἱ δὲ εἶπαν
+  rationale: “Answered” clearly connects their reply to the preceding question.
+interpretive_expansions:
+- pob_phrase: them
+  rendering: his disciples
+  claim: The pronoun refers to Jesus’ disciples.
+  evidence:
+  - Mark 8:4 identifies the responding group as his disciples.
+  - The POB lexical rationale identifies αὐτούς as referring to the disciples.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/005.yaml
   source_text_sha256: 190803379746a0879ac92d944ea03b149c18bdba1077ae42982d0eb51280de08
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: 2bcc42d33c8be918d0e776a45f476d89773d0bba0beb3fd156d904ed0a971cb7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f09d2d8b28fd74af064b337b54ac8a81b44a341baf9ca00a40800a0522ccb71b
+  timestamp: '2026-07-12T07:20:45Z'
+  output_hash: 78ca82ca4bd3e53519c229d40090e1f1c02c22cbe2cd96556c9c4fef1004612c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3034
+    completion_tokens: 354
+    total_tokens: 3388
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:45Z'
+  previous_text: He asked them, “How many loaves do you have?” They said, “Seven.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b653429012cbd6de874ef2040f78c1b35afb7693b9a84437d8bc0027a92d73c7
+  review_summary: The draft is faithful and introduces no doctrinal expansion, but its sole textual change—dropping “And”—does not by itself make the verse meaningfully clearer than POB. Replacing the contextually identified pronoun with “his disciples” provides a source- and context-warranted clarity improvement without narrowing any live ambiguity.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

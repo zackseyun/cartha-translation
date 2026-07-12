@@ -31,51 +31,71 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 10:39 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''he went out''].'
 translation:
   language: en
-  text: So they tried again to seize him, but he slipped out of their hands[a].
+  text: So they tried again to seize him, but he went out from their control.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek reads literally 'from their hand,' an idiom meaning their power or control.
+    text: The Greek says literally “from their hand,” an idiom for their power or control.
     reason: simplification_note
 simplification_decisions:
-- preserved_meaning: Simplifies the auxiliary 'were seeking to' into the more direct 'tried to,' which maintains the imperfect tense's sense of attempted past action in a more natural modern cadence.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplifies the auxiliary 'were seeking to' into the more direct 'tried to,' which maintains the imperfect tense's sense of attempted past action in a more natural modern cadence.
-- preserved_meaning: Preserves the 'hand' idiom and the literal 'went out' action (protected by the POB theological pass to avoid the generic 'escaped') by using the natural English equivalent 'slipped out of their hands.'
-  reasoning_layer_used: POB audit trail
-  rationale: Preserves the 'hand' idiom and the literal 'went out' action (protected by the POB theological pass to avoid the generic 'escaped') by using the natural English equivalent 'slipped out of their hands.'
-retained_terms:
-- term: seize
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: hand
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: they were seeking again to seize him
+  simplified_phrase: they tried again to seize him
+  preserved_meaning: Their repeated attempt to take Jesus continued but did not succeed.
+  reasoning_layer_used: POB lexical decisions for ἐζήτουν, πάλιν, and πιάσαι
+  rationale: “Tried again” expresses attempted past action in direct modern English.
+- pob_phrase: he escaped from their hand
+  simplified_phrase: he went out from their control
+  preserved_meaning: Jesus left their power without specifying how he did so.
+  reasoning_layer_used: POB lexical and theological decisions for ἐξῆλθεν and the hand idiom
+  rationale: This keeps the source verb’s movement and explains the idiom without adding a manner of escape.
+interpretive_expansions:
+- pob_phrase: from their hand
+  rendering: from their control
+  claim: The singular “hand” refers idiomatically to power or control.
+  evidence:
+  - The POB lexical decision identifies “power or control” as the idiom’s meaning.
+  confidence: high
+  alternatives_preserved:
+  - from their hand
+  - out of their hands
+  - from their grasp
 translation_notes:
-  source_alignment_notes: By using 'slipped out of their hands' instead of 'escaped,' we remain faithful to the POB theological decision to preserve the original idiom of physical exit from their power rather than substituting a generic escape verb.
-  readability_notes:
-  - Changing 'went out from their hand' to 'slipped out of their hands' dramatically improves readability for a modern audience without losing narrative force or theological depth.
-  compression_notes:
-  - The phrase 'were seeking again' is compressed to 'tried again' to keep the sentence flow clean and prevent it from feeling overly wordy.
   risk_flags:
-  - risk: None. The pluralization of 'hand' to 'hands' is standard for natural English and is clarified in the footnote.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “From their control” may sound less concrete than the Greek hand image.
+    mitigation: The footnote preserves the literal image and explains its idiomatic meaning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/010/039.yaml
   source_text_sha256: 763a0b374025d7b7d922ca8da1fe06aede20a9855c57bf763f2c60db895f0d29
-  pob_commit_sha: 39af2f5be39358bdfef5ba28d01a675dd4a6a667
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 6d60e39a92b1d3a44513da633f7c93f01c7b3e3e14b71ecdf5b1c20041874b7e
-  timestamp: '2026-05-28T09:36:41Z'
-  output_hash: b2e9d4329ab5ee59e79d1ba97221df6f562c864b5ab9a6528d52068657b9af2f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 67f8dba2833a8e86c9bf54e3bd84940107c8189bb71a2c3db35a77f9c37d0cde
+  timestamp: '2026-07-12T07:16:30Z'
+  output_hash: f6646bdfc5b5231b57b9c67153b0efd5ad14fb7361778e6acecdece84415b754
   usage:
-    prompt_tokens: 1991
-    completion_tokens: 477
-    total_tokens: 5533
+    prompt_tokens: 3687
+    completion_tokens: 391
+    total_tokens: 4078
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: seize
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: hand
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:30Z'
+  previous_text: So they tried again to seize him, but he slipped out of their hands[a].
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: dcdbc50a04e9ea4232f59e59e33533684db1e063edae96d9b137a77523287a33
+  review_summary: “They tried again to seize him” is a clear, warranted simplification of the ongoing attempted action. The second clause is also right to communicate the hand idiom as control rather than preserve an opaque literalism. However, “slipped out” adds an unsupported manner of escape and reverses a specific POB audit-trail restraint. “Went out from their control” preserves the narrative movement and makes the idiom understandable without asserting how he eluded them.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

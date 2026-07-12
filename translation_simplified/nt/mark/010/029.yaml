@@ -27,41 +27,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said, “Truly I tell you, there is no one who has left house, brothers, sisters, mother, father, children, or fields for my sake and for the sake of the gospel
+  text: Jesus said, “Truly I tell you, there is no one who has left house, brothers, sisters, mother, father, children, or fields for my sake and for the sake of the gospel,”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Jesus said, “Truly I say to you, there is no one who has left house or brothers or sisters or mother or father or children or fields for my sake and for the sake of the gospel,”
-  simplified_phrase: Jesus said, “Truly I tell you, there is no one who has left house, brothers, sisters, mother, father, children, or fields for my sake and for the sake of the gospel
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: gospel
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: Truly I say to you
+  simplified_phrase: Truly I tell you
+  preserved_meaning: Jesus introduces a direct and solemn declaration.
+  reasoning_layer_used: POB lexical decision for λέγω ὑμῖν
+  rationale: “I tell you” is more natural in modern English while keeping the saying direct and solemn.
+- pob_phrase: house or brothers or sisters or mother or father or children or fields
+  simplified_phrase: house, brothers, sisters, mother, father, children, or fields
+  preserved_meaning: Every family relationship and possession in the POB list remains distinct.
+  reasoning_layer_used: POB lexical decisions and theological decision on the renunciation list
+  rationale: A standard English list removes cumbersome repetition without weakening or merging its items.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: The comma list may make the repeated force of Greek “or” less visible.
+    mitigation: The final “or” retains the alternatives, and every listed category remains explicit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/029.yaml
   source_text_sha256: 508b023a5fdae3b74c413629709b0842912d4bf5eba2bec9921d719f70cab1d3
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 7ce3a346e2d34376d3064fcbe90e79937ee22b34d0722add23f15b6de01c8cc2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a052d4220ccbb4fa646fe7fffbaa66806b0b309e87824dc2ee22968f27aaf241
+  timestamp: '2026-07-12T07:21:08Z'
+  output_hash: f7e7c8e5083c3638e4258d9b79af961c7a9b4f5de3615b4a424862016d603ea0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3745
+    completion_tokens: 302
+    total_tokens: 4047
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: gospel
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:08Z'
+  previous_text: Jesus said, “Truly I tell you, there is no one who has left house, brothers, sisters, mother, father, children, or fields for my sake and for the sake of the gospel
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b3d57123e4c1678d074375d72b872127e02773d0357001689d4091975f4fda6d
+  review_summary: The wording faithfully preserves the verse's universal promise framework, the complete list of relinquished family relationships and property, and the paired motives of Jesus and the gospel. Changing “I say to you” to “I tell you” is a warranted modern-English simplification, and consolidating the repeated alternatives into a conventional comma list ending in “or fields” does not merge the listed categories or change their force. Revision is required solely to restore the missing closing quotation mark and terminal punctuation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

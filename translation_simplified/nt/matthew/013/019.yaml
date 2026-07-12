@@ -34,7 +34,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When anyone hears the word of the kingdom and does not understand it, the evil one comes and snatches away what was sown in that person’s heart. This is the seed sown beside the road.[a][b]
+  text: When anyone hears the message of the kingdom but does not understand it, the evil one[a] comes and snatches away what was sown in that person’s heart. This is the person represented by the seed sown beside the road.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -44,38 +44,67 @@ translation:
     text: Or “along the path” or “by the roadside.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
-retained_terms:
-- term: word of the kingdom
-  reason: Retained from POB to preserve Jesus' explanation of the parable.
+- pob_phrase: the word of the kingdom
+  simplified_phrase: the message of the kingdom
+  preserved_meaning: The person hears the kingdom proclamation represented by the seed.
+  reasoning_layer_used: POB lexical decision for λόγον τῆς βασιλείας
+  rationale: “Message” makes the sense of “word” immediately clear while preserving the seed imagery in the verse.
+- pob_phrase: in his heart
+  simplified_phrase: in that person’s heart
+  preserved_meaning: The word is sown within the same representative individual who hears it.
+  reasoning_layer_used: POB theological decision on the generic singular αὐτοῦ
+  rationale: The wording clarifies the pronoun’s referent without making the subject plural.
+- pob_phrase: This is the one sown beside the road
+  simplified_phrase: This is the person represented by the seed sown beside the road
+  preserved_meaning: Jesus identifies the hearer through the parable’s person-seed correspondence.
+  reasoning_layer_used: POB lexical rationale for ὁ παρὰ τὴν ὁδὸν σπαρείς and grounding review
+  rationale: The clarification prevents readers from mistaking the seed rather than the hearer as the identified referent.
+interpretive_expansions:
+- pob_phrase: This is the one sown beside the road
+  rendering: This is the person represented by the seed sown beside the road
+  claim: The masculine expression identifies the hearer through the image of the sown seed.
+  evidence:
+  - The verse begins with the individual who hears but does not understand.
+  - The POB audit says Jesus identifies the person metonymically with the seed and soil image.
+  confidence: high
+  alternatives_preserved:
+  - along the path
+  - by the roadside
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Represented by” makes the parable’s metonymic correspondence explicit.
+    mitigation: The immediate context and POB lexical rationale directly support the clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/019.yaml
   source_text_sha256: 8af656de43c9acdccfaaffde09ed00bf5fa2508a39cce1deaa6e00cb68fe0c5f
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: caa080c5867b65372ac74e0276d3417fc3e509eaec297da4bbae5034936a8c76
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 89da69963325c86aeb5a57829fb9648e022e72ad0339f2d6dfa81f766a04cafc
+  timestamp: '2026-07-12T07:38:08Z'
+  output_hash: eb50d701388ef1a80d77a3ce56609db657c666aa32b2f175d7bafdb6a264ba82
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3925
+    completion_tokens: 564
+    total_tokens: 4489
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: word of the kingdom
+  reason: Retained from POB to preserve Jesus' explanation of the parable.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:08Z'
+  previous_text: When anyone hears the word of the kingdom and does not understand it, the evil one comes and snatches away what was sown in that person’s heart. This is the seed sown beside the road.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6be56692c6ba4fcdc4539b618a06c5093d0fcfaa2cb58511f2988af35134e837
+  review_summary: Revise. “That person’s heart” is a warranted, readable way to express the generic singular reference, and “message of the kingdom” is a supported lexical simplification. However, replacing the final person-identification with “the seed” loses the hearer-focused meaning established by the Greek grammar, immediate context, and POB audit trail. The footnotes also need to be attached to their respective expressions.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

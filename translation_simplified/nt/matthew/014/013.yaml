@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/014/013.yaml
-  text: Now when Jesus heard this[a], he withdrew from there by boat to a desolate place by himself. But when the crowds heard[b], they followed him on foot from the towns.
+  text: When Jesus heard this[a], he withdrew from there by boat to a desolate place by himself. But when the crowds heard[b], they followed him on foot from the towns.
   footnotes:
   - marker: a
     text: Or 'to a deserted place' or 'to a solitary place.' The Greek describes an isolated or uninhabited area, not necessarily a sandy desert.
@@ -34,41 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When Jesus heard this, he withdrew from there by boat to a deserted place by himself. But when the crowds heard about it, they followed him on foot from the towns.
+  text: When Jesus heard this, he withdrew from there by boat to a deserted place to be by himself. But when the crowds heard that he had left, they followed him on foot from the towns.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: desolate place
-  simplified_phrase: deserted place
-  preserved_meaning: Preserves the isolated-place meaning without implying a sandy desert.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Deserted place'' is a common alternative already recognized by POB.'
-retained_terms:
-- term: withdrew
-  reason: Retains POB's neutral rendering of Jesus' action.
+- pob_phrase: to a desolate place by himself
+  simplified_phrase: to a deserted place to be by himself
+  preserved_meaning: Jesus went to an isolated place apart from others without specifying his motive.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: This wording is clearer while preserving both the isolated setting and the unresolved reason for withdrawing.
+interpretive_expansions:
+- pob_phrase: when the crowds heard
+  rendering: when the crowds heard that he had left
+  claim: The crowds heard about Jesus' departure.
+  evidence:
+  - Their response is to follow Jesus by land after he leaves by boat.
+  - The immediate narrative sequence supports this referent.
+  confidence: moderate
+  alternatives_preserved:
+  - The Greek leaves the object of “heard” unstated.
 translation_notes:
-  source_alignment_notes: Preserves Jesus' withdrawal by boat and the crowds' response on foot from the towns.
-  readability_notes:
-  - Uses 'heard about it' to make the implied news clear.
-  compression_notes:
-  - No meaning was omitted.
+  risk_flags:
+  - risk: The object of the crowds’ hearing is implicit in Greek.
+    mitigation: The clarification follows the immediate action while the audit records the source ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/014/013.yaml
   source_text_sha256: 87798d14703d81488d13055fbc5435448fad52e39c56adff6a64821bb180e445
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:51:39Z'
-  output_hash: ebb7afcb337729551e48a2cf4bdea1d0f8b12bc285bfa4e4e7d48c6375c8b7b8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c0ebe1b5b89d5c8e631984932574e1323abaffd031460f76cd81bf9a169e4ae5
+  timestamp: '2026-07-12T07:38:53Z'
+  output_hash: cfa4e72214514d7a8a598deb5a7679917e34d1cb2684d0edf50ac7f0b9a7529f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3760
+    completion_tokens: 290
+    total_tokens: 4050
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: withdrew
+  reason: Retains POB's neutral rendering of Jesus' action.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:53Z'
+  previous_text: When Jesus heard this, he withdrew from there by boat to a deserted place by himself. But when the crowds heard about it, they followed him on foot from the towns.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 73d3d2c638d648fc4358c6b9aea4b8c3fea76095faafff71bb3463504d80b594
+  review_summary: Changing “desolate place” to “deserted place” is warranted by the POB lexical audit trail and is clear. However, “heard about it” does not identify what the crowds heard and can misleadingly refer to the earlier report rather than Jesus’ withdrawal. The immediate narrative context warrants the limited clarification “heard that he had left.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

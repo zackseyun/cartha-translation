@@ -31,38 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For whoever has, more will be given to him; and whoever does not have, even what he has will be taken away from him.”
+  text: This is because whoever has will receive more.[a] But whoever does not have will lose even what he has.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Greek says simply “will be given to him”; the contrast implies “more.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: For whoever has[a], more will be given to him; and whoever does not have, even what he has will be taken away from him.
-  simplified_phrase: For whoever has, more will be given to him; and whoever does not have, even what he has will be taken away from him.”
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
+- pob_phrase: For whoever has, more will be given to him
+  simplified_phrase: This is because whoever has will receive more
+  preserved_meaning: The saying explains the previous statement and promises an increase without specifying what is given.
+  reasoning_layer_used: POB translation and theological decision on the implied object
+  rationale: “This is because” makes the connection clear, while “receive more” expresses the passive construction naturally.
+- pob_phrase: and whoever does not have, even what he has will be taken away from him
+  simplified_phrase: But whoever does not have will lose even what he has
+  preserved_meaning: The contrasting person suffers the forced loss of even his present possession.
+  reasoning_layer_used: POB lexical decisions for οὐκ ἔχει and ἀρθήσεται ἀπ’ αὐτοῦ
+  rationale: A separate sentence with “but” and “lose” makes the contrast and result easier to grasp.
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: “Lose” is less explicitly passive than “will be taken away.”
+    mitigation: The wording still presents the possession as a loss suffered by the person, not a voluntary surrender.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/025.yaml
   source_text_sha256: 3b0e52cb44e43b08cd7032ad2eb30111a9fabd180ef6bc76dee126a76f5bee86
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 049df48f18912ef6a2587de4d45195e3e75aac69d13af2b616c1c7f9db65cf96
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ba63ae57a7167c842ac0bc8559089d4d72d4685db7c222f4214bd267c6a6e6f5
+  timestamp: '2026-07-12T07:21:00Z'
+  output_hash: dde5209ffaac925a4ea2c48d54d37db97e6e7c771e4e9545361a83101922d230
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3404
+    completion_tokens: 1522
+    total_tokens: 4926
+    reasoning_tokens: 1151
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:00Z'
+  previous_text: For whoever has, more will be given to him; and whoever does not have, even what he has will be taken away from him.”
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 10bf74f189c45a6a55cdd2a1e98673eb75547b5784e1326e100686ea49c908fd
+  review_summary: The wording faithfully preserves the Greek's broad, unstated object and the POB's warranted supply of “more”; no doctrinally unsupported expansion is present. However, it is not meaningfully clearer than POB as submitted, and it contains an unmatched closing quotation mark. Restore clean publication punctuation; a later SPOB revision may simplify further only if it can do so without specifying what is “had” or “given,” which the source leaves open.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

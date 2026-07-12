@@ -31,41 +31,68 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 12:28 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the first of all''].'
 translation:
   language: en
-  text: One of the scribes came up and heard them debating. Seeing that Jesus had answered them well, he asked him, “Which commandment is the first of all?”
+  text: One of the scribes came up and heard them debating. Seeing that Jesus had answered them well, he asked him, “Which commandment is the most important of all?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And one of the scribes came up and heard them debating, and seeing that he had answered them well, he asked him, “Which commandment is the first of all?”
-  simplified_phrase: One of the scribes came up and heard them debating. Seeing that Jesus had answered them well, he asked him, “Which commandment is the first of all?”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: commandment
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: And one of the scribes came up and heard them debating, and seeing that he had answered them well, he asked him
+  simplified_phrase: One of the scribes came up and heard them debating. Seeing that Jesus had answered them well, he asked him
+  preserved_meaning: The scribe approaches, hears the debate, recognizes the quality of Jesus’ answers, and questions him.
+  reasoning_layer_used: POB syntax and lexical decisions
+  rationale: Two sentences clarify the sequence, and naming Jesus resolves the pronoun without changing its referent.
+- pob_phrase: Which commandment is the first of all?
+  simplified_phrase: Which commandment is the most important of all?
+  preserved_meaning: The scribe asks which commandment holds the highest rank.
+  reasoning_layer_used: POB lexical and theological decisions with immediate context
+  rationale: “Most important” clearly expresses the documented ranking sense of “first” for modern readers.
+interpretive_expansions:
+- pob_phrase: he had answered them well
+  rendering: Jesus had answered them well
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate exchange identifies Jesus as the person answering the preceding questions.
+  confidence: high
+- pob_phrase: the first of all
+  rendering: the most important of all
+  claim: “First” refers to priority in rank rather than chronological order.
+  evidence:
+  - The POB lexical note lists “the most important of all” as a valid alternative.
+  - Jesus’ answer in Mark 12:29–31 identifies the commands of highest importance.
+  confidence: high
+  alternatives_preserved:
+  - the foremost of all
+  - the greatest
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/028.yaml
   source_text_sha256: dbf6837bdb038ba6f3f62e50950f4a0e0cde090bff58572820fce48c10b996d3
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: b6059917d1ed5af5661ec6aec79e3d1f8795c4b81c563eb0cee7d3c2b1119e41
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bc52d14a65bbb2b667f14282505ec4dc30d33f67626a51af591163b3bca37c44
+  timestamp: '2026-07-12T07:21:36Z'
+  output_hash: d72c36fd079c6e9f1a6bbaccab896747ad2f38c57585aa143bc17bc161108d00
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3789
+    completion_tokens: 450
+    total_tokens: 4239
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: commandment
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:36Z'
+  previous_text: One of the scribes came up and heard them debating. Seeing that Jesus had answered them well, he asked him, “Which commandment is the first of all?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c6916e350ccaeb190239090463b36487c50f7557105984f6c7b8a715b8384968
+  review_summary: The sentence division and explicit identification of Jesus are warranted, faithful clarity improvements. However, removing the POB footnote while retaining “the first of all” leaves the question’s intended ranking sense insufficiently clear. Rendering πρώτη as “the most important” is supported by the source range, POB audit trail, and Jesus’ immediate answer; it does not impose a doctrinal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

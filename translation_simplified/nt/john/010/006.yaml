@@ -31,46 +31,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus spoke this figure of speech[a] to them, but they did not understand what he was saying to them.
+  text: Jesus used this illustration[a] when he spoke to them, but they did not understand what he meant.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'parable,' 'illustration,' or 'proverb.' The Greek word can refer broadly to a figurative saying.
-    reason: simplification_note
+    text: Or “figure of speech,” “parable,” or “proverb.” The Greek word can refer broadly to a figurative saying.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Retained 'figure of speech' for 'παροιμίαν' to avoid overcommitting to 'parable' or 'proverb' while adding a clear footnote explanation.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'figure of speech' for 'παροιμίαν' to avoid overcommitting to 'parable' or 'proverb' while adding a clear footnote explanation.
-- preserved_meaning: Kept 'did not understand' to translate 'οὐκ ἔγνωσαν' clearly in this context of figurative language.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept 'did not understand' to translate 'οὐκ ἔγνωσαν' clearly in this context of figurative language.
-retained_terms:
-- term: figure of speech
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: spoke this figure of speech to them
+  simplified_phrase: used this illustration when he spoke to them
+  preserved_meaning: Jesus addressed them through a non-literal shepherd illustration.
+  reasoning_layer_used: POB lexical decision for παροιμίαν
+  rationale: “Illustration” is a permitted, concrete alternative that does not narrow the expression to a technical parable or proverb.
+- pob_phrase: did not understand what he was saying to them
+  simplified_phrase: did not understand what he meant
+  preserved_meaning: They failed to grasp the intended meaning of Jesus’ figurative speech.
+  reasoning_layer_used: POB lexical decision for τίνα ἦν ἃ ἐλάλει αὐτοῖς
+  rationale: The POB audit identifies failure to grasp his meaning as the clause’s contextual sense.
+interpretive_expansions:
+- pob_phrase: what he was saying to them
+  rendering: what he meant
+  claim: Their failure concerned the intended meaning of Jesus’ words, not merely hearing their content.
+  evidence:
+  - The immediate context is Jesus’ figurative shepherd discourse.
+  - The POB rationale says the clause concerns failure to grasp the content or meaning.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Maintained direct alignment with POB's handling of the Greek text, avoiding harmonization with Synoptic 'parable' language.
-  readability_notes:
-  - The sentence structure is simple, direct, and highly accessible to modern readers.
-  compression_notes:
-  - No compression was necessary as the source text is short and structurally clean.
+  risk_flags:
+  - risk: “Illustration” may sound narrower than the broad Greek term.
+    mitigation: The footnote preserves “figure of speech,” “parable,” and “proverb” as lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/010/006.yaml
   source_text_sha256: 140a0cda6ec3ea3bd54dd4b7c123be47c92d03fe5160f72a6c35f4df6fd65e16
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 69465951b1be61216a871c0de583daa2f8d48b96e16240953ab07e91c57ae064
-  timestamp: '2026-05-28T09:31:44Z'
-  output_hash: e395c7fca68d1a6127726ee96a7a9e58ea40a9d46ecbe0c3142143957e04d107
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 209802f7dc40a958817940f874f87dae812e7eee5dd979bc0360917a2680a0fe
+  timestamp: '2026-07-12T07:16:51Z'
+  output_hash: 7f93d580f2339fd208b516f16501f5939a2a840ef797ab1d586b51401c292ffb
   usage:
-    prompt_tokens: 1612
-    completion_tokens: 307
-    total_tokens: 4510
+    prompt_tokens: 3220
+    completion_tokens: 420
+    total_tokens: 3640
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: figure of speech
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:51Z'
+  previous_text: Jesus spoke this figure of speech[a] to them, but they did not understand what he was saying to them.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0aeb5a31678848ebc55640a68dad2bfdb0cd60e20b6e4ccf906a0cf82242a6c1
+  review_summary: The draft is faithful and doctrinally sound, with no unsupported interpretive expansion. However, because its main text simply reproduces the POB, it does not meet the requested SPOB threshold of being meaningfully clearer. “Illustration” and “what he meant” are source- and context-warranted clarifications that preserve the lexical range and the audience’s failure to understand Jesus’ figurative discourse.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

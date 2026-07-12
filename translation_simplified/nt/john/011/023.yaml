@@ -31,36 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to her, “Your brother will rise again.”
+  text: Jesus says to her, “Your brother will rise again.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Jesus says to her, “Your brother will rise again.”
+  simplified_phrase: Jesus says to her, “Your brother will rise again.”
+  preserved_meaning: Jesus assures Martha that Lazarus will rise from the dead without specifying when.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The POB wording is already clear, and retaining “says” preserves the Greek historical present.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Rise again” could be taken as specifying either immediate restoration or the final resurrection.
+    mitigation: The wording preserves the POB’s deliberate timing ambiguity without further explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/023.yaml
   source_text_sha256: 7efedf69c0e433e0f5414651859c5b3e79e8d09d760f316453175454ef791083
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:37Z'
-  output_hash: cea190df17bcdff58fea5f93b915af9221a2abdda251c43dd836510f1b9c11c2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8456934412f75caf9d7ce2b9f3ead07078d6cc3fe35f85a049145f296fa58665
+  timestamp: '2026-07-12T07:16:35Z'
+  output_hash: 959e378a0ed5ef7264e569a8f93906bf4eda53b7eb3213bea1e39a220bb5b628
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2808
+    completion_tokens: 194
+    total_tokens: 3002
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:35Z'
+  previous_text: Jesus said to her, “Your brother will rise again.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c9f13a3f181378b7321695a60d3a4e87ed292fd97a33f018d682953a2bb2d250
+  review_summary: 'The resurrection assurance is accurately retained: “will rise again” is warranted by the immediate context of Lazarus’s death and does not force a timing or agency explanation. However, the sole SPOB alteration is not a needed understanding-first simplification and discards a deliberate, source-grounded POB choice. Restore “says.”'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

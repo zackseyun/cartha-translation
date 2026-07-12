@@ -34,41 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus called them to himself and said to them, “You know that those recognized as rulers of the Gentiles lord it over them, and their great people exercise authority over them.
+  text: Jesus called them to himself and said, “You know that those recognized as rulers of the Gentiles lord it over them, and the powerful among them exercise authority over them.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And Jesus called them to himself and said to them[a], “You know that those who are considered rulers of the Gentiles lord it over them[b], and their great ones exercise authority over them.”
-  simplified_phrase: Jesus called them to himself and said to them, “You know that those recognized as rulers of the Gentiles lord it over them, and their great people exercise authority over them.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: Gentiles
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+- pob_phrase: called them to himself and said to them
+  simplified_phrase: called them to himself and said
+  preserved_meaning: Jesus gathered the disciples to himself before speaking.
+  reasoning_layer_used: POB translation and lexical decision for προσκαλεσάμενος and λέγει
+  rationale: Removing the repeated “to them” makes the sentence more natural without changing its addressees.
+- pob_phrase: those who are considered rulers of the Gentiles
+  simplified_phrase: those recognized as rulers of the Gentiles
+  preserved_meaning: The phrase refers to people publicly regarded as rulers, not merely apparent rulers.
+  reasoning_layer_used: POB lexical and theological decisions for οἱ δοκοῦντες ἄρχειν and τῶν ἐθνῶν
+  rationale: “Recognized as rulers” states the public-estimation sense in clearer modern English.
+- pob_phrase: their great ones
+  simplified_phrase: the powerful among them
+  preserved_meaning: The phrase identifies socially prominent or powerful people among the Gentiles.
+  reasoning_layer_used: POB lexical decision for οἱ μεγάλοι αὐτῶν
+  rationale: “The powerful among them” avoids the unclear suggestion that these people are morally admirable.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/042.yaml
   source_text_sha256: 0c4800467075d4115c27a1e593510166b40a7e6521603f903e99b4a3b897fa57
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: f3f83a5752ef1485a01b804b4c1b08bb8eb28356a6cd06789c44d70c56c765d5
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b80e5b78d0f0c2783a3d65840addc37b1daa8b4887c7bba5a1822a170198c508
+  timestamp: '2026-07-12T07:22:24Z'
+  output_hash: 90e13501b66c987c7d8e2cbe0dd5cfb04d0223ebed2fadb694b8d1d383e00807
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3621
+    completion_tokens: 354
+    total_tokens: 3975
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Gentiles
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:24Z'
+  previous_text: Jesus called them to himself and said to them, “You know that those recognized as rulers of the Gentiles lord it over them, and their great people exercise authority over them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c0388b75bda22664378bfe6705f9ec51640e38df2de888c3c576c5b8230d93d3
+  review_summary: The change from “those who are considered rulers” to “those recognized as rulers” is source-grounded and slightly clearer. However, “great people” weakens and obscures the intended reference to prominent, powerful persons, and the draft lacks closing quotation punctuation. The recommended text preserves the POB’s distinctions while making that phrase understandable to modern readers.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

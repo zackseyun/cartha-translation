@@ -31,36 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And for your sake I am glad I was not there, so that you may believe. But let us go to him.
+  text: I am glad I was not there, because it will help you believe.[a] But let us go to him.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “help you come to believe.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: I am glad for your sake that I was not there, so that you may believe
+  simplified_phrase: I am glad I was not there, because it will help you believe
+  preserved_meaning: Jesus is glad that his absence will benefit the disciples by furthering their belief.
+  reasoning_layer_used: POB lexical and theological decisions for δι’ ὑμᾶς and ἵνα πιστεύσητε
+  rationale: The benefit and purpose are stated directly without implying that the disciples had no prior belief.
+interpretive_expansions:
+- pob_phrase: for your sake ... so that you may believe
+  rendering: because it will help you believe
+  claim: Jesus’ absence will benefit the disciples by helping them believe.
+  evidence:
+  - The POB audit reads δι’ ὑμᾶς as referring to the disciples’ benefit.
+  - The purpose clause ἵνα πιστεύσητε connects the unfolding situation with their belief.
+  confidence: high
+  alternatives_preserved:
+  - help you come to believe
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Help you believe” could be read as either beginning or strengthening belief.
+    mitigation: The main text preserves the POB’s broader wording, while the footnote retains the possible ingressive sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/015.yaml
   source_text_sha256: c8c37a1f348f27ca89dbbf12666f09aff88721396a875eed93d8e360dc0541ed
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:37Z'
-  output_hash: 52f33053dfe4631f99492bbce97438a1292ed940bebb98272b88f3edd89048a1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 110ad00732f000390cf8954ac1d77940d9b177151a44c8a1b702f04bb39d7741
+  timestamp: '2026-07-12T07:16:07Z'
+  output_hash: 736012708323e432d2e75253e39a1a4d98666a0419c046936a7d2231b5b4c059
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3257
+    completion_tokens: 694
+    total_tokens: 3951
+    reasoning_tokens: 320
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:07Z'
+  previous_text: And for your sake I am glad I was not there, so that you may believe. But let us go to him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5381e6a383134eaa5077fae7c8051f9858ff1e65aeca7279e7381eea12cb41bf
+  review_summary: The draft does not add doctrine or lose a source-text distinction, but its near-identical rewording is not meaningfully clearer than the POB, as required for approval. The replacement makes explicit the beneficial connection already established by δι’ ὑμᾶς and the purpose clause in the POB audit trail, without claiming that the disciples had no prior belief or adding a doctrinal explanation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

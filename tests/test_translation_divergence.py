@@ -40,6 +40,17 @@ class TranslationDivergenceTests(unittest.TestCase):
         self.assertEqual(DIVERGENCE.score_band(40), "high")
         self.assertEqual(DIVERGENCE.score_band(55), "very_high")
 
+    def test_reference_codes_match_ebible_vpl_codes(self):
+        expected = {
+            "song_of_songs": "SOL", "ezekiel": "EZE", "joel": "JOE",
+            "nahum": "NAH", "mark": "MAR", "john": "JOH",
+            "philippians": "PHI", "james": "JAM", "1_john": "1JO",
+            "2_john": "2JO", "3_john": "3JO",
+        }
+        for book, code in expected.items():
+            with self.subTest(book=book):
+                self.assertEqual(DIVERGENCE.refs.BOOK_USFM_CODES[book], code)
+
     def test_licensed_bundle_emits_scores_but_never_source_text(self):
         secret_text = "Synthetic licensed wording that must not appear in output"
         with tempfile.TemporaryDirectory() as directory:

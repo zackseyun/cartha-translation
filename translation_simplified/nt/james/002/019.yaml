@@ -34,50 +34,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You believe that God is one[a]. That is good! Even the demons believe that—and they shudder[b].
+  text: You believe that God is one[a]. You do well. Even the demons believe that—and shudder[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, 'there is one God.'
+    text: Or, “there is one God.”
     reason: alternative_reading
   - marker: b
-    text: Or, 'tremble.'
+    text: Or, “tremble.”
     reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: God is one
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: demons
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: You believe that God is one; you do well.
+  simplified_phrase: You believe that God is one. You do well.
+  preserved_meaning: The direct address and restrained commendation remain intact before James’s rebuke.
+  reasoning_layer_used: POB syntax and lexical rationale for καλῶς ποιεῖς
+  rationale: Two short sentences make the rhetorical progression easier to follow without turning it into enthusiastic approval.
+- pob_phrase: Even the demons believe—and shudder.
+  simplified_phrase: Even the demons believe that—and shudder.
+  preserved_meaning: The demons share the same doctrinal belief and react with fear.
+  reasoning_layer_used: POB lexical repetition and theological contrast
+  rationale: Adding “that” clearly links the demons’ belief to the preceding confession.
+interpretive_expansions:
+- pob_phrase: Even the demons believe
+  rendering: Even the demons believe that
+  claim: The demons believe the preceding statement that God is one.
+  evidence:
+  - The repeated verb “believe” continues the immediate comparison.
+  - James’s argument contrasts the same level of doctrinal assent in the hearer and the demons.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Maintained the word order representation of 'God is one' and the ascensive force of 'Even' (καί) which are key to James's theological comparison.
-  readability_notes:
-  - Split the original text into three shorter sentences to increase clarity and impact for a modern audience.
-  compression_notes:
-  - No theological or historical information was compressed or omitted.
   risk_flags:
-  - risk: There is a slight risk that 'That is good!' may sound more colloquial than 'you do well', but it correctly conveys the speaker's rhetorical tone.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “God is one” may sound less natural than “there is one God” to some readers.
+    mitigation: The main text preserves the POB’s monotheistic-confession wording, while footnote [a] gives the idiomatic alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/james/002/019.yaml
   source_text_sha256: 36c0cda61fc163a044dbd121079d1f0628f1ec8a9c733cdf235d9a799c7f2549
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 6bf072959f1eca8571af29fb3563700d785185a0e2b1902e286cbf936fe47af5
-  timestamp: '2026-05-28T08:11:26Z'
-  output_hash: 65e09fda9c6ede7559f1914c644f5d74db8e169ece03e43065d4f6061c290e5a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a5741daf95004bfcd587c1fd7b965f2b133640db9615f477fa3e87be091114dd
+  timestamp: '2026-07-12T07:13:10Z'
+  output_hash: 6e9f29513a1e9232cd0ca996aba3f69565302d66cb54a731630efa8bbff0720f
   usage:
-    prompt_tokens: 2005
-    completion_tokens: 564
-    total_tokens: 5509
+    prompt_tokens: 3449
+    completion_tokens: 422
+    total_tokens: 3871
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: God is one
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: demons
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:10Z'
+  previous_text: You believe that God is one[a]. That is good! Even the demons believe that—and they shudder[b].
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9e138fff9e880cbf3e03da9ff7be74eeab74e7236d10a12f20d1fe0fbbff6b74
+  review_summary: The draft is clearer than POB by making the repeated object of belief explicit as "that," and this clarification is warranted by the immediate syntax and argument. However, revise "That is good!" to "You do well." The latter remains understandable, preserves the direct address and restrained rhetorical force of καλῶς ποιεῖς, and avoids suggesting unqualified praise. Footnotes are adequate.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

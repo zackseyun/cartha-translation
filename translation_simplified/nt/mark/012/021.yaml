@@ -31,38 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The second took her and died, leaving no offspring; the third did the same.
+  text: The second brother married her and died without leaving any offspring. The third did the same.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And the second took her[a], and died, leaving no offspring, and the third likewise.
-  simplified_phrase: The second took her and died, leaving no offspring; the third did the same.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+- pob_phrase: the second took her
+  simplified_phrase: the second brother married her
+  preserved_meaning: The second man in the sequence took the widow as his wife.
+  reasoning_layer_used: POB lexical decision, footnote, and immediate context
+  rationale: POB recognizes “married her” as the clear contextual meaning, and the preceding setup identifies the men as brothers.
+- pob_phrase: died, leaving no offspring
+  simplified_phrase: died without leaving any offspring
+  preserved_meaning: He died with no surviving progeny.
+  reasoning_layer_used: POB lexical decision
+  rationale: The recast phrase expresses the same result in smoother modern English.
+- pob_phrase: the third likewise
+  simplified_phrase: The third did the same
+  preserved_meaning: The third brother repeated the same sequence of marriage, death, and no offspring.
+  reasoning_layer_used: POB lexical decision and contextual ellipsis
+  rationale: Expanding the ellipsis makes the repeated sequence immediately understandable.
+interpretive_expansions:
+- pob_phrase: the second took her
+  rendering: the second brother married her
+  claim: The second person was a brother who took the widow as his wife.
+  evidence:
+  - The preceding levirate-marriage setup identifies the men as brothers.
+  - POB footnote a explicitly offers “married her” as the contextual gloss.
+  confidence: high
+  alternatives_preserved:
+  - the second took her
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Adding “brother” makes immediate contextual information explicit even though the noun is absent from this clause.
+    mitigation: The preceding setup explicitly identifies the successive men as brothers.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/021.yaml
   source_text_sha256: de3a0e9502c760f506a438b40912d84264177f6847ba0053a140cb468108da8c
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: eaa9448e7321ad748a3ccf650f3a6b5e8fcc3bf5e05aacb1917c305817128810
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 23722f7ad7690f3014c8941829988101ff24d47206e12c2c5755ecd54189ac09
+  timestamp: '2026-07-12T07:22:42Z'
+  output_hash: 455f094a31308f5108d0e52c5118c6bf6e8b7035a12e78346048cd66dbcd2322
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3048
+    completion_tokens: 413
+    total_tokens: 3461
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:42Z'
+  previous_text: The second took her and died, leaving no offspring; the third did the same.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 376267aac3b3450620becaac0c56f1bfc401e0c6e598381712b6d3090d78b289
+  review_summary: 'Revise for understanding-first clarity. Changing the final ellipsis to “did the same” is warranted and preserves the repeated sequence. However, “took her” can be misunderstood by modern readers and unnecessarily retains an opaque literalism. “Second brother” and “married her” are both controlled contextual clarifications: the men are explicitly brothers in the immediately preceding setup, and the action is levirate marriage, not merely taking or receiving her. No doctrinal expansion is introduced.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

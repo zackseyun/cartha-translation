@@ -31,36 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: '"Now my soul is troubled. What should I say—''Father, save me from this hour''? But this is the very reason I came to this hour."'
+  text: “Now I am troubled deep within. What should I say? Father, save me from this hour.[a] But this is why I came to this hour.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or, “What should I say? ‘Father, save me from this hour’?” The Greek can also be read as a rhetorical question rather than a direct request.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: my soul is troubled
+  simplified_phrase: I am troubled deep within
+  preserved_meaning: Jesus is experiencing profound inner distress.
+  reasoning_layer_used: POB lexical decision for ψυχή and τετάρακται
+  rationale: This natural wording preserves the inward force of “soul” and the present state of being troubled.
+- pob_phrase: But for this reason
+  simplified_phrase: But this is why
+  preserved_meaning: Jesus contrasts his distress with the purpose that brought him to this decisive hour.
+  reasoning_layer_used: POB lexical decision for ἀλλὰ διὰ τοῦτο
+  rationale: “This is why” expresses the same connection in ordinary modern English without added emphasis.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The punctuation may suggest that the prayer is the only possible reading.
+    mitigation: The footnote preserves the rhetorical-question reading documented by the POB.
+  - risk: Replacing “soul” could weaken the sense of inward distress.
+    mitigation: “Deep within” preserves its force in common English.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/027.yaml
   source_text_sha256: 2a427202061d4b2d2e6651a2789ebf358be422e03dc496caf2e8607e3b4a70a8
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: faa338733a75cfd775daa47394eb6e536df272a184e27be487e431eb4440e540
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6f760b997a59b96c213525fd1db382f568eb9f12aa3fa78eceea3c0858326715
+  timestamp: '2026-07-12T07:16:26Z'
+  output_hash: 37da80a5776e575fc02b7961aa6adcbec733977435e599be37d798af70161385
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3592
+    completion_tokens: 709
+    total_tokens: 4301
+    reasoning_tokens: 350
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:26Z'
+  previous_text: '"Now my soul is troubled. What should I say—''Father, save me from this hour''? But this is the very reason I came to this hour."'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 510e62ee5c3c23aae581c0080ad8219232b7bba22d242798f33a0471af2abe5c
+  review_summary: The draft is clearer in replacing “my soul is troubled” with “I am troubled,” which is a warranted common-English expression of Jesus’s inner distress. However, it turns the POB’s acknowledged punctuation ambiguity into a single rhetorical-question reading and drops the footnote that protects the alternative direct-petition reading. Restore the POB’s main reading and retain a concise alternative-reading footnote; also omit the unnecessary emphasis “very.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

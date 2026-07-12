@@ -35,48 +35,63 @@ translation:
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Greek has 'Lord' here, likely used respectfully as 'Sir' because Mary thinks she is speaking to the gardener.
-    reason: simplification_note
+    text: The Greek word can also mean “Lord,” but here it likely means “Sir,” since Mary thinks she is speaking to the gardener.
+    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: why are you weeping?
+  simplified_phrase: why are you crying?
+  preserved_meaning: Preserves Jesus’ question about Mary’s tears and the scene’s solemnity.
+  reasoning_layer_used: POB lexical decision for τί κλαίεις
+  rationale: “Crying” is more familiar to common readers than “weeping.”
 - pob_phrase: Whom are you seeking?
   simplified_phrase: Who are you looking for?
-  preserved_meaning: Preserves Jesus' question about the person Mary seeks.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Looking for'' is clearer common English than ''seeking.'''
-- pob_phrase: supposing that he was the gardener
-  simplified_phrase: Thinking he was the gardener
-  preserved_meaning: Preserves Mary's mistaken assumption.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Thinking'' is simpler and more conversational.'
-retained_terms:
-- term: Woman
-  reason: Retained as Jesus' direct address.
-- term: Sir
-  reason: Retained because POB renders kyrios respectfully in this context.
+  preserved_meaning: Preserves Jesus’ question about the person Mary seeks.
+  reasoning_layer_used: POB lexical decision for τίνα ζητεῖς
+  rationale: “Looking for” is clearer everyday English than “seeking.”
+- pob_phrase: She, supposing that he was the gardener, says to him
+  simplified_phrase: Thinking he was the gardener, she says to him
+  preserved_meaning: Preserves Mary’s mistaken identification of Jesus.
+  reasoning_layer_used: POB lexical decision for δοκοῦσα
+  rationale: The shorter clause uses ordinary English while keeping the narrative action.
 translation_notes:
-  source_alignment_notes: Keeps Jesus' questions and Mary's mistaken identification of him as the gardener.
-  readability_notes:
-  - Uses direct question wording familiar to modern readers.
-  compression_notes:
-  - Mary's conditional request remains intact.
+  risk_flags:
+  - risk: “Sir” could obscure that the Greek word may also be rendered “Lord.”
+    mitigation: The footnote preserves the alternative while explaining why the context favors “Sir.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/020/015.yaml
   source_text_sha256: 75f6e44279608b99e1ed96da06a110cb4fc42e5bd140b277e75c709fe6a43a30
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:39Z'
-  output_hash: fbdf382f5763f041626600fe27cd2b1a17943cdcc6b29c0a0873ad4379cb72aa
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6447232f70e7e22be14a22ec9bc5fb6a95ca97b439758846ae81baad5b7740cc
+  timestamp: '2026-07-12T07:17:36Z'
+  output_hash: 3a406867e788e311b87634422015c1d7d5bad1a182e8d8e496e8e10dd687e87e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3558
+    completion_tokens: 415
+    total_tokens: 3973
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Woman
+  reason: Retained as Jesus' direct address.
+- term: Sir
+  reason: Retained because POB renders kyrios respectfully in this context.
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:36Z'
+  previous_text: Jesus says to her, “Woman, why are you crying? Who are you looking for?” Thinking he was the gardener, she says to him, “Sir[a], if you carried him away, tell me where you put him, and I will take him away.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d74db1b431781f2fc96c244eb52725fa4610c2a4d9d9d2f35f07cc81dd19be5e
+  review_summary: The main SPOB text is faithful and meaningfully clearer than POB. “Crying,” “looking for,” and “thinking” preserve the source meaning and the POB audit trail without adding interpretation. Revise only the footnote so it accurately describes the contextual range of the Greek term rather than implying that the Greek itself unambiguously says “Lord.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

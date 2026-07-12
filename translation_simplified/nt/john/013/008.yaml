@@ -31,14 +31,45 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Peter said to him, “You will never wash my feet.” Jesus answered, “If I do not wash you, you have no share with me.”
+  text: Peter said to Jesus, “You will never wash my feet.” Jesus replied, “Unless I wash you, you have no share with me.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: John 13 POB base wording
-  simplified_phrase: Peter said to him, “You will never wash my feet.” Jesus answered, “If I do not wash you, you have no share with me.”
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and footnotes
-  rationale: Manual Codex drafting simplified sentence structure, clarified implied subjects where needed, and retained important theological terms without adding new interpretation.
+- pob_phrase: Peter said to him
+  simplified_phrase: Peter said to Jesus
+  preserved_meaning: Peter is speaking directly to Jesus.
+  reasoning_layer_used: POB narrative context and source pronoun reference
+  rationale: Naming Jesus makes the speaker’s addressee immediately clear.
+- pob_phrase: Jesus answered him, “If I do not wash you”
+  simplified_phrase: Jesus replied, “Unless I wash you”
+  preserved_meaning: Jesus makes his washing of Peter a necessary condition.
+  reasoning_layer_used: POB lexical alternatives for ἀπεκρίθη and Ἐὰν μὴ νίψω σε
+  rationale: The permitted alternatives make the response shorter and more natural.
+translation_notes:
+  risk_flags:
+  - risk: “Share with me” may remain unfamiliar to some readers.
+    mitigation: It preserves the broad relational meaning without imposing a narrower doctrinal explanation.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/013/008.yaml
+  source_text_sha256: 084aa9450ac5367de49584eac6587c7351706927f5d188e100cdcadb667ce609
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 78a2d39a0e44a25fb66bd0199405fd004a4a509b77e199ef3d7871f95a501924
+  timestamp: '2026-07-12T07:17:35Z'
+  output_hash: a6ae33a0eeae662a5733446b9185d4270fb031df05604326ef72ede3b19c3b45
+  usage:
+    prompt_tokens: 3444
+    completion_tokens: 269
+    total_tokens: 3713
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Peter
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 13.
@@ -46,30 +77,14 @@ retained_terms:
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 13.
 - term: share with me
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 13.
-translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses shorter, clearer clauses and modern common English while keeping John 13's narrative and discourse flow.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/013/008.yaml
-  source_text_sha256: 084aa9450ac5367de49584eac6587c7351706927f5d188e100cdcadb667ce609
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:43:46Z'
-  output_hash: 3a9ee05ad239b95547ef639b443816d9e2eb7a54a35427c794fb138cacc0a267
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:35Z'
+  previous_text: Peter said to him, “You will never wash my feet.” Jesus answered, “If I do not wash you, you have no share with me.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e7f822be6d045cb6af9e1022f19ae865fcd6d14be4e63962a0ca405cada60c81
+  review_summary: The draft preserves the Greek sense and appropriately retains the broad, non-doctrinally-specific expression “share with me.” It introduces no unsupported theological explanation. However, it is not meaningfully clearer than POB as submitted. Explicitly naming Jesus in Peter’s address, using the natural narrative verb “replied,” and using the permitted concise conditional “Unless” produce a modest but real SPOB readability improvement without resolving the theological breadth of μέρος μετ’ ἐμοῦ.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

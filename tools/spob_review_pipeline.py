@@ -168,6 +168,61 @@ def review_one(spob_path: pathlib.Path, args: argparse.Namespace) -> dict[str, A
     return output
 
 
+def write_content_filter_block(
+    spob_path: pathlib.Path,
+    args: argparse.Namespace,
+    error: Exception,
+) -> dict[str, Any]:
+    """Record a non-substantive block when Azure cannot inspect a passage."""
+    record = draft_pipeline.safe_load_yaml(spob_path)
+    current_text = str(((record.get("translation") or {}).get("text")) or "")
+    out_path = review_path_for(spob_path, args.model)
+    output = {
+        "reference": record.get("reference"),
+        "spob_path": str(spob_path.relative_to(ROOT)),
+        "reviewer": {
+            "model": args.model,
+            "model_version": "azure-content-policy-fallback",
+            "deployment": args.deployment,
+        },
+        "review": {
+            "verdict": "block",
+            "faithfulness_score": 1,
+            "clarity_score": 1,
+            "doctrine_score": 1,
+            "issues": [
+                {
+                    "type": "meaning_change",
+                    "severity": "high",
+                    "description": (
+                        "Azure content policy prevented Terra from reviewing this passage; "
+                        "the current SPOB text requires explicit editorial adjudication."
+                    ),
+                    "evidence": ["ResponsibleAIPolicyViolation", str(error)[:500]],
+                }
+            ],
+            "recommended_text": current_text,
+            "review_summary": (
+                "No substantive automated verdict was produced. Preserve the current text "
+                "unchanged until a human/editorial grounding review resolves this block."
+            ),
+        },
+        "usage": {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+            "total_tokens": 0,
+            "reasoning_tokens": 0,
+            "estimated_cost_usd": 0.0,
+        },
+        "output_hash": draft_pipeline.sha256_text(str(error)),
+        "timestamp": draft_pipeline.utc_now(),
+        "review_status": "azure_content_filter_editorial_block",
+    }
+    out_path.parent.mkdir(parents=True, exist_ok=True)
+    out_path.write_text(json.dumps(output, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+    return output
+
+
 def selected_paths(args: argparse.Namespace) -> list[pathlib.Path]:
     paths = sorted(SIMPLIFIED_ROOT.rglob("*.yaml"))
     if args.book:
@@ -187,6 +242,12 @@ def selected_paths(args: argparse.Namespace) -> list[pathlib.Path]:
                 if isinstance(entry, dict)
             )
         ]
+    # Apply the wave limit to records that still need this model's review.
+    # Previously, an existing reviewed prefix consumed every limited wave,
+    # preventing later records from ever being selected unless the full corpus
+    # was queued at once.
+    if not args.force:
+        paths = [p for p in paths if not review_path_for(p, args.model).exists()]
     return paths[: args.limit or None]
 
 
@@ -221,6 +282,11 @@ def main(argv: list[str] | None = None) -> int:
                 results.append(result)
                 print(f"reviewed {result['reference']}: {result['review']['verdict']}", flush=True)
             except Exception as exc:  # noqa: BLE001
+                if "content_filter" in str(exc) or "ResponsibleAIPolicyViolation" in str(exc):
+                    result = write_content_filter_block(path, args, exc)
+                    results.append(result)
+                    print(f"reviewed {result['reference']}: block (content policy)", flush=True)
+                    continue
                 failures.append(f"{path}: {type(exc).__name__}: {exc}")
                 print(f"FAILED {path}: {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
 

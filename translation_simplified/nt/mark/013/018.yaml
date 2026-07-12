@@ -31,42 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Pray that this does not happen in winter[a].
+  text: But pray that this does not happen in winter.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: In context, this means praying that the flight just described will not happen in winter.
-    reason: simplification_note
 simplification_decisions:
-- pob_phrase: But pray that it may not happen in winter[a].
-  simplified_phrase: Pray that this does not happen in winter[a].
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: that it may not happen
+  simplified_phrase: that this does not happen
+  preserved_meaning: The contextual event remains unstated while the sentence becomes more natural in modern English.
+  reasoning_layer_used: POB translation and theological decision on the implicit referent
+  rationale: “This” points back to the preceding crisis without identifying it only as the flight.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: Readers may take “this” as referring only to the flight.
+    mitigation: No footnote resolves Mark’s deliberately elliptical reference.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/018.yaml
   source_text_sha256: 8e6f7e68426808bfccb025cd003d8d8c44d3bc28c093c5b9479881e8b4ef8406
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: c4321469f533ea679d69c0fa0544ac93ee9a4b4db64be3d61292033b2ffdc9a5
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cf307782a0a64f3b29c5c510f69b18b4f5747d7b476bec2d726b7ea3068b1e7b
+  timestamp: '2026-07-12T07:21:43Z'
+  output_hash: 98f31709adc50f34d9575c0e5dc724a4280986010b07dc99fabb059d9269cb2b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3067
+    completion_tokens: 172
+    total_tokens: 3239
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:43Z'
+  previous_text: Pray that this does not happen in winter[a].
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 899e3ab6e51c121ee87b06118a3cb41a7e4602350d730ac08612c4abd0eb5f96
+  review_summary: 'The main SPOB sentence is a warranted, modest simplification of the POB: "this" gives the reader a contextual pointer while retaining Mark''s unstated subject, and "does not happen" is natural common English after "Pray." However, the explanatory footnote should be removed (or rewritten to state the referent as a contextual possibility rather than a certainty), because its categorical identification of the event as the flight exceeds Mark''s elliptical wording and conflicts with the POB audit trail''s decision to preserve the live ambiguity.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

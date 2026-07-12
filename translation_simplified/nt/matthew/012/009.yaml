@@ -27,36 +27,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Jesus left that place and went into their synagogue.
+  text: Jesus left that place and went into their synagogue.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: And departing from there, he went
+  simplified_phrase: Jesus left that place and went
+  preserved_meaning: Jesus moved from the previous location into the synagogue.
+  reasoning_layer_used: POB lexical decisions and immediate narrative context
+  rationale: This replaces the awkward participle with natural English and names the clear narrative subject without adding the temporal nuance of “Then.”
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the person moving to the synagogue.
+  confidence: high
+  alternatives_preserved:
+  - he
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/009.yaml
   source_text_sha256: 6b8fd476f0719ab7a276cd78e87b82b234fa74e5df524e39f30312a35fb57fb9
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: dcb2ce036a50e344d17e9ddbc591a93b2ea9e23cac73b3b615ee27c2934a4ca6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 617f9d98acdbe32c40031199c6657d1d5e602958a419d86db8132da25e86fb46
+  timestamp: '2026-07-12T07:36:27Z'
+  output_hash: a554de4fd6bb2a0c03d94da805560ca6a6dc5c298d16b140facd1776a7cafddc
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2864
+    completion_tokens: 200
+    total_tokens: 3064
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:27Z'
+  previous_text: Then Jesus left that place and went into their synagogue.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8d27848886886d6754e41943464eeeef2252612718cb34e37ada44b1790ced4e
+  review_summary: The draft usefully makes the implicit narrative subject explicit (“Jesus”) and replaces the less natural “departing from there” with clear common English (“left that place”), both warranted by the immediate context and preserving the movement. Revise only “Then,” since it introduces a temporal force the source and controlling POB rationale do not require.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

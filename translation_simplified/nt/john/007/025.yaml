@@ -31,50 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So some of the people from Jerusalem were saying, "Isn’t this the man they are trying to kill?"
+  text: So some of the people in Jerusalem were saying, “Isn’t this the man they are trying to kill?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: Isn't this
-  preserved_meaning: Using the contraction 'Isn't' represents the negative question marker (Οὐχ) in a more natural, spoken register for modern English readers while preserving the rhetorical force expecting an affirmative answer.
-  reasoning_layer_used: POB audit trail
-  rationale: Using the contraction 'Isn't' represents the negative question marker (Οὐχ) in a more natural, spoken register for modern English readers while preserving the rhetorical force expecting an affirmative answer.
-- simplified_phrase: people from Jerusalem
-  preserved_meaning: Changing 'of' to 'from' sounds more natural and idiomatic in modern English when describing residents of a city.
-  reasoning_layer_used: POB audit trail
-  rationale: Changing 'of' to 'from' sounds more natural and idiomatic in modern English when describing residents of a city.
-- simplified_phrase: trying to kill
-  preserved_meaning: Replacing 'seeking' (ζητοῦσιν) with 'trying' makes the hostile intent clear and conversational, avoiding the slightly archaic feel of 'seeking to kill' in modern speech.
-  reasoning_layer_used: POB audit trail
-  rationale: Replacing 'seeking' (ζητοῦσιν) with 'trying' makes the hostile intent clear and conversational, avoiding the slightly archaic feel of 'seeking to kill' in modern speech.
-retained_terms:
-- term: were saying
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: Jerusalem
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The draft maintains alignment with the Greek source by preserving the transition particle (οὖν) as 'So', the continuous past aspect (Ἔλεγον), the negative question format (Οὐχ), and the active plot to kill Jesus.
-  readability_notes:
-  - Converting formal phrasings ('Is this not', 'seeking to') into natural conversational English ('Isn't this', 'trying to') significantly improves the flow and immediacy of the spoken dialogue for modern readers.
-  compression_notes:
-  - The POB footnote ('Or "from among the Jerusalemites"') was removed because 'people from Jerusalem' captures the meaning perfectly for a general audience, making the academic demonym footnote unnecessary.
+- pob_phrase: some of the people of Jerusalem
+  simplified_phrase: some of the people in Jerusalem
+  preserved_meaning: The speakers are a subset of Jerusalem’s inhabitants present in the local setting.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: “In Jerusalem” avoids suggesting only a place of origin while clearly locating the residents.
+- pob_phrase: Is this not
+  simplified_phrase: Isn’t this
+  preserved_meaning: The negative question still expects the answer yes.
+  reasoning_layer_used: POB lexical decision
+  rationale: The contraction makes the spoken question natural without weakening its rhetorical force.
+- pob_phrase: are seeking to kill
+  simplified_phrase: are trying to kill
+  preserved_meaning: They have an ongoing intention and effort to kill the man.
+  reasoning_layer_used: POB lexical decision
+  rationale: “Trying to kill” expresses the current hostile intent in ordinary English.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/007/025.yaml
   source_text_sha256: e90052ea1f5efdd6ca9b9e4c05117c79ce7f38a79ff788c8c04e352af40df18e
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 454fbc8a7615552e3224137219f2cdb9f537f86f7f2b9f62c9098ee9702cf0ea
-  timestamp: '2026-05-28T08:44:56Z'
-  output_hash: 8ed18bb0a40f433cf1b3b76050205e5225cb3b9f8b131ceb777e8680aa5e55a1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 59e6cbe3b91b6c9b55f7cc5b44e47528d083f2990a1f7c1701ec85b2fb82b927
+  timestamp: '2026-07-12T07:15:28Z'
+  output_hash: 1835e184b04e47a8a890334a8d7a77d995fae931acc8313504f873746a0d4e26
   usage:
-    prompt_tokens: 1640
-    completion_tokens: 577
-    total_tokens: 5179
+    prompt_tokens: 3359
+    completion_tokens: 274
+    total_tokens: 3633
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: were saying
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: Jerusalem
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:28Z'
+  previous_text: So some of the people from Jerusalem were saying, "Isn’t this the man they are trying to kill?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 89900598a83a9e0f81c984b1aa76f6154f1c6e40f9d4de4b24f7c3d094969072
+  review_summary: The contraction and “trying to kill” are clear, natural simplifications that preserve the rhetorical question and hostile intent in context. Revise “people from Jerusalem,” however, because it can weaken the source’s identification of these speakers as Jerusalem residents; “people in Jerusalem” is clear and contextually accurate.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,46 +31,67 @@ base_translation:
     changes_summary: 'Changed “the Messiah” to “the Christ” for closer lexical correspondence to τοῦ χριστοῦ and a more formal, source-oriented rendering. No other changes needed. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: saying, “What do you think about the Messiah? Whose son is he?” They said to him, “David’s.”
+  text: He asked them, “What do you think about the Messiah? Whose son is he?” They answered him, “David’s.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: saying[a], “What do you think about the Messiah? Whose son is he?” They said to him, “David’s.”
-  simplified_phrase: saying, “What do you think about the Messiah? Whose son is he?” They said to him, “David’s.”
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
-retained_terms:
-- term: Messiah
-  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
-- term: David
-  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+- pob_phrase: saying
+  simplified_phrase: He asked them
+  preserved_meaning: Jesus introduces his question to the Pharisees.
+  reasoning_layer_used: Immediate context and the lexical alternative for λέγων
+  rationale: Naming the speaker and listeners makes the isolated verse a complete sentence.
+- pob_phrase: They said to him
+  simplified_phrase: They answered him
+  preserved_meaning: The Pharisees respond directly to Jesus’ question.
+  reasoning_layer_used: Source payload and discourse context
+  rationale: “Answered” states the clear function of their reply in natural English.
+interpretive_expansions:
+- pob_phrase: saying
+  rendering: He asked them
+  claim: Jesus is the speaker, and the Pharisees are the people he addresses.
+  evidence:
+  - Matthew 22:41 identifies Jesus as questioning the gathered Pharisees.
+  - The POB lexical decision lists “asking” as a valid contextual rendering.
+  confidence: high
+  alternatives_preserved:
+  - saying
+  - asking
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: Supplying “He” and “them” draws information from the preceding verse.
+    mitigation: The immediate context explicitly identifies Jesus and the Pharisees.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/042.yaml
   source_text_sha256: 3719e45a95bee87f3f0e538ddb3840406af914b27ec015505b129fd585212d92
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: 29e98b1da5e00a4d03a59862d19b5df2b43effd6ed2cffda9e3f8b5cce7ea66f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4da138f9438b7377cfbda23816a159c8ec954c74c4ba141204a8a5eabb4aed4a
+  timestamp: '2026-07-12T07:37:31Z'
+  output_hash: a91c91a1d9e92c8d59d8a5cf603bd703db668dda522d5b5683b34932c7f2ff18
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3547
+    completion_tokens: 329
+    total_tokens: 3876
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Messiah
+  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+- term: David
+  reason: Retained to preserve POB's source-grounded terminology and biblical reference.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:31Z'
+  previous_text: saying, “What do you think about the Messiah? Whose son is he?” They said to him, “David’s.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 31a9492b32f941f4d391ab9a1c035612f4b87253c4c88af72720a88eaff41018
+  review_summary: The proposed wording retains the POB meaning and introduces no doctrinal problem, but it is not meaningfully clearer than POB and leaves an isolated participial fragment. Making Jesus' question explicit is warranted by the immediately preceding narrative clause, and “answered” makes the exchange clear without expanding its meaning.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

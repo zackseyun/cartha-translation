@@ -31,25 +31,62 @@ base_translation:
     changes_summary: Added the missing final period. The translation is otherwise accurate and natural; the present-tense 'appears' appropriately reflects the Greek historical present.
 translation:
   language: en
-  text: After Herod died, an angel of the Lord suddenly appeared in a dream to Joseph in Egypt.[a]
+  text: After Herod died, an angel of the Lord appeared to Joseph in a dream while Joseph was in Egypt.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, 'the angel of the Lord.' The original Greek text does not have the word 'the' before 'angel,' allowing for either translation.
-    reason: simplification_note
+    text: Or, “the angel of the Lord.” Greek has no article before “angel,” so “an angel” is the most straightforward rendering.
+    reason: alternative_reading
 simplification_decisions:
-- simplified_phrase: After Herod died
-  preserved_meaning: Removed the mild transitional 'But' to create a cleaner, more direct sentence start for the modern reader, without losing the temporal connection.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the mild transitional 'But' to create a cleaner, more direct sentence start for the modern reader, without losing the temporal connection.
-- simplified_phrase: suddenly
-  preserved_meaning: Replaced the archaic 'behold' with 'suddenly' to preserve the vivid, attention-getting force of the Greek marker in a way that sounds natural in modern English narrative.
-  reasoning_layer_used: POB audit trail
-  rationale: Replaced the archaic 'behold' with 'suddenly' to preserve the vivid, attention-getting force of the Greek marker in a way that sounds natural in modern English narrative.
-- simplified_phrase: appeared
-  preserved_meaning: Converted the historical present 'appears' to the past tense 'appeared' to align with standard modern English narrative conventions, preventing the text from sounding overly dramatic or unnatural to common readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Converted the historical present 'appears' to the past tense 'appeared' to align with standard modern English narrative conventions, preventing the text from sounding overly dramatic or unnatural to common readers.
+- pob_phrase: But after Herod died, behold
+  simplified_phrase: After Herod died
+  preserved_meaning: The time of the event remains clear while the unsupported idea of suddenness is avoided.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: The attention marker is omitted because no equally natural modern expression preserves its force without adding meaning.
+- pob_phrase: appears
+  simplified_phrase: appeared
+  preserved_meaning: The angel’s appearance remains the main event.
+  reasoning_layer_used: POB lexical decision on the historical present
+  rationale: Past tense follows ordinary modern English narrative style.
+- pob_phrase: to Joseph in Egypt
+  simplified_phrase: to Joseph in a dream while Joseph was in Egypt
+  preserved_meaning: Joseph receives the dream, and Egypt is his location.
+  reasoning_layer_used: Source syntax and grounding review
+  rationale: The reordered wording prevents readers from attaching “in Egypt” to the dream itself.
+interpretive_expansions:
+- pob_phrase: to Joseph in Egypt
+  rendering: while Joseph was in Egypt
+  claim: Egypt identifies Joseph’s location when the angel appeared.
+  evidence:
+  - The POB lexical decision identifies ἐν Αἰγύπτῳ as Joseph’s location at the time of the dream.
+  confidence: high
+  alternatives_preserved:
+  - to Joseph in Egypt
+translation_notes:
+  risk_flags:
+  - risk: Omitting “behold” reduces the explicit force of the Greek attention marker.
+    mitigation: The sentence keeps the angel’s appearance prominent without adding unsupported abruptness.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/002/019.yaml
+  source_text_sha256: ad7bd9de246fb0e2ed4d3aecbd127ffc0a1978a38652fa73f72e80c726027e8e
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1917eab3476d53d867607a682be56ae977799d7fc34d91d46632de9b2c8f3b61
+  timestamp: '2026-07-12T07:22:48Z'
+  output_hash: c32a687930629482dbf90502bfcbda3a8f43686da1cddbb6b6a634caee2b7286
+  usage:
+    prompt_tokens: 4047
+    completion_tokens: 827
+    total_tokens: 4874
+    reasoning_tokens: 377
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: an angel of the Lord
   reason: Retained to preserve POB's source-grounded terminology.
@@ -57,33 +94,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Egypt
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The simplified text maintains the semantic content of every Greek lemma. The temporal participle structure, the attention marker (idou), the agency of the angel, the revelation medium (dream), the recipient (Joseph), and the location (Egypt) are all fully preserved.
-  readability_notes:
-  - Transitioning 'behold' to 'suddenly' and 'appears' to 'appeared' significantly increases readability and flow for modern English speakers while preserving the dramatic, narrative quality of Matthew's style.
-  compression_notes:
-  - Omitted the transitional 'But' as it is redundant at the beginning of this new paragraph in modern English style. No other semantic elements were compressed or removed.
-  risk_flags:
-  - risk: Slight risk of losing the exact grammatical representation of the Greek historical present ('appears') and the literal translation of the particle 'behold'. This risk is mitigated by using 'suddenly' and noting the shift in the decisions, ensuring the narrative impact is not lost.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/002/019.yaml
-  source_text_sha256: ad7bd9de246fb0e2ed4d3aecbd127ffc0a1978a38652fa73f72e80c726027e8e
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: c0dbcc99c99097072115106088ab0b844f6d948bf6ad93651d7e6de2914f3d2d
-  timestamp: '2026-05-28T08:12:45Z'
-  output_hash: dd16df28782f495f64f3ab0f0764c2bf5fcc34703f71eecb69632946dab85a78
-  usage:
-    prompt_tokens: 2027
-    completion_tokens: 676
-    total_tokens: 6549
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:48Z'
+  previous_text: After Herod died, an angel of the Lord suddenly appeared in a dream to Joseph in Egypt.[a]
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fc2ae139a28ce8445b759d6c7bbe8afd314a4d013695c3b6f123218fdd8b1345
+  review_summary: The draft usefully modernizes the historical present (“appears” → “appeared”) and its removal of the mild transitional “But” does not materially impair the narrative. However, “suddenly” is not a clarification of ἰδού; it adds an unsupported detail about timing. Removing it preserves the event-focused force without inventing abruptness. Explicitly locating Joseph in Egypt makes the locative relation clear for modern readers. The article alternative may remain in a carefully limited footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

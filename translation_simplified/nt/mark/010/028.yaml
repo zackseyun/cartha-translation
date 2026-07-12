@@ -31,38 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Peter began to say to him, “Look, we have left everything and followed you.”
+  text: Peter began to say to Jesus, “Look, we have left everything and followed you.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Peter began to say to him[a], “Look, we have left everything and followed you.”
-  simplified_phrase: Peter began to say to him, “Look, we have left everything and followed you.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+- pob_phrase: Peter began to say to him
+  simplified_phrase: Peter began to say to Jesus
+  preserved_meaning: The addressee remains Jesus, as established by the immediate context.
+  reasoning_layer_used: POB lexical decision for αὐτῷ and immediate narrative context
+  rationale: Naming Jesus removes an unclear pronoun without changing the source-driven meaning.
+interpretive_expansions:
+- pob_phrase: to him
+  rendering: to Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The POB lexical audit explicitly identifies Jesus as the contextual referent.
+  confidence: high
+  alternatives_preserved:
+  - to him
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/028.yaml
   source_text_sha256: 76356777254df7baa7975f01606a53685cfcacf324109587141197090a292449
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: bf186ee8c53189f38b78079f673f006990659c6c6a54932e036a6f21a08e8bd7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4aecf0915e389599e4d4be26e8daa14be0ad1bc9c7485835fd06e9e854e9b81c
+  timestamp: '2026-07-12T07:21:07Z'
+  output_hash: bd160d67f876ff0813790d2f6824cc9a6de19478b9e92f70df8fb827e2fda66c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3256
+    completion_tokens: 211
+    total_tokens: 3467
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:07Z'
+  previous_text: Peter began to say to him, “Look, we have left everything and followed you.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1c070044b0cbbe0c6bdd446f6aba80448486329f2e561a04ba7c19102dedcf62
+  review_summary: The wording faithfully preserves Peter's emphatic claim and the narrative sense of 'began to say,' without importing an evaluation of his sacrifice. Revision is needed only because the submitted SPOB text merely reproduces POB; naming Jesus makes the addressee immediately clear and is supported by the stated contextual referent.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,80 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 15:8 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''of the circumcised''].'
 translation:
   language: en
-  text: For I say that the Messiah became a servant to the circumcised to show God's truthfulness, so he could confirm the promises made to the fathers,
+  text: For I tell you that the Messiah has become a servant to the Jewish people for the sake of God's truth[a], in order to confirm the promises made to Israel's forefathers,
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “for the sake of God's truthfulness,” emphasizing that God faithfully keeps his covenant promises.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: For I say that
+  simplified_phrase: For I tell you that
+  preserved_meaning: Paul introduces an explanation connected to his preceding statement.
+  reasoning_layer_used: POB lexical decision for λέγω γὰρ
+  rationale: “Tell you” is more natural modern English while “For” keeps the explanatory link.
+- pob_phrase: the circumcised
+  simplified_phrase: the Jewish people
+  preserved_meaning: The phrase refers to the people of Israel rather than circumcision as a practice.
+  reasoning_layer_used: POB lexical rationale for περιτομῆς
+  rationale: The explicit referent prevents an opaque biblical idiom from confusing modern readers.
+- pob_phrase: the promises to the fathers
+  simplified_phrase: the promises made to Israel's forefathers
+  preserved_meaning: The promises were given to Israel's patriarchal ancestors.
+  reasoning_layer_used: POB lexical decision for τὰς ἐπαγγελίας τῶν πατέρων
+  rationale: The recast phrase makes the relationship clear while retaining Israel's salvation-historical setting.
+interpretive_expansions:
+- pob_phrase: the circumcised
+  rendering: the Jewish people
+  claim: The circumcised are the Jewish people in this salvation-historical argument.
+  evidence:
+  - The POB lexical rationale explicitly identifies the referent as Jews.
+  - The context joins circumcision with Israel's ancestral promises.
+  confidence: high
+  alternatives_preserved:
+  - the circumcised
+- pob_phrase: the fathers
+  rendering: Israel's forefathers
+  claim: The fathers are Israel's patriarchal forefathers.
+  evidence:
+  - The POB lexical rationale identifies them as Israel's patriarchal forefathers.
+  confidence: high
+  alternatives_preserved:
+  - the fathers
+  - the patriarchs
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “God's truth” may sound abstract to a modern reader.
+    mitigation: The footnote preserves the covenant-faithfulness nuance without removing the broader lexical sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/008.yaml
   source_text_sha256: e34110cf11321694a28edcc5308896948852685d3652b4a86257cb50e0f80f8d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 6541895ce40568953ce4c2425be034d9f4fcead89d967e9cfbf018e381c5abb4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e413f220879a135cc3409fccf2979145c1f9b0f8e0bc5f4054dcd4e49e558c5a
+  timestamp: '2026-07-12T07:52:18Z'
+  output_hash: c0cfee30a0710cc00f440c1b96819f53751bd8349b656bcb1f4610339257c780
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3855
+    completion_tokens: 1021
+    total_tokens: 4876
+    reasoning_tokens: 466
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:52:18Z'
+  previous_text: For I say that the Messiah became a servant to the circumcised to show God's truthfulness, so he could confirm the promises made to the fathers,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: cd6573f6022826e3f4c752ebbc6559ae1ea043be2ada0019e96ddd71cdc4f5f1
+  review_summary: The draft helpfully makes “the circumcised” understandable as the Jewish people and makes the covenant-faithfulness sense accessible. However, “so he could” weakens the source's purpose clause. The replacement preserves the direct purpose while retaining the contextually warranted faithfulness nuance.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

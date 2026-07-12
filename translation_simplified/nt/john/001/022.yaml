@@ -27,15 +27,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So they said to him, "Who are you? We need to give an answer to those who sent us. What do you say about yourself?"
+  text: So they said to him, “Who are you? We are asking so we can give an answer to those who sent us. What do you say about yourself?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Split the awkward subordinate construction ('Who are you, so that we may give...') into two distinct, natural sentences ('Who are you? We need to give...'). This resolves the clunky English phrasing of a direct question followed by a purpose clause.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the awkward subordinate construction ('Who are you, so that we may give...') into two distinct, natural sentences ('Who are you? We need to give...'). This resolves the clunky English phrasing of a direct question followed by a purpose clause.
-- preserved_meaning: Translated the subjunctive purpose clause ('so that we may give') as 'We need to give.' This captures the semantic necessity of the messengers' mission—having to report back to their superiors—in natural modern English, without losing the purposive force of the Greek 'hina'.
-  reasoning_layer_used: POB audit trail
-  rationale: Translated the subjunctive purpose clause ('so that we may give') as 'We need to give.' This captures the semantic necessity of the messengers' mission—having to report back to their superiors—in natural modern English, without losing the purposive force of the Greek 'hina'.
+- pob_phrase: Who are you, so that we may give an answer
+  simplified_phrase: Who are you? We are asking so we can give an answer
+  preserved_meaning: Their purpose in asking is to take an answer back to their senders.
+  reasoning_layer_used: POB lexical decisions for ἵνα and δῶμεν
+  rationale: Splitting the sentence clarifies the purpose relationship without turning it into necessity.
+interpretive_expansions:
+- pob_phrase: so that we may give an answer
+  rendering: We are asking so we can give an answer
+  claim: The purpose clause explains why they are asking John who he is.
+  evidence:
+  - The clause follows their direct identity question and ἵνα marks purpose.
+  confidence: high
+  alternatives_preserved:
+  - so that we may give an answer
+translation_notes:
+  risk_flags:
+  - risk: Adding “We are asking” makes the connection between the question and its purpose explicit.
+    mitigation: The immediate sentence and POB analysis clearly identify the speech as a purpose-driven question.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/001/022.yaml
+  source_text_sha256: 04ea9c17ddf47389ff87b231fcf50048e0d9ed9d51bbbe818de1fdd3b8dee593
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bc12f6eae06c0128ec24136cb7d9ac4f4dfdddeecf38f9c0df0c4514be6c9c5a
+  timestamp: '2026-07-12T07:13:36Z'
+  output_hash: d0e6dc6e8456d340f1690aef0026c42ac0385dadd898a0fa8a9ce82203cb3705
+  usage:
+    prompt_tokens: 3431
+    completion_tokens: 642
+    total_tokens: 4073
+    reasoning_tokens: 331
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: So they said to him
   reason: Retained to preserve POB's source-grounded terminology.
@@ -47,33 +80,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: What do you say about yourself
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The simplified text maintains perfect semantic alignment with the SBLGNT source and the POB decisions. 'So they said to him' represents the direct-speech introduction (eipan oun autō), and 'those who sent us' preserves the articular participle (tois pempsasin hēmas) describing the authorities in Jerusalem.
-  readability_notes:
-  - By replacing the formal and slightly archaic 'so that we may give' with the more direct 'We need to give,' the dialogue flows much more naturally for a modern reader. Breaking the text into three shorter sentences matches natural English speech patterns for an interrogation.
-  compression_notes:
-  - No semantic compression was applied. All information, including the agency of the senders, the identity question, and the demand for self-testimony, is fully preserved.
-  risk_flags:
-  - risk: None. The changes are purely syntactic and do not introduce any theological or interpretive risk.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/001/022.yaml
-  source_text_sha256: 04ea9c17ddf47389ff87b231fcf50048e0d9ed9d51bbbe818de1fdd3b8dee593
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: bc4c3b5a5a6289966156672960820b0bbadceddc070267a7c1b30e8acc2d7818
-  timestamp: '2026-05-28T08:11:11Z'
-  output_hash: ec65f2671595d627a97f6cb49c66c8cd7213691f8d11a0642e5dbd9d7228a5e4
-  usage:
-    prompt_tokens: 1626
-    completion_tokens: 467
-    total_tokens: 5842
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:36Z'
+  previous_text: So they said to him, "Who are you? We need to give an answer to those who sent us. What do you say about yourself?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: dfc7b3624c3e7b5120c6849d41d88b1381d0c0be23e9314b453b0821bdf6244d
+  review_summary: Revision is needed. Splitting the question from its explanatory purpose makes the verse clearer, but “We need to give an answer” slightly recasts the purpose clause as a statement of necessity. “We need an answer to give to those who sent us” preserves the delegation’s practical urgency while keeping the answer as the purpose of their question.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

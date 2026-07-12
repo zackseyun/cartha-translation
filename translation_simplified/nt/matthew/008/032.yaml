@@ -37,46 +37,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to them, “Go.” So they came out and went into the pigs. Suddenly, the whole herd rushed down the steep bank into the sea and died in the waters.
+  text: Jesus said to the demons, “Go.” So the demons came out and went into the pigs. Then look! The whole herd rushed down the steep bank into the sea and died in the waters.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And he said to them
-  simplified_phrase: Jesus said to them
-  preserved_meaning: Clarifies the speaker.
-  reasoning_layer_used: POB audit trail
-  rationale: Names Jesus for readability.
+  simplified_phrase: Jesus said to the demons
+  preserved_meaning: Identifies the speaker and those he addressed without changing the command.
+  reasoning_layer_used: Immediate context and POB lexical audit
+  rationale: The surrounding passage identifies Jesus and the demons clearly.
+- pob_phrase: Then they came out and went into the pigs
+  simplified_phrase: So the demons came out and went into the pigs
+  preserved_meaning: Keeps both the demons’ exit and their movement into the animals.
+  reasoning_layer_used: POB lexical decisions
+  rationale: Naming the demons makes the action clear without merging its two stages.
 - pob_phrase: and behold
-  simplified_phrase: Suddenly
-  preserved_meaning: Keeps the vivid scene shift in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: “Suddenly” is clearer than “behold.”
-retained_terms:
-- term: Go
-  reason: Retains Jesus’ brief command.
+  simplified_phrase: Then look!
+  preserved_meaning: Preserves the vivid call to notice what follows without adding a timing claim.
+  reasoning_layer_used: POB lexical decision for ἰδού
+  rationale: “Look” gives the attention marker natural force in modern English.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The speaker is Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the one answering the demons.
+  confidence: high
+- pob_phrase: them / they
+  rendering: the demons
+  claim: Those addressed and those entering the pigs are the demons.
+  evidence:
+  - Matthew 8:31 identifies the speakers as demons, and the POB audit describes their movement into the pigs.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves command, exit, entry into pigs, rush into sea, and death in the waters.
-  readability_notes:
-  - Splits the sequence into three short sentences.
-  compression_notes:
-  - No event is removed.
+  risk_flags:
+  - risk: “Look!” may be read as a literal command rather than a narrative attention marker.
+    mitigation: Its position immediately before the herd’s action signals its vivid narrative function.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/008/032.yaml
   source_text_sha256: 07074b0d85333ecfc6d99e0ec9655f59037f6bfc9d8125a867ca9ad781ffa4fa
-  pob_commit_sha: 2a738453de3b20f4b924c640219c52249a85ac89
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:48:12Z'
-  output_hash: ac37908c71b5e6196c918a0370e5264ac6941edd8198f6936de3fb03871a5fbf
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ee3366c02766094d3c43c5679bc6c751c23d4c8c383d8558de82113646cdd669
+  timestamp: '2026-07-12T09:02:09Z'
+  output_hash: 1a317bf647815d4850c71489dd690f24f04d1a30aa3a000cdb9e7b708d21ce2f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3606
+    completion_tokens: 755
+    total_tokens: 4361
+    reasoning_tokens: 288
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Go
+  reason: Retains Jesus’ brief command.
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:09Z'
+  previous_text: Jesus said to them, “Go.” So they came out and went into the pigs. Suddenly, the whole herd rushed down the steep bank into the sea and died in the waters.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 755925c678eb3c5eefc03f278a56e255b441ac5fdf7d515e9c6bcf8dbf694b64
+  review_summary: Naming Jesus is a sound readability clarification. The draft should not use “Suddenly” for ἰδού, because it adds a temporal nuance that the POB audit explicitly declines to make primary. Naming the demons is supported by the immediate context and makes the action understandable to a modern reader without adding doctrine.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

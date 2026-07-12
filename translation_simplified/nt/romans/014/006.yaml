@@ -31,36 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The one who observes the day observes it for the Lord. The one who eats eats for the Lord, because he gives thanks to God. And the one who does not eat also does this for the Lord, and gives thanks to God.
+  text: Anyone who observes the day does so for the Lord. Anyone who eats does so for the Lord, because he gives thanks to God. Anyone who does not eat refrains for the Lord, and he gives thanks to God.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: The one who observes the day, observes it for the Lord.
+  simplified_phrase: Anyone who observes the day does so for the Lord.
+  preserved_meaning: The person gives practical regard to the unspecified day for the Lord.
+  reasoning_layer_used: POB lexical and theological decisions on φρονέω and ἡμέραν
+  rationale: “Does so” removes awkward repetition without identifying which day is meant.
+- pob_phrase: the one who eats, eats for the Lord
+  simplified_phrase: Anyone who eats does so for the Lord
+  preserved_meaning: Eating in the disputed matter is practiced for the Lord.
+  reasoning_layer_used: POB lexical decision on ἐσθίων and κυρίῳ
+  rationale: The shorter wording keeps the action and its purpose clear.
+- pob_phrase: the one who does not eat, does not eat for the Lord
+  simplified_phrase: Anyone who does not eat refrains for the Lord
+  preserved_meaning: The non-eater specifically refrains from eating for the Lord.
+  reasoning_layer_used: POB lexical decision on ὁ μὴ ἐσθίων and grounding review
+  rationale: “Refrains” avoids vague “does this” while preserving the explicit eating contrast.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “The day” could be mistaken for a specifically identified Sabbath, feast, or fast day.
+    mitigation: The text retains POB’s intentionally general wording and adds no identification.
+  - risk: “Refrains” may be read more broadly than refraining from food.
+    mitigation: The preceding words “does not eat” explicitly define the act of refraining.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/006.yaml
   source_text_sha256: 1c8334124aed019f129173f6456605ac031a55f015653d7485dfd8ed45be6e2a
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 105bde7d0f39739247ea3223822e6a05be4be2d8a0c1a8ad505aba2351738907
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fedcb7ef6e62e9e640686c3f698dcabb5f35087b53e5aca3d53ae8e81235a66c
+  timestamp: '2026-07-12T07:42:32Z'
+  output_hash: 271525979de709d8de8f83a98261424acf1750d7a69bf7399596bb0ece29010b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3340
+    completion_tokens: 444
+    total_tokens: 3784
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:32Z'
+  previous_text: The one who observes the day observes it for the Lord. The one who eats eats for the Lord, because he gives thanks to God. And the one who does not eat also does this for the Lord, and gives thanks to God.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ad2940824cd429e8b79db8fc365bd419cd691642d4ed79e2f308b16460bf8b4f
+  review_summary: The draft appropriately leaves the identity of “the day” unspecified and retains the distinction between the Lord and God. However, its final clause obscures and weakens the source’s explicit parallel between eating for the Lord and not eating for the Lord. Restore the stated action while retaining simple, modern wording.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

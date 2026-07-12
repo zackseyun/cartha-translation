@@ -34,41 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He did not speak to them without a parable, but in private he explained everything to his own disciples.
+  text: He would speak to the crowds only in parables. But in private, he would explain everything to his own disciples.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he was not speaking to them without a parable[b][a], but in private he was explaining everything to his own disciples.
-  simplified_phrase: He did not speak to them without a parable, but in private he explained everything to his own disciples.
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: disciples
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: was not speaking to them without a parable
+  simplified_phrase: would speak to the crowds only in parables
+  preserved_meaning: Jesus regularly used parables when speaking publicly to the crowds.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: The positive wording is clearer while “would” preserves the customary force of the imperfect verb.
+- pob_phrase: but in private he was explaining everything
+  simplified_phrase: But in private, he would explain everything
+  preserved_meaning: Jesus regularly gave private explanations without narrowing the stated scope of “everything.”
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: A separate sentence sharpens the public-private contrast and preserves the ongoing action.
+interpretive_expansions:
+- pob_phrase: to them
+  rendering: to the crowds
+  claim: The pronoun refers to the crowds who heard Jesus’ public teaching.
+  evidence:
+  - The POB lexical rationale identifies the referent as the crowds or listeners in context.
+  - Mark 4:33–34 contrasts public teaching with private explanation to the disciples.
+  confidence: high
+  alternatives_preserved:
+  - to them
+  - to the listeners
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: The plural “parables” replaces the Greek idiom’s singular “a parable.”
+    mitigation: The plural naturally communicates Jesus’ repeated use of the same concrete teaching form.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/034.yaml
   source_text_sha256: 7bb3e3153dfd9e281d3f49616741cbe4891cad4e5f8c39aef2c3accdb441963c
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 68769ef5c546b05668c88d02d893838ed9b988de7a29b8106a5b3b5617a30f31
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a8ad983ffb10d51610de06a7021b3bf0c14450c0778d5a9c7a578486e0afff6e
+  timestamp: '2026-07-12T07:20:20Z'
+  output_hash: 299cb55e8bf93b643043af8e03bd1744a9150660dadd2fe305dbba7367e9ffa1
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3237
+    completion_tokens: 801
+    total_tokens: 4038
+    reasoning_tokens: 429
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: disciples
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:20Z'
+  previous_text: He did not speak to them without a parable, but in private he explained everything to his own disciples.
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9e36b89a6357c63b8192b49ab81ead2a05922c889bf66265be9d4841de42ecba
+  review_summary: The draft introduces no doctrinal expansion and rightly retains the unrestricted “everything” and the emphasis of “his own disciples.” However, its two simple-past verbs obscure the POB audit trail’s emphasis on customary action. The recommended wording is clearer for modern readers, makes the contextual referent of “them” explicit, and expresses the idiomatic force of “not without a parable” while retaining the public/private contrast and the text’s open scope of “everything.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

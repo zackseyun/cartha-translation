@@ -31,38 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But the chief priests and elders persuaded the crowds to ask for Barabbas and to have Jesus destroyed.
+  text: But the chief priests and elders persuaded the crowds to ask for Barabbas but to have Jesus put to death.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But the chief priests and the elders persuaded the crowds to ask for Barabbas[a], but to destroy Jesus.
-  simplified_phrase: But the chief priests and elders persuaded the crowds to ask for Barabbas and to have Jesus destroyed.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 27 while simplifying sentence flow and common-reader wording.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source-grounding notes
-  rationale: Manual Codex SPOB drafting kept the passion narrative sequence, legal trial language, crucifixion details, titles for Jesus, death/resurrection signs, burial, and tomb-guard episode while reducing dense clauses and footnote markers into clear modern common English.
+- pob_phrase: the chief priests and the elders
+  simplified_phrase: the chief priests and elders
+  preserved_meaning: Both recognized groups of Jewish leaders remain distinct.
+  reasoning_layer_used: POB lexical decisions for ἀρχιερεῖς and πρεσβύτεροι
+  rationale: The repeated article is unnecessary in natural English.
+- pob_phrase: but to destroy Jesus
+  simplified_phrase: but to have Jesus put to death
+  preserved_meaning: The crowds were persuaded to seek Jesus' death while the contrast with Barabbas remains explicit.
+  reasoning_layer_used: POB footnote, theological decision, and immediate judicial context
+  rationale: This makes the concrete judicial killing clear without losing the source-marked contrast.
+interpretive_expansions:
+- pob_phrase: destroy Jesus
+  rendering: have Jesus put to death
+  claim: In this trial setting, destroying Jesus means causing him to be killed.
+  evidence:
+  - The POB footnote gives “put Jesus to death” as a lexical alternative.
+  - The POB theological rationale identifies an execution-oriented sense in the judicial context.
+  confidence: high
+  alternatives_preserved:
+  - destroy Jesus
+  - kill Jesus
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB Matthew 27 base translation as the controlling meaning and uses Greek/source context only as an audit guardrail.
-  readability_notes:
-  - Uses shorter clauses and modern common English while preserving Matthew 27’s trial, crucifixion, death, burial, and guarded-tomb sequence.
-  compression_notes:
-  - POB technical alternatives and footnote markers are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Put to death” is narrower than the broader lexical force of “destroy.”
+    mitigation: The POB footnote and immediate trial context directly support the execution-oriented wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/027/020.yaml
   source_text_sha256: 22ad2c1f5a813ba7c97ca115ab141fa3cb0b9eb142f1936978503d4e92e6c6d7
-  pob_commit_sha: 5fadc1013bd5a69e4107c4ba5c61c81fe8383fcf
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:21:48Z'
-  output_hash: 43d115fe65302bf97b1a8fda6891e8e31b187b5833300c734d16447f69a79b11
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ffefc1997f248ea4347fed144dd5b29f7d31b689fb300435694439c967536e08
+  timestamp: '2026-07-12T07:38:34Z'
+  output_hash: 923ee3521fd084f16ececf1d9842b667ee2ff5008a192b0d6b4b4a87e827d6e0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3434
+    completion_tokens: 363
+    total_tokens: 3797
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:34Z'
+  previous_text: But the chief priests and elders persuaded the crowds to ask for Barabbas and to have Jesus destroyed.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2a83c74e1c39045e6e6a4e1b75e07756dcf7703e00dec429c33e166511400a97
+  review_summary: The draft appropriately removes an unnecessary article and uses a natural causative construction for the crowds’ role in procuring Jesus’ death. However, it does not meaningfully clarify the judicial sense of ἀπολέσωσιν, and it softens the stated Barabbas/Jesus contrast. “Put to death” is explicitly supported by the POB footnote and the immediate trial context; retaining “but” preserves the source-marked contrast.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

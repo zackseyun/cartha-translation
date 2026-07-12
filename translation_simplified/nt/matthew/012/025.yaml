@@ -37,43 +37,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus knew their thoughts and said to them, “Every kingdom divided against itself is laid waste,[a] and every city or house divided against itself will not stand.[b]”
+  text: But Jesus knew what they were thinking and said to them, “Every kingdom divided against itself is brought to ruin, and every city or household divided against itself will not stand.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "becomes desolate" or "is brought to ruin."
-    reason: lexical_alternative
-  - marker: b
-    text: '"House" may also mean "household" in this context.'
+    text: The word translated “household” can also mean “house.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: But knowing their thoughts, he said to them
+  simplified_phrase: But Jesus knew what they were thinking and said to them
+  preserved_meaning: Jesus knew their inner thoughts, while the manner of his knowledge remains unstated.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The finite clause is easier to follow and keeps the argumentative transition “But.”
+- pob_phrase: is laid waste
+  simplified_phrase: is brought to ruin
+  preserved_meaning: Internal division causes complete devastation.
+  reasoning_layer_used: POB lexical decision for ἐρημοῦται
+  rationale: “Brought to ruin” is an audited alternative in more familiar modern English.
+- pob_phrase: city or house
+  simplified_phrase: city or household
+  preserved_meaning: The saying applies to a community or domestic unit divided against itself.
+  reasoning_layer_used: POB lexical decision for πόλις ἢ οἰκία
+  rationale: “Household” makes the likely social sense clear while a footnote preserves “house.”
+interpretive_expansions:
+- pob_phrase: house
+  rendering: household
+  claim: The domestic unit, not merely the building, may be in view.
+  evidence:
+  - The POB lexical decision says οἰκία can mean either “house” or “household.”
+  - The parallel with kingdom and city supports a social group in this context.
+  confidence: moderate
+  alternatives_preserved:
+  - house
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Household” may narrow the broad Greek term οἰκία.
+    mitigation: The footnote preserves the possible meaning “house.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/025.yaml
   source_text_sha256: a605c52838915e3a857ec790ac03a0068b9953fe6d375ffebd1d6f9a286d9a88
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: b8d0cccd6cd648f00b4b96672c652fcf94d96a309588783203b9243effe99b36
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e7ac46c92ab6493c0bac96ed0d551fec9cbd1fcc94b54ff331f0647126a786f1
+  timestamp: '2026-07-12T07:37:34Z'
+  output_hash: 471c51f5ce37f78bbdd5c15b7a1cde633cbd4542a6f7989488433fccdee1738e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3532
+    completion_tokens: 736
+    total_tokens: 4268
+    reasoning_tokens: 261
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:34Z'
+  previous_text: Jesus knew their thoughts and said to them, “Every kingdom divided against itself is laid waste,[a] and every city or house divided against itself will not stand.[b]”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b65b881d6de1b1f7491cfe5684fe79d28cd5d3adb143fd9216573dd977bd06c8
+  review_summary: The draft is faithful and properly leaves unexplained how Jesus knew their thoughts; it introduces no doctrinal expansion or lost theological ambiguity. Revision is needed because it drops a contextually useful transition and makes too little actual clarity gain. The recommended wording keeps the source meaning, makes the mental-content expression more natural, uses the audited common-English alternative "brought to ruin," and uses "household" to express the contextual sense of οἰκία directly.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

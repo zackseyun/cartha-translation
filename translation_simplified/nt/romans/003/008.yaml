@@ -33,46 +33,62 @@ base_translation:
     changes_summary: Removed the comma before 'and as some claim' for smoother, more natural English. The draft is otherwise accurate and complete.
 translation:
   language: en
-  text: And why not say, “Let us do evil so that good may come”? Some people slander us by claiming we say this. Their condemnation is just.[a]
+  text: Why not say, “Let us do evil so that good may come”? This is what some people falsely accuse us of saying. Their condemnation is just.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Their condemnation” refers to those who slanderously make this accusation or live by this reasoning.
+    text: “Their condemnation” refers to those who make or endorse this false accusation and its reasoning.
     reason: simplification_note
 simplification_decisions:
-- simplified_phrase: And why not say, “Let us do evil so that good may come”? Some people slander us by claiming we say this.
-  preserved_meaning: Breaking this highly parenthetical and convoluted rhetorical question into two separate sentences makes the text much easier for a modern reader to follow without losing the force of Paul's defense against the slander.
-  reasoning_layer_used: POB audit trail
-  rationale: Breaking this highly parenthetical and convoluted rhetorical question into two separate sentences makes the text much easier for a modern reader to follow without losing the force of Paul's defense against the slander.
-retained_terms:
-- term: condemnation
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: just
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: And why not say—as we are slandered and as some claim that we say—
+  simplified_phrase: Why not say ...? This is what some people falsely accuse us of saying.
+  preserved_meaning: The accusation still directly identifies the proposal that Paul rhetorically rejects.
+  reasoning_layer_used: POB syntax, lexical decisions, and grounding review
+  rationale: Splitting the parenthetical sentence makes it easier to follow while keeping the accusation tied to the quoted proposal.
+- pob_phrase: as we are slandered
+  simplified_phrase: falsely accuse us
+  preserved_meaning: Paul and his companions are being maliciously misrepresented.
+  reasoning_layer_used: POB lexical decision for βλασφημούμεθα
+  rationale: “Falsely accuse” expresses the contextual sense of slander in common English.
 translation_notes:
-  source_alignment_notes: The Greek contains an ellipsis (καὶ μὴ) and a nested comparative clause (καθὼς... καὶ καθώς...). The split-sentence translation fully preserves every lexical element—the rhetorical question, the slander, the specific false claim, and the declaration of just judgment.
-  readability_notes:
-  - Removed the complex em-dash parenthetical structure of the POB, replacing it with a clean question-and-statement format that flows naturally in modern English.
-  compression_notes:
-  - No semantic details or theological nuances were compressed. All elements of the Greek text are fully expressed.
+  risk_flags:
+  - risk: The referent of “their” is not explicit in the sentence.
+    mitigation: The footnote limits it to those who make or endorse the false accusation and its reasoning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/003/008.yaml
   source_text_sha256: 8ae852a95d0c3183027c28aea66ec8c4c90f4b07d3c7e3a0c5d817ed34125708
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: d9d0932e4c77ebe734fcc02150fd8fcdd86bd047976c94e321e21b10e0849b33
-  timestamp: '2026-05-28T08:42:45Z'
-  output_hash: 0ea22d8e817987262c615aa46992e0a14c273639bd9089edbb5f42750828220a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e31d8bf8995c8faba2f221af2eb9b08ef4360e1dadea3523621be647ee179d89
+  timestamp: '2026-07-12T07:41:26Z'
+  output_hash: f82e6176e1efeae9db2cca5c8d42b0e38dce59276f7771ec89e24f9ad6d32654
   usage:
-    prompt_tokens: 1945
-    completion_tokens: 515
-    total_tokens: 6030
-    reasoning_tokens: 0
+    prompt_tokens: 3755
+    completion_tokens: 488
+    total_tokens: 4243
+    reasoning_tokens: 146
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: condemnation
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: just
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:26Z'
+  previous_text: And why not say, “Let us do evil so that good may come”? Some people slander us by claiming we say this. Their condemnation is just.[a]
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8358a891c998355972b20e8016fe87aab3828266c1d412acd9f8a1843bd1743f
+  review_summary: The draft improves readability by unpacking the parenthetical accusation, and its main sense is substantially sound. Revision is needed because the sentence order weakens the grammatical connection between the accusation and Paul's rhetorical rejection, and because the footnote adds an unsupported category (“live by this reasoning”). The recommended wording remains clear while explicitly marking the charge as false and retaining a source-bounded explanation of “their.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,46 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The disciples came and woke him, saying, “Lord, save us! We are dying!”
+  text: The disciples came and woke him, saying, “Lord, save us! We’re going to die!”
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And they came and woke him
   simplified_phrase: The disciples came and woke him
-  preserved_meaning: Clarifies the subject of the action.
-  reasoning_layer_used: POB audit trail
-  rationale: Naming the disciples improves readability.
+  preserved_meaning: The same people approach Jesus and wake him.
+  reasoning_layer_used: Immediate context and POB lexical decision
+  rationale: The preceding context identifies them as the disciples, so naming them removes an unclear pronoun.
 - pob_phrase: We are perishing
-  simplified_phrase: We are dying
-  preserved_meaning: Preserves the urgent danger in common English.
-  reasoning_layer_used: POB audit trail
-  rationale: “Dying” is immediately understandable while retaining the force of the plea.
-retained_terms:
-- term: Lord
-  reason: Keeps their address to Jesus.
+  simplified_phrase: We’re going to die
+  preserved_meaning: Their words express imminent death and an urgent need for rescue.
+  reasoning_layer_used: POB lexical rationale and immediate storm context
+  rationale: This common wording conveys impending death rather than merely the process of dying.
+interpretive_expansions:
+- pob_phrase: they
+  rendering: The disciples
+  claim: The people who woke Jesus were his disciples.
+  evidence:
+  - Matthew 8:23 identifies the disciples as accompanying Jesus into the boat.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the disciples’ urgent appeal for rescue.
-  readability_notes:
-  - Uses common speech for the danger.
-  compression_notes:
-  - No central meaning is omitted.
+  risk_flags:
+  - risk: “We’re going to die” states the imminent outcome more directly than the traditional phrase “we are perishing.”
+    mitigation: The POB audit explicitly identifies imminent ruin or death, and the storm context supports this wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/008/025.yaml
   source_text_sha256: 30a31f606082471ef8ce1a5ebaf54003a874f5a08a18d28bf4c0c809226a339f
-  pob_commit_sha: 2a738453de3b20f4b924c640219c52249a85ac89
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:48:12Z'
-  output_hash: 5f72d311a0ed03ee4bc2972dab311a6fd44038d856003bea7b6a3ebcab1cf3be
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2cd123af9c9bd02affcac821d5fa1ce45c11d8aa29a009504b6092a2a76fff9a
+  timestamp: '2026-07-12T07:36:27Z'
+  output_hash: c882a668ba298e514248f14d987d0274ae415291969ab88139eedad93b9b6696
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3189
+    completion_tokens: 323
+    total_tokens: 3512
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Lord
+  reason: Keeps their address to Jesus.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:27Z'
+  previous_text: The disciples came and woke him, saying, “Lord, save us! We are dying!”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8f798d37edacf19ee4046236cbffd64f9c380d8d01ebcd7e9686e1fea8e6ebfa
+  review_summary: 'Identifying the speakers as the disciples is a warranted contextual clarification: Matthew 8:23 has identified them, and no competing group is in view. “Lord, save us!” is retained appropriately. Replace “We are dying” with “We’re going to die!” because it is equally accessible while more clearly conveys the imminent fatal danger expressed by the Greek and the storm context.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

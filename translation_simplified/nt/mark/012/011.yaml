@@ -34,41 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: This came from the Lord, and it is marvelous in our eyes.”
+  text: This came from the Lord, and we see it as wonderful.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: This came from the Lord[b][a], and it is marvelous in our eyes.
-  simplified_phrase: This came from the Lord, and it is marvelous in our eyes.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Lord
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: it is marvelous in our eyes
+  simplified_phrase: we see it as wonderful
+  preserved_meaning: The speakers regard what the Lord has done as wondrous and remarkable.
+  reasoning_layer_used: POB lexical decision for θαυμαστὴ and ἐν ὀφθαλμοῖς ἡμῶν
+  rationale: This uses common English while preserving both the visual image and the idiom’s evaluative sense.
+- pob_phrase: This came from the Lord
+  simplified_phrase: This came from the Lord
+  preserved_meaning: What happened originated from the Lord rather than occurring accidentally.
+  reasoning_layer_used: POB lexical and theological decisions for παρὰ κυρίου
+  rationale: The wording remains because it is already clear and protects the POB’s source-oriented reading.
+interpretive_expansions:
+- pob_phrase: it is marvelous in our eyes
+  rendering: we see it as wonderful
+  claim: The eye idiom describes how the speakers perceive and evaluate the Lord’s work.
+  evidence:
+  - The POB audit identifies “in our eyes” as meaning “in our sight” or “to us.”
+  confidence: high
+  alternatives_preserved:
+  - it is wonderful to us
+  - it is marvelous in our sight
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/011.yaml
   source_text_sha256: e4276153c29f24f5dcd597d04150eb8800d4e3d5217ef623ecbacc8bb6cbf87d
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 1de465c0628e2915929737c461d033010197865f231d10fd6f44ec4055bdbc84
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 31e1a2cba155278cd153343b2b50f5dd809838b66dd67c770403d31302eb31a7
+  timestamp: '2026-07-12T07:23:30Z'
+  output_hash: 7324a46dd470ad5dcf1888f46045b1edb15a7ef831ae32c4383da490d6fc484f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3230
+    completion_tokens: 581
+    total_tokens: 3811
+    reasoning_tokens: 239
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Lord
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:30Z'
+  previous_text: This came from the Lord, and it is marvelous in our eyes.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6471a3669198f2aad3929f42d2ce867f99eca67ff59b3db2b0c622a316c72cb9
+  review_summary: 'Revise for actual SPOB-level clarity. The replacement preserves the POB’s source-oriented “came from the Lord” and makes the final idiom explicit: it is regarded as wonderful by those speaking. No doctrinal expansion or unsupported interpretation is introduced.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

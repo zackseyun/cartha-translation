@@ -34,19 +34,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The one who comes from above is above all[a]. The one who is from the earth belongs to the earth and speaks from the earth[b]. The one who comes from heaven is above all.
+  text: The one who comes from above is above all.[a] The one from the earth is from the earth and speaks from the earth.[b] The one who comes from heaven is above all.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'from heaven.' The Greek word means 'from above' and is clarified by the later phrase 'from heaven.'
-    reason: simplification_note
+    text: Or “from heaven.” The Greek says “from above,” and the later phrase “from heaven” clarifies its meaning.
+    reason: lexical_alternative
   - marker: b
-    text: Or 'speaks of earthly things.' The Greek literally repeats 'from the earth,' which can indicate origin, sphere of influence, or subject matter.
-    reason: simplification_note
+    text: Or “speaks of the earth.” The repeated phrase may refer to the source, sphere, or subject of the person’s speech.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: The literal repetition of 'is from the earth' twice in a row is highly awkward in English. Changing the second occurrence to 'belongs to the earth' preserves the essential meaning of origin and nature in a natural, modern idiom.
-  reasoning_layer_used: POB audit trail
-  rationale: The literal repetition of 'is from the earth' twice in a row is highly awkward in English. Changing the second occurrence to 'belongs to the earth' preserves the essential meaning of origin and nature in a natural, modern idiom.
+- pob_phrase: The one who is from the earth
+  simplified_phrase: The one from the earth
+  preserved_meaning: The person’s earthly origin remains explicit.
+  reasoning_layer_used: POB lexical decision for ὁ ὢν ἐκ τῆς γῆς
+  rationale: Removing “who is” makes the clause easier to read without changing its contrast with heaven.
+- pob_phrase: from the earth ... from the earth ... from the earth
+  simplified_phrase: from the earth ... from the earth ... from the earth
+  preserved_meaning: The emphatic threefold repetition of earthly origin and sphere remains intact.
+  reasoning_layer_used: POB theological decision on repeated earthly language
+  rationale: The repetition is retained because replacing it with “belongs to” would weaken the source’s emphasis.
+- pob_phrase: The one who comes from above ... The one who comes from heaven
+  simplified_phrase: The one who comes from above ... The one who comes from heaven
+  preserved_meaning: The first expression introduces heavenly origin, and the later expression clarifies it.
+  reasoning_layer_used: POB decision on ἄνωθεν and ἐκ τοῦ οὐρανοῦ
+  rationale: Keeping both expressions preserves the verse’s deliberate movement from “above” to “heaven.”
+translation_notes:
+  risk_flags:
+  - risk: “Speaks from the earth” may sound unusual because the Greek can indicate source, sphere, or subject matter.
+    mitigation: Footnote [b] preserves the ambiguity and gives the supported alternative.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/003/031.yaml
+  source_text_sha256: 36d79640ec697304985ae102dd1496e90736b187dc068c018e76b060e2f64d9f
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bb76a725c1f875c620fe0f781abe6faaf717ca48ed18c8a0db9f47306ea36452
+  timestamp: '2026-07-12T07:14:05Z'
+  output_hash: e31cf4b2d7c59db88110743cb84b2a44fc0af07410dc1aa7140269059ecf8332
+  usage:
+    prompt_tokens: 3978
+    completion_tokens: 759
+    total_tokens: 4737
+    reasoning_tokens: 256
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: from above
   reason: Retained to preserve POB's source-grounded terminology.
@@ -56,33 +94,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: from heaven
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the stylistic distinction between 'from above' (anōthen) and 'from heaven' (ek tou ouranou) rather than collapsing them, honoring the rhetorical build-up in the source text.
-  readability_notes:
-  - We restructured the dense clauses of verse 31 into three clear, balanced, and rhythmic assertions that are easy for a modern reader to digest.
-  compression_notes:
-  - Slightly condensed the direct repetition of 'is from the earth' into 'belongs to the earth'. No theological meaning or source nuance was omitted.
-  risk_flags:
-  - risk: Using 'belongs to' introduces a minor element of possession/citizenship not explicitly present in the preposition 'ek' (from), but it accurately communicates the theological import of earthly origin.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/003/031.yaml
-  source_text_sha256: 36d79640ec697304985ae102dd1496e90736b187dc068c018e76b060e2f64d9f
-  pob_commit_sha: db6a5c6495176878a4820d93b6da0f938bb77b40
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: d6c49bde709a4744bd843faf0567b9984adfce8683a067ae4aa126bbb4290b36
-  timestamp: '2026-05-28T01:14:26Z'
-  output_hash: 5647cc82f005c4448e8a185534c2a8dfb42c1425beffb446604a79553571247a
-  usage:
-    prompt_tokens: 2126
-    completion_tokens: 575
-    total_tokens: 6312
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:05Z'
+  previous_text: The one who comes from above is above all[a]. The one who is from the earth belongs to the earth and speaks from the earth[b]. The one who comes from heaven is above all.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 298fe9702b252eb8e51376e4a868b1e7bd02a7f7d8c8e4867c93c1edc871fed7
+  review_summary: Revise. The proposed wording is somewhat smoother, but “belongs to the earth” is not a necessary clarification and weakens the deliberate, source-textual repetition of earthly origin. Retain the POB wording, which is already understandable in modern English and preserves the verse’s contrast. Narrow footnote b to the audit-trail-supported alternatives.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

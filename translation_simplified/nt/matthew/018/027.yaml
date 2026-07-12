@@ -34,14 +34,50 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 18:27 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the loan''].'
 translation:
   language: en
-  text: Moved with compassion, the master of that slave released him and forgave the debt.
+  text: Then that slave’s master felt compassion for him, released him, and forgave his debt.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Then the master of that slave[a], moved with compassion[b], released him and forgave him the debt.
-  simplified_phrase: Moved with compassion, the master of that slave released him and forgave the debt.
-  preserved_meaning: Reordered the sentence slightly so the compassion comes first, while preserving the master’s release and debt forgiveness.
-  reasoning_layer_used: POB audit trail
-  rationale: Reordered the sentence slightly so the compassion comes first, while preserving the master’s release and debt forgiveness.
+- pob_phrase: the master of that slave
+  simplified_phrase: that slave’s master
+  preserved_meaning: The man remains the slave’s human master in the parable.
+  reasoning_layer_used: POB lexical and theological decisions on κύριος and δοῦλος
+  rationale: The possessive form states the same relationship in more natural English.
+- pob_phrase: moved with compassion
+  simplified_phrase: felt compassion for him
+  preserved_meaning: The master responds to the slave with deep pity.
+  reasoning_layer_used: POB lexical decision on σπλαγχνισθείς
+  rationale: The wording makes both the emotion and its recipient immediately clear.
+- pob_phrase: forgave him the debt
+  simplified_phrase: forgave his debt
+  preserved_meaning: The master cancels the slave’s financial obligation.
+  reasoning_layer_used: POB lexical decisions on τὸ δάνειον and ἀφῆκεν αὐτῷ
+  rationale: The possessive clearly connects the canceled debt to the slave.
+translation_notes:
+  risk_flags:
+  - risk: “Debt” is less specific than the source noun’s possible sense “loan.”
+    mitigation: The controlling POB text uses “debt,” and the parable clearly presents an amount the slave owes.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/018/027.yaml
+  source_text_sha256: 3655afefeefe927d78af3ede5c2d6ec0583ea7a76f02a7e5e673d75404e93211
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0ee1f584d82edf51f03b2f52b48ee1be4aa5bfdc7ca75df31c9a3d127a6f3e7e
+  timestamp: '2026-07-12T07:36:56Z'
+  output_hash: c29b45a0ca1541a09a0c97520b1d55643382580a2858530def1d3b9797e8468d
+  usage:
+    prompt_tokens: 3714
+    completion_tokens: 490
+    total_tokens: 4204
+    reasoning_tokens: 145
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: moved with compassion
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
@@ -51,30 +87,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
 - term: forgave the debt
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
-translation_notes:
-  source_alignment_notes: Preserves the controlling POB meaning and its source-grounded lexical choices while simplifying syntax and wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, clearer word order, and common English where the POB wording is formal or technical.
-  compression_notes:
-  - No central meaning is intentionally removed; technical alternatives are kept in footnotes when needed for review.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/018/027.yaml
-  source_text_sha256: 3655afefeefe927d78af3ede5c2d6ec0583ea7a76f02a7e5e673d75404e93211
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:05Z'
-  output_hash: c945c46e6d2c9203b102b801a88356237fdd0271f7aff62324ac39ceb2f046e8
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:56Z'
+  previous_text: Moved with compassion, the master of that slave released him and forgave the debt.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 47bb7007a672fb7265448626eb5efcaec26c1a554a3f5b8538225b72abdffe1b
+  review_summary: The draft does not introduce doctrinal error or an unsupported interpretive expansion, but its limited reordering is not a meaningful understanding-first simplification. The recommended wording retains the human-master/slave relationship, the master’s compassion, release, and cancellation of the slave’s financial obligation, while making the referents and action more immediately clear.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,41 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Truly I tell you, whoever does not receive the kingdom of God like a child will certainly not enter it.
+  text: 'Truly I tell you: anyone who does not receive God’s kingdom as a child does[a] will certainly not enter it.'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The comparison may involve a child’s humility, trust, or dependence, but the Greek does not specify one particular quality.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Truly I say to you[a], whoever does not receive the kingdom of God like a child will certainly not enter it.
-  simplified_phrase: Truly I tell you, whoever does not receive the kingdom of God like a child will certainly not enter it.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: kingdom of God
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: Truly I say to you
+  simplified_phrase: Truly I tell you
+  preserved_meaning: Jesus introduces a solemn, authoritative statement.
+  reasoning_layer_used: POB lexical decision for ἀμὴν λέγω ὑμῖν
+  rationale: “I tell you” is more natural in modern English while “Truly” keeps the saying’s solemn force.
+- pob_phrase: whoever does not receive the kingdom of God like a child
+  simplified_phrase: anyone who does not receive God’s kingdom as a child does[a]
+  preserved_meaning: A person must receive God’s kingdom in the manner represented by a child, without defining one specific childlike quality.
+  reasoning_layer_used: POB lexical and theological decisions for δέχομαι, βασιλεία τοῦ θεοῦ, and ὡς παιδίον
+  rationale: The added “does” makes the comparison easier to follow, while the footnote preserves its documented ambiguity.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Readers may assume the child represents only humility, trust, or dependence.
+    mitigation: The footnote names these as possibilities but states that the Greek does not select one.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/015.yaml
   source_text_sha256: c9a31f5e4fb0648bfa230df3057f4f7973ef501a049cb30d5f13ad8a158acabe
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 872b3a65fd0b74e9653a9da68f2fb133e67d9407b6dfbd788b7a297be81d39b9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b280c66443b6f6f0e9dfaa45ac5a114b13ce576812a2a874706c4485fa430d3b
+  timestamp: '2026-07-12T07:21:10Z'
+  output_hash: 31650995fc690f3ac9c83e130d093661d8d00521d535493a48484a8e41a43d32
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3416
+    completion_tokens: 459
+    total_tokens: 3875
+    reasoning_tokens: 84
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: kingdom of God
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:10Z'
+  previous_text: Truly I tell you, whoever does not receive the kingdom of God like a child will certainly not enter it.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b4e08ff03f554b8ad9a2cf5c2bd69b89e95edeefd129b2d0be3fe1ac5e373fa8
+  review_summary: 'The draft is faithful and avoids doctrinal insertion, but it is not meaningfully clearer than POB as required: only “say” becomes “tell.” The recommended wording makes the comparison’s grammar more accessible without selecting humility, trust, or dependence as its single meaning. Retain a concise footnote explaining that the verse does not specify exactly what quality of a child is in view.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

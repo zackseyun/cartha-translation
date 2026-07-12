@@ -34,45 +34,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Truly I tell you, this generation[a] will certainly not pass away until all these things happen.
+  text: 'I tell you the truth: this generation[a] will certainly not pass away until all these things happen.'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek word can also be rendered “this people” or “this race,” though “generation” is the most natural rendering here.
-    reason: simplification_note
+    text: The Greek word can also mean “this people” or “this race,” though “generation” is the most natural meaning here.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Truly I say to you that this generation will certainly not pass away until all these things happen[a][b].
-  simplified_phrase: Truly I tell you, this generation[a] will certainly not pass away until all these things happen.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: generation
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: Truly I say to you that
+  simplified_phrase: 'I tell you the truth:'
+  preserved_meaning: Preserves the solemn, authoritative introduction in natural modern English.
+  reasoning_layer_used: POB lexical decision for ἀμὴν and λέγω ὑμῖν
+  rationale: The revised formula clearly expresses the force of the Greek introduction rather than closely copying its structure.
+- pob_phrase: this generation will certainly not pass away until all these things happen
+  simplified_phrase: this generation will certainly not pass away until all these things happen
+  preserved_meaning: Keeps the emphatic denial, temporal limit, and debated meaning of “this generation.”
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: These words are already clear and preserve the source-driven emphasis and interpretive tension.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “I tell you the truth” expresses rather than formally reproduces the word ἀμὴν.
+    mitigation: The POB audit identifies ἀμὴν as a solemn assurance, which this common-English formula preserves.
+  - risk: Readers may assume “generation” is the only possible sense of the Greek word.
+    mitigation: The footnote retains the documented alternatives without resolving the debate.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/030.yaml
   source_text_sha256: aa13188d0fdd004177af9c64386ed2a5950ca14c6f4f2ce6a77f982f59c24c80
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 7d2f66bfceb91885afe573b3be62ab9395b31a9437ec19049857dbd9715e2656
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c768a0780d99e8cdd735b45b76596787a840c8e43bbfb248f2d508128386e862
+  timestamp: '2026-07-12T07:21:51Z'
+  output_hash: d8437b864609db61dd5ff9176b13e39ea98fe544a91f07da6e4db04bbfb9f84e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3264
+    completion_tokens: 378
+    total_tokens: 3642
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: generation
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:51Z'
+  previous_text: Truly I tell you, this generation[a] will certainly not pass away until all these things happen.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3dd3eb387cdc14f989f6dc176a926d557c2e78e23630c56c96bc1f654013ddc7
+  review_summary: Revise for a clearer, genuinely simplified rendering of the opening formula. “I tell you the truth” communicates the force of ἀμὴν naturally without resolving the debated meaning of “this generation” or adding eschatological interpretation. The remainder faithfully preserves the Greek emphasis and the POB’s deliberate ambiguity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

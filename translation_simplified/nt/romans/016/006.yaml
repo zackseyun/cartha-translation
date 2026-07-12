@@ -31,36 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Greet Mary, who has worked very hard for you.
+  text: Greet Mary,[a] who has worked very hard for you.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts read “for us” or “among you” instead of “for you.”
+    reason: textual_variant
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Greet Mary, who has worked very hard for you.
+  simplified_phrase: Greet Mary,[a] who has worked very hard for you.
+  preserved_meaning: Mary is to be greeted and commended for her strenuous work for the Roman believers.
+  reasoning_layer_used: POB lexical decisions and textual-variant decision
+  rationale: The POB sentence is already clear common English, so only the necessary variant marker is restored.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may assume all manuscripts say “for you.”
+    mitigation: The footnote preserves the meaningful readings “for us” and “among you.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/006.yaml
   source_text_sha256: 185266872a5a4f2aa2fe411de7840a618d1b9b3cad0609204e9691452d805d14
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:31Z'
-  output_hash: c28de366d792fb2f182331f473ff005e53986294d24a30f08c225d2fd1ffc708
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c9975030a3173a5c3485bff173b5566e2e8899cc1a2d42e38210e243097cbfe7
+  timestamp: '2026-07-12T07:42:47Z'
+  output_hash: 45c59983c40ae1c0795e6c2da81795dc4cba9bfc61602f82a79f21bd1ae1f5c7
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2994
+    completion_tokens: 351
+    total_tokens: 3345
+    reasoning_tokens: 116
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:47Z'
+  previous_text: Greet Mary, who has worked very hard for you.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 46edc3395b96b31405277674bdfafd5d54c6fde24463fb16a3744286893885d1
+  review_summary: The main sentence accurately preserves the source-supported POB meaning and is already clear in common English. However, it is not meaningfully clearer than POB, and removing the documented textual-variant note suppresses a live, meaningful alternative in the manuscript evidence. Retain the POB wording and its concise footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

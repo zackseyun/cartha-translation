@@ -31,38 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: People were bringing children to Jesus so that he would touch them, but the disciples rebuked them.
+  text: People were bringing children to Jesus so that he would touch them, but the disciples rebuked the people who were bringing them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they were bringing children to him so that he might touch them[a], but the disciples rebuked them.
-  simplified_phrase: People were bringing children to Jesus so that he would touch them, but the disciples rebuked them.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+- pob_phrase: they were bringing children to him
+  simplified_phrase: People were bringing children to Jesus
+  preserved_meaning: The action was ongoing or repeated, and the children were being brought to Jesus.
+  reasoning_layer_used: POB translation and lexical decision for προσέφερον
+  rationale: Naming the implied people and Jesus makes the scene immediately clear while preserving the imperfect action.
+- pob_phrase: the disciples rebuked them
+  simplified_phrase: the disciples rebuked the people who were bringing them
+  preserved_meaning: The disciples sharply reproved those bringing the children, not the children themselves.
+  reasoning_layer_used: POB lexical and theological decisions for αὐτοῖς
+  rationale: Replacing the ambiguous pronoun makes the POB's established referent explicit.
+interpretive_expansions:
+- pob_phrase: the disciples rebuked them
+  rendering: the disciples rebuked the people who were bringing them
+  claim: The people bringing the children were the ones rebuked.
+  evidence:
+  - The POB lexical decision identifies the implied subject of “were bringing” as the most natural referent.
+  - The POB theological decision explicitly chooses the people bringing the children.
+  confidence: high
+  alternatives_preserved:
+  - The Greek pronoun itself could grammatically be read as referring to the children.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/013.yaml
   source_text_sha256: 5a5800bb4bb871b02c99eca96cd9fa19aaa86eec51739ec90156ac58e504f85b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 68b1e8a17e8321662bcdd39af7c6c1a99c042041b0605bf54d68f2617a0ee6c9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 11885f223581fdcb87821eabf2c75e030a0f08ae3a752f51bda3b64debbe634b
+  timestamp: '2026-07-12T07:21:07Z'
+  output_hash: 7f324d1c220774f568f655a19ca3140235a5a5ff4bbd91dba3d4ca3229161c74
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3106
+    completion_tokens: 355
+    total_tokens: 3461
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:07Z'
+  previous_text: People were bringing children to Jesus so that he would touch them, but the disciples rebuked them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e915dd883bcc4fbcec79d6f6aa21c95a964fcac76fadcbee00e0a35b611e22b1
+  review_summary: Naming Jesus and using ordinary purpose syntax make the draft clearer without adding interpretation. However, SPOB should make explicit the referent that the POB audit trail has already established; replacing the final pronoun prevents readers from mistaking the children for the ones rebuked.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

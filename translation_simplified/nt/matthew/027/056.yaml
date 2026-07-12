@@ -31,41 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Among them were Mary Magdalene, Mary the mother of James and Joseph, and the mother of the sons of Zebedee.
+  text: Among them were Mary Magdalene, Mary the mother of James and Joseph,[a] and the mother of Zebedee’s sons.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts read “Joses” instead of “Joseph.”
+    reason: textual_variant
 simplification_decisions:
-- pob_phrase: among whom were Mary Magdalene[a], and Mary the mother of James and Joseph, and the mother of the sons of Zebedee.
-  simplified_phrase: Among them were Mary Magdalene, Mary the mother of James and Joseph, and the mother of the sons of Zebedee.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 27 while simplifying sentence flow and common-reader wording.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source-grounding notes
-  rationale: Manual Codex SPOB drafting kept the passion narrative sequence, legal trial language, crucifixion details, titles for Jesus, death/resurrection signs, burial, and tomb-guard episode while reducing dense clauses and footnote markers into clear modern common English.
-retained_terms:
-- term: Mary Magdalene
-  reason: Retained because it is a named place, title, time marker, or key biblical term in the POB context.
+- pob_phrase: among whom
+  simplified_phrase: Among them
+  preserved_meaning: The words still identify women from the group mentioned in the previous verse.
+  reasoning_layer_used: POB lexical decision for ἐν αἷς and immediate context
+  rationale: The preceding verse makes “them” clear, so this wording is more natural without losing the link.
+- pob_phrase: the mother of the sons of Zebedee
+  simplified_phrase: the mother of Zebedee’s sons
+  preserved_meaning: She is still identified as the mother of Zebedee’s sons.
+  reasoning_layer_used: POB lexical decision for ἡ μήτηρ τῶν υἱῶν Ζεβεδαίου
+  rationale: The possessive form expresses the same family relationship in more natural English.
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB Matthew 27 base translation as the controlling meaning and uses Greek/source context only as an audit guardrail.
-  readability_notes:
-  - Uses shorter clauses and modern common English while preserving Matthew 27’s trial, crucifixion, death, burial, and guarded-tomb sequence.
-  compression_notes:
-  - POB technical alternatives and footnote markers are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: Changing “among whom” to “Among them” could weaken the grammatical link to the previous verse.
+    mitigation: The immediately preceding reference to the women makes the group explicit.
+  - risk: The name Joseph has a manuscript variant.
+    mitigation: The main text follows the POB reading, while the footnote preserves “Joses.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/027/056.yaml
   source_text_sha256: c2397100d8ad41cf580de385ea380b64fe8e836db21234dfb4e63e74a3bcff94
-  pob_commit_sha: 5fadc1013bd5a69e4107c4ba5c61c81fe8383fcf
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:21:48Z'
-  output_hash: 18798c024dde8ddfd7d820b1d0117f63d6e5f60ab2d0a870427a26de144f51c9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b3d97b8f12272865bbe73bb155e729caf80cdaed3edd3f2bea6197128eca2c52
+  timestamp: '2026-07-12T07:38:43Z'
+  output_hash: c3057cf9156343ab9baa4a9840c5672894138c570a1f61f53f689a0256de3d91
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3233
+    completion_tokens: 351
+    total_tokens: 3584
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Mary Magdalene
+  reason: Retained because it is a named place, title, time marker, or key biblical term in the POB context.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:43Z'
+  previous_text: Among them were Mary Magdalene, Mary the mother of James and Joseph, and the mother of the sons of Zebedee.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 66dd2067b79e73ce39f0b8e025871a061ad5c0dc431989a8ba079eb0f8981ee4
+  review_summary: '“Among them” is a warranted, clearer modernization of “among whom”: the preceding verse supplies the referent, so no live ambiguity or doctrinal meaning is lost. The listed women and family identifications are preserved accurately. Retain the textual-variant footnote in simplified form.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

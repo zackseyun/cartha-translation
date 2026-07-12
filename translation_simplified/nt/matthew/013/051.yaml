@@ -31,42 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: “Have you understood all these things?” They said to him, “Yes.”[a]
+  text: “Do you understand all these things?”[a] They said to him, “Yes.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Do you understand all these things?”
+    text: Or “Have you understood all these things?”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: Have you understood all these things?
+  simplified_phrase: Do you understand all these things?
+  preserved_meaning: Jesus asks whether the disciples understand everything he has just taught.
+  reasoning_layer_used: POB lexical decision and independent grounding review
+  rationale: The smoother present-tense question is easier to read, while the footnote preserves the completed-comprehension nuance.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: The present-tense question may weaken the Greek aorist’s completed-comprehension force.
+    mitigation: The footnote retains the POB wording “Have you understood.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/051.yaml
   source_text_sha256: 8d1a2f41293358f20c7609b048c41d8b112a8e5ced5527d94ede52f2abced527
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: bfcc8a3c6d5e12fe4453efdb39f358cbade437a2ac1409156c407e1e6edc0b31
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d6ee0e22926ba16594aa405045fc296868408dddff6a983367048d29eb1db31d
+  timestamp: '2026-07-12T07:37:06Z'
+  output_hash: d854c8ff798093940f03b49a64cf38d78811c8dee212389faa3b9b092eb3937a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2857
+    completion_tokens: 370
+    total_tokens: 3227
+    reasoning_tokens: 146
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:06Z'
+  previous_text: “Have you understood all these things?” They said to him, “Yes.”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 781f1894ba1982873c3b8304c2118bef39b72481ecd61a15a572261dbd2b8bb2
+  review_summary: 'The draft is faithful and doctrinally sound: it neither adds “Lord” nor introduces any interpretive expansion. However, it merely reproduces the POB wording and therefore does not meet SPOB’s understanding-first simplification purpose. The POB’s own lexical audit permits “Do you understand” as a natural English alternative; using it supplies a modest but real readability gain without exceeding the source’s semantic range. Retain the completed-comprehension wording in a footnote.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

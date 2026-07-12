@@ -37,41 +37,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said to them, “This is my blood of the covenant, which is poured out for many.
+  text: He said to them, “This is my blood of the covenant. It is poured out for many.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he said to them[a], “This is my blood of the covenant[c][b], which is poured out for many.”
-  simplified_phrase: He said to them, “This is my blood of the covenant, which is poured out for many.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-retained_terms:
-- term: covenant
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+- pob_phrase: And he said to them
+  simplified_phrase: He said to them
+  preserved_meaning: Jesus addresses the disciples as in the POB.
+  reasoning_layer_used: POB translation
+  rationale: Removing the opening conjunction gives natural English without changing the statement.
+- pob_phrase: This is my blood of the covenant, which is poured out for many
+  simplified_phrase: This is my blood of the covenant. It is poured out for many.
+  preserved_meaning: The blood remains covenantal and is poured out for many.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Two sentences make the declaration easier to follow while preserving both images.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Covenant” may be unfamiliar to some readers.
+    mitigation: It is retained because it is a key biblical concept and the controlling POB choice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/024.yaml
   source_text_sha256: 8dcf0797148901227c1e7da4cc246764f82f392f5ec6aec8d76c34130affc938
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 1da466b68eb19abd9543189f5069db6ff3c40c473160ca4745453c3de55d6cc1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b02fc8004c91e60b6bf3cb618c41b018e5303ede8b3c85fafabcf37b1dceae2f
+  timestamp: '2026-07-12T07:22:07Z'
+  output_hash: cb41fe0a5956d3625203c33cf051cd7f2e9124a59bb94f01e3c90ca9e7994414
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3391
+    completion_tokens: 580
+    total_tokens: 3971
+    reasoning_tokens: 320
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: covenant
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:07Z'
+  previous_text: He said to them, “This is my blood of the covenant, which is poured out for many.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c3d4743f2d6b6945b0ad4dd65a26b99cdd9350289c144e9c533a3f03cd3ec9be
+  review_summary: Revise for complete quotation punctuation. The wording faithfully preserves Mark’s “blood of the covenant” and “for many,” without adding “new,” substituting “all,” or importing a sacramental or atonement-system conclusion. The only wording change is modest, so the corrected text is acceptable as a light simplification but should not claim substantial clarity gains.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,54 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But if you do not believe his writings[a], how will you believe my words?
+  text: But if you do not believe what Moses wrote, how will you believe what I say?
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or 'letters.' The Greek word can refer to letters of the alphabet or documents; here it refers to the scriptures written by Moses.
-    reason: simplification_note
 simplification_decisions:
-- preserved_meaning: Retained the parallel structure of Moses' 'writings' versus Jesus' 'words' to preserve the rhetorical force and contrast of the original text.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the parallel structure of Moses' 'writings' versus Jesus' 'words' to preserve the rhetorical force and contrast of the original text.
-- preserved_meaning: Kept 'believe' consistently in both clauses to maintain alignment with the Greek verb 'πιστεύω' and prevent confusion.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept 'believe' consistently in both clauses to maintain alignment with the Greek verb 'πιστεύω' and prevent confusion.
-- preserved_meaning: Simplified the explanation in the footnote to help modern readers understand the lexical options for 'writings' without using overly technical jargon.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the explanation in the footnote to help modern readers understand the lexical options for 'writings' without using overly technical jargon.
-retained_terms:
-- term: writings
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: believe
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserves the contrast between 'γράμμασιν' (writings) and 'ῥήμασιν' (words) and the conditional 'εἰ δὲ' as a contrastive transition ('But if'). The referent of 'his' is Moses, as established in the preceding context.
-  readability_notes:
-  - The sentence structure is already short, direct, and highly readable, making substantial syntactical changes unnecessary.
-  compression_notes:
-  - No compression was used, as the POB base text is already concise and clear.
-  risk_flags:
-  - risk: None. This draft strictly aligns with the POB translation decisions.
-    mitigation: Flag retained for reviewer attention.
+- pob_phrase: his writings
+  simplified_phrase: what Moses wrote
+  preserved_meaning: The writings are explicitly identified as Moses' without narrowing them to a particular collection.
+  reasoning_layer_used: Immediate context and POB theological decision
+  rationale: John 5:45–46 and the POB audit identify Moses as the certain referent.
+- pob_phrase: my words
+  simplified_phrase: what I say
+  preserved_meaning: Jesus contrasts his spoken message with what Moses wrote.
+  reasoning_layer_used: POB lexical decision
+  rationale: The natural phrase keeps the distinction between written and spoken testimony.
+interpretive_expansions:
+- pob_phrase: his
+  rendering: Moses
+  claim: The pronoun refers to Moses.
+  evidence:
+  - John 5:45–46 explicitly names Moses and says that he wrote about Jesus.
+  - The POB theological decision identifies Moses as the intended referent.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/005/047.yaml
   source_text_sha256: 96d0193700c192f69ed99aa50af186e7b68eebe349c99bda94b2f40d051cdeaf
-  pob_commit_sha: 56d44a06d426abff18e599660a5a86f213e4514c
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 52c20be1b3b4e281021be6facc58419afa8093c90c8d8ced4e90e8fdcd378fe3
-  timestamp: '2026-05-28T06:45:25Z'
-  output_hash: 293d9881469f3f19d161cee1dee27946e423b492d39ee7d434dc631dbc131252
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9a63a5485e6cee9b79fb85c17d32fd075f0be45fd5feb372e8d3f1dc88d31230
+  timestamp: '2026-07-12T07:14:52Z'
+  output_hash: 755c52f72a82aba30fd015caae8693c2ba56ce41fe37497d64bc0626c436f50c
   usage:
-    prompt_tokens: 1813
-    completion_tokens: 377
-    total_tokens: 4982
+    prompt_tokens: 3538
+    completion_tokens: 274
+    total_tokens: 3812
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: writings
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: believe
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:52Z'
+  previous_text: But if you do not believe his writings[a], how will you believe my words?
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ec4691732bb18f3ff06991cddb3710e9fee5cb05b1c6c5bdc98942c8df3dcd3c
+  review_summary: The draft preserves the verse's meaning and rhetorical parallel, but it merely repeats POB and therefore does not meet the stated requirement for a meaningfully clearer SPOB rendering. Naming Moses is directly warranted by the immediate context and resolves the only likely modern-reader obstacle without importing doctrine. The footnote should be omitted with this revision.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

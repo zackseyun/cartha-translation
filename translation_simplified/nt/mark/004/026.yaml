@@ -37,41 +37,63 @@ base_translation:
     changes_summary: Removed the duplicated phrase 'a man' and rendered ὡς more naturally as 'as when' to reflect the Greek construction while keeping the formal tone.
 translation:
   language: en
-  text: 'He also said, “The kingdom of God is like this: a man scatters seed on the ground.'
+  text: 'He also said, “The kingdom of God is like this: a man scatters seed on the ground,”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: 'And he was saying[c][b][a], “The kingdom of God is like this: as when a man casts the seed upon the ground,”'
-  simplified_phrase: 'He also said, “The kingdom of God is like this: a man scatters seed on the ground.'
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: kingdom of God
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: And he was saying
+  simplified_phrase: He also said
+  preserved_meaning: Jesus continues speaking and introduces another comparison.
+  reasoning_layer_used: POB lexical decision for ἔλεγεν and narrative context
+  rationale: Natural narrative English replaces the awkward progressive wording without changing the speech event.
+- pob_phrase: as when a man casts the seed upon the ground
+  simplified_phrase: a man scatters seed on the ground
+  preserved_meaning: The representative man broadcasts seed over the ground.
+  reasoning_layer_used: POB lexical decisions for ἄνθρωπος, βάλλω, σπόρον, and ἐπὶ τῆς γῆς
+  rationale: “Scatters seed” clearly expresses the agricultural action while preserving the image of casting it.
+- pob_phrase: 'The kingdom of God is like this: as when'
+  simplified_phrase: 'The kingdom of God is like this:'
+  preserved_meaning: The comparison is introduced but remains open into the next verse.
+  reasoning_layer_used: POB theological decision and applied awkward-English review
+  rationale: The colon avoids a redundant comparison formula, while the final comma keeps the thought unfinished.
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: “Scatters” makes the farming sense of “casts” explicit.
+    mitigation: The immediate seed-and-ground context establishes this action without changing the source image.
+  - risk: Verse 26 remains grammatically incomplete when read alone.
+    mitigation: The trailing comma intentionally preserves the comparison that continues in verse 27.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/026.yaml
   source_text_sha256: 2dcfb28106eea9bbd8fc874baa09477e957afef24f7640ba3b682051b99acc10
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 146e6f0f43b3308d793a9b23e9facee682b82cc7e6b0c870d0f69fcf0927308c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fd68b6c4a45ac8b211a78245ea5764d8a732bb788ae13d6a55d82f57a93b1dbd
+  timestamp: '2026-07-12T07:22:24Z'
+  output_hash: fd73b2a6bd031ac4fb46e0345988b1e4bc341cdc55d901ab6419c5b25831bf86
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3723
+    completion_tokens: 396
+    total_tokens: 4119
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: kingdom of God
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:24Z'
+  previous_text: 'He also said, “The kingdom of God is like this: a man scatters seed on the ground.'
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3c433af3d08236d03151a40cea921f06fe40ae48f96429639f190412058d0c4c
+  review_summary: 'The simplification is warranted: “scatters seed on the ground” clearly conveys the agricultural action without adding doctrine or resolving the parable''s meaning. However, the punctuation must retain the open-ended, verse-spanning comparison. Replace the final period with a comma; the quotation remains open because the speech continues in the following verse.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

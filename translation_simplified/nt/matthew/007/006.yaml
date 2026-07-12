@@ -40,15 +40,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not give what is holy to dogs, and do not throw your pearls before pigs. Otherwise, they will trample them under their feet, turn on you, and tear you to pieces.
+  text: Do not give what is holy to dogs, and do not throw your pearls before pigs. Otherwise, they may trample them under their feet, turn on you, and tear you to pieces.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: Otherwise, they will trample them
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: turn on you, and tear you to pieces
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: Do not give what is holy to dogs, and do not throw your pearls before pigs. Otherwise, ...
-  reasoning_layer_used: POB audit trail
+- pob_phrase: lest
+  simplified_phrase: Otherwise, they may
+  preserved_meaning: This keeps the outcome as a danger that may follow, not a certainty.
+  reasoning_layer_used: POB lexical decision for μήποτε and grounding review
+  rationale: The wording replaces an uncommon conjunction while preserving the warning's non-absolute force.
+- pob_phrase: and turn and tear you to pieces
+  simplified_phrase: turn on you, and tear you to pieces
+  preserved_meaning: The animals turn against the hearers and violently tear them.
+  reasoning_layer_used: POB lexical decisions and applied revision
+  rationale: Adding “on you” makes the hostile turn clear in ordinary English.
+- pob_phrase: Do not give what is holy to dogs, and do not throw your pearls before pigs, lest
+  simplified_phrase: Do not give what is holy to dogs, and do not throw your pearls before pigs. Otherwise,
+  preserved_meaning: The two commands remain joined to one warning about the animals' response.
+  reasoning_layer_used: POB syntax and theological decision
+  rationale: Two sentences make the warning easier to follow without explaining the deliberately broad metaphors.
+translation_notes:
+  risk_flags:
+  - risk: The images of dogs and pigs remain harsh and are not explicitly interpreted.
+    mitigation: They are retained because the POB requires their force and deliberate ambiguity to remain intact.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/007/006.yaml
+  source_text_sha256: 638293e27d7136e8158c015be2e0230f0ada260c0d56872fbc4ff295e8d7b365
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9cbd8e3641cf2d725d63169f15a13b44babf38f38f1059e4be51ebd2ceb128e6
+  timestamp: '2026-07-12T07:36:22Z'
+  output_hash: 095ccb2bb51960a9ec0566c01e2a4c4fc0af3cc8087c3e63776589b2692c07b8
+  usage:
+    prompt_tokens: 3828
+    completion_tokens: 375
+    total_tokens: 4203
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: what is holy
   reason: Retained from POB's rendering of the neuter substantival adjective 'τὸ ἅγιον' to keep the generic, broad referent intact rather than over-specifying it.
@@ -58,33 +93,14 @@ retained_terms:
   reason: Retained as the key element of value in the second parallel metaphor.
 - term: pigs
   reason: Retained as the modern equivalent of 'swine' (preserving POB's lexical choice) to ensure the metaphor remains clear and accessible.
-translation_notes:
-  source_alignment_notes: The translation strictly aligns with the Greek SBLGNT structure as analyzed in the POB. It preserves the sequential relationship between the two main threats (trampling the pearls and turning to attack the speaker) and adheres to POB's decision to keep 'pigs' instead of the archaic 'swine', and 'throw' instead of 'cast'.
-  readability_notes:
-  - By replacing 'lest' with 'Otherwise, they will' and breaking the verse into two sentences, the warning becomes immediate and grammatically natural. The insertion of 'on you' after 'turn' provides necessary idiomatic clarity for modern readers.
-  compression_notes:
-  - No semantic details or metaphors were compressed or omitted. The physical imagery of trampling underfoot and tearing to pieces remains fully represented.
-  risk_flags:
-  - risk: The metaphors 'dogs' and 'pigs' can carry harsh or offensive connotations, but softening them would violate the POB's theological guidelines to preserve the raw force of the source-language imagery.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/007/006.yaml
-  source_text_sha256: 638293e27d7136e8158c015be2e0230f0ada260c0d56872fbc4ff295e8d7b365
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 2542b59d04f204bae323588df8419c9b204da66cc55447fd4ecd5ecd56257d31
-  timestamp: '2026-05-28T07:27:39Z'
-  output_hash: 4cd1ac073ddeb0d6bc68bb621db5d133b704187496e815700735ca311a5ba1fd
-  usage:
-    prompt_tokens: 2270
-    completion_tokens: 808
-    total_tokens: 6444
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:22Z'
+  previous_text: Do not give what is holy to dogs, and do not throw your pearls before pigs. Otherwise, they will trample them under their feet, turn on you, and tear you to pieces.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9c77e99c0e285de6a1314b3e0c30874bd899288826fb9fe88bcf1ab1bc26a10f
+  review_summary: The draft appropriately retains the verse’s deliberately unexplained metaphors and makes the warning easier to understand by replacing “lest” with “Otherwise” and clarifying that the animals turn against the hearers. However, “they will” overstates the conditional warned-of result. Replacing it with “they may” preserves the source’s modality while retaining the draft’s readability gains.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

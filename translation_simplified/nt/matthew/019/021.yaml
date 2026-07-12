@@ -31,52 +31,75 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 19:21 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''complete''].'
 translation:
   language: en
-  text: Jesus said to him, “If you want to be perfect,[a] go, sell your possessions and give to the poor, and you will have treasure in heaven. Then come, follow me.”
+  text: Jesus said to him, “If you want to be complete,[a] go and sell what you own, and give the money to the poor. Then you will have treasure in heaven. Come, follow me.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek word can mean perfect, complete, or mature.
+    text: The Greek word can also mean “perfect” or “mature.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: If you want to be perfect
-  simplified_phrase: If you want to be perfect
-  preserved_meaning: Jesus names the condition of being perfect/complete/mature.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Keeps POB's current text while noting the lexical range.
-- pob_phrase: then come, follow me
-  simplified_phrase: Then come, follow me
-  preserved_meaning: Jesus calls the man to follow him after giving to the poor.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Splits the sentence for readability.
-retained_terms:
-- term: perfect
-  reason: Retained because POB currently uses this lexical rendering and notes the range.
-- term: treasure in heaven
-  reason: Retained as Jesus' promise.
+  simplified_phrase: If you want to be complete
+  preserved_meaning: Jesus calls for wholehearted, undivided discipleship rather than implying sinless perfection.
+  reasoning_layer_used: POB lexical and theological decisions on τέλειος
+  rationale: “Complete” gives the contextual sense more clearly for modern readers.
+- pob_phrase: sell your possessions and give to the poor
+  simplified_phrase: sell what you own, and give the money to the poor
+  preserved_meaning: The man must sell his property and use the proceeds to help poor people.
+  reasoning_layer_used: POB lexical decisions and immediate command sequence
+  rationale: The wording makes explicit what is given after the possessions are sold.
+- pob_phrase: and you will have treasure in heaven; then come, follow me
+  simplified_phrase: Then you will have treasure in heaven. Come, follow me.
+  preserved_meaning: Jesus promises heavenly treasure and then summons the man to discipleship.
+  reasoning_layer_used: POB syntax and lexical decision for δεῦρο
+  rationale: Short sentences separate the promise from the final command.
+interpretive_expansions:
+- pob_phrase: give to the poor
+  rendering: give the money to the poor
+  claim: What is given is the proceeds from selling what he owns.
+  evidence:
+  - The command to give immediately follows the command to sell his possessions.
+  - The POB rationale identifies the giving as material support for poor people.
+  confidence: high
+  alternatives_preserved:
+  - give to the poor
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the POB record for Matthew 19:21; no external LLM or API was used.
-  readability_notes:
-  - Uses modern common English while keeping the controlling POB meaning.
-  compression_notes:
-  - Only formal or repeated wording is simplified; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Complete” may sound less familiar than the traditional “perfect.”
+    mitigation: The footnote preserves “perfect” and “mature” as viable lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/019/021.yaml
   source_text_sha256: 1daa9311167e6c765728f6f0bde6de10bc8d246b3ab1b00d255ebf535567cc16
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:30Z'
-  output_hash: ea59c39643f3ad8aaaf595c32789e50dac91a8a627a969dbb801001542299ab9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 25bd82947895d285773a8feaf2793ca160295c91dfe768c4b0555ac6fccc108a
+  timestamp: '2026-07-12T07:37:00Z'
+  output_hash: 37baf07855f00eff54a191c0522163bd1ceb61202a6ca59d561b18f2d1e9e131
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3836
+    completion_tokens: 493
+    total_tokens: 4329
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: perfect
+  reason: Retained because POB currently uses this lexical rendering and notes the range.
+- term: treasure in heaven
+  reason: Retained as Jesus' promise.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:00Z'
+  previous_text: Jesus said to him, “If you want to be perfect,[a] go, sell your possessions and give to the poor, and you will have treasure in heaven. Then come, follow me.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6078089612dcc8637f09bdb00902ba7f29230deea676bcbc9ecdf9be622f9721
+  review_summary: Revise. Splitting the final instruction into a new sentence is a modest readability improvement, but the draft otherwise repeats POB and retains “perfect,” whose common modern sense can imply sinless moral perfection. “Complete” is directly supported by the POB lexical and theological audit trail and better communicates the contextual demand for wholehearted discipleship. Separating the promise from the commands also improves readability without changing the sequence or content.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,41 +34,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So they went away in the boat to a desolate place by themselves.
+  text: So they went away by boat to a deserted place by themselves.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And they went away
   simplified_phrase: So they went away
-  preserved_meaning: Shows that the disciples respond to Jesus' invitation.
-  reasoning_layer_used: POB audit trail
-  rationale: '''So'' makes the narrative consequence clear.'
-retained_terms:
-- term: desolate place
-  reason: Preserves continuity with Jesus' instruction.
-translation_notes:
-  source_alignment_notes: Preserves the boat journey, isolated destination, and privacy.
-  readability_notes:
-  - The POB is already clear, with only a connector adjusted.
-  compression_notes:
-  - No detail is removed.
+  preserved_meaning: They left in response to Jesus’ invitation in the preceding verse.
+  reasoning_layer_used: Immediate context and POB connector alternatives
+  rationale: “So” makes the narrative connection clear without changing the action.
+- pob_phrase: in the boat
+  simplified_phrase: by boat
+  preserved_meaning: They traveled using the boat.
+  reasoning_layer_used: POB lexical alternatives
+  rationale: “By boat” is more natural English for the means of travel.
+- pob_phrase: to a desolate place
+  simplified_phrase: to a deserted place
+  preserved_meaning: Their destination was an uninhabited, isolated place.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: “Deserted” avoids suggesting devastation and clearly conveys separation from the crowds.
+interpretive_expansions:
+- pob_phrase: And
+  rendering: So
+  claim: Their departure follows as a response to Jesus’ invitation.
+  evidence:
+  - Mark 6:31 records Jesus inviting them to go away and rest.
+  - The POB lists “So” as a possible connector.
+  confidence: high
+  alternatives_preserved:
+  - And
+  - Then
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/032.yaml
   source_text_sha256: 00675494bcdb65c4b20f278f35815b5d72793306ecf4c4fd7be7aebba2d7ff81
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:45Z'
-  output_hash: 72c90552c54a9bad22d19bb92e75bb6e5df56ed857276ca7aa64616abe0c7d05
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f0e777ea94e8cb8dc71878b889e21021c0c300bc919f51da3ca9121d84a08074
+  timestamp: '2026-07-12T07:22:38Z'
+  output_hash: fb0b20f1a0c7ba0c8cbc67c865c8dde51b32979e336e234aec0d698ac5eaba9a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2866
+    completion_tokens: 331
+    total_tokens: 3197
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: desolate place
+  reason: Preserves continuity with Jesus' instruction.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:38Z'
+  previous_text: So they went away in the boat to a desolate place by themselves.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7f0b78d54d3e707cb9140cd15c6f3728a00ac65018fcf589dd7c9f3655a59d46
+  review_summary: '“So” is a warranted contextual clarification: the disciples are acting in response to Jesus’ invitation in the preceding verse. However, the draft is not meaningfully clearer overall because “desolate place” remains potentially misleading or less accessible. “Deserted place” is supported by the POB lexical audit and better communicates the intended isolated setting without adding interpretation.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

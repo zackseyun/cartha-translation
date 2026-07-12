@@ -31,38 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to them, “Have you come out with swords and clubs to arrest me as though I were a robber?
+  text: Jesus said to them, “Have you come out with swords and clubs to arrest me as if I were a robber?[a]”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “bandit,” “outlaw,” or “rebel.” The Greek word can refer to a violent brigand or insurgent, not only a thief.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And Jesus answered and said to them[a], “Have you come out as against a robber, with swords and clubs, to arrest me?”
-  simplified_phrase: Jesus said to them, “Have you come out with swords and clubs to arrest me as though I were a robber?
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: And Jesus answered and said to them
+  simplified_phrase: Jesus said to them
+  preserved_meaning: Jesus responds directly to the armed group.
+  reasoning_layer_used: POB lexical decisions for ἀποκριθεὶς and εἶπεν
+  rationale: The paired Greek speech formula is expressed naturally in modern English without losing the response.
+- pob_phrase: Have you come out as against a robber, with swords and clubs, to arrest me?
+  simplified_phrase: Have you come out with swords and clubs to arrest me as if I were a robber?
+  preserved_meaning: Jesus challenges them for treating him like a dangerous criminal requiring armed force.
+  reasoning_layer_used: POB translation and lexical rationale for ὡς ἐπὶ λῃστήν
+  rationale: Reordering the clauses makes the rhetorical comparison immediately clear.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Robber” may suggest only a nonviolent thief to modern readers.
+    mitigation: The footnote preserves the documented senses “bandit,” “outlaw,” and “rebel.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/048.yaml
   source_text_sha256: f82f1d0c49618cb26882f4e6a9ce414b3ce46330553965417a99f11e68e6735d
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: d504f4baed50d9f97c8103053eed309e5556a2669c4d4963d57cd53497cd65a0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 59b47587191fa421c327766720ad3dec25fff0c0c89c4f6a8665584049593c32
+  timestamp: '2026-07-12T07:23:25Z'
+  output_hash: 4fc7f92a7b1a0240fbdf796877f473ebe84ced920d1d513e23656865cc8dbd48
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3474
+    completion_tokens: 406
+    total_tokens: 3880
+    reasoning_tokens: 44
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:25Z'
+  previous_text: Jesus said to them, “Have you come out with swords and clubs to arrest me as though I were a robber?
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 085a735414d4c5b8b3fb67ddb46cd9e02e49fd9d1495da88ed9f66373a116541
+  review_summary: 'The reordered wording is a warranted and clearer expression of Jesus’ rhetorical question: the armed approach is portrayed as treating him like a dangerous criminal. It does not add doctrine or collapse the force of the comparison. Revise for complete quotation punctuation and retain the POB lexical note so that “robber” is not misunderstood too narrowly.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,47 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He left Judea and went back to Galilee.
+  text: Jesus left Judea and went back to Galilee.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Capitalized 'He' to begin the sentence naturally for a modern reader.
-  reasoning_layer_used: POB audit trail
-  rationale: Capitalized 'He' to begin the sentence naturally for a modern reader.
-- preserved_meaning: Omitted the technical footnote regarding the Greek adverb 'πάλιν' ('again' vs. 'back') because 'went back' is already the most accurate and natural English phrasing for a general reader, and the nuance does not affect the theological or narrative meaning.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the technical footnote regarding the Greek adverb 'πάλιν' ('again' vs. 'back') because 'went back' is already the most accurate and natural English phrasing for a general reader, and the nuance does not affect the theological or narrative meaning.
-retained_terms:
-- term: Judea
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: Galilee
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the exact geographic movement from Judea to Galilee. Preserved POB's choice of 'left' for 'ἀφῆκεν' and 'went back' for 'ἀπῆλθεν πάλιν'.
-  readability_notes:
-  - The sentence is short, direct, and uses modern, common English. Capitalization of the initial pronoun improves verse-level readability.
-  compression_notes:
-  - The primary compression was the removal of the translational footnote. The main text itself was already highly clear and did not require lexical simplification.
-  risk_flags:
-  - risk: None. The geographical references are stable, and the removal of the footnote poses no theological risk.
-    mitigation: Flag retained for reviewer attention.
+- pob_phrase: he left Judea
+  simplified_phrase: Jesus left Judea
+  preserved_meaning: Jesus remains the subject established by the immediate context.
+  reasoning_layer_used: Immediate context and grounding review
+  rationale: Naming Jesus removes the unclear isolated pronoun without changing the action.
+- pob_phrase: went back to Galilee[a]
+  simplified_phrase: went back to Galilee
+  preserved_meaning: Jesus returned to Galilee, as POB's choice of “back” indicates.
+  reasoning_layer_used: POB lexical decision for πάλιν
+  rationale: The natural wording preserves the return sense without a technical footnote.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The implied subject is Jesus.
+  evidence:
+  - John 4:1–3 establishes Jesus as the subject of the action.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/004/003.yaml
   source_text_sha256: 3becca18eec1e6f1b3189557cafbbe50c27f4a58a90838fc8695d9db31c7d0bc
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 871aa294b80d25f2dddf2cadd91a395eb3355b879f1ef8ef5dddc9e0f3e51c3e
-  timestamp: '2026-05-28T05:45:35Z'
-  output_hash: dcfbc1c5879fd740898f30e9eac4cca310fa887016df68a7e137d5f0e3bd65c0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2bd718a3985f979b08e68fd66867bf1c1612a32a8de966734d47a3188f7ab789
+  timestamp: '2026-07-12T07:13:57Z'
+  output_hash: 48eff05b408c5da6ee33e02b3c21b02e8aacf3371f4fa543cb9b1a913a7c12b1
   usage:
-    prompt_tokens: 1332
-    completion_tokens: 323
-    total_tokens: 3359
+    prompt_tokens: 2921
+    completion_tokens: 256
+    total_tokens: 3177
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Judea
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: Galilee
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:57Z'
+  previous_text: He left Judea and went back to Galilee.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7f04f3aef271bc5ceae5af960c113c1ecc915c854b03e0280aeb175956543fda
+  review_summary: 'Revise for a genuine understanding-first improvement: replace the isolated pronoun with “Jesus.” This explicitly supplies the subject established in the immediate context without adding interpretation. “Went back to Galilee” remains supported by the POB lexical decision for πάλιν and should be retained.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

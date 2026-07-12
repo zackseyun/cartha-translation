@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/018/025.yaml
-  text: Now Simon Peter was standing and warming himself. So they said to him[a], “You are not also one of his disciples, are you?” He denied it and said, “I am not.”
+  text: Simon Peter was standing and warming himself. So they said to him[a], “You are not also one of his disciples, are you?” He denied it and said, “I am not.”
   footnotes:
   - marker: a
     text: Or, “Surely you are not also one of his disciples?” The Greek question with μή expects a negative answer.
@@ -31,14 +31,45 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now Simon Peter was standing and warming himself. So they said to him, “You are not one of his disciples too, are you?” He denied it and said, “I am not.”
+  text: Simon Peter was standing and warming himself. So they said to him, “You are not one of his disciples too, are you?” He denied it and said, “I am not.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: John 18 POB base wording
-  simplified_phrase: Now Simon Peter was standing and warming himself. So they said to him, “You are not one of his disciples too, are you?” He denied it and said, “I am not.”
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and footnotes
-  rationale: Manual Codex drafting simplified sentence structure, clarified implied subjects where needed, and retained important theological terms without adding new interpretation.
+- pob_phrase: You are not also one of his disciples, are you?
+  simplified_phrase: You are not one of his disciples too, are you?
+  preserved_meaning: The question includes Peter with Jesus’ other disciples and expects him to deny it.
+  reasoning_layer_used: POB lexical decision for Μὴ καὶ σὺ ... εἶ;
+  rationale: Moving “also” to the common-English “too” makes the question more natural while retaining its negative expectation.
+- pob_phrase: He denied it and said, “I am not.”
+  simplified_phrase: He denied it and said, “I am not.”
+  preserved_meaning: Peter directly denies being one of Jesus’ disciples without making a broader claim.
+  reasoning_layer_used: POB theological decision on the nature of Peter’s denial
+  rationale: The concise wording is already clear and avoids expanding the denial beyond the text.
+translation_notes:
+  risk_flags:
+  - risk: Adding “Now” could imply an explicit temporal marker absent from the source wording.
+    mitigation: The revised text begins directly with Simon Peter, following the POB cleanup decision.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/018/025.yaml
+  source_text_sha256: d74b9fe9cb914d5c528ef3259c037334e0f713b7db98ea88ee6e83778d4750cd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fde77158aa8b0b2c1a6c00d015a40f3a92b50915b8d927c24c7569ed7bd052dd
+  timestamp: '2026-07-12T07:17:45Z'
+  output_hash: af3a8eaf027df4e8477c3829833915f07baeb4548b7d4c006aaf194bd3fba021
+  usage:
+    prompt_tokens: 3559
+    completion_tokens: 324
+    total_tokens: 3883
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Simon Peter
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
@@ -48,30 +79,14 @@ retained_terms:
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
 - term: I am not
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
-translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses shorter, clearer clauses and modern common English while keeping John 18's narrative and trial sequence.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/018/025.yaml
-  source_text_sha256: d74b9fe9cb914d5c528ef3259c037334e0f713b7db98ea88ee6e83778d4750cd
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:28Z'
-  output_hash: 04355a2f3de859b9b123e32e4c4914d065a02b2003f7d922f1be7cfe0af19830
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:45Z'
+  previous_text: Now Simon Peter was standing and warming himself. So they said to him, “You are not one of his disciples too, are you?” He denied it and said, “I am not.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fe58d1eba9aa514123364b16b1251fc85fa1f310610ee4f3ba2ca88296308ae5
+  review_summary: 'Revise solely to remove “Now,” which conflicts directly with the supplied POB lexical decision. The remaining wording is source-grounded and clear: “too” adequately conveys καὶ σὺ, the tag question preserves the negative-answer expectation of μή, and Peter’s concise denial is retained without doctrinal expansion.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

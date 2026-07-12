@@ -37,24 +37,57 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 10:21 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''and contrary''].'
 translation:
   language: en
-  text: But about Israel he says[a], 'All day long I have stretched out my hands to a disobedient[b] and contrary[c] people.'
+  text: But about Israel he says[a], “All day long I have stretched out my hands to a disobedient[b] and opposing[c] people.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'But to Israel he says.'
-    reason: simplification_note
+    text: Or “But to Israel he says.”
+    reason: alternative_reading
   - marker: b
-    text: '''Disobedient'' can also carry the sense ''unbelieving'' or ''refusing to be persuaded.'''
-    reason: simplification_note
+    text: “Disobedient” can also mean “unbelieving” or “refusing to be persuaded.”
+    reason: lexical_alternative
   - marker: c
-    text: Or 'opposing,' 'contradicting,' or 'speaking against.'
-    reason: simplification_note
+    text: Or “contradicting” or “speaking against.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: But concerning Israel he says ... a disobedient and opposing people
-  simplified_phrase: But about Israel he says ... a disobedient and contrary people
-  preserved_meaning: Preserves the statement about Israel and the two descriptions of resistance.
-  reasoning_layer_used: POB audit trail
-  rationale: '''About Israel'' is simpler than ''concerning Israel,'' and ''contrary'' follows the source record''s chosen rendering while footnoting alternatives.'
+- pob_phrase: But concerning Israel
+  simplified_phrase: But about Israel
+  preserved_meaning: The statement concerns Israel, while direct address remains possible.
+  reasoning_layer_used: POB lexical decision and alternative-reading footnote
+  rationale: “About” is common English for the topic sense of “concerning.”
+- pob_phrase: a disobedient and opposing people
+  simplified_phrase: a disobedient and opposing people
+  preserved_meaning: The people both refuse God and actively resist him.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “Opposing” clearly preserves active resistance and avoids the ambiguity of “contrary.”
+translation_notes:
+  risk_flags:
+  - risk: Readers may take the statement only as being about Israel rather than spoken to Israel.
+    mitigation: Footnote [a] preserves the possible direct-address reading.
+  - risk: “Disobedient” may obscure the term’s overlap with unbelief or refusal to be persuaded.
+    mitigation: Footnote [b] preserves those lexical senses.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/010/021.yaml
+  source_text_sha256: a13c7c83c1314864cd70ff82fb0e07e1d8ddcc01bff6a4057d7ac602b3d09c4a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d970bc065ce2b3dda00d5092a9c337edd85b4435908072514a62ca5f627da045
+  timestamp: '2026-07-12T07:42:03Z'
+  output_hash: b2b8c749d5bf85602cd3f9a6699fc1dc5f46b6cfbfdc96b3ca2f8a9e1910735d
+  usage:
+    prompt_tokens: 3981
+    completion_tokens: 377
+    total_tokens: 4358
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Israel
   reason: Retained topic of the citation.
@@ -62,30 +95,14 @@ retained_terms:
   reason: Retained key description.
 - term: contrary
   reason: Retained audit-layer chosen rendering.
-translation_notes:
-  source_alignment_notes: Keeps the image of God's outstretched hands and the description of persistent resistance.
-  readability_notes:
-  - Changes 'concerning' to 'about'.
-  compression_notes:
-  - No image or description is removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/010/021.yaml
-  source_text_sha256: a13c7c83c1314864cd70ff82fb0e07e1d8ddcc01bff6a4057d7ac602b3d09c4a
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:46Z'
-  output_hash: 9e06d175c9797d7b2c285e5d14b81361de2e77a90e4f8bc4fd4ce866f293d775
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:03Z'
+  previous_text: But about Israel he says[a], 'All day long I have stretched out my hands to a disobedient[b] and contrary[c] people.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 25caaecb16dd2deb316b42c8ee5e325a652720a775410303b9a22862d79b39da
+  review_summary: “About Israel” is a warranted and clearer simplification of “concerning Israel,” and the footnotes appropriately preserve the address/topic and lexical alternatives. However, “contrary” is not a meaningful clarity improvement and weakens the immediately understandable sense of active opposition. Replace it with “opposing,” while retaining “contrary” as an alternative note.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,39 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Six days before the Passover, Jesus came to Bethany, where Lazarus lived—the man Jesus had raised from the dead.
+  text: So Jesus came to Bethany six days before the Passover. Lazarus was there—the man Jesus had raised from the dead.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-retained_terms:
-- term: Passover
-  reason: Preserves the named Jewish feast in the POB base text.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: So Jesus came to Bethany six days before the Passover
+  simplified_phrase: So Jesus came to Bethany six days before the Passover.
+  preserved_meaning: Jesus came to Bethany at the stated time, in connection with the preceding narrative.
+  reasoning_layer_used: POB lexical decisions for οὖν and πρὸ ἓξ ἡμερῶν τοῦ πάσχα
+  rationale: The first clause remains direct and keeps “So” as the narrative link.
+- pob_phrase: where Lazarus was
+  simplified_phrase: Lazarus was there
+  preserved_meaning: Lazarus was in Bethany without specifying that he lived or stayed there.
+  reasoning_layer_used: POB lexical decision for ὅπου ἦν Λάζαρος
+  rationale: A separate sentence gives the same locative meaning in more natural English.
+- pob_phrase: whom Jesus had raised from the dead
+  simplified_phrase: the man Jesus had raised from the dead
+  preserved_meaning: Jesus is explicitly identified as the one who previously raised Lazarus.
+  reasoning_layer_used: POB theological decision on resurrection language
+  rationale: The added noun makes the relative description easy to follow while retaining the repeated name “Jesus.”
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/001.yaml
   source_text_sha256: 4d7e6759aec0a3076ac2b1d92b22aa22fac4ea0f0f8f0c3a40b63afe0f5b5cb3
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:53Z'
-  output_hash: b6b4c66ea9563b868e36dddf4f4529267d0722d7fe92f2c58ff9be9cc3f9dbd9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 24de5037610713d26ff55a33a1917ef75180daa78a947de442ffd4ba61f71d54
+  timestamp: '2026-07-12T07:16:11Z'
+  output_hash: 969ffde6b7e526f7f00542dabad2028b7fce0317351a5debc919e15620fab810
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3246
+    completion_tokens: 348
+    total_tokens: 3594
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Passover
+  reason: Preserves the named Jewish feast in the POB base text.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:11Z'
+  previous_text: Six days before the Passover, Jesus came to Bethany, where Lazarus lived—the man Jesus had raised from the dead.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 666f435f483fd54d493d9bdb7b5858c676025761310afbe0930d85e5bb9f18ea
+  review_summary: The draft is clearer in sentence flow and its resurrection wording is faithful. However, “lived” is an unwarranted specification that the POB audit trail specifically identifies as added information, and omission of “So” loses the verse’s narrative link. The recommended text uses ordinary English while retaining both the locative sense and the connective.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

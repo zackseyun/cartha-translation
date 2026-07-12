@@ -31,14 +31,49 @@ base_translation:
     changes_summary: Removed 'Now' because δέ here is a simple connective and does not require explicit rendering in English; otherwise retained the accurate wording.
 translation:
   language: en
-  text: His appearance was like lightning, and his clothing was white as snow.
+  text: The angel’s appearance was like lightning, and his clothing was white as snow.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: His appearance was like lightning
-  simplified_phrase: His appearance was like lightning
-  preserved_meaning: Retained the source image and the POB referent, the angel.
-  reasoning_layer_used: POB theological decision
-  rationale: The image is already clear and should not be flattened.
+- pob_phrase: His appearance
+  simplified_phrase: The angel’s appearance
+  preserved_meaning: The pronoun refers to the angel described in the preceding verse, not to Jesus.
+  reasoning_layer_used: POB theological decision and immediate context
+  rationale: Naming the angel prevents a likely misunderstanding for readers encountering the verse on its own.
+- pob_phrase: his clothing white as snow
+  simplified_phrase: his clothing was white as snow
+  preserved_meaning: The angel’s clothing is compared to snow in whiteness.
+  reasoning_layer_used: POB lexical decisions
+  rationale: Adding “was” makes the clause complete and natural in modern English.
+interpretive_expansions:
+- pob_phrase: His
+  rendering: The angel’s
+  claim: The person being described is the angel of the Lord from the preceding verse.
+  evidence:
+  - Matthew 28:2 introduces the angel who remains the nearest antecedent.
+  - The POB referent decision identifies the pronouns as referring to the angel.
+  confidence: high
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/028/003.yaml
+  source_text_sha256: cc72cbdea8c7145431fa272796a48e376d11c865d5dc07358a500f1ba30e4101
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4ed55ea976ca234cc403f8e21379e43b0cb0033c7d849f1d96c69ee96eacb8df
+  timestamp: '2026-07-12T07:39:13Z'
+  output_hash: c00bf73712ad2e5801238a38df94ab2804db375cd1d19a21683964a3e336017b
+  usage:
+    prompt_tokens: 2983
+    completion_tokens: 288
+    total_tokens: 3271
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: appearance
   reason: Retained to preserve the visible description of the angel.
@@ -46,30 +81,13 @@ retained_terms:
   reason: Retained as the source-language image.
 - term: white as snow
   reason: Retained as the source-language comparison.
-translation_notes:
-  source_alignment_notes: Keeps the pronoun referring to the angel and preserves both visual comparisons.
-  readability_notes:
-  - The POB wording is already plain.
-  compression_notes:
-  - No content compressed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/028/003.yaml
-  source_text_sha256: cc72cbdea8c7145431fa272796a48e376d11c865d5dc07358a500f1ba30e4101
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:26:31Z'
-  output_hash: f3f6763eb6fa1549600ca8e32150de798c508c488826cc3fee7abfecd667546c
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:13Z'
+  previous_text: His appearance was like lightning, and his clothing was white as snow.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5d682f93b013f5e2845acecf48af7ce35d952fbf48a65304389574cabee92c5b
+  review_summary: The description and its similes are faithfully retained. Revise to identify the angel, a clarification directly established by the preceding verse and POB’s own referent audit; this prevents an avoidable misunderstanding without adding doctrine or altering the imagery.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

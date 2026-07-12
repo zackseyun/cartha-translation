@@ -31,38 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then the disciples came to Jesus privately and asked, “Why could we not drive it out?”
+  text: Then the disciples came to Jesus privately and asked, “Why couldn’t we drive it out?”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “him,” referring to the boy rather than the demon.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Matthew 17 POB wording
-  simplified_phrase: Then the disciples came to Jesus privately and asked, “Why could we not drive it out?”
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 17:19 while using simpler modern common English.
-  reasoning_layer_used: POB translation, footnotes, lexical decisions, and theological decisions
-  rationale: Preserves the private question and keeps it as the demon being driven out.
+- pob_phrase: said
+  simplified_phrase: asked
+  preserved_meaning: The disciples spoke a direct question to Jesus.
+  reasoning_layer_used: POB lexical decision and immediate syntax
+  rationale: “Asked” states the function of their speech in natural English.
+- pob_phrase: were not able
+  simplified_phrase: couldn’t
+  preserved_meaning: The disciples were unable to perform the action.
+  reasoning_layer_used: POB lexical decision
+  rationale: “Couldn’t” expresses the same inability in common modern English.
+- pob_phrase: cast it out
+  simplified_phrase: drive it out
+  preserved_meaning: The disciples were trying to expel the demon.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “Drive out” clearly preserves the force of expelling a demon.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing POB YAML record for Matthew 17:19; no external LLM or API was used.
-  readability_notes:
-  - Uses short sentences and common modern English while keeping the verse's controlling POB meaning.
-  compression_notes:
-  - Compresses repeated or formal phrasing only where the same meaning remains clear.
+  risk_flags:
+  - risk: “It” most likely refers to the demon, but the pronoun may refer to the boy.
+    mitigation: The footnote preserves the POB’s documented alternative reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/017/019.yaml
   source_text_sha256: f0e8dd21b77aef36caff2fe1834a6bc90bef91f06c840eeac148634474a6cb2b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:23Z'
-  output_hash: e1d1f5e38fff9908111146256c7f239cef57d73947d3db501b9a3d2b03a2f21a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f1f3108f5eb66146b5337a821c7eb709be6a0a992b1b4bbe54542f644cba739b
+  timestamp: '2026-07-12T07:36:47Z'
+  output_hash: 39ca1fd605701c8161b14abe7e487402e17d3be7c5ec3ed8e967223b3d9b2238
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3344
+    completion_tokens: 398
+    total_tokens: 3742
+    reasoning_tokens: 74
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:47Z'
+  previous_text: Then the disciples came to Jesus privately and asked, “Why could we not drive it out?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: cccaaf67baefcdd1a21f749dd3af947365fe866376141efc9a79ba0134610b9a
+  review_summary: '“Asked,” “couldn’t,” and “drive out” are warranted modern simplifications: the utterance is a question, “couldn’t” naturally conveys inability, and “drive out” is a documented lexical alternative in this exorcism context. However, the draft must retain a concise footnote for the alternative referent of “it,” as preserved in the POB audit trail.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

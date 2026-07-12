@@ -31,45 +31,60 @@ base_translation:
     changes_summary: Replaced 'will a man be benefited' with the more natural and accurate 'will it profit a man' for ὠφεληθήσεται. Kept 'life' for ψυχή consistently within the verse.
 translation:
   language: en
-  text: What good will it do someone to gain the whole world but lose their life? Or what can anyone give in exchange for their life?[a]
+  text: What good will it do a man to gain the whole world but lose his life? Or what will a man give in exchange for his life?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or soul in both places. The Greek word can mean life, self, or soul depending on the context.
+    text: Or “soul” in both places. The Greek word can mean life, self, or soul depending on the context.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: what will it profit a man
-  simplified_phrase: What good will it do someone
-  preserved_meaning: No worldly gain is worth the loss of one’s life or soul.
-  reasoning_layer_used: POB translation and lexical footnote
-  rationale: What good will it do someone is simpler and more inclusive while preserving the rhetorical question.
-retained_terms:
-- term: whole world
-  reason: Retained to preserve the scale of the contrast.
+- pob_phrase: For what will it profit a man
+  simplified_phrase: What good will it do a man
+  preserved_meaning: The question asks what benefit a man receives from gaining everything at the cost of his life.
+  reasoning_layer_used: POB translation and lexical decision for ὠφεληθήσεται
+  rationale: This uses ordinary English while preserving the rhetorical question about benefit.
+- pob_phrase: forfeits his life
+  simplified_phrase: lose his life
+  preserved_meaning: The man suffers the loss of his life despite gaining the whole world.
+  reasoning_layer_used: POB lexical decision for ζημιωθῇ
+  rationale: “Lose” states the same contrast more directly without weakening the supreme value of what is lost.
 translation_notes:
-  source_alignment_notes: Preserves both rhetorical questions and the life/soul issue.
-  readability_notes:
-  - Replaces profit a man with ordinary modern language.
-  compression_notes:
-  - The two-question structure is retained.
+  risk_flags:
+  - risk: “Lose” may convey less of the exchange nuance than “forfeit.”
+    mitigation: The second question explicitly preserves the exchange metaphor.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/016/026.yaml
   source_text_sha256: cfcd9427764a98228eace4db97a37687d595e24ca9180240bb7cfc0fee7b2073
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:59:24Z'
-  output_hash: 4969fe8f7b3f4e934a92e80f0ce36460f5bade6d975cd0a1c57bb81bf98d7862
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9a269f27f345d394595c4f0ae479d68831dba64be8a432f0e0c3f519993d480b
+  timestamp: '2026-07-12T07:36:44Z'
+  output_hash: 470bf8fdc14493d94323c747303f854c6a003a810485dee89efacf1b6d4bbc93
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3966
+    completion_tokens: 317
+    total_tokens: 4283
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: whole world
+  reason: Retained to preserve the scale of the contrast.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:44Z'
+  previous_text: What good will it do someone to gain the whole world but lose their life? Or what can anyone give in exchange for their life?[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 21b275e7f898ef6cc31617b96f8eb9adf417cfd5c061783cccf36ca156e13367
+  review_summary: The draft makes the first question substantially more natural for modern readers and appropriately keeps the ψυχή/soul alternative in a concise footnote. However, “can anyone give” shifts the second question from the source’s future rhetorical wording to an ability statement. Restore “will ... give.” To follow the supplied POB audit trail, retain “a man” rather than substituting gender-neutral generics unless SPOB policy expressly authorizes that departure.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

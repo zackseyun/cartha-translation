@@ -34,46 +34,69 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 6:13 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''that were left over''].'
 translation:
   language: en
-  text: So they gathered them and filled twelve baskets with the pieces[a] of the five barley loaves left over by those who had eaten.
+  text: So they collected the pieces left over from the five barley loaves after the people had eaten and filled twelve baskets.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or 'fragments'.
-    reason: simplification_note
 simplification_decisions:
-- simplified_phrase: So they gathered them and filled twelve baskets with the pieces of the five barley loaves left over by those who had eaten.
-  preserved_meaning: Removed the comma to improve sentence flow, and changed 'pieces from' to 'pieces of' to make the English more natural for a modern reader without losing the connection to the original loaves.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the comma to improve sentence flow, and changed 'pieces from' to 'pieces of' to make the English more natural for a modern reader without losing the connection to the original loaves.
-retained_terms:
-- term: barley loaves
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: baskets
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the POB choice of 'by those who had eaten' (τοῖς βεβρωκόσιν) to preserve the direct relation between the eaters and the remaining food, rather than generalizing to 'after everyone had eaten.'
-  readability_notes:
-  - The comma after 'them' was removed to allow the sentence to flow more smoothly as a single narrative action.
-  compression_notes:
-  - No major structural compression was performed, as the sentence is already relatively short and direct. Minor preposition adjustment ('from' to 'of') was done for natural phrasing.
+- pob_phrase: they gathered them
+  simplified_phrase: they collected the pieces
+  preserved_meaning: The disciples gathered the leftover bread pieces.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: Naming the pieces removes the unclear pronoun while preserving the implied object.
+- pob_phrase: pieces from the five barley loaves
+  simplified_phrase: pieces left over from the five barley loaves
+  preserved_meaning: The collected pieces came from the original five barley loaves and remained uneaten.
+  reasoning_layer_used: POB lexical decisions
+  rationale: Keeping “from” clearly links the pieces to the five loaves.
+- pob_phrase: left over by those who had eaten
+  simplified_phrase: after the people had eaten
+  preserved_meaning: The pieces were the surplus remaining after the meal.
+  reasoning_layer_used: POB footnote b and lexical rationale
+  rationale: The time clause prevents readers from mistaking the diners for agents who deliberately left the food.
+interpretive_expansions:
+- pob_phrase: left over by those who had eaten
+  rendering: left over ... after the people had eaten
+  claim: The bread pieces remained after the diners finished eating.
+  evidence:
+  - POB footnote b identifies the portions as leftovers after the meal.
+  - The lexical rationale says the clause describes surplus remaining after the crowd ate.
+  - John 6:12 supplies the immediate meal context.
+  confidence: high
+  alternatives_preserved:
+  - left over after the crowd had eaten
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/006/013.yaml
   source_text_sha256: ff1f3b031359195358dd2fcd4a5cc40d7967fbe2664fa251674e75df1976551e
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: bba7d7086427b97bbf5dfa2d746356697273f235bdbc4ef0c285b48392c46027
-  timestamp: '2026-05-28T07:31:29Z'
-  output_hash: 84549dcc9705ca2f57ec52fc9d25319bcefab7513578645b1592b0ed0dde1a2d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 15d1d61b1144138943841338aad50df2a62625332ec4342dde15d5d1f921cef9
+  timestamp: '2026-07-12T07:14:29Z'
+  output_hash: 3b7f09a979a0abde3eb77cdd88116cdbd1489918eaf602030aca2faeb65fd2d3
   usage:
-    prompt_tokens: 2150
-    completion_tokens: 397
-    total_tokens: 5505
+    prompt_tokens: 3785
+    completion_tokens: 389
+    total_tokens: 4174
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: barley loaves
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: baskets
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:29Z'
+  previous_text: So they gathered them and filled twelve baskets with the pieces[a] of the five barley loaves left over by those who had eaten.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 81a88b48fb2265e13f439fb2a4a86220f0eee2a3b16aa66e785ed26191b32b0a
+  review_summary: Revision is needed for a meaningful SPOB clarity improvement. The proposed wording does not introduce doctrinal content or alter the event, but it preserves POB’s opaque “left over by those who had eaten.” Making the meal-time relation explicit is warranted by the Greek construction, the immediate context, and POB’s own footnote. The recommended text also retains “from the five barley loaves,” which more clearly reflects the source relation than “of.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,38 +34,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They said to him, “We are able.” Jesus said to them, “You will drink the cup I drink, and you will be baptized with the baptism I am baptized with,
+  text: They said to him, “We can.” But Jesus said to them, “You will drink the same cup of suffering that I drink, and you will undergo the same baptism of suffering that I undergo.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they said to him[a], “We are able.” But Jesus said to them, “The cup that I drink, you will drink; and the baptism with which I am baptized[b], you will be baptized,”
-  simplified_phrase: They said to him, “We are able.” Jesus said to them, “You will drink the cup I drink, and you will be baptized with the baptism I am baptized with,
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: We are able.
+  simplified_phrase: We can.
+  preserved_meaning: They confidently claim that they are capable of sharing Jesus’ experience.
+  reasoning_layer_used: POB lexical decision for Δυνάμεθα
+  rationale: The documented alternative is more natural in common English.
+- pob_phrase: The cup that I drink, you will drink
+  simplified_phrase: You will drink the same cup of suffering that I drink
+  preserved_meaning: The disciples will share the suffering and destiny allotted to Jesus.
+  reasoning_layer_used: POB footnote and theological decision on the cup metaphor
+  rationale: The wording keeps the cup image while making its contextual meaning clear.
+- pob_phrase: the baptism with which I am baptized, you will be baptized
+  simplified_phrase: you will undergo the same baptism of suffering that I undergo
+  preserved_meaning: The disciples will share the overwhelming suffering Jesus undergoes.
+  reasoning_layer_used: POB lexical and theological decisions on βάπτισμα
+  rationale: This removes awkward repetition while retaining the baptism metaphor and its force.
+interpretive_expansions:
+- pob_phrase: cup ... baptism
+  rendering: cup of suffering ... baptism of suffering
+  claim: Both images refer to the suffering Jesus and his disciples will undergo.
+  evidence:
+  - The POB footnote explicitly identifies both images as metaphors for suffering and destiny.
+  - The POB theological decision says the immediate context points to metaphorical suffering.
+  confidence: high
+  alternatives_preserved:
+  - The main text retains both “cup” and “baptism” as metaphors.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Readers may still associate “baptism” only with the sacrament.
+    mitigation: Adding “of suffering” identifies the metaphorical sense without removing the biblical image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/039.yaml
   source_text_sha256: d40832bb250f49c7eff24dee895b32dbead25f28c45d5fb405590da30f0f725d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 8d22ab4940f92ff5b87711ba8a314a4c079177ad2987c77efe80b5144248291d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 97acca00c3e048efe2b8e6b50e8d5ddca047d7db81d5e4e9475f052039327a6d
+  timestamp: '2026-07-12T07:21:19Z'
+  output_hash: 4452fd8aabc4c546b804759cb3e8dd84efb1f935a8ea82d7dd798cf733f90b49
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3595
+    completion_tokens: 740
+    total_tokens: 4335
+    reasoning_tokens: 269
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:19Z'
+  previous_text: They said to him, “We are able.” Jesus said to them, “You will drink the cup I drink, and you will be baptized with the baptism I am baptized with,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 220410fa8aada4d1c4dac407b2f62dd12662ab4c35cabb6213d3e48318ed8879
+  review_summary: Revise. The draft has a missing closing quotation mark and is not meaningfully clearer in its treatment of the baptism metaphor; its repeated baptism phrasing is especially opaque. Explicitly identifying the shared ordeal as suffering is warranted by the immediate context and the POB audit trail, and it avoids suggesting that this is a statement about sacramental baptism. Retaining “But” preserves the source’s contrast.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

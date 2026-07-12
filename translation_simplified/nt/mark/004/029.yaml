@@ -31,38 +31,67 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 4:29 permits it / has arrived. Restored drafter ''when the crop permits it'' (preserving the chosen interpretive ''permits'') and ''the harvest has arrived'' (preserving the chosen rendering) per chosen renderings.'
 translation:
   language: en
-  text: But when the crop is ready, he immediately sends in the sickle, because the harvest has come.”
+  text: But as soon as the crop is ready, he sends in the sickle to reap it, because harvest time has come.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But when the crop is ready[a], he immediately sends in the sickle, because the harvest has come.
-  simplified_phrase: But when the crop is ready, he immediately sends in the sickle, because the harvest has come.”
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
+- pob_phrase: when the crop is ready
+  simplified_phrase: as soon as the crop is ready
+  preserved_meaning: The crop has reached the point when harvesting can begin.
+  reasoning_layer_used: POB translation and lexical decision for παραδοῖ
+  rationale: “As soon as” clearly connects the crop’s readiness with the prompt action that follows.
+- pob_phrase: he immediately sends in the sickle
+  simplified_phrase: he sends in the sickle to reap it
+  preserved_meaning: He promptly begins harvesting with the sickle.
+  reasoning_layer_used: POB lexical decisions for εὐθὺς and ἀποστέλλει τὸ δρέπανον
+  rationale: The timing remains immediate through “as soon as,” while “to reap it” explains the agricultural image.
+- pob_phrase: the harvest has come
+  simplified_phrase: harvest time has come
+  preserved_meaning: The proper time for reaping is now present.
+  reasoning_layer_used: POB lexical decisions for παρέστηκεν and ὁ θερισμός
+  rationale: “Harvest time” makes the temporal sense direct without interpreting the parable’s theological referent.
+interpretive_expansions:
+- pob_phrase: sends in the sickle
+  rendering: sends in the sickle to reap it
+  claim: Sending in the sickle means beginning to cut and gather the crop.
+  evidence:
+  - The POB lexical rationale identifies this Greek expression as an idiom for beginning to reap.
+  - The immediate context names both the crop and the harvest.
+  confidence: high
+  alternatives_preserved:
+  - The main text retains the image “sends in the sickle.”
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: “Harvest time” may sound slightly more temporal than POB’s “the harvest.”
+    mitigation: The POB lists “harvest time” as an accepted lexical alternative, and the crop-and-sickle imagery remains intact.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/029.yaml
   source_text_sha256: 3e1d268125c09cf18faef627157511d880cdcde2d76031844c6abdfa46f74ab1
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 75f9c74516fbc253d0b0df855a0d461498f1a2145dc736207b55b84f643b64cc
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ed0f6944c37900749afdfd32c1331b704e90c90e75ae9d929bbfb7a73702d7dd
+  timestamp: '2026-07-12T07:22:30Z'
+  output_hash: d645ca4314c792b5cce8134609154c86c6be10ffb1040ed2bf5a15cf48d985bf
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3669
+    completion_tokens: 755
+    total_tokens: 4424
+    reasoning_tokens: 265
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:30Z'
+  previous_text: But when the crop is ready, he immediately sends in the sickle, because the harvest has come.”
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7e19ce7979eebf79db835a3ce9b479f16098306d2acf9cce98d94521f1ec0e5a
+  review_summary: 'The wording faithfully retains the POB''s deliberately non-doctrinal agricultural image: the crop''s readiness leads directly to harvesting, without specifying a theological referent. It is already clear modern English and introduces no unsupported interpretation. Revise solely to remove the stray closing quotation mark; the removal of the POB lexical footnote is acceptable in this simplified main text because “ready” remains clear in context.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

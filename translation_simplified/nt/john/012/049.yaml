@@ -34,36 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For I have not spoken on my own. The Father who sent me has given me a command about what I should say and what I should speak.
+  text: For I have not spoken on my own. The Father who sent me has himself given me a command about what I should say and what I should speak.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: spoken from myself
+  simplified_phrase: spoken on my own
+  preserved_meaning: Jesus does not speak independently of the Father.
+  reasoning_layer_used: POB lexical decision for ἐξ ἐμαυτοῦ
+  rationale: The idiomatic wording is clearer while preserving the POB's theological point.
+- pob_phrase: but the Father who sent me
+  simplified_phrase: The Father who sent me
+  preserved_meaning: The Father who commissioned Jesus is the source of the command governing his speech.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: A new sentence simplifies the structure without weakening the contrast established by the first sentence.
+- pob_phrase: has himself given me a command as to
+  simplified_phrase: has himself given me a command about
+  preserved_meaning: The Father himself authoritatively gave a command that remains in force.
+  reasoning_layer_used: POB lexical decisions for αὐτός, ἐντολήν, and δέδωκεν
+  rationale: The common preposition “about” improves readability while “himself” preserves the source emphasis.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: The paired words “say” and “speak” sound repetitive in English.
+    mitigation: Both are retained because the Greek and POB deliberately use two different verbs.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/049.yaml
   source_text_sha256: 093c91cb8e9f201d516a1a6d741ed361e567d7c59e92b9c361614087a415cf03
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: 7ef7c9966e6084a1d4573665040a1333efbe66e50952579c4d69695ab3c7a4ea
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 994b48df52b522faa939b6cf9718d2c79dae25c9d7d56415b2235d62095f0dbf
+  timestamp: '2026-07-12T07:16:27Z'
+  output_hash: cdfa8f966cadc7f68767b6c336d7105c69abb9ccd4dc62745466f57531b1bc87
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3357
+    completion_tokens: 361
+    total_tokens: 3718
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:27Z'
+  previous_text: For I have not spoken on my own. The Father who sent me has given me a command about what I should say and what I should speak.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fc770e7724933be18f2b465b0893161c31aaba124a91affa18d740a916ab80d0
+  review_summary: “On my own” is a warranted, clearer rendering of ἐξ ἐμαυτοῦ and retains the point that Jesus does not speak independently. Splitting the sentence is also clear and does not alter the relationship between the two clauses. However, the draft drops the emphatic αὐτός (“himself”), despite the source and POB audit trail explicitly preserving it. Restore that emphasis; the retained “say”/“speak” distinction appropriately follows the POB’s lexical decision.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

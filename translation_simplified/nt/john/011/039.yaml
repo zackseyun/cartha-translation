@@ -37,36 +37,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said, “Take away the stone.” Martha, the dead man’s sister, said to him, “Lord, by now there is a bad smell, because he has been dead four days.”
+  text: Jesus said, “Take away the stone.” Martha, the dead man’s sister, said to him, “Lord, by now he smells bad, because he has been dead for four days.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: Martha, the sister of the dead man
+  simplified_phrase: Martha, the dead man’s sister
+  preserved_meaning: Martha is identified by her relationship to the dead man.
+  reasoning_layer_used: POB lexical decision for τοῦ τετελευτηκότος
+  rationale: The possessive form is shorter and more natural in modern English.
+- pob_phrase: by now he smells
+  simplified_phrase: by now he smells bad
+  preserved_meaning: The dead man is already emitting an unpleasant odor.
+  reasoning_layer_used: POB lexical decision for ὄζει and grounding review
+  rationale: Adding “bad” makes the unpleasant sense clear while keeping the man as the subject.
+- pob_phrase: for he has been dead four days
+  simplified_phrase: because he has been dead for four days
+  preserved_meaning: Four days of death explain Martha’s concern about the odor.
+  reasoning_layer_used: POB lexical decisions for γάρ and τεταρταῖος
+  rationale: “Because” states the causal connection plainly, and the added preposition is natural English.
+interpretive_expansions:
+- pob_phrase: he smells
+  rendering: he smells bad
+  claim: The odor emitted by the dead man is unpleasant.
+  evidence:
+  - The death context makes the odor negative.
+  - The POB rationale says ὄζει is clearly unpleasant here.
+  confidence: high
+  alternatives_preserved:
+  - he smells
+  - he stinks
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/039.yaml
   source_text_sha256: 26a3afe1487d36442354e2117643867e54fe218917327c29bb9d657abc9c5452
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: 37b6ff9dd8db8c005ffbf99451c69c9b79f54dfe2b5a7413930f55e0316cc452
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3137fcb21b5311d575146d315034444fd9559aa7ddacbeb0d80d8b552018e98f
+  timestamp: '2026-07-12T07:16:09Z'
+  output_hash: b4fc7c7b75bd497d760c4c61c37a93e12f2a911e9b68c3dfc20d0879f1cc6341
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3222
+    completion_tokens: 406
+    total_tokens: 3628
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:09Z'
+  previous_text: Jesus said, “Take away the stone.” Martha, the dead man’s sister, said to him, “Lord, by now there is a bad smell, because he has been dead four days.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b90b31e7978540e635cb278cc6afc349ef0776dd63460a309683b2bf2cff7da1
+  review_summary: The draft appropriately clarifies Martha’s relationship and makes the causal connection explicit. However, its impersonal “there is a bad smell” loses the source text’s statement that the dead man himself emits the odor. Retain that subject while using common English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

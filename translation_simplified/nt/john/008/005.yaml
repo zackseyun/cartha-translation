@@ -12,7 +12,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/008/005.yaml
-  text: Now[a] in our law, Moses commanded that such women be stoned. So what do you say?
+  text: '[A] in our law, Moses commanded that such women be stoned. So what do you say?'
   footnotes:
   - marker: a
     text: Continuation of the story of the woman caught in adultery (John 7:53–8:11). See note on John 7:53.
@@ -30,19 +30,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: In our law,[a] Moses commanded that women like this should be stoned. So what do you say?
+  text: In our law,[a] Moses commanded that women caught in adultery be stoned. So what do you say?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Continuation of the story of the woman caught in adultery (John 7:53–8:11). See note on John 7:53.
-    reason: simplification_note
+    reason: textual_variant
 simplification_decisions:
-- preserved_meaning: Updated 'such women' to 'women like this' to make the phrasing more natural for modern readers while preserving the specific feminine plural accusative referring to women caught in this act.
-  reasoning_layer_used: POB audit trail
-  rationale: Updated 'such women' to 'women like this' to make the phrasing more natural for modern readers while preserving the specific feminine plural accusative referring to women caught in this act.
-- preserved_meaning: Omitted the transitional 'Now' (from the Greek particle 'δὲ') to give the sentence a more direct, natural start in English, and moved the footnote marker to the first phrase.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the transitional 'Now' (from the Greek particle 'δὲ') to give the sentence a more direct, natural start in English, and moved the footnote marker to the first phrase.
+- pob_phrase: such women
+  simplified_phrase: women caught in adultery
+  preserved_meaning: The women are those identified by the immediate context as caught in adultery.
+  reasoning_layer_used: POB lexical rationale and immediate narrative context
+  rationale: The explicit referent is clearer than the context-dependent phrase “such women.”
+- pob_phrase: commanded that such women be stoned
+  simplified_phrase: commanded that women caught in adultery be stoned
+  preserved_meaning: Moses authoritatively prescribed stoning as the capital punishment.
+  reasoning_layer_used: POB lexical decisions for ἐνετείλατο and λιθοβολεῖσθαι
+  rationale: The direct construction is natural English and keeps the command and penalty intact.
+interpretive_expansions:
+- pob_phrase: such women
+  rendering: women caught in adultery
+  claim: The category of women is made explicit from the immediate narrative.
+  evidence:
+  - The narrative identifies the woman as caught in adultery.
+  - The POB lexical rationale identifies the referent as women caught in adultery.
+  confidence: high
+  alternatives_preserved:
+  - such women
+  - women like this
+translation_notes:
+  risk_flags:
+  - risk: Making the referent explicit could appear narrower than the literal phrase “such women.”
+    mitigation: The immediate context and POB lexical rationale both identify adultery as the intended category.
+  - risk: The schema lacks a textual-critical footnote category.
+    mitigation: The note is classified as “textual_variant,” the closest available category for the passage-status issue.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/008/005.yaml
+  source_text_sha256: 142e7c48f75960969d792ec9bb008bfdbbabd299562807010ffce7a4ff8c142f
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 860011ebb76d9f16b29193b15a01fbbf16405472f7354fe4b5e0a86c7a220c0a
+  timestamp: '2026-07-12T07:15:14Z'
+  output_hash: b1d4c566bb8b5f126f0d09e1703bc5e68b12d93e483846a0bf0d1c2a3e4dee3d
+  usage:
+    prompt_tokens: 3190
+    completion_tokens: 573
+    total_tokens: 3763
+    reasoning_tokens: 120
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: law
   reason: Retained to preserve POB's source-grounded terminology.
@@ -50,33 +92,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: stoned
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains alignment with the Byzantine text. It preserves 'our law' (τῷ νόμῳ ἡμῶν), the authoritative command of Moses (ἐνετείλατο), the capital punishment of stoning (λιθοβολεῖσθαι), and the final challenge (σὺ οὖν τί λέγεις;).
-  readability_notes:
-  - By converting 'such women' to 'women like this' and removing the transitional 'Now', the flow of the accusation is punchy and direct, matching the confrontational tone of the scene.
-  compression_notes:
-  - No theological or narrative details were compressed or omitted; the simplification is purely stylistic.
-  risk_flags:
-  - risk: None.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/008/005.yaml
-  source_text_sha256: 142e7c48f75960969d792ec9bb008bfdbbabd299562807010ffce7a4ff8c142f
-  pob_commit_sha: c9c89f80b0061793adf976351bb08b934ad624e9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 5363c072bb0a63e09c1249ec26bc46b6be30bfdc154041dc6c2cd18dc051810d
-  timestamp: '2026-05-28T09:17:20Z'
-  output_hash: 6fefd2c2478d1a134f555a92fa301e8a7061aa20247e626e52ec601278e9db26
-  usage:
-    prompt_tokens: 1186
-    completion_tokens: 452
-    total_tokens: 3727
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:14Z'
+  previous_text: In our law,[a] Moses commanded that women like this should be stoned. So what do you say?
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6c56a3fb602b0c1940309d1e97ea8d27fa1da8d6de71f33dba2b0846d1df1a55
+  review_summary: 'The draft is faithful and doctrinally neutral: “women like this” appropriately preserves the feminine plural and “should be stoned” preserves the commanded penalty. However, it is not meaningfully clearer than POB''s “such women,” because both leave the relevant category dependent on prior context. The narrative immediately supplies that referent, so “women caught in adultery” is a warranted contextual clarification and is clearer for modern readers. Retain the existing textual-critical note wording, but classify its reason as textual_critical rather than simplification_note.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

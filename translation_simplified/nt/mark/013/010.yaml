@@ -34,47 +34,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And the good news must first be proclaimed to all the nations[a].
+  text: And first, the good news must be announced to all nations[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “among all the nations.” The same Greek word can also mean Gentiles in some contexts.
-    reason: simplification_note
+    text: Or “among all nations.” The Greek word translated “nations” can also mean “Gentiles” in some contexts.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: And the good news must first be proclaimed to all the nations[a][b].
-  simplified_phrase: And the good news must first be proclaimed to all the nations[a].
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: good news
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-- term: nations
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: the good news must first be proclaimed
+  simplified_phrase: first, the good news must be announced
+  preserved_meaning: The good news has temporal priority and must be communicated publicly.
+  reasoning_layer_used: Greek lexical decisions for πρῶτον, δεῖ, and κηρυχθῆναι
+  rationale: Natural clause order and “announced” make the sentence easier to understand while retaining necessity and public communication.
+- pob_phrase: to all the nations
+  simplified_phrase: to all nations
+  preserved_meaning: The message has broad ethnic and global scope without narrowing the audience to Gentiles alone.
+  reasoning_layer_used: POB lexical and theological decisions for εἰς πάντα τὰ ἔθνη
+  rationale: Dropping the English article sounds more natural while preserving the POB scope.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Announced” may sound less formal than the heralding sense of “proclaimed.”
+    mitigation: The wording still presents the good news as a message publicly communicated to all nations.
+  - risk: “Nations” can also be understood as “Gentiles” or with the sense “among.”
+    mitigation: The footnote preserves both documented lexical possibilities.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/010.yaml
   source_text_sha256: 12fe7a5bf60b42563fa1b9e3c8f85b3ecb510786c326a78cdd076f6769eaf61e
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 754faf196c6677e94a33fc271808f4eefb873644f0fa9fe367b11cab183c711e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f4639040c5b32fa78755c96da283aabe3315c0830745ac302babe8936725f092
+  timestamp: '2026-07-12T07:21:44Z'
+  output_hash: a7eea86ac048e4811bcf50879e3e007117610b8c3a4547a77bdcb306852679f0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3425
+    completion_tokens: 362
+    total_tokens: 3787
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: good news
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+- term: nations
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:44Z'
+  previous_text: And the good news must first be proclaimed to all the nations[a].
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8fb331c69e076edbf180f106f4beb6e246b1d9b0928c616a429a55ec65346ca5
+  review_summary: 'The draft is faithful and doctrinally careful: it retains the necessity, temporal priority, public proclamation, and broad scope established by the source and POB audit trail, without resolving “nations” as “Gentiles.” However, its main text is identical to POB and therefore supplies no meaningful reader-facing simplification. The recommended revision uses more natural word order and omits the unnecessary English definite article while preserving every source-grounded element. The footnote is also clarified to identify the relevant term.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

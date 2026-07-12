@@ -34,41 +34,74 @@ base_translation:
     changes_summary: Removed the comma before 'who' for smoother English and to avoid implying a nonrestrictive clause; otherwise retained the draft as accurate and complete.
 translation:
   language: en
-  text: In his teaching Jesus said, “Beware of the scribes, who want to walk around in long robes and receive greetings in the marketplaces.
+  text: As Jesus taught, he said, “Watch out for the scribes who want to walk around in long robes[a] and be greeted with honor in the marketplaces.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: These long outer garments displayed social status and invited public honor.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: And in his teaching he was saying[b][a], “Beware of the scribes who want to walk around in long robes and receive greetings in the marketplaces,”
-  simplified_phrase: In his teaching Jesus said, “Beware of the scribes, who want to walk around in long robes and receive greetings in the marketplaces.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: scribes
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: And in his teaching he was saying
+  simplified_phrase: As Jesus taught, he said
+  preserved_meaning: Jesus gave this warning as part of his teaching.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: The recast opening uses natural English and identifies Jesus from context.
+- pob_phrase: Beware of
+  simplified_phrase: Watch out for
+  preserved_meaning: The words remain a serious command to guard against these scribes.
+  reasoning_layer_used: POB lexical alternatives
+  rationale: “Watch out for” is the POB-approved alternative most familiar to common readers.
+- pob_phrase: receive greetings in the marketplaces
+  simplified_phrase: be greeted with honor in the marketplaces
+  preserved_meaning: The scribes seek public acknowledgment and social honor.
+  reasoning_layer_used: POB lexical rationale for ἀσπασμούς
+  rationale: Adding “with honor” makes the social force of these public greetings clear.
+interpretive_expansions:
+- pob_phrase: receive greetings
+  rendering: be greeted with honor
+  claim: The desired greetings are public signs of respect, not merely casual hellos.
+  evidence:
+  - The POB lexical rationale describes the greetings as honorific public acknowledgment.
+  - The long robes and marketplaces establish a setting of visible status-seeking.
+  confidence: high
+  alternatives_preserved:
+  - receive greetings
+  - receive formal greetings
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: The warning could be misread as condemning every scribe.
+    mitigation: The restrictive phrase “who want” limits the warning to scribes characterized by status-seeking.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/038.yaml
   source_text_sha256: c30de49c1b9f7ca2fc3e2f0d5ba619080dad947a72f766ef322015ed56d9e4df
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 5840f71f54a17ea409b1e55dc00d2f52febe134f3d1c2a61c3880b35457d9ace
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 47800f5715236d3c718f717c16162f2cf6d5757ce46d3c2f18b8091fbfcd5004
+  timestamp: '2026-07-12T07:22:21Z'
+  output_hash: b122b60387ba309a353c48f76e8dbce4d9712d9200fabe549aea39c29ed691db
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3567
+    completion_tokens: 779
+    total_tokens: 4346
+    reasoning_tokens: 326
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: scribes
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:21Z'
+  previous_text: In his teaching Jesus said, “Beware of the scribes, who want to walk around in long robes and receive greetings in the marketplaces.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3eebe3b3ced0d22def715be266eeddff6d7b660b7cf55e0ad776d5845d5a9254
+  review_summary: The explicit identification of Jesus and the simpler past-tense wording are warranted contextual clarifications. However, remove the comma before “who want” so the English preserves the POB/source-supported qualification of the scribes under warning, and correct the missing closing quotation punctuation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

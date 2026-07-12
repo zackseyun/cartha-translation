@@ -34,21 +34,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And if he finds it[a], truly I tell you, he rejoices over it more than over the ninety-nine that did not wander away[b].
+  text: And if he finds it[a], truly I tell you, he rejoices over it more than over the ninety-nine that have not wandered away.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: More formally, “if it should happen that he finds it.”
     reason: lexical_alternative
-  - marker: b
-    text: Or “that have not gone astray.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And if he happens to find it[a], truly I tell you[b], he rejoices over it more than over the ninety-nine that have not gone astray.
-  simplified_phrase: And if he finds it[a], truly I tell you, he rejoices over it more than over the ninety-nine that did not wander away[b].
-  preserved_meaning: Simplified “if he happens to find it” to “if he finds it” without making the finding sound guaranteed.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified “if he happens to find it” to “if he finds it” without making the finding sound guaranteed.
+- pob_phrase: if he happens to find it
+  simplified_phrase: if he finds it
+  preserved_meaning: The finding remains conditional rather than certain.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: The shorter wording is natural English, while the footnote retains the construction’s overt contingency.
+- pob_phrase: the ninety-nine that have not gone astray
+  simplified_phrase: the ninety-nine that have not wandered away
+  preserved_meaning: The sheep are characterized as those who have not left the proper path.
+  reasoning_layer_used: Greek perfect participle and POB lexical rationale
+  rationale: “Have not wandered away” is plain English and preserves the resultative force noted by the reviewer.
+translation_notes:
+  risk_flags:
+  - risk: “If he finds it” states the contingency less explicitly than the POB wording.
+    mitigation: Footnote a preserves the more formal source-sensitive alternative.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/018/013.yaml
+  source_text_sha256: 545a795465d69c38c97d363a7c96bab57fff7d8f2d260058201bfa743916c509
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a8dd987341bdbe398aa09940c1d81dbaded84e1a95a57d891c1631fe75ed884d
+  timestamp: '2026-07-12T07:39:02Z'
+  output_hash: 456064b3e8679d4ea42e851cc845e478d2dc0b096b24cf31bc8e650085b9331a
+  usage:
+    prompt_tokens: 3443
+    completion_tokens: 421
+    total_tokens: 3864
+    reasoning_tokens: 117
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: truly I tell you
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
@@ -56,30 +84,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
 - term: ninety-nine
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
-translation_notes:
-  source_alignment_notes: Preserves the controlling POB meaning and its source-grounded lexical choices while simplifying syntax and wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, clearer word order, and common English where the POB wording is formal or technical.
-  compression_notes:
-  - No central meaning is intentionally removed; technical alternatives are kept in footnotes when needed for review.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/018/013.yaml
-  source_text_sha256: 545a795465d69c38c97d363a7c96bab57fff7d8f2d260058201bfa743916c509
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:05Z'
-  output_hash: b30be824c6ff955b1bd39a2a60e32bbe1c68efdb8d57400451dc7035a38a35df
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:02Z'
+  previous_text: And if he finds it[a], truly I tell you, he rejoices over it more than over the ninety-nine that did not wander away[b].
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3111082ec267a9040838abf9d1cfd1cb2fef93cae38ff87ce27e015654ac8016
+  review_summary: 'The conditional “if he finds it” is a warranted and clearer simplification of the POB’s idiomatic “if he happens to find it”; it does not make the finding certain. The draft also correctly preserves the direct comparative force of the shepherd’s joy without adding a doctrinal explanation. Revise only the final description of the ninety-nine: “have not wandered away” is just as accessible while better reflecting the Greek perfect participle than “did not wander away.”'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

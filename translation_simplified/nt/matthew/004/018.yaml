@@ -31,21 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'As Jesus was walking beside the Sea of Galilee, he saw two brothers: Simon (who is called Peter) and his brother Andrew. They were casting a net[a] into the sea, because they were fishermen.'
+  text: 'As Jesus was walking beside the Sea of Galilee, he saw two brothers: Simon, who is called Peter, and his brother Andrew. They were casting a net into the sea because they were fishermen.'
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Clarified the pronoun 'he' to 'Jesus' at the start of the sentence because this verse begins a new narrative section, ensuring immediate clarity for the reader.
-  reasoning_layer_used: POB audit trail
-  rationale: Clarified the pronoun 'he' to 'Jesus' at the start of the sentence because this verse begins a new narrative section, ensuring immediate clarity for the reader.
-- preserved_meaning: Split the single, long POB sentence into two shorter sentences to improve readability and flow.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the single, long POB sentence into two shorter sentences to improve readability and flow.
-- preserved_meaning: Reordered 'Simon who is called Peter and Andrew his brother' to 'Simon (who is called Peter) and his brother Andrew' to use a more natural modern phrasing.
-  reasoning_layer_used: POB audit trail
-  rationale: Reordered 'Simon who is called Peter and Andrew his brother' to 'Simon (who is called Peter) and his brother Andrew' to use a more natural modern phrasing.
-- preserved_meaning: Changed the archaic-sounding conjunction 'for' to 'because' to better express the explanatory clause 'for they were fishermen' in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed the archaic-sounding conjunction 'for' to 'because' to better express the explanatory clause 'for they were fishermen' in modern English.
+- pob_phrase: Simon who is called Peter and Andrew his brother
+  simplified_phrase: Simon, who is called Peter, and his brother Andrew
+  preserved_meaning: Simon is also called Peter, and Andrew is his brother.
+  reasoning_layer_used: POB lexical decisions
+  rationale: The reordered wording identifies both men more naturally without changing their relationship.
+- pob_phrase: casting a net into the sea, for they were fishermen
+  simplified_phrase: They were casting a net into the sea because they were fishermen.
+  preserved_meaning: Their action was ongoing, and their occupation explains it.
+  reasoning_layer_used: POB lexical decisions and source syntax
+  rationale: A separate sentence and “because” make the explanation easier to follow.
+- pob_phrase: single narrative sentence
+  simplified_phrase: two shorter sentences
+  preserved_meaning: Jesus saw the brothers while they were fishing beside the Sea of Galilee.
+  reasoning_layer_used: POB translation and readability guidance
+  rationale: Dividing the scene lowers the grammatical load without omitting any detail.
+interpretive_expansions:
+- pob_phrase: As he was walking
+  rendering: As Jesus was walking
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the continuing subject.
+  confidence: high
+  alternatives_preserved:
+  - As he was walking
+translation_notes:
+  risk_flags:
+  - risk: Naming Jesus makes the contextual subject explicit rather than retaining the source pronoun.
+    mitigation: The immediate narrative context clearly identifies Jesus, and the clarification prevents confusion at a section opening.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/004/018.yaml
+  source_text_sha256: b7d633cdce11d93b26c0ff62ec264e90ea263b5e7991389ef5570a492d2855b0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7737a77c79a9f0fb95619fb7f90d87a52a1051099c917019a9669e4c0568285d
+  timestamp: '2026-07-12T07:36:23Z'
+  output_hash: ace127effe283c1f2d9fc5c887355c38b34a659d5d3c41cea9a89dcd5f69d2e9
+  usage:
+    prompt_tokens: 3745
+    completion_tokens: 521
+    total_tokens: 4266
+    reasoning_tokens: 98
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Sea of Galilee
   reason: Retained to preserve POB's source-grounded terminology.
@@ -55,33 +92,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Andrew
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserved the present participle continuous action ('was walking') and the explanatory conjunction 'because' (representing 'γάρ'). The literal translation of 'sea' (θάλασσαν) was retained rather than modernizing to 'lake' to remain faithful to POB's lexical decision.
-  readability_notes:
-  - By breaking the verse into two sentences and using parentheses for Peter's alternative name, the grammatical load is significantly reduced. This allows a modern reader to digest the scene's setting before learning about the action and the brothers' occupation.
-  compression_notes:
-  - No semantic details or theological nuances were lost; the revision only alters the sentence structure and updates archaic function words.
-  risk_flags:
-  - risk: Slight risk of over-specifying the subject 'he' as 'Jesus', but this is a standard and safe clarifying choice for the beginning of a gospel pericope.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/004/018.yaml
-  source_text_sha256: b7d633cdce11d93b26c0ff62ec264e90ea263b5e7991389ef5570a492d2855b0
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: e14f0207be6bcfea3b50583cf3b64659dfae105e39afe3c586d1f6a8daf70a44
-  timestamp: '2026-05-28T08:11:18Z'
-  output_hash: 5fddb3d0b47c8cb46e4b772547eef64dd6636c45446185d4e774867db79fef21
-  usage:
-    prompt_tokens: 1885
-    completion_tokens: 511
-    total_tokens: 6090
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:23Z'
+  previous_text: 'As Jesus was walking beside the Sea of Galilee, he saw two brothers: Simon (who is called Peter) and his brother Andrew. They were casting a net[a] into the sea, because they were fishermen.'
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 71673b1688c0baecf4db65e5686cd47fe842ee2f474f69ad6fe618b4e0cb0454
+  review_summary: The clarification of “he” to “Jesus” is warranted by the immediate narrative context, and the two-sentence structure meaningfully improves readability without changing the scene. Reordering Andrew’s identification and replacing “for” with “because” also preserve the source’s explanatory sense. Revision is required solely because the draft contains an unresolved footnote marker; removing it produces a complete, publication-ready text. The simpler phrase “casting a net” remains faithful, while the more technical “casting net” is not necessary for comprehension in the main text.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

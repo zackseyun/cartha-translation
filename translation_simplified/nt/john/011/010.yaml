@@ -31,36 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But if anyone walks at night, he stumbles, because the light is not in him.
+  text: But if anyone walks at night, he stumbles because he has no light in him.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “because he has no light with him.” The Greek says “in him,” which may point beyond the absence of external light.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: walks in the night
+  simplified_phrase: walks at night
+  preserved_meaning: Keeps the night-walking image while using natural modern English.
+  reasoning_layer_used: POB lexical decision for ἐν τῇ νυκτί
+  rationale: The POB lists “at night” as a valid alternative that does not turn night into abstract darkness.
+- pob_phrase: the light is not in him
+  simplified_phrase: he has no light in him
+  preserved_meaning: Retains the inward wording and its possible literal and theological senses.
+  reasoning_layer_used: POB lexical and theological decisions for οὐκ ἔστιν ἐν αὐτῷ
+  rationale: The possession construction is clearer in English without resolving the deliberate ambiguity.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Light in him” may still be understood either situationally or spiritually.
+    mitigation: The main text preserves that intended tension, and the footnote gives the situational alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/010.yaml
   source_text_sha256: 51e104ce4d484924fd327cfc511eb505aac2e9cb6945b42c64dc8cf6d9a4690e
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:36Z'
-  output_hash: 77aa9b57026eba714bf438c1cd2f6132e95cb3f17d38745c0f4a64bf8cc3ba1f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e76631ce89f0d7d93ef622e89976c373518d67525f61c7793ec86a2bfa04ff2a
+  timestamp: '2026-07-12T07:16:00Z'
+  output_hash: dc6d5e2e2976b3fb2e89c0502663edd7c32b22561398503d8ffa9ddc652c31c8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3203
+    completion_tokens: 326
+    total_tokens: 3529
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:00Z'
+  previous_text: But if anyone walks at night, he stumbles, because the light is not in him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4a28dba008dd6a7d19ecd21846f7b2cd5d3323341e98159f0c77f5133ae9995c
+  review_summary: “At night” is a clear, source-warranted idiom for ἐν τῇ νυκτί and does not overinterpret the image. Revision is needed because the draft otherwise leaves the central, deliberately layered clause needlessly difficult. “He has no light in him” is more natural common English while retaining the Greek’s inward expression and leaving unresolved the contextual literal image and Johannine theological resonance.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

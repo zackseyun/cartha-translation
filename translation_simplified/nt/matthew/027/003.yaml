@@ -34,38 +34,57 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 27:3 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the thirty silver coins''].'
 translation:
   language: en
-  text: When Judas, who had betrayed him, saw that Jesus had been condemned, he was filled with regret and returned the thirty pieces of silver to the chief priests and elders.
+  text: Then Judas, who had betrayed him, saw that Jesus had been condemned. He regretted it and returned the thirty pieces of silver to the chief priests and elders.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Then Judas[a], who had betrayed him, seeing that he had been condemned[b], regretted it and returned the thirty pieces of silver to the chief priests and elders.
-  simplified_phrase: When Judas, who had betrayed him, saw that Jesus had been condemned, he was filled with regret and returned the thirty pieces of silver to the chief priests and elders.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 27 while simplifying sentence flow and common-reader wording.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source-grounding notes
-  rationale: Manual Codex SPOB drafting kept the passion narrative sequence, legal trial language, crucifixion details, titles for Jesus, death/resurrection signs, burial, and tomb-guard episode while reducing dense clauses and footnote markers into clear modern common English.
-translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB Matthew 27 base translation as the controlling meaning and uses Greek/source context only as an audit guardrail.
-  readability_notes:
-  - Uses shorter clauses and modern common English while preserving Matthew 27’s trial, crucifixion, death, burial, and guarded-tomb sequence.
-  compression_notes:
-  - POB technical alternatives and footnote markers are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+- pob_phrase: seeing that he had been condemned
+  simplified_phrase: saw that Jesus had been condemned
+  preserved_meaning: Judas recognized that Jesus had received a condemning judgment.
+  reasoning_layer_used: POB lexical decision for ἰδὼν and ὅτι κατεκρίθη
+  rationale: Naming Jesus removes an unclear pronoun without changing its referent.
+- pob_phrase: regretted it and returned
+  simplified_phrase: He regretted it and returned
+  preserved_meaning: Judas felt regret rather than necessarily full repentance, and he gave the money back.
+  reasoning_layer_used: POB theological and lexical decisions for μεταμεληθεὶς and ἔστρεψεν
+  rationale: A new sentence clarifies the sequence while avoiding any added intensity.
+interpretive_expansions:
+- pob_phrase: he had been condemned
+  rendering: Jesus had been condemned
+  claim: The condemned person is Jesus.
+  evidence:
+  - The immediate passion narrative identifies Jesus as the person condemned.
+  - The POB lexical rationale explicitly says the passive verb refers to Jesus being condemned.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/027/003.yaml
   source_text_sha256: 354c4a2ca4f2b7efd8066c2fcfa6dd417a66ea792f76410f89caac860dc6dab7
-  pob_commit_sha: 5fadc1013bd5a69e4107c4ba5c61c81fe8383fcf
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:21:48Z'
-  output_hash: 0f1b22339be9c08f0e1b43511402cbd6e385aee675d9c4b958042bf63f1e4d90
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 79633c344d2443e2a942de22c4f12e5f8196a6bd4d9f9a02a827791f4b318e7e
+  timestamp: '2026-07-12T07:38:32Z'
+  output_hash: 9d91593468b6e5fdb74c01e649cfb0a5a261185be38a84a5db601a4cd2ead7ed
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 4107
+    completion_tokens: 332
+    total_tokens: 4439
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:32Z'
+  previous_text: When Judas, who had betrayed him, saw that Jesus had been condemned, he was filled with regret and returned the thirty pieces of silver to the chief priests and elders.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5b948cdc6f16b40c298dd031ebe064ece23dfd864236eb1c32362c967c7a3023
+  review_summary: The draft usefully identifies “him” as Jesus and untangles the participial construction for modern readers. However, “was filled with regret” intensifies Judas’s response beyond the source and POB audit trail. Retain the simple statement that he regretted it; dividing the sentence preserves clear sequence and meaning.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

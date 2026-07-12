@@ -34,41 +34,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: and said, “This man said, ‘I am able to destroy the temple of God and rebuild it in three days.’”
+  text: They said, “This man said, ‘I can destroy God’s temple[a] and rebuild it in three days.’”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: John 2:19–21 explains that Jesus was speaking about his body as the temple.
+    reason: cross_reference
 simplification_decisions:
-- pob_phrase: to build it in three days
-  simplified_phrase: rebuild it in three days
-  preserved_meaning: Preserves the claim about destroying and building the temple in three days in natural English.
-  reasoning_layer_used: POB translation text and cross-reference note
-  rationale: '''Rebuild'' is clear from the context of destroying and building again.'
-retained_terms:
-- term: temple of God
-  reason: Phrase in the accusation retained from POB.
+- pob_phrase: I am able
+  simplified_phrase: I can
+  preserved_meaning: Preserves the claim that he has the power to do this.
+  reasoning_layer_used: POB lexical decision for Δύναμαι
+  rationale: “I can” expresses ability in direct modern English.
+- pob_phrase: the temple of God
+  simplified_phrase: God’s temple
+  preserved_meaning: Preserves the accusation’s direct reference to the temple belonging to God.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The possessive form is clearer without changing the accusation’s stated object.
+- pob_phrase: to build it
+  simplified_phrase: rebuild it
+  preserved_meaning: Preserves the sequence of destroying the temple and then building it again.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: “Rebuild” makes the repeated construction implied by the sequence immediately clear.
+interpretive_expansions:
+- pob_phrase: to build it
+  rendering: rebuild it
+  claim: The building happens after the same temple has been destroyed.
+  evidence:
+  - The preceding verb says that the temple will first be destroyed.
+  confidence: high
+  alternatives_preserved:
+  - build it
 translation_notes:
-  source_alignment_notes: Preserves the reported accusation and three-day claim.
-  readability_notes:
-  - Uses 'rebuild' for clarity after 'destroy'.
-  compression_notes:
-  - John cross-reference remains in the base footnote.
+  risk_flags:
+  - risk: “Rebuild” is more explicit than the Greek verb “build.”
+    mitigation: The destroy-then-build sequence clearly supplies the repeated action.
+  - risk: The footnote could be mistaken for the witnesses’ own meaning.
+    mitigation: The main text keeps their accusation focused on God’s temple, while the note separately gives John’s explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/061.yaml
   source_text_sha256: 97e35db7007e2d65d1069121f53d6f940bd7c904bad68948ffc0ca858564539a
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:59Z'
-  output_hash: d3e378c0e4148d1ef974f9c3a4e809c35e15cfdd5be8ba01918210079e77f423
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 59531b43822310b5cb9226d75306cf05c13c308bea284b0b1f87ac062749b1a3
+  timestamp: '2026-07-12T07:39:05Z'
+  output_hash: 047eb8d605ac0f0c9ee57b872f94152f17cb9c378457ee37f07eb71cd26479a1
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3299
+    completion_tokens: 805
+    total_tokens: 4104
+    reasoning_tokens: 353
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: temple of God
+  reason: Phrase in the accusation retained from POB.
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:05Z'
+  previous_text: and said, “This man said, ‘I am able to destroy the temple of God and rebuild it in three days.’”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3ac460adca704493b3fb8838bcfc9145506d441d8151e16cac8a9afdd666fcfd
+  review_summary: 'Revision is needed because the draft obscures the speakers by changing “They said” to the fragment “and said.” “Rebuild” is a warranted contextual clarification: the reported sequence is destroying the temple and then building it again, even though the Greek verb itself is simply “build.” The revision also uses “I can” and “God’s temple” for clearer contemporary English without changing the accusation or importing John’s identification of the temple with Jesus’ body.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

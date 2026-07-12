@@ -27,37 +27,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Azor fathered Zadok, Zadok fathered Achim, and Achim fathered Eliud.
+  text: Azor was the father of Zadok, Zadok was the father of Achim, and Achim was the father of Eliud.
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: fathered
-  reason: Retained the active verb 'fathered' to accurately translate the Greek 'ἐγέννησεν' in a genealogical context, preserving both modern readability and active grammatical force.
-translation_notes:
-  source_alignment_notes: Maintained the direct active verb structure of 'ἐγέννησεν' (fathered) rather than changing it to a noun phrase, ensuring precise alignment with the source-text's narrative style.
-  readability_notes:
-  - The sentence flows naturally in English, utilizing a clear parallel structure that is easy for a modern reader to follow.
-  compression_notes:
-  - No compression was needed because the POB base text is already highly concise and lacks unnecessary academic jargon or archaic filler.
+- pob_phrase: fathered
+  simplified_phrase: was the father of
+  preserved_meaning: Each man is identified as the father of the next person in the genealogy.
+  reasoning_layer_used: POB lexical decision for ἐγέννησεν
+  rationale: The expanded phrase makes the genealogical relationship immediately clear in common English.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/001/014.yaml
   source_text_sha256: 85a17ce05ec398cabeab9e256f3232ad20b80462771dbcdf61fad2f3b5be8648
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 346db786d834361ffff1ed8755f1e482eedc889894db39a85050dc5bbda8d9c6
-  timestamp: '2026-05-28T08:08:54Z'
-  output_hash: 7bef76ce7706286a31e8c6e6094df1c3a8ba66c83b67d16e78186167b3f261eb
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1e8519daaf734cb76c76b9f66bc11407cef4d956edde61f50f05c3df57f3b3f9
+  timestamp: '2026-07-12T07:22:55Z'
+  output_hash: 9caeae6363413a36e9e74aafb051ff94ac3ed372688c2361b5fd0340d6718003
   usage:
-    prompt_tokens: 1341
-    completion_tokens: 384
-    total_tokens: 3242
+    prompt_tokens: 2714
+    completion_tokens: 152
+    total_tokens: 2866
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: fathered
+  reason: Retained the active verb 'fathered' to accurately translate the Greek 'ἐγέννησεν' in a genealogical context, preserving both modern readability and active grammatical force.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:55Z'
+  previous_text: Azor fathered Zadok, Zadok fathered Achim, and Achim fathered Eliud.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1acfdc0c0412750ffff659d4675c449cb018d0517f92f19f84a9300c9e6228af
+  review_summary: The draft faithfully preserves the Greek genealogical relationships and introduces no doctrinal expansion. However, because it simply repeats the POB, it does not meet SPOB’s requirement to be meaningfully clearer. Recasting “fathered” as “was the father of” retains the source-supported genealogical meaning in more immediately transparent modern English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

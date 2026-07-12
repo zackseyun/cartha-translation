@@ -31,41 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And if she divorces her husband and marries another man, she commits adultery.
+  text: And if a wife divorces her husband and marries another man, she commits adultery.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: and if she divorces her husband and marries another man[a], she commits adultery.
-  simplified_phrase: And if she divorces her husband and marries another man, she commits adultery.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: adultery
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+- pob_phrase: if she divorces her husband
+  simplified_phrase: if a wife divorces her husband
+  preserved_meaning: The feminine subject remains explicit, and her marital relationship is made immediately clear.
+  reasoning_layer_used: Immediate context and POB lexical and theological decisions
+  rationale: “A wife” clearly identifies the woman in this parallel marital saying.
+interpretive_expansions:
+- pob_phrase: she
+  rendering: a wife
+  claim: The female subject is the wife who divorces her husband.
+  evidence:
+  - The phrase “her husband” establishes her role within the marriage.
+  - The POB theological decision preserves the explicitly feminine marital subject.
+  confidence: high
+  alternatives_preserved:
+  - she
+  - the woman herself
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/012.yaml
   source_text_sha256: 53a87d6f401ae22fe0be7e62132608dfb17e63b5719722dc36a72953959e9482
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 8808ab3c543364b1dabd05b48511deedfa2bc45bdf4648f3f900264cdf587789
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0f5b6d5f74c0f6d616216cf9e78ca17bf1e127962cab2fccd958afea9d515972
+  timestamp: '2026-07-12T07:21:04Z'
+  output_hash: a7aaf5cd6e2baa0cda3c03af784efc97c0fcd7a0de51658256a2ae45bf2bb46d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3245
+    completion_tokens: 226
+    total_tokens: 3471
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: adultery
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:04Z'
+  previous_text: And if she divorces her husband and marries another man, she commits adultery.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 699e10cb46499c3fe1b703848d6e8690692be5d67574df88837d046e85c951b0
+  review_summary: Revise for an actual, source-grounded clarity gain. “A wife” makes the antecedent of “she” explicit from the immediate marital context while retaining the verse’s feminine subject, masculine object, conditional structure, and “commits adultery” wording. No doctrinal expansion or ambiguity collapse is introduced.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

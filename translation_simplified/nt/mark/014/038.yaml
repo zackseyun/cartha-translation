@@ -31,14 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Stay awake and pray, so that you do not enter into temptation. The spirit is willing, but the flesh is weak.
+  text: Stay awake and pray, so that you do not enter into temptation.[a] The spirit is willing, but the flesh is weak.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “testing” or “trial.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Stay awake and pray[a], so that you may not enter into temptation. The spirit indeed is willing, but the flesh is weak.
-  simplified_phrase: Stay awake and pray, so that you do not enter into temptation. The spirit is willing, but the flesh is weak.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: so that you may not enter into temptation
+  simplified_phrase: so that you do not enter into temptation
+  preserved_meaning: Prayer is urged to prevent the disciples from entering temptation.
+  reasoning_layer_used: Source purpose clause and POB lexical decision
+  rationale: The direct wording expresses the same purpose in more natural English.
+- pob_phrase: The spirit indeed is willing, but the flesh is weak.
+  simplified_phrase: The spirit is willing, but the flesh is weak.
+  preserved_meaning: The disciples’ inward willingness is contrasted with their human frailty.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The word “but” clearly carries the contrast without the formal-sounding “indeed.”
+translation_notes:
+  risk_flags:
+  - risk: Modern readers may mistake “spirit” for the Holy Spirit or “flesh” for sinful nature.
+    mitigation: Lowercase “spirit” and the retained contrast preserve POB’s reading of inward willingness versus human frailty.
+  - risk: “Temptation” may obscure the word’s broader sense of testing or trial.
+    mitigation: The footnote preserves the documented lexical alternatives.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/014/038.yaml
+  source_text_sha256: 4c860e54c0e89486b400f2acded33c9cc83e437c08295f47e8e676bbc51f43d0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a2c0f0f3a242ffef50af042c06102648bc090b7ceefb3749a55c57f95c8b439d
+  timestamp: '2026-07-12T07:22:11Z'
+  output_hash: 8bd7b111b63290d59c2938148b4ca65837dc99ff2573d5a3dd4aaa049503c8ad
+  usage:
+    prompt_tokens: 3655
+    completion_tokens: 646
+    total_tokens: 4301
+    reasoning_tokens: 297
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: temptation
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
@@ -46,30 +83,14 @@ retained_terms:
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
 - term: flesh
   reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/014/038.yaml
-  source_text_sha256: 4c860e54c0e89486b400f2acded33c9cc83e437c08295f47e8e676bbc51f43d0
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 2583281c9a4b08e347cc4e33f6409052c43ad1f77024f8a3bdbeb90ba46f5be3
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:11Z'
+  previous_text: Stay awake and pray, so that you do not enter into temptation. The spirit is willing, but the flesh is weak.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fa0b157e3c2da9b8148db94ecacf6d92a46b9ffdb65a95a2af7de0a3b6be1136
+  review_summary: 'The main text is faithful: “the spirit” remains appropriately uncapitalized, “flesh” does not import “sinful nature,” and “so that you do not enter” can naturally express the Greek purpose/prevention clause. Removing “indeed” does not materially erase the contrast, since “but” retains it. However, deleting the POB footnote unnecessarily suppresses a genuine lexical ambiguity in πειρασμόν. Restore a concise footnote; no doctrinal expansion is needed.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

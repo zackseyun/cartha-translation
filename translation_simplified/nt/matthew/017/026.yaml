@@ -37,41 +37,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When Peter said, “From outsiders,” Jesus said to him, “Then the sons are free.”
+  text: When Peter answered, “From outsiders,” Jesus said to him, “Then the sons are exempt from paying the tax.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 17 POB wording
-  simplified_phrase: When Peter said, “From outsiders,” Jesus said to him, “Then the sons are free.”
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 17:26 while using simpler modern common English.
-  reasoning_layer_used: POB translation, footnotes, lexical decisions, and theological decisions
-  rationale: Uses outsiders for strangers while retaining sons and free to preserve the theological contrast.
-retained_terms:
-- term: sons
-  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
+- pob_phrase: When he said
+  simplified_phrase: When Peter answered
+  preserved_meaning: Peter responds to Jesus’ question in the preceding verse.
+  reasoning_layer_used: Immediate context and POB lexical decision
+  rationale: Naming Peter and using “answered” makes the exchange easy to follow.
+- pob_phrase: From strangers
+  simplified_phrase: From outsiders
+  preserved_meaning: The tax comes from people outside the ruler’s household, not from his sons.
+  reasoning_layer_used: POB footnote a and lexical decision for ἀλλοτρίων
+  rationale: “Outsiders” preserves the household contrast without suggesting foreign nationality.
+- pob_phrase: the sons are free
+  simplified_phrase: the sons are exempt from paying the tax
+  preserved_meaning: The ruler’s sons are not obligated to pay the tax under discussion.
+  reasoning_layer_used: POB footnote b, lexical decision for ἐλεύθεροί, and immediate context
+  rationale: The explicit wording prevents readers from mistaking “free” for general liberty.
+interpretive_expansions:
+- pob_phrase: the sons are free
+  rendering: the sons are exempt from paying the tax
+  claim: Their freedom means they are not required to pay the tax being discussed.
+  evidence:
+  - POB footnote b states that “free” contextually implies exemption from the tax.
+  - Matthew 17:24–26 concerns payment of the temple tax.
+  confidence: high
+  alternatives_preserved:
+  - the sons are free
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing POB YAML record for Matthew 17:26; no external LLM or API was used.
-  readability_notes:
-  - Uses short sentences and common modern English while keeping the verse's controlling POB meaning.
-  compression_notes:
-  - Compresses repeated or formal phrasing only where the same meaning remains clear.
+  risk_flags:
+  - risk: Rendering “free” as “exempt” narrows the adjective to its immediate tax implication.
+    mitigation: The wording follows the POB footnote and the explicit tax context while retaining “sons.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/017/026.yaml
   source_text_sha256: 6ab8f0decd4e432d3c480a5cc7a1333c2565fa7ef0d65d0e3cb0f1d5108b8234
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:23Z'
-  output_hash: fba65294b833aad2b4cce5169c94622251754b7ba9450aee7e524fe8097d4457
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 34934f86b3ff13c6723c79b29216b141cc6df8b00354e1ab1dd884f02dba873d
+  timestamp: '2026-07-12T07:36:48Z'
+  output_hash: 91c2dd85c194617a31b5f18a6fddf8fd757a895bfcdd66cf3635f15f3c10717a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3213
+    completion_tokens: 440
+    total_tokens: 3653
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: sons
+  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:48Z'
+  previous_text: When Peter said, “From outsiders,” Jesus said to him, “Then the sons are free.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2ab42c8637db154b92211e0cefde3f0184bf7b6648f526cc516e3558fc292b69
+  review_summary: Naming Peter is a warranted contextual clarification, since the immediately preceding dialogue identifies him as the speaker. “Outsiders” is also a defensible, clearer rendering of ἀλλοτρίων because it conveys those outside the ruler’s household without importing nationality. However, replacing neither “free” nor its contextual implication leaves the central conclusion needlessly unclear for SPOB readers. “Exempt from paying the tax” makes explicit the implication established by the immediate tax discussion and the POB audit trail, without adding a doctrinal claim or changing the sons/outsiders analogy.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

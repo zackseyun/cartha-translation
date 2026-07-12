@@ -31,38 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They were saying, “Not during the feast, or the people may riot.”
+  text: For they were saying, “Not during the feast, or there may be an uproar from the people.”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “among the people.” The uproar could arise from the crowd or occur among them.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: For they were saying[a], “Not during the feast, lest there be an uproar from the people.”
-  simplified_phrase: They were saying, “Not during the feast, or the people may riot.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: lest there be an uproar from the people
+  simplified_phrase: or there may be an uproar from the people
+  preserved_meaning: The wording still presents the uproar as the feared result while avoiding the less familiar word “lest.”
+  reasoning_layer_used: POB lexical decisions for μήποτε, ἔσται, θόρυβος, and τοῦ λαοῦ
+  rationale: “Or there may be” expresses the feared possibility in common modern English without strengthening “uproar” to “riot.”
+- pob_phrase: For they were saying
+  simplified_phrase: For they were saying
+  preserved_meaning: The explanatory link to the preceding verse and the ongoing or repeated speech remain intact.
+  reasoning_layer_used: POB lexical decisions for γάρ and ἔλεγον
+  rationale: These words are already clear and preserve source features that should not be compressed away.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “From the people” may imply more direct agency than the Greek requires.
+    mitigation: The footnote preserves the alternative sense that the uproar could occur among the people.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/002.yaml
   source_text_sha256: f278ae07c712d0efd31bb4653f28a0cc66ae9983733db079b4eafe5a98db3717
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 3d064d9520020262bfb37db75b7ec3dece4a98d12300126e0ce7b2e46c8c476d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6f59980dd8548f0942813e0a142173466d89935b011c5aed14db1b3401c2424b
+  timestamp: '2026-07-12T07:21:57Z'
+  output_hash: 96551b1b35c900ba12b283383845b2c1d9caa6eb61bd82d4bdf6884482ac76f4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3208
+    completion_tokens: 423
+    total_tokens: 3631
+    reasoning_tokens: 71
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:57Z'
+  previous_text: They were saying, “Not during the feast, or the people may riot.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 064177ae0dd4683297408bda5be784182403d4d5487e9ccf69d80ea3ff9815fe
+  review_summary: The replacement of “lest” with “or there may be” is a warranted, clearer modernization. However, “the people may riot” both strengthens “uproar” and settles the POB-noted ambiguity by making the crowd the direct actors. Retain the explanatory “For” and the less-specific wording for the feared disturbance.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

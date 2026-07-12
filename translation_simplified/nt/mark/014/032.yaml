@@ -31,41 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They came to a place named Gethsemane, and Jesus said to his disciples, “Sit here while I pray.”
+  text: They came to a place named Gethsemane, and Jesus said to his disciples, “Sit here until I pray.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they came to a place whose name was Gethsemane[a], and he says to his disciples, “Sit here until I pray.”
-  simplified_phrase: They came to a place named Gethsemane, and Jesus said to his disciples, “Sit here while I pray.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-retained_terms:
-- term: Gethsemane
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: a place whose name was Gethsemane
+  simplified_phrase: a place named Gethsemane
+  preserved_meaning: The location bears the proper name Gethsemane.
+  reasoning_layer_used: POB lexical decision for οὗ τὸ ὄνομα Γεθσημανί
+  rationale: “Named Gethsemane” expresses the same idea in more natural English.
+- pob_phrase: he says to his disciples
+  simplified_phrase: Jesus said to his disciples
+  preserved_meaning: Jesus addresses his disciples after they arrive.
+  reasoning_layer_used: Immediate narrative context and POB historical-present decisions
+  rationale: Naming Jesus clarifies the pronoun, while past tense gives consistent English narration.
+- pob_phrase: until I pray
+  simplified_phrase: until I pray
+  preserved_meaning: The command to sit extends to the temporal endpoint marked by Jesus’ prayer.
+  reasoning_layer_used: POB lexical decision for ἕως προσεύξωμαι
+  rationale: The wording is retained because “while I pray” would shift the documented temporal relation.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The speaker is Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the one traveling with and speaking to his disciples.
+  confidence: high
+  alternatives_preserved:
+  - he
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/032.yaml
   source_text_sha256: c7445b3c70dd382b1eee370a32458916dfcce9d8567f007eab797e79b0b45b71
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: f5bc277968cdb90f9a022bff3b2f66be0cc7ef44f6feee7112d81ef4626e4672
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9047949b295aec96cd6361062d959e70573be9bf0fd4891d7bcb2f9c18a4b8fe
+  timestamp: '2026-07-12T07:22:07Z'
+  output_hash: c4edc281b16ec1d825df65270b8ef260b0306fbd43c2bc5609d13b3b29b81fe5
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3157
+    completion_tokens: 371
+    total_tokens: 3528
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Gethsemane
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:07Z'
+  previous_text: They came to a place named Gethsemane, and Jesus said to his disciples, “Sit here while I pray.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f04f45f61326ebca43f0c220d06b4da08e22a1b64d1cdf75fde1d96356fe8b39
+  review_summary: Revise the final temporal clause. Naming Jesus and using “named Gethsemane” are clear, contextually warranted simplifications. But “while I pray” conflicts with the source-sensitive temporal distinction documented in the POB audit trail. Retain “until I pray” to preserve that relation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

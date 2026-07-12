@@ -31,44 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So they said to him[a], “Lord, always give us this bread.”
+  text: So they said to Jesus[a], “Lord, always give us this bread.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Sir, always give us this bread.” The Greek word here can function as a respectful address like “Sir” as well as “Lord.”
-    reason: simplification_note
+    text: Or “Sir, always give us this bread.” The Greek word here can be a respectful way of addressing someone, like “Sir,” as well as “Lord.”
+    reason: alternative_reading
 simplification_decisions:
-- simplified_phrase: So they said to him, “Lord, always give us this bread.”
-  preserved_meaning: The original POB text is already highly readable, using simple vocabulary that is easily understood by a modern reader. No further simplification of the core text is required, preserving the theological weight and narrative flow.
-  reasoning_layer_used: POB audit trail
-  rationale: The original POB text is already highly readable, using simple vocabulary that is easily understood by a modern reader. No further simplification of the core text is required, preserving the theological weight and narrative flow.
-retained_terms:
-- term: Lord
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: they said to him
+  simplified_phrase: they said to Jesus
+  preserved_meaning: Jesus remains the person whom the crowd addresses.
+  reasoning_layer_used: Immediate context and POB addressee analysis
+  rationale: Naming Jesus makes the verse clear when read by itself.
+interpretive_expansions:
+- pob_phrase: to him
+  rendering: to Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate dialogue identifies Jesus as the person being addressed.
+  confidence: high
+  alternatives_preserved:
+  - to him
 translation_notes:
-  source_alignment_notes: The translation preserves the structure of the Greek source, representing 'οὖν' as 'So', 'πρὸς αὐτόν' as 'to him', 'Κύριε' as 'Lord', 'πάντοτε' as 'always', and 'τὸν ἄρτον τοῦτον' as 'this bread'.
-  readability_notes:
-  - The sentence is short, punchy, and uses common vocabulary, making it highly accessible to general readers without losing its scriptural tone.
-  compression_notes:
-  - No compression was applied because the text is already brief and direct.
+  risk_flags:
+  - risk: Naming Jesus replaces a source-text pronoun with its contextual referent.
+    mitigation: The immediate dialogue clearly identifies Jesus as the addressee.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/006/034.yaml
   source_text_sha256: 1b28ab8074fcd256a3f6b9ab73d3f212c844589cef905386f7e69a775db2dfb7
-  pob_commit_sha: 9a43b560d15b9a8ba1bbb0ce2d35be2bcbc997ea
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 1e5f9295297f3e988de2841fb45222d04aaf76bb0d66c71cd8d171be2b1bc8ff
-  timestamp: '2026-05-28T07:41:10Z'
-  output_hash: 1706f9e0d5139aa1f080787bc8627b9c4b3b3b93e2b36a2e045b3fce4180042d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fea6691f2121beb878eeacd2a4588511021c775804489b33c7814dcd3576ddb9
+  timestamp: '2026-07-12T07:14:37Z'
+  output_hash: 680a74a4b34db23604aed1188fa0c39049815714d35ba663abc17c6929a1c246
   usage:
-    prompt_tokens: 1676
-    completion_tokens: 445
-    total_tokens: 4303
+    prompt_tokens: 3237
+    completion_tokens: 269
+    total_tokens: 3506
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Lord
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:37Z'
+  previous_text: So they said to him[a], “Lord, always give us this bread.”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a3813ebb792273b00f242e3267f8b4b2564bb8297687cfe409d945d36fddc3b8
+  review_summary: 'Revise for a small, warranted contextual clarification. Retain “Lord,” “always,” and “this bread”: these accurately preserve the Greek wording and the dialogue’s deliberate ambiguity. Replacing “him” with “Jesus” makes the verse more understandable when read on its own and does not insert doctrine or collapse the κύριε/Sir ambiguity, which remains appropriately covered by the footnote.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

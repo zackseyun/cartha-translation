@@ -31,36 +31,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 12:42 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''they were not confessing it''].'
 translation:
   language: en
-  text: Even so, many of the rulers believed in Jesus. But because of the Pharisees, they did not admit it, so they would not be excluded from the synagogue.
+  text: Even so, many of the rulers believed in Jesus. But because of the Pharisees, they did not admit it, so that they would not be excluded from the synagogue.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Nevertheless, even among the rulers many believed in him
+  simplified_phrase: Even so, many of the rulers believed in Jesus
+  preserved_meaning: Many members of the ruling authorities believed in Jesus despite the preceding contrast.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The wording names Jesus for clarity while leaving the nature of their belief unresolved.
+- pob_phrase: they were not confessing it
+  simplified_phrase: they did not admit it
+  preserved_meaning: They withheld open acknowledgment of their belief.
+  reasoning_layer_used: POB lexical decision for οὐχ ὡμολόγουν
+  rationale: “Did not admit it” is natural English and keeps the implied object restrained.
+- pob_phrase: so that they might not become excluded from the synagogue
+  simplified_phrase: so that they would not be excluded from the synagogue
+  preserved_meaning: Their purpose was to avoid exclusion from the synagogue community.
+  reasoning_layer_used: POB lexical decisions for ἵνα μή and ἀποσυνάγωγοι γένωνται
+  rationale: “So that” clearly preserves purpose while simplifying the resultative wording.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Admit it” may sound less public than “confess it.”
+    mitigation: The context and stated consequence still indicate withheld acknowledgment before others.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/042.yaml
   source_text_sha256: d6dfc8a00f048aed3635a0d202eb758fb35b4d92cdb0d63e5776243812601f7d
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: 88b24125e47e91e32332b250af3fc2e70297d13f272dd0b31506f3c8c93b0bb0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 35ddedd79410667e89d2920ff58d89b14fde45bb2b0b40729579e96433791de6
+  timestamp: '2026-07-12T07:16:21Z'
+  output_hash: f028ad8781226ef3fd4f8d6d3104640a378f1880184ff9582ec5f0e27192f0ff
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3583
+    completion_tokens: 373
+    total_tokens: 3956
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:21Z'
+  previous_text: Even so, many of the rulers believed in Jesus. But because of the Pharisees, they did not admit it, so they would not be excluded from the synagogue.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: df9c3b477cc31a716cbfa8573343ae28d51f10c2ec12bbf3783afa248383c1be
+  review_summary: 'The draft appropriately preserves the verse’s theological tension: these rulers believed in Jesus, yet did not confess this because of the Pharisees. “Admit it” is a clear, restrained simplification of the implied object of confessing. Revise the final connector to retain the Greek purpose clause rather than implying merely a resulting outcome.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

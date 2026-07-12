@@ -31,38 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Going a little farther, he fell to the ground and prayed that, if it were possible, the hour might pass from him.
+  text: He went a little farther, fell to the ground, and was praying that, if possible, the hour might pass from him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And going a little farther[a], he fell to the ground and was praying that, if it were possible, the hour might pass from him.
-  simplified_phrase: Going a little farther, he fell to the ground and prayed that, if it were possible, the hour might pass from him.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: And going a little farther, he fell to the ground
+  simplified_phrase: He went a little farther, fell to the ground
+  preserved_meaning: Jesus moved a short distance beyond the others and fell to the ground.
+  reasoning_layer_used: POB lexical decisions for προελθὼν μικρὸν and ἔπιπτεν ἐπὶ τῆς γῆς
+  rationale: Finite verbs make the sequence more direct without changing the actions.
+- pob_phrase: if it were possible
+  simplified_phrase: if possible
+  preserved_meaning: The prayer remains conditional and does not assume that the request can be granted.
+  reasoning_layer_used: POB lexical decision for εἰ δυνατόν ἐστιν
+  rationale: The shorter idiom preserves the solemn contingency in natural English.
+- pob_phrase: was praying that ... the hour might pass from him
+  simplified_phrase: was praying that ... the hour might pass from him
+  preserved_meaning: Jesus continued praying about the appointed time of his suffering and death.
+  reasoning_layer_used: POB lexical decisions for προσηύχετο and παρέλθῃ, plus the theological decision on “the hour”
+  rationale: The wording retains both the ongoing prayer and the deliberately unexplained image of “the hour.”
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Modern readers may not immediately understand what “the hour” means.
+    mitigation: Retain the expression because POB deliberately preserves its theological weight and narrative tension.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/035.yaml
   source_text_sha256: c0bf4544453ce296b70a81047b7b5d490b305dbf5cb51eb44817899f13e18b8d
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: e9b7d9c36db2512ee59f55d7dbfe3e30fa8b5f235d99134fa5a3f8f4fb38c72c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b4c6b8719f233255f48e78e350279c13c5813081bb98b745a8e3d408cc8e4fef
+  timestamp: '2026-07-12T07:22:38Z'
+  output_hash: 4fbd867c624aefe730178170d6e8d9801758d6d09e99bda81db4832633f78d6a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3294
+    completion_tokens: 396
+    total_tokens: 3690
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:38Z'
+  previous_text: Going a little farther, he fell to the ground and prayed that, if it were possible, the hour might pass from him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: bced648beb1f7b9f7c7c1efa216fa9f0ee714ae4c39de70b42c890b03513ad2a
+  review_summary: Revise. The draft rightly retains the text’s contingent request and the deliberately unresolved expression “the hour”; it introduces no doctrinal expansion or unsupported explanation. However, “prayed” removes the durative force POB identified in the Greek imperfect. The recommended wording is more direct for modern readers while preserving that ongoing prayer.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

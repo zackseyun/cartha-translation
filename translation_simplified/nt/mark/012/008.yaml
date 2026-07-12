@@ -31,38 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So they grabbed him, killed him, and threw him out of the vineyard.
+  text: They took him, killed him, and threw him out of the vineyard.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And they took him[a], killed him, and threw him out of the vineyard.
-  simplified_phrase: So they grabbed him, killed him, and threw him out of the vineyard.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+  simplified_phrase: They took him, killed him, and threw him out of the vineyard.
+  preserved_meaning: Keeps all three actions and the source-driven order of killing before expulsion.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Removing the opening connector makes the verse read naturally without changing its action sequence.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: The wider narrative connection marked by “And” is less explicit.
+    mitigation: The three actions remain in their original rapid sequence.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/008.yaml
   source_text_sha256: 8edee1bf6a4fb5694b286731dee32a774f6c52c513774146253943ebba676409
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: b4e4c9fb6ef2e0fa4c0fbdd0c0cdfe6d6cb2cf71ab4719f635623ffe6c0225a4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 317cf00917f19521dd801d63240448912c6aa3ed818243f9762ef910b6b2e961
+  timestamp: '2026-07-12T07:23:37Z'
+  output_hash: f9e67fcf678a86490b5d1f9534fb05baa587f0b44ec65eb001798a315126cfb4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3054
+    completion_tokens: 190
+    total_tokens: 3244
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:37Z'
+  previous_text: So they grabbed him, killed him, and threw him out of the vineyard.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1fb65bb15fc258d55f3e387eb235bfa682aa8856f338e28ee94f389302f4440d
+  review_summary: Revise to retain the POB’s deliberately unmarked rendering of λαβόντες. The proposed wording is readable, but “grabbed” makes a plausible narrative inference into the stated meaning. The replacement remains clear, preserves the Greek sequence of killing before expulsion, and avoids harmonizing the order with parallel accounts.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

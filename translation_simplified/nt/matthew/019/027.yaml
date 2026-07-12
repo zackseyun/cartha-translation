@@ -19,46 +19,69 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 19:27 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''Look'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote ma'
 translation:
   language: en
-  text: Then Peter answered him, “Look, we have left everything and followed you. What then will there be for us?”
+  text: Then Peter said to him, “Look, we have left everything to follow you. So what will we receive?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Look
-  simplified_phrase: Look
-  preserved_meaning: Peter calls attention to what the disciples have left.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Keeps POB's restored rendering.
+- pob_phrase: Then Peter answered him
+  simplified_phrase: Then Peter said to him
+  preserved_meaning: Peter responds directly to Jesus.
+  reasoning_layer_used: POB translation and source payload
+  rationale: Uses ordinary English for the narrative introduction.
+- pob_phrase: we have left everything and followed you
+  simplified_phrase: we have left everything to follow you
+  preserved_meaning: The disciples gave up everything in order to follow Jesus.
+  reasoning_layer_used: POB translation and immediate context
+  rationale: Makes the relationship between leaving and following easier to grasp.
 - pob_phrase: What then will there be for us?
-  simplified_phrase: What then will there be for us?
-  preserved_meaning: Peter asks what reward or share the disciples will have.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: POB wording is clear and restrained.
-retained_terms:
-- term: Look
-  reason: Retained because POB restored this chosen rendering.
+  simplified_phrase: So what will we receive?
+  preserved_meaning: Peter asks what the disciples will receive after leaving everything to follow Jesus.
+  reasoning_layer_used: Source payload, immediate context, and grounding review
+  rationale: States the contextual sense plainly without defining the promised reward.
+interpretive_expansions:
+- pob_phrase: What then will there be for us?
+  rendering: So what will we receive?
+  claim: Peter is asking what the disciples will receive in response to their sacrifice and allegiance.
+  evidence:
+  - Jesus answers in Matthew 19:28–29 by describing what they will receive.
+  - The Greek asks what will be for the disciples in this context.
+  confidence: high
+  alternatives_preserved:
+  - The nature of what they will receive remains unspecified.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the POB record for Matthew 19:27; no external LLM or API was used.
-  readability_notes:
-  - Uses modern common English while keeping the controlling POB meaning.
-  compression_notes:
-  - Only formal or repeated wording is simplified; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Receive” makes the implied result more explicit than the Greek wording alone.
+    mitigation: The immediate answer in verses 28–29 supports this sense, while the translation leaves the reward undefined.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/019/027.yaml
   source_text_sha256: bcb91483c7f8a01b7008ccf09fe9c4aa4602183b4ed91bd88d184eec7d1e8b65
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:31Z'
-  output_hash: 12143606c8c5e73b4cc7ab9fffb7ae319e718145704d37749c4ab610cff9f80a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7a6aba12c0724b5311f18454049447409e27a5d50e6dd4b831413c28b7e91bb1
+  timestamp: '2026-07-12T07:37:02Z'
+  output_hash: a0dc6fec7b1bc62f8ffa28e4c6604ccb237125a92cc4e508a26c34493b293c0c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2654
+    completion_tokens: 416
+    total_tokens: 3070
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Look
+  reason: Retained because POB restored this chosen rendering.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:02Z'
+  previous_text: Then Peter answered him, “Look, we have left everything and followed you. What then will there be for us?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 667756a90de95b851cdd341543ffd089b53a54451288f415f3f2356f273ff0d0
+  review_summary: Revise for the stated SPOB purpose. “What will we receive?” makes Peter’s question immediately clear while remaining constrained by the Greek wording and by Jesus’ answer in the next verses. It does not specify the nature of the reward or import a doctrinal scheme.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

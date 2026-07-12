@@ -31,38 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But Peter denied it, saying, “I neither know nor understand what you are talking about.” Then he went out into the forecourt, and a rooster crowed.
+  text: But Peter denied it, saying, “I neither know nor understand what you are talking about.” Then he went out into the forecourt, and a rooster crowed.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts omit “and a rooster crowed.”
+    reason: textual_variant
 simplification_decisions:
-- pob_phrase: But he denied it[a], saying, “I neither know nor understand what you are saying.” And he went out into the forecourt, and a rooster crowed.
-  simplified_phrase: But Peter denied it, saying, “I neither know nor understand what you are talking about.” Then he went out into the forecourt, and a rooster crowed.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: he denied it
+  simplified_phrase: Peter denied it
+  preserved_meaning: The immediate context identifies Peter as the man who denied the accusation.
+  reasoning_layer_used: Immediate narrative context and POB lexical decision
+  rationale: Naming Peter helps readers follow the scene without changing what he denied.
+- pob_phrase: what you are saying
+  simplified_phrase: what you are talking about
+  preserved_meaning: Peter insists that he does not know or understand the woman’s claim.
+  reasoning_layer_used: POB lexical alternatives and rationale
+  rationale: This common expression preserves the force of Peter’s doubled denial.
+- pob_phrase: And he went out into the forecourt
+  simplified_phrase: Then he went out into the forecourt
+  preserved_meaning: Peter next moves to the area before the inner courtyard or house.
+  reasoning_layer_used: POB translation and lexical decision for προαύλιον
+  rationale: “Then” makes the narrative sequence clear while retaining the precise location.
+interpretive_expansions:
+- pob_phrase: he denied it
+  rendering: Peter denied it
+  claim: The unnamed subject is Peter.
+  evidence:
+  - The immediate narrative context identifies Peter as the subject.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: The rooster-crow clause is textually uncertain.
+    mitigation: The clause remains in the main text following SBLGNT, with the POB variant footnote retained.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/068.yaml
   source_text_sha256: d3acfd1cb96255bb075c4d828e32170b049c395d10dd3a8bfb17289f82c10859
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: dfca0ca5618d7ee14bb84167a6a8ce5b51cca31890ca9d80ee881be2148e0c79
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9e2552ad73ba3a4fd5e58596449f48e44c444e572871c674eaed8e30856f4698
+  timestamp: '2026-07-12T07:24:17Z'
+  output_hash: 66b5764e96210758c9bce067e34befba110663888d404933806a5c09e2c238db
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3302
+    completion_tokens: 420
+    total_tokens: 3722
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:17Z'
+  previous_text: But Peter denied it, saying, “I neither know nor understand what you are talking about.” Then he went out into the forecourt, and a rooster crowed.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6fccef2fabac6bf70fed25ba2b820b85488b857d7f1e19ffefac5c4144c42c77
+  review_summary: Naming Peter is warranted by the immediate narrative context and substantially helps modern readers identify the speaker. “What you are talking about” is a clear, contextually faithful simplification of “what you are saying,” without turning Peter’s denial into a doctrinal claim. However, the draft must retain the POB textual-variant footnote for the final rooster-crow clause.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

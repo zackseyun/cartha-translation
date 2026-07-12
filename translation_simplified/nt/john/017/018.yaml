@@ -27,43 +27,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Just as you sent me into the world, I also sent them into the world.
+  text: Just as you sent me into the world, I also sent my disciples into the world.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Just as you sent me into the world, I also sent them into the world
-  simplified_phrase: Just as you sent me into the world, I also sent them into the world
-  preserved_meaning: Keeps the parallel between the Father's sending of Jesus and Jesus' sending of the disciples.
-  reasoning_layer_used: POB translation text
-  rationale: The POB wording is already simple and balanced, so it is retained.
-retained_terms:
-- term: sent
-  reason: Retained because mission/sending is the central action in the verse.
-- term: world
-  reason: Retained as the repeated mission setting.
+- pob_phrase: I also sent them into the world
+  simplified_phrase: I also sent my disciples into the world
+  preserved_meaning: Identifies “them” as Jesus’ disciples while preserving the repeated sending language.
+  reasoning_layer_used: POB lexical decision for αὐτούς and immediate context
+  rationale: Naming the disciples makes the referent clear to readers without changing their mission.
+interpretive_expansions:
+- pob_phrase: them
+  rendering: my disciples
+  claim: The people Jesus sent are his disciples.
+  evidence:
+  - The POB lexical audit identifies “them” as the disciples in context.
+  - John 17:6–19 concerns the people the Father gave Jesus and whom Jesus sends.
+  confidence: high
+  alternatives_preserved:
+  - them
 translation_notes:
-  source_alignment_notes: Manual SPOB draft preserves the POB sending parallel.
-  readability_notes:
-  - No simplification needed beyond preserving clear wording.
-  compression_notes:
-  - No central meaning is removed.
+  risk_flags:
+  - risk: Replacing the pronoun makes its contextual referent explicit.
+    mitigation: The POB audit directly identifies the referent as the disciples.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/017/018.yaml
   source_text_sha256: d330be87c58bd3135ec620290c8d4325ba9180bc5afbbe4c8b9068fdcbdeae5e
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:49Z'
-  output_hash: cb8b185834992e08c879fef3e2732f419f4673e26676493a885c24468fe22882
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 075af09460575151f53c6c65d3fcdf01c16ff1aa6a74c4810bd4c367136579d6
+  timestamp: '2026-07-12T07:17:06Z'
+  output_hash: 102d0c6ac8da4d5467c33a4852e0cc72db29d835c79a2891a78575038521cfd5
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3008
+    completion_tokens: 264
+    total_tokens: 3272
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: sent
+  reason: Retained because mission/sending is the central action in the verse.
+- term: world
+  reason: Retained as the repeated mission setting.
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:06Z'
+  previous_text: Just as you sent me into the world, I also sent them into the world.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0ef212eb8f7cf762d5801cb61f4852f4504ed4c03fa592da16dc192d462efa7e
+  review_summary: Revise for a warranted clarity improvement. The draft faithfully preserves the Greek comparison and repeated “sent … into the world,” but merely repeats POB. Naming the disciples resolves the only potentially unclear pronoun using immediate context while preserving the verse’s deliberate parallel and avoiding doctrinal expansion.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

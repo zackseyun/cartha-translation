@@ -37,21 +37,66 @@ base_translation:
     changes_summary: 'Changed ''speaks this way'' to ''speaks in this way'' for more natural formal English, and replaced ''the Messiah'' with ''Christ'' to reflect the Greek Χριστόν more directly and maintain consistency with Paul''s usage. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: 'But the righteousness[a] that comes from faith says this: ''Do not say in your heart, Who will go up into heaven?'' (that is, to bring Messiah[b] down).'
+  text: 'But the righteousness[a] that comes from faith says this: “Do not say to yourself, ‘Who will go up into heaven?’” (that is, to bring Messiah[b] down).'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'justice from faith.'
-    reason: simplification_note
+    text: Or “justice that comes from faith.”
+    reason: lexical_alternative
   - marker: b
-    text: Greek 'Christ'; rendered 'Messiah' here because it functions as a title.
-    reason: simplification_note
+    text: Greek “Christ”; rendered “Messiah” here because it functions as a title.
+    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: the righteousness from faith speaks in this way
+  simplified_phrase: the righteousness that comes from faith says this
+  preserved_meaning: Preserves righteousness as the personified speaker and faith as its source.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The relative clause and common verb make the personification easier to follow.
+- pob_phrase: Do not say in your heart
+  simplified_phrase: Do not say to yourself
+  preserved_meaning: Preserves the inward, self-directed thought expressed by the biblical heart idiom.
+  reasoning_layer_used: POB lexical rationale and grounding review
+  rationale: The common English idiom makes the intended inward speech immediately clear.
 - pob_phrase: Who will ascend into heaven?
   simplified_phrase: Who will go up into heaven?
-  preserved_meaning: Preserves the upward movement while using common English wording.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Go up'' is clearer for modern readers than ''ascend'' and stays aligned with the Deuteronomy echo.'
+  preserved_meaning: Preserves the upward movement and the Deuteronomy echo.
+  reasoning_layer_used: POB lexical alternatives and cross-reference
+  rationale: “Go up” is clearer in common English than “ascend.”
+interpretive_expansions:
+- pob_phrase: Do not say in your heart
+  rendering: Do not say to yourself
+  claim: The command refers to inward, self-directed speech or thought.
+  evidence:
+  - The POB rationale identifies the heart as the seat of thought and intention.
+  - The quoted question supplies the content of that inward speech.
+  confidence: high
+  alternatives_preserved:
+  - Do not say in your heart
+translation_notes:
+  risk_flags:
+  - risk: Replacing the concrete “heart” image may reduce the visible Deuteronomy echo.
+    mitigation: The rendering preserves its audited inward meaning and retains the quotation’s structure.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/010/006.yaml
+  source_text_sha256: 61e575071935cb2ea1326d36f886f48f223ba3092c09670f32224f17e88d5a54
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e2315ad37a016d719f318ed36ecac6f241875577084bc4503a9424176e099b54
+  timestamp: '2026-07-12T07:43:03Z'
+  output_hash: 92ac13866ae3b2803b6f484e47c00389a7c6ef7d8a2706fe192eb8a2cecfab6f
+  usage:
+    prompt_tokens: 3959
+    completion_tokens: 489
+    total_tokens: 4448
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: righteousness
   reason: Retained POB Pauline term.
@@ -59,30 +104,13 @@ retained_terms:
   reason: Retained key term.
 - term: Messiah
   reason: Retained title for Χριστός.
-translation_notes:
-  source_alignment_notes: Preserves Paul's personified speech of righteousness from faith and his Deuteronomy quotation applied to Messiah.
-  readability_notes:
-  - Simplifies 'ascend' to 'go up'.
-  compression_notes:
-  - The parenthetical explanation is retained.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/010/006.yaml
-  source_text_sha256: 61e575071935cb2ea1326d36f886f48f223ba3092c09670f32224f17e88d5a54
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:46Z'
-  output_hash: ea4059e298f0aff26c06ca318eb2b09683e041c23de659d2d464207fa054213d
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:43:03Z'
+  previous_text: 'But the righteousness[a] that comes from faith says this: ''Do not say in your heart, Who will go up into heaven?'' (that is, to bring Messiah[b] down).'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d20e3fc3d747228f13c9b88e4a837a9b86eadfc13af9a159ccf3de1d5b9e90b9
+  review_summary: The replacement retains the warranted simplification of “ascend” to “go up” and the POB’s rendering of Messiah. It also makes the source idiom’s intended sense—an inward thought—clearer and restores unambiguous nested quotation structure without importing an interpretive claim.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But right now I am going to Jerusalem to serve the saints.
+  text: But right now I am going to Jerusalem to serve God’s people there.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: But now
+  simplified_phrase: But right now
+  preserved_meaning: Paul emphasizes his present plans while continuing the contrast in his discussion.
+  reasoning_layer_used: POB lexical decision for νυνὶ δὲ
+  rationale: “Right now” makes the emphasized present time clear in ordinary English.
+- pob_phrase: ministering to
+  simplified_phrase: to serve
+  preserved_meaning: Paul is going in order to provide practical service without implying an official church role.
+  reasoning_layer_used: POB lexical decision for διακονῶν and Romans 15:26 context
+  rationale: The purpose clause is clearer than the participial phrase and keeps the service-oriented sense.
+- pob_phrase: the saints
+  simplified_phrase: God’s people there
+  preserved_meaning: The recipients are the believers in Jerusalem rather than an exceptional class of holy people.
+  reasoning_layer_used: POB theological decision on the referent of τοῖς ἁγίοις
+  rationale: This wording identifies the contextually established referent for readers unfamiliar with “saints.”
+interpretive_expansions:
+- pob_phrase: the saints
+  rendering: God’s people there
+  claim: The people Paul will serve are the believers in Jerusalem.
+  evidence:
+  - The POB theological decision identifies them as believers in Jerusalem.
+  - Romans 15:26 connects the service with aid for poor believers in Jerusalem.
+  confidence: high
+  alternatives_preserved:
+  - the saints
+  - the holy ones
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “God’s people” is less formally tied to the lexical wording “saints.”
+    mitigation: The immediate context and POB theological decision firmly establish the intended referent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/025.yaml
   source_text_sha256: 96637eceac2da8b28f79c4e10e0f33208316a97d037827ddd6f46513ed72789b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: cea9f223b0525e264444d7783ba99684f45106a74c6cef6c7f5d85d53306ea9b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7b390572be5b86cad939895748c29704595be34d6b03cfc56a807cf5310df924
+  timestamp: '2026-07-12T07:42:45Z'
+  output_hash: f35eaab1fb7049128f1e966e800fb713232f302607df029190038df661473200
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2972
+    completion_tokens: 423
+    total_tokens: 3395
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:45Z'
+  previous_text: But right now I am going to Jerusalem to serve the saints.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4864f0d4232b0e09f4e18f2acba6cfc0ba59db00301a1053ecdcae6b863a1a29
+  review_summary: The draft faithfully renders νυνὶ δέ as “But right now” and appropriately simplifies διακονῶν from “ministering” to “serve.” However, retaining “the saints” leaves the intended referent unclear for the target readership. “God’s people there” makes explicit the established contextual referent without adding a doctrinal claim or narrowing Paul’s practical service beyond what the text permits.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -33,56 +33,67 @@ base_translation:
     changes_summary: 'Changed ''Messiah Jesus'' to ''Christ Jesus'' to reflect the Greek ἐν Χριστῷ Ἰησοῦ more naturally and consistently in formal translation; otherwise retained the draft. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Greet every one of God's holy people[a] in Messiah Jesus[b]. The brothers[c] who are with me send you their greetings.
+  text: Greet every one of the holy people in Messiah Jesus[a]. The brothers[b] who are with me send you their greetings.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "every saint."
+    text: Or “in Christ Jesus.”
     reason: lexical_alternative
   - marker: b
-    text: Or "Christ Jesus."
-    reason: lexical_alternative
-  - marker: c
-    text: '"Brothers" here may refer more broadly to all fellow believers, including both men and women.'
+    text: “Brothers” here may refer more broadly to fellow believers with Paul, including both men and women.
     reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: every one of God's holy people
-  preserved_meaning: Translated 'saint' (from hagios) to 'one of God's holy people' to avoid the common modern misconception that 'saints' only refers to deceased, canonized individuals, while preserving the distributive force of the singular with pas ('every') and the sense of set-apartness.
-  reasoning_layer_used: POB audit trail
-  rationale: Translated 'saint' (from hagios) to 'one of God's holy people' to avoid the common modern misconception that 'saints' only refers to deceased, canonized individuals, while preserving the distributive force of the singular with pas ('every') and the sense of set-apartness.
-- simplified_phrase: The brothers who are with me send you their greetings
-  preserved_meaning: Smoothed the English phrasing by adding 'who are' and translating 'greet you' as 'send you their greetings' to sound more natural in modern epistolary style.
-  reasoning_layer_used: POB audit trail
-  rationale: Smoothed the English phrasing by adding 'who are' and translating 'greet you' as 'send you their greetings' to sound more natural in modern epistolary style.
-retained_terms:
-- term: Messiah Jesus
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: brothers
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: every saint
+  simplified_phrase: every one of the holy people
+  preserved_meaning: Each believer is identified as holy or set apart.
+  reasoning_layer_used: POB lexical decision for πάντα ἅγιον
+  rationale: This avoids the modern misconception that saints are only specially recognized deceased believers.
+- pob_phrase: The brothers with me greet you
+  simplified_phrase: The brothers who are with me send you their greetings
+  preserved_meaning: Paul's companions convey their greetings to the readers.
+  reasoning_layer_used: POB lexical decisions for ἀσπάζονται and οἱ σὺν ἐμοὶ ἀδελφοί
+  rationale: The recast sentence sounds natural in modern correspondence while retaining the distinct group and action.
 translation_notes:
-  source_alignment_notes: The translation strictly preserves 'Messiah' (from Christos) as a title, respecting the theological decision of the base text and DOCTRINE.md rules. The distributive singular 'every' (panta) is preserved in 'every one of God's holy people'.
-  readability_notes:
-  - Replaced 'saint' with 'one of God's holy people' to ensure clarity for readers unfamiliar with traditional ecclesiastical terminology. Phrased the closing greeting as 'send you their greetings' to sound like natural modern correspondence.
-  compression_notes:
-  - No meaning was compressed or lost. The structural components of the original Greek greeting and the POB base text are fully represented.
+  risk_flags:
+  - risk: “Holy people” could sound collective rather than distributive.
+    mitigation: “Every one of” preserves the Greek emphasis on each individual.
+  - risk: “Brothers” may be understood as excluding women.
+    mitigation: Footnote b preserves the contextually broader possibility.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/philippians/004/021.yaml
   source_text_sha256: 1fe9f3adfa30ce451050820fbf6f0f25c2e0532765a07a9405b17f27511a5ee7
-  pob_commit_sha: 9a43b560d15b9a8ba1bbb0ce2d35be2bcbc997ea
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 44113b1af7bb60520b2654863979d8f788e31808dbc4da13a86bc3f06f7320be
-  timestamp: '2026-05-28T07:38:14Z'
-  output_hash: 2e7dc4d066a09b6b7ca3a0a58ade5a332eed762ab6c13dd27aa0754160e0b840
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 12951f6c873ba843b0554328cd7a119f0dc6dba6e5514318308e2c2827d645ed
+  timestamp: '2026-07-12T07:39:28Z'
+  output_hash: f8e64da230d4725d7a262481c4f3628e5d939b15dde03c013a29bfbb393e4ed7
   usage:
-    prompt_tokens: 1729
-    completion_tokens: 631
-    total_tokens: 6297
+    prompt_tokens: 3555
+    completion_tokens: 359
+    total_tokens: 3914
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Messiah Jesus
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: brothers
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:28Z'
+  previous_text: Greet every one of God's holy people[a] in Messiah Jesus[b]. The brothers[c] who are with me send you their greetings.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a97f3cba7b572ded7a325e06c92380281c6d8df2d4a6e458a90fa02794365b45
+  review_summary: The draft successfully makes “saint” understandable to modern readers and naturally renders the closing greeting. However, “God’s” is an unnecessary and unsupported addition to the verse’s wording. “Holy people” retains the needed clarification without adding a possessive claim absent from the source. Retain the existing lexical-alternative footnotes, with the “saint” note corresponding to “holy people.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

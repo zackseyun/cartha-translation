@@ -34,41 +34,69 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 9:20 falling on the ground / he rolled about. Restored drafter ''and falling on the ground, he rolled about'' (preserving the chosen participial construction) per chosen renderings.'
 translation:
   language: en
-  text: They brought the boy to Jesus. When the spirit saw Jesus, it immediately threw the boy into convulsions. He fell on the ground, rolled around, and foamed at the mouth.
+  text: They brought the boy to Jesus. When the spirit saw Jesus, it immediately threw the boy into convulsions. He fell on the ground, rolled around, and foamed.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: they brought him to him ... when the spirit saw him ... convulsed him
-  simplified_phrase: They brought the boy to Jesus. When the spirit saw Jesus, it immediately threw the boy into convulsions
-  preserved_meaning: Keeps the action while clarifying pronouns and the convulsion.
-  reasoning_layer_used: POB translation text and footnotes
-  rationale: Replaces repeated pronouns with clear referents and uses the POB footnote's convulsion wording.
-retained_terms:
-- term: spirit
-  reason: Retained because the POB note preserves this verse's wording while context identifies it as unclean.
+- pob_phrase: they brought him to him
+  simplified_phrase: They brought the boy to Jesus
+  preserved_meaning: The boy was brought to Jesus.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: Names the clear referents so readers do not have to untangle repeated pronouns.
+- pob_phrase: when the spirit saw him, it immediately convulsed him
+  simplified_phrase: When the spirit saw Jesus, it immediately threw the boy into convulsions
+  preserved_meaning: The spirit reacted to seeing Jesus by causing the boy severe spasms.
+  reasoning_layer_used: POB lexical decisions and lexical alternative
+  rationale: Clarifies both pronouns and uses the documented plain-English alternative for the convulsion.
+- pob_phrase: he fell on the ground and rolled about, foaming
+  simplified_phrase: He fell on the ground, rolled around, and foamed
+  preserved_meaning: The boy fell, continued rolling, and foamed during the episode.
+  reasoning_layer_used: POB translation and lexical decisions
+  rationale: Uses natural modern coordination while preserving each distinct action.
+interpretive_expansions:
+- pob_phrase: him ... him ... him
+  rendering: the boy ... Jesus ... the boy
+  claim: The repeated pronouns refer respectively to the boy and Jesus as established by the immediate context.
+  evidence:
+  - The POB rationale identifies the one brought as the boy and the destination as Jesus.
+  - The POB rationale says the spirit sees Jesus in context.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft follows POB Mark 9:20.
-  readability_notes:
-  - Clarifies who is brought and who sees whom.
-  compression_notes:
-  - No central action is removed.
+  risk_flags:
+  - risk: Naming the pronoun referents states contextual information not explicit in each Greek pronoun.
+    mitigation: The immediate context and POB lexical rationales clearly identify the boy and Jesus.
+  - risk: Readers may assume a specific location for the foaming.
+    mitigation: The text says only “foamed,” matching the source and avoiding the unsupported phrase “at the mouth.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/009/020.yaml
   source_text_sha256: d540a420741a68996907b2bb94ed6d2993d40d683c06bb8881fa34bd4ba0346a
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:15:34Z'
-  output_hash: 6fc5fe7f12b70c35130086a45195d047a930689b565e6e741a3661dc281327ab
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 67f19c19a61c45c78c16f7b33646c5287de19dda6596233677fc70795e5d5a04
+  timestamp: '2026-07-12T07:20:57Z'
+  output_hash: 7d8ebb20e93ab60d2244727775ebf53e12b23fd64e06b1b6120cab6d0e39d9ee
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3748
+    completion_tokens: 493
+    total_tokens: 4241
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: spirit
+  reason: Retained because the POB note preserves this verse's wording while context identifies it as unclean.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:57Z'
+  previous_text: They brought the boy to Jesus. When the spirit saw Jesus, it immediately threw the boy into convulsions. He fell on the ground, rolled around, and foamed at the mouth.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 831703aec354d4d2af738d472be7de6195dbc98c2c56b1c956ae2d2883ba1e5b
+  review_summary: 'The draft substantially improves readability by identifying the boy and Jesus rather than retaining ambiguous repeated pronouns. “Threw the boy into convulsions” is supported by the POB lexical alternative and accurately conveys the action. Revise only the final phrase: retain “foamed,” rather than adding the unexpressed location “at the mouth.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

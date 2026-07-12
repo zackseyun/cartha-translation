@@ -31,38 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They brought to him a man who was deaf and had difficulty speaking, and they begged him to lay his hand on him.
+  text: They brought Jesus a man who was deaf and had trouble speaking. They begged Jesus to put his hand on the man.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: a man who was deaf and had difficulty speaking
-  simplified_phrase: a man who was deaf and had difficulty speaking
-  preserved_meaning: Keeps POB's natural expression for the man's condition.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB wording is already clear and dignified.
-translation_notes:
-  source_alignment_notes: Preserves the man's condition and the request for Jesus to lay his hand on him.
-  readability_notes:
-  - Keeps the clear POB wording.
-  compression_notes:
-  - No request detail is removed.
+- pob_phrase: brought to him
+  simplified_phrase: brought Jesus
+  preserved_meaning: Identifies Jesus as the person to whom they brought the man.
+  reasoning_layer_used: Immediate narrative context and POB pronoun alignment
+  rationale: Naming Jesus removes an unclear pronoun without changing the event.
+- pob_phrase: had difficulty speaking
+  simplified_phrase: had trouble speaking
+  preserved_meaning: Describes impaired speech without implying that the man was mute.
+  reasoning_layer_used: POB lexical and theological decisions on μογιλάλον
+  rationale: “Had trouble speaking” is common English and preserves the limited impairment.
+- pob_phrase: lay his hand on him
+  simplified_phrase: put his hand on the man
+  preserved_meaning: Keeps the singular hand and the requested healing gesture.
+  reasoning_layer_used: POB lexical decision on ἵνα ἐπιθῇ αὐτῷ τὴν χεῖρα
+  rationale: The clearer wording distinguishes Jesus from the man.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person receiving the man and the request is Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the referent of the pronoun.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/007/032.yaml
   source_text_sha256: bf9a30ad940f938698f1c8f000763bb59db56f85fba643e56fd9e56c06024ced
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:00Z'
-  output_hash: b803c11c45a065a3f30347c7b024a0bd416dff3d89012b6c9e987ade64e6d32a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9e4fd8c268be7817dc333814a33576e5c2978a7e0fc09599fe38fecf730f0221
+  timestamp: '2026-07-12T07:23:24Z'
+  output_hash: 454537d9a8579a75de9523c9d379183c00861c21cabd8f50816a554192749af4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2996
+    completion_tokens: 355
+    total_tokens: 3351
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:24Z'
+  previous_text: They brought to him a man who was deaf and had difficulty speaking, and they begged him to lay his hand on him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: edde8718ed53511c9594e4459dec734c402f80bff386cea08976d46f60ce1050
+  review_summary: 'The draft preserves the Greek sense accurately: the man is deaf and has impaired, rather than absent, speech; the request concerns Jesus placing a hand on him. However, it merely reproduces POB and therefore does not meet the stated requirement that SPOB be meaningfully clearer. Explicitly naming Jesus and the man, and using “trouble speaking” and “put his hand on,” improve readability without adding doctrine or collapsing any live ambiguity.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

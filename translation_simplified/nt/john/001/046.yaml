@@ -31,44 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Nathanael said to him, "Can anything good come from Nazareth?" Philip said, "Come and see."
+  text: Nathanael said to Philip, “Can anything good come from Nazareth?” Philip said, “Come and see.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: Nazareth
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: Come and see
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: And Nathanael said to him
+  simplified_phrase: Nathanael said to Philip
+  preserved_meaning: Nathanael addresses Philip, as established in the preceding verse.
+  reasoning_layer_used: Immediate context and POB pronoun analysis
+  rationale: Naming Philip removes an unclear pronoun without changing the exchange.
+- pob_phrase: Philip said to him
+  simplified_phrase: Philip said
+  preserved_meaning: Philip answers Nathanael directly.
+  reasoning_layer_used: Immediate dialogue context
+  rationale: The listener is already clear, so the repeated pronoun is unnecessary.
+interpretive_expansions:
+- pob_phrase: to him
+  rendering: to Philip
+  claim: The pronoun refers to Philip.
+  evidence:
+  - John 1:45 identifies Philip as the person speaking with Nathanael.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Maintains the lexical choice 'come from' for the Greek 'εἶναι' as it is the most natural representation of origin. Preserves the exact rhetorical nature of Nathanael's question, avoiding any interpretive coloring of his tone, which aligns with the POB theological decision.
-  readability_notes:
-  - Smoothed dialogue by cutting unnecessary conjunctions and repetitive pronouns, making the exchange feel more active and natural to a modern reader.
-  compression_notes:
-  - Minimal compression by dropping the initial 'And' and the second 'to him'. The complete semantic payload remains intact.
   risk_flags:
-  - risk: None
-    mitigation: Flag retained for reviewer attention.
+  - risk: Naming a pronoun’s referent is more explicit than the Greek wording.
+    mitigation: The immediate context clearly identifies Philip, so no disputed interpretation is introduced.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/001/046.yaml
   source_text_sha256: ac97af848e30620ef0827d1343991746d95f772907339e175354b9519c7d7d00
-  pob_commit_sha: 549512d32b0e476275a6ef305e6b3bc8fb87b638
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: d8b42f302620213a009e55315062073caa2276d83689f75f05ac3f1f1674b439
-  timestamp: '2026-05-28T08:21:55Z'
-  output_hash: 272fc51df64c1e2eabf234675b05b121ea68348581686b3f5e107280c0bb05ca
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 04a97c962fa10cf926d1604a73f60b6cdf86b60413316f7ebecec8f08b2c920b
+  timestamp: '2026-07-12T07:13:32Z'
+  output_hash: 093889160a00410904a003060b861729ce0ea4e45490b6b02443b44aacd3fdc7
   usage:
-    prompt_tokens: 1922
-    completion_tokens: 448
-    total_tokens: 5738
+    prompt_tokens: 3360
+    completion_tokens: 302
+    total_tokens: 3662
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Nazareth
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: Come and see
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:32Z'
+  previous_text: Nathanael said to him, "Can anything good come from Nazareth?" Philip said, "Come and see."
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 83e83a97529639bc32ad01d0a4c34efe9567e06aece79f8d9a770ccd166f72ad
+  review_summary: Revise for a meaningful, source- and context-warranted simplification. The proposed wording is faithful, but it is scarcely clearer than POB and leaves an easily clarified pronoun unresolved. Naming Philip supplies the explicit contextual antecedent without inserting a theological or tonal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

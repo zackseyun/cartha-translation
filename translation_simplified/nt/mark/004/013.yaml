@@ -31,38 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then he said to them, “Do you not understand this parable? Then how will you understand all the parables?”
+  text: He said to them, “Do you not understand this parable? Then how will you understand all the parables?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he says to them[a], “Do you not understand this parable? Then how will you understand all the parables?”
-  simplified_phrase: Then he said to them, “Do you not understand this parable? Then how will you understand all the parables?”
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
+- pob_phrase: And he says to them
+  simplified_phrase: He said to them
+  preserved_meaning: Jesus addresses the disciples while the narration follows conventional English past tense.
+  reasoning_layer_used: POB translation and lexical decision for λέγει
+  rationale: The opening connector is omitted without adding a stronger link, while the historical present is smoothed for common English narration.
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: Past tense does not preserve Mark’s historical present.
+    mitigation: The change improves natural English narration without changing who speaks or what happens.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/013.yaml
   source_text_sha256: b9db0c3d16c0bf46cc21bf3bbc87bc86dd11d445127420bfc020e6665f2c5b04
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 0ce0602b313efc25e664ee8ce09c5d0435155a4210460c34ec17b9d64b62b9d5
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f6bda1eeb4221cf64557c641afb991f57fbf95c05b9c5711f8a9ff3944b92039
+  timestamp: '2026-07-12T07:20:11Z'
+  output_hash: c710466390e2f9f5c023f3de407d618e21727d059ab9ef0c1d5da2ff43a5a4f5
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3218
+    completion_tokens: 188
+    total_tokens: 3406
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:11Z'
+  previous_text: Then he said to them, “Do you not understand this parable? Then how will you understand all the parables?”
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 563dd864ef6aa6dab50125639e7b3fc182f0b7e6384f7d78dbfe51b05abe39b3
+  review_summary: The draft preserves the verse’s central rebuke and introduces no doctrinal expansion. Its only substantive simplification is conventional past-tense narration, which is readable but omits POB’s intentionally preserved historical present. More importantly, the added opening “Then” specifies a connection not established by the supplied POB audit. Remove that opening connective while retaining the clear, conventional past-tense narration.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

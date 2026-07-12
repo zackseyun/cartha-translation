@@ -31,19 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Be friendly toward your accuser quickly [a], while you are with him on the way. Otherwise, your accuser may hand you over to the judge, and the judge to the officer, and you will be thrown into prison.
+  text: Be friendly toward your accuser without delay[a] while you are on the way with him. Otherwise, your accuser may hand you over to the judge. The judge will then hand you over to the officer, and you will be thrown into prison.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, more idiomatically in this legal context, 'Come to terms quickly with your accuser.'
-    reason: simplification_note
+    text: Or, more idiomatically in this legal context, “Come to terms quickly with your accuser.”
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: Be friendly
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: Otherwise
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: Otherwise, your accuser may hand you over to the judge, and the judge to the officer, and you will be thrown
-  reasoning_layer_used: POB audit trail
+- pob_phrase: Be well-disposed toward your accuser quickly
+  simplified_phrase: Be friendly toward your accuser without delay
+  preserved_meaning: The command calls for a favorable attitude toward the accuser and stresses urgency.
+  reasoning_layer_used: POB lexical and theological decisions for ἴσθι εὐνοῶν and ταχύ
+  rationale: This uses an approved lexical alternative and places the urgency naturally in English.
+- pob_phrase: lest
+  simplified_phrase: Otherwise
+  preserved_meaning: The following legal outcome remains a serious warning about what may happen.
+  reasoning_layer_used: POB lexical decision for μήποτε
+  rationale: “Otherwise” states the warning in familiar modern English.
+- pob_phrase: and the judge to the officer, and you be thrown into prison
+  simplified_phrase: The judge will then hand you over to the officer, and you will be thrown into prison
+  preserved_meaning: The full sequence from judge to officer to imprisonment remains intact.
+  reasoning_layer_used: Source syntax and POB legal-sequence rendering
+  rationale: Repeating the action and starting a new sentence makes the contingent sequence easier to follow.
+translation_notes:
+  risk_flags:
+  - risk: “Friendly” may sound more casual than the solemn command.
+    mitigation: “Toward” and the legal context keep the sense focused on favorable disposition rather than casual sociability.
+  - risk: “On the way” may not tell readers explicitly that they are approaching court.
+    mitigation: The concrete road image is retained because POB deliberately leaves the destination implied.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/005/025.yaml
+  source_text_sha256: 85af03372b2485d1486492b91b2c9be16bb9bf11319e870a5c82c2205449d49d
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 495d126bd33da72605977fc3ce7e633587a8d419d22a72e1ea26b976961111e4
+  timestamp: '2026-07-12T07:36:40Z'
+  output_hash: f660d69b4c0a5b2afb27406564c640b575b3a5cadbd48b2fe18cf63159f42d4e
+  usage:
+    prompt_tokens: 3841
+    completion_tokens: 830
+    total_tokens: 4671
+    reasoning_tokens: 361
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: accuser
   reason: Retained to preserve POB's source-grounded terminology.
@@ -53,33 +90,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: prison
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained POB's choice of 'accuser' (ἀντίδικος) over generic 'adversary' to preserve the explicit judicial context of the passage. Preserved the literal sequential chain of handovers (accuser -> judge -> officer -> prison) intact.
-  readability_notes:
-  - The archaic phrasing 'lest' was updated to 'Otherwise' to ensure modern reader comprehension. Split the flow slightly by ending the first clause at 'the way' and starting a new sentence with 'Otherwise' to reduce cognitive load while keeping the sequential progression of the narrative intact.
-  compression_notes:
-  - No significant compression was applied, as the exact chain of legal handovers is critical to the theological and rhetorical warning of the verse.
-  risk_flags:
-  - risk: Slight risk that 'friendly' could sound overly casual, but it is the primary dictionary definition of εὐνοέω alongside 'well-disposed' and preserves the non-transactional focus required by the POB theological decision.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/005/025.yaml
-  source_text_sha256: 85af03372b2485d1486492b91b2c9be16bb9bf11319e870a5c82c2205449d49d
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 1e22dd09fec2d7281e63ce1c97e4f615553a2ea53d48de29e761b19f96f6ef11
-  timestamp: '2026-05-28T05:47:47Z'
-  output_hash: 98d35a695c9303a7a65756bcbad75dbe059c1c785d7c52739f9dacf363b25f84
-  usage:
-    prompt_tokens: 2056
-    completion_tokens: 664
-    total_tokens: 6277
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:40Z'
+  previous_text: Be friendly toward your accuser quickly [a], while you are with him on the way. Otherwise, your accuser may hand you over to the judge, and the judge to the officer, and you will be thrown into prison.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1359694e580413d93f159d258f7ab26e765ef33179c1ca8b3f60285578d59ba6
+  review_summary: “Be friendly” is a warranted, clearer lexical simplification of “Be well-disposed”; it does not import a doctrinal or merely transactional interpretation, especially with the legal-settlement alternative retained in the footnote. Revision is needed for natural placement of the urgency marker and for smoother presentation of the conditional legal warning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,45 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He began to teach them that the Son of Man must suffer many things, be rejected by the elders, the chief priests, and the scribes, be killed, and after three days rise again.[a]
+  text: He began to teach them that the Son of Man must suffer many things. He must be rejected by the Jewish elders, the chief priests, and the teachers of the law. He must be killed and rise again after three days.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Mark says “after three days”; some English traditions express the timing as “on the third day.”
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: And he began to teach them that the Son of Man must suffer many things[a], and be rejected by the elders and the chief priests and the scribes, and be killed, and after three days rise again.
-  simplified_phrase: He began to teach them that the Son of Man must suffer many things, be rejected by the elders, the chief priests, and the scribes, be killed, and after three days rise again.[a]
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
-retained_terms:
-- term: Son of Man
-  reason: Retained as Jesus’ title and the POB wording.
+- pob_phrase: the elders and the chief priests and the scribes
+  simplified_phrase: the Jewish elders, the chief priests, and the teachers of the law
+  preserved_meaning: The three distinct groups of recognized Jewish leaders remain separate.
+  reasoning_layer_used: POB lexical decisions for πρεσβύτεροι, ἀρχιερεῖς, and γραμματεῖς
+  rationale: The functional wording prevents readers from mistaking the elders for merely older people or the scribes for copyists.
+- pob_phrase: must suffer many things, and be rejected ... and be killed, and after three days rise again
+  simplified_phrase: must suffer many things. He must be rejected ... He must be killed and rise again after three days
+  preserved_meaning: The necessity and sequence of suffering, rejection, death, and resurrection are retained.
+  reasoning_layer_used: POB translation and theological decision for δεῖ
+  rationale: Short sentences make the prediction easier to follow while repeating “must” to preserve its force.
+interpretive_expansions:
+- pob_phrase: the elders ... and the scribes
+  rendering: the Jewish elders ... and the teachers of the law
+  claim: These titles identify Jewish leaders, including experts in the law, rather than simply older people and copyists.
+  evidence:
+  - The POB identifies the elders as a recognized Jewish leadership group.
+  - The POB says the scribes functioned as legal experts and lists “teachers of the law” as an alternative.
+  confidence: high
+  alternatives_preserved:
+  - elders
+  - scribes
+  - legal experts
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: Repeating “must” could imply separate necessities more emphatically than the single Greek verb.
+    mitigation: The repetition only carries the same governing necessity across the simplified sentences.
+  - risk: “Teachers of the law” replaces the historically specific title “scribes.”
+    mitigation: The POB lists this functional equivalent, and the rendering prevents a common modern misunderstanding.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/031.yaml
   source_text_sha256: 49d3380b8173afd32f8732e584cc48d20b56ce68dfd0a941158afc5e8da5c8d8
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: 559358ded7389fc8651087bfa93a4364b556d1d6a8fcdcf534241f94d011d8cf
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0438d0528e481927324eed8db7d2431e94f42a70ac3f51c8baa4b02762599fdb
+  timestamp: '2026-07-12T07:20:53Z'
+  output_hash: 65b6f26d25e6ee00df0f4ecdc4b5ad68c44513535e5b4a224d371f48de8612a4
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3902
+    completion_tokens: 545
+    total_tokens: 4447
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Son of Man
+  reason: Retained as Jesus’ title and the POB wording.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:53Z'
+  previous_text: He began to teach them that the Son of Man must suffer many things, be rejected by the elders, the chief priests, and the scribes, be killed, and after three days rise again.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c50e41ce6d69d18e49efd1fd9f7f037770ed9863f5849ebac6a472e4e92391a6
+  review_summary: The draft faithfully preserves the source sequence, the force of “must,” Mark’s “after three days,” and the unresolved theological basis for that necessity. No doctrinally unsupported expansion is present. However, its changes from POB are mostly connective and punctuation changes. Replacing potentially misleading historical labels with POB-audited clarifications makes the wording more meaningfully accessible without merging the three groups or importing interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

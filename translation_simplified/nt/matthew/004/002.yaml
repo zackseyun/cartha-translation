@@ -31,15 +31,42 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After fasting forty days and forty nights, he was hungry.
+  text: After he fasted for forty days and forty nights, he was hungry.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: In modern English prose, beginning consecutive narrative sentences with 'And' feels repetitive and archaic. Dropping it creates a smoother, more direct opening without losing chronological flow.
-  reasoning_layer_used: POB audit trail
-  rationale: In modern English prose, beginning consecutive narrative sentences with 'And' feels repetitive and archaic. Dropping it creates a smoother, more direct opening without losing chronological flow.
-- preserved_meaning: The POB footnote ('Or having fasted... afterward he became hungry') is a minor stylistic and grammatical alternative. Removing it keeps the page clean and avoids distracting a common reader with technical translation variations.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB footnote ('Or having fasted... afterward he became hungry') is a minor stylistic and grammatical alternative. Removing it keeps the page clean and avoids distracting a common reader with technical translation variations.
+- pob_phrase: after fasting forty days and forty nights
+  simplified_phrase: after he fasted for forty days and forty nights
+  preserved_meaning: Jesus fasted throughout the stated period before experiencing hunger.
+  reasoning_layer_used: POB lexical decisions for νηστεύσας and the accusative of duration
+  rationale: Supplying “he” and “for” makes the subject and duration explicit in natural English.
+- pob_phrase: And after
+  simplified_phrase: After
+  preserved_meaning: The event remains connected to the preceding narrative and occurs before his hunger.
+  reasoning_layer_used: POB lexical decision for καί
+  rationale: Dropping the simple connective gives the verse a direct modern opening without changing the sequence.
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/004/002.yaml
+  source_text_sha256: 43d8f97ff0daf64cf0ccc54abbd6e1e7ab699e644274feee195a603b029a0cf6
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e1f646395e182a48a6a3f4836ba49e034430aa8c98b653381bec70526651cb17
+  timestamp: '2026-07-12T07:36:18Z'
+  output_hash: 7d866570dacd548fbd0bac1ca79f5df35046474c6f601539d1c31a063714fc86
+  usage:
+    prompt_tokens: 3186
+    completion_tokens: 223
+    total_tokens: 3409
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: fasting
   reason: Retained to preserve POB's source-grounded terminology.
@@ -47,33 +74,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: he was hungry
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The rendering 'After fasting...' translates the aorist active participle 'νηστεύσας' as antecedent to the main verb 'ἐπείνασεν' ('he was hungry'). The temporal adverb 'ὕστερον' ('after/later') is smoothly integrated into the introductory clause.
-  readability_notes:
-  - By removing the initial 'And' and utilizing a clean introductory clause ('After fasting...'), the sentence flow is modernized and reads naturally to a contemporary audience.
-  compression_notes:
-  - The coordinating conjunction 'And' (καί) was dropped for stylistic reasons, and the technical footnote on lexical alternatives was omitted. The core narrative details and length of time are fully preserved.
-  risk_flags:
-  - risk: None. The simplified draft introduces no theological distortion and fully respects the historical and grammatical boundaries set by the POB.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/004/002.yaml
-  source_text_sha256: 43d8f97ff0daf64cf0ccc54abbd6e1e7ab699e644274feee195a603b029a0cf6
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 84b27f511797080cd0180600d424c4934c589a53caa578dae5af731df461717e
-  timestamp: '2026-05-28T08:04:23Z'
-  output_hash: 50ba214bfae6a4f9ec02798885bff352bf588056933b39c6132b9efd00557921
-  usage:
-    prompt_tokens: 1488
-    completion_tokens: 549
-    total_tokens: 5896
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:18Z'
+  previous_text: After fasting forty days and forty nights, he was hungry.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d4d254c8538c2696fb2bd1757086f14d12732b14d33ecb1356fcd80b5b9d6ffb
+  review_summary: Dropping “And” is faithful, and removing the POB’s minor lexical footnote is appropriate for SPOB. However, the submitted text is otherwise identical to POB and is not meaningfully clearer. The recommended wording explicitly identifies Jesus as the one who fasted and marks the forty days and nights as the fasting’s duration, while preserving the source sequence and the statement of his hunger.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

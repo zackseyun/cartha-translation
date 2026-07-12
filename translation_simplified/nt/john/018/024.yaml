@@ -31,14 +31,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So Annas sent Jesus, still bound, to Caiaphas the high priest.
+  text: So Annas sent Jesus, still bound, to Caiaphas the high priest.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or, in context, “Now Annas had sent Jesus, still bound, to Caiaphas the high priest,” if this is a parenthetical note explaining the earlier events.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: John 18 POB base wording
-  simplified_phrase: So Annas sent Jesus, still bound, to Caiaphas the high priest.
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and footnotes
-  rationale: Manual Codex drafting simplified sentence structure, clarified implied subjects where needed, and retained important theological terms without adding new interpretation.
+- pob_phrase: sent him bound
+  simplified_phrase: sent Jesus, still bound
+  preserved_meaning: Jesus was in a bound condition when Annas sent him.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: Naming Jesus clarifies the pronoun, while “still bound” naturally expresses his continuing condition.
+- pob_phrase: So Annas sent him ... to Caiaphas the high priest
+  simplified_phrase: So Annas sent Jesus ... to Caiaphas the high priest
+  preserved_meaning: The main text presents the transfer as the next narrative action.
+  reasoning_layer_used: POB theological decision
+  rationale: The straightforward sequence remains in the text, while the footnote preserves the contextual alternative.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person Annas sent was Jesus.
+  evidence:
+  - The surrounding account identifies Jesus as the person under arrest and examination.
+  confidence: high
+  alternatives_preserved:
+  - him
+- pob_phrase: bound
+  rendering: still bound
+  claim: Jesus remained bound when Annas sent him.
+  evidence:
+  - The perfect passive participle describes his existing bound condition at the time he was sent.
+  - The preceding arrest context supports a continuing condition.
+  confidence: high
+  alternatives_preserved:
+  - bound
+translation_notes:
+  risk_flags:
+  - risk: Readers may understand the transfer only as the next chronological event.
+    mitigation: The footnote preserves the possible parenthetical flashback reading without changing the controlling main-text choice.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/018/024.yaml
+  source_text_sha256: 75522c88c26c1e53febb9eb0efc7817aa4b251d43e0338f215a69d35f2b8aed0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1df8f586c584958fef97258bf042b2917803dfd51b4cc6dc46a30329bedb7dcf
+  timestamp: '2026-07-12T07:18:44Z'
+  output_hash: 4d5ebd4f1c57147456211e820d92a04f9d8df52b3c77bab4b67d95e40b63ba51
+  usage:
+    prompt_tokens: 3109
+    completion_tokens: 622
+    total_tokens: 3731
+    reasoning_tokens: 171
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Annas
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
@@ -48,30 +100,13 @@ retained_terms:
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
 - term: high priest
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 18.
-translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses shorter, clearer clauses and modern common English while keeping John 18's narrative and trial sequence.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/018/024.yaml
-  source_text_sha256: 75522c88c26c1e53febb9eb0efc7817aa4b251d43e0338f215a69d35f2b8aed0
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:28Z'
-  output_hash: 27cf4f367b4c5737a83bbafee40062fbc6f04da97b16b7d1028021b6572cb172
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:18:44Z'
+  previous_text: So Annas sent Jesus, still bound, to Caiaphas the high priest.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d30f23ec01ae4c57940eaa52da2716e74a903bed11587d843a5fa4996a3125cf
+  review_summary: “Jesus” usefully makes the pronoun explicit, and “still bound” is warranted by the perfect passive participle together with the immediately preceding arrest-and-binding context; it does not impose a doctrinal interpretation. The sentence is clearer than the POB wording. Revision is required only to restore the POB footnote, since its omission removes a documented, contextually viable narrative-sequence ambiguity.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,42 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They ate and were satisfied, and they picked up seven baskets of leftover pieces.[a]
+  text: They ate until they had enough. Then they picked up seven baskets of leftover pieces.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: The Greek word here refers to baskets, likely large hampers, different from the baskets in Mark 6:43.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And they ate and were satisfied[a], and they picked up seven baskets of leftover pieces.
-  simplified_phrase: They ate and were satisfied, and they picked up seven baskets of leftover pieces.[a]
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
+- pob_phrase: they ate and were satisfied
+  simplified_phrase: They ate until they had enough.
+  preserved_meaning: They were fed to the point of having enough to eat.
+  reasoning_layer_used: POB lexical decision for ἐχορτάσθησαν
+  rationale: Uses the POB-approved common-English sense of being satisfied.
+- pob_phrase: and they picked up seven baskets of leftover pieces
+  simplified_phrase: Then they picked up seven baskets of leftover pieces.
+  preserved_meaning: After the meal, they gathered seven baskets of food that remained.
+  reasoning_layer_used: Greek clause sequence and POB lexical decisions
+  rationale: A new sentence and “Then” make the sequence easy to follow.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: “Then” makes the narrative sequence explicit.
+    mitigation: The Greek clause order presents the collection after the eating and satisfaction.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/008.yaml
   source_text_sha256: a5a2037b19b0b83cdc7a5c3de616d83fdc32b90fd3978a76735a437bfac19eee
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: dd73b67895b4ec232b33d14de779554047e03efe7b9cc2205887e71c02d3bbda
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 880f142c699bc43cade87e305c0b00a09f6d76623ee2de734713500cd3574ac8
+  timestamp: '2026-07-12T07:20:45Z'
+  output_hash: 605a38d3274c828e842190b1fa91ebd1da3b58a02fa770aaad7175e516bb098e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3121
+    completion_tokens: 291
+    total_tokens: 3412
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:45Z'
+  previous_text: They ate and were satisfied, and they picked up seven baskets of leftover pieces.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1b5fa3a27097135d0134c09a5c8bd0a91287451ea9311fca14954fcb820beee9
+  review_summary: The draft is faithful and introduces no doctrinal expansion or loss of lexical distinction. However, it is not meaningfully clearer than the POB as submitted. A modest source-supported revision can state the sufficiency sense of χορτάζω in common English and clarify the narrative sequence.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

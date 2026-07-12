@@ -31,36 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But he answered the one who spoke to him, “Who is my mother, and who are my brothers?”
+  text: But he answered the one speaking to him, “Who is my mother, and who are my brothers?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: But he answered the one speaking to him
+  simplified_phrase: But he answered the one speaking to him
+  preserved_meaning: Jesus responds directly to the person who is addressing him.
+  reasoning_layer_used: POB lexical decision for ὁ δὲ ἀποκριθεὶς εἶπεν and τῷ λέγοντι αὐτῷ
+  rationale: The POB wording is already clear, and “speaking” preserves the action as ongoing.
+- pob_phrase: Who is my mother, and who are my brothers?
+  simplified_phrase: Who is my mother, and who are my brothers?
+  preserved_meaning: Jesus asks literal rhetorical questions that prepare for the explanation that follows.
+  reasoning_layer_used: POB theological decisions on rhetorical tension and gender rendering
+  rationale: Keeping the questions unchanged avoids importing the next verse’s explanation and retains “brothers.”
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/048.yaml
   source_text_sha256: 352ad48e5b81638b950646b8a07d36f67b2f5cb0f69af17ac916b239053a4a9a
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:35Z'
-  output_hash: 4490927d09598753b66d31fe49ce35d459b48a3044a0079ecd23db9a0130774d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 38da2a18989e6b0e4c52cbc1059abd85e071184dfac8f4ab9fd93d7cba23f8fe
+  timestamp: '2026-07-12T07:36:30Z'
+  output_hash: 345bc5d6db7fd27eade775f3cc4f37ea904752aace47118a2af0dbf5b43a9dca
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3071
+    completion_tokens: 268
+    total_tokens: 3339
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:30Z'
+  previous_text: But he answered the one who spoke to him, “Who is my mother, and who are my brothers?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fe8e303f57e1690d5c40dbf4cc7ed8bf277a9fbdb6211383bd897efec51535db
+  review_summary: The draft correctly retains Jesus’ rhetorical questions and does not add an explanation about spiritual kinship that belongs to the following context. However, changing “speaking” to “spoke” unnecessarily shifts the source’s present participle to a completed past action. Since the POB wording is already understandable common English, retain it unchanged.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -37,14 +37,51 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 13:30 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''that man''].'
 translation:
   language: en
-  text: So after Judas took the piece of bread, that man went out immediately. And it was night.
+  text: So after Judas took the piece of bread, he went out immediately. And it was night.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: John 13 POB base wording
-  simplified_phrase: So after Judas took the piece of bread, that man went out immediately. And it was night.
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and footnotes
-  rationale: Manual Codex drafting simplified sentence structure, clarified implied subjects where needed, and retained important theological terms without adding new interpretation.
+- pob_phrase: after taking the piece of bread, he
+  simplified_phrase: after Judas took the piece of bread, he
+  preserved_meaning: Judas remains the person who took the bread and immediately went out.
+  reasoning_layer_used: Immediate context and POB lexical decision for the implied subject
+  rationale: Naming Judas clarifies the implied subject without changing the action.
+- pob_phrase: that man
+  simplified_phrase: he
+  preserved_meaning: The pronoun still refers to Judas, while the prompt departure remains explicit.
+  reasoning_layer_used: POB main text and independent grounding review
+  rationale: The pronoun avoids suggesting that a different man went out.
+interpretive_expansions:
+- pob_phrase: after taking
+  rendering: after Judas took
+  claim: The implied subject of taking the bread is Judas.
+  evidence:
+  - John 13:26–27 identifies Judas as the recipient of the bread and the person who then acts.
+  confidence: high
+translation_notes:
+  risk_flags:
+  - risk: Using “he” does not reproduce the full emphasis of the Greek demonstrative.
+    mitigation: Naming Judas in the same clause keeps the referent prominent without unnatural wording.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/013/030.yaml
+  source_text_sha256: fdfb11d981005edbb03c23d726f928d219a36340c026d38632be67b5307fa300
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 344d5c9b4770b0110b46717493c5e96475783b2f2ed488260c4ff64139ea8208
+  timestamp: '2026-07-12T07:16:32Z'
+  output_hash: 4ed5e44ffaa4787846c7ec0a383ea25f2d9e5eeabd3ed0bbd2a21f195ecc59b3
+  usage:
+    prompt_tokens: 3668
+    completion_tokens: 321
+    total_tokens: 3989
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: piece of bread
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 13.
@@ -52,30 +89,13 @@ retained_terms:
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 13.
 - term: night
   reason: Retained because it carries an important POB lexical, narrative, or theological signal in John 13.
-translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses shorter, clearer clauses and modern common English while keeping John 13's narrative and discourse flow.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/013/030.yaml
-  source_text_sha256: fdfb11d981005edbb03c23d726f928d219a36340c026d38632be67b5307fa300
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:43:46Z'
-  output_hash: ee67a0bd51139eaf3c960c425e0e662204a677491ba3a353067752720280732e
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:32Z'
+  previous_text: So after Judas took the piece of bread, that man went out immediately. And it was night.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5c083c6553fd5b3478ae95ee124268cdc3a3ee63188b51a7111f0db84dda3312
+  review_summary: Naming Judas is a warranted, context-based clarification of the Greek participle's implied subject and makes the verse easier to follow. However, “that man” is not a clear modern-English way to retain the demonstrative's rhetorical emphasis; here it introduces avoidable ambiguity and is less readable than the POB wording. The recommended text retains the prompt departure and the unexpanded literal statement that it was night, without importing a symbolic interpretation into the main text.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

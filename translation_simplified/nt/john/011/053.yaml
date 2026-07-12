@@ -27,36 +27,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So from that day on, they planned to kill him.
+  text: So from then on, the Jewish leaders planned to kill Jesus.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: from that day on
+  simplified_phrase: from then on
+  preserved_meaning: Their plan began at that point and continued afterward.
+  reasoning_layer_used: POB lexical decision for ἀπ’ ἐκείνης ... τῆς ἡμέρας
+  rationale: The shorter phrase naturally preserves the ongoing temporal force.
+- pob_phrase: they planned to kill him
+  simplified_phrase: the Jewish leaders planned to kill Jesus
+  preserved_meaning: The leaders formed a settled plan to kill Jesus.
+  reasoning_layer_used: Immediate context and POB theological decision
+  rationale: Naming the referents makes the verse clear while retaining the decisive hostile intent.
+interpretive_expansions:
+- pob_phrase: they ... him
+  rendering: the Jewish leaders ... Jesus
+  claim: The pronouns refer to the religious leaders in the council and to Jesus.
+  evidence:
+  - The preceding council scene identifies the acting leaders.
+  - The POB lexical rationale identifies “him” as Jesus.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Jewish leaders” could be misread as referring to all Jewish leaders or Jewish people generally.
+    mitigation: The phrase denotes the specific religious leaders acting in the preceding council scene.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/053.yaml
   source_text_sha256: 627f9e198546e6e7a3eff2f358ed830cf2b5b9423751068312bb576b186f5cba
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:39Z'
-  output_hash: 458702ff1755dfe8a324e6f56169ff1552f1a88eb571321acd4379ed19b83fd4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f2dd81108f30c804713697cbea91fb6468a6292d1b74ce614782127ab382cd7c
+  timestamp: '2026-07-12T07:16:12Z'
+  output_hash: 168a1e6e9e7a659f23f388b4d12d5d945b99d69d27c72a7a99830bc3126428ec
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2891
+    completion_tokens: 617
+    total_tokens: 3508
+    reasoning_tokens: 283
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:12Z'
+  previous_text: So from that day on, they planned to kill him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 99affa71da4b4343d083682eeaa8f3f07a06cd093274511abbd6c160ed0526e2
+  review_summary: The proposed wording preserves the POB meaning and adds no doctrinal claim, but the comma alone is not a meaningful simplification. Naming Jesus and the leaders makes the verse understandable without collapsing any live ambiguity; 'from then on' naturally preserves the ongoing temporal force.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

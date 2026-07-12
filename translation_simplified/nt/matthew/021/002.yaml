@@ -37,43 +37,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He told them, “Go into the village across from you. Right away you will find a donkey tied there, with her colt. Untie them and bring them to me.”
+  text: He told them, “Go into the village across from you. Right away you will find a donkey tied there, with a young donkey beside her. Untie them and bring them to me.”
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: saying to them
+  simplified_phrase: He told them
+  preserved_meaning: Introduces Jesus’ instructions to the disciples.
+  reasoning_layer_used: POB lexical decision for λέγων αὐτοῖς
+  rationale: Recasts the participle as a natural English narrative clause.
 - pob_phrase: opposite you, and immediately
   simplified_phrase: across from you. Right away
-  preserved_meaning: Keeps the village location and immediate discovery in clearer common English.
-  reasoning_layer_used: POB footnotes and lexical decisions
-  rationale: Uses an allowed POB alternative, 'across from you,' and a simpler phrase for 'immediately.'
-retained_terms:
-- term: donkey
-  reason: Animal term retained from POB.
-- term: colt
-  reason: Retained because POB identifies the young donkey with this traditional term.
+  preserved_meaning: Keeps both the village’s location and the immediate discovery.
+  reasoning_layer_used: POB footnote and lexical decisions
+  rationale: Uses approved common-English alternatives and divides the long sentence.
+- pob_phrase: a colt with her
+  simplified_phrase: a young donkey beside her
+  preserved_meaning: Identifies the colt’s species while stating only that it is with the female donkey.
+  reasoning_layer_used: POB footnote and lexical decisions for πῶλον and μετ’ αὐτῆς
+  rationale: Clarifies “colt” without claiming that the young donkey is her offspring.
 translation_notes:
-  source_alignment_notes: Preserves Jesus' two commands and the paired donkey and colt.
-  readability_notes:
-  - Splits the long instruction into shorter quoted sentences.
-  compression_notes:
-  - 'The participial sequence remains two commands: untie and bring.'
+  risk_flags:
+  - risk: Readers may infer a maternal relationship between the two donkeys.
+    mitigation: The text says only that the young donkey is beside her, preserving the source’s limited claim.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/021/002.yaml
   source_text_sha256: 087013a3ed3db49cb70487a455dd32a0bc45fec456048e82753d4d4ff91f65d7
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:14:46Z'
-  output_hash: 8c75accaaea1aaf86e152c0f8fb607d2f54a9247902281d3a86f1b365292e0f3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2cac5600af5da5a17ad93af17c8a21b20d36f0e9475574fb3f267b98a116214c
+  timestamp: '2026-07-12T07:37:12Z'
+  output_hash: aa6e4a86468c89e579cb528810655bc7b416e7c896d1c4fca12a6d48f14ff3a7
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3414
+    completion_tokens: 353
+    total_tokens: 3767
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: donkey
+  reason: Animal term retained from POB.
+- term: colt
+  reason: Retained because POB identifies the young donkey with this traditional term.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:12Z'
+  previous_text: He told them, “Go into the village across from you. Right away you will find a donkey tied there, with her colt. Untie them and bring them to me.”
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0bac9b6eee7a1ca65ac4a1e672985639ea253a7a74653b683a73ae81957085b6
+  review_summary: The spatial and temporal simplifications (“across from you,” “Right away”) are warranted by the POB audit trail and improve readability. Revision is needed because “her colt” resolves an unstated relationship. Replacing “colt” with “young donkey” uses the POB’s contextual lexical clarification while preserving the text’s limited claim that the two animals are together.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,38 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: “Tell us, when will these things happen? What sign will show that all these things are about to be completed?”
+  text: “Tell us, when will these things happen? And what will be the sign when all these things are about to be completed?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Tell us[a], when will these things be, and what will be the sign when all these things are about to be accomplished?
-  simplified_phrase: “Tell us, when will these things happen? What sign will show that all these things are about to be completed?”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: when will these things be
+  simplified_phrase: when will these things happen
+  preserved_meaning: The question still asks when the predicted events will take place.
+  reasoning_layer_used: POB lexical decision for ἔσται
+  rationale: “Happen” is clearer in modern English and is listed by POB as a valid alternative.
+- pob_phrase: and what will be the sign when all these things are about to be accomplished?
+  simplified_phrase: And what will be the sign when all these things are about to be completed?
+  preserved_meaning: The wording keeps both the temporal link and the sense that all the events are nearing completion.
+  reasoning_layer_used: POB lexical and theological decisions for ὅταν, μέλλῃ, and συντελεῖσθαι
+  rationale: A separate question is easier to follow, while “when” avoids turning the sign into explicit proof.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “About to” may be read as settling a broader end-times chronology.
+    mitigation: It is retained only to reflect μέλλῃ and does not add a doctrinal timetable.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/004.yaml
   source_text_sha256: 51e2741bebe61e29a480854e8ae9ac9290ba026b2d1673de689281828d6c2024
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 207710e693b4a5b4f347b21019a9960766eb5fa99dc81997bc975306971990a2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 159fba4a1e5f67d5bdcab788dfb4601a2d7e59eb9f5ccb92decb6da431d53934
+  timestamp: '2026-07-12T07:22:12Z'
+  output_hash: d91911ea89cc26c66afa9206e3c76b4612408f268c8819d16e2f3794c7c97ada
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3434
+    completion_tokens: 318
+    total_tokens: 3752
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:12Z'
+  previous_text: “Tell us, when will these things happen? What sign will show that all these things are about to be completed?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5ad8267a9f293852cfc66a07d5e9acd5363aa9b1b13f72b6f781c40fbba61ca5
+  review_summary: The draft usefully replaces the less natural “will these things be” with “will these things happen” and makes the two questions easier to read. However, “will show that” slightly changes the temporal relation expressed by ὅταν into an evidentiary relation. Retain “when” in the second question to preserve the source-text relationship while keeping the clearer sentence division and common wording.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

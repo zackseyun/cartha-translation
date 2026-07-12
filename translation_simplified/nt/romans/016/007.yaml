@@ -34,36 +34,68 @@ base_translation:
     changes_summary: 'Changed ''well known among'' to ''notable among'' for a closer rendering of ἐπίσημοι ἐν τοῖς ἀποστόλοις, and changed ''the Messiah'' to ''Christ'' for consistency with ἐν Χριστῷ. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Greet Andronicus and Junia, my relatives and fellow prisoners. They are notable among the apostles, and they were in Messiah before I was.
+  text: Greet Andronicus and Junia[a]. They are my kin and were imprisoned with me. They are notable among the apostles[b], and they were in Messiah before me.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 'Junia: Alternatively, “Junias,” a masculine name; the feminine reading is more likely from the Greek form and historical usage.'
+    reason: alternative_reading
+  - marker: b
+    text: Or “outstanding among the apostles”; the phrase may also mean “well known to the apostles.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: my kinsmen
+  simplified_phrase: my kin
+  preserved_meaning: The wording can refer either to relatives or to people of the same ethnic community.
+  reasoning_layer_used: POB lexical decision for συγγενεῖς μου
+  rationale: “Kin” is more natural today while preserving the documented ambiguity.
+- pob_phrase: my fellow prisoners
+  simplified_phrase: were imprisoned with me
+  preserved_meaning: Andronicus and Junia shared imprisonment with Paul.
+  reasoning_layer_used: POB lexical decision for συναιχμαλώτους μου
+  rationale: The clause explains the relationship directly instead of using the compact label “fellow prisoners.”
+- pob_phrase: Greet Andronicus and Junia, my kinsmen and my fellow prisoners.
+  simplified_phrase: Greet Andronicus and Junia. They are my kin and were imprisoned with me.
+  preserved_meaning: Paul commands a greeting and identifies both people by their ties to him.
+  reasoning_layer_used: POB translation and source syntax
+  rationale: Two short sentences make the relationships easier to follow.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Kin” may still be understood only as family by some readers.
+    mitigation: The wording avoids the narrower “relatives” and leaves the familial or ethnic sense unresolved.
+  - risk: “Notable among the apostles” may imply that both people were apostles.
+    mitigation: Footnote b preserves the alternative meaning “well known to the apostles.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/007.yaml
   source_text_sha256: 18401e1f896e3660bcd8c2e5b4f46445a4c23007ff829e8dac44add1b8841141
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:31Z'
-  output_hash: c407333330e0f2251ccbe4acf6e0693041af833f9bf38059cfce50a3087563e3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3ecf99658b7ebafb88854e70768b46fc02e8cf91a96ea69899f657c1b8b7b23d
+  timestamp: '2026-07-12T07:44:53Z'
+  output_hash: af0a520c3aa359dc9f5e0ba655f66bc15b78a809d2571a94b2f82ec9bcd5a234
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4291
+    completion_tokens: 917
+    total_tokens: 5208
+    reasoning_tokens: 441
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:44:53Z'
+  previous_text: Greet Andronicus and Junia, my relatives and fellow prisoners. They are notable among the apostles, and they were in Messiah before I was.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e54b0f3ebfb0640a8ae5427bd49a0ba5146cbdbd078ed13a999ae81869937303
+  review_summary: The draft makes only a minor stylistic gain, but it narrows “kinsmen” to family relatives, omits POB’s necessary ambiguity-preserving notes, and makes the final temporal comparison less exact. Retain the clear POB wording and its brief footnotes; this is publication-ready and remains understandable without inserting a disputed interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,38 +31,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A certain young man was following Jesus, wearing only a linen cloth over his naked body, and they seized him,
+  text: A certain young man was following Jesus. He wore only a linen cloth[a] over his bare body, and they seize him,
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “a linen sheet.” The exact form of the linen covering is uncertain.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And a certain young man was following him[a], wearing only a linen cloth over his naked body, and they seize him,
-  simplified_phrase: A certain young man was following Jesus, wearing only a linen cloth over his naked body, and they seized him,
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: And a certain young man was following him
+  simplified_phrase: A certain young man was following Jesus.
+  preserved_meaning: The unnamed young man was in the process of following Jesus.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: A separate sentence clarifies the action, while “was following” keeps its ongoing sense.
+- pob_phrase: wearing only a linen cloth over his naked body
+  simplified_phrase: He wore only a linen cloth over his bare body
+  preserved_meaning: The cloth was his only covering and was worn directly against his body.
+  reasoning_layer_used: POB lexical decisions for περιβεβλημένος, σινδόνα, and ἐπὶ γυμνοῦ
+  rationale: The direct wording is easier to follow without weakening the image.
+- pob_phrase: and they seize him
+  simplified_phrase: and they seize him
+  preserved_meaning: The group forcefully takes hold of the young man in the vivid narrative present.
+  reasoning_layer_used: POB lexical decision for κρατοῦσιν and grounding review
+  rationale: The historical present is retained because the audit identifies its vivid effect as deliberate.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The person the young man was following was Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the pronoun’s referent.
+  - The POB lexical rationale explicitly says the pronoun refers to Jesus.
+  confidence: high
+  alternatives_preserved:
+  - him
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: The shift from past tense to “they seize him” may sound unusual in modern English.
+    mitigation: It is retained to preserve the source’s vivid historical present, as required by the POB audit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/051.yaml
   source_text_sha256: 3c8af28fbe26ff5aa0fde827a15bec39a9be5c3f7925307c5efd864f4352848e
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:55Z'
-  output_hash: 9daa81af03b24bd052c4a855bc1ab489b59d986c4d5076c5ca232986e4722fa7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8ed71514c8338672a5792c78e53e71572bcda0431e56540a4740e6c5cac7c1e8
+  timestamp: '2026-07-12T07:23:37Z'
+  output_hash: 379ec9bbcf7d11253b38cde42b34fea4d4811b0e0da866c1f57af45b5652b9e6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3038
+    completion_tokens: 947
+    total_tokens: 3985
+    reasoning_tokens: 461
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:37Z'
+  previous_text: A certain young man was following Jesus, wearing only a linen cloth over his naked body, and they seized him,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a2d9db2b39023697eecc0637d5d7c5d75c433ce79b80d55fc9a4641453d35338
+  review_summary: Making the referent explicit as “Jesus” is warranted by the immediate context and meaningfully prevents pronoun ambiguity. However, retain POB’s historical present “they seize him,” since the source uses it and the audit trail specifically identifies its vivid force. No doctrinal expansion is present.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

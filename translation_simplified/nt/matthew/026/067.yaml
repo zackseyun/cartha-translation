@@ -37,38 +37,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then they spat in his face and struck him with their fists, and others slapped him,
+  text: Then they spat in his face and punched him. Others slapped him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: struck him with their fists
-  simplified_phrase: struck him with their fists
-  preserved_meaning: Preserves the physical abuse and distinguishes fists from slaps.
-  reasoning_layer_used: POB translation text and lexical footnotes
-  rationale: POB's concrete violence is already clear and should not be softened.
+- pob_phrase: struck him with their fists, and others slapped him
+  simplified_phrase: punched him. Others slapped him.
+  preserved_meaning: This keeps the distinction between blows with a fist and slaps with an open hand.
+  reasoning_layer_used: POB lexical decisions and theological decision
+  rationale: “Punched” is shorter and more immediately understandable, and the sentence break makes the two actions easier to follow.
 translation_notes:
-  source_alignment_notes: Preserves the sequence of spitting, punching, and slapping.
-  readability_notes:
-  - Keeps direct concrete wording.
-  compression_notes:
-  - Open-hand/slap nuance remains represented in the main text.
+  risk_flags:
+  - risk: “Punched” can sound slightly less formal than “struck him with their fists.”
+    mitigation: It remains standard English and precisely preserves the source-supported manner of the blows.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/067.yaml
   source_text_sha256: 876ea70a35186512dfec49b31d7e3a8652f001691306ec2c91406ecef4f6e8d9
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:59Z'
-  output_hash: 0e27e4978a4278a4425a7a1038b75a576665fdd83d1acffa122d032eab2157fd
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7ccc07316f87f8725f3f240232e32677beb0caa797e30290d68130a3877e0077
+  timestamp: '2026-07-12T07:38:28Z'
+  output_hash: 167ae18de4963343f68d54f777791195647cb16c56950f0773992584c045a5fb
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3096
+    completion_tokens: 325
+    total_tokens: 3421
+    reasoning_tokens: 121
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:28Z'
+  previous_text: Then they spat in his face and struck him with their fists, and others slapped him,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4d5002fb58403cb21ca8bd82d3d59427d5a41094050af834bb499fce0c43ee40
+  review_summary: The rendering faithfully preserves the source-supported sequence and the important distinction between fist blows and slaps, without adding doctrinal interpretation. Revision is required because the final comma is not publication-ready. With a period, the sentence is clear and faithful, though it remains essentially unchanged from POB rather than meaningfully simplified.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

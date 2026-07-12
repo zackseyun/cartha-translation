@@ -34,45 +34,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Large crowds gathered around him, so he got into a boat and sat down, while the whole crowd stood on the shore.[a][b]
+  text: Large crowds gathered to him, so he got into a boat and sat down. The whole crowd stood on the shore.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The action may also be rendered “boarded a boat and sat.”
-    reason: lexical_alternative
-  - marker: b
     text: Or “on the beach” or “by the seashore.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+- pob_phrase: so that he got into a boat and sat down, and the whole crowd stood on the shore
+  simplified_phrase: so he got into a boat and sat down. The whole crowd stood on the shore.
+  preserved_meaning: The crowds caused Jesus to enter the boat, and the crowd remained standing on the shore.
+  reasoning_layer_used: POB translation and lexical decisions for ὥστε and the final coordinated clause
+  rationale: Two sentences make the scene easier to follow without adding the draft’s temporal framing.
+- pob_phrase: gathered to him
+  simplified_phrase: gathered to him
+  preserved_meaning: The crowds moved toward Jesus without specifying that they surrounded him.
+  reasoning_layer_used: POB lexical decision for πρὸς αὐτόν
+  rationale: Retaining “to him” avoids the unsupported spatial expansion identified in review.
+- pob_phrase: on the shore
+  simplified_phrase: on the shore
+  preserved_meaning: The crowd stood at the water’s edge, with beach and seashore remaining possible renderings.
+  reasoning_layer_used: POB lexical decision and footnote for αἰγιαλός
+  rationale: “Shore” is clear and neutral, while the footnote preserves the lexical alternatives.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/002.yaml
   source_text_sha256: bc76d0d3abce527a4dd001afae603160e27381253fb755be5af6e75feccbf6f8
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:57Z'
-  output_hash: 04950d283e5974dc5f0baa57025088aed5a0017c2f4ddc2ace1192819eaf8168
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fb257f5c1b442bfb82fea5a4f173f31bea4276b0be0fbc0db60153ac85d82aed
+  timestamp: '2026-07-12T07:37:03Z'
+  output_hash: 7612ba8b08be2c330b27707b7cce5c40e436409484096b2a4385a9b5ab0cca05
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3392
+    completion_tokens: 379
+    total_tokens: 3771
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:03Z'
+  previous_text: Large crowds gathered around him, so he got into a boat and sat down, while the whole crowd stood on the shore.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 867a91df82e3835f2b6bf29878115e3059a014ced3e63446ea8c7e6970a1365f
+  review_summary: The draft is generally clear and preserves the result that the crowds’ gathering led Jesus to enter the boat. However, “around him” adopts an interpretation that the POB audit trail deliberately leaves implicit, and “while” unnecessarily subordinates the final coordinated clause. The recommended wording keeps the useful modern sentence flow while following the established lexical and syntactic decisions.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

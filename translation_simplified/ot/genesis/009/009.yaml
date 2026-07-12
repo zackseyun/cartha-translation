@@ -31,41 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: As for me, behold, I am establishing my covenant with you and with your offspring after you.
+  text: 'As for me, look: I am establishing my covenant with you and with your descendants who come after you.'
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: God personally establishes his covenant with Noah and his descendants.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'behold' and 'covenant' because they carry the formal covenant announcement in the POB.
-retained_terms:
-- term: covenant
-  reason: Retains the core covenant terminology.
-- term: behold
-  reason: Preserves the formal attention marker in this divine speech.
+- pob_phrase: behold
+  simplified_phrase: 'look:'
+  preserved_meaning: The word still calls solemn attention to God's announcement.
+  reasoning_layer_used: POB lexical decision for הִנְנִי
+  rationale: Current English makes the attention signal immediately understandable.
+- pob_phrase: your offspring after you
+  simplified_phrase: your descendants who come after you
+  preserved_meaning: The covenant includes the subsequent generations of Noah's line.
+  reasoning_layer_used: POB lexical decisions for זַרְעֲכֶם and אַחֲרֵיכֶם
+  rationale: The fuller phrase clearly identifies later generations.
+interpretive_expansions:
+- pob_phrase: your offspring after you
+  rendering: your descendants who come after you
+  claim: The collective offspring are Noah's descendants in subsequent generations.
+  evidence:
+  - The POB says זֶרַע can mean descendants.
+  - The POB says אַחֲרֵיכֶם indicates subsequent generations.
+  confidence: high
+  alternatives_preserved:
+  - your offspring after you
+  - your seed after you
 translation_notes:
-  source_alignment_notes: Preserves divine first-person emphasis, covenant establishment, and descendants after Noah.
-  readability_notes:
-  - The wording remains formal because it begins a covenant declaration.
-  compression_notes:
-  - No covenant participant was removed.
+  risk_flags:
+  - risk: “Look” may sound less elevated than “behold.”
+    mitigation: The colon and formal covenant wording preserve the solemn announcement.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/009.yaml
   source_text_sha256: b1aa0d4c2255ba3bba8ba747549bfec407146dbff5a32cdf8899156444613e87
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:38Z'
-  output_hash: 2ed63432a66f81e0f2fddec62a42623a9dd2897205c08155931b1c66aa3c0b84
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7f84d85fbbb3b224915daf66875828ae820230ee927f385a0b65b4214ccf165d
+  timestamp: '2026-07-12T09:23:42Z'
+  output_hash: 64de202c29cd5f01cd152454b0a660073ce603309a6f5dda7f7084276b00712c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3178
+    completion_tokens: 338
+    total_tokens: 3516
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: covenant
+  reason: Retains the core covenant terminology.
+- term: behold
+  reason: Preserves the formal attention marker in this divine speech.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:42Z'
+  previous_text: As for me, behold, I am establishing my covenant with you and with your offspring after you.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c6cc81a8fd52ddcb6062624811701c7d2ae168a115edbdb11da792e1f74d2c6b
+  review_summary: The draft is faithful and doctrinally sound, but it is not sufficiently clearer than the POB to approve under the stated standard. The recommended wording keeps the covenant terminology and the source’s emphatic announcement while expressing the attention marker and generational reference in more accessible English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

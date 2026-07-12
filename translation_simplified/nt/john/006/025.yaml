@@ -31,43 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When they found him on the other side of the sea, they said to him, "Rabbi, when did you get here?"
+  text: When they found him on the other side of the sea, they asked him, “Rabbi, when did you get here?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: Rabbi
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: sea
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: they said to him
+  simplified_phrase: they asked him
+  preserved_meaning: They addressed Jesus with a question.
+  reasoning_layer_used: Immediate context and POB lexical alternatives
+  rationale: Because their words are a direct question, “asked” is clearer natural English without changing the event.
 translation_notes:
-  source_alignment_notes: Maintained the exact semantic structure of POB, including 'they said to him' (preserving the literal 'εἶπον αὐτῷ' as prioritized in POB lexical decisions) rather than changing it to 'asked'.
-  readability_notes:
-  - The resulting sentence is direct and easy to read, eliminating unnecessary punctuation and academic notes that might distract a general reader.
-  compression_notes:
-  - No semantic content from the biblical text was compressed or removed; only the connective 'And' and a technical footnote were omitted.
   risk_flags:
-  - risk: None. The revision is minor and carries no theological or textual risk.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Asked” is less formally aligned with the Greek verb for “said.”
+    mitigation: The following direct question makes the speech act explicit and supports this contextual rendering.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/006/025.yaml
   source_text_sha256: 5f7d4934767a164eab4cf90b164b1fbc2de98be243cfbb5a5288c1fe5a421c8e
-  pob_commit_sha: e017bec786169c48fb3916412815ad5ec3a5127f
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 65eac607741db17abf59b7f30050925f4bc95dc089599c181a84bcd3ad51a122
-  timestamp: '2026-05-28T07:36:30Z'
-  output_hash: 7202cb925e84c5bd827b3914c7d3fd796751c8990602a26e4213508dff00ee1c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c8655936cdaed43b52a38d71b39bbb108cd58c926c1faafe903224677deffa9c
+  timestamp: '2026-07-12T07:14:33Z'
+  output_hash: e2ea067c00917eb2017918c72a5cf2e24209a64f31daa84ead875a7278b44870
   usage:
-    prompt_tokens: 1603
-    completion_tokens: 478
-    total_tokens: 4831
+    prompt_tokens: 3022
+    completion_tokens: 184
+    total_tokens: 3206
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Rabbi
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: sea
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:33Z'
+  previous_text: When they found him on the other side of the sea, they said to him, "Rabbi, when did you get here?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 09bbb7847935b2f3b19c0727745d696c252bf38485194263fcad89de9875f133
+  review_summary: Revise for a small but real readability improvement. “Asked him” accurately conveys the interrogative speech in context without adding interpretation or changing the meaning. Retaining “Rabbi,” “the other side of the sea,” and “when did you get here?” is faithful to the source and POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

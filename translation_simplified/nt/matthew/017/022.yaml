@@ -37,41 +37,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: While they were gathering in Galilee, Jesus said to them, “The Son of Man is about to be handed over to men,
+  text: While they were gathering in Galilee, Jesus said to them, “The Son of Man is about to be handed over into the hands of men.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 17 POB wording
-  simplified_phrase: While they were gathering in Galilee, Jesus said to them, “The Son of Man is about to be handed over to men,
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 17:22 while using simpler modern common English.
-  reasoning_layer_used: POB translation, footnotes, lexical decisions, and theological decisions
-  rationale: Simplifies gathering together and delivered while preserving Son of Man and the impending handover.
-retained_terms:
-- term: Son of Man
-  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
+- pob_phrase: gathering together
+  simplified_phrase: gathering
+  preserved_meaning: The disciples were coming together or were together as a group in Galilee.
+  reasoning_layer_used: POB lexical decision for Συστρεφομένων
+  rationale: The collective setting remains clear without the redundant word “together.”
+- pob_phrase: be delivered into the hands of men
+  simplified_phrase: be handed over into the hands of men
+  preserved_meaning: Jesus predicts an impending transfer into human control without limiting it to betrayal alone.
+  reasoning_layer_used: POB lexical and theological decisions for παραδίδοσθαι and εἰς χεῖρας
+  rationale: “Handed over” is clearer modern English while the source image “into the hands” remains intact.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing POB YAML record for Matthew 17:22; no external LLM or API was used.
-  readability_notes:
-  - Uses short sentences and common modern English while keeping the verse's controlling POB meaning.
-  compression_notes:
-  - Compresses repeated or formal phrasing only where the same meaning remains clear.
+  risk_flags:
+  - risk: “Handed over” could be read as referring only to Judas's betrayal.
+    mitigation: The wording remains broad and retains the full phrase “into the hands of men.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/017/022.yaml
   source_text_sha256: 8b5fae4161e68aa149f212a66a5397ff7b58f53e39109f94bd7e46680eeca494
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:23Z'
-  output_hash: b7439a4486e93ffb2185a38a2b60d8ca05685ea2f86dd6166f2f6922c2c7a126
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9967596b24200911927d884c03a1e1e03c24b75d20360abb0a067d06d2f3a01b
+  timestamp: '2026-07-12T07:36:46Z'
+  output_hash: 47a6c9e902b77ea8ff21b3fdaf8b07a9584800f6953e49f43dc58b78adbf4c2d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3594
+    completion_tokens: 292
+    total_tokens: 3886
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Son of Man
+  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:46Z'
+  previous_text: While they were gathering in Galilee, Jesus said to them, “The Son of Man is about to be handed over to men,
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b7527162ffd8b704f915191219433e78b103686a58f6ea03bd409038299ce2f7
+  review_summary: Revise. “Gathering” is a warranted, modest simplification of “gathering together,” and “handed over” is explicitly supported by the POB footnote and audit trail. However, “to men” drops the meaningful and still-readable “into the hands of” element of the Greek and POB. Restore that phrase and correct the unfinished quotation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

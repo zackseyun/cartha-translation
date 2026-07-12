@@ -34,38 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to them, “I will ask you one question. Answer me, and I will tell you by what authority I do these things.”
+  text: But Jesus replied, “I have one question for you. Answer me, and I will tell you what authority I have to do these things.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But Jesus said to them[a], “I will ask you one question. Answer me[b], and I will tell you by what authority I do these things.”
-  simplified_phrase: Jesus said to them, “I will ask you one question. Answer me, and I will tell you by what authority I do these things.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: said to them
+  simplified_phrase: replied
+  preserved_meaning: Jesus responds directly to the leaders while retaining the contrasting turn marked by “But.”
+  reasoning_layer_used: POB lexical decision for δὲ and εἶπεν αὐτοῖς
+  rationale: “Replied” makes the conversational response clear without removing the mild contrast.
+- pob_phrase: I will ask you one question
+  simplified_phrase: I have one question for you
+  preserved_meaning: Jesus introduces a single counter-question that requires their answer.
+  reasoning_layer_used: POB lexical decision for Ἐπερωτήσω ὑμᾶς ἕνα λόγον
+  rationale: The new wording expresses the same intent in more natural conversational English.
+- pob_phrase: by what authority I do these things
+  simplified_phrase: what authority I have to do these things
+  preserved_meaning: The dispute concerns Jesus’ legitimate authority, not merely his ability to act.
+  reasoning_layer_used: POB theological and lexical decisions for ἐν ποίᾳ ἐξουσίᾳ
+  rationale: This form is easier to follow while retaining the key term “authority.”
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “What authority I have” may sound slightly less focused on the basis of Jesus’ authority than POB’s wording.
+    mitigation: The rendering retains “authority” and the right-to-act sense protected by the POB audit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/029.yaml
   source_text_sha256: 2d42c41a03df2ebb1370ce503881416314c499101ea05827f98b7f143aa9d66a
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 89a395094091b20384f6835f22afd3925f289cf1e58c91a39820304e5167bbd8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8a75162d913d57009558ad67e2e0c3a93d0a3b52fe96f4dbe2618990a5ad181c
+  timestamp: '2026-07-12T07:21:35Z'
+  output_hash: 82fce0b11bd14ed44309803c3bf7c49f5ea86a09e5e079616ac347e5f74d46f2
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3594
+    completion_tokens: 719
+    total_tokens: 4313
+    reasoning_tokens: 322
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:35Z'
+  previous_text: Jesus said to them, “I will ask you one question. Answer me, and I will tell you by what authority I do these things.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4af07794cc55446c2c25b032560b963d3d9832ab3e4b7e2452406135e6c9cadb
+  review_summary: Revise. The wording faithfully preserves Jesus’ counter-question, the imperative to answer, and the issue of authority; it adds no unsupported interpretation and retains no doctrinal problem. However, it is effectively the POB text with its reader-invisible footnote markers removed, rather than a meaningful SPOB clarification. Retain “But” to preserve the responsive transition signaled by δέ; further simplification is not needed because the POB sentence is already clear modern English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

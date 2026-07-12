@@ -31,42 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The seed sown on rocky ground is the person who hears the word and immediately receives it with joy.[a]
+  text: The one sown on rocky ground is someone who hears the word and immediately receives it with joy.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: More formally, “the one sown on rocky places.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: As for the one sown on the rocky ground, this is the one who
+  simplified_phrase: The one sown on rocky ground is someone who
+  preserved_meaning: Keeps the compressed image of a person being sown while identifying that person as the hearer.
+  reasoning_layer_used: POB theological decision on the referent of the sown one
+  rationale: Removing the transition and using “someone” makes the sentence flow naturally without resolving the metaphor into “the seed.”
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: Readers may find the image of a person being sown unusual.
+    mitigation: The unusual wording is retained because it preserves the source’s deliberate compressed metaphor.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/020.yaml
   source_text_sha256: 6ab7699cdc792244ee5e5545d2348bda4afaf08b7f918c85cb4286d4b345420e
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: d1ea5c6bd123d82adaa51f3e2be8080134519757271fc5229d1f5e949f150db2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 81dc0c8461f2ba1418049e787657941a019d2718808297c01ec8e836e2687ef9
+  timestamp: '2026-07-12T07:36:33Z'
+  output_hash: a6a0dd7d93aa03c358f315d3ad95edf448597593d720285c3db380688ca21fa6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3388
+    completion_tokens: 244
+    total_tokens: 3632
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:33Z'
+  previous_text: The seed sown on rocky ground is the person who hears the word and immediately receives it with joy.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1ac04a594a486a70754e5968690cee1db00a802bd32dd4ae62306909cfe6cf8a
+  review_summary: Revise. The draft is clearer, but its explicit statement that the seed “is the person” goes beyond the POB’s audited decision to retain the Greek’s compressed metaphor. The recommended wording improves flow by replacing “As for” and “the one who” with ordinary English while preserving the source and POB’s unresolved formulation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

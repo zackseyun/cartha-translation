@@ -19,36 +19,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 11:44 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''says'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote ma'
 translation:
   language: en
-  text: The man who had died came out, his hands and feet bound with burial cloths, and his face wrapped with a cloth. Jesus said to them, “Unbind him and let him go.”
+  text: The man who had died came out. Burial cloths were wrapped around his feet and hands, and a cloth covered his face. Jesus says to them, “Unwrap him and let him go.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: his feet and hands bound with burial cloths
+  simplified_phrase: Burial cloths were wrapped around his feet and hands
+  preserved_meaning: His limbs remained secured by the cloths used for burial.
+  reasoning_layer_used: POB text and source payload
+  rationale: The active image of wrapped cloths is easier to picture than the compressed phrase “bound with burial cloths.”
+- pob_phrase: his face wrapped with a cloth
+  simplified_phrase: a cloth covered his face
+  preserved_meaning: A separate cloth remained around his face.
+  reasoning_layer_used: POB text and source payload
+  rationale: “Covered” states the visible condition in direct modern English.
+- pob_phrase: Unbind him
+  simplified_phrase: Unwrap him
+  preserved_meaning: Jesus commands those present to remove the cloths restraining Lazarus.
+  reasoning_layer_used: Immediate context and POB text
+  rationale: “Unwrap” connects the command clearly to the burial cloths without changing its force.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Unwrap” is more context-specific than the broader verb “unbind.”
+    mitigation: The immediately preceding burial wrappings establish what must be removed.
+  - risk: The historical present “Jesus says” may sound unusual in English narrative.
+    mitigation: It is retained because the audited POB revision explicitly preserves that source-driven choice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/044.yaml
   source_text_sha256: 9d246e1611380c72790a259a25309cf65dc8c964617faa517bae42c35f0c35a4
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: 560c5af572b26940849c51d828d26fbf3ebc9bd503345fda0d54f38391bc4c0b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d1bf1050d92a9ea58088a1cde79f0e5b24d9e728ae916abafeb8ef07e745d5f0
+  timestamp: '2026-07-12T07:16:39Z'
+  output_hash: 1df3b82845f265475462d959f63846a03c157f6efaf9ec94b811f3b04a4d7168
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2665
+    completion_tokens: 550
+    total_tokens: 3215
+    reasoning_tokens: 163
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:39Z'
+  previous_text: The man who had died came out, his hands and feet bound with burial cloths, and his face wrapped with a cloth. Jesus said to them, “Unbind him and let him go.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9584bfb3c7102ae0c191a32b1ede61c3117a559bf0bcd80c124593d24a9126dd
+  review_summary: Revise for genuine reader-facing clarity. The draft faithfully preserves the event and command and adds no doctrinal material, but it does not meet the requested threshold of being meaningfully clearer than POB. The recommended wording makes the burial wrappings and Jesus' command immediately understandable without adding details beyond the verse.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

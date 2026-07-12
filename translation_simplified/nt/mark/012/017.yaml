@@ -31,43 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Jesus said to them, “Give back to Caesar the things that are Caesar’s, and to God the things that are God’s.” And they were completely amazed at him.
+  text: But Jesus said to them, “Give back to Caesar what belongs to Caesar, and give back to God what belongs to God.” They were completely amazed at him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But Jesus said to them[a], “Give back to Caesar the things that are Caesar’s, and to God the things that are God’s.” And they were utterly amazed at him.
-  simplified_phrase: Then Jesus said to them, “Give back to Caesar the things that are Caesar’s, and to God the things that are God’s.” And they were completely amazed at him.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Caesar
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-- term: God
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: the things that are Caesar’s
+  simplified_phrase: what belongs to Caesar
+  preserved_meaning: Caesar is to receive what is rightfully his without defining the scope of his claims.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Common possessive wording improves clarity while preserving the unresolved civic tension.
+- pob_phrase: and to God the things that are God’s
+  simplified_phrase: and give back to God what belongs to God
+  preserved_meaning: The second command remains parallel to the first and applies the same verb to what belongs to God.
+  reasoning_layer_used: POB lexical decision and source parallelism
+  rationale: Repeating the verb makes the elliptical clause immediately understandable.
+- pob_phrase: And they were utterly amazed at him
+  simplified_phrase: They were completely amazed at him
+  preserved_meaning: Their reaction remains one of intense amazement directed at Jesus.
+  reasoning_layer_used: POB lexical decision for ἐξεθαύμαζον and ἐπ’ αὐτῷ
+  rationale: “Completely amazed” expresses the same intensity in more familiar English.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Repeating “give back” with God may sound more explicit than the POB clause.
+    mitigation: The Greek parallel grammatically carries the same imperative into the second clause.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/017.yaml
   source_text_sha256: 5ac8e1ec0c818fc314c7b7369a45e328e139584ca03baba79a7ef8e5d399196a
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 1ef4d183c4ee6d93e0853a8a90146211b987d887e93340b3598488fbddde2fd0
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9a883f1e91f0830502fbb111199781c7ea03498aaae04b9b373a537ff9388e53
+  timestamp: '2026-07-12T07:21:37Z'
+  output_hash: 76790af627424a2d53cf598e8636fd08208af8bce5d28081d5a00e14a844d504
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3477
+    completion_tokens: 539
+    total_tokens: 4016
+    reasoning_tokens: 168
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Caesar
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- term: God
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:37Z'
+  previous_text: Then Jesus said to them, “Give back to Caesar the things that are Caesar’s, and to God the things that are God’s.” And they were completely amazed at him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8111d42c9527f0a30700d432a1dfd260cc46b8401be152b49aa7220bf5fe021d
+  review_summary: The central saying is preserved faithfully, including its deliberate parallelism and its unresolved balance between what is owed to Caesar and what is owed to God. No doctrinal expansion or ambiguity collapse is introduced. Revise “Then” back to “But,” since the POB audit trail and immediate adversarial context support the response/contrast force. “Completely amazed” is an acceptable clearer equivalent for “utterly amazed.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

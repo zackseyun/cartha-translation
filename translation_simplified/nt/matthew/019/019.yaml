@@ -31,47 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Honor your father and mother, and love your neighbor as yourself.[a]
+  text: Give honor to your father and mother, and love your neighbor as you love yourself.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 'More formally: Honor your father and mother, and you shall love your neighbor as yourself.'
+    text: 'More formally: “Honor your father and mother, and you shall love your neighbor as yourself.”'
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Honor your father and mother
-  simplified_phrase: Honor your father and mother
-  preserved_meaning: The parental honor command is retained.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Already clear common English.
+  simplified_phrase: Give honor to your father and mother
+  preserved_meaning: Children must give their parents the honor due to them, not merely feel respect.
+  reasoning_layer_used: POB lexical decision for Τίμα
+  rationale: “Give honor” makes the required action clearer while preserving the command’s ethical weight.
 - pob_phrase: love your neighbor as yourself
-  simplified_phrase: love your neighbor as yourself
-  preserved_meaning: The love command is retained.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Already clear and familiar.
+  simplified_phrase: love your neighbor as you love yourself
+  preserved_meaning: A person must love a neighbor in the same way the person loves oneself.
+  reasoning_layer_used: POB lexical alternative for ὡς σεαυτόν
+  rationale: Repeating “love” makes the comparison immediately clear.
+interpretive_expansions:
+- pob_phrase: as yourself
+  rendering: as you love yourself
+  claim: The comparison concerns loving one’s neighbor as one loves oneself.
+  evidence:
+  - The POB lexical decision lists “as you love yourself” as the explicit alternative.
+  confidence: high
+  alternatives_preserved:
+  - as yourself
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the POB record for Matthew 19:19; no external LLM or API was used.
-  readability_notes:
-  - Uses modern common English while keeping the controlling POB meaning.
-  compression_notes:
-  - Only formal or repeated wording is simplified; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Give honor” is less traditional than “Honor.”
+    mitigation: The formal wording is preserved in the footnote.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/019/019.yaml
   source_text_sha256: 7a2c13d61109dca8a8e5ae26ee7fc9e5655fd291e7955c7d7fbedabfbc715170
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:30Z'
-  output_hash: b4cc02781b29f2d2b23a127a3173688aba98f9462c1e23c9a29d0f710cce3c61
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 49dfa735c411698db2bef2632567d27883183c3eb72be633f7163ef647074fcc
+  timestamp: '2026-07-12T07:36:59Z'
+  output_hash: 0bf3ce57d1923e3f9c85749fa5ee1b9f4faca1cb1cde760987351c46ab11813c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3102
+    completion_tokens: 360
+    total_tokens: 3462
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:59Z'
+  previous_text: Honor your father and mother, and love your neighbor as yourself.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7e4427b1932e6177c29010a5d87f9dc54971f00aabdd69d44a21d97696fa81da
+  review_summary: Revise for actual reader-facing simplification. “Give honor” retains the due-honor force of Τίμα without reducing it to mere inward respect, and “as you love yourself” makes the comparison explicit without adding a new doctrine or application. The command’s scope and force remain intact.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

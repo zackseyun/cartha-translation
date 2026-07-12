@@ -31,38 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You always have the poor with you, and you can do good to them whenever you want. But you will not always have me.
+  text: For you always have poor people with you, and whenever you want, you can do good to them. But you do not always have me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: For you always have the poor with you[a], and whenever you want, you are able to do good to them; but you do not always have me.
-  simplified_phrase: You always have the poor with you, and you can do good to them whenever you want. But you will not always have me.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: the poor
+  simplified_phrase: poor people
+  preserved_meaning: Keeps the reference to people who are poor while avoiding an abstract-sounding label.
+  reasoning_layer_used: POB lexical decision for πτωχούς
+  rationale: The POB lists “poor people” as a valid clearer alternative.
+- pob_phrase: you are able to do good to them
+  simplified_phrase: you can do good to them
+  preserved_meaning: Keeps both their ability and the concrete action of benefiting poor people.
+  reasoning_layer_used: POB lexical decisions for δύνασθε and αὐτοῖς εὖ ποιῆσαι
+  rationale: “Can” is common English and does not reduce doing good to mere goodwill.
+- pob_phrase: and whenever you want, you are able to do good to them; but you do not always have me
+  simplified_phrase: and whenever you want, you can do good to them. But you do not always have me.
+  preserved_meaning: Keeps the ongoing opportunity to help poor people and the contrast with Jesus’ limited presence.
+  reasoning_layer_used: POB translation, lexical decisions, and theological decision
+  rationale: Two sentences make the contrast easier to follow without shifting the final clause into the future tense.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Do not always have me” may sound less natural than a future prediction.
+    mitigation: The present-tense wording preserves the Greek and the POB’s explicit tense decision.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/007.yaml
   source_text_sha256: c023469025fb1f813c5f59e15fde46c1e05fa43da017052555b3185d7b969571
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 14dee27133e19488b6f59f50d6e8402b2643348f7c0332ee283de80772f0b767
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b7b9b71b29a1f29e64f9c4cba1280e2455e13dda0794dbf2a5be27a87cee721f
+  timestamp: '2026-07-12T07:21:57Z'
+  output_hash: b5b008b476f76e5555eb43a0aac40f19f6f21563abd3ed9386b1fc89c5204fa0
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3405
+    completion_tokens: 393
+    total_tokens: 3798
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:57Z'
+  previous_text: You always have the poor with you, and you can do good to them whenever you want. But you will not always have me.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4d2f32bd64323290946d13d970150191dda737c31e46e1a74da5edfc89887d44
+  review_summary: The draft successfully makes “you are able” more natural (“you can”) and preserves the ongoing opportunity to do good to poor people. However, it unnecessarily changes the final clause from the source/POB present-tense wording to a future formulation. Retain the present-tense contrast while using “poor people” and “can” for clear common English. The opening “For” should also be retained because it preserves the verse’s explanatory connection to the preceding statement.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

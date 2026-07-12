@@ -31,36 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Isaiah said these things because he saw his glory and spoke about him.
+  text: Isaiah said these words because he had seen his glory and had spoken about him.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: In this context, “him” likely refers to Jesus. Isaiah’s original vision was of the Lord’s glory (Isaiah 6:1).
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: these things
+  simplified_phrase: these words
+  preserved_meaning: The phrase points back to the prophetic statements just quoted.
+  reasoning_layer_used: POB lexical decision for ταῦτα and immediate context
+  rationale: “These words” gives readers a clearer referent while retaining the plural sense.
+- pob_phrase: he saw his glory and spoke about him
+  simplified_phrase: he had seen his glory and had spoken about him
+  preserved_meaning: Isaiah’s vision and speech explain why he made the cited statements.
+  reasoning_layer_used: Greek aorist verbs and POB causal reading of ὅτι
+  rationale: Past-perfect verbs make the sequence natural in English without changing the causal relationship.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: 'Footnote: “him” likely refers to Jesus in this context'
+  claim: John’s immediate context most likely identifies Jesus as the pronouns’ referent.
+  evidence:
+  - John 12:37–41 applies Isaiah’s words to unbelief in response to Jesus.
+  - The POB theological decision identifies Jesus as the contextual referent.
+  - Isaiah 6:1 supplies the broader vision of the Lord’s glory.
+  confidence: moderate
+  alternatives_preserved:
+  - The pronouns may refer more generally to God or the Lord.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Naming Jesus only in the note may leave the main-text pronouns initially unclear.
+    mitigation: The note clarifies John’s likely referent without erasing the Isaianic background.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/041.yaml
   source_text_sha256: 7a191b62d4288aff2b75a721bafe426ff4a0ead5434483bafbddddb8369465e1
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: 4855a7d9d96b4fa88bdc899c12073d1f77741e8d0c19a929451c416566cb303e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6e94a5c5d0387e79150d45912663a2da36801f3c5d0a6e23ca6b415b518c07e2
+  timestamp: '2026-07-12T07:17:36Z'
+  output_hash: 07ee9be92c9326896be6ec49e1eac0064d1c684db19aa996dc7791ecae0a2ddd
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3290
+    completion_tokens: 639
+    total_tokens: 3929
+    reasoning_tokens: 195
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:36Z'
+  previous_text: Isaiah said these things because he saw his glory and spoke about him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b9ff932fb3e379a48fa8e97446568327a202ea7aefff381003afb24007e3b8dc
+  review_summary: The base wording is faithful, but the submitted SPOB draft is not clearer than POB and drops the note needed for readers to understand its pronouns responsibly. Restore a concise contextual footnote rather than replacing the pronouns with "Jesus," which would collapse the Isaianic/Johannine referential tension preserved by POB.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

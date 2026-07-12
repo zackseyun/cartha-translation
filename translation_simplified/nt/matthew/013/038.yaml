@@ -37,51 +37,63 @@ base_translation:
     changes_summary: Replaced the semicolon after 'world' with a comma for smoother English coordination while preserving the Greek structure; otherwise retained the draft.
 translation:
   language: en
-  text: The field is the world, and the good seed are the sons of the kingdom. The weeds are the sons of the evil one.[a][b][c]
+  text: The field is the world, and the good seed are the sons of the kingdom. The weeds are the sons of the evil one.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: The weeds may more specifically be darnel; traditionally, “tares.”
     reason: lexical_alternative
   - marker: b
-    text: “Sons” is a representative relational expression for those who belong to the kingdom or to the evil one.
+    text: “Sons” is a representative relational expression for people who belong to the kingdom or to the evil one.
     reason: cultural_note
-  - marker: c
-    text: The POB also preserves a previous rendering ending after “the sons of the kingdom.”
-    reason: source_note
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
-retained_terms:
-- term: sons of the kingdom
-  reason: Retained because it is Jesus' relational image in the POB explanation.
+- pob_phrase: the good seed—these are the sons of the kingdom
+  simplified_phrase: the good seed are the sons of the kingdom
+  preserved_meaning: The seed remains an agricultural image that represents people belonging to the kingdom.
+  reasoning_layer_used: POB translation and lexical decision for σπέρμα and οὗτοί
+  rationale: Removing the explanatory dash makes the symbolic identification easier to read without changing its meaning.
+- pob_phrase: sons of the kingdom ... sons of the evil one
+  simplified_phrase: sons of the kingdom ... sons of the evil one, with a shared explanatory note
+  preserved_meaning: “Sons” retains the source’s relational language while applying representatively to both groups.
+  reasoning_layer_used: POB lexical and theological decision for υἱοὶ
+  rationale: The note prevents readers from mistaking the phrase as limited to literal male offspring.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: The singular collective “seed” followed by “are” may sound unusual to some readers.
+    mitigation: The wording preserves the source’s shift from the seed image to the people it represents.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/038.yaml
   source_text_sha256: 729a4fac1f38840428d9d6ed6a6cec2c51559a8dd651479f13fd14ab5531783d
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 7b1d57c77e2a4707351f68c778803dd16205f28541bae430ba6e2f7cd1552ce4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 689ad2c7a8f016f6ccd4fef17954f98a20531fc0caecbee00e50a69349d982ff
+  timestamp: '2026-07-12T07:36:43Z'
+  output_hash: f9951283e972ed938efc8d806bd96322a56c1383bbc361a763f214469d400c7e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3984
+    completion_tokens: 708
+    total_tokens: 4692
+    reasoning_tokens: 318
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: sons of the kingdom
+  reason: Retained because it is Jesus' relational image in the POB explanation.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:43Z'
+  previous_text: The field is the world, and the good seed are the sons of the kingdom. The weeds are the sons of the evil one.[a][b][c]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5daa521daf55b555231a7f9b5c9d8d76b83ae32d1f5627089e01acdcaad7ab5c
+  review_summary: 'The main text is faithful and modestly clearer than the POB: replacing the explanatory dash and “these are” with “seed are” makes the symbolic identification read more naturally without changing it. The personal rendering “the evil one” is well supported by the Greek and the POB audit trail. Footnote b appropriately explains the representative idiom and its extension to both parallel expressions is warranted by the verse. Remove footnote c, since it exposes internal POB history rather than providing a useful publication-facing note.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

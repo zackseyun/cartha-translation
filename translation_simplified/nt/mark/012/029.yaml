@@ -34,43 +34,78 @@ base_translation:
     changes_summary: Added 'O' before 'Israel' for a more natural and formal rendering of the vocative Ἰσραήλ; otherwise retained the draft.
 translation:
   language: en
-  text: 'Jesus answered, “The first is: Hear, O Israel, the Lord our God, the Lord is one.'
+  text: 'Jesus answered, “The most important commandment is this: ‘Hear, Israel: The Lord[a] our God, the Lord is one.’[b]”'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: This quotation comes from Deuteronomy 6:4; “Lord” represents the divine name YHWH in its Greek form.
+    reason: cross_reference
+  - marker: b
+    text: This may also be translated, “The Lord our God is one Lord,” or, “The Lord is our God, the Lord alone.” The wording may emphasize that God is one, that he alone is Israel’s God, or both.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: 'Jesus answered[a], “The first is: Hear, O Israel, the Lord our God[b], the Lord is one.'
-  simplified_phrase: 'Jesus answered, “The first is: Hear, O Israel, the Lord our God, the Lord is one.'
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Lord
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-- term: God
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: The first is
+  simplified_phrase: The most important commandment is this
+  preserved_meaning: Jesus identifies the commandment that ranks first in response to the preceding question.
+  reasoning_layer_used: Lexical decision for Πρώτη and immediate context
+  rationale: Naming the implied commandment makes the answer clear without changing its priority.
+- pob_phrase: Hear, O Israel
+  simplified_phrase: Hear, Israel
+  preserved_meaning: The opening call of the Shema directly addresses Israel and commands attention.
+  reasoning_layer_used: Lexical decision for Ἄκουε and Shema citation
+  rationale: Removing the formal “O” improves modern readability while “Hear” preserves the biblical resonance.
+- pob_phrase: the Lord our God, the Lord is one
+  simplified_phrase: The Lord our God, the Lord is one
+  preserved_meaning: The wording retains the confession’s deliberate tension between God’s oneness and exclusivity.
+  reasoning_layer_used: Theological decision on the Shema’s final clause
+  rationale: The main rendering remains unchanged because simpler alternatives could over-resolve its meaning.
+interpretive_expansions:
+- pob_phrase: The first
+  rendering: The most important commandment
+  claim: “The first” means the highest-ranking commandment and refers to the commandment implied by the preceding question.
+  evidence:
+  - The immediate context asks which commandment is first.
+  - The POB lexical rationale identifies “commandment” as the implied noun.
+  confidence: high
+  alternatives_preserved:
+  - The first commandment
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: Readers may understand the final clause as stressing only numerical oneness.
+    mitigation: The alternative-reading footnote preserves both oneness and exclusivity as possible emphases.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/029.yaml
   source_text_sha256: 499e6d17f253c252e9b26e89152c64d52faef3a6b7ea853f84c6f84a39bc5900
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 7be3671fdaaf3b25870af29b0bf36677f30f17dd763a6c4ed74a181a09a53a86
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ae8cfcfa63b530c8e5eda92b45a8fbe09d1ca14430007327dbd7e03dab0ad4bb
+  timestamp: '2026-07-12T07:24:30Z'
+  output_hash: 6df30b18dcd3f891e2f9ad85aa195d6753fc7f9788673fbcacd852d24687a587
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3562
+    completion_tokens: 1006
+    total_tokens: 4568
+    reasoning_tokens: 446
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Lord
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- term: God
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:30Z'
+  previous_text: 'Jesus answered, “The first is: Hear, O Israel, the Lord our God, the Lord is one.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 26d0a02dca1245d1bb5c0c7af48c533122cface8f2390cdbab1214c710d509e2
+  review_summary: Revision is needed because the draft merely reproduces POB rather than simplifying it. “The most important commandment” makes the contextual referent and force of Πρώτη clear, while “Listen” is ordinary contemporary English. “One Lord” is an explicitly documented viable POB alternative and does not impose a doctrinal interpretation beyond the Shema’s confession. The nested quotation and closing punctuation also make the citation readable.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

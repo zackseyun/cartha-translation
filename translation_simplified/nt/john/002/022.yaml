@@ -37,24 +37,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 2:22 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''that he had been saying this''].'
 translation:
   language: en
-  text: After Jesus was raised from the dead[a], his disciples remembered that he had been saying this. Then they believed the Scripture and the word[b] Jesus had spoken.
+  text: So, after Jesus was raised from the dead[a], his disciples remembered that he had been saying this. They then believed the Scripture and the word[b] Jesus had spoken.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "rose from the dead." The Greek verb is passive ("was raised").
-    reason: simplification_note
+    text: Or “rose from the dead.” The Greek verb is passive, so the main text says “was raised.”
+    reason: lexical_alternative
   - marker: b
-    text: Or "statement" or "message."
-    reason: simplification_note
+    text: Or “statement” or “message.”
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: After Jesus was raised from the dead
-  preserved_meaning: Clarified the referent 'he' as 'Jesus' for readers who may be new to the context, and replaced 'So when' with 'After' to smoothly transition into a split-sentence structure.
-  reasoning_layer_used: POB audit trail
-  rationale: Clarified the referent 'he' as 'Jesus' for readers who may be new to the context, and replaced 'So when' with 'After' to smoothly transition into a split-sentence structure.
-- simplified_phrase: Then they believed the Scripture and the word Jesus had spoken
-  preserved_meaning: Split the long compound sentence into two sentences to make it easier to read. Replaced 'and' with 'Then' to show temporal progression, and removed 'that' for a more modern, direct style ('the word Jesus had spoken').
-  reasoning_layer_used: POB audit trail
-  rationale: Split the long compound sentence into two sentences to make it easier to read. Replaced 'and' with 'Then' to show temporal progression, and removed 'that' for a more modern, direct style ('the word Jesus had spoken').
+- pob_phrase: So when he was raised from the dead
+  simplified_phrase: So, after Jesus was raised from the dead
+  preserved_meaning: The wording keeps both the narrative connection and the temporal setting while clearly identifying Jesus.
+  reasoning_layer_used: POB lexical decisions and independent grounding review
+  rationale: “So” preserves the force of the connective, while “after” introduces the later response naturally.
+- pob_phrase: his disciples remembered that he had been saying this, and they believed
+  simplified_phrase: his disciples remembered that he had been saying this. They then believed
+  preserved_meaning: The disciples’ remembering and believing remain distinct, sequential responses.
+  reasoning_layer_used: POB translation and applied revisions
+  rationale: Two sentences reduce complexity, and “then” preserves the progression between the actions.
+- pob_phrase: the word that Jesus had spoken
+  simplified_phrase: the word Jesus had spoken
+  preserved_meaning: The wording still refers specifically to Jesus’ earlier spoken saying.
+  reasoning_layer_used: POB lexical decision for λόγος
+  rationale: Removing the optional relative pronoun makes the phrase more direct without changing its meaning.
+interpretive_expansions:
+- pob_phrase: he was raised from the dead
+  rendering: Jesus was raised from the dead
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The verse later names Jesus as the speaker, and the immediate context concerns his body and resurrection.
+  confidence: high
+  alternatives_preserved:
+  - he was raised from the dead
+translation_notes:
+  risk_flags:
+  - risk: “After” alone could lose the connective force carried by “So when.”
+    mitigation: The opening retains “So” to preserve the narrative connection identified in the POB audit.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/002/022.yaml
+  source_text_sha256: f1890ba12ba5d0c6857a8b5b7f5cb8873484d280429f697f9e14cb4e7fc507f6
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3e4e54c9b84dce13f2cf32628d956bd57f6803d4834e49b275efdd9ab8d29490
+  timestamp: '2026-07-12T07:14:18Z'
+  output_hash: 1a484d4eaae7f9ce40210304209846b4609b0a0ea88a4a87bf44109a71998c4c
+  usage:
+    prompt_tokens: 4296
+    completion_tokens: 675
+    total_tokens: 4971
+    reasoning_tokens: 162
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: was raised from the dead
   reason: Retained to preserve POB's source-grounded terminology.
@@ -64,33 +105,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: believed
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: We carefully guarded POB's lexical choices. The passive voice for the resurrection ('was raised') and the imperfect aspect of the verb ('had been saying') were strictly maintained. We also kept 'the Scripture' in the singular to match the original Greek noun syntax.
-  readability_notes:
-  - By breaking the single complex POB sentence into two shorter sentences, we significantly lowered the cognitive load for modern readers without losing any theological nuance. Replacing 'he' with 'Jesus' provides immediate clarity at the start of the verse.
-  compression_notes:
-  - No information or theological meaning was compressed or lost. The structural changes were limited to splitting a compound sentence and removing the optional relative pronoun 'that' ('the word [that] Jesus had spoken').
-  risk_flags:
-  - risk: None. The translation strictly adheres to all POB lexical and theological decisions, including the preserved imperfect tense ('had been saying') from the doctrinal realignment pass.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/002/022.yaml
-  source_text_sha256: f1890ba12ba5d0c6857a8b5b7f5cb8873484d280429f697f9e14cb4e7fc507f6
-  pob_commit_sha: eb8d7446ed518a7697f5d64c3ea8077b1e89bad0
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 2768a548b1f90f3cdf59043a4c80498b021efdf32afd95f3e1534e1be920a886
-  timestamp: '2026-05-28T08:33:59Z'
-  output_hash: c6130c8f640b9613854af23e9596c13616f1d1bdeaaf14c5319a88e1571155ad
-  usage:
-    prompt_tokens: 2600
-    completion_tokens: 819
-    total_tokens: 7859
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:18Z'
+  previous_text: After Jesus was raised from the dead[a], his disciples remembered that he had been saying this. Then they believed the Scripture and the word[b] Jesus had spoken.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c591ce7d3e8a20a8270563af043d936a0962797fddb38a7190a3506ec1a8eae7
+  review_summary: Naming Jesus and dividing the sentence improve accessibility without adding doctrine, and the retained resurrection, imperfect, and belief language follow the POB audit trail. Revise the opening to retain the connective force of οὖν, which links the resurrection to the disciples’ remembering and believing.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

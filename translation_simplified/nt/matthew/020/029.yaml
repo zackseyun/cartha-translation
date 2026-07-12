@@ -31,12 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: As they were going out from Jericho, a large crowd followed him.
+  text: As Jesus and his disciples were leaving Jericho, a large crowd followed him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Removed the opening 'And' and kept the singular 'him' to preserve the POB's focus on Jesus after the plural departure clause.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the opening 'And' and kept the singular 'him' to preserve the POB's focus on Jesus after the plural departure clause.
+- pob_phrase: as they were going out from Jericho
+  simplified_phrase: As Jesus and his disciples were leaving Jericho
+  preserved_meaning: Jesus and his companions were departing from Jericho.
+  reasoning_layer_used: Immediate context and POB lexical audit
+  rationale: Naming Jesus and his disciples clarifies “they,” while “leaving” keeps the ongoing departure sense.
+- pob_phrase: followed him
+  simplified_phrase: followed him
+  preserved_meaning: The crowd followed Jesus rather than the group as a whole.
+  reasoning_layer_used: POB theological decision
+  rationale: Keeping the singular pronoun preserves the Greek shift that makes Jesus the focus.
+interpretive_expansions:
+- pob_phrase: they
+  rendering: Jesus and his disciples
+  claim: The departing group consisted of Jesus and his disciples.
+  evidence:
+  - Matthew 20:17–24 presents Jesus traveling with his disciples toward Jerusalem.
+  - The POB audit identifies Jesus as the singular person whom the crowd followed.
+  confidence: high
+  alternatives_preserved:
+  - Jesus and his companions
+translation_notes:
+  risk_flags:
+  - risk: Naming the plural group is more explicit than the verse itself.
+    mitigation: The immediate context clearly identifies Jesus and his disciples as the travelers.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/020/029.yaml
+  source_text_sha256: 1cb2ff71bcece4614eab81efb208f6a68745a86981a77906a87184247008da1a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5f3aec4ef50bfb30911119ac5ca8863bd87a13517957314a9e727adcb0ce354e
+  timestamp: '2026-07-12T07:38:19Z'
+  output_hash: 7c80f8e5f89acbbb1e03a9ecbe19a53889c7134466fb26943ce6c78535f48cdb
+  usage:
+    prompt_tokens: 2854
+    completion_tokens: 326
+    total_tokens: 3180
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Jericho
   reason: Retained to preserve POB's source-grounded terminology.
@@ -44,30 +86,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: followed him
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserves the movement out of Jericho and the crowd following Jesus.
-  readability_notes:
-  - The verse is already clear, so the simplification is light.
-  compression_notes:
-  - No content is omitted.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/020/029.yaml
-  source_text_sha256: 1cb2ff71bcece4614eab81efb208f6a68745a86981a77906a87184247008da1a
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:10:39Z'
-  output_hash: dc6b230c24f025b43b59e22518c6898153ed6b79ad81bc00b986ab3fe8fa8a49
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:19Z'
+  previous_text: As they were going out from Jericho, a large crowd followed him.
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6b42b7e6e7c315aa3c090ab4b49a60081fe91fc250f76d8d1a2e58164f199e47
+  review_summary: Revision is needed because the submitted text is essentially the POB with its connective removed and does not provide a meaningful understanding benefit. Identifying the departing group as Jesus and his disciples is supported by the immediate context, while “him” continues to preserve the Greek singular reference to Jesus and does not add doctrinal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

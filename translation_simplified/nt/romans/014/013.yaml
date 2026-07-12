@@ -34,36 +34,70 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 14:13 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''an offense''].'
 translation:
   language: en
-  text: Therefore, let us stop judging one another. Instead, decide not to put a stumbling block or trap in a brother’s way.
+  text: Therefore, let us stop judging one another. Instead, decide not to put a stumbling block or trap in the way of a fellow believer.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: let us no longer judge one another
+  simplified_phrase: let us stop judging one another
+  preserved_meaning: The exhortation calls for ending the ongoing practice of judging one another.
+  reasoning_layer_used: POB lexical decision for Μηκέτι and κρίνωμεν
+  rationale: “Stop judging” states the same command in direct, common English.
+- pob_phrase: 'but rather decide this: not to put'
+  simplified_phrase: Instead, decide not to put
+  preserved_meaning: Paul redirects judgment toward a decision about one’s own conduct.
+  reasoning_layer_used: POB lexical decision for ἀλλὰ τοῦτο κρίνατε μᾶλλον and τὸ μὴ τιθέναι
+  rationale: The shorter sentence preserves the rhetorical shift while removing dense clause structure.
+- pob_phrase: a stumbling block or an offense before a brother
+  simplified_phrase: a stumbling block or trap in the way of a fellow believer
+  preserved_meaning: Both images describe something placed before another Christian that may cause spiritual or moral falling.
+  reasoning_layer_used: POB lexical and theological decisions for πρόσκομμα, σκάνδαλον, and τῷ ἀδελφῷ
+  rationale: “Trap” keeps the source image, while “fellow believer” prevents a biological-sibling misunderstanding.
+interpretive_expansions:
+- pob_phrase: a brother
+  rendering: a fellow believer
+  claim: The brother in view is another Christian, not necessarily a biological sibling.
+  evidence:
+  - POB footnote a identifies the referent as a fellow believer.
+  - The POB theological decision says the singular represents a fellow Christian generally.
+  confidence: high
+  alternatives_preserved:
+  - brother
+  - brother or sister
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Replacing “brother” with “fellow believer” does not preserve the source’s masculine singular form.
+    mitigation: The rendering preserves the POB-documented contextual referent and records the formal alternatives in the audit.
+  - risk: Modern readers may take “stumbling block” and “trap” as merely physical images.
+    mitigation: The paired source images are retained, and the audit states their spiritual and moral force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/013.yaml
   source_text_sha256: c079f502a6c1603efc1f176fa286a452d1577e76eda3b467cd17638897f5188f
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: ba4725a37c101543eb46c01c79efd9cbae43df3804d0ccc1270cc1869fa47d87
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a86f8d32863156ae2e943bcf5ad4ac9967dfbb7f981a05d484a88313f1399c8d
+  timestamp: '2026-07-12T07:44:46Z'
+  output_hash: 930dddbd8de32b7ade7a54c625cb1386fb09edcd422500b9716ddcf1f67fa217
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3893
+    completion_tokens: 543
+    total_tokens: 4436
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:44:46Z'
+  previous_text: Therefore, let us stop judging one another. Instead, decide not to put a stumbling block or trap in a brother’s way.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2aca77ee976afb3ed9143425c00d7fd684c70a3926fc33a90bcd279169cf6c81
+  review_summary: The draft is clearer than POB and substantially preserves the exhortation and the paired imagery. Revision is needed only to clarify that “brother” denotes a fellow believer in this context, a clarification directly warranted by the POB audit trail rather than an added doctrinal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

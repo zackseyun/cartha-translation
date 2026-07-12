@@ -34,45 +34,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But the seed sown on good soil is the person who hears the word and understands it. That person truly bears fruit and produces a crop—in one case a hundred, in another sixty, and in another thirty.[a][b]
+  text: But the seed sown on good soil[a] represents the person who hears the word and understands it. That person indeed bears fruit and produces a crop—one yielding a hundred, another sixty, and another thirty.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “upon the good ground.”
+    text: Or “on good ground.”
     reason: lexical_alternative
   - marker: b
-    text: Literally, “one a hundred, one sixty, and one thirty,” describing different crop yields.
+    text: The Greek literally says, “one a hundred, one sixty, and one thirty,” describing different crop yields.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: the one sown on the good soil—this is the one
+  simplified_phrase: the seed sown on good soil represents the person
+  preserved_meaning: The sowing image characterizes the hearer without directly equating the seed with the person.
+  reasoning_layer_used: Immediate parable context and POB lexical rationale for σπαρείς
+  rationale: “Represents” makes the parabolic relationship clear while keeping its elements distinct.
+- pob_phrase: who indeed bears fruit and produces
+  simplified_phrase: That person indeed bears fruit and produces a crop
+  preserved_meaning: The hearer is fruitful, with both Greek production verbs retained.
+  reasoning_layer_used: POB lexical decisions for δή, καρποφορεῖ, and ποιεῖ
+  rationale: A new sentence eases the syntax, while “crop” clarifies the agricultural result.
+- pob_phrase: in one case a hundred, in another sixty, and in another thirty
+  simplified_phrase: one yielding a hundred, another sixty, and another thirty
+  preserved_meaning: Different hearers produce varying crop yields.
+  reasoning_layer_used: POB distributive-construction rationale and yield footnote
+  rationale: “Yielding” connects the numbers naturally to the crop without adding “fold.”
+interpretive_expansions:
+- pob_phrase: the one sown on the good soil—this is the one
+  rendering: the seed sown on good soil represents the person
+  claim: The sowing language functions as a parabolic representation of the hearer.
+  evidence:
+  - The verse identifies the one in the sowing image with the person who hears and understands.
+  - Matthew 13:19 distinguishes the word that is sown from the hearer's response.
+  confidence: high
+  alternatives_preserved:
+  - the one sown on the good soil
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: Readers could mistake the seed itself as identical to the person.
+    mitigation: “Represents” marks the parabolic relationship rather than a direct identity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/023.yaml
   source_text_sha256: 46d746d884fcfbf53e8c98d833f66adee3a8a09cc09b47ca3fd593afe36b05a6
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: ff784168dd58ae38a45bd7b6845d0cb4989c6e06d9b63ae3668de47419bdd0e6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1cfdba4746f2c9cdf95d73a29d943efa03c655cf98f535530b3a1c81614aa61b
+  timestamp: '2026-07-12T07:43:54Z'
+  output_hash: 3e12eb896ca0ce91113b89ea4d27bc154287cf9737f3211bfb1729bd3b4fffd6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3577
+    completion_tokens: 937
+    total_tokens: 4514
+    reasoning_tokens: 357
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:43:54Z'
+  previous_text: But the seed sown on good soil is the person who hears the word and understands it. That person truly bears fruit and produces a crop—in one case a hundred, in another sixty, and in another thirty.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 4995846e5e931aea0b8c592964524d97389fa47a3b5da5442f32144d2ec1a6cc
+  review_summary: The draft is substantially clearer than the POB and appropriately makes the agricultural yield explicit. Its only material problem is the direct equation “the seed ... is the person,” which can obscure the parable’s distinction between the seed/word and the hearer. Adding “represents” preserves the contextual parabolic relationship without importing doctrine. “Indeed” better reflects the POB’s stated rationale for δή and naturally applies to the full fruit-bearing statement.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

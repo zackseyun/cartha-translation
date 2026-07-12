@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/006/008.yaml
-  text: Now if we died with Messiah[a], we believe that we will also live with him.
+  text: If we died with Messiah[a], we believe that we will also live with him.
   footnotes:
   - marker: a
     text: 'Or “Christ”: Greek “Χριστῷ” (Christō).'
@@ -30,49 +30,62 @@ base_translation:
     changes_summary: 'Replaced ''the Messiah'' with ''Christ'' to reflect the Greek Χριστῷ more naturally and consistently in this context; otherwise retained the draft. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: If we died with Messiah,[a] we believe that we will also live with him.
+  text: If we died with the Messiah,[a] we believe that we will also live with him.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'Christ'.
-    reason: simplification_note
+    text: Or “Christ”; Greek Χριστῷ (Christō).
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Removed the transitional 'Now' to provide a cleaner, more direct entry into the conditional sentence for modern readers, while still maintaining the logical connection to the preceding context.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the transitional 'Now' to provide a cleaner, more direct entry into the conditional sentence for modern readers, while still maintaining the logical connection to the preceding context.
-- preserved_meaning: Retained exactly as formulated in POB because the phrasing is already highly accessible, clear, and perfectly communicates the future co-living reality without over-simplifying the theological depth.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained exactly as formulated in POB because the phrasing is already highly accessible, clear, and perfectly communicates the future co-living reality without over-simplifying the theological depth.
-retained_terms:
-- term: Messiah
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: with Messiah
+  simplified_phrase: with the Messiah
+  preserved_meaning: Jesus is identified by the title represented by Χριστός.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Adding “the” makes the title sound natural and clear in modern English.
+interpretive_expansions:
+- pob_phrase: Messiah
+  rendering: the Messiah
+  claim: “Messiah” functions here as a title rather than merely sounding like a personal name.
+  evidence:
+  - The POB theological decision identifies Χριστῷ as a titular use.
+  confidence: high
+  alternatives_preserved:
+  - Christ
 translation_notes:
-  source_alignment_notes: Maintains strict alignment with the Greek text (εἰ δὲ ἀπεθάνομεν σὺν Χριστῷ, πιστεύομεν ὅτι καὶ συζήσομεν αὐτῷ). The conditional relationship and the future-active implication of sharing life with Christ are preserved intact.
-  readability_notes:
-  - By removing the slightly archaic transitional 'Now', the verse flows immediately as a clear conditional promise, which is easier for modern readers to grasp.
-  compression_notes:
-  - Slight compression achieved by removing the transitional particle 'δὲ' (Now) at the start of the verse to prioritize natural English flow.
   risk_flags:
-  - risk: Low risk. The use of 'Messiah' is clarified by the footnote 'Or Christ' to prevent confusion for readers unfamiliar with the Jewish title of Jesus.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Some readers may be more familiar with “Christ” than “the Messiah.”
+    mitigation: The footnote preserves “Christ” and identifies the Greek term.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/006/008.yaml
   source_text_sha256: 83a594b47a8e997dd0c99ac4388afeb01f8212e118719532a194d65c69ccdc68
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 65b35be140856b3a5304a769873b8dd86d906a48aa4a425149ce399dcc9b1df0
-  timestamp: '2026-05-28T09:28:27Z'
-  output_hash: 65239ab0420af1118c208cd19b5c8bce8a9e958f34195bdf24b0b22c89f31bf4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: daa039aaf2347ae8d90c8c2fc179d411951d27752a49c56a60d07a3c2a4e5d19
+  timestamp: '2026-07-12T07:42:37Z'
+  output_hash: 491d2776429353b3847f979e495709ccf7a661180a0d2fe326e1f045ef48f252
   usage:
-    prompt_tokens: 2065
-    completion_tokens: 520
-    total_tokens: 5187
-    reasoning_tokens: 0
+    prompt_tokens: 4014
+    completion_tokens: 508
+    total_tokens: 4522
+    reasoning_tokens: 230
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Messiah
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:37Z'
+  previous_text: If we died with Messiah,[a] we believe that we will also live with him.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5e19bf89a04c4d9ebd724cf60b16860d33a270ebe4c404943c2beb65e2e4b225
+  review_summary: Revise. The draft is faithful and avoids doctrinal overstatement, but it merely reproduces POB and therefore is not an actual SPOB simplification. Adding “the” makes Messiah read naturally as the title intended by the Greek and POB audit trail, while preserving the future shared-life statement without narrowing its meaning.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

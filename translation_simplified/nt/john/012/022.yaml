@@ -31,36 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Philip went and told Andrew; then Andrew and Philip went and told Jesus.
+  text: Philip came and told Andrew; Andrew and Philip came and told Jesus.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 'Greek uses vivid present-tense narration here: “comes … tells … come … tell.”'
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: Philip comes and tells Andrew
+  simplified_phrase: Philip came and told Andrew
+  preserved_meaning: Philip moves toward Andrew and reports the matter to him.
+  reasoning_layer_used: POB lexical decisions for ἔρχεται and λέγει
+  rationale: Past tense reads naturally in English narrative without changing the direction of movement.
+- pob_phrase: Andrew and Philip come and tell Jesus
+  simplified_phrase: Andrew and Philip came and told Jesus
+  preserved_meaning: Together they move toward Jesus and report the matter to him.
+  reasoning_layer_used: POB lexical decisions for ἔρχεται and λέγουσιν
+  rationale: The matching past-tense clause preserves the sequence and parallel action.
+- pob_phrase: and
+  simplified_phrase: ;
+  preserved_meaning: The second action follows the first without adding a stronger logical connection.
+  reasoning_layer_used: POB lexical decision for καί
+  rationale: A semicolon keeps the simple coordination while avoiding the unsupported connector “then.”
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Past tense does not reproduce John’s historical present directly.
+    mitigation: The footnote preserves the vivid Greek tense pattern.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/022.yaml
   source_text_sha256: 4ecbff2bb71d2e137a37caa314083b9ab259136292c8c703815c4e2fefc09c31
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: 6f137c17942b2c1d754742deae11cc2900db536bb0b90865e8d1eb68e4c59b17
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 68b77084696f9541d4e8d58f26492ad46bc3fc3bb021f7d3ac5735856f5741f0
+  timestamp: '2026-07-12T07:16:49Z'
+  output_hash: eb7da714f1340269d18ae989966ec6908b55599b83ed5a36efa8e3d200a4101b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3046
+    completion_tokens: 524
+    total_tokens: 3570
+    reasoning_tokens: 171
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:49Z'
+  previous_text: Philip went and told Andrew; then Andrew and Philip went and told Jesus.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6e2308539a0d7fc8b9fb5edef0e060a6ba53a5cd77e32e24b520f15a6c37eddf
+  review_summary: The draft is clear and introduces no doctrinal issue, but it should not use "went" where the controlling POB audit deliberately chose "comes." The recommended text preserves that movement wording while retaining a modest, contextually warranted temporal connector for natural modern reading.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

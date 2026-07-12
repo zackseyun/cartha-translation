@@ -37,38 +37,79 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: “When I broke the five loaves for the five thousand, how many baskets full of broken pieces did you pick up?” They said to him, “Twelve.”
+  text: “When I broke the five loaves for the five thousand people, how many baskets full of leftover pieces did you pick up?” They answered, “Twelve.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: When I broke the five loaves for the five thousand[a], how many baskets full of broken pieces did you pick up?” They said to him[c][b], “Twelve.”
-  simplified_phrase: “When I broke the five loaves for the five thousand, how many baskets full of broken pieces did you pick up?” They said to him, “Twelve.”
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
+- pob_phrase: the five thousand
+  simplified_phrase: the five thousand people
+  preserved_meaning: This identifies the number as a crowd without specifying that all were men.
+  reasoning_layer_used: POB lexical and theological decisions on πεντακισχιλίους
+  rationale: Adding “people” makes the shortened crowd designation immediately clear.
+- pob_phrase: broken pieces
+  simplified_phrase: leftover pieces
+  preserved_meaning: The pieces came from the broken loaves and remained after the meal.
+  reasoning_layer_used: POB footnote and lexical rationale for κλασμάτων
+  rationale: “Leftover pieces” communicates their role in the feeding account more naturally.
+- pob_phrase: They said to him
+  simplified_phrase: They answered
+  preserved_meaning: The disciples gave Jesus the direct numerical reply he requested.
+  reasoning_layer_used: Immediate question-and-answer context
+  rationale: “Answered” removes an unnecessary pronoun phrase and clarifies the exchange.
+interpretive_expansions:
+- pob_phrase: the five thousand
+  rendering: the five thousand people
+  claim: The number refers to the crowd Jesus fed.
+  evidence:
+  - The POB rationale calls this the conventional designation of the crowd.
+  confidence: high
+  alternatives_preserved:
+  - the five thousand
+  - the five thousand men
+- pob_phrase: broken pieces
+  rendering: leftover pieces
+  claim: These pieces remained from the broken loaves after the crowd was fed.
+  evidence:
+  - The POB footnote defines them as pieces left over from the broken loaves.
+  - The immediate context recalls the feeding miracle.
+  confidence: high
+  alternatives_preserved:
+  - broken pieces
+  - fragments
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: “People” makes the implied crowd referent explicit.
+    mitigation: It avoids the unsupported added specificity of “men” and follows the POB rationale.
+  - risk: “Leftover” foregrounds context rather than the lexical image of breaking.
+    mitigation: The preceding words “I broke the five loaves” preserve the breaking image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/019.yaml
   source_text_sha256: 1dc196513f7b55bc82685d7879b83c5cc9a3b71ab756e65ad41cea82d1b1439e
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: e34628ffc26b37b3214bf71a48332758ecb5fd9442d0cfb654be1c9e34e3181a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ab84ded0da2be7aa77ba14a35bf5711c28a023746144b78c33ba54403faac5c3
+  timestamp: '2026-07-12T07:20:52Z'
+  output_hash: ff323ab5f4dafedb13052cff63ad88990e5b12f1fb9f5f6fb4e3994c320cc452
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3606
+    completion_tokens: 582
+    total_tokens: 4188
+    reasoning_tokens: 60
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:52Z'
+  previous_text: “When I broke the five loaves for the five thousand, how many baskets full of broken pieces did you pick up?” They said to him, “Twelve.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 960b865bbecaf012c488c0a19d33500c760f115e98189ee55a42b579e13785ef
+  review_summary: Revise for an actual reader-facing simplification. “People” makes the referent of “the five thousand” explicit without claiming that only men were included, consistent with the POB audit trail. “Leftover pieces” naturally communicates that the broken pieces were gathered after the meal, a point established by the immediate feeding context and the POB footnote describing pieces left over from the broken loaves. The revision retains the distinct ideas that the baskets were full, the pieces came from the loaves, and the disciples picked them up.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

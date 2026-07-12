@@ -34,45 +34,76 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 8:5 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''appealing to him''].'
 translation:
   language: en
-  text: When Jesus entered Capernaum, a centurion came to him and pleaded with him.
+  text: When Jesus entered Capernaum, an army officer called a centurion came to him and pleaded with him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: When Jesus entered
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: came to him and pleaded with him
-  reasoning_layer_used: POB audit trail
-retained_terms:
-- term: Capernaum
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: centurion
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: When he entered
+  simplified_phrase: When Jesus entered
+  preserved_meaning: The person entering Capernaum is Jesus.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: Naming Jesus makes the pronoun clear without adding new meaning.
+- pob_phrase: a centurion
+  simplified_phrase: an army officer called a centurion
+  preserved_meaning: The man held the specific military rank of centurion.
+  reasoning_layer_used: POB lexical decision and listed alternative
+  rationale: The brief gloss explains the unfamiliar title while retaining its precision.
+- pob_phrase: came to him, pleading with him
+  simplified_phrase: came to him and pleaded with him
+  preserved_meaning: The officer approached Jesus with an earnest request.
+  reasoning_layer_used: POB lexical rationale
+  rationale: A direct action clause is easier to read than the participial construction.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The person entering Capernaum is Jesus.
+  evidence:
+  - The POB lexical rationale says the pronoun refers to Jesus from context.
+  confidence: high
+- pob_phrase: centurion
+  rendering: army officer called a centurion
+  claim: A centurion is a military officer.
+  evidence:
+  - The POB lexical decisions list “Roman officer” as an explanatory alternative.
+  confidence: high
+  alternatives_preserved:
+  - centurion
 translation_notes:
-  source_alignment_notes: The temporal sequence of the genitive absolute (entered Capernaum) and the main verb (came/approached) is fully preserved. The earnestness of the centurion's entreaty (παρακαλῶν) is preserved through 'pleaded'.
-  readability_notes:
-  - By transforming the participle into a direct action clause and specifying 'Jesus' as the actor, the sentence reads naturally and holds the reader's attention without archaic or awkward syntactic nesting.
-  compression_notes:
-  - Minor lexical footnote variations (such as 'approached him' or 'begging him') were removed because they do not change the meaning of the passage and their omission reduces visual clutter for a modern reader.
   risk_flags:
-  - risk: None. The historical accuracy of the Roman military rank 'centurion' and the geographical marker 'Capernaum' are completely preserved.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Army officer” does not by itself express the exact historical rank.
+    mitigation: The specific title “centurion” is retained in the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/008/005.yaml
   source_text_sha256: 787968d807a21102c2da89d2689a70ccdee01d557ffe645b6f21877376163ed7
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: c359b5266b6c2b043201dc18cb85d33b5d7da414e501fd75d5430f63b93d6ae3
-  timestamp: '2026-05-28T08:41:02Z'
-  output_hash: 30276975287a2eae7069239446894b3c2381d29c0be2f030354b98cc93b6e248
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 57631f48acebc0106ffa7a35064b1fca57d74e544ecf0435e746f105720d2ec1
+  timestamp: '2026-07-12T09:02:04Z'
+  output_hash: 583fa71927bc3745a0de1569a1cce1beed07fd7e3fc12c6baf2f2eb2aed0a771
   usage:
-    prompt_tokens: 1801
-    completion_tokens: 478
-    total_tokens: 5398
+    prompt_tokens: 3295
+    completion_tokens: 426
+    total_tokens: 3721
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Capernaum
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: centurion
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:04Z'
+  previous_text: When Jesus entered Capernaum, a centurion came to him and pleaded with him.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 47e33928250225294fec0c91ffc8b46bdb28c7f25412af3246efcb266f08908e
+  review_summary: 'Naming Jesus is a warranted contextual clarification: the pronoun in the Greek refers to Jesus in the immediate narrative context. “Pleaded with him” accurately conveys the earnest appeal expressed by παρακαλῶν and does not add doctrine or alter the request. Revision is needed only because the unglossed title “centurion” is not sufficiently transparent for an understanding-first edition.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

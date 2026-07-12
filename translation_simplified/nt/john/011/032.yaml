@@ -31,36 +31,54 @@ base_translation:
     changes_summary: Removed the unnecessary comma after “was” for smoother natural English; otherwise retained the draft as accurate and complete.
 translation:
   language: en
-  text: When Mary came to where Jesus was and saw him, she fell at his feet and said to him, “Lord, if you had been here, my brother would not have died.”
+  text: So when Mary came to where Jesus was and saw him, she fell at his feet and said to him, “Lord, if you had been here, my brother would not have died.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: came where Jesus was
+  simplified_phrase: came to where Jesus was
+  preserved_meaning: Mary arrived at the place where Jesus was.
+  reasoning_layer_used: POB lexical decision for ὅπου ἦν Ἰησοῦς
+  rationale: Adding “to” makes the movement natural in common English without changing the location.
+- pob_phrase: saying to him
+  simplified_phrase: and said to him
+  preserved_meaning: Mary spoke these words directly to Jesus after falling at his feet.
+  reasoning_layer_used: POB lexical decision for λέγουσα αὐτῷ
+  rationale: A finite verb makes the sequence easier to follow while preserving her direct address.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Lord” may also carry the sense “Sir” in this address.
+    mitigation: Retained the POB’s chosen title because it preserves Johannine weight without forcing a full confession.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/032.yaml
   source_text_sha256: 38a55cacb62b37155767dea010c106bc3af05721dd4542f3542d24815d6e3e3a
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: 6a218bca09e43f210fb204613c7aa842338cfe23e188366f13f18afb0169cac2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fed77cdef1d9bf6a923ac7c4487a7b844128d59e958e597b9d1e37aaff1b5b87
+  timestamp: '2026-07-12T07:16:05Z'
+  output_hash: 7b0e0f33ceff3addce180f389fd45b6ed803deb765c99816f04884c87603acdc
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3520
+    completion_tokens: 287
+    total_tokens: 3807
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:05Z'
+  previous_text: When Mary came to where Jesus was and saw him, she fell at his feet and said to him, “Lord, if you had been here, my brother would not have died.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9af8f5327daf4fc3ef33ab2be071dba7e967b368818e496542a813b54255c936
+  review_summary: The simplifications “came to where” and “said” are clear, natural, and preserve the temporal sequence and Mary's speech. “Lord” remains warranted by the POB’s documented lexical and Johannine-context decision, without adding doctrine. Restore “So” to preserve the source connective and the POB’s stated contextual reasoning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

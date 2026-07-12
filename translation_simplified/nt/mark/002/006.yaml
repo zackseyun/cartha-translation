@@ -31,47 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'But some scribes were sitting there, reasoning in their hearts[a]:'
+  text: 'But some of the scribes were sitting there, thinking to themselves:'
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The phrase 'in their hearts' is a biblical idiom for thinking or questioning within one's mind.
-    reason: simplification_note
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: scribes
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: hearts
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: some of the scribes
+  simplified_phrase: some of the scribes
+  preserved_meaning: Only a subset of the scribes is in view.
+  reasoning_layer_used: POB lexical decision for τινες τῶν γραμματέων
+  rationale: The partitive wording is retained because the source explicitly identifies some from the larger group.
+- pob_phrase: reasoning in their hearts
+  simplified_phrase: thinking to themselves
+  preserved_meaning: They were inwardly considering what had happened without yet speaking.
+  reasoning_layer_used: POB lexical and theological decisions for διαλογιζόμενοι ἐν ταῖς καρδίαις αὐτῶν
+  rationale: This states the biblical heart idiom in clear modern English while preserving inward thought.
 translation_notes:
-  source_alignment_notes: Maintains alignment with the SBLGNT participles (καθήμενοι and διαλογιζόμενοι) and the adversative 'But' (δέ).
-  readability_notes:
-  - The simplified text flows naturally as a narrative scene-setter, maintaining high gravity without archaic friction.
-  compression_notes:
-  - No theological details have been compressed.
   risk_flags:
-  - risk: Low. The potential risk of a modern reader misunderstanding 'hearts' as purely emotional is successfully mitigated by the footnote.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Replacing “hearts” may reduce the source image’s biblical texture.
+    mitigation: “To themselves” preserves the essential inward location, as permitted by the POB alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/002/006.yaml
   source_text_sha256: 2f0521a2baf1c09cd1acc51f33c321ee0993b767b8fc3c25de664a33f96a77d2
-  pob_commit_sha: d152b6487784a49b9c790e6030435e4e49af30e2
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: bb55be13a1b383b09db38b889e43abdf6f8af46d91a7358a9bc39f5d986e6ddd
-  timestamp: '2026-05-28T09:03:39Z'
-  output_hash: ab80fdbe7c878ea11ff2e7cb06d277a1cb4d35387fd5f6cbb1f3f427d754d170
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9a1de7d14f99c805fcdcfc5484b73fb40c50b6acfdb2e6a1ae6fc1c300a25458
+  timestamp: '2026-07-12T07:19:45Z'
+  output_hash: c15caf14ff389ee5f27dc4a768e6d726be8775684b42a42ce7eb2237f01605f2
   usage:
-    prompt_tokens: 1604
-    completion_tokens: 494
-    total_tokens: 5145
+    prompt_tokens: 3232
+    completion_tokens: 273
+    total_tokens: 3505
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: scribes
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: hearts
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:45Z'
+  previous_text: 'But some scribes were sitting there, reasoning in their hearts[a]:'
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 83b18d5c3f595c4aa2c1a69220cd19157848ad8f653af74dc0943fcad701dc1c
+  review_summary: Revise. The draft is doctrinally safe, but its only main-text alteration drops a source-supported partitive detail and does not materially improve comprehension. Replace the biblical heart idiom with the directly comprehensible, source- and context-warranted expression “thinking to themselves,” while retaining “some of the scribes.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

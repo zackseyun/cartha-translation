@@ -31,38 +31,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 26:16 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''was looking for''].'
 translation:
   language: en
-  text: From then on, Judas looked for a chance to hand Jesus over.
+  text: From then on, Judas kept looking for a chance to hand Jesus over.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or, “betray Jesus.” The Greek verb more literally means “hand him over.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: he was seeking an opportunity to hand him over
-  simplified_phrase: Judas looked for a chance to hand Jesus over
-  preserved_meaning: Preserves the ongoing search for an opportunity while clarifying pronouns.
-  reasoning_layer_used: POB translation text and lexical note
-  rationale: Names Judas and Jesus for readability without adding content.
+- pob_phrase: he was seeking an opportunity
+  simplified_phrase: Judas kept looking for a chance
+  preserved_meaning: Judas continued searching for a suitable time to act.
+  reasoning_layer_used: POB lexical decisions for ἐζήτει and εὐκαιρίαν
+  rationale: “Kept looking” preserves the ongoing action, while “chance” is common English for an opportunity.
+- pob_phrase: him
+  simplified_phrase: Jesus
+  preserved_meaning: The object of Judas’s intended action remains Jesus.
+  reasoning_layer_used: POB lexical decision for αὐτόν and immediate context
+  rationale: Naming Jesus makes the verse clear when read by itself.
+interpretive_expansions:
+- pob_phrase: he ... him
+  rendering: Judas ... Jesus
+  claim: The contextual referents of both pronouns are stated explicitly.
+  evidence:
+  - The preceding context identifies Judas as the one seeking and Jesus as the one to be handed over.
+  confidence: high
+  alternatives_preserved:
+  - he ... him
 translation_notes:
-  source_alignment_notes: Keeps POB's 'hand over' wording and betrayal context.
-  readability_notes:
-  - Clarifies pronouns for standalone reading.
-  compression_notes:
-  - No central meaning is removed.
+  risk_flags:
+  - risk: “Chance” can sometimes suggest randomness rather than a suitable occasion.
+    mitigation: The phrase “kept looking for” makes clear that Judas was seeking an opportunity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/026/016.yaml
   source_text_sha256: 7f25d3c3b094b732591755efa6e875b71ed08856e9fad743c25e5c7c9f15044a
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:58Z'
-  output_hash: aab1c28ddfd00d5d8b1d78f5ae958d16988cb79d7da1e175411319ab5fb03fb1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fca56c7cb5f12cadffc4cf20b75282d6d1f39beec194d5e1bb8fda76161d8e2b
+  timestamp: '2026-07-12T07:39:27Z'
+  output_hash: 6629595525ba68a0543429d728f263382515b9652a4dad6dd8b40abb2be6c952
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3104
+    completion_tokens: 362
+    total_tokens: 3466
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:27Z'
+  previous_text: From then on, Judas looked for a chance to hand Jesus over.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 37748d6c107b36a79a46a4cbb1c58deb312a2ec8364e8a438a1c7b62ffaa513c
+  review_summary: Naming Judas and Jesus is a warranted contextual clarification and “chance” is clear while retaining the sense of an opportunity. Revise the verb to make the continuing force of ἐζήτει explicit.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

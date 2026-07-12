@@ -34,36 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If anyone hears my words and does not keep them, I do not judge that person. I did not come to judge the world, but to save the world.
+  text: If anyone hears my words and does not keep them, I do not judge that person, because I did not come to judge the world but to save the world.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: I do not judge him
+  simplified_phrase: I do not judge that person
+  preserved_meaning: Jesus speaks about any individual who hears but does not keep his words.
+  reasoning_layer_used: POB theological decision on the generic masculine pronoun
+  rationale: “That person” makes the generic reference clear in natural English without changing its singular force.
+- pob_phrase: for I did not come
+  simplified_phrase: because I did not come
+  preserved_meaning: Jesus gives his saving mission as the reason for his statement about not judging the person.
+  reasoning_layer_used: Source γάρ and independent grounding review
+  rationale: “Because” clearly preserves the causal link in common English.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Keep” may be understood only as retaining Jesus’ words rather than faithfully observing them.
+    mitigation: It is retained because POB preserves both retention and obedience within the verb’s broader sense.
+  - risk: The statement about not judging may seem to conflict with other Johannine judgment language.
+    mitigation: The draft retains “judge” and does not add a temporal or doctrinal resolution.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/047.yaml
   source_text_sha256: 62a91d9630a897ce88b455a0cc6520a5df665184f1ce9ed92b300936786c3623
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: 540456fbf720e5d5104383249d4b44bf00592e35868f22fcbacd0df4d49474ad
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 190cc8a54ca6f010b84f0a2111f7370b29fb204c9bd6b71103e433ea79c10b8a
+  timestamp: '2026-07-12T07:16:27Z'
+  output_hash: ffa0c07d49ebf4bbf44ba722e7350b74acaf0c027c040078ac4d12b08e3a4ec8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3408
+    completion_tokens: 317
+    total_tokens: 3725
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:27Z'
+  previous_text: If anyone hears my words and does not keep them, I do not judge that person. I did not come to judge the world, but to save the world.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 164bc912b9b89be1560f3bf5942e50379345028fe56ff83f3cdbf40289be57e6
+  review_summary: '''That person'' is a warranted, clear rendering of the generic singular and does not impose an interpretation. The draft appropriately preserves ''keep,'' ''judge,'' ''world,'' and ''save,'' including the passage''s unresolved Johannine judgment tension. Revise only to retain the explicit causal link marked by γάρ; this is both more faithful and readily understandable in common English.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

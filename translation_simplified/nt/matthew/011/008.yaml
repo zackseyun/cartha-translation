@@ -34,38 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then what did you go out to see? A man dressed in soft, luxurious clothes? Look, people who wear soft clothes live in kings' houses.
+  text: But what did you go out to see? A man dressed in soft, luxurious clothes? Look, people who wear such clothes are found in royal palaces.
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: dressed in soft clothes
+  simplified_phrase: dressed in soft, luxurious clothes
+  preserved_meaning: The concrete softness of the clothing and its association with luxury are both retained.
+  reasoning_layer_used: POB lexical decision for ἐν μαλακοῖς ἠμφιεσμένον
+  rationale: Adding “luxurious” prevents readers from mistaking “soft” for merely comfortable fabric.
+- pob_phrase: those who wear soft clothes
+  simplified_phrase: people who wear such clothes
+  preserved_meaning: The phrase still refers to people who customarily wear the clothing just described.
+  reasoning_layer_used: POB lexical decision for οἱ τὰ μαλακὰ φοροῦντες
+  rationale: “Such clothes” avoids awkward repetition while keeping the same referent.
+- pob_phrase: are in the houses of kings
+  simplified_phrase: are found in royal palaces
+  preserved_meaning: Wearers of luxurious clothing are located in royal residences without implying that they live there.
+  reasoning_layer_used: POB lexical alternative and grounding review
+  rationale: “Royal palaces” gives the intended setting in familiar English, while “are found” avoids adding residence.
+interpretive_expansions:
 - pob_phrase: soft clothes
-  simplified_phrase: soft, luxurious clothes
-  preserved_meaning: The wording refers to delicate or luxurious clothing associated with royal settings.
-  reasoning_layer_used: POB lexical decisions
-  rationale: Adding 'luxurious' clarifies the social meaning of 'soft clothes' without replacing the image.
+  rendering: soft, luxurious clothes
+  claim: The softness describes fine, delicate clothing associated with luxury.
+  evidence:
+  - The POB lexical rationale identifies the implied sense as fine, delicate attire.
+  - The verse places wearers of such clothing in royal palaces.
+  confidence: high
+  alternatives_preserved:
+  - soft clothes
+  - fine clothing
 translation_notes:
-  source_alignment_notes: Keeps Jesus' contrast between John and royal luxury.
-  readability_notes:
-  - Clarifies the clothing image with 'luxurious.'
-  compression_notes:
-  - No main contrast is removed.
+  risk_flags:
+  - risk: “Luxurious” makes an implied social connotation explicit.
+    mitigation: The POB lexical audit and royal setting directly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/011/008.yaml
   source_text_sha256: 95712c216dffc55c50ca809792cdea135e7293c0808b748ee4d70c8b1c565d3e
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:51:04Z'
-  output_hash: 69baf0af38ab98f372a97e86194d42a207a6f75b941415230973cb223bdb3c75
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6fea4d7fa07815e66e4931bf867b4a5cae3db8d7433ccd8d81c5db2605100610
+  timestamp: '2026-07-12T07:36:30Z'
+  output_hash: 145c9abd3da3ad3701ef36f8f259e91a9c709bc85d66eea82c9e309c81823624
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3242
+    completion_tokens: 457
+    total_tokens: 3699
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:30Z'
+  previous_text: Then what did you go out to see? A man dressed in soft, luxurious clothes? Look, people who wear soft clothes live in kings' houses.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e0cb4b0d42100e4bc23c29f67ac419733e08089cb8bacbf189a722b105316943
+  review_summary: 'The clarification “soft, luxurious clothes” is warranted: the lexical audit and immediate royal-setting contrast establish that “soft” denotes delicate, luxury attire, not merely comfortable fabric. Revision is needed because “Then” reduces the source’s adversative force and “live in” overstates the location assertion. The recommended wording preserves the contrast, makes the clothing image clear, and uses the POB-supported “palaces” alternative for modern readability.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

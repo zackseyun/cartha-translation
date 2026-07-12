@@ -31,38 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They wanted to seize him, but they were afraid of the crowd, because they knew he had spoken the parable against them. So they left him and went away.
+  text: They were trying to seize him, but they were afraid of the crowd because they knew he had spoken the parable against them. So they left him and went away.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they were seeking to seize him[a], but they feared the crowd, for they knew that he had spoken the parable against them. So they left him and went away.
-  simplified_phrase: They wanted to seize him, but they were afraid of the crowd, because they knew he had spoken the parable against them. So they left him and went away.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+- pob_phrase: were seeking to seize him
+  simplified_phrase: were trying to seize him
+  preserved_meaning: They were actively attempting to seize Jesus, not merely wishing to do so.
+  reasoning_layer_used: POB lexical decision for ἐζήτουν and κρατῆσαι
+  rationale: “Were trying” clearly preserves the imperfect sense of ongoing or attempted action.
+- pob_phrase: they feared the crowd, for
+  simplified_phrase: they were afraid of the crowd because
+  preserved_meaning: Fear of the crowd stopped their attempt, and their recognition explains the hostility.
+  reasoning_layer_used: POB lexical decisions and narrative syntax
+  rationale: The revised wording uses common English while retaining the same logical connection.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Against them” states the hostile contextual force of a phrase that can also mean “with reference to them” or “to them.”
+    mitigation: The wording follows the controlling POB lexical decision and the hostile context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/012.yaml
   source_text_sha256: 4eddcaa93bfb997ea26655ab2d53a5209dd727419c1ca4796a9d9557387ba8b5
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: d7b48d7d001f337822731af7de3c92fd069febaa2a2249af0b9acdfc1f93ec4e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1ef1a985886475c08338d91114237ca90d30f587b56be4cf5ac0d0aee7006e77
+  timestamp: '2026-07-12T07:23:27Z'
+  output_hash: cd631c368d9a7600d82540a9faaf9ae5dcbc948a3f3b0da8716e8beaa54f02d5
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3321
+    completion_tokens: 291
+    total_tokens: 3612
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:27Z'
+  previous_text: They wanted to seize him, but they were afraid of the crowd, because they knew he had spoken the parable against them. So they left him and went away.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f9bdbc91b397272a7cc2037f722982ec077ab8add030fe41c5c6f42e975687e1
+  review_summary: The draft is clearer in its use of “were afraid of” and “because,” and its rendering of the parable as spoken “against them” is supported by the POB audit trail and hostile context. However, “wanted to seize” under-translates the imperfect action of seeking/trying to seize him. Replacing it with “were trying to seize him” preserves the ongoing or attempted action in accessible English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

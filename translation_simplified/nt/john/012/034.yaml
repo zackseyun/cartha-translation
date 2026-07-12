@@ -34,41 +34,75 @@ base_translation:
     changes_summary: 'Changed ''Messiah'' to ''Christ'' to reflect ὁ χριστός more directly and maintain Johannine terminology; otherwise retained the draft. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: So the crowd answered him, "We have heard from the Law that the Messiah remains forever. How can you say that the Son of Man must be lifted up? Who is this Son of Man?"
+  text: The crowd replied, “We have learned from the Law that the Messiah will remain forever. So how can you say that the Son of Man must be lifted up?[a] Who is this Son of Man?”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: In John, “lifted up” can mean both physically raised up and exalted.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-retained_terms:
-- term: Messiah
-  reason: Keeps the title used by the POB base text for Greek Christos.
-- term: Son of Man
-  reason: Retains the theological title questioned by the crowd.
+- pob_phrase: So the crowd answered him
+  simplified_phrase: The crowd replied
+  preserved_meaning: The gathered crowd responds directly to Jesus.
+  reasoning_layer_used: POB lexical decision for ἀπεκρίθη οὖν and ὁ ὄχλος
+  rationale: “Replied” expresses the response naturally without a cumbersome opening connective.
+- pob_phrase: We have heard from the Law
+  simplified_phrase: We have learned from the Law
+  preserved_meaning: The crowd appeals to teaching received from the Jewish Scriptures.
+  reasoning_layer_used: POB lexical rationale for ἠκούσαμεν and ἐκ τοῦ νόμου
+  rationale: “Learned” makes the idea of received teaching immediately clear.
+- pob_phrase: the Messiah remains forever
+  simplified_phrase: the Messiah will remain forever
+  preserved_meaning: The crowd expects the Messiah to endure forever.
+  reasoning_layer_used: POB lexical and theological decisions for ὁ χριστός and μένει εἰς τὸν αἰῶνα
+  rationale: “Will remain” naturally states their expectation about the Messiah’s future endurance.
+interpretive_expansions:
+- pob_phrase: We have heard from the Law
+  rendering: We have learned from the Law
+  claim: The crowd received this scriptural claim as established teaching.
+  evidence:
+  - The POB rationale says the wording conveys received tradition with present relevance.
+  - The immediate context presents the statement as the basis for the crowd’s challenge.
+  confidence: high
+  alternatives_preserved:
+  - We have heard from the Law
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Lifted up” may sound like only a physical movement to modern readers.
+    mitigation: The footnote preserves both physical raising and exaltation without resolving the deliberate ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/034.yaml
   source_text_sha256: 1ec8f64958d90dae7a36fe445a9045058c0e6bedf65a4176392030e9cda93579
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: c38dc245f0a375ac4e1deb1d8fc37d6d3099f7a8290d97b21e95ccda1a697605
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c567685154c6f2eb84e9f6c7a24381b75ee716f5a33be6debaf6bef039a34880
+  timestamp: '2026-07-12T07:16:34Z'
+  output_hash: 6adc10b5a41154cbaf071ca893cf8013fbb03a67d7077c55a84579c7a03253d3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4079
+    completion_tokens: 941
+    total_tokens: 5020
+    reasoning_tokens: 430
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Messiah
+  reason: Keeps the title used by the POB base text for Greek Christos.
+- term: Son of Man
+  reason: Retains the theological title questioned by the crowd.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:34Z'
+  previous_text: So the crowd answered him, "We have heard from the Law that the Messiah remains forever. How can you say that the Son of Man must be lifted up? Who is this Son of Man?"
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: aa93e37e063fc2603e87a2fe492c24ddf7ed45eb502de4402bce3f9b3d776edc
+  review_summary: The rendering is faithful and properly preserves the live ambiguity of “lifted up”; it does not insert doctrine or wrongly identify the Son of Man. However, the proposed SPOB wording is virtually identical to POB and therefore does not achieve a meaningful simplification. “Will remain forever” more naturally expresses the crowd’s claim about the Messiah’s expected enduring future. In publication, retain a brief footnote on “lifted up” explaining its physical and exaltation senses, rather than resolving either sense in the main text.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

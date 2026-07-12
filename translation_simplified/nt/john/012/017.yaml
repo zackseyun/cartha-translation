@@ -31,36 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The crowd that had been with Jesus when he called Lazarus out of the tomb and raised him from the dead kept testifying about it.
+  text: So the crowd that had been with Jesus when he called Lazarus out of the tomb and raised him from the dead kept testifying about it.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: was bearing witness
+  simplified_phrase: kept testifying
+  preserved_meaning: The crowd repeatedly or continually gave testimony.
+  reasoning_layer_used: POB lexical decision for ἐμαρτύρει
+  rationale: The wording clearly preserves the imperfect verb’s ongoing force.
+- pob_phrase: with him
+  simplified_phrase: with Jesus
+  preserved_meaning: The crowd had been present with Jesus at Lazarus’s raising.
+  reasoning_layer_used: Immediate narrative context
+  rationale: Naming Jesus makes the pronoun clear without changing its referent.
+interpretive_expansions:
+- pob_phrase: was bearing witness
+  rendering: kept testifying about it
+  claim: Their continuing testimony concerned Jesus raising Lazarus.
+  evidence:
+  - The preceding clause identifies the event this crowd witnessed.
+  - The immediate narrative context describes the crowd spreading news of the sign.
+  confidence: high
+  alternatives_preserved:
+  - kept bearing witness
+  - was testifying
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/017.yaml
   source_text_sha256: 2502223c5b83f65c3837d0d2ef004ba7b5af47d1941b2718ed2369e7a3ffe51f
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: 3ec22b4884acd514c0b5d7d5bfa8277228cef4b98ab367dbada7cb187dfa84f3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ce767e32820918eacd5565b23b19c38eee57af141041c17e2e66e9801ae4b5fa
+  timestamp: '2026-07-12T07:18:38Z'
+  output_hash: 78ee4356dab8d6c2a636683dd294e6dbd5636983b900145b6423606da961523e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3106
+    completion_tokens: 284
+    total_tokens: 3390
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:18:38Z'
+  previous_text: The crowd that had been with Jesus when he called Lazarus out of the tomb and raised him from the dead kept testifying about it.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8c59d601ede7376ecec447846964c1a11f3e4fc5cdaa5efa1c08f4d4af58694e
+  review_summary: “Kept testifying” clearly communicates the ongoing sense of ἐμαρτύρει and is a warranted simplification of “was bearing witness.” Adding “about it” makes the testimony’s subject explicit from the immediate context without adding doctrine. Retain “So” to preserve the source text’s connective flow.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -37,41 +37,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: It is easier for a camel to go through the eye of a needle than for a rich man to enter the kingdom of God.
+  text: It is easier for a camel to go through the eye of a needle than for a rich person to enter the kingdom of God.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: It is easier for a camel to go through the eye of a needle than for a rich man to enter the kingdom of God[a][b][c].
-  simplified_phrase: It is easier for a camel to go through the eye of a needle than for a rich man to enter the kingdom of God.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: kingdom of God
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: a rich man
+  simplified_phrase: a rich person
+  preserved_meaning: The wealthy individual remains representative of rich people regardless of sex.
+  reasoning_layer_used: POB lexical decision and cultural footnote for πλούσιον
+  rationale: “Rich person” prevents a male-only reading while preserving the documented representative force.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: Changing “man” to “person” does not mirror the Greek masculine singular form.
+    mitigation: The POB audit explicitly identifies “a rich person” as an alternative and says the masculine form has representative force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/025.yaml
   source_text_sha256: 371b9cea46491dc7981de9c14a591432f34adc117b25b3d8d866fb3d1204ff42
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: 975412b4a77396219e897aa380878af8be3d793b5c3854411151d45b31474104
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 80e22b15713fd7d248dbc303bbc2c0865508e521bdebe0096e730d2294abebab
+  timestamp: '2026-07-12T07:21:06Z'
+  output_hash: 4aa60dd57b3be9177b8eb437e2f5e2da56c70b2b2469bfa96875b2933d51e113
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3337
+    completion_tokens: 198
+    total_tokens: 3535
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: kingdom of God
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:06Z'
+  previous_text: It is easier for a camel to go through the eye of a needle than for a rich man to enter the kingdom of God.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8767d459a3fe27a2c600a8664028237b4ebf32e7e5496fca06ccb5db6af36be4
+  review_summary: Revise for an actual, source-warranted accessibility improvement. “Rich person” communicates the representative force already documented in the POB audit without altering the camel/needle hyperbole, the comparison, or the phrase “kingdom of God.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,43 +31,55 @@ base_translation:
     changes_summary: Removed the comma before 'where I may eat' to reflect the Greek more naturally as a restrictive clause modifying 'guest room.'
 translation:
   language: en
-  text: and wherever he enters, say to the owner of the house, ‘The Teacher says, “Where is my guest room, where I may eat the Passover with my disciples?”’
+  text: And wherever he enters, say to the person in charge of the house, ‘The Teacher says, “Where is my guest room where I may eat the Passover with my disciples?”’
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And wherever he enters[a], say to the master of the house, ‘The Teacher says, “Where is my guest room where I may eat the Passover with my disciples?”’
-  simplified_phrase: and wherever he enters, say to the owner of the house, ‘The Teacher says, “Where is my guest room, where I may eat the Passover with my disciples?”’
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-retained_terms:
-- term: Passover
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-- term: Teacher
-  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: master of the house
+  simplified_phrase: person in charge of the house
+  preserved_meaning: The person has authority over the household without necessarily owning the property.
+  reasoning_layer_used: POB lexical decision for οἰκοδεσπότης
+  rationale: This wording is clearer today and avoids narrowing the role to legal ownership.
+- pob_phrase: my guest room where I may eat
+  simplified_phrase: my guest room where I may eat
+  preserved_meaning: The clause identifies the room Jesus seeks for the Passover meal.
+  reasoning_layer_used: POB applied revision and lexical decisions for κατάλυμα and φάγω
+  rationale: Keeping the clause without a comma prevents it from sounding like a nonessential aside.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/014.yaml
   source_text_sha256: 7362df1eb771f25b08b9bc0926c46aaa587d7b41f6edb184e318b08dc23c95d0
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 9c7bbd85543bc10a9fd5b8414276e875dae9dee87691cf6558fe1540665973d4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1eab16adcd9fd2fa9ddd24707ea925f739f5fa05a910daadf75a69710fac1f74
+  timestamp: '2026-07-12T07:21:55Z'
+  output_hash: 3fa2ab930891dd81b013daced43bb474ff0ceda077445d916bd10253d96e1ed3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3702
+    completion_tokens: 250
+    total_tokens: 3952
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Passover
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+- term: Teacher
+  reason: Retained because the POB/source context treats this as important wording, a named person/place/group, or a key biblical concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:55Z'
+  previous_text: and wherever he enters, say to the owner of the house, ‘The Teacher says, “Where is my guest room, where I may eat the Passover with my disciples?”’
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d5ed6eec1f140681dd47b4b7ef0ff3bb18c5f7270fe5d36dfb3cbb547f19f65f
+  review_summary: Revision is needed. The draft retains the central sense and does not introduce a doctrinal expansion, but “owner” is an unwarranted narrowing of the household-role term. Replacing it with “person in charge of the house” is clear modern English while preserving the POB’s lexical rationale. Minor punctuation and capitalization should also be corrected for publication.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

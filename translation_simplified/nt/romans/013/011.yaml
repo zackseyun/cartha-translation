@@ -34,36 +34,86 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 13:11 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''to wake from sleep''].'
 translation:
   language: en
-  text: 'Do this because you know what time it is: the hour has already come for you to wake from sleep, because our salvation is nearer now than when we first believed.'
+  text: 'Do this because you recognize this critical time: the hour has already come for you[a] to wake from sleep, because our salvation is nearer now than when we believed.[b]'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts read “us” instead of “you.”
+    reason: textual_variant
+  - marker: b
+    text: Or “when we first believed”; the Greek simply says “when we believed.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: And do this, knowing
+  simplified_phrase: Do this because you recognize
+  preserved_meaning: The command continues the preceding exhortations and is motivated by awareness of the time.
+  reasoning_layer_used: POB lexical decisions for Καὶ τοῦτο and εἰδότες
+  rationale: The causal wording turns the awkward participle into natural English.
+- pob_phrase: knowing the time
+  simplified_phrase: recognize this critical time
+  preserved_meaning: The time is a decisive present moment, not ordinary clock time.
+  reasoning_layer_used: POB lexical decision for τὸν καιρόν
+  rationale: “Critical time” clearly conveys the urgency identified in the audit trail.
+- pob_phrase: it is already the hour for you to awaken from sleep
+  simplified_phrase: the hour has already come for you to wake from sleep
+  preserved_meaning: The present moment urgently calls the readers to emerge from metaphorical sleep.
+  reasoning_layer_used: POB lexical decisions for ὅτι ὥρα, ἤδη, and ἐξ ὕπνου ἐγερθῆναι
+  rationale: The recast sentence is more direct while preserving the hour and sleep images.
+interpretive_expansions:
+- pob_phrase: knowing
+  rendering: because you recognize
+  claim: The readers’ awareness provides the reason for the command.
+  evidence:
+  - The POB audit says the participle can carry a causal nuance in context.
+  confidence: high
+  alternatives_preserved:
+  - knowing
+  - since you know
+- pob_phrase: the time
+  rendering: this critical time
+  claim: The time is decisive or opportune rather than merely chronological.
+  evidence:
+  - The POB lexical rationale identifies καιρός as the decisive or opportune time.
+  - The following wake-up command supplies the urgency.
+  confidence: high
+  alternatives_preserved:
+  - the time
+  - the season
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Our salvation” could be mistaken for only one stage of salvation.
+    mitigation: The main text retains the broad term so Paul’s already-and-not-yet tension remains open.
+  - risk: The manuscript variant changes “you” to “us.”
+    mitigation: The main text follows SBLGNT while the footnote preserves the variant.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/013/011.yaml
   source_text_sha256: 6719894cc12f00e72bc5f289e31061ad04b456942977f89a7a327966e3d96de9
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:41Z'
-  output_hash: e1059ec0af1ba5e50857655122173366d27aa31297ae424bd06e623806c09688
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7bad13cbbfccdabaca037fe6d47a10c48a37e1e1d0e0634b4626da5daf0a1065
+  timestamp: '2026-07-12T07:43:13Z'
+  output_hash: fcdf9dab9d31f7fb923c76367c2c08558b46f68cee0cc8cea8548c1db8c17f5d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4048
+    completion_tokens: 864
+    total_tokens: 4912
+    reasoning_tokens: 218
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:43:13Z'
+  previous_text: 'Do this because you know what time it is: the hour has already come for you to wake from sleep, because our salvation is nearer now than when we first believed.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 88bb3c9bfff6a85987a1e236ebb9de41fb2209502af36ea9352cfedabf94c5f4
+  review_summary: 'The draft appropriately makes the participial “knowing” causal and makes the urgent wake-up metaphor readily understandable. However, “first” must be removed: it resolves an implication that the source text and POB intentionally leave unstated. Clarifying καιρός as “this critical time” is supported by the POB lexical rationale and preserves the passage’s urgency.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/015/013.yaml
-  text: Now may the God of hope fill you with all joy and peace in believing, so that you may abound in hope by the power of the Holy Spirit.
+  text: May the God of hope fill you with all joy and peace in believing, so that you may abound in hope by the power of the Holy Spirit.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -27,36 +27,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: May the God of hope fill you with all joy and peace as you trust him, so that by the power of the Holy Spirit you may overflow with hope.
+  text: May the God of hope fill you with all joy and peace as you trust, so that you may overflow with hope by the power of the Holy Spirit.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: in believing
+  simplified_phrase: as you trust
+  preserved_meaning: Joy and peace accompany the continuing act of believing without naming an unstated object.
+  reasoning_layer_used: POB lexical decision for ἐν τῷ πιστεύειν and grounding review
+  rationale: This is natural modern English and preserves the source's open wording.
+- pob_phrase: abound in hope
+  simplified_phrase: overflow with hope
+  preserved_meaning: Believers are to possess hope in great abundance.
+  reasoning_layer_used: POB lexical decision for εἰς τὸ περισσεύειν and fullness imagery
+  rationale: “Overflow” makes abundance immediately understandable while preserving its force.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/013.yaml
   source_text_sha256: 370b9208b2066798e760d4bf5a17184944f20e26b09914a7edbc2199771a622b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 3044ed5ac52743d782e30a8c773374f95203984c644b077313076ecb1f9d0fab
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bedc61f57171efa79495ba4004b78f71573a49a4178babba889b3b5ad695fb37
+  timestamp: '2026-07-12T07:42:42Z'
+  output_hash: 2ea5b859144bda241384cb5f22b5787628e994af1f4c672c15d4be82b049f190
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3461
+    completion_tokens: 351
+    total_tokens: 3812
+    reasoning_tokens: 111
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:42Z'
+  previous_text: May the God of hope fill you with all joy and peace as you trust him, so that by the power of the Holy Spirit you may overflow with hope.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1f6f140e2640b35e5c3a16abac61ec98ee45d2e2da25e40efd88fb4c77f243f1
+  review_summary: 'The draft usefully clarifies the benedictory prayer: “as you trust” is more natural for modern readers than “in believing,” and “overflow with hope” clearly communicates abounding. However, adding “him” turns an unstated object of believing into an explicit referent. Removing it retains the source’s open wording while preserving the intended simplification.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

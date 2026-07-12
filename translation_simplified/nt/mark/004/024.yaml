@@ -34,41 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said to them, “Pay attention to what you hear. The measure you use will be measured back to you, and even more will be added to you.
+  text: He said to them, “Pay attention to what you hear. The measure you use will be used to measure you, and more will be added to you.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he was saying to them[a], “Pay attention to what you hear. With the measure you use, it will be measured to you[b], and more will be added to you.”
-  simplified_phrase: He said to them, “Pay attention to what you hear. The measure you use will be measured back to you, and even more will be added to you.
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: measure
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: And he was saying to them
+  simplified_phrase: He said to them
+  preserved_meaning: Jesus addressed them while the narrative continues.
+  reasoning_layer_used: POB lexical decision for ἔλεγεν
+  rationale: Simple past is a natural English alternative already allowed by the lexical audit.
+- pob_phrase: With the measure you use, it will be measured to you
+  simplified_phrase: The measure you use will be used to measure you
+  preserved_meaning: The measuring image and its reciprocal principle remain intact.
+  reasoning_layer_used: POB lexical and theological decisions for ἐν ᾧ μέτρῳ and μετρηθήσεται ὑμῖν
+  rationale: The active wording clarifies the metaphor without adding the deliberately omitted word “back.”
+- pob_phrase: and more will be added to you
+  simplified_phrase: and more will be added to you
+  preserved_meaning: The hearers will receive an increase beyond the measure described.
+  reasoning_layer_used: POB lexical decision for προστεθήσεται ὑμῖν
+  rationale: Keeping “more” preserves the approved contextual clarification without adding unsupported emphasis.
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: The measuring saying can be narrowed to judgment, generosity, or understanding alone.
+    mitigation: The main text retains the broad metaphor and does not specify one application.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/024.yaml
   source_text_sha256: 23def9b7aa3db51e9d0a1dab9bc327f758ff44198dcaa2aaa9212afb31d63a04
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 9cf6b8ed5307c01a09e9d689e9c0332df4a5e0f1d06f0a407f0b2682b591b516
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 00488f87a5b0dc17c49833adcee7c37476933ae584265b871ff01612e13ed3bf
+  timestamp: '2026-07-12T07:21:23Z'
+  output_hash: fc040c1ce94f366d7a042ffcc9ae7da61b0de2425616a71882617cf9ab5d8d7c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3484
+    completion_tokens: 374
+    total_tokens: 3858
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: measure
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:23Z'
+  previous_text: He said to them, “Pay attention to what you hear. The measure you use will be measured back to you, and even more will be added to you.
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6a091703a3c56b6d11e3e541794f6d062059a6ec49542528c2e2d8c1af11d82e
+  review_summary: The draft usefully smooths the POB’s word order and makes the measuring metaphor more readable, and changing “he was saying” to “he said” is an acceptable simplification here. However, “back” overrides the POB audit trail’s deliberate decision not to make reciprocity explicit in the main text; “even” also adds unnecessary emphasis. Revise these phrases and correct the missing closing quotation mark.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

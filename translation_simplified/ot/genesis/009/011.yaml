@@ -34,41 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'I will establish my covenant with you: never again will all flesh be cut off by the waters of the flood, and never again will there be a flood to destroy the earth.'
+  text: 'I will establish my covenant with you: never again will all living creatures be destroyed by floodwaters, and never again will a flood destroy the earth.'
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: God promises that floodwaters will never again cut off all flesh or destroy the earth.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept 'all flesh' and 'cut off' from the POB while clarifying the promise with direct modern syntax.
-retained_terms:
-- term: all flesh
-  reason: Retains the broad covenant scope.
-- term: cut off
-  reason: Preserves the Hebrew verbal image retained by POB.
+- pob_phrase: all flesh
+  simplified_phrase: all living creatures
+  preserved_meaning: The promise includes living creatures broadly, not only humanity.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The clearer wording directly communicates the broad scope identified in the POB audit.
+- pob_phrase: be cut off by the waters of the flood
+  simplified_phrase: be destroyed by floodwaters
+  preserved_meaning: Floodwaters will never again destroy all living creatures.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: The POB recognizes “be destroyed” as the natural contextual meaning of the literal image.
+- pob_phrase: there be a flood to destroy the earth
+  simplified_phrase: a flood destroy the earth
+  preserved_meaning: God promises there will never again be an earth-destroying flood.
+  reasoning_layer_used: POB translation and lexical decisions
+  rationale: The active construction is easier to read without changing the promise.
 translation_notes:
-  source_alignment_notes: Preserves the two never-again clauses and covenant establishment.
-  readability_notes:
-  - The colon cleanly introduces the covenant promise.
-  compression_notes:
-  - No promise clause was removed.
+  risk_flags:
+  - risk: Replacing “all flesh” removes the source-language image.
+    mitigation: “All living creatures” preserves its audited scope in immediately understandable English.
+  - risk: Replacing “cut off” makes the destructive result explicit.
+    mitigation: The POB footnote and flood context directly support “be destroyed.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/009/011.yaml
   source_text_sha256: 8e5ef4c250daeb48f499d29aff3bc79ff7fba743cd4b925e039e012df3e5781e
-  pob_commit_sha: fcd7857a2acf33b983508dbe681c89f93bef3dc4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:57:40Z'
-  output_hash: 4b32666340d9773ab5c446cf2345300d1e47e3b7859b829b4f100f5d8c8bc961
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7fa76696021961677888f1c0611c2b05e855d77331f597507d70cc97a2d0607e
+  timestamp: '2026-07-12T09:23:17Z'
+  output_hash: 80d4790fc2ee03c5a764985de0aec112e07a6c75e9a65d35f8b880fdc19173cf
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3595
+    completion_tokens: 352
+    total_tokens: 3947
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: all flesh
+  reason: Retains the broad covenant scope.
+- term: cut off
+  reason: Preserves the Hebrew verbal image retained by POB.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:17Z'
+  previous_text: 'I will establish my covenant with you: never again will all flesh be cut off by the waters of the flood, and never again will there be a flood to destroy the earth.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9624399d37a9d49389a66ffa13dceb8c5ccc795106312af02a18f57188f436ac
+  review_summary: Revise for readability. The proposed wording faithfully preserves the POB but does not actually simplify its source-transparent, potentially opaque expressions. The replacement follows the POB’s own lexical explanations and the immediate context, while retaining the covenant promise and its universal flood scope.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

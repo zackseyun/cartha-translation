@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/001/044.yaml
-  text: Now Philip was from Bethsaida[a], from the town of Andrew and Peter.
+  text: Philip was from Bethsaida[a], from the town of Andrew and Peter.
   footnotes:
   - marker: a
     text: Or 'from the city of Andrew and Peter,' that is, their hometown.
@@ -31,15 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now Philip was from Bethsaida, the town of Andrew and Peter.
+  text: Philip was from Bethsaida, the hometown of Andrew and Peter.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: 'Removed the repeated preposition ''from'' (POB: ''from Bethsaida, from the town...'') to create a smoother, more natural English appositive phrase.'
-  reasoning_layer_used: POB audit trail
-  rationale: 'Removed the repeated preposition ''from'' (POB: ''from Bethsaida, from the town...'') to create a smoother, more natural English appositive phrase.'
-- preserved_meaning: Retained 'town' (for πόλις) as established by POB, which is accurate and natural for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'town' (for πόλις) as established by POB, which is accurate and natural for modern readers.
+- pob_phrase: from Bethsaida, from the town of Andrew and Peter
+  simplified_phrase: from Bethsaida, the hometown of Andrew and Peter
+  preserved_meaning: Bethsaida was the place Philip came from and also the hometown of Andrew and Peter.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: The appositive removes awkward repetition and makes the intended relationship clear.
+- pob_phrase: Philip was
+  simplified_phrase: Philip was
+  preserved_meaning: The sentence identifies Philip's place of origin.
+  reasoning_layer_used: POB applied revision
+  rationale: No opening “Now” is needed because the mild connective may be omitted in natural English.
+interpretive_expansions:
+- pob_phrase: the town of Andrew and Peter
+  rendering: the hometown of Andrew and Peter
+  claim: Andrew and Peter came from Bethsaida.
+  evidence:
+  - The POB footnote identifies the town as their hometown.
+  - The POB lexical rationale says the genitives indicate association or origin.
+  confidence: high
+  alternatives_preserved:
+  - the town associated with Andrew and Peter
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/001/044.yaml
+  source_text_sha256: c2233c41585945a928198fe31a1b24d24094575626c7101596ddde72c507bce0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 09f0a80339baba8918c069968db9dea7ea4f5673d2ca8a6435735cb80a3b8ecf
+  timestamp: '2026-07-12T07:14:03Z'
+  output_hash: c6143cc3212e7e8c3da0159ab04c4999bb67fc99d116b511309868ca8412f5c2
+  usage:
+    prompt_tokens: 3261
+    completion_tokens: 296
+    total_tokens: 3557
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Philip
   reason: Retained to preserve POB's source-grounded terminology.
@@ -49,33 +85,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Peter
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains the precise geographic relationships of the Greek text (ἦν δὲ ὁ Φίλιππος ἀπὸ Βηθσαϊδά, ἐκ τῆς πόλεως...) while eliminating stylistic redundancy in English.
-  readability_notes:
-  - The sentence flows much better in modern English by converting the literal double-from construction into a standard appositive ('Bethsaida, the town of...').
-  compression_notes:
-  - Redundant prepositional phrasing was streamlined; no theological, historical, or lexical meaning was omitted.
-  risk_flags:
-  - risk: none
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/001/044.yaml
-  source_text_sha256: c2233c41585945a928198fe31a1b24d24094575626c7101596ddde72c507bce0
-  pob_commit_sha: fc05e64faf1b92155d466deea9dc70de3b50075e
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 55d48d47cde539fa3bfd60fb19b64238badf5762ecd93c5eac41140097593d94
-  timestamp: '2026-05-28T08:20:57Z'
-  output_hash: 22b39dba957400bb44c8406ab3ba59ebe2676f095a036e276ecc0e38e822e1cb
-  usage:
-    prompt_tokens: 1430
-    completion_tokens: 298
-    total_tokens: 4324
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:03Z'
+  previous_text: Now Philip was from Bethsaida, the town of Andrew and Peter.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d2a2624e74921e2d370c14c1592dbd2a3d8747c5ab40a3d5494d73336e60ce0c
+  review_summary: Revise for clearer expression of the source-grounded relationship. Replacing “the town of Andrew and Peter” with “the hometown of Andrew and Peter” makes explicit the meaning already supplied by the POB footnote and immediate context, without adding doctrine or narrowing a live ambiguity. Omit the nonessential “Now” to align with the POB’s published reader-facing wording.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

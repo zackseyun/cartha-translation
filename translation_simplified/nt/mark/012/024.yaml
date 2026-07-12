@@ -31,43 +31,53 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 12:24 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''Is this not the reason''].'
 translation:
   language: en
-  text: 'Jesus said to them, “Isn’t this why you are mistaken: because you know neither the Scriptures nor the power of God?'
+  text: Jesus said to them, “Isn’t this why you are mistaken—because you know neither the Scriptures nor the power of God?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: 'Jesus said to them[a], “Is this not why you are mistaken: because you know neither the Scriptures nor the power of God?”'
-  simplified_phrase: 'Jesus said to them, “Isn’t this why you are mistaken: because you know neither the Scriptures nor the power of God?'
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Scriptures
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-- term: power of God
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: 'Is this not why you are mistaken: because'
+  simplified_phrase: Isn’t this why you are mistaken—because
+  preserved_meaning: The rhetorical question still identifies their lack of knowledge as the cause of their error.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: The contraction and em dash make the causal question sound natural in modern English.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Mistaken” may sound narrower than the Greek range that can include being led astray.
+    mitigation: It retains the POB’s controlling choice without resolving the documented ambiguity more strongly.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/024.yaml
   source_text_sha256: d8778aafb27d6abe94fb727e9193cd45663b85b00075405f5ad8f0e112765cb3
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 6a88be614afd3f97eb30dda8c1c7a569f72e7309cbda21cce98f32cb311e6fc9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3a373cfba10580183f29efc6c63d7c8e9f396f28a0a08a30644933bbf9f12d91
+  timestamp: '2026-07-12T07:21:33Z'
+  output_hash: 1dcc0056d04c577a4b4f100bcd767749c9651452023d876df2a1bc0ccac423b1
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3628
+    completion_tokens: 205
+    total_tokens: 3833
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Scriptures
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- term: power of God
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:33Z'
+  previous_text: 'Jesus said to them, “Isn’t this why you are mistaken: because you know neither the Scriptures nor the power of God?'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2e2dae03e4330017b0710e47d6749b80b003840cb171b699e6aeb13442a1b361
+  review_summary: The contraction is faithful and modestly more natural for modern readers; it does not resolve the lexical ambiguity of πλανᾶσθε beyond the POB’s chosen “mistaken.” However, the submitted text has a missing closing quotation mark. The recommended text also uses an em dash to present the stated reason more naturally while preserving the rhetorical question, causal connection, and both retained theological terms.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

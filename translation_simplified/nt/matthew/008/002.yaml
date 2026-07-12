@@ -31,16 +31,54 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 8:2 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''a man with leprosy''].'
 translation:
   language: en
-  text: Suddenly, a man with leprosy came and bowed down before him[a], saying, "Lord, if you are willing, you can make me clean."
+  text: Look, a man with leprosy came and bowed down before him[a]. He said, “Lord, if you are willing, you can make me clean.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "worshiped him"; the Greek verb can denote bowing in reverence, paying homage, or worship, depending on context.
-    reason: simplification_note
+    text: Or “worshiped him”; the Greek verb can mean bowing in reverence, paying homage, or worship, depending on the context.
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
+- pob_phrase: And behold
+  simplified_phrase: Look
+  preserved_meaning: The narrator directs attention to the man’s arrival without implying that it was sudden.
+  reasoning_layer_used: POB lexical decision for ἰδοὺ and grounding review
+  rationale: “Look” gives the attention-directing force in familiar modern English.
+- pob_phrase: a leper
+  simplified_phrase: a man with leprosy
+  preserved_meaning: The man is identified as suffering from the skin disease traditionally called leprosy.
+  reasoning_layer_used: POB lexical decision for λεπρός and doctrine realignment
+  rationale: Person-first wording is clear and does not reduce the man to his condition.
+- pob_phrase: you are able to cleanse me
+  simplified_phrase: you can make me clean
+  preserved_meaning: Jesus has power to remove the man’s physical and ritual uncleanness.
+  reasoning_layer_used: POB lexical decisions for δύνασαι and καθαρίσαι
+  rationale: The simpler wording remains distinct from generic healing and keeps the cleansing idea.
+translation_notes:
+  risk_flags:
+  - risk: “Bowed down” may not convey the full range from reverence to worship.
+    mitigation: The footnote preserves the important lexical and theological ambiguity.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/008/002.yaml
+  source_text_sha256: 0feffb5049a5bef77addbea861c9afed87a17e45bdd7070c31e9e11d65a7bd5f
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fbdecba3e56246105802cb074ace9a67409d00a3b562a38258c237482a66bc38
+  timestamp: '2026-07-12T07:36:25Z'
+  output_hash: 2d86d8d6ed632cbfbeba8d7926ee74c057e7a6e61fefd1e190f71cde33df5eef
+  usage:
+    prompt_tokens: 3834
+    completion_tokens: 391
+    total_tokens: 4225
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Lord
   reason: Retained to preserve POB's source-grounded terminology.
@@ -48,33 +86,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: make me clean
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the structural syntax and the conditional nature of the request ('if you are willing'). The physical gesture of reverence ('bowed down before') is kept in the main text to represent 'proskuneo' without prematurely resolving its semantic range to 'worshiped,' which is preserved in the footnote.
-  readability_notes:
-  - Replaced archaic discourse markers ('behold') and rigid verbal phrases ('are able to') with contemporary equivalents ('Suddenly', 'can') that are easily understood by a modern reader while maintaining a dignified tone.
-  compression_notes:
-  - No semantic details or theological dimensions were compressed or omitted; the grammatical transitions were simply smoothed for contemporary readability.
-  risk_flags:
-  - risk: The translation of 'proskuneo' is a known theological sensitivity. We avoided over-realizing it as 'worshiped' in the main text to maintain theological neutrality, using the footnote to alert the reader to this important alternative reading.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/008/002.yaml
-  source_text_sha256: 0feffb5049a5bef77addbea861c9afed87a17e45bdd7070c31e9e11d65a7bd5f
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 7029abc6251a7c325b53b01160a803e5c8ad7d7ff5238b52f9ea775838ac13ea
-  timestamp: '2026-05-28T08:39:40Z'
-  output_hash: 1aee8dda5460337ef6eba2e0a8fd15d84b429c5acc3f4186d214c41a90975015
-  usage:
-    prompt_tokens: 2258
-    completion_tokens: 635
-    total_tokens: 8018
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:25Z'
+  previous_text: Suddenly, a man with leprosy came and bowed down before him[a], saying, "Lord, if you are willing, you can make me clean."
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 65743df34e5d80468c4a5cd4b0166ef3adf16353120b2da6f4a49c9cc3f07c47
+  review_summary: 'The draft meaningfully improves accessibility by using person-first language (“a man with leprosy”) and the readily understood “make me clean,” while retaining the source-grounded ambiguity of “bowed down before him” and its footnote. Revise only “Suddenly”: it adds temporal abruptness not conveyed by ἰδοὺ. “Look” preserves the source particle’s attention-directing force in clear modern English.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

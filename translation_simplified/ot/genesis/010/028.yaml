@@ -31,39 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He was also the father of Obal, Abimael, and Sheba.
+  text: Joktan was also the father of Obal, Abimael, and Sheba.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Continues Joktan’s descendant list with three more names.
-  reasoning_layer_used: POB audit trail
-  rationale: Supplies the implied subject and uses a simple English list.
-retained_terms:
-- term: Sheba
-  reason: Preserves the named descendant in the POB record.
-translation_notes:
-  source_alignment_notes: Preserves all three names and their place in Joktan’s line.
-  readability_notes:
-  - Makes the fragment a complete sentence.
-  compression_notes:
-  - No names are removed.
+- pob_phrase: and Obal, and Abimael, and Sheba
+  simplified_phrase: Joktan was also the father of Obal, Abimael, and Sheba
+  preserved_meaning: The verse continues the list of Joktan’s sons with these three names.
+  reasoning_layer_used: Immediate context and POB audit trail
+  rationale: Naming Joktan and stating the implied relationship makes the list clear as a complete sentence.
+interpretive_expansions:
+- pob_phrase: and Obal, and Abimael, and Sheba
+  rendering: Joktan was also the father of Obal, Abimael, and Sheba
+  claim: Joktan is the implied subject, and these names continue the list of his sons.
+  evidence:
+  - Genesis 10:26 introduces Joktan as the father whose sons are listed.
+  - Genesis 10:28 continues that same genealogical list.
+  - The POB audit identifies this as Joktan’s descendant list.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/028.yaml
   source_text_sha256: 15e9c09dab46139e5bd48c69530c43a38617988bef0d56cbdca8a1aac603b8f7
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:03Z'
-  output_hash: 2127ff50e680fac5e772ad1c4b7853ed38574e17f750d51daadd9053ca9ab39d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5660c713a5ad5f1e858c42f528b3490426299ad9c0f9916a985cb4651b122b4e
+  timestamp: '2026-07-12T09:23:26Z'
+  output_hash: 21c24a559092b42899301ab04b77ea96355607c21f50eb54b8641e87980d443f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2620
+    completion_tokens: 287
+    total_tokens: 2907
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Sheba
+  reason: Preserves the named descendant in the POB record.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:26Z'
+  previous_text: He was also the father of Obal, Abimael, and Sheba.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8567a1433c894cdb7014998a30e145dca44a629da61ce32c44b251ba42cf7b1d
+  review_summary: The draft correctly makes explicit the implied genealogical relationship and retains all three names. However, replacing the source’s list continuation with “He” leaves the essential antecedent unstated for many modern readers. Naming Joktan is a contextually warranted clarification and provides a complete, publication-ready sentence.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

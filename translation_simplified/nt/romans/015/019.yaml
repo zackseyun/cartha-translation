@@ -34,36 +34,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 15:19 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''I have fulfilled''].'
 translation:
   language: en
-  text: by the power of signs and wonders and by the power of the Spirit. In this way, from Jerusalem all the way around to Illyricum, I have fully proclaimed the gospel of the Messiah.
+  text: by the power of signs and wonders and by the power of the Spirit, so that I have fully proclaimed the gospel of the Messiah from Jerusalem, throughout the surrounding regions, and as far as Illyricum.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: so that from Jerusalem and all around as far as Illyricum I have fully proclaimed
+  simplified_phrase: so that I have fully proclaimed ... from Jerusalem, throughout the surrounding regions, and as far as Illyricum
+  preserved_meaning: Paul’s broad geographical proclamation resulted from the Spirit-empowered ministry just described.
+  reasoning_layer_used: POB lexical decisions for ὥστε and ἀπὸ Ἰερουσαλὴμ καὶ κύκλῳ
+  rationale: The reordered sentence is easier to follow while retaining the explicit result relationship.
+- pob_phrase: from Jerusalem and all around as far as Illyricum
+  simplified_phrase: from Jerusalem, throughout the surrounding regions, and as far as Illyricum
+  preserved_meaning: Paul proclaimed across the broad area extending from Jerusalem to Illyricum.
+  reasoning_layer_used: POB lexical rationale for κύκλῳ and μέχρι
+  rationale: “Surrounding regions” expresses geographical scope without suggesting a circular route.
+interpretive_expansions:
+- pob_phrase: all around
+  rendering: throughout the surrounding regions
+  claim: The phrase refers broadly to regions surrounding Jerusalem along the extent of Paul’s ministry.
+  evidence:
+  - The POB lexical rationale says κύκλῳ indicates surrounding regions in a sweeping geographical sense.
+  confidence: high
+  alternatives_preserved:
+  - all around
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Fully proclaimed” selects the contextual sense of πεπληρωκέναι rather than the more literal “fulfilled.”
+    mitigation: This rendering is explicitly preserved in the POB lexical and theological alternatives and was approved by the grounding review.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/019.yaml
   source_text_sha256: 2487b1730f157d0710378268f0f5158c6bf4d2dba647006d45b453f730853235
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 28dd56bf3c16848aceeacac3c95e9b801a8d6a69f21ec80e676f7509741594b3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a3e12aac8cc8325cb54d2e704fdc6ea3bd4c5c710f99041ce94f7455edd979ad
+  timestamp: '2026-07-12T07:44:02Z'
+  output_hash: 36d05019730505dbe7f420b60b3b7049e97bcd7c60d7877a693b0c72897558c2
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4015
+    completion_tokens: 774
+    total_tokens: 4789
+    reasoning_tokens: 319
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:44:02Z'
+  previous_text: by the power of signs and wonders and by the power of the Spirit. In this way, from Jerusalem all the way around to Illyricum, I have fully proclaimed the gospel of the Messiah.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5281179ac80494afe2c10cfa8c885dd3ebc214eef0b7edbc9a236c5aeadc49db
+  review_summary: The draft appropriately clarifies πεπληρωκέναι as “I have fully proclaimed,” a reading expressly preserved in the POB footnote and audit trail, and “the Spirit” remains warranted by the immediate context. Revision is needed to preserve the result force of ὥστε and to express the regional scope of κύκλῳ without suggesting a specific circular route.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

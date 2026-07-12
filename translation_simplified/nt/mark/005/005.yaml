@@ -31,43 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Night and day, all the time, among the tombs and on the mountains, he cried out and cut himself with stones.
+  text: Night and day, among the tombs and on the mountains, he kept crying out and cutting himself with stones.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And continually, night and day, among the tombs and on the mountains, he was crying out and cutting himself with stones.
-  simplified_phrase: Night and day, all the time, among the tombs and on the mountains, he cried out and cut himself with stones.
-  preserved_meaning: Keeps the continuous distress, locations, crying out, and self-harm while using simpler word order.
-  reasoning_layer_used: POB translation
-  rationale: '''All the time'' makes ''continually'' clear without changing the meaning.'
-retained_terms:
-- term: tombs
-  reason: Retained as a repeated setting detail.
-- term: mountains
-  reason: Retained as part of the POB location.
+- pob_phrase: And continually, night and day
+  simplified_phrase: Night and day ... he kept
+  preserved_meaning: The wording preserves both the full time span and the ongoing action without repetition.
+  reasoning_layer_used: POB lexical decisions for διὰ παντὸς νυκτὸς καὶ ἡμέρας and ἦν κράζων
+  rationale: The plain-English form “kept” carries the continuous force more smoothly than “continually.”
+- pob_phrase: he was crying out and cutting himself
+  simplified_phrase: he kept crying out and cutting himself
+  preserved_meaning: Both his cries and his self-harm remain sustained actions in the past.
+  reasoning_layer_used: POB lexical decisions and independent grounding review
+  rationale: “Kept ... -ing” clearly preserves the durative force governing both actions.
 translation_notes:
-  source_alignment_notes: Preserves the ongoing nature of the man's crying and self-injury.
-  readability_notes:
-  - Uses 'all the time' to explain 'continually' in ordinary English.
-  compression_notes:
-  - No central detail is omitted.
+  risk_flags:
+  - risk: “Kept” may suggest repeated actions rather than uninterrupted action.
+    mitigation: Together with “night and day,” it naturally conveys the sustained pattern intended by the source.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/005/005.yaml
   source_text_sha256: fec4480d92c8ccc2913e2bd6d06f9f716f85aac38ed9b82baa2e0d7468f693e9
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-f
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:50:14Z'
-  output_hash: efc75cbb8223297dd883914f4a4be7ee123569ab020803c05d960b7fabf7569c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4a4d39eda88fd6975aef9c97abb4812a13ae8c1748c5ebf7fea4f547fb7675e9
+  timestamp: '2026-07-12T07:20:15Z'
+  output_hash: 4d39ece7ecea5ae22fd3a1bfc78b2fb6a3a3668c32ef4a02954be36185ed6e3d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3002
+    completion_tokens: 296
+    total_tokens: 3298
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: tombs
+  reason: Retained as a repeated setting detail.
+- term: mountains
+  reason: Retained as part of the POB location.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:15Z'
+  previous_text: Night and day, all the time, among the tombs and on the mountains, he cried out and cut himself with stones.
+  previous_model: codex-manual-worker-f
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1b1af3a7db75508c31efcaa9b8e28feb593a9a592de2b3c81df0d050ff8bfa2c
+  review_summary: Revision is needed to preserve the verse’s sustained, ongoing portrayal of the man’s cries and self-harm. The proposed wording is clear, but its simple past verbs can make these actions sound completed rather than continual. The recommended text is publication-ready, remains accessible, and adds no unsupported interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

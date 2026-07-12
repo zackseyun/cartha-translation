@@ -37,41 +37,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus said to him, “Do you see these great buildings? Not one stone here will be left on another. Every one will be torn down.”
+  text: Jesus said to him, “Do you see these great buildings? Not one stone here will be left on another. Every stone will be torn down.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And Jesus said to him[c][b][a], “Do you see these great buildings? Not one stone will be left here upon another that will not be torn down.”
-  simplified_phrase: Jesus said to him, “Do you see these great buildings? Not one stone here will be left on another. Every one will be torn down.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: Jesus
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: And Jesus said to him
+  simplified_phrase: Jesus said to him
+  preserved_meaning: Keeps Jesus as the speaker and the man as the person addressed.
+  reasoning_layer_used: POB translation and narrative rationale
+  rationale: Dropping the opening “And” makes the verse begin naturally without changing the narrative event.
+- pob_phrase: Not one stone will be left here upon another
+  simplified_phrase: Not one stone here will be left on another.
+  preserved_meaning: Keeps the emphatic prediction and the concrete image of stones no longer stacked together.
+  reasoning_layer_used: POB lexical decisions and cultural note
+  rationale: Modern “on” and a simpler word order make the destruction image immediately clear.
+- pob_phrase: that will not be torn down
+  simplified_phrase: Every stone will be torn down.
+  preserved_meaning: Makes clear that the relative clause refers to each stone and describes complete destruction.
+  reasoning_layer_used: Greek relative pronoun rationale, POB lexical decision, and grounding review
+  rationale: A separate sentence removes the dense clause and names “stone” to avoid an unclear antecedent.
+interpretive_expansions:
+- pob_phrase: that will not be torn down
+  rendering: Every stone will be torn down.
+  claim: The prediction applies to every stone mentioned, not to every building.
+  evidence:
+  - The POB rationale says the relative pronoun refers back to “stone.”
+  - The POB cultural note identifies the image as complete destruction.
+  confidence: high
+  alternatives_preserved:
+  - that will not be torn down
+  - every one will be torn down
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: Splitting the final clause could sound like a separate prediction.
+    mitigation: Repeating “stone” clearly ties the second sentence to the first.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/002.yaml
   source_text_sha256: b651a9245544b17776d8fb0c710363b58f43191fe887355325b0c7a55eb8ad0a
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 59da2d212558e13727bc79c3dc9de8d8d1d6483794f897e90237f3d9951d2ab3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 639a8985d36f3b20a0af6f454fe40f779628e44516dcf9f5a8c4bb2b3307484d
+  timestamp: '2026-07-12T07:21:46Z'
+  output_hash: e570cabb05ce7472139db2fb25f53e21111739d531059f316bbb991c9a9fb359
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3442
+    completion_tokens: 456
+    total_tokens: 3898
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Jesus
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:46Z'
+  previous_text: Jesus said to him, “Do you see these great buildings? Not one stone here will be left on another. Every one will be torn down.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6dd6558f52a5d4d8c16203cc26fa09840285aa27448489d24e1f0b658c951601
+  review_summary: The draft appropriately simplifies the dense POB relative clause into two short sentences without adding doctrine or changing the prediction’s scope. Its only needed revision is to replace the elliptical “Every one” with “Every stone,” making the source-grounded referent explicit and fully clear for modern readers.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

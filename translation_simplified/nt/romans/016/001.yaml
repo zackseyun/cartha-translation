@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/romans/016/001.yaml
-  text: Now I commend to you Phoebe[a], our sister, who is also a deacon of the church in Cenchreae,
+  text: I commend to you Phoebe[a], our sister, who is also a deacon of the church in Cenchreae,
   footnotes:
   - marker: a
     text: Or 'a servant' or 'a minister' of the church in Cenchreae. The Greek term diakonos can refer either to a recognized ministry role or more generally to one who serves.
@@ -31,36 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I commend to you Phoebe, our sister, who is also a deacon of the church in Cenchreae.
+  text: I recommend Phoebe to you. She is our sister in the faith and is also a deacon of the church in Cenchreae.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “a servant” or “a minister” of the church in Cenchreae. The Greek term can refer to a recognized ministry role or more generally to someone who serves.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: I commend to you Phoebe
+  simplified_phrase: I recommend Phoebe to you
+  preserved_meaning: Paul introduces Phoebe favorably and asks the recipients to receive her well.
+  reasoning_layer_used: POB lexical decision for Συνίστημι
+  rationale: “Recommend” expresses the letter-opening function in more familiar modern English.
+- pob_phrase: our sister
+  simplified_phrase: our sister in the faith
+  preserved_meaning: Phoebe is a fellow believer in the Christian community.
+  reasoning_layer_used: POB lexical rationale for τὴν ἀδελφὴν ἡμῶν
+  rationale: The added phrase prevents readers from mistaking this for a biological relationship.
+- pob_phrase: Phoebe, our sister, who is also
+  simplified_phrase: Phoebe to you. She is our sister in the faith and is also
+  preserved_meaning: Phoebe is both a fellow believer and connected with the Cenchreae church as a deacon.
+  reasoning_layer_used: POB syntax and additive-force decisions
+  rationale: Two sentences make the identifying details easier to follow without merging them.
+interpretive_expansions:
+- pob_phrase: our sister
+  rendering: our sister in the faith
+  claim: The familial term identifies Phoebe as a fellow believer.
+  evidence:
+  - The POB lexical rationale says Pauline usage here naturally denotes a fellow believer.
+  confidence: high
+  alternatives_preserved:
+  - our sister
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Deacon” may be read only as a later formal church office.
+    mitigation: The footnote preserves the live alternatives “servant” and “minister” without weakening the controlling POB rendering.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/001.yaml
   source_text_sha256: bde90ca8c577673a1d6ea70cf6cbbca06403b2919818ddb1af37d259f027096d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:31Z'
-  output_hash: d156177bd2347fc5c6b8a6f10eeecc328c5628b01338390ece1dcd7f4096149e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0f600ac1acf431e6db37569db78ec2337700de18a33b2310c59b0bfc7095f31c
+  timestamp: '2026-07-12T07:43:19Z'
+  output_hash: 55d648013775ab19f26d652f108705eaf4b758c1baadf020ee0f1f69dafeee01
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3498
+    completion_tokens: 495
+    total_tokens: 3993
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:43:19Z'
+  previous_text: I commend to you Phoebe, our sister, who is also a deacon of the church in Cenchreae.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f6ebfd418f82313825c698359337b46154b8feaafcbf0f45f484c8d372dd79a8
+  review_summary: The draft preserves the POB’s main rendering but is not clearer than POB and improperly drops the footnote that protects a genuine lexical and ecclesial ambiguity. Split the sentence, clarify “our sister” as a fellow believer, and retain a concise alternative-reading note for διάκονος.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

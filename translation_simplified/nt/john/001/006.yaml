@@ -31,43 +31,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: There was a man sent from God named John.
+  text: There was a man named John, sent from God.
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: sent from God
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: John
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The text maintains the semantic integrity of 'sent from God' (ἀπεσταλμένος παρὰ θεοῦ), which indicates divine origin and commissioning.
-  readability_notes:
-  - By removing the comma and the relative clause 'whose name was', the verse is rendered as a single, smooth, modern English sentence that is clear to a general audience.
-  compression_notes:
-  - The only compression is changing 'whose name was John' to 'named John', which is a standard English reduction that loses zero semantic or theological data.
-  risk_flags:
-  - risk: none
-    mitigation: Flag retained for reviewer attention.
+- pob_phrase: a man sent from God, whose name was John
+  simplified_phrase: a man named John, sent from God
+  preserved_meaning: John is identified clearly while his divine commissioning remains distinct.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: Reordering the phrases removes the attachment ambiguity without changing either idea.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/001/006.yaml
   source_text_sha256: 822613af906f2249314fb6ddc29eadee8cb5437950f45fd7d3f5f92f9cf2c5e6
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 31baa924f4b56754e87e06b67245c5d0bd02ab72502231c41b61eb2aa5fba8fe
-  timestamp: '2026-05-28T08:03:54Z'
-  output_hash: 71acba5f4f72a29a7104fe8d9e66667a19115e3310ebd79d9f5766006485bc7b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fb40e69a33cf4383da8af16062f113c59dd7a17fbb0b4c2d946959450330550f
+  timestamp: '2026-07-12T07:13:49Z'
+  output_hash: 7c7b98378d49b3be38f0df15618d78a4233296e5c58456a76d1de1c95bb55ff5
   usage:
-    prompt_tokens: 1522
-    completion_tokens: 391
-    total_tokens: 4122
+    prompt_tokens: 2914
+    completion_tokens: 138
+    total_tokens: 3052
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: sent from God
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: John
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:49Z'
+  previous_text: There was a man sent from God named John.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 355e4be3b5efe55c867c4416fe30273e799de13f041f28c7df3b8f4c9885a586
+  review_summary: The draft preserves the verse's meaning and divine commissioning without doctrinal expansion. However, “There was a man sent from God named John” is syntactically awkward and can momentarily make “named John” appear to modify “God.” Reordering the phrases gives a clearer, publication-ready SPOB sentence while retaining every source-grounded idea.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

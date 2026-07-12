@@ -37,36 +37,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 14:4 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''to his own lord''].'
 translation:
   language: en
-  text: Who are you to judge someone else’s household servant? He stands or falls before his own master, and he will be made to stand, because the Lord is able to make him stand.
+  text: Who are you to judge someone else’s household slave? He stands or falls before his own master. But he will be made to stand, because the Lord is able to make him stand.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: another's household slave
+  simplified_phrase: someone else’s household slave
+  preserved_meaning: The person belongs to another household while the bonded status remains explicit.
+  reasoning_layer_used: POB lexical decision for ἀλλότριον οἰκέτην
+  rationale: “Someone else’s” is more conversational, while “household slave” preserves the socially significant relation.
+- pob_phrase: before his own lord
+  simplified_phrase: before his own master
+  preserved_meaning: The slave is accountable to his own master, not to an outsider.
+  reasoning_layer_used: POB lexical rationale and household analogy
+  rationale: “Master” makes the household analogy immediately clear without changing the relation expressed.
+- pob_phrase: and he will be made to stand, for
+  simplified_phrase: But he will be made to stand, because
+  preserved_meaning: The Lord’s power grounds the assurance that the person will stand.
+  reasoning_layer_used: POB lexical decisions for σταθήσεται and δυνατεῖ γὰρ
+  rationale: A new sentence and explicit causal wording clarify the contrast and reason while retaining divine agency.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Using “master” weakens the repeated κύριος wordplay between the human master and the Lord.
+    mitigation: The capitalized “Lord” and repeated “stand” language preserve the theological movement and central metaphor.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/014/004.yaml
   source_text_sha256: 5b0a61fc459195811a1d605071ffc6b1d9a452008beb56f562f4f3cec3bbe837
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:45:42Z'
-  output_hash: 1819f7e6e707cbd4b90173d78e3f37a421f6acf2cc2781beed87d10a86527d33
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4a72e12a7991c42643a9725eb264ddcfa405075cd06a369f5bdba7b2c432f3af
+  timestamp: '2026-07-12T07:42:32Z'
+  output_hash: 3d52b168d0a4c979082081311f0f94d53d74ce01444c718177c451fe688cb473
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 4068
+    completion_tokens: 382
+    total_tokens: 4450
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:32Z'
+  previous_text: Who are you to judge someone else’s household servant? He stands or falls before his own master, and he will be made to stand, because the Lord is able to make him stand.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 93549cc845359e66fcd35a0f28de4c1ae762f946b37230c3bd4a9d8de981adc4
+  review_summary: The draft successfully makes the rhetoric and causal connection easy to understand, and “master” is a warranted common-English rendering in the slave analogy. However, replacing “household slave” with “household servant” weakens a socially significant feature that the POB audit deliberately preserved. Retain “slave” while keeping the other clear simplifications.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

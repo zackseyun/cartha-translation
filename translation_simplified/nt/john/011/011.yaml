@@ -31,36 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After he said these things, he told them, “Our friend Lazarus has fallen asleep, but I am going to wake him up.”
+  text: After he said these things, he told them, “Our friend Lazarus has fallen asleep, but I am going so that I can wake him up.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: After saying these things, he said to them
+  simplified_phrase: After he said these things, he told them
+  preserved_meaning: Jesus finished his earlier words and then addressed the disciples.
+  reasoning_layer_used: POB lexical decisions for ταῦτα, εἶπεν, μετὰ τοῦτο, and λέγει
+  rationale: A finite clause and “told them” make the narrative sequence easier to follow.
+- pob_phrase: Lazarus our friend
+  simplified_phrase: Our friend Lazarus
+  preserved_meaning: Lazarus is identified as a friend shared by Jesus and the disciples.
+  reasoning_layer_used: POB lexical decision for ὁ φίλος ἡμῶν
+  rationale: Natural English places the shared relationship before the name.
+- pob_phrase: I am going so that I may wake him up
+  simplified_phrase: I am going so that I can wake him up
+  preserved_meaning: Jesus states that waking Lazarus is the purpose of his going.
+  reasoning_layer_used: POB lexical decisions for πορεύομαι, ἵνα, and ἐξυπνίσω
+  rationale: “So that I can” is common English while keeping the explicit purpose relation.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Modern readers may initially take “fallen asleep” literally.
+    mitigation: The metaphor is retained because the following verses deliberately reveal the disciples’ misunderstanding.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/011.yaml
   source_text_sha256: 44c5d5010f9ec8a30b722413b4e912ae26380131016fc448d735a0449ee5ea97
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:36Z'
-  output_hash: 7b41c66200d0d6a4f6e41041ed7b0bdcd1d2b9cd6123ecaa22fc11e2d55f1a7b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4b38604b396e8eba8631072bd51862b30a34fd6aac2565a58e6068f1b467b024
+  timestamp: '2026-07-12T07:16:00Z'
+  output_hash: 5d7839014be5145b803cccc51ff9d32473777af61d73f38ca87891c00be3e424
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3269
+    completion_tokens: 387
+    total_tokens: 3656
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:00Z'
+  previous_text: After he said these things, he told them, “Our friend Lazarus has fallen asleep, but I am going to wake him up.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c90f67d7f90ba215a1c4d7c81443e9609b0b26e0e6d97b03841f2c3603ab8a17
+  review_summary: The draft appropriately preserves “fallen asleep,” retaining the deliberate metaphor and the disciples’ coming misunderstanding rather than prematurely replacing it with “died.” It is otherwise plainer than the POB. Revise the final clause to retain the source text’s explicit reason Jesus is going.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

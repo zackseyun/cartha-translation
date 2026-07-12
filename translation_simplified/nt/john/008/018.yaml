@@ -31,43 +31,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I am the one who testifies about myself, and the Father who sent me testifies about me.
+  text: I testify about myself, and the Father who sent me testifies about me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: testifies
-  reason: Preserves the legal and courtroom motif of John's Gospel, matching the requirement of witnesses under the Law.
-- term: the Father
-  reason: Preserves the exact relational title used in the source text without over-translating to 'my Father' or 'God the Father'.
-translation_notes:
-  source_alignment_notes: The rendering of 'ἐγώ εἰμι ὁ μαρτυρῶν' as 'I am the one who testifies' matches the Greek substantival structure, and 'ὁ πέμψας με πατήρ' as 'the Father who sent me' accurately translates the articular aorist participle modifying 'Father'.
-  readability_notes:
-  - The sentence flows naturally in modern English, using clear, active verbs and maintaining parallel structure, which aids comprehension for readers unfamiliar with archaic biblical phrasing.
-  compression_notes:
-  - No semantic compression was performed; all lexical and theological details from the POB source are fully preserved. The only simplification was removing the alternate translation footnote.
-  risk_flags:
-  - risk: none
-    mitigation: Flag retained for reviewer attention.
+- pob_phrase: I am the one who testifies about myself
+  simplified_phrase: I testify about myself
+  preserved_meaning: Jesus identifies himself as a witness who gives testimony about himself.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: A direct verb states the same witness claim in clearer contemporary English.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/008/018.yaml
   source_text_sha256: a067094f455aaaa64cd737a9e2c8d4e636e831647580aa24a218b6fb673845f1
-  pob_commit_sha: 66a0d6d1d3f10cf177e9df856d41d68626c38171
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: fe78029d1ecec8d5c16f620e4b8031e193da9dfd171f16bc643b1cae441396d6
-  timestamp: '2026-05-28T08:53:55Z'
-  output_hash: ae15326709092273499b3c2b70af3b9ca44920aaba64a66313145d5e0d187a46
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bc6cdc08e85ed708edff327273de057c71addc783dc3c7501347b17a17f5f9b3
+  timestamp: '2026-07-12T07:16:41Z'
+  output_hash: 8e47905507f1d701a2a96e0d296c04e247407032122571701f43ffe6726e3271
   usage:
-    prompt_tokens: 1700
-    completion_tokens: 554
-    total_tokens: 4846
+    prompt_tokens: 3184
+    completion_tokens: 139
+    total_tokens: 3323
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: testifies
+  reason: Preserves the legal and courtroom motif of John's Gospel, matching the requirement of witnesses under the Law.
+- term: the Father
+  reason: Preserves the exact relational title used in the source text without over-translating to 'my Father' or 'God the Father'.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:41Z'
+  previous_text: I am the one who testifies about myself, and the Father who sent me testifies about me.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 233f4d03779e2f5641da16df37b868e59e1abe80d45bc44e2befb0c67bf3143f
+  review_summary: The draft preserves the source meaning, repeated witness/testimony language, and the unexpanded title “the Father”; it introduces no doctrinal problem. However, it is not meaningfully clearer than POB because it is unchanged. Recasting the initial substantival participle as the direct verb “I testify” is a warranted readability improvement, retains the legal-testimonial connection, and does not collapse a live ambiguity or add a theological claim.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/011/001.yaml
-  text: Now a certain man was sick[a], Lazarus from Bethany, from the village of Mary and her sister Martha.
+  text: A certain man was sick[a], Lazarus from Bethany, from the village of Mary and her sister Martha.
   footnotes:
   - marker: a
     text: Or, 'Now there was someone sick, Lazarus of Bethany, from the village of Mary and Martha her sister.'
@@ -31,36 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now a man named Lazarus was sick. He was from Bethany, the village of Mary and her sister Martha.
+  text: A man named Lazarus was sick. He was from Bethany, the village of Mary and her sister Martha.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: A certain man was sick, Lazarus
+  simplified_phrase: A man named Lazarus was sick.
+  preserved_meaning: An indefinite but specific man, identified as Lazarus, was ill.
+  reasoning_layer_used: POB lexical decisions for τις, ἀσθενῶν, and Λάζαρος
+  rationale: Naming Lazarus directly removes the awkward apposition without changing his identity or condition.
+- pob_phrase: Lazarus from Bethany, from the village
+  simplified_phrase: He was from Bethany, the village
+  preserved_meaning: Lazarus came from Bethany, which was a village.
+  reasoning_layer_used: POB lexical decisions for ἀπὸ Βηθανίας and ἐκ τῆς κώμης
+  rationale: A second sentence avoids the repeated “from” while preserving Bethany as Lazarus’s village.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/001.yaml
   source_text_sha256: f270c3128f04ec6e1f53c8c72deac8902c242c2766fc0891caef0621cf4f877a
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:36Z'
-  output_hash: ef4b1d191c514f99228d4228f992d10f40b379f3f28eb1a612009a39aae1b8c6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 20c0c3b1122605f3f1ebb914ad07e7d889bf11933d3a50c7582c92bbc158436f
+  timestamp: '2026-07-12T07:16:20Z'
+  output_hash: 1d98b1a20a240dfa7ec64285493b88fb9b40b1a38f904a571ae03db48a672d7a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3196
+    completion_tokens: 265
+    total_tokens: 3461
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:20Z'
+  previous_text: Now a man named Lazarus was sick. He was from Bethany, the village of Mary and her sister Martha.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9879a49bce83a1f05c913737234c1b51de4d65488ca4d8121d0f9f56985e5e9d
+  review_summary: The draft makes the verse substantially clearer in common English while preserving Lazarus’s illness, his origin in Bethany, and Bethany’s identification with Mary and Martha. “A man named Lazarus” is a warranted, clear recasting of the indefinite individual followed by his name. Revise only the initial “Now” to follow the POB audit trail’s stated reader-facing decision.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

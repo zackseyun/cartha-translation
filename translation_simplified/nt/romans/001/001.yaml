@@ -39,25 +39,59 @@ base_translation:
     changes_summary: 'Changed ''slave'' to ''servant'' for more natural formal register; changed ''Messiah Jesus'' to ''Christ Jesus'' to reflect the Greek name-title order more conventionally; changed ''a called apostle'' to ''called as an apostle'' for natural English while preserving the sense. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy), slave restored (revision_pass had changed δοῦλος → servant against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Paul, a slave[a] of Messiah Jesus[b], called to be an apostle and set apart for the gospel of God.
+  text: Paul, a slave[a] of Messiah Jesus[b], called as an apostle and set apart for God’s gospel.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or servant.
-    reason: simplification_note
+    reason: lexical_alternative
   - marker: b
     text: Or Christ Jesus.
-    reason: simplification_note
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Smoothes the somewhat wooden 'called as' or literal 'called apostle' into a standard, clear English idiom that modern readers immediately understand without changing the underlying theological meaning.
-  reasoning_layer_used: POB audit trail
-  rationale: Smoothes the somewhat wooden 'called as' or literal 'called apostle' into a standard, clear English idiom that modern readers immediately understand without changing the underlying theological meaning.
-- preserved_meaning: Retained 'slave' to preserve the theological salience of the bonded relationship as explicitly directed by the POB core decisions, but added a footnote to offer the alternative 'servant'.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained 'slave' to preserve the theological salience of the bonded relationship as explicitly directed by the POB core decisions, but added a footnote to offer the alternative 'servant'.
-- preserved_meaning: Retained the messianic title 'Messiah' in accordance with the POB guidelines and the regression fix, while adding a footnote for the traditional 'Christ Jesus'.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the messianic title 'Messiah' in accordance with the POB guidelines and the regression fix, while adding a footnote for the traditional 'Christ Jesus'.
+- pob_phrase: called as an apostle, set apart
+  simplified_phrase: called as an apostle and set apart
+  preserved_meaning: Paul’s calling as an apostle and his being set apart remain distinct descriptions.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: The conjunction improves the flow without adding the more interpretive phrase “to be.”
+- pob_phrase: the gospel of God
+  simplified_phrase: God’s gospel
+  preserved_meaning: The gospel remains identified as belonging to or coming from God.
+  reasoning_layer_used: POB lexical decision for θεοῦ
+  rationale: The possessive form is shorter and more natural in common English.
+- pob_phrase: a slave of Messiah Jesus
+  simplified_phrase: a slave of Messiah Jesus
+  preserved_meaning: The bonded relationship and the messianic title retain their source-driven force.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: These key terms are retained because simpler substitutes would weaken audited theological choices.
+translation_notes:
+  risk_flags:
+  - risk: “Slave” may evoke modern historical associations beyond the immediate claim of belonging and submission.
+    mitigation: Retain the source-driven term while footnoting “servant” as a lexical alternative.
+  - risk: “Messiah Jesus” is less familiar than the traditional “Christ Jesus.”
+    mitigation: Retain the translated title and provide the traditional form in a footnote.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/001/001.yaml
+  source_text_sha256: 36ffc99fb46144c5a5c21e7fc48045c8768ebf60887539e91a3d9fedccf8ea6f
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: dbb913e6dc9edd4ef80228401696e140296d34897ff51b0032f4b564877f848a
+  timestamp: '2026-07-12T07:40:48Z'
+  output_hash: 45b45b6db9610f026d2727f20ce6de4c31c9f2df3a778328fc90c336b7187670
+  usage:
+    prompt_tokens: 4260
+    completion_tokens: 1159
+    total_tokens: 5419
+    reasoning_tokens: 741
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: slave
   reason: Retained to preserve POB's source-grounded terminology.
@@ -67,33 +101,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: gospel
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The three-fold Greek descriptions (slave, called apostle, set apart) are preserved in their original order, maintaining the direct theological flow of Paul's self-introduction.
-  readability_notes:
-  - Converting 'called as an apostle, set apart' into 'called to be an apostle and set apart' introduces a coordinating conjunction ('and') that dramatically improves the cadence and flow for modern oral reading without introducing unauthorized meaning.
-  compression_notes:
-  - No core theological concepts or source words were omitted. Simplification was achieved solely through syntactical smoothing.
-  risk_flags:
-  - risk: The term 'slave' may carry distracting connotations for some modern readers, and the term 'Messiah' deviates from the highly familiar traditional 'Christ'. These risks are managed by retaining alternative readings in footnotes [a] and [b].
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/001/001.yaml
-  source_text_sha256: 36ffc99fb46144c5a5c21e7fc48045c8768ebf60887539e91a3d9fedccf8ea6f
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 63d23ecf2fd0c248066f37bd4f43e723969f63f028f58251b89d0816882ba2e5
-  timestamp: '2026-05-28T08:04:18Z'
-  output_hash: cb6f8775fd4d26662d4a5e37a0e690c6c39786c6a23634b3cbb48543963ce061
-  usage:
-    prompt_tokens: 2555
-    completion_tokens: 585
-    total_tokens: 7239
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:40:48Z'
+  previous_text: Paul, a slave[a] of Messiah Jesus[b], called to be an apostle and set apart for the gospel of God.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a8c839131362c20269bc4d8266ee0acfbdb97ea426a60f2268dc1364cb94695e
+  review_summary: The draft appropriately retains “slave” and “Messiah,” following the source-grounded POB decisions, and its footnotes adequately preserve the principal familiar alternatives. Its only needed revision is to avoid presenting the POB’s explicitly more interpretive “called to be an apostle” as though it were a meaning-neutral smoothing. “Called as an apostle” preserves the audit trail’s calibrated wording while remaining clear enough in context.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

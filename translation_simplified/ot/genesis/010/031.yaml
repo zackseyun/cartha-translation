@@ -31,39 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: These were the sons of Shem, grouped by their clans, languages, lands, and nations.
+  text: These are the sons of Shem, grouped by their clans, languages, and nations, in their lands.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Summarizes Shem’s descendants according to clans, languages, lands, and nations.
-  reasoning_layer_used: POB audit trail
-  rationale: Compresses repeated classification phrases into a clear summary.
-retained_terms:
-- term: sons of Shem
-  reason: Keeps the genealogical summary wording.
-translation_notes:
-  source_alignment_notes: Preserves all four classification categories in the POB verse.
-  readability_notes:
-  - Uses 'grouped by' for simple modern English.
-  compression_notes:
-  - Repeated phrasing is compressed without removing a category.
+- pob_phrase: by their clans, by their languages, in their lands, by their nations
+  simplified_phrase: grouped by their clans, languages, and nations, in their lands
+  preserved_meaning: The sons are classified by clan, language, and nation, while their lands remain their geographic setting.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: This compresses the repeated classification wording without treating lands as another category.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/genesis/010/031.yaml
   source_text_sha256: 6df580f635a4ffa538f25fb42454a6eee2b2bd6b4f0bc27fbfaa07092865eef0
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:32:03Z'
-  output_hash: 50888d168b023785a981252ef16be291ca9b51ceea287d7ce51d826553698ec1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f4ff6266c0750e058172ee154a65c1e51a1d16b89986bca278219e0213b94f92
+  timestamp: '2026-07-12T09:23:25Z'
+  output_hash: fad597903eec47b9df3cf2b5590e9b398b0c740230d5913d7ac2c4a51cb34189
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2988
+    completion_tokens: 170
+    total_tokens: 3158
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: sons of Shem
+  reason: Keeps the genealogical summary wording.
+spob_revision_history:
+- timestamp: '2026-07-12T09:23:25Z'
+  previous_text: These were the sons of Shem, grouped by their clans, languages, lands, and nations.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 75ee662bde017218ded8bfce7570aec450bbc344facaa5445be93d2e713e08ca
+  review_summary: The compression is readable and generally warranted, but it must retain the source’s distinction between classification by clans, languages, and nations and location in lands. Restoring “These are” also preserves the summary-statement force without reducing clarity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

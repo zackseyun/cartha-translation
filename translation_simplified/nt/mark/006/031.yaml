@@ -34,41 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said to them, "Come away by yourselves to a desolate place and rest a little." Many people were coming and going, and they did not even have time to eat.
+  text: He said to them, “Come away by yourselves to a quiet, isolated place and rest for a little while.” He said this because so many people were coming and going that they did not even have time to eat.
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: a desolate place
+  simplified_phrase: a quiet, isolated place
+  preserved_meaning: Describes a place apart from the crowd, not necessarily a modern desert.
+  reasoning_layer_used: POB lexical decision for ἔρημον τόπον
+  rationale: “Quiet, isolated” makes the intended seclusion immediately clear.
+- pob_phrase: rest a little
+  simplified_phrase: rest for a little while
+  preserved_meaning: Keeps the command to stop working and recover briefly.
+  reasoning_layer_used: POB lexical decisions for ἀναπαύσασθε and ὀλίγον
+  rationale: The added time phrase removes possible ambiguity about “a little.”
 - pob_phrase: For many were coming and going
-  simplified_phrase: Many people were coming and going
-  preserved_meaning: Keeps the explanation while making the sentence stand naturally on its own.
-  reasoning_layer_used: POB audit trail
-  rationale: The causal link remains clear from context; 'people' makes the subject explicit.
-retained_terms:
-- term: desolate place
-  reason: Preserves the isolated-place sense from the POB.
+  simplified_phrase: He said this because so many people were coming and going
+  preserved_meaning: Explicitly retains the reason for Jesus’ invitation while identifying the people involved.
+  reasoning_layer_used: Greek γάρ and POB audit trail
+  rationale: “Because” clearly connects the continual crowd traffic with the call to rest.
 translation_notes:
-  source_alignment_notes: Preserves Jesus' invitation to rest privately, the crowd traffic, and lack of time to eat.
-  readability_notes:
-  - Splits command and explanation into two sentences.
-  compression_notes:
-  - No reason for the rest is removed.
+  risk_flags:
+  - risk: “Quiet” is inferred from the place being isolated rather than directly stated.
+    mitigation: “Isolated” retains the controlling lexical meaning of an uninhabited or secluded place.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/031.yaml
   source_text_sha256: d897a0bdbbe3ef6eaffe9af8957e4b8d2a9c2ff9d865d2c4cb7a0ee5fc95c809
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:45Z'
-  output_hash: 29d1f99d92a65be89adb99a1e6382e5b36367ffbe9c73f1057ad681d47c1aad1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5365fadd1217412c2cc0929fef54210f49adbbb3fe694c4c7db6838812b04d56
+  timestamp: '2026-07-12T07:21:40Z'
+  output_hash: 6b21d49cee7338f31fa49d9b6ff874a15e85ef50cce3f847c3e5256f5546aee2
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3268
+    completion_tokens: 367
+    total_tokens: 3635
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: desolate place
+  reason: Preserves the isolated-place sense from the POB.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:40Z'
+  previous_text: He said to them, "Come away by yourselves to a desolate place and rest a little." Many people were coming and going, and they did not even have time to eat.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b3c7f5255ebd99b7e8853a2bb01516161d700a3cf9a5dd1fc71bddc039fa72a1
+  review_summary: The explicit “people” and the idiomatic “time to eat” are warranted clarity improvements. Retain an explicit causal connector, however, so that the verse continues to explain why Jesus called the disciples away to rest.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -46,6 +46,20 @@ Known source-oriented versification differences are aligned before scoring.
 
 ## Regeneration
 
+The committed report set covers all 66 canonical books. The July 12, 2026
+snapshot scored 30,889 verses that could be aligned across at least three
+public-domain reference editions, and every scored verse has both POB and SPOB
+wording.
+
+Regenerate the complete canonical report set:
+
+```bash
+python3 tools/build_translation_divergence.py --fetch --books \
+  $(find translation/ot translation/nt -mindepth 1 -maxdepth 1 -type d -exec basename {} \; | sort)
+```
+
+Regenerate a smaller calibration set:
+
 ```bash
 python3 tools/build_translation_divergence.py --fetch --books genesis luke
 ```

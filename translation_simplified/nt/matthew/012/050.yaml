@@ -31,40 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For whoever does the will of my Father in heaven, he is my brother and sister and mother.[a]
+  text: For anyone who does the will of my Father in heaven is my brother, sister, and mother.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or "anyone who does the will of my Father in heaven, that person is my brother and sister and mother." The Greek uses a grammatically masculine singular form generically.
-    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: whoever ... he is
+  simplified_phrase: anyone who ... is
+  preserved_meaning: The statement applies generally to every person who does the Father's will.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: Using the POB-approved alternative removes a confusing generic masculine construction.
+- pob_phrase: my brother and sister and mother
+  simplified_phrase: my brother, sister, and mother
+  preserved_meaning: Jesus names all three family relationships distinctly.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: A natural English list preserves each family role without needless repetition.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Using “anyone” does not reproduce the Greek masculine singular form.
+    mitigation: The POB audit identifies the form as generic and explicitly permits “anyone who.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/050.yaml
   source_text_sha256: 49568f5fa7a59d03f470e2643a381e1adc40f306793d368a266369369a256dc6
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:35Z'
-  output_hash: 51c79a90631f497633e97f2b9c06cbc3e6409630e7db6a0fc20212c6c01e157b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 702ebdd5f8ee227d224e37a7a68691010e25e49858bcb12ec6b67487abb1cd44
+  timestamp: '2026-07-12T07:37:05Z'
+  output_hash: 708e577c911890b4bbfd0933222de5a888ac841040ed297280d10df56821c5e3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3248
+    completion_tokens: 449
+    total_tokens: 3697
+    reasoning_tokens: 200
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:05Z'
+  previous_text: For whoever does the will of my Father in heaven, he is my brother and sister and mother.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f6dd60bd2f94b2c0c6d92f1988f047ac7e1777501631002e402acae1db540478
+  review_summary: Revise for readability, not doctrine. The proposed wording is faithful to the generic Greek construction and preserves every stated family relationship, while avoiding the misleading surface reading that a single male person is literally both sister and mother. The submitted SPOB text otherwise merely duplicates POB and does not meet the requested simplification standard.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

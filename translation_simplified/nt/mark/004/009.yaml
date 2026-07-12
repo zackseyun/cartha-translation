@@ -31,41 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then he said, “Whoever has ears to hear, let him hear.”
+  text: And he said, “Whoever has ears to hear, let him hear.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he was saying[a], “Whoever has ears to hear, let him hear.”
-  simplified_phrase: Then he said, “Whoever has ears to hear, let him hear.”
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: ears to hear
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: And he was saying
+  simplified_phrase: And he said
+  preserved_meaning: Jesus spoke this exhortation while the simple connective remains unchanged.
+  reasoning_layer_used: POB translation and lexical decisions for καὶ and ἔλεγεν
+  rationale: The simple past is more natural in common English without adding the temporal nuance of “Then.”
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: The simple past does not explicitly display the imperfect aspect of “was saying.”
+    mitigation: Context does not require repeated speech, and the POB audit accepts “he said” as a lexical alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/009.yaml
   source_text_sha256: fa8f875d7049b4a6fc6f35cb13a34240b4b166d4c8cedf22526eace279d29bff
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 42f4194090441ec5b2dcc995a4e8c4abf12736980ca4e373a2e82cc9d395f0a7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f8f90aa0bab026f8b40a415b4507439428eff6ecc51ca72206d154911a8aeeb4
+  timestamp: '2026-07-12T07:20:05Z'
+  output_hash: da4f037d57b0c936c444c539c4cfb00c63ee28f447481b8787659841a1bffe47
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3070
+    completion_tokens: 192
+    total_tokens: 3262
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: ears to hear
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:05Z'
+  previous_text: Then he said, “Whoever has ears to hear, let him hear.”
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 805a3f6f43907d4457c7746028af9a5f437f4a83548bc3435178376e7b0f585e
+  review_summary: 'The draft correctly retains the proverbial exhortation and adds no doctrinal expansion. However, “Then” is not a neutral modernization of the POB: it adds sequence beyond the stated source-grounded rationale. Replace it with “And.” The simple past “he said” is an acceptable common-English simplification here, though it does not retain the POB’s more explicit imperfect aspect.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,42 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said to them, “An enemy did this.” The slaves said to him, “Do you want us to go and gather them up?”[a]
+  text: He answered them, “An enemy did this.” Then his slaves[a] asked, “Do you want us to go and gather the weeds?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “servants”; Greek doulos/douloi can mean “slave(s)” or “servant(s)” depending on context.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: He said to them
+  simplified_phrase: He answered them
+  preserved_meaning: He responds directly to those speaking with him.
+  reasoning_layer_used: Immediate dialogue context and POB speech-verb decision
+  rationale: “Answered” makes the exchange easier to follow while remaining within POB’s noted alternative “told.”
+- pob_phrase: Then the slaves said to him
+  simplified_phrase: Then his slaves asked
+  preserved_meaning: The slaves next address their master with a question.
+  reasoning_layer_used: POB translation, lexical decisions for οὖν and δοῦλοι, and sentence form
+  rationale: This keeps “Then” and the bonded-status term while removing a redundant speech frame.
+- pob_phrase: gather them up
+  simplified_phrase: gather the weeds
+  preserved_meaning: They propose collecting the weeds previously mentioned in the parable.
+  reasoning_layer_used: POB lexical decision for αὐτά and immediate agricultural context
+  rationale: Naming the referent prevents readers from wondering what “them” means.
+interpretive_expansions:
+- pob_phrase: them
+  rendering: the weeds
+  claim: The objects to be gathered are the weeds among the wheat.
+  evidence:
+  - The POB lexical audit explicitly identifies the pronoun’s referent as the weeds or tares mentioned in context.
+  confidence: high
+  alternatives_preserved:
+  - them
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Answered” is more context-specific than the source’s general verb “said.”
+    mitigation: The surrounding dialogue clearly presents this statement as a response.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/028.yaml
   source_text_sha256: 26f9ca80cb075009b0494af88718033d1e006f12237a69cc28c09ca13a5569a5
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 1d18baa1c38a58cba3d228f1245ddf13696c285bdbcbfe29411c3acb5cfd2e0e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 25cfb4214fe4d5dbe734b858c3540f18fc6a39e10297b5f5911f690d3db52e43
+  timestamp: '2026-07-12T09:02:37Z'
+  output_hash: f029ed292ac942364a6bd12ad7dda1a942bf4af41e12afe3f21b3747981c6c5d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3504
+    completion_tokens: 456
+    total_tokens: 3960
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T09:02:37Z'
+  previous_text: He said to them, “An enemy did this.” The slaves said to him, “Do you want us to go and gather them up?”[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5da11ca16eff1c9ed507afcb06f989653ec181caf0b3cafc19633030b5cec073
+  review_summary: The draft introduces no unsupported interpretation and preserves the POB’s lexical choice for δοῦλοι. However, it removes the small but real narrative connector represented by οὖν, without providing a compensating clarity benefit. Restore “Then” and attach the lexical footnote to “slaves,” the word it explains.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

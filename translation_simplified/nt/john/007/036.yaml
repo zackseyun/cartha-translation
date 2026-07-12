@@ -37,52 +37,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: What is this statement he made, “You will seek me and will not find me, and where I am[a], you cannot come”?
+  text: 'What is this statement he made: “You will seek me and will not find me, and where I am[a], you cannot come”?'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Some translations render this 'where I am going,' but the Greek text literally reads 'where I am,' preserving a distinct theological meaning.
-    reason: simplification_note
+    text: Some translations say “where I am going,” but the Greek text reads “where I am,” preserving the tension in John’s wording.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Slightly simplifies the relative clause ('that he said' to 'he made') for natural English flow.
-  reasoning_layer_used: POB audit trail
-  rationale: Slightly simplifies the relative clause ('that he said' to 'he made') for natural English flow.
-- preserved_meaning: Simplifies the clunky 'are not able to come' to the much more natural and common 'cannot come' while preserving the meaning of inability.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplifies the clunky 'are not able to come' to the much more natural and common 'cannot come' while preserving the meaning of inability.
-retained_terms:
-- term: seek
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: statement
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: What is this statement that he said
+  simplified_phrase: What is this statement he made
+  preserved_meaning: The people are asking about the statement Jesus made.
+  reasoning_layer_used: POB lexical decision for λόγος and εἶπε
+  rationale: The shorter wording removes an awkward relative clause without changing the question.
+- pob_phrase: you are not able to come
+  simplified_phrase: you cannot come
+  preserved_meaning: They are unable to come where Jesus is.
+  reasoning_layer_used: POB lexical decision for οὐ δύνασθε ἐλθεῖν
+  rationale: “Cannot come” is the natural English expression of the same inability.
 translation_notes:
-  source_alignment_notes:
-  - Preserved the present tense 'where I am' (ὅπου εἰμὶ ἐγὼ) to respect the POB theological decision, resisting the common interpretive shift to 'where I am going'.
-  readability_notes:
-  - Changed 'are not able to come' to 'cannot come' to improve reading flow for a modern common audience.
-  compression_notes:
-  - Slightly compressed 'What is this statement that he said' into 'What is this statement he made' to remove redundant phrasing without loss of meaning.
   risk_flags:
-  - risk: There is a minor risk that 'cannot come' slightly obscures the literal passive/ability aspect of 'δύνασθε' (are able), but it is the standard and most readable equivalent.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Where I am” remains deliberately difficult in English.
+    mitigation: The footnote identifies the common alternative while preserving John’s present-tense tension.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/007/036.yaml
   source_text_sha256: 0e046b8f8b2fa9b92df8249a89b802970a9f92f67bff9556bafea0cf3d1c367d
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: eae17da6444b87338ee37aa1fa7dbb7758b25472c539e7cddca355d1382bbc0f
-  timestamp: '2026-05-28T08:47:03Z'
-  output_hash: 46b6a0db1e7d99b156283fbfe6ee9282945438fab94b49b8e5ac91da14eb471c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2a5355a2a5b8e2889e4e4cec02cb017f5af7b6f5b734d42d3c57651d6be4be4e
+  timestamp: '2026-07-12T07:15:05Z'
+  output_hash: 8ecdc185d19d4bc62ed48086716056e8d55ba4c1d2059497cdc627787d455ace
   usage:
-    prompt_tokens: 2169
-    completion_tokens: 570
-    total_tokens: 5746
-    reasoning_tokens: 0
+    prompt_tokens: 3818
+    completion_tokens: 451
+    total_tokens: 4269
+    reasoning_tokens: 142
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: seek
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: statement
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:05Z'
+  previous_text: What is this statement he made, “You will seek me and will not find me, and where I am[a], you cannot come”?
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e3a1798e9324d871b1cf4e3b4ada476e902ef2c5de1919fadbdd9cefb048250b
+  review_summary: 'The main simplifications are warranted: “statement he made” is natural English, and “cannot come” accurately conveys inability. Revise the footnote so it explains the source-based present tense without assigning a specific theological meaning beyond the POB’s stated “tension.”'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

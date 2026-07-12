@@ -31,12 +31,66 @@ base_translation:
     changes_summary: Removed the comma before ‘who bore’ for smoother, more natural English without changing the meaning. The draft is otherwise accurate and complete.
 translation:
   language: en
-  text: saying, ‘These last workers worked one hour, and you made them equal to us, who carried the burden of the day and the scorching heat.’
+  text: They said, “These workers who came last worked only one hour, yet you treated them as equal to us. We endured the burden of the whole day and the scorching heat.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Clarified 'These last' as 'These last workers' while preserving the protest about equality, burden, and heat without resolving the parable's fairness tension.
-  reasoning_layer_used: POB audit trail
-  rationale: Clarified 'These last' as 'These last workers' while preserving the protest about equality, burden, and heat without resolving the parable's fairness tension.
+- pob_phrase: saying
+  simplified_phrase: They said
+  preserved_meaning: Introduces the workers’ complaint as direct speech.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: The finite clause avoids a dangling fragment and uses the POB-listed alternative.
+- pob_phrase: These last worked one hour
+  simplified_phrase: These workers who came last worked only one hour
+  preserved_meaning: Identifies the last-hired workers and stresses their short work time.
+  reasoning_layer_used: POB lexical rationale and parable context
+  rationale: The implied workers are named, and “only” makes the complaint’s contrast explicit.
+- pob_phrase: you made them equal to us who bore the burden of the day and the scorching heat
+  simplified_phrase: you treated them as equal to us. We endured the burden of the whole day and the scorching heat
+  preserved_meaning: Retains the protest that equal treatment ignored their full day of difficult labor.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Two sentences clarify the contrast while preserving the burden image and unresolved fairness complaint.
+interpretive_expansions:
+- pob_phrase: one hour
+  rendering: only one hour
+  claim: The speakers emphasize how little time the last workers labored compared with them.
+  evidence:
+  - The complaint contrasts one hour with bearing the day’s burden and heat.
+  confidence: high
+  alternatives_preserved:
+  - one hour
+- pob_phrase: the burden of the day
+  rendering: the burden of the whole day
+  claim: The first workers describe enduring a full day of labor.
+  evidence:
+  - The POB rationale defines the phrase as the heavy load of a full day’s labor.
+  confidence: high
+  alternatives_preserved:
+  - the burden of the day
+translation_notes:
+  risk_flags:
+  - risk: “Treated them as equal” may sound broader than equal treatment in this payment dispute.
+    mitigation: The wording follows a POB-attested lexical alternative and leaves the parable’s fairness tension unresolved.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/020/012.yaml
+  source_text_sha256: 4e238f18c270ea5614caea51df9ce712a7dfbf5d4ac960229de5dbbf20d9db3f
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: dd18c32511429e77f48e36ecb9164bea69547e4b73adfd08a70593b19dde5e00
+  timestamp: '2026-07-12T07:39:18Z'
+  output_hash: 2715e8b4fbc334f80dc8c3dd95a4b5b9a95a49c245a96cafe64a41e7ad51d2eb
+  usage:
+    prompt_tokens: 3442
+    completion_tokens: 518
+    total_tokens: 3960
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: last workers
   reason: Retained to preserve POB's source-grounded terminology.
@@ -46,30 +100,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: scorching heat
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserves the workers' complaint as a complaint, not as a theological explanation of divine justice.
-  readability_notes:
-  - Adds the implied noun 'workers' for clarity.
-  compression_notes:
-  - The emotional force of the protest is retained.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/020/012.yaml
-  source_text_sha256: 4e238f18c270ea5614caea51df9ce712a7dfbf5d4ac960229de5dbbf20d9db3f
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:10:39Z'
-  output_hash: d7ccaaeb3af94765ad62aa2f28f0c23e39e112f0444679a1cecdd0203d51d4e0
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:18Z'
+  previous_text: saying, ‘These last workers worked one hour, and you made them equal to us, who carried the burden of the day and the scorching heat.’
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1b0fd1e5077b8e8915167ef8473b471542aab1d478e1efd5edf11d2f9acfa3d0
+  review_summary: The clarification “last workers” is warranted, but it is only a modest improvement over POB and leaves the opening as an incomplete participial fragment. Revising it to “These workers who came last” and supplying “They said” makes the verse independently understandable while staying within the narrative context. “Treated them as equal to us” is a POB-attested lexical alternative and preserves the workers’ complaint without deciding whether it is just.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

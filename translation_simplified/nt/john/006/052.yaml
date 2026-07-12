@@ -34,51 +34,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So the Jews[a] started arguing among themselves, asking, "How can this man give us his flesh[b] to eat?"
+  text: So the Jews[a] were arguing among themselves, asking, “How can this man give us his flesh[b] to eat?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'the Judeans' or, contextually, 'the Jewish leaders.' The Greek reads simply 'the Jews.'
+    text: Or “the Judeans” or, in this context, “the Jewish leaders.” The Greek simply says “the Jews.”
     reason: alternative_reading
   - marker: b
-    text: Or 'his body.' The Greek word is 'flesh' (σάρξ), retained here to preserve the concrete wording and tension of the passage.
+    text: Or “his body.” The Greek word is “flesh,” retained here to preserve the concrete wording and tension of the passage.
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Changed the continuous 'were arguing... saying' to 'started arguing... asking' to capture the inceptive and ongoing friction of the Greek imperfect verb more dynamically for a modern reader. 'Asking' is more natural than 'saying' before a direct question.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed the continuous 'were arguing... saying' to 'started arguing... asking' to capture the inceptive and ongoing friction of the Greek imperfect verb more dynamically for a modern reader. 'Asking' is more natural than 'saying' before a direct question.
-retained_terms:
-- term: the Jews
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: flesh
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: were arguing among themselves, saying
+  simplified_phrase: were arguing among themselves, asking
+  preserved_meaning: The dispute remains ongoing, and their words take the form of a question.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: “Asking” introduces the direct question naturally without adding a beginning to the argument.
 translation_notes:
-  source_alignment_notes: The draft maintains a tight formal correspondence with the SBLGNT source text, preserving the force of the demonstrative pronoun 'οὗτος' as 'this man' to convey the dismissive tone of the speakers.
-  readability_notes:
-  - Slightly modernized the verbal syntax to avoid clunky phrasing while retaining the gravity and direct dialogue of the passage.
-  compression_notes:
-  - Minimal compression was used here; the narrative dialogue is already concise, and altering its structure further would risk softening the intentional theological tension of the crowd's objection.
   risk_flags:
-  - risk: The phrase 'the Jews' carries historical risks of anti-Semitic misinterpretation; this is mitigated by footnote [a]. The term 'flesh' carries risks of gross literalism, which is the precise narrative tension present in the text and must not be resolved.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “The Jews” may be misunderstood as referring broadly to all Jewish people.
+    mitigation: Footnote [a] preserves the possible narrower contextual referents without resolving the ambiguity.
+  - risk: “Flesh” may sound harshly literal to modern readers.
+    mitigation: Footnote [b] explains the alternative while retaining the passage’s concrete wording and tension.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/006/052.yaml
   source_text_sha256: f4736c761f61d7945d3645290013440efa32431d77986cdf0304a54c6681bd97
-  pob_commit_sha: 3afdf15abc9a96c0093b0f2add5eb20faf8f06b4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 33f8758ccbe6de3fafc8ba001a132f7bf9c919eb0cbc4d2fe26ae8ce18427aa2
-  timestamp: '2026-05-28T07:50:27Z'
-  output_hash: 9782377b8855f7c7e78a98cc9508dc221adbbbb2d3b88f86527b09dd41fe7dfa
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c3ff8d137a6b0214a0465d6adbbe6c42c03abdcadb887ad439c0acf46bf01818
+  timestamp: '2026-07-12T07:15:16Z'
+  output_hash: 68b5116ec414fb28e9be5f2a7c10ae05a808a9c66336122520e61978a2200afc
   usage:
-    prompt_tokens: 2138
-    completion_tokens: 601
-    total_tokens: 5904
+    prompt_tokens: 3730
+    completion_tokens: 310
+    total_tokens: 4040
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: the Jews
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: flesh
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:16Z'
+  previous_text: So the Jews[a] started arguing among themselves, asking, "How can this man give us his flesh[b] to eat?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 40f3bb4b8c8661c56df2619b0577c6118154fc17b7ad451533ca7edf0248a14f
+  review_summary: Retaining “flesh” and “the Jews” with their explanatory footnotes appropriately preserves the source wording and the passage’s unresolved tension. Rendering the question-introducing participle as “asking” is natural, clear English. However, “started arguing” adds an unsupported beginning to the ongoing conflict signaled by the imperfect verb. Replace it with “were arguing.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

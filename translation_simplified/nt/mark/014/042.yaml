@@ -31,38 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Get up; let us go. Look, the one betraying me is near.”
+  text: Get up; let’s go. Look, the one who is betraying me has come near.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Get up; let us go. Look[a], the one betraying me has come near.
-  simplified_phrase: Get up; let us go. Look, the one betraying me is near.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: let us go
+  simplified_phrase: let’s go
+  preserved_meaning: Keeps Jesus’ call for the group to go together.
+  reasoning_layer_used: POB lexical decision for ἄγωμεν
+  rationale: The contraction is natural modern English and retains the hortatory force.
+- pob_phrase: the one betraying me
+  simplified_phrase: the one who is betraying me
+  preserved_meaning: Keeps betrayal as an ongoing description of the approaching person.
+  reasoning_layer_used: POB lexical and theological decisions for ὁ παραδιδούς
+  rationale: An ordinary relative clause makes the participial wording easier to read.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Has come near” may sound less conversational than “is near.”
+    mitigation: It is retained because the POB audit deliberately preserves the completed approach with present relevance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/042.yaml
   source_text_sha256: db9d26aadf32cc9d8efa447b809e3a14b84607038814af001fdbc92906b12c1f
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: d8c865fe4fb4f73ddc06d54385a3bc809a5e4fcf3cb2d16330e98c9507505528
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 109859ba176c49b98a6ed941ad1d108a691c982fd305b998eb693ed14f312ea8
+  timestamp: '2026-07-12T07:23:20Z'
+  output_hash: 94fdfd952fb39515c321d12d3b5850c49e5758f291dc8c5b75d7eb33a79e5ff3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3149
+    completion_tokens: 255
+    total_tokens: 3404
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:20Z'
+  previous_text: Get up; let us go. Look, the one betraying me is near.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0bb27ec7a4cc398335deafc04dded4c492c0785745d2cb5bf78309efb0c10121
+  review_summary: Revise. The draft’s “is near” is possible as a result-state rendering, but it unnecessarily flattens the perfect aspect that POB intentionally preserves. The recommended wording is more natural for modern readers while retaining the completed approach and the ongoing participial description of Judas.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,14 +34,53 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 11:1 were approaching / at Bethphage / near the Mount of Olives. Restored 3 chosen renderings preserving narrative imperfect, locative εἰς, and πρός proximity (not direction).'
 translation:
   language: en
-  text: As they were approaching Jerusalem, at Bethphage and Bethany near the Mount of Olives, Jesus sent two of his disciples.
+  text: As they were approaching Jerusalem, near Bethphage and Bethany by the Mount of Olives, Jesus sent two of his disciples.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And when they were approaching Jerusalem[a], at Bethphage and Bethany, near the Mount of Olives[b], he sends two of his disciples
-  simplified_phrase: As they were approaching Jerusalem, at Bethphage and Bethany near the Mount of Olives, Jesus sent two of his disciples.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: at Bethphage and Bethany, near the Mount of Olives
+  simplified_phrase: near Bethphage and Bethany by the Mount of Olives
+  preserved_meaning: The group was in the vicinity of the two villages and the Mount of Olives while nearing Jerusalem.
+  reasoning_layer_used: POB lexical decisions and revision trail for the spatial prepositions
+  rationale: This avoids suggesting that they were simultaneously inside both villages.
+- pob_phrase: he sends two of his disciples
+  simplified_phrase: Jesus sent two of his disciples
+  preserved_meaning: Jesus commissioned two members of his disciple group to go.
+  reasoning_layer_used: POB historical-present footnote and the grounding review
+  rationale: Past tense gives natural English narration while preserving Mark’s action.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The grounding review identifies naming Jesus as a warranted contextual clarification.
+  confidence: high
+  alternatives_preserved:
+  - he
+translation_notes:
+  risk_flags:
+  - risk: Using “near” for both villages gives an approximate spatial relationship rather than reproducing each Greek preposition.
+    mitigation: The wording follows the POB rationale that the villages specify the vicinity reached on the way to Jerusalem.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/011/001.yaml
+  source_text_sha256: 4fb6f17e0f142baaddbc7c34ebacf343ac4b5190bc5888ad8cd8458f68d500d0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c856b64e763064225499ec1d46b914e9b10397858dae523460f7c3b83d3577e2
+  timestamp: '2026-07-12T07:23:31Z'
+  output_hash: 003187b435a07dadf84ea4f63ed6789eac01be8d9f17e1e871113c9b7131aaf3
+  usage:
+    prompt_tokens: 3615
+    completion_tokens: 698
+    total_tokens: 4313
+    reasoning_tokens: 344
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Jerusalem
   reason: Retained because it is a key POB/source-grounded term in this verse.
@@ -51,30 +90,13 @@ retained_terms:
   reason: Retained because it is a key POB/source-grounded term in this verse.
 - term: Mount of Olives
   reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/011/001.yaml
-  source_text_sha256: 4fb6f17e0f142baaddbc7c34ebacf343ac4b5190bc5888ad8cd8458f68d500d0
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 2a6d02c4f208d000d293e0336beeb9188464c6e27d7bb2452edf127073e0ede8
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:31Z'
+  previous_text: As they were approaching Jerusalem, at Bethphage and Bethany near the Mount of Olives, Jesus sent two of his disciples.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b33b854f7402cacded3ff0bb7b464c111eb76d900271df6838ab889e9501c2fe
+  review_summary: Naming Jesus and using past-tense “sent” are warranted, contextually clear changes. Revision is needed because the retained “at Bethphage and Bethany” construction does not adequately communicate the POB’s audited sense of being in the vicinity of these places and is confusing in modern English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,14 +34,40 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He taught them and said, “Is it not written, ‘My house will be called a house of prayer for all the nations’? But you have made it a den of robbers.”
+  text: He was teaching them, saying, “Is it not written, ‘My house will be called a house of prayer for all the nations’? But you have made it a den of robbers.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he was teaching and saying to them[a], “Is it not written[b], ‘My house will be called a house of prayer for all the nations’? But you have made it a den of robbers.”
-  simplified_phrase: He taught them and said, “Is it not written, ‘My house will be called a house of prayer for all the nations’? But you have made it a den of robbers.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: And he was teaching and saying to them
+  simplified_phrase: He was teaching them, saying
+  preserved_meaning: The wording keeps the ongoing or repeated teaching and speech while removing awkward repetition.
+  reasoning_layer_used: Greek imperfect verbs and POB lexical decisions
+  rationale: A progressive verb preserves the scene’s continuing action in natural English.
+translation_notes:
+  risk_flags:
+  - risk: “Den of robbers” may sound unfamiliar to some readers.
+    mitigation: It is retained because it preserves the force of the hideout image and the Jeremiah echo.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/011/017.yaml
+  source_text_sha256: 0ab65b71610ac01e4555dd7242670799d2e041dbb3201597299e27d3b6d34397
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 13d41f8ab2afbe58683edf0c0e92f30fd3723295406a6953ab89f96bd88228b2
+  timestamp: '2026-07-12T07:21:20Z'
+  output_hash: b05ddbae3ace83c068aba0b47a8debc6985d83c06210c196dda23e0dc8743ee1
+  usage:
+    prompt_tokens: 3647
+    completion_tokens: 206
+    total_tokens: 3853
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: house of prayer
   reason: Retained because it is a key POB/source-grounded term in this verse.
@@ -49,30 +75,14 @@ retained_terms:
   reason: Retained because it is a key POB/source-grounded term in this verse.
 - term: den of robbers
   reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/011/017.yaml
-  source_text_sha256: 0ab65b71610ac01e4555dd7242670799d2e041dbb3201597299e27d3b6d34397
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 8dcea11020823c4cc4b5424ce97c2880c095e0c1ace744e71c4fea6bb1a8c59e
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:20Z'
+  previous_text: He taught them and said, “Is it not written, ‘My house will be called a house of prayer for all the nations’? But you have made it a den of robbers.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5c8e10f0c892ea6330515d10bfb45d3459bf67322af0f20dfb424b108e7af08f
+  review_summary: The draft preserves the quotation, its universal scope, and the prophetic accusation without adding doctrine or resolving lexical ambiguities. Its smoother opening is warranted, but it unnecessarily removes the ongoing/repeated force that POB deliberately preserves from the two imperfect verbs. The recommended wording remains readable while retaining that aspect.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

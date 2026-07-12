@@ -31,41 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Therefore, the one who swears by the altar swears by it and by everything on it.
+  text: So anyone who swears by the altar swears by the altar and by everything on it.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 23 POB base wording
-  simplified_phrase: Therefore, the one who swears by the altar swears by it and by everything on it.
-  preserved_meaning: Preserves the controlling POB meaning and source-grounded reasoning for this verse while using modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, source payload, and footnotes
-  rationale: Manual Codex-only drafting simplified sentence structure and clarified dense wording while retaining Matthew 23's commands, rebukes, metaphors, titles, and textual cautions without adding new interpretation.
+- pob_phrase: Therefore, the one who swears
+  simplified_phrase: So anyone who swears
+  preserved_meaning: The statement remains a general principle flowing from Jesus’ previous argument.
+  reasoning_layer_used: POB lexical decision for ὁ οὖν ὀμόσας
+  rationale: “So anyone” expresses the inference and generic subject in more natural common English.
+- pob_phrase: swears by it
+  simplified_phrase: swears by the altar
+  preserved_meaning: The second oath still refers to the altar.
+  reasoning_layer_used: POB lexical decision for ἐν αὐτῷ
+  rationale: Repeating “the altar” removes an avoidable pronoun-reference burden.
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the local POB Matthew 23 record as the controlling base and uses the Greek/source reasoning only as an audit guardrail; no external LLM, web API, or remote model was used.
-  readability_notes:
-  - Uses shorter clauses, clearer modern common English, and direct subject/action wording while preserving Jesus’ discourse flow in Matthew 23.
-  compression_notes:
-  - Technical alternatives from POB notes are compressed unless needed for normal-reader clarity; no central narrative, command, warning, title, metaphor, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection, style consistency, and verse-continuation punctuation.
-    mitigation: The generated SPOB record preserves the base POB text, footnotes, and source-grounding metadata for audit.
+  - risk: Repeating “the altar” is less compact than the Greek pronoun.
+    mitigation: The POB audit explicitly identifies the pronoun’s referent as the altar.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/023/020.yaml
   source_text_sha256: e362cf995a8ff5a5e5de3ebf936f8e2cdf10a542e1d8cda05041babc79b63684
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:15:48Z'
-  output_hash: f3e0f209fef7f5b945e76e351df9629eeb3b2f35b7e8f0b18d8ea91216b6a250
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 67dfb535b31e928a6db5b045e676ac87333aea8a34cedf1d1fff1353678fc0ab
+  timestamp: '2026-07-12T07:38:08Z'
+  output_hash: 837cd902ef257714beeca084358ae68fa4444975137ab05f3826d0c62530d19f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3236
+    completion_tokens: 265
+    total_tokens: 3501
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:08Z'
+  previous_text: Therefore, the one who swears by the altar swears by it and by everything on it.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6008286f39d8d7b4f47758b8ebaab4b6f5ad857c1446358670e5ff964f0e95f1
+  review_summary: The draft is faithful to the Greek and to POB’s deliberately broad rendering of what is on the altar; it adds no doctrine and does not collapse the gift/everything distinction. However, it is not actually simplified because it is identical to POB. The recommended wording uses common English (“So anyone”) and makes the repeated altar referent explicit while preserving the inferential connection and the full scope of “everything on it.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

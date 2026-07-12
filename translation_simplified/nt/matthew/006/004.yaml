@@ -34,21 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So that your giving to the poor may be in secret. And your Father, who sees in secret, will reward you.[a]
+  text: Do this so that your giving to the poor stays secret. Your Father, who sees in secret, will reward you.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'will repay you.'
+    text: Or “will repay you.”
     reason: alternative_reading
 simplification_decisions:
-- simplified_phrase: So that your giving to the poor may be in secret. And your Father...
-  preserved_meaning: Divided the compound sentence into two sentences to reduce cognitive load and improve readability for common readers, while preserving the transitional 'So that' and 'And'.
-  reasoning_layer_used: POB audit trail
-  rationale: Divided the compound sentence into two sentences to reduce cognitive load and improve readability for common readers, while preserving the transitional 'So that' and 'And'.
-- simplified_phrase: Omitted
-  preserved_meaning: The term 'giving to the poor' is fully clear for a modern reader. Explaining that it means 'alms' introduces an archaic word, which is contrary to the simplified target audience.
-  reasoning_layer_used: POB audit trail
-  rationale: The term 'giving to the poor' is fully clear for a modern reader. Explaining that it means 'alms' introduces an archaic word, which is contrary to the simplified target audience.
+- pob_phrase: so that your giving to the poor may be in secret
+  simplified_phrase: Do this so that your giving to the poor stays secret
+  preserved_meaning: The giving is to remain hidden as the intended result of the preceding instruction.
+  reasoning_layer_used: POB lexical decision for ὅπως and immediate context
+  rationale: “Do this” supplies the implied link to the preceding instruction and avoids a sentence fragment.
+- pob_phrase: and your Father who sees in secret will reward you
+  simplified_phrase: Your Father, who sees in secret, will reward you
+  preserved_meaning: The Father sees hidden giving and promises a reward whose form is not specified.
+  reasoning_layer_used: POB theological decision on divine recompense
+  rationale: A new sentence improves readability without defining the nature of the reward.
+interpretive_expansions:
+- pob_phrase: so that
+  rendering: Do this so that
+  claim: The purpose clause depends on Jesus’ preceding instruction.
+  evidence:
+  - The Greek ὅπως introduces a purpose clause linked to the preceding instruction.
+  - The POB rationale explicitly preserves this telic link.
+  confidence: high
+translation_notes:
+  risk_flags:
+  - risk: “Do this” makes the clause’s implied connection to the preceding verse explicit.
+    mitigation: The immediate context and POB audit both identify that dependence.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/006/004.yaml
+  source_text_sha256: ae9d1d52f66d0e5f612ef8d7ee54c06f6871d58a6369d8dee8f80fb4ea56fa7b
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d48e34857999f777d62efbe4e6fdd88acf140ce687e73931a10a9bc189b081c4
+  timestamp: '2026-07-12T07:36:39Z'
+  output_hash: 3ca642cf7f2e749e4bab0bd1493690aeabed65aa4b22995da900562011272466
+  usage:
+    prompt_tokens: 3362
+    completion_tokens: 725
+    total_tokens: 4087
+    reasoning_tokens: 335
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: giving to the poor
   reason: Retained to preserve POB's source-grounded terminology.
@@ -56,33 +91,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: reward
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The simplified text remains structurally and lexically aligned with the POB, maintaining the Greek grammatical relationships (purpose clause, relative clause) and theological boundaries.
-  readability_notes:
-  - Splitting the sentence with a period instead of a semicolon improves visual clarity and pace for modern readers who are less accustomed to long, semicolon-linked clauses.
-  compression_notes:
-  - No source text was omitted. The only compression was the removal of the archaic vocabulary footnote ('alms').
-  risk_flags:
-  - risk: None
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/006/004.yaml
-  source_text_sha256: ae9d1d52f66d0e5f612ef8d7ee54c06f6871d58a6369d8dee8f80fb4ea56fa7b
-  pob_commit_sha: 596da3b17d97fa6f4043e86c5421db337bf2c1d2
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: e1acc0b738bc1acc09b34f4413d11d6941c21b1a7c5d1a443e9a46fb85e7a59d
-  timestamp: '2026-05-28T06:10:14Z'
-  output_hash: 7d2e8af9dc8efa4226da022001d009dd5e492dabfa051133e17d7af963ce3d91
-  usage:
-    prompt_tokens: 1712
-    completion_tokens: 619
-    total_tokens: 5971
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:39Z'
+  previous_text: So that your giving to the poor may be in secret. And your Father, who sees in secret, will reward you.[a]
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 62b34bbd5400c914c460b0ff1689eb535a89d44a0427f7d6e605f7ef95a4f5f3
+  review_summary: The draft does not add doctrine or unsupported interpretation, and omitting the archaic “alms” footnote is appropriate for SPOB. However, its sentence split produces a purpose-clause fragment rather than clearer English. The replacement makes the preceding instruction explicit in natural modern English while retaining the hidden character of the giving, the Father’s seeing “in secret,” and the unspecified nature of the reward.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

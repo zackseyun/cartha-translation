@@ -31,43 +31,78 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 7:1 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''having come''].'
 translation:
   language: en
-  text: The Pharisees and some of the scribes who had come from Jerusalem gathered around him.
+  text: The Pharisees and some religious law experts who had come from Jerusalem gathered around Jesus.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And the Pharisees and some of the scribes...gather around him
-  simplified_phrase: The Pharisees and some of the scribes...gathered around him
-  preserved_meaning: Keeps the Jerusalem scribes and Pharisees gathering around Jesus while smoothing the narrative opening.
-  reasoning_layer_used: POB audit trail
-  rationale: Removes the initial connective and uses simple past-tense English for readability.
-retained_terms:
-- term: Pharisees
-  reason: Preserves the established POB group name.
-- term: scribes
-  reason: Preserves the POB term for the law-trained group.
+- pob_phrase: some of the scribes
+  simplified_phrase: some religious law experts
+  preserved_meaning: Identifies the same group by its role in interpreting and teaching Jewish law.
+  reasoning_layer_used: POB lexical alternatives and grounding review
+  rationale: The functional wording explains an unfamiliar ancient title in common English.
+- pob_phrase: who had come from Jerusalem, gather around him
+  simplified_phrase: who had come from Jerusalem gathered around Jesus
+  preserved_meaning: Keeps their prior arrival and subsequent gathering around Jesus.
+  reasoning_layer_used: POB lexical rationale and source alignment
+  rationale: Simple past and an explicit name make the narrative easier to follow.
+interpretive_expansions:
+- pob_phrase: scribes
+  rendering: religious law experts
+  claim: The scribes are identified by their recognized expertise in religious law.
+  evidence:
+  - POB lists “experts in the law” as a lexical alternative.
+  - The grounding review approves this functional clarification in context.
+  confidence: high
+  alternatives_preserved:
+  - scribes
+  - teachers of the law
+- pob_phrase: him
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - POB says the group assembled in relation to Jesus.
+  - The immediate narrative context identifies Jesus as the referent.
+  confidence: high
+  alternatives_preserved:
+  - him
 translation_notes:
-  source_alignment_notes: Preserves the arrival from Jerusalem and the gathering around him.
-  readability_notes:
-  - Uses direct word order and removes the opening 'And.'
-  compression_notes:
-  - No narrative participant or action is removed.
+  risk_flags:
+  - risk: “Religious law experts” explains the role rather than retaining the traditional title “scribes.”
+    mitigation: The wording follows POB’s documented functional alternatives without adding a new group.
+  - risk: Simple past does not reproduce Mark’s narrative present formally.
+    mitigation: It preserves the event sequence in natural English.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/007/001.yaml
   source_text_sha256: ad5752f063c90df09616e68a189fc9ff88d67c45f1a007b1b8eff7bb1d1142e4
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:01:59Z'
-  output_hash: 219bd9fa2815e2d95904c1838e7cff98606cde6a843192a2f95fd37d57ee1936
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: abca9d20a7ad3181bb42fddab51eb6f1046c2170d082b97a9ecefcc9c57c00a7
+  timestamp: '2026-07-12T07:22:36Z'
+  output_hash: 275ef877ab65fae28c7cab6f6b15163fdd49d6e015559a4751881d7d06c48be8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3364
+    completion_tokens: 808
+    total_tokens: 4172
+    reasoning_tokens: 374
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Pharisees
+  reason: Preserves the established POB group name.
+- term: scribes
+  reason: Preserves the POB term for the law-trained group.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:36Z'
+  previous_text: The Pharisees and some of the scribes who had come from Jerusalem gathered around him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b66f9ad6399dbf0cc503fc77038dd978399ed5725385e4c595637be838754405
+  review_summary: Revise for a real understanding-first improvement. Making Jesus explicit is contextually warranted, and “religious law experts” communicates the role denoted by “scribes” without adding doctrine. Simple past is acceptable English for Mark’s narrative present, but the submitted wording otherwise offers too little clarity improvement over POB.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

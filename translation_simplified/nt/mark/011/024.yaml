@@ -34,41 +34,75 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 11:24 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''they will be yours''].'
 translation:
   language: en
-  text: For this reason I tell you, whatever you pray and ask for, believe that you have received it, and it will be yours.
+  text: 'So I tell you: whatever you pray and ask for, believe that you have already received it,[a] and it will be yours.'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts or readings have “believe that you receive it,” but the Greek text used here says “have received.”
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: For this reason I tell you[a], whatever you pray and ask for, believe that you have received it[b], and it will be yours.
-  simplified_phrase: For this reason I tell you, whatever you pray and ask for, believe that you have received it, and it will be yours.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: pray and ask for
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: For this reason I tell you
+  simplified_phrase: So I tell you
+  preserved_meaning: The saying still follows from Jesus’ preceding teaching about faith and prayer.
+  reasoning_layer_used: POB lexical decision for διὰ τοῦτο
+  rationale: “So” expresses the same connection in more natural common English.
+- pob_phrase: whatever you pray and ask for
+  simplified_phrase: whatever you pray and ask for
+  preserved_meaning: Prayer and asking remain distinct parts of the request.
+  reasoning_layer_used: POB lexical decisions for προσεύχεσθε and αἰτεῖσθε
+  rationale: The paired verbs are retained because compressing them could erase a source distinction.
+- pob_phrase: believe that you have received it
+  simplified_phrase: believe that you have already received it
+  preserved_meaning: Faith treats the requested thing as received before the future promise is realized.
+  reasoning_layer_used: POB lexical and theological decisions for ἐλάβετε
+  rationale: “Already” makes the intended completed-action sequence immediately clear.
+interpretive_expansions:
+- pob_phrase: you have received it
+  rendering: you have already received it
+  claim: The receiving is presented as completed before “it will be yours.”
+  evidence:
+  - The adopted Greek text uses the aorist ἐλάβετε.
+  - The POB audit requires preserving the paradoxical temporal sequence.
+  confidence: high
+  alternatives_preserved:
+  - believe that you receive it
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Already” may sound like an explanation of how prayer is answered.
+    mitigation: The wording preserves the paradox without adding a doctrinal mechanism.
+  - risk: The textual alternative changes the saying’s temporal force.
+    mitigation: A concise footnote retains the alternative reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/024.yaml
   source_text_sha256: a77a3e62f9423b8dea2ffcc9c9cbcb9f1d486a8cc6b80c8dade9c8e6c1edac67
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: 833251532e965d021b251772c7b59bd1edd9d69b2a8cb9b94f1fdc29252e0c8d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ee703cf7962f00bc8c401fea15c601c326d548fd093a1741f9fc3268d722eab0
+  timestamp: '2026-07-12T07:22:01Z'
+  output_hash: 766b8c798fb748b42a04efa8197f95919f2804af420294569b4be4cd08ae2e9f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 4096
+    completion_tokens: 690
+    total_tokens: 4786
+    reasoning_tokens: 187
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: pray and ask for
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:01Z'
+  previous_text: For this reason I tell you, whatever you pray and ask for, believe that you have received it, and it will be yours.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d35389596479595e81a55f6c7f72ed86804dc813c4fb2bd061b357e97e05f8a0
+  review_summary: Revise. The draft is faithful and does not impose a prayer doctrine, but it is not meaningfully clearer than POB because its main text is unchanged. “So” makes the inferential link more natural in current English, and “already received” explicitly communicates the completed-action force that POB’s audit identifies, without resolving how the promise works. Retain a concise textual-variant footnote in the SPOB apparatus where such notes are included.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

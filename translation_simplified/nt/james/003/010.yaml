@@ -31,15 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Blessing and cursing come from the same mouth. My brothers[a], this should not be so.
+  text: Blessing and cursing come from the same mouth. My brothers[a], this ought not to be so.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'My brothers and sisters'; the Greek text says 'brothers,' but James is addressing the whole community of believers.
-    reason: simplification_note
+    text: Or “My brothers and sisters”; the Greek says “brothers,” but in context James is likely addressing the whole believing community.
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
+- pob_phrase: From the same mouth come blessing and cursing.
+  simplified_phrase: Blessing and cursing come from the same mouth.
+  preserved_meaning: The same person speaks both blessing and cursing.
+  reasoning_layer_used: POB lexical decisions for ἐκ τοῦ αὐτοῦ στόματος and ἐξέρχεται
+  rationale: Reordering the clause makes it natural English while preserving the mouth image and contrast.
+- pob_phrase: these things ought not to be so
+  simplified_phrase: this ought not to be so
+  preserved_meaning: Such contradictory speech is morally improper.
+  reasoning_layer_used: POB lexical decision for οὐ χρή and immediate context
+  rationale: The singular “this” points clearly to the combined conduct without weakening “ought not.”
+translation_notes:
+  risk_flags:
+  - risk: Changing plural “these things” to singular “this” compresses the Greek demonstrative.
+    mitigation: The singular refers to the whole pattern of blessing and cursing described immediately before it.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/james/003/010.yaml
+  source_text_sha256: 98f91c1f036417892c48a02615a48556fc32bda601c4e8c476b3f9d9a7db8339
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b3c8ed7bf12b9621d5a6f4075d968edd0353e258741e2005d9f091267e4aa40c
+  timestamp: '2026-07-12T07:13:11Z'
+  output_hash: 42278e77b72e6e5428471dd825c3d8a78aa74319ef99e12d6a5a3f3effcf5ad1
+  usage:
+    prompt_tokens: 3323
+    completion_tokens: 322
+    total_tokens: 3645
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: blessing
   reason: Retained to preserve POB's source-grounded terminology.
@@ -47,33 +81,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: brothers
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the source-language contrast between blessing (εὐλογία) and cursing (κατάρα). Preserved the grammatically masculine 'brothers' (ἀδελφοί) in the main text to align with the POB gender-accurate policy, while explaining the inclusive sense in the footnote.
-  readability_notes:
-  - Rearranged the syntax of the first clause to match contemporary English expectations. Swapped the slightly archaic 'ought not' for 'should not' to improve modern comprehension.
-  compression_notes:
-  - Slightly condensed 'these things' to 'this' to avoid an overly wordy conclusion, with no loss of the semantic or theological core.
-  risk_flags:
-  - risk: Changing 'ought not' to 'should not' carries a minor risk of weakening the moral imperative, but in context, the prohibition remains clear and sounds much like the Greek 'οὐ χρή'.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/james/003/010.yaml
-  source_text_sha256: 98f91c1f036417892c48a02615a48556fc32bda601c4e8c476b3f9d9a7db8339
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 1c93f59eafa23a7fb2509d8bc7c36728d15021e873c0803a920be7a7ef56e303
-  timestamp: '2026-05-28T08:12:47Z'
-  output_hash: 67296ac1ed8cbd8a69afcf435ef80c56dcbe3d9e4a14916214489ea42a14292d
-  usage:
-    prompt_tokens: 1784
-    completion_tokens: 497
-    total_tokens: 4749
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:11Z'
+  previous_text: Blessing and cursing come from the same mouth. My brothers[a], this should not be so.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3ca61874d75851cd1698e8f223ebac0df98b8d3373c6be2294a31ee92323c8f5
+  review_summary: The reordered opening is natural and preserves the source image and contrast. Revision is needed because “should not” mildly weakens the evaluative force retained by POB’s “ought not,” and because the footnote should preserve POB’s qualified contextual claim rather than state it absolutely.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

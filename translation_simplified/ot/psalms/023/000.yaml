@@ -29,20 +29,52 @@ base_translation:
     changes_summary: 'Completed the verse by adding the omitted main clause: ''Yahweh is my shepherd; I will lack nothing.'' Also rendered יְהוָה as ''Yahweh'' per policy.'
 translation:
   language: en
-  text: A psalm of David[a]. Yahweh[b] is my shepherd; I will lack nothing.
+  text: A psalm of David[a]. Yahweh[b] is my shepherd; I will not be in need.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'by David' or 'for David'; the Hebrew title לְדָוִד can indicate authorship, dedication, or association.
-    reason: simplification_note
+    text: Or “by David” or “for David”; the Hebrew superscription לְדָוִד can indicate authorship, dedication, or association.
+    reason: alternative_reading
   - marker: b
-    text: Hebrew YHWH, traditionally rendered 'the LORD' in English translations.
-    reason: simplification_note
+    text: Hebrew YHWH, traditionally rendered “the LORD” in English translations.
+    reason: lexical_alternative
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
+- pob_phrase: I will lack nothing
+  simplified_phrase: I will not be in need
+  preserved_meaning: The speaker trusts that Yahweh's shepherding will leave him without need.
+  reasoning_layer_used: POB translation and lexical footnote c
+  rationale: Ordinary wording replaces the less natural phrase while preserving the Hebrew sense of lacking nothing.
+- pob_phrase: my shepherd
+  simplified_phrase: my shepherd
+  preserved_meaning: The source-language image presents Yahweh as the speaker's shepherd.
+  reasoning_layer_used: Source payload and POB translation
+  rationale: The central biblical image remains because replacing it would weaken the verse.
+translation_notes:
+  risk_flags:
+  - risk: “I will not be in need” might be read as promising every desired comfort.
+    mitigation: The wording speaks only of need and adds no claim about desires or circumstances.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/ot/psalms/023/000.yaml
+  source_text_sha256: cc9d4922aa1ec49433ac1534ba63611f766e19eb9a765405c7ba010e7a9b4907
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 20a75770e9d2a6e8bc1fcec581da3728d7908945fd8e3fba2bd80fcb75eefcc2
+  timestamp: '2026-07-12T09:59:19Z'
+  output_hash: 6432dcedfbc5bb66b61606c922b64d294c0cc985af792ce146c723c888d9405e
+  usage:
+    prompt_tokens: 3018
+    completion_tokens: 323
+    total_tokens: 3341
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Yahweh
   reason: Retained to preserve POB's source-grounded terminology.
@@ -50,31 +82,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: David
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The simplified text fully aligns with the POB's core meaning and preserves its documented lexical and theological decisions. The POB's clarification of the archaic 'want' is integrated into the main text, ensuring the same meaning is conveyed more directly.
-  readability_notes:
-  - The original POB verse is already quite concise and clear. The simplified text maintains this directness while ensuring all potential ambiguities or unfamiliar terms are either clarified in the main text or explained through accessible footnotes.
-  compression_notes:
-  - POB's footnote [c] ('Or 'I shall not want'; here 'want' means 'lack,' not 'desire.') was compressed by directly incorporating its meaning ('I will lack nothing') into the simplified main text, thus making the separate footnote unnecessary for the SPOB.
-  risk_flags: []
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/ot/psalms/023/000.yaml
-  source_text_sha256: cc9d4922aa1ec49433ac1534ba63611f766e19eb9a765405c7ba010e7a9b4907
-  pob_commit_sha: 465f6f3c8ffb2f32d84d934e61d9ef69e930da81
-ai_draft:
-  model_id: gemini-2.5-flash
-  model_version: gemini-2.5-flash
-  azure_deployment: gemini-api
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 1404827e0d7cd0c7ade9a934d05aa8ed4f935ab0a40000d56e937f5f45cb5593
-  timestamp: '2026-05-27T22:32:35Z'
-  output_hash: 63fa6f59512b067add324f25360efbbbd0e6ee45e8a0526d56f24c81c296d891
-  usage:
-    prompt_tokens: 1226
-    completion_tokens: 639
-    total_tokens: 4887
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T09:59:19Z'
+  previous_text: A psalm of David[a]. Yahweh[b] is my shepherd; I will lack nothing.
+  previous_model: gemini-2.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3a45464879fc4f69b40bd08bf4efc963c790d2920b8ff45f8e0159ec133ade24
+  review_summary: Revise for a genuine, source-warranted readability improvement. “I will not be in need” communicates the same sense as “I will lack nothing” in more ordinary modern English and does not specify what kinds of provision are in view. Retain “shepherd,” since it is the governing biblical metaphor and should not be flattened into an interpretive paraphrase. The superscription footnote appropriately preserves the live ambiguity of לְדָוִד.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

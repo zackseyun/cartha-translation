@@ -34,38 +34,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He is not God of the dead, but of the living. You are greatly mistaken.”
+  text: He is not the God of dead people, but of living people. You are greatly mistaken.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: He is not God of the dead[a], but of the living[b]. You are greatly mistaken.
-  simplified_phrase: He is not God of the dead, but of the living. You are greatly mistaken.”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+- pob_phrase: God of the dead, but of the living
+  simplified_phrase: the God of dead people, but of living people
+  preserved_meaning: The contrast remains between dead and living people in relation to God.
+  reasoning_layer_used: POB lexical decisions for νεκρῶν and ζώντων
+  rationale: Making “people” explicit helps readers understand the substantival phrases immediately.
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Living people” could be read as resolving Jesus’ argument too narrowly.
+    mitigation: The wording preserves POB’s simple contrast without explaining resurrection or the intermediate state.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/027.yaml
   source_text_sha256: 5b36fb816e2056a71462932d043a9ea72329dc724c09f7e2213a8afbe95fd2cc
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 717cb959446b4cc48eff7739058d57ad49dfa62ba9191e7a930a63849f1bf71e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d82c4dc9d2e8077cf59ccc0bd3a67f7bb4faaa93ec9a82026fd6f22850474153
+  timestamp: '2026-07-12T07:21:33Z'
+  output_hash: 359078b36a79c4ca7dabf3dc4802248bb51ec6105efd49a47ccd2ef0bde7c2f8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3168
+    completion_tokens: 195
+    total_tokens: 3363
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:33Z'
+  previous_text: He is not God of the dead, but of the living. You are greatly mistaken.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 9935f259b21dbd0e7c3129df2492b7e5319b6d160a3d47102eb0835766c1cbbc
+  review_summary: The draft preserves the verse’s meaning and appropriately avoids adding conclusions about resurrection or the state of the dead. However, it contains a stray closing quotation mark and makes no substantive clarity improvement over POB. The recommended text retains the contrast and rebuke while making the substantival phrases “the dead” and “the living” explicit for contemporary readers.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

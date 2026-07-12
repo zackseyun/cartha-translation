@@ -34,7 +34,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When it was full, they pulled it up onto the shore. Then they sat down, gathered the good fish into containers, and threw the rotten ones away.[a][b]
+  text: When it was full, they pulled it up onto the shore. Then they sat down, gathered the good fish into containers[a], and threw the rotten ones out.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -44,35 +44,56 @@ translation:
     text: Or “the bad ones”; the Greek word can mean rotten, spoiled, or generally worthless.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: When it was filled
+  simplified_phrase: When it was full
+  preserved_meaning: The net had become full of fish.
+  reasoning_layer_used: POB lexical decision for ἐπληρώθη
+  rationale: “Was full” is a listed alternative and is more natural in common English.
+- pob_phrase: they pulled it up onto the shore, sat down
+  simplified_phrase: they pulled it up onto the shore. Then they sat down
+  preserved_meaning: The fishermen pulled the net ashore before sitting to sort the fish.
+  reasoning_layer_used: POB translation and lexical decisions for the sequential participles
+  rationale: Two sentences and “Then” make the action sequence easier to follow.
+- pob_phrase: threw the rotten ones out
+  simplified_phrase: threw the rotten ones out
+  preserved_meaning: The unusable fish were forcefully rejected and cast outside.
+  reasoning_layer_used: POB lexical decision for ἔξω ἔβαλον
+  rationale: Retaining “out” preserves the source expression’s spatial force in ordinary English.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Rotten” may sound narrower than the Greek word’s broader sense of worthless or bad.
+    mitigation: Footnote b preserves the broader lexical range.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/048.yaml
   source_text_sha256: 68637bdffc8ce8239c535bbae7e8cde3ad40d7c4f6582d803b25e86872ab4f89
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 2e03a1d01469375fa14a6d30c6a08017dea47d3767aadd2a4c38583ff9e52c4b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 46ded60a3a8298cb31b8c245c3b898bf46e56442a590fd146bab70934f3cec1e
+  timestamp: '2026-07-12T07:48:48Z'
+  output_hash: f9f5e3177ac8d05901432ba16116a395e5e00bdee80ac8f06c1950d55054480f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3536
+    completion_tokens: 422
+    total_tokens: 3958
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:48:48Z'
+  previous_text: When it was full, they pulled it up onto the shore. Then they sat down, gathered the good fish into containers, and threw the rotten ones away.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0e0d0a3314766324e545ced153a5a7a1849f76707339728080d3a4c62e594831
+  review_summary: The draft appropriately remains within the fishing image and does not import the following judgment explanation. “Full,” the shorter sentence structure, and explicit “fish” are clear, source-warranted simplifications. Revise only to retain “out” for the explicit force of ἔξω and to attach the lexical notes to their respective terms.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

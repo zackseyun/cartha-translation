@@ -31,41 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'The second is this: ‘You shall love your neighbor as yourself.’ No other commandment is greater than these.”'
+  text: 'The second is this: “You shall love your neighbor as yourself.” No other commandment is greater than these two.'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: 'The second is this: ‘You shall love your neighbor as yourself.’ There is no other commandment greater than these[a].'
-  simplified_phrase: 'The second is this: ‘You shall love your neighbor as yourself.’ No other commandment is greater than these.”'
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: neighbor
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: There is no other commandment greater than these.
+  simplified_phrase: No other commandment is greater than these two.
+  preserved_meaning: No commandment surpasses the two commandments Jesus has named.
+  reasoning_layer_used: POB lexical and theological decisions on τούτων
+  rationale: The shorter syntax is natural English, while “these two” clearly preserves the plural contextual reference.
+interpretive_expansions:
+- pob_phrase: these
+  rendering: these two
+  claim: The plural refers to the two commandments Jesus has just named.
+  evidence:
+  - The POB footnote and theological decision identify the referent as both commandments together.
+  - The Greek demonstrative τούτων is plural.
+  confidence: high
+  alternatives_preserved:
+  - these
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/031.yaml
   source_text_sha256: f9d3c4194d8795d614baa10a3ca69f9c3bb423011fcf06b6248bb316e808b07f
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 5105f61d6b77c5564f018ac025b8cd52f3f0ec80b27b44ce3df6d3e3c1e62b1e
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4f2ccbd5a610ad1527799f5398a1a6a932ed4a918b25ebbe78c5cbec23ca33ba
+  timestamp: '2026-07-12T07:21:38Z'
+  output_hash: ce03be716243f7ec7074f4d6c1fce5440d8840125e27da50cffcfa91b27d934b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3227
+    completion_tokens: 237
+    total_tokens: 3464
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: neighbor
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:38Z'
+  previous_text: 'The second is this: ‘You shall love your neighbor as yourself.’ No other commandment is greater than these.”'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 51995add91ec9697a0c6b28acd02d27237ee7adc32671ff927508545c6a15d2b
+  review_summary: Revise for a small but meaningful clarity improvement and corrected punctuation. “No other commandment” is clear and faithful, but “these two” explicitly carries the source’s plural reference to the two commandments established by the immediate context and POB audit trail.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

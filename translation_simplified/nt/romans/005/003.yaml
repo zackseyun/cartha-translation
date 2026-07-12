@@ -36,19 +36,59 @@ base_translation:
     changes_summary: Removed 'our' before 'afflictions' because it is not present in the Greek. Kept the rest unchanged as accurate and natural.
 translation:
   language: en
-  text: Not only that, but we also rejoice[a] in afflictions, knowing that affliction produces endurance[b].
+  text: Not only do we rejoice in the hope of God’s glory, but we also rejoice[a] in afflictions, because we know that affliction produces endurance[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “boast” or “glory.”
+    text: Or “boast” or “exult.”
     reason: lexical_alternative
   - marker: b
     text: Or “perseverance” or “steadfastness.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Trimming the opening coordinating conjunction 'And' creates a cleaner and more direct transition in modern English, while preserving the logical connection to the preceding verse.
-  reasoning_layer_used: POB audit trail
-  rationale: Trimming the opening coordinating conjunction 'And' creates a cleaner and more direct transition in modern English, while preserving the logical connection to the preceding verse.
+- pob_phrase: And not only that
+  simplified_phrase: Not only do we rejoice in the hope of God’s glory
+  preserved_meaning: The opening still links this rejoicing to the rejoicing stated in the preceding verse.
+  reasoning_layer_used: Immediate context and POB audit trail
+  rationale: Naming the backward reference makes Paul’s comparison clear when the verse is read alone.
+- pob_phrase: knowing that
+  simplified_phrase: because we know that
+  preserved_meaning: Knowledge that affliction produces endurance grounds the rejoicing.
+  reasoning_layer_used: POB lexical decision for εἰδότες
+  rationale: A causal clause states the connection more naturally in common English.
+interpretive_expansions:
+- pob_phrase: And not only that
+  rendering: Not only do we rejoice in the hope of God’s glory
+  claim: “That” refers to rejoicing in the hope of God’s glory in the preceding verse.
+  evidence:
+  - Romans 5:2 immediately states that we rejoice in the hope of God’s glory.
+  - The POB audit describes the opening as a logical continuation of the preceding verse.
+  confidence: high
+translation_notes:
+  risk_flags:
+  - risk: Repeating words from Romans 5:2 adds context not present within the Greek wording of verse 3 itself.
+    mitigation: The expansion is limited to the explicit antecedent immediately before this verse.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/005/003.yaml
+  source_text_sha256: 81968221bac56dd4d7973cfc608e415285026154aadac4ae3dd6b0289e8a0907
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 58d0570e7b1395a88eaddcadded547d1a55e338d499a66e217bbec83c294ce74
+  timestamp: '2026-07-12T07:41:11Z'
+  output_hash: c9c20a2f522b6440012849d094084c17bbf73b82105eced81f521061f6722f1a
+  usage:
+    prompt_tokens: 3348
+    completion_tokens: 432
+    total_tokens: 3780
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: afflictions / affliction
   reason: Retained to preserve POB's source-grounded terminology.
@@ -56,30 +96,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: endurance
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: We preserved the absence of the pronoun 'our' before 'afflictions' in accordance with the SBLGNT source and the latest POB revision. The active participle 'knowing' (εἰδότες) was kept to preserve the original causal structure without over-interpreting.
-  readability_notes:
-  - By removing the redundant leading conjunction, the flow of the sentence becomes smoother and more direct for a modern reader, while the gravity of the theological progression remains intact.
-  compression_notes:
-  - No clauses or words were omitted or compressed. The complete structure and developmental logic of the POB statement are fully represented.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/005/003.yaml
-  source_text_sha256: 81968221bac56dd4d7973cfc608e415285026154aadac4ae3dd6b0289e8a0907
-  pob_commit_sha: 20c1dccbe85dbf1746bf223964859ff573d977d9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: aee84129260820f5459e2dfb7bf3ea1800764b5e3f140d7c412ea674d6a71c4a
-  timestamp: '2026-05-28T07:25:55Z'
-  output_hash: 5f2a44299ab9ece3898d07e4da14170fae45b30bdbed17a8746c99f3be187931
-  usage:
-    prompt_tokens: 1776
-    completion_tokens: 636
-    total_tokens: 6303
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:11Z'
+  previous_text: Not only that, but we also rejoice[a] in afflictions, knowing that affliction produces endurance[b].
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: cea16e198366e06b4f76b625781df33dd908f061aee551e69ed8a47fb07c0f51
+  review_summary: The draft preserves the POB’s meaning and introduces no doctrinal expansion, but its sole simplification is too slight to meet the requirement for a meaningfully clearer SPOB rendering. Making the preceding referent explicit is warranted by the immediate context, and rendering the causal force of “knowing” as “because we know” makes Paul’s reasoning clearer without adding a new claim.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

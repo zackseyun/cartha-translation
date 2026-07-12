@@ -34,17 +34,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 11:7 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''what it is seeking''].'
 translation:
   language: en
-  text: What then? Israel did not obtain what it was seeking, but the elect obtained it, and the rest were hardened.[a]
+  text: What then? Israel did not obtain what it was seeking. But the people God chose obtained it, and the rest were hardened.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'were made callous'; the passive wording does not name the agent.
+    text: Or “were made callous”; the passive wording does not say who hardened them.
     reason: simplification_note
 simplification_decisions:
-- simplified_phrase: the elect
-  preserved_meaning: Preserves the POB choice to refer to the chosen people rather than the abstract idea of election.
-  reasoning_layer_used: POB audit trail
-  rationale: The wording stays direct and keeps the contrast between Israel, the elect, and the rest.
+- pob_phrase: the elect
+  simplified_phrase: the people God chose
+  preserved_meaning: This refers to the chosen people, not the abstract idea of election.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The plain wording explains the theological label while preserving the contrast with the rest.
+- pob_phrase: What then? Israel did not obtain what it seeks, but
+  simplified_phrase: What then? Israel did not obtain what it was seeking. But
+  preserved_meaning: Israel's pursuit and its failure to obtain the object remain in contrast with the chosen people's success.
+  reasoning_layer_used: POB lexical decisions and target readability style
+  rationale: Splitting the long contrast into two sentences makes the argument easier to follow.
+interpretive_expansions:
+- pob_phrase: the elect
+  rendering: the people God chose
+  claim: The expression refers to people characterized by God's choosing.
+  evidence:
+  - The POB audit identifies the term as a metonymy for the people chosen.
+  - The immediate contrast with “the rest” shows that persons are in view.
+  confidence: high
+  alternatives_preserved:
+  - the elect
+  - the chosen
+translation_notes:
+  risk_flags:
+  - risk: “God chose” makes the implied chooser explicit.
+    mitigation: The POB theological decision itself defines the group as the people chosen by God.
+  - risk: Readers may infer an agent for “were hardened.”
+    mitigation: The passive remains unchanged, and the footnote says the verse does not name the agent.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/romans/011/007.yaml
+  source_text_sha256: c4c80bee221b203d6ad507788b3affe0624ccd3b77701a80e25ac477ff06d6bb
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 742bf08c392dcb471cb971cea79a6dd6ef3292899d8a27a0a48f1b841229337a
+  timestamp: '2026-07-12T07:42:35Z'
+  output_hash: beac1726df137f9067559c3ddfb7a322ff5ee7d87fb4abc38fb730a3437ad77d
+  usage:
+    prompt_tokens: 3770
+    completion_tokens: 424
+    total_tokens: 4194
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Israel
   reason: Retained as the subject of the argument.
@@ -52,30 +96,13 @@ retained_terms:
   reason: Retained as the POB rendering of the chosen people.
 - term: hardened
   reason: Retained without specifying the agent.
-translation_notes:
-  source_alignment_notes: Preserves the three-part contrast in the verse.
-  readability_notes:
-  - Uses 'was seeking' to match the ongoing search in simple English.
-  compression_notes:
-  - No interpretive agent is added to the passive hardening.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/romans/011/007.yaml
-  source_text_sha256: c4c80bee221b203d6ad507788b3affe0624ccd3b77701a80e25ac477ff06d6bb
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:46:06Z'
-  output_hash: 8e9f81bf4861da6c379837e24a2f9166ba2d0c18e007723ebb14cc16c9942156
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:35Z'
+  previous_text: What then? Israel did not obtain what it was seeking, but the elect obtained it, and the rest were hardened.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8fa54243f3c17504b70b399a4a1d7ca4e02be226e0819a1a152d8ec1e2ff4a06
+  review_summary: The draft faithfully preserves the unstated agent of “were hardened” and its footnote is warranted. However, simply retaining “the elect” does not provide a meaningful understanding-first improvement over POB for readers unfamiliar with this theological term. “The people God chose” makes explicit the person-reference established by the Greek, the immediate contrast with “the rest,” and the POB audit trail, without resolving any further doctrinal question.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

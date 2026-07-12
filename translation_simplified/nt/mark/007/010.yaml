@@ -34,41 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For Moses said, ‘Honor your father and your mother,’ and, ‘Whoever speaks evil of father or mother must surely die.’
+  text: 'For Moses said: “Honor your father and your mother.” He also said: “Anyone who speaks evil of a father or mother must certainly die.”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: For Moses said
-  simplified_phrase: For Moses said
-  preserved_meaning: Keeps the appeal to Moses and both cited commands.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB wording is already clear, so only punctuation and flow are preserved.
-retained_terms:
-- term: Moses
-  reason: Preserves the legal-scriptural authority named by POB.
+- pob_phrase: For Moses said ... and ...
+  simplified_phrase: For Moses said ... He also said ...
+  preserved_meaning: Keeps both sayings as Moses’ supporting testimony while separating them for clarity.
+  reasoning_layer_used: Immediate context and POB connective rationale
+  rationale: Two complete sentences make the paired quotations easier to follow.
+- pob_phrase: Whoever speaks evil of
+  simplified_phrase: Anyone who speaks evil of
+  preserved_meaning: Retains the broad reference to any person and the verb’s general sense of reviling or cursing.
+  reasoning_layer_used: POB lexical decision for Ὁ κακολογῶν
+  rationale: “Anyone who” is more natural modern English without narrowing the offense.
+- pob_phrase: must surely die
+  simplified_phrase: must certainly die
+  preserved_meaning: Preserves both the required legal consequence and the certainty expressed by the formula.
+  reasoning_layer_used: POB lexical and theological decisions for θανάτῳ τελευτάτω
+  rationale: “Must certainly die” makes the legal formula transparent without specifying execution.
 translation_notes:
-  source_alignment_notes: Preserves both the honor command and the death-penalty warning.
-  readability_notes:
-  - Keeps the direct quotation because it is already accessible.
-  compression_notes:
-  - No command is removed.
+  risk_flags:
+  - risk: “Speaks evil of” may be understood more broadly than formal cursing.
+    mitigation: The wording follows POB’s chosen broad lexical sense rather than narrowing the verb.
+  - risk: “Must certainly die” may sound descriptive rather than judicial.
+    mitigation: The word “must” retains the formula’s obligatory legal force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/007/010.yaml
   source_text_sha256: 0614b3809ffb37d0aec70e671ef2c41db472fcf7672a6f7a5ce808056c3ae45e
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:01:59Z'
-  output_hash: 0dc25dc5130a70eaa4f87ebeb3abc84e03efc241c7cd1fd89c4f399c294277a8
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 442c1d7437df83a4f632a6db258c8d850aac683b4466ec0b3a0a4e0fd649753e
+  timestamp: '2026-07-12T07:24:25Z'
+  output_hash: fc3dd23fbb9078474d50614a3965798e41fd6a17a7701c468ffee6685ece0283
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3248
+    completion_tokens: 385
+    total_tokens: 3633
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Moses
+  reason: Preserves the legal-scriptural authority named by POB.
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:25Z'
+  previous_text: For Moses said, ‘Honor your father and your mother,’ and, ‘Whoever speaks evil of father or mother must surely die.’
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5dcd8e135615bb27b6f2ce53ce998a75301cc71d2e78ac35440ccb33d66d91f4
+  review_summary: Revise for actual SPOB-level clarity. The draft is faithful and introduces no doctrinal expansion, but it merely reproduces POB rather than simplifying it. The recommended wording makes the paired citations easier to follow and modernizes the legal formula while preserving its certainty and avoiding the interpretive overstatement “must be put to death.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,45 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Those who ate the loaves were five thousand men[a].
+  text: The number of men who ate the loaves was five thousand.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Greek word here refers specifically to adult males, not people in general.
+    text: The Greek word refers specifically to adult males, not people in general.
     reason: simplification_note
 simplification_decisions:
-- pob_phrase: And those who ate the loaves
-  simplified_phrase: Those who ate the loaves
-  preserved_meaning: Keeps the counting statement while trimming the opening connector.
-  reasoning_layer_used: POB audit trail
-  rationale: The verse is already plain and should remain concise.
-retained_terms:
-- term: loaves
-  reason: Preserves the reference to the bread in the feeding account.
+- pob_phrase: those who ate the loaves were five thousand men
+  simplified_phrase: the number of men who ate the loaves was five thousand
+  preserved_meaning: The reported figure is the number of men who ate the specific loaves.
+  reasoning_layer_used: POB lexical and theological decisions on ἄνδρες
+  rationale: Recasting the sentence around “the number of men” makes clear that five thousand is the stated male count.
+interpretive_expansions:
+- pob_phrase: were five thousand men
+  rendering: the number of men ... was five thousand
+  claim: The figure reports how many men ate.
+  evidence:
+  - The Greek copular clause states the total as five thousand men.
+  - POB requires ἄνδρες to remain specifically male.
+  confidence: high
+  alternatives_preserved:
+  - The verse does not state the total number of all people present.
 translation_notes:
-  source_alignment_notes: Preserves the counted group, the loaves, the number five thousand, and the male-specific term.
-  readability_notes:
-  - Adds a brief note so readers understand the gender-specific count.
-  compression_notes:
-  - No numerical detail is removed.
+  risk_flags:
+  - risk: Readers may assume five thousand was the total attendance.
+    mitigation: The main text identifies it as the number of men, and the footnote explains the male-specific Greek term.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/044.yaml
   source_text_sha256: c9a9be7122b5e1bc383a20e4181816304816eb859fd629308282dae62a12f078
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:46Z'
-  output_hash: 2bddb05526493bded4b33f5ad419190cf901d8c875b9eab6bf5fbcfe2dd8d56b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f6e5427f18a4bc60d16800f0d17e50f5876c3256f89e173eff9afb93bca68aae
+  timestamp: '2026-07-12T07:20:39Z'
+  output_hash: aac7e023dbafb6b2d7fda1ed843b9c95cff93de1aeac22c3542548c33dc8acda
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2979
+    completion_tokens: 672
+    total_tokens: 3651
+    reasoning_tokens: 342
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: loaves
+  reason: Preserves the reference to the bread in the feeding account.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:39Z'
+  previous_text: Those who ate the loaves were five thousand men[a].
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 804622f98c0d0aa933332b0f7450ba6e01a6575845c219a43bf8653007b0406e
+  review_summary: 'Revise because the proposed wording is not meaningfully clearer than POB: it only removes the opening connector. The verse itself is already concise and accurate, and its footnote appropriately preserves the male-specific sense of ἄνδρες. The supplied text is publication-ready in substance, but it does not meet the stated threshold for approval as a meaningful simplification.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

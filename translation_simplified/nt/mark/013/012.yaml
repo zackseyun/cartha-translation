@@ -34,38 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Brother will hand over brother to death, and a father will hand over his child. Children will rise up against parents and have them put to death.
+  text: Brother will hand over brother to death, and a father will hand over his child. Children will rise up against their parents and put them to death.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And brother will hand over brother to death[a], and a father his child[b], and children will rise up against parents and put them to death.
-  simplified_phrase: Brother will hand over brother to death, and a father will hand over his child. Children will rise up against parents and have them put to death.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+- pob_phrase: and a father his child
+  simplified_phrase: and a father will hand over his child
+  preserved_meaning: The father's action remains the same as the brother's action in the preceding clause.
+  reasoning_layer_used: Greek clause structure and POB lexical decision for παραδώσει
+  rationale: Repeating “will hand over” makes the implied verb clear in natural English.
+- pob_phrase: children will rise up against parents
+  simplified_phrase: Children will rise up against their parents
+  preserved_meaning: Children turn against their own parents in violent hostility.
+  reasoning_layer_used: Immediate family context and POB lexical decisions for τέκνα, ἐπαναστήσονται, and γονεῖς
+  rationale: Adding “their” clearly expresses the family relationship already present in context.
+- pob_phrase: and put them to death
+  simplified_phrase: and put them to death
+  preserved_meaning: The children remain the direct agents who kill their parents.
+  reasoning_layer_used: Greek active verb θανατώσουσιν and POB chosen rendering
+  rationale: The direct wording avoids implying that the children merely arrange the deaths.
+interpretive_expansions:
+- pob_phrase: parents
+  rendering: their parents
+  claim: The parents are the parents of the children who rise against them.
+  evidence:
+  - The verse consistently describes betrayal within immediate family relationships.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/012.yaml
   source_text_sha256: f97a994eae210f2a91279eb239353e04f04b2af324c17b73ee16cbc64a8604e6
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: 5ed97e7b2f2a504e049ae731cdad7d727245b7f4184d09b369e72da10b551f5a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8cf86e92a4ca24225caef4f463556f3998f0fd83ec994f17ff2b15578ab595d4
+  timestamp: '2026-07-12T07:21:53Z'
+  output_hash: da0014cfed1e9f87cb08c9c929ec964f53dacb4490bc1685b88b002f2db2b252
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3383
+    completion_tokens: 386
+    total_tokens: 3769
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:53Z'
+  previous_text: Brother will hand over brother to death, and a father will hand over his child. Children will rise up against parents and have them put to death.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 96443170df5cb14d538b2c44503a918e4db649aa0df81cc80d10e88bfafb53d9
+  review_summary: Supplying “will hand over” in the father clause appropriately makes the Greek ellipsis explicit and improves readability without adding doctrine. However, “have them put to death” introduces an unwarranted indirect-causation nuance. Retain the direct active action stated by the source. Adding “their” clarifies the family relationship already indicated by the context and pronoun.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

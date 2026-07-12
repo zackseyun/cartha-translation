@@ -31,17 +31,40 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So they asked him, "Who is the man who told you, 'Pick it up and walk'?"
+  text: So they asked him, “Who is the man who said to you, ‘Pick it up and walk’?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: who told you
-  preserved_meaning: Changed 'said to you' to 'told you' to make the dialogue sound more natural and less formal in modern English.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'said to you' to 'told you' to make the dialogue sound more natural and less formal in modern English.
-- simplified_phrase: Pick it up [without footnote]
-  preserved_meaning: Omitted the footnote explaining that 'it' refers to the mat. In the narrative flow, a modern reader will easily understand what 'it' refers to from the preceding verses, making the explanatory footnote unnecessary.
-  reasoning_layer_used: POB audit trail
-  rationale: Omitted the footnote explaining that 'it' refers to the mat. In the narrative flow, a modern reader will easily understand what 'it' refers to from the preceding verses, making the explanatory footnote unnecessary.
+- pob_phrase: 'Greek: ‘Take up and walk,’ with the object implied'
+  simplified_phrase: ‘Pick it up and walk’ without a footnote
+  preserved_meaning: The implied object remains clear from the preceding account of the man’s mat.
+  reasoning_layer_used: POB footnote and immediate narrative context
+  rationale: The continuous narrative makes the technical note unnecessary for ordinary reading.
+translation_notes:
+  risk_flags:
+  - risk: The pronoun “it” is unclear if the verse is read alone.
+    mitigation: In context, the preceding verses repeatedly identify the object as the man’s mat.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/005/012.yaml
+  source_text_sha256: 356e8e2eb06cae3f00670b175e78a9a0e89581390028937f5546e537d5d52d60
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 93508754db27fa7445f407a0ef31ffa3b78e667eae97d13cc2c485e5f4ff52d6
+  timestamp: '2026-07-12T07:14:09Z'
+  output_hash: 7e10f978b6191b9d8dcbf838fdb886f50a624eb49849a4aca10195d96f9f1efb
+  usage:
+    prompt_tokens: 3367
+    completion_tokens: 198
+    total_tokens: 3565
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: asked
   reason: Retained to preserve POB's source-grounded terminology.
@@ -49,33 +72,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: walk
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Preserves the grammatical structure of the Greek interrogative (Τίς ἐστιν...) and respects the elliptical nature of the verb 'Ἆρον' (pick up) without falsely harmonizing it to include 'mat' inside the direct quote.
-  readability_notes:
-  - The dialogue flows much more smoothly with 'told you' and the removal of the explanatory footnote, which is unnecessary for a modern reader following the narrative.
-  compression_notes:
-  - Streamlined the text by removing the technical footnote while keeping the biblical text fully intact.
-  risk_flags:
-  - risk: None
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/005/012.yaml
-  source_text_sha256: 356e8e2eb06cae3f00670b175e78a9a0e89581390028937f5546e537d5d52d60
-  pob_commit_sha: 596da3b17d97fa6f4043e86c5421db337bf2c1d2
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: f9044b8390094791b66b14b45f49a8019158e75ea2355fc15605186d0c5be051
-  timestamp: '2026-05-28T06:14:15Z'
-  output_hash: d55c48a19190118edbd4631f3edc8918ee59325284119a1943b7edaae61bd978
-  usage:
-    prompt_tokens: 1621
-    completion_tokens: 383
-    total_tokens: 4627
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:09Z'
+  previous_text: So they asked him, "Who is the man who told you, 'Pick it up and walk'?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: f63f54e29bff41ebbed62b5d33d122ed4473f9b86ef920d650f80c6782490c7f
+  review_summary: Revise narrowly. The draft is readable and doctrinally sound, and omitting the lexical footnote is acceptable in the narrative flow. But “told you” slightly shifts the source’s neutral speech verb toward directive language without providing a meaningful clarity gain over “said to you.” Retain the POB wording for source precision.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,40 +34,58 @@ base_translation:
     changes_summary: Reordered the first clause to account for the future passive verb more naturally and to avoid the awkward ending with a preposition. Kept 'against the Spirit' to express the genitive clearly in English.
 translation:
   language: en
-  text: Therefore I tell you, every sin and blasphemy will be forgiven people, but blasphemy against the Spirit will not be forgiven.[a]
+  text: Therefore I tell you, people will be forgiven for every sin and blasphemy, but blasphemy against the Spirit will not be forgiven.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "blasphemy against the Holy Spirit." The surrounding context identifies the Spirit as the Holy Spirit.
+    text: Or “blasphemy against the Holy Spirit.” The surrounding context identifies the Spirit as the Holy Spirit.
     reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: every sin and blasphemy will be forgiven people
+  simplified_phrase: people will be forgiven for every sin and blasphemy
+  preserved_meaning: People are the recipients of forgiveness for every kind of sin and blasphemy.
+  reasoning_layer_used: POB lexical decision for τοῖς ἀνθρώποις and applied readability review
+  rationale: Making “people” the subject produces natural English without changing who receives forgiveness.
+- pob_phrase: blasphemy against the Spirit
+  simplified_phrase: blasphemy against the Spirit
+  preserved_meaning: The Spirit is the object of the blasphemy, and the verse itself does not include “Holy.”
+  reasoning_layer_used: POB lexical and theological decisions for τοῦ πνεύματος
+  rationale: The key wording is retained because replacing it would obscure the source-text distinction documented by POB.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may not immediately identify “the Spirit” as the Holy Spirit.
+    mitigation: The footnote gives the contextually supported identification while preserving the verse’s wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/031.yaml
   source_text_sha256: 97c89bef801bec2044929762d2fcfcb98d40ae0026dc568b24de4a3911d22030
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:35Z'
-  output_hash: 91476654c5e72e7ac22e90f6102b65ddbccee481c70c608463241d85a61fe8b7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9237258df3b979176d6c7e50e063c764ea58931d5e5da24a3eb7215e7c952b68
+  timestamp: '2026-07-12T07:36:33Z'
+  output_hash: 5ea56e04dcc90fc987711e49160e97b9ec10d3fe37ddc046a16bc1d098fb45de
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3761
+    completion_tokens: 352
+    total_tokens: 4113
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:33Z'
+  previous_text: Therefore I tell you, every sin and blasphemy will be forgiven people, but blasphemy against the Spirit will not be forgiven.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b6525c8ccfc773126dfd93a575bb1c3e6db8a6e57c7c58f752a851b70b00d612
+  review_summary: Revise for readability, not doctrine. “Against the Spirit” is textually warranted and appropriately retains the verse’s wording while the footnote supplies the contextually clear Holy Spirit referent. Reordering the first clause to “people will be forgiven for every sin and blasphemy” expresses the same passive-forgiveness sense in clear contemporary English; the proposed draft’s “will be forgiven people” is not a meaningful simplification.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

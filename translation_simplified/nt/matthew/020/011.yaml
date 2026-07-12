@@ -31,41 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After receiving it, they began grumbling against the master of the house,
+  text: After receiving their pay, they began grumbling against the landowner,
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Removed an unneeded opening connective and kept 'grumbling' to preserve the complaint's tone.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed an unneeded opening connective and kept 'grumbling' to preserve the complaint's tone.
-retained_terms:
-- term: grumbling
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: master of the house
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: 'Preserves the sequence: receiving the wage, then grumbling against the master.'
-  readability_notes:
-  - The sentence keeps the verse's continuation into the next verse.
-  compression_notes:
-  - No content is removed.
+- pob_phrase: after receiving it
+  simplified_phrase: after receiving their pay
+  preserved_meaning: The workers first received the payment implied by the Greek and context.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: Naming their pay removes an unclear pronoun without adding a new event.
+- pob_phrase: the master of the house
+  simplified_phrase: the landowner
+  preserved_meaning: Their grumbling was directed against the head of the vineyard estate.
+  reasoning_layer_used: POB lexical alternative and parable setting
+  rationale: Landowner naturally conveys the person’s role in this agricultural setting.
+interpretive_expansions:
+- pob_phrase: it
+  rendering: their pay
+  claim: The implicit object received was the workers’ payment.
+  evidence:
+  - Matthew 20:8–10 describes the workers receiving their wages.
+  - The POB lexical rationale identifies the implicit object as the denarius from context.
+  confidence: high
+  alternatives_preserved:
+  - it
+  - the denarius
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/020/011.yaml
   source_text_sha256: af4320c39b275aabccbd86a7fd7ad31b9c5e8d662ba6be5858bf7ea00b22f549
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:10:39Z'
-  output_hash: e724de046c89ca27b4aa7e7b294cef3ada6265ea48ee310bc13e45853accd2b2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4aece378137a42ce4e56aacde7796ed519aa6ad804891411ca15a55044d9cbbb
+  timestamp: '2026-07-12T07:38:14Z'
+  output_hash: a5299e6a60613dd5907de846ea4e8faf44b446e33ac1061d336296df896d8667
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2801
+    completion_tokens: 282
+    total_tokens: 3083
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: grumbling
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: master of the house
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:14Z'
+  previous_text: After receiving it, they began grumbling against the master of the house,
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d2a20a0646accc64b8acf7246d2535a3e4aa5b31bd3f6abdb723e64cc75e06de
+  review_summary: The omission of the mild narrative connective is warranted, and “began grumbling” faithfully preserves the imperfect verb’s dissatisfied, onset-focused sense. However, SPOB should make the implicit payment explicit and use the contextually warranted “landowner” rather than the opaque literal phrase “master of the house.” These are source- and context-grounded readability improvements, not doctrinal additions.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

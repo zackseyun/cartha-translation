@@ -31,43 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Although they wanted to arrest him, they were afraid of the crowds, because the crowds regarded him as a prophet.
+  text: Although they were trying to arrest him, they were afraid of the crowds, because the crowds regarded him as a prophet.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: they were seeking to arrest him
-  simplified_phrase: they wanted to arrest him
-  preserved_meaning: Preserves their hostile intent in simpler English.
+  simplified_phrase: they were trying to arrest him
+  preserved_meaning: Preserves their ongoing effort to arrest Jesus rather than reducing it to a desire.
+  reasoning_layer_used: POB lexical decision for ζητοῦντες
+  rationale: “Were trying” expresses active, continuing intent in clear modern English.
+- pob_phrase: they feared the crowds, because they regarded him as a prophet
+  simplified_phrase: they were afraid of the crowds, because the crowds regarded him as a prophet
+  preserved_meaning: Preserves both the leaders’ fear and the crowds’ assessment of Jesus.
   reasoning_layer_used: POB lexical and theological decisions
-  rationale: Retains the crowd's view of Jesus as a prophet without adding or denying further christological claims.
-retained_terms:
-- term: arrest
-  reason: Retained from POB's hostile-context rendering.
-- term: prophet
-  reason: Retained from POB's crowd-assessment wording.
-translation_notes:
-  source_alignment_notes: Preserves the leaders' intent, their fear, and the crowd's view of Jesus.
-  readability_notes:
-  - Uses 'wanted' for the ongoing intent and repeats 'crowds' for clarity.
-  compression_notes:
-  - No motive or restraint is omitted.
+  rationale: Repeating “the crowds” removes pronoun ambiguity without defining Jesus as only a prophet.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/021/046.yaml
   source_text_sha256: 57d61d32e69ee9b9b4ff3c497fccd217af8dec2cedc0a8d992b104cf43e7ecc4
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:14:47Z'
-  output_hash: ce9927b6cf57b56f2f9b00539bf79eb8a033166c9f3065f1365d5977c510b7dc
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e0a650e39a6a50648a4bccdfebfdf61700a9f4c5eb93fbc4c947e1bd0a71cba7
+  timestamp: '2026-07-12T07:38:33Z'
+  output_hash: 1e2d8b54ee0f4a42435b812281595fb003ca7aeff6800bf17d6422ee3afeef42
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3110
+    completion_tokens: 245
+    total_tokens: 3355
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: arrest
+  reason: Retained from POB's hostile-context rendering.
+- term: prophet
+  reason: Retained from POB's crowd-assessment wording.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:33Z'
+  previous_text: Although they wanted to arrest him, they were afraid of the crowds, because the crowds regarded him as a prophet.
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7089e4d62f4d4cf80c5c3ca1b478b2d4a726a21871fc74e20c9417048c4336d1
+  review_summary: Repeating “the crowds” helpfully removes the possible pronoun-reference difficulty and preserves that this is the crowds’ assessment of Jesus, not a doctrinal limitation on his identity. However, “wanted” reduces the source verb’s active, ongoing pursuit to desire. “Were trying to arrest” is plain modern English and retains the contextual force.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,45 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But he answered them, "You give them something to eat." They said to him, "Should we go and buy bread worth two hundred denarii[a] and give it to them to eat?"
+  text: But he replied, “You yourselves give them something to eat.” They asked him, “Should we go and buy bread for two hundred denarii[a] and give it to them to eat?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: A denarius was a common daily wage for a worker or soldier, so two hundred denarii was a large amount.
-    reason: simplification_note
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: You yourselves give them something to eat
-  simplified_phrase: You give them something to eat
-  preserved_meaning: Keeps Jesus' direct command to the disciples while using a punchier common-English form.
-  reasoning_layer_used: POB audit trail
-  rationale: The emphatic force remains in the direct command even without 'yourselves.'
-retained_terms:
-- term: denarii
-  reason: Preserves the historical currency with an explanatory note.
+- pob_phrase: answered and said to them
+  simplified_phrase: replied
+  preserved_meaning: He responds directly to the disciples.
+  reasoning_layer_used: POB lexical decision for ἀποκριθεὶς εἶπεν
+  rationale: “Replied” expresses the narrative pairing naturally without changing its function.
+- pob_phrase: And they said to him
+  simplified_phrase: They asked him
+  preserved_meaning: The disciples respond with a deliberative question.
+  reasoning_layer_used: Immediate syntax and POB deliberative-question analysis
+  rationale: “Asked” clearly introduces their question in ordinary English.
+- pob_phrase: for two hundred denarii
+  simplified_phrase: for two hundred denarii
+  preserved_meaning: The amount states the proposed purchase cost, not merely the bread’s appraised value.
+  reasoning_layer_used: POB lexical decision for δηναρίων διακοσίων
+  rationale: Retaining “for” preserves the source construction’s price sense.
 translation_notes:
-  source_alignment_notes: Preserves Jesus' command, the disciples' question, the bread purchase, two hundred denarii, and feeding the crowd.
-  readability_notes:
-  - Adds a brief currency footnote to make the cost understandable.
-  compression_notes:
-  - No dialogue content is removed.
+  risk_flags:
+  - risk: Modern readers may not know the value of a denarius.
+    mitigation: The footnote explains that it was a daily wage and that the total was large.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/037.yaml
   source_text_sha256: 038a71c65cb137701d0e2bcc2bdde0346e349d2e8179a2d27319739542c404c9
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:45Z'
-  output_hash: 7ba3fd8e092e27b84834dfc64c6474caac2e1090b4a7a2984f853a505c3ef98b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c8022129723e02b7a5a69f38db4d9ce8bdc31100add88d46bc585c40630b1d3c
+  timestamp: '2026-07-12T07:24:04Z'
+  output_hash: 432f24e001cda36cd150007860322bbf67a0725c4d2d8e42cb43bdebd287eb53
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3373
+    completion_tokens: 572
+    total_tokens: 3945
+    reasoning_tokens: 190
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: denarii
+  reason: Preserves the historical currency with an explanatory note.
+spob_revision_history:
+- timestamp: '2026-07-12T07:24:04Z'
+  previous_text: But he answered them, "You give them something to eat." They said to him, "Should we go and buy bread worth two hundred denarii[a] and give it to them to eat?"
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 1a6edb88fcc096fbdd915c36f4c87230aac339a36484cdde0024982d5a88c8ca
+  review_summary: The draft is generally clear and its explanatory note is warranted by the cultural value supplied in POB. However, it should retain the source's explicit emphasis in “you yourselves,” and “for two hundred denarii” more directly communicates the Greek price construction than “worth two hundred denarii.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

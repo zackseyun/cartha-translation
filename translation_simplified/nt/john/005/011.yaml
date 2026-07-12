@@ -34,43 +34,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But he answered them, “The one who made me well told me, ‘Pick up your mat[a] and walk.’”
+  text: But he answered them, “The man who made me well was the one who told me, ‘Pick up your mat[a] and walk.’”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “sleeping pad”; the Greek refers to a simple, portable mat or pallet.
+    text: Or “sleeping pad”; the Greek refers to a simple sleeping mat or pallet.
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: The POB preserves the emphatic Greek pronoun 'ἐκεῖνος' ('that one') with an em-dash. For a modern reader, this is clunky. Collapsing this into 'told me' preserves the natural flow of English dialogue without losing any narrative meaning.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB preserves the emphatic Greek pronoun 'ἐκεῖνος' ('that one') with an em-dash. For a modern reader, this is clunky. Collapsing this into 'told me' preserves the natural flow of English dialogue without losing any narrative meaning.
-retained_terms:
-- term: mat
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained alignment with the POB lexical choices of 'made me well' (from ποιήσας με ὑγιῆ) and 'mat' (from κράβαττον). The emphatic pronoun 'ἐκεῖνος' is smoothed into standard English indirect speech ('told me') to prioritize readability while keeping the semantic content identical.
-  readability_notes:
-  - Smoothed out the abrupt em-dash structure of the POB to create a naturally flowing sentence of spoken dialogue, using clear and accessible vocabulary.
-  compression_notes:
-  - Removed the emphatic stylistic repetition ('that one said to me') in favor of a direct conversational flow ('told me'). No narrative or theological details were omitted.
+- pob_phrase: The one who made me well—that one said to me
+  simplified_phrase: The man who made me well was the one who told me
+  preserved_meaning: The healer is specifically identified as the person who gave the command.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: Natural English preserves the emphatic force of “that one” without the awkward repetition.
+- pob_phrase: mat
+  simplified_phrase: mat[a]
+  preserved_meaning: The object was a simple sleeping mat rather than necessarily a full bed.
+  reasoning_layer_used: POB lexical decision for κράβαττος
+  rationale: The main text stays concise while the footnote clarifies the unfamiliar object.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/005/011.yaml
   source_text_sha256: 4fd7a856c0366d862fbcc7aae82e0a2dbf9c0207a4a46fd21aa97c8d50ca446c
-  pob_commit_sha: 596da3b17d97fa6f4043e86c5421db337bf2c1d2
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: ab9e4e3173a1e646bd7189bab73f7b5e63c44168c116b0c8140fae0a303f733f
-  timestamp: '2026-05-28T06:13:58Z'
-  output_hash: afc79baf5da28bc1a00b1412e2bd3f1a21204ff627ecd83c9f3cacf4e0750344
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f4b617f5226aaa19d95a606d586f5e28029053eb2d8fd232b7a1b4dc535b2090
+  timestamp: '2026-07-12T07:15:29Z'
+  output_hash: 67ab5ab9d402fb4e1781e5f085939a38ba58c03244567b5d95b4bebebe755583
   usage:
-    prompt_tokens: 1814
-    completion_tokens: 509
-    total_tokens: 6025
+    prompt_tokens: 3535
+    completion_tokens: 267
+    total_tokens: 3802
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: mat
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:29Z'
+  previous_text: But he answered them, “The one who made me well told me, ‘Pick up your mat[a] and walk.’”
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: b16a7d47857c62048f980dc0f3afb7bcb2b6fc8143a0cf9466fdeff270cceb12
+  review_summary: The draft is clearer than POB and rightly uses “told me” and “mat.” However, its rationale incorrectly treats the emphatic identifying pronoun as carrying no narrative meaning. The recommended wording preserves the immediate-context point—his healer was the person who commanded him—while remaining natural, simple English. No doctrinal expansion is present.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

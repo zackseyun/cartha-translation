@@ -34,51 +34,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When he came to Galilee, the Galileans welcomed him. They had seen everything he did in Jerusalem during the festival, because they had also gone to the festival.[a]
+  text: So when he came to Galilee, the Galileans welcomed him. They had seen everything he did in Jerusalem during the festival, because they too had gone to the festival.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: This refers to the Jewish Passover festival, which Galileans traveled to Jerusalem to attend.
     reason: simplification_note
 simplification_decisions:
-- preserved_meaning: Split the long POB sentence into two shorter sentences to reduce cognitive load.
-  reasoning_layer_used: POB audit trail
-  rationale: Split the long POB sentence into two shorter sentences to reduce cognitive load.
-- preserved_meaning: Changed 'feast' to 'festival' to clarify the religious pilgrimage context for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'feast' to 'festival' to clarify the religious pilgrimage context for modern readers.
-- preserved_meaning: Rendered 'having seen all that he had done' as a fresh sentence starting with 'They had seen everything he did' to avoid a dangling participial construction.
-  reasoning_layer_used: POB audit trail
-  rationale: Rendered 'having seen all that he had done' as a fresh sentence starting with 'They had seen everything he did' to avoid a dangling participial construction.
-retained_terms:
-- term: Galilee/Galileans
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: welcomed
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: So when he came into Galilee, the Galileans welcomed him
+  simplified_phrase: So when he came to Galilee, the Galileans welcomed him.
+  preserved_meaning: Jesus entered Galilee and received a favorable welcome, with the narrative connection retained.
+  reasoning_layer_used: POB lexical decisions for ὅτε οὖν, εἰς, and ἐδέξαντο
+  rationale: “So” restores the audited connective, while “came to” is more natural common English.
+- pob_phrase: having seen all that he had done
+  simplified_phrase: They had seen everything he did
+  preserved_meaning: Their prior sight of Jesus’ deeds provides the background for their welcome.
+  reasoning_layer_used: POB lexical decision for πάντα ἑωρακότες ὅσα
+  rationale: A new sentence avoids the dense participial construction without losing the prior action.
+- pob_phrase: at the feast, for they too had gone to the feast
+  simplified_phrase: during the festival, because they too had gone to the festival
+  preserved_meaning: They witnessed his deeds while attending the same religious festival in Jerusalem.
+  reasoning_layer_used: POB lexical decisions for ἑορτή and γάρ
+  rationale: “Festival” is clearer today, and “because” makes the explanatory link direct.
+interpretive_expansions:
+- pob_phrase: the feast
+  rendering: the festival.[a]
+  claim: The festival was the Jewish Passover pilgrimage festival.
+  evidence:
+  - John 2:13 identifies the preceding Jerusalem festival as Passover.
+  - The POB cultural note identifies a Jerusalem pilgrimage feast in the surrounding context.
+  confidence: high
+  alternatives_preserved:
+  - religious feast
+  - festival
 translation_notes:
-  source_alignment_notes: Preserves the directional force of 'came to Galilee' (εἰς τὴν Γαλιλαίαν) and the causal relationship of the perfect participle ('They had seen... because...'). Maintains the positive social reception of 'welcomed' (ἐδέξαντο).
-  readability_notes:
-  - The POB structure contains a complex nested relative clause and an appended explanatory clause. Breaking this into two sentences clarifies the relationship between the Galileans' reception of Jesus and their prior experience in Jerusalem.
-  compression_notes:
-  - No semantic details were omitted; the flow and logical links of the original verse are fully represented in a more accessible structure.
+  risk_flags:
+  - risk: The footnote identifies Passover more specifically than the verse itself does.
+    mitigation: The identification is confined to a note and grounded in the immediate Johannine context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/004/045.yaml
   source_text_sha256: f9aa0fb5e3fdbcd0e9b2500aec276b38a2a8677a5a55e4573f8011efb7571ab9
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 45c55a515d8aba91d25793e2e72c60fc68a92f97822b54f7eea6a7e6d1c762a0
-  timestamp: '2026-05-28T06:03:22Z'
-  output_hash: da3954060d62a2c9437bf8eae3198666c99cb7dce7b9161702ff0209a2de26c4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b4db3842617100943865368402746fcceb41915cea43c281a5399179ef9b8c14
+  timestamp: '2026-07-12T07:14:06Z'
+  output_hash: 990ae0ac2b560c1d63787e66e8a188552a142743aaae2fc46f078461dba528c6
   usage:
-    prompt_tokens: 1840
-    completion_tokens: 416
-    total_tokens: 5341
+    prompt_tokens: 3527
+    completion_tokens: 534
+    total_tokens: 4061
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Galilee/Galileans
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: welcomed
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:06Z'
+  previous_text: When he came to Galilee, the Galileans welcomed him. They had seen everything he did in Jerusalem during the festival, because they had also gone to the festival.[a]
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 25c6b318fa25a288892f8c257faa92c417224b565d41d6c76f803150118ee84c
+  review_summary: The draft is substantially clearer while preserving the favorable welcome, the Galileans’ prior observation of Jesus’ deeds in Jerusalem, and their own attendance at the festival. The Passover clarification is warranted by the immediate Johannine context. Restore “So” to retain the source connective and the POB’s audited narrative linkage.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

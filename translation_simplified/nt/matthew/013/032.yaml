@@ -34,7 +34,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: It is smaller than all the seeds, but when it grows, it is larger than the garden plants and becomes a tree. Then the birds of the sky come and nest in its branches.[a][b]
+  text: It is smaller than all the seeds, but when it has grown, it is larger than the garden plants and becomes a tree, so that the birds of the sky come and nest in its branches.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -44,35 +44,58 @@ translation:
     text: The image may echo Old Testament pictures of a great kingdom tree, such as Ezekiel 17:23 and Daniel 4:12, but the verse does not state the symbolism directly.
     reason: cross_reference
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: It is indeed smaller than all the seeds
+  simplified_phrase: It is smaller than all the seeds
+  preserved_meaning: The seed is smaller than all the other seeds in the comparison.
+  reasoning_layer_used: POB lexical decisions for μικρότερον and μέν ... δέ
+  rationale: Removing “indeed” makes the contrast more natural while “but” retains its force.
+- pob_phrase: when it has grown
+  simplified_phrase: when it has grown
+  preserved_meaning: The growth is viewed as complete before the plant’s larger outcome is described.
+  reasoning_layer_used: POB lexical decision for ὅταν ... αὐξηθῇ
+  rationale: This wording is retained to preserve the completed-growth sequence identified in review.
+- pob_phrase: so that the birds of the sky come and nest in its branches
+  simplified_phrase: so that the birds of the sky come and nest in its branches
+  preserved_meaning: The birds’ nesting is presented as the result of the plant becoming a tree.
+  reasoning_layer_used: POB lexical decision for ὥστε ἐλθεῖν and theological decision on the tree image
+  rationale: The result connector and literal image are retained without explaining the birds symbolically.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: Readers may take “smaller than all the seeds” as a universal botanical claim beyond the parable’s setting.
+    mitigation: The wording follows POB’s source-driven comparative without adding an unsupported qualification.
+  - risk: The tree and birds may carry Old Testament kingdom imagery not explicit in the verse.
+    mitigation: The main text leaves the image uninterpreted, while footnote b notes the possible echo.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/032.yaml
   source_text_sha256: 54fd08d42b49cf07fc94880e345ed9e41a269f52a2d391cc3757842fb609d77e
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 3ad1276c80489a51fe218676becff57cacbdca582e390c109129669e76dccbe6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a3d827b16cf618347c09b2d65eccf6575ba8575055c102c1da9b32ecab6cad8b
+  timestamp: '2026-07-12T07:40:09Z'
+  output_hash: c3df7346e2402711eb7cfc7e4d13e5688dc9496c61b979e4089995acd04bf61c
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3687
+    completion_tokens: 527
+    total_tokens: 4214
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:40:09Z'
+  previous_text: It is smaller than all the seeds, but when it grows, it is larger than the garden plants and becomes a tree. Then the birds of the sky come and nest in its branches.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 676e7817368696fae23b7b78203cb54e761fc90e53c0cafac833066013a2dfdf
+  review_summary: The draft is clear and rightly leaves the possible Old Testament tree imagery uninterpreted in the main text. However, replacing the result connector “so that” with “Then” weakens a source-textual relationship preserved in the POB, and “when it grows” slightly blurs the completed-growth sequence. Restore those features; the remaining simplifications are sound.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,36 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The disciples said to him, “Rabbi, only recently the Jewish leaders were trying to stone you. Are you going there again?”
+  text: The disciples said to him, “Rabbi, only recently the Jews[a] were trying to stone you. Are you going there again?”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “the Judeans”; in this context, possibly “the Jewish leaders.” John often uses “the Jews” for Jesus’ opponents in Judea, not for the Jewish people as a whole.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: just now
+  simplified_phrase: only recently
+  preserved_meaning: The threat had occurred a short time before.
+  reasoning_layer_used: POB lexical decision for νῦν
+  rationale: “Only recently” states the time relationship more naturally in modern English.
+- pob_phrase: were seeking to stone you
+  simplified_phrase: were trying to stone you
+  preserved_meaning: They were making an ongoing attempt to stone Jesus.
+  reasoning_layer_used: POB lexical decision for ἐζήτουν
+  rationale: “Were trying” clearly conveys attempted action without adding that they succeeded.
+- pob_phrase: and are you going there again?
+  simplified_phrase: Are you going there again?
+  preserved_meaning: The disciples question Jesus about returning to the place of danger.
+  reasoning_layer_used: POB syntax and immediate context
+  rationale: A separate sentence makes the disciples’ alarm easier to follow.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “The Jews” may be misunderstood as referring to all Jewish people.
+    mitigation: The footnote preserves the possible local or leadership sense without resolving the ambiguity in the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/008.yaml
   source_text_sha256: 7d6d6e453dfbea65b30185d49167720042d824514c8eb3d17f15cac782a36442
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:36Z'
-  output_hash: f2680298586e94db7142b0feb345bd92e407e1f861564e9e0d9c879e896b4e3c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: eda0968f0be493d8f8bfa6072dfc21cdcb7eec49456706f1692e0e91007f1559
+  timestamp: '2026-07-12T07:16:04Z'
+  output_hash: 6a8fd04b8c55d2097e1b13a1daf87b9161d4b986b763b9f919f2d20844dbb89a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3266
+    completion_tokens: 688
+    total_tokens: 3954
+    reasoning_tokens: 307
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:04Z'
+  previous_text: The disciples said to him, “Rabbi, only recently the Jewish leaders were trying to stone you. Are you going there again?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6690dd8e3a8e07bac4942c7e686e0eaf1475d94fe76e1243d068cde4f02a0005
+  review_summary: The draft improves everyday readability through “only recently,” “were trying,” and two direct questions. However, “the Jewish leaders” adopts an alternative contextual interpretation that the controlling POB audit trail intentionally does not place in the main text. Retain “the Jews” in the text and preserve a clarifying footnote about the likely local/oppositional Johannine usage.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

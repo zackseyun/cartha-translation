@@ -38,6 +38,12 @@ def review_files(args: argparse.Namespace) -> list[pathlib.Path]:
     wanted_chapters = {f"{chapter:03}" for chapter in (args.chapter or [])}
     for path in paths:
         payload = json.loads(path.read_text(encoding="utf-8"))
+        # A content-policy fallback is an audit marker, not a substantive Terra
+        # recommendation. Keep the current SPOB text unchanged for explicit
+        # editorial adjudication instead of asking Sol to infer a revision from
+        # a review Azure never produced.
+        if payload.get("review_status") == "azure_content_filter_editorial_block":
+            continue
         if ((payload.get("review") or {}).get("verdict")) not in {"revise", "block"}:
             continue
         if str(payload.get("reference") or "").strip().lower() in excluded_references:
@@ -51,6 +57,11 @@ def review_files(args: argparse.Namespace) -> list[pathlib.Path]:
             continue
         review_hash = str(payload.get("output_hash") or "")
         current = pipeline.safe_load_yaml(spob_path)
+        # An explicit editorial adjudication outranks a later automated
+        # recommendation. Require a deliberate override rather than silently
+        # replacing wording the project editor already chose.
+        if current.get("editorial_adjudications") and not args.override_editorial_adjudications:
+            continue
         applied = {
             str(item.get("review_output_hash") or "")
             for item in (current.get("spob_revision_history") or [])
@@ -81,6 +92,7 @@ def revise_one(review_path: pathlib.Path, args: argparse.Namespace) -> dict[str,
     "simplification_decisions": existing.get("simplification_decisions") or [],
     "interpretive_expansions": existing.get("interpretive_expansions") or [],
     "translation_notes": existing.get("translation_notes") or {},
+    "editorial_adjudications": existing.get("editorial_adjudications") or [],
 })}
 
 # Independent grounding review
@@ -88,7 +100,9 @@ def revise_one(review_path: pathlib.Path, args: argparse.Namespace) -> dict[str,
 {pipeline.compact_yaml(review_payload.get("review") or {})}
 
 Return a complete corrected submit_simplified_draft call. Fix the review issues
-while retaining every warranted clarity improvement.
+while retaining every warranted clarity improvement. Before submitting, verify
+that every returned footnote marker appears verbatim in translation.text and
+that every required array field is an array rather than null.
 """
     tool_input, model_version, usage, raw = pipeline.call_azure_tool(
         system_prompt=REVISION_SYSTEM_PROMPT,
@@ -113,18 +127,44 @@ while retaining every warranted clarity improvement.
         usage=usage,
         deployment=args.deployment,
     )
+    schema_repairs: list[str] = []
+    for field in ("simplification_decisions", "interpretive_expansions", "retained_terms"):
+        if not isinstance(new_record.get(field), list):
+            prior = existing.get(field)
+            new_record[field] = list(prior) if isinstance(prior, list) else []
+            schema_repairs.append(f"restored {field} as an array from the prior draft")
+    if existing.get("editorial_adjudications"):
+        new_record["editorial_adjudications"] = list(existing["editorial_adjudications"])
+    translation = new_record.get("translation")
+    if isinstance(translation, dict) and isinstance(translation.get("footnotes"), list):
+        text = str(translation.get("text") or "")
+        missing_markers: list[str] = []
+        for footnote in translation["footnotes"]:
+            if not isinstance(footnote, dict):
+                continue
+            marker = str(footnote.get("marker") or "").strip()
+            token = f"[{marker}]" if marker else ""
+            if token and token not in text:
+                missing_markers.append(token)
+        if missing_markers:
+            translation["text"] = text.rstrip() + "".join(missing_markers)
+            schema_repairs.append(
+                "retained otherwise-unanchored footnote markers at the end of the revised text: "
+                + ", ".join(missing_markers)
+            )
     history = list(existing.get("spob_revision_history") or [])
-    history.append(
-        {
-            "timestamp": pipeline.utc_now(),
-            "previous_text": ((existing.get("translation") or {}).get("text")),
-            "previous_model": ((existing.get("ai_draft") or {}).get("model_id")),
-            "reviewer_model": ((review_payload.get("reviewer") or {}).get("model")),
-            "review_verdict": ((review_payload.get("review") or {}).get("verdict")),
-            "review_output_hash": review_payload.get("output_hash"),
-            "review_summary": ((review_payload.get("review") or {}).get("review_summary")),
-        }
-    )
+    history_entry = {
+        "timestamp": pipeline.utc_now(),
+        "previous_text": ((existing.get("translation") or {}).get("text")),
+        "previous_model": ((existing.get("ai_draft") or {}).get("model_id")),
+        "reviewer_model": ((review_payload.get("reviewer") or {}).get("model")),
+        "review_verdict": ((review_payload.get("review") or {}).get("verdict")),
+        "review_output_hash": review_payload.get("output_hash"),
+        "review_summary": ((review_payload.get("review") or {}).get("review_summary")),
+    }
+    if schema_repairs:
+        history_entry["schema_repairs"] = schema_repairs
+    history.append(history_entry)
     new_record["spob_revision_history"] = history
     with tempfile.NamedTemporaryFile(
         mode="w",
@@ -150,6 +190,69 @@ while retaining every warranted clarity improvement.
     return {"reference": new_record.get("reference"), "path": str(spob_path), "text": ((new_record.get("translation") or {}).get("text"))}
 
 
+def apply_reviewer_text_fallback(review_path: pathlib.Path, args: argparse.Namespace, error: Exception) -> dict[str, Any]:
+    """Apply Terra's publication-ready recommendation when Sol is policy-filtered."""
+    review_payload = json.loads(review_path.read_text(encoding="utf-8"))
+    review = review_payload.get("review") or {}
+    recommended_text = str(review.get("recommended_text") or "").strip()
+    if not recommended_text:
+        raise RuntimeError("Sol was content-filtered and Terra supplied no recommended text") from error
+    spob_path = ROOT / review_payload["spob_path"]
+    existing = pipeline.safe_load_yaml(spob_path)
+    translation = existing.get("translation")
+    if not isinstance(translation, dict):
+        raise RuntimeError("existing SPOB translation is missing") from error
+    previous_text = str(translation.get("text") or "")
+    translation["text"] = recommended_text
+    missing_markers: list[str] = []
+    for footnote in translation.get("footnotes") or []:
+        if not isinstance(footnote, dict):
+            continue
+        marker = str(footnote.get("marker") or "").strip()
+        token = f"[{marker}]" if marker else ""
+        if token and token not in translation["text"]:
+            missing_markers.append(token)
+    if missing_markers:
+        translation["text"] = translation["text"].rstrip() + "".join(missing_markers)
+    history = list(existing.get("spob_revision_history") or [])
+    history.append(
+        {
+            "timestamp": pipeline.utc_now(),
+            "previous_text": previous_text,
+            "previous_model": ((existing.get("ai_draft") or {}).get("model_id")),
+            "reviewer_model": ((review_payload.get("reviewer") or {}).get("model")),
+            "review_verdict": review.get("verdict"),
+            "review_output_hash": review_payload.get("output_hash"),
+            "review_summary": review.get("review_summary"),
+            "revision_status": "azure_sol_content_filter_terra_recommendation_fallback",
+            "revision_model": args.model,
+            "revision_deployment": args.deployment,
+            "fallback_reason": str(error)[:500],
+            "schema_repairs": (
+                ["retained existing footnote markers at the end of Terra's recommended text"]
+                if missing_markers else []
+            ),
+        }
+    )
+    existing["spob_revision_history"] = history
+    with tempfile.NamedTemporaryFile(
+        mode="w",
+        encoding="utf-8",
+        dir=spob_path.parent,
+        prefix=f".{spob_path.name}.review-fallback-",
+        suffix=".tmp",
+        delete=False,
+    ) as handle:
+        handle.write(pipeline.yaml.safe_dump(existing, sort_keys=False, allow_unicode=True, width=1000))
+        candidate_path = pathlib.Path(handle.name)
+    errors = pipeline.validate_simplified_record(candidate_path)
+    if errors:
+        candidate_path.unlink(missing_ok=True)
+        raise RuntimeError(f"Terra recommendation fallback failed validation: {errors}") from error
+    candidate_path.replace(spob_path)
+    return {"reference": existing.get("reference"), "path": str(spob_path), "text": translation["text"]}
+
+
 def main(argv: list[str] | None = None) -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--book", action="append")
@@ -164,6 +267,11 @@ def main(argv: list[str] | None = None) -> int:
     parser.add_argument("--timeout-seconds", type=int, default=300)
     parser.add_argument("--retries", type=int, default=4)
     parser.add_argument("--force", action="store_true")
+    parser.add_argument(
+        "--override-editorial-adjudications",
+        action="store_true",
+        help="allow automated revision of records with an explicit editorial adjudication",
+    )
     args = parser.parse_args(argv)
 
     paths = review_files(args)
@@ -178,6 +286,18 @@ def main(argv: list[str] | None = None) -> int:
                 revised += 1
                 print(f"revised {result['reference']}: {result['text']}", flush=True)
             except Exception as exc:  # noqa: BLE001
+                if "content_filter" in str(exc) or "ResponsibleAIPolicyViolation" in str(exc):
+                    try:
+                        result = apply_reviewer_text_fallback(path, args, exc)
+                        revised += 1
+                        print(
+                            f"revised {result['reference']}: {result['text']} "
+                            "(Terra recommendation fallback after Sol content filter)",
+                            flush=True,
+                        )
+                        continue
+                    except Exception as fallback_exc:  # noqa: BLE001
+                        exc = fallback_exc
                 failures.append(f"{path}: {type(exc).__name__}: {exc}")
                 print(f"FAILED {path}: {type(exc).__name__}: {exc}", file=sys.stderr, flush=True)
     print(json.dumps({"selected": len(paths), "revised": revised, "failed": len(failures)}, indent=2))

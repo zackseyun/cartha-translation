@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/026/057.yaml
-  text: Now those who had seized Jesus led him away to Caiaphas the high priest[a], where the scribes and the elders had gathered.
+  text: Those who had seized Jesus led him away to Caiaphas the high priest[a], where the scribes and the elders had gathered.
   footnotes:
   - marker: a
     text: Or 'had assembled.' The Greek verb can be rendered either as a passive ('were assembled') or as an intransitive event ('had gathered') in this context.
@@ -31,14 +31,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Those who had seized Jesus led him away to Caiaphas the high priest, where the scribes and elders had gathered.
+  text: Those who had seized Jesus led him away to Caiaphas the high priest. The scribes, who were teachers of the law, and the elders had already gathered there.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Now those who had seized Jesus led him away
-  simplified_phrase: Those who had seized Jesus led him away
-  preserved_meaning: Preserves the transition to Caiaphas while removing a formal opening.
-  reasoning_layer_used: POB translation text and lexical note
-  rationale: Keeps the people and destination unchanged.
+- pob_phrase: where the scribes and the elders had gathered
+  simplified_phrase: The scribes, who were teachers of the law, and the elders had already gathered there.
+  preserved_meaning: The same two groups were present before Jesus arrived.
+  reasoning_layer_used: POB lexical decisions for γραμματεῖς and συνήχθησαν
+  rationale: A separate sentence and a brief explanation of “scribes” make the scene easier to understand.
+interpretive_expansions:
+- pob_phrase: the scribes
+  rendering: the scribes, who were teachers of the law
+  claim: The scribes served as teachers and experts in the Jewish law.
+  evidence:
+  - The POB lexical audit lists “teachers of the law” as an explanatory rendering of γραμματεῖς.
+  - The immediate setting is a gathering of Jewish religious leaders.
+  confidence: high
+  alternatives_preserved:
+  - scribes
+  - legal experts
+translation_notes:
+  risk_flags:
+  - risk: “Teachers of the law” explains the role rather than reproducing the source term alone.
+    mitigation: The established term “scribes” is retained alongside the POB-supported explanation.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/026/057.yaml
+  source_text_sha256: cb6caf5fe6d29d5ba8ce4502680f9fc63038b0697e7dee5ffada8914198cca57
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c503611dab1243a421719e3865e3e81ca3bf6158d9b8eb006f09e7650a9da9b1
+  timestamp: '2026-07-12T07:39:20Z'
+  output_hash: d163a77d1f0b77b29a158e675f1a84893eb654f9df77d92e94fe4e2053fe304d
+  usage:
+    prompt_tokens: 3456
+    completion_tokens: 452
+    total_tokens: 3908
+    reasoning_tokens: 122
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Caiaphas
   reason: Named high priest retained.
@@ -46,30 +82,13 @@ retained_terms:
   reason: Group title retained from POB.
 - term: elders
   reason: Group title retained from POB.
-translation_notes:
-  source_alignment_notes: Preserves the transfer to the high priest and gathered authorities.
-  readability_notes:
-  - Uses direct narrative wording.
-  compression_notes:
-  - Assembled/gathered nuance remains in base footnote.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/026/057.yaml
-  source_text_sha256: cb6caf5fe6d29d5ba8ce4502680f9fc63038b0697e7dee5ffada8914198cca57
-  pob_commit_sha: f8fe9350d2042c1798589c4765588663eaf406ac
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:24:59Z'
-  output_hash: b7a1c042c7f5bd8454758aacf9db367c2251bdcbcab20e762a16b3140f3d7dac
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:39:20Z'
+  previous_text: Those who had seized Jesus led him away to Caiaphas the high priest, where the scribes and elders had gathered.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2cd79bbce2965f0b182257f82f4c0c415c5e36185c323b9f6920965d8ea083ab
+  review_summary: The draft is faithful and contains no doctrinally unsupported expansion, but it does not meet the stated approval threshold because it is not meaningfully clearer than POB. Clarifying “scribes” as teachers of the law is supported by the POB lexical audit and the immediate judicial-religious setting, without adding a contested doctrinal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

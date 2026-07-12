@@ -31,45 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The one on the housetop[a] must not go down or go inside to take anything from his house.
+  text: The one on the housetop[a] must not go down or go inside to take anything out of his house.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: The Greek refers to the flat roof area of a house, often used as living space.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: Let the one on the housetop not go down[a], nor enter to take anything out of his house.
-  simplified_phrase: The one on the housetop[a] must not go down or go inside to take anything from his house.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
-retained_terms:
-- term: housetop
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+- pob_phrase: Let the one on the housetop not go down
+  simplified_phrase: The one on the housetop must not go down
+  preserved_meaning: The prohibition against descending from the housetop remains direct and urgent.
+  reasoning_layer_used: POB translation and lexical decision for μὴ καταβάτω
+  rationale: “Must not” expresses the third-person prohibition in natural modern English.
+- pob_phrase: nor enter to take anything out of his house
+  simplified_phrase: or go inside to take anything out of his house
+  preserved_meaning: The second prohibition still forbids entering the house to remove any item.
+  reasoning_layer_used: POB lexical decisions for μηδὲ εἰσελθάτω, τι ἆραι, and ἐκ τῆς οἰκίας αὐτοῦ
+  rationale: “Go inside” is clearer than “enter,” while “out of” preserves the concrete outward movement.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/015.yaml
   source_text_sha256: 7ae03b2f56e94752208b20a13b7c1300910de2cf046d585b07566b411c3cba53
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:47Z'
-  output_hash: db03d51abe859f761fd2606989f0e4eee6f7c4cc806033301aa847fcdf30c2e5
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 06febaf29813a2370fc4538d13fceea182868d87baedc8806d8ad74176629b2c
+  timestamp: '2026-07-12T07:22:54Z'
+  output_hash: 18b7571fd9273c97d599582055a59812907d16a114ff9c14a9d74d30f96ff08d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3118
+    completion_tokens: 313
+    total_tokens: 3431
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: housetop
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:54Z'
+  previous_text: The one on the housetop[a] must not go down or go inside to take anything from his house.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6b292f65a235aea2faf968003d2db20c5ded7bd2f9914d048db5757623a9a158
+  review_summary: Revise only the preposition governing what is taken. The draft is clearer than POB and introduces no doctrinal expansion, but “from his house” slightly weakens the source’s explicit “out of his house” movement.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

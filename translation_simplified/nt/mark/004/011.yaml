@@ -19,14 +19,47 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 4:11 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''comes'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote m'
 translation:
   language: en
-  text: He told them, “The mystery of the kingdom of God has been given to you, but everything comes in parables to those outside,
+  text: He said to them, “The mystery of the kingdom of God has been given to you, but to those outside, everything comes in parables.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And he was saying to them, “To you the mystery of the kingdom of God has been given, but to those outside everything comes in parables,”
-  simplified_phrase: He told them, “The mystery of the kingdom of God has been given to you, but everything comes in parables to those outside,
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
+- pob_phrase: And he was saying to them
+  simplified_phrase: He said to them
+  preserved_meaning: Jesus speaks directly to the disciples.
+  reasoning_layer_used: POB translation and source payload
+  rationale: The simple past states the same speech action in natural English.
+- pob_phrase: but to those outside everything comes in parables
+  simplified_phrase: but to those outside, everything comes in parables
+  preserved_meaning: Those outside receive everything in parables, in contrast with the disciples.
+  reasoning_layer_used: POB translation and applied revision
+  rationale: Placing the two recipient phrases in parallel makes the contrast easier to follow while retaining “comes.”
+translation_notes:
+  risk_flags:
+  - risk: “Mystery” may suggest a puzzle rather than a truth God reveals.
+    mitigation: The term is retained because it carries an important biblical concept and the verse says it has been given.
+  - risk: “Those outside” remains context-dependent.
+    mitigation: The wording stays undefined because neither the POB record nor its reasoning narrows the group here.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/004/011.yaml
+  source_text_sha256: 1cdaf0c676ff3681d88d9f169f3e0701d0baf3f239a7fbeeb33888591764ef68
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 94b811df77965bc3964afd1a025779e8181a0c43f031fdc669f5ff93338b0ca2
+  timestamp: '2026-07-12T07:20:07Z'
+  output_hash: 1fd19811a51ca3d0737581f58df42fabe1cdc24b7503c7a328e9208db02b1357
+  usage:
+    prompt_tokens: 2762
+    completion_tokens: 302
+    total_tokens: 3064
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: mystery
   reason: Retained to preserve POB's source-grounded terminology and reasoning.
@@ -34,30 +67,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology and reasoning.
 - term: parables
   reason: Retained to preserve POB's source-grounded terminology and reasoning.
-translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/004/011.yaml
-  source_text_sha256: 1cdaf0c676ff3681d88d9f169f3e0701d0baf3f239a7fbeeb33888591764ef68
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
-ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 589ecd4f59334e5b1ef43b27ec47e4f897d112bf5e5ca51bb96592251b29356f
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:07Z'
+  previous_text: He told them, “The mystery of the kingdom of God has been given to you, but everything comes in parables to those outside,
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a241670d77f908df16e8e483dadabee7909f5ba6bcf83c24b72f58b12005dea6
+  review_summary: The draft preserves the key concepts and does not introduce doctrinal interpretation. Revision is required for complete, readable punctuation and a modest word-order improvement. The recommended wording retains the live contextual reference of “those outside,” without adding an explanation not supplied by this verse.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -37,43 +37,81 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: “Teacher, Moses wrote for us that if a man’s brother dies and leaves a wife but no child, his brother should take the wife and raise up offspring for his brother.
+  text: '“Teacher, Moses wrote for us: ‘If someone’s brother dies, leaving a wife but no child, his brother should marry the widow and have children to carry on the dead brother’s family line.’”'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Teacher[a], Moses wrote for us that if someone's brother dies and leaves behind a wife and leaves no child[c][b], his brother should take the wife and raise up offspring for his brother.
-  simplified_phrase: “Teacher, Moses wrote for us that if a man’s brother dies and leaves a wife but no child, his brother should take the wife and raise up offspring for his brother.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
-retained_terms:
-- term: Moses
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
-- term: offspring
-  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- pob_phrase: if someone's brother dies and leaves behind a wife and leaves no child
+  simplified_phrase: if someone’s brother dies, leaving a wife but no child
+  preserved_meaning: The brother dies leaving a widow and no child.
+  reasoning_layer_used: POB lexical decisions for the indefinite possessive and death context
+  rationale: The shorter clause removes repetition while retaining “someone’s” rather than adding an unspecified man.
+- pob_phrase: his brother should take the wife
+  simplified_phrase: his brother should marry the widow
+  preserved_meaning: The surviving brother is required to take the deceased brother’s wife in marriage.
+  reasoning_layer_used: POB lexical rationale for λάβῃ with γυναῖκα
+  rationale: “Marry the widow” states the established legal-marital sense in ordinary English.
+- pob_phrase: raise up offspring for his brother
+  simplified_phrase: have children to carry on the dead brother’s family line
+  preserved_meaning: The marriage is intended to provide descendants for the deceased brother.
+  reasoning_layer_used: POB idiom footnote and theological decision on levirate marriage
+  rationale: The family-line wording makes the legal purpose of the source idiom understandable.
+interpretive_expansions:
+- pob_phrase: take the wife
+  rendering: marry the widow
+  claim: Taking the wife means marrying the deceased brother’s widow.
+  evidence:
+  - The POB lexical rationale identifies this as a legal-marital use.
+  - The cited law in Deuteronomy 25:5 supplies the marriage context.
+  confidence: high
+  alternatives_preserved:
+  - take the wife
+- pob_phrase: raise up offspring for his brother
+  rendering: have children to carry on the dead brother’s family line
+  claim: The children provide descendants for the brother who died.
+  evidence:
+  - The POB footnote explains the phrase as producing offspring under levirate-marriage obligations.
+  - The POB alternative rendering says “produce descendants for his brother.”
+  confidence: high
+  alternatives_preserved:
+  - raise up offspring for his brother
+  - produce descendants for his brother
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Carry on the family line” explains rather than reproduces the seed idiom.
+    mitigation: The wording retains both offspring and the deceased brother as the beneficiary.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/019.yaml
   source_text_sha256: de38f3c04fe9f2179d30265e315d041e7a8b0a04d1bba9d9acc59ffb162b67f7
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: 61502c960674f8caaa222283f082f8118de1e7bb15c71fcbd28119c34f61395f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c234591a0a9f252ce4c3b2eaaf4a6081d0c6113109c204782a9f1732961c49f2
+  timestamp: '2026-07-12T07:23:34Z'
+  output_hash: ac857addaa1b04b78635661cb318049e2ba03ed56c0ca1562174dfc333f5866e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3938
+    completion_tokens: 859
+    total_tokens: 4797
+    reasoning_tokens: 277
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Moses
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+- term: offspring
+  reason: Retained because the POB/source context treats this as important wording or a named concept.
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:34Z'
+  previous_text: “Teacher, Moses wrote for us that if a man’s brother dies and leaves a wife but no child, his brother should take the wife and raise up offspring for his brother.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 44d05d85553ec5ba7aa426ca8fd85741d49c589639e87dc15ab2fd0bc8906211
+  review_summary: Revision is needed. The draft modestly smooths the syntax, but it unnecessarily changes “someone” to “a man” and leaves the central levirate-marriage idioms insufficiently explained for an understanding-first edition. The recommended text preserves the legal meaning documented in the POB audit trail, makes the marital and descendant purpose clear, and does not add a doctrinal claim beyond the cited Mosaic-law context.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

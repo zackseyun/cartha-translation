@@ -34,38 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But if that wicked servant says in his heart, ‘My master is delayed,’
+  text: But if that wicked servant thinks to himself, ‘My master is taking a long time to come,’
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 24 POB base wording
-  simplified_phrase: But if that wicked servant says in his heart, ‘My master is delayed,’
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 24 while making the sentence clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source-grounding notes
-  rationale: Manual Codex SPOB drafting simplified dense clauses, made implied flow clearer where needed, and retained important eschatological images and terms without resolving ambiguities that POB leaves open.
+- pob_phrase: says in his heart
+  simplified_phrase: thinks to himself
+  preserved_meaning: The servant speaks inwardly rather than aloud.
+  reasoning_layer_used: POB lexical decision for ἐν τῇ καρδίᾳ αὐτοῦ
+  rationale: This expresses the biblical heart idiom in immediate, natural English.
+- pob_phrase: My master is delaying
+  simplified_phrase: My master is taking a long time to come
+  preserved_meaning: The servant perceives his master’s expected arrival as continuing to be late.
+  reasoning_layer_used: POB lexical decision for χρονίζει and immediate parable context
+  rationale: This avoids a passive meaning and preserves the verb’s ongoing force.
+interpretive_expansions:
+- pob_phrase: is delaying
+  rendering: is taking a long time to come
+  claim: The delay concerns the master’s expected arrival.
+  evidence:
+  - The surrounding parable speaks of the master coming back to his servant.
+  - The POB rationale identifies ongoing delay as the servant’s perception.
+  confidence: high
+  alternatives_preserved:
+  - is delaying
+  - is taking a long time
 translation_notes:
-  source_alignment_notes: Manual SPOB draft follows the POB base translation as the controlling meaning and uses the Greek/source reasoning only as an audit guardrail.
-  readability_notes:
-  - Uses shorter clauses and modern common English while preserving Matthew 24's warning, apocalyptic imagery, and parable flow.
-  compression_notes:
-  - Technical alternatives from POB footnotes are compressed unless needed for normal-reader clarity; no central meaning is intentionally removed.
+  risk_flags:
+  - risk: Adding “to come” states an object of the delay that is only implied in this verse.
+    mitigation: The immediate parable context clearly identifies the master’s return as what the servant expects.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/024/048.yaml
   source_text_sha256: 27fe03eba3f7646f71fddd3f7a767f72c8dd05d001d0e28153ba7dce90508d8e
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:15:33Z'
-  output_hash: db42edadfe649868b58b31cdc0c809ef948ad3a1c65df996cfc07b79c7617c90
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e1c86571c93a291ccc033646482b587f52c1800d212e6d910be10f5d139031aa
+  timestamp: '2026-07-12T07:38:01Z'
+  output_hash: 39abdc3652b40de4f245bb990c1d78ac355d734b5ba613a0b7c7fb6f3b67e142
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3460
+    completion_tokens: 521
+    total_tokens: 3981
+    reasoning_tokens: 159
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:01Z'
+  previous_text: But if that wicked servant says in his heart, ‘My master is delayed,’
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 36eb78bed1109b2162a90cfc6062c8992d0794808c21a36a91da7ec062413945
+  review_summary: Revision is needed. The draft’s “is delayed” weakens and slightly shifts the ongoing complaint conveyed by χρονίζει. The recommended text expresses inward speech in common English and makes explicit the contextually implied arrival, while preserving the conditional warning and avoiding any added doctrinal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

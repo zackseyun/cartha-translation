@@ -362,12 +362,20 @@ def main() -> int:
     licensed_bundle = load_licensed_references(args.licensed_references)
     args.output_root.mkdir(parents=True, exist_ok=True)
     books: list[dict[str, Any]] = []
+    empty_books: list[str] = []
     for book in args.books:
         payload = build_book(book, panels, licensed_bundle)
         books.append(payload)
+        if verse_paths(book) and payload["verse_count"] == 0:
+            empty_books.append(book)
         output = args.output_root / f"{book}.json"
         output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
         print(f"{book}: scored={payload['verse_count']} spob={payload['spob_verse_count']} -> {output}")
+    if empty_books:
+        raise SystemExit(
+            "Reference-panel mapping produced zero scored verses for: "
+            + ", ".join(empty_books)
+        )
     summary = compact_summary(books, args.top)
     args.summary.write_text(json.dumps(summary, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
     print(f"summary -> {args.summary}")

@@ -37,36 +37,78 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 15:28 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''have sealed to them''].'
 translation:
   language: en
-  text: So when I have completed this and have safely delivered this fruit to them, I will travel through you on my way to Spain.
+  text: So, when I have finished this task and safely delivered the contribution—the fruit of the Gentile believers’ generosity—to the believers in Jerusalem, I will travel by way of Rome to Spain.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: completed this
+  simplified_phrase: finished this task
+  preserved_meaning: Paul must complete his present assignment before traveling onward.
+  reasoning_layer_used: POB lexical decision for τοῦτο and ἐπιτελέσας
+  rationale: Naming it as a task makes the backward reference clear without changing its scope.
+- pob_phrase: sealed this fruit to them
+  simplified_phrase: safely delivered the contribution—the fruit of the Gentile believers’ generosity—to the believers in Jerusalem
+  preserved_meaning: Paul will securely deliver the Gentile believers’ financial gift to its Jerusalem recipients.
+  reasoning_layer_used: POB lexical and theological decisions with footnotes a and b
+  rationale: The wording explains the secure-delivery sense while retaining the fruit image.
+- pob_phrase: go on by way of you to Spain
+  simplified_phrase: travel by way of Rome to Spain
+  preserved_meaning: Paul plans to continue to Spain by traveling through the recipients’ city.
+  reasoning_layer_used: POB lexical decision and footnote c
+  rationale: Naming Rome replaces an unnatural pronoun with its established geographic referent.
+interpretive_expansions:
+- pob_phrase: this fruit to them
+  rendering: the contribution—the fruit of the Gentile believers’ generosity—to the believers in Jerusalem
+  claim: The fruit is the Gentile believers’ financial contribution, and the recipients are the Jerusalem believers.
+  evidence:
+  - Romans 15:25–27 identifies the contribution and its Jerusalem recipients.
+  - POB footnote b explicitly identifies the financial contribution.
+  confidence: high
+  alternatives_preserved:
+  - fruit as Paul’s metaphor for the result of their generosity
+- pob_phrase: by way of you
+  rendering: by way of Rome
+  claim: The addressees’ location, Rome, is the intended route on Paul’s journey to Spain.
+  evidence:
+  - POB footnote c says Paul plans to travel by way of Rome.
+  - The letter is addressed to believers in Rome.
+  confidence: high
+  alternatives_preserved:
+  - through you
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Safely delivered” replaces the literal sealing metaphor.
+    mitigation: It preserves the POB-authorized sense of formally securing the gift for its recipients.
+  - risk: Naming the contribution, Jerusalem believers, and Rome makes contextual referents explicit.
+    mitigation: Each identification is established by the immediate context and POB notes.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/028.yaml
   source_text_sha256: c720e3440e444343cc3fec03d273181809776696472ae5e294db7d47bbe9ca63
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: b721ab881e22bba5af5ec3c0b5dc280a168682f3a150e1063eb297829dc7c21b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4eeef7d87d6d9869974f7f269d9c489cd1e69e2f218bf2f20ffc74c83c6366e9
+  timestamp: '2026-07-12T07:43:24Z'
+  output_hash: 5d3e2f80d97c5593aec096ed1ebb69a84f74258406005a479bc925053c5a8923
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3772
+    completion_tokens: 996
+    total_tokens: 4768
+    reasoning_tokens: 396
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:43:24Z'
+  previous_text: So when I have completed this and have safely delivered this fruit to them, I will travel through you on my way to Spain.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 318cfa8a4be05f1e64f25782a7967421100ef2163f4846b08e31f11529f5a60a
+  review_summary: 'The use of “safely delivered” is warranted by the POB’s stated lexical alternative for “sealed” and improves clarity. However, the draft leaves two central references unnecessarily opaque: “fruit” can be misunderstood as literal produce, and “through you” does not naturally express travel via Rome. The recommended wording makes only contextually established referents explicit without adding a doctrinal interpretation.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

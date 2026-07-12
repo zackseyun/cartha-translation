@@ -31,41 +31,69 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 16:22 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''May God be merciful to you''].'
 translation:
   language: en
-  text: Peter took him aside and began to rebuke him, saying, “Never, Lord! This will certainly not happen to you.”
+  text: 'Peter took him aside and began to rebuke him: “May God be merciful to you, Lord![a] This will certainly not happen to you.”'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Greek expression is idiomatic and may also be translated “Far be it from you, Lord” or “God forbid, Lord.”
+    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: and began to rebuke him, saying
+  simplified_phrase: 'and began to rebuke him:'
+  preserved_meaning: Peter starts sharply opposing what Jesus has said and then speaks directly to him.
+  reasoning_layer_used: POB translation and lexical decision for ἤρξατο ἐπιτιμᾶν
+  rationale: A colon introduces Peter’s words more naturally without removing his rebuke.
 - pob_phrase: Far be it from you, Lord
-  simplified_phrase: Never, Lord!
-  preserved_meaning: Peter strongly rejects the idea that Jesus will suffer and die.
-  reasoning_layer_used: POB translation and idiom footnote
-  rationale: Never, Lord is a natural modern rendering of the idiomatic protest.
-retained_terms:
-- term: Lord
-  reason: Retained as Peter’s address to Jesus.
+  simplified_phrase: May God be merciful to you, Lord!
+  preserved_meaning: Peter appeals for mercy or favor as he protests what Jesus has foretold.
+  reasoning_layer_used: POB lexical and theological decisions for Ἵλεώς σοι
+  rationale: The clearer wording retains the idiom’s mercy element instead of merging it with Peter’s following denial.
+interpretive_expansions:
+- pob_phrase: Far be it from you, Lord
+  rendering: May God be merciful to you, Lord!
+  claim: The difficult idiom expresses an appeal for divine mercy or favor.
+  evidence:
+  - The POB lexical decision identifies the expression as literally involving mercy or favor.
+  - The POB theological rationale adopts an appeal for divine mercy while preserving other idiomatic readings.
+  confidence: moderate
+  alternatives_preserved:
+  - Far be it from you, Lord.
+  - God forbid, Lord.
 translation_notes:
-  source_alignment_notes: Keeps Peter taking Jesus aside, rebuking him, and insisting it will not happen.
-  readability_notes:
-  - Replaces the older idiom with a direct modern protest.
-  compression_notes:
-  - No action or denial is removed.
+  risk_flags:
+  - risk: Naming God makes explicit what the elliptical Greek idiom leaves unstated.
+    mitigation: The POB lexical decision supports this reading, and the footnote preserves less explicit alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/016/022.yaml
   source_text_sha256: 8b14bc3cdf4d5921c1cf3fec694d01db7f051c3db3a15038d30f55dc04ade327
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:59:24Z'
-  output_hash: f35779b90bd45f72b54ab0bc519db8ca01e0e22aa906f2d3a5813eb59d0f0218
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0c56e2296274f8445db3bde1dfd0c6f841356da22adc0e9021b804066225133d
+  timestamp: '2026-07-12T07:38:01Z'
+  output_hash: fbe79a1633a2a26621a9cfac9f966471ef11d3c07e57fe4926990385ed2262dc
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3535
+    completion_tokens: 833
+    total_tokens: 4368
+    reasoning_tokens: 366
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Lord
+  reason: Retained as Peter’s address to Jesus.
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:01Z'
+  previous_text: Peter took him aside and began to rebuke him, saying, “Never, Lord! This will certainly not happen to you.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0a652d31360a2a78d0b11a997bb13e77c40116e510401a777854548022d69cff
+  review_summary: The draft is highly readable and correctly preserves Peter’s forceful opposition in context, but “Never, Lord!” merges the idiomatic appeal for divine mercy into the following denial. Retaining the POB audit’s explicit rendering preserves more of the source expression while remaining understandable to modern readers.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

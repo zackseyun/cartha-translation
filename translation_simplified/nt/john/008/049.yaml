@@ -31,47 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jesus answered, "I do not have a demon,[a] but I honor my Father, and you dishonor me."
+  text: Jesus answered, “I am not possessed by a demon. Instead, I honor my Father, but you dishonor me.”
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or, more interpretively, "I am not possessed by a demon."
-    reason: simplification_note
 simplification_decisions:
-- simplified_phrase: I do not have a demon
-  preserved_meaning: Retained the close idiomatic rendering of the Greek text, adding an explanatory footnote to clarify the meaning of demonic possession for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the close idiomatic rendering of the Greek text, adding an explanatory footnote to clarify the meaning of demonic possession for modern readers.
-retained_terms:
-- term: Father
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: I do not have a demon
+  simplified_phrase: I am not possessed by a demon
+  preserved_meaning: Jesus denies being under a demon’s control.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: This states the established sense of the Greek idiom in clear modern English.
+- pob_phrase: but I honor my Father, and you dishonor me
+  simplified_phrase: Instead, I honor my Father, but you dishonor me
+  preserved_meaning: Jesus contrasts his honor for God with their dishonor toward him.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The recast sentence keeps the deliberate honor–dishonor contrast while making the logic easier to follow.
+interpretive_expansions:
+- pob_phrase: I do not have a demon
+  rendering: I am not possessed by a demon
+  claim: The phrase denies demonic possession or control rather than ownership of a demon.
+  evidence:
+  - The POB lexical rationale identifies this as the idiomatic meaning of ἔχω with δαιμόνιον.
+  - The POB footnote gives this same interpretive rendering.
+  confidence: high
+  alternatives_preserved:
+  - I do not have a demon
 translation_notes:
-  source_alignment_notes: Maintains the strong coordinate contrast between honor (τιμῶ) and dishonor (ἀτιμάζετε), reflecting the original Greek's structural balance.
-  readability_notes:
-  - The direct style is clear and easy for a modern reader to parse, avoiding archaic grammar while retaining the solemn tone.
-  compression_notes:
-  - No compression was necessary as the original verse is already concise and straightforward.
   risk_flags:
-  - risk: None. The text remains highly faithful to the source and POB lexical/theological decisions without risking slang or flattening ambiguities.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Possessed” is more interpretive than the source’s literal wording.
+    mitigation: The POB audit explicitly identifies possession as the idiom’s likely sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/008/049.yaml
   source_text_sha256: e4f07fa651ad68b4c2a4554348aae5d35e09d38f7a1baeba2502dfcc12db96c3
-  pob_commit_sha: c9c89f80b0061793adf976351bb08b934ad624e9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: e05ab0c9da089a48b492e03ccc77ceebd939e6da5d5650164bab341c7dd39ca0
-  timestamp: '2026-05-28T09:09:52Z'
-  output_hash: 3a1518cb9291ea53595561f1ae2ca2b24f129f505ffdd62fc253034e7544ed83
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: dfcbe7919fc36e6ce046c683adc9f6121c3b0120cde9d1ad1ae5405905dd2301
+  timestamp: '2026-07-12T07:15:55Z'
+  output_hash: 6d4d9e3c4725f64dc805c5e743c47181daa9e0a0a886977273b6a879b198778e
   usage:
-    prompt_tokens: 1793
-    completion_tokens: 383
-    total_tokens: 4824
+    prompt_tokens: 3405
+    completion_tokens: 376
+    total_tokens: 3781
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Father
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:55Z'
+  previous_text: Jesus answered, "I do not have a demon,[a] but I honor my Father, and you dishonor me."
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 79b74d5afef29727afc33bb8a8f8255b3d78b9a0efb051abce61a799522acbfc
+  review_summary: Revise for actual SPOB-level clarity. “I am not possessed by a demon” accurately conveys the established Greek idiom and the immediate dispute without adding doctrine or weakening the honor/dishonor contrast. The current draft is faithful but simply repeats the POB wording, so it does not meet the requested meaningful-simplification standard.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,45 +34,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 7:41 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''But others''].'
 translation:
   language: en
-  text: Others said, "This is the Messiah."[a] But others said, "The Messiah doesn’t come from Galilee, does he?"
+  text: Others said, “This is the Messiah.” But others said, “The Messiah doesn’t come from Galilee, does he?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Changed 'were saying' to the simpler and more direct past tense 'said' to avoid unnecessary continuous-verb clutter in modern narrative English.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed 'were saying' to the simpler and more direct past tense 'said' to avoid unnecessary continuous-verb clutter in modern narrative English.
-- preserved_meaning: Retained the tag-question ending ('..., does he?') from the latest POB revision to naturally carry the rhetorical expectation of a negative answer (from 'Μὴ γὰρ') without sounding overly formal or archaic.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the tag-question ending ('..., does he?') from the latest POB revision to naturally carry the rhetorical expectation of a negative answer (from 'Μὴ γὰρ') without sounding overly formal or archaic.
-retained_terms:
-- term: Messiah
-  reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Directly mirrors the Greek contrasts between 'ἄλλοι' (Others) and 'οἱ δὲ' (But others), as well as the negative rhetorical question construction.
-  readability_notes:
-  - Using the simple past 'said' rather than 'were saying' dramatically improves narrative flow for contemporary readers while preserving the dialogue's gravity.
-  compression_notes:
-  - Slight grammatical compression from imperfect to simple past, with no reduction of semantic or theological value.
-  risk_flags:
-  - risk: None. The simplified draft is a direct, natural-sounding equivalent of the fully audited POB text.
-    mitigation: Flag retained for reviewer attention.
+- pob_phrase: Others were saying
+  simplified_phrase: Others said
+  preserved_meaning: The words still report what one group in the crowd was saying.
+  reasoning_layer_used: POB lexical decision for ἔλεγον and grounding review
+  rationale: Simple past reads more naturally here without materially changing the crowd dialogue.
+- pob_phrase: Surely the Messiah does not come from Galilee, does he?
+  simplified_phrase: The Messiah doesn’t come from Galilee, does he?
+  preserved_meaning: The tag question still expects the answer no and preserves the speakers’ disbelief.
+  reasoning_layer_used: POB lexical decision for Μὴ γὰρ and applied revision
+  rationale: The tag alone conveys the rhetorical force in natural modern English.
+- pob_phrase: Messiah[a]
+  simplified_phrase: Messiah
+  preserved_meaning: The main text retains POB’s source-driven messianic title.
+  reasoning_layer_used: POB theological decision and grounding review
+  rationale: Removing the unresolved marker produces a complete publication text without changing the title.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/007/041.yaml
   source_text_sha256: b2cc35c1361e2835e2debdf5e8eea9d294f95dbfe82dfc39508ce84dd1e97969
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 75d4a515813944fa3543902e195b385c2d038c7de522b36a873a6e8e72dfe9ec
-  timestamp: '2026-05-28T08:47:22Z'
-  output_hash: 9dcba2397618937804872d653e68c124b25fbb70f4559f2f6a70c465edec6f35
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0f18debc5f052560a867197141f727dacfe153b686aff69c2b3f39d7c900add2
+  timestamp: '2026-07-12T07:15:05Z'
+  output_hash: a359e31b9d6cc05e4b0c32e631bd1fdd464fd757b8a0f8c397240c6982dcd3cd
   usage:
-    prompt_tokens: 2336
-    completion_tokens: 366
-    total_tokens: 6921
+    prompt_tokens: 3879
+    completion_tokens: 307
+    total_tokens: 4186
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Messiah
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:05Z'
+  previous_text: Others said, "This is the Messiah."[a] But others said, "The Messiah doesn’t come from Galilee, does he?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 92b5839c911f430194390162a52a8ee2bfd1ec938afe2ea79e3d791f127eeb40
+  review_summary: 'The simplification of the imperfect “were saying” to “said” is acceptable in this short crowd-dialogue setting: it removes a modest English awkwardness without materially changing the competing claims. The negative question plus tag question retains the Greek rhetorical expectation that the answer is no, and it does not add doctrine or resolve a live ambiguity. Revision is required solely because the retained [a] marker has no SPOB footnote; remove the marker (or supply the corresponding alternative-reading footnote).'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

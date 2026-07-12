@@ -31,40 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: At that time Jesus walked through the grainfields on the Sabbath.[a] His disciples became hungry and began to pluck heads of grain and eat.
+  text: At that time Jesus went through the grainfields on the Sabbath.[a] His disciples became hungry and began to pick heads of grain and eat.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Greek uses an idiomatic plural, literally "on the Sabbaths," meaning "on the Sabbath."
+    text: Greek uses an idiomatic plural, literally “on the Sabbaths,” meaning “on the Sabbath.”
     reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: Jesus went through the grainfields on the Sabbath, and his disciples
+  simplified_phrase: Jesus went through the grainfields on the Sabbath. His disciples
+  preserved_meaning: The same event sequence is retained in two shorter sentences.
+  reasoning_layer_used: POB translation and lexical decisions
+  rationale: Splitting the sentence makes the narrative easier to follow without changing its meaning.
+- pob_phrase: pluck heads of grain
+  simplified_phrase: pick heads of grain
+  preserved_meaning: The disciples removed grain heads by hand.
+  reasoning_layer_used: POB lexical decision for τίλλειν
+  rationale: “Pick” is the audited common-English alternative and is clearer to modern readers.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/012/001.yaml
   source_text_sha256: 4d15c9654b41acf6bd0b351bc08e471c759dcbd23a88c4c19ddbc31e9c8271e2
-  pob_commit_sha: 6c5f880ea36cb214bcda721e95d87d94a36e9fb3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:31:34Z'
-  output_hash: 92853b47e3be700eedda91dec026cb05a636c89d8312432e4979843341d8aeb2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5294c24176164b1fc563f9247f719cdb6bafd8c212fdbc4a507cde7bb2f4b6cc
+  timestamp: '2026-07-12T07:36:27Z'
+  output_hash: 3c14c6b1df3e8e195c779e6e954f437f9a20d104d3262dfe5e4c23fc6d95333e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3351
+    completion_tokens: 265
+    total_tokens: 3616
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:27Z'
+  previous_text: At that time Jesus walked through the grainfields on the Sabbath.[a] His disciples became hungry and began to pluck heads of grain and eat.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 2070234acfae7e108035a5aa6b5c6b7791f65eec07e2ddd6386f53ada9857b88
+  review_summary: The split into two sentences improves readability without altering the event sequence. However, “walked” unnecessarily narrows the Greek verb’s meaning to a particular mode of travel. Restore “went.” “Pick heads of grain” is a clear, source-warranted common-English simplification of “pluck heads of grain.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

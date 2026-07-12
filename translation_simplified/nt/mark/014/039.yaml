@@ -34,38 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Again he went away and prayed, saying the same words.
+  text: Again Jesus went away and repeated his prayer.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And again he went away and prayed[b][a], saying the same words.
-  simplified_phrase: Again he went away and prayed, saying the same words.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
+- pob_phrase: he went away and prayed, saying the same words
+  simplified_phrase: Jesus went away and repeated his prayer
+  preserved_meaning: Jesus withdrew again and prayed the same prayer as before.
+  reasoning_layer_used: POB lexical decisions and applied revision for τὸν αὐτὸν λόγον
+  rationale: “Repeated his prayer” clearly conveys repeated prayer-content without requiring identical wording.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - The immediate narrative context identifies Jesus as the one praying.
+  confidence: high
+  alternatives_preserved:
+  - he
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “Repeated his prayer” may sound like exact verbal repetition.
+    mitigation: The phrase naturally allows repetition of the same prayer-content, preserving the documented range of λόγος.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/039.yaml
   source_text_sha256: 8ab116c118a507a668348721aca7b703abf013182d5751f11eb1eb6a2f8556ad
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: c9822aeadbf59b0336fe0deb81d12a58d6537a5b57dad73fe2395233d7af3e4f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7ab8c97bc718a19244458b27ecac1623e3a58a597b2394d1b277b1dc19774c82
+  timestamp: '2026-07-12T07:22:03Z'
+  output_hash: ed1e0bd2294f2d465ce8c981d57f80ca0537696d24249d6018683d5e7e57d8ac
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3150
+    completion_tokens: 240
+    total_tokens: 3390
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:03Z'
+  previous_text: Again he went away and prayed, saying the same words.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a0e03e6a93444d2243c9b0a302c69d1297027e2b3200616a59754e0acfdafc13
+  review_summary: The draft does not introduce doctrinal material and correctly retains the repeated withdrawal and prayer. However, “the same words” may overstate exact verbal repetition where λόγος can refer more broadly to the same prayer or saying, and the audit trail specifically notes that range. “Prayed the same prayer” is concise common English, preserves the repeated prayer-content, and avoids implying more precision about identical wording than the source requires.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

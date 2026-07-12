@@ -37,36 +37,79 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: His disciples did not understand these things at first. But when Jesus was glorified, they remembered that these things had been written about him and that they had done these things to him.
+  text: His disciples did not grasp what these events meant at first. But after Jesus was glorified,[a] they remembered that these things had been written about him and that people had done these things to him.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: In John, Jesus being “glorified” commonly points to his death, resurrection, and exaltation without limiting the expression to only one of them.
+    reason: cross_reference
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: did not understand these things at first
+  simplified_phrase: did not grasp what these events meant at first
+  preserved_meaning: The disciples initially failed to understand the significance of the events.
+  reasoning_layer_used: POB lexical decision for ἔγνωσαν
+  rationale: This makes their lack of understanding explicit in natural English.
+- pob_phrase: but when Jesus was glorified, then they remembered
+  simplified_phrase: But after Jesus was glorified, they remembered
+  preserved_meaning: Their remembering followed Jesus’ glorification.
+  reasoning_layer_used: POB theological decision for ἐδοξάσθη
+  rationale: The wording simplifies the sequence while retaining John’s layered term “glorified.”
+- pob_phrase: they had done these things to him
+  simplified_phrase: people had done these things to him
+  preserved_meaning: The people involved had performed the narrated actions toward Jesus.
+  reasoning_layer_used: POB lexical rationale for ταῦτα ἐποίησαν αὐτῷ
+  rationale: Naming the implied human subject prevents the pronoun from being mistaken for the disciples.
+interpretive_expansions:
+- pob_phrase: did not understand these things
+  rendering: did not grasp what these events meant
+  claim: The disciples failed to recognize the significance of the events, not merely the facts.
+  evidence:
+  - The POB lexical rationale says the context concerns failure to grasp the events’ significance.
+  confidence: high
+  alternatives_preserved:
+  - did not know
+  - did not recognize
+- pob_phrase: they had done these things to him
+  rendering: people had done these things to him
+  claim: The implied subject is the people involved in the triumphal-entry actions.
+  evidence:
+  - The POB lexical rationale identifies the subject as the people involved in those actions.
+  confidence: high
+  alternatives_preserved:
+  - they had done these things to him
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Glorified” may remain unclear to readers unfamiliar with John.
+    mitigation: The footnote explains its layered connection with Jesus’ death, resurrection, and exaltation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/016.yaml
   source_text_sha256: 90e7fdc38e4524196d98231ee8ccf5a75671a5a8ba222653764216c5b125a243
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:54Z'
-  output_hash: cdadd01979b560c7ba266da1f094ed1ad2978082ef66481006e4828798e72dea
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c5cd28fb9e0d37c24d27bc2c1b187e798d14066225706b4adcddfcd83b70547c
+  timestamp: '2026-07-12T07:17:32Z'
+  output_hash: 017454bb4f1bcd59a917da0a399e7fe0a4fe10a243241317365366a56a8500a8
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3332
+    completion_tokens: 1017
+    total_tokens: 4349
+    reasoning_tokens: 428
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:32Z'
+  previous_text: His disciples did not understand these things at first. But when Jesus was glorified, they remembered that these things had been written about him and that they had done these things to him.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c26a2a9f65293246cd119e08fc61eb21513bff6d855724cb60cedc7f522c2f45
+  review_summary: The draft does not introduce doctrinal expansion or alter the verse's meaning, and its retention of “was glorified” appropriately avoids collapsing John's layered usage. However, it is essentially the POB text with footnotes removed, so it does not meet the requested understanding-first standard. The replacement makes explicit that the disciples failed to grasp the significance of the events—a clarification warranted by the POB lexical rationale—while retaining “was glorified” without narrowing its referent.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

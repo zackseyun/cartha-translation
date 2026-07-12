@@ -31,43 +31,62 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 6:43 basketfuls / some of the fish. Restored 2 chosen renderings preserving πλήρωμα quantity-noun and partitive ἀπό.'
 translation:
   language: en
-  text: They picked up twelve basketfuls of broken pieces, along with some of the fish.
+  text: They picked up twelve baskets full of leftover bread pieces and some of the fish.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: and some of the fish
-  simplified_phrase: along with some of the fish
-  preserved_meaning: Keeps the partitive fish detail while making the sentence flow clearly.
-  reasoning_layer_used: POB audit trail
-  rationale: The wording preserves the POB review's restored 'some of the fish' reading.
-retained_terms:
-- term: twelve basketfuls
-  reason: Preserves the fullness quantity from the POB.
-- term: broken pieces
-  reason: Keeps the fragments left from the loaves.
-translation_notes:
-  source_alignment_notes: Preserves twelve basketfuls, broken pieces, and additional fish remains.
-  readability_notes:
-  - Uses 'along with' to connect the fish leftovers naturally.
-  compression_notes:
-  - No leftover detail is removed.
+- pob_phrase: twelve basketfuls
+  simplified_phrase: twelve baskets full
+  preserved_meaning: Keeps both the twelve baskets and the full quantity collected.
+  reasoning_layer_used: POB lexical decision for δώδεκα κοφίνων πληρώματα
+  rationale: The expanded phrase is easier to picture than the compact word “basketfuls.”
+- pob_phrase: broken pieces
+  simplified_phrase: leftover bread pieces
+  preserved_meaning: Identifies the pieces as bread remaining after the meal while keeping them distinct from the fish.
+  reasoning_layer_used: Immediate context and POB lexical rationale for κλάσματα
+  rationale: The feeding context and audit trail clearly identify these pieces as broken bread leftovers.
+interpretive_expansions:
+- pob_phrase: broken pieces
+  rendering: leftover bread pieces
+  claim: The collected broken pieces were bread left after the crowd had eaten.
+  evidence:
+  - Mark 6:41 says Jesus broke the loaves before the food was distributed.
+  - The POB lexical rationale says κλάσματα refers here to pieces broken from the bread.
+  - The fish remains are mentioned separately in the same verse.
+  confidence: high
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/043.yaml
   source_text_sha256: df3017089ef25008a84faf93a55008998d2a55d11e58a07ca2ae8ace3e038ed7
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:46Z'
-  output_hash: 38c1aace8c8b5eb3f00690c36b9a81a784550a7b09a0fc9ef3f3d2972e531c7a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3f8a25033c1170e54aeb130026b9b47ca9d31c85d96dbebdf71e089a1283d962
+  timestamp: '2026-07-12T07:20:32Z'
+  output_hash: 2fa6c5c79b9d2d2b3926b530bb9e0e76368b1f95865565da9601b61db3abcfa1
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3227
+    completion_tokens: 319
+    total_tokens: 3546
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: twelve basketfuls
+  reason: Preserves the fullness quantity from the POB.
+- term: broken pieces
+  reason: Keeps the fragments left from the loaves.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:32Z'
+  previous_text: They picked up twelve basketfuls of broken pieces, along with some of the fish.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fd8f0538184449a64c217500b457e1ced5d14b6ab2f662c57e54886247c9ae3a
+  review_summary: The draft is faithful and does not add doctrine or collapse an ambiguity, but “along with” is only a stylistic substitution and falls short of SPOB’s understanding-first aim. Identifying the broken pieces as leftover bread is warranted by the immediate context and the POB audit trail, while retaining the separate detail that some fish was collected.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

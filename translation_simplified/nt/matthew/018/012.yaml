@@ -37,7 +37,7 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 18:12 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''and go and look for''].'
 translation:
   language: en
-  text: What do you think? If a man has one hundred sheep and one of them wanders away[a], will he not leave the ninety-nine on the mountains[b] and go look for the one that wandered away[c]?
+  text: What do you think? If a man has one hundred sheep and one of them wanders away[a], will he not leave the ninety-nine on the mountains[b] and go look for the one that is wandering away[c]?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -50,11 +50,49 @@ translation:
     text: Literally, “the one going astray”; traditionally, “the lost one.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: What do you think? If a man has a hundred sheep[a], and one of them goes astray[c][b], will he not leave the ninety-nine on the mountains and go and seek the one going astray?
-  simplified_phrase: What do you think? If a man has one hundred sheep and one of them wanders away[a], will he not leave the ninety-nine on the mountains[b] and go look for the one that wandered away[c]?
-  preserved_meaning: Changed repeated “goes astray” language to “wanders away,” which is more natural while keeping the lost-sheep image.
-  reasoning_layer_used: POB audit trail
-  rationale: Changed repeated “goes astray” language to “wanders away,” which is more natural while keeping the lost-sheep image.
+- pob_phrase: one of them goes astray
+  simplified_phrase: one of them wanders away
+  preserved_meaning: The sheep departs from the flock without specifying whether it was misled.
+  reasoning_layer_used: POB lexical decision for πλανάω
+  rationale: “Wanders away” makes the pastoral image immediately clear while retaining “goes astray” as an alternative.
+- pob_phrase: go and seek
+  simplified_phrase: go look for
+  preserved_meaning: The man actively searches for the wandering sheep.
+  reasoning_layer_used: POB lexical decision for ζητέω
+  rationale: “Look for” is common modern English for searching in this setting.
+- pob_phrase: the one going astray
+  simplified_phrase: the one that is wandering away
+  preserved_meaning: The ongoing action and verbal echo of the sheep's wandering remain active.
+  reasoning_layer_used: POB lexical decision for τὸ πλανώμενον and grounding review
+  rationale: The progressive wording avoids presenting the wandering as merely a completed past event.
+translation_notes:
+  risk_flags:
+  - risk: “Wanders away” may sound less morally resonant than “goes astray.”
+    mitigation: Footnote a preserves the broader lexical range, including “goes astray” and “be led astray.”
+  - risk: “Mountains” may suggest steeper terrain than the context requires.
+    mitigation: Footnote b preserves “in the hills” as a possible rendering.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/018/012.yaml
+  source_text_sha256: e5aa30c4ac2d9a99a3e33048468cafacfb5aaf96aaf85340a6762250d5be5d17
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 539073ddcba084a5a82913d12359039ef8ca159d8d36a854f18cdf575d6e88a0
+  timestamp: '2026-07-12T07:36:51Z'
+  output_hash: f70f39aa378d3fcb2d68211a0ed1b8d0808de583846c7e214aef7bde2767285e
+  usage:
+    prompt_tokens: 4266
+    completion_tokens: 495
+    total_tokens: 4761
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: one hundred sheep
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
@@ -64,30 +102,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
 - term: wandered away
   reason: Retained to preserve POB's source-grounded terminology and Matthew 18's argument.
-translation_notes:
-  source_alignment_notes: Preserves the controlling POB meaning and its source-grounded lexical choices while simplifying syntax and wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, clearer word order, and common English where the POB wording is formal or technical.
-  compression_notes:
-  - No central meaning is intentionally removed; technical alternatives are kept in footnotes when needed for review.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/018/012.yaml
-  source_text_sha256: e5aa30c4ac2d9a99a3e33048468cafacfb5aaf96aaf85340a6762250d5be5d17
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:05Z'
-  output_hash: d8c30590115ce306b4508e963602adbbda6526480b52d884c51b61076f489831
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:51Z'
+  previous_text: What do you think? If a man has one hundred sheep and one of them wanders away[a], will he not leave the ninety-nine on the mountains[b] and go look for the one that wandered away[c]?
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e80e9c92aa310811d29f89e360a5568d0b7a3d27453bbf2e46b6e35a9a22d975
+  review_summary: The draft usefully modernizes 'a hundred' to 'one hundred' and 'go and seek' to 'go look for,' and 'wanders away' is a source-supported, contextually appropriate clarification. However, the final 'that wandered away' turns the Greek's ongoing present-participial description into a completed past action. Revising it to 'that is wandering away' preserves the active, repeated straying imagery while remaining clear modern English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -34,45 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But that person has no root inside and lasts only for a while. When trouble or persecution comes because of the word, that person quickly falls away.[a][b]
+  text: But this person has no root in himself and lasts only a short time. When trouble or persecution comes because of the word, he immediately falls away.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “stumbles” or “takes offense”; the Greek can describe being caused to stumble or taking offense.
     reason: lexical_alternative
-  - marker: b
-    text: The POB also allows this as one continuous sentence.
-    reason: source_note
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: Yet he has no root in himself, but is temporary.
+  simplified_phrase: But this person has no root in himself and lasts only a short time.
+  preserved_meaning: The person lacks an inner root and therefore endures only briefly.
+  reasoning_layer_used: POB translation and lexical decisions for ῥίζαν, ἐν ἑαυτῷ, and πρόσκαιρός
+  rationale: “This person” clarifies the subject, while “lasts only a short time” explains “temporary” naturally.
+- pob_phrase: When affliction or persecution arises
+  simplified_phrase: When trouble or persecution comes
+  preserved_meaning: Serious hardship or hostile treatment occurs because of the word.
+  reasoning_layer_used: POB lexical decisions for θλῖψις, διωγμός, and the temporal clause
+  rationale: “Trouble” and “comes” are more familiar while retaining the event and its seriousness.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: “Falls away” is more interpretive than the Greek stumbling image.
+    mitigation: The footnote preserves the broader senses “stumbles” and “takes offense.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/021.yaml
   source_text_sha256: dba71d44d10be2bd661b4bc8b23be2150b4e13068f84cee6d970b6fbbf997175
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: f5edb383ee7150445700c43854ae62404ec66a7bfdd48d24a18ecd58c9cd3b19
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 66c36c8bf58a44a9145b38d620be61f62d43f3f9a286cd699cffb9f293d1b48d
+  timestamp: '2026-07-12T07:38:44Z'
+  output_hash: 1ef41354b66cc8a5a9c0fec1a55781156e9a9f611932415ee346d03016710870
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3736
+    completion_tokens: 365
+    total_tokens: 4101
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:38:44Z'
+  previous_text: But that person has no root inside and lasts only for a while. When trouble or persecution comes because of the word, that person quickly falls away.[a][b]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: da23ceb16047516ead9433cb7422151a436fbb60b5e9e816a0fc94a41435b5ab
+  review_summary: The draft appropriately simplifies “temporary” to “lasts only for a while,” “affliction” to “trouble,” and retains the contextual rendering “falls away” without imposing a doctrinal system. Revise “inside” to “in himself” so the sentence is idiomatic and the source’s reflexive sense remains clear, and remove the non-reader-facing punctuation footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

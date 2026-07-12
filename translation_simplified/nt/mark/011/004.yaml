@@ -31,38 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They went and found a colt tied at a door outside on the street, and they untied it.
+  text: They went away and found a colt tied outside beside a door on the street. Then they untied it.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And they went away and found a colt tied at a door outside on the street[a], and they untied it.
-  simplified_phrase: They went and found a colt tied at a door outside on the street, and they untied it.
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: at a door outside on the street
+  simplified_phrase: outside beside a door on the street
+  preserved_meaning: The colt was tied outdoors near a doorway along the street.
+  reasoning_layer_used: POB lexical decisions for πρὸς θύραν, ἔξω, and ἐπὶ τοῦ ἀμφόδου
+  rationale: Reordering the location details makes the scene easier to picture without resolving the documented spatial flexibility.
+- pob_phrase: and they untied it
+  simplified_phrase: Then they untied it.
+  preserved_meaning: After finding the colt, they untied it.
+  reasoning_layer_used: POB translation and lexical decision for λύουσιν αὐτόν
+  rationale: A new sentence makes the sequence easier to follow while preserving the concrete action.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 11; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Beside a door” selects one allowed nuance where the POB main text has “at a door.”
+    mitigation: The wording remains within the POB footnote’s stated lexical alternative and does not change the scene.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/011/004.yaml
   source_text_sha256: e27ae0daf1728e19cc0394e48ac57fd8326d16f4f0a7b60f04fdbb2c2c200939
-  pob_commit_sha: e400f4119fbb76c8f143b3567c792c0a358b7b02
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:22:53Z'
-  output_hash: e9ca4acb40a9b5df05925eb23948c30ad30a79643f9ed3fec6fcc5d04bebfb2a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 77ef834edfb74ff2ad3b1cc1af18b5506ad130771bc6ef97f9eb78d907d9852a
+  timestamp: '2026-07-12T07:21:17Z'
+  output_hash: abd560ef6a286030752c3a034b3254d0f825a5c3ff32142a350400523153401b
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3093
+    completion_tokens: 300
+    total_tokens: 3393
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:17Z'
+  previous_text: They went and found a colt tied at a door outside on the street, and they untied it.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 75a4d8887ad2b75dd3a1ede6abe040b897b623926de34e626b376f04010679db
+  review_summary: Revise. The draft is readable, but its only substantive simplification removes the source-supported departure nuance of “went away” and does not provide a meaningful clarity benefit. The remaining wording faithfully retains the POB’s chosen spatial sense without adding interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,43 +31,67 @@ base_translation:
     changes_summary: 'doctrine_realignment: Mark 7:5 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''with defiled hands''].'
 translation:
   language: en
-  text: The Pharisees and the scribes asked him, “Why do your disciples not live according to the tradition of the elders, but eat bread with unclean hands?”
+  text: The Pharisees and the scribes asked him, “Why do your disciples not live according to the tradition of the elders, but eat bread with ceremonially defiled hands?”
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: walk according to
   simplified_phrase: live according to
-  preserved_meaning: Keeps the idiom of conduct according to the elders' tradition.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Live according to'' is clearer modern English for the same conduct image.'
-retained_terms:
-- term: tradition of the elders
-  reason: Preserves the key phrase of the controversy.
-- term: unclean hands
-  reason: Preserves the ritual-purity issue in the question.
+  preserved_meaning: The disciples are accused of not conducting their lives by the elders’ tradition.
+  reasoning_layer_used: POB lexical decision for περιπατοῦσιν
+  rationale: “Live according to” expresses the conduct idiom in clear modern English.
+- pob_phrase: with unclean hands
+  simplified_phrase: with ceremonially defiled hands
+  preserved_meaning: The hands are considered ritually impure, not merely physically dirty.
+  reasoning_layer_used: POB lexical and theological decisions for κοιναῖς χερσὶν
+  rationale: The added qualifier prevents a modern hygiene-based misunderstanding.
+interpretive_expansions:
+- pob_phrase: with unclean hands
+  rendering: with ceremonially defiled hands
+  claim: The accusation concerns ritual status rather than physical dirtiness.
+  evidence:
+  - The POB lexical decision identifies the hands as ceremonially defiled or profane.
+  - The POB theological decision says the dispute concerns Pharisaic purity tradition, not hygiene.
+  confidence: high
+  alternatives_preserved:
+  - with unclean hands
+  - with common hands
 translation_notes:
-  source_alignment_notes: Preserves the question about the disciples' conduct and hand purity.
-  readability_notes:
-  - Uses 'live according to' for the idiom 'walk according to.'
-  compression_notes:
-  - No part of the accusation is removed.
+  risk_flags:
+  - risk: “Ceremonially” makes the ritual domain more explicit than the POB main text.
+    mitigation: The POB lexical and theological audit explicitly establishes this domain.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/007/005.yaml
   source_text_sha256: e77b45946a6afc91d74ddd06bc44ea2a35fefb19bbcedf12552f20e3252ef9dc
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:01:59Z'
-  output_hash: 7587d5ec80cf3722bab34bf76e98a5b15bf1bb967cb70eff6d9b4112e537654a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f915a88c803f3c8c1d9d9417c53b4a60c67485623f4caff684cfaa404ef59ce9
+  timestamp: '2026-07-12T07:20:36Z'
+  output_hash: 499520d01ba05a10f4911a96a9aa59010c7d73e7ae2f5f55b98cb1b07f8fe9a5
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3587
+    completion_tokens: 371
+    total_tokens: 3958
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: tradition of the elders
+  reason: Preserves the key phrase of the controversy.
+- term: unclean hands
+  reason: Preserves the ritual-purity issue in the question.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:36Z'
+  previous_text: The Pharisees and the scribes asked him, “Why do your disciples not live according to the tradition of the elders, but eat bread with unclean hands?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: ca871fd4a3f08ce2a1c095935995b06dcf55c36b4dc8baff2d0668471c5d7c75
+  review_summary: '“Live according to” is a warranted and clearer rendering of the conduct idiom “walk according to.” However, the draft is not sufficiently clear at the other key expression: “unclean hands” can suggest ordinary dirtiness. The source sense and the POB audit trail specifically identify ritual defilement, so “ceremonially defiled hands” is a warranted contextual clarification, not a doctrinal addition.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

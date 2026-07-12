@@ -34,7 +34,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When Jesus went ashore, he saw a large crowd and had compassion on them, because they were like sheep without a shepherd.[a] So he began to teach them many things.
+  text: When Jesus went ashore, he saw a large crowd and had compassion on them, because they were like sheep without a shepherd.[a] And he began to teach them many things.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -44,37 +44,52 @@ simplification_decisions:
 - pob_phrase: And when he went ashore
   simplified_phrase: When Jesus went ashore
   preserved_meaning: Clarifies the subject while preserving the landing scene.
-  reasoning_layer_used: POB audit trail
-  rationale: Naming Jesus helps readers after several group movements.
-retained_terms:
-- term: compassion
-  reason: Preserves Jesus' emotional response.
-- term: sheep without a shepherd
-  reason: Keeps the biblical leadership image.
+  reasoning_layer_used: Immediate narrative context and POB lexical decision
+  rationale: Naming Jesus helps readers follow the subject after the group movements in the preceding context.
+- pob_phrase: And he began to teach them many things.
+  simplified_phrase: And he began to teach them many things.
+  preserved_meaning: Keeps the teaching as the next action without making it an explicitly stated result.
+  reasoning_layer_used: Source syntax and grounding review
+  rationale: Retaining “And” avoids adding a causal link not grammatically marked in the source.
 translation_notes:
-  source_alignment_notes: Preserves Jesus going ashore, seeing the crowd, compassion, shepherdless-sheep image, and teaching many things.
-  readability_notes:
-  - Uses a short footnote for the biblical image instead of a longer cross-reference list.
-  compression_notes:
-  - The cross-reference detail is compressed but the image's meaning is retained.
+  risk_flags:
+  - risk: The footnote may be taken as fully defining the shepherd image.
+    mitigation: It says the image “echoes” leadership language rather than replacing or resolving the metaphor.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/034.yaml
   source_text_sha256: 6773b22e231f165b17df11c9323e811c7aaf59c411fd2b57413e05fbe993ba6b
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:45Z'
-  output_hash: 61562a04026489f9edde8bc93eabf0c9eef230f8cc99ffa1680eed32a2ee74c3
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 090cddbc95af156ce8eceba109383b7d09bfa532a03c863b344661c1dd386ab2
+  timestamp: '2026-07-12T07:20:57Z'
+  output_hash: a55d755aa2e37079b1229312b4c0a0d6ae174bd81dc00df1b29d3d2c1cc2305d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3434
+    completion_tokens: 302
+    total_tokens: 3736
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: compassion
+  reason: Preserves Jesus' emotional response.
+- term: sheep without a shepherd
+  reason: Keeps the biblical leadership image.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:57Z'
+  previous_text: When Jesus went ashore, he saw a large crowd and had compassion on them, because they were like sheep without a shepherd.[a] So he began to teach them many things.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 08d02ff990d7949e8bd022a07cba7fcd295b3838fee37c3d12228cd05d71879e
+  review_summary: 'Naming Jesus is a warranted and useful clarity improvement: the immediate boat-crossing context identifies the subject, and the POB audit explicitly supports “went ashore.” The retained shepherd image and concise explanatory footnote are consistent with the POB audit trail and do not impose a named interpretive tradition. Replace only “So” with “And” to avoid strengthening the connective into an explicit causal claim.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

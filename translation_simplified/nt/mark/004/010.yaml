@@ -31,43 +31,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When Jesus was alone, those around him, together with the Twelve, asked him about the parables.
+  text: When Jesus was in private with his followers, including the Twelve, they asked him about the parables.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And when he was alone[a], those around him with the Twelve were asking him about the parables.
-  simplified_phrase: When Jesus was alone, those around him, together with the Twelve, asked him about the parables.
-  preserved_meaning: Preserves the controlling POB meaning while smoothing sentence order, repeated connectors, and formal phrasing for modern common English.
-  reasoning_layer_used: POB translation, theological decisions, lexical decisions
-  rationale: Manual Codex SPOB drafting from the checked POB record only; no external LLM/API was used. The simplification keeps named concepts and theological choices intact while making the verse easier to read aloud.
-retained_terms:
-- term: the Twelve
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
-- term: parables
-  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- pob_phrase: when he was alone
+  simplified_phrase: When Jesus was in private with his followers
+  preserved_meaning: The conversation occurred privately rather than with Jesus completely unaccompanied.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: This removes the apparent contradiction while preserving the idiom’s private-setting sense.
+- pob_phrase: those around him with the Twelve
+  simplified_phrase: his followers, including the Twelve
+  preserved_meaning: A broader group of Jesus’ followers was present, and the Twelve belonged to that group.
+  reasoning_layer_used: POB footnote and theological decision
+  rationale: This identifies the group plainly without limiting it to the Twelve.
+- pob_phrase: were asking him about the parables
+  simplified_phrase: they asked him about the parables
+  preserved_meaning: The group questioned Jesus about his parabolic teaching.
+  reasoning_layer_used: POB lexical decision
+  rationale: The simple past is natural here and remains an approved rendering of the imperfect verb.
+interpretive_expansions:
+- pob_phrase: he was alone
+  rendering: Jesus was in private with his followers
+  claim: The phrase describes a private setting away from the wider audience, not complete solitude.
+  evidence:
+  - The POB lexical rationale gives “in private or alone” as the idiom’s sense.
+  - The same sentence identifies followers who were present with Jesus.
+  confidence: high
+  alternatives_preserved:
+  - Jesus was alone with his followers
 translation_notes:
-  source_alignment_notes: Drafted directly from the POB Mark 4 YAML and its audit notes, preserving the verse's source-grounded meaning while simplifying English style.
-  readability_notes:
-  - Uses shorter, clearer clauses and more natural modern English where the POB wording is formal or wooden.
-  compression_notes:
-  - Compresses repeated opening 'And' language and only retains footnotes that are most helpful for simplified readers.
+  risk_flags:
+  - risk: “Including the Twelve” makes the group relationship more explicit than POB’s wording.
+    mitigation: The POB theological decision says the broader group included the Twelve.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/004/010.yaml
   source_text_sha256: 08f79d081b22927ae86e36a65a36f1fa9809be4e070b1e703eb7dff2664c4fe2
-  pob_commit_sha: 75c2798f09f6f564cab88d2e662f224ed71fcc44
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-manual-worker-b
-  model_version: codex-manual-2026-05-28
-  azure_deployment: codex-manual-no-external-api
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:26Z'
-  output_hash: 2b3679f005759dc47c4c21473d71c93a5f44e37c01d0492426adf485f7be1c30
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c72c17ba7aa966bc16aadc73639b0d8a1605ceae2159eb9019531bf5e028957a
+  timestamp: '2026-07-12T07:20:31Z'
+  output_hash: 2ec004179cc7ecdff5944dc355a639146d1b05e9b624d19d1cdda537c801c15f
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3138
+    completion_tokens: 868
+    total_tokens: 4006
+    reasoning_tokens: 440
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: the Twelve
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+- term: parables
+  reason: Retained to preserve POB's source-grounded terminology and reasoning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:31Z'
+  previous_text: When Jesus was alone, those around him, together with the Twelve, asked him about the parables.
+  previous_model: codex-manual-worker-b
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fe857b7e3defb1799a0ef7888276db8310df23662390daacdaee735d64e96f8c
+  review_summary: Revise for clarity at the private-setting phrase. Naming Jesus is a helpful clarification, and “asked” is acceptable common English for the imperfect “were asking.” However, retaining “alone” without saying who was with him leaves modern readers with an avoidable contradiction. The recommended wording preserves the distinction between those around Jesus and the Twelve while communicating that this occurred away from the crowd.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

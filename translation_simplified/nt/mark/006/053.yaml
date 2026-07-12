@@ -34,43 +34,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After crossing over to the land, they came to Gennesaret and moored there.
+  text: After they crossed over to land, they came to Gennesaret and moored their boat there.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And after crossing over
-  simplified_phrase: After crossing over
-  preserved_meaning: Keeps the travel transition while trimming an unnecessary connector.
-  reasoning_layer_used: POB audit trail
-  rationale: The POB wording is otherwise clear and preserved.
-retained_terms:
-- term: Gennesaret
-  reason: Preserves the geographical location.
-- term: moored
-  reason: Keeps the nautical landing sense.
-translation_notes:
-  source_alignment_notes: Preserves crossing to land, arrival at Gennesaret, and mooring there.
-  readability_notes:
-  - The verse remains close to POB.
-  compression_notes:
-  - No travel detail is removed.
+- pob_phrase: after crossing over to the land
+  simplified_phrase: After they crossed over to land
+  preserved_meaning: The crossing happened before they arrived at Gennesaret.
+  reasoning_layer_used: POB lexical decision for διαπεράσαντες and the boating context
+  rationale: A direct clause is easier to read than the participial phrase.
+- pob_phrase: moored there
+  simplified_phrase: moored their boat there
+  preserved_meaning: They brought the boat in and secured it at Gennesaret.
+  reasoning_layer_used: POB lexical decision for προσωρμίσθησαν and immediate context
+  rationale: Naming the implied boat makes the nautical action immediately clear.
+interpretive_expansions:
+- pob_phrase: moored there
+  rendering: moored their boat there
+  claim: The thing they moored was their boat.
+  evidence:
+  - The Greek verb has the nautical sense of bringing a boat in to moor or land.
+  - The immediate context describes their boat crossing the water.
+  confidence: high
+  alternatives_preserved:
+  - anchored their boat there
+  - brought their boat to shore there
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/006/053.yaml
   source_text_sha256: afddc99c12ccd96abafe6125fa0f65e589606b565d68261ae675ca569ddae174
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:56:46Z'
-  output_hash: c62188275fce4dce4997811294a635ff926b5e43f4396fb5f6b8268de0abe2b7
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 88e312ad027c408bb362ea188f34cd12f2084121469d5c4ac51d60606a3c8a85
+  timestamp: '2026-07-12T07:20:35Z'
+  output_hash: 0a1b1c79767457b6efc1b60e4da4886898362e1dcb516bd52cad78a83d20720a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2814
+    completion_tokens: 310
+    total_tokens: 3124
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Gennesaret
+  reason: Preserves the geographical location.
+- term: moored
+  reason: Keeps the nautical landing sense.
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:35Z'
+  previous_text: After crossing over to the land, they came to Gennesaret and moored there.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 297f4dc537643efaf25f172446df0d9441d28f847cea03bdd8ecdadac1c88414
+  review_summary: Revise for a substantive understanding-first improvement. The draft is faithful and doctrinally unobjectionable, but merely dropping “And” does not meet the stated threshold for meaningful clarification. Making the boat explicit is supported by the nautical verb and immediate context.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

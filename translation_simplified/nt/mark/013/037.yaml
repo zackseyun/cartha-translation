@@ -31,38 +31,66 @@ base_translation:
     changes_summary: Removed the comma after 'you' for smoother, more natural English while preserving the meaning and formal tone.
 translation:
   language: en
-  text: 'What I say to you, I say to everyone: stay awake.'
+  text: 'I say this to everyone, not only to you: stay awake.[a]'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “keep watch” or “be watchful.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: 'And what I say to you I say to all: stay awake[a].'
-  simplified_phrase: 'What I say to you, I say to everyone: stay awake.'
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, clause order, and repeated audit markers for modern common English.
-  reasoning_layer_used: Existing local POB YAML translation text, footnotes, revision trail, and Greek source payload
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM, web API, or translation API was used.
+- pob_phrase: What I say to you I say to all
+  simplified_phrase: I say this to everyone, not only to you
+  preserved_meaning: Jesus extends his warning beyond the disciples he is addressing to everyone.
+  reasoning_layer_used: Greek source contrast, POB lexical decisions, and theological decision on scope
+  rationale: The recast wording makes the widening from the immediate hearers to everyone clear.
+- pob_phrase: stay awake
+  simplified_phrase: stay awake
+  preserved_meaning: The command calls for ongoing vigilance while retaining the source metaphor.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: The vivid waking image remains clear in common English.
+interpretive_expansions:
+- pob_phrase: to you ... to all
+  rendering: to everyone, not only to you
+  claim: The message is not limited to Jesus’ immediate hearers but extends to everyone.
+  evidence:
+  - The Greek explicitly contrasts ὑμῖν, “to you,” with πᾶσιν, “to all.”
+  - The POB theological decision identifies an explicit widening from the disciples to all.
+  confidence: high
+  alternatives_preserved:
+  - The immediate disciples remain the first addressees.
 translation_notes:
-  source_alignment_notes: Uses the local POB text as the controlling base and the local Greek source payload and POB footnotes as guardrails.
-  readability_notes:
-  - Uses clearer modern common English while keeping a dignified biblical register.
-  compression_notes:
-  - Removes unnecessary repetition and audit-marker friction without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Not only” makes the source contrast more explicit than its grammatical form alone.
+    mitigation: The Greek contrast and POB scope decision directly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/013/037.yaml
   source_text_sha256: e938b961be7c39f1cac19e0e34c2add88d8f2d02efc3b55324306b8d9ce5ca0e
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:29:48Z'
-  output_hash: 755a81663e61f722b942484192107aefec46bca960ff323410278315ea0068ab
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 546e4dced3f4733d6f81df176bc4ff381557a596e5365b6d45c37b9ccfc884f3
+  timestamp: '2026-07-12T07:23:04Z'
+  output_hash: 6fe5587c19dbe7a089ee9403c2788fbeed894f8f70d5a2784bdf9a55ba523d7a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3082
+    completion_tokens: 392
+    total_tokens: 3474
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:23:04Z'
+  previous_text: 'What I say to you, I say to everyone: stay awake.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: da84f6fa6fdcc7a804488c057d74a7331dad64dedfe44351a342ae5f5336c9c4
+  review_summary: 'The draft is faithful: “everyone” appropriately expresses πᾶσιν, and no doctrinal expansion is introduced. Revision is needed because the stated SPOB goal requires a meaningful clarity gain over POB, not merely minor punctuation and lexical smoothing. “Not only to you” makes explicit the widening already established by the source’s contrast between “to you” and “to all,” without adding a theological application.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

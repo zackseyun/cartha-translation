@@ -34,36 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The grace of our Lord Jesus Christ be with all of you. Amen.
+  text: May the grace of our Lord Jesus the Messiah be with all of you.[a] Amen.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Some manuscripts include this verse, while others omit it; many modern editions mark it as a textual variant in the closing of Romans.
+    reason: textual_variant
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: The grace of our Lord Jesus Christ be with all of you
+  simplified_phrase: May the grace of our Lord Jesus the Messiah be with all of you
+  preserved_meaning: This remains a blessing asking that the Lord’s grace be present with the whole audience.
+  reasoning_layer_used: POB translation, lexical decisions, and theological decisions
+  rationale: “May” gives the blessing natural modern form, while “Messiah” communicates the title selected by the POB audit.
+interpretive_expansions:
+- pob_phrase: The grace ... be with all of you
+  rendering: May the grace ... be with all of you
+  claim: The sentence expresses a blessing or prayer rather than a statement of fact.
+  evidence:
+  - The POB presents the clause as a Pauline benediction.
+  - The supplied Greek has the conventional form of a closing blessing.
+  confidence: high
+  alternatives_preserved:
+  - The grace ... be with all of you
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Readers may not know the theological range of “grace.”
+    mitigation: The term is retained because the POB audit identifies it as the established Pauline term carrying both gracious favor and gift.
+  - risk: The verse is absent from some manuscripts.
+    mitigation: A concise textual-variant footnote preserves the POB notice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/024.yaml
   source_text_sha256: 2991af5e8a0d72315731e896125910a9f8c661f739574490a1ca7662b3ea53f7
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:32Z'
-  output_hash: 5e3c45621053b297c05276f82619f5ad3f79f708dc3963faf0ebecaa01df0130
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2eb93f5d167a4b50406bd4c2ac79cf4905e7939ee017b01e10ed84ee5450f627
+  timestamp: '2026-07-12T07:42:55Z'
+  output_hash: dd8ee4e52a1f6685b023dad656a1ebfb4811da4038ff48c5147e075d78e091ec
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3137
+    completion_tokens: 517
+    total_tokens: 3654
+    reasoning_tokens: 128
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:55Z'
+  previous_text: The grace of our Lord Jesus Christ be with all of you. Amen.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 41fae46b0ada64bdb8c9a5ceed1a148cb9295b7deddaf20cbf5bd6bfec351b44
+  review_summary: Revise. The draft does not materially simplify the POB and leaves “Christ” opaque despite the POB audit’s explicit decision to communicate Χριστός as “Messiah.” “May the grace … be with all of you” preserves the benediction while reading naturally. Retain the supplied textual-variant footnote, since its omission removes material information about whether this verse belongs in the earliest textual form.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

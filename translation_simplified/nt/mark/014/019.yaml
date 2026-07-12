@@ -31,38 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They began to be deeply sad, and one by one they said to him, “Surely not me?”
+  text: They began to feel sad, and one by one they said to him, “Surely not me?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: They began to be grieved and to say to him[a], one by one, “Surely not I?”
-  simplified_phrase: They began to be deeply sad, and one by one they said to him, “Surely not me?”
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB translation text, footnotes, lexical decisions, theological decisions, and source payload as guardrails
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 14 record; no external LLM, web API, Vertex, Gemini, Azure, or OpenRouter service was used.
-translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+- pob_phrase: to be grieved
+  simplified_phrase: to feel sad
+  preserved_meaning: They became sorrowful without adding a degree of intensity.
+  reasoning_layer_used: POB lexical decision for λυπεῖσθαι and grounding review
+  rationale: “Feel sad” expresses the onset of sorrow in common English without the unsupported intensifier “deeply.”
+- pob_phrase: to say to him, one by one
+  simplified_phrase: one by one they said to him
+  preserved_meaning: Each disciple spoke to Jesus individually in sequence.
+  reasoning_layer_used: POB lexical decisions for καὶ λέγειν, αὐτῷ, and εἷς κατὰ εἷς
+  rationale: Reordering the phrase gives natural English while retaining “said,” the pronoun, and the sequential response.
+- pob_phrase: Surely not I?
+  simplified_phrase: Surely not me?
+  preserved_meaning: The question expects the reassuring answer “no.”
+  reasoning_layer_used: POB lexical and theological decisions for Μήτι ἐγώ
+  rationale: “Surely not me?” is idiomatic modern English and preserves the question’s negative expectation.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/014/019.yaml
   source_text_sha256: 697d853eef597c07bdc1a3b7baf98d63af5fada55ecc66a0f7479d8938648365
-  pob_commit_sha: 19c937c124f3c614506cc69d0a51a7964c55d5d7
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:30:54Z'
-  output_hash: 35a5523ab1810301fb746c1ab532aff6c533eae49e2a309757e63d8fbf3c41f1
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d2c7683cee138a7300259d58591c3f40300ba08d336d3f0b3322ad77497578ab
+  timestamp: '2026-07-12T07:22:29Z'
+  output_hash: 330e88d6406dea853d03cac5f90b318152a1134d60a1c4a7b40f133062eddf10
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3095
+    completion_tokens: 331
+    total_tokens: 3426
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:29Z'
+  previous_text: They began to be deeply sad, and one by one they said to him, “Surely not me?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: bedad13e92520b7cea75c20193773f3d57fcfec50cc6754056f5a6f9f355a20b
+  review_summary: 'The draft successfully improves accessibility: “one by one” is clearly placed, and “Surely not me?” naturally preserves the Greek question’s expectation of a negative answer. However, “deeply” is an unwarranted intensification. “Feel sad” provides clear common-English wording while retaining the onset expressed by “began” and avoiding the added degree of emotion.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

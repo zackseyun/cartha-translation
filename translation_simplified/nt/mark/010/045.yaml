@@ -31,43 +31,82 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.”
+  text: After all, even the Son of Man did not come so that others would serve him. He came to serve others and to give his life as a ransom to free many people.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “as a ransom in place of many.” The word translated “for” can express substitution or exchange.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: For even the Son of Man did not come to be served[a], but to serve, and to give his life as a ransom for many.
-  simplified_phrase: For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
-retained_terms:
-- term: Son of Man
-  reason: Retained because it is a key POB/source-grounded term in this verse.
-- term: ransom
-  reason: Retained because it is a key POB/source-grounded term in this verse.
+- pob_phrase: For even
+  simplified_phrase: After all, even
+  preserved_meaning: The words explain and emphasize Jesus’ preceding teaching.
+  reasoning_layer_used: POB lexical decision for καὶ γὰρ
+  rationale: “After all, even” expresses the grounding force in more natural English.
+- pob_phrase: did not come to be served, but to serve
+  simplified_phrase: did not come so that others would serve him. He came to serve others
+  preserved_meaning: Jesus contrasts receiving service with serving other people.
+  reasoning_layer_used: POB lexical decisions for διακονηθῆναι and διακονῆσαι
+  rationale: Two direct sentences make the reversal easier to follow.
+- pob_phrase: to give his life as a ransom for many
+  simplified_phrase: to give his life as a ransom to free many people
+  preserved_meaning: Jesus gives up his life as the price that brings release to many.
+  reasoning_layer_used: POB lexical and theological decisions for ψυχή, λύτρον, and ἀντί
+  rationale: The added purpose phrase explains the ransom image while the footnote preserves its substitutional force.
+interpretive_expansions:
+- pob_phrase: to serve
+  rendering: to serve others
+  claim: Other people are the implied recipients of the Son of Man’s service.
+  evidence:
+  - The immediate contrast is between being served and serving.
+  confidence: high
+- pob_phrase: a ransom for many
+  rendering: a ransom to free many people
+  claim: A ransom is a price given to bring about release.
+  evidence:
+  - The POB lexical rationale defines λύτρον as a price paid for release.
+  confidence: high
+  alternatives_preserved:
+  - as a ransom in place of many
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “To free” makes the function of the ransom more explicit than the POB main text.
+    mitigation: The wording follows the POB lexical rationale and retains the ransom image.
+  - risk: The main text’s “for” does not fully display the substitution or exchange nuance of ἀντί.
+    mitigation: The footnote preserves “in place of many” as an explicit lexical alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/045.yaml
   source_text_sha256: 26d89402a112c8a18cf22034d831b284d2110204befed5c520a2f7e2e26f70f5
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: bacd1049653b7c9d11896b4842229ad7234a95864dd59376ccca14a191f63407
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6401bcdfba9ba03cc5cc0bdcf0038a7a98dc5696a2d04afa4a45d722c60aca2c
+  timestamp: '2026-07-12T07:21:25Z'
+  output_hash: 43a943a2b19f46d4763b64971b8dbc1abf6bfe406ba9be6c30f0ded82dd15bc6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3523
+    completion_tokens: 866
+    total_tokens: 4389
+    reasoning_tokens: 256
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Son of Man
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+- term: ransom
+  reason: Retained because it is a key POB/source-grounded term in this verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:25Z'
+  previous_text: For even the Son of Man did not come to be served, but to serve, and to give his life as a ransom for many.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 659f478d53a7bae5a9648c35164b2284707d585a9df3c145379780f32aee05a1
+  review_summary: Revise. The draft neither simplifies the POB wording nor preserves its explanatory footnote, and it has a punctuation error. “Serve others” makes the implied object clear in the immediate servant-versus-served contrast; “a ransom to free many people” explains the ordinary purpose of a ransom without claiming more than the source. The retained footnote preserves the source-grounded substitution/exchange nuance without imposing it as the sole main-text interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

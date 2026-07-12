@@ -31,38 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They were discussing with one another that they had no bread.
+  text: And they were talking with each other about not having any bread.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: More literally, “not having any loaves.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And they were discussing with one another that they had no bread[a].
-  simplified_phrase: They were discussing with one another that they had no bread.
-  preserved_meaning: Preserves the POB sequence and source-grounded meaning for Mark 8 while using clearer modern common English.
-  reasoning_layer_used: POB translation text, footnotes, and applied revisions
-  rationale: Simplifies connective-heavy wording, historical-present phrasing, and less common terms without changing the event, speech, or documented lexical choices.
+- pob_phrase: were discussing with one another that they had no bread
+  simplified_phrase: were talking with each other about not having any bread
+  preserved_meaning: They continued a mutual conversation whose subject was their lack of bread.
+  reasoning_layer_used: POB lexical decisions for διελογίζοντο, πρὸς ἀλλήλους, ὅτι, and οὐκ ἔχουσιν
+  rationale: The natural construction preserves an ongoing reciprocal discussion without turning the content clause into a cause.
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the audited POB record for Mark 8; source payload and POB footnotes were used as guardrails, with no external API calls.
-  readability_notes:
-  - Uses shorter sentences and more direct modern English while keeping the POB meaning.
-  compression_notes:
-  - Connective wording and formal phrasing were compressed only where the meaning stayed intact.
+  risk_flags:
+  - risk: Using “bread” may obscure that the narrative concerns counted loaves.
+    mitigation: The footnote preserves the literal alternative “loaves.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/008/016.yaml
   source_text_sha256: af6f2b4e268f540e57862e4785bfb022ebe45f605faa68a6b6712b15e4447be2
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:05:58Z'
-  output_hash: 46e79dce4175c4a95a071eda24762ac7695a4f847ed3230bb5bbd084348c920d
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 814a68e4b900373596a408b924f30582f0491b65e37a12fe5975edeff0b7c16c
+  timestamp: '2026-07-12T07:20:48Z'
+  output_hash: 3c335e27cb70c9db3e1c1e3d9eb239f671308ee82fa99c6cef5ba61047e54eac
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2908
+    completion_tokens: 240
+    total_tokens: 3148
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:20:48Z'
+  previous_text: They were discussing with one another that they had no bread.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c27d8d1fa7c8e54a7e55ab2e90c1861c125a0f17fb60e2e94ed17aa93ac02df0
+  review_summary: Revise for a genuine understanding-first simplification. The draft is faithful and doctrinally neutral, but it largely repeats POB rather than making its formal construction clearer. The recommended wording preserves the ongoing mutual discussion and the fact that their topic was their lack of bread, without introducing any explanation or resolving an ambiguity beyond what the source and POB already establish.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

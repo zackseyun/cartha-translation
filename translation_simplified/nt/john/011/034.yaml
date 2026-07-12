@@ -31,36 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He said, “Where have you laid him?” They said to him, “Lord, come and see.”
+  text: Jesus said, “Where have you laid him?” They replied, “Lord, come and see.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: he said
+  simplified_phrase: Jesus said
+  preserved_meaning: Jesus remains the speaker, and the speech verb remains “said.”
+  reasoning_layer_used: Immediate context and POB lexical decision for εἶπεν
+  rationale: Naming Jesus makes the isolated verse clear without changing the action.
+- pob_phrase: They said to him
+  simplified_phrase: They replied
+  preserved_meaning: The people addressed by Jesus respond directly to him.
+  reasoning_layer_used: Narrative context and POB lexical decision for λέγουσιν
+  rationale: “Replied” expresses the conversational response more naturally without adding content.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: Jesus
+  claim: The continuing speaker is Jesus.
+  evidence:
+  - John 11:33 identifies Jesus as the subject in the immediate context.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Replied” is more context-sensitive than the literal “said.”
+    mitigation: The immediate exchange clearly presents these words as their response to Jesus.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/034.yaml
   source_text_sha256: 6f3f0dd4894acbc30cf1d7f640fdcf3fd4fa23068b6efa1ae36fccb91a20fcc7
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:38Z'
-  output_hash: f66d1a7d287f02d1574dcf6874e10b580302ee155f066bddbd695616b04f809f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0ba3f5fa84e9c9046414d0e7f2a452a55b3f922cec279d311991c967dc25feb6
+  timestamp: '2026-07-12T07:16:06Z'
+  output_hash: 1bbc263c6706699f8d4621babb3a62cd271201bae1bb99ae139ae21bf90504db
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2988
+    completion_tokens: 300
+    total_tokens: 3288
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:06Z'
+  previous_text: He said, “Where have you laid him?” They said to him, “Lord, come and see.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 6cf0b11375e36de4307a8461ea60c21df7b5e59cc8f4eb9496d8e851b5ae93c1
+  review_summary: The current wording is faithful and doctrinally sound, including its retention of “Lord,” but it is not meaningfully clearer than the POB because it is identical to it. The recommended text makes the speaker explicit from the immediate context and slightly smooths the response while preserving every source-level idea and the POB’s non-interpretive choice of “said.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

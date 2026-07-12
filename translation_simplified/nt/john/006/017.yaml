@@ -37,12 +37,37 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They got into a boat and were heading across the sea to Capernaum. It had already grown dark, and Jesus had not yet come to them.
+  text: They got into a boat and were heading across the sea to Capernaum. It was already dark, and Jesus had not yet come to them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Removed the repetitive coordinating conjunction 'And' at the beginning of the sentence for a smoother modern English transition. Changed 'become dark' to 'grown dark' to make the pluperfect verb sound more natural and idiomatic while maintaining the aspectual nuance of a state resulting from prior change.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the repetitive coordinating conjunction 'And' at the beginning of the sentence for a smoother modern English transition. Changed 'become dark' to 'grown dark' to make the pluperfect verb sound more natural and idiomatic while maintaining the aspectual nuance of a state resulting from prior change.
+- pob_phrase: And it had already become dark
+  simplified_phrase: It was already dark
+  preserved_meaning: Darkness had arrived by this point in the crossing.
+  reasoning_layer_used: POB lexical decision and grounding review
+  rationale: The simpler stative wording retains the temporal force of “already” without an awkward pluperfect construction.
+translation_notes: {}
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/006/017.yaml
+  source_text_sha256: 7d908f1e2909c7f8d49468c242493fe0c1638925fa2c37ebcb5c953809765adf
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 354d614435c37b736c56ef8a2ad75fa0acd5543459a7477f0e830a539d18a6d3
+  timestamp: '2026-07-12T07:15:06Z'
+  output_hash: 910f993f703dc72bb2c0bdde8df2be561bc09007f856b2fece4725cebdf15549
+  usage:
+    prompt_tokens: 3711
+    completion_tokens: 158
+    total_tokens: 3869
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: sea
   reason: Retained to preserve POB's source-grounded terminology.
@@ -50,33 +75,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Jesus
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains alignment with the SBLGNT Greek aspectual profile. The imperfective verb 'ἤρχοντο' is translated as 'were heading' to preserve the ongoing action, and 'ἐληλύθει' is translated as 'had not yet come' to preserve the pluperfect aspect.
-  readability_notes:
-  - The text flows much more naturally by dividing the verse into two distinct sentences and removing the redundant polysyndeton ('And... and...') typical of Hellenistic Greek narrative style, which can feel repetitive to modern readers.
-  compression_notes:
-  - No theological or narrative details have been compressed or omitted. The original setting, destination, time of day, and state of Jesus' arrival are fully preserved.
-  risk_flags:
-  - risk: None. The simplification avoids flattening any documented ambiguities or theological layers.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/006/017.yaml
-  source_text_sha256: 7d908f1e2909c7f8d49468c242493fe0c1638925fa2c37ebcb5c953809765adf
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 259b7c478ca0564bbc69792848afc584d6f46a5f416a713910aca1860609c92d
-  timestamp: '2026-05-28T07:33:41Z'
-  output_hash: 0fbc6195623d616d0cc9cabcde6006354bd566ee25628f7073b2fdc110a857ef
-  usage:
-    prompt_tokens: 2081
-    completion_tokens: 491
-    total_tokens: 6217
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:06Z'
+  previous_text: They got into a boat and were heading across the sea to Capernaum. It had already grown dark, and Jesus had not yet come to them.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 5da2cd0b334dbb25259fae10f824f294ff7882937ff5a13632340844a41d2598
+  review_summary: The draft preserves the source meaning and introduces no unsupported interpretation. However, its only substantive wording change, “grown dark,” is not clearly more understandable than the POB wording and can sound less direct. “It was already dark” is clearer for contemporary readers and preserves the temporal force through “already,” without adding or weakening a theological claim.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

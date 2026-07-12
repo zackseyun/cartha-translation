@@ -34,14 +34,50 @@ base_translation:
     changes_summary: 'doctrine_realignment: Matthew 21:25 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''where was it from''].'
 translation:
   language: en
-  text: Where did John’s baptism come from? From heaven, or from men? They reasoned among themselves, saying, “If we say, ‘From heaven,’ he will ask us, ‘Then why did you not believe him?’”
+  text: 'Where did John’s baptism come from? From heaven or from people? They discussed this among themselves: “If we say, ‘From heaven,’ he will ask us, ‘Then why did you not believe him?’”'
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: The baptism of John—from where was it?
   simplified_phrase: Where did John’s baptism come from?
-  preserved_meaning: Keeps the origin question in clearer English.
-  reasoning_layer_used: POB theological decisions
-  rationale: Retains 'from heaven' and 'from men' because POB preserves the divine-versus-human origin contrast.
+  preserved_meaning: Keeps the question focused on the source of John’s baptism.
+  reasoning_layer_used: POB lexical decision for πόθεν and βάπτισμα
+  rationale: The direct question is more natural in modern English while preserving the source-oriented meaning.
+- pob_phrase: From heaven or from men?
+  simplified_phrase: From heaven or from people?
+  preserved_meaning: Preserves the contrast between divine and human origin.
+  reasoning_layer_used: POB lexical and theological decisions for ἐξ οὐρανοῦ and ἐξ ἀνθρώπων
+  rationale: “People” clearly expresses the generic human sense without suggesting only males.
+- pob_phrase: they were reasoning among themselves, saying
+  simplified_phrase: They discussed this among themselves
+  preserved_meaning: Conveys their ongoing collective deliberation before answering.
+  reasoning_layer_used: POB lexical decision for διελογίζοντο ἐν ἑαυτοῖς
+  rationale: “Discussed this” is common English and naturally introduces their quoted deliberation.
+translation_notes:
+  risk_flags:
+  - risk: Modern readers may miss that “from heaven” means divine authorization.
+    mitigation: The phrase is retained to preserve the source image and its contrast with human origin.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/021/025.yaml
+  source_text_sha256: 568f0ae8618ac26f2405082913fdd649c357bbf16eca7e388a23444fafbe5163
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 007a4da8362d8d0430315962b51de33818cbc5fef03f510de3f592a53c5d0af0
+  timestamp: '2026-07-12T07:37:16Z'
+  output_hash: 7874100955c1ff50044f2b16c52e117e26a2a05c6eaf35d26f5cc44db4c1a689
+  usage:
+    prompt_tokens: 4165
+    completion_tokens: 387
+    total_tokens: 4552
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: baptism
   reason: Retained from POB.
@@ -49,30 +85,14 @@ retained_terms:
   reason: Retained as POB's literal expression for divine origin.
 - term: from men
   reason: Retained to preserve the human-origin contrast.
-translation_notes:
-  source_alignment_notes: Preserves Jesus' question and the leaders' private reasoning.
-  readability_notes:
-  - Makes the opening question more direct.
-  compression_notes:
-  - No side of the origin contrast is omitted.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/021/025.yaml
-  source_text_sha256: 568f0ae8618ac26f2405082913fdd649c357bbf16eca7e388a23444fafbe5163
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:14:46Z'
-  output_hash: 7c5839de6df4b921a55c297140fe6faf09da1b80531149240f457cdeb257da2d
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:16Z'
+  previous_text: Where did John’s baptism come from? From heaven, or from men? They reasoned among themselves, saying, “If we say, ‘From heaven,’ he will ask us, ‘Then why did you not believe him?’”
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3c3fd1d82171eee3e2ec41a13021fb8631e4e0752ff3f37eaaaad168ceaf11ff
+  review_summary: 'The opening question is a warranted and clearer rendering of the source-oriented question. The draft should nevertheless revise two remaining readability barriers: use gender-accurate “people” for the generic ανθρώπων contrast, and replace the formal “reasoned among themselves” with a natural expression of their deliberation. Rendering Jesus’ following direct question as “he will ask us” is contextually warranted and preserves the force of the Greek.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

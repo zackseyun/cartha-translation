@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/john/006/016.yaml
-  text: Now when evening came[a], his disciples went down to the sea,
+  text: When evening came[a], his disciples went down to the sea,
   footnotes:
   - marker: a
     text: Or 'to the lake.' The body of water is the Sea of Galilee, which is technically a lake, but the Greek text says 'sea' (θάλασσα).
@@ -31,44 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When evening came, his disciples went down to the sea.
+  text: When evening came, his disciples went down to the lake.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: This is the Sea of Galilee, which is a lake; the Greek text calls it a “sea.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Simplified the transitional phrase by removing 'Now' to make the sentence open more naturally for a modern reader, while fully retaining the temporal marker.
-  reasoning_layer_used: POB audit trail
-  rationale: Simplified the transitional phrase by removing 'Now' to make the sentence open more naturally for a modern reader, while fully retaining the temporal marker.
-retained_terms:
-- term: disciples
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: sea
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: to the sea
+  simplified_phrase: to the lake
+  preserved_meaning: The disciples went to the body of water known as the Sea of Galilee.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: “Lake” gives modern readers the familiar geographic sense, while the footnote preserves the Greek wording.
+interpretive_expansions:
+- pob_phrase: the sea
+  rendering: the lake
+  claim: The body of water is the Sea of Galilee, which is geographically a lake.
+  evidence:
+  - The POB footnote explicitly identifies the water as the Sea of Galilee and technically a lake.
+  confidence: high
+  alternatives_preserved:
+  - sea
 translation_notes:
-  source_alignment_notes: Retained the literal 'sea' (θάλασσαν) rather than translating it as 'lake' in the main text, respecting the POB's lexical priority of original-language primacy, while leaving the geographical clarification to a footnote. Similarly, preserved the physical direction of 'went down' (κατέβησαν).
-  readability_notes:
-  - Removing the introductory discourse marker 'Now' yields a cleaner, more direct narrative style that is highly readable and standard in modern English storytelling.
-  compression_notes:
-  - Minimal compression was applied. The only change is the minor streamlining of the temporal clause.
   risk_flags:
-  - risk: Low risk. No theological terms were altered, and the minor geographical ambiguity of the Sea of Galilee is handled in the simplified footnote.
-    mitigation: Flag retained for reviewer attention.
+  - risk: Rendering θάλασσα as “lake” could hide the Greek image of the sea.
+    mitigation: The footnote states that the Greek text calls it a “sea.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/006/016.yaml
   source_text_sha256: dd3690048f82d9a0486b038917988700ae804523b43ba66ee219cb5beb64ab36
-  pob_commit_sha: be106d04a74d283b91d8fc05ab27741bb74b88c3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 508148b14e2671bfdb3c94cac01f54d6b6085fb26c4b44762976cd201f5766ec
-  timestamp: '2026-05-28T07:33:19Z'
-  output_hash: 9b2a378aed2b6c59d0ce2bd86bcffae8df96f6f7c4cff555a9188ff8ac0707e4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6495d69428dc6a97b03bae97567ab22f485b37f90c623c6a324c656dd10159ef
+  timestamp: '2026-07-12T07:14:32Z'
+  output_hash: 3b63962857c0c452d1a9f66e0df00fefab7b4b648a1df1a2224cb4360acbd502
   usage:
-    prompt_tokens: 1387
-    completion_tokens: 401
-    total_tokens: 4056
-    reasoning_tokens: 0
+    prompt_tokens: 3136
+    completion_tokens: 439
+    total_tokens: 3575
+    reasoning_tokens: 138
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: disciples
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: sea
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:14:32Z'
+  previous_text: When evening came, his disciples went down to the sea.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 364465fc200e682293cd0fe1d563d205e09b90fa37abd6f73034eb966bf88c34
+  review_summary: 'The draft accurately preserves the Greek temporal transition, the disciples’ downward movement, and the narrative meaning; it introduces no doctrinal expansion. However, it merely repeats the POB wording and therefore is not meaningfully clearer. For modern readers, “lake” is a warranted contextual clarification: the POB itself identifies this body of water as the Sea of Galilee and notes that it is technically a lake. The supplied risk documentation also incorrectly claims a simplified footnote exists. Replace “sea” with “lake” to make the clarification in the main text; a footnote is optional if the edition wishes to preserve the traditional name “Sea of Galilee.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

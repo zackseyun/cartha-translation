@@ -31,38 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: but to sit at my right or at my left is not mine to give. Those places belong to the people for whom they have been prepared.”
+  text: But the places at my right and left are not mine to give. They have been prepared for certain people.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But to sit at my right or at my left is not mine to give[a], but for those for whom it has been prepared.
-  simplified_phrase: but to sit at my right or at my left is not mine to give. Those places belong to the people for whom they have been prepared.”
-  preserved_meaning: Preserves the POB verse meaning while simplifying syntax, removing audit footnote markers, and using modern common English.
-  reasoning_layer_used: Existing POB YAML translation text, footnotes, lexical decisions, and theological decisions
-  rationale: Manual Codex-only SPOB drafting pass based on local POB/source context; no external LLM or API was used.
+- pob_phrase: to sit at my right or at my left
+  simplified_phrase: the places at my right and left
+  preserved_meaning: The wording still refers to the two honored seating positions beside Jesus.
+  reasoning_layer_used: POB lexical decisions for τὸ ... καθίσαι and the right-left idioms
+  rationale: Naming the places makes the seating image easier to follow.
+- pob_phrase: but for those for whom it has been prepared
+  simplified_phrase: They have been prepared for certain people.
+  preserved_meaning: The places were prepared beforehand for particular people without implying possession or entitlement.
+  reasoning_layer_used: POB lexical decisions for ἀλλ’ οἷς and ἡτοίμασται
+  rationale: A second sentence resolves the Greek ellipsis in clear English while retaining preparation language.
+interpretive_expansions:
+- pob_phrase: but for those for whom it has been prepared
+  rendering: They have been prepared for certain people.
+  claim: The implied subject is the seating places beside Jesus.
+  evidence:
+  - The POB says the Greek clause is elliptical and supplies its sense from the previous clause.
+  - The immediate clause names the positions at Jesus’ right and left.
+  confidence: high
+  alternatives_preserved:
+  - for those for whom it has been prepared
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing local POB YAML/source record for Mark 10; no external LLM or API was used.
-  readability_notes:
-  - Simplifies formal or repetitive wording into modern common English while preserving the verse-level sense.
-  compression_notes:
-  - Removes footnote markers and some formal scaffolding without intentionally removing central meaning.
+  risk_flags:
+  - risk: “Not mine to give” may raise questions about Jesus’ authority.
+    mitigation: The wording preserves the POB’s deliberate theological tension without adding an explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/010/040.yaml
   source_text_sha256: 6d899a6b96a16a46699b237f8adf98221678caf05cbfa301ae681e1cc9b12de5
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:19:33Z'
-  output_hash: a6f4b4e9105d1971056c85190f2b0541c52e2f3755966a7ebfa289d70a9d689b
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 88c29b98c027d03bdb748f61a538e2d3121954206d65d3dc9de9a6ebcdb35fb5
+  timestamp: '2026-07-12T07:21:23Z'
+  output_hash: 1f46e779f011fd93da6b79724d9ce32c41770109e5df40205efce057641e9f6d
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3228
+    completion_tokens: 812
+    total_tokens: 4040
+    reasoning_tokens: 422
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:23Z'
+  previous_text: but to sit at my right or at my left is not mine to give. Those places belong to the people for whom they have been prepared.”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0204709681ede3519d60cfc7e42e120a412aff494ec4e55b7e4d7c67f85d9011
+  review_summary: The split into two sentences is a worthwhile clarity improvement and appropriately retains the verse’s unqualified statement about what is not Jesus’ to give. However, “belong to” adds a possession/entitlement claim beyond the prepared-for wording. Replace it with explicit preparation language while making the implied referent (“those places”) understandable.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

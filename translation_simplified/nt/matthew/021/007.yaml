@@ -31,14 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They brought the donkey and the colt, put their cloaks on them, and Jesus sat on them.
+  text: They brought the donkey and the colt, put their cloaks on them, and Jesus sat on them.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or, more specifically, Jesus sat on the cloaks that had been placed on the animals.
+    reason: alternative_reading
 simplification_decisions:
+- pob_phrase: They brought the donkey and the colt, and put their cloaks on them
+  simplified_phrase: They brought the donkey and the colt, put their cloaks on them
+  preserved_meaning: The disciples brought both animals and placed their own cloaks on them.
+  reasoning_layer_used: POB lexical decisions
+  rationale: Removing the repeated conjunction makes the action sequence more natural without omitting any action.
 - pob_phrase: he sat on them
   simplified_phrase: Jesus sat on them
-  preserved_meaning: Keeps POB's unresolved plural reference while making the subject clear.
+  preserved_meaning: The unresolved plural reference remains while the subject is made explicit.
   reasoning_layer_used: POB theological decision
-  rationale: Names Jesus for readability but does not resolve whether 'them' refers to the animals or cloaks.
+  rationale: Naming Jesus improves clarity without deciding whether “them” means the animals or the cloaks.
+translation_notes:
+  risk_flags:
+  - risk: Readers may think Jesus sat on both animals at once.
+    mitigation: The alternative-reading footnote explains that the plural may refer to the cloaks.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/021/007.yaml
+  source_text_sha256: 5d9756ceaaebeecabaa00ce20443c91c2a8d796fc9df5c64da71a0e44d1a027c
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 134b44d00340c57a1e9bc69cbd0709fdff909492e1cdd8235f15ec18fad5c6b0
+  timestamp: '2026-07-12T07:37:11Z'
+  output_hash: 68eb30286945f6b9a10ec27bfe29e59d90bc5877a78b56eb4d8d07d9d20e401e
+  usage:
+    prompt_tokens: 3332
+    completion_tokens: 300
+    total_tokens: 3632
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: donkey
   reason: Retained from POB.
@@ -46,33 +81,14 @@ retained_terms:
   reason: Retained from POB.
 - term: cloaks
   reason: Retained as a clear rendering of garments in context.
-translation_notes:
-  source_alignment_notes: Preserves the animals, the cloaks, and the deliberately transparent pronoun.
-  readability_notes:
-  - Makes the final subject explicit.
-  compression_notes:
-  - No object in the scene is removed.
-  risk_flags:
-  - risk: The final 'them' remains intentionally ambiguous.
-    mitigation: This follows the POB decision not to resolve the referent.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/021/007.yaml
-  source_text_sha256: 5d9756ceaaebeecabaa00ce20443c91c2a8d796fc9df5c64da71a0e44d1a027c
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-manual
-  model_version: codex-session-manual
-  azure_deployment: codex-manual
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:14:46Z'
-  output_hash: acf61f4a6c7923a60c78d5fcb165718d855c236fb25450dc21516d611defb690
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:11Z'
+  previous_text: They brought the donkey and the colt, put their cloaks on them, and Jesus sat on them.
+  previous_model: codex-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 115255b4e43d98183cca48ae8f77f7ae36b061edb26dec841f4b98cb8586ffaa
+  review_summary: Naming Jesus is warranted and does not alter the source-text ambiguity. However, deleting the POB footnote leaves readers with an unusually opaque pronoun and a likely misleading picture. Retain the transparent main-text wording and restore a simplified alternative-reading footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

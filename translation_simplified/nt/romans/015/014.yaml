@@ -34,36 +34,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My brothers and sisters, I myself am convinced about you that you are full of goodness, filled with all knowledge, and able to instruct one another.
+  text: And I myself am convinced, my brothers,[a] that you are full of goodness and filled with all knowledge. You are also able to give one another corrective instruction.[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “Brothers” addresses the whole community of believers, including women and men.
+    reason: lexical_alternative
+  - marker: b
+    text: This can also mean “admonish one another” or “warn one another.”
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: full of goodness, filled with all knowledge, and able also to instruct one another
+  simplified_phrase: full of goodness and filled with all knowledge. You are also able to give one another corrective instruction.
+  preserved_meaning: Their goodness and knowledge make them able to counsel each other.
+  reasoning_layer_used: POB syntax and lexical decisions
+  rationale: Two sentences make the commendation easier to follow without separating its linked ideas.
+- pob_phrase: you yourselves also
+  simplified_phrase: You are also
+  preserved_meaning: Paul emphasizes that the Roman believers themselves have this ability.
+  reasoning_layer_used: POB lexical decision for καὶ αὐτοὶ
+  rationale: The shorter wording keeps the additive force without awkward repeated emphasis.
+- pob_phrase: instruct one another
+  simplified_phrase: give one another corrective instruction
+  preserved_meaning: Their instruction may include correction, admonition, or warning.
+  reasoning_layer_used: POB lexical decision and footnote for νουθετεῖν
+  rationale: Adding “corrective” prevents “instruction” from sounding merely informational.
+interpretive_expansions:
+- pob_phrase: instruct one another
+  rendering: give one another corrective instruction
+  claim: The instruction includes counsel intended to correct conduct or thinking.
+  evidence:
+  - The POB lexical rationale says νουθετεῖν includes corrective instruction or admonition.
+  - POB footnote b preserves “admonish” and “warn” as alternatives.
+  confidence: high
+  alternatives_preserved:
+  - admonish one another
+  - warn one another
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “All knowledge” may sound like a claim of unlimited knowledge.
+    mitigation: The wording preserves the POB’s broad scope without adding a stronger claim.
+  - risk: Modern readers may assume “brothers” excludes women.
+    mitigation: Footnote [a] explains that the address includes the whole mixed community.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/015/014.yaml
   source_text_sha256: 344e919ad6c02fb9b465e17c077b24417e1ea9ad13359f55d55563eab7f58eba
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:49Z'
-  output_hash: 9e919df1c4db1b3ec37ba963405dae61d508057fa3ed09ef6360cb6e4b8a23f5
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 608ca1672869f217f5b75aa4523873057f75c53ed164585389765fc82464a310
+  timestamp: '2026-07-12T07:42:58Z'
+  output_hash: 7b066cc1c65dd4f88eac8e503f44d8fbac33c1987f99ca72a947fe99fd04c67e
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3658
+    completion_tokens: 1511
+    total_tokens: 5169
+    reasoning_tokens: 946
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:58Z'
+  previous_text: My brothers and sisters, I myself am convinced about you that you are full of goodness, filled with all knowledge, and able to instruct one another.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 3a10e38adfc15276a2a667aa5daad5299c250239391b17b3df67014b2738f717
+  review_summary: 'The inclusive address is warranted: ἀδελφοί addresses the Roman believers collectively, and the POB audit trail itself recognizes a mixed audience. The draft also appropriately removes emphatic wording such as “you yourselves also,” which adds little for modern readers. However, it is not yet sufficiently understanding-first because “instruct one another” alone can lose νουθετεῖν’s corrective/admonitory force, a nuance explicitly retained in the POB footnote. The recommended wording keeps the reciprocal, constructive, and corrective sense in clear common English.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

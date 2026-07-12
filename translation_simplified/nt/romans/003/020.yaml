@@ -19,44 +19,68 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 3:20 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''no one'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote '
 translation:
   language: en
-  text: For no one will be made right in his sight by doing what the law requires. Instead, the law simply makes us aware of our sin.
+  text: For no one will be made right in God’s sight by doing what the law requires, because the law makes us aware of sin.
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: law
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: sin
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: justified before him
+  simplified_phrase: made right in God’s sight
+  preserved_meaning: No one can attain a right standing before God through obedience to the law.
+  reasoning_layer_used: POB text and source payload
+  rationale: “Made right” clarifies “justified,” while “God’s sight” makes the pronoun’s referent clear.
+- pob_phrase: by works of the law
+  simplified_phrase: by doing what the law requires
+  preserved_meaning: The phrase refers to actions performed in obedience to the law.
+  reasoning_layer_used: POB text and immediate context
+  rationale: The wording explains the biblical phrase in common English without changing its function.
+- pob_phrase: through the law comes the knowledge of sin
+  simplified_phrase: the law makes us aware of sin
+  preserved_meaning: The law brings recognition of sin rather than providing justification through deeds.
+  reasoning_layer_used: POB text and Greek causal syntax
+  rationale: The active wording is easier to follow, and “because” preserves Paul’s explanation.
+interpretive_expansions:
+- pob_phrase: before him
+  rendering: in God’s sight
+  claim: The pronoun refers to God.
+  evidence:
+  - The surrounding argument concerns accountability and right standing before God.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Preserved the POB's decision to translate 'πᾶσα σὰρξ' idiomatically as 'no one' rather than 'no flesh'. The logical markers (διότι and γάρ) are represented through 'For' and 'Instead'.
-  readability_notes:
-  - Breaking the verse into two shorter sentences significantly improves readability and highlights the sharp contrast between trying to earn righteousness by the law and the law's actual function of revealing sin.
-  compression_notes:
-  - No theological content was deleted. The phrase 'knowledge of sin' was dynamically translated as 'makes us aware of our sin' to improve natural sentence flow.
   risk_flags:
-  - risk: Translating 'justified' as 'made right' slightly softens the forensic/courtroom metaphor of the Greek *dikaioō*, which is mitigated by providing an explanatory footnote.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Made right” is less explicitly forensic than “justified.”
+    mitigation: The phrase “in God’s sight” preserves the idea of standing or acceptance before God.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/003/020.yaml
   source_text_sha256: 288cb5d614c4024dbfe818789bd8c48020584ad9bb7cae562235d42c6d742c53
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: b9b074e94d20d9e7b05e98ec755c0a2eb150fc6bb86e248d5566e0851196649d
-  timestamp: '2026-05-28T08:44:43Z'
-  output_hash: c08bc4415b3deb4d69387e0942a1c9683484d8088f4ceb712838a7e619ed1077
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: eb1a5fd75e155298b23ad2f0ad7ac4fcb7ce0fa401946d5f30bf917e4f2c5d6f
+  timestamp: '2026-07-12T07:40:56Z'
+  output_hash: 0d6442aa6e0e1852c904fd67882b184ecb6f49b8e9f33c7feff2bd417094f0a4
   usage:
-    prompt_tokens: 1126
-    completion_tokens: 527
-    total_tokens: 5114
+    prompt_tokens: 2755
+    completion_tokens: 401
+    total_tokens: 3156
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: law
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: sin
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:40:56Z'
+  previous_text: For no one will be made right in his sight by doing what the law requires. Instead, the law simply makes us aware of our sin.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 62fa87e6fedc0fae26cfd9d264817062155ab30e28f63a121118e4a03f989bd8
+  review_summary: 'The draft is meaningfully clearer in rendering “justified” as “made right” and explaining “works of the law.” However, “Instead” and especially “simply” alter Paul’s stated logic and weaken the law’s role. Retain the causal connection: the law gives knowledge of sin, which explains why law-works do not make anyone right before God.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

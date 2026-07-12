@@ -34,24 +34,62 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 21:20 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''following them''].'
 translation:
   language: en
-  text: Peter turned and saw the disciple whom Jesus loved following, the one who had leaned back against Jesus’ chest at the supper and said, “Lord, who is the one betraying you?”
+  text: Peter turned and saw that the disciple whom Jesus loved was following[a]. This was the disciple who had also leaned back against Jesus’ chest at the supper and said, “Lord, who is betraying you?”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Greek does not explicitly say whom the disciple was following; the context may imply Jesus, or Jesus and Peter.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the disciple whom Jesus loved
-  simplified_phrase: the disciple whom Jesus loved
-  preserved_meaning: Retained the identifying phrase used throughout the Gospel.
-  reasoning_layer_used: POB audit trail
-  rationale: Retained the identifying phrase used throughout the Gospel.
-- pob_phrase: leaned back against his chest
-  simplified_phrase: leaned back against Jesus’ chest
-  preserved_meaning: Made the pronoun's referent clear.
-  reasoning_layer_used: POB audit trail
-  rationale: Made the pronoun's referent clear.
-- pob_phrase: at the supper
-  simplified_phrase: at the supper
-  preserved_meaning: Kept the reference to the earlier meal scene.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept the reference to the earlier meal scene.
+- pob_phrase: Peter turned and saw the disciple whom Jesus loved following
+  simplified_phrase: Peter turned and saw that the disciple whom Jesus loved was following
+  preserved_meaning: Peter notices the beloved disciple coming behind them.
+  reasoning_layer_used: POB lexical and theological decisions on ἀκολουθοῦντα
+  rationale: The finite clause is easier to read while the footnote preserves the unstated object.
+- pob_phrase: who had also leaned back against his chest at the supper
+  simplified_phrase: This was the disciple who had also leaned back against Jesus’ chest at the supper
+  preserved_meaning: The follower is identified by his action beside Jesus at the earlier meal.
+  reasoning_layer_used: POB lexical decisions and independent grounding review
+  rationale: A new sentence clarifies the identification and keeps the source’s “also.”
+- pob_phrase: who is the one betraying you?
+  simplified_phrase: who is betraying you?
+  preserved_meaning: The disciple asks Jesus to identify his betrayer.
+  reasoning_layer_used: POB lexical decision on ὁ παραδιδούς
+  rationale: Removing the formal phrase “the one” makes the question natural without weakening “betraying.”
+interpretive_expansions:
+- pob_phrase: his chest
+  rendering: Jesus’ chest
+  claim: The chest belongs to Jesus.
+  evidence:
+  - Jesus is the named person loved by the disciple and the person addressed in the recalled supper scene.
+  confidence: high
+  alternatives_preserved:
+  - his chest
+translation_notes:
+  risk_flags:
+  - risk: The person or people being followed are not explicit in Greek.
+    mitigation: The main text leaves the object unstated, and the footnote gives the contextual possibilities.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/021/020.yaml
+  source_text_sha256: 0fe7ea444f12150ac221fbb3b1692c8ecd9b0546713167983eded304065c13a0
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b6ae388db86cccf1d21132073cd5aaa5202f9aab322bf57504d8d8728b049080
+  timestamp: '2026-07-12T07:18:01Z'
+  output_hash: e12955ce176f7769a32ac6735b1de84dacb6226b77380e810eab3f382690ba39
+  usage:
+    prompt_tokens: 3946
+    completion_tokens: 1150
+    total_tokens: 5096
+    reasoning_tokens: 646
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: Peter
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
@@ -59,31 +97,13 @@ retained_terms:
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
 - term: Lord
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
-translation_notes:
-  source_alignment_notes: Preserves the POB verse meaning and its source-grounded choices while simplifying syntax, dialogue, and explanatory wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, common verbs, and clearer pronoun references where helpful.
-  - Keeps John's narrative sequence and repeated dialogue patterns visible.
-  compression_notes:
-  - Compresses only redundant or formal phrasing; no central event, command, title, or theological claim is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/021/020.yaml
-  source_text_sha256: 0fe7ea444f12150ac221fbb3b1692c8ecd9b0546713167983eded304065c13a0
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:04:41Z'
-  output_hash: 5f3fb793daeff55ae3103addcdd75046e9dfa6648663184b025f01e2a8e60ce3
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:18:01Z'
+  previous_text: Peter turned and saw the disciple whom Jesus loved following, the one who had leaned back against Jesus’ chest at the supper and said, “Lord, who is the one betraying you?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 13d98f5223a038d288c7d207b3609f6164a0638cb83d7e58c7e4fdb77ff1bd0f
+  review_summary: Clarifying “his chest” as “Jesus’ chest” is warranted by the immediate context and improves readability without adding doctrine. Retain “also,” however, because the source text explicitly connects this remembered supper action with the disciple now being identified.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

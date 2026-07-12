@@ -31,36 +31,46 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So when Martha heard that Jesus was coming, she went to meet him, but Mary stayed seated in the house.
+  text: So when Martha heard that Jesus was coming, she went to meet him. But Mary was sitting in the house.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+- pob_phrase: she went to meet him; but Mary was sitting in the house
+  simplified_phrase: she went to meet him. But Mary was sitting in the house.
+  preserved_meaning: Martha went to meet Jesus, in contrast to Mary, who was sitting in the house.
+  reasoning_layer_used: POB lexical decisions for δὲ and ἐκαθέζετο
+  rationale: Two sentences make the contrast easier to follow without strengthening Mary's ongoing posture.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/011/020.yaml
   source_text_sha256: 0308f32880b2bbe8a91283ea254cbddbc4660eeeda67f31afc899e6ee893b396
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:50:37Z'
-  output_hash: 36e6be9380aa735a31357b22ce761b0f396da5d439c5bd951ed9a422fb7b9732
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 51bbff8ca97a121f6f92ae0b5a5918b638c1bcaea6e97a7b9d7deb5cd9cd7086
+  timestamp: '2026-07-12T07:15:59Z'
+  output_hash: 47ae8d0d5fec8b8d9a8595ca6498cfa566faf604c9971a6795a6e2470ab31dba
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3060
+    completion_tokens: 176
+    total_tokens: 3236
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:59Z'
+  previous_text: So when Martha heard that Jesus was coming, she went to meet him, but Mary stayed seated in the house.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 67607ebcf8abc629e0ddf2bfb7bf7d9684c96c472a53a070b3667d9e5fe743c2
+  review_summary: Revise “stayed seated” to “was sitting.” The proposed wording is readily understandable but adds an unwarranted emphasis that the POB audit trail explicitly avoids. The rest accurately and clearly preserves the narrative.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

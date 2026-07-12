@@ -31,38 +31,67 @@ base_translation:
     changes_summary: Removed 'after' to reflect the participle more directly and keep the wording concise and formal; otherwise retained the draft.
 translation:
   language: en
-  text: Jesus called his disciples to himself and said to them, “Truly I tell you, this poor widow has put in more than all the others putting money into the treasury.
+  text: Jesus called his disciples to himself and said to them, “Truly I tell you, this poor widow has put in more than all the others putting money into the treasury.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And calling his disciples to himself[a], he said to them, “Truly I say to you that this poor widow has put in more than all those who are putting into the treasury.”
-  simplified_phrase: Jesus called his disciples to himself and said to them, “Truly I tell you, this poor widow has put in more than all the others putting money into the treasury.
-  preserved_meaning: Preserves the controlling POB rendering and audit-layer decisions for this verse while making syntax and wording clearer for modern common English readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex SPOB drafting pass based on the existing POB Mark 12 record, its footnotes, lexical decisions, and theological decisions; no external LLM or web API was used.
+- pob_phrase: And calling his disciples to himself, he said to them
+  simplified_phrase: Jesus called his disciples to himself and said to them
+  preserved_meaning: Jesus drew his disciples to himself before addressing them.
+  reasoning_layer_used: POB lexical decision for προσκαλεσάμενος
+  rationale: The finite clauses make the sequence easier to follow without losing the middle nuance.
+- pob_phrase: Truly I say to you that
+  simplified_phrase: Truly I tell you,
+  preserved_meaning: Jesus introduces his statement with a solemn affirmation.
+  reasoning_layer_used: POB lexical decision for Ἀμὴν λέγω ὑμῖν
+  rationale: This keeps the formula’s force in more natural modern English.
+- pob_phrase: more than all those who are putting into the treasury
+  simplified_phrase: more than all the others putting money into the treasury
+  preserved_meaning: The widow’s contribution is compared with the contributions of everyone else present.
+  reasoning_layer_used: POB lexical and theological decisions for πλεῖον πάντων and τῶν βαλλόντων
+  rationale: “All the others” clarifies the comparison while leaving its qualitative force for the next verse to explain.
+interpretive_expansions:
+- pob_phrase: putting into the treasury
+  rendering: putting money into the treasury
+  claim: The contributors were placing money in the temple treasury.
+  evidence:
+  - The treasury setting and the surrounding account identify the contributions as coins or money.
+  confidence: high
+  alternatives_preserved:
+  - putting gifts into the treasury
+  - putting offerings into the treasury
 translation_notes:
-  source_alignment_notes: Uses the existing POB verse as the controlling base and keeps documented source-language, lexical, and theological decisions intact while simplifying English wording.
-  readability_notes:
-  - Simplifies sentence flow and replaces harder phrasing with common modern English where it does not change the POB meaning.
-  compression_notes:
-  - No central meaning is intentionally removed; compression is limited to readability and repeated wording.
+  risk_flags:
+  - risk: “More than” could be misunderstood as referring only to monetary value.
+    mitigation: The wording preserves POB’s deliberate comparison without resolving it, while verse 44 supplies the qualitative explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/mark/012/043.yaml
   source_text_sha256: 61bab2aced250f40a96a9af5e16b2b36ecf619d2c14f8b9749f4369369a68090
-  pob_commit_sha: f4c1b45e771105bd3313936836a3f24f9a555d5a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:27:24Z'
-  output_hash: dc8eaa427ab79eff019b05664522e019bc8f9bb850eb9fb4efa0795d16242918
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4ebb4ca1e6a2dc44a23b4dbfb2dd88481c432b26b75ebee47af48536416312fa
+  timestamp: '2026-07-12T07:21:50Z'
+  output_hash: 5bd3bb9a0b2790944f5aa6fee7333a416140d86fdd81639f7f1e545bb1ffc2d6
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3473
+    completion_tokens: 730
+    total_tokens: 4203
+    reasoning_tokens: 248
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:21:50Z'
+  previous_text: Jesus called his disciples to himself and said to them, “Truly I tell you, this poor widow has put in more than all the others putting money into the treasury.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 67c08cf91d6f14b53706fe90b1d9ccc1b8d6e67359582fef0f72f7aeed09b39f
+  review_summary: The simplification preserves the sequence of Jesus calling his disciples, the solemn affirmation, the widow's poverty, and the comparative claim. “All the others” clearly supplies the comparison implied by the Greek and POB, while “putting money into” is a warranted contextual clarification in this temple-offering setting rather than a doctrinal expansion. Revision is needed only to restore the missing closing quotation mark.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,7 +34,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'And I tell you: you are Peter,[a] and on this rock I will build my church, and the gates of Hades[b] will not overpower it.'
+  text: 'And I also tell you: you are Peter,[a] and on this rock I will build my church, and the gates of Hades[b] will not overpower it.'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -44,11 +44,44 @@ translation:
     text: Hades means the realm of the dead; traditionally, hell.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: And I also say to you
+  simplified_phrase: And I also tell you
+  preserved_meaning: Jesus responds directly and emphatically to Peter.
+  reasoning_layer_used: POB lexical decision for κἀγὼ δέ and σοι λέγω
+  rationale: “Tell you” is natural English, while “also” preserves the responsive emphasis.
 - pob_phrase: the gates of Hades will not prevail against it
   simplified_phrase: the gates of Hades will not overpower it
-  preserved_meaning: Jesus says death’s power will not overcome the church he builds.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Overpower is easier than prevail against, while Hades and the rock ambiguity are retained in footnotes.
+  preserved_meaning: The power of the realm of the dead will not overcome Jesus’ church.
+  reasoning_layer_used: POB lexical decisions and Hades footnote
+  rationale: “Overpower” clearly expresses the adversarial force of the Greek verb.
+translation_notes:
+  risk_flags:
+  - risk: Modern readers may not know what Hades means.
+    mitigation: Footnote b identifies it as the realm of the dead and notes the traditional rendering.
+  - risk: The referent of “this rock” is disputed.
+    mitigation: The main text preserves the ambiguity, and footnote a lists the principal readings.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/016/018.yaml
+  source_text_sha256: bb34c0ea9826631855e067456a86d6c39c6cf6ea7a7f8cfe02310066c6ef6d1d
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 78634b3f0df2856040ed14a39d86a9066089fd1d80bad942a101cab5713808b8
+  timestamp: '2026-07-12T07:37:52Z'
+  output_hash: f23aa9ecf9d08b8be038158ff0275f66a7661555d137c5a2abfb2b1e98f45dc1
+  usage:
+    prompt_tokens: 3522
+    completion_tokens: 377
+    total_tokens: 3899
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Peter
   reason: Retained because the wordplay with rock matters.
@@ -56,30 +89,14 @@ retained_terms:
   reason: Retained as the POB ecclesial term.
 - term: Hades
   reason: Retained because the POB chooses Hades and explains it.
-translation_notes:
-  source_alignment_notes: Keeps the Peter/rock statement, Jesus’ building of his church, and Hades not overpowering it.
-  readability_notes:
-  - Uses overpower for prevail against.
-  compression_notes:
-  - The interpretive options for rock are preserved in a shorter footnote.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/016/018.yaml
-  source_text_sha256: bb34c0ea9826631855e067456a86d6c39c6cf6ea7a7f8cfe02310066c6ef6d1d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:59:24Z'
-  output_hash: 26b4984ab7421b77041b4c07101c4cd947e4f5d401d60f7aa7e22bda00421e9d
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:52Z'
+  previous_text: 'And I tell you: you are Peter,[a] and on this rock I will build my church, and the gates of Hades[b] will not overpower it.'
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 7cb15a0c726802ce8a95f75ea88aaa32b970bf196170036df3cd63dd73797819
+  review_summary: The revision from 'will not prevail against it' to 'will not overpower it' is a warranted and clearer rendering of κατισχύω. The retained wording and footnote for 'this rock' properly preserve the live referential ambiguity, and the Hades note accurately distinguishes the realm of the dead from later, narrower associations of 'hell.' Restore 'also' so the SPOB does not omit the source text's responsive emphasis.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,42 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But blessed are your eyes, because they see, and your ears, because they hear.[a]
+  text: But your eyes are blessed because they see, and your ears are blessed because they hear.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “for they see ... for they hear.”
+    text: Or “for they see ... for they hear.” The Greek conjunction can be translated either way here.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Matthew 13 POB wording
-  simplified_phrase: modern common English wording
-  preserved_meaning: Preserves the controlling POB meaning while simplifying sentence flow and vocabulary for a common modern reader.
-  reasoning_layer_used: POB translation text, footnotes, and audit trail
-  rationale: Manual Codex SPOB drafting pass; no external LLM or API used.
+- pob_phrase: But blessed are your eyes, because they see, and your ears, because they hear.
+  simplified_phrase: But your eyes are blessed because they see, and your ears are blessed because they hear.
+  preserved_meaning: The disciples’ eyes and ears are blessed because they truly see and hear.
+  reasoning_layer_used: POB translation, lexical decisions, and grounding review
+  rationale: Natural word order and repeated “are blessed” make the parallel clauses immediately clear.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses direct modern English and shorter clause structure where helpful.
-  compression_notes:
-  - No central meaning or documented ambiguity is intentionally removed.
+  risk_flags:
+  - risk: Readers may take “see” and “hear” as only physical sensations.
+    mitigation: The literal sensory words remain because the POB audit requires context, not added wording, to convey their deeper significance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/013/016.yaml
   source_text_sha256: c55e217bbc35b94e5062b3d7a8278b74aec703585a6eb02dbed0616bf3bb64d4
-  pob_commit_sha: 56c85ddcd02339359d79f39d26fc3c8084dbf457
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:44:58Z'
-  output_hash: 0346ec1b65378c42a412b2472674f88989cde980093c374d65c265eeeb5d433a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b351314a333a5c83d55b30b08b1b6ac4803ea6e50bbad8931134f0dba0bb294f
+  timestamp: '2026-07-12T07:48:44Z'
+  output_hash: f3a2265ba47fd249c9c99f7de010d24874a0c6b838095d94bc951c57c885a0f3
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3073
+    completion_tokens: 255
+    total_tokens: 3328
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:48:44Z'
+  previous_text: But blessed are your eyes, because they see, and your ears, because they hear.[a]
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8800d2d7215411f428f78126e0344b41038dbe1f0e725aa043c6f77735f66b84
+  review_summary: The draft faithfully preserves the Greek parallelism, the causal sense of ὅτι, and the contextual tension of seeing and hearing without explicitly inserting “understand.” It therefore has no doctrinal or source-based defect. However, it is not meaningfully clearer than POB because it reproduces POB unchanged. Repeating “are blessed” makes the parallel structure explicit for modern readers while retaining the source meaning and avoiding added spiritual interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

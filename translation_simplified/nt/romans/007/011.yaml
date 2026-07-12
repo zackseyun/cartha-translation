@@ -33,43 +33,66 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 7:11 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''having seized an opportunity''].'
 translation:
   language: en
-  text: For sin, seizing an opportunity through the commandment, deceived me and used it to kill me.
+  text: For sin seized an opportunity through the commandment, deceived me, and used the commandment to kill me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-retained_terms:
-- term: sin
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: commandment
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: having taken an opportunity
+  simplified_phrase: seized an opportunity
+  preserved_meaning: Sin actively exploited an opening.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The active wording preserves sin's aggressive, personified agency.
+- pob_phrase: through it killed me
+  simplified_phrase: used the commandment to kill me
+  preserved_meaning: Sin killed Paul by means of the commandment.
+  reasoning_layer_used: POB lexical decision and footnote b
+  rationale: Repeating the commandment removes the ambiguous pronoun while retaining instrumentality.
+interpretive_expansions:
+- pob_phrase: through it killed me
+  rendering: used the commandment to kill me
+  claim: The commandment is the means sin used to kill Paul.
+  evidence:
+  - POB footnote b identifies “it” as the commandment.
+  - The lexical rationale for δι’ αὐτῆς preserves its instrumental sense.
+  confidence: high
+  alternatives_preserved:
+  - through the commandment killed me
 translation_notes:
-  source_alignment_notes: Maintains perfect alignment with the SBLGNT Greek structure by keeping sin as the singular active subject of all three actions (taking an opportunity, deceiving, and killing) and preserving the instrumental role of the commandment.
-  readability_notes:
-  - The sentence flow is significantly enhanced by removing the archaic 'having... [past participle]' construction and smoothing the final clause to avoid awkward pronoun placement.
-  compression_notes:
-  - No theological or textual concepts were compressed or omitted; the full rhetorical force of Paul's argument is intact.
   risk_flags:
-  - risk: None.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Used” states the instrumental relationship more directly than POB’s “through.”
+    mitigation: The Greek construction and POB rationale explicitly identify the commandment as the means.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/007/011.yaml
   source_text_sha256: 5848b760a6812c9ee7000afb831c1e6b87d0a4f6ec7f8f9bdbce8b9527fa2e36
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: c7bffb190f3624766ed543015fee78297d87399c5f8e615dc1fadd2f395eec76
-  timestamp: '2026-05-28T09:31:28Z'
-  output_hash: 16e1263bea11ecb9511253d0327b47a858b51362d7903d5d6f89100025f17357
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b66ab0cb6c0020e80d8cd0bed453abf8cdff3ce808534d3f360d00f44fe4a674
+  timestamp: '2026-07-12T07:42:40Z'
+  output_hash: 88762bf35c6f26430ef5814f50f2a5e0b9fc75c1dae09754ced11901672db9e5
   usage:
-    prompt_tokens: 2006
-    completion_tokens: 434
-    total_tokens: 5188
+    prompt_tokens: 3428
+    completion_tokens: 335
+    total_tokens: 3763
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: sin
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: commandment
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:40Z'
+  previous_text: For sin, seizing an opportunity through the commandment, deceived me and used it to kill me.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: fb21e0188ea7043fb5ce1d0a156d6adef068dafe59cb274030d7610c72bda35e
+  review_summary: The draft rightly preserves sin’s active, personified agency and its instrumental use of the commandment. “Used it to kill me” is a warranted clarification in principle, but its pronoun remains ambiguous in English and therefore fails to deliver the needed simplification. Repeat “the commandment” to communicate the source-established referent plainly.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

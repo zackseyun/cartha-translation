@@ -27,53 +27,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They asked them, "Is this your son, who you say was born blind? How then does he see now?"
+  text: They asked the man’s parents, “Is this your son, the one you say was born blind? If so, how does he see now?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- simplified_phrase: They asked them,
-  preserved_meaning: Removed the redundant participle 'saying' to modernize the dialogue introduction without losing any narrative information.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed the redundant participle 'saying' to modernize the dialogue introduction without losing any narrative information.
-- simplified_phrase: who you say
-  preserved_meaning: Updated 'whom' to 'who' to make the phrasing more natural and grammatically standard for modern readers.
-  reasoning_layer_used: POB audit trail
-  rationale: Updated 'whom' to 'who' to make the phrasing more natural and grammatically standard for modern readers.
-- simplified_phrase: does he see now
-  preserved_meaning: Adjusted the adverb placement of 'now' for a more natural contemporary speech flow while keeping the verb 'does see' to denote actual sight rather than ability.
-  reasoning_layer_used: POB audit trail
-  rationale: Adjusted the adverb placement of 'now' for a more natural contemporary speech flow while keeping the verb 'does see' to denote actual sight rather than ability.
-retained_terms:
-- term: born blind
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: How then
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: they asked them, saying
+  simplified_phrase: They asked the man’s parents
+  preserved_meaning: The questioners address the same people identified as the man’s parents in the immediate context.
+  reasoning_layer_used: Immediate context and POB lexical decision for ἠρώτησαν
+  rationale: Naming the parents clarifies the pronoun, while omitting “saying” gives natural English dialogue.
+- pob_phrase: whom you say was born blind
+  simplified_phrase: the one you say was born blind
+  preserved_meaning: The wording neutrally reports the parents’ statement that their son was blind from birth.
+  reasoning_layer_used: POB lexical decisions for ὃν ὑμεῖς λέγετε and τυφλὸς ἐγεννήθη
+  rationale: “The one” avoids formal “whom” without adding the skepticism implied by “claim.”
+- pob_phrase: How then does he now see?
+  simplified_phrase: If so, how does he see now?
+  preserved_meaning: The second question draws an inference from the stated premise while referring to his actual present sight.
+  reasoning_layer_used: POB lexical decisions for πῶς οὖν, βλέπει, and ἄρτι
+  rationale: “If so” states the inference plainly, and “does he see” preserves actual sight rather than mere ability.
+interpretive_expansions:
+- pob_phrase: them
+  rendering: the man’s parents
+  claim: The pronoun refers to the formerly blind man’s parents.
+  evidence:
+  - John 9:18 identifies those summoned as his parents.
+  confidence: high
 translation_notes:
-  source_alignment_notes: Strictly adhered to the POB lexical decision to translate 'βλέπει' as 'does see' instead of 'can see' to avoid shifting the focus from actual present sight to potential ability.
-  readability_notes:
-  - The dialogue flows much more naturally for a modern reader by removing the redundant 'saying' and adjusting minor pronoun and adverb placements.
-  compression_notes:
-  - Compression is minimal, focusing only on removing pleonastic structure to enhance readability without omitting any semantic details.
   risk_flags:
-  - risk: None. This draft remains faithful to the underlying textual and lexical decisions of the POB.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “If so” may sound slightly more conditional than the compact Greek inference.
+    mitigation: It remains tied to the first question and preserves οὖν as an inference rather than expressing doubt as fact.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/009/019.yaml
   source_text_sha256: d9427f78ebb96cdd03b59a96fbbb1ae4ee328c8302211ab7644de042046612ae
-  pob_commit_sha: 1d16f43bc50442ba1c1f07567b7752f984126bee
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 4b653975799bfbf09f22ea5353a6aea70e774d050a339c2cfaefd60d2d1573da
-  timestamp: '2026-05-28T09:31:46Z'
-  output_hash: b0ab2b33ded61779b2df2ad8a28da7e44000c7f050c3a15a35bd1b590a3d2b2c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 785c9d7ab3f69bc0aef2007e78494d19c85c07c3710e01b70eade1f36c14ac62
+  timestamp: '2026-07-12T07:15:32Z'
+  output_hash: a58014f9b353c8a01c939f21cfbdf2c6244fef0d8c06c47ff9677cd8a2fb9c82
   usage:
-    prompt_tokens: 1580
-    completion_tokens: 495
-    total_tokens: 5359
+    prompt_tokens: 3329
+    completion_tokens: 488
+    total_tokens: 3817
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: born blind
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: How then
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:15:32Z'
+  previous_text: They asked them, "Is this your son, who you say was born blind? How then does he see now?"
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: bb0d84430419434c6346d0fa8e1cc71259062587732831f772899e8d71439719
+  review_summary: The draft preserves the source meaning and introduces no doctrinal or unsupported interpretive content. However, removing “saying,” replacing “whom” with “who,” and moving “now” do not meet the requested threshold of meaningful clarification over the already clear POB. The replacement supplies the immediate-context referent of “them” and makes the inferential force of οὖν readily understandable while preserving the officials’ questioning and the distinction between the two questions.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -34,46 +34,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For many are called, but few are chosen.
+  text: This is because many are called[a], but few are chosen.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “invited”; in this wedding-banquet context, “called” can carry the sense of being invited.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: For many are called[b][a], but few are chosen.
-  simplified_phrase: For many are called, but few are chosen.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
-retained_terms:
-- term: called
-  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
-- term: chosen
-  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
+- pob_phrase: For many are called
+  simplified_phrase: This is because many are called
+  preserved_meaning: The saying explains the preceding statement in the parable.
+  reasoning_layer_used: POB lexical decision for γάρ
+  rationale: “This is because” makes the explanatory connection clear in modern English.
+- pob_phrase: called[b][a]
+  simplified_phrase: called[a]
+  preserved_meaning: “Called” retains the broader resonance while the footnote preserves the banquet sense “invited.”
+  reasoning_layer_used: POB lexical and theological decisions for κλητοί
+  rationale: The main text keeps the controlling choice and the note preserves its contextual alternative.
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: Modern readers may understand “called” without recognizing the banquet-invitation nuance.
+    mitigation: The footnote gives “invited” as the contextual alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/014.yaml
   source_text_sha256: 5f7777f081691706952c95af9ff18e0f32b5179e6c8b04d1d392b00aa86470d6
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: 5704d684fb9a1751aa267d915dfe2d7dde919999c88f2641d0b32a5878dc5023
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 53c3161a8f8f5b081d3c32ba892eb3c289cb4211d38cea11082d93f83915f117
+  timestamp: '2026-07-12T07:37:54Z'
+  output_hash: 7299a21a9aaef235bb4a5a37bc4120a2e99533b350a8488c6d4a0e6252c8473a
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3353
+    completion_tokens: 425
+    total_tokens: 3778
+    reasoning_tokens: 132
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: called
+  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
+- term: chosen
+  reason: Retained because the POB context treats this wording or concept as meaningful for the verse.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:54Z'
+  previous_text: For many are called, but few are chosen.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 8cc24176a8c102a6b0587e25103f6f4a9f215071f559108b948f97a1ad0913fd
+  review_summary: The draft preserves the Greek contrast and does not impose a doctrinal reading; retaining “called” and “chosen” is justified by the POB audit trail. However, it is not meaningfully clearer than POB, since it merely deletes footnote markers. Rendering γάρ as “This is because” makes its explanatory function accessible without adding interpretation, and retaining the banquet-context footnote preserves a live lexical nuance.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

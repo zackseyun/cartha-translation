@@ -27,38 +27,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Large crowds followed him, and he healed them there.
+  text: Large crowds followed Jesus, and he healed them there.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: And large crowds followed him
-  simplified_phrase: Large crowds followed him
-  preserved_meaning: Many people follow Jesus and he heals them at that place.
-  reasoning_layer_used: POB translation and footnotes
-  rationale: Drops only the formal opening And.
-translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft from the POB record for Matthew 19:2; no external LLM or API was used.
-  readability_notes:
-  - Uses modern common English while keeping the controlling POB meaning.
-  compression_notes:
-  - Only formal or repeated wording is simplified; no central meaning is intentionally removed.
+  simplified_phrase: Large crowds followed Jesus
+  preserved_meaning: The crowds followed Jesus, the clear antecedent in the preceding context.
+  reasoning_layer_used: Immediate context and POB lexical decisions
+  rationale: Naming Jesus makes the verse clear on its own without changing who was followed.
+interpretive_expansions:
+- pob_phrase: him
+  rendering: Jesus
+  claim: The pronoun refers to Jesus.
+  evidence:
+  - Matthew 19:1 identifies Jesus as the continuing subject of the narrative.
+  confidence: high
+  alternatives_preserved:
+  - him
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/019/002.yaml
   source_text_sha256: 98f1eaa8ed95fe58428ae6b0322ce5efcb27cb4d0d54bc1e1d3bf494ff17af8e
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:07:30Z'
-  output_hash: 51531d9ccdfbb466957ea0f20397af9dac0aabce6a4ba8738ce87d1c0ebaffff
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f3c34080ed952aa756484c87eaebeb74345424da093074d526fdea835d76c236
+  timestamp: '2026-07-12T07:36:52Z'
+  output_hash: 62ef18605cb94ab2f504e2dda938e2cd7ab364ce9f912a5ab3b1428e299803e1
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2838
+    completion_tokens: 192
+    total_tokens: 3030
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:52Z'
+  previous_text: Large crowds followed him, and he healed them there.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 49e0bbf387d3a7020d88eb9c0eeca253487111103c453633790b5911264e7154
+  review_summary: The proposed wording preserves the verse faithfully, and dropping “And” is permissible. But it does not meet the stated SPOB threshold of being meaningfully clearer than POB, since it makes only a negligible stylistic change. Resolving the clearly established antecedent as “Jesus” is warranted by the immediate context and improves standalone readability without expanding the meaning.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,18 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: After they heard the king, they went on their way. Suddenly, the star they had seen in the east[a] went ahead of them, until it came and stopped over the place where the child was.
+  text: After they heard the king, they went on their way. And look—the star they had seen in the east[a] went ahead of them until it came and stopped over the place where the child was.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or "at its rising"; the Greek expression can refer either to the east as a direction or to a star's rising.
-    reason: simplification_note
+    text: Or “at its rising”; the Greek expression can refer either to the east as a direction or to a star’s rising.
+    reason: alternative_reading
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
+- pob_phrase: After hearing the king, they went on their way
+  simplified_phrase: After they heard the king, they went on their way
+  preserved_meaning: They left after listening to the king.
+  reasoning_layer_used: POB lexical decision for ἀκούσαντες
+  rationale: A full clause is easier to read than the opening participial phrase.
+- pob_phrase: and behold
+  simplified_phrase: And look—
+  preserved_meaning: The narrator calls attention to the star with vividness but without claiming abrupt timing.
+  reasoning_layer_used: POB lexical decision for ἰδού and grounding review
+  rationale: “Look” preserves the attention marker without the unsupported temporal force of “suddenly.”
+- pob_phrase: went before them until it came and stood over where the child was
+  simplified_phrase: went ahead of them until it came and stopped over the place where the child was
+  preserved_meaning: The star led them onward and then stopped above the child’s location.
+  reasoning_layer_used: POB lexical decisions for προῆγεν, ἐστάθη, and ἐπάνω οὗ ἦν
+  rationale: Common wording clarifies the movement and location while preserving the source image.
+translation_notes:
+  risk_flags:
+  - risk: “Look” can sound like a direct command in modern English.
+    mitigation: The dash and narrative context signal that it is an attention-getting expression.
+  - risk: The phrase “in the east” remains genuinely ambiguous with “at its rising.”
+    mitigation: The alternative reading is preserved in footnote a.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/matthew/002/009.yaml
+  source_text_sha256: ad371e3da337ba4e9a8840b56fb12baf17d93cde1f0b67eede5372b10ad438e3
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 42da971f223d13d4020527eaaa4c7814f7dfd0e7d61a102fb572bffcf685a1bc
+  timestamp: '2026-07-12T07:22:43Z'
+  output_hash: 986cf257f2fac4b4eb13f7379984d1f74e9524d4ef8b6b37508bb6dc0c3f2c98
+  usage:
+    prompt_tokens: 3677
+    completion_tokens: 464
+    total_tokens: 4141
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: the king
   reason: Retained to preserve POB's source-grounded terminology.
@@ -52,33 +90,14 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: the child
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintained the underlying Greek sequence (hearing, departing, the star appearing, leading, and stopping). Corrected a misplaced footnote marker from the POB base text, moving it from 'the king' to 'in the east' to correctly map to the Greek phrase 'ἐν τῇ ἀνατολῇ'.
-  readability_notes:
-  - Split the long, multi-clause POB sentence into two shorter, punchier sentences. This accommodates readers new to biblical prose while keeping the majestic tone of the narrative.
-  compression_notes:
-  - No source details were compressed or omitted; the grammatical transitions were merely smoothed.
-  risk_flags:
-  - risk: Replacing 'behold' (ἰδοὺ) with 'Suddenly' carries a slight risk of adding temporal speed not explicitly in the Greek, but it successfully conveys the dramatic, unexpected reappearance of the star to a modern reader.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/matthew/002/009.yaml
-  source_text_sha256: ad371e3da337ba4e9a8840b56fb12baf17d93cde1f0b67eede5372b10ad438e3
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: c56e9f795920b45004af0b9926961085ee55cd46ec99358a918ce65c9216ffb4
-  timestamp: '2026-05-28T08:07:47Z'
-  output_hash: 6b7db23c1864d601c248a60a4879fadb725a278a150585acdd569858ba0a0983
-  usage:
-    prompt_tokens: 2001
-    completion_tokens: 661
-    total_tokens: 4681
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:22:43Z'
+  previous_text: After they heard the king, they went on their way. Suddenly, the star they had seen in the east[a] went ahead of them, until it came and stopped over the place where the child was.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0676a49c129f60edb5c3250af5dc7d57f951badb7581c8bd293e515bbf9d58a8
+  review_summary: 'The draft makes several warranted readability improvements: “went ahead” is clear for προῆγεν, “stopped” naturally expresses the star’s standing, and “the place where” clarifies the location without adding interpretation. The retained footnote appropriately preserves the live ambiguity in ἐν τῇ ἀνατολῇ. Revise only “Suddenly”: it supplies a temporal claim beyond the Greek. “And look—” gives modern readers the attention-directing force of ἰδού without asserting abrupt timing.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

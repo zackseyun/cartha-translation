@@ -37,43 +37,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: Romans 9:29 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''has said before''].'
 translation:
   language: en
-  text: And as Isaiah said earlier, "If the Lord of Hosts had not left us offspring, we would have become like Sodom and been made like Gomorrah."
+  text: And Isaiah said earlier, “If the Lord of Armies had not left us descendants, we would have become like Sodom and been made like Gomorrah.”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: said before
-  simplified_phrase: said earlier
-  preserved_meaning: Paul introduces a prior saying from Isaiah.
-  reasoning_layer_used: POB audit trail
-  rationale: '''Earlier'' is common English for the same temporal idea.'
-retained_terms:
-- term: Lord of Hosts
-  reason: Retained to preserve the divine title from the POB quotation.
-- term: offspring
-  reason: Retained to preserve the seed/descendant idea.
+- pob_phrase: And just as Isaiah said before
+  simplified_phrase: And Isaiah said earlier
+  preserved_meaning: Paul introduces an earlier statement from Isaiah.
+  reasoning_layer_used: POB lexical decision for καθὼς and προείρηκεν
+  rationale: The shorter wording gives the same citation link in natural English.
+- pob_phrase: the Lord of Hosts
+  simplified_phrase: the Lord of Armies
+  preserved_meaning: The divine title presents the Lord as commander of heavenly forces.
+  reasoning_layer_used: POB lexical and theological decisions for κύριος Σαβαώθ
+  rationale: “Armies” makes the recognized title “Hosts” immediately understandable.
+- pob_phrase: left us offspring
+  simplified_phrase: left us descendants
+  preserved_meaning: God allowed some of the people's family line to survive.
+  reasoning_layer_used: POB lexical decision for ἐγκατέλιπεν and σπέρμα
+  rationale: “Descendants” clearly expresses the human lineage meant by “offspring.”
 translation_notes:
-  source_alignment_notes: Preserves Isaiah attribution, Lord of Hosts, remnant offspring, and Sodom/Gomorrah comparison.
-  readability_notes:
-  - Keeps the quotation close because its terms are recognizable and important.
-  compression_notes:
-  - No core meaning intentionally removed.
+  risk_flags:
+  - risk: “Lord of Armies” may be less familiar than the traditional title “Lord of Hosts.”
+    mitigation: The wording follows a POB-approved lexical alternative and preserves the title's military force.
+  - risk: “Descendants” does not by itself state that these descendants survived judgment.
+    mitigation: The phrase “had not left us” preserves the survival context without replacing the source term with “remnant.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/009/029.yaml
   source_text_sha256: 4715cbd088721fb3ba416955fbeabfeaa4d700df8ac8ce2a9f051c5b86374dd3
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:53:14Z'
-  output_hash: 53f8751351552a8b2c60a28d7ae5300810812464d05f3f0b21cb01a27073612a
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 59d8dd2caf630645bc2a7e7434d815690f6d568726144060b8a89cbfcab93f7f
+  timestamp: '2026-07-12T07:41:55Z'
+  output_hash: 5dc4321cc7407a7882eca7e6a5d33fee52480b8ae004aa7102d9c7dae8e4bf10
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3959
+    completion_tokens: 394
+    total_tokens: 4353
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: Lord of Hosts
+  reason: Retained to preserve the divine title from the POB quotation.
+- term: offspring
+  reason: Retained to preserve the seed/descendant idea.
+spob_revision_history:
+- timestamp: '2026-07-12T07:41:55Z'
+  previous_text: And as Isaiah said earlier, "If the Lord of Hosts had not left us offspring, we would have become like Sodom and been made like Gomorrah."
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: d7895a3382616b1aff574ddc3f8f2dee3733b53e1b52f329acfb5ce68afed1d8
+  review_summary: The change to 'said earlier' is faithful and natural, and no doctrinally unsupported expansion is present. However, the draft does not yet deliver sufficient understanding-first simplification. 'Lord of Armies' and 'descendants' are both supported by the POB audit trail and make the title and the survival/lineage sense more immediately understandable without adding interpretation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

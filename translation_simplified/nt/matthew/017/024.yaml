@@ -34,43 +34,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When they came to Capernaum, the collectors of the two-drachma tax came to Peter and asked, “Does your teacher not pay the two-drachma tax?”
+  text: When they came to Capernaum, the collectors of the two-drachma temple tax came to Peter and asked, “Doesn’t your teacher pay this tax?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Matthew 17 POB wording
-  simplified_phrase: When they came to Capernaum, the collectors of the two-drachma tax came to Peter and asked, “Does your teacher not pay the two-drachma tax?”
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 17:24 while using simpler modern common English.
-  reasoning_layer_used: POB translation, footnotes, lexical decisions, and theological decisions
-  rationale: Keeps the specific two-drachma tax while making the collectors phrase easier to read.
-retained_terms:
-- term: Capernaum
-  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
-- term: two-drachma tax
-  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
+- pob_phrase: those who collected the two-drachma tax
+  simplified_phrase: the collectors of the two-drachma temple tax
+  preserved_meaning: The group collected the required two-drachma payment associated with the temple.
+  reasoning_layer_used: POB footnote, lexical decisions, and theological decision
+  rationale: “Collectors” is concise, while “temple” tells modern readers what the tax supported.
+- pob_phrase: came to Peter and said
+  simplified_phrase: came to Peter and asked
+  preserved_meaning: They approached Peter and addressed him with a direct question.
+  reasoning_layer_used: Source syntax and POB translation
+  rationale: “Asked” naturally introduces the question without changing the action.
+- pob_phrase: Does your teacher not pay the two-drachma tax?
+  simplified_phrase: Doesn’t your teacher pay this tax?
+  preserved_meaning: They ask whether Jesus pays the tax and retain the negative question’s expected positive answer.
+  reasoning_layer_used: POB lexical decision for οὐ τελεῖ and immediate context
+  rationale: The contraction is natural English, and “this tax” avoids repeating the long description.
+interpretive_expansions:
+- pob_phrase: two-drachma tax
+  rendering: two-drachma temple tax
+  claim: The required two-drachma payment was the temple tax.
+  evidence:
+  - The POB footnote explicitly identifies it as the two-drachma temple tax.
+  - The POB audit says the context concerns a required levy.
+  confidence: high
+  alternatives_preserved:
+  - two-drachma tax
+  - two-drachma coins
 translation_notes:
-  source_alignment_notes: Manual Codex SPOB draft based only on the existing POB YAML record for Matthew 17:24; no external LLM or API was used.
-  readability_notes:
-  - Uses short sentences and common modern English while keeping the verse's controlling POB meaning.
-  compression_notes:
-  - Compresses repeated or formal phrasing only where the same meaning remains clear.
+  risk_flags:
+  - risk: “Temple” is more explicit than the Greek phrase itself.
+    mitigation: The POB footnote and immediate context directly support the clarification.
+  - risk: A negative question can sound accusatory or imply an expected answer.
+    mitigation: The wording preserves the POB’s unresolved negative form rather than stating an answer.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/017/024.yaml
   source_text_sha256: cd4e7ca92e609354b3e167fdf634f583646682e6ab4ac42e2303ef87695f9ceb
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:02:23Z'
-  output_hash: 7fed1a4520d1d1d3202a96f3800c14c432926468baeedd53ac2bbe691937a3f6
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0ebe5dca10817a23417016e6fc037c210e409a7d5c1f76c5dd145dafbfd87926
+  timestamp: '2026-07-12T07:37:27Z'
+  output_hash: 7b257e33e1f9b2f529644b9f7a140d643b3f0f34a3643a3fd589109ff9062ffa
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3485
+    completion_tokens: 646
+    total_tokens: 4131
+    reasoning_tokens: 142
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Capernaum
+  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
+- term: two-drachma tax
+  reason: Retained because the POB reasoning treats this term as important for source-grounded meaning.
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:27Z'
+  previous_text: When they came to Capernaum, the collectors of the two-drachma tax came to Peter and asked, “Does your teacher not pay the two-drachma tax?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 59e8f50268a1876bbc9b34f1fe75b86b752e1d48a7d5cee328ccf95f18cbfe30
+  review_summary: Revise for reader comprehension, not doctrine. “Temple tax” is a source- and context-warranted clarification already supplied by the POB footnote and audit trail; it does not add a theological interpretation. The proposed wording otherwise faithfully preserves the question, its negative form, and the identity of the collectors.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

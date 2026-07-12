@@ -31,21 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Are you greater than our father Jacob[a]? He gave us this well and drank from it himself, along with his sons and his livestock.
+  text: Are you greater than our father Jacob[a]? He gave us this well and drank from it himself. His sons and livestock also drank from it.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 'The phrasing in Greek implies a question expecting a negative answer: ''You aren''t greater than our father Jacob, are you?'''
-    reason: simplification_note
+    text: 'The Greek expects the answer “no”: “You aren’t greater than our father Jacob, are you?”'
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: Are you greater than our father Jacob? He gave us this well and drank from it himself, along with his sons and his livestock.
-  preserved_meaning: Split a long, complex rhetorical question into two sentences. The first retains the direct question. The second handles the historical/ancestral background. This dramatically improves readability for a general audience.
-  reasoning_layer_used: POB audit trail
-  rationale: Split a long, complex rhetorical question into two sentences. The first retains the direct question. The second handles the historical/ancestral background. This dramatically improves readability for a general audience.
-- simplified_phrase: along with his sons and his livestock
-  preserved_meaning: Replacing 'as did' with 'along with' simplifies the syntax of the drinking subjects, making it sound more natural in modern English while keeping the same meaning.
-  reasoning_layer_used: POB audit trail
-  rationale: Replacing 'as did' with 'along with' simplifies the syntax of the drinking subjects, making it sound more natural in modern English while keeping the same meaning.
+- pob_phrase: Are you greater than our father Jacob, who gave us the well
+  simplified_phrase: Are you greater than our father Jacob? He gave us this well
+  preserved_meaning: The second sentence still gives Jacob’s gift of the well as the basis for the challenge.
+  reasoning_layer_used: POB translation and immediate context
+  rationale: Splitting the relative clause makes the argument easier to follow, while “this” identifies the well where they are speaking.
+- pob_phrase: and drank from it himself, as did his sons and his livestock
+  simplified_phrase: and drank from it himself. His sons and livestock also drank from it.
+  preserved_meaning: Jacob, his sons, and his livestock all drank from the well without implying they did so simultaneously.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: A separate sentence replaces the difficult “as did” construction while preserving the coordinated drinkers.
+interpretive_expansions:
+- pob_phrase: the well
+  rendering: this well
+  claim: The woman refers to the well present in the immediate scene.
+  evidence:
+  - The conversation takes place at Jacob’s well.
+  - The reviewer approved “this well” as contextually warranted.
+  confidence: high
+  alternatives_preserved:
+  - the well
+translation_notes:
+  risk_flags:
+  - risk: The shorter sentences could weaken the connection between Jacob’s greatness and the well’s history.
+    mitigation: The supporting statements immediately follow the rhetorical question.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/004/012.yaml
+  source_text_sha256: ef0d5f4ae8487819ee8bb812d304300ede5af59291a1f430082101148c3a4d99
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: eacf74f03159fdb793380791020aa4fdce1fec121a204ec4afe814fd845a2ca0
+  timestamp: '2026-07-12T07:16:10Z'
+  output_hash: 1a82a6fca73c3d1d76027c00d2a0c3a1b1bd4bf9de2fc8942b01eabe95271166
+  usage:
+    prompt_tokens: 3674
+    completion_tokens: 419
+    total_tokens: 4093
+    reasoning_tokens: 0
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: our father Jacob
   reason: Retained to preserve POB's source-grounded terminology.
@@ -53,30 +90,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: livestock
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: The emphatic 'αὐτός' (himself) is retained. The negative expectation of 'μή' is signaled by the rhetorical question and clarified explicitly in the footnote [a]. The aorist verbs ('ἔδωκεν', 'ἔπιεν') are translated as simple past tense verbs ('gave', 'drank').
-  readability_notes:
-  - By separating the initial challenge ('Are you greater...') from the supporting details of Jacob's history, the sentence structure is simplified. This prevents the reader from getting lost in a nested relative clause.
-  compression_notes:
-  - No semantic details or theological claims were compressed or removed. The translation remains fully faithful to the POB base text, only altering the syntax for modern readability.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/004/012.yaml
-  source_text_sha256: ef0d5f4ae8487819ee8bb812d304300ede5af59291a1f430082101148c3a4d99
-  pob_commit_sha: a43dd10d6f7372673986b8691b9604a0a15abdbd
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 519f22d12dcf17302fd99725a07fee124be91110b249630b1aa5a2de37b0c5f4
-  timestamp: '2026-05-28T05:49:11Z'
-  output_hash: 4c298cc9ae3b0aac7a55ba945a0970e912366d3029f0c5c83e7a2ab051037f0c
-  usage:
-    prompt_tokens: 1960
-    completion_tokens: 669
-    total_tokens: 5146
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:10Z'
+  previous_text: Are you greater than our father Jacob[a]? He gave us this well and drank from it himself, along with his sons and his livestock.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: a0eae341f23687f35658b90f6869b7aae4babc8a8588c7f7b7812f453fd1f2a0
+  review_summary: 'The sentence split and “this well” are clear, contextually warranted simplifications: the woman is speaking at the well, and the second sentence retains the ancestral grounds for her challenge. However, “along with” subtly changes the coordinated claim into a possible joint or simultaneous action. Retain an explicit equivalent of “as did” to state that Jacob’s sons and livestock also drank from the well without adding that they drank together with Jacob. The footnote appropriately preserves the negative-answer expectation of the rhetorical question.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

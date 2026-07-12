@@ -31,41 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then what did you go out to see? A prophet? Yes, I tell you, and more than a prophet.
+  text: But what did you go out to see? A prophet? Yes, I tell you—and more than a prophet.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: But what did you go out to see?
-  simplified_phrase: Then what did you go out to see?
-  preserved_meaning: Jesus continues pressing the crowd about John's identity.
-  reasoning_layer_used: POB context and theological decision
-  rationale: '"Then" keeps the sequence of questions clear in modern English.'
-retained_terms:
-- term: prophet
-  reason: Retained because Jesus identifies John's role in prophetic terms.
+- pob_phrase: Yes, I tell you, and more than a prophet.
+  simplified_phrase: Yes, I tell you—and more than a prophet.
+  preserved_meaning: Jesus confirms that John is a prophet while declaring that his status goes beyond that category.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The dash makes the emphatic conclusion easier to follow without explaining how John is more than a prophet.
 translation_notes:
-  source_alignment_notes: Preserves John's status as more than a prophet without expanding the meaning.
-  readability_notes:
-  - The verse is already plain, so only light connective smoothing is used.
-  compression_notes:
-  - No explanatory expansion of John's greatness is added.
+  risk_flags:
+  - risk: Readers may wonder in what sense John is more than a prophet.
+    mitigation: The wording preserves the deliberate restraint of the source and POB rather than supplying an explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/011/009.yaml
   source_text_sha256: cf548a93f2dcbfa52344ca9725556084492279e9e2b77a14a4665457fc2c9b66
-  pob_commit_sha: 326574fcf3ee46b587910a986dfc30a7039a2861
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T09:51:05Z'
-  output_hash: 95d8daa167dabb284f638936842d12b1c07b547e5c8acf9fdcbe6691ab9e3ebb
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b89e276dcf350f77e59fb25617b934f5d348a13896a4f0836fea768497f60462
+  timestamp: '2026-07-12T07:36:26Z'
+  output_hash: e30978f94b2167994fd1d456811dbe599b84ca9ca9b7f0643bb6d36622a507ad
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 2924
+    completion_tokens: 203
+    total_tokens: 3127
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: prophet
+  reason: Retained because Jesus identifies John's role in prophetic terms.
+spob_revision_history:
+- timestamp: '2026-07-12T07:36:26Z'
+  previous_text: Then what did you go out to see? A prophet? Yes, I tell you, and more than a prophet.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c92b1254f47e7bcacdcd8f83459e37a2a80beb13ab581fabd3716a1334b0653c
+  review_summary: The draft appropriately preserves the restrained but weighty statement that John is “more than a prophet,” without adding a doctrinal explanation. However, “Then” loses the adversative force of ἀλλά and is not a needed clarity improvement over the already clear “But.” Restore “But.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

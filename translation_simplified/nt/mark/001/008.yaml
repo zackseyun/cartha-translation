@@ -31,15 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I baptized you with water[a], but he will baptize you with the Holy Spirit.
+  text: I baptized you with water, but the one coming after me will baptize you with the Holy Spirit.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “in” (both for water and the Holy Spirit). The Greek preposition can mean either “with” or “in”.
-    reason: simplification_note
+    text: Or, “in the Holy Spirit.” The Greek preposition can be rendered either way.
+    reason: alternative_reading
 simplification_decisions:
-- reasoning_layer_used: POB audit trail
-- reasoning_layer_used: POB audit trail
+- pob_phrase: but he
+  simplified_phrase: but the one coming after me
+  preserved_meaning: The contrast remains between John and the coming one who is stronger than he is.
+  reasoning_layer_used: Immediate Markan context and POB lexical rationale
+  rationale: Naming the antecedent makes the contrast clear without changing its referent.
+- pob_phrase: baptized you with water ... baptize you with the Holy Spirit
+  simplified_phrase: baptized you with water ... baptize you with the Holy Spirit
+  preserved_meaning: John contrasts his water baptism with the coming one's baptism with the divine Holy Spirit.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The established terms remain because substitutes would weaken their ritual and theological force.
+interpretive_expansions:
+- pob_phrase: he
+  rendering: the one coming after me
+  claim: The pronoun refers to the stronger coming one John has just announced.
+  evidence:
+  - Mark 1:7 identifies the approaching figure as the one coming after John.
+  - The POB rationale says the pronouns contrast John with the coming one.
+  confidence: high
+  alternatives_preserved:
+  - he
+  - he himself
+translation_notes:
+  risk_flags:
+  - risk: Replacing “he” with its contextual antecedent makes information from the preceding verse explicit.
+    mitigation: The wording is limited to Mark 1:7 and does not identify the figure more specifically than the context does.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/mark/001/008.yaml
+  source_text_sha256: 29a29e91ae6549d359c8d7c6b051daaf8a290fd876a3b9095e22d83c1b62bc71
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e8eeee87813cb3d5a11456994960258ea91d71ca21f661ccbf08ee39d3017f93
+  timestamp: '2026-07-12T07:19:46Z'
+  output_hash: 66dc613550492c0149f339de4da374aae2ef01fa817c8d028b50e54bf053076e
+  usage:
+    prompt_tokens: 3549
+    completion_tokens: 784
+    total_tokens: 4333
+    reasoning_tokens: 374
+    estimated_cost_usd: 0.0
+status: simplified_draft
 retained_terms:
 - term: baptized
   reason: Retained to preserve POB's source-grounded terminology.
@@ -47,33 +91,13 @@ retained_terms:
   reason: Retained to preserve POB's source-grounded terminology.
 - term: Holy Spirit
   reason: Retained to preserve POB's source-grounded terminology.
-translation_notes:
-  source_alignment_notes: Maintains the strong contrast between the Greek pronouns 'ἐγὼ' (I) and 'αὐτὸς' (he) by keeping the balanced, active clause structure of the source text.
-  readability_notes:
-  - The sentence structure is already direct and easy to follow. No restructuring was required to make it accessible to modern readers.
-  compression_notes:
-  - No compression was applied because the text is already extremely concise, and further compression would risk losing the stark theological contrast between John's water baptism and Jesus' Spirit baptism.
-  risk_flags:
-  - risk: None. The translation choices are highly stable, orthodox, and standard.
-    mitigation: Flag retained for reviewer attention.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/mark/001/008.yaml
-  source_text_sha256: 29a29e91ae6549d359c8d7c6b051daaf8a290fd876a3b9095e22d83c1b62bc71
-  pob_commit_sha: 48fa4d161f6350ba2bdb6a0fa122a65ed1d9a5ae
-ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: bb7803430b7d735fec77befa0d8dfe81ceb4bbebdab5ac93df4132dcc0acd7d9
-  timestamp: '2026-05-28T08:44:10Z'
-  output_hash: bcc79ff0fbaff3a672aa233d76032c777262a4cb16b662b16acf4c72baf34feb
-  usage:
-    prompt_tokens: 1867
-    completion_tokens: 482
-    total_tokens: 4705
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:19:46Z'
+  previous_text: I baptized you with water[a], but he will baptize you with the Holy Spirit.
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: e1c85774c1bcdc853fe245e9ba39180686ffc5b9531e8df72838304eef751351
+  review_summary: The main text is faithful and readable, and retaining “baptized” and “Holy Spirit” is warranted by the POB audit trail. Revision is required because the added footnote makes an inaccurate Greek claim and because the submitted SPOB offers no actual clarity gain over POB. The replacement preserves the sound main text and gives an accurate, concise alternative-reading note.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

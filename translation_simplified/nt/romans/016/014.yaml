@@ -31,36 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Greet Asyncritus, Phlegon, Hermes, Patrobas, Hermas, and the brothers with them.
+  text: Greet Asyncritus, Phlegon, Hermes, Patrobas, Hermas, and the fellow believers with them.
   philosophy: optimal-equivalence
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: the brothers with them
+  simplified_phrase: the fellow believers with them
+  preserved_meaning: The associated group consists of members of the Christian community.
+  reasoning_layer_used: POB lexical rationale, footnote, and immediate context
+  rationale: “Fellow believers” makes the communal sense clear to readers unfamiliar with biblical uses of “brothers.”
+interpretive_expansions:
+- pob_phrase: the brothers with them
+  rendering: the fellow believers with them
+  claim: Here “brothers” refers to believers associated with the named men.
+  evidence:
+  - The POB footnote identifies them as likely fellow believers associated with these men.
+  - Paul is greeting members of the Roman Christian community.
+  confidence: high
+  alternatives_preserved:
+  - the brothers with them
+  - the brothers who are with them
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Fellow believers” does not preserve the Greek phrase’s explicit masculine form.
+    mitigation: The wording follows the POB’s own contextual explanation without asserting that the group was mixed-gender.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/014.yaml
   source_text_sha256: f3ccd073375eb8f1bf6dae527ada6faa5e1b7a9505f701da371f960652c92f7c
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:31Z'
-  output_hash: a1ddeea0834bc7992942d58499bb5098249b78c651f4a23e0e7aa965360efac9
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: dc3f232740a7470177a130e95901012104c34f9b2730ee7dbc4a90d6209cf40a
+  timestamp: '2026-07-12T07:45:01Z'
+  output_hash: 2ff921753ad6f3ff7ec39a25ebd1bd6c1dcfde4ba9649a9d946155e6344591e9
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 2925
+    completion_tokens: 422
+    total_tokens: 3347
+    reasoning_tokens: 123
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:45:01Z'
+  previous_text: Greet Asyncritus, Phlegon, Hermes, Patrobas, Hermas, and the brothers with them.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 04c01fad56a5418bdb32872921f245012c898bdc4888b46b02c2b537169f521d
+  review_summary: Revise for a modest, contextually warranted clarity improvement. “Fellow believers” communicates the communal sense of ἀδελφούς in this Pauline greeting, as supported by the POB audit trail and immediate context; it does not introduce a further doctrinal interpretation.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

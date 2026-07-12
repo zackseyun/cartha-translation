@@ -37,39 +37,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Mary took about a pound of very expensive pure nard perfume, anointed Jesus's feet, and wiped his feet with her hair. The whole house filled with the perfume's fragrance.
+  text: Then Mary took about twelve ounces of very expensive pure nard perfume,[a] anointed Jesus's feet, and wiped his feet with her hair. The house was filled with the perfume's fragrance.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “genuine nard”; the word translated “pure” is debated.
+    reason: lexical_alternative
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
-retained_terms:
-- term: nard
-  reason: Retains the specific perfume named in the POB source record.
+- pob_phrase: a litra
+  simplified_phrase: about twelve ounces
+  preserved_meaning: The amount remains approximately one Roman litra.
+  reasoning_layer_used: POB cultural note for λίτραν
+  rationale: The modern measurement makes the ancient quantity immediately understandable without overstating precision.
+- pob_phrase: costly
+  simplified_phrase: very expensive
+  preserved_meaning: The perfume had exceptionally high monetary value.
+  reasoning_layer_used: POB lexical decision for πολυτίμου
+  rationale: “Very expensive” is more familiar modern English while retaining the emphasis on value.
+- pob_phrase: And the house was filled with the fragrance of the perfume
+  simplified_phrase: The house was filled with the perfume's fragrance
+  preserved_meaning: The perfume's scent spread throughout the house.
+  reasoning_layer_used: POB lexical decisions for ἐπληρώθη and ὀσμῆς
+  rationale: The shorter possessive construction preserves the passive image in natural English.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Pure” may appear to settle the debated meaning of πιστικῆς.
+    mitigation: Footnote [a] preserves “genuine” as an alternative and identifies the lexical uncertainty.
+  - risk: “Twelve ounces” could be mistaken for an exact conversion.
+    mitigation: The qualifier “about” preserves the approximate nature of the POB cultural note.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/003.yaml
   source_text_sha256: e7243f7d3139f66a0c333809ff4e3c5195ac66fc995777e6b7c7aef994a56b11
-  pob_commit_sha: 2ada266155c78f594c3f0ceafab944067e77a24a
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:53Z'
-  output_hash: e99d03ad09ebdcc25e58ef212cf0a6d2330535fe69b029b743d038dc8710829c
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b437e1aa29216a29bd0b5e1e00c3f0957834a39c3832a12829fa52786f6021d3
+  timestamp: '2026-07-12T07:16:10Z'
+  output_hash: 30365a0f0c1c8e222adb9f9a4f7152f68bfaa9987c4c565af5adadcf4713a902
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3870
+    completion_tokens: 414
+    total_tokens: 4284
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms:
+- term: nard
+  reason: Retains the specific perfume named in the POB source record.
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:10Z'
+  previous_text: Then Mary took about a pound of very expensive pure nard perfume, anointed Jesus's feet, and wiped his feet with her hair. The whole house filled with the perfume's fragrance.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: aefccaa80a4fcd3773e920a65f5b7726ef003d040c521cea6fcd529fe603ae3c
+  review_summary: The draft appropriately makes “costly” more transparent as “very expensive” and retains the specific substance, nard. Revision is required because its modernized measurement is materially inaccurate, its final sentence is ungrammatical, and dropping the POB lexical note conceals a live uncertainty. The recommended wording keeps the source-grounded quantity, preserves the narrative act without added theology, and remains clear for modern readers.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

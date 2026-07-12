@@ -31,36 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Jesus said to them, "The light is among you for a little while longer. Walk while you have the light, so darkness will not overtake you. Whoever walks in the darkness does not know where he is going."
+  text: Then Jesus said to them, “The light is among you[a] for a little while longer. Walk while you have the light, so darkness will not overtake you. Whoever walks in the darkness does not know where he is going.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “in you” or “with you.” The Greek phrase can have any of these senses, but “among you” best fits Jesus’ presence with the crowd here.
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: The light is still among you for a little while.
+  simplified_phrase: The light is among you for a little while longer.
+  preserved_meaning: The light remains present among them only briefly.
+  reasoning_layer_used: POB lexical decision for Ἔτι μικρὸν χρόνον
+  rationale: “A little while longer” expresses the limited remaining time in natural English.
+- pob_phrase: The one who walks in the darkness
+  simplified_phrase: Whoever walks in the darkness
+  preserved_meaning: The warning applies generally to any person who walks in darkness.
+  reasoning_layer_used: POB lexical decision for ὁ περιπατῶν
+  rationale: “Whoever” states the generic sense more directly while preserving the walking image.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: “Among you” could appear to exclude other possible senses of the Greek phrase.
+    mitigation: The footnote preserves “in you” and “with you” as live alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/john/012/035.yaml
   source_text_sha256: 85538ab47aeeaa5a098b31c427ca44b1938d322a09d4db647051eaafe231b28f
-  pob_commit_sha: 88c4388a6bf94ff5e44bc285e16125771425b5da
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T11:29:55Z'
-  output_hash: 1f35d90afa6bd5c54e1a3d8fc1022e36973a5c5ab4d52e0cceb59d0e38d0f87f
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7b0a62c503c4027840ad140db86f5d9729c3a69b35eae55a0c496970dc91d589
+  timestamp: '2026-07-12T07:16:50Z'
+  output_hash: 1cc91fa1ea8ec3bb1c7d69b44d65aeadbd8b7c7187b207fe0fd41897f895f946
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3540
+    completion_tokens: 476
+    total_tokens: 4016
+    reasoning_tokens: 115
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:16:50Z'
+  previous_text: Then Jesus said to them, "The light is among you for a little while longer. Walk while you have the light, so darkness will not overtake you. Whoever walks in the darkness does not know where he is going."
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 0c733694db56c8c787c8f6e26d0243be65295b7fd881de920f3a8c36b7aee437
+  review_summary: 'The wording is generally clear and remains faithful to the POB’s contextual reading: “longer” adequately expresses “still,” “Whoever” is plainer than “the one who,” and the light/darkness imagery is retained. Revision is needed because the draft drops the POB’s warranted footnote for the ambiguous phrase rendered “among you.”'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

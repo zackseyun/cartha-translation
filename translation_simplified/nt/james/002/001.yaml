@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/james/002/001.yaml
-  text: My brothers[d][c][b][a], do not hold the faith of our Lord Jesus Messiah with partiality.
+  text: My brothers[d][c][b][a], do not hold the faith of our Lord Jesus the Messiah with partiality.
   footnotes:
   - marker: a
     text: Or 'brothers and sisters'; the Greek says 'brothers' but addresses the believing community more broadly.
@@ -40,57 +40,83 @@ base_translation:
     changes_summary: 'Removed ''glorious'' to avoid an interpretive rendering of τῆς δόξης in this construction, and changed ''Messiah'' to ''Christ'' for more standard formal register and consistency. Also removed the comma for smoother English. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: My brothers[a], do not show favoritism as you hold the faith[b] of our Lord Jesus Messiah[c].
+  text: My brothers[a], as you hold faith in[b] our Lord Jesus the Messiah, the Lord of glory,[c] do not show favoritism.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'brothers and sisters'; the Greek word is masculine but addresses the entire believing community.
-    reason: simplification_note
+    text: Or “brothers and sisters”; the Greek says “brothers” but addresses the believing community broadly.
+    reason: lexical_alternative
   - marker: b
-    text: Or 'faith in our Lord Jesus Messiah.' The Greek grammar can be understood in both ways.
-    reason: simplification_note
+    text: Or “hold the faith of our Lord Jesus the Messiah.” The Greek grammar allows more than one understanding.
+    reason: alternative_reading
   - marker: c
-    text: Or 'our Lord Jesus Messiah, the Lord of glory' or 'our glorious Lord Jesus Messiah'.
-    reason: simplification_note
+    text: Or “our glorious Lord Jesus the Messiah.”
+    reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: My brothers[a]
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: do not show favoritism as you hold ...
-  reasoning_layer_used: POB audit trail
-- simplified_phrase: the faith[b] of our Lord Jesus Messiah[c]
-  reasoning_layer_used: POB audit trail
-retained_terms:
-- term: Messiah
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: My brothers
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: do not hold ... with partiality
+  simplified_phrase: do not show favoritism
+  preserved_meaning: Believers must not practice favoritism in connection with their faith.
+  reasoning_layer_used: POB lexical decision for μὴ ... ἔχετε and ἐν προσωπολημψίαις
+  rationale: The active wording states the same prohibition in ordinary English.
+- pob_phrase: the faith of our Lord Jesus the Messiah
+  simplified_phrase: faith in our Lord Jesus the Messiah
+  preserved_meaning: The faith is directed toward and defined by Jesus while the alternate relation remains footnoted.
+  reasoning_layer_used: POB theological decision on the debated genitive
+  rationale: The contextual reading is clearer, and the footnote preserves the source ambiguity.
+- pob_phrase: with partiality
+  simplified_phrase: as you hold faith ... do not show favoritism
+  preserved_meaning: The prohibition governs how believers live out their faith.
+  reasoning_layer_used: POB syntax and immediate context
+  rationale: Reordering the clauses makes the relationship easier to follow.
+interpretive_expansions:
+- pob_phrase: the faith of our Lord Jesus the Messiah
+  rendering: faith in our Lord Jesus the Messiah
+  claim: The faith is understood as faith directed toward Jesus.
+  evidence:
+  - The POB identifies “faith in” as a valid reading of the Greek construction.
+  - The immediate context addresses the conduct of believers who profess faith.
+  confidence: moderate
+  alternatives_preserved:
+  - the faith of our Lord Jesus the Messiah
 translation_notes:
-  source_alignment_notes: The Greek syntax of James 2:1 is preserved in its semantic essence. While the word order has been smoothed for English style, the core prohibition and relation of faith to the Messiah are kept identical to the POB baseline.
-  readability_notes:
-  - The prepositional phrase 'with partiality' was converted into an active verb clause ('do not show favoritism as you hold'), making the ethical instruction immediately clear to modern readers.
-  compression_notes:
-  - No theological or historical concepts were removed. The complex genitive 'of glory' (τῆς δόξης), which can be translated in multiple ways, is fully represented in footnote [c] to keep the text uncluttered while preserving the textual variants.
   risk_flags:
-  - risk: A minor risk remains that readers might interpret 'faith of' as Jesus's own faith rather than faith in him. This is mitigated by footnote [b].
-    mitigation: Flag retained for reviewer attention.
+  - risk: The main text selects one side of a genuine grammatical ambiguity.
+    mitigation: Footnote [b] preserves the POB’s formal alternative.
+  - risk: “The Lord of glory” may sound less immediately natural than “glorious Lord.”
+    mitigation: The source image remains in the text, with the smoother rendering in footnote [c].
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/james/002/001.yaml
   source_text_sha256: d6464f3a88648cd4297ed9f75a618cbd207e469aa8c90df3decb6a1e3a25f6cc
-  pob_commit_sha: 9a4dc180117c616554e789ad4b2e2ef6f203abe9
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: 906865724b98f711c2270c9664345bf670bbb97e513dd50d75d774dde6bba9cc
-  timestamp: '2026-05-28T08:09:48Z'
-  output_hash: 914c268b9b92d972a07411840eec0fbd84a3150b38e42fd7e2543d75af048aa4
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7a053d31d28865fb64ec014becaf35045d08b5aba97a024090f3c6506b69b079
+  timestamp: '2026-07-12T07:13:36Z'
+  output_hash: b230e0cd9a7bd1484787c7f5e585d5b5e35564f3720f5df112c68e2b6b0bb206
   usage:
-    prompt_tokens: 2781
-    completion_tokens: 772
-    total_tokens: 8857
-    reasoning_tokens: 0
+    prompt_tokens: 4778
+    completion_tokens: 715
+    total_tokens: 5493
+    reasoning_tokens: 132
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms:
+- term: Messiah
+  reason: Retained to preserve POB's source-grounded terminology.
+- term: My brothers
+  reason: Retained to preserve POB's source-grounded terminology.
+spob_revision_history:
+- timestamp: '2026-07-12T07:13:36Z'
+  previous_text: My brothers[a], do not show favoritism as you hold the faith[b] of our Lord Jesus Messiah[c].
+  previous_model: gemini-3.5-flash
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 78b4f7e29d0c6ea8d26630dcd46d3d5ce973c7f07344f4216d6085b44afa6b13
+  review_summary: Revise. "Show favoritism" is a warranted and clearer modernization of "hold ... with partiality," and the reordered sentence is readable. However, the draft drops τῆς δόξης from the main text, removing a substantive christological description rather than simplifying it. Restore it in the text. Because "faith of" is both opaque in contemporary English and potentially misleading, the contextual "faith in" is suitable for the simplified main rendering when the POB's alternative is explicitly retained in a footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

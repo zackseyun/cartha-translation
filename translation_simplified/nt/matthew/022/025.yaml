@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/nt/matthew/022/025.yaml
-  text: Now there were seven brothers among us[a]. The first married and died, and having no offspring[b], he left his wife to his brother.
+  text: There were seven brothers among us[a]. The first married and died, and having no offspring[b], he left his wife to his brother.
   footnotes:
   - marker: a
     text: Literally, 'having no seed.' Here 'seed' means offspring or descendants.
@@ -34,41 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Now there were seven brothers among us. The first married and died. Since he had no offspring, he left his wife to his brother.
+  text: There were seven brothers among us. The first married and died without having children, leaving his wife to his brother.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 'This refers to the levirate-marriage custom: a dead man''s brother was expected to marry his widow and raise up offspring for him. See Deuteronomy 25:5.'
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: Now there were seven brothers among us[a]. The first married and died, and having no offspring[b], he left his wife to his brother.
-  simplified_phrase: Now there were seven brothers among us. The first married and died. Since he had no offspring, he left his wife to his brother.
-  preserved_meaning: Preserves the controlling POB meaning for Matthew 22 while expressing it in clearer modern common English.
-  reasoning_layer_used: POB translation text, lexical decisions, theological decisions, and source payload
-  rationale: This manual Codex-only draft shortens dense wording, removes avoidable archaic phrasing, and keeps the verse's source-grounded claims intact.
+- pob_phrase: The first married and died, and having no offspring
+  simplified_phrase: The first married and died without having children
+  preserved_meaning: The first brother died after marrying but had no descendants.
+  reasoning_layer_used: POB lexical decisions for γήμας, ἐτελεύτησεν, and μὴ ἔχων σπέρμα
+  rationale: Common clause order and “children” make the sequence immediately clear.
+- pob_phrase: he left his wife to his brother
+  simplified_phrase: leaving his wife to his brother
+  preserved_meaning: At his death, his wife was left to the next brother under the assumed custom.
+  reasoning_layer_used: POB lexical and theological decisions for ἀφῆκεν and the levirate-marriage background
+  rationale: The main text stays implicit while a footnote explains the unfamiliar custom.
 translation_notes:
-  source_alignment_notes: Drafted from the local POB Matthew 22 record and its source/lexical/theological guardrails; no external LLM or web API was used.
-  readability_notes:
-  - Uses modern common English and shorter clause structure where the POB wording is denser.
-  compression_notes:
-  - No central narrative, command, title, or theological claim was intentionally removed.
   risk_flags:
-  - risk: Manual simplification may need later human review for footnote selection and style consistency.
-    mitigation: Base POB text, footnotes, and source-grounding metadata are preserved in the generated SPOB record for audit.
+  - risk: “Leaving his wife to his brother” could sound like inheritance or abandonment.
+    mitigation: The cultural footnote explains the levirate-marriage setting without adding “to marry” to the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/matthew/022/025.yaml
   source_text_sha256: ac64ef875fb92d072017780eb60b4606cb6fe5f0a0f324ca62360317c4ab9b20
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:12:52Z'
-  output_hash: c1edd9085757500e3044bd196e2a34bbf6bb9e88ccbbcd85e3fc153e42275bf2
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 31801ccaf6a6eb283685331fedc63e48e256a8efa332fa6ffd6f8ded03269f8d
+  timestamp: '2026-07-12T07:37:33Z'
+  output_hash: 36264acf1d93187971097f8dbe008d2bde4dc44c4b79b319a1a1445424ca9ddc
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
+    prompt_tokens: 3811
+    completion_tokens: 506
+    total_tokens: 4317
+    reasoning_tokens: 134
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:37:33Z'
+  previous_text: Now there were seven brothers among us. The first married and died. Since he had no offspring, he left his wife to his brother.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 990386413574476435f431978ca3c918a6921dcf9b85e353c1d8e58ee79e9f30
+  review_summary: The draft improves readability by separating the actions and using common wording, and “Since he had no offspring” is contextually understandable. However, it restores an unsupported “Now,” contrary to the POB audit trail, and removes the explanatory note needed for modern readers to understand the levirate-marriage setting. Retain that setting in a footnote, not by adding “to marry” to the main text.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

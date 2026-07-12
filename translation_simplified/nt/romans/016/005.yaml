@@ -37,36 +37,65 @@ base_translation:
     changes_summary: 'Changed ''the Messiah'' to ''Christ'' for consistency with εἰς Χριστόν and standard register; retained the rest as accurate and natural. [Regression fix applied: Messiah restored (revision_pass had changed Χριστός → Christ against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: Also greet the church that meets in their house. Greet my beloved Epaenetus, who is the firstfruits of Asia for Messiah.
+  text: Also greet the church that meets in their house. Greet my beloved Epaenetus, who is the firstfruits of Asia for the Messiah.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or, “who was the first convert in Asia to Christ.”
+    reason: alternative_reading
 simplification_decisions:
-- preserved_meaning: Codex manual SPOB draft preserves the controlling POB meaning while simplifying wording for modern common English.
-  reasoning_layer_used: POB audit trail
-  rationale: Manual Codex drafting pass; see base_translation and source_grounding for the controlling POB record.
+- pob_phrase: the church in their house
+  simplified_phrase: the church that meets in their house
+  preserved_meaning: The church is the assembly associated with and gathering in their home.
+  reasoning_layer_used: POB lexical decision for κατ’ οἶκον αὐτῶν ἐκκλησίαν
+  rationale: Stating that the church meets there prevents readers from mistaking the building for the church.
+- pob_phrase: Greet Epaenetus, my beloved
+  simplified_phrase: Greet my beloved Epaenetus
+  preserved_meaning: Paul warmly identifies Epaenetus as someone dear to him.
+  reasoning_layer_used: POB lexical decision for ἀγαπητόν μου
+  rationale: The reordered phrase follows natural English without weakening Paul’s affection.
+- pob_phrase: the firstfruits of Asia for Messiah
+  simplified_phrase: the firstfruits of Asia for the Messiah
+  preserved_meaning: Paul’s firstfruits image and the title Messiah are retained.
+  reasoning_layer_used: POB theological decisions for ἀπαρχή and Χριστός
+  rationale: Adding the article makes Messiah natural as an English title while preserving the metaphor.
 translation_notes:
-  source_alignment_notes: Preserves the POB source-grounded meaning while simplifying syntax and wording.
-  readability_notes:
-  - Uses clearer modern common English than the base POB wording.
-  compression_notes:
-  - No central meaning is intentionally removed.
+  risk_flags:
+  - risk: Modern readers may not understand the firstfruits metaphor as referring to an earliest believer.
+    mitigation: The alternative-reading footnote explains the likely sense without replacing Paul’s image.
+  - risk: Asia may be mistaken for the modern continent rather than the Roman province.
+    mitigation: The main text retains POB’s concise wording, though this distinction is not central to the greeting.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/nt/romans/016/005.yaml
   source_text_sha256: b510cf8c377a1907ba2c646394ac20a8047c23a216f2452009e40bf28b811c8d
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
 ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T19:49:31Z'
-  output_hash: 69b99d6a15ab296a6fc080df8be23844a7d317fbc56af62c8f34a68f329c0574
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 79048b2e2296a307c930a4fc70a50472435e9643ab617a34b131a60cbcd6a21f
+  timestamp: '2026-07-12T07:42:48Z'
+  output_hash: 3b3f76e6a262e106975c5c13629a07bd8d5bafe56a363412960f1629b55cb636
   usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
+    prompt_tokens: 3797
+    completion_tokens: 450
+    total_tokens: 4247
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-07-12T07:42:48Z'
+  previous_text: Also greet the church that meets in their house. Greet my beloved Epaenetus, who is the firstfruits of Asia for Messiah.
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: c331262c3f15fdcd824193606770991be4a3ed7512713f9124ce993bd41ce31d
+  review_summary: “The church that meets in their house” is a warranted and clearer rendering of the house-church phrase. Revision is needed because “for Messiah” is less idiomatic and less clear than “for the Messiah,” and because the retained but opaque firstfruits metaphor should keep POB’s alternative-reading footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

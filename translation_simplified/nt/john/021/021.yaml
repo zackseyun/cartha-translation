@@ -19,19 +19,40 @@ base_translation:
     changes_summary: 'doctrine_realignment: John 21:21 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''he says'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote'
 translation:
   language: en
-  text: When Peter saw him, he said to Jesus, “Lord, what about this man?”
+  text: So when Peter saw him, he said to Jesus, “Lord, what about this man?”
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: So when Peter saw him
-  simplified_phrase: When Peter saw him
-  preserved_meaning: Removed an unnecessary connector while preserving the sequence.
-  reasoning_layer_used: POB audit trail
-  rationale: Removed an unnecessary connector while preserving the sequence.
-- pob_phrase: Lord, what about this man?
-  simplified_phrase: Lord, what about this man?
-  preserved_meaning: Kept Peter's question direct and simple.
-  reasoning_layer_used: POB audit trail
-  rationale: Kept Peter's question direct and simple.
+- pob_phrase: he says to Jesus
+  simplified_phrase: he said to Jesus
+  preserved_meaning: Peter asks Jesus the question after seeing the man.
+  reasoning_layer_used: POB text and modern English narrative usage
+  rationale: The past tense makes the short narrative read naturally without changing the event.
+translation_notes:
+  risk_flags:
+  - risk: Changing the narrative present “says” to “said” reduces verbal correspondence with the POB.
+    mitigation: The tense is naturalized only for English narrative flow, while the action and sequence remain unchanged.
+source_grounding:
+  pob_role: primary_derivative_base
+  source_payload_role: audit_guardrail
+  pob_path: translation/nt/john/021/021.yaml
+  source_text_sha256: 9befc1b3dd55ebb13028ce2d50261739f854c5c938762d2b1784d3d0f4f9d3e6
+  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+ai_draft:
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2ff6cbb63dcb79ba6b70e38f768becee683ed6bfff1595dcbd0b4e3fa596d701
+  timestamp: '2026-07-12T07:17:44Z'
+  output_hash: 978d2cd2650ad94ee468d975cdb8fed14c46158b3b5c2d1dd2fb79d06adde6b7
+  usage:
+    prompt_tokens: 2645
+    completion_tokens: 374
+    total_tokens: 3019
+    reasoning_tokens: 184
+    estimated_cost_usd: 0.0
+status: simplified_draft
+interpretive_expansions: []
 retained_terms:
 - term: Peter
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
@@ -39,31 +60,14 @@ retained_terms:
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
 - term: Lord
   reason: Retained to preserve the POB's source-grounded wording and John 21 narrative/theological continuity.
-translation_notes:
-  source_alignment_notes: Preserves the POB verse meaning and its source-grounded choices while simplifying syntax, dialogue, and explanatory wording for modern common English.
-  readability_notes:
-  - Uses shorter clauses, common verbs, and clearer pronoun references where helpful.
-  - Keeps John's narrative sequence and repeated dialogue patterns visible.
-  compression_notes:
-  - Compresses only redundant or formal phrasing; no central event, command, title, or theological claim is intentionally removed.
-source_grounding:
-  pob_role: primary_derivative_base
-  source_payload_role: audit_guardrail
-  pob_path: translation/nt/john/021/021.yaml
-  source_text_sha256: 9befc1b3dd55ebb13028ce2d50261739f854c5c938762d2b1784d3d0f4f9d3e6
-  pob_commit_sha: fb103dfba314018a2bfc0322539c0638bcc6c5f4
-ai_draft:
-  model_id: codex-gpt-5.5-manual
-  model_version: codex-gpt-5.5-codex-session
-  azure_deployment: codex-session
-  prompt_id: simplified_pob_codex_manual_v1
-  prompt_sha256: 3f5fe4102c323b8afade88ac84cd4fd3817c392744898b75f3aaa7e4b67f0222
-  timestamp: '2026-05-28T20:04:41Z'
-  output_hash: 80abda72cc8feb9ca4a63bcabcb169ee128c2e43a3126b5e051a916c12855704
-  usage:
-    prompt_tokens: 0
-    completion_tokens: 0
-    total_tokens: 0
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.0
-status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-07-12T07:17:44Z'
+  previous_text: When Peter saw him, he said to Jesus, “Lord, what about this man?”
+  previous_model: codex-gpt-5.5-manual
+  reviewer_model: gpt-5.6-terra
+  review_verdict: revise
+  review_output_hash: 04c35ba40e25a07283e91b122af220f8a9b3edb32aac1eecbac38a679c9fc768
+  review_summary: Revise by retaining the simple connective “So.” It preserves the source/contextual narrative linkage, while the proposed omission provides no meaningful clarity gain sufficient to justify losing it. The wording otherwise is faithful, clear, and doctrinally unobjectionable.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
