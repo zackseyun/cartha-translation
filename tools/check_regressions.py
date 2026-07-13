@@ -14,6 +14,7 @@ from __future__ import annotations
 
 import argparse
 import pathlib
+import re
 import subprocess
 import sys
 
@@ -65,7 +66,6 @@ NT_BOOKS = {
 
 
 def _word_in(text: str, word: str) -> bool:
-    import re
     return bool(re.search(rf'\b{re.escape(word)}\b', text))
 
 
@@ -114,6 +114,26 @@ def check_file(path: pathlib.Path) -> list[dict]:
     # We check the source field for the Greek/Hebrew term.
     source = data.get("source") or {}
     source_text = str(source.get("text") or "")
+
+    # Rule 3: יְהוָה → "Yahweh", never the masking convention "the LORD".
+    # Match the four Hebrew consonants with optional pointing/cantillation
+    # between them, since WLC forms vary by verse.
+    has_yhwh = bool(re.search(
+        r'י[\u0591-\u05C7]*ה[\u0591-\u05C7]*ו[\u0591-\u05C7]*ה',
+        source_text,
+    ))
+    if has_yhwh and re.search(r'\b(?:[Tt]he )?LORD\b', text):
+        violations.append({
+            "file": str(path.relative_to(REPO_ROOT)),
+            "rule": "yhwh-as-lord",
+            "translation_text": text[:120],
+            "details": (
+                'Forbidden: "LORD" found where the Hebrew source has יְהוָה. '
+                'POB policy requires the divine name → "Yahweh" in OT text. '
+                "See DOCTRINE.md §Contested Terms and METHODOLOGY.md."
+            ),
+        })
+
     if "δοῦλ" in source_text or "עֶבֶד" in source_text or "עֶ֫בֶד" in source_text:
         if _word_in(text, "servant"):
             violations.append({
@@ -128,7 +148,7 @@ def check_file(path: pathlib.Path) -> list[dict]:
                 ),
             })
 
-    # Rule 3: Truncation guard
+    # Rule 4: Truncation guard
     # Skip superscription files (verse 000 — Psalm titles) which are short by design.
     is_superscription = path.stem == "000"
     revisions = data.get("revisions") or []
