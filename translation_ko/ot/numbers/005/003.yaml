@@ -20,14 +20,14 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 남자에서 여자에 이르기까지, 너희는 그들을 진영 밖으로 내보내야 합니다[a]. 너희는 그들을 내보내어 그들이 자기들의 진영들[b]을 더럽히지 못하게 해야 합니다. 그 진영들 한가운데에 내가 거주하고 있기 때문입니다.
+  text: 남자부터 여자까지, 너희는 그들을 진영[a] 밖으로 내보내십시오. 그들이 자기들의 진영들[b]을 부정하게 하지 못하도록 그들을 내보내십시오. 내가 그 가운데 거주합니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘그들의 진영’. 히브리어는 복수형 ‘그들의 진영들’을 가지며, 진영의 구획이나 여러 야영지를 가리킬 수 있습니다.
-    reason: lexical_alternative
+    text: 히브리어는 ‘그 진영’이라고 단수형을 사용합니다.
+    reason: source_form
   - marker: b
-    text: 또는 ‘그들 한가운데에 내가 거주한다’. 히브리어는 진영들을 가리키는지, 그와 연관된 백성을 가리키는지 둘 다 가능할 수 있습니다.
+    text: 히브리어는 ‘그들의 진영들’이라고 복수형을 사용합니다. 이어지는 ‘그 가운데’는 이 진영들을 가리킬 수도 있고, 그 진영들과 관련된 백성을 가리킬 수도 있습니다.
     reason: alternative_reading
 lexical_decisions:
 - source_word: מִזָּכָר עַד נְקֵבָה
@@ -90,4 +90,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 남자에서 여자에 이르기까지, 너희는 그들을 진영 밖으로 내보내야 합니다[a]. 너희는 그들을 내보내어 그들이 자기들의 진영들[b]을 더럽히지 못하게 해야 합니다. 그 진영들 한가운데에 내가 거주하고 있기 때문입니다.
+  to: 남자부터 여자까지, 너희는 그들을 진영[a] 밖으로 내보내십시오. 그들이 자기들의 진영들[b]을 부정하게 하지 못하도록 그들을 내보내십시오. 내가 그 가운데 거주합니다.
+  rationale: 첫 ‘진영’의 단수와 뒤 ‘진영들’의 복수를 WLC에 따라 구별했습니다. 잘못된 각주 a를 원문의 형태를 설명하는 각주로 바로잡았습니다. 마지막 문장을 인과절로 만들지 않고 ‘그 가운데’라는 표현과 각주 b를 통해 지시 대상의 문법적·해석적 여지를 보존했습니다. 반복되는 ‘내보내십시오’도 원문의 반복을 반영합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:10:59Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. WLC의 לַמַּחֲנֶה는 첫 절에서 단수 ‘그 진영’이며, מַחֲנֵיהֶם은 뒤 절에서 복수 ‘그들의 진영들’입니다. 초안의 각주 a는 첫 명사가 복수라는 잘못된 설명을 담고 있습니다. 또한 마지막 절은 ‘…때문입니다’라는 인과절이 아니라, 하나님께서 그 가운데 거주하신다는 관계절/선언입니다.
+  naturalness: ‘남자에서 여자에 이르기까지’는 현대 한국어에서 다소 부자연스럽습니다. ‘남자부터 여자까지’가 범위 표현을 자연스럽게 살립니다. 본문은 반복 명령을 유지하되, 마지막 절을 독립 문장으로 처리하여 한국어의 자연스러움과 원문의 애매성을 함께 보존했습니다.
+  terminology: 제의적 정결 문맥에서 יְטַמְּאוּ는 ‘부정하게 하다’가 ‘더럽히다’보다 의미가 분명합니다. ‘진영’과 ‘거주하다’는 적절히 유지했습니다.
+  issues:
+  - severity: high
+    issue: 각주 a가 히브리어의 수를 잘못 설명합니다.
+    rationale: WLC의 첫 구절은 לַמַּחֲנֶה(정관사 단수, ‘그 진영’)입니다. 복수형 מַחֲנֵיהֶם(‘그들의 진영들’)은 뒤 절에만 나타납니다.
+  - severity: medium
+    issue: 마지막 절을 ‘…때문입니다’로 옮겨 원문에 없는 인과관계를 부가합니다.
+    rationale: אֲשֶׁר אֲנִי שֹׁכֵן בְּתוֹכָם은 앞의 ‘그들의 진영들’과 관련된 관계절이며, בְּתוֹכָם의 지시 대상은 진영들 또는 관련 백성으로 논의될 수 있습니다. 인과절로 확정하지 않는 편이 안전합니다.
+  - severity: low
+    issue: ‘남자에서 여자에 이르기까지’가 현대 표준 한국어에서 어색합니다.
+    rationale: ‘남자부터 여자까지’가 히브리어의 포괄 범위 표현을 자연스럽게 전달합니다.
+  revised_text: 남자부터 여자까지, 너희는 그들을 진영[a] 밖으로 내보내십시오. 그들이 자기들의 진영들[b]을 부정하게 하지 못하도록 그들을 내보내십시오. 내가 그 가운데 거주합니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 ‘그 진영’이라고 단수형을 사용합니다.
+    reason: source_form
+  - marker: b
+    text: 히브리어는 ‘그들의 진영들’이라고 복수형을 사용합니다. 이어지는 ‘그 가운데’는 이 진영들을 가리킬 수도 있고, 그 진영들과 관련된 백성을 가리킬 수도 있습니다.
+    reason: alternative_reading
+  revision_rationale: 첫 ‘진영’의 단수와 뒤 ‘진영들’의 복수를 WLC에 따라 구별했습니다. 잘못된 각주 a를 원문의 형태를 설명하는 각주로 바로잡았습니다. 마지막 문장을 인과절로 만들지 않고 ‘그 가운데’라는 표현과 각주 b를 통해 지시 대상의 문법적·해석적 여지를 보존했습니다. 반복되는 ‘내보내십시오’도 원문의 반복을 반영합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:10:59Z'
+  output_hash: 49ce718327857b2aa6eea8b2962cd0200ba444767b854dce77170791760fdcfe
+  usage:
+    completion_tokens: 2118
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1276
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 165
+      engine_ttlt_ms: 17436
+      pre_inference_ms: 229
+      service_tbt_ms: 8
+      service_ttft_ms: 527
+      service_ttlt_ms: 17783
+      total_duration_ms: 17566
+      user_visible_ttft_ms: 298
+    prompt_tokens: 2905
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5023
+  applied_revision: true
+  auto_apply_blocked_errors: []

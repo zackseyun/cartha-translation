@@ -84,4 +84,56 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 법규의 순서와 내용은 대체로 따르지만, 본문에 영어 단어 ‘discharge’가 남아 있어 히브리어 הַזָּב의 의미가 한국어로 전달되지 않습니다. 또한 ‘누구든지 … 닿는 사람’은 일반 조건을 중복하여 표현합니다.
+  naturalness: ‘유출이 있는 사람’과 ‘살에 닿는 사람’은 현대 표준 한국어의 법규적 문체에서 자연스럽습니다. ‘부정하게 될 것입니다’는 의례적 상태 변화를 나타내며 ‘부정할 것입니다’보다 문법적·의미적으로 명료합니다.
+  terminology: זָב는 문맥상 비정상적인 신체 유출이 있는 남성을 가리키므로 ‘유출이 있는 사람’으로 옮기는 것이 적절합니다. טָמֵא는 도덕적 비난이 아닌 의례적 부정이므로 ‘부정하게 될 것입니다’로 번역합니다. בָּשָׂר는 본문에서 ‘살’로 유지하고, ‘몸’이라는 대안은 각주로 제시합니다.
+  issues:
+  - severity: high
+    issue: 본문에 ‘discharge’가 영어로 남아 있습니다.
+    rationale: 번역문 언어의 일관성을 해치며, הַזָּב(유출이 있는 사람)의 의미가 한국어 독자에게 직접 전달되지 않습니다.
+  - severity: medium
+    issue: ‘누구든지 … 닿는 사람은’이 보편 조건을 중복합니다.
+    rationale: 히브리어의 관사 붙은 분사는 일반적 법적 조건을 나타내므로, 한국어에서는 ‘… 닿는 사람은’만으로 자연스럽고 충분합니다.
+  - severity: medium
+    issue: ‘부정할 것입니다’는 상태를 나타내는 서술로 부자연스럽고 모호합니다.
+    rationale: טָמֵא는 여기서 의례적으로 부정한 상태가 됨을 뜻하므로 ‘부정하게 될 것입니다’가 정확합니다.
+  revised_text: 유출이 있는 사람의 살에 닿는 사람은 자기 옷을 빨고 물로 몸을 씻어야 하며, 저녁까지 부정하게 될 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘유출이 있는 사람의 몸’. 히브리어는 문자적으로 ‘유출이 있는 자의 살’이라고 말합니다.
+    reason: lexical_alternative
+  revision_rationale: 미번역 영어를 ‘유출’로 바로잡고, 일반 조건을 중복 없이 다듬었습니다. 의례적 부정이라는 뜻을 유지하면서 상태 변화를 자연스럽게 나타내도록 ‘부정하게 될 것입니다’로 고쳤습니다. 원문의 ‘살’은 본문에 보존하고 ‘몸’은 대안으로 각주 처리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:08:15Z'
+  output_hash: 3f04d74049073ed57e6bcd94d075b0de1c90f46a10ff2d1155a7d4ffd236ab1e
+  usage:
+    completion_tokens: 955
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 281
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 159
+      engine_ttlt_ms: 7692
+      pre_inference_ms: 97
+      service_tbt_ms: 8
+      service_ttft_ms: 611
+      service_ttlt_ms: 8140
+      total_duration_ms: 8052
+      user_visible_ttft_ms: 514
+    prompt_tokens: 2297
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3252
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

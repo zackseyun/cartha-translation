@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러나 어떤 부정한 것에 닿은 고기는 먹지 말고 불에 태우라. 그러나 모든 깨끗한 자는 고기를 먹으라.
+  text: 그러나 어떤 부정한 것[a]에 닿은 고기는 먹어서는 안 되며, 불에 태워야 합니다. 그 고기는 정결한 사람은 누구나 먹을 수 있습니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 히브리어는 넓은 표현으로, 어떤 부정한 것과 접촉하는 경우를 가리킵니다. 여기서 ‘부정한’ 것은 의례적 부정을 뜻합니다.
+    reason: 히브리어 כָּל טָמֵא의 넓은 범위와 레위기 문맥에서의 의례적 의미를 밝혀, 도덕적 부정으로 한정하는 오해를 피합니다.
 ai_draft:
   model_id: mlx-community/Qwen3.5-35B-A3B-4bit
   azure_deployment: local-mlx-fastpath
@@ -31,4 +35,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러나 어떤 부정한 것에 닿은 고기는 먹지 말고 불에 태우라. 그러나 모든 깨끗한 자는 고기를 먹으라.
+  to: 그러나 어떤 부정한 것[a]에 닿은 고기는 먹어서는 안 되며, 불에 태워야 합니다. 그 고기는 정결한 사람은 누구나 먹을 수 있습니다.
+  rationale: 수동형 법규 표현을 ‘먹어서는 안 되며, … 태워야 합니다’로 복원하고, 마지막 절을 명령이 아닌 허용인 ‘먹을 수 있습니다’로 수정했습니다. 반복된 ‘고기’는 한국어에서 자연스럽게 ‘그 고기’로 받아, 오염된 고기와 먹을 수 있는 고기에 대한 문맥상 전환을 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:00:37Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 오염된 고기를 먹지 말고 불에 태운다는 앞부분의 핵심을 대체로 반영합니다. 그러나 히브리어의 수동적 법규 표현(‘먹혀서는 안 된다’, ‘태워져야 한다’)을 직접 명령형 ‘먹지 말고… 태우라’로 바꾸었고, 마지막 יֹאכַל은 명령이 아니라 먹을 수 있다는 허용인데 ‘먹으라’로 번역하여 의미가 달라졌습니다.
+  naturalness: ‘정결한 사람은 누구나 … 먹을 수 있습니다’는 현대 표준어 합쇼체에서 자연스럽고, 법규적 문맥에도 적절합니다. ‘부정한 것’은 각주로 의례적 의미를 밝혀 오해를 줄이는 것이 좋습니다.
+  terminology: בָּשָׂר는 제물의 고기를 가리키므로 ‘고기’가 적절합니다. טָמֵא/טָהוֹר는 도덕적 평가가 아니라 의례적 상태를 가리키므로 ‘부정한/정결한’으로 옮기고 각주에서 그 범위를 설명합니다.
+  issues:
+  - severity: high
+    issue: 마지막 절의 허용 표현을 명령으로 번역함
+    rationale: כָּל־טָהוֹר יֹאכַל בָּשָׂר는 ‘정결한 사람은 누구나 고기를 먹을 수 있다’라는 허용/자격의 진술이지, 정결한 사람에게 먹으라고 명하는 표현이 아닙니다.
+  - severity: medium
+    issue: 앞부분의 수동 법규 표현이 직접 명령형으로 바뀜
+    rationale: לֹא יֵאָכֵל 및 יִשָּׂרֵף는 각각 ‘먹어서는 안 된다’와 ‘태워야 한다’라는 수동적 규정입니다. 한국어에서도 이를 유지하면 원문의 법규적 진술 방식에 더 가깝습니다.
+  - severity: low
+    issue: 의례적 부정의 범위를 밝히는 각주가 없음
+    rationale: ‘부정한 것’은 광범위한 의례적 부정을 뜻하며, 도덕적 악을 의미하는 것으로 오해되지 않도록 영어 감사 기록의 각주 취지를 반영하는 것이 적절합니다.
+  revised_text: 그러나 어떤 부정한 것[a]에 닿은 고기는 먹어서는 안 되며, 불에 태워야 합니다. 그 고기는 정결한 사람은 누구나 먹을 수 있습니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 넓은 표현으로, 어떤 부정한 것과 접촉하는 경우를 가리킵니다. 여기서 ‘부정한’ 것은 의례적 부정을 뜻합니다.
+    reason: 히브리어 כָּל טָמֵא의 넓은 범위와 레위기 문맥에서의 의례적 의미를 밝혀, 도덕적 부정으로 한정하는 오해를 피합니다.
+  revision_rationale: 수동형 법규 표현을 ‘먹어서는 안 되며, … 태워야 합니다’로 복원하고, 마지막 절을 명령이 아닌 허용인 ‘먹을 수 있습니다’로 수정했습니다. 반복된 ‘고기’는 한국어에서 자연스럽게 ‘그 고기’로 받아, 오염된 고기와 먹을 수 있는 고기에 대한 문맥상 전환을 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:00:37Z'
+  output_hash: 26484af98327c2a411f30f439b51197ce0eed0637e7fa02221c1f0f9ae1a08f4
+  usage:
+    completion_tokens: 1078
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 266
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 157
+      engine_ttlt_ms: 8746
+      pre_inference_ms: 566
+      service_tbt_ms: 8
+      service_ttft_ms: 1228
+      service_ttlt_ms: 9721
+      total_duration_ms: 9166
+      user_visible_ttft_ms: 661
+    prompt_tokens: 1951
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3029
+  applied_revision: true
+  auto_apply_blocked_errors: []

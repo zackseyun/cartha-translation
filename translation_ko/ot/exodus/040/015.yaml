@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들에게 기름을 부으십시오. 그들의 아버지에게 기름을 부으신 것과 같이 하십시오[a]. 그러면 그들이 나를 섬기는 제사장이 될 것입니다. 그들의 기름부음은 그들에게 대대로 이어지는 영원한 제사장직이 될 것입니다.
+  text: 그들의 아버지에게 기름을 부으신 것처럼 그들에게 기름을 부으십시오. 그들이 나를 위하여 제사장으로 섬기게 하십시오. 그들이 받은 기름부음은 그들에게 대대로 이어질 영원한[a] 제사장직을 위한 것이 될 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘대대로 지속되는 제사장직’. 히브리어는 언약적 문맥에서 세대 간 지속을 가리킬 수 있습니다.
+    text: 또는 ‘영속하는 제사장직’. 히브리어는 언약적 문맥에서 세대 간 지속을 가리킬 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וּמָשַׁחְתָּ / מָשַׁחְתָּ
@@ -84,4 +84,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들에게 기름을 부으십시오. 그들의 아버지에게 기름을 부으신 것과 같이 하십시오[a]. 그러면 그들이 나를 섬기는 제사장이 될 것입니다. 그들의 기름부음은 그들에게 대대로 이어지는 영원한 제사장직이 될 것입니다.
+  to: 그들의 아버지에게 기름을 부으신 것처럼 그들에게 기름을 부으십시오. 그들이 나를 위하여 제사장으로 섬기게 하십시오. 그들이 받은 기름부음은 그들에게 대대로 이어질 영원한[a] 제사장직을 위한 것이 될 것입니다.
+  rationale: 비교 구문과 명령의 목적어를 결속하여 원문의 통사 관계를 명확히 했습니다. 제사장 직무를 나타내는 동사 כהן의 의미와, 기름부음이 지속적 제사장직을 위한 것이 된다는 마지막 절의 관계를 보존했습니다. עוֹלָם의 범위에 관한 해석상 여지는 각주에서 대안으로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:00:28Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 문장은 히브리어의 비교 구문(‘그들의 아버지에게 기름을 부은 것처럼 그들에게’)을 두 문장으로 나누어, 비교의 대상과 명령의 목적어 관계가 다소 흐려졌습니다. 또한 וְכִהֲנוּ לִי는 ‘제사장이 될 것입니다’보다 ‘제사장으로 섬기게 하십시오’가 동사적 제사장 직무와 명령-목적의 관계를 더 충실히 드러냅니다. 마지막 절은 기름부음 자체가 제사장직이 된다는 뜻이라기보다, 그 기름부음이 그들에게 지속되는 제사장직을 위한 것이 된다는 뜻입니다.
+  naturalness: 수정안은 현대 표준 한국어 합쇼체를 유지하면서 비교 구문을 한 문장으로 결속하고, ‘나를 위하여 제사장으로 섬기게 하십시오’ 및 ‘제사장직을 위한 것이 될 것입니다’로 자연스럽게 표현합니다.
+  terminology: ‘기름을 부으십시오’, ‘제사장’, ‘제사장직’은 적절합니다. עוֹלָם과 לְדֹרֹתָם의 지속성은 ‘대대로 이어질 영원한’으로 옮겨 두 요소를 모두 보존합니다. 각주는 지속성 표현의 대안을 가리키므로 ‘영원한’에 붙이는 것이 적절합니다.
+  issues:
+  - severity: medium
+    issue: 비교 구문이 두 문장으로 분리됨
+    rationale: ‘그들의 아버지에게 기름을 부으신 것과 같이 하십시오’는 무엇을 어떻게 하라는지 문맥상 추론해야 합니다. 원문의 ‘그들에게 기름을 부으십시오, 그들의 아버지에게 기름을 부으신 것처럼’ 구조를 한 문장으로 옮기는 편이 정확합니다.
+  - severity: medium
+    issue: וְכִהֲנוּ לִי의 동사적 직무 의미가 약화됨
+    rationale: ‘나를 섬기는 제사장이 될 것입니다’도 가능한 해석이지만, כהן은 여기서 제사장으로 직무를 수행한다는 동사입니다. ‘제사장으로 섬기게 하십시오’가 문맥상의 목적을 더 정확히 전달합니다.
+  - severity: medium
+    issue: 마지막 문장의 ‘기름부음은 ... 제사장직이 될 것입니다’ 표현
+    rationale: 히브리어 לִכְהֻנַּת עוֹלָם은 기름부음의 결과 또는 목적이 지속적 제사장직임을 나타냅니다. 기름부음과 제사장직을 동일시하는 듯한 한국어 표현은 피하는 것이 좋습니다.
+  - severity: low
+    issue: 각주 표지의 위치
+    rationale: 각주는 עוֹלָם의 대안 번역에 관한 것이므로 비교 구문의 끝이 아니라 ‘영원한’에 붙여야 합니다.
+  revised_text: 그들의 아버지에게 기름을 부으신 것처럼 그들에게 기름을 부으십시오. 그들이 나를 위하여 제사장으로 섬기게 하십시오. 그들이 받은 기름부음은 그들에게 대대로 이어질 영원한[a] 제사장직을 위한 것이 될 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘영속하는 제사장직’. 히브리어는 언약적 문맥에서 세대 간 지속을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 비교 구문과 명령의 목적어를 결속하여 원문의 통사 관계를 명확히 했습니다. 제사장 직무를 나타내는 동사 כהן의 의미와, 기름부음이 지속적 제사장직을 위한 것이 된다는 마지막 절의 관계를 보존했습니다. עוֹלָם의 범위에 관한 해석상 여지는 각주에서 대안으로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:00:28Z'
+  output_hash: 30032f70bb13dc535e91e516035b797f7fd39d0eb92ff0eb0871f9686838e948
+  usage:
+    completion_tokens: 1374
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 444
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 144
+      engine_ttlt_ms: 10948
+      pre_inference_ms: 74
+      service_tbt_ms: 8
+      service_ttft_ms: 345
+      service_ttlt_ms: 11137
+      total_duration_ms: 11073
+      user_visible_ttft_ms: 270
+    prompt_tokens: 2616
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3990
+  applied_revision: true
+  auto_apply_blocked_errors: []

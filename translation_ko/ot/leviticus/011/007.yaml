@@ -90,4 +90,57 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 두 발굽 표현과 되새김질을 하지 않는다는 대조를 대체로 잘 보존했습니다. 다만 ‘굽이 완전히 갈라져 있기는 하지만’은 원문의 병렬 묘사를 다소 어색하게 처리하며, 각주 a의 ‘멧돼지’는 הַחֲזִיר 및 영어 대안 ‘swine’의 적절한 어휘 대안이 아닙니다.
+  naturalness: ‘발굽’이 이 동물의 신체 부위를 가리키는 현대 표준어로 더 자연스럽습니다. ‘발굽이 갈라져 있고 그 갈라짐이 완전하지만’은 반복을 보존하면서도 한국어 문장 구조를 매끄럽게 합니다.
+  terminology: ‘돼지’, ‘되새김질’, ‘부정한’은 식이·정결 규정 문맥에 적절합니다. ‘부정한’은 도덕적 비난이 아니라 의례적 분류를 나타내는 용례로 유지했습니다.
+  issues:
+  - severity: medium
+    issue: 각주 a의 대안 ‘멧돼지’
+    rationale: 영어의 ‘swine’은 일반적으로 돼지를 뜻하는 대안일 뿐 멧돼지로 한정되지 않습니다. ‘멧돼지’는 원문의 동물 지시를 부당하게 좁힙니다.
+  - severity: low
+    issue: 발굽 묘사의 한국어 표현
+    rationale: ‘굽이 갈라져 있고, 굽이 완전히 갈라져 있기는 하지만’은 같은 내용을 부자연스럽게 반복하고 ‘있기는 하지만’의 양보 연결이 다소 무겁습니다. 원문의 강조는 유지하되 더 자연스럽게 다듬을 수 있습니다.
+  revised_text: 돼지는 발굽이 갈라져 있고 그 갈라짐이 완전하지만, 되새김질을 하지 않으므로 여러분에게 부정한 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘돼지류’입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘되새김을 되올리지 않는다’는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 본문의 동물명 각주 표지를 유지하여 각주 a의 잘못된 의미 범위를 바로잡고, 두 발굽 묘사는 병렬적 강조를 살려 자연스러운 한국어로 수정했습니다. 되새김질 표현과 의례적 ‘부정’의 분류는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:01:28Z'
+  output_hash: e0ced2206f293f9607b7d5bcba9dfb4d4a1b9b737de9e2c62328b232bb172062
+  usage:
+    completion_tokens: 1112
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 137
+      engine_ttlt_ms: 8916
+      pre_inference_ms: 132
+      service_tbt_ms: 8
+      service_ttft_ms: 447
+      service_ttlt_ms: 9217
+      total_duration_ms: 9099
+      user_visible_ttft_ms: 315
+    prompt_tokens: 2275
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3387
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]

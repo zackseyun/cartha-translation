@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 제사장은 일곱째 날에 그를 살펴보고, 보십시오, 그 반점이 그의 눈에 그대로 있고 반점이 피부에 퍼지지 않았으면, 제사장은 그를 다시 일주일 동안 격리해야 합니다.[a][b][c]
+  text: 제사장은 일곱째 날에 그를 살펴보고, 그 반점[a]이 제사장이 보기에 변함이 없고[b] 그 반점이 피부에 퍼지지 않았으면, 제사장은 그를 다시 칠 일 동안 격리해야 합니다.[c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 נגע는 여기서 의학적 병명보다 제사장이 살펴보는 가시적 피부 병변을 가리킬 수 있습니다.
+    text: 히브리어 네가(נגע)는 여기서 반드시 현대 의학적으로 규정된 질병을 뜻하지 않으며, 제사장이 살펴보는 눈에 보이는 피부의 징후나 반점을 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘그의 눈에 서 있었다’로, 제사장에게 변함없이 보였다는 관용적 표현입니다.
+    text: 직역하면 ‘그의 눈에 서 있었다’입니다. 여기서 ‘그’는 제사장을 가리키며, 제사장이 보기에 변함이 없었다는 관용적 표현입니다.
     reason: lexical_alternative
   - marker: c
-    text: ‘가두다’ 또는 더 직역하면 ‘닫아 두다’의 뜻입니다.
+    text: 또는 ‘가두어 두어야 합니다’. 히브리어는 문자적으로 ‘닫아 두다’라는 뜻입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְרָאָהוּ
@@ -98,4 +98,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 제사장은 일곱째 날에 그를 살펴보고, 보십시오, 그 반점이 그의 눈에 그대로 있고 반점이 피부에 퍼지지 않았으면, 제사장은 그를 다시 일주일 동안 격리해야 합니다.[a][b][c]
+  to: 제사장은 일곱째 날에 그를 살펴보고, 그 반점[a]이 제사장이 보기에 변함이 없고[b] 그 반점이 피부에 퍼지지 않았으면, 제사장은 그를 다시 칠 일 동안 격리해야 합니다.[c]
+  rationale: 원문의 제사장 검사 절차, 반점이 변하지 않고 퍼지지 않았다는 두 조건, 그리고 두 번째 칠 일간의 격리를 유지했습니다. 한국어에서 불분명했던 관찰 주체를 명시하고, 부자연스러운 ‘보십시오’를 제거했으며, 원문의 수량 표현과 각주 연결을 정비했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:01:16Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 절차와 조건은 대체로 충실합니다. 다만 עָמַד בְּעֵינָיו는 ‘그의 눈에’라고 하면 선행사 ‘그’가 피검사자인지 제사장인지 모호해질 수 있으므로, 제사장의 관찰 기준임을 명시하는 편이 안전합니다. שִׁבְעַת יָמִים는 ‘일주일’보다 원문의 수량을 그대로 드러내는 ‘칠 일’이 더 적절합니다.
+  naturalness: 삽입된 ‘보십시오’는 현대 한국어 법규·절차 문맥에서 부자연스럽고, 문장 안에서 독자에게 직접 말하는 듯하게 들립니다. 원문의 וְהִנֵּה가 도입하는 관찰 결과를 조건절의 자연스러운 연결로 옮기는 것이 좋습니다.
+  terminology: ‘살펴보다’, ‘반점’, ‘격리하다’는 이 문맥에서 수용 가능합니다. 다만 נגע의 주석은 이를 현대 의학적 ‘병변’으로 다소 단정하기보다, 제사장이 판정하는 눈에 보이는 피부의 징후 또는 반점이라는 범위를 유지하는 편이 좋습니다.
+  issues:
+  - severity: medium
+    issue: ‘그 반점이 그의 눈에 그대로 있고’의 지시 대상이 모호합니다.
+    rationale: 히브리어의 접미사는 제사장을 가리키지만, 한국어에서는 바로 앞의 ‘그를’과 동일한 남성 대명사처럼 읽힐 수 있습니다. ‘제사장이 보기에’로 밝혀야 합니다.
+  - severity: medium
+    issue: ‘보십시오’는 וְהִנֵּה의 현대 한국어 대응으로 부자연스럽습니다.
+    rationale: 이 구절의 וְהִנֵּה는 검사 결과를 제시하는 담화 표지입니다. 존대 명령형 ‘보십시오’는 독자에게 직접 지시하는 말처럼 되어 법문 문맥과 맞지 않습니다.
+  - severity: low
+    issue: ‘일주일’보다 ‘칠 일’이 더 정확합니다.
+    rationale: 원문은 명시적으로 ‘일곱 날’을 말하며, 앞의 ‘일곱째 날’ 및 ‘두 번째’와의 절차적 대응도 ‘칠 일’이 더 잘 보존합니다.
+  - severity: low
+    issue: 각주 표지가 모두 문장 끝에 몰려 있습니다.
+    rationale: 각주 표지를 해당 어휘·표현 바로 뒤에 배치하면 반점(נגע), 관용구, 격리의 설명 대상이 분명해집니다.
+  revised_text: 제사장은 일곱째 날에 그를 살펴보고, 그 반점[a]이 제사장이 보기에 변함이 없고[b] 그 반점이 피부에 퍼지지 않았으면, 제사장은 그를 다시 칠 일 동안 격리해야 합니다.[c]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 네가(נגע)는 여기서 반드시 현대 의학적으로 규정된 질병을 뜻하지 않으며, 제사장이 살펴보는 눈에 보이는 피부의 징후나 반점을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그의 눈에 서 있었다’입니다. 여기서 ‘그’는 제사장을 가리키며, 제사장이 보기에 변함이 없었다는 관용적 표현입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘가두어 두어야 합니다’. 히브리어는 문자적으로 ‘닫아 두다’라는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 제사장 검사 절차, 반점이 변하지 않고 퍼지지 않았다는 두 조건, 그리고 두 번째 칠 일간의 격리를 유지했습니다. 한국어에서 불분명했던 관찰 주체를 명시하고, 부자연스러운 ‘보십시오’를 제거했으며, 원문의 수량 표현과 각주 연결을 정비했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:01:16Z'
+  output_hash: 968d4c277a1ce31f91df21b2f6ebee2297922a16e8eef80f4582dd57b437f43f
+  usage:
+    completion_tokens: 1270
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 320
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 10383
+      pre_inference_ms: 148
+      service_tbt_ms: 7
+      service_ttft_ms: 1739
+      service_ttlt_ms: 10880
+      total_duration_ms: 10743
+      user_visible_ttft_ms: 1591
+    prompt_tokens: 2645
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3915
+  applied_revision: true
+  auto_apply_blocked_errors: []

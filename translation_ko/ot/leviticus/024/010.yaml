@@ -20,15 +20,8 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 이제 이스라엘 여자[a]의 아들이 나갔는데, 그는 이집트 사람의 아들이었습니다. 그는 이스라엘 자손[b] 가운데서 나갔고, 진영에서 이스라엘 여자의 아들과 한 이스라엘 사람이 싸웠습니다.
+  text: 이스라엘 여인의 아들, 곧 이집트 사람의 아들이 이스라엘 자손 가운데로 나갔습니다. 그 이스라엘 여인의 아들과 한 이스라엘 사람이 진영에서 싸웠습니다.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: 히브리어는 직역하면 ‘이스라엘 여자(의 아들)’입니다. 영어 POB도 같은 구조를 유지합니다.
-    reason: lexical_alternative
-  - marker: b
-    text: 또는 ‘이스라엘 사람들 가운데서’입니다. 히브리어는 ‘이스라엘 자손’이라고 말합니다.
-    reason: lexical_alternative
 lexical_decisions:
 - source_word: בֶּן אִשָּׁה יִשְׂרְאֵלִית
   english_pob_choice: the son of an Israelite woman
@@ -82,4 +75,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이제 이스라엘 여자[a]의 아들이 나갔는데, 그는 이집트 사람의 아들이었습니다. 그는 이스라엘 자손[b] 가운데서 나갔고, 진영에서 이스라엘 여자의 아들과 한 이스라엘 사람이 싸웠습니다.
+  to: 이스라엘 여인의 아들, 곧 이집트 사람의 아들이 이스라엘 자손 가운데로 나갔습니다. 그 이스라엘 여인의 아들과 한 이스라엘 사람이 진영에서 싸웠습니다.
+  rationale: 원문의 단 한 번의 וַיֵּצֵא를 ‘이스라엘 자손 가운데로 나갔습니다’로 옮기고, 부계 출신을 설명하는 וְהוּא 절은 한국어에서 자연스러운 동격 표현 ‘곧 이집트 사람의 아들이’로 처리했습니다. 반복되는 ‘그 이스라엘 여인의 아들’을 보존하여 원문의 문학적 지시를 유지했으며, נצה의 범위를 과도하게 좁히지 않는 ‘싸웠습니다’를 유지했습니다. 불필요하거나 부정확한 각주는 삭제했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:09:04Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 혼합 혈통인 남자가 이스라엘 자손 가운데로 나가고 이어 다른 이스라엘 사람과 싸웠다는 기본 의미를 대체로 담았습니다. 그러나 원문에 없는 시간 표지 ‘이제’를 덧붙였고, ‘나갔는데’ 뒤에 다시 ‘나갔고’를 사용하여 וַיֵּצֵא를 중복 번역했습니다. 원문은 한 번만 ‘나갔다’고 말합니다.
+  naturalness: ‘이스라엘 여인’은 현대 표준 한국어의 격식 있는 성경 문체에 자연스럽고, 첫 문장을 한 문장으로 구성하면 히브리어의 동격적 신원 설명도 더 명료하게 드러납니다. ‘진영에서’와 ‘싸웠습니다’는 자연스럽습니다.
+  terminology: ‘이스라엘 자손’은 בְּנֵי יִשְׂרָאֵל을 충실히 반영하며, ‘이집트 사람’과 ‘이스라엘 사람’도 각각 מִצְרִי와 יִשְׂרְאֵלִי에 적절합니다. 초안의 각주는 본문의 실질적 번역 선택을 설명하기보다 영어 POB를 언급하거나 부정확한 직역을 제시하므로 삭제하는 것이 안전합니다. 영어 감사 기록의 각주 표지는 본문상 여성 뒤의 [a]와 각주 내용(‘이스라엘 자손’)이 서로 맞지 않지만, 이는 한국어 본문에 유지할 필요가 없는 영어 감사 기록상의 불일치입니다.
+  issues:
+  - severity: medium
+    issue: 원문에 없는 ‘이제’가 추가되었습니다.
+    rationale: וַיֵּצֵא에는 ‘이제/now’에 해당하는 명시적 시간 부사가 없습니다. 문맥적 접속은 한국어 문장 흐름으로 충분히 표현할 수 있습니다.
+  - severity: high
+    issue: ‘나갔는데’와 ‘그는 이스라엘 자손 가운데서 나갔고’가 וַיֵּצֵא를 중복 번역합니다.
+    rationale: 히브리어에는 ‘나가다’ 동사가 한 번뿐이며, בְּתוֹךְ בְּנֵי יִשְׂרָאֵל은 그 동사의 위치/방향을 보충합니다. 중복은 불필요한 사건을 만들고 문장을 어색하게 합니다.
+  - severity: medium
+    issue: 각주 a는 ‘이스라엘 여자(의 아들)’이라는 부정확하고 불완전한 설명 및 영어 POB 언급을 포함합니다.
+    rationale: 원문은 ‘이스라엘 여인의 아들’이라는 구성 표현이며, 독자용 한국어 각주에서 영어 번역의 구조를 설명할 필요가 없습니다.
+  - severity: low
+    issue: 각주 b는 본문에 이미 충실히 반영된 표현을 설명하지만 필수적인 본문 비평적 또는 번역상 정보를 제공하지 않습니다.
+    rationale: ‘이스라엘 자손 가운데’는 자연스럽고 충분히 이해 가능하며, 이 구절에 별도 각주가 반드시 요구되지는 않습니다.
+  revised_text: 이스라엘 여인의 아들, 곧 이집트 사람의 아들이 이스라엘 자손 가운데로 나갔습니다. 그 이스라엘 여인의 아들과 한 이스라엘 사람이 진영에서 싸웠습니다.
+  revised_footnotes: []
+  revision_rationale: 원문의 단 한 번의 וַיֵּצֵא를 ‘이스라엘 자손 가운데로 나갔습니다’로 옮기고, 부계 출신을 설명하는 וְהוּא 절은 한국어에서 자연스러운 동격 표현 ‘곧 이집트 사람의 아들이’로 처리했습니다. 반복되는 ‘그 이스라엘 여인의 아들’을 보존하여 원문의 문학적 지시를 유지했으며, נצה의 범위를 과도하게 좁히지 않는 ‘싸웠습니다’를 유지했습니다. 불필요하거나 부정확한 각주는 삭제했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:09:04Z'
+  output_hash: 00f248489dc9c17cc48c542273aa7fd3aaf44880581f4d3f6c30bfe43a3c8e89
+  usage:
+    completion_tokens: 1183
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 234
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 146
+      engine_ttlt_ms: 9636
+      pre_inference_ms: 82
+      service_tbt_ms: 8
+      service_ttft_ms: 595
+      service_ttlt_ms: 10082
+      total_duration_ms: 10008
+      user_visible_ttft_ms: 514
+    prompt_tokens: 2882
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4065
+  applied_revision: true
+  auto_apply_blocked_errors: []

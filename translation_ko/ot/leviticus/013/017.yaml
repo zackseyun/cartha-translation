@@ -23,18 +23,18 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 제사장은 그것을 살펴보아야 합니다[a]. 보십시오, 그 환부가 하얗게 변하였으면 제사장은 그 환부를 부정하다 하여야 합니다[b][c]. 그것은 깨끗합니다.
+  text: 제사장은 그것을 살펴보아야 합니다[a]. 보십시오, 그 환부가 하얗게 변해 있으면, 제사장은 그 환부를 정결하다고 선언해야 합니다[b][c]. 그것은 정결합니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘그것’은 눈에 보이는 환부를 가리킵니다.
+    text: ‘그것’은 제사장이 살펴보는 눈에 보이는 환부를 가리킵니다.
     reason: source_note
   - marker: b
-    text: 직역하면 ‘그 환부를 깨끗하다/정결하다’라고 선포하는 뜻입니다.
+    text: 또는 ‘그 환부를 깨끗하다고 하여야 합니다.’ 여기서 제사장은 환부를 치료하는 것이 아니라 의례적 정결 상태를 판정합니다.
     reason: lexical_alternative
   - marker: c
-    text: 히브리어는 남성 단수 대명사를 쓰지만, 여기서는 앞의 ‘환부’를 가리키는 판정문입니다.
-    reason: textual_variant
+    text: 히브리어는 남성 단수 대명사를 사용합니다. 여기서는 앞의 ‘환부’를 가리키는 판정문으로 옮겼습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: וְרָאָהוּ
   english_pob_choice: examines it
@@ -97,4 +97,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 제사장은 그것을 살펴보아야 합니다[a]. 보십시오, 그 환부가 하얗게 변하였으면 제사장은 그 환부를 부정하다 하여야 합니다[b][c]. 그것은 깨끗합니다.
+  to: 제사장은 그것을 살펴보아야 합니다[a]. 보십시오, 그 환부가 하얗게 변해 있으면, 제사장은 그 환부를 정결하다고 선언해야 합니다[b][c]. 그것은 정결합니다.
+  rationale: 안전하고 필수적인 수정은 ‘부정하다’를 ‘정결하다고 선언하다’로 고치는 것입니다. 이는 וְטִהַר와 טָהוֹר הוּא의 반복된 정결 어휘 및 영어 POB 감사 기록에 일치하며, 제사장의 행위를 치유가 아닌 의례적 판정으로 나타냅니다. 이에 맞추어 상충되던 각주 b를 정비하고, 각주 c는 이문이 아닌 문법적 설명으로 수정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:02:10Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 동사 וְטִהַר는 이 문맥에서 제사장이 환부의 정결 상태를 판정·선언하는 것을 뜻합니다. 초안의 ‘부정하다’는 טָהוֹר(정결한) 및 영어 POB의 ‘pronounce ... clean’과 정반대여서 본문의 의미를 뒤집습니다. ‘환부가 하얗게 변해 있으면’은 נֶהְפַּךְ ... לְלָבָן을 충실히 반영합니다.
+  naturalness: ‘정결하다고 선언해야 합니다’는 현대 표준어 합쇼체로 자연스럽고, 레위기의 의례적 판정 문맥도 분명히 합니다. ‘보십시오’는 הִנֵּה의 주의 환기 기능을 보존합니다.
+  terminology: ‘제사장’, ‘환부’, ‘정결’은 이 의례 규정에 적절합니다. ‘정결’은 단순 위생이나 현대 의학적 치유가 아니라 의례적 판정임을 유지합니다. 기존 b 각주는 본문과 모순되는 ‘깨끗하다/정결하다’ 설명을 달면서 본문에는 ‘부정하다’를 두었으므로 함께 바로잡아야 합니다.
+  issues:
+  - severity: high
+    issue: ‘부정하다 하여야 합니다’
+    rationale: 히브리어 וְטִהַר 및 결론 טָהוֹר הוּא는 정결 판정입니다. ‘부정하다’는 반대 의미이므로 본문의 법적·의례적 판정을 역전합니다.
+  - severity: medium
+    issue: 각주 b의 설명과 본문이 상충함
+    rationale: 각주는 ‘깨끗하다/정결하다’라고 선포한다고 설명하지만, 본문은 ‘부정하다’라고 번역합니다. 본문을 정결 판정으로 고치고 각주도 선언 행위임을 명료하게 해야 합니다.
+  - severity: low
+    issue: 각주 c의 reason 및 표현
+    rationale: 본문에는 본문비평상 이문이 제시되지 않았으므로 ‘textual_variant’ 성격의 설명은 부정확합니다. 대명사의 문법 및 선행사를 설명하는 어휘·문법 각주로 정리하는 것이 안전합니다.
+  revised_text: 제사장은 그것을 살펴보아야 합니다[a]. 보십시오, 그 환부가 하얗게 변해 있으면, 제사장은 그 환부를 정결하다고 선언해야 합니다[b][c]. 그것은 정결합니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘그것’은 제사장이 살펴보는 눈에 보이는 환부를 가리킵니다.
+    reason: source_note
+  - marker: b
+    text: 또는 ‘그 환부를 깨끗하다고 하여야 합니다.’ 여기서 제사장은 환부를 치료하는 것이 아니라 의례적 정결 상태를 판정합니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 히브리어는 남성 단수 대명사를 사용합니다. 여기서는 앞의 ‘환부’를 가리키는 판정문으로 옮겼습니다.
+    reason: lexical_alternative
+  revision_rationale: 안전하고 필수적인 수정은 ‘부정하다’를 ‘정결하다고 선언하다’로 고치는 것입니다. 이는 וְטִהַר와 טָהוֹר הוּא의 반복된 정결 어휘 및 영어 POB 감사 기록에 일치하며, 제사장의 행위를 치유가 아닌 의례적 판정으로 나타냅니다. 이에 맞추어 상충되던 각주 b를 정비하고, 각주 c는 이문이 아닌 문법적 설명으로 수정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:02:10Z'
+  output_hash: 7bcd00fee560cfc203e621df90cb1bc4f978e3123b422fffb5c887803a502e8b
+  usage:
+    completion_tokens: 1387
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 156
+      engine_ttlt_ms: 11376
+      pre_inference_ms: 144
+      service_tbt_ms: 8
+      service_ttft_ms: 682
+      service_ttlt_ms: 11898
+      total_duration_ms: 11765
+      user_visible_ttft_ms: 538
+    prompt_tokens: 2810
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4197
+  applied_revision: true
+  auto_apply_blocked_errors: []

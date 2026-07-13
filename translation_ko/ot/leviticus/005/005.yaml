@@ -20,8 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 누구든지 이 일들 중 하나를 범하여 죄를 지으면 그 죄를 자백할지니라.
+  text: 누구든지 이 일들 가운데 하나에 대하여 죄책을 지게 되면[a], 그 일에 관하여 자신이 지은 죄를 고백해야 합니다.[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘유죄가 되면’ 또는 ‘죄책을 입게 되면.’ 히브리어 동사는 단지 내면적으로 잘못을 깨닫는 것보다 법적 죄책 또는 책임 아래 놓이는 것을 강조합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그가 그 일에 관하여 죄지은 것을.’ ‘그 일’은 바로 앞에 열거된 사례들 가운데 해당 사례를 가리킵니다.
+    reason: lexical_alternative
 ai_draft:
   model_id: mlx-community/Qwen3.5-35B-A3B-4bit
   azure_deployment: local-mlx-fastpath
@@ -34,4 +41,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 누구든지 이 일들 중 하나를 범하여 죄를 지으면 그 죄를 자백할지니라.
+  to: 누구든지 이 일들 가운데 하나에 대하여 죄책을 지게 되면[a], 그 일에 관하여 자신이 지은 죄를 고백해야 합니다.[b]
+  rationale: 조건절의 법적 죄책(יֶאְשַׁם)과 고백의 내용을 분명히 구분하고, 마지막 전치사구와 여성 단수 접미사가 가리키는 해당 사례와의 관계를 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:02:09Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안의 ‘이 일들 중 하나를 범하여 죄를 지으면’은 יֶאְשַׁם(죄책을 지다/법적 책임 아래 놓이다)을 ‘범하다’로 앞당겨 해석하고, 뒤의 고백 대상도 충분히 구별하지 않습니다. 수정문은 죄책을 지는 조건과 그 일에 관하여 지은 죄를 고백하는 명령을 구분하여 반영합니다.
+  naturalness: ‘죄책을 지게 되면’과 ‘자신이 지은 죄를 고백해야 합니다’는 현대 표준 한국어의 격식 있는 법규적 문맥에서 자연스럽습니다. 합쇼체로 일관됩니다.
+  terminology: אָשַׁם의 법적 책임·유죄 상태는 ‘죄책을 지다’로, הִתְוַדָּה는 ‘고백하다’로 옮겼습니다. ‘그 일에 관하여’는 여성 단수 접미사가 앞선 해당 사례를 가리키는 점을 보존합니다.
+  issues:
+  - severity: medium
+    issue: ‘범하여 죄를 지으면’이 מקור문의 조건절을 중복·변경함
+    rationale: 히브리어는 먼저 ‘이 일들 가운데 하나에 대하여 죄책을 지게 될 때’를 말하고, 이어서 그가 그 일에 관하여 지은 죄를 고백하라고 명합니다. 초안은 אָשַׁם의 법적 죄책을 ‘범하다’로 바꾸고 ‘죄를 지으면’으로 중복합니다.
+  - severity: medium
+    issue: 고백 내용의 관계 표현이 불분명함
+    rationale: ‘그 죄를’은 의미상 가능하지만, אֲשֶׁר חָטָא עָלֶיהָ가 명시하는 ‘그 일에 관하여 자신이 지은 죄’를 충분히 드러내지 못합니다.
+  revised_text: 누구든지 이 일들 가운데 하나에 대하여 죄책을 지게 되면[a], 그 일에 관하여 자신이 지은 죄를 고백해야 합니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘유죄가 되면’ 또는 ‘죄책을 입게 되면.’ 히브리어 동사는 단지 내면적으로 잘못을 깨닫는 것보다 법적 죄책 또는 책임 아래 놓이는 것을 강조합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그가 그 일에 관하여 죄지은 것을.’ ‘그 일’은 바로 앞에 열거된 사례들 가운데 해당 사례를 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 조건절의 법적 죄책(יֶאְשַׁם)과 고백의 내용을 분명히 구분하고, 마지막 전치사구와 여성 단수 접미사가 가리키는 해당 사례와의 관계를 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:02:09Z'
+  output_hash: 03080269ffbc86d345bd4dc5e2c5ecd767ee4d3fe2f918c7a779cce4072c5f37
+  usage:
+    completion_tokens: 1281
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 570
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 133
+      engine_ttlt_ms: 10904
+      pre_inference_ms: 130
+      service_tbt_ms: 8
+      service_ttft_ms: 641
+      service_ttlt_ms: 11388
+      total_duration_ms: 11273
+      user_visible_ttft_ms: 512
+    prompt_tokens: 1695
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2976
+  applied_revision: true
+  auto_apply_blocked_errors: []

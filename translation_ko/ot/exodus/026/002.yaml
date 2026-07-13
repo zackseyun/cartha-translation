@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 각 휘장의 길이는 스물여덟 규빗[a]이고, 각 휘장의 너비는 네 규빗[b]입니다. 모든 휘장은 한 치수여야 합니다.
+  text: 각 휘장[a]의 길이는 스물여덟 규빗이고, 너비는 네 규빗입니다. 모든 휘장은 한 치수[b]입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 분배적 표현으로 “각 휘장”의 길이를 말합니다.
+    text: 히브리어는 문자적으로 ‘그 하나의 휘장’이라는 표현을 써서 각 휘장을 가리킵니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 “모든 휘장은 같은 치수입니다”라는 뜻입니다.
+    text: 또는 “모든 휘장은 같은 치수입니다.”
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הַיְרִיעָה
@@ -74,4 +74,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 각 휘장의 길이는 스물여덟 규빗[a]이고, 각 휘장의 너비는 네 규빗[b]입니다. 모든 휘장은 한 치수여야 합니다.
+  to: 각 휘장[a]의 길이는 스물여덟 규빗이고, 너비는 네 규빗입니다. 모든 휘장은 한 치수[b]입니다.
+  rationale: 마지막 문장에서 원문에 없는 의무 표현을 제거하여 동일 치수라는 서술을 보존했습니다. 또한 각주 표지를 해당 설명 대상에 붙이고, 히브리어의 분배적 표현 및 ‘한 치수’의 자연스러운 한국어 대안을 정확히 반영했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:53:35Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 마지막 구절은 히브리어의 명사절(‘모든 휘장에 한 치수’)로, 휘장들이 동일한 치수임을 진술합니다. 초안의 ‘한 치수여야 합니다’는 의무의 뉘앙스를 추가하므로 이를 피하는 것이 좋습니다. 나머지 치수와 분배적 ‘각’의 번역은 원문에 충실합니다.
+  naturalness: ‘각 휘장의 길이 … 너비’는 현대 표준 한국어의 치수 서술로 자연스럽습니다. 각주 표지는 설명하는 표현 바로 뒤에 두어 참조 관계를 분명히 했습니다.
+  terminology: יְרִיעָה를 ‘휘장’, אַמָּה를 ‘규빗’으로 옮긴 것은 성막 본문에서 확립되어 있고 적절합니다. מִדָּה אַחַת는 본문에서 ‘한 치수’로 유지하고, ‘같은 치수’를 대안으로 각주에 제시했습니다.
+  issues:
+  - severity: medium
+    issue: ‘모든 휘장은 한 치수여야 합니다’의 ‘-여야 합니다’
+    rationale: 원문의 ‘한 치수[가] 모든 휘장에 [있다]’라는 서술을 한국어 의무 표현으로 바꾸어 양태를 추가합니다. ‘한 치수입니다’로 고치면 원문의 진술성과 영어 감사본의 ‘shall have one measure’가 가리키는 통일성을 더 직접적으로 보존합니다.
+  - severity: low
+    issue: 각주 표지의 위치
+    rationale: a 각주는 ‘각 휘장’이라는 분배적 표현을, b 각주는 ‘한 치수’의 대안을 설명하므로 각각 해당 어구 뒤에 두는 편이 명확합니다.
+  revised_text: 각 휘장[a]의 길이는 스물여덟 규빗이고, 너비는 네 규빗입니다. 모든 휘장은 한 치수[b]입니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘그 하나의 휘장’이라는 표현을 써서 각 휘장을 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 “모든 휘장은 같은 치수입니다.”
+    reason: lexical_alternative
+  revision_rationale: 마지막 문장에서 원문에 없는 의무 표현을 제거하여 동일 치수라는 서술을 보존했습니다. 또한 각주 표지를 해당 설명 대상에 붙이고, 히브리어의 분배적 표현 및 ‘한 치수’의 자연스러운 한국어 대안을 정확히 반영했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:53:35Z'
+  output_hash: 7ee5d3f41243aa9da00985d7329889412a353750efbe4e0a5bda3b5a77f6d9bf
+  usage:
+    completion_tokens: 1116
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 481
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 135
+      engine_ttlt_ms: 9399
+      pre_inference_ms: 105
+      service_tbt_ms: 8
+      service_ttft_ms: 334
+      service_ttlt_ms: 9601
+      total_duration_ms: 9506
+      user_visible_ttft_ms: 229
+    prompt_tokens: 1953
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3069
+  applied_revision: true
+  auto_apply_blocked_errors: []

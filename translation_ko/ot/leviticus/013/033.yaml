@@ -20,15 +20,15 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그는 몸을 밀어야 합니다. 그러나 그 딱지는 밀지 말아야 합니다. 그리고 제사장은 그 딱지를 이레 동안 다시 격리해야 합니다.[a][b]
+  text: 그는 털을 밀어야 합니다.[a] 그러나 그 비늘진 병변은 밀지 말아야 합니다.[b] 제사장은 그 병변을 이레 동안 다시 격리해 두어야 합니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 '그는 스스로 민다'는 뜻의 반사형입니다.
+    text: 히브리어는 ‘그가 스스로 털을 밀다’라는 반사형입니다. 문맥상 머리나 수염의 털을 가리킵니다.
     reason: source_note
   - marker: b
-    text: 이 표현은 병변 자체를 남겨 두어, 그 주변을 민 뒤 제사장이 더 분명히 살펴보게 하는 취지로 이해됩니다.
-    reason: cultural_note
+    text: 히브리어 נתק는 머리나 수염 부위에 생기는 특정 병변을 가리키며, 비늘짐과 탈모를 수반할 수 있습니다. 병변 자체는 밀지 말라는 말은 주변 털을 민 뒤 제사장이 그 부위를 더 분명히 살피게 하려는 뜻으로 이해될 수 있습니다.
+    reason: lexical_alternative; cultural_note
 lexical_decisions:
 - source_word: וְהִתְגַּלָּח
   english_pob_choice: then he shall shave himself
@@ -93,4 +93,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 몸을 밀어야 합니다. 그러나 그 딱지는 밀지 말아야 합니다. 그리고 제사장은 그 딱지를 이레 동안 다시 격리해야 합니다.[a][b]
+  to: 그는 털을 밀어야 합니다.[a] 그러나 그 비늘진 병변은 밀지 말아야 합니다.[b] 제사장은 그 병변을 이레 동안 다시 격리해 두어야 합니다.
+  rationale: 반사형 동사의 범위를 ‘몸’에서 문맥상 적절한 ‘털’로 바로잡고, נתק를 ‘딱지’라는 좁은 의학적 상태로 규정하지 않고 병변으로 옮겼습니다. 격리의 대상은 히브리어의 직접목적어를 따라 ‘병변’으로 유지하되, 한국어의 자연스러운 절차 표현을 위해 ‘격리해 두다’를 사용했습니다. 각주는 어휘 정보와 해석적 설명을 구별하고, 주변 털에 관한 설명의 불확실성을 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:01:22Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ‘몸을 밀다’는 히브리어 동사 גלח가 이 문맥에서 가리키는 머리털이나 수염을 미는 행위를 지나치게 넓게 바꾸며, נתק를 ‘딱지’로 한정하는 것은 해당 병변의 의미를 과도하게 좁힙니다. 또한 ‘그 딱지를 격리하다’는 한국어에서 의미상 부자연스럽습니다. 본문은 병변을 남겨 두고 관찰을 위해 다시 분리해 두는 절차를 말합니다.
+  naturalness: ‘털을 밀다’, ‘비늘진 병변’, ‘격리해 두다’는 현대 표준 한국어의 공식적 문체 안에서 진단 절차를 더 자연스럽고 정확하게 전달합니다.
+  terminology: נתק는 단순한 딱지나 일반적 가려움이 아니라, 특히 머리나 수염 부위에서 탈모와 비늘짐을 수반할 수 있는 특정 병변입니다. ‘비늘진 병변’은 영어 POB의 ‘scaly spot’ 및 원문의 진단적 용법을 비교적 안전하게 반영합니다. כהן은 ‘제사장’, שבעת ימים שנית는 ‘이레 동안 다시’로 유지합니다.
+  issues:
+  - severity: high
+    issue: ‘몸을 밀어야 합니다’
+    rationale: גלח는 여기서 몸 전체를 미는 것을 뜻하지 않고, 병변 검사를 위해 머리털이나 수염을 미는 행위를 가리킵니다. ‘털을 밀다’가 범위와 문맥을 더 정확히 보존합니다.
+  - severity: high
+    issue: נתק를 ‘딱지’로 번역
+    rationale: ‘딱지’는 상처에 생긴 가피를 뜻하여 특정 두피·수염 병변이라는 원문의 진단적 범주를 부정확하게 축소합니다.
+  - severity: medium
+    issue: ‘그 딱지를 ... 격리해야 합니다’의 결합
+    rationale: 물리적인 딱지를 격리하는 뜻처럼 들립니다. 원문의 목적어를 유지하면서도 절차적 분리를 나타내도록 ‘그 병변을 ... 격리해 두다’로 다듬는 것이 낫습니다.
+  - severity: low
+    issue: 각주 b의 해석 단정
+    rationale: 주변 털을 민다는 설명은 유력한 이해이나 본문 자체가 명시하는 내용은 아닙니다. ‘그렇게 이해될 수 있습니다’로 표현하여 해석적 성격을 보존해야 합니다.
+  revised_text: 그는 털을 밀어야 합니다.[a] 그러나 그 비늘진 병변은 밀지 말아야 합니다.[b] 제사장은 그 병변을 이레 동안 다시 격리해 두어야 합니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 ‘그가 스스로 털을 밀다’라는 반사형입니다. 문맥상 머리나 수염의 털을 가리킵니다.
+    reason: source_note
+  - marker: b
+    text: 히브리어 נתק는 머리나 수염 부위에 생기는 특정 병변을 가리키며, 비늘짐과 탈모를 수반할 수 있습니다. 병변 자체는 밀지 말라는 말은 주변 털을 민 뒤 제사장이 그 부위를 더 분명히 살피게 하려는 뜻으로 이해될 수 있습니다.
+    reason: lexical_alternative; cultural_note
+  revision_rationale: 반사형 동사의 범위를 ‘몸’에서 문맥상 적절한 ‘털’로 바로잡고, נתק를 ‘딱지’라는 좁은 의학적 상태로 규정하지 않고 병변으로 옮겼습니다. 격리의 대상은 히브리어의 직접목적어를 따라 ‘병변’으로 유지하되, 한국어의 자연스러운 절차 표현을 위해 ‘격리해 두다’를 사용했습니다. 각주는 어휘 정보와 해석적 설명을 구별하고, 주변 털에 관한 설명의 불확실성을 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:01:22Z'
+  output_hash: a2f766075cf18a7208c133e430ae995beb85bd93037320ad7ce75686157fc9be
+  usage:
+    completion_tokens: 1338
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 389
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 142
+      engine_ttlt_ms: 11449
+      pre_inference_ms: 88
+      service_tbt_ms: 8
+      service_ttft_ms: 584
+      service_ttlt_ms: 11887
+      total_duration_ms: 11809
+      user_visible_ttft_ms: 496
+    prompt_tokens: 2367
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3705
+  applied_revision: true
+  auto_apply_blocked_errors: []
