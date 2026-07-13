@@ -13,7 +13,7 @@ base_translation:
   text: Shallum fathered Jekamiah, and Jekamiah fathered Elishama.
 translation:
   language: ko
-  text: 사람아는 아들을 낳았고, 아들이 아들 엘리사마를 낳았습니다.
+  text: 살룸은 여가먀를 낳았고, 여가먀는 엘리사마를 낳았습니다.
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: הוֹלִיד
@@ -61,4 +61,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 사람아는 아들을 낳았고, 아들이 아들 엘리사마를 낳았습니다.
+  to: 살룸은 여가먀를 낳았고, 여가먀는 엘리사마를 낳았습니다.
+  rationale: 원문의 세 인명과 여가먀의 반복을 모두 복원했습니다. 두 히필 동사를 한국어 족보 표현 ‘낳았다’로 일관되게 번역하고, 마지막 절을 합쇼체 종결로 처리했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:07:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문은 ‘살룸(שַׁלּוּם)이 여가먀(יְקַמְיָה)를 낳고, 여가먀가 엘리사마(אֱלִישָׁמָע)를 낳았다’는 두 세대의 족보를 제시합니다. 초안의 ‘사람아’와 두 번째 주어 ‘아들’은 원문의 고유명사와 반복을 보존하지 못합니다.
+  naturalness: ‘A는 B를 낳았고, B는 C를 낳았습니다’는 현대 한국어 족보 문맥에서 자연스럽고, 문장 종결도 합쇼체에 맞습니다.
+  terminology: 인명은 한국어 성경에서 널리 쓰이는 ‘살룸, 여가먀, 엘리사마’를 사용했습니다. 족보 문맥의 הוֹלִיד는 ‘낳다’로 일관되게 옮길 수 있습니다.
+  issues:
+  - severity: high
+    issue: 첫 인명 ‘사람아’
+    rationale: שַׁלּוּם(Shallum)은 인명 ‘살룸’이며, ‘사람아’는 원문 및 영어 감사 기록의 Shallum과 일치하지 않습니다.
+  - severity: high
+    issue: 여가먀의 누락 및 ‘아들’로의 대체
+    rationale: 원문은 יְקַמְיָה를 두 번 명시합니다. 초안은 첫 번째 여가먀를 누락하고 두 번째를 일반명사 ‘아들’로 대체하여 족보의 인명 정보를 훼손합니다.
+  - severity: medium
+    issue: 인명 표기 불일치
+    rationale: 초안의 어휘 결정에는 ‘예가미야’가 제시되어 있으나 본문에는 반영되지 않았습니다. 한국어 성경의 통용 표기 ‘여가먀’를 사용하면 독자 식별성과 일관성이 좋습니다.
+  revised_text: 살룸은 여가먀를 낳았고, 여가먀는 엘리사마를 낳았습니다.
+  revised_footnotes: []
+  revision_rationale: 원문의 세 인명과 여가먀의 반복을 모두 복원했습니다. 두 히필 동사를 한국어 족보 표현 ‘낳았다’로 일관되게 번역하고, 마지막 절을 합쇼체 종결로 처리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:07:42Z'
+  output_hash: 6f72f6706174815cc9158f265bc735bda902c621945ee2811ff7e2684cf1a279
+  usage:
+    completion_tokens: 746
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 164
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 6087
+      pre_inference_ms: 191
+      service_tbt_ms: 8
+      service_ttft_ms: 492
+      service_ttlt_ms: 6441
+      total_duration_ms: 6284
+      user_visible_ttft_ms: 302
+    prompt_tokens: 1468
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2214
+  applied_revision: true
+  auto_apply_blocked_errors: []

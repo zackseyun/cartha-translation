@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 나와 당신 사이, 그리고 내 아버지와 당신의 아버지 사이에 조약이 있습니다. 보십시오, 제가 당신에게 은과 금을 보냈습니다. 가서, 이스라엘 왕 바아사와 맺은 당신의 조약을 깨십시오[a]. 그러면 그가 저에게서 물러날 것입니다[b].
+  text: 나와 당신 사이, 그리고 내 아버지와 당신의 아버지 사이에 조약이 있습니다. 보십시오, 제가 당신에게 은과 금을 보냈습니다. 가서 이스라엘 왕 바아사와 맺은 당신의 조약을 깨십시오[a]. 그가 나에게서 물러가게 하십시오[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘언약’, ‘동맹’으로 옮길 수 있습니다. כאן בְּרִית는 왕들 사이의 정치적 조약을 가리킵니다.
+    text: 또는 ‘언약’, ‘동맹’으로 옮길 수 있습니다. 여기서 히브리어 בְּרִית는 왕들 사이의 정치적 조약을 가리킵니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘저에게서 올라가게 할 것입니다’입니다. 여기서는 바아사가 압박이나 군사 행동을 거두는 뜻으로 보입니다.
+    text: 직역하면 ‘그가 나에게서 올라가게 하십시오’입니다. 여기서는 바아사가 압박이나 군사 행동을 거두고 물러나는 뜻으로 보입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: בְּרִית
@@ -83,4 +83,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나와 당신 사이, 그리고 내 아버지와 당신의 아버지 사이에 조약이 있습니다. 보십시오, 제가 당신에게 은과 금을 보냈습니다. 가서, 이스라엘 왕 바아사와 맺은 당신의 조약을 깨십시오[a]. 그러면 그가 저에게서 물러날 것입니다[b].
+  to: 나와 당신 사이, 그리고 내 아버지와 당신의 아버지 사이에 조약이 있습니다. 보십시오, 제가 당신에게 은과 금을 보냈습니다. 가서 이스라엘 왕 바아사와 맺은 당신의 조약을 깨십시오[a]. 그가 나에게서 물러가게 하십시오[b].
+  rationale: 마지막 절을 명령에 뒤따르는 요청으로 고쳐 히브리어 동사의 화행과 외교적 맥락을 보존했습니다. 또한 두 각주의 한국어 표현과 문법적 설명을 바로잡았으며, 조약이라는 핵심 용어와 본문의 정치적 의미는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:17:11Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 문장의 반복된 외교 공식과 ‘조약’의 정치적 의미는 잘 반영했습니다. 그러나 마지막 וְיַעֲלֶה는 앞선 명령에 이어지는 요청/목적의 미완료법(‘그가 물러가게 하십시오/물러나도록’)으로 이해하는 것이 적절합니다. 현행 ‘그러면 … 물러날 것입니다’는 결과를 단정하는 미래 서술로 바꾸어 원문의 화행을 약화합니다.
+  naturalness: 전반적으로 현대 표준 한국어 합쇼체에 맞고 자연스럽습니다. 다만 ‘가서,’의 쉼표는 불필요하며, 마지막 문장은 요청의 흐름을 살려 ‘물러가게 하십시오’로 하면 더 자연스럽고 정확합니다.
+  terminology: ‘조약’은 왕들 사이의 בְּרִית를 이 문맥에서 적절히 옮깁니다. ‘바아사’, ‘이스라엘 왕’, ‘은과 금’도 적절합니다. 각주 a의 히브리어 앞에 한국어 문장 안에서 부적절하게 삽입된 ‘כאן’은 ‘여기서’로 고쳐야 합니다. 각주 b는 원문의 주어가 바아사이며, ‘올라가게 할 것입니다’가 아니라 요청형이라는 점을 반영해야 합니다.
+  issues:
+  - severity: medium
+    issue: 마지막 절이 미래 결과 서술로 번역됨
+    rationale: וְיַעֲלֶה מֵעָלַי는 ‘가서 조약을 깨라’는 명령에 연결되어 바아사가 아사에게 가한 압박을 거두고 물러가도록 하라는 요청을 나타냅니다. ‘그러면 … 물러날 것입니다’는 이를 예측 또는 보장으로 바꿉니다.
+  - severity: medium
+    issue: 각주 b의 직역 설명이 동사 형태와 주어를 부정확하게 처리함
+    rationale: ‘저에게서 올라가게 할 것입니다’는 사역적 미래처럼 들리지만, 히브리어는 바아사를 주어로 하는 요청/소망의 형태입니다.
+  - severity: low
+    issue: 각주 a에 한국어 문맥에 맞지 않는 ‘כאן’이 삽입됨
+    rationale: 한국어 각주에서는 ‘여기서 히브리어 בְּרִית는’이라고 써야 자연스럽고 명확합니다.
+  revised_text: 나와 당신 사이, 그리고 내 아버지와 당신의 아버지 사이에 조약이 있습니다. 보십시오, 제가 당신에게 은과 금을 보냈습니다. 가서 이스라엘 왕 바아사와 맺은 당신의 조약을 깨십시오[a]. 그가 나에게서 물러가게 하십시오[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘언약’, ‘동맹’으로 옮길 수 있습니다. 여기서 히브리어 בְּרִית는 왕들 사이의 정치적 조약을 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그가 나에게서 올라가게 하십시오’입니다. 여기서는 바아사가 압박이나 군사 행동을 거두고 물러나는 뜻으로 보입니다.
+    reason: lexical_alternative
+  revision_rationale: 마지막 절을 명령에 뒤따르는 요청으로 고쳐 히브리어 동사의 화행과 외교적 맥락을 보존했습니다. 또한 두 각주의 한국어 표현과 문법적 설명을 바로잡았으며, 조약이라는 핵심 용어와 본문의 정치적 의미는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:17:11Z'
+  output_hash: 5d0bd01de219d029a10006cb3d02610e6d5fb75fd2bb672fe03649b904e98873
+  usage:
+    completion_tokens: 1258
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 401
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 10311
+      pre_inference_ms: 138
+      service_tbt_ms: 8
+      service_ttft_ms: 616
+      service_ttlt_ms: 10793
+      total_duration_ms: 10702
+      user_visible_ttft_ms: 478
+    prompt_tokens: 2513
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3771
+  applied_revision: true
+  auto_apply_blocked_errors: []

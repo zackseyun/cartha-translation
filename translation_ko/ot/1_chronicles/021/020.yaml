@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 오르난이 돌아서서 천사를 보았는데, 그의 네 아들도 그와 함께 숨어 있었고, 오르난은 밀을 타작하고 있었습니다.[a]
+  text: 오르난은 밀을 타작하고 있을 때 몸을 돌려 천사를 보았습니다. 그의 네 아들도 그와 함께 몸을 숨기고 있었습니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘숨어 있었고’는 히브리어의 반사형 표현이 주는 ‘자기들을 숨기고 있었다’는 뉘앙스를 자연스럽게 풀어 옮긴 것입니다.
+    text: 히브리어는 반사형으로, 직역하면 ‘자기들을 숨기고 있었다’입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיָּשָׁב
@@ -60,4 +60,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 오르난이 돌아서서 천사를 보았는데, 그의 네 아들도 그와 함께 숨어 있었고, 오르난은 밀을 타작하고 있었습니다.[a]
+  to: 오르난은 밀을 타작하고 있을 때 몸을 돌려 천사를 보았습니다. 그의 네 아들도 그와 함께 몸을 숨기고 있었습니다.[a]
+  rationale: 반사형의 의미를 ‘몸을 숨기고 있었다’로 자연스럽게 반영하고, 타작이 진행 중인 상황임을 시간절로 밝혔습니다. 또한 각주 표지를 설명 대상 표현 바로 뒤로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:15:30Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ‘숨어 있었고’는 원문의 히트파엘(반사/중간태)이 나타내는 자기 은폐의 뉘앙스를 충분히 드러내지 못합니다. 또한 마지막 절은 오르난이 밀을 타작하던 상황을 나타내므로, 이를 한국어 문장에서 시간적 배경으로 명시하는 편이 충실합니다.
+  naturalness: 현 번역도 이해되지만, 한 문장 안의 연속 연결과 문장 끝의 각주 표지가 ‘숨어 있었다’가 아니라 전체 문장에 걸리는 듯 보입니다. 두 문장으로 나누고 각주를 해당 표현에 직접 붙이면 현대 표준 한국어 합쇼체로 더 자연스럽고 명료합니다.
+  terminology: 인명 ‘오르난’, ‘천사’, 농경 용어 ‘밀을 타작하다’는 적절합니다. ‘몸을 숨기고 있다’는 불필요하게 기계적인 ‘스스로’ 없이 반사적 의미를 자연스럽게 전달합니다.
+  issues:
+  - severity: medium
+    issue: 반사형 동사의 뉘앙스가 본문에서 약화됨
+    rationale: מִתְחַבְּאִים는 히트파엘 분사로 ‘자기들을 숨기고 있었다’는 반사/중간태적 의미를 지닙니다. ‘숨어 있었다’만으로는 이 의미가 덜 드러나므로 ‘몸을 숨기고 있었다’가 더 충실합니다.
+  - severity: low
+    issue: 각주 표지의 위치가 해당 어휘와 떨어져 있음
+    rationale: 각주는 ‘숨어 있었다’의 반사형 관련 설명인데 문장 끝, 곧 ‘타작하고 있었습니다’ 뒤에 놓여 있어 참조 대상이 불명확합니다.
+  - severity: low
+    issue: 타작 장면의 상황적 관계를 더 명료하게 할 필요가 있음
+    rationale: אָרְנָן דָּשׁ חִטִּים는 그가 천사를 본 때의 진행 중인 배경 행동입니다. ‘밀을 타작하고 있을 때’로 처리하면 이 관계가 자연스럽게 드러납니다.
+  revised_text: 오르난은 밀을 타작하고 있을 때 몸을 돌려 천사를 보았습니다. 그의 네 아들도 그와 함께 몸을 숨기고 있었습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 반사형으로, 직역하면 ‘자기들을 숨기고 있었다’입니다.
+    reason: lexical_alternative
+  revision_rationale: 반사형의 의미를 ‘몸을 숨기고 있었다’로 자연스럽게 반영하고, 타작이 진행 중인 상황임을 시간절로 밝혔습니다. 또한 각주 표지를 설명 대상 표현 바로 뒤로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:15:30Z'
+  output_hash: e20d6f9ddbace801e5fc41ba053fcc19608940adee8656a7592b3085a12bd372
+  usage:
+    completion_tokens: 1433
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 764
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 134
+      engine_ttlt_ms: 11708
+      pre_inference_ms: 89
+      service_tbt_ms: 8
+      service_ttft_ms: 553
+      service_ttlt_ms: 12152
+      total_duration_ms: 12104
+      user_visible_ttft_ms: 464
+    prompt_tokens: 1929
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3362
+  applied_revision: true
+  auto_apply_blocked_errors: []

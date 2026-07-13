@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 이것은 그 수효입니다. 금 대접이 30개, 은 대접이 1,000개, 그리고 칼이 29개였습니다.[a]
+  text: '그 수효는 이러합니다: 금 대접 30개, 은 대접 1,000개, 칼[a] 29개입니다.'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 단어는 확실하지 않아서, “29개의 다른 기물”, “29개의 복제품”, 또는 “29개의 교체용 기물”일 수도 있습니다.
+    text: ‘칼’로 옮긴 히브리어 단어의 뜻은 확실하지 않습니다. ‘다른 기물’, ‘중복 기물’, 또는 ‘교체용 기물’을 뜻할 수도 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְאֵלֶּה מִסְפָּרָם
@@ -69,4 +69,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 이것은 그 수효입니다. 금 대접이 30개, 은 대접이 1,000개, 그리고 칼이 29개였습니다.[a]
+  to: '그 수효는 이러합니다: 금 대접 30개, 은 대접 1,000개, 칼[a] 29개입니다.'
+  rationale: 목록 도입을 자연스러운 현대 합쇼체로 다듬고, 불확실한 히브리어 어휘에 각주 표지를 직접 연결했습니다. 수량, 금·은 대접의 대응, 그리고 본문의 ‘칼’이라는 가능한 해석은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:20:18Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 목록 도입구(‘그리고 이것들이 그들의 수이다’)와 세 항목의 수량을 충실히 반영했습니다. מַחֲלָפִים는 불확실한 어휘이므로 본문에서는 ‘칼’이라는 가능한 해석을 유지하되 각주로 대안을 명시해야 합니다.
+  naturalness: 초안의 ‘그리고 이것은 그 수효입니다’는 지시어가 겹치고 뒤의 ‘였습니다’는 목록 도입의 현재적 제시와 다소 어울리지 않습니다. ‘그 수효는 이러합니다’와 콜론을 사용하면 현대 표준어 합쇼체의 목록 문장으로 자연스럽습니다.
+  terminology: אֲגַרְטְלֵי는 문맥상 ‘대접’으로 일관되게 옮길 수 있습니다. מַחֲלָפִים에 대한 각주는 ‘칼’에 직접 연결하고, 대안은 원문의 불확실성을 보존하는 기물 명칭으로 제시하는 것이 적절합니다.
+  issues:
+  - severity: low
+    issue: 목록 도입 표현이 중복되고 시제가 부자연스럽습니다.
+    rationale: ‘그리고 이것은 그 수효입니다’는 원문의 ‘이것들이 그 수이다’를 한국어에서 어색하게 직역한 형태입니다. 이어지는 목록을 현재적으로 제시하는 ‘그 수효는 이러합니다’가 자연스럽습니다.
+  - severity: medium
+    issue: 불확실한 어휘에 대한 각주 표지가 ‘칼’이 아닌 문장 끝에 놓여 참조 대상이 모호합니다.
+    rationale: 각주는 מַחֲלָפִים의 번역어인 ‘칼’에 붙어야 하며, 각주도 해당 낱말의 가능한 의미들을 명확히 밝혀야 합니다.
+  revised_text: '그 수효는 이러합니다: 금 대접 30개, 은 대접 1,000개, 칼[a] 29개입니다.'
+  revised_footnotes:
+  - marker: a
+    text: ‘칼’로 옮긴 히브리어 단어의 뜻은 확실하지 않습니다. ‘다른 기물’, ‘중복 기물’, 또는 ‘교체용 기물’을 뜻할 수도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 목록 도입을 자연스러운 현대 합쇼체로 다듬고, 불확실한 히브리어 어휘에 각주 표지를 직접 연결했습니다. 수량, 금·은 대접의 대응, 그리고 본문의 ‘칼’이라는 가능한 해석은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:20:18Z'
+  output_hash: a4e556d5e761f2e8a7cc7ca2b0008fed9b0329f3149469c8a8cc4371bc42011f
+  usage:
+    completion_tokens: 1044
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 425
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 8490
+      pre_inference_ms: 122
+      service_tbt_ms: 8
+      service_ttft_ms: 613
+      service_ttlt_ms: 8957
+      total_duration_ms: 8849
+      user_visible_ttft_ms: 491
+    prompt_tokens: 1892
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2936
+  applied_revision: true
+  auto_apply_blocked_errors: []

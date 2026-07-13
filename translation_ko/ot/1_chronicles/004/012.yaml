@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 에스돈은 벧르바와 바세아와, 이르나하스의 아버지 테히나를 낳았습니다. 이들은 레가 사람들입니다.[a][b]
+  text: 에스돈은 벧라바와 바세아와 이르나하스의 아버지[a] 드힌나를 낳았습니다. 이들은 레가 사람들입니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 족보 문맥에서 ‘아버지’는 직계 부친만이 아니라 조상이나 창시자를 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘이르나하스’는 문자적으로는 ‘나하스의 성읍’처럼 보일 수 있으나, 여기서는 지명처럼 기능하는 고유명사로 이해하는 것이 자연스럽습니다.
+    text: ‘이르나하스’는 문자적으로 ‘나하스의 성읍’을 뜻할 수 있으나, 여기서는 지명으로 기능하는 고유명사로 이해하는 것이 자연스럽습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הוֹלִיד
@@ -89,4 +89,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 에스돈은 벧르바와 바세아와, 이르나하스의 아버지 테히나를 낳았습니다. 이들은 레가 사람들입니다.[a][b]
+  to: 에스돈은 벧라바와 바세아와 이르나하스의 아버지[a] 드힌나를 낳았습니다. 이들은 레가 사람들입니다.[b]
+  rationale: 원문의 계보 열거와 ‘드힌나—이르나하스의 아버지’라는 동격적 수식 관계를 보존했습니다. 고유명사는 한국어 성서 전통의 통용 표기로 통일했으며, 본문은 ‘아버지’라는 열린 족보 용어를 유지하고 그 가능한 확장 의미는 각주에서만 밝혔습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:07:53Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 인명 음역과 문장 연결을 바로잡을 필요가 있습니다. 히브리어는 에스돈이 벧라바, 바세아, 그리고 ‘이르나하스의 아버지’인 드힌나를 낳았다고 열거합니다. 현 초안의 ‘테히나’는 한국어 성서 전통의 해당 인명 표기와 다르고, 쉼표 배치도 ‘이르나하스의 아버지’가 테히나를 수식한다는 구조를 다소 부자연스럽게 만듭니다.
+  naturalness: ‘낳았습니다’와 ‘이들은 레가 사람들입니다’는 현대 합쇼체 족보 문맥에서 자연스럽습니다. 다만 수식 관계를 쉼표 없이 연결하고, 각주를 해당 어구 바로 뒤에 두는 편이 명료합니다.
+  terminology: 벧라바, 바세아, 드힌나, 이르나하스, 레가는 한국어 성서에서 통용되는 음역을 따랐습니다. ‘아버지’는 히브리어 족보 용례의 넓은 의미를 본문에서 유지하고 각주로 설명합니다.
+  issues:
+  - severity: medium
+    issue: ‘테히나’의 인명 음역
+    rationale: תְּחִנָּה의 한국어 성서 전통 표기는 ‘드힌나’입니다. 현 표기는 영어식 음가를 따른 형태여서 한국어 성서 고유명사 표기의 일관성을 해칩니다.
+  - severity: low
+    issue: 수식 관계를 흐리는 쉼표
+    rationale: ‘바세아와, 이르나하스의 아버지 테히나’의 쉼표는 열거의 마지막 항목인 드힌나와 ‘이르나하스의 아버지’의 관계를 불필요하게 끊습니다.
+  - severity: low
+    issue: 각주 표지의 위치
+    rationale: 두 각주는 각각 ‘아버지’의 족보상 의미와 ‘이르나하스’의 지명성에 관한 것이므로, 문장 끝이 아니라 해당 어구에 붙여야 참조 대상이 분명합니다.
+  revised_text: 에스돈은 벧라바와 바세아와 이르나하스의 아버지[a] 드힌나를 낳았습니다. 이들은 레가 사람들입니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 족보 문맥에서 ‘아버지’는 직계 부친만이 아니라 조상이나 창시자를 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘이르나하스’는 문자적으로 ‘나하스의 성읍’을 뜻할 수 있으나, 여기서는 지명으로 기능하는 고유명사로 이해하는 것이 자연스럽습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 계보 열거와 ‘드힌나—이르나하스의 아버지’라는 동격적 수식 관계를 보존했습니다. 고유명사는 한국어 성서 전통의 통용 표기로 통일했으며, 본문은 ‘아버지’라는 열린 족보 용어를 유지하고 그 가능한 확장 의미는 각주에서만 밝혔습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:07:53Z'
+  output_hash: 750d6adfec635eaa1dbaf1852345e2052cac6fe52f99588e39aa90cf2b7bbe5d
+  usage:
+    completion_tokens: 1354
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 578
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 145
+      engine_ttlt_ms: 11398
+      pre_inference_ms: 105
+      service_tbt_ms: 8
+      service_ttft_ms: 411
+      service_ttlt_ms: 11760
+      total_duration_ms: 11785
+      user_visible_ttft_ms: 306
+    prompt_tokens: 2320
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3674
+  applied_revision: true
+  auto_apply_blocked_errors: []

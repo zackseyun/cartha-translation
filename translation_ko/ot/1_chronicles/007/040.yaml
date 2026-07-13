@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 이 모든 사람은 아셀의 아들들이며, 아버지의 집들의 우두머리들, 선별된 용사들, 용맹한 전사들, 지도자들 가운데 으뜸인 자들이었으며, 그들은 전쟁을 위한 군대에 소집되어 등록되었습니다. 그들의 남자 수는 이만 육천 명이었습니다.
+  text: 이들은 모두 아셀의 아들들로서, 조상 가문의 우두머리들이며, 뛰어난 사람들, 용맹한 전사들, 지도자들의 우두머리들이었습니다. 그들은 전쟁을 위하여 군대에 계보로 등록되었습니다.[a] 그들의 남자 인원은 이만 육천 명이었습니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 “그들의 계보가 기록되었습니다” 또는 “그들은 계보에 따라 등록되었습니다.” 히브리어 동사는 역대기에서 흔히 계보상의 등록을 가리킵니다.
+    reason: וְהִתְיַחְשָׂם의 계보 등록 의미와, 군사 문맥에서 가능한 ‘등록’의 간결한 번역 사이의 어휘적 대안을 보존합니다.
 lexical_decisions:
 - source_word: רָאשֵׁי בֵית הָאָבוֹת
   english_pob_choice: heads of fathers’ houses
@@ -95,4 +99,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이 모든 사람은 아셀의 아들들이며, 아버지의 집들의 우두머리들, 선별된 용사들, 용맹한 전사들, 지도자들 가운데 으뜸인 자들이었으며, 그들은 전쟁을 위한 군대에 소집되어 등록되었습니다. 그들의 남자 수는 이만 육천 명이었습니다.
+  to: 이들은 모두 아셀의 아들들로서, 조상 가문의 우두머리들이며, 뛰어난 사람들, 용맹한 전사들, 지도자들의 우두머리들이었습니다. 그들은 전쟁을 위하여 군대에 계보로 등록되었습니다.[a] 그들의 남자 인원은 이만 육천 명이었습니다.
+  rationale: 원문의 병렬 수식어를 각각 구별하여 ‘뛰어난 사람들’과 ‘용맹한 전사들’의 의미 중복을 없앴습니다. ‘조상 가문’은 בֵּית־הָאָבוֹת의 족보·친족 집단 의미를 자연스러운 현대 한국어로 표현합니다. 등록 동사는 ‘계보로 등록되었습니다’로 옮기고 각주에 가능한 대안을 제시하여, 계보 행정과 군사 편제의 관계에 관한 해석적 불확실성을 과도하게 해소하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:08:35Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안은 군사적 성격과 인원수를 대체로 전달하지만, בְּרוּרִים를 ‘선별된 용사들’로 옮겨 뒤의 ‘용맹한 전사들’(גִּבּוֹרֵי חֲיָלִים)과 의미를 중복시키고 군사 의미를 앞말에 부가했습니다. 또한 וְהִתְיַחְשָׂם에 없는 ‘소집되어’를 넣어 계보적 등록이라는 핵심 행정적 의미를 약화합니다.
+  naturalness: ‘아버지의 집들의 우두머리들’과 ‘그들의 남자 수’는 현대 표준 한국어에서 어색합니다. ‘조상 가문의 우두머리들’ 및 ‘그들의 남자 인원은’이 자연스러우면서도 원문의 사회·족보 용어와 계수 표현을 충분히 보존합니다.
+  terminology: רָאשֵׁי בֵית הָאָבוֹת는 ‘조상 가문의 우두머리들’로, בְּרוּרִים는 군사 용어를 중복하지 않는 ‘뛰어난 사람들’로 옮겼습니다. גִּבּוֹרֵי חֲיָלִים는 ‘용맹한 전사들’로 유지했습니다. וְהִתְיַחְשָׂם의 계보 등록 의미는 본문과 각주에서 명시하되, 군사 편제와의 관계는 원문처럼 유지했습니다.
+  issues:
+  - severity: medium
+    issue: ‘선별된 용사들’이 בְּרוּרִים에 군사적 의미를 추가합니다.
+    rationale: בְּרוּרִים는 ‘선별된/뛰어난 사람들’이며, ‘용사/전사’의 군사적 의미는 이어지는 גִּבּוֹרֵי חֲיָלִים가 담당합니다.
+  - severity: high
+    issue: ‘소집되어 등록되었습니다’는 וְהִתְיַחְשָׂם의 계보 등록 의미를 충분히 반영하지 못하고 ‘소집’이라는 비명시적 행위를 추가합니다.
+    rationale: 역대기에서 이 동사는 족보·혈통에 따른 등록을 가리키는 경우가 많습니다. 군대와 전쟁이라는 수식어는 등록의 군사적 목적·영역을 나타내지만, 소집 자체를 직접 진술하지는 않습니다.
+  - severity: low
+    issue: ‘아버지의 집들의 우두머리들’과 ‘그들의 남자 수’는 한국어 문장으로 부자연스럽습니다.
+    rationale: 현대 한국어에서는 ‘조상 가문의 우두머리들’, ‘남자 인원’이 더 자연스럽고 의미 손실이 없습니다.
+  revised_text: 이들은 모두 아셀의 아들들로서, 조상 가문의 우두머리들이며, 뛰어난 사람들, 용맹한 전사들, 지도자들의 우두머리들이었습니다. 그들은 전쟁을 위하여 군대에 계보로 등록되었습니다.[a] 그들의 남자 인원은 이만 육천 명이었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 “그들의 계보가 기록되었습니다” 또는 “그들은 계보에 따라 등록되었습니다.” 히브리어 동사는 역대기에서 흔히 계보상의 등록을 가리킵니다.
+    reason: וְהִתְיַחְשָׂם의 계보 등록 의미와, 군사 문맥에서 가능한 ‘등록’의 간결한 번역 사이의 어휘적 대안을 보존합니다.
+  revision_rationale: 원문의 병렬 수식어를 각각 구별하여 ‘뛰어난 사람들’과 ‘용맹한 전사들’의 의미 중복을 없앴습니다. ‘조상 가문’은 בֵּית־הָאָבוֹת의 족보·친족 집단 의미를 자연스러운 현대 한국어로 표현합니다. 등록 동사는 ‘계보로 등록되었습니다’로 옮기고 각주에 가능한 대안을 제시하여, 계보 행정과 군사 편제의 관계에 관한 해석적 불확실성을 과도하게 해소하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:08:35Z'
+  output_hash: 6023c1015f941e7a758cedf8c7fbb5b0bf9952ca84046ae2e364811bd20d5686
+  usage:
+    completion_tokens: 1300
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 286
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 9636
+      pre_inference_ms: 207
+      service_tbt_ms: 7
+      service_ttft_ms: 550
+      service_ttlt_ms: 9996
+      total_duration_ms: 9806
+      user_visible_ttft_ms: 343
+    prompt_tokens: 3185
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4485
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: “가서 나를 위해, 또 이스라엘과 유다에 남아 있는 자들을 위해, 발견된 이 책의 말씀들에 관해 야훼께 문의하십시오. 우리의 조상들이 야훼의 말씀을 지키지 않고, 이 책에 기록된 모든 것을 행하지 않았으므로, 야훼의 진노가 우리에게 크게 쏟아졌습니다.”[a][b][c]
+  text: “가서 나를 위하여, 또 이스라엘과 유다에 남아 있는 이들을 위하여, 발견된 그 책[a]의 말씀에 관하여 야훼께 여쭈어 보십시오. 우리 조상들[b]이 야훼의 말씀을 지키지 않고 이 책[c]에 기록된 모든 것에 따라 행하지 않았으므로, 야훼의 진노가 우리에게 크게 쏟아졌습니다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: ‘책’은 여기서 ‘두루마리’로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘우리의 조상들’은 문자적으로 ‘우리의 아버지들’입니다.
+    text: ‘우리 조상들’은 문자적으로 ‘우리의 아버지들’입니다.
     reason: lexical_alternative
   - marker: c
-    text: 직역하면 ‘이 두루마리 안에’입니다.
+    text: ‘이 책에’는 ‘이 두루마리에’로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: דִרְשׁוּ אֶת־יְהוָה
@@ -111,4 +111,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: “가서 나를 위해, 또 이스라엘과 유다에 남아 있는 자들을 위해, 발견된 이 책의 말씀들에 관해 야훼께 문의하십시오. 우리의 조상들이 야훼의 말씀을 지키지 않고, 이 책에 기록된 모든 것을 행하지 않았으므로, 야훼의 진노가 우리에게 크게 쏟아졌습니다.”[a][b][c]
+  to: “가서 나를 위하여, 또 이스라엘과 유다에 남아 있는 이들을 위하여, 발견된 그 책[a]의 말씀에 관하여 야훼께 여쭈어 보십시오. 우리 조상들[b]이 야훼의 말씀을 지키지 않고 이 책[c]에 기록된 모든 것에 따라 행하지 않았으므로, 야훼의 진노가 우리에게 크게 쏟아졌습니다.”
+  rationale: 원문의 두 ספר 지시 표현(‘발견된 그 책’과 ‘이 책’)을 구별하고, דרשׁ את־יהוה를 신적 인도를 구하는 자연스러운 한국어로 조정했습니다. 또한 각주 c의 잘못된 ‘직역’ 주장을 어휘 대안으로 바로잡고, 각주 표지를 해당 단어에 연결했습니다. 의미와 원문의 심판 은유는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:20:00Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 핵심 구조와 의미는 대체로 잘 반영했습니다. 다만 첫 번째 ספר는 ‘발견된 그 책’인데 초안은 ‘발견된 이 책’으로 옮겨 뒤의 ‘이 책’과의 지시 차이를 평준화합니다. 또한 각주 c는 ‘직역’이라고 했지만, 히브리어 עַל־הַסֵּפֶר הַזֶּה는 여기서 ‘이 두루마리 안에’라는 직역이 아니라 ‘이 두루마리에’라는 가능한 어휘 대안입니다.
+  naturalness: ‘야훼께 문의하십시오’는 현대 한국어에서 기관·서비스 등을 상대로 쓰는 경향이 강하여, 신적 인도를 구하는 맥락에는 ‘야훼께 여쭈어 보십시오’가 더 자연스럽고 적절합니다. ‘말씀들’은 한국어에서는 집합적 단수 ‘말씀’이 자연스럽습니다.
+  terminology: 야훼, 진노, 말씀, 조상들은 문맥과 현대 합쇼체에 적절합니다. ‘우리 조상들’은 한국어의 자연스러운 계보 표현이며, 히브리어의 문자적 ‘우리의 아버지들’은 각주에서 밝혀 성별 표지에 관한 정보를 보존합니다.
+  issues:
+  - severity: medium
+    issue: 각주 c의 ‘직역하면 이 두루마리 안에’
+    rationale: 이는 원문의 직역이 아니며, ‘책’을 ‘두루마리’로 옮긴 어휘적 대안입니다. 또한 עַל은 이 문맥에서 한국어로 ‘안에/에’로 자연스럽게 처리됩니다.
+  - severity: low
+    issue: ‘발견된 이 책’
+    rationale: 원문은 ‘발견된 그 책’(הספר אשר נמצא)이라고 한 뒤 마지막에 ‘이 책’(הספר הזה)이라고 합니다. 한국어에서 두 지시 표현을 구별하면 원문의 흐름을 더 충실히 보존합니다.
+  - severity: low
+    issue: ‘야훼께 문의하십시오’
+    rationale: דרשׁ את־יהוה의 신탁·인도 요청 의미에는 ‘여쭈어 보다’가 현대 한국어에서 더 자연스럽고 문맥상 정확합니다.
+  revised_text: “가서 나를 위하여, 또 이스라엘과 유다에 남아 있는 이들을 위하여, 발견된 그 책[a]의 말씀에 관하여 야훼께 여쭈어 보십시오. 우리 조상들[b]이 야훼의 말씀을 지키지 않고 이 책[c]에 기록된 모든 것에 따라 행하지 않았으므로, 야훼의 진노가 우리에게 크게 쏟아졌습니다.”
+  revised_footnotes:
+  - marker: a
+    text: ‘책’은 여기서 ‘두루마리’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘우리 조상들’은 문자적으로 ‘우리의 아버지들’입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: ‘이 책에’는 ‘이 두루마리에’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 두 ספר 지시 표현(‘발견된 그 책’과 ‘이 책’)을 구별하고, דרשׁ את־יהוה를 신적 인도를 구하는 자연스러운 한국어로 조정했습니다. 또한 각주 c의 잘못된 ‘직역’ 주장을 어휘 대안으로 바로잡고, 각주 표지를 해당 단어에 연결했습니다. 의미와 원문의 심판 은유는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:20:00Z'
+  output_hash: 5c4cd6321c79d97a68424479a8da18128d36ebcf2e536063ad714dcba718ec4e
+  usage:
+    completion_tokens: 1770
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 900
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 14518
+      pre_inference_ms: 133
+      service_tbt_ms: 8
+      service_ttft_ms: 423
+      service_ttlt_ms: 14793
+      total_duration_ms: 14671
+      user_visible_ttft_ms: 290
+    prompt_tokens: 3718
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5488
+  applied_revision: true
+  auto_apply_blocked_errors: []

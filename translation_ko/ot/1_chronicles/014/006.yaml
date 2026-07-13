@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 노가, 네벡, 그리고 야피아입니다.[a][b]
+  text: 노가[a], 네벡, 그리고 야피아[b]입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 네벡은 영어 POB의 Nepheg에 대응하는 음역입니다.
+    text: 영어로는 ‘Noga’로도 음역합니다.
     reason: lexical_alternative
   - marker: b
-    text: 야피아는 영어 POB의 Japhia에 대한 음역이며, 음가상 야피야로도 옮길 수 있습니다.
+    text: ‘야피아’는 영어로 ‘Japhia’ 또는 더 음성적으로 ‘Yaphia’로 음역할 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: נֹגַהּ
@@ -66,4 +66,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 노가, 네벡, 그리고 야피아입니다.[a][b]
+  to: 노가[a], 네벡, 그리고 야피아[b]입니다.
+  rationale: 원문의 세 고유명사와 접속 관계를 유지하고, 원문 음가에 따른 기존 한국어 이름 표기는 보존했습니다. 다만 영어 POB 감사 기록에 맞추어 a를 노가에, b를 야피아에 직접 연결하고, 각주 내용을 해당 대안 음역으로 바로잡았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:14:28Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어 본문은 세 고유명사(נֹגַהּ, נֶפֶג, יָפִיעַ)를 접속사로 연결한 목록입니다. 초안의 세 이름 자체는 대체로 원문 음가를 반영하지만, 각주 표지의 위치와 내용이 해당 이름 및 영어 POB의 대안 음역과 정확히 대응하지 않습니다.
+  naturalness: 명단 끝에 ‘입니다’를 쓰는 것은 합쇼체 문맥에서 가능하며, ‘그리고’를 사용한 연결도 자연스럽습니다. 다만 각주 표지는 해당 고유명사 바로 뒤에 놓아야 합니다.
+  terminology: ‘노가’, ‘네벡’, ‘야피아’는 원어 우선의 한국어 음역으로 안전합니다. 특히 יָפִיעַ의 פ는 /p/이므로 ‘야피아’는 원문 음가를 충실히 반영합니다. 영어식 Japhia/Yaphia의 대안은 한국어 각주에서 그 음역 대안임을 분명히 밝혀야 합니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지 [a][b]가 문장 끝에 함께 놓여 있어 각각 노가와 야피아 중 어느 이름을 가리키는지 구조적으로 불명확합니다.
+    rationale: 영어 POB에서 a는 Nogah, b는 Japhia에 붙습니다. 한국어에서도 해당 이름 직후에 각각 배치해야 각주 앵커가 정확합니다.
+  - severity: medium
+    issue: 각주 a의 내용이 노가가 아니라 네벡을 설명하며, 영어 POB의 Nogah/Noga 대안도 반영하지 않습니다.
+    rationale: a는 נֹגַהּ/노가에 관한 각주여야 합니다. 네벡은 이 절의 영어 POB 각주 대상이 아닙니다.
+  - severity: low
+    issue: 각주 b가 ‘영어 POB의 Japhia에 대한 음역’이라고만 하여 대안 표기의 성격을 충분히 명시하지 않습니다.
+    rationale: 영어 감사 기록의 핵심은 Japhia가 Yaphia로도 음역될 수 있다는 점입니다. 한국어 각주도 이를 직접 밝혀야 합니다.
+  revised_text: 노가[a], 네벡, 그리고 야피아[b]입니다.
+  revised_footnotes:
+  - marker: a
+    text: 영어로는 ‘Noga’로도 음역합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘야피아’는 영어로 ‘Japhia’ 또는 더 음성적으로 ‘Yaphia’로 음역할 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 세 고유명사와 접속 관계를 유지하고, 원문 음가에 따른 기존 한국어 이름 표기는 보존했습니다. 다만 영어 POB 감사 기록에 맞추어 a를 노가에, b를 야피아에 직접 연결하고, 각주 내용을 해당 대안 음역으로 바로잡았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:14:28Z'
+  output_hash: 6d38fd016fcd570b64ee3d5bc56135db0aabee927c1f8c2fddb2c4889b0c0fbb
+  usage:
+    completion_tokens: 1217
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 650
+      engine_ttlt_ms: 11443
+      pre_inference_ms: 126
+      service_tbt_ms: 9
+      service_ttft_ms: 957
+      service_ttlt_ms: 11730
+      total_duration_ms: 11615
+      user_visible_ttft_ms: 830
+    prompt_tokens: 1339
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2556
+  applied_revision: true
+  auto_apply_blocked_errors: []

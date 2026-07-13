@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러자 이스라엘 왕이 한 내시를 불러 말했습니다. 「어서 미가야, 임라의 아들을 데려오시오.」[a]
+  text: 그러자 이스라엘 왕이 한 궁정 관리[a]를 불러 말했습니다. 「어서 임라의 아들 미가야를 데려오시오.」
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 סָרִיס는 문자적으로는 ‘내시’를 뜻하지만, 문맥에 따라 더 넓게 ‘궁정 관리’나 ‘왕실 신하’를 가리킬 수 있습니다.
+    text: 히브리어 סָרִיס는 문자적으로는 ‘내시’를 뜻할 수 있으며, 더 넓게는 ‘궁정 관리’나 ‘왕실 신하’를 가리키기도 합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּקְרָא
@@ -76,4 +76,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 이스라엘 왕이 한 내시를 불러 말했습니다. 「어서 미가야, 임라의 아들을 데려오시오.」[a]
+  to: 그러자 이스라엘 왕이 한 궁정 관리[a]를 불러 말했습니다. 「어서 임라의 아들 미가야를 데려오시오.」
+  rationale: The revision makes Micaiah, identified as Imla’s son, unambiguously the object of the king’s command. It also uses a contextually appropriate Korean rendering for the semantically broad title סָרִיס and places the lexical-alternative footnote at its proper anchor.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:17:18Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 'The draft correctly renders the narrative action and urgency, but its quoted command is syntactically misleading in Korean: “미가야, 임라의 아들을 데려오시오” can make 미가야 the person being addressed and ‘Imla’s son’ the person to be brought. In Hebrew, ‘Micaiah son of Imla’ is the single object of the command. The ambiguous term סָרִיס should be represented with an anchored note.'
+  naturalness: The revised wording is natural modern formal-polite Korean. Placing the patronymic before the name and marking the object with 를 clearly identifies the person whom the officer must bring.
+  terminology: ‘궁정 관리’ appropriately conveys the likely functional sense of סָרִיס without asserting literal castration; the footnote preserves ‘내시’ as the literal and viable lexical sense. ‘미가야’ and ‘임라’ are established Korean biblical name forms.
+  issues:
+  - severity: high
+    issue: The direct-speech syntax misidentifies the grammatical role of ‘미가야’.
+    rationale: The draft’s comma after ‘미가야’ permits it to be read as a vocative, whereas מיכהו בן ימלא is the object of ‘bring.’ Reordering to ‘임라의 아들 미가야를’ resolves this without adding interpretation.
+  - severity: medium
+    issue: The footnote marker is attached to the whole quotation rather than to the rendering of סָרִיס.
+    rationale: The note concerns only ‘내시/궁정 관리’; its anchor should immediately follow that expression.
+  revised_text: 그러자 이스라엘 왕이 한 궁정 관리[a]를 불러 말했습니다. 「어서 임라의 아들 미가야를 데려오시오.」
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 סָרִיס는 문자적으로는 ‘내시’를 뜻할 수 있으며, 더 넓게는 ‘궁정 관리’나 ‘왕실 신하’를 가리키기도 합니다.
+    reason: lexical_alternative
+  revision_rationale: The revision makes Micaiah, identified as Imla’s son, unambiguously the object of the king’s command. It also uses a contextually appropriate Korean rendering for the semantically broad title סָרִיס and places the lexical-alternative footnote at its proper anchor.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:17:18Z'
+  output_hash: 75751de29e70fb19270bb040256c47d6f64b484b5e1bea260358be090348d70c
+  usage:
+    completion_tokens: 797
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 258
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 194
+      engine_ttlt_ms: 6904
+      pre_inference_ms: 100
+      service_tbt_ms: 8
+      service_ttft_ms: 458
+      service_ttlt_ms: 7166
+      total_duration_ms: 7075
+      user_visible_ttft_ms: 358
+    prompt_tokens: 1967
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2764
+  applied_revision: true
+  auto_apply_blocked_errors: []
