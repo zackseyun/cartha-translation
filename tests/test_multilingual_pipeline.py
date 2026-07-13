@@ -104,6 +104,20 @@ def test_azure_key_is_cached_before_parallel_workers(monkeypatch) -> None:
     assert calls == 1
 
 
+def test_weighted_azure_deployment_pool_is_deterministic() -> None:
+    module = load_module("multilingual_pipeline_deployment_pool", "tools/multilingual_pipeline.py")
+    value = "global*3,data-zone"
+    assert module.deployment_pool(value) == ("global", "global", "global", "data-zone")
+    assert module.choose_deployment(value, "pt:ot/genesis/001/001.yaml") == module.choose_deployment(
+        value, "pt:ot/genesis/001/001.yaml"
+    )
+    observed = {
+        module.choose_deployment(value, f"pt:ot/genesis/001/{verse:03}.yaml")
+        for verse in range(1, 100)
+    }
+    assert observed == {"global", "data-zone"}
+
+
 def test_multilingual_wave_uses_the_spob_publication_record_set() -> None:
     module = load_module("multilingual_pipeline_sources", "tools/multilingual_pipeline.py")
     relatives = module.source_relatives()

@@ -151,6 +151,39 @@ def call_tool(
     raise last or RuntimeError("Azure request failed")
 
 
+def deployment_pool(value: str) -> tuple[str, ...]:
+    """Expand a comma-separated, optionally weighted Azure deployment pool.
+
+    ``global*3,data-zone`` routes roughly 75% of requests to the larger global
+    deployment and 25% to the smaller Data Zone deployment. A plain deployment
+    name remains fully backward compatible.
+    """
+    pool: list[str] = []
+    for raw_item in str(value).split(","):
+        item = raw_item.strip()
+        if not item:
+            continue
+        name, separator, raw_weight = item.rpartition("*")
+        if separator and raw_weight.isdigit():
+            deployment = name.strip()
+            weight = int(raw_weight)
+        else:
+            deployment = item
+            weight = 1
+        if not deployment or weight < 1 or weight > 100:
+            raise ValueError(f"invalid Azure deployment pool item: {item!r}")
+        pool.extend([deployment] * weight)
+    if not pool:
+        raise ValueError("Azure deployment pool cannot be empty")
+    return tuple(pool)
+
+
+def choose_deployment(value: str, key: str) -> str:
+    pool = deployment_pool(value)
+    digest = hashlib.sha256(key.encode("utf-8")).digest()
+    return pool[int.from_bytes(digest[:8], "big") % len(pool)]
+
+
 DRAFT_TOOL = {
     "type": "function",
     "function": {
@@ -450,10 +483,19 @@ def command_pilot(args: argparse.Namespace) -> int:
     def run(job: tuple[str, dict[str, Any], str]) -> list[tuple[str, str, dict[str, Any]]]:
         code, spec, verse = job
         output = []
+        routing_key = f"{code}:{verse}"
         if args.stage in {"draft", "both"}:
-            output.append(draft_one(code, spec, verse, args.draft_deployment, args.force))
+            output.append(draft_one(
+                code, spec, verse,
+                choose_deployment(args.draft_deployment, routing_key),
+                args.force,
+            ))
         if args.stage in {"review", "both"}:
-            output.append(review_one(code, spec, verse, args.review_deployment, args.force))
+            output.append(review_one(
+                code, spec, verse,
+                choose_deployment(args.review_deployment, routing_key),
+                args.force,
+            ))
         return output
 
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
@@ -578,8 +620,16 @@ def parser() -> argparse.ArgumentParser:
     pilot.add_argument("--limit-verses", type=int, default=1)
     pilot.add_argument("--stage", choices=["draft", "review", "both"], default="both")
     pilot.add_argument("--concurrency", type=int, default=8)
-    pilot.add_argument("--draft-deployment", default="gpt-5-6-sol-atlas")
-    pilot.add_argument("--review-deployment", default="gpt-5-6-terra-atlas")
+    pilot.add_argument(
+        "--draft-deployment",
+        default="gpt-5-6-sol-atlas*3,gpt-5-6-sol-dz-atlas",
+        help="Comma-separated, optionally weighted Azure deployment pool",
+    )
+    pilot.add_argument(
+        "--review-deployment",
+        default="gpt-5-6-terra-atlas*3,gpt-5-6-terra-dz-atlas",
+        help="Comma-separated, optionally weighted Azure deployment pool",
+    )
     pilot.add_argument("--force", action="store_true")
     pilot.set_defaults(func=command_pilot)
     wave = sub.add_parser("wave", help="Run a bounded, resumable source-tree wave")
@@ -590,8 +640,16 @@ def parser() -> argparse.ArgumentParser:
     wave.add_argument("--book")
     wave.add_argument("--stage", choices=["draft", "review", "both"], default="both")
     wave.add_argument("--concurrency", type=int, default=8)
-    wave.add_argument("--draft-deployment", default="gpt-5-6-sol-atlas")
-    wave.add_argument("--review-deployment", default="gpt-5-6-terra-atlas")
+    wave.add_argument(
+        "--draft-deployment",
+        default="gpt-5-6-sol-atlas*3,gpt-5-6-sol-dz-atlas",
+        help="Comma-separated, optionally weighted Azure deployment pool",
+    )
+    wave.add_argument(
+        "--review-deployment",
+        default="gpt-5-6-terra-atlas*3,gpt-5-6-terra-dz-atlas",
+        help="Comma-separated, optionally weighted Azure deployment pool",
+    )
     wave.add_argument(
         "--pending-only",
         action="store_true",
