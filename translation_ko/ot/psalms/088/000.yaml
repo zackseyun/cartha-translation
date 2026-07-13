@@ -10,12 +10,10 @@ source:
 base_translation:
   language: en
   yaml_path: translation/ot/psalms/088/000.yaml
-  text: 'A song. A psalm of the sons of Korah. For the choirmaster: according to Mahalath Leannoth[a]. A Maskil[b] of Heman
-    the Ezrahite.'
+  text: 'A song. A psalm of the sons of Korah. For the choirmaster: according to Mahalath Leannoth[a]. A Maskil[b] of Heman the Ezrahite.'
   footnotes:
   - marker: a
-    text: The expression 'Mahalath Leannoth' is uncertain. It may refer to a tune or musical style; other proposals include
-      'according to Mahalath, for responsive singing' or 'according to Mahalath, concerning affliction.'
+    text: The expression 'Mahalath Leannoth' is uncertain. It may refer to a tune or musical style; other proposals include 'according to Mahalath, for responsive singing' or 'according to Mahalath, concerning affliction.'
     reason: lexical_alternative
   - marker: b
     text: '''Maskil'' is a technical term in psalm headings, often understood as an instructive or contemplative composition.'
@@ -51,4 +49,62 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 표제 구조와 주요 전문 용어는 대체로 인식되어 있으나, ‘합창단 장의 경우’는 לַמְנַצֵּחַ의 음악적 지시를 부정확하고 비문적으로 옮긴 것입니다. 또한 הָאֶזְרָחִי는 ‘에스라 사람’이 아니라 ‘에스라인’(Ezrahite)으로 옮겨야 하며, 본문의 음역과 주석의 음역도 일치해야 합니다.
+  naturalness: 현 문안의 ‘합창단 장의 경우’와 문장 끝의 독립된 [c]는 현대 한국어 표제로 자연스럽지 않습니다. ‘성가대 지휘자를 위하여’, ‘…에 맞추어’와 같은 표제 관용 표현이 더 자연스럽습니다.
+  terminology: 불확정적인 음악 용어는 음역하여 모호성을 보존하는 것이 적절합니다. 따라서 Mahalath Leannoth는 ‘마할랏 레안놋’, Maskil은 ‘마스길’로 통일합니다. ‘에스라인’은 헤만의 칭호를 보존하며, ‘에스라 사람’처럼 고유 인명 에스라와 혼동될 표현을 피합니다.
+  issues:
+  - severity: high
+    issue: ‘합창단 장의 경우’
+    rationale: לַמְנַצֵּחַ는 시편 표제에서 음악 지휘자에게 바치는/위한 지시입니다. ‘경우’는 원문에 없는 조건적 의미를 만들고 한국어로도 부자연스럽습니다.
+  - severity: high
+    issue: ‘에스라 사람 헤만’
+    rationale: הָאֶזְרָחִי는 ‘에스라인(Ezrahite)’이라는 칭호/족속 표지입니다. ‘에스라 사람’은 다른 고유 인명과 혼동시키며 원문의 형태를 정확히 반영하지 못합니다.
+  - severity: medium
+    issue: 본문과 주석의 음역 불일치
+    rationale: 본문은 Mahalath Leannoth를 쓰지만 주석은 ‘마할라스 레아노스’라고 하여 서로 다른 표현이 되었습니다. 불확실한 전문 용어일수록 음역을 일관되게 유지해야 합니다.
+  - severity: medium
+    issue: 독립된 [c] 및 이전 영어 표기용 주석
+    rationale: '[c]는 어떤 한국어 어구에도 연결되지 않으며, 주석 내용은 현재 한국어 본문의 원문 해석상 유의미한 이문을 제공하지 않고 과거 영어 마커 배치를 반영합니다. 제거하는 것이 주석 앵커와 본문 구조를 바로잡습니다.'
+  revised_text: '노래, 고라 자손의 시. 성가대 지휘자를 위하여: 마할랏 레안놋에 맞추어. 에스라인 헤만의 마스길[b].'
+  revised_footnotes:
+  - marker: a
+    text: ‘마할랏 레안놋’이라는 표현의 뜻은 불확실합니다. 곡조나 음악 양식을 가리킬 수 있습니다. 다른 해석으로는 ‘마할랏에 맞추어, 화답하여 부르도록’ 또는 ‘마할랏에 맞추어, 고난에 관하여’가 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘마스길’은 시편 표제에 쓰이는 전문 용어로, 흔히 교훈적이거나 묵상적인 작품으로 이해됩니다.
+    reason: lexical_alternative
+  revision_rationale: 음악 표제의 문법적 기능을 자연스러운 한국어로 바로잡고, 불확실한 음악 용어와 ‘마스길’은 음역으로 보존했습니다. 헤만의 칭호를 ‘에스라인’으로 수정했으며, 본문과 주석의 음역을 통일했습니다. 본문에 닻이 없는 과거 영어 마커 관련 [c] 주석은 삭제했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:11:33Z'
+  output_hash: a946eb0b802c273390b2dadda25fad96e3cc0384e9510885b7121d6bd603853d
+  usage:
+    completion_tokens: 1406
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 479
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 11863
+      pre_inference_ms: 121
+      service_tbt_ms: 8
+      service_ttft_ms: 444
+      service_ttlt_ms: 12147
+      total_duration_ms: 12036
+      user_visible_ttft_ms: 323
+    prompt_tokens: 2108
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3514
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

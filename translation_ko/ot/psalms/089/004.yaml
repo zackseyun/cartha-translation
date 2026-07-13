@@ -17,12 +17,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 내가 나의 택한 이와 언약을 맺었고, 내가 내 종 다윗에게 맹세하였으니:[a]
+  text: 내가 네 자손을 영원히 굳게 세우고, 네 왕좌를 대대로 세울 것입니다.[a] 셀라[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 직역은 ‘나의 택한 이와 언약을 잘랐다’입니다.
+    text: 히브리어 ‘자손’은 단수형이지만 여러 후손을 집합적으로 가리킬 수 있습니다.
     reason: lexical_alternative
+  - marker: b
+    text: ‘셀라’는 음악적 또는 예배적 표지로 보이지만, 정확한 뜻은 확실하지 않습니다.
+    reason: cultural_note
 lexical_decisions:
 - source_word: כָּרַתִּי בְרִית
   english_pob_choice: I have made a covenant
@@ -85,4 +88,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 내가 나의 택한 이와 언약을 맺었고, 내가 내 종 다윗에게 맹세하였으니:[a]
+  to: 내가 네 자손을 영원히 굳게 세우고, 네 왕좌를 대대로 세울 것입니다.[a] 셀라[b]
+  rationale: 히브리어 עַד עוֹלָם, אָכִין, זַרְעֶךָ, וּבָנִיתִי, לְדֹר וָדֹר, כִּסְאֲךָ, סֶלָה를 순서와 병행 구조에 맞추어 옮겼습니다. ‘네 자손’과 ‘네 왕좌’라는 직접 호칭을 유지하여 다윗 왕조 언약의 역사적 표현을 보존하되, 후대의 교리적 해석은 본문에 덧붙이지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:12:01Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안은 시편 89:4가 아니라 앞 절(시편 89:3)의 내용(‘내가 나의 택한 이와 언약을 맺었고… 다윗에게 맹세하였다’)을 옮겼습니다. 제시된 히브리어 본문은 ‘네 자손’을 영원히 세우고 ‘네 왕좌’를 대대로 세우겠다는 미래의 약속이므로, 본문 전체를 교체해야 합니다.
+  naturalness: 수정문은 현대 표준 한국어의 합쇼체로 자연스럽고, 두 병행절의 미래 약속을 ‘세우고/세울 것입니다’로 연결해 보존합니다. ‘셀라’는 의미가 확정되지 않았으므로 음역합니다.
+  terminology: זַרְעֶךָ는 집합적 단수의 의미를 살려 ‘네 자손’으로, כִּסְאֲךָ는 왕조적 문맥을 유지해 ‘네 왕좌’로 옮겼습니다. אָכִין의 확고히 세운다는 뜻은 ‘굳게 세우고’로 반영했습니다.
+  issues:
+  - severity: high
+    issue: 절 본문 불일치
+    rationale: 초안은 제공된 원문 및 대상 절인 시편 89:4와 전혀 다른 시편 89:3의 내용을 담고 있어, 원문 충실성을 확보하려면 완전한 본문 교체가 필요합니다.
+  - severity: medium
+    issue: 각주 내용 및 표지 불일치
+    rationale: 초안의 각주는 כרת ברית 관용구를 설명하지만 대상 원문에는 해당 표현이 없습니다. 대상 절의 자손 및 ‘셀라’ 관련 각주로 교체해야 합니다.
+  revised_text: 내가 네 자손을 영원히 굳게 세우고, 네 왕좌를 대대로 세울 것입니다.[a] 셀라[b]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 ‘자손’은 단수형이지만 여러 후손을 집합적으로 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘셀라’는 음악적 또는 예배적 표지로 보이지만, 정확한 뜻은 확실하지 않습니다.
+    reason: cultural_note
+  revision_rationale: 히브리어 עַד עוֹלָם, אָכִין, זַרְעֶךָ, וּבָנִיתִי, לְדֹר וָדֹר, כִּסְאֲךָ, סֶלָה를 순서와 병행 구조에 맞추어 옮겼습니다. ‘네 자손’과 ‘네 왕좌’라는 직접 호칭을 유지하여 다윗 왕조 언약의 역사적 표현을 보존하되, 후대의 교리적 해석은 본문에 덧붙이지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:12:01Z'
+  output_hash: 694ae4055e8c8b003e2508e1884bf56d5804a0c395d4a2b446f0aecb86f560ab
+  usage:
+    completion_tokens: 1000
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 310
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 125
+      engine_ttlt_ms: 8174
+      pre_inference_ms: 215
+      service_tbt_ms: 8
+      service_ttft_ms: 732
+      service_ttlt_ms: 8775
+      total_duration_ms: 8569
+      user_visible_ttft_ms: 517
+    prompt_tokens: 2283
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3283
+  applied_revision: true
+  auto_apply_blocked_errors: []

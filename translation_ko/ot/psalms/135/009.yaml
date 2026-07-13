@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 애굽 가운데에, 바로와 그의 모든 종들에게 표징과 기사를 보내셨습니다.[a][b]
+  text: 그는 네 가운데에[a] 표징과 기사를 보내셨습니다, 애굽이여. 바로와 그의 모든 종들을 대적하여[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘네 가운데, 애굽이여.’ 히브리어는 여성 단수 어미로 애굽을 인격화하여 직접 호칭합니다.
-    reason: alternative_reading
+    text: 히브리어는 여성 단수인 ‘네’를 사용하여 애굽을 인격화해 직접 부릅니다.
+    reason: lexical_alternative
   - marker: b
-    text: 또는 ‘바로와 그의 모든 종들 위에.’ 히브리어 전치사는 더 문자적으로는 ‘위에/에’로도 옮길 수 있습니다.
-    reason: alternative_reading
+    text: 또는 ‘바로와 그의 모든 종들 위에.’ 히브리어 전치사는 문자적으로 ‘위에/에’로도 옮길 수 있으나, 여기서는 표징과 기사가 그들을 겨냥한 효과를 나타냅니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: שָׁלַח
   english_pob_choice: He sent
@@ -97,4 +97,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 애굽 가운데에, 바로와 그의 모든 종들에게 표징과 기사를 보내셨습니다.[a][b]
+  to: 그는 네 가운데에[a] 표징과 기사를 보내셨습니다, 애굽이여. 바로와 그의 모든 종들을 대적하여[b].
+  rationale: 원문의 직접 호칭(‘네 가운데에, 애굽이여’)을 본문에 보존하고, 바로와 그의 종들이 표징과 기사의 대상이라는 적대적 방향성을 ‘대적하여’로 명시했습니다. 표징과 기사라는 짝말 및 합쇼체 서술은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:14:51Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어는 ‘네 가운데에, 애굽이여’라는 직접 호칭과, 바로 및 그의 종들을 향한 적대적 방향성을 함께 나타냅니다. 초안의 ‘애굽 가운데에’는 2인칭 여성 단수 소유 접미사와 호격을 약화시키며, ‘종들에게’는 בְּ의 문맥상 ‘대적하여/맞서’라는 방향성을 충분히 반영하지 못합니다.
+  naturalness: ‘네 가운데에 … 애굽이여’와 ‘… 대적하여’는 시편의 시적·엄숙한 문체에 자연스럽고, 현대 표준어 합쇼체에도 맞습니다.
+  terminology: ‘표징과 기사’, ‘애굽’, ‘바로’, ‘종들’은 출애굽 회상 문맥과 기존 성서 용례에 적절합니다. 왕궁 문맥의 עֲבָדָיו를 ‘종들’로 유지하되 ‘신하들’로 한정하지 않았습니다.
+  issues:
+  - severity: medium
+    issue: 직접 호칭 및 소유 접미사의 약화
+    rationale: בְּתוֹכֵכִי는 ‘네 가운데에’이며 뒤의 מִצְרָיִם은 애굽을 인격화한 호격입니다. ‘애굽 가운데에’는 이를 3인칭 지명구로 바꾸어 원문의 خطاب을 잃습니다.
+  - severity: medium
+    issue: 바로와 종들을 향한 적대적 방향성의 불충분한 반영
+    rationale: 문맥상 בְּפַרְעֹה וּבְכָל־עֲבָדָיו는 표징과 기사가 바로와 그의 종들을 겨냥하여 작용함을 나타냅니다. ‘종들에게’는 단순 수여 대상으로 읽힐 수 있으므로 ‘대적하여’가 더 충실합니다.
+  revised_text: 그는 네 가운데에[a] 표징과 기사를 보내셨습니다, 애굽이여. 바로와 그의 모든 종들을 대적하여[b].
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 여성 단수인 ‘네’를 사용하여 애굽을 인격화해 직접 부릅니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘바로와 그의 모든 종들 위에.’ 히브리어 전치사는 문자적으로 ‘위에/에’로도 옮길 수 있으나, 여기서는 표징과 기사가 그들을 겨냥한 효과를 나타냅니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 직접 호칭(‘네 가운데에, 애굽이여’)을 본문에 보존하고, 바로와 그의 종들이 표징과 기사의 대상이라는 적대적 방향성을 ‘대적하여’로 명시했습니다. 표징과 기사라는 짝말 및 합쇼체 서술은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:14:51Z'
+  output_hash: aefabe431ed9cb8cf9d9e2043781e0ccb058b6284f4cf6377a77411a64f7686a
+  usage:
+    completion_tokens: 1016
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 319
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 146
+      engine_ttlt_ms: 8346
+      pre_inference_ms: 120
+      service_tbt_ms: 8
+      service_ttft_ms: 388
+      service_ttlt_ms: 8564
+      total_duration_ms: 8454
+      user_visible_ttft_ms: 269
+    prompt_tokens: 2453
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3469
+  applied_revision: true
+  auto_apply_blocked_errors: []

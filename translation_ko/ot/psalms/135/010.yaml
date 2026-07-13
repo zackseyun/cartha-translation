@@ -20,12 +20,9 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그분은 많은 나라를 치시고 강한 왕들을 죽이신 분입니다.[a][b]
+  text: 많은 나라를 치시고 강한 왕들을 죽이신 분이십니다.[b]
   philosophy: optimal-equivalence
   footnotes:
-  - marker: a
-    text: 또는 더 직역하면, ‘많은 나라를 치신 분’입니다.
-    reason: lexical_alternative
   - marker: b
     text: 또는 ‘강력한 왕들’입니다.
     reason: lexical_alternative
@@ -93,4 +90,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그분은 많은 나라를 치시고 강한 왕들을 죽이신 분입니다.[a][b]
+  to: 많은 나라를 치시고 강한 왕들을 죽이신 분이십니다.[b]
+  rationale: 원문의 앞 절 연계 관계절을 한국어에서 자연스럽게 유지하도록 ‘… 죽이신 분이십니다’로 고쳤습니다. 의미상 대안이 되지 않는 각주 a는 삭제하고, עֲצוּמִים의 유효한 어휘 대안만 각주로 남겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:14:47Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어는 앞 절의 주어를 받는 관계절로, ‘많은 나라를 치고 강한 왕들을 죽인’이라는 병렬 서술입니다. 초안의 핵심 어휘 선택은 충실하나, ‘그분은 … 분입니다’는 관계절을 독립된 동격 서술로 중복해 처리합니다.
+  naturalness: ‘그분은 많은 나라를 치시고 강한 왕들을 죽이신 분입니다’는 문법적으로 가능하지만 ‘그분은 … 분입니다’가 다소 중복적이고, 앞 절에 이어지는 시편의 관계절 흐름도 약해집니다. 주어를 생략한 ‘… 죽이신 분이십니다’가 현대 격식체에서 더 자연스럽습니다.
+  terminology: ‘나라’, ‘치시고’, ‘강한 왕들’, ‘죽이신’은 각각 גּוֹיִם, הִכָּה, עֲצוּמִים, הָרַג에 적절히 대응합니다. ‘강력한’은 가능한 대안입니다.
+  issues:
+  - severity: medium
+    issue: 관계절의 한국어 처리
+    rationale: 원문의 שֶׁ־는 앞 절의 선행사를 받습니다. 초안의 ‘그분은 … 분입니다’는 의미를 크게 훼손하지는 않지만, 대명사와 ‘분’의 중복으로 관계절 연결을 불필요하게 약화합니다.
+  - severity: low
+    issue: 각주 a의 대안성 및 앵커 범위
+    rationale: 본문의 ‘많은 나라를 치시고’와 각주 a의 ‘많은 나라를 치신 분’은 실질적인 어휘 대안이 아니며, 각주는 본문 전체 병렬구도와도 정확히 대응하지 않습니다. 따라서 삭제하는 편이 명료합니다.
+  revised_text: 많은 나라를 치시고 강한 왕들을 죽이신 분이십니다.[b]
+  revised_footnotes:
+  - marker: b
+    text: 또는 ‘강력한 왕들’입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 앞 절 연계 관계절을 한국어에서 자연스럽게 유지하도록 ‘… 죽이신 분이십니다’로 고쳤습니다. 의미상 대안이 되지 않는 각주 a는 삭제하고, עֲצוּמִים의 유효한 어휘 대안만 각주로 남겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:14:47Z'
+  output_hash: 2355a659bf03b31713bc591a321720797c8fa65d5490a1665ea4eade367368a3
+  usage:
+    completion_tokens: 1027
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 445
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 122
+      engine_ttlt_ms: 8587
+      pre_inference_ms: 254
+      service_tbt_ms: 8
+      service_ttft_ms: 717
+      service_ttlt_ms: 9184
+      total_duration_ms: 8943
+      user_visible_ttft_ms: 463
+    prompt_tokens: 2304
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3331
+  applied_revision: true
+  auto_apply_blocked_errors: []

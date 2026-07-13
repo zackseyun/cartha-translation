@@ -20,14 +20,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 내 원수들이 내게 악한 말을 합니다. “그가 언제 죽고 그의 이름이 사라질까?”[a][b]
+  text: 그가 나를 보러 오면 거짓을 말합니다. 그의 마음은 속으로 악을 모으고, 밖으로 나가서는 그것을 말합니다.[a][b][c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 ‘악’을 ‘나에게’ 말하는 표현이어서, ‘악한 말’로 옮겼습니다.
+    text: 히브리어는 문자적으로 ‘보러 오면’이라고 하며, 목적어는 문맥상 화자(‘나’)로 이해됩니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘그의 이름’은 단순한 명칭만이 아니라 기억이나 명성을 가리킬 수도 있습니다.
+    text: ‘거짓’으로 옮긴 히브리어 낱말은 ‘헛됨’ 또는 ‘속임’의 뜻도 지닐 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 히브리어는 ‘밖으로’라고 합니다. ‘그것’은 그가 마음속에 모은 악한 내용을 가리키는 것으로 이해됩니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אוֹיְבַי
@@ -73,4 +76,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 내 원수들이 내게 악한 말을 합니다. “그가 언제 죽고 그의 이름이 사라질까?”[a][b]
+  to: 그가 나를 보러 오면 거짓을 말합니다. 그의 마음은 속으로 악을 모으고, 밖으로 나가서는 그것을 말합니다.[a][b][c]
+  rationale: 원문에 충실하도록 절 전체를 새로 번역했습니다. ‘나’를 보러 온다는 목적어와 마지막 ‘그것’은 히브리어에서 문맥상 함축되어 있으므로 각주로 밝혔습니다. ‘밖’은 원문보다 구체적인 ‘거리’로 확정하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:06:54Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 시편 41:5에 해당하는 내용(원수들이 화자의 죽음과 이름의 소멸을 바람)을 옮겼으며, 제시된 히브리어 본문인 시편 41:6과 일치하지 않습니다. 41:6은 한 사람이 화자를 찾아와 겉으로는 거짓을 말하고, 속으로 악을 모은 뒤 밖에 나가 그것을 말하는 장면입니다.
+  naturalness: 수정문은 현대 표준 한국어 합쇼체로 자연스럽고, 히브리어의 반복되는 ‘말하다’와 안/밖의 대조를 유지합니다.
+  terminology: שָׁוְא는 문맥상 ‘거짓’으로, אָוֶן은 ‘악’으로 옮겼습니다. לַחוּץ는 과도하게 ‘거리’로 특정하지 않고 ‘밖으로’로 번역했습니다.
+  issues:
+  - severity: high
+    issue: 본문-번역 불일치
+    rationale: 현 초안은 원문에 없는 ‘그가 언제 죽고 그의 이름이 사라질까?’를 포함하며, 원문에 있는 방문, 거짓말, 마음속의 악, 밖에서의 발화를 누락합니다.
+  - severity: medium
+    issue: 각주 및 어휘 결정이 다른 절의 히브리어를 전제함
+    rationale: 초안의 אוֹיְבַי, רַע לִי, וְאָבַד שְׁמוֹ 관련 설명은 제공된 WLC 본문에 나타나지 않습니다. 41:6의 실제 표현에 맞추어 교체해야 합니다.
+  revised_text: 그가 나를 보러 오면 거짓을 말합니다. 그의 마음은 속으로 악을 모으고, 밖으로 나가서는 그것을 말합니다.[a][b][c]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘보러 오면’이라고 하며, 목적어는 문맥상 화자(‘나’)로 이해됩니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘거짓’으로 옮긴 히브리어 낱말은 ‘헛됨’ 또는 ‘속임’의 뜻도 지닐 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 히브리어는 ‘밖으로’라고 합니다. ‘그것’은 그가 마음속에 모은 악한 내용을 가리키는 것으로 이해됩니다.
+    reason: lexical_alternative
+  revision_rationale: 원문에 충실하도록 절 전체를 새로 번역했습니다. ‘나’를 보러 온다는 목적어와 마지막 ‘그것’은 히브리어에서 문맥상 함축되어 있으므로 각주로 밝혔습니다. ‘밖’은 원문보다 구체적인 ‘거리’로 확정하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:06:54Z'
+  output_hash: 90f2ac02d3efe5e6501d41f3ce84a51f4d4c8b53e55418ee130b052577260e00
+  usage:
+    completion_tokens: 914
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 239
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 136
+      engine_ttlt_ms: 8057
+      pre_inference_ms: 148
+      service_tbt_ms: 9
+      service_ttft_ms: 430
+      service_ttlt_ms: 8416
+      total_duration_ms: 8273
+      user_visible_ttft_ms: 282
+    prompt_tokens: 2355
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3269
+  applied_revision: true
+  auto_apply_blocked_errors: []

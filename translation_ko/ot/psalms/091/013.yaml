@@ -20,7 +20,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 당신은 사자와 코브라[a][b]를 밟고 지나가며, 젊은 사자와 뱀을 짓밟을 것입니다.
+  text: 당신은 사자와 코브라[b]를 밟을 것이며, 젊은 사자와 뱀[a]을 짓밟을 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -82,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 당신은 사자와 코브라[a][b]를 밟고 지나가며, 젊은 사자와 뱀을 짓밟을 것입니다.
+  to: 당신은 사자와 코브라[b]를 밟을 것이며, 젊은 사자와 뱀[a]을 짓밟을 것입니다.
+  rationale: 원문 동사의 단순한 ‘밟다’ 의미와 두 행의 병행 미래 표현을 회복했습니다. 또한 각주 표지를 각각 코브라(פתן)와 뱀(תנין)에 정확히 배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:11:31Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 동사 תדרֹךְ은 ‘밟다’이며 ‘지나가다’라는 별도의 동작을 포함하지 않습니다. 또한 두 미완료 동사는 병행되어 있으므로 한국어에서도 대등하게 미래로 옮기는 것이 적절합니다.
+  naturalness: ‘당신은 … 밟을 것이며, … 짓밟을 것입니다’는 현대 표준어 합쇼체에서 자연스럽고 시적 병행을 유지합니다.
+  terminology: שׁחל은 ‘사자’, פתן은 ‘코브라’, כפיר은 ‘젊은 사자’, תנין은 이 문맥에서 ‘뱀’으로 옮긴 것이 적절합니다. ‘용’ 대안 주석은 תנין인 ‘뱀’에 붙어야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘밟고 지나가며’가 원문에 없는 ‘지나가다’의 의미를 더합니다.
+    rationale: דרך는 여기서 대상 위를 밟는 행위를 뜻합니다. ‘지나가며’는 이동·통과의 의미를 보태고, 두 병행 동사의 대등한 구조도 약화합니다.
+  - severity: high
+    issue: 각주 표지가 해당 어휘에 잘못 연결되어 있습니다.
+    rationale: ‘asp(독사)’ 대안은 פתן/‘코브라’에, ‘용’ 대안은 תנין/‘뱀’에 붙어야 합니다. 현 본문에서는 두 표지가 모두 ‘코브라’ 뒤에 있어 תנין 관련 대안의 범위가 불명확합니다.
+  revised_text: 당신은 사자와 코브라[b]를 밟을 것이며, 젊은 사자와 뱀[a]을 짓밟을 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘용’으로도 옮길 수 있습니다. 히브리어는 다른 문맥에서 큰 파충류나 바다 생물을 가리킬 수 있지만, 여기서는 ‘뱀’이 문맥에 가장 잘 맞습니다.
+    reason: alternative_reading
+  - marker: b
+    text: 전통적으로는 ‘asp(독사)’로 옮기기도 합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문 동사의 단순한 ‘밟다’ 의미와 두 행의 병행 미래 표현을 회복했습니다. 또한 각주 표지를 각각 코브라(פתן)와 뱀(תנין)에 정확히 배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:11:31Z'
+  output_hash: 9c8c24c0e0afa01828cf83f207a112d29054beadd1122a2b0588f8bcdbf04990
+  usage:
+    completion_tokens: 777
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 183
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 133
+      engine_ttlt_ms: 6465
+      pre_inference_ms: 82
+      service_tbt_ms: 8
+      service_ttft_ms: 382
+      service_ttlt_ms: 6713
+      total_duration_ms: 6654
+      user_visible_ttft_ms: 300
+    prompt_tokens: 2125
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2902
+  applied_revision: true
+  auto_apply_blocked_errors: []
