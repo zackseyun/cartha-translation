@@ -14,11 +14,11 @@ base_translation:
   text: And it happened, when all the people heard that seven days had passed and I had not returned to the city, that all of them gathered together, from the least to the greatest, and came to
 translation:
   language: ko
-  text: 그리고 모든 백성이 일곱 날이 지났고 내가 성으로 돌아오지 않았다는 말을 들었을 때, 그들 모두가 가장 작은 사람부터 가장 큰 사람까지 함께 모여 그에게 왔습니다.[a]
+  text: 그리고 온 백성이 일곱 날이 지났는데도 내가 성으로 돌아오지 않았다는 것을 들었을 때, 가장 낮은 이부터 가장 높은 이까지 모두 함께 모여 와서[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 라틴어 원문은 여기서 다음 절로 이어지며, 영어 POB도 “came to”로 문장을 열어 둡니다.
+    text: 라틴어 원문은 여기서 ‘와서’에 해당하는 말로 끝나며, 목적어와 이어지는 내용은 다음 절에 계속됩니다. 영어 POB도 “came to”로 문장을 열어 둡니다.
     reason: source_note
 lexical_decisions:
 - source_word: factum est cum audisset
@@ -80,4 +80,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 모든 백성이 일곱 날이 지났고 내가 성으로 돌아오지 않았다는 말을 들었을 때, 그들 모두가 가장 작은 사람부터 가장 큰 사람까지 함께 모여 그에게 왔습니다.[a]
+  to: 그리고 온 백성이 일곱 날이 지났는데도 내가 성으로 돌아오지 않았다는 것을 들었을 때, 가장 낮은 이부터 가장 높은 이까지 모두 함께 모여 와서[a]
+  rationale: 원문에 없는 ‘그에게’를 삭제하고, 한국어 문말을 연결형 ‘와서’로 처리하여 목적어가 다음 절에 이어지는 원문의 미완성 구조를 보존했습니다. 범위 관용구는 현대 한국어에서 자연스럽도록 다듬되, 공동체 전체의 포괄성과 대조를 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:11Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어 본문은 ‘uenit ad’에서 목적어 없이 다음 절로 이어집니다. 초안의 ‘그에게’는 이 절에 제시되지 않은 목적어를 특정하므로 원문의 미완성과 지시 대상을 넘어섭니다. 또한 ‘가장 작은 사람부터 가장 큰 사람까지’는 한국어에서 사람의 신체 크기를 우선적으로 연상시켜 관용적 범위 표현으로는 부자연스럽습니다.
+  naturalness: ‘온 백성’, ‘가장 낮은 이부터 가장 높은 이까지’는 공적·집합적 서사 문맥에서 자연스럽습니다. 문말을 ‘와서’로 두어 다음 절에 이어지는 라틴어의 미완성 구문을 한국어에서도 무리 없이 보존합니다.
+  terminology: ‘성’과 ‘백성’은 civitas 및 omnis populus에 적절합니다. 최소자와 최대자를 뜻하는 관용적 대조는 신체적 크기보다 사회적 범위도 포괄할 수 있는 ‘가장 낮은 이부터 가장 높은 이까지’로 옮겼습니다.
+  issues:
+  - severity: medium
+    issue: ‘그에게’가 원문에 없는 목적어를 특정합니다.
+    rationale: 제시된 라틴어는 ‘uenit ad’로 끝나며, ad의 목적어는 이 절 안에 없습니다. ‘그’가 누구인지 확정하지 않고 다음 절로 연결해야 합니다.
+  - severity: low
+    issue: ‘가장 작은 사람부터 가장 큰 사람까지’가 현대 한국어에서 부자연스럽습니다.
+    rationale: a minimo usque ad maximum은 포괄적 범위를 나타내는 관용구입니다. 해당 직역은 신체 크기로 읽히기 쉬우므로 관용적 대조를 살린 표현이 더 적절합니다.
+  revised_text: 그리고 온 백성이 일곱 날이 지났는데도 내가 성으로 돌아오지 않았다는 것을 들었을 때, 가장 낮은 이부터 가장 높은 이까지 모두 함께 모여 와서[a]
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 원문은 여기서 ‘와서’에 해당하는 말로 끝나며, 목적어와 이어지는 내용은 다음 절에 계속됩니다. 영어 POB도 “came to”로 문장을 열어 둡니다.
+    reason: source_note
+  revision_rationale: 원문에 없는 ‘그에게’를 삭제하고, 한국어 문말을 연결형 ‘와서’로 처리하여 목적어가 다음 절에 이어지는 원문의 미완성 구조를 보존했습니다. 범위 관용구는 현대 한국어에서 자연스럽도록 다듬되, 공동체 전체의 포괄성과 대조를 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:11Z'
+  output_hash: e8647c81d1911cc5734777895b16b2d0c03fc6f3f6e0067b34cb985c9747d965
+  usage:
+    completion_tokens: 1026
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 392
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 130
+      engine_ttlt_ms: 9280
+      pre_inference_ms: 148
+      service_tbt_ms: 9
+      service_ttft_ms: 503
+      service_ttlt_ms: 9645
+      total_duration_ms: 9512
+      user_visible_ttft_ms: 356
+    prompt_tokens: 1524
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2550
+  applied_revision: true
+  auto_apply_blocked_errors: []

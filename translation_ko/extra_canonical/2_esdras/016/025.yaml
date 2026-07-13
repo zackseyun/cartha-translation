@@ -18,12 +18,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 농부가 남겨지지 않을 것이며, 땅을 갈고 그것에 씨를 뿌릴 사람도 남겨지지 않을 것입니다.[a]
+  text: 땅을 갈고 그 땅에 씨를 뿌릴 농부는 아무도 남지 않을 것입니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘땅을 갈고 그것에 씨를 뿌릴 사람이 하나도 남지 않을 것입니다.’.
-    reason: previous_rendering
+    text: 또는 ‘땅을 갈고 그 땅에 씨를 뿌릴 사람은 아무도 남지 않을 것입니다.’
+    reason: 이전의 일반적 표현을 대안으로 보존합니다. 본문은 라틴어 `agricola`의 구체성을 따라 ‘농부’로 옮겼습니다.
 lexical_decisions:
 - source_word: agricola
   english_pob_choice: farmer
@@ -70,4 +70,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 농부가 남겨지지 않을 것이며, 땅을 갈고 그것에 씨를 뿌릴 사람도 남겨지지 않을 것입니다.[a]
+  to: 땅을 갈고 그 땅에 씨를 뿌릴 농부는 아무도 남지 않을 것입니다.[a]
+  rationale: 원문의 주어 `agricola`와 이를 수식하는 두 관계절을 한국어의 자연스러운 관형절 구조로 재구성했습니다. ‘아무도 남지 않을 것입니다’는 부정 수동 미래형이 문맥에서 나타내는 잔존자 부재를 자연스럽게 전달합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:17Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어는 `agricola`를 주어로 하고, 뒤의 `qui colit terram et qui seminat eam`이 그 농부를 수식합니다. 현 초안은 ‘농부’와 ‘사람’을 두 병렬 주어처럼 반복하여 관계절의 구조와 농부라는 구체적 지시를 흐립니다.
+  naturalness: ‘남겨지지 않을 것이며’의 수동 표현과 뒤이은 주어 반복은 한국어로 다소 부자연스럽습니다. 관계절을 ‘농부’ 앞에 두고 ‘아무도 남지 않을 것입니다’로 옮기면 현대 표준 한국어 합쇼체로 자연스럽습니다.
+  terminology: '`agricola`는 ‘농부’, `colere terram`은 ‘땅을 갈다’, `seminare eam`은 앞선 땅을 가리켜 ‘그 땅에 씨를 뿌리다’로 유지했습니다. 신학적 용어 문제는 없습니다.'
+  issues:
+  - severity: medium
+    issue: 관계절 구조가 병렬 절로 풀리면서 ‘농부’와 일반적인 ‘사람’이 분리되어 보입니다.
+    rationale: 원문은 땅을 갈고 씨를 뿌리는 주체를 모두 `agricola`로 한정합니다. 한국어도 이를 하나의 수식 구조로 유지해야 합니다.
+  - severity: low
+    issue: ‘남겨지지 않을 것’의 반복이 부자연스럽습니다.
+    rationale: 문맥상 잔존자의 부재를 뜻하므로 ‘아무도 남지 않을 것입니다’가 자연스럽고 의미를 보존합니다.
+  revised_text: 땅을 갈고 그 땅에 씨를 뿌릴 농부는 아무도 남지 않을 것입니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘땅을 갈고 그 땅에 씨를 뿌릴 사람은 아무도 남지 않을 것입니다.’
+    reason: 이전의 일반적 표현을 대안으로 보존합니다. 본문은 라틴어 `agricola`의 구체성을 따라 ‘농부’로 옮겼습니다.
+  revision_rationale: 원문의 주어 `agricola`와 이를 수식하는 두 관계절을 한국어의 자연스러운 관형절 구조로 재구성했습니다. ‘아무도 남지 않을 것입니다’는 부정 수동 미래형이 문맥에서 나타내는 잔존자 부재를 자연스럽게 전달합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:17Z'
+  output_hash: b3e7d841300d728255de51494dce353ee1027bdbe0497daee280334139faf70e
+  usage:
+    completion_tokens: 811
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 221
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 142
+      engine_ttlt_ms: 6692
+      pre_inference_ms: 92
+      service_tbt_ms: 8
+      service_ttft_ms: 344
+      service_ttlt_ms: 6870
+      total_duration_ms: 6787
+      user_visible_ttft_ms: 251
+    prompt_tokens: 1408
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2219
+  applied_revision: true
+  auto_apply_blocked_errors: []

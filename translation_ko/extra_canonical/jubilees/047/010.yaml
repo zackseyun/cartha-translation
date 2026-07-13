@@ -74,4 +74,53 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 사건과 순서는 원문 및 영어 POB와 일치합니다. 다만 ‘세 주간의 해’는 한국어에서 시간 단위로 거의 이해되지 않으며, 원문의 ‘years’로 계산된 이레라는 표현을 보다 명료하게 보존할 필요가 있습니다. 또한 원문의 ‘~하던 날까지/그 날에’ 연결을 더 직접적으로 드러내는 편이 좋습니다.
+  naturalness: ‘세 주간의 해 동안’은 현대 한국어에서 부자연스럽고 의미 파악이 어렵습니다. ‘해의 세 이레’로 옮기고 각주에서 21년이라는 계산을 밝혀 주는 것이 직역성과 가독성의 균형에 적절합니다. ‘그러다가’는 원문의 시간적 연결을 다소 느슨하게 하므로 제거하는 것이 좋습니다.
+  terminology: ‘왕의 궁정’, ‘이집트 사람’, ‘동족’, ‘형제’는 적절합니다. ‘해의 세 이레’에는 독자가 통상적 주 단위로 오해하지 않도록 주석이 필요합니다.
+  issues:
+  - severity: medium
+    issue: ‘세 주간의 해 동안’이라는 시간 표현
+    rationale: 원문의 ‘three weeks of years’(세 이레 해, 21년)를 직역하려는 의도는 타당하지만, 한국어 ‘주간의 해’는 관용적이지 않고 구문의 의미가 불명확합니다.
+  - severity: low
+    issue: ‘그러다가’의 연결
+    rationale: 원문은 왕의 궁정에 있던 기간의 종점인 ‘나가던 날’을 제시합니다. ‘그러다가’보다 ‘지내다가 … 나가던 날’이 시간적 연결을 더 충실히 반영합니다.
+  revised_text: 그리고 당신은 왕의 궁정에서 해의 세 이레 동안 지내다가, 왕의 궁정을 나가던 날 한 이집트 사람이 당신의 동족, 곧 당신의 형제들 가운데 한 사람을 때리는 것을 보았습니다.¹
+  revised_footnotes:
+  - marker: '1'
+    text: 직역하면 ‘해의 세 이레’입니다. 한 이레를 일곱 해로 계산하는 표현으로, 스물한 해를 뜻합니다.
+    reason: 원문의 특수한 연수 계산 표현을 보존하면서 현대 한국어 독자가 그 뜻을 이해하도록 합니다.
+  revision_rationale: 원문의 기간 계산 방식과 ‘궁정을 나가던 날’의 시간적 연결을 더 분명하게 반영했습니다. 사건의 주체와 대상, 곧 이집트 사람이 모세의 동족이며 형제들 가운데 한 사람을 때리는 장면은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:25Z'
+  output_hash: 228eb70adb0fec0789fef21145275141dfaa7ddf3e61be0539f2daf298cf64ce
+  usage:
+    completion_tokens: 1576
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 942
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 190
+      engine_ttlt_ms: 14415
+      pre_inference_ms: 137
+      service_tbt_ms: 9
+      service_ttft_ms: 426
+      service_ttlt_ms: 14642
+      total_duration_ms: 14516
+      user_visible_ttft_ms: 290
+    prompt_tokens: 1900
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3476
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [1]

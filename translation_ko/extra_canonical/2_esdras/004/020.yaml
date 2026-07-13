@@ -14,7 +14,7 @@ base_translation:
   text: to me and said, “You have judged rightly, so why have you not judged for yourself?”
 translation:
   language: ko
-  text: 그가 내게 와서 말했습니다. 「당신은 옳게 판단하셨습니다. 그런데 왜 자신을 위해서는 판단하지 않으셨습니까?」
+  text: 그가 내게 이렇게 말했습니다. 「당신은 바르게 판단하셨습니다. 그러니 왜 당신 자신을 위해 판단하지 않으셨습니까?」
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: ad me
@@ -69,4 +69,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 내게 와서 말했습니다. 「당신은 옳게 판단하셨습니다. 그런데 왜 자신을 위해서는 판단하지 않으셨습니까?」
+  to: 그가 내게 이렇게 말했습니다. 「당신은 바르게 판단하셨습니다. 그러니 왜 당신 자신을 위해 판단하지 않으셨습니까?」
+  rationale: 원문에 없는 ‘와서’를 제거하고, ad me et dixit의 불완전한 발화 도입은 한국어에서 자연스러운 ‘내게 이렇게 말했습니다’로 처리했습니다. tibi의 ‘자신을 위하여’라는 의미와 앞 절의 판단에 근거한 논리적 질문을 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:30:04Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어 본문은 ‘[내게] 말하였다’라는 발화 도입과 ‘당신은 바르게 판단하였다. 그러니 왜 자신을 위해 판단하지 않았는가?’라는 대조를 담고 있습니다. 초안의 ‘와서’는 제시된 본문에 없는 이동 동작을 보태므로 삭제하는 것이 안전합니다. 또한 tibi는 여기서 ‘자신을 위해/자기 자신을 위하여’라는 여격을 나타내므로 수혜적 의미를 유지했습니다.
+  naturalness: ‘내게 이렇게 말했습니다’는 한국어에서 자연스러운 직접화법 도입이며, 인용문은 현대 합쇼체의 정중한 문어 표현으로 매끄럽습니다. ‘당신 자신을 위해’는 지시 대상을 분명히 하면서도 원문의 대조를 보존합니다.
+  terminology: iudicasti는 문맥상 법정 판결로 한정되지 않으므로 ‘판단하셨습니다’가 적절합니다. bene는 ‘바르게’로, 접속의 추론적 힘은 ‘그러니’로 옮겼습니다.
+  issues:
+  - severity: medium
+    issue: ‘그가 내게 와서’의 ‘와서’
+    rationale: 제시된 라틴어는 ad me et dixit이며, 영어 감사본도 ‘to me and said’로만 옮깁니다. ‘와서’는 이동 행위를 추가합니다.
+  - severity: low
+    issue: tibi의 지시 대상 표지
+    rationale: ‘자신을 위해서’도 가능하지만, 직접화법의 ‘당신’과 연결해 ‘당신 자신을 위해’라고 하면 수혜자와 대조가 더 명확해집니다.
+  revised_text: 그가 내게 이렇게 말했습니다. 「당신은 바르게 판단하셨습니다. 그러니 왜 당신 자신을 위해 판단하지 않으셨습니까?」
+  revised_footnotes: []
+  revision_rationale: 원문에 없는 ‘와서’를 제거하고, ad me et dixit의 불완전한 발화 도입은 한국어에서 자연스러운 ‘내게 이렇게 말했습니다’로 처리했습니다. tibi의 ‘자신을 위하여’라는 의미와 앞 절의 판단에 근거한 논리적 질문을 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:04Z'
+  output_hash: a20fc4b24bb55cb8e563d7cfe22dab7d5e0917054e58707b02477cf0a5ff78a2
+  usage:
+    completion_tokens: 1050
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 120
+      engine_ttlt_ms: 8431
+      pre_inference_ms: 104
+      service_tbt_ms: 8
+      service_ttft_ms: 559
+      service_ttlt_ms: 8865
+      total_duration_ms: 8771
+      user_visible_ttft_ms: 455
+    prompt_tokens: 1358
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2408
+  applied_revision: true
+  auto_apply_blocked_errors: []

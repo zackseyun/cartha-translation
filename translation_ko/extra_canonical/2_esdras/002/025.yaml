@@ -18,7 +18,7 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 당신의 자녀들, 그들의 발을 굳게 하십시오. 당신에게 내가 준 종들.
+  text: 당신의 자녀들; 그들의 발을 굳게 하십시오. 내가 당신에게 준 종들은,
   philosophy: formal
 lexical_decisions:
 - source_word: filios tuos
@@ -65,4 +65,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 당신의 자녀들, 그들의 발을 굳게 하십시오. 당신에게 내가 준 종들.
+  to: 당신의 자녀들; 그들의 발을 굳게 하십시오. 내가 당신에게 준 종들은,
+  rationale: 원문의 범위가 절 중간에서 시작하고 끝난다는 점을 보존하되, 한국어 문장부호를 바로잡았습니다. 의미를 보충하거나 다음 절의 내용을 앞당기지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:37Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어의 세 단위(filios tuos / confirma enim pedes eorum / Servos quos tibi dedi)를 모두 반영합니다. 다만 본문 범위가 앞뒤 문장에 걸쳐 있어 첫 단위와 마지막 단위는 의도적으로 미완결입니다. 초안의 마지막 마침표는 다음 절로 이어지는 관계절을 한국어에서 부당하게 종결합니다.
+  naturalness: 초안의 첫 쉼표 연결(“당신의 자녀들, 그들의 발을…”)은 한국어 문장부호와 호흡상 어색합니다. 세미콜론과 마지막 쉼표로 절 경계를 드러내면, 원문의 절단된 문맥을 유지하면서도 더 읽기 자연스럽습니다.
+  terminology: ‘자녀들’, ‘발’, ‘굳게 하십시오’, ‘종들’은 각각 filios, pedes, confirma, servos에 충실합니다. ‘종들’은 원문의 종속 관계를 보존합니다.
+  issues:
+  - severity: medium
+    issue: 마지막 관계절이 마침표로 종결되어 있음
+    rationale: “Servos quos tibi dedi”는 뒤에 이어질 미완결 구절입니다. “종들.”로 끝내면 원문의 계속성을 가리고, 한국어에서도 관계절을 부자연스럽게 단절합니다.
+  - severity: low
+    issue: 첫 미완결 단위와 명령문의 연결 문장부호가 어색함
+    rationale: ‘당신의 자녀들’은 제공된 라틴 범위상 앞 문맥에 걸린 단위이므로, 쉼표보다 세미콜론을 사용해 뒤의 독립 명령문과 구분하는 편이 적절합니다.
+  revised_text: 당신의 자녀들; 그들의 발을 굳게 하십시오. 내가 당신에게 준 종들은,
+  revised_footnotes: []
+  revision_rationale: 원문의 범위가 절 중간에서 시작하고 끝난다는 점을 보존하되, 한국어 문장부호를 바로잡았습니다. 의미를 보충하거나 다음 절의 내용을 앞당기지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:37Z'
+  output_hash: ce4a1f3981fd8e55beb59542f4363baf5a023b6e66df0e8f70db90ab85640e17
+  usage:
+    completion_tokens: 1020
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 9607
+      pre_inference_ms: 168
+      service_tbt_ms: 9
+      service_ttft_ms: 476
+      service_ttlt_ms: 9937
+      total_duration_ms: 9784
+      user_visible_ttft_ms: 307
+    prompt_tokens: 1517
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2537
+  applied_revision: true
+  auto_apply_blocked_errors: []

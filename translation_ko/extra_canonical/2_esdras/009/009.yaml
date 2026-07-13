@@ -14,14 +14,14 @@ base_translation:
   text: Then those who now have abused my ways will be astonished, and those who cast them aside in contempt will remain in torments.
 translation:
   language: ko
-  text: 그러면 이제 자기들이 내 길을 남용한 자들은 놀라게 되고, 그들을 경멸하며 내던진 자들은 고통 속에 머물 것입니다.[a][b]
+  text: 그때에 지금까지 내 길들을 악용해 온 자들은 놀랄 것이며, 그 길들을 멸시하여 내던진 자들은 고통 가운데 머물 것입니다.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 직역하면 ‘내 길들을 남용한 자들’입니다.
+    text: 직역하면 ‘내 길들을 악용해 온 자들’입니다.
     reason: lexical_alternative
   - marker: b
-    text: cruciamentis는 ‘고문/형벌’의 강한 뉘앙스를 지닙니다.
+    text: cruciamentis는 지속적인 ‘고통’ 또는 ‘고문/형벌’의 강한 뉘앙스를 지닙니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: abusi sunt vias meas
@@ -83,4 +83,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러면 이제 자기들이 내 길을 남용한 자들은 놀라게 되고, 그들을 경멸하며 내던진 자들은 고통 속에 머물 것입니다.[a][b]
+  to: 그때에 지금까지 내 길들을 악용해 온 자들은 놀랄 것이며, 그 길들을 멸시하여 내던진 자들은 고통 가운데 머물 것입니다.[a][b]
+  rationale: 문법적으로 어색한 주어 구성을 바로잡고, eos의 선행사가 사람들 아니라 ‘내 길들’임을 명시했습니다. 또한 tunc와 nunc의 시간 대비를 ‘그때에’와 ‘지금까지’로 살렸으며, 원문의 병렬 구조와 미래 결과를 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:27Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 시간 표지(nunc, tunc), 두 관계절의 병렬, 그리고 eos가 선행하는 vias meas(‘내 길들’)를 가리키는 점을 더 분명히 드러낼 필요가 있습니다. 초안의 ‘그들’은 사람을 가리키는 것으로 읽히기 쉬워 원문의 대상을 흐립니다.
+  naturalness: ‘이제 자기들이 … 자들’은 현대 한국어 문장으로 비문에 가깝고, ‘그러면’보다 종말론적 시간 표지인 ‘그때에’가 tunc에 더 적절합니다. ‘고통 가운데 머물 것입니다’는 자연스럽고 격식 있는 합쇼체입니다.
+  terminology: vias meas는 본문에서 ‘내 길들’로 유지하되, 한국어의 자연스러움을 위해 두 번째 언급에서는 ‘그 길들’로 받아 원문의 복수 대명사 eos를 명시합니다. abusi sunt에는 ‘악용해 온’이, cruciamentis에는 지속적이고 강한 괴로움을 나타내는 ‘고통 가운데’가 적절합니다.
+  issues:
+  - severity: high
+    issue: ‘자기들이 내 길을 남용한 자들’이라는 주어 구성이 비문입니다.
+    rationale: 관계절 주어 ‘자기들이’와 명사구 중심어 ‘자들’이 중복되어 문법적으로 자연스럽지 않으며, 원문의 관계절 구조도 흐립니다.
+  - severity: high
+    issue: eos를 ‘그들’로 번역하여 선행사 vias meas를 사람으로 오독하게 합니다.
+    rationale: 라틴어 eos는 남성 복수인 vias(‘길들’)를 받습니다. 따라서 ‘그 길들’이라고 밝혀야 원문의 지시 관계가 보존됩니다.
+  - severity: medium
+    issue: ‘그러면’은 tunc의 시간적·예언적 전환을 충분히 나타내지 못합니다.
+    rationale: ‘그때에’가 ‘그 시점에’라는 원문의 시간 표지와 문맥상 심판 선언의 전환을 더 정확하게 전달합니다.
+  revised_text: 그때에 지금까지 내 길들을 악용해 온 자들은 놀랄 것이며, 그 길들을 멸시하여 내던진 자들은 고통 가운데 머물 것입니다.[a][b]
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 ‘내 길들을 악용해 온 자들’입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: cruciamentis는 지속적인 ‘고통’ 또는 ‘고문/형벌’의 강한 뉘앙스를 지닙니다.
+    reason: lexical_alternative
+  revision_rationale: 문법적으로 어색한 주어 구성을 바로잡고, eos의 선행사가 사람들 아니라 ‘내 길들’임을 명시했습니다. 또한 tunc와 nunc의 시간 대비를 ‘그때에’와 ‘지금까지’로 살렸으며, 원문의 병렬 구조와 미래 결과를 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:27Z'
+  output_hash: 2a4e5390ca7d6c8748351c8a9d3c8fa770b6447f9744112d2962097d5de6be4d
+  usage:
+    completion_tokens: 1219
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 10643
+      pre_inference_ms: 148
+      service_tbt_ms: 9
+      service_ttft_ms: 658
+      service_ttlt_ms: 11151
+      total_duration_ms: 11016
+      user_visible_ttft_ms: 510
+    prompt_tokens: 1506
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2725
+  applied_revision: true
+  auto_apply_blocked_errors: []

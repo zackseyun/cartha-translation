@@ -27,8 +27,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그들이 거기서 나가자 요셉은 자기 집 사람에게 말했습니다. 「그들을 뒤쫓아 달려가서 따라잡고 말하기를, ‘좋은 것을 악으로 갚았구나. 너희는 내 주인이 마시는 은잔을 내게서 훔쳤다.’ 그리고 그들의 막내 동생을 내게 데려오되, 내가 판결에 들어가기 전에 서둘러 데려오라」.[a]
+  text: 그들이 거기서 나가자, 요셉은 자기 집 사람에게 말했습니다. “그들을 뒤쫓아 달려가서 따라잡고 이렇게 말하십시오. ‘좋은 것을 악으로 갚았습니다. 당신들은 내 주인이 마시는 은잔을 내게서 훔쳤습니다.’” 그리고 그들의 막내 동생을 내게 데려오십시오. 내가 판결을 내리기 전에 그를 빨리 데려오십시오.[3]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: '3'
+    text: 이 절의 마지막 구절은 이 분절에서 본문상 해석이 어렵습니다. 막내 동생을 즉시 데려와 이 일을 처리하라는 긴급한 명령으로 보이지만, ‘빨리 데려오라’와 ‘내가 판결을 내리기 전에’의 정확한 구문 관계는 확실하지 않습니다.
+    reason: segmentation_note
 lexical_decisions:
 - source_word: ደግፎሙ
   english_pob_choice: Pursue them, run and overtake them
@@ -90,4 +94,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들이 거기서 나가자 요셉은 자기 집 사람에게 말했습니다. 「그들을 뒤쫓아 달려가서 따라잡고 말하기를, ‘좋은 것을 악으로 갚았구나. 너희는 내 주인이 마시는 은잔을 내게서 훔쳤다.’ 그리고 그들의 막내 동생을 내게 데려오되, 내가 판결에 들어가기 전에 서둘러 데려오라」.[a]
+  to: 그들이 거기서 나가자, 요셉은 자기 집 사람에게 말했습니다. “그들을 뒤쫓아 달려가서 따라잡고 이렇게 말하십시오. ‘좋은 것을 악으로 갚았습니다. 당신들은 내 주인이 마시는 은잔을 내게서 훔쳤습니다.’” 그리고 그들의 막내 동생을 내게 데려오십시오. 내가 판결을 내리기 전에 그를 빨리 데려오십시오.[3]
+  rationale: 도난 고발은 집안 사람이 형제들에게 전달할 말로, 막내 동생을 데려오라는 말은 요셉이 그 사람에게 직접 내린 명령으로 구분했습니다. 현대 공식적 합쇼체를 일관되게 적용했으며, 마지막 절의 본문상 불확실성은 특정 해석으로 단정하지 않고 각주로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:35Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 추격, 선을 악으로 갚음, 은잔을 ‘내게서’ 훔침, 그리고 막내 동생을 데려오라는 핵심 의미를 대체로 충실히 반영합니다. 그러나 막내 동생을 데려오라는 명령은 형제들에게 할 말의 인용 안이 아니라 요셉이 집안 사람에게 직접 내린 명령이므로, 인용 구조를 분명히 해야 합니다. 또한 마지막 절은 본문 분절상 정확한 구문 관계가 불확실하므로 그 불확실성을 각주로 밝혀야 합니다.
+  naturalness: 서술은 자연스럽지만, 합쇼체 기준에서 직접 인용 속 ‘갚았구나’와 ‘데려오라’는 반말/비격식 명령형입니다. ‘갚았습니다’, ‘데려오십시오’로 통일하고, 마지막 명령의 중복된 ‘데려오되 … 데려오라’를 풀어 자연스럽게 다듬었습니다.
+  terminology: ‘은잔’, ‘막내 동생’, ‘판결’은 문맥에 적절합니다. 다만 ‘판결에 들어가기’는 한국어 법률 표현으로 다소 부자연스러워, 원문의 관용적 표현과 불확실성을 보존하는 범위에서 ‘판결을 내리기’로 옮기고 각주에서 대안을 제시했습니다.
+  issues:
+  - severity: medium
+    issue: 인용문의 범위가 막내 동생을 데려오라는 요셉의 직접 명령까지 포함됩니다.
+    rationale: 원문에서 도난 आरोप을 말하라는 지시는 ‘말하며’에 딸린 내용이고, 이어지는 ‘그들의 막내 동생을 내게 데려오라’는 집안 사람에게 하는 명령입니다. 인용을 도난 고발 뒤에서 닫아 이 구별을 드러내야 합니다.
+  - severity: medium
+    issue: 직접 인용의 높임말/register가 합쇼체와 일치하지 않습니다.
+    rationale: ‘갚았구나’, ‘데려오라’는 현대 공식적 합쇼체가 아닙니다. 요청된 표준어 현대 합쇼체에 맞춰 ‘갚았습니다’, ‘데려오십시오’가 적절합니다.
+  - severity: medium
+    issue: 마지막 절의 분절상 난점이 번역에 표시되지 않았습니다.
+    rationale: 마지막의 ‘빨리 데려오라’와 ‘내가 판결에 들어가기 전에’의 정확한 연결은 불확실합니다. 영어 POB 감사 기록의 난점을 보존하기 위해 해당 절에 각주를 달아야 합니다.
+  revised_text: 그들이 거기서 나가자, 요셉은 자기 집 사람에게 말했습니다. “그들을 뒤쫓아 달려가서 따라잡고 이렇게 말하십시오. ‘좋은 것을 악으로 갚았습니다. 당신들은 내 주인이 마시는 은잔을 내게서 훔쳤습니다.’” 그리고 그들의 막내 동생을 내게 데려오십시오. 내가 판결을 내리기 전에 그를 빨리 데려오십시오.[3]
+  revised_footnotes:
+  - marker: '3'
+    text: 이 절의 마지막 구절은 이 분절에서 본문상 해석이 어렵습니다. 막내 동생을 즉시 데려와 이 일을 처리하라는 긴급한 명령으로 보이지만, ‘빨리 데려오라’와 ‘내가 판결을 내리기 전에’의 정확한 구문 관계는 확실하지 않습니다.
+    reason: segmentation_note
+  revision_rationale: 도난 고발은 집안 사람이 형제들에게 전달할 말로, 막내 동생을 데려오라는 말은 요셉이 그 사람에게 직접 내린 명령으로 구분했습니다. 현대 공식적 합쇼체를 일관되게 적용했으며, 마지막 절의 본문상 불확실성은 특정 해석으로 단정하지 않고 각주로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:35Z'
+  output_hash: b4134142e09bed46c3663ca845367864b5f0b69d8efb79b1654240a53adf06a4
+  usage:
+    completion_tokens: 1325
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 404
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 194
+      engine_ttlt_ms: 11013
+      pre_inference_ms: 87
+      service_tbt_ms: 8
+      service_ttft_ms: 426
+      service_ttlt_ms: 11238
+      total_duration_ms: 11182
+      user_visible_ttft_ms: 340
+    prompt_tokens: 2970
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4295
+  applied_revision: true
+  auto_apply_blocked_errors: []

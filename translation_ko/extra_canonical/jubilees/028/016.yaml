@@ -20,8 +20,12 @@ base_translation:
   text: This deed is evil before the LORD. And you also command the children of Israel that they not
 translation:
   language: ko
-  text: 이 행위는 주님 앞에서 악합니다. 그리고 당신도 이스라엘 자손에게 명하여 그들이 …[a]
+  text: 이 행위는 주님 앞에서 악합니다. 그리고 당신도 이스라엘 자손에게 명령하십시오. 그들이 …[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 제공된 게즈어 본문은 ወአይ(“그리고/그들이 아니…”)에서, 영어 POB 본문은 “that they not”에서 끝납니다. 결락된 뒤의 내용을 추정하여 보충하지 않았습니다.
+    reason: 원문 및 영어 감사 본문 모두의 미완 상태를 투명하게 표시하고, 후속 금지 내용의 임의 보충을 방지합니다.
 lexical_decisions:
 - source_word: እኩይ፡ ዝንቱ፡ ግብር፡
   english_pob_choice: This deed is evil
@@ -67,4 +71,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이 행위는 주님 앞에서 악합니다. 그리고 당신도 이스라엘 자손에게 명하여 그들이 …[a]
+  to: 이 행위는 주님 앞에서 악합니다. 그리고 당신도 이스라엘 자손에게 명령하십시오. 그들이 …[a]
+  rationale: 명령형을 자연스러운 합쇼체 독립 명령문으로 바로잡고, 원문과 영어 본문이 함께 결락된 후속 절은 말줄임표와 주석으로만 표시했습니다. 의미를 보충하거나 특정 해석을 도입하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:33Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 제시된 게즈어는 “이 행위는 주님 앞에서 악하다. 그리고 너도 이스라엘 자손에게 명령하라, 그리고/그들이 아니…”까지로 끝나며, 영어 POB도 같은 지점에서 미완으로 끝납니다. 따라서 뒤의 금지 내용을 추정하여 보충해서는 안 됩니다. 다만 2인칭 명령형 አዝዝ는 한국어에서도 명령문으로 명시하는 편이 정확합니다.
+  naturalness: 초안의 “명하여 그들이”는 뒤가 결락된 상태에서는 한국어 문장으로 부자연스럽고, ‘명하여’가 수단·연결 표현처럼 들립니다. “명령하십시오. 그들이 …”로 문장을 나누면 원문의 명령과 후속 미완 절을 모두 보존하면서 현대 합쇼체에 맞습니다.
+  terminology: “이 행위”, “주님 앞에서”, “이스라엘 자손”은 무난합니다. እግዚአብሔር은 여기서 ‘주님’으로 옮길 수 있으나, 해당 게즈어 낱말 자체를 곧바로 YHWH라고 단정할 수는 없습니다. “당신도”는 현대 한국어에서 용례가 제한적이지만, 제공된 청자 지시와 합쇼체 조건 아래에서는 유지 가능합니다.
+  issues:
+  - severity: medium
+    issue: 명령형 አዝዝ가 ‘명하여’로 처리되어 문법적 기능이 흐려집니다.
+    rationale: 원문은 독립된 2인칭 단수 명령형입니다. 결락된 후속 내용 앞에서도 ‘명령하십시오’로 명령문을 종결해야 한국어에서 자연스럽고 원문 기능도 보존됩니다.
+  - severity: low
+    issue: 어휘 결정의 근거가 እግዚአብሔር을 ‘야훼를 가리킨다’고 단정합니다.
+    rationale: 이 게즈어 표기는 통상 ‘주/하나님’을 뜻하며, 제공 자료만으로 테트라그람마톤과의 직접 대응을 확정할 수 없습니다. 본문 ‘주님’은 유지하되 근거는 수정하는 것이 안전합니다.
+  revised_text: 이 행위는 주님 앞에서 악합니다. 그리고 당신도 이스라엘 자손에게 명령하십시오. 그들이 …[a]
+  revised_footnotes:
+  - marker: a
+    text: 제공된 게즈어 본문은 ወአይ(“그리고/그들이 아니…”)에서, 영어 POB 본문은 “that they not”에서 끝납니다. 결락된 뒤의 내용을 추정하여 보충하지 않았습니다.
+    reason: 원문 및 영어 감사 본문 모두의 미완 상태를 투명하게 표시하고, 후속 금지 내용의 임의 보충을 방지합니다.
+  revision_rationale: 명령형을 자연스러운 합쇼체 독립 명령문으로 바로잡고, 원문과 영어 본문이 함께 결락된 후속 절은 말줄임표와 주석으로만 표시했습니다. 의미를 보충하거나 특정 해석을 도입하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:33Z'
+  output_hash: a2b81d07b53989d3161fab9bd40731f9447670ced4fda3a23282fc2c32f340a4
+  usage:
+    completion_tokens: 1103
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 345
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 223
+      engine_ttlt_ms: 9702
+      pre_inference_ms: 140
+      service_tbt_ms: 9
+      service_ttft_ms: 524
+      service_ttlt_ms: 9998
+      total_duration_ms: 9869
+      user_visible_ttft_ms: 384
+    prompt_tokens: 1548
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2651
+  applied_revision: true
+  auto_apply_blocked_errors: []

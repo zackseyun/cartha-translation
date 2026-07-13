@@ -14,11 +14,11 @@ base_translation:
   text: And I answered and said, “If I have found favor before your eyes, show me also, your servant, whether on the day
 translation:
   language: ko
-  text: 내가 대답하여 말했습니다. 「내가 주의 눈앞에서 은총을 얻었으면, 당신의 종인 저에게도 보여 주십시오. 곧 그 날에」[a]
+  text: “…말씀들이며, 그 뒤에 그들은 자기들의 거처에 모일 것입니다.” 저는 대답하여 말했습니다. “제가 당신의 눈앞에서 은총을 얻었다면, 당신의 종인 저에게도 보여 주십시오. 그 날에 …인지”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 라틴어 si in die는 여기서 문장이 끊기며, 뒤를 보충하지 않은 채 그대로 옮겼습니다.
+    text: 라틴어 본문은 si in die(‘그 날에 …인지’)에서 문장이 끊깁니다. 뒤의 내용을 보충하지 않았습니다.
     reason: textual_variant
 lexical_decisions:
 - source_word: si inueni gratiam ante oculos tuos
@@ -73,4 +73,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 내가 대답하여 말했습니다. 「내가 주의 눈앞에서 은총을 얻었으면, 당신의 종인 저에게도 보여 주십시오. 곧 그 날에」[a]
+  to: “…말씀들이며, 그 뒤에 그들은 자기들의 거처에 모일 것입니다.” 저는 대답하여 말했습니다. “제가 당신의 눈앞에서 은총을 얻었다면, 당신의 종인 저에게도 보여 주십시오. 그 날에 …인지”[a]
+  rationale: 제공된 라틴어의 선행 발화 종결부를 번역에 포함했습니다. 발췌가 문장 중간에서 시작함은 줄임표로 표시했습니다. tuos에 없는 호칭을 제거하고, 미완성인 si in die의 접속사 기능과 단절을 ‘그 날에 …인지’ 및 주석으로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:26:12Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 현전 라틴어에는 앞선 발화의 끝인 “sunt sermones, et postea congregabuntur in habitaculis suis”가 포함되어 있으나 초안은 이를 누락했습니다. 또한 si는 조건·간접의문을 여는 접속사인데, ‘곧’은 그 기능을 반영하지 못합니다.
+  naturalness: ‘당신의 종인 저에게도 보여 주십시오’는 현대 격식체로 자연스럽습니다. 다만 미완 문장은 한국어에서도 ‘…인지’로 열어 둠으로써 원문의 단절과 문법 기능을 함께 보존하는 편이 더 적절합니다.
+  terminology: gratiam은 여기서 상대에게 입는 호의/은총을 뜻하며 ‘은총’을 유지할 수 있습니다. 원문에 없는 신적 호칭 ‘주’는 피하고, tuos에 맞추어 ‘당신’을 사용해야 합니다. seruo tuo는 ‘당신의 종인 저’로 적절합니다.
+  issues:
+  - severity: high
+    issue: 원문 첫 구절 누락
+    rationale: 제공된 라틴어의 “sunt sermones, et postea congregabuntur in habitaculis suis”가 번역문에서 빠져 있어, 현전 본문 범위를 온전히 반영하지 못합니다.
+  - severity: medium
+    issue: ‘주의’라는 호칭 추가
+    rationale: tuos는 단지 2인칭 소유 표현이며, 이 발췌문만으로 ‘주’라는 신적 호칭을 확정할 근거가 없습니다. ‘당신의 눈앞에서’가 원문에 충실합니다.
+  - severity: high
+    issue: si in die를 ‘곧 그 날에’로 번역
+    rationale: si의 조건·간접의문 기능이 사라집니다. 문장이 뒤에서 끊긴 상태를 보존하되 ‘그 날에 …인지’로 옮겨야 합니다.
+  revised_text: “…말씀들이며, 그 뒤에 그들은 자기들의 거처에 모일 것입니다.” 저는 대답하여 말했습니다. “제가 당신의 눈앞에서 은총을 얻었다면, 당신의 종인 저에게도 보여 주십시오. 그 날에 …인지”[a]
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 본문은 si in die(‘그 날에 …인지’)에서 문장이 끊깁니다. 뒤의 내용을 보충하지 않았습니다.
+    reason: textual_variant
+  revision_rationale: 제공된 라틴어의 선행 발화 종결부를 번역에 포함했습니다. 발췌가 문장 중간에서 시작함은 줄임표로 표시했습니다. tuos에 없는 호칭을 제거하고, 미완성인 si in die의 접속사 기능과 단절을 ‘그 날에 …인지’ 및 주석으로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:26:12Z'
+  output_hash: fc898303a3f8b59cb9abfc8702ed06ddbf71b88cbc036f8d578caf8345dd48d7
+  usage:
+    completion_tokens: 1102
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 429
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 9668
+      pre_inference_ms: 125
+      service_tbt_ms: 9
+      service_ttft_ms: 590
+      service_ttlt_ms: 10112
+      total_duration_ms: 9996
+      user_visible_ttft_ms: 465
+    prompt_tokens: 1527
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2629
+  applied_revision: true
+  auto_apply_blocked_errors: []

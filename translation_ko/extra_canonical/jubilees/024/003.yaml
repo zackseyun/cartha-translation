@@ -28,8 +28,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 야곱은 렌틸콩으로 죽을 끓였고, 에서는 들에서 배고픈 채로 왔습니다. 그가 형 야곱에게 말했습니다. 「이 렌틸콩 죽을 좀 주십시오.」 그러자 야곱이 그에게 말했습니다. 「네 맏아들의 상속권을 나에게 파십시오.」[a][b]
+  text: 야곱은 렌틸콩 죽을 끓였고, 에서는 들에서 배고픈 채로 왔습니다. 그가 자기 형 야곱에게 말했습니다. 「이 밀죽을 좀 주십시오.」[a] 그러자 야곱이 그에게 말했습니다. 「당신의 장자권을 나에게 파십시오.」
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 직역하면 ‘이 밀죽’입니다. 앞 문장에서 야곱이 끓인 음식은 렌틸콩 죽으로 언급되지만, 여기 게에즈어 본문은 ‘밀/곡물 죽’이라고 합니다.
+    reason: 게에즈어의 서로 다른 음식 명칭을 보존하면서, 독자가 문맥상의 불일치를 알아볼 수 있게 합니다.
 lexical_decisions:
 - source_word: ተብሰለ፡ ብርስን / ተብሰል፡ ዘሥርናይ
   english_pob_choice: lentil stew / wheat stew
@@ -88,4 +92,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 야곱은 렌틸콩으로 죽을 끓였고, 에서는 들에서 배고픈 채로 왔습니다. 그가 형 야곱에게 말했습니다. 「이 렌틸콩 죽을 좀 주십시오.」 그러자 야곱이 그에게 말했습니다. 「네 맏아들의 상속권을 나에게 파십시오.」[a][b]
+  to: 야곱은 렌틸콩 죽을 끓였고, 에서는 들에서 배고픈 채로 왔습니다. 그가 자기 형 야곱에게 말했습니다. 「이 밀죽을 좀 주십시오.」[a] 그러자 야곱이 그에게 말했습니다. 「당신의 장자권을 나에게 파십시오.」
+  rationale: 두 번째 음식 명칭을 게에즈어에 따라 ‘밀죽’으로 바로잡고, 원문 내 불일치는 해당 어구의 각주로 설명했습니다. ‘네 맏아들의 상속권’은 한국어 소유 관계가 모호하므로, 원문의 첫째 출생 지위와 권리를 정확히 나타내는 ‘당신의 장자권’으로 수정했습니다. 인물명, 서술 내용, 요청과 거래 요구의 강도는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:30:02Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 게에즈어는 야곱이 렌틸콩 죽을 끓였다고 한 뒤, 에서의 요청 대상을 문자적으로 ‘밀/곡물 죽’(ተብሰል፡ ዘሥርናይ)으로 제시합니다. 초안이 두 번째 음식을 다시 ‘렌틸콩 죽’으로 조화시킨 것은 이 본문의 이질적인 어휘를 지웁니다. 마지막 표현은 장자 지위에 따른 권리를 가리키므로 ‘장자권’이 적절합니다.
+  naturalness: ‘에서는 들에서 배고픈 채로 왔습니다’와 직접 인용의 합쇼체는 자연스럽습니다. 다만 ‘네 맏아들의 상속권’은 한국어에서 ‘네 아들 가운데 맏아들의 상속권’으로 읽힐 수 있으므로, 에서 자신이 가진 권리를 뜻하는 ‘당신의 장자권’으로 고쳐야 합니다.
+  terminology: ‘장자권’은 장자의 지위와 그에 수반되는 권리를 간결하고 정확하게 나타내는 확립된 성서 한국어 용어입니다. ‘밀죽’은 게에즈어의 명시적 ‘밀/곡물’ 표현을 보존하며, 앞선 ‘렌틸콩 죽’과의 불일치는 각주로 설명하는 것이 안전합니다.
+  issues:
+  - severity: high
+    issue: 에서의 요청 대상이 ‘렌틸콩 죽’으로 번역됨
+    rationale: 게에즈어 ተብሰል፡ ዘሥርናይ는 ‘밀/곡물 죽’을 뜻합니다. 앞 문장의 렌틸콩 죽과 일치시키는 번역은 원문의 어휘적 이질성과 가능한 전승상의 문제를 감춥니다.
+  - severity: medium
+    issue: ‘네 맏아들의 상속권’이 소유 관계를 잘못 나타낼 수 있음
+    rationale: 이는 에서 자신의 장자권이 아니라 에서의 맏아들이 가질 상속권처럼 이해될 수 있습니다. 원문의 ‘당신의 첫 출생의 권리’에는 ‘당신의 장자권’이 정확합니다.
+  - severity: low
+    issue: 기존 각주 표지 [a][b]가 모두 문장 끝에 놓여 있음
+    rationale: 음식 명칭의 문제를 설명하는 각주는 해당 표현인 ‘밀죽’ 바로 뒤에 두어야 하며, 영어 감사 기록의 대안 번역 각주는 현 본문 번역과 맞지 않아 유지할 필요가 없습니다.
+  revised_text: 야곱은 렌틸콩 죽을 끓였고, 에서는 들에서 배고픈 채로 왔습니다. 그가 자기 형 야곱에게 말했습니다. 「이 밀죽을 좀 주십시오.」[a] 그러자 야곱이 그에게 말했습니다. 「당신의 장자권을 나에게 파십시오.」
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 ‘이 밀죽’입니다. 앞 문장에서 야곱이 끓인 음식은 렌틸콩 죽으로 언급되지만, 여기 게에즈어 본문은 ‘밀/곡물 죽’이라고 합니다.
+    reason: 게에즈어의 서로 다른 음식 명칭을 보존하면서, 독자가 문맥상의 불일치를 알아볼 수 있게 합니다.
+  revision_rationale: 두 번째 음식 명칭을 게에즈어에 따라 ‘밀죽’으로 바로잡고, 원문 내 불일치는 해당 어구의 각주로 설명했습니다. ‘네 맏아들의 상속권’은 한국어 소유 관계가 모호하므로, 원문의 첫째 출생 지위와 권리를 정확히 나타내는 ‘당신의 장자권’으로 수정했습니다. 인물명, 서술 내용, 요청과 거래 요구의 강도는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:02Z'
+  output_hash: 02c050a18d1a02a26809e1dbf6c23ca956f5588d55e629166cc4a8b04ae380c4
+  usage:
+    completion_tokens: 1290
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 380
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 1190
+      engine_ttlt_ms: 12590
+      pre_inference_ms: 120
+      service_tbt_ms: 9
+      service_ttft_ms: 1666
+      service_ttlt_ms: 13061
+      total_duration_ms: 12951
+      user_visible_ttft_ms: 1546
+    prompt_tokens: 2570
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 2176
+    total_tokens: 3860
+  applied_revision: true
+  auto_apply_blocked_errors: []

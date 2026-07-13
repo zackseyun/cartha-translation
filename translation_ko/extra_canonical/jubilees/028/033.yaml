@@ -20,7 +20,7 @@ base_translation:
   text: She did not bear children, and she said to Jacob, “Give me children.” And Jacob said, “Have I withheld from you?”
 translation:
   language: ko
-  text: 그녀는 아이를 낳지 못했습니다. 그래서 야곱에게 말했습니다. 「자녀를 주십시오.」 야곱이 말했습니다. 「제가 당신에게서 무엇을 빼앗았습니까?」
+  text: 그녀는 아이를 낳지 못했습니다. 그리고 야곱에게 말했습니다. 「제게 자녀를 주십시오.」 야곱이 말했습니다. 「제가 당신에게 주지 않은 것이 있습니까?」
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: did not bear children
@@ -67,4 +67,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그녀는 아이를 낳지 못했습니다. 그래서 야곱에게 말했습니다. 「자녀를 주십시오.」 야곱이 말했습니다. 「제가 당신에게서 무엇을 빼앗았습니까?」
+  to: 그녀는 아이를 낳지 못했습니다. 그리고 야곱에게 말했습니다. 「제게 자녀를 주십시오.」 야곱이 말했습니다. 「제가 당신에게 주지 않은 것이 있습니까?」
+  rationale: 접속 관계를 원문의 병렬로 되돌리고, 명령문의 수혜자를 복원했습니다. 마지막 말은 원문의 목적어 생략과 짧은 반문을 보존하기 위해 ‘주지 않은 것이 있습니까?’로 옮겼으며, 더 구체적인 신학적 또는 서사적 설명을 덧붙이지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:59Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 접속사는 단순 병렬(‘그리고’)인데, 초안의 ‘그래서’는 출산하지 못한 사실과 요청 사이에 원문에 없는 인과를 부여합니다. 또한 ‘Give me children’의 수여 대상인 ‘me’가 한국어 초안에서 빠졌습니다. 마지막 반문은 ‘빼앗다’가 아니라 ‘억제하다/주지 않다’에 해당하므로, ‘빼앗았습니까?’는 의미가 달라집니다.
+  naturalness: ‘그녀는 아이를 낳지 못했습니다’와 합쇼체 대화문은 자연스럽습니다. ‘제가 당신에게 주지 않은 것이 있습니까?’는 원문의 생략된 목적어를 한국어에서 무리 없이 보완하면서도 짧은 반문의 성격을 유지합니다.
+  terminology: ‘자녀’는 요청의 내용에 적절합니다. ‘제게 자녀를 주십시오’로 수혜자를 명시합니다. 인명 ‘야곱’은 표준 표기와 일치합니다.
+  issues:
+  - severity: medium
+    issue: ‘그래서’가 병렬 접속을 인과 접속으로 바꿉니다.
+    rationale: 원문은 단순히 ‘그리고 그녀가 야곱에게 말했다’라고 이어지며, 명시적인 인과 표지가 없습니다.
+  - severity: high
+    issue: ‘자녀를 주십시오’에서 ‘제게’가 누락되었습니다.
+    rationale: 원문의 명령은 ‘나에게 자녀들을 주라’이며, 수여 대상이 번역문에 드러나야 합니다.
+  - severity: high
+    issue: ‘제가 당신에게서 무엇을 빼앗았습니까?’는 ‘withheld from you’를 ‘빼앗다’로 전환합니다.
+    rationale: 원문의 동사는 주지 않음·억제함의 뜻이며, 상대가 이미 가진 것을 탈취했다는 뜻이 아닙니다. 또한 원문에는 ‘무엇’이 명시되어 있지 않습니다.
+  revised_text: 그녀는 아이를 낳지 못했습니다. 그리고 야곱에게 말했습니다. 「제게 자녀를 주십시오.」 야곱이 말했습니다. 「제가 당신에게 주지 않은 것이 있습니까?」
+  revised_footnotes: []
+  revision_rationale: 접속 관계를 원문의 병렬로 되돌리고, 명령문의 수혜자를 복원했습니다. 마지막 말은 원문의 목적어 생략과 짧은 반문을 보존하기 위해 ‘주지 않은 것이 있습니까?’로 옮겼으며, 더 구체적인 신학적 또는 서사적 설명을 덧붙이지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:59Z'
+  output_hash: a5efab447fbbb06ff7c908ee44ae570adac23ea2979d2425c18daf1799937a65
+  usage:
+    completion_tokens: 1092
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 472
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 8245
+      pre_inference_ms: 98
+      service_tbt_ms: 7
+      service_ttft_ms: 401
+      service_ttlt_ms: 8499
+      total_duration_ms: 8412
+      user_visible_ttft_ms: 302
+    prompt_tokens: 1437
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2529
+  applied_revision: true
+  auto_apply_blocked_errors: []

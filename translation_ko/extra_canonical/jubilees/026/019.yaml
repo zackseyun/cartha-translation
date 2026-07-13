@@ -20,7 +20,7 @@ base_translation:
   text: And he said, “Are you really my son Esau?” And he said, “I am your son.” And he said, “Bring it near to me, and I will eat.”
 translation:
   language: ko
-  text: 그리고 그가 말했습니다. “네가 באמת 내 아들 에서이냐?” 그가 말했습니다. “제가 아버지의 아들입니다.” 그가 말했습니다. “가져다가 내게 가까이 오게 하십시오. 내가 먹겠습니다.”[a]
+  text: 그가 말했습니다. “정말 네가 내 아들 에서입니까?” 그가 말했습니다. “제가 아버지의 아들입니다.” 그가 말했습니다. “그것을 내게 가까이 가져오십시오. 그러면 제가 먹겠습니다.”
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: “Are you really my son Esau?”
@@ -67,4 +67,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 그가 말했습니다. “네가 באמת 내 아들 에서이냐?” 그가 말했습니다. “제가 아버지의 아들입니다.” 그가 말했습니다. “가져다가 내게 가까이 오게 하십시오. 내가 먹겠습니다.”[a]
+  to: 그가 말했습니다. “정말 네가 내 아들 에서입니까?” 그가 말했습니다. “제가 아버지의 아들입니다.” 그가 말했습니다. “그것을 내게 가까이 가져오십시오. 그러면 제가 먹겠습니다.”
+  rationale: 비원문 언어 삽입과 부정확한 명령 표현을 바로잡고, 제공되지 않은 각주 앵커를 제거했습니다. 직접화법의 반복 구조, 에서라는 인명, 그리고 아들이 자신의 정체를 단순히 ‘아버지의 아들’이라고 답하는 원문의 절제된 표현은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:30:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 질문의 확인·의심의 뉘앙스와 세 차례의 짧은 직접화법을 유지했습니다. 다만 초안의 히브리어 단어 ‘באמת’는 게에즈 원문에 없는 언어 혼입이므로 한국어로 바로잡아야 합니다. 마지막 명령은 ‘그것을 화자에게 가까이 가져오라’는 뜻이지, 그것이 스스로 가까이 오게 하라는 뜻이 아닙니다.
+  naturalness: ‘가져다가 내게 가까이 오게 하십시오’는 한국어에서 행위자와 이동 대상의 관계가 부자연스럽습니다. ‘그것을 내게 가까이 가져오십시오’가 현대 표준어로 자연스럽고 원문의 동작을 정확히 나타냅니다. 합쇼체에 맞추어 대화의 종결도 정중한 문체로 통일했습니다.
+  terminology: 인명 ‘에서’를 유지했습니다. ‘제가 아버지의 아들입니다’는 원문의 ‘your son’을 관계적으로 명시하면서, 화자가 신분을 속이는 이 장면의 모호성을 불필요하게 해소하지 않습니다.
+  issues:
+  - severity: high
+    issue: 첫 발화에 한국어가 아닌 ‘באמת’가 삽입되어 있습니다.
+    rationale: 이는 원문이나 영어 POB에 없는 히브리어 단어로, 표준 한국어 번역문을 훼손합니다. 영어 POB의 ‘really’ 및 원문의 확인 뉘앙스는 ‘정말’로 옮길 수 있습니다.
+  - severity: medium
+    issue: ‘가져다가 내게 가까이 오게 하십시오’는 명령의 의미가 부정확하고 어색합니다.
+    rationale: 원문은 음식을 화자에게 가까이 가져오라는 명령입니다. 해당 표현은 대상을 스스로 오게 하라는 뜻으로 읽힐 수 있습니다.
+  - severity: low
+    issue: 본문 끝의 [a] 앵커에 대응하는 각주가 제공되지 않았습니다.
+    rationale: 근거 없는 각주 앵커이므로 삭제해야 합니다.
+  revised_text: 그가 말했습니다. “정말 네가 내 아들 에서입니까?” 그가 말했습니다. “제가 아버지의 아들입니다.” 그가 말했습니다. “그것을 내게 가까이 가져오십시오. 그러면 제가 먹겠습니다.”
+  revised_footnotes: []
+  revision_rationale: 비원문 언어 삽입과 부정확한 명령 표현을 바로잡고, 제공되지 않은 각주 앵커를 제거했습니다. 직접화법의 반복 구조, 에서라는 인명, 그리고 아들이 자신의 정체를 단순히 ‘아버지의 아들’이라고 답하는 원문의 절제된 표현은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:06Z'
+  output_hash: 36c20f8efd16f7790d85cc1c529343bd0d1bcece0a34bfb095db3d98fabccb16
+  usage:
+    completion_tokens: 1644
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 991
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 154
+      engine_ttlt_ms: 15188
+      pre_inference_ms: 146
+      service_tbt_ms: 9
+      service_ttft_ms: 714
+      service_ttlt_ms: 15671
+      total_duration_ms: 15542
+      user_visible_ttft_ms: 568
+    prompt_tokens: 1500
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3144
+  applied_revision: true
+  auto_apply_blocked_errors: []

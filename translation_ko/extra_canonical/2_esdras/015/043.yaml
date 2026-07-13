@@ -14,11 +14,11 @@ base_translation:
   text: their pastures and their grain. And they will pass steadily on as far as
 translation:
   language: ko
-  text: 그들의 목초지와 그들의 곡식입니다. 그리고 그들은 흔들림 없이 계속해서 나아가다가 …[a]
+  text: 그들의 목초지와 곡식. 그리고 그들은 꾸준히 …까지 나아갈 것이며 …[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 라틴어 usque는 여기서 뒤따를 문맥이 생략된 상태를 나타내므로, 한국어도 완결형으로 닫지 않았습니다.
+    text: 라틴어 usque(‘~까지’)는 여기서 뒤따를 문맥이 생략된 상태를 나타내므로, 한국어도 목적지 또는 한계를 보충하지 않고 미완성으로 남겼습니다.
     reason: source_note
 lexical_decisions:
 - source_word: pratorum
@@ -67,4 +67,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들의 목초지와 그들의 곡식입니다. 그리고 그들은 흔들림 없이 계속해서 나아가다가 …[a]
+  to: 그들의 목초지와 곡식. 그리고 그들은 꾸준히 …까지 나아갈 것이며 …[a]
+  rationale: 원문 단편의 명사구를 계사 없이 유지하고, usque가 요구하는 뒤이은 한계 표현의 결여를 ‘…까지’와 연결형 미래형으로 드러냈습니다. 목적지나 대상은 보충하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:20Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초반의 명사구와 후반의 미완성 구문을 보존한 방향은 적절합니다. 그러나 ‘입니다’는 라틴어 단편에 없는 서술적 계사를 보태며, ‘나아가다가’는 usque의 ‘~까지/…에 이르기까지’라는 미완성 한계를 충분히 드러내지 못합니다.
+  naturalness: 단편임을 표시하는 명사구와 줄임표는 한국어에서도 허용됩니다. ‘…까지 나아갈 것이며 …’는 문법적으로 뒤의 목적지 또는 한계가 결여되었음을 자연스럽게 드러내면서, 원문의 미완성을 보존합니다.
+  terminology: prata와 frumenta는 각각 ‘목초지’와 ‘곡식’으로 적절합니다. constanter는 여기서 ‘꾸준히’가 자연스럽고, transibunt의 미래 의미는 ‘나아갈 것이며’로 반영합니다.
+  issues:
+  - severity: medium
+    issue: ‘그들의 목초지와 그들의 곡식입니다’의 ‘입니다’
+    rationale: 제공된 라틴어는 명사구로 시작하는 단편이며, 이를 계사문으로 종결할 근거가 없습니다. 계사를 삭제하여 단편성을 보존해야 합니다.
+  - severity: medium
+    issue: usque의 미완성 한계가 ‘나아가다가’에 의해 약화됨
+    rationale: usque는 뒤따를 ‘~까지’의 한계점을 예고합니다. ‘나아가다가’는 주로 동작의 중단·전환을 뜻하므로, ‘…까지 나아갈 것이며’가 원문의 기능을 더 정확히 반영합니다.
+  revised_text: 그들의 목초지와 곡식. 그리고 그들은 꾸준히 …까지 나아갈 것이며 …[a]
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 usque(‘~까지’)는 여기서 뒤따를 문맥이 생략된 상태를 나타내므로, 한국어도 목적지 또는 한계를 보충하지 않고 미완성으로 남겼습니다.
+    reason: source_note
+  revision_rationale: 원문 단편의 명사구를 계사 없이 유지하고, usque가 요구하는 뒤이은 한계 표현의 결여를 ‘…까지’와 연결형 미래형으로 드러냈습니다. 목적지나 대상은 보충하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:20Z'
+  output_hash: e45fc1f8f5a622b8325332c5ad4c7ca3cc61deef608ddd035e39982100683a87
+  usage:
+    completion_tokens: 1086
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 153
+      engine_ttlt_ms: 9554
+      pre_inference_ms: 87
+      service_tbt_ms: 9
+      service_ttft_ms: 342
+      service_ttlt_ms: 9738
+      total_duration_ms: 9658
+      user_visible_ttft_ms: 254
+    prompt_tokens: 1402
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2488
+  applied_revision: true
+  auto_apply_blocked_errors: []

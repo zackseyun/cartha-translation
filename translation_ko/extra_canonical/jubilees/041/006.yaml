@@ -23,8 +23,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그리고 주님께서 그를 죽이셨습니다. 유다는 그의 며느리 다말에게 말하였습니다. "네 아버지의 집에 머무르십시오—"[a]
+  text: 주님께서 그를 죽이셨습니다. 유다는 그의 며느리 다말에게 말하였습니다. “네 아버지의 집에 머무르십시오. 그동안…”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 제공된 게에즈어 본문은 시간 관계를 나타내는 말 뒤에서 끝납니다. 따라서 그 뒤의 내용은 번역에서 보충하지 않았습니다.
+    reason: 원문 절단 상태와 본문의 미완결 표현을 설명합니다.
 lexical_decisions:
 - source_word: እግዚአብሔር
   english_pob_choice: the LORD
@@ -86,4 +90,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 주님께서 그를 죽이셨습니다. 유다는 그의 며느리 다말에게 말하였습니다. "네 아버지의 집에 머무르십시오—"[a]
+  to: 주님께서 그를 죽이셨습니다. 유다는 그의 며느리 다말에게 말하였습니다. “네 아버지의 집에 머무르십시오. 그동안…”[a]
+  rationale: 제공된 게에즈어의 범위만 번역하되, 마지막 እንዘ의 시간적 연결 기능을 한국어 ‘그동안…’으로 드러냈습니다. 이후 내용을 추정하여 보완하지 않았고, 누락된 각주 항목을 추가했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:36Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft correctly confines itself to the supplied Ge'ez segment and does not supply the continuation after እንዘ. However, its dash after ‘머무르십시오’ leaves እንዘ (‘while/as’) untranslated. The Korean should explicitly preserve the unfinished temporal connective without reconstructing what follows.
+  naturalness: ‘그리고 주님께서’ is unnecessarily awkward at the beginning of this excerpt. ‘주님께서 그를 죽이셨습니다’ is natural, formal-polite Korean. Rendering the cut-off connective as ‘그동안…’ makes the deliberate incompleteness intelligible in Korean.
+  terminology: ‘주님,’ ‘유다,’ ‘다말,’ and ‘며느리’ are appropriate standard Korean biblical terminology. ‘죽이셨습니다’ accurately conveys the direct causative sense.
+  issues:
+  - severity: medium
+    issue: The final source word እንዘ is not represented in the Korean text.
+    rationale: The em dash signals interruption but omits the temporal connective itself. A Korean incomplete connective such as ‘그동안…’ better reflects the extant source while avoiding conjectural completion.
+  - severity: medium
+    issue: Footnote anchor [a] has no corresponding footnote entry.
+    rationale: The anchor must be supplied with a note explaining that the provided source text ends mid-construction; this also prevents readers from treating the ellipsis as a translation expansion.
+  - severity: low
+    issue: Initial ‘그리고’ is awkward and not needed in the Korean excerpt.
+    rationale: Because the supplied text begins at a syntactically truncated boundary, retaining a sentence-initial coordinator makes Korean less natural without preserving additional recoverable meaning.
+  revised_text: 주님께서 그를 죽이셨습니다. 유다는 그의 며느리 다말에게 말하였습니다. “네 아버지의 집에 머무르십시오. 그동안…”[a]
+  revised_footnotes:
+  - marker: a
+    text: 제공된 게에즈어 본문은 시간 관계를 나타내는 말 뒤에서 끝납니다. 따라서 그 뒤의 내용은 번역에서 보충하지 않았습니다.
+    reason: 원문 절단 상태와 본문의 미완결 표현을 설명합니다.
+  revision_rationale: 제공된 게에즈어의 범위만 번역하되, 마지막 እንዘ의 시간적 연결 기능을 한국어 ‘그동안…’으로 드러냈습니다. 이후 내용을 추정하여 보완하지 않았고, 누락된 각주 항목을 추가했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:36Z'
+  output_hash: b9295fe0d52d963eb2993de2413fb79b47b9f674c82d577378cb7b72dd447fac
+  usage:
+    completion_tokens: 1206
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 623
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 11213
+      pre_inference_ms: 80
+      service_tbt_ms: 9
+      service_ttft_ms: 363
+      service_ttlt_ms: 11433
+      total_duration_ms: 11371
+      user_visible_ttft_ms: 283
+    prompt_tokens: 2062
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3268
+  applied_revision: true
+  auto_apply_blocked_errors: []

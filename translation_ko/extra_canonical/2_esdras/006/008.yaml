@@ -91,4 +91,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어의 난해한 반복 표현 ‘ab Abraham usque ad Abraham’은 본문에 그대로 보존해야 하며, 문맥으로 ‘이삭’이라고 보충해서는 안 됩니다. 또한 마지막 ‘et principium’은 뒤이어 보어가 이어져야 하는 절단된 구문이므로, 완결된 서술문으로 만들지 않는 편이 충실합니다.
+  naturalness: 초안의 반복된 ‘때문입니다’와 ‘야곱의 손이 … 있었기 때문입니다’는 한국어 인과 관계가 다소 부자연스럽습니다. ‘또’로 연결하고, 절단된 끝부분은 줄임표로 표시하면 현대 한국어 합쇼체로 자연스럽고 원문의 미완결성도 보존됩니다.
+  terminology: ‘발꿈치’는 calcaneum에 정확하며, saeculi는 종말론적 문맥에서 ‘이 시대’가 ‘이 세대’보다 자연스럽습니다. ‘에서’는 고유명사 표기를 유지합니다.
+  issues:
+  - severity: medium
+    issue: 절단된 라틴어 구문을 완결된 문장으로 번역함
+    rationale: ‘Finis enim huius saeculi Esau, et principium’은 ‘그리고 시작’ 뒤에 이어질 내용이 없는 단편입니다. 초안의 ‘에서는 이 세대의 끝이며, 시작입니다’는 한국어 문장으로 종결시켜 결락/절단 상태를 흐립니다.
+  - severity: low
+    issue: 인과 접속의 반복이 부자연스러움
+    rationale: quoniam과 enim을 모두 ‘때문입니다’로 종결하면 한국어에서 같은 인과 종결이 연속됩니다. enim은 ‘또’로 자연스럽게 연결할 수 있습니다.
+  - severity: medium
+    issue: 각주 b가 현 본문과 동일한 문구를 ‘또는’으로 제시함
+    rationale: 본문 자체가 ‘아브라함에서 아브라함까지’이므로, 동일한 문구를 대안으로 제시하는 각주는 정보 가치가 없고 영어 감사 이력의 정합성 문제를 그대로 반영합니다. 제공된 라틴어와 직접 관련된 난해성은 각주 a로 충분히 표시됩니다.
+  revised_text: 그가 내게 말씀하셨습니다. “아브라함에서 아브라함까지입니다[a]. 그에게서 야곱과 에서가 태어났기 때문입니다. 또 야곱의 손은 처음부터 에서의 발꿈치를 붙잡고 있었습니다. 에서는 이 시대의 끝이고, 시작은 …”
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 전승의 ‘아브라함에서 아브라함까지’라는 표현은 난해합니다. 이어지는 야곱과 에서에 관한 설명은 이 난점을 없애기보다 해석하는 것으로 보입니다.
+    reason: textual_variant
+  revision_rationale: 라틴어 본문의 반복된 아브라함을 보존하고 난해성은 각주로 밝혔습니다. ‘이삭’으로의 추정 교정은 제공된 원문 본문을 넘어서는 것이므로 채택하지 않았습니다. 마지막 단편은 줄임표로 미완결성을 명시했으며, 중복·부정확한 각주 b는 삭제했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:20Z'
+  output_hash: 785a0a797dc612df38127a86477bdff77d8e619d9562f338a643ddd54319e084
+  usage:
+    completion_tokens: 1730
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 955
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 13703
+      pre_inference_ms: 84
+      service_tbt_ms: 8
+      service_ttft_ms: 558
+      service_ttlt_ms: 14118
+      total_duration_ms: 14048
+      user_visible_ttft_ms: 474
+    prompt_tokens: 2186
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 1664
+    total_tokens: 3916
+  applied_revision: false
+  auto_apply_blocked_errors: []

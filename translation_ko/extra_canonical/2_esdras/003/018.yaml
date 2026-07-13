@@ -18,12 +18,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 주께서는 하늘을 굽히시고, 땅을 세우시며, 세상을 움직이셨습니다.[a]
+  text: 주께서는 하늘을 굽히시고, 땅을 세우시고, 세상을 움직이셨습니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 원문상의 계열 차이 때문에 일부 전승에서는 ‘땅을 세우시며’ 대신 ‘땅을 흔드셨으며’로 읽을 수 있습니다.
-    reason: textual_variant
+    text: 또는 ‘주께서는 하늘을 굽히시고, 땅을 세우시고, 세상을 흔드셨습니다.’ 일부 사본 전승에는 ‘땅을 흔드셨고’로 되어 있습니다.
+    reason: translation_alternative_and_textual_variant
 lexical_decisions:
 - source_word: Et inclinasti caelos
   english_pob_choice: you bent down the heavens
@@ -68,4 +68,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 주께서는 하늘을 굽히시고, 땅을 세우시며, 세상을 움직이셨습니다.[a]
+  to: 주께서는 하늘을 굽히시고, 땅을 세우시고, 세상을 움직이셨습니다.[a]
+  rationale: 라틴어 본문의 *statuisti terram*은 ‘땅을 세우시고’로 보존했습니다. 각주는 영어 POB의 *commouisti* 대안 번역인 ‘흔드셨습니다’와, 둘째 동사를 ‘흔들다’로 전하는 전승 이문을 혼동하지 않도록 분리해 제시했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:39Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 본문은 라틴어 *inclinasti caelos, statuisti terram, commouisti orbem*의 세 동작을 대체로 충실히 옮깁니다. 특히 *statuisti terram*은 현 라틴 본문에 따라 ‘땅을 세우시고’로 유지하는 것이 타당합니다. 다만 주석은 전승상의 이문과 영어 POB의 대안 번역(마지막 동사를 ‘흔드셨습니다’로 옮김)을 더 명료하게 구별해야 합니다.
+  naturalness: ‘하늘을 굽히시고’와 ‘세상을 움직이셨습니다’는 현대 한국어 합쇼체에서 이해 가능합니다. 병렬 구조는 ‘세우시고’로 통일하면 더 자연스럽고 매끄럽습니다.
+  terminology: ‘땅’, ‘세상’은 각각 *terram*, *orbem*에 적절합니다. ‘사본 전승’은 이문을 설명하는 데 ‘원문상의 계열 차이’보다 정확하고 자연스러운 표현입니다.
+  issues:
+  - severity: low
+    issue: 각주 표현이 불명료하고 영어 POB 감사 기록의 대안 번역을 반영하지 않습니다.
+    rationale: ‘원문상의 계열 차이’는 한국어로 자연스럽지 않으며, 현재 각주는 둘째 동사의 전승 이문만 언급합니다. 영어 POB 각주는 마지막 동사에 ‘흔들다’라는 번역 가능성도 제시하므로, 이를 구별하여 밝혀야 합니다.
+  - severity: low
+    issue: 병렬 접속이 ‘-고, -며, -습니다’로 혼합되어 있습니다.
+    rationale: 의미 오류는 아니나, 세 개의 완료 동작을 나열하는 문맥에서는 ‘-고’로 통일하는 편이 자연스럽습니다.
+  revised_text: 주께서는 하늘을 굽히시고, 땅을 세우시고, 세상을 움직이셨습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘주께서는 하늘을 굽히시고, 땅을 세우시고, 세상을 흔드셨습니다.’ 일부 사본 전승에는 ‘땅을 흔드셨고’로 되어 있습니다.
+    reason: translation_alternative_and_textual_variant
+  revision_rationale: 라틴어 본문의 *statuisti terram*은 ‘땅을 세우시고’로 보존했습니다. 각주는 영어 POB의 *commouisti* 대안 번역인 ‘흔드셨습니다’와, 둘째 동사를 ‘흔들다’로 전하는 전승 이문을 혼동하지 않도록 분리해 제시했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:39Z'
+  output_hash: a49ef369e2d9ee9948bd02eddd1f31bb39d4a0a7816bbbf3f0b84301a23538f2
+  usage:
+    completion_tokens: 1332
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 691
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 11119
+      pre_inference_ms: 127
+      service_tbt_ms: 8
+      service_ttft_ms: 362
+      service_ttlt_ms: 11332
+      total_duration_ms: 11216
+      user_visible_ttft_ms: 235
+    prompt_tokens: 1637
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2969
+  applied_revision: true
+  auto_apply_blocked_errors: []

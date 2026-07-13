@@ -20,7 +20,7 @@ base_translation:
   text: And bury me near Abraham my father, in the double cave in the field of Ephron the Hittite, which Abraham acquired for a burial place there. In the tomb that I dug for myself there, bury me.
 translation:
   language: ko
-  text: 아버지 아브라함 곁, 곧 에프론 히타이트의 들에 있는 두 겹 굴에 저를 묻어 주십시오. 그곳은 아브라함이 매장지로 사들인 곳입니다. 또한 그곳에서 제가 제 자신을 위해 판 무덤에 저를 묻어 주십시오.[a][b]
+  text: 제 아버지 아브라함 가까이, 에브론 헷 사람의 밭에 있는 두 겹으로 된 굴에 저를 묻어 주십시오. 아브라함이 그곳을 매장지로 사들였습니다. 또 그곳에서 제가 저 자신을 위해 판 무덤에 저를 묻어 주십시오.
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: ቅሩበ፡ አብርሃም፡ አቡየ፡
@@ -82,4 +82,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 아버지 아브라함 곁, 곧 에프론 히타이트의 들에 있는 두 겹 굴에 저를 묻어 주십시오. 그곳은 아브라함이 매장지로 사들인 곳입니다. 또한 그곳에서 제가 제 자신을 위해 판 무덤에 저를 묻어 주십시오.[a][b]
+  to: 제 아버지 아브라함 가까이, 에브론 헷 사람의 밭에 있는 두 겹으로 된 굴에 저를 묻어 주십시오. 아브라함이 그곳을 매장지로 사들였습니다. 또 그곳에서 제가 저 자신을 위해 판 무덤에 저를 묻어 주십시오.
+  rationale: 원문의 반복된 명령과 장소·소유·자기 준비라는 정보를 유지하되, 관계절의 의미를 한국어에서 명료하게 재구성했습니다. 지원되지 않는 각주 표지를 제거했고, 자연스러운 현대 표준어 및 성서 고유명사 관용을 적용했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:30:20Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 두 차례 매장 요청, 아브라함과의 친족 관계, 에브론의 밭에 있는 ‘이중/두 겹’ 굴, 아브라함의 매장지 취득, 화자가 자신을 위해 판 무덤을 모두 보존해야 합니다. 초안은 대체로 내용을 담았으나, ‘그곳은’이 관계절의 선행사를 흐리고 문장을 독립 서술로 바꾸며, 본문에 근거 없는 각주 표지가 남아 있습니다.
+  naturalness: ‘두 겹 굴’은 현대 한국어에서 다소 부자연스럽습니다. ‘두 겹으로 된 굴’이 원문의 의미를 유지하면서도 자연스럽습니다. ‘아버지 아브라함 곁’은 가능하나 호격적 요청 문맥에서는 ‘제 아버지 아브라함 가까이에’가 관계를 더 분명히 합니다.
+  terminology: 고유명사는 한국어 성서 관용에 맞추어 ‘에브론’과 ‘헷 사람’을 사용했습니다. 매장 장소에는 ‘매장지’, መቃብር에는 ‘무덤’을 유지했습니다.
+  issues:
+  - severity: medium
+    issue: 관계절이 독립문으로 처리되어 선행사가 불명확함
+    rationale: ‘그곳은 아브라함이 … 사들인 곳입니다’는 원문의 ‘아브라함이 매장지로 얻은/사들인’ 관계절을 별도 평서문으로 바꾸고, 무엇을 가리키는지(굴 또는 앞서 언급된 장소)를 흐립니다.
+  - severity: medium
+    issue: 본문의 [a][b] 표기에 대응하는 각주가 없음
+    rationale: 제공된 각주 목록과 translation_notes에 [a], [b]의 내용이 없으므로 독자가 확인할 수 없는 앵커입니다. 의미 변경 없이 제거해야 합니다.
+  - severity: low
+    issue: ‘두 겹 굴’의 어색한 결합과 고유명사 표기
+    rationale: ‘두 겹으로 된 굴’이 자연스럽고, 표준 한국어 성서 관용상 Ephron과 Hittite는 각각 ‘에브론’, ‘헷 사람’이 더 적절합니다.
+  revised_text: 제 아버지 아브라함 가까이, 에브론 헷 사람의 밭에 있는 두 겹으로 된 굴에 저를 묻어 주십시오. 아브라함이 그곳을 매장지로 사들였습니다. 또 그곳에서 제가 저 자신을 위해 판 무덤에 저를 묻어 주십시오.
+  revised_footnotes: []
+  revision_rationale: 원문의 반복된 명령과 장소·소유·자기 준비라는 정보를 유지하되, 관계절의 의미를 한국어에서 명료하게 재구성했습니다. 지원되지 않는 각주 표지를 제거했고, 자연스러운 현대 표준어 및 성서 고유명사 관용을 적용했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:20Z'
+  output_hash: 8e903406eeafc709ca87b5d3576c5f6eff250ba091e4ab34e167ec9011c5e84f
+  usage:
+    completion_tokens: 988
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 289
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 8187
+      pre_inference_ms: 112
+      service_tbt_ms: 8
+      service_ttft_ms: 574
+      service_ttlt_ms: 8625
+      total_duration_ms: 8524
+      user_visible_ttft_ms: 462
+    prompt_tokens: 2036
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 1664
+    total_tokens: 3024
+  applied_revision: true
+  auto_apply_blocked_errors: []

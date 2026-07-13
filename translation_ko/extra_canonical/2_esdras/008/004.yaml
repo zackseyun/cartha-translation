@@ -18,11 +18,11 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그러므로 내가 대답하여 말하였습니다. 「그러니 영혼아, 이해를 받아들이고 지혜를 삼키십시오」.[a]
+  text: 내가 대답하여 말하였습니다. 「그러므로 영혼아, 이해를 삼키고, 지혜로운 것을 삼키게 하십시오」[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 라틴어의 anima는 문맥상 ‘영혼아’라는 직접 호명으로도, ‘영혼이’라는 주어로도 읽을 수 있습니다.
+    text: 라틴어 anima는 형태상 ‘영혼아’라는 호격으로도 ‘영혼이’라는 주어로도 읽을 수 있습니다. 여기서는 앞선 명령형 absorbe에 따라 호격으로 옮겼습니다. 이어지는 deuoret는 3인칭 접속법이므로 ‘삼키게 하십시오’로 옮겼습니다.
     reason: alternative_reading
 lexical_decisions:
 - source_word: absorbe
@@ -79,4 +79,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러므로 내가 대답하여 말하였습니다. 「그러니 영혼아, 이해를 받아들이고 지혜를 삼키십시오」.[a]
+  to: 내가 대답하여 말하였습니다. 「그러므로 영혼아, 이해를 삼키고, 지혜로운 것을 삼키게 하십시오」[a]
+  rationale: 직접 호명과 첫 명령을 보존하고, 두 번째 동사의 3인칭 접속법 및 quod sapit의 관계절 의미를 반영했습니다. ‘삼키다’를 두 절에 유지하여 원문의 의도적인 섭취 은유를 살렸습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:30:17Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어의 첫 동사 absorbe는 영혼을 향한 직접 명령이며, 두 번째 동사 deuoret는 3인칭 접속법이다. 현 번역은 첫 동사의 ‘삼키다’ 은유를 ‘받아들이다’로 약화하고, 두 번째 절을 같은 2인칭 명령으로 바꾸며, quod sapit(‘지혜로운 것/분별 있는 것’)를 ‘지혜’라는 추상명사로 축소합니다.
+  naturalness: ‘영혼아’라는 호명과 합쇼체 명령은 자연스럽습니다. 다만 ‘그러므로’와 ‘그러니’를 함께 써서 접속어가 중복됩니다. 수정문은 음식 은유를 유지하면서도 한국어 문장으로 읽히게 했습니다.
+  terminology: sensus는 문맥상 ‘이해’로, anima는 ‘영혼아’로 옮길 수 있습니다. quod sapit는 지혜 자체가 아니라 문자적으로 ‘지혜로운 것’이라는 관계절이므로 이를 보존해야 합니다.
+  issues:
+  - severity: medium
+    issue: absorbe의 음식 은유가 ‘받아들이다’로 약화됨
+    rationale: absorbe는 ‘삼키다, 들이마시다’의 강한 섭취 동사이며, 이어지는 deuoret와 함께 의도적인 섭취 은유를 이룹니다.
+  - severity: high
+    issue: deuoret와 quod sapit의 문법·의미가 바뀜
+    rationale: deuoret는 3인칭 접속법이고 quod sapit는 ‘지혜로운 것’에 해당합니다. 현문 ‘지혜를 삼키십시오’는 두 번째 절을 2인칭 명령으로 바꾸고 관계절을 추상명사로 대체합니다.
+  - severity: low
+    issue: 접속어 중복
+    rationale: ergo 하나에 대해 ‘그러므로’와 ‘그러니’를 중복해 사용합니다.
+  revised_text: 내가 대답하여 말하였습니다. 「그러므로 영혼아, 이해를 삼키고, 지혜로운 것을 삼키게 하십시오」[a]
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 anima는 형태상 ‘영혼아’라는 호격으로도 ‘영혼이’라는 주어로도 읽을 수 있습니다. 여기서는 앞선 명령형 absorbe에 따라 호격으로 옮겼습니다. 이어지는 deuoret는 3인칭 접속법이므로 ‘삼키게 하십시오’로 옮겼습니다.
+    reason: alternative_reading
+  revision_rationale: 직접 호명과 첫 명령을 보존하고, 두 번째 동사의 3인칭 접속법 및 quod sapit의 관계절 의미를 반영했습니다. ‘삼키다’를 두 절에 유지하여 원문의 의도적인 섭취 은유를 살렸습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:17Z'
+  output_hash: 8647a2a8f673833c797a0baf171c99debc79879d18613bc3b2621e352ab3594e
+  usage:
+    completion_tokens: 1187
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 9956
+      pre_inference_ms: 144
+      service_tbt_ms: 9
+      service_ttft_ms: 421
+      service_ttlt_ms: 10700
+      total_duration_ms: 10562
+      user_visible_ttft_ms: 277
+    prompt_tokens: 1832
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3019
+  applied_revision: true
+  auto_apply_blocked_errors: []

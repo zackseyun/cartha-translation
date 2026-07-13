@@ -18,11 +18,11 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 긍휼을 얻으려는 것입니다. 그러나 자기 이름을 위해서는 무엇을 하시겠습니까?[a]
+  text: 긍휼을 얻는 것입니다. 그러나 자신의 이름, 곧 …한 그 이름을 위해서는 무엇을 하시겠습니까?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 라틴어 본문은 여기서 문장이 끝나며, 다음 절의 내용은 포함하지 않았습니다.
+    text: 라틴어 본문은 이 절에서 관계대명사 quod(‘…한’, ‘which’)로 끝납니다. 그 관계절의 나머지는 다음 절에 이어집니다.
     reason: source_note
 lexical_decisions:
 - source_word: misericordiam consequi
@@ -76,4 +76,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 긍휼을 얻으려는 것입니다. 그러나 자기 이름을 위해서는 무엇을 하시겠습니까?[a]
+  to: 긍휼을 얻는 것입니다. 그러나 자신의 이름, 곧 …한 그 이름을 위해서는 무엇을 하시겠습니까?[a]
+  rationale: 절 경계는 엄격히 유지하되, quod가 여는 미완성 관계절을 줄임표와 ‘…한 그 이름’으로 표시했습니다. 따라서 다음 절의 내용을 보충하거나 선취하지 않으면서도, 원문의 문법적 연결이 번역에서 사라지지 않습니다. 각주도 ‘문장 종결’이라는 부정확한 설명 대신 관계절의 계속을 설명하도록 고쳤습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:08Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 misericordiam consequi와 Sed quid faciet nomini suo를 대체로 충실히 옮겼고, 다음 절의 내용을 본문에 섞지 않은 점은 적절합니다. 그러나 제공된 라틴어는 관계대명사 quod(‘…한/which’)에서 문법적으로 미완결된 채 끝나는데, 현 번역은 이를 완결된 의문문으로 만들어 quod의 존재와 절-간 연결을 보존하지 못합니다.
+  naturalness: ‘긍휼을 얻으려는 것입니다’는 문맥상 이해되지만, consequi의 부정법을 ‘얻으려는’이라는 의도 표현으로 바꾸는 것보다 ‘얻는 것’이 더 직접적입니다. 미완성 관계절은 한국어에서 줄임표를 써서 표시하는 방식이 가장 명료하며, 이것은 원문 자체의 절 경계상 미완결을 정직하게 드러냅니다.
+  terminology: misericordiam의 ‘긍휼’과 nomen의 ‘이름’은 적절합니다. ‘자기 이름’도 가능하지만, 주어에게 높임말을 사용하는 문맥에서는 ‘자신의 이름’이 현대 표준어로 더 자연스럽습니다.
+  issues:
+  - severity: medium
+    issue: 관계대명사 quod가 번역에서 탈락했습니다.
+    rationale: 라틴어 본문은 ‘nomini suo quod’로 끝나며, quod는 다음 절에서 계속되는 관계절을 여는 말입니다. 현 번역은 ‘자기 이름을 위해서는 무엇을 하시겠습니까?’로 완결하여 이 문법적 미완결성과 절-간 연결을 지웁니다.
+  - severity: low
+    issue: 각주가 ‘문장이 끝난다’고 서술합니다.
+    rationale: 본문의 절 경계는 여기에서 끝나지만, 라틴어 문장은 quod에서 끝나므로 문법적으로는 끝나지 않습니다. 각주는 관계절이 다음 절로 이어진다는 점을 밝혀야 합니다.
+  - severity: low
+    issue: ‘얻으려는’은 부정법의 뜻을 다소 의도적으로 바꿉니다.
+    rationale: consequi는 여기서 ‘얻다/얻는 것’으로 옮기는 편이 제공된 단편 및 영문 POB의 ‘to obtain’에 더 가깝습니다.
+  revised_text: 긍휼을 얻는 것입니다. 그러나 자신의 이름, 곧 …한 그 이름을 위해서는 무엇을 하시겠습니까?[a]
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 본문은 이 절에서 관계대명사 quod(‘…한’, ‘which’)로 끝납니다. 그 관계절의 나머지는 다음 절에 이어집니다.
+    reason: source_note
+  revision_rationale: 절 경계는 엄격히 유지하되, quod가 여는 미완성 관계절을 줄임표와 ‘…한 그 이름’으로 표시했습니다. 따라서 다음 절의 내용을 보충하거나 선취하지 않으면서도, 원문의 문법적 연결이 번역에서 사라지지 않습니다. 각주도 ‘문장 종결’이라는 부정확한 설명 대신 관계절의 계속을 설명하도록 고쳤습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:08Z'
+  output_hash: a9fe00c1795de577613ee67f743eb3ef807869cb1dc5e9b7316852191e25329b
+  usage:
+    completion_tokens: 1711
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 943
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 228
+      engine_ttlt_ms: 14145
+      pre_inference_ms: 90
+      service_tbt_ms: 8
+      service_ttft_ms: 468
+      service_ttlt_ms: 14383
+      total_duration_ms: 14305
+      user_visible_ttft_ms: 378
+    prompt_tokens: 1684
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3395
+  applied_revision: true
+  auto_apply_blocked_errors: []

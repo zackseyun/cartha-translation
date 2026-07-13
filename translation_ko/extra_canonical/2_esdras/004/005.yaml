@@ -19,11 +19,11 @@ base_translation:
     anchor_ref: '4:5'
 translation:
   language: ko
-  text: 그러자 제가 말했습니다. 「말씀하십시오, 제 주인이시여.」 그러자 그가 저에게 말했습니다. 「가서 불의 무게를 저울질하여 나를 위해 달아 보아라. 아니면 바람의 분량을 나를 위해 재어 보아라. 아니면 지나간 그 날을 나를 위해 다시 불러오라.」[a]
+  text: 그러자 제가 말했습니다. 「말씀하십시오, 제 주인이시여.」 그러자 그가 저에게 말했습니다. 「가서 나를 위하여 불의 무게를 달아 보아라. 아니면 나를 위하여 바람의 분량을 재어 보아라[a]. 아니면 나를 위하여 지나간 그 날을 다시 불러오라.」
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 라틴어 mensura ... uenti는 문법적으로 다소 어색하지만, 뜻은 바람을 측정하라는 불가능한 요구로 분명합니다.
+    text: 라틴어 원문의 mensura ... uenti(여기서는 ‘바람의 분량’으로 옮김)는 본문상 다소 어색한 표현입니다. 바람을 측정하라는 불가능한 요구라는 뜻은 분명하지만, 정확히 어떤 측정 단위를 가리키는지는 불확실합니다.
     reason: textual_variant
 lexical_decisions:
 - source_word: dominus meus
@@ -79,4 +79,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 제가 말했습니다. 「말씀하십시오, 제 주인이시여.」 그러자 그가 저에게 말했습니다. 「가서 불의 무게를 저울질하여 나를 위해 달아 보아라. 아니면 바람의 분량을 나를 위해 재어 보아라. 아니면 지나간 그 날을 나를 위해 다시 불러오라.」[a]
+  to: 그러자 제가 말했습니다. 「말씀하십시오, 제 주인이시여.」 그러자 그가 저에게 말했습니다. 「가서 나를 위하여 불의 무게를 달아 보아라. 아니면 나를 위하여 바람의 분량을 재어 보아라[a]. 아니면 나를 위하여 지나간 그 날을 다시 불러오라.」
+  rationale: 불필요한 동의어 중복을 제거하여 pondera의 단일 명령을 자연스럽게 옮기고, 세 번 반복되는 mihi를 ‘나를 위하여’로 보존했습니다. 영어 POB 감사 기록에 따른 mensura ... uenti의 본문적 불확실성을 각주에 명시했으며, 표지를 해당 구절에 붙였습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:07Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어의 병렬 명령(pondera mihi / mensura mihi / reuoca mihi)과 불가능한 요구라는 수사는 대체로 충실히 반영되었습니다. 다만 ‘불의 무게를 저울질하여 … 달아’는 pondera를 중복 번역하여 원문의 간결성을 해치므로 한 번만 옮기는 것이 적절합니다. mensura ... uenti의 본문상 어색함과 정확한 측정 단위의 불확실성은 각주에 더 정확히 밝혀야 합니다.
+  naturalness: 합쇼체 서술과 대화체의 명령형은 자연스럽습니다. 그러나 ‘저울질하여 … 달아 보아라’는 동의어 중복이고, 각 절의 ‘나를 위해’는 ‘나를 위하여’로 통일하면 문어적 공손한 성경 문체에 더 잘 맞습니다.
+  terminology: dominus meus를 ‘제 주인이시여’로 옮긴 것은 원문의 소유 표현과 공손한 호칭을 보존합니다. pondus는 ‘무게’, mensura는 ‘분량’, reuoca는 ‘다시 불러오라’로 옮겨 원문의 표현과 불가능성의 수사를 유지합니다.
+  issues:
+  - severity: medium
+    issue: ‘불의 무게를 저울질하여 나를 위해 달아 보아라’의 중복
+    rationale: 라틴어 pondera mihi ignis pondus는 ‘불의 무게를 나를 위하여 달아 보아라’라는 한 명령입니다. ‘저울질하여’와 ‘달아’가 같은 동작을 거듭 나타내므로 삭제가 필요합니다.
+  - severity: medium
+    issue: 본문상 어색한 mensura ... uenti에 관한 각주의 정보 부족
+    rationale: 영어 POB 감사 기록은 이 표현이 본문상 어색하며 정확한 측정 단위가 불확실하다고 명시합니다. 현 각주는 단지 ‘문법적으로 다소 어색’하다고만 하므로 해당 불확실성을 충분히 전달하지 못합니다.
+  - severity: low
+    issue: 각주 표지 위치
+    rationale: 각주는 바람의 분량이라는 문제 구절 바로 뒤에 두는 편이 독자가 무엇을 설명하는지 명확히 알 수 있습니다.
+  revised_text: 그러자 제가 말했습니다. 「말씀하십시오, 제 주인이시여.」 그러자 그가 저에게 말했습니다. 「가서 나를 위하여 불의 무게를 달아 보아라. 아니면 나를 위하여 바람의 분량을 재어 보아라[a]. 아니면 나를 위하여 지나간 그 날을 다시 불러오라.」
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 원문의 mensura ... uenti(여기서는 ‘바람의 분량’으로 옮김)는 본문상 다소 어색한 표현입니다. 바람을 측정하라는 불가능한 요구라는 뜻은 분명하지만, 정확히 어떤 측정 단위를 가리키는지는 불확실합니다.
+    reason: textual_variant
+  revision_rationale: 불필요한 동의어 중복을 제거하여 pondera의 단일 명령을 자연스럽게 옮기고, 세 번 반복되는 mihi를 ‘나를 위하여’로 보존했습니다. 영어 POB 감사 기록에 따른 mensura ... uenti의 본문적 불확실성을 각주에 명시했으며, 표지를 해당 구절에 붙였습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:07Z'
+  output_hash: 40b0699ff6b5d62813844c1bff92e0cd8517cb544e7e6a516a0b6c93f6832204
+  usage:
+    completion_tokens: 1515
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 696
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 12357
+      pre_inference_ms: 135
+      service_tbt_ms: 8
+      service_ttft_ms: 422
+      service_ttlt_ms: 12648
+      total_duration_ms: 12522
+      user_visible_ttft_ms: 287
+    prompt_tokens: 1753
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3268
+  applied_revision: true
+  auto_apply_blocked_errors: []

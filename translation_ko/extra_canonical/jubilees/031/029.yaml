@@ -24,7 +24,7 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 당신이 나를 살아 있는 채로 보았고, 나도 내 아들을 보았으니, 그 날에<sup>a</sup> 복을 받고 네가 서원한 서원을 완수하십시오. 네 서원을 미루지 마십시오. 서원에 관하여 심문을 받을 것이기 때문입니다. 이제 서둘러 그것을 행하십시오.[a]
+  text: 당신이 나를 살아 있는 모습으로 보았고 나도 당신을 보았으니, 내 아들이여, 번성하십시오. 네가 서원한 것을 이행하고, 네 서원을 미루지 마십시오. 서원에 대해 책임을 추궁받을 것이기 때문입니다. 이제 그것을 서둘러 이행하십시오.
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: እንተ፡ ባቲ፡
@@ -81,4 +81,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 당신이 나를 살아 있는 채로 보았고, 나도 내 아들을 보았으니, 그 날에<sup>a</sup> 복을 받고 네가 서원한 서원을 완수하십시오. 네 서원을 미루지 마십시오. 서원에 관하여 심문을 받을 것이기 때문입니다. 이제 서둘러 그것을 행하십시오.[a]
+  to: 당신이 나를 살아 있는 모습으로 보았고 나도 당신을 보았으니, 내 아들이여, 번성하십시오. 네가 서원한 것을 이행하고, 네 서원을 미루지 마십시오. 서원에 대해 책임을 추궁받을 것이기 때문입니다. 이제 그것을 서둘러 이행하십시오.
+  rationale: 원문의 인과적 접속구를 ‘~하였으니’로 옮기고, ‘너를 보았다, 내 아들아’라는 호격과 목적어를 바로잡았습니다. 명령형 ‘번성하라’를 보존했으며, 서원에 대한 책임 추궁을 자연스러운 한국어로 표현했습니다. 잘못된 시간 해석 및 구조적으로 불완전한 각주 표지는 삭제했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 게에즈의 እንተ፡ ባቲ፡는 문맥상 ‘~하였으니/그러한 까닭에’라는 인과·근거의 접속 표현으로 보는 것이 타당하며, ‘그 날에’로 옮길 근거는 없습니다. 또한 ‘내 아들을 보았으니’는 원문의 ‘너를 보았다, 내 아들아’를 잘못 해석한 것입니다. 서원의 이행, 지연 금지, 그 서원에 대해 책임을 추궁받게 됨, 즉시 이행하라는 흐름은 보존해야 합니다.
+  naturalness: 합쇼체에서 ‘내 아들이여’라는 호격 뒤에 ‘하십시오’를 쓰는 것은 현대 한국어로 다소 격식적이지만, 아버지가 아들에게 하는 권면이라는 원문의 관계와 문체를 보존하는 데 무리가 없습니다. ‘서원에 대해 책임을 추궁받을 것’은 ‘심문을 받을 것’보다 원문의 책임 추궁 의미를 자연스럽고 과도한 법정적 뉘앙스 없이 전달합니다.
+  terminology: ‘서원’과 ‘이행하다’는 이미 한 서원을 실행·완수한다는 뜻을 정확히 전달합니다. ‘번성하십시오’는 ‘Prosper’에 해당하며, ‘복을 받고’처럼 수동적 축복 선언으로 바꾸지 않는 것이 좋습니다.
+  issues:
+  - severity: high
+    issue: 첫 접속구를 ‘그 날에’로 번역함
+    rationale: 게에즈 እንተ፡ ባቲ፡는 여기서 ‘~하였으니/그러한 까닭에’의 뜻으로 기능합니다. 앞 문맥에 ‘날’이라는 여성 선행사가 없으므로 시간 표현을 보충해서는 안 됩니다.
+  - severity: high
+    issue: ‘나도 내 아들을 보았으니’라고 번역함
+    rationale: 원문은 ‘나도 너를 보았다, 내 아들아’라는 뜻입니다. 목적어 ‘너’와 호격 ‘내 아들’을 각각 보존해야 합니다.
+  - severity: medium
+    issue: ‘복을 받고’가 명령형 ‘번성하라’를 수동적 축복 표현으로 약화함
+    rationale: ተስፋሕ은 번성하라는 권면/명령에 해당하므로 ‘번성하십시오’가 더 충실합니다.
+  - severity: medium
+    issue: 각주 표지가 중복·불일치하고 실제 각주가 없음
+    rationale: 본문에 <sup>a</sup>와 [a]가 모두 있으나 제공된 한국어 각주 세트가 없습니다. 또한 해당 각주는 잘못된 ‘그 날에’ 해석을 뒷받침하므로 삭제해야 합니다.
+  revised_text: 당신이 나를 살아 있는 모습으로 보았고 나도 당신을 보았으니, 내 아들이여, 번성하십시오. 네가 서원한 것을 이행하고, 네 서원을 미루지 마십시오. 서원에 대해 책임을 추궁받을 것이기 때문입니다. 이제 그것을 서둘러 이행하십시오.
+  revised_footnotes: []
+  revision_rationale: 원문의 인과적 접속구를 ‘~하였으니’로 옮기고, ‘너를 보았다, 내 아들아’라는 호격과 목적어를 바로잡았습니다. 명령형 ‘번성하라’를 보존했으며, 서원에 대한 책임 추궁을 자연스러운 한국어로 표현했습니다. 잘못된 시간 해석 및 구조적으로 불완전한 각주 표지는 삭제했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:06Z'
+  output_hash: d3a27fe36cb36ffcba5eac0a819166bb8e524210266c4c1f3aacad602d579883
+  usage:
+    completion_tokens: 1233
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 383
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 206
+      engine_ttlt_ms: 10256
+      pre_inference_ms: 266
+      service_tbt_ms: 8
+      service_ttft_ms: 655
+      service_ttlt_ms: 10696
+      total_duration_ms: 10441
+      user_visible_ttft_ms: 389
+    prompt_tokens: 2215
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3448
+  applied_revision: true
+  auto_apply_blocked_errors: []

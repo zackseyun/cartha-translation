@@ -24,8 +24,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그는 자기 딸 라헬을 위하여 한 주 동안 그를 섬겼습니다.[a]
+  text: 그는 그의 딸 라헬을 위하여 그를 한 주 동안 섬겼습니다.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 “라헬을 위하여 칠 년 동안.”
+    reason: 영어 POB 감사 이력에 있는 대안적 번역을 반영합니다. 본문은 희년서의 특징적인 시간 단위인 ‘한 주’를 보존합니다.
 lexical_decisions:
 - source_word: ተቀንየ / served
   english_pob_choice: he served him
@@ -71,4 +75,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 자기 딸 라헬을 위하여 한 주 동안 그를 섬겼습니다.[a]
+  to: 그는 그의 딸 라헬을 위하여 그를 한 주 동안 섬겼습니다.[a]
+  rationale: ‘자기’를 ‘그의’로 고쳐 라헬이 주어가 아니라 그가 섬긴 상대의 딸임을 원문대로 나타냈습니다. 또한 누락된 [a] 각주를 보완하되, 본문에서는 ‘한 주’라는 표현을 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:29:58Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 게에즈어의 ‘그를 섬겼다’, ‘그의 딸 라헬을 위하여’, ‘한 주’를 모두 보존해야 합니다. 현 번역의 ‘자기 딸’은 주어가 라헬의 아버지인 것처럼 지시 대상을 잘못 연결하므로 원문 관계를 바꿉니다.
+  naturalness: ‘그의 딸 라헬을 위하여 그를 한 주 동안 섬겼습니다’는 앞 문맥의 남성 지시 대상과 그 딸을 자연스럽게 이어 주며, 현대 표준 한국어 합쇼체에 맞습니다.
+  terminology: ‘섬기다’는 결혼을 위한 노동·봉사의 문맥을 무리 없이 반영합니다. ‘한 주’는 희년서의 시간 단위를 보존하며, 각주에서 ‘칠 년’이라는 대안적 풀이를 제시합니다.
+  issues:
+  - severity: high
+    issue: ‘자기 딸’의 소유·지시 관계 오류
+    rationale: 원문의 ‘그의 딸 라헬’은 그가 섬긴 상대의 딸을 가리키는데, 한국어 재귀 표현 ‘자기 딸’은 주어가 라헬의 아버지인 것처럼 읽혀 의미를 왜곡합니다.
+  - severity: medium
+    issue: 본문 각주 표지 [a]에 대응하는 각주가 제시되지 않음
+    rationale: 번역문에 있는 표지를 해소하고 영어 POB 감사 이력의 대안적 번역을 독자에게 제공해야 합니다.
+  revised_text: 그는 그의 딸 라헬을 위하여 그를 한 주 동안 섬겼습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 또는 “라헬을 위하여 칠 년 동안.”
+    reason: 영어 POB 감사 이력에 있는 대안적 번역을 반영합니다. 본문은 희년서의 특징적인 시간 단위인 ‘한 주’를 보존합니다.
+  revision_rationale: ‘자기’를 ‘그의’로 고쳐 라헬이 주어가 아니라 그가 섬긴 상대의 딸임을 원문대로 나타냈습니다. 또한 누락된 [a] 각주를 보완하되, 본문에서는 ‘한 주’라는 표현을 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:29:58Z'
+  output_hash: a05362b8fee1f4f68da68ef8c70bf23a078e4972f826bfa14808fd050bb4b599
+  usage:
+    completion_tokens: 1050
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 496
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 148
+      engine_ttlt_ms: 8716
+      pre_inference_ms: 87
+      service_tbt_ms: 8
+      service_ttft_ms: 336
+      service_ttlt_ms: 8900
+      total_duration_ms: 8829
+      user_visible_ttft_ms: 249
+    prompt_tokens: 1427
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 1152
+    total_tokens: 2477
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -74,4 +74,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 문장은 원문과 영어 감사본 모두 앞 문맥에서 이어지는 절단된 구절인데, 초안은 ‘있었습니다’라는 완결 서술로 바꾸어 의미를 추가했습니다. 또한 마지막 문장은 원문이 ‘왕의’에서 절단되었는데, 초안은 ‘왕과 함께 싸웠습니다’로 완결하여 결락을 감추었습니다. 두 절단 상태를 번역문과 주석에서 명시해야 합니다.
+  naturalness: ‘자기 뼈에 관해 그들에게 맹세하게 하였는데’는 이해 가능하나, 현대 격식체에서는 ‘자신의 뼈에 관하여 그들에게 맹세하게 하였습니다’가 더 자연스럽습니다. 절단된 본문은 자연스러운 완결문으로 고치기보다 줄임표와 주석으로 현전 상태를 드러내는 편이 적절합니다.
+  terminology: ‘이집트’, ‘가나안’, ‘아시리아’, ‘마크마론’, ‘뼈’, ‘장사하다’는 원문 및 영어 POB의 명칭과 장례 어휘를 충실히 반영합니다. ‘그의 뼈’는 문맥상 요셉을 가리키므로 ‘자신의 뼈’로 명확히 하되, 원문의 소유 표현을 유지했습니다.
+  issues:
+  - severity: high
+    issue: 첫 문장에 ‘있었습니다’를 삽입하여 절단된 구절을 완결문으로 만들었습니다.
+    rationale: 현전 게으즈 본문과 영어 POB는 모두 ‘그들이 이집트 땅에서 나왔던 날에 그의 뼈를’에 해당하는 미완 구절로 시작합니다. ‘있었습니다’는 원문에 없는 존재 서술을 도입합니다.
+  - severity: high
+    issue: 마지막 문장의 절단을 감추고 목적어 없는 ‘왕과 함께 싸웠습니다’로 완결했습니다.
+    rationale: 원문과 영어 POB는 ‘왕의/king of’에서 끝납니다. 누락된 왕의 명칭 또는 소속을 추정하거나 문법적으로 완결된 것처럼 처리해서는 안 됩니다.
+  - severity: low
+    issue: ‘자기 뼈’와 ‘맹세하게 하였는데’의 표현이 다소 구어적·연결 중심입니다.
+    rationale: 합쇼체의 현대적 격식 문체에는 ‘자신의 뼈에 관하여 그들에게 맹세하게 하였습니다’가 더 매끄럽고 직접적입니다.
+  revised_text: 그들이 이집트 땅에서 나왔던 날에 그의 뼈를.[a] 그는 자신의 뼈에 관하여 그들에게 맹세하게 하였습니다. 이는 이집트 사람들이 다시 그를 데리고 나와 가나안 땅에 장사하지 않을 것을 알았기 때문입니다. 가나안 왕 마크마론은 아시리아 땅에 거주하면서 왕과 … 골짜기에서 싸웠습니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 현전 본문은 이 지점에서 앞 문맥에 이어지는 것으로 보이는 미완 구절로 시작합니다.
+    reason: 원문과 영어 POB의 문두 절단 상태를 드러내며, 원문에 없는 서술을 보충하지 않기 위함입니다.
+  - marker: b
+    text: 현전 본문은 ‘왕의/king of’에 해당하는 말에서 절단됩니다. 누락된 왕의 명칭이나 소속은 번역에서 보충하지 않았습니다.
+    reason: 원문 말미의 명백한 절단을 보존하고 추정적 완성을 피하기 위함입니다.
+  revision_rationale: 현전 게으즈 본문과 영어 POB 감사본의 두 절단 지점을 번역에서 명시적으로 보존했습니다. 그 밖에는 이중 동작인 ‘데리고 나와’와 ‘가나안 땅에 장사하다’, 고유명사, 그리고 맹세 표현을 유지하면서 현대 격식체로 다듬었습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:09Z'
+  output_hash: 196a7b5297e293199c2e154cd6b3219561e84b8f5c33b3f128ba02d2043e621e
+  usage:
+    completion_tokens: 1451
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 147
+      engine_ttlt_ms: 11948
+      pre_inference_ms: 148
+      service_tbt_ms: 8
+      service_ttft_ms: 658
+      service_ttlt_ms: 12456
+      total_duration_ms: 12317
+      user_visible_ttft_ms: 511
+    prompt_tokens: 2157
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3608
+  applied_revision: false
+  auto_apply_blocked_errors: []

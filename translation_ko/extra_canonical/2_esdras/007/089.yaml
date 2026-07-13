@@ -99,4 +99,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 본문의 ‘위험’과 ‘율법을 주신 분의 율법을 온전히 지키려 했습니다’는 제시된 라틴어 본문에는 근거가 없습니다. 라틴어는 sustinuerunt의 목적어를 명시하지 않고 그 지점에서 끝나므로, 이를 한국어에서도 보충하지 않는 것이 원문 우선 원칙에 맞습니다. 또한 seruari a uaso corruptibili는 ‘썩어 없어질 그릇에서 보존되다/지켜지다’라는 수동 표현으로 옮길 수 있습니다.
+  naturalness: ‘썩어 없어질 그릇’은 은유를 보존하지만 다소 어색할 수 있어도 문맥상 수용 가능합니다. ‘그때 그들은 그 안에 거주하면서’는 In eo tempore를 시간 표현으로 받는 경우 ‘그 안에’가 불필요하게 모호해집니다. ‘그 기간에 그들은 거하며’로 정리하면 자연스럽습니다.
+  terminology: Altissimus는 ‘지극히 높으신 분’, servire는 ‘섬기다’, lex/Legislator는 본문에 실제로 있을 경우 ‘율법’과 ‘율법을 주신 분’으로 처리하는 선택이 적절합니다. 그러나 후자의 어구는 현재 제공된 라틴어 구절에 없으므로 본문에 유지할 수 없습니다.
+  issues:
+  - severity: high
+    issue: 라틴어에 없는 ‘위험’ 및 율법 준수 목적절이 본문에 추가되어 있습니다.
+    rationale: 제시된 원문은 ‘et omni hora sustinuerunt’에서 끝납니다. 영어 POB 감사본에 있는 ‘danger’와 목적절은 이 제공 원문으로 검증되지 않으므로, 원문 우선 검토에서는 번역문에 보충할 수 없습니다.
+  - severity: medium
+    issue: 각주 a가 근거 없는 문법 설명을 제시합니다.
+    rationale: 제시 라틴어에는 ‘iter*계 동사군’에 해당하는 정보가 없으며, seruari는 servare의 수동 부정사입니다. 해당 각주는 삭제하거나 정확한 형태 설명으로 고쳐야 합니다.
+  - severity: medium
+    issue: ‘그 안에 거주하면서’가 In eo tempore의 선행사를 부당하게 공간적 ‘그릇’으로 확정합니다.
+    rationale: In eo tempore는 자연스럽게 ‘그 기간/그때’이며, commoratae는 그 기간에 머물렀다는 뜻으로 옮기는 편이 안전합니다.
+  revised_text: 이것은 지극히 높으신 분의 질서입니다. 그들이 썩어 없어질 그릇에서 보존되기 시작할 때, 그 기간에 그들은 머물며 수고하여 지극히 높으신 분을 섬겼고, 매 시간마다 견뎌 냈습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 sustinuerunt(‘견뎌 냈습니다’)에는 이 발췌문에서 목적어가 명시되어 있지 않습니다. 따라서 무엇을 견뎌 냈는지는 본문에서 보충하지 않았습니다.
+    reason: source_note
+  revision_rationale: 제시된 라틴어 본문을 우선하여, 영어 감사본에만 나타나는 ‘위험’과 율법 준수 목적절을 제거했습니다. 수동 부정사 seruari의 의미는 ‘보존되다’로 분명히 하고, In eo tempore와 commoratae를 시간적 의미로 자연스럽게 옮겼습니다. 기존 각주의 근거 없는 ‘iter*계’ 설명은 삭제하고, 목적어가 생략된 sustinuerunt의 모호성을 밝히는 각주로 대체했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:26:13Z'
+  output_hash: 9448ca5f01a2c589d4c300af5788373b7e8ff4957dfe90063df7524623362915
+  usage:
+    completion_tokens: 1383
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 145
+      engine_ttlt_ms: 11977
+      pre_inference_ms: 85
+      service_tbt_ms: 9
+      service_ttft_ms: 314
+      service_ttlt_ms: 12141
+      total_duration_ms: 12065
+      user_visible_ttft_ms: 229
+    prompt_tokens: 2045
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3428
+  applied_revision: false
+  auto_apply_blocked_errors: []

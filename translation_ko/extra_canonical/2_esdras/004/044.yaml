@@ -14,14 +14,11 @@ base_translation:
   text: And I answered and said, “If I have found favor before your eyes, and if
 translation:
   language: ko
-  text: 저는 대답하여 말했습니다. 「만일 제가 주님의 눈앞에서 은총을 얻었다면, 그리고」[a][b]
+  text: 그러자 저는 대답하여 말했습니다. 「만일 제가 당신의 눈앞에서 호의를 얻었다면, 그리고」[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 라틴어 gratiam은 ‘은총’ 외에 ‘호의, 은혜’로도 옮길 수 있습니다.
-    reason: lexical_alternative
-  - marker: b
-    text: 원문은 여기서 문장이 끝나지 않는 단편으로 전해집니다.
+    text: 원문은 ‘그리고 만일’이라는 말에서 끝나는 미완결 단편으로 전해집니다.
     reason: source_note
 lexical_decisions:
 - source_word: Et respondi et dixi
@@ -68,4 +65,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 저는 대답하여 말했습니다. 「만일 제가 주님의 눈앞에서 은총을 얻었다면, 그리고」[a][b]
+  to: 그러자 저는 대답하여 말했습니다. 「만일 제가 당신의 눈앞에서 호의를 얻었다면, 그리고」[a]
+  rationale: 원문에 없는 ‘주님’이라는 특정화를 제거하고, 문두 접속사와 ‘호의를 얻다’라는 자연스러운 관용 표현을 반영했습니다. 끝맺지 않은 조건절과 마지막 접속사는 원문 단편의 상태에 맞추어 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:25:03Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어의 Et(‘그리고/그러자’)와 tuos(‘당신의’)를 반영해야 합니다. 현 문맥상 발화 상대를 ‘주님’으로 특정할 근거는 이 단편 자체에 없으며, 실제 대화 상대의 신분을 본문에 선취해서도 안 됩니다. 문장 끝의 et si는 미완결 조건절로 그대로 보존하는 것이 적절합니다.
+  naturalness: ‘대답하여 말했습니다’는 자연스럽고 합쇼체 서술에도 맞습니다. 다만 단편의 끝인 ‘그리고’는 인용문 안에 남기고, 단편성 주석을 그 지점에 연결하는 편이 더 분명합니다.
+  terminology: gratiam은 이 관용구(‘눈앞에서 호의를 얻다’)에서는 ‘은총’보다 ‘호의’가 더 중립적이고 자연스럽습니다. ‘주님’은 원문에 없는 신학적·인물 식별을 도입하므로 ‘당신’으로 고칩니다.
+  issues:
+  - severity: medium
+    issue: ‘주님의’로 발화 상대를 특정함
+    rationale: 원문은 단지 tuos(‘당신의’)라고 할 뿐이며, 제공된 단편만으로 ‘주님’을 삽입할 수 없습니다.
+  - severity: low
+    issue: 문두 접속사 Et가 번역에서 빠짐
+    rationale: Et respondi et dixi의 Et는 앞선 발화에 잇는 서술 연결을 나타내므로 ‘그러자’ 등으로 반영하는 것이 좋습니다.
+  - severity: low
+    issue: ‘은총’의 선택이 문맥상 다소 과도하게 종교화됨
+    rationale: gratiam ante oculos tuos는 ‘누구의 눈앞에서 호의를 얻다’라는 관용적 표현으로, ‘호의’를 쓰면 의미를 더 중립적으로 보존합니다.
+  revised_text: 그러자 저는 대답하여 말했습니다. 「만일 제가 당신의 눈앞에서 호의를 얻었다면, 그리고」[a]
+  revised_footnotes:
+  - marker: a
+    text: 원문은 ‘그리고 만일’이라는 말에서 끝나는 미완결 단편으로 전해집니다.
+    reason: source_note
+  revision_rationale: 원문에 없는 ‘주님’이라는 특정화를 제거하고, 문두 접속사와 ‘호의를 얻다’라는 자연스러운 관용 표현을 반영했습니다. 끝맺지 않은 조건절과 마지막 접속사는 원문 단편의 상태에 맞추어 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:25:03Z'
+  output_hash: 7200fd3cfae79671780ec3ef8e692d2d5a23a76393fa02224642776fd7ed0aa8
+  usage:
+    completion_tokens: 828
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 224
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 124
+      engine_ttlt_ms: 7593
+      pre_inference_ms: 131
+      service_tbt_ms: 9
+      service_ttft_ms: 429
+      service_ttlt_ms: 7877
+      total_duration_ms: 7756
+      user_visible_ttft_ms: 298
+    prompt_tokens: 1369
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2197
+  applied_revision: true
+  auto_apply_blocked_errors: []

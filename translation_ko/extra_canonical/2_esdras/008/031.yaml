@@ -14,7 +14,7 @@ base_translation:
   text: judged, but love those who have always trusted in your glory. For we and our fathers have lived in mortal ways, but you, however,
 translation:
   language: ko
-  text: 심판받을 자들이 아니라, 늘 당신의 영광을 의지해 온 이들을 사랑하십시오. 우리와 우리 조상들은 죽을 수밖에 없는 삶을 살았습니다. 그러나 당신은,
+  text: 심판을 받았으나, 늘 당신의 영광을 신뢰해 온 이들을 사랑하십시오. 우리는 우리 조상들과 더불어 필멸의 방식으로 살아왔습니다. 그러나 당신은,
   philosophy: formal
 lexical_decisions:
 - source_word: iudicati
@@ -76,4 +76,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 심판받을 자들이 아니라, 늘 당신의 영광을 의지해 온 이들을 사랑하십시오. 우리와 우리 조상들은 죽을 수밖에 없는 삶을 살았습니다. 그러나 당신은,
+  to: 심판을 받았으나, 늘 당신의 영광을 신뢰해 온 이들을 사랑하십시오. 우리는 우리 조상들과 더불어 필멸의 방식으로 살아왔습니다. 그러나 당신은,
+  rationale: 원문 단편의 첫 연결어 sed를 ‘아니라’로 바꾸어 생긴 무근거의 부정을 제거했습니다. iudicati의 수동 완료 의미와 ‘그러나’의 대조를 유지하되, 결손된 선행 문맥은 추정하여 보충하지 않았습니다. 또한 mortalibus moribus의 ‘필멸의 방식’이라는 표현을 회복했고, 제공된 라틴어가 tu autem에서 끝나는 미완결성도 그대로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:26:12Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초두의 라틴어 단편 iudicati, sed는 앞 문맥이 결손된 상태이므로, 이를 ‘…아니라’로 옮겨 부정 대조를 삽입해서는 안 됩니다. iudicati는 ‘심판을 받았으나’로 보존하는 편이 제공된 원문과 영어 감사본의 ‘judged, but’에 충실합니다. mortalibus moribus egimus는 단지 ‘죽을 수밖에 없는 삶’이라기보다 ‘필멸의 방식/습속으로 살아왔다’는 표현입니다. 끝의 tu autem은 미완결로 유지해야 합니다.
+  naturalness: ‘심판을 받았으나, 늘 당신의 영광을 신뢰해 온 이들을 사랑하십시오’는 원문 단편의 불완전한 연결을 억지로 보완하지 않으면서도 현대 한국어 합쇼체로 읽힙니다. ‘필멸의 방식으로 살아왔습니다’는 자연스럽고도 원문의 moribus를 보존합니다.
+  terminology: gloria는 ‘영광’, confiderunt는 ‘신뢰해 온’, diligas는 기원·간청 문맥의 합쇼체 ‘사랑하십시오’로 유지할 수 있습니다. ‘필멸’은 mortalis의 핵심 의미를 정확히 전달합니다.
+  issues:
+  - severity: high
+    issue: ‘심판받을 자들이 아니라’가 원문에 없는 부정 대조를 추가합니다.
+    rationale: 제공된 라틴어는 iudicati, sed(‘심판받았으나/심판을 받지만, 그러나’)로 시작할 뿐 non이나 이에 상당하는 부정 표현이 없습니다. ‘아니라’는 본문 의미와 통사 관계를 변경합니다.
+  - severity: medium
+    issue: mortalibus moribus가 ‘죽을 수밖에 없는 삶’으로 다소 평준화되었습니다.
+    rationale: moribus는 삶 자체보다 방식·습속·행실을 가리킵니다. ‘필멸의 방식으로’가 필멸성과 표현의 범위를 함께 보존합니다.
+  revised_text: 심판을 받았으나, 늘 당신의 영광을 신뢰해 온 이들을 사랑하십시오. 우리는 우리 조상들과 더불어 필멸의 방식으로 살아왔습니다. 그러나 당신은,
+  revised_footnotes: []
+  revision_rationale: 원문 단편의 첫 연결어 sed를 ‘아니라’로 바꾸어 생긴 무근거의 부정을 제거했습니다. iudicati의 수동 완료 의미와 ‘그러나’의 대조를 유지하되, 결손된 선행 문맥은 추정하여 보충하지 않았습니다. 또한 mortalibus moribus의 ‘필멸의 방식’이라는 표현을 회복했고, 제공된 라틴어가 tu autem에서 끝나는 미완결성도 그대로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:26:12Z'
+  output_hash: faf190d4450c6bd524bdd4e47f6a8c9885843ff45e8459659afea629460c4bd5
+  usage:
+    completion_tokens: 1068
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 395
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 144
+      engine_ttlt_ms: 9404
+      pre_inference_ms: 105
+      service_tbt_ms: 9
+      service_ttft_ms: 403
+      service_ttlt_ms: 9659
+      total_duration_ms: 9566
+      user_visible_ttft_ms: 298
+    prompt_tokens: 1545
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2613
+  applied_revision: true
+  auto_apply_blocked_errors: []

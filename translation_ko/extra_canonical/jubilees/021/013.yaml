@@ -88,4 +88,65 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안의 ‘제단의 제물 위에’는 제물을 올려놓는 위치로 읽히며, 원문 및 영어 감사 기록의 ‘제단 위에서 제물 아래에’라는 공간 관계를 뒤집습니다. 또한 원문의 난해한 ‘외관/모양으로 입증된’ 표현은 유지하되 한국어에서 더 자연스럽게 다듬을 필요가 있습니다.
+  naturalness: ‘외형이 시험된 것들’은 현대 한국어에서 다소 직역투입니다. ‘외관상 검증된 것들’이 원문의 불확실성을 보존하면서도 자연스럽습니다. 품질 형용사들은 병렬 구조로 정돈하는 편이 명료합니다.
+  terminology: 식물명 아르사트나와 베셈은 동정이 불확실하므로 음역을 유지하는 것이 적절합니다. 제의 문맥의 ‘제물’과 ‘제단’도 유지하되, ‘제단 위에 있는 제물 아래에’로 위치 관계를 명시해야 합니다.
+  issues:
+  - severity: high
+    issue: ‘제단의 제물 위에’가 ‘under the sacrifice upon the altar’의 공간 관계를 반대로 옮깁니다.
+    rationale: 이는 나무를 제물 위에 놓는다는 뜻이 되어, 제단 위 제물 아래에 둔다는 원문의 지시와 달라집니다.
+  - severity: medium
+    issue: 영어 감사 기록의 각주 앵커가 한국어 본문에서 보존되지 않았습니다.
+    rationale: 식물명/본문 난해성의 13번 각주는 두 위치에, 대안 번역 각주 a와 b는 각각 해당 구절 뒤에 붙여 독자가 각주의 적용 범위를 알 수 있게 해야 합니다.
+  - severity: low
+    issue: ‘외형이 시험된 것들’은 어색한 직역투입니다.
+    rationale: ‘외관상 검증된 것들’은 ‘proven in appearance’의 제한된 의미를 보존하면서 현대 한국어로 더 자연스럽습니다.
+  revised_text: '[아르사트나와 베셈이라 불리는 나무들][13]—이 나무들 가운데서 외관상 검증된 것들을 제단 위에 있는 제물 아래에 두십시오[a]. 그리고 갈라진 나무나 어두운 나무는 아무것도 두지 말고[b], 흠이 없고 단단하며 깨끗하고 온전하며 갓 자란 나무를 두십시오. 오래된 나무는 두지 마십시오[13]. 그 향기가 사라졌기 때문입니다.'
+  revised_footnotes:
+  - marker: '13'
+    text: 12–14절의 나무 목록에는 에티오피아어 음역으로 전해지는 몇몇 난해한 식물명이 들어 있습니다. 그 식물의 동정은 불확실하며, 그 순서는 확정된 한국어 종명이라기보다 차용어 또는 지역적 식물 용어를 반영할 수 있습니다.
+    reason: lexical_alternative
+  - marker: '13'
+    text: ‘아르사트나와 베셈이라 불리는’이라는 구절은 본문상 어색하며, 훼손되었거나 잘 이해되지 않는 나무 이름들을 보존한 것일 수 있습니다. 그러나 더 큰 지시의 뜻, 곧 제단 불에는 골라진, 건전하고 향기로운 나무만 써야 한다는 점은 분명합니다.
+    reason: textual_variant
+  - marker: a
+    text: 또는 ‘제단 위에 있는 제물 아래에 외관상 검증된 것들을 두십시오.’
+    reason: previous_rendering
+  - marker: b
+    text: 또는 ‘갈라진 나무는 아무것도 두지 말고, 단단한 나무를 두십시오.’
+    reason: previous_rendering
+  revision_rationale: 제물과 제단의 위치 관계를 ‘제단 위에 있는 제물 아래에’로 바로잡아 원문 및 영어 감사 기록을 반영했습니다. 불확실한 식물명은 음역으로 남겼고, ‘proven in appearance’의 제한된 의미는 ‘외관상 검증된’으로 옮겼습니다. 또한 각주 13, a, b를 각각의 관련 본문 위치에 복원하고 한국어로 번역했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:02Z'
+  output_hash: 54616150af47b916cbaeae72db35ed80caa4af2b873a4956fda7eb6cbaed33ea
+  usage:
+    completion_tokens: 1762
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 774
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 228
+      engine_ttlt_ms: 13664
+      pre_inference_ms: 90
+      service_tbt_ms: 8
+      service_ttft_ms: 494
+      service_ttlt_ms: 13925
+      total_duration_ms: 13845
+      user_visible_ttft_ms: 404
+    prompt_tokens: 2861
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4623
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - duplicate footnote markers

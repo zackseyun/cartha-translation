@@ -18,7 +18,7 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그가 말했습니다. 「해산하는 여인에게 물어보십시오. 그러면 그가 당신에게 말할 것입니다. 왜냐하면 당신은 그에게 ‘왜’라고 말할 것이기 때문입니다」[a]
+  text: 그가 말했습니다[a]. “해산하는 여자에게 물어보십시오. 그러면 그 여자가 당신에게 말할 것입니다. 왜냐하면 당신은 그 여자에게 이렇게 말할 것입니다. ‘왜…
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -78,4 +78,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 말했습니다. 「해산하는 여인에게 물어보십시오. 그러면 그가 당신에게 말할 것입니다. 왜냐하면 당신은 그에게 ‘왜’라고 말할 것이기 때문입니다」[a]
+  to: 그가 말했습니다[a]. “해산하는 여자에게 물어보십시오. 그러면 그 여자가 당신에게 말할 것입니다. 왜냐하면 당신은 그 여자에게 이렇게 말할 것입니다. ‘왜…
+  rationale: 여성을 가리키는 대명사를 바로잡고, 각주를 dixit 번역어에 직접 연결했습니다. 또한 원문이 ‘왜’에서 절단되는 것을 한국어에서도 열린 중첩 인용과 말줄임표로 드러내어, 다음 절의 내용을 미리 보충하거나 이 절의 발화를 완결하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:26:14Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 라틴어 dixit를 단순 발화로 옮긴 점과, 절 말미의 미완결된 quare를 다음 절로 넘기지 않은 점은 원문에 충실합니다. 그러나 여성 선행사에 남성 대명사 ‘그’를 쓴 것은 명백한 지시 대상 오류이며, 인용문의 종결 표시는 원문이 절 끝에서 끊기는 상태를 평탄화합니다.
+  naturalness: ‘그가 당신에게’는 여성인 ‘해산하는 여인’을 가리키기에 부자연스럽고 오해를 낳습니다. 또한 ‘왜냐하면 … 때문입니다’는 중복된 인과 표지이지만, 여기서는 원문 자체가 이어지는 미완결 문장이므로 ‘왜냐하면 … 말할 것입니다. ‘왜…’처럼 절단을 드러내는 방식이 더 적절합니다.
+  terminology: ‘해산하는 여자’는 quae parit의 일반적 의미를 자연스럽게 전달합니다. ‘여자’는 이 문맥에서 중립적이고 현대적인 표현이며, 동일 대상을 ‘그 여자’로 반복하여 대명사 성별 혼동을 피합니다.
+  issues:
+  - severity: high
+    issue: 여성 선행사를 남성 대명사 ‘그’로 지칭함
+    rationale: quae parit 및 여성을 뜻하는 ei의 지시 대상은 ‘해산하는 여자’입니다. ‘그러면 그가’, ‘그에게’는 남성으로 읽히므로 ‘그 여자가’, ‘그 여자에게’로 고쳐야 합니다.
+  - severity: medium
+    issue: 인용문이 원문 절단 지점에서 닫혀 있음
+    rationale: '라틴어는 Dices enim ei : quare에서 끝나며, 바깥 발화와 안쪽 ‘왜’라는 질문 모두 문맥상 다음 절로 이어집니다. 닫는 인용부호로 완결된 문장처럼 만들지 말고 미완결 상태를 보존해야 합니다.'
+  - severity: low
+    issue: 각주 표지가 인용문 끝에 놓여 dixit가 아닌 전체 인용문을 가리키는 듯함
+    rationale: 각주의 내용은 dixit의 번역 선택에 관한 것이므로 ‘말했습니다’ 바로 뒤에 표지하는 편이 앵커가 명확합니다.
+  revised_text: 그가 말했습니다[a]. “해산하는 여자에게 물어보십시오. 그러면 그 여자가 당신에게 말할 것입니다. 왜냐하면 당신은 그 여자에게 이렇게 말할 것입니다. ‘왜…
+  revised_footnotes:
+  - marker: a
+    text: 라틴어 dixit는 단순히 ‘말했습니다’이며, 영어 POB의 ‘answered me’는 뒤의 문맥을 보충한 이전 번역 전통입니다.
+    reason: previous_rendering
+  revision_rationale: 여성을 가리키는 대명사를 바로잡고, 각주를 dixit 번역어에 직접 연결했습니다. 또한 원문이 ‘왜’에서 절단되는 것을 한국어에서도 열린 중첩 인용과 말줄임표로 드러내어, 다음 절의 내용을 미리 보충하거나 이 절의 발화를 완결하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:26:14Z'
+  output_hash: 40a64107395c2abe8f8fa439700458792d9ad451e360574148511aa61d973b78
+  usage:
+    completion_tokens: 1246
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 144
+      engine_ttlt_ms: 11439
+      pre_inference_ms: 101
+      service_tbt_ms: 9
+      service_ttft_ms: 362
+      service_ttlt_ms: 11664
+      total_duration_ms: 11566
+      user_visible_ttft_ms: 260
+    prompt_tokens: 1780
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3026
+  applied_revision: true
+  auto_apply_blocked_errors: []

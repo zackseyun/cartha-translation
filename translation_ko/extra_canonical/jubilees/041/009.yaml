@@ -23,7 +23,7 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: '...그의 양 떼를 팀나에 두었습니다. 그리고 그는 과부의 옷을 벗고 베일을 두르고 몸을 단장했습니다.[a]'
+  text: '...그의 양 떼는 팀나에 있었습니다. 그리고 그녀는 과부 때 입던 옷을 벗고 베일을 두른 뒤 몸을 단장했습니다.'
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: አባግዒሁ
@@ -78,4 +78,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: '...그의 양 떼를 팀나에 두었습니다. 그리고 그는 과부의 옷을 벗고 베일을 두르고 몸을 단장했습니다.[a]'
+  to: '...그의 양 떼는 팀나에 있었습니다. 그리고 그녀는 과부 때 입던 옷을 벗고 베일을 두른 뒤 몸을 단장했습니다.'
+  rationale: 여성 단수 주어를 회복하고, 원문 단편에 없는 ‘두다’를 제거했습니다. 세 동작(벗다, 베일을 입다/두르다, 단장하다)을 모두 보존했습니다. 제공된 원문과 맞지 않으며 한국어 내용도 제공되지 않은 [a] 앵커 및 각주는 삭제했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:30:20Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 게에즈 본문은 앞 절에서 이어지는 단편인 ‘... 그의 양 떼를/양 떼가 팀나에’와, 여성 주어가 과부 신분의 옷을 벗고 베일을 입고 자신을 단장하는 세 동작을 담고 있습니다. 초안은 여성 주어를 남성 ‘그’로 바꾸어 핵심 서사 정보를 잘못 옮겼고, ‘두었습니다’는 제공된 단편 자체에는 드러나지 않는 동작을 특정합니다.
+  naturalness: ‘과부의 옷’도 이해 가능하나 ‘과부 때 입던 옷’이 해당 신분을 나타내는 의복이라는 뜻을 자연스럽게 전달합니다. ‘베일을 두르고 몸을 단장했습니다’는 현대 한국어 합쇼체로 자연스럽습니다.
+  terminology: ‘팀나’, ‘양 떼’, ‘베일’은 적절합니다. 여성 인칭대명사 ‘그녀’를 사용해야 하며, 과부 신분을 나타내는 의복이라는 표현을 보존했습니다.
+  issues:
+  - severity: high
+    issue: 여성 주어를 ‘그는’으로 번역했습니다.
+    rationale: 게에즈 동사들은 여성 단수 형태이며, 영어 감사 번역도 ‘she’로 해석합니다. 남성으로 바꾸면 본문 인물이 바뀝니다.
+  - severity: medium
+    issue: ‘그의 양 떼를 팀나에 두었습니다’는 제공된 단편에 없는 ‘두다’ 동작을 확정합니다.
+    rationale: 원문은 절 분할로 인해 앞 문맥에 연결되는 단편이므로, 한국어에서도 말줄임표와 최소한의 서술로 이를 보존하는 편이 안전합니다.
+  - severity: medium
+    issue: 본문 끝의 [a]에 대응하는 한국어 각주가 제공되지 않았습니다.
+    rationale: 앵커 없는 각주는 구조적으로 불완전하며, 영어 감사 기록의 에나임 문구는 제공된 게에즈 본문에 근거하지 않습니다. 앵커와 각주를 함께 제거해야 합니다.
+  revised_text: '...그의 양 떼는 팀나에 있었습니다. 그리고 그녀는 과부 때 입던 옷을 벗고 베일을 두른 뒤 몸을 단장했습니다.'
+  revised_footnotes: []
+  revision_rationale: 여성 단수 주어를 회복하고, 원문 단편에 없는 ‘두다’를 제거했습니다. 세 동작(벗다, 베일을 입다/두르다, 단장하다)을 모두 보존했습니다. 제공된 원문과 맞지 않으며 한국어 내용도 제공되지 않은 [a] 앵커 및 각주는 삭제했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:30:20Z'
+  output_hash: de47b1bded39c44140d4a4469342d212c6e3ea6b2e8f3b8a043b85ca737198dc
+  usage:
+    completion_tokens: 1146
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 123
+      engine_ttlt_ms: 8774
+      pre_inference_ms: 84
+      service_tbt_ms: 8
+      service_ttft_ms: 546
+      service_ttlt_ms: 9190
+      total_duration_ms: 9118
+      user_visible_ttft_ms: 462
+    prompt_tokens: 1781
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2927
+  applied_revision: true
+  auto_apply_blocked_errors: []
