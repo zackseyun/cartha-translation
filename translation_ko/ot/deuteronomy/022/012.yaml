@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 당신은 자기의 옷 가장자리에 술을 만들어야 합니다. 그 옷은 네 모서리에 술을 달아야 할 것입니다.[a][b]
+  text: 당신은 자신을 위해, 몸을 덮는 옷의 네 모서리에 술을 만들어야 합니다.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘술’은 ‘꼬임끈’ 또는 ‘프린지’로도 옮길 수 있습니다.
+    text: ‘술’은 ‘꼬아 만든 끈’ 또는 ‘프린지’로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어는 문자적으로 ‘당신의 옷’을 뜻하며, 문맥상 ‘당신의 겉옷’이나 ‘당신의 의복’으로도 옮길 수 있습니다.
+    text: 히브리어는 문자적으로 ‘당신의 덮는 것’을 뜻합니다. ‘당신의 옷’ 또는 ‘당신의 겉옷’으로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: גְּדִלִים
@@ -85,4 +85,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 당신은 자기의 옷 가장자리에 술을 만들어야 합니다. 그 옷은 네 모서리에 술을 달아야 할 것입니다.[a][b]
+  to: 당신은 자신을 위해, 몸을 덮는 옷의 네 모서리에 술을 만들어야 합니다.[a][b]
+  rationale: 원문의 단일 2인칭 법규 명령을 회복하고, ‘자신을 위해’, ‘네 모서리’, ‘몸을 덮는 옷’의 수식 관계를 보존했습니다. 또한 각주 b의 문자적 의미 설명을 원문 어휘에 맞게 수정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:48:04Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문은 단일 법규 문장으로, ‘너를 위하여’(לָךְ), 의복의 ‘네 모서리’, 그리고 ‘그것으로 네 몸을 덮는’이라는 관계절을 포함합니다. 초안은 이를 두 문장으로 나누면서 두 번째 문장의 주어를 ‘그 옷’으로 바꾸어, 옷이 술을 달아야 한다는 뜻이 되어 원문의 명령 대상과 문장 관계를 훼손합니다. 또한 ‘네 모서리’와 관계절의 연결도 불명확합니다.
+  naturalness: 수정문은 현대 표준 한국어 합쇼체의 법규적 의무 표현을 유지하며, 한 문장 안에서 수식 관계를 자연스럽게 드러냅니다. ‘몸을 덮는 옷’은 כְּסוּת의 기능적 의미를 자연스럽게 보존합니다.
+  terminology: ‘술’은 גְּדִלִים의 적절한 기본 번역입니다. 각주 a의 ‘꼬임끈’은 현대 한국어에서 다소 부자연스러우므로 ‘꼬아 만든 끈’으로 고쳤습니다. 각주 b는 히브리어가 문자적으로 ‘당신의 옷’이라고 한다는 초안의 설명을 바로잡아, ‘당신의 덮개/덮는 것’이라는 어휘적 의미와 ‘옷·겉옷’이라는 가능한 번역을 구별했습니다.
+  issues:
+  - severity: high
+    issue: 두 번째 문장이 ‘그 옷은 네 모서리에 술을 달아야 할 것입니다’라고 하여 옷을 의무의 주체로 만듭니다.
+    rationale: 히브리어 תעשה는 독자에게 향한 2인칭 단수 법규 명령입니다. 술을 만들어야 하는 주체는 옷이 아니라 ‘당신’입니다.
+  - severity: high
+    issue: ‘네 모서리’가 무엇의 모서리인지, 그리고 ‘그 옷’과 관계절의 연결이 불명확합니다.
+    rationale: עַל אַרבע כנפות כסותך는 ‘당신의 덮는 것/옷의 네 모서리에’를 뜻하며, אשר תכסה בה는 그 옷을 수식합니다.
+  - severity: medium
+    issue: 각주 b가 כְּסוּתְךָ를 문자적으로 ‘당신의 옷’이라고 설명합니다.
+    rationale: 기본 어휘는 ‘당신의 덮개, 당신이 몸을 덮는 것’이며, ‘옷’은 문맥에 따른 자연스러운 번역입니다.
+  revised_text: 당신은 자신을 위해, 몸을 덮는 옷의 네 모서리에 술을 만들어야 합니다.[a][b]
+  revised_footnotes:
+  - marker: a
+    text: ‘술’은 ‘꼬아 만든 끈’ 또는 ‘프린지’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어는 문자적으로 ‘당신의 덮는 것’을 뜻합니다. ‘당신의 옷’ 또는 ‘당신의 겉옷’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 단일 2인칭 법규 명령을 회복하고, ‘자신을 위해’, ‘네 모서리’, ‘몸을 덮는 옷’의 수식 관계를 보존했습니다. 또한 각주 b의 문자적 의미 설명을 원문 어휘에 맞게 수정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:48:04Z'
+  output_hash: 8f348fee3fbbd46529fefa084efe5ebb2b0470b9db657210778405287b52eb56
+  usage:
+    completion_tokens: 1345
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 405
+      engine_ttlt_ms: 10506
+      pre_inference_ms: 116
+      service_tbt_ms: 7
+      service_ttft_ms: 729
+      service_ttlt_ms: 10775
+      total_duration_ms: 10668
+      user_visible_ttft_ms: 613
+    prompt_tokens: 2048
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3393
+  applied_revision: true
+  auto_apply_blocked_errors: []

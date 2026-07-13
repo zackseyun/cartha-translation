@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러므로 여러분은 스스로를 매우 조심하십시오[a][b]. 그분께서 호렙에서 불 가운데서 여러분에게 말씀하시던 날, 여러분은 어떤 형상도 보지 못하였습니다.
+  text: 여러분 자신을 각별히 조심하십시오[b]. 야훼께서 호렙에서 불 한가운데서 여러분에게 말씀하신 날에, 여러분은 어떤 형상도 보지 못하였기 때문입니다[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘어떤 유사한 모습도 보지 못하였으니’ 또는 ‘어떤 형상도 보지 못하였으니’.
-    reason: alternative_reading
+    text: 또는 ‘어떤 모습도 보지 못하였으니.’
+    reason: lexical_alternative
   - marker: b
-    text: 히브리어는 문자적으로 ‘여러분의 영혼들을 위해 크게 지키라’는 뜻이지만, ‘스스로를 매우 조심하십시오’라는 관용적 표현입니다.
+    text: 히브리어는 문자적으로 ‘여러분 자신을 위하여 크게 지키라’이며, 매우 조심하라는 뜻의 관용적 표현입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְנִשְׁמַרְתֶּם מְאֹד לְנַפְשֹׁתֵיכֶם
@@ -89,4 +89,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러므로 여러분은 스스로를 매우 조심하십시오[a][b]. 그분께서 호렙에서 불 가운데서 여러분에게 말씀하시던 날, 여러분은 어떤 형상도 보지 못하였습니다.
+  to: 여러분 자신을 각별히 조심하십시오[b]. 야훼께서 호렙에서 불 한가운데서 여러분에게 말씀하신 날에, 여러분은 어떤 형상도 보지 못하였기 때문입니다[a].
+  rationale: 명령 뒤에 כִּי가 이끄는 이유절을 배치하여 원문의 인과관계와 절 순서를 회복했습니다. יהוה는 ‘야훼’로 명시했으며, ‘불 한가운데서’로 מִתּוֹךְ הָאֵשׁ의 공간적 표현을 보존했습니다. 각주 표지는 해당 어구로 옮기고, נֶפֶשׁ 관련 각주 설명에서 불필요한 영혼론적 함의를 피했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:46:09Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안의 ‘그러므로’는 히브리어 כִּי가 제시하는 이유·근거 관계를 ‘그러므로’의 결과 관계로 바꾸며, ‘그분’은 원문에 있는 신명 יהוה를 누락합니다. 또한 원문의 절 순서와 인과관계를 더 직접적으로 반영할 필요가 있습니다.
+  naturalness: ‘여러분 자신을 각별히 조심하십시오’는 현대 표준 한국어 합쇼체에서 자연스럽고, 히브리어 관용구의 자기 경계와 강한 강조를 잘 전달합니다. 이유절을 ‘…보지 못하였기 때문입니다’로 처리하면 명료하고 자연스럽습니다.
+  terminology: יהוה는 POB의 신명 표기 원칙 및 영어 감사 기록에 맞추어 ‘야훼’로 옮겨야 합니다. תְּמוּנָה의 ‘형상’과 מִתּוֹךְ הָאֵשׁ의 ‘불 한가운데서’는 문맥과 원문에 충실합니다.
+  issues:
+  - severity: high
+    issue: ‘그러므로’가 כִּי의 인과 관계를 역전합니다.
+    rationale: כִּי는 ‘왜냐하면/…이기 때문입니다’로, 자기 경계 명령의 근거를 제시합니다. ‘그러므로’는 앞선 내용을 근거로 한 결론처럼 만들어 원문의 논리와 절의 진행을 바꿉니다.
+  - severity: high
+    issue: יהוה를 ‘그분’으로 처리하여 신명이 본문에서 빠졌습니다.
+    rationale: 원문은 명시적으로 יהוה를 사용하며, 제공된 POB 감사 기록도 ‘Yahweh’를 선택합니다. 문맥상 대명사로 대체할 근거가 없고, 신명 표기 원칙과도 맞지 않습니다.
+  - severity: medium
+    issue: 각주 a가 명령문에 붙어 있으나 내용은 ‘형상’을 보지 못했다는 절의 대안 번역입니다.
+    rationale: 각주는 해당 표현 바로 뒤에 배치되어야 독자가 대안의 적용 범위를 혼동하지 않습니다.
+  - severity: low
+    issue: 각주 b의 ‘영혼들을 위해’라는 직역 설명은 נֶפֶשׁ 관용구를 불필요하게 실체적 ‘영혼’으로 오해하게 할 수 있습니다.
+    rationale: 본문 번역은 관용적 자기 경계로 적절합니다. 각주도 ‘자신들을 위하여 크게 지키라’라는 형태로 제시하고 관용적 의미를 설명하는 편이 더 안전합니다.
+  revised_text: 여러분 자신을 각별히 조심하십시오[b]. 야훼께서 호렙에서 불 한가운데서 여러분에게 말씀하신 날에, 여러분은 어떤 형상도 보지 못하였기 때문입니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘어떤 모습도 보지 못하였으니.’
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어는 문자적으로 ‘여러분 자신을 위하여 크게 지키라’이며, 매우 조심하라는 뜻의 관용적 표현입니다.
+    reason: lexical_alternative
+  revision_rationale: 명령 뒤에 כִּי가 이끄는 이유절을 배치하여 원문의 인과관계와 절 순서를 회복했습니다. יהוה는 ‘야훼’로 명시했으며, ‘불 한가운데서’로 מִתּוֹךְ הָאֵשׁ의 공간적 표현을 보존했습니다. 각주 표지는 해당 어구로 옮기고, נֶפֶשׁ 관련 각주 설명에서 불필요한 영혼론적 함의를 피했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:46:09Z'
+  output_hash: b4aedae8c184aa48472296cd44347f19f9cc5f7efc0663bc09cb4a8269511017
+  usage:
+    completion_tokens: 1271
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 384
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 10291
+      pre_inference_ms: 153
+      service_tbt_ms: 8
+      service_ttft_ms: 648
+      service_ttlt_ms: 10809
+      total_duration_ms: 10661
+      user_visible_ttft_ms: 496
+    prompt_tokens: 2967
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4238
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 한 증인만으로는 어떤 죄악이나 어떤 죄에 관해서도, 곧 그가 범하는 어떤 죄에 관해서도 사람에 대하여 서지 못합니다. 두 증인의 증언이나 세 증인의 증언에 따라 그 일이 서게 됩니다.[a][b][c]
+  text: 한 증인은 어떤 죄악이나 어떤 죄, 곧 그가 범한 어떤 죄에 관해서든 한 사람을 상대로 유효한 증언으로 설 수 없습니다.[a] 어떤 사안이든 두 증인의 증언이나 세 증인의 증언에 따라 서게 됩니다.[b][c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 ‘한 증인’과 ‘두 증인/세 증인’의 대비로 증거의 성립 조건을 말합니다.
-    reason: source_note
+    text: 히브리어는 직역하면 ‘한 남자/사람에 대하여’입니다. 남성 단수형은 이 법 조항에서 대표적으로 쓰였습니다.
+    reason: lexical_alternative
   - marker: b
     text: 직역하면 ‘두 증인의 입으로 또는 세 증인의 입으로’입니다.
     reason: lexical_alternative
   - marker: c
-    text: 같은 동사 ‘서다’가 앞뒤에 반복되어 법적 성립을 표현합니다.
+    text: 같은 동사 ‘서다’가 앞뒤에 반복되어 증언의 법적 유효성과 사안의 성립을 표현합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: לֹא יָקוּם ... יָקוּם
@@ -97,4 +97,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 한 증인만으로는 어떤 죄악이나 어떤 죄에 관해서도, 곧 그가 범하는 어떤 죄에 관해서도 사람에 대하여 서지 못합니다. 두 증인의 증언이나 세 증인의 증언에 따라 그 일이 서게 됩니다.[a][b][c]
+  to: 한 증인은 어떤 죄악이나 어떤 죄, 곧 그가 범한 어떤 죄에 관해서든 한 사람을 상대로 유효한 증언으로 설 수 없습니다.[a] 어떤 사안이든 두 증인의 증언이나 세 증인의 증언에 따라 서게 됩니다.[b][c]
+  rationale: 원문의 법적 문장 구조를 따라 ‘한 사람을 상대로’를 첫 절 안에 분명히 배치했습니다. 첫 번째와 두 번째 קוּם은 모두 ‘서다’로 유지하되, 첫 절에는 ‘유효한 증언으로’를 보충하여 한국어에서 법적 의미가 자연스럽게 드러나게 했습니다. דָּבָר는 특정한 ‘그 일’이 아니라 포괄적 법적 ‘사안’으로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:48:09Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 초안은 증인 수 요건과 קוּם의 반복을 대체로 반영하지만, בְּאִישׁ(‘한 사람을 상대로/한 사람에 대하여’)의 위치가 문장 끝으로 밀려 수식 관계가 흐려지고, ‘그 일’은 정관사가 없는 דָּבָר의 일반적 법적 의미를 지나치게 특정합니다.
+  naturalness: ‘사람에 대하여 서지 못합니다’는 현대 한국어 법률·성경 문체에서 다소 어색하며, 무엇이 누구를 상대로 유효하게 서지 못하는지 즉시 파악하기 어렵습니다. ‘한 사람을 상대로 유효한 증언으로 설 수 없습니다’와 ‘어떤 사안이든’이 더 자연스럽고 정확합니다.
+  terminology: ‘죄악’, ‘죄’, ‘증언’, ‘사안’은 법적·도덕적 어휘의 누적과 문맥을 적절히 반영합니다. ‘유효한 증언으로’는 법적 문맥에서 첫 번째 קוּם의 성립 의미를 밝혀 주되, ‘서다’의 반복은 유지합니다.
+  issues:
+  - severity: medium
+    issue: בְּאִישׁ의 수식 관계와 법적 방향성이 불명확합니다.
+    rationale: 원문은 한 증인이 ‘한 사람을 상대로’ 어떠한 죄과에 대해서도 서지 못한다고 말합니다. 초안의 ‘...죄에 관해서도 사람에 대하여 서지 못합니다’는 ‘사람에 대하여’가 무엇을 수식하는지 늦게 제시되어 문장 구조가 불분명합니다.
+  - severity: low
+    issue: דָּבָר를 ‘그 일’로 옮겨 지시성을 추가합니다.
+    rationale: 원문은 앞서 특정된 사건만이 아니라 법적 사안 일반이 두세 증인의 증언으로 성립함을 말합니다. ‘어떤 사안이든’이 더 적절합니다.
+  - severity: low
+    issue: 각주 a가 본문의 ‘한 사람’ 및 בְּאִישׁ의 대표적 남성 단수형을 설명하지 못합니다.
+    rationale: 현 각주는 단순한 수적 대비를 반복할 뿐입니다. 원문의 표현과 번역 선택을 직접 설명하도록 고치는 편이 낫습니다.
+  revised_text: 한 증인은 어떤 죄악이나 어떤 죄, 곧 그가 범한 어떤 죄에 관해서든 한 사람을 상대로 유효한 증언으로 설 수 없습니다.[a] 어떤 사안이든 두 증인의 증언이나 세 증인의 증언에 따라 서게 됩니다.[b][c]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 직역하면 ‘한 남자/사람에 대하여’입니다. 남성 단수형은 이 법 조항에서 대표적으로 쓰였습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘두 증인의 입으로 또는 세 증인의 입으로’입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 같은 동사 ‘서다’가 앞뒤에 반복되어 증언의 법적 유효성과 사안의 성립을 표현합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 법적 문장 구조를 따라 ‘한 사람을 상대로’를 첫 절 안에 분명히 배치했습니다. 첫 번째와 두 번째 קוּם은 모두 ‘서다’로 유지하되, 첫 절에는 ‘유효한 증언으로’를 보충하여 한국어에서 법적 의미가 자연스럽게 드러나게 했습니다. דָּבָר는 특정한 ‘그 일’이 아니라 포괄적 법적 ‘사안’으로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:48:09Z'
+  output_hash: 3c250cd4ef59a86f4768c071283f36f8c5f106f08764f846d9587edd68355bf6
+  usage:
+    completion_tokens: 1400
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 167
+      engine_ttlt_ms: 11729
+      pre_inference_ms: 126
+      service_tbt_ms: 8
+      service_ttft_ms: 462
+      service_ttlt_ms: 12003
+      total_duration_ms: 11889
+      user_visible_ttft_ms: 336
+    prompt_tokens: 2687
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4087
+  applied_revision: true
+  auto_apply_blocked_errors: []

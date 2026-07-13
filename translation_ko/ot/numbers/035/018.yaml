@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 아니면 손에 든 나무 도구로 치어 그로 죽게 하고 그가 죽었으면 그 살인자는 참살당할 자니라.
+  text: 아니면 어떤 사람이 손에 든 나무 도구[a]로 다른 사람을 쳐서 그 사람이 죽으면, 그는 살인자입니다. 그 살인자는 반드시 사형에 처해야 합니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘손으로 다룰 수 있는 나무 도구’.
+    reason: ‘나무 도구’(כְּלִי עֵץ)와 ‘손’(יָד)의 결합은 손에 든 물건 또는 손으로 쥘 수 있는 물건을 가리킬 수 있습니다.
 ai_draft:
   model_id: mlx-community/Qwen3.5-35B-A3B-4bit
   azure_deployment: local-mlx-fastpath
@@ -31,4 +35,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 아니면 손에 든 나무 도구로 치어 그로 죽게 하고 그가 죽었으면 그 살인자는 참살당할 자니라.
+  to: 아니면 어떤 사람이 손에 든 나무 도구[a]로 다른 사람을 쳐서 그 사람이 죽으면, 그는 살인자입니다. 그 살인자는 반드시 사형에 처해야 합니다.
+  rationale: 현대 표준어 합쇼체로 고치고, 타격을 가한 사람과 사망한 피해자를 명확히 했습니다. ‘살인자’와 ‘반드시 사형에 처해야 합니다’는 원문의 법적 판정과 강조된 사형 규정을 보존합니다. 나무 도구가 손에 들린/손으로 다룰 수 있는 물건이라는 어휘적 여지는 각주로 남겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:45:07Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 손에 든 나무 도구와 타격 및 사망이라는 기본 요소를 담고 있으나, ‘그로 죽게 하고’는 히브리어의 ‘그가 죽으면’을 부자연스럽게 바꾸며 행위자와 피해자의 관계도 불명확하게 합니다. ‘참살당할 자니라’는 원문의 법적 사형 선고를 정확하고 현대적으로 전달하지 못합니다.
+  naturalness: ‘참살당할 자니라’는 현대 표준어 합쇼체가 아닌 고어적·비관용적 표현입니다. 행위자와 피해자를 명시하고 현대 법률적 문체로 정리하는 것이 자연스럽습니다.
+  terminology: רֹצֵחַ는 문맥상 ‘살인자’로, מות יומת는 강조된 법적 처벌로서 ‘반드시 사형에 처해야 합니다’로 옮겼습니다. כלי עץ יד의 폭넓은 뜻과 ‘손에 든/손으로 다룰 수 있는’ 뉘앙스는 각주로 보존했습니다.
+  issues:
+  - severity: high
+    issue: ‘그로 죽게 하고’가 사망 절의 주어·관계를 흐립니다.
+    rationale: וַיָּמֹת는 맞은 사람이 죽는 결과를 말합니다. ‘다른 사람을 쳐서 그 사람이 죽으면’으로 피해자와 결과를 분명히 해야 합니다.
+  - severity: high
+    issue: ‘참살당할 자니라’는 현대어도 아니고 법적 처벌 표현으로 부정확합니다.
+    rationale: מוֹת יוּמַת은 ‘반드시 죽임을 당해야 한다’라는 법적 형벌 규정입니다. ‘반드시 사형에 처해야 합니다’가 현대 합쇼체와 법적 의미에 맞습니다.
+  - severity: medium
+    issue: 원문의 כלי עץ יד에 관련된 어휘적 대안 각주가 누락되었습니다.
+    rationale: ‘손에 든 나무 도구’는 가능한 번역이지만, 손으로 쥘 수 있는 나무 도구라는 대안을 각주로 제시하여 히브리어 표현의 범위를 보존하는 것이 좋습니다.
+  revised_text: 아니면 어떤 사람이 손에 든 나무 도구[a]로 다른 사람을 쳐서 그 사람이 죽으면, 그는 살인자입니다. 그 살인자는 반드시 사형에 처해야 합니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘손으로 다룰 수 있는 나무 도구’.
+    reason: ‘나무 도구’(כְּלִי עֵץ)와 ‘손’(יָד)의 결합은 손에 든 물건 또는 손으로 쥘 수 있는 물건을 가리킬 수 있습니다.
+  revision_rationale: 현대 표준어 합쇼체로 고치고, 타격을 가한 사람과 사망한 피해자를 명확히 했습니다. ‘살인자’와 ‘반드시 사형에 처해야 합니다’는 원문의 법적 판정과 강조된 사형 규정을 보존합니다. 나무 도구가 손에 들린/손으로 다룰 수 있는 물건이라는 어휘적 여지는 각주로 남겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:45:07Z'
+  output_hash: c9488d4828d361bf43d9172cffc6b06b4f3ea2c13d72b1c3f25ed2f7b87cf849
+  usage:
+    completion_tokens: 1184
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 421
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 148
+      engine_ttlt_ms: 9466
+      pre_inference_ms: 2887
+      service_tbt_ms: 8
+      service_ttft_ms: 3959
+      service_ttlt_ms: 13225
+      total_duration_ms: 10358
+      user_visible_ttft_ms: 1071
+    prompt_tokens: 1490
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2674
+  applied_revision: true
+  auto_apply_blocked_errors: []

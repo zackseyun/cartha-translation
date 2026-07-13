@@ -97,4 +97,59 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 명령의 비교절(‘…명령하신 대로’)이 본문에서는 독립 문장으로 분리되어 원문의 통사적 연결이 약화되었습니다. 또한 각주 표지가 가리키는 위치와 각주 내용이 원문 및 영어 감사 기록의 어휘 대안과 일치하지 않습니다.
+  naturalness: ‘이것은 …대로입니다’는 이 문맥에서 부자연스럽고, ‘네’와 합쇼체의 결합도 현대 표준어의 정중한 직접 권면 문체에서는 다소 불균질합니다. 비교절을 명령문에 직접 연결하고 ‘당신의’로 일관시키는 편이 자연스럽습니다.
+  terminology: ‘공경하십시오’, ‘야훼’, ‘하나님’, ‘땅’은 적절합니다. 야훼를 ‘당신의 하나님 야훼’로 배열하면 한국어 문장 안에서 동격 관계가 더 명료합니다.
+  issues:
+  - severity: medium
+    issue: ‘이것은 야훼 당신의 하나님께서 당신에게 명령하신 대로입니다’가 원문의 비교절을 독립 서술문으로 바꾸었습니다.
+    rationale: כַּאֲשֶׁר צִוְּךָ는 ‘공경하십시오’라는 명령을 수식합니다. 한국어에서도 ‘…명령하신 대로, …공경하십시오’로 연결해야 의미와 문법 관계가 보존됩니다.
+  - severity: medium
+    issue: 각주 a와 b의 표지 위치 및 내용이 뒤바뀌어 있습니다.
+    rationale: 영어 감사 기록에서 a는 ‘당신에게 잘되다’에 관한 어휘 대안이고, b는 ‘땅에서/땅 안에서’에 관한 전치사 대안입니다. 현 초안은 a를 ‘어머니’에, b를 ‘명령’에 붙였으며 각주 문구도 해당 위치와 맞지 않습니다.
+  - severity: low
+    issue: 합쇼체 본문에서 ‘네’와 ‘당신’이 혼용됩니다.
+    rationale: 원문의 2인칭 단수는 유지하되, 현대 정중 문체에서는 ‘당신의’로 일관하는 것이 문체상 더 안정적입니다.
+  revised_text: 당신의 하나님 야훼께서 당신에게 명령하신 대로, 당신의 아버지와 당신의 어머니를 공경하십시오. 그러면 당신의 날들이 길어지고, 당신의 하나님 야훼께서 당신에게 주시는 땅에서 당신에게 잘될 것입니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 또는, ‘당신에게 좋게 될 것입니다.’
+    reason: lexical_alternative
+  - marker: b
+    text: 또는, ‘당신의 하나님 야훼께서 당신에게 주시는 땅 안에서.’
+    reason: lexical_alternative
+  revision_rationale: 명령의 비교절을 주절에 직접 연결하여 히브리어 통사를 보존했습니다. 장수와 복됨의 목적절은 해석적으로 축소하지 않고 유지했습니다. ‘잘될 것입니다’에 어휘 대안 각주를 붙였고, 영어 감사 기록의 ‘on/in the land’ 대안을 반영한 땅 관련 각주도 제공했습니다. 단, b 각주는 본문에 별도 표지를 달지 않아 완전한 각주 앵커 정합성을 위해 본문 표지가 필요합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:45:45Z'
+  output_hash: 51ab301b1898b3d2d6703ffa1a92985d944338e59aed9e13e8270c4b1172cb38
+  usage:
+    completion_tokens: 1313
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 202
+      engine_ttlt_ms: 10894
+      pre_inference_ms: 114
+      service_tbt_ms: 8
+      service_ttft_ms: 524
+      service_ttlt_ms: 11196
+      total_duration_ms: 11155
+      user_visible_ttft_ms: 411
+    prompt_tokens: 3044
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4357
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

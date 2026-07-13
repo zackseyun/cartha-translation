@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 나귀가 저를 보고 제 앞에서 세 번이나 비켜섰습니다. 만일 저가 내 앞에서 비켜서지 않았다면[a], 내가 지금 곧 당신을 죽이고 그 여인은 살려 두었을 것입니다.
+  text: 나귀가 나를 보고 내 앞에서 이렇게 세 번 비켜섰습니다. 만일 그 나귀가 내 앞에서 비켜서지 않았더라면[a], 나는 벌써 당신을 죽이고 그 나귀는 살려 두었을 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로는 ‘아마 저가 내 앞에서 비켜섰다’에 가깝지만, 문맥상 반사실적 조건문으로 이해하는 것이 일반적이어서 ‘만일 … 않았다면’으로 옮겼습니다.
+    text: 히브리어 본문은 문자적으로 ‘아마 그 나귀가 내 앞에서 비켜섰다’라고 하며, 이 절에는 명시적인 부정이 없습니다. 그러나 뒤따르는 ‘나는 벌써 당신을 죽이고 그 나귀는 살려 두었을 것입니다’라는 말과 문맥 때문에, 일반적으로 ‘만일 그 나귀가 … 비켜서지 않았더라면’이라는 반사실적 조건으로 이해합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הָאָתוֹן / וַתִּרְאַנִי
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나귀가 저를 보고 제 앞에서 세 번이나 비켜섰습니다. 만일 저가 내 앞에서 비켜서지 않았다면[a], 내가 지금 곧 당신을 죽이고 그 여인은 살려 두었을 것입니다.
+  to: 나귀가 나를 보고 내 앞에서 이렇게 세 번 비켜섰습니다. 만일 그 나귀가 내 앞에서 비켜서지 않았더라면[a], 나는 벌써 당신을 죽이고 그 나귀는 살려 두었을 것입니다.
+  rationale: 반사실적 이해와 그에 대한 각주는 유지하되, 직접 발화의 인칭을 일관되게 바로잡고 나귀를 사람으로 지칭한 오류를 수정했습니다. ‘이렇게’는 זֶה의 지시적 뉘앙스를, ‘벌써’는 כִּי עַתָּה의 시간적 강조를 자연스럽게 반영합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:39:08Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 반사실적 조건문으로 처리한 것은 문맥과 뒤따르는 결과절에 부합합니다. 다만 직접 화자인 여호와의 천사가 자신을 가리키므로 ‘저/제’가 아니라 ‘나/내’로 일관되어야 하며, וְאֹתָהּ는 나귀를 가리키므로 ‘그 여인’으로 옮길 수 없습니다.
+  naturalness: ‘저를 보고 제 앞에서’와 뒤의 ‘내 앞에서’가 한 발화 안에서 높임의 기준을 혼용합니다. ‘나를 보고 내 앞에서’가 자연스럽고, ‘지금쯤’보다 문맥의 완료된 반사실 결과에는 ‘벌써’가 더 적절합니다.
+  terminology: אָתוֹן의 여성성은 한국어에서 반드시 ‘암나귀’로 표시할 필요는 없으나, 대명사 목적어를 사람을 뜻하는 ‘그 여인’으로 바꾸어서는 안 됩니다. ‘그 나귀’로 지시 대상을 분명히 했습니다.
+  issues:
+  - severity: medium
+    issue: 화자 지시 대명사의 높임 혼용
+    rationale: 천사가 자기 자신을 가리키는 발화에서 ‘저/제’와 ‘나/내’가 혼용되어 있습니다. 원문의 1인칭 접미사와 한국어 직접 발화에 맞게 ‘나/내’로 통일해야 합니다.
+  - severity: high
+    issue: ‘그 여인’이 나귀를 사람으로 오해하게 함
+    rationale: וְאֹתָהּ는 앞의 암나귀를 가리키는 여성 단수 목적어입니다. 한국어 ‘그 여인’은 인간 여성을 뜻하므로 지시 대상과 의미를 바꿉니다.
+  - severity: low
+    issue: 시간 부사의 미세한 부적합
+    rationale: כִּי עַתָּה는 이 반사실 결과절에서 ‘이제는/벌써’의 의미입니다. ‘벌써’가 ‘by now’와 더 잘 맞습니다.
+  revised_text: 나귀가 나를 보고 내 앞에서 이렇게 세 번 비켜섰습니다. 만일 그 나귀가 내 앞에서 비켜서지 않았더라면[a], 나는 벌써 당신을 죽이고 그 나귀는 살려 두었을 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 본문은 문자적으로 ‘아마 그 나귀가 내 앞에서 비켜섰다’라고 하며, 이 절에는 명시적인 부정이 없습니다. 그러나 뒤따르는 ‘나는 벌써 당신을 죽이고 그 나귀는 살려 두었을 것입니다’라는 말과 문맥 때문에, 일반적으로 ‘만일 그 나귀가 … 비켜서지 않았더라면’이라는 반사실적 조건으로 이해합니다.
+    reason: lexical_alternative
+  revision_rationale: 반사실적 이해와 그에 대한 각주는 유지하되, 직접 발화의 인칭을 일관되게 바로잡고 나귀를 사람으로 지칭한 오류를 수정했습니다. ‘이렇게’는 זֶה의 지시적 뉘앙스를, ‘벌써’는 כִּי עַתָּה의 시간적 강조를 자연스럽게 반영합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:39:08Z'
+  output_hash: 19ab100f9909682c387307bf570655099d8cdbdf6c0c14c4c6019d42fde17802
+  usage:
+    completion_tokens: 1108
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 343
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 162
+      engine_ttlt_ms: 9579
+      pre_inference_ms: 162
+      service_tbt_ms: 9
+      service_ttft_ms: 485
+      service_ttlt_ms: 9897
+      total_duration_ms: 9749
+      user_visible_ttft_ms: 323
+    prompt_tokens: 2836
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3944
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,14 +20,14 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그는 당신들과 함께, 당신들의 한가운데에, 그가 당신들의 한 성문 안에서 택하는 곳에 살아야 합니다. 그가 좋아하는 곳에서 말입니다. 당신은 그를 압제해서는 안 됩니다.[a][b]
+  text: 그가 너와 함께, 네 가운데에서, 그가 좋다고 여기는 네 성문들 가운데 한 곳에서 살도록 하십시오.[a][b] 그를 압제하지 마십시오.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘성문’은 히브리어 관용으로, 실제 성문만이 아니라 도시나 공동체의 거주 구역을 가리킬 수 있습니다.
+    text: ‘네 성문들 가운데 한 곳’은 히브리어 관용으로, 실제 성문만이 아니라 성읍이나 공동체의 한 곳을 가리킵니다.
     reason: cultural_note
   - marker: b
-    text: ‘그가 좋아하는 곳’은 문자적으로 ‘그에게 좋은 곳’이라는 뜻입니다.
+    text: ‘그가 좋다고 여기는’은 문자적으로 ‘그에게 좋은’이라는 뜻입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: יֵשֵׁב
@@ -82,4 +82,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 당신들과 함께, 당신들의 한가운데에, 그가 당신들의 한 성문 안에서 택하는 곳에 살아야 합니다. 그가 좋아하는 곳에서 말입니다. 당신은 그를 압제해서는 안 됩니다.[a][b]
+  to: 그가 너와 함께, 네 가운데에서, 그가 좋다고 여기는 네 성문들 가운데 한 곳에서 살도록 하십시오.[a][b] 그를 압제하지 마십시오.
+  rationale: 원문의 단수 2인칭과 남성 단수 지시 대상을 유지했습니다. 거주의 법적 허용·보호라는 문맥을 반영하여 ‘살도록 하십시오’로 고쳤고, 장소 선택과 ‘그에게 좋은’의 관계를 한 문장 안에서 명확히 했습니다. 성문 관용구와 어휘적 대안은 해당 구절에 직접 각주를 달았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:47:32Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 히브리어의 2인칭 접미사는 이 절에서 일관되게 단수이며(‘너와’, ‘네 가운데’, ‘네 성문들’), 초안의 ‘당신들과/당신들의’는 이를 복수로 바꾸었습니다. 또한 יֵשֵׁב는 도피한 종이 그곳에 거주하도록 허용·보호하라는 법적 규정입니다. ‘그는 … 살아야 합니다’는 그 사람에게 거주의 의무를 부과하는 뜻으로 읽힐 수 있으므로, 수신자에게 그가 거주하도록 하라는 형태가 더 충실합니다.
+  naturalness: 초안의 ‘당신들의 한 성문 안에서’와 ‘그가 좋아하는 곳에서 말입니다’는 현대 한국어로 다소 부자연스럽고 분절되어 있습니다. ‘그가 좋다고 여기는 … 한 곳에서’로 한 문장 안에 연결하면 자연스럽고 원문의 수식 관계도 분명해집니다. 합쇼체 명령문으로 ‘살도록 하십시오’와 ‘압제하지 마십시오’를 사용했습니다.
+  terminology: ‘압제하다’는 ינה의 법적·사회적 착취 및 억압의 금지라는 강도를 적절히 보존합니다. ‘성문들’은 성읍/공동체를 가리키는 환유를 보존하되, 각주에서 설명합니다. ‘그에게 좋은’이라는 표현은 בַּטּוֹב לוֹ의 의미를 보존하면서 한국어에서는 ‘그가 좋다고 여기는’으로 자연스럽게 옮겼습니다.
+  issues:
+  - severity: high
+    issue: 2인칭 단수 접미사를 복수 ‘당신들/당신들의’로 번역함
+    rationale: 원문은 עִמְּךָ, בְּקִרְבְּךָ, שְׁעָרֶיךָ 및 תּוֹנֶנּוּ의 단수 2인칭 형태를 사용합니다. 공동체적 적용을 추론할 수 있어도 본문의 문법적 단수는 유지해야 합니다.
+  - severity: medium
+    issue: ‘살아야 합니다’가 도피한 종에게 거주 의무를 부과할 수 있음
+    rationale: 문맥상 이 규정은 그가 선택한 곳에 거주하는 것을 허용하고 보호하라는 명령입니다. 한국어에서는 ‘살도록 하십시오’가 수신자에게 향한 법적 지시를 더 잘 드러냅니다.
+  - severity: medium
+    issue: ‘그가 좋아하는 곳에서 말입니다’가 원문의 수식 관계를 느슨하게 하고 구어적임
+    rationale: בַּטּוֹב לוֹ는 그가 택하는 장소를 한정합니다. ‘그가 좋다고 여기는 … 한 곳’으로 연결하는 것이 현대적 문체와 원문 구조에 맞습니다.
+  revised_text: 그가 너와 함께, 네 가운데에서, 그가 좋다고 여기는 네 성문들 가운데 한 곳에서 살도록 하십시오.[a][b] 그를 압제하지 마십시오.
+  revised_footnotes:
+  - marker: a
+    text: ‘네 성문들 가운데 한 곳’은 히브리어 관용으로, 실제 성문만이 아니라 성읍이나 공동체의 한 곳을 가리킵니다.
+    reason: cultural_note
+  - marker: b
+    text: ‘그가 좋다고 여기는’은 문자적으로 ‘그에게 좋은’이라는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 단수 2인칭과 남성 단수 지시 대상을 유지했습니다. 거주의 법적 허용·보호라는 문맥을 반영하여 ‘살도록 하십시오’로 고쳤고, 장소 선택과 ‘그에게 좋은’의 관계를 한 문장 안에서 명확히 했습니다. 성문 관용구와 어휘적 대안은 해당 구절에 직접 각주를 달았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:47:32Z'
+  output_hash: ae81a1a1d197d0bec0618c898d8731580b6eb41f99571f19f8b0d6d86fdd843c
+  usage:
+    completion_tokens: 1799
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 868
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 147
+      engine_ttlt_ms: 15753
+      pre_inference_ms: 85
+      service_tbt_ms: 9
+      service_ttft_ms: 384
+      service_ttlt_ms: 15982
+      total_duration_ms: 15906
+      user_visible_ttft_ms: 299
+    prompt_tokens: 2368
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4167
+  applied_revision: true
+  auto_apply_blocked_errors: []

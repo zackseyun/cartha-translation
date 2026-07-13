@@ -20,11 +20,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 만일 어떤 사람이 죽을 만한 죄를 범하여 사형에 처해지고, 당신이 그를 나무에 달면,[a][b]
+  text: 만일 어떤 사람이 죽을 만한 죄[a]를 지어 사형에 처해지고, 그를 나무[b]에 매달면,
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘죽을 만한 자’, 혹은 ‘사형 선고 아래 있는 자’입니다. 히브리어 표현은 문자적으로 ‘죽음의 죄/판정’입니다.
+    text: 또는 ‘사형을 받아 마땅한 죄’ 또는 ‘사형 판결에 해당하는 죄’. 히브리어 표현은 문자적으로 ‘죽음의 판결의 죄’입니다.
     reason: lexical_alternative
   - marker: b
     text: 또는 ‘말뚝에’. 히브리어는 문자적으로 ‘나무에’라고 말합니다.
@@ -97,4 +97,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 만일 어떤 사람이 죽을 만한 죄를 범하여 사형에 처해지고, 당신이 그를 나무에 달면,[a][b]
+  to: 만일 어떤 사람이 죽을 만한 죄[a]를 지어 사형에 처해지고, 그를 나무[b]에 매달면,
+  rationale: 원문의 조건절 구조, 사형 집행 뒤에 매다는 순서, 그리고 עֵץ의 넓은 의미를 유지했습니다. 한국어에서 부자연스럽고 불필요하게 청자를 특정하는 ‘당신이’를 생략했으며, 각주 a를 원문의 수식 대상인 ‘죄’에 맞추고 두 각주 표지를 해당 어구로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:48:12Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 주절의 법적 순서와 핵심 의미는 대체로 보존했으나, ‘당신이’는 히브리어의 비특정 법률상 2인칭을 한국어에서 부자연스럽고 지나치게 특정적으로 만들며, 각주 a의 대안은 원문의 ‘죄/사형 판정’ 구문을 ‘사람’으로 잘못 바꿉니다.
+  naturalness: ‘그를 나무에 매달면’이 법률적 조건문 안에서 자연스럽습니다. ‘당신이’는 한국어 성경 문체와 법률적 일반 지시 모두에 부적절하므로 생략하는 것이 좋습니다.
+  terminology: ‘사형에 처해지고’와 ‘나무에 매달면’은 משפט מות 및 תלה/עץ의 법적·물리적 의미를 적절히 전달합니다. ‘죽을 만한 죄’는 자연스러운 본문 표현으로 유지하되, 각주에서는 그 법적 의미와 문자적 구조를 정확히 밝혀야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘당신이’가 비특정 법률상 2인칭을 특정 청자로 만듭니다.
+    rationale: 히브리어 תָלִיתָ는 법규의 일반적 행위를 가리키며, 한국어에서는 주어를 생략한 ‘그를 … 매달면’이 더 자연스럽고 충실합니다.
+  - severity: medium
+    issue: 각주 a의 ‘죽을 만한 자’, ‘사형 선고 아래 있는 자’는 원문의 수식 대상과 맞지 않습니다.
+    rationale: חֵטְא מִשְׁפַּט מָוֶת는 사람 자체가 아니라 사형에 해당하는 죄/범죄를 가리킵니다. 각주도 죄에 대한 대안으로 제시해야 합니다.
+  - severity: low
+    issue: 각주 표지가 모두 절 끝에 놓여 있어 ‘죽을 만한 죄’와 ‘나무’라는 각각의 해당 어구에 즉시 연결되지 않습니다.
+    rationale: 각주 a는 사형에 해당하는 죄 구문에, 각주 b는 עֵץ의 번역인 ‘나무’에 붙이는 편이 독자의 확인을 돕습니다.
+  revised_text: 만일 어떤 사람이 죽을 만한 죄[a]를 지어 사형에 처해지고, 그를 나무[b]에 매달면,
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘사형을 받아 마땅한 죄’ 또는 ‘사형 판결에 해당하는 죄’. 히브리어 표현은 문자적으로 ‘죽음의 판결의 죄’입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘말뚝에’. 히브리어는 문자적으로 ‘나무에’라고 말합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 조건절 구조, 사형 집행 뒤에 매다는 순서, 그리고 עֵץ의 넓은 의미를 유지했습니다. 한국어에서 부자연스럽고 불필요하게 청자를 특정하는 ‘당신이’를 생략했으며, 각주 a를 원문의 수식 대상인 ‘죄’에 맞추고 두 각주 표지를 해당 어구로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:48:12Z'
+  output_hash: 01fde7fe146a0466586e484f47d9688109443ceb23d2f3c77e269c6aec67c799
+  usage:
+    completion_tokens: 1294
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 121
+      engine_ttlt_ms: 10875
+      pre_inference_ms: 76
+      service_tbt_ms: 8
+      service_ttft_ms: 346
+      service_ttlt_ms: 11091
+      total_duration_ms: 11023
+      user_visible_ttft_ms: 270
+    prompt_tokens: 2652
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3946
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 당신들이 이곳에 이르렀을 때[a], 헤스본의 왕 시혼과 바산의 왕 옥이 우리를 전쟁을 위해 맞으러 나왔고[b], 우리는 그들을 쳐부수었습니다.
+  text: 여러분이 이곳에 이르렀을 때[a], 헤스본 왕 시혼과 바산 왕 옥이 우리를 맞아 싸우려고 나왔고, 우리는 그들을 쳤습니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘그리고 당신들이 이곳에 왔을 때.’ 히브리어 서술형은 한국어에서 단순 연결이나 시간 부사절로 모두 옮길 수 있습니다.
+    text: 또는 ‘그리고 여러분이 이곳에 왔습니다.’ 히브리어 서술형은 한국어에서 단순 연결이나 시간 부사절로 모두 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘전투 중에.’ 히브리어는 문자적으로 ‘전쟁을 위해’이지만, 문맥상 적대적 의도를 가리킵니다.
+    text: 또는 ‘우리는 그들을 무찔렀습니다.’ 히브리어 동사는 문자적으로 ‘우리는 그들을 쳤습니다’이며, 전투 문맥에서는 패배시키는 뜻을 가질 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַתָּבֹאוּ אֶל הַמָּקוֹם הַזֶּה
@@ -89,4 +89,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 당신들이 이곳에 이르렀을 때[a], 헤스본의 왕 시혼과 바산의 왕 옥이 우리를 전쟁을 위해 맞으러 나왔고[b], 우리는 그들을 쳐부수었습니다.
+  to: 여러분이 이곳에 이르렀을 때[a], 헤스본 왕 시혼과 바산 왕 옥이 우리를 맞아 싸우려고 나왔고, 우리는 그들을 쳤습니다[b].
+  rationale: 현대 공적 합쇼체에 맞도록 2인칭 복수 호칭을 ‘여러분’으로 고치고, 출전 목적 구문의 어순을 자연스럽게 조정했습니다. נכה는 본문에서 ‘쳤습니다’로 번역하여 원문의 구체성과 의미 범위를 보존했으며, 전투에서의 패배 의미는 각주 대안으로 제시했습니다. 각주 b를 해당 동사에 정확히 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:51:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 시간적/연속적 와우 서술, 왕들의 출전 목적, 그리고 נכה의 구체적이면서도 전투 맥락의 타격 의미를 대체로 반영합니다. 다만 ‘쳐부수었습니다’는 נכה 자체보다 결과를 다소 강하게 특정하며, 각주 b는 원문의 동사 대안이 아니라 전쟁 구문의 대안으로 잘못 연결되어 있습니다.
+  naturalness: ‘당신들이’는 현대 표준 한국어의 공적 خطاب에서 부자연스럽거나 대립적으로 들릴 수 있고, ‘우리를 전쟁을 위해 맞으러’는 어순상 어색합니다. ‘여러분이’와 ‘우리를 맞아 싸우려고’가 합쇼체 문맥에서 자연스럽습니다.
+  terminology: 시혼, 헤스본, 옥, 바산의 음역과 왕 칭호는 적절합니다. ‘전쟁’은 מִלְחָמָה에 가능하지만, 여기서는 목적을 자연스럽게 나타내는 ‘싸우려고’가 적합합니다.
+  issues:
+  - severity: medium
+    issue: 직접 호칭 ‘당신들이’의 사용
+    rationale: 복수 청중을 향한 현대 공적 한국어에서 ‘당신들’은 대립적·비난조로 들릴 수 있습니다. ‘여러분’이 자연스럽고 2인칭 복수도 유지합니다.
+  - severity: medium
+    issue: ‘우리를 전쟁을 위해 맞으러 나왔고’의 어색한 결합
+    rationale: לִקְרָאתֵנוּ לַמִּלְחָמָה는 우리를 맞아 전투하러 나온 목적을 나타냅니다. ‘우리를 맞아 싸우려고 나왔고’가 자연스럽고 충실합니다.
+  - severity: medium
+    issue: 각주 b의 앵커와 내용 불일치
+    rationale: 영어 감사 기록의 b는 וַנַּכֵּם(‘우리가 그들을 쳤다’)의 대안 ‘무찔렀다’에 관한 것입니다. 현 초안은 이를 앞선 전쟁 구문에 붙여 다른 대안을 제시합니다. 동사 뒤로 앵커를 옮겨야 합니다.
+  - severity: low
+    issue: ‘쳐부수었습니다’의 결과 강화
+    rationale: נכה는 ‘치다/타격하다’가 기본 의미이며 전투 문맥에서 패배를 함축할 수 있습니다. 본문은 ‘쳤습니다’로 두고 ‘무찔렀습니다’를 각주 대안으로 제시하면 의미 범위를 보존합니다.
+  revised_text: 여러분이 이곳에 이르렀을 때[a], 헤스본 왕 시혼과 바산 왕 옥이 우리를 맞아 싸우려고 나왔고, 우리는 그들을 쳤습니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘그리고 여러분이 이곳에 왔습니다.’ 히브리어 서술형은 한국어에서 단순 연결이나 시간 부사절로 모두 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘우리는 그들을 무찔렀습니다.’ 히브리어 동사는 문자적으로 ‘우리는 그들을 쳤습니다’이며, 전투 문맥에서는 패배시키는 뜻을 가질 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 현대 공적 합쇼체에 맞도록 2인칭 복수 호칭을 ‘여러분’으로 고치고, 출전 목적 구문의 어순을 자연스럽게 조정했습니다. נכה는 본문에서 ‘쳤습니다’로 번역하여 원문의 구체성과 의미 범위를 보존했으며, 전투에서의 패배 의미는 각주 대안으로 제시했습니다. 각주 b를 해당 동사에 정확히 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:51:06Z'
+  output_hash: f95b96e47ea3387535109e3a78a991205e296974f12e9121f4fdca89c82bff46
+  usage:
+    completion_tokens: 1413
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 503
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 194
+      engine_ttlt_ms: 11975
+      pre_inference_ms: 78
+      service_tbt_ms: 8
+      service_ttft_ms: 402
+      service_ttlt_ms: 12162
+      total_duration_ms: 12093
+      user_visible_ttft_ms: 324
+    prompt_tokens: 2839
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4252
+  applied_revision: true
+  auto_apply_blocked_errors: []

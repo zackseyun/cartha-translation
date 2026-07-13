@@ -17,12 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그의 날에 그의 품삯을 주어야 합니다. 해가 그것 위로 져서는 안 됩니다. 그가 가난하여 자기 생명을 그것에 두기 때문입니다. 그가 야훼께 당신을 향해 부르짖지 않게 하십시오. 그러면 당신에게 죄가 될 것입니다.[a]
+  text: 그의 품삯을 그날 해가 지기 전에 주십시오. 그는 가난하며 그 품삯에 생계를 의지하고 있기 때문입니다.[a] 그가 야훼께 당신을 고발하며 부르짖지 않게 하십시오. 그러면 당신에게 죄가 있게 될 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 ‘그의 날에’라고 하며, 같은 날 지급해야 한다는 뜻입니다.
-    reason: source_note
+    text: 히브리어는 문자적으로 ‘그것을 향하여 그는 자기 생명을 든다/건다’라고 합니다. 이는 그가 그 품삯에 생계를 의지한다는 뜻의 관용적 표현입니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: בְּיוֹמוֹ
   english_pob_choice: on his day
@@ -83,4 +83,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그의 날에 그의 품삯을 주어야 합니다. 해가 그것 위로 져서는 안 됩니다. 그가 가난하여 자기 생명을 그것에 두기 때문입니다. 그가 야훼께 당신을 향해 부르짖지 않게 하십시오. 그러면 당신에게 죄가 될 것입니다.[a]
+  to: 그의 품삯을 그날 해가 지기 전에 주십시오. 그는 가난하며 그 품삯에 생계를 의지하고 있기 때문입니다.[a] 그가 야훼께 당신을 고발하며 부르짖지 않게 하십시오. 그러면 당신에게 죄가 있게 될 것입니다.
+  rationale: 당일 지급과 일몰 전이라는 히브리어의 긴급성을 자연스러운 한국어로 표현했습니다. 생명과 품삯의 관용구는 생계 의존이라는 뜻으로 옮기고 각주에서 문자적 표현을 밝혔습니다. 야훼께 부르짖는 절은 노동자의 호소를 금지하는 뜻이 아니라 고용주에게 주는 경고임을 드러내도록 ‘고발하며 부르짖지 않게 하십시오’로 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:47:31Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 품삯을 당일에 지급하라는 핵심, 가난한 노동자의 생계 의존, 야훼께 호소하는 결과, 죄의 귀결을 대체로 담고 있습니다. 그러나 ‘해가 그것 위로 져서는 안 됩니다’는 한국어에서 무엇을 가리키는지 부자연스럽고, ‘자기 생명을 그것에 두다’는 히브리어 관용구의 뜻을 자연스럽게 전달하지 못합니다. 또한 ‘부르짖지 않게 하십시오’는 노동자의 호소를 막으라는 뜻으로 들릴 수 있어, 경고/결과 관계를 더 정확히 표현할 필요가 있습니다.
+  naturalness: 현대 한국어 합쇼체 법문으로는 ‘그의 날에’, ‘그것 위로 지다’, ‘생명을 그것에 두다’가 직역투입니다. ‘그날 해가 지기 전에’, ‘그 품삯에 생계를 의지하고’로 고치면 자연스럽고 의미도 보존됩니다.
+  terminology: ‘품삯’은 적절하며, 신명사의 고유명 יְהוָה를 ‘야훼’로 옮긴 것도 프로젝트 방침 및 원문에 부합합니다. 마지막 חֵטְא는 ‘당신에게 죄가 있게 될 것입니다’가 한국어에서 자연스럽게 결과적 책임을 나타냅니다.
+  issues:
+  - severity: medium
+    issue: ‘해가 그것 위로 져서는 안 됩니다’
+    rationale: 히브리어의 일몰 관용구를 지나치게 직역하여 한국어에서 지시 대상과 뜻이 어색합니다. 당일 일몰 전 지급이라는 뜻으로 옮겨야 합니다.
+  - severity: medium
+    issue: ‘자기 생명을 그것에 두기 때문입니다’
+    rationale: וְאֵלָיו הוּא נֹשֵׂא אֶת־נַפְשׁוֹ는 품삯에 생계가 달려 있다는 관용적 표현입니다. 한국어 ‘생명을 두다’는 통용되지 않습니다.
+  - severity: medium
+    issue: ‘그가 ... 부르짖지 않게 하십시오’
+    rationale: 원문은 미지급 시 노동자가 야훼께 고발하여 부르짖을 수 있다는 경고입니다. 이 표현은 부르짖음을 억제하라는 명령처럼 들릴 수 있습니다.
+  - severity: low
+    issue: 각주 앵커와 내용
+    rationale: 초안 각주는 ‘그의 날에’에만 붙어 있으나, 영어 POB의 각주는 생명/의존 관용구를 설명합니다. 해당 관용구에 앵커를 두는 편이 원문 및 감사 기록에 부합합니다.
+  revised_text: 그의 품삯을 그날 해가 지기 전에 주십시오. 그는 가난하며 그 품삯에 생계를 의지하고 있기 때문입니다.[a] 그가 야훼께 당신을 고발하며 부르짖지 않게 하십시오. 그러면 당신에게 죄가 있게 될 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘그것을 향하여 그는 자기 생명을 든다/건다’라고 합니다. 이는 그가 그 품삯에 생계를 의지한다는 뜻의 관용적 표현입니다.
+    reason: lexical_alternative
+  revision_rationale: 당일 지급과 일몰 전이라는 히브리어의 긴급성을 자연스러운 한국어로 표현했습니다. 생명과 품삯의 관용구는 생계 의존이라는 뜻으로 옮기고 각주에서 문자적 표현을 밝혔습니다. 야훼께 부르짖는 절은 노동자의 호소를 금지하는 뜻이 아니라 고용주에게 주는 경고임을 드러내도록 ‘고발하며 부르짖지 않게 하십시오’로 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:47:31Z'
+  output_hash: 87a98cf7e00d57a02ba9be7a5c06d4785a03b3a2c55cb35aa2816b7cd39b4bb8
+  usage:
+    completion_tokens: 1430
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 182
+      engine_ttlt_ms: 11800
+      pre_inference_ms: 217
+      service_tbt_ms: 8
+      service_ttft_ms: 594
+      service_ttlt_ms: 12197
+      total_duration_ms: 11993
+      user_visible_ttft_ms: 377
+    prompt_tokens: 3109
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4539
+  applied_revision: true
+  auto_apply_blocked_errors: []

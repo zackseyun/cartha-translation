@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 너희 가운데 있는 부드럽고 연약한 여인[a], 곧 발바닥을 땅에 대어 본 적이 없을 정도로 사치와 연약함[b] 가운데 살아온 여인은, 자기 품의 남편과 아들, 딸을 향하여 눈이 악하게 될 것입니다.
+  text: 너희 가운데 있는 부드럽고 섬세한 여인, 곧 호사와 부드러움 때문에 발바닥을 땅에 대는 일조차 해 본 적이 없는 여인은, 자기 품의 사람인 남편과 자기 아들과 자기 딸을 악한 눈으로 바라볼 것입니다[a][b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 관용구 ‘그녀의 눈이 악하다’는 그들을 적대하거나 인색하게 여기며 못마땅해하는 태도를 뜻합니다.
+    text: 히브리어 관용구 ‘눈이 악하다’는 적대적이거나 인색하고 못마땅한 태도로 바라보는 것을 뜻합니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘그녀의 발바닥을 땅에 대어 본 적이 없는’이며, 극도로 보호받고 연약하게 자란 상태를 나타냅니다.
-    reason: source_note
+    text: 직역하면 ‘그녀의 품의 사람’이며, 친밀한 관계에 있는 그녀의 남편을 가리킵니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: הָרַכָּה
   english_pob_choice: tender
@@ -101,4 +101,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 너희 가운데 있는 부드럽고 연약한 여인[a], 곧 발바닥을 땅에 대어 본 적이 없을 정도로 사치와 연약함[b] 가운데 살아온 여인은, 자기 품의 남편과 아들, 딸을 향하여 눈이 악하게 될 것입니다.
+  to: 너희 가운데 있는 부드럽고 섬세한 여인, 곧 호사와 부드러움 때문에 발바닥을 땅에 대는 일조차 해 본 적이 없는 여인은, 자기 품의 사람인 남편과 자기 아들과 자기 딸을 악한 눈으로 바라볼 것입니다[a][b].
+  rationale: 원문의 인과 관계와 반복되는 ‘부드러움’의 어휘 연결을 보존하고, ‘악한 눈’이라는 관용적 이미지는 본문에 남기되 각주에서 뜻을 밝혔습니다. ‘품의 사람’은 친밀한 히브리어 표현을 보존하면서 문맥상 남편임을 분명히 했습니다. 각주 표지도 각각의 설명 대상 뒤에 바로 배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:51:04Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 수식 구조와 가족 관계의 구체성은 대체로 반영했지만, מֵהִתְעַנֵּג וּמֵרֹךְ의 인과 관계를 ‘사치와 연약함 가운데 살아온’으로 풀면서 ‘살아온’이라는 추가 내용을 넣었고, 각주 표지가 설명 대상과 맞지 않습니다. 또한 ‘자기 품의 남편’은 직역적이지만 현대 표준 한국어로 다소 부자연스럽습니다.
+  naturalness: ‘눈이 악하게 될 것입니다’와 ‘자기 품의 남편’은 현대 합쇼체 문장으로 어색합니다. ‘악한 눈으로 바라볼 것입니다’ 및 ‘자기 품의 사람인 남편’으로 옮기면 히브리어의 이미지를 유지하면서도 자연스럽습니다.
+  terminology: הָרַכָּה וְהָעֲנֻגָּה는 ‘부드럽고 섬세한’으로, מֵהִתְעַנֵּג וּמֵרֹךְ는 원인 관계를 드러내는 ‘호사와 부드러움 때문에’로 옮기는 것이 적절합니다. ‘악한 눈’은 히브리어 관용구임을 각주로 설명해야 합니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지가 해당 설명 대상과 일치하지 않습니다.
+    rationale: '[a]는 ‘여인’ 뒤에 있으나 ‘눈이 악하다’ 관용구를 설명하고, [b]는 원인 구절 뒤에 있으나 ‘품의 남편’ 표현을 설명합니다. 각각 해당 본문 표현 뒤로 옮겨야 합니다.'
+  - severity: medium
+    issue: ‘사치와 연약함 가운데 살아온’은 원문의 인과 표현을 느슨하게 하고 ‘살아온’이라는 정보를 보탭니다.
+    rationale: מֵהִתְעַנֵּג וּמֵרֹךְ는 발을 땅에 대지 않은 이유를 직접 제시합니다. ‘호사와 부드러움 때문에’가 원인성과 의미를 더 정확히 보존합니다.
+  - severity: low
+    issue: ‘눈이 악하게 될 것입니다’와 ‘자기 품의 남편’은 현대 한국어에서 어색합니다.
+    rationale: 관용구의 이미지는 ‘악한 눈으로 바라볼 것입니다’로 유지할 수 있고, חֵיקָהּ의 친밀한 표현은 ‘자기 품의 사람인 남편’으로 자연스럽게 드러낼 수 있습니다.
+  revised_text: 너희 가운데 있는 부드럽고 섬세한 여인, 곧 호사와 부드러움 때문에 발바닥을 땅에 대는 일조차 해 본 적이 없는 여인은, 자기 품의 사람인 남편과 자기 아들과 자기 딸을 악한 눈으로 바라볼 것입니다[a][b].
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 관용구 ‘눈이 악하다’는 적대적이거나 인색하고 못마땅한 태도로 바라보는 것을 뜻합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그녀의 품의 사람’이며, 친밀한 관계에 있는 그녀의 남편을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 인과 관계와 반복되는 ‘부드러움’의 어휘 연결을 보존하고, ‘악한 눈’이라는 관용적 이미지는 본문에 남기되 각주에서 뜻을 밝혔습니다. ‘품의 사람’은 친밀한 히브리어 표현을 보존하면서 문맥상 남편임을 분명히 했습니다. 각주 표지도 각각의 설명 대상 뒤에 바로 배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:51:04Z'
+  output_hash: b656c5cc164553409c4d5b1ee0093265150cb46fdfeb85b63e75852bded528ad
+  usage:
+    completion_tokens: 1399
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 11010
+      pre_inference_ms: 195
+      service_tbt_ms: 8
+      service_ttft_ms: 444
+      service_ttlt_ms: 11311
+      total_duration_ms: 11130
+      user_visible_ttft_ms: 250
+    prompt_tokens: 2757
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4156
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러나 그녀가 남편에게 속하게 되면, 그녀의 서원이나 자기 입술의 경솔한 말이 그녀에게 있더라도, 곧 자기를 속박한 말이 있더라도[a][b]
+  text: 그러나 그녀가 남편의 아내가 되면[a], 그녀의 서원들이 그녀에게 남아 있거나, 또는 자기 입술의 경솔한 말로 자기를 구속한 것이 있으면[b],
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 관용구는 문자적으로는 ‘남자에게로’이지만, 결혼 관계에 들어가는 법적·관계적 표현입니다.
+    text: 히브리어는 문자적으로 ‘한 남자에게 있게 되다/한 남자의 것이 되다’라고 말하는 혼인 관용구입니다.
     reason: lexical_alternative
   - marker: b
-    text: 여기서의 ‘경솔한 말’은 형식적인 서원과 구별되는, 입술에서 나온 즉흥적 자기 구속을 가리킬 수 있습니다.
+    text: 또는 ‘자기 입술의 말’. 이 표현은 정식 서원과 구별되는, 즉흥적으로 한 자기 구속의 말을 가리킬 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְאִם
@@ -85,4 +85,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러나 그녀가 남편에게 속하게 되면, 그녀의 서원이나 자기 입술의 경솔한 말이 그녀에게 있더라도, 곧 자기를 속박한 말이 있더라도[a][b]
+  to: 그러나 그녀가 남편의 아내가 되면[a], 그녀의 서원들이 그녀에게 남아 있거나, 또는 자기 입술의 경솔한 말로 자기를 구속한 것이 있으면[b],
+  rationale: 원문의 미완결 조건절을 유지하면서, 혼인 관용구를 자연스러운 현대 한국어로 옮겼습니다. 서원들과 경솔한 발화를 또는으로 병렬 처리하고, 후자의 자기 구속 관계절을 보존했습니다. ‘그녀에게 남아 있거나’는 עָלֶיהָ의 지속·부과 이미지를 전달하되, 다음 절들이 다루는 법적 확정 여부를 미리 단정하지 않습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T13:39:45Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 혼인 관계와 자기 구속의 뜻을 대체로 반영하지만, ‘그녀의 서원이나 … 말이 그녀에게 있더라도’는 히브리어의 조건 구조와 ‘서원들이 그녀 위에/그녀에게 남아 있다’는 표현을 흐립니다. 또한 ‘곧’은 원문의 선택 접속사 או(‘또는’)를 설명·동격 관계로 바꾸므로 삭제해야 합니다.
+  naturalness: ‘남편에게 속하게 되면’은 한국어에서 사람을 소유물처럼 들리며 현대 표준어로도 부자연스럽습니다. ‘남편의 아내가 되면’이 혼인 관용구를 자연스럽고 정확하게 전달합니다. 조건절 안의 병렬도 ‘… 있거나, 또는 … 있으면’으로 정리하는 편이 명료합니다.
+  terminology: ‘서원’과 ‘경솔한 말’을 구별한 점은 적절합니다. 다만 후자는 ‘자기를 속박한 말’이라고 별도 반복하기보다, 원문의 관계절대로 ‘자기 입술의 경솔한 말로 자기를 구속한 것’으로 옮겨야 합니다. נֶפֶשׁ는 이 법률 문맥에서 ‘자기’를 뜻하므로 ‘영혼’으로 번역하지 않는 것이 적절합니다.
+  issues:
+  - severity: high
+    issue: 접속사 או를 ‘곧’으로 번역함
+    rationale: או는 서원들과 병렬을 이루는 선택 접속사 ‘또는’입니다. ‘곧’은 앞말을 풀이하거나 동일시하는 뜻이어서, 서로 구별되는 두 범주를 합칩니다.
+  - severity: high
+    issue: 조건 및 병렬 구조가 ‘있더라도’로 바뀜
+    rationale: 원문은 혼인 상태와 서원/자기 구속 발화의 존속을 전제하는 조건절입니다. 양보 표현 ‘있더라도’는 원문에 없는 양보 의미를 더하고, 두 명사의 병렬 관계를 불명확하게 합니다.
+  - severity: medium
+    issue: ‘남편에게 속하게 되면’의 부자연스러운 한국어 표현
+    rationale: 히브리어의 혼인 관용구는 법적·관계적 의미를 지니지만, 한국어 ‘남편에게 속하다’는 현대 용법에서 소유 관계를 과도하게 전면화합니다. ‘남편의 아내가 되다’가 문맥상 안전한 관용적 대응입니다.
+  - severity: medium
+    issue: 각주 a의 문자적 설명이 부정확함
+    rationale: לְאִישׁ은 문자적으로 ‘한 남자에게/한 남자의 것이 되어’ 정도이지 ‘남자에게로’가 아닙니다. 이동 방향을 뜻하는 ‘-에게로’는 원문에 없습니다.
+  revised_text: 그러나 그녀가 남편의 아내가 되면[a], 그녀의 서원들이 그녀에게 남아 있거나, 또는 자기 입술의 경솔한 말로 자기를 구속한 것이 있으면[b],
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘한 남자에게 있게 되다/한 남자의 것이 되다’라고 말하는 혼인 관용구입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘자기 입술의 말’. 이 표현은 정식 서원과 구별되는, 즉흥적으로 한 자기 구속의 말을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 미완결 조건절을 유지하면서, 혼인 관용구를 자연스러운 현대 한국어로 옮겼습니다. 서원들과 경솔한 발화를 또는으로 병렬 처리하고, 후자의 자기 구속 관계절을 보존했습니다. ‘그녀에게 남아 있거나’는 עָלֶיהָ의 지속·부과 이미지를 전달하되, 다음 절들이 다루는 법적 확정 여부를 미리 단정하지 않습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T13:39:45Z'
+  output_hash: 0519867a878847850b081bcfca0e8705c9a1a1745aefd92f0415bb96d835f019
+  usage:
+    completion_tokens: 1444
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 149
+      engine_ttlt_ms: 12498
+      pre_inference_ms: 485
+      service_tbt_ms: 9
+      service_ttft_ms: 917
+      service_ttlt_ms: 13238
+      total_duration_ms: 12787
+      user_visible_ttft_ms: 432
+    prompt_tokens: 2775
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4219
+  applied_revision: true
+  auto_apply_blocked_errors: []
