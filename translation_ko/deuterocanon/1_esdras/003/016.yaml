@@ -31,9 +31,9 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 그가 말했습니다. 「젊은이들을 불러오십시오. 그러면 그들이 자기들의 말을 밝힐 것입니다.」 그래서 그들이 불려 들어왔고, 그들은 들어왔습니다.[a]
+  text: 그리고 그가 말했습니다. 「청년들을 부르십시오. 그러면 그들이 그들의 말[a]을 밝힐 것입니다.」 그러자 그들은 부름을 받고 들어왔습니다.
   philosophy: optimal-equivalence
-  footnotes:
+  footnotes: &id001
   - marker: a
     text: ‘말’은 λόγοι의 넓은 의미를 따른 것입니다. 문맥상 ‘진술’이나 ‘주장’도 될 수 있습니다.
     reason: lexical_alternative
@@ -82,4 +82,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 그가 말했습니다. 「젊은이들을 불러오십시오. 그러면 그들이 자기들의 말을 밝힐 것입니다.」 그래서 그들이 불려 들어왔고, 그들은 들어왔습니다.[a]
+  to: 그리고 그가 말했습니다. 「청년들을 부르십시오. 그러면 그들이 그들의 말[a]을 밝힐 것입니다.」 그러자 그들은 부름을 받고 들어왔습니다.
+  rationale: The revision removes a duplicated entrance action, represents the Greek sequence naturally as “부름을 받고 들어왔습니다,” specifies the male young persons as “청년들,” and relocates the lexical footnote marker to “말.” It retains the broad, non-interpretive rendering of λόγοι and the formal-polite narrative register.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T05:29:58Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft correctly reflects the imperative to call the young men, their future declaration of their λόγοι, and the subsequent calling and entering. However, “불려 들어왔고, 그들은 들어왔습니다” duplicates εἰσήλθοσαν and blurs the Greek sequence of being called and then entering. “젊은이들” also weakens the explicitly masculine reference of νεανίσκους in this court-contest context.
+  naturalness: The repeated “들어왔고, ... 들어왔습니다” is unnatural and redundant. “그들은 부름을 받고 들어왔습니다” is concise, natural formal Korean, and retains both actions. “청년들” is idiomatic and suitably represents young men here.
+  terminology: “말” appropriately preserves the breadth of λόγοι; the footnote properly notes “진술” and “주장” as contextual alternatives. The footnote marker should be attached directly to “말,” the word it explains. “밝히다” is a sound rendering of δηλόω in this public setting.
+  issues:
+  - severity: medium
+    issue: The final clause redundantly says that they were brought in and that they entered.
+    rationale: 'ἐκλήθησαν, καὶ εἰσήλθοσαν contains two distinct actions: they were called, and they entered. The draft’s “불려 들어왔고, 그들은 들어왔습니다” repeats entering rather than expressing the calling as a separate antecedent action.'
+  - severity: low
+    issue: “젊은이들” does not explicitly convey the masculine reference of νεανίσκους.
+    rationale: Although “젊은이들” is natural Korean, the Greek denotes young men. “청년들” is both idiomatic and more source-specific in this narrative context.
+  - severity: low
+    issue: The lexical footnote marker is placed at the end of the whole sentence rather than on the term explained.
+    rationale: Placing [a] immediately after “말” gives the reader a clear anchor for the note on λόγοι.
+  revised_text: 그리고 그가 말했습니다. 「청년들을 부르십시오. 그러면 그들이 그들의 말[a]을 밝힐 것입니다.」 그러자 그들은 부름을 받고 들어왔습니다.
+  revised_footnotes: *id001
+  revision_rationale: The revision removes a duplicated entrance action, represents the Greek sequence naturally as “부름을 받고 들어왔습니다,” specifies the male young persons as “청년들,” and relocates the lexical footnote marker to “말.” It retains the broad, non-interpretive rendering of λόγοι and the formal-polite narrative register.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T05:29:58Z'
+  output_hash: 156ee3bdc61d2a6ddf23df223e60fba5b9047dacb02cacd5684890424a042363
+  usage:
+    completion_tokens: 1031
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 397
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 123
+      engine_ttlt_ms: 8505
+      pre_inference_ms: 102
+      service_tbt_ms: 8
+      service_ttft_ms: 550
+      service_ttlt_ms: 8928
+      total_duration_ms: 8835
+      user_visible_ttft_ms: 449
+    prompt_tokens: 1781
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2812
+  applied_revision: true
+  auto_apply_blocked_errors: []

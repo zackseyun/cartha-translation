@@ -34,14 +34,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 그들이 말했습니다. 「왕이 일어나면 그에게 그 글을 줄 것이며, 왕과 페르시아의 세 대신이 판단하여 그 말이 더 지혜로운 자에게는 승리가 주어질 것입니다.」[a][b]
+  text: 그리고 그들이 말하였습니다. “왕이 일어나면, 그들이 그 글[a]을 왕에게 줄 것이며, 왕과 페르시아의 세 귀족이 그의 말[b]이 더 지혜롭다고 판단하는 사람에게 승리가 주어질 것입니다. 기록된 대로입니다.”
   philosophy: optimal-equivalence
-  footnotes:
+  footnotes: &id001
   - marker: a
-    text: 또는 “편지” 또는 “문서”로 볼 수 있습니다. 여기의 γράμμα는 서면 문서를 가리킵니다.
+    text: 또는 “편지” 또는 “문서”. 그리스어 γράμμα는 여기서 서면으로 작성된 글을 가리킵니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 “그의 말/주장이 더 지혜로운 자.” 그리스어는 문자적으로 “그의 λόγος가 더 지혜로운”이라는 뜻입니다.
+    text: 또는 “그의 진술” 또는 “그의 주장”. 그리스어 λόγος는 여기서 한 단어가 아니라 그 사람이 제시한 말이나 논지를 가리킬 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: τὸ γράμμα
@@ -100,4 +100,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 그들이 말했습니다. 「왕이 일어나면 그에게 그 글을 줄 것이며, 왕과 페르시아의 세 대신이 판단하여 그 말이 더 지혜로운 자에게는 승리가 주어질 것입니다.」[a][b]
+  to: 그리고 그들이 말하였습니다. “왕이 일어나면, 그들이 그 글[a]을 왕에게 줄 것이며, 왕과 페르시아의 세 귀족이 그의 말[b]이 더 지혜롭다고 판단하는 사람에게 승리가 주어질 것입니다. 기록된 대로입니다.”
+  rationale: 원문의 복수 주어, 왕과 세 페르시아 유력자의 공동 판정, λόγος의 비교 평가, 그리고 ‘기록된 대로’라는 종결부를 모두 보존하도록 고쳤습니다. 각주 표지는 해당 낱말 바로 뒤에 배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T05:29:55Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안은 βασιλεύς와 세 μεγιστᾶνες의 판정, 더 지혜로운 λόγος를 가진 사람에게 νῖκος가 주어진다는 핵심 구조를 대체로 반영합니다. 그러나 καθὼς γέγραπται(“기록된 대로”)가 빠져 있어 원문 종결부의 명시적 요소가 누락되었습니다. 또한 원문의 ‘그들이’가 글을 왕에게 준다는 주어를 한국어에서도 밝혀 주는 것이 안전합니다.
+  naturalness: ‘그 말이 더 지혜로운 자에게는’은 수식 관계가 다소 순간적으로 불분명합니다. ‘그의 말이 더 지혜롭다고 … 판단하는 사람에게’로 옮기면 그리스어의 판단 절과 한국어 문장 흐름을 모두 자연스럽게 살릴 수 있습니다. 합쇼체 서술에는 ‘말하였습니다’가 안정적입니다.
+  terminology: γράμμα는 ‘글’로 유지할 수 있으며, 각주에서 ‘편지’와 ‘문서’의 가능성을 제시하는 것이 적절합니다. μεγιστᾶνες는 단순한 행정 관직으로 단정하기보다 지위의 높음을 나타내는 ‘귀족’이 더 직접적입니다. λόγος는 이 문맥에서 단어 하나가 아니라 말·진술·주장을 가리키므로 본문 ‘말’과 각주 보완이 적절합니다. νῖκος는 ‘승리’가 적합합니다.
+  issues:
+  - severity: high
+    issue: ‘기록된 대로’의 누락
+    rationale: καθὼς γέγραπται는 원문에 명시된 종결 표현이며, 이를 생략하면 본문 내용이 불완전해집니다.
+  - severity: medium
+    issue: 글을 주는 주어가 한국어 문장에서 생략됨
+    rationale: 그리스어의 δώσουσιν은 복수형으로, 앞의 ‘그들’이 왕에게 글을 준다는 내용을 명시하면 행위 주체가 분명해집니다.
+  - severity: medium
+    issue: ‘그 말이 더 지혜로운 자’의 수식 관계가 다소 불명확함
+    rationale: 판단 주체와 ‘말’의 소유·평가 관계를 ‘그의 말이 더 지혜롭다고 … 판단하는 사람’으로 명료하게 재구성할 필요가 있습니다.
+  - severity: low
+    issue: ‘대신’은 μεγιστᾶνες의 신분적 의미를 다소 좁힐 수 있음
+    rationale: 이 말은 페르시아의 고위 유력자·귀족을 가리키므로, 특정 관직을 암시하는 ‘대신’보다 ‘귀족’이 원어에 더 직접적입니다.
+  revised_text: 그리고 그들이 말하였습니다. “왕이 일어나면, 그들이 그 글[a]을 왕에게 줄 것이며, 왕과 페르시아의 세 귀족이 그의 말[b]이 더 지혜롭다고 판단하는 사람에게 승리가 주어질 것입니다. 기록된 대로입니다.”
+  revised_footnotes: *id001
+  revision_rationale: 원문의 복수 주어, 왕과 세 페르시아 유력자의 공동 판정, λόγος의 비교 평가, 그리고 ‘기록된 대로’라는 종결부를 모두 보존하도록 고쳤습니다. 각주 표지는 해당 낱말 바로 뒤에 배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T05:29:55Z'
+  output_hash: 056b9344c5e22c8676f8a4961dd4c0cc24427e9bc434fe671c6e8133ee4eb6c2
+  usage:
+    completion_tokens: 1206
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 306
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 137
+      engine_ttlt_ms: 9917
+      pre_inference_ms: 102
+      service_tbt_ms: 8
+      service_ttft_ms: 381
+      service_ttlt_ms: 10156
+      total_duration_ms: 10070
+      user_visible_ttft_ms: 279
+    prompt_tokens: 2676
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3882
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -38,14 +38,14 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 그리고 그들은 그 도시의 모든 영화를 헛되게 만들었고, 남은 자들을 칼로 바빌론으로 끌고 갔습니다.[a][b]
+  text: 그리고 그들은 그 도시의 모든 영광스러운 것들을 쓸모없게 만들었고, 그는 남은 이들[a]을 칼을 가지고[b] 바빌론으로 끌고 갔습니다.
   philosophy: optimal-equivalence
-  footnotes:
+  footnotes: &id001
   - marker: a
-    text: ‘남은 자들’은 ‘생존자들’로도 옮길 수 있습니다.
+    text: 또는 ‘생존자들’.
     reason: lexical_alternative
   - marker: b
-    text: ‘칼로’는 평행본문의 학살 뉘앙스를 반영한 번역이며, 직역하면 ‘칼과 함께’입니다.
+    text: 직역하면 ‘칼과 함께’입니다. 이 표현은 남은 이들을 무장한 강제력 아래 데려갔다는 뜻으로 이해될 수 있으며, 평행 히브리어 본문은 칼에 의한 살해를 강조합니다.
     reason: alternative_reading
 lexical_decisions:
 - source_word: πάντα τὰ ἔνδοξα αὐτῆς
@@ -117,4 +117,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 그들은 그 도시의 모든 영화를 헛되게 만들었고, 남은 자들을 칼로 바빌론으로 끌고 갔습니다.[a][b]
+  to: 그리고 그들은 그 도시의 모든 영광스러운 것들을 쓸모없게 만들었고, 그는 남은 이들[a]을 칼을 가지고[b] 바빌론으로 끌고 갔습니다.
+  rationale: 복수에서 단수로 바뀌는 그리스어 동사의 서술을 보존하고, ἔνδοξα의 복수 대상성과 ἀχρειόω의 ‘쓸모없게 하다’라는 의미를 더 정확히 반영했습니다. 또한 ‘칼’ 구절은 그리스어의 압축성과 평행본문의 차이를 각주에서만 설명하여, 본문이 학살을 직접 단정하지 않도록 했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T05:29:28Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 그리스어는 복수 주어(συνετέλεσαν)에서 단수 주어(ἀπήγαγεν)로 전환합니다. 현 번역은 후반을 ‘끌고 갔습니다’로만 처리하여 이 단수 주어의 전환을 드러내지 못합니다. 또한 ἔνδοξα는 복수의 실체화된 형용사이므로 ‘모든 영화’보다는 ‘모든 영광스러운 것들’처럼 대상성을 드러내는 편이 안전합니다. μετὰ ῥομφαίας는 생존자들을 데려간 행위와 문법적으로 연결되어 있으므로, 본문에서 학살을 단정하지 않고 무장한 강제 연행의 여지를 남겨야 합니다.
+  naturalness: ‘헛되게 만들다’는 ἀχρειόω의 ‘쓸모없게 하다/무가치하게 하다’보다 다소 추상적이고 한국어 결합도 약합니다. ‘쓸모없게 만들다’가 더 직접적이고 자연스럽습니다. ‘남은 이들’은 문맥상 자연스러우며, 각주에서 ‘생존자들’ 대안을 제시할 수 있습니다.
+  terminology: ‘바빌론’은 적절합니다. ‘남은 자들’은 신학적 관용구로 들릴 수 있으므로 본문은 ‘남은 이들’로 하여 역사적 의미를 유지합니다. ‘칼을 가지고’는 μετὰ의 기본 뜻을 살리면서 ‘칼로’가 유발할 수 있는 직접적 살해의 단정을 피합니다.
+  issues:
+  - severity: medium
+    issue: 후반 단수 동사의 주어 전환이 번역에서 소실됨
+    rationale: ἀπήγαγεν은 단수입니다. 앞 절의 복수 주어와 구별하여 ‘그는’으로 옮겨야 원문의 서술상 전환을 보존합니다. 선행 문맥의 바빌론 왕을 가리키는 것으로 이해할 수 있으나, 이 절만으로 이름을 보충하지는 않습니다.
+  - severity: medium
+    issue: ‘칼로’ 및 각주가 학살 의미를 본문에 과도하게 결부함
+    rationale: μετὰ ῥομφαίας는 그리스어에서 ‘남은 이들’을 바빌론으로 데려간 행위에 연결됩니다. MT 평행 본문은 살해를 강조하지만, 그 의미를 그리스어 본문에 확정적으로 이입해서는 안 됩니다. 대안적 독해만 각주로 제시해야 합니다.
+  - severity: low
+    issue: ‘그 도시의 모든 영화’가 원문의 복수 대상성과 ἀχρειόω의 뜻을 충분히 드러내지 못함
+    rationale: πάντα τὰ ἔνδοξα는 ‘그 도시의 모든 영광스러운 것들’이라는 복수 대상이며, ἀχρειῶσαι는 그것들을 쓸모없게 또는 무가치하게 만드는 뜻입니다.
+  - severity: low
+    issue: 각주 표지가 적용 대상에서 떨어져 있음
+    rationale: a는 ‘남은 이들’, b는 ‘칼을 가지고’ 바로 뒤에 두어 각주의 범위를 명확히 하는 것이 좋습니다.
+  revised_text: 그리고 그들은 그 도시의 모든 영광스러운 것들을 쓸모없게 만들었고, 그는 남은 이들[a]을 칼을 가지고[b] 바빌론으로 끌고 갔습니다.
+  revised_footnotes: *id001
+  revision_rationale: 복수에서 단수로 바뀌는 그리스어 동사의 서술을 보존하고, ἔνδοξα의 복수 대상성과 ἀχρειόω의 ‘쓸모없게 하다’라는 의미를 더 정확히 반영했습니다. 또한 ‘칼’ 구절은 그리스어의 압축성과 평행본문의 차이를 각주에서만 설명하여, 본문이 학살을 직접 단정하지 않도록 했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T05:29:28Z'
+  output_hash: d613c6444134d5fd822d4ccead65eff12c089985d2419b68efa219dbe367b9bf
+  usage:
+    completion_tokens: 1531
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 125
+      engine_ttlt_ms: 12934
+      pre_inference_ms: 132
+      service_tbt_ms: 8
+      service_ttft_ms: 409
+      service_ttlt_ms: 13213
+      total_duration_ms: 13092
+      user_visible_ttft_ms: 277
+    prompt_tokens: 3417
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4948
+  applied_revision: true
+  auto_apply_blocked_errors: []

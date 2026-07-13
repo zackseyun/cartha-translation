@@ -1,7 +1,9 @@
 from __future__ import annotations
 
 import importlib.util
+import json
 import pathlib
+import subprocess
 
 import yaml
 
@@ -37,11 +39,38 @@ def test_multilingual_validator_requires_anchored_footnotes() -> None:
     assert module.validate(record, "fr") == []
 
 
+def test_multilingual_payload_normalizes_bracketed_footnote_markers() -> None:
+    module = load_module("multilingual_pipeline_footnotes", "tools/multilingual_pipeline.py")
+    text, notes = module.normalize_translation_payload(
+        "Texto[[a]]", [{"marker": "[a]", "text": "Nota", "reason": "Ambiguity"}]
+    )
+    assert text == "Texto[a]"
+    assert notes[0]["marker"] == "a"
+    record = {
+        "language": {"code": "es"},
+        "translation": {"text": text, "footnotes": notes},
+    }
+    assert module.validate(record, "es") == []
+
+
 def test_bounded_wave_command_is_available() -> None:
     module = load_module("multilingual_pipeline_wave", "tools/multilingual_pipeline.py")
-    parsed = module.parser().parse_args(["wave", "--language", "pt", "--limit-records", "25"])
+    parsed = module.parser().parse_args(
+        ["wave", "--language", "pt", "--limit-records", "25", "--pending-only"]
+    )
     assert parsed.limit_records == 25
     assert parsed.language == ["pt"]
+    assert parsed.pending_only is True
+
+
+def test_multilingual_wave_uses_the_spob_publication_record_set() -> None:
+    module = load_module("multilingual_pipeline_sources", "tools/multilingual_pipeline.py")
+    relatives = module.source_relatives()
+    assert len(relatives) == 43105
+    assert len(relatives) == len(set(relatives))
+    assert "extra_canonical/1_clement/001.yaml" not in relatives
+    assert "extra_canonical/1_clement/001/001.yaml" in relatives
+    assert "extra_canonical/testaments_twelve_patriarchs/asher/001.yaml" in relatives
 
 
 def test_spanish_repair_extracts_publication_text_from_curly_quotes() -> None:
@@ -73,3 +102,23 @@ def test_localization_calibration_covers_every_target_language() -> None:
             item["source_path"] for item in payload["spob_critical_passages"]
         } == expected_passages
         assert payload["reader_ui"]["translation_in_progress"]
+
+
+def test_reader_asset_compiler_opens_every_pilot_language(tmp_path: pathlib.Path) -> None:
+    subprocess.run(
+        [
+            "python3",
+            "tools/build_multilingual_reader_assets.py",
+            "--output-root",
+            str(tmp_path),
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    index = json.loads((tmp_path / "multilingual" / "index.json").read_text())
+    assert len(index["languages"]) == 30
+    assert all(item["verses"] >= 3 for item in index["languages"])
+    assert (tmp_path / "multilingual" / "zh.json").exists()
+    assert not (tmp_path / "multilingual" / "zh_hans.json").exists()

@@ -42,9 +42,9 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러므로 이제 나는 그 사람들을 그 도시를 건축하지 못하게 막으라고 명령했고[a], 또 그 밖에 아무것도 이 일에 덧붙여지지 않도록 주의하라고 했으며[c][b], 그 악한 일이 더 이상 나아가 왕들에게 해를 끼치지 못하게 하라고 했습니다.
+  text: 그러므로 이제 나는 그 사람들을 그 도시를 건축하지 못하게 막으라고 명령했습니다[c]. 또한 이것을 넘어서 아무 일도 일어나지 않도록 조처하고[a], 그 악한 일이 더 이상 커져 왕들에게 해를 끼치지 않게 하라고 명령했습니다[b].
   philosophy: optimal-equivalence
-  footnotes:
+  footnotes: &id001
   - marker: a
     text: 또는 '이것에 어긋나는 일이 아무것도 일어나지 않도록.' 그리스어 표현은 왕의 명령을 넘는 행위일 수도, 그것에 반하는 행위일 수도 있습니다.
     reason: lexical_alternative
@@ -122,4 +122,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러므로 이제 나는 그 사람들을 그 도시를 건축하지 못하게 막으라고 명령했고[a], 또 그 밖에 아무것도 이 일에 덧붙여지지 않도록 주의하라고 했으며[c][b], 그 악한 일이 더 이상 나아가 왕들에게 해를 끼치지 못하게 하라고 했습니다.
+  to: 그러므로 이제 나는 그 사람들을 그 도시를 건축하지 못하게 막으라고 명령했습니다[c]. 또한 이것을 넘어서 아무 일도 일어나지 않도록 조처하고[a], 그 악한 일이 더 이상 커져 왕들에게 해를 끼치지 않게 하라고 명령했습니다[b].
+  rationale: 문장의 명령 구조와 행정적 어조를 보존하면서, παρὰ ταῦτα의 의미 범위를 본문과 주석에서 유지했습니다. 각주 표지를 대응하는 어구 뒤로 바로잡았고, 재건이라는 문맥적 추론은 본문에 넣지 않았습니다. 최종 목적절은 원문의 '더 이상 확대되어 왕들을 괴롭히거나 해치지 않도록'이라는 의미를 자연스러운 현대 표준어로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T05:30:03Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 그리스어의 세 가지 명령 내용은 대체로 반영되어 있습니다. 그러나 주석 표지가 해당 본문 표현에 연결되지 않았고, '그 밖에 아무것도 이 일에 덧붙여지지 않도록'은 ὅπως μηθὲν παρὰ ταῦτα γένηται의 '이것을 넘어서/이에 어긋나게 아무 일도 일어나지 않도록'이라는 범위를 다소 부자연스럽고 좁게 만듭니다.
+  naturalness: 합쇼체의 공식적 문체는 적절합니다. 다만 '주의하라고 했으며'보다 행정적 예방 조치를 나타내는 '조처하도록'이 더 자연스럽고 정확합니다. '더 이상 나아가'는 한국어에서 사건의 확대를 표현할 때 다소 어색하므로 '더 이상 커져'가 자연스럽습니다.
+  terminology: '''건축하다''는 원문의 단순 οἰκοδομῆσαι를 보존하며, 재건이라는 문맥적 해석은 주석에만 두는 것이 적절합니다. τὰ τῆς κακίας는 특정 교리적 의미를 부과하지 않고 ''악한 일''로 옮길 수 있습니다. βασιλεῖς는 복수인 ''왕들''을 유지해야 합니다.'
+  issues:
+  - severity: medium
+    issue: 각주 표지의 위치와 내용이 일치하지 않습니다.
+    rationale: 초안에서 [a]는 '명령했고' 뒤에, [c][b]는 둘째 절 뒤에 놓였지만, a는 παρὰ ταῦτα의 대안 해석, b는 왕들을 괴롭히다의 대안, c는 '도시를 건축하다'의 재건 가능성에 관한 주석입니다. 각각 해당 표현 뒤에 두어야 합니다.
+  - severity: medium
+    issue: ὅπως μηθὲν παρὰ ταῦτα γένηται의 번역이 다소 부정확하고 어색합니다.
+    rationale: '''그 밖에 아무것도 이 일에 덧붙여지지 않도록''은 무엇인가가 ''이 일에 덧붙여진다''는 뜻으로 한정됩니다. 원문은 ''이것을 넘어서'' 또는 문맥상 ''이에 어긋나게'' 아무 일도 생기지 않도록 하라는 의미도 보존합니다.'
+  - severity: low
+    issue: προνοηθῆναι 및 προβῇ의 한국어 표현을 다듬을 필요가 있습니다.
+    rationale: '''주의하라고''는 단순한 경계에 가깝고, προνοηθῆναι의 공식적 예방·조치의 의미를 충분히 나타내지 못합니다. 또한 사건이나 악한 사안이 ''나아가''는 표현은 자연스럽지 않습니다.'
+  revised_text: 그러므로 이제 나는 그 사람들을 그 도시를 건축하지 못하게 막으라고 명령했습니다[c]. 또한 이것을 넘어서 아무 일도 일어나지 않도록 조처하고[a], 그 악한 일이 더 이상 커져 왕들에게 해를 끼치지 않게 하라고 명령했습니다[b].
+  revised_footnotes: *id001
+  revision_rationale: 문장의 명령 구조와 행정적 어조를 보존하면서, παρὰ ταῦτα의 의미 범위를 본문과 주석에서 유지했습니다. 각주 표지를 대응하는 어구 뒤로 바로잡았고, 재건이라는 문맥적 추론은 본문에 넣지 않았습니다. 최종 목적절은 원문의 '더 이상 확대되어 왕들을 괴롭히거나 해치지 않도록'이라는 의미를 자연스러운 현대 표준어로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T05:30:03Z'
+  output_hash: b5a93f53c0d12454a6864c5308075562b39c692a33bfba1a0696d12a5675a4c2
+  usage:
+    completion_tokens: 1257
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 239
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 149
+      engine_ttlt_ms: 9327
+      pre_inference_ms: 124
+      service_tbt_ms: 7
+      service_ttft_ms: 636
+      service_ttlt_ms: 9829
+      total_duration_ms: 9753
+      user_visible_ttft_ms: 512
+    prompt_tokens: 3635
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4892
+  applied_revision: true
+  auto_apply_blocked_errors: []

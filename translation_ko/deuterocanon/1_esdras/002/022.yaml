@@ -36,12 +36,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 나는 당신들이 보낸 편지를 읽었습니다. 그래서 조사하라고 명령했고[a], 그 결과 그 도시는 옛날부터 왕들에 맞서 서 있는 것으로 밝혀졌습니다.
+  text: 나는 당신들이 나에게 보낸 편지를 읽었습니다. 그러므로 조사하도록 명령하였고, 그 도시는 예로부터 왕들에게 대항해 왔다는 사실이 밝혀졌습니다[a].
   philosophy: optimal-equivalence
-  footnotes:
+  footnotes: &id001
   - marker: a
-    text: 또는 ‘왕들에 맞서 대항해 왔다.’ 그리스어 분사는 더 압축적으로도 옮길 수 있지만, 본문은 왕권에 적대적인 태도를 드러내는 뜻을 유지합니다.
-    reason: lexical_alternative
+    text: 또는 ‘왕들에게 맞서 왔다.’ 그리스어 분사는 더 압축적으로 옮길 수도 있지만, 본문은 왕권에 적대적으로 맞선다는 뜻을 유지합니다.
+    reason: ἀντιπαρατάσσουσα의 대안적 표현을 제시하며, 각주 표지를 해당 번역어 뒤로 옮겼습니다.
 lexical_decisions:
 - source_word: Ἀνέγνων
   english_pob_choice: I read
@@ -111,4 +111,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나는 당신들이 보낸 편지를 읽었습니다. 그래서 조사하라고 명령했고[a], 그 결과 그 도시는 옛날부터 왕들에 맞서 서 있는 것으로 밝혀졌습니다.
+  to: 나는 당신들이 나에게 보낸 편지를 읽었습니다. 그러므로 조사하도록 명령하였고, 그 도시는 예로부터 왕들에게 대항해 왔다는 사실이 밝혀졌습니다[a].
+  rationale: 문장을 현대 표준어 합쇼체의 공식 서신·행정 서술에 맞게 다듬고, ‘대항해 왔다’로 원문의 지속적 대립 의미를 보존했습니다. 또한 어휘 대안에 관한 각주가 실제 설명 대상에 붙도록 앵커를 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T05:29:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 의미는 대체로 충실합니다. 다만 ἀντιπαρατάσσουσα는 ‘맞서 서 있는’보다 ‘대항해 오다/맞서 오다’로 옮기는 것이 지속적인 적대·대치의 의미를 자연스럽고 정확하게 전달합니다. ‘반역하다’로 강화하지 않은 점은 적절합니다.
+  naturalness: ‘왕들에 맞서 서 있는 것으로 밝혀졌습니다’는 한국어에서 다소 직역투이며, ‘옛날부터’보다 문헌·행정 서술에는 ‘예로부터’가 더 자연스럽습니다. 접속 표현도 ‘그래서’보다 ‘그러므로’가 왕의 공식 회신 문맥에 더 잘 맞습니다.
+  terminology: ‘편지’, ‘조사하도록 명령하다’, ‘왕들’은 적절합니다. ‘왕들에게 대항해 왔다’는 ἀντιπαρατάσσομαι의 대립적 뉘앙스를 보존하면서도 공개적 반란으로 단정하지 않습니다.
+  issues:
+  - severity: medium
+    issue: ‘왕들에 맞서 서 있는’은 부자연스럽고 지속적 역사적 대립의 의미가 약하게 전달됩니다.
+    rationale: ἐξ αἰῶνος와 현재분사 ἀντιπαρατάσσουσα의 결합은 그 도시가 예로부터 왕들에게 대항해 온 상태라는 뜻입니다. ‘대항해 왔다’가 현대 표준 한국어에서 더 정확하고 자연스럽습니다.
+  - severity: medium
+    issue: 각주 표지가 ‘조사하도록 명령하였고’ 뒤에 있으나, 각주 내용은 도시가 왕들에게 대항한 표현에 관한 것입니다.
+    rationale: 각주 앵커는 설명 대상인 ἀντιπαρατάσσουσα의 번역어 바로 뒤에 놓여야 합니다. 영어 감사 기록의 앵커 위치와 각주 내용은 서로 어긋나 있으므로, 원어와 각주 내용을 기준으로 한국어에서는 의미 대상에 맞게 이동하는 것이 안전합니다.
+  revised_text: 나는 당신들이 나에게 보낸 편지를 읽었습니다. 그러므로 조사하도록 명령하였고, 그 도시는 예로부터 왕들에게 대항해 왔다는 사실이 밝혀졌습니다[a].
+  revised_footnotes: *id001
+  revision_rationale: 문장을 현대 표준어 합쇼체의 공식 서신·행정 서술에 맞게 다듬고, ‘대항해 왔다’로 원문의 지속적 대립 의미를 보존했습니다. 또한 어휘 대안에 관한 각주가 실제 설명 대상에 붙도록 앵커를 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T05:29:42Z'
+  output_hash: fd5876e99be511e446e2891f88cc26dd7bbb964e34473c1659aa08d1d95836a1
+  usage:
+    completion_tokens: 1056
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 346
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 165
+      engine_ttlt_ms: 9187
+      pre_inference_ms: 84
+      service_tbt_ms: 9
+      service_ttft_ms: 405
+      service_ttlt_ms: 9417
+      total_duration_ms: 9348
+      user_visible_ttft_ms: 321
+    prompt_tokens: 2499
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3555
+  applied_revision: true
+  auto_apply_blocked_errors: []

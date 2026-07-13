@@ -36,9 +36,9 @@ base_translation:
     changes_summary: Adjusted punctuation to better reflect the Hebrew flow, joining the final clause to the preceding accusations with a semicolon before the rhetorical question. No wording changes were needed.
 translation:
   language: es
-  text: 'Por tanto, diles[a]: «Así dice el Señor Yahvé: comen con la sangre, y alzan sus ojos hacia sus ídolos[c] y derraman sangre; ¿y poseerán entonces la tierra?»'
+  text: 'Por tanto, diles[a]: «Así dice el Señor Yahvé: comen con la sangre, y alzan sus ojos hacia sus ídolos[c] y derraman sangre; ¿y poseerán entonces la tierra[b]?»'
   philosophy: optimal-equivalence
-  footnotes: &id001
+  footnotes:
   - marker: a
     text: O, más literalmente, «di a ellos».
     reason: lexical_alternative
@@ -155,37 +155,61 @@ ai_draft:
     total_tokens: 5381
     reasoning_tokens: 0
     estimated_cost_usd: 0.009571
-status: spanish_reviewed
+status: reviewed
 review_pass:
   verdict: revise
-  source_alignment_summary: 'El borrador español preserva bien el sentido general del hebreo: la fórmula profética, las tres acusaciones y la cláusula final como pregunta retórica de reprensión. También mantiene correctamente «Yahvé» para יְהוָה y documenta el matiz despectivo de גִּלּוּלִים. Sin embargo, hay pequeños desajustes con la evidencia y con el rastro de auditoría inglés: la nota [a] no refleja la alternativa real preservada en inglés para אֱמֹר אֲלֵיהֶם, y la puntuación/flujo puede mejorarse para reflejar mejor la acumulación hebrea antes de la pregunta final.'
-  spanish_quality_summary: El español es claro y digno, pero puede sonar más natural y exacto con leves ajustes. «Diles» en lugar de «diles[a]» sigue siendo adecuado, pero la nota debe tratar la literalidad de «a ellos», no ofrecer «diles» como alternativa a sí misma. Además, conviene introducir «y» antes de «alzan» para reflejar la coordinación hebrea y mantener el ritmo de la acusación. El resto del verso es legible y eclesialmente natural.
-  glossary_alignment: 'Buena alineación general con la terminología del proyecto: יְהוָה → «Yahvé» en el texto principal; אֲדֹנָי + יְהוָה → «el Señor Yahvé»; גִּלּוּלִים → «ídolos» con nota sobre su fuerza despectiva; דם שפך → «derraman sangre»; תירשו הארץ → «poseerán la tierra» como pregunta retórica. La única desviación relevante está en la nota [a], que no conserva la alternativa léxica correcta del inglés («más literalmente, “decir a ellos”/“a ellos”») y por tanto necesita corrección editorial.'
+  source_fidelity: 'El texto reproduce fielmente la secuencia acusatoria hebrea: comer «con/sobre la sangre», dirigir los ojos a los ídolos, derramar sangre y la pregunta retórica final sobre poseer la tierra. «El Señor Yahvé» distingue adecuadamente אדני de יהוה. La pregunta final conserva la fuerza de reproche sin resolverla como afirmación.'
+  naturalness: El español es claro y de registro bíblico contemporáneo. «Alzan sus ojos hacia» mantiene deliberadamente la imagen del hebreo y sigue siendo comprensible; «derraman sangre» es idiomático.
+  terminology: «Yahvé», «ídolos», «derraman sangre» y «poseerán la tierra» son terminológicamente adecuados. La nota sobre גִּלּוּלִים preserva su matiz despectivo sin recargar el texto principal.
   issues:
   - severity: medium
-    issue: La nota [a] no corresponde al tipo de alternativa documentada en el POB inglés.
-    rationale: 'El inglés preserva una nota para «say to them» con literalidad relacionada con «to them», mientras que la nota española dice «Más literalmente: “diles” o “habla con ellos”», lo cual no aporta una alternativa real y hasta repite la forma principal.'
-  - severity: low
-    issue: Falta la conjunción explícita antes de «alzan sus ojos».
-    rationale: El hebreo encadena las acusaciones con ו consecutivas. Aunque el español puede omitir alguna conjunción, aquí «y alzan sus ojos» reproduce mejor el flujo acusatorio y armoniza con el resto de la serie.
-  - severity: low
-    issue: La clasificación de la nota [b] podría ser más exacta como lectura alternativa/nota de sentido discursivo, no estrictamente teológica.
-    rationale: No afecta el texto principal, pero la nota explica el valor retórico de la cláusula final, alineado con la auditoría inglesa como alternative_reading.
-  revised_spanish_text: 'Por tanto, diles[a]: «Así dice el Señor Yahvé: comen con la sangre, y alzan sus ojos hacia sus ídolos[c] y derraman sangre; ¿y poseerán entonces la tierra?»'
-  revised_footnotes: *id001
-  revision_rationale: Se corrige la nota [a] para que refleje fielmente la alternativa léxica preservada en la auditoría inglesa, se añade la conjunción «y» antes de «alzan» para reproducir mejor la coordinación hebrea, y se normalizan las notas [b] y [c] al contenido/documentación del POB. No se requieren cambios doctrinales ni una relectura compleja del texto fuente.
-  requires_gpt54_adjudication: false
-  model_id: claude-sonnet-4-6
-  model_version: gpt-5.4-2026-03-05
-  azure_deployment: gpt-5-4-deployment
-  prompt_id: spanish_source_review_v1
-  prompt_sha256: bfcce98e1af95b8cc980013ed5886f75cabcf4eb558110b84e0f40c00a864dab
-  timestamp: '2026-05-16T00:00:00Z'
-  output_hash: 7c66fc009a7591e2627ffa4a758dffc91514d93417b3274406466529cf6de0d3
+    issue: La nota [b] no está anclada en el texto.
+    rationale: El error de validación exige que la nota de lectura alternativa para la cláusula final se coloque junto a «poseerán entonces la tierra», su referente textual.
+  revised_text: 'Por tanto, diles[a]: «Así dice el Señor Yahvé: comen con la sangre, y alzan sus ojos hacia sus ídolos[c] y derraman sangre; ¿y poseerán entonces la tierra[b]?»'
+  revised_footnotes:
+  - marker: a
+    text: O, más literalmente, «di a ellos».
+    reason: lexical_alternative
+  - marker: b
+    text: O «¿y aun así poseerán la tierra?». La cláusula final en hebreo puede entenderse como un desafío retórico indignado.
+    reason: alternative_reading
+  - marker: c
+    text: El hebreo גִּלּוּלִים es un término despectivo para «ídolos».
+    reason: cultural_note
+  revision_rationale: Se añade el ancla [b] a la cláusula final, resolviendo el error estructural indicado. No se modifica el sentido del pasaje ni las decisiones léxicas del borrador.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:11:56Z'
+  output_hash: d18e5daf575290a46cb130db2fe43b3f4348f1cfb1bfee9632e7254b818da916
   usage:
-    prompt_tokens: 4961
-    completion_tokens: 944
-    total_tokens: 5905
-    reasoning_tokens: 0
-    estimated_cost_usd: 0.026562
+    completion_tokens: 682
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 192
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 5499
+      pre_inference_ms: 134
+      service_tbt_ms: 8
+      service_ttft_ms: 354
+      service_ttlt_ms: 5721
+      total_duration_ms: 5599
+      user_visible_ttft_ms: 220
+    prompt_tokens: 3778
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4460
   applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: 'Por tanto, diles[a]: «Así dice el Señor Yahvé: comen con la sangre, y alzan sus ojos hacia sus ídolos[c] y derraman sangre; ¿y poseerán entonces la tierra?»'
+  to: 'Por tanto, diles[a]: «Así dice el Señor Yahvé: comen con la sangre, y alzan sus ojos hacia sus ídolos[c] y derraman sangre; ¿y poseerán entonces la tierra[b]?»'
+  rationale: Se añade el ancla [b] a la cláusula final, resolviendo el error estructural indicado. No se modifica el sentido del pasaje ni las decisiones léxicas del borrador.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T06:11:56Z'

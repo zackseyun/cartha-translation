@@ -21,10 +21,11 @@ This is not a mechanical English localization project.
 2. **Independent revision — GPT-5.6 Terra on Azure.** A separate model checks
    source fidelity, modern naturalness, register, names, theological terms, and
    footnote anchors. Safe revisions are applied and preserved in an audit trail.
-3. **Human calibration gates.** A language begins with a small shared verse set.
-   Native readers should approve its register and glossary before canon-wide
-   generation. High-risk or disputed records are marked for human review rather
-   than silently resolved.
+3. **Open preview, then grow safely.** A language begins with a small shared
+   verse set that is immediately readable as an explicitly named preview.
+   Native readers should still approve its register and glossary before the
+   text is treated as publication-complete. High-risk or disputed records are
+   marked for human review rather than silently resolved.
 4. **No named-interpreter doctrine.** The translation preserves source ambiguity
    and POB decisions but does not import denominational or named-interpreter
    distinctives.
@@ -55,11 +56,18 @@ python3 tools/multilingual_pipeline.py pilot --language all --limit-verses 3 --c
 # Begin/resume a bounded corpus wave after a language passes calibration
 python3 tools/multilingual_pipeline.py wave --language pt --limit-records 100 --concurrency 8
 
+# Efficiently resume only records missing the requested stage
+python3 tools/multilingual_pipeline.py wave --language ko --stage review --pending-only --limit-records 500 --concurrency 32
+
 # Validate every generated pilot record
 python3 tools/multilingual_pipeline.py validate --language all
 
 # Localize reader UI, selected book metadata, and critical SPOB passages
 python3 tools/multilingual_localization_pipeline.py --language all --concurrency 8
+
+# Compile every currently reviewed pilot/full record for web or mobile readers
+python3 tools/build_multilingual_reader_assets.py --output-root /path/to/public/bibles
+python3 tools/build_multilingual_reader_assets.py --output-root /path/to/assets/bibles --full-only
 ```
 
 Scaling beyond the pilot requires a recorded native-speaker/register decision
@@ -97,6 +105,16 @@ Each bundle contains:
 
 These bundles are the audited calibration layer for UI and critical-text
 localization. They do **not** claim that the 30 new language corpora are already
-complete. English, Spanish, and Korean remain the only reader-selectable
-corpora until each additional language passes native-speaker calibration and a
-full resumable 43,402-record source-tree wave.
+complete. Every configured language now opens in the reader using the reviewed
+records currently available at a stable preview URL. The preview grows without
+changing its translation ID as resumable 43,105-record source-tree waves land;
+missing verses are never filled with disguised English fallback text.
+
+## Continuous rollout
+
+The bounded rollout order is Spanish review closure, Korean independent review,
+then source-grounded Sol drafting plus Terra review for the 30 additional
+languages. Azure content-filter blocks are parked under the ignored
+`state/multilingual_pipeline/blocked/` tree so a single difficult historical
+passage cannot stall every later record. Each publish checkpoint rebuilds the
+reader assets, validates them, and reports the exact per-language verse count.
