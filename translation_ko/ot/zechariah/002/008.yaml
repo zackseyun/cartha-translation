@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 그에게[a] 말했습니다. “달려가서 그 젊은이에게[b] 말하십시오. ‘예루살렘은 자기 안에 사람과 가축이 많아 성벽 없는 마을들처럼 살게 될 것입니다.’”
+  text: 그가 그에게 말했습니다. “달려가서 그 젊은이에게 말하십시오. ‘예루살렘에는 사람[b]과 가축이 매우 많아 성벽 없는 마을들처럼[a] 사람이 거주하게 될 것입니다.’”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “예루살렘은 성벽 없는 마을들처럼 살게 될 것입니다.”
-    reason: alternative_reading
+    text: 또는 “트인 땅처럼.”
+    reason: lexical_alternative
   - marker: b
-    text: 히브리어 “사람”은 여기서 사람 전체를 가리키는 집합적 표현입니다. 또는 “백성”, “인류”로 옮길 수 있습니다.
+    text: 히브리어 “사람”은 여기서 사람 전체를 가리키는 집합적 표현입니다. 또는 “사람들”, “인류”로 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: רֻץ
@@ -82,4 +82,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 그에게[a] 말했습니다. “달려가서 그 젊은이에게[b] 말하십시오. ‘예루살렘은 자기 안에 사람과 가축이 많아 성벽 없는 마을들처럼 살게 될 것입니다.’”
+  to: 그가 그에게 말했습니다. “달려가서 그 젊은이에게 말하십시오. ‘예루살렘에는 사람[b]과 가축이 매우 많아 성벽 없는 마을들처럼[a] 사람이 거주하게 될 것입니다.’”
+  rationale: 원문의 의미를 바꾸지 않고, פְּרָזוֹת와 יָשַׁב의 결합을 한국어답게 ‘성벽 없는 마을들처럼 사람이 거주하게 될 것입니다’로 표현했습니다. 두 각주 표지를 실제로 주석하는 어구에 옮기고, 본문과 중복되던 각주 a를 유효한 어휘 대안으로 교체했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:49:44Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 명령 연쇄(“달려가서 … 말하십시오”)와 הַנַּעַר הַלָּז의 지시성은 대체로 잘 반영되었습니다. 다만 פְּרָזוֹת תֵּשֵׁב은 예루살렘이 성벽의 경계 없이 확장되어 사람이 거주하는 모습을 말하므로, 도시 자체가 ‘살게 된다’고 한 표현보다 ‘사람이 거주하게 된다’고 하는 편이 한국어에서 더 정확하고 자연스럽습니다. 또한 בְּתוֹכָהּ의 장소 의미는 ‘예루살렘에는’으로 자연스럽게 포함됩니다.
+  naturalness: 합쇼체의 인용문은 자연스럽습니다. ‘예루살렘은 … 마을들처럼 살게 될 것입니다’는 도시를 사람처럼 ‘살다’의 주체로 삼아 다소 어색하므로, ‘예루살렘에는 … 사람이 거주하게 될 것입니다’로 고쳤습니다.
+  terminology: אָ דָם은 집합적 인간 인구를 뜻하므로 본문에서는 자연스러운 집합 명사 ‘사람’을 유지하고, 대안은 각주에 보존했습니다. בְּהֵמָה는 ‘가축’이 적절합니다. פְּרָזוֹת의 ‘성벽 없는 마을들’은 가능한 번역이며, ‘트인 땅’이라는 공간적 대안은 각주로 제시했습니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지가 해당 어구에 붙어 있지 않습니다.
+    rationale: 현 초안의 [a]는 ‘그에게’ 뒤에 있으나 각주 내용은 פְּרָזוֹת의 번역 대안이고, [b]는 ‘그 젊은이’ 뒤에 있으나 내용은 אָדָם의 집합적 용법입니다. 표지를 각각 ‘성벽 없는 마을들처럼’과 ‘사람’에 붙여야 합니다.
+  - severity: medium
+    issue: 각주 a가 본문과 동일한 문구를 대안으로 제시합니다.
+    rationale: 본문이 이미 ‘성벽 없는 마을들처럼’을 채택했으므로, 동일 문구를 ‘또는’으로 반복할 수 없습니다. פְּרָזוֹת의 다른 가능한 공간적 번역을 제시해야 합니다.
+  - severity: low
+    issue: 예루살렘을 ‘살게 될’ 주체로 삼은 표현이 한국어에서 부자연스럽습니다.
+    rationale: 히브리어의 יָשַׁב은 도시가 사람이 거주하는 상태를 나타낼 수 있습니다. 한국어에서는 ‘예루살렘에는 사람이 거주하게 될 것입니다’가 그 의미를 더 명확히 전달합니다.
+  revised_text: 그가 그에게 말했습니다. “달려가서 그 젊은이에게 말하십시오. ‘예루살렘에는 사람[b]과 가축이 매우 많아 성벽 없는 마을들처럼[a] 사람이 거주하게 될 것입니다.’”
+  revised_footnotes:
+  - marker: a
+    text: 또는 “트인 땅처럼.”
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어 “사람”은 여기서 사람 전체를 가리키는 집합적 표현입니다. 또는 “사람들”, “인류”로 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 의미를 바꾸지 않고, פְּרָזוֹת와 יָשַׁב의 결합을 한국어답게 ‘성벽 없는 마을들처럼 사람이 거주하게 될 것입니다’로 표현했습니다. 두 각주 표지를 실제로 주석하는 어구에 옮기고, 본문과 중복되던 각주 a를 유효한 어휘 대안으로 교체했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:49:44Z'
+  output_hash: 50fff1d8e6983bb5b976c5f4a90b32c087b277726e44d86c445a4028801db026
+  usage:
+    completion_tokens: 1958
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1054
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 123
+      engine_ttlt_ms: 16377
+      pre_inference_ms: 91
+      service_tbt_ms: 8
+      service_ttft_ms: 570
+      service_ttlt_ms: 16819
+      total_duration_ms: 16742
+      user_visible_ttft_ms: 479
+    prompt_tokens: 2836
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4794
+  applied_revision: true
+  auto_apply_blocked_errors: []

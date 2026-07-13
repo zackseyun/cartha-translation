@@ -63,6 +63,31 @@ def test_bounded_wave_command_is_available() -> None:
     assert parsed.pending_only is True
 
 
+def test_rollout_can_direct_a_known_language_without_priority_rescan() -> None:
+    result = subprocess.run(
+        [
+            "python3",
+            "tools/multilingual_rollout.py",
+            "--language",
+            "ko",
+            "--stage",
+            "review",
+            "--limit-records",
+            "500",
+            "--concurrency",
+            "192",
+            "--dry-run",
+        ],
+        cwd=ROOT,
+        check=True,
+        capture_output=True,
+        text=True,
+    )
+    assert '"selected_language": "ko"' in result.stdout
+    assert '"directed": true' in result.stdout
+    assert "--stage review" in result.stdout
+
+
 def test_azure_key_is_cached_before_parallel_workers(monkeypatch) -> None:
     module = load_module("multilingual_pipeline_key_cache", "tools/multilingual_pipeline.py")
     monkeypatch.delenv("AZURE_OPENAI_API_KEY", raising=False)

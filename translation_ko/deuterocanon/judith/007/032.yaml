@@ -35,14 +35,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 백성을 자기 진영으로 흩어 놓았고, 그들은 그들의 도시의 성벽과 망루로 갔으며, 여자들과 아이들은 그들의 집으로 보내졌습니다. 그리고 그들은 그 도시 안에서 크게 낮아져 있었습니다.[a][b]
+  text: 그가 백성을 자기 진영으로 흩어 보냈고, 그들은 자기 도시의 성벽과 망루로 갔습니다.[a] 또 그는 여자들과 아이들을 그들의 집으로 보냈습니다. 그들은 그 도시 안에서 큰 비참함 가운데 있었습니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 그리스어는 동사 형태가 단수로 되어 있지만, 앞선 ‘백성’이 분산되어 성벽과 망루로 이동하는 흐름이므로 의미상 복수를 반영했습니다.
+    text: 그리스어는 이 절의 동사 형태가 단수이지만, 문맥상 앞서 흩어진 ‘백성’이 성벽과 망루로 가는 것을 가리킵니다. 따라서 한국어에서는 의미에 따라 복수로 옮겼습니다.
     reason: textual_variant
   - marker: b
-    text: 그리스어 표현은 ‘굴욕’뿐 아니라 ‘곤경’이나 ‘비참함’까지도 가리킬 수 있습니다.
+    text: 그리스어 표현은 ‘큰 굴욕’으로도 옮길 수 있으며, 굴욕뿐 아니라 곤궁이나 비참함의 상태를 가리킬 수도 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: ἐσκόρπισεν
@@ -106,4 +106,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 백성을 자기 진영으로 흩어 놓았고, 그들은 그들의 도시의 성벽과 망루로 갔으며, 여자들과 아이들은 그들의 집으로 보내졌습니다. 그리고 그들은 그 도시 안에서 크게 낮아져 있었습니다.[a][b]
+  to: 그가 백성을 자기 진영으로 흩어 보냈고, 그들은 자기 도시의 성벽과 망루로 갔습니다.[a] 또 그는 여자들과 아이들을 그들의 집으로 보냈습니다. 그들은 그 도시 안에서 큰 비참함 가운데 있었습니다.[b]
+  rationale: 능동 동사를 능동으로 바로잡아 원문의 주어와 행위를 보존했습니다. 단수형 ἀπῆλθεν의 해석상 난점은 해당 절에 주석을 붙여 투명하게 밝혔습니다. 마지막 표현은 포위된 도시의 문맥과 ταπείνωσις의 의미 범위를 고려해 자연스럽게 다듬되, 주석에서 ‘굴욕’이라는 가능한 번역을 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:55:28Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. ἀπέστειλεν은 능동태이며 주어는 앞의 ‘그’인데, 초안의 ‘보내졌습니다’는 수동태로 바꾸어 행위자를 흐립니다. 또한 본문 비평 관련 주석 a는 단수형 ἀπῆλθεν에 해당하는 절에 붙여야 합니다.
+  naturalness: ‘그가 … 흩어 놓았고’와 ‘크게 낮아져 있었습니다’는 이해 가능하지만, ‘흩어 보냈고’ 및 ‘큰 비참함 가운데 있었습니다’가 이 문맥에서 더 자연스럽고, 낮아짐과 곤궁의 의미 범위도 무리 없이 보존합니다.
+  terminology: ‘진영’, ‘성벽’, ‘망루’는 적절합니다. γυναῖκας καὶ τὰ τέκνα는 ‘여자들과 아이들을’으로 능동 목적격을 분명히 해야 합니다. ταπείνωσις는 포위 상황에서 굴욕·비참·곤궁의 폭을 가지므로 ‘큰 비참함’에 주석으로 대안을 제시하는 것이 안전합니다.
+  issues:
+  - severity: medium
+    issue: ‘여자들과 아이들은 그들의 집으로 보내졌습니다’가 수동태로 되어 있습니다.
+    rationale: 그리스어 ἀπέστειλεν은 능동 과거형이고, 문맥상 주어는 앞 절의 ‘그’입니다. 수동태는 행위 주체를 불필요하게 흐립니다.
+  - severity: low
+    issue: 본문 비평 주석 a의 표지가 절 끝이 아니라 문장 끝에 붙어 있습니다.
+    rationale: 이 주석은 단수 동사 ἀπῆλθεν 및 그것을 의미상 복수로 옮긴 ‘그들은 … 갔습니다’에 직접 연결되어야 합니다.
+  - severity: low
+    issue: ‘크게 낮아져 있었습니다’는 한국어에서 다소 부자연스럽고 상태의 고통을 충분히 드러내지 못할 수 있습니다.
+    rationale: ἐν ταπεινώσει πολλῇ는 낮아짐/굴욕과 비참·곤궁을 아우르는 표현입니다. ‘큰 비참함 가운데 있었습니다’가 문맥에 자연스러우며, 각주가 어휘 범위를 보완합니다.
+  revised_text: 그가 백성을 자기 진영으로 흩어 보냈고, 그들은 자기 도시의 성벽과 망루로 갔습니다.[a] 또 그는 여자들과 아이들을 그들의 집으로 보냈습니다. 그들은 그 도시 안에서 큰 비참함 가운데 있었습니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 그리스어는 이 절의 동사 형태가 단수이지만, 문맥상 앞서 흩어진 ‘백성’이 성벽과 망루로 가는 것을 가리킵니다. 따라서 한국어에서는 의미에 따라 복수로 옮겼습니다.
+    reason: textual_variant
+  - marker: b
+    text: 그리스어 표현은 ‘큰 굴욕’으로도 옮길 수 있으며, 굴욕뿐 아니라 곤궁이나 비참함의 상태를 가리킬 수도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 능동 동사를 능동으로 바로잡아 원문의 주어와 행위를 보존했습니다. 단수형 ἀπῆλθεν의 해석상 난점은 해당 절에 주석을 붙여 투명하게 밝혔습니다. 마지막 표현은 포위된 도시의 문맥과 ταπείνωσις의 의미 범위를 고려해 자연스럽게 다듬되, 주석에서 ‘굴욕’이라는 가능한 번역을 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:55:28Z'
+  output_hash: 41e23e0f3ceef636010e574462a025e51037b1bdf436101a95f65509c4f945c6
+  usage:
+    completion_tokens: 1056
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 201
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 8856
+      pre_inference_ms: 90
+      service_tbt_ms: 8
+      service_ttft_ms: 401
+      service_ttlt_ms: 9116
+      total_duration_ms: 9040
+      user_visible_ttft_ms: 311
+    prompt_tokens: 2530
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3586
+  applied_revision: true
+  auto_apply_blocked_errors: []

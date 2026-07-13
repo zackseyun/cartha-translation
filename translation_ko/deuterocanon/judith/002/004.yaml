@@ -98,4 +98,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 원문은 느부갓네살이 자신의 계획을 마친 뒤 홀로페르네스를 불러 말한 한 사건을 서술합니다. 초안은 핵심 의미를 대체로 보존했지만, 첫 문장으로 분리한 ‘그 일이 일어났습니다’는 한국어 서사에서 부자연스럽고, 각주 a는 본문 표지와 내용이 맞지 않습니다. ‘왕 다음가는’은 δεύτερον ὄντα μετʼ αὐτόν의 바로 아래 서열이라는 뜻을 명확히 전달합니다.
+  naturalness: ‘그가 자신의 계획을 마쳤을 때’로 시간 관계를 자연스럽게 연결하고, ‘자신의 군대의 총사령관이며 왕 다음가는’으로 직위와 서열을 매끄럽게 표현했습니다. 현대 표준어 합쇼체를 유지했습니다.
+  terminology: ‘아시리아 왕 느부갓네살’, ‘홀로페르네스’, ‘군대의 총사령관’을 유지했습니다. ‘계획’은 βουλή의 문맥상 적절한 번역이며, 대안 의미는 올바른 한국어 각주로 제시했습니다.
+  issues:
+  - severity: medium
+    issue: 각주 a가 잘못된 본문 위치에 붙어 있으며 내용도 ‘그의 계획’에 대한 주석인데 첫 문장의 서사 공식에 연결되어 있습니다.
+    rationale: 각주 표지는 주석 대상인 τὴν βουλὴν αὐτοῦ(‘계획’)에 붙어야 하며, ‘counsel’ 같은 미번역 영어를 그대로 두어서는 안 됩니다.
+  - severity: low
+    issue: ‘그 일이 일어났습니다’로 시작한 뒤 별도 문장으로 사건을 제시한 구성은 원문의 시간절과 주절의 결속을 한국어에서 불필요하게 약화합니다.
+    rationale: 한국어에서는 시간절을 직접 주절에 연결하는 것이 자연스럽고 원문의 사건 진행을 더 잘 나타냅니다.
+  - severity: low
+    issue: ‘자기 다음 서열인’은 지시 대상과 수식 관계가 다소 어색합니다.
+    rationale: ‘왕 다음가는’이 왕 바로 아래라는 위계 관계를 자연스럽고 명료하게 표현합니다.
+  revised_text: 그가 자신의 계획을 마쳤을 때, 아시리아 왕 느부갓네살은 자신의 군대의 총사령관이며 왕 다음가는 홀로페르네스를 불러 그에게 말했습니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘계획’은 ‘의논’, ‘뜻’ 또는 ‘결정’으로도 옮길 수 있습니다(τὴν βουλὴν αὐτοῦ).
+    reason: lexical_alternative
+  - marker: b
+    text: ‘총사령관’은 군대의 가장 높은 지휘관을 뜻합니다(ἀρχιστράτηγον).
+    reason: lexical_alternative
+  - marker: c
+    text: 직역하면 ‘그의 뒤에 둘째인’으로, 홀로페르네스가 왕 바로 아래의 서열이었음을 뜻합니다(δεύτερον ὄντα μετʼ αὐτόν).
+    reason: lexical_alternative
+  revision_rationale: 시간절과 주절을 한 문장으로 연결하여 자연스러운 한국어 서사를 이루게 했습니다. ‘계획’, ‘총사령관’, 왕 바로 아래의 서열이라는 원문의 의미를 유지했으며, 각주 표지와 내용을 각각의 원어 표현에 정확히 맞추었습니다. 수정문에 각주를 표시할 경우 ‘계획[a]’, ‘총사령관[b]’, ‘왕 다음가는[c]’에 붙입니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:56:11Z'
+  output_hash: e704e60c0b7b0577b009ee220a54c6949ce186d238f5f3be232c25bbbff8628c
+  usage:
+    completion_tokens: 1372
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 137
+      engine_ttlt_ms: 11027
+      pre_inference_ms: 145
+      service_tbt_ms: 8
+      service_ttft_ms: 663
+      service_ttlt_ms: 11699
+      total_duration_ms: 11560
+      user_visible_ttft_ms: 518
+    prompt_tokens: 2512
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3884
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]
+  - unanchored footnote [c]

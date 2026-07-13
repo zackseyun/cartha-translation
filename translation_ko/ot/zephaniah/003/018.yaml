@@ -23,15 +23,18 @@ base_translation:
     reason: cross_reference
 translation:
   language: ko
-  text: 나는 너에게서 절기에 대해 슬퍼하는 이들을 모아 왔습니다[a]. 그들은 그에게는[b], 곧 수치였습니다.
+  text: 나는 네게서 절기로 말미암아 애통하는 이들을 모았습니다[a][b]. 그들은 그 성읍에 수치가 되는 짐이었습니다[c].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 이 구절이 절기 축제의 상실로 인한 애통인지, 절기 모임에서 제거된 상태를 가리키는지 분명하지 않습니다.
+    text: 히브리어는 어려우며, 이 표현은 절기 모임을 잃어 애통하는 이들을 가리킬 수도 있고 절기 모임에서 제외되거나 멀어진 이들을 가리킬 수도 있습니다.
     reason: alternative_reading
   - marker: b
-    text: 또는 ‘내가 모았다’ 혹은 예언적 문맥에서는 ‘내가 모으겠다’로도 옮길 수 있습니다.
+    text: 또는 ‘내가 모았다’로, 예언적 문맥에서는 ‘내가 모으겠다’로도 옮길 수 있습니다.
     reason: lexical_alternative
+  - marker: c
+    text: ‘그 성읍’은 여성 단수 대명사를 풀어 옮긴 것이며, 시온 또는 예루살렘을 가리킬 가능성이 큽니다.
+    reason: cross_reference
 lexical_decisions:
 - source_word: נוּגֵי מִמּוֹעֵד
   english_pob_choice: those grieving over the appointed festival
@@ -90,4 +93,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나는 너에게서 절기에 대해 슬퍼하는 이들을 모아 왔습니다[a]. 그들은 그에게는[b], 곧 수치였습니다.
+  to: 나는 네게서 절기로 말미암아 애통하는 이들을 모았습니다[a][b]. 그들은 그 성읍에 수치가 되는 짐이었습니다[c].
+  rationale: 마지막 절에서 여성 지시어와 ‘짐’ 및 ‘수치’라는 두 명사를 모두 살렸습니다. ‘그 성읍’은 대명사의 문법 성과 문맥상 유력한 지시 대상을 한국어에서 이해 가능하게 표현한 것이며, 확정하지 않도록 각주에 ‘가능성’으로만 설명했습니다. 절기 관련 구문의 다른 가능한 분석과 동사의 예언적 용법은 각주로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:49:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안의 마지막 절은 עָלֶיהָ(‘그녀 위에/그녀에게’)를 남성 지시어 ‘그에게’로 옮겨 여성 단수 지시 대상과 맞지 않으며, מַשְׂאֵת(짐/부담)의 의미도 사실상 누락되었습니다. 또한 אָסַפְתִּי에 관한 각주는 동사에 붙어야 합니다.
+  naturalness: ‘그에게는, 곧 수치였습니다’는 현대 한국어 문장으로도 어색하고 무엇이 누구에게 수치인지 불분명합니다. ‘그 성읍에 수치가 되는 짐’은 원문의 압축성을 어느 정도 유지하면서도 자연스럽게 이해됩니다.
+  terminology: נוּגֵי מִמּוֹעֵד는 문맥상 ‘절기로 말미암아 애통하는 이들’로 옮기되, 전치사 및 구문의 난점은 각주에서 보존했습니다. מַשְׂאֵת와 חֶרְפָּה는 각각 ‘짐’과 ‘수치’로 구별했습니다. עָלֶיהָ의 여성 지시 대상은 ‘그 성읍’으로 표현하고 시온/예루살렘일 가능성을 각주로 밝혔습니다.
+  issues:
+  - severity: high
+    issue: עָלֶיהָ의 여성 단수 지시어를 ‘그에게’로 번역함
+    rationale: 히브리어 접미사는 여성 단수이며, 문맥상 시온/예루살렘을 가리킬 가능성이 큽니다. 남성 지시어는 원문 형태와 맞지 않습니다.
+  - severity: high
+    issue: מַשְׂאֵת(짐/부담)의 의미가 누락되고 חֶרְפָּה와 함께 ‘수치’로 평준화됨
+    rationale: 두 명사의 압축적 병치는 해석상 난점이 있으나, ‘짐/부담’과 ‘수치/모욕’의 의미 영역을 모두 번역에 남겨야 합니다.
+  - severity: medium
+    issue: אָסַפְתִּי의 시제 대안 각주(b)가 마지막 절의 지시어 뒤에 잘못 부착됨
+    rationale: 각주의 내용은 ‘모았습니다’에 해당하는 동사에 관한 것이므로 그 동사 뒤에 배치해야 합니다.
+  - severity: medium
+    issue: 여성 지시 대상에 관한 영어 POB 각주(c)가 한국어 번역에서 누락됨
+    rationale: 마지막 절의 지시 대상이 압축되어 있으므로, 시온/예루살렘을 가리킨다는 가능성을 설명하는 각주를 유지하는 것이 적절합니다.
+  revised_text: 나는 네게서 절기로 말미암아 애통하는 이들을 모았습니다[a][b]. 그들은 그 성읍에 수치가 되는 짐이었습니다[c].
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 어려우며, 이 표현은 절기 모임을 잃어 애통하는 이들을 가리킬 수도 있고 절기 모임에서 제외되거나 멀어진 이들을 가리킬 수도 있습니다.
+    reason: alternative_reading
+  - marker: b
+    text: 또는 ‘내가 모았다’로, 예언적 문맥에서는 ‘내가 모으겠다’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: ‘그 성읍’은 여성 단수 대명사를 풀어 옮긴 것이며, 시온 또는 예루살렘을 가리킬 가능성이 큽니다.
+    reason: cross_reference
+  revision_rationale: 마지막 절에서 여성 지시어와 ‘짐’ 및 ‘수치’라는 두 명사를 모두 살렸습니다. ‘그 성읍’은 대명사의 문법 성과 문맥상 유력한 지시 대상을 한국어에서 이해 가능하게 표현한 것이며, 확정하지 않도록 각주에 ‘가능성’으로만 설명했습니다. 절기 관련 구문의 다른 가능한 분석과 동사의 예언적 용법은 각주로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:49:42Z'
+  output_hash: a706c832dfdd69b0b133beb7ddc926cab0554b6389e8613e59b7c594f2674a03
+  usage:
+    completion_tokens: 1619
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 649
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 135
+      engine_ttlt_ms: 13934
+      pre_inference_ms: 94
+      service_tbt_ms: 9
+      service_ttft_ms: 588
+      service_ttlt_ms: 14375
+      total_duration_ms: 14290
+      user_visible_ttft_ms: 494
+    prompt_tokens: 2835
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4454
+  applied_revision: true
+  auto_apply_blocked_errors: []

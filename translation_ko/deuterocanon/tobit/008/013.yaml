@@ -29,12 +29,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 하녀가 들어와 문을 열었습니다[a].
+  text: 하녀가 문을 연 뒤 들어왔습니다[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “하녀가 문을 연 뒤 들어왔습니다.” 그리스어 분사 ἀνοίξασα는 주동사보다 앞선 동작을 나타냅니다.
-    reason: alternative_reading
+    text: 그리스어 분사 ἀνοίξασα는 주동사보다 앞선 동작을 나타냅니다. 또는 “하녀가 문을 열고 들어왔습니다.”
+    reason: 문을 연 뒤 들어왔다는 원문의 동작 순서를 설명하고, 자연스러운 한국어 대안을 제시합니다.
 lexical_decisions:
 - source_word: ἡ παιδίσκη
   english_pob_choice: the maidservant
@@ -80,4 +80,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 하녀가 들어와 문을 열었습니다[a].
+  to: 하녀가 문을 연 뒤 들어왔습니다[a].
+  rationale: 주절과 분사의 시간 관계를 보존하도록 ‘문을 연 뒤 들어왔습니다’로 고쳤습니다. 인물과 문에 관한 기존 용어 선택은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:54:51Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 그리스어 부정과거 분사 ἀνοίξασα는 주동사 εἰσῆλθεν에 선행하는 동작을 나타냅니다. 현 번역의 ‘들어와 문을 열었습니다’는 들어온 뒤 문을 연 것으로 순서를 바꾸므로 수정이 필요합니다.
+  naturalness: ‘하녀가 문을 연 뒤 들어왔습니다’는 현대 표준 한국어 합쇼체로 자연스럽고, 동작의 선후 관계도 분명히 드러냅니다.
+  terminology: παιδίσκη를 ‘하녀’로 옮긴 것은 여성 종/시녀를 가리키는 문맥에 적절합니다. θύρα는 이 장면에서 ‘문’이 적절합니다.
+  issues:
+  - severity: medium
+    issue: 동작 순서가 본문과 반대로 번역되었습니다.
+    rationale: ‘들어와 문을 열었습니다’는 εἰσῆλθεν을 먼저, ἀνοίξασα를 나중에 배치합니다. 원문의 부정과거 분사는 문을 연 행위가 들어가는 행위보다 앞섬을 나타냅니다.
+  revised_text: 하녀가 문을 연 뒤 들어왔습니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 그리스어 분사 ἀνοίξασα는 주동사보다 앞선 동작을 나타냅니다. 또는 “하녀가 문을 열고 들어왔습니다.”
+    reason: 문을 연 뒤 들어왔다는 원문의 동작 순서를 설명하고, 자연스러운 한국어 대안을 제시합니다.
+  revision_rationale: 주절과 분사의 시간 관계를 보존하도록 ‘문을 연 뒤 들어왔습니다’로 고쳤습니다. 인물과 문에 관한 기존 용어 선택은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:54:51Z'
+  output_hash: da322894becf13f1f41b4ed9dc5b9ed3e7cb45b408c2461fc87ad9e9b0d1acda
+  usage:
+    completion_tokens: 603
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 165
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 151
+      engine_ttlt_ms: 5153
+      pre_inference_ms: 143
+      service_tbt_ms: 8
+      service_ttft_ms: 424
+      service_ttlt_ms: 5366
+      total_duration_ms: 5267
+      user_visible_ttft_ms: 281
+    prompt_tokens: 1731
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2334
+  applied_revision: true
+  auto_apply_blocked_errors: []

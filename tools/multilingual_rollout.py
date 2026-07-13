@@ -80,7 +80,19 @@ def main() -> int:
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--limit-records", type=int, default=500)
     parser.add_argument("--concurrency", type=int, default=32)
+    parser.add_argument(
+        "--language",
+        help="Run a known language directly instead of rescanning earlier rollout priorities.",
+    )
+    parser.add_argument(
+        "--stage",
+        choices=("draft", "review", "both"),
+        help="Run a known stage directly; requires --language.",
+    )
     args = parser.parse_args()
+
+    if args.stage and not args.language:
+        parser.error("--stage requires --language")
 
     if args.status:
         config = load_config()
@@ -93,11 +105,18 @@ def main() -> int:
         )
         return 0
 
-    selection = choose_next()
-    if selection is None:
-        print("All configured multilingual draft and review stages are complete.")
-        return 0
-    code, stage, state = selection
+    if args.language and args.stage:
+        config = load_config()
+        if args.language not in config["languages"] or args.language == "en":
+            parser.error(f"unknown target language: {args.language}")
+        code, stage = args.language, args.stage
+        state = {"directed": True}
+    else:
+        selection = choose_next()
+        if selection is None:
+            print("All configured multilingual draft and review stages are complete.")
+            return 0
+        code, stage, state = selection
     print(json.dumps({"selected_language": code, "stage": stage, "state": state}, indent=2))
     command = [
         sys.executable,

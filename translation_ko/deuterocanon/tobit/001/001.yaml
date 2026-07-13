@@ -36,14 +36,14 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 토빗의 말들의 책[a], 토비엘의 아들, 아니엘의 아들, 아두엘의 아들, 바가바엘의 아들, 아시엘의 씨에서, 납달리 지파에서[b].
+  text: 토빗의 말을 기록한 책입니다[a]. 토빗은 토비엘의 아들이고, 토비엘은 아나니엘의 아들이며, 아나니엘은 아두엘의 아들이고, 아두엘은 가바엘[b]의 아들입니다. 토빗은 아시엘의 혈통이며 납탈리 지파 출신입니다.
   philosophy: formal
   footnotes:
   - marker: a
-    text: 그리스어는 ‘말들의 책’이라는 형식적인 표제문을 쓰며, ‘기록’이나 ‘사건들에 대한 책’으로도 옮길 수 있습니다.
+    text: 그리스어는 직역하면 ‘말들의 책’이라는 형식적인 표제 표현입니다. 문맥에 따라 ‘기록’ 또는 ‘이야기’로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 그리스어 사본 전승에서 마지막 이름은 난해한 형태이며, 관련 전승들에는 가바엘/가비엘에 가까운 형태도 나타납니다.
+    text: 그리스어 본문에는 이 이름이 난해한 형태(바가바엘에 가까운 표기)로 나타납니다. 다른 전승과 관련 자료에는 가바엘 또는 가비엘에 가까운 형태도 있어, 본문에서는 가바엘로 정규화했습니다.
     reason: alternative_reading
 lexical_decisions:
 - source_word: ΒΙΒΛΟΣ λόγων
@@ -109,4 +109,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 토빗의 말들의 책[a], 토비엘의 아들, 아니엘의 아들, 아두엘의 아들, 바가바엘의 아들, 아시엘의 씨에서, 납달리 지파에서[b].
+  to: 토빗의 말을 기록한 책입니다[a]. 토빗은 토비엘의 아들이고, 토비엘은 아나니엘의 아들이며, 아나니엘은 아두엘의 아들이고, 아두엘은 가바엘[b]의 아들입니다. 토빗은 아시엘의 혈통이며 납탈리 지파 출신입니다.
+  rationale: 제목의 문서적 성격과 λόγων의 직역적 함의를 각주로 보존하면서, 본문은 현대 한국어로 자연스럽게 완결했습니다. 반복되는 속격 계보는 각 세대의 부자 관계가 분명하도록 풀었고, ‘혈통’과 ‘지파’로 계보 용어를 명료하게 했습니다. 인명 표기와 각주 표지도 그리스어 및 영어 POB 감사 추적에 맞추어 정리했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:50:45Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 계보의 반복 속격을 ‘~의 아들’로 풀어낸 점과 ‘아시엘의 씨/납달리 지파’라는 계보 표현을 보존하려는 점은 원문에 대체로 충실합니다. 그러나 마지막 조상의 이름을 본문에서는 바가바엘로 두면서 각주에서는 가바엘/가비엘 계열을 논하는 방식은 영어 POB의 정규화 결정과 맞지 않습니다. 또한 본문은 문장으로 성립하지 않는 명사구들의 연속입니다. 수정문은 난해한 그리스어 형태를 각주에 보존하여 알리되, 본문은 감사 추적의 정규화 표기인 ‘가바엘’을 사용합니다.
+  naturalness: ‘토빗의 말들의 책, 토비엘의 아들…’은 현대 한국어에서 제목으로도 계보 문장으로도 매우 부자연스럽고, ‘아시엘의 씨에서’도 문맥상 ‘혈통’보다 어색합니다. 제목 형식은 ‘토빗의 말을 기록한 책입니다’로, 계보는 명시적 문장으로, σπέρμα는 ‘혈통’으로 옮겨 자연스럽고 격식 있는 합쇼체를 구현했습니다.
+  terminology: 토빗과 토비엘은 유지하되, Ἀνανιήλ에는 음절을 온전히 반영한 ‘아나니엘’을 사용했습니다. Νεφθαλείμ의 표준 성서 표기는 ‘납탈리’이므로 초안의 ‘납달리’를 바로잡았습니다. 바가바엘/가바엘 문제의 각주 표지는 해당 이름 바로 뒤에 놓아야 하며, 납탈리 뒤에 두면 주석 대상이 불명확합니다.
+  issues:
+  - severity: high
+    issue: 본문이 완결된 현대 한국어 문장이 아니라 단편적 명사구들의 나열입니다.
+    rationale: 합쇼체 번역문으로 자연스럽게 읽히지 않으며, 계보 관계와 ‘아시엘의 씨/납달리 지파’가 토빗에게 적용됨을 명확히 해야 합니다.
+  - severity: medium
+    issue: Ἀνανιήλ을 ‘아니엘’로 표기했습니다.
+    rationale: 그리스어 이름의 첫 음절 Ἀναν-을 반영한 ‘아나니엘’이 소리와 인명 표기에 더 충실합니다.
+  - severity: medium
+    issue: Νεφθαλείμ을 ‘납달리’로 표기했습니다.
+    rationale: 표준 한국어 성서 인명 표기는 ‘납탈리’입니다.
+  - severity: medium
+    issue: 난해한 ΒαΓαβαήλ 관련 각주 표지가 납탈리 뒤에 놓여 있습니다.
+    rationale: 주석은 가바엘 이름에 직접 붙어야 하며, 본문 표기도 영어 POB 감사 추적에 따른 정규형 ‘가바엘’로 통일하는 것이 안전합니다.
+  revised_text: 토빗의 말을 기록한 책입니다[a]. 토빗은 토비엘의 아들이고, 토비엘은 아나니엘의 아들이며, 아나니엘은 아두엘의 아들이고, 아두엘은 가바엘[b]의 아들입니다. 토빗은 아시엘의 혈통이며 납탈리 지파 출신입니다.
+  revised_footnotes:
+  - marker: a
+    text: 그리스어는 직역하면 ‘말들의 책’이라는 형식적인 표제 표현입니다. 문맥에 따라 ‘기록’ 또는 ‘이야기’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 그리스어 본문에는 이 이름이 난해한 형태(바가바엘에 가까운 표기)로 나타납니다. 다른 전승과 관련 자료에는 가바엘 또는 가비엘에 가까운 형태도 있어, 본문에서는 가바엘로 정규화했습니다.
+    reason: alternative_reading
+  revision_rationale: 제목의 문서적 성격과 λόγων의 직역적 함의를 각주로 보존하면서, 본문은 현대 한국어로 자연스럽게 완결했습니다. 반복되는 속격 계보는 각 세대의 부자 관계가 분명하도록 풀었고, ‘혈통’과 ‘지파’로 계보 용어를 명료하게 했습니다. 인명 표기와 각주 표지도 그리스어 및 영어 POB 감사 추적에 맞추어 정리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:50:45Z'
+  output_hash: dc9b8c1baa6c180a0117c96b42da2fef25bc2b2be6ba454de7c54ff9247941a6
+  usage:
+    completion_tokens: 2204
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1153
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 155
+      engine_ttlt_ms: 18053
+      pre_inference_ms: 82
+      service_tbt_ms: 8
+      service_ttft_ms: 354
+      service_ttlt_ms: 18228
+      total_duration_ms: 18163
+      user_visible_ttft_ms: 272
+    prompt_tokens: 2809
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5013
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -23,7 +23,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 징벌의 날이 이르렀습니다[a]. 보응의 날도 이르렀습니다. 이스라엘은 그것을 알게 될 것입니다. 예언자는 어리석은 자요, 영의 사람은 미친 사람입니다[b], 이는 당신의 죄악이 크고 당신의 적대감이 크기 때문입니다[c].
+  text: 징벌의 날이 이르렀습니다. 보응의 날도 이르렀습니다. 이스라엘은 그것을 알게 될 것입니다. 예언자는 어리석은 자요, 영의 사람은 미친 사람입니다[a][b]. 이는 당신의 죄악이 많고 적대감이 크기 때문입니다[c].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -33,7 +33,7 @@ translation:
     text: 어떤 이들은 이 행을 백성이 참예언자를 비웃는 말로 이해합니다. ‘예언자는 어리석은 자요, 영의 사람은 미친 사람입니다.’ 히브리어는 이것을 명시적으로 인용문으로 표시하지 않습니다.
     reason: alternative_reading
   - marker: c
-    text: 또는 ‘당신의 죄악의 많음과/그리고 큰 적대감 때문에.’ 마지막 명사는 적의, 반감, 증오를 가리킬 수 있으며 정확한 대상은 분명하지 않습니다.
+    text: 또는 ‘당신의 죄악의 많음과 큰 적대감 때문에.’ 마지막 명사는 적의, 반감, 증오를 가리킬 수 있으며, 그 정확한 대상은 분명하지 않습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: בָּאוּ יְמֵי הַפְּקֻדָּה
@@ -108,4 +108,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 징벌의 날이 이르렀습니다[a]. 보응의 날도 이르렀습니다. 이스라엘은 그것을 알게 될 것입니다. 예언자는 어리석은 자요, 영의 사람은 미친 사람입니다[b], 이는 당신의 죄악이 크고 당신의 적대감이 크기 때문입니다[c].
+  to: 징벌의 날이 이르렀습니다. 보응의 날도 이르렀습니다. 이스라엘은 그것을 알게 될 것입니다. 예언자는 어리석은 자요, 영의 사람은 미친 사람입니다[a][b]. 이는 당신의 죄악이 많고 적대감이 크기 때문입니다[c].
+  rationale: 각주가 실제로 설명하는 구절에 붙도록 앵커를 재배치했습니다. 또한 마지막 ‘적대감’에 원문이 명시하지 않은 ‘당신의’라는 소유 관계를 부여하지 않았고, רֹב의 기본 의미를 반영하여 ‘죄악이 많고’로 조정했습니다. 그 밖의 표현은 원문의 비난조, 해석상 논쟁이 있는 ‘영의 사람’의 모호성, 그리고 현대 한국어 합쇼체를 유지합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:42:38Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 본문의 핵심 어휘와 문장 흐름은 대체로 충실합니다. 다만 마지막 명사 מַשְׂטֵמָה에는 히브리어상 소유 접미사가 없으므로 ‘당신의 적대감’으로 한정하지 않는 것이 안전합니다. רֹב עֲוֹנְךָ도 ‘죄악이 크고’보다 ‘죄악이 많고’가 ‘많음/풍부함’의 기본 의미를 더 잘 보존합니다.
+  naturalness: 합쇼체는 일관되고, ‘징벌의 날’과 ‘보응의 날’은 자연스럽습니다. ‘영의 사람’은 다소 직역적이지만 원문의 의도적인 모호성을 보존하는 데 적절합니다. 인과절은 ‘죄악이 많고 적대감이 크기 때문입니다’로 하면 더 매끄럽습니다.
+  terminology: ‘징벌’, ‘보응’, ‘죄악’, ‘적대감’은 문맥과 문체에 적합합니다. ‘영’을 성령으로 특정하지 않은 점도 적절합니다. 각주 a와 b는 예언자/영의 사람에 관한 문장에, 각주 c는 마지막 인과절에 붙어야 하므로 앵커 위치를 바로잡아야 합니다.
+  issues:
+  - severity: medium
+    issue: 각주 앵커 a가 ‘징벌의 날’에 붙어 있으나, 각주 내용은 ‘예언자는 어리석은 자요 …’라는 구절의 대안 번역입니다.
+    rationale: 각주의 대상과 앵커가 불일치합니다. a는 해당 예언자 진술 뒤로 옮겨야 합니다.
+  - severity: medium
+    issue: ‘당신의 적대감’은 마지막 히브리어 명사에 없는 소유 관계를 본문에 보탭니다.
+    rationale: עֲוֹנְךָ에는 ‘당신의’가 명시되지만 וְרַבָּה מַשְׂטֵמָה에는 소유 접미사가 없습니다. 적대의 대상과 귀속이 불명확하므로 본문도 이를 열어 두어야 합니다.
+  - severity: low
+    issue: ‘당신의 죄악이 크고’는 רֹב의 ‘많음/풍부함’보다 ‘크기’에 치우칩니다.
+    rationale: ‘당신의 죄악이 많고’는 원문의 수량적 뉘앙스를 자연스러운 한국어로 더 직접적으로 나타냅니다.
+  revised_text: 징벌의 날이 이르렀습니다. 보응의 날도 이르렀습니다. 이스라엘은 그것을 알게 될 것입니다. 예언자는 어리석은 자요, 영의 사람은 미친 사람입니다[a][b]. 이는 당신의 죄악이 많고 적대감이 크기 때문입니다[c].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘예언자는 어리석은 자요, 영감받은 사람은 미친 사람입니다.’ 히브리어의 ‘영의 사람’은 자칭 영적 영감을 주장하는 사람을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 어떤 이들은 이 행을 백성이 참예언자를 비웃는 말로 이해합니다. ‘예언자는 어리석은 자요, 영의 사람은 미친 사람입니다.’ 히브리어는 이것을 명시적으로 인용문으로 표시하지 않습니다.
+    reason: alternative_reading
+  - marker: c
+    text: 또는 ‘당신의 죄악의 많음과 큰 적대감 때문에.’ 마지막 명사는 적의, 반감, 증오를 가리킬 수 있으며, 그 정확한 대상은 분명하지 않습니다.
+    reason: lexical_alternative
+  revision_rationale: 각주가 실제로 설명하는 구절에 붙도록 앵커를 재배치했습니다. 또한 마지막 ‘적대감’에 원문이 명시하지 않은 ‘당신의’라는 소유 관계를 부여하지 않았고, רֹב의 기본 의미를 반영하여 ‘죄악이 많고’로 조정했습니다. 그 밖의 표현은 원문의 비난조, 해석상 논쟁이 있는 ‘영의 사람’의 모호성, 그리고 현대 한국어 합쇼체를 유지합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:42:38Z'
+  output_hash: dda1fb7bd9c55f100e6de3e2a95fc4929489f7a5b3d4620112a83629dfb16add
+  usage:
+    completion_tokens: 1397
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 388
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 156
+      engine_ttlt_ms: 11019
+      pre_inference_ms: 109
+      service_tbt_ms: 8
+      service_ttft_ms: 451
+      service_ttlt_ms: 11380
+      total_duration_ms: 11280
+      user_visible_ttft_ms: 342
+    prompt_tokens: 3758
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5155
+  applied_revision: true
+  auto_apply_blocked_errors: []

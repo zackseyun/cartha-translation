@@ -117,4 +117,63 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘는 대체로 반영했지만, 히브리어의 두 명령형(‘칼아, 일어나라’; ‘목자를 쳐라’) 가운데 후자를 조건절 ‘목자를 치면’으로 바꾸어 명령의 직접성이 약화되었습니다. 또한 ‘내 손을 … 돌리겠습니다’에는 עַל의 방향 관계가 본문상 드러나지 않습니다.
+  naturalness: ‘칼아, 내 목자에게, 내 동료인 사람에게 맞서 일어나십시오’는 수식 관계와 명령의 대상이 어색합니다. ‘만군의 야훼의 말씀입니다’도 예언 선언 공식으로는 부자연스럽습니다. ‘나의 동료인 그 사람’ 및 ‘~을 향하여’로 관계를 명료하게 하고, 선언은 ‘말씀하십니다’로 처리하는 것이 현대 합쇼체에 자연스럽습니다.
+  terminology: ‘목자’, ‘양들’, ‘만군’, ‘야훼’는 적절합니다. עֲמִיתִי는 ‘동료’로 옮길 수 있으나 ‘내 동료인 사람’보다 ‘나의 동료인 그 사람’이 גֶּבֶר와 관계성을 더 분명히 합니다. הַצֹּעֲרִים는 연령과 지위의 폭을 보존하는 ‘작은 이들’이 적절합니다.
+  issues:
+  - severity: high
+    issue: הַךְ אֶת־הָרֹעֶה의 명령형이 조건절 ‘목자를 치면’으로 변경됨
+    rationale: 원문은 칼을 향한 직접 명령 ‘목자를 치십시오’이며, 그 뒤에 양들이 흩어지는 결과가 이어집니다. 조건절은 문법적 형식과 발화의 긴급성을 불필요하게 바꿉니다.
+  - severity: medium
+    issue: 첫 명령의 대격·방향 관계가 ‘맞서’로 불명확하게 처리됨
+    rationale: עַל이 ‘내 목자’와 ‘나의 동료인 그 사람’을 향한 칼의 행동 방향을 표시하므로 ‘~을 향하여’가 더 정확하고 자연스럽습니다.
+  - severity: medium
+    issue: 예언 선언 공식과 각주 앵커가 부정확하거나 중복됨
+    rationale: ‘만군의 야훼의 말씀입니다’ 대신 ‘만군의 야훼께서 말씀하십니다’가 자연스럽습니다. 현행 본문의 ^c^, ^b^[b][c]는 중복·혼재되어 각주 대상이 명확하지 않으므로, 칭호 뒤 b와 마지막 관용구 뒤 c로 각각 한 번씩 배치해야 합니다.
+  - severity: medium
+    issue: ‘내 손을 돌리겠습니다’에 עַל의 방향성이 빠짐
+    rationale: 관용구의 긍정·부정적 함의는 각주로 열어 두되, 본문에는 ‘작은 이들을 향해’라고 하여 전치사의 기본 방향 관계를 나타내야 합니다.
+  revised_text: 칼아, 내 목자를 향하여, 나의 동료인 그 사람을 향하여 일어나십시오. 만군의 야훼께서 말씀하십니다.^b^ 목자를 치십시오. 그러면 양들이 흩어질 것입니다. 나는 작은 이들을 향해 내 손을 돌리겠습니다.^c^
+  revised_footnotes:
+  - marker: b
+    text: 또는 ‘만군의 주님’입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘나는 작은 이들 위에/작은 이들을 향해 내 손을 돌리겠습니다.’ 이 관용구는 그들에게 불리한 행동을 뜻할 수도 있고, 더 일반적으로는 다시 그들을 다루시는 뜻일 수도 있습니다.
+    reason: alternative_reading
+  revision_rationale: 두 히브리어 명령형을 모두 한국어 합쇼체 명령형으로 보존했습니다. עַל의 방향성을 ‘향하여’로 표시하되, 마지막 관용구가 지닌 행동의 성격은 본문에서 과도하게 확정하지 않고 각주에서 유지했습니다. 예언 선언 공식을 현대 한국어에 맞게 다듬고, 각주 b와 c를 각각 해당 표현에 단일 앵커로 배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:55:34Z'
+  output_hash: 0cbfc893a81410957c0bcffa45be274e93cff93fccf0395ead5cd1bef101ce31
+  usage:
+    completion_tokens: 1335
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 332
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 212
+      engine_ttlt_ms: 11237
+      pre_inference_ms: 82
+      service_tbt_ms: 8
+      service_ttft_ms: 645
+      service_ttlt_ms: 11654
+      total_duration_ms: 11581
+      user_visible_ttft_ms: 563
+    prompt_tokens: 3328
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4663
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]
+  - unanchored footnote [c]

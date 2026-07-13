@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 지금 네 왕이 어디 있느냐 — 그가 네 모든 성읍에서 너를 구원할 수 있느냐? 네 재판관들도 어디 있느냐? 네가 “내게 왕과 지도자들을 주십시오”라고 말하던 그들이.[a][b]
+  text: 지금 네 왕이 어디 있습니까?[a] 그가 네 모든 성읍에서 너를 구원하게 하십시오. 네가 “내게 왕과 지도자들을 주십시오”라고 말하던 네 재판관들은 어디 있습니까?[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 첫머리의 히브리어는 난해하여, 여기서는 수사 의문문으로 옮겼습니다. 다른 가능성으로는 ‘내가 네 왕이 되리라’에 가까운 읽기도 있습니다.
+    text: 첫머리의 히브리어는 난해합니다. 여기서는 수사 의문문으로 옮겼습니다. 다른 가능성으로는 ‘내가 네 왕이 되리라’에 가까운 읽기가 있습니다.
     reason: alternative_reading
   - marker: b
-    text: 히브리어 שָׂרִים는 여기서 ‘지도자들’ 또는 ‘관원들’로도 옮길 수 있습니다.
+    text: 히브리어 שָׂרִים는 여기서 ‘관원들’ 또는 ‘통치자들’로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אֱהִי מַלְכְּךָ אֵפוֹא
@@ -98,4 +98,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 지금 네 왕이 어디 있느냐 — 그가 네 모든 성읍에서 너를 구원할 수 있느냐? 네 재판관들도 어디 있느냐? 네가 “내게 왕과 지도자들을 주십시오”라고 말하던 그들이.[a][b]
+  to: 지금 네 왕이 어디 있습니까?[a] 그가 네 모든 성읍에서 너를 구원하게 하십시오. 네가 “내게 왕과 지도자들을 주십시오”라고 말하던 네 재판관들은 어디 있습니까?[b]
+  rationale: 원문의 어려운 첫 낱말에 대한 수사 의문문 해석은 유지했습니다. 다만 왕에게 구원해 보라고 하는 조롱조 도전을 한국어 청유형으로 반영하고, ‘왕과 재판관들’을 향한 단일한 수사적 비판이 완결된 문장으로 드러나도록 고쳤습니다. 각주 표지도 각각 난해한 첫 구문과 שָׂרִים에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:42:38Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 난해한 אֱהִי를 수사 의문문으로 처리한 점과 왕·재판관·지도자들의 정치적 문맥을 대체로 충실히 반영합니다. 그러나 וְיוֹשִׁיעֲךָ의 조롱조 청유/도전의 어감을 ‘구원할 수 있느냐?’라는 능력 질문으로 바꾸었고, 마지막 절을 문법적으로 미완성인 ‘그들이’로 끝냈습니다. 왕과 재판관들을 함께 겨냥하는 본문의 수사적 질문 구조를 한국어에서 완결되게 পুন구성할 필요가 있습니다.
+  naturalness: ‘네가 … 말하던 그들이’는 문장 종결이 되지 않아 현대 한국어로 부자연스럽고 의미도 불완전합니다. ‘그가 … 구원하게 하십시오’는 수사적 도전의 맥락에서 자연스럽고, 이어지는 ‘… 말하던 네 재판관들은 어디 있습니까?’는 원문의 병렬을 명료하게 드러냅니다. 합쇼체를 일관되게 유지했습니다.
+  terminology: ‘성읍’은 예언서 문맥에 적절하며, שֹׁפְטֶיךָ는 직접적으로 ‘재판관들’로 유지했습니다. שָׂרִים는 현대적이고 포괄적인 ‘지도자들’로 옮기되, 각주에서 ‘관원들’과 ‘통치자들’의 가능성을 제시했습니다. ‘구원’은 ישׁע의 문맥상 적절한 핵심 용어입니다.
+  issues:
+  - severity: high
+    issue: 마지막 구절이 ‘그들이’로 끝나 문법적으로 미완성입니다.
+    rationale: אֲשֶׁר אָמַרְתָּ는 앞의 왕과 재판관들을 수식하는 관계절입니다. 이를 완결된 수사 의문문 안에 포함해야 합니다.
+  - severity: medium
+    issue: ‘구원할 수 있느냐?’는 원문의 수사적 도전/청유 어조를 능력 여부의 질문으로 좁힙니다.
+    rationale: 문맥상 왕에게 구원해 보라고 도전하는 표현이므로 ‘구원하게 하십시오’가 원문의 조롱조 권유에 더 가깝습니다.
+  - severity: low
+    issue: 각주 b의 표지가 ‘지도자들’이 아니라 문장 끝에 놓여 있습니다.
+    rationale: 어휘 대안 각주는 해당 어휘 바로 뒤에 두는 것이 독자의 이해와 각주 연결에 적절합니다.
+  revised_text: 지금 네 왕이 어디 있습니까?[a] 그가 네 모든 성읍에서 너를 구원하게 하십시오. 네가 “내게 왕과 지도자들을 주십시오”라고 말하던 네 재판관들은 어디 있습니까?[b]
+  revised_footnotes:
+  - marker: a
+    text: 첫머리의 히브리어는 난해합니다. 여기서는 수사 의문문으로 옮겼습니다. 다른 가능성으로는 ‘내가 네 왕이 되리라’에 가까운 읽기가 있습니다.
+    reason: alternative_reading
+  - marker: b
+    text: 히브리어 שָׂרִים는 여기서 ‘관원들’ 또는 ‘통치자들’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 어려운 첫 낱말에 대한 수사 의문문 해석은 유지했습니다. 다만 왕에게 구원해 보라고 하는 조롱조 도전을 한국어 청유형으로 반영하고, ‘왕과 재판관들’을 향한 단일한 수사적 비판이 완결된 문장으로 드러나도록 고쳤습니다. 각주 표지도 각각 난해한 첫 구문과 שָׂרִים에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:42:38Z'
+  output_hash: 14f342c4e5cb92b94a4522fdbff689ed00405cc6577760e1d92377bb77495aa4
+  usage:
+    completion_tokens: 1486
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 574
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 184
+      engine_ttlt_ms: 12340
+      pre_inference_ms: 93
+      service_tbt_ms: 8
+      service_ttft_ms: 436
+      service_ttlt_ms: 12534
+      total_duration_ms: 12470
+      user_visible_ttft_ms: 343
+    prompt_tokens: 3043
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4529
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -39,17 +39,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 세 번째 몫은 받아야 할 사람들에게 주었습니다[a]. 곧, 제 아버지의 어머니인 드보라가 저에게 명한 대로였습니다[b]. 이는 제 아버지 때문에 저는 고아로 남겨졌기 때문입니다[c].
+  text: 그리고 저는 세 번째 몫[a]을 마땅히 받을 사람들에게 주곤 했습니다. 이는 제가 아버지를 잃어[c] 고아가 되었기 때문에 제 아버지의 어머니인 드보라가 명한 대로였습니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 더 직역하면 ‘세 번째 몫’ 또는 ‘세 번째 부분’입니다. 그리스어는 앞문맥에서 생략된 명사를 내포합니다.
+    text: 그리스어는 명사를 생략하여 직역하면 ‘세 번째 [것]’입니다. 문맥상 세 번째 몫 또는 세 번째 부분을 가리킵니다.
     reason: lexical_alternative
   - marker: b
     text: 직역하면 ‘제 아버지의 어머니’입니다.
     reason: lexical_alternative
   - marker: c
-    text: 곧 ‘아버지를 잃어 사실상 부친 없이 남겨졌다’는 뜻입니다. 그리스어는 문자적으로 ‘제 아버지에 의해 고아로 남겨졌다’고 말합니다.
+    text: 그리스어는 문자적으로 ‘제 아버지에 의해 고아로 남겨졌다’고 말합니다. 문맥상 아버지의 상실로 사실상 부친 없이 남겨진 것을 가리킵니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: τὴν τρίτην
@@ -117,4 +117,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 세 번째 몫은 받아야 할 사람들에게 주었습니다[a]. 곧, 제 아버지의 어머니인 드보라가 저에게 명한 대로였습니다[b]. 이는 제 아버지 때문에 저는 고아로 남겨졌기 때문입니다[c].
+  to: 그리고 저는 세 번째 몫[a]을 마땅히 받을 사람들에게 주곤 했습니다. 이는 제가 아버지를 잃어[c] 고아가 되었기 때문에 제 아버지의 어머니인 드보라가 명한 대로였습니다[b].
+  rationale: 미완료시제의 습관성을 ‘주곤 했습니다’로 반영했습니다. 본문에서는 ὑπό τοῦ πατρός μου의 문맥상 의미를 자연스러운 한국어로 전달하고, 원문의 낯선 문자적 구조와 그에 따른 해석상 긴장은 각주에 보존했습니다. 또한 드보라의 명령과 화자의 고아 됨 사이의 인과관계를 문법적으로 명확히 했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T18:50:23Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 그리스어의 ‘세 번째 [몫]’, 정당한 수령자, 드보라(아버지의 어머니)의 명령, 그리고 아버지의 상실과 관련된 고아 됨을 모두 반영합니다. 다만 초안의 단순 과거 ‘주었습니다’는 미완료시제가 나타내는 습관적 반복을 충분히 살리지 못하며, ‘아버지 때문에’는 ὑπό τοῦ πατρός μου의 문맥상 뜻을 한국어에서 부자연스럽고 오해하기 쉽게 만듭니다.
+  naturalness: ‘곧’으로 시작하는 별도 문장은 앞 문장과의 연결 및 인과관계를 흐립니다. ‘명한 대로였습니다’도 무엇이 그러했는지 다소 불분명합니다. 습관적 과거는 ‘주곤 했습니다’로, 인과관계는 한 문장 안에서 자연스럽게 연결하는 것이 적절합니다.
+  terminology: ‘드보라’는 통용되는 한국어 성경식 이름이며 적절합니다. 원문의 구체적 친족 표현은 본문에서 ‘제 아버지의 어머니’로 유지합니다. ‘마땅히 받을 사람들’은 οἷς καθήκει의 적합함/정당한 귀속을 자연스럽게 전달합니다.
+  issues:
+  - severity: medium
+    issue: ἐδίδουν의 습관적 미완료를 단순 과거 ‘주었습니다’로 처리함
+    rationale: 이 동사는 반복적·관습적 과거 행동을 나타냅니다. ‘주곤 했습니다’가 이 뉘앙스를 보존합니다.
+  - severity: medium
+    issue: ‘제 아버지 때문에 저는 고아로 남겨졌기 때문입니다’의 어색함 및 의미 불명확성
+    rationale: 문자적 ‘아버지에 의해’는 한국어에서 아버지가 고아 상태를 초래했다는 부자연스러운 인상을 줍니다. 문맥상 아버지의 상실을 가리키므로 본문은 ‘아버지를 잃어’로 자연스럽게 옮기고, 문자적 표현은 각주에서 보존하는 것이 안전합니다.
+  - severity: low
+    issue: 명령과 그 이유의 문장 연결이 불명료함
+    rationale: ‘곧’으로 분리하면 καθὼς와 διότι의 관계가 약해집니다. 드보라의 명령이 화자의 아버지 상실 때문에 주어진 것임을 한 문장으로 연결합니다.
+  revised_text: 그리고 저는 세 번째 몫[a]을 마땅히 받을 사람들에게 주곤 했습니다. 이는 제가 아버지를 잃어[c] 고아가 되었기 때문에 제 아버지의 어머니인 드보라가 명한 대로였습니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 그리스어는 명사를 생략하여 직역하면 ‘세 번째 [것]’입니다. 문맥상 세 번째 몫 또는 세 번째 부분을 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘제 아버지의 어머니’입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 그리스어는 문자적으로 ‘제 아버지에 의해 고아로 남겨졌다’고 말합니다. 문맥상 아버지의 상실로 사실상 부친 없이 남겨진 것을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 미완료시제의 습관성을 ‘주곤 했습니다’로 반영했습니다. 본문에서는 ὑπό τοῦ πατρός μου의 문맥상 의미를 자연스러운 한국어로 전달하고, 원문의 낯선 문자적 구조와 그에 따른 해석상 긴장은 각주에 보존했습니다. 또한 드보라의 명령과 화자의 고아 됨 사이의 인과관계를 문법적으로 명확히 했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T18:50:23Z'
+  output_hash: 4bef4a0b44afaf7f1178dc0d0c8411d30258d5c11777efadd685428cbb096faa
+  usage:
+    completion_tokens: 1288
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 369
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 150
+      engine_ttlt_ms: 10257
+      pre_inference_ms: 112
+      service_tbt_ms: 8
+      service_ttft_ms: 476
+      service_ttlt_ms: 10532
+      total_duration_ms: 10432
+      user_visible_ttft_ms: 364
+    prompt_tokens: 2832
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4120
+  applied_revision: true
+  auto_apply_blocked_errors: []
