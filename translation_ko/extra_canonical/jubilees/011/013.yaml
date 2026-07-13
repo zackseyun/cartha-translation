@@ -25,7 +25,7 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그들은 밤에 일어나 불 가운데서 자기들의 신들을 구하려고 했습니다. 그리고 하란이 달려들었습니다.[a]
+  text: 그들은 밤에 일어나 불 가운데서 자기들의 신들을 구하려고 했습니다.
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: ያድኅኑ
@@ -80,4 +80,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들은 밤에 일어나 불 가운데서 자기들의 신들을 구하려고 했습니다. 그리고 하란이 달려들었습니다.[a]
+  to: 그들은 밤에 일어나 불 가운데서 자기들의 신들을 구하려고 했습니다.
+  rationale: 본문의 첫 문장은 유지하고, 판본 문자열에 연접되었으나 실제로는 11:14에 속하는 ‘그리고 하란이 달려들었습니다’와 그에 딸린 각주를 제거했습니다. 이는 의미를 변경하지 않고 올바른 절 경계를 회복합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:16:13Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 문장은 게에즈어의 ‘밤에 일어나 ... 불 가운데에서 자기들의 신들을 구하려 했다’를 충실히 옮깁니다. 그러나 ‘그리고 하란이 달려들었습니다’(ወሰረረ፡ አራን፡)는 제공된 판본 문자열에는 이어져 있으나, 문맥 및 감사 이력에서 확인되듯 다음 절(11:14)의 시작에 속하는 절 분할 오류입니다. 따라서 11:13 본문에는 포함하지 않는 것이 절 경계와 본문 충실성에 맞습니다.
+  naturalness: ‘그들은 밤에 일어나 불 가운데서 자기들의 신들을 구하려고 했습니다’는 현대 표준 한국어 합쇼체로 자연스럽습니다. ‘불 가운데서’는 불속에서 구출하려는 뜻을 문맥상 충분히 전달합니다.
+  terminology: ‘신들’은 አማልክት의 복수와 서술의 비평가적 중립성을 보존합니다. ‘구하려고 했습니다’는 ያድኅኑ의 의도·시도 의미에 적절합니다. 하란은 다음 절로 이관하므로 이 절의 이름 표기 및 관련 각주는 삭제합니다.
+  issues:
+  - severity: high
+    issue: 11:13에 다음 절에 속하는 하란의 행동이 포함되어 있습니다.
+    rationale: 감사 이력은 ወሰረረ፡ አራን፡을 절 분할 오류로 명시하며, 이 구절은 11:14의 시작에 속합니다. 이를 11:13에 남기면 절 경계가 틀어지고 11:14에서 내용이 중복될 수 있습니다.
+  - severity: medium
+    issue: 하란 관련 각주 [a]가 잘못된 절에 붙어 있습니다.
+    rationale: 각주는 다음 절로 이관될 동사·이름 구절을 대상으로 하므로, 11:13에서는 삭제해야 합니다.
+  revised_text: 그들은 밤에 일어나 불 가운데서 자기들의 신들을 구하려고 했습니다.
+  revised_footnotes: []
+  revision_rationale: 본문의 첫 문장은 유지하고, 판본 문자열에 연접되었으나 실제로는 11:14에 속하는 ‘그리고 하란이 달려들었습니다’와 그에 딸린 각주를 제거했습니다. 이는 의미를 변경하지 않고 올바른 절 경계를 회복합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:13Z'
+  output_hash: 8f2cf7f2ed140d89a14719b7a9e53b435c9c197e34778b75f0bfb76c4b2e951d
+  usage:
+    completion_tokens: 914
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 329
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 151
+      engine_ttlt_ms: 8292
+      pre_inference_ms: 163
+      service_tbt_ms: 9
+      service_ttft_ms: 685
+      service_ttlt_ms: 8821
+      total_duration_ms: 8671
+      user_visible_ttft_ms: 522
+    prompt_tokens: 1620
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2534
+  applied_revision: true
+  auto_apply_blocked_errors: []

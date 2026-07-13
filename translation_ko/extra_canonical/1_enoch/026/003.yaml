@@ -101,4 +101,65 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. መንገለ ጽባሕ은 ‘동쪽을 향해/동쪽으로’라는 방향 표현인데, 초안의 ‘동쪽의 산’은 산의 고유한 위치·속성을 나타내는 관형 표현으로 바꾸어 놓았습니다. 또한 ቦቱኒ ማይ는 ‘그 안에 물이 있었다’는 뜻이므로 ‘그 안으로 물이’는 부정확합니다.
+  naturalness: 합쇼체 서술은 전반적으로 자연스럽습니다. 다만 ‘그들 사이’보다 산들을 명시하는 ‘두 산 사이’가 더 자연스럽고, ‘그 안에서 물이’가 한국어 어법과 원문 모두에 더 잘 맞습니다.
+  terminology: ‘또 다른 산’, ‘더 높았습니다’, ‘깊은 골짜기’, ‘산 쪽으로’는 적절합니다. ‘골짜기’는 ravine/valley의 폭을 과도하게 한정하지 않는 자연스러운 선택입니다.
+  issues:
+  - severity: medium
+    issue: 방향 부사구를 관형구로 번역함
+    rationale: ‘또 다른 동쪽의 산’은 ‘동쪽에 속한 산’처럼 들립니다. 원문의 መንገለ ጽባሕ은 보는 방향을 나타내므로 ‘동쪽을 향해 또 다른 산을 보았다’로 옮겨야 합니다.
+  - severity: medium
+    issue: 물의 위치 표현이 반대로 들림
+    rationale: ‘그 안으로 물이’는 물이 골짜기 안으로 들어간다는 뜻이 될 수 있습니다. 원문은 물이 골짜기 안에 있으며 산 쪽으로 움직인다고 말하므로 ‘그 안에서 물이 … 흘러가고’가 적절합니다.
+  - severity: low
+    issue: 각주 c의 표지 위치가 해당 설명과 맞지 않음
+    rationale: 각주 c는 물의 이동 구문을 설명하지만 초안에서는 ‘넓지는 않았고’ 뒤에 붙어 있습니다. 물이 흐르는 구절 뒤로 옮겨야 합니다.
+  revised_text: 동쪽을 향해 또 다른 산을 보았는데, 이 산보다 더 높았습니다[b]. 두 산 사이에는 깊은 골짜기가 있었으나 넓지는 않았고[d], 그 안에서 물이 산 쪽으로 흘러가고 있었습니다[c].
+  revised_footnotes:
+  - marker: a
+    text: ‘동쪽을 향해’는 ጽባሕ이 가리키는 문자적 방향을 따른 번역입니다. ‘해 돋는 쪽을 향해’도 가능한 뉘앙스입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 비교 형용사는 문자적으로 ‘더 길다/더 늘어나다’의 뜻을 가질 수 있으나, 산을 비교하는 문맥에서는 ‘더 높다’가 가장 자연스럽습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 이 구절은 다소 난해합니다. Ge'ez 본문은 물이 골짜기 안에 있으면서 산 쪽으로 움직인다고 가장 직접적으로 말합니다.
+    reason: textual_variant
+  - marker: d
+    text: ‘넓지는 않았고’는 문자적으로 ‘너비가 없었다’는 표현을 자연스럽게 옮긴 것입니다.
+    reason: lexical_alternative
+  revision_rationale: 방향 표현을 원문의 기능에 맞게 ‘동쪽을 향해’로 바로잡고, 물이 골짜기 안에 있다는 위치 관계를 명확히 했습니다. 또한 각주 c와 d를 각각 해당 구절에 붙여 각주 표지의 참조 대상을 바로잡았습니다. ‘더 높다’는 산 비교 문맥에서 가장 자연스러운 해석이지만, 대안적 의미는 각주 b에 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:21:58Z'
+  output_hash: 26fea16b5b701e2a81343f0222019bf0bf9cac0567fa35f3b09391aca5b71927
+  usage:
+    completion_tokens: 1361
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 463
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 10860
+      pre_inference_ms: 77
+      service_tbt_ms: 8
+      service_ttft_ms: 380
+      service_ttlt_ms: 11096
+      total_duration_ms: 11027
+      user_visible_ttft_ms: 303
+    prompt_tokens: 3252
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4613
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

@@ -95,4 +95,62 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 산들과 그 안의 나무들은 복수로 옮겨야 하며, 산들로부터 어떤 것이 나왔다는 관계도 한국어에서 드러내는 편이 정확합니다. 현 초안의 ‘거기에서’는 문맥상 가능하지만 복수 선행사를 흐립니다.
+  naturalness: ‘꿀같은’은 표준 띄어쓰기상 ‘꿀 같은’으로 쓰는 것이 자연스럽습니다. 또한 ‘그것의 이름은’이 앞의 ‘것’을 더 명확히 받습니다.
+  terminology: 본문의 ‘갈반눔’은 각주와도 불일치하며, galbanum의 통용 한국어 표기는 ‘갈바눔’입니다. 불확실한 세레라는 음역으로 유지합니다.
+  issues:
+  - severity: medium
+    issue: ‘갈반눔’과 각주의 ‘갈바눔’이 불일치합니다.
+    rationale: 영어 POB의 galbanum 및 한국어 통용 표기에 맞추어 본문과 각주를 ‘갈바눔’으로 통일해야 합니다.
+  - severity: low
+    issue: 복수 산들을 가리키는 출처가 ‘거기에서’로 다소 흐려져 있습니다.
+    rationale: ‘그 산들에서’라고 하면 원문의 복수 산들과 그곳에서 나오는 것을 더 직접적으로 반영합니다.
+  - severity: low
+    issue: 각주 c의 내용과 표지 위치가 맞지 않습니다.
+    rationale: 영어 감사 기록의 c는 ‘another mountain’이라는 단수 대안에 관한 것이므로 ‘산들’ 뒤에 붙이고 그 대안을 밝혀야 합니다.
+  revised_text: 그리고 나는 다른 산들[a][c]을 보았습니다. 그 안에는 나무들이 있었고, 그 산들에서 꿀 같은 것이 나왔는데, 그것의 이름은 세레라와 갈바눔이었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 게에즈 본문은 ‘다른 산들’의 복수형을 가리킵니다.
+    reason: source_note
+  - marker: b
+    text: ‘갈바눔’은 고대 향료인 갈바눔을 가리킬 가능성이 높지만, 본문의 게에즈 표기는 음역으로 남길 여지도 있습니다.
+    reason: cultural_note
+  - marker: c
+    text: 또는 ‘또 다른 산 하나, 그 안에는’.
+    reason: previous_rendering
+  revision_rationale: ‘갈바눔’으로 용어와 각주를 통일하고, ‘그 산들에서’로 복수 선행사와 출처를 명시했습니다. 또한 띄어쓰기를 현대 표준어에 맞추고, 단수 산이라는 이전 번역 대안 각주를 해당 명사구로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:21:58Z'
+  output_hash: 487e2778a75db46649fe837c4bf0f95d24f188545ac9c36f141a7e4a261fcbb0
+  usage:
+    completion_tokens: 1132
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 484
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 9221
+      pre_inference_ms: 127
+      service_tbt_ms: 8
+      service_ttft_ms: 363
+      service_ttlt_ms: 9449
+      total_duration_ms: 9331
+      user_visible_ttft_ms: 236
+    prompt_tokens: 3162
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4294
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

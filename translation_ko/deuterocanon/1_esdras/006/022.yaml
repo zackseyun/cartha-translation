@@ -43,15 +43,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러자 다리오 왕은 바빌론에 보관된 문서 보관소[a]를 조사하라고 명령했고, 메디아 땅의 에크바타나에 있는 성채[b]에서는 이런 기록이 적힌 두루마리가 발견되었습니다.
+  text: '그러자 다리오 왕은 바빌론에 보관되어 있는 문서 보관소들을 조사하라고 명령하셨습니다. 그리고 메디아 땅의 에크바타나 성채[a]에서 다음과 같이 기록되어 있는 곳[b]이 발견되었습니다:'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘성채’로 볼 수 있습니다. 여기의 그리스어 τῇ βάρει는 에크바타나의 강화된 행정 중심지를 가리키는 말입니다.
+    text: 또는 ‘요새’ 또는 ‘성곽’. 그리스어 τῇ βάρει는 에크바타나의 방어 시설을 갖춘 행정 중심지를 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘두루마리’로 이해할 수 있습니다. 그리스어는 문자적으로 ‘한 장소가 발견되었다’고 하지만, 문맥상 발견된 문서를 가리키는 표현으로 이해됩니다.
-    reason: lexical_alternative
+    text: 그리스어는 문자적으로 ‘한 곳이 발견되었다’고 말합니다. 문맥상 그곳에 보관된 문서나 기록을 가리키는 것으로 이해할 수도 있습니다.
+    reason: source_ambiguity
 lexical_decisions:
 - source_word: προσέταξεν
   english_pob_choice: ordered
@@ -134,4 +134,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 다리오 왕은 바빌론에 보관된 문서 보관소[a]를 조사하라고 명령했고, 메디아 땅의 에크바타나에 있는 성채[b]에서는 이런 기록이 적힌 두루마리가 발견되었습니다.
+  to: '그러자 다리오 왕은 바빌론에 보관되어 있는 문서 보관소들을 조사하라고 명령하셨습니다. 그리고 메디아 땅의 에크바타나 성채[a]에서 다음과 같이 기록되어 있는 곳[b]이 발견되었습니다:'
+  rationale: 원문의 τόπος가 지닌 ‘곳/장소’라는 표현을 본문에서 보존하고, 문서라는 문맥적 이해는 각주로 옮겼습니다. 또한 모든 각주 표지를 해당 그리스어 표현이 있는 위치에 맞추고, 기존에 뒤바뀐 각주 내용을 바로잡았습니다. 왕에게는 현대 한국어 합쇼체에 맞추어 ‘명령하셨습니다’를 사용했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:04:03Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 왕의 명령, 바빌론의 문서 보관소, 메디아의 에크바타나 성채라는 주요 요소를 대체로 잘 옮겼습니다. 그러나 τόπος는 본문상 문자적으로 ‘장소/곳’이며, 이를 본문에서 단정적으로 ‘두루마리’로 바꾸는 것은 원문의 표현을 넘어섭니다. 문서가 발견되었다는 문맥적 이해는 각주로 제시하는 것이 안전합니다.
+  naturalness: 합쇼체와 문장 흐름은 대체로 자연스럽습니다. 다만 ‘문서 보관소’는 원문의 복수형을 반영하여 ‘문서 보관소들’로 하고, 발견의 장소와 기록 내용을 연결하는 표현을 원문에 더 가깝게 조정했습니다.
+  terminology: ‘다리오 왕’, ‘바빌론’, ‘메디아’, ‘에크바타나’, ‘성채’는 적절합니다. 기존 각주는 표지와 설명 대상이 서로 뒤바뀌어 있으므로 바로잡아야 합니다. ‘두루마리’는 가능한 문맥적 해석이지만 τόπος의 직역이 아니므로 본문이 아니라 각주에 두었습니다.
+  issues:
+  - severity: medium
+    issue: τόπος를 본문에서 ‘두루마리’로 단정함
+    rationale: 그리스어 τόπος의 기본 뜻은 ‘장소, 곳’입니다. 문맥상 문서 또는 문서가 놓인 장소를 가리킬 가능성은 있으나, 본문은 그 모호성을 유지하고 각주에서 해석 가능성을 밝혀야 합니다.
+  - severity: high
+    issue: 각주 표지와 각주 내용이 서로 맞지 않음
+    rationale: 본문의 [a]는 ‘문서 보관소’ 뒤에 있으나 각주 a는 τῇ βάρει(성채)를 설명합니다. 본문의 [b]는 ‘성채’ 뒤에 있으나 각주 b는 τόπος를 설명합니다. 표지 위치와 설명 내용을 일치시켜야 합니다.
+  - severity: low
+    issue: βάρει의 대안 제시가 본문 선택과 중복됨
+    rationale: 본문이 이미 ‘성채’인데 각주에서 ‘또는 성채’라고 하면 대안 기능을 하지 못합니다. ‘요새’ 또는 ‘성곽’ 등 실제 대안을 제시하는 편이 낫습니다.
+  revised_text: '그러자 다리오 왕은 바빌론에 보관되어 있는 문서 보관소들을 조사하라고 명령하셨습니다. 그리고 메디아 땅의 에크바타나 성채[a]에서 다음과 같이 기록되어 있는 곳[b]이 발견되었습니다:'
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘요새’ 또는 ‘성곽’. 그리스어 τῇ βάρει는 에크바타나의 방어 시설을 갖춘 행정 중심지를 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 그리스어는 문자적으로 ‘한 곳이 발견되었다’고 말합니다. 문맥상 그곳에 보관된 문서나 기록을 가리키는 것으로 이해할 수도 있습니다.
+    reason: source_ambiguity
+  revision_rationale: 원문의 τόπος가 지닌 ‘곳/장소’라는 표현을 본문에서 보존하고, 문서라는 문맥적 이해는 각주로 옮겼습니다. 또한 모든 각주 표지를 해당 그리스어 표현이 있는 위치에 맞추고, 기존에 뒤바뀐 각주 내용을 바로잡았습니다. 왕에게는 현대 한국어 합쇼체에 맞추어 ‘명령하셨습니다’를 사용했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:04:03Z'
+  output_hash: 0cf4b8d41452cbf10aa1cb91b6fc54107733319b7d731debec51936ce343421d
+  usage:
+    completion_tokens: 1366
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 132
+      engine_ttlt_ms: 10853
+      pre_inference_ms: 110
+      service_tbt_ms: 8
+      service_ttft_ms: 363
+      service_ttlt_ms: 11064
+      total_duration_ms: 10965
+      user_visible_ttft_ms: 254
+    prompt_tokens: 3524
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4890
+  applied_revision: true
+  auto_apply_blocked_errors: []

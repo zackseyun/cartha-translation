@@ -26,14 +26,14 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그리고 나는 아름다운 나무를 보았습니다. 그것은 향기로운 나무와 같았는데, 마스틱 나무와 같았습니다.[a][b]
+  text: 그리고 저는 아름다운 나무를 보았습니다. 그 나무는 마스틱 나무 같은 향기로운 나무를 닮아 있었습니다.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘마스틱’은 향기로운 수지로 알려진 나무를 가리키는 식별상 불확실한 명칭입니다.
+    text: ‘마스틱’은 향기로운 수지를 내는 나무를 가리키며, 정확한 식물 종의 식별은 다소 불확실합니다.
     reason: lexical_alternative
   - marker: b
-    text: 원문은 ‘향기’만이 아니라 ‘향기로운 나무’와의 유사성을 직접 말합니다.
+    text: 원문은 단지 그 나무의 ‘향기’가 아니라, ‘향기로운 나무’를 닮았다고 말합니다.
     reason: source_note
 lexical_decisions:
 - source_word: ወርኢኩ
@@ -89,4 +89,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 나는 아름다운 나무를 보았습니다. 그것은 향기로운 나무와 같았는데, 마스틱 나무와 같았습니다.[a][b]
+  to: 그리고 저는 아름다운 나무를 보았습니다. 그 나무는 마스틱 나무 같은 향기로운 나무를 닮아 있었습니다.[a][b]
+  rationale: 마스틱과의 비교가 ‘향기로운 나무’를 한정하도록 문장을 재구성하여 원문의 비교 구조와 반복된 명사 표현을 보존했습니다. 또한 중복된 서술어를 제거하고 마스틱 관련 주석의 식물학적 지시 대상을 바로잡았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:16:26Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 순차 접속, 1인칭 환시 서술, ‘아름다운 나무’, ‘향기로운 나무’를 닮았다는 비교, 그리고 마스틱과의 비교를 모두 보존합니다. 다만 현 초안은 ‘~와 같았는데, ~와 같았습니다’라는 이중 비교가 마스틱 구절의 수식 범위를 불필요하게 분리하고 한국어 문장도 부자연스럽게 만듭니다.
+  naturalness: ‘그 나무는 마스틱 나무 같은 향기로운 나무를 닮아 있었습니다’는 현대 표준 한국어 합쇼체로 자연스럽고, 원문의 반복된 ‘나무’와 비교 구조도 유지합니다.
+  terminology: ‘마스틱 나무’는 식물명의 불확실성을 과도하게 단정하지 않는 적절한 음역입니다. 주석은 마스틱이 ‘향기로운 수지’ 자체가 아니라 그러한 수지를 내는 나무라는 점을 분명히 해야 합니다.
+  issues:
+  - severity: medium
+    issue: 비교 표현의 부자연스러운 중복
+    rationale: 현행 ‘향기로운 나무와 같았는데, 마스틱 나무와 같았습니다’는 두 차례의 ‘같다’가 병렬되어 원문의 ‘마스틱 같은 향기로운 나무’라는 관계를 흐리며, 한국어로도 어색합니다.
+  - severity: low
+    issue: 주석 a의 지시 대상이 불명확함
+    rationale: ‘마스틱’은 수지가 아니라 그 수지를 내는 나무를 가리키므로, ‘향기로운 수지로 알려진 나무’보다 ‘향기로운 수지를 내는 나무’가 정확합니다.
+  revised_text: 그리고 저는 아름다운 나무를 보았습니다. 그 나무는 마스틱 나무 같은 향기로운 나무를 닮아 있었습니다.[a][b]
+  revised_footnotes:
+  - marker: a
+    text: ‘마스틱’은 향기로운 수지를 내는 나무를 가리키며, 정확한 식물 종의 식별은 다소 불확실합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 원문은 단지 그 나무의 ‘향기’가 아니라, ‘향기로운 나무’를 닮았다고 말합니다.
+    reason: source_note
+  revision_rationale: 마스틱과의 비교가 ‘향기로운 나무’를 한정하도록 문장을 재구성하여 원문의 비교 구조와 반복된 명사 표현을 보존했습니다. 또한 중복된 서술어를 제거하고 마스틱 관련 주석의 식물학적 지시 대상을 바로잡았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:26Z'
+  output_hash: 275cac5deb3e42cda49b3097f1569d3d097646b8158d580b4fa629062db6ba77
+  usage:
+    completion_tokens: 951
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 315
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 150
+      engine_ttlt_ms: 7828
+      pre_inference_ms: 107
+      service_tbt_ms: 8
+      service_ttft_ms: 587
+      service_ttlt_ms: 8286
+      total_duration_ms: 8209
+      user_visible_ttft_ms: 480
+    prompt_tokens: 2589
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3540
+  applied_revision: true
+  auto_apply_blocked_errors: []

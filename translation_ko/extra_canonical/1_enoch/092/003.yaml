@@ -110,4 +110,65 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 동사 ይትነሣእ는 ‘깨어나다’보다 ‘일어나다’로 옮겨야 원문의 ‘일어남’ 이미지와 뒤따르는 동일 동사의 반복을 더 정확히 보존합니다. 또한 둘째 동사에 대응하는 각주 d는 본문과 실제로 구별되는 대안을 제시하도록 조정할 필요가 있습니다.
+  naturalness: ‘의의 길로 걸을’은 이해되지만, 현대 한국어에서는 ‘의의 길을 걸을’이 더 자연스럽습니다. ‘선함과 영원한 자비 가운데’는 원문의 두 추상 명사에 의해 규정되는 상태를 자연스럽게 표현합니다.
+  terminology: ‘의인’은 단수의 ጻድቅ에 적절합니다. ሣህል에는 특정한 언약·신학 용례를 강하게 연상시킬 수 있는 ‘인자하심’보다 넓고 현대적인 ‘자비’를 사용하고, 각주에서 긍휼·은총·온유 등의 의미 가능성을 열어 둡니다.
+  issues:
+  - severity: medium
+    issue: 첫 번째 ይትነሣእ를 ‘깨어날 것입니다’로 번역함
+    rationale: ‘잠에서 깨어나다’는 자연스럽지만, 원문은 ‘일어나다/일으켜지다’ 계열 동사를 반복합니다. ‘일어나다’로 옮기면 수면 이미지와 반복을 보존하면서도 부활인지 비유적 각성인지 단정하지 않습니다.
+  - severity: medium
+    issue: 각주 d가 본문 ‘그는 일어나’와 실질적으로 같은 표현을 대안으로 제시함
+    rationale: 각주는 실제 대안 번역을 제시해야 합니다. 독립된 유한절인 ‘그는 일어날 것입니다’로 제시하면 원문의 반복 동사를 문장 구조상 더 명시적으로 드러내는 대안이 됩니다.
+  - severity: low
+    issue: ‘의의 길로 걸을’의 조사 선택
+    rationale: ‘길을 걷다’가 현대 표준어에서 더 자연스럽고, 윤리적 길의 은유도 그대로 유지합니다.
+  revised_text: 의인은 잠에서 일어날 것입니다[a]. 그는 일어나 의의 길을 걸을 것이며[c][d], 그의 모든 길과 그의 행로는 선함과 영원한 자비 가운데 있을 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 이 표현은 문자적인 잠을 가리킬 수도 있고, 새 생명으로 깨어나는 비유일 수도 있습니다. 이 절 자체는 어느 한 해석을 단정하지 않습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 여기의 말은 ‘영원한 긍휼’, ‘영원한 은총’ 또는 ‘영원한 온유’로도 옮길 수 있습니다. 원어는 자비, 온유, 호의의 범위를 포괄할 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘의의 길들로 걸을’로도 옮길 수 있습니다.
+    reason: previous_rendering
+  - marker: d
+    text: 또는 ‘그는 일어날 것입니다’로도 옮길 수 있습니다.
+    reason: previous_rendering
+  revision_rationale: 원문의 동일한 ‘일어나다’ 동사가 ‘잠에서’ 뒤와 이동 동사 앞에서 반복되는 점을 한국어 본문에 보존했습니다. 문장 연결은 한국어의 자연스러운 문장 분리와 연결 어미를 사용하되, 원문이 부활을 명시하지 않는 모호성은 유지했습니다. 마지막 자비의 어휘는 교단적·관습적 신학 용례로 좁히지 않고 넓은 의미의 ‘자비’로 옮겼으며, 가능한 의미 범위는 각주에 남겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:21Z'
+  output_hash: 430a3177ac6bd4873b377a0f8d671879ed2ed88de1c4d19d2cc4ce23e7657c9e
+  usage:
+    completion_tokens: 1415
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 11273
+      pre_inference_ms: 111
+      service_tbt_ms: 8
+      service_ttft_ms: 406
+      service_ttlt_ms: 11543
+      total_duration_ms: 11437
+      user_visible_ttft_ms: 296
+    prompt_tokens: 3713
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5128
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

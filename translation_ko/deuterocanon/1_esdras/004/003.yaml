@@ -34,7 +34,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들은 먹고 마셨습니다. 배부른 뒤에 떠났습니다. 그런데 다리오 왕은 침실로 들어가 잠들었고, 깨어났습니다.[a]
+  text: 그들은 먹고 마셨습니다. 배부른[a] 뒤에 떠났습니다. 그런데 다리오 왕은 침실로 들어가 잠들었고, 깨어났습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -96,4 +96,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들은 먹고 마셨습니다. 배부른 뒤에 떠났습니다. 그런데 다리오 왕은 침실로 들어가 잠들었고, 깨어났습니다.[a]
+  to: 그들은 먹고 마셨습니다. 배부른[a] 뒤에 떠났습니다. 그런데 다리오 왕은 침실로 들어가 잠들었고, 깨어났습니다.
+  rationale: 번역 본문 자체는 유지하고, ἐμπλησθέντες에 대한 각주가 올바른 번역어를 직접 수식하도록 표지 위치만 ‘배부른’ 뒤로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:03:49Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 본문 번역은 그리스어의 사건 순서와 의미를 충실히 반영합니다. 다만 ἐμπλησθέντες에 관한 각주 표지가 현재 문장 끝에 있어, 바로 앞의 ‘깨어났습니다’에 걸리는 것처럼 보입니다.
+  naturalness: ‘그들은 먹고 마셨습니다. 배부른 뒤에 떠났습니다. 그런데 다리오 왕은 침실로 들어가 잠들었고, 깨어났습니다.’는 현대 표준 한국어 합쇼체로 자연스럽습니다. 다만 각주 표지는 해당 표현 바로 뒤에 두는 것이 자연스럽고 명료합니다.
+  terminology: ‘다리오 왕’, ‘침실’, ‘잠들었고, 깨어났습니다’는 적절합니다. ‘배부른’은 ἐμπλησθέντες의 포만·충족 상태를 무리 없이 옮깁니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지 [a]의 위치가 잘못되어 있습니다.
+    rationale: 각주는 ἐμπλησθέντες(‘배부른’)의 어휘적 뉘앙스를 설명하지만, 현재 표지는 ‘깨어났습니다’ 뒤에 놓여 있어 연결 대상이 불분명하고 사실상 잘못 연결됩니다. ‘배부른’ 직후로 옮겨야 합니다.
+  revised_text: 그들은 먹고 마셨습니다. 배부른[a] 뒤에 떠났습니다. 그런데 다리오 왕은 침실로 들어가 잠들었고, 깨어났습니다.
+  revised_footnotes:
+  - marker: a
+    text: ἐμπλησθέντες는 단순히 ‘배부르다’는 뜻뿐 아니라 식사 후 충분히 만족한 상태를 강조할 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 번역 본문 자체는 유지하고, ἐμπλησθέντες에 대한 각주가 올바른 번역어를 직접 수식하도록 표지 위치만 ‘배부른’ 뒤로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:03:49Z'
+  output_hash: 180415bd782e88475d12e30ebedf6292573cf84da4f211330640149a07d5a3fd
+  usage:
+    completion_tokens: 580
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 92
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 4721
+      pre_inference_ms: 94
+      service_tbt_ms: 8
+      service_ttft_ms: 366
+      service_ttlt_ms: 4952
+      total_duration_ms: 4868
+      user_visible_ttft_ms: 272
+    prompt_tokens: 1947
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2527
+  applied_revision: true
+  auto_apply_blocked_errors: []

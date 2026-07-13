@@ -33,14 +33,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 나는 그를 보았습니다. 그리고 바르타쿠스의 딸이요, 훌륭한 바르타쿠스의 첩인 아파메가 왕의 오른편에 앉아 있는 것을 보았습니다.[a][b]
+  text: 나는 그를 보았고, 훌륭한[b] 바르타쿠스의 딸이며 왕의 첩인 아파메[a]가 왕의 오른편에 앉아 있는 것도 보았습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Ἀπάμην은 영어처럼 Apame로도 옮길 수 있는 이름입니다.
+    text: Ἀπάμην은 ‘아파마’로도 음역할 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: τοῦ θαυμαστοῦ는 문자적으로는 ‘놀라운/존경할 만한/훌륭한’이라는 뜻입니다.
+    text: τοῦ θαυμαστοῦ는 문자적으로 ‘놀라운’, ‘존경할 만한’, 또는 ‘훌륭한’이라는 뜻입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: ἐθεώρουν
@@ -102,4 +102,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나는 그를 보았습니다. 그리고 바르타쿠스의 딸이요, 훌륭한 바르타쿠스의 첩인 아파메가 왕의 오른편에 앉아 있는 것을 보았습니다.[a][b]
+  to: 나는 그를 보았고, 훌륭한[b] 바르타쿠스의 딸이며 왕의 첩인 아파메[a]가 왕의 오른편에 앉아 있는 것도 보았습니다.
+  rationale: 수식 관계를 재구성하여 아파메가 바르타쿠스의 딸이면서 왕의 첩이라는 원문의 정보를 정확히 보존했습니다. ‘왕의 오른편에 앉아 있는’은 아파메의 상태를 수식하도록 유지했습니다. 각주는 올바른 단어에 배치하고, 음역 대안을 실제 한국어 표기로 교정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:03:55Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 원문에서 ‘훌륭한/존경할 만한’(τοῦ θαυμαστοῦ)은 바르타쿠스를 수식하고, ‘왕의 첩’(τὴν παλλακὴν τοῦ βασιλέως)은 아파메를 수식합니다. 초안은 ‘훌륭한 바르타쿠스의 첩’으로 연결되어 아파메를 바르타쿠스의 첩으로 오해하게 합니다.
+  naturalness: 초안의 병렬 구조는 수식 범위가 불명확합니다. 두 인물의 관찰과 아파메의 착석을 분명히 나누어 서술하면 현대 표준 한국어 합쇼체로 자연스럽고 정확합니다.
+  terminology: ‘첩’은 παλλακή의 역사적 사회관계를 직접적으로 반영하는 적절한 표현입니다. ‘아파메’와 ‘바르타쿠스’도 무난합니다. 다만 각주 a는 본문 표기와 같은 ‘Apame’를 대안으로 제시하여 실질적인 대안이 되지 않으므로 ‘아파마’로 바로잡아야 합니다.
+  issues:
+  - severity: high
+    issue: ‘왕의 첩’의 소속 대상이 바르타쿠스로 잘못 연결됨
+    rationale: 원문 τὴν παλλακὴν τοῦ βασιλέως는 아파메를 ‘왕의 첩’으로 규정합니다. 초안의 ‘훌륭한 바르타쿠스의 첩인 아파메’는 이를 바르타쿠스의 첩으로 읽히게 합니다.
+  - severity: medium
+    issue: 각주 a가 유효한 한국어 음역 대안을 제시하지 못함
+    rationale: 본문의 ‘아파메’는 이미 Apame에 해당하므로, ‘Apame로도’는 한국어 독자에게 대안 표기가 아닙니다. 대안 음역인 ‘아파마’를 제시하는 것이 적절합니다.
+  - severity: low
+    issue: 각주 표지의 선행어 연결이 불분명함
+    rationale: 각주 b는 바르타쿠스를 수식하는 형용사에, 각주 a는 아파메 이름에 직접 붙여야 각주의 대상이 명료합니다.
+  revised_text: 나는 그를 보았고, 훌륭한[b] 바르타쿠스의 딸이며 왕의 첩인 아파메[a]가 왕의 오른편에 앉아 있는 것도 보았습니다.
+  revised_footnotes:
+  - marker: a
+    text: Ἀπάμην은 ‘아파마’로도 음역할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: τοῦ θαυμαστοῦ는 문자적으로 ‘놀라운’, ‘존경할 만한’, 또는 ‘훌륭한’이라는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 수식 관계를 재구성하여 아파메가 바르타쿠스의 딸이면서 왕의 첩이라는 원문의 정보를 정확히 보존했습니다. ‘왕의 오른편에 앉아 있는’은 아파메의 상태를 수식하도록 유지했습니다. 각주는 올바른 단어에 배치하고, 음역 대안을 실제 한국어 표기로 교정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:03:55Z'
+  output_hash: 24d1f2aeeb2b510c6e22095c10858dc704c158d694f330a9459b296badfaefd8
+  usage:
+    completion_tokens: 1395
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 609
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 10932
+      pre_inference_ms: 125
+      service_tbt_ms: 8
+      service_ttft_ms: 421
+      service_ttlt_ms: 11208
+      total_duration_ms: 11096
+      user_visible_ttft_ms: 297
+    prompt_tokens: 2242
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3637
+  applied_revision: true
+  auto_apply_blocked_errors: []

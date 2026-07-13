@@ -33,18 +33,18 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 이제 나는 이 비밀을 압니다. 곧 많은 죄인들이 의의 말씀을 바꾸어 그것을 왜곡하고[a] 악한 말을 하며 거짓말을 하고, 또 그들은 큰 꾸며낸 것들을 만들며[c][b] 자기들의 말에 관한 책들을 쓸 것입니다.
+  text: 이제 나는 이 비밀을 압니다. 곧 많은 죄인들이 의의 말씀을 바꾸고[a] 곁길로 벗어나며[b], 악한 말을 하고 거짓말을 하며, 큰 날조를 꾸미고[c] 자기들의 말에 관한 책들을 쓸 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 원문은 ‘의의 말씀’을 죄인들이 바꾸어 왜곡하는 능동형 표현입니다.
+    text: 원문의 동사는 능동형으로, 많은 죄인들이 ‘의의 말씀’을 바꾸거나 변개한다는 뜻입니다.
     reason: textual_variant
   - marker: b
-    text: ‘큰 꾸며낸 것들’은 원문의 ‘만들다/형성하다’ 계열 동사를 문맥상 부정적으로 살린 표현입니다.
-    reason: lexical_alternative
-  - marker: c
-    text: 또는 ‘큰 발명/구성물들을 만들며’로도 옮길 수 있습니다.
+    text: ‘곁길로 벗어나다’로 옮긴 동사는 본문이 어렵거나 손상되었을 가능성이 있어, ‘빗나가다’ 또는 ‘벗어나다’로도 이해될 수 있습니다.
     reason: alternative_reading
+  - marker: c
+    text: 또는 ‘큰 발명품들’ 또는 ‘큰 구성물들을 만들어 내고’로 옮길 수 있습니다. 그러나 거짓말의 문맥에서는 ‘날조’가 더 잘 어울립니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: አአምር
   english_pob_choice: I know
@@ -118,4 +118,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이제 나는 이 비밀을 압니다. 곧 많은 죄인들이 의의 말씀을 바꾸어 그것을 왜곡하고[a] 악한 말을 하며 거짓말을 하고, 또 그들은 큰 꾸며낸 것들을 만들며[c][b] 자기들의 말에 관한 책들을 쓸 것입니다.
+  to: 이제 나는 이 비밀을 압니다. 곧 많은 죄인들이 의의 말씀을 바꾸고[a] 곁길로 벗어나며[b], 악한 말을 하고 거짓말을 하며, 큰 날조를 꾸미고[c] 자기들의 말에 관한 책들을 쓸 것입니다.
+  rationale: 원문의 동사 배열을 따라 ‘의의 말씀을 바꾸다’와 ‘곁길로 벗어나다’를 구별했습니다. 이로써 초안과 영어 POB 본문에 들어간 ‘왜곡하다’의 중복·목적어 해석을 피하면서, 둘째 동사의 본문상 불확실성은 각주로 보존했습니다. 또한 날조를 뜻하는 구절을 자연스러운 현대 한국어로 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:16:13Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 ይመይጡ를 죄인들이 ‘의의 말씀을 바꾸는’ 능동 행위로 옮긴 점은 적절합니다. 그러나 이어지는 የዐልዉ(문맥상 ‘곁길로 벗어나다/빗나가다’)를 ‘그것을 왜곡하고’로 흡수하여, 원문의 별도 동작과 ‘의의 말씀’의 직접 목적 관계를 바꾸었습니다. 원문과 영어 POB의 주석상 불확실성도 별도 각주로 보존하는 편이 안전합니다.
+  naturalness: ‘큰 꾸며낸 것들을 만들며’는 한국어에서 부자연스럽습니다. 문맥상 부정적 의미를 유지하면서 ‘큰 날조를 꾸미고’로 옮기면 현대 한국어 합쇼체 문장으로 더 자연스럽습니다. 병렬 동사는 ‘-고/-며’로 정리했습니다.
+  terminology: ‘비밀’, ‘의의 말씀’, ‘죄인들’은 묵시문학 문맥과 기존 용어 선택에 부합합니다. ‘자기들의 말에 관한 책들’은 원문의 재귀적 수식을 보존하며, 책 쓰기 일반을 정죄하는 의미를 피합니다.
+  issues:
+  - severity: high
+    issue: የዐልዉ의 독립된 동작이 누락되고 ‘그것을 왜곡하고’로 대체됨
+    rationale: 원문은 ‘의의 말씀을 바꾸다’ 다음에 별도의 동사를 둡니다. 영어 POB 감사 기록도 이를 ‘turn aside’로 다루며, ‘왜곡하다’는 앞 동사에 중복적으로 덧붙인 해석입니다. 한국어에서는 ‘곁길로 벗어나다’로 분리하고 불확실성을 각주 처리해야 합니다.
+  - severity: medium
+    issue: ‘큰 꾸며낸 것들을 만들며’가 어색하고 직역투임
+    rationale: ‘꾸며낸 것’ 자체에 이미 날조의 뜻이 있으므로 ‘만들다’와 결합하면 부자연스럽습니다. 거짓말과 악한 말의 문맥을 반영하는 ‘큰 날조를 꾸미다’가 자연스럽고 의미도 유지합니다.
+  - severity: low
+    issue: 각주 a의 설명이 불필요하게 ‘왜곡’까지 원문이 직접 표현하는 듯 보이게 함
+    rationale: 능동형이라는 점은 중요하지만, 해당 동사의 핵심은 ‘바꾸다/변개하다’입니다. 다음 동사의 불확실성과 분리하여 설명해야 원문의 구문을 더 정확히 반영합니다.
+  revised_text: 이제 나는 이 비밀을 압니다. 곧 많은 죄인들이 의의 말씀을 바꾸고[a] 곁길로 벗어나며[b], 악한 말을 하고 거짓말을 하며, 큰 날조를 꾸미고[c] 자기들의 말에 관한 책들을 쓸 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 원문의 동사는 능동형으로, 많은 죄인들이 ‘의의 말씀’을 바꾸거나 변개한다는 뜻입니다.
+    reason: textual_variant
+  - marker: b
+    text: ‘곁길로 벗어나다’로 옮긴 동사는 본문이 어렵거나 손상되었을 가능성이 있어, ‘빗나가다’ 또는 ‘벗어나다’로도 이해될 수 있습니다.
+    reason: alternative_reading
+  - marker: c
+    text: 또는 ‘큰 발명품들’ 또는 ‘큰 구성물들을 만들어 내고’로 옮길 수 있습니다. 그러나 거짓말의 문맥에서는 ‘날조’가 더 잘 어울립니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 동사 배열을 따라 ‘의의 말씀을 바꾸다’와 ‘곁길로 벗어나다’를 구별했습니다. 이로써 초안과 영어 POB 본문에 들어간 ‘왜곡하다’의 중복·목적어 해석을 피하면서, 둘째 동사의 본문상 불확실성은 각주로 보존했습니다. 또한 날조를 뜻하는 구절을 자연스러운 현대 한국어로 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:13Z'
+  output_hash: ca616ab34fa87d2e04a17e0c5b812b20d715dca7735fa644aec7207f75436497
+  usage:
+    completion_tokens: 1490
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 158
+      engine_ttlt_ms: 13006
+      pre_inference_ms: 81
+      service_tbt_ms: 9
+      service_ttft_ms: 336
+      service_ttlt_ms: 13129
+      total_duration_ms: 13101
+      user_visible_ttft_ms: 255
+    prompt_tokens: 4261
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5751
+  applied_revision: true
+  auto_apply_blocked_errors: []

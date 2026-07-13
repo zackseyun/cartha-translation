@@ -30,8 +30,12 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 함은 자기 아버지 노아의 벌거벗은 모습을 보고[a] 밖으로 나가 자기 두 형제에게 밖에서 알렸습니다. 셈은 옷을 가져다가 자기와 야벳이 그 옷을 어깨에 메었습니다.
+  text: 함은 자기 아버지 노아가 벌거벗은 것을 보고[a], 밖으로 나가 밖에 있는 두 형제에게 알렸습니다. 셈은 옷을 가져왔고, 셈과 야벳은 그 옷을 어깨에 메었습니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 여기서는 자료의 행 분절이 이례적입니다. 셈과 야벳의 행동은 8절로 표기된 행에서 시작하고, 뒤로 물러가 아버지의 수치를 덮는 행동은 18절로 표기된 행에서 이어집니다. 번역은 이를 연속된 이야기 절로 정리합니다.
+    reason: 제공된 영어 POB의 분절 주석에 대응하며, 이 절에 다음 절의 덮는 행동이 포함되지 않음을 독자가 이해하도록 돕습니다.
 lexical_decisions:
 - source_word: “saw Noah his father naked”
   english_pob_choice: And Ham saw Noah his father naked
@@ -84,4 +88,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 함은 자기 아버지 노아의 벌거벗은 모습을 보고[a] 밖으로 나가 자기 두 형제에게 밖에서 알렸습니다. 셈은 옷을 가져다가 자기와 야벳이 그 옷을 어깨에 메었습니다.
+  to: 함은 자기 아버지 노아가 벌거벗은 것을 보고[a], 밖으로 나가 밖에 있는 두 형제에게 알렸습니다. 셈은 옷을 가져왔고, 셈과 야벳은 그 옷을 어깨에 메었습니다.
+  rationale: 원문의 절 범위를 보존하여 함의 목격과 보고, 셈의 옷 취함 및 셈과 야벳이 옷을 어깨에 메는 데까지만 번역했습니다. ‘밖에 있는 두 형제’와 ‘셈과 야벳’으로 문장 관계를 분명히 하고 현대 한국어 문장을 자연스럽게 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:16:08Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft retains all material present in the supplied Ge'ez text and correctly excludes the backward covering action assigned to the following verse. However, the Korean rendering of the two brothers as being told “밖에서” is syntactically awkward and does not clearly convey that they were outside. The subject relation in the final sentence is also needlessly ambiguous.
+  naturalness: “밖으로 나가 자기 두 형제에게 밖에서 알렸습니다” is unnatural Korean because “밖에서” is left dangling after the indirect object. “셈은 옷을 가져다가 자기와 야벳이” can momentarily make “자기” unclear. A direct coordinated subject is clearer and more idiomatic.
+  terminology: “벌거벗은 모습,” “옷,” and the names 함, 노아, 셈, 야벳 are appropriate. “어깨에 메었습니다” appropriately renders placing the garment on their shoulders.
+  issues:
+  - severity: medium
+    issue: ‘밖에서 알렸습니다’의 수식 관계가 부자연스럽습니다.
+    rationale: 원문의 ‘went out … outside’는 함이 밖으로 나가 밖에 있는 두 형제에게 말한 장면을 나타냅니다. 현 번역은 ‘밖에서’가 ‘알렸다’를 수식하는 듯하여 두 형제가 밖에 있었다는 정보를 명료하게 전달하지 못합니다.
+  - severity: low
+    issue: ‘자기와 야벳’의 지시 대상이 잠시 불명확합니다.
+    rationale: 셈이 이미 주어인 문맥상 뜻은 파악되지만, 한국어에서는 ‘셈과 야벳’으로 명시하는 편이 원문의 공동 행위를 자연스럽고 분명하게 나타냅니다.
+  revised_text: 함은 자기 아버지 노아가 벌거벗은 것을 보고[a], 밖으로 나가 밖에 있는 두 형제에게 알렸습니다. 셈은 옷을 가져왔고, 셈과 야벳은 그 옷을 어깨에 메었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 여기서는 자료의 행 분절이 이례적입니다. 셈과 야벳의 행동은 8절로 표기된 행에서 시작하고, 뒤로 물러가 아버지의 수치를 덮는 행동은 18절로 표기된 행에서 이어집니다. 번역은 이를 연속된 이야기 절로 정리합니다.
+    reason: 제공된 영어 POB의 분절 주석에 대응하며, 이 절에 다음 절의 덮는 행동이 포함되지 않음을 독자가 이해하도록 돕습니다.
+  revision_rationale: 원문의 절 범위를 보존하여 함의 목격과 보고, 셈의 옷 취함 및 셈과 야벳이 옷을 어깨에 메는 데까지만 번역했습니다. ‘밖에 있는 두 형제’와 ‘셈과 야벳’으로 문장 관계를 분명히 하고 현대 한국어 문장을 자연스럽게 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:08Z'
+  output_hash: 47b9f2a9ab068c528c7cd389ae70ff217e3eebd40706ea9d027732db7adf3aeb
+  usage:
+    completion_tokens: 1091
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 402
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 153
+      engine_ttlt_ms: 9058
+      pre_inference_ms: 142
+      service_tbt_ms: 8
+      service_ttft_ms: 390
+      service_ttlt_ms: 9316
+      total_duration_ms: 9200
+      user_visible_ttft_ms: 248
+    prompt_tokens: 2184
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3275
+  applied_revision: true
+  auto_apply_blocked_errors: []

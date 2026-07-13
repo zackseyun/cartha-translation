@@ -126,4 +126,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 첫 절의 ወአኀዘ(전사본의 ወአንዘ는 OCR/전사 문제 가능) + 미완료형은 ‘내려가기 시작했다’라는 시작상을 나타내므로 ‘계속 내려가서’는 이를 충분히 반영하지 못합니다. 또한 እስክነ는 ‘마침내’보다 ‘~할 때까지’로 옮기는 것이 정확합니다. መስቀር은 난해한 명사이나, 제공된 게으즈어 본문은 ‘그것/그 심연이 땅 안에 있었다’라는 구문에 가깝고, 영어 본문의 ‘that vessel rested upon the earth’는 이에 맞지 않습니다. 번역은 원문 우선으로 난해성을 각주에 남기되 본문은 ‘심연’으로 옮깁니다.
+  naturalness: 합쇼체 서술로 자연스럽게 다듬었습니다. ‘그 물건’은 한국어에서 지시 대상과 성격이 지나치게 불명확하고 문체상 부자연스러우므로 사용하지 않았습니다. ‘어둠이 걷히고’와 ‘빛이 생겼습니다’는 자연스럽고 본문의 전환을 잘 살립니다.
+  terminology: ‘심연’은 መስቀር의 확정되지 않은 의미를 단정하지 않으면서도 문맥상 깊은 곳을 나타내는 적절한 표제어입니다. 가능한 ‘구렁/구덩이/깊은 곳’ 등의 대안을 각주에 명시했습니다. 각주 표지는 실제 난해어인 ‘심연’에 붙여야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘계속 내려가서’가 시작상과 한계절을 바꿉니다.
+    rationale: ‘내려가기 시작하여 … 때까지’가 ወአኀዘ + ይረድ 및 እስክነ의 의미를 보존합니다.
+  - severity: high
+    issue: ‘그 물건이 땅 위에 머물렀고’는 난해어 መስቀር과 전치사구 ውስተ ምድር의 의미를 충실히 반영하지 못합니다.
+    rationale: 제공된 원문은 ‘그 심연이 땅 안에 있었다’에 더 가깝습니다. 영어 감사본의 ‘vessel rested upon’은 원문 및 그 자체의 대안 각주와도 충돌하므로 따르지 않았습니다.
+  - severity: medium
+    issue: 각주 a의 표지가 ‘땅이 드러났습니다’ 뒤에 놓여 있습니다.
+    rationale: 각주 내용은 መስቀር의 어휘적 불확실성에 관한 것이므로 ‘심연’에 직접 연결해야 합니다.
+  - severity: low
+    issue: 각주 d의 ‘그들 가운데로’는 선행하는 열린 깊은 곳들을 가리키는 ‘그들 속으로’보다 약합니다.
+    rationale: 대안 번역으로는 가능하나, 본문 문맥을 더 분명히 하는 ‘그들 안으로’를 제시하는 편이 낫습니다.
+  revised_text: 그리고 물이 그들 속으로 내려가기 시작하여 땅이 드러날 때까지 내려갔습니다. 그 심연[a]은 땅 안에 있었고, 어둠이 걷히고[b], 빛이 생겼습니다.
+  revised_footnotes:
+  - marker: a
+    text: 게으즈어의 이 명사(መስቀር)는 뜻이 확실하지 않습니다. ‘깊은 곳’, ‘구렁’, ‘구덩이’로도 옮길 수 있습니다. 또는 ‘그 심연이 땅 안에 있었다’로 이해할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 빛이 생기는 이 표현은 창조 또는 회복을 떠올리게 하지만, 본문은 익숙한 창세기의 정형 문구를 그대로 사용하지 않습니다.
+    reason: cross_reference
+  - marker: c
+    text: 또는 ‘물이 그들 안으로 내려가기 시작했다’로 옮길 수 있습니다.
+    reason: previous_rendering
+  revision_rationale: 원문의 시작상, ‘~할 때까지’라는 한계, 그리고 መስቀር을 포함한 난해한 중간 절을 보존하도록 수정했습니다. 영어 감사본의 ‘vessel rested’는 제공된 게으즈어 구문 및 영어 각주 c와 불일치하므로 원문에 우선권을 두었습니다. 중복되거나 잘못 연결된 각주를 정리하고, 난해어의 대안은 해당 단어에 직접 연결했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:06Z'
+  output_hash: bdf1bac9b27d6555f0ec3ca79f8815b894bea977c8580ed7f825621b073605db
+  usage:
+    completion_tokens: 1618
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 504
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 204
+      engine_ttlt_ms: 14017
+      pre_inference_ms: 139
+      service_tbt_ms: 9
+      service_ttft_ms: 416
+      service_ttlt_ms: 14222
+      total_duration_ms: 14091
+      user_visible_ttft_ms: 276
+    prompt_tokens: 3520
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5138
+  applied_revision: false
+  auto_apply_blocked_errors: []

@@ -112,4 +112,63 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: ‘큰 심판이 이를 때까지’는 대체로 뜻이 통하지만, 원문의 시간 표현은 ‘큰 심판 때까지’입니다. 또한 원문의 보복 동사는 행위 주체를 명시하지 않은 단수 동사로 이해될 수 있으므로, ‘복수가 이루어지고’라는 비인칭 수동 표현보다 한국어의 무표지 주어를 사용해 이를 보존하는 편이 낫습니다. 마지막 ዝኩ는 시간 부사 ‘그때’가 아니라 앞의 나무를 가리키는 지시사이므로 ‘그 나무’로 옮겨야 합니다.
+  naturalness: 수정문은 현대 표준어 합쇼체를 유지하며, 긴 문장을 원문의 종속 관계에 맞추어 자연스럽게 구성합니다. ‘모든 것에 대한 복수’보다 ‘모든 것에게 복수하고’가 원문의 넓은 목적어를 더 직접적으로 반영합니다.
+  terminology: ‘향기로운 나무’, ‘육체’, ‘권한’, ‘큰 심판’, ‘의인들’, ‘겸손한 자들’은 적절합니다. ‘그 나무’는 지시사의 선행사를 명확히 하면서도 원문의 지시성을 보존합니다.
+  issues:
+  - severity: medium
+    issue: 보복 절이 비인칭 수동으로 번역되어 원문의 단수 동사와 행위성을 약화합니다.
+    rationale: 원문과 영어 POB의 어휘 검토는 암시된 단수 주어의 보복 행위를 허용합니다. 한국어에서는 주어를 억지로 특정하지 않고 생략하여 이 모호성을 보존할 수 있습니다.
+  - severity: medium
+    issue: 마지막 절의 ‘그 뒤에는 그것’ 및 각주 d는 ዝኩ를 시간 부사처럼 처리합니다.
+    rationale: ዝኩ는 앞서 언급된 나무를 가리키는 지시사입니다. ‘그 나무는’으로 고치고, 근거 없는 ‘그때에는’ 대안을 제거해야 합니다.
+  - severity: low
+    issue: 각주 c의 ‘또는 겸손한 자들’은 본문과 같은 표현이라 실질적인 대안이 아닙니다.
+    rationale: 의미 있는 어휘 대안인 ‘낮은 자들’을 제시하는 것이 낫습니다.
+  revised_text: 그리고 이 향기로운 나무에는 큰 심판 때까지 어떤 육체도 손댈 권한이 없습니다. 그때에 모든 것에게 복수하고 그 일을 영원히 완결할 것이며[b], 그 나무는 의인들과 겸손한 자들에게 주어질 것입니다.
+  revised_footnotes:
+  - marker: b
+    text: 이 절의 심판 뒤 절은 해석이 어렵습니다. 보복하고 완결하는 주어는 원문에 명시되어 있지 않으며, ‘모든 것’과 ‘그 일’의 정확한 범위도 열려 있습니다.
+    reason: textual_variant
+  - marker: a
+    text: 직역하면 ‘어떤 육체도 권한이 없다’는 뜻입니다. 여기서 ‘육체’는 물질적 살 자체가 아니라 죽을 수밖에 없는 인간을 가리킵니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘낮은 자들’입니다.
+    reason: previous_rendering
+  revision_rationale: 원문의 시간 표현과 암시된 주어를 더 충실히 반영하도록 보복·완결 절을 수정했습니다. 주어를 하나님 등으로 특정하지 않고 한국어의 주어 생략을 통해 원문의 모호성을 보존했습니다. 마지막 지시사를 앞의 나무로 명확히 연결했으며, 이에 맞지 않는 각주 d를 제거했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:29Z'
+  output_hash: 5a20c03792ef225a46cd731bdfac6dee2bdc0e66196c45590466c4bf933b8a29
+  usage:
+    completion_tokens: 1330
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 462
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 223
+      engine_ttlt_ms: 11333
+      pre_inference_ms: 101
+      service_tbt_ms: 8
+      service_ttft_ms: 662
+      service_ttlt_ms: 11768
+      total_duration_ms: 11674
+      user_visible_ttft_ms: 560
+    prompt_tokens: 3999
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5329
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [c]

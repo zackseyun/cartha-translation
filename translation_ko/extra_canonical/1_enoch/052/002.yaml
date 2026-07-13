@@ -27,14 +27,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: '그곳에서 내 눈은 하늘의 숨은 모든 것들, 곧 장차 있을 것을 보았습니다: 철의 산 하나와 구리의 산 하나와 은의 산 하나와 금의 산 하나와 부드러운 금속의 산 하나와 납의 산 하나였습니다.[a][b]'
+  text: 그곳에서 내 눈은 하늘의 숨은 모든 것, 곧 장차 있을 모든 것[a]을 보았습니다. 곧 철의 산 하나와 구리의 산 하나와 은의 산 하나와 금의 산 하나와 부드러운 금속의 산 하나[b]와 납의 산 하나를 보았습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 이 구절의 ‘장차 있을 것’은 더 정태적으로 ‘거기에 있던 것’ 또는 ‘하늘에 존재하는 것’으로도 이해될 수 있습니다.
+    text: ‘장차 있을’로 옮긴 구절은 난해합니다. 더 정태적으로 ‘거기에 있던’ 또는 ‘하늘에 존재하는’ 것으로 이해할 수도 있습니다.
     reason: alternative_reading
   - marker: b
-    text: 다섯 번째 금속어는 불확실합니다. 더 구체적으로는 주석이나 전기금(electrum)으로 이해할 수도 있습니다.
+    text: 다섯 번째 금속어는 불확실합니다. 부드럽거나 혼합된 금속을 가리킬 수 있으며, 더 구체적으로는 주석 또는 일렉트럼으로 이해하는 견해도 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: በህየ
@@ -99,4 +99,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: '그곳에서 내 눈은 하늘의 숨은 모든 것들, 곧 장차 있을 것을 보았습니다: 철의 산 하나와 구리의 산 하나와 은의 산 하나와 금의 산 하나와 부드러운 금속의 산 하나와 납의 산 하나였습니다.[a][b]'
+  to: 그곳에서 내 눈은 하늘의 숨은 모든 것, 곧 장차 있을 모든 것[a]을 보았습니다. 곧 철의 산 하나와 구리의 산 하나와 은의 산 하나와 금의 산 하나와 부드러운 금속의 산 하나[b]와 납의 산 하나를 보았습니다.
+  rationale: 원문의 ‘모든 숨은 것’과 그 미래 지향적 한정을 한국어 문법에 맞게 결합하고, 산들의 반복 목록을 환시의 직접 목적어로 자연스럽게 정리했습니다. 미래 표현과 다섯째 금속의 어휘적 불확실성은 해소하지 않고 각주로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:16:31Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문은 ‘내 눈’과 ‘하늘의 숨은 모든 것’을 명시하며, 이어지는 산들의 목록은 그 환시의 내용입니다. 초안은 핵심 어휘와 금속 목록을 대체로 충실히 보존했으나, ‘하늘의 숨은 모든 것들, 곧 장차 있을 것을’은 원문의 관계를 한국어에서 부자연스럽고 다소 불명확하게 만듭니다. ‘장차 있을’의 불확실한 미래 지향성은 각주와 함께 유지해야 합니다.
+  naturalness: '초안의 콜론 뒤에 ‘…보았습니다: …였습니다’라고 이어지는 구조는 현대 한국어 문장으로 어색합니다. 환시의 대상 목록을 ‘곧’으로 풀어 제시하고, 마지막에 동사를 한 번만 두는 편이 자연스럽습니다. ‘내 눈은’은 환시 문체로 수용 가능하므로 유지했습니다.'
+  terminology: ‘구리’, ‘은’, ‘금’, ‘납’은 적절합니다. ነጠብጣብ은 확정하기 어려우므로 ‘부드러운 금속’을 유지하고, 각주에서는 주석 및 일렉트럼이라는 가능한 보다 구체적인 식별을 불확실한 대안으로 제시합니다. ‘전기금’보다 ‘일렉트럼’이 현대 독자에게 더 투명합니다.
+  issues:
+  - severity: medium
+    issue: 미래 지시 수식의 문법적 연결이 불명확함
+    rationale: ‘하늘의 숨은 모든 것들, 곧 장차 있을 것’은 복수 명사와 단수 ‘것’의 호응이 어색하고, ‘곧’이 원문의 관계절을 단순 동격처럼 보이게 합니다. ‘하늘의 숨은 모든 것, 곧 장차 있을 모든 것’으로 고쳐 미래 지시와 전체 범위를 명료하게 합니다.
+  - severity: medium
+    issue: 목록 제시 뒤의 서술 구조가 부자연스러움
+    rationale: '‘보았습니다: …였습니다’는 목적어 목록과 계사 종결이 충돌합니다. 목록을 보았다는 하나의 서술로 마무리해야 합니다.'
+  - severity: low
+    issue: 다섯째 금속 각주의 용어 선택
+    rationale: ‘전기금’은 현대 표준 한국어에서 널리 통용되는 표기가 아니므로, 음역 ‘일렉트럼’으로 바꾸고 혼합 금속 가능성을 함께 밝혀 어휘 불확실성을 보존합니다.
+  revised_text: 그곳에서 내 눈은 하늘의 숨은 모든 것, 곧 장차 있을 모든 것[a]을 보았습니다. 곧 철의 산 하나와 구리의 산 하나와 은의 산 하나와 금의 산 하나와 부드러운 금속의 산 하나[b]와 납의 산 하나를 보았습니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘장차 있을’로 옮긴 구절은 난해합니다. 더 정태적으로 ‘거기에 있던’ 또는 ‘하늘에 존재하는’ 것으로 이해할 수도 있습니다.
+    reason: alternative_reading
+  - marker: b
+    text: 다섯 번째 금속어는 불확실합니다. 부드럽거나 혼합된 금속을 가리킬 수 있으며, 더 구체적으로는 주석 또는 일렉트럼으로 이해하는 견해도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 ‘모든 숨은 것’과 그 미래 지향적 한정을 한국어 문법에 맞게 결합하고, 산들의 반복 목록을 환시의 직접 목적어로 자연스럽게 정리했습니다. 미래 표현과 다섯째 금속의 어휘적 불확실성은 해소하지 않고 각주로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:31Z'
+  output_hash: 63404384c8dc269764568e3f4f27a22bf8d3473aed7fa0169147e3c9d799a914
+  usage:
+    completion_tokens: 1393
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 168
+      engine_ttlt_ms: 12341
+      pre_inference_ms: 208
+      service_tbt_ms: 9
+      service_ttft_ms: 774
+      service_ttlt_ms: 12920
+      total_duration_ms: 12722
+      user_visible_ttft_ms: 566
+    prompt_tokens: 3321
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4714
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -34,21 +34,15 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 이제 에녹은 책들[a]에서 말하기 시작하며, 이렇게 말했습니다. “나는 첫째 주에 일곱째로 태어났습니다[b][c], 그때는 의와 정의가 아직도 지속되고 있었습니다[d].”
+  text: 이제 에녹은 책들[a]에서 말하기 시작하여 이렇게 말했습니다. “나는 첫째 주에 일곱째로 태어났습니다[b]. 그때에는 심판과 의가 아직 지속되고 있었습니다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘책들에서’는 에녹이 즉흥적으로 말하는 것이 아니라 기록된 문헌을 출처로 삼아 말한다는 뜻을 살립니다.
+    text: ‘책들에서’는 에녹의 말이 기록된 책들을 출처 또는 바탕으로 한다는 뜻입니다.
     reason: source_note
   - marker: b
-    text: ‘첫째 주’는 문자적 일주일이 아니라 아포칼립스의 주기적 역사 구분을 가리킵니다.
+    text: ‘첫째 주’는 문자적인 일주일이라기보다 「주간의 묵시」에서 역사를 구분하는 상징적 주기를 가리킵니다.
     reason: cross_reference
-  - marker: c
-    text: 이 구절의 끝부분은 필사 전승상 어휘가 불안정하여, 윤리어의 정확한 대응은 문맥에 따라 다소 달라질 수 있습니다.
-    reason: textual_variant
-  - marker: d
-    text: 영문 본문의 ‘still endured’는 과거 시점에서의 지속 상태를 나타냅니다.
-    reason: previous_rendering
 lexical_decisions:
 - source_word: ወአኀዘ + ይትናገር
   english_pob_choice: began to speak
@@ -129,4 +123,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이제 에녹은 책들[a]에서 말하기 시작하며, 이렇게 말했습니다. “나는 첫째 주에 일곱째로 태어났습니다[b][c], 그때는 의와 정의가 아직도 지속되고 있었습니다[d].”
+  to: 이제 에녹은 책들[a]에서 말하기 시작하여 이렇게 말했습니다. “나는 첫째 주에 일곱째로 태어났습니다[b]. 그때에는 심판과 의가 아직 지속되고 있었습니다.”
+  rationale: 비평적으로 뒷받침되는 ‘심판과 의’라는 병렬을 회복하고, 서술 시제를 자연스럽게 바로잡았습니다. 한국어 본문과 직접 관련되지 않거나 잘못된 위치에 달린 각주는 제거하고, 필요한 출처 및 상징적 시간 구분 각주만 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:16:23Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 말미의 윤리어 짝은 주어진 OCR 형태만을 따라 ‘의와 정의’로 확정하기보다, 이 구절의 비평 본문에서 널리 지지되는 ኵነኔ(‘심판/판단’)와 ጽድቅ(‘의’)의 짝을 반영해야 합니다. 또한 본문은 과거의 역사적 상태를 서술하므로 ‘아직 지속되고 있었습니다’는 적절합니다.
+  naturalness: ‘말하기 시작하며, 이렇게 말했습니다’는 과거 서술 안에서 연결 어미와 종결 시제가 어색하게 섞입니다. ‘말하기 시작하여 이렇게 말했습니다’로 고치면 현대 한국어 합쇼체 문장으로 자연스럽습니다. ‘심판과 의’는 다소 압축적이지만 원문의 병렬 윤리·법정 언어를 보존합니다.
+  terminology: 에녹, 의, 첫째 주는 적절합니다. 원문의 ኵነኔ는 ‘정의’보다 ‘심판’으로 옮기는 편이 더 직접적이며, ጽድቅ은 ‘의’로 유지합니다. ‘책들에서’는 출처를 뜻하므로 각주에서 ‘기록된 책들을 바탕으로’라고 제한적으로 설명합니다.
+  issues:
+  - severity: high
+    issue: ‘의와 정의’
+    rationale: 이 구절의 말미는 OCR상 난독된 형태와 달리 비평적으로는 ‘심판/판단과 의’의 짝으로 읽히는 것이 강하게 뒷받침됩니다. ‘의와 정의’는 두 명사를 바꾸고 원문의 법정적 어휘를 약화합니다.
+  - severity: medium
+    issue: ‘말하기 시작하며, 이렇게 말했습니다’
+    rationale: 시작 동작을 연결하는 현재형 연결 어미 ‘-며’와 과거 종결 ‘말했습니다’의 결합이 서사 문맥에서 부자연스럽습니다.
+  - severity: medium
+    issue: 각주 c와 d의 내용 및 위치
+    rationale: c는 말미 어휘의 불안정을 설명하면서 출생 구문에 붙어 있어 앵커가 맞지 않으며, 현재의 비평적 읽기를 채택한 본문에는 불필요합니다. d는 영어 표현 자체를 설명하므로 한국어 번역 각주로는 부적절합니다.
+  - severity: low
+    issue: 각주 a의 ‘즉흥적으로 말하는 것이 아니라’
+    rationale: ‘책들에서’는 말의 출처를 나타내지만, 즉흥 발화를 배제한다는 대조까지 확정하지는 않습니다.
+  revised_text: 이제 에녹은 책들[a]에서 말하기 시작하여 이렇게 말했습니다. “나는 첫째 주에 일곱째로 태어났습니다[b]. 그때에는 심판과 의가 아직 지속되고 있었습니다.”
+  revised_footnotes:
+  - marker: a
+    text: ‘책들에서’는 에녹의 말이 기록된 책들을 출처 또는 바탕으로 한다는 뜻입니다.
+    reason: source_note
+  - marker: b
+    text: ‘첫째 주’는 문자적인 일주일이라기보다 「주간의 묵시」에서 역사를 구분하는 상징적 주기를 가리킵니다.
+    reason: cross_reference
+  revision_rationale: 비평적으로 뒷받침되는 ‘심판과 의’라는 병렬을 회복하고, 서술 시제를 자연스럽게 바로잡았습니다. 한국어 본문과 직접 관련되지 않거나 잘못된 위치에 달린 각주는 제거하고, 필요한 출처 및 상징적 시간 구분 각주만 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:16:23Z'
+  output_hash: 926f731c3bcac6dafdc7472530c07913021bbdf1e1f52d895e1a8dfecc61afec
+  usage:
+    completion_tokens: 1532
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 674
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 13237
+      pre_inference_ms: 85
+      service_tbt_ms: 9
+      service_ttft_ms: 401
+      service_ttlt_ms: 13491
+      total_duration_ms: 13416
+      user_visible_ttft_ms: 316
+    prompt_tokens: 3925
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5457
+  applied_revision: true
+  auto_apply_blocked_errors: []

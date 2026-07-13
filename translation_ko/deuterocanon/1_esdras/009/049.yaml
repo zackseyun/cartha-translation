@@ -44,14 +44,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 아타라테는 에스라에게, 곧 대제사장이며 낭독자인 그에게, 그리고 무리를 가르치는 레위인들에게, 곧 그들 모두에게 말하였습니다:[a][b]
+  text: '그리고 아타라테[a]가 대제사장이며 낭독자인[b] 에스라와 무리를 가르치는 레위인들, 곧 그들 모두에게 말하였습니다:'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 그리스어 본문은 Ἀτταρατὴ(아타라테)를 주며, 히브리어 병행본문은 이 인물을 ‘느헤미야, 곧 총독(티르솨타)’으로 제시합니다.
     reason: alternative_reading
   - marker: b
-    text: 그리스어는 ‘낭독자’(reader)라고 하고, 히브리어 병행본문은 에스라를 ‘제사장, 서기관’으로 부릅니다.
+    text: 그리스어는 에스라를 ‘낭독자’라고 하고, 히브리어 병행본문은 그를 ‘제사장, 서기관’으로 부릅니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: Ἀτταρατὴ
@@ -115,4 +115,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 아타라테는 에스라에게, 곧 대제사장이며 낭독자인 그에게, 그리고 무리를 가르치는 레위인들에게, 곧 그들 모두에게 말하였습니다:[a][b]
+  to: '그리고 아타라테[a]가 대제사장이며 낭독자인[b] 에스라와 무리를 가르치는 레위인들, 곧 그들 모두에게 말하였습니다:'
+  rationale: 수신자들을 ‘에스라와 … 레위인들’로 병렬 처리하고, 에스라의 두 호칭은 관형절로 묶었습니다. 원문의 ἐπὶ πάντας가 문맥상 앞서 언급된 수신자 전체를 가리키는 다소 어색한 표현이므로 ‘곧 그들 모두에게’로 보존했습니다. 각주의 내용은 유지하되 표지 위치와 지시 대상을 명확히 했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:09:38Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 수신자 열거(에스라, 그를 수식하는 ‘대제사장’과 ‘낭독자’, 그리고 무리를 가르치는 레위인들)와 끝의 다소 불규칙한 ἐπὶ πάντας를 유지해야 합니다. 초안의 의미는 대체로 맞지만, ‘에스라에게, 곧 … 그에게’는 원문에 없는 대명사 반복을 넣고 수신자 구조를 다소 어색하게 만듭니다.
+  naturalness: ‘대제사장이며 낭독자인 에스라와 … 레위인들, 곧 그들 모두에게’로 정리하면 현대 표준 한국어 합쇼체 문장으로 자연스럽고, 원문의 병렬 구조도 더 분명해집니다.
+  terminology: ‘아타라테’, ‘에스라’, ‘대제사장’, ‘낭독자’, ‘레위인’, ‘무리’는 그리스어 본문에 충실합니다. Ἀτταρατὴ를 본문에서 느헤미야나 총독으로 바꾸지 않고 각주에서 병행본문의 대응을 밝히는 방식도 적절합니다.
+  issues:
+  - severity: medium
+    issue: 수신자 구문의 불필요한 대명사 반복
+    rationale: 초안의 ‘에스라에게, 곧 대제사장이며 낭독자인 그에게’에서 ‘그에게’는 그리스어에 없는 반복이며, 에스라와 레위인들에게 이어지는 병렬 수신자 구조를 흐립니다.
+  - severity: low
+    issue: 각주 표지의 위치
+    rationale: 두 각주는 각각 아타라테라는 이름과 ‘낭독자’라는 명칭에 직접 붙이는 편이 해당 주석의 범위를 명확히 합니다.
+  revised_text: '그리고 아타라테[a]가 대제사장이며 낭독자인[b] 에스라와 무리를 가르치는 레위인들, 곧 그들 모두에게 말하였습니다:'
+  revised_footnotes:
+  - marker: a
+    text: 그리스어 본문은 Ἀτταρατὴ(아타라테)를 주며, 히브리어 병행본문은 이 인물을 ‘느헤미야, 곧 총독(티르솨타)’으로 제시합니다.
+    reason: alternative_reading
+  - marker: b
+    text: 그리스어는 에스라를 ‘낭독자’라고 하고, 히브리어 병행본문은 그를 ‘제사장, 서기관’으로 부릅니다.
+    reason: lexical_alternative
+  revision_rationale: 수신자들을 ‘에스라와 … 레위인들’로 병렬 처리하고, 에스라의 두 호칭은 관형절로 묶었습니다. 원문의 ἐπὶ πάντας가 문맥상 앞서 언급된 수신자 전체를 가리키는 다소 어색한 표현이므로 ‘곧 그들 모두에게’로 보존했습니다. 각주의 내용은 유지하되 표지 위치와 지시 대상을 명확히 했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:09:38Z'
+  output_hash: 12f1bfdfffa5d8fbce1e44d8214976d639f6369f6786598530c0e7507a004a79
+  usage:
+    completion_tokens: 1080
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 352
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 134
+      engine_ttlt_ms: 8752
+      pre_inference_ms: 245
+      service_tbt_ms: 8
+      service_ttft_ms: 791
+      service_ttlt_ms: 9343
+      total_duration_ms: 9115
+      user_visible_ttft_ms: 546
+    prompt_tokens: 3164
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4244
+  applied_revision: true
+  auto_apply_blocked_errors: []

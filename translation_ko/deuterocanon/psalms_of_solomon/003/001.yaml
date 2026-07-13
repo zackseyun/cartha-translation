@@ -24,15 +24,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 어찌하여, 내 영혼아, 자느냐? 그리고 어찌하여 주님을 찬송하지 않느냐?[a][b]
+  text: 영혼아[a], 어찌하여 잠들어 있고 주님을 찬송하지 않습니까?[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 원문은 현재형 직접 질문으로, ‘자느냐’와 ‘자고 있느냐/자는 중이냐’ 모두 가능합니다.
-    reason: alternative_reading
-  - marker: b
-    text: 그리스어는 ‘내’라는 소유격을 덧붙이지 않고 영혼을 직접 부릅니다.
+    text: 그리스어는 ‘내’라는 소유격 없이 영혼을 직접 부릅니다.
     reason: lexical_alternative
+  - marker: b
+    text: ‘잠들어 있고’는 현재형 동사로, ‘잠을 자고 있습니까’로도 옮길 수 있습니다.
+    reason: alternative_reading
 lexical_decisions:
 - source_word: Ἵνα τί
   english_pob_choice: Why
@@ -94,4 +94,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 어찌하여, 내 영혼아, 자느냐? 그리고 어찌하여 주님을 찬송하지 않느냐?[a][b]
+  to: 영혼아[a], 어찌하여 잠들어 있고 주님을 찬송하지 않습니까?[b]
+  rationale: 원문에 없는 소유격과 두 번째 의문사를 제거하고, 단일 수사 의문 아래의 병렬 구조를 보존했습니다. ‘찬송하다’와 ‘주님’은 유지했으며, 문말을 현대 격식 합쇼체로 조정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:09:39Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ψυχή는 소유격 없이 직접 호격으로 쓰였으므로 ‘내 영혼아’는 원문에 없는 ‘내’를 보탭니다. 또한 ἵνα τί는 문장 전체의 두 동사(‘잠자다’와 ‘찬송하지 않다’)를 아우르는 단일 의문인데, 초안은 ‘그리고 어찌하여’로 의문사를 반복합니다.
+  naturalness: 초안의 ‘자느냐/않느냐’는 수사적으로 자연스럽지만, 지정된 현대 격식 합쇼체에는 ‘-습니까’가 더 적합합니다. 호격을 앞에 두고 한 문장으로 묶으면 현대 한국어에서도 자연스럽고 원문의 병렬을 보존합니다.
+  terminology: εὐλογεῖν을 하나님을 향한 예배 문맥에서 ‘찬송하다’로 옮긴 것은 적절하며, κύριον의 ‘주님’도 자연스럽습니다. 다만 ψυχή는 ‘영혼아’로만 옮겨야 합니다.
+  issues:
+  - severity: high
+    issue: ‘내 영혼아’가 원문에 없는 소유격을 추가합니다.
+    rationale: 그리스어 ψυχή는 직접 호격이며 ‘내’에 해당하는 μου가 없습니다. 영어 POB 감사 기록도 이 점을 명시합니다.
+  - severity: medium
+    issue: ‘그리고 어찌하여’가 ἵνα τί를 불필요하게 반복합니다.
+    rationale: 원문은 단 하나의 ‘왜’를 사용하여 ‘잠자다’와 ‘주님을 찬송하지 않다’를 καὶ로 연결합니다.
+  - severity: low
+    issue: 문체가 지정된 합쇼체와 다릅니다.
+    rationale: ‘-느냐’는 수사적 문어체로 가능하지만, 과업에서 요구한 현대 격식 합쇼체에는 ‘-습니까’가 맞습니다.
+  revised_text: 영혼아[a], 어찌하여 잠들어 있고 주님을 찬송하지 않습니까?[b]
+  revised_footnotes:
+  - marker: a
+    text: 그리스어는 ‘내’라는 소유격 없이 영혼을 직접 부릅니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘잠들어 있고’는 현재형 동사로, ‘잠을 자고 있습니까’로도 옮길 수 있습니다.
+    reason: alternative_reading
+  revision_rationale: 원문에 없는 소유격과 두 번째 의문사를 제거하고, 단일 수사 의문 아래의 병렬 구조를 보존했습니다. ‘찬송하다’와 ‘주님’은 유지했으며, 문말을 현대 격식 합쇼체로 조정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:09:39Z'
+  output_hash: 2f63a5a679b1f2cff4a40d25a4e70671b2e094cf19af6c6c9b414eadab2171fa
+  usage:
+    completion_tokens: 1072
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 440
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 9316
+      pre_inference_ms: 112
+      service_tbt_ms: 9
+      service_ttft_ms: 412
+      service_ttlt_ms: 9584
+      total_duration_ms: 9482
+      user_visible_ttft_ms: 299
+    prompt_tokens: 1820
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2892
+  applied_revision: true
+  auto_apply_blocked_errors: []
