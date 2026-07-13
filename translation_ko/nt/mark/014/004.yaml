@@ -29,4 +29,57 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 대체로 의미를 전달하지만, 「이 향유를 이렇게 낭비하였습니까?」는 원문의 비인칭적 표현(‘이 향유의 이 낭비가 무엇 때문에 일어났는가’)을 특정 행위자에 의해 향유를 낭비한 것으로 바꾸어 놓습니다. 또한 인용문의 닫는 따옴표가 누락되어 있습니다.
+  naturalness: 합쇼체의 「말했습니다」와 「무엇 때문입니까?」는 자연스럽습니다. 「자기들끼리 분개하며」는 문맥상 자연스럽고 πρὸς ἑαυτούς의 집단 내부 반응을 잘 살립니다.
+  terminology: μύρον의 「향유」는 성경 문맥에서 정확하고 자연스러운 용어입니다. ἀγανακτοῦντες는 「분개하며」로 적절히 옮겼습니다.
+  issues:
+  - severity: medium
+    issue: 낭비의 행위자를 암시함
+    rationale: 「이 향유를 이렇게 낭비하였습니까?」는 누군가가 향유를 낭비했다는 능동적 구문입니다. 그리스어는 ἡ ἀπώλεια αὕτη τοῦ μύρου γέγονεν, 곧 ‘이 향유의 낭비가 무엇 때문에 생겼는가’라고 묻으며 행위자를 명시하지 않습니다.
+  - severity: low
+    issue: 인용문 닫는 따옴표 누락
+    rationale: 직접 인용이 시작되었으나 끝나는 한국어 인용 부호가 없어 문장 구조가 완결되지 않습니다.
+  revised_text: 그런데 어떤 사람들은 자기들끼리 분개하며 말했습니다. 「이 향유가 이렇게 낭비된 것은 무엇 때문입니까?」
+  revised_footnotes:
+  - marker: a
+    text: ‘자기들끼리’는 문맥에 따라 ‘서로에게’ 또는 ‘속으로’로도 이해될 수 있습니다.
+    reason: πρὸς ἑαυτούς의 용법은 상호 간의 불평과 내적인 반응 양쪽을 나타낼 수 있으므로, 본문은 자연스러운 표현을 택하고 각주로 가능성을 보존합니다.
+  - marker: b
+    text: ‘향유’는 향기 나는 기름 또는 연고를 가리킵니다.
+    reason: μύρον의 어휘 범위를 밝혀, 향유가 현대의 액상 향수만을 뜻하는 것으로 오해되지 않게 합니다.
+  revision_rationale: 원문의 비인칭적 질문 형식을 보존하기 위해 ‘이 향유가 이렇게 낭비된 것은’으로 고쳤고, 직접 인용의 문장부호를 완결했습니다. πρὸς ἑαυτούς와 μύρον의 관련 어휘적 대안은 각주로 제시했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:14:35Z'
+  output_hash: f53fe1ba04943bf1e04226d29e463733e1ea96962811c79996275067448d2380
+  usage:
+    completion_tokens: 960
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 273
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 137
+      engine_ttlt_ms: 7892
+      pre_inference_ms: 105
+      service_tbt_ms: 8
+      service_ttft_ms: 394
+      service_ttlt_ms: 8145
+      total_duration_ms: 8050
+      user_visible_ttft_ms: 290
+    prompt_tokens: 1338
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2298
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]

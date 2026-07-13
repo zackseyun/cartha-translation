@@ -23,8 +23,18 @@ base_translation:
     reason: cross_reference
 translation:
   language: ko
-  text: 셀라는 가이난의 아들, 가이난은 아박삿의 아들, 아박삿은 셈의 아들, 셈은 노아의 아들, 노아는 라멕의 아들,
+  text: 가이난[a][b]은 아르박삿[c]의 아들이고, 아르박삿은 셈의 아들이고, 셈은 노아의 아들이고, 노아는 라멕의 아들입니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 이 이름은 일부 표기에서 ‘가이난’ 대신 ‘카이난’으로 옮깁니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 일부 전승은 구약의 특정 계보 형태와 더 가깝게 맞추기 위해 여기서 가이난을 생략합니다.
+    reason: textual_variant
+  - marker: c
+    text: ‘아르박삿’은 누가복음의 그리스어 형태를 따른 표기입니다. 구약의 이름은 흔히 ‘아르박삿’과 다소 다른 형태로 음역되기도 합니다.
+    reason: cross_reference
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -32,4 +42,64 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 셀라는 가이난의 아들, 가이난은 아박삿의 아들, 아박삿은 셈의 아들, 셈은 노아의 아들, 노아는 라멕의 아들,
+  to: 가이난[a][b]은 아르박삿[c]의 아들이고, 아르박삿은 셈의 아들이고, 셈은 노아의 아들이고, 노아는 라멕의 아들입니다.
+  rationale: 원문에 없는 셀라를 삭제하고, 원문의 다섯 이름과 계보 관계를 그대로 반영했습니다. 가이난을 본문에 유지하되 관련 표기 및 전승상의 차이는 각주로 처리했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T07:15:05Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 그리스어 본문은 Καϊνὰμ(가이난)으로 시작하는데, 초안은 본문에 없는 ‘셀라’를 추가하여 계보를 한 단계 늘렸습니다. 또한 Ἀρφαξὰδ는 통상 한국어 성경 표기에 따라 ‘아르박삿’으로 쓰는 것이 적절합니다.
+  naturalness: ‘A는 B의 아들’이라는 반복 구조는 계보 문맥에서 자연스럽고 현대 한국어로 명료합니다. 연결 어미를 사용해 문장 흐름을 유지했습니다.
+  terminology: 고유명사는 가이난, 아르박삿, 셈, 노아, 라멕으로 표기했습니다. 가이난은 본문에 포함하되, 구약 계보 형태와의 차이는 각주로 밝혀 본문을 조화시키지 않았습니다.
+  issues:
+  - severity: high
+    issue: 본문에 없는 ‘셀라’가 추가됨
+    rationale: SBLGNT의 이 절은 ‘가이난의, 아르박삿의, 셈의, 노아의, 라멕의’로 시작하며 셀라를 포함하지 않습니다. 추가된 이름은 원문 계보를 변경합니다.
+  - severity: medium
+    issue: ‘아박삿’ 표기
+    rationale: 그리스어 Ἀρφαξὰδ 및 한국어 성경의 통용 표기에 비추어 ‘아르박삿’이 더 적절합니다.
+  revised_text: 가이난[a][b]은 아르박삿[c]의 아들이고, 아르박삿은 셈의 아들이고, 셈은 노아의 아들이고, 노아는 라멕의 아들입니다.
+  revised_footnotes:
+  - marker: a
+    text: 이 이름은 일부 표기에서 ‘가이난’ 대신 ‘카이난’으로 옮깁니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 일부 전승은 구약의 특정 계보 형태와 더 가깝게 맞추기 위해 여기서 가이난을 생략합니다.
+    reason: textual_variant
+  - marker: c
+    text: ‘아르박삿’은 누가복음의 그리스어 형태를 따른 표기입니다. 구약의 이름은 흔히 ‘아르박삿’과 다소 다른 형태로 음역되기도 합니다.
+    reason: cross_reference
+  revision_rationale: 원문에 없는 셀라를 삭제하고, 원문의 다섯 이름과 계보 관계를 그대로 반영했습니다. 가이난을 본문에 유지하되 관련 표기 및 전승상의 차이는 각주로 처리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:15:05Z'
+  output_hash: 632ebd366b966f0f3933080bcd35b8ba81c25434608e7aee90fe5b76355c965d
+  usage:
+    completion_tokens: 941
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 307
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 121
+      engine_ttlt_ms: 7606
+      pre_inference_ms: 85
+      service_tbt_ms: 8
+      service_ttft_ms: 541
+      service_ttlt_ms: 8020
+      total_duration_ms: 7943
+      user_visible_ttft_ms: 456
+    prompt_tokens: 1346
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2287
+  applied_revision: true
+  auto_apply_blocked_errors: []

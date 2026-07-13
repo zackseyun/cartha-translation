@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들은 예수께서 말씀하신 대로 그들에게 대답했습니다. 그러자 그들이 그들을 놓아 주었습니다.
+  text: 그들은 예수께서 말씀하신 대로 그들에게 말했습니다. 그러자 그 사람들은 그들을 놓아주었습니다.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘그들이 가도록 허락했습니다.’ 그리스어 동사는 ‘놓아주다’, ‘허락하다’, ‘보내 주다’ 등의 뜻을 가질 수 있습니다. 여기서는 사람들이 제자들이 나귀를 데려가는 것을 더 이상 막지 않았다는 뜻입니다.
+    reason: lexical_alternative
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -26,4 +30,58 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들은 예수께서 말씀하신 대로 그들에게 대답했습니다. 그러자 그들이 그들을 놓아 주었습니다.
+  to: 그들은 예수께서 말씀하신 대로 그들에게 말했습니다. 그러자 그 사람들은 그들을 놓아주었습니다.[a]
+  rationale: 원문의 발화 동사를 ‘말했습니다’로 직역에 가깝게 유지하고, 문맥상 전환되는 둘째 절의 주어를 ‘그 사람들’로 밝혀 대명사 혼동을 줄였습니다. ἀφίημι의 문맥상 의미와 대안은 각주로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T07:14:26Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안의 첫 문장에 있는 ‘대답했습니다’는 원문의 일반적인 발화 동사 εἶπαν보다 좁은 뜻이며, 둘째 문장의 두 주어가 모두 ‘그들’로 되어 있어 원문에서 전환되는 지시 대상(제자들→곁에 선 사람들)을 한국어에서 불필요하게 혼동시킵니다.
+  naturalness: ‘말했습니다’와 ‘그 사람들은’으로 고치면 현대 표준 한국어 합쇼체로 자연스럽고, 앞 문맥의 제자들과 나귀를 묶어 둔 사람들을 구별할 수 있습니다.
+  terminology: ‘예수께서 말씀하신 대로’는 ὡς/καθὼς의 대응 관계와 존칭을 적절히 반영합니다. ἀφῆκαν은 이 문맥에서 ‘놓아주었습니다’가 자연스럽습니다.
+  issues:
+  - severity: medium
+    issue: ‘대답했습니다’
+    rationale: εἶπαν은 ‘말했다’이며, 원문에는 응답 행위 자체를 특정하는 동사가 없습니다. 문맥상 응답일 수 있으나 번역문에서 이를 확정할 필요는 없습니다.
+  - severity: medium
+    issue: 둘째 문장의 주어 ‘그들이’
+    rationale: καὶ ἀφῆκαν αὐτούς의 주어는 앞 문맥에서 제자들을 제지하던 사람들입니다. 한국어의 반복된 ‘그들’은 제자들이 자신들을 놓아준 것처럼 읽힐 수 있습니다.
+  revised_text: 그들은 예수께서 말씀하신 대로 그들에게 말했습니다. 그러자 그 사람들은 그들을 놓아주었습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘그들이 가도록 허락했습니다.’ 그리스어 동사는 ‘놓아주다’, ‘허락하다’, ‘보내 주다’ 등의 뜻을 가질 수 있습니다. 여기서는 사람들이 제자들이 나귀를 데려가는 것을 더 이상 막지 않았다는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 발화 동사를 ‘말했습니다’로 직역에 가깝게 유지하고, 문맥상 전환되는 둘째 절의 주어를 ‘그 사람들’로 밝혀 대명사 혼동을 줄였습니다. ἀφίημι의 문맥상 의미와 대안은 각주로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:14:26Z'
+  output_hash: 25a117ecdc8ad54d4d1135d13d40170f8c84eb7b17396418d8f9ccb9c1ad554e
+  usage:
+    completion_tokens: 738
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 161
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 122
+      engine_ttlt_ms: 6334
+      pre_inference_ms: 156
+      service_tbt_ms: 8
+      service_ttft_ms: 440
+      service_ttlt_ms: 6648
+      total_duration_ms: 6502
+      user_visible_ttft_ms: 284
+    prompt_tokens: 1074
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 1812
+  applied_revision: true
+  auto_apply_blocked_errors: []
