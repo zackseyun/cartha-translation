@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 만찬 자리에서 일어나 겉옷을 벗어 놓고, 수건을 가져다가 자기 허리에 두르셨습니다.[a][b]
+  text: 그는 만찬에서[a] 일어나시어 겉옷을 벗어 놓으시고, 수건을 가져다가 자기 허리에 두르십니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘만찬에서 일어나다’.
+    text: 또는 ‘저녁 식사에서’.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘허리에 두르다’.
+    text: 또는 ‘스스로 허리를 동이십니다’.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: ἐγείρεται
@@ -93,4 +93,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 만찬 자리에서 일어나 겉옷을 벗어 놓고, 수건을 가져다가 자기 허리에 두르셨습니다.[a][b]
+  to: 그는 만찬에서[a] 일어나시어 겉옷을 벗어 놓으시고, 수건을 가져다가 자기 허리에 두르십니다.[b]
+  rationale: 원문의 역사적 현재와 동작의 연쇄를 보존하면서, 현대 한국어 합쇼체의 높임을 문장 전체에 일관되게 적용했습니다. ‘만찬에서’로 원문의 전치사구를 직접 옮기고, 각주 표지를 해당 어구와 동작에 각각 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T08:22:59Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 동작 순서(식사에서 일어남, 겉옷을 벗어 둠, 수건을 취함, 자신을 두름)는 대체로 충실합니다. 다만 ἐκ τοῦ δείπνου는 ‘만찬 자리에서’보다 ‘만찬에서’가 더 직접적이며, 현재형 서술의 생동감도 한국어 문장 안에서 유지할 수 있습니다.
+  naturalness: 현 번역은 앞의 동작들이 비존칭 연결형(‘일어나’, ‘벗어 놓고’, ‘가져다가’)인데 종결만 존칭 과거형(‘두르셨습니다’)이어서 문체와 높임이 불균형합니다. 현대 합쇼체로 동작 전체를 일관되게 높여 쓰는 것이 자연스럽습니다.
+  terminology: ἱμάτια의 ‘겉옷’, λέντιον의 ‘수건’, διαζώννυμι의 ‘허리에 두르다’는 적절합니다. ‘만찬’도 본문 문맥에서 가능하지만, 각주 a는 실제로 해당 어구의 대안을 제시하도록 바로잡아야 합니다.
+  issues:
+  - severity: medium
+    issue: 높임과 시제가 문장 내부에서 불일치합니다.
+    rationale: 주어가 예수님을 가리키는 현 번역의 관례를 유지한다면 모든 동작을 존칭 합쇼체로 통일해야 합니다. 원문의 역사적 현재는 한국어 현재형 종결로 자연스럽게 반영할 수 있습니다.
+  - severity: low
+    issue: 각주 a의 대안이 부정확하고 표지가 문장 끝에 일괄 배치되어 있습니다.
+    rationale: ‘만찬에서 일어나다’는 ἐκ τοῦ δείπνου 자체의 어휘 대안이 아니라 절 전체의 표현입니다. 표지는 해당 어구 뒤에 두고 ‘만찬에서’를 대안으로 제시하는 편이 정확합니다.
+  - severity: low
+    issue: ‘만찬 자리에서’의 ‘자리’는 원문에 없는 보충입니다.
+    rationale: 자연스럽지만, optimal-equivalence 원칙에서는 ‘만찬에서’가 ἐκ τοῦ δείπνου를 더 직접적으로 반영합니다.
+  revised_text: 그는 만찬에서[a] 일어나시어 겉옷을 벗어 놓으시고, 수건을 가져다가 자기 허리에 두르십니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘저녁 식사에서’.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘스스로 허리를 동이십니다’.
+    reason: lexical_alternative
+  revision_rationale: 원문의 역사적 현재와 동작의 연쇄를 보존하면서, 현대 한국어 합쇼체의 높임을 문장 전체에 일관되게 적용했습니다. ‘만찬에서’로 원문의 전치사구를 직접 옮기고, 각주 표지를 해당 어구와 동작에 각각 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T08:22:59Z'
+  output_hash: 21e49a9b4d9b2b13e0d758ad15e75c7fa93ce9d1d15171cfcd48c455c64ca51e
+  usage:
+    completion_tokens: 1202
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 493
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 132
+      engine_ttlt_ms: 10032
+      pre_inference_ms: 157
+      service_tbt_ms: 8
+      service_ttft_ms: 466
+      service_ttlt_ms: 10359
+      total_duration_ms: 10218
+      user_visible_ttft_ms: 309
+    prompt_tokens: 2311
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3513
+  applied_revision: true
+  auto_apply_blocked_errors: []

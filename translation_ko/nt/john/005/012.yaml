@@ -17,12 +17,8 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러자 그가[a] 물었습니다. “내게 ‘집어 들고 걸어가라’고 말한 사람이 누구입니까?”
+  text: 그러자 그들이 그에게 물었습니다. “너에게 ‘들고 걸어라’고 말한 남자가 누구입니까?”
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: 직역하면 “집어 들고 걸어가라”입니다. 앞문맥의 매트/깔개가 생략된 목적어입니다.
-    reason: lexical_alternative
 lexical_decisions:
 - source_word: ἠρώτησαν
   english_pob_choice: they asked
@@ -68,4 +64,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 그가[a] 물었습니다. “내게 ‘집어 들고 걸어가라’고 말한 사람이 누구입니까?”
+  to: 그러자 그들이 그에게 물었습니다. “너에게 ‘들고 걸어라’고 말한 남자가 누구입니까?”
+  rationale: The revision restores the plural subject and explicit object of the Greek, retains the narrative connective, and renders the two imperatives concisely without introducing an object or directional sense absent from the source. The unnecessary and misanchored footnote is removed.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T08:21:52Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft incorrectly changes the plural subject of ἠρώτησαν (“they asked”) to singular “그가 물었습니다.” It also omits the explicit indirect object αὐτόν (“him”). The revised wording restores both. The quoted command appropriately retains the source’s unexpressed object rather than supplying one.
+  naturalness: “그러자 그들이 그에게 물었습니다” is natural modern formal Korean narrative prose. “너에게 ‘들고 걸어라’고 말한 남자가 누구입니까?” is an idiomatic formal-polite question while preserving the direct address in σοι.
+  terminology: “남자” preserves the specifically male referent of ὁ ἄνθρωπος in this context. “들고 걸어라” reflects Ἆρον καὶ περιπάτει without adding a directional nuance or an explicit object not present in the Greek.
+  issues:
+  - severity: high
+    issue: The subject is rendered as singular (“그가”) rather than plural.
+    rationale: 'ἠρώτησαν is aorist active indicative, third-person plural: “they asked.”'
+  - severity: medium
+    issue: The indirect object (“그에게”) is omitted.
+    rationale: αὐτόν explicitly identifies the healed man as the person questioned.
+  - severity: low
+    issue: The footnote is anchored to the narrative subject and describes a supplied object although the Korean command can naturally leave the object unexpressed.
+    rationale: The anchor does not correspond to the quoted command, and no footnote is needed when Korean preserves the Greek’s implied object.
+  revised_text: 그러자 그들이 그에게 물었습니다. “너에게 ‘들고 걸어라’고 말한 남자가 누구입니까?”
+  revised_footnotes: []
+  revision_rationale: The revision restores the plural subject and explicit object of the Greek, retains the narrative connective, and renders the two imperatives concisely without introducing an object or directional sense absent from the source. The unnecessary and misanchored footnote is removed.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T08:21:52Z'
+  output_hash: cf23f3d1eec75b641cc769817631a06997bdf583e111751df2ddaf866124212d
+  usage:
+    completion_tokens: 926
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 470
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 7846
+      pre_inference_ms: 147
+      service_tbt_ms: 8
+      service_ttft_ms: 448
+      service_ttlt_ms: 8144
+      total_duration_ms: 8007
+      user_visible_ttft_ms: 301
+    prompt_tokens: 1795
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2721
+  applied_revision: true
+  auto_apply_blocked_errors: []

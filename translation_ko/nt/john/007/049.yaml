@@ -20,15 +20,15 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그러나 이 무리는 율법을 알지 못하니, 저주 아래 있습니다.[a][b]
+  text: 그러나 율법[b]을 알지 못하는 이 무리는 저주받은 자들입니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 즉, 유대인의 율법/토라를 가리킵니다.
-    reason: cultural_note
-  - marker: b
-    text: 또는 ‘저주 아래 있습니다’.
+    text: 또는 ‘저주 아래 있는 자들입니다’.
     reason: lexical_alternative
+  - marker: b
+    text: ‘율법’은 유대인의 율법, 곧 토라를 가리킵니다.
+    reason: cultural_note
 lexical_decisions:
 - source_word: ἀλλὰ
   english_pob_choice: But
@@ -82,4 +82,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러나 이 무리는 율법을 알지 못하니, 저주 아래 있습니다.[a][b]
+  to: 그러나 율법[b]을 알지 못하는 이 무리는 저주받은 자들입니다.[a]
+  rationale: 원문의 한정적 분사 구조를 보존하여 인과 의미를 피하고, 저주 선언의 강도와 복수 술어를 유지했습니다. 또한 모든 각주 표지를 해당 단어·구절에 맞게 바로잡았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T08:22:12Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ‘알지 못하니’는 그리스어의 한정적 현재분사(‘율법을 알지 못하는’)를 이유·근거를 나타내는 연결 어미로 바꾸어, 원문에 없는 인과 뉘앙스를 더할 수 있습니다. 또한 ἐπάρατοί εἰσιν은 복수 술어이므로 집단 구성원을 가리키는 ‘저주받은 자들입니다’가 형태와 의미를 더 직접적으로 반영합니다.
+  naturalness: ‘율법을 알지 못하는 이 무리’와 ‘저주받은 자들입니다’는 현대 표준 한국어의 합쇼체로 자연스럽고, 본문 화자의 경멸적이고 단정적인 어조를 유지합니다.
+  terminology: νόμος는 이 문맥에서 유대교의 율법/토라이므로 ‘율법’이 적절합니다. 각주 표지는 내용과 연결되는 낱말 뒤에 바로 배치해야 하며, 기존 초안은 a·b의 표지 순서가 각주 내용과 반대로 붙어 있습니다.
+  issues:
+  - severity: medium
+    issue: 분사절을 ‘알지 못하니’로 번역함
+    rationale: ὁ μὴ γινώσκων τὸν νόμον은 ‘율법을 알지 못하는’이라는 명사 수식절입니다. ‘-니’는 인과 관계를 암시하므로 원문의 단순한 규정/묘사를 보존하도록 고칩니다.
+  - severity: medium
+    issue: 각주 표지와 각주 내용의 연결이 뒤바뀜
+    rationale: a는 ‘저주 아래 있다’라는 어휘 대안인데 ‘율법’ 뒤에, b는 율법의 문화적 설명인데 문장 끝에 붙어 있습니다. 각각 해당 표현 뒤로 옮겨야 합니다.
+  - severity: low
+    issue: 복수 술어의 표현
+    rationale: ἐπάρατοί εἰσιν은 복수입니다. ‘저주받은 자들입니다’는 ‘이 무리’의 구성원들을 가리켜 원문의 복수를 자연스럽게 드러냅니다.
+  revised_text: 그러나 율법[b]을 알지 못하는 이 무리는 저주받은 자들입니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘저주 아래 있는 자들입니다’.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘율법’은 유대인의 율법, 곧 토라를 가리킵니다.
+    reason: cultural_note
+  revision_rationale: 원문의 한정적 분사 구조를 보존하여 인과 의미를 피하고, 저주 선언의 강도와 복수 술어를 유지했습니다. 또한 모든 각주 표지를 해당 단어·구절에 맞게 바로잡았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T08:22:12Z'
+  output_hash: 2fe1a4e86fc08d1d8d12af9a6deab5a34b77c28728f1ffc5e31a5cdd95dd2f21
+  usage:
+    completion_tokens: 861
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 189
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 6998
+      pre_inference_ms: 88
+      service_tbt_ms: 8
+      service_ttft_ms: 597
+      service_ttlt_ms: 7450
+      total_duration_ms: 7370
+      user_visible_ttft_ms: 509
+    prompt_tokens: 2015
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2876
+  applied_revision: true
+  auto_apply_blocked_errors: []
