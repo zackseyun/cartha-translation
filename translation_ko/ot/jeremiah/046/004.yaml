@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 말들을 묶으십시오. 기병들아, 올라타십시오. 투구를 쓰고 자리를 지키십시오. 창을 갈고, 갑옷을 입으십시오.[a][b]
+  text: 말에 마구를 채우십시오. 기병들아, 말에 오르십시오. 투구를 쓰고 대열을 갖추십시오. 창을 닦아 윤을 내십시오.[a] 갑옷을 입으십시오.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 원문의 ‘미르쿠’는 ‘닦다, 윤내다, 빛나게 하다’의 뜻이어서, 전투 맥락에서는 ‘창을 갈다/윤내다’처럼 옮길 수 있습니다.
+    text: 원문의 ‘미르쿠’는 ‘닦다, 윤을 내다, 빛나게 하다’라는 뜻입니다. 따라서 ‘창을 갈다’가 아니라 창을 닦아 빛나게 하라는 명령입니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘시리요놋’은 몸을 보호하는 갑옷류를 가리키며, 투구와 달리 상반신 보호구를 넓게 포함할 수 있습니다.
+    text: 원문의 ‘시르요놋’은 몸을 보호하는 갑옷을 가리키며, 사슬갑옷이나 흉갑과 같은 특정 형태를 뜻할 수도 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אִסְרוּ הַסּוּסִים
@@ -90,4 +90,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 말들을 묶으십시오. 기병들아, 올라타십시오. 투구를 쓰고 자리를 지키십시오. 창을 갈고, 갑옷을 입으십시오.[a][b]
+  to: 말에 마구를 채우십시오. 기병들아, 말에 오르십시오. 투구를 쓰고 대열을 갖추십시오. 창을 닦아 윤을 내십시오.[a] 갑옷을 입으십시오.[b]
+  rationale: 말의 전투 준비, 기병의 승마, 투구를 쓴 군사들의 대열 정비, 창의 연마가 아닌 광택 내기, 그리고 갑옷 착용이라는 원문의 명령 연쇄를 유지하도록 수정했습니다. 불확실한 갑옷의 세부 형태는 본문에서 단정하지 않고 각주에만 제시했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:25:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ‘말들을 묶으십시오’는 전투를 위해 말에 마구를 갖추게 하라는 אִסְרוּ의 문맥적 뜻보다 단순히 결박하거나 매어 두라는 뜻으로 읽히므로 수정이 필요합니다. 또한 מִרְקוּ는 창을 ‘갈다’(날을 세우다)보다 닦거나 윤을 내어 빛나게 한다는 뜻에 가깝습니다. ‘자리를 지키십시오’도 이미 차지한 자리를 방어·유지한다는 뉘앙스가 있어, 대열을 갖추어 서라는 וְהִתְיַצְּבוּ를 충분히 반영하지 못합니다.
+  naturalness: 수정문은 현대 표준 한국어 합쇼체의 군사 명령문으로 자연스럽고, 연속되는 명령의 긴박함을 유지합니다.
+  terminology: ‘마구를 채우십시오’, ‘기병들아’, ‘투구’, ‘창’, ‘갑옷’은 본문의 군사 용어를 자연스럽고 무리 없이 반영합니다. סִרְיֹנֹת의 구체적 형태는 확정하기 어려우므로 포괄적인 ‘갑옷’을 유지하고 각주로 범위를 설명합니다.
+  issues:
+  - severity: high
+    issue: ‘말들을 묶으십시오’는 אִסְרוּ הַסּוּסִים의 전투 준비 의미를 약화하거나 바꿉니다.
+    rationale: 이 문맥에서 동사는 말을 단순히 매어 두는 행위가 아니라 마구를 갖추어 전투에 준비시키라는 명령으로 이해하는 것이 적절합니다.
+  - severity: medium
+    issue: ‘자리를 지키십시오’는 וְהִתְיַצְּבוּ의 군사적 배치 명령을 정확히 전달하지 못합니다.
+    rationale: 동사는 대열을 갖추고 자리를 잡아 서라는 뜻이며, ‘지키다’는 방어·유지의 의미를 추가합니다.
+  - severity: high
+    issue: ‘창을 갈고’는 מִרְקוּ의 의미를 ‘날을 세우다’로 바꿉니다.
+    rationale: 이 동사는 닦아 매끈하거나 빛나게 하다는 뜻입니다. 창을 ‘닦아 윤을 내십시오’가 의미를 더 정확히 보존합니다.
+  - severity: medium
+    issue: 각주 표지가 문장 끝에 함께 놓여 있어 각주 대상이 불명확합니다.
+    rationale: 각주는 각각 ‘창을 닦아 윤을 내십시오’와 ‘갑옷’ 바로 뒤에 붙여 해당 어휘와 명확히 연결해야 합니다.
+  revised_text: 말에 마구를 채우십시오. 기병들아, 말에 오르십시오. 투구를 쓰고 대열을 갖추십시오. 창을 닦아 윤을 내십시오.[a] 갑옷을 입으십시오.[b]
+  revised_footnotes:
+  - marker: a
+    text: 원문의 ‘미르쿠’는 ‘닦다, 윤을 내다, 빛나게 하다’라는 뜻입니다. 따라서 ‘창을 갈다’가 아니라 창을 닦아 빛나게 하라는 명령입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 원문의 ‘시르요놋’은 몸을 보호하는 갑옷을 가리키며, 사슬갑옷이나 흉갑과 같은 특정 형태를 뜻할 수도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 말의 전투 준비, 기병의 승마, 투구를 쓴 군사들의 대열 정비, 창의 연마가 아닌 광택 내기, 그리고 갑옷 착용이라는 원문의 명령 연쇄를 유지하도록 수정했습니다. 불확실한 갑옷의 세부 형태는 본문에서 단정하지 않고 각주에만 제시했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:25:06Z'
+  output_hash: d297a4b6cb583c89b4a687393a5a1f17653d665a5ce56f580ee0c8052be4622a
+  usage:
+    completion_tokens: 1097
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 184
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 8859
+      pre_inference_ms: 89
+      service_tbt_ms: 8
+      service_ttft_ms: 362
+      service_ttlt_ms: 9089
+      total_duration_ms: 9008
+      user_visible_ttft_ms: 272
+    prompt_tokens: 2421
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3518
+  applied_revision: true
+  auto_apply_blocked_errors: []

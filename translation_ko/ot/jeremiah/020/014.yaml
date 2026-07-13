@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 저주받을지어다, 내가 태어난 날이여[a]. 내 어머니가 나를 낳은 그 날[b]은 복을 받지 못할지어다.
+  text: 내가 태어난 날은 저주받을지어다[a]. 내 어머니가 나를 낳은 날은 복을 받지 말지어다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 또는 ‘내가 태어난 날이 저주받을지어다.’
-    reason: alternative_reading
+    reason: 어순에 따른 표현상의 대안
   - marker: b
     text: 또는 ‘내 어머니가 나를 출산한 날.’
-    reason: alternative_reading
+    reason: ‘낳다’에 대한 어휘상의 대안
 lexical_decisions:
 - source_word: אָרוּר / הַיּוֹם
   english_pob_choice: Cursed be the day
@@ -82,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 저주받을지어다, 내가 태어난 날이여[a]. 내 어머니가 나를 낳은 그 날[b]은 복을 받지 못할지어다.
+  to: 내가 태어난 날은 저주받을지어다[a]. 내 어머니가 나를 낳은 날은 복을 받지 말지어다[b].
+  rationale: 첫 행은 원문의 저주 선언을 유지하면서 한국어의 자연스러운 주어-술어 배열로 다듬었습니다. 둘째 행은 원문의 부정 청원에 맞추어 ‘못하다’를 제거하고 ‘말지어다’로 옮겼습니다. 두 번의 ‘날’과 저주/복의 대조를 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:22:38Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 저주 선언(אָרוּר)과 부정 청원(אַל יְהִי), 그리고 두 행의 병렬 구조는 대체로 반영되었습니다. 다만 ‘복을 받지 못할지어다’의 ‘못하다’는 능력·불가능의 뉘앙스를 더할 수 있어, 원문의 단순 부정 청원을 더 직접적으로 옮길 필요가 있습니다.
+  naturalness: ‘저주받을지어다, 내가 태어난 날이여’는 이해되지만 현대 한국어 문장으로는 술어와 주어의 순서가 다소 도치되어 있습니다. 두 행을 같은 구조로 배열하면 더 자연스럽고 시적 병렬도 분명해집니다.
+  terminology: ‘저주받다’와 ‘복을 받다’는 אָרוּר와 בָּרוּךְ의 대조를 한국어에서 자연스럽게 보존합니다. 문맥상 ‘복’은 신학 용어로 충분히 적절하며 별도 교리적 해석을 덧붙일 필요가 없습니다.
+  issues:
+  - severity: medium
+    issue: ‘복을 받지 못할지어다’의 양태
+    rationale: אַל יְהִי는 ‘복을 받지 못할 것이다’라는 불가능 진술이 아니라 ‘복을 받지 말지어다’라는 부정 청원입니다. ‘못하다’는 원문에 없는 능력·가능성의 뉘앙스를 낳을 수 있습니다.
+  - severity: low
+    issue: 첫 행의 도치된 어순
+    rationale: 원문의 강조를 살리려 한 의도는 타당하지만, ‘내가 태어난 날은 저주받을지어다’가 표준 현대 한국어에서 더 자연스럽고 둘째 행과의 평행도 유지합니다.
+  revised_text: 내가 태어난 날은 저주받을지어다[a]. 내 어머니가 나를 낳은 날은 복을 받지 말지어다[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘내가 태어난 날이 저주받을지어다.’
+    reason: 어순에 따른 표현상의 대안
+  - marker: b
+    text: 또는 ‘내 어머니가 나를 출산한 날.’
+    reason: ‘낳다’에 대한 어휘상의 대안
+  revision_rationale: 첫 행은 원문의 저주 선언을 유지하면서 한국어의 자연스러운 주어-술어 배열로 다듬었습니다. 둘째 행은 원문의 부정 청원에 맞추어 ‘못하다’를 제거하고 ‘말지어다’로 옮겼습니다. 두 번의 ‘날’과 저주/복의 대조를 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:22:38Z'
+  output_hash: b65822433e3054518af38c80252d9a301514fcd3c73f6eb569082be94a1ef778
+  usage:
+    completion_tokens: 1158
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 142
+      engine_ttlt_ms: 10065
+      pre_inference_ms: 179
+      service_tbt_ms: 9
+      service_ttft_ms: 660
+      service_ttlt_ms: 10577
+      total_duration_ms: 10409
+      user_visible_ttft_ms: 481
+    prompt_tokens: 2182
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3340
+  applied_revision: true
+  auto_apply_blocked_errors: []

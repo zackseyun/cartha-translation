@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: '유다 왕 히스기야의 글입니다[b][a]. 그가 병들어 있다가 병에서 회복되었을 때입니다:'
+  text: '유다 왕 히스기야가 병들었다가 병에서 회복한 뒤에 쓴 글입니다[a][b]:'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘글’로 옮긴 히브리어 מִכְתָּב은 정확한 장르를 특정하지 않으며, 시·기록·문서 등 넓은 범주의 written composition을 가리킬 수 있습니다.
+    text: ‘글’로 옮긴 히브리어 מִכְתָּב은 정확한 장르를 특정하지 않으며, 시·기록·문서 등 폭넓은 범주의 글이나 문서를 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘그가 병에서 살았다’입니다. 여기서는 ‘회복되었다’가 관용적 의미를 더 분명히 드러냅니다.
+    text: 직역하면 ‘그가 병에서 살았다’입니다. 여기서는 병에서 회복되었다는 관용적 의미를 나타냅니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: מִכְתָּב
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: '유다 왕 히스기야의 글입니다[b][a]. 그가 병들어 있다가 병에서 회복되었을 때입니다:'
+  to: '유다 왕 히스기야가 병들었다가 병에서 회복한 뒤에 쓴 글입니다[a][b]:'
+  rationale: ‘글’ 뒤에는 장르 관련 각주 a를, ‘회복한’ 뒤에는 회복 표현 관련 각주 b를 연결했습니다. 또한 표제문을 자연스러운 합쇼체로 다듬되, 병듦과 회복이라는 원문의 순서와 의미를 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:07:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 표제는 ‘유다 왕 히스기야의 글’에 이어 그가 병들었고 병에서 회복했다는 상황을 제시합니다. 초안의 ‘병들어 있다가 … 회복되었을 때’는 시간절의 범위가 다소 불분명합니다. 또한 각주 표지가 해당 어휘와 연결되지 않고 역순으로 글 뒤에 놓여 있습니다.
+  naturalness: ‘병들었다가 병에서 회복한 뒤에 쓴 글입니다’는 현대 표준 한국어의 자연스러운 표제 문장으로, 병과 회복의 순서를 명료하게 나타냅니다. 합쇼체에도 맞습니다.
+  terminology: ‘유다 왕’, ‘히스기야’, ‘글’, ‘병에서 회복하다’는 모두 적절합니다. 각주 a에서는 불필요한 영어 표현을 한국어로 고쳤습니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지 [b][a]가 ‘글’ 뒤에 함께 배치되어 각주의 대상 어휘와 맞지 않습니다.
+    rationale: a는 מִכְתָּב(글)의 장르 관련 각주이고, b는 ‘병에서 회복하다’의 관용적 의미 관련 각주이므로 각각 해당 표현 바로 뒤에 놓여야 합니다.
+  - severity: low
+    issue: ‘그가 병들어 있다가 병에서 회복되었을 때입니다’는 표제의 시간 관계와 문장 범위가 다소 어색합니다.
+    rationale: 원문은 병든 상황과 그 뒤의 회복을 연결합니다. ‘병들었다가 … 회복한 뒤에 쓴’으로 옮기면 순서와 표제의 기능이 분명해집니다.
+  revised_text: '유다 왕 히스기야가 병들었다가 병에서 회복한 뒤에 쓴 글입니다[a][b]:'
+  revised_footnotes:
+  - marker: a
+    text: ‘글’로 옮긴 히브리어 מִכְתָּב은 정확한 장르를 특정하지 않으며, 시·기록·문서 등 폭넓은 범주의 글이나 문서를 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그가 병에서 살았다’입니다. 여기서는 병에서 회복되었다는 관용적 의미를 나타냅니다.
+    reason: lexical_alternative
+  revision_rationale: ‘글’ 뒤에는 장르 관련 각주 a를, ‘회복한’ 뒤에는 회복 표현 관련 각주 b를 연결했습니다. 또한 표제문을 자연스러운 합쇼체로 다듬되, 병듦과 회복이라는 원문의 순서와 의미를 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:07:42Z'
+  output_hash: 928d41f92a7a88e8eb4a4fe727d00a03c9a1fd5398e1ef840e61dc5d82faf62b
+  usage:
+    completion_tokens: 1155
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 175
+      engine_ttlt_ms: 10614
+      pre_inference_ms: 100
+      service_tbt_ms: 9
+      service_ttft_ms: 373
+      service_ttlt_ms: 10809
+      total_duration_ms: 10801
+      user_visible_ttft_ms: 272
+    prompt_tokens: 2077
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3232
+  applied_revision: true
+  auto_apply_blocked_errors: []

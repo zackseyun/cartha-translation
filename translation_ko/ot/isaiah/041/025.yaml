@@ -23,14 +23,14 @@ base_translation:
     reason: cross_reference
 translation:
   language: ko
-  text: 나는 북쪽에서 한 사람을 일으켰고, 그는 왔습니다. 해 뜨는 곳에서 그는 내 이름을 부르며, 통치자들 위로는 진흙 위를 밟듯이 다가오고, 토기장이처럼 진흙을 짓밟을 것입니다.[a][b]
+  text: 나는 북쪽에서 한 사람을 일으켰고, 그가 왔습니다. 해 뜨는 곳에서 그는 내 이름을 부릅니다[a][b]. 그는 통치자들을 진흙처럼 짓밟으며, 토기장이처럼 진흙을 밟을 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘해 뜨는 곳’은 문자적으로는 ‘동쪽’에 해당합니다.
+    text: ‘해 뜨는 곳’은 문자적으로 ‘해가 뜨는 곳’이라는 뜻이며, ‘동쪽’으로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘내 이름을 부르며’는 ‘내 이름을 부르짖으며’ 또는 ‘내 이름을 호출하며’로도 옮길 수 있습니다.
+    text: ‘내 이름을 부릅니다’는 ‘내 이름을 부르짖습니다’, ‘내 이름을 불러 의지합니다’, 또는 ‘내 이름을 선포합니다’로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הַעִירוֹתִי
@@ -85,4 +85,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나는 북쪽에서 한 사람을 일으켰고, 그는 왔습니다. 해 뜨는 곳에서 그는 내 이름을 부르며, 통치자들 위로는 진흙 위를 밟듯이 다가오고, 토기장이처럼 진흙을 짓밟을 것입니다.[a][b]
+  to: 나는 북쪽에서 한 사람을 일으켰고, 그가 왔습니다. 해 뜨는 곳에서 그는 내 이름을 부릅니다[a][b]. 그는 통치자들을 진흙처럼 짓밟으며, 토기장이처럼 진흙을 밟을 것입니다.
+  rationale: 하나님이 일으키신 인물을 특정 인물로 명시하지 않았습니다. 시간 표현은 원문의 예언적 서술 흐름을 따라 ‘왔습니다’와 ‘부릅니다/밟을 것입니다’를 유지했습니다. ‘내 이름을 부르다’는 예배적 의미를 확정하지 않도록 중립적으로 보존했습니다. 마지막 두 비유는 통치자들을 진흙처럼 다루는 침공자의 행동과 토기장이의 진흙 밟기를 각각 드러내도록 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:09:00Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 초안은 첫 두 절의 방향과 ‘내 이름을 부르다’라는 기본 뜻을 대체로 보존하지만, ‘내 이름을 부르며’를 뒤의 행동에 종속시켜 원문의 독립된 절을 흐리게 합니다. 또한 ‘통치자들 위로는 진흙 위를 밟듯이 다가오고’는 통치자들을 진흙에 비유하는 원문의 비교를 어색하게 바꾸고, ‘다가오다’와 ‘밟다’의 관계도 불명확하게 만듭니다.
+  naturalness: ‘통치자들 위로는 진흙 위를 밟듯이 다가오고’는 현대 표준 한국어에서 수식 관계가 부자연스럽습니다. 각 절을 분리하고, 원문의 두 비유를 평행하게 제시하면 합쇼체 문체에서도 더 명료하고 자연스럽습니다.
+  terminology: ‘일으키다’, ‘통치자들’, ‘토기장이’는 적절합니다. ‘내 이름을 부르다’는 원문의 해석상 긴장을 유지하는 표현입니다. 다만 각주 a는 ‘해 뜨는 곳’과 ‘동쪽’의 문자적 관계를 반대로 설명하므로 바로잡아야 하며, ‘호출하다’는 이 문맥의 자연스러운 대안이 아닙니다.
+  issues:
+  - severity: medium
+    issue: ‘내 이름을 부르며’가 뒤 절에 종속되어 있음
+    rationale: יִקְרָא בִשְׁמִי는 독립된 동사절입니다. 연결형 ‘부르며’는 그가 이름을 부르는 방식으로 통치자들에게 다가온다는 관계를 암시하므로, 독립 문장으로 옮기는 편이 안전합니다.
+  - severity: high
+    issue: 통치자들과 진흙의 비유 관계가 뒤바뀌고 문장이 부자연스러움
+    rationale: כְּמוֹ חֹמֶר는 통치자들을 상대하는 방식의 비교이며, 초안의 ‘통치자들 위로는 진흙 위를 밟듯이’는 통치자들 위에 진흙이 있다는 뜻처럼 읽힙니다. 통치자들을 진흙처럼 짓밟는 비유로 명료하게 옮깁니다.
+  - severity: high
+    issue: 각주 a가 문자적 의미를 반대로 설명함
+    rationale: מִמִּזְרַח שֶׁמֶשׁ은 문자적으로 ‘해 뜨는 곳/해의 뜨는 데서’이고, ‘동쪽’이 관용적 대안입니다. 초안은 ‘해 뜨는 곳’이 문자적으로 ‘동쪽’이라고 하여 설명 방향이 반대입니다.
+  - severity: medium
+    issue: 각주 b의 ‘호출하며’가 부자연스럽고 본문의 연결형을 반복함
+    rationale: 이 문맥에서 קרא בשם의 자연스러운 대안은 ‘부르짖다’, ‘불러 의지하다’ 또는 ‘선포하다’ 등입니다. 다만 후자의 해석적 폭을 각주에서만 제시하고, 본문은 중립적으로 유지합니다.
+  revised_text: 나는 북쪽에서 한 사람을 일으켰고, 그가 왔습니다. 해 뜨는 곳에서 그는 내 이름을 부릅니다[a][b]. 그는 통치자들을 진흙처럼 짓밟으며, 토기장이처럼 진흙을 밟을 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘해 뜨는 곳’은 문자적으로 ‘해가 뜨는 곳’이라는 뜻이며, ‘동쪽’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘내 이름을 부릅니다’는 ‘내 이름을 부르짖습니다’, ‘내 이름을 불러 의지합니다’, 또는 ‘내 이름을 선포합니다’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 하나님이 일으키신 인물을 특정 인물로 명시하지 않았습니다. 시간 표현은 원문의 예언적 서술 흐름을 따라 ‘왔습니다’와 ‘부릅니다/밟을 것입니다’를 유지했습니다. ‘내 이름을 부르다’는 예배적 의미를 확정하지 않도록 중립적으로 보존했습니다. 마지막 두 비유는 통치자들을 진흙처럼 다루는 침공자의 행동과 토기장이의 진흙 밟기를 각각 드러내도록 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:09:00Z'
+  output_hash: 3ef1bbbe2395e2e7fabee441a3e91a1bec8e41bc6fea6182508cb98875ff6e9d
+  usage:
+    completion_tokens: 1825
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 750
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 171
+      engine_ttlt_ms: 14425
+      pre_inference_ms: 114
+      service_tbt_ms: 8
+      service_ttft_ms: 453
+      service_ttlt_ms: 14738
+      total_duration_ms: 14632
+      user_visible_ttft_ms: 339
+    prompt_tokens: 2822
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4647
+  applied_revision: true
+  auto_apply_blocked_errors: []

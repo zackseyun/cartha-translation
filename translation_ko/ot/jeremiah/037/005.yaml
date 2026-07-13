@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 이제 파라오의 군대가 이집트에서 나왔고[a], 바빌론군[b]—예루살렘을 포위하고 있던 자들—이 그들에 관한 소문을 듣자[c], 예루살렘에서 물러갔습니다.
+  text: 파라오의 군대가 이집트에서 나왔고, 예루살렘을 포위하고 있던 갈대아인들[a]이 그들에 관한 소식[b]을 듣고 예루살렘에서 물러갔습니다[c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘갈대아인들’로, 곧 ‘바빌론 사람들’을 가리킵니다.
+    text: 또는 ‘바빌론 사람들’. 여기서 ‘갈대아인들’은 바빌론 세력을 가리키는 명칭입니다.
     reason: lexical_alternative
   - marker: b
-    text: 본문의 ‘갈대아인들’은 예레미야 문맥에서 바빌론 세력을 가리키는 역사적 명칭입니다.
-    reason: cultural_note
+    text: 직역하면 ‘그들의 소식’이며, 파라오의 군대에 관한 소식이라는 뜻입니다.
+    reason: lexical_alternative
   - marker: c
-    text: 직역하면 ‘그들의 소식을 들었다’이며, 곧 파라오의 군대에 관한 소식을 들었다는 뜻입니다.
+    text: 직역하면 ‘예루살렘 위에서 올라갔다’입니다. 포위 상황에서는 예루살렘에서 물러났다는 뜻입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: חֵיל פַּרְעֹה
@@ -96,4 +96,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이제 파라오의 군대가 이집트에서 나왔고[a], 바빌론군[b]—예루살렘을 포위하고 있던 자들—이 그들에 관한 소문을 듣자[c], 예루살렘에서 물러갔습니다.
+  to: 파라오의 군대가 이집트에서 나왔고, 예루살렘을 포위하고 있던 갈대아인들[a]이 그들에 관한 소식[b]을 듣고 예루살렘에서 물러갔습니다[c]
+  rationale: 원문의 서술 연결을 불필요한 ‘이제’ 없이 반영하고, הַכַּשְׂדִּים의 역사적 명칭을 본문에 보존했습니다. ‘소식’은 שֵׁמַע의 중립적 의미를 살리며, 각주를 실제 해당 표현에 연결하여 ‘그들의’ 지시 대상과 ‘올라가다’의 포위전 관용 의미를 밝혔습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:25:45Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 본문의 ‘바빌론군’은 문맥상 가리키는 대상을 잘 전달하지만, 히브리어 הַכַּשְׂדִּים(‘갈대아인들’)을 본문에서 대체하여 원문의 민족명/역사적 명칭을 약화합니다. 또한 선행 접속사 וְ를 ‘이제’로 옮긴 것은 현대 한국어에서 불필요한 시간 표지를 더합니다. שֵׁמַע는 여기서 ‘소문’보다 중립적인 ‘소식’이 적절합니다.
+  naturalness: ‘예루살렘을 포위하고 있던 자들’이라는 삽입 구문은 ‘갈대아인들’을 수식하는 자연스러운 관계절로 정리할 수 있습니다. ‘…나왔고, …듣고 …물러갔습니다’는 원문의 사건 순서와 현대 합쇼체 문체를 자연스럽게 반영합니다.
+  terminology: ‘파라오’, ‘군대’, ‘예루살렘’은 적절합니다. 원문에 가까운 ‘갈대아인들’을 본문에 유지하고, ‘바빌론 사람들’을 각주에서 문맥적 대안으로 제시하는 것이 좋습니다.
+  issues:
+  - severity: medium
+    issue: ‘이제’가 원문에 없는 시간 표지를 추가합니다.
+    rationale: 히브리어 접속사 וְ는 서사를 연결하지만, 이 절에서 ‘이제’라는 명시적 시간 부사를 요구하지 않습니다.
+  - severity: medium
+    issue: 본문의 ‘바빌론군’이 הַכַּשְׂדִּים(갈대아인들)를 해석적으로 대체합니다.
+    rationale: 바빌론 세력을 가리키는 문맥은 분명하지만, 최적 등가 번역에서는 원문의 명칭을 본문에 보존하고 문맥적 대응어를 각주로 처리하는 편이 안전합니다.
+  - severity: low
+    issue: ‘소문’은 שֵׁמַע의 의미를 다소 좁힙니다.
+    rationale: 이 문맥의 שֵׁמַע는 확인되지 않은 풍문이라기보다 전달된 ‘소식/보고’입니다.
+  - severity: low
+    issue: 각주 표지가 해당 어휘와 일치하지 않습니다.
+    rationale: 현 초안의 [a]는 ‘이집트’ 뒤에 있으나 내용은 ‘갈대아인들’의 대안이며, 철수 표현의 관용적 직역 설명도 표지로 연결하는 것이 좋습니다.
+  revised_text: 파라오의 군대가 이집트에서 나왔고, 예루살렘을 포위하고 있던 갈대아인들[a]이 그들에 관한 소식[b]을 듣고 예루살렘에서 물러갔습니다[c]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘바빌론 사람들’. 여기서 ‘갈대아인들’은 바빌론 세력을 가리키는 명칭입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그들의 소식’이며, 파라오의 군대에 관한 소식이라는 뜻입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 직역하면 ‘예루살렘 위에서 올라갔다’입니다. 포위 상황에서는 예루살렘에서 물러났다는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 서술 연결을 불필요한 ‘이제’ 없이 반영하고, הַכַּשְׂדִּים의 역사적 명칭을 본문에 보존했습니다. ‘소식’은 שֵׁמַע의 중립적 의미를 살리며, 각주를 실제 해당 표현에 연결하여 ‘그들의’ 지시 대상과 ‘올라가다’의 포위전 관용 의미를 밝혔습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:25:45Z'
+  output_hash: b520a636053352a055e115f6b9604535f0ac36c79b9437e46764fb8759ad3adb
+  usage:
+    completion_tokens: 1366
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 440
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 124
+      engine_ttlt_ms: 11054
+      pre_inference_ms: 102
+      service_tbt_ms: 8
+      service_ttft_ms: 320
+      service_ttlt_ms: 11247
+      total_duration_ms: 11153
+      user_visible_ttft_ms: 218
+    prompt_tokens: 2768
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 2176
+    total_tokens: 4134
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 한 바구니에는 매우 좋은 무화과[a]가 있어 처음 익은 무화과 같았고, 한 바구니에는 매우 나쁜 무화과[b]가 있어 그 나쁨 때문에 먹지 못하였습니다.
+  text: 한 바구니에는 처음 익은 무화과[a] 같은 매우 좋은 무화과가 있었고, 다른 한 바구니에는 매우 나쁜 무화과[b]가 있었는데, 그 무화과는 너무 나빠서 먹을 수 없었습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 '초기 무화과 같음' 또는 '첫 수확의 무화과 같음'
-    reason: alternative_reading
+    text: 또는 ‘이른 무화과 같은’ 또는 ‘첫 수확의 무화과 같은’.
+    reason: lexical_alternative
   - marker: b
-    text: 히브리어 원문은 '나쁨 때문에 먹지 못함'을 뜻함
-    reason: alternative_reading
+    text: '히브리어 직역: ‘나쁨 때문에 먹을 수 없는 것들.’'
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: הַ/דּ֣וּד
   english_pob_choice: One basket had very good figs, like first-ripe
@@ -45,4 +45,61 @@ ai_draft:
   usage: {}
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 한 바구니에는 매우 좋은 무화과[a]가 있어 처음 익은 무화과 같았고, 한 바구니에는 매우 나쁜 무화과[b]가 있어 그 나쁨 때문에 먹지 못하였습니다.
+  to: 한 바구니에는 처음 익은 무화과[a] 같은 매우 좋은 무화과가 있었고, 다른 한 바구니에는 매우 나쁜 무화과[b]가 있었는데, 그 무화과는 너무 나빠서 먹을 수 없었습니다.
+  rationale: 문장의 대상과 인과관계를 명확히 하고, ‘처음 익은 무화과’에 관한 각주의 대안을 자연스러운 현대 한국어로 다듬었습니다. 원문의 강한 대조와 모호하지 않은 어휘 범위는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:23:48Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 두 바구니의 대조, ‘매우 좋은/매우 나쁜’이라는 강한 평가, 첫 무화과와의 비교, 그리고 나빠서 먹을 수 없다는 인과관계를 충실히 반영합니다. ‘다른 한 바구니’는 반복되는 히브리어 ‘한 바구니’를 자연스러운 한국어 대조로 옮긴 것입니다.
+  naturalness: 초안의 ‘그 나쁨 때문에 먹지 못하였습니다’는 추상 명사 ‘나쁨’의 지시가 다소 어색하고, 누가 먹지 못했는지 문법적으로 흐릴 수 있습니다. ‘그 무화과는 너무 나빠서 먹을 수 없었습니다’는 원문의 무화과를 분명한 주어로 삼으면서 현대 표준 한국어의 자연스러운 합쇼체 서술입니다.
+  terminology: ‘바구니’, ‘무화과’, ‘처음 익은 무화과’는 문맥과 원어의 의미 범위에 적절합니다. 각주 a는 ‘이른/첫 수확’이라는 가능한 어휘적 이해를 유지하고, 각주 b는 히브리어의 직역적 인과 표현을 제시합니다.
+  issues:
+  - severity: medium
+    issue: ‘그 나쁨 때문에 먹지 못하였습니다’의 표현과 주어 지시
+    rationale: 히브리어는 ‘너무 나빠 먹을 수 없는’ 무화과를 수식합니다. 초안은 ‘나쁨’이라는 추상 명사가 부자연스럽고, 먹을 수 없는 대상이 무화과임을 덜 분명하게 합니다.
+  - severity: low
+    issue: 각주 a의 ‘초기 무화과’ 표현
+    rationale: ‘초기 무화과’는 현대 한국어에서 다소 비관용적입니다. ‘이른 무화과’ 또는 ‘첫 수확의 무화과’가 원문의 가능한 의미를 더 자연스럽게 전달합니다.
+  revised_text: 한 바구니에는 처음 익은 무화과[a] 같은 매우 좋은 무화과가 있었고, 다른 한 바구니에는 매우 나쁜 무화과[b]가 있었는데, 그 무화과는 너무 나빠서 먹을 수 없었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘이른 무화과 같은’ 또는 ‘첫 수확의 무화과 같은’.
+    reason: lexical_alternative
+  - marker: b
+    text: '히브리어 직역: ‘나쁨 때문에 먹을 수 없는 것들.’'
+    reason: lexical_alternative
+  revision_rationale: 문장의 대상과 인과관계를 명확히 하고, ‘처음 익은 무화과’에 관한 각주의 대안을 자연스러운 현대 한국어로 다듬었습니다. 원문의 강한 대조와 모호하지 않은 어휘 범위는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:23:48Z'
+  output_hash: 463703e2e871e05b6e9f9e3b7a226c05b271996a3e164d5daee7a0a3c718b212
+  usage:
+    completion_tokens: 1377
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 697
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 11201
+      pre_inference_ms: 76
+      service_tbt_ms: 8
+      service_ttft_ms: 366
+      service_ttlt_ms: 11419
+      total_duration_ms: 11353
+      user_visible_ttft_ms: 290
+    prompt_tokens: 1854
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3231
+  applied_revision: true
+  auto_apply_blocked_errors: []

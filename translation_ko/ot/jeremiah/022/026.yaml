@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 내가 너와 네 어머니를, 너희가 태어나지 않은 다른 땅으로 던지리니, 거기에서 너희는 죽을 것입니다.[a]
+  text: 내가 너와 너를 낳은 네 어머니를 너희가[a] 태어나지 않은 다른 땅으로 내던질 것입니다. 너희는 거기에서 죽을 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 뒤에서 단수 ‘너’에서 복수 동사로 바뀌어 왕과 어머니를 함께 가리킵니다.
+    text: 히브리어는 처음에 단수 ‘너’를 사용하다가 뒤에서 복수 동사로 바뀌며, 왕과 그의 어머니를 함께 가리킵니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְהֵטַלְתִּי
@@ -85,4 +85,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 내가 너와 네 어머니를, 너희가 태어나지 않은 다른 땅으로 던지리니, 거기에서 너희는 죽을 것입니다.[a]
+  to: 내가 너와 너를 낳은 네 어머니를 너희가[a] 태어나지 않은 다른 땅으로 내던질 것입니다. 너희는 거기에서 죽을 것입니다.
+  rationale: 어머니를 수식하는 ‘너를 낳은’을 복원하여 히브리어 관계절을 빠짐없이 옮겼습니다. 후반의 복수 동사를 ‘너희’로 유지하고, 각주를 그 전환이 나타나는 지점에 붙여 원문의 단수·복수 전환을 투명하게 드러냈습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:21:48Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안은 ‘너를 낳은’(אֲשֶׁר יְלָדַתְךָ)이라는, 어머니를 수식하는 관계절을 빠뜨렸습니다. 또한 후반의 복수 형태는 왕과 그의 어머니를 함께 가리키는 것으로 적절히 반영해야 합니다.
+  naturalness: 합쇼체는 대체로 자연스럽지만, ‘너와 네 어머니를’만으로는 원문의 ‘너를 낳은 네 어머니’라는 한정이 누락됩니다. 두 문장으로 나누면 한국어에서 복수 주어와 장소 부사가 더 명료해집니다.
+  terminology: ‘다른 땅’, ‘내던질 것입니다’, ‘죽을 것입니다’는 심판과 강제 추방의 문맥 및 현대 표준 한국어 합쇼체에 적절합니다. ‘너를 낳은 네 어머니’는 원문의 관계절을 충실히 전달합니다.
+  issues:
+  - severity: high
+    issue: 어머니를 수식하는 관계절 누락
+    rationale: 히브리어 אֲשֶׁר יְלָדַתְךָ는 ‘너를 낳은’으로서 ‘네 어머니’를 수식합니다. 초안에는 이 정보가 없어 원문 내용이 축소되었습니다.
+  - severity: low
+    issue: 각주의 문법 설명 표현
+    rationale: ‘단수 너에서 복수 동사로’보다, 처음의 단수 대명사와 뒤의 복수 동사라는 전환을 명시하면 문법적으로 더 정확합니다.
+  revised_text: 내가 너와 너를 낳은 네 어머니를 너희가[a] 태어나지 않은 다른 땅으로 내던질 것입니다. 너희는 거기에서 죽을 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 처음에 단수 ‘너’를 사용하다가 뒤에서 복수 동사로 바뀌며, 왕과 그의 어머니를 함께 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 어머니를 수식하는 ‘너를 낳은’을 복원하여 히브리어 관계절을 빠짐없이 옮겼습니다. 후반의 복수 동사를 ‘너희’로 유지하고, 각주를 그 전환이 나타나는 지점에 붙여 원문의 단수·복수 전환을 투명하게 드러냈습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:21:48Z'
+  output_hash: 1dfc87c373f52fd641ac51f5901e7eeec942535cb2377e48f77c8bf17c06c38b
+  usage:
+    completion_tokens: 787
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 204
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 126
+      engine_ttlt_ms: 6160
+      pre_inference_ms: 89
+      service_tbt_ms: 8
+      service_ttft_ms: 367
+      service_ttlt_ms: 6396
+      total_duration_ms: 6315
+      user_visible_ttft_ms: 278
+    prompt_tokens: 2157
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2944
+  applied_revision: true
+  auto_apply_blocked_errors: []

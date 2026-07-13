@@ -13,12 +13,12 @@ base_translation:
   text: You have heard; now see all this. And will you not declare it? From now on I make you hear new things, hidden things that you have not known.
 translation:
   language: ko
-  text: 당신은 이미 들었습니다. 이제 이 모든 것을 보십시오. 그런데도 어찌 그것을 선포하지 않겠습니까? 이제부터 나는 당신에게 새 일들, 곧 당신이 알지 못했던 감추어진 일들을 듣게 합니다.[a]
+  text: 당신은 이미 들었습니다. 이제 이 모든 것을 보십시오. 여러분은[a] 이 일을 알리지 않겠습니까? 이제부터 내가 당신에게 새 일들, 곧 당신이 알지 못한 감추어진 일들을 들려줍니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘선포하다’는 여기서 단순한 말하기보다 공개적으로 알리는 뜻을 살렸습니다.
-    reason: lexical_alternative
+    text: 히브리어 본문은 이 질문에서 복수형 ‘여러분’을 사용하고, 앞뒤 문장에서는 단수형으로 돌아갑니다.
+    reason: source_grammar
 lexical_decisions:
 - source_word: שָׁמַ֤עְתָּֽ
   english_pob_choice: You have heard
@@ -72,4 +72,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 당신은 이미 들었습니다. 이제 이 모든 것을 보십시오. 그런데도 어찌 그것을 선포하지 않겠습니까? 이제부터 나는 당신에게 새 일들, 곧 당신이 알지 못했던 감추어진 일들을 듣게 합니다.[a]
+  to: 당신은 이미 들었습니다. 이제 이 모든 것을 보십시오. 여러분은[a] 이 일을 알리지 않겠습니까? 이제부터 내가 당신에게 새 일들, 곧 당신이 알지 못한 감추어진 일들을 들려줍니다.
+  rationale: 원문의 단수-복수-단수 인칭 전환을 보존하고, 과도하게 강화된 ‘선포’와 ‘그런데도’를 중립적인 현대 한국어로 조정했습니다. 마지막 절의 ‘듣게 하다’ 의미와 새롭고 감추어진 일들의 관계는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:08:07Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어는 첫 문장과 마지막 문장에서 단수 2인칭을 쓰지만, ‘알리지 않겠습니까?’에 해당하는 תַגִּידוּ는 복수 2인칭입니다. 초안은 이를 모두 단수 ‘당신’으로 평준화하여 본문의 인칭 전환을 잃었습니다. 또한 תַגִּידוּ는 문맥상 ‘알리다/말하다’로 충분하며, ‘선포하다’는 가능한 해석이지만 불필요하게 전문적·강한 뉘앙스를 더합니다.
+  naturalness: 합쇼체의 직접 호소를 유지하면서 단수와 복수의 전환을 ‘당신/여러분’으로 명시했습니다. ‘그런데도 어찌’는 원문의 단순 접속과 수사 의문에 더해지는 대조·강조이므로 제거했습니다. ‘들려줍니다’는 הִשְׁמַעְתִּיךָ의 ‘듣게 하다’ 의미를 자연스럽게 반영합니다.
+  terminology: חֲדָשׁוֹת와 נְצֻרוֹת의 병렬·설명 관계를 ‘새 일들, 곧 … 감추어진 일들’로 유지했습니다. ‘감추어진’은 본문의 숨겨진 것이라는 의미를 보존합니다.
+  issues:
+  - severity: medium
+    issue: 복수 2인칭의 누락
+    rationale: תַגִּידוּ는 복수형인데 초안은 단수 ‘당신’으로 옮겼습니다. 한국어 번역에서 ‘여러분’을 사용하고 주석으로 본문의 단수/복수 전환을 밝혀야 합니다.
+  - severity: low
+    issue: ‘선포하다’ 및 이에 관한 어휘 주석
+    rationale: נגד의 히필은 여기서 ‘알리다, 말하다’로 옮길 수 있습니다. ‘공개적으로 선포하다’라는 주석은 본문이 요구하는 것보다 의미를 좁히고 강화하므로 삭제하는 것이 안전합니다.
+  - severity: low
+    issue: 첨가된 대조 표현
+    rationale: ‘그런데도 어찌’의 ‘그런데도’는 히브리어 접속사 וְ 이상으로 대조를 강화하므로 단순 수사 의문으로 옮깁니다.
+  revised_text: 당신은 이미 들었습니다. 이제 이 모든 것을 보십시오. 여러분은[a] 이 일을 알리지 않겠습니까? 이제부터 내가 당신에게 새 일들, 곧 당신이 알지 못한 감추어진 일들을 들려줍니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 본문은 이 질문에서 복수형 ‘여러분’을 사용하고, 앞뒤 문장에서는 단수형으로 돌아갑니다.
+    reason: source_grammar
+  revision_rationale: 원문의 단수-복수-단수 인칭 전환을 보존하고, 과도하게 강화된 ‘선포’와 ‘그런데도’를 중립적인 현대 한국어로 조정했습니다. 마지막 절의 ‘듣게 하다’ 의미와 새롭고 감추어진 일들의 관계는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:08:07Z'
+  output_hash: 23d135ac05d4fac56da207cf6c78e7b5c830355f34d9da91027a33ee816eb57c
+  usage:
+    completion_tokens: 1663
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 899
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 150
+      engine_ttlt_ms: 14084
+      pre_inference_ms: 635
+      service_tbt_ms: 8
+      service_ttft_ms: 961
+      service_ttlt_ms: 14889
+      total_duration_ms: 14265
+      user_visible_ttft_ms: 326
+    prompt_tokens: 1608
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3271
+  applied_revision: true
+  auto_apply_blocked_errors: []
