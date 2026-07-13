@@ -20,8 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: '지금 말씀드리고 있는 것들의 핵심은 이것입니다: 우리에게는 이러한 대제사장이 계신데, 그분은 하늘에 계신 위엄의 보좌 우편에 앉으셨으며,'
+  text: '논의되고 있는 내용의 요점[a]은 이렇습니다: 우리에게는 이와 같은 대제사장이 계시며, 그분은 하늘들[b]에 있는 위엄의 보좌 오른편에 앉으셨습니다,'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘요약’ 또는 ‘가장 중요한 점’.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘하늘에’. 그리스어는 복수형이다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: ἀρχιερέα
   english_pob_choice: high priest
@@ -44,4 +51,64 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: '지금 말씀드리고 있는 것들의 핵심은 이것입니다: 우리에게는 이러한 대제사장이 계신데, 그분은 하늘에 계신 위엄의 보좌 우편에 앉으셨으며,'
+  to: '논의되고 있는 내용의 요점[a]은 이렇습니다: 우리에게는 이와 같은 대제사장이 계시며, 그분은 하늘들[b]에 있는 위엄의 보좌 오른편에 앉으셨습니다,'
+  rationale: Temporal 「지금」과 번역자가 자신을 낮추어 말하는 듯한 「말씀드리고」를 제거하여 그리스어의 담화적 요약과 수동적 표현을 보존했습니다. 「이와 같은 대제사장」, 「위엄」, 「보좌 오른편」은 원문의 지시성과 경칭 및 왕권 이미지를 유지합니다. 절 끝의 쉼표는 원문과 같이 다음 절로 이어지는 문장 구조를 반영합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T11:49:31Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft correctly renders ἀρχιερέα as 「대제사장」 and retains the indirect divine designation in 「위엄」. However, 「지금」 adds a temporal sense not present in the Greek, and 「말씀드리고 있는 것들」 introduces a deferential first-person speaker not expressed by the passive participle λεγομένοις. The plural form of ἐν τοῖς οὐρανοῖς should also be represented or noted.
+  naturalness: 「지금 말씀드리고 있는 것들의 핵심」 is awkward in modern formal Korean and unnecessarily makes the author the deferential speaker. 「논의되고 있는 내용의 요점은 이렇습니다」 is natural, formal, and retains the discourse-summary function.
+  terminology: 「대제사장」 is the standard term. 「위엄」 appropriately preserves μεγαλωσύνη as a reverential circumlocution rather than explicitly supplying 하나님. 「하늘들」 is somewhat marked in Korean but faithfully reflects the Greek plural and is supported by a note.
+  issues:
+  - severity: medium
+    issue: 「지금」 adds an unsupported temporal meaning.
+    rationale: δέ is a mild connective/discourse transition, not the temporal adverb ‘now.’ The English audit trail specifically removed leading ‘Now’; Korean 「지금」 should likewise be omitted.
+  - severity: medium
+    issue: 「말씀드리고 있는 것들」 changes the source’s impersonal/passive wording and register.
+    rationale: ἐπὶ τοῖς λεγομένοις means ‘regarding the things being said/discussed.’ The Korean expression introduces an honorific first-person act of speaking that the Greek does not state.
+  - severity: low
+    issue: The source plural 「하늘들」 and lexical alternative for κεφάλαιον lack footnote anchors.
+    rationale: The English audit trail records both as reader-facing lexical matters. Supplying anchors preserves the audit trail and clarifies the marked Korean plural.
+  revised_text: '논의되고 있는 내용의 요점[a]은 이렇습니다: 우리에게는 이와 같은 대제사장이 계시며, 그분은 하늘들[b]에 있는 위엄의 보좌 오른편에 앉으셨습니다,'
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘요약’ 또는 ‘가장 중요한 점’.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘하늘에’. 그리스어는 복수형이다.
+    reason: lexical_alternative
+  revision_rationale: Temporal 「지금」과 번역자가 자신을 낮추어 말하는 듯한 「말씀드리고」를 제거하여 그리스어의 담화적 요약과 수동적 표현을 보존했습니다. 「이와 같은 대제사장」, 「위엄」, 「보좌 오른편」은 원문의 지시성과 경칭 및 왕권 이미지를 유지합니다. 절 끝의 쉼표는 원문과 같이 다음 절로 이어지는 문장 구조를 반영합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T11:49:31Z'
+  output_hash: d997c2ce53838e22ee662c6876a58f93d0278e5c0824272765fdefa997525366
+  usage:
+    completion_tokens: 1446
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 764
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 128
+      engine_ttlt_ms: 12321
+      pre_inference_ms: 74
+      service_tbt_ms: 8
+      service_ttft_ms: 555
+      service_ttlt_ms: 12732
+      total_duration_ms: 12667
+      user_visible_ttft_ms: 481
+    prompt_tokens: 2163
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3609
+  applied_revision: true
+  auto_apply_blocked_errors: []

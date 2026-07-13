@@ -6,17 +6,16 @@ language:
   variant: 표준어 / modern formal-polite (합쇼체)
 source:
   edition: SBLGNT
-  text: 'εἶτα ἡ ἐπιθυμία συλλαβοῦσα τίκτει ἁμαρτίαν, ἡ δὲ ἁμαρτία ἀποτελεσθεῖσα ἀποκύει θάνατον.'
+  text: εἶτα ἡ ἐπιθυμία συλλαβοῦσα τίκτει ἁμαρτίαν, ἡ δὲ ἁμαρτία ἀποτελεσθεῖσα ἀποκύει θάνατον.
 base_translation:
   language: en
   yaml_path: translation/nt/james/001/015.yaml
-  text: 'Then desire[a], after it has conceived, gives birth to sin; and sin, when it is fully grown[b], brings forth death.'
+  text: Then desire[a], after it has conceived, gives birth to sin; and sin, when it is fully grown[b], brings forth death.
 translation:
   language: ko
-  text: '그 다음 욕망이 잉태하여 죄를 낳고, 죄가 다 자라면 죽음을 낳습니다.'
+  text: 그 다음 욕망이 잉태하여 죄를 낳고, 죄가 다 자라면 죽음을 낳습니다.
   philosophy: optimal-equivalence
-lexical_decisions:
-  []
+lexical_decisions: []
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -24,4 +23,57 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 비유와 순서는 대체로 충실합니다. 다만 εἶτα는 여기서 구어적인 ‘그 다음’보다 문맥상 전개를 나타내는 ‘그 후에’가 더 적절하며, ἀποτελεσθεῖσα의 완료·성숙 뉘앙스를 ‘완전히 자라면’으로 밝혀 주는 편이 좋습니다.
+  naturalness: ‘그 다음’은 현대 합쇼체 성경 문맥에서는 다소 구어적입니다. ‘그 후에’와 ‘완전히 자라면’은 자연스럽고, 잉태·출산의 의인화된 비유도 유지합니다.
+  terminology: ἐπιθυμία는 성적인 의미로 한정하지 않는 ‘욕망’으로 유지하고, ἁμαρτία와 θάνατος는 각각 ‘죄’와 ‘죽음’으로 직역합니다. 죽음의 범위를 해석적으로 한정하지 않습니다.
+  issues:
+  - severity: low
+    issue: 접속 표현 ‘그 다음’
+    rationale: εἶτα가 표시하는 논리적·시간적 진행에는 ‘그 후에’가 더 자연스럽고 현대적인 문어체입니다.
+  - severity: low
+    issue: ‘다 자라면’의 표현
+    rationale: 의미는 맞지만 ἀποτελεσθεῖσα의 완료 또는 성숙의 뉘앙스를 ‘완전히 자라면’이 더 명확히 드러냅니다.
+  revised_text: 그 후에 욕망이 잉태하여 죄를 낳고, 죄는 완전히 자라면 죽음을 낳습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘잉태한 뒤에’. 그리스어 분사는 욕망이 잉태하고 죄를 낳는 출산의 비유를 긴밀히 연결합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘완성되면’ 또는 ‘성숙하면’.
+    reason: lexical_alternative
+  revision_rationale: 문장의 전개를 더 자연스러운 현대 표준 한국어로 다듬되, 욕망이 잉태하여 죄를 낳고 죄가 죽음을 낳는 원문의 의인화된 출산 비유와 순서를 보존했습니다. ‘죽음’의 의미 범위는 원문처럼 한정하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T11:52:51Z'
+  output_hash: e3be451a331932ef2e2f7360f93b4d2b31e036a4b2b66c42c29d772f1f0ec8e1
+  usage:
+    completion_tokens: 967
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 402
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 153
+      engine_ttlt_ms: 8271
+      pre_inference_ms: 172
+      service_tbt_ms: 8
+      service_ttft_ms: 495
+      service_ttlt_ms: 8609
+      total_duration_ms: 8446
+      user_visible_ttft_ms: 323
+    prompt_tokens: 1590
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2557
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]
