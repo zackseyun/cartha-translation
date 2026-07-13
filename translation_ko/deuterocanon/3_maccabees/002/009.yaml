@@ -101,4 +101,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안의 마지막 절은 ‘내가 우리의 기도를 들을 것입니다’라고 1인칭으로 옮겼지만, 제시된 그리스어 εἰσακούσῃ는 형태상 3인칭 단수 접속법입니다. 본문 자체가 ἐπηγγείλω(‘나는 약속했다’)와 이 3인칭 동사를 비정상적으로 연결하므로, 이를 1인칭 약속으로 정리해서는 안 됩니다. 또한 ἡμῶν ἀποστροφή는 ‘우리에게서 돌아섬’보다 ‘우리가 돌아섬/우리의 돌아섬’이 소유·주체 관계를 더 정확히 드러냅니다.
+  naturalness: ‘이스라엘의 집’은 성서적 관용을 보존하면서도 한국어에서 이해 가능합니다. 다만 ‘우리에게서 돌아섬이 생기고’는 어색하고 의미 관계도 불분명합니다. ‘우리가 돌아서고’로 고치면 자연스럽습니다. 마지막 구문은 원문 자체의 문법적 긴장을 반영하되, 한국어 본문에서는 무리하게 대명사를 보충하지 않고 각주로 설명하는 편이 안전합니다.
+  terminology: ἀποστροφή는 ‘돌아서다’로 옮기고 ‘배도’를 대안으로 각주에 남기는 것이 적절합니다. δεήσεως는 청원·간구의 뜻이 두드러지므로, 앞의 일반적 ‘기도’와의 반복을 피하면서 원어의 뉘앙스를 살린 ‘간구’를 사용했습니다. ‘우리 곳’은 τόπον ἡμῶν을 과도하게 ‘성소’로 특정하지 않는 번역입니다.
+  issues:
+  - severity: high
+    issue: 마지막 동사의 인칭을 1인칭으로 평준화함
+    rationale: εἰσακούσῃ는 제시된 Swete 본문에서 3인칭 단수 접속법입니다. 직전의 1인칭 ἐπηγγείλω와 조화시키려 ‘내가 … 들을 것입니다’로 바꾸면 원문의 난점과 형태를 지우게 됩니다.
+  - severity: medium
+    issue: ἡμῶν ἀποστροφή의 관계를 ‘우리에게서’로 처리함
+    rationale: 속격 ἡμῶν은 ‘우리의/우리가 하는’ 돌아섬을 나타냅니다. ‘우리에게서’는 돌아섬의 출발점처럼 들려 의미 관계가 흐려집니다.
+  - severity: low
+    issue: δεήσεως를 ‘기도’로 일반화함
+    rationale: ‘기도’도 가능하지만, δεήσεως의 간청·청원적 성격을 살려 ‘간구’로 옮기는 것이 이 절에서는 더 정확합니다.
+  revised_text: 그리고 이스라엘의 집을 사랑하며, 나는 약속했습니다. 만일 우리가 돌아서고 환난이 우리를 덮치며, 우리가 우리 곳에 와서 간구하면, 우리의 간구를 들어 주실 것입니다.[a][b]
+  revised_footnotes:
+  - marker: a
+    text: ‘우리가 돌아서고’는 그리스어 ἀποστροφή를 옮긴 것입니다. 이 말은 ‘배도’, ‘이탈’, 또는 ‘돌아섬’을 뜻할 수 있습니다. 여기서는 그 성격을 더 특정하지 않았습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 제시된 그리스어 본문은 이 절의 구조가 다소 어색합니다. 앞에서는 ‘나는 약속했습니다’라고 1인칭으로 말하지만, 마지막 동사 εἰσακούσῃ는 형태상 3인칭 단수 접속법입니다. 본문은 이 불일치를 매끄럽게 1인칭으로 고치지 않고, 한국어에서는 주어를 명시하지 않은 채 보존했습니다.
+    reason: textual_variant
+  revision_rationale: 원문 우선 원칙에 따라, 3인칭 단수 형태인 εἰσακούσῃ를 영어 감사 기록의 ‘I will hear’ 및 초안의 ‘내가 … 들을 것입니다’처럼 1인칭으로 정리하지 않았습니다. 원문의 불규칙한 발화 구조는 각주로 밝혔고, 본문에서는 특정한 주어를 추가하지 않아 본문 전승의 불확실성을 보존했습니다. 또한 ἡμῶν ἀποστροφή를 자연스럽고 정확하게 ‘우리가 돌아서고’로 고쳤습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:52:01Z'
+  output_hash: 7c4e9d3b84409ab03431890ced0528f9664a806efcfd0d7600435691b3bb2123
+  usage:
+    completion_tokens: 2183
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1116
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 153
+      engine_ttlt_ms: 19189
+      pre_inference_ms: 93
+      service_tbt_ms: 9
+      service_ttft_ms: 606
+      service_ttlt_ms: 19637
+      total_duration_ms: 19555
+      user_visible_ttft_ms: 513
+    prompt_tokens: 3097
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5280
+  applied_revision: false
+  auto_apply_blocked_errors: []

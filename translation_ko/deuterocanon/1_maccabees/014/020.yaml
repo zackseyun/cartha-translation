@@ -25,12 +25,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 이것은 스파르타 사람들이 보낸 편지들의 사본입니다. 곧 스파르타의 통치자들과 그 도시가 대제사장 시몬에게, 또 장로들과 제사장들과 유대인들의 나머지 백성 곧 그들의 형제들에게 보내는 인사말입니다.[a]
+  text: 그리고 이것은 스파르타인들, 곧 스파르타인들의 통치자들과 그 도시가 대제사장 시몬과 장로들과 제사장들과 그 밖의 유대 백성, 곧 스파르타인들의 형제들에게 보낸 편지들의 사본입니다. 문안 인사를 드립니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 그리스어 본문은 단수 ‘편지’가 아니라 복수형 ‘편지들’을 사용하지만, 여기서는 한 통의 외교 문서를 가리키는 서문으로 읽히므로 한국어 본문에서는 ‘편지들의 사본’으로 옮겼습니다.
-    reason: textual_variant
+    text: 그리스어의 ‘편지들’은 복수형입니다. 문맥상 이어지는 한 통의 외교 서신을 소개하지만, 본문에서는 원문의 복수형을 유지했습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: ἀντίγραφον τῶν ἐπιστολῶν
   english_pob_choice: copy of the letter
@@ -102,4 +102,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 이것은 스파르타 사람들이 보낸 편지들의 사본입니다. 곧 스파르타의 통치자들과 그 도시가 대제사장 시몬에게, 또 장로들과 제사장들과 유대인들의 나머지 백성 곧 그들의 형제들에게 보내는 인사말입니다.[a]
+  to: 그리고 이것은 스파르타인들, 곧 스파르타인들의 통치자들과 그 도시가 대제사장 시몬과 장로들과 제사장들과 그 밖의 유대 백성, 곧 스파르타인들의 형제들에게 보낸 편지들의 사본입니다. 문안 인사를 드립니다.[a]
+  rationale: 원문의 문서 소개 구조와 마지막 서신 인사 공식을 분리했습니다. ἐπιστολῶν의 복수형은 ‘편지들의’로 보존했으며, ἀδελφοῖς의 외교적 친족 호칭은 관계가 분명하도록 ‘스파르타인들의 형제들’로 밝혔습니다. 신학적 또는 교파적 해석은 추가하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:46:23Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 ἀντίγραφον τῶν ἐπιστολῶν의 복수형과 대제사장, 장로들, 제사장들, 유대 백성이라는 수신자 열거를 대체로 충실히 반영합니다. 그러나 χαίρειν은 편지의 관용적인 결어·인사말인데, 초안의 ‘...형제들에게 보내는 인사말입니다’는 ‘사본’과 ‘인사말’을 문법적으로 부자연스럽게 결합하고 발신 행위를 현재형으로 바꿉니다. 또한 ἀδελφοῖς는 유대인 수신자들을 스파르타인들이 ‘형제들’로 부르는 호칭이므로 그 관계를 분명히 하는 편이 좋습니다.
+  naturalness: ‘편지들의 사본’은 다소 문서적이지만 원문의 복수형을 보존하는 안전한 표현입니다. 발신자와 수신자를 한 문장으로 정리하고, 마지막 인사 공식을 별도 문장으로 처리하면 현대 한국어 합쇼체에서 훨씬 자연스럽습니다.
+  terminology: ‘스파르타인들’, ‘통치자들’, ‘대제사장’, ‘장로들’, ‘제사장들’, ‘유대 백성’은 적절합니다. ‘그들의 형제들’은 선행사가 모호할 수 있으므로 ‘스파르타인들의 형제들’로 명시했습니다.
+  issues:
+  - severity: medium
+    issue: χαίρειν의 문장 기능이 부정확하고 한국어 문장이 어색합니다.
+    rationale: χαίρειν은 수신자들에게 보내는 서신 인사 공식입니다. ‘사본입니다. ... 보내는 인사말입니다’라는 구조는 원문의 편지 소개와 인사 공식을 혼합하며, ‘보낸’이라는 과거 발신 행위와도 호응하지 않습니다.
+  - severity: low
+    issue: ‘그들의 형제들에게’의 지시 대상이 한국어에서 모호합니다.
+    rationale: 원문은 외교적 친족 호칭으로 유대인 수신자들을 ‘형제들’이라 부릅니다. 스파르타인들과의 관계를 명시하면 오독을 막을 수 있습니다.
+  - severity: medium
+    issue: 각주 설명이 본문 선택과 모순됩니다.
+    rationale: 각주는 한 통의 문서로 읽힌다고 설명하면서도 본문에는 복수형 ‘편지들의 사본’을 사용했다고 말합니다. 복수형을 본문에 유지한다면 그 사실만 간명하게 설명해야 합니다.
+  revised_text: 그리고 이것은 스파르타인들, 곧 스파르타인들의 통치자들과 그 도시가 대제사장 시몬과 장로들과 제사장들과 그 밖의 유대 백성, 곧 스파르타인들의 형제들에게 보낸 편지들의 사본입니다. 문안 인사를 드립니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 그리스어의 ‘편지들’은 복수형입니다. 문맥상 이어지는 한 통의 외교 서신을 소개하지만, 본문에서는 원문의 복수형을 유지했습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 문서 소개 구조와 마지막 서신 인사 공식을 분리했습니다. ἐπιστολῶν의 복수형은 ‘편지들의’로 보존했으며, ἀδελφοῖς의 외교적 친족 호칭은 관계가 분명하도록 ‘스파르타인들의 형제들’로 밝혔습니다. 신학적 또는 교파적 해석은 추가하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:46:23Z'
+  output_hash: e94af8e3791e220ce98af20007ffc26b5718be60848da75fa45f8c8402b4fceb
+  usage:
+    completion_tokens: 1352
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 494
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 10417
+      pre_inference_ms: 125
+      service_tbt_ms: 8
+      service_ttft_ms: 359
+      service_ttlt_ms: 10632
+      total_duration_ms: 10517
+      user_visible_ttft_ms: 234
+    prompt_tokens: 3117
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4469
+  applied_revision: true
+  auto_apply_blocked_errors: []

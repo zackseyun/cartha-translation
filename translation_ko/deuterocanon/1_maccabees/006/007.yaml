@@ -104,4 +104,59 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘인 βδέλυγμα, θυσιαστήριον, ἁγίασμα는 대체로 충실하게 옮겼습니다. 그러나 마지막 절의 τὴν Βεθσουρὰ πόλιν αὐτοῦ는 ‘베드수라, 그의 성읍’이라는 하나의 동격구인데, 초안의 ‘베드수라와 그의 성읍’은 이를 둘의 별도 대상으로 바꾸어 원문의 통사 관계를 훼손합니다. 또한 높은 성벽으로 둘러싼 행위는 성소와 베드수라 양쪽에 적용됩니다.
+  naturalness: ‘베드수라와 그의 성읍도 그러했습니다’는 한국어로 무엇이 ‘그러했다’는 것인지 불분명하고, 앞 동작의 목적어 병렬도 자연스럽게 연결하지 못합니다. ‘그의 성읍 베드수라도 높은 성벽으로 둘러쌌습니다’로 명시하면 현대 표준어 합쇼체로 자연스럽고 정확합니다.
+  terminology: ‘제단’, ‘성소’, ‘가증한 것’은 제의 문맥과 한국어 성서 번역 관습에 잘 맞습니다. ‘가증한 것’에 붙은 각주는 영어 표현을 인용하는 대신 그리스어 표현의 뜻을 한국어로 설명하도록 고치는 편이 적절합니다.
+  issues:
+  - severity: high
+    issue: ‘베드수라와 그의 성읍’이 원문의 동격구를 두 개의 병렬 목적어로 바꿉니다.
+    rationale: τὴν Βεθσουρὰ πόλιν αὐτοῦ는 문자적으로 ‘베드수라, 그의 성읍’이며, ‘그의 성읍’은 베드수라를 수식·동격 설명합니다. 접속사 ‘와’를 넣으면 의미 구조가 달라집니다.
+  - severity: medium
+    issue: ‘베드수라와 그의 성읍도 그러했습니다’는 둘러쌌다는 동작을 불명확하게 대용합니다.
+    rationale: 그리스어의 ἐκύκλωσαν τείχεσιν ὑψηλοῖς는 성소뿐 아니라 베드수라에도 걸립니다. 한국어에서는 동사를 반복해 적용 범위를 명확히 하는 것이 안전합니다.
+  - severity: low
+    issue: 각주 a가 영어 ‘the abomination’을 그대로 제시합니다.
+    rationale: 한국어 번역 각주는 그리스어 단어의 제의적 용법을 한국어로 설명하는 것이 자연스럽고 독자에게 직접적입니다.
+  revised_text: 그리고 그들은 예루살렘의 제단 위에 그가 세운 가증한 것을[a] 무너뜨리고, 성소를 이전과 같이 높은 성벽으로 둘러쌌으며, 그의 성읍 베드수라도 높은 성벽으로 둘러쌌습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘가증스러운 것’. 그리스어는 예배에서 혐오스럽고 부정한 것으로 여겨지는 대상을 가리키는 제의적 표현입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 그리스어의 ‘베드수라, 그의 성읍’은 압축된 동격 표현입니다. 여기의 ‘그의’는 문맥상 유다를 가리키는 것으로 보는 해석이 유력하지만, 더 넓게는 그의 통제 아래 있던 성읍으로 이해할 수도 있습니다.
+    reason: alternative_reading
+  revision_rationale: 베드수라를 ‘그의 성읍’과 동격으로 유지하고, 높은 성벽으로 둘러싼 행위가 베드수라에도 적용됨을 한국어 문장에서 명확히 했습니다. βδέλυγμα의 제의적 무게는 ‘가증한 것’과 보완 각주로 보존했으며, 원문에 없는 해석은 본문에 추가하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:40:44Z'
+  output_hash: 2d464e52a35beb1b2181da99e3b9b6d8b2193f520c008880d0bd033527958f94
+  usage:
+    completion_tokens: 1230
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 312
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 9307
+      pre_inference_ms: 95
+      service_tbt_ms: 7
+      service_ttft_ms: 331
+      service_ttlt_ms: 9485
+      total_duration_ms: 9418
+      user_visible_ttft_ms: 236
+    prompt_tokens: 2554
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3784
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

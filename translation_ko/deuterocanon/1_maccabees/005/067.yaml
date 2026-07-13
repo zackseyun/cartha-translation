@@ -25,14 +25,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그날에 제사장들이 전투에서 쓰러졌습니다[a]. 이는 그가 용맹을 떨치고자 했기 때문입니다[b]—그들이 아무런 계책 없이 전투로 나갔기 때문입니다.
+  text: 그날 제사장들은, 그가 용맹을 드러내고자 했기 때문에[a], 그들이 아무런 의논도 없이 전투에 나갔을 때 전투에서 쓰러졌습니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘전사했습니다’, ‘죽었습니다’. 여기서는 전투 맥락의 죽음을 살려 ‘쓰러졌습니다’로 옮겼습니다.
+    text: 또는 ‘두드러지게 자신을 보이고자 했기 때문에’, ‘영웅적 행위를 하고자 했기 때문에’. 그리스어 동사는 용맹을 보이거나 영웅적 행위를 한다는 뜻을 지닙니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘두드러지게 자신을 보이고자 했기 때문입니다’, ‘영웅적 행위를 하고자 했기 때문입니다’. 그리스어는 용맹을 드러내는 뜻을 지닙니다.
+    text: 또는 ‘숙고 없이’, ‘성급하게’. 그리스어는 문자적으로 ‘의논 없이’라는 뜻입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: ἔπεσαν
@@ -89,4 +89,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그날에 제사장들이 전투에서 쓰러졌습니다[a]. 이는 그가 용맹을 떨치고자 했기 때문입니다[b]—그들이 아무런 계책 없이 전투로 나갔기 때문입니다.
+  to: 그날 제사장들은, 그가 용맹을 드러내고자 했기 때문에[a], 그들이 아무런 의논도 없이 전투에 나갔을 때 전투에서 쓰러졌습니다[b].
+  rationale: 원문의 단수 속격절(‘그가 ... 하고자 했기 때문에’)을 단수 대명사로 보존하고, 복수 주어를 지닌 부정사 구문은 시간절(‘그들이 ... 나갔을 때’)로 옮겼습니다. ‘쓰러지다’는 전투에서 죽었다는 관용적 함의를 유지합니다. 각주 표지를 실제 해당 어휘인 ἀνδραγαθῆσαι와 ἀβουλεύτως 뒤에 배치하고, 기존의 구조적으로 불일치한 표지·내용을 바로잡았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:40:15Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 사건과 단수 대명사 αὐτοῦ는 대체로 보존했지만, 현 번역은 원문의 인과·시간 관계를 두 개의 독립적인 ‘때문입니다’ 절로 처리하여 문장 관계가 불명확합니다. 또한 각주 표지가 가리키는 그리스어 어휘 및 각주 내용이 서로 맞지 않습니다.
+  naturalness: ‘그날에’보다 ‘그날’이 현대 표준 한국어에 더 자연스럽습니다. ‘아무런 계책 없이’는 전략의 부재로 다소 좁혀질 수 있으므로, ἀβουλεύτως의 ‘상의·숙고 없이’를 더 넓게 보존하는 ‘아무런 의논도 없이’가 적절합니다. 수정문은 원문의 다소 긴장된 단수/복수 구문을 유지하면서도 합쇼체 문장으로 읽힙니다.
+  terminology: ‘제사장’, ‘전투’, ‘용맹을 드러내다’는 문맥과 격식에 적절합니다. ἀνδραγαθῆσαι는 ‘용맹을 드러내고자 하다’로, ἀβουλεύτως는 ‘아무런 의논도 없이’로 옮겨 각각의 의미 영역을 보존했습니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지와 각주 내용이 일치하지 않습니다.
+    rationale: 본문의 [a]는 ‘쓰러졌습니다’ 뒤에, [b]는 ‘용맹을 떨치고자’ 뒤에 있으나, [a]의 내용은 ἔπεσαν의 대안이고 [b]의 내용은 ἀνδραγαθῆσαι의 대안입니다. 또한 ἀβουλεύτως에 대한 각주가 없습니다. 표지를 해당 어휘 뒤로 옮기고 각주 내용을 재배치해야 합니다.
+  - severity: medium
+    issue: 두 번째 ‘때문입니다’가 ἐν τῷ ... ἐξελθεῖν의 시간적 관계를 인과 관계로 바꿉니다.
+    rationale: ἐν τῷ와 부정사는 여기서 ‘그들이 ... 나갔을 때’라는 시간적 상황을 나타냅니다. 이를 별도의 원인절로 만들지 않고 ‘... 나갔을 때’로 유지해야 합니다.
+  - severity: low
+    issue: ‘아무런 계책 없이’는 ἀβουλεύτως를 전략·계획의 부재로 다소 제한합니다.
+    rationale: 이 부사는 조언을 구하지 않음, 상의하지 않음, 숙고하지 않음까지 포함할 수 있습니다. ‘아무런 의논도 없이’가 원문의 열려 있는 의미를 더 잘 보존합니다.
+  revised_text: 그날 제사장들은, 그가 용맹을 드러내고자 했기 때문에[a], 그들이 아무런 의논도 없이 전투에 나갔을 때 전투에서 쓰러졌습니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘두드러지게 자신을 보이고자 했기 때문에’, ‘영웅적 행위를 하고자 했기 때문에’. 그리스어 동사는 용맹을 보이거나 영웅적 행위를 한다는 뜻을 지닙니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘숙고 없이’, ‘성급하게’. 그리스어는 문자적으로 ‘의논 없이’라는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 단수 속격절(‘그가 ... 하고자 했기 때문에’)을 단수 대명사로 보존하고, 복수 주어를 지닌 부정사 구문은 시간절(‘그들이 ... 나갔을 때’)로 옮겼습니다. ‘쓰러지다’는 전투에서 죽었다는 관용적 함의를 유지합니다. 각주 표지를 실제 해당 어휘인 ἀνδραγαθῆσαι와 ἀβουλεύτως 뒤에 배치하고, 기존의 구조적으로 불일치한 표지·내용을 바로잡았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:40:15Z'
+  output_hash: b034ec2c5e5d396d271b4b26a3487a7860fbd5ad0d8e67dd25d31a4cabbfb487
+  usage:
+    completion_tokens: 1459
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 147
+      engine_ttlt_ms: 11590
+      pre_inference_ms: 147
+      service_tbt_ms: 8
+      service_ttft_ms: 438
+      service_ttlt_ms: 11876
+      total_duration_ms: 11740
+      user_visible_ttft_ms: 291
+    prompt_tokens: 2648
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4107
+  applied_revision: true
+  auto_apply_blocked_errors: []

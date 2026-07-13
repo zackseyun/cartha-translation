@@ -31,11 +31,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: “왕의 명령들에 순종하십시오.” 그러자 다른 곳에서 한 전령이 외쳤습니다.[a]
+  text: 다른 쪽에서 한 전령이 “왕의 명령에 순종하십시오!” 하고 외쳤습니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 직역하면 ‘다른 쪽에서 외치고 있는 전령’입니다. 그리스어는 외침이 다른 편에서, 곧 다른 전령을 통해 들려왔음을 강조합니다.
+    text: 직역하면 ‘다른 쪽에서 한 전령이 외치면서’입니다. 그리스어 ἑτέρωθεν는 외침이 다른 방향이나 장소에서 들려왔음을 나타내며, 문맥상 다른 전령의 외침일 수도 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: Πείσθητι
@@ -97,4 +97,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: “왕의 명령들에 순종하십시오.” 그러자 다른 곳에서 한 전령이 외쳤습니다.[a]
+  to: 다른 쪽에서 한 전령이 “왕의 명령에 순종하십시오!” 하고 외쳤습니다.[a]
+  rationale: 불필요한 시간적 연결어를 제거하고, ἑτέρωθεν의 공간적 의미와 문맥상 가능한 해석을 구분했습니다. 또한 한국어에서 자연스러운 집합적 단수 표현을 사용하되, 왕의 권위 있는 명령에 복종하라는 뜻과 전령의 큰 외침을 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:52:22Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 의미는 대체로 충실합니다. 다만 ‘그러자’는 그리스어에 없는 시간적·순차적 연결을 더하며, ἑτέρωθεν는 우선 ‘다른 쪽/다른 방향에서’라는 공간 부사이므로 본문과 주석에서 ‘다른 전령’이라는 해석을 단정하지 않는 편이 좋습니다.
+  naturalness: ‘왕의 명령들에’보다 한국어에서는 집합적으로 쓰는 ‘왕의 명령에’가 자연스럽습니다. 직접 인용을 전령의 외침으로 구성하면 문장 관계도 명료해집니다.
+  terminology: κῆρυξ의 ‘전령’과 왕명에 대한 πείσθητι의 ‘순종하십시오’는 적절합니다. ἐπιβοῶντος는 ‘외쳤습니다’로 자연스럽게 반영할 수 있습니다.
+  issues:
+  - severity: medium
+    issue: ‘그러자’의 첨가
+    rationale: 원문은 시간적 접속사 없이, 한 전령의 외침이 다른 쪽에서 들려왔음을 덧붙입니다. ‘그러자’는 앞 사건 뒤에 이어졌다는 순차성을 불필요하게 확정합니다.
+  - severity: medium
+    issue: 각주가 ‘곧 다른 전령’을 단정함
+    rationale: ἑτέρωθεν는 기본적으로 ‘다른 쪽에서/다른 방향에서’를 뜻합니다. 문맥상 다른 전령일 가능성은 있으나, 그 해석을 원문의 확정 의미처럼 제시하지 않아야 합니다.
+  - severity: low
+    issue: ‘명령들’의 부자연스러운 복수 표기
+    rationale: 그리스어는 복수이나 한국어에서는 ‘왕의 명령에’가 왕의 명령들을 집합적으로 가리키며 더 자연스럽습니다.
+  revised_text: 다른 쪽에서 한 전령이 “왕의 명령에 순종하십시오!” 하고 외쳤습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 ‘다른 쪽에서 한 전령이 외치면서’입니다. 그리스어 ἑτέρωθεν는 외침이 다른 방향이나 장소에서 들려왔음을 나타내며, 문맥상 다른 전령의 외침일 수도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 불필요한 시간적 연결어를 제거하고, ἑτέρωθεν의 공간적 의미와 문맥상 가능한 해석을 구분했습니다. 또한 한국어에서 자연스러운 집합적 단수 표현을 사용하되, 왕의 권위 있는 명령에 복종하라는 뜻과 전령의 큰 외침을 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:52:22Z'
+  output_hash: 2956405d8a80d1ed4edc2d9315f1faf38f37ca84727a22e34130cd1e5a1d357d
+  usage:
+    completion_tokens: 1015
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 374
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 154
+      engine_ttlt_ms: 8327
+      pre_inference_ms: 130
+      service_tbt_ms: 8
+      service_ttft_ms: 447
+      service_ttlt_ms: 8607
+      total_duration_ms: 8504
+      user_visible_ttft_ms: 317
+    prompt_tokens: 2301
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3316
+  applied_revision: true
+  auto_apply_blocked_errors: []

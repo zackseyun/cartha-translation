@@ -36,11 +36,11 @@ base_translation:
     reason: textual_variant
 translation:
   language: ko
-  text: 그들이 그를 믿었습니다[a]. 그리고 그는 그들 가운데서 예순 명을 붙잡아, 그가 쓴 말대로 그들을 하루 만에 죽였습니다.
+  text: 그들이 그를 신뢰했습니다. 그리고 그들은 그들 중에서 예순 명을 붙잡아[a], 그는 그들을 하루에 죽였습니다. 그가 기록한 말들에 따라 한 일이었습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 그리스어 본문은 ‘그들이 붙잡았다’ 뒤에 ‘그는 죽였다’가 이어지는 혼합 구조를 보입니다. 한국어는 원문의 수적 긴장을 보존하기 위해 이 혼합을 그대로 드러냈습니다.
+    text: 그리스어 본문은 ‘그들이 붙잡았다’(복수) 뒤에 ‘그는 죽였다’(단수)가 이어지는 혼합 구조를 보입니다. 번역은 이 주어의 수적 전환을 그대로 드러냅니다.
     reason: textual_variant
 lexical_decisions:
 - source_word: ἐνεπίστευσαν
@@ -95,4 +95,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들이 그를 믿었습니다[a]. 그리고 그는 그들 가운데서 예순 명을 붙잡아, 그가 쓴 말대로 그들을 하루 만에 죽였습니다.
+  to: 그들이 그를 신뢰했습니다. 그리고 그들은 그들 중에서 예순 명을 붙잡아[a], 그는 그들을 하루에 죽였습니다. 그가 기록한 말들에 따라 한 일이었습니다.
+  rationale: 그리스어 본문을 우선하여 συνέλαβον의 복수와 ἀπέκτεινεν의 단수를 한국어에서도 보존했습니다. 마지막 절은 원문의 ‘그가 기록한 말들에 따라’를 독립 문장으로 처리하여 자연스러운 합쇼체를 유지하면서도, 기록 주체를 본문보다 더 특정하지 않았습니다. 영어 POB가 서술의 일관성을 위해 단수화한 점은 감사 추적 정보로 유익하지만, 원문의 혼합 구조를 실제 본문에서 지우는 근거가 되지 않습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:39:52Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 초안의 본문은 συνέλαβον(복수)을 ‘그는’으로 옮겨 원문의 복수·단수 혼합을 실제로는 평탄화했지만, 각주와 해설은 그 혼합을 보존했다고 설명하여 본문과 불일치합니다. 그리스어의 복수 ‘그들이 붙잡았다’와 단수 ‘그는 죽였다’를 그대로 드러내야 합니다.
+  naturalness: ‘그들이 그를 믿었습니다. 그리고 그들은 그들 중에서 예순 명을 붙잡아, 그는 그들을 하루에 죽였습니다’는 의도적인 주어 전환 때문에 다소 긴장감이 있으나, 원문의 문법적 불일치를 충실히 보존하는 현대 한국어 합쇼체입니다. ‘하루에’는 시간의 범위를 과도하게 보태지 않고 ἐν ἡμέρᾳ μιᾷ를 자연스럽게 반영합니다.
+  terminology: ἐνεπίστευσαν은 사람에 대한 신뢰를 뜻하므로 ‘그를 믿었습니다’도 가능하나, 오해 없는 관계적 의미를 위해 ‘그를 신뢰했습니다’가 더 정확합니다. κατὰ τοὺς λόγους οὓς ἔγραφεν은 복수 λόγους와 기록 행위를 반영하여 ‘그가 기록한 말들에 따라’로 옮깁니다. ‘말씀’은 불필요한 종교적 함의를 더할 수 있으므로 사용하지 않습니다.
+  issues:
+  - severity: high
+    issue: 본문이 συνέλαβον의 복수 주어를 단수 ‘그는’으로 바꾸었습니다.
+    rationale: 원문은 ‘그들이 붙잡았다’(συνέλαβον) 다음에 ‘그는 죽였다’(ἀπέκτεινεν)를 두는 혼합 구조입니다. 초안의 단수화는 영어 POB의 평탄화 선택을 따르지만, 한국어 초안의 명시된 번역 방침 및 각주 설명과 모순되며 원문 문법 정보를 지웁니다.
+  - severity: medium
+    issue: 각주 표지가 ‘그를 믿었습니다’에 붙어 있어 설명 대상인 주어 전환과 떨어져 있습니다.
+    rationale: 각주는 복수 ‘붙잡았다’와 단수 ‘죽였다’의 연쇄를 설명하므로 ‘붙잡아’에 표지를 두는 것이 독자가 문제 지점을 즉시 확인하게 합니다.
+  - severity: low
+    issue: ‘하루 만에’는 원문의 단순 시간 표현보다 행위의 완료·소요 기간을 조금 더 강조할 수 있습니다.
+    rationale: ἐν ἡμέρᾳ μιᾷ는 ‘하루에/한 날에’로 충분하며, 추가적인 뉘앙스를 피하는 편이 안전합니다.
+  revised_text: 그들이 그를 신뢰했습니다. 그리고 그들은 그들 중에서 예순 명을 붙잡아[a], 그는 그들을 하루에 죽였습니다. 그가 기록한 말들에 따라 한 일이었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 그리스어 본문은 ‘그들이 붙잡았다’(복수) 뒤에 ‘그는 죽였다’(단수)가 이어지는 혼합 구조를 보입니다. 번역은 이 주어의 수적 전환을 그대로 드러냅니다.
+    reason: textual_variant
+  revision_rationale: 그리스어 본문을 우선하여 συνέλαβον의 복수와 ἀπέκτεινεν의 단수를 한국어에서도 보존했습니다. 마지막 절은 원문의 ‘그가 기록한 말들에 따라’를 독립 문장으로 처리하여 자연스러운 합쇼체를 유지하면서도, 기록 주체를 본문보다 더 특정하지 않았습니다. 영어 POB가 서술의 일관성을 위해 단수화한 점은 감사 추적 정보로 유익하지만, 원문의 혼합 구조를 실제 본문에서 지우는 근거가 되지 않습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:39:52Z'
+  output_hash: bbae7d5f766932e4adad2b8ceae3b7a082991a3552a0329967eef7fa7fbb0736
+  usage:
+    completion_tokens: 1236
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 319
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 243
+      engine_ttlt_ms: 9948
+      pre_inference_ms: 184
+      service_tbt_ms: 8
+      service_ttft_ms: 639
+      service_ttlt_ms: 10340
+      total_duration_ms: 10171
+      user_visible_ttft_ms: 455
+    prompt_tokens: 2521
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3757
+  applied_revision: true
+  auto_apply_blocked_errors: []

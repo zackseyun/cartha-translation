@@ -38,8 +38,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 그들은 길을 떠나 베레아로 갔는데, 이만 명의 보병과 이천 명의 기병을 거느리고 있었습니다.
+  text: 그들은 이만 명의 병사와 이천 명의 기병[a]을 거느리고 출발하여 베레아로 갔습니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 그리스어는 문자적으로 ‘이천 마리의 말’입니다. 이 표현은 아마도 기마 병력을 가리키므로 ‘기병’으로 옮겼습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: ἀπῆραν
   english_pob_choice: set out
@@ -89,4 +93,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 그들은 길을 떠나 베레아로 갔는데, 이만 명의 보병과 이천 명의 기병을 거느리고 있었습니다.
+  to: 그들은 이만 명의 병사와 이천 명의 기병[a]을 거느리고 출발하여 베레아로 갔습니다.
+  rationale: 원문이 명시하지 않는 병과인 ‘보병’을 ‘병사’로 바꾸어 의미를 과도하게 한정하지 않았습니다. 또한 ‘기병’이라는 문맥상 번역을 유지하되, 원문의 문자적 표현이 ‘말’임을 각주로 표시했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:39:53Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ἀνδρῶν은 이 구절에서 병력으로 이해할 수 있으나 ‘보병’이라고 특정하지 않습니다. δισχιλίοις ἵπποις는 문자적으로 ‘이천 마리의 말’이며, 문맥상 기병대를 가리키는 환유적 표현으로 볼 수 있습니다.
+  naturalness: ‘출발하여 … 갔습니다’와 ‘거느리고’의 결합은 현대 한국어 합쇼체 서술에서 자연스럽습니다.
+  terminology: ‘병사’는 원문의 병력 의미를 보존하면서 보병이라는 과도한 한정을 피합니다. ‘기병’은 문맥상 자연스러운 번역이므로, 문자적 표현은 각주로 밝혀야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘이만 명의 보병’
+    rationale: 그리스어 ἀνδρῶν은 ‘사람들/병사들’을 뜻할 뿐 보병임을 명시하지 않습니다. 기병과의 대조가 보병을 함의할 수는 있어도 번문에 명시된 정보는 아니므로 ‘병사’로 수정하는 것이 안전합니다.
+  - severity: low
+    issue: 기병 번역에 대한 문자적 각주 누락
+    rationale: ἵπποις는 문자적으로 ‘말들’이므로, 영어 POB의 감사 추적과 같은 취지의 각주를 두어 ‘기병’이 문맥적 환유 번역임을 밝혀야 합니다.
+  revised_text: 그들은 이만 명의 병사와 이천 명의 기병[a]을 거느리고 출발하여 베레아로 갔습니다.
+  revised_footnotes:
+  - marker: a
+    text: 그리스어는 문자적으로 ‘이천 마리의 말’입니다. 이 표현은 아마도 기마 병력을 가리키므로 ‘기병’으로 옮겼습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문이 명시하지 않는 병과인 ‘보병’을 ‘병사’로 바꾸어 의미를 과도하게 한정하지 않았습니다. 또한 ‘기병’이라는 문맥상 번역을 유지하되, 원문의 문자적 표현이 ‘말’임을 각주로 표시했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:39:53Z'
+  output_hash: fc4f5bd3ed4fe12b705041d405abdaa4c3cfa09759790d1ece44f5103b8dd0f1
+  usage:
+    completion_tokens: 656
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 121
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 126
+      engine_ttlt_ms: 5198
+      pre_inference_ms: 122
+      service_tbt_ms: 8
+      service_ttft_ms: 617
+      service_ttlt_ms: 5686
+      total_duration_ms: 5570
+      user_visible_ttft_ms: 495
+    prompt_tokens: 1746
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2402
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -28,18 +28,18 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 리시아스는 법정 앞으로 나와 할 수 있는 한 변론하고 그들을 설득하며 진정시켜 호의적인 마음을 갖게 한 뒤 안티오키아로 돌아갔습니다. 그리하여 왕의 공격과 철수는 그렇게 진행되었습니다.[a][b][c]
+  text: 리시아스는 재판석[a]으로 나아가, 할 수 있는 한[b] 변론하여 그들을 설득하고 진정시키고 호의를 품게 한 뒤 안티오키아로 돌아갔습니다. 이와 같이 왕의 공격과 철수[c]가 이루어졌습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: βῆμα는 문자적으로 ‘단’이나 ‘재판석’을 뜻할 수 있습니다.
+    text: βῆμα는 ‘재판석’ 외에 ‘판정석’, ‘단’ 또는 ‘연단’으로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ἐνδεχομένως는 ‘가능한 한’ 또는 ‘형편이 되는 대로’의 뜻일 수 있습니다.
+    text: ἐνδεχομένως는 ‘가능한 한’ 외에 ‘적절하게’ 또는 ‘형편이 허락하는 대로’라는 뜻일 수도 있습니다.
     reason: lexical_alternative
   - marker: c
-    text: Ἀντιοχία는 안티오키아로 음역하는 것이 일반적입니다.
-    reason: source_note
+    text: ‘공격과 철수’는 ‘공격과 퇴각’ 또는 ‘공세와 철수’로도 옮길 수 있습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: βῆμα
   english_pob_choice: tribunal
@@ -115,4 +115,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 리시아스는 법정 앞으로 나와 할 수 있는 한 변론하고 그들을 설득하며 진정시켜 호의적인 마음을 갖게 한 뒤 안티오키아로 돌아갔습니다. 그리하여 왕의 공격과 철수는 그렇게 진행되었습니다.[a][b][c]
+  to: 리시아스는 재판석[a]으로 나아가, 할 수 있는 한[b] 변론하여 그들을 설득하고 진정시키고 호의를 품게 한 뒤 안티오키아로 돌아갔습니다. 이와 같이 왕의 공격과 철수[c]가 이루어졌습니다.
+  rationale: 각주 표지를 해당 번역어에 직접 연결하고, 지명 음역만을 설명하던 c 각주를 원문의 ἐφόδου와 ἀναζυγῆ်에 관한 어휘 대안으로 바로잡았습니다. 또한 중복된 ‘그리하여/그렇게’를 제거하고, βῆμα 및 결론 문장을 원문 의미와 현대 한국어 문체에 맞게 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:49:46Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 동작 연쇄(나아감, 변론, 설득, 진정, 호의 획득, 귀환)를 충실히 반영합니다. 다만 βῆμα의 대안과 ἐνδεχομένως의 난해성, 그리고 공격·철수의 대안은 각각 해당 본문어에 연결되어야 합니다. 마지막 문장의 οὕτω는 ‘그리하여/이와 같이’로 한 번만 옮기는 편이 적절합니다.
+  naturalness: 현 번역은 전반적으로 자연스럽지만, ‘그리하여 … 그렇게’는 중복되고 모든 각주가 문장 끝에 몰려 있어 독해 흐름과 각주 연결이 부자연스럽습니다. ‘재판석으로 나아가’ 및 ‘이와 같이 … 이루어졌습니다’가 현대 한국어 합쇼체 서술에 더 매끄럽습니다.
+  terminology: 리시아스와 안티오키아 표기는 통용 표기이며, 군사 문맥의 ἀναζυγή는 ‘철수’로 적절합니다. βῆμα는 문맥상 ‘재판석’으로 옮기고, ‘단/연단’이라는 가능한 문자적 대안은 각주로 남깁니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지가 모두 문장 끝에 배치되어 각주 내용이 가리키는 원어 및 번역어와 연결되지 않습니다.
+    rationale: a는 βῆμα/‘법정’, b는 ἐνδεχομένως/‘할 수 있는 한’, c는 ἐφόδου·ἀναζυγῆς/‘공격과 철수’에 각각 붙어야 합니다. 현 c는 영어 POB 감사 기록의 c와 달리 지명 음역을 설명하므로, 원문의 실질적 어휘 대안을 누락합니다.
+  - severity: low
+    issue: ‘그리하여 … 그렇게 진행되었습니다’에 접속·지시 표현이 중복됩니다.
+    rationale: οὕτω는 ‘이와 같이’ 또는 ‘그리하여’ 한 번으로 충분하며, ‘공격과 철수’에는 ‘이루어졌습니다’가 더 자연스럽게 사건 요약을 표현합니다.
+  - severity: low
+    issue: ‘법정’은 βῆμα의 물리적·공적 자리라는 어휘 범위를 다소 넓게 기능화합니다.
+    rationale: ‘재판석’은 문맥상의 사법적 기능을 유지하면서 βῆμα의 ‘자리/단’이라는 기본 의미에도 더 가깝습니다.
+  revised_text: 리시아스는 재판석[a]으로 나아가, 할 수 있는 한[b] 변론하여 그들을 설득하고 진정시키고 호의를 품게 한 뒤 안티오키아로 돌아갔습니다. 이와 같이 왕의 공격과 철수[c]가 이루어졌습니다.
+  revised_footnotes:
+  - marker: a
+    text: βῆμα는 ‘재판석’ 외에 ‘판정석’, ‘단’ 또는 ‘연단’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ἐνδεχομένως는 ‘가능한 한’ 외에 ‘적절하게’ 또는 ‘형편이 허락하는 대로’라는 뜻일 수도 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: ‘공격과 철수’는 ‘공격과 퇴각’ 또는 ‘공세와 철수’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 각주 표지를 해당 번역어에 직접 연결하고, 지명 음역만을 설명하던 c 각주를 원문의 ἐφόδου와 ἀναζυγῆ်에 관한 어휘 대안으로 바로잡았습니다. 또한 중복된 ‘그리하여/그렇게’를 제거하고, βῆμα 및 결론 문장을 원문 의미와 현대 한국어 문체에 맞게 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:49:46Z'
+  output_hash: 2a8293980bf9496450c05caf808edcd47a177d0a3479ba68a27099a0bf02215b
+  usage:
+    completion_tokens: 1436
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 147
+      engine_ttlt_ms: 11879
+      pre_inference_ms: 100
+      service_tbt_ms: 8
+      service_ttft_ms: 397
+      service_ttlt_ms: 12120
+      total_duration_ms: 12031
+      user_visible_ttft_ms: 297
+    prompt_tokens: 3374
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4810
+  applied_revision: true
+  auto_apply_blocked_errors: []

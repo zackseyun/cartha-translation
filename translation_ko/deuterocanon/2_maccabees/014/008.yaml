@@ -37,11 +37,11 @@ base_translation:
     reason: textual_variant
 translation:
   language: ko
-  text: 영예를 말하자면, 그러나 대제사장직을 두고는, 나는 이제 두 번째로 왔습니다. 첫째로는 왕에게 속한 일들을 진심으로 염두에 두고 있고, 둘째로는 자기 시민들의 일도 살피고 있기 때문입니다. 이는 앞서 말한 사람들의 어리석음 때문에[a]
+  text: …영예—곧 대제사장직을 뜻합니다[a]—. 저는 이제 두 번째로 왔습니다. 첫째, 왕에게 관련된 일들을 진심으로 염두에 두고 있고, 둘째, 제 동료 시민들을 또한 헤아리고 있기 때문입니다. 이는 앞서 언급한 사람들의 어리석음 때문에…
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 그리스어 문장은 다음 절로 이어집니다. 여기의 마지막 절은 원문 발췌에서 미완결이므로, 그 이어짐을 반영해 옮겼습니다.
+    text: 그리스어 발췌문은 앞 절에서 이어져 ‘영예’로 시작하며, 마지막 절도 다음 절로 이어집니다. 따라서 본문 양끝의 줄임표는 발췌문의 미완결성을 나타냅니다.
     reason: textual_variant
 lexical_decisions:
 - source_word: δόξαν
@@ -112,4 +112,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 영예를 말하자면, 그러나 대제사장직을 두고는, 나는 이제 두 번째로 왔습니다. 첫째로는 왕에게 속한 일들을 진심으로 염두에 두고 있고, 둘째로는 자기 시민들의 일도 살피고 있기 때문입니다. 이는 앞서 말한 사람들의 어리석음 때문에[a]
+  to: …영예—곧 대제사장직을 뜻합니다[a]—. 저는 이제 두 번째로 왔습니다. 첫째, 왕에게 관련된 일들을 진심으로 염두에 두고 있고, 둘째, 제 동료 시민들을 또한 헤아리고 있기 때문입니다. 이는 앞서 언급한 사람들의 어리석음 때문에…
+  rationale: 원문 발췌의 경계와 통사적 미완결성을 보존하되, 한국어에서 부정확하거나 어색했던 화제 전환과 목적어 관계를 바로잡았습니다. 영어 POB의 마지막 절 계속 처리도 유지했으며, 원문이 제공하지 않는 교리적 해석은 추가하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:49:28Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안의 ‘영예를 말하자면, 그러나’는 문두의 δόξαν이 앞 절에서 이어지는 목적격 단편이라는 점과 λέγων의 설명적 기능을 제대로 반영하지 못하며, δέ를 ‘그러나’로 과도하게 대립시킵니다. 또한 τῶν ἰδίων πολιτῶν은 ‘시민들의 일’보다 ‘나 자신의 동료 시민들’을 가리킵니다. 본문 발췌는 앞 절과 다음 절 양쪽에 걸쳐 있으므로 이를 줄임표와 주석으로 밝혔습니다.
+  naturalness: 수정문은 현대 표준어 합쇼체를 유지하면서, ‘제 동료 시민들을 헤아리고’로 자연스럽게 표현했습니다. 앞뒤 절에 걸친 발췌라는 특성은 문장 자체를 부자연스럽게 완결하려 하지 않고 줄임표로 보존했습니다.
+  terminology: ἀρχιερωσύνη는 ‘대제사장직’으로 유지했습니다. ὑπὲρ τῶν ἀνηκόντων τῷ βασιλεῖ는 ‘왕에게 관련된 일들’로, στοχαζόμενος는 동료 시민들을 염려하고 배려하는 뜻을 담아 ‘헤아리고’로 옮겼습니다. δόξαν은 독립된 완결 문장으로 만들지 않고, ‘영예—곧 대제사장직’이라는 앞 절 연결 단편으로 처리했습니다.
+  issues:
+  - severity: medium
+    issue: 문두 단편 δόξαν 및 λέγων δέ의 처리
+    rationale: ‘영예를 말하자면, 그러나’는 원문의 앞 절 계속 단편을 한국어의 독립적 화제 전환 표현으로 바꾸며, δέ를 부당하게 역접으로 만들었습니다. ‘…영예—곧 대제사장직을 뜻합니다—’로 앞 절에서 이어지는 설명임을 표시하는 편이 안전합니다.
+  - severity: medium
+    issue: τῶν ἰδίων πολιτῶν의 의미 축소
+    rationale: ‘자기 시민들의 일’은 사람들 자체를 고려한다는 목적어를 ‘그들의 일’로 바꿉니다. ‘제 동료 시민들을’이 ἰδίων과 πολιτῶν을 더 충실히 반영합니다.
+  - severity: low
+    issue: 발췌문의 양쪽 미완결성 주석 미표시
+    rationale: 제공된 그리스어는 문두가 앞 절에서 이어지고 끝은 다음 절로 이어집니다. 기존 주석은 끝부분만 언급하므로, 문두의 단편도 함께 설명해야 독자가 줄임표를 이해할 수 있습니다.
+  revised_text: …영예—곧 대제사장직을 뜻합니다[a]—. 저는 이제 두 번째로 왔습니다. 첫째, 왕에게 관련된 일들을 진심으로 염두에 두고 있고, 둘째, 제 동료 시민들을 또한 헤아리고 있기 때문입니다. 이는 앞서 언급한 사람들의 어리석음 때문에…
+  revised_footnotes:
+  - marker: a
+    text: 그리스어 발췌문은 앞 절에서 이어져 ‘영예’로 시작하며, 마지막 절도 다음 절로 이어집니다. 따라서 본문 양끝의 줄임표는 발췌문의 미완결성을 나타냅니다.
+    reason: textual_variant
+  revision_rationale: 원문 발췌의 경계와 통사적 미완결성을 보존하되, 한국어에서 부정확하거나 어색했던 화제 전환과 목적어 관계를 바로잡았습니다. 영어 POB의 마지막 절 계속 처리도 유지했으며, 원문이 제공하지 않는 교리적 해석은 추가하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:49:28Z'
+  output_hash: 1aeb75f0b3959fcc981b735dacc014df4ede7aa0bc0d35fe474fc755c224c6c1
+  usage:
+    completion_tokens: 2710
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1805
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 135
+      engine_ttlt_ms: 22421
+      pre_inference_ms: 104
+      service_tbt_ms: 8
+      service_ttft_ms: 413
+      service_ttlt_ms: 22692
+      total_duration_ms: 22602
+      user_visible_ttft_ms: 309
+    prompt_tokens: 2696
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5406
+  applied_revision: true
+  auto_apply_blocked_errors: []
