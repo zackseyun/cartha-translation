@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 아버지에게 말했습니다. 「내 머리, 내 머리야!」 그러고는 젊은 종에게 말했습니다. 「그를 어머니에게 데려가라」.[a]
+  text: 그가 아버지에게 말했습니다. 「내 머리야, 내 머리야!」 아버지는 그 젊은이에게 말했습니다. 「그를 어머니에게 데려가라.」[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘젊은 종’은 히브리어 נַעַר의 문맥상 가능한 뜻을 반영한 것입니다. 이 단어는 청년, 수행원, 종을 가리킬 수 있습니다.
+    text: ‘젊은이’로 번역한 히브리어 נַעַר는 문맥에 따라 청년, 수행원, 또는 종을 가리킬 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אֶל אָבִיו
@@ -69,4 +69,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 아버지에게 말했습니다. 「내 머리, 내 머리야!」 그러고는 젊은 종에게 말했습니다. 「그를 어머니에게 데려가라」.[a]
+  to: 그가 아버지에게 말했습니다. 「내 머리야, 내 머리야!」 아버지는 그 젊은이에게 말했습니다. 「그를 어머니에게 데려가라.」[a]
+  rationale: The revision explicitly identifies the father as the speaker of the command, preventing a Korean referential ambiguity not present in the source context. It changes ‘젊은 종’ to ‘젊은이’ to avoid overcommitting to one possible sense of נַעַר and revises the note accordingly. The repeated cry remains terse and emotive without adding ‘아프다,’ which the Hebrew does not state explicitly.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:51:50Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft accurately conveys the child's cry and the command's destination. However, the second Hebrew wayyiqtol has the father as its understood subject; Korean '그러고는' can wrongly make the child the speaker again. Also, '젊은 종' selects the servant sense of נַעַר too strongly in the main text, whereas the lexical ambiguity should be retained as in the audit trail.
+  naturalness: The formal-polite narrative register is appropriate. Making '아버지는' explicit produces a clear and natural Korean narrative sequence. '그 젊은이' is idiomatic while avoiding an unnecessary claim about the person's social status.
+  terminology: '''아버지'' and ''어머니'' fit the register. ''젊은이'' is a suitably noncommittal rendering of נַעַר; the footnote records that it may denote an attendant or servant. ''데려가라'' is natural Korean for the command in context, though the Hebrew verb specifically entails bearing/carrying.'
+  issues:
+  - severity: medium
+    issue: The subject of the second speech is not explicit in Korean.
+    rationale: In the Hebrew narrative, the father is understood to say the command to the נַעַר. The draft's '그러고는 젊은 종에게 말했습니다' may be read as continuing the child ('그가') as the speaker, which distorts the narrative action.
+  - severity: medium
+    issue: ‘젊은 종’ over-specifies נַעַר in the main text.
+    rationale: נַעַר can refer to a youth, attendant, or servant. Although an attendant/servant sense is plausible in context, the English POB audit trail deliberately retains a noncommittal main-text rendering and places the alternative in a note. Korean should likewise preserve the lexical latitude.
+  revised_text: 그가 아버지에게 말했습니다. 「내 머리야, 내 머리야!」 아버지는 그 젊은이에게 말했습니다. 「그를 어머니에게 데려가라.」[a]
+  revised_footnotes:
+  - marker: a
+    text: ‘젊은이’로 번역한 히브리어 נַעַר는 문맥에 따라 청년, 수행원, 또는 종을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: The revision explicitly identifies the father as the speaker of the command, preventing a Korean referential ambiguity not present in the source context. It changes ‘젊은 종’ to ‘젊은이’ to avoid overcommitting to one possible sense of נַעַר and revises the note accordingly. The repeated cry remains terse and emotive without adding ‘아프다,’ which the Hebrew does not state explicitly.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:51:50Z'
+  output_hash: e5a538b3516132cfff01cb6a21e4e39ac566c5987113999bda8f135ad0480aa7
+  usage:
+    completion_tokens: 1136
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 130
+      engine_ttlt_ms: 10771
+      pre_inference_ms: 459
+      service_tbt_ms: 10
+      service_ttft_ms: 999
+      service_ttlt_ms: 11839
+      total_duration_ms: 11383
+      user_visible_ttft_ms: 540
+    prompt_tokens: 1907
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3043
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그것은 일하는 사람들에게 주었고, 그것으로 야훼의 집을 수리했습니다.[a]
+  text: 이는 그들이 그것을 그 일을 하는 사람들에게 주고, 그것으로 야훼의 집을 수리했기 때문입니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 ‘야훼의 집’ 곧 성전을 뜻합니다.
+    text: 히브리어 직역은 ‘야훼의 집’입니다. 문맥상 야훼의 성전을 가리킵니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: כִּי
@@ -77,4 +77,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그것은 일하는 사람들에게 주었고, 그것으로 야훼의 집을 수리했습니다.[a]
+  to: 이는 그들이 그것을 그 일을 하는 사람들에게 주고, 그것으로 야훼의 집을 수리했기 때문입니다.[a]
+  rationale: כִּי를 ‘이는 … 때문입니다’로 옮겨 앞절을 설명하는 인과 관계를 보존했습니다. 원문의 목적어 접미사와 בּוֹ의 선행사를 각각 ‘그것을’과 ‘그것으로’로 유지했으며, 공사 문맥의 동사 חזק는 ‘수리했습니다’로 번역했습니다. 신명은 POB 방침에 따라 ‘야훼’로 표기했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:54:04Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. כִּי는 앞절에서 회계 보고를 요구하지 않은 이유를 설명하는 접속사인데, 초안의 ‘그것은’은 이를 지시대명사로 바꾸어 인과 관계를 잃습니다. 또한 יִתְּנֻהוּ의 목적어 접미사 ‘그것을’이 본문에서 빠져 있습니다.
+  naturalness: ‘이는 그들이 … 주었고’는 현대 표준 한국어 합쇼체에서 앞 문맥의 이유를 자연스럽고 명확하게 잇습니다. ‘그 일을 하는 사람들’은 막연한 ‘일하는 사람들’보다 הַמְּלָאכָה(그 공사/업무)를 더 잘 반영합니다.
+  terminology: ‘야훼의 집’은 בֵּית יְהוָה의 표현을 보존하며, ‘수리했습니다’는 건축 문맥의 וְחִזְּקוּ에 적절합니다. 각주에서는 ‘성전을 뜻합니다’라고 단정하기보다 원문의 직역과 문맥상 의미를 구별해야 합니다.
+  issues:
+  - severity: high
+    issue: כִּי의 인과·설명 기능이 ‘그것은’으로 오역되었습니다.
+    rationale: 이 절은 앞절의 ‘그들이 충실하게 행하였으므로 돈을 맡은 이들에게 حساب을 요구하지 않았다’는 진술의 근거를 제시합니다. 지시대명사는 이 연결을 재현하지 못합니다.
+  - severity: medium
+    issue: יִתְּנֻהוּ의 3인칭 남성 단수 목적어가 누락되었습니다.
+    rationale: 문맥상 앞서 언급된 돈을 가리키는 ‘그것을/그 돈을’이 필요합니다. 뒤의 בּוֹ(‘그것으로’)와도 연결됩니다.
+  - severity: low
+    issue: 각주가 ‘야훼의 집’을 곧바로 ‘성전’이라고 동일시합니다.
+    rationale: 성전이 문맥상 지시 대상인 것은 맞지만, 히브리어 본문 자체의 표현은 ‘야훼의 집’입니다. 각주는 직역과 문맥상 지시를 구별하는 편이 더 정확합니다.
+  revised_text: 이는 그들이 그것을 그 일을 하는 사람들에게 주고, 그것으로 야훼의 집을 수리했기 때문입니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 직역은 ‘야훼의 집’입니다. 문맥상 야훼의 성전을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: כִּי를 ‘이는 … 때문입니다’로 옮겨 앞절을 설명하는 인과 관계를 보존했습니다. 원문의 목적어 접미사와 בּוֹ의 선행사를 각각 ‘그것을’과 ‘그것으로’로 유지했으며, 공사 문맥의 동사 חזק는 ‘수리했습니다’로 번역했습니다. 신명은 POB 방침에 따라 ‘야훼’로 표기했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:54:04Z'
+  output_hash: aa22a1e494216784dbaade66235aa36d0b343f843284a0321845e0111834f9f2
+  usage:
+    completion_tokens: 938
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 195
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 136
+      engine_ttlt_ms: 7762
+      pre_inference_ms: 253
+      service_tbt_ms: 8
+      service_ttft_ms: 764
+      service_ttlt_ms: 8382
+      total_duration_ms: 8138
+      user_visible_ttft_ms: 511
+    prompt_tokens: 2023
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2961
+  applied_revision: true
+  auto_apply_blocked_errors: []

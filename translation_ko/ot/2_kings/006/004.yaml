@@ -17,7 +17,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 그들과 함께 가서 요르단에 이르러 나무들을 베었습니다.[a]
+  text: 그는 그들과 함께 갔습니다. 그들은 요르단에 이르러 나무들을 베었습니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -60,4 +60,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 그들과 함께 가서 요르단에 이르러 나무들을 베었습니다.[a]
+  to: 그는 그들과 함께 갔습니다. 그들은 요르단에 이르러 나무들을 베었습니다.[a]
+  rationale: 첫 절의 단수 주어와 뒤 두 절의 복수 주어를 명시하여 원문의 동사 수 일치를 보존했습니다. 그 밖의 어휘 선택과 각주 내용은 원문 및 문맥에 부합하므로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:53:55Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어는 첫 동사만 단수(‘그가 그들과 함께 갔다’)이고, 이어지는 두 동사는 복수(‘그들이 요르단에 이르러 나무들을 베었다’)입니다. 초안은 연결 어미로 인해 세 동작 모두의 주어가 ‘그’인 것처럼 읽혀 복수 동사를 반영하지 못합니다.
+  naturalness: 문장을 둘로 나누어 주어 전환을 드러내면 현대 한국어 합쇼체에서 자연스럽고 명료합니다.
+  terminology: ‘요르단’과 ‘나무들을 베었습니다’는 문맥과 어휘에 적절합니다. 벌채 상황에서 ‘베다’는 גזר의 의미를 자연스럽게 전달합니다.
+  issues:
+  - severity: high
+    issue: 두 번째와 세 번째 히브리어 동사의 복수 주어가 번역문에서 사라졌습니다.
+    rationale: וַיָּבֹאוּ와 וַיִּגְזְרוּ는 모두 3인칭 남성 복수입니다. ‘그는 ... 가서 ... 베었습니다’는 단수 주어가 요르단에 이르고 나무를 벤 것으로 해석됩니다.
+  revised_text: 그는 그들과 함께 갔습니다. 그들은 요르단에 이르러 나무들을 베었습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 또는 “나무를 베었습니다”로 옮길 수도 있습니다. 히브리어 명사는 넓게는 나무나 목재를 가리킬 수 있지만, 여기서는 벌채 장면이므로 “나무들”이 더 분명합니다.
+    reason: lexical_alternative
+  revision_rationale: 첫 절의 단수 주어와 뒤 두 절의 복수 주어를 명시하여 원문의 동사 수 일치를 보존했습니다. 그 밖의 어휘 선택과 각주 내용은 원문 및 문맥에 부합하므로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:53:55Z'
+  output_hash: 2f9d6512f54422cbf7176fd8a77278eda7f9ebf6a8cf42d3ef5141a9cb7fbd86
+  usage:
+    completion_tokens: 766
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 291
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 148
+      engine_ttlt_ms: 7144
+      pre_inference_ms: 80
+      service_tbt_ms: 9
+      service_ttft_ms: 424
+      service_ttlt_ms: 7418
+      total_duration_ms: 7366
+      user_visible_ttft_ms: 344
+    prompt_tokens: 1626
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2392
+  applied_revision: true
+  auto_apply_blocked_errors: []

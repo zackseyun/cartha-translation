@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 보십시오, 어떤 예언자 한 사람이 아합, 곧 이스라엘 왕에게 다가와 말했습니다. “야훼께서 이렇게 말씀하십니다. 네가 이 큰 무리를 보았느냐? 보아라, 내가 오늘 그것을 네 손에 넘기겠다. 그러면 네가 내가 야훼인 줄 알게 될 것이다.”[a]
+  text: 보십시오, 어떤 예언자가 이스라엘 왕 아합에게 다가와 말했습니다. “야훼께서 이렇게 말씀하십니다. ‘왕께서는 이 거대한 무리[a] 전체를 보셨습니까? 보십시오, 내가 오늘 그들을 왕의 손에 넘기겠습니다. 그러면 왕께서는 내가 야훼인 줄 아시게 될 것입니다.’”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘무리’는 여기서 적군의 대규모 집합을 가리키며, 영어 POB의 ‘great multitude / vast army / great horde’에 해당할 수 있습니다.
+    text: ‘무리’는 히브리어 하몬(הָמוֹן)을 옮긴 말입니다. 여기서는 적군의 큰 집단을 가리키며, ‘대군’ 또는 ‘큰 군세’로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְהִנֵּה
@@ -83,4 +83,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 보십시오, 어떤 예언자 한 사람이 아합, 곧 이스라엘 왕에게 다가와 말했습니다. “야훼께서 이렇게 말씀하십니다. 네가 이 큰 무리를 보았느냐? 보아라, 내가 오늘 그것을 네 손에 넘기겠다. 그러면 네가 내가 야훼인 줄 알게 될 것이다.”[a]
+  to: 보십시오, 어떤 예언자가 이스라엘 왕 아합에게 다가와 말했습니다. “야훼께서 이렇게 말씀하십니다. ‘왕께서는 이 거대한 무리[a] 전체를 보셨습니까? 보십시오, 내가 오늘 그들을 왕의 손에 넘기겠습니다. 그러면 왕께서는 내가 야훼인 줄 아시게 될 것입니다.’”
+  rationale: 원문의 담화 표지(‘보십시오’), 불특정 예언자, 이스라엘 왕 아합, ‘이 거대한 무리 전체’, 오늘의 인도, 그리고 야훼를 알게 되는 인식 공식을 모두 보존했습니다. 동시에 왕에게 하는 예언자 발화를 현대 합쇼체로 통일하고, 한국어에서 자연스럽도록 대상을 ‘그들을’로 받았습니다. 각주는 ‘무리’에 직접 연결하여 군사 문맥의 가능한 어휘 대안을 제시했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:51:07Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 핵심 요소는 대체로 반영되어 있으나, כָּל(‘모든, 전체’)이 ‘이 큰 무리’에서 빠졌고, 적군 집단을 가리키는 목적어를 ‘그것’으로 받는 것은 다소 부자연스럽습니다. 또한 원문의 발화는 왕에게 하는 말이므로 표준어 현대 합쇼체에 맞춘 높임 표현이 필요합니다.
+  naturalness: 서술부의 ‘어떤 예언자 한 사람’은 ‘어떤’과 ‘한 사람’이 중복되어 어색하며, 인용문의 ‘보았느냐/보아라/넘기겠다/네가’는 요청된 현대 합쇼체와 일치하지 않습니다. ‘이스라엘 왕 아합’, ‘왕께서는’ 등의 표현이 자연스럽고 일관됩니다.
+  terminology: ‘야훼’는 제공된 프로젝트 방침 및 원문의 יהוה에 충실합니다. הָמוֹן은 군사 문맥의 큰 집단을 뜻하므로 본문에서는 넓은 표현인 ‘거대한 무리’를 유지하고, 각주에서 ‘대군’ 또는 ‘큰 군세’라는 문맥상 대안을 제시하는 편이 적절합니다.
+  issues:
+  - severity: medium
+    issue: 인용문이 현대 합쇼체가 아니라 반말·격식체가 혼합되어 있습니다.
+    rationale: ‘보았느냐’, ‘보아라’, ‘넘기겠다’, ‘네가’는 왕에게 전하는 예언자 발화로서도 요청된 현대 formal-polite 합쇼체를 충족하지 못합니다.
+  - severity: medium
+    issue: כָּל(‘모든/전체’)의 의미가 번역문에서 누락되었습니다.
+    rationale: ‘이 큰 무리’는 ‘이 큰 무리 전체’를 뜻하는 히브리어 כָּל הֶהָמוֹן הַגָּדוֹל הַזֶּה의 전체성을 충분히 드러내지 못합니다.
+  - severity: low
+    issue: ‘어떤 예언자 한 사람’은 불특정성을 표현하는 방식이 중복됩니다.
+    rationale: ‘어떤 예언자’만으로 נָבִיא אֶחָד의 서사적 불특정성이 자연스럽게 전달됩니다.
+  - severity: low
+    issue: 각주가 한국어 번역의 어휘 선택을 설명하기보다 영어 POB 표현을 직접 언급하며, 표지가 해당 어휘에 붙어 있지 않습니다.
+    rationale: 각주는 본문의 ‘무리’에 직접 연결하고, 히브리어 어휘의 문맥상 대안을 한국어로 설명해야 합니다.
+  revised_text: 보십시오, 어떤 예언자가 이스라엘 왕 아합에게 다가와 말했습니다. “야훼께서 이렇게 말씀하십니다. ‘왕께서는 이 거대한 무리[a] 전체를 보셨습니까? 보십시오, 내가 오늘 그들을 왕의 손에 넘기겠습니다. 그러면 왕께서는 내가 야훼인 줄 아시게 될 것입니다.’”
+  revised_footnotes:
+  - marker: a
+    text: ‘무리’는 히브리어 하몬(הָמוֹן)을 옮긴 말입니다. 여기서는 적군의 큰 집단을 가리키며, ‘대군’ 또는 ‘큰 군세’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 담화 표지(‘보십시오’), 불특정 예언자, 이스라엘 왕 아합, ‘이 거대한 무리 전체’, 오늘의 인도, 그리고 야훼를 알게 되는 인식 공식을 모두 보존했습니다. 동시에 왕에게 하는 예언자 발화를 현대 합쇼체로 통일하고, 한국어에서 자연스럽도록 대상을 ‘그들을’로 받았습니다. 각주는 ‘무리’에 직접 연결하여 군사 문맥의 가능한 어휘 대안을 제시했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:51:07Z'
+  output_hash: 132effc674986a09e7eb3a73158b6f143cf5fda8c046d6bcf74856ad1d3b3b77
+  usage:
+    completion_tokens: 1309
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 389
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 10285
+      pre_inference_ms: 243
+      service_tbt_ms: 8
+      service_ttft_ms: 568
+      service_ttlt_ms: 10712
+      total_duration_ms: 10476
+      user_visible_ttft_ms: 325
+    prompt_tokens: 2931
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4240
+  applied_revision: true
+  auto_apply_blocked_errors: []

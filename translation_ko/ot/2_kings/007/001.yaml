@@ -17,12 +17,12 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그러자 엘리사가 말했습니다[a]. “야훼의 말씀을 들으십시오. 야훼께서 이렇게 말씀하십니다. ‘내일 이맘때쯤에는 고운 밀가루 한 스아가 한 세겔에, 보리 두 스아가 한 세겔에 사마리아 성문에서 팔릴 것입니다.’”
+  text: 그러자 엘리사가 말했습니다. “야훼의 말씀을 들으십시오. 야훼께서 이렇게 말씀하십니다. 내일 이맘때쯤 사마리아 성문에서 고운 밀가루 한 스아[a]의 값은 한 세겔, 보리 두 스아의 값은 한 세겔이 될 것입니다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 엘리사는 여기서 자기 말이 아니라 야훼의 말씀을 대언하므로, 서술상의 발화 표시를 살렸습니다.
-    reason: source_note
+    text: 스아는 히브리어에서 쓰인 건량 단위입니다.
+    reason: cultural_note
 lexical_decisions:
 - source_word: וַיֹּאמֶר אֱלִישָׁע
   english_pob_choice: Then Elisha said
@@ -101,4 +101,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 엘리사가 말했습니다[a]. “야훼의 말씀을 들으십시오. 야훼께서 이렇게 말씀하십니다. ‘내일 이맘때쯤에는 고운 밀가루 한 스아가 한 세겔에, 보리 두 스아가 한 세겔에 사마리아 성문에서 팔릴 것입니다.’”
+  to: 그러자 엘리사가 말했습니다. “야훼의 말씀을 들으십시오. 야훼께서 이렇게 말씀하십니다. 내일 이맘때쯤 사마리아 성문에서 고운 밀가루 한 스아[a]의 값은 한 세겔, 보리 두 스아의 값은 한 세겔이 될 것입니다.”
+  rationale: 가격 공표라는 히브리어의 압축된 명사절을 현대 한국어에서 완결된 문장으로 만들기 위해 ‘값은 … 될 것입니다’를 보충했습니다. 이는 ‘팔리다’처럼 거래 행위를 특정하지 않으면서 원문의 가격 관계와 미래 시점을 보존합니다. 단위 주석은 해당 단어에 직접 연결했고, 불필요한 중첩 인용을 제거했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:53:59Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘와 수량·가격 관계 및 장소는 대체로 충실합니다. 그러나 히브리어는 시장 가격을 제시하는 명사절이며 ‘팔릴 것입니다’라는 동사를 명시하지 않습니다. 한국어에서 가격 관계를 자연스럽게 드러내기 위해 ‘값은 … 될 것입니다’로 옮기는 편이 특정 거래 방식의 첨가를 피합니다.
+  naturalness: 합쇼체와 예언 선포의 문체는 자연스럽습니다. 다만 한 발화 안에 겹따옴표를 다시 넣은 방식은 불필요하며, ‘고운 밀가루 한 스아가 한 세겔에’는 서술어가 생략되어 현대 한국어로 다소 미완성적으로 들립니다.
+  terminology: ‘야훼’, ‘말씀’, ‘스아’, ‘세겔’, ‘사마리아 성문’은 적절합니다. ‘스아’에 대한 문화적 주석은 필요하지만, 현 주석은 엘리사의 발화 표시를 설명할 뿐 원문의 의미상 난점을 설명하지 못하며 앵커 위치도 맞지 않습니다.
+  issues:
+  - severity: medium
+    issue: ‘팔릴 것입니다’가 원문에 없는 특정 거래 동작을 명시합니다.
+    rationale: 히브리어는 ‘한 스아의 고운 밀가루—한 세겔, 보리 두 스아—한 세겔’이라는 가격 공표입니다. 가격 명사를 보충해 자연스럽게 옮기되 판매 동사를 단정하지 않는 것이 더 충실합니다.
+  - severity: medium
+    issue: 각주 a가 ‘말했습니다’에 붙어 있으나 내용은 원문의 단위·발화 어느 쪽도 유익하게 설명하지 못합니다.
+    rationale: 영어 감사 기록의 a는 스아라는 건량 단위를 설명합니다. 한국어에서도 첫 ‘스아’에 앵커를 두고 그 단위를 설명해야 앵커와 주석 내용이 일치합니다.
+  - severity: low
+    issue: 인용문 안의 중첩 인용부호가 불필요합니다.
+    rationale: 엘리사의 직접 발화 전체가 이미 인용되어 있으므로, 야훼의 말씀을 소개하는 문장 뒤에 별도 인용부호를 열 필요가 없습니다.
+  revised_text: 그러자 엘리사가 말했습니다. “야훼의 말씀을 들으십시오. 야훼께서 이렇게 말씀하십니다. 내일 이맘때쯤 사마리아 성문에서 고운 밀가루 한 스아[a]의 값은 한 세겔, 보리 두 스아의 값은 한 세겔이 될 것입니다.”
+  revised_footnotes:
+  - marker: a
+    text: 스아는 히브리어에서 쓰인 건량 단위입니다.
+    reason: cultural_note
+  revision_rationale: 가격 공표라는 히브리어의 압축된 명사절을 현대 한국어에서 완결된 문장으로 만들기 위해 ‘값은 … 될 것입니다’를 보충했습니다. 이는 ‘팔리다’처럼 거래 행위를 특정하지 않으면서 원문의 가격 관계와 미래 시점을 보존합니다. 단위 주석은 해당 단어에 직접 연결했고, 불필요한 중첩 인용을 제거했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:53:59Z'
+  output_hash: e994189a0c8350dd279de6e20cbc15f5b1e10958f68482b4b7ca4d420b9e9d86
+  usage:
+    completion_tokens: 1242
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 473
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 158
+      engine_ttlt_ms: 11136
+      pre_inference_ms: 127
+      service_tbt_ms: 9
+      service_ttft_ms: 423
+      service_ttlt_ms: 11395
+      total_duration_ms: 11280
+      user_visible_ttft_ms: 296
+    prompt_tokens: 2799
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4041
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 이 여자의 아들은 밤에 죽었습니다. 그 여인이 그 위에 누웠기 때문입니다.[a][b]
+  text: 그리고 이 여자의 아들은 밤에[a] 죽었습니다. 이 여자가 아이 위에 누웠기 때문입니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘밤에’.
+    text: 또는 ‘밤에’(‘밤 동안에’).
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘그녀가 그 위에 누웠을 때/누워 있었던’. 문맥상 사망의 원인을 드러내기 위해 원인절로 옮겼습니다.
+    text: 직역하면 ‘그녀가 그 아이 위에 누웠을 때/누워 있었던’입니다. 문맥상 그 여자가 아이 위에 누운 일이 죽음의 원인임을 나타내므로 원인절로 옮겼습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיָּמָת
@@ -82,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 이 여자의 아들은 밤에 죽었습니다. 그 여인이 그 위에 누웠기 때문입니다.[a][b]
+  to: 그리고 이 여자의 아들은 밤에[a] 죽었습니다. 이 여자가 아이 위에 누웠기 때문입니다.[b]
+  rationale: ‘아이 위에’로 히브리어 대명사 목적어의 지시 대상을 분명히 했습니다. 원문의 서술 순서, ‘아들’이라는 성별 표지, 밤이라는 시간, 그리고 문맥상 인과 관계는 유지했습니다. 각주 표지는 각각 시간 표현과 인과절에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:44:57Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어는 ‘이 여자의 아들’이 밤에 죽었고, 그 여자가 그 아이 위에 누운 일을 그 죽음의 설명으로 덧붙입니다. 초안은 사망과 인과 관계를 적절히 반영하지만, ‘그 위에’는 한국어에서 아이를 가리키는지 불분명합니다.
+  naturalness: 합쇼체 문장은 자연스럽습니다. 다만 ‘그 위에’의 지시 대상을 ‘아이 위에’로 명시하면 현대 한국어에서 훨씬 명료합니다. 각주 표지도 해당 어구 가까이에 배치하는 것이 좋습니다.
+  terminology: ‘아들’, ‘밤에’, ‘누웠기 때문입니다’는 원문의 성별, 시간 표현, 문맥상 인과를 적절히 보존합니다. ‘아이’는 두 번째 언급에서 대명사적 목적어를 명료하게 하는 표현이며, 앞선 ‘아들’의 성별 정보를 바꾸지 않습니다.
+  issues:
+  - severity: medium
+    issue: ‘그 위에’의 선행사가 불명확합니다.
+    rationale: 히브리어 עָלָיו의 접미사는 죽은 아들을 가리키지만, 한국어 ‘그 위에’는 문맥상 무엇 위인지 즉시 분명하지 않을 수 있습니다. ‘아이 위에’로 밝혀야 원문의 관계를 정확히 전달합니다.
+  - severity: low
+    issue: 각주 a의 표지가 시간 표현에서 떨어져 있습니다.
+    rationale: ‘밤에’의 어휘 대안을 설명하는 각주는 해당 시간 표현 바로 뒤에 두는 편이 각주 연결이 명확합니다.
+  revised_text: 그리고 이 여자의 아들은 밤에[a] 죽었습니다. 이 여자가 아이 위에 누웠기 때문입니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘밤에’(‘밤 동안에’).
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그녀가 그 아이 위에 누웠을 때/누워 있었던’입니다. 문맥상 그 여자가 아이 위에 누운 일이 죽음의 원인임을 나타내므로 원인절로 옮겼습니다.
+    reason: lexical_alternative
+  revision_rationale: ‘아이 위에’로 히브리어 대명사 목적어의 지시 대상을 분명히 했습니다. 원문의 서술 순서, ‘아들’이라는 성별 표지, 밤이라는 시간, 그리고 문맥상 인과 관계는 유지했습니다. 각주 표지는 각각 시간 표현과 인과절에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:44:57Z'
+  output_hash: a85a1e9e085d03a50cdf2b031f00768776d2bb050a84f782b3d3c9310ae0f79f
+  usage:
+    completion_tokens: 866
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 254
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 128
+      engine_ttlt_ms: 7448
+      pre_inference_ms: 143
+      service_tbt_ms: 8
+      service_ttft_ms: 441
+      service_ttlt_ms: 7757
+      total_duration_ms: 7625
+      user_visible_ttft_ms: 298
+    prompt_tokens: 1886
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2752
+  applied_revision: true
+  auto_apply_blocked_errors: []

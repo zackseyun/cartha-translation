@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 야훼 보시기에 악한 일을 했습니다. 그는 느밧의 아들 여로보암의 모든 죄에서 돌아서지 않았습니다[a]. 여로보암이 이스라엘을 죄짓게 한 그 죄들 가운데서 그는 그 길을 걸었습니다.
+  text: 그는 야훼 보시기에 악한 일을 했습니다. 그는 이스라엘을 죄짓게 한 느밧의 아들 여로보암의 어떤 죄에서도 돌아서지 않았고, 그 죄된 길을 따랐습니다[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 더 문자적으로, '그가 그것 안에서 걸었다'로도 옮길 수 있습니다. 여기서 단수 대명사는 여로보암의 죄된 방식 전체를 집합적으로 가리킵니다.
+    text: 또는 더 문자적으로, ‘그 안에서 걸었습니다’로 옮길 수 있습니다. 히브리어는 단수 대명사를 쓰며, 이는 여로보암의 죄된 길 또는 방식을 집합적으로 가리킬 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיַּעֲשֶׂה הָרַע
@@ -76,4 +76,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 야훼 보시기에 악한 일을 했습니다. 그는 느밧의 아들 여로보암의 모든 죄에서 돌아서지 않았습니다[a]. 여로보암이 이스라엘을 죄짓게 한 그 죄들 가운데서 그는 그 길을 걸었습니다.
+  to: 그는 야훼 보시기에 악한 일을 했습니다. 그는 이스라엘을 죄짓게 한 느밧의 아들 여로보암의 어떤 죄에서도 돌아서지 않았고, 그 죄된 길을 따랐습니다[a].
+  rationale: 관계절이 여로보암을 수식하도록 회복하고, 부정과 ‘모든’의 결합이 낳는 한국어의 범위 모호성을 ‘어떤 죄에서도’로 해소했습니다. 마지막 절은 히브리어의 ‘걷다’ 관용을 자연스러운 한국어 ‘따르다’로 옮기되, 단수 대명사의 집합적 지시는 각주로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:54:16Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 히브리어의 관계절 אֲשֶׁר הֶחֱטִיא אֶת־יִשְׂרָאֵל은 남성 단수인 여로보암을 수식하여, 그가 이스라엘을 죄짓게 했다는 뜻입니다. 초안은 이를 ‘여로보암이 이스라엘을 죄짓게 한 그 죄들’로 재구성하여 관계절의 선행사와 문장 관계를 바꾸었습니다. 또한 마지막 문장은 ‘그 길’을 별도로 도입하고 ‘그 죄들 가운데서’라고 하여 בָּהּ의 단수·집합적 지시를 부정확하게 처리합니다.
+  naturalness: ‘야훼 보시기에 악한 일을 했습니다’는 현대 표준어 합쇼체로 자연스럽습니다. 그러나 ‘모든 죄에서 돌아서지 않았습니다’는 한국어에서 ‘모든 죄를 다 떠난 것은 아니다’라는 부분 부정으로도 읽힐 수 있으므로, 히브리어의 전면적 불이행을 분명히 하는 ‘어떤 죄에서도 돌아서지 않았습니다’가 더 자연스럽고 정확합니다.
+  terminology: ‘야훼’, ‘느밧’, ‘여로보암’, ‘이스라엘’은 일관되게 적절합니다. ‘악한 일을 했습니다’도 왕정 평가 관용구에 적합합니다. בָּהּ는 형태상 여성 단수이나 앞선 죄의 길/방식을 집합적으로 가리키는 것으로 이해될 수 있으므로, 한국어 본문에서는 자연스러운 ‘그 죄된 길’을 사용하고 각주에서 단수 표현의 가능성을 밝혀야 합니다.
+  issues:
+  - severity: high
+    issue: 관계절의 선행사가 바뀌었습니다.
+    rationale: אֲשֶׁר와 הֶחֱטִיא은 남성 단수이며 문맥상 ‘느밧의 아들 여로보암’을 가리킵니다. 따라서 ‘여로보암이 이스라엘을 죄짓게 한’으로 옮겨야 합니다.
+  - severity: medium
+    issue: ‘모든 죄에서 돌아서지 않았다’는 한국어에서 범위가 모호합니다.
+    rationale: לֹא סָר מִכָּל חַטֹּאות는 어느 죄에서도 떠나지 않았다는 전면적 진술입니다. ‘어떤 죄에서도 돌아서지 않았다’가 이 의미를 더 분명히 전달합니다.
+  - severity: medium
+    issue: 마지막 절이 부자연스럽고 בָּהּ의 단수·집합적 지시를 충분히 반영하지 못합니다.
+    rationale: ‘그 죄들 가운데서 그는 그 길을 걸었습니다’는 원문에 없는 공간 관계와 별도 선행사를 도입합니다. ‘그 죄된 길을 따랐습니다’가 한국어 관용에 맞으면서 집합적 의미를 보존합니다.
+  - severity: low
+    issue: 각주 앵커 위치가 해당 표현과 떨어져 있습니다.
+    rationale: 각주는 בָּהּ 및 ‘걸었다/따랐다’에 관한 것이므로 마지막 절에 붙여야 독자가 무엇을 설명하는지 알 수 있습니다.
+  revised_text: 그는 야훼 보시기에 악한 일을 했습니다. 그는 이스라엘을 죄짓게 한 느밧의 아들 여로보암의 어떤 죄에서도 돌아서지 않았고, 그 죄된 길을 따랐습니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 또는 더 문자적으로, ‘그 안에서 걸었습니다’로 옮길 수 있습니다. 히브리어는 단수 대명사를 쓰며, 이는 여로보암의 죄된 길 또는 방식을 집합적으로 가리킬 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 관계절이 여로보암을 수식하도록 회복하고, 부정과 ‘모든’의 결합이 낳는 한국어의 범위 모호성을 ‘어떤 죄에서도’로 해소했습니다. 마지막 절은 히브리어의 ‘걷다’ 관용을 자연스러운 한국어 ‘따르다’로 옮기되, 단수 대명사의 집합적 지시는 각주로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:54:16Z'
+  output_hash: 1aa6cdcfa139c2250f36f3a01de1dc8ee5f98ebab385562fb2f5925ab7d172fc
+  usage:
+    completion_tokens: 1460
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 435
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 144
+      engine_ttlt_ms: 11193
+      pre_inference_ms: 106
+      service_tbt_ms: 8
+      service_ttft_ms: 417
+      service_ttlt_ms: 11440
+      total_duration_ms: 11349
+      user_visible_ttft_ms: 311
+    prompt_tokens: 2928
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4388
+  applied_revision: true
+  auto_apply_blocked_errors: []

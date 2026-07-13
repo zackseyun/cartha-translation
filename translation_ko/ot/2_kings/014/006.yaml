@@ -97,4 +97,59 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 법정적 표현(‘죽이다/죽임을 당하다’)과 마지막 능동형 ‘죽다’의 구별은 대체로 반영되었습니다. 다만 ‘야훼께서 명령하여 말씀하신’은 ‘야훼께서 … 명령하셨다’라는 법령 도입 구조를 다소 부자연스럽게 처리하며, 본문의 직접 인용과의 연결을 더 분명히 할 필요가 있습니다.
+  naturalness: ‘「살인자들」의 아들들’의 겹낫표는 한국어 성경 문체에서 부자연스럽고, 문장 안에서 불필요한 거리 두기처럼 보입니다. ‘처형하지 않았습니다’와 ‘다음과 같이 명령하신’은 현대 한국어의 격식 있는 역사·법률 서술에 더 자연스럽습니다.
+  terminology: ‘야훼’, ‘모세의 율법책’, ‘아버지들/아들들’, ‘자기 죄’는 원문의 용어와 성별 표지를 적절히 보존합니다. הַמַּכִּים는 문맥상 살해한 자들을 가리키므로 ‘살해한 자들의 아들들’이 자연스럽고, 각주에서 더 중립적인 대안을 제시할 수 있습니다.
+  issues:
+  - severity: medium
+    issue: 율법의 명령과 인용문의 연결이 부자연스럽습니다.
+    rationale: ‘이는 야훼께서 명령하여 말씀하신 모세의 율법 책에 기록된 대로입니다’는 한국어에서 야훼가 무엇을 ‘명령하여 말씀하셨는지’가 불분명합니다. ‘야훼께서 다음과 같이 명령하신 모세의 율법책에 기록된 대로’로 옮기면 אשר צוה יהוה לאמר의 법령 도입 기능을 자연스럽게 반영합니다.
+  - severity: low
+    issue: ‘「살인자들」’의 겹낫표가 불필요합니다.
+    rationale: 원문에는 인용 또는 거리 두기를 표시하는 요소가 없으므로 제거해야 합니다.
+  - severity: low
+    issue: 첫 동사의 법정적 의미를 더 명확히 할 수 있습니다.
+    rationale: הֵמִית은 역사적 문맥에서 사형 집행을 뜻하므로 ‘처형하지 않았습니다’가 단순한 ‘죽이지 않았습니다’보다 법정적 뉘앙스를 잘 전달합니다.
+  revised_text: 그러나 그는 살해한 자들의 아들들을 처형하지 않았습니다[a]. 이는 야훼께서 다음과 같이 명령하신 모세의 율법책에 기록된 대로입니다. “아버지들은 아들들 때문에 죽임을 당해서는 안 되고, 아들들도 아버지들 때문에 죽임을 당해서는 안 됩니다. 오히려 각 사람은 자기 죄로 죽을 것입니다.”
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘살해한 자들의 자녀들’. 히브리어는 문자적으로 ‘살해한 자들의 아들들’이라고 말합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 이 인용은 신명기 24:16을 반영합니다.
+    reason: cross_reference
+  revision_rationale: 법령 인용을 도입하는 히브리어 구문을 자연스러운 한국어로 정리하고, 불필요한 겹낫표를 제거했습니다. 또한 첫 문장의 사법적 맥락을 ‘처형하다’로 드러내되, 인용문 끝의 능동형 동사는 ‘죽을 것입니다’로 유지하여 원문의 형태 차이를 보존했습니다. 기존 b 각주는 본문에 b 표지가 없었으므로 인용 전체의 도입부에 표지를 붙여 구조를 정정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:55:12Z'
+  output_hash: 7c02932941e718448289be60d78a7b93e7611c1955fb94efa715790852d3548d
+  usage:
+    completion_tokens: 1201
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 295
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 152
+      engine_ttlt_ms: 9645
+      pre_inference_ms: 104
+      service_tbt_ms: 8
+      service_ttft_ms: 695
+      service_ttlt_ms: 10183
+      total_duration_ms: 10089
+      user_visible_ttft_ms: 592
+    prompt_tokens: 3151
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4352
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

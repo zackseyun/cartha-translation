@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그 일이 일어났습니다[a]. 여호람이 예후를 보고 말했습니다. 「예후야, 평강이냐?」 그러자 예후가 말했습니다. 「무슨 평강이 있겠느냐[b]? 네 어머니 이세벨의 음행들과 그의 많은 주술들 때문에 그러하다.」
+  text: 여호람이 예후를 보았을 때, 그가 말했습니다. 「예후여, 평강이 있습니까?」 예후가 말했습니다. 「네 어머니 이세벨의 음행[a]과 그녀의 수많은 주술이 계속되는 한, 무슨 평강이 있겠습니까[b]?」
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘이세벨 너의 어머니의 창녀짓들.’ 히브리어는 문자적 의미와 비유적 의미를 함께 가질 수 있으며, 도덕적·제의적 불신실을 모두 포함할 수 있습니다.
+    text: 또는 ‘네 어머니 이세벨의 창녀짓들.’ 히브리어는 문자적 의미와 비유적 의미를 함께 지닐 수 있으며, 도덕적·제의적 불신실을 모두 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘무슨 평강이냐?’ 히브리어는 수사 효과를 위해 여호람의 질문에서 나온 ‘평강’을 되풀이합니다.
+    text: 또는 ‘무슨 평강이 있습니까?’ 히브리어는 수사적 효과를 위해 여호람의 질문에 나온 ‘평강’을 되풀이합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיְהִי כִּרְאוֹת
@@ -92,4 +92,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그 일이 일어났습니다[a]. 여호람이 예후를 보고 말했습니다. 「예후야, 평강이냐?」 그러자 예후가 말했습니다. 「무슨 평강이 있겠느냐[b]? 네 어머니 이세벨의 음행들과 그의 많은 주술들 때문에 그러하다.」
+  to: 여호람이 예후를 보았을 때, 그가 말했습니다. 「예후여, 평강이 있습니까?」 예후가 말했습니다. 「네 어머니 이세벨의 음행[a]과 그녀의 수많은 주술이 계속되는 한, 무슨 평강이 있겠습니까[b]?」
+  rationale: 원문의 시간절과 발화 순서를 자연스럽게 복원했습니다. ‘평강’을 반복해 שָׁלוֹם의 어휘적 대응을 살렸고, ‘계속되는 한’으로 עַד가 나타내는 지속 조건을 반영했습니다. 각주 a의 앵커를 해당 어휘인 ‘음행’으로 옮겼으며, 이세벨을 가리키는 대명사를 바로잡았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:54:02Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안은 וַיְהִי כִּרְאוֹת의 시간 관계를 두 문장으로 분리하여 약화시키고, עַד의 지속 조건을 ‘때문에 그러하다’라는 인과적 결론으로 바꾸었습니다. 또한 이세벨을 가리키는 대명사 ‘그의’는 부정확합니다. 수정문은 여호람이 예후를 본 때와 발화를 연결하고, ‘계속되는 한’으로 עַד의 조건적·지속적 뉘앙스를 보존합니다.
+  naturalness: ‘평강’의 반복은 성경 문체 안에서 자연스럽고 수사적 대응을 잘 보존합니다. 다만 ‘그 일이 일어났습니다’는 뒤따르는 시간절과 분리되면 한국어 서사에서 어색하며, ‘음행들과’은 현대 한국어에서 부자연스럽습니다. 집합명사 ‘음행’으로 자연스럽게 처리했습니다.
+  terminology: שָׁלוֹם은 두 번 모두 ‘평강’으로 유지했습니다. זְנוּנֵי는 해석을 ‘우상숭배’로 좁히지 않은 ‘음행’으로, כְּשָׁפֶיהָ는 ‘주술’로 옮겼습니다. ‘그녀의’로 이세벨을 명확히 가리킵니다.
+  issues:
+  - severity: medium
+    issue: 시간절과 서술 공식의 연결이 풀어짐
+    rationale: ‘그 일이 일어났습니다. 여호람이 … 보고’는 וַיְהִי כִּרְאוֹת의 ‘…보았을 때’ 관계를 불명확하게 합니다.
+  - severity: high
+    issue: עַד의 의미가 ‘때문에 그러하다’로 변경됨
+    rationale: 원문은 평강이 불가능한 상태가 음행과 주술이 계속되는 기간이라는 조건을 제시하며, 별도의 ‘그러하다’라는 결론을 말하지 않습니다.
+  - severity: medium
+    issue: 이세벨을 가리키는 대명사 ‘그의’
+    rationale: 한국어에서 남성 지시로 읽힐 수 있으므로, 여성 인물 이세벨을 명확히 가리키는 ‘그녀의’가 적절합니다.
+  - severity: medium
+    issue: 각주 a의 표지가 해당 어휘에 붙어 있지 않음
+    rationale: 각주 a는 זְנוּנֵי의 번역 대안을 설명하므로 서술 공식이 아니라 ‘음행’에 앵커를 두어야 합니다.
+  revised_text: 여호람이 예후를 보았을 때, 그가 말했습니다. 「예후여, 평강이 있습니까?」 예후가 말했습니다. 「네 어머니 이세벨의 음행[a]과 그녀의 수많은 주술이 계속되는 한, 무슨 평강이 있겠습니까[b]?」
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘네 어머니 이세벨의 창녀짓들.’ 히브리어는 문자적 의미와 비유적 의미를 함께 지닐 수 있으며, 도덕적·제의적 불신실을 모두 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘무슨 평강이 있습니까?’ 히브리어는 수사적 효과를 위해 여호람의 질문에 나온 ‘평강’을 되풀이합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 시간절과 발화 순서를 자연스럽게 복원했습니다. ‘평강’을 반복해 שָׁלוֹם의 어휘적 대응을 살렸고, ‘계속되는 한’으로 עַד가 나타내는 지속 조건을 반영했습니다. 각주 a의 앵커를 해당 어휘인 ‘음행’으로 옮겼으며, 이세벨을 가리키는 대명사를 바로잡았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:54:02Z'
+  output_hash: 2dfb3dc1c1a43396e3d0e23db929fa792f44c8700cd3c39722b5a0771c4216ee
+  usage:
+    completion_tokens: 1536
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 608
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 177
+      engine_ttlt_ms: 13270
+      pre_inference_ms: 143
+      service_tbt_ms: 9
+      service_ttft_ms: 515
+      service_ttlt_ms: 13597
+      total_duration_ms: 13469
+      user_visible_ttft_ms: 372
+    prompt_tokens: 2904
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4440
+  applied_revision: true
+  auto_apply_blocked_errors: []

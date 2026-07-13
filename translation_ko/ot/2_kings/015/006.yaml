@@ -20,14 +20,14 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 이제 아사랴의 남은 행적과 그가 한 모든 일은 유다 왕들의 역대기에 기록되어 있지 않습니까?[a][b]
+  text: 아사랴의 남은 행적과 그가 한 모든 일은 유다 왕들의 역대기[b]에 기록되어[a] 있지 않습니까?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어의 כְּתוּבִים는 문자적으로는 '쓰여 있다'는 뜻이지만, 왕실 기록 문맥에서는 '기록되어 있다'가 더 자연스러운 한국어입니다.
+    text: 히브리어 כְּתוּבִים는 문자적으로는 ‘쓰여 있다’는 뜻이지만, 왕실 기록 문맥에서는 ‘기록되어 있다’가 더 자연스러운 한국어입니다.
     reason: lexical_alternative
   - marker: b
-    text: '''유다 왕들의 역대기''는 열왕기 전체에서 반복되는 왕실 연대기 자료를 가리키는 제목형 표현입니다.'
+    text: ‘유다 왕들의 역대기’는 열왕기 전체에서 반복되는 왕실 연대기 자료를 가리키는 제목형 표현입니다.
     reason: cultural_note
 lexical_decisions:
 - source_word: יֶתֶר דִּבְרֵי
@@ -75,4 +75,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이제 아사랴의 남은 행적과 그가 한 모든 일은 유다 왕들의 역대기에 기록되어 있지 않습니까?[a][b]
+  to: 아사랴의 남은 행적과 그가 한 모든 일은 유다 왕들의 역대기[b]에 기록되어[a] 있지 않습니까?
+  rationale: Source에 없는 “이제”를 삭제하여 히브리어와 English POB audit trail에 맞추었습니다. 뜻은 바꾸지 않고, 각 주석 표지를 해당 어구에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:57:29Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The added initial “이제” has no corresponding Hebrew expression and conflicts with the audited English cleanup, which correctly removed “Now.” The rest of the sentence faithfully renders the regnal-summary formula, including the rhetorical question and archival reference.
+  naturalness: Apart from the unsupported discourse marker, the Korean is natural, formal-polite, and appropriately concise. Relocating footnote anchors to their respective terms improves readability and reference clarity.
+  terminology: “아사랴,” “남은 행적,” “유다 왕들의 역대기,” and “기록되어 있다” are suitable in this historical-register context. “역대기” is appropriately clarified as a royal annal source rather than assumed to denote the canonical book.
+  issues:
+  - severity: medium
+    issue: “이제” introduces an unsupported temporal/discourse marker.
+    rationale: The Hebrew begins with וְיֶתֶר (“and/the rest”), not an explicit equivalent of “now.” The English audit trail specifically removed the same unsupported marker. It should therefore not appear in the Korean text.
+  - severity: low
+    issue: The footnote markers are both placed at the end of the sentence rather than at the expressions each note explains.
+    rationale: Footnote a concerns “기록되어,” and footnote b concerns “유다 왕들의 역대기.” Anchoring each marker directly to its referent makes the notes structurally and semantically clear.
+  revised_text: 아사랴의 남은 행적과 그가 한 모든 일은 유다 왕들의 역대기[b]에 기록되어[a] 있지 않습니까?
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 כְּתוּבִים는 문자적으로는 ‘쓰여 있다’는 뜻이지만, 왕실 기록 문맥에서는 ‘기록되어 있다’가 더 자연스러운 한국어입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘유다 왕들의 역대기’는 열왕기 전체에서 반복되는 왕실 연대기 자료를 가리키는 제목형 표현입니다.
+    reason: cultural_note
+  revision_rationale: Source에 없는 “이제”를 삭제하여 히브리어와 English POB audit trail에 맞추었습니다. 뜻은 바꾸지 않고, 각 주석 표지를 해당 어구에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:57:29Z'
+  output_hash: a35f68004e1e49c06ebe2650ecd22a916bf344194439247837136816f302e4ae
+  usage:
+    completion_tokens: 811
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 278
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 5992
+      pre_inference_ms: 90
+      service_tbt_ms: 7
+      service_ttft_ms: 400
+      service_ttlt_ms: 6251
+      total_duration_ms: 6172
+      user_visible_ttft_ms: 310
+    prompt_tokens: 2333
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3144
+  applied_revision: true
+  auto_apply_blocked_errors: []

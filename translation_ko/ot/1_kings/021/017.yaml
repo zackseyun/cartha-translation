@@ -76,4 +76,53 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘인 ‘야훼의 말씀’, ‘디셉 사람 엘리야’, 그리고 서사 전환은 대체로 충실합니다. 그러나 לֵאמֹר는 다음 절의 발화를 도입하는 ‘이르시기를/말하여’이지, 여기에서 발화가 종결되었음을 뜻하는 ‘말씀하셨습니다’가 아닙니다.
+  naturalness: 현대 한국어에서 ‘말씀이 … 말씀하셨습니다’는 주어와 높임의 관계가 부자연스럽고, 더 중요하게는 다음 절로 이어지는 인용 도입 기능을 흐립니다. ‘임하여 이르시기를,’은 성경적 문맥에서 자연스럽게 다음 절에 연결됩니다.
+  terminology: ‘야훼’, ‘말씀’, ‘디셉 사람’, ‘엘리야’는 원문 및 POB 방침에 부합합니다. ‘이르시기를’은 לֵאמֹר의 통상적이고 정확한 대응입니다.
+  issues:
+  - severity: medium
+    issue: לֵאמֹר를 ‘말씀하셨습니다’로 번역함
+    rationale: 히브리어 לֵאמֹר는 뒤따르는 직접 발화의 도입 표현입니다. 문장 종결형 ‘말씀하셨습니다’는 발화가 이 절에서 완결된 것처럼 보이게 하며, ‘말씀’이 그 동작의 주어가 되는 어색함도 낳습니다.
+  - severity: low
+    issue: 각주의 대안 표현 ‘그리고 그렇게 되어’가 와우 연속형의 서사 연결을 충분히 반영하지 못함
+    rationale: וַיְהִי의 관용적 서사 도입은 ‘그리고 일이 일어나’ 또는 ‘그리고 이렇게 되었다’처럼 옮기는 편이 더 직접적입니다.
+  revised_text: 그때 야훼의 말씀이 디셉 사람 엘리야에게 임하여 이르시기를,
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘그리고 일이 일어나, 야훼의 말씀이 디셉 사람 엘리야에게 임하여 이르시기를,’
+    reason: וַיְהִי의 서사 도입 표현에 대한 대안적 직역
+  revision_rationale: 본문의 문장 구조를 보존하여, 야훼의 말씀이 엘리야에게 임한 뒤 다음 절의 말씀 내용이 이어짐을 ‘이르시기를,’으로 명확히 했습니다. 야훼라는 신명과 고유명 및 출신 표지는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:52:06Z'
+  output_hash: bfb86f4e9b2b6a09c6ac49b2e58497484256131518fbd06fc5109137de32b1b2
+  usage:
+    completion_tokens: 1127
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 153
+      engine_ttlt_ms: 8744
+      pre_inference_ms: 236
+      service_tbt_ms: 8
+      service_ttft_ms: 623
+      service_ttlt_ms: 9196
+      total_duration_ms: 8971
+      user_visible_ttft_ms: 388
+    prompt_tokens: 1978
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3105
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

@@ -23,7 +23,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 솔로몬의 공사를 맡은 수석 관리들[a] 외에, 곧 그 공사 위에 있던 이들, 삼천삼백 명[b][c]이었는데, 그들은 공사하는 백성을 다스렸습니다.
+  text: 공사를 맡은 솔로몬의 수석 관리들[a] 외에, 삼천삼백 명이 있었는데, 이들은 공사하는 백성[c]을 다스렸습니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -93,4 +93,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 솔로몬의 공사를 맡은 수석 관리들[a] 외에, 곧 그 공사 위에 있던 이들, 삼천삼백 명[b][c]이었는데, 그들은 공사하는 백성을 다스렸습니다.
+  to: 공사를 맡은 솔로몬의 수석 관리들[a] 외에, 삼천삼백 명이 있었는데, 이들은 공사하는 백성[c]을 다스렸습니다[b].
+  rationale: 중복된 관계절을 제거하고, 수량 표현을 자연스러운 한국어 문장으로 정리했습니다. 또한 각주 c를 설명 대상인 ‘백성’에 옮겨 각주 앵커와 내용의 대응을 바로잡았습니다. ‘수석 관리들’, ‘다스렸습니다’, ‘백성’은 원문의 행정적·어휘적 범위를 보존하므로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:45:07Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 행정 직함, 공사에 대한 감독 관계, 3,300명이라는 수, 그리고 공사하는 백성에 대한 권위 행사를 대체로 충실히 반영합니다. 다만 초안은 ‘공사를 맡은’과 ‘공사 위에 있던 이들’을 중복하여 원문의 관계절을 두 번 옮겼습니다.
+  naturalness: ‘곧 그 공사 위에 있던 이들, 삼천삼백 명이었는데’는 현대 한국어 문장 구조로 부자연스럽습니다. 관계절을 한 번만 두고 수량을 자연스럽게 서술하는 편이 적절합니다.
+  terminology: ‘수석 관리들’은 שָׂרֵי הַנִּצָּבִים의 행정·감독적 성격을 무리 없이 전달하며, ‘다스렸습니다’는 רדה의 비교적 강한 권위의 뉘앙스를 보존합니다. ‘백성’도 본문에 유지할 수 있으나, 관련 각주는 해당 단어에 직접 붙어야 합니다.
+  issues:
+  - severity: medium
+    issue: 관계절의 중복 번역
+    rationale: ‘솔로몬의 공사를 맡은 수석 관리들’이 이미 אֲשֶׁר עַל־הַמְּלָאכָה를 옮기는데, ‘곧 그 공사 위에 있던 이들’이 이를 다시 반복합니다.
+  - severity: medium
+    issue: 각주 c의 앵커 위치 오류
+    rationale: 각주 c는 히브리어 ‘백성’에 관한 설명인데 현재 ‘삼천삼백 명’에 붙어 있습니다. ‘백성’에 붙여야 합니다.
+  - severity: low
+    issue: 수량 구문의 어색한 연결
+    rationale: 원문은 앞 문맥에 이어지는 명사절이지만, 한국어에서는 ‘삼천삼백 명이 있었는데’처럼 최소한의 서술을 보충해야 문장이 자연스럽습니다.
+  revised_text: 공사를 맡은 솔로몬의 수석 관리들[a] 외에, 삼천삼백 명이 있었는데, 이들은 공사하는 백성[c]을 다스렸습니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘수석 감독들’, ‘고위 관리들’. 히브리어 행정 용어가 위계와 감독의 뜻을 함께 담고 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘다스렸습니다’는 통치·지배를 뜻하는 동사를 옮긴 것으로, 여기서는 노동자들에 대한 감독적 권위를 가리킵니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 히브리어 ‘백성’은 여기서 공사에 동원된 노동 집단을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 중복된 관계절을 제거하고, 수량 표현을 자연스러운 한국어 문장으로 정리했습니다. 또한 각주 c를 설명 대상인 ‘백성’에 옮겨 각주 앵커와 내용의 대응을 바로잡았습니다. ‘수석 관리들’, ‘다스렸습니다’, ‘백성’은 원문의 행정적·어휘적 범위를 보존하므로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:45:07Z'
+  output_hash: 009ae7fc8ca29ff88ae058419a3d0dbb04758b087168ffec5ceda8b61430fac3
+  usage:
+    completion_tokens: 1000
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 223
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 157
+      engine_ttlt_ms: 7960
+      pre_inference_ms: 194
+      service_tbt_ms: 8
+      service_ttft_ms: 538
+      service_ttlt_ms: 8315
+      total_duration_ms: 8137
+      user_visible_ttft_ms: 344
+    prompt_tokens: 2451
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3451
+  applied_revision: true
+  auto_apply_blocked_errors: []

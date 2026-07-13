@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 소년이 자라났습니다. 그리고 어느 날 그는 아버지에게로, 곡식 거두는 사람들에게로 나갔습니다.[a][b]
+  text: 소년[a]이 자랐습니다. 어느 날[b] 그는 아버지와 곡식을 베는 이들에게로 나갔습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 ילד는 문맥에 따라 ‘아이’ 또는 ‘소년’을 뜻할 수 있습니다.
+    text: 히브리어 ‘예레드’는 문맥에 따라 ‘아이’ 또는 ‘소년’을 뜻할 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어 관용구 ‘그리고 그 날이 되었다’는 ‘어느 날’이라는 서사적 표현입니다.
+    text: 히브리어 ‘그리고 그날이 되었다’는 ‘어느 날’이라는 서사적 표현입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּגְדַּל
@@ -74,4 +74,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 소년이 자라났습니다. 그리고 어느 날 그는 아버지에게로, 곡식 거두는 사람들에게로 나갔습니다.[a][b]
+  to: 소년[a]이 자랐습니다. 어느 날[b] 그는 아버지와 곡식을 베는 이들에게로 나갔습니다.
+  rationale: 문장의 뜻을 바꾸지 않고, 반복된 이동 대상을 자연스러운 한국어 병렬 표현으로 다듬었습니다. ‘곡식을 베는 이들’은 수확 노동자를 가리키는 히브리어 분사의 의미를 유지하며, 각주 표지를 해당 어휘·관용구 바로 뒤로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:51:51Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 서술 순서와 핵심 의미(소년의 성장, 특정한 날, 아버지와 곡식 베는 이들에게 나감)를 충실히 반영합니다. 다만 원문의 반복된 אֶל(‘~에게/쪽으로’)을 현재처럼 쉼표로 병렬 연결하면 한국어 문장 구조가 부자연스럽습니다.
+  naturalness: ‘아버지에게로, 곡식 거두는 사람들에게로’는 현대 표준 한국어에서 어색합니다. ‘아버지와 곡식을 베는 이들에게로’로 연결하면 자연스럽고, 아버지 및 베는 이들을 향해 나갔다는 원문의 뜻도 유지됩니다. ‘곡식을 베는 이들’은 קֹצְרִים(곡식을 베는 사람들)의 작업을 더 직접적으로 드러냅니다.
+  terminology: ‘소년’은 הַיָּלֶד의 문맥상 가능한 번역이며, 각주로 ‘아이’의 가능성을 보존하는 것이 적절합니다. 합쇼체 종결도 일관됩니다.
+  issues:
+  - severity: low
+    issue: 병렬 목적어 표현이 부자연스러움
+    rationale: ‘아버지에게로, 곡식 거두는 사람들에게로’는 조사 반복과 쉼표 연결 때문에 한국어 문장으로 매끄럽지 않습니다. 원문의 두 대상은 ‘아버지와 … 이들’로 자연스럽게 옮길 수 있습니다.
+  - severity: low
+    issue: 각주 표지의 위치
+    rationale: 각주 a와 b를 각각 ‘소년’과 ‘어느 날’ 바로 뒤에 두면 무엇을 설명하는지 더 분명해집니다.
+  revised_text: 소년[a]이 자랐습니다. 어느 날[b] 그는 아버지와 곡식을 베는 이들에게로 나갔습니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 ‘예레드’는 문맥에 따라 ‘아이’ 또는 ‘소년’을 뜻할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어 ‘그리고 그날이 되었다’는 ‘어느 날’이라는 서사적 표현입니다.
+    reason: lexical_alternative
+  revision_rationale: 문장의 뜻을 바꾸지 않고, 반복된 이동 대상을 자연스러운 한국어 병렬 표현으로 다듬었습니다. ‘곡식을 베는 이들’은 수확 노동자를 가리키는 히브리어 분사의 의미를 유지하며, 각주 표지를 해당 어휘·관용구 바로 뒤로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:51:51Z'
+  output_hash: e39df9301fdf74267d6620aeb7f576b0770ee149b4d2e8bb98bb8758c0fa32cb
+  usage:
+    completion_tokens: 1122
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 505
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 126
+      engine_ttlt_ms: 8878
+      pre_inference_ms: 125
+      service_tbt_ms: 8
+      service_ttft_ms: 603
+      service_ttlt_ms: 9349
+      total_duration_ms: 9232
+      user_visible_ttft_ms: 477
+    prompt_tokens: 1740
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2862
+  applied_revision: true
+  auto_apply_blocked_errors: []

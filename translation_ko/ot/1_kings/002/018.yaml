@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 밧세바가 말했습니다. 「좋습니다. 제가 왕께 당신을 위해 말씀드리겠습니다」.[a]
+  text: 밧세바가 말했습니다. 「좋습니다. 제가 왕께 그대에 관하여[a] 말씀드리겠습니다.」
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 דבר + על은 ‘~에 관하여’도 뜻하지만, 이 문맥에서는 ‘당신을 위해/대신하여’라는 중재적 의미가 강합니다.
+    text: 히브리어 ‘그대에 관하여’는 문맥상 ‘그대를 위해’ 또는 ‘그대를 대신하여’ 왕에게 중재하여 말한다는 뜻을 함의할 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: בַּת שֶׁבַע
@@ -78,4 +78,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 밧세바가 말했습니다. 「좋습니다. 제가 왕께 당신을 위해 말씀드리겠습니다」.[a]
+  to: 밧세바가 말했습니다. 「좋습니다. 제가 왕께 그대에 관하여[a] 말씀드리겠습니다.」
+  rationale: 본문은 דבר + על의 직접적인 의미인 ‘~에 관하여’를 유지하고, 문맥에서 시사되는 중재적 의미는 각주로 밝혔습니다. 또한 호칭과 각주 표지 배치를 현대 한국어의 격식 있는 성경 문체에 맞게 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:45:01Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어 עָלֶיךָ는 ‘그대에 관하여/그대를 두고’라는 뜻이 직접적이며, 이 문맥에서는 아도니야를 위한 중재를 함의할 수 있습니다. 현 번역의 ‘당신을 위해’는 문맥상 가능한 해석이지만, 본문에서 그 해석을 확정합니다.
+  naturalness: ‘왕께 … 말씀드리겠습니다’는 왕을 향한 공손한 발화를 자연스럽게 나타냅니다. 다만 인용문 뒤의 ‘」.[a]’ 표기는 한국어 문장부호와 각주 표지 배치에 어색합니다. ‘그대’는 고대 왕실 대화의 격식에 맞고, 이 문맥에서 ‘당신’보다 덜 현대적·관계 한정적인 호칭입니다.
+  terminology: ‘밧세바’와 ‘왕’은 표준적인 성경식 표기입니다. דבר + על의 의미 범위는 본문에서 중립적으로 두고 각주에서 문맥적 중재 의미를 제시하는 편이 적절합니다.
+  issues:
+  - severity: medium
+    issue: ‘당신을 위해’가 עָלֶיךָ의 문맥상 가능한 중재 의미를 본문에서 확정합니다.
+    rationale: 해당 결합은 기본적으로 ‘~에 관하여/두고 말하다’라는 의미도 가지며, 문맥상 유익을 위한 중재가 강하게 시사되더라도 번역 본문은 이 의미 범위를 보존하는 것이 안전합니다.
+  - severity: low
+    issue: 각주 표지가 인용문 종결 뒤 마침표 다음에 놓여 있습니다(」.[a]).
+    rationale: 한국어 인용부호 및 문장부호 관습상 각주 표지는 해당 어구 직후 또는 문장 종결부에 자연스럽게 배치해야 합니다.
+  revised_text: 밧세바가 말했습니다. 「좋습니다. 제가 왕께 그대에 관하여[a] 말씀드리겠습니다.」
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 ‘그대에 관하여’는 문맥상 ‘그대를 위해’ 또는 ‘그대를 대신하여’ 왕에게 중재하여 말한다는 뜻을 함의할 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 본문은 דבר + על의 직접적인 의미인 ‘~에 관하여’를 유지하고, 문맥에서 시사되는 중재적 의미는 각주로 밝혔습니다. 또한 호칭과 각주 표지 배치를 현대 한국어의 격식 있는 성경 문체에 맞게 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:45:01Z'
+  output_hash: d3f177d599ce494eb8facdc53f4a69da373d73435132617a0666c3c999cbdc2d
+  usage:
+    completion_tokens: 957
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 336
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 156
+      engine_ttlt_ms: 8660
+      pre_inference_ms: 237
+      service_tbt_ms: 9
+      service_ttft_ms: 525
+      service_ttlt_ms: 9274
+      total_duration_ms: 9306
+      user_visible_ttft_ms: 289
+    prompt_tokens: 1926
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2883
+  applied_revision: true
+  auto_apply_blocked_errors: []

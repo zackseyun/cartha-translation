@@ -17,12 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 안으로 들어가서 먹고 마셨으며, 말했습니다. “이 저주받은 여자를 잘 처리하여 장사하십시오. 그는 왕의 딸이기 때문입니다.”[a]
+  text: 그는 안으로 들어가서 먹고 마셨으며, 말했습니다. “부디 이 저주받은 여자[a]를 돌보아 묻으십시오. 그녀는 왕의 딸이기 때문입니다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “이 저주받은 자를 잘 처리하여 장사하십시오.”
-    reason: lexical_alternative
+    text: 또는 “이 저주받은 자를 돌보아 묻으십시오.”
+    reason: ‘저주받은 여자’에 대한 어휘적 대안; 히브리어 여성형 표현은 문맥상 이세벨을 가리키지만, ‘여자’의 명시 여부는 번역상 선택입니다.
 lexical_decisions:
 - source_word: וַיָּבֹא
   english_pob_choice: Then he went in
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 안으로 들어가서 먹고 마셨으며, 말했습니다. “이 저주받은 여자를 잘 처리하여 장사하십시오. 그는 왕의 딸이기 때문입니다.”[a]
+  to: 그는 안으로 들어가서 먹고 마셨으며, 말했습니다. “부디 이 저주받은 여자[a]를 돌보아 묻으십시오. 그녀는 왕의 딸이기 때문입니다.”
+  rationale: 여성 지시 대명사를 바로잡고, 각주를 실제 어휘 대안이 적용되는 ‘저주받은 여자’에 연결했습니다. 또한 פקד와 קבר의 의미를 각각 ‘돌보다’와 ‘묻다’로 보다 직접적으로 반영하되, נָא의 요청성은 ‘부디’로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:53:58Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 서술 동작과 명령(פִּקְדוּ נָא … וְקִבְרֻהָ), 그리고 왕의 딸이라는 이유 제시는 대체로 반영되었습니다. 그러나 인용문 안의 ‘그는’은 여성 단수 지시 대상인 이세벨과 문법적으로 맞지 않으므로 ‘그녀는’으로 고쳐야 합니다. 또한 פקד의 ‘돌보다/살피다’라는 의미를 ‘잘 처리하다’보다 직접적으로 나타내는 편이 안전합니다.
+  naturalness: ‘안으로 들어가서 먹고 마셨으며, 말했습니다’는 자연스럽고 합쇼체 서술에 맞습니다. 명령문은 ‘부디 … 돌보아 묻으십시오’로 옮기면 공손한 요청의 뉘앙스와 명령의 기능을 함께 유지하면서 현대 한국어로도 자연스럽습니다.
+  terminology: ‘저주받은 여자’, ‘왕의 딸’, ‘묻으십시오’는 문맥과 격식에 적절합니다. ‘장사하십시오’도 가능하지만, קבר의 직접적인 매장 행위에는 ‘묻으십시오’가 더 정확합니다.
+  issues:
+  - severity: high
+    issue: 인용문 안의 대명사 성 불일치
+    rationale: ‘그는 왕의 딸’은 남성 대명사와 여성 명사구가 충돌합니다. 히브리어 הִיא는 여성 단수이며, 이세벨을 가리키므로 ‘그녀는’이어야 합니다.
+  - severity: medium
+    issue: 각주 표지의 범위와 위치
+    rationale: 각주는 ‘저주받은 여자’ 대신 ‘저주받은 자’라는 표현상의 대안을 설명하므로, 앞선 ‘마셨으며’가 아니라 해당 명사구 뒤에 붙여야 합니다.
+  - severity: low
+    issue: ‘잘 처리하여’의 의미 범위
+    rationale: 이 표현은 시신 처분에 초점을 두어 פקד의 ‘돌보다/살피다, 맡아 처리하다’라는 어휘적 뉘앙스를 다소 좁힙니다. ‘돌보아’가 원문의 표현을 더 투명하게 보존합니다.
+  revised_text: 그는 안으로 들어가서 먹고 마셨으며, 말했습니다. “부디 이 저주받은 여자[a]를 돌보아 묻으십시오. 그녀는 왕의 딸이기 때문입니다.”
+  revised_footnotes:
+  - marker: a
+    text: 또는 “이 저주받은 자를 돌보아 묻으십시오.”
+    reason: ‘저주받은 여자’에 대한 어휘적 대안; 히브리어 여성형 표현은 문맥상 이세벨을 가리키지만, ‘여자’의 명시 여부는 번역상 선택입니다.
+  revision_rationale: 여성 지시 대명사를 바로잡고, 각주를 실제 어휘 대안이 적용되는 ‘저주받은 여자’에 연결했습니다. 또한 פקד와 קבר의 의미를 각각 ‘돌보다’와 ‘묻다’로 보다 직접적으로 반영하되, נָא의 요청성은 ‘부디’로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:53:58Z'
+  output_hash: d28bc9d10eafa73a397f504de7b0cce48c532c0db390060a6360a034cd0bcca8
+  usage:
+    completion_tokens: 1137
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 379
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 133
+      engine_ttlt_ms: 9933
+      pre_inference_ms: 174
+      service_tbt_ms: 9
+      service_ttft_ms: 515
+      service_ttlt_ms: 10262
+      total_duration_ms: 10093
+      user_visible_ttft_ms: 340
+    prompt_tokens: 2338
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3475
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 그는 돌아와 집 안을 이리저리 걸었으며, 이리 와서 한 번, 저리 와서 한 번 올라가 그 위에 몸을 뻗었습니다. 그러자 그 아이가 일곱 번 재채기하고 눈을 떴습니다.[a][b]
+  text: 그는 돌아와 집 안을 이쪽저쪽으로 걸으셨습니다.[a] তারপর 다시 올라가 그 아이 위로 몸을 굽히셨습니다.[b] 그러자 그 아이가 일곱 번 재채기하고 눈을 떴습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 직역하면 ‘한 번 여기, 한 번 저기’입니다. 히브리어는 왕복의 움직임을 이렇게 표현합니다.
+    text: 직역하면 ‘한 번 이쪽으로, 한 번 저쪽으로’입니다.
     reason: source_note
   - marker: b
-    text: 히브리어 동사는 ‘재채기하다’를 뜻하는 것으로 이해됩니다. 이어지는 ‘일곱 번’이 반복 동작을 분명히 합니다.
-    reason: source_note
+    text: 또는 ‘그 아이 위에 몸을 뻗으셨습니다.’ 히브리어 동사는 그 위로 몸을 굽히거나 숙이는 행동을 가리킬 수 있습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיָּשָׁב
   english_pob_choice: Then he returned
@@ -90,4 +90,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 그는 돌아와 집 안을 이리저리 걸었으며, 이리 와서 한 번, 저리 와서 한 번 올라가 그 위에 몸을 뻗었습니다. 그러자 그 아이가 일곱 번 재채기하고 눈을 떴습니다.[a][b]
+  to: 그는 돌아와 집 안을 이쪽저쪽으로 걸으셨습니다.[a] তারপর 다시 올라가 그 아이 위로 몸을 굽히셨습니다.[b] 그러자 그 아이가 일곱 번 재채기하고 눈을 떴습니다.
+  rationale: 왕복을 나타내는 히브리어 관용구를 ‘집 안을 이쪽저쪽으로 걸으셨습니다’로 자연스럽게 연결하고, 이어지는 ‘올라가’와 분리했습니다. גהר는 ‘몸을 굽히셨습니다’로 번역하고 대안 번역을 각주로 처리하여 어휘적 범위와 문맥상의 자세를 함께 보존했습니다. (본문의 ‘然后’는 명백한 비한국어 삽입이므로 삭제되어야 합니다.)
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:51:50Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 사건의 큰 흐름과 ‘일곱 번 재채기하고 눈을 떴습니다’를 대체로 충실히 전달합니다. 그러나 ‘이리 와서 한 번, 저리 와서 한 번 올라가’는 히브리어의 ‘한 번 이쪽으로, 한 번 저쪽으로’라는 집 안에서의 왕복 수식어를 ‘올라가’와 문법적으로 결합하여 의미와 동작 순서를 흐립니다. 또한 וַיִּגְהַר עָלָיו는 ‘그 위에 몸을 뻗었습니다’보다 ‘그 위로 몸을 굽혔습니다’가 어휘적 범위를 더 안전하게 보존합니다.
+  naturalness: ‘집 안을 이쪽저쪽으로 걸으셨습니다’와 ‘그 아이 위로 몸을 굽히셨습니다’는 현대 표준어 합쇼체에서 자연스럽고, 원문의 연속된 동작도 명료하게 나타냅니다. 주어가 엘리사임을 문맥상 유지하되, 대상은 ‘그 아이’로 명시하는 것이 자연스럽습니다.
+  terminology: ‘재채기하다’, ‘눈을 뜨다’, ‘그 아이’는 문맥과 한국어 관용에 적절합니다. 몸짓은 특정 의례나 작동 원리를 암시하지 않는 ‘몸을 굽히다’로 옮깁니다. 각주 b는 영어 감사 기록상 גהר의 대안 번역을 설명해야 하므로, 재채기 동사에 관한 기존 각주 내용은 해당 위치와 맞지 않습니다.
+  issues:
+  - severity: high
+    issue: ‘이리 와서 한 번, 저리 와서 한 번 올라가’의 수식 범위와 동작 순서가 불명확합니다.
+    rationale: אַחַת הֵנָּה וְאַחַת הֵנָּה는 ‘집 안을 걸었다’를 수식하며, 그 뒤에 별도의 동사 ‘올라갔다’가 이어집니다. 초안은 ‘한 번’ 표현이 ‘올라가’에 걸리는 것처럼 읽힙니다.
+  - severity: medium
+    issue: ‘그 위에 몸을 뻗었습니다’는 וַיִּגְהַר의 ‘굽히다/몸을 숙이다’라는 기본 의미보다 한 단계 더 구체적인 자세를 단정합니다.
+    rationale: 문맥상 앞 절의 행동을 연상할 수 있으나, 이 절 자체는 몸을 굽히는 행동으로 기술합니다. 더 넓은 어휘적 모호성을 보존하는 편이 안전합니다.
+  - severity: medium
+    issue: 각주 b의 내용과 표지 위치가 맞지 않습니다.
+    rationale: 현재 b는 문장 끝에 붙어 있지만 재채기를 설명하며, 제공된 영어 POB 감사 기록의 b는 וַיִּגְהַר עָלָיו(몸을 굽히다)의 대안 독법을 설명합니다. 해당 동사 뒤에 배치하고 내용을 수정해야 합니다.
+  revised_text: 그는 돌아와 집 안을 이쪽저쪽으로 걸으셨습니다.[a] তারপর 다시 올라가 그 아이 위로 몸을 굽히셨습니다.[b] 그러자 그 아이가 일곱 번 재채기하고 눈을 떴습니다.
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 ‘한 번 이쪽으로, 한 번 저쪽으로’입니다.
+    reason: source_note
+  - marker: b
+    text: 또는 ‘그 아이 위에 몸을 뻗으셨습니다.’ 히브리어 동사는 그 위로 몸을 굽히거나 숙이는 행동을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 왕복을 나타내는 히브리어 관용구를 ‘집 안을 이쪽저쪽으로 걸으셨습니다’로 자연스럽게 연결하고, 이어지는 ‘올라가’와 분리했습니다. גהר는 ‘몸을 굽히셨습니다’로 번역하고 대안 번역을 각주로 처리하여 어휘적 범위와 문맥상의 자세를 함께 보존했습니다. (본문의 ‘然后’는 명백한 비한국어 삽입이므로 삭제되어야 합니다.)
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:51:50Z'
+  output_hash: b0cc1958badfc1bf42baf2f63af1b24d4d39e5081df27e56fb59920a19331246
+  usage:
+    completion_tokens: 1228
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 248
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 10196
+      pre_inference_ms: 90
+      service_tbt_ms: 8
+      service_ttft_ms: 380
+      service_ttlt_ms: 10430
+      total_duration_ms: 10350
+      user_visible_ttft_ms: 290
+    prompt_tokens: 2808
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4036
+  applied_revision: true
+  auto_apply_blocked_errors: []

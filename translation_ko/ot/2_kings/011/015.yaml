@@ -17,12 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그때 여호야다 제사장이 군대 위에 세워진 백부장들에게 명하고 그들에게 말하였습니다. 「그 여인을 호위대 사이로 끌어내십시오. 그리고 그녀를 따라오는 자는 칼로 죽이십시오.」 제사장이 이미 「그녀를 야훼의 집에서 죽여서는 안 된다」라고 말했기 때문입니다.[a]
+  text: 그때 여호야다 제사장은 군대에 배치된 백부장들에게 명령하여 말했습니다. “그 여인을 대오 사이로 데리고 나가십시오.[a] 그 여인 뒤를 따라오는 자는 칼로 죽이십시오.” 제사장이 “그녀를 야훼의 집에서 죽여서는 안 된다”라고 말했기 때문입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘호위대 사이로’는 히브리어 표현의 난해함을 반영한 번역으로, 정렬된 경비병의 대오를 가리킬 가능성을 살렸습니다.
-    reason: alternative_reading
+    text: ‘대오 사이로’로 옮긴 히브리어 표현은 난해합니다. 정렬된 경비병들의 줄 또는 대오 사이를 통하여 그 여인을 데리고 나가라는 뜻일 가능성이 큽니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: שָׂרֵי הַמֵּאוֹת
   english_pob_choice: captains of hundreds
@@ -85,4 +85,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그때 여호야다 제사장이 군대 위에 세워진 백부장들에게 명하고 그들에게 말하였습니다. 「그 여인을 호위대 사이로 끌어내십시오. 그리고 그녀를 따라오는 자는 칼로 죽이십시오.」 제사장이 이미 「그녀를 야훼의 집에서 죽여서는 안 된다」라고 말했기 때문입니다.[a]
+  to: 그때 여호야다 제사장은 군대에 배치된 백부장들에게 명령하여 말했습니다. “그 여인을 대오 사이로 데리고 나가십시오.[a] 그 여인 뒤를 따라오는 자는 칼로 죽이십시오.” 제사장이 “그녀를 야훼의 집에서 죽여서는 안 된다”라고 말했기 때문입니다.
+  rationale: 군사 지휘관의 배치 관계를 자연스러운 한국어로 바로잡고, 난해한 장소·방향 표현은 특정한 ‘호위대’로 단정하지 않고 ‘대오’와 각주로 처리했습니다. 명령의 폭력적 내용을 완화하거나 추가하지 않았으며, 야훼의 집 안에서 죽이지 말라는 제한도 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:53:58Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 명령과 이유는 대체로 충실하나, ‘호위대’는 원문의 난해한 שְׂדֵרוֹת를 특정한 집단으로 다소 좁히며, ‘군대 위에 세워진’은 פְּקֻדֵי הַחַיִל의 행정·군사적 관계를 한국어로 부자연스럽게 표현합니다.
+  naturalness: ‘군대 위에 세워진’, ‘제사장이 이미 … 말했기 때문입니다’는 현대 한국어 합쇼체 성경 문체로 매끄럽지 않습니다. ‘군대에 배치된’과 ‘… 말했기 때문입니다’로 고치면 자연스럽습니다.
+  terminology: ‘백부장들’은 로마 제도를 직접 도입하지 않으면서 שָׂרֵי הַמֵּאוֹת를 적절히 옮깁니다. יהוה는 프로젝트 방침 및 영어 POB에 따라 ‘야훼’로 유지합니다. 난해한 지시 대상은 ‘대오’로 옮기고 각주에서 불확실성을 명시하는 편이 안전합니다.
+  issues:
+  - severity: medium
+    issue: ‘호위대 사이로’가 난해한 히브리어 표현을 지나치게 특정합니다.
+    rationale: שְׂדֵרוֹת는 문맥상 병력의 줄 또는 대오를 가리킬 가능성이 크지만 ‘호위대’라는 신분·기능을 본문이 명시하지는 않습니다. ‘대오 사이로’와 각주가 원문의 불확실성을 더 잘 보존합니다.
+  - severity: medium
+    issue: ‘군대 위에 세워진’은 부자연스럽고 수동 분사의 군사적 배치·임명 관계를 분명하게 전달하지 못합니다.
+    rationale: פְּקֻדֵי הַחַיִל은 군대와 관련하여 배치·임명된 지휘관들을 가리킵니다. ‘군대에 배치된’이 자연스럽고 문맥에 맞습니다.
+  - severity: low
+    issue: ‘이미’는 원문이 요구하지 않는 시간적 강조이며, 이유를 설명하는 문장 연결이 다소 어색합니다.
+    rationale: כִּי אָמַר은 제사장의 지시를 근거로 제시합니다. ‘제사장이 … 말했기 때문입니다’가 충분합니다.
+  revised_text: 그때 여호야다 제사장은 군대에 배치된 백부장들에게 명령하여 말했습니다. “그 여인을 대오 사이로 데리고 나가십시오.[a] 그 여인 뒤를 따라오는 자는 칼로 죽이십시오.” 제사장이 “그녀를 야훼의 집에서 죽여서는 안 된다”라고 말했기 때문입니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘대오 사이로’로 옮긴 히브리어 표현은 난해합니다. 정렬된 경비병들의 줄 또는 대오 사이를 통하여 그 여인을 데리고 나가라는 뜻일 가능성이 큽니다.
+    reason: lexical_alternative
+  revision_rationale: 군사 지휘관의 배치 관계를 자연스러운 한국어로 바로잡고, 난해한 장소·방향 표현은 특정한 ‘호위대’로 단정하지 않고 ‘대오’와 각주로 처리했습니다. 명령의 폭력적 내용을 완화하거나 추가하지 않았으며, 야훼의 집 안에서 죽이지 말라는 제한도 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:53:58Z'
+  output_hash: 5986f8029544d56d246bf5e4f4bd34c69ead6be2345d4b7da193654f24b24925
+  usage:
+    completion_tokens: 1210
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 377
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 388
+      engine_ttlt_ms: 9371
+      pre_inference_ms: 151
+      service_tbt_ms: 7
+      service_ttft_ms: 656
+      service_ttlt_ms: 9633
+      total_duration_ms: 9495
+      user_visible_ttft_ms: 505
+    prompt_tokens: 2644
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3854
+  applied_revision: true
+  auto_apply_blocked_errors: []

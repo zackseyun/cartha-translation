@@ -20,14 +20,14 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그는 자기의 시체를 자기 무덤에 두었고, 사람들이 그를 두고 애도하며 말했습니다. 「아아, 내 형제여!」[a][b]
+  text: 그는 그 사람의 시체를 자기 무덤에 두었고, 그들은 그를 두고 애도했습니다[a]. “아아, 내 형제여!”[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “그를 위해 애도했습니다.” 히브리어 동사는 죽은 이를 위한 공식적 애도를 가리키기도 합니다.
+    text: 또는 “그를 두고 곡했습니다.” 히브리어 동사는 죽은 이를 위해 애도하거나 장례 탄식을 하는 일을 가리키며, 공식적인 애도를 뜻하기도 합니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘내 형제’는 실제 혈연이라기보다 애도와 연대의 탄식 표현일 가능성이 큽니다.
+    text: ‘내 형제’는 실제 혈연 관계를 뜻한다기보다 애도와 연대를 나타내는 탄식 표현일 가능성이 큽니다.
     reason: cultural_note
 lexical_decisions:
 - source_word: וַיַּנַּח
@@ -90,4 +90,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 자기의 시체를 자기 무덤에 두었고, 사람들이 그를 두고 애도하며 말했습니다. 「아아, 내 형제여!」[a][b]
+  to: 그는 그 사람의 시체를 자기 무덤에 두었고, 그들은 그를 두고 애도했습니다[a]. “아아, 내 형제여!”[b]
+  rationale: 재귀 소유사 ‘자기’를 시체와 무덤에 모두 적용해 생기는 지시 대상 혼동을 해소했습니다. 애도 행위와 탄식 인용을 한국어 문장으로 자연스럽게 분리했으며, 각주 표지를 해당 어휘와 표현에 각각 배치했습니다. 원문의 장례 애도와 ‘내 형제’라는 탄식의 의미는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:52:55Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 동작 순서와 장례 애도, 그리고 탄식문은 대체로 충실히 반영했습니다. 그러나 ‘자기의 시체’는 한국어에서 주어인 그 자신의 시체로 읽히므로, 본문 문맥상 그가 다른 예언자의 시체를 자기 무덤에 둔 사실을 잘못 전달합니다.
+  naturalness: ‘그를 두고 애도하며 말했습니다’도 이해되지만, 직접 인용을 ‘…하고 말했습니다’로 연결하고 지시 대상을 분명히 하면 현대 표준 한국어 합쇼체에서 더 자연스럽습니다.
+  terminology: ‘시체’, ‘무덤’, ‘애도’, ‘내 형제여’는 각각 נִבְלָה, קֶבֶר, ספד, אָחִי의 의미와 장례 탄식의 격식을 적절히 반영합니다. ‘내 형제여’는 실제 혈연 여부를 단정하지 않습니다.
+  issues:
+  - severity: high
+    issue: ‘자기의 시체’의 재귀 소유 표현
+    rationale: 한국어의 ‘자기의 시체’는 주어가 자신의 시체를 두었다는 뜻으로 자연스럽게 읽힙니다. 히브리어 서사 문맥에서는 그가 죽은 하나님의 사람의 시체를 자기 무덤에 둔 것입니다. ‘그 사람의 시체’로 대상과 무덤의 소유자를 구별해야 합니다.
+  - severity: medium
+    issue: 각주의 표지 위치
+    rationale: a 각주는 애도 동사에 관한 어휘 대안이므로 인용문 끝이 아니라 ‘애도했습니다’에 붙여야 합니다. b는 ‘내 형제여’라는 탄식 표현에 붙이는 것이 적절합니다.
+  revised_text: 그는 그 사람의 시체를 자기 무덤에 두었고, 그들은 그를 두고 애도했습니다[a]. “아아, 내 형제여!”[b]
+  revised_footnotes:
+  - marker: a
+    text: 또는 “그를 두고 곡했습니다.” 히브리어 동사는 죽은 이를 위해 애도하거나 장례 탄식을 하는 일을 가리키며, 공식적인 애도를 뜻하기도 합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘내 형제’는 실제 혈연 관계를 뜻한다기보다 애도와 연대를 나타내는 탄식 표현일 가능성이 큽니다.
+    reason: cultural_note
+  revision_rationale: 재귀 소유사 ‘자기’를 시체와 무덤에 모두 적용해 생기는 지시 대상 혼동을 해소했습니다. 애도 행위와 탄식 인용을 한국어 문장으로 자연스럽게 분리했으며, 각주 표지를 해당 어휘와 표현에 각각 배치했습니다. 원문의 장례 애도와 ‘내 형제’라는 탄식의 의미는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:52:55Z'
+  output_hash: a120b8bff02e40909a0435099834ab08440c83d6d5e5f314ba163684cddf94d3
+  usage:
+    completion_tokens: 1175
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 501
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 153
+      engine_ttlt_ms: 10192
+      pre_inference_ms: 169
+      service_tbt_ms: 9
+      service_ttft_ms: 486
+      service_ttlt_ms: 10504
+      total_duration_ms: 10348
+      user_visible_ttft_ms: 318
+    prompt_tokens: 2125
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3300
+  applied_revision: true
+  auto_apply_blocked_errors: []

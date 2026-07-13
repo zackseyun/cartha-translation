@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 아람이 이스라엘 앞에서 도망하였고, 다윗이 아람의 칠백 병거와 사만 명의 기병을 죽였습니다. 또 그들의 군대의 지휘관 쇼박을 쳤는데, 그가 거기에서 죽었습니다.[a][b]
+  text: 아람이 이스라엘 앞에서 도망하였습니다. 다윗은 아람의 병거병 칠백 명[a]과 기병 사만 명을 죽였습니다. 또 다윗은 그의 군대의 지휘관 쇼박을 쳐서, 그가 거기서 죽었습니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 רֶכֶב은 문자적으로 ‘병거/전차’이며, 전투 대상이 차량 집단인지 병거병인지 분명하지 않습니다. 영어 POB는 이를 ‘charioteers’로 처리했습니다.
-    reason: lexical_alternative
+    text: 히브리어 רֶכֶב은 문자적으로 ‘병거’ 또는 ‘병거 부대’를 뜻합니다. 여기서는 전투 사상자의 문맥에 따라 ‘병거병’으로 옮겼습니다. 역대기상 19:18의 평행 본문은 ‘병거 칠천’을 읽습니다.
+    reason: textual_variant
   - marker: b
-    text: 히브리어의 접미사는 단수로 보일 수 있어 ‘그의 군대’로도 옮길 수 있습니다. 영어 POB는 이를 ‘their army’로 풀었습니다.
+    text: 히브리어는 ‘그의 군대’로, 소유 접미사가 단수입니다. 문맥상 아람 측 군대의 지휘관을 가리키며, ‘그들의 군대’로도 이해될 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיָּנָס אֲרָם מִפְּנֵי יִשְׂרָאֵל
@@ -93,4 +93,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 아람이 이스라엘 앞에서 도망하였고, 다윗이 아람의 칠백 병거와 사만 명의 기병을 죽였습니다. 또 그들의 군대의 지휘관 쇼박을 쳤는데, 그가 거기에서 죽었습니다.[a][b]
+  to: 아람이 이스라엘 앞에서 도망하였습니다. 다윗은 아람의 병거병 칠백 명[a]과 기병 사만 명을 죽였습니다. 또 다윗은 그의 군대의 지휘관 쇼박을 쳐서, 그가 거기서 죽었습니다.[b]
+  rationale: 수정은 차량을 ‘죽였다’는 한국어의 의미상 문제를 해소하고, 히브리어 단수 소유 접미사를 보존하며, 각주 표지를 해당 어구에 정확히 연결합니다. 병거/병거 부대의 어휘적 불확정성과 역대기 평행 본문의 수치 차이는 각주로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:37:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 아람의 패주, 다윗이 가한 사상, 쇼박을 친 일과 그의 죽음이라는 서술 순서는 충실합니다. 그러나 רֶכֶב을 ‘칠백 병거’로 두고 ‘죽였습니다’의 목적어로 연결하면 다윗이 병거라는 차량을 죽였다는 뜻이 되어 문맥상 부정확합니다. 또한 צְבָאוֹ의 단수 소유 접미사는 본문에서 ‘그의’로 보존하는 편이 안전합니다.
+  naturalness: ‘이스라엘 앞에서 도망하였습니다’는 직역투이지만 전투에서 패주하는 문맥에서는 이해 가능합니다. 문장 종결을 모두 합쇼체로 통일하고, 수량 대상은 ‘병거병 칠백 명’으로 하여 현대 한국어의 자연스러움과 사건 서술의 명료성을 확보했습니다.
+  terminology: ‘아람’, ‘다윗’, ‘기병’, ‘쇼박’, ‘지휘관’은 적절합니다. רֶכֶב의 정확한 지시 대상은 논쟁적이므로 본문에서는 영어 POB의 인원 중심 해석을 따르되 각주에서 문자적 의미와 역대기 평행 본문의 수치 차이를 밝혔습니다. ‘그의 군대’는 히브리어 단수 접미사를 반영하며, 선행 지시 대상의 해석은 각주에 열어 두었습니다.
+  issues:
+  - severity: medium
+    issue: ‘칠백 병거’를 ‘죽였습니다’의 직접 목적어로 번역함
+    rationale: רֶכֶב은 문자적으로 병거/병거 부대일 수 있으나, 이 전투 사상 문맥에서 한국어 ‘병거를 죽였다’는 차량을 죽였다는 뜻이 됩니다. 병거병이라는 인원 지시 해석을 본문에 쓰고 각주로 문자적 모호성을 보존하는 것이 안전합니다.
+  - severity: medium
+    issue: ‘그들의 군대’가 히브리어 단수 소유 접미사를 복수로 바꿈
+    rationale: צְבָאוֹ는 ‘그의 군대’입니다. 그 ‘그’가 누구인지는 문맥상 해석될 수 있으나, 복수 소유격으로 평준화하지 않는 편이 원문 형태와 모호성을 보존합니다.
+  - severity: low
+    issue: 각주 표지가 문장 끝에 함께 배치됨
+    rationale: 각주는 각각 ‘병거병’과 ‘그의 군대’에 직접 붙여 독자가 각주의 대상과 기능을 즉시 알 수 있게 해야 합니다.
+  revised_text: 아람이 이스라엘 앞에서 도망하였습니다. 다윗은 아람의 병거병 칠백 명[a]과 기병 사만 명을 죽였습니다. 또 다윗은 그의 군대의 지휘관 쇼박을 쳐서, 그가 거기서 죽었습니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 רֶכֶב은 문자적으로 ‘병거’ 또는 ‘병거 부대’를 뜻합니다. 여기서는 전투 사상자의 문맥에 따라 ‘병거병’으로 옮겼습니다. 역대기상 19:18의 평행 본문은 ‘병거 칠천’을 읽습니다.
+    reason: textual_variant
+  - marker: b
+    text: 히브리어는 ‘그의 군대’로, 소유 접미사가 단수입니다. 문맥상 아람 측 군대의 지휘관을 가리키며, ‘그들의 군대’로도 이해될 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 수정은 차량을 ‘죽였다’는 한국어의 의미상 문제를 해소하고, 히브리어 단수 소유 접미사를 보존하며, 각주 표지를 해당 어구에 정확히 연결합니다. 병거/병거 부대의 어휘적 불확정성과 역대기 평행 본문의 수치 차이는 각주로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:37:06Z'
+  output_hash: 83b6ae870ffdcebe86ef2eeca7b355a95b9e99d94e9c7864cd4e2dd1907c266f
+  usage:
+    completion_tokens: 1340
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 405
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 11863
+      pre_inference_ms: 140
+      service_tbt_ms: 9
+      service_ttft_ms: 459
+      service_ttlt_ms: 12178
+      total_duration_ms: 12049
+      user_visible_ttft_ms: 319
+    prompt_tokens: 2873
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4213
+  applied_revision: true
+  auto_apply_blocked_errors: []

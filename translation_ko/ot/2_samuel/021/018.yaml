@@ -20,7 +20,7 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 이 일 후에 다시 블레셋 사람들과의 전쟁이 가드에서 있었습니다. 그때 후사 사람 시브개가 사프를 쳐 죽였는데, 그는 라바의 자손들 가운데 한 사람이었습니다.[a][b]
+  text: 이 일 후에 곱에서 블레셋 사람들과 다시 전쟁이 일어났습니다. 그때 후사 사람 시브개가 라바[b]의 자손 가운데 한 사람인 사프[a]를 쳐서 쓰러뜨렸습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -109,4 +109,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이 일 후에 다시 블레셋 사람들과의 전쟁이 가드에서 있었습니다. 그때 후사 사람 시브개가 사프를 쳐 죽였는데, 그는 라바의 자손들 가운데 한 사람이었습니다.[a][b]
+  to: 이 일 후에 곱에서 블레셋 사람들과 다시 전쟁이 일어났습니다. 그때 후사 사람 시브개가 라바[b]의 자손 가운데 한 사람인 사프[a]를 쳐서 쓰러뜨렸습니다.
+  rationale: 원문 지명 ‘곱’을 회복하고, 각주 표지를 각각 사프와 라바에 연결했습니다. 전투 동사는 원문의 의미 범위를 보존하도록 ‘쳐서 쓰러뜨렸습니다’로 조정했으며, 라바를 고유명사로 처리하는 본문 선택과 대안적 해석은 각주로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:38:07Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 지명 בְּגֹב는 ‘곱’(Gob)인데, 초안의 ‘가드’는 다른 지명으로 잘못 옮긴 중대한 오류입니다. 또한 הִכָּה는 전투 문맥에서 죽임을 함의할 수 있으나, 본문 자체가 명시하는 범위를 넘지 않도록 ‘쳐서 쓰러뜨렸습니다’로 옮기는 것이 원문의 폭을 보존합니다.
+  naturalness: 수정문은 현대 표준 한국어의 합쇼체 서술로 자연스럽습니다. 관계절을 두 문장으로 풀어 ‘라바의 자손 가운데 한 사람’이라는 소속 관계와 사프라는 인물의 관계를 명료하게 했습니다.
+  terminology: ‘후사 사람 시브개’, ‘사프’, ‘라바’는 일관되게 음역했습니다. ‘곱’은 해당 히브리 지명에 대한 통상적인 한국어 성서 음역입니다. ‘라바’는 본문에서 고유명사적 처리를 유지하며, 거인/르바임 관련 해석은 각주에만 남겼습니다.
+  issues:
+  - severity: high
+    issue: בְּגֹב를 ‘가드에서’로 번역함
+    rationale: 히브리 본문은 ‘곱에서/곱에’라고 하며, 가드(Gath)는 본절의 지명이 아닙니다. 장소 정보가 바뀌므로 반드시 수정해야 합니다.
+  - severity: medium
+    issue: 각주 표지가 해당 본문어와 떨어져 문장 끝에 함께 배치됨
+    rationale: '[a]는 사프의 병행본문 이름형, [b]는 라바/거인 계열의 해석 가능성에 관한 주석입니다. 각각 ‘사프’와 ‘라바’에 붙여야 주석의 적용 대상이 명확합니다.'
+  - severity: low
+    issue: ‘쳐 죽였는데’가 הִכָּה의 의미를 확정적으로 좁힘
+    rationale: 전투 목록의 문맥상 죽음일 가능성은 높지만, נכה의 기본 의미는 치다/쳐서 쓰러뜨리다입니다. 영어 POB의 ‘struck down’과 같이 직접적이되 과도하게 확정하지 않는 표현이 더 적절합니다.
+  revised_text: 이 일 후에 곱에서 블레셋 사람들과 다시 전쟁이 일어났습니다. 그때 후사 사람 시브개가 라바[b]의 자손 가운데 한 사람인 사프[a]를 쳐서 쓰러뜨렸습니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 본문은 ‘사프’로 읽히며, 역대상 20:4의 평행본문에는 ‘시파이’라는 이름형이 있습니다.
+    reason: textual_variant
+  - marker: b
+    text: 또는 ‘거인의 자손들 가운데 한 사람’으로도 옮길 수 있습니다. 히브리어는 라바라는 인물이나 거인/르바임 계열을 가리킬 수 있습니다.
+    reason: alternative_reading
+  revision_rationale: 원문 지명 ‘곱’을 회복하고, 각주 표지를 각각 사프와 라바에 연결했습니다. 전투 동사는 원문의 의미 범위를 보존하도록 ‘쳐서 쓰러뜨렸습니다’로 조정했으며, 라바를 고유명사로 처리하는 본문 선택과 대안적 해석은 각주로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:38:07Z'
+  output_hash: aa8c7eac67f89a656e7b52681b0ae6d1e8df554ccdeae6f6818090fcbf5c7c7e
+  usage:
+    completion_tokens: 1321
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 135
+      engine_ttlt_ms: 10849
+      pre_inference_ms: 96
+      service_tbt_ms: 8
+      service_ttft_ms: 335
+      service_ttlt_ms: 11045
+      total_duration_ms: 10961
+      user_visible_ttft_ms: 240
+    prompt_tokens: 2978
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4299
+  applied_revision: true
+  auto_apply_blocked_errors: []
