@@ -23,11 +23,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그때 모든 백성이 그에게 돌아서서 말했습니다. 「이 무슨 말씀이십니까? 당신이 하신 말씀이 무엇입니까?」[a]
+  text: 그러자 온 백성이 그에게 돌아서서 말했습니다. “당신이 한 이 말[a]은 무슨 뜻입니까?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘말씀’은 여기서 λόγος의 가능한 뜻 가운데 하나입니다. ‘말/진술/사건’으로도 옮길 수 있습니다.
+    text: ‘말’(λόγος)은 ‘진술’ 또는 ‘일/사안’으로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: ἐπέστρεψεν
@@ -82,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그때 모든 백성이 그에게 돌아서서 말했습니다. 「이 무슨 말씀이십니까? 당신이 하신 말씀이 무엇입니까?」[a]
+  to: 그러자 온 백성이 그에게 돌아서서 말했습니다. “당신이 한 이 말[a]은 무슨 뜻입니까?”
+  rationale: 그리스어의 단일 의문문 구조를 복원하고, λόγος와 λαλέω에 원문상 없는 존대 의미를 부여하지 않도록 ‘말’과 ‘한’으로 조정했습니다. ‘무슨 뜻입니까?’는 ‘이 말이 무엇인가’라는 한국어의 자연스러운 반문 표현으로, λόγος의 의미 범위는 각주에서 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:27:45Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 군중이 다니엘 쪽으로 돌아서서 질문했다는 기본 의미를 반영합니다. 그러나 그리스어의 단일 질문(Τίς ὁ λόγος οὗτος ὃν σὺ λελάληκας)을 두 질문으로 중복하였고, ‘말씀/하신’은 원문에 없는 존대 의미를 더합니다.
+  naturalness: ‘당신이 한 이 말은 무슨 뜻입니까?’는 현대 표준 한국어의 자연스러운 합쇼체 질문이며, 원문의 ‘이것은 네가 한 무슨 말인가’라는 당혹스러운 반문을 무리 없이 전달합니다. ‘그러자’는 δέ의 문맥상 전환을 자연스럽게 나타냅니다.
+  terminology: λόγος는 본문에서 중립적인 ‘말’로 옮기고, 각주에서 ‘진술’과 ‘일/사안’의 가능성을 제시합니다. 원문은 다니엘에게 높임을 표시하지 않으므로 ‘말씀’과 ‘하신’은 사용하지 않았습니다.
+  issues:
+  - severity: medium
+    issue: 질문이 두 문장으로 중복됨
+    rationale: 원문은 ‘네가 한 이 말은 무슨 말인가?’라는 하나의 의문문입니다. 초안의 ‘이 무슨 말씀이십니까? 당신이 하신 말씀이 무엇입니까?’는 같은 내용을 반복하여 원문의 간결성을 훼손합니다.
+  - severity: medium
+    issue: 원문에 없는 존대 어휘 ‘말씀/하신’
+    rationale: λόγος와 λελάληκας 자체에는 다니엘을 높이는 표지가 없습니다. 현대 합쇼체의 문장 종결은 유지하되, 어휘적 높임은 추가하지 않는 편이 원문에 충실합니다.
+  - severity: low
+    issue: 각주의 대안 ‘사건’
+    rationale: 이 문맥의 λόγος는 발언, 진술, 또는 사안을 뜻할 수 있으나 ‘사건’은 지나치게 구체적입니다. ‘일’ 또는 ‘사안’이 더 적절합니다.
+  revised_text: 그러자 온 백성이 그에게 돌아서서 말했습니다. “당신이 한 이 말[a]은 무슨 뜻입니까?”
+  revised_footnotes:
+  - marker: a
+    text: ‘말’(λόγος)은 ‘진술’ 또는 ‘일/사안’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 그리스어의 단일 의문문 구조를 복원하고, λόγος와 λαλέω에 원문상 없는 존대 의미를 부여하지 않도록 ‘말’과 ‘한’으로 조정했습니다. ‘무슨 뜻입니까?’는 ‘이 말이 무엇인가’라는 한국어의 자연스러운 반문 표현으로, λόγος의 의미 범위는 각주에서 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:27:45Z'
+  output_hash: 9a2a53796e3481edb2797b5c459bb6474082c4d6fb64124f27fe73172ca87e65
+  usage:
+    completion_tokens: 1196
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 10016
+      pre_inference_ms: 105
+      service_tbt_ms: 8
+      service_ttft_ms: 587
+      service_ttlt_ms: 10470
+      total_duration_ms: 10375
+      user_visible_ttft_ms: 482
+    prompt_tokens: 1935
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3131
+  applied_revision: true
+  auto_apply_blocked_errors: []

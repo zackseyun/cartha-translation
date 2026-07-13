@@ -30,14 +30,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들은 어떤 땅을 위해서도 왕을 세우지 못하며, 사람들에게 비를 내리지도 못합니다.[a][b]
+  text: 그들은 결코 한 땅[a]을 위해 왕을 세우지도 못하고, 사람들에게[b] 비를 내리지도 못합니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: χώρας는 ‘땅’, ‘나라’, ‘지역’까지 가리킬 수 있습니다.
+    text: 그리스어 χώρα는 ‘땅’, ‘나라’, 또는 ‘지역’을 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘사람들’은 여기서 일반적인 인간을 가리킵니다.
+    text: ‘사람들’은 여기서 인간 일반을 가리킵니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: βασιλέα
@@ -92,4 +92,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들은 어떤 땅을 위해서도 왕을 세우지 못하며, 사람들에게 비를 내리지도 못합니다.[a][b]
+  to: 그들은 결코 한 땅[a]을 위해 왕을 세우지도 못하고, 사람들에게[b] 비를 내리지도 못합니다.
+  rationale: 강한 이중 부정의 강조를 ‘결코’로 명시하고, ‘어떤 …도’의 전칭적 뉘앙스를 원문의 비특정 단수에 더 가까운 ‘한 땅’으로 조정했습니다. 의미는 유지하면서 각주 표지를 해당 어휘에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:27:57Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 그리스어의 οὐ μὴ ... οὔτε ... οὐ μὴ는 두 행위 모두에 대한 강한 미래 부정입니다. 초안의 ‘못하며/못합니다’는 무능의 뜻을 전달하지만, ‘결코’를 더해 강조를 명시하는 것이 적절합니다. 또한 χώρας의 범위는 ‘땅’으로 보존할 수 있으나, ‘어떤 ...도’는 원문의 무정관·단수 표현보다 범위를 다소 확대합니다.
+  naturalness: ‘비를 내리다’와 ‘왕을 세우다’는 현대 표준 한국어에서 자연스럽습니다. ‘결코 … 못하고 … 못합니다’는 합쇼체에서 강한 부정을 분명하고 매끄럽게 전달합니다.
+  terminology: ‘왕’, ‘땅’, ‘사람들’은 각각 βασιλέα, χώρας, ἀνθρώποις에 적절합니다. ‘사람들’은 성별을 특정하지 않는 인간 일반이라는 문맥적 의미를 자연스럽게 나타냅니다.
+  issues:
+  - severity: medium
+    issue: 강한 부정의 표지가 충분히 드러나지 않음
+    rationale: οὐ μή + 접속법은 단순한 부정보다 강한 미래 부정입니다. ‘결코’를 보충하여 그 강조를 보존하는 것이 안전합니다.
+  - severity: low
+    issue: ‘어떤 땅을 위해서도’가 원문의 단수·무정관 표현을 과도하게 전칭화할 수 있음
+    rationale: 원문은 ‘한 땅/나라를 위하여 왕을 세우다’라는 일반적 진술입니다. ‘한 땅을 위해’가 이 표현의 범위와 비특정성을 더 가깝게 보존합니다.
+  - severity: low
+    issue: 각주 표지가 해당 어휘에 직접 붙어 있지 않음
+    rationale: a와 b는 각각 χώρας와 ἀνθρώποις의 어휘 주석이므로 ‘땅’과 ‘사람들에게’에 바로 붙이는 편이 각주의 연결을 명확히 합니다.
+  revised_text: 그들은 결코 한 땅[a]을 위해 왕을 세우지도 못하고, 사람들에게[b] 비를 내리지도 못합니다.
+  revised_footnotes:
+  - marker: a
+    text: 그리스어 χώρα는 ‘땅’, ‘나라’, 또는 ‘지역’을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘사람들’은 여기서 인간 일반을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 강한 이중 부정의 강조를 ‘결코’로 명시하고, ‘어떤 …도’의 전칭적 뉘앙스를 원문의 비특정 단수에 더 가까운 ‘한 땅’으로 조정했습니다. 의미는 유지하면서 각주 표지를 해당 어휘에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:27:57Z'
+  output_hash: c54d78e8c3cdbaabb4bb09d000fc24d4ed4003c42f0277494767b255a80cfce5
+  usage:
+    completion_tokens: 1113
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 425
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 151
+      engine_ttlt_ms: 8972
+      pre_inference_ms: 131
+      service_tbt_ms: 8
+      service_ttft_ms: 378
+      service_ttlt_ms: 9195
+      total_duration_ms: 9072
+      user_visible_ttft_ms: 246
+    prompt_tokens: 2366
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3479
+  applied_revision: true
+  auto_apply_blocked_errors: []

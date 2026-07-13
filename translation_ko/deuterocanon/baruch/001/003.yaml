@@ -24,14 +24,14 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 바룩은 유다 왕 여호야김의 아들 여고냐와 이 책으로 나온 모든 백성의 귀에 이 책의 말씀을 읽었습니다.[a][b]
+  text: 바룩은 유다 왕 여호야김의 아들 여고냐[b]와 이 책으로 온 모든 백성[a]이 듣는 앞에서 이 책의 말씀을 읽었습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘이 책을 읽으러 온’ 또는 ‘이 두루마리를 읽으러 온’으로도 옮길 수 있습니다. 그리스어 구절 ‘책으로 온 사람들’은 다소 비정상적이어서, 더 해석적인 번역도 가능합니다.
-    reason: alternative_reading
+    text: 또는 ‘이 책을 읽으러 온’ 또는 ‘이 두루마리를 읽으러 온’으로 옮길 수 있습니다. 그리스어의 ‘책으로 온 사람들’이라는 표현은 다소 이례적이므로, 더 해석적인 번역도 가능합니다.
+    reason: lexical_alternative
   - marker: b
-    text: ‘여고냐’는 그리스어형 이름이며, 영어 성경에서는 흔히 ‘여호야긴’으로도 알려져 있습니다.
+    text: ‘여고냐’는 그리스어 본문에 나오는 이름 형태이며, 흔히 ‘여호야긴’으로도 알려져 있습니다.
     reason: alternative_reading
 lexical_decisions:
 - source_word: ἀνέγνω
@@ -92,4 +92,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 바룩은 유다 왕 여호야김의 아들 여고냐와 이 책으로 나온 모든 백성의 귀에 이 책의 말씀을 읽었습니다.[a][b]
+  to: 바룩은 유다 왕 여호야김의 아들 여고냐[b]와 이 책으로 온 모든 백성[a]이 듣는 앞에서 이 책의 말씀을 읽었습니다.
+  rationale: 원문의 ἐν ὠσίν을 한국어 공적 낭독 문맥에 맞는 ‘…이 듣는 앞에서’로 옮겨 의미를 보존하면서 문장을 자연스럽게 했습니다. πρὸς τὴν βίβλον의 이례성은 본문에서 ‘이 책으로 온’으로 남기고, 가능한 해석적 대안은 각주에 보존했습니다. 각주 표지도 각 참조 어구 바로 뒤로 재배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:26:45Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘는 대체로 원문을 따르지만, 원문의 청각 관용구를 한국어 ‘귀에’로 기계적으로 옮긴 결과 문장 구조가 부자연스럽습니다. 또한 τῶν ἐρχομένων πρὸς τὴν βίβλον은 원문의 낯섦을 보존하되 한국어 문법 안에서 ‘이 책으로 온’으로 처리하는 편이 낫습니다.
+  naturalness: 현행 본문의 ‘여고냐와 이 책으로 나온 모든 백성의 귀에’는 병렬되는 소유격 명사구와 ‘귀에’의 결합이 어색하고, ‘책으로 나온’은 한국어에서 목적과 방향 모두 불분명합니다. ‘…이 듣는 앞에서’와 ‘이 책으로 온’으로 고치면 현대 표준어 합쇼체로 자연스럽습니다.
+  terminology: ‘바룩’, ‘여고냐’, ‘여호야김’, ‘유다 왕’, ‘이 책의 말씀’은 적절합니다. 여고냐에 대한 각주는 영어 성경이라는 특정 언어권 관습보다, 널리 알려진 대응 이름인 ‘여호야긴’을 언급하도록 중립적으로 다듬는 것이 좋습니다.
+  issues:
+  - severity: medium
+    issue: 본문의 ‘귀에’ 병렬 구조가 비문에 가깝게 어색합니다.
+    rationale: ἐν ὠσίν은 ‘듣는 앞에서/듣는 가운데’라는 한국어 관용 표현으로 옮겨야 공적 낭독의 의미를 정확하고 자연스럽게 전달합니다.
+  - severity: medium
+    issue: ‘이 책으로 나온’은 πρὸς τὴν βίβλον의 낯섦을 보존하려는 의도에도 불구하고 한국어에서 자연스러운 방향 표현이 아닙니다.
+    rationale: ‘이 책으로 온’은 원문의 비통상적인 ‘책으로/책에’ 방향성을 남기면서도 문법적으로 성립합니다. 정확한 의미는 각주에서 대안으로 밝혀야 합니다.
+  - severity: low
+    issue: 각주 표지가 해당 본문 어구에 붙어 있지 않습니다.
+    rationale: 이름 관련 각주 b는 ‘여고냐’ 뒤에, 난해한 구절 관련 각주 a는 ‘이 책으로 온 모든 백성’ 뒤에 두어야 독자가 참조 대상을 알 수 있습니다.
+  - severity: low
+    issue: 각주 b의 ‘영어 성경에서는’은 한국어 번역 각주로서 불필요하게 언어권을 한정합니다.
+    rationale: 원문 증인과 대응 이름의 관계만 중립적으로 제시하면 충분합니다.
+  revised_text: 바룩은 유다 왕 여호야김의 아들 여고냐[b]와 이 책으로 온 모든 백성[a]이 듣는 앞에서 이 책의 말씀을 읽었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘이 책을 읽으러 온’ 또는 ‘이 두루마리를 읽으러 온’으로 옮길 수 있습니다. 그리스어의 ‘책으로 온 사람들’이라는 표현은 다소 이례적이므로, 더 해석적인 번역도 가능합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘여고냐’는 그리스어 본문에 나오는 이름 형태이며, 흔히 ‘여호야긴’으로도 알려져 있습니다.
+    reason: alternative_reading
+  revision_rationale: 원문의 ἐν ὠσίν을 한국어 공적 낭독 문맥에 맞는 ‘…이 듣는 앞에서’로 옮겨 의미를 보존하면서 문장을 자연스럽게 했습니다. πρὸς τὴν βίβλον의 이례성은 본문에서 ‘이 책으로 온’으로 남기고, 가능한 해석적 대안은 각주에 보존했습니다. 각주 표지도 각 참조 어구 바로 뒤로 재배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:26:45Z'
+  output_hash: 3b1d8f61fc47f3067e40362cc12d94c7d9e42f7099c633462f4aee645d7b1309
+  usage:
+    completion_tokens: 1393
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 466
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 11640
+      pre_inference_ms: 175
+      service_tbt_ms: 8
+      service_ttft_ms: 479
+      service_ttlt_ms: 11984
+      total_duration_ms: 11818
+      user_visible_ttft_ms: 304
+    prompt_tokens: 2717
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4110
+  applied_revision: true
+  auto_apply_blocked_errors: []

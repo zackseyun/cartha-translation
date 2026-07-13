@@ -91,4 +91,52 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 제시된 히브리어 본문은 ‘가까이 오고 지체하지 말라 … 가까이 이르면 용사와 힘센 사람처럼 되라’고 읽히는 반면, 현 번역은 그리스어 병행본과 영어 POB의 ‘물/불/구제/죄’ 문장을 번역했습니다. 두 전승은 내용상 전혀 다르므로, 원어 본문 우선 원칙에 따라 히브리어를 번역해야 합니다.
+  naturalness: ‘가까이 다가가십시오, 지체하지 마십시오’와 ‘용사처럼, 힘센 사람처럼 되십시오’는 현대 표준 한국어의 합쇼체로 자연스럽습니다. 두 번째 ‘가까이 이르면’의 목적어는 히브리어에서도 명시되지 않았으므로 보충하지 않았습니다.
+  terminology: 현안의 ‘구제’, ‘속하다’는 선택 자체보다 해당 어휘가 이 히브리어 본문에 없다는 점이 문제입니다. גִּבּוֹר와 אִישׁ חַיִל의 병렬은 각각 ‘용사’와 ‘힘센 사람’으로 구별해 옮겼습니다.
+  issues:
+  - severity: high
+    issue: 원어 본문과 번역 내용의 전면 불일치
+    rationale: 히브리어는 접근·지체·생명·용사에 관한 두 문장인데, 초안은 그리스어 병행 전승의 물·불·구제·죄 문장을 번역합니다. source_context의 validation도 major_mismatch로 표시합니다.
+  - severity: medium
+    issue: 각주가 본문 전승 차이를 설명하지 못함
+    rationale: 현 각주는 ‘구제 행위’라는 표현의 대안을 제시하지만, 개정 본문에는 구제에 관한 표현이 없습니다. 실질적인 전승 차이를 밝혀야 합니다.
+  revised_text: 가까이 다가가십시오, 지체하지 마십시오. 그러면 당신 자신을 위한 생명을 찾을 것입니다. 그리고 가까이 이르면, 용사처럼, 힘센 사람처럼 되십시오.[a]
+  revised_footnotes:
+  - marker: a
+    text: 그리스어 전승에는 “물은 타오르는 불을 끄고, 구제는 죄를 속죄한다”라고 되어 있습니다.
+    reason: textual_variant
+  revision_rationale: 히브리어 원문을 우선하여 완전하게 다시 번역했습니다. 괄호로 제시된 히브리어의 불확실성 및 그리스어 병행 전승과의 큰 차이는 각주로 알렸으며, 어느 전승도 본문 안에서 혼합하지 않았습니다. ‘가까이 이르면’의 대상은 원문에 명시되어 있지 않으므로 해석적으로 보충하지 않았습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:09:24Z'
+  output_hash: f023b7bfc7910d643d6ca47e04e0ad2e68e499611cd9489e79497d1daea0ec4b
+  usage:
+    completion_tokens: 1005
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 336
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 176
+      engine_ttlt_ms: 8792
+      pre_inference_ms: 115
+      service_tbt_ms: 9
+      service_ttft_ms: 443
+      service_ttlt_ms: 9054
+      total_duration_ms: 8956
+      user_visible_ttft_ms: 328
+    prompt_tokens: 1799
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2804
+  applied_revision: false
+  auto_apply_blocked_errors: []

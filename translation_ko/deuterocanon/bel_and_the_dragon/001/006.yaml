@@ -23,11 +23,11 @@ base_translation:
     reason: textual_variant
 translation:
   language: ko
-  text: 땅과 모든 육체를 다스리는 권세를 가진 분이십니다. 그리고 왕이 그에게 말했습니다. “벨이 살아 있는 신으로 보이지 않느냐? 아니면 그가 얼마나 먹는지 보이지 않느냐?”[a]
+  text: 땅과 모든 육체를 다스리는 권세를 가지신 분을 … 왕이 그에게 말했습니다. “벨이 살아 있는 신으로 보이지 않느냐? 아니면 그가 얼마나 먹는지 보지 못하느냐? 그리고 …”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 제공된 그리스어 본문은 ‘그리고’에서 끊겨 있어 문장이 미완입니다. 따라서 번역도 원문이 보이는 범위까지만 옮겼습니다.
+    text: 제공된 그리스어 본문은 문두에서 이미 앞 문맥의 일부로 시작하며, 끝에서도 ‘그리고’에서 끊겨 문장이 미완입니다. 따라서 번역은 원문에서 확인되는 범위만 옮기고 말줄임표로 불완전성을 나타냈습니다.
     reason: textual_variant
 lexical_decisions:
 - source_word: γῆν
@@ -86,4 +86,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 땅과 모든 육체를 다스리는 권세를 가진 분이십니다. 그리고 왕이 그에게 말했습니다. “벨이 살아 있는 신으로 보이지 않느냐? 아니면 그가 얼마나 먹는지 보이지 않느냐?”[a]
+  to: 땅과 모든 육체를 다스리는 권세를 가지신 분을 … 왕이 그에게 말했습니다. “벨이 살아 있는 신으로 보이지 않느냐? 아니면 그가 얼마나 먹는지 보지 못하느냐? 그리고 …”[a]
+  rationale: 문두의 대격 절과 문미의 접속사 καὶ를 모두 미완 상태로 보존했습니다. 이 수정은 누락된 앞뒤 본문을 추정하여 보충하지 않으면서도, 벨을 ‘살아 있는 신’이라 부르는 왕의 발화를 그대로 유지합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:27:33Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 제공된 그리스어 추출문은 문두부터 앞 절의 일부로 시작하며, 왕의 발화도 καὶ(‘그리고’)에서 끝납니다. 초안은 문두의 미완 절을 완결문으로 만들고, 원문에 없는 문장 종결을 보충했습니다.
+  naturalness: ‘모든 육체를 다스리는 권세를 가지신 분’ 및 ‘살아 있는 신’은 현대 한국어의 격식 있는 성경 문체에서 자연스럽습니다. 다만 추출문 자체가 미완이므로 말줄임표로 그 불완전성을 표시하는 편이 자연스럽고 충실합니다.
+  terminology: ‘모든 육체’는 πάσης σαρκὸς의 성경적 관용을 보존하며, ‘살아 있는 신’은 벨을 가리키는 무관사 ζῶν θεός를 적절히 반영합니다. ‘하나님’으로 바꾸지 않은 점도 적절합니다.
+  issues:
+  - severity: high
+    issue: 그리스어가 καὶ(‘그리고’)에서 끊기는데도 왕의 두 번째 질문을 완결했습니다.
+    rationale: 제공된 원문과 영어 감사 기록은 이 지점 이후가 누락되었음을 명시합니다. ‘보이지 않느냐?’로 끝내면 원문에 없는 종결을 공급하게 됩니다.
+  - severity: medium
+    issue: 문두의 절 단편을 ‘분이십니다’라는 완결 서술문으로 처리했습니다.
+    rationale: 추출문은 τὴν γῆν으로 시작하여 앞 문맥에 의존하는 대격 구문입니다. 번역도 미완의 구문임을 유지해야 합니다.
+  revised_text: 땅과 모든 육체를 다스리는 권세를 가지신 분을 … 왕이 그에게 말했습니다. “벨이 살아 있는 신으로 보이지 않느냐? 아니면 그가 얼마나 먹는지 보지 못하느냐? 그리고 …”[a]
+  revised_footnotes:
+  - marker: a
+    text: 제공된 그리스어 본문은 문두에서 이미 앞 문맥의 일부로 시작하며, 끝에서도 ‘그리고’에서 끊겨 문장이 미완입니다. 따라서 번역은 원문에서 확인되는 범위만 옮기고 말줄임표로 불완전성을 나타냈습니다.
+    reason: textual_variant
+  revision_rationale: 문두의 대격 절과 문미의 접속사 καὶ를 모두 미완 상태로 보존했습니다. 이 수정은 누락된 앞뒤 본문을 추정하여 보충하지 않으면서도, 벨을 ‘살아 있는 신’이라 부르는 왕의 발화를 그대로 유지합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:27:33Z'
+  output_hash: 55d18c15bbbaef9fef9ffe60e4deecb58b786c724898955043a191293e2ac816
+  usage:
+    completion_tokens: 1125
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 484
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 148
+      engine_ttlt_ms: 9523
+      pre_inference_ms: 90
+      service_tbt_ms: 8
+      service_ttft_ms: 405
+      service_ttlt_ms: 9817
+      total_duration_ms: 9774
+      user_visible_ttft_ms: 315
+    prompt_tokens: 2249
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3374
+  applied_revision: true
+  auto_apply_blocked_errors: []

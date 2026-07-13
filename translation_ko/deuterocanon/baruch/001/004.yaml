@@ -106,4 +106,68 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 청중의 범위를 대체로 반영하지만, 원문의 반복되는 "~의 귀에" 구조를 한 번만 유지했고, 원문에 없는 수동 사건 "전해졌습니다"를 도입했습니다. 또한 "수드 강가에서"가 ‘전해진’ 장소처럼 연결되어 κατοικούντων을 수식하는 원문의 구조를 흐립니다.
+  naturalness: ‘왕들의 아들들’은 직역으로 가능하나, ‘귀족들과 왕들의 아들들, 장로들의 귀에’는 병렬 구조가 어색합니다. 반복 구조를 자연스러운 한국어로 정리하고, 앞 절에서 이어지는 낭독 행위를 암시하는 ‘읽었습니다’를 사용하면 독립 절로도 자연스럽습니다.
+  terminology: δυνατῶν은 이 문맥에서 ‘귀족들’로 옮길 수 있고, πρεσβυτέρων의 ‘장로들’ 및 ‘왕들의 아들들’도 원문의 관계적 표현을 보존합니다. ‘작은 이부터 큰 이까지’는 연령이나 사회적 위계를 특정하지 않아 원문의 포괄적 대구를 보존합니다. 수드는 불확실한 지명이므로 음역을 유지합니다.
+  issues:
+  - severity: high
+    issue: 원문에 없는 ‘전해졌습니다’를 사용함
+    rationale: 그리스어는 앞 절의 낭독 행위에 이어지는 전치사구들의 병렬이며, 전달되었다는 수동 동사를 말하지 않습니다. 이 동사는 행위와 위치 관계를 바꿉니다.
+  - severity: medium
+    issue: 수드 강가가 ‘전해진’ 장소처럼 연결됨
+    rationale: ἐπὶ ποταμοῦ Σούδ는 바빌론에 거주하는 사람들을 규정하는 지리적 표현입니다. ‘수드 강가의 바빌론에 사는’으로 연결해 수식 범위를 보존할 수 있습니다.
+  - severity: medium
+    issue: 반복되는 청취자 병렬이 불완전함
+    rationale: ἐν ὠσίν이 세 번 반복되어 각 집단이 낭독을 들었음을 강조합니다. 한국어에서도 ‘귀족들과 ...의 귀에, 장로들의 귀에, ... 백성의 귀에’로 살리는 편이 충실합니다.
+  revised_text: 또 귀족들과 왕들의 아들들의 귀에, 장로들의 귀에, 그리고 작은 이부터 큰 이까지, 수드 강가의 바빌론에 사는 모든 백성의 귀에 읽었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 그리스어는 직역하면 ‘귀에’이며, 여기서는 ‘듣는 자리에서’라는 뜻의 관용적 표현입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 그리스어는 직역하면 ‘작은 이부터 큰 이까지’이며, 모든 계층과 연령대를 포괄하는 표현입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 그리스어는 직역하면 ‘왕들의 아들들’입니다. ‘왕자들’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: d
+    text: ‘수드’는 그리스어 음역을 따른 지명이며, 정확한 위치는 확실하지 않습니다.
+    reason: cultural_note
+  revision_rationale: 원문이 앞 절의 낭독 동사에 이어 청중을 열거하는 구조임을 반영하여, 의미를 달리하는 ‘전해졌습니다’를 제거하고 ‘읽었습니다’로 정리했습니다. 또한 ‘귀에’의 반복과 수드 강가가 바빌론 거주자를 규정하는 연결을 보존했습니다. 각주 표지는 본문에서 제거하되, 제공된 각주 내용은 수정된 전체 각주 세트에 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:26:46Z'
+  output_hash: 3b273f5aa0320653a1af7577e03b415a6c895fb9e0e04898c1e3a0c1e9f60326
+  usage:
+    completion_tokens: 1399
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 12347
+      pre_inference_ms: 274
+      service_tbt_ms: 9
+      service_ttft_ms: 632
+      service_ttlt_ms: 12796
+      total_duration_ms: 12530
+      user_visible_ttft_ms: 358
+    prompt_tokens: 2972
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4371
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]
+  - unanchored footnote [c]
+  - unanchored footnote [d]

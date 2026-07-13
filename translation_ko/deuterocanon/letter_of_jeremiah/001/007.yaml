@@ -30,15 +30,15 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 그들의 혀는 장인의 손으로 깎였고, 또 금과 은으로 입혀졌지만, 그것들은 거짓이며 말할 수 없습니다.[a][b]
+  text: 그들의 혀는 장인이 깎은 것이며,[a] 그것들은 금과 은으로 입혀졌지만 거짓된 것들이고[b] 말할 수 없습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 직역하면 ‘긁어 다듬다/깎다’에 가깝습니다. 영어 POB의 ‘scraped smooth’처럼, 장인의 손길로 표면을 인공적으로 다듬은 뜻을 반영합니다.
+    text: 또는 ‘긁어 다듬은 것’으로 옮길 수 있습니다. 그리스어는 장인이 표면을 긁거나 깎아 다듬는 작업을 가리킵니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘둘러 금 입힌/둘러 은 입힌’입니다. 금과 은이 표면을 덮는 장식 상태를 가리킵니다.
-    reason: lexical_alternative
+    text: 또는 ‘거짓들’ 또는 ‘거짓말들’로 옮길 수 있습니다. 그리스어는 우상들을 거짓된 것들로 묘사할 수도 있고 거짓의 구현으로 묘사할 수도 있습니다.
+    reason: alternative_reading
 lexical_decisions:
 - source_word: Γλῶσσα
   english_pob_choice: tongue
@@ -114,4 +114,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들의 혀는 장인의 손으로 깎였고, 또 금과 은으로 입혀졌지만, 그것들은 거짓이며 말할 수 없습니다.[a][b]
+  to: 그들의 혀는 장인이 깎은 것이며,[a] 그것들은 금과 은으로 입혀졌지만 거짓된 것들이고[b] 말할 수 없습니다.
+  rationale: 'The revision preserves the Greek sequence and its singular-to-plural shift: the tongue is described as worked by a craftsman, whereas the idols are described as gold- and silver-covered, false, and unable to speak. It also uses clear 합쇼체 and places each footnote at the word or phrase it explains.'
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T19:26:52Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft correctly renders Γλῶσσα as ‘혀,’ τέκτων as ‘장인,’ and the final inability to speak. However, the Greek shifts from the singular ‘their tongue’ (κατεξυσμένη) to plural neuter idols (αὐτά; περίχρυσα καὶ περιάργυρα; ψευδῆ). The Korean should make this shift syntactically clear. The predicate ψευδῆ is best expressed as ‘거짓된 것들입니다,’ rather than the less idiomatic abstract predicate ‘거짓이며.’
+  naturalness: ‘그들의 혀는 … 깎였고, 또 금과 은으로 입혀졌지만, 그것들은’ leaves an unclear grammatical transition, since the immediately preceding passive predicates can appear to continue to describe the singular ‘혀.’ Separating the singular clause from the plural idol clauses produces natural, formal Korean.
+  terminology: ‘장인,’ ‘금과 은으로 입혀진,’ and ‘말할 수 없습니다’ are suitable modern formal-polite renderings. The lexical footnote for ψευδῆ should be anchored to ‘거짓된 것들’ rather than to the gold-and-silver description; the present footnote b does not correspond to its stated English audit-trail alternative.
+  issues:
+  - severity: medium
+    issue: Singular-to-plural referential shift is unclear in the Korean syntax.
+    rationale: The source first describes the singular tongue and then the plural idols themselves. A clause boundary and explicit plural subject preserve this structure.
+  - severity: medium
+    issue: Footnote b is attached after the final sentence but discusses gold and silver, while the audit trail identifies the relevant alternative as ψευδῆ (‘false’/‘lies’).
+    rationale: Relocating and revising the note gives it a clear anchor and preserves the source ambiguity without adding interpretation.
+  - severity: low
+    issue: ‘거짓이며’ is syntactically possible but less idiomatic for the neuter-plural substantive predicate.
+    rationale: ‘거짓된 것들입니다’ naturally identifies the idols as false things and retains the polemical force of ψευδῆ.
+  revised_text: 그들의 혀는 장인이 깎은 것이며,[a] 그것들은 금과 은으로 입혀졌지만 거짓된 것들이고[b] 말할 수 없습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘긁어 다듬은 것’으로 옮길 수 있습니다. 그리스어는 장인이 표면을 긁거나 깎아 다듬는 작업을 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘거짓들’ 또는 ‘거짓말들’로 옮길 수 있습니다. 그리스어는 우상들을 거짓된 것들로 묘사할 수도 있고 거짓의 구현으로 묘사할 수도 있습니다.
+    reason: alternative_reading
+  revision_rationale: 'The revision preserves the Greek sequence and its singular-to-plural shift: the tongue is described as worked by a craftsman, whereas the idols are described as gold- and silver-covered, false, and unable to speak. It also uses clear 합쇼체 and places each footnote at the word or phrase it explains.'
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T19:26:52Z'
+  output_hash: 65bf4fb4608f31d46248a9cb36870a5a1f43bf6c0c7e9399bdb8613ad6d9f510
+  usage:
+    completion_tokens: 1076
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 346
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 199
+      engine_ttlt_ms: 9095
+      pre_inference_ms: 244
+      service_tbt_ms: 8
+      service_ttft_ms: 602
+      service_ttlt_ms: 9492
+      total_duration_ms: 9262
+      user_visible_ttft_ms: 358
+    prompt_tokens: 2791
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3867
+  applied_revision: true
+  auto_apply_blocked_errors: []
