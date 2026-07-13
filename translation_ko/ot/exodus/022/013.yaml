@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 사람이 자기 이웃에게서 무엇인가를 빌렸는데 그것이 다치거나 죽고, 그 주인이 그것과 함께 있지 않으면, 그는 반드시 배상해야 합니다.[a][b]
+  text: 사람이 자기 이웃에게서 어떤 것을 빌렸을 때, 그것이 상하거나[a] 죽고 그 주인이 그것과 함께 있지 않았다면, 그 사람은 반드시 배상해야 합니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 ‘부서지다’이지만, 빌린 대상이 물건일 수도 있고 짐승일 수도 있어 문맥상 넓게 옮겼습니다.
+    text: 히브리어는 문자적으로 ‘부서지다’입니다. 빌린 대상이 물건일 수도 있고 짐승일 수도 있으므로, 여기서는 ‘상하다’로 옮겼습니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어의 강조형은 ‘반드시 배상하다’의 뜻을 나타냅니다.
+    text: 히브리어의 강조형은 ‘반드시 배상하다’라는 뜻을 나타냅니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְכִי
@@ -90,4 +90,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 사람이 자기 이웃에게서 무엇인가를 빌렸는데 그것이 다치거나 죽고, 그 주인이 그것과 함께 있지 않으면, 그는 반드시 배상해야 합니다.[a][b]
+  to: 사람이 자기 이웃에게서 어떤 것을 빌렸을 때, 그것이 상하거나[a] 죽고 그 주인이 그것과 함께 있지 않았다면, 그 사람은 반드시 배상해야 합니다.[b]
+  rationale: 차용물의 훼손을 나타내는 표현을 물건과 짐승 모두에 자연스러운 ‘상하다’로 고쳤습니다. 또한 조건절과 배상 의무의 주체를 명확히 하되, 원문이 명시하지 않는 차용물의 종류는 특정하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:42:59Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ‘다치거나 죽고’는 무생물일 수 있는 차용물과 동물 모두를 포괄하려는 의도는 있으나, ‘다치다’는 물건에 적용하기 어색합니다. 히브리어 נִשְׁבַּר의 기본 뜻(부서지다)과 문맥적 폭을 함께 살리는 ‘상하다’가 더 적절합니다. 배상 의무와 소유자가 차용물과 함께 있지 않은 조건은 정확히 반영되어 있습니다.
+  naturalness: 현대 표준 한국어 합쇼체로 자연스럽게 다듬기 위해 조건 관계를 ‘빌렸을 때 … 상하거나 죽고 … 함께 있지 않았다면’으로 정리하고, 배상 의무의 주체를 ‘그 사람’으로 명시했습니다.
+  terminology: ‘이웃’, ‘주인’, ‘배상’은 법률 문맥에 적절합니다. ‘상하다’는 물건의 훼손과 짐승의 부상을 모두 아우르며, 원문의 구체적 대상 미표시를 불필요하게 한쪽으로 제한하지 않습니다.
+  issues:
+  - severity: medium
+    issue: ‘그것이 다치거나 죽고’
+    rationale: ‘다치다’는 대체로 생물에 쓰이므로, 물건 또는 짐승일 수 있는 차용물을 포괄하는 본문에서 어색합니다. ‘상하다’는 원문의 ‘부서지다/훼손되다’라는 폭을 자연스럽게 보존합니다.
+  - severity: low
+    issue: 조건문의 연결과 배상 주체
+    rationale: 원문의 법률적 조건 구조를 더 분명히 하고 대명사 지시를 피하기 위해 ‘그 주인이 그것과 함께 있지 않았다면, 그 사람은’으로 다듬는 것이 좋습니다.
+  revised_text: 사람이 자기 이웃에게서 어떤 것을 빌렸을 때, 그것이 상하거나[a] 죽고 그 주인이 그것과 함께 있지 않았다면, 그 사람은 반드시 배상해야 합니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘부서지다’입니다. 빌린 대상이 물건일 수도 있고 짐승일 수도 있으므로, 여기서는 ‘상하다’로 옮겼습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어의 강조형은 ‘반드시 배상하다’라는 뜻을 나타냅니다.
+    reason: lexical_alternative
+  revision_rationale: 차용물의 훼손을 나타내는 표현을 물건과 짐승 모두에 자연스러운 ‘상하다’로 고쳤습니다. 또한 조건절과 배상 의무의 주체를 명확히 하되, 원문이 명시하지 않는 차용물의 종류는 특정하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:59Z'
+  output_hash: 726df916d7d83bb2c93991108c1b887a22ff37fcd8c7088eec1070f2941e144e
+  usage:
+    completion_tokens: 1038
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 366
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 1473
+      engine_ttlt_ms: 10085
+      pre_inference_ms: 120
+      service_tbt_ms: 8
+      service_ttft_ms: 1938
+      service_ttlt_ms: 10546
+      total_duration_ms: 10435
+      user_visible_ttft_ms: 1819
+    prompt_tokens: 2651
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3689
+  applied_revision: true
+  auto_apply_blocked_errors: []

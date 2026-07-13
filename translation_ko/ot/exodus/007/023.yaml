@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 파라오는 돌아서서 자기 집으로 들어갔습니다[a]. 그러나 그는 이 일에 대해서도 마음을 두지 않았습니다.
+  text: 파라오는 돌아서서 자기 집으로 들어갔습니다. 그는 이 일조차 마음에 두지 않았습니다[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는, ‘그는 이 일에 마음을 두지 않았다’, 혹은 ‘그는 이 일조차도 주의를 기울이지 않았다’
+    text: 또는, ‘그는 이 일에 마음을 두지 않았다’, 혹은 ‘그는 이 일조차도 주의를 기울이지 않았다’.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּפֶן
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 파라오는 돌아서서 자기 집으로 들어갔습니다[a]. 그러나 그는 이 일에 대해서도 마음을 두지 않았습니다.
+  to: 파라오는 돌아서서 자기 집으로 들어갔습니다. 그는 이 일조차 마음에 두지 않았습니다[a].
+  rationale: 원문에 없는 역접을 제거하고, גַּם의 강조를 ‘이 일조차’로 살렸습니다. 또한 히브리어 관용구의 대안 번역을 제공하는 각주를 해당 관용구에 정확히 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:42:22Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 동작 연속(‘돌아서서 … 들어갔다’)과 ‘마음을 두다’ 관용구의 기본 의미는 대체로 잘 반영했습니다. 다만 원문에 없는 역접 접속사 ‘그러나’는 삭제하는 것이 좋고, גַּם לָזֹאת의 강조는 ‘이 일조차’가 더 직접적으로 드러냅니다.
+  naturalness: ‘마음에 두지 않았습니다’가 현대 표준 한국어에서 자연스럽고, 히브리어 관용구의 ‘마음’ 이미지를 유지합니다. 문장 사이에 불필요한 ‘그러나’를 두지 않으면 간결한 서술 문맥에도 더 잘 맞습니다.
+  terminology: ‘파라오’와 ‘마음에 두다’는 적절합니다. 각주가 설명하는 관용구는 집에 붙일 것이 아니라 ‘마음에 두지 않았습니다’에 붙여야 합니다.
+  issues:
+  - severity: medium
+    issue: 원문에 없는 역접 접속사 ‘그러나’가 추가되었습니다.
+    rationale: וְלֹא는 여기서 앞 동작에 이어지는 단순 접속이며, 명시적 역접을 요구하지 않습니다. 한국어에서도 문장을 나누어 그대로 서술하는 편이 원문 흐름을 보존합니다.
+  - severity: medium
+    issue: 각주 표지가 ‘자기 집으로 들어갔습니다’에 붙어 있으나, 각주 내용은 ‘마음을 두지 않았다’라는 관용구를 설명합니다.
+    rationale: 각주 앵커는 설명 대상 어구에 직접 붙어야 독자가 대안 번역의 범위를 정확히 알 수 있습니다.
+  - severity: low
+    issue: ‘이 일에 대해서도’보다 ‘이 일조차’가 גַּם의 강조를 더 분명히 나타냅니다.
+    rationale: גַּם לָזֹאת는 ‘이것조차/이 일조차’라는 뜻으로, 현재의 재앙이나 표징에도 마음을 두지 않았음을 강조합니다.
+  revised_text: 파라오는 돌아서서 자기 집으로 들어갔습니다. 그는 이 일조차 마음에 두지 않았습니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 또는, ‘그는 이 일에 마음을 두지 않았다’, 혹은 ‘그는 이 일조차도 주의를 기울이지 않았다’.
+    reason: lexical_alternative
+  revision_rationale: 원문에 없는 역접을 제거하고, גַּם의 강조를 ‘이 일조차’로 살렸습니다. 또한 히브리어 관용구의 대안 번역을 제공하는 각주를 해당 관용구에 정확히 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:22Z'
+  output_hash: 96ee3f044224d837951603632150fdc0353b25efdfa72dd18897c817d25ab9fd
+  usage:
+    completion_tokens: 853
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 211
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 6835
+      pre_inference_ms: 115
+      service_tbt_ms: 8
+      service_ttft_ms: 406
+      service_ttlt_ms: 7109
+      total_duration_ms: 7006
+      user_visible_ttft_ms: 292
+    prompt_tokens: 1959
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2812
+  applied_revision: true
+  auto_apply_blocked_errors: []

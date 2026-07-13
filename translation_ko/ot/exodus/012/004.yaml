@@ -100,4 +100,60 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 הַבַּיִת를 ‘집안 식구’로, בְּמִכְסַת נְפָשֹׁת를 ‘사람 수를 따라’로 옮긴 점은 문맥과 잘 맞습니다. 그러나 וְלָקַח의 목적어는 문맥상 어린 양을 ‘취하는/마련하는’ 것이지 ‘잡는’ 행위를 명시하지 않으며, 마지막 תָּכֹסּוּ עַל־הַשֶּׂה는 어린 양 자체를 세는 뜻보다 각자의 먹는 양을 기준으로 그 어린 양에 참여할 인원을 산정하는 지시입니다. 이를 본문에 드러낼 필요가 있습니다.
+  naturalness: ‘각 사람은 그가 먹을 수 있는 만큼 너희가 … 셀 것입니다’는 주어와 서술 주체가 충돌하고, ‘너희가 … 셀 것입니다’도 합쇼체의 직접 지시 문맥에서 부자연스럽습니다. 문장을 ‘각 사람이 먹을 수 있는 양에 따라 … 인원을 정하십시오’로 고치면 현대 표준 한국어와 합쇼체에 자연스럽습니다.
+  terminology: ‘어린 양’은 영어 POB의 선택을 따르되, שֶׂה가 양 또는 염소 계열의 가축을 가리킬 수 있다는 주석을 유지하는 것이 적절합니다. ‘잡다’는 원문의 이 절이 명시하지 않은 도살 행위를 앞당기므로 ‘취하다’로 수정합니다.
+  issues:
+  - severity: high
+    issue: ‘한 마리를 잡을 것이며’
+    rationale: וְלָקַח는 이 문맥에서 어린 양을 취하거나 마련하는 행위이며, 도살을 뜻하는 동사가 아닙니다. ‘잡다’는 원문에 없는 행위를 추가합니다.
+  - severity: high
+    issue: ‘각 사람은 … 너희가 어린 양을 셀 것입니다’
+    rationale: 한국어 문법상 주어 전환이 부자연스럽고, תָּכֹסּוּ עַל־הַשֶּׂה의 뜻도 어린 양의 수를 세라는 지시가 아니라 각자의 섭취량에 따라 그 어린 양에 참여할 인원을 산정하라는 뜻입니다.
+  - severity: medium
+    issue: 마지막 절의 합쇼체 처리
+    rationale: ‘너희가 … 셀 것입니다’보다 직접 지시인 ‘… 정하십시오’가 목표 register와 원문의 지시적 기능에 더 적합합니다.
+  revised_text: 만일 한 집안의 식구가 어린 양 한 마리에 비해 너무 적으면, 그와 그의 집에 가까운 이웃은 사람 수에 따라 어린 양 한 마리를 취하십시오. 각 사람이 먹을 수 있는 양에 따라 그 어린 양에 맞추어 인원을 정하십시오.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 שֶׂה는 양이나 염소에 속한 작은 가축 한 마리를 더 넓게 가리킬 수 있습니다. 유월절 문맥에서는 자연스러운 한국어를 위해 ‘어린 양’으로 옮겼습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘각 사람이 먹는 양에 따라 그 어린 양에 맞추어 인원을 계산하십시오.’
+    reason: lexical_alternative
+  revision_rationale: 원문이 명시하지 않는 도살 의미를 제거하고, 마지막 절을 ‘어린 양에 맞추어 참여 인원을 산정하다’라는 문맥상 의미로 명확히 했습니다. 또한 원문의 단수 주어 뒤 복수 지시라는 전환을 한국어에서 어색하지 않게 처리했습니다. 본문 안에서 a와 b 표지를 각각 ‘어린 양’과 ‘먹을 수 있는 양’에 유지해야 합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:26Z'
+  output_hash: 7abdca16b9a4668bab65bd466c8b1a32f00062f3f7df1cabfc4a305323508594
+  usage:
+    completion_tokens: 1401
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 172
+      engine_ttlt_ms: 11225
+      pre_inference_ms: 140
+      service_tbt_ms: 8
+      service_ttft_ms: 403
+      service_ttlt_ms: 11453
+      total_duration_ms: 11324
+      user_visible_ttft_ms: 263
+    prompt_tokens: 3352
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4753
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]

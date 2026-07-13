@@ -20,14 +20,14 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 그러자 그들이 말했습니다. 「우리가 젊은 여자를 불러서 그에게 물어보겠습니다」.[a][b]
+  text: 그러자 그들이 말했습니다. “그 젊은 여인을 불러서 그 여인에게 물어봅시다.”[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 ‘그녀의 입을 묻다’라는 관용구로, 그녀 자신의 직접적인 대답을 듣는다는 뜻입니다.
+    text: 히브리어는 문자적으로 ‘그녀의 입에 묻다’라고 하며, 그녀 자신의 답을 직접 듣는다는 뜻입니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘그녀가 무엇이라고 말하는지 물어보자’라는 뜻으로 옮길 수 있습니다.
+    text: 또는 ‘그녀가 무엇이라고 말하는지 물어보자’로 옮길 수 있습니다.
     reason: previous_rendering
 lexical_decisions:
 - source_word: וַיֹּאמְרוּ
@@ -89,4 +89,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 그들이 말했습니다. 「우리가 젊은 여자를 불러서 그에게 물어보겠습니다」.[a][b]
+  to: 그러자 그들이 말했습니다. “그 젊은 여인을 불러서 그 여인에게 물어봅시다.”[a][b]
+  rationale: 공동 제안형인 히브리어 코호터티브를 ‘물어봅시다’로 재현하고, נערה를 문맥에 맞게 ‘젊은 여인’으로 다듬었습니다. 또한 각주가 원문의 ‘입’ 관용구와 그 의미를 정확하고 자연스러운 한국어로 설명하도록 고쳤습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:28:03Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 두 코호터티브(‘부르자/불러서 … 묻자’)는 공동의 제안을 나타냅니다. 초안의 ‘물어보겠습니다’는 미래의 선언처럼 들려 이 제안의 뉘앙스를 약화합니다. 또한 אֶת־פִּיהָ는 단순히 상대에게 묻는다는 뜻을 넘어 그 여성 자신의 답변을 듣는다는 관용적 표현입니다.
+  naturalness: ‘젊은 여자’도 이해되지만 서사와 혼인 문맥에서 ‘젊은 여인’이 더 자연스럽고 존중하는 현대 한국어입니다. ‘그 여인에게 물어봅시다’는 합쇼체의 자연스러운 공동 제안이며, 불필요한 영어식 대명사 반복을 피합니다.
+  terminology: נערה는 이 문맥에서 리브가를 가리키므로 ‘젊은 여인’이 적절합니다. 각주에서 히브리어 표현을 ‘그녀의 입을 묻다’라고 하면 한국어로는 문법적 관계가 불명확하므로, 문자적 표현과 관용적 의미를 명료하게 설명해야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘그에게 물어보겠습니다’가 코호터티브의 공동 제안을 미래 선언으로 바꿉니다.
+    rationale: נִקְרָא와 וְנִשְׁאֲלָה는 모두 1인칭 복수 코호터티브이므로 ‘…합시다’와 같은 제안형으로 옮기는 것이 적절합니다.
+  - severity: low
+    issue: ‘젊은 여자’는 이 문맥에서 다소 평면적이고 구어적으로 들립니다.
+    rationale: 혼인 적령기의 נערה를 가리키는 서사 문맥에서는 ‘젊은 여인’이 현대적이면서도 더 자연스럽습니다.
+  - severity: medium
+    issue: 각주 a의 ‘그녀의 입을 묻다’는 문자적 설명으로서 한국어 문법과 의미가 불명확합니다.
+    rationale: 원문의 אֶת־פִּיהָ는 직역상 ‘그녀의 입에/입을 통하여 묻다’에 가까운 관용 표현이며, 당사자 자신의 답을 듣는다는 뜻을 밝혀야 합니다.
+  revised_text: 그러자 그들이 말했습니다. “그 젊은 여인을 불러서 그 여인에게 물어봅시다.”[a][b]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘그녀의 입에 묻다’라고 하며, 그녀 자신의 답을 직접 듣는다는 뜻입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘그녀가 무엇이라고 말하는지 물어보자’로 옮길 수 있습니다.
+    reason: previous_rendering
+  revision_rationale: 공동 제안형인 히브리어 코호터티브를 ‘물어봅시다’로 재현하고, נערה를 문맥에 맞게 ‘젊은 여인’으로 다듬었습니다. 또한 각주가 원문의 ‘입’ 관용구와 그 의미를 정확하고 자연스러운 한국어로 설명하도록 고쳤습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:28:03Z'
+  output_hash: 65ec170bdebf89a24a1c7dc3a5ed8dc40f42e16350550f9a21a47ac616d6c272
+  usage:
+    completion_tokens: 1023
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 250
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 8491
+      pre_inference_ms: 264
+      service_tbt_ms: 8
+      service_ttft_ms: 746
+      service_ttlt_ms: 9087
+      total_duration_ms: 8832
+      user_visible_ttft_ms: 482
+    prompt_tokens: 2240
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3263
+  applied_revision: true
+  auto_apply_blocked_errors: []

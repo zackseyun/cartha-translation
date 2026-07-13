@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 사람들이 다투다가 한 사람이 돌로든지 자기 주먹으로든지 자기 이웃을 치고, 그가 죽지 않고 누워 있게 되면[a]
+  text: 남자들이 다투다가 한 사람이 돌이나 주먹으로 자기 동료를 치고, 그가 죽지는 않고 자리에 눕게 되면,[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 ‘침상에 떨어지다’라는 관용구로, 부상으로 인해 눕게 되거나 거동을 못 하게 되었음을 뜻합니다.
+    text: 히브리어는 문자적으로 ‘침상에 쓰러지다’라는 관용적 표현으로, 부상으로 인해 병상에 눕거나 거동하지 못하게 되었음을 뜻합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְכִי / If
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 사람들이 다투다가 한 사람이 돌로든지 자기 주먹으로든지 자기 이웃을 치고, 그가 죽지 않고 누워 있게 되면[a]
+  to: 남자들이 다투다가 한 사람이 돌이나 주먹으로 자기 동료를 치고, 그가 죽지는 않고 자리에 눕게 되면,[a]
+  rationale: 원문의 남성 복수형을 ‘남자들’로 보존하고, רֵעֵהוּ를 문맥상 다툼의 상대인 ‘자기 동료’로 바로잡았습니다. 도구 병렬은 자연스러운 ‘돌이나 주먹으로’로 정리했으며, 병상에 눕는 결과와 다음 절로 이어지는 조건절의 문법을 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:43:22Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 사례 조건, 남성 복수 당사자, 타격 도구, 피해자가 죽지는 않았지만 병상에 눕는 결과를 대체로 잘 반영했습니다. 다만 אֲנָשִׁים의 남성 지시를 ‘사람들’로 중화했고, רֵעֵהוּ는 여기서 지리적 ‘이웃’보다 다툼 상대인 ‘동료/상대’가 더 정확합니다.
+  naturalness: ‘돌로든지 자기 주먹으로든지’와 ‘누워 있게 되면’도 이해 가능하지만, 현대 표준 한국어에서는 ‘돌이나 주먹으로’와 ‘자리에 눕게 되면’이 더 간결하고 자연스럽습니다. 이 절은 다음 절에 이어지는 조건절이므로 끝을 쉼표로 처리했습니다.
+  terminology: ‘남자들’은 원문의 문법적 성별을 보존하며, ‘동료’는 רֵעַ의 관계적·법적 상대라는 뜻을 자연스럽게 전달합니다. 각주에서는 נָפַל לְמִשְׁכָּב의 직역적 표현과 관용적 의미를 유지했습니다.
+  issues:
+  - severity: medium
+    issue: ‘사람들’이 אֲנָשִׁים의 남성 복수 지시를 중화합니다.
+    rationale: 이 법률 사례에서 원문은 남성 복수형을 사용하므로, 성별을 특별히 제한할 별도 근거가 없는 한 ‘남자들’로 보존하는 것이 원문 충실성에 더 가깝습니다.
+  - severity: medium
+    issue: ‘자기 이웃’은 רֵעֵהוּ의 문맥상 의미를 다소 부정확하게 좁힐 수 있습니다.
+    rationale: 이 단어는 이 문맥에서 다투는 상대방, 동료를 가리킵니다. 한국어 ‘이웃’은 주로 근처에 사는 사람이라는 뜻으로 들릴 수 있으므로 ‘자기 동료’가 더 적절합니다.
+  - severity: low
+    issue: 각주의 ‘침상에 떨어지다’는 한국어로 다소 부자연스럽습니다.
+    rationale: נָפַל의 이미지를 살리면서도 ‘침상에 쓰러지다’라고 하면 자연스럽고, 부상으로 병상에 눕는 관용적 의미도 명료하게 설명할 수 있습니다.
+  revised_text: 남자들이 다투다가 한 사람이 돌이나 주먹으로 자기 동료를 치고, 그가 죽지는 않고 자리에 눕게 되면,[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘침상에 쓰러지다’라는 관용적 표현으로, 부상으로 인해 병상에 눕거나 거동하지 못하게 되었음을 뜻합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 남성 복수형을 ‘남자들’로 보존하고, רֵעֵהוּ를 문맥상 다툼의 상대인 ‘자기 동료’로 바로잡았습니다. 도구 병렬은 자연스러운 ‘돌이나 주먹으로’로 정리했으며, 병상에 눕는 결과와 다음 절로 이어지는 조건절의 문법을 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:43:22Z'
+  output_hash: 84f0c0871d0359faf9a6b797acc0514d1132c5d985856578e92714d0e9387f13
+  usage:
+    completion_tokens: 1254
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 476
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 211
+      engine_ttlt_ms: 10595
+      pre_inference_ms: 97
+      service_tbt_ms: 8
+      service_ttft_ms: 473
+      service_ttlt_ms: 10851
+      total_duration_ms: 10778
+      user_visible_ttft_ms: 376
+    prompt_tokens: 2296
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3550
+  applied_revision: true
+  auto_apply_blocked_errors: []

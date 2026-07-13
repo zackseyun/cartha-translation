@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 모세가 말했습니다. “야훼께서 저녁에는 너희에게 고기를 먹게 하시고 아침에는 빵을 배불리 먹게 하실 때, 너희가 그분을 향해 불평하는 그 너희의 불평을 야훼께서 들으셨기 때문입니다. 우리가 무엇이기에 너희가 우리에게 불평합니까? 너희의 불평은 우리를 향한 것이 아니라 야훼를 향한 것입니다.”[a]
+  text: 모세가 말했습니다. “야훼께서 저녁에는 너희에게 먹을 고기를 주시고 아침에는 너희가 배불리 먹을 빵을 주실 때, 너희가 그분을 거슬러 불평하는 것을 야훼께서 들으실 것입니다.[a] 우리는 무엇입니까? 너희의 불평은 우리를 거슬러 하는 것이 아니라 야훼를 거슬러 하는 것입니다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 ‘너희의 불평 … 너희가 불평하다’처럼 명사와 동사를 반복해 불만을 강하게 드러냅니다.
+    text: 히브리어는 ‘너희의 불평’과 ‘너희가 불평하다’라는 같은 어근의 명사와 동사를 함께 써서 불평을 강조합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: יְהוָה
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 모세가 말했습니다. “야훼께서 저녁에는 너희에게 고기를 먹게 하시고 아침에는 빵을 배불리 먹게 하실 때, 너희가 그분을 향해 불평하는 그 너희의 불평을 야훼께서 들으셨기 때문입니다. 우리가 무엇이기에 너희가 우리에게 불평합니까? 너희의 불평은 우리를 향한 것이 아니라 야훼를 향한 것입니다.”[a]
+  to: 모세가 말했습니다. “야훼께서 저녁에는 너희에게 먹을 고기를 주시고 아침에는 너희가 배불리 먹을 빵을 주실 때, 너희가 그분을 거슬러 불평하는 것을 야훼께서 들으실 것입니다.[a] 우리는 무엇입니까? 너희의 불평은 우리를 거슬러 하는 것이 아니라 야훼를 거슬러 하는 것입니다.”
+  rationale: 원문의 수사적 질문과 ‘우리에게가 아니라 야훼께’라는 대조를 직접 보존했습니다. 또한 ‘들으셨기 때문입니다’라는 완료 과거와 인과적 문장 분리를 피하고, 원문의 시간적 부정사 구문 및 문맥의 미래 지향성을 ‘주실 때 … 들으실 것입니다’로 자연스럽게 반영했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:43:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 초안은 야훼, 저녁의 고기, 아침의 빵, 불평의 반복이라는 핵심 요소를 잘 옮겼습니다. 그러나 ‘우리가 무엇이기에 너희가 우리에게 불평합니까?’는 원문의 ‘우리는 무엇입니까? 너희의 불평은 우리를 향한 것이 아니라 야훼를 향한 것입니다’라는 수사적 진술을 다른 질문으로 바꾸며, 대조를 약화합니다. 또한 ‘들으셨기 때문입니다’의 완료 시제는 원문의 미완료적/문맥상 미래 지향 표현 및 영어 감사본의 ‘hears’보다 지나치게 확정적입니다.
+  naturalness: ‘그 너희의 불평’과 ‘우리가 무엇이기에 너희가 우리에게 불평합니까?’는 현대 표준 한국어로 다소 부자연스럽습니다. ‘너희가 그분을 거슬러 불평하는 것을’ 및 ‘우리는 무엇입니까?’가 간결하고 자연스럽습니다.
+  terminology: ‘야훼’, ‘고기’, ‘빵’, ‘불평’은 적절합니다. ‘거슬러’는 על의 적대적 방향을 자연스럽게 나타내며, ‘불평’의 명사·동사 반복은 각주로 보완할 수 있습니다.
+  issues:
+  - severity: high
+    issue: ‘우리가 무엇이기에 너희가 우리에게 불평합니까?’가 원문의 구문을 질문으로 재구성했습니다.
+    rationale: 원문은 ‘우리는 무엇입니까?’라고 한 뒤, 불평이 ‘우리를 향한 것이 아니라 야훼를 향한 것’이라고 진술합니다. 초안은 ‘너희가 우리에게 불평합니까?’라는 새 질문을 넣어 명시적 부정·대조를 흐립니다.
+  - severity: medium
+    issue: ‘야훼께서 들으셨기 때문입니다’가 완료 과거로 번역되었습니다.
+    rationale: בִּשְׁמֹעַ는 ‘들으실 때/들으시므로’로 옮길 수 있는 부정사 구문입니다. 이 문맥의 공급 약속과 영어 감사본의 현재형 ‘hears’에 맞추어 완료 과거를 피하는 편이 안전합니다.
+  - severity: low
+    issue: ‘그 너희의 불평’은 어색한 중복 표현입니다.
+    rationale: 히브리어의 동족어 반복은 ‘너희가 ... 불평하는 것을’로 자연스럽게 보존하고, 각주에서 명사와 동사의 반복을 설명할 수 있습니다.
+  revised_text: 모세가 말했습니다. “야훼께서 저녁에는 너희에게 먹을 고기를 주시고 아침에는 너희가 배불리 먹을 빵을 주실 때, 너희가 그분을 거슬러 불평하는 것을 야훼께서 들으실 것입니다.[a] 우리는 무엇입니까? 너희의 불평은 우리를 거슬러 하는 것이 아니라 야훼를 거슬러 하는 것입니다.”
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 ‘너희의 불평’과 ‘너희가 불평하다’라는 같은 어근의 명사와 동사를 함께 써서 불평을 강조합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 수사적 질문과 ‘우리에게가 아니라 야훼께’라는 대조를 직접 보존했습니다. 또한 ‘들으셨기 때문입니다’라는 완료 과거와 인과적 문장 분리를 피하고, 원문의 시간적 부정사 구문 및 문맥의 미래 지향성을 ‘주실 때 … 들으실 것입니다’로 자연스럽게 반영했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:43:42Z'
+  output_hash: 0a64348a8220bb77090e1bc490420a978588473a8637eaf2b238a2586bed15df
+  usage:
+    completion_tokens: 1570
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 687
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 151
+      engine_ttlt_ms: 12240
+      pre_inference_ms: 93
+      service_tbt_ms: 8
+      service_ttft_ms: 584
+      service_ttlt_ms: 12653
+      total_duration_ms: 12571
+      user_visible_ttft_ms: 491
+    prompt_tokens: 2780
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4350
+  applied_revision: true
+  auto_apply_blocked_errors: []

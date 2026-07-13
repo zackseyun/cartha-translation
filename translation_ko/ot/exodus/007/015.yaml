@@ -20,14 +20,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 아침에 바로 파라오에게 가십시오[a]. 보십시오, 그가 물가로 나오고 있습니다. 너는 그를 만나려고 나일 강 기슭에 서 있어야 하며[b], 뱀으로 바뀌었던 그 지팡이를 손에 들어야 합니다.
+  text: 아침에 파라오에게 가십시오. 보십시오, 그가 물가로 나가고 있습니다. 그를 만나려고 나일 강[a] 기슭에 서십시오. 그리고 뱀으로 바뀌었던 그 지팡이를 손에 드십시오.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 '강가에'. 히브리어 יְאֹר는 출애굽기에서 보통 나일 강을 가리킵니다.
-    reason: lexical_alternative
-  - marker: b
-    text: 또는 '서펀트'. 히브리어 נָחָשׁ는 '뱀' 또는 '서펀트'로 옮길 수 있습니다.
+    text: 또는 '강'. 히브리어 יְאֹר는 출애굽기에서 보통 나일 강을 가리킵니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: לֵךְ אֶל פַּרְעֹה
@@ -82,4 +79,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 아침에 바로 파라오에게 가십시오[a]. 보십시오, 그가 물가로 나오고 있습니다. 너는 그를 만나려고 나일 강 기슭에 서 있어야 하며[b], 뱀으로 바뀌었던 그 지팡이를 손에 들어야 합니다.
+  to: 아침에 파라오에게 가십시오. 보십시오, 그가 물가로 나가고 있습니다. 그를 만나려고 나일 강[a] 기슭에 서십시오. 그리고 뱀으로 바뀌었던 그 지팡이를 손에 드십시오.
+  rationale: Removed the unsupported '바로,' made all directives consistently formal-polite, and restored the Hebrew command sequence. The Nile note is now anchored to '나일 강.' The misplaced נָחָשׁ note was removed because '서펀트' is not an idiomatic Korean alternative and the standard Korean term '뱀' adequately represents the source without loss of relevant ambiguity.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:42:26Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft generally follows the Hebrew command sequence and correctly identifies יְאֹר as the Nile. However, '바로 파라오' adds an unwarranted adverb ('directly') and is not a natural rendering of אֶל־פַּרְעֹה. The mixed second-person forms ('너는' alongside '-하십시오/-합니다') violate the stipulated formal-polite register. The footnote markers are attached to terms unrelated to their notes.
+  naturalness: Use consistent modern formal-polite imperatives. '물가로 나가고 있습니다' naturally conveys the participial motion toward the water; '손에 드십시오' is a natural formal rendering of 'take in your hand.'
+  terminology: Use '파라오,' '나일 강,' '지팡이,' and '뱀.' The loanword '서펀트' is not natural standard Korean and does not provide a meaningful Korean lexical alternative to '뱀.'
+  issues:
+  - severity: medium
+    issue: '''바로 파라오에게'' contains an added adverb and is awkward.'
+    rationale: The Hebrew means 'to Pharaoh'; 바로 here means 'directly/immediately' in Korean and is not part of the source.
+  - severity: high
+    issue: The draft mixes informal/plain second person ('너는') with formal-polite endings.
+    rationale: The target register requires consistent 합쇼체.
+  - severity: high
+    issue: Footnote anchors and contents do not correspond.
+    rationale: Marker a is placed after '아침에' but discusses יְאֹר, and marker b is placed after the instruction to stand but discusses נָחָשׁ. The latter also uses the unnatural Korean loanword '서펀트.'
+  - severity: low
+    issue: The command to take the staff is weakened as '들어야 합니다.'
+    rationale: A direct formal imperative better represents the Hebrew command sequence.
+  revised_text: 아침에 파라오에게 가십시오. 보십시오, 그가 물가로 나가고 있습니다. 그를 만나려고 나일 강[a] 기슭에 서십시오. 그리고 뱀으로 바뀌었던 그 지팡이를 손에 드십시오.
+  revised_footnotes:
+  - marker: a
+    text: 또는 '강'. 히브리어 יְאֹר는 출애굽기에서 보통 나일 강을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: Removed the unsupported '바로,' made all directives consistently formal-polite, and restored the Hebrew command sequence. The Nile note is now anchored to '나일 강.' The misplaced נָחָשׁ note was removed because '서펀트' is not an idiomatic Korean alternative and the standard Korean term '뱀' adequately represents the source without loss of relevant ambiguity.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:26Z'
+  output_hash: 631a7a0c07e1f9f1262b0c6a86cbb76cb120f8fcbee9bcd05790aa052543ace4
+  usage:
+    completion_tokens: 1365
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 718
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 148
+      engine_ttlt_ms: 11439
+      pre_inference_ms: 112
+      service_tbt_ms: 8
+      service_ttft_ms: 596
+      service_ttlt_ms: 11881
+      total_duration_ms: 11777
+      user_visible_ttft_ms: 484
+    prompt_tokens: 3003
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4368
+  applied_revision: true
+  auto_apply_blocked_errors: []

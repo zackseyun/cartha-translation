@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 저녁이 되자 야훼는 그의 딸 라헬을 데려다가 자기에게로 데려가서 그에게로 들어가니라.
+  text: 그날 저녁, 라반은 자기 딸 레아를 야곱에게 데려갔고, 야곱은 레아에게 들어갔습니다[a].
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 히브리어 ‘그에게 들어갔다’는 성관계를 가리키는 관습적인 완곡어법입니다.
+    reason: lexical_alternative
 ai_draft:
   model_id: mlx-community/Qwen3.5-35B-A3B-4bit
   azure_deployment: local-mlx-fastpath
@@ -31,4 +35,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 저녁이 되자 야훼는 그의 딸 라헬을 데려다가 자기에게로 데려가서 그에게로 들어가니라.
+  to: 그날 저녁, 라반은 자기 딸 레아를 야곱에게 데려갔고, 야곱은 레아에게 들어갔습니다[a].
+  rationale: 원문의 인물, 행위의 순서, 목적어를 바로잡았습니다. 마지막 표현은 히브리어의 완곡어법을 본문에서 유지하고 각주로 설명했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:29:50Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 주어를 야훼로 잘못 표기하고, 라헬을 레아로 바꾸어야 하며, 라반·야곱의 행위를 혼동하고 있습니다. 히브리어 본문은 라반이 딸 레아를 야곱에게 데려가고, 야곱이 레아에게 ‘들어간’ 것으로 서술합니다.
+  naturalness: 수정문은 현대 표준 한국어의 자연스러운 서술 문체와 합쇼체 종결을 사용합니다. 반복되는 대명사로 생길 수 있는 인물 지시의 혼동을 피하기 위해 문맥상 명백한 인명(라반, 야곱, 레아)을 밝혔습니다.
+  terminology: 고유명사는 통용 표기인 라반, 레아, 야곱을 사용했습니다. ‘…에게 들어갔습니다’는 성관계를 가리키는 히브리어 완곡어법을 직역적으로 보존하며, 각주에서 그 뜻을 설명합니다.
+  issues:
+  - severity: high
+    issue: ‘야훼’가 행동의 주어로 되어 있습니다.
+    rationale: 히브리어의 ‘그’는 문맥상 라반이며, 야훼는 본절에 나타나지 않습니다.
+  - severity: high
+    issue: ‘라헬’이 사용되었습니다.
+    rationale: 원문은 לֵאָה(레아)이며, 라헬이 아닙니다.
+  - severity: high
+    issue: ‘자기에게로 데려가서 그에게로 들어가니라’가 행위자와 대상의 관계를 혼동합니다.
+    rationale: 라반이 레아를 야곱에게 데려가며, 이어 야곱이 레아에게 들어갑니다.
+  - severity: medium
+    issue: 성관계 완곡어법에 대한 각주가 없습니다.
+    rationale: 원문의 관습적 표현을 보존하되 현대 독자의 이해를 위해 각주를 두는 것이 영어 POB 감사 기록과도 일치합니다.
+  revised_text: 그날 저녁, 라반은 자기 딸 레아를 야곱에게 데려갔고, 야곱은 레아에게 들어갔습니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 ‘그에게 들어갔다’는 성관계를 가리키는 관습적인 완곡어법입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 인물, 행위의 순서, 목적어를 바로잡았습니다. 마지막 표현은 히브리어의 완곡어법을 본문에서 유지하고 각주로 설명했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:29:50Z'
+  output_hash: 085d00fcf0b4bc9deac6eff9f37aa5bdafbc70fb052d6bf9386b4461e8e06fe3
+  usage:
+    completion_tokens: 869
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 242
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 122
+      engine_ttlt_ms: 6837
+      pre_inference_ms: 124
+      service_tbt_ms: 8
+      service_ttft_ms: 897
+      service_ttlt_ms: 7617
+      total_duration_ms: 7501
+      user_visible_ttft_ms: 773
+    prompt_tokens: 1288
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2157
+  applied_revision: true
+  auto_apply_blocked_errors: []

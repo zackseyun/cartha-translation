@@ -17,7 +17,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 모세는 팔십 살이었고, 아론은 팔십삼 살이었습니다. 그들이 바로 파라오에게 말할 때였습니다.
+  text: 그들이 파라오에게 말할 때에 모세는 팔십 살이었고 아론은 팔십삼 살이었습니다.
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: בֶּן ... שָׁנָה
@@ -64,4 +64,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 모세는 팔십 살이었고, 아론은 팔십삼 살이었습니다. 그들이 바로 파라오에게 말할 때였습니다.
+  to: 그들이 파라오에게 말할 때에 모세는 팔십 살이었고 아론은 팔십삼 살이었습니다.
+  rationale: 파라오를 가리키는 히브리어 명칭을 중복 없이 ‘파라오’로 옮기고, 원문의 시간 부사구를 한국어의 자연스러운 문두 시간절로 재구성했습니다. 연령 정보와 두 인물의 공동 발화라는 원문의 의미는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:42:27Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 연령(모세 80세, 아론 83세)과 파라오에게 말한 때라는 시간 관계는 대체로 충실히 반영되었습니다. 다만 본문의 ‘바로 파라오’는 פַּרְעֹה(파라오)를 중복·오해한 표현으로, 원문에는 없는 강조 또는 칭호 중복을 만들어 냅니다.
+  naturalness: ‘그들이 바로 파라오에게 말할 때였습니다’는 ‘바로’의 위치와 독립된 ‘때였습니다’ 구문 때문에 현대 표준어로 부자연스럽습니다. 시간절을 문두에 두어 한 문장으로 연결하면 자연스럽고 의미 관계도 분명해집니다.
+  terminology: ‘모세’, ‘아론’, ‘파라오’는 일관되고 적절합니다. ‘파라오’ 앞의 ‘바로’는 삭제해야 합니다. 나이 표현으로 ‘팔십 살’, ‘팔십삼 살’은 현대 문어에 적절합니다.
+  issues:
+  - severity: medium
+    issue: ‘바로 파라오’라는 표현
+    rationale: פַּרְעֹה는 ‘파라오’를 뜻합니다. ‘바로’를 덧붙이면 한국어에서 중복되거나 ‘바로(곧)’라는 부사로 읽혀 원문에 없는 의미를 낳습니다.
+  - severity: medium
+    issue: 시간절의 부자연스러운 독립 문장 처리
+    rationale: ‘그들이 … 말할 때였습니다’는 앞선 나이 진술과의 시간 관계를 어색하게 만듭니다. בְּדַבְּרָם의 시간 용법을 ‘…말할 때에’로 연결하는 것이 자연스럽고 충실합니다.
+  revised_text: 그들이 파라오에게 말할 때에 모세는 팔십 살이었고 아론은 팔십삼 살이었습니다.
+  revised_footnotes: []
+  revision_rationale: 파라오를 가리키는 히브리어 명칭을 중복 없이 ‘파라오’로 옮기고, 원문의 시간 부사구를 한국어의 자연스러운 문두 시간절로 재구성했습니다. 연령 정보와 두 인물의 공동 발화라는 원문의 의미는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:27Z'
+  output_hash: 2dfd31f49db2844d478214c11ae87e656752deb07b5b0c81bfa0192a8f1235f0
+  usage:
+    completion_tokens: 767
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 227
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 142
+      engine_ttlt_ms: 6336
+      pre_inference_ms: 6786
+      service_tbt_ms: 8
+      service_ttft_ms: 7265
+      service_ttlt_ms: 13454
+      total_duration_ms: 6676
+      user_visible_ttft_ms: 479
+    prompt_tokens: 1836
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2603
+  applied_revision: true
+  auto_apply_blocked_errors: []

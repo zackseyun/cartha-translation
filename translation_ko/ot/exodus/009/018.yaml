@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 보십시오[a], 내일 이맘때쯤 내가 매우 심한 우박[b]을 내리겠습니다. 그것은 이집트가 세워진 날부터 지금까지 이집트에 한 번도 없었던 것입니다.
+  text: 보십시오[a], 내일 이맘때쯤 내가 매우 심한 우박을 내리겠습니다. 이집트가 세워진 날부터[b] 지금까지 이집트에는 그와 같은 우박이 한 번도 없었습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘내일 이때쯤’.
+    text: 또는 ‘내일 이맘때에’.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘그 날부터’.
+    text: 또는 ‘이집트가 세워진 때부터’.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הִנְנִי
@@ -85,4 +85,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 보십시오[a], 내일 이맘때쯤 내가 매우 심한 우박[b]을 내리겠습니다. 그것은 이집트가 세워진 날부터 지금까지 이집트에 한 번도 없었던 것입니다.
+  to: 보십시오[a], 내일 이맘때쯤 내가 매우 심한 우박을 내리겠습니다. 이집트가 세워진 날부터[b] 지금까지 이집트에는 그와 같은 우박이 한 번도 없었습니다.
+  rationale: 직접적 신적 행위와 시간적 근사성은 유지했습니다. 원문의 ‘전례 없는’ 비교 구문을 한국어로 분명히 하고, 각주 b를 그것이 설명하는 ‘이집트가 세워진 날부터’에 정확히 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:42:27Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 1인칭 히필 동사(‘내가 내리겠다’), 시간의 근사 표현, 우박의 강한 정도, 그리고 이집트의 성립 이래 전례 없었다는 비교 구문은 대체로 잘 반영되었습니다. 다만 두 번째 문장의 ‘그것은 … 것입니다’는 한국어에서 지시 대상이 다소 느슨하고, 원문의 비교 관계를 직접적으로 드러내지 못합니다.
+  naturalness: ‘보십시오’와 ‘내일 이맘때쯤’은 현대 표준어 합쇼체에서 자연스럽습니다. ‘그것은 이집트가 세워진 날부터 … 없었던 것입니다’는 문법적으로 가능하나 다소 번역투이므로, ‘그와 같은 우박이 한 번도 없었습니다’로 명시하는 편이 자연스럽고 분명합니다.
+  terminology: ‘우박’ 및 ‘이집트’는 적절합니다. כָּבֵד מְאֹד를 ‘매우 심한’으로 옮긴 것은 우박 재앙의 강도를 자연스럽게 전달합니다. 각주 b는 원문상 ‘이집트가 세워진 날부터’에 관한 대안인데 초안에서는 ‘우박’ 뒤에 놓여 있어 앵커와 내용이 맞지 않습니다.
+  issues:
+  - severity: medium
+    issue: 각주 b의 앵커와 각주 내용이 일치하지 않습니다.
+    rationale: 각주 ‘또는 그 날부터’는 לְמִן הַיּוֹם הִוָּסְדָה(‘[이집트가] 세워진 날부터’)의 대안이어야 합니다. 따라서 ‘우박’ 뒤가 아니라 해당 시간 구절에 붙여야 합니다.
+  - severity: low
+    issue: ‘그것은 … 없었던 것입니다’가 비교 구문을 다소 불명확하게 만듭니다.
+    rationale: אֲשֶׁר לֹא הָיָה כָמֹהוּ는 ‘그와 같은 것이 한 번도 없었다’는 비교 표현입니다. ‘그와 같은 우박’이라고 밝혀 주면 원문의 관계가 자연스럽고 명료해집니다.
+  revised_text: 보십시오[a], 내일 이맘때쯤 내가 매우 심한 우박을 내리겠습니다. 이집트가 세워진 날부터[b] 지금까지 이집트에는 그와 같은 우박이 한 번도 없었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘내일 이맘때에’.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘이집트가 세워진 때부터’.
+    reason: lexical_alternative
+  revision_rationale: 직접적 신적 행위와 시간적 근사성은 유지했습니다. 원문의 ‘전례 없는’ 비교 구문을 한국어로 분명히 하고, 각주 b를 그것이 설명하는 ‘이집트가 세워진 날부터’에 정확히 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:27Z'
+  output_hash: f41517b02e7112a71487f85471ac83ac10ae49a74047ec189b998d075415475a
+  usage:
+    completion_tokens: 1515
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 795
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 12787
+      pre_inference_ms: 96
+      service_tbt_ms: 8
+      service_ttft_ms: 361
+      service_ttlt_ms: 12995
+      total_duration_ms: 12911
+      user_visible_ttft_ms: 265
+    prompt_tokens: 2306
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3821
+  applied_revision: true
+  auto_apply_blocked_errors: []

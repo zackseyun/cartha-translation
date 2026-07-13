@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: '이것들은 라반이 그의 딸 레아에게 준 실바의 아들들입니다. 그녀가 이것들을 야곱에게 낳았습니다: 열여섯 사람입니다.[a]'
+  text: 이들은 라반이 자기 딸 레아에게 준 실바가 야곱에게 낳은 아들들인데, 모두 열여섯 명입니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 נֶפֶשׁ은 여기서 사람 수를 세는 관용적 표현입니다.
+    text: 히브리어 네페쉬(נֶפֶשׁ)는 여기서 사람 수를 세는 관용적 표현입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אֵלֶּה
@@ -92,4 +92,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: '이것들은 라반이 그의 딸 레아에게 준 실바의 아들들입니다. 그녀가 이것들을 야곱에게 낳았습니다: 열여섯 사람입니다.[a]'
+  to: 이들은 라반이 자기 딸 레아에게 준 실바가 야곱에게 낳은 아들들인데, 모두 열여섯 명입니다.[a]
+  rationale: 원문의 정보 배열을 보존하면서, 실바를 출산의 주체로 명확히 하고 사람을 가리키는 비인격적 대명사 ‘이것들’을 제거했습니다. נֶפֶשׁ는 계수 문맥에 맞게 ‘명’으로 옮겼으며, 각주에서 관용적 용법을 밝혔습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:35:44Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 정보와 수량은 대체로 원문에 맞지만, 사람들을 가리켜 ‘이것들’이라고 한 표현은 히브리어의 지시어를 한국어에서 부자연스럽고 비인격적으로 옮긴 것입니다. 또한 원문의 관계절과 출산 진술을 한국어의 자연스러운 관계절로 재구성할 필요가 있습니다.
+  naturalness: ‘그녀가 이것들을 야곱에게 낳았습니다’는 현대 표준 한국어에서 사람을 지시하는 방식 및 족보 문체 모두에 어색합니다. ‘실바가 야곱에게 낳은 아들들’로 옮기면 지시 대상과 출산의 주체가 명확하고 자연스럽습니다.
+  terminology: ‘실바’, ‘라반’, ‘레아’, ‘야곱’ 및 ‘아들들’은 적절합니다. נֶפֶשׁ의 계수 관용구는 ‘명’으로 옮기는 것이 ‘사람’보다 수량 표현으로 자연스럽고, 영혼론적 의미를 부과하지 않습니다.
+  issues:
+  - severity: medium
+    issue: 사람들을 ‘이것들’이라고 지시함
+    rationale: אֵלֶּה는 앞서 열거된 사람들을 가리키지만, 한국어에서 ‘이것들’은 통상 사물에 쓰입니다. ‘이들’을 쓰거나 관계절로 통합해야 합니다.
+  - severity: medium
+    issue: ‘그녀가 이것들을 야곱에게 낳았습니다’의 문체 및 지시 대상이 부자연스러움
+    rationale: 출산 주체는 실바이며, 한국어 족보 문장에서는 ‘실바가 야곱에게 낳은’이라고 관계절로 처리하는 것이 자연스럽고 의미도 분명합니다.
+  - severity: low
+    issue: ‘열여섯 사람’의 수량 표현
+    rationale: 의미상 틀리지는 않지만, 족보의 인원 계수에는 ‘열여섯 명’이 현대 한국어에서 더 관용적입니다.
+  revised_text: 이들은 라반이 자기 딸 레아에게 준 실바가 야곱에게 낳은 아들들인데, 모두 열여섯 명입니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 네페쉬(נֶפֶשׁ)는 여기서 사람 수를 세는 관용적 표현입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 정보 배열을 보존하면서, 실바를 출산의 주체로 명확히 하고 사람을 가리키는 비인격적 대명사 ‘이것들’을 제거했습니다. נֶפֶשׁ는 계수 문맥에 맞게 ‘명’으로 옮겼으며, 각주에서 관용적 용법을 밝혔습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:35:44Z'
+  output_hash: 2c96adb96b3c01d4c93035fcc2aa5d51c7e1ed8b5a12704359a8415aaeef0322
+  usage:
+    completion_tokens: 982
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 306
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 7776
+      pre_inference_ms: 328
+      service_tbt_ms: 8
+      service_ttft_ms: 851
+      service_ttlt_ms: 8479
+      total_duration_ms: 8162
+      user_visible_ttft_ms: 523
+    prompt_tokens: 2351
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3333
+  applied_revision: true
+  auto_apply_blocked_errors: []

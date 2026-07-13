@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 이스라엘 자손에게 말하여 그들이 되돌아가서 피하히롯 앞, 믹돌과 바다 사이, 바알스본 맞은편 바닷가에 진을 치게 하십시오.[a][b][c]
+  text: 이스라엘 자손[a]에게 말하여, 그들이 되돌아가 피하히롯[b] 앞, 믹돌과 바다 사이에 진을 치라고 하십시오. 바알스본[b] 앞, 곧 그 맞은편[c] 바닷가에 진을 치라고 하십시오.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘이스라엘 자손’은 히브리어의 문자적 표현입니다. 영어 POB의 주석처럼 ‘이스라엘 사람들’로 옮길 수도 있습니다.
+    text: ‘이스라엘 자손’은 히브리어의 문자적 표현입니다. ‘이스라엘 사람들’로 옮길 수도 있습니다.
     reason: lexical_alternative
   - marker: b
     text: 피하히롯, 믹돌, 바알스본은 모두 지명이라 음역했습니다.
     reason: cultural_note
   - marker: c
-    text: ‘맞은편’은 ‘그것을 향하여/마주하여’의 뜻일 수 있으며, 여기서는 문맥상 바알스본을 가리키는 것으로 보입니다.
+    text: ‘그 맞은편’은 ‘그것의 맞은편에’ 또는 ‘그것을 마주하여’라는 뜻입니다. 히브리어 대명사 접미사는 문맥상 바알스본을 가리키는 것으로 보입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: בְּנֵי יִשְׂרָאֵל
@@ -111,4 +111,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이스라엘 자손에게 말하여 그들이 되돌아가서 피하히롯 앞, 믹돌과 바다 사이, 바알스본 맞은편 바닷가에 진을 치게 하십시오.[a][b][c]
+  to: 이스라엘 자손[a]에게 말하여, 그들이 되돌아가 피하히롯[b] 앞, 믹돌과 바다 사이에 진을 치라고 하십시오. 바알스본[b] 앞, 곧 그 맞은편[c] 바닷가에 진을 치라고 하십시오.
+  rationale: 두 번째 지명구에 포함된 ‘바알스본 앞’과 ‘그것의 맞은편’이라는 중첩된 위치 지시를 보존하고, 두 번의 ‘진을 치다’ 지시를 각각 해당 위치 정보와 연결했습니다. 주석 표지는 해당 어구에 직접 붙였으며, 주석 c는 원문의 공간적 의미를 정확히 설명하도록 고쳤습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:42:39Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 ‘되돌아가다’, 피하히롯 앞, 믹돌과 바다 사이, 바닷가라는 주요 요소를 대체로 보존합니다. 그러나 히브리어의 두 번째 위치 지정인 ‘바알스본 앞, 그것의 맞은편’(לִפְנֵי בַּעַל צְפֹן נִכְחוֹ)을 ‘바알스본 맞은편’으로 압축하여 ‘앞’과 대명사 목적어의 관계가 충분히 드러나지 않습니다. 또한 모세에게 내리는 명령과 이스라엘 자손에게 전달될 명령을 ‘…진을 치게 하십시오’로 한 문장에 결합하면 공간 지시의 두 단위가 불분명해집니다.
+  naturalness: 현대 합쇼체에서는 ‘…진을 치라고 하십시오’가 모세에게 이스라엘 자손에게 명령을 전달하라고 하는 구조를 자연스럽고 분명하게 나타냅니다. 두 위치 지시를 두 문장으로 나누면 한국어 문장 구조도 훨씬 명료해집니다.
+  terminology: ‘이스라엘 자손’, ‘피하히롯’, ‘믹돌’, ‘바알스본’은 유지할 수 있습니다. 지명 음역 원칙도 적절합니다. 다만 주석 c의 ‘그것을 향하여’는 נִכְחוֹ의 ‘맞은편에/마주하여’라는 위치 관계보다 방향성을 강하게 암시하므로 바로잡아야 합니다.
+  issues:
+  - severity: medium
+    issue: 두 번째 공간 관계의 불완전한 반영
+    rationale: לִפְנֵי בַּעַל צְפֹן과 נִכְחוֹ는 각각 ‘바알스본 앞’ 및 ‘그것의 맞은편’이라는 위치 지시입니다. 초안의 ‘바알스본 맞은편’은 이 두 요소를 한 표현으로 축약합니다.
+  - severity: medium
+    issue: 명령의 적용 단위가 불명확함
+    rationale: 히브리어는 ‘그들이 되돌아가 진을 치게 하라’와 이어지는 ‘…진을 칠 것이다/치게 하라’의 지시를 제시합니다. 한국어에서 각 위치 지시와 ‘진을 치다’를 분명히 연결하는 편이 충실합니다.
+  - severity: low
+    issue: 주석 c의 의미 범위 설명
+    rationale: ‘그것을 향하여’는 방향을 뜻할 수 있어 위치 관계인 ‘맞은편에, 마주하여’를 정확히 설명하지 못합니다.
+  revised_text: 이스라엘 자손[a]에게 말하여, 그들이 되돌아가 피하히롯[b] 앞, 믹돌과 바다 사이에 진을 치라고 하십시오. 바알스본[b] 앞, 곧 그 맞은편[c] 바닷가에 진을 치라고 하십시오.
+  revised_footnotes:
+  - marker: a
+    text: ‘이스라엘 자손’은 히브리어의 문자적 표현입니다. ‘이스라엘 사람들’로 옮길 수도 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 피하히롯, 믹돌, 바알스본은 모두 지명이라 음역했습니다.
+    reason: cultural_note
+  - marker: c
+    text: ‘그 맞은편’은 ‘그것의 맞은편에’ 또는 ‘그것을 마주하여’라는 뜻입니다. 히브리어 대명사 접미사는 문맥상 바알스본을 가리키는 것으로 보입니다.
+    reason: lexical_alternative
+  revision_rationale: 두 번째 지명구에 포함된 ‘바알스본 앞’과 ‘그것의 맞은편’이라는 중첩된 위치 지시를 보존하고, 두 번의 ‘진을 치다’ 지시를 각각 해당 위치 정보와 연결했습니다. 주석 표지는 해당 어구에 직접 붙였으며, 주석 c는 원문의 공간적 의미를 정확히 설명하도록 고쳤습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:39Z'
+  output_hash: 7262332dc9e89014f4c8f525c228aefec04a762b9f99e252c55f9fbd5425bc00
+  usage:
+    completion_tokens: 1831
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 884
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 164
+      engine_ttlt_ms: 14353
+      pre_inference_ms: 87
+      service_tbt_ms: 8
+      service_ttft_ms: 626
+      service_ttlt_ms: 14810
+      total_duration_ms: 14732
+      user_visible_ttft_ms: 539
+    prompt_tokens: 3350
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5181
+  applied_revision: true
+  auto_apply_blocked_errors: []

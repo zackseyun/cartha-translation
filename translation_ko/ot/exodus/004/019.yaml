@@ -76,4 +76,59 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 장소 표현(‘미디안에서’), 두 명령형, 목적지, 이유절, 그리고 ‘네 생명을 노리던 모든 남자들’이라는 내용을 보존해야 합니다. 초안의 ‘네 생명을 찾던’은 한국어에서 살해 의도가 충분히 드러나지 않으며, ‘모든 사람들’은 אֲנָשִׁים의 남성 지시를 약화합니다.
+  naturalness: 초안은 ‘말씀하셨습니다’ 뒤에 직접 인용을 둔 뒤 다시 ‘고 하셨습니다’를 덧붙여 발화 표지가 중복됩니다. 직접 인용문으로 자연스럽게 종결하고, 합쇼체에 맞추어 명령과 서술을 ‘-십시오/-습니다’로 통일하는 편이 좋습니다.
+  terminology: ‘야훼’, ‘미디안’, ‘모세’, ‘이집트’는 적절합니다. נַפְשֶׁךָ의 관용적 의미에는 ‘목숨’을, הַמְבַקְשִׁים에는 살해 의도를 드러내는 ‘노리던’을 쓰는 것이 적절합니다.
+  issues:
+  - severity: medium
+    issue: 직접 인용의 발화 표지가 중복됨
+    rationale: ‘말씀하셨습니다. 「…」고 하셨습니다’는 같은 발화를 두 번 표지합니다. 원문의 단순한 ‘말씀하셨다’와 직접 인용 구조를 자연스럽게 옮기려면 앞의 발화 동사 뒤에 인용문만 두어야 합니다.
+  - severity: medium
+    issue: ‘찾던’이 생명을 빼앗으려는 관용적 의미를 약화함
+    rationale: ‘네 생명을 찾던’은 한국어에서 뜻이 불명확하거나 단순히 찾아다닌다는 의미로 읽힐 수 있습니다. ‘목숨을 노리던’이 원문의 살해 의도를 자연스럽고 정확하게 나타냅니다.
+  - severity: low
+    issue: ‘모든 사람들이’가 원문의 남성 지시를 일반화함
+    rationale: אֲנָשִׁים은 여기서 모세의 생명을 노린 남자들을 가리킵니다. ‘모든 남자들’로 옮겨 원문의 지시를 보존합니다.
+  - severity: low
+    issue: 명령문의 합쇼체 미준수
+    rationale: 대상 변종이 현대 격식체 합쇼체이므로 직접 명령도 ‘가십시오, 돌아가십시오’로 통일하는 것이 적절합니다.
+  revised_text: 야훼께서 미디안에서 모세에게 말씀하셨습니다. “가십시오, 이집트로 돌아가십시오. 당신의 목숨을 노리던 모든 남자들은 죽었습니다.”
+  revised_footnotes:
+  - marker: a
+    text: 원문에는 명령형 동사가 두 개 있어, 직역하면 “가십시오, 이집트로 돌아가십시오”입니다.
+    reason: lexical_alternative
+  revision_rationale: 두 명령형을 각각 보존하고, ‘생명을 찾다’라는 히브리어 관용구를 한국어의 자연스러운 표현인 ‘목숨을 노리다’로 옮겼습니다. 직접 인용의 중복된 발화 표지를 제거했으며, 현대 격식체 합쇼체에 맞추었습니다. 각주도 두 명령형을 명시하도록 정정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:36:06Z'
+  output_hash: 4e28d85c7f4efe43cf813ea10408b55e621840778d1ed12eba5cb1ccb5718a97
+  usage:
+    completion_tokens: 1322
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 123
+      engine_ttlt_ms: 11318
+      pre_inference_ms: 83
+      service_tbt_ms: 8
+      service_ttft_ms: 585
+      service_ttlt_ms: 11742
+      total_duration_ms: 11667
+      user_visible_ttft_ms: 502
+    prompt_tokens: 2258
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3580
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

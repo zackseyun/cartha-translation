@@ -23,7 +23,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 만일 어떤 사람이 이웃에게 돈이나 물건을 맡겨 지키게 했다가[a], 그것이 그 사람의 집에서 도난당하면, 도둑이 잡히는 경우 그는 갑절로 갚아야 합니다.
+  text: 만일 어떤 사람이 이웃에게 돈[a]이나 물건을 맡겨 보관하게 하였는데, 그것이 이웃의 집에서 도난당하면, 도둑이 발견될 경우 그 도둑은 두 배로 배상해야 합니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -83,4 +83,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 만일 어떤 사람이 이웃에게 돈이나 물건을 맡겨 지키게 했다가[a], 그것이 그 사람의 집에서 도난당하면, 도둑이 잡히는 경우 그는 갑절로 갚아야 합니다.
+  to: 만일 어떤 사람이 이웃에게 돈[a]이나 물건을 맡겨 보관하게 하였는데, 그것이 이웃의 집에서 도난당하면, 도둑이 발견될 경우 그 도둑은 두 배로 배상해야 합니다.
+  rationale: 수탁 보관이라는 법률 문맥을 ‘맡겨 보관하게 하였는데’로 자연스럽게 나타내고, ‘발견되면’으로 원문의 수동 표현을 보존했습니다. 배상 의무자를 ‘그 도둑’으로 명시했으며, כסף 관련 각주를 ‘돈’에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:43:27Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 조건부 사례법 구조와 위탁 재산 및 이중 배상 규정은 대체로 반영되어 있습니다. 그러나 ‘도둑이 잡히는’은 문자적으로 ‘도둑이 발견되면’보다 해석을 더하며, ‘그는’은 배상 의무자가 도둑이라는 점이 한국어에서 잠시 모호할 수 있습니다. 또한 도난 장소는 수탁자인 이웃의 집임을 문맥상 밝혀 주는 편이 적절합니다.
+  naturalness: ‘맡겨 지키게 했다가’도 이해되지만, 위탁·보관의 법률적 문맥에서는 ‘맡겨 보관하게 하였는데’가 더 자연스럽고 뜻이 분명합니다. ‘두 배로 배상해야 합니다’는 현대 표준어 합쇼체 법문에 자연스럽고, ‘갑절로 갚아야 합니다’보다 배상 의무를 명료하게 표현합니다.
+  terminology: ‘돈’과 ‘물건’은 כֶּסֶף 및 כֵלִים의 문맥상 넓은 의미를 잘 옮깁니다. ‘보관’은 לִשְׁמֹר의 위탁 보관 의미에 알맞습니다. ‘발견되면’은 יִמָּצֵא의 수동적 표현을 보존하며, ‘두 배로 배상하다’는 יְשַׁלֵּם שְׁנָיִם의 법적 의미를 명확히 전달합니다.
+  issues:
+  - severity: medium
+    issue: ‘도둑이 잡히는 경우’
+    rationale: יִמָּצֵא는 ‘발견되다’이며, ‘잡히다’는 체포되었다는 의미를 덧붙입니다. ‘발견되면’이 원문의 표현과 조건절을 더 충실히 보존합니다.
+  - severity: medium
+    issue: ‘그는 갑절로 갚아야 합니다’의 주어 지시
+    rationale: 히브리어 문맥상 배상자는 도둑이지만, 한국어 ‘그는’은 선행하는 ‘어떤 사람’ 또는 ‘그 사람’으로도 잠시 읽힐 수 있습니다. ‘그 도둑은’으로 명시하는 것이 안전합니다.
+  - severity: low
+    issue: 각주 a의 앵커 위치
+    rationale: 각주 내용은 ‘돈’(כֶּסֶף)에 관한 것이므로, 현재의 ‘했다가’ 뒤가 아니라 ‘돈’ 바로 뒤에 붙여야 합니다.
+  revised_text: 만일 어떤 사람이 이웃에게 돈[a]이나 물건을 맡겨 보관하게 하였는데, 그것이 이웃의 집에서 도난당하면, 도둑이 발견될 경우 그 도둑은 두 배로 배상해야 합니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 כֶּסֶף는 문자적으로 ‘은’이지만, 여기서는 돈의 의미로 쓰였습니다.
+    reason: source_note
+  revision_rationale: 수탁 보관이라는 법률 문맥을 ‘맡겨 보관하게 하였는데’로 자연스럽게 나타내고, ‘발견되면’으로 원문의 수동 표현을 보존했습니다. 배상 의무자를 ‘그 도둑’으로 명시했으며, כסף 관련 각주를 ‘돈’에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:43:27Z'
+  output_hash: fce8564049b96e09b7461ed6fd461985014d530708fd5b8f170bbb393284e44c
+  usage:
+    completion_tokens: 1039
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 253
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 150
+      engine_ttlt_ms: 8305
+      pre_inference_ms: 81
+      service_tbt_ms: 8
+      service_ttft_ms: 381
+      service_ttlt_ms: 8529
+      total_duration_ms: 8459
+      user_visible_ttft_ms: 299
+    prompt_tokens: 2260
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3299
+  applied_revision: true
+  auto_apply_blocked_errors: []

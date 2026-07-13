@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러자 양 떼가 막대기 앞에서 교미하였고, 양 떼는 줄무늬 있는 것, 얼룩점이 있는 것, 그리고 반점이 있는 것을 낳았습니다.[a][b]
+  text: 그러자 양과 염소 떼가 막대기 앞에서 교미하였고, 그 떼는 줄무늬가 있는 새끼들[a], 잔점이 있는 새끼들, 그리고 얼룩진 새끼들[b]을 낳았습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘교미하였고’는 여기서 가축의 번식 행위를 직접 가리키는 표현입니다.
-    reason: source_note
+    text: ‘줄무늬가 있는’(עֲקֻדִּים)은 ‘띠무늬가 있는’으로도 옮길 수 있으며, 전통 번역에서는 ‘고리무늬가 있는’이라고 하기도 합니다.
+    reason: lexical_alternative
   - marker: b
-    text: 세 무늬 표현의 경계는 정확히 딱 떨어지지 않으며, 마지막 항목은 ‘얼룩진’, ‘얼룩무늬의’, ‘얼룩덜룩한’으로도 옮길 수 있습니다.
+    text: ‘잔점이 있는’(נְקֻדִּים)과 ‘얼룩진’(טְלֻאִים)의 구별은 정확히 딱 떨어지지 않습니다. 후자는 ‘얼룩무늬가 있는’, ‘얼룩덜룩한’, 또는 ‘반점이 있는’으로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיֶּחֱמ֥וּ
@@ -76,4 +76,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 양 떼가 막대기 앞에서 교미하였고, 양 떼는 줄무늬 있는 것, 얼룩점이 있는 것, 그리고 반점이 있는 것을 낳았습니다.[a][b]
+  to: 그러자 양과 염소 떼가 막대기 앞에서 교미하였고, 그 떼는 줄무늬가 있는 새끼들[a], 잔점이 있는 새끼들, 그리고 얼룩진 새끼들[b]을 낳았습니다.
+  rationale: 번식 행위와 막대기의 위치라는 본문 서술은 유지했습니다. 다만 צֹאן의 범위를 보존하기 위해 ‘양과 염소 떼’로 옮기고, 세 무늬 형용사가 수식하는 출생한 새끼들을 한국어에서 명시했습니다. 또한 무늬 용어를 자연스럽게 구별하고 각주 표지를 해당 어휘에 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:30:04Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어 צֹאן은 양뿐 아니라 염소를 포함할 수 있는 작은 가축 떼를 가리키므로 ‘양 떼’만으로 한정하지 않는 편이 좋습니다. וַיֶּחֱמוּ는 이 문맥에서 교미 행위를 가리키며, ‘막대기 앞에서’는 문맥상 가능한 위치 표현입니다. 세 무늬 형용사는 출산한 새끼들을 수식하므로 ‘새끼들’을 보충하는 것이 한국어 문장과 의미 전달에 적절합니다.
+  naturalness: 초안의 ‘얼룩점이 있는 것’과 ‘반점이 있는 것’은 서로의 차이가 불분명하고 명사화된 ‘것’을 ‘낳았습니다’의 목적어로 쓰는 방식도 다소 부자연스럽습니다. ‘잔점이 있는 새끼들’과 ‘얼룩진 새끼들’로 구별하고, ‘양과 염소 떼’ 및 ‘새끼들’을 사용하면 현대 표준어 합쇼체로 더 자연스럽습니다.
+  terminology: ‘교미하였습니다’는 가축 번식 장면에 적합한 중립적·정확한 표현입니다. עֲקֻדִּים은 ‘줄무늬가 있는’, נְקֻדִּים은 ‘잔점이 있는’, טְלֻאִים은 ‘얼룩진’으로 옮겨 세 표현의 대략적인 구별을 유지했습니다. 각주 표지는 해당 어휘 바로 뒤에 배치하여 내용과 표지의 연결을 바로잡았습니다.
+  issues:
+  - severity: medium
+    issue: צֹאן을 ‘양 떼’로만 번역함
+    rationale: צֹאן은 문맥상 양과 염소를 아우르는 작은 가축 떼를 뜻할 수 있으므로, ‘양 떼’는 지시 범위를 불필요하게 좁힐 수 있습니다.
+  - severity: medium
+    issue: 무늬 표현과 출산 목적어의 한국어 표현이 부자연스러움
+    rationale: ‘얼룩점이 있는 것, 반점이 있는 것을 낳았습니다’는 한국어에서 어색하며, 두 무늬의 의미 차이도 충분히 드러내지 못합니다. 원문이 생략한 ‘새끼들’을 보충하여 문법과 의미를 명료하게 할 수 있습니다.
+  - severity: low
+    issue: 각주 표지와 각주 내용의 연결이 부정확함
+    rationale: 초안의 [a]는 문장 끝에 놓였지만 각주는 ‘교미하였고’를 설명하며, 영어 감사 기록의 무늬 관련 대안과도 대응하지 않습니다. 표지를 해당 무늬 어휘 뒤에 두고 각주 내용을 그 어휘에 맞추는 편이 명확합니다.
+  revised_text: 그러자 양과 염소 떼가 막대기 앞에서 교미하였고, 그 떼는 줄무늬가 있는 새끼들[a], 잔점이 있는 새끼들, 그리고 얼룩진 새끼들[b]을 낳았습니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘줄무늬가 있는’(עֲקֻדִּים)은 ‘띠무늬가 있는’으로도 옮길 수 있으며, 전통 번역에서는 ‘고리무늬가 있는’이라고 하기도 합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘잔점이 있는’(נְקֻדִּים)과 ‘얼룩진’(טְלֻאִים)의 구별은 정확히 딱 떨어지지 않습니다. 후자는 ‘얼룩무늬가 있는’, ‘얼룩덜룩한’, 또는 ‘반점이 있는’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 번식 행위와 막대기의 위치라는 본문 서술은 유지했습니다. 다만 צֹאן의 범위를 보존하기 위해 ‘양과 염소 떼’로 옮기고, 세 무늬 형용사가 수식하는 출생한 새끼들을 한국어에서 명시했습니다. 또한 무늬 용어를 자연스럽게 구별하고 각주 표지를 해당 어휘에 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:30:04Z'
+  output_hash: 9dcbd1e03e1751c8d42ae8247dcab700f5685cd30cbddf4948ace773d5bc6e96
+  usage:
+    completion_tokens: 1747
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 738
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 161
+      engine_ttlt_ms: 14014
+      pre_inference_ms: 104
+      service_tbt_ms: 8
+      service_ttft_ms: 350
+      service_ttlt_ms: 14197
+      total_duration_ms: 14109
+      user_visible_ttft_ms: 246
+    prompt_tokens: 2453
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4200
+  applied_revision: true
+  auto_apply_blocked_errors: []

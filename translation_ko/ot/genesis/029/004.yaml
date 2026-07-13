@@ -20,14 +20,14 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 야곱이 그들에게 말했습니다. 「내 형제들이여, 어디에서 왔습니까?」 그들이 대답했습니다. 「우리는 하란에서 왔습니다.」[a][b]
+  text: 야곱이 그들에게 말했습니다. 「내 형제들이여[b], 어디에서 왔습니까?[a]」 그들이 말했습니다. 「우리는 하란에서 왔습니다.」
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 מֵאַיִן은 문자적으로는 “어디에서”이지만, 관용적으로는 출신이나 기원을 묻는 말입니다.
+    text: 히브리어 מֵאַיִן은 문자적으로는 “어디에서”이며, 관용적으로는 출신이나 기원을 묻는 말입니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘내 형제들이여’는 여기서 꼭 혈연을 뜻하는 말이라기보다 공손한 형제적 호칭입니다.
+    text: ‘내 형제들이여’는 여기서 반드시 혈연 관계를 뜻하는 것이 아니라, 공손한 형제적 호칭입니다.
     reason: cultural_note
 lexical_decisions:
 - source_word: וַיֹּאמֶר / וַיֹּאמְרוּ
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 야곱이 그들에게 말했습니다. 「내 형제들이여, 어디에서 왔습니까?」 그들이 대답했습니다. 「우리는 하란에서 왔습니다.」[a][b]
+  to: 야곱이 그들에게 말했습니다. 「내 형제들이여[b], 어디에서 왔습니까?[a]」 그들이 말했습니다. 「우리는 하란에서 왔습니다.」
+  rationale: 원문의 발화 동사 반복을 ‘말했습니다’로 보존하고, 각주 표지를 각각의 관련 표현 뒤에 배치했습니다. 그 외에는 기원·출신을 묻는 표현, 복수 화자, 하란이라는 지명을 자연스러운 현대 한국어 합쇼체로 충실히 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:29:48Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 두 발화 동사(וַיֹּאמֶר, וַיֹּאמְרוּ)는 모두 기본적으로 ‘말하다’입니다. 본문의 두 번째 동사를 ‘대답했습니다’로 바꾸면 문맥상 자연스럽기는 하나, 원문의 어휘적 반복을 약화합니다. 또한 각 주석은 해당 표현에 직접 붙어야 합니다.
+  naturalness: ‘어디에서 왔습니까?’와 ‘우리는 하란에서 왔습니다’는 현대 표준 한국어 합쇼체로 자연스럽습니다. ‘내 형제들이여’는 문어적·성경적 호격이지만, 원문의 소유격과 형제적 호칭을 보존하는 데 적절합니다.
+  terminology: ‘야곱’, ‘하란’은 통용되는 성경 인명·지명 표기입니다. ‘내 형제들이여’는 실제 혈연을 단정하지 않는 호칭으로, 문화 주석을 통해 그 기능을 명확히 하는 것이 적절합니다.
+  issues:
+  - severity: low
+    issue: 두 번째 וַיֹּאמְרוּ를 ‘대답했습니다’로 번역함
+    rationale: 문맥상 가능한 번역이지만, 원문과 영문 POB가 반복하여 사용하는 기본 발화 동사 ‘said’를 본문에서 ‘말했습니다’로 유지하는 편이 더 충실합니다.
+  - severity: medium
+    issue: 각주 표지 [a][b]가 절 끝에 함께 놓여 있음
+    rationale: '[a]는 ‘어디에서’에, [b]는 ‘내 형제들이여’에 각각 연결되어야 각주의 참조 대상이 분명해집니다.'
+  revised_text: 야곱이 그들에게 말했습니다. 「내 형제들이여[b], 어디에서 왔습니까?[a]」 그들이 말했습니다. 「우리는 하란에서 왔습니다.」
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 מֵאַיִן은 문자적으로는 “어디에서”이며, 관용적으로는 출신이나 기원을 묻는 말입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘내 형제들이여’는 여기서 반드시 혈연 관계를 뜻하는 것이 아니라, 공손한 형제적 호칭입니다.
+    reason: cultural_note
+  revision_rationale: 원문의 발화 동사 반복을 ‘말했습니다’로 보존하고, 각주 표지를 각각의 관련 표현 뒤에 배치했습니다. 그 외에는 기원·출신을 묻는 표현, 복수 화자, 하란이라는 지명을 자연스러운 현대 한국어 합쇼체로 충실히 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:29:48Z'
+  output_hash: 82cdc976530c06b5806be2a280c1ff4165c77a20f6fecd25f01d659b6c59a566
+  usage:
+    completion_tokens: 753
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 120
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 249
+      engine_ttlt_ms: 6208
+      pre_inference_ms: 126
+      service_tbt_ms: 8
+      service_ttft_ms: 444
+      service_ttlt_ms: 6400
+      total_duration_ms: 6286
+      user_visible_ttft_ms: 318
+    prompt_tokens: 2100
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2853
+  applied_revision: true
+  auto_apply_blocked_errors: []

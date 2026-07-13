@@ -23,7 +23,7 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 이스라엘 자손이 그들에게 말했습니다. 「차라리 우리가 이집트 땅에서 야훼의 손에 죽었더라면 좋았을 것입니다. 그곳에서 우리가 고기 가마 곁에 앉아 있었고, 배부르게 빵을 먹었기 때문입니다. 그런데 당신들은 우리를 이 광야로 데리고 나와, 이 온 회중을 굶주림으로 죽이려 합니다.」
+  text: 이스라엘 자손이 그들에게 말했습니다. 「차라리 우리가 이집트 땅에서 야훼의 손에 죽었더라면 좋았을 것을! 그때 우리가 고기 솥 곁에 앉아 배부르게 빵을 먹을 때에 말입니다. 이는 당신들이 이 온 회중을 굶주림으로 죽이려고 우리를 이 광야로 끌어내셨기 때문입니다.」
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: בְּנֵי יִשְׂרָאֵל
@@ -109,4 +109,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이스라엘 자손이 그들에게 말했습니다. 「차라리 우리가 이집트 땅에서 야훼의 손에 죽었더라면 좋았을 것입니다. 그곳에서 우리가 고기 가마 곁에 앉아 있었고, 배부르게 빵을 먹었기 때문입니다. 그런데 당신들은 우리를 이 광야로 데리고 나와, 이 온 회중을 굶주림으로 죽이려 합니다.」
+  to: 이스라엘 자손이 그들에게 말했습니다. 「차라리 우리가 이집트 땅에서 야훼의 손에 죽었더라면 좋았을 것을! 그때 우리가 고기 솥 곁에 앉아 배부르게 빵을 먹을 때에 말입니다. 이는 당신들이 이 온 회중을 굶주림으로 죽이려고 우리를 이 광야로 끌어내셨기 때문입니다.」
+  rationale: 조리 용기인 סִיר를 ‘솥’으로 바로잡고, 두 개의 בְּ+부정사구를 병렬 시간절로 유지했습니다. כִּי가 도입하는 이유/고발과 הוֹצֵאתֶם의 완료 관점을 살려 마지막 문장을 과거의 행위와 그 목적에 대한 비난으로 재구성했습니다. 야훼, 이스라엘 자손, 광야, 회중은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:42:39Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 소망 관용구(מִי יִתֵּן), ‘야훼의 손에’, 광야로 ‘끌어내다’, 굶주림으로 ‘죽이다’는 대체로 반영되었습니다. 그러나 סִיר는 조리용 솥/냄비이지 ‘가마’가 아니며, 마지막 절은 이미 행해진 ‘끌어냄’과 그 목적이라고 आरोप하는 내용을 나타내므로 현재의 ‘죽이려 합니다’보다 과거의 비난으로 옮겨야 합니다. 또한 כִּי는 뒤의 비난을 도입하는 ‘이는/왜냐하면’인데, 초안처럼 앞선 풍족했던 기억의 이유로 처리하면 문장 관계가 달라집니다.
+  naturalness: ‘고기 가마’는 현대 한국어에서 고기를 굽는 가마 또는 소성로를 연상시켜 부자연스럽고 원문의 조리 용기와 다릅니다. ‘그런데’는 원문에 없는 대조를 강하게 더합니다. 시간절을 ‘~할 때에’로 병렬하고, 이유절을 ‘이는’으로 연결하면 현대적이면서도 원문의 흐름을 보존합니다.
+  terminology: ‘이스라엘 자손’, ‘야훼’, ‘광야’, ‘회중’은 적절합니다. סִיר הַבָּשָׂר는 ‘고기 솥’으로 고쳐야 합니다. ‘회중’은 קָהָל의 집합적 의미를 보존합니다.
+  issues:
+  - severity: high
+    issue: ‘고기 가마’
+    rationale: 히브리어 סִיר는 솥 또는 냄비를 뜻합니다. ‘가마’는 한국어에서 kiln/oven 계열을 주로 가리켜 용기와 조리 장면을 잘못 전달합니다.
+  - severity: medium
+    issue: כִּי와 마지막 비난의 연결
+    rationale: ‘그곳에서 … 먹었기 때문입니다. 그런데’는 כִּי를 앞 절의 풍족함에 대한 이유로 연결하고 원문에 없는 역접을 삽입합니다. כִּי는 ‘당신들이 우리를 … 끌어내어 … 죽이려고 하셨기 때문입니다’라는 고발을 도입합니다.
+  - severity: medium
+    issue: ‘죽이려 합니다’의 시제
+    rationale: הוֹצֵאתֶם은 완료된 과거 행위이고 לְהָמִית은 그 행위의 목적이라고 비난하는 부정사입니다. 현재 진행 의도보다 ‘죽이려고 하셨습니다’가 원문의 관점을 보존합니다.
+  revised_text: 이스라엘 자손이 그들에게 말했습니다. 「차라리 우리가 이집트 땅에서 야훼의 손에 죽었더라면 좋았을 것을! 그때 우리가 고기 솥 곁에 앉아 배부르게 빵을 먹을 때에 말입니다. 이는 당신들이 이 온 회중을 굶주림으로 죽이려고 우리를 이 광야로 끌어내셨기 때문입니다.」
+  revised_footnotes: []
+  revision_rationale: 조리 용기인 סִיר를 ‘솥’으로 바로잡고, 두 개의 בְּ+부정사구를 병렬 시간절로 유지했습니다. כִּי가 도입하는 이유/고발과 הוֹצֵאתֶם의 완료 관점을 살려 마지막 문장을 과거의 행위와 그 목적에 대한 비난으로 재구성했습니다. 야훼, 이스라엘 자손, 광야, 회중은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:42:39Z'
+  output_hash: 55e09bc10e3c9e328cd5c8c7a523d1d92318db930240aafb824756b281a9a385
+  usage:
+    completion_tokens: 1340
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 494
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 151
+      engine_ttlt_ms: 12190
+      pre_inference_ms: 281
+      service_tbt_ms: 9
+      service_ttft_ms: 646
+      service_ttlt_ms: 12656
+      total_duration_ms: 12402
+      user_visible_ttft_ms: 365
+    prompt_tokens: 3467
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4807
+  applied_revision: true
+  auto_apply_blocked_errors: []

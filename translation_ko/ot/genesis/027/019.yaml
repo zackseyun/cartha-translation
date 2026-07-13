@@ -20,14 +20,14 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 야곱이 그의 아버지에게 말했습니다. “나는 당신의 맏아들 에서입니다. 당신이 내게 말씀하신 대로 했습니다. 이제 일어나 앉으시고, 내 사냥한 고기를 드셔서, 당신의 혼이 나를 축복하시게 하십시오.”[a][b]
+  text: 야곱이 아버지에게 말했습니다. “저는 당신의 맏아들 에서입니다. 당신이 제게 말씀하신 대로 했습니다. 부디 일어나 앉으시고, 제가 사냥한 것[b]을 드십시오. 그러면 당신께서[a] 저를 축복해 주시도록 하십시오.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 נֶפֶשׁ는 여기서 ‘혼/인격 전체’를 가리키는 관용적 표현입니다.
+    text: 직역하면, ‘당신의 혼이 나를 축복하게 하시도록’입니다. 히브리어 נֶפֶשׁ(네페쉬)는 여기서 사람 자신, 곧 인격 전체를 가리키는 관용적 표현입니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어 צַיִד는 문맥상 ‘사냥한 고기, 사냥감’을 뜻합니다.
+    text: 히브리어 צַיִד는 문맥상 ‘사냥감’ 또는 ‘사냥한 음식’을 뜻합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיֹּאמֶר
@@ -90,4 +90,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 야곱이 그의 아버지에게 말했습니다. “나는 당신의 맏아들 에서입니다. 당신이 내게 말씀하신 대로 했습니다. 이제 일어나 앉으시고, 내 사냥한 고기를 드셔서, 당신의 혼이 나를 축복하시게 하십시오.”[a][b]
+  to: 야곱이 아버지에게 말했습니다. “저는 당신의 맏아들 에서입니다. 당신이 제게 말씀하신 대로 했습니다. 부디 일어나 앉으시고, 제가 사냥한 것[b]을 드십시오. 그러면 당신께서[a] 저를 축복해 주시도록 하십시오.”
+  rationale: 히브리어의 간청 표현 נָא, 사냥한 음식이라는 צַיִד의 문맥적 의미, 그리고 사람 자신을 뜻하는 נֶפֶשׁ의 관용법을 반영했습니다. 야곱의 거짓 신분 주장은 ‘저는 당신의 맏아들 에서입니다’로 그대로 유지했습니다. 각주 표지는 해당 어구에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T12:29:55Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. נַפְשְׁךָ는 이 문맥에서 ‘혼’이라는 독립된 주체가 아니라 축복하는 사람 전체, 곧 이삭 자신을 가리키는 히브리어 관용 표현입니다. 본문의 목적절은 이를 한국어에서 자연스럽게 ‘당신께서 저를 축복해 주시도록’으로 옮기는 것이 적절합니다. 또한 נָא의 간청·공손의 뉘앙스는 ‘이제’가 아니라 ‘부디’로 나타내야 합니다.
+  naturalness: 초안의 ‘내 사냥한 고기’는 현대 한국어에서 부자연스럽고, ‘당신의 혼이 나를 축복하시게 하십시오’는 관용적 의미를 잃을 뿐 아니라 한국어 존대 및 문장 구성상 매우 어색합니다. ‘제가 사냥한 것’ 및 ‘당신께서 저를 축복해 주시도록’이 현대 합쇼체에 자연스럽습니다.
+  terminology: ‘맏아들’과 ‘축복’은 적절합니다. צַיִד는 음식으로 준비된 사냥감이라는 문맥을 반영하여 ‘제가 사냥한 것’으로 옮기고 각주에서 ‘사냥감’이라는 대안을 밝혔습니다. נֶפֶשׁ는 본문에서 ‘혼’으로 직역하지 않고 관용적으로 번역하며, 각주에 문자적 표현을 보존합니다.
+  issues:
+  - severity: high
+    issue: נַפְשְׁךָ를 ‘당신의 혼’으로 번역함
+    rationale: 이 구절의 נֶפֶשׁ는 사람 자신을 가리키는 관용법입니다. 한국어 ‘혼’은 독립된 영적 실체가 축복 행위를 하는 듯한 뜻을 만들어 원문의 관용적 의미를 왜곡합니다.
+  - severity: medium
+    issue: נָא를 ‘이제’로 옮김
+    rationale: נָא는 시간 부사 ‘이제’가 아니라 간청·공손을 나타내는 불변화사입니다. ‘부디’가 그 기능을 더 충실하게 전달합니다.
+  - severity: medium
+    issue: ‘내 사냥한 고기’라는 표현
+    rationale: 소유 관형 구성으로 어색하며, 원문의 1인칭 소유 표현은 ‘제가 사냥한 것’ 또는 ‘제 사냥감’으로 자연스럽게 옮길 수 있습니다.
+  - severity: low
+    issue: 각주 표지가 해당 어구와 떨어져 문장 끝에 함께 배치됨
+    rationale: 사냥감 및 נֶפֶשׁ 관련 각주는 각각 해당 단어·구절 바로 뒤에 붙여야 참조 대상이 명확합니다.
+  revised_text: 야곱이 아버지에게 말했습니다. “저는 당신의 맏아들 에서입니다. 당신이 제게 말씀하신 대로 했습니다. 부디 일어나 앉으시고, 제가 사냥한 것[b]을 드십시오. 그러면 당신께서[a] 저를 축복해 주시도록 하십시오.”
+  revised_footnotes:
+  - marker: a
+    text: 직역하면, ‘당신의 혼이 나를 축복하게 하시도록’입니다. 히브리어 נֶפֶשׁ(네페쉬)는 여기서 사람 자신, 곧 인격 전체를 가리키는 관용적 표현입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어 צַיִד는 문맥상 ‘사냥감’ 또는 ‘사냥한 음식’을 뜻합니다.
+    reason: lexical_alternative
+  revision_rationale: 히브리어의 간청 표현 נָא, 사냥한 음식이라는 צַיִד의 문맥적 의미, 그리고 사람 자신을 뜻하는 נֶפֶשׁ의 관용법을 반영했습니다. 야곱의 거짓 신분 주장은 ‘저는 당신의 맏아들 에서입니다’로 그대로 유지했습니다. 각주 표지는 해당 어구에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T12:29:55Z'
+  output_hash: 72eb11df66e6efc55f911d0341362907b1eb3b0f2f8f5b1d8d3553a2325231f8
+  usage:
+    completion_tokens: 1458
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 152
+      engine_ttlt_ms: 12764
+      pre_inference_ms: 204
+      service_tbt_ms: 9
+      service_ttft_ms: 489
+      service_ttlt_ms: 13091
+      total_duration_ms: 12899
+      user_visible_ttft_ms: 285
+    prompt_tokens: 3587
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5045
+  applied_revision: true
+  auto_apply_blocked_errors: []

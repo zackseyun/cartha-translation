@@ -20,7 +20,7 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 사라는 그것을 부인하며 말했습니다. “저는 웃지 않았습니다.” 그녀가 두려워했기 때문입니다. 그가 말했습니다. “아닙니다. 당신은 웃었습니다.”[a][b]
+  text: 사라는 두려워했기 때문에 “저는 웃지 않았습니다”라고 말하며 이를 부인했습니다.[a] 그가[b] 말했습니다. “아닙니다. 당신은 웃었습니다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -82,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 사라는 그것을 부인하며 말했습니다. “저는 웃지 않았습니다.” 그녀가 두려워했기 때문입니다. 그가 말했습니다. “아닙니다. 당신은 웃었습니다.”[a][b]
+  to: 사라는 두려워했기 때문에 “저는 웃지 않았습니다”라고 말하며 이를 부인했습니다.[a] 그가[b] 말했습니다. “아닙니다. 당신은 웃었습니다.”
+  rationale: 문장의 의미를 바꾸지 않고, 히브리어의 인과 관계를 한국어 문장 안에서 자연스럽게 연결했습니다. 또한 모든 각주 표지를 해당 주석의 직접 대상인 ‘부인했습니다’와 ‘그가’에 각각 배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T11:59:43Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 핵심 의미는 대체로 충실합니다. וַתְּכַחֵשׁ는 문맥상 ‘부인하다’로 적절히 옮겼고, כִּי יָרֵאָה의 이유 관계와 마지막의 부정·반박도 유지했습니다. 다만 각주 표지가 관련 어구가 아니라 절 끝에 함께 놓여 있어, 원문의 어휘 및 발화자 관련 주석의 연결 대상이 불분명합니다.
+  naturalness: 초안의 문장도 이해할 수 있으나, ‘사라는 그것을 부인하며 말했습니다’와 그 뒤의 독립된 이유 문장은 한국어 서사에서 다소 번역투입니다. 이유를 부인의 동작에 직접 연결하면 더 자연스럽고 명료합니다.
+  terminology: ‘부인하다’, ‘두려워하다’, ‘그가 말했습니다’는 원문의 의미 범위와 현대 표준 한국어의 합쇼체에 적절합니다. 발화자를 본문에서 야훼로 명시하지 않은 처리도 원문의 비명시성을 보존합니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지 [a]와 [b]가 모두 절 끝에 배치되어 있습니다.
+    rationale: '[a]는 ‘부인하다’(כחשׁ)의 어휘적 대안에, [b]는 ‘그가’의 미명시 발화자에 관한 주석입니다. 각각 해당 어구 직후에 두어 주석의 범위와 앵커를 명확히 해야 합니다.'
+  - severity: low
+    issue: ‘그녀가 두려워했기 때문입니다’가 앞 문장과 분리되어 다소 번역투로 들립니다.
+    rationale: 히브리어의 כִּי יָרֵאָה는 사라가 부인한 이유이므로, 한국어에서는 ‘두려워했기 때문에’로 부인의 진술에 직접 연결하는 편이 자연스럽습니다.
+  revised_text: 사라는 두려워했기 때문에 “저는 웃지 않았습니다”라고 말하며 이를 부인했습니다.[a] 그가[b] 말했습니다. “아닙니다. 당신은 웃었습니다.”
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 כחשׁ은 여기서 ‘부인하다’의 뜻으로 읽을 수도 있고, 문맥에 따라 ‘거짓말하다’의 뉘앙스를 가질 수도 있습니다. 본문에서는 사라가 ‘웃지 않았다’고 부인하는 장면을 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 이 절의 ‘그가’는 본절 안에서 다시 이름이 적히지 않은 발화자를 가리킵니다. 주변 문맥은 그를 야훼와 연결합니다.
+    reason: alternative_reading
+  revision_rationale: 문장의 의미를 바꾸지 않고, 히브리어의 인과 관계를 한국어 문장 안에서 자연스럽게 연결했습니다. 또한 모든 각주 표지를 해당 주석의 직접 대상인 ‘부인했습니다’와 ‘그가’에 각각 배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T11:59:43Z'
+  output_hash: d84b5bf9f3229626bb7aa952b5e6984a663408d44fa88eb0d4cd75068f201e37
+  usage:
+    completion_tokens: 1153
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 422
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 8811
+      pre_inference_ms: 110
+      service_tbt_ms: 8
+      service_ttft_ms: 394
+      service_ttlt_ms: 9062
+      total_duration_ms: 8962
+      user_visible_ttft_ms: 283
+    prompt_tokens: 2215
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3368
+  applied_revision: true
+  auto_apply_blocked_errors: []
