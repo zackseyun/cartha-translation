@@ -126,4 +126,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안은 후반 난해 구절의 불확실성을 드러내려는 방향은 적절하지만, ܥܡܡܐ는 ‘나라들을 위해’가 아니라 ‘나라들/민족들은’이며, ܠܡܘܠܟܢܐ도 제공된 시리아어 형태상 ‘약속’보다 ‘왕국을 위하여’로 읽는 것이 우선입니다. 또한 마지막 ܕܠܡܐ 절은 ‘~하게 하려는 것입니다’라는 목적 설명보다 ‘~하지 않도록’이라는 경계·결과 표현으로 보존해야 합니다.
+  naturalness: ‘그리고 내 기도 가운데서도.’는 절 경계 때문에 생긴 불완전 문장입니다. 앞 절에 명시된 ‘기억합니다’를 보충해 현대 한국어 문장으로 만들 수 있습니다. 난해한 중간 구절은 원문 자체가 문법적으로 매끄럽지 않으므로, 한국어에서도 무리하게 완결된 해석으로 만들지 않고 각주로 그 상태를 밝혀야 합니다.
+  terminology: ܦܘ̈ܩܕܢܐ에는 ‘계명들’이 고전적 권위와 서신의 권면 문맥을 자연스럽게 살립니다. ‘명령들’도 가능하나, 이 문맥에서는 ‘계명들’이 더 관용적입니다. ܒܒܥܘܬܝ는 ‘내 기도 가운데서도’로 적절합니다.
+  issues:
+  - severity: high
+    issue: ‘나라들을 위해’는 ܥܡܡܐ의 문법적 기능을 바꿉니다.
+    rationale: ܥܡܡܐ는 복수 명사 ‘나라들/민족들’이며, ‘위하여’의 의미는 뒤따르는 ܠܡܘܠܟܢܐ에 속합니다. 원문에 없는 목적격 관계를 만들어서는 안 됩니다.
+  - severity: high
+    issue: ‘나라들을 위해 굽혀질 것’은 제공된 시리아어의 ‘나라들’과 ‘왕국을 위하여’를 탈락·치환합니다.
+    rationale: 구절이 난해하더라도 명시된 어휘를 다른 의미 관계로 재구성하지 말아야 합니다. 본문에는 최소한 ‘나라들’과 ‘왕국’을 남기고, 문법적 난점은 각주에서 밝혀야 합니다.
+  - severity: medium
+    issue: 마지막을 ‘~하게 하려는 것입니다’로 옮긴 것은 ܕܠܡܐ의 경계 기능을 목적 설명으로 과도하게 해석합니다.
+    rationale: ‘넘어져 고통을 겪지 않도록’으로 옮기면 경계/예방의 뉘앙스를 보존하면서도 자연스럽습니다.
+  - severity: low
+    issue: 절 첫머리가 한국어 불완전 문장으로 끝납니다.
+    rationale: 직전 문맥에서 명시된 ‘너희를 기억합니다’를 보충하면, 절 경계가 초래한 생략을 자연스럽게 해소할 수 있습니다.
+  revised_text: 그리고 나는 내 기도 가운데서도 너희를 기억합니다. 너희도 그들에게서 이 편지의 계명들을 배웠습니다. 너희는 탁월함 가운데서 굽힘을 당할 것이며, 나라들은 왕국을 위하여[a], 또 너희는 사랑을 받고 위로를 받아, 넘어져 고통을 겪지 않게 될 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 이 구절은 시리아어 본문에서 문법적으로 난해합니다. 직역하면 ‘너희는 탁월함 가운데서 굽힘을 당할 것이며, 나라들은 왕국을 위하여’에 가깝습니다. 현전 본문은 ‘나라들’과 ‘왕국을 위하여’의 정확한 통사 관계를 분명히 하지 않습니다.
+    reason: ܘܬܬܟܦܘܢ ܒܡܝܬܪܘܬܐ ܥܡܡܐ ܠܡܘܠܟܢܐ의 난해함을 투명하게 표시하되, ‘나라들을 다스리다’나 ‘약속’ 같은 비명시적 해석을 본문에 도입하지 않기 위함입니다.
+  revision_rationale: 제공된 시리아어를 우선하여, 앞 절에서 이어지는 ‘기도 가운데서도 [기억합니다]’의 생략을 보충했습니다. 후반의 훼손되었거나 난해한 통사 구절은 의역으로 해결하지 않고 본문에 어휘를 보존했으며, 독자가 문장상의 불확실성을 확인할 수 있도록 각주를 붙였습니다. 마지막 경고절도 목적론적 설명 대신 원문의 ‘~하지 않도록’ 기능을 유지했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:13Z'
+  output_hash: 233639699a68bbbd1837ee46cd628a5d27c83623683fc008514e1178bc201fc6
+  usage:
+    completion_tokens: 2263
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1113
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 10
+      engine_ttft_ms: 171
+      engine_ttlt_ms: 22432
+      pre_inference_ms: 100
+      service_tbt_ms: 10
+      service_ttft_ms: 334
+      service_ttlt_ms: 22631
+      total_duration_ms: 22560
+      user_visible_ttft_ms: 234
+    prompt_tokens: 3473
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5736
+  applied_revision: false
+  auto_apply_blocked_errors: []

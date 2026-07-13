@@ -118,4 +118,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안의 앞 세 문장은 제공된 Coptic OCR 및 영어 POB의 산파·출산·산고 독해와 대체로 부합합니다. 그러나 뒤의 “신부이자 신랑”, “내 아버지의 어머니”, “내 남편의 누이”는 제공된 해당 OCR 행과 일치하지 않습니다. OCR에는 각각 ‘신부와 어머니’, ‘누이와 여자/아내’에 해당하는 어형이 보이며, 마지막 ‘어머니의’ 구문은 미완으로 끝납니다. 영어 POB 감사 이력의 표준형을 OCR보다 우선하여 보충할 수 없습니다.
+  naturalness: ‘산파’, ‘아이를 낳지 않는 이’, ‘내 산고의 위로’는 현대 한국어의 격식 있는 문체에서 자연스럽습니다. ‘신부이며 어머니입니다’, ‘누이이며 여자입니다’는 원문의 병치와 역설을 보존합니다. 마지막 미완 구문은 줄임표로 표시해야 자연스럽고 원문에도 충실합니다.
+  terminology: ‘산파’는 원문의 역설적 직업 명사를 간결하게 보존합니다. ⲧⲥϩⲓⲙⲉ는 문맥에 따라 ‘여자’ 또는 ‘아내’일 수 있으나, 제공된 OCR에는 소유 표현이 없으므로 ‘내 남편의 누이’로 특정해서는 안 됩니다. ‘여자’는 해석을 최소화하는 선택입니다.
+  issues:
+  - severity: high
+    issue: 후반부가 제공된 Coptic OCR과 다른 영어 감사 이력의 표준 문구를 따라 번역되었습니다.
+    rationale: OCR의 ⲧϣⲉⲗⲉⲉⲧ ⲁⲩⲱ ⲧⲙⲁⲁⲩ 및 ⲧⲥⲱⲛⲉ ⲁⲩⲱ ⲧⲥϩⲓⲙⲉ는 초안의 ‘신부와 신랑’, ‘아버지의 어머니’, ‘남편의 누이’를 뒷받침하지 않습니다. 원문 우선 원칙상 OCR이 불확실한 곳은 불확실성을 보존해야 합니다.
+  - severity: high
+    issue: OCR 발췌의 미완 종결 구문을 완결된 친족 관계로 보충했습니다.
+    rationale: 마지막 행은 ⲁⲛⲟⲕ ⲧⲉ ⲧⲙⲁⲁⲩ ⲛⲧⲉ로 끝나며, 속격 보어가 제공되지 않았습니다. ‘내 아버지의 어머니’는 이 발췌만으로 확정할 수 없습니다.
+  - severity: medium
+    issue: 각주 b가 본문의 성별 역할에 대한 해석적 설명을 덧붙입니다.
+    rationale: 제공된 원문은 역설적 병치를 보이지만, ‘성별 역할의 긴장’이라는 설명은 번역에 필요한 본문·본문비평 주석이 아니며 특정 해석을 유도할 수 있습니다.
+  revised_text: 혼례 가운데 나는 산파이며, 아이를 낳지 않는 이입니다. 나는 내 산고의 위로입니다. 나는 신부이며 어머니입니다. 나는 누이이며 여자입니다. 나는 …의 어머니입니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 제공된 Coptic OCR 발췌의 마지막 구절은 ‘나는 …의 어머니이다’에 해당하는 속격 표지에서 끝나며, 그 뒤의 보어는 이 발췌에 포함되어 있지 않습니다. 또한 앞선 행들은 OCR상 ‘신부와 어머니’, ‘누이와 여자’로 읽히지만, 더 나은 대조본 확인이 필요합니다.
+    reason: source_note
+  revision_rationale: 원문 OCR을 우선하여, 영어 POB 감사 이력에 나타난 서로 다른 표준 본문의 친족·혼인 표현을 제거했습니다. OCR이 미완이거나 판독이 잠정적인 지점은 본문 보충 대신 줄임표와 본문비평 각주로 처리했으며, 역설적 ‘나는’ 선언의 반복과 현대 격식체를 유지했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:22Z'
+  output_hash: 1c9f00f89eacc2e903bca61ba05ca127839dc68e6409d8d898bd3cf7130cf7c5
+  usage:
+    completion_tokens: 1898
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 882
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 190
+      engine_ttlt_ms: 16935
+      pre_inference_ms: 127
+      service_tbt_ms: 9
+      service_ttft_ms: 663
+      service_ttlt_ms: 17402
+      total_duration_ms: 17284
+      user_visible_ttft_ms: 536
+    prompt_tokens: 3586
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5484
+  applied_revision: false
+  auto_apply_blocked_errors: []

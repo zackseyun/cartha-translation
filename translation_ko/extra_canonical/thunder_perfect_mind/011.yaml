@@ -105,4 +105,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 진술의 ‘내 어머니의’와 둘째 진술의 3인칭 여성 소유형(‘그녀의 자녀들’)을 구별한 점은 유지할 수 있습니다. 다만 원문의 단순 병렬·역설을 ‘하지만’으로 인과적/양보적으로 만들면 안 됩니다. OCR 기반 원문의 ‘내 어머니의’ 구절에는 영어 POB 감사 기록과 같은 전승·정렬 불확실성 주석을 보존하는 편이 안전합니다.
+  naturalness: ‘나는 내 어머니의 몸의 지체입니다’와 ‘나는 아이를 낳지 못하는 여인입니다. 그녀의 자녀는 많습니다’는 현대 표준 한국어로 자연스럽고, 반복되는 선언의 리듬도 보존합니다. ‘아이를 낳지 못한 여인이지만’은 문장 연결이 부자연스럽고 원문에 없는 역접을 첨가합니다.
+  terminology: ‘지체’는 해당 콥트어의 신체 부분/사지라는 기본 이미지를 유지하는 적절한 선택입니다. 다만 교회 용례의 공동체적 연상을 과도하게 전면화하지 않도록 본문에서는 ‘몸의 지체’로 신체 이미지를 명시합니다. ⲛⲁϣⲉ는 ‘아이를 낳지 못하는 여인’으로, ⲛⲉⲥϣⲏⲣⲉ는 성별을 한정하지 않는 ‘그녀의 자녀’로 옮깁니다.
+  issues:
+  - severity: medium
+    issue: ‘하지만’이 원문에 없는 역접 관계를 삽입합니다.
+    rationale: 원문과 영어 POB는 접속/병렬된 역설적 자기 진술을 제시할 뿐, ‘아이를 낳지 못함’과 ‘자녀가 많음’을 양보절로 문법화하지 않습니다.
+  - severity: low
+    issue: 영어 POB의 OCR·정렬 불확실성 주석(b)이 한국어 본문/각주에 반영되지 않았습니다.
+    rationale: ‘내 어머니의’라는 소유 구절은 문맥상 가능하지만, 제공된 OCR의 해당 문자열은 저신뢰도로 보고되어 있습니다. 독자가 본문 확정을 과신하지 않도록 같은 한정을 각주로 보존해야 합니다.
+  revised_text: '나는 내 어머니의 몸의 지체입니다[a][b].
+
+
+    그리고 나는 아이를 낳지 못하는 여인입니다. 그녀의 자녀는 많습니다.'
+  revised_footnotes:
+  - marker: a
+    text: ‘몸의 지체’는 콥트어 단어가 가리킬 수 있는 ‘사지’ 또는 ‘몸의 부분’이라는 해부학적 이미지를 살린 번역입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘내 어머니의’에 해당하는 OCR 문자열은 신뢰도가 낮아, 더 나은 전사본으로 확인할 필요가 있습니다.
+    reason: alignment_note
+  revision_rationale: 원문이 병치하는 자기 동일시와 불임/많은 자녀의 역설을 설명하거나 해소하지 않고 보존했습니다. 원문에 없는 ‘하지만’을 삭제하고, 신체 부위 의미를 명료하게 하면서도 원문의 OCR 불확실성을 각주로 표시했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:22Z'
+  output_hash: d42cd222e1d29a29bf8614a3ea50b260c75a666c1474fdb0dbda20c9b5cf01ec
+  usage:
+    completion_tokens: 1288
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 180
+      engine_ttlt_ms: 12337
+      pre_inference_ms: 116
+      service_tbt_ms: 10
+      service_ttft_ms: 645
+      service_ttlt_ms: 13087
+      total_duration_ms: 13223
+      user_visible_ttft_ms: 529
+    prompt_tokens: 2843
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4131
+  applied_revision: false
+  auto_apply_blocked_errors: []

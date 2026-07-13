@@ -127,4 +127,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안은 명령의 대상과 호격을 잘못 결합했습니다. 감사 이력의 더 강한 문맥적 재구성에 따르면 첫 절은 ‘율법으로 나를 심판할 자를 심판하라’이고, 이어지는 ‘너희’는 많은 죄 등에 ‘있는’ 이들을 부르는 호격입니다. OCR은 저신뢰도이며 ⲛⲉⲗⲟⲥ로 보이지만, 앞 문맥 및 감사 이력의 ⲛⲟⲙⲟⲥ 재독을 따르는 것이 안전합니다.
+  naturalness: ‘나를 심판할 이가 … 너희를 심판하라’는 한국어에서 누가 누구를 심판하는지 혼동시키고, 원문의 직접 호격도 사라집니다. 명령문 뒤에 ‘… 여러분!’을 호격으로 두면 현대 한국어의 긴박한 수사성을 자연스럽게 보존합니다.
+  terminology: ‘무절제’, ‘헛된 정욕’, ‘일시적인 쾌락’은 각각 intemperances, empty passions, temporary pleasures에 충실하면서 현대적인 문어체입니다. ‘율법’은 ⲛⲟⲙⲟⲥ 재독에 대응하되 OCR의 불확실성을 각주로 밝혀야 합니다.
+  issues:
+  - severity: high
+    issue: 명령문의 목적어와 호격이 뒤바뀌어 있다.
+    rationale: 초안은 ‘나를 심판할 이’가 ‘너희를 심판하라’는 뜻이 되어, ‘그를 심판하라! …너희여’라는 수사적 전환을 훼손합니다.
+  - severity: medium
+    issue: ‘율법으로’에 해당하는 문구가 누락되어 있다.
+    rationale: 감사 이력은 OCR의 ⲛⲉⲗⲟⲥ를 ⲛⲟⲙⲟⲥ(율법)의 오독으로 재구성하며, 이는 선행 문맥과 연결됩니다. 다만 OCR 자체의 불확실성은 주석으로 남겨야 합니다.
+  - severity: low
+    issue: 각주 d의 reason이 theological_note이다.
+    rationale: 명령형의 재구성은 교리 주석이 아니라 본문·정렬 관련 주석입니다.
+  revised_text: 율법으로 나를 심판할 자를 심판하십시오![a] 많은 죄와 무절제와 헛된 정욕과 일시적인 쾌락 가운데 있는 여러분![b][c][d]
+  revised_footnotes:
+  - marker: a
+    text: ‘율법으로’는 OCR의 ⲛⲉⲗⲟⲥ를 문맥상 ⲛⲟⲙⲟⲥ(‘율법’)로 재구성한 읽기에 따른 것입니다. OCR 정렬의 신뢰도는 낮습니다.
+    reason: alignment_note
+  - marker: b
+    text: ‘무절제’는 ⲙⲛⲧⲁⲧⲁⲙⲁϩⲧⲉ를 ‘무지’가 아니라 절제 또는 자제의 결여로 이해한 번역입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: ‘헛된 정욕’은 OCR상 불확실한 형태를 ⲉⲧϣⲟⲩⲉⲓⲧ(‘헛된, 빈’)로 재구성한 읽기에 따른 것입니다.
+    reason: lexical_alternative
+  - marker: d
+    text: ‘일시적인 쾌락’은 끝부분의 단편을 ⲡⲣⲟⲥⲕⲁⲓⲣⲟⲥ(‘일시적인’)로 재구성한 읽기에 따른 것입니다.
+    reason: alignment_note
+  revision_rationale: 명령의 목적어를 ‘나를 심판할 자’로 바로잡고, 죄악 목록에 속한 ‘여러분’을 독립 호격으로 복원했습니다. 또한 감사 이력의 문맥적 재독에 따라 ‘율법으로’를 보충하되, OCR 자체가 저신뢰도이므로 해당 읽기와 후반부 재구성은 각주에서 명시했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:24Z'
+  output_hash: 0e70c2b807ce7a3fd0860d024793bcedfe9e3013b6658eae09858e6667730279
+  usage:
+    completion_tokens: 1444
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 429
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 137
+      engine_ttlt_ms: 12840
+      pre_inference_ms: 86
+      service_tbt_ms: 9
+      service_ttft_ms: 563
+      service_ttlt_ms: 13262
+      total_duration_ms: 13190
+      user_visible_ttft_ms: 478
+    prompt_tokens: 4586
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 6030
+  applied_revision: false
+  auto_apply_blocked_errors: []

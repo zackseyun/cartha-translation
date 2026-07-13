@@ -102,4 +102,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 제시된 콥트어에는 ‘나는 닫히지 않은 자요 부요한 자입니다’라는 자칭 구문이 보이지 않습니다. 첫 행은 ⲕⲉ ⲁⲧⲱⲧⲙ ⲉⲛⲧⲣⲙⲙⲁⲟ, 곧 ‘부유한 이들이여, 내 말을 들으십시오’라는 권면으로 읽히며, 이어지는 ⲡϫⲓⲥⲉ 및 ⲛⲍⲏⲧⲉ는 각각 ‘가난한 이들’과 ‘찾으십시오’를 가리킵니다. 따라서 영어 감사 이력의 ‘un-shut / rich; exaltation of seeking’ 재구성도 이 정렬된 OCR 발췌와 부합하지 않습니다. 끝의 ⲙⲡⲣⲛⲁ-는 다음 금지 명령의 미완성 시작이므로, 내용으로 보충하지 않고 말줄임표로 처리해야 합니다.
+  naturalness: ‘부유한 이들이여’와 ‘가난한 이들이여’는 현대의 격식 있는 문어체에서 자연스럽고, ‘들으십시오/찾으십시오’는 요청된 합쇼체와 잘 맞습니다. 원문의 미완성 종결부는 ‘또 …하지 마십시오’로 보존하는 편이 자연스럽고 안전합니다.
+  terminology: ⲡϫⲓⲥⲉ를 ‘높임’으로, ⲛⲍⲏⲧⲉ를 명사구 ‘구함의’로 옮긴 것은 문법과 문맥에 맞지 않습니다. ‘부요한 자’보다 청자 호격을 드러내는 ‘부유한 이들이여’가 ⲉⲛⲧⲣⲙⲙⲁⲟ에 충실합니다. 기존 각주는 영어 감사본의 잘못된 재구성을 반복하므로 삭제해야 합니다.
+  issues:
+  - severity: high
+    issue: 첫 문장을 자칭 선언으로 번역함
+    rationale: 원문 첫 행은 ‘그리고/또한, 부유한 이들이여, 내 말을 들으십시오’라는 명령문으로 읽히며, ‘나는’이나 ‘닫히지 않은 자’에 해당하는 안전한 근거가 없습니다.
+  - severity: high
+    issue: ⲡϫⲓⲥⲉ와 ⲛⲍⲏⲧⲉ의 의미·문법을 각각 ‘높임’과 ‘구함의’로 처리함
+    rationale: 이 문맥에서 전자는 가난한 이들을, 후자는 ‘찾으십시오’라는 명령을 이루어, ‘가난한 이들이여, 나를 찾으십시오’라는 병렬 권면을 형성합니다.
+  - severity: medium
+    issue: 원문이 중도에 끊긴 금지 명령을 완결된 의미처럼 처리하지 않음
+    rationale: 발췌는 ⲙⲡⲣⲛⲁ-에서 끝납니다. 후속 동사를 추정하여 번역하면 발췌 범위를 넘어가므로 미완성을 표시해야 합니다.
+  - severity: medium
+    issue: 각주 a와 b가 본문 근거가 없는 영어 감사 이력을 번역 근거로 제시함
+    rationale: 각주는 ‘un-shut’ 및 ‘of seeking’이라는 부정확한 재구성을 정당화하므로 삭제하는 것이 독자에게 오도되지 않습니다.
+  revised_text: 부유한 이들이여, 내 말을 들으십시오. 가난한 이들이여, 나를 찾으십시오. 내가 땅 위에 내버려졌으므로, 여러분은 앞으로 올 이들 가운데서 나를 찾게 될 것입니다. 또 …하지 마십시오.
+  revised_footnotes: []
+  revision_rationale: 정렬된 콥트어 발췌를 우선하여, 부유한 이들과 가난한 이들에게 차례로 მიმართ하는 명령문의 병렬 구조를 복원했습니다. ‘땅 위에 내버려짐’과 ‘앞으로 올 이들 가운데서 찾음’은 발췌에 나타나는 내용을 자연스러운 한국어 문장으로 연결했습니다. 마지막 금지 명령은 동사가 잘린 상태이므로 추정 번역을 피하고 말줄임표로 남겼습니다. 기존 감사본의 대체 독법은 이 발췌에 의해 지지되지 않아 각주도 함께 삭제했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:30Z'
+  output_hash: 129f5b27cc64b97cd35a562d14ddca641f4500b0311f8e83d6750e8991d83c52
+  usage:
+    completion_tokens: 2790
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1704
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 120
+      engine_ttlt_ms: 24960
+      pre_inference_ms: 130
+      service_tbt_ms: 9
+      service_ttft_ms: 403
+      service_ttlt_ms: 25238
+      total_duration_ms: 25118
+      user_visible_ttft_ms: 273
+    prompt_tokens: 2735
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5525
+  applied_revision: false
+  auto_apply_blocked_errors: []

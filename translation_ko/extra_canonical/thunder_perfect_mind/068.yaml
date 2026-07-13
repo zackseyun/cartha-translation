@@ -156,4 +156,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초두 동사는 OCR 상태가 불완전하나, 제시된 본문 재검토와 개정 이력에 따르면 ‘다가오다’가 아니라 ‘멸시하다’로 읽는 것이 타당합니다. 다만 원문 및 재검토의 ‘You despise me, then’에는 의문사 ‘왜’가 확인되지 않으므로, 현 번역의 질문형은 제거하는 것이 안전합니다. 뒤의 선언과 ‘나의 종류에 대한 지식’은 개정된 본문 판독을 따릅니다.
+  naturalness: ‘마음’은 현대 한국어에서 정서적 마음으로 가장 흔히 이해되어 νοῦς의 철학적 의미를 충분히 전달하지 못합니다. 여기서는 ‘지성’이 더 정확합니다. ‘나의 종류에 대한 지식’은 다소 낯설지만 원문의 의도적으로 역설적인 술어를 보존하며, ‘족속’보다 현대적이고 민족적 함의를 덜 갖습니다.
+  terminology: 'ⲡⲛⲟⲩⲥ는 ‘지성’으로, ⲧⲁⲛⲁⲡⲁⲩⲥⲓⲥ는 ‘나의 안식’으로 옮깁니다. ‘나의 종류’는 OCR 및 판독의 불확실성을 주석으로 밝혀 두되, 특정 형이상학적 해석(예: 본성, 계통)으로 좁히지 않습니다. 기존의 c·d·e 주석은 폐기된 초안 해석만 설명하며 본문 앵커에도 부적절하므로 삭제합니다.'
+  issues:
+  - severity: medium
+    issue: 첫 문장에 원문상 불확실한 의문사 ‘왜’가 추가되어 있습니다.
+    rationale: 최신 원문 재검토는 해당 구절을 ‘You despise me, then’으로 분석합니다. OCR이 불안정하더라도 의문문을 확정할 근거는 제시되지 않았으므로 평서형으로 보존해야 합니다.
+  - severity: medium
+    issue: ‘마음’은 ⲡⲛⲟⲩⲥ의 철학적 의미를 정서적 의미로 약화할 수 있습니다.
+    rationale: 그리스어 νοῦς 차용어의 통상적 철학적 대응은 ‘지성’이며, 이 문맥의 자기 선언에도 더 적합합니다.
+  - severity: medium
+    issue: '[f][e][d][c][b]가 모두 ‘나의 쉼’에 붙어 있어 주석 앵커가 잘못되었습니다.'
+    rationale: 각주 a와 f만 각각 ‘지성’과 ‘안식’에 직접 관련됩니다. 본문 판독 관련 주석은 ‘나의 종류’에 붙여야 하며, 폐기된 초안만 기록하는 c·d·e는 독자용 주석으로 유지할 이유가 없습니다.
+  - severity: low
+    issue: ‘족속’은 현대 한국어에서 다소 고어적이며 혈연·민족 집단의 함의가 강합니다.
+    rationale: 여기서는 판독상 ‘my kind’의 의미 범위를 보존하는 ‘나의 종류’가 더 중립적입니다.
+  revised_text: 그러면 너희는 작은 이들 가운데서 나를 멸시합니다. 나는 지성[a]이며 나의 안식[f]입니다. 너희는 나의 종류[b]에 대한 지식입니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘누스’, ‘지성적 정신’. ⲡⲛⲟⲩⲥ는 그리스어 νοῦς에서 온 차용어입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 이 부분의 OCR은 불안정합니다. 재검토된 판독은 이 구를 ‘나의 종류’에 해당하는 반복 어구로 이해합니다. ‘나의 본성’ 또는 ‘나의 계통’으로 옮길 가능성도 있으나 확정하기 어렵습니다.
+    reason: textual_variant
+  - marker: f
+    text: 또는 ‘쉼’, ‘휴식’. ⲧⲁⲛⲁⲡⲁⲩⲥⲓⲥ는 그리스어 ἀνάπαυσις에서 온 말입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문 재검토를 우선하여 ‘왜’라는 의문사와 초안에서 비롯된 해석을 제거했습니다. νοῦς는 ‘지성’으로 옮겨 철학적 용례를 보존했고, ‘my kind’는 ‘나의 종류’로 번역하여 혈연적·교리적 해석을 피했습니다. 각주를 실제로 해당 어구에 붙는 최소한의 본문·어휘 주석으로 정리했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:21Z'
+  output_hash: 1522fe35a68aecf5526aa01c738d288f4091613c40f9ce90cd332e1a9aa26ad8
+  usage:
+    completion_tokens: 1634
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 136
+      engine_ttlt_ms: 13580
+      pre_inference_ms: 535
+      service_tbt_ms: 8
+      service_ttft_ms: 1060
+      service_ttlt_ms: 14442
+      total_duration_ms: 13925
+      user_visible_ttft_ms: 525
+    prompt_tokens: 4779
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 6413
+  applied_revision: false
+  auto_apply_blocked_errors: []

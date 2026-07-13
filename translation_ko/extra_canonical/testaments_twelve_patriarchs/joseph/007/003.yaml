@@ -14,7 +14,7 @@ base_translation:
   text: And she agreed with me no longer to commit this impiety. Yet her heart was still set on evil, and she kept looking around for a way to ensnare me; and groaning, she would suddenly collapse, though she was not actually sick.
 translation:
   language: ko
-  text: 그녀는 더 이상 이 불경한 일을 하지 않겠다고 제게 동의했습니다. 그러나 그녀의 마음은 여전히 악에 머물러 있었고, 어떻게 저를 덫에 걸리게 할지 두리번거렸습니다. 그리고 신음하다가, 약한 것이 아니었는데도 갑자기 쓰러졌습니다.[a]
+  text: 그녀는 저와 더 이상 이 불경한 일을 하지 않기로 합의했습니다. 그러나 그녀의 마음은 여전히 악에 쏠려 있었고, 저를 덫에 빠뜨릴 방법을 찾고 있었습니다. 그리고 신음하면서 갑자기 쓰러지곤 했지만, 쇠약한 것은 아니었습니다.
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: συνεθέτό μου τοῦ μηκέτι ποιῆσαι τὴν ἀσέβειαν ταύτην
@@ -76,4 +76,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그녀는 더 이상 이 불경한 일을 하지 않겠다고 제게 동의했습니다. 그러나 그녀의 마음은 여전히 악에 머물러 있었고, 어떻게 저를 덫에 걸리게 할지 두리번거렸습니다. 그리고 신음하다가, 약한 것이 아니었는데도 갑자기 쓰러졌습니다.[a]
+  to: 그녀는 저와 더 이상 이 불경한 일을 하지 않기로 합의했습니다. 그러나 그녀의 마음은 여전히 악에 쏠려 있었고, 저를 덫에 빠뜨릴 방법을 찾고 있었습니다. 그리고 신음하면서 갑자기 쓰러지곤 했지만, 쇠약한 것은 아니었습니다.
+  rationale: 원문의 지속상(‘찾고 있었습니다’, ‘쓰러지곤 했습니다’)과 ἀσέβεια의 종교적 무게를 유지하면서, 한국어의 자연스러운 결합과 문장 흐름을 바로잡았습니다. μὴ ἀσθενοῦσα는 질병으로 단정하지 않고 ‘쇠약’의 부정으로 보존했습니다. 제공되지 않은 각주 내용에 대응하는 [a] 표지는 제거했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:38:33Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 문장의 ‘제게 동의했습니다’는 συνεθέτο μοι를 다소 부자연스럽게 처리하며, ‘약한 것이 아니었는데도’는 μὴ ἀσθενοῦσα의 상태 부정을 한국어에서 어색하게 만듭니다. περιεβλέπετο는 반복·지속적으로 방법을 찾는 뜻이므로 이를 더 분명히 하는 것이 좋습니다.
+  naturalness: 합쇼체는 유지되었으나, ‘어떻게 저를 덫에 걸리게 할지 두리번거렸습니다’와 ‘약한 것이 아니었는데도’는 현대 표준 한국어 문장으로 다소 어색합니다. 또한 내용 없는 [a] 표지는 삭제해야 합니다.
+  terminology: ἀσέβεια의 ‘불경한 일’은 적절합니다. τὸ κακόν은 ‘악’으로, παγιδεύσῃ는 ‘덫에 빠뜨리다’로 옮겨 원문의 도덕적·비유적 강도를 유지할 수 있습니다. ἀσθενοῦσα는 여기서 병약하거나 쇠약한 상태가 아님을 나타내므로 ‘쇠약한 것은 아니었습니다’가 자연스럽고 과도하게 ‘아프지 않았다’로 한정하지 않습니다.
+  issues:
+  - severity: medium
+    issue: ‘제게 동의했습니다’의 결합이 부자연스럽습니다.
+    rationale: συνετίθετο μοι는 ‘나와 …하기로 합의하다/동의하다’라는 구문입니다. 한국어에서는 ‘저와 … 하기로 합의했습니다’가 더 자연스럽고 관계를 정확히 드러냅니다.
+  - severity: medium
+    issue: ‘어떻게 저를 덫에 걸리게 할지 두리번거렸습니다’가 어색하고 지속상을 충분히 나타내지 못합니다.
+    rationale: περιεβλέπετο는 방법을 찾아 두리번거리며 살피는 지속적 행위입니다. ‘저를 덫에 빠뜨릴 방법을 찾고 있었습니다’가 자연스럽고 의미를 보존합니다.
+  - severity: medium
+    issue: ‘약한 것이 아니었는데도’의 표현이 부자연스럽습니다.
+    rationale: μὴ ἀσθενοῦσα는 그녀가 쇠약한 상태가 아니었다는 부정입니다. ‘쇠약한 것은 아니었습니다’가 한국어 문법과 원문의 의미 모두에 더 맞습니다.
+  - severity: low
+    issue: 내용 없는 각주 표지 [a]가 남아 있습니다.
+    rationale: 제공된 각주 내용이 없으므로 독자에게 근거 없는 참조를 남깁니다. 삭제하는 것이 안전합니다.
+  revised_text: 그녀는 저와 더 이상 이 불경한 일을 하지 않기로 합의했습니다. 그러나 그녀의 마음은 여전히 악에 쏠려 있었고, 저를 덫에 빠뜨릴 방법을 찾고 있었습니다. 그리고 신음하면서 갑자기 쓰러지곤 했지만, 쇠약한 것은 아니었습니다.
+  revised_footnotes: []
+  revision_rationale: 원문의 지속상(‘찾고 있었습니다’, ‘쓰러지곤 했습니다’)과 ἀσέβεια의 종교적 무게를 유지하면서, 한국어의 자연스러운 결합과 문장 흐름을 바로잡았습니다. μὴ ἀσθενοῦσα는 질병으로 단정하지 않고 ‘쇠약’의 부정으로 보존했습니다. 제공되지 않은 각주 내용에 대응하는 [a] 표지는 제거했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:33Z'
+  output_hash: 57116fff72a988ecdd8d44a8463a023c2f678d0ea8b9ddf9db29dd57613f4e57
+  usage:
+    completion_tokens: 1109
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 285
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 126
+      engine_ttlt_ms: 8557
+      pre_inference_ms: 383
+      service_tbt_ms: 8
+      service_ttft_ms: 606
+      service_ttlt_ms: 9031
+      total_duration_ms: 8658
+      user_visible_ttft_ms: 223
+    prompt_tokens: 2021
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3130
+  applied_revision: true
+  auto_apply_blocked_errors: []

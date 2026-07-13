@@ -14,7 +14,7 @@ base_translation:
   text: And the third will be called by a new name, because a king will arise from Judah and will establish a new priesthood, according to the pattern of the nations, for all the nations.
 translation:
   language: ko
-  text: 그리고 셋째는 새 이름으로 불릴 것이니, 이는 유다에게서 왕이 일어나 새로운 제사직을 세울 것이며, 민족들의 본을 따라 모든 민족을 위함입니다.[a]
+  text: 그리고 셋째는 새 이름으로 불릴 것입니다. 이는 유다에게서 한 왕이 일어나, 민족들의 본을 따라 모든 민족을 위한 새로운 제사직을 세울 것이기 때문입니다.
   philosophy: optimal-equivalence
 lexical_decisions:
 - source_word: ἐπικληθήσεται αὐτῷ ὄνομα καινόν
@@ -69,4 +69,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 셋째는 새 이름으로 불릴 것이니, 이는 유다에게서 왕이 일어나 새로운 제사직을 세울 것이며, 민족들의 본을 따라 모든 민족을 위함입니다.[a]
+  to: 그리고 셋째는 새 이름으로 불릴 것입니다. 이는 유다에게서 한 왕이 일어나, 민족들의 본을 따라 모든 민족을 위한 새로운 제사직을 세울 것이기 때문입니다.
+  rationale: 문장을 두 문장으로 나누어 ὅτι의 인과관계를 한국어 합쇼체로 자연스럽게 완결했습니다. ‘민족들의 본을 따라’와 ‘모든 민족을 위한’의 순서 및 의미를 보존하되, 후자를 ‘새로운 제사직’에 직접 연결했습니다. 원문의 불특정 왕을 ‘한 왕’으로 옮겼고, 내용 없는 각주 앵커는 삭제했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T20:38:05Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 미래 시제와 인과관계, 그리고 ‘유다에게서 한 왕이 일어남’ 및 ‘새 제사직을 세움’은 대체로 반영되었습니다. 그러나 ‘모든 민족을 위함입니다’는 εἰς πάντα τὰ ἔθνη의 목적 대상을 자연스러운 한국어 문장 안에 결합하지 못하며, 앞선 미래 서술과 종결 방식도 맞지 않습니다. ‘민족들의 본’은 τύπος의 다소 불명확한 비유적 표현을 유지합니다.
+  naturalness: 초안은 ‘것이니/것이며/위함입니다’가 한 문장에 혼합되어 현대 합쇼체 문장으로 부자연스럽습니다. 인과절을 완결하고 ‘모든 민족을 위한’을 ‘새로운 제사직’의 수식어로 처리하면 자연스럽습니다.
+  terminology: ἱερατεία는 ‘제사직’, βασιλεύς는 ‘왕’, ἔθνη는 문맥상 특정 교리적 해석을 덧붙이지 않는 ‘민족들’로 유지하는 것이 적절합니다. 부정관사 없는 한국어에서 ‘한 왕’을 사용해 원문의 불특정성을 드러냈습니다.
+  issues:
+  - severity: medium
+    issue: 문장 종결과 목적 구문의 결합이 부자연스럽습니다.
+    rationale: ‘이는 … 세울 것이며, … 위함입니다’는 미래 서술과 명사형 종결이 충돌하고, ‘모든 민족을 위함’이 무엇을 수식하는지 불분명합니다. εἰς πάντα τὰ ἔθνη를 ‘모든 민족을 위한 새로운 제사직’으로 연결해야 합니다.
+  - severity: low
+    issue: 본문 끝의 [a]에 대응하는 각주가 없습니다.
+    rationale: 제공된 각주 세트에 [a]의 내용이 없으므로, 근거 없는 앵커는 제거해야 합니다.
+  revised_text: 그리고 셋째는 새 이름으로 불릴 것입니다. 이는 유다에게서 한 왕이 일어나, 민족들의 본을 따라 모든 민족을 위한 새로운 제사직을 세울 것이기 때문입니다.
+  revised_footnotes: []
+  revision_rationale: 문장을 두 문장으로 나누어 ὅτι의 인과관계를 한국어 합쇼체로 자연스럽게 완결했습니다. ‘민족들의 본을 따라’와 ‘모든 민족을 위한’의 순서 및 의미를 보존하되, 후자를 ‘새로운 제사직’에 직접 연결했습니다. 원문의 불특정 왕을 ‘한 왕’으로 옮겼고, 내용 없는 각주 앵커는 삭제했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:05Z'
+  output_hash: 8c3bbeb9f904211458cce507bc6ac16232d6036c89b8d1616fcf44d08c86563b
+  usage:
+    completion_tokens: 932
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 292
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 8449
+      pre_inference_ms: 89
+      service_tbt_ms: 9
+      service_ttft_ms: 289
+      service_ttlt_ms: 8597
+      total_duration_ms: 8516
+      user_visible_ttft_ms: 200
+    prompt_tokens: 1721
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2653
+  applied_revision: true
+  auto_apply_blocked_errors: []

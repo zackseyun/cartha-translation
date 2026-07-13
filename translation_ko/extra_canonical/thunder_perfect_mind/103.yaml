@@ -95,4 +95,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: reject
+  source_fidelity: 원문 OCR 발췌에는 ‘나는’이라는 1인칭 선언도, ‘정의/의’(justice)나 ‘대변자/옹호자’에 해당하는 명확한 법률 역할어도 확인되지 않습니다. 오히려 ⲥⲁϩⲟⲩⲛ 및 ⲥⲁⲃⲟⲗ은 이 문맥에서 각각 ‘안/내부’와 ‘밖/외부’로 읽히며, ⲣⲡⲗⲁⲥⲥⲉ(만들다/빚다)와 ⲧⲩⲡⲟⲥ(형상/본보기)가 이어집니다. 따라서 영어 POB 문장과 한국어 초안은 제공된 원문 발췌에 의해 지지되지 않습니다. consult_text의 ‘I am [the judge…]’도 OCR 본문과 직접 충돌하므로, 더 나은 정렬 또는 판본 확인 없이는 이를 번역의 근거로 삼을 수 없습니다.
+  naturalness: ‘나는 의입니다’는 문법적으로 가능하나 현대 한국어에서 ‘의’가 단독 인격 명칭으로 쓰일 때 다소 부자연스럽고, 이 경우 자연스러움의 문제보다 원문 불일치가 결정적입니다. ‘대변자’는 현대어로 자연스럽지만, 원문에 없는 역할을 도입합니다.
+  terminology: ⲥⲁⲃⲟⲗ을 이 OCR 문맥에서 ‘의/정의’로 처리한 것은 부적절합니다. 이는 ‘밖/외부’의 공간적 표현으로 보이며, ⲥⲁϩⲟⲩⲛ과 대조를 이룹니다. ‘대변자’ 역시 원문에서 확인되지 않는 추정적 법률 용어입니다.
+  issues:
+  - severity: high
+    issue: 제공된 원문 발췌와 번역문 사이의 내용 불일치
+    rationale: OCR 발췌는 안과 밖의 관계, 형성함, 형상/본보기에 관한 문장으로 보입니다. 반면 초안은 ‘나는 의입니다. 나는 대변자입니다.’라는 두 개의 1인칭 법률적 자기선언을 제시합니다. 원문 발췌에는 이 선언들을 뒷받침할 어휘나 문법이 보이지 않습니다.
+  - severity: high
+    issue: ⲥⲁⲃⲟⲗ의 문맥상 오독
+    rationale: ⲥⲁϩⲟⲩⲛ(안/내부)과 나란히 나타나는 ⲥⲁⲃⲟⲗ은 여기서 ‘곧음/정의’가 아니라 ‘밖/외부’로 읽는 것이 문맥상 강하게 요구됩니다. 따라서 ‘의’ 및 관련 주석은 현 발췌의 의미를 바꿉니다.
+  - severity: high
+    issue: 근거 없는 ‘대변자’의 도입
+    rationale: 영어 주석도 직접 대응 콥트어가 OCR 조각에 보이지 않는다고 인정합니다. 제공된 콥트어에는 오히려 안/밖 및 만들기 관련 어휘가 확인되므로, 불확실한 세그먼트 매핑만으로 법률 역할을 본문에 넣을 수 없습니다.
+  - severity: medium
+    issue: consult_text와 OCR 본문의 충돌
+    rationale: consult_text의 ‘I am [the judge; I] am the defense’는 현 OCR에 보이는 연속 구절과 일치하지 않습니다. 판본의 정확한 페이지·행, 결손부, 세그먼트 정렬을 재검증해야 합니다.
+  revised_text: ''
+  revised_footnotes: []
+  revision_rationale: 안전한 완전 개정문을 제시할 수 없습니다. 현재 제공된 OCR은 문장 중간의 연속 구절이며, 어절 경계와 선행·후행 문맥이 불확실합니다. 그러나 현 초안의 ‘의/대변자’는 단순한 문체 조정으로 고칠 수 있는 수준이 아니라, 번역 근거 자체가 다른 본문에 있는 것으로 보입니다. 정확히 정렬된 콥트어 본문 또는 검증된 비평판을 확보한 뒤, 안/밖의 대조와 ‘만들다/형상’ 어휘를 포함하여 해당 단위를 새로 번역해야 합니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:27Z'
+  output_hash: 0e95b2df287bc5b8bb5b5d3d192c9d669468322f01f02b0c483ab6139d4e4abb
+  usage:
+    completion_tokens: 1514
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 465
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 187
+      engine_ttlt_ms: 13407
+      pre_inference_ms: 183
+      service_tbt_ms: 9
+      service_ttft_ms: 471
+      service_ttlt_ms: 13685
+      total_duration_ms: 13518
+      user_visible_ttft_ms: 287
+    prompt_tokens: 2589
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4103
+  applied_revision: false
+  auto_apply_blocked_errors: []

@@ -133,4 +133,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 개정이 필요합니다. 제시된 콥트어 OCR에서 ⲧⲉⲧⲛⲧⲁⲉⲓⲟ ⲙⲙⲟⲉⲓ는 현재형으로 ‘너희는 나를 공경한다/존중한다’에 해당하며, 초안의 과거형 ‘존중하였습니다’는 형태를 반영하지 못합니다. 이어지는 ⲁⲧⲉⲧⲛϣⲱϥ 및 ⲁⲧⲉⲧⲛⲛⲁ는 각각 ‘너희는 나를 멸시했다’와 ‘너희는 나를 보았다’라는 완료형으로 보입니다. ⲙⲡⲣⲡⲟⲩϩⲧ ⲉⲃⲟⲗ ⲛⲛϣⲟⲣⲡ는 ‘첫 것들/처음 것들을 흩어지게 하지 마십시오’로 옮기는 것이 적절합니다. OCR에는 훼손된 ‘이것들은 내가 …’ 및 이후의 ‘숙고하지 마십시오’, ‘너희의 몸의 부분들’도 보이므로, 훼손 표지를 유지하여 번역문에 반영했습니다.
+  naturalness: ‘공경합니다’는 현대 표준어 합쇼체이면서 시적·대조적인 어조에 맞습니다. ‘몸의 부분들’은 ‘지체’가 현대 한국어에서 교회 공동체의 구성원이라는 비유적 뜻으로도 쉽게 읽히는 문제를 피하면서 ⲗⲁⲁⲧⲉ의 신체적 의미를 보존합니다. 훼손된 구절은 완전한 문장으로 억지로 보완하지 않고 대괄호 줄임표로 남겼습니다.
+  terminology: ⲧⲁⲉⲓⲟ는 이 OCR 문맥에서는 ‘받아들이다/껴안다’보다 ‘공경하다’가 적합합니다. ⲁⲧⲉⲧⲛϣⲱϥ는 privative(‘부끄러움 없이’)가 아니라 완료형 동사로 읽어 ‘멸시했습니다’로 옮겼습니다. 신체어 ⲗⲁⲁⲧⲉ는 교리적 함의를 덧붙이지 않고 ‘몸의 부분들’로 처리했습니다.
+  issues:
+  - severity: high
+    issue: 첫 문장의 시제가 과거형으로 번역되었습니다.
+    rationale: ⲧⲉⲧⲛⲧⲁⲉⲓⲟ는 제시된 OCR과 영어 감사 기록의 실제-본문 분석에 따르면 현재형 ‘너희는 나를 공경한다’입니다. 뒤따르는 완료형들과의 긴장은 보존해야 합니다.
+  - severity: medium
+    issue: OCR에 보이는 훼손된 ‘이것들은 내가 …’ 구절이 본문에서 누락되었습니다.
+    rationale: 훼손부는 추정으로 복원할 수 없지만, 식별 가능한 단어는 대괄호 줄임표와 함께 번역문에 남겨야 합니다.
+  - severity: medium
+    issue: ‘지체’는 현대 한국어에서 신체어 외에 교회론적 의미를 강하게 환기할 수 있습니다.
+    rationale: 원문의 신체적 의미를 불필요하게 신학화하지 않도록 ‘몸의 부분들’을 사용합니다.
+  - severity: low
+    issue: 기존 각주가 영어 POB의 ‘최신 정정’을 honor로 서술하지만, 제공된 현행 영어 POB 본문은 embrace로 되어 있습니다.
+    rationale: 감사 기록의 상충을 한국어 각주에서 단정적으로 재진술하지 않고, 원어의 해당 어휘와 선택한 번역만 설명하도록 고쳤습니다.
+  revised_text: 그리고 너희는 나를 공경합니다[a]. 너희는 나를 멸시했고, 나를 보았습니다. 처음 것들을 흩어지게 하지 마십시오. 이것들은 내가 […] 숙고하지 마십시오 […]. 너희의 몸의 부분들 […].
+  revised_footnotes:
+  - marker: a
+    text: ⲧⲁⲉⲓⲟ는 여기서 ‘공경하다, 존중하다’로 옮겼습니다. ‘받아들이다’ 또는 ‘맞이하다’로도 제안되지만, 제시된 OCR의 문법적 형태와 바로 뒤의 대조적 진술에서는 ‘공경합니다’가 더 적절합니다.
+    reason: lexical_alternative
+  revision_rationale: 제시된 콥트어 OCR을 우선하여 첫 동사를 현재형 ‘공경합니다’로 바로잡고, 완료형인 ‘멸시했고, 보았습니다’와 구별했습니다. 손상된 원문은 내용을 보충하거나 문법적으로 매끈하게 만들지 않았으며, 확인되는 부분만 번역하고 […]로 결락을 표시했습니다. ‘처음 것들’은 ⲛⲛϣⲟⲣⲡ의 복수성과 개방성을 보존합니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:29Z'
+  output_hash: fd2c3f34451397a084e8e44c6817c896a5480ce8f5b2c78a8f6edfb4c3063b57
+  usage:
+    completion_tokens: 2403
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1173
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 22665
+      pre_inference_ms: 90
+      service_tbt_ms: 9
+      service_ttft_ms: 571
+      service_ttlt_ms: 23094
+      total_duration_ms: 23012
+      user_visible_ttft_ms: 481
+    prompt_tokens: 4076
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 6479
+  applied_revision: false
+  auto_apply_blocked_errors: []

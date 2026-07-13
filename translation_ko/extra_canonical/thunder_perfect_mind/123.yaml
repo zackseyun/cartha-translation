@@ -116,4 +116,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현 초안은 제공된 콥트어 OCR의 반복되는 ⲡⲉⲧⲛⲁϣⲱⲡⲉ / ⲁⲛⲟⲕ ⲡⲉ ⲧⲉⲥⲩⲛⲅⲛⲱⲙⲏ 구문을 ‘그들이 나를 그곳에서 찾을 것이며’라는 다른 대목의 내용으로 대체하였습니다. 이는 원문 및 English POB 감사 기록과 일치하지 않습니다. 상대미래 관계구문은 사람과 사물 어느 쪽으로도 읽힐 여지가 있으므로 ‘장차 있게 될 것’으로 중립적으로 보존했습니다.
+  naturalness: ‘장차 있게 될 것, 나는 용서입니다’는 현대 한국어에서 다소 파격적이지만, 원문의 병렬된 명사구와 ‘나는 …이다’ 정체성 선언의 압축적·반복적 문체를 보존하는 데 필요한 범위입니다. 합쇼체 종결은 ‘입니다’로 일관되게 처리했습니다.
+  terminology: ⲧⲉⲥⲩⲛⲅⲛⲱⲙⲏ(그리스어 συγγνώμη 차용어)는 문맥상 ‘용서’가 가장 자연스럽습니다. ‘사면’이나 ‘관용’의 가능성은 각주에서 밝혔습니다. ⲡⲉⲧⲛⲁϣⲱⲡⲉ는 ‘장차 있게 될 것’으로 번역하여 ‘무엇’과 ‘누구’의 해석상 불확정성을 강제하지 않았습니다.
+  issues:
+  - severity: high
+    issue: 본문이 콥트어 OCR 및 English POB의 해당 구절과 다른 내용으로 번역되었습니다.
+    rationale: 초안의 ‘그들이 나를 그곳에서 찾을 것이며, 그들은 살고 다시는 죽지 않을 것입니다’는 제공된 consult_text의 별도 문장에 해당하며, 정렬된 OCR에 반복되어 있는 ‘장차 있게 될 것 / 나는 용서이다’ 구문을 반영하지 않습니다.
+  - severity: high
+    issue: ⲁⲛⲟⲕ ⲡⲉ와 ⲧⲉⲥⲩⲛⲅⲛⲱⲙⲏ가 본문에서 누락되었습니다.
+    rationale: 각각 ‘나는 …입니다’와 ‘용서’로 번역되어야 하며, 이를 ‘나를’ 및 생명·불사의 서술로 바꾸는 것은 의미를 변경합니다.
+  - severity: medium
+    issue: 기존 각주 a의 콥트어 표기가 ⲥⲱⲡⲉ로 잘못되어 있습니다.
+    rationale: 제공된 본문 및 영어 감사 기록의 동사는 ⲡⲉⲧⲛⲁϣⲱⲡⲉ이며, 각주는 해당 형태와 그 해석상 모호성을 정확히 설명해야 합니다.
+  revised_text: 장차 있게 될 것[1], 나는 용서[2]입니다. 그리고 장차 있게 될 것[1], 나는 용서[2]입니다. 그리고 장차 있게 될 것[1], 나는 용서[2]입니다. 그리고 장차 있게 될 것[1]…
+  revised_footnotes:
+  - marker: '1'
+    text: 콥트어 ⲡⲉⲧⲛⲁϣⲱⲡⲉ는 ϣⲱⲡⲉ(‘생기다, 되다, 일어나다’)를 쓴 상대미래형입니다. 문맥에 따라 ‘장차 있게 될 것’, ‘장차 일어날 일’ 또는 ‘장차 될 이’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: '2'
+    text: 콥트어 ⲥⲩⲛⲅⲛⲱⲙⲏ는 그리스어 συγγνώμη에서 온 말로, ‘용서’, ‘사면’ 또는 ‘관용’을 뜻할 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 정렬된 콥트어 OCR에 실제로 보이는 어순과 반복을 우선했습니다. 각 완결 단위는 ‘장차 있게 될 것—나는 용서입니다’이며, ⲁⲩⲱ는 다음 단위를 잇습니다. 마지막 ⲡⲉⲧⲛⲁϣⲱⲡⲉ 뒤에서 OCR 발췌가 끊기므로 줄임표를 유지했습니다. 다만 이 OCR 정렬의 신뢰도가 낮고 제공된 consult_text가 상충하므로, 더 넓은 면 이미지나 비평 본문으로 대조할 인간 검토가 필요합니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:39:42Z'
+  output_hash: 35af9acad85934b71f2a14d930cd57bd738e0832c7fa49fcc83353c456ac18fe
+  usage:
+    completion_tokens: 1355
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 201
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 145
+      engine_ttlt_ms: 11620
+      pre_inference_ms: 122
+      service_tbt_ms: 8
+      service_ttft_ms: 446
+      service_ttlt_ms: 11916
+      total_duration_ms: 11803
+      user_visible_ttft_ms: 324
+    prompt_tokens: 3579
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4934
+  applied_revision: false
+  auto_apply_blocked_errors: []

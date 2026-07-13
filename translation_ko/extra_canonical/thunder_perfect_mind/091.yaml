@@ -115,4 +115,55 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: reject
+  source_fidelity: 원문 OCR 본문과 영어 POB 감사 경로 및 한국어 초안 사이에 중대한 불일치가 있습니다. 제시된 콥트어 ⲡϩⲟ ⲙⲡⲕⲁϩ는 통상 ‘땅의 표면/땅의 얼굴’이며, ⲛⲟⲩϫⲉ는 ‘던지다, 내던지다’ 계열로 읽히므로, ‘땅 아래’ 및 ‘그들이 나에게 올라옵니다’라는 번역을 뒷받침하지 않습니다. 또한 OCR 발췌는 앞 문장의 중간에서 시작하고 뒤에 추가 자기선언문들이 이어져 있어, 현 자료만으로는 이 단위를 안전하게 완결 번역할 수 없습니다.
+  naturalness: 초안의 한국어 자체는 대체로 자연스럽고 합쇼체도 일관됩니다. 다만 ‘나는 땅 아래에 있는 이입니다’는 현대 한국어에서 다소 번역투이며, 더 근본적으로 원문에 충실하지 않은 의미를 자연스럽게 다듬어도 해결되지 않습니다.
+  terminology: ‘땅 아래/지하/저승’에 관한 주석은 제시된 OCR의 ⲡϩⲟ(‘얼굴, 표면’)와 맞지 않습니다. ‘올라옵니다’ 및 그 출발점으로서의 ‘땅의 아래쪽’도 ⲛⲟⲩϫⲉ 및 ⲉⲃⲟⲗ ϩⲓϫⲙ ⲡϩⲟ ⲙⲡⲕⲁϩ의 표면적 독법과 맞지 않아, 용어 선택을 수정하는 수준이 아니라 대조 원전과 정렬을 재검증해야 합니다.
+  issues:
+  - severity: high
+    issue: 핵심 장소 명사의 오독 또는 잘못된 정렬
+    rationale: OCR의 ⲡϩⲟ ⲙⲡⲕⲁϩ는 ‘땅 아래’가 아니라 일반적으로 ‘땅의 얼굴/표면’을 뜻합니다. 영어 POB의 ‘beneath the earth’ 및 이에 의존한 한국어 ‘땅 아래’는 제시된 원문과 일치하지 않습니다.
+  - severity: high
+    issue: 핵심 동사의 의미가 원문과 불일치
+    rationale: ⲉⲧⲛⲟⲩϫⲉ ⲙⲙⲟⲥ는 ‘그들이 내던진다/던져 내보낸다’ 계열로 분석되는 것이 자연스럽고, ‘그들이 나에게 올라온다’로 읽을 근거가 제시된 OCR에는 보이지 않습니다.
+  - severity: high
+    issue: 발췌 범위 및 정렬 경로의 충돌
+    rationale: 원문 OCR은 문장 중간으로 보이는 ‘ⲡϩⲟ ⲙⲡⲕⲁϩ’에서 시작하며, 이어 ‘나는 모든 사람의 준비…’, ‘나는 내 이름의 나눔…’으로 보이는 추가 문장을 포함합니다. 반면 consult_text와 번역 초안은 별개의 짧은 두 절 문장을 제시합니다. 정확한 판본 전사와 세그먼트 경계를 확인하기 전에는 완결 한국어 본문을 제시할 수 없습니다.
+  - severity: medium
+    issue: 각주가 원문상 부정확한 번역 선택을 정당화함
+    rationale: 각주 a는 ‘저승’의 신화적 함의를 피한다는 점에서는 신중하지만, 전제인 ‘땅 아래’ 자체가 현 OCR과 맞지 않습니다. 각주 b도 줄바꿈 결합 자체는 타당할 수 있으나, 결합된 동사구의 의미를 ‘올라오다’로 설명합니다.
+  revised_text: ''
+  revised_footnotes: []
+  revision_rationale: 안전한 교정문을 작성할 수 없습니다. 원문 우선 검토 결과, 현재 영어 POB 감사 경로와 한국어 초안은 제시된 콥트어 OCR의 핵심 어휘 및 세그먼트 범위와 충돌합니다. 판본의 검증된 전사, 앞선 행을 포함한 문맥, 그리고 영어 정렬의 근거를 재확인한 뒤 번역을 새로 작성해야 합니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:30Z'
+  output_hash: 06dfbc30537c6b0ab788533391f3c13f45ac8ee9ff90b6db31c3b485c2bc0f90
+  usage:
+    completion_tokens: 1837
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 804
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 149
+      engine_ttlt_ms: 16076
+      pre_inference_ms: 128
+      service_tbt_ms: 9
+      service_ttft_ms: 365
+      service_ttlt_ms: 16287
+      total_duration_ms: 16172
+      user_visible_ttft_ms: 237
+    prompt_tokens: 3029
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4866
+  applied_revision: false
+  auto_apply_blocked_errors: []

@@ -132,4 +132,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 후반부는 여성형 관계절(‘…존재하는 그녀’)과 ‘모든 두려움’을 잘 보존합니다. 그러나 제시된 OCR 자체에는 ⲧⲏⲣⲟⲩ 앞의 복수 정관사 ⲛⲉ-가 보이지 않아 ‘모든 두려움’이라는 수식 관계는 자료상 확정하기 어렵습니다. 또한 앞의 두 병렬절은 OCR의 분절과 어휘 판독이 불확실하므로 영어 감사 번역을 따라 단정적으로 옮기기보다 불확실성을 본문에서 과도하게 확정하지 않는 편이 안전합니다.
+  naturalness: ‘내 찾음의 신중함에 따른 말’은 현대 한국어에서 결속이 다소 불명확하고, ‘내 탐구의 지식’도 원문의 병렬을 따르지만 어색합니다. ‘내가 찾는 일에 관한 신중한 말’ 및 ‘내가 탐구하는 일에 대한 지식’이 더 자연스럽습니다. ‘모든 두려움과 용기 안에’는 ‘두려움’과 ‘용기’가 동일한 전치사구에 묶여 있어 의미상 다소 거칩니다. 원문의 병렬을 살려 ‘모든 두려움 속에도, 용기 속에도’로 옮기는 것이 자연스럽습니다.
+  terminology: φρόνησις 계열은 ‘신중함’으로 가능하나 ‘분별’이 철학적·인지적 문맥에서 더 적절할 수 있습니다. ⲡⲛⲏϣⲁⲧ은 ‘용기’로 유지할 수 있습니다. 여성형 자기지시는 한국어에서 ‘그녀’보다 ‘여자인’이 문법 표지를 더 직접적으로 보존하지만, 원문의 문법적 여성성과 인물의 성별 동일시를 구별하는 주석이 필요합니다.
+  issues:
+  - severity: medium
+    issue: ‘모든 두려움’의 확정적 번역
+    rationale: 제시된 OCR에는 ‘두려움’ 앞의 복수 정관사 형태가 확인되지 않습니다. 영어 감사 이력은 이를 전제하지만, 현재 소스 발췌만으로는 ⲧⲏⲣⲟⲩ의 정확한 통사적 기능을 확정하기 어렵습니다. 본문은 영어 POB의 현행 읽기를 따르되 주석에서 OCR/판독 불확실성을 밝혀야 합니다.
+  - severity: medium
+    issue: 첫 두 절의 한국어 결속과 병렬성이 불명확함
+    rationale: ‘내 찾음의 신중함에 따른 말’은 ‘신중함’이 ‘말’을 꾸미는지 ‘찾음’을 꾸미는지 불분명합니다. 동사적 명사구를 절로 풀어 현대 한국어의 의미 관계를 드러내는 편이 안전합니다.
+  - severity: low
+    issue: 여성형 관계절의 번역
+    rationale: ‘존재하는 그녀’는 이해 가능하나 문어적으로 부자연스럽습니다. ‘여자인, 곧 … 존재하는 이’는 여성형 문법 표지를 더 자연스럽게 드러냅니다. 이는 화자의 생물학적 성별을 단정하는 표현이 아니라 원문의 여성형 자기지시를 보존하는 방식입니다.
+  revised_text: 그것은 내가 찾는 일에 관한 분별의 말이며, 내가 탐구하는 일에 대한 지식입니다. 그러나 나는 모든 두려움 속에도, 용기 속에도 존재하는 여자인 이입니다.[a][b][c]
+  revised_footnotes:
+  - marker: a
+    text: ‘모든 두려움’은 영어 POB 감사 번역이 따르는 판독입니다. 그러나 제공된 콥트어 OCR 발췌에서는 이 표현의 정확한 형태와 통사 관계가 완전히 확정되지 않으므로 잠정적 번역입니다.
+    reason: source_note
+  - marker: b
+    text: ⲡⲛⲏϣⲁⲧ은 문자적으로 ‘남자다움, 남성성’을 가리킬 수 있으나, 여기서는 ‘두려움’과 대조되는 뜻으로 ‘용기’로 옮겼습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: ‘여자인 이’는 콥트어 여성형 관계절을 보존한 표현입니다. 이는 화자의 생물학적 성별을 별도로 확정하려는 것이 아니라 문법적 여성형 자기지시를 드러냅니다. 첫 구절의 OCR 판독도 불확실하므로 ‘분별의 말’은 잠정적 번역입니다.
+    reason: source_note
+  revision_rationale: 후반부의 여성형 자기지시와 공포/용기의 병렬은 유지하되, 한국어 문장을 현대적으로 다듬었습니다. 영어 감사 이력의 ‘모든 두려움’ 읽기는 반영했지만, 제공된 OCR만으로 그 통사 분석을 검증할 수 없으므로 주석에서 판독의 잠정성을 명시했습니다. 첫 두 절은 불확실한 OCR을 넘어서 과도한 해석을 하지 않도록 최소한으로 자연화했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:15Z'
+  output_hash: a1e4bb09ed7c5e46a6a1c62e90a15789a678ce60b3cd3d43d34c70abf286bd23
+  usage:
+    completion_tokens: 1188
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 0
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 164
+      engine_ttlt_ms: 9772
+      pre_inference_ms: 143
+      service_tbt_ms: 8
+      service_ttft_ms: 521
+      service_ttlt_ms: 10077
+      total_duration_ms: 9943
+      user_visible_ttft_ms: 377
+    prompt_tokens: 4157
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5345
+  applied_revision: false
+  auto_apply_blocked_errors: []

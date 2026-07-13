@@ -132,4 +132,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초고는 Coptic의 병렬적인 자기 선언과 미완으로 끝나는 법정적 관계절을 대체로 충실히 반영합니다. 다만 OCR상 불확실한 ⲡⲓⲛⲁ, ⲙⲛⲧⲁⲓ, ⲛⲉⲗⲟⲥ에 근거한 복원·번역을 본문에서 단정하면서도 해당 위치에 주석을 달지 않았고, ‘율법’은 그리스어 차용어 νόμος의 더 일반적인 ‘법’보다 특정 종교 전통의 뉘앙스를 더할 수 있습니다.
+  naturalness: ‘하나됨 안에 있는’은 시적 역설을 유지할 수 있으나, ‘홀로 있으면서도’의 양보 연결은 원문의 단순 병렬을 강화합니다. ‘홀로 있고 하나됨 안에 있는’으로 고치면 병렬과 현대 한국어의 자연스러움을 함께 살립니다. 기존 주석의 ‘솔로이면서’는 현대 정식 문체에 맞지 않으며 원문의 대안도 정확히 설명하지 못합니다.
+  terminology: νόμος는 이 불확실한 OCR 문맥에서 중립적으로 ‘법’으로 옮기는 것이 안전합니다. ‘하나됨’은 ⲙⲛⲧⲟⲩⲁⲁⲧ로 복원할 경우 가능한 ‘unity/oneness’를 무리 없이 전달합니다.
+  issues:
+  - severity: medium
+    issue: 불확실한 OCR 복원에 대한 주석 앵커가 없음
+    rationale: ‘이름’, ‘하나됨’, ‘법’은 모두 OCR 표면형과 달리 문맥상 복원된 독해에 의존합니다. 독자가 본문 번역의 텍스트적 불확실성을 확인할 수 있도록 해당 낱말에 앵커를 두어야 합니다.
+  - severity: medium
+    issue: 주석 a의 위치와 내용이 부정확함
+    rationale: 앵커가 문장 끝, 곧 ‘법’ 뒤에 놓였지만 주석은 앞선 ‘홀로/하나됨’ 구절을 다룹니다. 또한 ‘솔로이면서’는 부자연스럽고 ‘as unity’의 대안을 정확히 반영하지 않습니다.
+  - severity: low
+    issue: ‘홀로 있으면서도’가 원문의 병렬에 양보 의미를 더함
+    rationale: ⲟⲩⲁⲁⲧ와 ⲙⲛⲧⲟⲩⲁⲁⲧ은 접속 양보 없이 병렬됩니다. ‘홀로 있고’가 긴장을 해소하지 않으면서 더 직접적입니다.
+  - severity: low
+    issue: ‘율법’이 ‘law’보다 좁고 종교적으로 특정된 의미를 낼 수 있음
+    rationale: OCR 독해가 νόμος라면 기본 의미는 ‘법’입니다. 문맥만으로 모세 율법을 뜻한다고 확정하지 않는 편이 안전합니다.
+  revised_text: 나는 죽은 자들 가운데서 외쳐진 이름[1]입니다[2]. 또한 나는 홀로 있고 하나됨[3] 안에 있는 자입니다. 법[4]에 따라 나를 심판할 자는—
+  revised_footnotes:
+  - marker: '1'
+    text: OCR에는 ⲡⲓⲛⲁ라고 되어 있으나, 문맥과 이 작품의 통상적인 어법에 따라 ⲡⲓⲣⲁⲛ(‘그 이름’)으로 복원하여 번역했습니다.
+    reason: alignment_note
+  - marker: '2'
+    text: ⲧⲁⲧⲧⲱⲱⲛ ⲉⲃⲟⲗ은 ‘내쫓다’, ‘밖으로 선포하다’ 등으로도 옮길 수 있습니다. 여기서는 소리와 발화의 뉘앙스를 살려 ‘외쳐진’으로 옮겼습니다.
+    reason: lexical_alternative
+  - marker: '3'
+    text: OCR의 ⲙⲛⲧⲁⲓ는 문맥상 ⲙⲛⲧⲟⲩⲁⲁⲧ(‘하나됨’, ‘일체성’)으로 복원한 독해입니다. ‘홀로 있고 하나됨 안에 있는’은 원문의 역설적 병렬을 유지합니다.
+    reason: alignment_note
+  - marker: '4'
+    text: OCR의 ⲛⲉⲗⲟⲥ는 그리스어 차용어 ⲛⲟⲙⲟⲥ(‘법’)로 읽었습니다. 이 복원이 맞지 않으면 법정적 의미는 달라질 수 있습니다.
+    reason: alignment_note
+  revision_rationale: 원문 OCR의 낮은 정렬 신뢰도와 세 핵심 복원 독해를 투명하게 밝혔습니다. 병렬된 역설을 양보 접속 없이 유지하고, 특정 종교 전통을 암시할 수 있는 ‘율법’ 대신 중립적인 ‘법’을 사용했습니다. 원문이 이 절에서 끊기는 점은 긴 대시로 보존했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:25Z'
+  output_hash: 56fe76411c7483bd84fb455f71369a739378a490f967b56b810efeff74fa1ee0
+  usage:
+    completion_tokens: 1730
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 294
+      engine_ttlt_ms: 14065
+      pre_inference_ms: 97
+      service_tbt_ms: 8
+      service_ttft_ms: 749
+      service_ttlt_ms: 14528
+      total_duration_ms: 14433
+      user_visible_ttft_ms: 651
+    prompt_tokens: 4521
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 6251
+  applied_revision: false
+  auto_apply_blocked_errors: []

@@ -125,4 +125,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 수용 본문 및 영어 POB 감사 기록이 채택한 역설적 친족 진술(‘아버지의 어머니/남편의 누이/그의 자녀’)을 충실히 반영합니다. 다만 제공된 콥트어 OCR은 수용 본문과 현저히 다르고 인접 내용까지 포함하는 것으로 보이므로, OCR상의 ‘머리’ 및 ‘주인의 여주인’ 가능성은 각주로만 보존하는 것이 적절합니다.
+  naturalness: ‘나는 …이며’의 병렬은 현대 표준 한국어 합쇼체에서 자연스럽고, 원문의 선언적·역설적 리듬을 유지합니다. 그러나 ‘그는 내 자손입니다’에서 ‘자손’은 보통 후대의 후손들 또는 계통을 뜻하여, 한 사람인 남편을 가리키는 ‘offspring/child’에는 부정확합니다. ‘내 아이’가 단수성과 친족 역설을 더 자연스럽게 전달합니다.
+  terminology: ‘어머니’, ‘아버지’, ‘남편’, ‘누이’는 적절합니다. ⲣⲏⲣⲉ의 ‘child/son’ 범위를 교파적 또는 성별 특정 해석 없이 보존하려면 ‘아이’가 ‘자손’보다 적합합니다.
+  issues:
+  - severity: medium
+    issue: ‘자손’이 단수의 ‘offspring/child’를 ‘후손·계통’으로 오해하게 할 수 있습니다.
+    rationale: 영어 POB의 ‘offspring’은 이 문맥에서 남편인 ‘그’를 화자가 낳은 자녀로 역설적으로 규정합니다. 한국어 ‘자손’은 대체로 화자 이후의 후대 일반이나 복수의 후예를 가리키므로, 해당 친족 관계를 흐릴 수 있습니다.
+  - severity: low
+    issue: 각주 c의 ‘족보적 뉘앙스’ 설명은 ‘자손’ 선택을 전제합니다.
+    rationale: 본문을 ‘아이’로 고치면, 해당 어휘가 ‘아이’ 또는 ‘아들’로도 번역될 수 있다는 원어의 범위를 설명하도록 각주를 조정해야 합니다.
+  revised_text: '나는 내 아버지의 어머니이며[a],
+
+
+    내 남편의 누이이며[b],
+
+
+    그는 내 아이입니다[c].'
+  revised_footnotes:
+  - marker: a
+    text: OCR은 이 자리를 ‘머리’로 읽을 수 있지만, 정본 계열은 ‘어머니’로 읽습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: POB가 채택한 읽기는 ‘남편의 누이’이며, OCR 계열에서는 ‘주인의 여주인’으로 읽힐 가능성도 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: ‘아이’에 해당하는 말은 ‘자녀’ 또는 ‘아들’로도 옮길 수 있습니다. 여기서는 성별을 특정하지 않는 표현을 택했습니다.
+    reason: lexical_alternative
+  revision_rationale: 수용 본문과 영어 POB의 해석은 유지하되, 단수의 자녀를 가리키는 원어와 문맥에 맞게 ‘자손’을 ‘아이’로 바꾸었습니다. OCR과 수용 본문 사이의 불일치는 번역 본문에 OCR 읽기를 혼입하지 않고 각주에서 명시하여 보존했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:14Z'
+  output_hash: 1cd438a2afb8318ba3363e4adb00fbdc508c5bd0a4b51d3e2f4cf85bef60079c
+  usage:
+    completion_tokens: 1053
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 253
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 184
+      engine_ttlt_ms: 8916
+      pre_inference_ms: 85
+      service_tbt_ms: 8
+      service_ttft_ms: 584
+      service_ttlt_ms: 9311
+      total_duration_ms: 9235
+      user_visible_ttft_ms: 500
+    prompt_tokens: 3697
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4750
+  applied_revision: false
+  auto_apply_blocked_errors: []

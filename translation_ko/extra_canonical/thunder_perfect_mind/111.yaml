@@ -144,4 +144,73 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현 번역은 감사 기록이 확인한 핵심 순서(창조주, 이름을 외쳐 부름, 말과 완성된 글을 봄, 듣는 이들에게 들으라고 함)를 대체로 반영합니다. 그러나 첫 행의 ⲉⲣⲁⲧϥ은 단순한 수여격 ‘…에게’보다 ‘그분 앞에서’로 읽는 것이 자연스럽고, 마지막 행의 ⲧⲏⲩⲧⲛ̄은 ‘모두’를 반영해야 합니다. OCR 발췌가 마지막 낱말 중간에서 끝나므로 마지막 행은 문장 미완결 상태를 보존합니다.
+  naturalness: ‘그분이 나를 만드신 이에게’는 한국어에서 부자연스럽고 지시 대상도 겹칩니다. ‘나를 지으신 분 앞에서’가 콥트어 어순과 현대 한국어 문장성을 함께 살립니다. ‘듣는 이들아’는 나머지 합쇼체 명령문과 다소 어울리지 않으므로 ‘듣는 이들이여, 들으십시오’로 통일했습니다.
+  terminology: ϣⲁϫⲉ는 신적 존칭을 전제하는 ‘말씀’보다 중립적인 ‘말’이 안전합니다. ⲛⲁⲕⲣⲟⲁⲧⲏⲥ는 ‘듣는 이들’, ⲛ̄ⲛⲁⲅⲅⲉ-는 ‘천사들’로 적절합니다. ‘모든 천사들이여’는 총칭 요소를 보존합니다.
+  issues:
+  - severity: medium
+    issue: 첫 행이 ‘…에게’라는 어색한 미완성 수여구문으로 번역됨
+    rationale: OCR의 ⲉⲣⲁⲧϥ은 ‘그분 앞에/앞에서’로 이해하는 편이 적합합니다. 발췌 자체가 문맥상 절편일 수 있으나, 한국어에서는 이를 그대로 수여격으로 만들 필요가 없습니다.
+  - severity: low
+    issue: ‘그분의 말씀’이 존칭·신학적 뉘앙스를 추가함
+    rationale: 원문의 ϣⲁϫⲉ는 ‘말/말들’이며, 화자의 대상에 대한 존칭을 문법적으로 요구하지 않습니다. 중립적인 ‘그의 말’을 택하는 것이 안전합니다.
+  - severity: medium
+    issue: 마지막 행에서 ‘모두’가 누락되고, 각주 c가 본문과 동일한 표현을 불필요하게 대안으로 제시함
+    rationale: ⲧⲏⲩⲧⲛ̄은 총칭을 나타내므로 ‘모든 천사들이여’로 반영해야 합니다. OCR이 ‘천사들’ 낱말의 도중에 끝나므로, 그 미완결성은 본문 종결 쉼표와 본문 주석으로 처리하는 편이 낫습니다.
+  revised_text: '나를 지으신 분 앞에서[a].
+
+
+    나는 그의 이름을 외쳐 부를 자입니다.
+
+
+    그러니 그의 말을 보십시오.
+
+
+    완성된 모든 글도 보십시오.
+
+
+    그러므로 듣는 이들이여, 들으십시오.
+
+
+    그리고 너희도, 모든 천사들이여,[b]'
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 “나를 지으신 분 앞에서”입니다. 이 발췌는 앞 절과의 연결이 남아 있을 수 있는 절편입니다.
+    reason: source_note
+  - marker: b
+    text: 현 OCR 발췌는 ‘천사들’에 해당하는 낱말의 중간에서 끝납니다. 따라서 이 행은 이어지는 본문에 의해 완결될 가능성이 있습니다.
+    reason: textual_variant
+  revision_rationale: 감사 기록의 복원된 본문 순서를 유지하되, 현 콥트어 OCR에 실제로 남은 표현을 우선하여 첫 행을 ‘앞에서’로 바로잡고, ϣⲁϫⲉ의 중립성을 보존했습니다. 마지막 행에는 총칭 요소를 반영하고, 절편의 미완결성은 각주로 명시했습니다. 중복되고 정보가 부정확한 기존 각주 c는 삭제했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:27Z'
+  output_hash: 64c7278e13d58e00b2e8edce4571a25ee5e04dd43bd68d04ee9e9ab3dc9e3a8e
+  usage:
+    completion_tokens: 1830
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 795
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 113
+      engine_ttlt_ms: 16381
+      pre_inference_ms: 171
+      service_tbt_ms: 9
+      service_ttft_ms: 611
+      service_ttlt_ms: 16876
+      total_duration_ms: 16715
+      user_visible_ttft_ms: 440
+    prompt_tokens: 3962
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5792
+  applied_revision: false
+  auto_apply_blocked_errors: []

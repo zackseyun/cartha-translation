@@ -132,4 +132,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 제시된 콥트어 OCR 발췌에는 ⲕⲟⲗⲁⲥⲓⲥ(처벌), ⲫⲩⲥⲓⲥ(본성), ⲕⲧⲓⲥⲓⲥ(창조), ⲯⲩⲭⲏ(영혼) 등의 어휘가 보이며, 제공된 대조 본문의 ‘평화/전쟁/외국인/시민’과 일치하지 않습니다. 따라서 현 번역은 제시된 consult text 및 영어 POB를 따르면 자연스럽고 충실하지만, 이 OCR 발췌 자체로는 원어 대조를 검증할 수 없습니다. 이 불일치는 독자가 알 수 있도록 주석으로 밝혀야 합니다.
+  naturalness: ‘나는 평화입니다’, ‘전쟁이 나로 말미암아 일어났습니다’, ‘나는 외국인이며 시민입니다’는 현대 표준 한국어 합쇼체로 자연스럽고, 원문의 대구와 역설을 유지합니다. ‘나로 말미암아’는 다소 문어적이나 작품의 격조에 적합합니다.
+  terminology: ‘평화/전쟁’과 ‘외국인/시민’은 각각 대립 관계를 선명하게 보존합니다. 다만 기존 b 주석은 본문과 똑같이 ‘일어났습니다’를 대안으로 제시하여 실제 번역 대안을 제공하지 못합니다. 영어 POB의 완료형 ‘has come’ 및 ‘has arisen’의 관계를 반영하도록 바로잡아야 합니다.
+  issues:
+  - severity: high
+    issue: 제시된 콥트어 OCR 발췌와 consult text/영어 POB 본문이 서로 불일치합니다.
+    rationale: OCR 발췌에는 이 단락의 핵심어로 제시된 평화, 전쟁, 외국인, 시민이 나타나지 않습니다. 현 번역을 OCR에 직접 근거한 것으로 제시할 수 없으므로 정렬 불일치를 명시해야 합니다.
+  - severity: medium
+    issue: 각주 b가 본문과 동일한 ‘일어났습니다’를 대안으로 반복합니다.
+    rationale: 각주는 실제 대안 또는 직역적 가능성을 제시해야 합니다. 동사의 ‘오다’라는 기본 뜻과 완료적 사건성을 설명하는 방식으로 고쳐야 합니다.
+  revised_text: '나는 평화입니다[a]. 전쟁이 나로 말미암아 일어났습니다[b].
+
+
+    나는 외국인이며 시민입니다[c].'
+  revised_footnotes:
+  - marker: a
+    text: 또는 “낯선 사람”. ⲝⲉⲛⲟⲥ는 ‘외국인’과 ‘낯선 사람’으로 모두 옮길 수 있으나, ‘시민’과 이루는 시민적 대비를 살리기 위해 본문에서는 ‘외국인’으로 옮겼습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 “전쟁이 나로 말미암아 왔습니다.” 동사는 완료적으로 이해될 수 있으며, 본문의 ‘일어났습니다’는 전쟁의 발발을 자연스럽게 나타냅니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 제공된 콥트어 OCR 발췌에는 ⲕⲟⲗⲁⲥⲓⲥ, ⲫⲩⲥⲓⲥ, ⲕⲧⲓⲥⲓⲥ, ⲯⲩⲭⲏ 등의 서로 관련 없는 그리스어 차용어가 나타나므로, 이 절과의 정렬이 어긋났을 가능성이 큽니다. 본문은 제공된 대조 본문에 근거하여 번역했습니다.
+    reason: alignment_note
+  revision_rationale: 번역 본문은 제공된 대조 본문의 역설적 병렬을 보존하되, 접속사를 반복하지 않고 한국어 시문으로 자연스럽게 다듬었습니다. 결함 있는 b 각주를 실제 직역 대안과 상 설명으로 교체하고, 원어 OCR과 대조 본문 사이의 중대한 정렬 불일치를 c 각주로 명시했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T20:38:28Z'
+  output_hash: d257a5f82cbfa3f45559597ecf9fda7368718bc017bb7d643ae442392f83ae99
+  usage:
+    completion_tokens: 1518
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 13591
+      pre_inference_ms: 157
+      service_tbt_ms: 9
+      service_ttft_ms: 476
+      service_ttlt_ms: 13920
+      total_duration_ms: 13778
+      user_visible_ttft_ms: 319
+    prompt_tokens: 2879
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4397
+  applied_revision: false
+  auto_apply_blocked_errors: []
