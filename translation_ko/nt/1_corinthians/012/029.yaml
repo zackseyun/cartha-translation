@@ -26,4 +26,53 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 각 항목을 의문문으로 반복한 점은 살렸지만, μή가 부정 답변을 예상하게 하는 의문문이라는 점이 한국어에 드러나지 않습니다. 또한 마지막의 ‘능력을 행합니까?’는 δυνάμεις를 자연스럽게 옮기지 못합니다. 문맥상 기적적 행위를 가리키므로 ‘기적을 행하다’가 적절합니다.
+  naturalness: ‘능력을 행하다’는 현대 표준 한국어에서 부자연스럽습니다. ‘모두가 …인 것은 아니지 않습니까?’라는 형식은 합쇼체를 유지하면서 부정의 수사 의문을 자연스럽게 전달합니다.
+  terminology: ἀπόστολοι, προφῆται, διδάσκαλοι는 각각 ‘사도’, ‘예언자’, ‘교사’로 적절합니다. δυνάμεις는 이 목록에서 기적적 능력/기적 행위를 가리키므로 본문에서는 ‘기적을 행하다’로 옮기고, 직역 가능성은 각주로 보완합니다.
+  issues:
+  - severity: medium
+    issue: μή의 부정 수사 의문이 본문에 반영되지 않음
+    rationale: ‘모두가 사도입니까?’는 문맥상 수사적으로 읽힐 수는 있으나, 원문의 부정 답변 기대를 명시적으로 전달하지 못합니다.
+  - severity: medium
+    issue: ‘능력을 행합니까?’가 부자연스럽고 δυνάμεις의 문맥적 뜻을 충분히 전달하지 못함
+    rationale: δυνάμεις는 문자적으로 ‘능력들/기적들’이지만, 이 역할·은사 목록에서는 기적을 행하는 일을 가리킵니다. ‘기적을 행하다’가 자연스럽고 문맥에 맞습니다.
+  revised_text: 모두가 사도인 것은 아니지 않습니까? 모두가 예언자인 것은 아니지 않습니까? 모두가 교사인 것은 아니지 않습니까? 모두가 기적을 행하는 것은 아니지 않습니까?ᵃ
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 ‘능력들’ 또는 ‘기적들’입니다. 여기서는 기적을 행하는 일을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 μή 반복이 요구하는 부정 수사 의문을 합쇼체로 분명히 나타냈습니다. 마지막 항목은 한국어 관용과 문맥에 따라 ‘기적을 행하다’로 옮기되, δυνάμεις의 문자적 표현과 문맥적 이해는 각주에 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T11:23:54Z'
+  output_hash: 6b3ed2e94fe76000168914a509498d30e525be6b0dab1cac4a1a2b4ad4bda47d
+  usage:
+    completion_tokens: 999
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 365
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 151
+      engine_ttlt_ms: 7979
+      pre_inference_ms: 414
+      service_tbt_ms: 8
+      service_ttft_ms: 619
+      service_ttlt_ms: 8444
+      total_duration_ms: 8039
+      user_visible_ttft_ms: 205
+    prompt_tokens: 1614
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2613
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
