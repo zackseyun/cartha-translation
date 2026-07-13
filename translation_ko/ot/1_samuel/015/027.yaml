@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 사무엘이 가려고 몸을 돌렸는데, 그의 겉옷 자락을 붙잡자 그 옷이 찢어졌습니다.[a]
+  text: 사무엘이 가려고 몸을 돌리자, 사울이 사무엘의 겉옷 자락[a]을 붙잡았고, 그것이 찢어졌습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘자락’은 כאןף가 가리킬 수 있는 의복의 끝부분, 가장자리, 또는 옷단을 포괄합니다.
+    text: ‘옷자락’은 히브리어 כָּנָף가 가리킬 수 있는 의복의 끝부분, 모서리, 또는 옷단을 포괄합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּסֹּב
@@ -72,4 +72,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 사무엘이 가려고 몸을 돌렸는데, 그의 겉옷 자락을 붙잡자 그 옷이 찢어졌습니다.[a]
+  to: 사무엘이 가려고 몸을 돌리자, 사울이 사무엘의 겉옷 자락[a]을 붙잡았고, 그것이 찢어졌습니다.
+  rationale: 문맥상 암시된 사울을 명시하고 ‘사무엘의 겉옷’이라고 밝혀 원문의 행위 관계를 보존했습니다. 또한 כָּנָף의 폭넓은 의미는 각주로 유지했으며, 각주 표기를 교정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:17:43Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어에서 사무엘은 ‘돌아가려’ 하는 주어이며, 이어 ‘붙잡은’ 주어는 문맥상 사울이고 붙잡힌 옷은 사무엘의 겉옷입니다. 초안은 두 대명사의 지시 대상이 불분명하여 사무엘이 자기 옷자락을 붙잡은 것으로 읽힐 수 있습니다.
+  naturalness: ‘사무엘이 가려고 몸을 돌리자’와 ‘사울이 사무엘의 겉옷 자락을 붙잡았고’는 현대 표준 한국어 합쇼체 서술로 자연스럽고, 사건의 주체를 명확히 합니다.
+  terminology: מְעִיל은 ‘겉옷’, כָּנָף은 ‘옷자락’으로 옮기는 것이 적절합니다. 각주에 잘못 표기된 히브리어 ‘כאןף’는 ‘כָּנָף’으로 바로잡아야 합니다.
+  issues:
+  - severity: high
+    issue: ‘그의 겉옷 자락을 붙잡자’의 행위자와 소유자가 불명확합니다.
+    rationale: 원문의 직접 문맥에서 붙잡은 이는 사울이고, 겉옷의 소유자는 사무엘입니다. 초안의 연결은 사무엘이 행위자인 것으로 오해될 수 있으므로 명시해야 합니다.
+  - severity: low
+    issue: 각주의 히브리어 표기가 ‘כאןף’로 잘못되어 있습니다.
+    rationale: 해당 어휘는 כָּנָף입니다.
+  revised_text: 사무엘이 가려고 몸을 돌리자, 사울이 사무엘의 겉옷 자락[a]을 붙잡았고, 그것이 찢어졌습니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘옷자락’은 히브리어 כָּנָף가 가리킬 수 있는 의복의 끝부분, 모서리, 또는 옷단을 포괄합니다.
+    reason: lexical_alternative
+  revision_rationale: 문맥상 암시된 사울을 명시하고 ‘사무엘의 겉옷’이라고 밝혀 원문의 행위 관계를 보존했습니다. 또한 כָּנָף의 폭넓은 의미는 각주로 유지했으며, 각주 표기를 교정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:17:43Z'
+  output_hash: 771cdd68202a3f89f5b8f850ef9638659046afd7ef34416c72f91658b34b9d5b
+  usage:
+    completion_tokens: 844
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 273
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 145
+      engine_ttlt_ms: 6865
+      pre_inference_ms: 121
+      service_tbt_ms: 8
+      service_ttft_ms: 419
+      service_ttlt_ms: 7137
+      total_duration_ms: 7028
+      user_visible_ttft_ms: 299
+    prompt_tokens: 1741
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2585
+  applied_revision: true
+  auto_apply_blocked_errors: []

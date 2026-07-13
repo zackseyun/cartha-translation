@@ -23,17 +23,17 @@ base_translation:
     reason: textual_variant
 translation:
   language: ko
-  text: 그가 그들에게 말했습니다. 「야훼께서 오늘 너희에게, 또 그의 기름부음 받은 자에게 증인이 되십니다. 너희가 내 손에서 아무것도 찾지 못했습니다.」 그러자 그들이 말했습니다. 「그가 증인입니다.」[a][b][c]
+  text: 그가 그들에게 말했습니다. 「야훼께서 오늘 너희를 상대로[a] 증인이시며, 그분의 기름부음 받은 자[b]도 증인입니다. 너희가 내 손에서 아무것도 찾아내지 못했습니다.」 그러자 그들이 말했습니다[c]. 「그분은 증인이십니다.」
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 “너희 가운데/너희와 함께”에 가깝지만, 법정적 문맥에서는 “너희에게”로 옮기는 것이 자연스럽습니다.
+    text: 히브리어는 문자적으로 “너희 가운데/너희와 함께”에 가깝습니다. 그러나 법정적 문맥에서는 야훼께서 그들을 상대로 이 사건의 증인이 되신다는 뜻으로 이해할 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: “그의 기름부음 받은 자”는 여기서 장차의 메시아 칭호가 아니라, 즉위한 왕 사울을 가리킵니다.
+    text: “그분의 기름부음 받은 자”는 여기서 후대의 메시아 칭호가 아니라, 즉위한 왕 사울을 가리킵니다.
     reason: cultural_note
   - marker: c
-    text: 마지막 히브리어 동사는 단수형이지만, 문맥상 집단의 응답이므로 한국어에서는 복수로 옮겼습니다.
+    text: 마지막 히브리어 동사는 단수형(“그가 말했습니다”)이지만, 문맥상 백성의 집단적 응답이므로 한국어에서는 복수로 옮겼습니다.
     reason: textual_variant
 lexical_decisions:
 - source_word: עֵד
@@ -94,4 +94,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 그들에게 말했습니다. 「야훼께서 오늘 너희에게, 또 그의 기름부음 받은 자에게 증인이 되십니다. 너희가 내 손에서 아무것도 찾지 못했습니다.」 그러자 그들이 말했습니다. 「그가 증인입니다.」[a][b][c]
+  to: 그가 그들에게 말했습니다. 「야훼께서 오늘 너희를 상대로[a] 증인이시며, 그분의 기름부음 받은 자[b]도 증인입니다. 너희가 내 손에서 아무것도 찾아내지 못했습니다.」 그러자 그들이 말했습니다[c]. 「그분은 증인이십니다.」
+  rationale: 원문의 병렬 구조를 회복하여 야훼와 그분의 기름부음 받은 자가 모두 증인이라는 뜻을 명확히 했습니다. 법정적 문맥의 בָּכֶם은 영어 POB의 ‘against you’와 조응하게 ‘너희를 상대로’로 옮기되, 가능한 문자적 범위는 각주에서 밝혔습니다. 각주 표지도 해당 어구와 동사로 재배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:18:21Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 두 병렬 술어는 ‘야훼’와 ‘그의 기름부음 받은 자’가 각각 증인임을 선언합니다. 초안의 ‘야훼께서 … 그의 기름부음 받은 자에게 증인이 되십니다’는 후자를 증인의 공동 주어가 아니라 증언의 대상처럼 연결하여 원문의 문장 구조와 뜻을 바꿉니다. 이를 바로잡고, בָּכֶם의 법정적 문맥을 ‘너희를 상대로’로 옮겼습니다.
+  naturalness: ‘증인이 되십니다’보다 공적·법정적 선언에 맞는 ‘증인이십니다’가 자연스럽습니다. 또한 각주 표지를 해당 표현과 동사에 직접 붙여 참조 관계를 분명히 했습니다.
+  terminology: ‘야훼’, ‘그분의 기름부음 받은 자’, ‘증인’은 각각 신명, מְשִׁיחוֹ의 비메시아적 왕정 의미, עֵד의 법정적 의미를 충실히 반영합니다. ‘그분’은 바로 앞의 야훼를 가리키며, 마지막의 단수 ‘증인’ 선언을 한국어 합쇼체로 자연스럽게 보존합니다.
+  issues:
+  - severity: high
+    issue: 두 번째 ‘증인’의 주어가 잘못 연결되었습니다.
+    rationale: 히브리어 ‘야훼는 … 증인이시며 그의 기름부음 받은 자도 오늘 증인이다’에서 ‘그의 기름부음 받은 자’는 증인입니다. 초안은 이를 ‘야훼께서 … 그의 기름부음 받은 자에게 증인이 되신다’로 처리하여 문장 관계를 변경합니다.
+  - severity: medium
+    issue: 각주 표지가 모두 마지막 응답 뒤에 놓여 있습니다.
+    rationale: a는 בָּכֶם의 번역, b는 ‘그의 기름부음 받은 자’, c는 마지막 발화동사에 관한 주석이므로 각각 해당 본문 요소에 붙어야 합니다.
+  - severity: low
+    issue: 마지막 ‘그가 증인입니다’의 지시가 다소 불명확합니다.
+    rationale: 히브리어는 단수 ‘증인’이라고만 말하지만, 한국어에서는 ‘그분은 증인이십니다’가 앞선 야훼를 자연스럽게 지시하면서 존대 문체를 유지합니다.
+  revised_text: 그가 그들에게 말했습니다. 「야훼께서 오늘 너희를 상대로[a] 증인이시며, 그분의 기름부음 받은 자[b]도 증인입니다. 너희가 내 손에서 아무것도 찾아내지 못했습니다.」 그러자 그들이 말했습니다[c]. 「그분은 증인이십니다.」
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 “너희 가운데/너희와 함께”에 가깝습니다. 그러나 법정적 문맥에서는 야훼께서 그들을 상대로 이 사건의 증인이 되신다는 뜻으로 이해할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: “그분의 기름부음 받은 자”는 여기서 후대의 메시아 칭호가 아니라, 즉위한 왕 사울을 가리킵니다.
+    reason: cultural_note
+  - marker: c
+    text: 마지막 히브리어 동사는 단수형(“그가 말했습니다”)이지만, 문맥상 백성의 집단적 응답이므로 한국어에서는 복수로 옮겼습니다.
+    reason: textual_variant
+  revision_rationale: 원문의 병렬 구조를 회복하여 야훼와 그분의 기름부음 받은 자가 모두 증인이라는 뜻을 명확히 했습니다. 법정적 문맥의 בָּכֶם은 영어 POB의 ‘against you’와 조응하게 ‘너희를 상대로’로 옮기되, 가능한 문자적 범위는 각주에서 밝혔습니다. 각주 표지도 해당 어구와 동사로 재배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:18:21Z'
+  output_hash: 63b5b7d97b7fab63e2d4478011c441d808db3c363bc83323705a6d669027adf0
+  usage:
+    completion_tokens: 1309
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 355
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 168
+      engine_ttlt_ms: 10598
+      pre_inference_ms: 131
+      service_tbt_ms: 8
+      service_ttft_ms: 486
+      service_ttlt_ms: 10876
+      total_duration_ms: 10755
+      user_visible_ttft_ms: 355
+    prompt_tokens: 2648
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 2176
+    total_tokens: 3957
+  applied_revision: true
+  auto_apply_blocked_errors: []

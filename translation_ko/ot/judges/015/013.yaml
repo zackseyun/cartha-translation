@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들은 그에게 말했습니다. 「아니라, 우리는 너를 반드시 묶어 그들의 손에 넘겨주겠지만, 너를 죽이지는 않겠다.」 그래서 그들은 두 개의 새 밧줄로 그를 묶고 그를 바위에서 끌어올렸습니다.[a][b]
+  text: 그들이 그에게 말했습니다. 「아니요, 우리는 너를 반드시 묶어 그들의 손에 넘겨주겠습니다.[a] 그러나 우리는 너를 결코 죽이지 않겠습니다.」 그래서 그들은 새 밧줄 두 개로 그를 묶고 바위에서 데리고 올라갔습니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 관용구는 문자적으로는 “그들의 손 안에”입니다.
+    text: 히브리어 관용구는 문자적으로 “그들의 손에”입니다.
     reason: source_note
   - marker: b
-    text: סלע는 여기서 단일한 바위뿐 아니라 바위 지대나 바위턱을 가리킬 수 있습니다.
+    text: 히브리어 סלע는 단일한 바위뿐 아니라 바위 지대나 바위턱을 가리킬 수도 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: לֹא כִּי
@@ -90,4 +90,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들은 그에게 말했습니다. 「아니라, 우리는 너를 반드시 묶어 그들의 손에 넘겨주겠지만, 너를 죽이지는 않겠다.」 그래서 그들은 두 개의 새 밧줄로 그를 묶고 그를 바위에서 끌어올렸습니다.[a][b]
+  to: 그들이 그에게 말했습니다. 「아니요, 우리는 너를 반드시 묶어 그들의 손에 넘겨주겠습니다.[a] 그러나 우리는 너를 결코 죽이지 않겠습니다.」 그래서 그들은 새 밧줄 두 개로 그를 묶고 바위에서 데리고 올라갔습니다.[b]
+  rationale: 직접화법을 현대 표준 한국어 합쇼체로 자연화하면서도 히브리어의 부정-정정 구조와 두 강조형을 보존했습니다. 관용구와 지형어의 의미 범위는 본문과 각주의 적절한 위치에서 유지했으며, 원문이 명시하지 않는 ‘끌다’의 뉘앙스는 제거했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:11:01Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 부정 뒤 정정(לֹא כִּי), ‘반드시 묶다’와 ‘결코 죽이지 않다’의 강조, ‘그들의 손에 넘기다’라는 관용구, 두 개의 새 밧줄, 그리고 바위/바위 지형에서 위로 데리고 가는 동작을 전반적으로 반영합니다. 다만 초안의 「아니라」는 직접 응답으로 문법적·문체적으로 부자연스럽고, 죽이지 않겠다는 강조도 더 분명히 드러낼 필요가 있습니다. 「끌어올렸습니다」는 본문에 없는 강제적 ‘끌다’의 뉘앙스를 더할 수 있어 중립적으로 수정합니다.
+  naturalness: 합쇼체 직접화법에서는 「아니요, 우리는 … 하겠습니다」가 자연스럽습니다. 또한 각주 표지는 해당 어구 바로 뒤에 두어야 독자가 무엇을 설명하는지 분명히 알 수 있습니다.
+  terminology: 「그들의 손에 넘겨주다」는 히브리어 관용구의 이미지를 보존하면서도 자연스럽습니다. עֲבֹתִים은 「밧줄」로, סלע는 본문에서는 「바위」로 옮기고 각주에서 바위 지대·바위턱의 가능성을 밝혀 모호성을 보존합니다.
+  issues:
+  - severity: medium
+    issue: 직접화법의 「아니라」
+    rationale: 「아니라」는 통상 뒤에 대조 구문을 요구하는 연결 표현이므로, 독립된 응답인 לֹא כִּי를 자연스럽게 옮기지 못합니다. 「아니요, 우리는…」으로 고칩니다.
+  - severity: low
+    issue: 죽이지 않겠다는 강조의 약화
+    rationale: הָמֵת לֹא נְמִיתֶךָ는 부정과 함께 강조형을 사용합니다. 「결코 죽이지 않겠습니다」가 이를 더 잘 반영합니다.
+  - severity: medium
+    issue: 각주 표지 위치 및 각주 a의 직역 표현
+    rationale: a는 ‘그들의 손에’에, b는 ‘바위’에 각각 붙어야 합니다. 또한 בְיָדָם의 직역은 「그들의 손에」이며 「그들의 손 안에」는 불필요하게 다른 공간적 뉘앙스를 더합니다.
+  - severity: low
+    issue: 「끌어올렸습니다」의 과도한 뉘앙스
+    rationale: וַיַּעֲלוּהוּ는 그를 위로 데리고 가게 한 행위를 뜻하며, ‘끌다’가 반드시 함축되지는 않습니다. 「데리고 올라갔습니다」가 더 중립적입니다.
+  revised_text: 그들이 그에게 말했습니다. 「아니요, 우리는 너를 반드시 묶어 그들의 손에 넘겨주겠습니다.[a] 그러나 우리는 너를 결코 죽이지 않겠습니다.」 그래서 그들은 새 밧줄 두 개로 그를 묶고 바위에서 데리고 올라갔습니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 관용구는 문자적으로 “그들의 손에”입니다.
+    reason: source_note
+  - marker: b
+    text: 히브리어 סלע는 단일한 바위뿐 아니라 바위 지대나 바위턱을 가리킬 수도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 직접화법을 현대 표준 한국어 합쇼체로 자연화하면서도 히브리어의 부정-정정 구조와 두 강조형을 보존했습니다. 관용구와 지형어의 의미 범위는 본문과 각주의 적절한 위치에서 유지했으며, 원문이 명시하지 않는 ‘끌다’의 뉘앙스는 제거했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:11:01Z'
+  output_hash: edcca7b184efebe69e029fc4b4384f707d6c982edb4cc0b6693a358ad6967854
+  usage:
+    completion_tokens: 1281
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 376
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 132
+      engine_ttlt_ms: 10303
+      pre_inference_ms: 116
+      service_tbt_ms: 8
+      service_ttft_ms: 596
+      service_ttlt_ms: 10765
+      total_duration_ms: 10659
+      user_visible_ttft_ms: 480
+    prompt_tokens: 2451
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3732
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그 여인은 아침이 밝아 오려 할 때에 와서, 그 집 남자의 입구에서 엎드렸는데, 그녀의 주인이 거기 있었던 곳이었습니다. 빛이 날 때까지 그렇게 있었습니다.[a][b]
+  text: 그 여인은 아침이 밝아 올 무렵에[a] 와서, 자기 주인이 있던 그 남자의 집 문간에 쓰러졌으며, 날이 밝을 때까지 그곳에 있었습니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘아침이 밝아 오려 할 때에’는 히브리어 관용구가 가리키는 아침의 전환 시점을 옮긴 것입니다.
-    reason: source_note
+    text: 또는 ‘아침이 다가올 무렵에’, ‘동틀 무렵에’. 히브리어 관용구는 문자적으로 아침이 ‘돌아오는’ 때를 가리킵니다.
+    reason: lexical_alternative
   - marker: b
-    text: ‘주인’은 히브리어가 가진 권위 관계를 반영한 표현으로, 여기서 곧바로 ‘남편’으로 특정하지 않습니다.
-    reason: source_note
+    text: ‘주인’은 히브리어가 가진 권위 관계를 반영한 표현이며, 여기서 곧바로 ‘남편’으로 특정하지 않습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: לִפְנוֹת הַבֹּקֶר
   english_pob_choice: As morning was dawning
@@ -93,4 +93,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그 여인은 아침이 밝아 오려 할 때에 와서, 그 집 남자의 입구에서 엎드렸는데, 그녀의 주인이 거기 있었던 곳이었습니다. 빛이 날 때까지 그렇게 있었습니다.[a][b]
+  to: 그 여인은 아침이 밝아 올 무렵에[a] 와서, 자기 주인이 있던 그 남자의 집 문간에 쓰러졌으며, 날이 밝을 때까지 그곳에 있었습니다.[b]
+  rationale: 문장의 관계 구조를 원문에 맞게 ‘자기 주인이 있던 그 남자의 집 문간’으로 바로잡고, נפל을 ‘쓰러졌으며’로 옮겨 서술의 비자발적·급작스러운 성격을 보존했습니다. 시간 표현은 ‘아침이 밝아 올 무렵’과 ‘날이 밝을 때까지’로 자연스럽게 다듬되, 원문의 지속 의미를 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:10:22Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 시간 표현과 ‘주인’의 권위 관계를 대체로 보존합니다. 그러나 וַתִּפֹּל(‘쓰러지다/넘어지다’)을 ‘엎드렸는데’로 옮긴 것은 자발적 자세나 경배의 뉘앙스를 낳을 수 있어 원문의 갑작스러운 쓰러짐을 충분히 반영하지 못합니다. 또한 ‘그 집 남자의 입구’는 히브리어의 ‘그 남자의 집 문간’을 잘못 묶어 매우 부자연스럽게 만듭니다. ‘빛이 날 때까지’도 한국어 관용상 ‘날이 밝을 때까지’가 적절합니다.
+  naturalness: ‘그녀의 주인이 거기 있었던 곳이었습니다’는 관계절을 독립 서술로 분리하여 어색하고, 선행하는 ‘입구’와도 문법적으로 연결되지 않습니다. 원문의 관계절을 ‘자기 주인이 있던 그 남자의 집’으로 자연스럽게 결속할 수 있습니다.
+  terminology: אֲדוֹנֶיהָ는 혼인 관계를 명시하지 않는 ‘자기 주인’으로 유지하는 것이 적절합니다. פֶּתַח בֵּית הָאִישׁ은 ‘그 남자의 집 문간’으로 옮기는 것이 구성 관계와 현대 한국어 용법에 맞습니다.
+  issues:
+  - severity: high
+    issue: ‘그 집 남자의 입구’라는 구성이 원문의 명사 연결을 잘못 반영합니다.
+    rationale: פֶּתַח בֵּית הָאִישׁ은 ‘그 남자의 집의 문간/입구’이지 ‘그 집 남자’의 입구가 아닙니다.
+  - severity: medium
+    issue: ‘엎드렸는데’는 וַתִּפֹּל의 기본 의미를 약화하거나 달리 해석할 수 있습니다.
+    rationale: נפל은 여기서 ‘쓰러지다/넘어지다’이며, ‘엎드리다’는 의도적으로 몸을 낮추는 자세도 뜻할 수 있습니다.
+  - severity: medium
+    issue: 관계절과 시간 지속 표현이 부자연스럽습니다.
+    rationale: ‘그녀의 주인이 거기 있었던 곳이었습니다’는 원문의 ‘자기 주인이 있던 그 남자의 집’을 분리해 버립니다. ‘빛이 날 때까지’보다 ‘날이 밝을 때까지’가 자연스럽습니다.
+  revised_text: 그 여인은 아침이 밝아 올 무렵에[a] 와서, 자기 주인이 있던 그 남자의 집 문간에 쓰러졌으며, 날이 밝을 때까지 그곳에 있었습니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘아침이 다가올 무렵에’, ‘동틀 무렵에’. 히브리어 관용구는 문자적으로 아침이 ‘돌아오는’ 때를 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘주인’은 히브리어가 가진 권위 관계를 반영한 표현이며, 여기서 곧바로 ‘남편’으로 특정하지 않습니다.
+    reason: lexical_alternative
+  revision_rationale: 문장의 관계 구조를 원문에 맞게 ‘자기 주인이 있던 그 남자의 집 문간’으로 바로잡고, נפל을 ‘쓰러졌으며’로 옮겨 서술의 비자발적·급작스러운 성격을 보존했습니다. 시간 표현은 ‘아침이 밝아 올 무렵’과 ‘날이 밝을 때까지’로 자연스럽게 다듬되, 원문의 지속 의미를 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:10:22Z'
+  output_hash: 1fef3fdf70a9a81a5555a2883db358f9f431eebdc2e8e493e70e721ad27bd29e
+  usage:
+    completion_tokens: 1312
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 445
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 144
+      engine_ttlt_ms: 9914
+      pre_inference_ms: 122
+      service_tbt_ms: 7
+      service_ttft_ms: 429
+      service_ttlt_ms: 10195
+      total_duration_ms: 10084
+      user_visible_ttft_ms: 307
+    prompt_tokens: 2952
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4264
+  applied_revision: true
+  auto_apply_blocked_errors: []

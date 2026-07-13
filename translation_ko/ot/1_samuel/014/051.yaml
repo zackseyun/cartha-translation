@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 기스는 사울의 아버지였고, 넬은 아브넬의 아버지였으며, 아브넬은 아비엘의 아들이었습니다.[a]
+  text: 사울의 아버지 기스와 아브넬의 아버지 넬은 아비엘의 아들들이었습니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 ‘기스, 사울의 아버지; 넬, 아브넬의 아버지, 아비엘의 아들’처럼 더 축약적으로도 읽을 수 있습니다. 영어 POB는 이를 풀어 ‘was the father of’를 보충했습니다.
+    text: 히브리어는 직역하면 ‘기스, 사울의 아버지, 그리고 넬, 아브넬의 아버지, 아비엘의 아들’처럼 압축되어 있습니다. 마지막 ‘아들’은 단수형이며 그 수식 범위가 압축되어 있으나, 문맥상 기스와 넬을 아비엘의 아들들로 이해합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: קִישׁ
@@ -73,4 +73,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 기스는 사울의 아버지였고, 넬은 아브넬의 아버지였으며, 아브넬은 아비엘의 아들이었습니다.[a]
+  to: 사울의 아버지 기스와 아브넬의 아버지 넬은 아비엘의 아들들이었습니다.[a]
+  rationale: 원문의 압축된 족보 구문을 자연스러운 한국어 완결문으로 풀었습니다. 특히 ‘아비엘의 아들’을 아브넬에게 연결한 오류를 바로잡고, 히브리어 단수형 및 수식 범위의 압축성은 각주에서 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:17:36Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 히브리어의 마지막 ‘아비엘의 아들’(בֶּן־אֲבִיאֵל)은 앞 절의 ‘아브넬’을 가리키는 것으로 번역할 수 없습니다. 바로 앞 절(14:50)이 아브넬을 넬의 아들로 밝히며, 이 구절의 계보 진술은 기스와 넬을 아비엘과 연결합니다. 히브리어의 단수 ‘아들’과 그 수식 범위에는 문법적 압축성이 있으나, 문맥상 두 사람을 아비엘의 아들들로 이해하는 번역이 타당합니다.
+  naturalness: 제안문은 현대 표준 한국어 합쇼체로 자연스럽고, 족보식 진술도 명료합니다.
+  terminology: 기스, 넬, 아브넬, 아비엘은 한국어 성서에서 통용되는 이름 표기입니다. ‘아버지’와 ‘아들’도 계보 문맥에 적절합니다.
+  issues:
+  - severity: high
+    issue: ‘아브넬은 아비엘의 아들이었습니다’라는 계보 관계
+    rationale: 이는 본문의 문맥 및 14:50의 ‘아브넬은 넬의 아들’과 충돌합니다. 마지막 ‘아비엘의 아들’은 압축된 히브리어 계보 표현으로, 기스와 넬을 아비엘의 아들들로 연결하여 옮겨야 합니다.
+  - severity: medium
+    issue: 각주가 영어 POB의 잘못된 수식 관계를 재현함
+    rationale: 각주의 축약 인용도 ‘아브넬의 아버지, 아비엘의 아들’을 아브넬에게 연결될 수 있게 제시합니다. 히브리어 단수와 수식 범위의 압축성을 설명하되, 문맥상 계보 관계를 분명히 해야 합니다.
+  revised_text: 사울의 아버지 기스와 아브넬의 아버지 넬은 아비엘의 아들들이었습니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 직역하면 ‘기스, 사울의 아버지, 그리고 넬, 아브넬의 아버지, 아비엘의 아들’처럼 압축되어 있습니다. 마지막 ‘아들’은 단수형이며 그 수식 범위가 압축되어 있으나, 문맥상 기스와 넬을 아비엘의 아들들로 이해합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 압축된 족보 구문을 자연스러운 한국어 완결문으로 풀었습니다. 특히 ‘아비엘의 아들’을 아브넬에게 연결한 오류를 바로잡고, 히브리어 단수형 및 수식 범위의 압축성은 각주에서 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:17:36Z'
+  output_hash: 2b65c494a2d5859466cf02bd433d98d3095834cb0ad6824d146548381eff87f7
+  usage:
+    completion_tokens: 1527
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 827
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 13206
+      pre_inference_ms: 171
+      service_tbt_ms: 9
+      service_ttft_ms: 456
+      service_ttlt_ms: 13514
+      total_duration_ms: 13359
+      user_visible_ttft_ms: 285
+    prompt_tokens: 1795
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3322
+  applied_revision: true
+  auto_apply_blocked_errors: []

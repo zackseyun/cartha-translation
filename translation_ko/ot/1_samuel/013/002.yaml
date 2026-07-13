@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 사울은 이스라엘에서 삼천 명을 자기에게서 골라 냈습니다[a]. 이천 명은 믹마스와 베델 산지에 있는 사울과 함께 있었고, 천 명은 베냐민의 기브아에 있는 요나단과 함께 있었습니다. 나머지 백성은 각 사람을 자기 장막으로 보내었습니다[b].
+  text: 사울은 이스라엘 가운데서 자신을 위해 삼천 명을 뽑았습니다. 그 가운데 이천 명은 믹마스와 베델 산지[b]에서 사울과 함께 있었고, 천 명은 베냐민의 기브아에서 요나단과 함께 있었습니다. 사울은 나머지 백성을 저마다 자기 장막으로[a] 돌려보냈습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘각 사람을 자기 장막으로.’ 히브리어는 사람들을 자기 거처로 돌려보낼 때 쓰는 흔한 관용구를 사용합니다.
+    text: 직역하면 ‘각 사람을 자기 장막으로’입니다. 히브리어는 사람들을 각자의 거처로 돌려보낼 때 쓰는 흔한 관용구를 사용합니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘베델의 산지에.’ 히브리어 구절은 베델 주변의 산지를 가리킬 수도 있고, 베델 근처의 특정한 높은 지대를 가리킬 수도 있습니다.
+    text: 또는 ‘베델의 산에.’ 히브리어 구절은 베델 주변의 산지를 가리킬 수도 있고, 베델 근처의 특정한 높은 지대를 가리킬 수도 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּבְחַר לוֹ
@@ -82,4 +82,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 사울은 이스라엘에서 삼천 명을 자기에게서 골라 냈습니다[a]. 이천 명은 믹마스와 베델 산지에 있는 사울과 함께 있었고, 천 명은 베냐민의 기브아에 있는 요나단과 함께 있었습니다. 나머지 백성은 각 사람을 자기 장막으로 보내었습니다[b].
+  to: 사울은 이스라엘 가운데서 자신을 위해 삼천 명을 뽑았습니다. 그 가운데 이천 명은 믹마스와 베델 산지[b]에서 사울과 함께 있었고, 천 명은 베냐민의 기브아에서 요나단과 함께 있었습니다. 사울은 나머지 백성을 저마다 자기 장막으로[a] 돌려보냈습니다.
+  rationale: לוֹ의 재귀적 귀속을 ‘자신을 위해’로 바로잡고, 병력 배치의 장소와 동행 관계를 자연스러운 한국어 어순으로 재구성했습니다. 마지막 절에는 사울을 명시하여 히브리어의 주어와 목적어 관계를 보존했습니다. 또한 두 각주를 실제로 설명하는 어구에 재배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:20:33Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 사울이 이스라엘에서 3천 명을 선발하고, 2천 명과 1천 명을 각각 사울과 요나단에게 배치한 뒤 나머지를 돌려보냈다는 본문 구조는 대체로 반영했습니다. 그러나 ‘자기에게서 골라 냈습니다’는 לוֹ를 잘못 표현하여 ‘자기 자신에게서’라는 뜻으로 읽히며, 마지막 절은 사울이 나머지 백성을 보냈다는 주어·목적어 관계가 불분명합니다.
+  naturalness: ‘믹마스와 베델 산지에 있는 사울’, ‘베냐민의 기브아에 있는 요나단’은 지명구가 인물을 수식하는 듯하여 자연스럽지 않습니다. 병력의 위치를 나타내도록 ‘...에서 사울과 함께’, ‘...에서 요나단과 함께’로 고쳐야 합니다. ‘보내었습니다’보다 현대 표준 합쇼체에서는 ‘돌려보냈습니다’가 자연스럽고 문맥에 알맞습니다.
+  terminology: 고유명사 믹마스, 베델, 베냐민, 기브아와 ‘장막’은 적절합니다. הַר בֵּית־אֵל의 지형적 범위는 ‘베델 산지’로 무리 없이 옮길 수 있으며, 해당 각주는 그 표현에 직접 붙여야 합니다.
+  issues:
+  - severity: high
+    issue: ‘자기에게서 골라 냈습니다’
+    rationale: לוֹ는 ‘자기를 위하여/자신의 것으로’라는 여격적·재귀적 뉘앙스이지, 선발의 출처가 사울 자신이라는 뜻이 아닙니다.
+  - severity: high
+    issue: 마지막 문장의 행위자와 목적어가 불명확함
+    rationale: 히브리어는 ‘그(사울)가 나머지 백성을 보냈다’입니다. 초안은 ‘나머지 백성’이 ‘각 사람’을 보낸 것처럼 읽힐 수 있습니다.
+  - severity: medium
+    issue: 위치 표현의 수식 관계가 부자연스러움
+    rationale: ‘...에 있는 사울/요나단’이 아니라 병력들이 해당 장소에서 사울·요나단과 함께 있었다는 뜻입니다.
+  - severity: medium
+    issue: 각주 표지가 해당 본문 표현과 바뀌어 있음
+    rationale: 장막 관용구 설명은 ‘자기 장막’에, 베델의 지형적 의미 가능성은 ‘베델 산지’에 각각 붙어야 합니다.
+  revised_text: 사울은 이스라엘 가운데서 자신을 위해 삼천 명을 뽑았습니다. 그 가운데 이천 명은 믹마스와 베델 산지[b]에서 사울과 함께 있었고, 천 명은 베냐민의 기브아에서 요나단과 함께 있었습니다. 사울은 나머지 백성을 저마다 자기 장막으로[a] 돌려보냈습니다.
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 ‘각 사람을 자기 장막으로’입니다. 히브리어는 사람들을 각자의 거처로 돌려보낼 때 쓰는 흔한 관용구를 사용합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘베델의 산에.’ 히브리어 구절은 베델 주변의 산지를 가리킬 수도 있고, 베델 근처의 특정한 높은 지대를 가리킬 수도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: לוֹ의 재귀적 귀속을 ‘자신을 위해’로 바로잡고, 병력 배치의 장소와 동행 관계를 자연스러운 한국어 어순으로 재구성했습니다. 마지막 절에는 사울을 명시하여 히브리어의 주어와 목적어 관계를 보존했습니다. 또한 두 각주를 실제로 설명하는 어구에 재배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:20:33Z'
+  output_hash: 45c7e6a0f32611e8af5d67e039095453cd60b504ce60fb46575b917007be6d9d
+  usage:
+    completion_tokens: 1426
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 237
+      engine_ttlt_ms: 12488
+      pre_inference_ms: 91
+      service_tbt_ms: 9
+      service_ttft_ms: 477
+      service_ttlt_ms: 12727
+      total_duration_ms: 12645
+      user_visible_ttft_ms: 386
+    prompt_tokens: 2690
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 2176
+    total_tokens: 4116
+  applied_revision: true
+  auto_apply_blocked_errors: []

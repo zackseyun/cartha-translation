@@ -20,12 +20,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러자 아기스의 종들이 그에게 말했습니다[a]. “이 사람이 다윗, 곧 그 땅의 왕이 아니오? 춤추며 노래한 이가 바로 이 사람이 아니오? ‘사울은 그의 수천을 치고, 다윗은 그의 수만을 쳤다’라고 말한 이가?”
+  text: 아기스의 신하들이 그에게 말했습니다. “이 사람이 그 땅의 왕 다윗이 아닙니까? 사람들이 춤추며 이 사람을 두고 노래하여 이르기를[a], ‘사울은 자기의 수천을 쳤고, 다윗은 자기의 수만을 쳤다’ 하지 않았습니까?”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “그들이 춤에서 서로 화답하였다”로도 옮길 수 있습니다. 즉, 그들은 춤추는 동안 응답식으로 노래했습니다.
-    reason: alternative_reading
+    text: 또는 “그들이 춤 가운데 서로 화답하였다”로 옮길 수 있습니다. 즉, 춤추는 동안 응답식으로 노래했다는 뜻입니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: עַבְדֵי
   english_pob_choice: servants
@@ -79,4 +79,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 아기스의 종들이 그에게 말했습니다[a]. “이 사람이 다윗, 곧 그 땅의 왕이 아니오? 춤추며 노래한 이가 바로 이 사람이 아니오? ‘사울은 그의 수천을 치고, 다윗은 그의 수만을 쳤다’라고 말한 이가?”
+  to: 아기스의 신하들이 그에게 말했습니다. “이 사람이 그 땅의 왕 다윗이 아닙니까? 사람들이 춤추며 이 사람을 두고 노래하여 이르기를[a], ‘사울은 자기의 수천을 쳤고, 다윗은 자기의 수만을 쳤다’ 하지 않았습니까?”
+  rationale: 수사 의문문의 합쇼체를 ‘아닙니까?/하지 않았습니까?’로 일관되게 유지했습니다. ענה בַּמְּחֹלוֹת의 음악적 용례는 본문에서 ‘춤추며 … 노래하여 이르기를’으로 번역하고, 상호 화답의 가능성은 해당 어구에 정확히 연결한 각주로 남겼습니다. ‘그 땅의 왕’은 객관적 왕호인지 화자들의 인식·과장인지 판정하지 않습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:26:38Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 수사 의문, ‘그 땅의 왕’이라는 긴장, 그리고 승전가의 수량 대구는 대체로 반영되어 있습니다. 그러나 ‘춤추며 노래한 이’는 누가 노래했는지와 다윗이 노래의 대상이라는 관계를 흐리며, 끝의 ‘라고 말한 이가?’는 히브리어의 인용 구조를 부자연스럽게 바꿉니다.
+  naturalness: ‘그에게 말했습니다[a]’에 붙은 각주는 앞말과 내용상 연결되지 않으며, 인용문의 마지막 문장도 현대 표준 한국어로 자연스럽지 않습니다. ‘사람들이 춤추며 이 사람을 두고 노래하여 이르기를’으로 옮기면 원문의 관계와 문장 흐름이 자연스럽습니다.
+  terminology: 왕의 궁정 구성원을 가리키는 עַבְדֵי는 문맥상 ‘신하들’이 자연스럽습니다. ‘그 땅의 왕’은 원문의 표현과 그 의도적 모호성을 보존합니다. ‘수천/수만’은 병행을 보존하되, 대명사는 한국어에서 자연스러운 ‘자기의’로 처리했습니다.
+  issues:
+  - severity: high
+    issue: 각주 표지가 ‘그에게 말했습니다’에 붙어 있으나 각주의 내용은 ענה와 춤의 노래에 관한 것입니다.
+    rationale: 각주 앵커가 설명 대상과 일치하지 않아 독자를 오도합니다. ‘노래하여 이르기를’에 표지를 붙여야 합니다.
+  - severity: medium
+    issue: ‘춤추며 노래한 이가 바로 이 사람이 아니오?’는 노래한 주체를 다윗처럼 읽히게 하고, לָזֶה의 ‘이 사람을 두고’라는 참조 관계를 충분히 나타내지 못합니다.
+    rationale: 히브리어는 사람들이 다윗을 두고 춤 가운데 노래했다고 말합니다. 다윗이 춤추며 노래한 것이 아닙니다.
+  - severity: medium
+    issue: 인용가 뒤의 ‘라고 말한 이가?’는 문법적으로 어색하며 원문의 직접 인용 구조를 훼손합니다.
+    rationale: לֵאמֹר는 노래의 내용을 도입하므로 ‘노래하여 이르기를’ 뒤에 직접 인용을 두는 것이 충실하고 자연스럽습니다.
+  revised_text: 아기스의 신하들이 그에게 말했습니다. “이 사람이 그 땅의 왕 다윗이 아닙니까? 사람들이 춤추며 이 사람을 두고 노래하여 이르기를[a], ‘사울은 자기의 수천을 쳤고, 다윗은 자기의 수만을 쳤다’ 하지 않았습니까?”
+  revised_footnotes:
+  - marker: a
+    text: 또는 “그들이 춤 가운데 서로 화답하였다”로 옮길 수 있습니다. 즉, 춤추는 동안 응답식으로 노래했다는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 수사 의문문의 합쇼체를 ‘아닙니까?/하지 않았습니까?’로 일관되게 유지했습니다. ענה בַּמְּחֹלוֹת의 음악적 용례는 본문에서 ‘춤추며 … 노래하여 이르기를’으로 번역하고, 상호 화답의 가능성은 해당 어구에 정확히 연결한 각주로 남겼습니다. ‘그 땅의 왕’은 객관적 왕호인지 화자들의 인식·과장인지 판정하지 않습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:26:38Z'
+  output_hash: 6fa437e6281b8e850e76cd32c21c18b0b640feedcfa067652d35932fb4c64004
+  usage:
+    completion_tokens: 1170
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 330
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 157
+      engine_ttlt_ms: 9586
+      pre_inference_ms: 89
+      service_tbt_ms: 8
+      service_ttft_ms: 331
+      service_ttlt_ms: 9749
+      total_duration_ms: 9678
+      user_visible_ttft_ms: 242
+    prompt_tokens: 2530
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3700
+  applied_revision: true
+  auto_apply_blocked_errors: []

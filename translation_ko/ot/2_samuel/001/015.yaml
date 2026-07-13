@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그러자 다윗이 젊은이들 가운데 하나를 불러 말했습니다. 「가까이 와서 그를 쳐라」. 그러자 그가 그를 쳐서 죽였습니다.[a]
+  text: 그러자 다윗이 젊은이 하나를 불러 말했습니다. “가까이 와서 그를 쳐라.”[a] 그러자 그 젊은이가 그를 쳤고, 그 사람은 죽었습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: פְּגַע בּוֹ는 ‘그를 쳐라’ 외에도 ‘그를 공격하라’ 또는 ‘그에게 덮치라’로 옮길 수 있습니다. 문맥상 결과는 치명적입니다.
+    text: פְּגַע בּוֹ는 ‘그를 쳐라’ 외에도 ‘그를 공격하라’ 또는 ‘그를 덮쳐라’로 옮길 수 있습니다. 문맥상 그 결과가 치명적이었음이 분명합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּקְרָא
@@ -79,4 +79,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 다윗이 젊은이들 가운데 하나를 불러 말했습니다. 「가까이 와서 그를 쳐라」. 그러자 그가 그를 쳐서 죽였습니다.[a]
+  to: 그러자 다윗이 젊은이 하나를 불러 말했습니다. “가까이 와서 그를 쳐라.”[a] 그러자 그 젊은이가 그를 쳤고, 그 사람은 죽었습니다.
+  rationale: 원문의 연속 서술인 ‘쳤다’와 ‘죽었다’를 한국어에서도 분리하여 보존했습니다. 또한 ‘젊은이 하나’로 자연스럽게 다듬고, 각주 표지와 어휘 대안을 해당 명령 표현에 맞추었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:26:29Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 마지막 절을 ‘그가 그를 쳐서 죽였습니다’로 옮기면 וַיַּכֵּהוּ(그가 그를 쳤다)와 וַיָּמֹת(그가 죽었다)를 하나의 능동적 사역 표현으로 합치게 됩니다. 히브리어의 행위와 결과를 분리하여 옮겨야 합니다.
+  naturalness: ‘젊은이들 가운데 하나’도 이해되지만, 현대 한국어에서는 ‘젊은이 하나’가 더 자연스럽습니다. 직접 명령에는 해라체를 유지할 수 있으며, 서술은 합쇼체로 일관되게 유지했습니다.
+  terminology: פְּגַע בּוֹ는 ‘그를 쳐라’로 두어 죽이라는 뜻을 미리 명시하지 않으면서도 문맥의 폭력성을 보존했습니다. 각주 대안인 ‘그에게 덮치라’는 한국어 결합이 어색하므로 ‘그를 덮쳐라’로 고쳤습니다.
+  issues:
+  - severity: high
+    issue: ‘그가 그를 쳐서 죽였습니다’가 행위와 결과를 합쳐 능동적으로 죽였다고 표현합니다.
+    rationale: 원문은 ‘그가 그를 쳤고, 그가 죽었다’라는 두 연속 사건입니다. 죽음의 결과는 분명하지만, וַיָּמֹת는 ‘죽였다’가 아니라 ‘죽었다’입니다.
+  - severity: low
+    issue: 각주 표지가 해당 어휘가 아니라 절 끝에 놓여 있습니다.
+    rationale: 각주는 명령문 속 פְּגַע בּוֹ의 어휘 대안을 설명하므로 ‘그를 쳐라’ 바로 뒤에 두는 편이 정확합니다.
+  - severity: low
+    issue: 각주의 ‘그에게 덮치라’가 부자연스럽습니다.
+    rationale: 이 문맥에서 자연스러운 목적어 결합은 ‘그를 덮쳐라’입니다.
+  revised_text: 그러자 다윗이 젊은이 하나를 불러 말했습니다. “가까이 와서 그를 쳐라.”[a] 그러자 그 젊은이가 그를 쳤고, 그 사람은 죽었습니다.
+  revised_footnotes:
+  - marker: a
+    text: פְּגַע בּוֹ는 ‘그를 쳐라’ 외에도 ‘그를 공격하라’ 또는 ‘그를 덮쳐라’로 옮길 수 있습니다. 문맥상 그 결과가 치명적이었음이 분명합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 연속 서술인 ‘쳤다’와 ‘죽었다’를 한국어에서도 분리하여 보존했습니다. 또한 ‘젊은이 하나’로 자연스럽게 다듬고, 각주 표지와 어휘 대안을 해당 명령 표현에 맞추었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:26:29Z'
+  output_hash: c34d3ec43ae06aba80641e517af70f21864c5e221fb0b723d26bbe8a1303a0d2
+  usage:
+    completion_tokens: 1101
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 411
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 128
+      engine_ttlt_ms: 8537
+      pre_inference_ms: 133
+      service_tbt_ms: 8
+      service_ttft_ms: 377
+      service_ttlt_ms: 8778
+      total_duration_ms: 8657
+      user_visible_ttft_ms: 244
+    prompt_tokens: 2069
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3170
+  applied_revision: true
+  auto_apply_blocked_errors: []

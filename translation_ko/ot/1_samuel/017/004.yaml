@@ -20,12 +20,15 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그러자 블레셋 진영들에서 한 용사가 나왔는데[a], 이름은 가드 출신 골리앗이었습니다. 그의 키는 여섯 규빗 한 뼘이었습니다.
+  text: 그러자 블레셋 진영들 가운데서 한 대표 전사가 나왔습니다[a]. 그의 이름은 가드 출신 골리앗이었습니다. 그의 키는 여섯 규빗과 한 뼘이었습니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 직역하면 ‘사이의 사람’에 가깝지만, 여기서는 진영 사이로 나와 대표적으로 싸우는 전사를 가리키므로 ‘용사’로 옮겼습니다.
+    text: 히브리어는 직역하면 ‘사이의 사람’입니다. 문맥상 양 진영 사이로 나가 대표로 싸우는 전사를 가리킵니다.
     reason: lexical_alternative
+  - marker: b
+    text: 여섯 규빗과 한 뼘은 사용한 규빗의 길이에 따라 대략 3미터입니다.
+    reason: cultural_note
 lexical_decisions:
 - source_word: אִישׁ הַבֵּנַיִם
   english_pob_choice: a champion
@@ -83,4 +86,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그러자 블레셋 진영들에서 한 용사가 나왔는데[a], 이름은 가드 출신 골리앗이었습니다. 그의 키는 여섯 규빗 한 뼘이었습니다.
+  to: 그러자 블레셋 진영들 가운데서 한 대표 전사가 나왔습니다[a]. 그의 이름은 가드 출신 골리앗이었습니다. 그의 키는 여섯 규빗과 한 뼘이었습니다[b].
+  rationale: 대표 대결에 나서는 전사라는 원문의 핵심 기능을 ‘대표 전사’로 명시하고, 복수형 진영을 자연스럽게 유지했습니다. 고대 길이 단위는 본문에 보존하되, 영어 POB 감사 기록의 문화적 설명에 맞추어 환산 각주를 추가했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:17:46Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 ‘사이의 사람’(אִישׁ הַבֵּנַיִם)은 단순히 강한 전사라는 뜻보다 양 진영 사이에 나서는 대표 전사를 가리킵니다. ‘한 용사’는 이 대표·대결의 기능을 충분히 드러내지 못합니다. 또한 원문의 복수 ‘진영들’, 가드 출신, 고대 길이 단위는 보존되어 있습니다.
+  naturalness: ‘블레셋 진영들에서’도 이해되지만, ‘블레셋 진영들 가운데서’가 복수 진영에서 한 인물이 나오는 장면을 현대 한국어로 더 자연스럽게 표현합니다. ‘여섯 규빗 한 뼘’에는 접속 조사 ‘과’를 넣는 것이 명료합니다.
+  terminology: ‘대표 전사’는 이 문맥의 אִישׁ הַבֵּנַיִם을 과도한 해석 없이 자연스럽게 반영합니다. ‘골리앗’, ‘가드’, ‘규빗’, ‘뼘’은 적절합니다.
+  issues:
+  - severity: medium
+    issue: ‘한 용사’가 אִישׁ הַבֵּנַיִם의 대표 전사라는 기능을 약화합니다.
+    rationale: 이 표현은 문자적으로 ‘사이의 사람’이며, 문맥상 양 진영 사이로 나가 대표적으로 맞서는 전사를 뜻합니다. ‘용사’만으로는 일반 전사와 구별되지 않습니다.
+  - severity: low
+    issue: 영어 POB의 길이 단위 설명 각주에 상응하는 한국어 각주와 본문 표지가 없습니다.
+    rationale: 고대 단위를 본문에 유지하는 경우 현대 독자를 위한 대략적 환산 정보를 각주로 제공하는 편이 POB 감사 기록 및 문화적 명료성을 유지합니다.
+  revised_text: 그러자 블레셋 진영들 가운데서 한 대표 전사가 나왔습니다[a]. 그의 이름은 가드 출신 골리앗이었습니다. 그의 키는 여섯 규빗과 한 뼘이었습니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 직역하면 ‘사이의 사람’입니다. 문맥상 양 진영 사이로 나가 대표로 싸우는 전사를 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 여섯 규빗과 한 뼘은 사용한 규빗의 길이에 따라 대략 3미터입니다.
+    reason: cultural_note
+  revision_rationale: 대표 대결에 나서는 전사라는 원문의 핵심 기능을 ‘대표 전사’로 명시하고, 복수형 진영을 자연스럽게 유지했습니다. 고대 길이 단위는 본문에 보존하되, 영어 POB 감사 기록의 문화적 설명에 맞추어 환산 각주를 추가했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:17:46Z'
+  output_hash: 91a94e05b477faf595ff258de300f5fb5a13c67278c2f6e4285b7b08e45ea209
+  usage:
+    completion_tokens: 921
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 229
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 7252
+      pre_inference_ms: 167
+      service_tbt_ms: 8
+      service_ttft_ms: 720
+      service_ttlt_ms: 7801
+      total_duration_ms: 7645
+      user_visible_ttft_ms: 552
+    prompt_tokens: 2207
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3128
+  applied_revision: true
+  auto_apply_blocked_errors: []

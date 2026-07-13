@@ -20,11 +20,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 다윗은 자기 칼을 갑옷 위에 차고 걸어가 보려 했습니다[a]. 그러나 그는 아직 그것들을 시험해 보지 않았기 때문입니다. 다윗이 사울에게 말했습니다. 「이것들을 입고는 갈 수 없습니다[b]. 나는 아직 그것들을 시험해 보지 않았습니다」라고 하였습니다. 그래서 다윗은 그것들을 자기 몸에서 벗겼습니다.
+  text: 다윗은 자기 칼을 갑옷 위에 차고, 아직 그것들을 시험해 보지 않았기에 가 보려고 했습니다[a]. 다윗이 사울에게 말했습니다. “저는 이것들을 가지고는 갈 수 없습니다[b]. 아직 그것들을 시험해 본 적이 없기 때문입니다.” 그래서 다윗은 그것들을 자기 몸에서 벗어 놓았습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “그것들을 시험해 보지 않았기 때문에”. 히브리어 동사는 사용해 보며 시험하는 뜻도 가질 수 있습니다.
+    text: 또는 “그것들을 시험해 보지 않았기 때문에.” 히브리어 동사는 사용해 보며 시험하는 뜻도 가질 수 있습니다.
     reason: lexical_alternative
   - marker: b
     text: ‘갑옷’은 더 넓게는 옷차림을 뜻할 수 있지만, 여기서는 군사적 문맥이므로 갑옷으로 옮겼습니다.
@@ -93,4 +93,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 다윗은 자기 칼을 갑옷 위에 차고 걸어가 보려 했습니다[a]. 그러나 그는 아직 그것들을 시험해 보지 않았기 때문입니다. 다윗이 사울에게 말했습니다. 「이것들을 입고는 갈 수 없습니다[b]. 나는 아직 그것들을 시험해 보지 않았습니다」라고 하였습니다. 그래서 다윗은 그것들을 자기 몸에서 벗겼습니다.
+  to: 다윗은 자기 칼을 갑옷 위에 차고, 아직 그것들을 시험해 보지 않았기에 가 보려고 했습니다[a]. 다윗이 사울에게 말했습니다. “저는 이것들을 가지고는 갈 수 없습니다[b]. 아직 그것들을 시험해 본 적이 없기 때문입니다.” 그래서 다윗은 그것들을 자기 몸에서 벗어 놓았습니다.
+  rationale: 문법적으로 깨진 접속을 바로잡고, 직접화법의 중복 보고를 제거했습니다. 장비를 가리키는 히브리어의 넓은 지시 범위를 유지하도록 ‘입고는’을 ‘가지고는’으로, 어색한 제거 표현을 ‘몸에서 벗어 놓았습니다’로 고쳤습니다. ‘시험해 보다’의 반복과 각주 표지는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:25:24Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 동작 순서(칼을 차다, 가 보려 하다, 장비를 시험해 보지 않음, 거절하다, 벗다)와 נִסָּה의 반복은 대체로 반영되었습니다. 다만 첫 두 문장은 ‘그러나’와 ‘때문입니다’의 연결이 문법·논리상 부자연스럽고, 직접화법의 ‘입고는’은 히브리어의 넓은 지시어 ‘이것들’을 갑옷을 입는 행위로 다소 좁힙니다.
+  naturalness: 합쇼체 서술과 직접화법은 유지할 수 있으나, 기존의 ‘말했습니다…라고 하였습니다’는 중복 서술이고, ‘자기 몸에서 벗겼습니다’는 현대 한국어에서 어색합니다. 직접화법과 장비를 벗는 동작을 자연스럽게 다듬었습니다.
+  terminology: ‘칼’, ‘갑옷’, ‘시험해 보다’는 문맥과 영어 POB의 어휘 결정을 적절히 반영합니다. 단, 대사의 בָאֵלֶּה는 장비 전체를 가리킬 수 있으므로 ‘입고는’보다 ‘가지고는’이 더 포괄적입니다.
+  issues:
+  - severity: medium
+    issue: 첫 두 문장의 접속과 인과 관계가 부자연스럽습니다.
+    rationale: ‘걸어가 보려 했습니다. 그러나 그는 아직 그것들을 시험해 보지 않았기 때문입니다’는 ‘그러나’가 앞문장과 대립하지 않고 ‘때문입니다’가 독립 문장으로 남아 있습니다. 히브리어의 כי 절은 가 보려 한 행위와 연결해야 합니다.
+  - severity: medium
+    issue: 직접화법의 보고 표현이 중복됩니다.
+    rationale: ‘다윗이 사울에게 말했습니다’ 뒤에 인용문을 두고 다시 ‘라고 하였습니다’를 쓰는 것은 불필요하게 중복됩니다.
+  - severity: low
+    issue: ‘이것들을 입고는’과 ‘자기 몸에서 벗겼습니다’가 장비 전체를 가리키는 표현으로는 다소 제한적이거나 어색합니다.
+    rationale: 본문의 지시어와 대명사는 갑옷만이 아니라 칼을 포함한 장비를 포괄할 수 있습니다. ‘가지고는’과 ‘몸에서 벗어 놓았습니다’가 이를 보존하면서 자연스럽습니다.
+  revised_text: 다윗은 자기 칼을 갑옷 위에 차고, 아직 그것들을 시험해 보지 않았기에 가 보려고 했습니다[a]. 다윗이 사울에게 말했습니다. “저는 이것들을 가지고는 갈 수 없습니다[b]. 아직 그것들을 시험해 본 적이 없기 때문입니다.” 그래서 다윗은 그것들을 자기 몸에서 벗어 놓았습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 “그것들을 시험해 보지 않았기 때문에.” 히브리어 동사는 사용해 보며 시험하는 뜻도 가질 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘갑옷’은 더 넓게는 옷차림을 뜻할 수 있지만, 여기서는 군사적 문맥이므로 갑옷으로 옮겼습니다.
+    reason: lexical_alternative
+  revision_rationale: 문법적으로 깨진 접속을 바로잡고, 직접화법의 중복 보고를 제거했습니다. 장비를 가리키는 히브리어의 넓은 지시 범위를 유지하도록 ‘입고는’을 ‘가지고는’으로, 어색한 제거 표현을 ‘몸에서 벗어 놓았습니다’로 고쳤습니다. ‘시험해 보다’의 반복과 각주 표지는 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:25:24Z'
+  output_hash: b0183d5223263218f19bc384037e62b466722093112319076291fa68ebbf62ed
+  usage:
+    completion_tokens: 1390
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 142
+      engine_ttlt_ms: 11571
+      pre_inference_ms: 183
+      service_tbt_ms: 8
+      service_ttft_ms: 424
+      service_ttlt_ms: 11922
+      total_duration_ms: 11750
+      user_visible_ttft_ms: 241
+    prompt_tokens: 2691
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4081
+  applied_revision: true
+  auto_apply_blocked_errors: []

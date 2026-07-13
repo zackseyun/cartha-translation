@@ -20,15 +20,15 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 넷째 날[a]에 그들은 아침 일찍 일어났고, 그는 떠나려고 일어났습니다. 그런데 그 젊은 여자의 아버지가 사위에게 말했습니다. 「빵 한 조각으로 마음을 새롭게 하십시오[b]. 그 후에 가셔도 됩니다.」
+  text: 넷째 날, 그들은 아침 일찍 일어났습니다. 그는 떠나려고 일어섰습니다. 그런데 그 젊은 여자의 아버지가 사위에게 말했습니다. 「빵 한 조각을 드시고 기운을 차리십시오[a]. 그런 뒤에 가시면 됩니다[b].」
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 단순히 “넷째 날”이라고 합니다.
+    text: 히브리어를 직역하면 “빵 한 조각으로 당신의 마음을 강하게 하십시오”입니다. 이는 음식을 먹어 기력을 회복하라는 관용적 표현입니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어는 직역하면 “마음을 강하게 하라”는 뜻이지만, 여기서는 음식을 먹고 기력을 회복하라는 관용구입니다.
-    reason: lexical_alternative
+    text: 히브리어의 ‘가다’는 복수형입니다. 아버지는 사위에게 직접 말하지만, 이 말은 여행 일행 전체를 가리킬 수도 있습니다.
+    reason: alternative_reading
 lexical_decisions:
 - source_word: בַּיּוֹם הָרְבִיעִי / On the fourth day
   english_pob_choice: On the fourth day
@@ -99,4 +99,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 넷째 날[a]에 그들은 아침 일찍 일어났고, 그는 떠나려고 일어났습니다. 그런데 그 젊은 여자의 아버지가 사위에게 말했습니다. 「빵 한 조각으로 마음을 새롭게 하십시오[b]. 그 후에 가셔도 됩니다.」
+  to: 넷째 날, 그들은 아침 일찍 일어났습니다. 그는 떠나려고 일어섰습니다. 그런데 그 젊은 여자의 아버지가 사위에게 말했습니다. 「빵 한 조각을 드시고 기운을 차리십시오[a]. 그런 뒤에 가시면 됩니다[b].」
+  rationale: 관용구를 현대 한국어에서 의미가 분명한 ‘기운을 차리십시오’로 옮기고, 직역 및 관용적 의미는 각주로 보존했습니다. 끝 동사의 복수형은 한국어 직접 호칭에서 부자연스러운 복수 경어를 강제하지 않고 각주로 밝혀 원문의 가능성을 유지했습니다. 불필요한 시간 표현 각주는 제거했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:10:36Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 본문의 시간 표현, 복수의 기상, 레위인의 출발 시도, 장인의 발화는 대체로 반영되었습니다. 그러나 “마음을 새롭게 하십시오”는 סְעָד לִבְּךָ의 식사·기력 보충 관용구를 한국어에서 ‘마음을 갱신하다’라는 다른 의미로 바꾸므로 수정이 필요합니다. 또한 끝 동사가 히브리어 복수형이라는 중요한 문법 정보가 현 본문 각주에 반영되지 않았습니다.
+  naturalness: “그는 떠나려고 일어났습니다”는 바로 앞의 ‘일어났고’와 반복되어 다소 어색합니다. “떠나려고 일어섰습니다”가 자연스럽습니다. 음식 권유는 “빵 한 조각을 드시고 기운을 차리십시오”가 현대 한국어 합쇼체에서 자연스럽고 문맥에도 맞습니다.
+  terminology: ‘젊은 여자의 아버지’, ‘사위’, ‘빵 한 조각’은 적절합니다. 관용구는 ‘마음’의 직역을 본문에 억지로 보존하기보다 본문의 식사 권유 의미를 옮기고 각주에서 직역과 관용적 의미를 밝혀야 합니다.
+  issues:
+  - severity: medium
+    issue: “마음을 새롭게 하십시오”의 의미가 원문의 음식·기력 회복 관용구와 다릅니다.
+    rationale: 한국어 ‘마음을 새롭게 하다’는 대개 정신적 쇄신이나 새 결심을 뜻하며, 빵을 먹어 기력을 돋운다는 סְעָד לִבְּךָ의 문맥상 의미를 전달하지 못합니다.
+  - severity: medium
+    issue: 현행 각주 b가 관용구에만 붙어 있으며, 히브리어 끝 동사의 복수형에 관한 주석이 빠져 있습니다.
+    rationale: תֵּלֵכוּ는 복수형이므로, 사위에게 직접 말하면서도 여행 일행 전체를 포함할 수 있다는 원문의 문법적 모호성을 각주로 보존하는 것이 적절합니다.
+  - severity: low
+    issue: ‘넷째 날’에 붙은 각주 a는 본문 이해에 필요한 변이 또는 대안 독법을 제공하지 않습니다.
+    rationale: 히브리어도 단순히 ‘넷째 날’이라는 시간 표현이므로, 이 각주는 불필요합니다.
+  revised_text: 넷째 날, 그들은 아침 일찍 일어났습니다. 그는 떠나려고 일어섰습니다. 그런데 그 젊은 여자의 아버지가 사위에게 말했습니다. 「빵 한 조각을 드시고 기운을 차리십시오[a]. 그런 뒤에 가시면 됩니다[b].」
+  revised_footnotes:
+  - marker: a
+    text: 히브리어를 직역하면 “빵 한 조각으로 당신의 마음을 강하게 하십시오”입니다. 이는 음식을 먹어 기력을 회복하라는 관용적 표현입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어의 ‘가다’는 복수형입니다. 아버지는 사위에게 직접 말하지만, 이 말은 여행 일행 전체를 가리킬 수도 있습니다.
+    reason: alternative_reading
+  revision_rationale: 관용구를 현대 한국어에서 의미가 분명한 ‘기운을 차리십시오’로 옮기고, 직역 및 관용적 의미는 각주로 보존했습니다. 끝 동사의 복수형은 한국어 직접 호칭에서 부자연스러운 복수 경어를 강제하지 않고 각주로 밝혀 원문의 가능성을 유지했습니다. 불필요한 시간 표현 각주는 제거했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:10:36Z'
+  output_hash: 5772451e5a67c35808027ab41e28059cd7f6b5ff051cac72bca62d298b1a157f
+  usage:
+    completion_tokens: 1379
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 145
+      engine_ttlt_ms: 12264
+      pre_inference_ms: 129
+      service_tbt_ms: 9
+      service_ttft_ms: 426
+      service_ttlt_ms: 12540
+      total_duration_ms: 12422
+      user_visible_ttft_ms: 298
+    prompt_tokens: 3076
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4455
+  applied_revision: true
+  auto_apply_blocked_errors: []

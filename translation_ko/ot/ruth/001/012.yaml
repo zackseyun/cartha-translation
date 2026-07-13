@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 돌아가십시오, 내 딸들아. 내가 남편을 두기에는 너무 늙었습니다. 설령 내가 말하기를, ‘내게 아직 소망이 있다’ — 설령 내가 오늘 밤 남편이 있다 하더라도 또 아들들을 낳는다 하더라도 —[a][b]
+  text: 돌아가십시오, 내 딸들아. 가십시오. 나는 남편을 두기에는[a] 너무 늙었습니다. 설령 내가 ‘내게 아직 소망이 있다’고 말한다 해도[b], 설령 오늘 밤 남편을 두게 되고 또 아들들을 낳는다 해도—
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘남편을 가지기에는’, ‘결혼하기에는’. 히브리어는 문자적으로 ‘남자/남편에게 속하는 상태로부터’입니다.
+    text: 또는 ‘남편을 가지기에는’, ‘결혼하기에는’. 히브리어는 직역하면 ‘남자/남편에게 속하게 되는 것에서’입니다.
     reason: lexical_alternative
   - marker: b
-    text: '히브리어는 가정적 연쇄를 제시합니다: ‘내가 “내게 소망이 있다”고 말한다면, 설령 오늘 밤 남편이 있고 또 아들들을 낳는다 하더라도—’'
+    text: 히브리어는 가정적 연쇄를 제시합니다. ‘내가 “내게 소망이 있다”고 말한다 해도, 설령 오늘 밤 남편을 두게 되고 또 아들들을 낳는다 해도—’
     reason: lexical_alternative
 lexical_decisions:
 - source_word: שֹׁבְנָה
@@ -98,4 +98,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 돌아가십시오, 내 딸들아. 내가 남편을 두기에는 너무 늙었습니다. 설령 내가 말하기를, ‘내게 아직 소망이 있다’ — 설령 내가 오늘 밤 남편이 있다 하더라도 또 아들들을 낳는다 하더라도 —[a][b]
+  to: 돌아가십시오, 내 딸들아. 가십시오. 나는 남편을 두기에는[a] 너무 늙었습니다. 설령 내가 ‘내게 아직 소망이 있다’고 말한다 해도[b], 설령 오늘 밤 남편을 두게 되고 또 아들들을 낳는다 해도—
+  rationale: 누락된 두 번째 명령 ‘가십시오’를 복원했습니다. 또한 ‘오늘 밤 남편이 있다’를 한국어에서 자연스러운 가정적 관계 표현으로 고치고, 두 가정절의 누적과 끝맺지 않은 문장 형태를 보존했습니다. 각주 표지는 해당 어구 뒤에 배치했으며, 각주 설명도 수정된 본문 및 히브리어 문법에 맞추었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:10:20Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 שֹׁבְנָה와 מִהְיוֹת לְאִישׁ, 가정적 연쇄 및 ‘아들들’을 대체로 충실히 옮겼습니다. 그러나 두 번째 여성 복수 명령 לֵכְנָה(‘가십시오’)가 본문에서 빠져 있으며, ‘오늘 밤 남편이 있다’는 히브리어의 관계 표현을 한국어로 자연스럽게 구현하지 못합니다.
+  naturalness: ‘내 딸들아’와 ‘돌아가십시오’는 현대 한국어 합쇼체에 자연스럽습니다. 독립된 ‘가십시오’를 보충하고, 가정절을 ‘오늘 밤 남편을 두게 된다 해도’로 다듬으면 문법적으로도 더 자연스럽고 원문의 수사적 누적을 살립니다.
+  terminology: ‘소망’, ‘남편’, ‘아들들’은 적절합니다. ‘아들들’은 בָנִים의 남성 복수를 보존합니다. ‘남편을 두다’는 이 문맥에서 결혼 관계를 뜻하는 לְאִישׁ을 자연스럽게 반영하며, 각주에서 가능한 대안을 제시할 수 있습니다.
+  issues:
+  - severity: high
+    issue: לֵכְנָה(‘가십시오/가라’)가 누락되었습니다.
+    rationale: 히브리어 본문은 ‘돌아가십시오’ 뒤에 별도의 여성 복수 명령 ‘가십시오’를 둡니다. 이 명령을 보충해야 원문의 반복적 권면이 보존됩니다.
+  - severity: medium
+    issue: ‘오늘 밤 남편이 있다 하더라도’는 부자연스럽고 관계 표현을 충분히 전달하지 못합니다.
+    rationale: הָיִיתִי ... לְאִישׁ은 가정적으로 남편과의 관계에 있게 되는 상황을 말합니다. ‘오늘 밤 남편을 두게 된다 해도’가 한국어로 자연스러우면서도 결혼 의식을 과도하게 특정하지 않습니다.
+  - severity: low
+    issue: 각주 a의 ‘남자/남편에게 속하는 상태로부터’는 한국어 직역 설명으로 어색합니다.
+    rationale: 직역 설명은 ‘남자/남편에게 속하게 되는 것에서’처럼 문법 관계가 드러나도록 정리하는 편이 낫습니다.
+  revised_text: 돌아가십시오, 내 딸들아. 가십시오. 나는 남편을 두기에는[a] 너무 늙었습니다. 설령 내가 ‘내게 아직 소망이 있다’고 말한다 해도[b], 설령 오늘 밤 남편을 두게 되고 또 아들들을 낳는다 해도—
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘남편을 가지기에는’, ‘결혼하기에는’. 히브리어는 직역하면 ‘남자/남편에게 속하게 되는 것에서’입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어는 가정적 연쇄를 제시합니다. ‘내가 “내게 소망이 있다”고 말한다 해도, 설령 오늘 밤 남편을 두게 되고 또 아들들을 낳는다 해도—’
+    reason: lexical_alternative
+  revision_rationale: 누락된 두 번째 명령 ‘가십시오’를 복원했습니다. 또한 ‘오늘 밤 남편이 있다’를 한국어에서 자연스러운 가정적 관계 표현으로 고치고, 두 가정절의 누적과 끝맺지 않은 문장 형태를 보존했습니다. 각주 표지는 해당 어구 뒤에 배치했으며, 각주 설명도 수정된 본문 및 히브리어 문법에 맞추었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:10:20Z'
+  output_hash: 293ca92a4e5ce192682af428a183eb08008c1f92e7ae11b089ec5006e956b329
+  usage:
+    completion_tokens: 1378
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 10604
+      pre_inference_ms: 117
+      service_tbt_ms: 8
+      service_ttft_ms: 442
+      service_ttlt_ms: 10872
+      total_duration_ms: 10768
+      user_visible_ttft_ms: 325
+    prompt_tokens: 3198
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4576
+  applied_revision: true
+  auto_apply_blocked_errors: []

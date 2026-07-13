@@ -20,15 +20,15 @@ base_translation:
     reason: previous_rendering
 translation:
   language: ko
-  text: 이제 내 피가 땅에 떨어져 야훼의 얼굴 앞에서 멀어지지 않게 하십시오[a]. 이스라엘 왕이 한 마리 벼룩을 찾으러 나와서는, 마치 산에서 뇌조를 사냥하듯이 하였습니다[b].
+  text: 이제 제 피가 야훼 앞에서 멀리 떨어진 곳에서 땅에 떨어지지 않게 해 주십시오[a]. 이스라엘 왕께서 산에서 자고새를 사냥하듯이 벼룩 한 마리를 찾으려고 나서셨기 때문입니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘야훼의 앞에서 멀리’.
+    text: 또는 ‘야훼의 임재에서 멀리 떨어진 곳에서’.
     reason: alternative_reading
   - marker: b
-    text: 또는 ‘산에서 뇌조를 사냥하듯이’.
-    reason: alternative_reading
+    text: ‘자고새’로 번역한 히브리어 새 이름의 정확한 식별에는 논의가 있으나, 이 문맥에서는 전통적으로 자고새로 이해됩니다.
+    reason: translation_note
 lexical_decisions:
 - source_word: דָּמִי
   english_pob_choice: my blood
@@ -80,4 +80,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이제 내 피가 땅에 떨어져 야훼의 얼굴 앞에서 멀어지지 않게 하십시오[a]. 이스라엘 왕이 한 마리 벼룩을 찾으러 나와서는, 마치 산에서 뇌조를 사냥하듯이 하였습니다[b].
+  to: 이제 제 피가 야훼 앞에서 멀리 떨어진 곳에서 땅에 떨어지지 않게 해 주십시오[a]. 이스라엘 왕께서 산에서 자고새를 사냥하듯이 벼룩 한 마리를 찾으려고 나서셨기 때문입니다[b].
+  rationale: 원문의 구체적 ‘피’와 ‘땅에 떨어지다’의 이미지를 보존하면서, 야훼의 임재로부터 멀어진 장소라는 전치사구의 기능을 자연스러운 한국어로 명시했습니다. ‘자고새’를 ‘뇌조’로 바로잡고, 왕이 벼룩 한 마리를 찾으려고 출정한 일을 자고새 사냥에 비유하는 원문의 수사적 구조를 복원했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:25:51Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안의 ‘하였습니다’는 히브리어 완료형 יָצָא(‘나섰습니다/나왔습니다’)와 비교구문의 현재적·일반적 사냥 비유를 과거의 ‘행위’로 바꾸어 버립니다. 또한 הַקֹּרֵא의 통상적 문맥상 이해인 ‘자고새’를 ‘뇌조’로 옮긴 것은 조류명이 다릅니다. מִנֶּגֶד פְּנֵי יְהוָה는 야훼의 임재로부터 멀어진 장소라는 공간적 의미를 보존하여 자연스럽게 옮겼습니다.
+  naturalness: ‘야훼의 얼굴 앞에서 멀어지지 않게’는 ‘피’가 멀어지는 것처럼 들려 한국어로 다소 부자연스럽습니다. ‘야훼 앞에서 멀리 떨어진 곳에서’로 하면 원문의 공간적 긴장과 문장 관계가 분명해집니다. 비교절은 ‘산에서 자고새를 사냥하듯이’로 왕의 벼룩 찾기를 수식하게 하여 자연스럽고 현대적인 합쇼체가 됩니다.
+  terminology: YHWH는 프로젝트의 선택에 따라 ‘야훼’로 유지합니다. דָּמִי는 완곡한 ‘생명’이 아니라 ‘내 피’로 보존합니다. פַּרְעֹשׁ אֶחָד은 ‘벼룩 한 마리’, הַקֹּרֵא는 본문의 전통적·사전적 이해를 따라 ‘자고새’로 옮깁니다.
+  issues:
+  - severity: high
+    issue: ‘뇌조’는 הַקֹּרֵא의 통상적 번역인 ‘자고새’와 다른 조류명입니다.
+    rationale: 원문 단어의 정확한 동정에는 일부 논의가 있지만, 이 사냥 비유에서 전통적으로 이해되는 partridge를 한국어 ‘뇌조’로 특정할 근거는 없습니다. 불확실성을 새 조류명으로 해소하지 말아야 합니다.
+  - severity: medium
+    issue: ‘나와서는, 마치 … 하였습니다’가 יָצָא와 비교구문의 의미·시제를 부정확하게 처리합니다.
+    rationale: ‘이스라엘 왕이 나섰습니다’라는 완료된 출정과 ‘산에서 자고새를 사냥하듯이’라는 비유를 유지해야 합니다. ‘하였습니다’는 원문에 없는 별도 과거 행위를 만듭니다.
+  - severity: medium
+    issue: ‘내 피가 … 얼굴 앞에서 멀어지지 않게’는 수식 관계가 어색합니다.
+    rationale: 히브리어의 전치사구는 피가 흘려질 장소가 야훼의 앞/임재로부터 멀리 떨어져 있음을 나타냅니다. 한국어에서는 장소를 명시하는 편이 정확하고 자연스럽습니다.
+  - severity: low
+    issue: 각주 b가 본문 표현을 그대로 반복합니다.
+    rationale: 각주는 실질적 대안 또는 필요한 설명을 제공해야 합니다. 조류 식별의 전통적 이해가 논의될 수 있음을 간결히 밝혀 독자의 오해를 줄일 수 있습니다.
+  revised_text: 이제 제 피가 야훼 앞에서 멀리 떨어진 곳에서 땅에 떨어지지 않게 해 주십시오[a]. 이스라엘 왕께서 산에서 자고새를 사냥하듯이 벼룩 한 마리를 찾으려고 나서셨기 때문입니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘야훼의 임재에서 멀리 떨어진 곳에서’.
+    reason: alternative_reading
+  - marker: b
+    text: ‘자고새’로 번역한 히브리어 새 이름의 정확한 식별에는 논의가 있으나, 이 문맥에서는 전통적으로 자고새로 이해됩니다.
+    reason: translation_note
+  revision_rationale: 원문의 구체적 ‘피’와 ‘땅에 떨어지다’의 이미지를 보존하면서, 야훼의 임재로부터 멀어진 장소라는 전치사구의 기능을 자연스러운 한국어로 명시했습니다. ‘자고새’를 ‘뇌조’로 바로잡고, 왕이 벼룩 한 마리를 찾으려고 출정한 일을 자고새 사냥에 비유하는 원문의 수사적 구조를 복원했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:25:51Z'
+  output_hash: 5bb3bc036467f88677c5dbe957e8afec1a88824812776e82b5799c6b8a66e9e9
+  usage:
+    completion_tokens: 1571
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 150
+      engine_ttlt_ms: 12786
+      pre_inference_ms: 98
+      service_tbt_ms: 8
+      service_ttft_ms: 412
+      service_ttlt_ms: 13022
+      total_duration_ms: 12933
+      user_visible_ttft_ms: 314
+    prompt_tokens: 2949
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4520
+  applied_revision: true
+  auto_apply_blocked_errors: []

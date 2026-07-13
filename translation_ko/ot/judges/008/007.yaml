@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 기드온이 말했습니다. 「그러므로 야훼께서 세바와 살문나를 내 손에 넘겨주실 때, 나는 광야의 가시와 들풀이 너희의 살을 타작하겠습니다.」[a]
+  text: 기드온이 말했습니다. 「그러므로 야훼께서 세바와 살문나를 내 손에 넘겨주실 때, 나는 광야의 가시와 가시덤불로 너희의 살을 타작하겠습니다.」[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘들풀’은 히브리어의 불확정적 가시 식물을 포괄적으로 옮긴 것입니다. 정확한 식물명은 확정하기 어렵습니다.
+    text: ‘가시덤불’로 옮긴 히브리어 식물명은 정확한 종류가 확실하지 않습니다. ‘찔레’나 ‘가시나무’ 등으로 이해되기도 합니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: לָכֵן
@@ -91,4 +91,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 기드온이 말했습니다. 「그러므로 야훼께서 세바와 살문나를 내 손에 넘겨주실 때, 나는 광야의 가시와 들풀이 너희의 살을 타작하겠습니다.」[a]
+  to: 기드온이 말했습니다. 「그러므로 야훼께서 세바와 살문나를 내 손에 넘겨주실 때, 나는 광야의 가시와 가시덤불로 너희의 살을 타작하겠습니다.」[a]
+  rationale: 도구격 ‘-로’를 보완하여 원문의 통사적 관계를 바로잡고, 불확실한 식물명을 가시성이라는 공통 의미를 보존하는 포괄적 표현으로 수정했습니다. 나머지 표현은 원문의 시간절, 신명, 인명, 위협의 농경 은유를 충실히 반영하므로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:10:31Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘와 구문은 대체로 원문에 충실합니다. 그러나 현 번역의 ‘광야의 가시와 들풀이 너희의 살을 타작하겠습니다’는 조사 ‘이/가’ 때문에 가시와 들풀이 ‘타작하는’ 주어가 되어, 기드온이 가시류를 도구로 삼아 처벌한다는 히브리어의 의미를 바꿉니다. 또한 בַּרְקֳנִים은 정확한 종이 불확실하더라도 가시성 식물을 가리키므로, 일반적인 ‘들풀’은 의미가 지나치게 넓고 가시라는 핵심 특징을 잃습니다.
+  naturalness: ‘광야의 가시와 가시덤불로 너희의 살을 타작하겠습니다’는 도구격을 분명히 하면서도 원문의 농경 은유와 위협의 강도를 자연스럽게 유지합니다. ‘타작하다’의 목적어가 사람의 ‘살’인 표현은 의도적으로 거친 은유이며, 이를 완화할 필요는 없습니다.
+  terminology: ‘야훼’, ‘세바’, ‘살문나’, ‘내 손에 넘겨주실 때’, ‘타작하겠습니다’는 적절합니다. 불확실한 בַּרְקֳנִים은 특정 식물 종으로 단정하지 않고 ‘가시덤불’로 옮기며 각주에서 식물명 불확실성을 밝혀 두는 것이 안전합니다.
+  issues:
+  - severity: high
+    issue: ‘가시와 들풀이’가 문법상 주어로 처리됨
+    rationale: 원문은 기드온이 광야의 가시와 바르코님을 처벌의 도구로 사용하여 상대의 살을 ‘타작한다’는 뜻입니다. 한국어에서는 도구격 조사 ‘-로’를 써야 행위자와 수단의 관계가 보존됩니다.
+  - severity: medium
+    issue: בַּרְקֳנִים을 ‘들풀’로 번역함
+    rationale: 정확한 식물 종은 불확실하지만, 문맥 및 어휘상 가시가 있는 해로운 식물을 가리킵니다. ‘들풀’은 가시성을 함축하지 않아 원문의 폭력적 식물 이미지를 약화합니다.
+  revised_text: 기드온이 말했습니다. 「그러므로 야훼께서 세바와 살문나를 내 손에 넘겨주실 때, 나는 광야의 가시와 가시덤불로 너희의 살을 타작하겠습니다.」[a]
+  revised_footnotes:
+  - marker: a
+    text: ‘가시덤불’로 옮긴 히브리어 식물명은 정확한 종류가 확실하지 않습니다. ‘찔레’나 ‘가시나무’ 등으로 이해되기도 합니다.
+    reason: lexical_alternative
+  revision_rationale: 도구격 ‘-로’를 보완하여 원문의 통사적 관계를 바로잡고, 불확실한 식물명을 가시성이라는 공통 의미를 보존하는 포괄적 표현으로 수정했습니다. 나머지 표현은 원문의 시간절, 신명, 인명, 위협의 농경 은유를 충실히 반영하므로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:10:31Z'
+  output_hash: 4f4ec078790cec33d948fe5ff09a8b12e299d7bf6dd23e4947d1a3c9e1a8d647
+  usage:
+    completion_tokens: 988
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 208
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 148
+      engine_ttlt_ms: 7813
+      pre_inference_ms: 245
+      service_tbt_ms: 8
+      service_ttft_ms: 554
+      service_ttlt_ms: 8215
+      total_duration_ms: 7983
+      user_visible_ttft_ms: 308
+    prompt_tokens: 2500
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3488
+  applied_revision: true
+  auto_apply_blocked_errors: []

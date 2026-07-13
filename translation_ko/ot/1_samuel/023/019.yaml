@@ -88,4 +88,62 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 지명·지형 어구의 배열을 크게 흐리고, 원문의 반문을 평서문으로 바꾸었습니다. 특히 בַּחֹרְשָׁה는 ‘호라에스의 들[or 숲]’이 아니라 본문에서는 ‘숲이 우거진 곳’으로 옮기고 지명 해석을 각주로 처리하는 것이 안전합니다. בְּגִבְעַת הַחֲכִילָה는 ‘하길라 산에서’이며, 관계절은 하길라 산을 수식합니다.
+  naturalness: ‘십 사람들’보다 ‘십 사람들이’가 자연스럽고, ‘호라에스[hore-sh]의 들[or 숲]’ 및 대괄호식 표기는 표준 한국어 성경 본문에 부자연스럽습니다. 발화자를 먼저 제시하고 인용문을 뒤에 두어 현대 한국어 합쇼체 문장으로 정리했습니다.
+  terminology: 지명은 십, 기브아, 하길라, 여시몬으로 일관되게 음역했습니다. ‘요새들’은 מְצָדוֹת의 복수를 보존합니다. מִימִין은 본문에서 ‘오른쪽’을 유지하고 ‘남쪽’ 가능성은 각주에 제한했습니다.
+  issues:
+  - severity: high
+    issue: 원문의 반문이 평서문으로 바뀜
+    rationale: הֲלוֹא는 긍정 답변을 기대하는 반문입니다. ‘숨어 있습니다’가 아니라 ‘숨어 있지 않습니까?’로 옮겨야 합니다.
+  - severity: high
+    issue: 지형 어구의 구조와 의미가 왜곡됨
+    rationale: ‘황무지에 있는 요새들’은 원문에 없고, ‘호라에스의 들[or 숲]에 있는 하길라 산’은 בַּמְּצָדוֹת בַּחֹרְשָׁה בְּגִבְעַת הַחֲכִילָה의 수식 관계를 불명확하게 만듭니다.
+  - severity: medium
+    issue: 대안 독법이 본문 표기와 각주에서 혼선됨
+    rationale: 본문의 ‘호라에스[hore-sh]의 들[or 숲]’은 음역, 영어식 발음 표기, 선택지 표기를 뒤섞습니다. 일반명사 독법을 본문에 두고 ‘호레쉬’라는 지명 독법을 각주로 제시해야 합니다.
+  - severity: medium
+    issue: 각주 a의 표지 위치가 내용과 맞지 않음
+    rationale: 각주 a는 בַּחֹרְשָׁה의 지명/일반명사 대안을 설명하므로 ‘숲이 우거진 곳’에 붙여야 합니다.
+  revised_text: 그때 십 사람들이 기브아에 있는 사울에게 올라가 말했습니다. “다윗이 우리 가운데, 숲이 우거진 곳[a]의 요새들, 곧 여시몬의 오른쪽에 있는 하길라 산에서 숨어 있지 않습니까?”
+  revised_footnotes:
+  - marker: a
+    text: 또는 “호레쉬에서.” 이 말을 일반명사인 “숲이 우거진 곳”이 아니라 지명으로 볼 수 있습니다.
+    reason: alternative_reading
+  - marker: b
+    text: 히브리어를 직역하면 “여시몬의 오른쪽에”입니다. 히브리어 지리 용례에서는 “여시몬의 남쪽에”를 뜻할 가능성이 큽니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 화행(반문), 지명과 일반명사 사이의 해석상 불확실성, 그리고 지형 어구의 수식 관계를 보존하도록 전면 정리했습니다. ‘오른쪽’은 본문에 유지했으며, ‘남쪽’이라는 지리적 해석은 단정하지 않고 각주에 남겼습니다. 각주 b는 해당 어구 뒤의 ‘오른쪽’에 연결됩니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:26:38Z'
+  output_hash: 6bf8f970ed2194b993bd589b5db222f789cf41e1495b4341c752622f45e3ea27
+  usage:
+    completion_tokens: 1142
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 179
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 163
+      engine_ttlt_ms: 8734
+      pre_inference_ms: 97
+      service_tbt_ms: 8
+      service_ttft_ms: 389
+      service_ttlt_ms: 8976
+      total_duration_ms: 8888
+      user_visible_ttft_ms: 292
+    prompt_tokens: 3107
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 2688
+    total_tokens: 4249
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

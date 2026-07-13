@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들은 그가 침상 위에서 자기 침실에 누워 있는 동안 집 안으로 들어가 그를 때려 죽였습니다. 그런 다음 그의 머리를 제거하고 그의 머리를 가져가 아라바 길로 밤새 갔습니다.[a][b][c]
+  text: 그들은 그가 침상 위 그의 침실[a]에 누워 있을 때 집 안으로 들어가, 그를 치고 죽였습니다. 그런 다음 그의 머리를 떼어 내고[c] 그의 머리를 가져가 아라바[b]를 거쳐 밤새 갔습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘침실’은 문자적으로는 ‘눕는 방/잠자는 방’에 해당합니다.
+    text: ‘침실’은 문자적으로는 ‘그가 눕는 방’ 또는 ‘그가 잠자는 방’에 해당합니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘아라바’는 요르단 열곡/평야 지대를 가리키는 지명입니다.
+    text: ‘아라바’는 요르단 열곡과 평야 지대를 가리키는 지명입니다.
     reason: cultural_note
   - marker: c
-    text: 히브리어는 여기서 머리를 ‘제거했다’고 말하며, 곧이어 머리를 ‘가져갔다’고 덧붙입니다.
+    text: 히브리어는 여기서 머리를 ‘제거했다’고 말하고, 이어서 그 머리를 ‘가져갔다’고 덧붙입니다. ‘떼어 내고’는 제거의 뜻을 문맥에 맞게 옮긴 것입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: בַּחֲדַר מִשְׁכָּבוֹ
@@ -96,4 +96,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들은 그가 침상 위에서 자기 침실에 누워 있는 동안 집 안으로 들어가 그를 때려 죽였습니다. 그런 다음 그의 머리를 제거하고 그의 머리를 가져가 아라바 길로 밤새 갔습니다.[a][b][c]
+  to: 그들은 그가 침상 위 그의 침실[a]에 누워 있을 때 집 안으로 들어가, 그를 치고 죽였습니다. 그런 다음 그의 머리를 떼어 내고[c] 그의 머리를 가져가 아라바[b]를 거쳐 밤새 갔습니다.
+  rationale: 원문의 동사 순서와 반복된 ‘그의 머리’를 유지했습니다. ‘떼어 내고’는 실제 수단을 ‘잘라내다’로 한정하지 않으면서도, 살해 뒤 머리를 가져갔다는 문맥에 맞는 자연스러운 한국어입니다. 지명과 관련 각주 표지도 해당 단어에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:29:14Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 연속 동작(들어감, 침상에 누워 있음, 침, 죽임, 머리를 떼어 냄, 머리를 가져감, 밤새 이동)을 한국어에서도 분명히 구분하는 편이 좋습니다. 특히 ‘아라바 길로’는 히브리어의 ‘아라바를 거쳐/아라바 길을 따라’라는 경로 표현보다 다소 부자연스럽습니다.
+  naturalness: ‘자기 침실’은 선행하는 ‘그’와의 지시 관계가 한국어에서 약간 불분명할 수 있으므로 ‘그의 침실’이 자연스럽고 명확합니다. ‘제거하고’는 사람의 머리에 대해 행정적·기계적으로 들릴 수 있어, 문맥상 요구되는 분리의 의미를 담은 ‘떼어 내고’가 더 자연스럽습니다.
+  terminology: ‘아라바’는 지명으로 음역을 유지합니다. ‘침실’과 ‘침상’은 현대 표준어 문체에 적절합니다. ‘치고 죽였습니다’는 두 히브리어 동사를 보존하며, ‘사형에 처하다’ 같은 법률적 의미를 부가하지 않습니다.
+  issues:
+  - severity: medium
+    issue: ‘그를 때려 죽했습니다’가 ‘치다’와 ‘죽게 하다’라는 두 동작을 한 한국어 관용구로 결합합니다.
+    rationale: 문맥상 의미는 전달되지만, 원문이 병렬로 서술하는 두 동작을 ‘그를 치고 죽였습니다’로 옮기면 더 직접적으로 보존됩니다.
+  - severity: medium
+    issue: ‘그의 머리를 제거하고’는 이 문맥에서 부자연스럽고 뜻이 다소 추상적입니다.
+    rationale: 히브리어는 문자적으로 ‘그의 머리를 제거하였다’이지만, 이어지는 ‘가져갔다’와 살해 문맥은 머리를 몸에서 분리한 행위를 가리킵니다. ‘떼어 내고’는 절단 방식을 과도하게 특정하지 않으면서 자연스럽습니다.
+  - severity: low
+    issue: ‘아라바 길로’는 경로 표현으로 다소 어색합니다.
+    rationale: דרך הָעֲרָבָה는 아라바를 통과하거나 그 길을 따른다는 뜻입니다. ‘아라바를 거쳐’가 현대 한국어에서 자연스럽습니다.
+  - severity: low
+    issue: 각주 표지가 해당 표현 바로 뒤가 아니라 문장 끝에 한꺼번에 놓여 있습니다.
+    rationale: 각주의 적용 대상을 명확히 하려면 ‘침실’, ‘머리를 떼어 내고’, ‘아라바’ 뒤에 각각 붙이는 것이 좋습니다.
+  revised_text: 그들은 그가 침상 위 그의 침실[a]에 누워 있을 때 집 안으로 들어가, 그를 치고 죽였습니다. 그런 다음 그의 머리를 떼어 내고[c] 그의 머리를 가져가 아라바[b]를 거쳐 밤새 갔습니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘침실’은 문자적으로는 ‘그가 눕는 방’ 또는 ‘그가 잠자는 방’에 해당합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘아라바’는 요르단 열곡과 평야 지대를 가리키는 지명입니다.
+    reason: cultural_note
+  - marker: c
+    text: 히브리어는 여기서 머리를 ‘제거했다’고 말하고, 이어서 그 머리를 ‘가져갔다’고 덧붙입니다. ‘떼어 내고’는 제거의 뜻을 문맥에 맞게 옮긴 것입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 동사 순서와 반복된 ‘그의 머리’를 유지했습니다. ‘떼어 내고’는 실제 수단을 ‘잘라내다’로 한정하지 않으면서도, 살해 뒤 머리를 가져갔다는 문맥에 맞는 자연스러운 한국어입니다. 지명과 관련 각주 표지도 해당 단어에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:29:14Z'
+  output_hash: 9118df13032a2c62f6e6218c82ad8271e0a2cea4a73186dbc478a4194199eb89
+  usage:
+    completion_tokens: 1313
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 358
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 124
+      engine_ttlt_ms: 10094
+      pre_inference_ms: 153
+      service_tbt_ms: 8
+      service_ttft_ms: 467
+      service_ttlt_ms: 10397
+      total_duration_ms: 10255
+      user_visible_ttft_ms: 315
+    prompt_tokens: 3257
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 2688
+    total_tokens: 4570
+  applied_revision: true
+  auto_apply_blocked_errors: []

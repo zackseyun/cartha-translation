@@ -20,15 +20,18 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 야훼께서 당신을 길로 보내시며 말씀하셨습니다[a]. ‘가서 그 죄인들, 곧 아말렉을 멸하기로 바치고[b], 그들이 소멸될 때까지 그들과 싸우라.’
+  text: 야훼께서 당신을 길로[a] 보내시고 말씀하셨습니다. “가서 그 죄인들인 아말렉[b]을 진멸에 바치고[c], 그들을 다 멸할 때까지 그들과 싸우십시오.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 ‘보내다’ 다음에 ‘길/방식’(בְּדָרֶךְ)을 둡니다. POB의 ‘on a mission’은 그 뜻을 풀어쓴 것입니다.
+    text: 히브리어는 ‘보내다’ 다음에 ‘길/방식’(בְּדָרֶךְ)을 둡니다. 여기서는 파송받은 길 또는 사명의 과정을 가리킵니다.
     reason: source_note
   - marker: b
-    text: 히브리어는 ‘그 죄인들, 아말렉’이라는 동격 구조를 사용합니다. POB처럼 ‘the sinners, the Amalekites’로 풀 수도 있습니다.
+    text: 히브리어는 ‘그 죄인들, 아말렉’이라는 동격 구조를 사용합니다. ‘아말렉’은 이 문맥에서 아말렉 사람들을 가리키는 집단 명칭입니다.
     reason: alternative_reading
+  - marker: c
+    text: ‘진멸에 바치다’는 히브리어 חרם의 표현으로, 어떤 것을 멸망에 내어 주도록 구별한다는 뜻입니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיִּשְׁלָחֲךָ
   english_pob_choice: sent you
@@ -91,4 +94,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 야훼께서 당신을 길로 보내시며 말씀하셨습니다[a]. ‘가서 그 죄인들, 곧 아말렉을 멸하기로 바치고[b], 그들이 소멸될 때까지 그들과 싸우라.’
+  to: 야훼께서 당신을 길로[a] 보내시고 말씀하셨습니다. “가서 그 죄인들인 아말렉[b]을 진멸에 바치고[c], 그들을 다 멸할 때까지 그들과 싸우십시오.”
+  rationale: 연속 서술, 명령의 능동적 완결, 현대 합쇼체를 바로잡았습니다. 또한 동격 설명과 חרם 설명이 각각 해당 어구에 정확히 연결되도록 각주 표지를 조정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:18:02Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘와 동격 구조는 대체로 잘 반영되었습니다. 다만 וַיִּשְׁלָחֲךָ와 וַיֹּאמֶר의 연속 서술에는 ‘보내시며’보다 ‘보내시고’가 알맞고, עַד כַּלּוֹתָם אֹתָם은 명령의 수행 주체가 아말렉을 끝장내는 뜻이므로 ‘그들이 소멸될 때까지’보다 ‘그들을 다 멸할 때까지’가 더 충실합니다. חרם의 기술적 의미는 ‘진멸에 바치다’와 설명 주석으로 보존했습니다.
+  naturalness: 초안의 ‘길로 보내시며’와 인용문 종결 ‘싸우라’는 현대 합쇼체 문장 안에서 각각 연결 관계와 높임말 체계가 어색합니다. ‘보내시고’ 및 ‘싸우십시오’로 고쳤으며, ‘진멸에 바치고’는 성경 문맥에 맞는 격식 있는 표현입니다.
+  terminology: ‘야훼’, ‘아말렉’, ‘진멸’은 적절합니다. ‘아말렉’은 히브리어의 집단적 단수 명칭을 유지하되, ‘죄인들인 아말렉’으로 동격 관계를 자연스럽게 나타냈습니다.
+  issues:
+  - severity: medium
+    issue: ‘보내시며’가 연속된 히브리어 서술을 동시적 연결로 처리합니다.
+    rationale: 와우 연속형 두 동사는 ‘야훼께서 보내시고 말씀하셨습니다’라는 순차적 서술입니다.
+  - severity: medium
+    issue: ‘그들이 소멸될 때까지’가 כַּלּוֹתָם אֹתָם의 능동적 완결 행위를 결과 상태로 바꿉니다.
+    rationale: 문맥상 사울에게 아말렉을 다 멸할 때까지 싸우라는 명령이므로, 목적어와 수행 주체를 드러내야 합니다.
+  - severity: medium
+    issue: 인용문 ‘싸우라’가 요구된 현대 formal-polite 합쇼체와 일치하지 않습니다.
+    rationale: ‘싸우십시오’가 본문 전체의 ‘말씀하셨습니다’와 일관된 현대 존대 명령형입니다.
+  - severity: low
+    issue: 기존 각주 b의 표지가 חרם 번역 뒤에 있어, 동격 구조를 설명하는 각주의 지시 대상이 불분명합니다.
+    rationale: ‘아말렉’ 바로 뒤로 표지를 옮기고, חרם의 기술적 의미에는 별도 표지를 두는 편이 정확합니다.
+  revised_text: 야훼께서 당신을 길로[a] 보내시고 말씀하셨습니다. “가서 그 죄인들인 아말렉[b]을 진멸에 바치고[c], 그들을 다 멸할 때까지 그들과 싸우십시오.”
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 ‘보내다’ 다음에 ‘길/방식’(בְּדָרֶךְ)을 둡니다. 여기서는 파송받은 길 또는 사명의 과정을 가리킵니다.
+    reason: source_note
+  - marker: b
+    text: 히브리어는 ‘그 죄인들, 아말렉’이라는 동격 구조를 사용합니다. ‘아말렉’은 이 문맥에서 아말렉 사람들을 가리키는 집단 명칭입니다.
+    reason: alternative_reading
+  - marker: c
+    text: ‘진멸에 바치다’는 히브리어 חרם의 표현으로, 어떤 것을 멸망에 내어 주도록 구별한다는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 연속 서술, 명령의 능동적 완결, 현대 합쇼체를 바로잡았습니다. 또한 동격 설명과 חרם 설명이 각각 해당 어구에 정확히 연결되도록 각주 표지를 조정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:18:02Z'
+  output_hash: 26b56a83ac3807dcee108eabb4219aaa28d62b981cc54006f4ab2add7647534b
+  usage:
+    completion_tokens: 2862
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1895
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 123
+      engine_ttlt_ms: 25594
+      pre_inference_ms: 113
+      service_tbt_ms: 9
+      service_ttft_ms: 406
+      service_ttlt_ms: 25873
+      total_duration_ms: 25774
+      user_visible_ttft_ms: 294
+    prompt_tokens: 3043
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5905
+  applied_revision: true
+  auto_apply_blocked_errors: []

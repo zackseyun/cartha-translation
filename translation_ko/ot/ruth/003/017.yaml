@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그녀가 말했습니다[a], 「그가 이 보리 여섯 개를 나에게 주었습니다. 그가 말하기를, ‘당신의 시어머니에게 빈손으로 가지 마십시오.’라고 했기 때문입니다」.
+  text: 그녀가 말했습니다[a]. “그가 이 보리 여섯 분량을 나에게 주었습니다. ‘시어머니께 빈손으로 가지 마십시오’라고 그가 말했기 때문입니다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 ‘이 보리 여섯’이며, 구체적인 도량형은 명시하지 않습니다.
+    text: 히브리어는 문자적으로 ‘이 보리 여섯’이라고 하며, 구체적인 도량형이나 단위는 명시하지 않습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וַתֹּאמֶר
@@ -68,4 +68,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그녀가 말했습니다[a], 「그가 이 보리 여섯 개를 나에게 주었습니다. 그가 말하기를, ‘당신의 시어머니에게 빈손으로 가지 마십시오.’라고 했기 때문입니다」.
+  to: 그녀가 말했습니다[a]. “그가 이 보리 여섯 분량을 나에게 주었습니다. ‘시어머니께 빈손으로 가지 마십시오’라고 그가 말했기 때문입니다.”
+  rationale: ‘여섯 분량’은 수량 단위가 원문에 명시되지 않았음을 보존하면서도 ‘보리 여섯 개’가 보리알 여섯 개로 읽힐 위험을 피합니다. 직접 인용과 보고 인용의 구조를 정리하고, ‘시어머니께’로 원문의 소유 관계와 공손한 한국어 문체를 자연스럽게 반영했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:17:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 의미는 대체로 충실하나, ‘보리 여섯 개’는 보리알 여섯 개처럼 이해될 수 있어 원문의 단위 미명시와 문맥상의 상당한 양을 적절히 전달하지 못합니다. 또한 인용문 안의 ‘그가 말하기를 …라고 했기 때문입니다’는 한국어 문장 구조가 부자연스럽습니다.
+  naturalness: 합쇼체와 직접화법의 기본 방향은 적절합니다. 다만 ‘당신의 시어머니’는 보아스가 룻에게 하는 말로는 다소 거리감 있고, 인용 중첩 구조도 매끄럽지 않습니다. ‘시어머니께’는 소유 관계를 자연스럽게 함축합니다.
+  terminology: ‘빈손으로’와 ‘시어머니’는 적절합니다. 단위가 명시되지 않은 שְׂעֹרִים의 수량 표현은 특정 도량형을 확정하지 않는 ‘여섯 분량’으로 옮기고 각주에서 원문의 생략을 밝혀야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘보리 여섯 개’라는 수량 표현
+    rationale: ‘개’는 보통 보리알 또는 셀 수 있는 낱개를 가리키므로, 본문이 말하는 단위 미상의 보리 여섯 분량을 오해하게 할 수 있습니다.
+  - severity: medium
+    issue: 인용문의 문장 구조
+    rationale: ‘그가 말하기를, …라고 했기 때문입니다’는 간접 인용 표지와 직접 인용이 겹쳐 자연스럽지 않습니다. 히브리어의 כִּי אָמַר(그가 말했기 때문에)는 자연스러운 한국어 인용 구조로 재구성할 수 있습니다.
+  - severity: low
+    issue: ‘당신의 시어머니’
+    rationale: 원문 2인칭 소유는 한국어에서 ‘시어머니께’로 자연스럽게 드러납니다. ‘당신의’는 직접 대화에서 불필요하게 거리감 있는 표현입니다.
+  revised_text: 그녀가 말했습니다[a]. “그가 이 보리 여섯 분량을 나에게 주었습니다. ‘시어머니께 빈손으로 가지 마십시오’라고 그가 말했기 때문입니다.”
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘이 보리 여섯’이라고 하며, 구체적인 도량형이나 단위는 명시하지 않습니다.
+    reason: lexical_alternative
+  revision_rationale: ‘여섯 분량’은 수량 단위가 원문에 명시되지 않았음을 보존하면서도 ‘보리 여섯 개’가 보리알 여섯 개로 읽힐 위험을 피합니다. 직접 인용과 보고 인용의 구조를 정리하고, ‘시어머니께’로 원문의 소유 관계와 공손한 한국어 문체를 자연스럽게 반영했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:17:42Z'
+  output_hash: ec4b8f2b2008048e7b4c8c5b004f4acf121c0afa5d5b3e7565165331d6759665
+  usage:
+    completion_tokens: 1122
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 415
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 133
+      engine_ttlt_ms: 8969
+      pre_inference_ms: 82
+      service_tbt_ms: 8
+      service_ttft_ms: 582
+      service_ttlt_ms: 9417
+      total_duration_ms: 9344
+      user_visible_ttft_ms: 500
+    prompt_tokens: 1921
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3043
+  applied_revision: true
+  auto_apply_blocked_errors: []

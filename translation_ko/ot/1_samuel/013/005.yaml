@@ -17,11 +17,11 @@ base_translation:
     reason: textual_variant
 translation:
   language: ko
-  text: 그리고 블레셋 사람들이 이스라엘과 싸우려고 모였는데, 전차 삼만 대와 기병 육천 명, 그리고 바닷가의 모래처럼 수많은 군대였습니다. 그들은 올라가 믹마스에 진을 쳤으니, 벧아웬의 동쪽이었습니다.[a]
+  text: 블레셋 사람들이 이스라엘과 싸우려고 모였습니다. 전차가 삼만 대[a], 기병이 육천 명이었으며, 병력은 바닷가의 모래처럼 수많았습니다. 그들은 올라가서 벧아웬 동쪽의 믹마스에 진을 쳤습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 본문은 ‘전차 삼만 대’로 읽습니다. 일부 해석자와 고대 사본 증거는 문맥상 매우 큰 수이기 때문에 ‘삼천’과 같은 더 작은 수를 제안하지만, 본문은 마소라 히브리어를 따릅니다.
+    text: 히브리어 본문은 ‘전차 삼만 대’로 읽습니다. 일부 해석자와 고대 사본 증거는 문맥상 이 수가 매우 크다고 보아 ‘삼천’과 같은 더 작은 수를 제안하지만, 본문은 마소라 히브리어를 따릅니다.
     reason: textual_variant
 lexical_decisions:
 - source_word: וּפְלִשְׁתִּים נֶאֶסְפוּ
@@ -84,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 블레셋 사람들이 이스라엘과 싸우려고 모였는데, 전차 삼만 대와 기병 육천 명, 그리고 바닷가의 모래처럼 수많은 군대였습니다. 그들은 올라가 믹마스에 진을 쳤으니, 벧아웬의 동쪽이었습니다.[a]
+  to: 블레셋 사람들이 이스라엘과 싸우려고 모였습니다. 전차가 삼만 대[a], 기병이 육천 명이었으며, 병력은 바닷가의 모래처럼 수많았습니다. 그들은 올라가서 벧아웬 동쪽의 믹마스에 진을 쳤습니다.
+  rationale: 본문의 수량과 비유를 그대로 보존하면서, 군사 목록을 자연스러운 한국어 병렬 문장으로 다듬었습니다. 또한 히브리어의 장소 수식 관계를 따라 ‘벧아웬 동쪽의 믹마스’로 고쳤고, 이문 주석 표지를 해당 수량 바로 뒤로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T14:20:39Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 마소라 본문의 군사 수량(전차 3만 대, 기병 6천 명)과 바닷가 모래의 비유는 충실히 옮겼습니다. 다만 마지막 문장의 ‘벧아웬의 동쪽이었습니다’는 서술상 믹마스가 주어인 동격 설명처럼 들리며, 히브리어가 명시하는 ‘벧아웬 동쪽에 있는 믹마스에 진을 쳤다’라는 장소 관계를 자연스럽고 분명하게 전달하지 못합니다.
+  naturalness: ‘전차 삼만 대와 기병 육천 명, 그리고 … 군대였습니다’는 열거 자체는 이해되지만 한국어 문장으로 다소 부자연스럽습니다. 각 전력을 병렬로 제시하고, 장소 수식어를 ‘벧아웬 동쪽의 믹마스’로 처리하면 현대 표준어 합쇼체에서 더 명료하고 자연스럽습니다.
+  terminology: ‘블레셋’, ‘이스라엘’, ‘전차’, ‘기병’, ‘믹마스’, ‘벧아웬’은 적절합니다. 이문 주석은 마소라 본문을 본문에 유지하는 원칙을 정확히 반영하지만, 표지 [a]는 해당 수량인 ‘전차 삼만 대’에 직접 붙이는 것이 적절합니다.
+  issues:
+  - severity: medium
+    issue: ‘그들은 올라가 믹마스에 진을 쳤으니, 벧아웬의 동쪽이었습니다’의 장소 관계가 불분명합니다.
+    rationale: קִדְמַת בֵּית אָוֶן은 믹마스의 위치를 나타냅니다. 현 문장은 ‘벧아웬의 동쪽’이 무엇을 지칭하는지 어색하고, 캠프 위치의 수식 관계가 흐려집니다.
+  - severity: low
+    issue: 군사 수량 열거가 ‘군대였습니다’로 마무리되어 다소 어색합니다.
+    rationale: 히브리어의 명사 열거를 한국어에서 자연스럽게 전달하려면 ‘전차가…, 기병이…’ 또는 ‘…을 거느리고’와 같이 명시적으로 연결하는 편이 좋습니다.
+  - severity: low
+    issue: 이문 주석 표지가 절 끝에 배치되어 있습니다.
+    rationale: 주석은 ‘전차 삼만 대’라는 논쟁적 수량에 관한 것이므로 해당 어구 바로 뒤에 두어 앵커를 분명히 해야 합니다.
+  revised_text: 블레셋 사람들이 이스라엘과 싸우려고 모였습니다. 전차가 삼만 대[a], 기병이 육천 명이었으며, 병력은 바닷가의 모래처럼 수많았습니다. 그들은 올라가서 벧아웬 동쪽의 믹마스에 진을 쳤습니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 본문은 ‘전차 삼만 대’로 읽습니다. 일부 해석자와 고대 사본 증거는 문맥상 이 수가 매우 크다고 보아 ‘삼천’과 같은 더 작은 수를 제안하지만, 본문은 마소라 히브리어를 따릅니다.
+    reason: textual_variant
+  revision_rationale: 본문의 수량과 비유를 그대로 보존하면서, 군사 목록을 자연스러운 한국어 병렬 문장으로 다듬었습니다. 또한 히브리어의 장소 수식 관계를 따라 ‘벧아웬 동쪽의 믹마스’로 고쳤고, 이문 주석 표지를 해당 수량 바로 뒤로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:20:39Z'
+  output_hash: 287bb63ef72b27c82ff6f88c50951ecbc64936689b257dddd6d9918d38867186
+  usage:
+    completion_tokens: 1370
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 149
+      engine_ttlt_ms: 10933
+      pre_inference_ms: 131
+      service_tbt_ms: 8
+      service_ttft_ms: 469
+      service_ttlt_ms: 11226
+      total_duration_ms: 11105
+      user_visible_ttft_ms: 338
+    prompt_tokens: 2801
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4171
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -98,4 +98,57 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 전반적인 사건 순서와 의미는 원문에 충실합니다. 다만 קרא + אחרי의 ‘뒤따라 부르다’라는 방향성을 ‘그 소년을 향해 외쳤습니다’로 좀 더 분명히 반영할 수 있습니다. 또한 원문의 긴급한 명령 세 개는 유지하되, 목표 문체에 맞추어 높임 명령형으로 통일하는 것이 적절합니다.
+  naturalness: 서술문은 자연스럽지만, 직접화법의 ‘서둘러! 빨리! 멈추지 마라!’는 반말 명령형이어서 지정된 현대 합쇼체와 일치하지 않습니다. ‘서두르십시오! 빨리! 멈추지 마십시오!’는 긴박성을 유지하면서 문체를 통일합니다.
+  terminology: ‘요나단’, ‘소년’, ‘화살들’, ‘주인’은 문맥과 원어의 관계를 적절히 반영합니다. ‘요나단의 소년’은 반복되는 נער를 보존하면서 그의 수행 소년이라는 관계도 충분히 드러냅니다.
+  issues:
+  - severity: medium
+    issue: 직접화법이 목표 합쇼체가 아닌 반말 명령형으로 되어 있습니다.
+    rationale: 번역의 지정 변체가 현대 정중체(합쇼체)이므로, ‘서둘러/멈추지 마라’를 ‘서두르십시오/멈추지 마십시오’로 고쳐 문체를 일관되게 해야 합니다.
+  - severity: low
+    issue: ‘소년에게 외쳤습니다’는 ‘뒤따라 불렀다’의 방향성을 다소 약화합니다.
+    rationale: אַחֲרֵי와 함께 쓰인 קרא는 떠나가거나 앞에 있는 사람을 향해 뒤따라 부르는 장면입니다. ‘그 소년을 향해 외쳤습니다’가 자연스러우면서도 이를 더 잘 보존합니다.
+  revised_text: 그러자 요나단이 그 소년을 향해 외쳤습니다. “서두르십시오! 빨리! 멈추지 마십시오!” 요나단의 소년은 화살들을 주워 자기 주인에게 갔습니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어를 문자적으로 옮기면 “서 있지 마십시오”이지만, 문맥에서는 “멈추지 마십시오”라는 뜻입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어의 ‘화살’ 표기는 단수처럼 보일 수 있으나, 문맥상 요나단이 쏜 여러 화살을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 합쇼체 요구에 맞게 직접화법을 정중 명령형으로 통일하고, ‘부르다’의 방향성을 자연스럽게 보완했습니다. ‘멈추지 마십시오’와 복수 ‘화살들’은 각각 문맥적 의미와 선행 화살들의 맥락을 보존하므로 유지했습니다. 각주 a는 ‘멈추지 마십시오’ 뒤, 각주 b는 ‘화살들’ 뒤에 배치해야 합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T14:27:42Z'
+  output_hash: a81e0b4acaff96399db79d942f18f796f9f3b999990cc8b11013399c381a633f
+  usage:
+    completion_tokens: 1145
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 409
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 9247
+      pre_inference_ms: 80
+      service_tbt_ms: 8
+      service_ttft_ms: 374
+      service_ttlt_ms: 9483
+      total_duration_ms: 9421
+      user_visible_ttft_ms: 294
+    prompt_tokens: 2605
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3750
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]
