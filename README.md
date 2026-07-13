@@ -86,11 +86,11 @@ Two verses that illustrate what POB does differently, and why.
 
 | | Rendering |
 |---|---|
-| **POB** | "And **Yahweh grieved over** having made man on the earth, and he was **pained in his heart**." |
+| **POB** | "And **Yahweh regretted** having made man on the earth, and he was **pained in his heart**." |
 | NKJV | "And the LORD was **sorry** that He had made man on the earth, and He was **grieved in His heart**." |
 | NIV | "The LORD **regretted** that he had made human beings on the earth, and his heart was **deeply troubled**." |
 
-- **The first verb (`וַיִּנָּחֶם`) — "grieved over."** This preserves divine sorrow without making the English sound like God made a mistaken choice or lacked foresight. "Regretted" can imply that in modern English; "repented" would imply moral fault; "was sorry" is possible but softer.
+- **The first verb (`וַיִּנָּחֶם`) — "regretted."** The Niphal with a clause naming a prior action expresses retrospective regret or sorrow. "Was sorry" is also possible, but "grieved over" weakens the evaluative force and overlaps the separate pain verb that follows. The Hebrew does not itself say that God was surprised or lacked foreknowledge; that question belongs in interpretation, not in a softened main translation.
 - **The second verb (`וַיִּתְעַצֵּב`) — "was pained."** This carries the inward wound-like force of the Hebrew. POB avoids flattening both verbs into one general grief word.
 - **The divine name (`יהוה`) — "Yahweh."** This makes the name visible rather than hiding it behind the typographic substitute "LORD."
 
@@ -98,7 +98,7 @@ Two verses that illustrate what POB does differently, and why.
 
 POB's choice is **source-image accuracy in the main text + contextual understanding in a companion layer** — not traditional smoothing, theological over-resolution, or pastoral softening of the translation itself.
 
-Ecclesiastes 1:2 shows why this matters: *hevel* is not just "vanity" and not simply "meaninglessness." It is breath — real, visible for a moment, impossible to hold. Genesis 6:6 shows the same principle with theology: the text really portrays Yahweh as grieving and inwardly pained, but the English should not accidentally imply that God was surprised, morally wrong, or wishing he could undo an uninformed mistake.
+Ecclesiastes 1:2 shows why this matters: *hevel* is not just "vanity" and not simply "meaninglessness." It is breath — real, visible for a moment, impossible to hold. Genesis 6:6 shows the same principle with theology: the text portrays Yahweh as regretting the act of making humanity and as inwardly pained. The translation preserves that tension rather than deciding inside the main sentence how the language relates to divine foreknowledge.
 
 In both cases, familiar renderings preserve something valuable, but they also make hidden choices for the reader. POB keeps the core source-language pressure in the sentence itself, then uses footnotes, YAML rationale, the in-app **Original context** AI tool, and public discussion to make every choice visible and defensible.
 
