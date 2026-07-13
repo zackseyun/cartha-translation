@@ -291,7 +291,10 @@ def normalize_translation_payload(
 
     Records store ``marker: a`` while rendered text uses ``[a]``. A model may
     instead return ``marker: [a]`` or render ``[[a]]``. Those are formatting
-    variations; genuinely missing anchors still fail normal validation.
+    variations. If the model emits an extra note without placing its marker in
+    the verse, discard that orphaned note instead of throwing away an otherwise
+    valid translation. The independent review pass can restore a properly
+    anchored note when the source evidence requires one.
     """
     normalized_text = re.sub(r"\[\[([^\[\]]+)\]\]", r"[\1]", str(text))
     normalized_notes: list[dict[str, Any]] = []
@@ -303,6 +306,8 @@ def normalize_translation_payload(
         while len(marker) >= 2 and marker.startswith("[") and marker.endswith("]"):
             marker = marker[1:-1].strip()
         note["marker"] = marker
+        if marker and f"[{marker}]" not in normalized_text:
+            continue
         normalized_notes.append(note)
     return normalized_text, normalized_notes
 

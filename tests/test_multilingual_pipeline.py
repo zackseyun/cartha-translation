@@ -53,6 +53,18 @@ def test_multilingual_payload_normalizes_bracketed_footnote_markers() -> None:
     assert module.validate(record, "es") == []
 
 
+def test_multilingual_payload_discards_orphaned_model_footnotes() -> None:
+    module = load_module("multilingual_pipeline_orphaned_footnotes", "tools/multilingual_pipeline.py")
+    text, notes = module.normalize_translation_payload(
+        "Texto[a]", [
+            {"marker": "a", "text": "Anchored", "reason": "Ambiguity"},
+            {"marker": "b", "text": "Orphaned", "reason": "Unused"},
+        ]
+    )
+    assert text == "Texto[a]"
+    assert [note["marker"] for note in notes] == ["a"]
+
+
 def test_bounded_wave_command_is_available() -> None:
     module = load_module("multilingual_pipeline_wave", "tools/multilingual_pipeline.py")
     parsed = module.parser().parse_args(
