@@ -20,8 +20,15 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 여러분 자신을 조심하십시오. 만약 여러분의 형제가 죄를 짓거든 그를 책망하고, 그가 회개하거든 용서하십시오.
+  text: 여러분은 스스로 조심하십시오. 여러분의 형제가 죄를 지으면[a] 그를 책망하십시오. 그가 회개하면 용서하십시오.[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 일부 사본에는 “여러분의 형제가 여러분에게 죄를 지으면 그를 책망하십시오”라고 되어 있습니다.
+    reason: textual_variant
+  - marker: b
+    text: 그리스어의 ‘형제’는 남성 단수형이며, 더 넓게는 함께 믿는 사람을 가리킬 수도 있습니다.
+    reason: cultural_note
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -29,4 +36,61 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 여러분 자신을 조심하십시오. 만약 여러분의 형제가 죄를 짓거든 그를 책망하고, 그가 회개하거든 용서하십시오.
+  to: 여러분은 스스로 조심하십시오. 여러분의 형제가 죄를 지으면[a] 그를 책망하십시오. 그가 회개하면 용서하십시오.[b]
+  rationale: 첫 명령을 한국어의 자연스러운 재귀적 경계 표현으로 고치고, 조건과 명령의 관계를 분명히 했습니다. SBLGNT 본문의 무목적어 ‘죄를 지으면’을 유지했으며, 확장 이문은 각주에만 제시했습니다. 영어 감사 기록에 있는 두 각주를 한국어로 옮기고, 각주 b는 설명 대상인 ‘형제’가 아니라 문장 끝에 두되 내용상 명확하도록 했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T07:45:53Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 의미는 대체로 충실합니다. 다만 προσέχετε ἑαυτοῖς는 목적어가 있는 ‘여러분 자신을 조심하십시오’보다 재귀적 경계의 뜻인 ‘여러분은 스스로 조심하십시오’가 더 자연스럽고 정확합니다. SBLGNT의 짧은 본문을 따라 ‘여러분에게’ 또는 ‘여러분을 거슬러’를 본문에 보태지 않았습니다.
+  naturalness: ‘여러분 자신을 조심하십시오’는 현대 한국어에서 다소 어색합니다. ‘여러분은 스스로 조심하십시오’와 조건절 ‘죄를 지으면/회개하면’이 표준어 합쇼체로 자연스럽습니다.
+  terminology: ἀδελφός는 본문에서 남성 단수 ‘형제’로 유지하고, 포괄적 공동체 지시 가능성은 각주로 설명했습니다. ἐπιτίμησον은 ‘책망하십시오’, μετανοήσῃ는 ‘회개하면’, ἄφες는 ‘용서하십시오’로 옮겼습니다.
+  issues:
+  - severity: medium
+    issue: 첫 문장의 재귀적 경계 표현이 어색함
+    rationale: ‘여러분 자신을 조심하십시오’는 자신을 위험 대상으로 삼는 듯한 의미가 될 수 있습니다. προσέχετε ἑαυτοῖς의 문맥상 뜻은 스스로 경계하라는 명령입니다.
+  - severity: medium
+    issue: 영어 감사 기록의 본문비평·문화 각주와 앵커가 누락됨
+    rationale: 짧은 본문에 없는 ‘여러분에게 죄를 지으면’이라는 이문과 ‘형제’의 대표적 용법을 독자가 확인할 수 있도록 각주를 제공해야 합니다.
+  revised_text: 여러분은 스스로 조심하십시오. 여러분의 형제가 죄를 지으면[a] 그를 책망하십시오. 그가 회개하면 용서하십시오.[b]
+  revised_footnotes:
+  - marker: a
+    text: 일부 사본에는 “여러분의 형제가 여러분에게 죄를 지으면 그를 책망하십시오”라고 되어 있습니다.
+    reason: textual_variant
+  - marker: b
+    text: 그리스어의 ‘형제’는 남성 단수형이며, 더 넓게는 함께 믿는 사람을 가리킬 수도 있습니다.
+    reason: cultural_note
+  revision_rationale: 첫 명령을 한국어의 자연스러운 재귀적 경계 표현으로 고치고, 조건과 명령의 관계를 분명히 했습니다. SBLGNT 본문의 무목적어 ‘죄를 지으면’을 유지했으며, 확장 이문은 각주에만 제시했습니다. 영어 감사 기록에 있는 두 각주를 한국어로 옮기고, 각주 b는 설명 대상인 ‘형제’가 아니라 문장 끝에 두되 내용상 명확하도록 했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:45:53Z'
+  output_hash: a61a511131c0027e99f5dcc035d2d8e2b7bd4d918fe5f9fcc98a7c365d1f1ae5
+  usage:
+    completion_tokens: 1148
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 454
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 155
+      engine_ttlt_ms: 10788
+      pre_inference_ms: 91
+      service_tbt_ms: 9
+      service_ttft_ms: 423
+      service_ttlt_ms: 11051
+      total_duration_ms: 11005
+      user_visible_ttft_ms: 333
+    prompt_tokens: 1523
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2671
+  applied_revision: true
+  auto_apply_blocked_errors: []

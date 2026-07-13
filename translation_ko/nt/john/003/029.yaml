@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 신부를 가진 이는 신랑입니다[a]. 그러나 신랑의 친구인 이는 서서 그를 듣고 신랑의 목소리 때문에 크게 기뻐합니다[c][b]. 그러므로 이 나의 기쁨이 충만해졌습니다.
+  text: 신부를 가진 이는 신랑입니다. 그러나 신랑의 친구[a]는 곁에 서서 그의 말을 들으며, 신랑의 목소리 때문에 크게 기뻐합니다[b]. 그러므로 이 나의 기쁨은 충만하게 되었습니다[c].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 '신랑의 친구' — 문화적으로는 '베스트맨'과 유사한 역할을 생각할 수 있으나, 그리스어 표현은 문자적으로 '신랑의 친구'입니다.
+    text: 문화적으로는 ‘베스트맨’과 유사한 역할을 생각할 수 있으나, 그리스어 표현은 문자적으로 ‘신랑의 친구’입니다.
     reason: cultural_note
   - marker: b
-    text: 또는 '기쁨으로 기뻐합니다' — 그리스어의 동격적 조합(여격 명사 + 동사)을 더 문자적으로 옮긴 번역입니다.
+    text: 또는 ‘기쁨으로 기뻐합니다’ — 그리스어는 ‘기쁨’이라는 명사와 같은 어근의 동사를 함께 써서 기쁨을 강조합니다.
     reason: lexical_alternative
   - marker: c
-    text: 또는 '충만하게 되었습니다/성취되었습니다' — πεπλήρωται는 충만·완성의 도달을 뜻할 수 있습니다.
+    text: 또는 ‘완성되었습니다’ 또는 ‘성취되었습니다’ — πεπλήρωται는 충만함이나 완성에 이른 상태를 나타낼 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: ὁ ἔχων
@@ -88,4 +88,67 @@ ai_draft:
     reasoning_tokens: 1920
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 신부를 가진 이는 신랑입니다[a]. 그러나 신랑의 친구인 이는 서서 그를 듣고 신랑의 목소리 때문에 크게 기뻐합니다[c][b]. 그러므로 이 나의 기쁨이 충만해졌습니다.
+  to: 신부를 가진 이는 신랑입니다. 그러나 신랑의 친구[a]는 곁에 서서 그의 말을 들으며, 신랑의 목소리 때문에 크게 기뻐합니다[b]. 그러므로 이 나의 기쁨은 충만하게 되었습니다[c].
+  rationale: 본문의 의미는 유지하되, 세 각주의 표지를 실제 설명 대상에 맞게 재배치했습니다. 또한 ‘신랑의 친구’ 절을 자연스러운 합쇼체 문장으로 다듬었고, 완료 수동 πεπλήρωται는 결과 상태를 드러내는 ‘충만하게 되었습니다’로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T07:47:29Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 본문은 전반적으로 원문의 결혼 비유와 완료 수동의 의미를 잘 반영합니다. 다만 주석 표지가 본문의 해당 표현에 연결되지 않아, 특히 πεπλήρωται에 관한 주석이 ‘신랑의 목소리’에 붙어 있는 구조를 바로잡아야 합니다.
+  naturalness: ‘신랑의 친구인 이는’과 ‘서서 그를 듣고’는 이해 가능하지만 다소 직역투입니다. ‘신랑의 친구는 곁에 서서 그의 말을 들으며’가 현대 표준 한국어의 격식 있는 문체에서 더 자연스럽습니다.
+  terminology: ‘신부’, ‘신랑’, ‘신랑의 친구’, ‘기쁨’, ‘충만’은 적절합니다. 문화적 설명은 ‘신랑의 친구’에 직접 연결하는 것이 바람직하며, ‘베스트맨’은 본문이 아닌 주석에서만 제한적으로 제시해야 합니다.
+  issues:
+  - severity: medium
+    issue: 각주 a가 ‘신랑입니다’에 붙어 있으나, 내용은 ‘신랑의 친구’에 관한 문화 주석입니다.
+    rationale: 각주 표지는 설명 대상인 φίλος τοῦ νυμφίου(신랑의 친구)에 붙어야 독자가 원문 대응과 문화 정보를 혼동하지 않습니다.
+  - severity: high
+    issue: 각주 c가 ‘신랑의 목소리 때문에’에 붙어 있으나, 내용은 문장 끝의 πεπλήρωται(충만하게 되었습니다)에 관한 어휘 주석입니다.
+    rationale: 주석의 표지와 설명 대상이 불일치합니다. πεπλήρωται를 번역한 문장 끝에 표지를 옮겨야 합니다.
+  - severity: low
+    issue: ‘신랑의 친구인 이는 서서 그를 듣고’는 현대 한국어에서 다소 어색하고 ‘그를 듣다’의 지시 대상도 순간적으로 불분명할 수 있습니다.
+    rationale: 원문의 두 분사(서 있는/듣는)를 ‘곁에 서서 그의 말을 들으며’로 옮기면 의미를 유지하면서 자연스럽게 읽힙니다.
+  revised_text: 신부를 가진 이는 신랑입니다. 그러나 신랑의 친구[a]는 곁에 서서 그의 말을 들으며, 신랑의 목소리 때문에 크게 기뻐합니다[b]. 그러므로 이 나의 기쁨은 충만하게 되었습니다[c].
+  revised_footnotes:
+  - marker: a
+    text: 문화적으로는 ‘베스트맨’과 유사한 역할을 생각할 수 있으나, 그리스어 표현은 문자적으로 ‘신랑의 친구’입니다.
+    reason: cultural_note
+  - marker: b
+    text: 또는 ‘기쁨으로 기뻐합니다’ — 그리스어는 ‘기쁨’이라는 명사와 같은 어근의 동사를 함께 써서 기쁨을 강조합니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘완성되었습니다’ 또는 ‘성취되었습니다’ — πεπλήρωται는 충만함이나 완성에 이른 상태를 나타낼 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 본문의 의미는 유지하되, 세 각주의 표지를 실제 설명 대상에 맞게 재배치했습니다. 또한 ‘신랑의 친구’ 절을 자연스러운 합쇼체 문장으로 다듬었고, 완료 수동 πεπλήρωται는 결과 상태를 드러내는 ‘충만하게 되었습니다’로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:47:29Z'
+  output_hash: 5f4a54ef91146fad318b6587b068adefc3440407387e02d470d666ce41e68fe9
+  usage:
+    completion_tokens: 1278
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 465
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 126
+      engine_ttlt_ms: 9851
+      pre_inference_ms: 83
+      service_tbt_ms: 8
+      service_ttft_ms: 293
+      service_ttlt_ms: 10012
+      total_duration_ms: 9940
+      user_visible_ttft_ms: 210
+    prompt_tokens: 2925
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4203
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,8 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 소리를 높여 말했습니다. 「예수 선생님, 저희를 불쌍히 여겨 주십시오.」
+  text: 그들은 소리를 높여[a] 말했습니다. “예수 선생님[b], 저희에게 자비를 베풀어 주십시오.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 직역하면, “그들의 목소리를 높여.”
+    reason: lexical_alternative
+  - marker: b
+    text: ‘선생님’은 권위를 지닌 사람에게 하는 호칭인 그리스어 에피스타타(ἐπιστάτα)를 옮긴 말입니다. 이는 흔히 ‘주’로 번역되는 퀴리오스(κύριος)와 다른 단어입니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: ἐπιστάτα
   english_pob_choice: Master
@@ -38,4 +45,61 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 소리를 높여 말했습니다. 「예수 선생님, 저희를 불쌍히 여겨 주십시오.」
+  to: 그들은 소리를 높여[a] 말했습니다. “예수 선생님[b], 저희에게 자비를 베풀어 주십시오.”
+  rationale: 원문의 접속과 명시된 주어를 ‘그들은’으로 보완했습니다. ἐπιστάτα는 ‘선생님’으로 유지하여 κύριος와의 어휘적 구별을 보존했으며, ἐλέησον ἡμᾶς는 자비를 요청하는 명령형의 간청을 자연스럽게 드러내도록 다듬었습니다. 관련 어휘 주석 앵커도 추가했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T07:45:51Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 핵심 청원과 ἐπιστάτα를 κύριος(주)와 구별하여 옮긴 점은 적절합니다. 다만 문두의 καὶ αὐτοί(‘그리고 그들이’)가 번역문에서 빠져 있어 주어와 접속을 보완하는 것이 좋습니다.
+  naturalness: ‘그들은 소리를 높여 말했습니다’는 현대 표준 한국어 합쇼체로 자연스럽습니다. ‘저희에게 자비를 베풀어 주십시오’는 ἐλέησον ἡμᾶς의 간청과 대상 관계를 분명하게 드러내면서도 자연스럽습니다.
+  terminology: ‘선생님’은 누가복음의 ἐπιστάτα에 대한 자연스럽고 정중한 호칭이며, ‘주’로 번역하여 κύριος와 혼동하지 않습니다. ‘자비를 베풀어 주십시오’는 ἐλέησον의 자비를 구하는 뜻을 충실히 반영합니다.
+  issues:
+  - severity: medium
+    issue: 문두의 주어와 접속어 누락
+    rationale: 원문의 καὶ αὐτοὶ는 ‘그리고 그들이’라는 서술 연결과 명시된 복수 주어를 담고 있습니다. 한국어에서는 강조를 별도로 재현할 필요까지는 없지만, ‘그들은’을 보완해야 문장 주체가 분명해집니다.
+  - severity: low
+    issue: 영어 감사 추적의 어휘 주석 앵커 미반영
+    rationale: ‘소리를 높여’와 ‘선생님’에 관한 어휘 선택을 확인할 수 있도록 해당 주석 앵커를 한국어 본문에도 반영하는 편이 좋습니다.
+  revised_text: 그들은 소리를 높여[a] 말했습니다. “예수 선생님[b], 저희에게 자비를 베풀어 주십시오.”
+  revised_footnotes:
+  - marker: a
+    text: 직역하면, “그들의 목소리를 높여.”
+    reason: lexical_alternative
+  - marker: b
+    text: ‘선생님’은 권위를 지닌 사람에게 하는 호칭인 그리스어 에피스타타(ἐπιστάτα)를 옮긴 말입니다. 이는 흔히 ‘주’로 번역되는 퀴리오스(κύριος)와 다른 단어입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 접속과 명시된 주어를 ‘그들은’으로 보완했습니다. ἐπιστάτα는 ‘선생님’으로 유지하여 κύριος와의 어휘적 구별을 보존했으며, ἐλέησον ἡμᾶς는 자비를 요청하는 명령형의 간청을 자연스럽게 드러내도록 다듬었습니다. 관련 어휘 주석 앵커도 추가했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:45:51Z'
+  output_hash: f130a73755154bc526b1965c8443ab80582094ecb82192733d04970cdb2eb947
+  usage:
+    completion_tokens: 969
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 296
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 161
+      engine_ttlt_ms: 8034
+      pre_inference_ms: 204
+      service_tbt_ms: 8
+      service_ttft_ms: 538
+      service_ttlt_ms: 8403
+      total_duration_ms: 8214
+      user_visible_ttft_ms: 334
+    prompt_tokens: 1500
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2469
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -83,4 +83,59 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 본문의 ‘그에게 더 많이 탕감받은 사람’은 수혜자를 가리키는 방향을 대체로 잘 살렸고, ‘옳게 판단했습니다’도 적절합니다. 다만 Ὑπολαμβάνω의 조심스러운 추론을 더 자연스럽게 드러내고, 각주가 해당 어휘에 붙도록 바로잡아야 합니다.
+  naturalness: ‘그에게 더 많이 탕감받은 사람이겠다고 생각합니다’는 한국어로 다소 어색하며 ‘그에게’의 선행 대상도 불필요하게 모호합니다. ‘더 많이 탕감받은 사람일 것이라고 생각합니다’가 자연스럽습니다. 문맥상 화자는 예수이므로 ‘예수께서’라고 밝혀도 의미를 보태지 않습니다.
+  terminology: ‘탕감받은’은 빚 면제 비유의 이미지를 잘 보존합니다. 다만 각주 b의 기존 대안 ‘그가 더 많은 빚을 탕감한 사람’은 수혜자인 관계대명사의 지시 방향을 바꾸므로 사용할 수 없습니다.
+  issues:
+  - severity: medium
+    issue: 각주 a와 b의 앵커가 각각 설명 대상인 ‘생각합니다’와 ‘탕감받은’에 붙어 있지 않습니다.
+    rationale: 각주 a는 Ὑπολαμβάνω의 잠정성을, 각주 b는 ἐχαρίσατο의 빚 면제 의미를 설명합니다. 현재처럼 각각 ‘대답했습니다’와 ‘말했습니다’에 붙이면 독자가 무엇을 설명하는지 오해할 수 있습니다.
+  - severity: medium
+    issue: ‘그에게 더 많이 탕감받은 사람이겠다고 생각합니다’의 표현이 어색하고 지시 대상이 불필요하게 모호합니다.
+    rationale: 그리스어는 ‘더 많이 은혜로 면제받은 사람’이라는 수혜자를 가리킵니다. 한국어에서는 ‘더 많이 탕감받은 사람일 것이라고 생각합니다’가 이를 자연스럽고 정확하게 전달합니다.
+  - severity: medium
+    issue: 각주 b의 대안 ‘그가 더 많은 빚을 탕감한 사람’은 행위자와 수혜자를 뒤바꿉니다.
+    rationale: ᾧ는 탕감을 받은 사람을 가리킵니다. 대안도 수혜자 관계를 유지해야 합니다.
+  revised_text: 시몬이 대답했습니다. “더 많이 탕감받은 사람일 것이라고 생각합니다[a].” 예수께서 그에게 말씀하셨습니다. “당신이 옳게 판단했습니다.”
+  revised_footnotes:
+  - marker: a
+    text: 또는 “짐작합니다”, “그런 것 같습니다”; 그리스어는 확정적 진술이 아니라 조심스러운 추론을 나타냅니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 “더 많은 빚을 면제받은 사람”; 동사는 은혜롭게 빚을 면제해 주는 뜻을 가질 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: '본문을 자연스러운 현대 표준 한국어 합쇼체로 다듬고, 시몬의 잠정적 추론을 보존했습니다. 빚 탕감이라는 비유의 이미지는 유지했으며, 각주 a는 ‘생각합니다’에 붙였습니다. 각주 b는 현 구절의 해당 어휘인 ‘탕감받은’에 붙어야 하나, 제공된 본문 표기에서는 b 앵커가 누락되어 있습니다. 완전한 앵커 반영 본문은 다음과 같습니다: ‘시몬이 대답했습니다. “더 많이 탕감받은[b] 사람일 것이라고 생각합니다[a].” 예수께서 그에게 말씀하셨습니다. “당신이 옳게 판단했습니다.”’'
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:45:05Z'
+  output_hash: 03884d16c4c83edd645944d101a27df938e7d2d22874d4cca30fe9d0041013d4
+  usage:
+    completion_tokens: 1340
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 454
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 11228
+      pre_inference_ms: 145
+      service_tbt_ms: 8
+      service_ttft_ms: 459
+      service_ttlt_ms: 11517
+      total_duration_ms: 11379
+      user_visible_ttft_ms: 314
+    prompt_tokens: 2245
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3585
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

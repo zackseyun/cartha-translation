@@ -26,4 +26,56 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: The draft changes the explicit Greek υἱός ('son') to '자손' ('descendant'), which weakens the stated filial wording and the rhetorical force of the question. It also contains an unmatched closing quotation mark not present in the supplied source text.
+  naturalness: The proposed revision is natural modern standard Korean in formal-polite 합쇼체. Repeating '다윗' in the final clause prevents ambiguity in the two Greek pronoun references.
+  terminology: '''주'' appropriately renders κύριος in this messianic argument. ''아들'' directly renders υἱός; a footnote may note the possible dynastic sense without replacing the explicit term in the text.'
+  issues:
+  - severity: medium
+    issue: '''자손'' is used for υἱός.'
+    rationale: The Greek explicitly says 'his son.' Although a dynastic/descendant nuance can be relevant, it should not replace the lexical wording in the main text.
+  - severity: low
+    issue: Unmatched closing quotation mark (」).
+    rationale: The supplied Greek verse does not include corresponding opening quotation punctuation; the mark should be removed.
+  - severity: low
+    issue: Pronoun reference in '그가 그의 자손' is potentially unclear in Korean.
+    rationale: The Greek means that the one called Lord is David's son. Repeating '다윗' makes the intended relation clear.
+  revised_text: 그러므로 다윗이 그를 주라고 부르는데, 그가 어떻게 다윗의 아들이겠습니까?
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘그의 자손’. 그리스어는 ‘그의 아들’이라고 하며, 왕조적 문맥에서는 후손이라는 뜻을 띨 수 있습니다. 그러나 본문은 논증의 명시적 표현을 보존합니다.
+    reason: lexical_alternative
+  revision_rationale: The revision restores '아들' for υἱός, preserves '주' for κύριος and the inferential force of οὖν, clarifies that David is the referent of the possessive relationship, removes extraneous punctuation, and retains the audit-trail lexical alternative at anchor a.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:46:13Z'
+  output_hash: c7e11144c6e192bea9ea6dfa3337e9da4fc9d14a89bb1c740ef12c98d22058bc
+  usage:
+    completion_tokens: 695
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 195
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 138
+      engine_ttlt_ms: 6091
+      pre_inference_ms: 133
+      service_tbt_ms: 9
+      service_ttft_ms: 432
+      service_ttlt_ms: 6379
+      total_duration_ms: 6257
+      user_visible_ttft_ms: 299
+    prompt_tokens: 1376
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2071
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

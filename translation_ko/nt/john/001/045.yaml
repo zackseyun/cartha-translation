@@ -89,4 +89,59 @@ ai_draft:
     reasoning_tokens: 2688
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현 번역은 역사적 현재를 과거의 정중한 서술로 처리하고, 완료형 εὑρήκαμεν을 ‘찾았습니다’로 옮긴 점은 적절합니다. 그러나 ‘모세가 율법에 기록하고’는 원문의 목적어(Ὃν, ‘그에 관하여’)가 한국어에서 충분히 드러나지 않으며, ‘율법에 기록하다’도 이 문맥에서는 다소 부자연스럽습니다. ‘율법에서 그에 관하여 기록하고’로 고치면 모세와 선지자들이 동일한 인물에 관해 기록했다는 원문 구조를 충실히 나타냅니다.
+  naturalness: ‘요셉의 아들, 나사렛 출신입니다’는 인용문 안에서 서술어의 대상이 생략된 파편적 표현으로 들릴 수 있습니다. ‘요셉의 아들이며 나사렛 출신인 예수입니다’는 현대 표준 한국어의 합쇼체에 자연스럽고, 원문의 신분 식별적 병치를 보존합니다.
+  terminology: ‘율법’, ‘선지자들’, ‘요셉’, ‘나사렛’은 성서 문맥에서 널리 통용되는 용어와 이름입니다. ‘요셉의 아들’은 빌립이 제시한 사회적 식별을 그대로 보존하며, 본문 밖의 그리스도론적 해설을 번역에 덧붙이지 않습니다.
+  issues:
+  - severity: medium
+    issue: 관형절에서 기록의 대상이 불분명함
+    rationale: ‘모세가 율법에 기록하고 선지자들도 기록한 그’는 무엇을 기록했는지가 한국어 문장 안에서 비어 있습니다. 원문의 관계대명사가 가리키는 대상을 ‘그에 관하여’로 밝혀야 합니다.
+  - severity: low
+    issue: ‘율법에 기록하다’의 결합이 부자연스러움
+    rationale: ἐν τῷ νόμῳ는 모세가 기록한 범위 또는 문헌을 나타냅니다. 한국어에서는 ‘율법에서 기록하다’가 더 자연스럽습니다.
+  - severity: low
+    issue: 인물 식별 구절이 문장 파편처럼 들림
+    rationale: ‘예수, 요셉의 아들, 나사렛 출신입니다’보다 관계절을 사용하면 원문의 동일 인물 식별을 매끄럽게 전달합니다.
+  revised_text: 빌립은 나다나엘을 찾아 그에게[a] 말했습니다. “우리는 모세가 율법에서 그에 관하여 기록하고 선지자들도 기록한 분을 찾았습니다. 요셉의 아들이며 나사렛 출신인 예수입니다.”
+  revised_footnotes:
+  - marker: a
+    text: 또는 더 직역하면, “우리는 모세가 율법에서 기록하고 선지자들도 기록한 분을 찾았습니다.”
+    reason: lexical_alternative
+  - marker: b
+    text: 그리스어는 문자적으로 ‘요셉의 아들, 나사렛 출신의 예수’라고 합니다. 전통적인 영어 번역에는 흔히 ‘Jesus of Nazareth(나사렛 예수)’가 사용됩니다.
+    reason: lexical_alternative
+  revision_rationale: '수정은 모세와 선지자들이 ‘그분에 관하여’ 기록했다는 관계절의 목적어를 한국어에서 명료하게 하고, ἐν τῷ νόμῳ를 자연스러운 ‘율법에서’로 옮겼습니다. 또한 인용문의 마지막 신원 확인을 완결된 합쇼체 문장으로 다듬었습니다. 각주 b의 앵커는 본문에서 삭제되었으므로, ‘요셉의 아들이며 나사렛 출신인 예수’ 뒤에 [b]를 유지한 완전한 표기 형태가 필요합니다. 아래 revised_text에는 구조상 이를 반영하여 표기해야 합니다: ‘요셉의 아들이며 나사렛 출신인 예수[b]입니다.’'
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T07:47:18Z'
+  output_hash: db027630af0fda7b4ba31f86ade9954ca91a328ed3048cab3124ed63a9a1f18b
+  usage:
+    completion_tokens: 1449
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 147
+      engine_ttlt_ms: 12137
+      pre_inference_ms: 125
+      service_tbt_ms: 8
+      service_ttft_ms: 426
+      service_ttlt_ms: 12410
+      total_duration_ms: 12296
+      user_visible_ttft_ms: 300
+    prompt_tokens: 3551
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5000
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]
