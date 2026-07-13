@@ -20,15 +20,15 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 여러분은 내가 여러분에게 한 말을 들었습니다. ‘나는 떠나가며, 여러분에게 옵니다.’ 여러분이 나를 사랑했다면, 내가 아버지께로 가므로 기뻐했을 것입니다. 아버지는 나보다 더 크시기 때문입니다.[a][b]
+  text: 여러분은 내가 여러분에게 ‘나는 떠나가고 여러분에게 옵니다’라고 말한 것을 들었습니다. 여러분이 나를 사랑했다면, 내가 아버지께로 가는 것을 기뻐했을 것입니다.[a] 아버지는 나보다 더 크시기 때문입니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘여러분에게 한 말’은 ὅτι가 이끄는 인용 내용을 한국어에서 자연스럽게 받기 위한 표현입니다.
-    reason: source_note
+    text: ‘내가 아버지께로 가는 것을’으로 옮긴 ὅτι는 문맥상 ‘내가 아버지께로 가기 때문에’로도 이해될 수 있습니다.
+    reason: lexical_alternative
   - marker: b
-    text: ‘더 크시기 때문입니다’는 ‘아버지는 나보다 더 크시다’를 해설 없이 그대로 옮긴 표현입니다.
-    reason: theological_note
+    text: ‘아버지는 나보다 더 크십니다’는 원문의 비교 표현을 역할이나 지위에 관한 설명을 덧붙이지 않고 그대로 옮긴 것입니다.
+    reason: alternative_reading
 lexical_decisions:
 - source_word: ἠκούσατε ὅτι ἐγὼ εἶπον ὑμῖν
   english_pob_choice: You heard that I said to you
@@ -91,4 +91,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 여러분은 내가 여러분에게 한 말을 들었습니다. ‘나는 떠나가며, 여러분에게 옵니다.’ 여러분이 나를 사랑했다면, 내가 아버지께로 가므로 기뻐했을 것입니다. 아버지는 나보다 더 크시기 때문입니다.[a][b]
+  to: 여러분은 내가 여러분에게 ‘나는 떠나가고 여러분에게 옵니다’라고 말한 것을 들었습니다. 여러분이 나를 사랑했다면, 내가 아버지께로 가는 것을 기뻐했을 것입니다.[a] 아버지는 나보다 더 크시기 때문입니다.[b]
+  rationale: 두 동사의 병렬성을 ‘떠나가고 … 옵니다’로 회복하고, 첫 ὅτι 인용절을 한국어 직접 인용 구조로 명료하게 연결했습니다. 기뻐함 뒤의 ὅτι는 본문에서 내용 관계로 자연스럽게 옮기되, 이유 관계 가능성은 각주로 남겼습니다. 비교 표현은 해설 없이 직역적 의미를 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T08:51:48Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안의 ‘떠나가며’는 두 현재 동사(‘나는 떠나가고, 나는 여러분에게 온다’)를 동시 상황을 나타내는 연결형으로 바꾸어 원문의 병렬 진술을 약화합니다. 또한 ‘기뻐했을 것입니다’ 뒤의 ὅτι는 내용절 또는 이유절로 이해될 수 있으므로, 본문에서는 ‘내가 아버지께로 가는 것을’으로 무리 없이 보존하는 편이 안전합니다.
+  naturalness: ‘여러분은 내가 여러분에게 한 말을 들었습니다’도 이해되지만, 인용 내용을 직접 연결한 ‘…라고 말한 것을 들었습니다’가 더 명료하고 자연스럽습니다. ‘여러분에게 옵니다’는 현대 표준어와 합쇼체에 맞습니다.
+  terminology: ‘아버지’, ‘나보다 더 크십니다’를 유지했습니다. ‘더 크시다’에 역할·지위·성육신 상태 등의 해설을 덧붙이지 않아 원문의 신학적 긴장을 보존합니다.
+  issues:
+  - severity: medium
+    issue: ‘떠나가며’가 καί로 연결된 두 동사를 동시적 부사절로 처리함
+    rationale: Ὑπάγω καὶ ἔρχομαι는 ‘떠나가고 … 온다’라는 병렬 진술입니다. ‘-며’는 ‘떠나가는 동안’이라는 관계를 불필요하게 암시할 수 있습니다.
+  - severity: low
+    issue: 첫 문장의 인용 내용 연결 및 각주 a의 기능이 불명확함
+    rationale: ‘한 말’은 인용문을 받을 수 있으나, ‘…라고 말한 것을’이 ὅτι가 이끄는 내용을 더 투명하게 반영합니다. 기존 각주 a는 번역 선택에 실질적 정보를 더하지 않으므로, ἐχάρητε ἄν 뒤 ὅτι의 가능한 연결을 설명하는 각주로 교체하는 것이 적절합니다.
+  - severity: low
+    issue: 각주 표지가 문장 끝에 함께 배치됨
+    rationale: 각주 b는 ‘더 크십니다’에, ὅτι의 대안 설명 각주 a는 해당 기쁨 절에 붙여야 참조 대상이 분명합니다.
+  revised_text: 여러분은 내가 여러분에게 ‘나는 떠나가고 여러분에게 옵니다’라고 말한 것을 들었습니다. 여러분이 나를 사랑했다면, 내가 아버지께로 가는 것을 기뻐했을 것입니다.[a] 아버지는 나보다 더 크시기 때문입니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: ‘내가 아버지께로 가는 것을’으로 옮긴 ὅτι는 문맥상 ‘내가 아버지께로 가기 때문에’로도 이해될 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘아버지는 나보다 더 크십니다’는 원문의 비교 표현을 역할이나 지위에 관한 설명을 덧붙이지 않고 그대로 옮긴 것입니다.
+    reason: alternative_reading
+  revision_rationale: 두 동사의 병렬성을 ‘떠나가고 … 옵니다’로 회복하고, 첫 ὅτι 인용절을 한국어 직접 인용 구조로 명료하게 연결했습니다. 기뻐함 뒤의 ὅτι는 본문에서 내용 관계로 자연스럽게 옮기되, 이유 관계 가능성은 각주로 남겼습니다. 비교 표현은 해설 없이 직역적 의미를 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T08:51:48Z'
+  output_hash: f08105bc646611227e8a5aec739d8ac46f586167be94c757d3c6fa8a40f138e2
+  usage:
+    completion_tokens: 1899
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1057
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 306
+      engine_ttlt_ms: 16676
+      pre_inference_ms: 211
+      service_tbt_ms: 9
+      service_ttft_ms: 598
+      service_ttlt_ms: 16964
+      total_duration_ms: 16761
+      user_visible_ttft_ms: 388
+    prompt_tokens: 2795
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4694
+  applied_revision: true
+  auto_apply_blocked_errors: []

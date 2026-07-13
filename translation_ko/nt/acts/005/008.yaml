@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 베드로가 그녀에게 물었습니다. 「말해 보십시오, 그 땅을 이 값에 팔았습니까?」 그녀가 말하였습니다. 「예, 그 값입니다.」
+  text: 베드로가 그녀에게 대답했습니다. “말해 보십시오. 그 땅[a]을 이 값에 팔았습니까?” 그러자 그녀가 말했습니다. “예, 그 값에 팔았습니다.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘재산’ 또는 ‘밭’.
+    reason: χωρίον은 문맥에 따라 한 구획의 땅, 재산, 또는 밭을 가리킬 수 있습니다.
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -26,4 +30,61 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 베드로가 그녀에게 물었습니다. 「말해 보십시오, 그 땅을 이 값에 팔았습니까?」 그녀가 말하였습니다. 「예, 그 값입니다.」
+  to: 베드로가 그녀에게 대답했습니다. “말해 보십시오. 그 땅[a]을 이 값에 팔았습니까?” 그러자 그녀가 말했습니다. “예, 그 값에 팔았습니다.”
+  rationale: 베드로의 발화를 질문 자체로만 서술하지 않고 원문의 ἀπεκρίθη에 따라 ‘대답했습니다’로 옮겼습니다. 마지막의 ‘Ναί, τοσούτου’는 한국어에서 자연스러운 완결 문장이 되도록, 질문에서 이미 제시된 ‘팔다’를 보충하여 번역했습니다. 이는 판매 여부와 가격에 대한 긍정이라는 원문 의미를 추가하지 않고 명료하게 드러냅니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T08:52:25Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안의 핵심 의미는 대체로 맞습니다. 다만 ἀπεκρίθη는 단순히 질문을 ‘물었다’기보다 그녀에게 ‘대답했다/응답했다’는 서술이며, 마지막의 타원적 응답은 한국어에서 ‘그 값입니다’보다 판매 행위를 보충해 표현하는 편이 자연스럽고 문맥상 정확합니다.
+  naturalness: ‘베드로가 그녀에게 물었습니다’와 ‘예, 그 값입니다’는 각각 다소 부자연스럽습니다. ‘대답했습니다’ 및 ‘예, 그 값에 팔았습니다’가 현대 표준 한국어 합쇼체 대화문에 더 자연스럽습니다.
+  terminology: χωρίον의 기본 번역으로 ‘땅’을 유지할 수 있습니다. 다만 ‘재산’ 또는 ‘밭’이라는 가능한 어휘 범위를 각주로 밝혀 두는 것이 영어 POB 감사 기록과 원문의 어휘적 폭을 반영합니다.
+  issues:
+  - severity: medium
+    issue: ἀπεκρίθη의 번역
+    rationale: ‘물었습니다’는 뒤따르는 질문의 기능은 전달하지만, 원문이 베드로의 응답 행위를 명시한 점을 약화합니다. ‘그녀에게 대답했습니다’가 원문에 더 가깝습니다.
+  - severity: low
+    issue: 마지막 응답의 한국어 표현
+    rationale: ‘예, 그 값입니다’는 무엇이 ‘그 값’인지 문법·의미상 어색합니다. 원문의 타원성을 한국어에서 자연스럽게 풀어 ‘예, 그 값에 팔았습니다’로 옮길 수 있습니다.
+  - severity: low
+    issue: χωρίον의 어휘 대안 각주 누락
+    rationale: 영어 POB의 lexical_alternative를 반영하여 ‘땅’의 대안적 의미 범위를 각주로 제공하는 것이 적절합니다.
+  revised_text: 베드로가 그녀에게 대답했습니다. “말해 보십시오. 그 땅[a]을 이 값에 팔았습니까?” 그러자 그녀가 말했습니다. “예, 그 값에 팔았습니다.”
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘재산’ 또는 ‘밭’.
+    reason: χωρίον은 문맥에 따라 한 구획의 땅, 재산, 또는 밭을 가리킬 수 있습니다.
+  revision_rationale: 베드로의 발화를 질문 자체로만 서술하지 않고 원문의 ἀπεκρίθη에 따라 ‘대답했습니다’로 옮겼습니다. 마지막의 ‘Ναί, τοσούτου’는 한국어에서 자연스러운 완결 문장이 되도록, 질문에서 이미 제시된 ‘팔다’를 보충하여 번역했습니다. 이는 판매 여부와 가격에 대한 긍정이라는 원문 의미를 추가하지 않고 명료하게 드러냅니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T08:52:25Z'
+  output_hash: 400413715a06571565014bd7e838d2a153ecccd825afd2ed544004e1c64ed580
+  usage:
+    completion_tokens: 1124
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 455
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 130
+      engine_ttlt_ms: 10608
+      pre_inference_ms: 2018
+      service_tbt_ms: 9
+      service_ttft_ms: 2426
+      service_ttlt_ms: 12898
+      total_duration_ms: 10895
+      user_visible_ttft_ms: 408
+    prompt_tokens: 1386
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2510
+  applied_revision: true
+  auto_apply_blocked_errors: []
