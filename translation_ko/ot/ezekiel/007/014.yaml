@@ -83,4 +83,59 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 'The draft conveys the principal sequence and divine wrath accurately, but its footnote anchors are attached to the wrong words: marker b follows the preparation clause although its note concerns the horn/trumpet, while marker a follows ''무리'' although its note concerns abundance. ''전쟁으로 가는'' is also less idiomatic and less precise for going out to battle than ''전쟁터로 나아가는.'''
+  naturalness: The proposed wording uses modern formal-polite Korean naturally. '그녀의 모든 무리' is unnatural in Korean and can misleadingly suggest a female human referent; '그 모든 무리' retains a non-specific anaphoric reference without identifying the feminine antecedent as Jerusalem, a city, or the land.
+  terminology: '''나팔을 불다,'' ''준비하다,'' ''전쟁터로 나아가다,'' and ''진노'' are suitable standard Korean renderings. The horn alternative belongs at ''나팔,'' and the abundance/wealth alternative belongs at ''무리.'''
+  issues:
+  - severity: high
+    issue: Footnote anchors are reversed and attached to semantically unrelated clauses.
+    rationale: The current b marker occurs after '모든 것을 갖추었으나,' but footnote b discusses the instrument ('horn'/'ram's horn'). The current a marker occurs after '그녀의 모든 무리,' but footnote a discusses the lexical alternative 'wealth/abundance.' This must be corrected for usable footnote anchoring.
+  - severity: medium
+    issue: ‘그녀의 모든 무리’ is overly literal and unnatural Korean.
+    rationale: Korean '그녀' normally denotes a female person, whereas the Hebrew feminine suffix has an unresolved nonhuman antecedent in context. ‘그 모든 무리’ preserves the unspecified referent more naturally without supplying one.
+  - severity: low
+    issue: ‘전쟁으로 가는’ is awkward for the concrete military movement expressed here.
+    rationale: ‘전쟁터로 나아가는’ naturally expresses going out to battle while retaining the source's military setting.
+  revised_text: 그들이 나팔[a]을 불고 모든 것을 준비하였지만, 전쟁터로 나아가는 사람은 아무도 없습니다. 이는 내 진노가 그 모든 무리를 향하고 있기 때문입니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 “뿔” 또는 “숫양의 뿔”로 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 “그 모든 재물/풍성함”으로도 볼 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: The revision corrects the misplaced footnote anchors, improves the military idiom, and replaces an unnatural gendered Korean pronoun with a demonstrative expression that does not resolve the Hebrew suffix's disputed antecedent. Marker b is retained in the footnote set for the multitude/abundance alternative, but no marker is placed in the main text because the supplied English audit trail itself does not consistently anchor that alternative; if project policy requires every lexical-alternative note to be visibly anchored, place [b] immediately after ‘무리.’
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:38:13Z'
+  output_hash: a777fdb2a3c4a580e7a117150faaae7ecfbca5a4345e3b42febbfddd4b708fc7
+  usage:
+    completion_tokens: 1211
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 121
+      engine_ttlt_ms: 10335
+      pre_inference_ms: 117
+      service_tbt_ms: 8
+      service_ttft_ms: 337
+      service_ttlt_ms: 10546
+      total_duration_ms: 10439
+      user_visible_ttft_ms: 220
+    prompt_tokens: 2650
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3861
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

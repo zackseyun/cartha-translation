@@ -26,20 +26,20 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 나무를 많이 쌓고, 불을 지피고, 고기를 충분히 익히고, 국물을 끓이십시오. 그리고 뼈는 타들어가게 하십시오.[a][b][c][d]
+  text: 나무를 많이 쌓으십시오[a]. 불을 지피십시오. 고기를 완전히 익히십시오[b]. 국물을 끓이십시오[c]. 뼈들은 타게 하십시오[d].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘나무를 많이 쌓고’는 ‘나무를 쌓아 올리고’라는 뜻도 됩니다.
+    text: 또는 ‘나무를 쌓아 올리십시오.’
     reason: lexical_alternative
   - marker: b
-    text: 히브리어는 문자적으로 ‘살/육체’를 뜻합니다.
+    text: 히브리어는 문자적으로 ‘살’ 또는 ‘육체’를 뜻합니다.
     reason: lexical_alternative
   - marker: c
-    text: ‘국물’은 여기서 섞어 끓이는 액체를 가리키는 번역입니다.
+    text: 또는 ‘혼합물을 준비하십시오’ 또는 ‘찌개를 끓이십시오.’ 히브리어 단어는 섞어 만든 조제물 또는 혼합물을 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: d
-    text: ‘타들어가게 하십시오’는 ‘불에 타서 그을리게 하십시오’라는 뜻입니다.
+    text: 또는 ‘뼈들이 불에 타서 그을리게 하십시오.’
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הַרְבֵּה הָעֵצִים
@@ -101,4 +101,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나무를 많이 쌓고, 불을 지피고, 고기를 충분히 익히고, 국물을 끓이십시오. 그리고 뼈는 타들어가게 하십시오.[a][b][c][d]
+  to: 나무를 많이 쌓으십시오[a]. 불을 지피십시오. 고기를 완전히 익히십시오[b]. 국물을 끓이십시오[c]. 뼈들은 타게 하십시오[d].
+  rationale: 명령문의 합쇼체 종결을 통일하고, 각주 표지를 해당 번역어에 직접 배치했습니다. 마지막 동사는 뼈가 열에 타거나 그을리는 뜻을 보존하면서도 ‘타들어가다’가 덧붙일 수 있는 소진의 뉘앙스를 피하여 ‘타게 하십시오’로 수정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:41:31Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 전반적으로 히브리어의 연속된 명령형과 마지막 뼈에 관한 결과/명령의 어조를 잘 반영합니다. 다만 ‘뼈는 타들어가게 하십시오’는 뼈 자체가 점차 소진되는 인상을 줄 수 있어, יֵחָרוּ의 ‘타서 그을리다/타다’라는 뜻을 더 직접적으로 옮기는 편이 안전합니다.
+  naturalness: 초안은 자연스럽지만, 앞의 동사들이 ‘-고’로 이어지다가 중간에 ‘-십시오’로 전환되어 명령문의 리듬이 다소 불균일합니다. 각 명령을 독립된 합쇼체 문장으로 정리하면 현대 표준 한국어에서 더 명료합니다.
+  terminology: 조리 문맥의 ‘고기’와 ‘국물’은 적절합니다. בָּשָׂר의 문자적 의미는 각주로 보완할 수 있습니다. מֶרְקָחָה는 ‘혼합물/조제물’의 가능성도 있으므로, ‘국물’이라는 문맥적 번역임을 각주에 밝혀 두는 것이 좋습니다.
+  issues:
+  - severity: low
+    issue: 문장 종결 형식이 혼재되어 있습니다.
+    rationale: ‘쌓고, 지피고, 익히고’ 뒤에 ‘끓이십시오’가 이어집니다. 원문의 명령 연쇄를 한국어 합쇼체로 분명히 드러내도록 각 동사를 ‘-십시오’로 통일하는 것이 좋습니다.
+  - severity: medium
+    issue: 마지막 절의 ‘타들어가게’가 יֵחָרוּ의 의미를 다소 과도하게 특정합니다.
+    rationale: 이 동사는 뼈가 강한 열에 타거나 그을리는 뜻입니다. ‘타들어가다’는 점진적으로 닳아 없어지는 뉘앙스를 더할 수 있으므로 ‘타게 하십시오’가 더 직접적입니다.
+  - severity: medium
+    issue: 각주 표지가 모두 문장 끝에 몰려 있어 해당 어구와의 연결이 불명확합니다.
+    rationale: a는 나무, b는 고기/살, c는 국물, d는 뼈에 각각 붙여야 독자가 각주의 적용 범위를 분명히 알 수 있습니다.
+  revised_text: 나무를 많이 쌓으십시오[a]. 불을 지피십시오. 고기를 완전히 익히십시오[b]. 국물을 끓이십시오[c]. 뼈들은 타게 하십시오[d].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘나무를 쌓아 올리십시오.’
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어는 문자적으로 ‘살’ 또는 ‘육체’를 뜻합니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘혼합물을 준비하십시오’ 또는 ‘찌개를 끓이십시오.’ 히브리어 단어는 섞어 만든 조제물 또는 혼합물을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: d
+    text: 또는 ‘뼈들이 불에 타서 그을리게 하십시오.’
+    reason: lexical_alternative
+  revision_rationale: 명령문의 합쇼체 종결을 통일하고, 각주 표지를 해당 번역어에 직접 배치했습니다. 마지막 동사는 뼈가 열에 타거나 그을리는 뜻을 보존하면서도 ‘타들어가다’가 덧붙일 수 있는 소진의 뉘앙스를 피하여 ‘타게 하십시오’로 수정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:41:31Z'
+  output_hash: 66cb8bb8a97173ad2ff4816627219d5bcb00e75d7a4e39689acf2f5fde5d7bd6
+  usage:
+    completion_tokens: 1090
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 239
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 8323
+      pre_inference_ms: 104
+      service_tbt_ms: 8
+      service_ttft_ms: 557
+      service_ttlt_ms: 8752
+      total_duration_ms: 8656
+      user_visible_ttft_ms: 454
+    prompt_tokens: 2611
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3701
+  applied_revision: true
+  auto_apply_blocked_errors: []

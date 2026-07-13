@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그 성에서 한 내시를 붙잡았는데, 그는 전사들을 맡도록 임명된 자였고, 왕의 얼굴을 뵈던 자들 가운데 일곱 사람과 성 안에서 발견된 군대 지휘관의 서기관, 곧 그가 그 땅의 백성을 징집하던 자, 그리고 성 안에 있던 그 땅의 백성 육십 명도 붙잡았습니다.[a]
+  text: 그 성에서 그는 전투 병사들을 맡도록 임명된 궁정 관리 한 사람과 왕의 얼굴을 뵙던 이들 가운데 성 안에서 발견된 일곱 사람[a]과, 그 땅의 백성을 징집하던 군대 지휘관의 서기관과, 성 안에서 발견된 그 땅의 백성 육십 명을 데려갔습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “왕의 개인 시종들” — “왕의 얼굴을 본 자들”은 왕에게 직접 나아갈 수 있는 궁정 관용구입니다.
+    text: 또는 “왕의 개인 시종들” — “왕의 얼굴을 뵙던 이들”은 왕에게 직접 나아갈 수 있는 사람들을 가리키는 궁정 관용구입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: סָרִיס
@@ -91,4 +91,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그 성에서 한 내시를 붙잡았는데, 그는 전사들을 맡도록 임명된 자였고, 왕의 얼굴을 뵈던 자들 가운데 일곱 사람과 성 안에서 발견된 군대 지휘관의 서기관, 곧 그가 그 땅의 백성을 징집하던 자, 그리고 성 안에 있던 그 땅의 백성 육십 명도 붙잡았습니다.[a]
+  to: 그 성에서 그는 전투 병사들을 맡도록 임명된 궁정 관리 한 사람과 왕의 얼굴을 뵙던 이들 가운데 성 안에서 발견된 일곱 사람[a]과, 그 땅의 백성을 징집하던 군대 지휘관의 서기관과, 성 안에서 발견된 그 땅의 백성 육십 명을 데려갔습니다.
+  rationale: 원문의 행위(‘데려갔다’)와 סָרִיס의 의미 범위를 보존하고, 징집 행위의 주체를 군대 지휘관으로 명확히 하였습니다. 궁정 관용구는 본문에서 직역적으로 유지하되, 설명 각주를 해당 표현에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:36:51Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 동사 לָקַח는 ‘붙잡았다’보다 ‘데려갔다/데려왔다’에 해당합니다. 또한 סָרִיס는 이 행정·군사 문맥에서 신체 상태를 단정하는 ‘내시’보다 ‘궁정 관리’가 안전합니다. הַמַּצְבִּא의 관계절은 군대 지휘관을 수식하도록 번역하는 것이 원문 구성 및 영어 POB 감사 기록과 일치합니다.
+  naturalness: 초안은 ‘곧 그가’의 지시 대상이 불명확하고, 긴 병렬 목적어들이 ‘붙잡았습니다’에 매달려 다소 어색합니다. 수식 관계를 재배치하면 현대 표준 한국어 합쇼체에서 더 자연스럽고 명료해집니다.
+  terminology: ‘궁정 관리’는 סָרִיס의 넓은 의미 범위를 보존합니다. ‘전투 병사들’, ‘왕의 얼굴을 뵙던 이들’, ‘그 땅의 백성’은 각각 원문의 군사 표현, 궁정 관용구, עַם הָאָרֶץ를 과도하게 해석하지 않고 반영합니다.
+  issues:
+  - severity: high
+    issue: סָרִיס를 ‘내시’로 특정함
+    rationale: 이 단어는 내시를 뜻할 수 있으나 궁정 관리라는 넓은 용법도 있으며, 이 문맥은 신체 상태를 확정하지 않습니다. 영어 POB의 ‘court official’ 및 제시된 어휘 판단에도 맞지 않습니다.
+  - severity: high
+    issue: לָקַח를 ‘붙잡았습니다’로 번역함
+    rationale: 원문은 포로들을 ‘데려갔다’는 서술이며, ‘붙잡다’는 체포 행위를 추가하여 의미를 좁힙니다.
+  - severity: high
+    issue: ‘그가 그 땅의 백성을 징집하던 자’의 수식 대상 오류 및 불명확성
+    rationale: הַמַּצְבִּא는 ‘군대 지휘관’을 수식하는 것으로 처리되어야 하며, 초안은 서기관이 징집한 것처럼 읽힙니다.
+  - severity: medium
+    issue: 각주 표지가 관용구가 아닌 문장 끝에 놓임
+    rationale: 각주는 ‘왕의 얼굴을 뵙던 이들’이라는 궁정 관용구를 설명하므로 해당 표현 직후에 배치해야 합니다.
+  revised_text: 그 성에서 그는 전투 병사들을 맡도록 임명된 궁정 관리 한 사람과 왕의 얼굴을 뵙던 이들 가운데 성 안에서 발견된 일곱 사람[a]과, 그 땅의 백성을 징집하던 군대 지휘관의 서기관과, 성 안에서 발견된 그 땅의 백성 육십 명을 데려갔습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 “왕의 개인 시종들” — “왕의 얼굴을 뵙던 이들”은 왕에게 직접 나아갈 수 있는 사람들을 가리키는 궁정 관용구입니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 행위(‘데려갔다’)와 סָרִיס의 의미 범위를 보존하고, 징집 행위의 주체를 군대 지휘관으로 명확히 하였습니다. 궁정 관용구는 본문에서 직역적으로 유지하되, 설명 각주를 해당 표현에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:36:51Z'
+  output_hash: 0b1e9c7d5c1c8e5075d824192ac70ef8b77164c9c1feffcd1cd03e1672b37be9
+  usage:
+    completion_tokens: 1061
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 231
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 246
+      engine_ttlt_ms: 8675
+      pre_inference_ms: 95
+      service_tbt_ms: 8
+      service_ttft_ms: 693
+      service_ttlt_ms: 9082
+      total_duration_ms: 8997
+      user_visible_ttft_ms: 598
+    prompt_tokens: 2928
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3989
+  applied_revision: true
+  auto_apply_blocked_errors: []

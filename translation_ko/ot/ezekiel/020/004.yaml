@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들을 심판하시겠습니까? 인자야, 당신은 심판하시겠습니까? 그들의 조상들의 가증한 일들을 그들에게 알리십시오.[a][b]
+  text: 그들을 심판하시겠습니까? 인자야[b], 심판하시겠습니까? 그들 조상들의[a] 가증한 일들을 그들에게 알리십시오.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘그들의 아버지들’로도 옮길 수 있습니다. 히브리어는 문자적으로 ‘their fathers’입니다.
+    text: ‘그들의 아버지들’로도 옮길 수 있습니다. 히브리어는 문자적으로 ‘그들의 아버지들’입니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘인자’는 여기서 에스겔에게 주어진 익숙한 호칭입니다. 다른 가능성으로는 ‘사람’ 또는 ‘인간’이 있습니다.
+    text: ‘인자’는 여기서 에스겔에게 반복적으로 사용되는 호칭입니다. 다른 가능성으로는 ‘사람’ 또는 ‘인간’이 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הֲתִשְׁפֹּט אֹתָם
@@ -97,4 +97,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들을 심판하시겠습니까? 인자야, 당신은 심판하시겠습니까? 그들의 조상들의 가증한 일들을 그들에게 알리십시오.[a][b]
+  to: 그들을 심판하시겠습니까? 인자야[b], 심판하시겠습니까? 그들 조상들의[a] 가증한 일들을 그들에게 알리십시오.
+  rationale: 반복된 심문을 축소하지 않고 유지하되, 원문에 없는 강조 대명사를 제거했습니다. 소유 표현을 자연스러운 한국어로 다듬고, 각주 a의 언어 혼입과 각주 표지의 지시 대상을 바로잡았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:40:36Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 두 수사 의문과 ‘인자’라는 직접 호칭, 그리고 ‘알게 하다’라는 명령은 대체로 잘 반영되었습니다. 그러나 두 번째 의문에 ‘당신은’을 넣으면 원문의 반복을 다소 부자연스럽게 확장하며, ‘그들의 조상들의’은 한국어로 중복적입니다.
+  naturalness: ‘그들을 심판하시겠습니까? 인자야, 심판하시겠습니까?’는 원문의 반복을 보존하면서도 현대 표준 한국어 합쇼체로 자연스럽습니다. ‘그들 조상들의’은 소유 표현의 불필요한 중첩을 피합니다.
+  terminology: ‘심판’, ‘인자’, ‘가증한 일들’은 에스겔의 법정적·도덕적 어조를 적절히 보존합니다. 각주 a의 영어 잔재는 한국어로 바로잡아야 합니다.
+  issues:
+  - severity: medium
+    issue: 두 번째 질문의 ‘당신은’
+    rationale: 히브리어는 동사 굴절로 2인칭을 표시하며 대명사를 별도로 쓰지 않습니다. 한국어에서는 존대 종결형만으로 충분하며, 추가된 ‘당신은’은 강조를 더하고 문체를 어색하게 합니다.
+  - severity: medium
+    issue: ‘그들의 조상들의’의 중복된 소유 표현
+    rationale: 히브리어 אֲבוֹתָם은 ‘그들의 아버지들/조상들’이라는 한 겹의 소유 표현입니다. ‘그들 조상들의’이 자연스럽고 원문의 관계도 유지합니다.
+  - severity: low
+    issue: 각주 a에 영어 표현이 남아 있음
+    rationale: 한국어 각주에서는 ‘their fathers’가 아니라 ‘그들의 아버지들’이라고 제시해야 합니다.
+  - severity: low
+    issue: 각주 표지 위치
+    rationale: 각주는 해당 어휘인 ‘인자’와 ‘조상들’에 각각 붙여 독자가 대상을 분명히 알 수 있게 하는 편이 좋습니다.
+  revised_text: 그들을 심판하시겠습니까? 인자야[b], 심판하시겠습니까? 그들 조상들의[a] 가증한 일들을 그들에게 알리십시오.
+  revised_footnotes:
+  - marker: a
+    text: ‘그들의 아버지들’로도 옮길 수 있습니다. 히브리어는 문자적으로 ‘그들의 아버지들’입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘인자’는 여기서 에스겔에게 반복적으로 사용되는 호칭입니다. 다른 가능성으로는 ‘사람’ 또는 ‘인간’이 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 반복된 심문을 축소하지 않고 유지하되, 원문에 없는 강조 대명사를 제거했습니다. 소유 표현을 자연스러운 한국어로 다듬고, 각주 a의 언어 혼입과 각주 표지의 지시 대상을 바로잡았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:40:36Z'
+  output_hash: 145a2e08aa6220c4e5d1a311ca58417c2b7124c06baba0bc0faee54456b4c435
+  usage:
+    completion_tokens: 1231
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 119
+      engine_ttlt_ms: 10142
+      pre_inference_ms: 129
+      service_tbt_ms: 8
+      service_ttft_ms: 590
+      service_ttlt_ms: 10623
+      total_duration_ms: 10542
+      user_visible_ttft_ms: 461
+    prompt_tokens: 2477
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3708
+  applied_revision: true
+  auto_apply_blocked_errors: []

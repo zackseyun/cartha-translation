@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그것으로 무엇인가를 만들기 위해 그 나무를 가져가겠습니까? 아니면 그 나무에서 못을 가져가서 각종 그릇을 그것에 걸겠습니까?[a][b][c]
+  text: 그것에서 목재를 가져다가 쓸모 있는 것을 만들겠습니까? 아니면 거기에서 못 하나를 가져다가 온갖 기물을 그 못에 걸겠습니까?[a][b][c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 לַעֲשׂוֹת לִמְלָאכָה는 ‘일하기 위해’만이 아니라 ‘실용적 용도에 맞게 만들기 위해’라는 뉘앙스를 가집니다.
+    text: 히브리어 לַעֲשׂוֹת לִמְלָאכָה는 직역하면 ‘일을 위해 만들기’이며, 여기서는 실용적인 용도로 쓸 것을 만든다는 뜻입니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어 יָתֵד은 여기서 못, 말뚝, 걸이용 못을 아우를 수 있는 고정 지지물을 가리킵니다.
+    text: 히브리어 יָתֵד은 ‘못’ 외에 ‘말뚝’이나 ‘걸이못’을 뜻할 수도 있습니다. 문맥에서는 물건을 거는 고정 지지물을 가리킵니다.
     reason: lexical_alternative
   - marker: c
-    text: 히브리어 כֶּלִי는 단순한 도자기만이 아니라 그릇, 기구, 용구 같은 물건 전체를 넓게 가리킵니다.
+    text: 히브리어 כֶּלִי는 그릇에만 한정되지 않고 도구, 기구, 물품 등 여러 종류의 물건을 넓게 가리킵니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: הֲיֻקַּח
@@ -98,4 +98,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그것으로 무엇인가를 만들기 위해 그 나무를 가져가겠습니까? 아니면 그 나무에서 못을 가져가서 각종 그릇을 그것에 걸겠습니까?[a][b][c]
+  to: 그것에서 목재를 가져다가 쓸모 있는 것을 만들겠습니까? 아니면 거기에서 못 하나를 가져다가 온갖 기물을 그 못에 걸겠습니까?[a][b][c]
+  rationale: 수동 수사 의문문의 의미를 유지하면서, 목재가 포도나무에서 취해지는 원문의 문장 관계를 바로잡았습니다. ‘쓸모 있는 것’은 לִמְלָאכָה의 작업·용도 의미를 반영하며, ‘온갖 기물’은 כָּל־כֶּלִי의 넓은 범위를 보존합니다. ‘그 못에’는 한국어에서 걸리는 대상을 분명히 한 것이며, 주석은 יָתֵד과 כֶּלִי의 어휘 범위를 보완합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:40:37Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 두 수사 의문문의 형태를 보존했으나, 첫 문장에서 ‘그것으로 … 그 나무를 가져가다’라고 하여 מִמֶּנּוּ(‘그것에서/그것으로부터’)와 עֵץ(‘나무, 목재’)의 관계가 뒤바뀌었습니다. 또한 לִמְלָאכָה의 실용적·작업 목적은 본문에서 드러내는 편이 적절합니다. 둘째 문장의 כָּל־כֶּלִי는 단순히 ‘그릇’에 한정되지 않으므로 넓은 표현으로 옮겼습니다.
+  naturalness: ‘그것에서 목재를 가져다가’는 앞 절의 포도나무를 받는 한국어 표현으로 자연스럽습니다. ‘그 못에’는 עָלָיו의 가장 가까운 선행사인 יָתֵד(못/말뚝)를 한국어에서 명확히 해 줍니다.
+  terminology: עֵץ는 이 문맥에서 ‘목재’, יָתֵד은 ‘못’으로 옮기되 주석에서 ‘말뚝/걸이못’의 가능성을 밝혔습니다. כֶּלִי는 ‘기물’로 번역하여 용기·도구·물품을 포괄하는 의미를 유지했습니다.
+  issues:
+  - severity: high
+    issue: 첫 문장의 목적어와 출처가 역전됨
+    rationale: ‘그것으로 무엇인가를 만들기 위해 그 나무를 가져가겠습니까?’는 나무를 가져가는 목적을 ‘그것으로 만들기’로 처리하지만, 히브리어는 ‘그것에서 목재를 취하여’ 무언가를 만드는지 묻습니다.
+  - severity: medium
+    issue: לִמְלָאכָה의 실용적 목적이 본문에서 약화됨
+    rationale: ‘무엇인가를 만들기’만으로는 ‘일/용도에 쓰일 것’을 만드는 목적이 충분히 드러나지 않습니다. ‘쓸모 있는 것을’은 문맥과 어휘 의미를 자연스럽게 반영합니다.
+  - severity: medium
+    issue: כָּל־כֶּלִי를 ‘각종 그릇’으로 제한함
+    rationale: כֶּלִי는 그릇뿐 아니라 도구·기구·물품을 아우릅니다. ‘온갖 기물’이 이 폭을 더 잘 보존합니다.
+  revised_text: 그것에서 목재를 가져다가 쓸모 있는 것을 만들겠습니까? 아니면 거기에서 못 하나를 가져다가 온갖 기물을 그 못에 걸겠습니까?[a][b][c]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 לַעֲשׂוֹת לִמְלָאכָה는 직역하면 ‘일을 위해 만들기’이며, 여기서는 실용적인 용도로 쓸 것을 만든다는 뜻입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어 יָתֵד은 ‘못’ 외에 ‘말뚝’이나 ‘걸이못’을 뜻할 수도 있습니다. 문맥에서는 물건을 거는 고정 지지물을 가리킵니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 히브리어 כֶּלִי는 그릇에만 한정되지 않고 도구, 기구, 물품 등 여러 종류의 물건을 넓게 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 수동 수사 의문문의 의미를 유지하면서, 목재가 포도나무에서 취해지는 원문의 문장 관계를 바로잡았습니다. ‘쓸모 있는 것’은 לִמְלָאכָה의 작업·용도 의미를 반영하며, ‘온갖 기물’은 כָּל־כֶּלִי의 넓은 범위를 보존합니다. ‘그 못에’는 한국어에서 걸리는 대상을 분명히 한 것이며, 주석은 יָתֵד과 כֶּלִי의 어휘 범위를 보완합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:40:37Z'
+  output_hash: 30569aa32cef2b68be44d6d34c96e64b21babb89f668db8922215c8e451e82c9
+  usage:
+    completion_tokens: 1488
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 11787
+      pre_inference_ms: 96
+      service_tbt_ms: 8
+      service_ttft_ms: 416
+      service_ttlt_ms: 12059
+      total_duration_ms: 11973
+      user_visible_ttft_ms: 320
+    prompt_tokens: 2976
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4464
+  applied_revision: true
+  auto_apply_blocked_errors: []

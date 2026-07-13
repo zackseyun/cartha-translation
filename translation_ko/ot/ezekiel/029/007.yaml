@@ -98,4 +98,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 마소라 본문의 בְּכַפְּךָ는 2인칭 단수 접미사를 지니므로, 영어 감사본의 ‘with their hand’보다 ‘네 손을/네 손으로’에 해당하는 표현이 원문 형태를 더 충실히 반영합니다. 또한 לָהֶם은 ‘그들을 위해’라는 수혜 의미보다, 갈대가 부러지며 그들에게 입히는 결과를 나타내므로 목적어를 직접 처리하는 편이 적절합니다.
+  naturalness: 초안의 ‘모든 어깨를 찢어 놓았습니다’, ‘모든 허리를 불안정하게 서게 했습니다’는 한국어로 다소 부자연스럽습니다. ‘모든 어깨를 갈라 놓았다’와 ‘모든 허리를 휘청거리게 하였다’는 갈대 은유의 신체적 파괴와 균형 상실을 자연스럽게 전달합니다. 예언자가 이집트를 직접 부르는 문맥에는 존칭 뉘앙스가 생길 수 있는 ‘당신’보다 ‘너/네’가 적합하며, 문장 종결은 합쇼체가 아닌 서술체이나 성경 번역의 직접 خطاب 문맥에서는 자연스럽습니다. 다만 요청된 합쇼체에 맞추어 존대 종결을 유지할 경우 ‘너는 … 하였습니다’는 혼용이므로, 본문 인용체의 통상적 서술체로 통일했습니다.
+  terminology: כָּתֵף는 ‘어깨’, מָתְנַיִם은 문맥상 ‘허리’로 옮기는 것이 자연스럽습니다. בָּקַע는 뒤의 שָׁבַר와 구별하여 ‘갈라 놓다’로, רָצַץ는 ‘부서지다’, שָׁבַר는 ‘부러지다’로 구별했습니다. ‘기대다’는 갈대에 몸을 의지하는 물리적 이미지를 보존합니다.
+  issues:
+  - severity: high
+    issue: ‘손으로 당신을 붙잡을 때’가 בְּכַפְּךָ의 2인칭 단수 접미사를 반영하지 못함
+    rationale: 본문의 형태는 문자적으로 ‘네 손/손바닥’을 가리킵니다. 의미상 난점은 있으나 번역에서 이를 임의로 ‘그들의 손’으로 바꾸지 않는 편이 안전합니다.
+  - severity: medium
+    issue: ‘그들을 위해’가 לָהֶם을 수혜적으로 처리함
+    rationale: 문맥은 이집트가 부러지고 갈라져, 붙든 자들의 어깨를 상하게 하는 갈대 비유입니다. 한국어에서는 ‘그들의 모든 어깨를’로 직접 목적어화하는 것이 의미를 더 정확히 전달합니다.
+  - severity: medium
+    issue: 각주 표지가 문장 끝에 함께 배치되어 해당 어구가 불명확함
+    rationale: ‘의지하다’ 대안은 ‘기대었을 때’에, מָתְנַיִם의 대안은 ‘허리’에 각각 붙여야 합니다.
+  - severity: medium
+    issue: ‘허리를 불안정하게 서게 하다’가 비자연스러운 직역임
+    rationale: 사역형의 결과적 불안정성을 ‘허리를 휘청거리게 하였다’로 표현하면 원문의 신체 은유와 문맥상의 균형 상실을 살릴 수 있습니다.
+  revised_text: 그들이 네 손을 붙잡을 때, 너는 부서졌고 그들의 모든 어깨를 갈라 놓았다. 그들이 네게 기대었을 때[a], 너는 부러졌고 그들의 모든 허리를 휘청거리게 하였다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘그들이 너를 의지했을 때’. 히브리어는 갈대의 은유를 이어 가며, 몸을 기대는 물리적 이미지를 사용합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘그들의 모든 허리 부분’.
+    reason: lexical_alternative
+  revision_rationale: 원문 형태를 우선하여 ‘네 손’을 반영하고, 갈대가 부러지고 갈라져 붙든 이들에게 상해를 입히는 비유를 직접적으로 옮겼습니다. ‘기대다’와 ‘어깨/허리’의 신체 이미지를 보존하되, 한국어에서 부자연스러운 표현은 관용적인 동작 표현으로 다듬었습니다. 각주는 실제 해당 어구에 연결했습니다.
+  requires_human_review: true
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:41:29Z'
+  output_hash: a311e262560880958b39e6ebb4a6b2d5c533c99dc0a254e25954f030d2757366
+  usage:
+    completion_tokens: 2100
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 1024
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 18681
+      pre_inference_ms: 107
+      service_tbt_ms: 9
+      service_ttft_ms: 475
+      service_ttlt_ms: 18923
+      total_duration_ms: 18826
+      user_visible_ttft_ms: 369
+    prompt_tokens: 3504
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5604
+  applied_revision: false
+  auto_apply_blocked_errors: []

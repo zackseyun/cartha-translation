@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 말씀하셨습니다. 「두려워하지 마라, 크게 사랑받는 사람아. 네게 평강이 있기를. 강하여라, 참으로 강하여라.」 그가 나와 말할 때 나는 힘을 얻고 말했습니다. 「내 주께서 말씀하시기를, 주께서 나를 강하게 하셨기 때문입니다.」[a]
+  text: 그가 말했습니다. 「두려워하지 마십시오, 크게 사랑받는 사람이여. 당신에게 평안이 있기를 바랍니다. 강해지십시오, 참으로 강해지십시오.」 그가 나에게 말할 때 저는 강해졌고, 말했습니다. 「내 주여, 말씀하십시오. 주께서 저를 강하게 하셨으므로 말씀하십시오.」[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 “사랑스러운/귀한 사람”에 가까운 관용구로, 특별한 호의와 귀중함을 나타냅니다.
+    text: 히브리어는 문자적으로 “사랑스러움들/귀한 것들의 사람”에 가까운 표현이며, 특별한 호의와 귀히 여김을 받는 사람이라는 뜻의 관용구입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אִישׁ חֲמֻדוֹת
@@ -106,4 +106,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 말씀하셨습니다. 「두려워하지 마라, 크게 사랑받는 사람아. 네게 평강이 있기를. 강하여라, 참으로 강하여라.」 그가 나와 말할 때 나는 힘을 얻고 말했습니다. 「내 주께서 말씀하시기를, 주께서 나를 강하게 하셨기 때문입니다.」[a]
+  to: 그가 말했습니다. 「두려워하지 마십시오, 크게 사랑받는 사람이여. 당신에게 평안이 있기를 바랍니다. 강해지십시오, 참으로 강해지십시오.」 그가 나에게 말할 때 저는 강해졌고, 말했습니다. 「내 주여, 말씀하십시오. 주께서 저를 강하게 하셨으므로 말씀하십시오.」[a]
+  rationale: 마지막 발화를 완결된 공손한 청원으로 고치고, 직접화법 전체를 현대 표준어 합쇼체로 통일했습니다. 원문의 반복된 ‘강하다’ 어근은 ‘강해지십시오/강해졌고/강하게 하셨으므로’로 가능한 한 유지했습니다. 마지막 ‘말씀하십시오’의 반복은 히브리어에는 한 번만 명시되어 있으나, 한국어에서 ‘주께서 저를 강하게 하셨으므로’가 앞 요청의 근거임을 매끄럽게 연결하기 위해 보충한 것입니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:53:50Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘와 순서는 대체로 원문에 충실합니다. 그러나 יְדַבֵּר אֲדֹנִי는 공손한 요청인 “내 주여, 말씀하십시오”라는 완결 발화여야 하는데, 초안의 “내 주께서 말씀하시기를”은 미완결 인용절이며 원문의 청원법을 재현하지 못합니다.
+  naturalness: 초안은 서술문은 합쇼체이나 인용문에 “마라/강하여라”를 사용하여 요구된 현대 표준어 합쇼체와 일관되지 않습니다. 또한 마지막 인용문은 문법적으로 완결되지 않습니다. 현대적인 존대 명령·청원 형태로 정리하는 것이 안전합니다.
+  terminology: אִישׁ חֲמֻדוֹת의 특별한 호의라는 뜻, שָׁלוֹם의 축복 공식, 그리고 חזק 어근의 반복을 유지했습니다. אֲדֹנִי는 하나님의 고유 칭호로 단정하지 않고 문맥상의 공손한 호칭인 “내 주여”로 옮겼습니다.
+  issues:
+  - severity: high
+    issue: “내 주께서 말씀하시기를”이 문법적으로 미완결이며 원문의 청원법을 반영하지 못함
+    rationale: יְדַבֵּר אֲדֹנִי는 ‘내 주께서 말씀하시게 하소서/말씀하십시오’라는 공손한 요청입니다. ‘-기를’은 뒤에 이어질 주절이 필요하므로 현행 인용문은 한국어 문장으로 성립하지 않습니다.
+  - severity: medium
+    issue: 인용문의 명령형이 합쇼체와 불일치
+    rationale: “두려워하지 마라, 강하여라”는 해라체입니다. 과업에서 지정한 현대 정중체에 맞추어 “두려워하지 마십시오, 강해지십시오”로 고쳐야 합니다.
+  - severity: low
+    issue: 강함 관련 어휘의 연결이 약화됨
+    rationale: “힘을 얻고”도 의미상 가능하지만, 원문이 חזק 어근을 연속하여 사용하므로 “강해졌습니다/강하게 하셨으므로”로 연결하면 반복과 강화의 효과가 더 분명합니다.
+  revised_text: 그가 말했습니다. 「두려워하지 마십시오, 크게 사랑받는 사람이여. 당신에게 평안이 있기를 바랍니다. 강해지십시오, 참으로 강해지십시오.」 그가 나에게 말할 때 저는 강해졌고, 말했습니다. 「내 주여, 말씀하십시오. 주께서 저를 강하게 하셨으므로 말씀하십시오.」[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 “사랑스러움들/귀한 것들의 사람”에 가까운 표현이며, 특별한 호의와 귀히 여김을 받는 사람이라는 뜻의 관용구입니다.
+    reason: lexical_alternative
+  revision_rationale: 마지막 발화를 완결된 공손한 청원으로 고치고, 직접화법 전체를 현대 표준어 합쇼체로 통일했습니다. 원문의 반복된 ‘강하다’ 어근은 ‘강해지십시오/강해졌고/강하게 하셨으므로’로 가능한 한 유지했습니다. 마지막 ‘말씀하십시오’의 반복은 히브리어에는 한 번만 명시되어 있으나, 한국어에서 ‘주께서 저를 강하게 하셨으므로’가 앞 요청의 근거임을 매끄럽게 연결하기 위해 보충한 것입니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:53:50Z'
+  output_hash: 2f11cace7b64950b08628d9cc24e4b2dd5d61fc137c929d42583cfac5fcd73f0
+  usage:
+    completion_tokens: 1744
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 889
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 149
+      engine_ttlt_ms: 14584
+      pre_inference_ms: 133
+      service_tbt_ms: 8
+      service_ttft_ms: 640
+      service_ttlt_ms: 15072
+      total_duration_ms: 14950
+      user_visible_ttft_ms: 507
+    prompt_tokens: 2988
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4732
+  applied_revision: true
+  auto_apply_blocked_errors: []

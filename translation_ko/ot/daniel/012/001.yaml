@@ -23,14 +23,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그때에 미가엘—그대 백성의 자손들을 위하여 서 있는 큰 군주—이 일어날 것입니다. 그때에는 나라가 생긴 이래로 그때까지 없었던 것 같은 환난의 때가 있을 것입니다. 그때에 그대 백성은 구출될 것이며[c][b], 책에 기록된 모든 사람이 그리될 것입니다.
+  text: 그때에 그대 백성의 아들들을 위하여 서 있는 큰 군주 미가엘이 일어날 것입니다. 나라가 생긴 이래 그때까지 없었던 고난의 때가 있을 것입니다[b]. 그때에 그대의 백성, 곧 책에 기록되어 있는 모든 사람은 벗어날 것입니다[c].
   philosophy: optimal-equivalence
   footnotes:
   - marker: b
     text: 또는 ‘환난의 때’입니다.
     reason: lexical_alternative
   - marker: c
-    text: 또는 ‘도망칠 것입니다’입니다.
+    text: 또는 ‘구출될 것입니다’입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: יַעֲמֹד
@@ -94,4 +94,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그때에 미가엘—그대 백성의 자손들을 위하여 서 있는 큰 군주—이 일어날 것입니다. 그때에는 나라가 생긴 이래로 그때까지 없었던 것 같은 환난의 때가 있을 것입니다. 그때에 그대 백성은 구출될 것이며[c][b], 책에 기록된 모든 사람이 그리될 것입니다.
+  to: 그때에 그대 백성의 아들들을 위하여 서 있는 큰 군주 미가엘이 일어날 것입니다. 나라가 생긴 이래 그때까지 없었던 고난의 때가 있을 것입니다[b]. 그때에 그대의 백성, 곧 책에 기록되어 있는 모든 사람은 벗어날 것입니다[c].
+  rationale: 후반절을 원문의 수식 관계에 맞게 ‘그대의 백성, 곧 책에 기록되어 있는 모든 사람’으로 고쳤고, 각주 b를 고난의 때에, 각주 c를 벗어남 동사에 각각 정확히 연결했습니다. ‘벗어날 것입니다’는 יִמָּלֵט의 기본 의미를 살리면서, 구출이라는 해석적 가능성은 각주에 남깁니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:49:20Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 후반절의 주어·수식 관계가 원문과 달랐습니다. 히브리어는 ‘그대의 백성’이 구출/벗어나며, ‘책에 기록되어 있는 모든 사람’은 그 백성을 한정합니다. 초안의 ‘책에 기록된 모든 사람이 그리될 것입니다’는 별도 주어와 지시 내용으로 재구성하여 이 관계를 흐렸습니다. 또한 צָרָה의 대안 각주가 구출 동사에 잘못 붙어 있었습니다.
+  naturalness: ‘그리될 것입니다’는 선행 내용이 불명확하고 한국어 문장으로도 부자연스럽습니다. ‘곧 책에 기록되어 있는 모든 사람’으로 백성을 동격·한정하면 자연스럽고 명료합니다. ‘그대’는 원문의 2인칭을 보존하는 문학적 호칭으로 문맥상 유지할 수 있습니다.
+  terminology: ‘큰 군주’와 ‘일어날 것입니다’는 각각 הַשַּׂר הַגָּדוֹל 및 יַעֲמֹד의 문맥상 의미를 무리 없이 반영합니다. יִמָּלֵט은 영어 POB의 본문 선택인 ‘will escape’에 맞추어 ‘벗어날 것입니다’로 옮기고, ‘구출될 것입니다’을 대안으로 제시합니다. בְּנֵי는 ‘아들들’로 유지하여 초안의 ‘자손들’보다 직접적인 남성형 표현을 보존했습니다.
+  issues:
+  - severity: high
+    issue: ‘책에 기록된 모든 사람이 그리될 것입니다’가 원문의 백성 한정 구문을 독립 절로 바꾸었습니다.
+    rationale: כָּל הַנִּמְצָא כָּתוּב בַּסֵּפֶר는 구출될 ‘그대의 백성’을 가리키며, 모든 사람이 별도로 어떤 일을 겪는다는 뜻이 아닙니다.
+  - severity: medium
+    issue: 각주 b(‘환난의 때’)가 구출 동사 뒤에 배치되어 앵커 대상이 맞지 않습니다.
+    rationale: 영어 감사 기록에서 b는 עֵת צָרָה(고난/환난의 때)의 어휘 대안입니다. 해당 명사구 바로 뒤에 두어야 합니다.
+  - severity: medium
+    issue: 본문 ‘구출될 것입니다’는 영어 POB의 선택어 ‘will escape’보다 다소 더 행위자와 신학적 함의를 전면화합니다.
+    rationale: יִמָּלֵט의 탈출·벗어남의 의미를 본문에 보존하고, ‘구출’을 각주 대안으로 두는 편이 원문의 열려 있는 뉘앙스와 영어 감사 기록에 더 부합합니다.
+  revised_text: 그때에 그대 백성의 아들들을 위하여 서 있는 큰 군주 미가엘이 일어날 것입니다. 나라가 생긴 이래 그때까지 없었던 고난의 때가 있을 것입니다[b]. 그때에 그대의 백성, 곧 책에 기록되어 있는 모든 사람은 벗어날 것입니다[c].
+  revised_footnotes:
+  - marker: b
+    text: 또는 ‘환난의 때’입니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘구출될 것입니다’입니다.
+    reason: lexical_alternative
+  revision_rationale: 후반절을 원문의 수식 관계에 맞게 ‘그대의 백성, 곧 책에 기록되어 있는 모든 사람’으로 고쳤고, 각주 b를 고난의 때에, 각주 c를 벗어남 동사에 각각 정확히 연결했습니다. ‘벗어날 것입니다’는 יִמָּלֵט의 기본 의미를 살리면서, 구출이라는 해석적 가능성은 각주에 남깁니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:49:20Z'
+  output_hash: 2c54e5cec0f65078feab662b3c79d8e97e72e76adc330e7f0b9c45a93c6facc3
+  usage:
+    completion_tokens: 1422
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 152
+      engine_ttlt_ms: 11690
+      pre_inference_ms: 95
+      service_tbt_ms: 8
+      service_ttft_ms: 374
+      service_ttlt_ms: 11900
+      total_duration_ms: 11815
+      user_visible_ttft_ms: 279
+    prompt_tokens: 3208
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4630
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 뜰을 측량하니 길이도 백 규빗이고 너비도 백 규빗이어서, 네모꼴이었으며, 제단은 집 앞에 있었습니다.[a][b]
+  text: 그가 뜰[a]을 측량했습니다. 길이는 백 규빗, 너비도 백 규빗으로 정사각형이었고, 제단은 집[b] 앞에 있었습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 또는 ‘뜰마당’입니다.
     reason: lexical_alternative
   - marker: b
-    text: 여기서 ‘집’은 에스겔 환상 속 성전 건물을 가리킵니다.
-    reason: cross_reference
+    text: 여기서 ‘집’은 에스겔의 환상 속 성전 건물을 가리킵니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: וַיָּמָד
   english_pob_choice: Then he measured
@@ -82,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 뜰을 측량하니 길이도 백 규빗이고 너비도 백 규빗이어서, 네모꼴이었으며, 제단은 집 앞에 있었습니다.[a][b]
+  to: 그가 뜰[a]을 측량했습니다. 길이는 백 규빗, 너비도 백 규빗으로 정사각형이었고, 제단은 집[b] 앞에 있었습니다.
+  rationale: 원문의 치수와 공간 배치를 그대로 보존하면서, 합쇼체 서술을 일관되게 하고 각주 표지를 해당 어휘에 연결했습니다. ‘집’은 הַבַּיִת의 어휘적 대응을 유지하며, 성전 건물이라는 문맥상 지시 대상은 각주로 설명했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:44:43Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 와우 계속형은 서술 순서를 따라 ‘그가 … 측량했습니다’로 자연스럽게 옮길 수 있습니다. 뜰의 길이와 너비가 각각 백 규빗이며 정사각형이라는 진술, 그리고 제단이 그 집 앞에 있다는 위치 관계가 모두 유지되어야 합니다.
+  naturalness: 초안의 ‘측량하니’와 ‘있었습니다’의 결합은 합쇼체 문체 안에서 다소 혼합되어 보입니다. 문장을 ‘측량했습니다’로 통일하고, 각주 표지를 해당 어휘 바로 뒤에 두면 현대 한국어의 명료성과 문체 일관성이 좋아집니다.
+  terminology: ‘뜰’, ‘규빗’, ‘제단’은 성전 건축 문맥에 적절합니다. מְרֻבָּעַת는 여기서 길이와 너비가 같은 공간의 형태를 나타내므로 ‘정사각형’이 정확합니다. הַבַּיִת는 환상 속 성전 건물을 가리키지만 원문의 어휘적 폭을 보존하여 본문에서는 ‘집’으로 유지하고 각주에서 밝힙니다.
+  issues:
+  - severity: low
+    issue: 문체가 ‘측량하니’와 ‘있었습니다’로 혼합되어 있습니다.
+    rationale: 목표 문체가 현대 합쇼체이므로 서술어를 ‘측량했습니다’로 통일하는 편이 자연스럽고 일관됩니다.
+  - severity: low
+    issue: 각주 표지 [a], [b]가 문장 끝에 함께 놓여 있어 각각의 대상 어휘가 불명확합니다.
+    rationale: '[a]는 ‘뜰’의 대안 표현을, [b]는 ‘집’의 환상 내 지시 대상을 설명하므로 해당 단어 뒤에 직접 붙여야 합니다.'
+  revised_text: 그가 뜰[a]을 측량했습니다. 길이는 백 규빗, 너비도 백 규빗으로 정사각형이었고, 제단은 집[b] 앞에 있었습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘뜰마당’입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 여기서 ‘집’은 에스겔의 환상 속 성전 건물을 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 치수와 공간 배치를 그대로 보존하면서, 합쇼체 서술을 일관되게 하고 각주 표지를 해당 어휘에 연결했습니다. ‘집’은 הַבַּיִת의 어휘적 대응을 유지하며, 성전 건물이라는 문맥상 지시 대상은 각주로 설명했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:44:43Z'
+  output_hash: 9f23580d3f96245efb9e02ffad4caa88929acbb5c1cb3d67b15f887a1ad1e019
+  usage:
+    completion_tokens: 1008
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 366
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 8125
+      pre_inference_ms: 114
+      service_tbt_ms: 8
+      service_ttft_ms: 418
+      service_ttlt_ms: 8395
+      total_duration_ms: 8292
+      user_visible_ttft_ms: 305
+    prompt_tokens: 2248
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3256
+  applied_revision: true
+  auto_apply_blocked_errors: []

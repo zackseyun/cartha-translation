@@ -20,14 +20,14 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 그리고 그 일이 있을 것입니다. 백성 같고 제사장 같습니다. 내가 그의 길을 벌하고 그의 행실을 그에게 갚겠습니다.[a][b]
+  text: '그리고 이렇게 될 것입니다: 백성이나 제사장이나 마찬가지입니다.[a] 내가 그의 길 때문에 그를 벌하고, 그의 행실에 따라 그에게 갚겠습니다.[b]'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어의 압축된 비교구문을 직역하면 ‘백성 같고 제사장 같습니다’가 되며, 이는 백성과 제사장이 같은 심판 아래 놓인다는 뜻입니다.
+    text: 히브리어의 압축된 비교구문은 직역하면 ‘백성과 같이, 제사장과 같이’입니다. 이는 백성과 제사장이 모두 같은 심판 아래 놓인다는 뜻입니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어는 이 뒤에서 단수 대명사를 사용하므로, 복수 집단 전체를 분배적으로 가리키는 것일 수도 있고 제사장에게 초점을 좁히는 것일 수도 있습니다.
+    text: 히브리어는 이 뒤에서 단수 대명사를 사용합니다. 이 단수는 집단의 각 사람을 분배적으로 가리킬 수도 있고, 제사장에게 초점을 좁힐 수도 있습니다.
     reason: alternative_reading
 lexical_decisions:
 - source_word: כָעָם כַּכֹּהֵן
@@ -95,4 +95,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 그 일이 있을 것입니다. 백성 같고 제사장 같습니다. 내가 그의 길을 벌하고 그의 행실을 그에게 갚겠습니다.[a][b]
+  to: '그리고 이렇게 될 것입니다: 백성이나 제사장이나 마찬가지입니다.[a] 내가 그의 길 때문에 그를 벌하고, 그의 행실에 따라 그에게 갚겠습니다.[b]'
+  rationale: 히브리어의 וְהָיָה가 도입하는 결과적 상황을 ‘그리고 이렇게 될 것입니다’로 옮기고, כָעָם כַּכֹּהֵן의 대구를 ‘백성이나 제사장이나 마찬가지입니다’로 자연스럽게 재현했습니다. 심판 절에서는 단수 ‘그의/그를/그에게’를 유지하되, ‘그의 길들 때문에 그를 벌하고 그의 행실에 따라 그에게 갚다’라는 원문의 책임·보응 관계가 한국어에서도 분명하도록 바로잡았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:49:13Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 초안의 ‘그의 길을 벌하고’는 히브리어 עָלָיו דְּרָכָיו가 뜻하는 ‘그의 길/행위 때문에 그를 벌하다’를 ‘길 자체를 벌하다’로 바꾸어 버립니다. 또한 ‘그의 행실을 그에게 갚겠습니다’는 한국어에서 목적어 관계가 부자연스럽습니다. 수정문은 단수 대명사와 백성·제사장의 동등한 심판이라는 압축된 대구를 유지합니다.
+  naturalness: ‘백성 같고 제사장 같습니다’는 한국어 비교문의 관계가 불분명합니다. ‘백성이나 제사장이나 마찬가지입니다’는 격언적 병렬과 동등성의 뜻을 자연스럽고 현대적인 합쇼체로 전달합니다. ‘그의 길 때문에 그를 벌하고, 그의 행실에 따라 그에게 갚겠습니다’는 심판의 대상과 근거를 명료하게 합니다.
+  terminology: ‘제사장’, ‘벌하다’, ‘길’, ‘행실’은 적절합니다. דְּרָכָיו와 מַעֲלָלָיו의 도덕적·행위적 의미 및 אָשִׁיב לוֹ의 보응 의미를 ‘그의 길 때문에’와 ‘그의 행실에 따라 그에게 갚겠습니다’로 보존합니다.
+  issues:
+  - severity: high
+    issue: ‘그의 길을 벌하고’가 심판의 대상과 근거를 뒤바꿈
+    rationale: פָּקַד עַל 뒤의 ‘그의 길들’은 그 사람의 길을 근거로 그에게 책임을 묻는다는 뜻입니다. 한국어 문장은 ‘길’을 벌하는 것으로 읽힙니다.
+  - severity: medium
+    issue: ‘그의 행실을 그에게 갚겠습니다’의 부자연스러운 결합
+    rationale: 한국어에서 ‘행실을 갚다’는 자연스럽지 않습니다. 행실에 상응하여 당사자에게 보응한다는 관계를 밝혀야 합니다.
+  - severity: medium
+    issue: ‘백성 같고 제사장 같습니다’의 비교 관계가 불명확함
+    rationale: 원문의 대구는 백성과 제사장이 동일한 처지라는 비교입니다. 수정문은 이 의미를 분명히 하면서도 원문의 간결함을 유지합니다.
+  revised_text: '그리고 이렇게 될 것입니다: 백성이나 제사장이나 마찬가지입니다.[a] 내가 그의 길 때문에 그를 벌하고, 그의 행실에 따라 그에게 갚겠습니다.[b]'
+  revised_footnotes:
+  - marker: a
+    text: 히브리어의 압축된 비교구문은 직역하면 ‘백성과 같이, 제사장과 같이’입니다. 이는 백성과 제사장이 모두 같은 심판 아래 놓인다는 뜻입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어는 이 뒤에서 단수 대명사를 사용합니다. 이 단수는 집단의 각 사람을 분배적으로 가리킬 수도 있고, 제사장에게 초점을 좁힐 수도 있습니다.
+    reason: alternative_reading
+  revision_rationale: 히브리어의 וְהָיָה가 도입하는 결과적 상황을 ‘그리고 이렇게 될 것입니다’로 옮기고, כָעָם כַּכֹּהֵן의 대구를 ‘백성이나 제사장이나 마찬가지입니다’로 자연스럽게 재현했습니다. 심판 절에서는 단수 ‘그의/그를/그에게’를 유지하되, ‘그의 길들 때문에 그를 벌하고 그의 행실에 따라 그에게 갚다’라는 원문의 책임·보응 관계가 한국어에서도 분명하도록 바로잡았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:49:13Z'
+  output_hash: 3a706b84111559835ff5156903345cd8b53c50b7f966dc373eccc798b0a3d910
+  usage:
+    completion_tokens: 1391
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 140
+      engine_ttlt_ms: 11219
+      pre_inference_ms: 148
+      service_tbt_ms: 8
+      service_ttft_ms: 445
+      service_ttlt_ms: 11550
+      total_duration_ms: 11405
+      user_visible_ttft_ms: 298
+    prompt_tokens: 2688
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4079
+  applied_revision: true
+  auto_apply_blocked_errors: []

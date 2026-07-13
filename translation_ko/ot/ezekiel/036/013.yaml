@@ -20,14 +20,14 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 주 야훼께서 이렇게 말씀하십니다. “너에 대하여 그들이 말하기를, ‘너는 사람을 삼키고 자기 백성을 잃게 한 땅이다’ 하였기 때문입니다.”[a][b]
+  text: 주 야훼께서 이렇게 말씀하십니다. “사람들이 너를 두고 말하기를, ‘너는 사람[a]을 삼키고 네 민족을 자식 잃게 해 온 땅이다[b]’ 한다고 하기 때문이다.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어는 문자적으로 ‘사람을 삼키는 자’이며, ‘사람’은 집합적으로 사람들/인류를 가리킵니다.
+    text: 히브리어는 문자적으로 ‘사람을 삼키는 자’이며, ‘사람’은 집합적으로 사람들 또는 인류를 가리킵니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘자기 백성을 자식 잃게 한’ / ‘자기 백성을 고아로 만든’.
+    text: 또는 ‘네 민족을 자식 없이 되게 해 온 땅’ 또는 ‘네 백성을 자식 잃게 해 온 땅’.
     reason: alternative_reading
 lexical_decisions:
 - source_word: כֹּה אָמַר אֲדֹנָי יְהוִה
@@ -82,4 +82,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 주 야훼께서 이렇게 말씀하십니다. “너에 대하여 그들이 말하기를, ‘너는 사람을 삼키고 자기 백성을 잃게 한 땅이다’ 하였기 때문입니다.”[a][b]
+  to: 주 야훼께서 이렇게 말씀하십니다. “사람들이 너를 두고 말하기를, ‘너는 사람[a]을 삼키고 네 민족을 자식 잃게 해 온 땅이다[b]’ 한다고 하기 때문이다.”
+  rationale: 수정은 땅을 향한 원문의 의인화와 이유절 구조를 보존하면서, שׁכל의 ‘자식 잃게 하다/자식 없이 되게 하다’라는 의미를 정확히 회복했습니다. 잘못된 ‘고아’ 대안은 제거했고, 각주 표지를 해당 단어에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:45:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문은 땅(여성 단수)을 향해, 사람들이 그 땅을 ‘사람을 삼키며 그 민족을 자식 잃게 해 온 땅’이라고 비난하는 내용을 전합니다. 초안의 ‘자기 백성을 잃게 한’은 שׁכל(자식을 잃게 하다/자식 없이 되게 하다)의 의미를 ‘백성을 잃게 하다’로 바꾸어 불명확하게 만들며, ‘자기’도 땅의 소유 관계를 자연스럽게 드러내지 못합니다. ‘너는 … 땅이다’는 원문의 여성 단수 수식과 문맥상 땅을 명시하는 데 적절합니다.
+  naturalness: ‘너에 대하여 그들이 말하기를’보다 ‘사람들이 너를 두고 말하기를’이 현대 표준 한국어에서 더 자연스럽습니다. 또한 인용문 뒤에 ‘하였기 때문입니다’를 붙인 초안은 발화 보고와 이유절의 연결이 다소 어색합니다. 원문의 이유절 성격을 살려 ‘한다고 하기 때문이다’로 매끄럽게 정리했습니다.
+  terminology: אֲדֹנָי יְהוִה는 프로젝트의 야훼 표기에 맞추어 ‘주 야훼’로 유지했습니다. אָדָם은 집합적 의미를 살려 ‘사람’으로, שׁכל은 과도하게 특정하지 않고 ‘자식 잃게 하다’로 옮겼습니다. גּוֹיִךְ의 형태 및 단·복수 해석에는 논의의 여지가 있으나, 영어 POB의 ‘your nation’과 문맥을 따라 ‘네 민족’으로 번역하고 각주에서 ‘백성’ 대안을 제시했습니다.
+  issues:
+  - severity: high
+    issue: ‘자기 백성을 잃게 한’은 וּמְשַׁכֶּלֶת גּוֹיִךְ의 의미를 충분히 반영하지 못합니다.
+    rationale: שׁכל의 피엘은 자녀를 잃게 하다, 자식 없이 되게 하다, 또는 빼앗다의 뜻입니다. ‘백성을 잃게 하다’는 누가 무엇을 잃는지 불명확하며 ‘자식 잃게 하다’의 핵심을 소실합니다.
+  - severity: medium
+    issue: 각주 b의 ‘고아로 만든’은 부정확합니다.
+    rationale: ‘고아가 되게 하다’는 자녀가 부모를 잃는 뜻인 반면, כאן의 שׁכל은 일반적으로 부모/공동체가 자녀를 잃거나 자식 없이 되는 뜻입니다.
+  - severity: low
+    issue: 각주 표지가 인용문 전체 뒤에만 놓여 있어 해당 어휘와의 연결이 약합니다.
+    rationale: a는 ‘사람’, b는 ‘자식 잃게 한’에 각각 붙이는 것이 각주의 범위를 명확히 합니다.
+  revised_text: 주 야훼께서 이렇게 말씀하십니다. “사람들이 너를 두고 말하기를, ‘너는 사람[a]을 삼키고 네 민족을 자식 잃게 해 온 땅이다[b]’ 한다고 하기 때문이다.”
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 문자적으로 ‘사람을 삼키는 자’이며, ‘사람’은 집합적으로 사람들 또는 인류를 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘네 민족을 자식 없이 되게 해 온 땅’ 또는 ‘네 백성을 자식 잃게 해 온 땅’.
+    reason: alternative_reading
+  revision_rationale: 수정은 땅을 향한 원문의 의인화와 이유절 구조를 보존하면서, שׁכל의 ‘자식 잃게 하다/자식 없이 되게 하다’라는 의미를 정확히 회복했습니다. 잘못된 ‘고아’ 대안은 제거했고, 각주 표지를 해당 단어에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:45:42Z'
+  output_hash: c320d626ef1e012d00932797881a6c7590425179c32ee86743f7e0285bf67616
+  usage:
+    completion_tokens: 1467
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 123
+      engine_ttlt_ms: 11387
+      pre_inference_ms: 173
+      service_tbt_ms: 8
+      service_ttft_ms: 640
+      service_ttlt_ms: 11905
+      total_duration_ms: 11738
+      user_visible_ttft_ms: 468
+    prompt_tokens: 2879
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 2688
+    total_tokens: 4346
+  applied_revision: true
+  auto_apply_blocked_errors: []

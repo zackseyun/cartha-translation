@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 보십시오[a], 집 바깥에 사방으로 담이 있었고, 그 사람의 손에는 측량하는 갈대가 있었는데, 여섯 규빗이었으니 각 규빗은 규빗 한 뼘이었습니다. 그가 그 건축물의 너비를 재니 한 갈대[b]였고, 높이도 한 갈대였습니다.
+  text: 보십시오, 그 집 바깥 사방에 담이 있었고, 그 사람의 손에는 길이가 여섯 규빗인 측량 갈대가 있었습니다. 이 규빗은 보통 규빗에 한 뼘을 더한 것이었습니다[a]. 그가 그 건축물의 너비를 재니 한 측량 갈대였고, 높이도 한 측량 갈대였습니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 וְהִנֵּה는 환시에서 장면을 새로 제시하는 주의 환기 표현입니다.
-    reason: source_note
+    text: 히브리어는 ‘규빗과 한 뼘으로 된’이라고 합니다. 곧 보통 규빗에 한 뼘을 더한 긴 규빗을 측량 기준으로 사용했다는 뜻입니다.
+    reason: cultural_note
   - marker: b
-    text: 또는 ‘그 건축물의 너비’로 옮길 수 있습니다.
+    text: 또는 ‘그 건물의 너비’.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: וְהִנֵּה
@@ -83,4 +83,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 보십시오[a], 집 바깥에 사방으로 담이 있었고, 그 사람의 손에는 측량하는 갈대가 있었는데, 여섯 규빗이었으니 각 규빗은 규빗 한 뼘이었습니다. 그가 그 건축물의 너비를 재니 한 갈대[b]였고, 높이도 한 갈대였습니다.
+  to: 보십시오, 그 집 바깥 사방에 담이 있었고, 그 사람의 손에는 길이가 여섯 규빗인 측량 갈대가 있었습니다. 이 규빗은 보통 규빗에 한 뼘을 더한 것이었습니다[a]. 그가 그 건축물의 너비를 재니 한 측량 갈대였고, 높이도 한 측량 갈대였습니다[b].
+  rationale: 측량 단위의 핵심 의미를 모호하지 않게 바로잡고, 영어 POB 감사 기록에 따른 각주 a를 해당 측량 표현에 연결했습니다. 또한 각주 b가 본문과 중복되지 않도록 실제 어휘 대안을 제시했습니다. 그 밖에 원문의 건축 용어와 환시적 도입의 기능은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:44:51Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 환시적 도입, 집 바깥을 두른 담, 여섯 규빗 길이의 측량 갈대, 그리고 너비와 높이가 각각 한 갈대라는 측량 결과는 대체로 충실히 반영되었습니다. 다만 ‘규빗 한 뼘’은 한국어에서 한 규빗 자체가 한 뼘이라는 뜻으로 읽힐 수 있으므로, 보통 규빗에 한 뼘을 더한 긴 규빗이라는 측량 기준을 분명히 해야 합니다.
+  naturalness: ‘보십시오’는 합쇼체의 환시 도입으로 가능하나, 문장 전체에서는 ‘그 집 바깥 사방에’와 ‘측량 갈대’를 사용하면 더 자연스럽고 일관됩니다. 측량 결과의 ‘한 갈대’는 앞서 제시된 측량 단위를 반복하여 ‘한 측량 갈대’로 밝혀 주는 편이 명료합니다.
+  terminology: אַמָּה는 ‘규빗’, טֹפַח은 ‘뼘’, קְנֵה הַמִּדָּה는 ‘측량 갈대’로 옮겼습니다. בִּנְיָן은 본문에서 ‘건축물’로 유지하고, ‘건물’은 가능한 어휘 대안으로 각주에 제시합니다.
+  issues:
+  - severity: medium
+    issue: ‘각 규빗은 규빗 한 뼘이었습니다’의 측량 기준 표현
+    rationale: 히브리어 בָּאַמָּה וָטֹפַח은 한 규빗에 한 뼘을 더한 긴 규빗을 뜻합니다. 초안은 이를 ‘규빗 한 뼘’으로 압축하여, 규빗의 길이가 한 뼘이라는 뜻으로 오해될 여지가 있습니다.
+  - severity: medium
+    issue: 각주 a의 위치와 내용이 영어 POB의 측량 단위 주석과 일치하지 않음
+    rationale: 초안의 a는 ‘보십시오’에 붙어 있지만, 제공된 POB 감사 기록의 a는 ‘규빗과 한 뼘’이라는 측량 기준을 설명합니다. 해당 구절 뒤로 앵커를 옮기고 그 내용을 반영하는 것이 적절합니다.
+  - severity: low
+    issue: 각주 b가 본문 표현을 그대로 반복함
+    rationale: 본문이 이미 ‘그 건축물의 너비’인데 각주도 동일하게 제시되어 어휘 대안 기능을 하지 못합니다. ‘그 건물의 너비’와 같이 실제 대안을 제시해야 합니다.
+  revised_text: 보십시오, 그 집 바깥 사방에 담이 있었고, 그 사람의 손에는 길이가 여섯 규빗인 측량 갈대가 있었습니다. 이 규빗은 보통 규빗에 한 뼘을 더한 것이었습니다[a]. 그가 그 건축물의 너비를 재니 한 측량 갈대였고, 높이도 한 측량 갈대였습니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 ‘규빗과 한 뼘으로 된’이라고 합니다. 곧 보통 규빗에 한 뼘을 더한 긴 규빗을 측량 기준으로 사용했다는 뜻입니다.
+    reason: cultural_note
+  - marker: b
+    text: 또는 ‘그 건물의 너비’.
+    reason: lexical_alternative
+  revision_rationale: 측량 단위의 핵심 의미를 모호하지 않게 바로잡고, 영어 POB 감사 기록에 따른 각주 a를 해당 측량 표현에 연결했습니다. 또한 각주 b가 본문과 중복되지 않도록 실제 어휘 대안을 제시했습니다. 그 밖에 원문의 건축 용어와 환시적 도입의 기능은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:44:51Z'
+  output_hash: 2710222f37f219a8cf3c5d1102000a5e76455ef1f4879b31add380328f583ac1
+  usage:
+    completion_tokens: 1322
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 424
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 233
+      engine_ttlt_ms: 10366
+      pre_inference_ms: 113
+      service_tbt_ms: 8
+      service_ttft_ms: 506
+      service_ttlt_ms: 10631
+      total_duration_ms: 10529
+      user_visible_ttft_ms: 393
+    prompt_tokens: 2616
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3938
+  applied_revision: true
+  auto_apply_blocked_errors: []

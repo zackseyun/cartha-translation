@@ -23,17 +23,17 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 스스로를 한데 모으고[a] 오른쪽으로 가며, 왼쪽으로 돌리십시오[b][c]. 네 얼굴이 정해진 곳은 어디든지 말입니다.
+  text: 스스로를 한데 모으십시오[a]. 오른쪽으로 가십시오. 왼쪽으로 향하십시오. 네 앞[b]이 정해진 곳이면 어디든지 향하십시오[c].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 또는 ‘스스로 하나가 되십시오’, ‘스스로를 가다듬으십시오’, 문맥상 ‘힘을 한데 모으십시오’로도 옮길 수 있습니다. 희귀한 재귀형 동사로, 공격 직전의 집중·응집을 나타낼 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘네 얼굴’입니다. 히브리어에서는 방향을 향하는 쪽을 가리킬 수 있습니다.
+    text: 직역하면 ‘네 얼굴’입니다. 히브리어에서는 자신이 향하는 방향, 곧 ‘네 앞’을 가리킬 수 있습니다.
     reason: lexical_alternative
   - marker: c
-    text: 또는 ‘네 얼굴이 향하도록 정해진 곳은’ 혹은 ‘네 얼굴이 정해진 곳은’입니다.
+    text: 또는 ‘네 앞이 향하도록 정해진 곳이면 어디든지’ 또는 ‘네 앞이 정해진 곳이면 어디든지’로 옮길 수 있습니다.
     reason: alternative_reading
 lexical_decisions:
 - source_word: הִתְאַחֲדִ֥י
@@ -92,4 +92,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 스스로를 한데 모으고[a] 오른쪽으로 가며, 왼쪽으로 돌리십시오[b][c]. 네 얼굴이 정해진 곳은 어디든지 말입니다.
+  to: 스스로를 한데 모으십시오[a]. 오른쪽으로 가십시오. 왼쪽으로 향하십시오. 네 앞[b]이 정해진 곳이면 어디든지 향하십시오[c].
+  rationale: 모든 명령을 독립된 합쇼체 명령문으로 유지하고, ‘왼쪽으로 돌리다’가 덧붙이는 회전 의미를 피했습니다. 마지막 절은 פָּנַיִךְ의 방향적 의미를 ‘네 앞’으로 자연스럽게 옮기고, מוּעָדוֹת의 수동적 의미는 ‘정해진’으로 보존했습니다. 각주 표지는 해당 히브리어 어구와 마지막 방향절에 각각 배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:40:53Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 여성 단수 명령들의 연쇄와 ‘정해진’의 수동적 뉘앙스를 대체로 반영합니다. 그러나 ‘가며’는 독립 명령을 연결절로 바꾸고, ‘왼쪽으로 돌리십시오’는 ‘왼쪽으로 향하라/두라’보다 대상이나 방향 전환을 더 구체화합니다. 마지막 절의 방향적 ‘얼굴’을 한국어의 ‘앞’으로 옮기되 직역 정보를 각주로 보완하는 편이 충실합니다.
+  naturalness: 합쇼체의 짧은 연속 명령으로 통일해야 자연스럽고 원문의 긴박한 문체도 보존됩니다. ‘네 얼굴이 정해진 곳은 어디든지 말입니다’는 한국어로 부자연스럽고 문장 끝의 ‘말입니다’가 명령문의 어조를 약화합니다.
+  terminology: 문맥상 칼을 의인화한 여성 단수 대상은 본절에서 보충하지 않는 것이 적절합니다. ‘앞’은 히브리어 פָּנַיִךְ의 방향적 용법에 맞으며, 각주에서 직역 ‘네 얼굴’을 밝혀야 합니다.
+  issues:
+  - severity: medium
+    issue: 독립 명령 הֵימִנִי를 ‘오른쪽으로 가며’로 번역함
+    rationale: 연결형 ‘가며’는 원문의 병렬된 명령형을 종속시키고, 뒤의 명령과의 관계를 추가합니다.
+  - severity: medium
+    issue: הָשִׂימִי הַשְׂמִילִי를 ‘왼쪽으로 돌리십시오’로 번역함
+    rationale: ‘돌리다’는 회전 동작과 목적어를 암시합니다. 원문은 자신을 왼쪽으로 두거나 왼쪽으로 향하라는 방향 명령으로 이해하는 것이 더 안전합니다.
+  - severity: high
+    issue: 마지막 절의 각주 b와 c가 ‘왼쪽으로 돌리십시오’에 붙어 있음
+    rationale: 두 각주는 각각 פָּנַיִךְ 및 마지막 방향절에 관한 것이므로 해당 어구에 정확히 붙어야 합니다.
+  - severity: medium
+    issue: ‘네 얼굴이 정해진 곳은 어디든지 말입니다’가 부자연스럽고 명령의 종결을 흐림
+    rationale: 한국어에서는 방향 의미의 ‘네 앞’과 ‘향하십시오’를 사용하면 수동적 ‘정해진’ 의미 및 명령문의 흐름을 자연스럽게 살릴 수 있습니다.
+  revised_text: 스스로를 한데 모으십시오[a]. 오른쪽으로 가십시오. 왼쪽으로 향하십시오. 네 앞[b]이 정해진 곳이면 어디든지 향하십시오[c].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘스스로 하나가 되십시오’, ‘스스로를 가다듬으십시오’, 문맥상 ‘힘을 한데 모으십시오’로도 옮길 수 있습니다. 희귀한 재귀형 동사로, 공격 직전의 집중·응집을 나타낼 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘네 얼굴’입니다. 히브리어에서는 자신이 향하는 방향, 곧 ‘네 앞’을 가리킬 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘네 앞이 향하도록 정해진 곳이면 어디든지’ 또는 ‘네 앞이 정해진 곳이면 어디든지’로 옮길 수 있습니다.
+    reason: alternative_reading
+  revision_rationale: 모든 명령을 독립된 합쇼체 명령문으로 유지하고, ‘왼쪽으로 돌리다’가 덧붙이는 회전 의미를 피했습니다. 마지막 절은 פָּנַיִךְ의 방향적 의미를 ‘네 앞’으로 자연스럽게 옮기고, מוּעָדוֹת의 수동적 의미는 ‘정해진’으로 보존했습니다. 각주 표지는 해당 히브리어 어구와 마지막 방향절에 각각 배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:40:53Z'
+  output_hash: 06dfae99bb0f4e4205539f607cb5675a2c0b3427f03980247cda3a3503c4d1dd
+  usage:
+    completion_tokens: 1269
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 308
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 7
+      engine_ttft_ms: 147
+      engine_ttlt_ms: 9625
+      pre_inference_ms: 115
+      service_tbt_ms: 7
+      service_ttft_ms: 400
+      service_ttlt_ms: 9873
+      total_duration_ms: 9770
+      user_visible_ttft_ms: 285
+    prompt_tokens: 2478
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3747
+  applied_revision: true
+  auto_apply_blocked_errors: []

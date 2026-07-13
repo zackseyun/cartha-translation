@@ -103,4 +103,62 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 아람어의 단·복수 전환(‘제게’/‘우리가’/‘우리에게’)은 초안에 대체로 보존되어 있습니다. 그러나 첫 문장 ‘주님의 감사합니다’는 원문에 없을 뿐 아니라 문법적으로도 성립하지 않아 삭제해야 합니다. מִלַּת מַלְכָּא는 왕이 제시한 ‘말/일/사안’을 뜻하므로, 한국어에서 ‘왕의 문제’가 ‘왕이 겪는 문제’로 읽힐 수 있는 점을 피하여 ‘왕의 일’로 옮겼습니다.
+  naturalness: 합쇼체 기도문으로 ‘하나님이시여’와 ‘감사하고 찬양합니다’를 사용하면 자연스럽습니다. 각주 표지는 해당 어구 바로 뒤에 배치하여 참조 대상이 분명하게 했습니다.
+  terminology: ‘내 조상들의 하나님’은 아람어의 ‘내 아버지들의 하나님’이라는 관용적 계보 표현을 현대 한국어로 자연스럽게 반영합니다. גְבוּרְתָא는 ‘능력’, מִלָּה는 문맥상 넓은 뜻의 ‘일’로 유지하여 과도한 해석을 피했습니다.
+  issues:
+  - severity: high
+    issue: 첫 문장 ‘주님의 감사합니다.’
+    rationale: 원문에 대응하는 내용이 아니며, 표준 한국어 문법상 부자연스럽고 불완전한 문장입니다.
+  - severity: medium
+    issue: ‘왕의 문제’의 의미상 모호성
+    rationale: 한국어에서는 왕 자신이 가진 문제로 이해될 수 있습니다. 원문의 넓은 ‘왕의 말/일/사안’의 뜻을 살리면서 이를 피할 필요가 있습니다.
+  - severity: low
+    issue: 각주 표지가 문장 끝에 일괄 배치됨
+    rationale: 각주 a, b, c가 각각 어느 표현을 설명하는지 즉시 알기 어렵습니다.
+  revised_text: 내 조상들의 하나님이시여[a], 제가 주님께 감사하고 찬양합니다. 주님께서 제게 지혜와 능력을 주셨고, 이제 우리가 주님께 구한 것을 제게 알려 주셨으며, 왕의 일을 우리에게 알려 주셨기 때문입니다.[c]
+  revised_footnotes:
+  - marker: a
+    text: ‘내 조상들의 하나님’은 아람어를 직역하면 ‘내 아버지들의 하나님’입니다. 여기서 ‘아버지들’은 앞선 세대, 곧 조상들을 가리키는 표현입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘구한’은 ‘요청한’ 또는 ‘찾아 구한’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: ‘왕의 일’은 ‘왕의 말’ 또는 ‘왕의 사안’으로도 옮길 수 있습니다. 아람어 표현은 왕이 제시한 일을 폭넓게 가리킵니다.
+    reason: lexical_alternative
+  revision_rationale: '문법적으로 잘못되고 원문에 없는 첫 문장을 삭제했습니다. 또한 ‘왕의 문제’를 의미가 더 자연스럽고 원문의 폭을 유지하는 ‘왕의 일’로 바꾸었습니다. 본문 중 ‘우리가 주님께 구한 것’ 뒤에는 b 각주를, ‘왕의 일’ 뒤에는 c 각주를 각각 붙여야 하나, 문장부호와 각주 표지의 가독성을 고려한 완성 문안은 다음과 같이 읽습니다: ‘내 조상들의 하나님이시여[a], 제가 주님께 감사하고 찬양합니다. 주님께서 제게 지혜와 능력을 주셨고, 이제 우리가 주님께 구한 것[b]을 제게 알려 주셨으며, 왕의 일[c]을 우리에게 알려 주셨기 때문입니다.’'
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:47:42Z'
+  output_hash: 8b10ec1fd2cfc1e833423a31587a3de3048181fe1e7b56f06587052320752093
+  usage:
+    completion_tokens: 1414
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 11314
+      pre_inference_ms: 122
+      service_tbt_ms: 8
+      service_ttft_ms: 590
+      service_ttlt_ms: 11769
+      total_duration_ms: 11657
+      user_visible_ttft_ms: 468
+    prompt_tokens: 3620
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5034
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

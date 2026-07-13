@@ -20,15 +20,15 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그리고 너의 먹을 것은 저울로 달아 하루에 스무 세겔씩이니, 때때로 그것을 먹어야 합니다.[a][b]
+  text: 네가 먹을 음식은 무게를 달아 하루에 스무 세겔씩으로 하여야 합니다.[a] 때때로 그것을 먹어야 합니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘때때로’는 히브리어 관용구 מֵעֵת עַד עֵת를 풀어 옮긴 것입니다.
-    reason: source_note
-  - marker: b
     text: 세겔은 여기서 화폐가 아니라 무게 단위입니다.
     reason: cultural_note
+  - marker: b
+    text: 히브리어 표현은 직역하면 ‘때에서 때까지’이며, ‘정해진 때에’로도 이해될 수 있습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: מַאֲכָלְךָ
   english_pob_choice: your food
@@ -74,4 +74,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 너의 먹을 것은 저울로 달아 하루에 스무 세겔씩이니, 때때로 그것을 먹어야 합니다.[a][b]
+  to: 네가 먹을 음식은 무게를 달아 하루에 스무 세겔씩으로 하여야 합니다.[a] 때때로 그것을 먹어야 합니다.[b]
+  rationale: 원문의 지시적 미완료형을 합쇼체의 ‘하여야 합니다/먹어야 합니다’로 일관되게 옮기고, 무게에 따른 일일 배급이라는 관계가 분명하도록 문장을 재구성했습니다. ‘세겔’은 본문에 유지했으며, 시간 표현의 해석상 범위는 해당 어구에 주석으로 달았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:40:05Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 대체로 원문의 하루 스무 세겔 배급과 반복된 ‘먹다’를 반영합니다. 그러나 ‘저울로 달아’는 도구를 불필요하게 특정하며, 원문의 ‘무게로/무게를 달아’보다 다소 좁습니다. 또한 첫 문장의 ‘…이니’는 서술 관계가 다소 불분명합니다.
+  naturalness: ‘너의 먹을 것’과 합쇼체 종결의 결합은 다소 부자연스럽고, 문장 구조도 매끄럽지 않습니다. ‘네가 먹을 음식’을 주제로 삼고 문장을 나누면 현대 표준어의 지시문으로 자연스럽습니다.
+  terminology: ‘세겔’은 적절히 보존되었고, 무게 단위라는 주석도 정확합니다. מֵעֵת עַד עֵת는 구체적 식사 시간을 확정하지 않는 ‘때때로’로 유지할 수 있습니다.
+  issues:
+  - severity: low
+    issue: ‘저울로’가 원문보다 구체적입니다.
+    rationale: בְּמִשְׁקוֹל은 무게에 따라 달아 정한다는 뜻이지 저울이라는 특정 도구를 명시하지는 않습니다.
+  - severity: medium
+    issue: 첫 문장의 한국어 통사와 지시 관계가 불명료합니다.
+    rationale: ‘너의 먹을 것은 저울로 달아 하루에 스무 세겔씩이니’는 음식의 양을 정하라는 지시를 자연스럽게 전달하지 못합니다.
+  - severity: low
+    issue: 시간 관용구 주석이 정보량이 부족합니다.
+    rationale: 원문의 직역적 형태와 가능한 ‘정해진 때에’의 의미 범위를 간단히 밝혀, ‘때때로’가 임의적이라는 오해를 줄이는 것이 좋습니다.
+  revised_text: 네가 먹을 음식은 무게를 달아 하루에 스무 세겔씩으로 하여야 합니다.[a] 때때로 그것을 먹어야 합니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: 세겔은 여기서 화폐가 아니라 무게 단위입니다.
+    reason: cultural_note
+  - marker: b
+    text: 히브리어 표현은 직역하면 ‘때에서 때까지’이며, ‘정해진 때에’로도 이해될 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 지시적 미완료형을 합쇼체의 ‘하여야 합니다/먹어야 합니다’로 일관되게 옮기고, 무게에 따른 일일 배급이라는 관계가 분명하도록 문장을 재구성했습니다. ‘세겔’은 본문에 유지했으며, 시간 표현의 해석상 범위는 해당 어구에 주석으로 달았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:40:05Z'
+  output_hash: 69b156867e5d453f0dccbbbd89d639ea4f92dc36191032ffa9f954bc1e6cb0b9
+  usage:
+    completion_tokens: 1178
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 132
+      engine_ttlt_ms: 9651
+      pre_inference_ms: 162
+      service_tbt_ms: 8
+      service_ttft_ms: 502
+      service_ttlt_ms: 10007
+      total_duration_ms: 9855
+      user_visible_ttft_ms: 340
+    prompt_tokens: 1930
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3108
+  applied_revision: true
+  auto_apply_blocked_errors: []

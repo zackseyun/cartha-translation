@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그의 종아리는 철로 되었고[a], 그의 발은 일부는 철이고 일부는 진흙이었습니다.
+  text: 그의 종아리는 철이었고, 그의 발은 일부는 철이고 일부는 점토였습니다[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 ‘점토’, ‘토기’로도 옮길 수 있습니다. 아람어 חֲסַף의 기본 의미는 흙질 재료입니다.
+    text: 또는 ‘토기’ 또는 ‘질그릇’. 아람어 חֲסַף는 점토성 재료나 토기를 가리킬 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: שָׁקוֹהִי
@@ -77,4 +77,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그의 종아리는 철로 되었고[a], 그의 발은 일부는 철이고 일부는 진흙이었습니다.
+  to: 그의 종아리는 철이었고, 그의 발은 일부는 철이고 일부는 점토였습니다[a].
+  rationale: 각주 표지를 해당 어휘인 ‘점토’에 배치하고, חֲסַף의 재료적 의미를 정확히 반영하도록 ‘진흙’을 ‘점토’로 고쳤습니다. 다리와 발의 구별 및 발의 부분적 혼합이라는 원문의 표현은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:47:36Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 아람어 שָׁקוֹהִי는 발(רַגְלֹוהִי)과 구별되는 다리의 아랫부분을 가리키므로 ‘종아리’는 가능한 번역입니다. 철과 חֲסַף로 된 발의 분배적 구성도 ‘일부는 … 일부는’이 충실히 반영합니다. 다만 חֲסַף는 여기서 젖은 흙을 뜻하는 ‘진흙’보다는 점토성 재료/토기를 가리키므로 ‘점토’가 더 정확합니다.
+  naturalness: ‘철로 되었고’보다 ‘철이었고’가 현대 한국어에서 재질을 서술하는 데 더 자연스럽습니다. 문장 전체는 합쇼체 서술로 자연스럽게 유지됩니다.
+  terminology: ‘점토’는 clay에 대한 정확하고 중립적인 한국어 대응어입니다. ‘토기’는 가능한 대안으로 각주에서 보존합니다. 기존 각주는 철 뒤에 붙어 있으나 내용은 חֲסַף(점토)에 관한 것이므로, 점토 뒤로 옮겨야 합니다.
+  issues:
+  - severity: medium
+    issue: 각주 표지가 ‘철’ 뒤에 붙어 있으나 각주 내용은 חֲסַף, 즉 점토/토기에 관한 설명입니다.
+    rationale: 각주 앵커와 설명 대상이 일치하지 않아 독자가 철의 어휘 대안을 설명하는 각주로 오해할 수 있습니다.
+  - severity: medium
+    issue: ‘진흙’은 חֲסַף의 재료적 의미를 지나치게 젖은 흙으로 좁힙니다.
+    rationale: 이 단어는 점토 또는 도기 재료를 가리킬 수 있으므로, ‘점토’가 본문의 재질 묘사와 영어 POB의 clay에 더 충실합니다.
+  - severity: low
+    issue: ‘철로 되었고’는 재질 서술로 다소 부자연스럽습니다.
+    rationale: ‘철이었고’가 간결하며 원문의 명사적 재질 서술을 더 자연스럽게 반영합니다.
+  revised_text: 그의 종아리는 철이었고, 그의 발은 일부는 철이고 일부는 점토였습니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘토기’ 또는 ‘질그릇’. 아람어 חֲסַף는 점토성 재료나 토기를 가리킬 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 각주 표지를 해당 어휘인 ‘점토’에 배치하고, חֲסַף의 재료적 의미를 정확히 반영하도록 ‘진흙’을 ‘점토’로 고쳤습니다. 다리와 발의 구별 및 발의 부분적 혼합이라는 원문의 표현은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:47:36Z'
+  output_hash: 6039161fbcb8ee535132fa38f5c2d08623190dcf9075db5a448fcbe704c49e25
+  usage:
+    completion_tokens: 969
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 292
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 136
+      engine_ttlt_ms: 7631
+      pre_inference_ms: 131
+      service_tbt_ms: 8
+      service_ttft_ms: 431
+      service_ttlt_ms: 7901
+      total_duration_ms: 7781
+      user_visible_ttft_ms: 300
+    prompt_tokens: 1896
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2865
+  applied_revision: true
+  auto_apply_blocked_errors: []

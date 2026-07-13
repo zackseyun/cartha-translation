@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 제가 제 사랑하는 이들을 불렀으나, 그들이 저를 속였습니다. 제 제사장들과 장로들은 성읍에서 기근으로 죽었는데, 그들이 자기들의 생명을 되찾을 양식을 찾고 있었기 때문입니다.[a][b]
+  text: 나는 나를 사랑하던 이들을 불렀으나[a], 그들은 나를 속였습니다. 내 제사장들과 장로들은 성읍에서, 자신들의 생명을 회복하려고 양식을 구하던 중 죽었습니다.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘제 사랑하는 이들’은 문자적으로는 ‘내 사랑하는 자들’이며, 이 애가에서 정치적 동맹이나 잘못 의지한 대상들을 가리키는 은유일 수 있습니다.
+    text: ‘나를 사랑하던 이들’은 문자적으로 ‘내 연인들’ 또는 ‘나를 사랑하는 자들’이라는 뜻입니다. 이 표현은 정치적 동맹이나 잘못 의지한 대상들을 가리키는 은유일 수 있습니다.
     reason: cultural_note
   - marker: b
-    text: ‘그들이 자기들의 생명을 되찾을 양식을 찾고 있었기 때문입니다’는 히브리어를 원인으로 읽은 표현입니다. 더 직접적으로는 ‘그들이 자기들의 생명을 되살릴 양식을 찾고 있었으므로’로도 옮길 수 있습니다.
+    text: 히브리어의 접속사(키)는 여기서 상황을 나타낼 수도 있고 원인이나 설명을 나타낼 수도 있습니다. 따라서 ‘자신들의 생명을 회복하려고 양식을 구했기 때문에 죽었습니다’로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: לַמְאַהֲבַי
@@ -91,4 +91,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 제가 제 사랑하는 이들을 불렀으나, 그들이 저를 속였습니다. 제 제사장들과 장로들은 성읍에서 기근으로 죽었는데, 그들이 자기들의 생명을 되찾을 양식을 찾고 있었기 때문입니다.[a][b]
+  to: 나는 나를 사랑하던 이들을 불렀으나[a], 그들은 나를 속였습니다. 내 제사장들과 장로들은 성읍에서, 자신들의 생명을 회복하려고 양식을 구하던 중 죽었습니다.[b]
+  rationale: 원문에 없는 ‘기근으로’를 제거하고, ‘사랑하는 이들’의 관계 방향을 원문대로 바로잡았습니다. 양식을 구한 행동과 죽음의 관계는 본문에서 시간·상황적으로 표현하여 כִּי의 해석상 여지를 보존했으며, 인과적 독법은 각주로 제시했습니다. 각주 표지도 각각 해당 표현과 문장에 직접 붙였습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:36:54Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ‘기근으로’는 히브리어 본문에 명시되어 있지 않아 삭제해야 합니다. 또한 לַמְאַהֲבַי는 ‘내가 사랑하는 이들’이 아니라 문자적으로 ‘나를 사랑하는 이들/내 연인들’이라는 방향의 표현입니다. 제사장들과 장로들이 양식을 구하여 생명을 회복하려 했다는 상황은 본문에 충실히 유지하되, כִּי의 인과·설명·상황적 기능은 본문에서 과도하게 단정하지 않는 편이 좋습니다.
+  naturalness: ‘나를 사랑하던 이들’은 현대 표준 한국어에서 자연스럽고, 원문의 은유를 유지합니다. ‘자신들의 생명을 회복하려고 양식을 구하던 중 죽었습니다’는 굶주림 상황을 명시적이지 않은 ‘기근’으로 보충하지 않으면서도 자연스럽습니다.
+  terminology: ‘제사장들’, ‘장로들’, ‘성읍’, ‘생명’은 적절합니다. ‘장로들’은 단순한 고령자가 아니라 공동체의 원로·지도자라는 זקנים의 문맥상 의미를 잘 전달합니다.
+  issues:
+  - severity: high
+    issue: ‘성읍에서 기근으로 죽었는데’의 ‘기근으로’
+    rationale: גָּוָעוּ בָּעִיר는 ‘성읍에서 죽었다’이며, 본문은 양식을 찾았다는 사실을 말하지만 사망 원인을 ‘기근’이라고 명시하지 않습니다.
+  - severity: medium
+    issue: ‘제 사랑하는 이들’ 및 각주에 제시된 문자적 설명
+    rationale: לַמְאַהֲבַי의 소유 접미사는 화자를 사랑하는 자들(‘my lovers’)을 가리킵니다. 현 번역은 한국어상 화자가 그들을 사랑한다는 방향으로 더 쉽게 읽히며, 각주의 ‘문자적으로는 내 사랑하는 자들’도 관계 방향을 충분히 반영하지 못합니다.
+  - severity: medium
+    issue: 본문을 원인절로 단정한 표현
+    rationale: כִּי는 인과적·설명적·상황적 용법으로 읽힐 수 있습니다. 본문은 ‘구하던 중’으로 상황을 제시하고, 각주에서 인과적 독법을 밝혀 의미 범위를 보존하는 것이 안전합니다.
+  revised_text: 나는 나를 사랑하던 이들을 불렀으나[a], 그들은 나를 속였습니다. 내 제사장들과 장로들은 성읍에서, 자신들의 생명을 회복하려고 양식을 구하던 중 죽었습니다.[b]
+  revised_footnotes:
+  - marker: a
+    text: ‘나를 사랑하던 이들’은 문자적으로 ‘내 연인들’ 또는 ‘나를 사랑하는 자들’이라는 뜻입니다. 이 표현은 정치적 동맹이나 잘못 의지한 대상들을 가리키는 은유일 수 있습니다.
+    reason: cultural_note
+  - marker: b
+    text: 히브리어의 접속사(키)는 여기서 상황을 나타낼 수도 있고 원인이나 설명을 나타낼 수도 있습니다. 따라서 ‘자신들의 생명을 회복하려고 양식을 구했기 때문에 죽었습니다’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문에 없는 ‘기근으로’를 제거하고, ‘사랑하는 이들’의 관계 방향을 원문대로 바로잡았습니다. 양식을 구한 행동과 죽음의 관계는 본문에서 시간·상황적으로 표현하여 כִּי의 해석상 여지를 보존했으며, 인과적 독법은 각주로 제시했습니다. 각주 표지도 각각 해당 표현과 문장에 직접 붙였습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:36:54Z'
+  output_hash: 60ec53241477c32740b259422dd51dbd57bb7a8ac5ed781de1f46396e6190606
+  usage:
+    completion_tokens: 1398
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 211
+      engine_ttlt_ms: 12218
+      pre_inference_ms: 99
+      service_tbt_ms: 8
+      service_ttft_ms: 530
+      service_ttlt_ms: 12379
+      total_duration_ms: 12291
+      user_visible_ttft_ms: 430
+    prompt_tokens: 2912
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4310
+  applied_revision: true
+  auto_apply_blocked_errors: []

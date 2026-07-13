@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 왕국의 모든 고위 관리들[a], 곧 총독들과 사트라프들과 고문들과 지방 관원들이 모여, 왕의 조서를 세우고 금령을 확정하기로 합의했습니다. 그것은 누구든지 삼십 일 동안 왕이신 당신[b][c]을 제외하고 어떤 신이나 사람에게든 청원하면, 사자 굴에 던져 넣는다는 것입니다.
+  text: 왕국의 모든 고위 관리들[a], 곧 총독들과 사트라프들과 고문들과 지방 관원들이 함께 합의하여[b] 왕의 조서[c]를 세우고 금령을 확정하기로 했습니다. 곧 누구든지 삼십 일 동안 왕이신 당신께 청원하는 경우 외에 어떤 신이나 사람에게 청원하면, 사자 굴에 던져 넣도록 한다는 것입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 아람어는 직역하면 ‘왕국의 모든 고위 관리들’보다 넓게 ‘왕국의 모든 고관들’에 가깝습니다.
+    text: 또는 ‘왕국의 모든 고관들’.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘당신에게’가 되지만, 청원 동사와 함께 한국어에서는 ‘왕이신 당신’이 더 자연스럽습니다.
+    text: 또는 ‘함께 의논하여’. 이 동사는 함께 숙의하는 것과 합의에 이르는 것을 모두 나타낼 수 있습니다.
     reason: lexical_alternative
   - marker: c
-    text: 또는 ‘왕에게 올린 조서’의 뜻으로 읽을 수 있습니다. 아람어의 법률 용어는 조서, 칙령, 법령의 의미 영역이 겹칩니다.
+    text: 또는 ‘왕의 법령’. 여기의 아람어 법률 용어들은 조서, 칙령, 법령, 구속력 있는 금령이라는 의미 영역에서 서로 겹칩니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אִתְיָעַטוּ
@@ -104,4 +104,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 왕국의 모든 고위 관리들[a], 곧 총독들과 사트라프들과 고문들과 지방 관원들이 모여, 왕의 조서를 세우고 금령을 확정하기로 합의했습니다. 그것은 누구든지 삼십 일 동안 왕이신 당신[b][c]을 제외하고 어떤 신이나 사람에게든 청원하면, 사자 굴에 던져 넣는다는 것입니다.
+  to: 왕국의 모든 고위 관리들[a], 곧 총독들과 사트라프들과 고문들과 지방 관원들이 함께 합의하여[b] 왕의 조서[c]를 세우고 금령을 확정하기로 했습니다. 곧 누구든지 삼십 일 동안 왕이신 당신께 청원하는 경우 외에 어떤 신이나 사람에게 청원하면, 사자 굴에 던져 넣도록 한다는 것입니다.
+  rationale: 왕에게만 청원할 수 있다는 예외를 명시적으로 재구성하여 원문의 통사와 의미를 보존했습니다. 법률 용어 주석은 ‘왕의 조서’에 붙이도록 옮겼고, 처벌은 법령이 정하는 결과임이 드러나게 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:47:47Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 법률 조항의 예외가 ‘왕을 제외하고’로 번역되어 원문의 뜻과 반대로 읽힐 수 있습니다. 원문 לָהֵן מִנָּךְ는 왕에게 하는 청원만을 예외로 허용한다는 뜻입니다. 또한 처벌 조항은 법령의 규정으로 자연스럽게 표현하는 편이 적절합니다.
+  naturalness: ‘왕이신 당신을 제외하고’는 한국어에서 왕에게 청원하는 행위 자체를 배제하는 뜻으로 이해되기 쉽습니다. ‘왕이신 당신께 청원하는 경우 외에’로 고치면 의미와 문장이 모두 명료합니다. ‘사자 굴에 던져 넣도록 한다’는 법적 제재 조항에 자연스럽습니다.
+  terminology: ‘고위 관리들’, ‘총독들’, ‘사트라프들’, ‘고문들’, ‘지방 관원들’은 원문의 행정 직함 목록을 무리 없이 반영합니다. 조서/법령 및 금령의 의미 영역에 관한 주석은 해당 법률 용어에 연결해야 합니다.
+  issues:
+  - severity: high
+    issue: 예외 조항이 반대 의미로 읽힐 수 있음
+    rationale: ‘왕이신 당신을 제외하고 어떤 신이나 사람에게든 청원하면’은 왕을 청원 대상에서 제외하는 문법 구조입니다. 원문은 왕에게 하는 청원만 허용하고 다른 신이나 사람에게 하는 청원을 금합니다.
+  - severity: medium
+    issue: 각주 c의 앵커가 법률 용어가 아닌 왕의 호칭에 붙어 있음
+    rationale: 각주 c는 조서·칙령·법령의 의미 영역을 설명하지만 현행 본문에서는 ‘당신’에 붙어 있어 참조 대상이 불명확합니다.
+  - severity: low
+    issue: 처벌 조항의 서술 방식이 다소 어색함
+    rationale: ‘던져 넣는다는 것입니다’보다 ‘던져 넣도록 한다는 것입니다’가 금령이 정한 법적 결과를 더 분명하고 자연스럽게 나타냅니다.
+  revised_text: 왕국의 모든 고위 관리들[a], 곧 총독들과 사트라프들과 고문들과 지방 관원들이 함께 합의하여[b] 왕의 조서[c]를 세우고 금령을 확정하기로 했습니다. 곧 누구든지 삼십 일 동안 왕이신 당신께 청원하는 경우 외에 어떤 신이나 사람에게 청원하면, 사자 굴에 던져 넣도록 한다는 것입니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘왕국의 모든 고관들’.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘함께 의논하여’. 이 동사는 함께 숙의하는 것과 합의에 이르는 것을 모두 나타낼 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘왕의 법령’. 여기의 아람어 법률 용어들은 조서, 칙령, 법령, 구속력 있는 금령이라는 의미 영역에서 서로 겹칩니다.
+    reason: lexical_alternative
+  revision_rationale: 왕에게만 청원할 수 있다는 예외를 명시적으로 재구성하여 원문의 통사와 의미를 보존했습니다. 법률 용어 주석은 ‘왕의 조서’에 붙이도록 옮겼고, 처벌은 법령이 정하는 결과임이 드러나게 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:47:47Z'
+  output_hash: 022046490b01183f6fd1b43931a78a55d39aba5839c9762713dd33c516ee84fc
+  usage:
+    completion_tokens: 1329
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 133
+      engine_ttlt_ms: 11076
+      pre_inference_ms: 116
+      service_tbt_ms: 8
+      service_ttft_ms: 596
+      service_ttlt_ms: 11534
+      total_duration_ms: 11427
+      user_visible_ttft_ms: 480
+    prompt_tokens: 3223
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4552
+  applied_revision: true
+  auto_apply_blocked_errors: []

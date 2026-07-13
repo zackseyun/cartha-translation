@@ -20,7 +20,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그때 왕은 새벽에, 첫빛이 비치자마자 서둘러 사자들의 굴로 갔습니다.[a][b]
+  text: 그때 왕은 새벽에, 날이 밝자마자[a] 일어나 서둘러[b] 사자들의 굴로 갔습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -82,4 +82,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그때 왕은 새벽에, 첫빛이 비치자마자 서둘러 사자들의 굴로 갔습니다.[a][b]
+  to: 그때 왕은 새벽에, 날이 밝자마자[a] 일어나 서둘러[b] 사자들의 굴로 갔습니다.
+  rationale: 원문에 있는 ‘일어나다’와 ‘가다’의 두 동사를 모두 번역했습니다. 또한 새벽을 나타내는 두 근접 표현은 ‘새벽에, 날이 밝자마자’로 분리하여 유지했고, 긴급함의 어휘 각주는 ‘서둘러’ 바로 뒤에 배치했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T17:47:49Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문에는 왕이 새벽/날이 밝을 무렵에 ‘일어났다’(יְקוּם)는 동작과, 이어서 다급히 사자들의 굴로 ‘갔다’(אֲזַל)는 동작이 모두 있습니다. 초안은 ‘일어났다’를 누락하여 두 동작의 구성을 충분히 반영하지 못합니다. 수정안은 두 동작 및 겹쳐진 새벽 표현을 보존합니다.
+  naturalness: ‘새벽에, 날이 밝자마자 일어나’는 의도적인 시간 표현의 중첩을 유지하면서도 현대 표준 한국어 합쇼체 서술로 자연스럽습니다. ‘사자들의 굴’도 문맥에 맞는 자연한 표현입니다.
+  terminology: ‘왕’, ‘사자들의 굴’은 문맥상 정관성과 전통적으로 확립된 장소 표현을 적절히 반영합니다. ‘서둘러’는 הִתְבְּהָלָה의 긴급한 행동을 옮기며, 불안·당황의 가능한 뉘앙스는 각주에서 제한적으로 제시합니다.
+  issues:
+  - severity: high
+    issue: יְקוּם(‘일어났다/일어나다’)의 번역 누락
+    rationale: 초안은 왕이 곧바로 사자들의 굴로 갔다는 행동만 서술하고, 원문이 명시하는 ‘일어남’의 동작을 번역하지 않았습니다. 이는 원문의 사건 전개와 반복된 새벽 시간 표현의 직접 수식을 약화합니다.
+  revised_text: 그때 왕은 새벽에, 날이 밝자마자[a] 일어나 서둘러[b] 사자들의 굴로 갔습니다.
+  revised_footnotes:
+  - marker: a
+    text: 원문은 새벽을 가리키는 서로 가까운 두 표현을 연속해 사용하여 강조합니다.
+    reason: source_note
+  - marker: b
+    text: ‘서둘러’는 ‘불안한 마음으로’, ‘긴급하게’라는 뉘앙스를 함께 가질 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문에 있는 ‘일어나다’와 ‘가다’의 두 동사를 모두 번역했습니다. 또한 새벽을 나타내는 두 근접 표현은 ‘새벽에, 날이 밝자마자’로 분리하여 유지했고, 긴급함의 어휘 각주는 ‘서둘러’ 바로 뒤에 배치했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T17:47:49Z'
+  output_hash: 34fa50265d69102fbddbf45e90c571d88c90904ed265ed9ee3e548b3dddd7c8b
+  usage:
+    completion_tokens: 1359
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 759
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 11371
+      pre_inference_ms: 163
+      service_tbt_ms: 8
+      service_ttft_ms: 680
+      service_ttlt_ms: 11874
+      total_duration_ms: 11721
+      user_visible_ttft_ms: 517
+    prompt_tokens: 2247
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3606
+  applied_revision: true
+  auto_apply_blocked_errors: []
