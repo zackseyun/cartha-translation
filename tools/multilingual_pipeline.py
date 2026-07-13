@@ -104,6 +104,10 @@ def azure_key() -> str:
     key = str(payload.get("key1") or payload.get("key2") or "").strip()
     if not key:
         raise RuntimeError("Azure OpenAI key unavailable from the logged-in Azure CLI")
+    # The wave preflight calls this once before workers start. Cache the result
+    # in-process so high-concurrency waves do not launch one Azure CLI process
+    # per record and exhaust the local CLI/session boundary.
+    os.environ["AZURE_OPENAI_API_KEY"] = key
     return key
 
 

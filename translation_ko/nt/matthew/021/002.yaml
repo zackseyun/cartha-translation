@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그들에게 말씀하시기를 “너희 맞은편 마을로 가라. 그러면 곧 매여 있는 암나귀 한 마리와 그 곁에 있는 어린 나귀 한 마리를 찾을 것이다. 그것들을 풀어 내게 끌고 오너라.” 하셨습니다.[a][b][c]
+  text: 그들에게 말씀하셨습니다. “너희 맞은편에 있는 마을로 가십시오.[a] 그러면 곧 매여 있는 암나귀 한 마리와 그와 함께 있는 어린 나귀 한 마리를 찾게 될 것입니다.[b] 그것들을 풀어 내게 끌고 오십시오.”[c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “너희 건너편”으로도 옮길 수 있습니다.
-    reason: alternative_reading
+    text: 또는 “너희 건너편에 있는 마을”로 옮길 수 있습니다.
+    reason: lexical_alternative
   - marker: b
-    text: ‘어린 나귀’는 문맥상 어린 나귀를 뜻합니다.
+    text: ‘어린 나귀’로 옮긴 말은 본래 어린 짐승을 가리키며, 여기서는 함께 언급된 암나귀로 보아 어린 나귀를 뜻합니다.
     reason: lexical_alternative
   - marker: c
-    text: 헬라어는 분사 형태로 “풀고”에 해당하는 표현 뒤에 “끌고 오라”가 이어집니다.
+    text: 그리스어는 문자적으로 “풀고”에 해당하는 분사 뒤에 “내게 끌고 오십시오”라는 명령이 이어집니다. 한국어에서는 이를 자연스럽게 두 동작의 명령으로 옮겼습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: λέγων αὐτοῖς
@@ -89,4 +89,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들에게 말씀하시기를 “너희 맞은편 마을로 가라. 그러면 곧 매여 있는 암나귀 한 마리와 그 곁에 있는 어린 나귀 한 마리를 찾을 것이다. 그것들을 풀어 내게 끌고 오너라.” 하셨습니다.[a][b][c]
+  to: 그들에게 말씀하셨습니다. “너희 맞은편에 있는 마을로 가십시오.[a] 그러면 곧 매여 있는 암나귀 한 마리와 그와 함께 있는 어린 나귀 한 마리를 찾게 될 것입니다.[b] 그것들을 풀어 내게 끌고 오십시오.”[c]
+  rationale: 현대 공식-공손 합쇼체를 유지하도록 직접 명령을 수정하고, 마을의 위치와 두 나귀의 동반 관계를 더 명확히 했습니다. 또한 각주를 해당 어구에 연결하고, πῶλος 및 λύσαντες의 번역 근거가 실제로 설명되도록 고쳤습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T06:25:42Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 암나귀가 매여 있고 어린 나귀가 그와 함께 있다는 핵심 의미와, 풀어서 예수께 가져오라는 명령은 대체로 충실합니다. 다만 μετ’ αὐτῆς는 단순히 ‘그 곁에 있는’보다 ‘그와 함께 있는’이 더 직접적이며, 직접 인용문의 종결을 표준 현대 합쇼체로 통일하는 편이 적절합니다.
+  naturalness: ‘너희 맞은편 마을’도 이해되지만 ‘너희 맞은편에 있는 마을’이 현대 한국어에서 더 자연스럽고 위치 관계가 분명합니다. 서술문과 직접 명령문을 각각 ‘말씀하셨습니다’와 ‘가십시오/오십시오’로 처리하면 지정된 현대 격식체가 일관됩니다.
+  terminology: ‘암나귀’는 여성 단수 분사 δεδεμένην 및 αὐτῆς와 잘 맞고, πῶλον을 ‘어린 나귀’로 명시한 것도 이 문맥에서 적절합니다. ‘끌고 오십시오’는 ἀγάγετε의 동물 이동 명령을 자연스럽게 전달합니다.
+  issues:
+  - severity: medium
+    issue: 직접 명령문이 합쇼체가 아닙니다.
+    rationale: 초안의 ‘가라’, ‘오너라’는 해라체/명령형입니다. 대상 변형이 현대 공식-공손 합쇼체이므로 직접 인용문도 ‘가십시오’, ‘오십시오’로 통일해야 합니다.
+  - severity: low
+    issue: μετ’ αὐτῆς의 관계가 다소 약화되었습니다.
+    rationale: ‘그 곁에 있는’은 가까운 위치를 나타낼 수 있으나, μετὰ는 ‘함께’의 관계를 직접 나타냅니다. ‘그와 함께 있는’이 원문에 더 가깝습니다.
+  - severity: low
+    issue: 각주 표지가 해당 표현에 붙어 있지 않고, 각주 b의 설명이 동어반복적입니다.
+    rationale: 각주 a·b·c는 각각 위치 표현, 어린 나귀, 분사+명령 구조 바로 뒤에 배치해야 독자가 참조 대상을 알 수 있습니다. b는 πῶλος의 일반 의미와 문맥상 지시를 밝혀야 유익합니다.
+  revised_text: 그들에게 말씀하셨습니다. “너희 맞은편에 있는 마을로 가십시오.[a] 그러면 곧 매여 있는 암나귀 한 마리와 그와 함께 있는 어린 나귀 한 마리를 찾게 될 것입니다.[b] 그것들을 풀어 내게 끌고 오십시오.”[c]
+  revised_footnotes:
+  - marker: a
+    text: 또는 “너희 건너편에 있는 마을”로 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘어린 나귀’로 옮긴 말은 본래 어린 짐승을 가리키며, 여기서는 함께 언급된 암나귀로 보아 어린 나귀를 뜻합니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 그리스어는 문자적으로 “풀고”에 해당하는 분사 뒤에 “내게 끌고 오십시오”라는 명령이 이어집니다. 한국어에서는 이를 자연스럽게 두 동작의 명령으로 옮겼습니다.
+    reason: lexical_alternative
+  revision_rationale: 현대 공식-공손 합쇼체를 유지하도록 직접 명령을 수정하고, 마을의 위치와 두 나귀의 동반 관계를 더 명확히 했습니다. 또한 각주를 해당 어구에 연결하고, πῶλος 및 λύσαντες의 번역 근거가 실제로 설명되도록 고쳤습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:25:42Z'
+  output_hash: e4a9b34f57213f132e83ea60e7ca2f8febee44d24ea5f44a26f84f88fb4ca207
+  usage:
+    completion_tokens: 1199
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 334
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 126
+      engine_ttlt_ms: 10789
+      pre_inference_ms: 189
+      service_tbt_ms: 9
+      service_ttft_ms: 452
+      service_ttlt_ms: 11075
+      total_duration_ms: 10890
+      user_visible_ttft_ms: 263
+    prompt_tokens: 2624
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3823
+  applied_revision: true
+  auto_apply_blocked_errors: []

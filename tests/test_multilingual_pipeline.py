@@ -63,6 +63,22 @@ def test_bounded_wave_command_is_available() -> None:
     assert parsed.pending_only is True
 
 
+def test_azure_key_is_cached_before_parallel_workers(monkeypatch) -> None:
+    module = load_module("multilingual_pipeline_key_cache", "tools/multilingual_pipeline.py")
+    monkeypatch.delenv("AZURE_OPENAI_API_KEY", raising=False)
+    calls = 0
+
+    def fake_check_output(*args, **kwargs):
+        nonlocal calls
+        calls += 1
+        return '{"key1": "test-key"}'
+
+    monkeypatch.setattr(module.subprocess, "check_output", fake_check_output)
+    assert module.azure_key() == "test-key"
+    assert module.azure_key() == "test-key"
+    assert calls == 1
+
+
 def test_multilingual_wave_uses_the_spob_publication_record_set() -> None:
     module = load_module("multilingual_pipeline_sources", "tools/multilingual_pipeline.py")
     relatives = module.source_relatives()

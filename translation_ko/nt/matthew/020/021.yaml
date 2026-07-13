@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 그녀에게 말했습니다. “무엇을 원하십니까?” 그녀가 그에게 말했습니다. “이 두 아들인 제 아들들이 하나는 당신의 오른쪽에, 하나는 당신의 왼쪽에 앉게 명령해 주십시오. 당신의 나라에서 말입니다.”[a][b][c]
+  text: 그가 그녀에게 말씀하셨습니다. “무엇을 원하십니까?” 그녀가 그에게 말했습니다. “제 이 두 아들이 당신의 나라에서 하나는 당신의 오른쪽에, 하나는 당신의 왼쪽에 앉게 말씀해 주십시오.”[a][b][c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “당신의 오른쪽에 하나, 당신의 왼쪽에 하나”로도 옮길 수 있습니다.
-    reason: alternative_reading
+    text: “하나는 당신의 오른쪽에, 하나는 당신의 왼쪽에”로도 옮길 수 있습니다.
+    reason: lexical_alternative
   - marker: b
-    text: Εἰπὲ는 문자적으로는 “말하다”이지만, 여기서는 요청의 힘을 살려 “명령하다”로 옮길 수 있습니다.
+    text: Εἰπὲ는 문자적으로 “말하다”입니다. 이 문맥에서는 요청한 일을 선언하거나 정하도록 말해 달라는 뜻을 나타냅니다.
     reason: lexical_alternative
   - marker: c
-    text: βασιλεία는 “나라” 외에도 “통치” 또는 “왕권”으로 이해될 수 있습니다.
+    text: βασιλεία는 “나라” 외에도 “통치” 또는 “왕권”을 뜻할 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: Τί θέλεις
@@ -89,4 +89,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 그녀에게 말했습니다. “무엇을 원하십니까?” 그녀가 그에게 말했습니다. “이 두 아들인 제 아들들이 하나는 당신의 오른쪽에, 하나는 당신의 왼쪽에 앉게 명령해 주십시오. 당신의 나라에서 말입니다.”[a][b][c]
+  to: 그가 그녀에게 말씀하셨습니다. “무엇을 원하십니까?” 그녀가 그에게 말했습니다. “제 이 두 아들이 당신의 나라에서 하나는 당신의 오른쪽에, 하나는 당신의 왼쪽에 앉게 말씀해 주십시오.”[a][b][c]
+  rationale: 원문의 직접적 표현인 Εἰπὲ를 ‘말씀해 주십시오’로 보존하고, 중복된 ‘아들’ 표현을 현대 한국어 문법에 맞게 바로잡았습니다. ‘당신의 나라에서’를 좌석 절 안으로 옮겨 수식 관계를 명확히 했습니다. 왕국의 성격이나 요청된 지위의 종말론적 시점은 본문보다 더 특정하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T06:25:41Z'
+review_pass:
+  verdict: revise
+  source_fidelity: Εἰπὲ는 기본적으로 ‘말하다’이며, 문맥상 요청된 조처를 선언하라는 뜻을 함축할 수는 있지만 ‘명령하다’로 확정하면 그 함축을 본문 표현 자체로 격상합니다. 또한 οὗτοι οἱ δύο υἱοί μου는 ‘이 두 아들인 제 아들들’이 아니라 ‘제 이 두 아들’처럼 자연스럽게 옮겨야 합니다.
+  naturalness: 초안의 ‘이 두 아들인 제 아들들이’는 중복되고 비문에 가깝고, ‘당신의 나라에서 말입니다’는 문장 끝에 분리되어 어색합니다. 왕국의 범위를 좌석 요청 앞에 놓으면 현대 표준 한국어 합쇼체로 자연스럽습니다.
+  terminology: ‘당신의 나라’는 βασιλεία의 왕적 의미와 해석상의 개방성을 보존합니다. 예수께 드리는 요청에는 ‘말씀해 주십시오’를 사용하여 현대 한국어의 존중 표현을 유지했습니다.
+  issues:
+  - severity: medium
+    issue: Εἰπὲ를 ‘명령해 주십시오’로 번역함
+    rationale: 이 동사는 문자적으로 ‘말하다’입니다. 이 요청의 결과적 함의 때문에 ‘명하다’로 이해할 여지는 있으나, 본문은 단지 말하라고 하므로 ‘말씀해 주십시오’가 원문의 표현을 더 충실히 보존합니다.
+  - severity: high
+    issue: ‘이 두 아들인 제 아들들이’라는 표현
+    rationale: οὗτοι, δύο, υἱοί, μου의 강조를 살리려 했지만 한국어에서는 소유와 명사가 부자연스럽게 중복됩니다. ‘제 이 두 아들’이 의미와 강조를 보존하면서 문법적으로 자연스럽습니다.
+  - severity: low
+    issue: ‘당신의 나라에서 말입니다’의 분리된 배치
+    rationale: ἐν τῇ βασιλείᾳ σου는 앉는 행위를 수식하므로 해당 절 안에 배치하는 편이 자연스럽고 명확합니다.
+  revised_text: 그가 그녀에게 말씀하셨습니다. “무엇을 원하십니까?” 그녀가 그에게 말했습니다. “제 이 두 아들이 당신의 나라에서 하나는 당신의 오른쪽에, 하나는 당신의 왼쪽에 앉게 말씀해 주십시오.”[a][b][c]
+  revised_footnotes:
+  - marker: a
+    text: “하나는 당신의 오른쪽에, 하나는 당신의 왼쪽에”로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: Εἰπὲ는 문자적으로 “말하다”입니다. 이 문맥에서는 요청한 일을 선언하거나 정하도록 말해 달라는 뜻을 나타냅니다.
+    reason: lexical_alternative
+  - marker: c
+    text: βασιλεία는 “나라” 외에도 “통치” 또는 “왕권”을 뜻할 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 직접적 표현인 Εἰπὲ를 ‘말씀해 주십시오’로 보존하고, 중복된 ‘아들’ 표현을 현대 한국어 문법에 맞게 바로잡았습니다. ‘당신의 나라에서’를 좌석 절 안으로 옮겨 수식 관계를 명확히 했습니다. 왕국의 성격이나 요청된 지위의 종말론적 시점은 본문보다 더 특정하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:25:41Z'
+  output_hash: 973ff4b62d055e5999ae30302bfac411ad2cf1e439d8b1f6773e1cd1c1dfd30f
+  usage:
+    completion_tokens: 1332
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 155
+      engine_ttlt_ms: 11772
+      pre_inference_ms: 88
+      service_tbt_ms: 9
+      service_ttft_ms: 333
+      service_ttlt_ms: 11940
+      total_duration_ms: 11863
+      user_visible_ttft_ms: 245
+    prompt_tokens: 2628
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3960
+  applied_revision: true
+  auto_apply_blocked_errors: []
