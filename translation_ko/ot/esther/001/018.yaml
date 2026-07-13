@@ -23,14 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 오늘 페르시아와 메대의 귀부인들<a>은 왕비의 말을 들었으므로, 왕의 모든 대신에게 그렇게 말할 것이며, 멸시와 격분이 충분할 것입니다.<b>[a][b]
+  text: 왕비의 일을 들은 페르시아와 메대의 귀부인들[a]은 오늘 왕의 모든 대신에게 그 일을 말할 것이며, 멸시와 분노가 크게 일어날 것입니다.[b][c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 히브리어는 높은 지위의 여성들을 가리키며, 반드시 왕의 딸들을 뜻하는 것은 아닙니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어는 마지막 절에서 서술어를 생략한 채 ‘그리고 충분한 멸시와 격분’에 가깝게 말합니다.
+    text: ‘왕비의 일’은 ‘왕비의 말’ 또는 왕비에 관한 사건·소식을 뜻할 수도 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 히브리어 마지막 절은 서술어를 생략하고 직역하면 ‘그리고 충분한 멸시와 분노’와 같습니다. 한국어 문장을 위해 ‘크게 일어날 것입니다’를 보충했습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: שָׂרוֹת פָּרַס וּמָדַי
@@ -97,4 +100,70 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리고 오늘 페르시아와 메대의 귀부인들<a>은 왕비의 말을 들었으므로, 왕의 모든 대신에게 그렇게 말할 것이며, 멸시와 격분이 충분할 것입니다.<b>[a][b]
+  to: 왕비의 일을 들은 페르시아와 메대의 귀부인들[a]은 오늘 왕의 모든 대신에게 그 일을 말할 것이며, 멸시와 분노가 크게 일어날 것입니다.[b][c]
+  rationale: 원문에 없는 인과관계를 제거하고, ‘왕비의 말/일’에 있는 어휘적 모호성을 보존했습니다. 마지막 절은 히브리어의 생략을 과도하게 해석하지 않으면서 한국어 문장으로 완결했습니다. 중복된 각주 표지를 제거하고 각주 세 개를 해당 어구에 각각 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:40:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 원문의 관계절 אֲשֶׁר שָׁמְעוּ는 귀부인들이 ‘왕비의 일/말을 들은’ 사람들임을 수식할 뿐, ‘들었으므로’라는 인과관계를 명시하지 않습니다. 또한 דְּבַר הַמַּלְכָּה는 왕비의 발언뿐 아니라 왕비와 관련된 사건·소문을 가리킬 수 있으므로 ‘왕비의 일’로 옮기고 각주로 범위를 밝혔습니다. 마지막 생략절은 한국어에서 결과를 나타내도록 최소한으로 보완했습니다.
+  naturalness: ‘왕비의 일을 들은 … 귀부인들은 오늘 … 그 일을 말할 것이며’는 시간 부사와 관계절의 범위를 자연스럽게 드러냅니다. ‘멸시와 분노가 크게 일어날 것입니다’는 원문의 ‘충분한/많은 멸시와 분노’라는 결과를 현대 표준어 합쇼체로 자연스럽게 표현합니다.
+  terminology: שָׂרוֹת는 ‘귀부인들’로 유지하여 고위 여성이라는 뜻을 살리고 왕녀라는 뜻을 강요하지 않았습니다. קָצֶף는 ‘격분’보다 지속적·집단적 반응도 나타낼 수 있는 ‘분노’가 더 알맞습니다. שָׂרֵי הַמֶּלֶךְ의 ‘대신’은 문맥상 유지 가능합니다.
+  issues:
+  - severity: medium
+    issue: ‘들었으므로’가 원문에 없는 인과관계를 추가합니다.
+    rationale: 히브리어 אֲשֶׁר שָׁמְעוּ는 ‘왕비의 일을 들은’이라는 관계절이며, 그들이 말하게 되는 이유를 문법적으로 ‘때문에’라고 표지하지 않습니다.
+  - severity: medium
+    issue: ‘왕비의 말’은 דָּבָר의 문맥상 폭넓은 뜻을 다소 좁힙니다.
+    rationale: 이 말은 왕비의 발언일 수도 있고 왕비에 관한 사건·소식일 수도 있습니다. 본문에서는 ‘왕비의 일’로 두고 각주에서 대안을 제시하는 편이 모호성을 보존합니다.
+  - severity: low
+    issue: 본문에 각주 표지가 중복되어 있습니다.
+    rationale: ‘<a><b>[a][b]’는 동일 각주를 두 방식으로 반복 표기합니다. 각 표지는 한 번씩만, 해당 어구 뒤에 배치해야 합니다.
+  - severity: low
+    issue: ‘격분’은 קָצֶף의 명사적 의미보다 일시적 폭발 반응을 더 강하게 암시할 수 있습니다.
+    rationale: ‘분노’가 원문의 넓은 의미와 문맥상 집단적 반응을 더 무리 없이 전달합니다.
+  revised_text: 왕비의 일을 들은 페르시아와 메대의 귀부인들[a]은 오늘 왕의 모든 대신에게 그 일을 말할 것이며, 멸시와 분노가 크게 일어날 것입니다.[b][c]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 높은 지위의 여성들을 가리키며, 반드시 왕의 딸들을 뜻하는 것은 아닙니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘왕비의 일’은 ‘왕비의 말’ 또는 왕비에 관한 사건·소식을 뜻할 수도 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 히브리어 마지막 절은 서술어를 생략하고 직역하면 ‘그리고 충분한 멸시와 분노’와 같습니다. 한국어 문장을 위해 ‘크게 일어날 것입니다’를 보충했습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문에 없는 인과관계를 제거하고, ‘왕비의 말/일’에 있는 어휘적 모호성을 보존했습니다. 마지막 절은 히브리어의 생략을 과도하게 해석하지 않으면서 한국어 문장으로 완결했습니다. 중복된 각주 표지를 제거하고 각주 세 개를 해당 어구에 각각 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:40:06Z'
+  output_hash: 6d43d8d268ad3cedded49345327460b2716e05865a2fac1b0d5e1076bedad4c6
+  usage:
+    completion_tokens: 1882
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 892
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 132
+      engine_ttlt_ms: 14709
+      pre_inference_ms: 168
+      service_tbt_ms: 8
+      service_ttft_ms: 659
+      service_ttlt_ms: 15233
+      total_duration_ms: 15073
+      user_visible_ttft_ms: 490
+    prompt_tokens: 2797
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4679
+  applied_revision: true
+  auto_apply_blocked_errors: []

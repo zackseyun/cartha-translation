@@ -20,15 +20,15 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 곧 나 자신이 볼 그분을 내가 볼 것이며, 내 눈이 보고 다른 이는 아닐 것입니다. 내 속의 내장들이 내 품에서 다해 갑니다.[a][b]
+  text: 내가 친히 나를 위하여 그분을 볼 것이며, 내 눈이 그분을 볼 것입니다. 그분을 볼 이는 다른 이가 아닙니다.[b] 내 콩팥은 내 품속에서 쇠하여 갑니다.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 히브리어 ‘콩팥’은 내면 또는 가장 깊은 감정의 자리를 가리키는 비유입니다.
     reason: cultural_note
   - marker: b
-    text: 직역하면 ‘낯선 자가 아니라’입니다. 뜻은 ‘내가, 다른 사람이 아니라, 그를 볼 것이다’일 수 있습니다.
-    reason: alternative_reading
+    text: 직역하면 ‘낯선 이가 아니라’입니다. 뜻은 ‘내가, 다른 사람이 아니라, 그분을 볼 것이다’일 수 있습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: אֲשֶׁר / אֲנִי אֶחֱזֶה לִּי
   english_pob_choice: whom I myself will see for myself
@@ -92,4 +92,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 곧 나 자신이 볼 그분을 내가 볼 것이며, 내 눈이 보고 다른 이는 아닐 것입니다. 내 속의 내장들이 내 품에서 다해 갑니다.[a][b]
+  to: 내가 친히 나를 위하여 그분을 볼 것이며, 내 눈이 그분을 볼 것입니다. 그분을 볼 이는 다른 이가 아닙니다.[b] 내 콩팥은 내 품속에서 쇠하여 갑니다.[a]
+  rationale: 히브리어의 강조된 1인칭과 난해한 לִי를 ‘내가 친히 나를 위하여’로 보존하되, 초안의 중복 관계절을 제거했습니다. 시각 동사의 병렬은 두 절에 유지했고, וְלֹא זָר의 생략된 의미는 한국어 문법상 필요한 범위에서만 ‘그분을 볼 이는’으로 보완했습니다. כִלְיֹתַי는 ‘콩팥’으로 복원하고 관용적 의미는 각주로 처리했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:43:03Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 אֲנִי의 강조와 미래의 봄을 대체로 반영하지만, ‘나 자신이 볼 그분을 내가 볼’은 동일한 동작을 불필요하게 중복합니다. 또한 כִלְיֹתַי를 ‘내장들’로 일반화하여 원문의 구체적 신체어 ‘콩팥’을 보존하지 못했습니다. וְלֹא זָר는 문맥상 ‘다른 이가 아니라’라는 대조로 옮길 수 있으나, 생략된 주어를 한국어에서 보완해야 자연스럽습니다.
+  naturalness: 초안의 첫 절은 관계절과 주절이 겹쳐 현대 한국어로 매우 부자연스럽고, ‘내 눈이 보고 다른 이는 아닐 것입니다’도 누가 보는지 문법적으로 불명확합니다. 보완한 문장은 합쇼체를 유지하면서 병렬과 강조를 읽기 쉽게 드러냅니다.
+  terminology: ‘콩팥’은 히브리어 כִלְיֹתַי의 직역이며, 문화적 의미는 각주로 설명하는 것이 최적등가 원칙에 맞습니다. בְּחֵקִי는 ‘내 품속에서’로 구체적 이미지를 유지했습니다. ‘그분’은 앞 절의 인칭 선행사를 이어 받으며, 본 절이 확정하지 않는 신학적 의미는 추가하지 않습니다.
+  issues:
+  - severity: high
+    issue: 첫 구절의 동사 중복
+    rationale: ‘나 자신이 볼 그분을 내가 볼 것이며’는 히브리어의 강조를 살리는 것이 아니라 관계절 안에서 이미 표현한 ‘볼’을 주절에서 반복하여 문장을 훼손합니다.
+  - severity: high
+    issue: ‘내장들’이 ‘콩팥’을 대체함
+    rationale: כִלְיֹתַי는 문자적으로 ‘나의 콩팥들’입니다. 관용적 의미를 본문에서 일반화하지 말고, 직역을 유지한 뒤 각주로 기능을 설명해야 합니다.
+  - severity: medium
+    issue: וְלֹא זָר의 한국어 문장 구조가 불명확함
+    rationale: ‘내 눈이 보고 다른 이는 아닐 것입니다’는 ‘다른 이’가 무엇의 주어 또는 보어인지 드러나지 않습니다. 원문의 생략을 최소한으로 보완하여 ‘그분을 볼 이는 다른 이가 아닙니다’라고 해야 합니다.
+  - severity: low
+    issue: 각주 표지의 위치가 의미 단위와 맞지 않음
+    rationale: 콩팥 관련 문화 주석은 ‘콩팥’에, ‘낯선 이/다른 이’의 어휘 대안은 해당 표현에 붙여야 독자가 각주의 대상을 즉시 알 수 있습니다.
+  revised_text: 내가 친히 나를 위하여 그분을 볼 것이며, 내 눈이 그분을 볼 것입니다. 그분을 볼 이는 다른 이가 아닙니다.[b] 내 콩팥은 내 품속에서 쇠하여 갑니다.[a]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 ‘콩팥’은 내면 또는 가장 깊은 감정의 자리를 가리키는 비유입니다.
+    reason: cultural_note
+  - marker: b
+    text: 직역하면 ‘낯선 이가 아니라’입니다. 뜻은 ‘내가, 다른 사람이 아니라, 그분을 볼 것이다’일 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 히브리어의 강조된 1인칭과 난해한 לִי를 ‘내가 친히 나를 위하여’로 보존하되, 초안의 중복 관계절을 제거했습니다. 시각 동사의 병렬은 두 절에 유지했고, וְלֹא זָר의 생략된 의미는 한국어 문법상 필요한 범위에서만 ‘그분을 볼 이는’으로 보완했습니다. כִלְיֹתַי는 ‘콩팥’으로 복원하고 관용적 의미는 각주로 처리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:43:03Z'
+  output_hash: 0c3c7aa2fbbf66b27c7e2ac943bca8477e90ed98f279c9aed421043908a25e2e
+  usage:
+    completion_tokens: 1949
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 991
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 160
+      engine_ttlt_ms: 17728
+      pre_inference_ms: 102
+      service_tbt_ms: 9
+      service_ttft_ms: 437
+      service_ttlt_ms: 17991
+      total_duration_ms: 17900
+      user_visible_ttft_ms: 335
+    prompt_tokens: 2991
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4940
+  applied_revision: true
+  auto_apply_blocked_errors: []

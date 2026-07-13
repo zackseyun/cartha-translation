@@ -45,4 +45,60 @@ ai_draft:
   usage: {}
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 난해한 히브리어를 따라 폭풍 현상으로 이해한 영어 POB의 선택을 대체로 반영하지만, '그분'은 원문의 대명사 및 그 지시 대상의 불확실성을 부당하게 신격화합니다. 또한 '그의 우레'는 가능한 문맥적 이해이나, 이를 뒷받침하는 각주 설명이 더 정확해야 합니다.
+  naturalness: '''우레가 … 선포하며''와 ''가축도 또한''은 현대 한국어 시문으로 다소 부자연스럽습니다. ''알리며/알립니다''와 ''가축도''가 자연스럽고, 병렬도 분명합니다.'
+  terminology: '''우레''는 thunder에 적절합니다. 원문의 모호성을 보존하기 위해 대명사는 존칭 신학 용어인 ''그분'' 대신 중립적인 ''그''로 옮겨야 합니다. ''떠오르는 것''은 עוֹלֶה의 미지정 지시 대상을 보존합니다.'
+  issues:
+  - severity: medium
+    issue: '''그분''이라는 존칭 사용'
+    rationale: עָלָיו의 접미사 대명사는 그 지시 대상이 논쟁적이며, 본문 자체가 신적 존칭을 요구하지 않습니다. '그에 관하여'가 모호성을 보존합니다.
+  - severity: low
+    issue: '''선포하며'' 및 ''가축도 또한''의 어색한 표현'
+    rationale: 폭풍과 가축이 징후를 '알린다'는 표현이 한국어에서 더 자연스럽고, '도 또한'은 중복됩니다.
+  - severity: low
+    issue: 각주 a의 본문 선택 설명 부족
+    rationale: 본문의 '우레'는 רֵעוֹ를 문맥상 폭풍의 소리/우레로 이해한 선택이므로, 문자적 대안인 '그의 친구'와 그 문맥적 이해의 관계를 명시하는 것이 좋습니다.
+  revised_text: 그의 우레가 그에 관하여 알리며, 가축도 떠오르는 것에 관하여 알립니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 본문은 어렵습니다. 문자적으로는 '그의 친구'로 읽을 수도 있으나, 많은 해석은 문맥상 이를 폭풍의 소리 또는 우레로 이해합니다.
+    reason: alternative_reading
+  - marker: b
+    text: 또는 '가축도 [알립니다], 떠오르는 폭풍에 관하여.' 마지막 구절은 다가오는 폭풍을 가리킬 가능성이 높으나, 히브리어는 단지 '떠오르는 것'이라고만 합니다.
+    reason: alternative_reading
+  revision_rationale: 원문의 난해함과 대명사의 불확정성을 유지하면서, 영어 POB가 채택한 폭풍·우레의 문맥적 이해를 반영했습니다. 신학적으로 특정한 지시 대상을 암시하는 존칭을 제거하고, 문장과 각주를 현대 표준 한국어 합쇼체로 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:45:57Z'
+  output_hash: 3d196ff4747b76a330bb15b0f958362a3dd35176c7dd61dd32091ade655b25c2
+  usage:
+    completion_tokens: 1081
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 364
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 9500
+      pre_inference_ms: 382
+      service_tbt_ms: 9
+      service_ttft_ms: 844
+      service_ttlt_ms: 10072
+      total_duration_ms: 9695
+      user_visible_ttft_ms: 462
+    prompt_tokens: 1580
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2661
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]

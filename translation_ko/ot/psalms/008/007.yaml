@@ -93,4 +93,53 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 현재 본문은 제시된 히브리어 본문(시 8:7)이 아니라 앞 절인 시편 8:6의 내용(‘그를 다스리게 하셨습니다… 그의 발아래 두셨습니다’)을 번역합니다. 시 8:7은 양 떼, 소, 들의 짐승을 열거합니다.
+  naturalness: 수정문은 시의 열거를 자연스럽게 유지합니다. 원문도 앞 절의 동사에 이어지는 목적어 열거이므로, 한국어에서도 종결동사를 보충하지 않고 이어지는 구절로 두는 것이 안전합니다.
+  terminology: צֹנֶה는 ‘양 떼’, אֲלָפִים은 ‘소’로 옮겼습니다. בַּהֲמוֹת שָׂדָי는 야생의 들짐승을 가리키므로 ‘들의 짐승들’이 적절합니다. 원문의 ‘모두’와 첨가 표현 ‘또한’을 보존했습니다.
+  issues:
+  - severity: high
+    issue: 절 본문 불일치
+    rationale: 초안은 시편 8:6에 해당하며, 검토 대상인 WLC 시편 8:7의 동물 목록을 전혀 반영하지 않습니다.
+  - severity: medium
+    issue: 각주 앵커 및 내용 불일치
+    rationale: 현 각주 a와 b는 초안의 8:6 표현을 설명하므로, 수정되는 8:7 본문에는 적용될 수 없습니다.
+  revised_text: 양 떼와 소를 모두, 또한 들의 짐승들도.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘양 떼와 가축을 모두, 또한 들의 동물들도.’
+    reason: lexical_alternative
+  revision_rationale: 히브리어 원문 צֹנֶה וַאֲלָפִים כֻּלָּם וְגַם בַּהֲמוֹת שָׂדָי의 동물 열거로 본문을 바로잡았습니다. 원문이 앞 절의 통치 동사에 문법적으로 이어지는 열거라는 점을 보존하여 동사를 임의로 보충하지 않았습니다. ‘소’/‘가축’ 및 ‘짐승’/‘동물’의 가능한 어휘 범위는 각주로 제시했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:46:20Z'
+  output_hash: 35d5fe3cfc6561d49c56820e3a36b5d38ba444fc451345f49bf4f994012df4c2
+  usage:
+    completion_tokens: 881
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 307
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 128
+      engine_ttlt_ms: 7420
+      pre_inference_ms: 257
+      service_tbt_ms: 8
+      service_ttft_ms: 546
+      service_ttlt_ms: 7832
+      total_duration_ms: 7590
+      user_visible_ttft_ms: 290
+    prompt_tokens: 2099
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2980
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

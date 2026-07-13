@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 당신은 과부들을 빈손으로 돌려보내고, 고아들의 팔은 부러졌습니다.[a][b][c]
+  text: 당신은 과부들을 빈손으로[a] 돌려보내셨고, 고아들[c]의 팔[b]은 짓눌렸습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 '빈손으로.'
+    text: 또는 ‘아무것도 없이.’
     reason: lexical_alternative
   - marker: b
-    text: 히브리어는 '고아들의 팔'이라고 말하며, '팔'은 그들의 힘이나 권세를 가리킬 수도 있습니다.
+    text: 히브리어는 ‘고아들의 팔’이라고 말하며, ‘팔’은 그들의 힘이나 능력을 가리킬 수도 있습니다.
     reason: lexical_alternative
   - marker: c
-    text: 또는 '부친 없는 자들.'
+    text: 또는 ‘아버지 없는 이들.’
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אַלְמָנוֹת
@@ -95,4 +95,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 당신은 과부들을 빈손으로 돌려보내고, 고아들의 팔은 부러졌습니다.[a][b][c]
+  to: 당신은 과부들을 빈손으로[a] 돌려보내셨고, 고아들[c]의 팔[b]은 짓눌렸습니다.
+  rationale: 동사의 의미 범위를 보존하기 위해 ‘부러졌습니다’를 ‘짓눌렸습니다’로 고쳤습니다. 또한 각주 표지를 해당 단어에 직접 배치하고, 중복되던 각주 a를 실질적인 어휘 대안으로 수정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:43:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 절의 ‘과부들을 빈손으로 돌려보내셨고’는 אַלְמָנוֹת שִׁלַּחְתָּ רֵיקָם을 충실하게 옮깁니다. 다만 יְדֻכָּא는 ‘짓누르다/부수다’의 수동 의미이므로, 단순히 골절을 뜻하기 쉬운 ‘부러졌습니다’보다 ‘짓눌렸습니다’가 원문의 폭력적이고 비유적인 범위를 더 잘 보존합니다.
+  naturalness: 합쇼체 문장으로 자연스럽습니다. ‘과부’와 ‘고아’는 본문의 사회적으로 취약한 집단을 가리키는 통상적 성경 한국어이며, 본문에서는 무리 없이 이해됩니다.
+  terminology: ‘팔’은 זְרֹעוֹת의 구체적 이미지를 유지하며 힘·능력이라는 비유적 함의도 열어 둡니다. ‘고아’는 현대어로 자연스럽지만 히브리어의 ‘아버지 없는 이들’이라는 가능한 더 좁은 의미는 각주로 밝혀야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘부러졌습니다’는 יְדֻכָּא의 의미를 지나치게 골절이라는 물리적 결과로 좁힙니다.
+    rationale: דכא의 수동형은 ‘짓눌리다, 부서지다, 꺾이다’의 범위를 지니며, 여기서는 고아들의 ‘팔’이 상징할 수 있는 힘의 억압도 포함합니다. ‘짓눌렸습니다’는 이를 더 충실히 보존합니다.
+  - severity: medium
+    issue: 각주 표지가 모두 문장 끝에 붙어 있어 해당 어휘와 연결되지 않습니다.
+    rationale: '[a]는 ‘빈손으로’, [b]는 ‘팔’, [c]는 ‘고아들’에 각각 붙여 독자가 각주의 적용 대상을 분명히 알 수 있게 해야 합니다.'
+  - severity: low
+    issue: 각주 a의 ‘또는 빈손으로’는 본문 표현과 동일합니다.
+    rationale: 영어 감사 기록의 ‘empty-handed/with nothing’ 대안을 반영하여 실제 대안인 ‘아무것도 없이’로 제시하는 편이 유익합니다.
+  revised_text: 당신은 과부들을 빈손으로[a] 돌려보내셨고, 고아들[c]의 팔[b]은 짓눌렸습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘아무것도 없이.’
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어는 ‘고아들의 팔’이라고 말하며, ‘팔’은 그들의 힘이나 능력을 가리킬 수도 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 또는 ‘아버지 없는 이들.’
+    reason: lexical_alternative
+  revision_rationale: 동사의 의미 범위를 보존하기 위해 ‘부러졌습니다’를 ‘짓눌렸습니다’로 고쳤습니다. 또한 각주 표지를 해당 단어에 직접 배치하고, 중복되던 각주 a를 실질적인 어휘 대안으로 수정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:43:06Z'
+  output_hash: 61ff62ccb81027aae6ae2893ecc97bf2dafa1146ceca8ad7a63f67654a79059c
+  usage:
+    completion_tokens: 1274
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 136
+      engine_ttlt_ms: 10378
+      pre_inference_ms: 323
+      service_tbt_ms: 8
+      service_ttft_ms: 694
+      service_ttlt_ms: 10906
+      total_duration_ms: 10593
+      user_visible_ttft_ms: 372
+    prompt_tokens: 2080
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3354
+  applied_revision: true
+  auto_apply_blocked_errors: []

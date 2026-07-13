@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 나는 그들의 길을 택하고 수석 자리에 앉았으며, 군대 가운데의 왕처럼 머물렀고, 애곡하는 사람들을 위로하는 이처럼 그러했습니다.[a][b][c]
+  text: 나는 그들의 길을 택하고 우두머리 자리에 앉았으며,[a] 부대 가운데 있는 왕처럼 지냈고,[b] 애도하는 이들을 위로하는 이처럼 지냈습니다.[c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘수석 자리’는 히브리어 רֹאשׁ의 직역 ‘머리’보다 한국어에서 자연스러운 지도적 지위를 드러내는 표현입니다.
+    text: 또는 ‘그들의 길을 택하고 우두머리로 앉았으며.’ 히브리어는 욥이 그들이 갈 길을 선택하거나 승인하고 지도자의 자리를 차지했다는 뜻으로 이해될 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘군대 가운데의’는 히브리어 גְּדוּד가 ‘부대, 무리, 떼’도 뜻할 수 있음을 반영한 표현입니다.
+    text: ‘부대’로 옮긴 히브리어 גְּדוּד는 ‘무리’, ‘떼’, 또는 ‘부대’를 뜻할 수 있습니다.
     reason: lexical_alternative
   - marker: c
-    text: 마지막 비교구문은 ‘애곡하는 사람들을 위로하는 이처럼’으로 옮겼으나, 히브리어는 압축적이어서 ‘애도하는 자를 위로하듯’으로도 이해될 수 있습니다.
+    text: 마지막 비교는 해석하기 어렵습니다. 히브리어는 ‘애도하는 이들을 위로하는 이처럼’이라는 뜻일 수 있으며, 욥이 높은 지위에 있으면서도 위로하는 역할을 했음을 강조하는 것으로 이해될 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: אֶבֲחַר / דַּרְכָּם
@@ -88,4 +88,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나는 그들의 길을 택하고 수석 자리에 앉았으며, 군대 가운데의 왕처럼 머물렀고, 애곡하는 사람들을 위로하는 이처럼 그러했습니다.[a][b][c]
+  to: 나는 그들의 길을 택하고 우두머리 자리에 앉았으며,[a] 부대 가운데 있는 왕처럼 지냈고,[b] 애도하는 이들을 위로하는 이처럼 지냈습니다.[c]
+  rationale: 수정문은 불완전 과거형의 회고적 용법을 한국어 과거 서술로 옮기고, 지도적 위치와 두 비교 표현을 보존합니다. ‘부대 가운데 있는 왕’으로 위치 관계를 자연스럽게 표현하고, 난해한 마지막 비교는 특정 해석을 과도하게 확정하지 않도록 병렬 비교와 각주로 처리했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:43:21Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 동사와 비교 표현은 대체로 반영했지만, ‘군대 가운데의 왕’은 한국어에서 수식 관계가 부자연스럽고, 종결의 ‘그러했습니다’는 원문의 두 비교를 불명확하게 만듭니다. ‘부대 가운데 있는 왕처럼’ 및 병렬 비교로 고치면 히브리어의 구조를 더 분명히 보존합니다.
+  naturalness: ‘수석 자리’는 현대 한국어에서 직함·서열의 뉘앙스가 강하고 ‘군대 가운데의 왕’은 어색합니다. ‘우두머리 자리에 앉았으며’, ‘부대 가운데 있는 왕처럼 … 지냈습니다’가 자연스럽고 합쇼체에도 맞습니다.
+  terminology: רֹאשׁ는 지도적 위치를 가리키므로 ‘우두머리 자리’가 적절합니다. גְּדוּד는 문맥상 ‘부대’로 옮길 수 있으나 ‘무리/떼’의 가능성은 각주로 남겨야 합니다. אֲבֵלִים은 단순히 울고 있는 사람보다 애도 중인 사람들을 뜻하므로 ‘애도하는 이들’이 더 정확합니다.
+  issues:
+  - severity: medium
+    issue: ‘군대 가운데의 왕’의 부자연스러운 수식 관계
+    rationale: בַּגְּדוּד는 ‘부대/무리 가운데(에 있는)’라는 위치 관계입니다. ‘가운데의 왕’은 한국어에서 그 관계를 자연스럽게 드러내지 못합니다.
+  - severity: medium
+    issue: ‘그러했습니다’가 마지막 비교구문의 연결을 흐림
+    rationale: 원문은 ‘부대 가운데 있는 왕처럼’과 ‘애도하는 이들을 위로하는 이처럼’이라는 비교를 병렬로 제시합니다. ‘그러했습니다’는 선행 내용 전체를 뭉뚱그려 마지막 비교의 문법적 연결을 약화합니다.
+  - severity: low
+    issue: ‘애곡하는 사람들’보다 ‘애도하는 이들’이 어휘적으로 적절함
+    rationale: אֲבֵלִים은 애도·상중에 있는 사람들을 가리킵니다. 반드시 소리 내어 곡하는 행위에 한정되지 않습니다.
+  revised_text: 나는 그들의 길을 택하고 우두머리 자리에 앉았으며,[a] 부대 가운데 있는 왕처럼 지냈고,[b] 애도하는 이들을 위로하는 이처럼 지냈습니다.[c]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘그들의 길을 택하고 우두머리로 앉았으며.’ 히브리어는 욥이 그들이 갈 길을 선택하거나 승인하고 지도자의 자리를 차지했다는 뜻으로 이해될 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘부대’로 옮긴 히브리어 גְּדוּד는 ‘무리’, ‘떼’, 또는 ‘부대’를 뜻할 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 마지막 비교는 해석하기 어렵습니다. 히브리어는 ‘애도하는 이들을 위로하는 이처럼’이라는 뜻일 수 있으며, 욥이 높은 지위에 있으면서도 위로하는 역할을 했음을 강조하는 것으로 이해될 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 수정문은 불완전 과거형의 회고적 용법을 한국어 과거 서술로 옮기고, 지도적 위치와 두 비교 표현을 보존합니다. ‘부대 가운데 있는 왕’으로 위치 관계를 자연스럽게 표현하고, 난해한 마지막 비교는 특정 해석을 과도하게 확정하지 않도록 병렬 비교와 각주로 처리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:43:21Z'
+  output_hash: e26f7de766416abaa2d715f34ff9ef1c15cd0e847b3af1650bcfe843e14c4ced
+  usage:
+    completion_tokens: 1386
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 494
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 146
+      engine_ttlt_ms: 11149
+      pre_inference_ms: 206
+      service_tbt_ms: 8
+      service_ttft_ms: 491
+      service_ttlt_ms: 11520
+      total_duration_ms: 11321
+      user_visible_ttft_ms: 285
+    prompt_tokens: 2509
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3895
+  applied_revision: true
+  auto_apply_blocked_errors: []

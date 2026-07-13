@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 내가 두려워하게 되어 그렇게 하여 죄를 짓게 하려고 이 일로 돈을 받았습니다[a]. 그러면 그들에게는 나를 비방할 악한 평판거리가 생기게 됩니다[b].
+  text: 이는 그가 내가 두려워하여 그렇게 행하고 죄를 짓게 하려고 고용되었던 것입니다[a]. 그렇게 해서 그들이 나를 비방할 구실을 얻고 나를 모욕하려 했던 것입니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 직역하면 '이 일로 고용되었다/돈을 받았다'입니다. 문맥상 단순 고용이 아니라 금전적 대가를 받고 음모에 가담했다는 뜻이 분명합니다.
+    text: 또는 ‘이 일을 위해 돈을 받고 고용되었다.’ 히브리어는 기본적으로 ‘고용되었다’ 또는 ‘돈을 받았다’라는 뜻입니다. ‘매수되었다’는 문맥에서 가능한 해석입니다.
     reason: lexical_alternative
   - marker: b
-    text: 히브리어는 문자적으로 '악한 이름'이지만, 문맥상 적들이 나를 헐뜯을 근거, 곧 나쁜 평판거리를 얻게 된다는 뜻입니다.
+    text: 직역하면 ‘그들에게 악한 이름이 되게 하여, 그들이 나를 모욕하려고’입니다. 문맥상 느헤미야의 죄가 적대자들에게 그를 비방하고 모욕할 구실을 제공한다는 뜻입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: שָׂכוּר
@@ -95,4 +95,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 내가 두려워하게 되어 그렇게 하여 죄를 짓게 하려고 이 일로 돈을 받았습니다[a]. 그러면 그들에게는 나를 비방할 악한 평판거리가 생기게 됩니다[b].
+  to: 이는 그가 내가 두려워하여 그렇게 행하고 죄를 짓게 하려고 고용되었던 것입니다[a]. 그렇게 해서 그들이 나를 비방할 구실을 얻고 나를 모욕하려 했던 것입니다[b].
+  rationale: 수동 분사 שָׂכוּר를 ‘고용되었다’로 복원하고, 세 차례의 לְמַעַן이 만드는 목적 연쇄를 한국어에서 분명히 했습니다. ‘나쁜 이름’이라는 관용적 표현은 본문에서는 자연스러운 ‘나를 비방할 구실’로 풀되, 각주에 직역과 문맥적 의미를 제시했습니다. 마지막 ‘나를 모욕하려고’는 חרף의 의미와 독립된 목적절을 보존하도록 명시했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:37:45Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 절의 목적 연쇄(그가 고용됨 → 내가 두려워함 → 그렇게 행함 → 죄를 지음)는 대체로 반영되었으나, שָׂכוּר의 수동 의미인 ‘고용되었다’가 ‘돈을 받았다’로 바뀌어 행위의 초점이 다소 흐려졌습니다. 또한 마지막 יְחָרְפוּנִי(그들이 나를 모욕/비난하려고 하다)가 앞 문구에 흡수되어 독립된 최종 목적이 충분히 드러나지 않습니다.
+  naturalness: ‘악한 평판거리’는 현대 표준 한국어에서 부자연스럽고 의미 관계도 불명확합니다. ‘나를 비방할 구실’이 자연스럽고 문맥에 맞습니다. 목적과 결과의 연결은 ‘그렇게 해서’로 명료하게 나타낼 수 있습니다.
+  terminology: ‘고용되다’는 שָׂכוּר의 기본 의미를 보존하며, 본문 문맥이 드러내는 부정한 의도는 목적절에서 충분히 확인됩니다. ‘비방하다’는 שֵׁם רָע의 문맥적 기능에 적합하고, חרף는 별도로 ‘모욕하다’로 옮겨 공개적 수치의 뉘앙스를 보존합니다.
+  issues:
+  - severity: medium
+    issue: ‘돈을 받았습니다’가 ‘고용되었다’의 수동적 초점을 약화합니다.
+    rationale: 히브리어 שָׂכוּר הוּא는 그가 돈을 받은 사실보다 그가 이 목적을 위해 고용된 사람임을 말합니다. ‘고용되었다’가 기본 의미와 문장 구조를 더 정확히 보존합니다.
+  - severity: high
+    issue: 마지막 목적절 ‘그들이 나를 모욕하려고’가 본문에서 명시적으로 재현되지 않았습니다.
+    rationale: יְחָרְפוּנִי는 שֵׁם רָע와 관련되지만 별도의 לְמַעַן 목적절입니다. ‘비방할 … 거리’에만 포함시키면 동사의 모욕·조롱의 의미와 최종 목적이 약화됩니다.
+  - severity: medium
+    issue: ‘악한 평판거리’는 어색하며 ‘평판’의 귀속 대상이 불분명합니다.
+    rationale: לְשֵׁם רָע은 문자적으로 ‘악한 이름/나쁜 소문’이며, 문맥상 대적들이 느헤미야를 공격할 재료를 뜻합니다. ‘나를 비방할 구실’이 자연스럽고 기능적 의미를 정확히 전달합니다.
+  revised_text: 이는 그가 내가 두려워하여 그렇게 행하고 죄를 짓게 하려고 고용되었던 것입니다[a]. 그렇게 해서 그들이 나를 비방할 구실을 얻고 나를 모욕하려 했던 것입니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘이 일을 위해 돈을 받고 고용되었다.’ 히브리어는 기본적으로 ‘고용되었다’ 또는 ‘돈을 받았다’라는 뜻입니다. ‘매수되었다’는 문맥에서 가능한 해석입니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘그들에게 악한 이름이 되게 하여, 그들이 나를 모욕하려고’입니다. 문맥상 느헤미야의 죄가 적대자들에게 그를 비방하고 모욕할 구실을 제공한다는 뜻입니다.
+    reason: lexical_alternative
+  revision_rationale: 수동 분사 שָׂכוּר를 ‘고용되었다’로 복원하고, 세 차례의 לְמַעַן이 만드는 목적 연쇄를 한국어에서 분명히 했습니다. ‘나쁜 이름’이라는 관용적 표현은 본문에서는 자연스러운 ‘나를 비방할 구실’로 풀되, 각주에 직역과 문맥적 의미를 제시했습니다. 마지막 ‘나를 모욕하려고’는 חרף의 의미와 독립된 목적절을 보존하도록 명시했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:37:45Z'
+  output_hash: 7d59b90122ab48a06d66d9b416c3d8d7fa294f0a4ea2885b55f1dd46afdc0713
+  usage:
+    completion_tokens: 1301
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 332
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 154
+      engine_ttlt_ms: 10780
+      pre_inference_ms: 123
+      service_tbt_ms: 8
+      service_ttft_ms: 493
+      service_ttlt_ms: 11091
+      total_duration_ms: 11010
+      user_visible_ttft_ms: 370
+    prompt_tokens: 2751
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4052
+  applied_revision: true
+  auto_apply_blocked_errors: []

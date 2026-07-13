@@ -20,11 +20,11 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 살래와 갈래를 위하여, 아목과 에벨을 위하여.[a][b]
+  text: 살래 가문에는 갈래, 아목 가문에는 에벨이었습니다.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 이 목록의 לְ는 ‘위하여’ 외에도 ‘~의’, ‘~에게 속한’으로도 옮길 수 있습니다.
+    text: 히브리어 전치사 לְ는 이 제사장 명단에서 소속이나 연관을 나타내며, ‘살래의 갈래, 아목의 에벨’로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
     text: 에벨은 일부 영어 역본에서 ‘헤벨(Heber)’로도 옮깁니다.
@@ -76,4 +76,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 살래와 갈래를 위하여, 아목과 에벨을 위하여.[a][b]
+  to: 살래 가문에는 갈래, 아목 가문에는 에벨이었습니다.[a][b]
+  rationale: 명단의 두 짝을 각각 ‘살래—갈래’, ‘아목—에벨’로 보존하고, 목적을 뜻하는 ‘위하여’를 소속을 나타내는 ‘가문에는’으로 교체했습니다. 이는 원문의 명단 기능을 자연스러운 한국어로 반영한 것이며, 각주는 לְ의 번역상 여지를 유지합니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:37:53Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 לְ는 각 인명 쌍에서 살래/아목과 갈래/에벨의 소속 또는 연관을 표시합니다. 초안의 ‘살래와 갈래를 위하여’는 두 이름을 함께 ‘위하여’의 대상으로 묶어, 원문의 짝 구조와 소속 관계를 흐립니다.
+  naturalness: ‘~를 위하여’는 한국어에서 목적·수혜의 뜻으로 읽혀 명단 문맥에 부자연스럽습니다. ‘~ 가문에는 …이었습니다’는 제사장 명단의 생략된 서술을 자연스럽게 보완하면서 합쇼체 문장으로 읽힙니다.
+  terminology: 인명 ‘살래, 갈래, 아목, 에벨’은 음역으로 유지할 수 있습니다. ‘가문’은 이 제사장 명단에서 לְ가 나타내는 소속을 한국어로 명료하게 드러냅니다.
+  issues:
+  - severity: high
+    issue: ‘살래와 갈래를 위하여, 아목과 에벨을 위하여’가 각 인명 쌍의 소속 관계를 ‘위하여’라는 목적 관계로 오해하게 합니다.
+    rationale: 히브리어는 לְ살래—갈래, לְ아목—에벨의 병렬 명단이며, 각 앞선 이름은 관련 가문/계열을 가리킵니다. 두 고유명사를 ‘와’로 결합해 목적격으로 처리하는 것은 구조상 부정확합니다.
+  - severity: medium
+    issue: 각주 a가 본문의 부자연스러운 ‘위하여’ 번역을 전제로 합니다.
+    rationale: 본문을 ‘가문에는’으로 고치면, 각주는 לְ의 소속·연관 의미와 ‘~의’라는 대안을 설명하도록 조정해야 합니다.
+  revised_text: 살래 가문에는 갈래, 아목 가문에는 에벨이었습니다.[a][b]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 전치사 לְ는 이 제사장 명단에서 소속이나 연관을 나타내며, ‘살래의 갈래, 아목의 에벨’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 에벨은 일부 영어 역본에서 ‘헤벨(Heber)’로도 옮깁니다.
+    reason: alternative_reading
+  revision_rationale: 명단의 두 짝을 각각 ‘살래—갈래’, ‘아목—에벨’로 보존하고, 목적을 뜻하는 ‘위하여’를 소속을 나타내는 ‘가문에는’으로 교체했습니다. 이는 원문의 명단 기능을 자연스러운 한국어로 반영한 것이며, 각주는 לְ의 번역상 여지를 유지합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:37:53Z'
+  output_hash: 98c251c88b4db296d83559878dcc1ecb6c123b96b8ec8ed88d21007613aea4a8
+  usage:
+    completion_tokens: 961
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 302
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 133
+      engine_ttlt_ms: 8052
+      pre_inference_ms: 138
+      service_tbt_ms: 8
+      service_ttft_ms: 360
+      service_ttlt_ms: 8274
+      total_duration_ms: 8145
+      user_visible_ttft_ms: 221
+    prompt_tokens: 1556
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2517
+  applied_revision: true
+  auto_apply_blocked_errors: []

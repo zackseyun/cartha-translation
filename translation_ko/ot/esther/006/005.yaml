@@ -17,11 +17,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 왕의 시종들이 그에게 말했습니다[a], “보십시오, 하만이 뜰에 서 있습니다.” 왕이 말했습니다. “들어오게 하십시오.”
+  text: 왕의 시종들이 그에게 말했습니다. “보십시오, 하만이 왕궁 뜰에[a] 서 있습니다.” 왕이 말했습니다. “들어오게 하십시오.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 “궁정에.”
+    text: 또는 “뜰 안에.”
     reason: lexical_alternative
 lexical_decisions:
 - source_word: נַעֲרֵי הַמֶּלֶךְ
@@ -68,4 +68,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 왕의 시종들이 그에게 말했습니다[a], “보십시오, 하만이 뜰에 서 있습니다.” 왕이 말했습니다. “들어오게 하십시오.”
+  to: 왕의 시종들이 그에게 말했습니다. “보십시오, 하만이 왕궁 뜰에[a] 서 있습니다.” 왕이 말했습니다. “들어오게 하십시오.”
+  rationale: חָצֵר의 궁정 내 물리적 공간이라는 의미를 ‘왕궁 뜰’로 명확히 하고, 어휘 대안 각주를 해당 표현에 직접 연결했습니다. 그 밖의 문장 구조와 명령의 힘은 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:40:02Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 의미는 히브리어 본문과 일치합니다. נַעֲרֵי הַמֶּלֶךְ은 궁정의 직무를 나타내는 ‘왕의 시종들’로 적절하며, עֹמֵד의 진행 상태와 יָבֹא의 명령·허락의 뉘앙스도 보존되었습니다. 다만 חָצֵר에 관한 각주는 해당 낱말이 아닌 ‘그에게’에 붙어 있어 앵커를 옮겨야 합니다.
+  naturalness: ‘보십시오’와 ‘서 있습니다’는 현대 한국어 합쇼체에 자연스럽습니다. ‘왕궁 뜰’은 왕의 거처에 딸린 물리적 뜰이라는 문맥을 ‘뜰’보다 조금 더 분명히 하면서도 과도한 해석을 피합니다.
+  terminology: ‘하만’과 ‘왕의 시종들’은 일관되고 적절합니다. חָצֵר의 대안은 제도적 의미로 오해될 수 있는 ‘궁정’보다 공간을 가리키는 ‘뜰 안’으로 제시하는 편이 안전합니다.
+  issues:
+  - severity: medium
+    issue: 각주 앵커가 ‘그에게’에 붙어 있습니다.
+    rationale: 각주는 בֶּחָצֵר(‘뜰/뜰 안’)의 어휘적 대안을 설명하므로 ‘뜰에’ 뒤에 붙어야 합니다.
+  - severity: low
+    issue: 각주의 ‘궁정에’는 물리적 공간인 חָצֵר보다 제도적 왕실·조정을 가리키는 것으로 이해될 수 있습니다.
+    rationale: ‘뜰 안에’는 원문의 공간적 의미를 유지하면서 한국어에서 가능한 표현 차이를 제시합니다.
+  revised_text: 왕의 시종들이 그에게 말했습니다. “보십시오, 하만이 왕궁 뜰에[a] 서 있습니다.” 왕이 말했습니다. “들어오게 하십시오.”
+  revised_footnotes:
+  - marker: a
+    text: 또는 “뜰 안에.”
+    reason: lexical_alternative
+  revision_rationale: חָצֵר의 궁정 내 물리적 공간이라는 의미를 ‘왕궁 뜰’로 명확히 하고, 어휘 대안 각주를 해당 표현에 직접 연결했습니다. 그 밖의 문장 구조와 명령의 힘은 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:40:02Z'
+  output_hash: 65e0ea5d7953f110f926c4e907c82b01bd63e4fdec176142da91ab65b364b898
+  usage:
+    completion_tokens: 1087
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 320
+      engine_ttlt_ms: 9483
+      pre_inference_ms: 169
+      service_tbt_ms: 8
+      service_ttft_ms: 852
+      service_ttlt_ms: 9942
+      total_duration_ms: 9788
+      user_visible_ttft_ms: 684
+    prompt_tokens: 1660
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2747
+  applied_revision: true
+  auto_apply_blocked_errors: []

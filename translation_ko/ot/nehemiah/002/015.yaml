@@ -20,7 +20,7 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 그리하여 저는 밤에 나흘을 따라 올라가 성벽을 살펴보았습니다[a]. 그리고 돌아서서 골짜기 문으로 들어갔다가 다시 돌아왔습니다[b].
+  text: 그리하여 저는 밤에 골짜기[b]를 따라 올라가 성벽을 살펴보았습니다[a]. 그리고 돌아서 골짜기 성문으로 들어가서 돌아왔습니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -78,4 +78,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그리하여 저는 밤에 나흘을 따라 올라가 성벽을 살펴보았습니다[a]. 그리고 돌아서서 골짜기 문으로 들어갔다가 다시 돌아왔습니다[b].
+  to: 그리하여 저는 밤에 골짜기[b]를 따라 올라가 성벽을 살펴보았습니다[a]. 그리고 돌아서 골짜기 성문으로 들어가서 돌아왔습니다.
+  rationale: 원문의 נחל에 해당하는 지형어를 ‘나흘’이라는 오역에서 ‘골짜기’로 바로잡고, 이에 관한 b 각주를 해당 단어에 연결했습니다. 나머지 문장은 원문의 동선과 반복되는 שוב의 순서를 유지하면서 자연스러운 합쇼체로 다듬었습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:37:15Z'
+review_pass:
+  verdict: revise
+  source_fidelity: ‘나흘’은 히브리어 נחל(와디/골짜기)을 ‘four days’라는 전혀 다른 한국어 단어로 잘못 옮긴 명백한 오류입니다. 또한 b 각주는 נחל의 지형어에 관한 것이므로 ‘다시 돌아왔습니다’가 아니라 해당 지형어에 붙어야 합니다. שבר는 이 문맥에서 성벽의 상태를 살피는 행위로 이해하는 번역이 가능하며, 각주가 어휘적 난점을 적절히 보존합니다.
+  naturalness: 수정문은 현대 표준 한국어 합쇼체로 자연스럽습니다. 고유한 성문 명칭은 ‘골짜기 성문’으로 처리하여 일반 문과의 혼동을 줄였습니다.
+  terminology: ‘골짜기’는 נחל의 지형적 의미를 무리 없이 반영하며, ‘골짜기 성문’은 שער הגיא의 투명한 고유 명칭 번역입니다. ‘성벽을 살펴보았습니다’는 문맥상 허용되는 שבר의 해석을 반영합니다.
+  issues:
+  - severity: high
+    issue: ‘나흘을 따라’라는 번역 오류
+    rationale: ‘나흘’은 기간을 뜻하는 한국어 명사이며 נחל(와디·골짜기)을 반영하지 못합니다. 지형어 ‘골짜기’ 등으로 고쳐야 합니다.
+  - severity: medium
+    issue: b 각주의 앵커 위치가 부정확함
+    rationale: b 각주는 נחל의 의미를 설명하지만 현행 본문에서는 최종 ‘다시 돌아왔습니다’에 붙어 있습니다. ‘골짜기’에 붙여야 합니다.
+  - severity: low
+    issue: 성문 명칭의 표현
+    rationale: ‘골짜기 문’도 이해 가능하지만, 도시의 명명된 שער를 나타내는 ‘골짜기 성문’이 한국어에서 더 분명합니다.
+  revised_text: 그리하여 저는 밤에 골짜기[b]를 따라 올라가 성벽을 살펴보았습니다[a]. 그리고 돌아서 골짜기 성문으로 들어가서 돌아왔습니다.
+  revised_footnotes:
+  - marker: a
+    text: 히브리어 동사 שבר는 보통 ‘부수다’를 뜻하지만, 여기서는 성벽을 야간에 점검·시찰하는 뜻으로 널리 이해됩니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘골짜기’는 히브리어 נחל의 지형적 의미를 반영한 번역입니다. 경우에 따라 ‘와디’ 또는 ‘시내’로도 옮길 수 있습니다.
+    reason: cultural_note
+  revision_rationale: 원문의 נחל에 해당하는 지형어를 ‘나흘’이라는 오역에서 ‘골짜기’로 바로잡고, 이에 관한 b 각주를 해당 단어에 연결했습니다. 나머지 문장은 원문의 동선과 반복되는 שוב의 순서를 유지하면서 자연스러운 합쇼체로 다듬었습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:37:15Z'
+  output_hash: 85418ba7c00b4f6080b715e11fc004fc1f2acf6b04a1ff3a567f9aa465acaec5
+  usage:
+    completion_tokens: 963
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 255
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 7804
+      pre_inference_ms: 143
+      service_tbt_ms: 8
+      service_ttft_ms: 625
+      service_ttlt_ms: 8286
+      total_duration_ms: 8163
+      user_visible_ttft_ms: 482
+    prompt_tokens: 2610
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3573
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -13,12 +13,15 @@ base_translation:
   text: He sings before men and says, ‘I have sinned and twisted what was right, and it was not repaid to me.’
 translation:
   language: ko
-  text: 그는 사람들 앞에서 노래하며 말합니다. ‘내가 죄를 지었고, 옳은 것을 비틀었습니다. 그런데도 그것은 나에게 갚아지지 않았습니다.’[a]
+  text: 그는 사람들 앞에서 노래하며 말합니다. ‘내가 죄를 지었고, 옳은 것을 비틀었습니다. 그것이 내게 보응되지 않았습니다.’[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 직역하면 “사람들 위에서”이지만, 한국어에서는 공개적 발화의 장면을 드러내는 ‘사람들 앞에서’가 자연스럽습니다.
+    text: 직역하면 “사람들 위에서”이지만, 여기서는 사람들 앞에서 또는 사람들 가운데 공개적으로 노래하고 말하는 장면을 가리키는 것으로 이해할 수 있습니다.
     reason: lexical_alternative
+  - marker: b
+    text: 히브리어의 마지막 구절은 다소 난해합니다. “그것이 내게 보응되지 않았다”로 옮겼으나, “그것이 내게 상응하지 않았다” 또는 “그것이 내게 유익하지 않았다”로 이해하기도 합니다.
+    reason: textual_ambiguity
 lexical_decisions:
 - source_word: יָשֹׁר עַל אֲנָשִׁים
   english_pob_choice: He sings before men
@@ -79,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 사람들 앞에서 노래하며 말합니다. ‘내가 죄를 지었고, 옳은 것을 비틀었습니다. 그런데도 그것은 나에게 갚아지지 않았습니다.’[a]
+  to: 그는 사람들 앞에서 노래하며 말합니다. ‘내가 죄를 지었고, 옳은 것을 비틀었습니다. 그것이 내게 보응되지 않았습니다.’[a][b]
+  rationale: 원문의 접속 관계를 보존하기 위해 ‘그런데도’를 삭제했습니다. 마지막 절은 영어 POB의 ‘it was not repaid to me’와 원문의 상응·보응 관련 어휘를 반영하여 ‘그것이 내게 보응되지 않았습니다’로 다듬었고, 난해한 히브리어 표현의 다른 가능한 이해는 주석으로 밝혔습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:45:59Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 절의 יָשֹׁר עַל־אֲנָשִׁים은 ‘사람들 앞에서 노래하다’로 자연스럽게 옮길 수 있습니다. 고백문의 ‘죄를 지었고’와 ‘옳은 것을 비틀었다’도 원문의 의미를 잘 전달합니다. 다만 וְלֹא שָׁוָה לִי는 문법적·어휘적으로 다소 난해하며, ‘그것은 나에게 갚아지지 않았다’는 원문의 비인칭적/수동적 여지를 반영하려는 시도이지만 한국어에서는 지시 대상과 뜻이 불분명합니다. ‘내게 보응되지 않았다’로 옮기고 주석에서 ‘상응하지 않았다/유익하지 않았다’라는 가능한 이해를 밝혀 모호성을 보존하는 것이 더 적절합니다.
+  naturalness: ‘그런데도’는 원문의 단순 접속사 וְ에 없는 양보·대조를 보태므로 삭제하는 것이 좋습니다. 또한 ‘그것은 나에게 갚아지지 않았습니다’는 현대 한국어에서 부자연스럽고 ‘그것’의 선행사가 불명확합니다. ‘내게 보응되지 않았습니다’는 합쇼체의 격식과 문맥에 맞으며 의미도 더 분명합니다.
+  terminology: ‘죄를 지었습니다’, ‘옳은 것을 비틀었습니다’는 적절합니다. 마지막 구절에는 일반적 금전 상환을 연상시키는 ‘갚아지다’보다 행위에 상응하는 결과를 가리킬 수 있는 ‘보응되다’를 사용하되, 이를 특정한 신학적 보응 교리로 좁히지 않도록 주석에서 어휘적 범위를 제시합니다.
+  issues:
+  - severity: medium
+    issue: ‘그런데도’가 원문에 없는 양보적 대조를 추가합니다.
+    rationale: וְ는 여기서 기본적으로 접속 기능을 하며, 화자가 죄를 고백한 사실과 마지막 진술 사이에 ‘그런데도’라는 역접 관계를 명시하지 않습니다.
+  - severity: medium
+    issue: ‘그것은 나에게 갚아지지 않았습니다’는 지시 대상이 불명확하고 한국어 수동 표현이 부자연스럽습니다.
+    rationale: וְלֹא שָׁוָה לִי의 해석에는 ‘내게 보응되지 않았다’, ‘내게 상응하지 않았다’, ‘내게 유익하지 않았다’ 등의 여지가 있습니다. ‘그것’과 ‘갚아지다’의 결합은 이를 명료하게 전달하지 못합니다.
+  revised_text: 그는 사람들 앞에서 노래하며 말합니다. ‘내가 죄를 지었고, 옳은 것을 비틀었습니다. 그것이 내게 보응되지 않았습니다.’[a][b]
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 “사람들 위에서”이지만, 여기서는 사람들 앞에서 또는 사람들 가운데 공개적으로 노래하고 말하는 장면을 가리키는 것으로 이해할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어의 마지막 구절은 다소 난해합니다. “그것이 내게 보응되지 않았다”로 옮겼으나, “그것이 내게 상응하지 않았다” 또는 “그것이 내게 유익하지 않았다”로 이해하기도 합니다.
+    reason: textual_ambiguity
+  revision_rationale: 원문의 접속 관계를 보존하기 위해 ‘그런데도’를 삭제했습니다. 마지막 절은 영어 POB의 ‘it was not repaid to me’와 원문의 상응·보응 관련 어휘를 반영하여 ‘그것이 내게 보응되지 않았습니다’로 다듬었고, 난해한 히브리어 표현의 다른 가능한 이해는 주석으로 밝혔습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:45:59Z'
+  output_hash: 6df0f304015ab09ae545fc1bc9845193387f332e07b482d701dfe22da987fc64
+  usage:
+    completion_tokens: 1430
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 125
+      engine_ttlt_ms: 12647
+      pre_inference_ms: 194
+      service_tbt_ms: 9
+      service_ttft_ms: 554
+      service_ttlt_ms: 12995
+      total_duration_ms: 12814
+      user_visible_ttft_ms: 360
+    prompt_tokens: 1797
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3227
+  applied_revision: true
+  auto_apply_blocked_errors: []

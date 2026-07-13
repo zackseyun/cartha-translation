@@ -17,12 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 가르쳐 주십시오[a], 그러면 제가 잠잠하겠습니다. 제가 무엇을 잘못했는지 저에게 깨닫게 해 주십시오.
+  text: 가르쳐 주십시오. 그러면 제가 잠잠하겠습니다. 제가 어디에서 잘못했는지[a] 깨닫게 해 주십시오.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는, ‘제가 어디서 잘못했는지 깨닫게 해 주십시오.’
-    reason: alternative_reading
+    text: 또는, ‘제가 무엇을 잘못했는지.’
+    reason: וּמַה שָּׁגִיתִי는 직역하면 ‘내가 무엇을 잘못했는지’이며, 본문은 문맥에 따라 ‘어디에서/어떤 점에서 잘못했는지’로 자연스럽게 옮긴 것입니다.
 lexical_decisions:
 - source_word: הוֹרוּנִי
   english_pob_choice: Teach me
@@ -80,4 +80,58 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 가르쳐 주십시오[a], 그러면 제가 잠잠하겠습니다. 제가 무엇을 잘못했는지 저에게 깨닫게 해 주십시오.
+  to: 가르쳐 주십시오. 그러면 제가 잠잠하겠습니다. 제가 어디에서 잘못했는지[a] 깨닫게 해 주십시오.
+  rationale: 원문의 요청과 결과 관계를 유지하면서, 마지막 절의 오류를 묻는 표현을 현대 한국어로 자연스럽게 다듬었습니다. 또한 대안 번역의 각주를 실제로 대안이 되는 표현에 연결하여 앵커-내용 불일치를 해소했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:42:29Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 두 명령(‘가르치십시오’, ‘깨닫게 하십시오’)과 욥의 반응(‘그러면 내가 잠잠하겠습니다’)은 대체로 충실히 반영되었습니다. 다만 וּמַה שָּׁגִיתִי는 ‘내가 무엇을/어디에서 잘못했는지’처럼 오류의 지점이나 방식을 묻는 표현이므로, 이에 맞는 대안을 각주로 제시하는 것이 적절합니다.
+  naturalness: ‘저에게 깨닫게 해 주십시오’는 의미는 통하지만 현대 표준 한국어에서는 ‘제가 … 깨닫게 해 주십시오’가 주체와 내용의 관계를 더 자연스럽게 드러냅니다. 또한 현 각주는 첫 구절에 붙어 있으나 내용은 마지막 구절의 대안이므로 앵커를 옮겨야 합니다.
+  terminology: ‘가르쳐 주십시오’와 ‘잠잠하겠습니다’는 지혜 문학의 진지하고 절제된 논쟁 상황 및 합쇼체에 잘 맞습니다. ‘잘못했는지’는 שׁגה의 문맥상 오류·일탈의 뜻을 자연스럽게 전달합니다.
+  issues:
+  - severity: medium
+    issue: 각주 앵커와 각주 내용이 일치하지 않습니다.
+    rationale: 현행 [a]는 ‘가르쳐 주십시오’에 붙어 있지만, 각주 내용은 ‘제가 어디서/무엇을 잘못했는지 깨닫게 해 주십시오’라는 마지막 절의 번역 대안입니다. 해당 표현에 앵커를 두어야 합니다.
+  - severity: low
+    issue: ‘저에게 깨닫게 해 주십시오’의 주체 표지가 다소 부자연스럽습니다.
+    rationale: 원문은 ‘나에게 이해시키십시오’라는 뜻이지만, 한국어에서는 ‘제가 … 깨닫게 해 주십시오’가 더 자연스럽고 의미 관계도 분명합니다.
+  revised_text: 가르쳐 주십시오. 그러면 제가 잠잠하겠습니다. 제가 어디에서 잘못했는지[a] 깨닫게 해 주십시오.
+  revised_footnotes:
+  - marker: a
+    text: 또는, ‘제가 무엇을 잘못했는지.’
+    reason: וּמַה שָּׁגִיתִי는 직역하면 ‘내가 무엇을 잘못했는지’이며, 본문은 문맥에 따라 ‘어디에서/어떤 점에서 잘못했는지’로 자연스럽게 옮긴 것입니다.
+  revision_rationale: 원문의 요청과 결과 관계를 유지하면서, 마지막 절의 오류를 묻는 표현을 현대 한국어로 자연스럽게 다듬었습니다. 또한 대안 번역의 각주를 실제로 대안이 되는 표현에 연결하여 앵커-내용 불일치를 해소했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:42:29Z'
+  output_hash: abb55ac7e4068a24e18af412eacba6249693d5d6cc8e047901023d8ceb0651c6
+  usage:
+    completion_tokens: 999
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 336
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 142
+      engine_ttlt_ms: 7912
+      pre_inference_ms: 148
+      service_tbt_ms: 8
+      service_ttft_ms: 451
+      service_ttlt_ms: 8202
+      total_duration_ms: 8070
+      user_visible_ttft_ms: 303
+    prompt_tokens: 1850
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2849
+  applied_revision: true
+  auto_apply_blocked_errors: []

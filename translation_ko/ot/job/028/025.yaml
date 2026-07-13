@@ -86,4 +86,60 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 계량 이미지는 대체로 잘 반영했으나, מַיִם는 ‘물의 분량’이 아니라 ‘물’을 측량하는 대상으로 두는 편이 원문에 더 가깝습니다. 또한 לַעֲשׂוֹת의 시간적 연결은 유지되어야 합니다.
+  naturalness: ‘그분께서 … 재셨을 때입니다’는 독립된 한국어 문장으로 다소 불완전하고 어색합니다. 앞 절에 이어지는 시간절임을 드러내어 ‘때에’로 옮기는 것이 자연스럽고 문맥에도 맞습니다.
+  terminology: ‘바람’, ‘무게’, ‘분량’은 적절합니다. 다만 각주 b의 ‘כאן의’는 한국어 문장 안에서 부자연스럽고, 원문의 뜻과 무관한 표기이므로 ‘여기서’로 바로잡아야 합니다.
+  issues:
+  - severity: medium
+    issue: ‘물의 분량을 재셨다’는 목적어를 이동시킵니다.
+    rationale: 히브리어 וּמַיִם תִּכֵּן בְּמִדָּה는 ‘물을 분량/척도에 따라 재다’라는 구조입니다. 물의 양 자체를 재셨다는 뜻으로만 한정하지 않도록 ‘물을 분량에 따라 재셨을’로 옮기는 편이 안전합니다.
+  - severity: medium
+    issue: ‘때입니다’가 시간절을 독립 문장으로 처리하여 어색합니다.
+    rationale: לַעֲשׂוֹת는 앞 절의 하나님의 살피심을 이어 주는 시간적 부정사구입니다. 한국어에서도 ‘…때에’로 연결해 절의 종속성을 보존하는 것이 적절합니다.
+  - severity: low
+    issue: 각주 b의 ‘כאן의’ 표기 오류
+    rationale: 한국어 설명문에서 ‘여기서의’로 고쳐야 하며, 각주 내용 자체는 원문의 어휘적 가능성을 적절히 설명합니다.
+  revised_text: 그분께서 바람에 무게를 정해 주시고 물을 분량에 따라 재셨을 때에,
+  revised_footnotes:
+  - marker: a
+    text: ‘정해 주시고’는 히브리어 부정사구를 문맥상 자연스러운 시간 연결로 옮긴 것입니다.
+    reason: source_note
+  - marker: b
+    text: ‘바람’은 여기서의 רוּחַ를 자연현상으로 읽은 번역입니다. 이 절에서는 ‘영’이나 ‘숨’보다 물과의 병렬이 우선합니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 시간적 연결과 계량의 병행을 더 직접적으로 반영했습니다. ‘바람에 무게를’은 לָרוּחַ의 ‘바람을 위하여/바람에’라는 여격적 관계를 살리고, ‘물을 분량에 따라’는 물 자체가 측량의 대상임을 보존합니다. 쉼표로 끝나는 형식은 이 절이 앞 절의 문맥에 문법적으로 이어짐을 나타냅니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:44:20Z'
+  output_hash: 84bdced61022b1f0c28cd4a5848f2e84325645f1a5bcc09401002554792cdade
+  usage:
+    completion_tokens: 1256
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 509
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 225
+      engine_ttlt_ms: 10616
+      pre_inference_ms: 163
+      service_tbt_ms: 8
+      service_ttft_ms: 462
+      service_ttlt_ms: 10847
+      total_duration_ms: 10697
+      user_visible_ttft_ms: 299
+    prompt_tokens: 2143
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3399
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]

@@ -45,4 +45,60 @@ ai_draft:
   usage: {}
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 מֵלִיץ(중재자/해석자)를 본문에서 누락했고, אֶחָד מִנִּי אָלֶף를 ‘천천 명 중 한 사람’으로 옮겨 수량과 지시 대상이 부정확합니다. 또한 יָשְׁרוֹ는 문맥상 그 사람에게 옳거나 마땅한 바를 알리는 뜻으로 자연스럽게 처리할 필요가 있습니다.
+  naturalness: ‘천천 명’은 현대 한국어 수량 표현으로 부자연스럽고 오류입니다. ‘천 명 가운데 하나인’ 및 ‘알려 주는’이 자연스럽고, 절 전체가 다음 절에 이어지는 조건절임을 유지합니다.
+  terminology: מַלְאָךְ는 ‘천사’, מֵלִיץ는 문맥상 ‘중재자’로 옮기되, ‘해석자’ 및 ‘사자’의 대안을 각주에 보존합니다. יָשְׁרוֹ는 교리적으로 특정하지 않고 ‘그에게 마땅한 바’로 번역하며 직역적 대안을 각주에 제시합니다.
+  issues:
+  - severity: high
+    issue: 본문에서 ‘중재자’(מֵלִיץ)가 누락되었습니다.
+    rationale: 히브리어의 מַלְאָךְ מֵלִיץ는 같은 중개적 인물을 수식하거나 동격으로 설명하는 핵심 명사구입니다. 각주에만 두지 않고 본문에 반영해야 합니다.
+  - severity: high
+    issue: ‘천천 명 중 한 사람’은 אֶחָד מִנִּי אָלֶף의 의미를 잘못 옮겼습니다.
+    rationale: 원문은 ‘천 명 가운데 하나’라는 희소성 표현이며, ‘사람’은 원문에 없습니다.
+  - severity: medium
+    issue: ‘그의 의로움’은 한국어에서 그 사람의 도덕적 덕성을 선언한다는 뜻으로 좁게 들릴 수 있습니다.
+    rationale: 문맥과 어휘상 그 사람에게 옳거나 마땅한 바를 알리는 의미를 보존하는 표현이 더 자연스럽습니다.
+  revised_text: 만일 그에게 천사, 곧 중재자가 있어 천 명 가운데 하나로서 사람에게 그에게 마땅한 바를 알려 준다면,
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘천사, 해석자’ 또는 ‘사자, 중재자’.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘사람에게 그의 의로움을 알려 주는 것’.
+    reason: lexical_alternative
+  revision_rationale: 원문의 조건절 구조와 다음 절로 이어지는 문장 미완결성을 유지했습니다. ‘천사, 곧 중재자’로 מַלְאָךְ מֵלִיץ를 본문에 반영하고, ‘천 명 가운데 하나’로 희소성 표현을 정확히 옮겼습니다. 마지막 구는 한국어에서 자연스러운 문맥적 의미로 번역하되, 직역에 가까운 대안을 각주에 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:45:58Z'
+  output_hash: 14657267d354c72f07908c5820b048c00e70ccaff0402a94969c48decc683936
+  usage:
+    completion_tokens: 1248
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 10842
+      pre_inference_ms: 135
+      service_tbt_ms: 9
+      service_ttft_ms: 441
+      service_ttlt_ms: 11141
+      total_duration_ms: 11015
+      user_visible_ttft_ms: 306
+    prompt_tokens: 1716
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2964
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
+  - unanchored footnote [b]

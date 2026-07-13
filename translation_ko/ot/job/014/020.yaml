@@ -20,11 +20,11 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 주께서는 그를 영원히 압도하시고 그는 지나가며, 그의 얼굴을 바꾸시고 그를 보내십니다.[a][b]
+  text: 주께서는 그를 영원히 압도하시고, 그는 떠나갑니다.[a] 주께서는 그의 얼굴을[b] 바꾸시고 그를 보내십니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 동사 הלך는 문자적으로는 ‘가다’이지만, 여기서는 생에서 물러나거나 인간 세계를 떠나는 뜻으로 쓰인 것으로 보입니다.
+    text: 또는 ‘그가 갑니다.’ 히브리어 동사 הלך는 문자적으로 ‘가다’이며, 여기서는 생에서 물러나거나 인간 세계를 떠나는 뜻일 수 있습니다.
     reason: lexical_alternative
   - marker: b
     text: 히브리어 פנים은 문자 그대로 ‘얼굴’이지만, ‘외양’이나 ‘용모’까지 가리킬 수 있습니다.
@@ -82,4 +82,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 주께서는 그를 영원히 압도하시고 그는 지나가며, 그의 얼굴을 바꾸시고 그를 보내십니다.[a][b]
+  to: 주께서는 그를 영원히 압도하시고, 그는 떠나갑니다.[a] 주께서는 그의 얼굴을[b] 바꾸시고 그를 보내십니다.
+  rationale: ‘지나가며’를 독립 절인 ‘그는 떠나갑니다’로 고쳐 원문의 절 구조와 현대 한국어의 자연스러움을 회복했습니다. 죽음을 명시하지 않고 ‘가다/떠나다’의 여지를 보존하도록 각주에 문자적 대안을 제시했습니다. 또한 각주 표지를 각각의 설명 대상 바로 뒤로 옮겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:42:55Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 2인칭 단수 동사 연쇄(‘주께서는 … 하시고/바꾸시고/보내십니다’)와 ‘그가 간다’라는 절을 구분하여 드러내야 합니다. 초안의 ‘그는 지나가며’는 וַיַּהֲלֹךְ의 독립 절을 자연스럽게 재현하지 못하고 한국어에서 의미가 불분명합니다.
+  naturalness: ‘그는 지나가며’는 이 문맥에서 ‘통과하면서’처럼 들려 자연스럽지 않습니다. ‘그는 떠나갑니다’는 원문의 ‘가다/떠나다’의 폭을 유지하면서도 한국어 시문으로 자연스럽습니다. 각주 표지도 해당 어휘 바로 뒤에 배치하는 편이 명확합니다.
+  terminology: ‘압도하시고’, ‘얼굴’, ‘보내십니다’는 תקף, פנים, שלח의 의미 범위와 존칭 합쇼체에 적절합니다. ‘떠나갑니다’는 죽음을 단정하지 않으면서 문맥상 떠남을 전달합니다.
+  issues:
+  - severity: medium
+    issue: ‘그는 지나가며’가 וַיַּהֲלֹךְ의 독립 절을 부자연스럽게 처리합니다.
+    rationale: 히브리어는 ‘그가 간다/떠난다’라는 완결된 절입니다. ‘-며’는 뒤 절에 종속시키며, ‘지나가다’는 이 문맥에서 단순 통과의 뜻으로도 이해되어 떠남의 의미를 흐립니다.
+  - severity: low
+    issue: 각주 표지 [a]와 [b]가 각각 설명 대상인 ‘떠나갑니다’와 ‘얼굴’에 붙어 있지 않습니다.
+    rationale: '[a]는 הלך의 의미 선택을, [b]는 פנים의 의미 범위를 설명하므로 해당 낱말 뒤에 배치해야 독자가 각주의 대상을 분명히 알 수 있습니다.'
+  revised_text: 주께서는 그를 영원히 압도하시고, 그는 떠나갑니다.[a] 주께서는 그의 얼굴을[b] 바꾸시고 그를 보내십니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘그가 갑니다.’ 히브리어 동사 הלך는 문자적으로 ‘가다’이며, 여기서는 생에서 물러나거나 인간 세계를 떠나는 뜻일 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 히브리어 פנים은 문자 그대로 ‘얼굴’이지만, ‘외양’이나 ‘용모’까지 가리킬 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: ‘지나가며’를 독립 절인 ‘그는 떠나갑니다’로 고쳐 원문의 절 구조와 현대 한국어의 자연스러움을 회복했습니다. 죽음을 명시하지 않고 ‘가다/떠나다’의 여지를 보존하도록 각주에 문자적 대안을 제시했습니다. 또한 각주 표지를 각각의 설명 대상 바로 뒤로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:42:55Z'
+  output_hash: de4c4d5d83509d6a7fd3896cc8a3fb13d796f27742bc347f7f98800a444a714d
+  usage:
+    completion_tokens: 1204
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 479
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 125
+      engine_ttlt_ms: 9749
+      pre_inference_ms: 294
+      service_tbt_ms: 8
+      service_ttft_ms: 588
+      service_ttlt_ms: 10298
+      total_duration_ms: 10018
+      user_visible_ttft_ms: 294
+    prompt_tokens: 2384
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3588
+  applied_revision: true
+  auto_apply_blocked_errors: []

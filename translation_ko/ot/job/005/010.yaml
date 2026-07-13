@@ -20,8 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 땅의 표면에 비를 내리시고, 들판의 표면에 물을 보내십니다.
+  text: 그분은 땅[a] 위에 비를 내리시고, 들판[b] 위에 물을 보내십니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘나라’. 히브리어 에레츠는 문맥에 따라 ‘땅’ 또는 ‘나라’를 뜻할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘넓은 바깥 곳’, ‘거리들’ 또는 ‘광장들’. 히브리어 후초트는 열린 장소나 거리·광장을 가리킬 수 있으나, 여기서는 비와 물의 문맥상 들판 같은 바깥 공간으로 이해할 수 있습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: הַנֹּתֵן
   english_pob_choice: who gives
@@ -77,4 +84,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 땅의 표면에 비를 내리시고, 들판의 표면에 물을 보내십니다.
+  to: 그분은 땅[a] 위에 비를 내리시고, 들판[b] 위에 물을 보내십니다.
+  rationale: 한국어에서 부자연스러운 ‘표면’의 반복을 ‘위에’로 고쳐 자연스러운 현대 합쇼체 문장을 만들었습니다. 원문의 병행 구조와 ‘비를 내리시고/물을 보내십니다’의 동사 대조는 유지했으며, 다의적인 지명·공간 어휘는 각주로 처리했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T15:40:20Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어의 두 현재분사(‘비를 내리시고/물을 보내십니다’)와 두 행의 병행 구조를 충실히 반영합니다. חוּצוֹת는 문맥상 넓은 바깥 공간으로 이해하여 ‘들판’으로 옮기되, 가능한 ‘거리/광장’의 의미는 각주로 보존합니다.
+  naturalness: ‘땅의 표면’과 ‘들판의 표면’은 현대 한국어에서 지나치게 기술적이고 반복이 부자연스럽습니다. ‘땅 위에/들판 위에’가 자연스러우면서도 원문의 병행을 충분히 드러냅니다.
+  terminology: ‘비를 내리시다’는 자연스럽고 격식 있는 표현이며, ‘물을 보내십니다’는 원문의 동사와 구별을 유지합니다. ‘그분’은 앞 절에서 하나님을 가리키는 문맥을 전제한 존중 표현입니다.
+  issues:
+  - severity: medium
+    issue: ‘땅의 표면에’, ‘들판의 표면에’라는 표현
+    rationale: 히브리어 עַל־פְּנֵי의 직역적 이미지를 살리려 했으나, 한국어에서는 ‘표면’의 반복이 부자연스럽고 과학·기술 문체처럼 들립니다. ‘위에’로 옮겨 자연스러운 병행을 유지하는 편이 낫습니다.
+  - severity: low
+    issue: 어휘적 대안에 대한 각주 부재
+    rationale: אָרֶץ는 ‘땅/나라’, חוּצוֹת는 ‘들판/넓은 바깥 곳/거리·광장’으로 해석될 수 있습니다. 본문은 문맥상 적절한 선택을 하되, 특히 חוּצוֹת의 의미 범위를 각주로 밝혀 모호성을 보존하는 것이 좋습니다.
+  revised_text: 그분은 땅[a] 위에 비를 내리시고, 들판[b] 위에 물을 보내십니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘나라’. 히브리어 에레츠는 문맥에 따라 ‘땅’ 또는 ‘나라’를 뜻할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘넓은 바깥 곳’, ‘거리들’ 또는 ‘광장들’. 히브리어 후초트는 열린 장소나 거리·광장을 가리킬 수 있으나, 여기서는 비와 물의 문맥상 들판 같은 바깥 공간으로 이해할 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 한국어에서 부자연스러운 ‘표면’의 반복을 ‘위에’로 고쳐 자연스러운 현대 합쇼체 문장을 만들었습니다. 원문의 병행 구조와 ‘비를 내리시고/물을 보내십니다’의 동사 대조는 유지했으며, 다의적인 지명·공간 어휘는 각주로 처리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T15:40:20Z'
+  output_hash: 6b01852d8a7ddd74ca6b8b812df2b05a2e3a8f53874a4295251c42dac49cd5ba
+  usage:
+    completion_tokens: 1138
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 427
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 119
+      engine_ttlt_ms: 9497
+      pre_inference_ms: 247
+      service_tbt_ms: 8
+      service_ttft_ms: 707
+      service_ttlt_ms: 10152
+      total_duration_ms: 10037
+      user_visible_ttft_ms: 459
+    prompt_tokens: 2175
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3313
+  applied_revision: true
+  auto_apply_blocked_errors: []
