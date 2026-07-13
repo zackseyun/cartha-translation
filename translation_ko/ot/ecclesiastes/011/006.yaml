@@ -20,14 +20,14 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 아침에 네 씨를 뿌리고, 저녁에도 네 손을 거두지 마십시오. 이것도, 저것도 어느 것이 잘 될지 네가 알지 못하기 때문입니다. 둘이 함께 다 좋을 수도 있습니다.[a][b]
+  text: 아침에 씨를 뿌리고, 저녁에도 손을 쉬게 두지 마십시오.[b] 이것이 잘될지[a] 저것이 잘될지, 또는 둘 다 똑같이 좋을지 알지 못하기 때문입니다.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘잘 될지’는 히브리어 יִכְשָׁר의 ‘성공하다/잘 풀리다’라는 뜻을 반영한 번역입니다.
+    text: ‘잘될지’는 히브리어 יִכְשָׁר를 옮긴 말로, ‘성공할지’ 또는 ‘잘 풀릴지’로도 번역할 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘네 손을 거두지 마십시오’는 히브리어의 직역 ‘네 손이 쉬게 두지 말라’라는 관용구를 자연스럽게 풀어 옮긴 것입니다.
+    text: 직역하면 ‘네 손을 쉬게 두지 마십시오’입니다. 일을 그치지 말라는 뜻의 관용적 표현입니다.
     reason: cultural_note
 lexical_decisions:
 - source_word: בַּבֹּקֶר / וְלָעֶרֶב
@@ -92,4 +92,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 아침에 네 씨를 뿌리고, 저녁에도 네 손을 거두지 마십시오. 이것도, 저것도 어느 것이 잘 될지 네가 알지 못하기 때문입니다. 둘이 함께 다 좋을 수도 있습니다.[a][b]
+  to: 아침에 씨를 뿌리고, 저녁에도 손을 쉬게 두지 마십시오.[b] 이것이 잘될지[a] 저것이 잘될지, 또는 둘 다 똑같이 좋을지 알지 못하기 때문입니다.
+  rationale: 원문의 농경 비유, 아침과 저녁의 병행, ‘이것 또는 저것’의 대비, 그리고 둘 다 좋은 결과일 가능성까지 모두 화자가 알지 못한다는 문장 구조를 보존했습니다. 또한 각주를 해당 번역 어구에 직접 연결했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:45:53Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 문장의 파종과 지속 노동의 권고는 대체로 잘 반영했습니다. 그러나 ‘이것도, 저것도 어느 것이 잘 될지’는 히브리어의 ‘어느 것이 잘될지, 이것인지 저것인지’라는 양자 대비를 한국어에서 부자연스럽게 처리합니다. 또한 마지막 ‘둘이 함께 다 좋을 수도 있습니다’는 원문의 ‘둘 다 한결같이 좋을지’를 독립된 가능성으로 제시하여, 앞선 ‘알지 못한다’의 범위 안에 두는 편이 더 충실합니다.
+  naturalness: ‘손을 거두지 마십시오’도 문맥상 이해되지만, 한국어에서는 손을 물리적으로 철회한다는 뜻이 두드러질 수 있습니다. ‘손을 쉬게 두지 마십시오’는 원문의 관용적 이미지를 유지하면서 문맥상 일을 멈추지 말라는 뜻을 명확히 합니다. 수정문은 대구와 논리적 연결도 더 자연스럽습니다.
+  terminology: ‘씨를 뿌리다’, ‘잘되다’, ‘좋다’는 농경 비유와 원문의 비신학적 지혜 어휘를 적절히 보존합니다. ‘형통’과 같은 교파적·종교적 함의가 강한 표현은 사용하지 않았습니다.
+  issues:
+  - severity: medium
+    issue: 양자 대비의 한국어 표현이 부자연스럽고 의미 관계가 흐립니다.
+    rationale: ‘이것도, 저것도 어느 것이 잘 될지’는 둘 가운데 어느 쪽인지라는 구문을 매끄럽게 나타내지 못합니다. ‘이것이 잘될지 저것이 잘될지’로 풀어 원문의 대조를 분명히 해야 합니다.
+  - severity: medium
+    issue: 마지막 절이 ‘알지 못한다’에 종속되어야 할 가능성을 충분히 반영하지 못합니다.
+    rationale: וְאִם은 앞선 간접의문문을 이어 ‘또는 둘 다 ... 좋을지’를 나타냅니다. ‘둘이 함께 다 좋을 수도 있습니다’라고 별도 진술로 처리하기보다, 알 수 없는 경우의 하나로 연결하는 것이 더 가깝습니다.
+  - severity: low
+    issue: 각주 표지가 해당 어구에 붙어 있지 않습니다.
+    rationale: 현재 [a][b]가 문장 끝에 함께 놓여 있어 각각 ‘잘될지’와 ‘손을 거두지 마십시오’에 관한 주석이라는 점이 불명확합니다. 해당 단어·구에 인접시켜야 합니다.
+  revised_text: 아침에 씨를 뿌리고, 저녁에도 손을 쉬게 두지 마십시오.[b] 이것이 잘될지[a] 저것이 잘될지, 또는 둘 다 똑같이 좋을지 알지 못하기 때문입니다.
+  revised_footnotes:
+  - marker: a
+    text: ‘잘될지’는 히브리어 יִכְשָׁר를 옮긴 말로, ‘성공할지’ 또는 ‘잘 풀릴지’로도 번역할 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘네 손을 쉬게 두지 마십시오’입니다. 일을 그치지 말라는 뜻의 관용적 표현입니다.
+    reason: cultural_note
+  revision_rationale: 원문의 농경 비유, 아침과 저녁의 병행, ‘이것 또는 저것’의 대비, 그리고 둘 다 좋은 결과일 가능성까지 모두 화자가 알지 못한다는 문장 구조를 보존했습니다. 또한 각주를 해당 번역 어구에 직접 연결했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:45:53Z'
+  output_hash: c4d97298873ac3bea40c115e8585d88d25a32af0b1088dd603d8043ee30abac5
+  usage:
+    completion_tokens: 1280
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 432
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 10460
+      pre_inference_ms: 84
+      service_tbt_ms: 8
+      service_ttft_ms: 377
+      service_ttlt_ms: 10691
+      total_duration_ms: 10621
+      user_visible_ttft_ms: 292
+    prompt_tokens: 2772
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4052
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,15 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 네 아버지의 훈계를 들으라. 너를 낳으신 그분이며, 네 어머니가 늙으실 때에 그를 멸시하지 말라.[a][b]
+  text: 너를 낳은 네 아버지의 말을 들으십시오. 네 어머니가 늙으셨을 때 그분을 멸시하지 마십시오.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 '네 아버지를 들으라. 이 낳으신 자를 들으라.' 히브리어는 '네 아버지' 뒤에 지시사 ('이 자') 를 사용하여 강조하며, 이를 영어 관용적으로 '낳으신 그분'으로 번역하였다.
-    reason: alternative_reading
+    text: 직역하면, '너를 낳은 네 아버지의 말을 들으십시오.' 히브리어는 '네 아버지' 뒤에 지시사 '이 사람'을 덧붙여 그를 강조합니다.
+    reason: lexical_alternative
   - marker: b
-    text: 또는 '그녀가 늙으실 때에.' 히브리어의 완전 동사는 늙음이라는 상태의 결과를 강조할 수 있다.
-    reason: alternative_reading
+    text: 또는 '네 어머니가 늙으셨을 때.' 히브리어 완전동사는 늙게 된 결과 상태를 나타낼 수 있습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: שְׁמַ֣ע
   english_pob_choice: Listen to your father, who fathered you, and
@@ -45,4 +45,67 @@ ai_draft:
   usage: {}
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 네 아버지의 훈계를 들으라. 너를 낳으신 그분이며, 네 어머니가 늙으실 때에 그를 멸시하지 말라.[a][b]
+  to: 너를 낳은 네 아버지의 말을 들으십시오. 네 어머니가 늙으셨을 때 그분을 멸시하지 마십시오.[a][b]
+  rationale: 원문의 병렬 구조와 지시 대상을 바로잡고, 첨가된 '훈계'를 제거했습니다. 아버지를 수식하는 '너를 낳은'을 보존했으며, 어머니를 가리키는 목적어는 높임 대명사 '그분'으로 명확히 했습니다. 각주도 영어 번역 언급을 제거하고 원문에 근거해 수정했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:44:20Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 원문은 '너를 낳은 네 아버지의 말을 들으라'는 뜻입니다. 초안의 '훈계'는 원문에 없으며, 후반의 남성 대명사 '그를'은 늙은 어머니를 가리켜야 하므로 명백한 지시 대상 오류입니다. 아버지에게 '낳으신'이라는 높임 표현을 적용한 것도 문맥상 부자연스럽습니다.
+  naturalness: '''네 아버지의 말을 들으십시오''와 ''네 어머니가 늙으셨을 때 멸시하지 마십시오''는 현대 표준 한국어 합쇼체로 자연스럽습니다. ''그분이며''는 불필요하게 어색한 연결입니다.'
+  terminology: שמע는 여기서 '말을 듣다/귀를 기울이다'로 옮길 수 있습니다. ילד는 아버지가 주어이므로 '너를 낳은'이 적절합니다. בוז는 '멸시하다'로 유지할 수 있습니다. 원문에는 부모에 대한 높임을 요구하는 문법 표지가 없으므로 2인칭 명령은 합쇼체로, 부모 서술은 중립적으로 번역했습니다.
+  issues:
+  - severity: high
+    issue: 후반부 대명사 지시 대상 오류
+    rationale: '''네 어머니가 늙으실 때에 그를 멸시하지 말라''에서 ''그를''은 문법적으로 아버지를 가리키지만, 히브리어 목적어는 늙은 어머니를 가리킵니다.'
+  - severity: medium
+    issue: 원문에 없는 '훈계' 첨가
+    rationale: שמע לְאָבִיךָ는 '네 아버지의 말을 듣다/아버지에게 귀 기울이다'이지 특정한 '훈계'를 명시하지 않습니다.
+  - severity: medium
+    issue: 아버지 관련 절의 의미와 표현 부정확
+    rationale: יְלָדֶךָ는 '너를 낳은'이며, '낳으신 그분'은 불필요한 높임과 어색한 대명사 연결을 더합니다.
+  - severity: medium
+    issue: 각주가 영어 번역 과정을 언급하고 원문 대안을 정확히 제시하지 못함
+    rationale: 한국어 각주는 히브리어 본문과 한국어 번역의 관계를 설명해야 하며, '이 낳으신 자를 들으라'는 자연스럽지도 정확한 대안도 아닙니다.
+  revised_text: 너를 낳은 네 아버지의 말을 들으십시오. 네 어머니가 늙으셨을 때 그분을 멸시하지 마십시오.[a][b]
+  revised_footnotes:
+  - marker: a
+    text: 직역하면, '너를 낳은 네 아버지의 말을 들으십시오.' 히브리어는 '네 아버지' 뒤에 지시사 '이 사람'을 덧붙여 그를 강조합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 '네 어머니가 늙으셨을 때.' 히브리어 완전동사는 늙게 된 결과 상태를 나타낼 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 병렬 구조와 지시 대상을 바로잡고, 첨가된 '훈계'를 제거했습니다. 아버지를 수식하는 '너를 낳은'을 보존했으며, 어머니를 가리키는 목적어는 높임 대명사 '그분'으로 명확히 했습니다. 각주도 영어 번역 언급을 제거하고 원문에 근거해 수정했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:44:20Z'
+  output_hash: 424938036b4cc5c72eab84d8c5647be6418970fa40de8af40a91eba9aefac991
+  usage:
+    completion_tokens: 852
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 0
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 124
+      engine_ttlt_ms: 6555
+      pre_inference_ms: 91
+      service_tbt_ms: 8
+      service_ttft_ms: 397
+      service_ttlt_ms: 6802
+      total_duration_ms: 6721
+      user_visible_ttft_ms: 306
+    prompt_tokens: 1595
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2447
+  applied_revision: true
+  auto_apply_blocked_errors: []

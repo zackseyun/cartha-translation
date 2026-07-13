@@ -20,8 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 겨울 때문에 게으른 사람은 밭갈이를 하지 않습니다. 수확 때가 되면 그는 찾지만, 아무것도 없습니다.
+  text: 겨울 때문에[a] 게으른 사람은 밭갈이를 하지 않습니다. 수확 때에 그는 구하지만[b], 아무것도 없습니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘겨울에’. 히브리어 전치사는 시간(‘겨울에’) 또는 원인(‘겨울 때문에’)으로 이해될 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘수확 때에 묻습니다’. 히브리어 동사는 ‘묻다’를 뜻할 수 있으며, 여기서는 수확물을 구하거나 요청하는 뜻으로 이해될 수 있습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: מֵחֹרֶף
   english_pob_choice: Because of winter
@@ -71,4 +78,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 겨울 때문에 게으른 사람은 밭갈이를 하지 않습니다. 수확 때가 되면 그는 찾지만, 아무것도 없습니다.
+  to: 겨울 때문에[a] 게으른 사람은 밭갈이를 하지 않습니다. 수확 때에 그는 구하지만[b], 아무것도 없습니다.
+  rationale: ‘찾지만’을 ‘구하지만’으로 바꾸어 히브리어 동사의 요청·구함의 의미를 더 가깝게 반영했습니다. 원문이 생략한 목적어는 보충하지 않았고, 인과적·시간적 해석 및 동사의 의미 대안은 각주로 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:43:17Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 절의 ‘겨울 때문에’는 מִן의 인과적 해석을 적절히 반영하며, ‘밭갈이’를 하지 않는다는 표현도 חָרַשׁ의 농경 의미에 충실합니다. 그러나 יִשְׁאַל은 기본적으로 ‘묻다/요청하다’이며, 문맥상 수확물을 ‘구하다’라는 뜻으로 이해하는 편이 ‘찾다’보다 더 가깝습니다. אָיִן의 목적어 없는 간결성은 ‘아무것도 없습니다’로 유지할 수 있습니다.
+  naturalness: 합쇼체와 격언적 문체는 자연스럽습니다. 다만 ‘수확 때가 되면 그는 찾지만’은 한국어에서 무엇을 찾는지 다소 부자연스럽게 느껴질 수 있으므로, 목적어를 보충하지 않으면서 요청·구함의 뜻을 살리는 ‘수확 때에 그는 구하지만’이 더 자연스럽습니다.
+  terminology: ‘게으른 사람’, ‘밭갈이’, ‘수확 때’는 현대 표준어에 적절합니다. יִשְׁאַל에는 ‘구하다’를 사용하고, 본문의 인과적 전치사 및 동사의 어휘적 대안은 각주로 보존하는 것이 좋습니다.
+  issues:
+  - severity: medium
+    issue: יִשְׁאַל을 ‘찾지만’으로 번역함
+    rationale: ‘찾다’도 문맥상 가능한 넓은 해석이지만, 히브리어 שׁאל의 기본 의미인 묻다·요청하다와 수확물의 결핍이라는 문맥을 고려하면 ‘구하다’가 더 직접적입니다.
+  - severity: low
+    issue: 원문의 해석상 대안에 대한 각주가 없음
+    rationale: מֵחֹרֶף의 시간적/인과적 가능성과 יִשְׁאַל의 ‘묻다/구하다’ 의미 범위는 번역 선택에 영향을 주므로, 영어 POB 감사 기록에 맞추어 한국어 각주 앵커와 내용을 제공하는 것이 바람직합니다.
+  revised_text: 겨울 때문에[a] 게으른 사람은 밭갈이를 하지 않습니다. 수확 때에 그는 구하지만[b], 아무것도 없습니다.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘겨울에’. 히브리어 전치사는 시간(‘겨울에’) 또는 원인(‘겨울 때문에’)으로 이해될 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘수확 때에 묻습니다’. 히브리어 동사는 ‘묻다’를 뜻할 수 있으며, 여기서는 수확물을 구하거나 요청하는 뜻으로 이해될 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: ‘찾지만’을 ‘구하지만’으로 바꾸어 히브리어 동사의 요청·구함의 의미를 더 가깝게 반영했습니다. 원문이 생략한 목적어는 보충하지 않았고, 인과적·시간적 해석 및 동사의 의미 대안은 각주로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:43:17Z'
+  output_hash: e25e84d6ab6a9250eb7693296e4334be21f1bfb8a836c98dd572bd46b45b8532
+  usage:
+    completion_tokens: 1020
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 285
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 8047
+      pre_inference_ms: 283
+      service_tbt_ms: 8
+      service_ttft_ms: 1081
+      service_ttlt_ms: 8786
+      total_duration_ms: 8593
+      user_visible_ttft_ms: 799
+    prompt_tokens: 1771
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2791
+  applied_revision: true
+  auto_apply_blocked_errors: []

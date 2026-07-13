@@ -20,14 +20,14 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 네가 스스로 어리석게 굴어 높아졌거나, 악을 도모하였거든 — 네 손을 입에 대어라.[a][b]
+  text: 네가 스스로를 높이며 어리석게 행하였거나, 꾀를 냈거든[a] 네 손을 입에 대십시오.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 히브리어 동사는 ‘계획하다, 꾸미다, 도모하다’의 뜻을 가질 수 있으며, 지혜문맥에서는 대체로 부정적 의도를 띱니다.
+    text: 히브리어는 ‘계획하다, 꾸미다, 도모하다’라는 뜻을 가질 수 있습니다. 여기에는 목적어가 명시되어 있지 않습니다.
     reason: lexical_alternative
   - marker: b
-    text: 직역하면 ‘손을 입에’이며, 더 이상 말하지 않도록 멈추라는 관용구입니다.
+    text: 직역하면 ‘손을 입에’이며, 더 이상 말하지 않도록 멈추거나 자신을 절제하라는 관용구입니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: נָבַלְתָּ
@@ -89,4 +89,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 네가 스스로 어리석게 굴어 높아졌거나, 악을 도모하였거든 — 네 손을 입에 대어라.[a][b]
+  to: 네가 스스로를 높이며 어리석게 행하였거나, 꾀를 냈거든[a] 네 손을 입에 대십시오.[b]
+  rationale: 자기 높임이라는 재귀적 행위를 명확히 하고, 원문에 없는 ‘악’을 제거하여 목적어의 열린 의미를 보존했습니다. 두 각주를 각각 해당 어구 뒤에 배치하고, 표준어 현대 합쇼체에 맞게 명령형을 ‘대십시오’로 고쳤습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:45:08Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 조건절의 히트파엘형은 ‘높아지다’가 아니라 자신을 높이는 행위를 가리킵니다. 또한 זַמּוֹתָ의 목적어는 본문에 명시되지 않았으므로 ‘악을’은 보충하지 않는 것이 안전합니다.
+  naturalness: 초안의 ‘스스로 어리석게 굴어 높아졌거나’는 ‘어리석게 행동한 결과 높아졌다’로 읽힐 수 있습니다. ‘스스로를 높이며 어리석게 행하였거나’는 원문의 관계를 더 분명하고 자연스럽게 나타냅니다. 합쇼체 명령형도 ‘대십시오’가 요구된 문체에 맞습니다.
+  terminology: ‘스스로를 높이다’는 자기 높임의 반사적 의미를 보존합니다. ‘꾀를 내다’는 목적어가 없는 זמם의 열린 의미를 유지하면서 문맥상 숙고·도모의 뉘앙스를 자연스럽게 전달합니다. ‘손을 입에 대십시오’는 신체 관용구를 보존합니다.
+  issues:
+  - severity: high
+    issue: ‘높아졌거나’가 자기 높임의 의미를 약화하고 결과 상태로 바꿉니다.
+    rationale: בְהִתְנַשֵּׂא는 자신을 높이는 행위를 뜻하는 재귀형입니다. 한국어는 ‘스스로를 높이며/높이려고’처럼 행위자를 드러내야 합니다.
+  - severity: medium
+    issue: ‘악을 도모하였거든’이 본문에 없는 목적어 ‘악’을 보충합니다.
+    rationale: זַמּוֹתָ는 여기서 목적어 없이 쓰였으며, 부정적 함의는 가능하지만 ‘악’을 명시하는 것은 해석을 확정합니다.
+  - severity: medium
+    issue: 각주 표지가 해당 어구에 직접 붙어 있지 않고, a 각주의 내용도 ‘악을 도모하다’라는 보충과 긴장됩니다.
+    rationale: 어휘 대안 각주는 설명하는 표현 바로 뒤에 배치해야 하며, 목적어 미명시를 반영하도록 수정해야 합니다.
+  revised_text: 네가 스스로를 높이며 어리석게 행하였거나, 꾀를 냈거든[a] 네 손을 입에 대십시오.[b]
+  revised_footnotes:
+  - marker: a
+    text: 히브리어는 ‘계획하다, 꾸미다, 도모하다’라는 뜻을 가질 수 있습니다. 여기에는 목적어가 명시되어 있지 않습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 직역하면 ‘손을 입에’이며, 더 이상 말하지 않도록 멈추거나 자신을 절제하라는 관용구입니다.
+    reason: lexical_alternative
+  revision_rationale: 자기 높임이라는 재귀적 행위를 명확히 하고, 원문에 없는 ‘악’을 제거하여 목적어의 열린 의미를 보존했습니다. 두 각주를 각각 해당 어구 뒤에 배치하고, 표준어 현대 합쇼체에 맞게 명령형을 ‘대십시오’로 고쳤습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:45:08Z'
+  output_hash: 78bf08a29d945bddaca18a8856ef42b2f8be277a550dd67fa94053e90342ae0b
+  usage:
+    completion_tokens: 1285
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 538
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 164
+      engine_ttlt_ms: 10994
+      pre_inference_ms: 124
+      service_tbt_ms: 8
+      service_ttft_ms: 396
+      service_ttlt_ms: 11222
+      total_duration_ms: 11107
+      user_visible_ttft_ms: 272
+    prompt_tokens: 2359
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3644
+  applied_revision: true
+  auto_apply_blocked_errors: []

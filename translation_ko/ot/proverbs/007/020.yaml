@@ -17,12 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그가 손에 돈을 든 주머니를 가지고[a], 그가 집으로 올 때 보름달이 될 것입니다.
+  text: 그는 돈주머니를 손에 들고 갔습니다. 그는 보름날에야 집에 올 것입니다[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 또는 '정해진 날'로 번역할 수 있습니다. 히브리어 용어가 어렵고 일부에서는 '보름달'로 이해하기도 했으나, 여기서는 '보름달'이 문맥에 가장 잘 부합합니다.
-    reason: alternative_reading
+    text: 또는 ‘정해진 날’. 히브리어 단어의 뜻은 확실하지 않으며, 일부는 ‘초하루’로 이해합니다. 그러나 여기서는 ‘보름날’이 문맥에 가장 잘 맞습니다.
+    reason: lexical_alternative
 lexical_decisions:
 - source_word: צְֽרוֹר
   english_pob_choice: He took a bag of money in his
@@ -39,4 +39,61 @@ ai_draft:
   usage: {}
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그가 손에 돈을 든 주머니를 가지고[a], 그가 집으로 올 때 보름달이 될 것입니다.
+  to: 그는 돈주머니를 손에 들고 갔습니다. 그는 보름날에야 집에 올 것입니다[a].
+  rationale: 원문의 두 완료/미래 진술을 한국어 문장으로 분명히 구분하고, 귀가의 시간 표현을 직접적으로 옮겼습니다. 논쟁적인 히브리어 낱말의 대안적 이해는 본문에 강요하지 않고 각주에 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:37:26Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 צְרוֹר הַכֶּסֶף를 ‘돈을 든 주머니’로 대체로 옮겼지만, לָקַח בְיָדוֹ(‘손에 ... 들고/가지고 갔다’)의 완료 동작이 ‘가지고’로 약화되었고, 귀가 시점을 ‘그가 집으로 올 때 보름달이 될 것입니다’라고 하여 원문의 ‘보름에 그가 집에 올 것이다’를 조건절처럼 바꾸었습니다.
+  naturalness: ‘그는 돈주머니를 손에 들고 갔습니다. 그는 보름날에야 집에 올 것입니다.’는 현대 표준 한국어 합쇼체로 자연스럽고, 남편이 당분간 돌아오지 않는다는 문맥도 무리 없이 드러냅니다.
+  terminology: ‘돈주머니’는 הַכֶּסֶף의 화폐적 용법과 צְרוֹר의 의미를 잘 전달합니다. 논쟁적인 הַכֵּסֶא는 본문에서 ‘보름날’로 옮기되, ‘정해진 날’ 및 ‘초하루’라는 대안은 각주에 보존해야 합니다.
+  issues:
+  - severity: high
+    issue: 귀가 시점의 문장 구조가 바뀜
+    rationale: ‘그가 집으로 올 때 보름달이 될 것입니다’는 보름달이 되는 때를 조건·상황으로 제시합니다. 히브리어는 보름(또는 해당 날짜)을 귀가의 시점으로 제시합니다.
+  - severity: medium
+    issue: 첫 절의 완료 동작이 충분히 반영되지 않음
+    rationale: לָקַח는 ‘그가 ... 들고 갔다/가져갔다’라는 완료 동작입니다. 단순히 ‘가지고’라고 하면 동작성이 약해집니다.
+  - severity: high
+    issue: 각주의 대안 설명이 본문 선택과 모순됨
+    rationale: 본문이 이미 ‘보름달’을 채택했는데, 초안 각주는 일부가 ‘보름달’로 이해한다고 합니다. 영어 감사 기록과 원어의 논쟁성을 따라 대안으로 ‘초하루’를 제시해야 합니다.
+  revised_text: 그는 돈주머니를 손에 들고 갔습니다. 그는 보름날에야 집에 올 것입니다[a].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘정해진 날’. 히브리어 단어의 뜻은 확실하지 않으며, 일부는 ‘초하루’로 이해합니다. 그러나 여기서는 ‘보름날’이 문맥에 가장 잘 맞습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 두 완료/미래 진술을 한국어 문장으로 분명히 구분하고, 귀가의 시간 표현을 직접적으로 옮겼습니다. 논쟁적인 히브리어 낱말의 대안적 이해는 본문에 강요하지 않고 각주에 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:37:26Z'
+  output_hash: 6b517ab5c65a8617b51eda2315b920bcdba82de4f0c0b2ac6dcccd9240f952d7
+  usage:
+    completion_tokens: 887
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 182
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 146
+      engine_ttlt_ms: 7341
+      pre_inference_ms: 84
+      service_tbt_ms: 8
+      service_ttft_ms: 392
+      service_ttlt_ms: 7584
+      total_duration_ms: 7523
+      user_visible_ttft_ms: 309
+    prompt_tokens: 1394
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2281
+  applied_revision: true
+  auto_apply_blocked_errors: []

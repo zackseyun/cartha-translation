@@ -93,4 +93,62 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 핵심 어휘와 역사적 암시는 대체로 충실합니다. 그러나 ‘미디안이 오렙 바위에서 치심을 당한 것’은 히브리어의 비교구와 주어 관계를 한국어에서 어색하게 만들며, 첫 문장을 마침표로 끊으면 뒤의 비교가 원문의 ‘채찍을 일으키심’에 직접 연결되는 구조가 약해집니다. ‘이집트 때처럼’은 בְּדֶרֶךְ מִצְרָיִם의 출애굽적·방식적 암시를 자연스럽게 보존합니다.
+  naturalness: ‘오렙 바위에서 미디안을 치신 것처럼’이 현대 표준 한국어로 자연스럽고, 쉼표로 연결하여 원문의 비교 구조를 명료하게 드러냅니다. ‘그의 지팡이’와 ‘그는 그것을’은 원문의 대명사 지시 대상에 남아 있는 긴장을 해소하지 않고 보존합니다.
+  terminology: ‘만군의 야훼’, ‘채찍’, ‘미디안’, ‘오렙 바위’, ‘지팡이’는 일관되고 적절합니다. ‘이집트 때처럼’은 출애굽 사건을 함축하되 본문에 없는 상세를 본문 안에 보태지 않습니다.
+  issues:
+  - severity: medium
+    issue: 첫 절과 비교절이 마침표로 분리되어 있습니다.
+    rationale: כְּמַכַּת 이하가 야훼께서 채찍을 일으키시는 행위를 비교·수식하므로, 한국어에서도 쉼표로 이어야 원문의 문장 구조와 의미 관계가 보존됩니다.
+  - severity: medium
+    issue: ‘미디안이 오렙 바위에서 치심을 당한 것’은 부자연스럽고 행위 주체의 관계가 흐립니다.
+    rationale: 원문은 ‘오렙 바위에서 미디안을 치신 것/미디안을 친 타격처럼’이라는 비교입니다. 능동형 ‘오렙 바위에서 미디안을 치신 것처럼’이 자연스럽고 본문의 문법적 관계를 더 잘 반영합니다.
+  - severity: low
+    issue: 교차참조 각주 b의 표지가 ‘오렙 바위’가 아니라 뒤의 ‘바다’ 절에 놓여 있습니다.
+    rationale: 각주의 내용이 오렙 바위와 사사기 7:25에 관한 것이므로 해당 명사구 바로 뒤에 표지를 두어 각주 앵커를 바로잡아야 합니다.
+  revised_text: 만군의 야훼께서 그를 향해 채찍을 일으키실 것입니다. 이는 오렙 바위에서 미디안을 치신 것처럼 될 것이며[b], 그의 지팡이는 바다 위에 있을 것이고, 그는 그것을 이집트 때처럼 들어 올리실 것입니다[c]
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘미디안에 가한 타격처럼.’ 히브리어 구절은 다가올 심판을 야훼께서 미디안을 치신 일과 비교합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘오렙 바위’는 사사기 7:25을 떠올리게 하며, 거기서 미디안의 지도자 오렙이 죽임을 당했습니다.
+    reason: cross_reference
+  - marker: c
+    text: 또는 ‘이집트에서처럼.’ 이는 야훼께서 바다 위로 지팡이를 드셨던 출애굽 장면을 가리키는 것으로 보입니다.
+    reason: alternative_reading
+  revision_rationale: 비교절을 앞 문장과 연결하고, ‘미디안이 … 치심을 당한 것’이라는 어색한 수동 구성을 원문의 비교 관계를 살리는 자연스러운 능동 구성으로 고쳤습니다. 또한 오렙 관련 각주를 해당 어구에 붙였습니다. 원문과 영어 감사 기록에서 논의된 지팡이와 동작의 대명사 지시 대상은 본문에서 확정하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:48:13Z'
+  output_hash: fcc6871e8d8b54e49ecf4c346ff90c1106e497cc3eecbbcbbae1f109044fe3ac
+  usage:
+    completion_tokens: 1395
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 431
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 150
+      engine_ttlt_ms: 11763
+      pre_inference_ms: 284
+      service_tbt_ms: 8
+      service_ttft_ms: 525
+      service_ttlt_ms: 12119
+      total_duration_ms: 11848
+      user_visible_ttft_ms: 241
+    prompt_tokens: 3499
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 4894
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

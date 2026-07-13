@@ -20,7 +20,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그는 눈으로 윙크하고, 발로 신호하며, 손가락으로 가리킵니다.[a][b]
+  text: 그는 눈을 찡긋거리며, 발로 신호하며[a], 손가락으로 가리킵니다[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -78,4 +78,61 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그는 눈으로 윙크하고, 발로 신호하며, 손가락으로 가리킵니다.[a][b]
+  to: 그는 눈을 찡긋거리며, 발로 신호하며[a], 손가락으로 가리킵니다[b].
+  rationale: 발 동작을 설명하는 각주 a와 손가락 동작을 설명하는 각주 b를 각 해당 어구 직후에 배치했습니다. 또한 첫 동작을 자연스러운 한국어 눈짓 표현으로 다듬고, 동작들의 병렬성을 유지했습니다. 원문의 불확실한 발 동작은 본문과 각주에서 모두 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:37:05Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 세 동작을 눈·발·손가락으로 하는 은밀한 신호로 이해한 것은 히브리어 원문과 문맥에 충실합니다. 다만 희귀 동사 מֹלֵל에 관한 각주 a는 발의 동작을 설명하므로, 현재처럼 문장 끝에 두 각주를 함께 붙이면 해당 어휘와의 연결이 불명확합니다.
+  naturalness: ‘눈으로 윙크하고’는 이해 가능하지만, 격식 있는 성경 한국어에서는 ‘눈을 찡긋거리며’가 더 자연스럽고 원문의 눈짓이라는 동작을 매끄럽게 드러냅니다. 세 히브리어 분사의 병렬을 살려 모두 ‘-며’로 맞추는 것이 좋습니다.
+  terminology: ‘발로 신호하며’는 מֹלֵל의 불확실성을 과도하게 특정하지 않는 적절한 선택입니다. ‘손가락으로 가리키며’도 מֹרֶה의 물리적 지시/신호 의미를 문맥에 맞게 보존합니다.
+  issues:
+  - severity: medium
+    issue: 각주 a의 표지 위치가 설명 대상과 맞지 않습니다.
+    rationale: 각주 a는 מֹלֵל 및 ‘발로 신호하며’의 대안을 설명하지만, 현 번역에서는 문장 끝에 [a][b]가 함께 있어 ‘눈으로 윙크하고’에 붙은 영어 감사 흔적과 동일한 혼동을 재현합니다. [a]는 ‘발로 신호하며’ 뒤에, [b]는 ‘손가락으로 가리키며’ 뒤에 두어야 합니다.
+  - severity: low
+    issue: 첫 동작과 문장 병렬의 표현을 다듬을 수 있습니다.
+    rationale: ‘눈을 찡긋거리며’는 ‘눈으로 윙크하고’보다 자연스러운 표준 한국어이며, 세 분사를 모두 연결형으로 두면 원문의 연속된 몸짓 묘사가 더 잘 살아납니다.
+  revised_text: 그는 눈을 찡긋거리며, 발로 신호하며[a], 손가락으로 가리킵니다[b].
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘발을 끌며/문지르며’ 또는 더 일반적으로 ‘발로 신호를 보내며’로도 옮길 수 있습니다. 히브리어 동사 מֹלֵל은 희귀하여 정확한 몸짓은 확실하지 않지만, 문맥상 은밀한 신체 신호를 가리키는 것은 분명합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘손가락으로 가르치며/지시하며’로도 옮길 수 있습니다. 여기서는 말로 가르친다기보다 몸짓 목록의 일부이므로 ‘가리키다’를 택했습니다.
+    reason: lexical_alternative
+  revision_rationale: 발 동작을 설명하는 각주 a와 손가락 동작을 설명하는 각주 b를 각 해당 어구 직후에 배치했습니다. 또한 첫 동작을 자연스러운 한국어 눈짓 표현으로 다듬고, 동작들의 병렬성을 유지했습니다. 원문의 불확실한 발 동작은 본문과 각주에서 모두 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:37:05Z'
+  output_hash: bcdbffb1aa42ee16a68f4b86e858072c5b1d0cff74cd071b69607bee5e6c87ca
+  usage:
+    completion_tokens: 1003
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 228
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 181
+      engine_ttlt_ms: 8158
+      pre_inference_ms: 89
+      service_tbt_ms: 8
+      service_ttft_ms: 359
+      service_ttlt_ms: 8332
+      total_duration_ms: 8255
+      user_visible_ttft_ms: 270
+    prompt_tokens: 1928
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2931
+  applied_revision: true
+  auto_apply_blocked_errors: []

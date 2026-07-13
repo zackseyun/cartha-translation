@@ -23,14 +23,14 @@ base_translation:
     reason: alternative_reading
 translation:
   language: ko
-  text: 이는 디몬의 물이 피로 가득하기 때문입니다[a]. 이는 내가 디몬 위에 더욱 많은 것을 내리겠기 때문입니다[b]. 곧 모압의 도망자들 위에 사자요, 그 땅의 남은 자들 위에 사자입니다[c].
+  text: 디몬의 물이 피로 가득하였으므로, 내가 디몬 위에 더 많은 것을 더하겠습니다. 곧 모압의 도망자들과 그 땅에 남은 자들 위에 사자를 내리겠습니다.[a][b][c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: 디몬은 ‘피’(dam)와의 말장난을 담는 지명일 수 있으며, 일부는 이를 디본과 연결합니다.
     reason: lexical_alternative
   - marker: b
-    text: 또는 ‘디몬 위에 추가적인 것들을 두겠다’는 뜻일 수 있습니다. 히브리어는 덧붙여질 재앙의 내용을 생략합니다.
+    text: 또는 ‘디몬 위에 추가적인 것들을 두겠다’로 옮길 수 있습니다. 히브리어는 덧붙여질 재앙의 내용을 생략합니다.
     reason: alternative_reading
   - marker: c
     text: 사자는 문자적 사자일 수도 있고, 더 큰 심판을 가리키는 비유일 수도 있습니다.
@@ -110,4 +110,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이는 디몬의 물이 피로 가득하기 때문입니다[a]. 이는 내가 디몬 위에 더욱 많은 것을 내리겠기 때문입니다[b]. 곧 모압의 도망자들 위에 사자요, 그 땅의 남은 자들 위에 사자입니다[c].
+  to: 디몬의 물이 피로 가득하였으므로, 내가 디몬 위에 더 많은 것을 더하겠습니다. 곧 모압의 도망자들과 그 땅에 남은 자들 위에 사자를 내리겠습니다.[a][b][c]
+  rationale: 원문의 ‘피로 가득함’과 이어지는 심판 선언을 한 문장으로 연결하고, ‘더 많은 것’의 불특정성을 보존했습니다. 콜론 뒤의 사자가 모압의 도망자들과 그 땅에 남은 자들 모두에게 임한다는 구문을 현대 표준 한국어로 명료하게 했습니다. ‘내리겠습니다’는 אָשִׁית עַל의 ‘~ 위에 두다/가하다’를 한국어에서 자연스럽게 표현한 것이며, 사자의 문자적·비유적 정체성은 해석하지 않습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:49:29Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 디몬, 피, 추가되는 것의 불특정성, 모압의 도망자들, 사자라는 이미지를 대체로 보존합니다. 그러나 마지막 절에서 히브리어의 한 사자가 모압의 도망자들과 그 땅의 남은 자들 모두에게 임한다는 구조를 ‘사자입니다’로 처리하여 의미와 문법이 무너집니다. 또한 두 כִּי절을 각각 독립된 ‘이는 … 때문입니다’ 문장으로 분리해 원문의 연결을 충분히 반영하지 못합니다.
+  naturalness: ‘이는 … 때문입니다’의 연속은 현대 한국어 문장으로 부자연스럽고, ‘… 위에 사자입니다’는 서술어가 성립하지 않습니다. 인과 연결과 병렬 목적어를 자연스럽게 정리할 필요가 있습니다.
+  terminology: ‘디몬’, ‘피’, ‘도망자들’, ‘사자’는 적절합니다. נוספות가 무엇인지는 본문에서 특정하지 않고 ‘더 많은 것’으로 남겨야 합니다. ‘그 땅에 남은 자들’은 사람을 뜻하는 문맥적 지시를 자연스럽게 드러내면서도 원문의 영토적 범위를 유지합니다.
+  issues:
+  - severity: high
+    issue: 마지막 절이 ‘모압의 도망자들 위에 사자요, 그 땅의 남은 자들 위에 사자입니다’로 번역되어 문법적으로 부자연스럽고, 사자가 두 집단에게 임한다는 원문의 관계가 불명확합니다.
+    rationale: אַרְיֵה는 앞선 ‘더 많은 것’의 구체적 내용으로서 두 여격/전치사구에 함께 걸립니다. 한국어에서는 ‘사자를 내리겠습니다’처럼 동사를 보충하여 두 대상에 대한 관계를 명시해야 합니다.
+  - severity: medium
+    issue: 반복된 ‘이는 … 때문입니다’가 두 כִּי절의 연결을 끊고, 이유를 지시할 선행 내용도 없이 어색하게 만듭니다.
+    rationale: 두 번째 כִּי는 앞 절과 연결된 선언을 이룹니다. 한국어에서는 첫 절을 ‘… 가득하였으므로’로 연결하거나, 문장 사이의 논리적 결속을 유지하는 방식이 자연스럽습니다.
+  revised_text: 디몬의 물이 피로 가득하였으므로, 내가 디몬 위에 더 많은 것을 더하겠습니다. 곧 모압의 도망자들과 그 땅에 남은 자들 위에 사자를 내리겠습니다.[a][b][c]
+  revised_footnotes:
+  - marker: a
+    text: 디몬은 ‘피’(dam)와의 말장난을 담는 지명일 수 있으며, 일부는 이를 디본과 연결합니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 또는 ‘디몬 위에 추가적인 것들을 두겠다’로 옮길 수 있습니다. 히브리어는 덧붙여질 재앙의 내용을 생략합니다.
+    reason: alternative_reading
+  - marker: c
+    text: 사자는 문자적 사자일 수도 있고, 더 큰 심판을 가리키는 비유일 수도 있습니다.
+    reason: alternative_reading
+  revision_rationale: 원문의 ‘피로 가득함’과 이어지는 심판 선언을 한 문장으로 연결하고, ‘더 많은 것’의 불특정성을 보존했습니다. 콜론 뒤의 사자가 모압의 도망자들과 그 땅에 남은 자들 모두에게 임한다는 구문을 현대 표준 한국어로 명료하게 했습니다. ‘내리겠습니다’는 אָשִׁית עַל의 ‘~ 위에 두다/가하다’를 한국어에서 자연스럽게 표현한 것이며, 사자의 문자적·비유적 정체성은 해석하지 않습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:49:29Z'
+  output_hash: 8e7ac5ad7df7b0296f31d326b2169d813b8726606790515589113d89a7fd9954
+  usage:
+    completion_tokens: 1790
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 891
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 141
+      engine_ttlt_ms: 14413
+      pre_inference_ms: 129
+      service_tbt_ms: 8
+      service_ttft_ms: 472
+      service_ttlt_ms: 14701
+      total_duration_ms: 14585
+      user_visible_ttft_ms: 343
+    prompt_tokens: 3285
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 5075
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -23,17 +23,17 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 누가 화를 당합니까? 누가 슬픔을 당합니까? 누가 다툼이 있습니까? 누가 불평합니까? 누가 까닭 없이 상처를 입습니까? 누가 눈이 충혈됩니까?[a][b][c]
+  text: 누구에게 화가 있습니까? 누구에게 슬픔이 있습니까? 누구에게 다툼이 있습니까? 누구에게 불평이 있습니까? 누구에게 까닭 없는 상처가 있습니까? 누구의 눈이 붉습니까?[a][b][c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: ‘슬픔을 당합니까?’는 אֲבוֹי의 탄식적 뉘앙스를 살린 번역입니다.
+    text: ‘슬픔’(אֲבוֹי)은 탄식과 관련된 말이며, ‘근심’ 또는 ‘비탄’으로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: ‘까닭 없이’는 חִנָּם의 ‘for nothing’에 대한 번역으로, ‘없이/무고하게’의 뜻을 함께 포괄합니다.
+    text: ‘까닭 없는’(חִנָּם)은 ‘아무 이유 없이’ 또는 ‘무고하게’로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: c
-    text: ‘눈이 충혈됩니까?’는 ‘눈의 붉음’에 대한 자연스러운 한국어 표현입니다.
+    text: 직역하면 ‘눈의 붉음’입니다. ‘눈이 충혈됨’ 또는 ‘핏발 선 눈’으로도 옮길 수 있습니다.
     reason: lexical_alternative
 lexical_decisions:
 - source_word: לְ/מִי א֥וֹי
@@ -88,4 +88,67 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 누가 화를 당합니까? 누가 슬픔을 당합니까? 누가 다툼이 있습니까? 누가 불평합니까? 누가 까닭 없이 상처를 입습니까? 누가 눈이 충혈됩니까?[a][b][c]
+  to: 누구에게 화가 있습니까? 누구에게 슬픔이 있습니까? 누구에게 다툼이 있습니까? 누구에게 불평이 있습니까? 누구에게 까닭 없는 상처가 있습니까? 누구의 눈이 붉습니까?[a][b][c]
+  rationale: 원문의 여섯 차례 수사적 질문과 명사적 병렬을 한국어에서 일관되게 재현했습니다. 의미를 추가하지 않고, 비문에 가까운 표현을 현대 표준어 합쇼체로 다듬었습니다. 마지막 항목은 한국어 자연스러움을 위해 ‘누구의 눈이 붉습니까?’로 표현하되, 주석에서 직역 및 가능한 대안을 밝혔습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:44:25Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 히브리어는 여섯 차례의 לְמִי(‘누구에게/누구에게는’)로 이어지는 명사적 수사 질문입니다. 초안은 대체로 의미를 전달하지만, ‘누가 다툼이 있습니까?’는 문법적으로 부자연스럽고, 일부 항목에서 반복 구조가 약화됩니다. ‘눈의 붉음’은 과도하게 의학적인 ‘충혈’보다 ‘눈이 붉음’으로 옮기는 편이 원문의 관찰 가능한 상태를 더 충실히 보존합니다.
+  naturalness: ‘슬픔을 당하다’와 ‘누가 다툼이 있습니까?’는 현대 표준 한국어 합쇼체로 매끄럽지 않습니다. 모든 항목을 ‘누구에게 …이 있습니까?’로 통일하면 원문의 반복과 한국어 문법을 함께 살릴 수 있습니다.
+  terminology: אָוֹי는 여기서 ‘화’로, אֲבוֹי는 ‘슬픔’으로 구별하였습니다. שִׂיחַ은 문맥상 ‘불평’으로 유지하되, 이를 명사구로 배치했습니다. חִנָּם은 ‘까닭 없는’, חַכְלִילוּת עֵינַיִם는 ‘눈이 붉음’으로 번역하여 원문의 폭을 보존했습니다.
+  issues:
+  - severity: medium
+    issue: 반복되는 לְמִי 구문의 한국어 문법 및 병렬성이 일정하지 않습니다.
+    rationale: ‘누가 다툼이 있습니까?’는 자연스럽지 않으며, 원문은 모든 항목을 동일한 ‘누구에게’ 구조로 제시합니다.
+  - severity: low
+    issue: ‘슬픔을 당합니까?’가 현대 한국어에서 다소 어색합니다.
+    rationale: 슬픔은 일반적으로 ‘당하다’의 목적어로 쓰이지 않으므로 ‘슬픔이 있습니까?’가 자연스럽습니다.
+  - severity: low
+    issue: ‘눈이 충혈됩니까?’는 원문의 상태 명사보다 의학적·과정적 표현입니다.
+    rationale: 원문은 문자적으로 ‘눈의 붉음’을 말하므로 ‘눈이 붉음이 있습니까?’보다 자연스러운 범위에서 ‘눈이 붉습니까?’ 또는 병렬적 명사구가 적절합니다.
+  revised_text: 누구에게 화가 있습니까? 누구에게 슬픔이 있습니까? 누구에게 다툼이 있습니까? 누구에게 불평이 있습니까? 누구에게 까닭 없는 상처가 있습니까? 누구의 눈이 붉습니까?[a][b][c]
+  revised_footnotes:
+  - marker: a
+    text: ‘슬픔’(אֲבוֹי)은 탄식과 관련된 말이며, ‘근심’ 또는 ‘비탄’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: ‘까닭 없는’(חִנָּם)은 ‘아무 이유 없이’ 또는 ‘무고하게’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: c
+    text: 직역하면 ‘눈의 붉음’입니다. ‘눈이 충혈됨’ 또는 ‘핏발 선 눈’으로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 원문의 여섯 차례 수사적 질문과 명사적 병렬을 한국어에서 일관되게 재현했습니다. 의미를 추가하지 않고, 비문에 가까운 표현을 현대 표준어 합쇼체로 다듬었습니다. 마지막 항목은 한국어 자연스러움을 위해 ‘누구의 눈이 붉습니까?’로 표현하되, 주석에서 직역 및 가능한 대안을 밝혔습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:44:25Z'
+  output_hash: e5a995feef4bb1a3d68e2330e7213224b20ec94f9523e401a4470383c1639cfb
+  usage:
+    completion_tokens: 1393
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 10914
+      pre_inference_ms: 159
+      service_tbt_ms: 8
+      service_ttft_ms: 398
+      service_ttlt_ms: 11169
+      total_duration_ms: 11020
+      user_visible_ttft_ms: 239
+    prompt_tokens: 2188
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3581
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -20,14 +20,14 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: 이웃에게 "가서 돌아오라. 내일 내가 주겠다"고 말해서는 안 됩니다. 이미 당신에게 그것이 있지 않습니까?[a][b]
+  text: 당신이 그것을 가지고 있으면서도, 이웃에게 “가서 다시 오라[a]. 내일 내가 주겠다”라고 말하지 마십시오.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: ‘돌아오라’로도 옮길 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: 이 뒷절은 상대가 이미 줄 수 있는 수단을 가지고 있는데도 미루지 말라는 뜻입니다.
+    text: 마지막 절은 이미 줄 수 있는 것을 가지고 있으면서도 주기를 미루는 일을 가리킵니다.
     reason: cultural_note
 lexical_decisions:
 - source_word: רֵעַ
@@ -74,4 +74,64 @@ ai_draft:
     reasoning_tokens: 0
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 이웃에게 "가서 돌아오라. 내일 내가 주겠다"고 말해서는 안 됩니다. 이미 당신에게 그것이 있지 않습니까?[a][b]
+  to: 당신이 그것을 가지고 있으면서도, 이웃에게 “가서 다시 오라[a]. 내일 내가 주겠다”라고 말하지 마십시오.[b]
+  rationale: 'The revision preserves the Hebrew sequence and force: it prohibits dismissing a neighbor until tomorrow when the speaker already has the means to give. It removes the unsupported rhetorical-question form, retains the implicit object as ‘그것,’ and repairs the lexical footnote''s base-text/anchor mismatch.'
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T16:37:05Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The final Hebrew clause is circumstantial ('while it is with you'), not a rhetorical question. The draft's '이미 ... 있지 않습니까?' changes both its syntax and force. The placement of the prohibition is also clearer when the available possession clause qualifies the whole refusal.
+  naturalness: The revised wording is natural modern standard Korean in formal-polite style. The direct quoted imperatives retain the deliberately blunt speech being prohibited, while the narrator's prohibition uses 합쇼체.
+  terminology: ‘이웃’ appropriately renders רֵעַ in this ethical context. ‘다시 오라’ is a natural rendering of the return command, and ‘그것을 가지고 있으면서도’ retains the source's unspecified object without making it a rhetorical question.
+  issues:
+  - severity: medium
+    issue: The final clause is rendered as a rhetorical question.
+    rationale: ‘이미 당신에게 그것이 있지 않습니까?’ introduces interrogation and emphasis absent from וְיֵשׁ אִתָּךְ, which is a dependent/circumstantial clause meaning that the resource is already available.
+  - severity: medium
+    issue: Footnote a duplicates the translation rather than presenting its stated alternative.
+    rationale: The draft text reads ‘돌아오라,’ while footnote a says it may also be translated ‘돌아오라.’ The base wording and anchor need adjustment.
+  - severity: low
+    issue: The footnote anchors are both placed after the final sentence rather than attached to their respective referents.
+    rationale: Moving a to ‘다시 오라’ and b to the availability clause makes each note intelligible and traceable.
+  revised_text: 당신이 그것을 가지고 있으면서도, 이웃에게 “가서 다시 오라[a]. 내일 내가 주겠다”라고 말하지 마십시오.[b]
+  revised_footnotes:
+  - marker: a
+    text: ‘돌아오라’로도 옮길 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 마지막 절은 이미 줄 수 있는 것을 가지고 있으면서도 주기를 미루는 일을 가리킵니다.
+    reason: cultural_note
+  revision_rationale: 'The revision preserves the Hebrew sequence and force: it prohibits dismissing a neighbor until tomorrow when the speaker already has the means to give. It removes the unsupported rhetorical-question form, retains the implicit object as ‘그것,’ and repairs the lexical footnote''s base-text/anchor mismatch.'
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T16:37:05Z'
+  output_hash: f251c6a6617437fc5113647d30575bd9b698c9a9ff4f14e6cfa43f610e9ebe6e
+  usage:
+    completion_tokens: 1022
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 476
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 9451
+      pre_inference_ms: 216
+      service_tbt_ms: 9
+      service_ttft_ms: 503
+      service_ttlt_ms: 9788
+      total_duration_ms: 9582
+      user_visible_ttft_ms: 286
+    prompt_tokens: 1760
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2782
+  applied_revision: true
+  auto_apply_blocked_errors: []
