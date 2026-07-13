@@ -32,7 +32,7 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
 lexical_decisions:
 - source_word: Μακάριοι
   english_pob_choice: Blessed
@@ -65,3 +65,61 @@ theological_decisions:
   - …있다 …것이다
   rationale: '본 번역 원칙: 예수의 청중을 향한 직접 발화는 합쇼체. 산상수훈 전체를 합쇼체로 옮겨 권위 있는 가르침의 격조를 보존한다.'
   doctrine_reference: Korean pipeline policy
+review_pass:
+  verdict: revise
+  source_fidelity: The draft correctly retains the open expression τῷ πνεύματι as “영이 가난한” and renders the present ἐστιν as present possession (“그들의 것입니다”). However, the substantive plural οἱ πτωχοὶ is better represented by “사람들은,” and the translation must be structurally completed with its missing closing quotation mark. Footnotes should also preserve the lexical and interpretive openness documented in the audit trail.
+  naturalness: “영이 가난한 사람들은 복이 있습니다” is natural modern formal-polite Korean and retains the intended beatitude cadence. “하늘 나라가 그들의 것입니다” is clear and appropriately formal.
+  terminology: “복이 있습니다,” “영이 가난한,” and “하늘 나라” are suitable. “영이 가난한” is retained rather than replacing it with “마음이 가난한” or an explanatory phrase, since such alternatives narrow or alter the source expression.
+  issues:
+  - severity: high
+    issue: The main text has an unmatched opening Korean quotation mark.
+    rationale: The supplied translation begins with 「 but has no closing 」. This is a structural validation-quality defect and requires a complete corrected text.
+  - severity: low
+    issue: The generic subject is singular (“사람은”) although the Greek substantival adjective is plural (οἱ πτωχοὶ).
+    rationale: Korean generic singular can be acceptable, but “사람들은” more directly reflects the source while maintaining the repeated beatitude form.
+  - severity: medium
+    issue: No Korean footnote set is supplied for the documented lexical alternatives and interpretive ambiguity.
+    rationale: The English audit trail specifically records notes for μακάριοι, πτωχοὶ τῷ πνεύματι, and τῶν οὐρανῶν. Providing Korean anchors and notes preserves this documented ambiguity without importing an interpretation into the main text.
+  revised_text: 「영이 가난한 사람들은 복이 있습니다[a]. 하늘 나라[c]가 그들의 것이기 때문입니다.」
+  revised_footnotes:
+  - marker: a
+    text: 또는 “행복한” 또는 “복된”. 그리스어는 단순한 행복 감정만이 아니라, 신적 은총 아래 있는 부러운 상태를 가리킵니다.
+    reason: lexical_alternative
+  - marker: b
+    text: “영이 가난한”은 “영적으로 가난한” 또는 “자신의 영적 필요를 아는 사람들”로도 이해될 수 있습니다. 본문은 그리스어 표현을 좁혀 해석하지 않고 그대로 유지합니다.
+    reason: alternative_reading
+  - marker: c
+    text: 그리스어는 직역하면 “하늘들의 나라”이며, 마태복음에 특징적으로 나타나는 표현입니다. 한국어에서는 관례적으로 “하늘 나라”로 옮깁니다.
+    reason: lexical_alternative
+  revision_rationale: 닫히지 않은 인용부호를 바로잡고, 복수형 주어를 반영해 “사람들은”으로 조정했습니다. 본문에서는 τῷ πνεύματι의 해석상 여지를 보존했으며, 이를 설명하는 각주를 추가했습니다. “하늘 나라가 그들의 것입니다”는 현재형 ἐστιν과 소유의 뜻을 유지합니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:19:26Z'
+  output_hash: cd4220d457f2b783a458a33842ee5d2de1704687e6efd54143094cb87cf2cbd9
+  usage:
+    completion_tokens: 1103
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 358
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 173
+      engine_ttlt_ms: 9800
+      pre_inference_ms: 84
+      service_tbt_ms: 9
+      service_ttft_ms: 355
+      service_ttlt_ms: 9977
+      total_duration_ms: 9906
+      user_visible_ttft_ms: 271
+    prompt_tokens: 2274
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 3377
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [b]

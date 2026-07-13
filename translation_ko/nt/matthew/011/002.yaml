@@ -10,15 +10,19 @@ source:
 base_translation:
   language: en
   yaml_path: translation/nt/matthew/011/002.yaml
-  text: 'Now when John heard in prison about the works of the Messiah[a], he sent word through his disciples'
+  text: Now when John heard in prison about the works of the Messiah[a], he sent word through his disciples
   footnotes:
   - marker: a
     text: Or 'the works of Christ.'
     reason: alternative_reading
 translation:
   language: ko
-  text: '요한이 감옥에서 메시아의 행적들을 듣고, 자기 제자들을 통하여 보내어'
+  text: 요한이 감옥에서 메시아[a]께서 하신 일들을 듣고, 자기 제자들을 보내어
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 “그리스도”.
+    reason: Χριστός의 전통적 번역을 대안으로 제시함.
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -26,4 +30,58 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 요한이 감옥에서 메시아의 행적들을 듣고, 자기 제자들을 통하여 보내어
+  to: 요한이 감옥에서 메시아[a]께서 하신 일들을 듣고, 자기 제자들을 보내어
+  rationale: Revised only the awkward expression for the Messiah's works and restored the required alternative-title footnote. The Greek word order's emphasis is not marked in a way requiring a special Korean construction, and the open-ended clause is retained because the sentence continues in the following verse.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T06:20:00Z'
+review_pass:
+  verdict: revise
+  source_fidelity: The draft correctly represents John, his imprisonment, the hearing, the Messiah's works, and the sending of his disciples. The participial sequence and the verse's deliberately unfinished syntax are appropriately retained. However, “메시아의 행적들을” is less natural Korean for τὰ ἔργα and can misleadingly suggest a record of biographical exploits rather than the deeds/works Jesus performed.
+  naturalness: “메시아께서 하신 일들” is idiomatic modern Korean and preserves the broad sense of ἔργα. “자기 제자들을 보내어” naturally renders πέμψας διὰ τῶν μαθητῶν αὐτοῦ in this verse, whose object and ensuing question continue in verse 3.
+  terminology: Render Χριστός as “메시아,” consistent with its titular sense here. Supply an anchored alternative “그리스도” to reflect the traditional rendering and the English audit trail.
+  issues:
+  - severity: low
+    issue: “메시아의 행적들” is stylistically awkward and semantically somewhat narrowed.
+    rationale: ἔργα denotes works/deeds broadly. “메시아께서 하신 일들” is more natural and retains that breadth without imposing a particular interpretation.
+  - severity: medium
+    issue: The draft lacks the alternative-rendering footnote for “메시아.”
+    rationale: The English audit trail explicitly preserves “Christ” as an alternative; the Korean equivalent “그리스도” should be retained with an anchor.
+  revised_text: 요한이 감옥에서 메시아[a]께서 하신 일들을 듣고, 자기 제자들을 보내어
+  revised_footnotes:
+  - marker: a
+    text: 또는 “그리스도”.
+    reason: Χριστός의 전통적 번역을 대안으로 제시함.
+  revision_rationale: Revised only the awkward expression for the Messiah's works and restored the required alternative-title footnote. The Greek word order's emphasis is not marked in a way requiring a special Korean construction, and the open-ended clause is retained because the sentence continues in the following verse.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:20:00Z'
+  output_hash: 125948e1bbe3738d6a25141964437bcfc38657e562bc44116ca08345fecc778e
+  usage:
+    completion_tokens: 718
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 239
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 120
+      engine_ttlt_ms: 6904
+      pre_inference_ms: 79
+      service_tbt_ms: 9
+      service_ttft_ms: 299
+      service_ttlt_ms: 7079
+      total_duration_ms: 7009
+      user_visible_ttft_ms: 220
+    prompt_tokens: 1418
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2136
+  applied_revision: true
+  auto_apply_blocked_errors: []

@@ -10,14 +10,14 @@ source:
 base_translation:
   language: en
   yaml_path: translation/nt/matthew/012/015.yaml
-  text: 'But Jesus[a], knowing this, withdrew from there. And many followed him, and he healed them all,'
+  text: But Jesus[a], knowing this, withdrew from there. And many followed him, and he healed them all,
   footnotes:
   - marker: a
     text: Or 'Jesus, knowing it, withdrew from there.' The Greek leaves the object of 'knowing' implicit; the context supplies it from the previous verse.
     reason: lexical_alternative
 translation:
   language: ko
-  text: '예수님이 이것을 아시고 그곳에서 떠나셨습니다. 많은 사람이 그분을 따라왔고, 그분은 그들을 모두 고쳐 주셨습니다.'
+  text: 예수님이 이것을 아시고 그곳에서 떠나셨습니다. 많은 사람이 그분을 따라왔고, 그분은 그들을 모두 고쳐 주셨습니다.
   philosophy: optimal-equivalence
 ai_draft:
   model_id: claude-opus-4-7
@@ -26,4 +26,53 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: γνοὺς의 목적어는 본문에 명시되지 않았으나 앞 절의 내용을 가리키는 ‘이것을’로 자연스럽게 보완할 수 있습니다. ἀνεχώρησεν의 철수·물러남의 뉘앙스를 위해 ‘떠나셨습니다’보다 ‘물러가셨습니다’가 더 적절합니다. πάντας는 ‘모두’로 충실히 반영되었습니다.
+  naturalness: 합쇼체와 현대 표준어에 맞습니다. ‘고쳐 주셨습니다’의 수혜 의미는 원문에 직접 나타나지 않으므로, 단순히 ‘고치셨습니다’로 옮기는 편이 더 절제되고 자연스럽습니다.
+  terminology: ‘예수님’, ‘그분’, ‘고치셨습니다’는 현대 한국어 성경 문맥에서 일관되고 자연스럽습니다. ‘그러나’는 δέ의 약한 대조·연결을 무리 없이 반영합니다.
+  issues:
+  - severity: medium
+    issue: ἀνεχώρησεν이 ‘떠나셨습니다’로 번역됨
+    rationale: ‘떠나다’도 가능한 번역이지만, 마태복음에서 반대·위협에 대응해 물러나는 ἀναχωρέω의 뉘앙스가 약해집니다.
+  - severity: low
+    issue: ‘고쳐 주셨습니다’에 수혜 뉘앙스가 추가됨
+    rationale: θεραπεύω는 여기서 단순히 ‘고치다/치유하다’이므로, ‘주다’를 빼는 것이 원문에 더 가깝습니다.
+  revised_text: 그러나 예수님께서는 이것을 아시고 그곳에서 물러가셨습니다. 많은 사람이 그분을 따라왔고, 그분은 그들을 모두 고치셨습니다.
+  revised_footnotes:
+  - marker: a
+    text: 직역하면 ‘아시고’입니다. 그리스어는 무엇을 아셨는지를 명시하지 않으며, 문맥상 앞 절의 일을 가리킵니다.
+    reason: γνοὺς의 암시된 목적어를 ‘이것’으로 보완한 번역임을 밝혀 원문의 생략을 투명하게 드러냅니다.
+  revision_rationale: 원문의 약한 연결(δέ), 암시된 목적어, 그리고 ἀνεχώρησεν의 ‘물러남’의 뉘앙스를 보존했습니다. 치유 동사는 불필요한 수혜 의미 없이 직접적으로 옮겼습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:20:08Z'
+  output_hash: e6bf7057c451561f02022c62acf1ac16707204bb0926f8a223cd707e75c53840
+  usage:
+    completion_tokens: 1059
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 460
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 9
+      engine_ttft_ms: 278
+      engine_ttlt_ms: 9467
+      pre_inference_ms: 163
+      service_tbt_ms: 9
+      service_ttft_ms: 511
+      service_ttlt_ms: 9691
+      total_duration_ms: 9543
+      user_visible_ttft_ms: 348
+    prompt_tokens: 1357
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2416
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]

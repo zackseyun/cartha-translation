@@ -10,7 +10,7 @@ source:
 base_translation:
   language: en
   yaml_path: translation/nt/matthew/011/017.yaml
-  text: 'They say[a], ‘We played the flute for you, and you did not dance; we sang a lament[c][b], and you did not mourn.’'
+  text: They say[a], ‘We played the flute for you, and you did not dance; we sang a lament[c][b], and you did not mourn.’
   footnotes:
   - marker: a
     text: Or, more literally, 'we piped for you.' The Greek verb refers specifically to playing a flute or pipe.
@@ -23,8 +23,12 @@ base_translation:
     reason: cultural_note
 translation:
   language: ko
-  text: '그들이 말한다. 「우리가 너희를 위하여 피리를 불어도 너희가 춤추지 않았고, 우리가 슬픈 노래를 불러도 너희가 울지 않았다.」'
+  text: 그들은 이렇게 말합니다. 「우리가 너희를 위해 피리를 불었지만 너희는 춤추지 않았고, 우리가 애가를 불렀지만 너희는 가슴을 치지 않았습니다[a].」
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 더 직역하면, ‘너희는 자신들의 가슴을 치지 않았다.’ 당시 애도할 때 가슴을 치는 관습적 몸짓을 가리킵니다.
+    reason: cultural_note
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -32,4 +36,61 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 그들이 말한다. 「우리가 너희를 위하여 피리를 불어도 너희가 춤추지 않았고, 우리가 슬픈 노래를 불러도 너희가 울지 않았다.」
+  to: 그들은 이렇게 말합니다. 「우리가 너희를 위해 피리를 불었지만 너희는 춤추지 않았고, 우리가 애가를 불렀지만 너희는 가슴을 치지 않았습니다[a].」
+  rationale: 원문의 과거 시제 병렬과 대조를 ‘-었지만’으로 재현하고, 피리 연주/춤과 애가/애도 몸짓의 대응을 보존했습니다. 문화적으로 낯설 수 있는 ‘가슴을 치다’에는 주석을 달았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T06:20:03Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 초안은 αὐλέω의 악기 특정성(‘피리를 불다’)과 춤추지 않았다는 뜻은 대체로 반영합니다. 그러나 두 접속절을 ‘-어도’로 옮겨 원문의 단순 과거 병렬을 양보 관계로 바꾸었고, ἐθρηνήσαμεν의 애도 노래와 ἐκόψασθε의 관습적 애도 행위(가슴을 침)를 각각 ‘슬픈 노래’와 ‘울지 않았다’로 약화했습니다.
+  naturalness: 수정문은 현대 표준 한국어 합쇼체로 자연스럽고, 비유 속 인용문의 반복·대조 구조를 유지합니다.
+  terminology: ‘애가’는 θρηνέω의 장례적 애도 노래를 적절히 나타내며, ‘가슴을 치다’는 κόπτω의 중간태가 가리키는 애도 몸짓을 직역적으로 보존합니다. ‘피리를 불다’는 αὐλέω에 적합합니다.
+  issues:
+  - severity: medium
+    issue: ‘불어도/불러도’의 양보 표현
+    rationale: 원문은 ‘우리가 피리를 불었고 … 애가를 불렀다’라는 두 과거 행위와 상대의 반응 부재를 병렬로 제시합니다. ‘-어도’는 원문에 없는 양보 뉘앙스를 더합니다.
+  - severity: medium
+    issue: ‘슬픈 노래를 불러도’
+    rationale: ἐθρηνήσαμεν은 일반적인 슬픈 노래보다 애도, 특히 장례적 애가를 뜻합니다.
+  - severity: medium
+    issue: ‘울지 않았다’
+    rationale: ἐκόψασθε는 단순히 우는 것이 아니라 애도하며 자기 가슴을 치는 관습적 몸짓을 가리킵니다.
+  revised_text: 그들은 이렇게 말합니다. 「우리가 너희를 위해 피리를 불었지만 너희는 춤추지 않았고, 우리가 애가를 불렀지만 너희는 가슴을 치지 않았습니다[a].」
+  revised_footnotes:
+  - marker: a
+    text: 더 직역하면, ‘너희는 자신들의 가슴을 치지 않았다.’ 당시 애도할 때 가슴을 치는 관습적 몸짓을 가리킵니다.
+    reason: cultural_note
+  revision_rationale: 원문의 과거 시제 병렬과 대조를 ‘-었지만’으로 재현하고, 피리 연주/춤과 애가/애도 몸짓의 대응을 보존했습니다. 문화적으로 낯설 수 있는 ‘가슴을 치다’에는 주석을 달았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:20:03Z'
+  output_hash: 7c067a6d5b7a908f6d5ab045966fcd39ce244d52d3891555611a128074fe4fc4
+  usage:
+    completion_tokens: 945
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 307
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 320
+      engine_ttlt_ms: 8329
+      pre_inference_ms: 101
+      service_tbt_ms: 8
+      service_ttft_ms: 602
+      service_ttlt_ms: 8606
+      total_duration_ms: 8517
+      user_visible_ttft_ms: 501
+    prompt_tokens: 1274
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2219
+  applied_revision: true
+  auto_apply_blocked_errors: []

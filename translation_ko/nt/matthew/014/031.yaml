@@ -10,14 +10,14 @@ source:
 base_translation:
   language: en
   yaml_path: translation/nt/matthew/014/031.yaml
-  text: 'Immediately Jesus stretched out his hand[a], took hold of him, and said to him, “You of little faith, why did you doubt?”'
+  text: Immediately Jesus stretched out his hand[a], took hold of him, and said to him, “You of little faith, why did you doubt?”
   footnotes:
   - marker: a
     text: Or “did you waver?” The Greek verb can denote hesitation or wavering as well as doubt.
     reason: lexical_alternative
 translation:
   language: ko
-  text: '예수님이 즉시 손을 내밀어 그를 붙잡으시며 말씀하셨습니다. 「믿음이 작은 자야, 어찌하여 의심하였느냐?」'
+  text: 예수님이 즉시 손을 내밀어 그를 붙잡으시며 말씀하셨습니다. 「믿음이 작은 자야, 어찌하여 의심하였느냐?」
   philosophy: optimal-equivalence
 ai_draft:
   model_id: claude-opus-4-7
@@ -26,4 +26,53 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: needs_human_review
+review_pass:
+  verdict: revise
+  source_fidelity: 원문의 εὐθέως, 손을 내밂, 그를 붙잡음, 그리고 그에게 말함의 순서와 의미를 충실히 옮겼습니다. 수신자 αὐτῷ를 ‘그에게’로 명시하고, ἐδίστασας의 기본 의미는 ‘의심했습니까?’로 유지하되 ‘망설임/흔들림’의 뉘앙스는 각주로 보존하는 것이 적절합니다.
+  naturalness: 초안의 ‘붙잡으시며 말씀하셨습니다’는 동시 동작처럼 들릴 수 있으므로, 순차를 나타내는 ‘붙잡으시고 그에게 말씀하셨습니다’가 더 자연스럽고 원문에 가깝습니다. 인용문도 목표 register인 현대 합쇼체에 맞추었습니다.
+  terminology: Ὀλιγόπιστε는 ‘믿음이 적은 사람이여’로 옮겨 믿음의 부족을 나타내되 완전한 불신으로 과장하지 않았습니다. ‘의심하다’는 기본 번역으로 적절하며, 동사의 망설임/흔들림 의미는 각주에서 제시합니다.
+  issues:
+  - severity: medium
+    issue: 접속 표현과 수신자 누락
+    rationale: ‘붙잡으시며 말씀하셨습니다’는 원문의 순차적 행동을 동시 행동으로 읽히게 할 수 있고, λέγει αὐτῷ의 ‘그에게’가 드러나지 않습니다.
+  - severity: low
+    issue: 인용문의 문체
+    rationale: ‘어찌하여 의심하였느냐?’는 문어적 하라체/고어적 어감이 강합니다. 지정된 현대 합쇼체에는 ‘왜 의심했습니까?’가 더 맞습니다.
+  revised_text: 예수님께서 즉시 손을 내밀어 그를 붙잡으시고 그에게 말씀하셨습니다. “믿음이 적은 사람이여, 왜 의심했습니까?”
+  revised_footnotes:
+  - marker: a
+    text: 또는 “왜 망설였습니까?” 그리스어 동사는 의심뿐 아니라 망설임이나 흔들림을 뜻할 수도 있습니다.
+    reason: lexical_alternative
+  revision_rationale: 행동의 순서를 분명히 하고 발화의 수신자를 반영했으며, 직접화법을 현대 표준 한국어 합쇼체로 다듬었습니다. 원문의 ἐδίστασας에 있는 ‘의심’과 ‘망설임/흔들림’ 사이의 의미 범위는 각주로 보존했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T06:20:28Z'
+  output_hash: d365e352d49ab50a48d1a9fd616c9c121a3071beb017a29ed9dc8196c0d528b7
+  usage:
+    completion_tokens: 981
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 366
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 156
+      engine_ttlt_ms: 8311
+      pre_inference_ms: 91
+      service_tbt_ms: 8
+      service_ttft_ms: 333
+      service_ttlt_ms: 8482
+      total_duration_ms: 8405
+      user_visible_ttft_ms: 243
+    prompt_tokens: 1750
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2731
+  applied_revision: false
+  auto_apply_blocked_errors:
+  - unanchored footnote [a]
