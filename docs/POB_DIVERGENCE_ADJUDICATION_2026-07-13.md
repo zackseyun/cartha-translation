@@ -34,6 +34,86 @@ rendering, and its rationale. Consequential alternatives remain in footnotes.
 - **Modern-English and discourse polish:** Psalms 135:13; Matthew 26:46;
   Proverbs 6:35.
 
+## Iterative reranking audit
+
+Regenerating the report after the first ten corrections caused previously
+lower-ranked verses to enter the public top ten. The audit therefore continued
+until **every verse in the regenerated top ten had been source-reviewed**.
+This added 38 reviews: 36 main-text revisions, one retained rendering
+(Revelation 2:27), and one retained rendering with a corrected note marker
+(2 Corinthians 8:13). Together with the first pass, **48 distinct verses were
+adjudicated**.
+
+The process stopped only when all ten current leaders had already been
+adjudicated. Their continued high scores are not unresolved errors: several
+remain lexically distant from the public-domain comparison panel precisely
+because the corrected POB preserves a defensible source feature.
+
+| Reference | Editorial result | Final provisional divergence |
+| --- | --- | ---: |
+| Jeremiah 31:9 | Revised | 38.47 |
+| Esther 4:14 | Revised | 19.60 |
+| Revelation 2:27 | Retained | 45.56 |
+| Proverbs 3:34 | Revised | 27.92 |
+| Esther 4:8 | Revised | 42.95 |
+| Habakkuk 1:7 | Revised | 48.43 |
+| Nehemiah 13:19 | Revised | 20.95 |
+| Jeremiah 40:4 | Revised | 42.20 |
+| 2 Corinthians 9:5 | Revised | 41.90 |
+| Judges 19:9 | Revised | 44.44 |
+| 1 Kings 2:19 | Revised | 42.28 |
+| Jeremiah 34:16 | Revised | 46.42 |
+| Ezekiel 13:4 | Revised | 14.94 |
+| Ecclesiastes 1:2 | Revised | 41.19 |
+| Isaiah 27:11 | Revised | 35.75 |
+| Luke 23:27 | Revised | 27.48 |
+| Proverbs 14:20 | Revised | 15.89 |
+| Psalms 81:9 | Revised | 37.63 |
+| 2 Corinthians 8:13 | Retained prose; repaired note marker | 44.12 |
+| Nehemiah 9:17 | Revised | 42.09 |
+| Leviticus 14:57 | Revised | 26.73 |
+| Jeremiah 33:18 | Revised | 20.05 |
+| Nehemiah 9:28 | Revised | 43.21 |
+| Psalms 118:25 | Revised | 41.09 |
+| Daniel 6:5 | Revised | 45.65 |
+| Matthew 23:10 | Revised | 23.19 |
+| Job 34:26 | Revised | 24.95 |
+| 2 Kings 8:6 | Revised | 38.01 |
+| Psalm 148:12 | Revised | 38.59 |
+| Isaiah 18:2 | Human-adjudicated revision | 32.42 |
+| Numbers 15:29 | Revised | 41.39 |
+| Joshua 23:11 | Revised | 35.52 |
+| Exodus 12:39 | Revised | 36.73 |
+| 2 Kings 9:15 | Revised | 42.21 |
+| 2 Kings 2:16 | Revised | 32.16 |
+| Ezekiel 20:8 | Revised | 36.87 |
+| Joshua 2:19 | Revised | 34.42 |
+| Hosea 13:2 | Revised | 46.40 |
+
+### Material corrections found during reranking
+
+- **Proverbs 3:34:** corrected a dangling conditional to the Hebrew
+  asseverative sense, "Surely he scoffs at scoffers."
+- **Proverbs 14:20:** repaired a reversed passive: the poor person is hated
+  even by a neighbor; the poor person does not hate the neighbor.
+- **Isaiah 27:11:** restored the plural dry-branch image instead of a singular
+  "harvest" being broken.
+- **Nehemiah 9:28:** attached "many" to "times," where it agrees, rather than
+  to God's mercies.
+- **Leviticus 14:57:** removed two fictitious literal "days" and used a ritual
+  category broad enough for people, fabrics, and houses.
+- **Jeremiah 33:18:** rendered the priestly promise as never lacking a serving
+  representative, not one individual never being "cut off."
+- **Isaiah 18:2:** received explicit human editorial adjudication because the
+  national epithet and river clause are genuinely obscure; the selected main
+  construal is now accompanied by precise alternatives.
+- **Hosea 13:2:** repaired the sacrificed-object grammar and retained the
+  difficult alternative syntax in notes.
+- **Joshua 2:19:** preserved the parallel legal blood-on-the-head idiom while
+  removing duplicated movement language.
+- **Revelation 2:27:** retained "shepherd" despite its high divergence because
+  it preserves the Greek verb and Psalm 2's royal-shepherd tension.
+
 ## Important limitation
 
 Wording distance can identify passages worth inspecting, but it cannot decide
