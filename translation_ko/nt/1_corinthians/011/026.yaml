@@ -20,8 +20,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 여러분이 이 빵을 먹고 이 잔을 마실 때마다, 여러분은 주께서 오실 때까지 주의 죽으심을 선포하는 것입니다.
+  text: 여러분이 이 빵을 먹고 그 잔을[a] 마실 때마다, 주께서 오실 때까지 주님의 죽음을 선포합니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 헬라어는 ‘이 잔’이 아니라 ‘그 잔’이라고 합니다. 다만 바로 앞 문맥이 가리키는 잔입니다.
+    reason: lexical_alternative
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -29,10 +33,64 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
 lexical_decisions:
 - source_word: καταγγέλλετε
   english_pob_choice: proclaim
   chosen_korean: 선포하다
   lexicon: BDAG
   rationale: 성찬이 공적 선포의 행위임을 보존한다.
+revisions:
+- from: 여러분이 이 빵을 먹고 이 잔을 마실 때마다, 여러분은 주께서 오실 때까지 주의 죽으심을 선포하는 것입니다.
+  to: 여러분이 이 빵을 먹고 그 잔을[a] 마실 때마다, 주께서 오실 때까지 주님의 죽음을 선포합니다.
+  rationale: ‘이 빵’과 ‘그 잔’의 원문 지시 표현 차이를 보존하고, 반복적 조건절(‘…할 때마다’)과 주님의 오심까지 계속되는 선포를 자연스러운 현대 합쇼체로 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T10:37:35Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 수정이 필요합니다. 헬라어는 ἄρτον τοῦτον(‘이 빵’)이지만 ποτήριον에는 지시사 τοῦτο가 없이 관사만 있으므로, 초안의 ‘이 잔’은 본문의 명시적 대조를 평준화합니다. 또한 현재 직설법 καταγγέλλετε는 ‘선포합니다’가 자연스럽고 직접적입니다.
+  naturalness: ‘여러분은 … 선포하는 것입니다’도 이해되지만, 현대 표준어 합쇼체에서는 ‘선포합니다’가 더 간결하고 문법적 힘을 잘 살립니다. ‘주님의 죽음’은 현대어에서 자연스럽습니다.
+  terminology: κύριος는 문맥상 ‘주님’으로, καταγγέλλετε는 ‘선포합니다’로 옮기는 것이 적절합니다. 성찬에 관한 교리적 해석은 덧붙이지 않았습니다.
+  issues:
+  - severity: medium
+    issue: ‘이 잔’
+    rationale: 원문은 ‘이 빵’에는 지시사를 쓰지만 ‘잔’에는 ‘그 잔’(τὸ ποτήριον)이라고 합니다. 즉각 문맥상 어떤 잔인지는 분명하나, 번역은 이 차이를 반영하고 각주로 설명하는 것이 좋습니다.
+  - severity: low
+    issue: ‘선포하는 것입니다’
+    rationale: 원문의 선언적 현재 직설법을 현대 합쇼체로 직접 옮기면 ‘선포합니다’가 더 자연스럽고 충실합니다.
+  revised_text: 여러분이 이 빵을 먹고 그 잔을[a] 마실 때마다, 주께서 오실 때까지 주님의 죽음을 선포합니다.
+  revised_footnotes:
+  - marker: a
+    text: 헬라어는 ‘이 잔’이 아니라 ‘그 잔’이라고 합니다. 다만 바로 앞 문맥이 가리키는 잔입니다.
+    reason: lexical_alternative
+  revision_rationale: ‘이 빵’과 ‘그 잔’의 원문 지시 표현 차이를 보존하고, 반복적 조건절(‘…할 때마다’)과 주님의 오심까지 계속되는 선포를 자연스러운 현대 합쇼체로 유지했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T10:37:35Z'
+  output_hash: 1ecd484333bab27902c643a55fa20337de1cab961e0b316f1d96fd069124ec67
+  usage:
+    completion_tokens: 807
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 269
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 139
+      engine_ttlt_ms: 6778
+      pre_inference_ms: 131
+      service_tbt_ms: 8
+      service_ttft_ms: 443
+      service_ttlt_ms: 7077
+      total_duration_ms: 6956
+      user_visible_ttft_ms: 312
+    prompt_tokens: 1714
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2521
+  applied_revision: true
+  auto_apply_blocked_errors: []

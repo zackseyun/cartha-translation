@@ -17,7 +17,7 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 모세의 율법에 「곡식을 떠는 소에게 입에 망을 씌우지 말라」고 기록되어 있습니다. 하나님께서 소들을 염려하시는 것입니까?
+  text: 왜냐하면 모세의 율법에 「타작하는 소의 입에 망을 씌우지 말라」고 기록되어 있기 때문입니다. 하나님께서 소들을 염려하시는 것입니까?
   philosophy: optimal-equivalence
 ai_draft:
   model_id: claude-opus-4-7
@@ -26,10 +26,61 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
 lexical_decisions:
 - source_word: κημώσεις βοῦν ἀλοῶντα
   english_pob_choice: muzzle an ox while it is threshing
   chosen_korean: 곡식을 떠는 소에게 입에 망을 씌우지 말라
   lexicon: BDAG
   rationale: 신명기 25:4 인용. 한국어 전통 번역의 「곡식을 떠는 소」 표현을 따르되 구두점·인용 표시를 본문에 맞추어 정돈한다.
+revisions:
+- from: 모세의 율법에 「곡식을 떠는 소에게 입에 망을 씌우지 말라」고 기록되어 있습니다. 하나님께서 소들을 염려하시는 것입니까?
+  to: 왜냐하면 모세의 율법에 「타작하는 소의 입에 망을 씌우지 말라」고 기록되어 있기 때문입니다. 하나님께서 소들을 염려하시는 것입니까?
+  rationale: 논증 접속사 γάρ을 ‘왜냐하면’으로 복원하고, 인용문의 문법과 어휘를 현대 표준어로 다듬었습니다. 하나님의 동물 돌보심에 관한 수사적 긴장은 설명으로 완화하거나 확대하지 않았습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T10:37:28Z'
+review_pass:
+  verdict: revise
+  source_fidelity: γάρ(‘왜냐하면’)가 초안에서 빠져 있어 논증의 연결을 복원해야 합니다. 또한 κημόω는 소가 먹지 못하게 하는 ‘입에 망을 씌우다/입마개를 씌우다’라는 뜻으로 옮겨야 하며, 수정문은 이를 충실히 반영합니다. μὴ로 시작하는 수사 의문문도 해석을 덧붙이지 않고 그대로 유지했습니다.
+  naturalness: ‘소에게 입에 망을’은 조사 결합이 부자연스럽습니다. ‘타작하는 소의 입에 망을’이 자연스럽고, 합쇼체 문장 흐름에도 맞습니다.
+  terminology: ‘모세의 율법’, ‘기록되어 있습니다’, ‘하나님’은 적절합니다. ἀλοῶντα에는 현대적으로 자연스러운 ‘타작하는’을 사용했습니다.
+  issues:
+  - severity: medium
+    issue: γάρ의 논증 연결이 누락되었습니다.
+    rationale: 본문은 앞 절의 논증 근거를 제시하는 ‘왜냐하면’으로 시작하므로 이를 번역에 반영해야 합니다.
+  - severity: medium
+    issue: 인용문 안의 ‘소에게 입에 망을’이 비문에 가깝습니다.
+    rationale: ‘소의 입에 망을 씌우지 말라’로 고치면 κημόω의 의미를 보존하면서 자연스러운 한국어가 됩니다.
+  revised_text: 왜냐하면 모세의 율법에 「타작하는 소의 입에 망을 씌우지 말라」고 기록되어 있기 때문입니다. 하나님께서 소들을 염려하시는 것입니까?
+  revised_footnotes: []
+  revision_rationale: 논증 접속사 γάρ을 ‘왜냐하면’으로 복원하고, 인용문의 문법과 어휘를 현대 표준어로 다듬었습니다. 하나님의 동물 돌보심에 관한 수사적 긴장은 설명으로 완화하거나 확대하지 않았습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T10:37:28Z'
+  output_hash: 23808a248eb8cdd9087d843340034ca92d9d35bd0db7e066b5458ca8f3a2409c
+  usage:
+    completion_tokens: 1003
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 512
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 127
+      engine_ttlt_ms: 8433
+      pre_inference_ms: 108
+      service_tbt_ms: 8
+      service_ttft_ms: 580
+      service_ttlt_ms: 8882
+      total_duration_ms: 8783
+      user_visible_ttft_ms: 472
+    prompt_tokens: 1529
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2532
+  applied_revision: true
+  auto_apply_blocked_errors: []

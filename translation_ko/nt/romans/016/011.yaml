@@ -13,8 +13,15 @@ base_translation:
   text: Greet Herodion, my kinsman. Greet those of Narcissus who are in the Lord.
 translation:
   language: ko
-  text: 나의 친족 헤로디온에게 문안하십시오. 나깃수의 집 사람들 가운데 주 안에 있는 자들에게 문안하십시오.
+  text: 나의 친족[a] 헤로디온에게 문안하십시오. 나깃수에게 속한 이들[b] 가운데 주 안에 있는 이들에게 문안하십시오.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘나의 동족’ 또는 ‘나의 동포’. 그리스어 συγγενής는 혈연 친족을 가리킬 수도 있고, 같은 민족에 속한 사람을 가리킬 수도 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 아마 나깃수의 가정이나 재산에 속한 믿는 사람들을 가리킵니다. 그러나 그리스어 본문은 ‘가정’이라고 명시하지 않습니다.
+    reason: alternative_reading
 lexical_decisions:
 - source_word: Ἡρῳδίωνα
   english_pob_choice: Herodion
@@ -40,4 +47,61 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: draft
+status: reviewed
+revisions:
+- from: 나의 친족 헤로디온에게 문안하십시오. 나깃수의 집 사람들 가운데 주 안에 있는 자들에게 문안하십시오.
+  to: 나의 친족[a] 헤로디온에게 문안하십시오. 나깃수에게 속한 이들[b] 가운데 주 안에 있는 이들에게 문안하십시오.
+  rationale: 원문에 명시되지 않은 ‘집 사람들’을 삭제하고, 나깃수와의 관계만 표현했습니다. συγγενής의 혈연 및 동족 의미 가능성과 나깃수 관련 집단의 가정/재산 가능성은 본문에 덧붙이지 않고 주석으로 처리했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-13T10:37:06Z'
+review_pass:
+  verdict: revise
+  source_fidelity: 첫 문장의 ‘나의 친족 헤로디온’은 συγγενής의 넓은 의미를 본문과 주석으로 대체로 보존합니다. 그러나 δεύτε 문장의 ‘나깃수의 집 사람들’은 원문에 없는 ‘집/가정’(household)을 본문에 보태므로, 나깃수와 관련된 이들이라는 원문의 절제된 표현으로 고쳐야 합니다. ‘주 안에 있는’은 ἐν κυρίῳ를 충실히 옮겼습니다.
+  naturalness: ‘문안하십시오’는 현대 표준어 합쇼체의 서신 문맥에 자연스럽습니다. ‘나깃수에게 속한 이들 가운데’는 다소 직역적이지만, 소유·가정 관계를 단정하지 않고 원문의 범위를 유지하는 자연스러운 절충입니다.
+  terminology: ‘헤로디온’과 ‘나깃수’는 제시된 한국어 성경식 음역 관행에 맞습니다. ‘친족’은 혈연으로만 읽힐 수 있으므로, 동족/동포의 가능성을 주석으로 밝혀야 합니다. ‘주 안에’는 바울의 표현과 신학적 어법을 보존합니다.
+  issues:
+  - severity: medium
+    issue: ‘나깃수의 집 사람들’이 원문에 없는 ‘집 사람들’을 추가함
+    rationale: τοὺς ἐκ τῶν Ναρκίσσου는 나깃수와 연관된 사람들을 가리키지만, οἶκος(집안·가정)라는 말은 없습니다. 가정이나 재산의 구성원이라는 해석은 가능하나 본문이 아니라 주석에서 제시해야 합니다.
+  - severity: low
+    issue: ‘친족’의 의미 범위에 대한 안내 부재
+    rationale: συγγενής는 혈연 친족뿐 아니라 바울의 용례에서 동족/동포를 뜻할 수 있습니다. 본문은 ‘친족’으로 유지할 수 있으나, 이 가능성을 주석으로 표시하는 것이 모호성을 보존합니다.
+  revised_text: 나의 친족[a] 헤로디온에게 문안하십시오. 나깃수에게 속한 이들[b] 가운데 주 안에 있는 이들에게 문안하십시오.
+  revised_footnotes:
+  - marker: a
+    text: 또는 ‘나의 동족’ 또는 ‘나의 동포’. 그리스어 συγγενής는 혈연 친족을 가리킬 수도 있고, 같은 민족에 속한 사람을 가리킬 수도 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: 아마 나깃수의 가정이나 재산에 속한 믿는 사람들을 가리킵니다. 그러나 그리스어 본문은 ‘가정’이라고 명시하지 않습니다.
+    reason: alternative_reading
+  revision_rationale: 원문에 명시되지 않은 ‘집 사람들’을 삭제하고, 나깃수와의 관계만 표현했습니다. συγγενής의 혈연 및 동족 의미 가능성과 나깃수 관련 집단의 가정/재산 가능성은 본문에 덧붙이지 않고 주석으로 처리했습니다.
+  requires_human_review: false
+  model_id: gpt-5.6-terra
+  azure_deployment: gpt-5-6-terra-atlas
+  prompt_id: multilingual_source_review_v1
+  timestamp: '2026-07-13T10:37:06Z'
+  output_hash: 210fcfefc7f0f55c213a54bc65eea8d52e5d9af1e044e462bc695d0867976cee
+  usage:
+    completion_tokens: 1168
+    completion_tokens_details:
+      accepted_prediction_tokens: 0
+      audio_tokens: 0
+      reasoning_tokens: 427
+      rejected_prediction_tokens: 0
+    latency_checkpoint:
+      engine_tbt_ms: 8
+      engine_ttft_ms: 130
+      engine_ttlt_ms: 10033
+      pre_inference_ms: 144
+      service_tbt_ms: 8
+      service_ttft_ms: 464
+      service_ttlt_ms: 10334
+      total_duration_ms: 10201
+      user_visible_ttft_ms: 321
+    prompt_tokens: 1693
+    prompt_tokens_details:
+      audio_tokens: 0
+      cached_tokens: 0
+    total_tokens: 2861
+  applied_revision: true
+  auto_apply_blocked_errors: []
