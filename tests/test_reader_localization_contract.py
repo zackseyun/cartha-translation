@@ -189,6 +189,70 @@ def test_localization_chunks_cover_every_contract_item_once() -> None:
     assert seen_chapters == expected_chapters
 
 
+def test_reviewed_chunk_cache_is_invalidated_only_by_its_own_source(
+    tmp_path: pathlib.Path,
+) -> None:
+    module = load_module(
+        "reader_localization_chunk_hash",
+        "tools/multilingual_localization_pipeline.py",
+    )
+    source_chunk = {
+        "chunk_id": "books-001",
+        "book_metadata": {
+            "Genesis": {
+                "display_name": "Genesis",
+                "author": "Anonymous",
+                "audience": "Israel",
+                "date": "Ancient",
+            }
+        },
+    }
+    artifact = {
+        "contract_version": 1,
+        "locale": "fr",
+        "source_catalog_sha256": "old-catalog-hash",
+        "source_chunk_sha256": module.source_chunk_hash(source_chunk),
+        "chunk_id": "books-001",
+        "status": "reviewed",
+        "payload": {
+            "book_metadata": {
+                "Genesis": {
+                    "display_name": "Genèse",
+                    "author": "Anonyme",
+                    "audience": "Israël",
+                    "date": "Antiquité",
+                }
+            }
+        },
+        "draft_provenance": {
+            "model_id": module.DRAFT_MODEL_ID,
+            "azure_deployment": module.DRAFT_DEPLOYMENT,
+        },
+        "review": {
+            "model_id": module.REVIEW_MODEL_ID,
+            "azure_deployment": module.REVIEW_DEPLOYMENT,
+        },
+    }
+    path = tmp_path / "chunk.yaml"
+    path.write_text(yaml.safe_dump(artifact, allow_unicode=True), encoding="utf-8")
+
+    assert module.load_chunk_artifact(
+        path,
+        source_chunk,
+        code="fr",
+        expected_source_hash="new-catalog-hash",
+    ) is not None
+
+    changed_chunk = copy.deepcopy(source_chunk)
+    changed_chunk["book_metadata"]["Genesis"]["author"] = "Traditionally Moses"
+    assert module.load_chunk_artifact(
+        path,
+        changed_chunk,
+        code="fr",
+        expected_source_hash="new-catalog-hash",
+    ) is None
+
+
 def test_reviewed_catalog_schema_and_no_fallback_validation() -> None:
     module = load_module(
         "reader_localization_validation", "tools/multilingual_localization_pipeline.py"

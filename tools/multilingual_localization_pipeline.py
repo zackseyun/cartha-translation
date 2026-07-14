@@ -112,6 +112,16 @@ def source_catalog_hash(source: dict[str, Any]) -> str:
     return canonical_hash(source)
 
 
+def source_chunk_hash(source_chunk: dict[str, Any]) -> str:
+    """Hash only the bounded source chunk that a localized artifact covers.
+
+    A global catalog hash still protects assembled reader assets, but it should
+    not invalidate and retranslate all 29 reviewed chunks when one title in one
+    chunk changes. New artifacts therefore carry both hashes.
+    """
+    return canonical_hash(source_chunk)
+
+
 def validate_locale_catalog(
     payload: dict[str, Any],
     source: dict[str, Any],
@@ -425,7 +435,15 @@ def load_chunk_artifact(
         return None
     if artifact.get("contract_version") != 1 or artifact.get("locale") != code:
         return None
-    if artifact.get("source_catalog_sha256") != expected_source_hash:
+    expected_chunk_hash = source_chunk_hash(source_chunk)
+    artifact_chunk_hash = artifact.get("source_chunk_sha256")
+    if artifact_chunk_hash:
+        if artifact_chunk_hash != expected_chunk_hash:
+            return None
+    elif artifact.get("source_catalog_sha256") != expected_source_hash:
+        # Backward compatibility for v1 artifacts created before chunk hashes
+        # were introduced. They remain reusable while the full source catalog
+        # is unchanged and are upgraded the next time the chunk is regenerated.
         return None
     if artifact.get("chunk_id") != source_chunk["chunk_id"]:
         return None
@@ -495,6 +513,7 @@ Check every localized value against the supplied canonical English source. Corre
         "contract_version": 1,
         "locale": code,
         "source_catalog_sha256": source_hash,
+        "source_chunk_sha256": source_chunk_hash(source_chunk),
         "chunk_id": source_chunk["chunk_id"],
         "status": status,
         "payload": chunk_content(reviewed),
