@@ -12,7 +12,7 @@ import subprocess
 import sys
 from typing import Any
 
-from multilingual_pipeline import ROOT, azure_key, load_config
+from multilingual_pipeline import ROOT, azure_key, load_config, rollout_order
 from multilingual_rollout import language_state
 
 
@@ -21,8 +21,9 @@ def choose_tasks(requested: list[str], workers: int) -> list[dict[str, Any]]:
     known = config["languages"]
     codes = requested or [
         code
-        for code, spec in known.items()
-        if code != "en" and spec.get("status") in {"pilot", "existing_revision"}
+        for code in rollout_order(config)
+        if code != "en"
+        and known[code].get("status") in {"pilot", "existing_revision"}
     ]
     tasks: list[dict[str, Any]] = []
     for code in codes:

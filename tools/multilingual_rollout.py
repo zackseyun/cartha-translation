@@ -12,7 +12,13 @@ import subprocess
 import sys
 from typing import Any
 
-from multilingual_pipeline import BLOCK_ROOT, ROOT, load_config, source_relatives
+from multilingual_pipeline import (
+    BLOCK_ROOT,
+    ROOT,
+    load_config,
+    rollout_order,
+    source_relatives,
+)
 
 
 LOCK_ROOT = pathlib.Path(
@@ -94,8 +100,10 @@ def language_state(code: str) -> dict[str, Any]:
 
 def choose_next() -> tuple[str, str, dict[str, Any]] | None:
     config = load_config()
-    ordered = ["es", "ko"] + [
-        code for code, spec in config["languages"].items() if spec.get("status") == "pilot"
+    ordered = [
+        code for code in rollout_order(config)
+        if code != "en"
+        and config["languages"][code].get("status") in {"pilot", "existing_revision"}
     ]
     for code in ordered:
         state = language_state(code)

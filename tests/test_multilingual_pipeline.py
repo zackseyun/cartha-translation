@@ -24,9 +24,14 @@ def test_language_program_is_deduplicated_and_complete() -> None:
     module = load_module("multilingual_pipeline", "tools/multilingual_pipeline.py")
     config = module.load_config()
     languages = config["languages"]
-    assert len(languages) == 33
-    assert sum(spec.get("status") == "pilot" for spec in languages.values()) == 30
-    assert {"en", "es", "ko", "pt", "zh_hans", "ar", "my"} <= set(languages)
+    assert len(languages) == 34
+    assert sum(spec.get("status") == "pilot" for spec in languages.values()) == 31
+    assert {"en", "es", "ko", "pt", "zh_hans", "de", "ar", "my"} <= set(languages)
+    assert module.rollout_order(config)[:20] == [
+        "en", "es", "pt", "zh_hans", "fr", "ko", "de", "ru", "hi", "id",
+        "sw", "tl", "ta", "te", "ml", "vi", "ja", "ar", "yo", "ig",
+    ]
+    assert set(module.rollout_order(config)) == set(languages)
 
 
 def test_multilingual_validator_requires_anchored_footnotes() -> None:
@@ -122,6 +127,24 @@ def test_parallel_rollout_splits_global_concurrency() -> None:
     assert module.lane_concurrency(500, 3) == 166
 
 
+def test_parallel_rollout_uses_readership_priority(monkeypatch) -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module(
+        "multilingual_parallel_rollout_priority", "tools/multilingual_parallel_rollout.py"
+    )
+    monkeypatch.setattr(
+        module,
+        "language_state",
+        lambda code: {
+            "pending_review": 0,
+            "pending_draft": 0 if code in {"es", "pt"} else 1,
+        },
+    )
+    assert [task["code"] for task in module.choose_tasks([], 4)] == [
+        "zh_hans", "fr", "ko", "de"
+    ]
+
+
 def test_azure_key_is_cached_before_parallel_workers(monkeypatch) -> None:
     module = load_module("multilingual_pipeline_key_cache", "tools/multilingual_pipeline.py")
     monkeypatch.delenv("AZURE_OPENAI_API_KEY", raising=False)
@@ -170,7 +193,7 @@ def test_spanish_repair_extracts_publication_text_from_curly_quotes() -> None:
 
 def test_localization_calibration_covers_every_target_language() -> None:
     files = sorted((ROOT / "localization").glob("*/calibration.yaml"))
-    assert len(files) == 32
+    assert len(files) == 33
     expected_passages = {
         "ot/genesis/001/001.yaml",
         "ot/ecclesiastes/001/002.yaml",
@@ -207,7 +230,8 @@ def test_reader_asset_compiler_opens_every_pilot_language(tmp_path: pathlib.Path
         text=True,
     )
     index = json.loads((tmp_path / "multilingual" / "index.json").read_text())
-    assert len(index["languages"]) == 30
+    assert len(index["languages"]) == 31
     assert all(item["verses"] >= 3 for item in index["languages"])
+    assert (tmp_path / "multilingual" / "de.json").exists()
     assert (tmp_path / "multilingual" / "zh.json").exists()
     assert not (tmp_path / "multilingual" / "zh_hans.json").exists()

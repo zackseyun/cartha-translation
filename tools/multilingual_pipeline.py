@@ -51,7 +51,25 @@ def load_config() -> dict[str, Any]:
     data = yaml.safe_load(CONFIG_PATH.read_text(encoding="utf-8"))
     if not isinstance(data, dict) or not isinstance(data.get("languages"), dict):
         raise RuntimeError("invalid multilingual language config")
+    rollout_order(data)
     return data
+
+
+def rollout_order(config: dict[str, Any]) -> list[str]:
+    """Return and validate the explicit product rollout priority."""
+    languages = config.get("languages") or {}
+    priority = config.get("rollout_priority")
+    if not isinstance(priority, list) or not all(isinstance(code, str) for code in priority):
+        raise RuntimeError("multilingual rollout_priority must be a list of language codes")
+    if len(priority) != len(set(priority)):
+        raise RuntimeError("multilingual rollout_priority contains duplicate language codes")
+    unknown = sorted(set(priority) - set(languages))
+    missing = sorted(set(languages) - set(priority))
+    if unknown or missing:
+        raise RuntimeError(
+            f"multilingual rollout_priority mismatch: unknown={unknown}, missing={missing}"
+        )
+    return priority
 
 
 def choose_source_files(book_dir: pathlib.Path) -> list[pathlib.Path]:
