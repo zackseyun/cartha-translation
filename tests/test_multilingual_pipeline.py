@@ -488,7 +488,7 @@ def test_reader_asset_compiler_opens_every_pilot_language(tmp_path: pathlib.Path
         text=True,
     )
     index = json.loads((tmp_path / "multilingual" / "index.json").read_text())
-    assert len(index["languages"]) == 31
+    assert len(index["languages"]) == 33
     assert all(item["verses"] >= 3 for item in index["languages"])
     assert (tmp_path / "multilingual" / "de.json").exists()
     assert (tmp_path / "multilingual" / "zh.json").exists()

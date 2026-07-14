@@ -375,9 +375,11 @@ def test_requested_existing_revision_languages_are_included() -> None:
         "es",
         "ko",
     ]
+    default_languages = builder.reader_asset_languages(config, [])
+    assert {"es", "ko"} <= {code for code, _spec in default_languages}
     assert all(
-        spec["status"] == "pilot"
-        for _code, spec in builder.reader_asset_languages(config, [])
+        spec["status"] in {"pilot", "existing_revision"}
+        for _code, spec in default_languages
     )
 
 

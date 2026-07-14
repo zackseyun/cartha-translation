@@ -438,10 +438,10 @@ def write_json(path: pathlib.Path, payload: Any) -> None:
 def reader_asset_languages(
     config: dict[str, Any], requested_values: list[str]
 ) -> list[tuple[str, dict[str, Any]]]:
-    """Keep default bulk builds on pilots, but honor named existing revisions."""
+    """Build every reader language, including established Spanish and Korean."""
     requested = set(requested_values)
     explicitly_named = bool(requested) and "all" not in requested
-    eligible_statuses = {"pilot", "existing_revision"} if explicitly_named else {"pilot"}
+    eligible_statuses = {"pilot", "existing_revision"}
     return [
         (code, spec)
         for code, spec in config["languages"].items()
