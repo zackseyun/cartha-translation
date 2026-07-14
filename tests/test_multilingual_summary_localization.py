@@ -120,7 +120,11 @@ def test_pending_collection_skips_matching_rows_and_scans_forward() -> None:
         limit=2,
     )
     assert [item["source"]["chapter"] for item in pending] == [2, 3]
-    assert stats == {"english_rows_scanned": 3, "matching_rows_skipped": 1}
+    assert stats == {
+        "english_rows_scanned": 3,
+        "matching_rows_skipped": 1,
+        "content_filter_blocks_skipped": 0,
+    }
     assert fake.scan_index == 2
 
 
@@ -214,3 +218,21 @@ def test_cli_supports_bounded_dry_run_controls() -> None:
     assert args.limit == 7
     assert args.concurrency == 3
     assert args.dry_run is True
+
+
+def test_content_filter_blocks_are_persisted_and_skipped(
+    tmp_path: pathlib.Path, monkeypatch
+) -> None:
+    module = load_module()
+    pending = task(module, source_row(0))
+    monkeypatch.setattr(module, "BLOCK_ROOT", tmp_path)
+    error = RuntimeError(
+        'Azure HTTP 400: {"code":"content_filter",'
+        '"innererror":{"code":"ResponsibleAIPolicyViolation"}}'
+    )
+
+    assert module.is_content_filter_error(error)
+    assert not module.task_is_blocked(pending)
+    module.park_content_filter_block(pending, error)
+    assert module.task_is_blocked(pending)
+    assert module.block_path(pending).read_text(encoding="utf-8")

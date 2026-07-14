@@ -33,6 +33,7 @@ import concurrent.futures
 import hashlib
 import json
 import os
+import pathlib
 import re
 import sys
 import time
@@ -42,7 +43,7 @@ from typing import Any, Iterable, Iterator
 import boto3
 from boto3.dynamodb.types import TypeDeserializer, TypeSerializer
 
-from multilingual_pipeline import azure_key, call_tool, load_config, now
+from multilingual_pipeline import ROOT, azure_key, call_tool, load_config, now, write_atomic
 
 
 DEFAULT_REGION = "us-west-2"
@@ -62,6 +63,7 @@ _DESERIALIZER = TypeDeserializer()
 _SERIALIZER = TypeSerializer()
 _LANGUAGE_CODE = re.compile(r"^[a-z][a-z0-9_]*$")
 CACHE_CODE_OVERRIDES = {"zh_hans": "zh"}
+BLOCK_ROOT = ROOT / "state" / "multilingual_summary_localization" / "blocked"
 
 
 DRAFT_TOOL = {
@@ -254,6 +256,39 @@ def task_for(
     }
 
 
+def block_path(task: dict[str, Any]) -> pathlib.Path:
+    """Return a stable local marker for one source-version/language pair."""
+
+    identity = f"{task['target_key']}|{task['source_output_hash']}"
+    digest = hashlib.sha256(identity.encode("utf-8")).hexdigest()
+    return BLOCK_ROOT / str(task["language"]) / f"{digest}.yaml"
+
+
+def task_is_blocked(task: dict[str, Any]) -> bool:
+    return block_path(task).exists()
+
+
+def is_content_filter_error(exc: Exception) -> bool:
+    rendered = str(exc).lower()
+    return "content_filter" in rendered or "responsibleaipolicyviolation" in rendered
+
+
+def park_content_filter_block(task: dict[str, Any], exc: Exception) -> None:
+    path = block_path(task)
+    write_atomic(
+        path,
+        {
+            "status": "content_filter_blocked",
+            "target_key": task["target_key"],
+            "source_key": task["source"]["summary_key"],
+            "language": task["language"],
+            "source_output_hash": task["source_output_hash"],
+            "blocked_at": now(),
+            "error": str(exc)[:1000],
+        },
+    )
+
+
 def batch_get_targets(ddb: Any, table: str, keys: Iterable[str]) -> dict[str, dict[str, Any]]:
     """Fetch target rows in batches, retrying DynamoDB's unprocessed keys."""
 
@@ -330,7 +365,11 @@ def collect_pending_tasks(
     if limit < 1:
         raise ValueError("--limit must be at least 1")
     tasks: list[dict[str, Any]] = []
-    stats = {"english_rows_scanned": 0, "matching_rows_skipped": 0}
+    stats = {
+        "english_rows_scanned": 0,
+        "matching_rows_skipped": 0,
+        "content_filter_blocks_skipped": 0,
+    }
     for page in scan_english_pages(ddb, table):
         stats["english_rows_scanned"] += len(page)
         candidates = [
@@ -342,6 +381,9 @@ def collect_pending_tasks(
             ddb, table, (task["target_key"] for task in candidates)
         )
         for task in candidates:
+            if task_is_blocked(task):
+                stats["content_filter_blocks_skipped"] += 1
+                continue
             if existing_matches(existing.get(task["target_key"]), task):
                 stats["matching_rows_skipped"] += 1
                 continue
@@ -618,7 +660,7 @@ def run(args: argparse.Namespace, ddb: Any | None = None) -> int:
 
     # Resolve and cache Azure credentials before worker threads begin.
     azure_key()
-    totals = {"written": 0, "race_skipped": 0, "error": 0}
+    totals = {"written": 0, "race_skipped": 0, "blocked": 0, "error": 0}
     with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
         futures = {
             pool.submit(
@@ -638,6 +680,15 @@ def run(args: argparse.Namespace, ddb: Any | None = None) -> int:
                 totals[status] += 1
                 print(f"{status:12} {key}", flush=True)
             except Exception as exc:  # noqa: BLE001
+                if is_content_filter_error(exc):
+                    park_content_filter_block(task, exc)
+                    totals["blocked"] += 1
+                    print(
+                        f"blocked      {task['target_key']}",
+                        file=sys.stderr,
+                        flush=True,
+                    )
+                    continue
                 totals["error"] += 1
                 print(f"ERROR        {task['target_key']}: {exc}", file=sys.stderr, flush=True)
     print(json.dumps(totals, sort_keys=True), flush=True)
