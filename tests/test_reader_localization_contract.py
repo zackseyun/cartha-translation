@@ -381,6 +381,17 @@ def test_requested_existing_revision_languages_are_included() -> None:
     )
 
 
+def test_reader_asset_builder_accepts_only_reviewed_statuses() -> None:
+    builder = load_module(
+        "reader_localization_builder_reviewed_status", "tools/build_multilingual_reader_assets.py"
+    )
+    assert builder.record_has_reviewed_status({"status": "reviewed"})
+    assert builder.record_has_reviewed_status({"status": "spanish_reviewed"})
+    assert builder.record_has_reviewed_status({"status": "korean_reviewed"})
+    assert not builder.record_has_reviewed_status({"status": "needs_human_review"})
+    assert not builder.record_has_reviewed_status({"status": "draft"})
+
+
 def test_builder_emits_top_level_localization_and_projects_book_fields(
     tmp_path: pathlib.Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:

@@ -24,7 +24,12 @@ from multilingual_localization_pipeline import (
     load_source_catalog,
     validate_locale_catalog,
 )
-from multilingual_pipeline import ROOT, load_config, validate as validate_verse
+from multilingual_pipeline import (
+    ROOT,
+    accepted_review_status,
+    load_config,
+    validate as validate_verse,
+)
 
 
 UI_CODE_OVERRIDES = {"zh_hans": "zh"}
@@ -209,6 +214,11 @@ def _localized_book_projection(
     return book if isinstance(book, dict) else None
 
 
+def record_has_reviewed_status(payload: dict[str, Any]) -> bool:
+    """Accept current and established locale-specific reviewed statuses."""
+    return accepted_review_status(payload.get("status"))
+
+
 def compile_language(
     code: str,
     spec: dict[str, Any],
@@ -243,7 +253,7 @@ def compile_language(
                 # publishable. A review_pass can also exist on records that
                 # were deliberately parked for human review; those must never
                 # leak into reader assets merely because the review ran.
-                if not payload.get("review_pass") or payload.get("status") != "reviewed":
+                if not payload.get("review_pass") or not record_has_reviewed_status(payload):
                     continue
                 errors = validate_verse(payload, code)
                 if errors:

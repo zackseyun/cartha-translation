@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 그는 주의 이름을 부르는 모든 자를 결박할 권한을 대제사장들에게서 받아 여기에 와 있습니다.」
+  text: 또 그는 여기서 대제사장들에게서 주의 이름을 부르는[a] 모든 사람을 결박할 권한을 가지고 있습니다.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘주의 이름을 부르며 간구하는’. 그리스어 표현은 누구의 이름을 부르거나 그 이름을 간구한다는 성경적 관용구입니다.
+    reason: lexical_alternative
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -26,53 +30,58 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: needs_human_review
+status: reviewed
 review_pass:
   verdict: revise
-  source_fidelity: The draft accurately renders the chief priests, binding, and calling on the Lord's name, but it adds the unstated assertion that Saul "has come here" (와 있습니다). The Greek says that he has authority here, not that he has arrived here.
-  naturalness: The revised wording is natural modern standard Korean in formal-polite narrative/dialogue style. "여기에도" expresses ὧδε in its Damascus setting without adding movement.
-  terminology: '"대제사장들," "권한," "결박하다," and "주의 이름을 부르다" are appropriate and retain the biblical idiom. The latter does not reduce the expression to mere affiliation or overinterpret it as an explicit paraphrase of prayer.'
+  source_fidelity: 초안의 ‘여기에 와 있습니다’는 헬라어 본문에 없는 이동·도착의 의미를 더합니다. ὧδε는 ‘여기서/여기에도’이고, ἔχει는 현재형으로 그가 그곳에서 권한을 ‘가지고 있다’는 뜻입니다.
+  naturalness: ‘여기서 … 권한을 가지고 있습니다’는 현대 표준 한국어 합쇼체로 자연스럽고, 인용문 안의 아나니아의 발화에도 적절합니다.
+  terminology: ἀρχιερεῖς는 ‘대제사장들’, δῆσαι는 원문의 이미지를 보존하는 ‘결박하다’로 옮겼습니다. ‘주의 이름을 부르다’는 ἐπικαλεῖσθαι τὸ ὄνομα의 성경적 관용구를 보존하며, 각주로 가능한 ‘부르다/간구하다’의 뉘앙스를 밝혔습니다.
   issues:
+  - severity: high
+    issue: ‘여기에 와 있습니다’가 추가됨
+    rationale: 원문에는 ‘오다’에 해당하는 동사가 없습니다. καὶ ὧδε ἔχει는 ‘또 그는 여기서 … 권한을 가지고 있습니다’라는 뜻이므로, 도착 사실을 번역에 삽입해서는 안 됩니다.
   - severity: medium
-    issue: 'Unwarranted addition: "여기에 와 있습니다"'
-    rationale: The source has καὶ ὧδε ἔχει ἐξουσίαν, "and here he has authority." It does not state that Saul has come/arrived here. The addition alters the verse's asserted content.
-  - severity: low
-    issue: Location is not rendered as the sphere of Saul's authority
-    rationale: 'In the draft, "여기에" belongs to "와 있습니다," whereas ὧδε modifies ἔχει: he has authority here.'
-  revised_text: 또 여기에도 그는 대제사장들에게서 받은 권한이 있어, 주의 이름을 부르는 모든 사람을 결박할 수 있습니다.”
+    issue: ‘받아’가 현재의 소유를 과거의 수령 행위로 약화함
+    rationale: παρὰ τῶν ἀρχιερέων은 권한의 출처를, ἔχει는 현재의 소유를 나타냅니다. ‘대제사장들에게서 … 권한을 가지고 있습니다’가 두 요소를 더 직접적으로 반영합니다.
+  revised_text: 또 그는 여기서 대제사장들에게서 주의 이름을 부르는[a] 모든 사람을 결박할 권한을 가지고 있습니다.”
   revised_footnotes:
   - marker: a
-    text: 또는 “주의 이름을 부르는 모든 이들.” 그리스어 표현은 어떤 이의 이름을 부르거나 그 이름을 호소한다는 성경의 관용 표현이며, 흔히 기도 가운데 부르는 것을 뜻합니다.
+    text: 또는 ‘주의 이름을 부르며 간구하는’. 그리스어 표현은 누구의 이름을 부르거나 그 이름을 간구한다는 성경적 관용구입니다.
     reason: lexical_alternative
-  revision_rationale: The revision removes the unsupported arrival statement and attaches "here" to Saul's possession of delegated authority, as in the Greek. It preserves the infinitival purpose/content of that authority (to bind), the source relationship to the chief priests, and the idiom of calling on the Lord's name. A footnote is supplied at the Korean equivalent of "call on your name" to preserve the English audit trail's lexical clarification.
+  revision_rationale: 원문에 없는 ‘와 있다’를 제거하고, ὧδε의 장소 부사와 ἔχει의 현재형을 각각 ‘여기서’와 ‘가지고 있습니다’로 반영했습니다. ‘결박하다’와 ‘주의 이름을 부르다’는 원문의 어휘 및 관용구를 보존했습니다.
   requires_human_review: false
   model_id: gpt-5.6-terra
-  azure_deployment: gpt-5-6-terra-atlas
+  azure_deployment: gpt-5-6-terra-dz-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-13T09:32:29Z'
-  output_hash: b70382e55690352316b52cfd8dfa0b2a0a4c7cb914cf181f230cc65aca44e0e6
+  timestamp: '2026-07-14T22:50:09Z'
+  output_hash: e88cdff6e872fbf056636343ac81cc9d20ac05dd874de13fa041b74854aff35d
   usage:
-    completion_tokens: 814
+    completion_tokens: 906
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 302
+      reasoning_tokens: 310
       rejected_prediction_tokens: 0
     latency_checkpoint:
-      engine_tbt_ms: 9
-      engine_ttft_ms: 134
-      engine_ttlt_ms: 7633
-      pre_inference_ms: 140
-      service_tbt_ms: 9
-      service_ttft_ms: 432
-      service_ttlt_ms: 7925
-      total_duration_ms: 7810
-      user_visible_ttft_ms: 292
+      engine_tbt_ms: 8
+      engine_ttft_ms: 119
+      engine_ttlt_ms: 7768
+      pre_inference_ms: 103
+      service_tbt_ms: 8
+      service_ttft_ms: 331
+      service_ttlt_ms: 7970
+      total_duration_ms: 7893
+      user_visible_ttft_ms: 228
     prompt_tokens: 1341
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 2155
-  applied_revision: false
-  auto_apply_blocked_errors:
-  - unanchored footnote [a]
+    total_tokens: 2247
+  applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: 그리고 그는 주의 이름을 부르는 모든 자를 결박할 권한을 대제사장들에게서 받아 여기에 와 있습니다.」
+  to: 또 그는 여기서 대제사장들에게서 주의 이름을 부르는[a] 모든 사람을 결박할 권한을 가지고 있습니다.”
+  rationale: 원문에 없는 ‘와 있다’를 제거하고, ὧδε의 장소 부사와 ἔχει의 현재형을 각각 ‘여기서’와 ‘가지고 있습니다’로 반영했습니다. ‘결박하다’와 ‘주의 이름을 부르다’는 원문의 어휘 및 관용구를 보존했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-14T22:50:09Z'

@@ -128,49 +128,52 @@ ai_draft:
 status: needs_human_review
 review_pass:
   verdict: reject
-  source_fidelity: 不能通过。所给科普特语OCR片段与英文审校轨迹及中文草稿并不对应。OCR在首个短语之后清楚含有“ⲁⲩⲱ ϯⲛⲁⲟⲩⲱⲛϩ ⲉⲃⲟⲗ ⲛⲧⲁ ϣⲁϫⲉ”（大意为“并且我要显明/揭示我的话语”）以及“ⲉⲧⲃⲉⲟⲩ ⲅⲁⲣ ⲧⲉⲧⲛⲙⲉⲥⲧⲉ …”（“你们为何……恨我……”），这些内容完全未见于英文或中文译文。因对齐置信度已标为低，不能以咨询文本或“其他见证”取代当前指定的原文片段。
-  naturalness: 若以英文审校轨迹为唯一底本，中文“我是那位在惧怕的人中被寻见的；我也是战栗中的力量”基本通顺且有诗体节奏。但这不能弥补其与当前原文片段的实质性失配。另“那位”在此类第一人称自我宣告中略显指示语累赘，且脚注所称“不标明性别”并不等同于保留全篇已建立的女性发言者。
-  terminology: “力量”可作为所称补读 ⲟⲩϩⲟⲟⲩ 的自然对应；但该词不在所给OCR中清晰可辨。“惧怕的人”和“战栗”所依据的词形分析也无法从当前OCR及其后续明显不同的句子安全确认。不能在错误对齐的基础上核定这些术语。
+  source_fidelity: 不通过。草稿所译两句与所给科普特语OCR片段无法对应。OCR在“ϯⲛⲁⲕⲣⲣⲱ”之后仍有“ⲁⲛⲟⲕ ϩⲛ ⲛⲉⲧⲕⲗⲏϣ … ⲁⲩⲱ ϯⲛⲁⲟⲩⲱⲛϩ ⲉⲃⲟⲗ ⲛⲧⲁ ϣⲁϫⲉ … ⲉⲧⲃⲉⲟⲩ ⲅⲁⲣ ⲧⲉⲧⲛⲙⲉⲥⲧⲉ …”等大量内容，草稿完全未译；反之，正文“我是……”“力量（ⲟⲩϩⲟⲟⲩ）”并未由此OCR片段可靠支持。英语审计轨迹的consult_text及其“expected”补读显然与当前对齐片段不一致，不能作为覆盖源文的依据。
+  naturalness: 若孤立看，“我是那位在惧怕的人中被寻见的；我也是战栗中的力量”庄重、通顺。但“那位”在此无自然的中文指代先行项，且用脚注处理已确立的女性说话声音，削弱了诗歌自我宣告的直接性。此问题次于严重的源文错配。
+  terminology: “力量”“战栗”本身可接受，且避免了不必要的教会术语；然而“力量”所依赖的ⲟⲩϩⲟⲟⲩ不在给定OCR可见文字中。脚注把不存在于当前片段的词称为“谨慎补出”，不足以解决正文与源文、段落对齐和锚点的根本问题。
   issues:
   - severity: high
-    issue: 原文片段、英文审校轨迹和中文草稿发生重大错位。
-    rationale: OCR包含“我要显明我的话语”及“你们为什么恨我”等连续内容，而草稿仅译“我是在惧怕的人中被寻见的……”。这不是可由诗歌省略、时态处理或脚注解决的差异。
+    issue: 源文片段、英语审计文本与中文草稿发生实质性错位。
+    rationale: 给定OCR包含“我将显明/揭示我的话语”以及“为何……恨我”等后续内容，而英文consult_text和中文草稿仅含两句不同的自我宣告。不能在低置信度启发式对齐下，将另一段平行或邻近文本当作本段的源文。
   - severity: high
-    issue: 英文轨迹声称的补读和词汇分析不能由当前OCR安全支撑。
-    rationale: 轨迹称ⲛⲉⲧⲛϣⲟϫⲛⲉ指“惧怕的人”，但当前片段的后续文字表明它属于另一连续段落；在对齐置信度低的情况下，不应据此制作确定性的中文译文或词汇脚注。
+    issue: 中文草稿遗漏当前OCR片段中可辨识的大部分文本。
+    rationale: 即使暂不确定个别词的断词和句法，ⲁⲩⲱ（“并且”）、ϯⲛⲁⲟⲩⲱⲛϩ ⲉⲃⲟⲗ（“我将显明/揭示”）、ⲛⲧⲁ ϣⲁϫⲉ（“我的话语”）、ⲉⲧⲃⲉⲟⲩ ⲅⲁⲣ（“为何/为什么”）、ⲧⲉⲧⲛⲙⲉⲥⲧⲉ（“你们恨”）均显示本段不止现有两行。
+  - severity: high
+    issue: 脚注c及相应词汇决定把不在当前OCR切片中的“ⲟⲩϩⲟⲟⲩ”作为正文依据。
+    rationale: 可在经核对的版本或明确标识的平行见证中补足缺字，但不可在当前对齐已被证伪的情况下，用“expected”读法替代本段可见的不同内容。
   - severity: medium
-    issue: 脚注a以中文“不标性别”为由处理女性声音，未充分反映既定叙述声音。
-    rationale: 若正确底本确为英文所指的《雷霆，完美心灵》段落，可考虑以“我是她”或在不破坏中文自然度的前提下更明确地保留女性声音；但在底本错位未解决前，不宜擅自重译。
+    issue: 性别脚注的表达虽谨慎，但“那位”不是译出女性诗歌声音的充分理由。
+    rationale: 若经重新校对后所译段落确属该女性第一人称声音，可按全篇既定话语框架在连续译文中体现，或以简明注释说明；孤立采用“那位”会使中文显得指称悬空。
   revised_text: ''
   revised_footnotes: []
-  revision_rationale: 需要先重新核对段落编号、页行范围和科普特语转写，提供与“我是在……中被寻见；我是……中的力量”实际对应的原文片段，或确认当前OCR应改作另一段落。由于现有指定来源与译文不是同一文本，任何“完整修订译文”都会把未经证实的咨询文本误呈为该来源的翻译，故不作不安全的重译。
+  revision_rationale: 不能安全提供完整修订文本：现有材料显示段落ID/英文审计文本与OCR片段错配，而OCR本身又标明低对齐置信度并跨页。应先由人工核验《Thunder, Perfect Mind》的权威校勘本、叶页/行号和本段边界，确认本段究竟对应“in all fears … strength in trembling”还是包含“我将显明我的话语／为何你们恨我”的另一段；之后据经确认的科普特文重新翻译，并为实际补字或异读设置准确锚点。
   requires_human_review: true
   model_id: gpt-5.6-terra
-  azure_deployment: gpt-5-6-terra-atlas
+  azure_deployment: gpt-5-6-terra-dz-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-14T10:26:24Z'
-  output_hash: 56f8d54264e0006d7d843724f844415bf76459386e6b3860d1d986fbb91ccc35
+  timestamp: '2026-07-14T22:49:26Z'
+  output_hash: 688302c9241accfa15dbc3c9d9393faa0d519bb7785865596f867eb4623e6923
   usage:
-    completion_tokens: 1759
+    completion_tokens: 1912
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 846
+      reasoning_tokens: 717
       rejected_prediction_tokens: 0
     latency_checkpoint:
       engine_tbt_ms: 9
-      engine_ttft_ms: 155
-      engine_ttlt_ms: 16557
-      pre_inference_ms: 163
+      engine_ttft_ms: 145
+      engine_ttlt_ms: 16511
+      pre_inference_ms: 79
       service_tbt_ms: 9
-      service_ttft_ms: 409
-      service_ttlt_ms: 16807
-      total_duration_ms: 16659
-      user_visible_ttft_ms: 246
+      service_ttft_ms: 311
+      service_ttlt_ms: 16675
+      total_duration_ms: 16656
+      user_visible_ttft_ms: 231
     prompt_tokens: 3299
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 5058
+    total_tokens: 5211
   applied_revision: false
   auto_apply_blocked_errors: []

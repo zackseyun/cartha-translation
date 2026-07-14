@@ -43,10 +43,76 @@ ENDPOINT = os.environ.get(
 RESOURCE_GROUP = "rg-cartha-truth-openai"
 ACCOUNT = "cartha-aoai-truth-1c9177c8"
 API_VERSION = os.environ.get("AZURE_OPENAI_API_VERSION", "2025-04-01-preview")
+REVIEWED_STATUS_PATTERN = r"^status: (reviewed|[a-z_]+_reviewed)$"
+HUMAN_REVIEW_STATUS_PATTERN = r"^status: needs_human_review$"
 
 
 def now() -> str:
     return dt.datetime.now(dt.timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+
+
+def accepted_review_status(status: Any) -> bool:
+    """Return whether a record status represents an accepted review."""
+    value = str(status or "").strip()
+    return value == "reviewed" or value.endswith("_reviewed")
+
+
+def reviewed_relatives(root: pathlib.Path) -> set[str]:
+    """Find accepted reviewed files without parsing an entire language corpus."""
+    if not root.exists():
+        return set()
+    review_probe = subprocess.run(
+        ["rg", "-l", "^review_pass:", str(root), "--glob", "*.yaml"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    status_probe = subprocess.run(
+        ["rg", "-l", REVIEWED_STATUS_PATTERN, str(root), "--glob", "*.yaml"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    has_review_pass = {
+        str(pathlib.Path(line).relative_to(root))
+        for line in review_probe.stdout.splitlines()
+        if line.strip()
+    }
+    has_reviewed_status = {
+        str(pathlib.Path(line).relative_to(root))
+        for line in status_probe.stdout.splitlines()
+        if line.strip()
+    }
+    return has_review_pass & has_reviewed_status
+
+
+def human_review_relatives(root: pathlib.Path) -> set[str]:
+    """Find Terra-reviewed records intentionally parked for human judgment."""
+    if not root.exists():
+        return set()
+    review_probe = subprocess.run(
+        ["rg", "-l", "^review_pass:", str(root), "--glob", "*.yaml"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    status_probe = subprocess.run(
+        ["rg", "-l", HUMAN_REVIEW_STATUS_PATTERN, str(root), "--glob", "*.yaml"],
+        text=True,
+        capture_output=True,
+        check=False,
+    )
+    has_review_pass = {
+        str(pathlib.Path(line).relative_to(root))
+        for line in review_probe.stdout.splitlines()
+        if line.strip()
+    }
+    needs_human = {
+        str(pathlib.Path(line).relative_to(root))
+        for line in status_probe.stdout.splitlines()
+        if line.strip()
+    }
+    return has_review_pass & needs_human
 
 
 def load_config() -> dict[str, Any]:
@@ -451,7 +517,7 @@ def review_one(code: str, spec: dict[str, Any], relative: str, deployment: str, 
     if not destination.exists():
         return "missing", str(destination.relative_to(ROOT)), {}
     record = yaml.safe_load(destination.read_text(encoding="utf-8"))
-    if record.get("review_pass") and not force:
+    if record.get("review_pass") and accepted_review_status(record.get("status")) and not force:
         return "skip", str(destination.relative_to(ROOT)), {}
     existing_validation_errors = validate(record, code)
     system = f"""You are the independent {spec['name']} reviewer for the People's Open Bible.
@@ -520,15 +586,10 @@ def command_status(args: argparse.Namespace) -> int:
     for code, spec in config["languages"].items():
         root = SOURCE_ROOT if code == "en" else ROOT / f"translation_{code}"
         files = list(root.rglob("*.yaml")) if root.exists() else []
-        reviewed = 0
-        if files:
-            probe = subprocess.run(
-                ["rg", "-l", "^review_pass:", str(root)],
-                text=True, capture_output=True, check=False,
-            )
-            reviewed = len([line for line in probe.stdout.splitlines() if line.strip()])
+        reviewed = len(reviewed_relatives(root))
+        needs_human_review = len(human_review_relatives(root))
         blocked = len(list((BLOCK_ROOT / code).rglob("*.yaml"))) if (BLOCK_ROOT / code).exists() else 0
-        rows.append({"code": code, "language": spec["name"], "project_status": spec["status"], "files": len(files), "reviewed": reviewed, "blocked": blocked})
+        rows.append({"code": code, "language": spec["name"], "project_status": spec["status"], "files": len(files), "reviewed": reviewed, "needs_human_review": needs_human_review, "blocked": blocked})
     print(json.dumps(rows, ensure_ascii=False, indent=2))
     return 0
 
@@ -596,17 +657,8 @@ def command_wave(args: argparse.Namespace) -> int:
                 str(path.relative_to(target_root))
                 for path in target_root.rglob("*.yaml")
             } if target_root.exists() else set()
-            probe = subprocess.run(
-                ["rg", "-l", "^review_pass:", str(target_root), "--glob", "*.yaml"],
-                text=True,
-                capture_output=True,
-                check=False,
-            ) if target_root.exists() else None
-            reviewed = {
-                str(pathlib.Path(line).relative_to(target_root))
-                for line in (probe.stdout.splitlines() if probe else [])
-                if line.strip()
-            }
+            reviewed = reviewed_relatives(target_root)
+            human_review = human_review_relatives(target_root)
             blocks: dict[str, set[str]] = {}
             for stage in ("draft", "review"):
                 block_root = BLOCK_ROOT / code / stage
@@ -617,6 +669,7 @@ def command_wave(args: argparse.Namespace) -> int:
             pending_state[code] = {
                 "existing": existing,
                 "reviewed": reviewed,
+                "human_review": human_review,
                 "blocked_draft": blocks["draft"],
                 "blocked_review": blocks["review"],
             }
@@ -630,6 +683,8 @@ def command_wave(args: argparse.Namespace) -> int:
                 return relative not in state["existing"]
             if relative not in state["existing"]:
                 return args.stage == "both"
+            if not args.retry_blocked and relative in state["human_review"]:
+                return False
             return relative not in state["reviewed"]
 
         before = len(relatives)

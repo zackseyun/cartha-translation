@@ -20,8 +20,15 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 형제들이여, 내가 여러분에게 권합니다. 이 권면의 말씀을 견디어 주십시오. 내가 여러분에게 짧게 써 보냈기 때문입니다.
+  text: 형제들이여[a], 여러분에게 권합니다. 이 권면의 말씀을 너그러이 받아 주십시오[b]. 내가 여러분에게 간략히 썼기 때문입니다.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 “형제자매 여러분.” 그리스어는 문자적으로 “형제들이여”이지만, 회중 전체를 포괄하여 부르는 말일 수 있습니다.
+    reason: lexical_alternative
+  - marker: b
+    text: “권면의 말씀”은 “격려의 메시지”로도 옮길 수 있습니다.
+    reason: lexical_alternative
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -29,54 +36,64 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: needs_human_review
+status: reviewed
 review_pass:
   verdict: revise
-  source_fidelity: The draft conveys the appeal, the address to the recipients, the exhortatory message, and the explanation based on the letter's brevity. However, "견디어 주십시오" normally suggests enduring hardship and is not idiomatic for receiving a written exhortation; it can obscure the relational sense of ἀνέχεσθε. "써 보냈습니다" appropriately represents ἐπέστειλα in this epistolary context.
-  naturalness: The proposed revision retains modern formal-polite 합쇼체 and improves the natural Korean collocation for patiently accepting an admonitory message. "권면의 말씀" is clear and suitably formal.
-  terminology: '"형제들이여" preserves the source''s masculine vocative ἀδελφοί. "권면" accurately renders παράκλησις in this context, while "너그럽게 받아들여" expresses the requested bearing with the message without over-specifying a doctrinal interpretation.'
+  source_fidelity: The draft conveys the appeal, the exhortatory message, and the causal statement. However, '견디어 주십시오' is unnatural for bearing with a message in Korean, and '써 보냈기' adds an explicit sending nuance not required by ἐπέστειλα. The source's mild δέ transition may be left implicit in Korean.
+  naturalness: A more idiomatic formal-polite Korean rendering asks the recipients to receive the exhortatory message patiently or generously. '간략히 썼습니다' is natural and preserves the source's relative brevity without unnecessarily specifying an act of dispatch.
+  terminology: '''권면의 말씀'' appropriately renders λόγος τῆς παρακλήσεως. ''형제들이여'' preserves the masculine vocative while a footnote can note its potentially inclusive congregational reference.'
   issues:
   - severity: medium
-    issue: '"이 권면의 말씀을 견디어 주십시오" is an unnatural and potentially misleading rendering of ἀνέχεσθε τοῦ λόγου τῆς παρακλήσεως.'
-    rationale: Korean "견디다" primarily denotes enduring suffering, pain, or adverse conditions. Here the author asks the audience to tolerate/patiently receive his exhortatory message. "너그럽게 받아들여 주십시오" gives that sense naturally.
-  revised_text: 형제들이여, 여러분에게 권합니다. 이 권면의 말씀을 너그럽게 받아들여 주십시오. 내가 여러분에게 짧게 써 보냈기 때문입니다.
+    issue: '''이 권면의 말씀을 견디어 주십시오'' is awkward Korean and can suggest enduring suffering rather than patiently accepting a message.'
+    rationale: ἀνέχεσθε calls for bearing with or patiently accepting the author's exhortation. '너그러이 받아 주십시오' communicates this sense naturally in modern formal Korean.
+  - severity: low
+    issue: '''짧게 써 보냈기'' makes sending explicit.'
+    rationale: ἐπέστειλα can be used epistolarily of writing, but the immediate expression is adequately and more closely rendered by '간략히 썼습니다.'
+  - severity: low
+    issue: The draft omits the lexical-alternative footnote anchors preserved in the English audit trail.
+    rationale: Adding Korean footnotes for the inclusive possible scope of ἀδελφοί and the alternative sense of παράκλησις preserves the documented ambiguities.
+  revised_text: 형제들이여[a], 여러분에게 권합니다. 이 권면의 말씀을 너그러이 받아 주십시오[b]. 내가 여러분에게 간략히 썼기 때문입니다.
   revised_footnotes:
   - marker: a
-    text: 또는 “형제자매들이여.” 그리스어는 문자적으로 “형제들이여”라고 하지만, 회중 전체를 포함하여 부르는 말일 수 있습니다.
+    text: 또는 “형제자매 여러분.” 그리스어는 문자적으로 “형제들이여”이지만, 회중 전체를 포괄하여 부르는 말일 수 있습니다.
     reason: lexical_alternative
   - marker: b
-    text: “권면의 말씀”은 “격려의 말씀”으로도 옮길 수 있습니다.
+    text: “권면의 말씀”은 “격려의 메시지”로도 옮길 수 있습니다.
     reason: lexical_alternative
-  revision_rationale: 'The revision replaces the awkward "견디어 주십시오" with a natural Korean expression that preserves the request to bear patiently with the exhortation. It also supplies Korean footnotes corresponding to the English audit trail: the literal masculine address and the alternative encouragement sense of παράκλησις are both preserved without altering the main-text wording.'
+  revision_rationale: The revision retains the source's direct appeal, masculine address, exhortatory-message terminology, and causal explanation. It replaces an awkward imperative with a natural Korean expression for patiently receiving an exhortation, avoids adding an explicit dispatch action, and restores the relevant lexical footnotes and anchors.
   requires_human_review: false
   model_id: gpt-5.6-terra
   azure_deployment: gpt-5-6-terra-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-13T11:52:52Z'
-  output_hash: 644a4acb67e0fe47772dd59deee7b0fcfada5659736772033e029214fe0e7025
+  timestamp: '2026-07-14T22:52:55Z'
+  output_hash: 40939bd9f8ab088fa301f5ff78967107ad74d15e74a42aa996bfa48b5ed03606
   usage:
-    completion_tokens: 1054
+    completion_tokens: 1042
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 512
+      reasoning_tokens: 451
       rejected_prediction_tokens: 0
     latency_checkpoint:
-      engine_tbt_ms: 9
-      engine_ttft_ms: 438
-      engine_ttlt_ms: 9719
-      pre_inference_ms: 166
-      service_tbt_ms: 9
-      service_ttft_ms: 754
-      service_ttlt_ms: 9988
-      total_duration_ms: 9829
-      user_visible_ttft_ms: 587
+      engine_tbt_ms: 8
+      engine_ttft_ms: 132
+      engine_ttlt_ms: 8621
+      pre_inference_ms: 140
+      service_tbt_ms: 8
+      service_ttft_ms: 614
+      service_ttlt_ms: 9098
+      total_duration_ms: 8969
+      user_visible_ttft_ms: 474
     prompt_tokens: 1866
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 2920
-  applied_revision: false
-  auto_apply_blocked_errors:
-  - unanchored footnote [a]
-  - unanchored footnote [b]
+    total_tokens: 2908
+  applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: 형제들이여, 내가 여러분에게 권합니다. 이 권면의 말씀을 견디어 주십시오. 내가 여러분에게 짧게 써 보냈기 때문입니다.
+  to: 형제들이여[a], 여러분에게 권합니다. 이 권면의 말씀을 너그러이 받아 주십시오[b]. 내가 여러분에게 간략히 썼기 때문입니다.
+  rationale: The revision retains the source's direct appeal, masculine address, exhortatory-message terminology, and causal explanation. It replaces an awkward imperative with a natural Korean expression for patiently receiving an exhortation, avoids adding an explicit dispatch action, and restores the relevant lexical footnotes and anchors.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-14T22:52:55Z'

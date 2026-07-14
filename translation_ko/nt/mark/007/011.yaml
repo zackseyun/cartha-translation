@@ -13,8 +13,15 @@ base_translation:
   text: But you say[a], ‘If a man says to his father or his mother, “Corban” (that is, a gift)[b], whatever you might have benefited from me—’
 translation:
   language: ko
-  text: '그러나 너희는 말한다: ‘사람이 자기 아버지나 어머니에게 「당신에게서 받을 유익은 무엇이든 코르반 (곧 봉헌물)이다」 라고 말하면,’'
+  text: 그러나 너희는 말합니다. ‘사람이 자기 아버지나 어머니에게 “당신이 나에게서 받을 수 있는 것은 무엇이든 코르반[ㄱ], 곧 예물[ㄴ]입니다”라고 말하면,’
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: ㄱ
+    text: ‘코르반’은 하나님께 드리는 예물로 바쳐져 일반적인 가족 부양에 쓰지 못하게 된 것을 가리키는 말입니다.
+    reason: cultural_note
+  - marker: ㄴ
+    text: 또는 ‘제물’.
+    reason: lexical_alternative
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -22,7 +29,7 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: needs_human_review
+status: reviewed
 theological_decisions:
 - issue: 코르반(Κορβᾶν) 음역과 풀이
   chosen_reading: 음역 「코르반」 유지 + 「곧 봉헌물」 풀이
@@ -33,54 +40,61 @@ theological_decisions:
   doctrine_reference: 'DOCTRINE.md: preserve Semitic terms with author-supplied gloss'
 review_pass:
   verdict: revise
-  source_fidelity: 수정이 필요합니다. 초안의 「당신에게서 받을 유익」은 ἐξ ἐμοῦ(‘나에게서’)의 관계를 반대로 옮겨, 부모가 화자에게서 받을 수 있는 유익이라는 뜻을 훼손합니다. 또한 원문의 미완결 인용과 다음 절로 이어지는 구문을 대시로 보존하는 것이 적절합니다.
-  naturalness: 「그러나 너희는 말합니다」와 「어떤 사람이」는 현대 표준어의 격식 있는 문체에 자연스럽습니다. 인용 안에서는 부모에게 말하는 상황을 고려해 「당신이 저에게서」로 옮겨 높임의 일관성을 확보했습니다.
-  terminology: Κορβᾶν은 「코르반」으로 음역하고, 마가의 자체 풀이인 δῶρον은 기본 의미에 따라 「예물」로 병기했습니다. 「봉헌물」도 가능하지만, δῶρον의 직접적 대응어로는 「예물」이 더 적절하며, 하나님께 바쳐진 것이라는 구체적 제도 설명은 본 절의 본문에 과도하게 넣지 않았습니다.
+  source_fidelity: 현 초안은 Κορβᾶν의 음역과 마가의 풀이를 보존한 점은 좋습니다. 그러나 ὃ ἐὰν ἐξ ἐμοῦ ὠφεληθῇς는 부모가 화자로부터 얻을 수 있는 도움/유익을 가리키므로, 이를 더 명시적으로 표현할 필요가 있습니다. 또한 Δῶρον의 기본 뜻에는 ‘예물’이 자연스럽습니다.
+  naturalness: ‘그러나 너희는 말한다’는 현대 표준어 합쇼체에 맞게 ‘그러나 너희는 말합니다’로 고쳤습니다. 직접 인용 안의 ‘당신에게서 받을 유익은 무엇이든’은 다소 경직되어 ‘당신이 나에게서 받을 수 있는 것은 무엇이든’으로 다듬었습니다.
+  terminology: Κορβᾶν은 ‘코르반’으로 음역하고, 본문 자체의 해설 ὅ ἐστιν Δῶρον은 ‘곧 예물’로 옮겼습니다. ‘봉헌물’도 문맥상 가능하지만, 여기서는 마가의 일반적인 어휘 Δῶρον을 지나치게 기술적으로 한정하지 않는 ‘예물’이 더 적절합니다.
   issues:
-  - severity: high
-    issue: 수혜의 방향이 반대로 번역되었습니다.
-    rationale: 「당신에게서 받을 유익」은 화자가 부모에게서 유익을 받는다는 뜻이지만, ὃ ἐὰν ἐξ ἐμοῦ ὠφεληθῇς는 부모가 화자에게서 받을 수 있는 유익을 가리킵니다.
+  - severity: medium
+    issue: ὠφεληθῇς의 수혜 관계가 충분히 드러나지 않음
+    rationale: 원문은 부모가 ‘나에게서’ 받을 수 있는 유익을 말합니다. ‘당신이 나에게서 받을 수 있는 것’으로 수혜자와 출처를 명료하게 보존해야 합니다.
   - severity: low
-    issue: 원문이 다음 절로 이어지는 미완결 인용임이 충분히 드러나지 않습니다.
-    rationale: 7:11의 발화 공식은 7:12에서 문법적으로 완결되므로, 한국어에서도 대시를 사용해 연결을 보존하는 것이 좋습니다.
-  revised_text: 그러나 너희는 말합니다. ‘어떤 사람이 자기 아버지나 어머니에게, 「당신이 저에게서 받을 수 있는 유익은 무엇이든 코르반, 곧 예물입니다—」라고 말하면,’
+    issue: 서술체가 요청된 합쇼체와 불일치
+    rationale: ‘말한다’보다 ‘말합니다’가 표준어 현대 공식-공손체에 맞습니다.
+  - severity: low
+    issue: Δῶρον을 ‘봉헌물’로 한정함
+    rationale: 문맥상 하나님께 드리는 것으로 바쳐진 물건이라는 설명은 각주에서 제공할 수 있으나, 마가의 본문 해설은 기본적으로 ‘예물/선물’입니다.
+  revised_text: 그러나 너희는 말합니다. ‘사람이 자기 아버지나 어머니에게 “당신이 나에게서 받을 수 있는 것은 무엇이든 코르반[ㄱ], 곧 예물[ㄴ]입니다”라고 말하면,’
   revised_footnotes:
-  - marker: a
-    text: 코르반은 하나님께 드린 예물로 바쳐졌다고 선언된 것을 가리키는 말입니다.
-    reason: 문화적 배경을 간략히 설명하여 음역어의 의미를 보완합니다.
-  - marker: b
-    text: 또는 ‘곧 헌물입니다.’
-    reason: Δῶρον의 가능한 번역 대안을 제시합니다.
-  revision_rationale: 핵심 수정은 ἐξ ἐμοῦ의 방향을 「당신이 저에게서 받을 수 있는」으로 바로잡는 것입니다. 「코르반」과 마가의 괄호성 풀이를 유지하되, 원문의 어순을 한국어에서 자연스럽게 재배치했습니다. 대시는 7:12로 이어지는 원문의 미완결성을 나타냅니다.
+  - marker: ㄱ
+    text: ‘코르반’은 하나님께 드리는 예물로 바쳐져 일반적인 가족 부양에 쓰지 못하게 된 것을 가리키는 말입니다.
+    reason: cultural_note
+  - marker: ㄴ
+    text: 또는 ‘제물’.
+    reason: lexical_alternative
+  revision_rationale: 원문의 조건절과 인용문의 미완결 구문(다음 절에서 이어짐)을 유지했습니다. 코르반의 셈어 음역 및 마가가 덧붙인 풀이를 보존하면서, 부모가 화자에게서 받을 수 있었던 도움이라는 ἐξ ἐμοῦ ὠφεληθῇς의 관계를 자연스럽고 정확하게 드러냈습니다.
   requires_human_review: false
   model_id: gpt-5.6-terra
   azure_deployment: gpt-5-6-terra-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-13T06:45:12Z'
-  output_hash: 117f212541951b6cbaf028aa999a2cdd84a6348692407bf156be41e90257ca94
+  timestamp: '2026-07-14T22:48:42Z'
+  output_hash: 94c7ad3d4a67882046d91bad3d1e05abef06ead962c975ee9b003c05587f3cef
   usage:
-    completion_tokens: 1214
+    completion_tokens: 1192
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 512
+      reasoning_tokens: 449
       rejected_prediction_tokens: 0
     latency_checkpoint:
       engine_tbt_ms: 9
-      engine_ttft_ms: 132
-      engine_ttlt_ms: 10712
-      pre_inference_ms: 80
+      engine_ttft_ms: 134
+      engine_ttlt_ms: 10352
+      pre_inference_ms: 136
       service_tbt_ms: 9
-      service_ttft_ms: 377
-      service_ttlt_ms: 10939
-      total_duration_ms: 10867
-      user_visible_ttft_ms: 296
+      service_ttft_ms: 415
+      service_ttlt_ms: 10625
+      total_duration_ms: 10499
+      user_visible_ttft_ms: 279
     prompt_tokens: 1822
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 3036
-  applied_revision: false
-  auto_apply_blocked_errors:
-  - unanchored footnote [a]
-  - unanchored footnote [b]
+    total_tokens: 3014
+  applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: '그러나 너희는 말한다: ‘사람이 자기 아버지나 어머니에게 「당신에게서 받을 유익은 무엇이든 코르반 (곧 봉헌물)이다」 라고 말하면,’'
+  to: 그러나 너희는 말합니다. ‘사람이 자기 아버지나 어머니에게 “당신이 나에게서 받을 수 있는 것은 무엇이든 코르반[ㄱ], 곧 예물[ㄴ]입니다”라고 말하면,’
+  rationale: 원문의 조건절과 인용문의 미완결 구문(다음 절에서 이어짐)을 유지했습니다. 코르반의 셈어 음역 및 마가가 덧붙인 풀이를 보존하면서, 부모가 화자에게서 받을 수 있었던 도움이라는 ἐξ ἐμοῦ ὠφεληθῇς의 관계를 자연스럽고 정확하게 드러냈습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-14T22:48:42Z'

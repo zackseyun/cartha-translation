@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 그리고 그분이 자신을 드러내지 못하도록 그들에게 엄히 경고하셨습니다.
+  text: 그리고 그분을 드러내지 않도록 그들에게 엄히 경고하셨습니다[a].
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 “엄히 명하셨습니다” 또는 “꾸짖으셨습니다.”
+    reason: ἐπετίμησεν은 문맥에 따라 엄한 경고, 명령, 꾸짖음의 뜻을 가질 수 있습니다.
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -26,53 +30,55 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: needs_human_review
+status: reviewed
 review_pass:
   verdict: revise
-  source_fidelity: 초안의 ‘자신을 드러내지 못하도록’은 문법상 예수님 자신이 자신을 드러낼 수 없게 하는 뜻으로 읽히기 쉬우며, 헬라어의 주어인 ‘그들’이 예수님을 공개하지 말라는 내용을 정확히 반영하지 못합니다. 또한 μή와 접속법은 능력의 불가능보다 금지의 내용을 나타냅니다.
-  naturalness: ‘그들에게 자신을 알리지 말라고 엄히 경고하셨습니다’는 현대 표준 한국어 합쇼체로 자연스럽고, 경고의 대상과 금지 내용이 분명합니다.
-  terminology: ἐπετίμησεν의 문맥상 강한 지시·경고의 뉘앙스를 ‘엄히 경고하셨습니다’로 보존했습니다. φανερὸν ποιήσωσιν은 ‘자신을 알리다’로 옮겨 공개적으로 알려지게 하지 말라는 뜻을 전달합니다.
+  source_fidelity: 초안의 '자신을'은 한국어에서 경고를 받은 사람들 자신을 가리키는 것으로도 읽혀, αὐτόν(예수님을)을 정확히 반영하지 못합니다. 목적절의 주체는 '그들'이고 목적어는 '그분'입니다.
+  naturalness: '''그분을 드러내지 않도록 그들에게 엄히 경고하셨습니다''는 현대 표준 한국어 합쇼체로 자연스럽고, 경고의 대상과 공개하지 말아야 할 대상이 분명합니다.'
+  terminology: '''엄히 경고하셨습니다''는 이 문맥에서 ἐπετίμησεν의 강한 금지/경고의 어조를 적절히 살립니다. ''드러내다''는 φανερὸν ποιέω의 공개·알림의 뜻을 보존합니다.'
   issues:
   - severity: medium
-    issue: 금지 내용의 주체가 불분명하고 의미가 바뀜
-    rationale: ‘그분이 자신을 드러내지 못하도록’은 그분 자신이 자신을 드러내지 못하게 한다는 뜻으로 해석될 수 있습니다. 원문은 그들이 그분을 알려지게 하지 말라는 명령 내용입니다.
-  - severity: medium
-    issue: ‘못하도록’이 금지를 능력 제한처럼 표현함
-    rationale: ἵνα μὴ ... ποιήσωσιν은 이 문맥에서 ‘하지 말라’는 경고·지시의 내용이지, 할 수 없게 한다는 뜻이 아닙니다.
-  revised_text: 그리고 예수님께서는 그들에게 자신을 알리지 말라고 엄히 경고하셨습니다.
+    issue: '''자신을''의 지시 대상이 불명확함'
+    rationale: 헬라어 αὐτόν은 예수님을 가리키지만, 한국어 재귀대명사 '자신'은 통상 목적절의 암시된 주어인 '그들'에 연결될 수 있습니다. '그분을'으로 명시해야 합니다.
+  revised_text: 그리고 그분을 드러내지 않도록 그들에게 엄히 경고하셨습니다[a].
   revised_footnotes:
   - marker: a
-    text: 또는 “엄히 타이르셨습니다” 또는 “명하셨습니다.”
-    reason: ἐπετίμησεν은 문맥에 따라 강하게 경고하다, 엄히 타이르다, 명하다로 옮길 수 있습니다.
-  revision_rationale: 원문의 수신자 αὐτοῖς가 예수님을 공개하지 말라는 지시의 실행 주체임을 ‘그들에게 … 말라고’로 명확히 했습니다. ‘자신을 알리다’는 φανερὸν ποιεῖν의 ‘알려지게 하다, 공개하다’라는 관용적 의미를 자연스럽게 반영하며, 이유를 덧붙이지 않았습니다.
+    text: 또는 “엄히 명하셨습니다” 또는 “꾸짖으셨습니다.”
+    reason: ἐπετίμησεν은 문맥에 따라 엄한 경고, 명령, 꾸짖음의 뜻을 가질 수 있습니다.
+  revision_rationale: 목적절의 목적어를 '그분을'으로 바로잡아 원문의 대명사 지시 관계를 명확히 했습니다. 경고의 강한 어조와 공개하지 말라는 지시는 유지했으며, 대안적 어휘 가능성은 각주로 남겼습니다.
   requires_human_review: false
   model_id: gpt-5.6-terra
   azure_deployment: gpt-5-6-terra-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-13T06:20:08Z'
-  output_hash: 66251f859d722eb410d56b2a878a86ba0df646e0e4941d6674a802ef0a8d0b7b
+  timestamp: '2026-07-14T22:48:03Z'
+  output_hash: d83b7ecf1fddd9c16d087dabece7a2ba691e16479dc907d0d618bebccdfc5d3d
   usage:
-    completion_tokens: 1111
+    completion_tokens: 694
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 512
+      reasoning_tokens: 214
       rejected_prediction_tokens: 0
     latency_checkpoint:
       engine_tbt_ms: 8
-      engine_ttft_ms: 284
-      engine_ttlt_ms: 9666
-      pre_inference_ms: 163
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 5702
+      pre_inference_ms: 87
       service_tbt_ms: 8
-      service_ttft_ms: 532
-      service_ttlt_ms: 9908
-      total_duration_ms: 9757
-      user_visible_ttft_ms: 369
+      service_ttft_ms: 361
+      service_ttlt_ms: 5928
+      total_duration_ms: 5851
+      user_visible_ttft_ms: 274
     prompt_tokens: 1161
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 2272
-  applied_revision: false
-  auto_apply_blocked_errors:
-  - unanchored footnote [a]
+    total_tokens: 1855
+  applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: 그리고 그분이 자신을 드러내지 못하도록 그들에게 엄히 경고하셨습니다.
+  to: 그리고 그분을 드러내지 않도록 그들에게 엄히 경고하셨습니다[a].
+  rationale: 목적절의 목적어를 '그분을'으로 바로잡아 원문의 대명사 지시 관계를 명확히 했습니다. 경고의 강한 어조와 공개하지 말라는 지시는 유지했으며, 대안적 어휘 가능성은 각주로 남겼습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-14T22:48:03Z'

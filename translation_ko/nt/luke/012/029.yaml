@@ -17,8 +17,12 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: ko
-  text: 「너희는 무엇을 먹을까, 무엇을 마실까 구하지 말고, 흔들리지도 말라.」
+  text: 「너희는 무엇을 먹을까, 무엇을 마실까 구하지 마시고, 동요하지도 마십시오.[a]」
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 또는 ‘불안해하지도 마십시오’, ‘마음을 졸이지도 마십시오’. 더 직역하면 ‘공중에 매달린 듯이 있지 마십시오’.
+    reason: μετεωρίζεσθε의 어휘적 대안
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -26,53 +30,55 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: needs_human_review
+status: reviewed
 review_pass:
   verdict: revise
-  source_fidelity: The draft correctly preserves the explicit contrastive/emphatic subject, the two coordinated questions of food and drink, and the two prohibitions. However, bare “흔들리지도 말라” can naturally suggest literal or general wavering in Korean, whereas μετεωρίζεσθε here denotes inner agitation or anxious uncertainty.
-  naturalness: The draft’s final imperative, “말라,” does not consistently use the requested modern formal-polite 합쇼체. “무엇을 먹을지, 무엇을 마실지를” is idiomatic Korean for the deliberative questions, and “마음을 불안하게 하지도 마십시오” naturally conveys the final prohibition in context.
-  terminology: “구하지 마십시오” retains the seeking vocabulary without importing an ascetic prohibition on obtaining food. The added “마음을” specifies the idiomatic Korean domain of the otherwise potentially ambiguous metaphor while remaining within the lexical sense of μετεωρίζομαι.
+  source_fidelity: 핵심 명령과 먹고 마시는 것에 관한 두 병렬 의문절은 잘 반영되었습니다. 다만 μετεωρίζεσθε는 여기서 문자적·물리적 ‘흔들림’보다 정신적 동요나 불안정을 가리키므로, ‘흔들리지도 말라’는 의미가 다소 부정확합니다.
+  naturalness: 초안의 ‘말고 … 말라’는 합쇼체 표기 기준에 맞지 않게 종결 높임이 혼재합니다. ‘구하지 마시고 … 마십시오’와 ‘동요하지도 마십시오’가 현대 표준어 합쇼체로 자연스럽습니다.
+  terminology: ζητεῖτε는 ‘구하다’로 유지할 수 있으며, μετεωρίζεσθε는 교리적으로 ‘염려’로 한정하기보다 ‘동요하다’로 옮겨 원문의 정신적 불안정이라는 범위를 보존하는 것이 적절합니다.
   issues:
   - severity: medium
-    issue: Register mismatch
-    rationale: “말라” is not the specified modern formal-polite 합쇼체; the passage should use “마십시오.”
-  - severity: medium
-    issue: Ambiguity of “흔들리지도 말라”
-    rationale: Although it can figuratively denote emotional instability, in contemporary Korean it may be read as physical shaking or an unspecific lack of resolve. The Greek verb in this context concerns anxious mental unsettledness.
-  revised_text: 「너희는 무엇을 먹을지, 무엇을 마실지를 구하지 말고, 마음을 불안하게 하지도 마십시오.」
+    issue: ‘흔들리지도 말라’의 의미 및 문체
+    rationale: μετεωρίζεσθε는 문맥상 마음의 동요·불안정을 뜻합니다. 또한 ‘말라’는 요청된 현대 합쇼체와 맞지 않습니다.
+  revised_text: 「너희는 무엇을 먹을까, 무엇을 마실까 구하지 마시고, 동요하지도 마십시오.[a]」
   revised_footnotes:
   - marker: a
-    text: 또는 “마음이 흔들리지도 마십시오”, “마음 졸이지도 마십시오.” 더 직역하면 “공중에 매달린 듯하지도 마십시오.”
-    reason: μετεωρίζεσθε의 비유적 의미(불안·동요)와 문자적 이미지의 여지를 보존합니다.
-  revision_rationale: 합쇼체로 통일하고, 먹고 마실 것에 대한 숙고를 자연스러운 한국어로 옮겼습니다. 마지막 동사는 문맥상 정신적 불안을 뜻하므로 이를 본문에서 분명히 하되, 다른 가능한 표현과 문자적 이미지는 각주에 남겼습니다.
+    text: 또는 ‘불안해하지도 마십시오’, ‘마음을 졸이지도 마십시오’. 더 직역하면 ‘공중에 매달린 듯이 있지 마십시오’.
+    reason: μετεωρίζεσθε의 어휘적 대안
+  revision_rationale: 마지막 명령을 ‘동요하지도 마십시오’로 바꾸어 원문의 정신적 불안정이라는 뜻을 자연스럽게 살리고, 두 명령의 종결을 합쇼체로 통일했습니다. 먹고 마시는 것에 관한 원문의 병렬 구조와 명시된 ‘너희’는 유지했습니다.
   requires_human_review: false
   model_id: gpt-5.6-terra
   azure_deployment: gpt-5-6-terra-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-13T07:45:34Z'
-  output_hash: 36c6ba615f29b1843cfc8a55dda02c882256eb106fd3206dfcc89afdfc444314
+  timestamp: '2026-07-14T22:49:16Z'
+  output_hash: d714290a9dd6bf02d716ad028a609a83a282fca95952b093e5cc041126ad1e99
   usage:
-    completion_tokens: 869
+    completion_tokens: 1000
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 338
+      reasoning_tokens: 499
       rejected_prediction_tokens: 0
     latency_checkpoint:
-      engine_tbt_ms: 9
-      engine_ttft_ms: 177
-      engine_ttlt_ms: 8118
-      pre_inference_ms: 136
-      service_tbt_ms: 9
-      service_ttft_ms: 451
-      service_ttlt_ms: 8439
-      total_duration_ms: 8317
-      user_visible_ttft_ms: 314
+      engine_tbt_ms: 8
+      engine_ttft_ms: 143
+      engine_ttlt_ms: 8368
+      pre_inference_ms: 104
+      service_tbt_ms: 8
+      service_ttft_ms: 380
+      service_ttlt_ms: 8546
+      total_duration_ms: 8453
+      user_visible_ttft_ms: 276
     prompt_tokens: 1645
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 2514
-  applied_revision: false
-  auto_apply_blocked_errors:
-  - unanchored footnote [a]
+    total_tokens: 2645
+  applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: 「너희는 무엇을 먹을까, 무엇을 마실까 구하지 말고, 흔들리지도 말라.」
+  to: 「너희는 무엇을 먹을까, 무엇을 마실까 구하지 마시고, 동요하지도 마십시오.[a]」
+  rationale: 마지막 명령을 ‘동요하지도 마십시오’로 바꾸어 원문의 정신적 불안정이라는 뜻을 자연스럽게 살리고, 두 명령의 종결을 합쇼체로 통일했습니다. 먹고 마시는 것에 관한 원문의 병렬 구조와 명시된 ‘너희’는 유지했습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-14T22:49:16Z'

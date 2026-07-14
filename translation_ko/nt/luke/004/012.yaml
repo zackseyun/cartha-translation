@@ -20,8 +20,15 @@ base_translation:
     reason: cross_reference
 translation:
   language: ko
-  text: 예수께서 대답하셨습니다. 「『너는 야훼 네 하나님을 시험하지 말라』고 일컬어졌느니라.」
+  text: 예수님께서 그에게 대답하셨습니다. “이렇게 말씀되어 있습니다[a]. ‘너는 주[b] 너의 하나님을 시험하지 말라.’”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 전통적인 번역에는 “기록되어 있다”가 흔합니다. 여기서 그리스어는 문자적으로 “말씀되어 있다” 또는 “말해져 있다”라는 뜻입니다.
+    reason: alternative_reading
+  - marker: b
+    text: 이는 신명기 6:16을 인용한 것입니다. 그 히브리어 본문에는 신적 이름 YHWH가 있으며, 흔히 “여호와” 또는 “주”로 옮깁니다.
+    reason: cross_reference
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -29,60 +36,67 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: needs_human_review
+status: reviewed
 review_pass:
   verdict: revise
-  source_fidelity: 원문의 αὐτῷ(문맥상 마귀를 가리킴)를 본문에 반영하고, Εἴρηται의 완료 수동 인용 공식을 ‘기록되어 있다’로 바꾸지 않고 ‘말씀하신 바 있다’로 옮겼습니다. κύριον τὸν θεόν σου는 그리스어를 따라 ‘주, 네 하나님’으로 번역했습니다.
-  naturalness: 초안의 ‘일컬어졌느니라’는 원문의 인용 공식과 맞지 않고 현대 표준 한국어 합쇼체에도 어울리지 않습니다. 수정문은 현대적인 존대 서술과 자연스러운 인용 구조를 사용합니다.
-  terminology: κύριος는 ‘주’로, θεός는 ‘하나님’으로 유지했습니다. 신명기 원문의 YHWH는 본문이 아니라 교차참조 각주에서 설명하여 그리스어 본문과 히브리어 배경을 모두 구분했습니다.
+  source_fidelity: 개정안은 αὐτῷ를 ‘그에게’로 반영하고, εἴρηται의 비인칭 완료 수동 표현을 ‘이렇게 말씀되어 있습니다’로 옮겨 ‘기록되어 있다’라는 전통적 관용구를 본문에 강제하지 않았습니다. ἐκπειράσεις는 ‘시험하지 말라’로 충실히 반영했습니다.
+  naturalness: 초안의 ‘일컬어졌느니라’는 현대 표준 한국어 합쇼체에서 매우 부자연스럽고, 문장 안의 겹따옴표도 읽기 어렵습니다. 개정안은 현대적이면서도 성경 인용의 격식을 유지합니다.
+  terminology: 그리스어 κύριον에 따라 본문은 ‘주’로 유지합니다. ‘야훼’는 이 구절의 그리스어 본문에 없는 번역 선택이므로 본문에서 제거하고, 신명기 히브리어 본문의 YHWH는 각주에서만 설명합니다. ‘예수님’과 ‘하나님’은 한국어 성경 문맥에서 자연스러운 존칭 및 신명 표기입니다.
   issues:
   - severity: high
-    issue: αὐτῷ가 누락됨
-    rationale: 그리스어 본문은 예수께서 ‘그에게’ 대답하셨다고 명시하며, 문맥상 그 대상은 마귀입니다.
+    issue: αὐτῷ의 번역이 누락되었습니다.
+    rationale: 예수께서 대답하신 상대방을 가리키는 여격 대명사가 원문에 있으므로 ‘그에게’를 반영해야 합니다.
   - severity: high
-    issue: ‘일컬어졌느니라’가 Εἴρηται를 부정확하고 고어적으로 처리함
-    rationale: Εἴρηται는 ‘말해져/말씀하신 바 있다’라는 성경 인용 공식이며, ‘일컬어지다’는 명명되거나 불리는 뜻이 강합니다. ‘-느니라’도 요청된 현대 합쇼체와 맞지 않습니다.
+    issue: εἴρηται가 ‘일컬어졌느니라’로 부정확하고 비자연스럽게 번역되었습니다.
+    rationale: εἴρηται는 성경 인용 공식에서 ‘말씀되어 있다/말해져 있다’라는 비인칭 완료 수동입니다. ‘일컬어졌느니라’는 의미와 현대적 문체 모두에 맞지 않습니다.
   - severity: medium
-    issue: ‘야훼’가 그리스어 κύριος의 본문상 대응을 대체함
-    rationale: 인용의 히브리어 배경에는 YHWH가 있으나, 현 그리스어 본문은 κύριος입니다. 본문은 ‘주’로 옮기고 YHWH는 각주에서 설명하는 것이 원문 우선 원칙에 맞습니다.
-  revised_text: 예수께서 그에게 대답하여 말씀하셨습니다. “이렇게 말씀하신 바 있습니다. ‘너는 주, 네 하나님을 시험하지 말라.’”
+    issue: 본문의 ‘야훼’는 그리스어 κύριον에 대한 직접 번역이 아닙니다.
+    rationale: 인용의 히브리어 배경에는 YHWH가 있으나, 누가복음의 그리스어 본문은 κύριον입니다. 본문은 ‘주’로 번역하고 히브리어 배경은 각주로 처리하는 것이 원문 우선 원칙에 맞습니다.
+  - severity: low
+    issue: 인용부호가 중첩되어 있습니다.
+    rationale: 직접 발화와 그 안의 성경 인용을 한국어식 큰따옴표와 작은따옴표로 구분하면 구조가 명확해집니다.
+  revised_text: 예수님께서 그에게 대답하셨습니다. “이렇게 말씀되어 있습니다[a]. ‘너는 주[b] 너의 하나님을 시험하지 말라.’”
   revised_footnotes:
   - marker: a
-    text: 그리스어는 문자적으로 ‘말해져 있다’라는 뜻의 성경 인용 공식입니다. 전통적인 번역에는 ‘기록되어 있다’가 흔합니다.
+    text: 전통적인 번역에는 “기록되어 있다”가 흔합니다. 여기서 그리스어는 문자적으로 “말씀되어 있다” 또는 “말해져 있다”라는 뜻입니다.
     reason: alternative_reading
   - marker: b
-    text: 이는 신명기 6:16을 인용한 것입니다. 그 히브리어 본문에는 하나님의 이름 YHWH가 있으며, 흔히 ‘여호와’로 옮깁니다.
+    text: 이는 신명기 6:16을 인용한 것입니다. 그 히브리어 본문에는 신적 이름 YHWH가 있으며, 흔히 “여호와” 또는 “주”로 옮깁니다.
     reason: cross_reference
-  revision_rationale: 누락된 간접목적어를 보완하고, 고어적이며 의미가 다른 표현을 현대 합쇼체의 성경 인용 공식으로 고쳤습니다. 또한 그리스어 κύριος를 본문에서 ‘주’로 유지하고, 신명기 히브리어 본문의 YHWH는 교차참조 각주로 처리했습니다.
+  revision_rationale: 원문의 대명사와 인용 공식을 보완하고, 현대 표준어 합쇼체에 맞게 문장을 정리했습니다. 또한 그리스어 κύριος를 본문에서 ‘주’로 번역하여 원문 형태를 따르되, YHWH라는 히브리어 배경은 각주에서 밝혔습니다.
   requires_human_review: false
   model_id: gpt-5.6-terra
   azure_deployment: gpt-5-6-terra-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-13T07:15:11Z'
-  output_hash: be688374e5ca6d39508e7864241d5530713ae7f2bea51420a15734b74186c2e3
+  timestamp: '2026-07-14T22:49:07Z'
+  output_hash: 6889f71b0d9ae6afc4bdf2b9982b5935143b86afcee24c7f0d6f2a1b246c2c6f
   usage:
-    completion_tokens: 1254
+    completion_tokens: 1334
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 512
+      reasoning_tokens: 478
       rejected_prediction_tokens: 0
     latency_checkpoint:
       engine_tbt_ms: 8
-      engine_ttft_ms: 143
-      engine_ttlt_ms: 10566
-      pre_inference_ms: 127
+      engine_ttft_ms: 129
+      engine_ttlt_ms: 10660
+      pre_inference_ms: 115
       service_tbt_ms: 8
-      service_ttft_ms: 634
-      service_ttlt_ms: 11055
-      total_duration_ms: 10955
-      user_visible_ttft_ms: 507
+      service_ttft_ms: 410
+      service_ttlt_ms: 10937
+      total_duration_ms: 10834
+      user_visible_ttft_ms: 296
     prompt_tokens: 1508
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 2762
-  applied_revision: false
-  auto_apply_blocked_errors:
-  - unanchored footnote [a]
-  - unanchored footnote [b]
+    total_tokens: 2842
+  applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: 예수께서 대답하셨습니다. 「『너는 야훼 네 하나님을 시험하지 말라』고 일컬어졌느니라.」
+  to: 예수님께서 그에게 대답하셨습니다. “이렇게 말씀되어 있습니다[a]. ‘너는 주[b] 너의 하나님을 시험하지 말라.’”
+  rationale: 원문의 대명사와 인용 공식을 보완하고, 현대 표준어 합쇼체에 맞게 문장을 정리했습니다. 또한 그리스어 κύριος를 본문에서 ‘주’로 번역하여 원문 형태를 따르되, YHWH라는 히브리어 배경은 각주에서 밝혔습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-14T22:49:07Z'

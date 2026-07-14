@@ -120,6 +120,41 @@ def test_rollout_language_lock_prevents_same_language_overlap(tmp_path, monkeypa
             pass
 
 
+def test_rollout_counts_only_accepted_review_statuses(tmp_path) -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module("multilingual_rollout_review_state", "tools/multilingual_rollout.py")
+
+    fixtures = {
+        "current.yaml": "status: reviewed\nreview_pass:\n  verdict: approve\n",
+        "spanish.yaml": "status: spanish_reviewed\nreview_pass:\n  verdict: approve\n",
+        "korean.yaml": "status: korean_reviewed\nreview_pass:\n  verdict: revise\n",
+        "parked.yaml": "status: needs_human_review\nreview_pass:\n  verdict: needs_human_review\n",
+        "draft.yaml": "status: draft\n",
+    }
+    for name, contents in fixtures.items():
+        (tmp_path / name).write_text(contents, encoding="utf-8")
+
+    assert module.reviewed_files(tmp_path) == {
+        "current.yaml",
+        "spanish.yaml",
+        "korean.yaml",
+    }
+
+
+def test_human_review_records_are_parked_from_pending_waves(tmp_path) -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module("multilingual_pipeline_human_review", "tools/multilingual_pipeline.py")
+    (tmp_path / "parked.yaml").write_text(
+        "status: needs_human_review\nreview_pass:\n  verdict: revise\n",
+        encoding="utf-8",
+    )
+    (tmp_path / "ordinary.yaml").write_text(
+        "status: draft\n",
+        encoding="utf-8",
+    )
+    assert module.human_review_relatives(tmp_path) == {"parked.yaml"}
+
+
 def test_parallel_rollout_has_safe_stage_concurrency_defaults() -> None:
     sys.path.insert(0, str(ROOT / "tools"))
     module = load_module(

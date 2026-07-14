@@ -15,7 +15,9 @@ from typing import Any
 from multilingual_pipeline import (
     BLOCK_ROOT,
     ROOT,
+    human_review_relatives,
     load_config,
+    reviewed_relatives,
     rollout_order,
     source_relatives,
 )
@@ -57,19 +59,10 @@ def relative_files(root: pathlib.Path) -> set[str]:
 
 
 def reviewed_files(root: pathlib.Path) -> set[str]:
-    if not root.exists():
-        return set()
-    probe = subprocess.run(
-        ["rg", "-l", "^review_pass:", str(root), "--glob", "*.yaml"],
-        capture_output=True,
-        text=True,
-        check=False,
-    )
-    return {
-        str(pathlib.Path(line).relative_to(root))
-        for line in probe.stdout.splitlines()
-        if line.strip()
-    }
+    # A review_pass payload records that Terra ran, not that the record passed.
+    # Parked needs_human_review records also carry it. Require an accepted status
+    # while preserving the established Spanish/Korean legacy status names.
+    return reviewed_relatives(root)
 
 
 def blocked_files(code: str, stage: str) -> set[str]:
@@ -83,9 +76,10 @@ def language_state(code: str, source: set[str] | None = None) -> dict[str, Any]:
     all_target = relative_files(target_root)
     target = all_target & source
     reviewed = reviewed_files(target_root) & source
+    human_review = human_review_relatives(target_root) & source
     blocked_review = blocked_files(code, "review")
     blocked_draft = blocked_files(code, "draft")
-    pending_review = target - reviewed - blocked_review
+    pending_review = target - reviewed - human_review - blocked_review
     pending_draft = source - target - blocked_draft
     return {
         "code": code,
@@ -94,6 +88,7 @@ def language_state(code: str, source: set[str] | None = None) -> dict[str, Any]:
         "reviewed": len(reviewed),
         "non_publication_records": len(all_target - source),
         "pending_review": len(pending_review),
+        "needs_human_review": len(human_review),
         "pending_draft": len(pending_draft),
         "blocked_review": len(blocked_review),
         "blocked_draft": len(blocked_draft),

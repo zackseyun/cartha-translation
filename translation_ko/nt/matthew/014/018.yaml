@@ -17,8 +17,12 @@ base_translation:
     reason: cross_reference
 translation:
   language: ko
-  text: 예수님이 말씀하셨습니다. 「그것들을 내게로 가져오너라.」
+  text: 예수님께서 말씀하셨습니다[a]. “그것들을 이리 내게 가져오십시오.”
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 곧 앞 절에서 언급한 빵들과 물고기를 가리킵니다.
+    reason: cross_reference
 ai_draft:
   model_id: claude-opus-4-7
   model_version: claude-opus-4-7-1m
@@ -26,53 +30,58 @@ ai_draft:
   timestamp: '2026-05-18T00:00:00Z'
 source_grounding:
   english_pob_role: consult_only
-status: needs_human_review
+status: reviewed
 review_pass:
   verdict: revise
-  source_fidelity: 원문의 δέ는 앞 절 제자들의 말에 이어지는 응답을 나타내며, ‘그분이 말씀하셨습니다’로 자연스럽게 반영됩니다. Φέρετε(복수 명령), μοι(나에게), ὧδε(여기), αὐτούς(문맥상 떡과 물고기)를 모두 반영했습니다.
-  naturalness: 초안의 ‘가져오너라’는 현대 표준 한국어 합쇼체 요청 형식에 맞지 않습니다. ‘가져오십시오’가 현대적이고 격식 있는 명령 표현입니다. ‘여기 나에게’는 ὧδε와 μοι를 모두 자연스럽게 드러냅니다.
-  terminology: ‘그분’은 헬라어의 대명사 주어를 과도한 정보 추가 없이 옮기며, 문맥상 예수님을 가리킵니다. ‘그것들’은 앞 절의 떡과 물고기를 가리키므로 주석으로 명시합니다.
+  source_fidelity: 원문의 δέ는 앞선 제자들의 말에 대한 예수님의 응답을 잇는 접속사이며, 한국어에서는 별도의 역접 표지 없이도 자연스럽게 반영됩니다. Φέρετε(복수 명령), μοι(내게), ὧδε(이리/여기로), αὐτούς(앞 절의 빵과 물고기를 가리키는 ‘그것들’)를 모두 보존하도록 다듬었습니다.
+  naturalness: 초안의 ‘가져오너라’는 현대 표준어 합쇼체 지향과 맞지 않는 해라체 명령입니다. ‘가져오십시오’가 현대의 정중하고 자연스러운 직접 명령 표현입니다. ‘이리 내게’는 장소와 수취인을 모두 간결하게 나타냅니다.
+  terminology: 문맥상 선행하는 예수님을 명시한 ‘예수님께서’는 자연스럽고 의미를 추가하지 않습니다. αὐτούς의 지시 대상은 본문에서 과도하게 풀어 쓰지 않고 ‘그것들’로 유지하며, 필요한 문맥 설명은 각주로 제시합니다.
   issues:
   - severity: medium
-    issue: 직접 명령문의 종결이 합쇼체가 아님
-    rationale: ‘가져오너라’는 해라체이므로, 지정된 현대 격식체(합쇼체)와 일치하지 않습니다.
+    issue: 직접 명령이 ‘가져오너라’로 되어 있습니다.
+    rationale: 이는 해라체이며, 지정된 현대 표준어 합쇼체 등록과 일치하지 않습니다. 복수형 명령 Φέρετε는 ‘가져오십시오’로 자연스럽게 옮길 수 있습니다.
   - severity: low
-    issue: ὧδε(‘여기’)와 μοι(‘나에게’)의 공간적·인칭적 초점이 충분히 드러나지 않음
-    rationale: ‘내게로’만으로도 일부 전달되지만, 원문의 ‘여기’와 ‘나에게’를 모두 명시하는 편이 충실합니다.
-  revised_text: 그분이 말씀하셨습니다. “그것들을 여기 나에게 가져오십시오.”
+    issue: 영어 감사 추적에 있는 지시 대상 설명 각주가 한국어 초안에 없습니다.
+    rationale: αὐτούς가 직전 절의 빵과 물고기를 가리킨다는 문맥상 설명을 동일한 앵커로 제공하면 독자의 참조를 돕고 감사 추적을 보존합니다.
+  revised_text: 예수님께서 말씀하셨습니다[a]. “그것들을 이리 내게 가져오십시오.”
   revised_footnotes:
   - marker: a
-    text: 곧 앞 절에서 언급된 떡과 물고기입니다.
+    text: 곧 앞 절에서 언급한 빵들과 물고기를 가리킵니다.
     reason: cross_reference
-  revision_rationale: 합쇼체 명령형으로 고치고, 원문의 ‘여기’와 ‘나에게’를 모두 반영했습니다. ‘그것들’의 지시 대상은 문맥상 명확하지만, 영어 POB 감사 기록의 교차참조 주석에 맞추어 주석으로 밝혔습니다.
+  revision_rationale: 명령문의 종결을 합쇼체로 바로잡고, ὧδε와 μοι를 각각 ‘이리’와 ‘내게’로 유지했습니다. 대명사의 문맥상 지시 대상은 본문에서 명시적으로 확장하지 않고 각주로 밝혔습니다.
   requires_human_review: false
   model_id: gpt-5.6-terra
   azure_deployment: gpt-5-6-terra-atlas
   prompt_id: multilingual_source_review_v1
-  timestamp: '2026-07-13T06:20:25Z'
-  output_hash: aed39deeec95519a6f853905cc967ea83460557a4306d5e41f6096a7363d9f89
+  timestamp: '2026-07-14T22:48:16Z'
+  output_hash: 508a7f4ed7c16921f8a1c8bed3c05757031157179c35900f392ed321b8f920ef
   usage:
-    completion_tokens: 899
+    completion_tokens: 941
     completion_tokens_details:
       accepted_prediction_tokens: 0
       audio_tokens: 0
-      reasoning_tokens: 367
+      reasoning_tokens: 358
       rejected_prediction_tokens: 0
     latency_checkpoint:
       engine_tbt_ms: 9
-      engine_ttft_ms: 143
-      engine_ttlt_ms: 8577
-      pre_inference_ms: 127
+      engine_ttft_ms: 131
+      engine_ttlt_ms: 8230
+      pre_inference_ms: 111
       service_tbt_ms: 9
-      service_ttft_ms: 366
-      service_ttlt_ms: 8794
-      total_duration_ms: 8677
-      user_visible_ttft_ms: 239
+      service_ttft_ms: 411
+      service_ttlt_ms: 8507
+      total_duration_ms: 8410
+      user_visible_ttft_ms: 300
     prompt_tokens: 1055
     prompt_tokens_details:
       audio_tokens: 0
       cached_tokens: 0
-    total_tokens: 1954
-  applied_revision: false
-  auto_apply_blocked_errors:
-  - unanchored footnote [a]
+    total_tokens: 1996
+  applied_revision: true
+  auto_apply_blocked_errors: []
+revisions:
+- from: 예수님이 말씀하셨습니다. 「그것들을 내게로 가져오너라.」
+  to: 예수님께서 말씀하셨습니다[a]. “그것들을 이리 내게 가져오십시오.”
+  rationale: 명령문의 종결을 합쇼체로 바로잡고, ὧδε와 μοι를 각각 ‘이리’와 ‘내게’로 유지했습니다. 대명사의 문맥상 지시 대상은 본문에서 명시적으로 확장하지 않고 각주로 밝혔습니다.
+  reviewer_model: gpt-5.6-terra
+  timestamp: '2026-07-14T22:48:16Z'
