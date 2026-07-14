@@ -1,0 +1,22 @@
+contract_version: 1
+catalog_id: pob-reader-localization
+source_catalog: localization_source/reader_catalog.v1.json
+schema: schemas/reader_localization_catalog.v1.schema.json
+locale_catalog_pattern: localization/{locale}/reader_catalog.v1.yaml
+chunk_pattern: localization/{locale}/reader_catalog.v1.chunks/{chunk_id}.yaml
+
+# Reader catalogs are generated in bounded packets so structured output never
+# has to carry all 2,548 chapter titles in one request. Sol drafts every packet
+# and Terra independently returns the complete reviewed packet.
+chunk_max_units: 100
+draft_deployment: gpt-5-6-sol-atlas
+review_deployment: gpt-5-6-terra-atlas
+
+# Add a locale here only when its complete reviewed v1 catalog is ready to
+# publish. The asset builder then treats every missing or invalid localization
+# as an error and never substitutes English. Existing preview locales continue
+# to use calibration.yaml until their full catalog is promoted.
+published_locales: []
+compatibility:
+  allow_legacy_calibration: true
+  calibration_pattern: localization/{locale}/calibration.yaml

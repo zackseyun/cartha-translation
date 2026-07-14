@@ -1,0 +1,182 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://peoplesbible.com/schemas/reader-localization-catalog.v1.schema.json",
+  "title": "People's Open Bible reader localization catalog v1",
+  "oneOf": [
+    {"$ref": "#/$defs/sourceCatalog"},
+    {"$ref": "#/$defs/reviewedLocaleCatalog"}
+  ],
+  "$defs": {
+    "nonEmptyString": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "\\S"
+    },
+    "language": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["code", "name", "native_name", "variant"],
+      "properties": {
+        "code": {"type": "string", "pattern": "^[a-z][a-z0-9_]*$"},
+        "name": {"$ref": "#/$defs/nonEmptyString"},
+        "native_name": {"$ref": "#/$defs/nonEmptyString"},
+        "variant": {"$ref": "#/$defs/nonEmptyString"},
+        "direction": {"type": "string", "enum": ["ltr", "rtl"]}
+      }
+    },
+    "counts": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["books", "chapter_titles"],
+      "properties": {
+        "books": {"const": 131},
+        "chapter_titles": {"const": 2548}
+      }
+    },
+    "stringGroup": {
+      "type": "object",
+      "minProperties": 1,
+      "additionalProperties": {"type": "string"}
+    },
+    "strings": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["reader_ui", "placeholders", "sections", "canon", "authority"],
+      "properties": {
+        "reader_ui": {"$ref": "#/$defs/stringGroup"},
+        "placeholders": {"$ref": "#/$defs/stringGroup"},
+        "sections": {"$ref": "#/$defs/stringGroup"},
+        "canon": {"$ref": "#/$defs/stringGroup"},
+        "authority": {"$ref": "#/$defs/stringGroup"}
+      }
+    },
+    "chapter": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["title"],
+      "properties": {
+        "title": {"$ref": "#/$defs/nonEmptyString"},
+        "summary": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "book": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["display_name", "author", "audience", "date", "chapters"],
+      "properties": {
+        "display_name": {"$ref": "#/$defs/nonEmptyString"},
+        "author": {"$ref": "#/$defs/nonEmptyString"},
+        "audience": {"$ref": "#/$defs/nonEmptyString"},
+        "date": {"$ref": "#/$defs/nonEmptyString"},
+        "summary": {"$ref": "#/$defs/nonEmptyString"},
+        "chapters": {
+          "type": "object",
+          "minProperties": 1,
+          "propertyNames": {"pattern": "^(0|[1-9][0-9]*)$"},
+          "additionalProperties": {"$ref": "#/$defs/chapter"}
+        }
+      }
+    },
+    "books": {
+      "type": "object",
+      "minProperties": 131,
+      "maxProperties": 131,
+      "additionalProperties": {"$ref": "#/$defs/book"}
+    },
+    "sourceProvenance": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "metadata_source", "chapter_titles_source", "chapter_titles_version",
+        "reader_copy_source"
+      ],
+      "properties": {
+        "metadata_source": {"$ref": "#/$defs/nonEmptyString"},
+        "chapter_titles_source": {"$ref": "#/$defs/nonEmptyString"},
+        "chapter_titles_version": {"type": "integer", "minimum": 1},
+        "reader_copy_source": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "reviewedChunk": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "chunk_id", "verdict", "review_summary", "issues",
+        "draft_model_id", "draft_deployment", "draft_output_hash",
+        "review_model_id", "review_deployment", "review_output_hash", "reviewed_at"
+      ],
+      "properties": {
+        "chunk_id": {
+          "type": "string",
+          "pattern": "^(strings|books)-[0-9]{3}$"
+        },
+        "verdict": {"type": "string", "enum": ["approve", "revise"]},
+        "review_summary": {"$ref": "#/$defs/nonEmptyString"},
+        "issues": {
+          "type": "array",
+          "items": {"type": "string"}
+        },
+        "draft_model_id": {"const": "gpt-5.6-sol"},
+        "draft_deployment": {"const": "gpt-5-6-sol-atlas"},
+        "draft_output_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "review_model_id": {"const": "gpt-5.6-terra"},
+        "review_deployment": {"const": "gpt-5-6-terra-atlas"},
+        "review_output_hash": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "reviewed_at": {"$ref": "#/$defs/nonEmptyString"}
+      }
+    },
+    "sourceCatalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version", "catalog_kind", "catalog_id", "language",
+        "status", "counts", "strings", "books", "source_provenance"
+      ],
+      "properties": {
+        "contract_version": {"const": 1},
+        "catalog_kind": {"const": "source"},
+        "catalog_id": {"const": "pob-reader-localization"},
+        "language": {"$ref": "#/$defs/language"},
+        "status": {"const": "canonical_source"},
+        "counts": {"$ref": "#/$defs/counts"},
+        "strings": {"$ref": "#/$defs/strings"},
+        "books": {"$ref": "#/$defs/books"},
+        "source_provenance": {"$ref": "#/$defs/sourceProvenance"}
+      }
+    },
+    "localeReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["verdict", "completed_at", "chunks"],
+      "properties": {
+        "verdict": {"const": "reviewed"},
+        "completed_at": {"$ref": "#/$defs/nonEmptyString"},
+        "chunks": {
+          "type": "array",
+          "minItems": 2,
+          "items": {"$ref": "#/$defs/reviewedChunk"}
+        }
+      }
+    },
+    "reviewedLocaleCatalog": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "contract_version", "catalog_kind", "catalog_id", "language", "status",
+        "counts", "source_catalog_sha256", "strings", "books", "review"
+      ],
+      "properties": {
+        "contract_version": {"const": 1},
+        "catalog_kind": {"const": "reviewed_locale"},
+        "catalog_id": {"const": "pob-reader-localization"},
+        "language": {"$ref": "#/$defs/language"},
+        "status": {"const": "reviewed"},
+        "counts": {"$ref": "#/$defs/counts"},
+        "source_catalog_sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "strings": {"$ref": "#/$defs/strings"},
+        "books": {"$ref": "#/$defs/books"},
+        "review": {"$ref": "#/$defs/localeReview"}
+      }
+    }
+  }
+}

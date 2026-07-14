@@ -11,10 +11,12 @@ from __future__ import annotations
 import argparse
 import concurrent.futures
 import datetime as dt
+import email.utils
 import hashlib
 import json
 import os
 import pathlib
+import random
 import re
 import subprocess
 import tempfile
@@ -129,9 +131,42 @@ def azure_key() -> str:
     return key
 
 
+def retry_after_seconds(headers: Any, *, current_time: float | None = None) -> float:
+    """Read Azure Retry-After seconds (or HTTP date) and millisecond fallback."""
+    if not headers:
+        return 0.0
+    value = headers.get("Retry-After") or headers.get("retry-after")
+    if value:
+        try:
+            return max(0.0, float(value))
+        except (TypeError, ValueError):
+            try:
+                parsed = email.utils.parsedate_to_datetime(str(value))
+                if parsed.tzinfo is None:
+                    parsed = parsed.replace(tzinfo=dt.timezone.utc)
+                now_timestamp = time.time() if current_time is None else current_time
+                return max(0.0, parsed.timestamp() - now_timestamp)
+            except (TypeError, ValueError, OverflowError):
+                pass
+    milliseconds = headers.get("x-ms-retry-after-ms")
+    try:
+        return max(0.0, float(milliseconds) / 1000.0) if milliseconds else 0.0
+    except (TypeError, ValueError):
+        return 0.0
+
+
+def retry_delay_seconds(attempt: int, status: int | None, headers: Any = None) -> float:
+    """Use a rolling-window fallback plus small jitter, honoring server guidance."""
+    fallback = min(30.0, float(2 ** attempt))
+    if status == 429:
+        fallback = max(fallback, 20.0 * (attempt + 1))
+    floor = max(fallback, retry_after_seconds(headers))
+    return floor + random.uniform(0.0, min(5.0, max(0.25, floor * 0.1)))
+
+
 def call_tool(
     *, deployment: str, system: str, user: str, tool: dict[str, Any], name: str,
-    max_tokens: int = 7000, retries: int = 6,
+    max_tokens: int = 7000, retries: int = 2,
 ) -> tuple[dict[str, Any], dict[str, Any], str]:
     body = {
         "messages": [{"role": "system", "content": system}, {"role": "user", "content": user}],
@@ -144,6 +179,8 @@ def call_tool(
     url = f"{ENDPOINT}/openai/deployments/{deployment}/chat/completions?api-version={API_VERSION}"
     last: Exception | None = None
     for attempt in range(retries + 1):
+        retry_status: int | None = None
+        retry_headers: Any = None
         req = urllib.request.Request(
             url, data=encoded,
             headers={"Content-Type": "application/json", "api-key": azure_key()}, method="POST",
@@ -160,12 +197,14 @@ def call_tool(
         except urllib.error.HTTPError as exc:
             error_body = exc.read().decode("utf-8", errors="replace")
             last = RuntimeError(f"Azure HTTP {exc.code}: {error_body[:600]}")
+            retry_status = exc.code
+            retry_headers = exc.headers
             if exc.code not in {408, 429, 500, 502, 503, 504}:
                 break
         except Exception as exc:  # noqa: BLE001
             last = exc
         if attempt < retries:
-            time.sleep(min(30, 2 ** attempt))
+            time.sleep(retry_delay_seconds(attempt, retry_status, retry_headers))
     raise last or RuntimeError("Azure request failed")
 
 
@@ -503,37 +542,39 @@ def command_pilot(args: argparse.Namespace) -> int:
     azure_key()  # fail before launching workers
     totals = {"drafted": 0, "reviewed": 0, "blocked": 0, "skip": 0, "error": 0, "prompt_tokens": 0, "completion_tokens": 0}
 
-    def run(job: tuple[str, dict[str, Any], str]) -> list[tuple[str, str, dict[str, Any]]]:
+    def run(
+        job: tuple[str, dict[str, Any], str], stage: str,
+    ) -> tuple[str, str, dict[str, Any]]:
         code, spec, verse = job
-        output = []
         routing_key = f"{code}:{verse}"
-        if args.stage in {"draft", "both"}:
-            output.append(draft_one(
+        if stage == "draft":
+            return draft_one(
                 code, spec, verse,
                 choose_deployment(args.draft_deployment, routing_key),
                 args.force,
-            ))
-        if args.stage in {"review", "both"}:
-            output.append(review_one(
-                code, spec, verse,
-                choose_deployment(args.review_deployment, routing_key),
-                args.force,
-            ))
-        return output
+            )
+        return review_one(
+            code, spec, verse,
+            choose_deployment(args.review_deployment, routing_key),
+            args.force,
+        )
 
-    with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
-        futures = {pool.submit(run, job): job for job in jobs}
-        for future in concurrent.futures.as_completed(futures):
-            code, _spec, verse = futures[future]
-            try:
-                for status, path, usage in future.result():
+    stages = [args.stage] if args.stage != "both" else ["draft", "review"]
+    for stage in stages:
+        print(f"Starting {stage} epoch: jobs={len(jobs)}", flush=True)
+        with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+            futures = {pool.submit(run, job, stage): job for job in jobs}
+            for future in concurrent.futures.as_completed(futures):
+                code, _spec, verse = futures[future]
+                try:
+                    status, path, usage = future.result()
                     totals[status if status in totals else "skip"] += 1
                     totals["prompt_tokens"] += int(usage.get("prompt_tokens") or 0)
                     totals["completion_tokens"] += int(usage.get("completion_tokens") or 0)
                     print(f"{status:8} {code:8} {verse} -> {path}", flush=True)
-            except Exception as exc:  # noqa: BLE001
-                totals["error"] += 1
-                print(f"ERROR    {code:8} {verse}: {exc}", flush=True)
+                except Exception as exc:  # noqa: BLE001
+                    totals["error"] += 1
+                    print(f"ERROR    {code:8} {verse}: {exc}", flush=True)
     print(json.dumps(totals, indent=2))
     return 1 if totals["error"] else 0
 
@@ -633,6 +674,11 @@ def command_validate(args: argparse.Namespace) -> int:
 
 
 def parser() -> argparse.ArgumentParser:
+    config = load_config()
+    # Keep the configured Sol default Global-only: the live Data Zone lane was
+    # returning 429s on roughly 65% of requests during rollout calibration.
+    default_draft_deployment = str(config["draft_deployment"])
+    default_review_deployment = str(config["review_deployment"])
     root = argparse.ArgumentParser(description=__doc__)
     sub = root.add_subparsers(dest="command", required=True)
     status = sub.add_parser("status")
@@ -645,12 +691,12 @@ def parser() -> argparse.ArgumentParser:
     pilot.add_argument("--concurrency", type=int, default=8)
     pilot.add_argument(
         "--draft-deployment",
-        default="gpt-5-6-sol-atlas*3,gpt-5-6-sol-dz-atlas",
+        default=default_draft_deployment,
         help="Comma-separated, optionally weighted Azure deployment pool",
     )
     pilot.add_argument(
         "--review-deployment",
-        default="gpt-5-6-terra-atlas*3,gpt-5-6-terra-dz-atlas",
+        default=default_review_deployment,
         help="Comma-separated, optionally weighted Azure deployment pool",
     )
     pilot.add_argument("--force", action="store_true")
@@ -665,12 +711,12 @@ def parser() -> argparse.ArgumentParser:
     wave.add_argument("--concurrency", type=int, default=8)
     wave.add_argument(
         "--draft-deployment",
-        default="gpt-5-6-sol-atlas*3,gpt-5-6-sol-dz-atlas",
+        default=default_draft_deployment,
         help="Comma-separated, optionally weighted Azure deployment pool",
     )
     wave.add_argument(
         "--review-deployment",
-        default="gpt-5-6-terra-atlas*3,gpt-5-6-terra-dz-atlas",
+        default=default_review_deployment,
         help="Comma-separated, optionally weighted Azure deployment pool",
     )
     wave.add_argument(

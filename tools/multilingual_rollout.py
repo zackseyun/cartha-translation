@@ -77,14 +77,16 @@ def blocked_files(code: str, stage: str) -> set[str]:
     return relative_files(root)
 
 
-def language_state(code: str) -> dict[str, Any]:
-    source = set(source_relatives())
+def language_state(code: str, source: set[str] | None = None) -> dict[str, Any]:
+    source = source if source is not None else set(source_relatives())
     target_root = ROOT / f"translation_{code}"
     all_target = relative_files(target_root)
     target = all_target & source
     reviewed = reviewed_files(target_root) & source
-    pending_review = sorted(target - reviewed - blocked_files(code, "review"))
-    pending_draft = sorted(source - target - blocked_files(code, "draft"))
+    blocked_review = blocked_files(code, "review")
+    blocked_draft = blocked_files(code, "draft")
+    pending_review = target - reviewed - blocked_review
+    pending_draft = source - target - blocked_draft
     return {
         "code": code,
         "source": len(source),
@@ -93,8 +95,8 @@ def language_state(code: str) -> dict[str, Any]:
         "non_publication_records": len(all_target - source),
         "pending_review": len(pending_review),
         "pending_draft": len(pending_draft),
-        "blocked_review": len(blocked_files(code, "review")),
-        "blocked_draft": len(blocked_files(code, "draft")),
+        "blocked_review": len(blocked_review),
+        "blocked_draft": len(blocked_draft),
     }
 
 
@@ -110,12 +112,13 @@ def choose_next() -> tuple[str, str, dict[str, Any]] | None:
         if state["pending_review"]:
             return code, "review", state
         if state["pending_draft"]:
-            return code, "both", state
+            return code, "draft", state
     return None
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
+    config = load_config()
     parser.add_argument("--status", action="store_true")
     parser.add_argument("--dry-run", action="store_true")
     parser.add_argument("--limit-records", type=int, default=500)
@@ -128,6 +131,16 @@ def main() -> int:
         "--stage",
         choices=("draft", "review", "both"),
         help="Run a known stage directly; requires --language.",
+    )
+    parser.add_argument(
+        "--draft-deployment",
+        default=str(config["draft_deployment"]),
+        help="Explicit comma-separated draft deployment pool.",
+    )
+    parser.add_argument(
+        "--review-deployment",
+        default=str(config["review_deployment"]),
+        help="Explicit comma-separated review deployment pool.",
     )
     args = parser.parse_args()
 
@@ -173,6 +186,10 @@ def main() -> int:
                 str(args.limit_records),
                 "--concurrency",
                 str(args.concurrency),
+                "--draft-deployment",
+                args.draft_deployment,
+                "--review-deployment",
+                args.review_deployment,
             ]
             print(" ".join(command))
             if args.dry_run:
