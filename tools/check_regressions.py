@@ -40,14 +40,14 @@ RULES = [
         "nt_only": True,  # Χριστός only occurs in NT + deuterocanon
     },
     {
-        "id": "doulos-as-servant",
-        "check_wrong": "servant",
-        "check_correct": "slave",
-        "description": 'δοῦλος rendered as "servant" instead of "slave"',
+        "id": "slave-as-servant",
+        "check_wrong": "slave/slaves",
+        "check_correct": "servant/servants",
+        "description": 'reader-facing text uses "slave" instead of "servant"',
         "details": (
-            'Found "servant" where source is δοῦλος/עֶבֶד. '
-            "POB policy: δοῦλος → slave (bonded ownership context). "
-            '"servant" is only correct for διάκονος/ὑπηρέτης. '
+            'Found standalone "slave" or "slaves" in translation.text. '
+            "POB policy requires servant/servants in reader-facing wording; "
+            "bonded-status nuance belongs in notes and the audit trail. "
             "See DOCTRINE.md §Contested Terms."
         ),
         "nt_only": False,
@@ -109,9 +109,7 @@ def check_file(path: pathlib.Path) -> list[dict]:
             ),
         })
 
-    # Rule 2: δοῦλος → "servant" regression
-    # Heuristic: if source text contains δοῦλος or עֶבֶד AND translation has "servant"
-    # We check the source field for the Greek/Hebrew term.
+    # The source field is used by source-aware rules below.
     source = data.get("source") or {}
     source_text = str(source.get("text") or "")
 
@@ -134,21 +132,21 @@ def check_file(path: pathlib.Path) -> list[dict]:
             ),
         })
 
-    if "δοῦλ" in source_text or "עֶבֶד" in source_text or "עֶ֫בֶד" in source_text:
-        if _word_in(text, "servant"):
-            violations.append({
-                "file": str(path.relative_to(REPO_ROOT)),
-                "rule": "doulos-as-servant",
-                "translation_text": text[:120],
-                "details": (
-                    'Forbidden: "servant" found where source has δοῦλος/עֶבֶד. '
-                    "POB policy requires → slave. "
-                    '"servant" only for διάκονος/ὑπηρέτης. '
-                    "See DOCTRINE.md §Contested Terms and tools/known_regressions.yaml."
-                ),
-            })
+    # Rule 4: servant terminology in all reader-facing translation text.
+    if re.search(r"\bslaves?\b", text, re.IGNORECASE):
+        violations.append({
+            "file": str(path.relative_to(REPO_ROOT)),
+            "rule": "slave-as-servant",
+            "translation_text": text[:120],
+            "details": (
+                'Forbidden: standalone "slave" or "slaves" found in translation text. '
+                "POB policy requires servant/servants in reader-facing wording. "
+                "Document historical bonded status in notes or audit metadata instead. "
+                "See DOCTRINE.md §Contested Terms and tools/known_regressions.yaml."
+            ),
+        })
 
-    # Rule 4: Truncation guard
+    # Rule 5: Truncation guard
     # Skip superscription files (verse 000 — Psalm titles) which are short by design.
     is_superscription = path.stem == "000"
     revisions = data.get("revisions") or []
@@ -190,14 +188,17 @@ def get_staged_yaml_files() -> list[pathlib.Path]:
     paths = []
     for line in out.splitlines():
         p = REPO_ROOT / line
-        if p.suffix == ".yaml" and "translation/" in line:
+        if p.suffix == ".yaml" and line.startswith("translation"):
             paths.append(p)
     return paths
 
 
 def get_all_yaml_files() -> list[pathlib.Path]:
-    translation_root = REPO_ROOT / "translation"
-    return sorted(translation_root.rglob("*.yaml"))
+    files = []
+    for translation_root in sorted(REPO_ROOT.glob("translation*")):
+        if translation_root.is_dir():
+            files.extend(translation_root.rglob("*.yaml"))
+    return sorted(files)
 
 
 def main() -> int:

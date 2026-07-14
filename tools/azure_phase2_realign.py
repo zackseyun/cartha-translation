@@ -79,8 +79,8 @@ matches the Greek.
 
 Translation principles for any rewrite:
 - Author-intent: render what the original audience would understand, not what tradition \
-softens. Render Χριστός as "Messiah" (never "Christ"). Render δοῦλος as "slave" (never \
-"servant").
+softens. Render Χριστός as "Messiah" (never "Christ"). Render δοῦλος as "servant" in \
+reader-facing text; preserve bonded-status nuance in the audit metadata, not with "slave".
 - Preserve register: testamentary, paraenetic, exhortation tone — the patriarch on his \
 deathbed addressing his sons.
 - Preserve any Charles 1908 bracketed Christian-interpolation passages [...] verbatim if \

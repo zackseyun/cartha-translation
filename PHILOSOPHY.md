@@ -3,7 +3,8 @@
 Every major modern English Bible is the product of a closed process. A
 committee of scholars makes thousands of translation decisions behind closed
 doors; readers receive the finished text; the reasoning behind any given
-word choice — why *doulos* was rendered "servant" here and "slave" there,
+word choice — why *doulos* is rendered "servant" while its bonded-status
+nuance remains explicit in notes and the public audit trail,
 why the footnote elevates one reading over another — is almost never
 surfaced to the people actually reading scripture.
 

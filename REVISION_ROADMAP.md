@@ -9,7 +9,7 @@
 
 ### Known Limitations of Pass 1
 
-1. **No lexical context** — model didn't know POB had chosen "slave" over "servant" for δοῦλος, or "Messiah" over "Christ" for Χριστός. This caused 496 regressions that required manual correction.
+1. **No lexical context** — model didn't know POB's then-current lexical rules for δοῦλος or Χριστός. This caused 496 regressions that required manual correction. The earlier δοῦλος wording rule was superseded by the servant terminology policy on 2026-07-14.
 2. **No footnote awareness** — contested readings and translator notes not visible; model occasionally "resolved" footnoted ambiguity in one direction.
 3. **No revision history** — model couldn't see that a human or prior model had already adjudicated a term.
 4. **No book-level philosophy** — no awareness of book-specific translation conventions (e.g., T12P Greek vs. Aramaic backing, LXX vs. MT divergences).
@@ -74,7 +74,7 @@ These have only `['id', 'reference', 'unit', 'book']` keys. Use the OCR + draft 
 
 Before every commit, `check_regressions.py` enforces:
 1. No "Christ" (word boundary) in NT translation text → must be "Messiah"
-2. No "servant" where source YAML has δοῦλ or עֶבֶד → must be "slave"
+2. No standalone "slave" or "slaves" in reader-facing translation text → use "servant" or "servants"
 3. No truncation: current text < 35% of prior revision's `from` text (excludes verse 000 superscriptions)
 
 Add new rules to `tools/known_regressions.yaml` and corresponding Python logic in `check_regressions.py` as new cases are identified.

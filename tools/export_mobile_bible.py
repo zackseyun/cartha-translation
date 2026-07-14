@@ -45,6 +45,7 @@ import draft  # noqa: E402
 import sblgnt  # noqa: E402
 import wlc  # noqa: E402
 import lxx_swete  # noqa: E402
+import terminology_policy  # noqa: E402
 
 try:
     from tools.extra_texts.catalog import flat_export_entries
@@ -652,10 +653,11 @@ def export_translation() -> dict[str, Any]:
         if exported is not None:
             books.append(exported)
 
-    return {
+    payload = {
         "translation": "POB: People's Open Bible (Preview)",
         "books": books,
     }
+    return terminology_policy.normalize_reader_payload_in_place(payload)
 
 
 def main() -> int:

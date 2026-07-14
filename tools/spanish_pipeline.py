@@ -83,8 +83,8 @@ and explain exceptions in lexical/theological decisions.
   where relevant.
 - πνεῦμα / רוּחַ -> "espíritu" / "Espíritu" by context; do not flatten wind,
   breath, spirit, and Holy Spirit senses.
-- δοῦλος -> normally "esclavo" where the English POB chose "slave" for lexical
-  force; use "siervo" only with documented contextual reason.
+- δοῦλος -> "siervo" in reader-facing text; preserve bonded-status nuance in
+  notes and audit metadata, and do not use "esclavo" as the main rendering.
 - μετάνοια / μετανοέω -> context-sensitive: "arrepentimiento/arrepentirse" in
   sin-turning contexts; "cambio de mente/pensamiento" where the cognitive force
   is primary.

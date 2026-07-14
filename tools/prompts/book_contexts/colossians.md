@@ -12,7 +12,7 @@
    - **πρωτότοκος** (1:15, 18 — "firstborn"): "Firstborn of all creation" (1:15) and "firstborn from the dead" (1:18). Keep "firstborn" — not "first" (which loses the birth/inheritance metaphor). Footnote the Arian controversy.
    - **πλήρωμα** (1:19; 2:9 — "fullness"): "All the fullness of God was pleased to dwell in him." Always "fullness" — not "totality" or "completeness."
 2. **στοιχεῖα τοῦ κόσμου** (2:8, 20 — "elemental spirits of the world / elementary principles"): Deeply disputed term. "Elemental spirits" (ESV, NRSV) suggests supernatural beings; "basic principles" (NIV) suggests philosophical fundamentals. Footnote both.
-3. **The household code** (3:18–4:1): Same household code pattern as Ephesians. "Slaves, obey your masters" — "slaves," not "servants."
+3. **The household code** (3:18–4:1): Same household code pattern as Ephesians. Use "servants" in the main text and preserve the bonded-status context in notes.
 4. **"Christ is all and in all"** (3:11): Keep the compression — not "Christ is everything and in everyone."
 5. **φιλοσοφία** (2:8 — "philosophy"): Paul's only NT use of this word. Keep "philosophy" — this is likely a specific polemical reference to the Colossian teaching.
 

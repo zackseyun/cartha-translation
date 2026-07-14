@@ -50,5 +50,34 @@ class DivineNameRegressionTests(unittest.TestCase):
         self.assertNotIn("yhwh-as-lord", [item["rule"] for item in violations])
 
 
+class ServantTerminologyRegressionTests(unittest.TestCase):
+    def check_record(self, translation_text: str) -> list[dict]:
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            path = root / "translation" / "nt" / "test" / "001" / "001.yaml"
+            path.parent.mkdir(parents=True)
+            path.write_text(
+                yaml.safe_dump({
+                    "source": {"text": "δοῦλος"},
+                    "translation": {"text": translation_text},
+                }, allow_unicode=True),
+                encoding="utf-8",
+            )
+            original_root = REGRESSIONS.REPO_ROOT
+            REGRESSIONS.REPO_ROOT = root
+            try:
+                return REGRESSIONS.check_file(path)
+            finally:
+                REGRESSIONS.REPO_ROOT = original_root
+
+    def test_rejects_slave_in_translation_text(self):
+        violations = self.check_record("To show his slaves through his slave John.")
+        self.assertIn("slave-as-servant", [item["rule"] for item in violations])
+
+    def test_accepts_servant_in_translation_text(self):
+        violations = self.check_record("To show his servants through his servant John.")
+        self.assertNotIn("slave-as-servant", [item["rule"] for item in violations])
+
+
 if __name__ == "__main__":
     unittest.main()

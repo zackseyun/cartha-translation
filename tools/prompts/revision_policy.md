@@ -225,33 +225,33 @@ to "Christ."
 402 Messiah instances to Christ across all NT books. All reverted.
 Single largest category of regression in POB history.
 
-### δοῦλος → "slave" — NEVER "servant"
+### δοῦλος → "servant" in reader-facing text
 
-**Rule:** When the Greek source word is **δοῦλος** (or Hebrew **עֶבֶד**
-in ownership contexts), render as **"slave."** "Servant" is wrong for
-δοῦλος.
+**Rule:** When the Greek source word is **δοῦλος** (or Hebrew **עֶבֶד**),
+render the main English text as **"servant."** Do not use the standalone
+words "slave" or "slaves" in reader-facing translation text.
 
-**Why:** δοῦλος denotes a person in total legal bondage — fundamentally
-different from a hired worker (διάκονος, ὑπηρέτης, θεράπων). When Paul
-calls himself a δοῦλος of Messiah Jesus, he invokes complete ownership.
-"Servant" is a euphemism modern scholarship rejects (Bartchy, TDNT,
-Louw-Nida).
+**Why:** The source can denote legal bondage, household status, complete
+allegiance, or service depending on context. POB preserves that historical
+and theological force in lexical decisions, footnotes, and public audit
+metadata while using the more reader-conscious "servant" consistently in
+the main text.
 
 | Greek/Hebrew | POB rendering |
 |---|---|
-| δοῦλος | slave |
-| δούλη | female slave |
+| δοῦλος | servant |
+| δούλη | female servant |
 | διάκονος | deacon / minister / servant (context-dependent) |
 | ὑπηρέτης | attendant / servant |
 | θεράπων | attendant |
-| עֶבֶד (ownership) | slave |
-| עֶבֶד (ministry/service) | servant (context-dependent) |
+| עֶבֶד (ownership) | servant; document bonded status in notes |
+| עֶבֶד (ministry/service) | servant |
 
-**If the draft already has "slave" — leave it.** Do not "correct" to
-"servant."
+**If the draft has "slave" or "slaves," change it to "servant" or
+"servants" while preserving number and capitalization.**
 
-**Known regression:** Azure GPT-5.4 revision pass (2026-04-23) changed
-94 "slave" instances to "servant." All reverted.
+**Policy update (2026-07-14):** The prior rule that preferred "slave" in
+bonded contexts was superseded. Future passes must not restore it.
 
 ### יְהוָה → "Yahweh"
 
@@ -274,7 +274,8 @@ it doesn't. Footnotes carry alternatives, not paraphrases.
 ## Leave-alone list (project-wide intentional choices)
 
 - "Messiah" (for Χριστός) — intentional.
-- "slave" (for δοῦλος / עֶבֶד in ownership contexts) — intentional.
+- "servant" (for δοῦλος / עֶבֶד) — intentional reader-facing policy;
+  bonded-status nuance belongs in notes and audit metadata.
 - "Yahweh" (for יְהוָה) — intentional.
 - "Qoheleth" (for קֹהֶלֶת) — intentional transliteration.
 - "breath" (for הֶבֶל in Ecclesiastes) — intentional concrete image,

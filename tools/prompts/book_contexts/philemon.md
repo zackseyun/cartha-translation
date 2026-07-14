@@ -7,7 +7,7 @@
 
 ## Key translation issues
 
-1. **δοῦλος** (v. 16 — "slave"): Onesimus is described as no longer a slave but "a beloved brother." The word is δοῦλος — "slave," not "servant." The social reality must not be softened.
+1. **δοῦλος** (v. 16 — "servant" in the main text): Onesimus is described as no longer a servant but "a beloved brother." Preserve the historical bonded-status reality in notes and audit metadata without using "slave" as the reader-facing term.
 2. **ὀνήσιμος** ("useful/profitable"): The name Onesimus means "useful." Paul makes a wordplay in v. 11: "Formerly he was useless (ἄχρηστον) to you, but now he is indeed useful (εὔχρηστον) to you and to me." The pun on the name should be noted in a footnote.
 3. **χρηστός / Χριστός** (the name/useful wordplay): Related to the above; "useful" (χρήσιμος) and "Christ" (Χριστός) were near-homophones in Greek. Footnote.
 4. **παρακαλέω** (v. 9 — "appeal / urge / entreat"): Paul "appeals" rather than commands — "I appeal to you on the basis of love." The verb choice is deliberate diplomacy. Keep "appeal."
@@ -21,5 +21,5 @@
 
 ## Known pitfalls
 
-- **Rendering δοῦλος as "servant"** — Onesimus is a slave; the social reality matters.
+- **Using "servant" without documenting Onesimus's bonded social status** — the historical reality still matters.
 - **Resolving the ethical ambiguity** in the translation text — translate and footnote.

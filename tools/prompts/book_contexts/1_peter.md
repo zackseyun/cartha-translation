@@ -10,7 +10,7 @@
 1. **πάροικοι / παρεπίδημοι** (2:11 — "sojourners / exiles / strangers / aliens"): The two words for social outsiders — resident aliens and temporary visitors. Both belong in the translation. "Sojourners and exiles" (ESV) or "foreigners and strangers" (NIV) are defensible. Keep both words distinct.
 2. **βασίλειον ἱεράτευμα** (2:9 — "royal priesthood"): From Exodus 19:6 LXX. Always "royal priesthood" — not "kingdom of priests" (which is the Hebrew idiom, not the Greek).
 3. **ἀναστροφή** ("conduct / way of life / behavior"): Peter's key term for honorable social behavior (1:15, 18; 2:12; 3:1, 2, 16). Render consistently — "conduct" or "way of life."
-4. **The household code** (2:18–3:7): Slaves to masters (2:18–25), wives to husbands (3:1–6), husbands to wives (3:7). Render "slaves" — not "servants" for οἰκέτης/δοῦλος.
+4. **The household code** (2:18–3:7): Servants to masters (2:18–25), wives to husbands (3:1–6), husbands to wives (3:7). Render "servants" for οἰκέτης/δοῦλος in the main text and document bonded status in notes.
 5. **πάσχω** ("to suffer"): The suffering theme is woven throughout. "Christ suffered for you" (2:21) — not "died" (which flattens the passion narrative's theological weight in Peter).
 6. **ἐλπίς** ("hope"): "Living hope" (ζῶσα ἐλπίς, 1:3) is Peter's opening declaration. "Hope" must be a significant term throughout — not varied away.
 7. **"The spirits in prison"** (3:19): One of the most contested passages in the NT. Render literally; footnote the interpretive debate. Do not resolve in the translation.

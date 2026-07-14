@@ -118,7 +118,7 @@ the source, prefer the source-direct rendering and explain in
 |---------------------|--------------------------|-------|
 | יהוה / YHWH         | **야훼**                 | Academic transliteration, not 여호와. When NT κύριος cites/alludes to יהוה (LXX quotation), render 야훼 in main text + ot_citation footnote. |
 | Χριστός (titular)   | **메시아**               | Mirror EN POB "Messiah". Reserve **그리스도** only for documented name-form carve-outs. |
-| δοῦλος / δοῦλη      | **종** (default) / **노예** | Use **노예** specifically where the EN POB chose "slave(s)" to flag bonded status (Phil 1:1, Rom 6, Gal 4 Hagar allegory, Col 3:11, 1 Cor 7:23 etc.). |
+| δοῦλος / δοῦλη      | **종**                     | Use the servant term consistently in reader-facing text. Preserve bonded-status nuance in notes/audit metadata rather than using **노예** in the main text. |
 | ἅγιοι (Pauline)     | **성도**                 | |
 | ἀγάπη                | **사랑**                 | |
 | πνεῦμα (divine)     | **영** / **성령**        | Use 성령 only where the source explicitly carries divine-Spirit force (πνεῦμα ἅγιον or contextually unambiguous Pauline reference); otherwise 영. Don't capitalize-by-default in 1st-century texts. |

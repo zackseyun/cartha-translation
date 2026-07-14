@@ -41,12 +41,12 @@ path between formal ("word-for-word") and dynamic
 
 Specifically:
 
-1. **Original-language primacy over translation tradition.** Where
-   long-standing English renderings reflect translation-tradition
-   inertia rather than the source text's plain sense, we favor the
-   source. Example: translating *doulos* as "slave" rather than
-   "servant" in contexts where the term's bonded nature is
-   theologically salient (Rom 1:1, Phil 1:1).
+1. **Original-language primacy with reader-conscious wording.** Where
+   long-standing English renderings obscure the source text's plain
+   sense, we explain the source pressure openly. For *doulos*, the main
+   text uses "servant" consistently while notes and the public audit
+   trail preserve bonded-status, ownership, and total-allegiance nuance
+   where it is historically or theologically salient (Rom 1:1, Phil 1:1).
 
 2. **Translate titles; transliterate names.** Christological
    titles are translated to preserve meaning (*Christos* →
@@ -85,7 +85,7 @@ Per-verse variance is documented in the individual YAML files.
 |---|---|---|---|
 | Χριστός *Christos* | Messiah (where title; Christ where name-like) | Christ | Preserves Hebraic messianic context |
 | κύριος *Kyrios* | Lord | LORD, Master | Matches covenantal and NT usage |
-| δοῦλος *doulos* | slave (where bonded nature is salient) / servant | bondservant | Uses "slave" where ownership/service is theologically active |
+| δοῦλος *doulos* | servant | bondservant, slave | Uses reader-facing "servant" consistently; documents bonded-status and ownership nuance in notes/audit metadata |
 | πίστις *pistis* | faith | faithfulness, trust | Main text: faith; footnote alternatives where contested |
 | δικαιοσύνη *dikaiosynē* | righteousness | justice | Both renderings preserved in footnotes for Pauline passages |
 | ἱλαστήριον *hilastērion* | atoning sacrifice | propitiation, mercy seat | Dynamic rendering for accessibility; alternatives footnoted |

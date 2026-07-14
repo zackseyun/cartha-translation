@@ -21,9 +21,10 @@ lexicons as the authoritative reference.
    (with narrow liturgical carve-outs); `κύριος` → "Lord"; personal
    names are transliterated.
 
-4. **Theological weight preserved over comfortable English.**
-   `δοῦλος` → "slave" when the bonded relationship matters (e.g.
-   Rom 1:1, Phil 1:1), not "servant."
+4. **Theological weight documented with reader-conscious English.**
+   `δοῦλος` → "servant" in the main text (including Rom 1:1 and
+   Phil 1:1); preserve bonded-status and total-allegiance nuance in
+   lexical decisions and notes rather than using "slave."
 
 ## On published English translations (ESV, NRSV, NIV, NASB, NET, etc.)
 
@@ -90,7 +91,7 @@ Hebrew/Greek evidence in its rationale.
   demonstrably wrong.
 - Footnote choices already documented in `lexical_decisions.alternatives`.
 - Intentional project-doctrine decisions (Χριστός → Messiah,
-  δοῦλος → slave, etc.) unless the specific application is wrong.
+  δοῦλος → servant, etc.) unless the specific application is wrong.
 - "Doesn't match ESV/NIV" by itself — see published-translations
   section above.
 
