@@ -29,6 +29,11 @@ from multilingual_pipeline import ROOT, load_config, validate as validate_verse
 
 UI_CODE_OVERRIDES = {"zh_hans": "zh"}
 REFERENCE_RE = re.compile(r"^(?P<book>.+?)\s+(?P<chapter>\d+):(?P<verse>\d+)$")
+PATH_BOOK_KEY_ALIASES = {
+    "additions_to_esther": "Greek Additions to Esther",
+    "prayer_of_azariah": "Prayer of Azariah and Song of the Three",
+    "song_of_songs": "Song of Solomon",
+}
 
 
 class ReaderLocalizationError(RuntimeError):
@@ -42,6 +47,51 @@ def ui_code(code: str) -> str:
 def slugify_book(value: str) -> str:
     value = value.lower().replace("&", " and ").replace("'", "")
     return re.sub(r"[^a-z0-9]+", "-", value).strip("-")
+
+
+def path_book_slug(value: str) -> str:
+    """Normalize catalog keys to the stable directory slugs used by translations."""
+    value = value.lower().replace("&", " and ").replace("'", "")
+    return re.sub(r"[^a-z0-9]+", "_", value).strip("_")
+
+
+def _catalog_book_key(
+    localization: dict[str, Any], book_slug: str, reference: str
+) -> str | None:
+    """Resolve a record to one of the 131 localization-catalog book keys.
+
+    Many historical-library records put a section heading inside ``reference``
+    (for example ``Protoevangelium of James — Chapter 1: ...``), and several
+    long-standing POB path names intentionally differ from catalog labels.
+    The directory is therefore the primary identity; a longest-prefix reference
+    match handles the Twelve Patriarchs collection, whose directory contains
+    twelve independently cataloged books.
+    """
+    book_keys = list((localization.get("books") or {}).keys())
+    by_slug = {path_book_slug(key): key for key in book_keys}
+    explicit = PATH_BOOK_KEY_ALIASES.get(book_slug)
+    if explicit in book_keys:
+        return explicit
+    if book_slug in by_slug:
+        return by_slug[book_slug]
+
+    normalized_reference = str(reference or "").strip().strip("'\"")
+    for key in sorted(book_keys, key=len, reverse=True):
+        if normalized_reference == key or normalized_reference.startswith(
+            (f"{key} ", f"{key} —")
+        ):
+            return key
+
+    # The public POB title preserves the Hebrew superlative while the metadata
+    # source historically used the traditional English catalog title.
+    reference_aliases = {
+        "Song of Songs": "Song of Solomon",
+        "Additions to Esther": "Greek Additions to Esther",
+    }
+    for reader_name, catalog_key in reference_aliases.items():
+        if normalized_reference.startswith((f"{reader_name} ", f"{reader_name} —")):
+            return catalog_key if catalog_key in book_keys else None
+    return None
 
 
 def localized_titles(code: str, *, root: pathlib.Path = ROOT) -> dict[str, str]:
@@ -178,7 +228,10 @@ def compile_language(
     )
     reviewed_localization = localization.get("status") == "reviewed"
     books: dict[str, dict[int, list[dict[str, Any]]]] = {}
+    flat_books: dict[str, dict[int, list[dict[str, Any]]]] = {}
+    section_chapter_numbers: dict[str, dict[str, int]] = {}
     book_paths: dict[str, str] = {}
+    book_localization_keys: dict[str, str] = {}
     bad: list[str] = []
     if translation_root.exists():
         for path in sorted(translation_root.rglob("*.yaml")):
@@ -196,14 +249,60 @@ def compile_language(
                 if errors:
                     bad.append(f"{path.relative_to(root)}: {', '.join(errors)}")
                     continue
-                match = REFERENCE_RE.match(str(payload.get("reference") or "").strip())
-                if not match:
-                    continue
-                book = match.group("book")
                 relative_parts = path.relative_to(translation_root).parts
-                book_paths.setdefault(book, "/".join(relative_parts[:-2]))
-                chapter = int(match.group("chapter"))
-                verse_number = int(match.group("verse"))
+                if len(relative_parts) < 3:
+                    continue
+                # Some source collections carry reviewed title/subtitle records
+                # beside numeric reader units. Their localized display names now
+                # live in the reader catalog, so they are not emitted as verses.
+                if not path.stem.isdigit():
+                    continue
+                reference = str(payload.get("reference") or "").strip()
+                book_slug = relative_parts[1]
+                localization_key = _catalog_book_key(
+                    localization, book_slug, reference
+                )
+                if reviewed_localization and not localization_key:
+                    raise ReaderLocalizationError(
+                        f"reviewed locale catalog cannot resolve {book_slug}: {reference}"
+                    )
+                if localization_key:
+                    # Reviewed reader assets use the 131-book catalog identity.
+                    # This keeps their names/routes aligned with English POB nav
+                    # even where a translation-unit reference uses an alias.
+                    book = localization_key
+                else:
+                    match = REFERENCE_RE.match(reference)
+                    if not match:
+                        continue
+                    book = match.group("book")
+                nested_record = relative_parts[-2].isdigit()
+                book_paths.setdefault(
+                    book,
+                    "/".join(
+                        relative_parts[:-2] if nested_record else relative_parts[:-1]
+                    ),
+                )
+                if localization_key:
+                    book_localization_keys.setdefault(book, localization_key)
+                # Paths are canonical even when historical references use a
+                # single sequence number or include a section heading. Flat
+                # historical units become one-verse chapters; where segmented
+                # children also exist, the parent is suppressed below.
+                if nested_record:
+                    chapter = int(relative_parts[-2])
+                    verse_number = int(path.stem)
+                else:
+                    source_record = payload.get("source") or {}
+                    section_title = str(source_record.get("chapter_title") or "").strip()
+                    block_index = source_record.get("block_index")
+                    if section_title and str(block_index or "").isdigit():
+                        title_map = section_chapter_numbers.setdefault(book, {})
+                        chapter = title_map.setdefault(section_title, len(title_map) + 1)
+                        verse_number = int(block_index)
+                    else:
+                        chapter = int(path.stem)
+                        verse_number = 1
                 translation = payload.get("translation") or {}
                 verse: dict[str, Any] = {
                     "verse": verse_number,
@@ -212,9 +311,17 @@ def compile_language(
                 footnotes = translation.get("footnotes") or []
                 if footnotes:
                     verse["footnotes"] = footnotes
-                books.setdefault(book, {}).setdefault(chapter, []).append(verse)
+                target = books if nested_record else flat_books
+                target.setdefault(book, {}).setdefault(chapter, []).append(verse)
             except Exception as exc:  # noqa: BLE001
                 bad.append(f"{path.relative_to(root)}: {exc}")
+
+    for book, chapters in flat_books.items():
+        for chapter, verses in chapters.items():
+            # Parent records duplicate their segmented children in a handful
+            # of historical collections. Prefer the reader-sized segments.
+            if chapter not in books.get(book, {}):
+                books.setdefault(book, {})[chapter] = verses
 
     compiled_books = []
     testament_rank = {"ot": 0, "nt": 1, "deuterocanon": 2, "extra_canonical": 3}
@@ -225,7 +332,8 @@ def compile_language(
             book_paths.get(item[0], item[0]),
         ),
     ):
-        localized_book = _localized_book_projection(localization, canonical_name)
+        localization_key = book_localization_keys.get(canonical_name, canonical_name)
+        localized_book = _localized_book_projection(localization, localization_key)
         if reviewed_localization:
             assert localized_book is not None
             localized_name = str(localized_book["display_name"])

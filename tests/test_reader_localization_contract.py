@@ -284,7 +284,7 @@ def test_catalog_concurrency_parallelizes_chunks_for_one_language(
     assert max_active == 4
 
 
-def test_published_locale_without_reviewed_catalog_fails() -> None:
+def test_published_locale_without_reviewed_catalog_fails(tmp_path: pathlib.Path) -> None:
     builder = load_module(
         "reader_localization_builder_strict", "tools/build_multilingual_reader_assets.py"
     )
@@ -298,7 +298,7 @@ def test_published_locale_without_reviewed_catalog_fails() -> None:
     }
     with pytest.raises(builder.ReaderLocalizationError, match="English fallback is forbidden"):
         builder.load_reader_localization(
-            "fr", spec, root=ROOT, contract_config=config, source=source_catalog()
+            "fr", spec, root=tmp_path, contract_config=config, source=source_catalog()
         )
 
 
@@ -373,6 +373,122 @@ def test_builder_emits_top_level_localization_and_projects_book_fields(
         "1"
     ]["title"]
     assert book["chapters"][0]["summary"] == "[fr] Optional localized chapter summary."
+
+
+def test_builder_resolves_path_aliases_and_historical_section_references(
+    tmp_path: pathlib.Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    localizer = load_module(
+        "reader_localization_alias_fixture", "tools/multilingual_localization_pipeline.py"
+    )
+    builder = load_module(
+        "reader_localization_builder_aliases", "tools/build_multilingual_reader_assets.py"
+    )
+    source = source_catalog()
+    catalog = reviewed_catalog(source, localizer)
+    records = [
+        (
+            "ot/song_of_songs/001/001.yaml",
+            "Song of Songs 1:1",
+            "Song of Solomon",
+            "Song of Solomon",
+        ),
+        (
+            "extra_canonical/protoevangelium_of_james/001.yaml",
+            "Protoevangelium of James — Chapter 1: Joachim's Plight",
+            "Protoevangelium of James",
+            "Protoevangelium of James",
+        ),
+    ]
+    for relative, reference, _reader_name, _catalog_key in records:
+        verse_path = tmp_path / "translation_fr" / relative
+        verse_path.parent.mkdir(parents=True, exist_ok=True)
+        verse_path.write_text(
+            yaml.safe_dump(
+                {
+                    "reference": reference,
+                    "language": {"code": "fr"},
+                    "translation": {"text": "Texte", "footnotes": []},
+                    "review_pass": {"verdict": "approve"},
+                    "status": "reviewed",
+                },
+                allow_unicode=True,
+            ),
+            encoding="utf-8",
+        )
+    monkeypatch.setattr(builder, "load_reader_localization", lambda *args, **kwargs: catalog)
+    monkeypatch.setattr(builder, "validate_verse", lambda payload, code: [])
+    payload = builder.compile_language(
+        "fr",
+        {
+            "name": "French",
+            "native_name": "Français",
+            "variant": "modern international French",
+        },
+        root=tmp_path,
+        contract_config=localizer.load_contract_config(),
+        source=source,
+    )
+    by_name = {book["name"]: book for book in payload["books"]}
+    for _relative, _reference, reader_name, catalog_key in records:
+        assert by_name[reader_name]["localized_name"] == catalog["books"][catalog_key][
+            "display_name"
+        ]
+    assert by_name["Protoevangelium of James"]["chapters"][0]["verses"][0][
+        "verse"
+    ] == 1
+
+
+def test_builder_groups_flat_section_blocks_into_catalog_chapters(
+    tmp_path: pathlib.Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    localizer = load_module(
+        "reader_localization_section_fixture", "tools/multilingual_localization_pipeline.py"
+    )
+    builder = load_module(
+        "reader_localization_builder_sections", "tools/build_multilingual_reader_assets.py"
+    )
+    source = source_catalog()
+    catalog = reviewed_catalog(source, localizer)
+    for sequence, block in ((1, 1), (2, 2)):
+        verse_path = (
+            tmp_path
+            / "translation_fr"
+            / "extra_canonical"
+            / "thunder_perfect_mind"
+            / f"{sequence:03d}.yaml"
+        )
+        verse_path.parent.mkdir(parents=True, exist_ok=True)
+        verse_path.write_text(
+            yaml.safe_dump(
+                {
+                    "reference": f"Thunder, Perfect Mind — Introduction — {block}",
+                    "language": {"code": "fr"},
+                    "source": {"chapter_title": "Introduction", "block_index": block},
+                    "translation": {"text": f"Bloc {block}", "footnotes": []},
+                    "review_pass": {"verdict": "approve"},
+                    "status": "reviewed",
+                },
+                allow_unicode=True,
+            ),
+            encoding="utf-8",
+        )
+    monkeypatch.setattr(builder, "load_reader_localization", lambda *args, **kwargs: catalog)
+    monkeypatch.setattr(builder, "validate_verse", lambda payload, code: [])
+    payload = builder.compile_language(
+        "fr",
+        {
+            "name": "French",
+            "native_name": "Français",
+            "variant": "modern international French",
+        },
+        root=tmp_path,
+        contract_config=localizer.load_contract_config(),
+        source=source,
+    )
+    book = next(book for book in payload["books"] if book["name"] == "Thunder, Perfect Mind")
+    assert len(book["chapters"]) == 1
+    assert [verse["verse"] for verse in book["chapters"][0]["verses"]] == [1, 2]
 
 
 def test_builder_excludes_reviewed_but_parked_human_record(
