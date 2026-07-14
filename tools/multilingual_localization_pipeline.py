@@ -19,7 +19,7 @@ from typing import Any
 import yaml
 from jsonschema import Draft202012Validator
 
-from multilingual_pipeline import ROOT, call_tool, load_config, now, write_atomic
+from multilingual_pipeline import ROOT, azure_key, call_tool, load_config, now, write_atomic
 
 
 CONTRACT_CONFIG_PATH = pathlib.Path("config/reader_localization.yaml")
@@ -739,6 +739,11 @@ def main() -> int:
 
     selected = language_selection(args.language)
     selected_chunks = set(args.chunk_id) or None
+    known_ids = {chunk["chunk_id"] for chunk in chunks}
+    if selected_chunks:
+        unknown = sorted(selected_chunks - known_ids)
+        if unknown:
+            raise SystemExit(f"unknown chunk id(s): {', '.join(unknown)}")
     totals = {
         "reviewed": 0,
         "partial": 0,
@@ -748,22 +753,110 @@ def main() -> int:
         "prompt_tokens": 0,
         "completion_tokens": 0,
     }
-    with concurrent.futures.ThreadPoolExecutor(max_workers=args.concurrency) as pool:
+    source_hash = source_catalog_hash(source)
+    language_states: dict[str, dict[str, Any]] = {}
+    tasks: list[tuple[str, dict[str, Any], dict[str, Any]]] = []
+    for code, spec in selected:
+        target = configured_path(ROOT, config["locale_catalog_pattern"], locale=code)
+        if target.exists() and not args.force and not selected_chunks:
+            existing = yaml.safe_load(target.read_text(encoding="utf-8")) or {}
+            if not validate_locale_catalog(existing, source, expected_locale=code):
+                language_states[code] = {
+                    "spec": spec,
+                    "target": target,
+                    "status": "skip",
+                    "needs_human": False,
+                    "error": False,
+                }
+                continue
+        work_chunks = [
+            chunk
+            for chunk in chunks
+            if selected_chunks is None or chunk["chunk_id"] in selected_chunks
+        ]
+        language_states[code] = {
+            "spec": spec,
+            "target": target,
+            "status": None,
+            "needs_human": False,
+            "error": False,
+        }
+        tasks.extend((code, spec, chunk) for chunk in work_chunks)
+
+    # Resolve and cache the Azure key before worker threads start. More
+    # importantly, concurrency now applies to independent catalog chunks, not
+    # merely to the number of selected languages. A one-language rollout can
+    # therefore use all requested workers instead of processing 29 chunks
+    # serially.
+    if tasks:
+        azure_key()
+    with concurrent.futures.ThreadPoolExecutor(
+        max_workers=max(1, args.concurrency)
+    ) as pool:
         futures = {
-            pool.submit(run_language, code, spec, args.force, selected_chunks): code
-            for code, spec in selected
+            pool.submit(
+                process_chunk,
+                code,
+                spec,
+                chunk,
+                source_hash=source_hash,
+                root=ROOT,
+                config=config,
+                force=args.force,
+            ): (code, chunk)
+            for code, spec, chunk in tasks
         }
         for future in concurrent.futures.as_completed(futures):
-            code = futures[future]
+            code, chunk = futures[future]
             try:
-                status, usage = future.result()
-                totals[status] += 1
+                artifact, usage, was_cached = future.result()
                 totals["prompt_tokens"] += usage.get("prompt_tokens", 0)
                 totals["completion_tokens"] += usage.get("completion_tokens", 0)
-                print(f"{status:18} {code}", flush=True)
+                state = language_states[code]
+                state["needs_human"] = state["needs_human"] or (
+                    artifact.get("status") == "needs_human_review"
+                )
+                cache_label = "cached" if was_cached else artifact.get("status")
+                print(f"{code:8} {chunk['chunk_id']:10} {cache_label}", flush=True)
             except Exception as exc:  # noqa: BLE001
-                totals["error"] += 1
-                print(f"ERROR              {code}: {exc}", flush=True)
+                language_states[code]["error"] = True
+                print(f"ERROR              {code} {chunk['chunk_id']}: {exc}", flush=True)
+
+    for code, _spec in selected:
+        state = language_states[code]
+        status = state["status"]
+        if status == "skip":
+            totals["skip"] += 1
+            print(f"{'skip':18} {code}", flush=True)
+            continue
+        if state["error"]:
+            totals["error"] += 1
+            print(f"{'error':18} {code}", flush=True)
+            continue
+        artifacts: list[dict[str, Any]] = []
+        for chunk in chunks:
+            artifact = load_chunk_artifact(
+                chunk_artifact_path(code, chunk["chunk_id"], root=ROOT, config=config),
+                chunk,
+                code=code,
+                expected_source_hash=source_hash,
+            )
+            if artifact is not None:
+                artifacts.append(artifact)
+        if len(artifacts) == len(chunks) and all(
+            item.get("status") == "reviewed" for item in artifacts
+        ):
+            catalog = assemble_locale_catalog(
+                code, state["spec"], source, chunks, artifacts
+            )
+            write_atomic(state["target"], catalog)
+            status = "reviewed"
+        elif state["needs_human"]:
+            status = "needs_human_review"
+        else:
+            status = "partial"
+        totals[status] += 1
+        print(f"{status:18} {code}", flush=True)
     print(json.dumps(totals, indent=2))
     return 1 if totals["error"] or totals["needs_human_review"] else 0
 

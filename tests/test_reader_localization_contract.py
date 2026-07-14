@@ -5,6 +5,8 @@ import importlib.util
 import json
 import pathlib
 import sys
+import threading
+import time
 
 import pytest
 import yaml
@@ -236,6 +238,50 @@ def test_only_sol_and_terra_are_allowed_for_catalog_chunks() -> None:
     ).lower()
     assert "gemini" not in source_text
     assert "vertex" not in source_text
+
+
+def test_catalog_concurrency_parallelizes_chunks_for_one_language(
+    tmp_path: pathlib.Path, monkeypatch: pytest.MonkeyPatch
+) -> None:
+    module = load_module(
+        "reader_localization_chunk_concurrency",
+        "tools/multilingual_localization_pipeline.py",
+    )
+    chunks = [{"chunk_id": f"books-{index:03d}"} for index in range(1, 5)]
+    active = 0
+    max_active = 0
+    lock = threading.Lock()
+
+    def fake_process(code, spec, chunk, **kwargs):
+        nonlocal active, max_active
+        with lock:
+            active += 1
+            max_active = max(max_active, active)
+        time.sleep(0.03)
+        with lock:
+            active -= 1
+        return ({"chunk_id": chunk["chunk_id"], "status": "reviewed"}, {
+            "prompt_tokens": 0,
+            "completion_tokens": 0,
+        }, False)
+
+    monkeypatch.setattr(module, "load_contract_config", lambda: {
+        "chunk_max_units": 100,
+        "locale_catalog_pattern": "localization/{locale}/reader_catalog.v1.yaml",
+        "chunk_pattern": "localization/{locale}/chunks/{chunk_id}.yaml",
+    })
+    monkeypatch.setattr(module, "load_source_catalog", lambda **kwargs: {})
+    monkeypatch.setattr(module, "localization_chunks", lambda source, size: chunks)
+    monkeypatch.setattr(module, "source_catalog_hash", lambda source: "a" * 64)
+    monkeypatch.setattr(module, "language_selection", lambda values: [("pt", {})])
+    monkeypatch.setattr(module, "configured_path", lambda *args, **kwargs: tmp_path / "catalog.yaml")
+    monkeypatch.setattr(module, "azure_key", lambda: "test-key")
+    monkeypatch.setattr(module, "process_chunk", fake_process)
+    monkeypatch.setattr(module, "load_chunk_artifact", lambda *args, **kwargs: None)
+    monkeypatch.setattr(sys, "argv", ["localizer", "--language", "pt", "--concurrency", "4"])
+
+    assert module.main() == 0
+    assert max_active == 4
 
 
 def test_published_locale_without_reviewed_catalog_fails() -> None:
