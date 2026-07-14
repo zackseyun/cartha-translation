@@ -4,6 +4,7 @@ import importlib.util
 import json
 import pathlib
 import subprocess
+import sys
 
 import yaml
 
@@ -98,6 +99,27 @@ def test_rollout_can_direct_a_known_language_without_priority_rescan() -> None:
     assert '"selected_language": "ko"' in result.stdout
     assert '"directed": true' in result.stdout
     assert "--stage review" in result.stdout
+
+
+def test_rollout_language_lock_prevents_same_language_overlap(tmp_path, monkeypatch) -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module("multilingual_rollout_lock", "tools/multilingual_rollout.py")
+    monkeypatch.setattr(module, "LOCK_ROOT", tmp_path)
+    with module.language_lock("fr"):
+        try:
+            with module.language_lock("fr"):
+                raise AssertionError("second language lane unexpectedly acquired the lock")
+        except module.LanguageBusy:
+            pass
+
+
+def test_parallel_rollout_splits_global_concurrency() -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module(
+        "multilingual_parallel_rollout", "tools/multilingual_parallel_rollout.py"
+    )
+    assert module.lane_concurrency(512, 4) == 128
+    assert module.lane_concurrency(500, 3) == 166
 
 
 def test_azure_key_is_cached_before_parallel_workers(monkeypatch) -> None:

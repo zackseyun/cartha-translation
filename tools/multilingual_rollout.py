@@ -3,13 +3,45 @@
 from __future__ import annotations
 
 import argparse
+import contextlib
+import fcntl
 import json
+import os
 import pathlib
 import subprocess
 import sys
 from typing import Any
 
 from multilingual_pipeline import BLOCK_ROOT, ROOT, load_config, source_relatives
+
+
+LOCK_ROOT = pathlib.Path(
+    os.environ.get("CARTHA_MULTILINGUAL_LOCK_DIR", "/tmp/cartha-multilingual-rollout-locks")
+)
+
+
+class LanguageBusy(RuntimeError):
+    """Raised when another rollout already owns a language lane."""
+
+
+@contextlib.contextmanager
+def language_lock(code: str):
+    """Hold an advisory cross-process lock for one target language."""
+    LOCK_ROOT.mkdir(parents=True, exist_ok=True)
+    path = LOCK_ROOT / f"{code}.lock"
+    with path.open("a+", encoding="utf-8") as handle:
+        try:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
+        except BlockingIOError as exc:
+            raise LanguageBusy(f"rollout already active for language: {code}") from exc
+        handle.seek(0)
+        handle.truncate()
+        handle.write(f"pid={os.getpid()}\n")
+        handle.flush()
+        try:
+            yield path
+        finally:
+            fcntl.flock(handle.fileno(), fcntl.LOCK_UN)
 
 
 def relative_files(root: pathlib.Path) -> set[str]:
@@ -117,25 +149,30 @@ def main() -> int:
             print("All configured multilingual draft and review stages are complete.")
             return 0
         code, stage, state = selection
-    print(json.dumps({"selected_language": code, "stage": stage, "state": state}, indent=2))
-    command = [
-        sys.executable,
-        str(ROOT / "tools" / "multilingual_pipeline.py"),
-        "wave",
-        "--language",
-        code,
-        "--stage",
-        stage,
-        "--pending-only",
-        "--limit-records",
-        str(args.limit_records),
-        "--concurrency",
-        str(args.concurrency),
-    ]
-    print(" ".join(command))
-    if args.dry_run:
-        return 0
-    return subprocess.run(command, cwd=ROOT, check=False).returncode
+    try:
+        with language_lock(code):
+            print(json.dumps({"selected_language": code, "stage": stage, "state": state}, indent=2))
+            command = [
+                sys.executable,
+                str(ROOT / "tools" / "multilingual_pipeline.py"),
+                "wave",
+                "--language",
+                code,
+                "--stage",
+                stage,
+                "--pending-only",
+                "--limit-records",
+                str(args.limit_records),
+                "--concurrency",
+                str(args.concurrency),
+            ]
+            print(" ".join(command))
+            if args.dry_run:
+                return 0
+            return subprocess.run(command, cwd=ROOT, check=False).returncode
+    except LanguageBusy as exc:
+        print(json.dumps({"selected_language": code, "status": "busy", "message": str(exc)}))
+        return 75
 
 
 if __name__ == "__main__":
