@@ -263,6 +263,12 @@ def parser() -> argparse.ArgumentParser:
     value.add_argument("--languages", nargs="*", default=[])
     value.add_argument("--workers", type=int, default=4)
     value.add_argument("--epochs", type=int, default=4)
+    value.add_argument(
+        "--stage",
+        choices=("both", "draft", "review"),
+        default="both",
+        help="Run both stage-separated epochs, or only one explicit stage.",
+    )
     value.add_argument("--limit-records", type=int, default=500)
     value.add_argument("--draft-total-concurrency", type=int, default=32)
     value.add_argument("--review-total-concurrency", type=int, default=64)
@@ -325,12 +331,16 @@ def coordinate(args: argparse.Namespace) -> int:
     cursors = {"draft": 0, "review": 0}
     all_results: list[dict[str, Any]] = []
     completed = False
+    had_failures = False
+    stage_budgets = {
+        "draft": args.draft_total_concurrency,
+        "review": args.review_total_concurrency,
+    }
+    stages = ("draft", "review") if args.stage == "both" else (args.stage,)
     for epoch in range(1, args.epochs + 1):
         scheduled = 0
-        for stage, budget in (
-            ("draft", args.draft_total_concurrency),
-            ("review", args.review_total_concurrency),
-        ):
+        for stage in stages:
+            budget = stage_budgets[stage]
             tasks, cursors[stage] = choose_tasks(
                 codes,
                 args.workers,
@@ -356,8 +366,10 @@ def coordinate(args: argparse.Namespace) -> int:
             )
             all_results.extend(results)
             if any(item["status"] == "failed" for item in results):
-                print(json.dumps({"status": "failed", "results": all_results}, indent=2))
-                return 1
+                # Atomic successful writes remain usable. Continue to review
+                # every completed draft and leave only the bounded failed tail
+                # for the next pending-only epoch.
+                had_failures = True
         if not scheduled:
             completed = True
             break
@@ -365,14 +377,18 @@ def coordinate(args: argparse.Namespace) -> int:
     print(
         json.dumps(
             {
-                "status": "complete" if completed else "epoch_limit_reached",
+                "status": (
+                    "partial_failure"
+                    if had_failures
+                    else ("complete" if completed else "epoch_limit_reached")
+                ),
                 "epochs": epoch,
                 "results": all_results,
             },
             indent=2,
         )
     )
-    return 0
+    return 1 if had_failures else 0
 
 
 def main() -> int:

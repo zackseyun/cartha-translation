@@ -128,6 +128,7 @@ def test_parallel_rollout_has_safe_stage_concurrency_defaults() -> None:
     parsed = module.parser().parse_args([])
     assert parsed.draft_total_concurrency == 32
     assert parsed.review_total_concurrency == 64
+    assert parsed.stage == "both"
     assert module.lane_concurrency(32, 4) == 8
     assert module.lane_concurrency(64, 4) == 16
     assert parsed.draft_deployment == "gpt-5-6-sol-atlas"
@@ -227,6 +228,63 @@ def test_parallel_rollout_repeats_separate_fair_epochs(monkeypatch) -> None:
         (2, "draft", 32, ["fr"]),
         (2, "review", 64, ["fr"]),
     ]
+
+
+def test_parallel_rollout_can_run_review_only(monkeypatch) -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module(
+        "multilingual_parallel_rollout_review_only",
+        "tools/multilingual_parallel_rollout.py",
+    )
+    monkeypatch.setattr(module, "source_relatives", lambda: ["record.yaml"])
+    monkeypatch.setattr(
+        module,
+        "language_state",
+        lambda code, source=None: {"pending_draft": 10, "pending_review": 1},
+    )
+    observed = []
+
+    def fake_run_epoch(tasks, **kwargs):
+        observed.append(kwargs["stage"])
+        return [{"code": tasks[0]["code"], "status": "complete"}]
+
+    monkeypatch.setattr(module, "run_epoch", fake_run_epoch)
+    args = module.parser().parse_args(
+        ["--languages", "fr", "--stage", "review", "--epochs", "1", "--dry-run"]
+    )
+    assert module.coordinate(args) == 0
+    assert observed == ["review"]
+
+
+def test_parallel_rollout_reviews_successful_drafts_after_partial_failure(monkeypatch) -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module(
+        "multilingual_parallel_rollout_partial",
+        "tools/multilingual_parallel_rollout.py",
+    )
+    monkeypatch.setattr(module, "source_relatives", lambda: ["record.yaml"])
+    monkeypatch.setattr(
+        module,
+        "language_state",
+        lambda code, source=None: {"pending_draft": 1, "pending_review": 1},
+    )
+    observed = []
+
+    def fake_run_epoch(tasks, **kwargs):
+        observed.append(kwargs["stage"])
+        return [
+            {
+                "code": tasks[0]["code"],
+                "status": "failed" if kwargs["stage"] == "draft" else "complete",
+            }
+        ]
+
+    monkeypatch.setattr(module, "run_epoch", fake_run_epoch)
+    args = module.parser().parse_args(
+        ["--languages", "fr", "--epochs", "1", "--dry-run"]
+    )
+    assert module.coordinate(args) == 1
+    assert observed == ["draft", "review"]
 
 
 def test_parallel_rollout_forwards_explicit_deployment_pools(tmp_path) -> None:
