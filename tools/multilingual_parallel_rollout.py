@@ -133,17 +133,11 @@ def lane_concurrency(total: int, lanes: int) -> int:
 
 
 def lane_concurrencies(total: int, lanes: int) -> list[int]:
-    """Give the highest-priority lane half the budget and share the rest."""
+    """Share capacity evenly so a low-concurrency lane cannot hold an epoch open."""
     if total < 1 or lanes < 1 or lanes > total:
         raise ValueError("concurrency must cover every active lane")
-    if lanes == 1:
-        return [total]
-    primary = max(1, total // 2)
-    remaining = total - primary
-    base, extra = divmod(remaining, lanes - 1)
-    values = [primary]
-    values.extend(base + (1 if index < extra else 0) for index in range(lanes - 1))
-    return values
+    base, extra = divmod(total, lanes)
+    return [base + (1 if index < extra else 0) for index in range(lanes)]
 
 
 def run_task(

@@ -196,7 +196,8 @@ def test_parallel_rollout_pins_top_priority_and_rotates_lower_lanes(monkeypatch)
     assert [task["code"] for task in tasks] == ["zh_hans", "ru", "hi", "id"]
     assert tasks[0]["primary"] is True
 
-    assert module.lane_concurrencies(32, 4) == [16, 6, 5, 5]
+    assert module.lane_concurrencies(32, 4) == [8, 8, 8, 8]
+    assert module.lane_concurrencies(34, 4) == [9, 9, 8, 8]
 
 
 def test_parallel_rollout_deduplicates_language_lanes() -> None:
