@@ -33,10 +33,21 @@ class LanguageBusy(RuntimeError):
 
 
 @contextlib.contextmanager
-def language_lock(code: str):
-    """Hold an advisory cross-process lock for one target language."""
+def language_lock(code: str, stage: str | None = None):
+    """Hold an advisory cross-process lock for one target language and stage.
+
+    Draft and review pending sets are disjoint snapshots: draft selects absent
+    files while review selects existing, unreviewed files. Stage-specific locks
+    therefore let Sol draft the next bounded batch while Terra reviews the
+    previous batch without allowing two draft waves or two review waves to
+    overlap for the same language.
+
+    Omitting ``stage`` preserves the original whole-language lock for callers
+    that need to exclude every kind of work.
+    """
     LOCK_ROOT.mkdir(parents=True, exist_ok=True)
-    path = LOCK_ROOT / f"{code}.lock"
+    suffix = f"-{stage}" if stage else ""
+    path = LOCK_ROOT / f"{code}{suffix}.lock"
     with path.open("a+", encoding="utf-8") as handle:
         try:
             fcntl.flock(handle.fileno(), fcntl.LOCK_EX | fcntl.LOCK_NB)
@@ -166,7 +177,7 @@ def main() -> int:
             return 0
         code, stage, state = selection
     try:
-        with language_lock(code):
+        with language_lock(code, stage):
             print(json.dumps({"selected_language": code, "stage": stage, "state": state}, indent=2))
             command = [
                 sys.executable,

@@ -222,6 +222,22 @@ def test_parallel_rollout_global_coordinator_lock(tmp_path, monkeypatch) -> None
             pass
 
 
+def test_language_stage_locks_allow_draft_review_overlap(tmp_path, monkeypatch) -> None:
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module(
+        "multilingual_rollout_stage_locks", "tools/multilingual_rollout.py"
+    )
+    monkeypatch.setattr(module, "LOCK_ROOT", tmp_path)
+    with module.language_lock("fr", "draft"):
+        with module.language_lock("fr", "review"):
+            pass
+        try:
+            with module.language_lock("fr", "draft"):
+                raise AssertionError("second draft unexpectedly acquired the same stage lock")
+        except module.LanguageBusy:
+            pass
+
+
 def test_parallel_rollout_repeats_separate_fair_epochs(monkeypatch) -> None:
     sys.path.insert(0, str(ROOT / "tools"))
     module = load_module(
@@ -264,6 +280,56 @@ def test_parallel_rollout_repeats_separate_fair_epochs(monkeypatch) -> None:
         (2, "draft", 32, ["fr"]),
         (2, "review", 64, ["fr"]),
     ]
+
+
+def test_parallel_rollout_can_pipeline_sol_and_terra(monkeypatch) -> None:
+    import threading
+
+    sys.path.insert(0, str(ROOT / "tools"))
+    module = load_module(
+        "multilingual_parallel_rollout_pipelined",
+        "tools/multilingual_parallel_rollout.py",
+    )
+    monkeypatch.setattr(module, "source_relatives", lambda: ["record.yaml"])
+    monkeypatch.setattr(
+        module,
+        "language_state",
+        lambda code, source=None: {"pending_draft": 1, "pending_review": 1},
+    )
+    overlap = threading.Barrier(2)
+    observed = []
+
+    def fake_run_epoch(tasks, **kwargs):
+        call = (kwargs["epoch"], kwargs["stage"])
+        observed.append(call)
+        if call in {(1, "review"), (2, "draft")}:
+            overlap.wait(timeout=2)
+        return [
+            {
+                "code": task["code"],
+                "stage": kwargs["stage"],
+                "status": "dry_run",
+            }
+            for task in tasks
+        ]
+
+    monkeypatch.setattr(module, "run_epoch", fake_run_epoch)
+    args = module.parser().parse_args(
+        [
+            "--languages",
+            "fr",
+            "--workers",
+            "1",
+            "--epochs",
+            "2",
+            "--pipelined",
+            "--dry-run",
+        ]
+    )
+    assert module.coordinate(args) == 0
+    assert observed[0] == (1, "draft")
+    assert set(observed[1:3]) == {(1, "review"), (2, "draft")}
+    assert observed[3] == (2, "review")
 
 
 def test_parallel_rollout_can_run_review_only(monkeypatch) -> None:

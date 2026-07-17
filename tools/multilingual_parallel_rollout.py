@@ -263,6 +263,14 @@ def parser() -> argparse.ArgumentParser:
         default="both",
         help="Run both stage-separated epochs, or only one explicit stage.",
     )
+    value.add_argument(
+        "--pipelined",
+        action="store_true",
+        help=(
+            "Overlap Terra review of the previous bounded epoch with Sol drafting "
+            "of the next epoch. Requires --stage both and at least two epochs."
+        ),
+    )
     value.add_argument("--limit-records", type=int, default=500)
     value.add_argument("--draft-total-concurrency", type=int, default=32)
     value.add_argument("--review-total-concurrency", type=int, default=64)
@@ -311,6 +319,8 @@ def coordinate(args: argparse.Namespace) -> int:
         raise SystemExit(
             "workers, epochs, limit-records, and stage concurrency budgets must be positive"
         )
+    if args.pipelined and (args.stage != "both" or args.epochs < 2):
+        raise SystemExit("--pipelined requires --stage both and --epochs 2 or greater")
 
     config = load_config()
     try:
@@ -330,6 +340,140 @@ def coordinate(args: argparse.Namespace) -> int:
         "draft": args.draft_total_concurrency,
         "review": args.review_total_concurrency,
     }
+
+    if args.pipelined:
+        # Seed the pipeline with one draft epoch. Subsequent cycles use the
+        # independent Sol and Terra deployment budgets simultaneously: Terra
+        # reviews the prior bounded batch while Sol drafts the next one.
+        tasks, cursors["draft"] = choose_tasks(
+            codes,
+            args.workers,
+            stage="draft",
+            cursor=cursors["draft"],
+            source=source,
+        )
+        scheduled = len(tasks)
+        if tasks:
+            results = run_epoch(
+                tasks,
+                epoch=1,
+                stage="draft",
+                workers=args.workers,
+                total_concurrency=stage_budgets["draft"],
+                limit_records=args.limit_records,
+                draft_deployment=args.draft_deployment,
+                review_deployment=args.review_deployment,
+                log_dir=args.log_dir,
+                env=env,
+                dry_run=args.dry_run,
+            )
+            all_results.extend(results)
+            had_failures |= any(item["status"] == "failed" for item in results)
+
+        for draft_epoch in range(2, args.epochs + 1):
+            review_tasks, cursors["review"] = choose_tasks(
+                codes,
+                args.workers,
+                stage="review",
+                cursor=cursors["review"],
+                source=source,
+            )
+            draft_tasks, cursors["draft"] = choose_tasks(
+                codes,
+                args.workers,
+                stage="draft",
+                cursor=cursors["draft"],
+                source=source,
+            )
+            scheduled += len(review_tasks) + len(draft_tasks)
+            stage_calls = []
+            with concurrent.futures.ThreadPoolExecutor(max_workers=2) as pool:
+                if review_tasks:
+                    stage_calls.append(
+                        pool.submit(
+                            run_epoch,
+                            review_tasks,
+                            epoch=draft_epoch - 1,
+                            stage="review",
+                            workers=args.workers,
+                            total_concurrency=stage_budgets["review"],
+                            limit_records=args.limit_records,
+                            draft_deployment=args.draft_deployment,
+                            review_deployment=args.review_deployment,
+                            log_dir=args.log_dir,
+                            env=env,
+                            dry_run=args.dry_run,
+                        )
+                    )
+                if draft_tasks:
+                    stage_calls.append(
+                        pool.submit(
+                            run_epoch,
+                            draft_tasks,
+                            epoch=draft_epoch,
+                            stage="draft",
+                            workers=args.workers,
+                            total_concurrency=stage_budgets["draft"],
+                            limit_records=args.limit_records,
+                            draft_deployment=args.draft_deployment,
+                            review_deployment=args.review_deployment,
+                            log_dir=args.log_dir,
+                            env=env,
+                            dry_run=args.dry_run,
+                        )
+                    )
+                for future in concurrent.futures.as_completed(stage_calls):
+                    results = future.result()
+                    all_results.extend(results)
+                    had_failures |= any(
+                        item["status"] == "failed" for item in results
+                    )
+
+        # Drain the final draft batch through Terra before returning a clean
+        # checkpoint. This keeps every persisted ordinary record reviewed.
+        tasks, cursors["review"] = choose_tasks(
+            codes,
+            args.workers,
+            stage="review",
+            cursor=cursors["review"],
+            source=source,
+        )
+        scheduled += len(tasks)
+        if tasks:
+            results = run_epoch(
+                tasks,
+                epoch=args.epochs,
+                stage="review",
+                workers=args.workers,
+                total_concurrency=stage_budgets["review"],
+                limit_records=args.limit_records,
+                draft_deployment=args.draft_deployment,
+                review_deployment=args.review_deployment,
+                log_dir=args.log_dir,
+                env=env,
+                dry_run=args.dry_run,
+            )
+            all_results.extend(results)
+            had_failures |= any(item["status"] == "failed" for item in results)
+
+        completed = not scheduled
+        print(
+            json.dumps(
+                {
+                    "status": (
+                        "partial_failure"
+                        if had_failures
+                        else ("complete" if completed else "epoch_limit_reached")
+                    ),
+                    "epochs": args.epochs,
+                    "pipelined": True,
+                    "results": all_results,
+                },
+                indent=2,
+            )
+        )
+        return 1 if had_failures else 0
+
     stages = ("draft", "review") if args.stage == "both" else (args.stage,)
     for epoch in range(1, args.epochs + 1):
         scheduled = 0
