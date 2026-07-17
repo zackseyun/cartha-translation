@@ -82,23 +82,24 @@ Two verses that illustrate what POB does differently, and why.
 - **Why not "meaninglessness"?** It over-decides the theology and pushes the verse toward nihilism. *Hevel* is broader: transient, elusive, ironic, and frustrating.
 - **The speaker, *Qoheleth* (`קֹהֶלֶת`) — "Qoheleth."** This preserves the Hebrew title/name instead of narrowing it immediately to "Preacher" or "Teacher."
 
-### Genesis 6:6
+### Genesis 4:1
 
 | | Rendering |
 |---|---|
-| **POB** | "And **Yahweh regretted** having made man on the earth, and he was **pained in his heart**." |
-| NKJV | "And the LORD was **sorry** that He had made man on the earth, and He was **grieved in His heart**." |
-| NIV | "The LORD **regretted** that he had made human beings on the earth, and his heart was **deeply troubled**." |
+| **POB** | "And Adam **knew Eve his wife**; and she conceived and bore Cain, and said, 'I have **acquired** a man from **Yahweh**.'" |
+| NKJV | "Now Adam **knew Eve his wife**, and she conceived and bore Cain, and said, 'I have **acquired** a man from the LORD.'" |
+| NIV | "Adam **made love to his wife Eve**, and she became pregnant and gave birth to Cain." |
 
-- **The first verb (`וַיִּנָּחֶם`) — "regretted."** The Niphal with a clause naming a prior action expresses retrospective regret or sorrow. "Was sorry" is also possible, but "grieved over" weakens the evaluative force and overlaps the separate pain verb that follows. The Hebrew does not itself say that God was surprised or lacked foreknowledge; that question belongs in interpretation, not in a softened main translation.
-- **The second verb (`וַיִּתְעַצֵּב`) — "was pained."** This carries the inward wound-like force of the Hebrew. POB avoids flattening both verbs into one general grief word.
+- **The first verb, *yada* (`יָדַע`) — "knew."** In context it functions as a euphemism for sexual relations—the conception that follows makes that clear—but the Hebrew image is still "knowing." POB preserves that image instead of replacing it with an explanation.
+- **Why not "made love"?** The NIV makes the sexual meaning explicit, but the modern English phrase also suggests an emotional or romantic nuance that the Hebrew verb does not itself state. "Knew" lets the narrative supply the sexual meaning without adding that extra shading.
+- **Eve's word, *qaniti* (`קָנִיתִי`) — "I have acquired."** This keeps the lexical link to Cain's name. Renderings such as "brought forth" explain the birth but weaken the Hebrew wordplay.
 - **The divine name (`יהוה`) — "Yahweh."** This makes the name visible rather than hiding it behind the typographic substitute "LORD."
 
 ### The philosophy behind these choices
 
 POB's choice is **source-image accuracy in the main text + contextual understanding in a companion layer** — not traditional smoothing, theological over-resolution, or pastoral softening of the translation itself.
 
-Ecclesiastes 1:2 shows why this matters: *hevel* is not just "vanity" and not simply "meaninglessness." It is breath — real, visible for a moment, impossible to hold. Genesis 6:6 shows the same principle with theology: the text portrays Yahweh as regretting the act of making humanity and as inwardly pained. The translation preserves that tension rather than deciding inside the main sentence how the language relates to divine foreknowledge.
+Ecclesiastes 1:2 shows why this matters: *hevel* is not just "vanity" and not simply "meaninglessness." It is breath — real, visible for a moment, impossible to hold. Genesis 4:1 shows the same principle in narrative: the Hebrew says Adam "knew" Eve, while the context communicates the sexual meaning. The translation preserves the source-text image rather than replacing it with a more explicit modern phrase.
 
 In both cases, familiar renderings preserve something valuable, but they also make hidden choices for the reader. POB keeps the core source-language pressure in the sentence itself, then uses footnotes, YAML rationale, the in-app **Original context** AI tool, and public discussion to make every choice visible and defensible.
 
