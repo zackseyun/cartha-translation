@@ -54,6 +54,13 @@ RULES = [
     },
 ]
 
+# Reader-facing English uses stable conventional name forms. Closer Hebrew
+# spellings remain welcome in footnotes, alternatives, and audit metadata.
+ENGLISH_NAME_FORMS = {
+    "Yosef": "Joseph",
+    "Yaakov": "Jacob",
+}
+
 # NT books (by directory name) — used for christos-as-christ which is NT-only
 NT_BOOKS = {
     "matthew", "mark", "luke", "john", "acts", "romans",
@@ -75,6 +82,13 @@ def is_nt(path: pathlib.Path) -> bool:
         return True
     # deuterocanon sometimes has NT-era texts but Χριστός doesn't appear there
     return False
+
+
+def is_base_english_translation(path: pathlib.Path) -> bool:
+    try:
+        return path.relative_to(REPO_ROOT).parts[0] == "translation"
+    except (ValueError, IndexError):
+        return False
 
 
 def check_file(path: pathlib.Path) -> list[dict]:
@@ -146,7 +160,23 @@ def check_file(path: pathlib.Path) -> list[dict]:
             ),
         })
 
-    # Rule 5: Truncation guard
+    # Rule 5: conventional English personal-name consistency.
+    if is_base_english_translation(path):
+        for closer_form, english_form in ENGLISH_NAME_FORMS.items():
+            if not _word_in(text, closer_form):
+                continue
+            violations.append({
+                "file": str(path.relative_to(REPO_ROOT)),
+                "rule": "hebrew-name-form-in-english-reader",
+                "translation_text": text[:120],
+                "details": (
+                    f'Found "{closer_form}" in base English translation.text. '
+                    f'Use the stable English reader form "{english_form}" instead. '
+                    "Closer Hebrew forms belong in footnotes, alternatives, or audit metadata."
+                ),
+            })
+
+    # Rule 6: Truncation guard
     # Skip superscription files (verse 000 — Psalm titles) which are short by design.
     is_superscription = path.stem == "000"
     revisions = data.get("revisions") or []

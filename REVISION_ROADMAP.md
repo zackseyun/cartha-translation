@@ -75,6 +75,7 @@ These have only `['id', 'reference', 'unit', 'book']` keys. Use the OCR + draft 
 Before every commit, `check_regressions.py` enforces:
 1. No "Christ" (word boundary) in NT translation text → must be "Messiah"
 2. No standalone "slave" or "slaves" in reader-facing translation text → use "servant" or "servants"
-3. No truncation: current text < 35% of prior revision's `from` text (excludes verse 000 superscriptions)
+3. No isolated "Yosef" / "Yaakov" forms in base English reader text → use "Joseph" / "Jacob"
+4. No truncation: current text < 35% of prior revision's `from` text (excludes verse 000 superscriptions)
 
 Add new rules to `tools/known_regressions.yaml` and corresponding Python logic in `check_regressions.py` as new cases are identified.

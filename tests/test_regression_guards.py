@@ -79,5 +79,38 @@ class ServantTerminologyRegressionTests(unittest.TestCase):
         self.assertNotIn("slave-as-servant", [item["rule"] for item in violations])
 
 
+class EnglishPersonalNameRegressionTests(unittest.TestCase):
+    def check_record(self, translation_text: str) -> list[dict]:
+        with tempfile.TemporaryDirectory() as directory:
+            root = pathlib.Path(directory)
+            path = root / "translation" / "ot" / "test" / "001" / "001.yaml"
+            path.parent.mkdir(parents=True)
+            path.write_text(
+                yaml.safe_dump({
+                    "source": {"text": "יוֹסֵף יַעֲקֹב"},
+                    "translation": {"text": translation_text},
+                }, allow_unicode=True),
+                encoding="utf-8",
+            )
+            original_root = REGRESSIONS.REPO_ROOT
+            REGRESSIONS.REPO_ROOT = root
+            try:
+                return REGRESSIONS.check_file(path)
+            finally:
+                REGRESSIONS.REPO_ROOT = original_root
+
+    def test_rejects_closer_hebrew_forms_in_base_english_text(self):
+        violations = self.check_record("Yosef spoke to his father Yaakov.")
+        rules = [item["rule"] for item in violations]
+        self.assertEqual(2, rules.count("hebrew-name-form-in-english-reader"))
+
+    def test_accepts_stable_english_name_forms(self):
+        violations = self.check_record("Joseph spoke to his father Jacob.")
+        self.assertNotIn(
+            "hebrew-name-form-in-english-reader",
+            [item["rule"] for item in violations],
+        )
+
+
 if __name__ == "__main__":
     unittest.main()

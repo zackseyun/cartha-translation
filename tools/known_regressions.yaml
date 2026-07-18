@@ -102,3 +102,35 @@ regressions:
         "Paul, a servant of Messiah Jesus"
         "to his servants" in Rev 1:1
         "releasing your servant" in Luke 2:29
+
+  - id: hebrew-name-form-in-english-reader
+    discovered: "2026-07-18"
+    fixed: "2026-07-18"
+    category: terminology_consistency
+    source_term: יוֹסֵף / יַעֲקֹב (Hebrew)
+    wrong_rendering: Yosef / Yaakov in base English translation.text
+    correct_rendering: Joseph / Jacob
+    policy_ref: "DOCTRINE.md §2 — transliterate names by standard conventions"
+    rationale: |
+      "Yosef" and "Joseph" identify the same person, as do "Yaakov" and "Jacob."
+      Mixing closer Hebrew spellings into a reader that otherwise uses the standard
+      English forms makes a single person appear to have two names and can imply a
+      textual distinction that is not present in the source. The base English reader
+      therefore uses Joseph and Jacob consistently. Closer Hebrew forms remain
+      documented in footnotes, lexical alternatives, and revision history.
+    affected_verses:
+      - GEN.37.33
+      - GEN.39.7
+      - GEN.39.10
+      - GEN.39.22
+      - GEN.43.25
+      - GEN.45.27
+      - GEN.47.29
+      - GEN.50.17
+      - EXO.1.8
+    scale: 9 Joseph-form outliers and 1 Jacob-form outlier
+    fix_script: manual source normalization and regression guard (2026-07-18)
+    prompt_injection: |
+      ENGLISH READER NAME CONSISTENCY: Use "Joseph" and "Jacob" in base English
+      translation.text. Do not switch individual verses to "Yosef" or "Yaakov."
+      Preserve the closer Hebrew forms only in notes, alternatives, and audit metadata.
