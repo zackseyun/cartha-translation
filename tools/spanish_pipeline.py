@@ -924,6 +924,36 @@ def selected_records(args: argparse.Namespace) -> list[SourceRecord]:
     books = set(args.book or []) or None
     tests = set(args.testament or []) or None
     records = iter_status_records(book_filter=books, testament_filter=tests)
+    if getattr(args, "chapter", None):
+        wanted = {int(chapter) for chapter in args.chapter}
+        records = [
+            record
+            for record in records
+            if record.source_path.parent.name.isdigit()
+            and int(record.source_path.parent.name) in wanted
+        ]
+    if getattr(args, "verse", None):
+        wanted = {int(verse) for verse in args.verse}
+        records = [
+            record
+            for record in records
+            if record.source_path.stem.isdigit()
+            and int(record.source_path.stem) in wanted
+        ]
+    if getattr(args, "verse_start", None) is not None:
+        records = [
+            record
+            for record in records
+            if record.source_path.stem.isdigit()
+            and int(record.source_path.stem) >= int(args.verse_start)
+        ]
+    if getattr(args, "verse_end", None) is not None:
+        records = [
+            record
+            for record in records
+            if record.source_path.stem.isdigit()
+            and int(record.source_path.stem) <= int(args.verse_end)
+        ]
     if args.shard_count > 1:
         records = [r for i, r in enumerate(records) if i % args.shard_count == args.shard_index]
     return records
@@ -1162,6 +1192,10 @@ def command_estimate(args: argparse.Namespace) -> int:
 def add_common_filters(parser: argparse.ArgumentParser) -> None:
     parser.add_argument("--book", action="append", help="Book slug/name filter, repeatable")
     parser.add_argument("--testament", action="append", choices=["ot", "nt", "deuterocanon", "extra_canonical"])
+    parser.add_argument("--chapter", action="append", type=int, help="Chapter number filter, repeatable")
+    parser.add_argument("--verse", action="append", type=int, help="Verse number filter, repeatable")
+    parser.add_argument("--verse-start", type=int, help="Minimum verse number filter")
+    parser.add_argument("--verse-end", type=int, help="Maximum verse number filter")
     parser.add_argument("--shard-index", type=int, default=0)
     parser.add_argument("--shard-count", type=int, default=1)
 
