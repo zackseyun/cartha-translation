@@ -11,19 +11,17 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/131/000.yaml
-  text: A Song of Ascents[b][a]. Of David.
+  text: A Song of Ascents[a]. Of David.
   footnotes:
   - marker: a
     text: Or 'By David' or 'For David'; the Hebrew superscription can indicate authorship, association, or dedication.
     reason: alternative_reading
-  - marker: b
-    text: Or 'beyond me.' The Hebrew expression refers to matters exceeding the speaker's proper place or capacity.
-    reason: lexical_alternative
   revision_pass:
     model: gpt-5.4
     timestamp: '2026-04-23T20:36:42Z'
     unchanged: true
     changes_summary: No changes needed.
+
 translation:
   language: en
   text: A song of ascents. Of David.[a]
@@ -44,17 +42,13 @@ simplification_decisions:
   reasoning_layer_used: POB footnote a
   rationale: The wording and footnote preserve the Hebrew relationship's ambiguity.
 translation_notes:
-  risk_flags:
-  - risk: “Ascents” may be unfamiliar to modern readers.
-    mitigation: It is retained because the supplied evidence does not support one definite plain-language explanation.
-  - risk: The source payload contains verse text absent from the POB translation for this record.
-    mitigation: This draft follows the supplied POB heading and does not introduce omitted material.
+  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/131/000.yaml
   source_text_sha256: 66638f396da6953be3294015f6d5a5507a0ee43518dbf8dd5a6d19cf3a045fb3
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 804a4ce86483bc97cac867d063b82609102c8015
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
@@ -80,7 +74,6 @@ interpretive_expansions:
   alternatives_preserved:
   - Song of Ascents
   - pilgrimage song
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:11Z'
   previous_text: A song for the journey up to worship. Of David.[a]
@@ -92,3 +85,10 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+spob_structural_repair:
+  method: canonical-slot-preservation-v1
+  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
+  slot: superscription
+  previous_text_sha256: 2e9f6cba0620e953af888ddd8fa14d02cceb984cb7ba7f77fa274ededbe3c1c6
+  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
+is_superscription: true

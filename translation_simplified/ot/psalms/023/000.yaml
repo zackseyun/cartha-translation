@@ -11,54 +11,27 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/023/000.yaml
-  text: A psalm of David[a]. Yahweh is my shepherd[c][b]; I will lack nothing.
+  text: A psalm of David[a].
   footnotes:
   - marker: a
     text: Or 'by David' or 'for David'; the Hebrew superscription לְדָוִד can indicate authorship, dedication, or association.
     reason: alternative_reading
-  - marker: b
-    text: Hebrew YHWH, traditionally rendered 'the LORD' in English translations.
-    reason: lexical_alternative
-  - marker: c
-    text: Or 'I shall not want'; here 'want' means 'lack,' not 'desire.'
-    reason: lexical_alternative
-  revision_pass:
-    model: gpt-5.4
-    timestamp: '2026-04-23T20:36:17Z'
-    unchanged: false
-    changes_summary: 'Completed the verse by adding the omitted main clause: ''Yahweh is my shepherd; I will lack nothing.'' Also rendered יְהוָה as ''Yahweh'' per policy.'
 translation:
   language: en
-  text: A psalm of David[a]. Yahweh[b] is my shepherd; I will not be in need.
+  text: A psalm of David[a].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “by David” or “for David”; the Hebrew superscription לְדָוִד can indicate authorship, dedication, or association.
     reason: alternative_reading
-  - marker: b
-    text: Hebrew YHWH, traditionally rendered “the LORD” in English translations.
-    reason: lexical_alternative
-simplification_decisions:
-- pob_phrase: I will lack nothing
-  simplified_phrase: I will not be in need
-  preserved_meaning: The speaker trusts that Yahweh's shepherding will leave him without need.
-  reasoning_layer_used: POB translation and lexical footnote c
-  rationale: Ordinary wording replaces the less natural phrase while preserving the Hebrew sense of lacking nothing.
-- pob_phrase: my shepherd
-  simplified_phrase: my shepherd
-  preserved_meaning: The source-language image presents Yahweh as the speaker's shepherd.
-  reasoning_layer_used: Source payload and POB translation
-  rationale: The central biblical image remains because replacing it would weaken the verse.
 translation_notes:
-  risk_flags:
-  - risk: “I will not be in need” might be read as promising every desired comfort.
-    mitigation: The wording speaks only of need and adds no claim about desires or circumstances.
+  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/023/000.yaml
   source_text_sha256: cc9d4922aa1ec49433ac1534ba63611f766e19eb9a765405c7ba010e7a9b4907
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 804a4ce86483bc97cac867d063b82609102c8015
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
@@ -74,12 +47,7 @@ ai_draft:
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms:
-- term: Yahweh
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: shepherd
-  reason: Retained to preserve POB's source-grounded terminology.
 - term: David
   reason: Retained to preserve POB's source-grounded terminology.
 spob_revision_history:
@@ -93,3 +61,10 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+spob_structural_repair:
+  method: canonical-slot-preservation-v1
+  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
+  slot: superscription
+  previous_text_sha256: 7bb0b8ab1d273369e90f239bdabec12b54300bdf26906fcb2d7c2697225118fe
+  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
+is_superscription: true
