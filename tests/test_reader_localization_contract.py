@@ -394,6 +394,27 @@ def test_reader_asset_builder_accepts_only_reviewed_statuses() -> None:
     assert not builder.record_has_reviewed_status({"status": "draft"})
 
 
+def test_reader_asset_builder_localizes_late_psalm_119_catalog_gap() -> None:
+    builder = load_module(
+        "reader_localization_builder_psalm_119",
+        "tools/build_multilingual_reader_assets.py",
+    )
+    localized_book = {"chapters": {"118": {"title": "Existing"}}}
+
+    assert builder._localized_chapter_projection(
+        "es", localized_book, "Psalms", 119
+    ) == {"title": "El Salmo 119 celebra la instrucción de Yahvé"}
+    assert builder._localized_chapter_projection(
+        "ko", localized_book, "Psalms", 119
+    ) == {"title": "시편 119편이 야훼의 가르침을 기뻐합니다"}
+    assert (
+        builder._localized_chapter_projection(
+            "fr", localized_book, "Psalms", 119
+        )
+        is None
+    )
+
+
 def test_builder_emits_top_level_localization_and_projects_book_fields(
     tmp_path: pathlib.Path, monkeypatch: pytest.MonkeyPatch
 ) -> None:
