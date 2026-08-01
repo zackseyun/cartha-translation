@@ -65,3 +65,13 @@ def test_failed_packet_is_split_without_losing_tasks(monkeypatch) -> None:
     assert {call[0] for call in calls if len(call) == 1} == {
         task["target_key"] for task in tasks
     }
+
+
+def test_cli_accepts_repeated_and_comma_separated_book_lanes() -> None:
+    module = load_module()
+
+    args = module.parser().parse_args(
+        ["--book", "Mark,Galatians", "--book", "Song of Solomon"]
+    )
+
+    assert args.book == ["Mark,Galatians", "Song of Solomon"]

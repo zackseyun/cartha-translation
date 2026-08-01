@@ -134,8 +134,14 @@ def scan_sources(
     ddb: Any,
     table: str,
     model_version: str,
-    book: str = "",
+    books: Iterable[str] = (),
 ) -> list[dict[str, Any]]:
+    requested_books = {
+        part.strip().upper()
+        for value in books
+        for part in str(value).split(",")
+        if part.strip()
+    }
     request: dict[str, Any] = {
         "TableName": table,
         "FilterExpression": (
@@ -162,9 +168,13 @@ def scan_sources(
             "generated_at,updated_at"
         ),
     }
-    if book.strip():
-        request["FilterExpression"] += " AND #book = :book"
-        request["ExpressionAttributeValues"][":book"] = {"S": book.strip().upper()}
+    if requested_books:
+        book_tokens = []
+        for index, book in enumerate(sorted(requested_books)):
+            token = f":book{index}"
+            book_tokens.append(token)
+            request["ExpressionAttributeValues"][token] = {"S": book}
+        request["FilterExpression"] += f" AND #book IN ({','.join(book_tokens)})"
     sources: list[dict[str, Any]] = []
     while True:
         response = ddb.scan(**request)
@@ -353,7 +363,12 @@ def parser() -> argparse.ArgumentParser:
     result.add_argument("--table", default=os.getenv("CARTHA_SUMMARY_CACHE_TABLE", base.DEFAULT_TABLE))
     result.add_argument("--region", default=os.getenv("AWS_REGION", base.DEFAULT_REGION))
     result.add_argument("--model-version", default=DEFAULT_MODEL_VERSION)
-    result.add_argument("--book", default="", help="Optional canonical book lane")
+    result.add_argument(
+        "--book",
+        action="append",
+        default=[],
+        help="Optional book lane; repeat or pass a comma-separated list",
+    )
     result.add_argument("--batch-size", type=int, default=DEFAULT_BATCH_SIZE)
     result.add_argument("--concurrency", type=int, default=DEFAULT_CONCURRENCY)
     result.add_argument("--limit", type=int, default=0, help="Optional task cap for smoke runs")
