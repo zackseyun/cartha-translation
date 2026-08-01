@@ -63,6 +63,12 @@ _DESERIALIZER = TypeDeserializer()
 _SERIALIZER = TypeSerializer()
 _LANGUAGE_CODE = re.compile(r"^[a-z][a-z0-9_]*$")
 CACHE_CODE_OVERRIDES = {"zh_hans": "zh"}
+CACHE_TRANSLATION_OVERRIDES = {
+    # These two reader families predate the POB-XX convention and are the
+    # stable namespaces queried by both Flutter and the hosted reader.
+    "es": "SPOB",
+    "ko": "KPOB",
+}
 BLOCK_ROOT = ROOT / "state" / "multilingual_summary_localization" / "blocked"
 
 
@@ -127,6 +133,9 @@ def language_translation(code: str) -> str:
     normalized = str(code or "").strip().lower().replace("-", "_")
     if not _LANGUAGE_CODE.fullmatch(normalized):
         raise ValueError(f"invalid language code: {code!r}")
+    override = CACHE_TRANSLATION_OVERRIDES.get(normalized)
+    if override:
+        return override
     normalized = CACHE_CODE_OVERRIDES.get(normalized, normalized)
     return f"POB-{normalized.upper()}"
 

@@ -104,6 +104,16 @@ def test_identity_changes_only_to_language_scoped_pob_token() -> None:
     assert module.deserialize_item(module.serialize_item(source))["chapter"] == 1
 
 
+def test_established_spanish_and_korean_cache_namespaces_are_preserved() -> None:
+    module = load_module()
+    source = source_row(0)
+
+    assert module.language_translation("es") == "SPOB"
+    assert module.language_translation("ko") == "KPOB"
+    assert module.localized_summary_key(source["summary_key"], "es").startswith("SPOB|")
+    assert module.localized_summary_key(source["summary_key"], "ko").startswith("KPOB|")
+
+
 def test_pending_collection_skips_matching_rows_and_scans_forward() -> None:
     module = load_module()
     sources = [source_row(index, f"English summary {index}") for index in range(3)]
