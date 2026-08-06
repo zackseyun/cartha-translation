@@ -117,10 +117,15 @@ Exodus 40, and Hebrews 9).
 
 ### Presentation in the reader
 
-Aids must be quiet. The affordance is a small pill/marker near the anchor
-verse that opens the sheet on demand — never a full-width interruption card
-sitting between verses, and never autoplaying or auto-expanding. Web and
-mobile must present the same quiet affordance (POB cross-platform parity).
+Aids must be invisible until sought. The affordance is the **verse number
+itself**: when a verse anchors an aid, its superscript number is wrapped in a
+small rounded chip — white in light mode; in dark mode a subtly elevated
+surface tone from the reader theme, never white. Tapping the wrapped number
+opens the sheet. Nothing else is added to the reading column: no inline pills,
+no cards, no extra rows between verses, no auto-expansion. The chip keeps the
+verse number legible in its normal accent color, carries an accessible label
+naming the aid, and gets a comfortable tap target. Web and mobile must present
+the same affordance (POB cross-platform parity).
 
 ## Codex Image Gen prompt template (`annotated-reference-v2`)
 
@@ -201,7 +206,11 @@ python tools/bible_visual_aid_candidates.py \
 
 Each published manifest entry includes a verse range, title, alt text, caption,
 image URL, visual type, historical-certainty label, prompt version, generator,
-and review timestamp. The reader displays a **Visual aid** pill only when an
+and review timestamp. An entry may also carry an `images` array (each item:
+`image_url`, `thumbnail_url`, `alt_text`) when one anchor benefits from more
+than one figure — e.g., a labeled overview plus an interior view (Acts 3:11).
+The sheet renders them stacked in order under the entry's single caption;
+`image_url` stays set to the first figure for single-image clients. The reader displays a **Visual aid** pill only when an
 approved entry exists, then opens a dismissible full-image sheet with the
 caption and reconstruction disclaimer.
 
