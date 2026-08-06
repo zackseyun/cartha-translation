@@ -6,6 +6,11 @@ record, explains why each candidate was selected, and emits a reviewable JSONL
 queue. Approved queue rows are intended to be rendered with Codex Image Gen
 and then published through the versioned ``/bible-visual-aids/`` CDN catalog.
 
+Policy (docs/BIBLE_VISUAL_AIDS.md): aids show the stage, not the play. A verse
+qualifies through the setting, object, route, or practice it assumes — never
+through its narrative action, and never through symbolic-vision imagery, so
+neither is a scoring signal here.
+
 Example:
     python tools/bible_visual_aid_candidates.py \
       --translation-root translation \
@@ -72,22 +77,6 @@ SIGNALS = (
         "locust|camel|lion|eagle|serpent|sheep|goat|dove|raven|fish|storm|"
         "earthquake|rainbow|cloud|fire|hail|dew",
         "A plant, animal, landscape, or natural phenomenon carries concrete meaning.",
-    ),
-    _signal(
-        "event",
-        2,
-        "carried|raised him|stood|walked|leaping|healed|opened his eyes|"
-        "crossed|fled|marched|surrounded|built|tore down|anointed|baptized|"
-        "lowered|caught|cast a net|broke bread|washed feet",
-        "A physical action or event sequence may be easier to follow as a scene.",
-    ),
-    _signal(
-        "vision_symbolism",
-        3,
-        "vision|beast|dragon|four living creatures|wheel within a wheel|"
-        "seven lampstands|new Jerusalem|scroll with seven seals|dry bones|"
-        "statue|image of gold|horns|throne",
-        "Dense visionary or symbolic imagery benefits from a clearly labeled interpretation layer.",
     ),
     _signal(
         "diagram",
@@ -160,12 +149,18 @@ def score_verse(payload: dict) -> dict | None:
         return None
 
     prompt = (
-        f"Create a respectful educational visual aid for {reference}. "
-        f"Scripture context: {verse_text} "
-        f"Primary visual purpose: {primary_category.replace('_', ' ')}. "
-        "Use historically and geographically plausible details, distinguish reconstruction "
-        "from certainty, preserve human dignity, and include no text, labels, watermark, halo, "
-        "or unsupported supernatural spectacle."
+        f"Annotated reference visual for {reference}; do not depict the events of the "
+        f"passage happening — show the {primary_category.replace('_', ' ')} it assumes "
+        "as it would appear on an ordinary day. "
+        "Style: matte realistic historical-reconstruction painting, natural daylight, "
+        "neutral documentary tone; no cinematic lighting, glow, or halo. "
+        "People: small anonymous figures for scale only — no identifiable individuals, "
+        "no Bible characters, no divine or angelic beings; preserve human dignity. "
+        "Annotations: 3-5 short labeled callouts (dark rounded chips, white text, thin "
+        "leader lines) naming places, parts, or functions with exact spelling; no other "
+        "text or watermark. "
+        "Use historically and geographically plausible details and distinguish "
+        "reconstruction from certainty."
     )
     return {
         "candidate_id": verse_id.lower().replace(".", "-"),
