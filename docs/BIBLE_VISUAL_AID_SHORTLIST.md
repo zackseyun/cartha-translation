@@ -14,8 +14,8 @@ reuse anchors are listed inline — publish the same image at every reuse
 anchor. Format is a proposal and labels are candidates; the editor generating
 each asset owns the final label set (3–5, up to 6 on maps/object plates).
 
-**Production status (2026-08-08): complete.** All 86 planned assets (the full
-absolute set plus all 13 nice-to-have plates) are generated and published in
+**Production status (2026-08-08): complete.** All 87 planned assets (the full
+absolute set, including distinct Acts 3:2 and Acts 3:11 views, plus all 13 nice-to-have plates) are generated and published in
 catalog v3. They produce 127 verse placements across 36 books after reuse
 anchors are expanded.
 
@@ -112,7 +112,8 @@ the sweep is a discovery net and this curated list governs.
 | --- | --- | --- | --- | --- |
 | Acts 1:12 | A Sabbath day's walk | Mount of Olives to the city — the permitted ~¾-mile distance | Aerial map | Mount of Olives · Kidron Valley · Temple Mount · ~¾-mile route |
 | Acts 2:9–11 | Where the pilgrims came from | The named homelands of the Pentecost crowd | Regional map | Parthia & Media · Mesopotamia · Asia · Egypt & Cyrene · Rome · Crete & Arabia |
-| Acts 3:2 ★ (3:11; 21:27–30) | The Temple courts | Where the Beautiful Gate, Solomon's Portico, and the open outer courts sit relative to each other — **published** | Wide elevated reconstruction | Beautiful Gate · Portico of Solomon · Outer Courts · Steps to the inner courts |
+| Acts 3:2 ★ (21:27–30) | The Temple courts | Where the Beautiful Gate, Solomon's Portico, and the open outer courts sit relative to each other — **published** | Wide elevated reconstruction | Beautiful Gate · Portico of Solomon · Outer Courts · Steps to the inner courts |
+| Acts 3:11 ★ | Solomon's Portico | A closer ground-level view of the covered colonnade and its sheltered gathering space — **published** | Wide close reconstruction | Portico of Solomon · Beautiful Gate · Outer Courts · Sheltered gathering space |
 | Acts 9:25 (Josh 2:15; 2 Cor 11:33) | Houses on the city wall | Casemate walls with dwellings built into them, windows opening outward | Cutaway reconstruction | Casemate city wall · House built into the wall · Window over the outside |
 | Acts 13:4 | The first journey | Antioch → Cyprus → Galatia and back — the missionary map every Acts reader needs | Journey map | Antioch (Syria) · Cyprus · Pisidian Antioch · Lystra & Derbe · Return route |
 | Acts 16:11 | Into Macedonia | The second journey: the call at Troas and the gospel crossing into Europe | Journey map | Troas · Philippi · Thessalonica · Corinth · Aegean crossing |
