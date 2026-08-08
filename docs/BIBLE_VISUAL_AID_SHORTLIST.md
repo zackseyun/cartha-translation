@@ -18,6 +18,12 @@ Production order: the original launch set (marked ★) first, then the rest of
 the absolute set roughly in canon order, weighting high-traffic books (Gospels,
 Acts, Genesis, Exodus, Psalms) ahead of the rest.
 
+Scope: the absolute set covers the 66-book canon. POB's deuterocanonical and
+extra-canonical texts are out of scope until the canon is served. The list was
+cross-checked against a full heuristic sweep of the POB corpus
+(`tools/bible_visual_aid_candidates.py`, ~9,600 canonical keyword candidates);
+the sweep is a discovery net and this curated list governs.
+
 ## The absolute set — Torah & wilderness
 
 | Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
@@ -33,7 +39,8 @@ Acts, Genesis, Exodus, Psalms) ahead of the rest.
 | Ex 26:1 ★ (Ex 40:2; Heb 9:2–5) | The tabernacle | Courtyard, bronze altar, Holy Place, Most Holy Place, and the furniture layout the epistles assume readers know | Cutaway reconstruction | Courtyard fence · Bronze altar · Holy Place · Most Holy Place · Ark of the covenant |
 | Ex 28:4 ★ | The high priest's garments | Ephod, breastpiece with twelve stones, robe hem with bells and pomegranates, turban with gold plate | Object plate | Breastpiece (12 stones) · Ephod · Robe hem: bells & pomegranates · Turban with gold plate |
 | Lev 1:3–5 | How a burnt offering worked | The procedure Leviticus assumes: bring, lay hands, slaughter at the north side, blood at the altar base, portions to the fire — engineering-style, no gore | Process diagram | Laying on of hands · North side of the altar · Blood at the base · Portions to the fire |
-| Lev 16:7–10 | The Day of Atonement | The two goats and the high priest's route: altar → Most Holy Place → outside the camp, drawn as arrows over the tabernacle plan | Movement diagram | Goat for the LORD · Goat sent away · Inside the veil · Outside the camp |
+| Lev 16:7–10 (Heb 13:11–12) | The Day of Atonement | The two goats and the high priest's route: altar → Most Holy Place → outside the camp, drawn as arrows over the tabernacle plan | Movement diagram | Goat for the LORD · Goat sent away · Inside the veil · Outside the camp |
+| Lev 19:36 (Prov 11:1; Amos 8:5) | Honest scales | Balance, stone weights, and the ephah — the market equipment behind every "just weights" command | Object plate | Balance scales · Stone weights · Ephah (dry measure) · Hin (liquid measure) |
 | Num 2:2 | The camp around the tabernacle | Twelve tribes in four camps facing the center — the text is a floor plan in prose | Plan diagram | Tabernacle at center · Judah camp (east) · Levites inner ring · Four banners |
 | Deut 27:12 (Josh 8:33) | Ebal and Gerizim | Two mountains flanking Shechem forming a natural amphitheater for blessing and curse | Terrain reconstruction | Mount Gerizim (blessing) · Mount Ebal (curse) · Shechem valley between |
 
@@ -47,12 +54,12 @@ Acts, Genesis, Exodus, Psalms) ahead of the rest.
 | Ruth 4:1 (Prov 31:23; Amos 5:15) | The city gate as courtroom | Chambered gatehouse with benches — where elders sat, deals were sealed, and justice happened | Cutaway reconstruction | Gate chambers with benches · Elders' seats · City wall · Market just inside |
 | 1 Sam 17:2–3 | The Valley of Elah | Two armies on facing ridges with the brook-cut valley floor between | Terrain map | Israelite ridge · Philistine ridge · Valley floor & brook · Road to Socoh |
 | 1 Sam 17:40 | A shepherd's sling | Pouch, two cords, smooth stones — a serious ranged weapon, not a toy | Object plate | Leather pouch · Two cords · Smooth stream stones |
-| 1 Kgs 6:2 ★ | Solomon's temple | Porch, Holy Place, 20-cubit-cube inner sanctuary, side chambers — the layout the dimensions describe | Cutaway reconstruction | Porch · Holy Place · Most Holy Place (20-cubit cube) · Side chambers |
+| 1 Kgs 6:2 ★ (2 Chr 3:3) | Solomon's temple | Porch, Holy Place, 20-cubit-cube inner sanctuary, side chambers — the layout the dimensions describe | Cutaway reconstruction | Porch · Holy Place · Most Holy Place (20-cubit cube) · Side chambers |
 | 1 Kgs 12:19–20 | The divided kingdom | Israel north, Judah south — the map every page of Kings, Chronicles, and the prophets assumes | Regional map | Israel (north) · Judah (south) · Samaria · Jerusalem · Border zone of Benjamin |
 | 2 Kgs 19:32 | An Assyrian siege | Earthen ramp, battering engines, archer screens against a walled city — engineering, not carnage | Reconstruction | Earthen siege ramp · Battering-ram engine · Archer towers · City gate |
 | 2 Kgs 20:20 (John 9:7 tie) | Hezekiah's tunnel | The 1,750-ft rock-cut channel bringing the Gihon Spring inside the walls to the Siloam pool | Cross-section map | Gihon Spring · Rock-cut tunnel (~1,750 ft) · Pool of Siloam · City wall above |
 | 2 Kgs 25:11 | The road into exile | Jerusalem to Babylon — ~900 miles up and around the crescent, not across the desert | Route map | Jerusalem · Riblah · Babylon · ~900-mile route |
-| Neh 3:1 | Nehemiah's wall circuit | The gates of the rebuilt wall in order around the city | City map | Sheep Gate · Fish Gate · Valley Gate · Dung Gate · Water Gate |
+| Neh 3:1 (Neh 2:13) | Nehemiah's wall circuit | The gates of the rebuilt wall in order around the city — also the route of the night inspection | City map | Sheep Gate · Fish Gate · Valley Gate · Dung Gate · Water Gate |
 
 ## The absolute set — Poetry & Prophets
 
@@ -74,6 +81,7 @@ Acts, Genesis, Exodus, Psalms) ahead of the rest.
 | Luke 5:2 (Matt 4:18; John 21:6) | Boats and nets of Galilee | The 26-ft fishing boat, cast net, and dragnet — the working equipment behind the call stories | Object plate | Fishing boat (~26 ft) · Cast net · Dragnet between boats · Stone anchors |
 | Mark 2:4 ★ (Luke 5:19) | A Capernaum house | Flat packed-clay roof over beams and brush, reached by an outside stair — why a roof could be opened above a crowded single room | Cutaway reconstruction | Packed-clay roof · Timber beams & brush · Outside staircase · Single living room |
 | Luke 2:7 ★ | A Bethlehem village house | The guest room (kataluma), the family room, and the animal stall with a built-in manger under one roof — not a detached barn | Cutaway reconstruction | Guest room (kataluma) · Family room · Animal stall · Stone manger |
+| Luke 4:16 (Mark 1:21; Matt 23:2; Jas 2:2–3) | A Galilean synagogue | Stone benches around the walls, the Torah chest, the reading platform, the seat of Moses — the Gospels' most common indoor setting after houses; empty interior, no service in progress | Cutaway reconstruction | Stone benches on three sides · Torah scroll chest · Reading platform (bema) · Seat of Moses |
 | Matt 5:15 (Matt 25:1–4; Luke 15:8) | The household lamp | A palm-sized clay oil lamp, its stand, and the basket that could smother it — why one lamp lit the whole house | Object plate | Clay lamp (palm-sized) · Olive oil & wick · Lampstand · Grain basket (the "bushel") |
 | Matt 9:17 | Wineskins | Whole goatskin vessels: supple new skin stretches with fermentation, brittle old skin bursts | Object plate | New skin (supple) · Old skin (brittle, patched) · Stopper at the neck · Fermentation swell |
 | Matt 11:29 | The yoke | A carved double ox-yoke — shaped to fit so it doesn't chafe, built for two pulling together | Object plate | Carved crossbeam · Padded fit · Oxbows · Built for two |
@@ -130,6 +138,8 @@ Worth making eventually; none blocks the absolute set.
 | Jer 32:14 | Deeds in a jar | Sealed and open deeds archived in clay — how documents survived |
 | Matt 21:12 | The temple market | Money-changing tables in the outer court — setting only, no cleansing scene |
 | Acts 18:12 | The bema at Corinth | The judgment platform in the agora; reuse 2 Cor 5:10 |
+| 1 Kgs 7:23 (2 Chr 4:2) | The temple furnishings | The bronze Sea (10 cubits brim to brim) and the pillars Jachin and Boaz |
+| Dan 3:1 | The image on the plain of Dura | 60 cubits ≈ 90 ft as a pure silhouette scale diagram — flagged for editorial care (idol subject) |
 | Rev 21:16 | The city measured | 12,000-stadia cube as a pure scale diagram — diagram lane, flagged for editorial care |
 
 ## Do not aid
