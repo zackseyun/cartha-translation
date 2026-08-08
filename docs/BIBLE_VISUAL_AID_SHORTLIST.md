@@ -14,6 +14,11 @@ reuse anchors are listed inline — publish the same image at every reuse
 anchor. Format is a proposal and labels are candidates; the editor generating
 each asset owns the final label set (3–5, up to 6 on maps/object plates).
 
+**Production status (2026-08-08): complete.** All 86 planned assets (the full
+absolute set plus all 13 nice-to-have plates) are generated and published in
+catalog v3. They produce 127 verse placements across 36 books after reuse
+anchors are expanded.
+
 Production order: the original launch set (marked ★) first, then the rest of
 the absolute set roughly in canon order, weighting high-traffic books (Gospels,
 Acts, Genesis, Exodus, Psalms) ahead of the rest.
@@ -124,7 +129,7 @@ the sweep is a discovery net and this curated list governs.
 
 ## Nice-to-have (not absolute)
 
-Worth making eventually; none blocks the absolute set.
+Completed supplemental set; all 13 plates are generated and published in catalog v3.
 
 | Anchor | Working title | Note |
 | --- | --- | --- |
