@@ -34,6 +34,7 @@ TRANSLATION_ROOT = REPO_ROOT / "translation"
 YAML_LOADER = getattr(yaml, "CSafeLoader", yaml.SafeLoader)
 NUMERIC_STEM_RE = re.compile(r"^\d{3}$")
 FOOTNOTE_MARKER_RE = re.compile(r"\[[A-Za-z0-9]{1,6}\]")
+DEVANAGARI_RE = re.compile(r"[\u0900-\u097F]")
 SYNTHETIC_NOTE_MARKERS = (
     "synthetic single-verse mirror",
     "chapter-as-verse-1",
@@ -250,6 +251,29 @@ def check_reader_chapters(
     return issues, len(groups)
 
 
+def check_english_script_contamination(
+    records: dict[pathlib.Path, CorpusRecord],
+) -> list[Issue]:
+    """Reject accidental Devanagari tokens in base-English reader text."""
+    issues: list[Issue] = []
+    for record in records.values():
+        match = DEVANAGARI_RE.search(record.text)
+        if not match:
+            continue
+        issues.append(
+            Issue(
+                rule="devanagari-in-english-reader",
+                path=record.path,
+                details=(
+                    "Base-English translation.text contains Devanagari characters; "
+                    "replace the mixed-language token with the audited English rendering."
+                ),
+                sample=preview(record.text),
+            )
+        )
+    return issues
+
+
 def is_psalm_chapter_dir(chapter_dir: pathlib.Path) -> bool:
     return (
         chapter_dir.name.isdigit()
@@ -370,7 +394,13 @@ def main() -> int:
         min_flat_match_chars=args.min_flat_match_chars,
     )
     psalm_issues = check_psalm_numbering(records)
-    issues = (yaml_issues if args.malformed_yaml == "error" else []) + reader_issues + psalm_issues
+    script_issues = check_english_script_contamination(records)
+    issues = (
+        (yaml_issues if args.malformed_yaml == "error" else [])
+        + reader_issues
+        + psalm_issues
+        + script_issues
+    )
     elapsed = time.perf_counter() - started
 
     if issues:
@@ -402,6 +432,7 @@ def main() -> int:
         print("  Synthetic mirror collisions: 0")
         print("  Verse-1 later-verse containment hits: 0")
         print("  Psalm superscription numbering: ok")
+        print("  Devanagari contamination in English reader text: 0")
         print(f"  Elapsed: {elapsed:.1f}s")
     return 0
 
