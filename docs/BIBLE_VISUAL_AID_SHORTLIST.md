@@ -148,6 +148,99 @@ Completed supplemental set; all 13 plates are generated and published in catalog
 | Dan 3:1 | The image on the plain of Dura | 60 cubits ≈ 90 ft as a pure silhouette scale diagram — flagged for editorial care (idol subject) |
 | Rev 21:16 | The city measured | 12,000-stadia cube as a pure scale diagram — diagram lane, flagged for editorial care |
 
+## Wave 2 — recommended expansion (proposed 2026-08-12, not yet produced)
+
+The absolute set is the floor, not the ceiling. These still pass the three
+gate tests and materially improve comprehension; they are the next production
+wave. After Wave 2 the catalog sits around 130 unique assets / ~200
+placements. The honest ceiling for the whole feature is roughly 150–200
+assets (~1 aid per 3–4 chapters): past that the layer stops explaining and
+starts illustrating, which the subtlety doctrine exists to prevent.
+
+### Worship, temple & synagogue
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Luke 4:16–17 (Matt 23:2; Acts 13:15) | Inside a synagogue | The room behind dozens of scenes: Torah cabinet, reading platform, benches, the seat of Moses | Cutaway reconstruction | Torah ark · Reading platform (bema) · Stone benches · Seat of Moses |
+| Jer 36:2 (Luke 4:17) | A scroll and the scribe's kit | Leather scroll, reed pen, ink horn, and the scribe's knife that cut Jehoiakim's scroll — how books physically worked | Object plate | Leather scroll · Reed pen & ink horn · Scribe's penknife · Rolled to the place |
+| 1 Kgs 1:50 (Ex 27:2) | The horns of the altar | The four corner projections — blood applied there, fugitives grasping them for asylum | Object plate | Four horns · Corner projections · Grasping for asylum · Blood applied here |
+| Luke 1:9 | The incense lot | Priestly courses, the once-in-a-lifetime lot, and the route to the incense altar — arrows over the temple plan, no persons | Movement diagram | Courses of priests · Chosen by lot · Holy Place · Incense altar |
+| Ps 150:3–5 (2 Sam 6:5) | The instruments of praise | What a lyre, harp, timbrel, cymbals, and shofar actually were | Object plate | Lyre (kinnor) · Harp (nevel) · Timbrel · Cymbals · Shofar |
+| 1 Kgs 7:23 (2 Chr 4:2) | Solomon's temple furnishings | The two bronze pillars and the immense cast sea on twelve oxen | Object plate | Jachin & Boaz (pillars) · Bronze sea (15 ft across) · Twelve oxen base · Water for washing |
+| Acts 21:35 (21:40) | The Antonia stairs | The fortress overlooking the courts and the stairway between them — where the garrison could reach a riot in minutes | Detail reconstruction | Antonia Fortress · Stairs to the courts · Roman garrison · Court of the Gentiles |
+
+### Psalms & poetry imagery
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Ps 18:2 (Ps 91:2) | A desert stronghold | The cliff-top refuge (metzudah) behind "my rock and my fortress" | Wide reconstruction | Cliff-top refuge · Single approach path · Watchman's view · Springs below |
+| Ps 125:2 (Ps 48:2) | The mountains around Jerusalem | The city sits ringed by higher hills — the literal picture behind the promise | Terrain map | Jerusalem on its ridge · Higher hills all around · Mount of Olives (east) · Kidron & Hinnom valleys |
+| Ps 1:3 (Jer 17:8) | A tree by the water channels | Irrigation channels in a dry land — planted by them, a tree ignores the drought | Nature diagram | Irrigation channels · Roots to the water · Fruit in season · Dry land beyond |
+| Prov 17:3 (Mal 3:2–3) | The refiner's crucible | Furnace, bellows, crucible, and the dross skimmed off — the metallurgy behind the metaphor | Process plate | Charcoal furnace · Bellows · Crucible with silver · Dross skimmed off |
+
+### Agriculture & trades
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Deut 24:20 (Micah 6:15) | The olive harvest and press | Beating the branches, the crushing basin, the beam press — where the lamp oil came from | Process plate | Beating the branches · Crushing basin · Beam press with weights · Oil vat |
+| Rom 11:17 | Grafting an olive tree | How a wild shoot is cut into a cultivated trunk — the horticulture Paul's argument rides on | Process diagram | Cultivated trunk · Branch cut away · Wild shoot grafted in · Bound joint |
+| Matt 13:25–26 | Wheat and darnel | The weed that is indistinguishable from wheat until the ear forms — why the workers had to wait | Comparison plate | Young wheat · Young darnel (identical) · Wheat ear · Darnel ear |
+| Matt 13:31–32 | The mustard plant | From the smallest of the garden seeds to a shrub birds nest in | Comparison plate | Mustard seed (1–2 mm) · Grown shrub (8–10 ft) · Birds in the branches |
+| Luke 9:62 (1 Kgs 19:19) | The plowman | One hand on the single-handled plow, one on the goad, eyes fixed ahead — look back and the furrow wanders | Object plate | Single handle · Metal-shod point · Ox goad · Straight furrow |
+| Judg 16:13–14 (Isa 38:12) | The weaver's loom | Warp, web, pin, and shuttle — the machine behind Delilah's trick and Hezekiah's lament | Object plate | Warp threads · Woven web · Tightening pin · Weaver's shuttle |
+| Lev 2:4 (Matt 6:30) | A village oven | The clay dome oven fired with dried grass — daily bread, and why grass "thrown into the oven" made sense | Object plate | Clay dome oven · Dried-grass fuel · Flatbread on the walls · Communal courtyard |
+| Isa 28:24–28 | Tools of the harvest | Why dill is beaten with a stick, cumin with a rod, and grain under the sledge — the passage is farm equipment | Object plate | Threshing sledge · Cart wheel · Beating rod · Grain, dill, cumin |
+| John 15:2 | Pruning the vine | Cutting back fruiting canes and lifting trailing ones — the vinedresser's two motions | Process plate | Fruiting cane pruned back · Trailing cane lifted · Vinedresser's knife · New growth |
+
+### Money & measures
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Matt 20:2 (Luke 10:35) | The denarius | The silver coin that was one day's field wage — and what two of them covered at an inn | Object plate | Silver denarius · One day's wage · Two coins at the inn |
+| Matt 18:24 | Ten thousand talents | One talent ≈ 75 lb of silver; the unpayable debt drawn as cart-loads against a pouch of 100 denarii | Scale diagram | One talent ≈ 75 lb silver · 10,000 talents (cart train) · 100 denarii (a pouch) |
+| Matt 17:24 | The temple tax | The half-shekel due from every man, and the changers' booths that took only Tyrian coin | Object plate | Half-shekel (Tyrian) · Collection booth · Due at Passover season |
+
+### Old Testament geography
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Josh 14:1–2 (Judg 1:3) | The tribal allotments | The twelve territories as one map — the frame under seven chapters of border lists | Regional map | Judah · Ephraim & Manasseh · Benjamin between · Galilee tribes · Transjordan tribes |
+| Num 33:1–2 | The wilderness itinerary | Egypt → Sinai → Kadesh → plains of Moab: the forty years as one route | Route map | Egypt · Sinai · Kadesh-barnea (38 years) · Plains of Moab |
+| Josh 10:9–10 (11:7) | The conquest campaigns | The southern sweep and the northern sweep as arrows — battles as movement, not carnage | Campaign map | Gibeon ascent · Southern cities · Waters of Merom · Hazor |
+| 1 Sam 22:1 (24:1) | David's hideouts | Adullam, the Ziph hills, En-gedi — the fugitive map behind a dozen chapters and psalm titles | Terrain map | Cave of Adullam · Wilderness of Ziph · En-gedi springs · Judean wilderness |
+| 1 Kgs 17:3 (19:8) | Elijah's road | Kerith → Zarephath → Carmel → Beersheba → Horeb: the prophet's whole arc as geography | Route map | Brook Kerith · Zarephath (Sidon) · Mount Carmel · Beersheba · Horeb |
+| Gen 13:10–12 | Abram and Lot divide | The well-watered Jordan plain against the hill country — what each man chose | Terrain map | Jordan plain (well-watered) · Hill country of Canaan · Cities of the plain · Bethel heights |
+| 2 Kgs 23:29 (Judg 5:19) | The Megiddo pass | The chokepoint where the coast road crosses the Carmel ridge — battlefield of centuries, including Josiah's last | Terrain map | Carmel ridge · The pass at Megiddo · Coast road (Via Maris) · Jezreel Valley |
+| Ezra 1:11 | The road home | Reuse of the exile-route map with the return leg marked — four months back up the crescent | Route map (reuse) | Babylon · The crescent road · Jerusalem · ~4-month journey |
+
+### Gospels
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Luke 2:8 | Shepherds' fields | Night pasture outside Bethlehem: stone sheepfold, watchtower, flocks under the open sky — no sky glow, ordinary night | Wide reconstruction | Night pasture · Stone fold · Watchtower · Bethlehem on the ridge |
+| Matt 2:11 | Gold, frankincense, myrrh | What the three gifts physically were and what each was used for | Object plate | Gold · Frankincense (resin tears) · Myrrh (embalming resin) · Censer |
+| Mark 14:3 (Luke 7:37) | An alabaster flask | The sealed perfume flask broken at the neck — a year's wages in one pour | Object plate | Alabastron flask · Sealed neck (broken to open) · Nard from India · ~300 denarii value |
+
+### Cities of the letters
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Acts 18:1 (1 Cor 1:2) | Corinth | Two harbors, the ship-drag road between them, Acrocorinth above the agora — why the city was rich and rough | Wide reconstruction | Acrocorinth · Agora & bema · Lechaion harbor road · Diolkos ship-drag |
+| Acts 16:12 (Phil 1:1) | Philippi | A Roman colony on the Via Egnatia, with the river gate where prayer met | Wide reconstruction | Via Egnatia · Forum · River gate (place of prayer) · Colony walls |
+| Acts 17:1 (1 Thess 1:1) | Thessalonica | Free city on the Egnatian Way with a working harbor — why the gospel moved fast from here | City map | Via Egnatia · Harbor · Agora · City gates |
+| Col 4:13 (Rev 3:15–16) | The Lycus valley | Hierapolis' hot springs, Colossae's cold streams, and Laodicea's long tepid aqueduct — the water behind "lukewarm" | Regional map | Hierapolis (hot springs) · Colossae (cold streams) · Laodicea (tepid aqueduct) · Lycus River |
+| 1 Pet 1:1 | The diaspora provinces | Pontus, Galatia, Cappadocia, Asia, Bithynia — the letter's postal circuit through Anatolia | Regional map | Pontus · Galatia · Cappadocia · Asia · Bithynia |
+| Acts 8:26 | The Gaza road | The desert road south from Jerusalem where a chariot could be overtaken on foot | Route map | Jerusalem · Road to Gaza (desert route) · Toward Egypt & Ethiopia |
+
+### Prophets
+
+| Anchor (reuse) | Working title | What it explains | Format | Candidate labels |
+| --- | --- | --- | --- | --- |
+| Obad 1:3 | Edom's cliff strongholds | Rock-cut terraces high in the sandstone — the "nest among the stars" Obadiah answers | Terrain reconstruction | Sandstone clefts · Rock-cut dwellings · High terraces · Trade road below |
+| Nah 2:6 (3:8) | Nineveh and its river gates | The Tigris channeled through the walls — open the river gates and the palace dissolves | Reconstruction map | Tigris channels · River gates · Palace platform · Outer walls |
+| Joel 1:4 | The locust swarm | Four named stages of the locust and the scale of a swarm front | Nature plate | Cutting locust · Swarming locust · Hopping locust · Destroying locust · Swarm front (miles wide) |
+| Isa 40:3–4 (Matt 3:3) | Preparing a royal road | Road crews leveling a processional highway before a king travels — valleys filled, hills cut | Process reconstruction | Valleys filled · Hills cut down · Straightened route · Herald ahead |
+
 ## Do not aid
 
 Standing exclusions (per the art direction). Never anchor an aid where the
