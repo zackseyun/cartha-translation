@@ -41,11 +41,17 @@ review:
 
 ### Visual language
 
-- **Formats:** wide or elevated establishing reconstruction, architectural
-  cutaway, plan/diagram, labeled map or route profile, or object plate.
-- **Style:** matte, realistic historical-reconstruction painting; natural
-  daylight; neutral documentary tone. One consistent style across the whole
-  library so aids read as one system.
+- **Formats:** any type in the [taxonomy](#what-earns-an-aid) — annotated
+  reconstruction, cutaway, plan/diagram, map or route profile, object plate,
+  process plate, naturalist plate, bird's-eye chart, comparison panels,
+  timeline, relationship chart, structure infographic, symbol explainer.
+- **Style:** two registers, kept consistent within each. *Pictorial* types
+  (place, object, how, nature, birdseye) are matte, realistic
+  historical-reconstruction painting; natural daylight; neutral documentary
+  tone. *Diagrammatic* types (map, scale, compare, timeline, people,
+  structure, symbol) use a warm parchment-and-ink palette with clean
+  typography and restrained color. Both share the same label-chip annotation
+  system so the library reads as one family.
 - **Never:** cinematic close-ups, dramatic rim lighting, lens flares, glows or
   halos, shallow depth-of-field portrait framing, "movie still" or
   "movie poster" composition, visible emotion as the subject.
@@ -72,15 +78,29 @@ review:
 ### What earns an aid
 
 Anchor verses qualify through the world they assume, not the drama they
-contain:
+contain. The taxonomy of aid types (expanded 2026-08-12 for the abundant
+catalog — see [Density](#density)):
 
-| Category | Examples |
-| --- | --- |
-| Architecture & spaces | temple courts, house roofs, prisons, tombs, sheepfolds, city walls |
-| Objects & material culture | ephod, phylacteries, stone jars, slings, lamps, ships, armor |
-| How things worked | threshing, gleaning, fishing methods, money changing, burial practice |
-| Geography, routes & maps | Sea of Galilee, Jerusalem–Jericho road, journey and exile maps |
-| Scale & measurement | Noah's ark dimensions, tabernacle plan, Solomon's temple, measured visions as plan-view diagrams |
+| Type key | Aid type | What it is | Examples |
+| --- | --- | --- | --- |
+| `place` | Place reconstruction | Annotated matte reconstruction of a built place or space | temple courts, house roofs, prisons, tombs, sheepfolds, city walls |
+| `map` | Map / route | Cartographic map, journey route, or terrain profile | Sea of Galilee, Jerusalem–Jericho road, exile and missionary maps |
+| `object` | Object plate | Museum-style plate of an object, garment, tool, coin, or unit | ephod, phylacteries, stone jars, slings, lamps, ships, armor, denarius |
+| `how` | How it worked | Process plate or step diagram of a practice or trade | threshing, gleaning, fishing methods, money changing, burial, sacrifice procedure |
+| `scale` | Scale & measurement | Measured diagram with modern units and a human for scale | Noah's ark, tabernacle plan, Solomon's temple, ten thousand talents |
+| `nature` | Naturalist plate | Field-guide plate of a plant, animal, or phenomenon | mustard plant, wheat vs. darnel, locust stages, hyssop, sycamore |
+| `birdseye` | Bird's-eye scene | Elevated wide view of a setting with the story's positions marked by labeled markers and arrows — never by depicting the actors | Valley of Elah, the siege of Jerusalem, the storm route to Malta |
+| `compare` | Side-by-side | Two- or three-panel comparison of things the verse contrasts | new wine/old wineskins, house on rock/sand, narrow/wide gate |
+| `timeline` | Timeline / sequence | Ordered strip of dates, reigns, hours, or steps | kings of Israel and Judah, the hours of the crucifixion day, seventy weeks |
+| `people` | Who's who | Relationship, succession, or genealogy chart with named nodes and neutral silhouettes | Herod's family, the twelve, the tribes, the priestly line |
+| `structure` | Structure of the passage | Typographic infographic of a list, parallel, chiasm, or argument | Beatitudes, fruit of the Spirit, the armor of God, the Ten Commandments |
+| `symbol` | Symbol explainer | Labeled diagram explaining what each element of a symbolic image stands for — clearly schematic, never a literal scene | the seven lampstands, Daniel's statue, Ezekiel's temple plan |
+
+The first five are the original reference-figure lanes; the rest were added
+so the catalog can go wider without breaking the doctrine. Every type still
+passes the three gate tests: the bird's-eye scene charts positions rather
+than acting the story, the symbol explainer diagrams rather than literalizes,
+and who's-who charts use silhouettes rather than faces.
 
 ### What never gets an aid
 
@@ -99,10 +119,36 @@ contain:
 
 ### Density
 
-Rarity is part of the subtlety. Most chapters get zero aids; a chapter never
-gets more than two; a whole book ships with a handful. One image should be
-reused across every anchor it serves (the tabernacle cutaway serves Exodus 26,
-Exodus 40, and Hebrews 9).
+**Direction (2026-08-12): step up toward abundance.** The original doctrine
+was rarity — a handful per book. That shipped as the 87-asset absolute set
+(catalog v3, 127 placements). Zack's direction is now that aids should be
+plentiful wherever they genuinely help, stepping up in tiers rather than
+flooding at once. Subtlety is preserved by the affordance (the wrapped verse
+number costs nothing when unopened), not by scarcity.
+
+The tiers come from `tools/bible_visual_aid_map.py`, which scores every
+canonical verse and caps anchors per chapter. Counts are anchors (verse
+placements), not unique images — reuse brings the image count down.
+
+| Tier | Settings | Anchors | Coverage | What it feels like |
+| --- | --- | --- | --- | --- |
+| Shipped (v3) | curated absolute set | 127 | 0.4% | a handful per book |
+| **Wave A — next step up** | `--min-score 6 --per-chapter-cap 2 --exclude-ids <published>` | ~783 new (+127 shipped) | 2.9% | roughly one aid every chapter or two |
+| Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
+| Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
+| Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
+
+Produce Wave A now (the map's `books/*.json` output is the editorial queue;
+the generated Wave A queue lives at
+`~/Documents/New project/output/bible-visual-aid-map/wave-a/` beside the
+Codex publish staging tree, with `published_anchor_ids.json` one level up),
+then read `pob_visual_aid_opened` analytics by aid type before deciding
+whether Wave B or C is worth it. Pass `--exclude-ids` with the current
+published anchor set on every rerun so the queue proposes only new
+placements. Per-chapter caps stay in place at every
+tier: no chapter becomes a picture book. One image is still reused across
+every anchor it serves (the tabernacle cutaway serves Exodus 26, Exodus 40,
+and Hebrews 9).
 
 ### Captions, certainty, disclaimers
 
@@ -180,10 +226,20 @@ Before an image enters the manifest:
 
 ## Pipeline
 
-1. **Select:** start from the curated editorial shortlist in
-   [`BIBLE_VISUAL_AID_SHORTLIST.md`](BIBLE_VISUAL_AID_SHORTLIST.md). The
-   heuristic queue from `tools/bible_visual_aid_candidates.py` is a
-   supplemental discovery net, not a publishing list.
+1. **Select:** the curated shortlist in
+   [`BIBLE_VISUAL_AID_SHORTLIST.md`](BIBLE_VISUAL_AID_SHORTLIST.md) is the
+   shipped absolute set. For the abundant waves, run
+   `tools/bible_visual_aid_map.py` against the compiled reader corpus at the
+   wave's tier settings; its per-book `books/*.json` output is the editorial
+   queue (each row carries aid type, format, working title, cues, and a
+   typed prompt). `tools/bible_visual_aid_candidates.py` is the older,
+   narrower discovery net and is superseded by the map for selection.
+
+   ```bash
+   python tools/bible_visual_aid_map.py \
+     --books-root ../cartha.website/public/bibles/pob/books \
+     --out-dir /tmp/bible-visual-aid-map --min-score 6 --per-chapter-cap 2
+   ```
 2. **Review:** an editor confirms a visual would clarify the passage, chooses
    the format (reconstruction, cutaway, map, diagram, object plate), fixes
    the label set, and adds historical/source constraints.
