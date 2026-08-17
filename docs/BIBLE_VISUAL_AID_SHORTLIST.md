@@ -148,14 +148,14 @@ Completed supplemental set; all 13 plates are generated and published in catalog
 | Dan 3:1 | The image on the plain of Dura | 60 cubits ≈ 90 ft as a pure silhouette scale diagram — flagged for editorial care (idol subject) |
 | Rev 21:16 | The city measured | 12,000-stadia cube as a pure scale diagram — diagram lane, flagged for editorial care |
 
-## Wave 2 — recommended expansion (proposed 2026-08-12, not yet produced)
+## Wave 2 — produced and published (catalog v4, 2026-08-16)
 
-The absolute set is the floor, not the ceiling. These still pass the three
-gate tests and materially improve comprehension; they are the next production
-wave. After Wave 2 the catalog sits around 130 unique assets / ~200
-placements. The honest ceiling for the whole feature is roughly 150–200
-assets (~1 aid per 3–4 chapters): past that the layer stops explaining and
-starts illustrating, which the subtlety doctrine exists to prevent.
+The absolute set is the floor, not the ceiling. These pass the three gate
+tests and materially improve comprehension. This wave shipped 42 new images;
+the synagogue and Solomon's temple furnishings reuse two already-published
+assets. Catalog v4 now contains **129 unique assets / 201 placements across
+46 books**. The broader canon-wide map remains an editorial discovery queue,
+not automatic permission to illustrate every candidate.
 
 ### Worship, temple & synagogue
 

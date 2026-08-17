@@ -120,8 +120,10 @@ and who's-who charts use silhouettes rather than faces.
 ### Density
 
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
-was rarity — a handful per book. That shipped as the 87-asset absolute set
-(catalog v3, 127 placements). Zack's direction is now that aids should be
+was rarity — a handful per book. The absolute set shipped as catalog v3; the
+curated Wave 2 expansion shipped on 2026-08-16 as catalog v4 (**129 unique
+assets, 201 placements across 46 books**). Zack's direction is now that aids
+should be
 plentiful wherever they genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
 number costs nothing when unopened), not by scarcity.
@@ -132,17 +134,19 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v3) | curated absolute set | 127 | 0.4% | a handful per book |
-| **Wave A — next step up** | `--min-score 6 --per-chapter-cap 2 --exclude-ids <published>` | ~783 new (+127 shipped) | 2.9% | roughly one aid every chapter or two |
+| Shipped (v4) | absolute set + curated Wave 2 | 201 | 0.6% | a useful teaching layer across 46 books |
+| **Wave A — next broad step** | `--min-score 6 --per-chapter-cap 2 --exclude-ids <published>` | ~768 new (+201 shipped) | 3.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
-Produce Wave A now (the map's `books/*.json` output is the editorial queue;
-the generated Wave A queue lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a/` beside the
-Codex publish staging tree, with `published_anchor_ids.json` one level up),
-then read `pob_visual_aid_opened` analytics by aid type before deciding
+Catalog v4's curated Wave 2 is now live. The refreshed next-wave map is an
+editorial queue, not an auto-generation list; it lives at
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v4-live-20260816/`
+beside the Codex publish staging tree, with
+`published_anchor_ids-v4.json` one level up. Review every row against the
+three gate tests before generation, then read `pob_visual_aid_opened`
+analytics by aid type before deciding
 whether Wave B or C is worth it. Pass `--exclude-ids` with the current
 published anchor set on every rerun so the queue proposes only new
 placements. Per-chapter caps stay in place at every
