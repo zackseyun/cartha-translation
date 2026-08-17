@@ -24,20 +24,20 @@ crowds for scale. What it is *not*: a cinematic painting of men carrying the
 lame man toward the gate. The first explains the setting the chapter assumes;
 the second competes with the text by acting the story out.
 
-### Three gate tests
+### Three teaching-first tests
 
 Every candidate image must pass all three before it is generated, and again at
 review:
 
-1. **One-verse-earlier test.** The image must be exactly as accurate one verse
-   *before* its anchor as at the anchor. If drawing it required knowing what
-   happens in the verse, it is a scene illustration, not an aid — reject.
-2. **Label test.** If you cannot attach 3–5 genuinely useful labels (places,
-   parts, functions, distances), the verse probably does not need an aid.
-3. **Anonymity test.** Deleting every human from the image should barely
-   reduce its value. People appear only as small anonymous figures giving
-   scale and life — never the passage's named characters, never faces in
-   focus.
+1. **Teaching-value test.** The image must explain a physical setting, object,
+   process, quantity, route, position, or symbol that materially helps the
+   reader. Calm anonymous action may be shown when the action itself explains
+   how something worked; cinematic reenactment is still rejected.
+2. **Label test.** The image needs 3–6 genuinely useful labels (places, parts,
+   functions, distances, quantities, or process steps), not decorative copy.
+3. **Focus test.** People may demonstrate scale, work, movement, or group
+   positions, but the teaching information remains the subject. Avoid named
+   characters and faces in focus; never manufacture an authoritative portrait.
 
 ### Visual language
 
@@ -55,11 +55,11 @@ review:
 - **Never:** cinematic close-ups, dramatic rim lighting, lens flares, glows or
   halos, shallow depth-of-field portrait framing, "movie still" or
   "movie poster" composition, visible emotion as the subject.
-- **Annotation layer:** 3–5 callouts (up to 6 on maps and object plates).
+- **Annotation layer:** 3–6 callouts.
   Dark rounded label chips, white text, thin white leader lines pointing at
   the feature — matching the approved Acts 3 reference image. Labels name
-  places, parts, functions, or measurements, in five words or fewer. Labels
-  never name people and never describe actions. No other text, no watermark.
+  places, parts, functions, measurements, quantities, or short process steps,
+  usually in five words or fewer. No other text, no watermark.
   Labels are baked in by Codex Image Gen with exact spelling supplied in the
   prompt; any garbled character is an automatic regeneration. Labels are
   English for now — if localization becomes a requirement, switch to a
@@ -67,8 +67,10 @@ review:
 
 ### People and the divine
 
-- Anonymous, small-scale, incidental figures only.
-- Never depict the passage's named characters (no Peter, no Paul, no Mary).
+- Anonymous workers, travelers, crowds, armies, and scale figures may be
+  prominent enough to explain a process or position, but never portrait-like.
+- Avoid depicting the passage's named characters (no authoritative Peter,
+  Paul, or Mary portrait); use anonymous role figures when a person is needed.
 - **Never depict Jesus, God, the Holy Spirit, angels, demons, or any
   heavenly being, in any form, in any aid.**
 - Human dignity always: no gore, no nudity, no suffering rendered as
@@ -77,9 +79,9 @@ review:
 
 ### What earns an aid
 
-Anchor verses qualify through the world they assume, not the drama they
-contain. The taxonomy of aid types (expanded 2026-08-12 for the abundant
-catalog — see [Density](#density)):
+Anchor verses qualify through whatever concrete information they leave hard
+to picture—not only the world they assume. The taxonomy of aid types (expanded
+2026-08-12 for the abundant catalog — see [Density](#density)):
 
 | Type key | Aid type | What it is | Examples |
 | --- | --- | --- | --- |
@@ -97,22 +99,22 @@ catalog — see [Density](#density)):
 | `symbol` | Symbol explainer | Labeled diagram explaining what each element of a symbolic image stands for — clearly schematic, never a literal scene | the seven lampstands, Daniel's statue, Ezekiel's temple plan |
 
 The first five are the original reference-figure lanes; the rest were added
-so the catalog can go wider without breaking the doctrine. Every type still
-passes the three gate tests: the bird's-eye scene charts positions rather
-than acting the story, the symbol explainer diagrams rather than literalizes,
-and who's-who charts use silhouettes rather than faces.
+so the catalog can go wider without becoming cinematic. Every type still
+passes the teaching-first tests: the bird's-eye scene may chart anonymous
+positions and movement, the symbol explainer diagrams rather than literalizes,
+and who's-who charts use neutral silhouettes rather than invented portraits.
 
 ### What never gets an aid
 
-- The event of the passage: miracles in progress, healings, theophanies,
-  resurrections, the crucifixion, the transfiguration, Gethsemane, Pentecost
-  flames. (An adjacent *setting* can still qualify — the Bethesda pool
-  layout, yes; the healing, no.)
+- Sensational or devotional reenactments of miracles, healings, theophanies,
+  resurrections, the crucifixion, the transfiguration, Gethsemane, or Pentecost
+  flames. Their settings, mechanics, routes, positions, and material context
+  may qualify when presented as teaching diagrams rather than sacred cinema.
 - Symbolic and visionary imagery: Revelation's beasts and throne room,
   Ezekiel 1, Daniel 7–8, Zechariah's visions. Never literalize a vision.
-  The single exception is the diagram lane: measured architectural visions
-  (Ezekiel 40–48) may be rendered as neutral plan-view diagrams, and plain
-  geography in visionary books (the seven churches' locations) as maps.
+  Schematic diagram lanes are allowed: measured architecture, scale diagrams,
+  symbol relationships, and plain geography may be rendered without turning
+  a vision into a photorealistic scene.
 - Doctrine, discourse, genealogy, and poetry in general. (A concrete object
   inside poetry — rod and staff, winnowing fork — may qualify as an object
   plate.)
@@ -121,10 +123,10 @@ and who's-who charts use silhouettes rather than faces.
 
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
-curated Wave 2 expansion shipped on 2026-08-16 as catalog v4 (**129 unique
-assets, 201 placements across 46 books**). Zack's direction is now that aids
-should be
-plentiful wherever they genuinely help, stepping up in tiers rather than
+curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. The teaching-first
+Wave 3 shipped as catalog v5 (**149 unique assets, 234 placements across 48
+books**). Zack's direction is now that aids should be plentiful wherever they
+genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
 number costs nothing when unopened), not by scarcity.
 
@@ -134,18 +136,18 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v4) | absolute set + curated Wave 2 | 201 | 0.6% | a useful teaching layer across 46 books |
-| **Wave A — next broad step** | `--min-score 6 --per-chapter-cap 2 --exclude-ids <published>` | ~768 new (+201 shipped) | 3.1% | roughly one aid every chapter or two |
+| Shipped (v5) | absolute set + curated Waves 2–3 | 234 | 0.8% | a teaching layer across 48 books |
+| **Wave A — next broad step** | `--min-score 6 --per-chapter-cap 2 --exclude-ids <published>` | ~749 new (+234 shipped) | 3.2% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
-Catalog v4's curated Wave 2 is now live. The refreshed next-wave map is an
+Catalog v5's teaching-first Wave 3 is now live. The refreshed next-wave map is an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v4-live-20260816/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v5-live-20260816/`
 beside the Codex publish staging tree, with
-`published_anchor_ids-v4.json` one level up. Review every row against the
-three gate tests before generation, then read `pob_visual_aid_opened`
+`published_anchor_ids-v5.json` one level up. Review every row against the
+teaching-first tests before generation, then read `pob_visual_aid_opened`
 analytics by aid type before deciding
 whether Wave B or C is worth it. Pass `--exclude-ids` with the current
 published anchor set on every rerun so the queue proposes only new
@@ -177,7 +179,17 @@ verse number legible in its normal accent color, carries an accessible label
 naming the aid, and gets a comfortable tap target. Web and mobile must present
 the same affordance (POB cross-platform parity).
 
-## Codex Image Gen prompt template (`annotated-reference-v2`)
+## Codex Image Gen prompt templates
+
+`annotated-reference-v2` remains valid for pure setting and object plates.
+Use `teaching-first-v1` when anonymous activity, positions, quantities, or a
+schematic vision element materially improves comprehension. It follows the
+same visual system, but replaces “do not depict the event” with: “teaching
+clarity comes first; calm anonymous action or position markers are allowed,
+but do not create a dramatic cinematic reenactment.” Record the selected
+version in each manifest entry.
+
+### `annotated-reference-v2`
 
 Fill the slots; keep the rest verbatim. Record `prompt_version:
 "annotated-reference-v2"` in the manifest entry.
@@ -217,7 +229,7 @@ keep details generic and plausible; distinguish reconstruction from certainty.
 
 Before an image enters the manifest:
 
-- [ ] Passes one-verse-earlier, label, and anonymity tests.
+- [ ] Passes the teaching-value, label, and focus tests.
 - [ ] No named characters; no divine or angelic beings; dignity preserved.
 - [ ] Every label spelled exactly; no stray text artifacts anywhere in frame.
 - [ ] Style matches the library (matte reconstruction, daylight, no drama).
@@ -225,8 +237,8 @@ Before an image enters the manifest:
 - [ ] `visual_type`, `historical_certainty`, disclaimer, alt text set;
       alt text describes the figure without narrating the event.
 - [ ] Thumbnail still legible at small size.
-- [ ] `prompt_version` is `annotated-reference-v2`; image URLs get a bumped
-      `?v=` query so CDN caches refresh.
+- [ ] `prompt_version` is `annotated-reference-v2` or `teaching-first-v1`;
+      image URLs get a bumped `?v=` query so CDN caches refresh.
 
 ## Pipeline
 
