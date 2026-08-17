@@ -137,7 +137,7 @@ placements), not unique images — reuse brings the image count down.
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
 | Shipped (v12) | absolute set + curated Waves 2–22 | 403 | 1.3% | a teaching layer across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | ~531 new (+403 shipped) | 3.1% | roughly one aid every chapter or two |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | ~544 new (+403 shipped) | 3.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
