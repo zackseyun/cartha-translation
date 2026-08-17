@@ -160,8 +160,10 @@ and Hebrews 9).
 ### Captions, certainty, disclaimers
 
 - Captions explain the *thing* ("A portico was a roofed colonnade…"), never
-  retell the story beat.
-- Keep the `historical_certainty` field and the on-image-sheet disclaimer.
+  retell the story beat or repeat that the figure is a reconstruction.
+- Keep the `historical_certainty` field and the compact on-image-sheet
+  disclaimer: "Visual details may be interpreted or created. Artist
+  reconstruction."
   Where identification is contested (e.g., which gate was "Beautiful"),
   describe by function and say so in the caption; do not present one
   identification as settled.
