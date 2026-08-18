@@ -124,7 +124,7 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–33 now ship as catalog v25 (**303 unique assets, 421 placements across
+Waves 3–33 now ship as catalog v26 (**303 unique assets, 422 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -136,7 +136,7 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v25) | absolute set + curated Waves 2–33 | 421 | 1.4% | a teaching layer across 53 books |
+| Shipped (v26) | absolute set + curated Waves 2–33 | 422 | 1.4% | a teaching layer across 53 books |
 | **Wave A — next broad step** | published exclusions + editorial dispositions | ~497 new (+421 shipped) | 3.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
