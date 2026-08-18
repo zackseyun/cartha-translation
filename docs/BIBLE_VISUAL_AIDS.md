@@ -124,7 +124,7 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–38 now ship as catalog v31 (**336 unique assets, 496 placements across
+Waves 3–39 now ship as catalog v32 (**344 unique assets, 535 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -136,17 +136,17 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v31) | absolute set + curated Waves 2–38 | 496 | 1.6% | a teaching layer across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | ~396 new (+496 shipped) | 2.9% | roughly one aid every chapter or two |
+| Shipped (v32) | absolute set + curated Waves 2–39 | 535 | 1.7% | a teaching layer across 53 books |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | ~358 new (+535 shipped) | 2.9% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
 Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v31-reviewed/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v32-reviewed/`
 beside the Codex publish staging tree, with
-`published_anchor_ids-v31.json` and the cumulative
+`published_anchor_ids-v32.json` and the cumulative
 `editorial-dispositions.json` one level up. Review every row against the
 teaching-first tests before generation, then read `pob_visual_aid_opened`
 analytics by aid type before deciding
