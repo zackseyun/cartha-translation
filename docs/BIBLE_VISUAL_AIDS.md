@@ -144,7 +144,7 @@ placements), not unique images — reuse brings the image count down.
 
 Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v19-raw/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v19-reviewed/`
 beside the Codex publish staging tree, with
 `published_anchor_ids-v19.json` and the cumulative
 `editorial-dispositions.json` one level up. Review every row against the
