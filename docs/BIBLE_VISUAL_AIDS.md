@@ -137,14 +137,14 @@ placements), not unique images — reuse brings the image count down.
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
 | Shipped (v24) | absolute set + curated Waves 2–32 | 420 | 1.4% | a teaching layer across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | ~503 new (+420 shipped) | 3.1% | roughly one aid every chapter or two |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | ~498 new (+420 shipped) | 3.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
 Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v24-reviewed/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v24-reviewed-r2/`
 beside the Codex publish staging tree, with
 `published_anchor_ids-v24.json` and the cumulative
 `editorial-dispositions.json` one level up. Review every row against the
