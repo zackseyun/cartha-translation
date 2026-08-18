@@ -124,7 +124,7 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–26 now ship as catalog v16 (**294 unique assets, 409 placements across
+Waves 3–26 now ship as catalog v17 (**294 unique assets, 409 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -136,13 +136,13 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v16) | absolute set + curated Waves 2–26 | 409 | 1.3% | a teaching layer across 53 books |
+| Shipped (v17) | absolute set + curated Waves 2–26 | 409 | 1.3% | a teaching layer across 53 books |
 | **Wave A — next broad step** | published exclusions + editorial dispositions | ~519 new (+409 shipped) | 3.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
-Catalog v16's teaching-first Wave 26 is now live. The refreshed map remains an
+Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
 `~/Documents/New project/output/bible-visual-aid-map/wave-a-v16-raw/`
 beside the Codex publish staging tree, with
@@ -159,8 +159,22 @@ and Hebrews 9).
 
 ### Captions, certainty, disclaimers
 
-- Captions explain the *thing* ("A portico was a roofed colonnade…"), never
-  retell the story beat or repeat that the figure is a reconstruction.
+- Every caption answers **why this image helps with the Scripture placement**.
+  Lead with the reference and explain the concrete connection to the passage:
+  the setting, movement, object, practice, quantity, position, or wording that
+  becomes clearer. For example, the John 13 dining-layout caption explains how
+  reclining on the left side allowed the disciple beside Jesus to lean back
+  toward his chest and ask the question in verses 24–25.
+- Explain enough of the story or verse context to make the image's relevance
+  obvious, while still letting Scripture narrate the event. Do not merely name
+  what the image contains.
+- Reader copy must never expose image-generation or editorial instructions such
+  as "diagram only," "no people," "published," "map lane," or "flagged for
+  editorial care." Those constraints belong in production metadata, not the
+  caption.
+- Reused images need placement-specific wording whenever the reason they help
+  changes. A reclining-table diagram, for example, explains physical proximity
+  in John 13 but banquet arrangement in Luke 5 and Matthew 22.
 - Keep the `historical_certainty` field and the compact on-image-sheet
   disclaimer: "Visual details may be interpreted or created. Artist
   reconstruction."
@@ -236,7 +250,11 @@ Before an image enters the manifest:
 - [ ] No named characters; no divine or angelic beings; dignity preserved.
 - [ ] Every label spelled exactly; no stray text artifacts anywhere in frame.
 - [ ] Style matches the library (matte reconstruction, daylight, no drama).
-- [ ] Caption explains the thing, not the story; title names place/object.
+- [ ] Caption explains why the aid helps with this exact Scripture placement;
+      reused placements have context-specific copy where needed.
+- [ ] No prompt/editorial notes appear in reader copy (`diagram only`, `no
+      people`, `published`, lane names, generation constraints, and similar).
+- [ ] Title names the place/object/concept rather than dramatizing the action.
 - [ ] `visual_type`, `historical_certainty`, disclaimer, alt text set;
       alt text describes the figure without narrating the event.
 - [ ] Thumbnail still legible at small size.
@@ -266,9 +284,12 @@ Before an image enters the manifest:
    template. One approved concept produces one final asset; discarded
    variants do not enter the catalog.
 4. **Verify:** run the QA checklist above.
-5. **Publish:** upload the final image plus a per-book versioned JSON manifest
-   under `bible-visual-aids/v1/`. Mobile and web fetch the same public
-   catalog.
+5. **Publish:** build the per-book manifests with the canonical production
+   tooling in `zackseyun/cartha-music-production/bible_visual_aids/`, then
+   upload the final image plus versioned JSON under `bible-visual-aids/v1/`.
+   Its tests require every placement to carry a contextual "Why this helps"
+   caption and reject production-note language. Mobile and web fetch the same
+   public catalog.
 
 Generated queues and image binaries are production artifacts and must not be
 committed to this translation repository.
