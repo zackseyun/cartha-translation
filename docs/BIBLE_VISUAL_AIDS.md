@@ -144,8 +144,8 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–48 plus Narrative Reconstruction Wave 1 now ship as catalog v42
-(**376 unique assets, 644 placements across
+Waves 3–48 plus Narrative Reconstruction Waves 1–2 now ship as catalog v43
+(**384 unique assets, 652 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -157,17 +157,17 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v42) | absolute set + curated Waves 2–48 + Narrative Wave 1 | 644 | 2.0% | reference figures plus text-grounded scenes across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+644 shipped) | 2.0% | roughly one aid every chapter or two |
+| Shipped (v43) | absolute set + curated Waves 2–48 + Narrative Waves 1–2 | 652 | 2.1% | reference figures plus text-grounded scenes across 53 books |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+652 shipped) | 2.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
 Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v42-reviewed/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v43-reviewed/`
 beside the Codex publish staging tree, with
-`published_anchor_ids-v42.json` and the cumulative
+`published_anchor_ids-v43.json` and the cumulative
 `editorial-dispositions.json` one level up. Review every row against the
 teaching-first tests before generation, then read `pob_visual_aid_opened`
 analytics by aid type before deciding
@@ -188,14 +188,18 @@ flags sensitive scenes for heightened review, and writes text-grounded
 `narrative-reconstruction-v1` prompts. It never auto-approves an image.
 
 The current published-text scan lives at
-`~/Documents/New project/output/bible-narrative-scene-map/wave-a-v42-raw/`.
+`~/Documents/New project/output/bible-narrative-scene-map/wave-a-v43-reviewed/`.
 Narrative Wave 1 shipped eight reviewed scenes in catalog v42: Jacob and Esau's
 reunion, Joseph listening through an interpreter, Abigail's intercession,
 Jehoiakim cutting and burning the scroll, the father welcoming the returning
 son, Jesus blessing the children, Dorcas's widows showing her garments, and
-the sealing of Daniel's den. The refreshed queue contains 125 candidates still
-requiring editorial approval or rejection; that count is not a promise to
-publish every match.
+the sealing of Daniel's den. Wave 2 adds the Shunammite mother's reunion,
+David's fast, Joseph weeping in private, David sparing Saul, the unconsumed
+bush, Jesus raising the boy by the hand, Naomi's roadside farewell, and Peter
+raising Cornelius. Catalog v43's refreshed queue contains 119 candidates still
+requiring editorial approval or rejection; 29 lexical false positives are now
+recorded in the narrative editorial-disposition ledger. The queue count is not
+a promise to publish every match.
 
 ### Captions, certainty, disclaimers
 

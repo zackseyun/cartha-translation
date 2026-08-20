@@ -314,6 +314,10 @@ def main() -> int:
     ap.add_argument("--books", nargs="*")
     ap.add_argument("--exclude-ids", type=Path)
     ap.add_argument(
+        "--exclude-dispositions", type=Path,
+        help="JSON editorial-disposition array; rows with disposition=reject are skipped",
+    )
+    ap.add_argument(
         "--exclude-radius", type=int, default=2,
         help="Skip verses this many positions from an existing placement (default 2)",
     )
@@ -322,6 +326,12 @@ def main() -> int:
     published: set[str] = set()
     if args.exclude_ids and args.exclude_ids.exists():
         published = set(json.loads(args.exclude_ids.read_text()))
+    editorial_rejections: set[str] = set()
+    if args.exclude_dispositions and args.exclude_dispositions.exists():
+        editorial_rejections = {
+            row["id"] for row in json.loads(args.exclude_dispositions.read_text())
+            if row.get("disposition") == "reject" and row.get("id")
+        }
 
     def near_published(slug: str, chapter: int, verse: int) -> bool:
         return any(
@@ -347,6 +357,8 @@ def main() -> int:
         hits = []
         for chapter, verse, text in verses:
             if published and near_published(slug, chapter, verse):
+                continue
+            if f"{slug}-{chapter}-{verse}" in editorial_rejections:
                 continue
             hit = score_scene(
                 slug, CANON_66[slug], chapter, verse, text,
@@ -385,6 +397,7 @@ def main() -> int:
         "min_score": args.min_score,
         "per_chapter_cap": args.per_chapter_cap,
         "exclude_radius": args.exclude_radius,
+        "editorial_exclusions": len(editorial_rejections),
         "canon_anchors": total,
         "flags": dict(flags),
         "books": summary_books,
