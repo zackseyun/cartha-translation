@@ -9,13 +9,21 @@ like**. Codex Image Gen sessions must follow the Art direction section below;
 it overrides any older prompt guidance (`historical-scene-v1` is retired — see
 [Catalog dispositions](#catalog-dispositions)).
 
-## Art direction — show the stage, not the play
+## Art direction — two complementary lanes
 
-A visual aid is a **reference figure**, the kind of labeled reconstruction
-found in a study Bible or on a museum placard. It explains the physical world
-a passage assumes — places, structures, objects, routes, practices — so the
-reader can picture what is happening. It **never illustrates the event
-itself**. The Scripture text stays the only narrator of the story.
+A visual aid may be either a **reference figure** or an opt-in **narrative
+reconstruction**. Reference figures are the labeled reconstructions found in a
+study Bible or on a museum placard: they explain the physical world a passage
+assumes — places, structures, objects, routes, practices — without acting out
+the event. Narrative reconstructions help a reader picture a passage whose
+positions, participants, or emotional setting are otherwise difficult to hold
+together. They may show the event, but must remain visibly interpretive rather
+than presenting invented details as history, portraiture, or doctrine.
+
+Both lanes are supplemental. Scripture remains the narrator, and every sheet
+retains the artist-reconstruction disclaimer. Prefer the reference lane when
+the setting or object is sufficient; use the narrative lane only when seeing
+the described moment adds material teaching or comprehension value.
 
 The approved house-style example is the annotated Temple-courts image for Acts
 3: a wide reconstruction of the outer courts with callout labels for the
@@ -33,29 +41,34 @@ review:
    process, quantity, route, position, or symbol that materially helps the
    reader. Calm anonymous action may be shown when the action itself explains
    how something worked; cinematic reenactment is still rejected.
-2. **Label test.** The image needs 3–6 genuinely useful labels (places, parts,
-   functions, distances, quantities, or process steps), not decorative copy.
-3. **Focus test.** People may demonstrate scale, work, movement, or group
-   positions, but the teaching information remains the subject. Avoid named
-   characters and faces in focus; never manufacture an authoritative portrait.
+2. **Clarity test.** A reference figure needs 3–6 genuinely useful labels
+   (places, parts, functions, distances, quantities, or process steps), not
+   decorative copy. A narrative reconstruction normally has no baked-in text;
+   its composition must make the verse's key relationship immediately clear.
+3. **Focus test.** People may demonstrate scale, work, movement, group
+   positions, or a passage-described relationship, but the teaching information
+   remains the subject. Narrative figures must not become authoritative
+   portraits; use restrained facial specificity and composition.
 
 ### Visual language
 
 - **Formats:** any type in the [taxonomy](#what-earns-an-aid) — annotated
   reconstruction, cutaway, plan/diagram, map or route profile, object plate,
   process plate, naturalist plate, bird's-eye chart, comparison panels,
-  timeline, relationship chart, structure infographic, symbol explainer.
-- **Style:** two registers, kept consistent within each. *Pictorial* types
+  timeline, relationship chart, structure infographic, symbol explainer, or
+  narrative reconstruction.
+- **Style:** three registers, kept consistent within each. *Pictorial* types
   (place, object, how, nature, birdseye) are matte, realistic
   historical-reconstruction painting; natural daylight; neutral documentary
   tone. *Diagrammatic* types (map, scale, compare, timeline, people,
   structure, symbol) use a warm parchment-and-ink palette with clean
-  typography and restrained color. Both share the same label-chip annotation
-  system so the library reads as one family.
-- **Never:** cinematic close-ups, dramatic rim lighting, lens flares, glows or
-  halos, shallow depth-of-field portrait framing, "movie still" or
-  "movie poster" composition, visible emotion as the subject.
-- **Annotation layer:** 3–6 callouts.
+  typography and restrained color. *Narrative* scenes use the same matte
+  historical-reconstruction register, natural light, restrained emotion, and
+  documentary realism, but omit baked-in labels so the scene remains readable.
+- **Never:** sensational close-ups, dramatic rim lighting, lens flares, halos,
+  fantasy spectacle, "movie poster" composition, or emotion detached from the
+  passage's actual wording.
+- **Annotation layer:** Reference figures use 3–6 callouts.
   Dark rounded label chips, white text, thin white leader lines pointing at
   the feature — matching the approved Acts 3 reference image. Labels name
   places, parts, functions, measurements, quantities, or short process steps,
@@ -69,10 +82,14 @@ review:
 
 - Anonymous workers, travelers, crowds, armies, and scale figures may be
   prominent enough to explain a process or position, but never portrait-like.
-- Avoid depicting the passage's named characters (no authoritative Peter,
-  Paul, or Mary portrait); use anonymous role figures when a person is needed.
-- **Never depict Jesus, God, the Holy Spirit, angels, demons, or any
-  heavenly being, in any form, in any aid.**
+- Reference figures avoid the passage's named characters; use anonymous role
+  figures when a person is needed to explain scale, work, or position.
+- Narrative reconstructions may depict people or heavenly beings explicitly
+  described in the passage, including Jesus or angels, when their presence is
+  essential to comprehension. Keep faces non-authoritative and historically
+  plausible; do not imply that appearance, ethnicity, clothing detail, wings,
+  halo, or supernatural visual effects are supplied by the text when they are
+  not.
 - Human dignity always: no gore, no nudity, no suffering rendered as
   spectacle. Battles may appear only as maps, positions, or siege
   engineering — never carnage.
@@ -97,6 +114,7 @@ to picture—not only the world they assume. The taxonomy of aid types (expanded
 | `people` | Who's who | Relationship, succession, or genealogy chart with named nodes and neutral silhouettes | Herod's family, the twelve, the tribes, the priestly line |
 | `structure` | Structure of the passage | Typographic infographic of a list, parallel, chiasm, or argument | Beatitudes, fruit of the Spirit, the armor of God, the Ten Commandments |
 | `symbol` | Symbol explainer | Labeled diagram explaining what each element of a symbolic image stands for — clearly schematic, never a literal scene | the seven lampstands, Daniel's statue, Ezekiel's temple plan |
+| `scene` | Narrative reconstruction | Clearly interpretive, text-free reconstruction of a described moment whose people, positions, or emotional setting materially aid comprehension | the angels at the head and feet of the empty burial place, Ruth approaching the threshing floor, Paul before the Areopagus |
 
 The first five are the original reference-figure lanes; the rest were added
 so the catalog can go wider without becoming cinematic. Every type still
@@ -106,10 +124,12 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 
 ### What never gets an aid
 
-- Sensational or devotional reenactments of miracles, healings, theophanies,
-  resurrections, the crucifixion, the transfiguration, Gethsemane, or Pentecost
-  flames. Their settings, mechanics, routes, positions, and material context
-  may qualify when presented as teaching diagrams rather than sacred cinema.
+- Sensational, manipulative, or devotionalized reenactments that add spectacle
+  beyond the passage. Miracles, healings, resurrection appearances, the
+  crucifixion, the transfiguration, Gethsemane, and Pentecost require heightened
+  editorial care, but may qualify as restrained narrative reconstructions when
+  the depicted relationship is genuinely helpful and invented details are kept
+  visibly interpretive.
 - Symbolic and visionary imagery: Revelation's beasts and throne room,
   Ezekiel 1, Daniel 7–8, Zechariah's visions. Never literalize a vision.
   Schematic diagram lanes are allowed: measured architecture, scale diagrams,
@@ -124,7 +144,7 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–47 now ship as catalog v40 (**367 unique assets, 635 placements across
+Waves 3–48 now ship as catalog v41 (**368 unique assets, 636 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -136,17 +156,17 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v40) | absolute set + curated Waves 2–47 | 635 | 2.0% | a teaching layer across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+635 shipped) | 2.0% | roughly one aid every chapter or two |
+| Shipped (v41) | absolute set + curated Waves 2–48 | 636 | 2.0% | a teaching layer across 53 books |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+636 shipped) | 2.0% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
 Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v40-reviewed/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v41-reviewed/`
 beside the Codex publish staging tree, with
-`published_anchor_ids-v40.json` and the cumulative
+`published_anchor_ids-v41.json` and the cumulative
 `editorial-dispositions.json` one level up. Review every row against the
 teaching-first tests before generation, then read `pob_visual_aid_opened`
 analytics by aid type before deciding
@@ -206,6 +226,11 @@ clarity comes first; calm anonymous action or position markers are allowed,
 but do not create a dramatic cinematic reenactment.” Record the selected
 version in each manifest entry.
 
+Use `narrative-reconstruction-v1` when the described participants and their
+relationship are themselves the teaching value. These images normally contain
+no labels, never claim portrait accuracy, and must not add supernatural visual
+details that the passage does not describe.
+
 ### `annotated-reference-v2`
 
 Fill the slots; keep the rest verbatim. Record `prompt_version:
@@ -242,13 +267,32 @@ arches in the court, dress of the period"]. Where identification is debated,
 keep details generic and plausible; distinguish reconstruction from certainty.
 ```
 
+### `narrative-reconstruction-v1`
+
+```text
+Narrative reconstruction for [REFERENCE]. Show the passage-described moment in
+a restrained, historically plausible way that helps the reader understand
+[KEY RELATIONSHIP OR POSITION].
+
+Scene: [SETTING, TIME, AND REQUIRED PHYSICAL CONTEXT].
+Participants: [WHO THE TEXT EXPLICITLY DESCRIBES]. Keep faces non-authoritative;
+do not invent portrait certainty or supernatural details absent from the text.
+Composition: [THE SPATIAL OR EMOTIONAL RELATIONSHIP THAT MUST READ IMMEDIATELY].
+Style: matte realistic historical reconstruction, natural light, restrained
+emotion, documentary realism; no spectacle, halos, lens flare, or poster drama.
+Text: no title, labels, quotation, watermark, or other baked-in text.
+Historical care: [ERA, CLOTHING, ARCHITECTURE, AND UNCERTAINTIES].
+```
+
 ## Publish QA checklist
 
 Before an image enters the manifest:
 
-- [ ] Passes the teaching-value, label, and focus tests.
-- [ ] No named characters; no divine or angelic beings; dignity preserved.
-- [ ] Every label spelled exactly; no stray text artifacts anywhere in frame.
+- [ ] Passes the teaching-value, clarity, and focus tests.
+- [ ] Reference figures contain no named characters or heavenly beings;
+      narrative figures are text-grounded, non-authoritative, and dignified.
+- [ ] Every required reference label is spelled exactly; narrative scenes have
+      no stray text artifacts anywhere in frame.
 - [ ] Style matches the library (matte reconstruction, daylight, no drama).
 - [ ] Caption explains why the aid helps with this exact Scripture placement;
       reused placements have context-specific copy where needed.
