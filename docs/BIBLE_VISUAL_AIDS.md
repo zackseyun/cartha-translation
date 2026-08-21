@@ -167,8 +167,8 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–48 plus Narrative Reconstruction Waves 1–2 and the full semantic audit
-now ship as catalog v44 (**385 unique assets, 632 placements across
+Waves 3–48 plus Narrative Reconstruction Waves 1–3 and the full semantic audit
+now ship as catalog v45 (**393 unique assets, 640 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -180,17 +180,17 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v44) | curated Waves 2–48 + Narrative Waves 1–2 + semantic corrections | 632 | 2.0% | audited reference figures and text-grounded scenes across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+632 shipped) | 2.0% | roughly one aid every chapter or two |
+| Shipped (v45) | curated Waves 2–48 + Narrative Waves 1–3 + semantic corrections | 640 | 2.0% | audited reference figures and text-grounded scenes across 53 books |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+640 shipped) | 2.0% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
 Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v44-reviewed/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v45-reviewed/`
 beside the Codex publish staging tree, with
-`published_anchor_ids-v44.json` and the cumulative
+`published_anchor_ids-v45.json` and the cumulative
 `editorial-dispositions.json` one level up. Review every row against the
 teaching-first tests before generation, then read `pob_visual_aid_opened`
 analytics by aid type before deciding
@@ -219,8 +219,11 @@ son, Jesus blessing the children, Dorcas's widows showing her garments, and
 the sealing of Daniel's den. Wave 2 adds the Shunammite mother's reunion,
 David's fast, Joseph weeping in private, David sparing Saul, the unconsumed
 bush, Jesus raising the boy by the hand, Naomi's roadside farewell, and Peter
-raising Cornelius. After the v44 semantic audit, the refreshed narrative queue
-contains 110 candidates still requiring editorial approval or rejection; 59
+raising Cornelius. Wave 3 adds Hagar at bowshot distance, Rebekah at the spring,
+Ruth at Boaz's feet, Eli awaiting the messenger, Saul's anointing, Naaman in the
+Jordan, David mourning Absalom, and Mordecai's public honor in Susa. Catalog
+v45's refreshed narrative queue contains 106 candidates still requiring
+editorial approval or rejection; 59
 lexical false positives are now recorded in the narrative editorial-disposition
 ledger. The queue count is not a promise to publish every match.
 
@@ -242,8 +245,8 @@ every catalog row to the published verse text, rejects production language in
 reader captions, enforces parable/comparison/vision wording, detects anchor
 collisions, and requires a manual disposition for every live placement. The
 current ledger and report live beside the publish tree as
-`bible-visual-aid-semantic-audit-v44-ledger.json` and
-`bible-visual-aid-semantic-audit-v44-final.json`.
+`bible-visual-aid-semantic-audit-v45-ledger.json` and
+`bible-visual-aid-semantic-audit-v45-final.json`.
 
 ### Captions, certainty, disclaimers
 
