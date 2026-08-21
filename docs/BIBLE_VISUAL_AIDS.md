@@ -167,8 +167,8 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–48 plus Narrative Reconstruction Waves 1–5 and the full semantic audit
-now ship as catalog v47 (**409 unique assets, 657 placements across
+Waves 3–48 plus Narrative Reconstruction Waves 1–6 and the full semantic audit
+now ship as catalog v48 (**417 unique assets, 666 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -180,17 +180,17 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v47) | curated Waves 2–48 + Narrative Waves 1–5 + semantic corrections | 657 | 2.1% | audited reference figures and text-grounded scenes across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+657 shipped) | 2.1% | roughly one aid every chapter or two |
+| Shipped (v48) | curated Waves 2–48 + Narrative Waves 1–6 + semantic corrections | 666 | 2.1% | audited reference figures and text-grounded scenes across 53 books |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+666 shipped) | 2.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
 
 Catalog v17's contextual-caption update is now live. The refreshed map remains an
 editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v47-reviewed/`
+`~/Documents/New project/output/bible-visual-aid-map/wave-a-v48-reviewed/`
 beside the Codex publish staging tree, with
-`published_anchor_ids-v47.json` and the cumulative
+`published_anchor_ids-v48.json` and the cumulative
 `editorial-dispositions.json` one level up. Review every row against the
 teaching-first tests before generation, then read `pob_visual_aid_opened`
 analytics by aid type before deciding
@@ -228,9 +228,13 @@ Abraham's three visitors, Josiah hearing the discovered law, and Jonah waiting
 east of Nineveh. Wave 5 adds Jairus's plea, Elisha crossing the Jordan, Joseph
 reuniting with Israel, Jesus touching the man with a skin disease, Solomon
 hearing the two women, Uriah receiving the sealed letter, Moab's red-water
-mistake, and Paul's guarded lodging in Rome. Catalog v47's refreshed narrative
-queue contains 69 candidates still requiring editorial approval or rejection.
-The narrative disposition ledger records 143 rejected candidates and 40
+mistake, and Paul's guarded lodging in Rome. Wave 6 adds Joseph reassuring his
+brothers, the Syrophoenician mother's plea, Ittai's loyal crossing, Elisha's
+acted arrow prophecy, Saul's spear beside David's lyre, Daniel's open-window
+prayer, Mordecai at the palace gate, and Paul's garment-shaking gesture.
+Catalog v48's refreshed narrative queue contains 64 candidates still requiring
+editorial approval or rejection. The narrative disposition ledger records 143
+rejected candidates and 48
 published candidates so neither class can silently re-enter the queue. The
 queue count is not a promise to publish every match.
 
@@ -252,8 +256,8 @@ every catalog row to the published verse text, rejects production language in
 reader captions, enforces parable/comparison/vision wording, detects anchor
 collisions, and requires a manual disposition for every live placement. The
 current ledger and report live beside the publish tree as
-`bible-visual-aid-semantic-audit-v47-ledger.json` and
-`bible-visual-aid-semantic-audit-v47-final.json`.
+`bible-visual-aid-semantic-audit-v48-ledger.json` and
+`bible-visual-aid-semantic-audit-v48-final.json`.
 
 ### Captions, certainty, disclaimers
 
