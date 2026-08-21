@@ -315,7 +315,7 @@ def main() -> int:
     ap.add_argument("--exclude-ids", type=Path)
     ap.add_argument(
         "--exclude-dispositions", type=Path,
-        help="JSON editorial-disposition array; rows with disposition=reject are skipped",
+        help="JSON editorial-disposition array; rejected and published rows are skipped",
     )
     ap.add_argument(
         "--exclude-radius", type=int, default=2,
@@ -330,7 +330,7 @@ def main() -> int:
     if args.exclude_dispositions and args.exclude_dispositions.exists():
         editorial_rejections = {
             row["id"] for row in json.loads(args.exclude_dispositions.read_text())
-            if row.get("disposition") == "reject" and row.get("id")
+            if row.get("disposition") in {"reject", "published"} and row.get("id")
         }
 
     def near_published(slug: str, chapter: int, verse: int) -> bool:
