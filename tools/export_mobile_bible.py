@@ -209,6 +209,224 @@ def _paragraphs(text: str) -> list[str]:
     return [p.strip() for p in str(text or "").splitlines() if p.strip()]
 
 
+_JESUS_SPEAKER_RE = re.compile(
+    r"(?:\[\s*)?(?:Jesus|the Savior|the Saviour|the Lord|the Living One|"
+    r"the Holy One|he who is holy)(?:\s*\])?"
+    r"[^\n.!?;:”“\"]{0,80}\b"
+    r"(?:said|asked|answered|replied|responded|continued|told|cried out|spoke)",
+    re.IGNORECASE,
+)
+_OTHER_SPEAKER_RE = re.compile(
+    r"(?:\[\s*)?(?:Judas|Thomas|Mary|Matthew|Peter|Philip|the disciples?|"
+    r"his disciples?|they|the apostles?|the child(?: Jesus)?|Joseph|the teacher|"
+    r"the priest|the angel)(?:\s*\])?\s+"
+    r"(?:then\s+|also\s+|again\s+)?"
+    r"(?:said|asked|answered|replied|responded|continued|told|cried out|spoke)",
+    re.IGNORECASE,
+)
+
+
+def _quote_range_after(text: str, start: int) -> tuple[int, int, bool] | None:
+    """Return the direct quotation following an attribution.
+
+    The extra-canonical witnesses consistently use straight or curly double
+    quotation marks for direct speech and single curly marks for quotations
+    *inside* a speech.  Keeping the outer delimiter distinction prevents an
+    embedded saying from ending Jesus' range early.
+    """
+    candidates = [(text.find('“', start), '”'), (text.find('"', start), '"')]
+    candidates = [(index, closer) for index, closer in candidates if index >= 0]
+    if not candidates:
+        return None
+    quote_start, closer = min(candidates, key=lambda item: item[0])
+    quote_end = text.find(closer, quote_start + 1)
+    if quote_end < 0:
+        return quote_start + 1, len(text), True
+    return quote_start + 1, quote_end, False
+
+
+def _jesus_ranges_for_paragraph(
+    text: str,
+    *,
+    continuing_jesus_speech: bool,
+    allow_lord_title: bool = True,
+) -> tuple[list[dict[str, int]], bool]:
+    """Conservatively identify explicitly attributed Jesus quotations.
+
+    This is an export-time audit aid, not an inference about theology or
+    authorship.  It only marks direct speech attributed by the translated text
+    itself to Jesus/the Savior/the Lord, plus typographic continuation
+    paragraphs in the same open quotation.
+    """
+    ranges: list[dict[str, int]] = []
+    carry = continuing_jesus_speech
+
+    if continuing_jesus_speech:
+        stripped_start = len(text) - len(text.lstrip())
+        if stripped_start < len(text) and text[stripped_start] in {'“', '"'}:
+            closer = '”' if text[stripped_start] == '“' else '"'
+            close = text.find(closer, stripped_start + 1)
+            end = close if close >= 0 else len(text)
+            if end > stripped_start + 1:
+                ranges.append({'start': stripped_start + 1, 'end': end})
+            carry = close < 0
+
+    attributions: list[tuple[int, bool, re.Match[str]]] = []
+    for match in _JESUS_SPEAKER_RE.finditer(text):
+        prefix = text[max(0, match.start() - 12):match.start()].lower()
+        speaker = match.group(0).lower()
+        if prefix.endswith('of ') or prefix.endswith('of the '):
+            continue
+        if 'lord' in speaker and not allow_lord_title:
+            continue
+        attributions.append((match.start(), True, match))
+    attributions.extend((match.start(), False, match) for match in _OTHER_SPEAKER_RE.finditer(text))
+    attributions.sort(key=lambda item: item[0])
+
+    for _, is_jesus, match in attributions:
+        quote = _quote_range_after(text, match.end())
+        if quote is None:
+            if not is_jesus:
+                carry = False
+            continue
+        start, end, remains_open = quote
+        # Do not let an attribution claim a quotation that actually belongs to
+        # a later speaker attribution in the same paragraph.
+        intervening = next((item for item in attributions if match.end() < item[0] < start), None)
+        if intervening is not None:
+            continue
+        if is_jesus and end > start:
+            ranges.append({'start': start, 'end': end})
+        carry = is_jesus and remains_open
+
+    # Stable, merged ranges keep clients simple and make the exported metadata
+    # directly inspectable in tests and CDN snapshots.
+    merged: list[dict[str, int]] = []
+    for item in sorted(ranges, key=lambda value: (value['start'], value['end'])):
+        if merged and item['start'] <= merged[-1]['end']:
+            merged[-1]['end'] = max(merged[-1]['end'], item['end'])
+        else:
+            merged.append(dict(item))
+    return merged, carry
+
+
+def _split_reader_paragraphs(
+    text: str,
+    *,
+    allow_lord_title: bool = True,
+) -> list[dict[str, Any]]:
+    """Expose editorial prose as numbered paragraph reading units.
+
+    These numbers are modern reader navigation, not claimed ancient verse
+    divisions.  Blank-line paragraph boundaries already encode the editors'
+    dialogue/narrative structure and are much more usable than one multi-page
+    synthetic verse 1.
+    """
+    paragraphs = _paragraphs(text)
+    out: list[dict[str, Any]] = []
+    continuing_jesus_speech = False
+    for index, paragraph in enumerate(paragraphs, start=1):
+        ranges, continuing_jesus_speech = _jesus_ranges_for_paragraph(
+            paragraph,
+            continuing_jesus_speech=continuing_jesus_speech,
+            allow_lord_title=allow_lord_title,
+        )
+        verse: dict[str, Any] = {
+            'verse': index,
+            'text': paragraph,
+            'is_editorial_section': True,
+        }
+        if ranges:
+            verse['jesus_words'] = ranges
+        out.append(verse)
+    return out
+
+
+def _annotate_jesus_words(
+    verses: list[dict[str, Any]],
+    *,
+    allow_lord_title: bool,
+) -> list[dict[str, Any]]:
+    carry = False
+    for verse in verses:
+        ranges, carry = _jesus_ranges_for_paragraph(
+            str(verse.get('text') or ''),
+            continuing_jesus_speech=carry,
+            allow_lord_title=allow_lord_title,
+        )
+        if ranges:
+            verse['jesus_words'] = ranges
+    return verses
+
+
+_JESUS_LORD_TITLE_BOOKS = {
+    '2CLEM', 'BTHC', 'DSAV', 'GPET', 'PAPI', 'POLY',
+}
+
+
+_MANUSCRIPT_IMAGE_URLS = {
+    # Exact public/institutional galleries when a digitized physical witness is
+    # available. Nag Hammadi works share the Claremont archive; the exported
+    # manuscript name tells readers which codex/tractate to inspect there.
+    'THOM': 'https://www.gospels.net/manuscript#the-gospel-of-thomas',
+    'GTR': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'GOSTR': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'GPHIL': 'https://www.gospels.net/manuscript#the-gospel-of-philip',
+    'TRES': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'APOJ': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'HARCH': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'ORIGW': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'SOJC': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'GEGYP': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'DSAV': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'EXSO': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'BTHC': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'TRIP': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'LPPH': 'https://ccdl.claremont.edu/digital/collection/nha',
+    'GJUD': 'https://commons.wikimedia.org/wiki/Codex_Tchacos',
+    'GMARY': 'https://www.gospels.net/manuscript#the-gospel-of-mary',
+    'GPET': 'https://www.gospels.net/manuscript#the-gospel-of-peter',
+    'PROJ': 'https://www.gospels.net/manuscript#the-infancy-gospel-of-james',
+    'IGTH': 'https://www.gospels.net/manuscript#the-infancy-gospel-of-thomas',
+    '1CLEM': 'https://www.bl.uk/collection/digitised-manuscripts-archives?ref=Royal_MS_1_D_VIII',
+    '2CLEM': 'https://www.bl.uk/collection/digitised-manuscripts-archives?ref=Royal_MS_1_D_VIII',
+    'HERM': 'https://www.codexsinaiticus.org/en/manuscript.aspx',
+    'BARN': 'https://www.codexsinaiticus.org/en/manuscript.aspx',
+}
+_MANUSCRIPT_THUMBNAIL_URLS = {
+    'GJUD': 'https://commons.wikimedia.org/wiki/Special:Redirect/file/Codex_Tchacos_p33.jpg?width=960',
+}
+
+
+def _book_source_metadata(book_code: str, records: list[dict[str, Any]]) -> dict[str, Any] | None:
+    for record in records:
+        source = record.get('source')
+        if not isinstance(source, dict):
+            continue
+        manuscript = str(source.get('manuscript') or '').strip()
+        witness_url = str(source.get('witness_url') or '').strip()
+        ancient_language = str(source.get('ancient_language') or '').strip()
+        images_url = _MANUSCRIPT_IMAGE_URLS.get(book_code, '')
+        thumbnail_url = _MANUSCRIPT_THUMBNAIL_URLS.get(book_code, '')
+        metadata = {
+            key: value
+            for key, value in {
+                'manuscript': manuscript,
+                'ancient_language': ancient_language,
+                'source_witness_url': witness_url,
+                'manuscript_images_url': images_url,
+                'manuscript_thumbnail_url': thumbnail_url,
+            }.items()
+            if value
+        }
+        if metadata:
+            metadata['division_note'] = (
+                'Numbered reading units are modern paragraph divisions, not ancient verse numbers.'
+            )
+            return metadata
+    return None
+
+
 def _split_explicit_chapter_verses(text: str, chapter: int) -> list[dict[str, Any]]:
     """Split legacy chapter blobs whose paragraphs start with ``C:V``.
 
@@ -531,9 +749,9 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
     """Walk `translation/extra_canonical/<slug>/<NNN>.yaml` for
     chapter-level books (Didache, 1 Clement, etc.), or the nested
     chapter/verse layout for any future verse-level extra-canonical
-    books. Chapter-level YAMLs emit each chapter as a single synthetic
-    verse-1 block — these texts aren't verse-subdivided in standard
-    reading editions, so this matches the reader expectation.
+    books. Chapter-level editorial YAMLs emit their existing blank-line
+    paragraphs as numbered reader units. These are explicitly modern
+    navigation divisions rather than claims about ancient versification.
 
     A missing or empty chapter file is skipped; the export is
     complete-chapters-only (same policy as canonical and apocrypha
@@ -547,6 +765,7 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
         return None
 
     chapters_out: list[dict[str, Any]] = []
+    source_records: list[dict[str, Any]] = []
 
     if book_code in EXTRA_CANONICAL_CHAPTER_LEVEL:
         # Chapter-level YAMLs: translation/extra_canonical/<slug>/NNN.yaml
@@ -556,6 +775,7 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
             except ValueError:
                 continue
             record = yaml.safe_load(chapter_file.read_text(encoding="utf-8")) or {}
+            source_records.append(record)
             text = str(((record.get("translation") or {}).get("text", "")) or "").strip()
             if not text:
                 continue
@@ -563,9 +783,14 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
             if not reader_verses:
                 reader_verses = _split_reader_sections(text, _reader_sections(record))
             if not reader_verses:
-                # Emit as a single synthetic verse-1 block so legacy
-                # chapter-level books still render as continuous prose.
-                reader_verses = [{"verse": 1, "text": text}]
+                reader_verses = _split_reader_paragraphs(
+                    text,
+                    allow_lord_title=book_code in _JESUS_LORD_TITLE_BOOKS,
+                )
+            reader_verses = _annotate_jesus_words(
+                reader_verses,
+                allow_lord_title=book_code in _JESUS_LORD_TITLE_BOOKS,
+            )
             chapter_payload = {
                 "chapter": chapter_num,
                 "verses": reader_verses,
@@ -588,6 +813,7 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
                 except ValueError:
                     continue
                 record = yaml.safe_load(verse_file.read_text(encoding="utf-8")) or {}
+                source_records.append(record)
                 text = str(((record.get("translation") or {}).get("text", "")) or "").strip()
                 if not text:
                     continue
@@ -613,21 +839,30 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
             # numbering conventions. We emit what we have and preserve
             # the verse numbers so the reader sees the scholarly numbering
             # even when it skips.
+            chapter_verses = [
+                {"verse": verse_num, "text": verses[verse_num]}
+                for verse_num in verse_nums
+            ]
+            _annotate_jesus_words(
+                chapter_verses,
+                allow_lord_title=book_code in _JESUS_LORD_TITLE_BOOKS,
+            )
             chapters_out.append({
                 "chapter": chapter,
-                "verses": [
-                    {"verse": verse_num, "text": verses[verse_num]}
-                    for verse_num in verse_nums
-                ],
+                "verses": chapter_verses,
             })
 
     if not chapters_out:
         return None
 
-    return {
+    book_payload = {
         "name": EXTRA_CANONICAL_BOOK_TITLES[book_code],
         "chapters": chapters_out,
     }
+    metadata = _book_source_metadata(book_code, source_records)
+    if metadata:
+        book_payload["metadata"] = metadata
+    return book_payload
 
 
 def export_translation() -> dict[str, Any]:

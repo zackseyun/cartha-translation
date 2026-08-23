@@ -34,6 +34,8 @@ Each row is a single user-facing surface. If you add or rename one, update both 
 |---|---|---|
 | Reader (book grid → chapter grid → chapter view) | `bible_reader_screen.dart` | `BibleReader.jsx` |
 | Chapter view (verse list, selection, footnotes) | inside `bible_reader_screen.dart` (`ChapterView` widget) | inside `BibleReader.jsx` (`ChapterView` function component) |
+| Extra-canonical paragraph units + exported `jesus_words` speaker spans | `bible_data.dart`, `bible_footnote_render.dart`, `bible_read_aloud_button.dart` | `BibleReader.jsx`, `readAloudSpeaker.mjs` |
+| Original-manuscript image card on book overview | `bible_reader_summaries.dart` | `BibleReader.jsx` (`ManuscriptSourceCard`) |
 | Translation picker | inside `bible_reader_screen.dart` (`TopNavUser` / `TranslationPickerSheet`) | inside `BibleReader.jsx` (`TopNavUser`) |
 | Library menu (bookmarks, notes, recent study) | `bible_library_api.dart` + sheets in `bible_reader_screen.dart` | `useLibraryStore.js` + library views in `BibleReader.jsx` |
 | Verse detail sheet (AI insight, commentary, cross-refs) | `bible_verse_detail_sheet.dart` | `VerseDetailSheet.jsx` |
