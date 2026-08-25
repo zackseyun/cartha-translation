@@ -114,10 +114,9 @@ APOCRYPHA_BOOK_SLUGS: dict[str, str] = {
 # Extra-canonical export. Walks `translation/extra_canonical/<slug>/`
 # directly. Unlike deuterocanon (verse-level YAMLs), most
 # extra-canonical texts are drafted as chapter-level YAMLs -- each
-# chapter YAML carries a single continuous translation block that
-# matches how these texts are historically read and rendered.
-# For those, we emit the whole chapter as a single synthetic "verse"
-# so the mobile reader gets one continuous-prose chapter unit.
+# chapter YAML carries a continuous translation block. Reader exports honor
+# explicit witness numbering when present and otherwise use paragraph-sized
+# navigation units so readers can select a meaningful portion of the text.
 EXTRA_CANONICAL_ROOT = TRANSLATION_ROOT / "extra_canonical"
 
 LEGACY_EXTRA_CANONICAL_BOOK_ORDER: list[str] = [
@@ -173,9 +172,9 @@ EXTRA_CANONICAL_BOOK_SLUGS: dict[str, str] = {
 # tools/hermas/split_into_reader_verses.py for Hermas). They are now treated
 # as verse-level reader books.
 #
-# Left in place so future books drafted as pure chapter-level prose
-# can be added here for single-synthetic-verse emission without
-# invoking the verse splitter. 2 Baruch is intentionally not listed:
+# Left in place so future books drafted as pure chapter-level prose can be
+# exported through the reader-unit splitter without invoking the source-YAML
+# verse splitter. 2 Baruch is intentionally not listed:
 # it now has reader-facing per-verse YAMLs under 2_baruch/NNN/VVV.yaml.
 EXTRA_CANONICAL_CHAPTER_LEVEL: set[str] = {"GOSTR"} | {
     entry["code"] for entry in _CATALOG_FLAT_ENTRIES
@@ -421,7 +420,9 @@ def _book_source_metadata(book_code: str, records: list[dict[str, Any]]) -> dict
         }
         if metadata:
             metadata['division_note'] = (
-                'Numbered reading units are modern paragraph divisions, not ancient verse numbers.'
+                'Reader verse numbers follow retained witness paragraph divisions when present; '
+                'otherwise they are modern paragraph divisions. They are navigation aids, not '
+                'claims about ancient versification.'
             )
             return metadata
     return None
@@ -459,6 +460,63 @@ def _split_explicit_chapter_verses(text: str, chapter: int) -> list[dict[str, An
         if not body:
             return []
         verses.append({"verse": verse_numbers[index], "text": body})
+    return verses
+
+
+_PARENTHETICAL_READER_VERSE_BOOKS = {
+    "GPET",
+    "IGTH",
+    "PROJ",
+}
+
+_PARENTHETICAL_READER_VERSE_RE = re.compile(r"(?:^|\s)\((\d+)\)\s+")
+
+
+def _split_parenthetical_reader_verses(text: str) -> list[dict[str, Any]]:
+    """Turn a numbered public-domain witness into selectable reader verses.
+
+    A few early Christian witnesses retain paragraph divisions such as ``(1)``
+    and ``(2)`` inside one chapter-sized translation record. The reader already
+    paints its own verse number, so keeping those labels in the text duplicates
+    the numbering and leaves the whole chapter as one selection target.
+
+    The caller limits this parser to known numbered witnesses. Here we still
+    require positive, strictly increasing numbers so a malformed source falls
+    back to ordinary paragraph units instead of losing or reordering text.
+    Unnumbered prose between two markers remains part of the preceding verse;
+    prose before the first marker is preserved at the start of the first verse.
+    """
+    source = str(text or "")
+    matches = list(_PARENTHETICAL_READER_VERSE_RE.finditer(source))
+    if not matches:
+        return []
+
+    verse_numbers = [int(match.group(1)) for match in matches]
+    if any(number < 1 for number in verse_numbers) or any(
+        current <= previous
+        for previous, current in zip(verse_numbers, verse_numbers[1:])
+    ):
+        return []
+
+    prefix = source[:matches[0].start()].strip()
+    prefix_separator = (
+        "\n\n"
+        if prefix and "\n" in source[matches[0].start():matches[0].end()]
+        else " "
+    )
+    verses: list[dict[str, Any]] = []
+    for index, match in enumerate(matches):
+        end = matches[index + 1].start() if index + 1 < len(matches) else len(source)
+        body = source[match.end():end].strip()
+        if index == 0 and prefix:
+            body = f"{prefix}{prefix_separator}{body}".strip()
+        if not body:
+            return []
+        verses.append({
+            "verse": verse_numbers[index],
+            "text": body,
+            "is_editorial_section": True,
+        })
     return verses
 
 
@@ -780,6 +838,11 @@ def export_extra_canonical_book(book_code: str) -> dict[str, Any] | None:
             if not text:
                 continue
             reader_verses = _split_explicit_chapter_verses(text, chapter_num)
+            if (
+                not reader_verses
+                and book_code in _PARENTHETICAL_READER_VERSE_BOOKS
+            ):
+                reader_verses = _split_parenthetical_reader_verses(text)
             if not reader_verses:
                 reader_verses = _split_reader_sections(text, _reader_sections(record))
             if not reader_verses:
