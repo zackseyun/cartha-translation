@@ -1,7 +1,9 @@
 from tools.export_mobile_bible import (
     _book_source_metadata,
     _jesus_ranges_for_paragraph,
+    _split_parenthetical_reader_verses,
     _split_reader_paragraphs,
+    export_extra_canonical_book,
 )
 
 
@@ -30,6 +32,46 @@ def test_non_jesus_dialogue_is_not_highlighted() -> None:
     )
     assert ranges == []
     assert carry is False
+
+
+def test_parenthetical_witness_numbers_become_clean_reader_verses() -> None:
+    verses = _split_parenthetical_reader_verses(
+        '(1) First unit.\n\n(2) Second unit.\n\nContinuation of the second.\n\n(3) Third unit.'
+    )
+
+    assert [verse['verse'] for verse in verses] == [1, 2, 3]
+    assert [verse['text'] for verse in verses] == [
+        'First unit.',
+        'Second unit.\n\nContinuation of the second.',
+        'Third unit.',
+    ]
+    assert all(not verse['text'].startswith('(') for verse in verses)
+
+
+def test_parenthetical_witness_preserves_text_before_first_number() -> None:
+    verses = _split_parenthetical_reader_verses(
+        'Introductory witness note.\n\n(6) First numbered unit. (7) Next unit.'
+    )
+
+    assert [verse['verse'] for verse in verses] == [6, 7]
+    assert verses[0]['text'] == (
+        'Introductory witness note.\n\nFirst numbered unit.'
+    )
+
+
+def test_infancy_thomas_exports_clickable_verses_without_inline_numbers() -> None:
+    book = export_extra_canonical_book('IGTH')
+    assert book is not None
+    chapter_two = next(
+        chapter for chapter in book['chapters'] if chapter['chapter'] == 2
+    )
+
+    assert [verse['verse'] for verse in chapter_two['verses']] == [1, 2, 3, 4, 5]
+    assert 'clapped his hands' in chapter_two['verses'][3]['text']
+    assert all(
+        not verse['text'].lstrip().startswith(f"({verse['verse']})")
+        for verse in chapter_two['verses']
+    )
 
 
 def test_judas_exports_exact_manuscript_gallery_metadata() -> None:
