@@ -113,6 +113,15 @@ schematic prophetic-metaphor diagram.
   plausible; do not imply that appearance, ethnicity, clothing detail, wings,
   halo, or supernatural visual effects are supplied by the text when they are
   not.
+- Named recurring figures use the persistent registry at
+  `data/bible_visual_aid_character_registry.json`. Jesus is locked to the
+  **Sermon on the Mount** video references, Peter to **The True Baptism**, and
+  Saul/Paul to **Road to Damascus**. Their exact reference files live in the
+  `cartha-video-studio` character cards and must be attached on every
+  generation; prose resemblance is not enough. A newly introduced named
+  figure gets a card plus stable face and full-body references before a second
+  scene is generated. Approved frames may strengthen that card, but an
+  existing identity is never silently replaced.
 - Human dignity always: no gore, no nudity, no suffering rendered as
   spectacle. Battles may appear only as maps, positions, or siege
   engineering — never carnage.
@@ -167,8 +176,8 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 **Direction (2026-08-12): step up toward abundance.** The original doctrine
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–48 plus Narrative Reconstruction Waves 1–6 and the full semantic audit
-now ship as catalog v48 (**417 unique assets, 666 placements across
+Waves 3–48 plus Narrative Reconstruction Waves 1–7 and the full semantic audit
+now ship as catalog v51 (**420 unique assets, 669 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -180,8 +189,8 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v48) | curated Waves 2–48 + Narrative Waves 1–6 + semantic corrections | 666 | 2.1% | audited reference figures and text-grounded scenes across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+666 shipped) | 2.1% | roughly one aid every chapter or two |
+| Shipped (v51) | curated Waves 2–48 + Narrative Waves 1–7 + semantic corrections | 669 | 2.1% | audited reference figures and text-grounded scenes across 53 books |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+669 shipped) | 2.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
@@ -208,10 +217,13 @@ scene lane. It scores narrated moments where visible position, movement,
 embodied emotion, encounter, or passage-described heavenly participation adds
 real comprehension value; it rejects discourse-only and symbolic-vision rows,
 flags sensitive scenes for heightened review, and writes text-grounded
-`narrative-reconstruction-v1` prompts. It never auto-approves an image.
+`narrative-reconstruction-v2-character-locked` prompts. Named recurring
+figures are resolved through the persistent character registry, so the queue
+records exact cards and reference files rather than relying on prose
+resemblance. It never auto-approves an image.
 
-The current published-text scan lives at
-`~/Documents/New project/output/bible-narrative-scene-map/wave-a-v43-reviewed/`.
+The current expanded published-text scan lives at
+`~/Documents/New project/output/bible-narrative-scene-map/wave-a-v51-character-locked-reviewed/`.
 Narrative Wave 1 shipped eight reviewed scenes in catalog v42: Jacob and Esau's
 reunion, Joseph listening through an interpreter, Abigail's intercession,
 Jehoiakim cutting and burning the scroll, the father welcoming the returning
@@ -231,10 +243,16 @@ hearing the two women, Uriah receiving the sealed letter, Moab's red-water
 mistake, and Paul's guarded lodging in Rome. Wave 6 adds Joseph reassuring his
 brothers, the Syrophoenician mother's plea, Ittai's loyal crossing, Elisha's
 acted arrow prophecy, Saul's spear beside David's lyre, Daniel's open-window
-prayer, Mordecai at the palace gate, and Paul's garment-shaking gesture.
-Catalog v48's refreshed narrative queue contains 64 candidates still requiring
-editorial approval or rejection. The narrative disposition ledger records 143
-rejected candidates and 48
+prayer, Mordecai at the palace gate, and Paul's garment-shaking gesture. Wave
+7 begins the larger identity-consistent expansion with the Transfiguration,
+Jesus washing Peter's feet, and Paul in the midst of the Areopagus. Catalog
+v51 now contains **53 unique narrative images / 55 narrative placements**.
+The refreshed character-locked queue contains 83 high-confidence candidates
+after published-anchor proximity and prior dispositions are removed. The
+long-term target is roughly 150–250 carefully selected narrative images, so
+future editorial passes may add important hand-curated scenes that the text
+heuristic misses; neither count is an automatic publication target. The
+narrative disposition ledger records 143 rejected candidates and 51
 published candidates so neither class can silently re-enter the queue. The
 queue count is not a promise to publish every match.
 

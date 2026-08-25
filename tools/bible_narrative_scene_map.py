@@ -69,6 +69,12 @@ HEAVENLY_RE = re.compile(
     re.IGNORECASE,
 )
 
+DEFAULT_CHARACTER_REGISTRY = (
+    Path(__file__).resolve().parents[1]
+    / "data"
+    / "bible_visual_aid_character_registry.json"
+)
+
 
 @dataclass(frozen=True)
 class SceneCue:
@@ -137,6 +143,12 @@ SCENE_CUES = (
         r"two angels|angels in white|messengers in shining garments|"
         r"Jesus appeared|Jesus came and stood|the Lord stood beside him)\b",
         "A passage-described heavenly encounter is essential to the scene.",
+    ),
+    _cue(
+        "transfiguration", 8,
+        r"\b(?:transfigured|appearance of his face became different|"
+        r"his clothes became (?:white|dazzling|radiant))\b",
+        "The visible change and the participants' positions are central to the passage.",
     ),
     _cue(
         "shared_setting", 2,
@@ -219,7 +231,53 @@ def score_scene(
     return hit
 
 
-def narrative_prompt(hit: SceneHit) -> str:
+def load_character_registry(path: Path = DEFAULT_CHARACTER_REGISTRY) -> dict:
+    return json.loads(path.read_text())
+
+
+def character_ids_for_text(text: str, registry: dict) -> list[str]:
+    found = []
+    for character_id, entry in registry.get("characters", {}).items():
+        aliases = entry.get("aliases", [])
+        if any(re.search(rf"\b{re.escape(alias)}\b", text, re.IGNORECASE) for alias in aliases):
+            found.append(character_id)
+    return found
+
+
+def character_ids_for_hit(hit: SceneHit, registry: dict) -> list[str]:
+    # Normally lock only names in the anchor verse; nearby explanatory mentions
+    # (for example "the gift Moses commanded") are not scene participants.
+    # The transfiguration is the narrow exception because the adjacent verses
+    # deliberately distribute its named participants across the scene.
+    text = hit.context_text if "transfiguration" in hit.cues else hit.verse_text
+    return character_ids_for_text(text, registry)
+
+
+def character_reference_block(character_ids: list[str], registry: dict) -> str:
+    if not character_ids:
+        return ""
+    parts = []
+    for character_id in character_ids:
+        entry = registry["characters"][character_id]
+        refs = entry.get("reference_images", [])
+        if entry.get("status") == "locked" and not refs:
+            raise ValueError(f"Locked character {character_id} has no reference images")
+        if refs:
+            parts.append(
+                f"{character_id}: attach the exact locked refs " + ", ".join(refs)
+            )
+        else:
+            parts.append(
+                f"{character_id}: use {entry['card']} and save the approved first "
+                "appearance as this lane's stable visual reference before reuse"
+            )
+    return " Character continuity lock: " + "; ".join(parts) + "."
+
+
+def narrative_prompt(hit: SceneHit, registry: dict | None = None) -> str:
+    registry = registry or load_character_registry()
+    character_ids = character_ids_for_hit(hit, registry)
+    continuity = character_reference_block(character_ids, registry)
     care = []
     if hit.heavenly:
         care.append(
@@ -240,7 +298,7 @@ def narrative_prompt(hit: SceneHit) -> str:
         "non-authoritative and do not add people, actions, symbols, or doctrinal "
         "claims absent from the text. Matte realistic historical reconstruction, "
         "natural light, documentary realism, 16:9 landscape. No baked-in text, "
-        f"labels, title, quotation, or watermark. {care_text}"
+        f"labels, title, quotation, or watermark.{continuity} {care_text}"
     )
 
 
@@ -248,7 +306,9 @@ def select_scenes(
     hits: list[SceneHit],
     min_score: int,
     per_chapter_cap: int,
+    character_registry: dict | None = None,
 ) -> list[dict]:
+    character_registry = character_registry or load_character_registry()
     by_chapter: dict[int, list[SceneHit]] = defaultdict(list)
     for hit in hits:
         if hit.score >= min_score:
@@ -264,6 +324,11 @@ def select_scenes(
             if all(abs(hit.verse - other.verse) >= 4 for other in chosen):
                 chosen.append(hit)
         for hit in sorted(chosen, key=lambda h: h.verse):
+            character_ids = character_ids_for_hit(hit, character_registry)
+            character_refs = {
+                character_id: character_registry["characters"][character_id]
+                for character_id in character_ids
+            }
             rows.append({
                 "id": hit.id,
                 "book": hit.book,
@@ -282,8 +347,10 @@ def select_scenes(
                 "heavenly": hit.heavenly,
                 "verse_text": hit.verse_text,
                 "context_text": hit.context_text,
-                "suggested_prompt": narrative_prompt(hit),
-                "prompt_version": "narrative-reconstruction-v1",
+                "characters": character_ids,
+                "character_refs": character_refs,
+                "suggested_prompt": narrative_prompt(hit, character_registry),
+                "prompt_version": "narrative-reconstruction-v2-character-locked",
                 "status": "needs_editorial_review",
             })
     return rows
@@ -321,7 +388,13 @@ def main() -> int:
         "--exclude-radius", type=int, default=2,
         help="Skip verses this many positions from an existing placement (default 2)",
     )
+    ap.add_argument(
+        "--character-registry", type=Path,
+        default=DEFAULT_CHARACTER_REGISTRY,
+        help="Persistent named-character registry used to lock recurring identities",
+    )
     args = ap.parse_args()
+    character_registry = load_character_registry(args.character_registry)
 
     published: set[str] = set()
     if args.exclude_ids and args.exclude_ids.exists():
@@ -366,7 +439,9 @@ def main() -> int:
             )
             if hit:
                 hits.append(hit)
-        rows = select_scenes(hits, args.min_score, args.per_chapter_cap)
+        rows = select_scenes(
+            hits, args.min_score, args.per_chapter_cap, character_registry
+        )
         for row in rows:
             if row["sensitive"]:
                 flags["sensitive"] += 1
@@ -393,7 +468,8 @@ def main() -> int:
 
     summary = {
         "version": 1,
-        "lane": "narrative-reconstruction-v1",
+        "lane": "narrative-reconstruction-v2-character-locked",
+        "character_registry": str(args.character_registry),
         "min_score": args.min_score,
         "per_chapter_cap": args.per_chapter_cap,
         "exclude_radius": args.exclude_radius,

@@ -1,4 +1,6 @@
 from tools.bible_narrative_scene_map import (
+    character_ids_for_text,
+    load_character_registry,
     narrative_prompt,
     score_scene,
     select_scenes,
@@ -63,4 +65,52 @@ def test_selection_caps_chapter_and_spaces_candidates():
     rows = select_scenes(hits, min_score=7, per_chapter_cap=2)
     assert len(rows) == 2
     assert rows[1]["verse"] - rows[0]["verse"] >= 4
-    assert all(row["prompt_version"] == "narrative-reconstruction-v1" for row in rows)
+    assert all(
+        row["prompt_version"] == "narrative-reconstruction-v2-character-locked"
+        for row in rows
+    )
+
+
+def test_transfiguration_is_a_high_value_heightened_scene():
+    hit = score_scene(
+        "matthew", "Matthew", 17, 2,
+        "He was transfigured before them, and his face shone like the sun, "
+        "and his clothes became white as light.",
+        "Jesus took Peter, James, and John up a high mountain. He was "
+        "transfigured before them. Moses and Elijah appeared to them.",
+    )
+    assert hit is not None
+    assert hit.score >= 8
+    assert "transfiguration" in hit.cues
+
+
+def test_locked_characters_are_attached_to_scene_rows():
+    registry = load_character_registry()
+    ids = character_ids_for_text(
+        "Jesus took Peter with him, and later Paul spoke.", registry
+    )
+    assert ids == ["jesus", "peter-apostle", "saul-damascus"]
+    hit = score_scene(
+        "matthew", "Matthew", 17, 2,
+        "He was transfigured before them.",
+        "Jesus took Peter up the mountain and was transfigured before him.",
+    )
+    assert hit is not None
+    row = select_scenes([hit], 7, 1, registry)[0]
+    assert row["characters"] == ["jesus", "peter-apostle"]
+    assert row["character_refs"]["jesus"]["status"] == "locked"
+    assert "attach the exact locked refs" in row["suggested_prompt"]
+
+
+def test_adjacent_nonparticipant_name_is_not_locked_into_scene():
+    registry = load_character_registry()
+    hit = score_scene(
+        "matthew", "Matthew", 8, 3,
+        "Jesus watched as the man fell at his feet, then stretched out his hand and touched him.",
+        "Jesus watched as the man fell at his feet, then stretched out his hand and "
+        "touched him. Then he said to offer "
+        "the gift Moses commanded.",
+    )
+    assert hit is not None
+    row = select_scenes([hit], 7, 1, registry)[0]
+    assert row["characters"] == ["jesus"]
