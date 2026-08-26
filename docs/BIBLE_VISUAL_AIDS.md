@@ -121,7 +121,9 @@ schematic prophetic-metaphor diagram.
   generation; prose resemblance is not enough. A newly introduced named
   figure gets a card plus stable face and full-body references before a second
   scene is generated. Approved frames may strengthen that card, but an
-  existing identity is never silently replaced.
+  existing identity is never silently replaced. Elijah is specifically locked
+  to **Answer by Fire**; the provisional first Transfiguration interpretation
+  is retired and must not be reused.
 - Human dignity always: no gore, no nudity, no suffering rendered as
   spectacle. Battles may appear only as maps, positions, or siege
   engineering — never carnage.
@@ -177,7 +179,7 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 was rarity — a handful per book. The absolute set shipped as catalog v3; the
 curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
 Waves 3–48 plus Narrative Reconstruction Waves 1–7 and the full semantic audit
-now ship as catalog v51 (**420 unique assets, 669 placements across
+now ship as catalog v53 (**420 unique assets, 669 placements across
 53 books**). Zack's direction is now that aids should be plentiful wherever they
 genuinely help, stepping up in tiers rather than
 flooding at once. Subtlety is preserved by the affordance (the wrapped verse
@@ -189,7 +191,7 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v51) | curated Waves 2–48 + Narrative Waves 1–7 + semantic corrections | 669 | 2.1% | audited reference figures and text-grounded scenes across 53 books |
+| Shipped (v53) | curated Waves 2–48 + Narrative Waves 1–7 + semantic corrections | 669 | 2.1% | audited reference figures and text-grounded scenes across 53 books |
 | **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+669 shipped) | 2.1% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
@@ -246,7 +248,7 @@ acted arrow prophecy, Saul's spear beside David's lyre, Daniel's open-window
 prayer, Mordecai at the palace gate, and Paul's garment-shaking gesture. Wave
 7 begins the larger identity-consistent expansion with the Transfiguration,
 Jesus washing Peter's feet, and Paul in the midst of the Areopagus. Catalog
-v51 now contains **53 unique narrative images / 55 narrative placements**.
+v53 now contains **53 unique narrative images / 55 narrative placements**.
 The refreshed character-locked queue contains 83 high-confidence candidates
 after published-anchor proximity and prior dispositions are removed. The
 long-term target is roughly 150–250 carefully selected narrative images, so
