@@ -191,8 +191,8 @@ placements), not unique images — reuse brings the image count down.
 
 | Tier | Settings | Anchors | Coverage | What it feels like |
 | --- | --- | --- | --- | --- |
-| Shipped (v54) | curated Waves 2–48 + Narrative Waves 1–7 + semantic corrections | 669 | 2.1% | audited reference figures and text-grounded scenes across 53 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+669 shipped) | 2.1% | roughly one aid every chapter or two |
+| Shipped (v55) | curated Waves 2–48 + Narrative Waves 1–8 + semantic corrections | 681 | 2.2% | audited reference figures and text-grounded scenes across 52 books |
+| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+681 shipped) | 2.2% | roughly one aid every chapter or two |
 | Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
 | Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
 | Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
@@ -251,8 +251,14 @@ brothers, the Syrophoenician mother's plea, Ittai's loyal crossing, Elisha's
 acted arrow prophecy, Saul's spear beside David's lyre, Daniel's open-window
 prayer, Mordecai at the palace gate, and Paul's garment-shaking gesture. Wave
 7 begins the larger identity-consistent expansion with the Transfiguration,
-Jesus washing Peter's feet, and Paul in the midst of the Areopagus. Catalog
-v54 now contains **53 unique narrative images / 55 narrative placements**.
+Jesus washing Peter's feet, and Paul in the midst of the Areopagus. Wave 8 adds
+Jesus' baptism, the woman at the well, Peter leaving the boat, the Emmaus-road
+conversation, Thomas seeing the risen Jesus, Paul and Silas in prison, Philip
+approaching the Ethiopian official, Elijah beside the repaired Carmel altar,
+Samuel hearing his name at Shiloh, David and the Philistine across the Valley
+of Elah, Esther entering the inner court, the three Judean friends before the
+king, and Ruth gleaning behind the reapers. Catalog v55 now contains **66 unique
+narrative images / 68 narrative placements**.
 The refreshed character-locked queue contains 83 high-confidence candidates
 after published-anchor proximity and prior dispositions are removed. The
 long-term target is roughly 150–250 carefully selected narrative images, so
