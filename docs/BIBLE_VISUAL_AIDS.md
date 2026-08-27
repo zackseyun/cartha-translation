@@ -219,10 +219,14 @@ scene lane. It scores narrated moments where visible position, movement,
 embodied emotion, encounter, or passage-described heavenly participation adds
 real comprehension value; it rejects discourse-only and symbolic-vision rows,
 flags sensitive scenes for heightened review, and writes text-grounded
-`narrative-reconstruction-v2-character-locked` prompts. Named recurring
+`narrative-reconstruction-v3-identity-isolated` prompts. Named recurring
 figures are resolved through the persistent character registry, so the queue
 records exact cards and reference files rather than relying on prose
-resemblance. It never auto-approves an image.
+resemblance. A locked reference may produce that named character exactly once
+unless the passage explicitly requires another appearance; all other people
+must have visibly distinct faces, hair silhouettes, beards, ages, and clothing.
+Any frame containing a Jesus-, Peter-, Paul-, Moses-, or Elijah-lookalike is an
+automatic rejection and regeneration. It never auto-approves an image.
 
 The current expanded published-text scan lives at
 `~/Documents/New project/output/bible-narrative-scene-map/wave-a-v51-character-locked-reviewed/`.

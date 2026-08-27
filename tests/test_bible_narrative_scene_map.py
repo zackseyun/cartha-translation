@@ -66,7 +66,7 @@ def test_selection_caps_chapter_and_spaces_candidates():
     assert len(rows) == 2
     assert rows[1]["verse"] - rows[0]["verse"] >= 4
     assert all(
-        row["prompt_version"] == "narrative-reconstruction-v2-character-locked"
+        row["prompt_version"] == "narrative-reconstruction-v3-identity-isolated"
         for row in rows
     )
 
@@ -100,6 +100,8 @@ def test_locked_characters_are_attached_to_scene_rows():
     assert row["characters"] == ["jesus", "peter-apostle"]
     assert row["character_refs"]["jesus"]["status"] == "locked"
     assert "attach the exact locked refs" in row["suggested_prompt"]
+    assert "Render each locked named character exactly once" in row["suggested_prompt"]
+    assert "every other participant must have a visibly distinct face" in row["suggested_prompt"]
 
 
 def test_adjacent_nonparticipant_name_is_not_locked_into_scene():

@@ -271,7 +271,15 @@ def character_reference_block(character_ids: list[str], registry: dict) -> str:
                 f"{character_id}: use {entry['card']} and save the approved first "
                 "appearance as this lane's stable visual reference before reuse"
             )
-    return " Character continuity lock: " + "; ".join(parts) + "."
+    identity_isolation = registry.get("policy", {}).get(
+        "identity_isolation_rule", ""
+    ).strip()
+    isolation_text = (
+        f" Identity isolation: {identity_isolation}" if identity_isolation else ""
+    )
+    return (
+        " Character continuity lock: " + "; ".join(parts) + "." + isolation_text
+    )
 
 
 def narrative_prompt(hit: SceneHit, registry: dict | None = None) -> str:
@@ -350,7 +358,7 @@ def select_scenes(
                 "characters": character_ids,
                 "character_refs": character_refs,
                 "suggested_prompt": narrative_prompt(hit, character_registry),
-                "prompt_version": "narrative-reconstruction-v2-character-locked",
+                "prompt_version": "narrative-reconstruction-v3-identity-isolated",
                 "status": "needs_editorial_review",
             })
     return rows
