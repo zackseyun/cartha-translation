@@ -1,4 +1,9 @@
-from tools.audit_bible_visual_aid_semantics import literary_risks
+from tools.audit_bible_visual_aid_semantics import literary_risks, runtime_anchor
+
+
+def test_runtime_anchor_uses_the_end_of_a_verse_range():
+    entry = {"book": "Mark", "chapter": 9, "verse_start": 2, "verse_end": 4}
+    assert runtime_anchor(entry) == ("Mark", 9, 4)
 
 
 def test_parable_caption_must_identify_parable():

@@ -65,6 +65,11 @@ def load_scripture(books_root: Path) -> dict[tuple[str, int, int], str]:
     return text
 
 
+def runtime_anchor(entry: dict) -> tuple[str, int, int]:
+    """Return the verse key used by both web and Flutter readers."""
+    return entry["book"], entry["chapter"], entry["verse_end"]
+
+
 def audit(
     catalog_root: Path,
     books_root: Path,
@@ -81,7 +86,10 @@ def audit(
     for path in sorted((catalog_root / "books").glob("*.json")):
         payload = json.loads(path.read_text())
         for entry in payload.get("aids", []):
-            anchor = (entry["book"], entry["chapter"], entry["verse_start"])
+            # Both readers place a ranged aid on its final verse. Audit the
+            # same runtime key so overlapping source ranges do not create
+            # false positives while genuine final-verse shadowing is caught.
+            anchor = runtime_anchor(entry)
             if anchor in seen_anchors:
                 failures.append({"id": entry["id"], "risk": "verse_anchor_collision"})
             seen_anchors.add(anchor)
