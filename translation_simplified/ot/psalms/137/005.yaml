@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/137/005.yaml
-  text: If I forget you[a], Jerusalem, may my right hand forget.
+  text: If I forget you, Jerusalem, may my right hand forget[a].
   footnotes:
   - marker: a
-    text: Or, more explicitly, 'may my right hand forget its skill.' The Hebrew is elliptical, and this fuller sense is inferred from context and reflected in some translations.
+    text: Or, more explicitly, “may my right hand forget its skill.” The Hebrew is elliptical; the object is not stated.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,54 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Jerusalem, if I forget you, may my right hand lose its skill.[a]
+  text: Jerusalem, if I forget you, may my right hand forget.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew literally says, “may my right hand forget,” leaving unstated what it would forget.
+    text: The Hebrew does not say what the right hand would forget; it may mean, “may my right hand forget its skill.”
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: If I forget you, Jerusalem
+  simplified_phrase: Jerusalem, if I forget you
+  preserved_meaning: The speaker directly addresses Jerusalem while making a conditional oath.
+  reasoning_layer_used: Lexical decisions for אִם, אֶשְׁכָּחֵךְ, and יְרוּשָׁלִָם
+  rationale: Putting “Jerusalem” first makes the direct address immediately clear.
 - pob_phrase: may my right hand forget
-  simplified_phrase: may my right hand lose its skill
-  preserved_meaning: The speaker calls for the loss of his ability to perform if he forgets Jerusalem.
-  reasoning_layer_used: POB footnote, theological decision, lexical rationale, and immediate context
-  rationale: The explicit wording makes the self-curse understandable while the footnote preserves the Hebrew ellipsis.
-interpretive_expansions:
-- pob_phrase: may my right hand forget
-  rendering: may my right hand lose its skill
-  claim: The unstated object concerns the right hand’s skill or ability.
-  evidence:
-  - POB identifies “forget its skill” as the contextually inferred fuller sense.
-  - The lexical rationale describes the right hand as the instrument of skill in the psalm’s performance setting.
-  - The following verse pairs this curse with the tongue losing its function.
-  confidence: moderate
-  alternatives_preserved:
-  - The Hebrew literally says, “may my right hand forget.”
+  simplified_phrase: may my right hand forget
+  preserved_meaning: The oath calls for the speaker’s right hand to lose its ability, while leaving the object unstated.
+  reasoning_layer_used: Lexical decision for תִּשְׁכַּח and theological decision on the elliptical self-imprecation
+  rationale: The incomplete wording preserves the Hebrew ambiguity, and the note explains its likely sense.
 translation_notes:
   risk_flags:
-  - risk: The main text supplies an object that the Hebrew leaves unstated.
-    mitigation: The footnote gives the literal wording, and “skill” is presented as a contextual clarification rather than a textual certainty.
+  - risk: The final clause may sound incomplete because the Hebrew leaves the object of “forget” unstated.
+    mitigation: The main text preserves the deliberate ellipsis, while the footnote gives the likely sense without making it certain.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/137/005.yaml
   source_text_sha256: 31997eba607574d089ce8b7d19a2b1bdb254045a5e3cdfdcc650ea24972b467e
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7c44e3340d635484c0a0cd250af18e2b45a50b0cfb4794840d1370b1e1abeeaa
-  timestamp: '2026-07-12T10:03:25Z'
-  output_hash: e24e79b4e48f87d38f91ddf99b3c3ec19a0696f4f37087cade3b0d6a51ee8cf3
+  prompt_sha256: aff82bae1d1517435c3733af9d72b77e738911ddfaf44311fcc1f32553cfdab4
+  timestamp: '2026-08-28T23:36:21Z'
+  output_hash: 2e9821259810c9c420419ac4fe92856d139e6a37b1283ab37e62655b9f1cb9f3
   usage:
-    prompt_tokens: 3139
-    completion_tokens: 357
-    total_tokens: 3496
-    reasoning_tokens: 0
+    prompt_tokens: 3304
+    completion_tokens: 475
+    total_tokens: 3779
+    reasoning_tokens: 118
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:25Z'
@@ -89,4 +84,19 @@ spob_revision_history:
   review_output_hash: 57dbdafdd2e201842c93c991f4edc731f6b04722edd86f075cebc7632795fa4e
   review_summary: Revise. The fronted direct address is faithful, but the draft leaves the key self-imprecation unnecessarily unintelligible. 'Lose its skill' is a restrained contextual clarification warranted by the psalm's musical setting and by POB's own audit trail; it does not introduce a doctrinal claim. The footnote should preserve the underlying Hebrew ellipsis.
   schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:44Z'
+  previous_text: Jerusalem, if I forget you, may my right hand lose its skill.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:21Z'
+  previous_text: Jerusalem, if I forget you, may my right hand forget too.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 8029c79905568c0e9050fd9c31ef118309b93aaed96a07ed0dc33c94bbf1030d
+  review_summary: Fronting “Jerusalem” is a warranted, modest readability improvement because it makes the direct address immediately apparent. However, “too” is not supported by the source and risks directing readers toward the wrong implied object. Remove it while retaining the footnote, which preserves the Hebrew’s meaningful ellipsis and supplies the likely sense without making it certain.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

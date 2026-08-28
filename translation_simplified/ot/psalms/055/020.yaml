@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/055/020.yaml
-  text: He stretched out his hands against those at peace with him[a][b]; he profaned his covenant.
+  text: He stretched out his hands against those at peace with him[a]; he profaned[b] his covenant.
   footnotes:
   - marker: a
-    text: Or 'he violated his covenant.' The Hebrew verb more literally means 'he profaned' or 'treated as defiled.'
+    text: Or “his friends” or “his allies.” The Hebrew refers to people who were in a peaceful relationship with him.
     reason: lexical_alternative
   - marker: b
-    text: Or 'He sent out his hand against his friends' or 'against his allies.' The Hebrew expression refers to people who were in peaceful relationship with him.
+    text: Or “violated.” The Hebrew verb more literally means “profaned” or “treated as defiled.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,46 +34,56 @@ base_translation:
     changes_summary: Changed 'hand' to 'hands' to reflect the plural in the source; retained the rest as accurate and natural.
 translation:
   language: en
-  text: He stretched out his hand against those who were at peace with him. He treated his covenant as if it were nothing sacred.
+  text: He reached out his hands to attack those who were at peace with him,[a] and he violated his covenant, treating it as unholy.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “his friends” or “his allies”; the Hebrew describes people who had a peaceful relationship with him.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: those at peace with him
-  simplified_phrase: those who were at peace with him
-  preserved_meaning: They had a peaceful relationship with him, without narrowing them to friends or allies.
-  reasoning_layer_used: POB lexical decision for בִּשְׁלֹמָיו
-  rationale: Adding “who were” makes the relationship immediately clear in ordinary English.
-- pob_phrase: he profaned his covenant
-  simplified_phrase: He treated his covenant as if it were nothing sacred
-  preserved_meaning: He dishonored the covenant by treating what carried sacred weight as common.
-  reasoning_layer_used: POB lexical and theological decisions for חִלֵּל and בְּרִיתוֹ
-  rationale: The wording explains “profaned” without reducing the act to merely breaking an agreement.
+- pob_phrase: stretched out his hands against
+  simplified_phrase: reached out his hands to attack
+  preserved_meaning: The concrete image of extended hands still expresses hostile action.
+  reasoning_layer_used: Lexical decision for שָׁלַח with יָדָיו and immediate context
+  rationale: The wording keeps the hand image while making its hostile meaning immediately clear.
+- pob_phrase: profaned his covenant
+  simplified_phrase: violated his covenant, treating it as unholy
+  preserved_meaning: His treachery both broke the covenant and treated it as defiled.
+  reasoning_layer_used: Lexical and theological decisions for חִלֵּל בְּרִיתוֹ
+  rationale: The expansion explains “profaned” without weakening its moral and covenantal force.
+interpretive_expansions:
+- pob_phrase: stretched out his hands against
+  rendering: reached out his hands to attack
+  claim: The gesture is hostile action against people in peaceful relations with him.
+  evidence:
+  - The POB lexical rationale says the idiom often carries hostile force.
+  - The preposition was already rendered “against” because the context requires hostility.
+  confidence: high
 translation_notes:
   risk_flags:
-  - risk: “Nothing sacred” may sound like an explicitly divine covenant.
-    mitigation: “His covenant” remains unspecified, preserving the POB’s deliberate openness about its nature.
+  - risk: “Attack” states the hostile force more directly than the Hebrew image alone.
+    mitigation: The hands image remains, and the POB lexical rationale explicitly supports hostile action.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/055/020.yaml
   source_text_sha256: 36a7c1746ba37e438c6e44b4b76400262a70925dd2b703e5607da2919564c739
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: de858a5931820fb799f78581298e669c1ea5766b33ff57ce230c97e5486ebf64
-  timestamp: '2026-07-12T10:00:00Z'
-  output_hash: a90bf6c09b2aa1fa625493e7dc18f35dd6fbd95da4060fcc113ae929998cfab9
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 119ccc5f75b500fcdbce5ec5d95f7b12ff03ccda3035d201c5378ae216cc47db
+  timestamp: '2026-08-28T22:56:32Z'
+  output_hash: f0ed2bb8e844657ce5765b840f056108061c410251cdbf810b5a0bafd188aec7
   usage:
-    prompt_tokens: 3486
-    completion_tokens: 293
-    total_tokens: 3779
-    reasoning_tokens: 0
+    prompt_tokens: 3006
+    completion_tokens: 806
+    total_tokens: 3812
+    reasoning_tokens: 382
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:00Z'
   previous_text: He raised his hands against those who were at peace with him. He treated his covenant as unholy.
@@ -85,3 +95,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:32Z'
+  previous_text: He stretched out his hand against those who were at peace with him. He treated his covenant as if it were nothing sacred.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/081/001.yaml
-  text: Sing for joy to God[a], our strength; shout aloud to the God of Jacob.
-  footnotes:
-  - marker: a
-    text: Or 'raise a joyful shout to the God of Jacob.' The verb can denote a loud acclamation or trumpet-like shout.
-    reason: lexical_alternative
+  text: Sing for joy to God, our strength; shout aloud to the God of Jacob.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,41 +27,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Joyfully sing to God, our strength! Raise a loud shout to the God of Jacob!
+  text: Sing joyfully to God, our strength! Shout aloud in praise to the God of Jacob!
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Sing for joy to God, our strength
-  simplified_phrase: Joyfully sing to God, our strength!
-  preserved_meaning: The people are commanded to praise God with joyful singing, while God remains identified as their strength.
-  reasoning_layer_used: POB lexical decisions for הַרְנִינוּ and עוּזֵּנוּ
-  rationale: Reordering the phrase makes it flow naturally without weakening either the joy or the strength image.
-- pob_phrase: shout aloud
-  simplified_phrase: Raise a loud shout
-  preserved_meaning: The command calls for a strong public acclamation.
-  reasoning_layer_used: POB lexical decision for הָרִיעוּ
-  rationale: This wording makes the commanded action immediate and concrete in common English.
+- pob_phrase: Sing for joy to God
+  simplified_phrase: Sing joyfully to God
+  preserved_meaning: The command calls for jubilant musical praise directed to God.
+  reasoning_layer_used: POB lexical decision for הַרְנִינוּ
+  rationale: The adverb states the manner of singing in direct, natural English.
+- pob_phrase: God, our strength
+  simplified_phrase: God, our strength
+  preserved_meaning: God himself is identified as the worshipers’ strength.
+  reasoning_layer_used: POB lexical decision for עוּזֵּנוּ and grounding review
+  rationale: Retaining the title avoids narrowing it to God merely giving strength.
+- pob_phrase: shout aloud to the God of Jacob
+  simplified_phrase: Shout aloud in praise to the God of Jacob
+  preserved_meaning: The people must acclaim Israel’s God with a loud shout.
+  reasoning_layer_used: POB lexical decision for הָרִיעוּ and immediate poetic parallel
+  rationale: “In praise” distinguishes this joyful acclamation from an angry shout.
+interpretive_expansions:
+- pob_phrase: shout aloud to
+  rendering: Shout aloud in praise to
+  claim: The commanded shout is an act of joyful praise.
+  evidence:
+  - The POB lexical rationale describes הָרִיעוּ as a loud acclamatory shout.
+  - The parallel command to sing joyfully establishes the praise setting.
+  confidence: high
+  alternatives_preserved:
+  - raise a shout to
+  - make a joyful noise to
 translation_notes:
   risk_flags:
-  - risk: A loud shout could be read as anger rather than praise.
-    mitigation: The parallel command to sing joyfully keeps the shout within a setting of jubilant worship.
+  - risk: “In praise” makes the purpose of the shout explicit.
+    mitigation: The acclamatory verb and parallel call to sing joyfully firmly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/081/001.yaml
   source_text_sha256: 5dedaab9655eecf782dc49092daf2ab1259542019941b4a7bd46760933d2c671
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5dad2023498b89efd0be86cf0e871c94600d83252059594c74f643572c8272bf
-  timestamp: '2026-07-11T20:48:19Z'
-  output_hash: 07eb563c4ee12fe538989dc1c5174dc4ed07015ad9e221e556027367cd7a3edf
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b62525d3626e7bbce5315e509f9ae7800ac743c3fb4f72fd53bff9451221cb8b
+  timestamp: '2026-08-28T23:35:46Z'
+  output_hash: fbe0312977d8b63df04657ae6ca409c2aa27408ed03e0febb58b1f19e8fc87f9
   usage:
-    prompt_tokens: 2313
-    completion_tokens: 432
-    total_tokens: 2745
-    reasoning_tokens: 148
+    prompt_tokens: 3461
+    completion_tokens: 508
+    total_tokens: 3969
+    reasoning_tokens: 64
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:58Z'
+  previous_text: Joyfully sing to God, our strength! Raise a loud shout to the God of Jacob!
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:46Z'
+  previous_text: Sing joyfully to God, who gives us strength! Shout aloud in praise to the God of Jacob!
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 40ab5d02e6ad6e7495ae7db6fe080b84658ec7f1a069e777177cd29f098b8506
+  review_summary: 'The draft successfully makes the two imperatives vivid and accessible. “Sing joyfully” is a faithful, clearer expression of jubilant singing, and “in praise” is warranted by the acclamatory verb and the parallel call to sing. Revise the first line, however: retain “our strength” rather than converting the title into “who gives us strength,” which states a valid implication but weakens and narrows the direct identification in the Hebrew.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

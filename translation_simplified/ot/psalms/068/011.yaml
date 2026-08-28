@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/068/011.yaml
-  text: The Lord gives the word[a][b][c]; the women who announce the good news are a great host.
+  text: The Lord gives the word[c]; the women who announce the good news[b] are a great host[a].
   footnotes:
   - marker: a
-    text: Or 'a great army' or 'a large company.'
+    text: Or “a great army” or “a large company.”
     reason: lexical_alternative
   - marker: b
-    text: 'Hebrew has a feminine plural participle: ''the women who bring good news'' or ''the female heralds.'''
+    text: 'Hebrew has a feminine plural participle: “the women who bring good news” or “the female heralds.”'
     reason: lexical_alternative
   - marker: c
-    text: Or 'the message' or 'the command' for 'the word.'
+    text: Or “the message” or “the command.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,67 +37,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The Lord gives the message.[a] The women who announce the good news are a great company.[b]
+  text: The Lord gives the message.[a] A large company of women announces the good news.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “word” or “command.”
+    text: Or “the word” or “the command.”
     reason: lexical_alternative
   - marker: b
-    text: “Great company” may also be translated “great army,” preserving possible military imagery.
+    text: Or “a great army” or “a great host.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: gives the word
   simplified_phrase: gives the message
-  preserved_meaning: The Lord gives an utterance, message, or command.
+  preserved_meaning: The Lord provides the spoken message or command.
   reasoning_layer_used: POB lexical decision for אֹמֶר
-  rationale: “Message” is immediately understandable while preserving the documented range in a footnote.
-- pob_phrase: are a great host
-  simplified_phrase: are a great company
-  preserved_meaning: The female heralds form a large and impressive group.
-  reasoning_layer_used: POB lexical decisions for צָבָא and רָב
-  rationale: “Great company” replaces the unfamiliar “host” while the footnote preserves possible military imagery.
-- pob_phrase: the women who announce the good news
-  simplified_phrase: The women who announce the good news
-  preserved_meaning: The heralds are explicitly female and proclaim good news.
-  reasoning_layer_used: POB theological decision on the feminine plural participle
-  rationale: The wording retains both the marked female gender and the good-news proclamation.
+  rationale: “Message” makes the broad speech sense clearer while the note preserves other possibilities.
+- pob_phrase: the women who announce the good news are a great host
+  simplified_phrase: A large company of women announces the good news
+  preserved_meaning: Many female heralds proclaim good news.
+  reasoning_layer_used: POB lexical and theological decisions for הַמְבַשְּׂרוֹת, צָבָא, and רָב
+  rationale: The recast sentence keeps the marked female plural and expresses the collective image naturally.
 translation_notes:
   risk_flags:
-  - risk: “Company” may weaken the possible military imagery in צָבָא.
-    mitigation: Footnote [b] preserves “great army” as an alternative.
+  - risk: “Company” may soften possible military imagery in צָבָא.
+    mitigation: The footnote preserves “army” and “host” as alternatives.
+  - risk: “Message” narrows the poetic breadth of “word” slightly.
+    mitigation: The footnote retains “word” and “command.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/068/011.yaml
   source_text_sha256: b828df3fed3d24604317434720b8e208a55e389af3bcf5af83f7211bb3a3c414
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 8e7805fd50a86e3cd11155099ee189b5028349701e413e67f46c07b02d4aae8f
-  timestamp: '2026-07-12T10:00:26Z'
-  output_hash: 574281955ffc03830f8afe244a5684c373d45bde9c30f0e62e1e6e02d98b8ffe
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7b4923e6b38a4569ce4606062da3421a606214f60a8e10a5c10e24938206f97a
+  timestamp: '2026-08-28T22:55:28Z'
+  output_hash: ccd1e2daa64fc6b8f6b5d3e1b9e98ceebbbafeef88ad16431c9c2b1d2d4ea157
   usage:
-    prompt_tokens: 3664
-    completion_tokens: 388
-    total_tokens: 4052
-    reasoning_tokens: 0
+    prompt_tokens: 2822
+    completion_tokens: 605
+    total_tokens: 3427
+    reasoning_tokens: 238
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: The Lord gives the word; the women who announce the good news are a great host.
-  rendering: The Lord gives the message, and a great company of women announces the good news.
-  claim: The women proclaim the message the Lord gives.
-  evidence:
-  - The two clauses are directly joined in the Hebrew poetic line.
-  - The POB rationale says God gives the message and the heralds respond.
-  confidence: high
-  alternatives_preserved:
-  - The second clause may primarily identify the heralds as a great host.
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:26Z'
   previous_text: The Lord gives the message,[a] and a great company of women announces the good news.[b]
@@ -109,3 +95,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:55:28Z'
+  previous_text: The Lord gives the message.[a] The women who announce the good news are a great company.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

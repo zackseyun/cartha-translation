@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/033.yaml
-  text: He struck their vines and their fig trees[a], and shattered the trees of their territory.
+  text: He struck their vines and their fig trees, and shattered the trees of their territory[a].
   footnotes:
   - marker: a
-    text: Or 'the trees within their borders.'
+    text: Or “the trees within their borders.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,54 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He struck their grapevines and fig trees. He also shattered the trees in their territory.
+  text: He struck their grapevines and fig trees and shattered the trees in their territory.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “the trees within their borders.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: their vines
   simplified_phrase: their grapevines
-  preserved_meaning: The plants are vines that produce grapes.
-  reasoning_layer_used: POB lexical decision for גַּפְנָם
-  rationale: The clearer term identifies the crop without changing the meaning.
-- pob_phrase: He struck their vines and their fig trees, and shattered
-  simplified_phrase: He struck their grapevines and fig trees. He also shattered
-  preserved_meaning: God forcefully damaged the cultivated plants and the other trees.
-  reasoning_layer_used: POB lexical and theological decisions
-  rationale: Two sentences clarify the distinct actions while keeping the same implied subject.
+  preserved_meaning: The vines were grape-producing plants.
+  reasoning_layer_used: The lexical decision for גַּפְנָם identifies the vine as a grapevine.
+  rationale: “Grapevines” makes the crop immediately clear.
 - pob_phrase: the trees of their territory
   simplified_phrase: the trees in their territory
-  preserved_meaning: The trees were located within their territory.
-  reasoning_layer_used: POB lexical decision for גְּבוּלָם
-  rationale: The spatial wording is natural without implying destruction throughout the whole territory.
+  preserved_meaning: The shattered trees were located within Egyptian territory.
+  reasoning_layer_used: The lexical decision for גְּבוּלָם allows the locative sense “within their borders.”
+  rationale: “In their territory” is natural English without implying destruction everywhere.
 interpretive_expansions:
-- pob_phrase: the trees of their territory
-  rendering: the trees in their territory
-  claim: The trees are located within their territory.
+- pob_phrase: their vines
+  rendering: their grapevines
+  claim: The vines named here are grapevines.
   evidence:
-  - The POB lexical rationale allows “within their borders” as an alternative.
+  - The POB lexical decision says גֶּפֶן commonly denotes a vine or grapevine.
   confidence: high
   alternatives_preserved:
-  - the trees of their territory
-  - the trees within their borders
-translation_notes: {}
+  - their vines
+translation_notes:
+  risk_flags:
+  - risk: “In their territory” makes the Hebrew genitive phrase locative.
+    mitigation: The documented alternative “within their borders” supports this reading, and the footnote preserves it.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/033.yaml
   source_text_sha256: 87ad6ba42a482e19343ed6b7c63551d27847bd193203df804ee877b4b81397fc
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 0265b42b5ab3aab6ba241a47cff6e7d95accd0aab358c40cab77e3fd3927360c
-  timestamp: '2026-07-12T10:02:28Z'
-  output_hash: a52d0508a39879bd7dd3af72545d829f6f2bc04c65fd496d9f7b63f5d1832329
+  prompt_sha256: 86a9735c6e59eb6f99e2cd5c7f0d6c7ba82d0a1d3714b6bf57574d6f8313f18d
+  timestamp: '2026-08-28T23:36:04Z'
+  output_hash: 1a99faeaa1a8dd6a6f6325dfdde8f7cd7c4fab1a6deafcbf23c5db975e84d718
   usage:
-    prompt_tokens: 3176
-    completion_tokens: 361
-    total_tokens: 3537
-    reasoning_tokens: 0
+    prompt_tokens: 3628
+    completion_tokens: 538
+    total_tokens: 4166
+    reasoning_tokens: 178
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -90,5 +91,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 8d8883f6ccd8c458adf04da80e67f9ef3962f7bc05e61e18808356bda7d93464
   review_summary: “Grapevines” is a warranted and useful clarification of “vines,” and the two-sentence form is clear while preserving the continued divine subject. Replace “across their territory” with “in their territory” to avoid adding an unestablished territory-wide scope while retaining the intended spatial clarification.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:57:45Z'
+  previous_text: He struck their grapevines and fig trees. He also shattered the trees in their territory.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:04Z'
+  previous_text: He destroyed their grapevines and fig trees and shattered the trees throughout their land.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 51096402a0491cf6e9cdee563c0581e925d13c27da978d384f9f138a81621773
+  review_summary: The draft improves accessibility by identifying the vines as grapevines, and “shattered” is both clear and well supported. However, “destroyed” overstates the first verb’s expressed action and blurs its distinction from the subsequent intensive “shattered.” “Throughout” adds an unwarranted extent claim. Use a clear but restrained locative rendering and retain the lexical footnote.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

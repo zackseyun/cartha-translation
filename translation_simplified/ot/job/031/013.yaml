@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/031/013.yaml
-  text: If I have rejected the case of my male slave or my female slave when they brought a complaint against me[b][a],
+  text: If I have rejected the case[a] of my male slave or my female slave[b] when they brought a complaint against me,
   footnotes:
   - marker: a
-    text: Or 'the legal right of my servant and my maidservant.' The Hebrew משפט can denote justice, legal right, or a legal case.
+    text: Or “the legal right of my male slave or my female slave.” The Hebrew מִשְׁפָּט can denote justice, a legal right, or a legal case.
     reason: lexical_alternative
   - marker: b
-    text: Hebrew 'my slave and my female slave' may also be rendered more traditionally 'my servant and my maidservant.'
+    text: Traditionally, “my male servant or my female servant.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,54 +34,48 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 31:13 brought a complaint against me. Azure substituted ''contended with me'' — collapses drafter''s verbal expansion of בְּרִיבָם and swaps ''against me'' for ''with me'' (drafter''s explicit rejected alternative for עִמָּדִי).'
 translation:
   language: en
-  text: If my male or female servant brought a complaint against me and I rejected their case,[a]
+  text: If a male or female slave of mine brought a complaint against me, and I dismissed that person’s case,[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “If I denied the legal rights of my male or female slave.”
+    text: Or “denied that person justice” or “rejected that person’s legal right.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: If I have rejected the case of my male slave or my female slave when they brought a complaint against me
-  simplified_phrase: If my male or female slave brought a complaint against me and I rejected their case
-  preserved_meaning: Job conditionally describes rejecting the legal case of an enslaved man or woman who complained against him.
-  reasoning_layer_used: POB lexical decisions for אֶמְאַס, מִשְׁפָּט, עַבְדִּי, וַאֲמָתִי, בְּרִיבָם, and עִמָּדִי
-  rationale: Reordering the clauses clarifies the sequence while retaining the broad legal sense of “rejected.”
+- pob_phrase: If I have rejected the case ... when they brought a complaint against me
+  simplified_phrase: If ... brought a complaint against me, and I dismissed ... case
+  preserved_meaning: Job describes refusing an enslaved person’s case in a dispute against him.
+  reasoning_layer_used: POB lexical decisions for אֶמְאַס, מִשְׁפַּט, בְּרִיבָם, and עִמָּדִי
+  rationale: The reordered clauses follow natural English while retaining the legal dispute and Job’s rejection of the case.
+- pob_phrase: my male slave or my female slave
+  simplified_phrase: a male or female slave of mine
+  preserved_meaning: The people remain enslaved members of Job’s household, with both sexes explicitly included.
+  reasoning_layer_used: POB lexical decision and wisdom-source audit for עַבְדִּי וַאֲמָתִי
+  rationale: The compact phrasing preserves bonded status and the male-female distinction.
 translation_notes:
   risk_flags:
-  - risk: “Case” may sound narrower than the Hebrew range of justice, legal right, or legal claim.
-    mitigation: The footnote preserves the alternative sense of denying the slaves’ legal rights.
+  - risk: “Dismissed” may sound like a formal court ruling rather than a broader refusal of justice or legal right.
+    mitigation: The footnote preserves the documented range of מִשְׁפָּט and the broader alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/031/013.yaml
   source_text_sha256: aa9a953054fb12347143b21f62751d0c4c3d70b712e1f684f6e0e25dac4d0084
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7ff932e459af5257f718806a325720bd6560903d1d04b078cc11268caecf08fc
-  timestamp: '2026-07-12T09:39:43Z'
-  output_hash: ffb6d22c56e5ea27471e490a90187311131824c1908f38ecd4dcc4a24fe988a5
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: c377a5e7caa376ea16e17694e66570b447f14c15fa39996bd3e0322d5bc91bab
+  timestamp: '2026-08-28T22:55:09Z'
+  output_hash: 5dc3c84acfd47371bb8d7b4b63a4656d1b63266e77d6df5858aebd75fe99702e
   usage:
-    prompt_tokens: 3810
-    completion_tokens: 306
-    total_tokens: 4116
-    reasoning_tokens: 0
+    prompt_tokens: 3143
+    completion_tokens: 904
+    total_tokens: 4047
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: rejected the case
-  rendering: refused to hear their case
-  claim: Rejecting the case means refusing to give the slave’s claim a hearing or consideration.
-  evidence:
-  - The POB rationale identifies a legal context involving a rightful case or claim.
-  - The source term מִשְׁפָּט is audited here as justice, legal right, or legal case.
-  confidence: high
-  alternatives_preserved:
-  - The footnote preserves the possible sense of denying their legal rights.
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:43Z'
   previous_text: If one of my male or female slaves brought a complaint against me and I refused to hear their case,[a]
@@ -93,3 +87,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:06Z'
+  previous_text: If my male or female servant brought a complaint against me and I rejected their case,[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:55:09Z'
+  previous_text: If one of my slaves, whether male or female, brought a complaint against me and I rejected their case,[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/024.yaml
-  text: And he made his people very fruitful[a][b], and made them mightier than their adversaries.
+  text: And he made his people very fruitful[a], and made them mightier than their adversaries.[b]
   footnotes:
   - marker: a
-    text: Literally 'made him stronger than his adversaries,' with singular pronouns referring to the collective noun 'his people.'
+    text: Or “multiplied his people greatly.” The Hebrew verb can emphasize causing fruitfulness or increase.
     reason: lexical_alternative
   - marker: b
-    text: Or 'multiplied his people greatly.' The Hebrew verb can emphasize causing fruitfulness or increase.
+    text: Literally, “made him mightier than his adversaries,” with singular pronouns referring to the collective noun “his people.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,52 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He made his people fruitful, and they grew greatly in number. He made them stronger than their enemies.
+  text: He made his people increase greatly.[a] He also made them stronger than their enemies.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew describes this great increase with the image of making the people fruitful.
+    reason: source_note
 simplification_decisions:
 - pob_phrase: made his people very fruitful
-  simplified_phrase: made his people fruitful, and they grew greatly in number
-  preserved_meaning: God caused his people to be fruitful and multiply greatly.
-  reasoning_layer_used: POB lexical decision for וַיֶּפֶר and its documented alternative
-  rationale: The wording keeps the fruitfulness image while making the resulting increase immediately clear.
+  simplified_phrase: made his people increase greatly
+  preserved_meaning: God caused his people to grow greatly in number.
+  reasoning_layer_used: POB lexical decision, lexical-alternative footnote, and grounding review
+  rationale: This states the supported numerical sense without turning one verb into two sequential actions.
 - pob_phrase: made them mightier than their adversaries
   simplified_phrase: made them stronger than their enemies
-  preserved_meaning: God made his collective people stronger than those hostile to them.
-  reasoning_layer_used: POB lexical and collective-pronoun decisions
-  rationale: Common words replace formal terms without changing the comparison or plural reference.
+  preserved_meaning: God made his people more powerful than those hostile to them.
+  reasoning_layer_used: POB lexical decisions for וַיַּעֲצִמֵהוּ and מִצָּרָיו
+  rationale: Common words preserve both the comparison and the hostility.
 interpretive_expansions:
 - pob_phrase: made his people very fruitful
-  rendering: made his people fruitful, and they grew greatly in number
-  claim: Fruitfulness here includes a great increase in the people's numbers.
+  rendering: made his people increase greatly
+  claim: The fruitfulness image refers here to a great increase in the people's number.
   evidence:
-  - The POB lexical rationale gives “multiplied” and “caused to increase” as valid senses.
-  - The POB footnote explicitly offers “multiplied his people greatly.”
+  - The POB footnote gives “multiplied his people greatly” as an alternative.
+  - The lexical rationale connects the verb with fruitfulness and multiplication.
+  - The Exodus context recounts Israel's rapid increase.
   confidence: high
   alternatives_preserved:
-  - made his people very fruitful
-  - multiplied his people greatly
+  - The footnote preserves the Hebrew image of fruitfulness.
 translation_notes:
   risk_flags:
-  - risk: “Fruitful” alone could be misunderstood as general prosperity.
-    mitigation: The added clause explains that the people grew greatly in number.
+  - risk: Rendering the image as numerical increase could hide the Hebrew picture of fruitfulness.
+    mitigation: The footnote preserves the source-language image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/024.yaml
   source_text_sha256: 4845b2f97cbbd9c76ac09e6a9358fecc2c7e3dd46e35eb4aa4111e8ef5fc9c8e
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 121e9731c6a46c7e33c07e1b469efffeeadc65189a885b8a4fc835d4d4797245
-  timestamp: '2026-07-11T21:01:51Z'
-  output_hash: 634e564992c2fd258fec62eb5477e02ee011a8c15de64fb8c51ef9c8940aed09
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: dc3a6a4f9027a0b0a698cd7819abe89657579dfdf5b5c107c50867bc1c3480a1
+  timestamp: '2026-08-28T23:36:38Z'
+  output_hash: ac892819f99dd23f3f732dff502c6acccfb12d9f5db96ca6751413632895b111
   usage:
-    prompt_tokens: 2473
-    completion_tokens: 678
-    total_tokens: 3151
-    reasoning_tokens: 299
+    prompt_tokens: 3505
+    completion_tokens: 715
+    total_tokens: 4220
+    reasoning_tokens: 306
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:14Z'
+  previous_text: He made his people fruitful, and they grew greatly in number. He made them stronger than their enemies.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:38Z'
+  previous_text: He made his people fruitful, so that they multiplied greatly. He also made them stronger than their enemies.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 04ac3ec09bfb0318a43da36113486cef0e20e73a99382a7b36bf8a73782d15dc
+  review_summary: The draft rightly makes the numerical sense of the first clause clear, and “stronger than their enemies” is a clear, contextually faithful simplification of “mightier than their adversaries.” However, “fruitful, so that they multiplied greatly” unnecessarily divides a single Hebrew expression into cause and result. Render the supported numerical sense directly instead.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

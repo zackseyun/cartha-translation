@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/050/013.yaml
-  text: Do I eat the flesh of bulls[a], or drink the blood of goats?
+  text: Do I eat the flesh of bulls, or drink the blood of goats[a]?
   footnotes:
   - marker: a
-    text: Hebrew 'male goats.'
+    text: Hebrew “male goats.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,43 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do I eat the flesh of bulls or drink the blood of male goats?
+  text: Do I eat bulls’ flesh or drink goats’ blood?[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Hebrew “male goats.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the blood of goats
-  simplified_phrase: the blood of male goats
-  preserved_meaning: The concrete image of drinking sacrificial blood remains, with the animals identified more precisely.
-  reasoning_layer_used: POB lexical decision and footnote
-  rationale: Adding “male” clearly expresses the source term’s specific meaning.
-interpretive_expansions:
-- pob_phrase: goats
-  rendering: male goats
-  claim: The goats in view are specifically male goats.
-  evidence:
-  - The POB lexical record states that עַתּוּדִים denotes male goats.
-  confidence: high
-  alternatives_preserved:
-  - goats
+- pob_phrase: the flesh of bulls, or drink the blood of goats
+  simplified_phrase: bulls’ flesh or drink goats’ blood
+  preserved_meaning: God names the flesh and blood of sacrificial animals in a rhetorical question.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Possessive forms make the parallel images more direct without softening them.
 translation_notes:
   risk_flags:
-  - risk: The imagery could be mistaken as suggesting that God literally consumes sacrifices.
-    mitigation: The rhetorical question remains intact, preserving its denial of that idea.
+  - risk: The compact wording could sound like a request for information rather than a rhetorical denial.
+    mitigation: The question form and concrete sacrificial images preserve the POB’s rhetorical force in context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/050/013.yaml
   source_text_sha256: bc14ef1609dddf74c10fa9409f27f2622407620fa0c833355f8fbc1f85148bed
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 5921fad02d51f91cae8c522716994ac2de63ad998513e3bfbad3d73e2c290f84
-  timestamp: '2026-07-12T10:00:08Z'
-  output_hash: 11a221c67ae4413ee462003c8eb9c3a4edb9127c748f04cc58d32117b69a7dcb
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 2b5721b87f1610a41d28856ef426b2510a6ce009b0df654643d1921baedbbc8f
+  timestamp: '2026-08-28T22:57:39Z'
+  output_hash: ce7c024ae35482941b78ce4c52d97baa0d9e1b100221180d432e64597e61a352
   usage:
-    prompt_tokens: 3121
-    completion_tokens: 241
-    total_tokens: 3362
-    reasoning_tokens: 0
+    prompt_tokens: 2594
+    completion_tokens: 405
+    total_tokens: 2999
+    reasoning_tokens: 188
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:08Z'
   previous_text: Do I eat bulls’ flesh or drink male goats’ blood?
@@ -84,3 +78,8 @@ spob_revision_history:
   review_summary: The draft faithfully preserves the rhetorical question and concrete sacrificial imagery. Rendering עַתּוּדִים as “male goats” is warranted by the POB lexical record and makes a source detail explicit without adding doctrine. However, the possessive wording is not a meaningful clarity improvement over POB and is less idiomatic for many modern readers. Retain the warranted clarification “male goats” while use the clearer full phrases.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:57:39Z'
+  previous_text: Do I eat the flesh of bulls or drink the blood of male goats?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

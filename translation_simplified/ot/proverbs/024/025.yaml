@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/024/025.yaml
-  text: But for those who rebuke[a], it will be pleasant[b], and a good blessing will come upon them.
+  text: But it will go well with those who rebuke[a], and a blessing of good things[b] will come upon them.
   footnotes:
   - marker: a
-    text: Or 'those who reprove' or 'those who correct.' The Hebrew participle refers to people who give needed rebuke or correction.
+    text: Or “those who reprove” or “those who correct.” The Hebrew does not state the object of the rebuke.
     reason: lexical_alternative
   - marker: b
-    text: Hebrew 'blessing of good,' that is, a beneficial or favorable blessing.
+    text: Hebrew, “a blessing of good.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,53 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But things will go well for those who give needed correction, and a blessing that brings good will come upon them.
+  text: But those who correct[a] will do well, and a blessing bringing good things will come upon them.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “rebuke” or “reprove.” The Hebrew does not say whom or what they correct.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: it will be pleasant
-  simplified_phrase: things will go well
-  preserved_meaning: A favorable outcome awaits those who give correction.
-  reasoning_layer_used: POB lexical decision for יִנְעָם
-  rationale: This uses a listed alternative and makes the impersonal expression natural in English.
-- pob_phrase: a good blessing
-  simplified_phrase: a blessing that brings good
-  preserved_meaning: The blessing is beneficial or favorable.
-  reasoning_layer_used: POB lexical decision for בִרְכַּת טוֹב
-  rationale: The wording explains the compact Hebrew phrase without adding a specific benefit.
-interpretive_expansions:
 - pob_phrase: those who rebuke
-  rendering: those who give needed correction
-  claim: The rebuke is appropriate correction rather than hostile criticism.
-  evidence:
-  - The POB footnote defines the participle as giving needed rebuke or correction.
-  - The lexical rationale places the term in a moral or judicial setting.
-  confidence: high
-  alternatives_preserved:
-  - those who rebuke
-  - those who reprove
-  - those who correct
+  simplified_phrase: those who correct
+  preserved_meaning: They actively confront what is wrong without naming whom or what they correct.
+  reasoning_layer_used: POB lexical decision and source audit
+  rationale: “Correct” is direct, familiar wording that preserves the participle’s open object.
+- pob_phrase: it will go well with
+  simplified_phrase: will do well
+  preserved_meaning: A favorable outcome awaits those who correct.
+  reasoning_layer_used: POB lexical decision and applied revision
+  rationale: “Will do well” expresses the favorable outcome in common contemporary English.
+- pob_phrase: a blessing of good things
+  simplified_phrase: a blessing bringing good things
+  preserved_meaning: The blessing consists of or is characterized by good.
+  reasoning_layer_used: POB lexical decision
+  rationale: This keeps both blessing and good things while making their relationship natural in English.
 translation_notes:
   risk_flags:
-  - risk: “Things will go well” states the favorable outcome more directly than the Hebrew’s impersonal wording.
-    mitigation: The rendering follows a listed lexical alternative and retains the separate promise of blessing.
+  - risk: “Correct” can sound less forceful than “rebuke.”
+    mitigation: The footnote retains “rebuke” and “reprove” as stronger lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/024/025.yaml
   source_text_sha256: 92424ab4b85214d15abd44eba123ca246d62a53daeedf783c3740b3da6499d99
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6aff51615dedc4df7eae525c51311efddd9778943a6988eb9689be30e8c3a781
-  timestamp: '2026-07-11T21:07:13Z'
-  output_hash: 06a080219f622ee68bb454d0a72abc5244af1c2940ae12437ba93738c224e54c
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 380477ee4e830d31c715194e77574c460080d2b4bc79878c3f02b90ed74b8f4a
+  timestamp: '2026-08-28T23:34:44Z'
+  output_hash: 600dbb958e801566a9648d2395070d555bcd31ae1f877f8d705dbf7a932a36ca
   usage:
-    prompt_tokens: 2329
-    completion_tokens: 765
-    total_tokens: 3094
-    reasoning_tokens: 406
+    prompt_tokens: 3483
+    completion_tokens: 467
+    total_tokens: 3950
+    reasoning_tokens: 117
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:07:34Z'
+  previous_text: But things will go well for those who give needed correction, and a blessing that brings good will come upon them.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:44Z'
+  previous_text: But those who give correction[a] will fare well, and a blessing bringing good things will come upon them.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 35857856cfd839896f9566055526e180c43b4fcc375861d744db546b770c9344
+  review_summary: The draft preserves the open object of the Hebrew and does not add doctrinal content. However, “give correction” is an awkward and somewhat softer paraphrase, and “fare well” does not improve accessibility. Replacing them with “correct” and “do well” gives a clearer, publication-ready simplification while preserving the POB audit trail. The final blessing clause is an acceptable clarification of “a blessing of good [things].”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/078/047.yaml
-  text: He destroyed their vines with hail[a], and their sycamore trees with frost.
+  text: He destroyed their vines with hail, and their sycamore trees with frost[a].
   footnotes:
   - marker: a
-    text: Or 'with locusts,' 'with hailstones,' or 'with sleet'; the Hebrew term is rare and uncertain.
+    text: The Hebrew word translated “frost” is rare and uncertain; proposed senses include “sleet” and a destructive insect.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: With hail, he destroyed their grapevines; with frost,[a] he destroyed their sycamore trees.
+  text: He used hail to destroy their grapevines, and frost to destroy their sycamore trees.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The rare Hebrew word translated “frost” is uncertain. It may instead mean locusts, hailstones, or sleet.
+    text: The Hebrew word translated “frost” is rare and uncertain. It may instead mean “sleet” or a destructive insect.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: destroyed their vines with hail
+  simplified_phrase: used hail to destroy their grapevines
+  preserved_meaning: Hail was the means by which the vines were destroyed.
+  reasoning_layer_used: POB lexical decisions for יַהֲרֹג, בַּבָּרָד, and גַּפְנָם
+  rationale: The recast clause makes the means-and-result relationship immediate while keeping the plants as grapevines.
 - pob_phrase: their vines
   simplified_phrase: their grapevines
-  preserved_meaning: The plants are vines that produce grapes, not vineyards as areas of land.
+  preserved_meaning: The text refers to vine plants rather than vineyard land.
   reasoning_layer_used: POB lexical decision for גַּפְנָם
-  rationale: “Grapevines” immediately identifies the kind of plant for modern readers.
-- pob_phrase: He destroyed their vines with hail, and their sycamore trees with frost
-  simplified_phrase: With hail, he destroyed their grapevines; with frost, he destroyed their sycamore trees
-  preserved_meaning: God is the agent, and hail and frost are the means of destruction.
-  reasoning_layer_used: POB lexical decisions for יַהֲרֹג and instrumental בְּ
-  rationale: The repeated parallel structure makes each destructive means and object easy to follow.
+  rationale: “Grapevines” is clearer to readers unfamiliar with the agricultural sense of “vines.”
 translation_notes:
   risk_flags:
-  - risk: The Hebrew term rendered “frost” is rare and its meaning is uncertain.
-    mitigation: The main text retains POB’s preferred rendering, while the footnote preserves the documented alternatives.
+  - risk: The rare final Hebrew noun may not mean “frost.”
+    mitigation: The footnote preserves the lexical uncertainty and leading alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/078/047.yaml
   source_text_sha256: 9655cc1063622b1f5bad0b3c24056ef250af8283ed3b0ae249d9cf15fb733ec8
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: f02ca3e975ae3fca5b9890aaa2526af578d0892b2eaf95540a4748d310ca87d2
-  timestamp: '2026-07-11T20:51:47Z'
-  output_hash: eea3669109ca16e238d2fefd448d1af05de7cd0afbfc75d07a5fd66e195e0e36
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: f50de8582080181a38f1cd2ee2970e3530a12cc6df437965a12ba3ce3df5a8fb
+  timestamp: '2026-08-28T22:57:22Z'
+  output_hash: 9251865250f2bf0d3b69392a2587e7454b89c717a9b112157fad65e89de299a5
   usage:
-    prompt_tokens: 2292
-    completion_tokens: 579
-    total_tokens: 2871
+    prompt_tokens: 2481
+    completion_tokens: 564
+    total_tokens: 3045
     reasoning_tokens: 232
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:22Z'
+  previous_text: With hail, he destroyed their grapevines; with frost,[a] he destroyed their sycamore trees.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

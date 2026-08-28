@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/030/020.yaml
-  text: I cry out to you[a], but you do not answer me; I stand, and you only look at me.
+  text: I cry out to you, but you do not answer me; I stand, and you look at me[a].
   footnotes:
   - marker: a
-    text: Or 'I stood, and you looked closely at me.' The Hebrew may be read with a past-time sense and with the nuance of attentive looking or considering.
-    reason: lexical_alternative
+    text: Or “I stood, and you looked closely at me.” The Hebrew may have past-time sense, and the verb can suggest attentive looking or consideration.
+    reason: grammar_and_lexical_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,51 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I cry to you, but you give me no answer. I stand, and you do nothing but look at me.[a]
+  text: I cry to you for help, but you do not answer. I stand, and you look at me.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 'The Hebrew can also be understood in past time: “I stood, and you looked closely at me.”'
+    text: Or “I stood, and you looked closely at me.” The Hebrew may refer to past time, and the verb may imply attentive looking or consideration.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: you do not answer me
-  simplified_phrase: you give me no answer
-  preserved_meaning: Job directly complains that God does not respond.
-  reasoning_layer_used: Lexical decision for תַעֲנֵנִי and the theological decision on unanswered prayer.
-  rationale: This is natural English without implying that God refuses to save.
-- pob_phrase: you only look at me
-  simplified_phrase: you do nothing but look at me
-  preserved_meaning: God observes Job without answering or intervening.
-  reasoning_layer_used: Lexical rationale for וַתִּתְבֹּנֶן and the preserved theological tension.
-  rationale: The fuller phrase makes the audited contrast expressed by “only” immediately clear.
-translation_notes:
-  risk_flags:
-  - risk: “Do nothing but” may sound stronger than the Hebrew verb by itself.
-    mitigation: It preserves the POB’s audited “only” without adding that God ignores Job or refuses to save.
-  - risk: The main text favors the POB’s vivid present-time reading.
-    mitigation: The footnote preserves the possible past-time sense and attentive-looking nuance.
+- pob_phrase: I cry out to you
+  simplified_phrase: I cry to you for help
+  preserved_meaning: Job makes a desperate appeal to God.
+  reasoning_layer_used: Lexical decision for אֲשַׁוַּע
+  rationale: “For help” makes the desperate appeal clear without saying that God must rescue him.
+- pob_phrase: but you do not answer me; I stand
+  simplified_phrase: but you do not answer. I stand
+  preserved_meaning: Job’s plea remains unanswered while his lament continues.
+  reasoning_layer_used: POB syntax and theological decision
+  rationale: Dividing the line into two sentences improves clarity without strengthening Job’s accusation.
+interpretive_expansions:
+- pob_phrase: I cry out to you
+  rendering: I cry to you for help
+  claim: Job’s cry is an appeal for help.
+  evidence:
+  - The lexical audit says the Piel of שׁוע conveys a strong cry for help or desperate appeal.
+  confidence: high
+  alternatives_preserved:
+  - I cry out to you
+  - I plead with you
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/030/020.yaml
   source_text_sha256: 4159a16c1db76441afffc4c3786a130fd5e5bf1c90072bec77d0c8b84d7ce45b
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: d23c95df48998514339b75591855133940587adf6a586f89ef456c8c8b90fd18
-  timestamp: '2026-07-12T09:39:42Z'
-  output_hash: 26302a6808fed8b18728100e784811c4a55387c9339715b8acc68d902fd1a6fc
+  prompt_sha256: 2dea033e246e3b612da8fb331cc4ee3294adc8a56e5372b5cebd49156346d38a
+  timestamp: '2026-08-28T23:34:52Z'
+  output_hash: 86813a8356c5b5257ad2e94b310ce699f861aff1f89967d7a3faa13d175bd8cf
   usage:
-    prompt_tokens: 3333
-    completion_tokens: 352
-    total_tokens: 3685
-    reasoning_tokens: 0
+    prompt_tokens: 3586
+    completion_tokens: 504
+    total_tokens: 4090
+    reasoning_tokens: 142
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:42Z'
@@ -87,4 +91,23 @@ spob_revision_history:
   review_summary: The revised first clause is natural, clear, and faithfully retains Job's complaint that God gives no response. “You do nothing but look at me” is defensible because it restates the POB's audited “only look,” which supplies the contrast without claiming that God refuses to save or ignores Job. However, “remain standing” inserts a continuing duration not warranted by the source wording or required for comprehension. Restore “I stand” while retaining the footnote's past-time and attentive-looking alternative.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:27Z'
+  previous_text: I cry to you, but you give me no answer. I stand, and you do nothing but look at me.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:12Z'
+  previous_text: I cry out to you, but you give me no answer. I stand, and you look at me.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:52Z'
+  previous_text: I cry to you for help, but you do not answer. I stand before you, and you look at me.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 7c31858296104a08f4740ec292a043e4f1b0ee874aecf56e2af71dac55f21f1f
+  review_summary: '“Cry to you for help” is a warranted, useful clarification of Job’s desperate appeal and does not claim that God must rescue him. Splitting the line into two sentences is also clear and retains the lament’s force. Revise only the unsupported “before you”: it narrows an unmarked Hebrew clause and is not needed for modern comprehension. The footnote appropriately preserves the tense and attentive-looking alternatives.'
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

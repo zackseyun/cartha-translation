@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/042/017.yaml
-  text: And Job died[a], old and full of days.
+  text: And Job died, old and full of days.[a]
   footnotes:
   - marker: a
-    text: Or 'satisfied with days' / 'having had his fill of days,' a Hebrew idiom for a full lifespan.
+    text: Or “satisfied with days” or “having had his fill of days,” a Hebrew idiom for a full lifespan.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,51 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Job died when he was old, after living a full span of days.
+  text: Job died at an old age, after living a full lifetime.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Literally “full of days”; this may also mean “satisfied with his days” or “having had his fill of days.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And Job died, old and full of days.
-  simplified_phrase: Job died when he was old, after living a full span of days.
-  preserved_meaning: Job died at an old age after completing a full lifespan.
-  reasoning_layer_used: POB lexical decisions for וַיָּמָת, זָקֵן, and וּשְׂבַע יָמִים
-  rationale: Natural clause order clarifies the death notice while preserving the separate ideas of old age and a full span of days.
+- pob_phrase: old
+  simplified_phrase: at an old age
+  preserved_meaning: Job was old when he died.
+  reasoning_layer_used: POB lexical decision for זָקֵן
+  rationale: The prepositional phrase reads more naturally in modern English.
+- pob_phrase: full of days
+  simplified_phrase: after living a full lifetime
+  preserved_meaning: Job had reached the end of a full, complete lifespan.
+  reasoning_layer_used: POB lexical rationale and footnote
+  rationale: The idiom is stated plainly while its Hebrew image and alternatives remain in the note.
 interpretive_expansions:
 - pob_phrase: full of days
-  rendering: after living a full span of days
-  claim: The phrase describes the completion of a full lifespan.
+  rendering: after living a full lifetime
+  claim: The Hebrew idiom describes a complete lifespan.
   evidence:
-  - The POB lexical rationale identifies the phrase as a Hebrew death-notice idiom for a full lifespan.
+  - The POB lexical rationale says the idiom denotes a full, complete lifespan.
+  - The POB footnote identifies it as a Hebrew idiom for a full lifespan.
   confidence: high
   alternatives_preserved:
-  - full of days
-  - satisfied with days
+  - satisfied with his days
   - having had his fill of days
 translation_notes:
   risk_flags:
-  - risk: “Full span of days” is less traditional than “full of days.”
-    mitigation: It keeps the days image while making the full-lifespan meaning easier to understand.
+  - risk: “Full lifetime” could obscure the Hebrew image of being “full of days.”
+    mitigation: The footnote retains the literal image and its documented alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/042/017.yaml
   source_text_sha256: bf3035b2dbfd93e0a553430ae8f1c5c7ccb633728f33a192587dc56aa16adb22
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: a879f5ee616ba113e872e94248c65891b801baaab0bcdbe49a79ee4e0ef35ed1
-  timestamp: '2026-07-12T09:41:18Z'
-  output_hash: ddebc6828fc237b2eb5222f6952c35cd93e4f481582251532d83e393253be823
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: f5b6453a87c8ee0d0f5c87f55169de25219d939117a6c5788173a77146e70f9e
+  timestamp: '2026-08-28T22:51:52Z'
+  output_hash: 49ffebf12eca46ae2e7185c297d1183d6809df401f30826a36b0d827fc4b18d5
   usage:
-    prompt_tokens: 2854
-    completion_tokens: 548
-    total_tokens: 3402
-    reasoning_tokens: 227
+    prompt_tokens: 2266
+    completion_tokens: 774
+    total_tokens: 3040
+    reasoning_tokens: 398
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:41:18Z'
   previous_text: Then Job died at an old age, after living a full span of days.
@@ -86,3 +94,8 @@ spob_revision_history:
   review_summary: The draft’s explanation of “full of days” as having lived a complete lifespan is fully supported by the POB audit trail and makes the Hebrew death-notice idiom clear without adding doctrine. Revise the phrasing slightly for natural English and to avoid making the sequential force stronger than needed. “Full life” accurately conveys the idiom, while “when he was old” directly preserves the separate description of Job as old.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:52Z'
+  previous_text: Job died when he was old, after living a full span of days.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

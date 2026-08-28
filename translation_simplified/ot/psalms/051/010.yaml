@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/051/010.yaml
-  text: Hide your face from my sins[a][b], and blot out all my iniquities.
+  text: Hide your face from my sins, and blot out[a] all my iniquities[b].
   footnotes:
   - marker: a
-    text: '''Iniquities'' translates a term that can also carry the sense of ''guilt.'''
+    text: Or 'wipe away' or 'erase.'
     reason: lexical_alternative
   - marker: b
-    text: Or 'wipe away' or 'erase' all my iniquities.
+    text: '''Iniquities'' translates a term that can also carry the sense of ''guilt.'''
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Hide your face from my sins, and erase all my wrongdoing.[a]
+  text: Hide your face so you do not look upon my sins. Erase all my wrongdoing.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The word translated “wrongdoing” can also mean “guilt.”
+    text: The Hebrew term can also mean “iniquities” or “guilt.”
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: Hide your face from my sins
+  simplified_phrase: Hide your face so you do not look upon my sins
+  preserved_meaning: The concrete face image remains while its meaning as a plea for God not to regard the sins is clarified.
+  reasoning_layer_used: POB lexical rationale for הַסְתֵּר and פָּנֶיךָ
+  rationale: The added clause makes the Hebrew image immediately understandable without replacing it.
 - pob_phrase: blot out
-  simplified_phrase: erase
-  preserved_meaning: God is asked to remove the psalmist’s offenses completely, as if removing them from a record.
-  reasoning_layer_used: POB lexical decision for מְחֵה
-  rationale: “Erase” makes the record-removal image immediately clear.
+  simplified_phrase: Erase
+  preserved_meaning: The image of completely removing wrongdoing remains intact.
+  reasoning_layer_used: POB lexical alternatives for מְחֵה
+  rationale: “Erase” is the clearest documented equivalent for modern readers.
 - pob_phrase: all my iniquities
   simplified_phrase: all my wrongdoing
-  preserved_meaning: The second term remains distinct from “sins” and refers to the psalmist’s wrong acts or guilt.
+  preserved_meaning: The second Hebrew term refers to culpable wrong and remains distinct from “sins.”
   reasoning_layer_used: POB lexical and theological decisions for עֲוֹנֹתַי
-  rationale: “Wrongdoing” is more familiar than “iniquities,” while the footnote preserves the possible sense of guilt.
+  rationale: “Wrongdoing” avoids suggesting only an inward feeling while clearly naming the moral wrong.
+interpretive_expansions:
+- pob_phrase: Hide your face from my sins
+  rendering: Hide your face so you do not look upon my sins
+  claim: Hiding the face means withholding personal attention from the psalmist’s sins.
+  evidence:
+  - The POB lexical rationale describes this as a plea for God not to look upon the psalmist’s sins.
+  confidence: high
+  alternatives_preserved:
+  - Hide your face from my sins
+  - Turn your face away from my sins
 translation_notes:
   risk_flags:
-  - risk: Replacing “iniquities” may lessen the traditional distinction between the two Hebrew sin terms.
-    mitigation: “Wrongdoing” remains distinct from “sins,” and the footnote preserves the term’s possible sense of guilt.
+  - risk: “Wrongdoing” does not by itself express the possible nuance of culpability or guilt.
+    mitigation: The footnote preserves “guilt” and the more traditional “iniquities” as lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/051/010.yaml
   source_text_sha256: efc838f2d70bc1baf617c3d23deca9af52e36a09051ed29dda7406ec8682dc7f
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c592cdd96c7a24c11b985eb60326b5adf75674a4907777b94bbc3acc882943d6
-  timestamp: '2026-07-11T20:49:27Z'
-  output_hash: 05dc74a549b72873600d52cfc28ee9d7229f1c6e72dfb140a2b1a3863911ef39
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 09122ec6c98803d1e175030f5fe3df1b57ea977aaaf51dded81af96f1e55f244
+  timestamp: '2026-08-28T23:35:27Z'
+  output_hash: 9b5a4146eec3de0aba6054aa22b29728146899a16f9960665326142a3e4a0288
   usage:
-    prompt_tokens: 2506
-    completion_tokens: 714
-    total_tokens: 3220
-    reasoning_tokens: 394
+    prompt_tokens: 3629
+    completion_tokens: 546
+    total_tokens: 4175
+    reasoning_tokens: 43
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:05Z'
+  previous_text: Hide your face from my sins, and erase all my wrongdoing.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:27Z'
+  previous_text: Hide your face so you do not look upon my sins. Erase all my guilt.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f549427497bacca9ad46f01f03fece8a5de2fb2471bae9489dfb80469ceada9a
+  review_summary: 'The first clause is a warranted and helpful clarification: it retains the Hebrew image of God’s face while making explicit the POB audit trail’s explanation that the plea is for God not to regard the psalmist’s sins. “Erase” is likewise a clear, documented alternative for “blot out.” Revise only the final noun. “Wrongdoing” avoids the common modern reduction of “guilt” to an internal feeling while remaining within the documented semantic range and preserving the verse’s parallel distinction between sins and the psalmist’s culpable wrong.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

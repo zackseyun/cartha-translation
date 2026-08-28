@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/005/016.yaml
-  text: So there is hope for the poor[a], and injustice shuts its mouth.
+  text: So there is hope for the poor, and injustice shuts its mouth[a].
   footnotes:
   - marker: a
-    text: Or 'wrongdoing shuts its mouth,' or more literally, 'its mouth closes.'
+    text: Or “wrongdoing closes its mouth”; literally, “its mouth shuts.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So there is hope for the poor, and injustice closes its mouth.[a]
+  text: So the poor have hope, and injustice is silenced—its mouth is shut.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “wrongdoing falls silent”; literally, “its mouth closes.”
-    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: there is hope for the poor
+  simplified_phrase: the poor have hope
+  preserved_meaning: Poor and socially vulnerable people receive hope as the result described here.
+  reasoning_layer_used: POB lexical decisions for וַתְּהִי, לַדַּל, and תִּקְוָה
+  rationale: The direct wording is easier to read while preserving the proverbial result.
 - pob_phrase: injustice shuts its mouth
-  simplified_phrase: injustice closes its mouth
-  preserved_meaning: Injustice is pictured as being silenced.
-  reasoning_layer_used: POB lexical decision for קָפְצָה פִּיהָ
-  rationale: “Closes its mouth” keeps the Hebrew image in clear English.
+  simplified_phrase: injustice is silenced—its mouth is shut
+  preserved_meaning: Oppressive wrongdoing is left unable to speak or prevail.
+  reasoning_layer_used: POB lexical decision for וְעֹלָתָה קָפְצָה פִּיהָ
+  rationale: The rendering explains the idiom while retaining its vivid mouth image.
+interpretive_expansions:
+- pob_phrase: injustice shuts its mouth
+  rendering: injustice is silenced—its mouth is shut
+  claim: The closed mouth portrays injustice as unable to speak.
+  evidence:
+  - The POB lexical rationale says the idiom conveys being silenced or rendered unable to speak.
+  - The Hebrew wording literally depicts injustice's mouth as shut.
+  confidence: high
+  alternatives_preserved:
+  - injustice shuts its mouth
+  - wrongdoing closes its mouth
 translation_notes:
   risk_flags:
-  - risk: Readers may not recognize that injustice is personified as becoming silent.
-    mitigation: The footnote gives the idiomatic meaning while preserving the image.
+  - risk: The passive wording could seem to identify an unstated agent.
+    mitigation: The text does not name an agent and retains the source image of the shut mouth.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/005/016.yaml
   source_text_sha256: 4f935e54496635ba3f4dc2adde77ed6efe6d829f0373151256513cb9899b1b3c
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: d8f4a3a538aa12fdb5b73a4e17b4ca4b3dca118cb0a3135d54a197e2482dcc0c
-  timestamp: '2026-07-12T09:36:07Z'
-  output_hash: 413efcc9543b4c2aa8757065a77d3108d2c5ff76c460b6a1259afa72ae882829
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 0055827c5dd2a13aa8acdf3ea3a7e308c10a1d97bc53332c4c7474c8810128b9
+  timestamp: '2026-08-28T22:49:13Z'
+  output_hash: b96e3848f2b34bb616e3ba11018787ed15d5b7171e0ce29621845b4801960715
   usage:
-    prompt_tokens: 2925
-    completion_tokens: 358
-    total_tokens: 3283
-    reasoning_tokens: 146
+    prompt_tokens: 2396
+    completion_tokens: 664
+    total_tokens: 3060
+    reasoning_tokens: 274
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:07Z'
   previous_text: So the poor find hope, and injustice closes its mouth.[a]
@@ -81,3 +91,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:49:13Z'
+  previous_text: So there is hope for the poor, and injustice closes its mouth.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

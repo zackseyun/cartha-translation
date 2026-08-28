@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/009/012.yaml
-  text: If you are wise[a], you are wise for yourself; if you scoff, you alone will bear it.
+  text: If you are wise, you are wise for yourself; if you scoff, you alone will bear it.[a]
   footnotes:
   - marker: a
-    text: Or 'will bear the consequences alone.' The Hebrew simply says 'will bear,' leaving the burden implicit.
+    text: Or “will bear the consequences alone.” The Hebrew simply says “will bear,” leaving the burden implicit.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,47 +31,86 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If you are wise, you yourself will benefit. If you scoff, you alone will bear it.[a]
+  text: If you are wise, you yourself will benefit. But if you scoff, you alone will bear the burden.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew leaves unstated what the scoffer will bear; it may mean the resulting burden or consequences.
+    text: Or “will suffer the consequences alone.” The Hebrew does not name what the person must bear.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: you are wise for yourself
-  simplified_phrase: you yourself will benefit
-  preserved_meaning: Wisdom brings personal benefit to the wise person.
+- pob_phrase: you are wise, you are wise for yourself
+  simplified_phrase: you are wise, you yourself will benefit
+  preserved_meaning: Wisdom personally benefits the one who is wise.
   reasoning_layer_used: POB lexical decision for חָכַמְתָּ ... חָכַמְתָּ לָּךְ
-  rationale: The emphatic “yourself” preserves the repeated focus on the person while stating the idiom naturally.
-- pob_phrase: if you scoff, you alone will bear it
-  simplified_phrase: If you scoff, you alone will bear it
-  preserved_meaning: The scoffer bears sole personal responsibility for an unspecified burden.
-  reasoning_layer_used: POB lexical decisions for וְלַצְתָּ, לְבַדְּךָ, and תִשָּׂא
-  rationale: This wording is already concise and keeps both arrogant derision and the Hebrew image of bearing a burden.
+  rationale: This keeps the stative “are wise” while expressing the Hebrew idiom’s personal-benefit sense directly.
+- pob_phrase: if you scoff
+  simplified_phrase: But if you scoff
+  preserved_meaning: The warning concerns the arrogant derision associated with a scoffer in Proverbs.
+  reasoning_layer_used: POB lexical decision for וְלַצְתָּ
+  rationale: “Scoff” retains the documented force, while “but” makes the contrast clear.
+- pob_phrase: you alone will bear it
+  simplified_phrase: you alone will bear the burden
+  preserved_meaning: The scoffer alone must carry an unspecified burden.
+  reasoning_layer_used: POB lexical decisions for לְבַדְּךָ and תִשָּׂא
+  rationale: “The burden” preserves the carrying image, and the note explains that its object is unstated.
+interpretive_expansions:
+- pob_phrase: for yourself
+  rendering: you yourself will benefit
+  claim: The phrase describes the personal benefit wisdom brings.
+  evidence:
+  - The POB lexical rationale explicitly identifies personal benefit as the idiom’s sense.
+  confidence: high
+  alternatives_preserved:
+  - you are wise for yourself
+- pob_phrase: will bear it
+  rendering: will bear the burden
+  claim: What the scoffer bears is presented as a burden but remains unspecified.
+  evidence:
+  - The POB lexical rationale identifies a burden-carrying image and says the object is implicit.
+  confidence: high
+  alternatives_preserved:
+  - will bear it
+  - will suffer the consequences alone
 translation_notes:
   risk_flags:
-  - risk: Changing the Hebrew repetition about being wise may reduce its rhetorical force.
-    mitigation: “You yourself” retains emphasis while making the personal benefit clear.
-  - risk: The pronoun “it” leaves the burden unspecified and may seem vague.
-    mitigation: The footnote explains the deliberate ambiguity without resolving it in the main text.
+  - risk: “Will benefit” makes the personal-benefit sense more explicit than the Hebrew idiom.
+    mitigation: The POB lexical rationale expressly identifies personal benefit as the intended sense.
+  - risk: “The burden” supplies an object that the Hebrew leaves implicit.
+    mitigation: The carrying image is preserved, and the footnote states that the object is unnamed.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/009/012.yaml
   source_text_sha256: 796a765bb86e84528d462f0a736f9cd950cd893606937c96d3246d40efc88111
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6b96527eff1e716e94ae11b11fd2e1b6ce2e7e188c11fcd0a02ea0d73721bfa5
-  timestamp: '2026-07-11T21:10:49Z'
-  output_hash: 017568592bfe6b6294aaaa68ace5671b07552bfd99f92b440e3af6edace84ec3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cce5bae35ce9350e175484c7873a611c2cdfccab7b5bfdc6718ebd781709e6b1
+  timestamp: '2026-08-28T23:34:23Z'
+  output_hash: b3c78a31dfb13746149c8ef65418ed2796b730035400ac4601afd816a3774696
   usage:
-    prompt_tokens: 2292
-    completion_tokens: 803
-    total_tokens: 3095
-    reasoning_tokens: 411
+    prompt_tokens: 3531
+    completion_tokens: 832
+    total_tokens: 4363
+    reasoning_tokens: 216
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:54Z'
+  previous_text: If you are wise, you yourself will benefit. If you scoff, you alone will bear it.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:23Z'
+  previous_text: If you become wise, you yourself will benefit. But if you scoff, you alone will bear the burden.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 28486c8255ea2584405bff0e0c70e7552433f94a78a056fb889b347ad5ae6f07
+  review_summary: Revise slightly. “You will benefit yourself” is a warranted, clearer explanation of the Hebrew idiom and preserves its personal-benefit sense. “The burden” is also acceptable as a natural completion of the bearing image, provided the note continues to state that the Hebrew leaves the object unnamed. Replace “become wise” with “are wise” to avoid introducing an event-focused nuance that the POB audit does not select for the main text.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

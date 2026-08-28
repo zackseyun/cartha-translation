@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/026/026.yaml
-  text: Though hatred is covered with deceit[b][a], his evil will be exposed in the assembly.
+  text: Though hatred is covered with deceit[a], his evil will be exposed in the assembly.[b]
   footnotes:
   - marker: a
-    text: Or 'with guile' or 'by deception' for 'with deceit.'
+    text: Or “with guile” or “by deception.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'in the congregation.' The Hebrew refers to a gathered community or assembly.
+    text: Or “in the congregation.” The Hebrew refers to a gathered community or assembly.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,41 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Though a person hides his hatred through deception, his evil will be exposed before the gathered community.
+  text: Though someone hides his hatred through deception, his evil will be exposed before the gathered community.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: hatred is covered with deceit
-  simplified_phrase: a person hides his hatred through deception
-  preserved_meaning: Hatred is concealed by deceptive conduct.
-  reasoning_layer_used: Hebrew grammar and lexical rationale for תִּכַּסֶּה and בְּמַשָּׁאוֹן
-  rationale: The active wording makes the implied person and action immediately clear without changing the means of concealment.
+- pob_phrase: Though hatred is covered with deceit
+  simplified_phrase: Though someone hides his hatred through deception
+  preserved_meaning: A person uses deceptive conduct to conceal his hatred, but the concealment does not prevent exposure.
+  reasoning_layer_used: The lexical audit allows a passive or reflexive sense for תִּכַּסֶּה and identifies deceit as the means of concealment.
+  rationale: The active wording is natural English, while “Though” preserves the proverb’s concessive force.
 - pob_phrase: in the assembly
   simplified_phrase: before the gathered community
-  preserved_meaning: The person's evil becomes known in a concrete communal gathering.
-  reasoning_layer_used: Lexical rationale for בְקָהָל
-  rationale: This replaces the less familiar “assembly” while preserving the gathered-community setting.
+  preserved_meaning: The person’s evil becomes known in a concrete communal gathering.
+  reasoning_layer_used: The lexical decision defines קָהָל as an assembled group or congregation rather than publicity in general.
+  rationale: The phrase explains the setting without using the potentially opaque word “assembly.”
 translation_notes:
   risk_flags:
-  - risk: Changing the passive clause to active makes the implied agent explicit.
-    mitigation: The following phrase “his evil” already identifies a person whose hatred is concealed.
+  - risk: Making the implied person explicit could sound more specific than the Hebrew passive wording.
+    mitigation: The reflexive sense allowed by the audit and the phrase “his evil” support the active formulation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/026/026.yaml
   source_text_sha256: 9154df76c8138f33a9b60ad0e5f661b50ba40c281dfcadb27dc6b229816bccba
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5643aa3d0986b37423b9b10e939eafedee586531ae9faf6b723cb3daa6f60131
-  timestamp: '2026-07-11T21:06:53Z'
-  output_hash: cdc831d6a82722b414dd73b51bfe55ec9b4efff82d013445ca07b2d63febb871
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5fbba1a94a7c62281069f20b20fedba9ad28a511c1ceaee2e38d336ba2eba8ff
+  timestamp: '2026-08-28T23:34:48Z'
+  output_hash: 7156467131d674b86f35aafe89f578b56d6af6330efb15255e73eddc8c400627
   usage:
-    prompt_tokens: 2389
-    completion_tokens: 451
-    total_tokens: 2840
-    reasoning_tokens: 173
+    prompt_tokens: 3234
+    completion_tokens: 384
+    total_tokens: 3618
+    reasoning_tokens: 81
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:03Z'
+  previous_text: Though a person hides his hatred through deception, his evil will be exposed before the gathered community.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:48Z'
+  previous_text: Someone may hide his hatred through deception, but his evil will be exposed before the gathered community.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: db706e417dea4527705b0a594c5a62da7d5ea2fc37db5a4cee6379bde49bb19b
+  review_summary: The draft helpfully makes the implied person and the concrete communal setting understandable. Its active wording is warranted by the audit trail’s reflexive possibility and by the masculine possessive in “his evil”; it does not add doctrine. However, “may hide” unnecessarily weakens and obscures the source/POB’s concessive proverb structure. Retaining “Though” produces a clear, publication-ready rendering while preserving the contrast and certainty of eventual exposure.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

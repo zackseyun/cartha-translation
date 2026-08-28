@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/020/013.yaml
-  text: Do not love sleep[a], lest you become poor; open your eyes[b], and you will have your fill of bread.
+  text: Do not love sleep, or you will become poor; open your eyes and have your fill of bread.[a]
   footnotes:
   - marker: a
-    text: Or 'you come to poverty' / 'you be impoverished.' The Hebrew verb can carry the sense of becoming dispossessed or poor; here it refers to falling into poverty through laziness.
-    reason: lexical_alternative
-  - marker: b
-    text: Literally 'open your eyes; be satisfied with bread.' The final clause is rendered as a result in English to make the proverb's sense clear.
-    reason: lexical_alternative
+    text: 'The second line literally has two commands: “Open your eyes; have your fill of bread.”'
+    reason: grammar_note
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,60 +31,44 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not love sleeping, or you will become poor. Open your eyes, and you will have enough bread.
+  text: Do not love sleeping, or you will become poor. Open your eyes; eat your fill of bread.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Do not love sleep, lest you become poor
-  simplified_phrase: Do not love sleeping, or you will become poor
-  preserved_meaning: An excessive attachment to sleep can lead to poverty.
-  reasoning_layer_used: POB lexical decisions for תֶּאֱהַב, שֵׁנָה, פֶּן, and תִּוָּרֵשׁ
-  rationale: The rewrite replaces “lest” with a natural modern warning while retaining its force.
-- pob_phrase: open your eyes
-  simplified_phrase: Open your eyes
-  preserved_meaning: The concrete image calls the hearer away from sleep toward wakefulness.
-  reasoning_layer_used: POB lexical rationale for פְּקַח עֵינֶיךָ
-  rationale: The image remains intact without adding a separate command to get up.
-- pob_phrase: you will have your fill of bread
-  simplified_phrase: you will have enough bread
-  preserved_meaning: Wakefulness and diligence result in sufficient provision.
-  reasoning_layer_used: POB lexical decisions for שְׂבַע and לָחֶם
-  rationale: “Enough bread” conveys satisfaction without implying abundance.
+- pob_phrase: Do not love sleep
+  simplified_phrase: Do not love sleeping
+  preserved_meaning: The proverb warns against treating sleep as something to pursue rather than against necessary rest.
+  reasoning_layer_used: POB lexical decision for תֶּאֱהַב שֵׁנָה
+  rationale: The verbal form sounds more natural in common English while retaining the direct command and its moral force.
+- pob_phrase: open your eyes and have your fill of bread
+  simplified_phrase: Open your eyes; eat your fill of bread
+  preserved_meaning: The concrete images of opened eyes and satisfying hunger remain two coordinated commands.
+  reasoning_layer_used: Applied grammar revision and POB lexical decisions for פְּקַח, שְׂבַע, and לָחֶם
+  rationale: A semicolon shows the two commands, and “eat” makes the food expression immediately clear.
 translation_notes:
   risk_flags:
-  - risk: “Enough bread” states the satisfaction implied by “have your fill” rather than its eating imagery.
-    mitigation: It preserves sufficient provision and retains the source image of bread.
+  - risk: “Love sleeping” could be mistaken for a ban on enjoying normal rest.
+    mitigation: The warning about poverty keeps the focus on habitual devotion to sleep.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/020/013.yaml
   source_text_sha256: 53e62b42b23d3cd9cb1a508a416982a3d40f157eb9f21503a39190244c31a26e
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: e767d3a7a85403f75c720ce5d4f7fb69f46e3b517516629dd60ea1d4665ba6cb
-  timestamp: '2026-07-12T09:52:41Z'
-  output_hash: 49bb8adfd1237e92f94611ce2708a45e9df645c1a2dff293e7adb132b929cb18
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 78cb2aff069d222c65b11f7dfc3d8338d4dd3552324eb6eaf5a64513875c1f2b
+  timestamp: '2026-08-28T23:08:40Z'
+  output_hash: 1cc7eb9cc68fd1bac3c97cf9f83fa0dbbc746f0d8f98b82ecb206d8939039eaa
   usage:
-    prompt_tokens: 3540
-    completion_tokens: 371
-    total_tokens: 3911
-    reasoning_tokens: 0
+    prompt_tokens: 2606
+    completion_tokens: 611
+    total_tokens: 3217
+    reasoning_tokens: 302
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: open your eyes
-  rendering: Open your eyes and get up
-  claim: Opening the eyes here implies waking and rising to active work.
-  evidence:
-  - The immediate contrast is with loving sleep.
-  - The POB rationale identifies the command as practically meaning wakefulness and industry.
-  confidence: high
-  alternatives_preserved:
-  - open your eyes
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:41Z'
   previous_text: Do not love sleeping, or you will end up poor. Open your eyes and get up; then you will have plenty of bread to eat.
@@ -99,3 +80,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:08:40Z'
+  previous_text: Do not love sleeping, or you will become poor. Open your eyes, and you will have enough bread.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

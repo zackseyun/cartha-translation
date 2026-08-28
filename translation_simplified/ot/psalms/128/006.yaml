@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/128/006.yaml
-  text: May you see your children's children[a][b]. Peace be upon Israel.
+  text: May you see your children's children[a]. Peace[b] be upon Israel.
   footnotes:
   - marker: a
-    text: '''Peace'' translates shalom, which can also include well-being, wholeness, and flourishing.'
+    text: More literally, “sons to your sons”; that is, grandchildren or descendants of the next generation.
     reason: lexical_alternative
   - marker: b
-    text: Or, more literally, 'sons to your sons'—that is, 'grandchildren' or 'your children's children.'
+    text: “Peace” translates shalom, which can also include well-being, wholeness, and flourishing.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -43,36 +43,62 @@ translation:
 simplification_decisions:
 - pob_phrase: your children's children
   simplified_phrase: your grandchildren
-  preserved_meaning: The blessing is that the person will see later generations of the family.
-  reasoning_layer_used: POB lexical decision for בָנִים לְבָנֶיךָ
-  rationale: “Grandchildren” states the Hebrew family expression in ordinary English.
+  preserved_meaning: The blessing concerns seeing the next generation of one's family.
+  reasoning_layer_used: POB lexical decisions and source audit
+  rationale: “Grandchildren” expresses the Hebrew family idiom in ordinary English.
 - pob_phrase: Peace be upon Israel
   simplified_phrase: May peace rest on Israel
   preserved_meaning: The verse ends with a blessing of peace directed toward Israel.
-  reasoning_layer_used: POB lexical and theological decisions for שָׁלוֹם עַל יִשְׂרָאֵל
-  rationale: The wording makes the blessing form clear while retaining the image of peace resting on Israel.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The wording makes the blessing form clear while preserving its direction toward Israel.
 translation_notes:
   risk_flags:
-  - risk: “Grandchildren” does not preserve the literal repetition in “children's children.”
-    mitigation: The POB lexical reasoning identifies “grandchildren” as the intended idiomatic meaning.
+  - risk: “Grandchildren” is less literal than “children's children.”
+    mitigation: The POB audit identifies it as the natural meaning of the Hebrew idiom.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/128/006.yaml
   source_text_sha256: e6190ecacecb9871a996b846526f2836095f96ee7a0806db0098fe1dd6b631bc
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 42d13cd0fbcd0908aeea05ff7ef56162aa71fa24bde3200d984f8358c10ee217
-  timestamp: '2026-07-11T21:04:51Z'
-  output_hash: a51d9600ec23aabeb366109ba27e286908087382a6405b32f2d2d7c336c37687
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2f7eaa9c1237cd2da08a39a330893daf16ede37ec9fbf53a05f18c22f86bd7b7
+  timestamp: '2026-08-28T23:36:18Z'
+  output_hash: fc1311e36fd6c083177aee0f266205e2160a472a3945ef9a3c38bb1ee83149f2
   usage:
-    prompt_tokens: 2463
-    completion_tokens: 543
-    total_tokens: 3006
-    reasoning_tokens: 231
+    prompt_tokens: 3522
+    completion_tokens: 362
+    total_tokens: 3884
+    reasoning_tokens: 91
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: May you see
+  rendering: May you live to see
+  claim: Seeing one's grandchildren implies being granted life long enough to witness them.
+  evidence:
+  - The immediate blessing concerns seeing a later family generation.
+  confidence: high
+  alternatives_preserved:
+  - May you see your grandchildren.
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:00:18Z'
+  previous_text: May you see your grandchildren. May peace[a] rest on Israel.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:18Z'
+  previous_text: May you live to see your grandchildren. May peace[a] rest on Israel.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 35ad3fdb252fa152950b29bb02b5a945b0e83be56b31227729a5b6de48d7d343
+  review_summary: “Grandchildren” is a warranted and substantially clearer rendering of the Hebrew family idiom. “May peace rest on Israel” faithfully recasts the benediction while retaining Israel as its named recipient; the footnote appropriately preserves the breadth of shalom. Revise only “May you live to see,” since it turns a plausible implication into explicit main-text meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

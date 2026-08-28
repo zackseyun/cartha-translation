@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/036/033.yaml
-  text: Its thunder declares concerning him[a]; the cattle also[b], concerning what is rising.
+  text: His thunder declares his coming[a]; the cattle also announce what is rising.[b]
   footnotes:
   - marker: a
-    text: Hebrew is difficult. Literally, 'his friend' could be read instead of 'its thunder'; many understand the line to refer to the storm's noise.
-    reason: lexical_alternative
+    text: The Hebrew is difficult. The word rendered “thunder” may mean “noise” or “crashing,” but the consonants can also be read “his friend.” The line is more literally “His noise declares concerning him,” and the referents of the pronouns are uncertain.
+    reason: ambiguity
   - marker: b
-    text: Or 'the cattle also [declare] about the storm that is rising.' The final phrase likely refers to an approaching storm, but the Hebrew says only 'what is rising.'
+    text: The verb “announce” is supplied from the first line. The final words are literally “also the cattle, concerning what is rising”; they may refer to an approaching storm, but the thing rising is not named.
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -34,61 +34,80 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Its thunder speaks of him.[a] The cattle also signal that something is rising.[b]
+  text: His thunder announces that he is coming; even the cattle give notice of what is rising.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew is difficult; the words rendered “its thunder” could literally be read “his friend,” but the storm’s noise is likely meant.
-    reason: lexical_alternative
-  - marker: b
-    text: This likely means that the cattle signal an approaching storm, but the Hebrew says only that something is rising.
+    text: The Hebrew is very difficult. It may refer to noise or crashing rather than thunder, and the consonants can also be read “his friend.” The pronoun referents are uncertain, and the text does not identify what is rising, though the context suggests an approaching storm.
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: declares concerning him
-  simplified_phrase: speaks of him
-  preserved_meaning: The thunder makes something known about an unspecified male referent.
-  reasoning_layer_used: Lexical decision for יַגִּיד and עָלָיו
-  rationale: “Speaks of” expresses the neutral declarative sense in natural English.
-- pob_phrase: the cattle also, concerning what is rising
-  simplified_phrase: The cattle also signal that something is rising
-  preserved_meaning: The cattle give an indication connected with an unspecified rising phenomenon.
-  reasoning_layer_used: Lexical decisions for מִקְנֶה, אַף, עַל, and עוֹלֶה
-  rationale: The complete sentence restores the implied action without naming the rising thing.
-interpretive_expansions:
-- pob_phrase: the cattle also
-  rendering: The cattle also signal
-  claim: The cattle’s behavior serves as an indication rather than literal speech.
-  evidence:
-  - POB’s weather-context rationale portrays animals as sensing an approaching storm.
-  - POB’s alternative reading supplies the verb “declare” for the cattle.
-  confidence: moderate
-  alternatives_preserved:
-  - The cattle also declare
-  - The cattle also sense
+- pob_phrase: declares his coming
+  simplified_phrase: announces that he is coming
+  preserved_meaning: The thunder gives notice of his approach.
+  reasoning_layer_used: Lexical decision for יַגִּיד and idiomatic revision for עָלָיו
+  rationale: A complete clause makes the approach sense clear in ordinary English.
+- pob_phrase: the cattle also announce
+  simplified_phrase: even the cattle give notice
+  preserved_meaning: The cattle contribute to the announcement of the rising phenomenon.
+  reasoning_layer_used: Lexical decision for מִקְנֶה and supplied verbal ellipsis
+  rationale: “Give notice” preserves the signaling action without suggesting that the cattle speak or merely perceive it.
 translation_notes:
   risk_flags:
-  - risk: “Signal” interprets the cattle’s role more directly than the difficult Hebrew states.
-    mitigation: The footnote preserves the likely storm reading while noting the Hebrew’s open wording.
-  - risk: “Its thunder” and “him” remain referentially difficult.
-    mitigation: The wording retains POB’s ambiguity, and the first footnote explains the lexical uncertainty.
+  - risk: “Thunder” and “he is coming” are contextual readings of uncertain Hebrew.
+    mitigation: The footnote preserves the alternatives and the uncertainty of the pronoun referents.
+  - risk: The identity of what is rising remains unclear.
+    mitigation: The main text leaves it unnamed, while the footnote presents an approaching storm only as a contextual suggestion.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/036/033.yaml
   source_text_sha256: 750f0c4e34513b7ba8dddb258489e03163ae1c6c10ae541d7bb3bafe3683ff74
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2e76a02c261892eb5b55eda901353bd928a539ff1e2214aa87e446f67652b7e7
-  timestamp: '2026-07-11T19:43:25Z'
-  output_hash: 75b3421a50d80142a1b1ad2f6609a03fb47ca98e18c6541a78ed59e4b26e4f3a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9896529f0d35917b248a5421ec26fe39877cba1488946dec9ff259f376311e4d
+  timestamp: '2026-08-28T23:35:04Z'
+  output_hash: a8cb0a440dcab01307934f298c1cae1b474bc463c7bf2eed3c3a1a258c8336f6
   usage:
-    prompt_tokens: 2464
-    completion_tokens: 958
-    total_tokens: 3422
-    reasoning_tokens: 466
+    prompt_tokens: 3741
+    completion_tokens: 772
+    total_tokens: 4513
+    reasoning_tokens: 392
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: the cattle also announce
+  rendering: even the cattle sense
+  claim: The cattle become aware of the approaching phenomenon and show signs of it.
+  evidence:
+  - The animal sense of מִקְנֶה is preferred in the weather context.
+  - The POB audit says animals are portrayed as sensing an approaching storm.
+  confidence: moderate
+  alternatives_preserved:
+  - The cattle announce what is rising.
+  - The cattle give notice of what is rising.
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:01Z'
+  previous_text: Its thunder speaks of him.[a] The cattle also signal that something is rising.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:55:02Z'
+  previous_text: His thunder signals that he is coming.[a] The cattle too signal that something is rising.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:04Z'
+  previous_text: His thunder announces that he is coming; even the cattle sense what is rising.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a19d4dc4a649f6a7c9efb82f724da55348d87a6190adda4b127e471fbbc60fd7
+  review_summary: The first line is a clear, warranted simplification of POB’s contextual rendering. The second line should retain the verse’s notice/signaling function rather than recast it as the cattle’s internal perception. The note also needs to preserve POB’s major textual and referential uncertainties.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

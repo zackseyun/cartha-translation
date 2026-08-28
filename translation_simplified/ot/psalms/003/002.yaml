@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/003/002.yaml
-  text: Many are saying of me[a][b][c], “There is no salvation for him in God.” Selah
+  text: Many are saying about me[c], “There is no salvation[b] for him in God.” Selah[a]
   footnotes:
   - marker: a
-    text: '''Selah'' is likely a musical or liturgical term; its precise meaning is uncertain.'
+    text: “Selah” is likely a musical or liturgical term; its precise meaning is uncertain.
     reason: cultural_note
   - marker: b
-    text: Or 'There is no deliverance for him in God.'
+    text: Or “deliverance.”
     reason: lexical_alternative
   - marker: c
-    text: Hebrew literally, 'to my soul'; the phrase is an idiom meaning 'of me' or 'about me.'
+    text: Hebrew literally, “to my soul”; here the phrase means “about me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -44,66 +44,60 @@ translation:
     text: “Selah” is probably a musical or worship term, but its exact meaning is uncertain.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: Many are saying of me
-  simplified_phrase: Many people keep saying about me
-  preserved_meaning: Numerous people repeatedly speak about the psalmist.
-  reasoning_layer_used: Lexical decisions for רַבִּים, אֹמְרִים, and לְנַפְשִׁי
-  rationale: The wording makes the implied people, ongoing action, and Hebrew idiom clear.
+- pob_phrase: Many are saying
+  simplified_phrase: Many people keep saying
+  preserved_meaning: Numerous people repeatedly make this claim.
+  reasoning_layer_used: POB lexical decision for רַבִּים and אֹמְרִים
+  rationale: “People” identifies the implied speakers, while “keep saying” preserves the ongoing action.
 - pob_phrase: There is no salvation for him in God
   simplified_phrase: God will not save him
-  preserved_meaning: The speakers claim that God will provide the psalmist no salvation.
-  reasoning_layer_used: Lexical and theological decisions for יְשׁוּעָה and בֵאלֹהִים
-  rationale: The active wording is easier to understand while retaining God as the source of salvation.
+  preserved_meaning: His enemies claim that God will provide him no salvation.
+  reasoning_layer_used: POB theological decision for יְשׁוּעָה and lexical rationale for בֵאלֹהִים
+  rationale: The active wording clearly expresses the documented meaning while retaining the theological idea of salvation through “save.”
 - pob_phrase: Selah
-  simplified_phrase: Selah.[a]
+  simplified_phrase: Selah
   preserved_meaning: The uncertain musical or liturgical term remains untranslated.
-  reasoning_layer_used: Lexical rationale and cultural footnote for סֶלָה
+  reasoning_layer_used: POB lexical decision and cultural footnote
   rationale: Retaining the term avoids imposing a speculative meaning.
 interpretive_expansions:
-- pob_phrase: Many are saying
-  rendering: Many people keep saying
-  claim: The speakers are people, and their speech is ongoing or repeated.
-  evidence:
-  - רַבִּים functions as a substantive referring to numerous people.
-  - The participle אֹמְרִים conveys ongoing or repeated action.
-  confidence: high
-  alternatives_preserved:
-  - Many are saying
-  - Many people say
 - pob_phrase: There is no salvation for him in God
   rendering: God will not save him
-  claim: The quotation denies that God will provide saving help to the psalmist.
+  claim: The quoted speakers deny that God will give the psalmist saving help.
   evidence:
-  - The POB lexical rationale says the speakers believe God offers him no saving help.
-  - The theological rationale states that the enemies claim God will not save him.
+  - The POB theological rationale states that the enemies claim God will not save him.
+  - The immediate quotation concerns salvation in relation to God.
   confidence: high
   alternatives_preserved:
-  - There is no salvation for him in God
-  - There is no deliverance for him in God
+  - There is no salvation for him in God.
+  - There is no deliverance for him in God.
 translation_notes:
   risk_flags:
-  - risk: The active wording makes the agency of God more explicit than the Hebrew preposition alone.
-    mitigation: POB’s lexical and theological reasoning directly supports God as the source of the denied salvation.
-  - risk: Keeping “Selah” leaves an unfamiliar term in the main text.
-    mitigation: A brief footnote explains its likely function and preserves uncertainty.
+  - risk: The active wording makes God the explicit agent rather than retaining the Hebrew preposition “in.”
+    mitigation: The rendering follows the POB’s documented explanation that the speakers deny God’s saving help.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/003/002.yaml
   source_text_sha256: a7f9b2c5401ae980bd5e447afbd2cf0c5a40c0fa37afcc232b45a81c87b2d97b
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 8aa85d8131684946fff10dd203698b29aa2a56bbbcffe9131ac97955ae14f28a
-  timestamp: '2026-07-11T19:56:52Z'
-  output_hash: a8b65217d58fbb10f50cee5ddecaeb84edb5a70ef5cb757a298af01e5445124f
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 853fff2d135511bd74de4d59a111526aa3a8fe38ee3139552afd51a35f178ba1
+  timestamp: '2026-08-28T22:53:12Z'
+  output_hash: 254f9ec20317baf1b7babfd8215e36815213bd8ff90a0de9d45ac504382e35d9
   usage:
-    prompt_tokens: 2814
-    completion_tokens: 629
-    total_tokens: 3443
-    reasoning_tokens: 0
+    prompt_tokens: 2954
+    completion_tokens: 1000
+    total_tokens: 3954
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:12Z'
+  previous_text: Many people keep saying about me, “God will not save him.” Selah.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

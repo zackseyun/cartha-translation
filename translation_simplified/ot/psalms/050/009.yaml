@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/050/009.yaml
-  text: I will not take a bull from your house[a], or goats from your pens.
-  footnotes:
-  - marker: a
-    text: Or 'male goats' / 'he-goats.' The Hebrew term specifically refers to male goats.
-    reason: lexical_alternative
+  text: I will not take a bull from your house or male goats from your pens.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,47 +27,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I will not take a bull from your home or male goats from your pens.
+  text: I will not take a bull from your house, nor male goats from your pens.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: from your house
-  simplified_phrase: from your home
-  preserved_meaning: The bull belongs to the worshiper and comes from his own domain.
-  reasoning_layer_used: POB lexical decision for מִבֵּיתְךָ
-  rationale: “Home” is natural modern English while preserving the concrete spatial image.
-- pob_phrase: goats
-  simplified_phrase: male goats
-  preserved_meaning: The animals are specifically male goats suitable for sacrifice.
-  reasoning_layer_used: POB lexical decision and lexical-alternative footnote for עַתּוּדִים
-  rationale: The precise meaning is clear enough to state directly without a footnote.
-interpretive_expansions:
-- pob_phrase: goats
-  rendering: male goats
-  claim: The goats mentioned are male.
-  evidence:
-  - The POB lexical decision states that עַתּוּדִים specifically denotes male goats.
-  confidence: high
-  alternatives_preserved:
-  - goats
+- pob_phrase: or male goats
+  simplified_phrase: nor male goats
+  preserved_meaning: God will take neither the bull nor the male goats from the worshiper’s property.
+  reasoning_layer_used: Applied revision and independent grounding review
+  rationale: “Nor” naturally carries the opening negation across both kinds of animal without suggesting an exclusive choice.
 translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/050/009.yaml
   source_text_sha256: d9f673507e8db67a7d5b5b532c521b875881a5d740012f1fb3a2ffab82d0b2f8
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c14bc22cbe48d6107995cb1e63205d956bde43c52d2cd6a92530c7ea872bc04c
-  timestamp: '2026-07-11T20:48:42Z'
-  output_hash: 13397a797e046c6778e9401e5a602533bc1f14f329655dd3089194e1a3b80d24
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: daf755c0b9c3576fb92ed098b4c4958074503bc25b2b8da29f5583dc5824c1b6
+  timestamp: '2026-08-28T23:35:24Z'
+  output_hash: e073dfe27635a8de8c9fb1507886a5c4940801ca888939450933ada2bf721296
   usage:
-    prompt_tokens: 2226
-    completion_tokens: 656
-    total_tokens: 2882
-    reasoning_tokens: 369
+    prompt_tokens: 2928
+    completion_tokens: 200
+    total_tokens: 3128
+    reasoning_tokens: 50
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:41Z'
+  previous_text: I will not take a bull from your home or male goats from your pens.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:24Z'
+  previous_text: I will not take a bull from your home, nor male goats from your pens.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f62858b258f0a58735240e8fc1bb7c34f079ed2ffb5ee04cfe3f4af2c3ef0c58
+  review_summary: The use of “nor” clearly carries the negation across the two animal categories and is warranted by the verse’s structure. However, replacing “house” with “home” is not meaningfully clearer and may shift the concrete property/domain sense toward a residential sense. Retain “house” while keeping the clearer connective “nor.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

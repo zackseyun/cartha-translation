@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/107/037.yaml
-  text: They sowed fields and planted vineyards[a], and produced the fruit of the harvest.
+  text: They sowed fields and planted vineyards, and produced a fruitful harvest[a].
   footnotes:
   - marker: a
-    text: Literally, 'and they made fruit of produce.'
+    text: More literally, “and they produced fruit as their yield.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,36 +31,75 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 107:37 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''fruitful''].'
 translation:
   language: en
-  text: They sowed fields and planted vineyards, and they produced a fruitful harvest.
+  text: They sowed seeds in fields and planted vineyards. They produced a fruitful harvest.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: More literally, “they produced fruit as their yield.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: produced the fruit of the harvest
-  simplified_phrase: produced a fruitful harvest
-  preserved_meaning: Their farming yielded productive crops.
-  reasoning_layer_used: POB lexical decisions for פְּרִי and תְבוּאָה
-  rationale: This restores the audited idiomatic wording and avoids the unclear phrase “fruit of the harvest.”
+- pob_phrase: They sowed fields
+  simplified_phrase: They sowed seeds in fields
+  preserved_meaning: They cultivated fields by sowing seed.
+  reasoning_layer_used: POB lexical decisions for וַיִּזְרְעוּ and שָׂדוֹת
+  rationale: Supplying “seeds” makes the action of sowing immediately clear without implying ownership.
+- pob_phrase: single coordinated sentence
+  simplified_phrase: two short sentences
+  preserved_meaning: Their harvest follows their sowing and planting.
+  reasoning_layer_used: POB clause sequence
+  rationale: The sentence break separates the agricultural work from its result.
+- pob_phrase: produced a fruitful harvest
+  simplified_phrase: They produced a fruitful harvest
+  preserved_meaning: The people’s cultivation resulted in a productive agricultural yield.
+  reasoning_layer_used: POB lexical decision and source audit for וַיַּעֲשׂוּ פְּרִי תְבוּאָה
+  rationale: Keeping the people as subject and “fruitful” preserves the source’s productive-result force.
+interpretive_expansions:
+- pob_phrase: They sowed fields
+  rendering: They sowed seeds in fields
+  claim: The action of sowing involved putting seed into the fields.
+  evidence:
+  - The POB audit identifies זרע as the standard verb for sowing seed.
+  confidence: high
+  alternatives_preserved:
+  - They sowed fields
 translation_notes:
   risk_flags:
-  - risk: “Fruitful harvest” is less formally literal than “fruit of the harvest.”
-    mitigation: The lexical audit explicitly supports it as the natural expression of the Hebrew agricultural result.
+  - risk: Adding “seeds” makes an implicit object explicit.
+    mitigation: The lexical audit directly defines the verb as sowing seed.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/107/037.yaml
   source_text_sha256: 276681e2a413c037cc54dae183acecd44f6ac451e668591c82676e1438ce6265
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 51f1094772b76b5926e8a7fa65171009310958aab287075436929d4c4ac16af2
-  timestamp: '2026-07-11T20:51:31Z'
-  output_hash: b65f5d4e0151bd54047e1e5d815627b5b5adc5d5f5c1b8c2b1fac2e5ab8f30b5
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 44558fbf05da0014065b8fc2818673eec3eb7fa7f563146b2706753ae2b64fa6
+  timestamp: '2026-08-28T23:36:05Z'
+  output_hash: 0cecca27e94ed420c4fb0c1c765f1b4017a7718dbb804047b44bbf3978a137cf
   usage:
-    prompt_tokens: 2678
-    completion_tokens: 478
-    total_tokens: 3156
-    reasoning_tokens: 286
+    prompt_tokens: 3917
+    completion_tokens: 439
+    total_tokens: 4356
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:31Z'
+  previous_text: They sowed fields and planted vineyards, and they produced a fruitful harvest.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:05Z'
+  previous_text: They sowed their fields and planted vineyards. Their crops yielded a good harvest.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 07657a4e73a3efdd2e6aa6e9866a442221f12e3f6a3fd2b1e07c7690f7132ca3
+  review_summary: The two-sentence structure is a warranted readability improvement, and explicitly supplying “seeds” makes the agricultural action of sowing clear. However, the draft should retain the people as the producers and preserve the productive sense of the harvest rather than recasting it as crops yielding a merely “good” harvest. Removing “their” also avoids adding an unmarked ownership claim.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/004/005.yaml
-  text: Acquire wisdom[a]; acquire understanding. Do not forget[b], and do not turn away from the words of my mouth.
+  text: Acquire wisdom[a]; acquire understanding. Do not forget, and do not turn away[b] from the words of my mouth.
   footnotes:
   - marker: a
-    text: Or 'Get wisdom; get understanding.' The Hebrew verb can mean obtain, acquire, or buy, depending on context.
+    text: Or “Get wisdom; get understanding.” The Hebrew verb can mean obtain, acquire, or buy, depending on context.
     reason: lexical_alternative
   - marker: b
-    text: Or 'do not turn aside' or 'do not swerve' from the words of my mouth.
+    text: Or “do not turn aside” or “do not swerve” from the words of my mouth.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,48 +34,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Get wisdom; get understanding. Do not forget the words I speak, and do not turn away from them.
+  text: Get wisdom. Get understanding. Do not forget, and do not turn away from the words I speak.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Acquire wisdom; acquire understanding
-  simplified_phrase: Get wisdom; get understanding
-  preserved_meaning: The repeated command calls for intentionally obtaining both wisdom and understanding.
-  reasoning_layer_used: POB lexical decisions for קְנֵה, חָכְמָה, and בִינָה
-  rationale: “Get” is the POB-listed plain-English alternative and keeps the emphatic repetition.
+- pob_phrase: Acquire wisdom; acquire understanding.
+  simplified_phrase: Get wisdom. Get understanding.
+  preserved_meaning: Wisdom and understanding must both be intentionally obtained.
+  reasoning_layer_used: POB lexical decisions and Hebrew repetition
+  rationale: “Get” is an approved alternative, and two short commands preserve the emphatic repetition.
 - pob_phrase: the words of my mouth
   simplified_phrase: the words I speak
-  preserved_meaning: The instruction consists of words spoken by the father or teacher.
-  reasoning_layer_used: POB lexical decision for מֵאִמְרֵי פִי
-  rationale: The verbal form makes the Hebrew spoken-word image immediately natural in English.
-- pob_phrase: do not turn away from the words of my mouth
-  simplified_phrase: do not turn away from them
-  preserved_meaning: The hearer must not depart from the spoken instruction.
-  reasoning_layer_used: POB lexical decision for וְאַל תֵּט
-  rationale: The pronoun avoids repeating a long phrase while retaining the warning against deviation.
+  preserved_meaning: The father is referring to his spoken instruction.
+  reasoning_layer_used: POB lexical rationale
+  rationale: This natural wording keeps the emphasis on words spoken by the father.
+- pob_phrase: Do not forget, and do not turn away from the words of my mouth.
+  simplified_phrase: Do not forget, and do not turn away from the words I speak.
+  preserved_meaning: The object of “forget” remains unstated, while the warning against turning away applies explicitly to the spoken words.
+  reasoning_layer_used: Hebrew syntax, POB punctuation, and grounding review
+  rationale: Keeping the shared sentence preserves the source ambiguity without making the syntax difficult.
 translation_notes:
   risk_flags:
-  - risk: “Get” may sound less deliberate than “acquire.”
-    mitigation: The repeated imperative preserves the force of purposeful pursuit.
-  - risk: “The words I speak” recasts the concrete mouth image.
-    mitigation: It explicitly preserves the image’s central force as spoken instruction.
+  - risk: Readers may wonder what they must not forget because the source leaves the object unstated.
+    mitigation: The wording preserves that ambiguity rather than limiting the command to the father’s spoken words.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/004/005.yaml
   source_text_sha256: 3bb2057f6d08ee08ff08feb0627fe352e723f90fdc9202c10a9b03c24548c9b8
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 03e2bfc1021d91ba7170c6525e20994b61f46d027dc590f1a47e41be8e34d61c
-  timestamp: '2026-07-11T21:02:18Z'
-  output_hash: 223f70d9cbdaa82bc864cba7cb2a97bf6d73e8981ce75c3d1497f2853bf00068
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9d2384fb8975ffcc2dd71518f3ef8c7833b046cb122e6c421f7b99c9c956517c
+  timestamp: '2026-08-28T23:34:05Z'
+  output_hash: bca5fdfe7fcd1ec826cd085e246411915eaaa3c6566c0adedd117ae12653f997
   usage:
-    prompt_tokens: 2337
-    completion_tokens: 633
-    total_tokens: 2970
-    reasoning_tokens: 245
+    prompt_tokens: 3456
+    completion_tokens: 435
+    total_tokens: 3891
+    reasoning_tokens: 82
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: Do not forget
+  rendering: Do not forget the words I speak.
+  claim: The spoken words are made the explicit object of the command not to forget.
+  evidence:
+  - The following phrase names the speaker’s words as the instruction from which the hearer must not turn away.
+  - The POB context treats both warnings as responses to the same spoken instruction.
+  confidence: high
+  alternatives_preserved:
+  - Do not forget, and do not turn away from the words I speak.
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:00:11Z'
+  previous_text: Get wisdom; get understanding. Do not forget the words I speak, and do not turn away from them.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:05Z'
+  previous_text: Get wisdom. Get understanding. Do not forget the words I speak. Do not turn away from them.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 63887c824a7f1e6cb6338e9d908e0fb077c0f4762d42a31b7370b5084666f46a
+  review_summary: “Get wisdom. Get understanding.” is a clear, warranted use of the POB’s approved alternative and preserves the emphatic repetition. “The words I speak” is also an understandable modernization of “the words of my mouth.” Revise the syntax so that only “do not turn away” is explicitly linked to those words, preserving the source text’s unstated object for “do not forget” while remaining clear to modern readers.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

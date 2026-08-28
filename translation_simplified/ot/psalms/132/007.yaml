@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/132/007.yaml
-  text: Let us go into his dwelling place[a][b]; let us bow down at his footstool.
+  text: Let us go to his dwelling place[a]; let us bow down[b] at his footstool.
   footnotes:
   - marker: a
-    text: Or 'let us worship at his footstool.' The Hebrew more literally refers to bowing down.
+    text: Or “Let us enter his dwelling places.” The Hebrew noun is plural.
     reason: lexical_alternative
   - marker: b
-    text: Or 'Let us enter his dwelling places.'
+    text: Or “let us worship.” The Hebrew more literally refers to bowing down.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,47 +34,71 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 132:7 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''into his dwelling places''].'
 translation:
   language: en
-  text: Let us go to the places where he dwells.[a] Let us bow low at his footstool.
+  text: Let us go to the places where he dwells[a]. Let us bow down[b] at his footstool.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “the place where he dwells.”
+    text: Or “Let us enter his dwelling places.”
+    reason: lexical_alternative
+  - marker: b
+    text: Or “Let us worship.” The Hebrew more literally describes bowing down.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: into his dwelling places
-  simplified_phrase: to the places where he dwells
-  preserved_meaning: The speakers urge one another to go to his places of dwelling.
-  reasoning_layer_used: POB lexical decision for לְמִשְׁכְּנוֹתָיו
-  rationale: The relative clause explains “dwelling places” while preserving the Hebrew plural.
-- pob_phrase: bow down
-  simplified_phrase: bow low
-  preserved_meaning: The speakers call for a physical act of reverence.
-  reasoning_layer_used: POB lexical decision for נִשְׁתַּחֲוֶה
-  rationale: “Bow low” clearly conveys the reverent posture without replacing it with the broader word “worship.”
+- pob_phrase: his dwelling place
+  simplified_phrase: the places where he dwells
+  preserved_meaning: They call one another to go to his dwelling places, retaining the Hebrew plural.
+  reasoning_layer_used: POB lexical decision for לְמִשְׁכְּנוֹתָיו and independent grounding review
+  rationale: The verbal wording is clear for new readers while preserving the source noun’s plural form.
+- pob_phrase: let us bow down at his footstool
+  simplified_phrase: Let us bow down at his footstool
+  preserved_meaning: The physical act of reverent submission and the footstool image remain explicit.
+  reasoning_layer_used: POB lexical decisions for נִשְׁתַּחֲוֶה and לַהֲדֹם
+  rationale: Keeping both concrete images avoids reducing the line to generic worship.
+- pob_phrase: his
+  simplified_phrase: he … his
+  preserved_meaning: The pronouns remain unspecified rather than identifying their referent.
+  reasoning_layer_used: POB theological decision on the pronoun referent
+  rationale: The wording preserves the contextual ambiguity involving the LORD, the ark, and the chosen resting place.
 translation_notes:
   risk_flags:
-  - risk: The plural “places” may sound unusual in English.
-    mitigation: It is retained because the lexical audit requires the Hebrew plural, while the footnote preserves the contextual singular alternative.
-  - risk: The referent of “he” remains unstated.
-    mitigation: The pronoun is left unresolved to preserve the ambiguity between the LORD, the ark, and the chosen resting place.
+  - risk: “The places where he dwells” may sound less idiomatic than a singular expression.
+    mitigation: The plural is retained because it is explicit in Hebrew and remains understandable in English.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/132/007.yaml
   source_text_sha256: d1444192c14caa5a2d630edb7f8754087b2621e5b2c4ec84494377cc6bdc7ebe
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ee82da900823f96ff7f8c55bab4109e1a46b238fbc5eed28f05ec098af8bfe28
-  timestamp: '2026-07-11T21:03:11Z'
-  output_hash: bfd0cd122080dec9d7adb533a02b58d25e2616843bddfa6374a6ea0c20e6ad97
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c7c77588dd02e1164667a55f5158c908658fa13371daaaf8c598bce5bff55563
+  timestamp: '2026-08-28T23:36:19Z'
+  output_hash: 76a4d4d610be9ff70e289bb0deb108fc6548836c00d861af0c1b05ec603ee5d9
   usage:
-    prompt_tokens: 2807
-    completion_tokens: 864
-    total_tokens: 3671
-    reasoning_tokens: 512
+    prompt_tokens: 3967
+    completion_tokens: 432
+    total_tokens: 4399
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:52Z'
+  previous_text: Let us go to the places where he dwells.[a] Let us bow low at his footstool.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:19Z'
+  previous_text: Let us go to the place where he dwells[a]. Let us bow down[b] at his footstool.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b16104c010369b866eec103793b83c7d1a324f1a9753655ea51420953556a289
+  review_summary: The draft properly retains the unspecified pronouns and the concrete act of bowing, avoiding doctrinally unwarranted identification of the referent. Its verbal phrasing is accessible, but singular 'the place where he dwells' weakens the source's plural noun in the main text. Revise the first line to retain that plural directly; this is both clear and supported by the source audit.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

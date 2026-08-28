@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/024/021.yaml
-  text: He preys on the barren woman who does not bear[a], and he does no good to the widow.
-  footnotes:
-  - marker: a
-    text: Or 'feeds on the barren woman'; the Hebrew verb is literally 'pastures/feeds,' but in context it likely has a predatory sense.
-    reason: lexical_alternative
+  text: He feeds on the barren woman who bears no children, and he does no good to the widow.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,45 +27,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He preys on an infertile woman who does not give birth,[a] and he does nothing good for a widow.
+  text: He feeds on a barren woman who has no children, and he does nothing to help a widow.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew verb literally means “feeds” or “pastures,” but here it likely describes predatory exploitation.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the barren woman who does not bear
-  simplified_phrase: an infertile woman who does not give birth
-  preserved_meaning: The woman is infertile and does not bear children.
+- pob_phrase: the barren woman who bears no children
+  simplified_phrase: a barren woman who has no children
+  preserved_meaning: She is both barren and without children, as the Hebrew states.
   reasoning_layer_used: POB lexical decisions for עֲקָרָה and לֹא תֵלֵד
-  rationale: Modern wording replaces the less familiar senses of “barren” and “bear.”
+  rationale: This keeps both source ideas while using natural English.
 - pob_phrase: does no good to the widow
-  simplified_phrase: does nothing good for a widow
-  preserved_meaning: The wicked man gives the widow no benefit or good treatment.
+  simplified_phrase: does nothing to help a widow
+  preserved_meaning: He gives no help or benefit to a vulnerable widow.
   reasoning_layer_used: POB lexical decision for לֹא יְיֵטִיב
-  rationale: The recast phrase is more natural while keeping the same moral force.
+  rationale: “Does nothing to help” expresses the same moral failure more clearly.
 translation_notes:
   risk_flags:
-  - risk: “Preys on” could be understood as physical attack alone.
-    mitigation: The footnote identifies predatory exploitation as the likely contextual sense.
+  - risk: “Feeds on” could be mistaken for literal eating.
+    mitigation: It is retained to preserve the Hebrew feeding image and its exploitative force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/024/021.yaml
   source_text_sha256: e5564557d700d8757befab0dcc1244463f3da54feb689b5ee9bf7f0d61545aaa
-  pob_commit_sha: ff75f2c7860bc9b60e238877535adfae80a37e0d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b886361370e3c42c9eda1bb3e1bda5c3e898e018343cdb281d199bfcbe8eb308
-  timestamp: '2026-07-11T19:57:17Z'
-  output_hash: 0299ef503db5ec8b2642aad41db48c18ec74a6c58978a596d8c81d65588c152f
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fb61e678bc98b278e3a452b4ab837e9f3002d85dc632a20ba99de5c75b695a8a
+  timestamp: '2026-08-28T23:34:41Z'
+  output_hash: 2265f0a2d01bb005ab4a74c6966876e6158fa7e2b905f256f41793b086a8d1d7
   usage:
-    prompt_tokens: 2246
-    completion_tokens: 1182
-    total_tokens: 3428
-    reasoning_tokens: 855
+    prompt_tokens: 3066
+    completion_tokens: 416
+    total_tokens: 3482
+    reasoning_tokens: 143
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:54Z'
+  previous_text: He preys on an infertile woman who does not give birth,[a] and he does nothing good for a widow.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:41Z'
+  previous_text: He feeds on a woman who bears no children, and he does nothing to help a widow.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e1d452db8b09ee54819560206a6738a920d6550cdba0aa13e4a609e626a828fb
+  review_summary: The revision of “does no good to” as “does nothing to help” is a warranted, readable contextual clarification of the wicked person’s failure toward a vulnerable widow. However, the first clause must retain the source’s description of the woman as barren, rather than reducing it to the subsequent statement that she has borne no children. The recommended wording preserves both source elements while remaining natural English.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

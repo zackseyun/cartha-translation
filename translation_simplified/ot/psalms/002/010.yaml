@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/002/010.yaml
-  text: So now[a], O kings, be wise; be warned, O judges of the earth.
+  text: So now, O kings, be wise; be warned[a], O judges of the earth.
   footnotes:
   - marker: a
-    text: Or 'be instructed' or 'accept correction.' The Hebrew verb can denote receiving discipline or admonition, not only warning.
+    text: Or “be instructed” or “accept correction.” The Hebrew verb can denote receiving discipline or admonition, not only warning.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -35,46 +35,79 @@ translation:
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “accept instruction” or “accept correction.” The Hebrew includes receiving discipline or admonition, not only a warning.
+    text: This can also mean “accept instruction” or “accept correction.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: O kings
-  simplified_phrase: kings
-  preserved_meaning: The kings remain directly addressed.
-  reasoning_layer_used: POB lexical decision for מְלָכִים
-  rationale: Modern punctuation makes the direct address clear without the formal vocative “O.”
-- pob_phrase: be wise
-  simplified_phrase: act wisely
-  preserved_meaning: The kings must show prudent understanding in their conduct.
-  reasoning_layer_used: POB lexical decision for הַשְׂכִּילוּ
-  rationale: “Act wisely” makes the command’s practical force clear.
+- pob_phrase: O kings, be wise
+  simplified_phrase: kings, act wisely
+  preserved_meaning: The kings are directly urged to show practical wisdom.
+  reasoning_layer_used: POB lexical decisions for מְלָכִים and הַשְׂכִּילוּ
+  rationale: The direct address remains clear, while “act wisely” emphasizes wisdom expressed in action.
 - pob_phrase: be warned
   simplified_phrase: take warning
-  preserved_meaning: The judges are urged to receive the admonition directed at them.
-  reasoning_layer_used: POB lexical decision for הִוָּסְרוּ
-  rationale: “Take warning” expresses receiving admonition in direct, natural English.
+  preserved_meaning: The judges are urgently called to receive admonition.
+  reasoning_layer_used: POB lexical decision and footnote for הִוָּסְרוּ
+  rationale: “Take warning” avoids adding a demonstrative while the note preserves the verb’s broader range.
+- pob_phrase: O judges of the earth
+  simplified_phrase: Judges of the earth
+  preserved_meaning: Judging authorities throughout the earth are addressed directly.
+  reasoning_layer_used: POB lexical decision for שֹׁפְטֵי אָרֶץ
+  rationale: Removing “O” modernizes the address without changing its scope or judicial title.
 translation_notes:
   risk_flags:
-  - risk: “Take warning” may sound narrower than the Hebrew range of instruction, discipline, and correction.
-    mitigation: The footnote preserves the important lexical alternatives.
+  - risk: “Take warning” does not by itself convey the full range of instruction and correction.
+    mitigation: The footnote preserves both important lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/002/010.yaml
   source_text_sha256: 4100d1ec99f08fd3299df1c0f8d9fcf8074880d2f90b323f8ea70f078a372352
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 20bbae9dedf89d6c472c2a4d74110f28d829b9f0d14b1bd18ee711500b714b89
-  timestamp: '2026-07-11T20:45:41Z'
-  output_hash: 785e9e80f8b8b776f3257054d39621f2a7616afba21fd4f023c5a33ef14ff6d0
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0a3a3a391c4088f3b8ca26d12e691f21dded62ee1e1c519790a5deee070f3f79
+  timestamp: '2026-08-28T23:34:57Z'
+  output_hash: 66b759fc670316da8f08442cb69ce2151ecd7517afaffe803365a953525598c0
   usage:
-    prompt_tokens: 2269
-    completion_tokens: 699
-    total_tokens: 2968
-    reasoning_tokens: 349
+    prompt_tokens: 3380
+    completion_tokens: 438
+    total_tokens: 3818
+    reasoning_tokens: 59
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: be warned
+  rendering: accept this warning
+  claim: The admonition is the warning delivered in the surrounding psalm.
+  evidence:
+  - The immediate context moves from the preceding declaration to an urgent exhortation.
+  - The POB rationale identifies the royal context as a warning.
+  confidence: high
+  alternatives_preserved:
+  - accept instruction
+  - accept correction
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:59Z'
+  previous_text: So now, kings, act wisely. Judges of the earth, take warning.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:17Z'
+  previous_text: So now, kings, act wisely. You judges who rule across the earth, accept this warning.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:57Z'
+  previous_text: So now, kings, act wisely. Judges of the earth, accept this warning.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d05f613eb1f32f980e66f9fa522266472fbe64b0bb06aaf1526ede9381b77691
+  review_summary: 'The modernization of the direct addresses and “act wisely” is clear and supported by the POB lexical rationale. Revise the second imperative: “take warning” is natural modern English and retains the urgent admonitory force without adding “this” or presenting the broader Hebrew term as only a particular warning. The footnote appropriately preserves instruction and correction as live lexical alternatives.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

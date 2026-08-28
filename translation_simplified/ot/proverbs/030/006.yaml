@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/030/006.yaml
-  text: Do not add to his words[a], lest he rebuke you and you be proved a liar.
+  text: Do not add to his words, lest he rebuke you and you be proved a liar[a].
   footnotes:
   - marker: a
-    text: Or 'and you be found a liar' / 'and you be shown false.'
+    text: Or “and you be found a liar” or “and you be shown false.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,57 +31,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not add to his words. If you do, he will rebuke you, and you will be shown to be a liar.[a]
+  text: Do not add anything to God’s words.[b] Otherwise, God will rebuke you, and you will be shown to be a liar.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “you will be shown to be false.”
+    text: Or “shown to be false.”
     reason: lexical_alternative
+  - marker: b
+    text: Hebrew says “his words.” The context points to God, though the wording can be understood more generally.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: Do not add to his words, lest
-  simplified_phrase: Do not add to his words. If you do,
-  preserved_meaning: Adding to his words brings the warned-against consequence.
-  reasoning_layer_used: Lexical decisions for אַל and פֶּן
-  rationale: The conditional form replaces “lest” with everyday English while keeping the warning force.
-- pob_phrase: you be proved a liar
-  simplified_phrase: you will be shown to be a liar
-  preserved_meaning: The person who adds to the words is shown to be false or deceptive.
-  reasoning_layer_used: Lexical decision for וְנִכְזָבְתָּ and grounding review
-  rationale: This wording preserves the passive result and keeps it distinct from God's rebuke.
-interpretive_expansions:
+- pob_phrase: Do not add to his words
+  simplified_phrase: Do not add anything to God’s words.
+  preserved_meaning: The command forbids supplementing God’s words.
+  reasoning_layer_used: Lexical decisions and the theological decision from Proverbs 30:5
+  rationale: “Anything” clarifies the scope, and naming God identifies the contextual referent.
 - pob_phrase: lest
-  rendering: If you do,
-  claim: The stated consequences follow from adding to his words.
+  simplified_phrase: Otherwise,
+  preserved_meaning: God’s rebuke remains the consequence the warning seeks to prevent.
+  reasoning_layer_used: Lexical decision for פֶּן
+  rationale: “Otherwise” gives the warning force in familiar English.
+- pob_phrase: and you be proved a liar
+  simplified_phrase: and you will be shown to be a liar
+  preserved_meaning: The person is exposed as false without making the exposure a separate action explicitly assigned to God.
+  reasoning_layer_used: Lexical decision for וְנִכְזָבְתָּ and grounding review
+  rationale: The passive wording is clear while retaining the Hebrew’s resultative force.
+interpretive_expansions:
+- pob_phrase: add to
+  rendering: add anything to
+  claim: The prohibition covers any addition to the words.
   evidence:
-  - פֶּן introduces a negative consequence to be avoided.
-  - The preceding clause supplies the prohibited action.
+  - The documented lexical alternative is “add anything.”
+  - The negative prohibition applies to the act of adding.
+  confidence: high
+- pob_phrase: his words; he rebuke
+  rendering: God’s words; God will rebuke
+  claim: The pronouns refer to God in the immediate context.
+  evidence:
+  - Proverbs 30:5 speaks of every word of God.
+  - The POB theological decision identifies God as the natural referent.
   confidence: high
   alternatives_preserved:
-  - lest
-  - otherwise
+  - The Hebrew pronoun can be read more generally, as noted in footnote b.
 translation_notes:
   risk_flags:
-  - risk: The pronouns “his” and “he” depend on verse 5 to identify God.
-    mitigation: They remain because POB deliberately preserves the Hebrew pronouns and their contextual link.
+  - risk: Naming God makes the contextual referent explicit beyond the Hebrew pronoun.
+    mitigation: Footnote b gives the literal wording and preserves the documented broader reading.
+  - risk: Splitting the warning into two sentences may soften its compact form.
+    mitigation: “Otherwise” keeps the consequence directly connected to the command.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/030/006.yaml
   source_text_sha256: 917f25d118710036e34ee96f3866d23330196dec84dc4f98c00fbf0beec1aa9b
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 41acd03a3c07029af88530aa0f54d583083329b41e17766301ff09d1c5fd4a82
-  timestamp: '2026-07-12T09:53:23Z'
-  output_hash: cea3d77103d084fade531857b3af21cdf5060475ce03da708924461c44bfa1b8
+  prompt_sha256: 60c4d1b25abd4de03bf3ea2cfde08d851bbf0ad012970dd74963652d8105b48b
+  timestamp: '2026-08-28T23:35:00Z'
+  output_hash: a1b17c525562c29c1af3a8019e01bf68afeb5c53ce62ff3d5320c0c6011f7921
   usage:
-    prompt_tokens: 3378
-    completion_tokens: 390
-    total_tokens: 3768
-    reasoning_tokens: 0
+    prompt_tokens: 3645
+    completion_tokens: 1007
+    total_tokens: 4652
+    reasoning_tokens: 400
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -93,5 +109,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 886988dea358a4dd14372b7f0f09d75ef3368879b6ff1a042f145814958e398d
   review_summary: 'The replacement of “lest” with a plain conditional is a warranted and meaningful clarity improvement: it preserves the warning that the stated consequence follows from adding to God’s words. Revise only the final clause to retain its passive/resultative force and its distinction from God’s rebuke.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:06:33Z'
+  previous_text: Do not add to his words. If you do, he will rebuke you, and you will be shown to be a liar.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:00Z'
+  previous_text: Do not add anything to his words. Otherwise, he will rebuke you and prove that you are a liar.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: deb8ac8fcfc6ed19429e8733451ef34b9621a13135d9fe72b5191086171d1101
+  review_summary: The draft usefully replaces “lest” with “Otherwise” and makes the scope of the prohibition explicit with “anything.” Revise the final clause to retain its passive/resultative force rather than making God explicitly perform the proving, and identify God explicitly so the verse remains clear outside its immediate context.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/038/010.yaml
-  text: My heart throbs[a]; my strength has left me, and the light of my eyes—even they are not with me.
+  text: My heart reels[a]; my strength has left me, and even the light of my eyes is gone.
   footnotes:
   - marker: a
-    text: Or 'the light in my eyes'; the Hebrew expression may refer either to eyesight itself or to the brightness/vitality reflected in the eyes.
+    text: Or “is in turmoil.” The Hebrew depicts the heart as reeling or whirling.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,68 @@ base_translation:
     changes_summary: Corrected the pronoun agreement from 'it are not' to 'they are not' to match the plural sense of 'the light of my eyes' and the Hebrew pronoun.
 translation:
   language: en
-  text: My heart throbs. My strength is gone, and even the light of my eyes[a] is gone.
+  text: My heart is reeling.[a] My strength has failed me, and even my eyes have lost their light.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: This may mean either his eyesight or the brightness and vitality once visible in his eyes.
+    text: Or “is in turmoil.” The Hebrew pictures the heart as reeling or whirling.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: My heart reels
+  simplified_phrase: My heart is reeling
+  preserved_meaning: The heart remains pictured as whirling in severe inner distress.
+  reasoning_layer_used: POB lexical decision for סְחַרְחַר
+  rationale: The progressive form is natural English and retains the Hebrew image.
 - pob_phrase: my strength has left me
-  simplified_phrase: my strength is gone
-  preserved_meaning: His bodily strength has failed him.
-  reasoning_layer_used: POB lexical decision for עֲזָבַנִי and כֹחִי
-  rationale: The shorter wording expresses failing strength in ordinary English without adding relational overtones.
-- pob_phrase: the light of my eyes—even they are not with me
-  simplified_phrase: even the light of my eyes is gone
-  preserved_meaning: The eye-light image is retained while its loss is stated naturally.
-  reasoning_layer_used: POB lexical decisions for וְאוֹר עֵינַי, גַּם הֵם, and אֵין אִתִּי
-  rationale: This removes awkward pronoun agreement but keeps the Hebrew image, emphasis, and ambiguity.
+  simplified_phrase: My strength has failed me
+  preserved_meaning: The speaker has lost bodily strength and vitality.
+  reasoning_layer_used: POB lexical decisions for עֲזָבַנִי and כֹחִי
+  rationale: “Failed me” clearly conveys that his strength is no longer available.
+- pob_phrase: even the light of my eyes is gone
+  simplified_phrase: even my eyes have lost their light
+  preserved_meaning: The image remains open to failing eyesight or lost visible vitality.
+  reasoning_layer_used: POB lexical decision for וְאוֹר עֵינַי and grounding review
+  rationale: This natural phrasing preserves both senses of the eye-light image.
 translation_notes:
   risk_flags:
-  - risk: Readers may understand “the light of my eyes” only as eyesight.
-    mitigation: The footnote preserves the alternative sense of visible brightness or vitality.
+  - risk: “Lost their light” may still be heard primarily as lost vitality.
+    mitigation: Keeping the eyes and their light together also allows the sense of diminished eyesight.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/038/010.yaml
   source_text_sha256: 3644a646e99bdc5c129cd04210a30369c6b928f99a13f8ace538e93e9932f015
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a230ace712f5c7ccc4ad981bb7dea221162591b1748b2cdcd2aa05e4b1021bcf
-  timestamp: '2026-07-11T20:46:05Z'
-  output_hash: 0599f7c59e916be79516200e732e7b70726feeabbb9dad8f2dd0c52ae8075397
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bb742ed2ed82ba18293f9cc25da5dc43afc69d57d7dbc39284e037d3251a66b8
+  timestamp: '2026-08-28T23:35:17Z'
+  output_hash: 852fcea7c7e849115e8db3b6082d04957d5f76b4b825ba59b39094ca84b242dc
   usage:
-    prompt_tokens: 2867
-    completion_tokens: 567
-    total_tokens: 3434
-    reasoning_tokens: 236
+    prompt_tokens: 3894
+    completion_tokens: 377
+    total_tokens: 4271
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:05Z'
+  previous_text: My heart throbs. My strength is gone, and even the light of my eyes[a] is gone.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:17Z'
+  previous_text: My heart is reeling.[a] My strength has failed me, and even the light in my eyes is gone.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b35755aa9f05f95e4c483cbaedffe41983ae4e8ad101d86169825b59f9171456
+  review_summary: The revisions “is reeling” and “has failed me” are warranted, readable expressions of the Hebrew and POB audit trail. Revise the final clause because “light in my eyes” narrows the retained poetic ambiguity toward vitality. “My eyes have lost their light” is accessible while more naturally allowing both diminished sight and lost visible brightness.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,45 +31,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: She makes fabric coverings for her own use.[a] She dresses in fine linen and purple cloth.
+  text: She makes coverings for herself.[a] She wears fine linen and purple cloth.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word may refer to coverlets, bed coverings, or other fine household fabrics.
+    text: The Hebrew may refer to coverlets, bed coverings, or other household textile coverings.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: coverings for herself
-  simplified_phrase: fabric coverings for her own use
-  preserved_meaning: She makes textile items intended for her own benefit or possession.
-  reasoning_layer_used: POB lexical decisions for מַרְבַדִּים and לָּהּ
-  rationale: This clarifies both the material and the meaning of “for herself” without narrowing the kind of covering.
 - pob_phrase: fine linen and purple are her clothing
-  simplified_phrase: She dresses in fine linen and purple cloth
-  preserved_meaning: Her attire consists of costly fine linen and purple-dyed material.
-  reasoning_layer_used: POB lexical decisions for שֵׁשׁ, אַרְגָּמָן, and לְבוּשָׁהּ
-  rationale: The active sentence is more natural while preserving the quality, color, and clothing sense.
+  simplified_phrase: She wears fine linen and purple cloth
+  preserved_meaning: Her clothing consists of fine linen and purple-dyed material.
+  reasoning_layer_used: Lexical rationale for שֵׁשׁ, אַרְגָּמָן, and לְבוּשָׁהּ
+  rationale: The direct sentence is easier to understand while preserving both materials and their use as clothing.
 translation_notes:
   risk_flags:
-  - risk: “Fabric coverings” remains broad because the exact household item is uncertain.
-    mitigation: The footnote preserves the main lexical possibilities without choosing one.
+  - risk: “Coverings” does not identify the exact kind of textile item.
+    mitigation: The footnote preserves the documented possibilities without narrowing the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/031/022.yaml
   source_text_sha256: 8b8d80abe8b86a9618dde0205bd4d4f067065247c6342c228c81f5c84e863f06
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 40bb15da911fe5c3b666df48e7e65f0ccf3021eb9a84402e05e2988cd6f555a4
-  timestamp: '2026-07-11T21:07:10Z'
-  output_hash: ae808edbfeea0ebc504cf56254702b83d3039920dade2dd11bdf186e7b4238cb
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a70f1796ea5d30de0d97138abf974f51fd7edd931bbd18c0a7e036b3d4166c64
+  timestamp: '2026-08-28T23:34:52Z'
+  output_hash: db096bf9d3c6514f0a484c2733da0360821a215bc92dac0c07bc29c35b5e9e4d
   usage:
-    prompt_tokens: 2322
-    completion_tokens: 515
-    total_tokens: 2837
-    reasoning_tokens: 179
+    prompt_tokens: 3329
+    completion_tokens: 234
+    total_tokens: 3563
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: for herself
+  rendering: for her own home
+  claim: The coverings are household textiles made for her own use.
+  evidence:
+  - The lexical rationale identifies them as likely household or bed coverings.
+  - The pronominal phrase indicates benefit or possession.
+  confidence: moderate
+  alternatives_preserved:
+  - coverlets
+  - bed coverings
+  - other luxurious household fabrics
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:10:57Z'
+  previous_text: She makes fabric coverings for her own use.[a] She dresses in fine linen and purple cloth.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:52Z'
+  previous_text: She makes fine coverings for her own home.[a] She wears fine linen and purple cloth.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 764d58b5f29ce9434a21ffaaa6dd050c7ebac5465b2b0d0cf536494a02b42b57
+  review_summary: Revise the first sentence. The direct second sentence is a clear and warranted recasting of “fine linen and purple are her clothing.” But “for her own home” converts a personal-benefit/possession phrase into a specific household destination, and “fine” adds a quality not securely carried by the first noun. Retaining “for herself” and leaving the precise kind of covering to the footnote preserves the live lexical range while still presenting the clothing clause more plainly.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/078/064.yaml
-  text: His priests fell by the sword[a], and his widows could not weep.
+  text: His priests fell by the sword, and his widows did not weep.[a]
   footnotes:
   - marker: a
-    text: Or, 'did not weep.' The Hebrew is literally 'did not weep,' which may either state the fact plainly or imply that the devastation left no opportunity for customary mourning.
-    reason: lexical_alternative
+    text: This may mean that the devastation left no opportunity for customary mourning.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,56 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: His priests fell, killed by the sword. His widows could not mourn.[a]
+  text: His priests fell, struck down by the sword. His widows did not weep.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “did not mourn.” The Hebrew literally says “did not weep” and may simply state what happened or imply that the devastation prevented normal mourning.
-    reason: lexical_alternative
+    text: This may mean that the devastation left no opportunity for the usual mourning rites.
+    reason: simplification_note
 simplification_decisions:
 - pob_phrase: fell by the sword
-  simplified_phrase: fell, killed by the sword
-  preserved_meaning: The priests died violently by the sword, while the Hebrew image of falling remains.
-  reasoning_layer_used: Lexical decisions for בַּחֶרֶב and נָפָלוּ
-  rationale: The added verb makes the battle image immediately clear without replacing it.
-- pob_phrase: and his widows could not weep
-  simplified_phrase: His widows could not mourn
-  preserved_meaning: The widows were unable to carry out their normal lament after the devastation.
-  reasoning_layer_used: Theological decision on the widows’ lack of weeping
-  rationale: A new sentence and the word “mourn” clarify the social effect of the judgment.
+  simplified_phrase: fell, struck down by the sword
+  preserved_meaning: The priests died violently while the Hebrew images of falling and the sword remain.
+  reasoning_layer_used: lexical decision for נָפְלוּ and בַּחֶרֶב
+  rationale: Adding “struck down” makes the battle image immediately clear without replacing it.
+- pob_phrase: and his widows did not weep
+  simplified_phrase: His widows did not weep
+  preserved_meaning: The singular possessive and the direct statement that the widows did not weep are retained.
+  reasoning_layer_used: lexical decisions for וְאַלְמְנֹתָיו and לֹא תִבְכֶּינָה
+  rationale: A new sentence clarifies the contrast while preserving the Hebrew wording and ambiguity.
 interpretive_expansions:
-- pob_phrase: could not weep
-  rendering: could not mourn
-  claim: Their weeping refers to customary mourning for the dead.
+- pob_phrase: fell by the sword
+  rendering: fell, struck down by the sword
+  claim: The priests fell because they were violently killed with swords.
   evidence:
-  - The immediate context describes deaths by the sword.
-  - POB’s theological rationale identifies disrupted funeral lament as the likely sense.
+  - The lexical audit identifies the sword as the means of death in battle.
+  - The audit says “fell” communicates death when paired with “by the sword.”
   confidence: high
   alternatives_preserved:
-  - The Hebrew may simply mean “did not weep.”
-  - The line may be poetic hyperbole for overwhelming devastation.
+  - fell by the sword
+  - were slain
 translation_notes:
   risk_flags:
-  - risk: “Could not” interprets a Hebrew clause that literally says “did not.”
-    mitigation: The footnote preserves the literal alternative and the remaining ambiguity.
+  - risk: “Struck down” makes the implied violent death more explicit than the verb “fell” alone.
+    mitigation: The sword remains the stated means, and the lexical audit confirms the battle-death sense.
+  - risk: Readers may take the widows’ lack of weeping as voluntary.
+    mitigation: The footnote preserves the possible sense that devastation prevented customary mourning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/078/064.yaml
   source_text_sha256: fb25a35258888eb4bd4e4c869ba12c992976d37a21da038ae288c20a6e880407
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c16cfda0e4e5fef457f1ca1b53671c57d0df6287517368e9788e56b82cf60ca0
-  timestamp: '2026-07-11T20:50:36Z'
-  output_hash: a7c3a19fb096691720f31db95f4e2de578a7a28222bebc8a943928d0aafe94a4
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 989f25787292b6e6e49f9f1adf52f0e9e61b9137654bb0f160e9d38f1ff83269
+  timestamp: '2026-08-28T22:56:29Z'
+  output_hash: 72eb5f5153396fc58bd638fbd3314380c0cbed221cbba21e279c52c2224a290e
   usage:
-    prompt_tokens: 2447
-    completion_tokens: 741
-    total_tokens: 3188
-    reasoning_tokens: 318
+    prompt_tokens: 2583
+    completion_tokens: 693
+    total_tokens: 3276
+    reasoning_tokens: 225
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:29Z'
+  previous_text: His priests fell, killed by the sword. His widows could not mourn.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

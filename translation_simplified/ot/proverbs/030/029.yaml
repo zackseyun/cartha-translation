@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/030/029.yaml
-  text: 'There are three that are stately in stride[a], even four that are stately in walking:'
+  text: 'There are three that stride well, even four that walk well[a]:'
   footnotes:
   - marker: a
-    text: Or 'good in gait' / 'excellent in walking.' The Hebrew idiom speaks of creatures whose manner of movement is notably impressive.
-    reason: lexical_alternative
+    text: Or “three whose stride is impressive, even four whose walk is impressive.”
+    reason: contextual_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,36 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'There are three that move with a stately stride—yes, four whose walk is impressive:'
+  text: 'Three things stride well—yes, four walk well:'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: There are three that are stately in stride, even four that are stately in walking
-  simplified_phrase: There are three that move with a stately stride—yes, four whose walk is impressive
-  preserved_meaning: The verse introduces four beings whose manner of movement is notably dignified and impressive.
-  reasoning_layer_used: POB lexical decisions for מֵיטִיבֵי, צָעַד, וְאַרְבָּעָה, and לָכֶת
-  rationale: The active wording is easier to follow while preserving the movement image and the climactic three-four pattern.
+- pob_phrase: There are three that stride well
+  simplified_phrase: Three things stride well
+  preserved_meaning: The saying introduces three members distinguished by how well they move.
+  reasoning_layer_used: POB lexical decisions for שְׁלֹשָׁה, הֵמָּה, מֵיטִיבֵי, and צָעַד
+  rationale: This removes the introductory construction while retaining the active phrase “stride well.”
+- pob_phrase: even four
+  simplified_phrase: yes, four
+  preserved_meaning: The numerical saying builds from three to four.
+  reasoning_layer_used: POB lexical decision for וְאַרְבָּעָה
+  rationale: “Yes” expresses the climactic progression in familiar modern English.
 translation_notes:
   risk_flags:
-  - risk: “Yes, four” may sound less formal than the POB’s “even four.”
-    mitigation: It clearly preserves the Hebrew numerical saying’s climactic progression in common English.
+  - risk: “Things” is broad because the following list includes both animals and a king.
+    mitigation: The broad term fits every member without adding a narrower category.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/030/029.yaml
   source_text_sha256: de547388fb9df838c960cbfe25ea55714e22eedd7312e88f241d73e2221bd48d
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: bc26e1d64e6ea15020e3d382bc62aeb55bf98d26b9e72d64cfaa1782df060647
-  timestamp: '2026-07-11T21:21:51Z'
-  output_hash: d7eb7a1de12298ae707c78f130468bb6088172e523b91d96c8e2cee20dd53376
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e8ba1d80a77d66914597cf1c4150abf8d08ba3d302ba2390a6c41d1c51a8bffa
+  timestamp: '2026-08-28T23:34:53Z'
+  output_hash: d8aed4b395341882a52c11d04a97daa37254af5c2e468b8c6f724fae102f8ea5
   usage:
-    prompt_tokens: 2271
-    completion_tokens: 519
-    total_tokens: 2790
-    reasoning_tokens: 266
+    prompt_tokens: 3332
+    completion_tokens: 479
+    total_tokens: 3811
+    reasoning_tokens: 207
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:12:27Z'
+  previous_text: 'There are three that move with a stately stride—yes, four whose walk is impressive:'
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:53Z'
+  previous_text: 'Three things have a good stride—yes, four walk well:'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: ae8e2f52c9671c5613922025d56d096c174253b9580b7ae404563b967856d6db
+  review_summary: The draft correctly preserves the three/four numerical progression, and “yes, four” is a warranted modern expression of the climactic formula. However, “have a good stride” is less precise than the audited verbal sense and can suggest physical stride mechanics rather than impressive movement. Replacing it with “stride well” is both clearer and more faithful, while retaining the source’s parallel structure. No doctrinal expansion or ambiguity collapse is present.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/011/003.yaml
-  text: If the clouds are full of rain[a], they pour it out on the earth; and if a tree falls to the south or to the north, in the place where the tree falls, there it will lie.
+  text: If the clouds are full of rain, they pour it out on the earth; and if a tree falls to the south or to the north, in the place where the tree falls, there it will lie.[a]
   footnotes:
   - marker: a
-    text: Or, more literally, 'there it will be.' The Hebrew verb is simply 'be,' but 'lie' conveys the sense naturally in English for a fallen tree.
+    text: Or, more literally, “there it will be.” The Hebrew verb is simply “be,” but “lie” conveys the sense naturally in English for a fallen tree.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,41 +31,52 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If clouds are full of rain, they pour it onto the earth. If a tree falls toward the south or the north, it lies where it falls.
+  text: If clouds are full of rain, they pour the rain onto the earth. If a tree falls toward the south or the north, it will lie in the place where it falls.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: If the clouds are full of rain, they pour it out on the earth
-  simplified_phrase: If clouds are full of rain, they pour it onto the earth
+  simplified_phrase: If clouds are full of rain, they pour the rain onto the earth
   preserved_meaning: Full clouds release their rain onto the earth.
   reasoning_layer_used: POB lexical decisions for יִמָּלְאוּ, יָרִיקוּ, and עַל הָאָרֶץ
-  rationale: Removing repeated wording makes the natural image easier to follow without changing it.
+  rationale: Repeating “the rain” makes the implied object immediately clear.
+- pob_phrase: and if a tree falls to the south or to the north
+  simplified_phrase: If a tree falls toward the south or the north
+  preserved_meaning: The tree may fall in either direction.
+  reasoning_layer_used: POB lexical decisions for בַּדָּרוֹם and בַּצָּפוֹן
+  rationale: A new sentence and “toward” make the direction of the fall easier to picture.
 - pob_phrase: in the place where the tree falls, there it will lie
-  simplified_phrase: it lies where it falls
-  preserved_meaning: A fallen tree remains in the place where it fell.
-  reasoning_layer_used: POB lexical decision for שָׁם יְהוּא
-  rationale: The shorter clause preserves both the fallen-tree image and its resulting location.
+  simplified_phrase: it will lie in the place where it falls
+  preserved_meaning: A fallen tree remains where it came down.
+  reasoning_layer_used: POB lexical decision for שָׁם יְהוּא and its footnote
+  rationale: Ordinary English word order removes repetition while retaining the tree’s fixed location.
 translation_notes:
   risk_flags:
-  - risk: The shorter final clause omits the explicit noun “place.”
-    mitigation: “Where it falls” still clearly identifies the tree’s resulting location.
+  - risk: Removing the footnote hides that the final Hebrew verb literally means “be.”
+    mitigation: The main text retains POB’s audited contextual rendering “lie,” which is natural for a fallen tree.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/011/003.yaml
   source_text_sha256: e8b4509ec61f17a70a8819f4617e9d2df4437f85c6668448845c9106d01e5f55
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: d6f0596b44bb3b911130f767e9fbd13860d259ef7d224e5ab75c33817d2f133d
-  timestamp: '2026-07-11T21:24:52Z'
-  output_hash: a87dcf97251b9bc7ed0790e2a8dd09df8135c0dd32120a317dd37596ac101398
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: f42eabce6dee6cb70d30c8976b04bb4b249c04a1efba61ca8f9159e488b6e1a3
+  timestamp: '2026-08-28T23:06:33Z'
+  output_hash: 29429bb375ef6481e46528dade6cabb041a15ca401a362aecde0d08309697881
   usage:
-    prompt_tokens: 2656
-    completion_tokens: 576
-    total_tokens: 3232
-    reasoning_tokens: 262
+    prompt_tokens: 2879
+    completion_tokens: 697
+    total_tokens: 3576
+    reasoning_tokens: 264
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:06:33Z'
+  previous_text: If clouds are full of rain, they pour it onto the earth. If a tree falls toward the south or the north, it lies where it falls.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

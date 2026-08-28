@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/119/072.yaml
-  text: The law of your mouth is better to me than thousands of pieces of gold and silver.
+  text: The law of your mouth is better for me than thousands of gold and silver.
   ai_draft:
     model_id: claude-opus-4-8
     model_version: claude-opus-4-8
@@ -21,41 +21,59 @@ base_translation:
     output_hash: 0dce72547f06c2127b939175ae7075659202b813c1fdaafb96e36b1fd40e4f8e
 translation:
   language: en
-  text: The law you speak is more precious to me than thousands of pieces of gold and silver.
+  text: The law you speak is better for me than thousands of gold and silver.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: The law of your mouth
   simplified_phrase: The law you speak
-  preserved_meaning: God’s law is revealed through his own speech.
-  reasoning_layer_used: source image and lexical decision
-  rationale: The wording turns the Hebrew image into natural English while retaining “law” and the idea of divine speech.
-- pob_phrase: is better to me
-  simplified_phrase: is more precious to me
-  preserved_meaning: The speaker values God’s law above great material wealth.
-  reasoning_layer_used: immediate comparison
-  rationale: “More precious” clearly expresses the value comparison with gold and silver.
+  preserved_meaning: God's law is revealed in his own words.
+  reasoning_layer_used: POB lexical decision and Hebrew image
+  rationale: This uses natural English while preserving the image of God speaking his law.
+- pob_phrase: than thousands of gold and silver
+  simplified_phrase: than thousands of gold and silver
+  preserved_meaning: God's law is better than a vast, unspecified quantity of precious metals.
+  reasoning_layer_used: POB source audit and applied revision
+  rationale: This avoids inventing a unit or turning the quantity into monetary value.
 translation_notes:
   risk_flags:
-  - risk: “Law” may sound narrower than God’s revealed instruction.
-    mitigation: It is retained because the POB chose it for consistency across the psalm’s terms for God’s word.
+  - risk: “Thousands of gold and silver” is unusual English because the unit is unstated.
+    mitigation: The wording preserves the Hebrew ambiguity without adding coins, pieces, or a currency value.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/119/072.yaml
   source_text_sha256: cc1d48c6de2b6184bcf272a29f4d0673f0d844247df50d1fdbbf2a6cda5b909b
-  pob_commit_sha: 10975b14a09f35fcd9d540512a844c945cec1b29
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 20b1a1acc2e6c1415218db26932d520ccbdbe9335949e65ac139fffde4382b39
-  timestamp: '2026-07-27T04:21:29Z'
-  output_hash: c60ce1889b63fcbb24438f33d05b1bd074ebd14d75bd056be3e88f85560a3590
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 30cb91acc4699030524b5716b256bf988452c134d2901d855a9922e8192cf770
+  timestamp: '2026-08-28T23:36:11Z'
+  output_hash: 7bf4822e4b3fff937c84bfa4b7e6f6b5c16786f3a184387b866dd2a9d5297291
   usage:
-    prompt_tokens: 1750
-    completion_tokens: 532
-    total_tokens: 2282
-    reasoning_tokens: 282
+    prompt_tokens: 2642
+    completion_tokens: 247
+    total_tokens: 2889
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:34Z'
+  previous_text: The law you speak is more precious to me than thousands of pieces of gold and silver.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:11Z'
+  previous_text: The law you speak is better for me than gold and silver worth thousands.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 542b5a09dc8e7165fc7bd9a56584d2a4103a60648fcca8e0ddc514335b008f11
+  review_summary: 'The first simplification is warranted: “the law you speak” naturally explains the Hebrew image “the law of your mouth” without adding doctrine. The revised monetary-value wording in the second half is not warranted, however, because it shifts the comparison from a vast quantity of precious metals to an implied valuation. Retain the POB''s quantity wording.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

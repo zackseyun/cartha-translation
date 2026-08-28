@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/068/034.yaml
-  text: Ascribe strength to God[a]; his majesty is over Israel[b], and his strength is in the skies.
+  text: Ascribe strength to God[a]; his majesty is over Israel, and his strength is in the skies[b].
   footnotes:
   - marker: a
-    text: Or 'Give strength to God'; the Hebrew uses 'give,' but here it functions idiomatically as a call to acknowledge or ascribe God's strength.
+    text: Or “Give strength to God”; the Hebrew uses “give,” but here it functions idiomatically as a call to acknowledge or ascribe God’s strength.
     reason: lexical_alternative
   - marker: b
-    text: Or 'in the clouds' or 'in the heavens' for 'in the skies.'
+    text: Or “in the clouds” or “in the heavens.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,38 +34,75 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Acknowledge God’s strength. His majesty is over Israel, and his strength is in the skies.
+  text: Recognize God’s strength![a] His majesty is over Israel, and his strength is in the skies.[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Literally, “Give strength to God,” meaning to acknowledge the strength he already has.
+    reason: lexical_alternative
+  - marker: b
+    text: Or “in the clouds” or “in the heavens.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Ascribe strength to God
-  simplified_phrase: Acknowledge God’s strength
-  preserved_meaning: The worshipers are called to recognize God’s strength, not to supply it.
+  simplified_phrase: Recognize God’s strength
+  preserved_meaning: Worshipers are called to acknowledge God’s strength, not supply it.
   reasoning_layer_used: POB lexical and theological decisions on תְּנוּ עֹז
-  rationale: “Acknowledge” expresses the Hebrew idiom in familiar English.
-- pob_phrase: his majesty is over Israel, and his strength is in the skies
-  simplified_phrase: His majesty is over Israel, and his strength is in the skies.
-  preserved_meaning: God’s majesty extends over Israel, while his strength is portrayed in the heights above.
-  reasoning_layer_used: POB lexical decisions and poetic parallelism
-  rationale: The vivid spatial image is already clear and is retained.
-translation_notes: {}
+  rationale: “Recognize” expresses the poetic idiom in common English.
+- pob_phrase: his majesty is over Israel
+  simplified_phrase: His majesty is over Israel
+  preserved_meaning: God’s majesty extends over Israel without limiting the phrase to an explicit claim that he reigns.
+  reasoning_layer_used: POB lexical decision on עַל יִשְׂרָאֵל and grounding review
+  rationale: This clear wording preserves both extension and dominion as possible nuances.
+translation_notes:
+  risk_flags:
+  - risk: “Recognize” is less literal than the Hebrew verb “give.”
+    mitigation: The footnote gives the literal wording, while the main text preserves the POB’s idiomatic meaning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/068/034.yaml
   source_text_sha256: cbd6871db8b53fa938e7d38032b608f866358a1ea7520f79d7b5ac808b5c8024
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6491d8fed1985787ba57e3e76b54c1b41f4e267aaa2b45c082c2f7637111051d
-  timestamp: '2026-07-11T20:48:30Z'
-  output_hash: c33a823006cf88b875e8a79d279e3186d2b69201d594c0595908a81e1ac0151f
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ae2b753e5e79997ee970cca558e4bf58aae97cf928a1d81bf4cfc8ed5fc47706
+  timestamp: '2026-08-28T23:35:35Z'
+  output_hash: d084faffc8442128ca6c6b19303fc078fb7cb9b2fdc38ff57e56617b7d6ce1d6
   usage:
-    prompt_tokens: 2524
-    completion_tokens: 529
-    total_tokens: 3053
-    reasoning_tokens: 277
+    prompt_tokens: 3703
+    completion_tokens: 416
+    total_tokens: 4119
+    reasoning_tokens: 61
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: his majesty is over Israel
+  rendering: He reigns in majesty over Israel
+  claim: God’s majesty is expressed as his sovereign rule over Israel.
+  evidence:
+  - The POB rationale says “over” naturally expresses extension or dominion.
+  - The praise context gives גַּאֲוָתוֹ the positive sense “majesty.”
+  confidence: high
+  alternatives_preserved:
+  - His majesty is over Israel.
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:37Z'
+  previous_text: Acknowledge God’s strength. His majesty is over Israel, and his strength is in the skies.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:35Z'
+  previous_text: Recognize God’s strength![a] He reigns in majesty over Israel, and his strength is in the skies.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 3c0e84478b0e8bf298e3a3243851d51db885cc5e07fcf03a60df94b28fdd7120
+  review_summary: '“Recognize God’s strength!” is a warranted, clearer rendering of the poetic imperative and is well supported by the POB lexical and theological rationale. The second clause should not be recast as “He reigns,” however: sovereign dominion is a possible implication of God’s majesty being “over Israel,” not the clause’s explicit assertion. Retaining “His majesty is over Israel” preserves the source wording and its breadth while remaining understandable in modern English.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

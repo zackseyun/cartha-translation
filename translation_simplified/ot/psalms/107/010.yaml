@@ -31,56 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Some sat in darkness and deep shadow,[a] suffering as prisoners bound in iron chains.
+  text: Some sat in darkness and deepest gloom,[a] prisoners in misery and bound with iron restraints.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “the shadow of death,” a traditional rendering; the Hebrew probably refers more broadly to profound darkness or gloom.
+    text: Traditionally “the shadow of death”; the Hebrew likely refers more broadly to profound darkness or gloom.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: darkness and deep shadow
+  simplified_phrase: darkness and deepest gloom
+  preserved_meaning: This keeps the poetic sense of profound darkness without explicitly introducing death.
+  reasoning_layer_used: POB lexical decision for צַלְמָוֶת
+  rationale: “Deepest gloom” clearly conveys the depth and oppressive force of the image.
 - pob_phrase: prisoners in affliction and irons
-  simplified_phrase: suffering as prisoners bound in iron chains
-  preserved_meaning: They endured suffering while confined by iron restraints.
+  simplified_phrase: prisoners in misery and bound with iron restraints
+  preserved_meaning: The people are both suffering and physically restrained as prisoners.
   reasoning_layer_used: POB lexical decisions for עֳנִי and בַרְזֶל
-  rationale: The rewrite turns compressed prison imagery into natural English without narrowing the suffering to poverty.
-- pob_phrase: irons
-  simplified_phrase: iron chains
-  preserved_meaning: Iron restraints held the prisoners.
-  reasoning_layer_used: POB lexical decision for בַרְזֶל
-  rationale: “Iron chains” makes the metonymic prison image immediately understandable.
+  rationale: This preserves affliction as their condition while explaining the prison image without specifying chains.
 interpretive_expansions:
 - pob_phrase: irons
-  rendering: bound in iron chains
-  claim: The iron refers to restraints used to bind prisoners.
+  rendering: iron restraints
+  claim: The iron refers to restraints holding the prisoners.
   evidence:
-  - The POB lexical rationale identifies “iron” as a collective expression for fetters or shackles.
-  - The immediate parallel with “prisoners” supports physical restraints.
+  - The POB rationale identifies “iron” as a collective expression for iron restraints.
+  - The reference to prisoners supports the sense of physical bonds.
   confidence: high
   alternatives_preserved:
-  - iron restraints
-  - shackles
+  - irons
+  - bound with iron
 translation_notes:
   risk_flags:
-  - risk: “Deep shadow” may be read less strongly than the traditional “shadow of death.”
-    mitigation: The footnote preserves the traditional rendering while the main text follows the POB lexical decision.
+  - risk: “Iron restraints” explains the Hebrew image rather than reproducing its compressed form.
+    mitigation: The wording follows the POB lexical rationale and does not specify a particular kind of restraint.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/107/010.yaml
   source_text_sha256: 5af30e4f9e3a33ec0c2550074abc5ab9d49958f17dd00951c072fdd7cbe16357
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 000f35c1454404c8ad42992442fb360f232e458a1bb38a322ea42de6d8e66b59
-  timestamp: '2026-07-11T20:52:38Z'
-  output_hash: 7eb386e8d38b5e2213352c46c04d8eeb75305158b5cc8f55351230f521c1eca8
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 96eaf254d1889357af82251b441dc2abdc27e51a908ed0ae8d7cfa6bc271cf31
+  timestamp: '2026-08-28T23:36:05Z'
+  output_hash: 1d02d94d526392bf1d2207ee6ffb7111ed8f65b48225f0329fe1e33d4ada0bf7
   usage:
-    prompt_tokens: 2395
-    completion_tokens: 684
-    total_tokens: 3079
-    reasoning_tokens: 291
+    prompt_tokens: 3222
+    completion_tokens: 576
+    total_tokens: 3798
+    reasoning_tokens: 178
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:16Z'
+  previous_text: Some sat in darkness and deep shadow,[a] suffering as prisoners bound in iron chains.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:05Z'
+  previous_text: Some sat in darkness and deepest gloom,[a] suffering as prisoners in iron chains.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 279aa195b9fecbf67bc869671c7094fbe915828ca0a6015b43f0223c84b0d9e8
+  review_summary: The draft improves readability and its treatment of profound darkness is warranted by the POB lexical audit trail. However, the second clause slightly recasts the source relationship between imprisonment, affliction, and iron, and “chains” narrows the unspecified iron restraints. This revision keeps the clear wording while retaining affliction as a direct descriptor and avoiding an unnecessary specification of the restraint.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

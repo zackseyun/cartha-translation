@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/077/001.yaml
-  text: My voice is to God[a], and I cry out; my voice is to God, and he gives ear to me.
+  text: I cry aloud to God[a]; I cry aloud to God, that he may listen to me.
   footnotes:
   - marker: a
-    text: Or 'and he listened to me' / 'and he heard me.' The Hebrew verb emphasizes attentive hearing.
-    reason: lexical_alternative
+    text: Literally, “My voice [is] to God”; the Hebrew repeats the phrase. The final clause may be rendered “that he may listen to me.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,41 +31,64 @@ base_translation:
     changes_summary: Replaced 'I lift my voice' with the more literal 'My voice is to God' to reflect the repeated Hebrew phrase and preserve the verse's parallelism; kept the rest with minor smoothing.
 translation:
   language: en
-  text: I lift my voice to God and cry out. I lift my voice to God, and he listens closely to me.
+  text: I cry out to God; I cry out to God, that he may listen to me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: My voice is to God
-  simplified_phrase: I lift my voice to God
-  preserved_meaning: The psalmist directs his voice to God while the repeated wording and poetic emphasis on his voice remain.
-  reasoning_layer_used: POB lexical decisions and applied revision history
-  rationale: The active English expression makes the implied action clear without losing the repeated image of the psalmist's voice.
-- pob_phrase: he gives ear to me
-  simplified_phrase: he listens closely to me
-  preserved_meaning: God responds by hearing the psalmist attentively.
-  reasoning_layer_used: POB lexical and theological decisions
-  rationale: This replaces an old idiom with natural English while retaining attentive hearing and the declarative sense.
+- pob_phrase: I cry aloud to God
+  simplified_phrase: I cry out to God
+  preserved_meaning: The psalmist urgently raises his voice to God for help.
+  reasoning_layer_used: POB lexical decisions for קוֹלִי and וְאֶצְעָקָה
+  rationale: “Cry out” is common English that retains the audible force and intensity.
+- pob_phrase: I cry aloud to God; I cry aloud to God
+  simplified_phrase: I cry out to God; I cry out to God
+  preserved_meaning: The exact repetition emphasizes the psalmist’s persistent appeal to God.
+  reasoning_layer_used: POB source audit and lexical decision for קוֹלִי אֶל־אֱלֹהִים
+  rationale: Repeating the full clause preserves the Hebrew parallelism in natural English.
+- pob_phrase: that he may listen to me
+  simplified_phrase: that he may listen to me
+  preserved_meaning: The final clause remains linked to the cry and does not assert a completed response.
+  reasoning_layer_used: Controlling POB translation, source audit, and theological ambiguity
+  rationale: Keeping the linked wording preserves the prayer-like sense without making it an independent wish.
 translation_notes:
   risk_flags:
-  - risk: “I lift my voice” makes the action implicit in the Hebrew verbless phrase explicit.
-    mitigation: The POB lexical alternatives and revision history support this idiomatic expression while preserving “voice” and its repetition.
+  - risk: The audit also records a possible declarative sense in which God listens.
+    mitigation: The linked “that he may listen” follows the controlling POB while avoiding a separate, stronger wish clause.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/077/001.yaml
   source_text_sha256: b270f28f9532d53967ec41ef35b412170dad32dae62fd493fb643a2336c3c0de
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: dabbe38fb4acdf2a85b9ecfd54f6ff548d192911e877c8840e279c3161a9a183
-  timestamp: '2026-07-11T20:45:54Z'
-  output_hash: 037b626a8b69fa2a086ec236ab4bc0c746c0b387b71e643c94c1c1dc3dc6269f
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 245574812606ce6d30846d5b497cfcf5cc0688d10570153147394f5050b17e10
+  timestamp: '2026-08-28T23:35:41Z'
+  output_hash: 58c2c3f8dd025201a686d06496ced05438eaa8da6844ae4dc7717f91c7bfd6ae
   usage:
-    prompt_tokens: 2911
-    completion_tokens: 542
-    total_tokens: 3453
-    reasoning_tokens: 254
+    prompt_tokens: 4049
+    completion_tokens: 383
+    total_tokens: 4432
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:41Z'
+  previous_text: I lift my voice to God and cry out. I lift my voice to God, and he listens closely to me.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:41Z'
+  previous_text: I cry out to God; I cry out to God. May he listen to me.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5b51b4a5284b414e9e8c6d081d8188e1930dd7a5b1a5ac8a405ffe4ed44cbd99
+  review_summary: The draft successfully uses plain language for the urgent, audible cry. However, making the final words a separate “May he ...” sentence overstates one prayer-like construal amid the audit’s unresolved declarative/prospective versus volitive evidence. Retain the POB’s linked wording, which is already clear while better preserving the textual relationship and ambiguity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

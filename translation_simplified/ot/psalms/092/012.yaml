@@ -34,46 +34,75 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 92:13 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''he grows tall''].'
 translation:
   language: en
-  text: Righteous people thrive like palm trees. They grow like cedars in Lebanon.
+  text: Righteous people flourish like palm trees. They grow tall like cedars in Lebanon.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: The righteous
   simplified_phrase: Righteous people
   preserved_meaning: The singular righteous person represents righteous people generally.
-  reasoning_layer_used: POB footnote and lexical decision for צַדִּיק
-  rationale: The plural makes the representative meaning natural in modern English.
-- pob_phrase: flourishes like the palm tree
-  simplified_phrase: thrive like palm trees
-  preserved_meaning: Righteous people are compared to healthy, flourishing palm trees.
-  reasoning_layer_used: POB lexical decisions for כַּתָּמָר and יִפְרָח
-  rationale: “Thrive” clearly expresses flourishing while retaining the tree image.
-- pob_phrase: he grows like a cedar in Lebanon
-  simplified_phrase: They grow like cedars in Lebanon
-  preserved_meaning: Their vigorous growth is compared to cedars growing in Lebanon.
-  reasoning_layer_used: POB lexical decisions for כְּאֶרֶז, בַּלְּבָנוֹן, and יִשְׂגֶּה
-  rationale: A new sentence and plural pronoun make the parallel comparison easier to follow.
+  reasoning_layer_used: POB lexical decision and footnote b
+  rationale: The plural expresses the representative sense naturally in modern English.
+- pob_phrase: flourishes like the palm tree; he grows
+  simplified_phrase: flourish like palm trees. They grow tall
+  preserved_meaning: Both tree images portray vigorous growth, with the cedar suggesting upward grandeur.
+  reasoning_layer_used: POB lexical decisions for יִפְרָח and יִשְׂגֶּה
+  rationale: Two short sentences clarify the parallel, and “tall” follows the documented lexical choice.
+- pob_phrase: like a cedar in Lebanon
+  simplified_phrase: like cedars in Lebanon
+  preserved_meaning: The comparison remains with cedar trees growing in their famed Lebanese setting.
+  reasoning_layer_used: POB lexical decisions for כְּאֶרֶז and בַּלְּבָנוֹן
+  rationale: The plural matches the representative subject while keeping Lebanon as the location.
 translation_notes:
   risk_flags:
-  - risk: The plural wording does not display the Hebrew singular form.
-    mitigation: The POB footnote explicitly recognizes that the singular can be representative.
+  - risk: The representative plural may obscure the Hebrew singular form.
+    mitigation: POB footnote b explicitly permits a representative sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/092/012.yaml
   source_text_sha256: b1c5151ce54f256540220ed2083f501e861e5b2f541804062a4c5208c0edd726
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 367c9ad8056c3362cc9f639a1ee6866d44d45e0d60f3a9794b15a78e6dfba7fd
-  timestamp: '2026-07-11T21:04:39Z'
-  output_hash: 57eb566ecbfae135bcc2f648dbe3ed9b173dd949bd59965e963883e8ea6629f3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: eb1d646fb6111b1e43e2545a8146ad3b417660e7074cc2720543867c34859c35
+  timestamp: '2026-08-28T23:35:52Z'
+  output_hash: 26a68a016726f28a9268bc9993089a9c6e18eb0a914db0d69bb8863d1fe92163
   usage:
-    prompt_tokens: 2766
-    completion_tokens: 629
-    total_tokens: 3395
-    reasoning_tokens: 274
+    prompt_tokens: 3514
+    completion_tokens: 408
+    total_tokens: 3922
+    reasoning_tokens: 62
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: he grows
+  rendering: They grow strong
+  claim: The growth is vigorous rather than merely an increase in size.
+  evidence:
+  - POB footnote a says the Hebrew conveys vigorous growth or becoming great.
+  - The cedar comparison supports an image of robust growth.
+  confidence: high
+  alternatives_preserved:
+  - grow
+  - grow tall
+  - thrive
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:35Z'
+  previous_text: Righteous people thrive like palm trees. They grow like cedars in Lebanon.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:52Z'
+  previous_text: Righteous people flourish like palm trees. They grow strong like the cedars in Lebanon.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 1e8e62df02000c6187a429ebc1959b36a842e5f452eeb90787dcb2e5bb3c71c2
+  review_summary: 'The plural representative rendering is warranted by the POB audit and improves readability. Splitting the poetic parallels into two short sentences also preserves the imagery clearly. Revise only “grow strong”: it imports a particular cedar-associated quality that the source and audit do not state. “Grow tall” follows the documented lexical decision while remaining clear for modern readers.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

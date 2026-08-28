@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/002/020.yaml
-  text: So I turned to despair in my heart over all the labor at which I had labored under the sun[a][b].
+  text: So I turned and gave my heart over to despair[a] because of all the labor at which I had labored under the sun.[b]
   footnotes:
   - marker: a
-    text: Or 'Then I turned to make my heart despair' / 'Then I turned to give up in my heart.' The Hebrew idiom is compact and can be expressed in several close ways.
-    reason: lexical_alternative
+    text: Or “Then I turned to make my heart despair” or “Then I turned to give up hope.” The Hebrew expression is compact and makes “my heart” the object of the verb.
+    reason: alternative_reading
   - marker: b
-    text: '''Under the sun'' is a recurring Ecclesiastes expression for life in the present world and its earthly sphere.'
+    text: “Under the sun” is a recurring Ecclesiastes expression for life in the present earthly sphere.
     reason: cross_reference
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So I began to despair in my heart over all the hard work I had done under the sun.[a]
+  text: So I turned and gave my heart over to despair because of all the hard work I had done under the sun.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Under the sun” is Ecclesiastes’ recurring expression for life in this present world.
+    text: “Under the sun” is a recurring expression in Ecclesiastes for life in this present earthly world.
     reason: cross_reference
 simplification_decisions:
-- pob_phrase: So I turned to despair in my heart
-  simplified_phrase: So I began to despair in my heart
-  preserved_meaning: The speaker changed direction inwardly and gave his heart over to despair.
-  reasoning_layer_used: POB lexical decisions for וְסַבּוֹתִי, לְיַאֵשׁ, and אֶת־לִבִּי
-  rationale: “Began to despair” expresses the change of course in natural English while retaining the inner force of “heart.”
 - pob_phrase: all the labor at which I had labored
   simplified_phrase: all the hard work I had done
-  preserved_meaning: His burdensome labor was the reason for his despair.
-  reasoning_layer_used: POB lexical decisions for כָּל הֶעָמָל and שֶׁעָמַלְתִּי
-  rationale: This removes awkward repetition while preserving the emphasis on burdensome work.
+  preserved_meaning: The wording still emphasizes the burdensome work he personally performed.
+  reasoning_layer_used: Lexical decisions for עָמָל and its cognate verb
+  rationale: “Hard work” preserves the burden of the labor without awkward repetition.
 translation_notes:
   risk_flags:
-  - risk: “Began” may sound more temporal than the Hebrew image of turning.
-    mitigation: It preserves the contextually intended change into a new response without overexplaining the image.
+  - risk: “Hard work” does not reproduce the Hebrew cognate repetition.
+    mitigation: The adjective “hard” preserves the burdensome force emphasized by the repeated terms.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/002/020.yaml
   source_text_sha256: a95689fa55e90b65ae17bd15b695971d360042f3a49048fe9d9efe92c3ad127b
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 87461450eef8989fafaa5e6faed2ae493c949b253a331c78d8548def1a062048
-  timestamp: '2026-07-11T21:21:52Z'
-  output_hash: 5ebd887820a43b29470e860abd49eeae1b34bff2e0e87398758c38d6e3c3368b
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7ee8ecb2c25390ae4d7a88cafff810a2f24c74c8b36363b66c5b0a304e2fbecb
+  timestamp: '2026-08-28T23:32:32Z'
+  output_hash: 0d6a874805961447a93cfd2e99cef8ca69efd5dae8407748b6ee1dc1a3c27d8b
   usage:
-    prompt_tokens: 2526
-    completion_tokens: 539
-    total_tokens: 3065
-    reasoning_tokens: 177
+    prompt_tokens: 3736
+    completion_tokens: 296
+    total_tokens: 4032
+    reasoning_tokens: 61
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: So I turned
+  rendering: when I considered
+  claim: The turn is a change in the speaker’s course of thought as he reflects on his work.
+  evidence:
+  - The lexical rationale identifies the verb as an idiomatic change of direction in thought.
+  - The following phrase names his labor as the occasion for despair.
+  confidence: high
+  alternatives_preserved:
+  - So I turned
+  - Then I turned
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:07:02Z'
+  previous_text: So I began to despair in my heart over all the hard work I had done under the sun.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:32Z'
+  previous_text: So I gave my heart over to despair when I considered all the hard work I had done under the sun.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 95b3716873b0dc647873b4fb3630cbbf6d5a166be3cf0a4524386e3e0074706e
+  review_summary: 'The draft usefully simplifies the repeated “labor at which I had labored” to “hard work I had done,” preserving both its burdensome character and the speaker’s personal investment. However, “when I considered” is not a warranted simplification of “So I turned”: it adds a particular mental action and obscures the verse’s explicit statement that the labor was the cause of his despair. Retain the turn and causal connection while keeping the clearer wording for the work.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

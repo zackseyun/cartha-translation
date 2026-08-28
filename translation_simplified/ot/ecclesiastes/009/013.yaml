@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/009/013.yaml
-  text: 'I also saw this example of wisdom under the sun[a], and it was great to me:'
-  footnotes:
-  - marker: a
-    text: Or, 'I observed this example of wisdom under the sun, and it seemed great to me.' The Hebrew keeps 'wisdom' as the object rather than explicitly saying 'example of wisdom.'
-    reason: lexical_alternative
+  text: 'I also saw this wisdom under the sun, and it seemed great to me:'
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,46 +27,53 @@ base_translation:
     changes_summary: Added 'example of' to reflect the idiomatic sense of 'this wisdom' here as a case or instance of wisdom, while preserving the formal structure and meaning.
 translation:
   language: en
-  text: 'I saw another example of wisdom under the sun, and it seemed great to me:'
+  text: 'In this life under the sun, I also saw this wisdom, and I considered it great:'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: I also saw this example
-  simplified_phrase: I saw another example
-  preserved_meaning: The speaker adds this case to his earlier observations and points forward to the account that follows.
-  reasoning_layer_used: lexical decisions for גַּם and זֹה
-  rationale: “Another example” expresses the additive force in natural English.
-- pob_phrase: and it was great to me
-  simplified_phrase: and it seemed great to me
-  preserved_meaning: The wisdom appeared great in the speaker’s personal judgment without specifying in what way.
-  reasoning_layer_used: lexical decisions for וּגְדוֹלָה and אֵלַי, supported by the POB footnote
-  rationale: “Seemed great to me” clarifies personal evaluation while preserving the broad word “great.”
+- pob_phrase: under the sun
+  simplified_phrase: in this life under the sun
+  preserved_meaning: The concrete image still refers to life in the earthly realm.
+  reasoning_layer_used: POB lexical decision and Ecclesiastes idiom
+  rationale: The added words explain the familiar biblical image without replacing it.
+- pob_phrase: it seemed great to me
+  simplified_phrase: I considered it great
+  preserved_meaning: The judgment remains the speaker’s personal assessment, while “great” stays broad.
+  reasoning_layer_used: POB lexical decision and source audit
+  rationale: The active wording is more direct in common English and avoids narrowing what made the wisdom great.
+interpretive_expansions:
+- pob_phrase: under the sun
+  rendering: in this life under the sun
+  claim: The phrase concerns earthly human life.
+  evidence:
+  - The POB lexical rationale identifies this as Ecclesiastes’ idiom for life in the earthly realm.
+  confidence: high
+  alternatives_preserved:
+  - The image may carry further literary force within Ecclesiastes.
 translation_notes:
   risk_flags:
-  - risk: “Another example” makes the contextual sense of the abstract noun “wisdom” explicit.
-    mitigation: The following account presents a concrete instance, and the POB already adopts “example of wisdom.”
+  - risk: Adding “this life” makes the idiom’s domain explicit.
+    mitigation: The wording retains “under the sun,” preserving the source image and its wider literary resonance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/009/013.yaml
   source_text_sha256: 91057f21a55db21e8d5019ea7c9a5337a260d8c40462d07fdd51755bd5942662
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 88dda2de787f486bad0f939dff444144e54bcb8128f5aab3db5a83eb4d354b7f
-  timestamp: '2026-07-12T09:11:01Z'
-  output_hash: c42f54297439e66bc662bac800e6b9769065b439bbfc5ddbb8a7ff5e08a3a521
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 68861cbe8dcab7daf7328ed94c3716af9f9110aabe31dbb5c141e1e2e9e2a462
+  timestamp: '2026-08-28T23:09:54Z'
+  output_hash: 50e71d82e90d6991966902e5406acf05926b15cac62cdf78a1e826ba490850f0
   usage:
-    prompt_tokens: 3219
-    completion_tokens: 290
-    total_tokens: 3509
-    reasoning_tokens: 0
+    prompt_tokens: 2757
+    completion_tokens: 1530
+    total_tokens: 4287
+    reasoning_tokens: 1176
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:11:01Z'
   previous_text: 'I saw another example of wisdom under the sun, and it seemed remarkable to me:'
@@ -82,3 +85,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:09:54Z'
+  previous_text: 'I saw another example of wisdom under the sun, and it seemed great to me:'
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

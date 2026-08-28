@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/027/001.yaml
-  text: Do not boast about tomorrow[a], for you do not know what a day may bring.
+  text: Do not boast about tomorrow, for you do not know what a day may bring forth.[a]
   footnotes:
   - marker: a
-    text: Literally, 'what a day will give birth to' or 'produce.'
-    reason: lexical_alternative
+    text: Literally, “what a day will give birth to.”
+    reason: literal_image
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,42 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not boast about tomorrow. You do not know what that day may bring.[a]
+  text: Do not brag about tomorrow, because you do not know what a day may bring.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Literally, “what a day will give birth to” or “produce.”
-    reason: lexical_alternative
+    text: Literally, “what a day will give birth to.”
+    reason: source_note
 simplification_decisions:
-- pob_phrase: Do not boast about tomorrow, for you do not know
-  simplified_phrase: Do not boast about tomorrow. You do not know
-  preserved_meaning: The warning is grounded in our lack of knowledge about the future.
-  reasoning_layer_used: POB syntax and lexical decisions
-  rationale: Two short sentences make the proverb easier to grasp without changing its logic.
-- pob_phrase: what a day may bring
-  simplified_phrase: what that day may bring
-  preserved_meaning: Tomorrow can produce events that are now unknown.
-  reasoning_layer_used: POB lexical decision for מַה יֵּלֶד יוֹם
-  rationale: “That day” clearly points back to tomorrow while the footnote preserves the birth image.
-translation_notes: {}
+- pob_phrase: Do not boast about tomorrow
+  simplified_phrase: Do not brag about tomorrow
+  preserved_meaning: The warning remains against proud, self-confident talk about the future.
+  reasoning_layer_used: POB lexical decision for תִּתְהַלֵּל
+  rationale: “Brag” expresses self-exaltation in familiar English.
+- pob_phrase: for you do not know
+  simplified_phrase: because you do not know
+  preserved_meaning: Lack of knowledge remains the explicit reason for the command.
+  reasoning_layer_used: POB lexical decisions for כִּי and תֵדַע
+  rationale: “Because” states the causal link plainly.
+- pob_phrase: what a day may bring forth
+  simplified_phrase: what a day may bring
+  preserved_meaning: The future may produce events that are not yet known.
+  reasoning_layer_used: POB lexical decision and footnote for מַה יֵּלֶד יוֹם
+  rationale: “May bring” is natural English, while the footnote preserves the birth image.
+translation_notes:
+  risk_flags:
+  - risk: The main text no longer directly carries the Hebrew birth image.
+    mitigation: The footnote preserves the literal image without burdening the sentence.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/027/001.yaml
   source_text_sha256: d2b36e21361873a0829515b7c8fde870a0b42e4a9cb668106bd9248b072103ce
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 41e7a3bbf163b69092fa30a659fd60ec1a7945e1264b5324db3a0584d807c53b
-  timestamp: '2026-07-11T21:08:05Z'
-  output_hash: 65cc1c554d122816207b5ca658246a04aca2b0ff277d7f08ecdc7e91fd4954e0
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c2fc8f6fa3357a87dbb8f5bcb3a7b4417739a0cdba727c1cf8f7aa9d32772bc0
+  timestamp: '2026-08-28T23:34:48Z'
+  output_hash: f2e016539fc2226a1ac6be0fc9d8f0b034f5001a3427813116df7e2270a7cc11
   usage:
-    prompt_tokens: 2209
-    completion_tokens: 455
-    total_tokens: 2664
-    reasoning_tokens: 188
+    prompt_tokens: 3157
+    completion_tokens: 508
+    total_tokens: 3665
+    reasoning_tokens: 141
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:56Z'
+  previous_text: Do not boast about tomorrow. You do not know what that day may bring.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:48Z'
+  previous_text: Do not brag about tomorrow. You do not know what a day may give birth to.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 904583bb6920cca0409544c2b9fc592ccd4966fbdd02f7b7a9469c21b32c6902
+  review_summary: “Brag” is a warranted, accessible rendering of the warning against self-exalting speech. Revision is needed because “a day may give birth to” is a wooden literalism rather than a clearer SPOB expression, and because the causal connection should remain explicit. The recommended text preserves the proverb’s warning and its reason without adding doctrinal or practical claims.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

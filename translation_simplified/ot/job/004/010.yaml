@@ -11,10 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/004/010.yaml
-  text: The lion’s roar[a], and the voice of the fierce lion, and the teeth of the young lions are broken.
+  text: The lion’s roar, the lion’s voice[a], and the teeth of young lions are broken.[b]
   footnotes:
   - marker: a
-    text: Or 'are torn out' or 'are pulled out.' The Hebrew verb conveys violent removal or breaking.
+    text: The Hebrew uses a different poetic word for “lion” here than in the preceding phrase.
+    reason: lexical_distinction
+  - marker: b
+    text: Or “are torn out” or “are pulled out.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,56 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The lion’s roar and the fierce lion’s voice are silenced, and the young lions’ teeth are broken.[a]
+  text: A lion’s roar and a lion’s voice are silenced,[a] and the teeth of young lions are broken.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew uses one forceful verb for this line; it may also suggest that the teeth are torn or pulled out.
+    text: The Hebrew uses a different poetic word for “lion” in the second phrase.
+    reason: source_note
+  - marker: b
+    text: Or “torn out” or “pulled out.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: The lion’s roar, and the voice of the fierce lion
-  simplified_phrase: The lion’s roar and the fierce lion’s voice are silenced
-  preserved_meaning: The powerful cries of both lions are brought to an end.
-  reasoning_layer_used: Lexical decisions for “roar,” “voice,” and “fierce lion,” together with the coordinated Hebrew line.
-  rationale: One shared predicate makes the compressed poetry clear without distinguishing the two cries.
-- pob_phrase: the teeth of the young lions are broken
-  simplified_phrase: the young lions’ teeth are broken
-  preserved_meaning: The young lions’ teeth are violently destroyed.
-  reasoning_layer_used: Lexical decisions for “young lions,” “teeth,” and the forceful final verb.
-  rationale: The possessive form is more natural while preserving the concrete image and POB’s chosen verb.
+- pob_phrase: The lion’s roar, the lion’s voice
+  simplified_phrase: A lion’s roar and a lion’s voice
+  preserved_meaning: The two parallel descriptions of a lion’s sound remain distinct.
+  reasoning_layer_used: POB lexical decisions and revision footnote for אַרְיֵה and שָׁחַל
+  rationale: Repeating “a lion’s” preserves the Hebrew parallelism while keeping the line natural.
+- pob_phrase: The lion’s roar, the lion’s voice ... are broken
+  simplified_phrase: A lion’s roar and a lion’s voice are silenced
+  preserved_meaning: The threatening sounds are brought to an end as part of the image of destroyed power.
+  reasoning_layer_used: Hebrew syntax and POB rationale for נִתָּעוּ
+  rationale: “Silenced” clearly expresses how the shared verb applies to sounds while “broken” remains attached to teeth.
 interpretive_expansions:
-- pob_phrase: The lion’s roar, and the voice of the fierce lion
-  rendering: The lion’s roar and the fierce lion’s voice are silenced
-  claim: The lions’ powerful cries are brought to an end.
+- pob_phrase: the lion’s roar, the lion’s voice ... are broken
+  rendering: A lion’s roar and a lion’s voice are silenced
+  claim: The breaking of the lion’s sounds means that they are stopped.
   evidence:
-  - The Hebrew coordinates both cries under one final forceful verb.
-  - POB retains distinct terms for “roar” and “voice.”
-  confidence: moderate
+  - The Hebrew verb governs both the sounds and the teeth.
+  - The POB rationale identifies the image as the destruction of power.
+  confidence: high
   alternatives_preserved:
-  - The verb may be applied more uniformly as “broken” across the whole line.
+  - A lion’s roar and a lion’s voice are broken.
 translation_notes:
   risk_flags:
-  - risk: “Silenced” states the effect of the forceful verb on the two cries rather than repeating “broken.”
-    mitigation: A single predicate serves both cries, while the footnote notes that one Hebrew verb governs the line.
+  - risk: “Silenced” makes the effect of the shared verb explicit for the lion’s sounds.
+    mitigation: The physical image remains in the broken teeth, and the destruction-of-power sense is preserved.
+  - risk: English repeats “lion” but cannot display the distinct Hebrew terms.
+    mitigation: Footnote [a] accurately identifies the second term as a different poetic word.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/004/010.yaml
   source_text_sha256: 2d96a532ba3c0e876f382dd4200e694a8ce97815212b3601c47dab6ba983ffec
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 78a6fdf6b08dbba05354c26ceb028e3abe3976faa0b422a879402ef09a32aa44
-  timestamp: '2026-07-12T09:36:30Z'
-  output_hash: 3d38e70dafea8711d316f33700fba32a062ee8cc75a0d21be023adac2924ad19
+  prompt_sha256: a74e9fed0fd067cca4da5edbb5f89a4720a5cfd38b4cb69c0bf9e6bcb658a334
+  timestamp: '2026-08-28T23:34:17Z'
+  output_hash: ab689e559cc1c95326d72553e95ade5953222c7e7d932a5a0f31fb4c93e0c392
   usage:
-    prompt_tokens: 3325
-    completion_tokens: 465
-    total_tokens: 3790
-    reasoning_tokens: 0
+    prompt_tokens: 3676
+    completion_tokens: 632
+    total_tokens: 4308
+    reasoning_tokens: 108
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -92,5 +100,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: d85c90f650d669409180c660ce44c269ee13a63d000878d60b2a033c8f6c2e32
   review_summary: The draft successfully makes the compressed poetic construction understandable, and its explanation that the lions’ cries cease is contextually warranted. However, “cut off” for the roar and “silenced” for the voice unnecessarily differentiates two coordinated expressions under one Hebrew verb. Use one clear predicate for both cries while retaining the concrete, forceful image of broken teeth and the lexical-alternative footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:48:58Z'
+  previous_text: The lion’s roar and the fierce lion’s voice are silenced, and the young lions’ teeth are broken.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:17Z'
+  previous_text: A lion’s roar and voice are silenced,[a] and the teeth of young lions are broken.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5b51560c7a3625782f578d5434c6f4a1d02636ae30426a62b25257f8c4b67d1d
+  review_summary: “Are silenced” is a warranted and useful clarification of how the common verb affects the roar and voice, while “broken” appropriately remains for the teeth. Revise the first clause to retain the source’s parallel lion expressions and correct footnote a so it reflects the POB lexical audit trail without overstating the status of both terms.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

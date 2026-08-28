@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/039/002.yaml
-  text: Do you count the months they fulfill[a], and do you know the time when they give birth?
+  text: Do you count the months until they reach full term[a], and do you know the time when they give birth?
   footnotes:
   - marker: a
-    text: Or, more idiomatically, 'Do you count the months until they are completed?' The Hebrew uses an active verb, literally 'they fulfill [the months],' referring to the completion of gestation.
-    reason: lexical_alternative
+    text: Literally, “the months they complete.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,51 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do you count the months until their pregnancies reach full term? Do you know when they will give birth?
+  text: Do you count the months until they reach full term? Do you know when they give birth?
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: the months they fulfill
-  simplified_phrase: the months until their pregnancies reach full term
-  preserved_meaning: The animals complete the full period of gestation.
-  reasoning_layer_used: POB lexical decision for תְּמַלֶּאנָה and its footnote
-  rationale: The rewrite replaces the difficult active idiom with clear English while preserving the idea of reaching the full term.
-- pob_phrase: the time when they give birth
-  simplified_phrase: when they will give birth
-  preserved_meaning: God asks whether Job knows the timing of the animals’ births.
+- pob_phrase: Do you count the months until they reach full term[a]
+  simplified_phrase: Do you count the months until they reach full term?
+  preserved_meaning: Job is asked whether he knows the full length of the animals’ pregnancy.
+  reasoning_layer_used: POB lexical decisions and applied idiom revision
+  rationale: The natural phrase “reach full term” preserves the contextual meaning of completing the months.
+- pob_phrase: and do you know the time when they give birth?
+  simplified_phrase: Do you know when they give birth?
+  preserved_meaning: Job is asked whether he knows their general time of giving birth.
   reasoning_layer_used: POB lexical decisions for עֵת and לִדְתָּנָה
-  rationale: The simpler question expresses the same temporal meaning without the abstract phrase “the time when.”
-interpretive_expansions:
-- pob_phrase: the months they fulfill
-  rendering: their pregnancies reach full term
-  claim: The completed months are the animals’ period of pregnancy.
-  evidence:
-  - The POB footnote identifies the phrase as the completion of gestation.
-  - The following clause concerns when the females give birth.
-  confidence: high
-  alternatives_preserved:
-  - the months until they are completed
-translation_notes:
-  risk_flags:
-  - risk: Naming “pregnancies” makes the gestational context more explicit than the Hebrew wording.
-    mitigation: The POB footnote and the immediate reference to giving birth directly establish this context.
+  rationale: A separate question and direct “when” wording make the sentence easier to follow.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/039/002.yaml
   source_text_sha256: 327d199e1cc6c1dbf09f7ee1ea0e2b2cf93a73cb0f0a862e6612c816b61d0d77
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: adcf753e970d3eee65ac6b2c110d6cfe916c754df4339663564e5af58d147089
-  timestamp: '2026-07-11T20:25:26Z'
-  output_hash: b0ca0d3d580f8d7d8d1befab514a30f868f6fcf012b5de9948ca7a06e8853140
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 26597b83c5e2fbaa98889ce58b98b0657775f95004cb80182084f0e915809b10
+  timestamp: '2026-08-28T23:34:59Z'
+  output_hash: 74d908855f8abbb6d87e829afdbe1a94d12d44da9900208203b5c25c05805c62
   usage:
-    prompt_tokens: 2337
-    completion_tokens: 675
-    total_tokens: 3012
-    reasoning_tokens: 296
+    prompt_tokens: 3217
+    completion_tokens: 254
+    total_tokens: 3471
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:43Z'
+  previous_text: Do you count the months until their pregnancies reach full term? Do you know when they will give birth?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:59Z'
+  previous_text: Do you count off the months until they reach full term? Do you know when they will give birth?
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 040f0f1b83aa16f66e42b11fcbcce61c4ec6996dfdc876024c61b2c33283bda2
+  review_summary: Separating the coordinated questions improves readability and preserves the rhetorical force. Revise “count off” to the source-supported “count,” and remove “will,” which introduces an unnecessary particular-future nuance into a general question about the animals’ birthing time.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

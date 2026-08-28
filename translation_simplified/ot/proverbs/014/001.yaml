@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/014/001.yaml
-  text: The wisest of women builds her house[b][a], but a foolish woman tears it down with her own hands.
+  text: A wise woman builds her house[a], but a foolish woman tears it down with her own hands.
   footnotes:
   - marker: a
-    text: Or 'Every wise woman builds her house.' The Hebrew opening may be understood generically as a class statement rather than as a superlative expression.
-    reason: lexical_alternative
-  - marker: b
-    text: '''House'' may also include the sense of ''household'' or ''family establishment,'' not only the physical dwelling.'
+    text: “House” may also include the sense of “household” or “family establishment,” not only the physical dwelling.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,53 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The wisest of women[a] builds her home, but a foolish woman tears it down with her own hands.
+  text: A wise woman builds her home[a], but a foolish woman tears her home down with her own hands.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Every wise woman.” The Hebrew may describe wise women generally rather than the wisest woman.
+    text: “Home” can mean both the physical house and the household or family.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: builds her house
   simplified_phrase: builds her home
-  preserved_meaning: She builds both her dwelling and the household connected with it.
-  reasoning_layer_used: POB lexical decision and footnote for בֵיתָהּ
-  rationale: “Home” clearly conveys the broader range while “builds” preserves the concrete image.
+  preserved_meaning: The concrete building image remains while “home” allows both the dwelling and the household.
+  reasoning_layer_used: POB lexical decisions for בָּנְתָה and בֵיתָהּ
+  rationale: “Home” is familiar English, and the note preserves the Hebrew term’s full range.
+- pob_phrase: tears it down with her own hands
+  simplified_phrase: tears her home down with her own hands
+  preserved_meaning: The destructive contrast and the woman’s personal responsibility remain explicit.
+  reasoning_layer_used: POB lexical decisions for בְּיָדֶיהָ and תֶהֶרְסֶנּוּ
+  rationale: Repeating “her home” makes the object immediately clear without adding emphasis.
 interpretive_expansions:
 - pob_phrase: her house
-  rendering: her home
-  claim: The house can include the household or family establishment, not only the building.
+  rendering: her home[a]
+  claim: The house may be either the physical dwelling or the household and family established there.
   evidence:
-  - The POB lexical note says בַּיִת may denote either a physical house or a household.
+  - The POB lexical decision says בֵיתָהּ can denote a physical house or a household.
+  - The POB footnote explicitly preserves both senses.
   confidence: high
   alternatives_preserved:
-  - physical dwelling
-  - household or family establishment
+  - physical house
+  - household or family
 translation_notes:
   risk_flags:
-  - risk: “The wisest of women” may be heard only as a superlative.
-    mitigation: The footnote preserves the possible generic reading “Every wise woman.”
-  - risk: “Home” may make the physical building less prominent.
-    mitigation: The paired verbs “builds” and “tears it down” preserve the construction image.
+  - risk: “Home” could be understood as only a dwelling or only a family.
+    mitigation: The footnote explicitly preserves both senses.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/014/001.yaml
   source_text_sha256: 21fa29c6de14d2ea8116151e427c3828a4ed47e52f6405e22d4d73c38da67937
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 3250ce95d68aedf0033632727314eb5d461fc2d41c3919926f4abc9cca717af6
-  timestamp: '2026-07-12T09:52:12Z'
-  output_hash: 0d65f7abebc52418f8201d8cdc175a41c902a0426c970c4212e6148529a36bcb
+  prompt_sha256: 6ab5a57827181ec1e81f3ba39cd71f4514d89986e597b2306362130ca07df855
+  timestamp: '2026-08-28T23:34:24Z'
+  output_hash: 8b3832b625c5cf7d817bd228d006de9a072e5fe510894abb7f661da13f535b59
   usage:
-    prompt_tokens: 3511
-    completion_tokens: 341
-    total_tokens: 3852
-    reasoning_tokens: 0
+    prompt_tokens: 3549
+    completion_tokens: 589
+    total_tokens: 4138
+    reasoning_tokens: 173
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -92,5 +93,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 42323322639d8dddde5ac9a685c41534fe967400f9e8c45721574dec9388e5c4
   review_summary: The use of “home” is a warranted, clearer rendering of the POB’s stated range for “house,” since it can naturally refer to both a dwelling and one’s domestic establishment. However, “builds up” interprets the construction image as strengthening, and “her own home” redundantly intensifies agency already expressed by “with her own hands.” Restoring “builds” and “her home” keeps the proverb’s vivid, balanced imagery and its semantic breadth while remaining clear.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:01:19Z'
+  previous_text: The wisest of women[a] builds her home, but a foolish woman tears it down with her own hands.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:24Z'
+  previous_text: A wise woman builds up her home[a]. A foolish woman tears her own home down with her own hands.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 3bd48701dd4b2046d68e2246b1da7f19cafaa005f26ade8a818ae5f7861250f7
+  review_summary: The draft appropriately makes the repeated object explicit and uses “home” with a footnote that retains the live physical-house/household breadth of בַּיִת. Revision is needed only to avoid adding the potentially narrower “strengthens/improves” nuance of “builds up” and the unnecessary extra emphasis of “own” in the object. The retained “with her own hands” properly conveys the text’s stress on her personal agency.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

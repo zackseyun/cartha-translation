@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/028/007.yaml
-  text: A path no bird of prey knows[a], and the eye of the falcon has not seen it.
+  text: A path no bird of prey knows, and the eye of a bird of prey[a] has not seen it.
   footnotes:
   - marker: a
-    text: Or 'kite.' The Hebrew names a bird of prey, but the exact species is uncertain.
+    text: The exact bird of prey named by the Hebrew אַיָּה is uncertain; proposed identifications include the kite and the falcon.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: There is a path that no bird of prey knows. No falcon’s eye has seen it.[a]
+  text: No bird of prey knows this path. The eye of a bird of prey has not caught sight of it.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “kite.” The Hebrew names a bird of prey, but the exact species is uncertain.
+    text: The exact kind of bird named in Hebrew is uncertain; proposed identifications include the kite and the falcon.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: A path no bird of prey knows
-  simplified_phrase: There is a path that no bird of prey knows.
-  preserved_meaning: The path remains unknown even to birds that search from above.
+  simplified_phrase: No bird of prey knows this path.
+  preserved_meaning: The path is unknown to every bird of prey.
   reasoning_layer_used: POB lexical decisions for נָתִיב, ידע, and עָיִט
-  rationale: The complete sentence is easier to follow while preserving the hidden-path image.
-- pob_phrase: and the eye of the falcon has not seen it
-  simplified_phrase: No falcon’s eye has seen it.
-  preserved_meaning: Even the falcon’s keen sight has not discovered the path.
+  rationale: Direct word order and a separate sentence make the clause easier to understand.
+- pob_phrase: the eye of a bird of prey has not seen it
+  simplified_phrase: The eye of a bird of prey has not caught sight of it.
+  preserved_meaning: The poetic image of the bird’s eye remains, without identifying an uncertain species.
   reasoning_layer_used: POB lexical decisions for עֵין, שׁזף, and אַיָּה
-  rationale: The shorter clause keeps the Hebrew eye image and poetic parallelism.
+  rationale: “Caught sight of” is clear English and adds no temporal emphasis.
 translation_notes:
   risk_flags:
-  - risk: “Falcon” may suggest a more exact species identification than the Hebrew supports.
-    mitigation: The footnote preserves “kite” and states that the species is uncertain.
+  - risk: Repeating “bird of prey” may sound heavy in English.
+    mitigation: The repetition preserves the parallel lines and avoids implying the same individual bird.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/028/007.yaml
   source_text_sha256: 82d0bacbf47df17734bf837986367deac7b165f59255e35c7d2464a7337f6709
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 7470c1fdef8cb75f0fb7c0ed7a6eca0f7bdc9c526438bf498169ca001a581f85
-  timestamp: '2026-07-11T19:45:38Z'
-  output_hash: 6dbb2484d9b1481e3f19ed496d5b701f8f8d447753cf3d1345468edc307520b2
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 772af8ce52ad3b4faa97dd8f0a04bb57f3677cf2205b25f4f9be4dae68fb9e7a
+  timestamp: '2026-08-28T23:34:43Z'
+  output_hash: ea8dae6632e08ed78028a7a7da7506940422b63b8413ba810323d059efcd71fb
   usage:
-    prompt_tokens: 2282
-    completion_tokens: 789
-    total_tokens: 3071
-    reasoning_tokens: 459
+    prompt_tokens: 3249
+    completion_tokens: 397
+    total_tokens: 3646
+    reasoning_tokens: 62
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:08Z'
+  previous_text: There is a path that no bird of prey knows. No falcon’s eye has seen it.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:43Z'
+  previous_text: No bird of prey knows this path. Not even the eye of such a bird has ever caught sight of it.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: cb9a3b30dc038efb29b84d44391c4364631a9d8e98cb9f75f845e4943ee2bff2
+  review_summary: The draft successfully makes the first poetic clause more direct and keeps the distinct image of a bird’s eye. Its generic rendering of both bird terms is warranted by the POB lexical decisions, and no doctrinal interpretation has been inserted. Revise only to remove “ever,” which adds unnecessary temporal force, and retain the POB footnote’s appropriately tentative wording.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/078/063.yaml
-  text: Fire consumed his young men[a], and his virgins were not praised in song.
-  footnotes:
-  - marker: a
-    text: Or 'his maidens were not celebrated'; the sense likely refers to the absence of marriage songs for the young women because of the devastation.
-    reason: lexical_alternative
+  text: Fire consumed his young men, and his young women had no wedding songs.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,45 +27,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Fire consumed his young men, and no songs of celebration were sung for his virgins.[a]
+  text: His young men were killed by fire, and no wedding songs were sung for his young women.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “his young women received no wedding songs”; this likely refers to the absence of marriage songs because of the devastation.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: his virgins were not praised in song
-  simplified_phrase: no songs of celebration were sung for his virgins
-  preserved_meaning: The young women received no songs celebrating them, with marriage songs likely in view.
-  reasoning_layer_used: POB lexical decision for לֹא הוּלָּלוּ and its footnote
-  rationale: The active wording is easier to understand while preserving the song image and leaving the wedding setting implicit.
+- pob_phrase: Fire consumed his young men
+  simplified_phrase: His young men were killed by fire
+  preserved_meaning: Fire brought about the deaths of the young men.
+  reasoning_layer_used: POB lexical decision for אָכְלָה אֵשׁ
+  rationale: The passive wording states the result plainly while retaining fire as the cause.
+- pob_phrase: his young women had no wedding songs
+  simplified_phrase: no wedding songs were sung for his young women
+  preserved_meaning: The young women were deprived of the customary songs of marriage celebration.
+  reasoning_layer_used: Applied source-audit revision for לֹא הוּלָּלוּ
+  rationale: The wording makes the absence of wedding celebration natural in modern English.
+interpretive_expansions:
+- pob_phrase: Fire consumed
+  rendering: were killed by fire
+  claim: The fire caused the young men's deaths.
+  evidence:
+  - The Hebrew fire-consumption image describes destructive death in this context.
+  - The POB rationale identifies the phrase as destructive imagery.
+  confidence: high
+  alternatives_preserved:
+  - Fire consumed his young men
 translation_notes:
   risk_flags:
-  - risk: Modern readers may not recognize that the songs were likely connected with marriage.
-    mitigation: The footnote presents the wedding-song connection as likely without claiming that no marriages occurred.
+  - risk: Replacing “consumed” with “killed” reduces the force of the Hebrew eating image.
+    mitigation: The main text retains fire and clearly conveys its lethal destruction.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/078/063.yaml
   source_text_sha256: 8495300fd38feb7197a36d11612316aab6b889c6fa6bb0ed2fa2893e42503ca3
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: a012d1931d174e644c3d40f880ac7acc2d5d5906301ef7d26dd0d7087520c0fd
-  timestamp: '2026-07-12T10:01:39Z'
-  output_hash: c07f8a05177af8f73ef7b920033174483c6602760c1f985ad10a71cd5ec5e469
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 1e906a3cfd327fd75279b86f633ee511c28895c84b07c784c6676e67f3291b44
+  timestamp: '2026-08-28T22:56:37Z'
+  output_hash: edfae6944f7f6eec2c097313a5d80acf70389aa6619b34fe40c38547c74ac298
   usage:
-    prompt_tokens: 2911
-    completion_tokens: 248
-    total_tokens: 3159
-    reasoning_tokens: 0
+    prompt_tokens: 2442
+    completion_tokens: 729
+    total_tokens: 3171
+    reasoning_tokens: 376
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:01:39Z'
   previous_text: Fire consumed his young men, and no songs of celebration were sung for his virgins.[a]
@@ -81,3 +86,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:37Z'
+  previous_text: Fire consumed his young men, and no songs of celebration were sung for his virgins.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

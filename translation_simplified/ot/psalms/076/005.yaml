@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/076/005.yaml
-  text: The stouthearted were plundered; they slept their sleep[a], and none of the men of valor could find their hands.
+  text: The stouthearted were plundered; they slept their sleep, and none of the men of valor could use their hands.[a]
   footnotes:
   - marker: a
-    text: Or, 'none of the men of valor could use their hands,' that is, they were rendered powerless.
-    reason: lexical_alternative
+    text: Literally, “none of the men of valor found their hands,” an idiom describing their inability to act.
+    reason: literal_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,55 +31,92 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The bold warriors were plundered. They sank into sleep[a], and none of the mighty fighters could use their hands.[b]
+  text: The bold warriors were plundered. They sank into sleep,[a] and none of the mighty fighters could act.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew leaves open whether this is ordinary sleep or the sleep of death, though the context strongly suggests deadly defeat.
+    text: Here “sleep” strongly suggests death in defeat, but the Hebrew does not state this explicitly.
     reason: lexical_alternative
   - marker: b
-    text: Literally, “could find their hands,” a Hebrew image for being unable to act.
+    text: Literally, “none of the men of valor found their hands,” a Hebrew idiom meaning they were unable to act.
     reason: source_note
 simplification_decisions:
 - pob_phrase: The stouthearted
   simplified_phrase: The bold warriors
   preserved_meaning: They were courageous, strong-willed fighting men.
-  reasoning_layer_used: POB lexical decision for אַבִּירֵי לֵב
-  rationale: This replaces an uncommon word while retaining both courage and the military setting.
+  reasoning_layer_used: POB lexical decision for אַבִּירֵי לֵב and the military context
+  rationale: “Bold warriors” gives the contextual sense in immediately understandable English.
 - pob_phrase: they slept their sleep
   simplified_phrase: They sank into sleep
-  preserved_meaning: The vivid sleep image remains without deciding whether it means sleep or death.
-  reasoning_layer_used: POB lexical decision for נָמוּ שְׁנָתָם
-  rationale: The natural English wording preserves the documented ambiguity.
-- pob_phrase: none of the men of valor could find their hands
-  simplified_phrase: none of the mighty fighters could use their hands
-  preserved_meaning: The defeated warriors were powerless and unable to act.
-  reasoning_layer_used: POB lexical decisions for אַנְשֵׁי חַיִל and וְלֹא מָצְאוּ ... יְדֵיהֶם
-  rationale: The idiom is made understandable while a footnote retains its Hebrew image.
+  preserved_meaning: The sleep image remains without deciding whether it means ordinary sleep or death.
+  reasoning_layer_used: POB lexical rationale for נָמוּ שְׁנָתָם
+  rationale: This natural phrasing keeps the poetic image and its documented ambiguity.
+- pob_phrase: none of the men of valor could use their hands
+  simplified_phrase: none of the mighty fighters could act
+  preserved_meaning: The defeated fighting men were unable to take action.
+  reasoning_layer_used: POB idiom revision and lexical rationale for וְלֹא מָצְאוּ ... יְדֵיהֶם
+  rationale: “Could act” conveys broad helplessness, while the note preserves the Hebrew hand image.
+interpretive_expansions:
+- pob_phrase: The stouthearted
+  rendering: The bold warriors
+  claim: The strong-hearted people are identified as warriors in this military setting.
+  evidence:
+  - The POB rationale says the phrase contextually refers to bold warriors or proud strong men.
+  - The verse also speaks of men of valor.
+  confidence: high
+  alternatives_preserved:
+  - the courageous
+  - the mighty of heart
+- pob_phrase: they slept their sleep
+  rendering: 'Footnote: “sleep” strongly suggests death in defeat'
+  claim: The sleep likely portrays death-like defeat without stating death outright.
+  evidence:
+  - The POB rationale says the context strongly suggests defeat unto death.
+  - The POB deliberately leaves open whether the sleep is literal or death-like.
+  confidence: moderate
+  alternatives_preserved:
+  - ordinary sleep
+  - death-like sleep
 translation_notes:
   risk_flags:
-  - risk: “Sank into sleep” may sound like ordinary sleep alone.
-    mitigation: Footnote a preserves the possible death-like meaning without forcing it.
-  - risk: Rendering the hand idiom by its sense may weaken the source image.
-    mitigation: Footnote b gives the literal image and explains its force.
+  - risk: Readers may understand “sleep” as ordinary rest only.
+    mitigation: The footnote gives the likely death-like force while preserving the ambiguity.
+  - risk: “Could act” does not retain the Hebrew hand image in the main text.
+    mitigation: The second footnote supplies the literal image and explains the idiom.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/076/005.yaml
   source_text_sha256: 52e390fa2a5fcb78499f32754848efccb75f47127d97c1604cf0779852b00ee1
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c2155014fbd6bb6dae89ac6517563873c0447af06eb8608e451d0ea38ad01bb1
-  timestamp: '2026-07-11T21:02:16Z'
-  output_hash: f4dd3addc5d8c1cb0bfcd24c467c9a3170a2580a59fc366884db2f9a0fcaeab6
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 05995e8a99c4cb399335b6dcc93c60e264316f72ffc61154415528fb0e3dfd01
+  timestamp: '2026-08-28T23:35:52Z'
+  output_hash: 3f9b01c9dfa7b8ba78863faa83739a4a8e7300746ef465286893dfa59fffab26
   usage:
-    prompt_tokens: 2371
-    completion_tokens: 787
-    total_tokens: 3158
-    reasoning_tokens: 320
+    prompt_tokens: 3636
+    completion_tokens: 1164
+    total_tokens: 4800
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:35Z'
+  previous_text: The bold warriors were plundered. They sank into sleep[a], and none of the mighty fighters could use their hands.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:52Z'
+  previous_text: The bold warriors were plundered. They sank into sleep,[a] and not one of these mighty fighters could raise a hand.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f75393fb5b542a45eab69f1d7db95a154573abc712ad8c431b6d8929857a45de
+  review_summary: 'The draft helpfully clarifies “stouthearted” as “bold warriors,” a contextual clarification supported by the POB lexical rationale and the military setting. Its treatment of sleep appropriately retains the source ambiguity and flags the likely death-like force in a footnote. Revise the final line, however: “these” unnecessarily equates two separately worded groups, and “raise a hand” can narrow general helplessness to attempted resistance or striking. The recommended wording remains clear while preserving both the distinct expressions and the broad inability-to-act sense.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

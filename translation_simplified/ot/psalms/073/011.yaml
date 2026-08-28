@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/073/011.yaml
-  text: And they say[a][b], “How does God know? Is there knowledge in the Most High?”
-  footnotes:
-  - marker: a
-    text: Hebrew “in the Most High”; the phrase asks whether the Most High possesses knowledge.
-    reason: lexical_alternative
-  - marker: b
-    text: Or “And they said,” if the perfect is taken as simple past rather than a present-like description of habitual speech.
-    reason: lexical_alternative
+  text: And they say, “How can God know? Does the Most High have knowledge?”
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,40 +27,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They say,[a] “How does God know? Does the Most High know anything?”
+  text: They say, “How could God know? Does the Most High know anything?”
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “They said.” The Hebrew may describe either repeated speech or speech in the past.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Is there knowledge in the Most High?
+- pob_phrase: And they say
+  simplified_phrase: They say
+  preserved_meaning: The wicked continue expressing their skeptical attitude.
+  reasoning_layer_used: POB lexical decision on וְאָמְרוּ
+  rationale: Dropping the opening conjunction makes the verse read naturally without changing the ongoing speech.
+- pob_phrase: Does the Most High have knowledge?
   simplified_phrase: Does the Most High know anything?
   preserved_meaning: The speakers question whether the Most High possesses knowledge.
-  reasoning_layer_used: POB lexical decision for וְיֵשׁ דֵּעָה בְעֶלְיוֹן
-  rationale: The natural English question preserves the Hebrew challenge and the divine title.
+  reasoning_layer_used: POB lexical decision and applied idiom revision
+  rationale: Repeating “know” makes the parallel questions easier to follow while preserving the existential challenge.
+interpretive_expansions:
+- pob_phrase: have knowledge
+  rendering: know anything
+  claim: The existential question asks whether the Most High possesses any knowledge.
+  evidence:
+  - The Hebrew construction asks whether knowledge exists in or with the Most High.
+  - The preceding question supplies the verbal idea “know.”
+  confidence: high
+  alternatives_preserved:
+  - Does the Most High have knowledge?
 translation_notes:
   risk_flags:
-  - risk: Present-tense “say” may obscure the possible simple-past sense.
-    mitigation: The footnote preserves “They said” as an alternative.
+  - risk: “Anything” makes the scope of the existential question more explicit.
+    mitigation: The unsupported intensifier “at all” has been removed.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/073/011.yaml
   source_text_sha256: 90a2af73f307997e6655161f8eb088e1b7e042692325549fa60ee429d50410d4
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 98fd360acafaf4b7458b141dfe8283f271de846259528ffdaec72be62b81bc2a
-  timestamp: '2026-07-11T20:51:15Z'
-  output_hash: 7994dc1018cc20bc2ba614a42a9564167aed7ddaf8aa839ea3f9362aca593c19
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 003b8672ee4237ff9150176260e1502b9d745561a820d33c296e49d1622b8f60
+  timestamp: '2026-08-28T23:35:41Z'
+  output_hash: 8e07f378facc63aefd4369e8e01b72d2e297007efa3b01f12ad3d414b8c2138d
   usage:
-    prompt_tokens: 2425
-    completion_tokens: 465
-    total_tokens: 2890
-    reasoning_tokens: 231
+    prompt_tokens: 3345
+    completion_tokens: 493
+    total_tokens: 3838
+    reasoning_tokens: 164
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:21Z'
+  previous_text: They say,[a] “How does God know? Does the Most High know anything?”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:41Z'
+  previous_text: They say, “How could God know? Does the Most High know anything at all?”
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 2c13430df0dcff0d0640882a182f0ddf2116b126847fc31243bc6c7a138c21bf
+  review_summary: The draft appropriately makes the parallel questions more accessible by repeating the verb “know,” and the context supports their mocking tone. However, “at all” adds an unnecessary emphatic totalization. Removing it retains the rhetorical challenge to God’s knowledge while staying closer to the Hebrew existential question and the POB audit trail.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

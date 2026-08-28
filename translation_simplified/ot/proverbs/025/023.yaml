@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/025/023.yaml
-  text: The north wind brings forth rain[a], and an angry face[b], a slanderous tongue.
+  text: The north wind brings forth rain[a], and a secret tongue[b] brings forth an angry face.
   footnotes:
   - marker: a
-    text: Or 'The north wind drives away rain, and a backbiting tongue [brings] an angry face.' The Hebrew verb can be understood differently, and some interpreters take the proverb to mean that the north wind dispels rain rather than produces it.
+    text: Or, “The north wind drives away rain.” The Hebrew verb has been understood both as producing rain and as driving it away.
     reason: alternative_reading
   - marker: b
-    text: Literally 'a tongue of secrecy' or 'a hidden tongue,' that is, covert speech such as backbiting or slander.
+    text: Literally “a tongue of secrecy,” referring to covert or behind-the-back speech; it may include backbiting or slander.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,58 +34,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The north wind brings rain,[a] and a slanderous tongue[b] brings an angry look.
+  text: The north wind brings rain,[a] and a tongue that speaks behind someone’s back brings an angry face.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “The north wind drives away rain, and a backbiting tongue brings an angry look.” The Hebrew verb may mean that the wind dispels rain rather than produces it.
+    text: Or, “The north wind drives away rain.” The Hebrew verb can be understood either way.
     reason: alternative_reading
-  - marker: b
-    text: Literally “a secret tongue” or “a hidden tongue,” referring to covert speech such as backbiting or slander.
-    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: brings forth rain
   simplified_phrase: brings rain
   preserved_meaning: The north wind causes rain.
-  reasoning_layer_used: POB lexical decision for תְּחוֹלֵל
-  rationale: The common verb “brings” states the same causative sense without archaic wording.
-- pob_phrase: an angry face
-  simplified_phrase: an angry look
-  preserved_meaning: Covert slander provokes visible anger or indignation.
-  reasoning_layer_used: POB lexical decision for פָנִים נִזְעָמִים
-  rationale: “An angry look” is natural English for anger shown on the face.
+  reasoning_layer_used: POB lexical decision for תְּחוֹלֵל and poetic parallelism
+  rationale: The common verb “brings” keeps the causative meaning without the less familiar expression “brings forth.”
+- pob_phrase: a secret tongue
+  simplified_phrase: a tongue that speaks behind someone’s back
+  preserved_meaning: The concrete tongue image still refers to covert speech about another person.
+  reasoning_layer_used: POB lexical decision and source-audit rationale for לְשׁוֹן סָתֶר
+  rationale: The expanded wording explains the marked phrase while avoiding the narrower claim that all such speech is slander.
 interpretive_expansions:
-- pob_phrase: and an angry face, a slanderous tongue
-  rendering: and a slanderous tongue brings an angry look
-  claim: The second line makes explicit that covert slander causes the angry look.
+- pob_phrase: a secret tongue
+  rendering: a tongue that speaks behind someone’s back
+  claim: The secrecy concerns covert speech about another person.
   evidence:
-  - The POB rationale identifies causative parallelism between the wind causing rain and the tongue causing anger.
-  - The supplied alternative reading also inserts “brings” in the second line.
+  - The POB note defines the phrase as covert or behind-the-back speech.
+  - The source audit warns against making slander the phrase’s only meaning.
   confidence: high
   alternatives_preserved:
-  - The footnote preserves the reading in which the north wind drives rain away.
+  - secret speech
+  - covert speech
+  - speech that may include backbiting or slander
 translation_notes:
   risk_flags:
-  - risk: The Hebrew verb may describe the north wind as driving rain away rather than bringing it.
-    mitigation: Footnote a preserves the full alternative reading without weakening the POB’s controlling choice.
+  - risk: The Hebrew verb may mean that the north wind drives rain away rather than brings it.
+    mitigation: The alternative is retained in footnote a.
+  - risk: “Speaks behind someone’s back” is more explicit than the Hebrew image “a tongue of secrecy.”
+    mitigation: The wording preserves the tongue image and does not restrict the speech to slander.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/025/023.yaml
   source_text_sha256: 97d595fbd9fb0c4614ab0199b584c8e96e662ad277a524e476b873e377e3fc31
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0091eba5df40fdd94b5cf36bfba0c7fede1844c4bc3f56c956f47d7077eec162
-  timestamp: '2026-07-11T21:08:02Z'
-  output_hash: e25defee1dece721eca92f359103b9501f194c62d31bc8dd59bccb5f344b1aa9
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d2188e7b079086d7c2a03bbbfb0fb6bdb5162cf6a482cb4bd4fa6ec5db1346c1
+  timestamp: '2026-08-28T23:07:43Z'
+  output_hash: 5f65de4fa5030b6239d815d92373d83eefe931d958817e0d64f08b434432bdc4
   usage:
-    prompt_tokens: 2413
-    completion_tokens: 698
-    total_tokens: 3111
-    reasoning_tokens: 227
+    prompt_tokens: 2784
+    completion_tokens: 756
+    total_tokens: 3540
+    reasoning_tokens: 298
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:07:43Z'
+  previous_text: The north wind brings rain,[a] and a slanderous tongue[b] brings an angry look.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

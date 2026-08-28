@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/014/020.yaml
-  text: Even his neighbor hates a poor man[b][a], but the friends of a rich man are many.
+  text: A poor person is hated even by his neighbor[a], but those who love the rich are many.
   footnotes:
   - marker: a
-    text: Or 'Even his friend hates a poor man.' The Hebrew רֵעַ can mean 'friend,' 'companion,' or 'neighbor.'
-    reason: lexical_alternative
-  - marker: b
-    text: Literally, 'and the lovers of a rich man are many,' meaning many people attach themselves to the rich.
+    text: Or 'even by his friend'; the Hebrew word can mean neighbor, companion, or friend.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,55 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 14:20 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the lovers of''].'
 translation:
   language: en
-  text: Even a poor man’s neighbor[a] hates him, but many people attach themselves to a rich man.
+  text: Someone who is poor is hated even by their neighbor,[a] but many people love someone who is rich.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word can also mean “friend” or “companion.”
+    text: Or “even by their friend”; the Hebrew word can mean neighbor, companion, or friend.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Even his neighbor hates a poor man
-  simplified_phrase: Even a poor man’s neighbor hates him
-  preserved_meaning: Someone socially close to the poor man rejects him.
+- pob_phrase: A poor person is hated even by his neighbor
+  simplified_phrase: Someone who is poor is hated even by their neighbor
+  preserved_meaning: Rejection reaches even the poor person’s own neighbor or companion.
   reasoning_layer_used: POB lexical decisions for גַּם, לְרֵעֵהוּ, יִשָּׂנֵא, and רָשׁ
-  rationale: Reordering the clause makes the relationship and pronoun clear while retaining “Even” and “hates.”
-- pob_phrase: the friends of a rich man are many
-  simplified_phrase: many people attach themselves to a rich man
-  preserved_meaning: Wealth attracts many people who seek association with the rich.
-  reasoning_layer_used: POB footnote b and lexical decisions for וְאֹהֲבֵי, עָשִׁיר, and רַבִּים
-  rationale: The active wording clearly expresses the social attachment explained in the POB note.
-interpretive_expansions:
-- pob_phrase: the friends of a rich man are many
-  rendering: many people attach themselves to a rich man
-  claim: The many people are drawn into association with the rich man.
-  evidence:
-  - POB footnote b explicitly explains that many people attach themselves to the rich.
-  confidence: high
-  alternatives_preserved:
-  - the friends of a rich man are many
-  - those who love a rich man are many
+  rationale: Singular “their” preserves the possessive relationship in natural gender-neutral English.
+- pob_phrase: those who love the rich are many
+  simplified_phrase: many people love someone who is rich
+  preserved_meaning: A rich person attracts many people who show love.
+  reasoning_layer_used: POB lexical decisions for וְאֹהֲבֵי, עָשִׁיר, and רַבִּים
+  rationale: Ordinary clause order makes the contrast clear while retaining the verbal idea of love.
 translation_notes:
   risk_flags:
-  - risk: “Attach themselves” may suggest self-interest more strongly than the bare word “friends.”
-    mitigation: The wording follows POB footnote b without claiming that every attachment is insincere.
+  - risk: “Neighbor” may also mean a friend or companion.
+    mitigation: The footnote preserves the live lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/014/020.yaml
   source_text_sha256: a8cf0147e5dc7bc3dfdc35ea38549de2be0b338c5ff5a5a4dca64918415ffe7a
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 71fb4c41691820f8f5c44932e4221239c355c2c8323adbe2f97208908fd79fa5
-  timestamp: '2026-07-11T21:05:56Z'
-  output_hash: 2ddab4c5df84107123a5550b3cb80f45f43a4b45cac2c3db2b5f61f48ab80896
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3c60abb805c71ac989203d374bfb9908ee8bb4b71a5138dd98aeaf80b11a8ccc
+  timestamp: '2026-08-28T23:34:21Z'
+  output_hash: 0e33c0b344ee943eae0d68fbe5a4abecdea6c9747325b89e5f8978211cd4ec41
   usage:
-    prompt_tokens: 2832
-    completion_tokens: 806
-    total_tokens: 3638
-    reasoning_tokens: 349
+    prompt_tokens: 3456
+    completion_tokens: 470
+    total_tokens: 3926
+    reasoning_tokens: 121
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:49Z'
+  previous_text: Even a poor man’s neighbor[a] hates him, but many people attach themselves to a rich man.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:21Z'
+  previous_text: Someone who is poor is hated even by a neighbor,[a] but many people love someone who is rich.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c5f2964595f49d0575227fec4774e707830f49c8c82c8419ebffbde479de8688
+  review_summary: 'The reordered second clause is a warranted clarity improvement: it preserves the contrast between the poor person being hated and the many who love a rich person, without adding doctrine or application. Revise the first clause to retain the relational force of the Hebrew suffix and POB’s audited sense. Singular “their” naturally preserves the generic, gender-neutral proverb.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

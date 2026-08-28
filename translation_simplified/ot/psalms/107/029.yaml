@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/107/029.yaml
-  text: He made the storm be still[a][b], and their waves were hushed.
+  text: He calmed the storm[a], and their waves were hushed.
   footnotes:
   - marker: a
-    text: Or 'its waves' if the suffix is taken with the sea/waters rather than with the people in the boat.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'He made the storm a calm.' The Hebrew phrase literally expresses causing the storm into stillness/silence.
-    reason: lexical_alternative
+    text: Literally, “He made the storm into a calm.” The plural suffix in “their waves” refers contextually to the waters associated with those at sea.
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,51 +31,59 @@ base_translation:
     changes_summary: Revised 'stilled the storm' to 'made the storm be still' to more closely reflect the causative wording of the source while preserving natural formal English; retained the second clause essentially unchanged.
 translation:
   language: en
-  text: He calmed the storm, and the waves grew quiet.
+  text: He calmed the storm. The waves around them fell silent.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew literally says “their waves,” referring to the waters around the people at sea.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: He made the storm be still
-  simplified_phrase: He calmed the storm
-  preserved_meaning: God caused the storm to become calm.
-  reasoning_layer_used: The lexical decisions identify a causative action resulting in calm or stillness.
-  rationale: “Calmed” expresses the same action in direct, natural English.
+- pob_phrase: He calmed the storm, and their waves were hushed.
+  simplified_phrase: He calmed the storm. The waves around them fell silent.
+  preserved_meaning: God caused the storm and its waves to become calm and quiet.
+  reasoning_layer_used: POB lexical decisions and source audit
+  rationale: Two short sentences clarify the action while preserving the storm’s sudden silence.
 - pob_phrase: their waves
-  simplified_phrase: the waves
-  preserved_meaning: The waves in the immediate maritime scene became quiet.
-  reasoning_layer_used: The lexical decision notes an uncertain suffix antecedent, while the context clearly identifies the waves.
-  rationale: Using “the” avoids an unclear possessive without resolving whether the suffix relates to the sea, waters, or people.
-- pob_phrase: were hushed
-  simplified_phrase: grew quiet
-  preserved_meaning: The waves changed from noise and turmoil to quietness.
-  reasoning_layer_used: The lexical rationale lists “grew quiet” as a valid modern equivalent.
-  rationale: “Grew quiet” clearly preserves the transition into silence.
+  simplified_phrase: the waves around them
+  preserved_meaning: The plural suffix connects the waves with the people in distress at sea.
+  reasoning_layer_used: POB footnote and גַּלֵּיהֶם lexical rationale
+  rationale: This removes an unnatural English possessive without changing its contextual reference.
+interpretive_expansions:
+- pob_phrase: their waves
+  rendering: the waves around them
+  claim: The waves are those surrounding the people at sea.
+  evidence:
+  - The POB footnote identifies the suffix with waters associated with those at sea.
+  - The surrounding psalm context describes people in distress on the sea.
+  confidence: high
+  alternatives_preserved:
+  - their waves
+  - the waves associated with them
 translation_notes:
   risk_flags:
-  - risk: Replacing the formal Hebrew possessive with “the” may obscure the source suffix.
-    mitigation: The wording preserves the clear contextual referent while leaving its exact antecedent unresolved.
+  - risk: “Around them” makes the contextual relation more explicit than the Hebrew possessive does.
+    mitigation: The footnote preserves the literal form and identifies the contextual basis.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/107/029.yaml
   source_text_sha256: dcc773614fcb2562b6a9721e88608731e9b6873a02b32a947eb398ffd0f65c3e
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: cbb18bdbddf0311d8acf16da01f9c6a5f8b2ced16ca9f83ffb2af92e6a86181f
-  timestamp: '2026-07-12T10:02:40Z'
-  output_hash: 5a9b76640ebe9ff7e2d54038ea14b2f26d72624d9e861b5e07cbd49fb5a89e6c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 452a9828e28f0bed8eb3ec66d80384482f85a913ef8a05423e88516f0f5c09d1
+  timestamp: '2026-08-28T22:59:13Z'
+  output_hash: 47b8c87839813a0490de306107249f72ced2c52729fa1041bec31494232cee96
   usage:
-    prompt_tokens: 3501
-    completion_tokens: 324
-    total_tokens: 3825
-    reasoning_tokens: 0
+    prompt_tokens: 2912
+    completion_tokens: 811
+    total_tokens: 3723
+    reasoning_tokens: 427
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:40Z'
   previous_text: He calmed the storm, and their waves grew quiet.[a]
@@ -90,3 +95,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:13Z'
+  previous_text: He calmed the storm, and the waves grew quiet.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

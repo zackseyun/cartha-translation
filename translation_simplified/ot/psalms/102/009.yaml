@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/102/009.yaml
-  text: For I have eaten ashes like bread[a], and mixed my drink with weeping.
+  text: For I have eaten ashes like bread, and mixed my drink with weeping.[a]
   footnotes:
   - marker: a
     text: Or 'and mingled my drink with tears.' The Hebrew says 'with weeping,' which may be rendered more concretely as 'with tears.'
@@ -31,49 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For I have eaten ashes as if they were bread, and I have mixed what I drink with my weeping.[a]
+  text: For I have eaten ashes as though they were bread, and I have mixed my drink with my tears.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “I have mixed what I drink with my tears.” The Hebrew says “weeping.”
+    text: The Hebrew more literally says, “I have mixed my drink with weeping.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: eaten ashes like bread
-  simplified_phrase: eaten ashes as if they were bread
-  preserved_meaning: The mourning image remains a comparison between ashes and ordinary food.
-  reasoning_layer_used: Lexical decisions for אֵפֶר and כַּלֶּחֶם
-  rationale: The expanded comparison makes the simile immediately clear.
+- pob_phrase: ashes like bread
+  simplified_phrase: ashes as though they were bread
+  preserved_meaning: The psalmist compares eating ashes to eating ordinary bread.
+  reasoning_layer_used: POB lexical decision for כַּלֶּחֶם
+  rationale: The expanded comparison makes the vivid image immediately clear.
 - pob_phrase: mixed my drink with weeping
-  simplified_phrase: I have mixed what I drink with my weeping
-  preserved_meaning: The psalmist actively describes his drink as mingled with his grief.
-  reasoning_layer_used: Lexical decisions for שִׁקֻּוַי, בִּבְכִי, and מָסָכְתִּי; grounding review
-  rationale: The wording clarifies “my drink” while retaining first-person agency and “weeping.”
+  simplified_phrase: I have mixed my drink with my tears
+  preserved_meaning: The psalmist actively mixes his drink with the tears of his weeping.
+  reasoning_layer_used: POB lexical decisions and footnote for בִּבְכִי and מָסָכְתִּי
+  rationale: The wording makes the liquid image concrete while retaining the first-person action.
+interpretive_expansions:
+- pob_phrase: with weeping
+  rendering: with my tears
+  claim: The psalmist’s weeping is pictured concretely as tears mixed into his drink.
+  evidence:
+  - The POB footnote identifies “with tears” as a plausible concrete rendering.
+  - The mixing image presents weeping as mingling with a liquid.
+  confidence: high
+  alternatives_preserved:
+  - with weeping
 translation_notes:
   risk_flags:
-  - risk: Readers may mistake eating ashes for ordinary behavior rather than a vivid mourning image.
-    mitigation: The explicit comparison preserves the image without explaining it away.
+  - risk: Naming tears may narrow the Hebrew noun’s broader emphasis on weeping.
+    mitigation: The footnote preserves the more literal wording “with weeping.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/102/009.yaml
   source_text_sha256: f8f03f66025c002b03ec65012139a2e1c6b7d48f9783fd389a5ea10bc1bbda7d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 5d061da540e36fff3b5cfb66b087aa4bd02d95aa15643d4e0d6b34925e573a01
-  timestamp: '2026-07-12T10:02:14Z'
-  output_hash: 91c702f2b45f8192094d4d856b8a605a11ad08f641fe012009ab38d4ad8bed3c
+  prompt_sha256: cba701d0ae5c4d2348cfe0d3dcffd438f395e3fef730cf62513e1bd1ab9a7bd1
+  timestamp: '2026-08-28T23:35:59Z'
+  output_hash: 9e20b84e13acd564373a31ba2cb75c29d76ff82f47b6f08305f155d3bbea9ba2
   usage:
-    prompt_tokens: 3139
-    completion_tokens: 336
-    total_tokens: 3475
-    reasoning_tokens: 0
+    prompt_tokens: 3412
+    completion_tokens: 687
+    total_tokens: 4099
+    reasoning_tokens: 286
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:14Z'
@@ -85,4 +94,18 @@ spob_revision_history:
   review_summary: The expanded comparison “as if they were bread” is a warranted and helpful clarification of the simile. The second clause should retain the psalmist as the one performing the mixing, as in the Hebrew and POB. “What I drink” is clear modern English, and retaining “my weeping” preserves the source's experiential wording without forcing the more concrete rendering “tears.”
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:00:31Z'
+  previous_text: For I have eaten ashes as if they were bread, and I have mixed what I drink with my weeping.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:59Z'
+  previous_text: For I have eaten ashes as though they were bread, and tears from my weeping have mixed with my drink.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 491bbcbea8e28792a834ab6f73018274a44dc32f12087fd59d54279bb1150400
+  review_summary: The draft helpfully makes the liquid image concrete by using “tears,” a rendering explicitly supported by the POB audit trail. However, its wording turns the psalmist’s active statement into a passive occurrence. Restoring “I have mixed” preserves the source grammar and vivid personal lament while keeping the clearer concrete expression.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

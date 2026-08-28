@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/016/002.yaml
-  text: I have heard many such things[a]; all of you are miserable comforters.
+  text: I have heard many such things; all of you are miserable comforters.[a]
   footnotes:
   - marker: a
-    text: Or, more formally, 'comforters of misery' or 'troublesome comforters.'
+    text: More literally, “comforters of trouble”; the phrase may describe comforters whose efforts bring misery or trouble.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,56 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I have heard plenty of talk like this before. All of you offer comfort that brings misery.
+  text: I have heard many things like this. All of you bring trouble instead of comfort.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: More literally, “comforters of trouble”; this may mean that their attempts to comfort him cause misery or trouble.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: I have heard many such things
-  simplified_phrase: I have heard plenty of talk like this before
-  preserved_meaning: Job dismisses their repeated words as nothing new.
-  reasoning_layer_used: POB lexical decisions for שָׁמַעְתִּי, כְאֵלֶּה, and רַבּוֹת
-  rationale: Natural speech preserves the accumulated and dismissive force.
+- pob_phrase: many such things
+  simplified_phrase: many things like this
+  preserved_meaning: Job dismisses their words as familiar talk of the same kind.
+  reasoning_layer_used: POB lexical decision for כְאֵלֶּה
+  rationale: The comparison is stated in ordinary English without weakening Job’s dismissive tone.
 - pob_phrase: all of you are miserable comforters
-  simplified_phrase: All of you offer comfort that brings misery
-  preserved_meaning: Every friend claims to comfort Job, but their comfort is troublesome.
-  reasoning_layer_used: POB lexical decisions for מְנַחֲמֵי עָמָל and כֻּלְּכֶם
-  rationale: The verbal form makes the irony clear without adding exclusivity or comparison.
+  simplified_phrase: All of you bring trouble instead of comfort
+  preserved_meaning: Every friend has failed to comfort Job and has instead troubled him.
+  reasoning_layer_used: POB lexical decision and footnote for מְנַחֲמֵי עָמָל
+  rationale: The difficult construct is recast as a clear contrast while preserving its irony.
 interpretive_expansions:
 - pob_phrase: miserable comforters
-  rendering: offer comfort that brings misery
-  claim: Their attempted comfort is characterized by misery rather than genuine consolation.
+  rendering: bring trouble instead of comfort
+  claim: Their attempts at comfort produce trouble rather than consolation.
   evidence:
-  - The POB rationale says they bring miserable or troublesome comfort.
-  - The source joins “comforters” with a term for trouble or misery.
+  - The POB rationale says the phrase describes comforters characterized by misery or trouble.
+  - The POB footnote allows the sense that their efforts bring misery or trouble.
   confidence: high
   alternatives_preserved:
-  - troublesome comforters
-  - comforters of misery
+  - comforters of trouble
+  - miserable comforters
 translation_notes:
   risk_flags:
-  - risk: “Brings misery” states the harmful quality of their comfort explicitly.
-    mitigation: It follows the POB rationale while avoiding the unsupported words “only” and “more.”
+  - risk: The phrase may describe the comforters themselves as miserable rather than directly state the result of their words.
+    mitigation: The footnote preserves the more literal expression and its documented ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/016/002.yaml
   source_text_sha256: 899f8fb3a0d34d55b087d465b912032456d2a4d88c48f0ba22ec209ff90fe156
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: eada9326e8520eaf3508b26d41f12cc80e42bfd62d8451edf738774727d1108f
-  timestamp: '2026-07-12T09:39:30Z'
-  output_hash: f4d68db4e423dd8b15bc628ab26b5debc9a00ecc394f6335c3567575fe889176
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 4ade4a31a11dc7790b6619cf93a4558b1cbf26e70b6a6abd45e49c01c0d93e9c
+  timestamp: '2026-08-28T22:53:32Z'
+  output_hash: dcae0c6fa559426c857e424e67419959138026816ac9e99529a0f0f945c121a4
   usage:
-    prompt_tokens: 3146
-    completion_tokens: 395
-    total_tokens: 3541
-    reasoning_tokens: 0
+    prompt_tokens: 2500
+    completion_tokens: 667
+    total_tokens: 3167
+    reasoning_tokens: 252
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:30Z'
   previous_text: I have heard plenty of talk like this before. All of you offer comfort that only brings more misery.
@@ -91,3 +94,13 @@ spob_revision_history:
   review_summary: The first sentence is a clear, contextually warranted modernization of Job’s dismissal of repeated speeches. The second helpfully makes the irony of “miserable comforters” understandable, but “only brings more misery” overstates the source by adding exclusivity and comparison. Removing “only” and “more” preserves the warranted clarification without making the stronger interpretive claim.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:10Z'
+  previous_text: I have heard plenty of talk like this before. All of you offer comfort that brings misery.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:32Z'
+  previous_text: I have heard many things like this before. What miserable comforters you all are![a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/050/011.yaml
-  text: I know every bird of the mountains[a][b], and the creatures of the field are with me.
+  text: I know every bird of the mountains, and the creatures[b] of the field are with me.[a]
   footnotes:
   - marker: a
-    text: Or 'are mine'; the Hebrew more literally says 'are with me.'
+    text: Or “are mine”; the Hebrew more literally says “are with me.”
     reason: alternative_reading
   - marker: b
-    text: Or 'the moving things of the field' or 'the wild animals of the field' for the difficult Hebrew word זִיז.
+    text: Or “the moving things of the field” or “the wild animals of the field” for the difficult Hebrew word זִיז.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,55 +34,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I know every bird in the mountains, and the creatures in the fields[a] are with me.[b]
+  text: I know every bird in the mountains, and the creatures[b] in the fields are with me.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The difficult Hebrew word may mean “moving things of the field” or “wild animals of the field.”
-    reason: lexical_alternative
-  - marker: b
     text: Or “are mine”; the Hebrew more literally says “are with me.”
     reason: alternative_reading
+  - marker: b
+    text: The difficult Hebrew word may mean “moving things” or “wild animals.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: every bird of the mountains
   simplified_phrase: every bird in the mountains
-  preserved_meaning: God knows each bird that lives in the mountains.
-  reasoning_layer_used: Lexical decisions for כָּל, עוֹף, and הָרִים
-  rationale: “In the mountains” expresses the location naturally while “every” retains the individual emphasis.
+  preserved_meaning: God knows each bird inhabiting the mountain region.
+  reasoning_layer_used: POB lexical decisions for כָּל, עוֹף, and הָרִים
+  rationale: The ordinary locative “in” makes the relationship clear without changing the mountain setting.
 - pob_phrase: the creatures of the field
   simplified_phrase: the creatures in the fields
-  preserved_meaning: The wording broadly refers to creatures in the open country without specifying a species.
-  reasoning_layer_used: Lexical decisions for זִיז and שָׂדַי
-  rationale: The plural location is natural English, while “creatures” preserves the difficult Hebrew word's breadth.
+  preserved_meaning: The difficult noun broadly refers to creatures moving in open country.
+  reasoning_layer_used: POB lexical decisions for זִיז and שָׂדַי
+  rationale: The plural “fields” sounds natural while retaining the broad open-country sense.
 translation_notes:
   risk_flags:
-  - risk: “Creatures” may conceal the uncertainty of the difficult Hebrew noun.
-    mitigation: Footnote a preserves the leading lexical alternatives.
-  - risk: Readers may miss the possible ownership implied by “with me.”
-    mitigation: Footnote b supplies “are mine” while retaining the POB's chosen wording.
+  - risk: Modern readers may take “are with me” as mere physical companionship.
+    mitigation: The footnote preserves the possible implication “are mine” without making it explicit in the text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/050/011.yaml
   source_text_sha256: 205614328bde0736bbc516cda732b71cae7b40fbaed8f87c051dc77313865d8a
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: e29002fe501206f5bfb6f16778d715febe01b8b399ebfa1f915b2ac2393c0897
-  timestamp: '2026-07-12T09:59:39Z'
-  output_hash: bb6ae1618c33f02e1663bc8d0b14e3a68a3327ff5178dc04902ab4180ffe47b1
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: c42f1a92cfe23edd704f0287e3e100b17b49db3e0e86cc9a794022262fe4203b
+  timestamp: '2026-08-28T22:54:13Z'
+  output_hash: 259e833134e5f2c15e553bc38d602bbdc99c5cea734d2d64f15dba5b38a8a711
   usage:
-    prompt_tokens: 3326
-    completion_tokens: 373
-    total_tokens: 3699
-    reasoning_tokens: 0
+    prompt_tokens: 2682
+    completion_tokens: 499
+    total_tokens: 3181
+    reasoning_tokens: 159
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:39Z'
   previous_text: I know all the birds in the mountains. The creatures in the fields[a] are with me.[b]
@@ -94,3 +90,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:13Z'
+  previous_text: I know every bird in the mountains, and the creatures in the fields[a] are with me.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

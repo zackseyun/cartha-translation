@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/012/014.yaml
-  text: For God will bring every deed into judgment[a], with every hidden thing, whether good or evil.
+  text: For God will bring every deed into judgment, including every hidden thing[a], whether good or evil.
   footnotes:
   - marker: a
-    text: Or 'including every hidden thing' or 'with respect to every secret thing.'
+    text: Or “concerning every hidden thing” or “with respect to every secret thing.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,51 +31,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Ecclesiastes 12:14 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''concerning every hidden thing''].'
 translation:
   language: en
-  text: For God will judge every deed, even the things that are hidden, whether good or evil.[a]
+  text: For God will judge every deed, including every hidden thing, whether good or evil.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “concerning every hidden thing” or “with respect to every secret thing.”
+    text: The Hebrew can also be understood as “concerning every hidden thing” or “with respect to every secret thing.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: will bring every deed into judgment
   simplified_phrase: will judge every deed
   preserved_meaning: God will subject every deed to judicial evaluation.
-  reasoning_layer_used: Lexical decisions for יָבִא and בְמִשְׁפָּט
-  rationale: The direct verb expresses the same judicial action in clearer English.
-- pob_phrase: with every hidden thing
-  simplified_phrase: even the things that are hidden
-  preserved_meaning: God’s judgment extends to concealed matters without defining them only as hidden deeds.
-  reasoning_layer_used: Lexical decision for עַל כָּל נֶעְלָם and POB footnote
-  rationale: “Even” clearly conveys comprehensive scope while the footnote preserves the documented relation alternatives.
+  reasoning_layer_used: POB lexical decisions on יָבִא and בְמִשְׁפָּט
+  rationale: The direct verb states the same judicial action more plainly.
+- pob_phrase: including every hidden thing, whether good or evil
+  simplified_phrase: including every hidden thing, whether good or evil
+  preserved_meaning: God’s judgment includes concealed matters across the full moral range.
+  reasoning_layer_used: Wisdom source audit and POB scope-of-judgment decision
+  rationale: Retaining the source order keeps “good or evil” connected with the hidden things.
 translation_notes:
   risk_flags:
-  - risk: “Will judge” does not retain the literal motion image of bringing deeds into judgment.
-    mitigation: It preserves the image’s full judicial force in direct, natural English.
-  - risk: The relation between every deed and hidden things remains grammatically open.
-    mitigation: The main text avoids making hidden things merely a subset of deeds, and the footnote records the alternatives.
+  - risk: Readers may assume this refers only to final judgment.
+    mitigation: The wording leaves the timing and mechanism of judgment unspecified.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/012/014.yaml
   source_text_sha256: 3ebad58bea8732bece16dbbdc0d64e5f61ea494dccfbfb8bcbfbde111f81fbb3
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: c464505d15919c4c1600e609cc846cfb68d55dffa778be40f99a6721c0bbdfa0
-  timestamp: '2026-07-12T09:10:05Z'
-  output_hash: 0397bbf5abf31df6e74abebe4de3dc259379584ae9e3d0ef8e74cd0ad7b6bab9
+  prompt_sha256: 4b33fe0e52e96fd3a3670576fc887bd75abf4cbe8a887f260c21295c44afaaf0
+  timestamp: '2026-08-28T23:32:41Z'
+  output_hash: 4ff2a2ef16ffa72d19a7ecd3bb4e189a73e63590fac01399b77280d32411b73e
   usage:
-    prompt_tokens: 3615
-    completion_tokens: 607
-    total_tokens: 4222
-    reasoning_tokens: 251
+    prompt_tokens: 3997
+    completion_tokens: 380
+    total_tokens: 4377
+    reasoning_tokens: 72
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: including every hidden thing
+  rendering: Nothing will escape his judgment, not even what is hidden
+  claim: No hidden matter lies outside the scope of God’s judgment.
+  evidence:
+  - The repeated Hebrew כָּל expresses comprehensive scope.
+  - The POB rationale says the phrase extends judgment to all that is hidden.
+  confidence: high
+  alternatives_preserved:
+  - concerning every hidden thing
+  - with respect to every secret thing
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:10:05Z'
@@ -85,6 +93,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 4795eacde3c61af82a02058b0a2723790f2397364d2f298872cef78a99adb4bc
   review_summary: “Will judge every deed” is a warranted and clearer simplification of bringing every deed into judgment. Revision is needed because “including everything hidden” unnecessarily fixes the relation of hidden things to deeds in a way the POB audit does not choose. “Even every hidden thing” is a documented lexical alternative and clearly communicates the verse’s comprehensive scope without requiring hidden things to be only a subset of deeds.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:04:08Z'
+  previous_text: For God will judge every deed, even the things that are hidden, whether good or evil.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:41Z'
+  previous_text: For God will judge every deed, good or evil. Nothing will escape his judgment, not even what is hidden.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d71ad0347bdd63b3aa672ed45edaa23485dad8829fdb3a964c8deb2a287a2a2b
+  review_summary: “Will judge” is a clear and warranted simplification of “will bring ... into judgment.” The proposed two-sentence rewrite is rhetorically clear, and its claim of comprehensive judgment is broadly supported by the repeated “every/all.” However, it shifts “good or evil” from its source-position connection with hidden things to “every deed” alone. Retain the source order and relationship so readers receive both the comprehensive judgment and the explicit inclusion of hidden things, whether good or evil.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

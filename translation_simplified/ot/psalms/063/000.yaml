@@ -34,43 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A psalm connected with David,[a] when he was in the wilderness of Judah.[b]
+  text: A psalm of David[a], when David was in the wilderness of Judah[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may mean “by David,” “for David,” or otherwise associated with David.
+    text: “Of David” may also mean “by David” or “for David.”
     reason: alternative_reading
   - marker: b
-    text: Or “desert of Judah.” The word can describe various kinds of wilderness or desert land.
+    text: The Hebrew word may also be translated “desert.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: A psalm of David
-  simplified_phrase: A psalm connected with David
-  preserved_meaning: The heading links the psalm with David without deciding whether he wrote it, received its dedication, or had another association with it.
-  reasoning_layer_used: Davidic superscription semantics
-  rationale: “Connected with” makes the Hebrew heading’s ambiguity clearer to a modern reader.
+- pob_phrase: when he was in the wilderness of Judah
+  simplified_phrase: when David was in the wilderness of Judah
+  preserved_meaning: The heading links the psalm with the time David was in Judah’s wilderness without claiming when it was composed.
+  reasoning_layer_used: POB lexical decision for the temporal clause and theological decision on the Davidic heading
+  rationale: Repeating David makes the reference clear while preserving the direct temporal wording.
 translation_notes:
   risk_flags:
-  - risk: “Connected with David” is less traditional than “of David.”
-    mitigation: The footnote retains the possible meanings “by David” and “for David” without choosing one.
+  - risk: “Of David” can be mistaken for an unambiguous claim of authorship.
+    mitigation: Footnote a preserves the heading’s possible meanings of authorship, dedication, or association.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/063/000.yaml
   source_text_sha256: a8dc89de889fcd0dc96e962c3a57a244d2429130d9e666932b1c4197c326ed02
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6ee15682ca6da0d0593f7074cfea31f3f1336680cfef7931dcabf9c1309dfbfd
-  timestamp: '2026-07-11T20:55:39Z'
-  output_hash: 897f1dd5871ae939bbaf76a8b176521ef3c41db12c971ced1f43397beeca0d60
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fc651c185dcc6767c8157417af8f49eb787164ba6a194625edc24d9ba0c1f9c0
+  timestamp: '2026-08-28T23:35:32Z'
+  output_hash: fbaa04d2be338f4da4013515510411d934615d1663101406190eb801fc8142da
   usage:
-    prompt_tokens: 2560
-    completion_tokens: 665
-    total_tokens: 3225
-    reasoning_tokens: 398
+    prompt_tokens: 3268
+    completion_tokens: 422
+    total_tokens: 3690
+    reasoning_tokens: 155
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:04Z'
+  previous_text: A psalm connected with David,[a] when he was in the wilderness of Judah.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:32Z'
+  previous_text: A psalm of David.[a] It comes from the time when he was in the wilderness of Judah.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 60bb2a5e207630f1464a19f96cbc0ebf04f3696002f855e196b4715de1be7af9
+  review_summary: The split-sentence draft is readable, but “It comes from the time” changes a direct temporal heading into a statement of origin. Repeating “David” instead of using “he” gives a small but real clarity gain while retaining the source’s temporal relation and the POB’s intentional ambiguity about “of David.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

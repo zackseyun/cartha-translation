@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/039/029.yaml
-  text: From there he spies out food[a]; his eyes look from far away.
+  text: From there he searches out food; his eyes look from far away.[a]
   footnotes:
   - marker: a
     text: Or 'his eyes see it from afar.' The Hebrew could be rendered more dynamically to emphasize spotting prey at a distance.
@@ -31,47 +31,77 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 39:29 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''searches out''].'
 translation:
   language: en
-  text: From there he searches for food. His eyes spot it from far away.
+  text: From there, the eagle searches for food. Its eyes look far into the distance.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “Its eyes spot food from far away.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: he spies out food; his eyes look from far away
-  simplified_phrase: he searches for food. His eyes spot it from far away.
-  preserved_meaning: The eagle actively seeks food and can see it at a great distance.
-  reasoning_layer_used: POB lexical decisions and lexical-alternative footnote
-  rationale: Two direct sentences make the eagle’s distant search easier to understand while preserving the concrete image of its eyes.
-interpretive_expansions:
+- pob_phrase: From there he searches out food
+  simplified_phrase: From there, the eagle searches for food
+  preserved_meaning: The eagle actively seeks food from that place.
+  reasoning_layer_used: POB lexical decisions and chapter context
+  rationale: “Searches for” is natural English, and naming the eagle makes the contextual subject clear.
 - pob_phrase: his eyes look from far away
-  rendering: His eyes spot it from far away.
-  claim: The object seen at a distance is the food the eagle is seeking.
+  simplified_phrase: Its eyes look far into the distance
+  preserved_meaning: The eagle’s eyes look over a great distance.
+  reasoning_layer_used: POB lexical decision for לְמֵרָחוֹק and review finding
+  rationale: This preserves directed looking without adding the searching nuance of “scan.”
+interpretive_expansions:
+- pob_phrase: he
+  rendering: the eagle
+  claim: The singular subject is the eagle described in the surrounding passage.
   evidence:
-  - The preceding clause names food as the object of the eagle’s search.
-  - The POB footnote explicitly permits a dynamic rendering about spotting prey at a distance.
+  - The immediate chapter context identifies the bird as the eagle.
+  - The POB rationale explicitly says the pronoun refers to the eagle.
   confidence: high
   alternatives_preserved:
-  - His eyes look from far away.
-  - His eyes see it from afar.
+  - he
+  - it
 translation_notes:
   risk_flags:
-  - risk: “Spot it” makes the link to the food more explicit than the Hebrew clause does.
-    mitigation: The immediate context and POB footnote directly support this connection.
+  - risk: The Hebrew may describe the eagle seeing or spotting food from far away.
+    mitigation: The footnote preserves this lexical alternative without overriding POB’s chosen wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/039/029.yaml
   source_text_sha256: f53cee85b677c9d3f3336c21118fa0a0c1eb32d1d96bbd51bcb33bb68c71e44a
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 9905f5b805de97a0551c2ee4189b3e8bcc06c98fed9d7c080768487bc77aaffc
-  timestamp: '2026-07-11T19:59:51Z'
-  output_hash: 0c68b982ba4d7df6c55b1ddd9742ce91983830ae2a4fa08af4d332aa0d82dd1d
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b7f62de1e42b72e673354ed3d517a4bb7e26f201d005ac76207239e633f4ffc6
+  timestamp: '2026-08-28T23:35:04Z'
+  output_hash: f382541d1e51b3003d47e188d7f298349b85417aea7a0bfe719b428babeb393b
   usage:
-    prompt_tokens: 2559
-    completion_tokens: 604
-    total_tokens: 3163
-    reasoning_tokens: 295
+    prompt_tokens: 3562
+    completion_tokens: 567
+    total_tokens: 4129
+    reasoning_tokens: 197
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:54Z'
+  previous_text: From there he searches for food. His eyes spot it from far away.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:53Z'
+  previous_text: From there, he searches for food. His eyes scan far into the distance.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:04Z'
+  previous_text: From there, the eagle searches for food. Its eyes scan far into the distance.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d318dbac01565ae91acc482f138e4eb64a0c7464c4d38342023cb6ad30ece3da
+  review_summary: Making the contextual subject explicit as “the eagle” is well supported by the immediate context and improves readability. “Searches for food” is a clear, warranted simplification of “searches out food.” Revise “scan” to “look” because “scan” imports an additional searching nuance and partially merges the visual clause with the preceding food-searching action. The revised wording remains natural while preserving the source text’s emphasis on the eagle’s far-reaching sight.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

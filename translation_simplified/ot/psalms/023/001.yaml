@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/023/001.yaml
-  text: Yahweh is my shepherd[a][b]; I will not lack.
+  text: Yahweh[a] is my shepherd; I will lack nothing[b].
   footnotes:
   - marker: a
-    text: Or 'I shall not want'; here 'want' means 'lack,' not 'desire.'
+    text: Hebrew YHWH, traditionally rendered “the LORD” in English translations.
     reason: lexical_alternative
   - marker: b
-    text: Hebrew YHWH, traditionally rendered 'the LORD' in English translations.
+    text: Or “I shall not want”; here “want” means “lack,” not “desire.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -32,56 +32,65 @@ base_translation:
     timestamp: '2026-04-23T11:24:13Z'
     unchanged: true
     changes_summary: No changes needed.
-
 translation:
   language: en
-  text: 'Yahweh[b] is my shepherd. I will have everything I need.'
+  text: Yahweh[a] is my shepherd, so I will have everything I need.[b]
   philosophy: optimal-equivalence
   footnotes:
-  - marker: b
-    text: Yahweh is the personal name of God, traditionally translated as “the LORD” in English Bibles.
+  - marker: a
+    text: Yahweh is the personal name of God, written YHWH in Hebrew and traditionally rendered “the LORD.”
     reason: lexical_alternative
+  - marker: b
+    text: Literally, “I will lack nothing.”
+    reason: simplification_note
+simplification_decisions:
+- pob_phrase: Yahweh is my shepherd; I will lack nothing.
+  simplified_phrase: Yahweh is my shepherd, so I will have everything I need.
+  preserved_meaning: Because Yahweh shepherds the speaker, the speaker trusts that nothing necessary will be lacking.
+  reasoning_layer_used: POB translation, lexical decision for אֶחְסָר, and applied revision
+  rationale: The positive wording is easier to understand while preserving the Hebrew statement of complete provision.
+- pob_phrase: Yahweh
+  simplified_phrase: Yahweh[a]
+  preserved_meaning: The personal divine name YHWH remains in the main text.
+  reasoning_layer_used: POB theological decision on יְהוָה
+  rationale: The retained name follows project doctrine, while the note helps readers unfamiliar with it.
 interpretive_expansions:
-- pob_phrase: I will not lack
-  rendering: I will have everything I need
-  claim: The lack in view concerns what the speaker needs, not every possible desire.
+- pob_phrase: Yahweh is my shepherd; I will lack nothing.
+  rendering: Yahweh is my shepherd, so I will have everything I need.
+  claim: The second clause expresses the result of Yahweh’s care as shepherd.
   evidence:
-  - The POB lexical rationale defines חסר as “to lack, be in need.”
-  - POB footnote c distinguishes lack from desire.
+  - The two clauses are directly joined in the Hebrew verse.
+  - The shepherd image implies care and provision in the immediate context.
+  - The POB rationale describes the statement as absolute lack of nothing.
   confidence: high
   alternatives_preserved:
-  - I will not lack
-  - I will lack nothing
+  - I will lack nothing.
+  - I shall not want.
 translation_notes:
   risk_flags:
-  - risk: “Everything I need” could be misread as a promise of comfort or prosperity.
-    mitigation: The shepherd image and the word “need” keep the statement focused on Yahweh’s provision rather than every desire.
+  - risk: “Everything I need” could be mistaken for a promise of unrestricted material comfort.
+    mitigation: The shepherd image and literal footnote keep the claim tied to Yahweh’s sufficient care rather than personal desire.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/023/001.yaml
   source_text_sha256: cc9d4922aa1ec49433ac1534ba63611f766e19eb9a765405c7ba010e7a9b4907
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 1f4b0310f542c606d587d61b2e144708bee8867a457d15ca6c1e298713bd3465
-  timestamp: '2026-07-12T09:59:21Z'
-  output_hash: eb05069146b3f8bc986c31b56573de1dc9f38cf3dfac88ac62b4e3c0cd44f959
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: bbdab5a9eb46fccd8ae11476ad09acc153d33907dd6db84f44fa91680a04f17f
+  timestamp: '2026-08-28T22:54:52Z'
+  output_hash: fec72da0b9099eb398caaea44eeea02fb3ba1bcc910ef5a5e090c630c06d340b
   usage:
-    prompt_tokens: 3494
-    completion_tokens: 475
-    total_tokens: 3969
-    reasoning_tokens: 0
+    prompt_tokens: 2624
+    completion_tokens: 988
+    total_tokens: 3612
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms:
-- term: Yahweh
-  reason: Retained the covenant name of God per POB theological and doctrinal decisions, utilizing a clear footnote to guide readers who are more familiar with 'the LORD'.
-- term: shepherd
-  reason: Retained the key biblical metaphor of God as shepherd, which is highly accessible and central to the theological imagery of the psalm.
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:21Z'
   previous_text: A psalm of David[a]. Yahweh[b] is my shepherd; I will not lack.
@@ -92,15 +101,8 @@ spob_revision_history:
   review_summary: The main wording is faithful, accessible, and appropriately retains both Yahweh and the shepherd metaphor. The removal of the obsolete “want” clarification is warranted because “lack” is already clear. Revise footnote a to preserve the source phrase’s real breadth without narrowing its association sense to “about David.”
   schema_repairs:
   - restored retained_terms as an array from the prior draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: verse_1
-  previous_text_sha256: 4f15983c0a5041566fa30569049b655196996828a866cac599d51e23f9d067cf
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-simplification_decisions:
-- pob_phrase: Yahweh is my shepherd; I will not lack.
-  simplified_phrase: Yahweh is my shepherd. I will have everything I need.
-  preserved_meaning: Explains the Hebrew idiom 'I will not lack' as having what the shepherd provides.
-  reasoning_layer_used: POB base translation and footnote apparatus
-  rationale: Explains the Hebrew idiom 'I will not lack' as having what the shepherd provides.
+- timestamp: '2026-08-28T22:54:52Z'
+  previous_text: Yahweh[b] is my shepherd. I will have everything I need.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

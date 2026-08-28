@@ -49,3 +49,15 @@ The reusable editorial rules are in `docs/SOURCE_NEAR_EDITORIAL_STANDARD.md`; th
 ## Validation and publication boundary
 
 A source audit, SPOB synchronization, generated-reader publication, and live deployment are distinct stages. This report establishes the completed POB source audit. SPOB redrafting/review and production evidence must be reported separately, and no automated audit is represented as credentialed scholarly review.
+
+## SPOB synchronization and review
+
+All 4,902 SPOB records were rebuilt from POB commit `776f86401b0c907fd3e83e7e2f0ebe70625d3c74` with GPT-5.6 Sol, then independently reviewed by GPT-5.6 Terra:
+
+- 3,231 approved as drafted;
+- 1,670 revised through the grounding-revision path;
+- 1 versification block (Psalm 51:5) resolved by checking the WLC and POB superscription normalization rather than replacing the verse with the wrong source line;
+- the explicit Ecclesiastes 1:2 `hevel` editorial adjudication was preserved rather than silently overwritten;
+- one Proverbs 25:27 schema failure was repaired editorially with the live ambiguity retained in its footnote.
+
+Final SPOB validation: **4,902 validated, 0 failed, 0 unresolved reviewer verdicts, and 0 base-grounding drift**.

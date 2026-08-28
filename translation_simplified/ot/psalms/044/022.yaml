@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/044/022.yaml
-  text: For your sake we are killed all day long[a][b]; we are regarded as sheep for slaughter.
+  text: For your sake we are killed all day long; we are regarded as sheep for slaughter.[a]
   footnotes:
   - marker: a
-    text: Or 'we are counted as sheep for slaughter.'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'because of you' or 'on your account.' The Hebrew can express suffering endured in relation to God.
+    text: Or, “Because of you we are killed all day long; we are counted as sheep for slaughter.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,50 +31,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For your sake[a], we are being killed all day long. We are seen as sheep meant to be slaughtered.
+  text: We are being killed all day long for your sake. We are seen as sheep ready for slaughter.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “because of you” or “on your account.” The Hebrew describes suffering endured in relation to God.
+    text: The Hebrew can also be translated, “Because of you we are being killed all day long; we are counted as sheep for slaughter.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: we are killed all day long
-  simplified_phrase: we are being killed all day long
-  preserved_meaning: The killing is an ongoing or repeated reality.
-  reasoning_layer_used: POB lexical decision for הֹרַגְנוּ
-  rationale: The progressive form makes the continuing suffering immediately clear.
-- pob_phrase: we are regarded as sheep
-  simplified_phrase: we are seen as sheep
-  preserved_meaning: Others view the sufferers as they would sheep marked for death.
-  reasoning_layer_used: POB lexical decisions for נֶחְשַׁבְנוּ and כְּצֹאן
-  rationale: “Seen as” expresses the passive judgment in more familiar English.
-- pob_phrase: sheep for slaughter
-  simplified_phrase: sheep meant to be slaughtered
-  preserved_meaning: The people are compared to sheep designated for killing.
-  reasoning_layer_used: POB lexical decision for טִבְחָה
-  rationale: The added verb clarifies the compressed image without weakening it.
+  simplified_phrase: We are being killed all day long
+  preserved_meaning: The killing is ongoing or repeated, not merely a past event.
+  reasoning_layer_used: POB lexical decision on הֹרַגְנוּ
+  rationale: The progressive form makes the continuing force clear in modern English.
+- pob_phrase: we are regarded
+  simplified_phrase: We are seen
+  preserved_meaning: The speakers are viewed or evaluated in this way.
+  reasoning_layer_used: POB lexical decision on נֶחְשַׁבְנוּ
+  rationale: “Seen” is common English and retains the source's evaluative sense.
+- pob_phrase: as sheep for slaughter
+  simplified_phrase: as sheep ready for slaughter
+  preserved_meaning: The speakers are compared to sheep destined to be killed.
+  reasoning_layer_used: POB lexical decisions on כְּצֹאן and טִבְחָה
+  rationale: “Ready for” clarifies the sheep's intended fate while preserving the slaughter image.
 translation_notes:
   risk_flags:
-  - risk: “For your sake” may be read as saying that God directly causes the killing.
-    mitigation: The footnote preserves the Hebrew alternatives without assigning blame.
+  - risk: “Ready for slaughter” states the sheep's destined condition more directly than “for slaughter.”
+    mitigation: The wording preserves the source image and does not identify who will kill them.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/044/022.yaml
   source_text_sha256: 45cc144665e45d807d13ee25acd55fbac94ec4893fd42cc8f0376b3d29843463
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 94a09b40e7d517290bfa2608c774dc6d26f7b4531c970598b14c1f1cde22a43d
-  timestamp: '2026-07-11T20:48:37Z'
-  output_hash: 3132ac152de387fa9078ffa3cc6cfc839bf8fc55247dd1456b6672c8cbd5b329
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0aab5c5aaaff60c08c6347e13cf724c034afd63261a9d5ab4c8ffb3a15d2376b
+  timestamp: '2026-08-28T23:35:22Z'
+  output_hash: 93caaf73b7b6261b84cb19bc7d80a97ec899de4be6fd7d7a4039fd2b00723b6f
   usage:
-    prompt_tokens: 2573
-    completion_tokens: 801
-    total_tokens: 3374
-    reasoning_tokens: 424
+    prompt_tokens: 3897
+    completion_tokens: 388
+    total_tokens: 4285
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: for your sake
+  rendering: because we are yours
+  claim: The suffering occurs in connection with the people's belonging and loyalty to God.
+  evidence:
+  - The POB theological rationale identifies belonging to God and fidelity to him as the controlling sense.
+  - The phrase עָלֶיךָ allows a causal or relational connection without specifying God as the killer.
+  confidence: high
+  alternatives_preserved:
+  - because of you
+  - on your account
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:04Z'
+  previous_text: For your sake[a], we are being killed all day long. We are seen as sheep meant to be slaughtered.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:22Z'
+  previous_text: We are being killed all day long because we are yours. We are treated like sheep meant for slaughter.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 48947e968ae3851a690cf2d473b9e9aa0a15834a748ba6eba5824915973edc21
+  review_summary: The progressive “are being killed” is a clear, warranted expression of the ongoing force, and “ready for slaughter” makes the image accessible without materially changing it. However, “because we are yours” turns a relationally broad phrase into a specific possession-based explanation, despite the POB audit trail's instruction to preserve the tension. Replace it with “for your sake.” Also use “seen as” rather than “treated like” to retain the source's evaluative/counting idea while remaining clear.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

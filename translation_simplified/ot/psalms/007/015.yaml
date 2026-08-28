@@ -31,37 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He dug a pit and hollowed it out. Then he fell into the hole he had made.
+  text: He dug a pit and made it deeper, but then he fell into the hole he had made.
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: dug a pit and hollowed it out
+  simplified_phrase: dug a pit and made it deeper
+  preserved_meaning: He dug the pit and then excavated it further.
+  reasoning_layer_used: The lexical rationale treats the second digging verb as further excavation and lists “dug it deeper” as an alternative.
+  rationale: This keeps both actions while expressing the second in common English.
+- pob_phrase: and he fell into the hole he made
+  simplified_phrase: but then he fell into the hole he had made
+  preserved_meaning: After preparing the hole, he fell into his own work.
+  reasoning_layer_used: The lexical decisions preserve the sequence and identify the hole as the one he made.
+  rationale: The wording makes the sequence and reversal clear without changing the concrete image.
+interpretive_expansions:
 - pob_phrase: and he fell
-  simplified_phrase: Then he fell
-  preserved_meaning: His fall followed his preparation of the pit.
-  reasoning_layer_used: POB lexical decision for וַיִּפֹּל
-  rationale: “Then” makes the narrative sequence clear in modern English.
-translation_notes: {}
+  rendering: but then he fell
+  claim: The fall is an ironic reversal after his work on the pit.
+  evidence:
+  - The immediate sequence shows him falling into the same hole he made.
+  confidence: high
+  alternatives_preserved:
+  - and then he fell
+translation_notes:
+  risk_flags:
+  - risk: “Made it deeper” may sound narrower than the broader image of hollowing out.
+    mitigation: The POB lexical rationale explicitly supports further excavation and lists “dug it deeper” as an alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/007/015.yaml
   source_text_sha256: 8304c47b734faa0eccf384c223885f90001cae0a5a2a08ec18b40af6b79567be
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: d2ce883354dada77ed13228b2a84e57a3c15ed43ef3a987d9ad8a60dc3743186
-  timestamp: '2026-07-12T09:53:40Z'
-  output_hash: 0fe4960554cc335733bfec5e4d1c28df08180b1baa2541ddf48abc43430e751a
+  prompt_sha256: 73897d250fb47aba392fb89ad8773c1df5bd8f6883c58a1eeac449ac6ce6f0ea
+  timestamp: '2026-08-28T23:35:02Z'
+  output_hash: 755f74c3f1fd93f0115e4d0f5b83041255b5850d7fe69442b6f75bee467418a6
   usage:
-    prompt_tokens: 2949
-    completion_tokens: 138
-    total_tokens: 3087
-    reasoning_tokens: 0
+    prompt_tokens: 3104
+    completion_tokens: 545
+    total_tokens: 3649
+    reasoning_tokens: 180
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:40Z'
@@ -73,4 +89,18 @@ spob_revision_history:
   review_summary: The addition of “Then” is a clear and warranted way to express the narrative sequence. However, “made it deep” selects one possible result of the second digging verb rather than preserving its broader sense of further excavation. Retain “hollowed it out,” which is already clear enough and follows the POB lexical rationale.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:20Z'
+  previous_text: He dug a pit and hollowed it out. Then he fell into the hole he had made.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:02Z'
+  previous_text: He dug a deep pit, but then he fell into the very hole he had made.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b523b871e06806ab5a651b953a3f1192b02072802f0b955f0b8fb634ad7474c9
+  review_summary: The draft is clear and appropriately conveys the ironic reversal. However, “dug a deep pit” compresses two sequential digging verbs into a static description and thereby loses the explicitly portrayed further excavation. Retain that action in simple language. “But then” is a warranted contextual signal of the reversal, and “the hole he had made” clearly preserves the self-made trap.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

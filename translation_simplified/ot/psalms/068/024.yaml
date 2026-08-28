@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/068/024.yaml
-  text: They have seen your processions[a], O God— the processions of my God, my King, into the sanctuary.
+  text: They have seen your procession, O God—the procession of my God, my King, in the sanctuary.[a]
   footnotes:
   - marker: a
-    text: Or 'They saw your goings, O God— the goings of my God, my King, in holiness.'
+    text: Or “your goings, O God—the goings of my God, my King, in holiness.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,63 @@ base_translation:
     changes_summary: Changed singular 'procession' to plural 'processions' to reflect the repeated plural Hebrew form more accurately; otherwise retained the draft's wording and formal tone.
 translation:
   language: en
-  text: God, they have seen your processions into the sanctuary—the processions of my God and my King.[a]
+  text: God, they have seen you moving in procession—my God, my King—in the sanctuary.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also mean, “They saw your goings, God—the goings of my God and King, in holiness.”
+    text: Or, “They have seen your goings, God—the goings of my God, my King, in holiness.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: They have seen your processions, O God
-  simplified_phrase: God, they have seen your processions
-  preserved_meaning: People have witnessed God’s ceremonial movements.
-  reasoning_layer_used: POB lexical decisions and poetic context
-  rationale: Moving the address to the front makes the sentence easier to follow.
-- pob_phrase: the processions of my God, my King, into the sanctuary
-  simplified_phrase: into the sanctuary—the processions of my God and my King
-  preserved_meaning: God, who is the psalmist’s God and King, proceeds into the sacred place.
-  reasoning_layer_used: POB theological decision and revision pass
-  rationale: The new order clarifies the destination while retaining the repeated plural image.
+- pob_phrase: They have seen your procession
+  simplified_phrase: they have seen you moving in procession
+  preserved_meaning: People have witnessed God’s ceremonial movement.
+  reasoning_layer_used: POB lexical and theological decisions on הֲלִיכוֹת
+  rationale: The active wording makes the scene easier to picture while preserving the procession image.
+- pob_phrase: O God—the procession of my God, my King
+  simplified_phrase: God—my God, my King
+  preserved_meaning: God remains directly addressed and is identified by both personal titles.
+  reasoning_layer_used: POB lexical decisions on אֱלֹהִים, אֵלִי, and מַלְכִּי
+  rationale: Clear apposition avoids an awkward repeated clause without losing the poetic identification.
 translation_notes:
   risk_flags:
-  - risk: The sanctuary reading may be understood as more certain than the Hebrew allows.
-    mitigation: The footnote preserves the alternative sense of goings in holiness.
+  - risk: The Hebrew may refer more generally to God’s goings and to holiness rather than a sanctuary procession.
+    mitigation: The footnote preserves both documented alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/068/024.yaml
   source_text_sha256: 9fdbf9368dd3d98ac0351cb934cc138a8a12ee39a771d31726894b4269db157c
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: dcccea355766553b790e8f675d825469b09343ee202428beb8ac711fe9229f74
-  timestamp: '2026-07-11T20:52:22Z'
-  output_hash: 2e6016e246776024e0a60fea077c89794b49703373076a0627029282aeaf9650
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a54858b881476798e04899261e26b5ba0bab6451a10e3beac6a46e0ac186a3d3
+  timestamp: '2026-08-28T23:35:35Z'
+  output_hash: 8a587e765249c91c888eab813832e67a6c3bb6a71ceae70abd056837ca0942b3
   usage:
-    prompt_tokens: 2728
-    completion_tokens: 962
-    total_tokens: 3690
-    reasoning_tokens: 638
+    prompt_tokens: 3773
+    completion_tokens: 425
+    total_tokens: 4198
+    reasoning_tokens: 98
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:38Z'
+  previous_text: God, they have seen your processions into the sanctuary—the processions of my God and my King.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:35Z'
+  previous_text: God, they have seen you moving in procession—my God and my King moving in the sanctuary.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f15ccfbf5acbfab7a9e94ee55b7b653734ba99e0d0f868c0cd13c70016aff4f7
+  review_summary: “Moving in procession” is a warranted, clearer unpacking of the POB’s “your procession,” and it does not add historical or doctrinal detail. Revise the dash phrase, however, so that “my God, my King” unmistakably identifies the one God whose procession was seen rather than introducing an awkward second motion clause. The footnote adequately retains the documented “goings”/“in holiness” alternative.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/113/002.yaml
-  text: May the name of Yahweh be blessed from now and forever[a].
+  text: May the name of Yahweh be blessed from now on and forever[a].
   footnotes:
   - marker: a
-    text: Or 'Let the name of the LORD be blessed.'
+    text: Or “Let the name of Yahweh be blessed.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,38 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: May Yahweh’s name be blessed from now on and forever.
+  text: From now on and forever, may Yahweh’s name be blessed.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “Let Yahweh’s name be blessed.”
+    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: May the name of Yahweh be blessed from now on and forever
+  simplified_phrase: From now on and forever, may Yahweh’s name be blessed
+  preserved_meaning: The blessing begins now and continues forever.
+  reasoning_layer_used: POB lexical decisions for מֵעַתָּה and וְעַד עוֹלָם
+  rationale: Moving the time phrase first makes the verse easier to follow without changing its scope.
 - pob_phrase: the name of Yahweh
   simplified_phrase: Yahweh’s name
-  preserved_meaning: The personal divine name and its association with Yahweh remain unchanged.
-  reasoning_layer_used: lexical and theological decisions
-  rationale: The possessive form is more natural in modern English without weakening the divine-name choice.
-- pob_phrase: from now and forever
-  simplified_phrase: from now on and forever
-  preserved_meaning: The blessing begins in the present and continues without end.
-  reasoning_layer_used: lexical decision for מֵעַתָּה and וְעַד עוֹלָם
-  rationale: Adding “on” makes the time span immediately clear in ordinary English.
-translation_notes: {}
+  preserved_meaning: The personal divine name and the biblical concept of his name remain explicit.
+  reasoning_layer_used: POB lexical and theological decisions for שֵׁם and יְהוָה
+  rationale: The possessive form is more natural in common English while retaining Yahweh and “name.”
+translation_notes:
+  risk_flags:
+  - risk: “May” can sound like uncertainty rather than a blessing or exhortation.
+    mitigation: The footnote preserves the exhortative alternative “Let.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/113/002.yaml
   source_text_sha256: 14bad9b6947b72c6bd4f2359d31b86098c7c2b0c90de3212a06f7a80f93cdd07
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2bd5540b91d572efb59c6311fca7913c175bd48721143c8df3d16c65c1e51a59
-  timestamp: '2026-07-11T21:01:49Z'
-  output_hash: 35e85be22d2eef18299f4449ae56b77f1cbda5b0517a51246a8c1d32fa7fb955
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 6b50b0952a0505705942ab94baf3998d016de159c2c1d4c3079974068a7c37c8
+  timestamp: '2026-08-28T22:59:43Z'
+  output_hash: e03836109887000fc8e884d4ecb4322432acaf9c2382be41e1d383d97a8d71e2
   usage:
-    prompt_tokens: 2372
-    completion_tokens: 461
-    total_tokens: 2833
-    reasoning_tokens: 236
+    prompt_tokens: 2521
+    completion_tokens: 457
+    total_tokens: 2978
+    reasoning_tokens: 137
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:43Z'
+  previous_text: May Yahweh’s name be blessed from now on and forever.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

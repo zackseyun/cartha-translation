@@ -34,42 +34,53 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 107:4 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''in the desolate way''].'
 translation:
   language: en
-  text: They wandered through the wilderness, in a wasteland. They found no way to a city where they could settle.[a]
+  text: They wandered through the wilderness, a desolate wasteland. They could not find a road to a city where people lived.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 'Verse 7 answers this need: God leads them on a straight way to an inhabited city.'
+    text: Verse 7 says that God led them by a straight road to such a city.
     reason: cross_reference
 simplification_decisions:
-- pob_phrase: They wandered in the wilderness, in a wasteland; they found no way to an inhabited city.
-  simplified_phrase: They wandered through the wilderness, in a wasteland. They found no way to a city where they could settle.
-  preserved_meaning: Restored the missing way-to-a-city connection that verse 7 answers.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Restored the missing way-to-a-city connection that verse 7 answers.
+- pob_phrase: in the wilderness, in a wasteland
+  simplified_phrase: through the wilderness, a desolate wasteland
+  preserved_meaning: They wandered through an uninhabited and desolate region.
+  reasoning_layer_used: POB lexical decisions for מִדְבָּר and יְשִׁימוֹן
+  rationale: The appositional wording makes the landscape clear without losing either image.
+- pob_phrase: they found no way to
+  simplified_phrase: They could not find a road to
+  preserved_meaning: They lacked a route that would bring them to their destination.
+  reasoning_layer_used: Source audit joining דָּרֶךְ to the second colon
+  rationale: A new sentence and the common word “road” clarify the failed search for a route.
+- pob_phrase: an inhabited city
+  simplified_phrase: a city where people lived
+  preserved_meaning: Their destination was a settled city rather than an empty place.
+  reasoning_layer_used: POB lexical decision for עִיר מוֹשָׁב
+  rationale: The plain relative clause explains “inhabited” in everyday English.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: “Road” can sound more constructed than the broader Hebrew “way.”
+    mitigation: The travel setting and verse 7 support the concrete route sense while the cross-reference preserves the contrast.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/107/004.yaml
   source_text_sha256: b711319e122df3d8a3ec1d1a25ac1a7a627654d62f57b8c2807dbffb244139d0
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 589e3f092dac969011873050d45bbae8b9f69257c7218d06585f51867578fc35
-  timestamp: '2026-07-11T21:01:54Z'
-  output_hash: c5e67b352f7602f51e93f27a7b87103ca246fc9535934be4f387657f6281dec0
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: ddf25ce24dee1b1afb952a0ee8aff2036a924748ce3c1b93f324ac555125d2c9
+  timestamp: '2026-08-28T22:57:56Z'
+  output_hash: 4357ced7c78ea413476e1e65d09207ee7832ae6852e8adc191fc82536c8a6dac
   usage:
-    prompt_tokens: 2665
-    completion_tokens: 581
-    total_tokens: 3246
-    reasoning_tokens: 241
+    prompt_tokens: 2788
+    completion_tokens: 701
+    total_tokens: 3489
+    reasoning_tokens: 295
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 spob_revision_history:
 - timestamp: '2026-08-27T11:16:55Z'
   previous_text: They wandered through the wilderness on a desolate path. They found no city where they could settle.[a]
@@ -77,3 +88,8 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Restored the missing way-to-a-city connection that verse 7 answers.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:57:56Z'
+  previous_text: They wandered through the wilderness, in a wasteland. They found no way to a city where they could settle.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

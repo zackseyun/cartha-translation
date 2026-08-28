@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/024/004.yaml
-  text: They turn the needy off the road[b][a]; together the poor of the land hide themselves.
+  text: They turn the needy off the road[a]; together the poor of the land[b] hide themselves.
   footnotes:
   - marker: a
-    text: Or 'They turn the needy from the way.'
+    text: Or “They turn the needy from the way.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'the poor of the earth.'
+    text: Or “the poor of the earth.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,50 +34,68 @@ base_translation:
     changes_summary: Changed 'force' to 'turn' for closer lexical alignment with the Hebrew verb, while retaining the rest of the verse as accurate and natural.
 translation:
   language: en
-  text: They make needy people turn off the road.[a] The poor of the land[b] all hide themselves.
+  text: They force needy people off the road.[a] The poor of the land[b] all go into hiding.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “They turn the needy from the way.”
+    text: Or “They turn needy people from the way.”
     reason: lexical_alternative
   - marker: b
     text: Or “the poor of the earth.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: They turn the needy off the road
-  simplified_phrase: They make needy people turn off the road
-  preserved_meaning: Oppressors cause vulnerable people to leave the road.
-  reasoning_layer_used: POB lexical decisions and revision history
-  rationale: “Make ... turn” clearly expresses the Hebrew verb’s causative force while retaining POB’s revised choice “turn.”
+  simplified_phrase: They force needy people off the road
+  preserved_meaning: Oppressors cause vulnerable people to move away from the road or way.
+  reasoning_layer_used: POB lexical decisions for יַטּוּ, אֶבְיוֹנִים, and מִדָּרֶךְ
+  rationale: “Force” plainly conveys the causative oppression while keeping the road image.
 - pob_phrase: together the poor of the land hide themselves
-  simplified_phrase: The poor of the land all hide themselves
-  preserved_meaning: The poor collectively withdraw into hiding.
-  reasoning_layer_used: POB lexical decision for יַחַד
-  rationale: “All” conveys the collective sense more naturally than the awkward clause-opening “together.”
+  simplified_phrase: The poor of the land all go into hiding
+  preserved_meaning: The poor as a whole withdraw into hiding under pressure.
+  reasoning_layer_used: POB lexical decisions for יַחַד, חֻבְּאוּ, and עֲנִיֵּי אָרֶץ
+  rationale: “All go into hiding” shows collective withdrawal without implying that they hide in one place.
 translation_notes:
   risk_flags:
-  - risk: “Road” may refer more broadly to a way or path.
-    mitigation: Footnote a preserves POB’s broader lexical alternative.
-  - risk: “Land” may also be understood as “earth.”
-    mitigation: Footnote b retains the documented alternative without obscuring the social setting.
+  - risk: “Road” may sound exclusively literal although the Hebrew can also mean “way.”
+    mitigation: Footnote a preserves the broader lexical alternative.
+  - risk: “Go into hiding” may soften the passive nuance of being driven into concealment.
+    mitigation: The coercive first clause keeps the surrounding pressure explicit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/024/004.yaml
   source_text_sha256: 39533890d9d6e2cb06c534291aacd3a13e38eed3a0fadaa19355e2039a99d121
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ccfbde554ebce24c7d051a73b30825e32a5ab8532512b952e283d2ed400c7fc2
-  timestamp: '2026-07-11T19:48:06Z'
-  output_hash: 461f1c8e398fd2bf4527b848c0bdc194791673edffb449500ae44d21f5f6ab37
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 443277af5259c98b116b2c266059738d4dd8b7064f7870f73bbd58c27ea59949
+  timestamp: '2026-08-28T23:34:42Z'
+  output_hash: a2733b52bb227f04104b356937586554c1395070317e4b6325deaa8ebed5b46f
   usage:
-    prompt_tokens: 2493
-    completion_tokens: 783
-    total_tokens: 3276
-    reasoning_tokens: 433
+    prompt_tokens: 3640
+    completion_tokens: 539
+    total_tokens: 4179
+    reasoning_tokens: 137
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:45Z'
+  previous_text: They make needy people turn off the road.[a] The poor of the land[b] all hide themselves.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:42Z'
+  previous_text: They make needy people leave the road.[a] The poor of the land[b] all hide together.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 39bfa859b7ac5c77b52e19d75f48d5e95acc6147b7643a6e83665c35fe13a465
+  review_summary: The draft is clearer in word order and in making the first verb causative, but “all hide together” introduces a potentially misleading picture of the poor hiding in the same place. “All go into hiding” communicates their collective withdrawal without collapsing the adverb’s scope into physical co-location. Strengthening the first clause to “force ... off” follows the POB lexical rationale and keeps the oppression explicit.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

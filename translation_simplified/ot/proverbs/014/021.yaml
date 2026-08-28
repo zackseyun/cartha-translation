@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/014/021.yaml
-  text: Whoever despises his neighbor sins[a], but blessed is he who is gracious to the poor.
-  footnotes:
-  - marker: a
-    text: Or 'happy is he who is gracious to the poor.' The Hebrew term expresses a state of flourishing or blessedness, not merely an emotion.
-    reason: lexical_alternative
+  text: Whoever despises his neighbor sins, but whoever is gracious to the poor is blessed.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,57 +27,44 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Whoever looks down on a neighbor sins, but whoever shows kindness to the poor is blessed.[a]
+  text: You sin when you treat your neighbor with contempt, but you are blessed when you show kindness to the poor.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: “Blessed” describes a state of flourishing and favor, not merely a feeling of happiness.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: despises his neighbor
-  simplified_phrase: looks down on a neighbor
-  preserved_meaning: The person treats someone in the community with contempt.
-  reasoning_layer_used: The lexical decisions for בָּז and לְרֵעֵהוּ.
-  rationale: This common idiom makes contempt clear while preserving “neighbor.”
-- pob_phrase: is gracious to the poor
-  simplified_phrase: shows kindness to the poor
-  preserved_meaning: The person treats poor people with gracious, practical goodwill.
-  reasoning_layer_used: The lexical decisions for וּמְחוֹנֵן and עניים, confirmed by the grounding review.
-  rationale: “Shows kindness” clearly conveys beneficial treatment rather than mere preference.
-- pob_phrase: blessed is he
-  simplified_phrase: whoever ... is blessed
-  preserved_meaning: The gracious person stands in an objective state of blessing and flourishing.
-  reasoning_layer_used: The lexical and theological decisions for אַשְׁרָיו.
-  rationale: The recast removes archaic word order while retaining the wisdom term “blessed.”
+- pob_phrase: Whoever despises his neighbor sins
+  simplified_phrase: You sin when you treat your neighbor with contempt
+  preserved_meaning: Treating a person in one’s social sphere with contempt is explicitly called sin.
+  reasoning_layer_used: POB lexical decisions for בָּז, לְרֵעֵהוּ, and חוֹטֵא
+  rationale: The direct second-person form makes the moral statement easier to grasp without weakening it.
+- pob_phrase: whoever is gracious to the poor is blessed
+  simplified_phrase: you are blessed when you show kindness to the poor
+  preserved_meaning: Those who favor poor people receive an objective pronouncement of blessing.
+  reasoning_layer_used: POB lexical and theological decisions for וּמְחוֹנֵן, עניים, and אַשְׁרָיו
+  rationale: “Show kindness” explains gracious conduct while “blessed” retains the wisdom term’s theological weight.
 translation_notes:
   risk_flags:
-  - risk: “Looks down on” could be understood as an attitude without outward mistreatment.
-    mitigation: The idiom still conventionally expresses contempt, matching the documented lexical sense.
-  - risk: “Kindness” is broader than the Hebrew concept of gracious favor.
-    mitigation: The context limits it to beneficial treatment of poor people without shifting the sense to mercy alone.
+  - risk: The generic second-person wording differs from the POB’s repeated “whoever.”
+    mitigation: English “you” functions generically here and preserves the proverb’s universal application.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/014/021.yaml
   source_text_sha256: 086fb8be3a17d0ca70b93a5b87841bd71ed38b9fa3583d5c4b9273593d3fce53
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 1b5ed12673280bac656024ed678137cbbe057e30d4c288942004acd8828e6890
-  timestamp: '2026-07-12T09:53:05Z'
-  output_hash: 239bb97af38477de77d092f4516fd41c9ceb01437595e31529f4cc17cae192d0
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 26541d047dec2205fd242c33bd42faf03c7bc59332744fcdc5e7b9df933568b3
+  timestamp: '2026-08-28T23:04:27Z'
+  output_hash: 78d6dc20a8a1cb7b15fe6722f52d32af793200604f00a1866080d02aa6913122
   usage:
-    prompt_tokens: 3279
-    completion_tokens: 418
-    total_tokens: 3697
-    reasoning_tokens: 0
+    prompt_tokens: 2492
+    completion_tokens: 797
+    total_tokens: 3289
+    reasoning_tokens: 470
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:05Z'
   previous_text: Whoever looks down on a neighbor sins, but whoever shows favor to the poor is blessed.[a]
@@ -93,3 +76,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:04:27Z'
+  previous_text: Whoever looks down on a neighbor sins, but whoever shows kindness to the poor is blessed.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

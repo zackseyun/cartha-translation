@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/027/027.yaml
-  text: And there will be enough goats' milk for your food[a], for the food of your household[b], and sustenance for your servant girls.
+  text: And there will be enough goats' milk for your food[b], for the food of your household, and sustenance for your servant girls.[a]
   footnotes:
   - marker: a
-    text: Or 'and life for your maidservants.' The Hebrew literally says 'and lives/life for your young women/servant girls,' using 'life' in the sense of what sustains life.
+    text: Or “and life for your young women.” The Hebrew uses “life” in the sense of what sustains life; the final noun can mean young women or female servants.
     reason: lexical_alternative
   - marker: b
-    text: Hebrew 'bread' in both occurrences likely means food or provision more generally, not bread alone.
+    text: Hebrew “bread” in both occurrences; here it likely means food or provision more generally, not bread alone.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,72 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 27:27 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''goats’ milk''].'
 translation:
   language: en
-  text: There will be enough goats’ milk to feed you and your household and to sustain your servant girls.[a]
+  text: You will have enough goats’ milk to provide food[a] for yourself and your household, and what your female servants need to live.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also mean “young women”; here it likely refers to female servants in the household.
+    text: The Hebrew says “bread,” but here it refers to food or provision generally.
+    reason: lexical_alternative
+  - marker: b
+    text: Or “life for your young women”; the Hebrew can refer either to young women or to female servants.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: And there will be enough
+  simplified_phrase: You will have enough
+  preserved_meaning: The goats’ milk will be sufficient for the household’s needs.
+  reasoning_layer_used: POB lexical decision for וְדֵי
+  rationale: The direct wording states the same sufficiency more naturally.
 - pob_phrase: for your food, for the food of your household
-  simplified_phrase: to feed you and your household
-  preserved_meaning: The goats’ milk provides food for both the owner and the household.
-  reasoning_layer_used: POB lexical decisions for both uses of Hebrew “bread”
-  rationale: The verb “feed” expresses the broad sense of food or provision in natural English.
-- pob_phrase: and sustenance for your servant girls
-  simplified_phrase: and to sustain your servant girls
-  preserved_meaning: The milk supplies what the female servants need to live.
-  reasoning_layer_used: POB lexical decisions for “life” and “servant girls”
-  rationale: The verb “sustain” makes the life-supporting sense direct while retaining its force.
+  simplified_phrase: to provide food for yourself and your household
+  preserved_meaning: The milk supplies food for both the person addressed and the household.
+  reasoning_layer_used: POB lexical decisions for לְלַחְמְךָ and לְלֶחֶם בֵּיתֶךָ
+  rationale: Combining the repeated phrase makes the sentence easier to follow without merging its recipients.
+- pob_phrase: sustenance for your servant girls
+  simplified_phrase: what your female servants need to live
+  preserved_meaning: The milk provides life-sustaining support for the household’s female servants.
+  reasoning_layer_used: POB lexical decisions and footnote for וְחַיִּים and לְנַעֲרוֹתֶיךָ
+  rationale: The wording explains “sustenance” plainly while preserving the Hebrew life image.
+interpretive_expansions:
+- pob_phrase: sustenance
+  rendering: what ... need to live
+  claim: The provision supplies what sustains the women’s lives.
+  evidence:
+  - The POB lexical rationale says חַיִּים denotes what sustains life in this provisioning context.
+  - The POB footnote explicitly explains “life” as what sustains life.
+  confidence: high
+  alternatives_preserved:
+  - sustenance
+  - life for your young women
 translation_notes:
   risk_flags:
-  - risk: “Servant girls” reflects a contextual choice where the Hebrew may also mean “young women.”
-    mitigation: A footnote preserves the lexical alternative.
+  - risk: “Female servants” selects one contextual sense of a Hebrew term that can also mean “young women.”
+    mitigation: Footnote [b] preserves the lexical ambiguity.
+  - risk: Rendering Hebrew “bread” as “food” removes the concrete bread term.
+    mitigation: Footnote [a] records the literal wording and its broader contextual sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/027/027.yaml
   source_text_sha256: 3a20bea730bd0e8b986a17bafdcdcd496c93cb69e23390174af5794f12cf392b
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 81a899cd128e64b090d24e87723fe0d384709ee0c523a4c222fee8895d37fc90
-  timestamp: '2026-07-11T21:21:19Z'
-  output_hash: 033dbfb4656a8fc4e07629185385387aea63e9e1399e781b58ac53d159daccc3
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: c803419956c0bfb3777d1749fbefe2a4df4d04d69e1f2fed86a15b9cf15a6f95
+  timestamp: '2026-08-28T23:04:32Z'
+  output_hash: 6c6b59665e2ef364a9892a0b32309b615ea976b6411d089236627102d35d1dec
   usage:
-    prompt_tokens: 2800
-    completion_tokens: 571
-    total_tokens: 3371
-    reasoning_tokens: 255
+    prompt_tokens: 3026
+    completion_tokens: 1429
+    total_tokens: 4455
+    reasoning_tokens: 827
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:04:32Z'
+  previous_text: There will be enough goats’ milk to feed you and your household and to sustain your servant girls.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

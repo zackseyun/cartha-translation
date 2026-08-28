@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/147/017.yaml
-  text: He throws down his ice like crumbs[a][b]; who can stand before his cold?
+  text: He throws down his ice like crumbs[a]; who can stand before his cold[b]?
   footnotes:
   - marker: a
-    text: Or 'who can withstand his cold?'
+    text: Or 'like morsels' or 'like pieces.' The Hebrew image is of small broken bits, likely evoking bread fragments.
     reason: lexical_alternative
   - marker: b
-    text: Or 'like morsels' or 'like pieces.' The Hebrew image is of small broken bits, likely evoking bread fragments.
+    text: Or 'who can withstand his cold?'
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,52 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He throws down ice like scattered crumbs. Who can stand against his cold?
+  text: He throws down his ice like crumbs. Who can endure his freezing cold?
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: his ice like crumbs
-  simplified_phrase: ice like scattered crumbs
-  preserved_meaning: God casts down small pieces of ice in a bread-crumb-like pattern.
-  reasoning_layer_used: POB lexical decisions for קַרְחוֹ and כְפִתִּים
-  rationale: Adding “scattered” makes the image of thrown crumbs immediately clear without replacing it.
-- pob_phrase: stand before his cold
-  simplified_phrase: stand against his cold
-  preserved_meaning: No one can remain standing against the force of God’s cold.
-  reasoning_layer_used: POB lexical decision for מִי יַעֲמֹד and לִפְנֵי
-  rationale: “Stand against” is more natural modern English while retaining the Hebrew image of standing.
+- pob_phrase: who can stand before his cold?
+  simplified_phrase: Who can endure his freezing cold?
+  preserved_meaning: No one can withstand the severe cold God sends.
+  reasoning_layer_used: POB lexical decisions for מִי יַעֲמֹד and קָרָתוֹ
+  rationale: “Endure” gives the rhetorical sense, while “freezing cold” is a documented lexical alternative.
+- pob_phrase: throws down his ice like crumbs
+  simplified_phrase: throws down his ice like crumbs
+  preserved_meaning: God casts down ice in small, broken pieces.
+  reasoning_layer_used: POB lexical decisions for מַשְׁלִיךְ, קַרְחוֹ, and כְפִתִּים
+  rationale: The vivid downward action and the open-ended image of small pieces are both retained.
 interpretive_expansions:
-- pob_phrase: like crumbs
-  rendering: like scattered crumbs
-  claim: The ice is pictured as small pieces spread about like crumbs.
+- pob_phrase: his cold
+  rendering: his freezing cold
+  claim: The cold is intense and associated with the ice God throws down.
   evidence:
-  - The POB lexical rationale identifies small broken bits, likely bread fragments.
-  - The verb “throws down” supports an image of pieces being scattered.
+  - The POB lists “his freezing cold” as a lexical alternative.
+  - The immediate context describes God throwing down ice.
   confidence: high
   alternatives_preserved:
-  - like morsels
-  - like pieces
+  - his cold
+  - his frost
 translation_notes:
   risk_flags:
-  - risk: “Scattered” is implied by the image rather than directly represented by a separate Hebrew word.
-    mitigation: The wording remains bounded by the throwing action and the POB explanation of small scattered pieces.
+  - risk: “Endure” does not retain the literal image of remaining standing.
+    mitigation: It preserves the POB’s documented contextual sense of withstanding the cold.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/147/017.yaml
   source_text_sha256: ef522b062541cd149d1247308c17b7bbb4d0b333b6c600e41707942c5076a4c0
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 1bf473566ef0589428eaad7267e4c4832973035cc117dbcbddf7258ca952edec
-  timestamp: '2026-07-11T21:07:23Z'
-  output_hash: 8a8a014ce4fb5ceb3a9b262157d43690fad7448a18a6ba4ca27767fc0b01dfbc
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a69dbd495a216d1e55a1c6ed70ca71f494a743f5de733c94cdbfd7c5c5859a72
+  timestamp: '2026-08-28T23:36:27Z'
+  output_hash: 7ad611b469293e34fb7016b2c6e38f4e767224b47de7f4a1269f0760449b8fc7
   usage:
-    prompt_tokens: 2355
-    completion_tokens: 540
-    total_tokens: 2895
-    reasoning_tokens: 165
+    prompt_tokens: 3479
+    completion_tokens: 484
+    total_tokens: 3963
+    reasoning_tokens: 106
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:45Z'
+  previous_text: He throws down ice like scattered crumbs. Who can stand against his cold?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:27Z'
+  previous_text: He scatters his ice like bread crumbs. Who can endure his freezing cold?
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d763aaa524c82cdfbc8eed9b4e15e4d4de356812618b8de1ef8746166dd8c88a
+  review_summary: 'The second sentence is a warranted and useful simplification: “endure” gives the rhetorical force of “stand,” and “freezing cold” is a documented lexical alternative consistent with the context. The first sentence should retain “throws down” and avoid specifying “bread,” because the audit trail supports a crumbs/pieces image but does not establish bread as the sole intended referent.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

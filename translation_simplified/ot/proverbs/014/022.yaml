@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/014/022.yaml
-  text: Will not those who devise evil go astray? But steadfast love and faithfulness belong to those who devise good[a].
+  text: Do not those who devise evil go astray? But steadfast love and faithfulness are for those who devise good.[a]
   footnotes:
   - marker: a
-    text: Or 'kindness and truth,' or 'mercy and faithfulness.' The Hebrew pair often denotes loyal love together with reliability or truthfulness.
-    reason: lexical_alternative
+    text: The second line has no explicit verb and may also mean that those who devise good show steadfast love and faithfulness.
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,50 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Don’t those who plan evil go astray? But steadfast love and faithfulness belong to those who plan what is good.[a]
+  text: Don't those who plan evil lose their way? But steadfast love and faithfulness are for those who plan good.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Steadfast love and faithfulness” may also be translated “kindness and truth” or “mercy and faithfulness.”
-    reason: lexical_alternative
+    text: The Hebrew does not state the exact relationship here. It may mean that those who plan good show steadfast love and faithfulness.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Will not those who devise evil go astray?
-  simplified_phrase: Don’t those who plan evil go astray?
-  preserved_meaning: The rhetorical question affirms that people who deliberately plan evil stray from the right moral path.
-  reasoning_layer_used: Lexical decisions for הֲלוֹא, יִתְעוּ, and חֹרְשֵׁי רָע
-  rationale: The contraction makes the question natural while preserving its expected affirmative answer and path image.
+- pob_phrase: those who devise evil
+  simplified_phrase: those who plan evil
+  preserved_meaning: The evil is intentional and planned.
+  reasoning_layer_used: lexical decision for חֹרְשֵׁי רָע
+  rationale: “Plan” expresses deliberate intent in more familiar English than “devise.”
+- pob_phrase: go astray
+  simplified_phrase: lose their way
+  preserved_meaning: They depart from the morally right path.
+  reasoning_layer_used: lexical decision for יִתְעוּ
+  rationale: “Lose their way” makes the path image immediately understandable.
 - pob_phrase: those who devise good
-  simplified_phrase: those who plan what is good
-  preserved_meaning: The phrase describes people who intentionally plan morally good things.
-  reasoning_layer_used: Lexical decisions for חֹרְשֵׁי טוֹב and טוֹב
-  rationale: “Plan what is good” is natural English and maintains the deliberate contrast with planning evil.
+  simplified_phrase: those who plan good
+  preserved_meaning: They deliberately seek what is morally good.
+  reasoning_layer_used: lexical decision for חֹרְשֵׁי טוֹב
+  rationale: Repeating “plan” preserves the deliberate contrast between evil and good.
 translation_notes:
   risk_flags:
-  - risk: “Belong to” leaves open whether these qualities characterize such people or come to them.
-    mitigation: The phrase is retained because the Hebrew omits the verb and the POB intentionally preserves this ambiguity.
+  - risk: The verbless second line can describe qualities shown by these people or blessings given to them.
+    mitigation: The broad phrase “are for” and the footnote preserve both possibilities.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/014/022.yaml
   source_text_sha256: 63f26c5c4070dc091b117e152a9440826ca77826d39633eac2b25f9467177b40
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 952402a2b5ae07cca1b158df35a4748663202044c138fabe16a5105ec888ac81
-  timestamp: '2026-07-12T09:52:18Z'
-  output_hash: c297f1a98d2a0e230204a84f0eeab95050b74cd4f4b2fec15159e8975c8dc142
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 5b79966d2fc244300d31d3021240e573a11cc10f4d106454496c62fff85ec1e3
+  timestamp: '2026-08-28T23:09:16Z'
+  output_hash: f2f3eddf2c21fc8870d2447a96f3c018c7bc95b6cbf19e33a9110a5367058c10
   usage:
-    prompt_tokens: 3364
-    completion_tokens: 366
-    total_tokens: 3730
-    reasoning_tokens: 0
+    prompt_tokens: 2913
+    completion_tokens: 675
+    total_tokens: 3588
+    reasoning_tokens: 309
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:18Z'
   previous_text: Do not those who plan evil lose their way? But steadfast love and faithfulness belong to those who plan what is good.[a]
@@ -86,3 +89,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:09:16Z'
+  previous_text: Don’t those who plan evil go astray? But steadfast love and faithfulness belong to those who plan what is good.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

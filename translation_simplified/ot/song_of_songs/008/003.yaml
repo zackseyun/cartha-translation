@@ -31,46 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: His left hand is under my head. With his right hand, he embraces me.
+  text: His left hand is under my head, and his right hand holds me close.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: His left hand is under my head, and his right hand embraces me.
-  simplified_phrase: His left hand is under my head. With his right hand, he embraces me.
-  preserved_meaning: His two hands remain in their distinct positions within the embrace.
-  reasoning_layer_used: POB lexical decisions and independent grounding review
-  rationale: Two short sentences clarify the parallel actions while retaining “under” and “embraces.”
-translation_notes: {}
+- pob_phrase: his right hand embraces me
+  simplified_phrase: his right hand holds me close
+  preserved_meaning: The man is embracing the speaker with his right hand.
+  reasoning_layer_used: POB lexical decision for תְּחַבְּקֵנִי
+  rationale: “Holds me close” gives the embrace in natural, immediately clear English.
+interpretive_expansions:
+- pob_phrase: embraces me
+  rendering: holds me close
+  claim: The embrace involves holding the speaker close.
+  evidence:
+  - The POB lexical record explicitly lists “holds me close” as a contextual alternative for תְּחַבְּקֵנִי.
+  confidence: high
+  alternatives_preserved:
+  - embraces me
+translation_notes:
+  risk_flags:
+  - risk: “Holds me close” is slightly more descriptive than the direct verb “embraces.”
+    mitigation: The POB lexical record identifies it as a contextual rendering of the same Hebrew verb.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/008/003.yaml
   source_text_sha256: f6ecec99778f4bdc534faa2f979e61103da3dfa567cacd59fc60a8a13bfaacf6
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 6b8b027c255d06fd307ab4ae0f93472bc67452c30bde3f2200adbca08c6b16a1
-  timestamp: '2026-07-12T10:04:24Z'
-  output_hash: cbc96a0d6a382047fde9d2e92b84b38ef2062b0c768719365ccc7da8b36247c4
+  prompt_sha256: 17245c7ce90c4d9ff3a255fbbcc186946bb57a853e069860edc1fc4c32772f41
+  timestamp: '2026-08-28T23:33:39Z'
+  output_hash: 21d9e212c22498ca0634e6c1c424655a97caeb2bef3a64d0f871e39d6286ca1e
   usage:
-    prompt_tokens: 2948
-    completion_tokens: 448
-    total_tokens: 3396
-    reasoning_tokens: 280
+    prompt_tokens: 2801
+    completion_tokens: 432
+    total_tokens: 3233
+    reasoning_tokens: 152
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: embraces me
-  rendering: holds me close
-  claim: The embrace involves physically holding her near.
-  evidence:
-  - The Hebrew verb חבק denotes embracing.
-  - The immediate line describes the position of his hands.
-  confidence: high
-  alternatives_preserved:
-  - embraces me
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:04:24Z'
@@ -82,4 +84,18 @@ spob_revision_history:
   review_summary: Revise for genuine simplification rather than synonym substitution. The draft remains within the scene’s lexical and contextual bounds, and it introduces no doctrinal claim, but “beneath” is less plain than “under,” while POB’s direct “embraces me” is already clear and avoids adding emphasis beyond the verb’s ordinary sense.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:10:37Z'
+  previous_text: His left hand is under my head. With his right hand, he embraces me.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:39Z'
+  previous_text: His left hand is beneath my head, and with his right hand he holds me close.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 22e5360ecb254dcaf0cd142290713ad8a499ffafe40614ec1fcb8c707d9a4211
+  review_summary: 'The expansion “holds me close” is warranted: it is a natural, immediately understandable expression of חבק (“embrace”), is explicitly recorded as a contextual alternative in the POB audit trail, and retains the intimate embrace without importing doctrinal content. However, “beneath” is slightly less everyday than POB’s “under” and therefore does not meet the requested simplification standard. Retain “under” and keep the otherwise clear rendering.'
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

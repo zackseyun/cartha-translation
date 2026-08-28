@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/065/012.yaml
-  text: The pastures of the wilderness drip[a][b], and the hills gird themselves with rejoicing.
+  text: The pastures of the wilderness drip[a], and the hills gird themselves with rejoicing.
   footnotes:
   - marker: a
-    text: Or 'The hills gird themselves with joy.'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'overflow' for 'drip'; the Hebrew verb can depict abundant moisture distilling or pouring down.
+    text: Or “overflow”; the Hebrew verb can depict abundant moisture dripping or pouring down.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,52 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The wilderness pastures drip, and the hills clothe themselves with joy.
+  text: The wilderness pastures drip,[a] and the hills clothe themselves with joy.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “overflow”; the Hebrew describes abundant moisture dripping or pouring down.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: The pastures of the wilderness
   simplified_phrase: The wilderness pastures
-  preserved_meaning: Uncultivated grazing lands remain in view, not a barren sand desert.
+  preserved_meaning: Pastures in uncultivated wilderness are receiving abundant moisture.
   reasoning_layer_used: POB lexical decisions for נְאוֹת and מִדְבָּר
-  rationale: The shorter phrase uses ordinary word order without changing the landscape.
-- pob_phrase: the hills gird themselves with rejoicing
-  simplified_phrase: the hills clothe themselves with joy
-  preserved_meaning: The hills are personified as putting on exultant joy.
-  reasoning_layer_used: POB lexical decisions for גִיל and תַּחְגֹּרְנָה
-  rationale: “Clothe themselves” keeps the dressing image while replacing the unfamiliar verb “gird.”
-translation_notes: {}
+  rationale: The shorter phrase keeps the same landscape without suggesting a sandy desert.
+- pob_phrase: gird themselves with rejoicing
+  simplified_phrase: clothe themselves with joy
+  preserved_meaning: The hills are personified as putting on visible joy.
+  reasoning_layer_used: POB lexical decision for תַּחְגֹּרְנָה and גִיל
+  rationale: Common clothing language preserves the Hebrew image more clearly than the unfamiliar verb “gird.”
+translation_notes:
+  risk_flags:
+  - risk: “Clothe themselves” is less literal than the binding-on image of “gird themselves.”
+    mitigation: It retains the central metaphor of the hills putting on joy like clothing.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/065/012.yaml
   source_text_sha256: 368a1706023a2cbfdb39d14c0c3fe779e73b956894706ca6cd9533a4845972b6
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 0171b99cc3fd4357ea88ef8b2059e952e97beeacf0de4ae3ea882cb11adae2a1
-  timestamp: '2026-07-12T10:00:13Z'
-  output_hash: 9a451504c4f44f9256a68fb9ec58e153eb490b399e44fec1ff4dc74ef60619c5
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: f53b5eeb696d7225fe227b82a86e12f44fe3b058c17f780861b741fb0b93b1b8
+  timestamp: '2026-08-28T22:55:33Z'
+  output_hash: 9a76a9255b8c65866ecf8dde9f4f9e48290a7a067ed6f7fb9d55fa9a5727101b
   usage:
-    prompt_tokens: 3087
-    completion_tokens: 242
-    total_tokens: 3329
-    reasoning_tokens: 0
+    prompt_tokens: 2493
+    completion_tokens: 550
+    total_tokens: 3043
+    reasoning_tokens: 239
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: drip
-  rendering: drip with abundance
-  claim: The dripping portrays the land’s rich supply rather than an unspecified liquid.
-  evidence:
-  - The POB lexical rationale says the verb can convey dripping rain or abundance.
-  confidence: moderate
-  alternatives_preserved:
-  - drip
-  - overflow
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:13Z'
   previous_text: The wilderness pastures drip with abundance, and the hills clothe themselves with joy.
@@ -91,3 +84,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:55:33Z'
+  previous_text: The wilderness pastures drip, and the hills clothe themselves with joy.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

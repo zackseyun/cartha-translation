@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/010/013.yaml
-  text: On the lips of a discerning man wisdom is found[a], but a rod is for the back of one who lacks sense.
+  text: On the lips of a discerning man wisdom is found, but a rod is for the back of one who lacks sense.[a]
   footnotes:
   - marker: a
-    text: Literally, 'lacking heart,' a Hebrew idiom for lacking sense or understanding.
+    text: Literally, “lacking heart,” a Hebrew idiom for lacking sense or understanding.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,46 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Wise words come from a discerning man, but a rod is for the back of someone who lacks sense.
+  text: A discerning man speaks with wisdom, but a rod of discipline is for the back of one who lacks sense.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: In Hebrew, “lacks sense” is literally “lacks heart”; the heart represents understanding and judgment.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: On the lips of a discerning man wisdom is found
-  simplified_phrase: Wise words come from a discerning man
-  preserved_meaning: A discerning man's speech expresses wisdom.
-  reasoning_layer_used: Lexical decisions for בְּ/שִׂפְתֵי, נָבוֹן, and תִּמָּצֵא
-  rationale: This uses ordinary English while preserving the sense that wisdom is present in his speech.
+  simplified_phrase: A discerning man speaks with wisdom
+  preserved_meaning: Wisdom is present in the discerning man's speech.
+  reasoning_layer_used: POB lexical decisions for בְּ/שִׂפְתֵי, נָבוֹן, and תִּמָּצֵא
+  rationale: The active sentence states the same proverbial truth in ordinary English.
+- pob_phrase: but a rod is for the back
+  simplified_phrase: but a rod of discipline is for the back
+  preserved_meaning: The rod remains the concrete image of punishment or correction.
+  reasoning_layer_used: POB lexical decision for שֵׁבֶט
+  rationale: Adding “of discipline” makes the rod's purpose clear without removing the Hebrew image.
 - pob_phrase: one who lacks sense
-  simplified_phrase: someone who lacks sense
+  simplified_phrase: one who lacks sense
   preserved_meaning: The person lacks understanding and sound judgment.
-  reasoning_layer_used: Lexical decision for חֲסַר לֵב
-  rationale: “Someone” reads naturally while retaining the established meaning of the Hebrew idiom.
+  reasoning_layer_used: POB lexical decision and footnote for חֲסַר לֵב
+  rationale: The clear idiomatic rendering is retained, with the literal Hebrew image explained in a note.
+interpretive_expansions:
+- pob_phrase: a rod
+  rendering: a rod of discipline
+  claim: The rod represents an instrument of discipline or punishment.
+  evidence:
+  - The POB lexical rationale identifies the rod as an instrument of discipline or punishment.
+  - The immediate contrast links wise speech with the consequences of lacking sense.
+  confidence: high
+  alternatives_preserved:
+  - a rod
+  - a rod of punishment
 translation_notes:
   risk_flags:
-  - risk: Recasting “on the lips” as “words come from” makes the concrete image less direct.
-    mitigation: The wording still locates wisdom in the discerning man's speech.
+  - risk: “Speaks with wisdom” may sound slightly more direct than the Hebrew image of wisdom being found on the lips.
+    mitigation: The wording retains speech as the location where a discerning man's wisdom becomes evident.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/010/013.yaml
   source_text_sha256: 7a1caffcd94caf3d9dcdd79b4a3915fa32e854fa269f0d7cd14fa9763133cbad
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 589fed2b31abbf6b1d6ab25cdf4155525ee6c5bd1acdad4157da549662893ade
-  timestamp: '2026-07-12T09:52:25Z'
-  output_hash: 347533f2f7c6aa00ebf56d7fef516a5186639c957584802608d280450ae57874
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 4424b2bbb1b00422cce48dbcef43bf70c0562ccfdb8730e9b71a70d87f45a342
+  timestamp: '2026-08-28T23:02:30Z'
+  output_hash: 0b495014026d73ccfbc202b7d140c3da551550add8e198e47bb52d783e10a370
   usage:
-    prompt_tokens: 3116
-    completion_tokens: 282
-    total_tokens: 3398
-    reasoning_tokens: 0
+    prompt_tokens: 2641
+    completion_tokens: 935
+    total_tokens: 3576
+    reasoning_tokens: 430
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:25Z'
   previous_text: Wise words come from a discerning man, but the rod is for the back of someone who lacks sense.
@@ -82,3 +100,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:30Z'
+  previous_text: Wise words come from a discerning man, but a rod is for the back of someone who lacks sense.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

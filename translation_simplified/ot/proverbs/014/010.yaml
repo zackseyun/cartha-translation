@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/014/010.yaml
-  text: The heart knows the bitterness of its soul[b][a], and no stranger shares in its joy.
+  text: The heart knows its own bitterness[a], and no stranger shares its joy[b].
   footnotes:
   - marker: a
-    text: Or 'and no outsider mingles with its joy' or 'participates in its joy.' The Hebrew verb can denote becoming involved with or sharing in something.
-    reason: lexical_alternative
+    text: Hebrew literally, “the bitterness of its soul,” referring to the person’s inward bitterness.
+    reason: literal_form
   - marker: b
-    text: Hebrew 'the bitterness of its soul.' 'Soul' here refers to the inner self or life, not necessarily a technical statement about human constitution.
+    text: Or “no outsider mingles with its joy” or “participates in its joy.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,41 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The heart knows its own bitterness, and no outsider can share its joy.
+  text: Each person knows the bitterness in their own heart, and no one else shares their joy.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: the bitterness of its soul
-  simplified_phrase: its own bitterness
-  preserved_meaning: The bitterness belongs to the person's inner self and is known inwardly.
-  reasoning_layer_used: POB lexical decisions for מָרַת and נַפְשׁוֹ
-  rationale: This removes an opaque use of “soul” while keeping the bitterness personal and inward.
+- pob_phrase: The heart knows its own bitterness
+  simplified_phrase: Each person knows the bitterness in their own heart
+  preserved_meaning: A person directly knows their own inward bitterness, while the Hebrew heart image remains present.
+  reasoning_layer_used: POB lexical decisions for לֵב and מָרַת נַפְשׁוֹ
+  rationale: This removes awkward personification without losing the heart image or inward meaning.
 - pob_phrase: no stranger
-  simplified_phrase: no outsider
-  preserved_meaning: Someone outside the person's inner experience cannot participate in that joy.
-  reasoning_layer_used: POB lexical decision for זָר
-  rationale: “Outsider” avoids suggesting an unknown person or ethnic foreigner.
+  simplified_phrase: no one else
+  preserved_meaning: Someone outside the person cannot share that person's inward joy.
+  reasoning_layer_used: POB lexical decision for זָר and contextual rationale
+  rationale: “No one else” avoids suggesting an ethnic foreigner or merely unfamiliar person.
+interpretive_expansions:
+- pob_phrase: The heart
+  rendering: Each person ... in their own heart
+  claim: The generic heart refers to each person's inward experience.
+  evidence:
+  - POB identifies לֵב here as the inner person and describes the bitterness as inward.
+  - The proverb's singular form makes a general statement about people.
+  confidence: high
+  alternatives_preserved:
+  - The heart
+  - A person's heart
 translation_notes:
   risk_flags:
-  - risk: “Its own bitterness” does not explicitly retain the Hebrew word “soul.”
-    mitigation: The reflexive wording preserves the sense of the heart's inner, personal experience.
+  - risk: Replacing the heart as grammatical subject could weaken the Hebrew personification.
+    mitigation: The wording retains “heart” as the place of the person's inward bitterness.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/014/010.yaml
   source_text_sha256: 1fc23bf7ee1e90ef67c03e402b4e70363c7e1c57f2aa8170c40ea1c2ba607b0a
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: e5a75c4c6a2a83cb38b3b500039cc9c14c7a7e8592cd4f0aeac496e25ac1b741
-  timestamp: '2026-07-11T21:04:35Z'
-  output_hash: 5192a05360fc6bdb60ada42d93748496b626d9481c8cf90c5b6477cd2a1d66a3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cc27c2174e6dc9de492285f40615ba6ab6689315e7adfb956e6f0b64657bd17f
+  timestamp: '2026-08-28T23:34:29Z'
+  output_hash: 6482b6cd510cf1a88b02af955e206d55c6e08c4a3af413110fa619c0933debc2
   usage:
-    prompt_tokens: 2483
-    completion_tokens: 600
-    total_tokens: 3083
-    reasoning_tokens: 337
+    prompt_tokens: 3491
+    completion_tokens: 666
+    total_tokens: 4157
+    reasoning_tokens: 304
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:26Z'
+  previous_text: The heart knows its own bitterness, and no outsider can share its joy.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:29Z'
+  previous_text: Each heart knows its own bitterness, and no outsider shares its joy.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 16df262f943b6b1cc0ac844c892458bd0e90db28490b6e68714482b2e6bbf066
+  review_summary: The draft’s move from “stranger” to “outsider” is warranted by the POB lexical audit and avoids an ethnic or merely unfamiliar-person reading. However, “Each heart knows ... its joy” is awkward and does not adequately realize the stated understanding-first purpose. Rendering the heart idiom as “Each person” is supported by the source expression and POB’s identification of the heart as the inner person; “no one else” clearly conveys the contextual sense of someone outside that person’s inward experience.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

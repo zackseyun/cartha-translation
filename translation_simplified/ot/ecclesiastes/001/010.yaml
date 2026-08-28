@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/001/010.yaml
-  text: Is there a thing of which one says[a], “See, this is new”? It has already been in the ages before us.
+  text: Is there anything of which one says, “See, this is new”? It has already existed in the ages before us.[a]
   footnotes:
   - marker: a
-    text: Or, more idiomatically, “It has already existed long ago, in the ages before us.”
-    reason: lexical_alternative
+    text: Literally, “It already was in the ages that were before us.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,51 +31,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Is there anything someone can say, “Look, this is new”? It already existed long ago, in ages before our time.
+  text: Can anyone say, “Look, this is new”? It already existed in earlier ages, before our time.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Is there a thing of which one says
-  simplified_phrase: Is there anything someone can say
-  preserved_meaning: The question concerns any supposed example of something new.
+- pob_phrase: Is there anything of which one says
+  simplified_phrase: Can anyone say
+  preserved_meaning: The question remains a general rhetorical challenge to any claim of novelty.
   reasoning_layer_used: Lexical decisions for יֵשׁ, דָּבָר, and שֶׁיֹּאמַר
-  rationale: The recast question uses natural English while keeping the statement general.
-- pob_phrase: It has already been in the ages before us
-  simplified_phrase: It already existed long ago, in ages before our time
-  preserved_meaning: The supposed novelty existed in bygone ages before the present generation.
-  reasoning_layer_used: Lexical decisions for כְּבָר, הָיָה, לְעֹלָמִים, and מִלְּפָנֵינוּ
-  rationale: “Existed long ago” states the temporal claim clearly while retaining the sweep of earlier ages.
-translation_notes: {}
+  rationale: The direct question is easier to follow and avoids adding a physical act of pointing.
+- pob_phrase: See, this is new
+  simplified_phrase: Look, this is new
+  preserved_meaning: The speaker calls attention to something claimed to be new.
+  reasoning_layer_used: Lexical decision for רְאֵה
+  rationale: “Look” is a natural modern command that preserves the attention-getting force.
+- pob_phrase: in the ages before us
+  simplified_phrase: in earlier ages, before our time
+  preserved_meaning: The thing existed in past ages preceding the present generation.
+  reasoning_layer_used: Lexical decisions for לְעֹלָמִים and אֲשֶׁר הָיָה מִלְּפָנֵינוּ
+  rationale: The wording clearly expresses prior ages while preserving their plural temporal sweep.
+translation_notes:
+  risk_flags:
+  - risk: “Can anyone say” recasts the Hebrew existential question as a direct challenge to a speaker.
+    mitigation: The generic rhetorical force and broad denial of novelty remain intact.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/001/010.yaml
   source_text_sha256: 2e5342c800236ce444b58006849fccb5b82b79d24cf193da08bfca09c36588ce
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 1e4f2a6cac2422a87acf24a7c401481131986860c7d9c2f42942c361d28b7734
-  timestamp: '2026-07-12T09:09:46Z'
-  output_hash: 4c34ee9bf034d4a8733e9be43aad2347690548ca77e64d1ef8b6f677074602ae
+  prompt_sha256: c22fe4846d475eb9531e77da160d411ca6faa731324b2cf53b34c357f6ecf916
+  timestamp: '2026-08-28T23:32:28Z'
+  output_hash: 506680966e4f0e6ac584e132ebaae93a01d8bd06de8164fb6c084843ec669266
   usage:
-    prompt_tokens: 3458
-    completion_tokens: 284
-    total_tokens: 3742
-    reasoning_tokens: 0
+    prompt_tokens: 3735
+    completion_tokens: 493
+    total_tokens: 4228
+    reasoning_tokens: 112
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: See, this is new
-  rendering: point to and say, “Look, this is new”
-  claim: The speaker draws attention to a supposed example of novelty.
-  evidence:
-  - The imperative רְאֵה calls attention to the thing identified by זֶה.
-  - POB describes the claim as an alleged novelty.
-  confidence: high
-  alternatives_preserved:
-  - “Look, this is new” retains the direct claim.
+interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:09:46Z'
@@ -85,6 +84,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: d55d624ed64cc8047326ca51600040b17f02f8633fd48b6ed1effb6ada51b514
   review_summary: The draft successfully makes the rhetorical question and its claim about prior existence easier to understand. “It already existed long ago, in ages before our time” is warranted by the lexical audit trail and preserves the temporal scope. Revise only to remove “can point to,” which is a plausible scene-level implication but not part of the stated meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:32Z'
+  previous_text: Is there anything someone can say, “Look, this is new”? It already existed long ago, in ages before our time.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:28Z'
+  previous_text: Can anyone point to something and say, “Look, this is new”? It already existed in earlier ages, before our time.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 04fc3c8f8fce03462d1fd17be970b515857bf4f2758cc9d21fc760486a336952
+  review_summary: 'The draft rightly makes the temporal phrase more immediately understandable: “earlier ages, before our time” is a warranted clarification of prior ages preceding the present generation, and it retains the plural temporal sweep. “Look” is also a clear modern equivalent for “See.” However, “point to something” adds an unneeded physical action and slightly recasts the existential rhetorical question as a question about a person’s demonstrative act. Removing that addition preserves the generic rhetorical challenge while remaining clear.'
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

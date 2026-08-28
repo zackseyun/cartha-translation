@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/019/023.yaml
-  text: Oh[a], that now my words were written down! Oh[b], that they were inscribed in a book!
+  text: If only my words were written down now! If only they were inscribed in a book[a][b]!
   footnotes:
   - marker: a
-    text: Or 'written in a scroll'; Hebrew סֵפֶר can refer to a book, scroll, or written document.
+    text: Or “in a scroll”; Hebrew סֵפֶר can refer to a book, scroll, or written document.
     reason: cultural_note
   - marker: b
-    text: Or 'engraved'; the verb suggests inscribing in a durable way, not merely casual writing.
+    text: Or “engraved”; the verb suggests a durable inscription, not merely casual writing.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,54 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If only my words could be written down now! If only they could be inscribed in a book[a]!
+  text: If only my words could be written down now! If only they could be engraved in a book![a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word can mean a book, scroll, or other written document.
+    text: The Hebrew term for “book” can mean a book, scroll, or other written document.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: Oh, that now my words were written down!
-  simplified_phrase: If only my words could be written down now!
-  preserved_meaning: Job urgently longs for his words to be recorded.
-  reasoning_layer_used: POB lexical decisions for מִי יִתֵּן, אֵפוֹ, and וְיִכָּתְבוּן
-  rationale: “If only” states the wish more naturally than the formal “Oh, that” construction.
-- pob_phrase: Oh, that they were inscribed in a book!
-  simplified_phrase: If only they could be inscribed in a book!
-  preserved_meaning: Job longs for his words to be formally inscribed in a written work.
-  reasoning_layer_used: POB lexical decisions for בַּסֵּפֶר and וְיֻחָקוּ
-  rationale: The wording keeps the inscription image without adding an unstated result.
-translation_notes: {}
+- pob_phrase: were written down now
+  simplified_phrase: could be written down now
+  preserved_meaning: Job urgently wishes for his words to be recorded.
+  reasoning_layer_used: POB lexical decisions for מִי יִתֵּן and וְיִכָּתְבוּן
+  rationale: “Could be” expresses the wish in familiar modern English.
+- pob_phrase: were inscribed in a book
+  simplified_phrase: could be engraved in a book
+  preserved_meaning: Job wants his words placed in a written document by deliberate inscription.
+  reasoning_layer_used: POB lexical decisions for בַּסֵּפֶר and וְיֻחָקוּ
+  rationale: “Engraved” preserves the inscription image while “book” keeps the document distinct.
+translation_notes:
+  risk_flags:
+  - risk: Modern readers may picture a bound book rather than an ancient scroll or document.
+    mitigation: The footnote gives the broader range of the Hebrew term.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/019/023.yaml
   source_text_sha256: 052c26763e5a33318942f64f75214b2c9fef8cbfa436847d79a52aaee1c5f140
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: ae92ef9487b43818f586fd0cc99bc67d16bac1dba93607151ca16addd2c90b74
-  timestamp: '2026-07-12T09:39:34Z'
-  output_hash: 0fdf32a09ede52c30208422a4f4b0e8f5aff9f35702d7413af0a26312d25a8e5
+  prompt_sha256: c7852d46515372f443ca87d1f32cc5c1e3147ee71c8972729ef5b850dad84667
+  timestamp: '2026-08-28T23:34:41Z'
+  output_hash: 887905979a12aee03374819668f96aa1f09c4fb963914249aa8117c0f1c6dadc
   usage:
-    prompt_tokens: 3231
-    completion_tokens: 309
-    total_tokens: 3540
-    reasoning_tokens: 0
+    prompt_tokens: 3522
+    completion_tokens: 581
+    total_tokens: 4103
+    reasoning_tokens: 259
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions:
 - pob_phrase: were inscribed
-  rendering: could be inscribed ... so they would last
+  rendering: engraved in a lasting record
   claim: The desired inscription is meant to preserve Job’s words durably.
   evidence:
-  - The POB lexical rationale says the verb suggests durable written preservation.
+  - The POB lexical rationale says the verb conveys durable written preservation.
   confidence: high
   alternatives_preserved:
-  - The footnote retains the broader range of book, scroll, or written document.
+  - inscribed in a book
+  - engraved in a scroll
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:34Z'
@@ -91,6 +95,26 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 9fd6a6ec4e12af679f4db905e7b85fa1536e13112dd3fa177b232f31d2aad724
   review_summary: '“If only” and “could be” clearly and faithfully communicate Job’s urgent wish, and the footnote appropriately explains the range of the Hebrew term for the written medium. Remove “so they would last”: it is a reasonable contextual implication, especially in light of the next verse, but the source text here does not state it as Job’s explicit purpose or result.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:19Z'
+  previous_text: If only my words could be written down now! If only they could be inscribed in a book[a]!
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:50Z'
+  previous_text: I wish my words were written down right now! I wish they were preserved permanently[a] in a book[b]!
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:41Z'
+  previous_text: If only my words could be written down now! If only they could be engraved in a lasting record![a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: fd617f3e640bcff8b5267fff7912151ec8c098c7e5410e8ee7d1788e267e4908
+  review_summary: 'The optative “could be” is a clear, acceptable modern expression of Job’s urgent wish. “Engraved” is also supported by the lexical audit trail. Revise “in a lasting record,” however: it broadens the named medium and promotes an inferred durability nuance into the main assertion. Retaining “book” with the explanatory footnote is both clear and closer to the source’s parallel wording.'
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

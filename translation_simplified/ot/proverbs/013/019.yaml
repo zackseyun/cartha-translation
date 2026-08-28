@@ -31,41 +31,73 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 13:19 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''but it is an abomination''].'
 translation:
   language: en
-  text: When a desire is fulfilled, it is sweet to the soul. Yet fools find turning away from evil detestable.
+  text: When something you desire comes true, it brings sweet satisfaction. But fools find it disgusting to turn away from evil.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: A desire fulfilled is sweet to the soul
-  simplified_phrase: When a desire is fulfilled, it is sweet to the soul.
-  preserved_meaning: A realized desire brings deep inner pleasure, while the image of sweetness and the term “soul” remain intact.
-  reasoning_layer_used: POB lexical decisions for נִהְיָה, תֶּעֱרַב, and לְנָפֶשׁ
-  rationale: The time clause makes the relationship natural in modern English without weakening the Hebrew image.
-- pob_phrase: but to turn away from evil is an abomination to fools
-  simplified_phrase: Yet fools find turning away from evil detestable.
-  preserved_meaning: Morally obstinate fools strongly reject the act of leaving evil.
-  reasoning_layer_used: POB lexical decisions for וְתוֹעֲבַת, כְּסִילִים, סוּר, and מֵרָע
-  rationale: The recast clause is easier to follow, and “detestable” preserves the strong force of “abomination.”
+- pob_phrase: A desire fulfilled
+  simplified_phrase: When something you desire comes true
+  preserved_meaning: A desire has been realized or has come to pass.
+  reasoning_layer_used: POB lexical decision for נִהְיָה
+  rationale: This uses ordinary wording for a desire that has been realized.
+- pob_phrase: is sweet to the soul
+  simplified_phrase: brings sweet satisfaction
+  preserved_meaning: A fulfilled desire is pleasant to the inner person.
+  reasoning_layer_used: POB lexical decisions for תֶּעֱרַב and לְנָפֶשׁ
+  rationale: This keeps the sweetness image while making its inward pleasure clear.
+- pob_phrase: is an abomination to fools
+  simplified_phrase: fools find it disgusting
+  preserved_meaning: Morally obstinate fools strongly detest turning away from evil.
+  reasoning_layer_used: POB lexical decisions for וְתוֹעֲבַת and כְּסִילִים
+  rationale: “Disgusting” conveys strong revulsion in common English.
+interpretive_expansions:
+- pob_phrase: to the soul
+  rendering: satisfaction
+  claim: The sweetness describes pleasure experienced by the inner person, not physical taste.
+  evidence:
+  - The POB lexical rationale identifies נפש here as the inner self or person.
+  - The POB rationale for תֶּעֱרַב supports the sense of being pleasant or sweet.
+  confidence: high
+  alternatives_preserved:
+  - sweet to the soul
+  - pleasant to oneself
 translation_notes:
   risk_flags:
-  - risk: Replacing “abomination” with “detestable” could sound slightly less technical.
-    mitigation: The adjective still expresses strong moral revulsion in clear common English.
+  - risk: “Disgusting” may sound less formally religious than “abomination.”
+    mitigation: It preserves the source term’s strong revulsion in readily understood English.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/013/019.yaml
   source_text_sha256: 2c93c99ae103fc31997329da3539692b2fc434dfd0617174afabf899968fc097
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b0eaecf57e3ae41d89ed79f6285e8854a8a69f776985c739a670f310decc2bdd
-  timestamp: '2026-07-11T21:20:36Z'
-  output_hash: 60d6cc11d7672d44bca815e34b8c94a3b6c71504d8e64ce3d6b4f1431d108323
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6a7e750be417982b87c273dc3b77eaeadb6c41e85c57e86a5b3de74754fa6bbe
+  timestamp: '2026-08-28T23:34:20Z'
+  output_hash: b68283e9d7da25557a33d09fe1f77c8b83c612a1929782f1724131242572b474
   usage:
-    prompt_tokens: 2779
-    completion_tokens: 602
-    total_tokens: 3381
-    reasoning_tokens: 250
+    prompt_tokens: 3609
+    completion_tokens: 446
+    total_tokens: 4055
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:00:47Z'
+  previous_text: When a desire is fulfilled, it is sweet to the soul. Yet fools find turning away from evil detestable.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:20Z'
+  previous_text: When something you desire comes true, it brings deep, sweet satisfaction. But fools find it disgusting to turn away from evil.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 635751c5d1b29658c3308b1d3776d09099c1a9a7fb525a22ad79a8b8a191ca99
+  review_summary: The draft makes the proverb substantially clearer while preserving both its contrast and its strong description of fools’ revulsion toward leaving evil. “Find it disgusting” is a warranted, accessible rendering of the abomination language in this construction. Revise only to remove “deep,” an unnecessary intensification not established by the source or POB rationale.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

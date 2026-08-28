@@ -16,34 +16,52 @@ translation:
   language: en
   text: A psalm of David.
   philosophy: optimal-equivalence
+simplification_decisions:
+- pob_phrase: A psalm of David.
+  simplified_phrase: A psalm of David.
+  preserved_meaning: The heading connects the psalm with David without defining the exact relationship.
+  reasoning_layer_used: POB translation, Hebrew source heading, and grounding review
+  rationale: The existing wording is already clear and preserves the Hebrew heading’s ambiguity better than “by David.”
 translation_notes:
-  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
+  risk_flags:
+  - risk: Readers may understand “of David” as a definite claim of authorship.
+    mitigation: This wording nevertheless leaves more room for authorship, dedication, or association than “by David.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/024/000.yaml
   source_text_sha256: 368c50107f35c1ccf309f221d6cb8b3e52868712757489a02649ef36075fe1c5
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4006fe5d53d4c5cc53491874b4ca82ad43cf49c236870a41ab4e79e838d23c39
-  timestamp: '2026-07-11T20:27:13Z'
-  output_hash: 44e697761264fba8df309e8b18fd265b697eaca325e39b71ea70fc5dba2d3ef3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 11c2eeb02f06d95a5e49de5647171e8e1ba919201f0d118fd977f5a311137a66
+  timestamp: '2026-08-28T23:35:07Z'
+  output_hash: 09d54070b595c3ece916889ae09fa0a1fb0918e2b0d70ec7fc686cccb2fa403b
   usage:
-    prompt_tokens: 2208
-    completion_tokens: 390
-    total_tokens: 2598
-    reasoning_tokens: 126
+    prompt_tokens: 2369
+    completion_tokens: 296
+    total_tokens: 2665
+    reasoning_tokens: 111
     estimated_cost_usd: 0.0
 status: simplified_draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: superscription
-  previous_text_sha256: c90cf8023c90c37988df48d31a173688b689c4e981fedefcc231a8f2f6ad7ead
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-is_superscription: true
-simplification_decisions: []
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:31Z'
+  previous_text: A psalm of David.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:07Z'
+  previous_text: A psalm by David.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c115a0bf64a952cf3050b2fff5bbff1e37bab93828fff6fd4c84020017a747bc
+  review_summary: Revise to retain the POB wording. “By David” is a plausible rendering, but it conventionally implies authorship and thus collapses an ambiguity that the Hebrew heading and POB wording preserve. Since the change offers no meaningful compensating clarity benefit, the non-narrowing heading is preferable.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

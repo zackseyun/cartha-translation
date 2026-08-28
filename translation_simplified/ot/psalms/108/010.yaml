@@ -34,45 +34,66 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 108:11 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''as far as Edom''].'
 translation:
   language: en
-  text: Who will take me to the fortified city?[a] Who will lead me all the way to Edom?
+  text: Who will take me to the fortified city?[a] Who will guide me to Edom?[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: This may mean a particular Edomite stronghold, traditionally identified as Sela or Petra, but the Hebrew does not name it.
+    text: The fortified city may be a particular Edomite stronghold, but the Hebrew does not name it.
     reason: cultural_note
+  - marker: b
+    text: The Hebrew verb is formally “has guided me,” but here it may have a future sense because it parallels the first question.
+    reason: source_note
 simplification_decisions:
 - pob_phrase: bring me to
   simplified_phrase: take me to
   preserved_meaning: Someone must cause the speaker to reach the city.
-  reasoning_layer_used: The lexical decision for יֹבִלֵנִי allows either bringing or leading to a destination.
-  rationale: “Take me to” is more natural when the speaker asks to be led somewhere.
-- pob_phrase: as far as Edom
-  simplified_phrase: all the way to Edom
-  preserved_meaning: Edom is the full extent and destination of the journey.
-  reasoning_layer_used: The lexical decision for עַד marks extent or limit while retaining Edom as the place name.
-  rationale: “All the way to” expresses the same extent in familiar English.
+  reasoning_layer_used: Lexical decision for יֹבִלֵנִי
+  rationale: “Take me to” is natural English and keeps the movement toward the destination.
+- pob_phrase: lead me as far as Edom
+  simplified_phrase: guide me to Edom
+  preserved_meaning: The speaker asks who will lead him to Edom.
+  reasoning_layer_used: Applied revision and lexical decisions for נָחַנִי and עַד אֱדוֹם
+  rationale: “To Edom” clearly marks the endpoint without adding journey-completion emphasis.
 translation_notes:
   risk_flags:
-  - risk: Readers may assume the fortified city is explicitly named in the Hebrew.
-    mitigation: The footnote preserves the likely Edomite setting while stating that the identification is uncertain.
+  - risk: “To Edom” states the endpoint less explicitly than POB’s “as far as Edom.”
+    mitigation: It preserves the contextual destination sense of עַד without the overemphasis of “all the way.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/108/010.yaml
   source_text_sha256: 5b3c8ec51b6d1d1889b00a343b67cd90a345b11362cee0489562b4304508e4b2
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 47ff402e54b2b65cf782ebf8516919e4d3ed510ca31c123f2d0bc8a4ee983156
-  timestamp: '2026-07-11T21:01:58Z'
-  output_hash: dd82aa16f251d7634669afe5aea81a8e790e21dd641360b561d4bc0dbcbfc2d3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 228076b6bc9c23248bc9e38afe4335a4ebbff0a7f28f2d75d9d29ee10ea359c0
+  timestamp: '2026-08-28T23:36:05Z'
+  output_hash: 6ee81b0b8da80a020f3508ca99142f60b1be67d0310dea4dd001589c95031d44
   usage:
-    prompt_tokens: 2924
-    completion_tokens: 632
-    total_tokens: 3556
-    reasoning_tokens: 314
+    prompt_tokens: 3853
+    completion_tokens: 351
+    total_tokens: 4204
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:11Z'
+  previous_text: Who will take me to the fortified city?[a] Who will lead me all the way to Edom?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:05Z'
+  previous_text: Who will take me to the fortified city?[a] Who will guide me all the way to Edom?[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 83470b22b7274c96baae99bfea6440edc40e95d1c080becdb7f458d785946cb0
+  review_summary: The future-like reading of the second question is warranted by the POB audit trail and poetic parallelism, and “take me” is clear without changing the destination sense. Revise “all the way” because it adds emphasis not required by the Hebrew, and replace the unhelpful alternative footnote with one that honestly explains the Hebrew perfect form and the basis for the future-like rendering.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

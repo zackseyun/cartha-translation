@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/127/003.yaml
-  text: Behold[a], children are a heritage from Yahweh, the fruit of the womb a reward.
+  text: Look, children are a heritage from Yahweh[a], the fruit of the womb a reward.
   footnotes:
   - marker: a
-    text: Or, 'children are the LORD's heritage.'
+    text: Or “children are Yahweh’s heritage.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Look! Children are a gift from Yahweh; the fruit of the womb is a reward.[a]
+  text: 'Look: children are a heritage from Yahweh.[a] Children—the fruit of the womb—are a reward.'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “Children are Yahweh’s heritage.”
+    text: Or “children are Yahweh’s inheritance.”
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Behold
-  simplified_phrase: Look!
-  preserved_meaning: The opening still calls attention emphatically to the statement.
-  reasoning_layer_used: Lexical decision for הִנֵּה
-  rationale: “Look!” gives the attention-getting force in familiar modern English.
-- pob_phrase: a heritage from Yahweh
-  simplified_phrase: a gift from Yahweh
-  preserved_meaning: Children are presented as something valuable given by Yahweh.
-  reasoning_layer_used: Lexical and theological decisions for נַחֲלַת יְהוָה
-  rationale: “Gift” makes the favored source sense clear while the footnote preserves the possessive reading.
 - pob_phrase: the fruit of the womb a reward
-  simplified_phrase: the fruit of the womb is a reward
-  preserved_meaning: The poetic image identifies offspring as a reward.
-  reasoning_layer_used: Lexical decisions for שָׂכָר and פְּרִי הַבָּטֶן
-  rationale: Adding “is” creates natural English without weakening the womb-fruit image.
+  simplified_phrase: Children—the fruit of the womb—are a reward.
+  preserved_meaning: Children born from the womb are positively described as a reward.
+  reasoning_layer_used: POB lexical decisions on פְּרִי הַבָּטֶן and שָׂכָר
+  rationale: Naming children directly explains the Hebrew idiom while retaining its fruit image.
+interpretive_expansions:
+- pob_phrase: the fruit of the womb
+  rendering: Children—the fruit of the womb
+  claim: The poetic phrase refers to children born from the womb.
+  evidence:
+  - The POB lexical rationale identifies the phrase as a conventional Hebrew expression for offspring.
+  confidence: high
+  alternatives_preserved:
+  - the fruit of the womb
 translation_notes:
   risk_flags:
-  - risk: “Gift” does not carry every inheritance association of “heritage.”
-    mitigation: It preserves the contextually favored sense of something given, and the footnote retains “heritage.”
+  - risk: “Heritage from Yahweh” can also mean “Yahweh’s inheritance.”
+    mitigation: The footnote preserves the documented possessive reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/127/003.yaml
   source_text_sha256: 4015e3b70ebeb808fcffad75da1b7903a715bd12fc0e658cf8cef756a62b8378
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ac5015361b500763056ff6727b5e3eb4506dedd4966661a60e332cf927c1af2f
-  timestamp: '2026-07-11T21:03:32Z'
-  output_hash: b0acc89cf606c98c0d43ee4ad5a6dde6c1e14584e0640a7032a3dd6cc79761a4
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9dddbc28e605fc957be3848c687460e978fb28f2a32c62494dae5e3b3ac237fa
+  timestamp: '2026-08-28T23:36:20Z'
+  output_hash: d3ff4583e7b986176c590c81d843db3d2ed012e4f3bdd7952ea4802b64884335
   usage:
-    prompt_tokens: 2420
-    completion_tokens: 510
-    total_tokens: 2930
-    reasoning_tokens: 125
+    prompt_tokens: 3382
+    completion_tokens: 631
+    total_tokens: 4013
+    reasoning_tokens: 321
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:18Z'
+  previous_text: Look! Children are a gift from Yahweh; the fruit of the womb is a reward.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:20Z'
+  previous_text: 'Look: children are an inheritance from Yahweh.[a] The fruit of the womb is a reward.'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b7bea4048233783c9a5fa2e4f3c26a71d613e16dd0a2bb1d8412ebd0d0292276
+  review_summary: 'Revision is needed because the draft does not yet provide a meaningful net clarity gain over POB: “inheritance” is not clearly easier than “heritage,” while “fruit of the womb” remains unexplained. Retain the POB’s well-supported first-line wording and make the second Hebrew idiom explicit. The footnote should continue to preserve the viable possessive reading, “children are Yahweh’s inheritance.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

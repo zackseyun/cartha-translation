@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/051/003.yaml
-  text: Wash me thoroughly from my iniquity[a][b][c], and cleanse me from my sin.
+  text: Wash me thoroughly[c] from my iniquity[b], and cleanse me from my sin[a].
   footnotes:
   - marker: a
     text: Or 'purify me from my sin.'
@@ -37,41 +37,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Wash me completely clean of my wrongdoing, and cleanse me from my sin.
+  text: Wash away my wrongdoing and guilt completely, and cleanse me from my sin.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: Wash me thoroughly
-  simplified_phrase: Wash me completely clean
-  preserved_meaning: The washing is intensive and meant to cleanse fully.
-  reasoning_layer_used: Lexical decision for הַרְבֵּה and כַּבְּסֵנִי
-  rationale: This keeps the strong washing image while making “thoroughly” more concrete.
-- pob_phrase: from my iniquity
-  simplified_phrase: of my wrongdoing
-  preserved_meaning: The speaker asks to be freed from his morally guilty wrong.
-  reasoning_layer_used: Lexical decision for עָוֹן and theological decision on paired terms
-  rationale: “Wrongdoing” is easier than “iniquity” while remaining distinct from “sin.”
+  simplified_phrase: Wash away ... completely
+  preserved_meaning: The washing image and the strong degree of cleansing are preserved.
+  reasoning_layer_used: Lexical decisions for הַרְבֵּה and כַּבְּסֵנִי
+  rationale: This natural phrasing avoids the redundancy of “completely clean.”
+- pob_phrase: my iniquity
+  simplified_phrase: my wrongdoing and guilt
+  preserved_meaning: The Hebrew term’s moral act and associated guilt remain distinct from “sin.”
+  reasoning_layer_used: Lexical and theological decisions for עָוֹן
+  rationale: Common words make the meaning clear without depending on a footnote.
+interpretive_expansions:
+- pob_phrase: my iniquity
+  rendering: my wrongdoing and guilt
+  claim: The phrase explicitly presents both the wrongful act and its guilt.
+  evidence:
+  - The POB lexical audit says עָוֹן can include both the act and its guilt.
+  - The immediate parallel retains “my sin” as a distinct expression.
+  confidence: high
+  alternatives_preserved:
+  - The Hebrew may emphasize wrongdoing, guilt, or both.
 translation_notes:
   risk_flags:
-  - risk: “Wrongdoing” may express the guilty act more clearly than the full range of guilt and its consequences.
-    mitigation: The wording retains moral weight and preserves a separate term from “sin.”
+  - risk: “Wrongdoing and guilt” may sound like two unrelated items rather than two aspects of one Hebrew term.
+    mitigation: The coordinated phrase keeps them together while the audit records their shared source term.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/051/003.yaml
   source_text_sha256: fbe49a8650ed024119e2aac186d6370c3a52cdfab1854f330931a885b758b772
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: efaa9a9dc913cb024077c4b0a36c186f17ab636c85b9c51548eb58f3af156043
-  timestamp: '2026-07-11T20:52:14Z'
-  output_hash: fa83cae65c8f67f5214c426997f5585aa0009dc98b7cf71a7bad3892c80b15d2
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e98c51d0f53ec550994c423b4902b78d55c73e927df245b1e3950a9d0503585d
+  timestamp: '2026-08-28T23:35:31Z'
+  output_hash: ef83a5a3a6bdd3cb7bfe88e2474b286ad9ee42d9ac3f0ad1e3891422c926b329
   usage:
-    prompt_tokens: 2607
-    completion_tokens: 445
-    total_tokens: 3052
-    reasoning_tokens: 169
+    prompt_tokens: 3546
+    completion_tokens: 720
+    total_tokens: 4266
+    reasoning_tokens: 354
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:37Z'
+  previous_text: Wash me completely clean of my wrongdoing, and cleanse me from my sin.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:31Z'
+  previous_text: Wash me completely clean of my iniquity[a], and cleanse me from my sin.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 626367f823a6ce1d00254a21445672733bda212bc4c917156ed01156edeea202
+  review_summary: Revision is needed because the retained technical term “iniquity” leaves the principal meaning dependent on a footnote and therefore does not deliver sufficient SPOB-level clarity. Rendering עָוֹן as “wrongdoing and guilt” is warranted by the POB lexical audit, which explicitly says the Hebrew can include both the wrongful act and its guilt. This clarification does not impose a doctrinal interpretation or erase the parallel distinction from “sin.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

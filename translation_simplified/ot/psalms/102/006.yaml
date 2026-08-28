@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/102/006.yaml
-  text: I am like a desert owl[a][b]; I have become like an owl among the ruins.
+  text: I am like a desert bird[a]; I have become like an owl among the ruins.[b]
   footnotes:
   - marker: a
-    text: Or 'I have become like a little owl in the ruins.' The exact species denoted by כּוֹס is uncertain.
+    text: The exact bird denoted by קָאַת is uncertain; traditional renderings include 'pelican.'
     reason: lexical_alternative
   - marker: b
-    text: Or 'I am like a pelican of the wilderness.' The Hebrew bird name קָאַת is uncertain; traditional renderings often use 'pelican.'
+    text: The exact bird denoted by כּוֹס is uncertain; possible renderings include 'little owl.'
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,48 +34,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I am like an owl in the desert; I have become like an owl among the ruins.[a][b]
+  text: I am like a desert bird[a]; I have become like an owl among the ruins.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The first Hebrew bird name is uncertain; it may refer to a pelican or another wilderness bird.
+    text: The exact kind of desert bird is uncertain; it may be a pelican.
     reason: lexical_alternative
   - marker: b
-    text: The exact kind of owl in the second line is uncertain; it may mean a little owl.
+    text: The exact kind of bird is uncertain; it may be a little owl.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: a desert owl
-  simplified_phrase: an owl in the desert
-  preserved_meaning: The speaker compares himself to a solitary desert bird.
-  reasoning_layer_used: POB lexical decisions for קָאַת and מִדְבָּר
-  rationale: The spatial wording makes the wilderness image immediately clear while retaining POB's owl choice.
+- pob_phrase: a desert bird
+  simplified_phrase: a desert bird
+  preserved_meaning: The bird remains unidentified while retaining its association with the desert.
+  reasoning_layer_used: POB lexical decisions and source audit
+  rationale: The POB wording is already clear and avoids reducing the phrase to a bird's immediate location.
 - pob_phrase: an owl among the ruins
   simplified_phrase: an owl among the ruins
-  preserved_meaning: The speaker's condition is pictured through a bird in a devastated place.
-  reasoning_layer_used: POB lexical decisions for כּוֹס and חֳרָבוֹת
-  rationale: This image is already common, concrete English and needs no further paraphrase.
+  preserved_meaning: The uncertain bird remains pictured within a devastated setting.
+  reasoning_layer_used: POB lexical decisions
+  rationale: The original phrase is natural modern English and preserves the poetic image.
 translation_notes:
   risk_flags:
-  - risk: Both Hebrew bird names have uncertain species.
-    mitigation: The main text follows POB's owl renderings, while the footnotes preserve the major lexical alternatives.
+  - risk: Readers may understand “owl” as an exact species identification.
+    mitigation: Footnote [b] preserves the documented uncertainty and gives “little owl” only as a possibility.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/102/006.yaml
   source_text_sha256: 3fbb290d8a35c4ade4a53e228199feb87e5897437d21886d9c50138c1971abbd
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 1fab4d50ef069e47f84193b1b6b2d969829c14ec348555e07027b481de747a16
-  timestamp: '2026-07-11T21:02:02Z'
-  output_hash: 5e631cda3f04c9c7e8820ad0279693fad472ac98825ba14076f4eba0281f3850
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0e8d05e94850f715565f1c7d9149dee7f1a9392f53cc080d1a9a8980703bd3fd
+  timestamp: '2026-08-28T23:36:00Z'
+  output_hash: b7b703ddddb4d964ee0c2a4541e02b18be89752f14229d2ac5bfea77eb4c8680
   usage:
-    prompt_tokens: 2398
-    completion_tokens: 621
-    total_tokens: 3019
-    reasoning_tokens: 276
+    prompt_tokens: 3422
+    completion_tokens: 650
+    total_tokens: 4072
+    reasoning_tokens: 338
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:26Z'
+  previous_text: I am like an owl in the desert; I have become like an owl among the ruins.[a][b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:00Z'
+  previous_text: I am like a bird in the desert; I have become like an owl in the ruins.[a][b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a0f6f8b4086f7f5bf97ff4eaac1b41579e50ac70005f1e51654561214d752674
+  review_summary: Revision is recommended because the proposed wording does not achieve a meaningful readability improvement and slightly shifts the first image from an uncertain “desert bird” designation to a generic bird’s location. No doctrinal expansion or problematic theological interpretation is present. Retain the POB’s clear, source-sensitive phrasing, with simplified footnotes that preserve the lexical uncertainty.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

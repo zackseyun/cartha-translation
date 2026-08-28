@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/023/003.yaml
-  text: Do not crave his delicacies[a], for they are deceptive food.
+  text: Do not crave his delicacies, for it is deceptive food.[a]
   footnotes:
   - marker: a
-    text: Hebrew literally, 'bread/food of lies.'
-    reason: lexical_alternative
+    text: Hebrew literally, “food of lies.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,50 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not crave the ruler’s rich dishes. This food is deceptive.
+  text: Do not crave his delicious food. It is deceptive.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Hebrew literally, “food of lies.”
+    reason: source_note
 simplification_decisions:
 - pob_phrase: his delicacies
-  simplified_phrase: the ruler’s rich dishes
-  preserved_meaning: The attractive, fine food offered by the ruler remains the object of the warning.
-  reasoning_layer_used: lexical decision and immediate context
-  rationale: “Rich dishes” is more immediately understandable than “delicacies,” while “the ruler” identifies the host from the preceding verse.
-- pob_phrase: for they are deceptive food
-  simplified_phrase: This food is deceptive.
-  preserved_meaning: The food is not what it seems and is connected with hidden motives.
-  reasoning_layer_used: lexical decisions for לֶחֶם and כְּזָבִים
-  rationale: A separate short sentence preserves the food image and states its deceptive character plainly.
-interpretive_expansions:
-- pob_phrase: his
-  rendering: the ruler’s
-  claim: The host offering the food is the ruler named in the preceding verse.
-  evidence:
-  - Proverbs 23:1 identifies the person at the meal as a ruler.
-  confidence: high
-  alternatives_preserved:
-  - his
+  simplified_phrase: his delicious food
+  preserved_meaning: The host’s food is especially tasty and appealing.
+  reasoning_layer_used: POB lexical decision for לְמַטְעַמּוֹתָיו
+  rationale: “Delicious food” expresses the audited sense without adding the unsupported idea that it is the finest.
+- pob_phrase: for it is deceptive food
+  simplified_phrase: It is deceptive
+  preserved_meaning: The appealing food conceals deception and hidden motives.
+  reasoning_layer_used: POB lexical decision for וְהוּא לֶחֶם כְּזָבִים and source audit
+  rationale: The separate sentence keeps the strong warning while avoiding the awkward phrase “deceptive food.”
 translation_notes:
   risk_flags:
-  - risk: Naming the ruler is more explicit than this verse alone.
-    mitigation: The identification comes directly from the immediate context and adds no new participant.
+  - risk: “It is deceptive” may leave the deception’s exact nature unstated.
+    mitigation: The context and the literal footnote preserve the warning without inventing a specific hidden motive.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/023/003.yaml
   source_text_sha256: 041e4452418d373e202deb4e495f3fb472b4c735f06e130d43d24de9ad6f5f8b
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: d5d832301a31a075dd856b32142927ac219e39ee37d706b9112f9a747945f79e
-  timestamp: '2026-07-11T21:05:28Z'
-  output_hash: 86dba953d319f8d916e3c4f0c195b01409cad1e51514120d6a03dfa9138a8704
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 696824f9556311702618522e8582aa7d8d3cf6a2d09fc0f3afcefbedca3152d6
+  timestamp: '2026-08-28T23:34:42Z'
+  output_hash: f90a76452d52715c8782577b0e4c7e3acc32649b6c228074d62bff91e3d5ba73
   usage:
-    prompt_tokens: 2307
-    completion_tokens: 847
-    total_tokens: 3154
-    reasoning_tokens: 512
+    prompt_tokens: 3373
+    completion_tokens: 585
+    total_tokens: 3958
+    reasoning_tokens: 282
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:57Z'
+  previous_text: Do not crave the ruler’s rich dishes. This food is deceptive.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:42Z'
+  previous_text: Do not crave the finest dishes he serves. That food is not what it seems.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 95192a2a046790ae2504e7a479e6cbf2ed8b383e1cff4b98e775dca3ce130102
+  review_summary: The draft is clearer in its everyday wording, and identifying the food as belonging to the host is warranted. However, “finest” is an unsupported intensification, and “not what it seems” softens the passage’s warning that the offered food is deceptive. The revision retains accessible language while preserving the source’s stronger warning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

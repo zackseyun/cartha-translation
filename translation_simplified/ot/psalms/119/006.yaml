@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/119/006.yaml
-  text: Then I would not be put to shame, when I fix my eyes on all your commandments.
+  text: Then I would not be ashamed when I fix my eyes on all your commandments.
   ai_draft:
     model_id: claude-opus-4-8
     model_version: claude-opus-4-8
@@ -21,46 +21,65 @@ base_translation:
     output_hash: 35e87ae8d61bb2cefd91ef9d31549fa6b40f9f2ff807cb142ae8d2c632dd7ed8
 translation:
   language: en
-  text: Then I will not be ashamed when I keep my eyes fixed on all your commandments.
+  text: Then I would not be ashamed when I pay close attention to all your commandments.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: would not be put to shame
-  simplified_phrase: will not be ashamed
-  preserved_meaning: The speaker expects freedom from shame.
-  reasoning_layer_used: source text and POB translation
-  rationale: The active wording is more natural while preserving the Hebrew sense of shame.
 - pob_phrase: fix my eyes on
-  simplified_phrase: keep my eyes fixed on
-  preserved_meaning: The speaker gives sustained attention to God's commands.
-  reasoning_layer_used: POB translation
-  rationale: This keeps the source image while making continued attention clear.
-- pob_phrase: commandments
-  simplified_phrase: commandments
-  preserved_meaning: These are God's authoritative commands.
-  reasoning_layer_used: POB lexical decision based on HALOT and psalm-wide consistency
-  rationale: The key biblical term is retained because it expresses divine authority and matches the psalm's terminology.
+  simplified_phrase: pay close attention to
+  preserved_meaning: The speaker gives careful attention to every commandment from God.
+  reasoning_layer_used: WLC Hebrew, POB wording, and grounding review
+  rationale: The direct modern expression conveys the contextual force of the Hebrew looking image without suggesting literal staring.
+interpretive_expansions:
+- pob_phrase: fix my eyes on
+  rendering: pay close attention to
+  claim: Looking toward the commandments means giving them careful regard.
+  evidence:
+  - The Hebrew uses a looking image directed toward all God's commandments.
+  - The psalmic context and POB audit support attentive regard rather than merely literal sight.
+  confidence: high
+  alternatives_preserved:
+  - fix my eyes on
+  - look toward
 translation_notes:
   risk_flags:
-  - risk: Changing “would not be put to shame” to “will not be ashamed” may sound less externally focused.
-    mitigation: The rendering preserves the central shame meaning without specifying whether its cause is inward or public.
+  - risk: “Would not” depends on the wish expressed in the preceding verse.
+    mitigation: The conditional wording is retained rather than changed to a firm prediction.
+  - risk: Replacing the looking image could weaken its concrete force.
+    mitigation: “Pay close attention” states the image’s contextual meaning while retaining its focus on all the commandments.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/119/006.yaml
   source_text_sha256: 37df92a77df6b868170f798397ac60280400bc9c72e03ae9ca5355cecfe07ed7
-  pob_commit_sha: 10975b14a09f35fcd9d540512a844c945cec1b29
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2a344893ca0ba00b9a97ef182213dbef57dea6fd8e2fd045027e921d6fff9661
-  timestamp: '2026-07-27T04:20:24Z'
-  output_hash: d62b58ca05b22a242cc17c79fb0199f022cf6e290a0018f5abd4a99d366a8a2a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 475e9feb47af6093e401cbc2d91fd46b90e44853731ed2332b1321e4d37be0a6
+  timestamp: '2026-08-28T23:36:10Z'
+  output_hash: 6fc6ea8134455e185ec49e626484a11428f884d682099b308a46ec914fa105bc
   usage:
-    prompt_tokens: 1747
-    completion_tokens: 532
-    total_tokens: 2279
-    reasoning_tokens: 224
+    prompt_tokens: 2566
+    completion_tokens: 301
+    total_tokens: 2867
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:54Z'
+  previous_text: Then I will not be ashamed when I keep my eyes fixed on all your commandments.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:10Z'
+  previous_text: Then I would not be ashamed when I keep my eyes on all your commandments.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d541b30bbff54ce3a6d4b303d5d72e3148830775f049bda33685f24c6bece0ea
+  review_summary: The draft does not introduce doctrinal content or alter the conditional force inherited from verse 5. However, its replacement is not sufficiently clearer than the POB wording to justify a SPOB change. “Pay close attention to” communicates the Hebrew looking image’s contextual force—careful regard for every commandment—more directly for modern readers while retaining the comprehensive “all” and the conditional result.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

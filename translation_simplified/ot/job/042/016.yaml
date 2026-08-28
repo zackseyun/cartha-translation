@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/042/016.yaml
-  text: After this[a], Job lived one hundred and forty years, and saw his sons and his grandsons, four generations.
+  text: After this, Job lived one hundred and forty years and saw his sons and grandsons to the fourth generation.[a]
   footnotes:
   - marker: a
-    text: Or, more idiomatically, “lived to see his sons and his grandsons.” The Hebrew reads more literally, “saw his sons and his sons’ sons.”
+    text: Hebrew more literally, “saw his sons and his sons’ sons—four generations.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,56 +31,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 42:16 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''his sons’ sons''].'
 translation:
   language: en
-  text: After this, Job lived another 140 years. He lived to see his sons and grandsons through four generations.
+  text: After this, Job lived another 140 years. He saw his sons and grandsons, down to the fourth generation.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: More literally, “he saw his sons and his sons’ sons—four generations.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: lived one hundred and forty years
-  simplified_phrase: lived another 140 years
-  preserved_meaning: Job continued living for 140 years after the preceding events.
-  reasoning_layer_used: lexical decision for וַיְחִי and אַחֲרֵי זֹאת
-  rationale: The shorter wording makes the time sequence immediately clear.
-- pob_phrase: and saw his sons and his grandsons
-  simplified_phrase: He lived to see his sons and grandsons
-  preserved_meaning: Job personally saw his male descendants during his extended life.
-  reasoning_layer_used: POB footnote and lexical decisions for וַיַּרְא, בָּנָיו, and בְּנֵי בָנָיו
-  rationale: The idiomatic phrase states the implication already recognized in the POB footnote.
-- pob_phrase: four generations
-  simplified_phrase: through four generations
-  preserved_meaning: Job saw his family line extend across four generations.
-  reasoning_layer_used: lexical decision for אַרְבָּעָה דֹּרוֹת
-  rationale: “Through” clearly connects the generation count to the descendants Job saw.
+- pob_phrase: Job lived one hundred and forty years and saw
+  simplified_phrase: Job lived another 140 years. He saw
+  preserved_meaning: Job continued living for 140 years after the preceding events and saw his descendants.
+  reasoning_layer_used: Source syntax and POB lexical decisions for וַיְחִי and אַחֲרֵי זֹאת.
+  rationale: A sentence break and “another” make the timeline immediately clear.
+- pob_phrase: to the fourth generation
+  simplified_phrase: down to the fourth generation
+  preserved_meaning: Job saw his family line extend through four generations.
+  reasoning_layer_used: POB source audit for אַרְבָּעָה דֹּרוֹת.
+  rationale: “Down to” expresses the generational extent in ordinary English.
 interpretive_expansions:
 - pob_phrase: After this, Job lived one hundred and forty years
   rendering: After this, Job lived another 140 years
-  claim: The 140 years were additional years following Job’s restoration.
+  claim: The 140 years followed the events just described.
   evidence:
-  - The Hebrew time phrase places the 140 years after the preceding events.
-  - The POB lexical rationale says the verb narrates continued life after the restoration.
+  - The POB lexical rationale says the phrase marks subsequent time relative to the preceding events.
   confidence: high
   alternatives_preserved:
   - After this, Job lived 140 years.
 translation_notes:
   risk_flags:
-  - risk: “Through four generations” may leave uncertain how the generations are counted.
-    mitigation: The wording preserves the POB’s own unspecified count without forcing a genealogy.
+  - risk: “Grandsons” is less structurally literal than “sons’ sons.”
+    mitigation: The footnote preserves the literal wording and the main text retains the male-specific reference.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/042/016.yaml
   source_text_sha256: db06f3b5d49d06a0175ff996ecac98be63f17b20521698696c3cfd3c9be8165f
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b8eab41d47e2dffecaee507fad3ef97aca6764d8fdba8ff950699b70db76c974
-  timestamp: '2026-07-11T20:22:58Z'
-  output_hash: 813e6070e9dafdb5fa271e17dc9432be6c67a69f61724773eb52bbd472c2332a
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 36e7784527626f85038110426b0a520b81fc907c516f42cf5dd8a7e1110e5436
+  timestamp: '2026-08-28T22:52:29Z'
+  output_hash: 597335dc7a42eb61d2e1b9207560c5b23c063f44d8be23844fa08267dfb38042
   usage:
-    prompt_tokens: 2754
-    completion_tokens: 862
-    total_tokens: 3616
-    reasoning_tokens: 383
+    prompt_tokens: 3074
+    completion_tokens: 652
+    total_tokens: 3726
+    reasoning_tokens: 233
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:51Z'
+  previous_text: After this, Job lived another 140 years. He lived to see his sons and grandsons through four generations.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:29Z'
+  previous_text: After this, Job lived 140 more years. He saw his sons and grandsons through four generations.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

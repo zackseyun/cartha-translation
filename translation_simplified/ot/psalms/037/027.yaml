@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/037/027.yaml
-  text: Turn away from evil and do good[a], and dwell forever.
+  text: Turn away from evil and do good, and dwell forever.[a]
   footnotes:
   - marker: a
-    text: Or, in light of the psalm's repeated theme, 'and dwell in the land forever' or 'and live securely forever.' The Hebrew here does not explicitly state 'in the land.'
+    text: In light of the psalm's repeated theme, this may imply “dwell in the land forever.” The Hebrew does not explicitly say “in the land” here.
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Leave evil behind and do what is good. Remain settled forever.[a]
+  text: Turn away from evil and do what is good. Remain settled forever.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: This may also mean “remain settled in the land forever” or “live securely forever.” The Hebrew does not explicitly say “in the land.”
+    text: This may mean “remain settled in the land forever,” a repeated theme in this psalm, but the Hebrew does not explicitly say “in the land” here.
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Turn away from evil
-  simplified_phrase: Leave evil behind
-  preserved_meaning: A person must deliberately reject and depart from evil.
-  reasoning_layer_used: POB lexical decision for סוּר מֵרָע
-  rationale: The new wording expresses the same moral turning in familiar English.
+- pob_phrase: and do good
+  simplified_phrase: and do what is good
+  preserved_meaning: The command is to perform morally good actions.
+  reasoning_layer_used: POB lexical decision for וַעֲשֵׂה טוֹב
+  rationale: The fuller wording makes the moral sense immediately clear.
 - pob_phrase: and dwell forever
   simplified_phrase: Remain settled forever
-  preserved_meaning: The command retains the image of enduring residence without adding an unstated location.
+  preserved_meaning: The command still describes continuing residence or settledness without naming a location.
   reasoning_layer_used: POB lexical and theological decisions for וּשְׁכֹן לְעוֹלָם
-  rationale: “Remain settled” clarifies “dwell” while preserving the Hebrew clause's deliberate openness.
+  rationale: “Remain settled” expresses ongoing residence rather than the act of making a home.
+- pob_phrase: Turn away from evil and do good, and dwell forever.
+  simplified_phrase: Turn away from evil and do what is good. Remain settled forever.
+  preserved_meaning: The three commands remain distinct and retain their source order.
+  reasoning_layer_used: Source syntax and applied revision
+  rationale: Dividing the commands into two sentences makes them easier to follow.
 translation_notes:
   risk_flags:
-  - risk: “Remain settled forever” may still sound unusual without a stated place.
-    mitigation: The footnote gives the main contextual readings while preserving the source's ambiguity.
+  - risk: “Remain settled” may be heard as emotional calm rather than continued residence.
+    mitigation: The footnote identifies the contextual land reading while noting that the location is unstated.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/037/027.yaml
   source_text_sha256: c702585f8293f222abce4de8a80b95c2293de89dac52ea656ed19b6f3ed8b278
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: f74248309b7106a4f2f1efff3aa07846a07b6af3e4417a337e9fbdc0fce78bf2
-  timestamp: '2026-07-11T20:49:07Z'
-  output_hash: ef40606d11eb0bc30f845ac2688ae7f4ab1b06d39185bb06a1952d890a21c7b6
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ec29d6df512937b012fd81185556ef5caf6924625a7381ab2219dfe975ed3161
+  timestamp: '2026-08-28T23:35:23Z'
+  output_hash: 182b1ee7deae8ad5289308964da0a2e1b37a4e2b59abccc7a57a8d3302cde86a
   usage:
-    prompt_tokens: 2442
-    completion_tokens: 788
-    total_tokens: 3230
-    reasoning_tokens: 477
+    prompt_tokens: 3568
+    completion_tokens: 812
+    total_tokens: 4380
+    reasoning_tokens: 416
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:15Z'
+  previous_text: Leave evil behind and do what is good. Remain settled forever.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:23Z'
+  previous_text: Turn away from evil and do what is good. Make your home forever.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 7dee5e4de0ab42e12278f684668bf51dad8ee9a0a3869b9eac813e2724383267
+  review_summary: 'The first simplification is warranted: “do what is good” clearly expresses the substantival adjective without adding doctrine. The footnote responsibly preserves the unstated-but-contextually-supported land reading. Revise the final command, however. “Make your home forever” is both semantically vulnerable and awkward without a stated location. “Settle down forever” retains the residence/settledness sense of the Hebrew and is clearer without inserting “the land” into the main text.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/003/008.yaml
-  text: All of them are holding swords[a], trained in warfare; each man has his sword at his thigh because of terror in the nights.
+  text: All of them bear swords, trained for battle; each man has his sword at his thigh because of the terrors of the night[a].
   footnotes:
   - marker: a
-    text: Or 'at night.' The Hebrew reads literally 'in the nights,' a plural expression that may poetically intensify the sense of nighttime danger.
+    text: Hebrew literally uses the plural “in the nights.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,55 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They all carry swords and are trained for battle. Each man has his sword at his thigh because of nighttime terror.[a]
+  text: Every one of them is armed with a sword and trained for battle. Each man wears his sword at his thigh because of the terrors of the night.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew literally says “in the nights,” a poetic plural that may emphasize nighttime danger.
+    text: Hebrew literally says “in the nights.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: All of them are holding swords
-  simplified_phrase: They all carry swords
-  preserved_meaning: Every man in the group is armed with a sword.
-  reasoning_layer_used: Lexical decision for אֲחֻזֵי חֶרֶב
-  rationale: “Carry swords” naturally describes armed men without weakening the image.
-- pob_phrase: trained in warfare
-  simplified_phrase: trained for battle
-  preserved_meaning: The men have received military training.
-  reasoning_layer_used: Lexical decision for מְלֻמְּדֵי מִלְחָמָה
-  rationale: “Battle” is immediate common English and retains the military sense.
-- pob_phrase: because of terror in the nights
-  simplified_phrase: because of nighttime terror
-  preserved_meaning: Their swords are ready because of serious danger at night.
-  reasoning_layer_used: Lexical decisions for מִפַּחַד and בַּלֵּילוֹת
-  rationale: “Nighttime terror” preserves singular terror and expresses the temporal phrase naturally.
+- pob_phrase: All of them bear swords
+  simplified_phrase: Every one of them is armed with a sword
+  preserved_meaning: The whole group is equipped with swords, not merely holding them at that moment.
+  reasoning_layer_used: POB lexical decision for אֲחֻזֵי חֶרֶב
+  rationale: “Is armed with a sword” states the established military condition in common English.
+- pob_phrase: each man has his sword at his thigh
+  simplified_phrase: Each man wears his sword at his thigh
+  preserved_meaning: Each guard carries his weapon at the upper leg or hip area.
+  reasoning_layer_used: POB lexical rationale for חַרְבּוֹ עַל יְרֵכוֹ
+  rationale: “Wears” naturally describes a carried weapon while retaining the thigh image.
 translation_notes:
   risk_flags:
-  - risk: “Nighttime terror” does not reproduce the Hebrew poetic plural.
-    mitigation: The footnote preserves the literal wording and its possible intensifying force.
+  - risk: Modern readers may take “terrors of the night” as emotional fears rather than nighttime threats.
+    mitigation: The armed and battle-trained context supplies the protective military setting without adding an unsupported purpose clause.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/003/008.yaml
   source_text_sha256: f36ffe102b93116d2477a7af8a53ae93b3c40e44bfcaea30cbd839a44f34cf40
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: fff381d828857f6760bf25dc70118fdd133e5150f1941ac057d9689294bf3659
-  timestamp: '2026-07-12T10:05:20Z'
-  output_hash: a4e87dd9357cf05550782eb62e7fad4a9d20ae6e8104267d8145ceb1834bbb18
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 68ca8e015cc5fe0e7868015744117011e23fa033baf4cc31e81eba9e9e1794b3
+  timestamp: '2026-08-28T23:10:22Z'
+  output_hash: 8f71d2fa150101b84a00d5702db945ecb908ea532e525d569bb1c7dbdfcb2c83
   usage:
-    prompt_tokens: 3305
-    completion_tokens: 378
-    total_tokens: 3683
-    reasoning_tokens: 0
+    prompt_tokens: 2714
+    completion_tokens: 799
+    total_tokens: 3513
+    reasoning_tokens: 458
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:05:20Z'
   previous_text: They all carry swords and are trained for battle. Each man has his sword at his thigh because of the terrors of the night.[a]
@@ -91,3 +84,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:10:22Z'
+  previous_text: They all carry swords and are trained for battle. Each man has his sword at his thigh because of nighttime terror.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

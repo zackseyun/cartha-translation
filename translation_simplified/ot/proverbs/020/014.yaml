@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/020/014.yaml
-  text: “Bad[a], bad,” says the buyer; but when he goes away, then he boasts.
+  text: “No good, no good,” says the buyer, but after he leaves, he boasts.[a]
   footnotes:
   - marker: a
-    text: Or “No good, no good,” or “Worthless, worthless.” The Hebrew repeats “bad” for emphasis, reflecting the buyer’s attempt to talk down the value of the item.
-    reason: lexical_alternative
+    text: The buyer disparages the item while bargaining, then boasts after leaving.
+    reason: context_note
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,41 +31,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: “This is no good—no good at all,” the buyer says. But after he leaves, he boasts.
+  text: “No good! No good!” the buyer says while bargaining. But after he leaves, he boasts.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: “Bad, bad”
-  simplified_phrase: “This is no good—no good at all”
-  preserved_meaning: The buyer emphatically claims that the item is poor or worthless.
-  reasoning_layer_used: POB lexical decision and footnote for רַע רַע
-  rationale: The natural bargaining phrase keeps the Hebrew repetition and its disparaging force.
-- pob_phrase: but when he goes away, then
-  simplified_phrase: But after he leaves
-  preserved_meaning: The boasting follows the buyer’s departure and contrasts with his earlier criticism.
-  reasoning_layer_used: POB lexical decisions for וְאֹזֵל לוֹ and אָז
-  rationale: The shorter time clause expresses the same sequence and contrast in ordinary English.
+- pob_phrase: “No good, no good,” says the buyer
+  simplified_phrase: “No good! No good!” the buyer says while bargaining
+  preserved_meaning: The buyer disparages the item as part of bargaining without naming any alleged defect.
+  reasoning_layer_used: POB lexical rationale and context footnote
+  rationale: The added setting makes the commercial exchange clear while preserving the repeated criticism.
+- pob_phrase: but after he leaves, he boasts
+  simplified_phrase: But after he leaves, he boasts.
+  preserved_meaning: Once away, the buyer congratulates himself without stating what he boasts about.
+  reasoning_layer_used: POB lexical rationale for יִתְהַלָּל and grounding review
+  rationale: A separate sentence sharpens the contrast and leaves the boast’s content unspecified.
+interpretive_expansions:
+- pob_phrase: says the buyer
+  rendering: the buyer says while bargaining
+  claim: The buyer’s disparaging words are part of bargaining.
+  evidence:
+  - The POB footnote explicitly identifies bargaining as the setting.
+  confidence: high
+  alternatives_preserved:
+  - The verse does not specify what defect the buyer alleges.
 translation_notes:
   risk_flags:
-  - risk: “No good” may sound slightly less blunt than the literal “bad.”
-    mitigation: Repeating and intensifying the phrase preserves the buyer’s emphatic disparagement.
+  - risk: The exclamation marks may make the buyer sound more emphatic than the source punctuation requires.
+    mitigation: They express the force of the repeated sales claim without adding a specific accusation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/020/014.yaml
   source_text_sha256: d47b54fcb33b44414f27f6f615d34cc8494bb859e6c9f549dffb3497df54f523
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0bc93033edc169487f27027c670f49a1a2f7a894d0e205e10906715630d3bf02
-  timestamp: '2026-07-11T21:22:23Z'
-  output_hash: 1ea88234962f74915e0280a4bf16a7089b1d5a2f4019ea51a0cbcd27954b15e2
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0b0e6deb9b109e7e29bd5f41e1c525f8bf94eba3e638407fbc4b78ea4f45ff9d
+  timestamp: '2026-08-28T23:34:37Z'
+  output_hash: b4b56dfff953972e0f8bbb07f32639b1f6a2dd0aa02469ddef52e252f5b9279e
   usage:
-    prompt_tokens: 2340
-    completion_tokens: 639
-    total_tokens: 2979
-    reasoning_tokens: 355
+    prompt_tokens: 3393
+    completion_tokens: 448
+    total_tokens: 3841
+    reasoning_tokens: 82
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:06:46Z'
+  previous_text: “This is no good—no good at all,” the buyer says. But after he leaves, he boasts.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:37Z'
+  previous_text: “No good! No good!” the buyer says while bargaining. But after he leaves, he boasts about the good deal he got.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 56e4ed4205cd39e3de9bc3f03190839ab3ca9ca38bbb15da61d7736c00eab79d
+  review_summary: The added bargaining setting is warranted by the POB context note and makes the commercial scene clear. However, “about the good deal he got” turns a natural implied application into the text’s explicit meaning and narrows the unstated content of the boast. Retain the clear setting but leave the boast’s content unspecified.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/081/009.yaml
-  text: You must have no foreign god among you, and you must not bow down to an alien god[a].
+  text: You must have no foreign god among you, and you must not bow down to a god of a foreign land[a].
   footnotes:
   - marker: a
-    text: "The Hebrew uses two closely related words for a god outside Israel's worship: 'foreign' and 'alien' or 'strange.' The variation reflects the poetic parallelism."
+    text: 'The Hebrew uses two related expressions: “foreign god” and, more literally, “a god of a foreign land.”'
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,41 +31,71 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 81:10 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''among you''].'
 translation:
   language: en
-  text: You must have no foreign god among you, and you must not bow down to any foreign god.
+  text: Do not have any foreign god among you. Do not bow down in worship to a god of a foreign land.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: 'The Hebrew uses two related expressions: “foreign god” and “a god of a foreign land.”'
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: There shall not be in you any foreign god
-  simplified_phrase: You must have no foreign god among you
-  preserved_meaning: The words remain a covenant prohibition against allowing a foreign deity within Israel.
-  reasoning_layer_used: lexical and theological decisions
-  rationale: The direct command is clearer, while “among you” preserves the corporate address to Israel.
-- pob_phrase: you shall not bow down to a foreign god
-  simplified_phrase: you must not bow down to any foreign god
-  preserved_meaning: The physical act of bowing in worship remains explicit.
-  reasoning_layer_used: lexical decision for תִשְׁתַּחֲוֶה
-  rationale: “Must not” expresses the prohibition naturally without replacing the source image with the broader word “worship.”
+- pob_phrase: You must have no foreign god among you
+  simplified_phrase: Do not have any foreign god among you
+  preserved_meaning: The community is directly forbidden to have a foreign god in its worship.
+  reasoning_layer_used: Lexical and theological decisions on יִהְיֶה and בְּךָ
+  rationale: The direct command is natural English and keeps the full prohibition.
+- pob_phrase: you must not bow down to
+  simplified_phrase: Do not bow down in worship to
+  preserved_meaning: The physical act of bowing to a god is forbidden as worship.
+  reasoning_layer_used: Lexical decisions on תִשְׁתַּחֲוֶה and לְאֵל
+  rationale: This keeps the physical image while making its religious purpose clear.
+interpretive_expansions:
+- pob_phrase: bow down to
+  rendering: bow down in worship to
+  claim: The bowing described here is an act of worship.
+  evidence:
+  - The object of the bowing is a god.
+  - The POB lexical rationale identifies this as a worship context.
+  confidence: high
+  alternatives_preserved:
+  - bow down to
 translation_notes:
   risk_flags:
-  - risk: Modern readers may take “you” as addressed only to one individual.
-    mitigation: “Among you” signals that Israel is being addressed as a community.
+  - risk: “Among you” could be read only individually rather than as an address to Israel together.
+    mitigation: The wording preserves English “you” without forcing either an individual or national emphasis.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/081/009.yaml
   source_text_sha256: 1a789f073225de0c59a69eacd0143f896e5bbd1d0bcb42bd3a38383fd97909d0
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4dccfed78d3ae233e20725fc848541cd9fc3f0029b67985abc519e9a50e5f06d
-  timestamp: '2026-07-11T20:52:40Z'
-  output_hash: 23a10118ec8eae49f65b6600957aa6f5983648787f16d4db85ffcb8284e4a86e
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b435c2bf4f8abebca470520342b0f353470db9d8f833d16a366596a5be25e3b9
+  timestamp: '2026-08-28T23:35:46Z'
+  output_hash: 4536d6cceaae1e5e0a550a04625977eba7be0fcb6ec7068057e9f1b0115504bd
   usage:
-    prompt_tokens: 2827
-    completion_tokens: 402
-    total_tokens: 3229
-    reasoning_tokens: 115
+    prompt_tokens: 4139
+    completion_tokens: 407
+    total_tokens: 4546
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:16Z'
+  previous_text: You must have no foreign god among you, and you must not bow down to any foreign god.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:46Z'
+  previous_text: Do not allow any foreign god among you. Do not bow down in worship to a god from a foreign land.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: cce4843b2525efd108d1b04ea53fbf2ec4e5dd8747ff99a3f1e2c2777baf28d7
+  review_summary: 'The added “in worship” is a warranted clarification: bowing to a god in this immediate context is worship, and it preserves rather than replaces the physical image. “God from a foreign land” is readable, but “of a foreign land” more directly retains the audited expression and its association with foreign worship. Revise “Do not allow” to “Do not have” so the first command remains a direct prohibition rather than being narrowed to permission or tolerance.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

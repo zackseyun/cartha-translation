@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/102/004.yaml
-  text: My heart is struck like grass and withered[a][b], for I forget to eat my bread.
+  text: My heart is struck down and withered like grass, for I forget to eat my bread.[a][b]
   footnotes:
   - marker: a
-    text: '''My bread'' may also mean ''my food'' more generally.'
+    text: “My bread” may also mean “my food” more generally.
     reason: lexical_alternative
   - marker: b
-    text: Or 'I have forgotten to eat my bread'; the Hebrew perfect may be rendered as a present-like description of ongoing distress or as a completed action with present effect.
-    reason: lexical_alternative
+    text: Or “I have forgotten to eat my bread”; the Hebrew perfect may describe ongoing distress or a completed action with present effect.
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,57 +34,53 @@ base_translation:
     changes_summary: Added the explicit subject 'My heart' from the source, reordered the clause for natural English while preserving both verbs, and retained the formal wording 'my bread.'
 translation:
   language: en
-  text: My heart is struck down and withered like grass, because I forget to eat my food.[a]
+  text: My heart is beaten down and withered like grass because I forget to eat.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “because I have forgotten to eat my food.”
-    reason: lexical_alternative
+    text: The Hebrew says “my bread,” meaning the food he would eat.
+    reason: simplification_note
+  - marker: b
+    text: Or “I have forgotten to eat”; the Hebrew may describe continuing distress or a past action whose effects remain.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: My heart is struck like grass and withered
-  simplified_phrase: My heart is struck down and withered like grass
-  preserved_meaning: The speaker’s inner self is afflicted and has lost vitality like damaged, dried grass.
-  reasoning_layer_used: Lexical decisions and applied revisions
-  rationale: The recast keeps both verbs and the grass image while making their relationship natural in English.
-- pob_phrase: for I forget
-  simplified_phrase: because I forget
-  preserved_meaning: Neglecting to eat explains the speaker’s condition.
-  reasoning_layer_used: Lexical decision for כִּי
-  rationale: “Because” makes the causal link immediately clear.
-- pob_phrase: my bread
-  simplified_phrase: my food
-  preserved_meaning: The speaker neglects eating during severe distress.
-  reasoning_layer_used: Lexical alternative for לַחְמִי
-  rationale: “Food” clearly conveys the broader everyday sense permitted by the Hebrew word.
+- pob_phrase: My heart is struck down
+  simplified_phrase: My heart is beaten down
+  preserved_meaning: The heart remains the afflicted inner self, pictured as having been struck down.
+  reasoning_layer_used: POB lexical decision for הוּכָּה and לִבִּי
+  rationale: “Beaten down” expresses the afflicted condition in familiar English.
+- pob_phrase: I forget to eat my bread
+  simplified_phrase: I forget to eat
+  preserved_meaning: Severe distress causes the speaker to neglect food.
+  reasoning_layer_used: POB lexical decisions for שָׁכַחְתִּי, מֵאֲכֹל, and לַחְמִי
+  rationale: English naturally uses “eat” without naming the food, while a note preserves the concrete Hebrew wording.
 translation_notes:
   risk_flags:
-  - risk: Applying “like grass” to both conditions may soften its primary grammatical link with being struck.
-    mitigation: The wording follows the audited holistic reading and preserves both verbs and the grass image.
-  - risk: The verb for forgetting may describe ongoing distress or a completed action with present effect.
-    mitigation: The main text follows POB’s present rendering, while the footnote preserves the other possibility.
+  - risk: Removing “my bread” from the main text reduces the concrete Hebrew detail.
+    mitigation: Footnote a records the literal image and its broader sense.
+  - risk: The present tense may obscure the Hebrew perfect's completed-action sense.
+    mitigation: Footnote b preserves the alternative tense reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/102/004.yaml
   source_text_sha256: 5f47f0074fffa4f22de6cb293e038b47b5587d36be7aac68528caab6df9c1f48
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: e520d480e0bdda913c1be7238cea24edd33c052e89781029d93dfb63fe0e8f30
-  timestamp: '2026-07-12T10:02:12Z'
-  output_hash: c383422336cee2a29f2f36f7db358c6800071b3d1e2343259300a16dd3d91273
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 590fb1c4a2fd7a577edbb74484f3a4deac6c0062985fd5056a210797abfb8aee
+  timestamp: '2026-08-28T22:58:21Z'
+  output_hash: 2810abb602af7b85f9fe5e98b6938963c93024882c8a5e1b04f4e601ff258f03
   usage:
-    prompt_tokens: 3774
-    completion_tokens: 391
-    total_tokens: 4165
-    reasoning_tokens: 0
+    prompt_tokens: 3152
+    completion_tokens: 897
+    total_tokens: 4049
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:12Z'
   previous_text: My heart is struck down and withers like grass, because I forget to eat my food.[a]
@@ -96,3 +92,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:58:21Z'
+  previous_text: My heart is struck down and withered like grass, because I forget to eat my food.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

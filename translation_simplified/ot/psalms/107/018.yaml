@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/107/018.yaml
-  text: Their soul loathed all food[a], and they drew near to the gates of death.
+  text: They loathed all food[a], and they drew near to the gates of death.
   footnotes:
   - marker: a
-    text: Or 'their appetite loathed all food' or simply 'they loathed all food'; Hebrew 'their soul' (נַפְשָׁם) can denote the inner self, life, or appetite depending on context.
-    reason: lexical_alternative
+    text: Hebrew “their soul loathed all food”; here “soul” can refer to the self or appetite.
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,60 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They loathed all food[a], and they came close to the gates of death.
+  text: Every kind of food disgusted them.[a] They came close to the gates of death.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Hebrew says “their soul,” which here may refer to the person as a whole or to their appetite.
-    reason: lexical_alternative
+    text: Hebrew says, “their soul loathed all food”; here “soul” refers to the people themselves, with a possible sense of appetite.
+    reason: source_note
+  - marker: b
+    text: The “gates of death” picture the threshold of death.
+    reason: simplification_note
 simplification_decisions:
-- pob_phrase: Their soul loathed all food
-  simplified_phrase: They loathed all food
-  preserved_meaning: They felt strong revulsion toward all food, while the footnote preserves the possible senses of “soul.”
-  reasoning_layer_used: POB lexical and theological decisions on נַפְשָׁם and תְּתַעֵב
-  rationale: Using “they” is natural English and avoids overstating either the whole-person or appetite nuance.
-- pob_phrase: they drew near to
-  simplified_phrase: they came close to
+- pob_phrase: They loathed all food
+  simplified_phrase: Every kind of food disgusted them
+  preserved_meaning: They felt strong revulsion toward all food.
+  reasoning_layer_used: Lexical decisions for כָּל אֹכֶל and תְּתַעֵב
+  rationale: The recast uses familiar wording while retaining both totality and strong revulsion.
+- pob_phrase: they drew near
+  simplified_phrase: They came close
   preserved_meaning: They approached death without necessarily crossing its threshold.
-  reasoning_layer_used: POB lexical decisions on וַיַּגִּיעוּ and עַד
-  rationale: “Came close to” expresses imminent danger in common English.
+  reasoning_layer_used: Lexical decision for וַיַּגִּיעוּ
+  rationale: “Came close” is ordinary English that preserves imminent danger.
+- pob_phrase: the gates of death
+  simplified_phrase: the gates of death
+  preserved_meaning: The Hebrew threshold-of-death image remains intact.
+  reasoning_layer_used: Lexical decision for שַׁעֲרֵי מָוֶת
+  rationale: The image is retained and briefly explained rather than flattened.
 translation_notes:
   risk_flags:
-  - risk: Using “they” in the main text may obscure the Hebrew word “soul” and its possible appetite nuance.
-    mitigation: The footnote preserves both the literal wording and the relevant lexical possibilities.
+  - risk: “Disgusted” may sound slightly less intense than “loathed.”
+    mitigation: The total phrase still clearly expresses strong revulsion toward every kind of food.
+  - risk: Modern readers may take “gates of death” as a literal location.
+    mitigation: The footnote identifies it as a picture of death’s threshold.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/107/018.yaml
   source_text_sha256: efff8a0757d6c06dafc8b86a1c62ab2b6460d8071231eb0227ca8833cb20012d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: f99a8477f109a0d2674f7b045e7cb61f803be716359c65b35d034bb0aa8deb7f
-  timestamp: '2026-07-12T10:02:37Z'
-  output_hash: 32f5fc5f0f7f8cf6b13fbcb60c61dada8374eaaa2f2e9c00e44f6ad88c7b354b
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: a22261ccdab9ab0632eeb6f428dbb466632db98423e41640c787546c2bc5821a
+  timestamp: '2026-08-28T22:58:51Z'
+  output_hash: 6470c6ef429505955bab5408f74a58b3861118878a49829745dcdfc1fbb14b92
   usage:
-    prompt_tokens: 3585
-    completion_tokens: 328
-    total_tokens: 3913
-    reasoning_tokens: 0
+    prompt_tokens: 2680
+    completion_tokens: 956
+    total_tokens: 3636
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: Their soul
-  rendering: with their whole being
-  claim: Their aversion involved their whole inner self rather than only physical appetite.
-  evidence:
-  - The POB rationale says נֶפֶשׁ likely expresses the whole inner self here.
-  - The food context allows an overlap with appetite, retained in the footnote.
-  confidence: high
-  alternatives_preserved:
-  - their soul
-  - their appetite
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:37Z'
   previous_text: They loathed all food with their whole being[a], and they came close to the gates of death.
@@ -96,3 +94,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:58:51Z'
+  previous_text: They loathed all food[a], and they came close to the gates of death.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

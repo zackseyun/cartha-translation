@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/021/031.yaml
-  text: A horse is prepared for the day of battle[a], but victory belongs to Yahweh.
+  text: A horse is prepared for the day of battle, but victory[a] belongs to Yahweh.
   footnotes:
   - marker: a
-    text: Or 'salvation' or 'deliverance belongs to the LORD.' The Hebrew term can denote rescue broadly; here 'victory' fits the battle context.
+    text: Or “salvation” or “deliverance.” The Hebrew term can denote rescue broadly; here “victory” fits the battle context.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A horse is prepared for battle, but victory belongs to Yahweh.[a]
+  text: A horse is made ready for battle, but victory[a] comes from Yahweh.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word can also mean “deliverance” or “salvation”; “victory” fits the battle setting here.
+    text: Or “salvation” or “deliverance.” The Hebrew word can refer broadly to rescue; “victory” best fits this battle context.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: A horse is prepared for the day of battle
-  simplified_phrase: A horse is prepared for battle
-  preserved_meaning: The horse is actually made ready for combat.
-  reasoning_layer_used: Lexical decisions for מוּכָן, לְיוֹם, and מִלְחָמָה
-  rationale: Removing “the day of” makes the line more direct without weakening the assertion of preparation.
+  simplified_phrase: A horse is made ready for battle
+  preserved_meaning: The horse is prepared for combat without naming who prepares it.
+  reasoning_layer_used: POB lexical decisions for מוּכָן and לְיוֹם מִלְחָמָה
+  rationale: This natural wording keeps the passive sense while shortening the Hebrew expression.
 - pob_phrase: victory belongs to Yahweh
-  simplified_phrase: victory belongs to Yahweh
-  preserved_meaning: Yahweh, not human military preparation, determines the victorious outcome.
-  reasoning_layer_used: Lexical and theological decisions for וְלַיהוָה הַתְּשׁוּעָה
-  rationale: The wording retains the Hebrew contrast and its direct attribution of victory to Yahweh.
+  simplified_phrase: victory comes from Yahweh
+  preserved_meaning: Yahweh is the decisive source of victory despite military preparation.
+  reasoning_layer_used: POB theological decisions for תְּשׁוּעָה and יהוה
+  rationale: “Comes from” states the contrast clearly while retaining the divine name.
+interpretive_expansions:
+- pob_phrase: victory belongs to Yahweh
+  rendering: victory comes from Yahweh
+  claim: Yahweh is the decisive source of victory.
+  evidence:
+  - The POB rationale says the battle’s outcome comes from Yahweh.
+  - The proverb contrasts preparation with Yahweh’s decisive role.
+  confidence: high
+  alternatives_preserved:
+  - victory belongs to Yahweh
+  - deliverance belongs to Yahweh
+  - salvation belongs to Yahweh
 translation_notes:
   risk_flags:
-  - risk: “Victory” narrows the broader range of הַתְּשׁוּעָה.
-    mitigation: The footnote preserves “deliverance” and “salvation” as lexical alternatives.
+  - risk: “Comes from” makes Yahweh’s causal role more direct than “belongs to.”
+    mitigation: The POB rationale explicitly identifies Yahweh as the source of the battle’s outcome.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/021/031.yaml
   source_text_sha256: c00eaeb138f06de01e3f210c58139a10035e651bc99c7bde5a13e83876347abd
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: d7e105a52ea105fb9f666748c63a945cdbf85bf44c255cc73a8b083afb2409c4
-  timestamp: '2026-07-12T09:52:50Z'
-  output_hash: cb16cbeebba8300fcec8a003481dbb1de02114b84269c43a9362d96f28056bf0
+  prompt_sha256: ca7f2d02e07d0da71f5f9f1f6d4ad39c2bdd6eb076d43066e7b03a4c021731f1
+  timestamp: '2026-08-28T23:34:38Z'
+  output_hash: cdce15541b7b903409de7e576a26076fd2091cf845544e82f57179ced01d39fd
   usage:
-    prompt_tokens: 3372
-    completion_tokens: 344
-    total_tokens: 3716
+    prompt_tokens: 3834
+    completion_tokens: 432
+    total_tokens: 4266
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:50Z'
@@ -85,4 +96,18 @@ spob_revision_history:
   review_summary: The battle-context clarification “victory” is warranted, and the footnote responsibly retains the word’s broader range. “For battle” is a clear, faithful simplification of “for the day of battle.” Retain the actual-preparation assertion (“is prepared”), rather than weakening it to possibility (“can be prepared”). “Belongs to Yahweh” best preserves the Hebrew contrast and attribution.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:45Z'
+  previous_text: A horse is prepared for battle, but victory belongs to Yahweh.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:38Z'
+  previous_text: People can get a horse ready for battle, but victory[a] comes from Yahweh.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b3d7eb8e1d1e9f81dc77819f4b80ff88317a4adeb2aa679b516d4fd57b23e50c
+  review_summary: The draft successfully makes the military setting and Yahweh’s decisive role readily understandable; “victory comes from Yahweh” is supported by the immediate battle contrast and the POB audit trail. Revise the first clause to avoid the added modal capability claim and unnecessary explicit agent. The footnote should say that “victory” best fits the battle context rather than asserting it is the Hebrew word’s only meaning.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

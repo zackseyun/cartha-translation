@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/023/025.yaml
-  text: Let your father and your mother be glad[a], and let her who gave birth to you rejoice.
+  text: Let your father and your mother be glad, and let she who gave birth to you rejoice.[a]
   footnotes:
   - marker: a
-    text: Or, 'she who bore you.'
+    text: Or “she who bore you.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,38 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: May your father and mother be glad. May the woman who gave birth to you rejoice.
+  text: Let your father and mother be glad. Let your mother—the one who gave birth to you—rejoice.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Let your father and your mother be glad
-  simplified_phrase: May your father and mother be glad
-  preserved_meaning: The verse expresses a wish or exhortation that both parents experience joy.
-  reasoning_layer_used: The lexical rationale identifies the Hebrew form as expressing a wish or exhortation.
-  rationale: “May” states the wish naturally, and the repeated “your” is unnecessary in English.
-- pob_phrase: and let her who gave birth to you rejoice
-  simplified_phrase: May the woman who gave birth to you rejoice
-  preserved_meaning: The mother is described again as the woman who bore the person addressed, with the stronger verb “rejoice.”
-  reasoning_layer_used: The lexical decisions distinguish the stronger joy verb and identify the feminine participle as the mother who gave birth.
-  rationale: A new sentence removes the awkward pronoun while preserving the birth image and heightened joy.
-translation_notes: {}
+- pob_phrase: your father and your mother
+  simplified_phrase: your father and mother
+  preserved_meaning: Both parents are named as those who should be glad.
+  reasoning_layer_used: POB lexical decisions for אָבִיךָ and וְאִמֶּךָ
+  rationale: Removing the repeated “your” makes the line more natural without changing its meaning.
+- pob_phrase: she who gave birth to you
+  simplified_phrase: your mother—the one who gave birth to you
+  preserved_meaning: The woman who bore the addressee is clearly identified as the mother already named.
+  reasoning_layer_used: POB lexical decision and revision for יוֹלַדְתֶּךָ
+  rationale: The possessive reference is natural in direct address, while the apposition preserves the birth image.
+- pob_phrase: and let ... rejoice
+  simplified_phrase: Let ... rejoice
+  preserved_meaning: The second jussive remains an exhortation and retains the stronger joy verb “rejoice.”
+  reasoning_layer_used: POB lexical decision for וְתָגֵל
+  rationale: Starting a new sentence makes the poetic parallel easier to follow.
+translation_notes:
+  risk_flags:
+  - risk: Repeating “your mother” may sound slightly redundant.
+    mitigation: The apposition clearly links her to the first sentence and preserves the Hebrew birth identification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/023/025.yaml
   source_text_sha256: 3cdb5edc2f2f25dec9a11b3229eba31a97ec700af33ac76e2e143fe7fc0ba267
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6c705b0b46252c834a399d9c19e698afb15724cd4a796508deca7971b156d1bd
-  timestamp: '2026-07-11T21:06:02Z'
-  output_hash: dda553c9bb29de86fab7be6b329f00f3a2824062348d6371145435d8372c1dcf
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9cb641e2562c5909b0a016aa081878ee1b23e942087d5e73542162b3fb0b4da3
+  timestamp: '2026-08-28T23:34:40Z'
+  output_hash: 27478634413294c6912a39f6c07d762b6a318fb703c73c87d5ac0474de602152
   usage:
-    prompt_tokens: 2163
-    completion_tokens: 506
-    total_tokens: 2669
-    reasoning_tokens: 238
+    prompt_tokens: 3114
+    completion_tokens: 447
+    total_tokens: 3561
+    reasoning_tokens: 78
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:47Z'
+  previous_text: May your father and mother be glad. May the woman who gave birth to you rejoice.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:40Z'
+  previous_text: Let your father and mother be glad. Let the mother who gave birth to you rejoice.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 2379ec91e6c0e23d9ceccdf4fe449e0d4ffdf2930e6de1c404dd339ce27769cd
+  review_summary: 'The draft rightly makes explicit that the woman who gave birth to the addressee is their mother; this is warranted by the feminine participle and immediate context, not a doctrinal addition. It also preserves the distinct joy verbs and jussive force. Revise only for idiomatic clarity: use “your mother” and retain the birth identification as an apposition, rather than the slightly detached phrase “the mother who gave birth to you.”'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

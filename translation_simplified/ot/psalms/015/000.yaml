@@ -18,40 +18,63 @@ base_translation:
     reason: alternative_reading
 translation:
   language: en
-  text: 'A psalm of David.[a]'
+  text: A psalm connected with David.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “by David” or “for David.” The Hebrew title can refer to authorship, association, or dedication.
+    text: Or “by David” or “for David.” The Hebrew heading can indicate authorship, association, or dedication.
     reason: alternative_reading
+simplification_decisions:
+- pob_phrase: A psalm of David[a].
+  simplified_phrase: A psalm connected with David.[a]
+  preserved_meaning: The heading links the psalm to David without deciding whether he authored it, was associated with it, or received its dedication.
+  reasoning_layer_used: POB footnote and Hebrew superscription
+  rationale: “Connected with David” prevents readers from assuming that authorship is the only possible meaning.
 translation_notes:
-  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
+  risk_flags:
+  - risk: “Connected with David” is broader than the traditional phrase “of David.”
+    mitigation: The footnote gives the specific possibilities preserved by the Hebrew heading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/015/000.yaml
   source_text_sha256: 6c1fced2ffb19039b7e51612a98969a482bb2c525aff730f308a7d6ec5d0558f
-  pob_commit_sha: 804a4ce86483bc97cac867d063b82609102c8015
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: bff626888bd1bf2da088f03ec17a44a35db4e6efcc8d2b0ad13f06376a8140fd
-  timestamp: '2026-07-11T20:25:17Z'
-  output_hash: 6d6acc4d240e63d7318469377672b9659242e569c798a5b42b0fe73ba723ab36
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2b01ac339e78fa66683d701c0cc986ce05f59f0a4ca152501e81c55a1e4f9591
+  timestamp: '2026-08-28T23:35:00Z'
+  output_hash: 8187ee75ba69ef95761c5b9f8f40f8d9d77bfff517518b2039e1bf530f6300d7
   usage:
-    prompt_tokens: 2092
-    completion_tokens: 660
-    total_tokens: 2752
-    reasoning_tokens: 293
+    prompt_tokens: 2465
+    completion_tokens: 227
+    total_tokens: 2692
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: superscription
-  previous_text_sha256: 1db8e2c4233652f7a315344a9c2847cfd6aa9c6f7738c7d07aac2b4e869284ab
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-is_superscription: true
-simplification_decisions: []
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:18Z'
+  previous_text: A psalm of David.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:35Z'
+  previous_text: A psalm of David.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:00Z'
+  previous_text: A psalm of David.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 66ce8ecdeb7e722fbda076c563ee8ad3d89b9796542cfc80c37d96d115a746bb
+  review_summary: The draft faithfully preserves the source ambiguity and does not introduce doctrinal content. However, because its main text is identical to POB, it does not meet the stated requirement that an approved SPOB draft be meaningfully clearer. “Connected with David” gives the main heading an understandable, non-exclusive sense while the footnote retains the specific alternatives and prevents the clarification from settling the ambiguity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

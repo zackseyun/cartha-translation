@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/069/005.yaml
-  text: God[a], you know my foolishness[b], and my guilt is not hidden from you.
+  text: God, you know my foolishness[a], and my wrongs[b] are not hidden from you.
   footnotes:
   - marker: a
-    text: Or 'my folly.'
+    text: Or “my folly.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'my wrongs are not hidden from you.' The Hebrew noun can be rendered more concretely in the plural.
+    text: Or “my guilt is not hidden from you.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,41 +34,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: God, you know my foolishness. None of my wrongs are hidden from you.
+  text: God, you know my foolish ways. None of my wrongs are hidden from you.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or, “My guilt is not hidden from you.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: my guilt is not hidden from you
+- pob_phrase: my foolishness
+  simplified_phrase: my foolish ways
+  preserved_meaning: The speaker confesses his own culpable moral folly, not merely a lack of intelligence.
+  reasoning_layer_used: POB lexical decision for לְאִוַּלְתִּי
+  rationale: “Foolish ways” makes the moral and personal sense readily understandable.
+- pob_phrase: and my wrongs are not hidden from you
   simplified_phrase: None of my wrongs are hidden from you
   preserved_meaning: God knows all the speaker’s culpable offenses.
-  reasoning_layer_used: lexical decisions for וְאַשְׁמוֹתַי and לֹא נִכְחָדוּ
-  rationale: The documented plural alternative makes the offenses concrete while preserving the image of concealment.
+  reasoning_layer_used: POB lexical decision and applied revision for וְאַשְׁמוֹתַי
+  rationale: A separate sentence with “none” states the Hebrew negation naturally while retaining the plural “wrongs.”
+interpretive_expansions:
+- pob_phrase: my foolishness
+  rendering: my foolish ways
+  claim: The foolishness refers to the speaker’s morally culpable conduct.
+  evidence:
+  - The POB lexical rationale identifies culpable moral folly rather than mere intellectual error.
+  confidence: high
+  alternatives_preserved:
+  - my foolishness
+  - my folly
 translation_notes:
   risk_flags:
-  - risk: The personal confession may create tension with the psalm’s later messianic application.
-    mitigation: The wording preserves the Hebrew first-person confession without resolving that tension.
+  - risk: “Foolish ways” could sound broader than the Hebrew abstract noun.
+    mitigation: The wording remains bounded by the POB rationale that the folly is personal and morally culpable.
+  - risk: Later messianic use of the psalm may tempt readers to soften the confession.
+    mitigation: The text retains the first-person admission of foolishness and wrongs as required by the theological audit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/069/005.yaml
   source_text_sha256: 89a5d992e9ce692082b1c32ad31b689fff045c9fb44e2fb020076041286eed5c
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: b439b16dd66be07428aaa2b05b5ae09873bdd7a5a6104048e28e01474d2ec5b4
-  timestamp: '2026-07-12T10:00:34Z'
-  output_hash: 40ac64abba7166c26edf0e0d9fd56402f9b331afe7fed742e4e37d1f92625ee4
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: a6589ee9bdeeb5fd481f108990433aac2d9e7f59f8adedcdac034b46764f57c6
+  timestamp: '2026-08-28T22:57:33Z'
+  output_hash: 2642195f8b6d5a1abcf1d2c4cf863e78b4fb01e158adb21089e96515c44ea7c8
   usage:
-    prompt_tokens: 3270
-    completion_tokens: 235
-    total_tokens: 3505
-    reasoning_tokens: 26
+    prompt_tokens: 2650
+    completion_tokens: 685
+    total_tokens: 3335
+    reasoning_tokens: 246
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:34Z'
   previous_text: God, you know how foolish I have been. None of my wrongs are hidden from you.
@@ -80,3 +99,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:57:33Z'
+  previous_text: God, you know my foolishness. None of my wrongs are hidden from you.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

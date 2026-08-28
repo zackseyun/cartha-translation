@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/102/017.yaml
-  text: He turned to the prayer of the destitute and did not despise their prayer[a].
+  text: He turned to the prayer of the destitute[a] and did not despise their prayer.
   footnotes:
   - marker: a
-    text: Or 'the impoverished,' 'the helpless'; the Hebrew term can also denote a desert shrub in other contexts, likely underlying the image of one who is stripped bare or isolated here.
+    text: Or “the impoverished” or “the helpless.” The Hebrew term can denote a desert shrub elsewhere and may portray someone stripped bare or isolated here.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He turned to the prayer of those in desperate need[a]. He did not treat their prayer with contempt.
+  text: He turned to hear the prayer of people in desperate need[a]; he did not look down on their prayer.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can mean “the destitute” or “the helpless” and may suggest people who are stripped bare or alone.
+    text: The Hebrew may describe people who are impoverished, helpless, or isolated; the same word can refer elsewhere to a bare desert shrub.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: turned to the prayer
+  simplified_phrase: turned to hear the prayer
+  preserved_meaning: God directs his attention to their prayer and receives it attentively.
+  reasoning_layer_used: POB lexical decision for פָּנָה
+  rationale: “Hear” makes the implied attentive response clear while preserving the image of turning.
 - pob_phrase: the destitute
-  simplified_phrase: those in desperate need
-  preserved_meaning: The people praying are destitute, helpless, or isolated rather than merely poor.
-  reasoning_layer_used: Lexical and theological decisions for הָעַרְעָר
-  rationale: This wording avoids narrowing their need to material poverty.
-- pob_phrase: did not despise their prayer
-  simplified_phrase: did not treat their prayer with contempt
-  preserved_meaning: He did not scorn their prayer or regard it as worthless.
-  reasoning_layer_used: Lexical decision for בָזָה
-  rationale: The fuller phrase expresses the force of “despise” in familiar English.
+  simplified_phrase: people in desperate need
+  preserved_meaning: The people praying are destitute, helpless, or isolated rather than only materially poor.
+  reasoning_layer_used: POB lexical and theological decisions for הָעַרְעָר
+  rationale: This wording clearly describes deep need without narrowing it to material poverty.
+- pob_phrase: did not despise
+  simplified_phrase: did not look down on
+  preserved_meaning: God did not regard their prayer with contempt.
+  reasoning_layer_used: POB lexical decision for בָזָה
+  rationale: “Look down on” expresses contempt in familiar modern English.
+interpretive_expansions:
+- pob_phrase: turned to the prayer
+  rendering: turned to hear the prayer
+  claim: Turning toward the prayer means giving it attentive hearing.
+  evidence:
+  - The POB rationale says that “turned to” conveys attentive response.
+  - Prayer is the object of the Hebrew verb in this context.
+  confidence: high
+  alternatives_preserved:
+  - turned to the prayer
+  - paid attention to the prayer
 translation_notes:
   risk_flags:
-  - risk: “Desperate need” does not display the Hebrew term’s possible image of isolation or being stripped bare.
-    mitigation: The footnote preserves these important associations without mistaking the referent for a shrub.
+  - risk: “Desperate need” does not display the possible image of a person stripped bare or isolated.
+    mitigation: The footnote preserves the broader human senses and the desert-shrub background.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/102/017.yaml
   source_text_sha256: 3d60bbddce1c4adee5cae59923af7e2ed5c584edd304e0734ebc45707df24158
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 472813e4919d9896cb525842fbe32595a5f3df36a41d9a30c924ea880a329a98
-  timestamp: '2026-07-12T10:02:15Z'
-  output_hash: 3c93420a47d9a364a6c713913d0e83bfe224f4cd70ed562b4995fab78b89e359
+  prompt_sha256: 420187f9a4f8ac5d4d68cf2f8151f22b216ab33e623793959d0925d6ecc82705
+  timestamp: '2026-08-28T23:35:59Z'
+  output_hash: 489c1256e6e1b54c337734a19873024f822b795752cdf366eb0a56e2d10b98a2
   usage:
-    prompt_tokens: 3205
-    completion_tokens: 310
-    total_tokens: 3515
-    reasoning_tokens: 0
+    prompt_tokens: 3500
+    completion_tokens: 525
+    total_tokens: 4025
+    reasoning_tokens: 56
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:15Z'
@@ -85,4 +100,18 @@ spob_revision_history:
   review_summary: The draft usefully makes the relationship between the needy people and their prayer explicit, and “treat ... with contempt” adequately conveys the force of “despise.” However, it should retain POB’s verbal form and avoid wording that narrows the Hebrew’s broader picture of helpless, isolated destitution to having no material possessions. The recommended wording is clear while preserving both points.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:28Z'
+  previous_text: He turned to the prayer of those in desperate need[a]. He did not treat their prayer with contempt.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:59Z'
+  previous_text: He turned to hear the prayer of those left with nothing[a]; he did not look down on their prayer.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5e2fe59a3f72e52da1027a44a0a283741c9ab0c4c51b0e70c2e60afb5ceff419
+  review_summary: 'The clarification “turned to hear” is warranted: in this context, turning toward a prayer conveys attentive reception, and the POB audit trail expressly supports that sense. “Did not look down on” is a clear, appropriate rendering of not despising. Revise the description of the praying people, however, because “those left with nothing” over-specifies the term as material deprivation. “People in desperate need” remains understandable while allowing the broader destitution, helplessness, and isolation signaled by the Hebrew and preserved in the footnote.'
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

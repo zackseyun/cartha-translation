@@ -11,16 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/031/024.yaml
-  text: She makes linen garments and sells them[c][b][a], and supplies belts to the merchant.
+  text: She makes linen garments and sells them[a], and supplies sashes to the merchant[b].
   footnotes:
   - marker: a
-    text: Or 'linen cloth' or 'fine linen garments.'
+    text: Or “linen cloth” or “a linen garment.” The Hebrew denotes a linen item but does not specify its form precisely.
     reason: lexical_alternative
   - marker: b
-    text: Hebrew 'to the Canaanite'; in context this likely means 'to the merchant' or 'trader.'
-    reason: lexical_alternative
-  - marker: c
-    text: Or 'sashes' for the waist.
+    text: Hebrew “to the Canaanite”; here the term likely means a merchant or trader.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,54 +34,46 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: She makes linen garments[a] and sells them. She also supplies belts[b] to a merchant.[c]
+  text: She makes linen items and sells them.[a] She also supplies sashes to merchants.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “linen cloth” or “fine linen garments.”
+    text: The Hebrew refers to a linen item but does not specify whether it is cloth or a finished garment.
     reason: lexical_alternative
-  - marker: b
-    text: Or “sashes” worn around the waist.
-    reason: lexical_alternative
-  - marker: c
-    text: Hebrew “the Canaanite,” used here in the sense of a merchant or trader.
-    reason: source_note
 simplification_decisions:
-- pob_phrase: She makes linen garments and sells them, and supplies belts
-  simplified_phrase: She makes linen garments and sells them. She also supplies belts
-  preserved_meaning: Making, selling, and supplying are her customary business activities.
-  reasoning_layer_used: POB discourse and lexical rationales
-  rationale: Two sentences make the distinct activities easier to follow.
-- pob_phrase: to the merchant
-  simplified_phrase: to a merchant
-  preserved_meaning: She provides goods commercially to a trader.
-  reasoning_layer_used: POB lexical decision for לַכְּנַעֲנִי
-  rationale: The indefinite article reads naturally for a representative merchant.
+- pob_phrase: linen garments
+  simplified_phrase: linen items
+  preserved_meaning: She produces linen articles whose precise form is uncertain.
+  reasoning_layer_used: POB lexical decision and footnote for סָדִין
+  rationale: “Linen items” stays within the documented range without assuming finished clothing.
+- pob_phrase: and supplies sashes to the merchant
+  simplified_phrase: She also supplies sashes to merchants.
+  preserved_meaning: She regularly provides waist-worn textile articles in trade.
+  reasoning_layer_used: POB lexical decisions for חֲגוֹר, נָתְנָה, and לַכְּנַעֲנִי
+  rationale: A separate sentence and generic plural make the habitual business activity easier to follow.
 translation_notes:
   risk_flags:
-  - risk: The Hebrew linen term may refer to cloth rather than garments.
-    mitigation: Footnote a preserves the lexical alternatives while the main text retains POB’s countable-garment sense.
-  - risk: The source literally says “the Canaanite.”
-    mitigation: Footnote c records the Hebrew wording while retaining the contextually supported occupational sense.
+  - risk: “Linen items” leaves the article’s exact form unspecified.
+    mitigation: The footnote identifies cloth and finished garment as the main possibilities.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/031/024.yaml
   source_text_sha256: 7cf0d2a596ce8a96b0900082f6f004d2680d39a8116f75071446a86d7ed6131a
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 9cd2714097be068f9cb974ea0e42001a8309e26803dae452dea38ee3334cbd5a
-  timestamp: '2026-07-12T09:53:59Z'
-  output_hash: 38cb4c167f532d09304dee4809bfad8f6811658033d52609621244ca78da18f9
+  prompt_sha256: 824e0e49a58f18e57e7b614e2f96de07a1aca23840e700e025e3ffc5f4aaf564
+  timestamp: '2026-08-28T23:34:54Z'
+  output_hash: 88f9b2f0b79053af69197d138f1d3aa40365c8dd094a8570c04669819e17536f
   usage:
-    prompt_tokens: 3263
-    completion_tokens: 373
-    total_tokens: 3636
-    reasoning_tokens: 0
+    prompt_tokens: 3333
+    completion_tokens: 375
+    total_tokens: 3708
+    reasoning_tokens: 65
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -97,6 +86,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 9f22ac9986ff61824faf0934e9ff4ff8c8c6c9f25549e0bc1c6f5f58153d3589
   review_summary: 'The shorter two-sentence structure is clear and faithfully keeps the distinct activities of making, selling, and supplying. Rendering the recipient as “a merchant” is contextually warranted and the source note responsibly preserves the Hebrew wording. Revise only “linen clothing … sells it”: it weakens the POB’s contextually supported countable-garment sense and risks implying that she sells cloth rather than the garments she makes.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:12:06Z'
+  previous_text: She makes linen garments[a] and sells them. She also supplies belts[b] to a merchant.[c]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:54Z'
+  previous_text: She makes linen goods and sells them.[a] She also supplies sashes to merchants.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 3a15475f42344b5746e383c2b5c80e926e33b4af71c7380a4e5045fde8d88084
+  review_summary: 'The second sentence is a warranted, clearer presentation of the habitual commercial activity: plural “merchants” naturally expresses the occupational sense of the Hebrew singular in this portrait context, and “also” appropriately carries the coordination. The first sentence should replace “linen goods” with “linen items.” This remains easy to understand while avoiding the broader commercial category implied by “goods” and preserving the POB audit trail’s live uncertainty about the precise linen article.'
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

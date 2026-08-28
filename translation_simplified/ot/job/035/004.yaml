@@ -31,37 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I will answer both you and your friends with words.
+  text: I will answer both you and your friends.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew reads more literally, “I will answer you with words, and your friends with you.” Elihu is replying to Job and his companions together.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: I will answer you with words, and your friends with you.
-  simplified_phrase: I will answer both you and your friends with words.
-  preserved_meaning: Elihu promises a verbal response directed to Job and his friends together.
-  reasoning_layer_used: POB lexical decisions and footnote
-  rationale: The coordinated objects clearly identify both recipients while preserving the concrete phrase “with words.”
-translation_notes: {}
+- pob_phrase: I will answer you with words, and your friends with you
+  simplified_phrase: I will answer both you and your friends
+  preserved_meaning: Elihu promises a verbal reply directed to Job and his companions together.
+  reasoning_layer_used: POB lexical decisions for אֲשִׁיבְךָ, מִלִּין, וְאֶת, and עִמָּךְ
+  rationale: “Both” clearly links Job and his friends as the people Elihu will answer.
+interpretive_expansions:
+- pob_phrase: and your friends with you
+  rendering: both you and your friends
+  claim: Elihu's answer is directed to Job and his friends together.
+  evidence:
+  - The POB footnote identifies Job and his companions as joint addressees.
+  - The object marker introduces Job's friends as an additional object of the reply.
+  confidence: high
+  alternatives_preserved:
+  - I will answer you with words, and your friends with you.
+translation_notes:
+  risk_flags:
+  - risk: The main text makes the Hebrew's elliptical second object explicit.
+    mitigation: The footnote preserves the source-shaped wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/035/004.yaml
   source_text_sha256: f469b80df0633cdd4f50d15989e82f6c1fa57b4354d9d593cfe1725e0cde2442
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 02bc9c7952e081efa0ac84f9edea7c2bf7e834593fc448bfaebbf3b39e944dec
-  timestamp: '2026-07-12T09:59:12Z'
-  output_hash: fd5f1632419ca3d0243d67bee4f6806a13bac150f8d8a77c1c4f00fed629896e
+  prompt_sha256: 394ef7cbaa582ff30959067838a0e33982477a487527177e53dd3cbe12e18ea9
+  timestamp: '2026-08-28T23:34:57Z'
+  output_hash: 6a9647a5366be9892284b9239f37020b4e94bbd1475602e163e9beb098be8421
   usage:
-    prompt_tokens: 2973
-    completion_tokens: 149
-    total_tokens: 3122
-    reasoning_tokens: 0
+    prompt_tokens: 3205
+    completion_tokens: 423
+    total_tokens: 3628
+    reasoning_tokens: 62
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:12Z'
@@ -73,4 +89,18 @@ spob_revision_history:
   review_summary: The draft rightly makes explicit that Elihu addresses Job and his companions together, a clarification supported by the source construction and the POB footnote. However, its phrasing is syntactically awkward, and “friends who are with you” unnecessarily recasts accompaniment as a restrictive description. The recommended wording is clear, preserves the verbal-response sense, and retains both recipient groups.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:25Z'
+  previous_text: I will answer both you and your friends with words.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:57Z'
+  previous_text: I will answer you, and I will answer your friends who are with you.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 8c5986e0395931aae90bc745bdd59ed6393ce00883a0e05ba75bffd643bff91e
+  review_summary: 'Repeating the implied verb is warranted: the conjunction and object marker introduce Job’s friends as an additional object of Elihu’s reply, and the revision makes that clear. However, “friends who are with you” slightly redirects the accompaniment phrase into a restrictive qualifier. “Both you and your friends” preserves the joint addressees more directly, while the footnote retains the source-shaped wording and explains the clarification.'
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

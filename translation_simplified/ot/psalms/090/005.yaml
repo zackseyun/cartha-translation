@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/090/005.yaml
-  text: You sweep them away[a]; they are like a dream. In the morning they are like grass that sprouts anew.
+  text: You sweep them away[a]; they are like sleep. In the morning they are like grass that sprouts anew.
   footnotes:
   - marker: a
-    text: Or, 'You flood them away; they are like sleep. In the morning it passes away like grass.' The Hebrew is highly compressed, and the final verb is singular, formally matching 'grass.'
-    reason: alternative_reading
+    text: Or “You flood them away” or “wash them away.” The verb pictures people being carried off by a rushing flow.
+    reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,59 +31,58 @@ base_translation:
     changes_summary: 'Revised the final clause for closer alignment with the source: changed singular ''it sprouts anew'' to plural ''they are like grass that sprouts anew,'' preserving the comparison and matching the plural subject.'
 translation:
   language: en
-  text: You sweep them away.[a] They are like a dream. In the morning they are like fresh grass that sprouts.
+  text: You sweep them away[a]; their lives are like sleep. In the morning they are like fresh grass springing up.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The compressed Hebrew may also be read, “You flood them away; they are like sleep. In the morning it passes away like grass.”
-    reason: alternative_reading
+    text: Or “You carry them off like a rushing flood.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: You sweep them away; they are like a dream.
-  simplified_phrase: You sweep them away. They are like a dream.
-  preserved_meaning: God suddenly removes human beings, who are compared to a dream.
-  reasoning_layer_used: POB syntax and lexical decisions
-  rationale: Two short sentences make the compressed images easier to follow without narrowing the dream comparison.
+- pob_phrase: they are like sleep
+  simplified_phrase: their lives are like sleep
+  preserved_meaning: The people’s lives are compared to sleep without changing the source image.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: Naming their lives makes the compressed comparison clear while leaving sleep unqualified.
 - pob_phrase: grass that sprouts anew
-  simplified_phrase: fresh grass that sprouts
-  preserved_meaning: The morning grass appears in fresh growth.
-  reasoning_layer_used: Applied mistranslation revision and immediate context
-  rationale: “Fresh grass that sprouts” states the renewed-growth image in natural English.
+  simplified_phrase: fresh grass springing up
+  preserved_meaning: The grass appears in fresh morning growth.
+  reasoning_layer_used: Applied source-audit revision and chapter context
+  rationale: This gives the morning growth image in ordinary English.
+interpretive_expansions:
+- pob_phrase: they are like sleep
+  rendering: their lives are like sleep
+  claim: The comparison concerns the lives of the people being swept away.
+  evidence:
+  - The plural pronoun refers to the people whom God sweeps away.
+  - Psalm 90 describes the frailty of human life.
+  confidence: high
+  alternatives_preserved:
+  - they are like sleep
 translation_notes:
   risk_flags:
-  - risk: The compressed Hebrew permits a different division of the images and has a final singular verb.
-    mitigation: Footnote a preserves the principal alternative reading.
+  - risk: “Their lives” makes the referent more explicit than the compressed Hebrew.
+    mitigation: The context clearly identifies people and their mortal lives as the subject.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/090/005.yaml
   source_text_sha256: 082aa832f2057ebc76103470ec1e4bb6e88a6f27ae659177994684085a4e2313
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: fed45378859c6dd985c209fe91d5764922067d6f528d3d0ca3887ac5ece58884
-  timestamp: '2026-07-12T10:05:20Z'
-  output_hash: 1ae1a127f3ca9cdcbd6519954d791acb68453c8e33b62d9aa3bcf7a52751627d
+  prompt_sha256: 97ccd5c73158a699045c96b2ea1e462c5fee422832dad81aaf38cfc0cb98e681
+  timestamp: '2026-08-28T23:35:52Z'
+  output_hash: e7658051a670d0f91689dddc5da7720f164c17fd08a275b7c20a1857df0bd0b7
   usage:
-    prompt_tokens: 4122
-    completion_tokens: 366
-    total_tokens: 4488
-    reasoning_tokens: 64
+    prompt_tokens: 4214
+    completion_tokens: 350
+    total_tokens: 4564
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: like a dream
-  rendering: as fleeting as a dream
-  claim: The dream comparison emphasizes how quickly human life passes.
-  evidence:
-  - The lexical rationale identifies fleetingness and insubstantiality as the force of the image.
-  - The psalm’s immediate subject is human frailty before God.
-  confidence: high
-  alternatives_preserved:
-  - like a dream
-  - like sleep
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:05:20Z'
@@ -95,4 +94,18 @@ spob_revision_history:
   review_summary: Revision is needed. The draft is clearer in its treatment of the grass image, but “as fleeting as a dream” unnecessarily converts a multifaceted poetic comparison into one stated interpretation. Retain the accessible dream comparison itself, which modern readers readily understand, and clarify the final image with “fresh grass that sprouts.” The footnote appropriately preserves the principal syntactic alternative.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:06Z'
+  previous_text: You sweep them away.[a] They are like a dream. In the morning they are like fresh grass that sprouts.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:52Z'
+  previous_text: You sweep them away[a]; their lives are like a brief sleep. In the morning they are like fresh grass springing up.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 9d32a2553d12dabd0b5b63055dee5499dc5917041afd12b09b3e5bd19a0699b7
+  review_summary: The draft improves accessibility by making clear that the sleep comparison concerns human lives, and “fresh grass springing up” is a warranted, readable expression of the morning-growth image. However, “brief” is an unnecessary interpretive addition. Removing it retains the source image and the verse’s poetic openness while still giving modern readers the intended referent.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

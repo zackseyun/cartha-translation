@@ -11,17 +11,17 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/103/016.yaml
-  text: For the wind passes over it[a], and it is gone[b][c], and its place knows it no more.
+  text: For the wind passes over it[a], and it is gone[b], and its place knows it no more.[c]
   footnotes:
   - marker: a
-    text: Or 'breath' or 'spirit' for 'wind'; the poetic context of grass and flowers favors 'wind.'
+    text: Or “breath” or “spirit” for “wind”; the context of grass and a flower favors “wind.”
     reason: lexical_alternative
   - marker: b
-    text: The Hebrew personifies the place as 'knowing' or 'recognizing' what has vanished.
-    reason: cultural_note
-  - marker: c
-    text: Literally, 'and it is not.'
+    text: Literally, “and it is not.”
     reason: lexical_alternative
+  - marker: c
+    text: The Hebrew personifies the place as knowing or recognizing what has vanished.
+    reason: literary_note
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,45 +37,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For the wind passes over it, and it is gone. The place where it was no longer recognizes it.[a]
+  text: For the wind[a] blows over the flower, and it is gone. The place where it grew no longer recognizes it.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word translated “wind” can also mean “breath” or “spirit,” but the image of grass and flowers favors “wind.”
+    text: Or “breath” or “spirit”; the picture of grass and a flower favors “wind.”
     reason: lexical_alternative
+  - marker: b
+    text: The Hebrew pictures the flower’s former place as if it could recognize what has vanished.
+    reason: simplification_note
 simplification_decisions:
-- pob_phrase: and its place knows it no more
-  simplified_phrase: The place where it was no longer recognizes it
-  preserved_meaning: The flower vanishes so completely that its former place is pictured as no longer recognizing it.
-  reasoning_layer_used: POB lexical decision for וְלֹא יַכִּירֶנּוּ עוֹד and מְקוֹמוֹ
-  rationale: The wording clarifies whose place is meant while preserving the Hebrew personification.
-- pob_phrase: For the wind passes over it, and it is gone, and
-  simplified_phrase: For the wind passes over it, and it is gone.
-  preserved_meaning: A passing wind causes the flower to disappear.
-  reasoning_layer_used: POB clause structure and lexical decisions for רוּחַ, עָבְרָה, and וְאֵינֶנּוּ
-  rationale: Dividing the long sentence makes the sequence easier to follow without weakening the image.
+- pob_phrase: passes over it
+  simplified_phrase: blows over the flower
+  preserved_meaning: The wind passes over the flower in the preceding image.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: Naming the flower makes the pronoun clear while keeping the wind image.
+- pob_phrase: and it is gone, and
+  simplified_phrase: and it is gone. The
+  preserved_meaning: The flower disappears after the wind passes over it.
+  reasoning_layer_used: POB lexical decision and target readability
+  rationale: A sentence break makes the poetic sequence easier to follow.
+- pob_phrase: its place knows it no more
+  simplified_phrase: The place where it grew no longer recognizes it
+  preserved_meaning: The flower vanishes so completely that its place is personified as not recognizing it.
+  reasoning_layer_used: POB lexical rationale and literary note
+  rationale: The wording clarifies the place while preserving its personification.
+interpretive_expansions:
+- pob_phrase: it; its place
+  rendering: the flower; the place where it grew
+  claim: The pronouns refer to the flower image from the preceding verse and to its former growing place.
+  evidence:
+  - The immediate context compares human life to grass and a flowering plant.
+  - The POB lexical decisions identify the antecedent as the prior grass-and-flower imagery.
+  confidence: high
+  alternatives_preserved:
+  - it
+  - its place
 translation_notes:
   risk_flags:
-  - risk: “Recognizes” may initially sound unusual when applied to a place.
-    mitigation: The wording intentionally retains the source’s vivid personification while clarifying the place as where the flower was.
+  - risk: Naming the flower makes an implicit antecedent explicit.
+    mitigation: The immediate context and POB audit both identify the botanical referent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/103/016.yaml
   source_text_sha256: c6d67eabf6f2759dd2025946f449d18a6b7ad8984057d4bba11ee70e88ff94e7
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 94b9fdc0f2624efcc53238aeabc55eba4a70e43b9de6aad1622a461fd5a8c3d8
-  timestamp: '2026-07-11T20:51:53Z'
-  output_hash: 92b9a9c8eca599b38b600181fd861335e87b21a82041c85a4b7f3df740524017
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: af689f69bb6b2f2235686052897884346e58a32ffb6d66eb82df155cb4e245b5
+  timestamp: '2026-08-28T22:58:50Z'
+  output_hash: d0934e6dd70b00cd44f71552dd16fa5e689ec155136ef1e406d8a465523bf319
   usage:
-    prompt_tokens: 2513
-    completion_tokens: 757
-    total_tokens: 3270
-    reasoning_tokens: 373
+    prompt_tokens: 2737
+    completion_tokens: 797
+    total_tokens: 3534
+    reasoning_tokens: 309
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:50Z'
+  previous_text: For the wind passes over it, and it is gone. The place where it was no longer recognizes it.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

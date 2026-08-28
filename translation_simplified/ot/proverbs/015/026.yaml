@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/015/026.yaml
-  text: Evil plans are an abomination to Yahweh[b][a], but pleasant words are pure.
-  footnotes:
-  - marker: a
-    text: Or 'plans of evil' or 'evil schemes.'
-    reason: lexical_alternative
-  - marker: b
-    text: 'Hebrew word order: ''and/but pure are pleasant words.'''
-    reason: lexical_alternative
+  text: Evil plans are an abomination to Yahweh, but pleasant words are pure.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,40 +27,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 15:26 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''thoughts''].'
 translation:
   language: en
-  text: Yahweh detests evil plans,[a] but pleasant words are pure.
+  text: Yahweh detests evil plans. Pleasant words, however, are pure.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “evil thoughts” or “evil schemes.”
-    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Evil plans are an abomination to Yahweh
   simplified_phrase: Yahweh detests evil plans
-  preserved_meaning: Evil intentions are morally abhorrent to Yahweh.
-  reasoning_layer_used: The lexical decision for תּוֹעֲבַת and the theological decision for יְהוָה.
-  rationale: The active wording makes the same strong judgment easier to understand while retaining Yahweh’s personal name.
+  preserved_meaning: Evil thoughts and plans are morally abhorrent to Yahweh.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The active wording explains “abomination” while keeping its strong moral force and the divine name.
+- pob_phrase: but pleasant words are pure
+  simplified_phrase: Pleasant words, however, are pure
+  preserved_meaning: Pleasant speech stands in moral contrast to evil plans and is pure.
+  reasoning_layer_used: POB lexical decisions and Hebrew antithetical parallelism
+  rationale: A separate sentence improves readability while “however” preserves the contrast.
 translation_notes:
   risk_flags:
-  - risk: Changing “are an abomination to” to “detests” shifts a noun construction into a verb.
-    mitigation: “Detests” preserves the source term’s strong moral force without adding a new judgment.
+  - risk: “Detests” does not retain the noun “abomination.”
+    mitigation: The strong active verb still communicates that evil plans are abhorrent to Yahweh.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/015/026.yaml
   source_text_sha256: 874adb8d572759c845076a9088b0dd5dbadf7cc2ddb9673d98d8eb8d12ec3bb4
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 17ff22ed212602b5be6bf213bf06207a9b5f3fa97b41bdd70ad3941671cd3536
-  timestamp: '2026-07-11T21:03:48Z'
-  output_hash: 691c1193948512ffe99cae02abc390eca363980e82f4c361ff792d4b49296f10
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f9370f4e48df02babaece299dc05d87608caa54260246928161d2cd05dd5881c
+  timestamp: '2026-08-28T23:34:22Z'
+  output_hash: b19188519ae7a15fa9dd2f263638495412c52629fd73e38081b49d4c07a39747
   usage:
-    prompt_tokens: 2921
-    completion_tokens: 657
-    total_tokens: 3578
-    reasoning_tokens: 414
+    prompt_tokens: 3660
+    completion_tokens: 321
+    total_tokens: 3981
+    reasoning_tokens: 53
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:49Z'
+  previous_text: Yahweh detests evil plans,[a] but pleasant words are pure.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:22Z'
+  previous_text: Yahweh detests plans to do evil. Pleasant words, however, are pure.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 577714c83429ac596c104ab6f52be2490138210aa41bc58090b8211a35b32202
+  review_summary: The active rendering “Yahweh detests” clearly and adequately communicates that evil plans are abhorrent to him; it does not improperly import doctrine. The second sentence is also clear and retains the proverb’s contrast. Revise only “plans to do evil” to “evil plans,” which preserves the broader Hebrew/POB sense without losing readability.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

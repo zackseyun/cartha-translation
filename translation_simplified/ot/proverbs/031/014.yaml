@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/031/014.yaml
-  text: She is like merchant ships[a]; from far away she brings her food.
+  text: She is like merchant ships; from far away she brings her food[a].
   footnotes:
   - marker: a
-    text: 'Or: "her bread."'
+    text: Or “her bread.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Like merchant ships, she brings her food in from distant places.[a]
+  text: 'She is like merchant ships: she brings her food from far away.[a]'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Literally, “her bread.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: She is like merchant ships; from far away she brings her food.
-  simplified_phrase: Like merchant ships, she brings her food in from distant places.
-  preserved_meaning: Her resourceful provision is compared to trading ships that obtain goods from far away.
-  reasoning_layer_used: POB lexical decisions for כָּאֳנִיּוֹת סוֹחֵר, מִמֶּרְחָק, and תָּבִיא
-  rationale: Reordering the clauses makes the comparison and action flow naturally in modern English.
-- pob_phrase: from far away
-  simplified_phrase: from distant places
-  preserved_meaning: The food comes from locations that are not nearby.
-  reasoning_layer_used: POB lexical decision for מִמֶּרְחָק
-  rationale: “Distant places” expresses the source of the food more concretely.
+- pob_phrase: She is like merchant ships; from far away she brings her food
+  simplified_phrase: 'She is like merchant ships: she brings her food from far away'
+  preserved_meaning: The merchant-ship comparison describes her characteristic work of obtaining provisions from a distance.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: The direct clause order is easier to read without adding locations or a directional nuance.
+- pob_phrase: merchant ships
+  simplified_phrase: merchant ships
+  preserved_meaning: The concrete image compares her provisioning work to trading vessels.
+  reasoning_layer_used: POB lexical decision for כָּאֳנִיּוֹת סוֹחֵר
+  rationale: The familiar image remains clear and preserves the source comparison.
 translation_notes:
   risk_flags:
-  - risk: Readers could take the merchant-ship comparison as literal travel by the woman.
-    mitigation: The opening word “Like” clearly keeps the phrase as a comparison.
+  - risk: “Food” is broader than the literal noun “bread.”
+    mitigation: The main text follows the POB contextual sense, and the footnote preserves the literal alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/031/014.yaml
   source_text_sha256: 2d8a21068cdf24ad872ae99e4267baf06897bdc6164d6c1ef81e333aaeab39f8
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c77c1b247c6acbd8dc2d648104d6a726a4b5fcdc49308c0de0b17f3f910e91a5
-  timestamp: '2026-07-11T21:08:53Z'
-  output_hash: 1a148eadd858ea8aa15eadbd326c0bd00f4f36d367445289738b56bfbaf533d8
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e013b5ce10710a345fed15739bb8c80e630dd44f9e191e99dbf7d570f751200e
+  timestamp: '2026-08-28T23:34:54Z'
+  output_hash: cac672e790508df0d55a74e7705ca37e8789d18286aed0f37518b58d6631cf2c
   usage:
-    prompt_tokens: 2313
-    completion_tokens: 648
-    total_tokens: 2961
-    reasoning_tokens: 321
+    prompt_tokens: 3248
+    completion_tokens: 392
+    total_tokens: 3640
+    reasoning_tokens: 91
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:35Z'
+  previous_text: Like merchant ships, she brings her food in from distant places.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:54Z'
+  previous_text: She is like merchant ships, bringing her food in from faraway places.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a1570e2f70eecbb94ac75aa10057c39ff5f5a17efc97b3d5cd4ce7da51d8012b
+  review_summary: 'The draft preserves the central comparison and the contextual sense of food/provisions, and its bread footnote is warranted. However, it is not demonstrably clearer than POB: “faraway places” adds an unnecessary plural-location specification, while “bringing ... in” adds a mild directional nuance. The recommended revision uses a straightforward modern clause while preserving the source’s distance, active provisioning, and merchant-ship image.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/139/020.yaml
-  text: who speak of you with evil intent[a]; your enemies take your name in vain.
+  text: who speak of you maliciously; your adversaries invoke you falsely.[a]
   footnotes:
   - marker: a
-    text: Or, 'they lift up for falsehood your adversaries,' or 'your adversaries take you up falsely.' The Hebrew of the final clause is difficult, and 'name' is implied rather than explicit in the text.
+    text: The Hebrew of the final clause is uncertain; it may instead mean “they lift up your adversaries in vain.” The form rendered “your adversaries” could, with different vocalization, read “your cities.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,46 +31,46 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They speak about you with evil intentions; your enemies misuse your name.[a]
+  text: They speak about you with evil intent. Your enemies falsely call on you.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also mean “they lift up for falsehood your adversaries” or “your adversaries take you up falsely.” The wording is difficult, and “name” is implied rather than stated.
+    text: The Hebrew of the last line is uncertain. It may instead mean, “They lift up your enemies in vain.” With different vowels, the word translated “your enemies” could mean “your cities.”
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: who speak of you with evil intent
-  simplified_phrase: They speak about you with evil intentions
-  preserved_meaning: God’s enemies deliberately speak about him in a malicious way.
-  reasoning_layer_used: POB lexical decisions for אֲשֶׁר, יֹאמְרֻךָ, and לִמְזִמָּה
-  rationale: A direct sentence and common wording make the hostile intent immediately clear.
-- pob_phrase: take your name in vain
-  simplified_phrase: misuse your name
-  preserved_meaning: God’s enemies use his name falsely or wrongfully.
-  reasoning_layer_used: POB lexical and theological decisions for נָשֻׂא לַשָּׁוְא
-  rationale: “Misuse” expresses the force of the familiar idiom in clear modern English.
+- pob_phrase: who speak of you maliciously
+  simplified_phrase: They speak about you with evil intent
+  preserved_meaning: Their speech about God is deliberate and evil.
+  reasoning_layer_used: POB lexical decision for יֹאמְרֻךָ לִמְזִמָּה
+  rationale: The wording states the malicious purpose in familiar language.
+- pob_phrase: your adversaries invoke you falsely
+  simplified_phrase: Your enemies falsely call on you
+  preserved_meaning: God’s opponents dishonestly invoke him.
+  reasoning_layer_used: POB final source audit and ambiguity revision
+  rationale: “Call on you” clarifies “invoke” without narrowing it to a plea or adding “name.”
 translation_notes:
   risk_flags:
-  - risk: The final Hebrew clause is difficult, and the word “name” is not explicit.
-    mitigation: The main text follows the POB reading, while the footnote accurately preserves both documented alternatives.
+  - risk: The difficult final clause allows substantially different readings.
+    mitigation: The footnote preserves the principal alternative and the possible different vocalization.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/139/020.yaml
   source_text_sha256: bbc2a53499fda763eda00b92273aad6168abc141829f4434cb8bd613fee0d392
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 1676f2c86a72ac0c2de37ef02138e2d2e2b6461a61622f4086ba8d32c3bc6d1a
-  timestamp: '2026-07-12T10:03:29Z'
-  output_hash: d36112401f3e442d5f15b96ce696a0a094f271efb8d6b191006ec0835bdea4ca
+  prompt_sha256: 1b5aaac7c87b2f68d56c1a95bce848e61baaba7b76fc6326201f17af49b27f81
+  timestamp: '2026-08-28T23:36:24Z'
+  output_hash: 5ff27add7d47ebf4c0d0262af9001b77d80b5e783b5b2b33df8bac404759c556
   usage:
-    prompt_tokens: 3409
-    completion_tokens: 355
-    total_tokens: 3764
-    reasoning_tokens: 0
+    prompt_tokens: 3839
+    completion_tokens: 464
+    total_tokens: 4303
+    reasoning_tokens: 148
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -83,6 +83,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: c6fe6712bdc42ad318f39d9c419470e87fd4630f2976d8e8279e61d7debc8320
   review_summary: The main text is a warranted and meaningfully clearer simplification. “Speak about you” naturally communicates the contextual force of the Hebrew, and “misuse your name” clearly conveys the POB’s idiomatic reading of “take your name in vain” without adding doctrine. Revision is needed only to make the alternative-reading footnote faithfully retain the POB audit trail for this syntactically difficult clause.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:26Z'
+  previous_text: They speak about you with evil intentions; your enemies misuse your name.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:24Z'
+  previous_text: They speak about you for evil purposes. Your enemies falsely appeal to you.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b3729ea4a7e693f21fba7cdc9056761714b3f3f8e32c7dd2d84aa3da6ea29850
+  review_summary: The first sentence makes “maliciously” accessible while retaining the POB audit’s deliberate evil intent. The second sentence should replace “appeal to you,” which introduces the narrower idea of a plea or request into an already uncertain clause. “Falsely call on you” remains clear, preserves the POB’s contextual construal of invocation, and does not supply “name.” The footnote should retain “in vain” to preserve the documented semantic range.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

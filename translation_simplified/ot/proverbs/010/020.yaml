@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/010/020.yaml
-  text: The tongue of the righteous is choice silver[a]; the heart of the wicked is of little worth.
-  footnotes:
-  - marker: a
-    text: Or 'is of little value,' 'is little,' or 'is as nothing.' The Hebrew כִּמְעָט is concise and can express slight worth or near-nothingness.
-    reason: lexical_alternative
+  text: The tongue of the righteous is choice silver; the heart of the wicked is of little worth.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,57 +27,72 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 10:20 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''worth little''].'
 translation:
   language: en
-  text: The tongue of the righteous is like fine silver, but the heart of the wicked has little value.[a]
+  text: The words of a righteous person are like high-quality silver, but the hearts of wicked people are worth very little.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew can also mean “is little” or “is almost nothing.”
-    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: The tongue of the righteous
+  simplified_phrase: The words of a righteous person
+  preserved_meaning: What a person who lives rightly says is valuable.
+  reasoning_layer_used: POB lexical decisions for לְשׁוֹן and צַדִּיק
+  rationale: Making speech explicit prevents readers from mistaking “tongue” for only the physical organ.
 - pob_phrase: choice silver
-  simplified_phrase: fine silver
-  preserved_meaning: The righteous person’s speech is compared to high-quality, valuable silver.
-  reasoning_layer_used: Lexical decisions for כֶּסֶף and נִבְחָר
-  rationale: “Fine silver” keeps the concrete silver image while making its high quality easier to understand.
-- pob_phrase: is of little worth
-  simplified_phrase: has little value
-  preserved_meaning: The inner life of the wicked is evaluated as having very little worth.
-  reasoning_layer_used: Lexical decision for כִּמְעָט
-  rationale: “Has little value” states the same valuation in more common English.
+  simplified_phrase: like high-quality silver
+  preserved_meaning: Righteous speech is compared to especially valuable silver.
+  reasoning_layer_used: POB lexical decisions for כֶּסֶף and נִבְחָר
+  rationale: The explicit comparison and familiar wording make the value image clear.
+- pob_phrase: the heart of the wicked is of little worth
+  simplified_phrase: the hearts of wicked people are worth very little
+  preserved_meaning: The inner thought and moral character of wicked people have little value.
+  reasoning_layer_used: POB lexical decisions for לֵב, רְשָׁעִים, and כִּמְעָט
+  rationale: Plural agreement and everyday wording make the contrast easier to follow.
 interpretive_expansions:
-- pob_phrase: is choice silver
-  rendering: is like fine silver
-  claim: The metaphor presents the righteous person’s tongue as comparable to valuable silver.
+- pob_phrase: The tongue
+  rendering: The words
+  claim: The body-part image refers to speech.
   evidence:
-  - The lexical rationale identifies comparison imagery and a valuation metaphor.
-  - The contrasting clause explicitly concerns little value.
+  - The POB lexical rationale identifies speech as the meaning implied by “tongue.”
+  - The proverb contrasts a righteous person’s speech with wicked people’s inner character.
   confidence: high
   alternatives_preserved:
-  - The direct metaphor “is fine silver” remains possible.
+  - speech
 translation_notes:
   risk_flags:
-  - risk: “Fine silver” may suggest refinement rather than simply select quality.
-    mitigation: The wording is used broadly for high-quality silver and does not add a refining process.
-  - risk: The second clause could be misread as denying the worth of wicked people themselves.
-    mitigation: The text retains “heart,” limiting the judgment to their inner thought and moral character.
+  - risk: Replacing “tongue” with “words” reduces the visible body-part parallel with “hearts.”
+    mitigation: The rendering preserves the intended contrast between outward speech and inner character.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/010/020.yaml
   source_text_sha256: ba6369b9b97066eff310163ecbdf5e6310cc24314c9ffbc6ecde93f615795909
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a913b147bcf4d2e8c8522001e6c673d386b38f3084d16a65d0f76f1a5ce3a6b9
-  timestamp: '2026-07-11T21:03:06Z'
-  output_hash: 7c3b0906e61414fd2796dc68e0c455b0597fadf5d5bac2a10609c416052d2ebc
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 097af3cc3a9fb554df44100b10e85af802bca355a9cb34ec683b095ddd44c0de
+  timestamp: '2026-08-28T23:34:26Z'
+  output_hash: f061b66a051a1f4e3aeb7b871d60200cf7fa6a059a6e6637784232e296508fb8
   usage:
-    prompt_tokens: 2658
-    completion_tokens: 1351
-    total_tokens: 4009
-    reasoning_tokens: 925
+    prompt_tokens: 3556
+    completion_tokens: 840
+    total_tokens: 4396
+    reasoning_tokens: 389
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:25Z'
+  previous_text: The tongue of the righteous is like fine silver, but the heart of the wicked has little value.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:26Z'
+  previous_text: The tongue of a righteous person is like the finest silver, but the hearts of wicked people are worth very little.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e89e018f95e06866a1ac3d80d917bd960e5f8d72dc5df516a3543d863bd20c10
+  review_summary: The draft’s explicit comparison, inclusive “a righteous person,” plural “wicked people,” and everyday expression “worth very little” are warranted and do not introduce doctrinal claims. Revision is needed because retaining “tongue” leaves the central reference to speech insufficiently clear in an understanding-first translation. Replacing it with “words” states the source metonymy directly while retaining the proverb’s tongue/heart contrast as speech versus inner character.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -31,61 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 37:36 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''passed away''].'
 translation:
   language: en
-  text: But then he passed from view—and he was gone. I looked for him, but he could not be found.[a]
+  text: But he passed away,[a] and look—he was gone. I looked for him, but he could not be found.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can mean that he passed by or passed away; the point here is that the wicked man disappeared from view.
+    text: The Hebrew can also mean “passed by”; here it pictures the wicked man disappearing from view.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: he passed by
-  simplified_phrase: he passed from view
-  preserved_meaning: The wicked man went from being present to being absent without specifying exactly how.
-  reasoning_layer_used: POB lexical decision and footnote
-  rationale: This makes the contextual disappearance clear while preserving the Hebrew verb’s ambiguity.
 - pob_phrase: and behold, he was no more
-  simplified_phrase: —and he was gone
-  preserved_meaning: His absence is abrupt and striking, not annihilation.
-  reasoning_layer_used: POB lexical rationale
-  rationale: The dash preserves the surprise of “behold” in natural modern English.
+  simplified_phrase: and look—he was gone
+  preserved_meaning: The wording draws attention to the wicked man’s striking disappearance without claiming how quickly it happened.
+  reasoning_layer_used: POB lexical decisions for וְהִנֵּה and אֵינֶנּוּ
+  rationale: “Look” preserves the call for attention, while “gone” plainly expresses his absence.
 - pob_phrase: I sought him
   simplified_phrase: I looked for him
-  preserved_meaning: The speaker tried to find the wicked man.
-  reasoning_layer_used: POB lexical alternatives
-  rationale: “Looked for” is more common modern English than “sought.”
-interpretive_expansions:
-- pob_phrase: he passed by
-  rendering: he passed from view
-  claim: The passing describes the wicked man’s disappearance from the observer’s sight.
-  evidence:
-  - The POB footnote says the verb here describes disappearance from view.
-  - The following clauses say he was gone and could not be found.
-  confidence: high
-  alternatives_preserved:
-  - passed by
-  - passed away
+  preserved_meaning: The speaker actively tried to find the missing man.
+  reasoning_layer_used: POB lexical decision for וָאֲבַקְשֵׁהוּ
+  rationale: “Looked for” is more familiar modern English than “sought.”
 translation_notes:
   risk_flags:
-  - risk: “Passed from view” may sound less concrete than the Hebrew verb “passed by.”
-    mitigation: The footnote preserves both the spatial and disappearance-related alternatives.
+  - risk: “Passed away” may be understood as an explicit statement that the man died.
+    mitigation: The footnote identifies disappearance from view as the contextual point and preserves “passed by” as an alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/037/036.yaml
   source_text_sha256: c2c99f5c2cc1ba670c67243d73c3c558baf1a64155e17e13beecc0e34e2d30c3
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0520a4dd04ecd91633071d7c92dac549bba368c9962267f93d151b46d253e72f
-  timestamp: '2026-07-11T20:55:28Z'
-  output_hash: 668d7febcd86cc8d037618a9b7a2e792c54c954a141a145012ca0a79e9734533
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2d222452805fa90e3f3b22f574a3478c4077630c8a24d9cc40a261ff99394962
+  timestamp: '2026-08-28T23:35:18Z'
+  output_hash: ce265fd4712161df12531b4ea64927c886d55685fa307cdd90bf6adbca80c501
   usage:
-    prompt_tokens: 2697
-    completion_tokens: 806
-    total_tokens: 3503
-    reasoning_tokens: 365
+    prompt_tokens: 3615
+    completion_tokens: 490
+    total_tokens: 4105
+    reasoning_tokens: 154
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:01Z'
+  previous_text: But then he passed from view—and he was gone. I looked for him, but he could not be found.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:18Z'
+  previous_text: But then he passed by,[a] and suddenly he was gone. I looked for him, but he could not be found.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 50e5d9d00fdbe11e6b6bdaa06a8ec1ec07eb9427be3b233f4b3bc96c9a2649ea
+  review_summary: Revision is needed. “I looked for him” is a warranted and clearer modernization of “I sought him,” and “gone” clearly expresses non-presence. However, “suddenly” adds a temporal assertion not carried by the Hebrew attention particle, and “passed by” leaves the central contextual disappearance unclear despite the POB audit’s own lexical rationale. The replacement retains the audit-trail contextual sense while using “look” to preserve the rhetorical force of וְהִנֵּה.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/068/010.yaml
-  text: Your creatures settled in it; in your goodness[a], O God, you provided for the poor.
+  text: Your creatures[a] settled in it; in your goodness, O God, you provided for the poor.
   footnotes:
   - marker: a
-    text: Hebrew חַיָּתְךָ is difficult here; it can also be rendered 'your living creatures,' 'your company,' or 'your congregation.'
+    text: Hebrew חַיָּתְךָ is difficult; it may also mean “your company” or “your congregation.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,40 +31,68 @@ base_translation:
     changes_summary: Changed 'flock' to 'creatures' to more accurately reflect the Hebrew term, which is broader than a flock and commonly refers to living creatures or a company dwelling there. The rest of the verse is accurate and natural.
 translation:
   language: en
-  text: Your creatures[a] made their home there. O God, in your goodness you provided for the poor.
+  text: Your flock[a] settled there. O God, in your goodness, you provided for the poor.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word is difficult; it may mean “living creatures,” “your company,” or “your congregation.”
+    text: The Hebrew is difficult; it may also mean “your living creatures,” “your company,” or “your congregation.”
     reason: alternative_reading
 simplification_decisions:
+- pob_phrase: Your creatures
+  simplified_phrase: Your flock[a]
+  preserved_meaning: God’s gathered living company settled in the land, though the exact Hebrew sense remains uncertain.
+  reasoning_layer_used: Lexical and theological decisions for חַיָּתְךָ
+  rationale: “Flock” conveys the preferred collective image, while the note preserves the ambiguity.
 - pob_phrase: settled in it
-  simplified_phrase: made their home there
-  preserved_meaning: They came to live in the land mentioned in the preceding context.
-  reasoning_layer_used: The lexical decision for יָשְׁבוּ בָהּ and its contextual antecedent.
-  rationale: The new wording expresses residence in familiar English without changing the referent.
+  simplified_phrase: settled there
+  preserved_meaning: They established their dwelling in the land mentioned earlier.
+  reasoning_layer_used: Lexical decision for יָשְׁבוּ בָהּ and preceding context
+  rationale: “There” makes the earlier location natural in English without adding an arrival nuance.
+- pob_phrase: in your goodness, O God, you provided
+  simplified_phrase: O God, in your goodness, you provided
+  preserved_meaning: God is directly addressed as the one whose goodness moved him to provide.
+  reasoning_layer_used: Lexical decisions for בְּטוֹבָתְךָ, תָּכִין, and אֱלֹהִים
+  rationale: Placing the direct address first makes the sentence easier to follow.
 translation_notes:
   risk_flags:
-  - risk: “Creatures” may be understood only as animals even though the Hebrew may refer collectively to God’s people.
-    mitigation: The footnote preserves the major human and collective alternatives.
+  - risk: “Flock” may be read as referring only to animals.
+    mitigation: The footnote preserves both literal and collective-human alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/068/010.yaml
   source_text_sha256: 35ae1cd8d2a69bf8c1e2b9895a077f2718cd35b435bb6fa2f1af7faad4fc2c1a
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 8dd70cc44f9ba33f2d75c997486940d4edf501817029981e4b7493948d5f01bf
-  timestamp: '2026-07-11T20:25:35Z'
-  output_hash: c36b29bbba0109a87daf1ec72f8ead0fb863904d26a9f5ad5f0e2a866e72c5ba
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b08b308e853ebd9253674a9971b93f9c3b67173cdbceda15ad3e25e737723b66
+  timestamp: '2026-08-28T23:35:36Z'
+  output_hash: 4626a2c2266adc7d88ef573a08629edfa34200df9d0e9bdf2fdaee8f6fb792ac
   usage:
-    prompt_tokens: 2764
-    completion_tokens: 605
-    total_tokens: 3369
-    reasoning_tokens: 368
+    prompt_tokens: 3863
+    completion_tokens: 559
+    total_tokens: 4422
+    reasoning_tokens: 151
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:08Z'
+  previous_text: Your creatures[a] made their home there. O God, in your goodness you provided for the poor.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:36Z'
+  previous_text: Your creatures[a] came to live there. O God, in your goodness you provided for the poor.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e70eaff10cd860ebfdbab92d923f9c6b10957dc2891c0757993b9d70f3d81d04
+  review_summary: 'Revise the first clause. The word translated here is genuinely difficult, and the footnote should preserve its live alternatives. But the audit trail’s contextually preferred collective reading should guide the main text: “flock” retains the poetic collective image without making modern readers think the verse is simply about animals. “Settled there” is clear and preserves the dwelling sense more directly than “came to live there.”'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

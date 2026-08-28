@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/010/022.yaml
-  text: The blessing of the LORD makes rich, and he adds no sorrow with it.
+  text: The blessing of Yahweh makes rich, and he adds no sorrow with it.
   revision_pass:
     model: doctrine-realignment
     timestamp: '2026-05-18T03:59:14Z'
@@ -19,41 +19,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 10:22 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''he adds'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote'
 translation:
   language: en
-  text: The LORD’s blessing brings wealth, and he adds no sorrow along with it.
+  text: Yahweh’s blessing makes a person rich, and he adds no sorrow with it.
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: The blessing of Yahweh makes rich
+  simplified_phrase: Yahweh’s blessing makes a person rich
+  preserved_meaning: Yahweh’s blessing causes an implied recipient to become rich.
+  reasoning_layer_used: POB base text, Hebrew source syntax, and grounding review
+  rationale: Adding “a person” makes the implied recipient clear while retaining the causative sense.
+interpretive_expansions:
 - pob_phrase: makes rich
-  simplified_phrase: brings wealth
-  preserved_meaning: The LORD’s blessing is what produces riches.
-  reasoning_layer_used: POB base text
-  rationale: The noun phrase is more natural in modern English without changing the claim.
-- pob_phrase: and he adds no sorrow with it
-  simplified_phrase: and he adds no sorrow along with it
-  preserved_meaning: The LORD does not accompany his blessing with sorrow.
-  reasoning_layer_used: applied doctrine-realignment revision
-  rationale: “Along with it” clarifies accompaniment while preserving the audited choice “he adds.”
+  rendering: makes a person rich
+  claim: The unstated recipient is expressed as a generic person.
+  evidence:
+  - The Hebrew verb means “makes rich” and leaves the person enriched implicit.
+  confidence: high
 translation_notes:
   risk_flags:
-  - risk: Readers may wrongly apply the statement to every kind of wealth.
-    mitigation: Keeping “The LORD’s blessing” as the subject limits the claim to wealth that comes through his blessing.
+  - risk: The proverb could be read as promising riches to every person Yahweh blesses.
+    mitigation: The wording states the proverb without adding an explicit universal guarantee.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/010/022.yaml
   source_text_sha256: ffb9b6efe2e959b34c506f6a8e3b0141c9a670a6f3bfd6a9f11d3790903c50d4
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 556ea7e0af6419dc6aa173a09a1d1c39919b0bf0cc97b4a2a3041543fe4298e8
-  timestamp: '2026-07-11T21:20:44Z'
-  output_hash: bf7916987cee033907c8126ab915134e36af94489071f1699fa92349775893da
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 84f21b21814df5ef301f4f08aa840780f8b0314bc51b11138bd59ab03cc3afbe
+  timestamp: '2026-08-28T23:34:15Z'
+  output_hash: 0970c498f8ab40eb176f1783934c33ff2df3cadad6858e4edd5b0d68d65c9de6
   usage:
-    prompt_tokens: 1935
-    completion_tokens: 606
-    total_tokens: 2541
-    reasoning_tokens: 361
+    prompt_tokens: 2647
+    completion_tokens: 253
+    total_tokens: 2900
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:57Z'
+  previous_text: The LORD’s blessing brings wealth, and he adds no sorrow along with it.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:15Z'
+  previous_text: Yahweh’s blessing brings wealth, and he adds no sorrow with it.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5cf7ea1b47668ce7a82e1966e431e44a13faf6d3453fcb654788bf0d0e4bf7cf
+  review_summary: The draft preserves the proverb’s meaning and does not turn it into an explicit universal promise. However, “brings wealth” is at best a marginal clarity gain over “makes rich,” so it does not meet the requested standard for approval. The recommended wording retains the source’s causative sense while explicitly supplying the ordinary generic recipient implied by the Hebrew.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

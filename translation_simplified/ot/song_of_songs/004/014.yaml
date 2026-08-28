@@ -11,22 +11,22 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/004/014.yaml
-  text: nard and saffron[a], calamus and cinnamon, with all the trees of frankincense, myrrh and aloes[e][d][c][b], with all the finest spices.
+  text: nard[a] and saffron, calamus[b] and cinnamon, with all the frankincense trees[c], myrrh and aloes[d], with all the finest spices[e].
   footnotes:
   - marker: a
-    text: Or 'spikenard.'
+    text: Or “spikenard.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'sweet cane' for 'calamus.'
+    text: Or “sweet cane.”
     reason: lexical_alternative
   - marker: c
-    text: Hebrew literally, 'with all trees of frankincense.'
+    text: Hebrew literally, “all trees of frankincense.”
     reason: lexical_alternative
   - marker: d
-    text: '''Aloes'' here likely refers to fragrant agarwood, not aloe vera.'
+    text: “Aloes” here likely refers to fragrant agarwood, not aloe vera.
     reason: cultural_note
   - marker: e
-    text: Hebrew literally, 'with all the chief spices.'
+    text: Hebrew literally, “all the chief spices.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -43,66 +43,92 @@ base_translation:
     changes_summary: 'doctrine_realignment: Song of Songs 4:14 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''with every kind of frankincense tree''].'
 translation:
   language: en
-  text: fragrant nard and saffron, sweet cane[a] and cinnamon, every kind of frankincense tree, myrrh and fragrant agarwood[b]—all the finest spices.
+  text: nard[a] and saffron, sweet-smelling cane[b] and cinnamon, all the frankincense trees, myrrh and fragrant agarwood[c], and all the finest spices.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The traditional term is “calamus,” an aromatic reed.
-    reason: lexical_alternative
+    text: Nard, also called spikenard, is a fragrant plant used for perfume.
+    reason: simplification_note
   - marker: b
-    text: The Hebrew term is often translated “aloes”; here it likely means fragrant agarwood, not aloe vera.
+    text: The aromatic plant is traditionally called calamus.
+    reason: lexical_alternative
+  - marker: c
+    text: Hebrew uses the traditional term “aloes,” referring here to fragrant agarwood, not aloe vera.
     reason: cultural_note
 simplification_decisions:
 - pob_phrase: calamus
-  simplified_phrase: sweet cane
-  preserved_meaning: An aromatic reed used among spices and perfumes.
-  reasoning_layer_used: POB lexical decision and listed alternative
-  rationale: “Sweet cane” is clearer to common readers than the technical plant name “calamus.”
-- pob_phrase: with all the trees of frankincense
-  simplified_phrase: every kind of frankincense tree
-  preserved_meaning: The collective phrase still pictures the trees that produce frankincense.
-  reasoning_layer_used: POB lexical rationale
-  rationale: The recast phrase reads naturally while preserving the source’s tree imagery.
+  simplified_phrase: sweet-smelling cane
+  preserved_meaning: The plant is an aromatic reed used among perfumes and spices.
+  reasoning_layer_used: POB lexical decision and alternatives
+  rationale: The common wording explains the unfamiliar plant while preserving its aromatic sense.
+- pob_phrase: with all the frankincense trees
+  simplified_phrase: all the frankincense trees
+  preserved_meaning: The collective phrase and concrete image of frankincense trees remain intact.
+  reasoning_layer_used: Hebrew source and wisdom-source audit
+  rationale: Removing “with” makes the list flow naturally without weakening the tree image.
 - pob_phrase: aloes
   simplified_phrase: fragrant agarwood
-  preserved_meaning: The perfume wood is retained without suggesting aloe vera.
+  preserved_meaning: This is the aromatic wood used in perfume contexts, not aloe vera.
   reasoning_layer_used: POB lexical decision and cultural note
-  rationale: “Agarwood” identifies the likely fragrant substance more clearly for modern readers.
+  rationale: The specific modern name prevents a likely mistaken identification.
 interpretive_expansions:
-- pob_phrase: nard; aloes
-  rendering: fragrant nard; fragrant agarwood
-  claim: These items are aromatic substances in the poem’s spice catalogue.
+- pob_phrase: calamus
+  rendering: sweet-smelling cane
+  claim: The cane is aromatic rather than an ordinary reed.
   evidence:
-  - The immediate list consists of spices and perfume materials.
-  - The POB lexical rationales identify nard and aloes as fragrant substances.
+  - The POB lexical rationale says the perfume list gives the word its aromatic sense.
   confidence: high
   alternatives_preserved:
-  - nard without the clarifier “fragrant”
+  - calamus
+- pob_phrase: aloes
+  rendering: fragrant agarwood
+  claim: The term refers here to aromatic agarwood rather than aloe vera.
+  evidence:
+  - The POB cultural note identifies fragrant agarwood as the likely referent.
+  confidence: high
+  alternatives_preserved:
   - aloes
+  - eaglewood
 translation_notes:
   risk_flags:
-  - risk: “Sweet cane” may sound generic rather than like a specific aromatic plant.
-    mitigation: The anchored footnote retains “calamus” and identifies it as an aromatic reed.
-  - risk: “Agarwood” replaces the traditional biblical term “aloes.”
-    mitigation: The anchored footnote preserves the traditional rendering and distinguishes it from aloe vera.
+  - risk: Nard remains unfamiliar in the main text.
+    mitigation: The footnote explains that it is a fragrant perfume plant and gives the name spikenard.
+  - risk: “Frankincense trees” may sound unusual in modern English.
+    mitigation: The wording remains because the audited POB decision protects the Hebrew tree image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/004/014.yaml
   source_text_sha256: 3701cd228d0461b7e9ad86fe04e3f4a6806a7c5b7621e2d1a930b646710c0045
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: bdfb25305d0d2986919978e702cbdb8b25fbf8c9ecf0e200ced5a8de869a2eac
-  timestamp: '2026-07-11T21:25:32Z'
-  output_hash: d830b9e6f91709daa7c46b77a0595abccad40e84c00c4ce19d6617e2fd46c756
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4f6cb3082baf9d850b48c0d0485b92379fc4ea33ad6ecda342d0f7c030dd9ace
+  timestamp: '2026-08-28T23:33:36Z'
+  output_hash: c9d6cbe57f7095a2ea17b79c06b766ddb83db4eb196d2d01c850babefa4fdc20
   usage:
-    prompt_tokens: 3033
-    completion_tokens: 1022
-    total_tokens: 4055
-    reasoning_tokens: 497
+    prompt_tokens: 4221
+    completion_tokens: 664
+    total_tokens: 4885
+    reasoning_tokens: 76
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:14:21Z'
+  previous_text: fragrant nard and saffron, sweet cane[a] and cinnamon, every kind of frankincense tree, myrrh and fragrant agarwood[b]—all the finest spices.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:36Z'
+  previous_text: nard[a] and saffron, sweet-smelling cane[b] and cinnamon, all the frankincense trees, myrrh and fragrant agarwood[c], and all the finest spices.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 9111c7322169c21f7d4a61bdfeda9b078cdc5035e4d937bc7c49c2a2df963572
+  review_summary: The changes to “sweet-smelling cane” and “fragrant agarwood” are well supported by the POB lexical and cultural-note audit trail and improve understanding without importing doctrine. Omitting “with” before “all the frankincense trees” does not materially alter the list or its concrete tree image. Revise only the nard note so that it explains the unfamiliar term rather than replacing it with an equally unfamiliar synonym.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

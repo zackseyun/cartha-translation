@@ -31,45 +31,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A man can have many companions and still come to ruin, but there is a friend who sticks closer than a brother.[a]
+  text: A man may have many companions and still come to ruin.[a] Yet there is a friend who sticks closer than a brother.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or, “A man with many companions must show himself friendly.” The Hebrew verb is difficult and can be understood in more than one way.
     reason: alternative_reading
 simplification_decisions:
+- pob_phrase: A man of many companions
+  simplified_phrase: A man may have many companions
+  preserved_meaning: The man has many associates, who are distinct from the loyal friend in the second line.
+  reasoning_layer_used: Lexical decision for רֵעִים and the contextual contrast
+  rationale: The verbal form is easier to read and avoids suggesting that the companions physically surround him.
+- pob_phrase: may come to ruin
+  simplified_phrase: and still come to ruin
+  preserved_meaning: Having many companions does not prevent a disastrous outcome.
+  reasoning_layer_used: Lexical decision for לְהִתְרֹעֵעַ and the contrast between the two lines
+  rationale: “Still” makes the contrast clear without making ruin inevitable.
+- pob_phrase: but there is a friend
+  simplified_phrase: Yet there is a friend
+  preserved_meaning: One deeply loyal friend contrasts with the man's many companions.
+  reasoning_layer_used: Lexical decision for וְיֵשׁ and the proverb's parallel structure
+  rationale: A new sentence makes the contrast easier to follow while preserving its force.
+interpretive_expansions:
 - pob_phrase: A man of many companions may come to ruin
-  simplified_phrase: A man can have many companions and still come to ruin
-  preserved_meaning: Many social connections do not protect a man from a disastrous outcome.
-  reasoning_layer_used: POB lexical decision for לְהִתְרֹעֵעַ and the immediate contrast
-  rationale: The clause is recast in ordinary English while keeping ruin as possible rather than inevitable.
-- pob_phrase: but there is a friend who sticks closer than a brother
-  simplified_phrase: but there is a friend who sticks closer than a brother
-  preserved_meaning: One loyal friend may be more closely attached than a brother.
-  reasoning_layer_used: POB lexical decisions for אֹהֵב, דָּבֵק, and מֵאָח
-  rationale: The vivid image of sticking close is already clear and preserves the contrast with mere companions.
+  rendering: A man may have many companions and still come to ruin
+  claim: Many companions do not necessarily protect someone from ruin.
+  evidence:
+  - The second line contrasts numerous companions with one closely attached friend.
+  - POB’s rationale says that having many companions can still end badly.
+  confidence: high
+  alternatives_preserved:
+  - The footnote preserves the reading “must show himself friendly.”
 translation_notes:
   risk_flags:
-  - risk: The difficult Hebrew verb may instead refer to showing oneself friendly.
-    mitigation: The alternate reading remains in the footnote without weakening the controlling POB rendering.
+  - risk: The first line depends on a difficult Hebrew verb with more than one accepted interpretation.
+    mitigation: The main text retains POB’s preferred sense, while the footnote preserves the traditional alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/018/024.yaml
   source_text_sha256: 88706470002814784f2d0abd73b2605aaa73b06cc59de42aa92634df2a5558ad
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6e5cc2688ce37c81994750ed07ce9da12b12f25becff13df204684d8966690c8
-  timestamp: '2026-07-11T21:20:37Z'
-  output_hash: 049be402a5c3bb790c865a31fa423e04fa9f0ecbaa1c2aa19b8eb1184a283cc6
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a91ec6fdae2d288bc79a9e090adcc2c95bbb0c49c849134a7970679429dd8ef8
+  timestamp: '2026-08-28T23:34:39Z'
+  output_hash: 498fd6bec5c48f0a56a4b974212e5852828e893060cf5392a44869a349d5d45f
   usage:
-    prompt_tokens: 2437
-    completion_tokens: 550
-    total_tokens: 2987
-    reasoning_tokens: 193
+    prompt_tokens: 3344
+    completion_tokens: 1023
+    total_tokens: 4367
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:08Z'
+  previous_text: A man can have many companions and still come to ruin, but there is a friend who sticks closer than a brother.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:39Z'
+  previous_text: A man can be surrounded by companions and still come to ruin.[a] Yet there is a friend who clings to him more closely than a brother.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 938d48cafad326a9f93c9dd416dc3e49516b422b5a38c11622a85eb1835246ab
+  review_summary: 'The draft rightly retains the POB’s preferred reading of the difficult verb and preserves the live alternative in a footnote. “Still come to ruin” is a warranted, helpful clarification of the proverb’s contrast, and the second line remains faithful. Revise “can be surrounded by companions” to “may have many companions”: it is equally clear, avoids adding an encircling/physical-presence image, and directly represents the source phrase.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

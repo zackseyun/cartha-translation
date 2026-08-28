@@ -31,45 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A man who finds wisdom is blessed. So is a man who gains understanding.[a]
+  text: The man[a] who finds wisdom is blessed, and so is the man who gains understanding.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Here “man” represents any person.
+    text: Here “the man” represents any person.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Blessed is the man who finds wisdom
-  simplified_phrase: A man who finds wisdom is blessed
-  preserved_meaning: Finding wisdom places a person in an enviable state of blessing.
-  reasoning_layer_used: POB lexical decisions for אַשְׁרֵי, אָדָם, מָצָא, and חָכְמָה
-  rationale: Ordinary English word order makes the beatitude easier to grasp while retaining “blessed” and the representative “man.”
+  simplified_phrase: The man who finds wisdom is blessed
+  preserved_meaning: Whoever finds wisdom is in an enviable state of blessing.
+  reasoning_layer_used: POB lexical decisions for אַשְׁרֵי, אָדָם, and מָצָא
+  rationale: Ordinary English word order improves clarity while retaining “blessed” and the representative “man.”
 - pob_phrase: and the man who obtains understanding
-  simplified_phrase: So is a man who gains understanding
-  preserved_meaning: The parallel line likewise blesses the man who acquires understanding.
+  simplified_phrase: and so is the man who gains understanding
+  preserved_meaning: The parallel statement separately calls the one who acquires understanding blessed.
   reasoning_layer_used: POB lexical decisions for וְאָדָם, יָפִיק, and תְּבוּנָה
-  rationale: A second short sentence preserves the poetic parallel, while “gains” is clearer than “obtains.”
+  rationale: Repeating the subject preserves both parallel clauses, while “gains” is clearer than “obtains.”
 translation_notes:
   risk_flags:
-  - risk: Modern readers may take “man” as referring only to males.
-    mitigation: The footnote states that the Hebrew uses “man” representatively for any person.
+  - risk: Modern readers may understand “the man” as referring only to males.
+    mitigation: The footnote explains that the Hebrew expression represents any person.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/003/013.yaml
   source_text_sha256: bab7823a5a6198e67b276d81f6fab5886235aab3d810493d176d672ce56f0d97
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 734732a3540af01c5cff1e094d40f56f3cbb318480fd1f52e8d7f1a24fa5f85b
-  timestamp: '2026-07-11T21:07:40Z'
-  output_hash: 9d70f2fe96f544b96cc48e25005568b072fea87fa16f95fa97f6498ca80ec594
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4d585fb64af9fc1bef9de79311f3a6ca206ccbd1a176edd4d46c3a175ce8ad46
+  timestamp: '2026-08-28T23:34:07Z'
+  output_hash: c6e5d8adc3c2801c8625a3731a1833ef4cc1e7d40c91ee2ee4afb0beaba46bec
   usage:
-    prompt_tokens: 2475
-    completion_tokens: 485
-    total_tokens: 2960
-    reasoning_tokens: 140
+    prompt_tokens: 3229
+    completion_tokens: 480
+    total_tokens: 3709
+    reasoning_tokens: 150
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:18Z'
+  previous_text: A man who finds wisdom is blessed. So is a man who gains understanding.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:07Z'
+  previous_text: The man[a] who finds wisdom and gains understanding is blessed.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c9bf44df7360b52c103057399f47eba241a81dec49d2cb88b2e43a7dd8d29bab
+  review_summary: The draft improves English word order and reasonably renders “obtains” as “gains,” but its single-subject construction merges the two parallel beatitude clauses and can make both actions sound jointly necessary. State each parallel clause explicitly. “Anyone” clearly conveys the generic force of אָדָם in the main text, so a gender footnote is unnecessary.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

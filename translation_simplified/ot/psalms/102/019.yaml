@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/102/019.yaml
-  text: 'For he looked down from his holy height; Yahweh gazed from heaven to earth,'
+  text: For he looked down from his holy height; Yahweh looked from heaven upon the earth,
   revision_pass:
     model: doctrine-realignment
     timestamp: '2026-05-18T03:58:52Z'
@@ -19,41 +19,67 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 102:20 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''gazed'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote m'
 translation:
   language: en
-  text: For the LORD looked down from his holy place on high; from heaven he gazed at the earth.
+  text: For he looked down from his holy height; Yahweh looked from heaven at the earth.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: For he looked down from his holy height
-  simplified_phrase: For the LORD looked down from his holy place on high
-  preserved_meaning: The LORD looks downward from his holy, exalted dwelling.
-  reasoning_layer_used: source payload and POB translation
-  rationale: The reordered subject is easier to follow, and “holy place on high” clarifies the spatial image.
-- pob_phrase: the LORD gazed from heaven to earth
-  simplified_phrase: from heaven he gazed at the earth
-  preserved_meaning: The LORD directs his attentive gaze from heaven toward the earth.
-  reasoning_layer_used: applied revision
-  rationale: This keeps the deliberately restored verb “gazed” while using natural English direction.
+- pob_phrase: upon the earth
+  simplified_phrase: at the earth
+  preserved_meaning: Yahweh’s look is directed from heaven toward the earth.
+  reasoning_layer_used: POB lexical decision for אֶל אֶרֶץ
+  rationale: “At the earth” is natural modern English and keeps the direction and object of his look.
+- pob_phrase: his holy height
+  simplified_phrase: his holy height
+  preserved_meaning: The wording keeps the image of Yahweh looking down from an exalted holy height.
+  reasoning_layer_used: Source text and grounding review
+  rationale: Retaining “height” avoids turning the source’s elevation image into a specified place.
 translation_notes:
   risk_flags:
-  - risk: “Holy place on high” is slightly more explicit than the compact image “holy height.”
-    mitigation: It preserves both the holiness and elevated-location elements of the Hebrew image.
+  - risk: “Holy height” is less common in everyday English.
+    mitigation: It remains understandable in context and preserves the source’s explicit height imagery.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/102/019.yaml
   source_text_sha256: 6a0af818bdb941167dc7731483514281110bc5ae16e3695abc0ce58b8cb83ef3
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 14b5cc4c2af08ca1dbc4aa2ba03be37ab597e3daa46360965f3a92b0c1fe6a59
-  timestamp: '2026-07-11T21:09:29Z'
-  output_hash: a92dab77f1e8d20737b20917c40bd9654f18b928dfaba0aa570806c8b7f33e7e
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fdc02ab7adfcbeb0e48d7004bd7a130e4e00b591a2722a90b1385636972d4403
+  timestamp: '2026-08-28T23:35:58Z'
+  output_hash: e8fa16b0b0689c4edbd7f0549daf1dd22ab977c89ec8028ad524dd4d1d667b2a
   usage:
-    prompt_tokens: 1963
-    completion_tokens: 569
-    total_tokens: 2532
-    reasoning_tokens: 294
+    prompt_tokens: 2952
+    completion_tokens: 365
+    total_tokens: 3317
+    reasoning_tokens: 110
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: his holy height
+  rendering: his holy place above
+  claim: The exalted height is presented as Yahweh’s holy place.
+  evidence:
+  - The parallel line identifies the vantage point as heaven.
+  confidence: high
+  alternatives_preserved:
+  - his holy height
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:33Z'
+  previous_text: For the LORD looked down from his holy place on high; from heaven he gazed at the earth.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:58Z'
+  previous_text: For he looked down from his holy place above; Yahweh looked from heaven at the earth.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 88820e8ab8ede53afc4d8c566be54e3fc70afcd6a22c905912b4186c0c19d112
+  review_summary: The change from “upon the earth” to “at the earth” is clear, natural, and preserves the directed look. However, “holy place above” unnecessarily substitutes a place for the text’s holy height and weakens its exaltation imagery. Retain “holy height” while keeping the clearer “at the earth.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

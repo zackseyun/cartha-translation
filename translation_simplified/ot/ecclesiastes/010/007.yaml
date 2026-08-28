@@ -11,17 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/010/007.yaml
-  text: I have seen slaves on horses[c][b][a], and princes walking on the ground like slaves.
-  footnotes:
-  - marker: a
-    text: Or 'servants' for 'slaves' (Hebrew עֲבָדִים); 'slaves' is chosen here because the verse emphasizes a stark reversal of social rank.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'nobles' for 'princes' (Hebrew שָׂרִים), referring to people of high rank or authority.
-    reason: lexical_alternative
-  - marker: c
-    text: Literally 'on the earth/land'; the sense here is that they are traveling unmounted, in contrast to those 'on horses.'
-    reason: lexical_alternative
+  text: I have seen servants on horses and princes walking on the ground like servants.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,55 +27,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I have seen servants riding horses, while princes walk on the ground like servants.
+  text: I have seen servants ride on horses while princes walk on foot like servants.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: slaves on horses
-  simplified_phrase: slaves riding horses
-  preserved_meaning: People of low status are traveling mounted, a sign of elevated rank.
-  reasoning_layer_used: POB lexical decision for עַל סוּסִים
-  rationale: “Riding” makes the implied action immediately clear.
-- pob_phrase: and princes walking
-  simplified_phrase: while princes walk
-  preserved_meaning: The princes’ ongoing humiliation contrasts directly with the slaves’ elevated position.
-  reasoning_layer_used: POB lexical decisions and verse-level contrast
-  rationale: “While” and matching ongoing actions preserve the simultaneous reversal.
+- pob_phrase: servants on horses
+  simplified_phrase: servants ride on horses
+  preserved_meaning: The servants occupy the mounted position of status and privilege.
+  reasoning_layer_used: Lexical rationale for עַל סוּסִים and the concrete social contrast.
+  rationale: Adding the ordinary verb “ride” makes the implied action immediately clear.
+- pob_phrase: walking on the ground
+  simplified_phrase: walk on foot
+  preserved_meaning: The princes are below the mounted servants and must travel by walking.
+  reasoning_layer_used: Lexical rationale for הֹלְכִים and עַל הָאָרֶץ.
+  rationale: “Walk on foot” expresses the same physical contrast in natural modern English.
+- pob_phrase: and princes
+  simplified_phrase: while princes
+  preserved_meaning: The two scenes form a sharp reversal of expected social rank.
+  reasoning_layer_used: Immediate context and the audited social-status contrast.
+  rationale: “While” makes the contrast easier to follow without explaining it as commentary.
 interpretive_expansions:
 - pob_phrase: on horses
-  rendering: riding horses
-  claim: The slaves are traveling mounted rather than merely positioned on horses.
+  rendering: ride on horses
+  claim: The servants are mounted rather than merely located on horses.
   evidence:
-  - The POB rationale says the phrase implies mounted status and privilege.
-  - The princes walking on the ground supply the immediate contrast.
+  - The lexical audit says the phrase implies mounted status and privilege.
+  - The contrast with princes walking supports the riding sense.
   confidence: high
   alternatives_preserved:
   - on horses
+- pob_phrase: walking on the ground
+  rendering: walk on foot
+  claim: The princes travel without horses.
+  evidence:
+  - The lexical audit identifies “on foot” as an idiomatic contextual rendering.
+  - The phrase directly contrasts with the servants being on horses.
+  confidence: high
+  alternatives_preserved:
+  - walking on the ground
 translation_notes:
   risk_flags:
-  - risk: “Riding” states an action that the Hebrew leaves implicit.
-    mitigation: The mounted-versus-walking contrast strongly supports this clarification.
+  - risk: “On foot” is slightly more interpretive than the Hebrew image “on the ground.”
+    mitigation: The verb “walk” preserves the concrete action and the contrast with riding.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/010/007.yaml
   source_text_sha256: 2c6011f1d90d45496f8cf1d4881531f9129e234c304baa8796fda715460126fc
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 35a3607687ed78a87b1cf74935ce723f5288ee235eb5aaa6beb666eca0c7d11b
-  timestamp: '2026-07-12T09:09:55Z'
-  output_hash: 15156b5fe962257b0ca26fce7ea6881aa28c6d6fa9798006468298f5a486d8ed
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: ca9ad99df20043375627cd6ddc67cd6b59a32e5aba1c4cac077e6554589ed0fa
+  timestamp: '2026-08-28T23:13:39Z'
+  output_hash: 62682a54eab5175f7d3272e6719a437646e9f33e13a1cb4f72a2d1cfb345d5d0
   usage:
-    prompt_tokens: 3274
-    completion_tokens: 313
-    total_tokens: 3587
-    reasoning_tokens: 0
+    prompt_tokens: 2682
+    completion_tokens: 983
+    total_tokens: 3665
+    reasoning_tokens: 501
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:09:55Z'
   previous_text: I have seen slaves riding horses, while princes walked on the ground like slaves.
@@ -96,3 +99,8 @@ spob_revision_history:
   review_summary: '“Riding horses” is a warranted and useful clarification of the mounted image: the POB audit trail explicitly says the phrase implies mounted status, and the immediate contrast with princes walking supports it. Revise the mismatched past tense “walked” so both sides retain the source''s parallel, ongoing visual contrast.'
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:13:39Z'
+  previous_text: I have seen servants riding horses, while princes walk on the ground like servants.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

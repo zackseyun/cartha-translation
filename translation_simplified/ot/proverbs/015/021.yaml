@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/015/021.yaml
-  text: Folly is joy to one lacking sense[a], but a man of understanding makes his path straight.
+  text: Folly is joy to one lacking sense[a], but a man of understanding walks straight.
   footnotes:
   - marker: a
-    text: Hebrew 'lacking heart,' an idiom meaning lacking sense or judgment.
+    text: Hebrew “lacking heart,” an idiom meaning lacking sense or judgment.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,41 +31,68 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 15:21 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''to a man lacking sense''].'
 translation:
   language: en
-  text: A man who lacks good judgment takes pleasure in foolishness, but a man with understanding makes his path straight.
+  text: A man who lacks good judgment enjoys foolishness, but a man with understanding lives uprightly.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: Folly is joy to one lacking sense
-  simplified_phrase: A man who lacks good judgment takes pleasure in foolishness
-  preserved_meaning: A person without sound judgment finds foolishness enjoyable.
+  simplified_phrase: A man who lacks good judgment enjoys foolishness
+  preserved_meaning: A man without sound judgment takes pleasure in folly.
   reasoning_layer_used: POB lexical decisions for אִוֶּלֶת, שִׂמְחָה, and לַחֲסַר לֵב
-  rationale: The recast sentence uses natural English while preserving the contrast between delight in folly and sound judgment.
-- pob_phrase: a man of understanding makes his path straight
-  simplified_phrase: a man with understanding makes his path straight
-  preserved_meaning: An understanding man directs his conduct along a straight course.
-  reasoning_layer_used: POB lexical decisions for תְּבוּנָה, יְיַשֶׁר, and לָכֶת
-  rationale: The simpler wording retains both the causative force and the path image.
+  rationale: The active wording makes the relationship clear while preserving the contrast.
+- pob_phrase: a man of understanding walks straight
+  simplified_phrase: a man with understanding lives uprightly
+  preserved_meaning: The understanding man conducts his life in a straight and right way.
+  reasoning_layer_used: POB source audit for יְיַשֶׁר לָכֶת
+  rationale: This states the conduct sense clearly while preserving the image's moral force.
+interpretive_expansions:
+- pob_phrase: walks straight
+  rendering: lives uprightly
+  claim: Walking straight refers to living in a right and upright way.
+  evidence:
+  - The POB audit identifies the expression as walking or conduct.
+  - The contrast with foolishness and understanding concerns how a person lives.
+  confidence: high
+  alternatives_preserved:
+  - walks straight
+  - keeps his conduct straight
 translation_notes:
   risk_flags:
-  - risk: Modern readers may take “path” as a literal road.
-    mitigation: The contrast with judgment and understanding signals that the path represents conduct or one’s course of life.
+  - risk: “Lives uprightly” makes the conduct sense explicit rather than retaining the literal walking image.
+    mitigation: The POB audit explicitly identifies walking here as a metaphor for conduct.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/015/021.yaml
   source_text_sha256: da976943b727367025a16e4df41441345afba660b6a369cce7ca1b96d65e8ed7
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4a15d7abe4ebc9479f5cfbb629f69d607b0b91aa2cd6b7b2594b388d533aa2df
-  timestamp: '2026-07-11T21:10:59Z'
-  output_hash: 1f6d5b8bc5544c411574d88c8bf29175e85e37ee9160984e31c5746034104800
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6cbc9bdefe7ba2ebbd66ded732b0d3408f59c829db381f80f98cc790c82656a0
+  timestamp: '2026-08-28T23:34:29Z'
+  output_hash: 63c925a8632cf58ab736e9e34606ba6cbacc317d0b02978d7fc8f2099e3de73f
   usage:
-    prompt_tokens: 2770
-    completion_tokens: 775
-    total_tokens: 3545
-    reasoning_tokens: 452
+    prompt_tokens: 3718
+    completion_tokens: 693
+    total_tokens: 4411
+    reasoning_tokens: 307
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:33Z'
+  previous_text: A man who lacks good judgment takes pleasure in foolishness, but a man with understanding makes his path straight.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:29Z'
+  previous_text: A man who lacks good judgment enjoys foolishness, but a man with understanding walks straight.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b2d6c5a4ce1a85739ab966a6fe99c3dd3ded1bb8b9f7eb769a3def179965304d
+  review_summary: 'The first clause is a warranted and clearer active rendering of the POB: one lacking sound judgment takes pleasure in folly. The second clause retains POB’s wording but remains unnecessarily opaque in contemporary English. Revising it to “lives uprightly” communicates the source construction’s established sense of straight, right conduct while avoiding an unsupported expansion.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

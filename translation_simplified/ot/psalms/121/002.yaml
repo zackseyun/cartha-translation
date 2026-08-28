@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/121/002.yaml
-  text: My help comes from Yahweh[a][b], the Maker of heaven and earth.
+  text: My help[a] comes from Yahweh, the Maker of heaven and earth[b].
   footnotes:
   - marker: a
-    text: Hebrew 'the heavens and the earth.' The translation uses the idiomatic English expression 'heaven and earth.'
+    text: Or, more literally, “My help is from Yahweh.” Hebrew has no explicit finite verb in the first clause.
     reason: lexical_alternative
   - marker: b
-    text: Or, more literally, 'My help is from the LORD.' The Hebrew has no explicit finite verb in the first clause; English supplies one idiomatically.
+    text: Hebrew uses the expression “the heavens and the earth”; the translation gives the idiomatic English “heaven and earth.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,33 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My help comes from Yahweh. He is the Maker of heaven and earth.
+  text: Yahweh is the one who helps me. He is the Maker of heaven and earth.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: My help comes from Yahweh, the Maker of heaven and earth.
-  simplified_phrase: My help comes from Yahweh. He is the Maker of heaven and earth.
-  preserved_meaning: Yahweh is both the source of the psalmist’s help and the Creator of everything.
-  reasoning_layer_used: POB lexical and theological decisions
-  rationale: Splitting the confession into two sentences makes Yahweh’s identity easier to grasp without weakening the title “Maker.”
-translation_notes: {}
+- pob_phrase: My help comes from Yahweh
+  simplified_phrase: Yahweh is the one who helps me
+  preserved_meaning: Yahweh is the source of the psalmist’s help.
+  reasoning_layer_used: POB lexical decision for עֶזְרִי and מֵעִם
+  rationale: The noun phrase is recast as a direct personal statement that is easier to understand.
+- pob_phrase: Yahweh, the Maker of heaven and earth
+  simplified_phrase: Yahweh is the one who helps me. He is the Maker of heaven and earth.
+  preserved_meaning: Yahweh’s identity as helper is linked to his title as Creator of everything.
+  reasoning_layer_used: POB theological decision for עֹשֵׂה and Hebrew merism
+  rationale: Two short sentences clarify the relationship while retaining the title “Maker.”
+interpretive_expansions:
+- pob_phrase: My help comes from Yahweh
+  rendering: Yahweh is the one who helps me
+  claim: The source of the psalmist’s help is expressed as Yahweh’s personal action toward him.
+  evidence:
+  - The Hebrew source phrase identifies Yahweh as the source of “my help.”
+  - The POB rationale describes the verse as a confession of dependence.
+  confidence: high
+  alternatives_preserved:
+  - My help comes from Yahweh.
+  - My help is from Yahweh.
+translation_notes:
+  risk_flags:
+  - risk: Changing the noun “help” into the verb “helps” slightly reduces the emphasis on source.
+    mitigation: The wording still identifies Yahweh alone as the one from whom the psalmist receives help.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/121/002.yaml
   source_text_sha256: 3eba0eb0b2654361b7034281a37f31f1dd6d102c7ef1de13197a51558b8734d8
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4d2731bb6652cb828fa51909df0d805262205af9b8be408a367ecb7ab36e00ae
-  timestamp: '2026-07-11T21:06:59Z'
-  output_hash: 2f9627fa44ca03078a55c80e57a19a6bc2e69f87a0a4dbfe8ccf010c98e97230
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: b8dce6a247758172dd31fb4a3a1b513c627859dc0b38b06cb04e7e5418e09108
+  timestamp: '2026-08-28T23:06:33Z'
+  output_hash: 51085dc001ec89e2413b96650b913e58169f35ef92e52849bbee81e9a71f14a1
   usage:
-    prompt_tokens: 2617
-    completion_tokens: 461
-    total_tokens: 3078
-    reasoning_tokens: 285
+    prompt_tokens: 2783
+    completion_tokens: 1201
+    total_tokens: 3984
+    reasoning_tokens: 774
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:06:33Z'
+  previous_text: My help comes from Yahweh. He is the Maker of heaven and earth.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

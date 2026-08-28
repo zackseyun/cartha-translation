@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/019/013.yaml
-  text: He has driven my brothers far from me[b][a], and those who know me are wholly estranged from me.
+  text: He has driven my brothers far from me[a], and those who know me are wholly estranged from me[b].
   footnotes:
   - marker: a
-    text: Or 'He has removed my brothers from me.'
+    text: Or “He has removed my brothers from me.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'those who know me have become strangers to me.'
+    text: Or “those who know me have become strangers to me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,41 +34,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He has driven my brothers far away from me, and those who know me have become complete strangers to me.
+  text: He has driven my brothers far away from me. The people who know me have become complete strangers to me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: driven my brothers far from me
-  simplified_phrase: driven my brothers far away from me
-  preserved_meaning: He caused Job's brothers to become distant from him.
-  reasoning_layer_used: POB lexical decision for הִרְחִיק and מֵעָלַי
-  rationale: Adding “away” makes the separation sound natural while retaining the forceful image of distance.
+- pob_phrase: He has driven my brothers far from me
+  simplified_phrase: He has driven my brothers far away from me
+  preserved_meaning: Job says that his brothers have been forcibly distanced from him.
+  reasoning_layer_used: Lexical decisions for הִרְחִיק and מֵעָלַי
+  rationale: “Far away” expresses the same forceful separation in more natural English.
+- pob_phrase: those who know me
+  simplified_phrase: The people who know me
+  preserved_meaning: The clause refers to people personally acquainted with Job without claiming every individual.
+  reasoning_layer_used: Lexical decision for וְיֹדְעַי and grounding review
+  rationale: “The people” is plain English and avoids adding a universal claim.
 - pob_phrase: are wholly estranged from me
   simplified_phrase: have become complete strangers to me
-  preserved_meaning: People acquainted with Job are now entirely alienated from him.
-  reasoning_layer_used: POB lexical decisions for אַךְ and זָרוּ
-  rationale: The concrete language of becoming strangers is clearer than the abstract term “estranged.”
+  preserved_meaning: Their relationship with Job has ended in total estrangement.
+  reasoning_layer_used: Lexical decisions for אַךְ, זָרוּ, and מִמֶּנִּי
+  rationale: The stranger image clearly preserves both the resulting rupture and its completeness.
+interpretive_expansions:
+- pob_phrase: are wholly estranged from me
+  rendering: have become complete strangers to me
+  claim: Those acquainted with Job have become entirely estranged from him.
+  evidence:
+  - The documented lexical alternative is “have become strangers to me.”
+  - The POB rationale says אַךְ emphasizes the completeness of the estrangement.
+  confidence: high
+  alternatives_preserved:
+  - are completely estranged from me
+  - have become strangers to me
 translation_notes:
   risk_flags:
-  - risk: “Strangers to me” could suggest mere unfamiliarity rather than relational separation.
-    mitigation: “Have become” and “complete” show that a former relationship has been fully broken.
+  - risk: “Strangers” may suggest literal unfamiliarity rather than relational estrangement.
+    mitigation: “Have become” and the contrast with “know me” make the broken relationship clear.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/019/013.yaml
   source_text_sha256: 6cb358295ee58e183738184f2b1c7f25eb61824460c67e3bcc201be37d7af55e
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 1ffa712dfc27318c92363b7586458b83a4379dd955fdb892c61a6afb56680f30
-  timestamp: '2026-07-11T19:35:43Z'
-  output_hash: 25173923f6013a9bccaa45ead50749fd3acf6e249b844a3ac06f5da8dcbe6f18
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 58b51eeae628898731b73c2edf22a99ad5c5b38095bf1e875ef4b5446827a2f1
+  timestamp: '2026-08-28T23:34:35Z'
+  output_hash: 57983bbfd2128bfb8cecef7833a2a2666c7578efb348eae20b8d9b0f60248871
   usage:
-    prompt_tokens: 2658
-    completion_tokens: 544
-    total_tokens: 3202
-    reasoning_tokens: 255
+    prompt_tokens: 3861
+    completion_tokens: 464
+    total_tokens: 4325
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:18Z'
+  previous_text: He has driven my brothers far away from me, and those who know me have become complete strangers to me.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:44Z'
+  previous_text: He has driven my brothers far away from me. Those who know me have become complete strangers to me.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:35Z'
+  previous_text: He has driven my brothers far away from me. Everyone who knows me now treats me like a stranger.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 24cd66d8e909858cf05114bb4b2548c9d7cf6845cdc195085e89d0467ca20ea9
+  review_summary: The first sentence is a warranted and clearer simplification. The second is understandable, and the source audit trail supports the stranger image, but “Everyone” overstates the group scope and transfers the verse’s emphasis on complete estrangement. Revise to preserve the relational result and its intensity in plain English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

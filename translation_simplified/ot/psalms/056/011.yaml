@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/056/011.yaml
-  text: In God I have trusted; I will not fear[a]. What can man do to me?
+  text: In God I have trusted; I will not fear. What can man[a] do to me?
   footnotes:
   - marker: a
-    text: Or 'What can a human do to me?' The Hebrew has singular אָדָם ('man'), used here representatively for a human being.
-    reason: lexical_alternative
+    text: Or “a human being.” The Hebrew has singular adam (“man”), used here representatively for a human being.
+    reason: Places the existing legitimate lexical note at the word it qualifies and preserves the representative-singular nuance.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,49 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I have put my trust in God. I will not be afraid. What can man do to me?[a]
+  text: I have put my trust in God. I will not be afraid. What can any human being[a] do to me?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “What can a human being do to me?” The Hebrew uses the singular word “man” to represent any human being.
-    reason: lexical_alternative
+    text: The Hebrew uses the singular “man” to represent any human being.
+    reason: source_note
 simplification_decisions:
 - pob_phrase: In God I have trusted
   simplified_phrase: I have put my trust in God
-  preserved_meaning: The speaker’s trust is settled and directed toward God.
-  reasoning_layer_used: The lexical decisions for בֵּאלֹהִים and בָּטַחְתִּי.
-  rationale: Ordinary English word order makes the trust statement easier to understand.
+  preserved_meaning: The speaker’s settled trust is directed toward God.
+  reasoning_layer_used: POB lexical decisions for בֵּאלֹהִים and בָּטַחְתִּי
+  rationale: Natural word order and “put my trust” clearly express the same completed trust.
 - pob_phrase: I will not fear
   simplified_phrase: I will not be afraid
-  preserved_meaning: The speaker firmly resolves not to fear because he trusts God.
-  reasoning_layer_used: The lexical rationale for לֹא אִירָא.
-  rationale: “Be afraid” is natural modern English and retains the confident future resolve.
+  preserved_meaning: The speaker firmly resolves not to fear.
+  reasoning_layer_used: POB lexical decision for לֹא אִירָא
+  rationale: “Be afraid” is common English and retains the future resolve.
+- pob_phrase: What can man do to me?
+  simplified_phrase: What can any human being do to me?
+  preserved_meaning: No single human opponent can overcome the speaker’s confidence in God.
+  reasoning_layer_used: POB footnote and lexical rationale for representative singular אָדָם
+  rationale: “Any human being” makes the representative singular clear without changing it into a collective plural.
+interpretive_expansions:
+- pob_phrase: man
+  rendering: any human being
+  claim: The singular refers representatively to any possible human opponent.
+  evidence:
+  - The POB footnote says singular adam represents a human being.
+  - The POB lexical rationale describes a contrast with any human opponent.
+  confidence: high
+  alternatives_preserved:
+  - man
+  - a human
 translation_notes:
   risk_flags:
-  - risk: Modern readers may understand “man” as referring only to an adult male.
-    mitigation: The footnote explains that the singular word represents any human being.
+  - risk: “Any human being” makes the representative scope more explicit than the POB main text.
+    mitigation: The POB footnote and lexical rationale directly support this scope, while the footnote preserves the Hebrew singular wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/056/011.yaml
   source_text_sha256: 59165abdc3b9e364cc5dc1bd9dd95c9d6e4b1a3fc4aa1e8dcadcfb1b000ca5bd
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 13872f0072bef706eb5b83ed6226224bdc8ddfc37d85445817ea3f203972c7a2
-  timestamp: '2026-07-12T09:59:53Z'
-  output_hash: fb365e8bcba073ceae2f599fea9c1a57e4b9a441069b8ffeeacbce98a2f22a7c
+  prompt_sha256: dfb6c4665d8e11f13ab299a30285457f77130c5b509baaeb6f317cd32891a425
+  timestamp: '2026-08-28T23:35:31Z'
+  output_hash: ced51cf53dc2583f39181469e05a03af7ffc100d7897b56e08a5c4a1cd72ed1b
   usage:
-    prompt_tokens: 3302
-    completion_tokens: 312
-    total_tokens: 3614
-    reasoning_tokens: 0
+    prompt_tokens: 3514
+    completion_tokens: 640
+    total_tokens: 4154
+    reasoning_tokens: 161
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:53Z'
@@ -85,4 +100,18 @@ spob_revision_history:
   review_summary: The simplifications are warranted and improve readability without changing the source-based meaning. “I have put my trust in God” preserves the settled perfect of trust and its object, while “I will not be afraid” naturally communicates the Hebrew future/resolve. Retaining “man” follows the POB’s singular representative wording, and the note responsibly clarifies its inclusive representative sense. Revision is needed only to place the footnote marker with the word the note explains.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:34Z'
+  previous_text: I have put my trust in God. I will not be afraid. What can man do to me?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:31Z'
+  previous_text: I have put my trust in God. I will not be afraid. What can man[a] do to me?
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f407c1967d70dadd8e1d9317a92575dd14daca42fb72e0d2132ade79132b5e1c
+  review_summary: The first two changes are warranted, preserve the completed trust and resolved future sense identified in the POB audit trail, and are clearer modern English. Revision is needed because the final line leaves the representative-human meaning of אָדָם chiefly to a footnote. “Any human being” preserves the Hebrew singular and the contrast between God and any human opponent while making the intended scope clear in the main text.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

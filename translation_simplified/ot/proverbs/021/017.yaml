@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/021/017.yaml
-  text: A man who loves pleasure will become poor[b][a]; whoever loves wine and oil will not become rich.
+  text: A man who loves pleasure will be in want[a]; whoever loves wine and oil[b] will not become rich.
   footnotes:
   - marker: a
-    text: Or 'who loves joy' or 'who loves merrymaking.' The Hebrew term can denote joy or festivity, but here likely refers to a pleasure-seeking lifestyle.
+    text: Or “who loves merrymaking.” The Hebrew word can denote joy, festivity, or pleasure.
     reason: lexical_alternative
   - marker: b
-    text: '''Oil'' likely refers to olive oil and may imply luxury or costly ointment, not merely a basic food item.'
+    text: “Oil” likely refers to olive oil and may imply luxury or costly ointment, not merely a basic food item.
     reason: cultural_note
   ai_draft:
     model_id: gpt-5.4
@@ -34,54 +34,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A man who lives for pleasure will become poor. Whoever loves wine and oil[a] will not become rich.
+  text: A man who loves pleasure will be in need. Whoever loves wine and oil[a] will not become rich.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The oil was likely olive oil and may refer to luxury or costly ointment.
+    text: “Oil” likely refers to olive oil and may suggest a luxury item or costly ointment in this context.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: who loves pleasure
-  simplified_phrase: who lives for pleasure
-  preserved_meaning: The warning concerns a pleasure-seeking lifestyle, not wholesome joy.
-  reasoning_layer_used: POB lexical decision for אֹהֵב שִׂמְחָה
-  rationale: This wording makes the continuing pattern of indulgence clear.
-interpretive_expansions:
-- pob_phrase: who loves pleasure
-  rendering: who lives for pleasure
-  claim: The love described is a pleasure-seeking way of life.
-  evidence:
-  - The POB lexical rationale identifies an indulgent lifestyle rather than wholesome joy.
-  - The repeated participle describes a characteristic pattern.
-  confidence: high
-  alternatives_preserved:
-  - who loves pleasure
-  - who loves merrymaking
+- pob_phrase: will be in want
+  simplified_phrase: will be in need
+  preserved_meaning: The man is characterized by lack without explicitly saying that he becomes poor.
+  reasoning_layer_used: Source audit for אִישׁ מַחְסוֹר
+  rationale: “In need” is more familiar than “in want” and preserves the audited distinction.
+- pob_phrase: oil
+  simplified_phrase: oil[a]
+  preserved_meaning: The concrete image remains while its possible association with luxury is explained without making it certain.
+  reasoning_layer_used: POB cultural note and lexical rationale for שֶׁמֶן
+  rationale: Keeping “oil” avoids turning a likely cultural implication into the sole meaning.
 translation_notes:
   risk_flags:
-  - risk: “Lives for pleasure” states the lifestyle sense more directly than the Hebrew phrase.
-    mitigation: The POB lexical rationale explicitly supports this contextual meaning.
+  - risk: Modern readers may not recognize why oil appears with wine.
+    mitigation: The footnote explains its likely olive-oil reference and possible luxury association.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/021/017.yaml
   source_text_sha256: 25e63805392974826dafcc0c7e8fdfa42d9609276689194b8f40fb47743e5c0c
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 0b21902ee989f9e29b5c217a3a14decd058c8f72a3cb24d7430dcad631370c58
-  timestamp: '2026-07-12T09:52:45Z'
-  output_hash: a9a95da77a18cbc2da3010a37cc5c1c40d71f6e651c89ce7e71409ab3c9ac519
+  prompt_sha256: d6a14edadec237fef4732b1667929c7ed6818bd9a9831750f3d4908a82398ca3
+  timestamp: '2026-08-28T23:34:38Z'
+  output_hash: 82837d515e9c70e2bc1dddfd2238dcd5bebba103eb0a971de50e9cad8c103280
   usage:
-    prompt_tokens: 3323
-    completion_tokens: 298
-    total_tokens: 3621
-    reasoning_tokens: 0
+    prompt_tokens: 3701
+    completion_tokens: 359
+    total_tokens: 4060
+    reasoning_tokens: 53
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: oil
+  rendering: fine oil
+  claim: The oil in this pairing suggests luxurious or costly oil.
+  evidence:
+  - The POB cultural note says oil may imply luxury or costly ointment.
+  - The POB lexical rationale says the paired items signify indulgent luxury.
+  confidence: moderate
+  alternatives_preserved:
+  - oil
+  - olive oil
+  - costly ointment
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:45Z'
@@ -92,4 +98,19 @@ spob_revision_history:
   review_output_hash: cb5d7f82c3cc672ef1441e80a560588f503e8fd5e8a840e4a2f5764eba214914
   review_summary: '“Lives for pleasure” is a warranted and helpful clarification: the POB lexical rationale identifies a pleasure-seeking lifestyle rather than joy in general, and the proverbial participle supports a characteristic pattern. However, “costly oil” overstates a contextual implication that the POB retains as qualified. Keep “oil” in the verse and let the footnote explain its possible luxury association.'
   schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:05:17Z'
+  previous_text: A man who lives for pleasure will become poor. Whoever loves wine and oil[a] will not become rich.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:38Z'
+  previous_text: A man who lives for pleasure will be in need. Whoever lives for wine and fine oil[a] will not become rich.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: fdeba411d330d10e1e76e8cdc08f6e32fe4e3c870749e7c8c6c4811195b82d2e
+  review_summary: '“In need” is a clear and warranted modernization of “in want.” However, the draft’s two repeated expansions overstate what the audit establishes: “lives for” is stronger than “loves,” and “fine oil” makes a possible cultural implication definitive. Retain the concrete wording in the main text and explain the likely luxury association in a footnote.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

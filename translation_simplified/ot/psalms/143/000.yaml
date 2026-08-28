@@ -19,36 +19,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'A psalm of David.'
+  text: A psalm connected with David.
   philosophy: optimal-equivalence
+simplification_decisions:
+- pob_phrase: A psalm of David.
+  simplified_phrase: A psalm connected with David.
+  preserved_meaning: The heading associates the psalm with David without defining the exact relationship.
+  reasoning_layer_used: POB base text and grounding review
+  rationale: “Connected with David” makes the broad association clear without asserting direct authorship.
 translation_notes:
-  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
+  risk_flags:
+  - risk: The heading does not specify whether David wrote the psalm or was connected with it in another way.
+    mitigation: The wording preserves that ambiguity rather than resolving it as authorship.
+  - risk: The source payload includes verse text beyond the heading, but this POB record translates only the title.
+    mitigation: The draft simplifies only the controlling POB text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/143/000.yaml
   source_text_sha256: d459e7186cb6014f97979fc7d3e82b87e8cff97aecd1b53ff7d5c6b93cb362e5
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 97dabcad762e04225ba2f797fc15b7f3ed8c5f6499e844d4733f6d1f05841e51
-  timestamp: '2026-07-11T21:02:32Z'
-  output_hash: 2a640066dd50e7d0c0a4c444b7dd0832d4460262cb9543860dca833915c94564
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4aeebef8f43ffdc5791a956ec17b2366781e0c64459712b057e7e1da8286e3c6
+  timestamp: '2026-08-28T23:36:23Z'
+  output_hash: d41ebcb83fef6bbec5a9b7540087ae26a56166d01c1db7cf7d0105d3e02ea840
   usage:
-    prompt_tokens: 2188
-    completion_tokens: 636
-    total_tokens: 2824
-    reasoning_tokens: 277
+    prompt_tokens: 2381
+    completion_tokens: 209
+    total_tokens: 2590
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: superscription
-  previous_text_sha256: 95cded7c14e1177d6fe8609f4941836cf0adf372e3e6664004ffe5b0023614eb
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-is_superscription: true
-simplification_decisions: []
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:43Z'
+  previous_text: A psalm of David.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:23Z'
+  previous_text: A psalm by David.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 968be2d4b3f5c06050831955cf6fc283e945b8491b513af9cdb9a83d1e879d03
+  review_summary: The proposed wording is more idiomatic, but it narrows the heading’s deliberately broad association toward authorship. Use an explicit but noncommittal association phrase so modern readers understand the connection without treating a possible attribution as settled.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

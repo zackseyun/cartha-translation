@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/041/010.yaml
-  text: His sneezings flash forth light[b][a], and his eyes are like the eyelids of dawn.
+  text: His sneezes make light flash[a], and his eyes are like the eyelids of dawn.[b]
   footnotes:
   - marker: a
-    text: Or 'His sneezes shine with light.' The Hebrew verb is causative ('cause light to shine'), and the phrase is highly poetic.
+    text: Or, “His sneezes shine with light.” The Hebrew verb is causative, describing the sneezes as causing light to shine.
     reason: lexical_alternative
   - marker: b
-    text: Literally, 'like the eyelids of dawn,' a Hebrew poetic image for the first opening light of day.
+    text: Literally, “like the eyelids of dawn,” a Hebrew poetic image for the first opening light of day.
     reason: cultural_note
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When he sneezes, light flashes out, and his eyes are like the eyelids of dawn.[a]
+  text: When he sneezes, he makes light flash. His eyes are like the eyelids of dawn, opening with the first light of day.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The “eyelids of dawn” are the first light that appears as day begins.
-    reason: cultural_note
 simplification_decisions:
-- pob_phrase: His sneezings flash forth light
-  simplified_phrase: When he sneezes, light flashes out
-  preserved_meaning: His sneezes cause light to shine in a vivid flash.
-  reasoning_layer_used: POB lexical decisions for עֲטִישֹׁתָיו and תָּהֶל
-  rationale: The verbal clause is easier to read while preserving the concrete action and causative light image.
+- pob_phrase: His sneezes make light flash
+  simplified_phrase: When he sneezes, he makes light flash
+  preserved_meaning: His sneezing causes light to flash.
+  reasoning_layer_used: POB lexical decision and source audit for תָּהֶל אוֹר
+  rationale: The active wording is natural English and clearly preserves the verb’s causative force.
 - pob_phrase: his eyes are like the eyelids of dawn
-  simplified_phrase: his eyes are like the eyelids of dawn
-  preserved_meaning: His eyes resemble the first opening light of daybreak.
-  reasoning_layer_used: POB lexical decision and cultural footnote for כְּעַפְעַפֵּי שָׁחַר
-  rationale: The source-language image remains in the text, with its meaning briefly explained in a note.
+  simplified_phrase: His eyes are like the eyelids of dawn, opening with the first light of day
+  preserved_meaning: His eyes resemble the first light appearing at dawn.
+  reasoning_layer_used: POB lexical rationale and cultural note for כְּעַפְעַפֵּי שָׁחַר
+  rationale: The wording retains the eyelid image while explaining that it depicts daybreak’s emerging light.
+interpretive_expansions:
+- pob_phrase: the eyelids of dawn
+  rendering: the eyelids of dawn, opening with the first light of day
+  claim: Dawn’s eyelids poetically depict the first light appearing at daybreak.
+  evidence:
+  - The POB cultural note identifies the phrase as an image for the first opening light of day.
+  - The lexical rationale says it evokes the opening or blinking edge of daybreak.
+  confidence: high
+  alternatives_preserved:
+  - The personified eyelid image remains explicit.
+  - The comparison with dawn remains explicit.
 translation_notes:
   risk_flags:
-  - risk: Modern readers may not immediately understand “the eyelids of dawn.”
-    mitigation: A concise footnote explains the image without replacing it.
+  - risk: “Opening” states an action implied by the Hebrew image rather than directly expressed by its nouns.
+    mitigation: The POB audit explicitly identifies the image with the opening edge and first light of daybreak.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/041/010.yaml
   source_text_sha256: 2ac24f5081ed821e930e79d00e6aea1115dc3dbfe9233655a8bd5fabf943f6cc
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 358d7ba956ad18b3bc7b41b3fb3b95a47261380d15676e65766a0d85620375ff
-  timestamp: '2026-07-11T20:01:14Z'
-  output_hash: 20706f78067fffefc01cc92bf871a80bd68b7120358f476232bb6b0afb4dab6c
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f988cd418ece1b6602ed4b15803186e12c248b64610d2923a035abf7bafb8170
+  timestamp: '2026-08-28T23:35:06Z'
+  output_hash: 053e42712d82791c3b51ab1dc837865daf0f1bccac3c6a640e6fafdb97cc393e
   usage:
-    prompt_tokens: 2322
-    completion_tokens: 495
-    total_tokens: 2817
-    reasoning_tokens: 154
+    prompt_tokens: 3492
+    completion_tokens: 606
+    total_tokens: 4098
+    reasoning_tokens: 169
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:45Z'
+  previous_text: When he sneezes, light flashes out, and his eyes are like the eyelids of dawn.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:20Z'
+  previous_text: His sneezes send out flashes of light, and his eyes are like the dawn opening its eyelids.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:06Z'
+  previous_text: When he sneezes, light flashes. His eyes are like dawn’s eyelids opening to the first light of day.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e3fde82a704e1818e6ea660d2c62389f8895c9490776eebbcb67dd6b81299d0d
+  review_summary: 'The draft appropriately seeks to clarify the difficult dawn image and is clearer than the POB overall. However, “opening to the first light” shifts the image: dawn’s eyelids are the poetic depiction of daybreak’s emerging light, not eyelids looking toward an external light. The recommended wording retains the warranted clarification while preserving that image. It also makes the causative force of the first clause explicit.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

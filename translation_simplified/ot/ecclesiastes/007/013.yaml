@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/007/013.yaml
-  text: Consider the work of God[a], for who can straighten what he has made crooked?
+  text: Consider the work of God, for who can straighten what he has made crooked?[a]
   footnotes:
   - marker: a
-    text: Or 'make straight what he has bent.'
+    text: Or “make straight what he has bent.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,41 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Think carefully about God’s work. Who can straighten what he has made crooked?
+  text: Think carefully about what God does. After all, who can straighten what he has made crooked?[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “make straight what he has bent.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Consider the work of God
-  simplified_phrase: Think carefully about God’s work
-  preserved_meaning: The command calls for reflective attention to what God does.
-  reasoning_layer_used: Lexical decisions for רְאֵה and מַעֲשֵׂה
-  rationale: This wording states the contemplative force in familiar English.
-- pob_phrase: for who can straighten what he has made crooked?
-  simplified_phrase: Who can straighten what he has made crooked?
-  preserved_meaning: The rhetorical question gives the reason for considering God’s work and preserves the straight-versus-crooked image.
-  reasoning_layer_used: Lexical decisions for כִּי, מִי יוּכַל, לְתַקֵּן, and עִוְּתוֹ
-  rationale: A separate sentence makes the reasoning easier to follow without weakening the connection.
+  simplified_phrase: Think carefully about what God does
+  preserved_meaning: The command calls for reflective attention to God’s work.
+  reasoning_layer_used: POB lexical decisions for רְאֵה and מַעֲשֵׂה
+  rationale: This recasts an abstract phrase as a direct, natural instruction.
+- pob_phrase: for who can straighten
+  simplified_phrase: After all, who can straighten
+  preserved_meaning: The rhetorical question gives the reason for considering God’s work.
+  reasoning_layer_used: POB lexical decisions for כִּי and מִי יוּכַל
+  rationale: “After all” makes the explanatory link explicit in natural modern English.
 translation_notes:
   risk_flags:
-  - risk: Starting a new sentence may make the explanatory link less explicit than POB’s “for.”
-    mitigation: The immediately following rhetorical question still plainly supplies the reason for the command.
+  - risk: “After all” is less formal than POB’s “for.”
+    mitigation: It clearly preserves the source’s reason-giving connection without sounding casual.
+  - risk: God making something crooked carries deliberate theological tension.
+    mitigation: The explicit pronoun and straight-versus-crooked image remain unchanged and unexplained.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/007/013.yaml
   source_text_sha256: 964198be35e7e98b0c1610ca646e6939212bfbf1dbfc94b7ccc36b34bddc2221
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: e92bd0ec8d8967eead258783ab118ee7d46ca97ace4e3a2f2ca9e26f8813c3ed
-  timestamp: '2026-07-11T21:20:50Z'
-  output_hash: 51f4513b37c5a3c6ec9316b54e14fa187297d50f7e9f873cab5b4a17c72c2f85
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 92f77743b7095fde74cce526b68de37d245d1bb44b94a9aa485df8476bbf57c8
+  timestamp: '2026-08-28T23:32:39Z'
+  output_hash: 44d14d4596c57c2e4d42fccc6a617a8f2d694be4a115cae1c1450fab61e9532f
   usage:
-    prompt_tokens: 2587
-    completion_tokens: 583
-    total_tokens: 3170
-    reasoning_tokens: 276
+    prompt_tokens: 3492
+    completion_tokens: 382
+    total_tokens: 3874
+    reasoning_tokens: 50
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:09:41Z'
+  previous_text: Think carefully about God’s work. Who can straighten what he has made crooked?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:39Z'
+  previous_text: Think carefully about what God does. Who can straighten what he has made crooked?[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 6beccaacfc3198af2bb473ec1fbbb1c02b8ebb517d3762f5d0d8f8f5ae4602d7
+  review_summary: 'The draft clearly and faithfully simplifies ''Consider the work of God'' as ''Think carefully about what God does'' and properly retains the verse''s deliberate theological tension: God is the stated subject of making something crooked, without added explanation or doctrinal softening. Revision is needed only to restore the explicit reason marked by כִּי. ''After all'' is natural modern English, preserves the rhetorical question, and makes the command-to-reason connection clear.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

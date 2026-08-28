@@ -34,50 +34,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For he remembered the holy word he had spoken to his servant Abraham.[a]
+  text: For he remembered his holy word—his promise—and Abraham, his servant.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Here “word” means the promise God spoke to Abraham.
-    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: his holy word
+  simplified_phrase: his holy word—his promise
+  preserved_meaning: God remembered the holy word that carried the force of a promise.
+  reasoning_layer_used: POB lexical decision and footnote b
+  rationale: The added explanation makes “word” understandable while preserving the source term.
 - pob_phrase: his holy word to Abraham his servant
-  simplified_phrase: the holy word he had spoken to his servant Abraham
-  preserved_meaning: God remembered his holy word that was addressed to Abraham, his servant.
-  reasoning_layer_used: Lexical and theological decisions on דְּבַר, אֶת אַבְרָהָם, and עַבְדּוֹ.
-  rationale: The ordinary clause order makes the relationship clear without replacing “word” with “promise.”
+  simplified_phrase: his holy word—his promise—and Abraham, his servant
+  preserved_meaning: God remembered both his promise and Abraham, who was his servant.
+  reasoning_layer_used: Hebrew source syntax and independent grounding review
+  rationale: The repeated object marker supports keeping Abraham as a distinct object of “remembered.”
 interpretive_expansions:
-- pob_phrase: his holy word to Abraham
-  rendering: the holy word he had spoken to ... Abraham
-  claim: God's word was spoken to Abraham.
+- pob_phrase: his holy word
+  rendering: his holy word—his promise
+  claim: God’s holy word here is his promise.
   evidence:
-  - The POB renders the Hebrew relation as “to Abraham.”
-  - The POB footnote says this word is a promise spoken to Abraham.
+  - POB footnote b says that “word” carries the sense of a promise.
+  - The POB lexical rationale says the word is effectively God’s promise in context.
   confidence: high
   alternatives_preserved:
-  - The footnote preserves the contextual sense “promise.”
+  - his holy word
 translation_notes:
   risk_flags:
-  - risk: Modern readers may understand “remembered” as mere mental recollection.
-    mitigation: It is retained to preserve the covenantal biblical idiom protected by the POB theological decision.
+  - risk: “Remembered” may sound like mere mental recollection.
+    mitigation: The wording retains the covenantal biblical idiom rather than over-expanding it to “fulfilled.”
+  - risk: Treating Abraham as a separate object differs from the POB phrase “to Abraham.”
+    mitigation: The revision follows the two marked Hebrew objects while retaining the POB identification of the word as a promise.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/042.yaml
   source_text_sha256: edea40ac15c44e85864b06dd5d18c4cc0685b2fa3222f9ffaac4b45059a818f8
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0bc1d11a06567e3e529432dd574c9d8c8e2e17bac2c3cf2f05fdccf21b37d275
-  timestamp: '2026-07-11T21:01:51Z'
-  output_hash: 7995201088e9976911bfae561736d6c48322ec0d1b00a915c7f34d48bcd6aad9
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3388f4e9d62decb80394f2c293740e3fd01c25518f3e006276eeee123c8e45ca
+  timestamp: '2026-08-28T23:36:08Z'
+  output_hash: a773b1e0081822605b628a7cb465683b672d63293276bab464b61a95ab36b1f1
   usage:
-    prompt_tokens: 2567
-    completion_tokens: 703
-    total_tokens: 3270
-    reasoning_tokens: 361
+    prompt_tokens: 3427
+    completion_tokens: 768
+    total_tokens: 4195
+    reasoning_tokens: 375
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:00:34Z'
+  previous_text: For he remembered the holy word he had spoken to his servant Abraham.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:08Z'
+  previous_text: For he remembered his holy word—the promise he had spoken to Abraham, his servant.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 3b1bcfa06d6363f841ea142fb1d12d61f7058dc3f552a5afee12ab0e0a5402ad
+  review_summary: Revise. Explaining “holy word” as “holy promise” is clear and well supported by the POB audit trail and immediate covenant context. However, the proposed dash construction incorrectly turns Abraham into only the recipient of the promise and loses the verse’s additional assertion that God remembered Abraham, his servant. The replacement preserves both objects while remaining readily understandable.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

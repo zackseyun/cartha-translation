@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/039/014.yaml
-  text: For she leaves her eggs to the earth and warms them on the dust,[a]
+  text: For she leaves her eggs on the ground and warms them on the dust,[a]
   footnotes:
   - marker: a
-    text: Or 'abandons her eggs to the earth.' The Hebrew verb can carry a stronger sense than simply 'leaves,' but the following line suggests exposure on the ground rather than absolute desertion.
+    text: Or 'abandons her eggs on the ground.' The Hebrew verb can carry a stronger sense than simply 'leaves,' but the following line suggests exposure on the ground rather than absolute desertion.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For she leaves her eggs on the ground and warms them on the dust.[a]
+  text: For she leaves her eggs on the ground and warms them in the dust.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “abandons her eggs on the ground.” The Hebrew may suggest stronger neglect, but the next line points to the eggs being exposed rather than completely deserted.
+    text: Or “abandons her eggs on the ground.” The Hebrew verb can have a stronger sense than “leaves,” but the next line emphasizes that the eggs are exposed on the ground.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: leaves her eggs to the earth
-  simplified_phrase: leaves her eggs on the ground
-  preserved_meaning: The ostrich leaves her eggs exposed on the earth.
-  reasoning_layer_used: POB lexical decisions for תַעֲזֹב and לָאָרֶץ
-  rationale: “On the ground” states the concrete image in natural modern English.
 - pob_phrase: warms them on the dust
-  simplified_phrase: warms them on the dust
-  preserved_meaning: She warms the eggs while they lie exposed on the dust.
-  reasoning_layer_used: POB lexical decisions for תְּחַמֵּם and וְעַל עָפָר
-  rationale: Retaining “warms” and “on” avoids implying continued warming or burial in dust.
+  simplified_phrase: warms them in the dust
+  preserved_meaning: The ostrich remains the one warming the eggs while they are in the dust.
+  reasoning_layer_used: POB lexical alternatives and grounding review
+  rationale: “In the dust” is more natural English and retains dust as the setting rather than making it the source of heat.
 translation_notes:
   risk_flags:
-  - risk: “Leaves” may understate the verb’s possible sense of abandonment.
-    mitigation: The footnote preserves the stronger alternative without implying complete desertion.
+  - risk: “Leaves” may not convey the Hebrew verb’s possible stronger sense of neglect.
+    mitigation: The footnote preserves “abandons” without making that nuance certain.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/039/014.yaml
   source_text_sha256: 30c9145037e6accaac14f2a8cfb0b83b5c036021ed18601ee27f5269c8cc79cc
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 240b178757ad6695ff9de8fd728ffd22cee47d1505dc5cff5a7ae202f5397801
-  timestamp: '2026-07-12T09:40:04Z'
-  output_hash: 81fc2466c8134222de5a591bc36d1bb806ff157ee193fd978a4cb6fbb849f547
+  prompt_sha256: 61a18999b5701316197394363472221f505c6a92d570f82a5d7e0471fe890f80
+  timestamp: '2026-08-28T23:35:05Z'
+  output_hash: f5ff57ae097410be3603a549f8371b645536fdfdefa2a49287e14221d6b5cdbd
   usage:
-    prompt_tokens: 3119
-    completion_tokens: 326
-    total_tokens: 3445
-    reasoning_tokens: 0
+    prompt_tokens: 3504
+    completion_tokens: 652
+    total_tokens: 4156
+    reasoning_tokens: 403
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: warms them on the dust
+  rendering: lets the warm dust heat them
+  claim: The dust functions as the means by which the eggs are warmed.
+  evidence:
+  - The eggs are left on the ground in the preceding clause.
+  - The POB renders the action as warming the eggs on the dust.
+  confidence: moderate
+  alternatives_preserved:
+  - She warms them while they lie in the dust.
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:40:04Z'
@@ -83,6 +87,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 02050527db51ba3e98068eb8aaeb9fc598c670af28079d0d8387c870f337f347
   review_summary: 'The first simplification, “leaves her eggs on the ground,” is a warranted and clearer rendering of the earth/ground image. The second recast should be revised: “in the dust” may imply burial rather than exposure, and “keeps them warm” adds duration not required by the source. “Warms them on the dust” remains clear and preserves the POB’s source-based imagery. The lexical footnote is appropriate and does not impose doctrine.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:15Z'
+  previous_text: For she leaves her eggs on the ground and warms them on the dust.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:05Z'
+  previous_text: For she lays her eggs on the ground and lets the warm dust heat them.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 970538b15ed262e780d0bdc82d63b846ead19eb921b5e1bca38f50f426f3454f
+  review_summary: The draft is readable, but its two principal simplifications alter rather than clarify the verse. “Lays” suppresses the contextually important leaving/exposure sense, and “warm dust heat them” adds an unestablished mechanism while removing the ostrich as the grammatical actor of the warming clause. Retain “leaves” and express the dust phrase as the setting of the warming action.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

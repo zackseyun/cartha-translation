@@ -34,49 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They may curse[a], but you will bless. They rise up, but they are disgraced; but your servant will rejoice.
+  text: They may speak curses[a], but you will bless. They rise up[b], but disgrace comes on them. But I, your servant, will rejoice.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “Let them curse, but you bless.”
     reason: alternative_reading
+  - marker: b
+    text: “Rise up” may suggest hostile action, but the Hebrew does not explicitly say that they attack.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: They rise up and are put to shame
-  simplified_phrase: They rise up, but they are disgraced
-  preserved_meaning: The opponents rise against the speaker and suffer public shame, without specifying their action.
-  reasoning_layer_used: POB lexical decisions for קָמוּ and וַיֵּבֹשׁוּ
-  rationale: “Disgraced” states the public result plainly while preserving the unspecific image of rising up.
+- pob_phrase: They may curse
+  simplified_phrase: They may speak curses
+  preserved_meaning: The opponents may utter curses, but they cannot overcome God’s blessing.
+  reasoning_layer_used: POB lexical decision for יְקַֽלְלוּ
+  rationale: “Speak curses” clarifies the action while retaining its concessive force.
+- pob_phrase: are put to shame
+  simplified_phrase: disgrace comes on them
+  preserved_meaning: The opponents suffer public disgrace rather than merely feeling ashamed.
+  reasoning_layer_used: POB lexical decision for וַיֵּבֹשׁוּ
+  rationale: This ordinary phrasing preserves disgrace as the result.
 - pob_phrase: but your servant will rejoice
-  simplified_phrase: but your servant will rejoice
-  preserved_meaning: The psalmist humbly identifies himself as God's servant and anticipates joy in contrast to his opponents' disgrace.
-  reasoning_layer_used: POB lexical and theological decisions for עַבְדְּךָ and יִשְׂמָח
-  rationale: Retaining “but” and “will rejoice” preserves both the contrast and the future result.
+  simplified_phrase: But I, your servant, will rejoice
+  preserved_meaning: The praying speaker humbly identifies himself as God’s servant in contrast with his opponents.
+  reasoning_layer_used: POB theological decision on the referent of “your servant”
+  rationale: The wording clarifies the speaker’s identity while preserving the adversative contrast and servant designation.
+interpretive_expansions:
+- pob_phrase: your servant
+  rendering: I, your servant
+  claim: The speaker is referring to himself as God’s servant.
+  evidence:
+  - The POB theological decision identifies this as the psalmist’s self-designation in prayer.
+  - The clause contrasts the praying speaker’s joy with his opponents’ disgrace.
+  confidence: high
+  alternatives_preserved:
+  - A more generic righteous servant figure
 translation_notes:
   risk_flags:
-  - risk: “Rise up” may not clearly convey the opponents' likely hostility.
-    mitigation: The wording preserves the source's deliberate lack of detail rather than turning the action into an explicit attack.
+  - risk: “Speak curses” is more explicit than the compact Hebrew verb.
+    mitigation: It states only the verbal action already conveyed by “curse.”
+  - risk: “Rise up” may be understood as an explicit attack.
+    mitigation: Footnote [b] states that hostility is possible but not explicit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/109/028.yaml
   source_text_sha256: be47385fcbbc253d204e5dc1a703437d6efa9ffb4d1bdd2fcbbcf5e09d5ccada
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 1ff758d0dabda20b27da6b0cdb5993342915f69ccb7ba32a30b8c1374ac530b4
-  timestamp: '2026-07-12T10:02:46Z'
-  output_hash: c1e92145d193070930b80993a90aa7c6ad62cfac811c6fd29cb55a773c0350a5
+  prompt_sha256: ea172a1f6bbe7e9bf3ac1d346f68521b83c47cbb738e49611ba6da36003fc127
+  timestamp: '2026-08-28T23:36:08Z'
+  output_hash: 43af427dc781397cf44fa343f17783f8316153b7016119fd39b32ecf85e8df20
   usage:
-    prompt_tokens: 3502
-    completion_tokens: 347
-    total_tokens: 3849
-    reasoning_tokens: 0
+    prompt_tokens: 3891
+    completion_tokens: 590
+    total_tokens: 4481
+    reasoning_tokens: 55
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:46Z'
@@ -88,4 +107,18 @@ spob_revision_history:
   review_summary: The replacement of “are put to shame” with “are disgraced” is a warranted, clearer expression of בוש and does not specify what the opponents do when they “rise up.” The final clause should retain POB’s future/resultative imperfect and explicit adversative contrast. No doctrinally unsupported expansion is present.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:01:29Z'
+  previous_text: They may curse[a], but you will bless. They rise up, but they are disgraced; but your servant will rejoice.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:08Z'
+  previous_text: They may speak curses[a], but you will give your blessing. They rise up[b], but disgrace comes on them. I am your servant, and I will rejoice.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: acff5456722b2fa2b46d34b14d9559758c4038ffb62a4692d5a6bcb97699dc4b
+  review_summary: “Speak curses” is a warranted and useful clarification, and “disgrace comes on them” reasonably communicates the public-shame sense. The final sentence, however, should retain the adversative force and keep 'your servant' as the speaker's identifying designation. “But I, your servant, will rejoice” gives readers the contextual first-person sense while preserving the verse's contrast.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/010/019.yaml
-  text: When words are many[a], transgression does not cease[b], but whoever restrains his lips is prudent.
-  footnotes:
-  - marker: a
-    text: Or 'In the abundance of words, transgression is not lacking.'
-    reason: lexical_alternative
-  - marker: b
-    text: Hebrew 'his lips'; the masculine singular is representative/generic in proverbial style.
-    reason: lexical_alternative
+  text: When words are many, transgression does not cease, but whoever restrains his lips is prudent.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,46 +27,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When people use many words, sin does not stop. But those who control their lips act wisely.
+  text: When people talk a lot, sin does not stop; but whoever controls their speech acts wisely.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: When words are many
-  simplified_phrase: When people use many words
-  preserved_meaning: An abundance of speech creates the circumstance described in the proverb.
-  reasoning_layer_used: The lexical decision for בְּרֹב דְּבָרִים supports an idiomatic statement about many words.
-  rationale: Adding “people use” makes the action natural and clear in English.
-- pob_phrase: transgression does not cease
-  simplified_phrase: sin does not stop
-  preserved_meaning: Wrongdoing continues amid abundant speech.
-  reasoning_layer_used: The lexical decisions identify פָּשַׁע as moral wrongdoing and חדל as stopping or ceasing.
-  rationale: “Sin” and “does not stop” express the same warning in familiar language.
+- pob_phrase: When words are many, transgression does not cease
+  simplified_phrase: When people talk a lot, sin does not stop
+  preserved_meaning: In the setting of abundant speech, moral wrongdoing continues.
+  reasoning_layer_used: POB lexical decisions for בְּרֹב, דְּבָרִים, לֹא יֶחְדַּל, and פָּשַׁע
+  rationale: Common wording preserves the impersonal warning without naming the speakers as the agents of the sin.
 - pob_phrase: whoever restrains his lips is prudent
-  simplified_phrase: those who control their lips act wisely
-  preserved_meaning: A person who limits speech demonstrates practical wisdom.
-  reasoning_layer_used: The lexical decisions preserve the lips image and allow מַשְׂכִּיל to mean acting wisely.
-  rationale: The generic plural avoids a gendered pronoun while keeping the Hebrew image.
+  simplified_phrase: whoever controls their speech acts wisely
+  preserved_meaning: A person who limits their speech behaves with sound judgment.
+  reasoning_layer_used: POB lexical decisions for וְחֹשֵׂךְ, שְׂפָתָיו, and מַשְׂכִּיל
+  rationale: The wording states the lips image's clear meaning and presents prudence as wise conduct.
 translation_notes:
   risk_flags:
-  - risk: “Sin” is broader than the more specific “transgression.”
-    mitigation: It retains the required moral force in language more familiar to common readers.
+  - risk: “Sin” is broader than the POB term “transgression.”
+    mitigation: It retains the required moral force while remaining immediately understandable.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/010/019.yaml
   source_text_sha256: 0250234e88358df5ca763a9abd727e3840a8cf6f9d0f5fddb3da7d2154292135
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4afc981c206903c58a8616037b8fc7c5ad4ab3dac91f32423390a888f06b5fde
-  timestamp: '2026-07-11T21:09:54Z'
-  output_hash: 3bd9d3062c3538ae1d64a9cee49f7a84c277348afee3cb8fa95c9935875a80fa
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4963529f9aa57ce7add4f51fdf227c0b44e600145679dcc3560682d4ceddb7a6
+  timestamp: '2026-08-28T23:34:22Z'
+  output_hash: 415cebd5eb7cb3bfecd561d11ebc11eab9a17ff20cc8d5dc441539318dcc7bdf
   usage:
-    prompt_tokens: 2434
-    completion_tokens: 642
-    total_tokens: 3076
-    reasoning_tokens: 275
+    prompt_tokens: 3388
+    completion_tokens: 578
+    total_tokens: 3966
+    reasoning_tokens: 248
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: transgression does not cease
+  rendering: they keep sinning
+  claim: The continuing transgression is committed by the people producing the many words.
+  evidence:
+  - The immediate context concerns abundant human speech.
+  - The contrasting line praises the person who controls their lips.
+  confidence: high
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:35Z'
+  previous_text: When people use many words, sin does not stop. But those who control their lips act wisely.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:22Z'
+  previous_text: When people talk too much, they keep sinning; but whoever keeps their lips in check acts wisely.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5e2623303d808db1486051ac5f14efc8de1c13faaaca77d091afe3afa4839675
+  review_summary: The draft appropriately clarifies the proverb’s subject as speech and renders prudence as wise action. However, “they keep sinning” resolves an unstated grammatical relationship by identifying the talkers as the direct agents of every continuing sin. Retain the proverb’s impersonal formulation while using clear contemporary language.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

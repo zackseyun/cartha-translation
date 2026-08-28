@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/037/021.yaml
-  text: The wicked borrows and does not repay[a][b], but the righteous is gracious and gives.
-  footnotes:
-  - marker: a
-    text: Or 'and lends.' The Hebrew says simply 'and gives'; some interpreters understand the giving here as generous lending in context.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'shows favor' or 'is generous.' The Hebrew verb carries the sense of showing grace or favor, here expressed in generous action.
-    reason: lexical_alternative
+  text: The wicked borrows and does not repay, but the righteous is gracious and gives.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,50 +27,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The wicked borrows but does not pay it back. The righteous, however, shows grace and gives.[a]
+  text: The wicked borrows but does not pay it back. The righteous is kind and gives.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew says “gives”; some understand this in context as generous lending.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: does not repay
-  simplified_phrase: does not pay it back
-  preserved_meaning: The wicked person fails to return what was borrowed.
-  reasoning_layer_used: Lexical decision for לֹא יְשַׁלֵּם
-  rationale: The common phrase “pay it back” clearly expresses repayment in the borrowing context.
-- pob_phrase: is gracious and gives
-  simplified_phrase: shows grace and gives
-  preserved_meaning: The righteous person acts with grace or favor and also gives.
+- pob_phrase: borrows and does not repay
+  simplified_phrase: borrows but does not pay it back
+  preserved_meaning: The wicked fails to return what was borrowed.
+  reasoning_layer_used: Lexical decisions for לֹוֶה and לֹא יְשַׁלֵּם
+  rationale: “Pay it back” expresses repayment in familiar everyday English.
+- pob_phrase: but the righteous is gracious and gives
+  simplified_phrase: The righteous is kind and gives
+  preserved_meaning: The righteous shows a gracious disposition through giving.
   reasoning_layer_used: Lexical decisions for חוֹנֵן and וְנוֹתֵן
-  rationale: This wording makes gracious action clearer while keeping giving distinct and broad.
-- pob_phrase: The wicked ... but the righteous
-  simplified_phrase: The wicked ... The righteous, however
-  preserved_meaning: The verse contrasts two representative kinds of person.
-  reasoning_layer_used: Theological decision on representative singular class terms
-  rationale: Two short sentences improve readability without changing the singular wisdom contrast.
+  rationale: “Is kind” clearly conveys gracious favor while leaving “gives” as a distinct action.
+- pob_phrase: The wicked ... the righteous
+  simplified_phrase: The wicked ... The righteous
+  preserved_meaning: The representative singular contrast between two moral types remains intact.
+  reasoning_layer_used: Theological decision on representative masculine singular
+  rationale: The class terms preserve the psalm’s proverbial singular contrast.
 translation_notes:
   risk_flags:
-  - risk: Readers may take “gives” only as a gift, though some interpret it as lending.
-    mitigation: The footnote preserves the contextual lending alternative without narrowing the main text.
+  - risk: “Kind” is broader than the grace or favor sense of חוֹנֵן.
+    mitigation: The parallel phrase “and gives” keeps the kindness grounded in practical generosity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/037/021.yaml
   source_text_sha256: e5874b78fb15d0cbcb56ebd224fb66089f0d8b4abbfb6d8e67fd5a726d9037cc
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 45fb30d0496449aaa6d95ad3c2c63bf7cf97cc32fc3bb372b419df064060bfcf
-  timestamp: '2026-07-11T20:46:04Z'
-  output_hash: 319b224572d3b8d47771dff1a9015448d8c5b58be542ec90dadec00529915cf5
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bd5c74864e1ea65418260d8953bf425cd622bd2694f42f373f618e974c301588
+  timestamp: '2026-08-28T23:35:17Z'
+  output_hash: cac230fd942f5fe148c9a6ea969eed2d12d2baf02b29a5db89fa7806508245c1
   usage:
-    prompt_tokens: 2454
-    completion_tokens: 848
-    total_tokens: 3302
-    reasoning_tokens: 477
+    prompt_tokens: 3300
+    completion_tokens: 399
+    total_tokens: 3699
+    reasoning_tokens: 50
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:38Z'
+  previous_text: The wicked borrows but does not pay it back. The righteous, however, shows grace and gives.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:17Z'
+  previous_text: The wicked borrows but does not pay it back. The righteous shows grace and gives.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c61b807d2b95dea66fcaf7b9d7c7e254df95e0c1dd1119942932f2a23f5150bc
+  review_summary: The first sentence is a warranted, clearer rendering of failure to repay a loan. The second sentence should be revised because “shows grace” is awkward and does not meaningfully simplify the POB. “Is kind and gives” naturally communicates the gracious disposition and the accompanying giving without narrowing נתן to lending or importing a doctrinal claim.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

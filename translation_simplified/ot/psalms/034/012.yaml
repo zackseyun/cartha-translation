@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/034/012.yaml
-  text: Who is the man who delights in life[a][b], loving days to see good?
+  text: Who is the man who desires life and loves many days, that he may see good?[a]
   footnotes:
   - marker: a
-    text: Or 'to experience good.'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'the person' / 'anyone'; the Hebrew reads 'the man' as a generic singular.
-    reason: lexical_alternative
+    text: Or “that he may experience good.” Hebrew literally says “see good.”
+    reason: idiom
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,63 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Who is the man[a] who delights in life and loves days so that he may see good?[b]
+  text: Who is the man who wants to live and have many days, so that he may see good?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew says “the man,” meaning any person.
-    reason: lexical_alternative
-  - marker: b
-    text: Or “experience good.”
+    text: Or “experience good.” Hebrew literally says “see good.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Who is the man who delights in life, loving days to see good?
-  simplified_phrase: Who is the man who delights in life and loves days so that he may see good?
-  preserved_meaning: The man delights in life and loves days for the purpose of seeing good.
-  reasoning_layer_used: Hebrew syntax and lexical decisions for אֹהֵב, יָמִים, לִרְאוֹת, and טוֹב
-  rationale: The participle becomes a direct clause, while “so that” preserves the infinitive’s purpose relation.
-- pob_phrase: the man
-  simplified_phrase: the man[a]
-  preserved_meaning: The masculine singular remains representative of any person.
-  reasoning_layer_used: Theological decision on the generic masculine expression
-  rationale: The source-driven wording is retained, and its generic force is explained in the footnote.
+- pob_phrase: desires life
+  simplified_phrase: wants to live
+  preserved_meaning: The man desires continued life.
+  reasoning_layer_used: Lexical decision for הֶחָפֵץ חַיִּים
+  rationale: The verbal wording is natural English and preserves the audited sense.
+- pob_phrase: loves many days
+  simplified_phrase: have many days
+  preserved_meaning: He wants an extended span of life.
+  reasoning_layer_used: HALOT/BDB source audit
+  rationale: This keeps the image of many days without adding the intensity of “longs for.”
 translation_notes:
   risk_flags:
-  - risk: Modern readers may think “the man” excludes women.
-    mitigation: Footnote a explains that the Hebrew expression refers generically to any person.
-  - risk: “So that he may” states the purpose relation more overtly than POB.
-    mitigation: This wording follows the Hebrew infinitive construction without adding a separate desire.
+  - risk: “Have many days” is less literal than the Hebrew expression “loves days.”
+    mitigation: The wording preserves both the desire for long life and the source image of many days.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/034/012.yaml
   source_text_sha256: 4246f82428d98ca857e9e49bf5da97df03b0dea0b5d321426a45fcc970ae537f
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 0fae3d8c5d00734a7f11ddb717ed8de261e0e65da84d22cc36b54ba8a2f71224
-  timestamp: '2026-07-12T09:59:26Z'
-  output_hash: ec942bf63cc9903b2f12012cb9b4d420c3485635665bdd187a2c926edcb3d5ef
+  prompt_sha256: 76d7ceaae837d18942f1680f5e024aa9521940fe4ac89e8221cebf6dacb8d7d8
+  timestamp: '2026-08-28T23:35:17Z'
+  output_hash: 4c458893e6a57befa9bec943acdc54f4fa01db6cb97bb5b361a64170f6c0f42d
   usage:
-    prompt_tokens: 3313
-    completion_tokens: 382
-    total_tokens: 3695
-    reasoning_tokens: 0
+    prompt_tokens: 3501
+    completion_tokens: 521
+    total_tokens: 4022
+    reasoning_tokens: 240
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: to see good
-  rendering: wants to see good
-  claim: The infinitive expresses what the life-loving man desires to do.
-  evidence:
-  - The phrase follows two desire-oriented participles, “delights in” and “loving.”
-  - POB identifies “to experience” as a possible sense of “to see.”
-  confidence: moderate
-  alternatives_preserved:
-  - experience good
+interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:26Z'
@@ -100,6 +83,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 951a3b0ddb7b8a88629d9a33e28ac81e2f6d6f034b6b1739b0e4881743dc6c1f
   review_summary: The generic footnote is supported by the POB audit trail, and retaining the broad expression “good” is appropriate. The draft is clearer than POB overall, but “who loves his days and wants to see good” recasts the final infinitive as an independent desire and loses the source phrase’s purpose relation. Use a clear purpose construction instead.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:34Z'
+  previous_text: Who is the man[a] who delights in life and loves days so that he may see good?[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:17Z'
+  previous_text: Who is the man who wants to live and longs for many days, so that he may see good?[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e720484b5105e06d02bbc14fd3004c31d230557cd09de7f19dba0e213a8a26ab
+  review_summary: “Wants to live” is a warranted, clearer rendering of “desires life.” The proposed “longs for many days,” however, adds an intensity not established by the source or audit trail. Replacing it with “wants many days” retains the audited long-life sense in plain English without strengthening the expression.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/030/000.yaml
-  text: A psalm[a]. A song for the dedication of the house. Of David.
+  text: A psalm. A song for the dedication of the house[a]. Of David.
   footnotes:
   - marker: a
-    text: Or 'the temple' or 'the palace'; Hebrew simply says 'the house.'
+    text: Or “the temple” or “the palace”; Hebrew simply says “the house.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A psalm. A song for when the house[a] is dedicated. Of David.
+  text: A psalm. A song for dedicating the house.[a] Of David.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “The house” could mean the temple or the palace; the Hebrew does not specify.
+    text: Or “the temple” or “the palace”; Hebrew simply says “the house.”
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: for the dedication of the house
-  simplified_phrase: for when the house is dedicated
-  preserved_meaning: The song is associated with the occasion of dedicating the house.
-  reasoning_layer_used: Lexical decision for חֲנֻכַּת and the superscription’s occasion or use
-  rationale: The verbal wording is easier to understand while keeping the dedication setting.
-- pob_phrase: A psalm. A song
-  simplified_phrase: A psalm. A song
-  preserved_meaning: Both Hebrew genre labels remain distinct.
-  reasoning_layer_used: Lexical decisions for מִזְמוֹר and שִׁיר
-  rationale: Both familiar labels are retained because combining them would erase a source distinction.
-- pob_phrase: Of David
-  simplified_phrase: Of David
-  preserved_meaning: The wording leaves authorship, association, or dedication open.
-  reasoning_layer_used: Lexical decision for לְדָוִד
-  rationale: The traditional phrase remains because a clearer paraphrase would become more specific than the Hebrew.
+- pob_phrase: A psalm. A song for the dedication of the house.
+  simplified_phrase: A psalm. A song for dedicating the house.
+  preserved_meaning: Both genre labels remain distinct, and the dedication remains the song’s occasion or use.
+  reasoning_layer_used: POB lexical decisions for מִזְמוֹר, שִׁיר, and חֲנֻכַּת
+  rationale: The verb “dedicating” is clearer than the abstract noun “dedication,” while separate sentences preserve both labels.
+- pob_phrase: the house
+  simplified_phrase: the house
+  preserved_meaning: The referent remains unspecified and may be a house, the temple, or a palace.
+  reasoning_layer_used: POB lexical and theological decisions for הַבַּיִת
+  rationale: Keeping “house” avoids settling an ambiguity left open in Hebrew.
+- pob_phrase: Of David.
+  simplified_phrase: Of David.
+  preserved_meaning: The phrase can indicate authorship, association, belonging, or dedication.
+  reasoning_layer_used: POB lexical decision for לְדָוִד
+  rationale: This wording preserves the Davidic relationship without narrowing it to authorship.
 translation_notes:
   risk_flags:
-  - risk: Readers may assume “the house” definitely means the temple.
-    mitigation: The footnote preserves the Hebrew ambiguity by also naming the palace as a possible referent.
+  - risk: Readers may not know which building “the house” means.
+    mitigation: The footnote preserves the possible temple and palace readings.
+  - risk: Readers may understand “Of David” only as authorship.
+    mitigation: The main text retains the broader wording because Hebrew does not specify the relationship.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/030/000.yaml
   source_text_sha256: 6d23bf24f31596a559f4545154f856350cc34bf41c01aa63e34b1201367cc2b4
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 30d53b67b5c160753a7a9b4bb21e8b4d8705a13a8eaa1f5ad154265ca03bee89
-  timestamp: '2026-07-11T20:04:54Z'
-  output_hash: c62c5dd511cd0e7bbb9b3b572481f94367a07919fa1e26365e358c79fed4b220
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 40080b899c361d9bc79efac3662cc0c8d1687f71fbc11ac7d444f86bfc283ff0
+  timestamp: '2026-08-28T23:35:12Z'
+  output_hash: e0a1ea2aba5ef6b27a90ef30b5cb95b0b7b7cd4fbc40c05eca0c309ffc410e1a
   usage:
-    prompt_tokens: 2558
-    completion_tokens: 702
-    total_tokens: 3260
-    reasoning_tokens: 328
+    prompt_tokens: 3529
+    completion_tokens: 471
+    total_tokens: 4000
+    reasoning_tokens: 40
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:45Z'
+  previous_text: A psalm. A song for when the house[a] is dedicated. Of David.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:12Z'
+  previous_text: A psalm and a song for dedicating the house.[a] Of David.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e837a3c5c58a7b879b2ad65741493d50c27703686bc048bd43d043003b7bfda7
+  review_summary: “For dedicating” is a warranted, more direct rendering of “for the dedication,” and retaining “the house” with its footnote properly preserves the unresolved referent. Retain the POB’s separate presentation of “A psalm” and “A song,” however, so the simplification does not merge the two Hebrew superscription labels into one combined genre phrase.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,48 +11,57 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/132/000.yaml
-  text: A Song of Ascents[a].
-  footnotes:
-  - marker: a
-    text: Or “for David”; the Hebrew preposition may be rendered more literally, but here it likely means “on David’s behalf” or “in regard to David.”
-    reason: lexical_alternative
+  text: A Song of Ascents.
 translation:
   language: en
-  text: 'A song for going up.[a]'
+  text: A song of going up.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Literally, “A Song of Ascents.”
-    reason: simplification_note
+    text: The Hebrew title is traditionally translated “A Song of Ascents.” Its precise meaning is uncertain; it may be connected with going up to Jerusalem for pilgrimage.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: A Song of Ascents
-  simplified_phrase: A song for going up
-  preserved_meaning: The title keeps the Hebrew image of upward movement without specifying its uncertain setting.
-  reasoning_layer_used: POB heading and source-language image
-  rationale: “For going up” makes the uncommon title easier to understand.
+- pob_phrase: A Song of Ascents.
+  simplified_phrase: A song of going up.
+  preserved_meaning: The heading retains the concrete image of upward movement without specifying its setting.
+  reasoning_layer_used: WLC Hebrew, POB heading, and grounding review
+  rationale: “Going up” expresses the image in common English while preserving its uncertainty.
+interpretive_expansions:
+- pob_phrase: Ascents
+  rendering: it may be connected with going up to Jerusalem for pilgrimage
+  claim: Pilgrimage to Jerusalem is one possible setting for the title.
+  evidence:
+  - The heading denotes ascent but does not name pilgrims or Jerusalem.
+  - The collection has commonly been associated with journeys up to Jerusalem.
+  confidence: moderate
+  alternatives_preserved:
+  - The title may have another historical or liturgical sense.
 translation_notes:
-  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
+  risk_flags:
+  - risk: “Going up” may still leave the heading’s historical use unclear.
+    mitigation: The footnote gives a possible setting while explicitly preserving uncertainty.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/132/000.yaml
   source_text_sha256: 3c6f7ff822ed0a481b4cb53b38336189a0b3e73d489748ea373bba9a1ab78b37
-  pob_commit_sha: 804a4ce86483bc97cac867d063b82609102c8015
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 0b14a2fbdab6ff75b6595851762a17c53dae299293fd9734d0dcaa06d2b739f8
-  timestamp: '2026-07-12T10:03:17Z'
-  output_hash: 56ec99289d6b475bff88b960927c73cff23e2c420b18e50e07569e17feb1a5bb
+  prompt_sha256: bfd8ca21d1eb5684bae1758764991a1dd8a4d2bf9604c4cabc666727ac5cc647
+  timestamp: '2026-08-28T23:36:20Z'
+  output_hash: feab970de8900381f54f8ecf63fa307795c7acd80b3b5f2b9954540525fc484d
   usage:
-    prompt_tokens: 3142
-    completion_tokens: 527
-    total_tokens: 3669
-    reasoning_tokens: 0
+    prompt_tokens: 2706
+    completion_tokens: 536
+    total_tokens: 3242
+    reasoning_tokens: 222
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:17Z'
   previous_text: 'A song for going up.[a]
@@ -66,10 +75,17 @@ spob_revision_history:
   review_summary: The heading is meaningfully clearer while retaining the upward-movement image and not importing a particular pilgrimage setting. The second line should retain David’s hardship as the direct focus of the request rather than recasting it as two objects, “David and all the suffering he endured.” “All the hardship David endured” is clear, warranted by the POB lexical range, and preserves the verse’s emphasis.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: superscription
-  previous_text_sha256: 2a20c65b6c03f1c5e065e7d5bb273addb8b3b827dc6992c8059c9740e5850898
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-is_superscription: true
+- timestamp: '2026-08-28T22:59:25Z'
+  previous_text: A song for going up.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:20Z'
+  previous_text: A song for pilgrims going up to Jerusalem.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 08f91510560099fa95e6a04875a6f0ca4a6f23dedcfc923aea37d4b8db3d3256
+  review_summary: The draft usefully seeks to explain an opaque traditional heading, but its main text goes beyond what the heading states by specifying pilgrims and Jerusalem. Retain the concrete idea of ascent in the text and place the plausible pilgrimage-to-Jerusalem explanation in the footnote, where its uncertainty can be represented.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

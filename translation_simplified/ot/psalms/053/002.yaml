@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/053/002.yaml
-  text: God looks down from heaven on the children of man to see whether there is anyone who has understanding[a], who seeks God.
+  text: God looks down from heaven on humanity[a] to see whether there is anyone who has understanding, who seeks God.
   footnotes:
   - marker: a
-    text: Or 'on humankind.' Hebrew 'the children of man' is a collective expression for human beings.
+    text: Literally, “the children of man” or “the children of Adam”; the Hebrew expression refers collectively to human beings.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,44 +31,46 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: God looks down from heaven at all humanity. He looks to see whether anyone has understanding and seeks God.
+  text: God looks down from heaven at humanity[a] to see whether anyone has understanding and seeks God.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew literally says “the children of man” or “the children of Adam,” meaning humanity as a whole.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the children of man
-  simplified_phrase: all humanity
-  preserved_meaning: The Hebrew idiom refers collectively to human beings.
-  reasoning_layer_used: POB lexical and theological decisions for בְּנֵי אָדָם
-  rationale: The collective meaning is stated directly to prevent readers from thinking only of males or children.
-- pob_phrase: to see whether there is anyone
-  simplified_phrase: He looks to see whether anyone
-  preserved_meaning: God examines humanity to determine whether such a person exists.
-  reasoning_layer_used: POB lexical decisions for לִרְאוֹת and הֲיֵשׁ
-  rationale: A new sentence makes the purpose of God's looking easier to follow.
-- pob_phrase: who has understanding, who seeks God
-  simplified_phrase: has understanding and seeks God
-  preserved_meaning: One person is described as both understanding and seeking God.
-  reasoning_layer_used: POB lexical decisions for מַשְׂכִּיל and דֹּרֵשׁ
-  rationale: The coordinated wording clearly joins both qualities without repeating the relative pronoun.
-translation_notes: {}
+- pob_phrase: looks down from heaven on humanity
+  simplified_phrase: looks down from heaven at humanity
+  preserved_meaning: God directs his attention from above toward all human beings.
+  reasoning_layer_used: Lexical decisions for הִשְׁקִיף, עַל, and בְּנֵי אָדָם
+  rationale: “At humanity” is natural after “looks down” and preserves the image of inspection from above.
+- pob_phrase: whether there is anyone who has understanding, who seeks God
+  simplified_phrase: whether anyone has understanding and seeks God
+  preserved_meaning: The verse asks whether any person is characterized by understanding and by seeking God.
+  reasoning_layer_used: Lexical decisions for הֲיֵשׁ, מַשְׂכִּיל, and דֹּרֵשׁ
+  rationale: The shorter coordination keeps both distinct qualities while removing cumbersome relative clauses.
+translation_notes:
+  risk_flags:
+  - risk: “Has understanding” could be mistaken for intellectual ability alone.
+    mitigation: Its coordination with “seeks God” retains the intended cognitive and moral setting.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/053/002.yaml
   source_text_sha256: 867d3ea608fbae608c2a62d252307afcf38f9c602ab2c1bb12adcd2698cc4db8
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: bbc971095e6602a4cef466d053c66a8bd6718230d01cb9d24d93743c575d942c
-  timestamp: '2026-07-12T09:59:45Z'
-  output_hash: 7c644c4993f22e8c012c70f5534a09d8bdec378306e4c2cb731cc1350775006c
+  prompt_sha256: e2f9a507a854a25a5735daa63ac9f7ed1f011d14ba011efa82aef796ee39057f
+  timestamp: '2026-08-28T23:35:29Z'
+  output_hash: 0d8d9f666b28a6d9f8c559f27b0b504fb1a4e90c0aa5775a7771e47e2a5fc994
   usage:
-    prompt_tokens: 3508
-    completion_tokens: 317
-    total_tokens: 3825
-    reasoning_tokens: 0
+    prompt_tokens: 3793
+    completion_tokens: 499
+    total_tokens: 4292
+    reasoning_tokens: 149
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -81,6 +83,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: a016642410306a84c76fcf01f13341c650ae037be88c31c819ef099d8ab408cd
   review_summary: The sentence division and the rendering “whether anyone has understanding and seeks God” preserve the single person described by both participles and are warranted by the source and POB audit trail. However, retaining “the children of man” leaves the central object of God’s inspection unclear in the main text for many contemporary readers. Rendering the collective Hebrew idiom as “human beings” is source-supported, does not insert doctrine, and better meets SPOB’s understanding-first purpose.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:31Z'
+  previous_text: God looks down from heaven at all humanity. He looks to see whether anyone has understanding and seeks God.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:29Z'
+  previous_text: God looks down from heaven at humanity.[a] He looks to see whether anyone understands and seeks God.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f14898e0400a368e7b55fb1e56579ed30d2f5b31a52b68407a4125cce5a76af5
+  review_summary: The draft is warranted in rendering the collective Hebrew idiom as “humanity” and in presenting understanding and seeking God as coordinated qualities. However, “anyone understands” weakens and obscures the source expression’s characterization of a person with understanding, while the split sentence redundantly repeats “looks.” The recommended text preserves the accessible wording while retaining the POB’s cognitive-moral nuance and the source’s purpose construction.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

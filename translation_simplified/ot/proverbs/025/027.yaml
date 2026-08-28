@@ -31,50 +31,50 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 25:27 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''and searching out''].'
 translation:
   language: en
-  text: Eating too much honey is not good. Searching out their glory is glory.[a]
+  text: It is not good to eat too much honey; investigating what brings them honor is itself honorable.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The second line is difficult in Hebrew. It may mean that seeking honor for yourself is not honorable, or that investigating weighty matters is honorable; the main text follows the Hebrew closely.
+    text: The Hebrew of the second line is difficult and uncertain. It literally says, “searching out their glory is glory.” It may mean that seeking honor for oneself is not honorable, or that investigating weighty matters is honorable.
     reason: alternative_reading
 simplification_decisions:
 - pob_phrase: To eat much honey is not good
-  simplified_phrase: Eating too much honey is not good
-  preserved_meaning: The proverb warns against eating honey in excess while keeping its concrete image.
-  reasoning_layer_used: POB lexical decisions for אָכֹל, דבשׁ, הרבות, and לא טוב
-  rationale: “Eating too much” expresses excess naturally without limiting the warning to physical harm.
-- pob_phrase: and to search out their glory is glory
-  simplified_phrase: Searching out their glory is glory
-  preserved_meaning: The difficult line keeps the third-person reference, nominal predicate, and repeated glory wording.
-  reasoning_layer_used: POB lexical decisions and alternative-reading footnote for וחקר, כבודם, and כבוד
-  rationale: Removing only the conjunction improves flow while preserving the unresolved Hebrew wording.
+  simplified_phrase: It is not good to eat too much honey
+  preserved_meaning: Eating honey in excess is not good.
+  reasoning_layer_used: POB lexical decisions
+  rationale: The ordinary English phrase makes the stated excess clear.
+- pob_phrase: to search out their glory is glory
+  simplified_phrase: investigating what brings them honor is itself honorable
+  preserved_meaning: The repeated honor/glory wording and investigative action remain, while the serious ambiguity stays explicit in the note.
+  reasoning_layer_used: POB footnote and 2026-08-28 Terra review
+  rationale: Supplies only the minimum English grammar needed to read the line without choosing between the documented interpretations.
 translation_notes:
   risk_flags:
-  - risk: The second line remains unclear because the Hebrew itself is difficult.
-    mitigation: The footnote gives both major interpretations without selecting either one.
+  - risk: The second line remains obscure to modern readers.
+    mitigation: The footnote gives the two documented possibilities without deciding between them.
+  - risk: The pronoun “their” has no clear antecedent in English.
+    mitigation: It is retained because the Masoretic Text has a third-person plural suffix.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/025/027.yaml
   source_text_sha256: 3154a75b5b3597d76546b04b06e1d7d4b9317a21357719828ed661b94db80cc3
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: a80791f8297b51973e80dc307e952e0cb05be2879ff7c2a44e48c0fbd842b6f4
-  timestamp: '2026-07-12T09:53:05Z'
-  output_hash: a8d3e0bb6471abf1a197d69dbc279fb8668454d9d395271378560b945b849ae3
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 6fbb5074afeb421c2b77f3fd4af5b6a0b66ff3668c7641be6fd1d367267bdc7f
+  timestamp: '2026-08-28T23:03:34Z'
+  output_hash: b6b6c99d84c2e38c7c0063b9e962adb80599f83f337ef3f2cb9e1abcfc6334e0
   usage:
-    prompt_tokens: 3552
-    completion_tokens: 331
-    total_tokens: 3883
-    reasoning_tokens: 0
+    prompt_tokens: 2614
+    completion_tokens: 709
+    total_tokens: 3323
+    reasoning_tokens: 355
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:05Z'
   previous_text: Eating too much honey is not good. Searching out their honor is honorable.[a]
@@ -86,3 +86,17 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:34Z'
+  previous_text: Eating too much honey is not good. Searching out their glory is glory.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:55:00Z'
+  previous_text: It is not good to eat too much honey; searching out their glory is glory.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c26e37e49930a3ce4d5750d03a39e44c1a8949c38eed73e424270b506c583680
+  review_summary: Applied the source-grounded recommendation manually after Sol produced a low-confidence interpretive expansion that failed schema validation.
+  revision_status: editorial_schema_repair
+interpretive_expansions: []

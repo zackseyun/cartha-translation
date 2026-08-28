@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/044/001.yaml
-  text: God[a], we have heard with our ears; our fathers have told us the deed you did in their days[b][c], in days of old.
+  text: God[a], we have heard with our ears; our fathers[c] have told us the deed you did in their days, in days of old[b].
   footnotes:
   - marker: a
     text: Or, more traditionally, 'O God, we have heard with our ears.'
@@ -37,55 +37,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 44:2 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the work''].'
 translation:
   language: en
-  text: God, we have heard with our ears. Our fathers[a] have told us about the deed you did in their days, long ago.
+  text: God, we have heard it with our own ears. Our fathers[a] have told us what you did in their lifetime, long ago.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “ancestors”; Hebrew “fathers.”
+    text: Or “our ancestors”; Hebrew “our fathers.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: we have heard with our ears
-  simplified_phrase: we have heard with our ears
-  preserved_meaning: The community truly heard the testimony passed down to them.
-  reasoning_layer_used: POB lexical decisions for בְּאָזְנֵינוּ and שָׁמַעְנוּ
-  rationale: Keeping “with our ears” preserves the embodied Hebrew expression without adding contrastive emphasis.
-- pob_phrase: have told us the deed you did
-  simplified_phrase: have told us about the deed you did
-  preserved_meaning: Their fathers recounted God's historical act to them.
-  reasoning_layer_used: POB lexical decisions for סִפְּרוּ לָנוּ and פֹּעַל פָּעַלְתָּ
-  rationale: Adding “about” gives the clause natural English syntax without changing its content.
+  simplified_phrase: we have heard it with our own ears
+  preserved_meaning: They personally received this testimony by hearing it.
+  reasoning_layer_used: POB lexical decision for בְּאָזְנֵינוּ
+  rationale: “Own” makes the Hebrew embodied emphasis natural in modern English.
+- pob_phrase: the deed you did
+  simplified_phrase: what you did
+  preserved_meaning: Their fathers recounted God’s historical action.
+  reasoning_layer_used: POB lexical decisions for פֹּעַל and פָּעַלְתָּ
+  rationale: The recast removes an awkward repetition without changing the action.
 - pob_phrase: in their days, in days of old
-  simplified_phrase: in their days, long ago
-  preserved_meaning: God acted during the fathers' era in the distant past.
-  reasoning_layer_used: POB lexical decisions for בִּימֵיהֶם and בִּימֵי קֶדֶם
-  rationale: This wording clearly preserves both the ancestral setting and its remoteness.
+  simplified_phrase: in their lifetime, long ago
+  preserved_meaning: God acted in the fathers’ ancient time.
+  reasoning_layer_used: POB temporal lexical decisions
+  rationale: The wording expresses both temporal phrases in ordinary English.
+interpretive_expansions:
+- pob_phrase: in their days
+  rendering: in their lifetime
+  claim: The phrase refers to the period when the fathers were alive.
+  evidence:
+  - The Hebrew temporal idiom denotes the time belonging to those fathers.
+  - The immediate clause places God’s deed in their past generation.
+  confidence: high
+  alternatives_preserved:
+  - during their days
 translation_notes:
   risk_flags:
-  - risk: “Fathers” may be understood as immediate parents rather than earlier generations.
-    mitigation: The footnote supplies “ancestors” while retaining the POB's source-driven wording.
+  - risk: “Fathers” may be read as only immediate parents.
+    mitigation: The footnote preserves “ancestors” as the broader lexical alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/044/001.yaml
   source_text_sha256: 7a88ce7eb17d3b5157c5ea14740748da16d57db54b4639cde0abdf7032fe03c9
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: a3ebeefc128e80a2c656d201334f70f23eeea6d19525a72ae1cce20fe145d369
-  timestamp: '2026-07-12T09:59:33Z'
-  output_hash: ed0b72f7a0c295dd1d61e3d8daf82d1a03f88a5ede6b362e1e58e21ae2ab4cbe
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7e23bf3617f91080fc832bc272aa3d568f7b9aa251587effc58498fee5887201
+  timestamp: '2026-08-28T22:54:03Z'
+  output_hash: b4b4819fd5f45d10ba35e336560e970d448ec17242bc8b48e0a7686b87ca8856
   usage:
-    prompt_tokens: 3959
-    completion_tokens: 420
-    total_tokens: 4379
-    reasoning_tokens: 0
+    prompt_tokens: 3214
+    completion_tokens: 885
+    total_tokens: 4099
+    reasoning_tokens: 451
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:33Z'
   previous_text: God, we have heard with our own ears. Our fathers[a] have told us about the deed you did in their time, long ago.
@@ -97,3 +105,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:03Z'
+  previous_text: God, we have heard with our ears. Our fathers[a] have told us about the deed you did in their days, long ago.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

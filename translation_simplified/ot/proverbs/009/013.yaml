@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/009/013.yaml
-  text: The woman Folly is loud[a]; she is simple and knows nothing.
+  text: The woman Folly is loud; she is simple and knows nothing.[a]
   footnotes:
   - marker: a
-    text: Hebrew more literally, 'and does not know what.'
+    text: Hebrew more literally, “and does not know what.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,46 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Folly is a noisy woman. She is naive and knows nothing.
+  text: Folly is a loud, naive woman. She knows nothing.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Hebrew more literally, “She does not know what.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: The woman Folly
-  simplified_phrase: Folly is a ... woman
-  preserved_meaning: Folly remains personified as a woman.
-  reasoning_layer_used: POB lexical decision for אֵשֶׁת כְּסִילוּת
-  rationale: The recast sentence avoids the unusual title-like wording while preserving the female personification.
-- pob_phrase: is loud
-  simplified_phrase: noisy
-  preserved_meaning: Folly is characterized by conspicuous, disruptive noise.
-  reasoning_layer_used: POB lexical decision for הֹמִיָּה
-  rationale: “Noisy” expresses the same public loudness in direct everyday English.
+- pob_phrase: The woman Folly is loud
+  simplified_phrase: Folly is a loud ... woman
+  preserved_meaning: Folly remains personified as a noisy woman.
+  reasoning_layer_used: POB lexical decision for אֵשֶׁת כְּסִילוּת and הֹמִיָּה
+  rationale: Reordering the phrase makes the personification immediately clear in ordinary English.
 - pob_phrase: she is simple
-  simplified_phrase: She is naive
+  simplified_phrase: naive
   preserved_meaning: Folly lacks sound judgment and is characterized by simplicity.
   reasoning_layer_used: POB lexical decision for פְּתַיּוּת
-  rationale: “Naive” avoids the modern ambiguity of “simple” while retaining the documented sense.
+  rationale: “Naive” avoids the modern ambiguity of “simple” while keeping the documented sense.
+- pob_phrase: and knows nothing
+  simplified_phrase: She knows nothing.
+  preserved_meaning: The final clause remains an emphatic statement of complete ignorance.
+  reasoning_layer_used: POB lexical decision for יָדְעָה מָּה
+  rationale: A separate short sentence gives the Hebrew expression its full force.
 translation_notes:
   risk_flags:
-  - risk: “Naive” makes the repeated Proverbs wordplay on “simple” less visible.
-    mitigation: The rendering follows a documented lexical alternative and preserves the underlying lack of judgment.
+  - risk: Reordering “the woman Folly” could make the personification seem less title-like.
+    mitigation: Capitalizing “Folly” and retaining “woman” preserve the direct female personification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/009/013.yaml
   source_text_sha256: 6781b0f442de214c3792bdcb99d7da1df5d69dc164b314802b142936d134ee27
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 7f82943e713c8f37d750b6d101b8177fb971680c2fd30e4c90ff5a313fc628be
-  timestamp: '2026-07-11T21:03:31Z'
-  output_hash: f2ef5c60804350d810f9f0e8ecca44c974ea5642cca253f0acb0392ec84a2b6b
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: e8a751008389c96b7c7082e3451b44bb937430fbd783e9b1f46f1f7bafeedaf5
+  timestamp: '2026-08-28T23:04:45Z'
+  output_hash: a87679724f4b5d61abe74b11dd932189cbf9483bbc9b390236f54e2badd7572a
   usage:
-    prompt_tokens: 2336
-    completion_tokens: 1003
-    total_tokens: 3339
-    reasoning_tokens: 663
+    prompt_tokens: 2501
+    completion_tokens: 793
+    total_tokens: 3294
+    reasoning_tokens: 414
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:04:45Z'
+  previous_text: Folly is a noisy woman. She is naive and knows nothing.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

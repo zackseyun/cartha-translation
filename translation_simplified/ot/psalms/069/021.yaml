@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/069/021.yaml
-  text: They gave me poison for my food[a][b], and for my thirst they gave me vinegar to drink.
+  text: They gave me poison[a] for my food, and for my thirst they gave me vinegar[b] to drink.
   footnotes:
   - marker: a
-    text: Or 'sour wine.' The Hebrew חֹמֶץ can denote sour wine or vinegar.
+    text: Or “gall.” The Hebrew refers to a poisonous or bitter substance.
     reason: lexical_alternative
   - marker: b
-    text: Or 'gall.' The Hebrew רֹאשׁ here refers to a poisonous or bitter substance; 'gall' is the traditional rendering.
+    text: Or “sour wine.” The Hebrew חֹמֶץ can denote sour wine or vinegar.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,50 +34,64 @@ base_translation:
     changes_summary: Reordered the first clause to more directly reflect the Hebrew syntax and improved formal naturalness; retained 'poison' and 'vinegar to drink' as accurate renderings.
 translation:
   language: en
-  text: They gave me poison as food, and when I was thirsty, they gave me vinegar to drink.[a][b]
+  text: They gave me poison[a] as food. When I was thirsty, they gave me vinegar[b] to drink.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Poison” may also be translated “gall”; the Hebrew refers to something poisonous or bitter.
+    text: Or “gall”; the Hebrew means a poisonous or bitter substance.
     reason: lexical_alternative
   - marker: b
-    text: “Vinegar” may also mean “sour wine.”
+    text: Or “sour wine.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: poison for my food
-  simplified_phrase: poison as food
-  preserved_meaning: They offered a poisonous substance as nourishment.
-  reasoning_layer_used: Lexical decision for בְּבָרוּתִי and רֹאשׁ
-  rationale: “As food” makes the harmful substitution immediately clear while retaining the poison image.
-- pob_phrase: for my thirst
-  simplified_phrase: when I was thirsty
-  preserved_meaning: They gave him the drink in response to his thirst.
-  reasoning_layer_used: Lexical decision for וְלִצְמָאִי
-  rationale: The ordinary time clause expresses the same circumstance in natural English.
+- pob_phrase: They gave me poison for my food
+  simplified_phrase: They gave me poison as food
+  preserved_meaning: Poison was given in place of nourishment, not necessarily mixed into food.
+  reasoning_layer_used: POB lexical decision for בְּבָרוּתִי
+  rationale: “As food” clearly expresses the documented sense of something given as sustenance.
+- pob_phrase: and for my thirst they gave me vinegar to drink
+  simplified_phrase: When I was thirsty, they gave me vinegar to drink
+  preserved_meaning: They responded to his thirst by giving him vinegar.
+  reasoning_layer_used: POB lexical decision for וְלִצְמָאִי
+  rationale: The time clause turns the abstract phrase into natural modern English without changing the parallel idea.
+interpretive_expansions:
+- pob_phrase: for my food
+  rendering: as food
+  claim: The poison was offered as his nourishment rather than necessarily placed inside other food.
+  evidence:
+  - The POB lexical rationale says the phrase presents the substance as sustenance.
+  confidence: high
+  alternatives_preserved:
+  - for my food
+  - in my food
 translation_notes:
   risk_flags:
-  - risk: Modern readers may understand “vinegar” only as a cooking ingredient rather than sour wine.
-    mitigation: The footnote preserves “sour wine” as the lexical alternative.
-  - risk: Replacing traditional “gall” could obscure familiar Gospel resonance.
-    mitigation: The footnote retains “gall” without importing New Testament wording into the main text.
+  - risk: “As food” states the contextual relationship more directly than the Hebrew preposition alone.
+    mitigation: The wording follows the POB lexical rationale while avoiding the narrower claim that poison was mixed into food.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/069/021.yaml
   source_text_sha256: 94a71334f6000bb0e733fe7e5780161c1a0ab2c31d985a6c3fdc36388afbbd41
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0f91baa81419a14f819fd803f8c178486b59c800c69ff448d0951a58045b9ca0
-  timestamp: '2026-07-11T20:50:49Z'
-  output_hash: 3dba68c7f9d7ee199d3541691cc0f65b94eb6a783405fff35b45a3ed958a759f
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: ac3e8a696614768ae9499b0b8c44e4631d5665fb35f569ac5488ec4b1cc1d950
+  timestamp: '2026-08-28T22:56:52Z'
+  output_hash: 6f81061238236792f9d0db1bd8b8105afea3144052c3e07744637952d10535af
   usage:
-    prompt_tokens: 3042
-    completion_tokens: 572
-    total_tokens: 3614
-    reasoning_tokens: 203
+    prompt_tokens: 3220
+    completion_tokens: 789
+    total_tokens: 4009
+    reasoning_tokens: 367
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:52Z'
+  previous_text: They gave me poison as food, and when I was thirsty, they gave me vinegar to drink.[a][b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

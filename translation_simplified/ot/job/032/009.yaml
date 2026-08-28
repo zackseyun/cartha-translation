@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/032/009.yaml
-  text: It is not the many who are wise[a], nor the old who understand justice.
+  text: It is not the great who are wise, nor the old who understand judgment[a].
   footnotes:
   - marker: a
-    text: Or “judgment” or “what is right.” The Hebrew mishpat can refer to legal judgment, justice, or right order.
+    text: Or “justice” or “what is right.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,59 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Many people are not wise, and old age does not guarantee that people understand justice.[a]
+  text: People with high status are not necessarily wise, and old people do not necessarily understand what is right.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “judgment” or “what is right.” The Hebrew word can refer to legal judgment, justice, or right order.
+    text: The Hebrew word can also mean “judgment” or “justice.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: It is not the many who are wise
-  simplified_phrase: Many people are not wise
-  preserved_meaning: Many people lack wisdom despite belonging to the larger group.
-  reasoning_layer_used: POB lexical decisions for לֹא, רַבִּים, and יֶחְכָּמוּ
-  rationale: This uses direct modern English while preserving the Hebrew clause’s firm negation and numerical sense.
-- pob_phrase: nor the old who understand justice
-  simplified_phrase: and old age does not guarantee that people understand justice
-  preserved_meaning: Age by itself does not ensure moral and judicial understanding.
-  reasoning_layer_used: POB lexical decisions for וּזְקֵנִים, יָבִינוּ, and מִשְׁפָּט
-  rationale: This states the age-based contrast clearly without suggesting an official group of elders.
+- pob_phrase: the great
+  simplified_phrase: people with high status
+  preserved_meaning: The phrase refers to prominent or important people, not to a large number of people.
+  reasoning_layer_used: POB lexical decision and applied revision
+  rationale: “People with high status” makes the intended social prominence immediately clear.
+- pob_phrase: understand judgment
+  simplified_phrase: understand what is right
+  preserved_meaning: The old may lack moral and judicial discernment.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: The clearer documented alternative appears in the text while “judgment” and “justice” remain in the note.
 interpretive_expansions:
-- pob_phrase: nor the old who understand justice
-  rendering: old age does not guarantee that people understand justice
-  claim: The clause denies that advanced age by itself ensures understanding.
+- pob_phrase: It is not the great who are wise, nor the old who understand
+  rendering: are not necessarily wise ... do not necessarily understand
+  claim: Prominence and age do not by themselves guarantee wisdom or understanding.
   evidence:
-  - The parallel clauses contrast outward qualifications with actual wisdom and understanding.
-  - The POB rationale identifies an age-based contrast with true understanding.
+  - The immediate contrast challenges the assumption that greatness or age ensures wisdom.
+  - The POB reasoning describes the statement as a general truth contrasting age with true understanding.
   confidence: high
   alternatives_preserved:
-  - A direct reference to “the old” remains possible.
+  - A more formally categorical wording remains possible.
 translation_notes:
   risk_flags:
-  - risk: “Does not guarantee” makes the implied non-automatic relationship explicit.
-    mitigation: The wording retains the direct denial that age itself ensures understanding.
+  - risk: “What is right” may sound narrower than the full judicial and moral range of “judgment.”
+    mitigation: The footnote preserves both “judgment” and “justice” as lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/032/009.yaml
   source_text_sha256: 3679f046cfff5da405c74df2d0e350d40613658df74352b34fdcd97cc898a54b
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 6e3c04e9783932b244ea00bd1e17b7a673be20f3704b56c8458237d51d554e89
-  timestamp: '2026-07-12T09:44:57Z'
-  output_hash: ac6c9b2543b265dc361d9f1cc114b4b8c50b212fe5c06034e9fc2a51d8aa9957
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: da52ceb51c476430ea702138c7d1ebda3bc0103aeee2cdd76c5bcd9f8fba1f55
+  timestamp: '2026-08-28T22:55:15Z'
+  output_hash: 80122e803cf23639f76f3f2230c642b3c8d1ca6f9d5ca7434fca4af184ff507f
   usage:
-    prompt_tokens: 3291
-    completion_tokens: 432
-    total_tokens: 3723
-    reasoning_tokens: 0
+    prompt_tokens: 2514
+    completion_tokens: 1387
+    total_tokens: 3901
+    reasoning_tokens: 978
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:44:57Z'
   previous_text: A large number of people are not necessarily wise, and old age does not guarantee an understanding of justice.[a]
@@ -94,3 +93,13 @@ spob_revision_history:
   review_summary: The draft correctly makes explicit that age is not an automatic guarantee of discernment, and it retains the lexical footnote. However, “not necessarily wise” softens the first direct negation too far and makes the sentence less clear. A direct rendering preserves the proverb's force while remaining accessible.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:44Z'
+  previous_text: Many people are not wise, and old age does not guarantee that people understand justice.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:55:15Z'
+  previous_text: Prominence does not make a person wise, and old age does not guarantee an understanding of sound judgment.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

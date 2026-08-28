@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/144/015.yaml
-  text: Blessed are the people for whom it is so[a][b]; blessed are the people whose God is Yahweh.
+  text: Blessed are the people for whom it is so[a]; blessed are the people whose God is Yahweh.
   footnotes:
   - marker: a
-    text: 'Hebrew: “whose God is Yahweh.” The main text follows the project’s standard rendering of the divine name as “the LORD.”'
-    reason: alternative_reading
-  - marker: b
-    text: Or “Happy is the people for whom this is so.”
+    text: Or “Happy are the people for whom this is so.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,55 +31,66 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 144:15 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''Blessed is''].'
 translation:
   language: en
-  text: Blessed[a] are the people for whom all this is true. Blessed are the people whose God is Yahweh.
+  text: Blessed are the people for whom all this is true.[a] Blessed are the people whose God is Yahweh.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Happy.” Here “blessed” describes an enviable state of flourishing, not merely a passing emotion.
+    text: Or “Happy are the people for whom all this is true.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: for whom it is so
   simplified_phrase: for whom all this is true
-  preserved_meaning: The favorable conditions described just before this verse belong to these people.
-  reasoning_layer_used: POB lexical decision for שֶׁכָּכָה and immediate context
-  rationale: The backward reference is made clearer without specifying more than the context does.
-- pob_phrase: ; blessed are the people
-  simplified_phrase: . Blessed are the people
-  preserved_meaning: The verse gives two parallel declarations of blessing.
-  reasoning_layer_used: POB poetic structure
-  rationale: Two sentences make the parallel statements easier to read.
+  preserved_meaning: The favorable conditions described in the preceding lines are the circumstances of these people.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: “All this” makes the backward reference clear without adding an experience or labeling the conditions.
 interpretive_expansions:
-- pob_phrase: it
-  rendering: all this
-  claim: The phrase points back to the favorable conditions described in the preceding verses.
+- pob_phrase: it is so
+  rendering: all this is true
+  claim: “This” refers back to the favorable conditions described in the preceding lines.
   evidence:
-  - POB says the preceding described condition belongs to that people.
-  - The immediate context lists the people's prosperity and security.
+  - Psalm 144:12–14 describes flourishing families, abundant provision, and public security.
+  - The POB rationale says the preceding described condition belongs to the people.
   confidence: high
   alternatives_preserved:
   - for whom it is so
 translation_notes:
   risk_flags:
-  - risk: “All this” depends on the preceding verses for its full meaning.
-    mitigation: The wording preserves the source text’s backward reference rather than supplying a narrower interpretation.
+  - risk: “All this” depends on readers recognizing the reference to the preceding lines.
+    mitigation: The wording clearly signals a backward reference while preserving the verse’s compact form.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/144/015.yaml
   source_text_sha256: 395dab14813f108c44a0ef6150c0a8bdb3ab4061ddf912e52968f9349ca3721a
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 205b5a062302ee6296f4340490896337de33a33a9ef73ead14681a7b88b4b790
-  timestamp: '2026-07-11T21:03:46Z'
-  output_hash: 2bcfbb25c63479182f123e9d4442a8826fd2608ecb61a67600bb924bbd2b5171
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f16385e7502011ec9c3f6e82d03ac593868f375e1fa2a40057cdf6ab25eafdb7
+  timestamp: '2026-08-28T23:36:25Z'
+  output_hash: fb1348fcfdf4f3223826a5fee1c23ad254bcb923c3d8594937d28957ce63abb1
   usage:
-    prompt_tokens: 2876
-    completion_tokens: 885
-    total_tokens: 3761
-    reasoning_tokens: 512
+    prompt_tokens: 3787
+    completion_tokens: 374
+    total_tokens: 4161
+    reasoning_tokens: 56
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:01Z'
+  previous_text: Blessed[a] are the people for whom all this is true. Blessed are the people whose God is Yahweh.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:25Z'
+  previous_text: Blessed are the people who enjoy such blessings.[a] Blessed are the people whose God is Yahweh.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 456accd87f480714ccac7b3ddc52df3e6c0d99100a031cfde77f1b8e94712812
+  review_summary: The draft rightly clarifies the otherwise opaque “for whom it is so” by referring back to the favorable conditions in the preceding lines. However, “enjoy such blessings” adds both an experiential verb and a blessing-label not required by the source or POB rationale. “For whom all this is true” is equally clear, preserves the contextual reference, and stays closer to the source clause.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

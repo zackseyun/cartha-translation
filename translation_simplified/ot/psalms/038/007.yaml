@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/038/007.yaml
-  text: For my loins are filled with burning[a][b], and there is no soundness in my flesh.
+  text: For my loins[a] are filled with burning[b], and there is no soundness in my flesh.
   footnotes:
   - marker: a
-    text: The Hebrew word rendered 'burning sores' is difficult; it may also be understood as 'inflammation' or 'burning.'
+    text: Or “my flanks” or “my hips”; the Hebrew term refers broadly to the loins or midsection.
     reason: lexical_alternative
   - marker: b
-    text: Or 'my flanks' or 'my hips'; the Hebrew term refers to the midsection/loins region.
-    reason: lexical_alternative
+    text: The Hebrew word is difficult; here it may denote burning or inflammation. Other interpretations include a loathsome condition.
+    reason: lexical_uncertainty
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,55 +34,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 38:8 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''burning sores''].'
 translation:
   language: en
-  text: For the area around my hips is filled with burning sores[a], and no part of my flesh is healthy.
+  text: For my midsection[a] is burning,[b] and my body is not healthy anywhere.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The difficult Hebrew word may also mean “inflammation” or simply “burning.”
+    text: The Hebrew refers broadly to the loins, flanks, or hips.
+    reason: lexical_alternative
+  - marker: b
+    text: The Hebrew word is difficult; it may mean burning or inflammation, though it could describe a loathsome condition.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: my loins
-  simplified_phrase: the area around my hips
-  preserved_meaning: The affliction affects the loins, flanks, or hips region.
+  simplified_phrase: my midsection
+  preserved_meaning: The afflicted area is the broad region of the loins, flanks, or hips.
   reasoning_layer_used: POB lexical decision and footnote a
-  rationale: This replaces an unfamiliar body term without narrowing it to sexual organs.
+  rationale: “Midsection” is clearer today and avoids narrowing the reference to sexual organs.
+- pob_phrase: are filled with burning
+  simplified_phrase: is burning
+  preserved_meaning: The psalmist describes an intense burning bodily condition without adding sores.
+  reasoning_layer_used: POB lexical decision, revision audit, and footnote b
+  rationale: The direct wording is natural English while retaining the uncertain burning image.
 - pob_phrase: there is no soundness in my flesh
-  simplified_phrase: no part of my flesh is healthy
-  preserved_meaning: His physical flesh has no sound or healthy place.
+  simplified_phrase: my body is not healthy anywhere
+  preserved_meaning: The psalmist's physical body lacks health or soundness throughout.
   reasoning_layer_used: POB lexical and theological decisions
-  rationale: This states the bodily meaning in ordinary English while retaining “flesh.”
-interpretive_expansions:
-- pob_phrase: there is no soundness in my flesh
-  rendering: no part of my flesh is healthy
-  claim: The lack of soundness extends throughout his physical flesh.
-  evidence:
-  - 'The POB uses total negation: “there is no soundness.”'
-  - The theological decision identifies “flesh” as the literal body.
-  confidence: high
-  alternatives_preserved:
-  - there is no health in my flesh
+  rationale: This replaces an opaque idiom while keeping the reference literal and bodily.
 translation_notes:
   risk_flags:
-  - risk: “Burning sores” is more specific than the difficult Hebrew word alone.
-    mitigation: The main text follows the controlling POB choice, while footnote [a] preserves broader alternatives.
+  - risk: “Burning” represents a Hebrew word with substantial lexical uncertainty.
+    mitigation: A footnote preserves the principal alternatives without weakening the chosen reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/038/007.yaml
   source_text_sha256: 4d3b285a5c60a6b8044218d12b756f93eff28ad3150e3553c5e988402fdd2d5c
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 174cfd24f53fd33af398c2e2ba2769a9c1b04d4bd970c53ff73bc7004c7cf617
-  timestamp: '2026-07-11T20:49:37Z'
-  output_hash: e794a849b92f6d4a3b346bfce1e95c71400fa8a1abcffd877a667e2d80e50706
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: bf814fc6ae97219f5ba4933f95615a46197432a05f624e42ef060e4508c27f3b
+  timestamp: '2026-08-28T22:54:27Z'
+  output_hash: c7fd6055d77463a0ffa5acd498dff1ce3164bba3e9fa968985877743fae4442a
   usage:
-    prompt_tokens: 2947
-    completion_tokens: 659
-    total_tokens: 3606
-    reasoning_tokens: 270
+    prompt_tokens: 3052
+    completion_tokens: 743
+    total_tokens: 3795
+    reasoning_tokens: 351
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:27Z'
+  previous_text: For the area around my hips is filled with burning sores[a], and no part of my flesh is healthy.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

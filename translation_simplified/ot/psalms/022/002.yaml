@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/022/002.yaml
-  text: My God[a], I cry out by day, but you do not answer, and by night, but I have no rest.
+  text: My God, I cry out by day, but you do not answer, and by night, but there is no silence for me.[a]
   footnotes:
   - marker: a
-    text: Or, 'I have no rest.' The Hebrew literally says, 'and there is no silence for me.'
+    text: Or “I have no rest.” The Hebrew says, “there is no silence for me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,72 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 22:3 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''there is no silence for me''].'
 translation:
   language: en
-  text: My God, I cry out during the day, but you do not answer. At night, I have no quiet.[a]
+  text: My God, I cry out during the day, but you do not answer; at night, I find no quiet.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “I have no rest.” The Hebrew literally says, “there is no silence for me.”
+    text: Or “I have no rest.” The Hebrew says, “there is no silence for me.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: I cry out by day
   simplified_phrase: I cry out during the day
-  preserved_meaning: The psalmist urgently calls to God throughout the daytime.
-  reasoning_layer_used: Lexical decision for אֶקְרָא and יוֹמָם
-  rationale: “During the day” is more immediately natural while retaining the day-night contrast.
-- pob_phrase: and by night, but I have no rest
-  simplified_phrase: At night, I have no quiet
-  preserved_meaning: The psalmist experiences no silence or quiet at night.
-  reasoning_layer_used: Lexical and theological decisions for דֻמִיָּה לִי
-  rationale: “No quiet” preserves the Hebrew image more clearly than the interpretive word “rest.”
-- pob_phrase: single coordinated sentence
-  simplified_phrase: two short sentences
-  preserved_meaning: God does not answer by day, and the psalmist has no quiet at night.
-  reasoning_layer_used: Applied revision on awkward English
-  rationale: The sentence break makes the poetic day-night parallel easy to follow.
+  preserved_meaning: The psalmist urgently calls to God in the daytime.
+  reasoning_layer_used: POB lexical decisions for אֶקְרָא and יוֹמָם
+  rationale: “During the day” uses familiar English while preserving the urgent cry.
+- pob_phrase: and by night, but there is no silence for me
+  simplified_phrase: at night, I find no quiet
+  preserved_meaning: At night the psalmist still experiences no silence or quiet.
+  reasoning_layer_used: POB lexical and theological decisions for דֻמִיָּה לִי
+  rationale: “I find no quiet” makes the experience clear while retaining the Hebrew image.
 translation_notes:
   risk_flags:
-  - risk: “No quiet” may be understood as external noise rather than the psalmist’s continued lament.
-    mitigation: The footnote preserves the literal Hebrew image and the alternative “no rest.”
+  - risk: “I find no quiet” may be understood broadly as lack of rest.
+    mitigation: The footnote preserves the Hebrew wording and identifies “I have no rest” as an alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/022/002.yaml
   source_text_sha256: de792a89e505d4cb5ba3a9918d37e6139f8d7efd8ad3497560492e907fa46ff7
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a0760d3724a8265f1ba256256aebb306aa8fc21bdbb234c0935aee1cad93e054
-  timestamp: '2026-07-11T19:43:36Z'
-  output_hash: 14aed8ed069beccb78d0490eae060a1ee35adab58b6cc5ab1d7ebb906579fc62
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e614c7489977fecb7653f0b337c589e9c21e6792d367d8414592d706ace1d1d2
+  timestamp: '2026-08-28T23:35:06Z'
+  output_hash: c7038b83c16bd7f3b032dc8a1c64ad763f00e8e7e77eeee40bf3a1883301bd46
   usage:
-    prompt_tokens: 3149
-    completion_tokens: 663
-    total_tokens: 3812
-    reasoning_tokens: 262
+    prompt_tokens: 4394
+    completion_tokens: 326
+    total_tokens: 4720
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: and by night
+  rendering: I cry out at night too
+  claim: The cry stated in the daytime clause is understood as continuing at night.
+  evidence:
+  - The coordinated day-and-night clauses form a poetic parallel.
+  - POB identifies “and by night” as coordinated with “by day.”
+  confidence: high
+  alternatives_preserved:
+  - At night there is no silence for me.
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:19Z'
+  previous_text: My God, I cry out during the day, but you do not answer. At night, I have no quiet.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:06Z'
+  previous_text: My God, I cry out during the day, but you do not answer. I cry out at night too, and there is no silence for me.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: be89126dc591bac47a2eb7c5b8ab79017d0e5986e7666deff4987b12555e5ce9
+  review_summary: Revise. “During the day” is a warranted, clearer modernization. However, repeating “I cry out” at night adds a specific syntactic connection not required by the Hebrew or POB’s analysis. Rendering the final experience as “I find no quiet” is both clearer for modern readers and supported by the POB’s stated lexical alternatives, without importing a doctrinal gloss.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

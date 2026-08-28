@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/027/021.yaml
-  text: The crucible is for silver[a], and the furnace for gold, and a man is tested by his praise.
+  text: The crucible is for silver, and the furnace for gold, and a man is tested by his praise.[a]
   footnotes:
   - marker: a
-    text: Or, 'a man is tested by what he praises'; alternatively, 'a man is tested by the praise he receives.'
+    text: Or, “a man is tested by what he praises”; alternatively, “a man is tested by the praise he receives.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -40,49 +40,70 @@ translation:
 simplification_decisions:
 - pob_phrase: The crucible is for silver
   simplified_phrase: Silver is tested in a refining pot
-  preserved_meaning: The vessel is used to refine and test silver.
-  reasoning_layer_used: Lexical decision for מַצְרֵף and the proverb's refining comparison
-  rationale: “Refining pot” is clearer than the technical term “crucible,” and “is tested” makes its purpose plain.
-- pob_phrase: and the furnace for gold
-  simplified_phrase: and gold in a furnace
-  preserved_meaning: A furnace serves to refine and test gold.
-  reasoning_layer_used: Lexical decision for כּוּר and parallel structure
-  rationale: The shorter clause remains clear through its parallel with silver.
+  preserved_meaning: The vessel is used to test and refine silver.
+  reasoning_layer_used: POB lexical decision for מַצְרֵף and the proverb's testing comparison
+  rationale: “Refining pot” explains the unfamiliar vessel while preserving the refining image.
+- pob_phrase: the furnace for gold
+  simplified_phrase: gold in a furnace
+  preserved_meaning: A furnace is used to test and refine gold.
+  reasoning_layer_used: POB lexical decision for כּוּר and the parallel Hebrew structure
+  rationale: The first clause naturally supplies the repeated idea of testing.
 - pob_phrase: and a man is tested by his praise
   simplified_phrase: In the same way, a man is tested by his praise
-  preserved_meaning: Praise reveals or tests a man's character, without resolving whose praise is meant.
-  reasoning_layer_used: Theological decision preserving final-colon ambiguity
-  rationale: The added transition makes the comparison clear while the footnote preserves both main readings.
+  preserved_meaning: Praise tests a man's character without deciding whether it comes from him or is directed to him.
+  reasoning_layer_used: POB theological decision preserving the final colon's ambiguity
+  rationale: “His praise” retains both documented readings, which the note explains.
 interpretive_expansions:
-- pob_phrase: The crucible is for silver, and the furnace for gold
-  rendering: Silver is tested in a refining pot, and gold in a furnace.
-  claim: The metalworking vessels refine and test the metals placed in them.
+- pob_phrase: and a man is tested by his praise
+  rendering: In the same way, a man is tested by his praise
+  claim: The testing of metals is a comparison for the way praise tests a man.
   evidence:
-  - The lexical rationale identifies both vessels as tools for refining metals.
-  - The final clause explicitly frames the comparison in terms of testing.
+  - The three parallel Hebrew clauses place silver, gold, and a man in corresponding tests.
+  - POB renders the final relationship as testing.
   confidence: high
+  alternatives_preserved:
+  - a man is tested by what he praises
+  - a man is tested by the praise he receives
 translation_notes:
   risk_flags:
-  - risk: “His praise” remains less immediately clear because the Hebrew phrase is genuinely ambiguous.
-    mitigation: The footnote gives both principal readings without choosing between them.
+  - risk: “His praise” may remain unclear on first reading.
+    mitigation: The footnote explains both source-supported meanings.
+  - risk: “Refining pot” is less technical than “crucible.”
+    mitigation: It clearly conveys the vessel's function and follows a documented lexical alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/027/021.yaml
   source_text_sha256: a1a445f6d492eef4cd7770e147edb60420fa117ae26c512b8869921454b0f9ab
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: cdfa4c32dd6d5b2e33b9a27bf7bc3dcc2accb5145c60905461f8d598eabba4d6
-  timestamp: '2026-07-11T21:25:29Z'
-  output_hash: 847f9beec3a9dcd834ff2d24282444a8612589cee2b21cf25a55f3dab6eb0d25
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 40f7166f5eb20cc417bb81a1a97dcb2b10bc0f44e6c636708a4dafe346dc9250
+  timestamp: '2026-08-28T23:34:50Z'
+  output_hash: eab3d3dac6371f1b1403d7c021a8fad43521b67114a1aff6393c536520530774
   usage:
-    prompt_tokens: 2874
-    completion_tokens: 735
-    total_tokens: 3609
-    reasoning_tokens: 244
+    prompt_tokens: 4113
+    completion_tokens: 525
+    total_tokens: 4638
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:07:36Z'
+  previous_text: Silver is tested in a refining pot, and gold in a furnace. In the same way, a man is tested by his praise.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:50Z'
+  previous_text: Silver is tested in a refining pot, and gold in a furnace. In the same way, a man is tested by praise.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bfd8ce89576846ea1bb97b90e8513a086297bcce15ac52227c0bbb2851c106eb
+  review_summary: Revise the final phrase to retain the POB’s deliberate ambiguity. The first two clauses clearly communicate the refining image, and “In the same way” is a warranted, reader-helpful statement of the proverb’s comparison. Retaining “his praise” keeps the source-level interpretive question open while the footnote explains the two principal readings.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

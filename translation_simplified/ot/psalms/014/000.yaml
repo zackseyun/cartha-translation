@@ -11,40 +11,57 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/014/000.yaml
-  text: 'For the choir director[a]. Of David.'
+  text: For the choir director[a]. Of David.
   footnotes:
   - marker: a
     text: Or, 'For the music director' or 'For the choirmaster.'
     reason: lexical_alternative
 translation:
   language: en
-  text: 'For the choir director. Of David.[a]'
+  text: For the choir director.[a] A psalm of David.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Of David” may mean “by David” or “for David.”
+    text: Or “For the music director” or “For the choirmaster.”
     reason: lexical_alternative
+simplification_decisions:
+- pob_phrase: Of David.
+  simplified_phrase: A psalm of David.
+  preserved_meaning: The heading associates the psalm with David without specifying the exact nature of that association.
+  reasoning_layer_used: POB translation and literary context
+  rationale: Adding “A psalm” makes the heading read naturally while retaining POB’s broad “of David” wording.
+interpretive_expansions:
+- pob_phrase: Of David.
+  rendering: A psalm of David.
+  claim: The heading belongs to a psalm.
+  evidence:
+  - The record is the heading of Psalm 14.
+  confidence: high
+  alternatives_preserved:
+  - The phrase may indicate authorship, association, dedication, or collection.
 translation_notes:
-  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
+  risk_flags:
+  - risk: Readers may take “of David” as an explicit authorship claim.
+    mitigation: The rendering keeps POB’s broad relationship phrase rather than changing it to “by David.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/014/000.yaml
   source_text_sha256: 0f0b1d00aa9353625d8b860833f46d5731c4dde62b86cb527d0d3aee3cb3b31b
-  pob_commit_sha: 804a4ce86483bc97cac867d063b82609102c8015
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 68e114d23700983c93c309f979471e9610ec8c8932d21a45218524b1271540d6
-  timestamp: '2026-07-12T09:59:15Z'
-  output_hash: f16b42cd51f84ebd739fcf4676106fdc6f3eaeaad010a00678ac316893afc6c7
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 9cf57ca857a4a2c80e6250229e1cbcebcbf0c6587c022e09c26340362a507198
+  timestamp: '2026-08-28T22:54:06Z'
+  output_hash: b05ec916e4db7b3214f965c77c9dd06518321dfabd756d5bc519b266cf1cfe7c
   usage:
-    prompt_tokens: 3228
-    completion_tokens: 567
-    total_tokens: 3795
-    reasoning_tokens: 0
+    prompt_tokens: 1900
+    completion_tokens: 586
+    total_tokens: 2486
+    reasoning_tokens: 296
     estimated_cost_usd: 0.0
 status: simplified_draft
 spob_revision_history:
@@ -64,16 +81,13 @@ spob_revision_history:
   review_summary: The main text is clearly simpler while remaining warranted. “Says to himself” appropriately explains inward speech, and “People like that” makes explicit the representative singular-to-plural shift documented in the POB note. “Detestable things” and “what is good” retain the force and scope of the POB. Revision is needed only because the heading footnote adds “about David,” an alternative not supported by the supplied POB audit trail.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: superscription
-  previous_text_sha256: b5557b7fdf0c9b4643d11e3d6ee2ebfc1e5c00497cb365b8f99c441fa674e557
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-is_superscription: true
-simplification_decisions:
-- pob_phrase: For the choir director. Of David.
-  simplified_phrase: For the choir director. Of David.
-  preserved_meaning: Keeps the POB meaning while presenting the wording and note anchor naturally in the simplified reader.
-  reasoning_layer_used: POB base translation and footnote apparatus
-  rationale: Keeps the POB meaning while presenting the wording and note anchor naturally in the simplified reader.
+- timestamp: '2026-08-28T22:52:24Z'
+  previous_text: For the choir director. Of David.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:06Z'
+  previous_text: For the music director. Of David.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

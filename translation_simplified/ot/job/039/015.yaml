@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/039/015.yaml
-  text: and she forgets that a foot may crush them[b][a], and a wild animal may trample them.
+  text: and she forgets that a foot may crush them[a], and a wild animal[b] may trample them.
   footnotes:
   - marker: a
-    text: Literally, 'a foot may crush her/it ... a wild animal may trample her/it'; the feminine singular suffix likely refers collectively to the eggs or young left behind.
+    text: Literally, 'a foot may crush her/it ... a wild animal may trample her/it'; the feminine singular suffix likely refers collectively to the eggs left behind.
     reason: lexical_alternative
   - marker: b
     text: Or 'the beast of the field,' a more formal rendering of the Hebrew expression for a wild land animal.
@@ -34,41 +34,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: She forgets that they may be crushed underfoot. A wild animal may trample them.
+  text: She forgets that her eggs[a] may be crushed underfoot, and a wild animal may trample them.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew uses a singular feminine pronoun, probably referring collectively to the eggs she left behind.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: and she forgets that a foot may crush them
-  simplified_phrase: She forgets that they may be crushed underfoot.
-  preserved_meaning: She remains unaware that the eggs or young she left behind may be crushed by a foot.
-  reasoning_layer_used: POB lexical decisions for וַתִּשְׁכַּח, רֶגֶל, and תְּזוּרֶהָ
-  rationale: The passive wording is easier to read while “underfoot” preserves the concrete image.
+- pob_phrase: a foot may crush them
+  simplified_phrase: her eggs may be crushed underfoot
+  preserved_meaning: An unspecified foot may crush the eggs.
+  reasoning_layer_used: POB lexical decision and suffix footnote
+  rationale: “Crushed underfoot” keeps the concrete image in natural English.
 - pob_phrase: and a wild animal may trample them
-  simplified_phrase: A wild animal may trample them.
-  preserved_meaning: A wild land animal may tread on and harm what she left behind.
-  reasoning_layer_used: POB lexical decisions for וְחַיַּת הַשָּׂדֶה and תְּדוּשֶׁהָ
-  rationale: A separate sentence makes the second danger immediately clear.
+  simplified_phrase: and a wild animal may trample them
+  preserved_meaning: A wild land animal presents a second danger by treading on them.
+  reasoning_layer_used: POB lexical decisions and grounding review
+  rationale: The separate clause preserves the second coordinated danger.
+interpretive_expansions:
+- pob_phrase: them
+  rendering: her eggs
+  claim: The feminine singular suffix probably refers collectively to the ostrich’s eggs.
+  evidence:
+  - The POB footnote identifies the abandoned eggs as the likely referent.
+  - The immediate context describes the ostrich leaving her eggs on the ground.
+  confidence: moderate
+  alternatives_preserved:
+  - her
+  - it
+  - what she left behind
 translation_notes:
   risk_flags:
-  - risk: The pronoun “they” depends on the preceding verse for its referent.
-    mitigation: The POB likewise uses “them,” preserving the collective reference without over-resolving it.
+  - risk: Naming the eggs may seem to resolve an ambiguous feminine singular suffix.
+    mitigation: The footnote marks this identification as probable and preserves the grammatical ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/039/015.yaml
   source_text_sha256: f791ce1e2f1cc0a513989df25151194efa0fdcbbf4d7f0a4c388079e752493e3
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 378aba0c191e80a3dd11d7cecc474aad52c67dab566b71bf95d9392870a960ed
-  timestamp: '2026-07-11T19:48:00Z'
-  output_hash: 19bd9400f9afd65cd848e9e3b0011a24943edf9e0b922805eb2c6903897dbc86
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 66766307507ac9ebfdd20467d18b14fcaac2b274995650e799026ce4f55ef08e
+  timestamp: '2026-08-28T23:35:01Z'
+  output_hash: 7c29dc9ef677cf7949ccb55ca37a6354c6fc7535cac4ae4aaebf6d2bd8a90743
   usage:
-    prompt_tokens: 2458
-    completion_tokens: 630
-    total_tokens: 3088
-    reasoning_tokens: 296
+    prompt_tokens: 3417
+    completion_tokens: 465
+    total_tokens: 3882
+    reasoning_tokens: 90
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:54Z'
+  previous_text: She forgets that they may be crushed underfoot. A wild animal may trample them.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:35Z'
+  previous_text: She forgets that a foot may crush the eggs, and that a wild animal may trample them.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:01Z'
+  previous_text: She forgets that her eggs[a] may be crushed underfoot or trampled by a wild animal.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e4aab09073dc74844095e37cd646208c72c0460e30f920a3e91bf273dc5a0b85
+  review_summary: 'Naming the eggs is warranted: the immediate context describes the ostrich leaving her eggs on the ground, and the POB audit trail identifies the eggs as the likely collective referent. It provides a meaningful clarity gain without importing doctrine. Retain the source’s two coordinated dangers, however, rather than joining them with “or.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/009/007.yaml
-  text: who says to the sun[b][a], ‘Do not rise,’ and seals up the stars.
+  text: who says to the sun[b], ‘Do not rise,’[a] and seals up the stars.
   footnotes:
   - marker: a
-    text: Or, more literally, 'and it does not rise'; the Hebrew may express either the command spoken to the sun or the result of God's word.
-    reason: lexical_alternative
+    text: Or “and it does not rise.” The Hebrew may express either the commanded content of God's speech or its result.
+    reason: ambiguity
   - marker: b
-    text: Hebrew חֶרֶס here likely means 'sun' in poetic usage; elsewhere the word can refer to earthenware or clay.
+    text: Hebrew חֶרֶס here means “sun” in this context; elsewhere the word can refer to earthenware or clay.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,50 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He tells the sun, “Do not rise,” and seals up the stars.[a]
+  text: who commands the sun, “Do not rise,”[a] and seals the stars away from sight.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may also mean, “and it does not rise,” describing the result of God’s word.
-    reason: lexical_alternative
+    text: Or “and it does not rise.” The Hebrew may refer either to God’s command or to what happens as a result.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: who says to the sun
-  simplified_phrase: He tells the sun
-  preserved_meaning: God speaks directly to the sun with sovereign authority.
-  reasoning_layer_used: POB lexical decision and preceding context
-  rationale: The pronoun and direct verb make the continuing description of God easier to follow.
+- pob_phrase: says to the sun, ‘Do not rise,’
+  simplified_phrase: commands the sun, “Do not rise,”
+  preserved_meaning: God directly orders the personified sun not to rise.
+  reasoning_layer_used: POB lexical decision for וְלֹא יִזְרָח
+  rationale: “Commands” makes the force of the quoted order immediately clear.
 - pob_phrase: seals up the stars
-  simplified_phrase: seals up the stars
-  preserved_meaning: God closes off the stars from appearing while retaining the source image of sealing.
-  reasoning_layer_used: POB lexical decision for יַחְתֹּם and grounding review
-  rationale: Keeping “seals up” avoids implying that God removes or banishes the stars.
+  simplified_phrase: seals the stars away from sight
+  preserved_meaning: God closes off the stars so they do not appear.
+  reasoning_layer_used: POB lexical rationale for יַחְתֹּם and וּבְעַד
+  rationale: The wording keeps the sealing image while clarifying its effect.
+interpretive_expansions:
+- pob_phrase: seals up the stars
+  rendering: seals the stars away from sight
+  claim: The sealing prevents the stars from appearing.
+  evidence:
+  - The POB lexical rationale says the phrase depicts closing off the stars from appearing.
+  - The immediate context concerns the visibility of the sun and stars.
+  confidence: high
+  alternatives_preserved:
+  - seals up the stars
+  - shuts away the stars
 translation_notes:
   risk_flags:
-  - risk: The main text presents the Hebrew as a command rather than a result.
-    mitigation: The footnote preserves the possible resultative reading.
+  - risk: The Hebrew may describe either the command or its result.
+    mitigation: The main text follows the POB command reading, while footnote a preserves the result reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/009/007.yaml
   source_text_sha256: 0d0c4b801bf441f908df405c5a6d6827998d35d68d2b078b3ff7f987a6b33e1d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 342b107a498072cca9c3f6a554b1b8fb5b1c39930789492af256882b99bf7878
-  timestamp: '2026-07-12T09:36:13Z'
-  output_hash: a36042f4c4ef42578f38cd44912d2d2c6d381729f3c8cf5e43f288f49e6e5b71
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 6be60b796389b4ed6331c8b0129af7523522a8b18b1142e41d1ea65c2b45a344
+  timestamp: '2026-08-28T22:49:26Z'
+  output_hash: 6e9d710962d978268b971fe6c607f4ce8e5464c25628af7a033ed3af846161df
   usage:
-    prompt_tokens: 3093
-    completion_tokens: 288
-    total_tokens: 3381
-    reasoning_tokens: 0
+    prompt_tokens: 2593
+    completion_tokens: 895
+    total_tokens: 3488
+    reasoning_tokens: 481
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:13Z'
   previous_text: He tells the sun, “Do not rise,” and seals the stars away.[a]
@@ -89,3 +98,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:49:26Z'
+  previous_text: He tells the sun, “Do not rise,” and seals up the stars.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/001/015.yaml
-  text: What is crooked cannot be made straight[b][a], and what is lacking cannot be counted.
+  text: What is crooked cannot be made straight[a], and what is lacking cannot be counted[b].
   footnotes:
   - marker: a
-    text: Or 'What is twisted cannot be straightened.'
+    text: Or “What is twisted cannot be straightened.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'what is missing cannot be numbered.'
+    text: Or “what is missing cannot be numbered.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -40,36 +40,45 @@ simplification_decisions:
 - pob_phrase: What is crooked cannot be made straight
   simplified_phrase: What is crooked cannot be straightened
   preserved_meaning: What is bent or distorted cannot be made straight.
-  reasoning_layer_used: Lexical decisions for מְעֻוָּת, לֹא יוּכַל, and לִתְקֹן
-  rationale: “Straightened” keeps the crooked-and-straight image in a more concise form.
+  reasoning_layer_used: POB lexical decisions for מְעֻוָּת, לֹא יוּכַל, and לִתְקֹן
+  rationale: “Straightened” states the action directly while preserving the crooked-and-straight image and passive impossibility.
 - pob_phrase: what is lacking cannot be counted
   simplified_phrase: what is missing cannot be counted
   preserved_meaning: What is absent cannot be included in a count.
-  reasoning_layer_used: Lexical decisions for וְחֶסְרוֹן and לְהִמָּנוֹת
-  rationale: “Missing” is common English while “be counted” preserves the agent-unspecified impossibility.
+  reasoning_layer_used: POB lexical decisions for וְחֶסְרוֹן and לְהִמָּנוֹת
+  rationale: “Missing” is more immediate than “lacking” while retaining the source idea of deficiency.
 translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/001/015.yaml
   source_text_sha256: 523c15df694d993c18d00b7e93fe23c296ba1ab74ef7e7ef098ae8491fc38f12
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: c968167ce994b0d06ba49b9924a332d0117e40ef9b63d9f7e2fb85a8587f9d58
-  timestamp: '2026-07-12T09:09:17Z'
-  output_hash: fcc2ad296cba521328c3821841ca97c57fa9558f68e5a44bebb2fe7679e85ded
+  prompt_sha256: 0d0953259084f81657c1444c2436bc29d6123f5a6e6f752f1d73335dc425ec2e
+  timestamp: '2026-08-28T23:32:29Z'
+  output_hash: 5482fc9a7e06a435e40e30a4b513c107c5484567c046a0661926848748107b42
   usage:
-    prompt_tokens: 3071
-    completion_tokens: 256
-    total_tokens: 3327
+    prompt_tokens: 3203
+    completion_tokens: 262
+    total_tokens: 3465
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: cannot be
+  rendering: No one can
+  claim: The stated inability applies generally to anyone who might try.
+  evidence:
+  - The Hebrew construction expresses inability in both clauses.
+  - The verse has an abstract, proverbial form.
+  confidence: high
+  alternatives_preserved:
+  - The passive wording remains represented by the general inability.
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:09:17Z'
@@ -79,6 +88,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 899a96cc1a72af86c26cc20be252864c7ef778ef0bdf309ce3c25e5f0aa40323
   review_summary: Revise to retain the source’s agent-unspecified parallel impossibilities. “Straightened” and “missing” provide a modest, warranted readability improvement over POB while avoiding the unnecessary universal-agent expansion in “No one can.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:45Z'
+  previous_text: What is crooked cannot be straightened, and what is missing cannot be counted.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:29Z'
+  previous_text: No one can straighten what is crooked, and no one can count what is missing.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 50dbe54aecc6e4305f0901db4a6f04759c744361efd010be501b839ddf6950d4
+  review_summary: The draft improves immediacy with “straighten” and “missing,” but its repeated “No one can” is not needed for comprehension and makes an unspecified agent into the text’s stated subject. Retain the passive proverbial form, while using “straightened” and “missing” for clear modern English.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

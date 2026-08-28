@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/042/005.yaml
-  text: I had heard of you by the hearing of the ear[a], but now my eye has seen you.
+  text: I had heard of you by report[a], but now my eye has seen you.
   footnotes:
   - marker: a
-    text: Or 'by hearsay'; the Hebrew literally says 'by the hearing of the ear.'
-    reason: lexical_alternative
+    text: Literally, 'by the hearing of the ear'; that is, by what others reported.
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,54 +31,46 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I had heard about you[a], but now my eye has seen you.
+  text: Before, I had heard about you from others. But now my own eye has seen you.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew literally says “by the hearing of the ear”; it can also mean “by hearsay.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: I had heard of you by the hearing of the ear
-  simplified_phrase: I had heard about you
-  preserved_meaning: Job’s earlier knowledge of God came indirectly through what he heard.
-  reasoning_layer_used: Lexical decisions for לְשֵׁמַע אֹזֶן and שְׁמַעְתִּיךָ
-  rationale: The natural phrase “heard about you” conveys knowledge received by report, while the footnote preserves the Hebrew ear image.
+- pob_phrase: I had heard of you by report
+  simplified_phrase: Before, I had heard about you from others
+  preserved_meaning: Job’s earlier knowledge of God came indirectly through what other people reported.
+  reasoning_layer_used: POB lexical decision and footnote on לְשֵׁמַע אֹזֶן
+  rationale: The wording states the idiom’s meaning directly in familiar English.
+- pob_phrase: but now my eye has seen you
+  simplified_phrase: But now my own eye has seen you
+  preserved_meaning: Job contrasts indirect hearing with a personal and direct experience of seeing God.
+  reasoning_layer_used: POB lexical and theological decisions on וְעַתָּה, עֵינִי, and רָאָתְךָ
+  rationale: A separate sentence sharpens the contrast while retaining the singular eye and unqualified seeing.
 translation_notes:
   risk_flags:
-  - risk: Readers may assume the verse defines exactly how Job saw God.
-    mitigation: The wording leaves “has seen you” unqualified, preserving the POB’s theological ambiguity.
+  - risk: “My own eye” may sound unusual in modern English.
+    mitigation: The singular is retained to preserve the Hebrew poetic image and Job’s personal immediacy.
+  - risk: Readers may define precisely what it means that Job saw God.
+    mitigation: The text leaves “has seen you” unqualified, preserving the POB’s theological ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/042/005.yaml
   source_text_sha256: fc310cf12c3b199df8ddf0f24b46ea95a0ab74b8ecf0c9405d6e5e6dc781ec44
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 5774ade55428e45c85a1567ed52885886e9f16d8a7b5c845ff45112a01f33511
-  timestamp: '2026-07-12T09:40:44Z'
-  output_hash: 77ccc428a81093c836cbfc29bc60435849064039583612b28b81b59a8d979bb3
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d10262d20feee5c9e217c2a0fc18376057191ba7ea2070ae55501702a43ff3fb
+  timestamp: '2026-08-28T22:53:12Z'
+  output_hash: 0d723d7c748dc179baa0bc5ccac49956fb4681b43a20fc0cffa90b604ab58b0a
   usage:
-    prompt_tokens: 3252
-    completion_tokens: 252
-    total_tokens: 3504
-    reasoning_tokens: 0
+    prompt_tokens: 2540
+    completion_tokens: 618
+    total_tokens: 3158
+    reasoning_tokens: 275
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: my eye
-  rendering: my own eye
-  claim: Job emphasizes that his present seeing is personal rather than mediated by report.
-  evidence:
-  - The verse contrasts earlier hearing with seeing now.
-  - The POB rationale identifies direct encounter and individual immediacy.
-  confidence: high
-  alternatives_preserved:
-  - my eye
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:40:44Z'
   previous_text: I had heard about you[a], but now my own eye has seen you.
@@ -90,3 +82,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:05Z'
+  previous_text: I had heard about you[a], but now my eye has seen you.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:12Z'
+  previous_text: Before, I had heard about you from others. But now my eye has seen you.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

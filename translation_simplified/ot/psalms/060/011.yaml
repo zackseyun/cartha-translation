@@ -11,16 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/060/011.yaml
-  text: Give us help against the adversary[a][b][c], for the salvation of man is vain.
+  text: Give us help from distress[a], for human deliverance is futile.
   footnotes:
   - marker: a
-    text: Hebrew 'man' (אָדָם), meaning humanity in general here.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'deliverance' or 'victory' for 'salvation.'
-    reason: lexical_alternative
-  - marker: c
-    text: Or 'Give us help from distress'; the Hebrew צַר can mean either 'distress' or 'adversary/foe.'
+    text: Or “from an adversary.” The Hebrew can refer either to distress or to an adversary.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,60 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Give us help against the enemy, for rescue that people provide is futile.[a]
+  text: Help us out of our distress,[a] for human rescue is useless.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Give us help from distress.” The Hebrew can refer either to an enemy or to distress.
+    text: Or “Help us against an adversary.” The Hebrew can mean either distress or an adversary.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: against the adversary
-  simplified_phrase: against the enemy
-  preserved_meaning: God is asked for help against a personal foe in the psalm’s military setting.
-  reasoning_layer_used: POB lexical decision and immediate context
-  rationale: “Enemy” is more familiar than “adversary” while preserving the preferred personal sense.
-- pob_phrase: the salvation of man is vain
-  simplified_phrase: rescue that people provide is futile
-  preserved_meaning: Rescue supplied by human beings cannot replace God’s help in this crisis.
+- pob_phrase: Give us help from distress
+  simplified_phrase: Help us out of our distress
+  preserved_meaning: The speakers ask God to help them out of trouble.
+  reasoning_layer_used: POB lexical decisions and source audit
+  rationale: The direct request is clearer than the abstract phrase “give us help.”
+- pob_phrase: human deliverance is futile
+  simplified_phrase: human rescue is useless
+  preserved_meaning: Merely human rescue is inadequate compared with God's help in this crisis.
   reasoning_layer_used: POB lexical and theological decisions
-  rationale: The wording clearly identifies people as the rescuers and uses familiar terms for salvation and vanity.
-interpretive_expansions:
-- pob_phrase: the salvation of man
-  rendering: rescue that people provide
-  claim: The phrase means rescue supplied by human beings, contrasted with help from God.
-  evidence:
-  - The POB theological decision contrasts divine help with insufficient human rescue.
-  - The POB note says “man” refers to humanity in general.
-  - The military context supports the rescue sense of “salvation.”
-  confidence: high
-  alternatives_preserved:
-  - deliverance that people provide
-  - victory gained by people
+  rationale: “Useless” expresses futility without claiming that human rescue is literally impossible.
 translation_notes:
   risk_flags:
-  - risk: “Enemy” selects the personal sense of a Hebrew word that can also mean distress.
-    mitigation: The main text follows the POB’s context-based choice, while the footnote preserves the alternative.
+  - risk: The Hebrew may refer either to distress or to an adversary.
+    mitigation: The main text retains the POB reading, and the footnote preserves the personal alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/060/011.yaml
   source_text_sha256: 3647e546e1ec077637bfa9eff7eb594ac6cc166b6bf3bd08e7e22ed1b40a24f4
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 5ee57aaa0fe944e211eed1eff3152eaf34b2d4a38afded416176eb01caa6ba41
-  timestamp: '2026-07-12T10:00:37Z'
-  output_hash: 695a579287c15ab75050ce3554db3adc665111ce5ac89964c9f6ff91cdc4d88e
+  prompt_sha256: 64df3d20049fd4bdff691d0f3246f6e27404606beefb265a8f8da18e3047492f
+  timestamp: '2026-08-28T23:35:32Z'
+  output_hash: 7cd0de8bc6eb9912a43ed0fa18c989d328763d852e8d348dfc4f4dd1a3fd89b5
   usage:
-    prompt_tokens: 3538
-    completion_tokens: 409
-    total_tokens: 3947
-    reasoning_tokens: 0
+    prompt_tokens: 3407
+    completion_tokens: 432
+    total_tokens: 3839
+    reasoning_tokens: 147
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:37Z'
@@ -101,4 +84,19 @@ spob_revision_history:
   review_output_hash: dd93be959d5316aefc88ee80c5f988228c70592951c289c5f8bc9837ebe8cbc1
   review_summary: “Enemy” is a warranted, clearer rendering of the contextually preferred personal sense, and retaining the distress alternative is appropriate. The main clause should, however, clarify that the futile rescue is rescue supplied by people; “human rescue” leaves that relationship ambiguous. The revised wording preserves the contrast with God’s requested help without expanding it into a broader doctrine.
   schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:13Z'
+  previous_text: Give us help against the enemy, for rescue that people provide is futile.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:32Z'
+  previous_text: Help us out of our distress,[a] because human rescue cannot succeed.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 9810a7f1c0715df7d8a9b2753a1953aece6ca0ccdbbed38fed320f719d3bf76e
+  review_summary: The first clause is a warranted and clearer simplification of the plea for help. The second clause should not say “cannot succeed,” because that intensifies futility into impossibility. “Human rescue is useless” communicates the Hebrew’s force in plain language while retaining the verse’s contrast between God’s help and merely human deliverance.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

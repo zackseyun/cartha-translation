@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/029/008.yaml
-  text: Mockers inflame a city[b][a], but wise men turn away anger.
+  text: Mockers inflame a city,[a] but wise men turn away anger.
   footnotes:
   - marker: a
-    text: Or 'Mockers set a city ablaze'; the Hebrew verb is metaphorical and can evoke kindling or stirring up civic turmoil.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'the wise' instead of 'wise men'; the Hebrew is masculine plural.
+    text: Or “set a city ablaze”; the Hebrew uses a fire image for stirring up civic turmoil.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,55 +31,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Mockers fan a city into turmoil,[a] but wise men turn anger away.
+  text: Mockers make conflict flare up in a city,[a] but wise men turn anger away.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “set a city ablaze”; the Hebrew uses a fire-like image for stirring up public disorder.
+    text: Or “set a city ablaze”; the Hebrew uses a fire image for stirring up turmoil in the city.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: inflame a city
-  simplified_phrase: fan a city into turmoil
-  preserved_meaning: Mockers provoke public disorder while the image of kindling a fire remains present.
-  reasoning_layer_used: POB lexical decision for יָפִיחוּ and footnote a
-  rationale: “Fan ... into turmoil” makes the civic effect clear without losing the fire-like image.
+  simplified_phrase: make conflict flare up in a city
+  preserved_meaning: Mockers provoke civic turmoil, while “flare up” preserves the Hebrew fire image.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: This wording makes the implied conflict clear without adding a claim about its extent.
 - pob_phrase: wise men turn away anger
   simplified_phrase: wise men turn anger away
-  preserved_meaning: Wise men avert anger rather than adding to the unrest.
-  reasoning_layer_used: POB lexical decisions for חֲכָמִים, יָשִׁיבוּ, and אָף
-  rationale: The reordered words sound more natural while preserving the source-driven wording and masculine form.
+  preserved_meaning: Wise men avert anger rather than intensifying it.
+  reasoning_layer_used: POB lexical decision
+  rationale: The reordered phrase is more natural English and retains the turning image.
 interpretive_expansions:
 - pob_phrase: inflame a city
-  rendering: fan a city into turmoil
-  claim: The city is stirred into public disorder rather than necessarily burned with literal fire.
+  rendering: make conflict flare up in a city
+  claim: The city is inflamed through civic conflict, not necessarily literal fire.
   evidence:
-  - The POB rationale identifies civic unrest as the contextual sense.
-  - POB footnote a says the metaphor can evoke kindling or stirring up civic turmoil.
+  - The POB rationale identifies the verb as a metaphor for provoking civic unrest.
+  - The POB footnote explains the fire image as stirring up civic turmoil.
   confidence: high
   alternatives_preserved:
   - set a city ablaze
 translation_notes:
   risk_flags:
-  - risk: “Turmoil” makes the implied civic disorder explicit.
-    mitigation: “Fan” preserves the source’s fire-like metaphor, and the footnote retains the more literal alternative.
+  - risk: “Conflict” makes the implied civic turmoil explicit.
+    mitigation: The POB rationale and footnote directly support this contextual meaning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/029/008.yaml
   source_text_sha256: 325b1dba00ae0272446678c38c6d3ddc55d74835af98660e06815efd5e7f3b69
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: af86a1c88fcf1ef1340bd933d6032600770b959f6a85e84eb2196718f572149e
-  timestamp: '2026-07-11T21:20:48Z'
-  output_hash: bdb2b34867560755eb6e28037cd203a38bc91cd5b9fb7222754b6e929f749991
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 76046409c0f3203c2197689cfead9f311817c20c005b058f76e8191f6efed000
+  timestamp: '2026-08-28T23:34:51Z'
+  output_hash: ef736334ac41783009326be3e20087314a7d3754097ad41664ecae15e5ecf017
   usage:
-    prompt_tokens: 2394
-    completion_tokens: 698
-    total_tokens: 3092
-    reasoning_tokens: 283
+    prompt_tokens: 3393
+    completion_tokens: 511
+    total_tokens: 3904
+    reasoning_tokens: 135
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:08:16Z'
+  previous_text: Mockers fan a city into turmoil,[a] but wise men turn anger away.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:51Z'
+  previous_text: Mockers make conflict flare up across a city,[a] but wise men turn anger away.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e73c0a140606824da6de9cf3e0fecdfb2496293f3d91598366d9bdd87465c5df
+  review_summary: The clarification of “inflame a city” as causing conflict to flare up is warranted by the POB lexical rationale and footnote, and it makes the intended metaphor clearer without imposing doctrine. Revise only to remove “across,” which adds an unsupported claim about the extent of the unrest. The second clause remains faithful and understandable.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -14,50 +14,55 @@ base_translation:
   text: Of David.
 translation:
   language: en
-  text: A psalm of David.
+  text: Of David.
   philosophy: optimal-equivalence
-simplification_decisions:
-- pob_phrase: Of David
-  simplified_phrase: A psalm of David
-  preserved_meaning: The heading associates the psalm with David.
-  reasoning_layer_used: POB heading and source context
-  rationale: The added genre word makes the brief heading natural and clear to modern readers.
-interpretive_expansions:
-- pob_phrase: Of David
-  rendering: A psalm of David
-  claim: The heading identifies the work as a psalm associated with David.
-  evidence:
-  - The phrase appears as the heading of a psalm in the Psalter.
-  confidence: high
-  alternatives_preserved:
-  - Of David
 translation_notes:
-  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
+  risk_flags:
+  - risk: The Hebrew heading may indicate authorship or a broader association with David.
+    mitigation: Retaining “Of David” preserves the POB wording and does not narrow the heading to authorship.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/037/000.yaml
   source_text_sha256: 267c118f074486beda737336544416b98f418d5990484bd146ff0f5c2188d636
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: efc3160c55bc0bde72612492d7bcc221ad037c51356a9aea343f71983d1050c6
-  timestamp: '2026-07-11T20:46:16Z'
-  output_hash: 05e7f5e5f93ff27f62886306cefea8c9e4b62047cd30ec7bd9b4baa63ac8dd44
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b5665b704b09eb0cd3b51417e5755400a5d1307a77b761a2b2e61b571c44feaa
+  timestamp: '2026-08-28T23:35:13Z'
+  output_hash: b4d2fff8dc186f6ddff98f302eb055d314dacee61a7c06a53fc1a90928121df2
   usage:
-    prompt_tokens: 2042
-    completion_tokens: 802
-    total_tokens: 2844
-    reasoning_tokens: 419
+    prompt_tokens: 2244
+    completion_tokens: 97
+    total_tokens: 2341
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: superscription
-  previous_text_sha256: a58a1278f0287aa2a277003909c63ebfef3bdd4b10137adcd1e42a7d9db86c06
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-is_superscription: true
+simplification_decisions:
+- pob_phrase: Of David.
+  simplified_phrase: By David.
+  preserved_meaning: The heading connects the psalm with David and most naturally presents him as its author.
+  reasoning_layer_used: source heading and POB base text
+  rationale: “By David” expresses the heading’s likely sense in ordinary English.
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:40Z'
+  previous_text: A psalm of David.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:13Z'
+  previous_text: By David.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 3d06ce1bfe1aba310755abb0681148d3c3f587c6edb496fdaa17f8c54026445a
+  review_summary: Revise. “By David” is more idiomatic in one respect, but it narrows an intentionally compact and potentially broader Hebrew heading to authorship. Since the supplied basis does not establish that narrowing, retain the POB heading rather than state one possible sense as the text’s meaning.
+  schema_repairs:
+  - restored simplification_decisions as an array from the prior draft
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

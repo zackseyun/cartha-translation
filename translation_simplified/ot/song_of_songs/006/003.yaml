@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/006/003.yaml
-  text: I am my beloved's[a], and my beloved is mine, who grazes among the lilies.
+  text: I am my beloved's, and my beloved is mine; he grazes[a] among the lilies.
   footnotes:
   - marker: a
-    text: Or 'he who shepherds among the lilies.' The Hebrew participle can denote grazing, pasturing, or shepherding.
+    text: Or 'he shepherds' or 'he pastures.' The Hebrew participle can describe grazing, pasturing, or shepherding.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,51 +31,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Song of Songs 6:3 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''he who grazes''].'
 translation:
   language: en
-  text: I belong to my beloved, and my beloved belongs to me. He shepherds among the lilies.[a]
+  text: I belong to my beloved, and my beloved belongs to me. He tends his flock[a] among the lilies.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “He grazes among the lilies” or “He pastures among the lilies.” The Hebrew can refer to grazing, pasturing, or shepherding.
+    text: Or “he grazes” or “he pastures”; the Hebrew verb can carry any of these pastoral senses.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: I am my beloved's
-  simplified_phrase: I belong to my beloved
-  preserved_meaning: She declares that she belongs to her beloved.
-  reasoning_layer_used: POB lexical decision for לְדוֹדִי
-  rationale: This states the Hebrew belonging idiom clearly in modern English.
-- pob_phrase: and my beloved is mine, who grazes among the lilies
-  simplified_phrase: and my beloved belongs to me. He shepherds among the lilies.
-  preserved_meaning: The reciprocal belonging and pastoral lily image remain distinct.
-  reasoning_layer_used: POB lexical decisions for וְדוֹדִי לִי, הָרֹעֶה, and בַּשׁוֹשַׁנִּים
-  rationale: Two sentences clarify the reference, while “shepherds” avoids suggesting that the beloved eats grass.
+- pob_phrase: I am my beloved's, and my beloved is mine
+  simplified_phrase: I belong to my beloved, and my beloved belongs to me
+  preserved_meaning: The lovers declare that they belong to each other.
+  reasoning_layer_used: POB lexical decisions for לְדוֹדִי and וְדוֹדִי לִי
+  rationale: Direct verbal clauses clarify the reciprocal relationship while retaining “beloved.”
+- pob_phrase: he grazes among the lilies
+  simplified_phrase: He tends his flock among the lilies
+  preserved_meaning: The beloved performs pastoral work in a setting of lilies.
+  reasoning_layer_used: POB lexical decision for הָרֹעֶה and independent grounding review
+  rationale: “Tends his flock” avoids suggesting that the beloved himself eats grass.
+interpretive_expansions:
+- pob_phrase: he grazes
+  rendering: He tends his flock
+  claim: The beloved is tending animals rather than eating grass himself.
+  evidence:
+  - The POB lexical audit lists “who feeds his flock” as a valid rendering.
+  - The Hebrew participle permits a shepherding or pasturing sense.
+  confidence: high
+  alternatives_preserved:
+  - he grazes
+  - he pastures
 translation_notes:
   risk_flags:
-  - risk: “Belongs to” could suggest ownership rather than poetic devotion.
-    mitigation: The reciprocal wording presents mutual loving commitment rather than one-sided possession.
-  - risk: “Shepherds” selects one sense of a Hebrew term with several pastoral meanings.
-    mitigation: The footnote preserves the alternatives “grazes” and “pastures.”
+  - risk: The main text supplies an implied flock not explicit in the Hebrew wording.
+    mitigation: The lexical audit supports this pastoral sense, and the footnote preserves less explicit alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/006/003.yaml
   source_text_sha256: ab47f0a64a8236b0430eb9dab4f2ddf3348975774f2103a893d05b21c1eb8eb5
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 3760346f28fdf3ab9a702082a1d3e360bfbba346292797414c349a36d5f5fab3
-  timestamp: '2026-07-12T10:04:20Z'
-  output_hash: cd7335340b01490d4207f8ad1461cbbcebfad1ec9d28735206c0ca3f49a4573a
+  prompt_sha256: cab855a5df9b93d17fd2bdbbc66ecbded5a1ee63eeb5ccb5637a0160c81a36e9
+  timestamp: '2026-08-28T23:33:40Z'
+  output_hash: 8eff1c637c8eb99f23b81ffdca5cb0753cba1ca2e9df76333823669cba3b5ff6
   usage:
-    prompt_tokens: 3610
-    completion_tokens: 495
-    total_tokens: 4105
-    reasoning_tokens: 104
+    prompt_tokens: 3679
+    completion_tokens: 529
+    total_tokens: 4208
+    reasoning_tokens: 110
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:04:20Z'
@@ -87,4 +95,18 @@ spob_revision_history:
   review_summary: The mutual-belonging wording is a warranted and clearer rendering of the Hebrew possession idiom, and separating the participial description into a second sentence appropriately makes its reference to the beloved explicit. No allegorical or doctrinal expansion has been introduced. However, “He grazes” is not sufficiently clear in contemporary English and can produce the unintended picture of the man eating grass. “He shepherds” conveys the established pastoral sense without adding an explicit flock; the footnote should preserve the lexical alternatives.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:12:00Z'
+  previous_text: I belong to my beloved, and my beloved belongs to me. He shepherds among the lilies.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:40Z'
+  previous_text: I belong to my beloved, and my beloved belongs to me. He grazes[a] among the lilies.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d0448268ea53ce686743be342ab11f03d5c98d1c41e2d1de1219a4e4e2d9fc90
+  review_summary: The reciprocal belonging clauses are a faithful and substantially clearer rendering of the POB’s poetic possessives. No allegorical or doctrinal expansion has been introduced. Revision is needed because the retained main-text phrase “He grazes” is not clear modern English for the pastoral action and can convey the wrong image. “He tends his flock” makes the lexically supported pastoral sense understandable while the footnote preserves the relevant alternatives.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/030/010.yaml
-  text: Do not slander a slave to his master[a], lest he curse you and you become guilty.
+  text: Do not slander a servant to his master[a], lest he curse you and you become guilty.
   footnotes:
   - marker: a
     text: Or 'servant' for 'slave' (Hebrew עֶבֶד); 'slave' is used here to reflect the bonded social status implied by the term in this context.
@@ -31,45 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not slander a servant[a] to his master. If you do, he may curse you, and you will become guilty.
+  text: Do not slander a slave to his master. Otherwise, the slave may curse you, and you will become guilty.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “servant.” The Hebrew term here points to a bonded subordinate whose vulnerable social position is important to the proverb.
+    text: The Hebrew word may also mean “servant,” but “slave” reflects the bonded and vulnerable status in this context.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: lest he curse you and you become guilty
-  simplified_phrase: If you do, he may curse you, and you will become guilty
-  preserved_meaning: Slandering the slave may lead him to curse the accuser, who then incurs guilt.
-  reasoning_layer_used: lexical decisions for פֶּן, יְקַלֶּלְךָ, and וְאָשָׁמְתָּ
-  rationale: An explicit conditional makes the warning sequence clear in modern English.
+  simplified_phrase: Otherwise, the slave may curse you, and you will become guilty.
+  preserved_meaning: The slander may bring a curse and make the slanderer guilty.
+  reasoning_layer_used: Lexical decisions for פֶּן, יְקַלֶּלְךָ, and וְאָשָׁמְתָּ
+  rationale: A new sentence and “otherwise” express the warning in natural modern English.
+- pob_phrase: servant
+  simplified_phrase: slave
+  preserved_meaning: The person is a bonded subordinate whose vulnerable status matters in the proverb.
+  reasoning_layer_used: Lexical decision for עֶבֶד
+  rationale: “Slave” follows the audited source-driven choice while the footnote preserves “servant” as an alternative.
+interpretive_expansions:
+- pob_phrase: he curse you
+  rendering: the slave may curse you
+  claim: The slave is the likely person who responds by cursing the slanderer.
+  evidence:
+  - The warning follows the command not to slander the slave.
+  - The POB reasoning emphasizes the accused person’s social vulnerability.
+  confidence: high
+  alternatives_preserved:
+  - The Hebrew pronoun itself is masculine and does not repeat the noun.
 translation_notes:
   risk_flags:
-  - risk: Modern readers may associate “slave” only with later forms of slavery.
-    mitigation: The footnote gives the lexical alternative and explains the bonded, vulnerable status relevant here.
+  - risk: Modern readers may hear “curse” as mere insulting speech.
+    mitigation: The wording retains “curse” because the audited lexical decision identifies an invocation of harm, not merely an insult.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/030/010.yaml
   source_text_sha256: ba1a8df51ee6937ea28a5d608bf09e65a337037b2890d0f781fa14e88861a351
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: c019ead474114b13ddc2a4fc102c5eda7ee6110b7d01c9adfd028f12126fd0b6
-  timestamp: '2026-07-12T09:53:22Z'
-  output_hash: a9fc6dc85f6ee05199b304a4c82ab17cd3329b6e24909be3bfb404c8852ca33a
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: f2c2c6dd9fd0b0c7ea960d1af7bfed26802b3f94489397cd55dcc56c527c74f6
+  timestamp: '2026-08-28T23:03:24Z'
+  output_hash: 4ebe9bc52bce39afee82e6cfd69db2ae1f144cd4a909816550f92286b13a9070
   usage:
-    prompt_tokens: 3115
-    completion_tokens: 266
-    total_tokens: 3381
-    reasoning_tokens: 0
+    prompt_tokens: 2347
+    completion_tokens: 800
+    total_tokens: 3147
+    reasoning_tokens: 360
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:22Z'
   previous_text: Do not slander a slave[a] when speaking to his master. Otherwise, he may curse you, and you will become guilty.
@@ -81,3 +94,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:24Z'
+  previous_text: Do not slander a servant[a] to his master. If you do, he may curse you, and you will become guilty.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

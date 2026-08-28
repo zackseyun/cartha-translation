@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/023/002.yaml
-  text: In grassy pastures he makes me lie down[a]; beside restful waters he leads me.
+  text: In grassy pastures he makes me lie down; beside quiet waters[a] he leads me.
   footnotes:
   - marker: a
-    text: Or 'still waters' or 'quiet waters.' The Hebrew expression emphasizes waters associated with rest or repose.
+    text: Literally “waters of rest”; or “still waters.” The expression depicts waters associated with rest or repose.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He makes me lie down in grassy pastures; he leads me beside restful waters.[a]
+  text: He has me lie down in pastures covered with fresh grass. He leads me beside quiet waters.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or 'still waters' or 'quiet waters.' The Hebrew expression emphasizes waters associated with rest or repose.
+    text: Literally “waters of rest”; another possible translation is “still waters.” The phrase describes waters associated with rest or repose.
     reason: lexical_alternative
 simplification_decisions:
-- simplified_phrase: He makes me lie down in grassy pastures; he leads me beside restful waters.[a]
-  preserved_meaning: Reordered the clauses slightly to use standard English subject-verb-prepositional phrase order, which flows more naturally for modern readers while maintaining the exact meaning and vocabulary of POB.
-  reasoning_layer_used: POB audit trail
-  rationale: Reordered the clauses slightly to use standard English subject-verb-prepositional phrase order, which flows more naturally for modern readers while maintaining the exact meaning and vocabulary of POB.
-retained_terms:
-- term: grassy pastures
-  reason: Retained to preserve POB's source-grounded terminology.
-- term: restful waters
-  reason: Retained to preserve POB's source-grounded terminology.
+- pob_phrase: In grassy pastures
+  simplified_phrase: in pastures covered with fresh grass
+  preserved_meaning: The setting remains a pasture with fresh vegetation where a flock can rest and feed.
+  reasoning_layer_used: POB lexical decisions for נְאוֹת and דֶּשֶׁא
+  rationale: The fuller wording makes the pastoral scene immediately clear.
+- pob_phrase: he makes me lie down
+  simplified_phrase: He has me lie down
+  preserved_meaning: The shepherd causes the speaker to lie down rather than merely allowing it.
+  reasoning_layer_used: POB lexical decision for יַרְבִּיצֵנִי
+  rationale: “Has me lie down” retains the causative image in natural modern English.
+interpretive_expansions:
+- pob_phrase: grassy
+  rendering: covered with fresh grass
+  claim: The pasture contains fresh vegetation suitable for a flock.
+  evidence:
+  - The lexical rationale identifies דֶּשֶׁא as fresh grass or vegetation.
+  - The immediate context portrays the LORD caring for the speaker as a shepherd cares for a sheep.
+  confidence: high
+  alternatives_preserved:
+  - grassy
+  - green
 translation_notes:
-  source_alignment_notes: The Hebrew word order was adapted to natural English syntax. The footnote marker [a] was attached to 'restful waters' (מְנֻח֣וֹת) to align with the source lexical decision, correcting the misplaced marker in the POB source draft.
-  readability_notes:
-  - By changing 'In grassy pastures he makes me lie down' to 'He makes me lie down in grassy pastures', the text reads more smoothly and sounds less archaic or formal, while preserving the gravity of the original imagery.
-  compression_notes:
-  - No semantic information was compressed or omitted. The verse's meaning is fully retained.
   risk_flags:
-  - risk: None. Placing 'still waters' in the footnote mitigates the risk of confusing readers who expect the traditional KJV phrasing, while introducing them to the more accurate 'restful waters' in the main text.
-    mitigation: Flag retained for reviewer attention.
+  - risk: “Quiet waters” could suggest completely motionless water rather than water associated with repose.
+    mitigation: The footnote preserves “waters of rest” and the possible rendering “still waters.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/023/002.yaml
   source_text_sha256: 6d92fa24910a0f85dc57ef63b5b04fadb9535e66e6a580caebd875fad82e0505
-  pob_commit_sha: 465f6f3c8ffb2f32d84d934e61d9ef69e930da81
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
-  model_id: gemini-3.5-flash
-  model_version: gemini-3.5-flash
-  azure_deployment: vertex:global
-  prompt_id: simplified_pob_draft_v1
-  prompt_sha256: a00966fb0b4cb17da1a436ba6b8f8e038ae95f455bda9413fc66b35556288eaf
-  timestamp: '2026-05-27T22:46:55Z'
-  output_hash: e694042a5b4b86a9303d51ea34aa0eb693363914b66ce0ab1f602c7e6fe26ddb
+  model_id: gpt-5.6-sol
+  model_version: gpt-5.6-sol-2026-07-09
+  azure_deployment: gpt-5-6-sol-atlas
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c30fa7e78820e7ef4e16cfee736d4cd788fc69f4cc8fa374eb75d0aa8fa8b920
+  timestamp: '2026-08-28T23:35:07Z'
+  output_hash: 4b3a3ff6244e122244587cbb85260f5e8bc43f029c07c0b5e9e5c9ee128d309e
   usage:
-    prompt_tokens: 1839
-    completion_tokens: 560
-    total_tokens: 5051
-    reasoning_tokens: 0
+    prompt_tokens: 3710
+    completion_tokens: 440
+    total_tokens: 4150
+    reasoning_tokens: 26
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:35Z'
+  previous_text: He makes me lie down in grassy pastures; he leads me beside restful waters.[a]
+  previous_model: gemini-3.5-flash
+  previous_prompt_id: simplified_pob_draft_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:07Z'
+  previous_text: He has me lie down in pastures covered with fresh grass. He leads me beside quiet waters.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 7ca07bf3a736cf3a069df78d67ce2784ed27cfea38cee47dec7a853808902fc6
+  review_summary: The main text is a warranted and meaningfully clearer rendering. “Pastures covered with fresh grass” explicitly communicates the fresh-vegetation image supported by דֶּשֶׁא and retains the pastoral setting of נְאוֹת; “has me lie down” retains the causative sense of the verb. “Quiet waters” remains supported by the POB audit trail, with the literal/rest-related sense appropriately retained in a footnote. Revise the footnote only to avoid extending the lexical explanation from “rest or repose” to the broader idea of “peace.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/007/008.yaml
-  text: This stature of yours is like a palm tree[a], and your breasts are like clusters of fruit.
+  text: Your stature is like a palm tree, and your breasts are like clusters[a].
   footnotes:
   - marker: a
-    text: Or 'like grape clusters.' The Hebrew 'clusters' often refers to clusters of grapes, though the noun itself is not explicitly qualified here.
-    reason: lexical_alternative
+    text: The Hebrew does not specify what kind of clusters; the next verse compares them to clusters of the vine.
+    reason: context_note
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,40 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Your figure is like a palm tree, and your breasts are like clusters of fruit.[a]
+  text: Your stature is like a palm tree, and your breasts are like clusters.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “like grape clusters.” The Hebrew says “clusters” without naming the fruit, though it often refers to grapes.
-    reason: lexical_alternative
+    text: The Hebrew does not say what kind of clusters; the next verse compares them to clusters of grapes.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: This stature of yours
-  simplified_phrase: Your figure
-  preserved_meaning: The comparison concerns her overall bodily form, not only her measured height.
-  reasoning_layer_used: POB lexical decision for קוֹמָתֵךְ
-  rationale: “Figure” is clearer in ordinary English while preserving the reference to her overall form.
+- pob_phrase: the next verse compares them to clusters of the vine
+  simplified_phrase: the next verse compares them to clusters of grapes
+  preserved_meaning: The note identifies the vine's clusters as grapes without adding grapes to this verse.
+  reasoning_layer_used: POB footnote and immediate context
+  rationale: “Clusters of grapes” is clearer to common readers than “clusters of the vine.”
 translation_notes:
   risk_flags:
-  - risk: “Figure” may give less emphasis to height than “stature.”
-    mitigation: The palm-tree comparison preserves the image of her tall, graceful form.
+  - risk: “Stature” may be less familiar than “figure.”
+    mitigation: It preserves both her bodily form and upright height, as required by the lexical review.
+  - risk: Readers may assume this verse itself specifies grapes.
+    mitigation: The footnote states that the Hebrew leaves the kind of clusters unspecified here.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/007/008.yaml
   source_text_sha256: f4fd1fd8f99e9a6892497e8d809f087ceef4554f36aba9f9ede327c5786e9c21
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 153909acba216ecc1dad1c7151667505fce9dc02f4c2d74a865b8d3b973aa174
-  timestamp: '2026-07-11T21:28:58Z'
-  output_hash: e443f68f5fd696e44a5e0b6e42aefe079392ba0221a5fd72c3ad000eb198930f
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9d83337432525d3952bf199ae16c2e01611f61015ebafe1a723c095b831a6bee
+  timestamp: '2026-08-28T23:33:43Z'
+  output_hash: 1e2accb6a6ee8855d4cb095bc9e471ce3422195d8676d93a4b4b570e3468d605
   usage:
-    prompt_tokens: 2334
-    completion_tokens: 464
-    total_tokens: 2798
-    reasoning_tokens: 235
+    prompt_tokens: 3165
+    completion_tokens: 539
+    total_tokens: 3704
+    reasoning_tokens: 279
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:10:06Z'
+  previous_text: Your figure is like a palm tree, and your breasts are like clusters of fruit.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:43Z'
+  previous_text: Your figure is like a palm tree, and your breasts are like clusters.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 1c518b8448093e350a3c4391869faf0033c53dc763a9dde4beb2cbe521fd5ad3
+  review_summary: The draft preserves the poem’s direct erotic imagery and correctly retains the unspecified “clusters,” with a warranted contextual footnote. However, replacing “stature” with “figure” reduces the source term’s height/upright-form component and is not a clear enough improvement over the POB to justify that loss. Retain “stature,” which is already understandable modern English and best reflects the lexical and contextual evidence.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

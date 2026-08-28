@@ -31,43 +31,58 @@ base_translation:
     changes_summary: Reordered the opening for more natural English and closer alignment with the Hebrew/Greek word order. Kept the plural object throughout ('our steps' ... 'us') for consistency, replacing the draft's singular 'me'.
 translation:
   language: en
-  text: At every step they close in around me.[a] They fix their eyes on throwing me to the ground.
+  text: Now, wherever I step, they close in around me.[a] They keep their eyes fixed on me, intending to bring me down to the ground.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew shifts from “our steps” to “me”; “at every step” makes that setting clear without mixing pronouns.
+    text: The Hebrew begins with “our steps” but then says “they surround me”; the main text expresses this shift as a setting.
     reason: textual_variant
 simplification_decisions:
-- pob_phrase: At every step they now surround me; they fix their eyes to bring me down to the ground.
-  simplified_phrase: At every step they close in around me. They fix their eyes on throwing me to the ground.
-  preserved_meaning: Preserved the Hebrew's singular object while explaining the plural-to-singular shift.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Preserved the Hebrew's singular object while explaining the plural-to-singular shift.
-interpretive_expansions: []
+- pob_phrase: At every step they now surround me
+  simplified_phrase: Now, wherever I step, they close in around me
+  preserved_meaning: The enemies presently hem in the speaker at every step.
+  reasoning_layer_used: Source audit and lexical decisions for אַשֻּׁרֵינוּ, עַתָּה, and סבבוני
+  rationale: The rewrite makes the setting natural while retaining the singular “me.”
+- pob_phrase: they fix their eyes to bring me down to the ground
+  simplified_phrase: They keep their eyes fixed on me, intending to bring me down to the ground
+  preserved_meaning: Their hostile gaze is directed toward bringing the speaker down physically.
+  reasoning_layer_used: Lexical decisions for עיניהם, ישיתו, לנטות, and בארץ
+  rationale: The added object and purpose clause clarify the hostile gaze without losing the bodily image.
+interpretive_expansions:
+- pob_phrase: they fix their eyes to bring me down
+  rendering: They keep their eyes fixed on me, intending to bring me down
+  claim: The enemies direct their hostile attention toward the speaker with the purpose of bringing him down.
+  evidence:
+  - The possessive “their eyes” and verb “fix” describe sustained hostile attention.
+  - The infinitive “to bring down” expresses the aim of their gaze in this context.
+  confidence: high
+  alternatives_preserved:
+  - They fix their eyes to bring me down.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: “Wherever I step” does not reproduce the Hebrew phrase “our steps” word for word.
+    mitigation: The footnote records the Hebrew pronoun shift, while the main text follows POB’s audited idiomatic solution.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/017/011.yaml
   source_text_sha256: be7aa3074016f67addd2cdfa256563dae5644931f7ae003138ac0a71c4776c10
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: f6df8e75b4db19e35df610c60390f37889a309645cb993dee9fd2768638ef784
-  timestamp: '2026-07-12T09:59:15Z'
-  output_hash: 655bd47cb8b3fd68f5d39370b25561a09f54a24690eed41f0cd3ce873f5f4676
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 21c81b7a547141f10e4ce038e05648c6b26b5a8561acb3b9e6c2e45b6ed6ec9a
+  timestamp: '2026-08-28T22:54:20Z'
+  output_hash: a60d4b6d53c6249579d94fa38036c15eadf75e552ba1db9950d9d229703724cd
   usage:
-    prompt_tokens: 3799
-    completion_tokens: 480
-    total_tokens: 4279
-    reasoning_tokens: 0
+    prompt_tokens: 2918
+    completion_tokens: 1086
+    total_tokens: 4004
+    reasoning_tokens: 593
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:15Z'
   previous_text: They have now closed in around us, hemming in every step we take. They fix their eyes on throwing us to the ground.[a]
@@ -84,3 +99,8 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Preserved the Hebrew's singular object while explaining the plural-to-singular shift.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:54:20Z'
+  previous_text: At every step they close in around me.[a] They fix their eyes on throwing me to the ground.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

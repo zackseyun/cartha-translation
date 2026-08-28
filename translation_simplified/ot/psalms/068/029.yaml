@@ -31,40 +31,48 @@ base_translation:
     changes_summary: Changed 'at Jerusalem' to 'above Jerusalem' to more closely reflect עַל ('upon/above') while keeping the translation natural and formal.
 translation:
   language: en
-  text: Because of your temple at Jerusalem, kings will bring you tribute.[a]
+  text: Because of your temple in Jerusalem, kings will bring you tribute.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “gifts” or “presents.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Because of your temple at Jerusalem, kings will bring tribute to you.
-  simplified_phrase: Because of your temple at Jerusalem, kings will bring you tribute.
-  preserved_meaning: Removed the misleading idea that kings take tribute out from the temple.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Removed the misleading idea that kings take tribute out from the temple.
-interpretive_expansions: []
+- pob_phrase: your temple at Jerusalem
+  simplified_phrase: your temple in Jerusalem
+  preserved_meaning: God’s temple is located in Jerusalem.
+  reasoning_layer_used: POB lexical decision for עַל יְרוּשָׁלִָם and the applied awkward-English revision
+  rationale: “In Jerusalem” expresses the location more naturally for modern readers.
+- pob_phrase: will bring tribute to you
+  simplified_phrase: will bring you tribute
+  preserved_meaning: Kings will present tribute to God as the honored recipient.
+  reasoning_layer_used: POB lexical decisions for לְךָ, יוֹבִילוּ, and שַׁי
+  rationale: The indirect-object form is clearer English while retaining the royal tribute image.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: Readers may take “because of” as explaining more than the Hebrew securely establishes.
+    mitigation: The wording follows the POB’s audited causal reading without adding a specific motive.
+  - risk: “Tribute” may suggest only a compulsory tax.
+    mitigation: The footnote preserves the broader alternatives “gifts” and “presents.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/068/029.yaml
   source_text_sha256: d170604d440bbad7caa98a7be47af2c5a58f1cb4c74e6fb97ab47b00e130c53a
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 3113207eed3ef4c42958091a7713354b73869efb2b932cc44d5dde2c20b47c35
-  timestamp: '2026-07-11T20:50:27Z'
-  output_hash: aa2cda678e5b10206b07c8d795947e214bd5fc18934aa2fe64c62d2822a404c8
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d1f91684b556d5506fe73b229de2fdae3417d7dd3d49f3599e5f8f46a6673429
+  timestamp: '2026-08-28T22:55:01Z'
+  output_hash: dcb17054010701c9d95f839cc6bdd9bb026de27959c2498da5d406c0483ce98d
   usage:
-    prompt_tokens: 2911
-    completion_tokens: 950
-    total_tokens: 3861
-    reasoning_tokens: 510
+    prompt_tokens: 2920
+    completion_tokens: 465
+    total_tokens: 3385
+    reasoning_tokens: 132
     estimated_cost_usd: 0.0
 status: simplified_draft
 spob_revision_history:
@@ -74,3 +82,8 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Removed the misleading idea that kings take tribute out from the temple.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:55:01Z'
+  previous_text: Because of your temple at Jerusalem, kings will bring you tribute.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

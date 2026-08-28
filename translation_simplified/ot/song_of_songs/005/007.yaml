@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/005/007.yaml
-  text: The watchmen who go about the city found me[a]; they struck me, they wounded me[b]; the keepers of the walls took my cloak from me.
+  text: The watchmen who patrol the city[a] found me; they struck me, they wounded me; the guards on the walls took my cloak from me.[b]
   footnotes:
   - marker: a
-    text: Or 'who patrol the city.' The Hebrew participle means 'going around' or 'circling,' and in context likely refers to making rounds as city watchmen.
-    reason: lexical_alternative
+    text: Literally, “who go around the city” or “who make their rounds in the city.”
+    reason: literal_form
   - marker: b
-    text: Or 'took away my veil' or 'lifted my shawl off me.' The Hebrew רְדִיד refers to an outer wrap or covering garment.
+    text: Or “took away my veil” or “lifted my shawl off me.” The Hebrew רְדִיד refers to an outer wrap or covering garment.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The city watchmen found me while making their rounds. They struck me and wounded me. The guards on the walls took my cloak away from me.[a]
+  text: The city watchmen found me while making their rounds. They struck me and wounded me. The guards on the walls took my outer cloak from me.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may refer to a cloak, shawl, or veil-like outer covering.
+    text: The Hebrew word may also refer to a veil or shawl—an outer covering garment.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: The watchmen who go about the city found me
+- pob_phrase: The watchmen who patrol the city found me
   simplified_phrase: The city watchmen found me while making their rounds
-  preserved_meaning: The watchmen encountered her as they went around the city.
-  reasoning_layer_used: Lexical decision for הַסֹּבְבִים בָּעִיר
-  rationale: “Making their rounds” clearly expresses their movement around the city without defining a technical police role.
-- pob_phrase: the keepers of the walls
-  simplified_phrase: the guards on the walls
-  preserved_meaning: These men were responsible for guarding the city walls.
-  reasoning_layer_used: Lexical decision for שֹׁמְרֵי הַחֹמוֹת
-  rationale: “Guards on the walls” is more natural modern English while preserving their role and location.
+  preserved_meaning: The watchmen encountered her as they patrolled the city.
+  reasoning_layer_used: POB lexical decision for הַסֹּבְבִים בָּעִיר and footnote a
+  rationale: The recast clause uses ordinary word order while retaining their patrol activity.
+- pob_phrase: they struck me, they wounded me
+  simplified_phrase: They struck me and wounded me
+  preserved_meaning: The guards both hit and injured her.
+  reasoning_layer_used: POB lexical decisions for הִכּוּנִי and פְצָעוּנִי
+  rationale: The two distinct acts remain explicit in a shorter sentence.
+- pob_phrase: took my cloak from me
+  simplified_phrase: took my outer cloak from me
+  preserved_meaning: They removed her outer covering garment.
+  reasoning_layer_used: POB lexical decision for רְדִידִי and footnote b
+  rationale: Adding “outer” clarifies the kind of garment without resolving its exact form.
 translation_notes:
   risk_flags:
-  - risk: “Cloak” does not convey every possible form of the outer covering.
-    mitigation: The footnote preserves the possible senses “shawl” and “veil-like outer covering.”
+  - risk: “Cloak” may sound more specific than the uncertain Hebrew garment term.
+    mitigation: The footnote preserves “veil” and “shawl” as possible meanings.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/005/007.yaml
   source_text_sha256: 2ad36a9a07de7b7678c5098733821cb6eac3dcf8ed13a2d73375ab839950bd5a
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 35fc4d5658ef2273e3def21bfb4f14591b64c3d1aaea31d0371d3d6f55ad336c
-  timestamp: '2026-07-11T21:22:33Z'
-  output_hash: 583f6c9b0792caed354df1f840b8b4e394614e11dee559ef2f4e0db34026e579
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7de57e5148f93657879e204906a0985062a03cb75aeca6bdb6357ce161fbf203
+  timestamp: '2026-08-28T23:07:51Z'
+  output_hash: 79c31f2b0bf68e4979718eb2ac9f54ed231b812106571c08c03fb0c3ac6911b8
   usage:
-    prompt_tokens: 2612
-    completion_tokens: 576
-    total_tokens: 3188
-    reasoning_tokens: 231
+    prompt_tokens: 2760
+    completion_tokens: 603
+    total_tokens: 3363
+    reasoning_tokens: 187
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:07:51Z'
+  previous_text: The city watchmen found me while making their rounds. They struck me and wounded me. The guards on the walls took my cloak away from me.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

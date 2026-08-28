@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/037/016.yaml
-  text: Better is a little that belongs to the righteous than the abundance of many wicked people[a].
+  text: Better is the little that the righteous has than the abundance of many wicked people[a].
   footnotes:
   - marker: a
-    text: Or, 'Better is a little for the righteous than the abundance of the wicked.' The Hebrew is elliptical, and the possessive sense ('that belongs to') is implied.
+    text: Or “than the wealth of many wicked people.” The Hebrew noun can mean abundance or wealth.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,41 +31,56 @@ base_translation:
     changes_summary: Replaced 'wealth' with 'abundance' to more closely reflect the broader sense of the source term and avoid narrowing it to material riches alone.
 translation:
   language: en
-  text: The little that a righteous person has is better than the plenty that many wicked people have.
+  text: The little that a righteous person has is better than the plenty that many wicked people have.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “the wealth that many wicked people have.” The Hebrew word can mean plenty or wealth.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Better is a little that belongs to the righteous
-  simplified_phrase: The little that a righteous person has is better
-  preserved_meaning: A small amount possessed by a righteous person has greater value in this comparison.
-  reasoning_layer_used: POB lexical decision for לַצַּדִּיק and source syntax
-  rationale: The possessive meaning is retained in natural English, while the collective singular becomes an ordinary singular person.
+- pob_phrase: the righteous
+  simplified_phrase: a righteous person
+  preserved_meaning: The singular expression refers to a person who is righteous.
+  reasoning_layer_used: POB lexical decision for לַצַּדִּיק
+  rationale: The wording makes the personal reference immediately clear in modern English.
 - pob_phrase: the abundance of many wicked people
   simplified_phrase: the plenty that many wicked people have
-  preserved_meaning: Many wicked people possess a large amount, contrasted with the righteous person's little.
-  reasoning_layer_used: POB lexical decisions for הָמוֹן, רְשָׁעִים, and רַבִּים
-  rationale: “Plenty” keeps the broad sense of abundance without narrowing it only to money or wealth.
+  preserved_meaning: Many wicked people possess a large amount, in contrast with the righteous person’s little.
+  reasoning_layer_used: POB lexical decisions and source audit for מֵהֲמוֹן רְשָׁעִים רַבִּים
+  rationale: “Plenty” keeps the Hebrew term broad while the added verb makes the possessive comparison clear.
+- pob_phrase: Better is the little ... than
+  simplified_phrase: The little ... is better than
+  preserved_meaning: The proverb contrasts the small amount of the righteous person with what many wicked people possess.
+  reasoning_layer_used: POB lexical decision for טוֹב and latest revision
+  rationale: Ordinary English word order preserves the comparative force without the inverted phrasing.
 translation_notes:
   risk_flags:
-  - risk: “Plenty” may be understood mainly as material possessions.
-    mitigation: The wording follows the verse's contrast of what the righteous and wicked have while avoiding the narrower term “wealth.”
+  - risk: “Plenty” may be understood mainly as material wealth in this context.
+    mitigation: The footnote preserves “wealth” as the narrower lexical alternative while the main text retains the broader sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/037/016.yaml
   source_text_sha256: e46869573fc4ddfc152110f8cfaa2d81a0b08215f181f1f0c6644d9e2d4d17fc
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 144a233c1598a48545eee598e35be04f41ab23362c6df3d906a71b24bdd4a7de
-  timestamp: '2026-07-11T20:48:39Z'
-  output_hash: 2e3b6f6f352379ff2c2d74b0e93e1781ef75721afb1752e3427bc3fe9077e26e
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 46d4191c9751261da137295600b30bfcb01043e9f19fbb7f3e5b3c10d021a42e
+  timestamp: '2026-08-28T22:54:15Z'
+  output_hash: f234afbbabf400715d1af15548f6d4639e33b14de84bc2752e74aed1b6fb9612
   usage:
-    prompt_tokens: 2752
-    completion_tokens: 551
-    total_tokens: 3303
-    reasoning_tokens: 238
+    prompt_tokens: 3041
+    completion_tokens: 656
+    total_tokens: 3697
+    reasoning_tokens: 246
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:15Z'
+  previous_text: The little that a righteous person has is better than the plenty that many wicked people have.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

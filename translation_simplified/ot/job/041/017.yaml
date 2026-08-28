@@ -19,50 +19,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 41:17 wholesale revert (2 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''at the crashing'', ''they are beside themselves'']. Applied via definitive_apply (fuzzy fingerprin'
 translation:
   language: en
-  text: When he rises, the mighty are afraid; at the crashing, they panic.
+  text: When he rises, even the mighty are afraid. When the crashing comes, they panic.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: At his rising
   simplified_phrase: When he rises
   preserved_meaning: His rising causes fear among the mighty.
-  reasoning_layer_used: POB base text
-  rationale: The time clause expresses the same relationship in ordinary English.
+  reasoning_layer_used: POB base translation
+  rationale: The time clause is recast in ordinary English.
+- pob_phrase: at the crashing
+  simplified_phrase: When the crashing comes
+  preserved_meaning: The crashing triggers the response without identifying what causes it.
+  reasoning_layer_used: POB base translation and grounding review
+  rationale: This keeps the referent open while making the clause natural.
 - pob_phrase: they are beside themselves
   simplified_phrase: they panic
-  preserved_meaning: The mighty lose control because of terror.
-  reasoning_layer_used: Applied revision preserving “beside themselves”
-  rationale: “They panic” makes the idiom immediately clear without weakening the fear.
-- pob_phrase: at the crashing
-  simplified_phrase: at the crashing
-  preserved_meaning: The broad, impersonal image of crashing or tumult remains unspecified.
-  reasoning_layer_used: POB base text and grounding review
-  rationale: Retaining this phrase avoids making the creature explicitly perform the crashing.
+  preserved_meaning: They are overwhelmed by fear and lose their composure.
+  reasoning_layer_used: applied doctrine-realignment revision
+  rationale: The unfamiliar idiom is stated in clear modern English.
+interpretive_expansions:
+- pob_phrase: the mighty are afraid
+  rendering: even the mighty are afraid
+  claim: The creature frightens people despite their great strength.
+  evidence:
+  - POB specifically identifies the fearful people as “the mighty.”
+  confidence: high
+  alternatives_preserved:
+  - the mighty are afraid
 translation_notes:
   risk_flags:
-  - risk: “The crashing” remains somewhat open as to its exact sound, movement, or cause.
-    mitigation: This openness preserves the POB wording and the source expression’s breadth.
+  - risk: “They panic” may sound narrower than the idiom “beside themselves.”
+    mitigation: It preserves the contextually clear loss of composure caused by fear.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/041/017.yaml
   source_text_sha256: e112ce2e1f1a893c60e4d41fb2af9ed4e5d09a07a83301fa2ba64ba93f61f133
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 703692decce0ff0541949d2cf475d08eb0d75f0745dcd9f2eb2e4004c46fda5f
-  timestamp: '2026-07-12T09:40:11Z'
-  output_hash: 6d8b9d32a853a1fab969ef23cfb42d9a9003a2bbe5c2553cc585dbef4065963e
+  prompt_sha256: f8ab9d966fcf024fa033d47ffc81069d098f246c091a0e17517e9855ad342e2e
+  timestamp: '2026-08-28T23:35:08Z'
+  output_hash: 28e605b68120dc2b5d462a76174c2ce27f6c55bcc5a2ce437468f42fa660bb11
   usage:
-    prompt_tokens: 2575
-    completion_tokens: 288
-    total_tokens: 2863
-    reasoning_tokens: 0
+    prompt_tokens: 2806
+    completion_tokens: 650
+    total_tokens: 3456
+    reasoning_tokens: 292
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:40:11Z'
@@ -74,4 +82,23 @@ spob_revision_history:
   review_summary: The draft usefully replaces the idiom “are beside themselves” with the clear equivalent “panic.” However, “when he crashes” adds a specific subject and action to POB’s deliberately broad “at the crashing.” Retain the impersonal crashing image while keeping the clearer description of the mighty men’s response.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:04Z'
+  previous_text: When he rises, the mighty are afraid; at the crashing, they panic.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:53Z'
+  previous_text: When he rises, even the mighty are terrified. At the crashing, they panic.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:08Z'
+  previous_text: When he rises, even the mighty are terrified. When he crashes about, they are driven into a panic.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d49c13718349095b88e0ac54517146b08a28086cc85393a0d3cef250197e3dd6
+  review_summary: The draft improves accessibility, especially by replacing “beside themselves” with “panic,” and the fear/panic sequence is readily understandable. However, it should not make the crashing explicitly the creature’s own action (“he crashes about”), since POB preserves that referent more generally. The recommended text keeps the causal scene and clarity while avoiding that added specification; it also retains POB’s stated degree of fear rather than intensifying it to “terrified.”
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

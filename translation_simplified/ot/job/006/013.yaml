@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/006/013.yaml
-  text: Is my help not within me[a], and has sound wisdom been driven from me?
+  text: Is it not that I have no help within me, and has sound wisdom[a] been driven from me?
   footnotes:
   - marker: a
-    text: Or 'resourcefulness' for 'sound wisdom'; the Hebrew תושיה can denote practical wisdom, competence, or effective counsel.
+    text: Or, “resourcefulness.” The Hebrew תושיה can denote practical wisdom, competence, effective counsel, or capacity to succeed.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,48 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do I have no help within me? Has practical wisdom been driven away from me?
+  text: Isn’t it true that I have no help within myself and that sound wisdom has been driven away from me?[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: “Sound wisdom” can also mean practical wisdom, resourcefulness, or the ability to succeed.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Is my help not within me
-  simplified_phrase: Do I have no help within me?
-  preserved_meaning: Job asks rhetorically whether his inner resources are gone.
-  reasoning_layer_used: Lexical decisions for הַאִם, אֵין, עֶזְרָתִי, and בִי
-  rationale: The recast question makes the negative lament natural without implying self-generated help.
-- pob_phrase: sound wisdom
-  simplified_phrase: practical wisdom
-  preserved_meaning: The phrase means effective insight or competence rather than abstract knowledge.
-  reasoning_layer_used: Lexical decision and footnote for תֻשִׁיָּה
-  rationale: Practical wisdom clearly conveys the documented wisdom sense.
+- pob_phrase: Is it not that
+  simplified_phrase: Isn’t it true that
+  preserved_meaning: The question rhetorically emphasizes Job’s lack of inner help.
+  reasoning_layer_used: Hebrew rhetorical-question syntax and the source audit
+  rationale: The new wording makes the negative rhetorical force immediately clear.
+- pob_phrase: within me
+  simplified_phrase: within myself
+  preserved_meaning: Job finds no source of help in his own inner resources.
+  reasoning_layer_used: POB lexical decision for בִי
+  rationale: “Within myself” is more natural English while retaining the internal sense.
+- pob_phrase: and has sound wisdom been driven from me?
+  simplified_phrase: and that sound wisdom has been driven away from me?
+  preserved_meaning: Job portrays sound wisdom as something forcibly removed from him.
+  reasoning_layer_used: POB lexical decisions for תֻשִׁיָּה and נִדָּחָה
+  rationale: The recast clause reads naturally without weakening the image of being driven away.
 translation_notes:
   risk_flags:
-  - risk: The first question could be mistaken for an affirmation that Job still has help.
-    mitigation: The negative question clearly presents Job's lament that his inner resources are gone.
-  - risk: Practical wisdom does not express the full range of competence and resourcefulness in תֻשִׁיָּה.
-    mitigation: It retains the POB's primary wisdom sense in familiar English.
+  - risk: “Sound wisdom” covers a Hebrew term with several related senses.
+    mitigation: The footnote preserves practical wisdom, resourcefulness, and capacity to succeed as possible nuances.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/006/013.yaml
   source_text_sha256: d29e92edc47a9c03b4fb9b04cd16b7856b28eb76109ba18d680b387385199f41
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 52ba24da1f86c76eca1643ed9ed216270b4d33ee392b36d71bf77cc7df8fb4e0
-  timestamp: '2026-07-12T09:36:37Z'
-  output_hash: ba438a7e8ef6e68fb4375e8891c97928f6ec7aeb37ff723a562edfb1ae099edd
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 64ec983e01a9ebb712409f961548f38e75e5d832d2eecbd49379b00a5955bb10
+  timestamp: '2026-08-28T22:49:03Z'
+  output_hash: c37027d78e67e2862b14c23a5093ea08edb0a46417993489ad988af28f20b0a7
   usage:
-    prompt_tokens: 3074
-    completion_tokens: 318
-    total_tokens: 3392
-    reasoning_tokens: 0
+    prompt_tokens: 2661
+    completion_tokens: 656
+    total_tokens: 3317
+    reasoning_tokens: 273
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:37Z'
   previous_text: Do I have no help within myself? Has practical wisdom been driven away from me?
@@ -84,3 +89,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:49:03Z'
+  previous_text: Do I have no help within me? Has practical wisdom been driven away from me?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

@@ -31,7 +31,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Its rocks contain sapphire[a], and its dust contains gold.
+  text: Its rocks contain sapphire,[a] and it has dust of gold.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -40,47 +40,68 @@ translation:
 simplification_decisions:
 - pob_phrase: Its stones are the place of sapphire
   simplified_phrase: Its rocks contain sapphire
-  preserved_meaning: The earth’s rocks are a location where sapphire is found.
-  reasoning_layer_used: POB lexical decisions and mining context
-  rationale: “Contain” states the natural English sense of “the place of” in this mining scene.
-- pob_phrase: it has dust of gold
-  simplified_phrase: its dust contains gold
-  preserved_meaning: Gold is present in the loose earth or dust.
-  reasoning_layer_used: POB lexical decisions for עפרות and לוֹ
-  rationale: The wording keeps the dust image while making the mineral content clear.
+  preserved_meaning: The rocks in the mined earth are where the gemstone is found.
+  reasoning_layer_used: Lexical decisions for מְקוֹם and אֲבָנֶיהָ, supported by the mining context
+  rationale: “Contain” states the location naturally, and “rocks” fits the mining setting.
+- pob_phrase: and it has dust of gold
+  simplified_phrase: and it has dust of gold
+  preserved_meaning: The earth has particulate material associated with gold.
+  reasoning_layer_used: Lexical decisions for וְעַפְרֹת, זָהָב, and לוֹ
+  rationale: Retaining “dust of gold” preserves the source image and avoids reducing it to ordinary dust with traces of gold.
 interpretive_expansions:
-- pob_phrase: the place of sapphire ... has dust of gold
-  rendering: contain sapphire ... contains gold
-  claim: The location and possession language describes minerals present in the earth.
+- pob_phrase: Its stones are the place of sapphire
+  rendering: Its rocks contain sapphire
+  claim: The mined rocks are presented as holding or yielding the gemstone.
   evidence:
-  - The immediate context describes mining.
-  - The POB rationale says the clauses express what the earth or rock contains.
+  - The mining context concerns treasures found within the earth.
+  - The lexical rationale says “place” introduces what the earth or rock contains.
   confidence: high
   alternatives_preserved:
-  - the place of sapphire
-  - has dust of gold
+  - Its stones are the place of sapphire
+  - Its rocks are the source of sapphire
 translation_notes:
   risk_flags:
-  - risk: The ancient gemstone may have been lapis lazuli rather than sapphire.
-    mitigation: The footnote preserves the documented lexical uncertainty.
+  - risk: “Sapphire” may not identify the ancient gemstone exactly.
+    mitigation: The footnote preserves “lapis lazuli” as a possible alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/028/006.yaml
   source_text_sha256: 250b90c1c1858cbefb59de21358636f52bc7459ddb04f3fa102e377e671bc6fe
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 32214a7808c5088e09c91a7ecf442ee22dee8d74db6bb4aa5d8d1d5f1e268c3a
-  timestamp: '2026-07-11T19:41:14Z'
-  output_hash: a001df4a06ae8436cb6637fdbce163548f5e2a49b6e18b7f3ee96f48ba0df635
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b4a78decfecc88b2ba15b982b6c459e742a8df749aae5dc275836a604f2fcd96
+  timestamp: '2026-08-28T23:34:46Z'
+  output_hash: 93b10bc7ad0e7aeb8a90df5965795f7053121a2c5664974804d1883d9517e4e2
   usage:
-    prompt_tokens: 2304
-    completion_tokens: 565
-    total_tokens: 2869
-    reasoning_tokens: 204
+    prompt_tokens: 3033
+    completion_tokens: 599
+    total_tokens: 3632
+    reasoning_tokens: 184
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:01Z'
+  previous_text: Its rocks contain sapphire[a], and its dust contains gold.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:51:53Z'
+  previous_text: Its rocks contain sapphire,[a] and there is gold in its dust.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:46Z'
+  previous_text: Its rocks contain sapphire,[a] and its dust contains gold.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 51f0e91c166e5f6bb17b58583cbc5eb929ac8216554a126143cbc83d23794450
+  review_summary: 'The first revision is a warranted, clearer contextual rendering: in this mining poem, “rocks contain sapphire” naturally communicates that the stones are the place/source of sapphire. The second revision is clear English but unnecessarily changes the gold-dust construction into a weaker containment statement. Retain the POB’s “dust of gold” to preserve the source image without asserting that it is merely ordinary dust with traces of gold.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

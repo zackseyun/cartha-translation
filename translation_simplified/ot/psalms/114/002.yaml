@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/114/002.yaml
-  text: Judah became his sanctuary[a][b][c], Israel his dominion.
+  text: Judah became[c] his sanctuary[b], Israel his dominion[a].
   footnotes:
   - marker: a
     text: Or 'his domain' or 'his rule.' The Hebrew noun is formally plural but likely expresses an abstract sense here.
@@ -37,57 +37,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Judah became[a] his holy place, and Israel became the realm under his rule.
+  text: Judah became[a] God's holy place,[b] and Israel became God's realm.[c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Judah was his holy place.” The Hebrew may describe either a change or a state.
+    text: Or “Judah was.”
+    reason: lexical_alternative
+  - marker: b
+    text: Or “God's sanctuary.”
+    reason: lexical_alternative
+  - marker: c
+    text: Or “God's domain,” “God's dominion,” or “the place under his rule.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: his sanctuary
-  simplified_phrase: his holy place
-  preserved_meaning: Judah became the holy sphere belonging to God.
-  reasoning_layer_used: The lexical decision for לְקָדְשׁוֹ supports the concrete sense “holy place.”
-  rationale: “Holy place” is clearer than “sanctuary” without adding the unsupported idea of dwelling.
+  simplified_phrase: God's holy place
+  preserved_meaning: Judah became the holy place belonging to God.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: This clarifies “sanctuary” and identifies its documented divine referent.
 - pob_phrase: Israel his dominion
-  simplified_phrase: Israel became the realm under his rule
-  preserved_meaning: Israel became the sphere of God's rule.
-  reasoning_layer_used: The lexical decision treats מַמְשְׁלוֹתָיו as an abstract realm or dominion.
-  rationale: The complete clause explains the poetic ellipsis and makes “dominion” understandable.
+  simplified_phrase: Israel became God's realm
+  preserved_meaning: Israel became the sphere belonging to God's rule.
+  reasoning_layer_used: POB lexical decision and poetic parallelism
+  rationale: “Realm” preserves the dominion image without narrowing Israel to a political nation.
 interpretive_expansions:
-- pob_phrase: Israel his dominion
-  rendering: Israel became the realm under his rule
-  claim: The abstract dominion is expressed as the realm where God rules.
+- pob_phrase: his
+  rendering: God's
+  claim: The possessive pronoun refers to God.
   evidence:
-  - The lexical rationale defines the noun as rule, dominion, or a realm of rule.
-  - The POB identifies God as the referent of “his.”
+  - The POB theological decision identifies God as the natural referent in the exodus context.
   confidence: high
   alternatives_preserved:
-  - his dominion
-  - his domain
-  - his rule
+  - The Hebrew leaves the referent implicit.
+- pob_phrase: Israel his dominion
+  rendering: Israel became God's realm
+  claim: Israel is presented as the sphere of God's rule.
+  evidence:
+  - The POB lexical rationale defines the noun as dominion, rule, or realm of rule.
+  confidence: high
+  alternatives_preserved:
+  - God's domain
+  - God's dominion
+  - the place under his rule
 translation_notes:
   risk_flags:
-  - risk: “Holy place” could be mistaken for a physical building.
-    mitigation: Naming Judah as the holy place preserves the verse's broader poetic identification.
+  - risk: “Realm” can suggest territory more strongly than the Hebrew requires.
+    mitigation: The footnote preserves “domain,” “dominion,” and “the place under his rule.”
+  - risk: “Holy place” may suggest only a physical location.
+    mitigation: The footnote retains the POB term “sanctuary.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/114/002.yaml
   source_text_sha256: e0a0c8616b5c4d4299185d3eb87e689837f2c237b5928b11c25d5672228be485
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: e01a736b397fdf89e199c14f6177feb5cd54f7037a4c9c15bc36ea3066b65492
-  timestamp: '2026-07-12T10:02:51Z'
-  output_hash: e1913e646dbef3a963db0ad448a4bd330db3c3b693774d57761e2c14ad0cbd37
+  prompt_sha256: b8b2e121de8763c993e6f065ee8c3e3ad97fdb5ed3d235e46622d9ab275cab70
+  timestamp: '2026-08-28T23:36:10Z'
+  output_hash: 430103e73c6e6b71653f4dbad95992bd395778443e5a3f4c67af99837d5823b4
   usage:
-    prompt_tokens: 3433
-    completion_tokens: 403
-    total_tokens: 3836
+    prompt_tokens: 3881
+    completion_tokens: 499
+    total_tokens: 4380
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
@@ -100,5 +115,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 36c6287fb0e5534b56715f173290db722882df182677f8a4face396771202fee
   review_summary: The draft helpfully makes the second poetic clause into a complete modern-English sentence and clearly explains “dominion” as a realm under God’s rule; this is warranted by the POB’s eventive reading and dominion rationale. However, “dwelling place” narrows and expands the supported sense of “sanctuary/holy place” by asserting dwelling. “Holy place” preserves the concrete, holy sense endorsed in the audit trail while remaining clearer than “sanctuary.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:04:45Z'
+  previous_text: Judah became[a] his holy place, and Israel became the realm under his rule.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:10Z'
+  previous_text: Judah became[a] God's holy place,[b] and Israel became the nation under his rule.[c]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 2fa34c021413d5ed04dba160ca066432afa2aafb05c51419dde8f5ced1d2d994
+  review_summary: 'Identifying the implicit possessive referent as God and replacing “sanctuary” with “holy place” are warranted by the POB audit trail and make the line clearer. The second clause should not add “nation,” however: it turns the source image of Israel as God’s dominion or realm into a more specifically political claim about a governed people. “God’s realm” retains the lexical sense of dominion while making the phrase understandable and preserving the Judah/Israel parallel.'
   schema_repairs:
   - restored retained_terms as an array from the prior draft

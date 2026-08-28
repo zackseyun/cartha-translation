@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/078/027.yaml
-  text: He rained meat on them like dust[a][b], and winged birds like the sand of the seas.
+  text: He rained meat[a] on them like dust, and winged birds like the sand of the seas.
   footnotes:
   - marker: a
-    text: Hebrew 'the sand of the seas'; many English versions smooth this to 'the sand of the sea.'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'flesh.' The Hebrew שְׁאֵר can denote flesh or meat; here it refers to edible meat provided in the wilderness.
+    text: Or “flesh” for “meat.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,57 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He made meat rain down on them, as plentiful as dust. He made winged birds rain down on them, as numerous as the sand of the seas.
+  text: He rained down meat on them like dust, and winged birds like sand on the seashores.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “flesh” instead of “meat.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: He rained meat on them
-  simplified_phrase: He made meat rain down on them
-  preserved_meaning: God caused meat to fall on the people like rain.
-  reasoning_layer_used: POB lexical decision for וַיַּמְטֵר
-  rationale: The explicit causative wording makes the rain image clear.
-- pob_phrase: like dust ... like the sand of the seas
-  simplified_phrase: as plentiful as dust ... as numerous as the sand of the seas
-  preserved_meaning: Both comparisons emphasize the vast amount God provided.
-  reasoning_layer_used: Source imagery and poetic parallelism
-  rationale: Quantity words clarify the similes while preserving both concrete images.
-- pob_phrase: and winged birds
-  simplified_phrase: He made winged birds rain down on them
-  preserved_meaning: The same raining action governs both the meat and the birds.
-  reasoning_layer_used: POB syntax and lexical decision for וַיַּמְטֵר
-  rationale: Repeating the action in a new sentence preserves its force and improves clarity.
-interpretive_expansions:
-- pob_phrase: like dust ... like the sand of the seas
-  rendering: as plentiful as dust ... as numerous as the sand of the seas
-  claim: The similes describe the immense quantity of meat and birds.
-  evidence:
-  - The two quantity images stand in poetic parallel.
-  - The surrounding wilderness account identifies the provided meat as birds.
-  confidence: high
-  alternatives_preserved:
-  - The images of dust and the sand of the seas remain explicit.
-translation_notes: {}
+- pob_phrase: He rained meat
+  simplified_phrase: He rained down meat
+  preserved_meaning: God caused edible animal flesh to come down in abundance.
+  reasoning_layer_used: POB lexical decision for וַיַּמְטֵר and שְׁאֵר
+  rationale: “Rained down” makes the action natural in modern English while preserving the rain image.
+- pob_phrase: like the sand of the seas
+  simplified_phrase: like sand on the seashores
+  preserved_meaning: The birds were compared to the vast quantity of sand beside the seas.
+  reasoning_layer_used: POB lexical rationale for וּכְחוֹל יַמִּים
+  rationale: “On the seashores” clearly expresses the Hebrew image while retaining the plural sense of “seas.”
+translation_notes:
+  risk_flags:
+  - risk: “Seashores” is smoother than the more literal “sand of the seas.”
+    mitigation: The rendering preserves both the sand comparison and the reference to multiple seas.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/078/027.yaml
   source_text_sha256: 5ba88482902e9178ee0b8eb89724db4af1b45daa71ad180d7568cb589150a645
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 571fa66e8360c5f84d3c3c9eb3b195ed781a6ddce83f0081ff9849f6fe643459
-  timestamp: '2026-07-12T10:01:07Z'
-  output_hash: b572ee9ff008078fd1d7711f84cc66105fd1f6fadabf5d775c3655458debf1b6
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7fff3531a1a2581dfd39dd5327e79fb9b74b66d780b9beafab8a8c0554feb43a
+  timestamp: '2026-08-28T22:57:33Z'
+  output_hash: b12ab36f77634e01966c67702266c6cf629ef92e129795e06b69d1b1fe03d146
   usage:
-    prompt_tokens: 3172
-    completion_tokens: 415
-    total_tokens: 3587
-    reasoning_tokens: 0
+    prompt_tokens: 2518
+    completion_tokens: 756
+    total_tokens: 3274
+    reasoning_tokens: 429
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:01:07Z'
   previous_text: He made meat rain down on them, as plentiful as dust. He sent winged birds as numerous as the sand of the seas.
@@ -95,3 +83,8 @@ spob_revision_history:
   review_summary: The draft successfully makes the causative action and the quantity comparisons clear, and its explicit abundance language is warranted by the poetic parallelism and context. However, replacing the second coordinated occurrence of the raining action with “sent” weakens the source’s shared rain-down imagery. Repeating “made ... rain down” retains the meaning while remaining clear for modern readers.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:57:33Z'
+  previous_text: He made meat rain down on them, as plentiful as dust. He made winged birds rain down on them, as numerous as the sand of the seas.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

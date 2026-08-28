@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/006/006.yaml
-  text: Even if he should live a thousand years twice over and not see good[c][b][a], do not all go to one place?
+  text: Even if he should live a thousand years twice over[a] and not see good[b], do not all go to one place[c]?
   footnotes:
   - marker: a
-    text: Or 'two thousand years'; literally, 'a thousand years twice.'
+    text: Or “two thousand years”; literally, “a thousand years twice.”
     reason: lexical_alternative
   - marker: b
-    text: '''See good'' is a Hebrew idiom meaning to experience or enjoy what is good.'
+    text: “See good” is a Hebrew idiom meaning to experience or enjoy what is good.
     reason: lexical_alternative
   - marker: c
-    text: That is, the same destination in death; the Hebrew says only 'one place.'
+    text: That is, the common destination in death; the Hebrew itself says only “one place.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -37,55 +37,86 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Even if he lived for a thousand years, and then another thousand, but never enjoyed anything good, does not everyone go to one place?[a]
+  text: Even if he lived a thousand years, and then another thousand, but never enjoyed what is good, do not all people go to one place?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: That is, the common destination in death; the Hebrew simply says “one place.”
-    reason: simplification_note
+    text: “One place” points in context to the common destination in death, but the Hebrew leaves the destination unnamed.
+    reason: alternative_reading
 simplification_decisions:
 - pob_phrase: a thousand years twice over
-  simplified_phrase: for a thousand years, and then another thousand
-  preserved_meaning: The unusually long lifespan still consists of a thousand years repeated twice.
-  reasoning_layer_used: lexical decision
-  rationale: The recast makes the repeated span immediately clear without reducing it to a bare numeral.
+  simplified_phrase: a thousand years, and then another thousand
+  preserved_meaning: He hypothetically lives for two exceptionally long periods of one thousand years each.
+  reasoning_layer_used: POB lexical decision for אֶלֶף שָׁנִים פַּעֲמַיִם
+  rationale: The wording makes the repeated span immediately clear without reducing it to a bare numeral.
+- pob_phrase: not see good
+  simplified_phrase: never enjoyed what is good
+  preserved_meaning: He never experiences or enjoys life's good things.
+  reasoning_layer_used: POB idiom footnote and lexical decisions for לֹא רָאָה and טוֹבָה
+  rationale: This states the idiom's meaning without turning seeing and enjoying into separate actions.
 - pob_phrase: do not all go
-  simplified_phrase: does not everyone go
-  preserved_meaning: The rhetorical question refers to all people under discussion.
-  reasoning_layer_used: lexical decision and immediate context
-  rationale: “Everyone” makes the human referent clear in natural English.
+  simplified_phrase: do not all people go
+  preserved_meaning: The rhetorical question concerns the common destiny of human beings.
+  reasoning_layer_used: POB lexical decision for הַכֹּל
+  rationale: Naming people prevents readers from taking “all” to mean all things.
 interpretive_expansions:
 - pob_phrase: not see good
-  rendering: never enjoyed anything good
-  claim: The Hebrew idiom refers to experiencing or enjoying life's good things.
+  rendering: never enjoyed what is good
+  claim: Seeing good here means experiencing or enjoying it.
   evidence:
-  - The POB lexical note says “see good” can mean to experience or enjoy what is good.
-  - The lexical rationale identifies experiential good or enjoyment in this context.
+  - The POB idiom note explicitly gives this meaning.
+  - The lexical rationale identifies experiential good and enjoyment in context.
   confidence: high
   alternatives_preserved:
-  - not experience anything good
+  - experience what is good
+  - see good
+- pob_phrase: all
+  rendering: all people
+  claim: The statement refers to all the people under discussion.
+  evidence:
+  - The POB lexical rationale explicitly identifies people as the contextual referent.
+  confidence: high
+  alternatives_preserved:
+  - all
+  - everyone
 translation_notes:
   risk_flags:
-  - risk: “One place” may be unclear to readers unfamiliar with the context.
-    mitigation: The main text preserves the Hebrew understatement, while the footnote identifies its likely reference to death.
+  - risk: “One place” may remain unclear to readers.
+    mitigation: The footnote explains the contextual reference to death while keeping the destination unnamed in the text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/006/006.yaml
   source_text_sha256: da44fa466874da3db7fe41575edc6849b51fbd120b02808c24df27872e3f0782
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 59c06e0cbdade38793d4fc00c9665f809b43c64bb927f74212799e52d0d03f9f
-  timestamp: '2026-07-11T21:10:23Z'
-  output_hash: 75dfaa001be65ecd13e66c48eb1ec8c7c5fa8f8431ee0b4b32e46b08ad9d2df3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b1f4df67c0722a12fed2c9dd3ad72bbde4a8907ea44ba94d5b5c18dc044a8b8b
+  timestamp: '2026-08-28T23:32:38Z'
+  output_hash: 4a460751fe90f4928929e6b837b37330c1b5bcc09ce1ead9e70252295e93436f
   usage:
-    prompt_tokens: 2743
-    completion_tokens: 614
-    total_tokens: 3357
-    reasoning_tokens: 230
+    prompt_tokens: 4005
+    completion_tokens: 543
+    total_tokens: 4548
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:06:56Z'
+  previous_text: Even if he lived for a thousand years, and then another thousand, but never enjoyed anything good, does not everyone go to one place?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:38Z'
+  previous_text: Even if he lived a thousand years, and then another thousand, but never saw and enjoyed what is good, do not all people go to one place?[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d9d6d5c55e364494819b54953c4db05fec6a1b487f425edb5dd779ac691057e4
+  review_summary: The draft appropriately clarifies that “all” refers to people and responsibly retains the unnamed “one place,” with a contextually warranted footnote. Its explanation of the “see good” idiom should not be joined to the literal verb with “and,” however, because that turns one idiomatic expression into two asserted experiences. Replacing it with “never enjoyed what is good” gives readers the actual contextual meaning without importing a second idea. The recommended wording remains meaningfully clearer than POB while preserving the rhetorical question and the passage’s restraint about death’s destination.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

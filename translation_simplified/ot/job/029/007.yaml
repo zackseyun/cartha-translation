@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/029/007.yaml
-  text: When I went out to the gate by the city[a], when I prepared my seat in the square[b],
+  text: When I went out to the city gate[a], when I prepared my seat in the square[b],
   footnotes:
   - marker: a
-    text: Or 'the city gate'; the Hebrew says literally 'the gate' and then adds a phrase relating it to 'the city.'
-    reason: lexical_alternative
+    text: Or, less idiomatically, “the gate by the city.”
+    reason: literal_rendering
   - marker: b
-    text: Or 'in the street' or 'in the open place'; the term refers to a broad public area, not necessarily a narrow roadway.
+    text: Or “in the street” or “in the open place”; the term refers to a broad public area, not necessarily a narrow roadway.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,67 +34,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When I went out to the city gate[a] and took my seat in the public square,
+  text: When I went to the city gate, I set up my seat in the public square,
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew literally mentions “the gate” and “the city” separately.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the gate by the city
-  simplified_phrase: the city gate
-  preserved_meaning: The gate is located at the city and serves as a public gathering place.
-  reasoning_layer_used: POB lexical decisions and footnote a
-  rationale: This documented alternative gives natural English while the footnote preserves the Hebrew structure.
-- pob_phrase: I prepared my seat
-  simplified_phrase: took my seat
-  preserved_meaning: Job sat down in his seat without replacing the concrete seat image with an inferred social role.
-  reasoning_layer_used: POB lexical decisions for אָכִין and מוֹשָׁבִי
-  rationale: This is natural English and avoids suggesting that Job arranged a chair.
+- pob_phrase: when I prepared my seat
+  simplified_phrase: I set up my seat
+  preserved_meaning: Job arranged his place to sit in the civic gathering area.
+  reasoning_layer_used: POB lexical decision for אָכִין and מוֹשָׁבִי
+  rationale: “Set up” states the concrete action more naturally than “prepared.”
 - pob_phrase: in the square
   simplified_phrase: in the public square
-  preserved_meaning: The setting is a broad civic area rather than a narrow street.
-  reasoning_layer_used: POB lexical decision for בָּרְחוֹב
-  rationale: Adding “public” makes the kind of open square clear.
+  preserved_meaning: The square was a broad civic gathering place rather than a narrow street.
+  reasoning_layer_used: POB lexical rationale for בָּרְחוֹב
+  rationale: “Public” prevents readers from picturing an ordinary roadway.
 interpretive_expansions:
 - pob_phrase: in the square
   rendering: in the public square
-  claim: The square is an open area used for public activity.
+  claim: The square was an open civic area used by the community.
   evidence:
-  - The POB lexical rationale identifies a broad public place or plaza.
-  - The gate context supports a civic gathering setting.
+  - The lexical audit identifies רְחוֹב as a broad public place or plaza.
+  - The city-gate setting places Job in a civic gathering area.
   confidence: high
   alternatives_preserved:
-  - in the square
+  - in the street
   - in the open place
 translation_notes:
   risk_flags:
-  - risk: “City gate” combines two Hebrew expressions that the POB main text keeps distinct.
-    mitigation: Footnote [a] preserves the Hebrew structure and its documented ambiguity.
-  - risk: “Took my seat” makes the action idiomatic rather than rendering “prepared” directly.
-    mitigation: It preserves both the act of sitting and the source’s concrete seat image.
+  - risk: “Set up my seat” may sound like merely arranging furniture.
+    mitigation: The city gate and public square retain the setting of Job’s recognized civic place.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/029/007.yaml
   source_text_sha256: 95c10c9a78bd5299328bee99e25523a3d09dc45d2158ca14ced6113ae6ff1594
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 00489e1d67cfdde2fe083a0e07ccd93187bb0ed43509ff472dc8f1cfebdc310e
-  timestamp: '2026-07-12T09:39:43Z'
-  output_hash: ec57740ea75c168953e278a195a9659422944ddf3b94229bf21dd2fb477c5185
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 154eead14fb703010aa3109118783f31061f22384eb08acbc3f326d0f6a6b7ef
+  timestamp: '2026-08-28T22:51:30Z'
+  output_hash: aa58f921e11075375f5bca5a853307fcecb1337acdda0f1620757d97543dcbee
   usage:
-    prompt_tokens: 3386
-    completion_tokens: 486
-    total_tokens: 3872
-    reasoning_tokens: 0
+    prompt_tokens: 2727
+    completion_tokens: 688
+    total_tokens: 3415
+    reasoning_tokens: 332
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:43Z'
   previous_text: When I went out to the city gate[a] and took my place in the public square,
@@ -105,3 +93,8 @@ spob_revision_history:
   review_summary: The revision is warranted because “city gate” is a documented lexical alternative that naturally conveys the civic setting, and “public square” clearly reflects רחוב as a broad public plaza rather than a narrow road. However, “took my place” replaces the source’s retained seat image with an inference about Job’s recognized standing. “Took my seat” is equally natural modern English, preserves the concrete object, and leaves the honor/status implication to the immediate context.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:30Z'
+  previous_text: When I went out to the city gate[a] and took my seat in the public square,
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

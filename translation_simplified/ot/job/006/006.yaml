@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/006/006.yaml
-  text: Can tasteless food be eaten without salt[a], or is there any taste in the slime of mallow?
+  text: Can tasteless food be eaten without salt, or is there any taste in the slime of mallow?[a]
   footnotes:
   - marker: a
-    text: Hebrew terms in the second line are uncertain. 'the slime of mallow' may also be understood as 'the juice of mallow,' and some have traditionally rendered the phrase 'the white of an egg.'
+    text: The Hebrew expression is uncertain. “Slime of mallow” may also be understood as “juice of mallow”; a traditional rendering is “the white of an egg.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Would anyone eat bland food without salt? Does mallow slime have any flavor?[a]
+  text: Can anyone eat tasteless food without salt? Is there any flavor in the slime of mallow?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew words translated “mallow slime” are uncertain. They may mean “mallow juice”; traditionally, some have understood them as “egg white.”
+    text: The Hebrew expression is uncertain. “Slime of mallow” may also mean “mallow juice”; a traditional translation is “the white of an egg.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Can tasteless food be eaten without salt
-  simplified_phrase: Would anyone eat bland food without salt?
-  preserved_meaning: The question still implies that unseasoned food is unpleasant to eat.
+  simplified_phrase: Can anyone eat tasteless food without salt?
+  preserved_meaning: The line remains a rhetorical question about food with no taste unless it is salted.
   reasoning_layer_used: POB lexical decisions for הֲ/יֵאָכֵל, תָּפֵל, and מִ/בְּלִי מֶלַח
-  rationale: An active rhetorical question is more natural and immediately clear.
-- pob_phrase: is there any taste in the slime of mallow?
-  simplified_phrase: Does mallow slime have any flavor?
-  preserved_meaning: The second question still describes the substance as lacking appealing taste.
-  reasoning_layer_used: POB lexical decisions for טַעַם, בְּ/רִיר, and חַלָּמוּת
-  rationale: The shorter clause keeps the unpleasant image while using ordinary English.
+  rationale: The active question is more natural while “tasteless” preserves the full force of the image.
+- pob_phrase: or is there any taste
+  simplified_phrase: Is there any flavor
+  preserved_meaning: The second rhetorical question still asks whether the substance has any taste.
+  reasoning_layer_used: POB lexical decision for טַעַם and Hebrew parallelism
+  rationale: A separate sentence clarifies the parallel question, and “flavor” avoids awkward repetition.
+- pob_phrase: the slime of mallow
+  simplified_phrase: the slime of mallow
+  preserved_meaning: The concrete, unpleasant image and its lexical uncertainty remain intact.
+  reasoning_layer_used: POB source audit, lexical decisions, and applied revision
+  rationale: Retaining the phrase avoids weakening the image or presenting an uncertain alternative as certain.
 translation_notes:
   risk_flags:
-  - risk: The Hebrew behind “mallow slime” is lexically uncertain.
-    mitigation: The footnote preserves the POB alternatives without weakening the main rendering.
+  - risk: “Slime of mallow” comes from an uncertain Hebrew expression.
+    mitigation: The footnote gives the main lexical alternative and the traditional rendering.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/006/006.yaml
   source_text_sha256: b94f6f7f0a25760fca6b393117c0a1165d2ea6b4f4bf9da4ab4dcfa5e8edc900
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: bd8c90522d0fe9ab181fc7a4b4accbee3f4891fc6f5b9b42e82656ca7e8c9174
-  timestamp: '2026-07-11T19:43:59Z'
-  output_hash: 7e970ee181ba7305a90360deb96e56ebd66d98fe735da65cafa623fb5d343830
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d32f77b224fa878a4810e8e28a4bedcbb55200245b6dad075f4cfdc1a7664cdc
+  timestamp: '2026-08-28T23:34:18Z'
+  output_hash: a5e26651ee67baa7b224156f95e4a1be5ff9793d9ffc01fdb243889eb578748b
   usage:
-    prompt_tokens: 2427
-    completion_tokens: 423
-    total_tokens: 2850
-    reasoning_tokens: 69
+    prompt_tokens: 3640
+    completion_tokens: 673
+    total_tokens: 4313
+    reasoning_tokens: 240
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:28Z'
+  previous_text: Would anyone eat bland food without salt? Does mallow slime have any flavor?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:18Z'
+  previous_text: Can anyone eat bland food without salt? Is there any flavor in the slime of mallow?[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: cae0d2f1f3402382a7180feacc5fd5db1355930505855513fa41826e39ff312e
+  review_summary: 'The active wording “Can anyone eat” is a warranted, readable expression of the rhetorical question and does not add doctrine or a substantive interpretive claim. Separating the parallel questions and using “flavor” are also acceptable. However, “bland” is less precise than the audited “tasteless”: modern English permits bland food to have some taste, while the Hebrew image and its parallel stress a lack of taste. Restore “tasteless” while retaining the otherwise clear SPOB phrasing and the lexical-uncertainty note.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

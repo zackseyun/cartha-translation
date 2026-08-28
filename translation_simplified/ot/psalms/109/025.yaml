@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/109/025.yaml
-  text: And I became a reproach to them; when they see me, they shake their heads.
+  text: And I have become an object of scorn to them; when they see me, they shake their heads.
   revision_pass:
     model: doctrine-realignment
     timestamp: '2026-05-18T03:58:56Z'
@@ -19,38 +19,64 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 109:25 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''became'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote '
 translation:
   language: en
-  text: I became an object of their scorn. When they see me, they shake their heads.
+  text: I have become someone they scorn. When they see me, they shake their heads at me.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: a reproach to them
-  simplified_phrase: an object of their scorn
-  preserved_meaning: The speaker became someone they treated with contempt.
-  reasoning_layer_used: POB base text and source payload
-  rationale: This replaces the less familiar noun “reproach” with clear modern wording while preserving the contempt directed at the speaker.
-- pob_phrase: And I became ...; when they see me
-  simplified_phrase: I became ... . When they see me
-  preserved_meaning: The change in the speaker’s standing and the onlookers’ reaction remain distinct.
-  reasoning_layer_used: POB syntax and applied revision
-  rationale: Two sentences improve readability while retaining POB’s deliberate choice of “became.”
-translation_notes: {}
+- pob_phrase: I have become an object of scorn to them
+  simplified_phrase: I have become someone they scorn
+  preserved_meaning: The speaker has come to be the target of their contempt.
+  reasoning_layer_used: POB lexical decision and Hebrew source audit
+  rationale: This natural wording retains the resulting status expressed by “have become.”
+- pob_phrase: they shake their heads
+  simplified_phrase: they shake their heads at me
+  preserved_meaning: The visible gesture of contempt remains directed toward the speaker.
+  reasoning_layer_used: Hebrew source image and immediate context
+  rationale: Adding “at me” identifies the gesture’s clear target without removing the image.
+interpretive_expansions:
+- pob_phrase: they shake their heads
+  rendering: they shake their heads at me
+  claim: Their head-shaking is directed at the speaker.
+  evidence:
+  - The preceding clause says they make the gesture when they see him.
+  confidence: high
+translation_notes:
+  risk_flags:
+  - risk: “Someone they scorn” is less object-like than the POB wording.
+    mitigation: The phrase still presents the speaker’s resulting status as the target of their contempt.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/109/025.yaml
   source_text_sha256: faaa9b90fa30eb20dd59ea80c8e64e517ae85ba7ab2030b09e037968be3d4fac
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 493f4e94c8dd4c9b1cd2a58ff0c5dbaba9a0065ab6fc28f825eabd1b829544f9
-  timestamp: '2026-07-11T21:06:18Z'
-  output_hash: 2396c3a5cbaacf96d39fd5500691f3351ae9480282c9bd87fcfc03826e97e6c8
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a9a8c58c08e750fd607755ad8bcf348efb05055fa29e98175c5121fa95e33ed0
+  timestamp: '2026-08-28T23:36:08Z'
+  output_hash: 796f93d018d6e1c8938611ce0bac84a41d5c0bf28d263ea6661fd03f97cf1fb5
   usage:
-    prompt_tokens: 1952
-    completion_tokens: 351
-    total_tokens: 2303
-    reasoning_tokens: 116
+    prompt_tokens: 2970
+    completion_tokens: 456
+    total_tokens: 3426
+    reasoning_tokens: 129
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:07Z'
+  previous_text: I became an object of their scorn. When they see me, they shake their heads.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:08Z'
+  previous_text: They treat me with scorn. When they see me, they shake their heads at me.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 92df4d037f7adf05114e5846bc8a2d7263b6576b0488607eda8dc609c5309e35
+  review_summary: 'The added “at me” is a warranted and useful clarification: the immediately preceding “When they see me” makes the target of the head-shaking clear. However, the first sentence should retain the source’s emphasis that the speaker has become the object of contempt, rather than only saying that others presently treat him contemptuously. The recommended wording keeps that emphasis while remaining natural and clear.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

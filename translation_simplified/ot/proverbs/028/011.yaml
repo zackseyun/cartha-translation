@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/028/011.yaml
-  text: A rich man is wise in his own eyes[a], but a poor man who has understanding searches him out.
-  footnotes:
-  - marker: a
-    text: Or "finds him out" or "investigates him." The Hebrew verb can carry the sense of searching out, examining, or penetrating someone's true character.
-    reason: lexical_alternative
+  text: A rich man is wise in his own eyes, but a poor man of understanding examines him.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,56 +27,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A rich man sees himself as wise, but a poor man with understanding examines him carefully.
+  text: A rich man thinks he is wise, but a poor man with understanding examines him carefully.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: is wise in his own eyes
-  simplified_phrase: sees himself as wise
-  preserved_meaning: The rich man considers himself wise, whether or not he truly is.
-  reasoning_layer_used: lexical decisions for חָכָם and בְּעֵינָיו
-  rationale: This expresses the Hebrew idiom of self-estimation in direct modern English.
-- pob_phrase: searches him out
+  simplified_phrase: thinks he is wise
+  preserved_meaning: The rich man considers himself wise.
+  reasoning_layer_used: POB lexical decision for בְּעֵינָיו
+  rationale: The plain wording directly expresses the Hebrew idiom of self-estimation.
+- pob_phrase: a poor man of understanding
+  simplified_phrase: a poor man with understanding
+  preserved_meaning: The poor man is discerning despite his poverty.
+  reasoning_layer_used: POB lexical decision for מֵבִין
+  rationale: “With understanding” is more natural English while retaining the attributive sense.
+- pob_phrase: examines him
   simplified_phrase: examines him carefully
-  preserved_meaning: The discerning poor man subjects the rich man to searching scrutiny.
-  reasoning_layer_used: lexical decision and footnote for יַחְקְרֶנּוּ
-  rationale: This preserves the investigative force without claiming a specific discovery or result.
+  preserved_meaning: The poor man subjects the rich man to close investigation.
+  reasoning_layer_used: POB lexical decision and applied revision for יַחְקְרֶנּוּ
+  rationale: “Carefully” makes the investigative force clear without stating what he discovers.
+interpretive_expansions:
+- pob_phrase: wise in his own eyes
+  rendering: thinks he is wise
+  claim: The rich man’s wisdom is his own assessment of himself.
+  evidence:
+  - The POB rationale identifies the phrase as an idiom for self-perception.
+  - The immediate phrase “in his own eyes” supplies the subjective sense.
+  confidence: high
+  alternatives_preserved:
+  - is wise in his own eyes
 translation_notes:
   risk_flags:
-  - risk: “Examines him carefully” makes the intensity of the searching image explicit.
-    mitigation: The wording stays within the documented senses of searching out and examining.
+  - risk: “Examines him carefully” could be read as implying that the rich man is exposed as foolish.
+    mitigation: The wording states only the act of examination and does not specify its outcome.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/028/011.yaml
   source_text_sha256: 680ba5004efeb3cdc227f08e5f8a76763eaf48bd5d4331f6bdcb31acf4edba01
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 2a5b9f322eb86a6bc814d9a796cec06723d9a19bbcee42d8ae0741e48dd49731
-  timestamp: '2026-07-12T09:53:18Z'
-  output_hash: 3503c69a3b42bcee819699b2654bdd25c5c62cc641175165e946bc492a7de0e6
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 55b5d474c622951bad1b9d2774f90c2c0f417a561996625033d328b0458d5088
+  timestamp: '2026-08-28T23:04:52Z'
+  output_hash: 5fb344f5c8c7ef439e2e28d7ab3912039a6f31c32c6523be27e71c21e63e7da3
   usage:
-    prompt_tokens: 3162
-    completion_tokens: 266
-    total_tokens: 3428
-    reasoning_tokens: 0
+    prompt_tokens: 2446
+    completion_tokens: 642
+    total_tokens: 3088
+    reasoning_tokens: 215
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: searches him out
-  rendering: examines him and finds out what he is really like
-  claim: The examination reveals the rich man's true character or condition.
-  evidence:
-  - The POB lexical rationale says the verb can penetrate or expose the rich man's true condition or pretensions.
-  - The POB footnote includes examining and penetrating someone's true character.
-  confidence: high
-  alternatives_preserved:
-  - investigates him
-  - finds him out
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:18Z'
   previous_text: A rich man sees himself as wise, but a poor man with understanding examines him and finds out what he is really like.
@@ -92,3 +91,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:04:52Z'
+  previous_text: A rich man sees himself as wise, but a poor man with understanding examines him carefully.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

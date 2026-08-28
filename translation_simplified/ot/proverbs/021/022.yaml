@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/021/022.yaml
-  text: A wise man goes up against the city of mighty men and brings down the stronghold in which they trust[a].
+  text: A wise man goes up against a city of mighty men and brings down the strength in which it trusts.[a]
   footnotes:
   - marker: a
-    text: Or 'A wise man goes up to the city of warriors and brings down the strength of its confidence.' The Hebrew allows a more literal rendering with 'strength' rather than 'stronghold,' but the context favors a concrete defensive sense.
-    reason: lexical_alternative
+    text: Literally, “brings down the strength of its confidence”; that is, the strength in which the city trusts.
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,60 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A wise man attacks a city of mighty men and tears down the stronghold they trust in.[a]
+  text: A wise man advances against a city defended by mighty men. He brings down the strength that the city trusts in.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “brings down the strength they depend on.”
-    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: goes up against
-  simplified_phrase: attacks
-  preserved_meaning: The wise man advances against the city as an enemy.
-  reasoning_layer_used: The lexical rationale identifies a military sense for the Hebrew verb.
-  rationale: “Attacks” states the military action directly in common English.
-- pob_phrase: brings down
-  simplified_phrase: tears down
-  preserved_meaning: The wise man overcomes the city’s trusted defense.
-  reasoning_layer_used: The lexical decisions support the concrete image of defeating a stronghold.
-  rationale: “Tears down” makes the defeat of the stronghold vivid and clear.
+  simplified_phrase: advances against
+  preserved_meaning: The wise man moves against the city in a military sense.
+  reasoning_layer_used: Lexical decision for עָלָה
+  rationale: “Advances against” makes the military idiom immediately clear without overstating the action.
+- pob_phrase: a city of mighty men
+  simplified_phrase: a city defended by mighty men
+  preserved_meaning: The city is identified by its powerful male defenders.
+  reasoning_layer_used: Lexical decision for עִיר גִּבֹּרִים
+  rationale: The recast phrase clarifies how the mighty men relate to the city while retaining the Hebrew image.
+- pob_phrase: and brings down the strength in which it trusts
+  simplified_phrase: He brings down the strength that the city trusts in
+  preserved_meaning: Wisdom overcomes the source of strength on which the personified city depends.
+  reasoning_layer_used: Source audit and lexical decisions for עֹז and מִבְטֶחָה
+  rationale: A new sentence and an explicit noun remove pronoun confusion while preserving “strength” and the city as referent.
+interpretive_expansions:
+- pob_phrase: a city of mighty men
+  rendering: a city defended by mighty men
+  claim: The mighty men are presented as the city's powerful defenders in this military setting.
+  evidence:
+  - The immediate wording describes advancing against and bringing down a city's strength.
+  - The lexical audit notes martial overtones and a defended-city context.
+  confidence: high
+  alternatives_preserved:
+  - a city of mighty men
 translation_notes:
   risk_flags:
-  - risk: “Stronghold” interprets the Hebrew word for “strength” as a concrete defense.
-    mitigation: The footnote preserves the abstract lexical alternative.
+  - risk: “Defended by” makes the relationship within “city of mighty men” more explicit.
+    mitigation: The military context and POB lexical rationale directly support this bounded clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/021/022.yaml
   source_text_sha256: 42b0dd51bf0e4bd779976457d139907f912e2ec9507e7b8d4c37fc928e34b833
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 739ad38a80dbfe1cfe62779ebeebd64d1592109f272a66b9c2e7a9f34580b3a9
-  timestamp: '2026-07-12T09:52:45Z'
-  output_hash: 7b6e236a20276d8eaa3e60fe7d25e9f5da2c0eca38338bf87be9b39882ae601c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 48ac2ec6eb4102f133c17c648aa102bbb0e1597821bc04e565d6c7521a6b99a5
+  timestamp: '2026-08-28T23:02:02Z'
+  output_hash: 6c5dd2884a78bb649678238bf9ace10f24c3bc35ff627a8ffc5edcbdca488688
   usage:
-    prompt_tokens: 3237
-    completion_tokens: 271
-    total_tokens: 3508
-    reasoning_tokens: 0
+    prompt_tokens: 2629
+    completion_tokens: 795
+    total_tokens: 3424
+    reasoning_tokens: 329
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: the city of mighty men
-  rendering: a city held by mighty warriors
-  claim: The mighty men are presented as the city’s military defenders or possessors.
-  evidence:
-  - The lexical rationale notes the martial overtones of “mighty men.”
-  - The immediate context describes an attack on a defended city.
-  confidence: high
-  alternatives_preserved:
-  - a city of mighty men
-  - a city of warriors
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:45Z'
   previous_text: A wise man attacks a city held by mighty warriors and tears down the stronghold they trust in.[a]
@@ -96,3 +95,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:02Z'
+  previous_text: A wise man attacks a city of mighty men and tears down the stronghold they trust in.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

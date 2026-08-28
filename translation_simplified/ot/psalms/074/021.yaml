@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/074/021.yaml
-  text: Do not let the oppressed turn back ashamed[a][b]; let the poor and needy praise your name.
+  text: Do not let the oppressed[a] turn back ashamed[b]; let the poor and needy praise your name.
   footnotes:
   - marker: a
-    text: Or 'disgraced' for 'ashamed.' The Hebrew can include the sense of public humiliation.
+    text: Or “the crushed” or “the downtrodden.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'the crushed' / 'the downtrodden' for 'the oppressed.'
+    text: Or “disgraced.” The Hebrew can include the sense of public humiliation.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,41 +34,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not let oppressed people turn back ashamed; let the poor and needy praise your name.
+  text: Do not let oppressed people[a] go away in shame.[b] Let the poor and needy praise your name.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “people who have been crushed” or “downtrodden.”
+    reason: lexical_alternative
+  - marker: b
+    text: The Hebrew literally says “turn back ashamed”; this may include public disgrace.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: the oppressed turn back ashamed
-  simplified_phrase: oppressed people turn back ashamed
-  preserved_meaning: The prayer asks that oppressed people not return in shame or humiliation.
-  reasoning_layer_used: POB lexical decisions for יָשֹׁב, דַּךְ, and נִכְלָם
-  rationale: “People” makes the collective reference explicit while “turn back” preserves the Hebrew return image.
+- pob_phrase: the oppressed
+  simplified_phrase: oppressed people
+  preserved_meaning: People who are crushed or downtrodden remain the focus.
+  reasoning_layer_used: POB lexical decision for דַּךְ
+  rationale: Adding “people” makes the description immediately clear without narrowing its meaning.
+- pob_phrase: turn back ashamed
+  simplified_phrase: go away in shame
+  preserved_meaning: The prayer asks that oppressed people not depart without relief and in disgrace.
+  reasoning_layer_used: POB lexical rationale for שׁוב and כלם
+  rationale: The natural English phrase clarifies the situation while the footnote preserves the Hebrew image.
 translation_notes:
   risk_flags:
-  - risk: “Ashamed” may be heard as private embarrassment rather than public disgrace.
-    mitigation: It retains POB’s chosen wording without forcing the stronger possible nuance.
+  - risk: “Go away” is less pictorial than the Hebrew “turn back.”
+    mitigation: A source note retains the literal image and its shame nuance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/074/021.yaml
   source_text_sha256: ab055e629daf524f6582edded6b1f1f1a6ba53efe3417884aef477b6aa9bf7be
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: bfe25d0fb1c378b1061cde875d7858f9f20a33fa8dd9275d22bd7b24309df68d
-  timestamp: '2026-07-12T10:00:50Z'
-  output_hash: 3dba7084daa106cbbd55a5f830fdd553b1b60d1c4faf5893f5e1f5778feae141
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 86849b46e496fa681bb35fc7a97bbb4a690db5492f3aa204e980b3f8028ce59c
+  timestamp: '2026-08-28T22:56:25Z'
+  output_hash: e54eb6d83ab02114528acd8403c34ae37b8d949d55be8dd9b65acc3a82bd0dd8
   usage:
-    prompt_tokens: 3214
-    completion_tokens: 202
-    total_tokens: 3416
-    reasoning_tokens: 0
+    prompt_tokens: 2761
+    completion_tokens: 1178
+    total_tokens: 3939
+    reasoning_tokens: 857
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:50Z'
   previous_text: Do not let oppressed people go away ashamed; let the poor and needy praise your name.
@@ -80,3 +90,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:25Z'
+  previous_text: Do not let oppressed people turn back ashamed; let the poor and needy praise your name.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

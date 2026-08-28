@@ -11,16 +11,19 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/149/003.yaml
-  text: Let them praise his name with dancing[a][b][c]; let them make music to him with tambourine and lyre.
+  text: Let them praise his name with dancing[a]; let them make music[b] to him with drum[c] and lyre[d].
   footnotes:
   - marker: a
-    text: Traditionally 'harp'; the Hebrew כִּנּוֹר more specifically refers to a lyre-like stringed instrument.
+    text: Or “with the dance.” The Hebrew can denote dancing as an activity or a dance form.
     reason: lexical_alternative
   - marker: b
-    text: Or 'sing praises to him.' The verb זמר can refer to sung praise as well as instrumental music-making.
+    text: Or “sing praises.” The verb can refer to sung praise as well as music-making.
     reason: lexical_alternative
   - marker: c
-    text: Or 'with the dance.' The Hebrew מָחוֹל can denote either dancing as an activity or a dance setting/form.
+    text: The Hebrew denotes a hand-held frame drum; traditionally, “tambourine” or “timbrel.”
+    reason: lexical_alternative
+  - marker: d
+    text: Traditionally, “harp”; the Hebrew refers to a lyre-like stringed instrument.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,50 +40,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Let them praise his name with dancing.[a] Let them make music to him with tambourine and lyre.[b]
+  text: Let them dance as they praise his name. Let them make music to him with a hand drum and a lyre.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can refer either to dancing in general or to a particular dance.
-    reason: lexical_alternative
-  - marker: b
-    text: “Make music” can also include singing praise.
-    reason: lexical_alternative
+    text: A lyre is an ancient stringed instrument, similar to a small harp.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: Let them praise his name with dancing
-  simplified_phrase: Let them praise his name with dancing
-  preserved_meaning: Dancing is the manner or accompaniment of praising God's name.
-  reasoning_layer_used: POB lexical decisions for יְהַלְלוּ, שְׁמוֹ, and בְמָחוֹל
-  rationale: The POB wording is already clear and avoids separating praise and dancing into distinct actions.
-- pob_phrase: let them make music to him with tambourine and lyre
-  simplified_phrase: Let them make music to him with tambourine and lyre
-  preserved_meaning: Musical praise, whether played or sung, is directed to God with the named instruments.
-  reasoning_layer_used: POB lexical decisions for זמר, תֹף, כִּנּוֹר, and לוֹ
-  rationale: The plain wording retains the broad musical sense and identifies the ancient instruments accurately.
+- pob_phrase: praise his name with dancing
+  simplified_phrase: dance as they praise his name
+  preserved_meaning: Dancing accompanies their praise of God's name.
+  reasoning_layer_used: POB lexical decision for בְמָחוֹל
+  rationale: The reordered clause states the same relationship in more natural English.
+- pob_phrase: drum
+  simplified_phrase: hand drum
+  preserved_meaning: The instrument is a hand-held frame drum.
+  reasoning_layer_used: POB footnote c and lexical decision for בְּתֹף
+  rationale: “Hand drum” gives modern readers a clearer picture without implying a tambourine.
+- pob_phrase: lyre
+  simplified_phrase: lyre
+  preserved_meaning: The ancient lyre-like stringed instrument remains distinct.
+  reasoning_layer_used: POB lexical decision for וְכִנּוֹר
+  rationale: The source-accurate term is retained and briefly explained in a note.
+interpretive_expansions:
+- pob_phrase: drum
+  rendering: hand drum
+  claim: The drum was designed to be held and played by hand.
+  evidence:
+  - POB footnote c identifies the Hebrew instrument as a hand-held frame drum.
+  confidence: high
+  alternatives_preserved:
+  - drum
+  - timbrel
+  - tambourine
 translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/149/003.yaml
   source_text_sha256: 14ddf98b4a7144c7dde2a16a2f5b34ea6814415c907752bd88f2db3cf106a509
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 6dae624a2e67062b944cd5d159bc5631184d1ad59b0f4884d4d119a207266bf5
-  timestamp: '2026-07-12T10:03:47Z'
-  output_hash: 8dde9b3fe0552ebd0511199479227ebe75074ce6c03f1117a755959750866d2b
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 2128253aad68ea469aab3eeba5da627db62da5b7369b1754cffbc60fafc6711b
+  timestamp: '2026-08-28T23:02:03Z'
+  output_hash: 786ad61651d39de82ca9cc4b3f3bf159f899258615fb0f438323ae2a89fa8eb8
   usage:
-    prompt_tokens: 3396
-    completion_tokens: 336
-    total_tokens: 3732
-    reasoning_tokens: 0
+    prompt_tokens: 2708
+    completion_tokens: 794
+    total_tokens: 3502
+    reasoning_tokens: 395
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:47Z'
   previous_text: Let them dance as they praise his name.[a] Let them make music to him with tambourine and lyre.[b]
@@ -92,3 +106,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:03Z'
+  previous_text: Let them praise his name with dancing.[a] Let them make music to him with tambourine and lyre.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

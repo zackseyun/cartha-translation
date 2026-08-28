@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/009/002.yaml
-  text: I will rejoice and exult in you[a]; I will sing praise to your name[b], Most High.
+  text: I will rejoice and exult in you[a]; I will sing praise to your name, Most High.[b]
   footnotes:
   - marker: a
-    text: Or 'I will be glad and rejoice in you.'
+    text: Or “I will be glad and rejoice in you.”
     reason: lexical_alternative
   - marker: b
-    text: Hebrew 'Most High,' a divine title for God.
+    text: “Most High” is a divine title for God.
     reason: cultural_note
   ai_draft:
     model_id: gpt-5.4
@@ -34,47 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I will be glad and rejoice greatly in you. I will sing praise to your name, Most High.[a]
+  text: I will rejoice in you and be filled with great joy because of you. I will sing praise to your name, Most High.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: “Most High” is a title for God.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: I will rejoice and exult in you
-  simplified_phrase: I will be glad and rejoice greatly in you
-  preserved_meaning: The speaker expresses two levels of joy centered in God, with the second conveying exuberant celebration.
+- pob_phrase: rejoice and exult in you
+  simplified_phrase: rejoice in you and be filled with great joy because of you
+  preserved_meaning: Both expressions describe joy centered in God, and the second remains more intense.
   reasoning_layer_used: POB lexical decisions for אֶשְׂמְחָה, וְאֶעֶלְצָה, and בָךְ
-  rationale: Common words replace “exult” while preserving its heightened force and the phrase “in you.”
-- pob_phrase: I will sing praise to your name
-  simplified_phrase: I will sing praise to your name
-  preserved_meaning: The speaker promises musical praise directed to God's revealed name.
-  reasoning_layer_used: POB lexical decisions for אֲזַמְּרָה and שִׁמְךָ
-  rationale: The clear biblical phrase is retained because simplifying “name” would hide an important source concept.
-- pob_phrase: Most High
-  simplified_phrase: Most High
-  preserved_meaning: God is addressed by the Hebrew divine title.
-  reasoning_layer_used: POB theological decision for עֶלְיוֹן
-  rationale: The title remains in the text, with a short note for readers unfamiliar with it.
-translation_notes: {}
+  rationale: The familiar phrase “filled with great joy” communicates the force of “exult” while “because of you” clearly connects that joy to God.
+- pob_phrase: I will rejoice and exult in you; I will sing praise
+  simplified_phrase: I will rejoice in you and be filled with great joy because of you. I will sing praise
+  preserved_meaning: The speaker resolves both to rejoice in God and to praise him in song.
+  reasoning_layer_used: POB optimal-equivalence philosophy and source clause structure
+  rationale: Two sentences make the parallel commitments easy to follow without merging them.
+interpretive_expansions:
+- pob_phrase: in you
+  rendering: in you ... because of you
+  claim: The phrase relating the joy to God applies clearly to both expressions of joy.
+  evidence:
+  - The Hebrew places בָךְ after two coordinated joy verbs.
+  - The POB rationale describes God as the sphere or object of the rejoicing.
+  confidence: high
+  alternatives_preserved:
+  - in you
+  - because of you
+translation_notes:
+  risk_flags:
+  - risk: “Because of you” can sound merely causal rather than describing joy centered in God.
+    mitigation: The retained phrase “rejoice in you” preserves the POB’s primary relational wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/009/002.yaml
   source_text_sha256: 9ef0e54ab585cf5e4a8ed0cb01dade7b36304873cbcc8dabcd27a0f8c09f823f
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: e3e8acacd0db49e5352493566a81ee3764e68cd53c55fdde52cad70afdfdadd8
-  timestamp: '2026-07-11T20:00:49Z'
-  output_hash: a2523911465d212f4625b1403a8cd136e513a5164e8a6266b55da5854b9968c3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5422fd49be198e8606b3d3ab7d954e72e4f0a5400133538357254f07756c85fd
+  timestamp: '2026-08-28T23:35:04Z'
+  output_hash: 1092819ebdf3ad61427b8aa7c06916a36dbd07ed3b02f1a1b939c0e52e0fc4a0
   usage:
-    prompt_tokens: 2449
-    completion_tokens: 841
-    total_tokens: 3290
-    reasoning_tokens: 461
+    prompt_tokens: 3424
+    completion_tokens: 747
+    total_tokens: 4171
+    reasoning_tokens: 281
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:13Z'
+  previous_text: I will be glad and rejoice greatly in you. I will sing praise to your name, Most High.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:04Z'
+  previous_text: I will rejoice in you and celebrate with great joy. I will sing praise to your name, Most High.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 893e136f3066a6ebcba6a43dbb09b098682b635ac7df26cda3d55a6b69090d29
+  review_summary: The draft successfully makes “exult” understandable without importing doctrine, and its treatment of “Most High” is sound. Revision is needed because the current word order weakens the source-text connection of the second joy expression to God. The replacement keeps the heightened second expression while making its God-centered basis explicit, using a lexical alternative already recognized in the POB audit trail.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/031/019.yaml
-  text: if I have seen anyone perishing for lack of clothing[b][a], or the needy without covering—
+  text: if I have seen anyone perishing for lack of clothing[a], or the needy[b] without covering—
   footnotes:
   - marker: a
-    text: Or 'without clothing' for 'for lack of clothing.'
+    text: Or “without clothing.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'the poor' instead of 'the needy.'
+    text: Or “the poor.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,42 +34,58 @@ base_translation:
     changes_summary: Changed 'and' to 'or' to reflect the Hebrew conjunction here more naturally in this conditional parallelism; otherwise retained the draft wording.
 translation:
   language: en
-  text: if I have seen someone perishing because they had no clothes, or a needy person with no garment to wear—
+  text: If I have seen anyone dying[a] because they had no clothes, or a needy person without anything to wear—
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew may also mean “coming to ruin.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: anyone perishing for lack of clothing
-  simplified_phrase: someone perishing because they had no clothes
-  preserved_meaning: The person is in an ongoing, desperate condition caused by having no clothing.
+  simplified_phrase: anyone dying because they had no clothes
+  preserved_meaning: The person is in an ongoing, life-threatening state because clothing is absent.
   reasoning_layer_used: POB lexical decisions for אֹבֵד and מִבְּלִי לְבוּשׁ
-  rationale: The rewrite states the causal deprivation in ordinary English.
+  rationale: This states the grave condition and its cause in direct modern English.
 - pob_phrase: the needy without covering
-  simplified_phrase: a needy person with no garment to wear
-  preserved_meaning: A materially deprived person lacks a garment for bodily covering.
-  reasoning_layer_used: POB lexical decisions for כְּסוּת and לָאֶבְיוֹן; independent grounding review
-  rationale: “Garment to wear” keeps the concrete clothing sense and avoids suggesting broader protection.
-translation_notes: {}
+  simplified_phrase: a needy person without anything to wear
+  preserved_meaning: A materially deprived person lacks any garment or clothing.
+  reasoning_layer_used: POB lexical decisions for אֶבְיוֹן and כְּסוּת
+  rationale: This avoids suggesting a blanket while preserving the parallel image of lacking clothing.
+interpretive_expansions:
+- pob_phrase: anyone perishing
+  rendering: anyone dying
+  claim: The person's lack of clothing has placed their life in immediate danger.
+  evidence:
+  - The POB audit says אֹבֵד describes someone perishing or ruined in an ongoing severe state.
+  - The immediate phrase identifies lack of clothing as the cause of that state.
+  confidence: moderate
+  alternatives_preserved:
+  - The footnote preserves the broader possibility of coming to ruin.
+translation_notes:
+  risk_flags:
+  - risk: “Dying” may narrow a Hebrew term that can also refer more broadly to coming to ruin.
+    mitigation: A lexical footnote preserves the broader alternative while the main text retains the reviewed severity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/031/019.yaml
   source_text_sha256: 310a851fce83657311e8217ef9965f4ff36607bb0c2e0254eea203b70af9506f
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 61d48cba46cc00af61717c9358f630edc5703c1ab60952f43e2c74b596530fda
-  timestamp: '2026-07-12T09:40:14Z'
-  output_hash: 1658efd2cf91f0ad917c7cb84e268f4b66372e3741f3d41833bf9e927b859937
+  prompt_sha256: df1b914fa709b0e4fa0701dcb82cbd22def82de268a68acca4e59300f70ee96c
+  timestamp: '2026-08-28T23:34:57Z'
+  output_hash: 8d1355d72caf6c983d690aca0fed9705dd1287f7838f9188ec04c52540160118
   usage:
-    prompt_tokens: 3234
-    completion_tokens: 259
-    total_tokens: 3493
-    reasoning_tokens: 0
+    prompt_tokens: 3462
+    completion_tokens: 899
+    total_tokens: 4361
+    reasoning_tokens: 470
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:40:14Z'
@@ -81,4 +97,23 @@ spob_revision_history:
   review_summary: The first clause is a warranted, clearer rendering of a person perishing through lack of clothing; “because” appropriately makes explicit the deprivation expressed in the POB audit trail. The second clause should retain the concrete garment sense of כְּסוּת rather than use the broader, potentially ambiguous “nothing to cover them.” The recommended wording is clear, preserves the parallelism, and does not add doctrinal or contextual claims.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:18Z'
+  previous_text: if I have seen someone perishing because they had no clothes, or a needy person with no garment to wear—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:51:36Z'
+  previous_text: if I have seen someone perishing because they had no clothes, or a needy person with nothing to cover them—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:57Z'
+  previous_text: If I have seen someone in desperate condition because they had no clothes, or a needy person with nothing to cover them—
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 83ce48dea62e6e4bca61a74d3a705a3cb6a6a3fd9a83aa5b80a21bcb19f2ef63
+  review_summary: Revision is needed because the first simplification makes the person's plight substantially less severe than “perishing.” The recommended wording is clear modern English while retaining the verse's concrete lack of clothing and grave consequence. No doctrinal expansion or reliance on external interpreters is present.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

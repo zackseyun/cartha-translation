@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/008/008.yaml
-  text: We have a little sister[a], and she has no breasts. What shall we do for our sister on the day when she is spoken for?
+  text: We have a little sister, and she has no breasts. What shall we do for our sister on the day when she is spoken for[a]?
   footnotes:
   - marker: a
-    text: Or, 'on the day when she is spoken about.' The Hebrew may refer generally to discussion concerning her, though in context it likely points to marriage negotiations.
+    text: Or, “on the day when she is spoken about.” The Hebrew may refer generally to discussion concerning her, though in context it likely points to marriage negotiations.
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,57 +31,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: We have a little sister, and she has no breasts. What should we do for her when there is talk of her marrying?[a]
+  text: We have a young sister, and she has no breasts yet. What should we do for our sister when her marriage is being discussed?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “when people talk about her.” The Hebrew may refer to discussion about her generally, though marriage discussions are likely in this context.
+    text: The Hebrew may also mean “when people speak about her,” though the context likely refers to marriage discussions.
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: What shall we do for our sister
-  simplified_phrase: What should we do for her
-  preserved_meaning: The family is considering what action to take for their sister.
-  reasoning_layer_used: POB lexical decision for מַה נַּעֲשֶׂה and לַאֲחֹתֵנוּ
-  rationale: “Should” is more natural in modern deliberation, and “her” avoids unnecessary repetition.
+- pob_phrase: little sister
+  simplified_phrase: young sister
+  preserved_meaning: She is the younger, physically immature sister in the family.
+  reasoning_layer_used: POB lexical decision for קְטַנָּה and the immediate context
+  rationale: “Young” makes the intended sense of “little” clear without assigning a specific age.
+- pob_phrase: she has no breasts
+  simplified_phrase: she has no breasts yet
+  preserved_meaning: Her body has not yet reached sexual maturity.
+  reasoning_layer_used: POB lexical decision for וְשָׁדַיִם אֵין לָהּ and immediate context
+  rationale: “Yet” clarifies the developmental setting while preserving the Hebrew’s concrete image.
 - pob_phrase: on the day when she is spoken for
-  simplified_phrase: when there is talk of her marrying
-  preserved_meaning: The question concerns the time when marriage is discussed for her.
-  reasoning_layer_used: POB lexical rationale and alternative-reading footnote for שֶׁיְּדֻבַּר בָּהּ
-  rationale: The new wording makes the likely marriage setting clear while the footnote preserves the broader possibility.
+  simplified_phrase: when her marriage is being discussed
+  preserved_meaning: The family anticipates marriage-related discussion concerning the sister.
+  reasoning_layer_used: POB lexical rationale, footnote, and chapter context
+  rationale: This wording explains the likely marriage sense without adding a specific proposer or proposal.
 interpretive_expansions:
-- pob_phrase: she is spoken for
-  rendering: there is talk of her marrying
-  claim: The discussion likely concerns marriage negotiations or betrothal.
+- pob_phrase: when she is spoken for
+  rendering: when her marriage is being discussed
+  claim: The speaking likely concerns marriage negotiations or betrothal discussion.
   evidence:
-  - The POB lexical rationale identifies marriage negotiations as the likely contextual sense.
-  - The POB footnote preserves general discussion as an alternative.
+  - The POB lexical rationale identifies marriage negotiations or betrothal discussion as the likely contextual sense.
+  - The following verse continues the siblings’ deliberation about how to respond concerning her.
   confidence: moderate
   alternatives_preserved:
-  - when people talk about her
+  - when people speak about her
 translation_notes:
   risk_flags:
-  - risk: The marriage wording could seem more specific than the Hebrew requires.
-    mitigation: The footnote preserves the broader sense of discussion about her.
-  - risk: “She has no breasts” may sound unusually blunt to modern readers.
-    mitigation: The direct image is retained because the POB reasoning rejects interpretive softening.
+  - risk: “Her marriage is being discussed” makes the likely marriage context explicit.
+    mitigation: The footnote preserves the broader Hebrew sense, “when people speak about her.”
+  - risk: “Yet” explicitly presents her condition as developmental.
+    mitigation: Her youth and the anticipated future discussion strongly support this temporal implication.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/008/008.yaml
   source_text_sha256: 2e971930b38f73b8d7222302392f92705e12753eeb86e5befbf21500ee64e67e
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ac79776a40412819f0f090bce11cfe5caad1eb82a5db4309d7e81691189ca87e
-  timestamp: '2026-07-11T21:25:09Z'
-  output_hash: 273c3a3465d03eaf30aa1aa5c59013a383a1cc0af20166fd8e9e62b731cddacb
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a5a639d2f579fafda1cc9f3e0980ac046ded7f83846fd89ac2485526ee67c32c
+  timestamp: '2026-08-28T23:33:40Z'
+  output_hash: 78a29ab58e9aa21d50581b29c30cbee08ed8fcc08da7548b0c0dae1f9d8b8faf
   usage:
-    prompt_tokens: 2498
-    completion_tokens: 1090
-    total_tokens: 3588
-    reasoning_tokens: 603
+    prompt_tokens: 3780
+    completion_tokens: 612
+    total_tokens: 4392
+    reasoning_tokens: 90
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:10:41Z'
+  previous_text: We have a little sister, and she has no breasts. What should we do for her when there is talk of her marrying?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:40Z'
+  previous_text: We have a young sister, and she has no breasts yet. What should we do for her when someone asks to marry her?[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 62ac33f4bb887d3f1da40195d71ae5cfbaf02de751fbba2b754aa3e894278a20
+  review_summary: The draft is meaningfully clearer in rendering “little” as “young” and in making the developmental force of the physical description accessible. “Yet” is contextually warranted by the sister’s youth and the anticipated future marriage setting. However, “when someone asks to marry her” adds an unexpressed actor and turns broader marriage negotiations/discussion into a particular proposal. Revising it to “when her marriage is being discussed” retains the contextually warranted clarification while avoiding that unnecessary narrowing.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

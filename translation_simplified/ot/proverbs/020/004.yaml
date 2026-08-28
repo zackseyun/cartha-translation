@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/020/004.yaml
-  text: Because of winter[a], the lazy man does not plow; at harvest he seeks[b], and there is nothing.
+  text: Because of winter[a], the lazy man does not plow; at harvest he asks[b], and there is nothing.
   footnotes:
   - marker: a
-    text: Or 'In winter the lazy man does not plow.' The Hebrew preposition may be taken temporally ('in winter') or causally ('because of winter').
+    text: Or “In winter the lazy man does not plow.” The Hebrew preposition may be temporal or causal.
     reason: lexical_alternative
   - marker: b
-    text: Or 'he asks at harvest.' The Hebrew verb can mean 'ask' or, by implication here, 'seek/request' produce when harvest comes.
+    text: Or “he seeks” or “he asks for produce.” The Hebrew verb ordinarily means “asks”; its object is unstated.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,55 +34,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The lazy man does not plow because it is winter.[a] At harvest he looks for something,[b] but there is nothing.
+  text: Because of winter, the lazy man does not plow.[a] When harvest comes, he asks,[b] but there is nothing.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “The lazy man does not plow in winter.” The Hebrew can describe either the time or his reason for not plowing.
+    text: Or “The lazy man does not plow in winter.” The Hebrew may refer either to the time or to winter as the cause.
     reason: lexical_alternative
   - marker: b
-    text: Or “he asks for something.” The Hebrew can mean either ask or seek.
+    text: The Hebrew says “asks” without stating what he asks for; the context may imply produce.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Because of winter, the lazy man does not plow
-  simplified_phrase: The lazy man does not plow because it is winter
-  preserved_meaning: Winter serves as his reason for failing to plow.
-  reasoning_layer_used: POB lexical decision for מֵחֹרֶף
-  rationale: Ordinary clause order makes the causal meaning easier to grasp.
-- pob_phrase: at harvest he seeks
-  simplified_phrase: At harvest he looks for something
-  preserved_meaning: When harvest arrives, he seeks what his neglected work should have produced.
-  reasoning_layer_used: POB lexical decisions for ישאל and בַּקָּצִיר
-  rationale: “Looks for something” is clearer modern English while leaving the object unstated.
+  simplified_phrase: Because of winter, the lazy man does not plow
+  preserved_meaning: Winter is the cause or deterrent for his failure to plow, without asserting his personal motive.
+  reasoning_layer_used: POB lexical decision for מֵחֹרֶף and grounding review
+  rationale: The causal wording avoids the unsupported suggestion that winter is his stated excuse.
+- pob_phrase: at harvest
+  simplified_phrase: When harvest comes
+  preserved_meaning: The consequence becomes evident at harvest time.
+  reasoning_layer_used: POB lexical decision for בַּקָּצִיר
+  rationale: A time clause is easier to read in modern English.
 - pob_phrase: and there is nothing
   simplified_phrase: but there is nothing
-  preserved_meaning: His failure to work leaves nothing available at harvest.
+  preserved_meaning: His asking meets the complete absence of the expected result.
   reasoning_layer_used: POB lexical decision for וָאָיִן
-  rationale: “But” makes the resulting contrast natural without specifying what is absent.
+  rationale: “But” makes the proverb’s contrast clear without changing its outcome.
 translation_notes:
   risk_flags:
-  - risk: The causal wording may obscure the possible temporal reading “in winter.”
-    mitigation: Footnote a preserves the documented alternative.
-  - risk: “Looks for something” may sound broader than seeking or requesting produce.
-    mitigation: The harvest setting and footnote b preserve the intended range without naming an object.
+  - risk: The Hebrew may describe when he does not plow rather than why.
+    mitigation: Footnote a preserves the temporal reading.
+  - risk: The object of his asking is unstated.
+    mitigation: Footnote b notes the possible implication of produce without adding it to the text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/020/004.yaml
   source_text_sha256: 499dc06b59391bc6873e0d5c5f71ce02edc93960ab697c2b8318865bafc4a5f2
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ae97cc022188efd844419528e69e37aebba85c8256e82fb1568e51b31579458d
-  timestamp: '2026-07-11T21:22:42Z'
-  output_hash: 95834c5b513fe74c2e3229d39382856923ca103c76a2f56c93fa319581c04e77
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4ab5f825a4cf2c5a71dd3312c55908377fb83edcb5555dce144beb8f781f6766
+  timestamp: '2026-08-28T23:34:38Z'
+  output_hash: ba56cb8eea15bc1c2214a56054e3bc61fefa265b57b63ee73e44576055a8561b
   usage:
-    prompt_tokens: 2438
-    completion_tokens: 639
-    total_tokens: 3077
-    reasoning_tokens: 186
+    prompt_tokens: 3525
+    completion_tokens: 689
+    total_tokens: 4214
+    reasoning_tokens: 242
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:16Z'
+  previous_text: The lazy man does not plow because it is winter.[a] At harvest he looks for something,[b] but there is nothing.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:38Z'
+  previous_text: Winter is the lazy man’s reason for not plowing.[a] When harvest comes, he asks,[b] but there is nothing.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 78f2cf5a1191a2d5d5e4ac0ec38a64c2b2d6ee1920e8e243787790222569ba06
+  review_summary: The draft usefully makes the harvest timing and adverse outcome more immediately readable (“When harvest comes” and “but”). However, “Winter is the lazy man’s reason” shifts the causal statement into an assertion about the man’s subjective motive or excuse. Retain the POB’s warranted causal wording, with the temporal alternative in footnote a, while keeping the clearer harvest clause and contrast.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

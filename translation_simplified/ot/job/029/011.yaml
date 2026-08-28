@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/029/011.yaml
-  text: For when an ear heard[a], it called me blessed, and when an eye saw, it testified for me.
+  text: For when an ear heard, it called me blessed, and when an eye saw, it testified about me[a].
   footnotes:
   - marker: a
-    text: Or 'bore witness to me.' The Hebrew verb can mean to testify or bear witness; in context it is favorable testimony about Job.
+    text: Or “bore witness to me.” In context, the testimony is favorable.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,61 +31,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For those who heard about me called me blessed, and those who saw me testified in my favor.
+  text: Those who heard about me called me blessed, and those who saw me gave favorable testimony about me.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “bore witness to me.” The context indicates that their testimony was favorable.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: when an ear heard
-  simplified_phrase: those who heard about me
-  preserved_meaning: The generic ear refers to people who heard of Job, without claiming that everyone did.
-  reasoning_layer_used: POB lexical decisions for אֹזֶן and שָׁמְעָה
-  rationale: Naming the hearers removes unnatural personification while preserving the hearing image.
+  simplified_phrase: Those who heard about me
+  preserved_meaning: Anyone who heard of Job responded positively to him.
+  reasoning_layer_used: POB lexical decision and Hebrew generic body-part imagery
+  rationale: The generic “ear” is recast as the people who heard while retaining the contrast between hearing and seeing.
 - pob_phrase: when an eye saw
   simplified_phrase: those who saw me
-  preserved_meaning: The generic eye refers to people who observed Job, without adding a universal claim.
-  reasoning_layer_used: POB lexical decisions for וְעַיִן and רָאֲתָה
-  rationale: Naming the observers makes the parallel clear in natural English.
-- pob_phrase: it testified for me
-  simplified_phrase: testified in my favor
-  preserved_meaning: Those who saw Job gave favorable testimony about him.
-  reasoning_layer_used: POB lexical decision for וַתְּעִידֵנִי
-  rationale: “In my favor” clearly conveys the positive direction of the testimony.
+  preserved_meaning: People who personally saw Job served as witnesses concerning him.
+  reasoning_layer_used: POB lexical decision and Hebrew parallelism
+  rationale: The generic “eye” becomes natural English without merging sight with hearing.
+- pob_phrase: it testified about me
+  simplified_phrase: gave favorable testimony about me
+  preserved_meaning: What eyewitnesses said about Job was approving rather than merely neutral.
+  reasoning_layer_used: POB footnote, applied revision, and immediate parallel
+  rationale: “About me” avoids implying legal advocacy, while “favorable” makes the contextual tone clear.
 interpretive_expansions:
-- pob_phrase: heard ... saw
-  rendering: heard about me ... saw me
-  claim: Job is the implied object of both hearing and seeing.
+- pob_phrase: it testified about me
+  rendering: gave favorable testimony about me
+  claim: The testimony concerning Job was favorable.
   evidence:
-  - The POB rationale identifies the hearers as people who heard of Job.
-  - The parallel statements describe favorable responses to Job.
+  - The POB footnote explicitly says the testimony is favorable in context.
+  - The parallel statement says hearers called Job blessed.
   confidence: high
   alternatives_preserved:
-  - heard
-  - saw
+  - bore witness to me
+  - testified about me
 translation_notes:
   risk_flags:
-  - risk: Replacing “ear” and “eye” reduces the Hebrew body-part personification.
-    mitigation: The parallel actions of hearing and seeing preserve the sensory contrast in clear English.
+  - risk: Replacing “ear” and “eye” with people reduces the Hebrew body-part imagery.
+    mitigation: The balanced contrast between those who heard and those who saw preserves the image’s main rhetorical force.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/029/011.yaml
   source_text_sha256: 096385742f6128049165e5a3f911fb89b6a96a6a5e67a4c28dd0131b73d90b34
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 416b251e4f38d6c4a4af26e54b59b6b432a6f380e266e745bd989503a44eca08
-  timestamp: '2026-07-12T09:39:47Z'
-  output_hash: 81f8cf01dc57bbf2a9929c025c0528fa0280e627288da3ce80383b09c9d2cc3d
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 03693c4ec3425bc38080691fbbf361ba72e2ebd6e5bcd031975d41d0c589c8b4
+  timestamp: '2026-08-28T22:51:12Z'
+  output_hash: c4c946c84fb0e88c8f13c05e8a56ea7a6901585bc8c9220d957344a035c3bee8
   usage:
-    prompt_tokens: 3179
-    completion_tokens: 643
-    total_tokens: 3822
-    reasoning_tokens: 205
+    prompt_tokens: 2537
+    completion_tokens: 827
+    total_tokens: 3364
+    reasoning_tokens: 368
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:47Z'
   previous_text: For every ear that heard called me blessed, and every eye that saw testified in my favor.
@@ -96,3 +99,8 @@ spob_revision_history:
   review_summary: The favorable sense of “testified in my favor” is warranted by the source verb, immediate context, and POB audit trail. However, “every” adds an unwarranted universal quantifier, and the retained personified body parts are not the clearest simplification. Naming the implied hearers and observers preserves the intended generic sense without overstating it.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:12Z'
+  previous_text: For those who heard about me called me blessed, and those who saw me testified in my favor.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

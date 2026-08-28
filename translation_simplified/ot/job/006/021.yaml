@@ -34,61 +34,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For now you have proved to be no help[a]. You see my terrible condition[b], and you are afraid.
+  text: For now you have proved to be no help.[a] You see something terrifying, and you are afraid.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew is difficult; it may mean “you have become nothing” or “you have become like the unreliable streams” described earlier.
+    text: The Hebrew literally says something like “you have become not”; it may also mean that you have become like the unreliable streams described earlier.
     reason: textual_variant
   - marker: b
-    text: Or “You see my calamity”; the word can refer to terror, dismay, or a shattering disaster.
+    text: Or, “You see calamity and are afraid.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: you have become nothing
   simplified_phrase: you have proved to be no help
-  preserved_meaning: Job’s friends have become useless to him, like the unreliable streams.
-  reasoning_layer_used: POB lexical decision for לא and the preceding stream comparison
-  rationale: This states the contextual sense in natural English while retaining the Hebrew difficulty in a footnote.
+  preserved_meaning: Job’s friends have become useless to him, like the unreliable streams in the preceding comparison.
+  reasoning_layer_used: POB lexical decision and contextual rationale for לא
+  rationale: This states the practical sense clearly while the footnote preserves the difficult Hebrew wording.
 - pob_phrase: you see terror
-  simplified_phrase: You see my terrible condition
-  preserved_meaning: The friends see Job’s terrifying, shattered state.
-  reasoning_layer_used: POB lexical rationale for חֲתַת
-  rationale: This clarifies what the friends see without weakening the image of terror.
-interpretive_expansions:
-- pob_phrase: you see terror
-  rendering: You see my terrible condition
-  claim: The terror or calamity seen is Job’s shattered condition.
-  evidence:
-  - The immediate context concerns the friends’ response to Job’s suffering.
-  - The POB lexical rationale identifies the object as Job’s calamity or shattered condition.
-  confidence: high
-  alternatives_preserved:
-  - terror
-  - calamity
+  simplified_phrase: You see something terrifying
+  preserved_meaning: The friends encounter terror or a dreadful calamity and respond with fear.
+  reasoning_layer_used: POB lexical decision and footnote for חֲתַת
+  rationale: This uses natural English without making Job’s condition the only possible referent.
 translation_notes:
   risk_flags:
-  - risk: “No help” may narrow the difficult Hebrew expression.
-    mitigation: Footnote [a] preserves the literal difficulty and the stream-comparison alternative.
-  - risk: “My terrible condition” makes the implied object explicit.
-    mitigation: Footnote [b] preserves calamity as a lexical alternative.
+  - risk: “No help” resolves an unusually difficult Hebrew expression more directly than its form allows.
+    mitigation: Footnote a preserves the literal difficulty and the possible comparison with the streams.
+  - risk: “Something terrifying” foregrounds the emotional sense of a word that can also mean calamity.
+    mitigation: Footnote b preserves the disaster sense as an alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/006/021.yaml
   source_text_sha256: c423c0e18033cc0cacad301d6e0e8a24ed647766c94f8436aa730fbef3e02018
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 1ad6e5a047f91cda97b54bc2146c17ee2c187afcdda21b3a5fc334b2c9f71aac
-  timestamp: '2026-07-11T18:56:06Z'
-  output_hash: eb69d5336dbc925643999bdd32f6d9e6a6a9509b385fe6e710052fa2e4b1dc83
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 87d24040d92e1d198d8988befce5e56d3a82a0f33c1b2b533d24388078af6575
+  timestamp: '2026-08-28T23:34:14Z'
+  output_hash: 4b3eb832a747444743a0410a19574dbe9d562a2fea99c5a2f4db5720a571b4ea
   usage:
-    prompt_tokens: 2451
-    completion_tokens: 729
-    total_tokens: 3180
-    reasoning_tokens: 271
+    prompt_tokens: 3331
+    completion_tokens: 490
+    total_tokens: 3821
+    reasoning_tokens: 112
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: you see terror
+  rendering: You see my terrible condition
+  claim: The terror they see is Job’s devastated condition.
+  evidence:
+  - The POB lexical rationale identifies the object as Job’s calamity or shattered condition.
+  - The immediate context concerns the friends’ response to Job’s suffering.
+  confidence: high
+  alternatives_preserved:
+  - terror
+  - calamity
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:49:24Z'
+  previous_text: For now you have proved to be no help[a]. You see my terrible condition[b], and you are afraid.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:14Z'
+  previous_text: For now you have proved to be no help.[a] You see my terrible condition, and you are afraid.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 72a1f7d9b3020c2e74d64d032e9a865a46973cfe4cd49cb4b948ff475b34281c
+  review_summary: “You have proved to be no help” is a warranted and useful clarification of the difficult first clause in light of the preceding unreliable-stream comparison and the POB audit trail. The second clause should not specify “my terrible condition” as though the Hebrew explicitly does so. “Something terrifying” is clear modern English while retaining the text’s open reference; the footnote can preserve “calamity” as the lexical alternative.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

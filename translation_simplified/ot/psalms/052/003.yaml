@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/052/003.yaml
-  text: Your tongue devises destruction[a], like a sharpened razor, working deceit[b].
+  text: Your tongue devises destruction[a], like a sharpened razor, you who practice deceit[b].
   footnotes:
   - marker: a
-    text: The Hebrew noun is plural, literally 'destructions,' used collectively for ruinous harm.
+    text: The Hebrew noun is plural, literally “destructions,” used collectively for ruinous harm.
     reason: lexical_alternative
   - marker: b
-    text: "'Working deceit' may describe either the tongue or the person addressed."
+    text: The final phrase may address the man (“you who practice deceit”) or describe the razor as acting deceitfully.
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -34,43 +34,51 @@ base_translation:
     changes_summary: Removed the unnecessary comma after 'is' for more natural English. Kept the rest unchanged as accurate and complete.
 translation:
   language: en
-  text: Your tongue plans destruction like a sharpened razor working deceit.[a]
+  text: Your tongue plans ruin. It is like a sharpened razor, you who practice deceit.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Working deceit” may describe either the tongue or the person who practices deceit.
+    text: The Hebrew says “destructions,” a plural form referring collectively to ruinous harm.
     reason: lexical_alternative
+  - marker: b
+    text: The last phrase may instead describe the razor as acting deceitfully.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Your tongue devises destruction, like a sharpened razor, working deceit.
-  simplified_phrase: Your tongue plans destruction like a sharpened razor working deceit.
-  preserved_meaning: Made the tongue the grammatical subject of planning destruction.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Made the tongue the grammatical subject of planning destruction.
+- pob_phrase: devises destruction
+  simplified_phrase: plans ruin
+  preserved_meaning: The person’s speech intentionally prepares ruinous harm.
+  reasoning_layer_used: POB lexical decisions for הַוּוֹת and תַּחְשֹׁב
+  rationale: Common words replace formal wording without weakening the harmful intent.
+- pob_phrase: Your tongue devises destruction, like a sharpened razor
+  simplified_phrase: Your tongue plans ruin. It is like a sharpened razor
+  preserved_meaning: The tongue remains both the planner of harm and the object compared to a dangerous blade.
+  reasoning_layer_used: POB grammar audit and razor-image rationale
+  rationale: Two sentences clarify the poetry while preserving its grammar and cutting image.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: The masculine final phrase may describe the razor rather than directly address the man.
+    mitigation: The main text follows the POB choice, and footnote b preserves the alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/052/003.yaml
   source_text_sha256: a035c5398170c13c1ccac3c15d4805dfda48f37e8337810b0aeb5c190ebc8bea
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7a6c1d711321f5dbffbab7ee8ddc3ed071512519b0deb3aed54b53269f18afd8
-  timestamp: '2026-07-12T09:59:44Z'
-  output_hash: e4890ea8b429a6268a24be428b48182c69fe3d8d99a78b161429c499d13e1bc7
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: e53d9a97d05136499503d8e1a838a333b0cffac09d173db40c240e1977eb5a8f
+  timestamp: '2026-08-28T22:56:06Z'
+  output_hash: f82ab644aeb1cfb8196ec348166642be6e2f3a9c2222a829f2ec00e3ea35f9d9
   usage:
-    prompt_tokens: 3541
-    completion_tokens: 324
-    total_tokens: 3865
-    reasoning_tokens: 0
+    prompt_tokens: 3075
+    completion_tokens: 511
+    total_tokens: 3586
+    reasoning_tokens: 172
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:44Z'
   previous_text: You plan destruction. Your tongue is like a sharpened razor, doing deceitful work.[a]
@@ -88,3 +96,8 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Made the tongue the grammatical subject of planning destruction.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:56:06Z'
+  previous_text: Your tongue plans destruction like a sharpened razor working deceit.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/023/022.yaml
-  text: Listen to your father[a], who fathered you[b], and do not despise your mother when she is old.
+  text: Listen to your father, who fathered you[a], and do not despise your mother when she is old.[b]
   footnotes:
   - marker: a
-    text: Or 'Hear your father, this one who begot you.' The Hebrew uses a demonstrative ('this one') after 'your father' for emphasis, which is rendered idiomatically in English as 'who.'
-    reason: lexical_alternative
+    text: Literally, “your father, this one who fathered you.” The Hebrew demonstrative adds emphasis and is rendered naturally with “who.”
+    reason: literal_form
   - marker: b
-    text: Or 'when she has grown old.' The Hebrew perfect verb can emphasize the resulting state of old age.
+    text: Or “when she has grown old.” The Hebrew perfect verb can emphasize the resulting state of old age.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,39 +37,44 @@ translation:
   text: Listen to your father, who fathered you. Do not look down on your mother when she is old.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Listen to your father, who fathered you, and do not despise
-  simplified_phrase: Listen to your father, who fathered you. Do not look down on
-  preserved_meaning: Both commands remain distinct, and the father’s specific paternal role is preserved.
-  reasoning_layer_used: POB syntax and lexical decisions for יְלָדֶךָ and וְאַל תָּבוּז
-  rationale: Two sentences clarify the commands, while the familiar idiom still conveys contempt.
+- pob_phrase: Listen to your father, who fathered you, and do not despise your mother
+  simplified_phrase: Listen to your father, who fathered you. Do not look down on your mother
+  preserved_meaning: The verse gives two distinct commands to honor one's parents.
+  reasoning_layer_used: POB syntax and lexical decisions for שְׁמַע and וְאַל תָּבוּז
+  rationale: Two sentences make the commands easier to follow without merging them.
+- pob_phrase: do not despise
+  simplified_phrase: Do not look down on
+  preserved_meaning: The hearer must not regard the mother with contempt.
+  reasoning_layer_used: POB lexical decision for וְאַל תָּבוּז
+  rationale: This familiar expression communicates contempt in clear modern English.
 - pob_phrase: when she is old
   simplified_phrase: when she is old
-  preserved_meaning: The warning applies during the mother’s condition of old age, not only as she enters it.
+  preserved_meaning: The warning applies to the mother's condition in old age.
   reasoning_layer_used: POB lexical decisions for כִּי and זָקְנָה
-  rationale: Retaining this wording avoids shifting the focus to the process of growing old.
+  rationale: Retaining this wording avoids shifting the focus to the process of aging.
 translation_notes:
   risk_flags:
-  - risk: “Fathered you” may sound less conversational than a broader phrase such as “gave you life.”
-    mitigation: It is retained because it precisely expresses the father’s paternal role without presenting him as the general source of life.
+  - risk: “Fathered you” is less conversational than broader alternatives.
+    mitigation: It is retained because it precisely preserves the father's paternal role in the Hebrew and POB.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/023/022.yaml
   source_text_sha256: 078290f1a49413d90b541df85ac213a1b3e056ac95ec1c2d9178937626e721d9
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7a4963cfebacdb45d4dc857239675fa07acbb9865beea98238686f26b985e093
-  timestamp: '2026-07-12T09:52:55Z'
-  output_hash: a6a2c27162c05afeb0d563c46a07b82eb0506d9b6281748d786aebf6d88c95c3
+  prompt_sha256: 805db80fafa67490772fdf097321c6625cfafd2f5513bade617590e26f70690f
+  timestamp: '2026-08-28T23:34:41Z'
+  output_hash: d97bf07c028216b63ea60e44c2f9b36c54c8e0bae17e2956e81ee758d22a382c
   usage:
-    prompt_tokens: 3321
-    completion_tokens: 318
-    total_tokens: 3639
-    reasoning_tokens: 0
+    prompt_tokens: 3516
+    completion_tokens: 457
+    total_tokens: 3973
+    reasoning_tokens: 90
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -82,6 +87,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: d2132804e435d376bb921ccd9cb56f4549991c687c8611127b69bc116425ac1e
   review_summary: The draft improves accessibility by using “look down on” for contempt, which is warranted and retains the force of the prohibition. However, “gave you life” does not adequately preserve the text’s specific statement that this father fathered/begot the listener, and “grows old” shifts the focus from her state of old age to the process of becoming old. The recommended wording keeps the clear simplification of “look down on” while preserving both source-level distinctions.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:06:13Z'
+  previous_text: Listen to your father, who fathered you. Do not look down on your mother when she is old.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:41Z'
+  previous_text: Listen to your father, who gave you life. Do not look down on your mother when she grows old.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 17d773a8be4bd3bd1cd19c57b2cd2aa556accf7d27f891a468984efa67b2cc86
+  review_summary: The revision helpfully makes “despise” immediately understandable as “look down on,” while retaining the warning against contempt. But “gave you life” is too broad for the text's explicit paternal-begetting emphasis, and “grows old” slightly shifts the stated old-age condition into an ongoing process. Retain “fathered you” and “when she is old.”
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

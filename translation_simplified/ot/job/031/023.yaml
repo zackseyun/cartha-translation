@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/031/023.yaml
-  text: For calamity from God was a terror to me[b][a], and because of his majesty I could not endure.
+  text: For calamity from God[a] was a terror to me, and because of his majesty I was powerless.[b]
   footnotes:
   - marker: a
-    text: Or 'For the disaster of God was dread to me.' The Hebrew can be rendered more formally with 'of God,' though the sense is likely calamity coming from God.
+    text: Or “For the calamity of God was dread to me.” The phrase may be rendered more formally as “of God”; the sense is calamity coming from God.
     reason: lexical_alternative
   - marker: b
-    text: Or 'because of his exaltation I could not withstand it/him.' The noun may emphasize exaltation or majesty, and the verb may be rendered 'be able' or 'withstand.'
-    reason: lexical_alternative
+    text: Or “and because of his exaltation I was not able.” The Hebrew does not state what Job was unable to do.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,50 +34,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For I dreaded disaster from God, and because of his majesty I could not withstand him.[a]
+  text: For I was terrified of calamity from God, and his majesty left me powerless.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “because of his exaltation I could not withstand it.”
-    reason: lexical_alternative
+    text: The Hebrew does not say exactly what Job was unable to do.
+    reason: source_note
 simplification_decisions:
 - pob_phrase: calamity from God was a terror to me
-  simplified_phrase: I dreaded disaster from God
-  preserved_meaning: Job felt intense dread at the prospect of disaster coming from God.
-  reasoning_layer_used: lexical decisions and contextual rationale
-  rationale: The active wording expresses the same intense personal dread in natural English.
-- pob_phrase: because of his majesty I could not endure
-  simplified_phrase: because of his majesty I could not withstand him
-  preserved_meaning: God’s exalted majesty restrained Job because he could not withstand God.
-  reasoning_layer_used: lexical and theological decisions
-  rationale: This keeps the causal relation and uses the POB’s documented verbal alternative.
+  simplified_phrase: I was terrified of calamity from God
+  preserved_meaning: Job dreaded disaster coming from God.
+  reasoning_layer_used: lexical decisions and theological decision on Job's motivation
+  rationale: The active wording is easier to understand while retaining the force of terror and divine calamity.
+- pob_phrase: because of his majesty I was powerless
+  simplified_phrase: his majesty left me powerless
+  preserved_meaning: God's exalted majesty made Job unable to act against his moral restraint.
+  reasoning_layer_used: lexical decision and applied revision for לֹא אוּכָל
+  rationale: The recast clause is natural English and keeps Job's inability without supplying an object.
 translation_notes:
   risk_flags:
-  - risk: “Him” identifies God as the implied object, though the Hebrew leaves the object unstated.
-    mitigation: The footnote preserves “it” as an alternative reference.
+  - risk: Readers may assume a specific action that Job was powerless to perform.
+    mitigation: The footnote preserves the Hebrew's unstated complement.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/031/023.yaml
   source_text_sha256: 7d737d72e3539c456f57523195b71100c6c561c1041bcf2a28cd5f37bdc990a7
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: eb2b224fb2b2c34bbcfac1aa485010c538459755572b3c4e5afbbafe29d0c878
-  timestamp: '2026-07-12T09:40:55Z'
-  output_hash: 2c128fb773ca14eb54715a235db4f3bb1313d96a19915b611a6ac5fd4441097c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: e33c9e4c928aa988bf9603f1d66612cd8e83f7829a24aba66d4c188535192124
+  timestamp: '2026-08-28T22:54:37Z'
+  output_hash: 49c330cd07bffd52e0d0551e831b790483a59eb41d43f92e23e2a2a09ab3482f
   usage:
-    prompt_tokens: 3506
-    completion_tokens: 293
-    total_tokens: 3799
-    reasoning_tokens: 0
+    prompt_tokens: 2814
+    completion_tokens: 574
+    total_tokens: 3388
+    reasoning_tokens: 273
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:40:55Z'
   previous_text: For I dreaded disaster from God, and I could not stand before his majesty.[a]
@@ -89,3 +87,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:56Z'
+  previous_text: For I dreaded disaster from God, and because of his majesty I could not withstand him.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:37Z'
+  previous_text: For disaster from God terrified me, and because of his majesty I was powerless.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

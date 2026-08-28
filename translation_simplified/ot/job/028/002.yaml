@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/028/002.yaml
-  text: Iron is taken from the dust[a], and copper is smelted from stone.
+  text: Iron is taken from the dust, and copper[a] is smelted from stone.
   footnotes:
   - marker: a
-    text: Or 'bronze is smelted from stone.' The Hebrew term can refer to copper or bronze; 'copper' is preferred here because the context is mining and extraction from ore.
+    text: Or “bronze.” The Hebrew term can refer to copper or bronze; “copper” is preferred here because the context concerns extracting metal from ore-bearing stone.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,56 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Iron is taken from the dusty ground, and copper[a] is smelted from ore-bearing rock.
+  text: Iron is dug from the ground, and copper[a] is melted out of rock.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “bronze.” The Hebrew word can mean copper or bronze; copper fits this mining context better.
+    text: Or “bronze.” The Hebrew word can mean copper or bronze, but copper fits the mining context better.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: from the dust
-  simplified_phrase: from the dusty ground
-  preserved_meaning: Iron comes from loose earth while the Hebrew dust image remains visible.
-  reasoning_layer_used: POB lexical decision for מֵעָפָר
-  rationale: “Dusty ground” makes the mining setting clearer without replacing the concrete image.
-- pob_phrase: from stone
-  simplified_phrase: from ore-bearing rock
-  preserved_meaning: Copper is obtained from mineral-bearing stone through smelting.
-  reasoning_layer_used: POB lexical decisions for וְאֶבֶן and יָצוּק
-  rationale: The wording explains what kind of rock can yield copper.
+- pob_phrase: taken from the dust
+  simplified_phrase: dug from the ground
+  preserved_meaning: Iron is obtained from the earth through mining.
+  reasoning_layer_used: POB lexical decision and chapter context
+  rationale: “Ground” is clearer than poetic “dust,” while “dug” makes the mining setting immediately understandable.
+- pob_phrase: is smelted from stone
+  simplified_phrase: is melted out of rock
+  preserved_meaning: Copper is produced from ore-bearing stone by heat.
+  reasoning_layer_used: POB lexical rationale for יָצוּק and אֶבֶן
+  rationale: The plain wording explains smelting while keeping the image of metal coming from rock.
 interpretive_expansions:
-- pob_phrase: from stone
-  rendering: from ore-bearing rock
-  claim: The stone contains the mineral material from which copper is smelted.
+- pob_phrase: is taken
+  rendering: is dug
+  claim: The taking of iron refers to mining it from the earth.
   evidence:
-  - The immediate context concerns mining and extracting metal.
-  - The POB rationale identifies the stone as ore-bearing rock.
+  - The surrounding passage describes miners working underground.
+  - The POB rationale lists “is mined” as a contextual alternative.
   confidence: high
-  alternatives_preserved:
-  - from stone
-  - from rock
 translation_notes:
   risk_flags:
-  - risk: The Hebrew metal term may refer to bronze rather than copper.
-    mitigation: The footnote preserves bronze as a lexical alternative.
+  - risk: “Ground” softens the Hebrew image of loose dust or earth.
+    mitigation: The wording retains the concrete idea that iron comes from the earth.
+  - risk: “Melted out” is less technically precise than “smelted.”
+    mitigation: It clearly conveys producing copper from rock by heat for readers unfamiliar with smelting.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/028/002.yaml
   source_text_sha256: b8b27fefb44583c57eb8185de74e8f075624d179517d894291702f63f0477c17
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b422196a69fb76de70b0838fe4bbaaaabd9c909b4a5bcbfa6a35068261c05ce2
-  timestamp: '2026-07-11T19:55:10Z'
-  output_hash: 94b97ddb2c88038d31f56a6aadd69fab3bdd12b0dc983edefdf71608f2efd9a2
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7c86248fc0ca9bbf7aaa3838e0c3a1e0bf8115a31c58183422393246de7e0598
+  timestamp: '2026-08-28T22:51:06Z'
+  output_hash: bda0321a2f6e353a7ccbbf3a52da6537fc42e10656256f5f1ff502c7812d22a7
   usage:
-    prompt_tokens: 2327
-    completion_tokens: 633
-    total_tokens: 2960
-    reasoning_tokens: 266
+    prompt_tokens: 2503
+    completion_tokens: 781
+    total_tokens: 3284
+    reasoning_tokens: 376
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:06Z'
+  previous_text: Iron is taken from the dusty ground, and copper[a] is smelted from ore-bearing rock.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

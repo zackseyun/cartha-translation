@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/013/017.yaml
-  text: A wicked messenger falls into trouble[b][a], but a faithful envoy brings healing.
+  text: A wicked messenger falls into trouble[a], but a faithful envoy[b] brings healing.
   footnotes:
   - marker: a
-    text: Or 'A wicked messenger falls into evil/harm.' The Hebrew phrase may be rendered more literally, but here likely refers to the harmful trouble that befalls him.
+    text: Or “A wicked messenger falls into evil/harm.” The Hebrew phrase may be rendered more literally, but here likely refers to the harmful trouble that befalls him.
     reason: lexical_alternative
   - marker: b
-    text: Or 'messenger' or 'ambassador' for 'envoy.' The Hebrew uses two different words for messenger in this proverb.
+    text: Or “messenger” or “ambassador” for “envoy.” The Hebrew uses two different words for messenger in this proverb.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A wicked messenger falls into trouble, but a trustworthy representative[a] brings healing.
+  text: A wicked messenger falls into trouble,[a] but a trustworthy messenger[b] brings healing.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew uses a different word here, one that can mean an envoy or ambassador.
+    text: Or “falls into harm.”
     reason: lexical_alternative
+  - marker: b
+    text: The Hebrew uses a different word here, often for an official or commissioned messenger.
+    reason: source_note
 simplification_decisions:
 - pob_phrase: a faithful envoy
-  simplified_phrase: a trustworthy representative
-  preserved_meaning: The second person is a reliable, commissioned messenger.
-  reasoning_layer_used: POB lexical decisions for צִיר and אֱמוּנִים
-  rationale: “Trustworthy representative” makes the envoy’s role and reliability clear in common English.
-- pob_phrase: falls into trouble
-  simplified_phrase: falls into trouble
-  preserved_meaning: The wicked messenger suffers harmful consequences while the image of falling remains.
-  reasoning_layer_used: POB lexical decision for יִפֹּל בְּרָע
-  rationale: This wording is already clear and preserves both the downfall image and the likely sense of harmful trouble.
+  simplified_phrase: a trustworthy messenger
+  preserved_meaning: The second person is reliable and carries a message on another’s behalf.
+  reasoning_layer_used: POB lexical decisions for אֱמוּנִים and צִיר
+  rationale: “Trustworthy messenger” is familiar English and preserves the message-bearing role.
+- pob_phrase: brings healing
+  simplified_phrase: brings healing
+  preserved_meaning: A reliable messenger provides healing or restoration.
+  reasoning_layer_used: POB lexical decision for מַרְפֵּא and revision audit
+  rationale: The concrete healing image remains because it expresses restorative benefit.
 translation_notes:
   risk_flags:
-  - risk: “Representative” may sound broader than an official messenger.
-    mitigation: The footnote preserves the more specific alternatives “envoy” and “ambassador.”
+  - risk: Using “messenger” twice may hide that the Hebrew uses two different terms.
+    mitigation: Footnote [b] preserves the distinction and the second term’s commissioned sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/013/017.yaml
   source_text_sha256: 47805ccd1e8244c9e1c0697e26d2710edeb7be4ce6d335db137f8cf5e21f3f6a
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 81ed3403882e2b5828182531f7a18b23e5eff2d27a33f722dabdfdbdb253544e
-  timestamp: '2026-07-11T21:06:13Z'
-  output_hash: 0023682ca0a775f2fca1cacece931bfa0ced5f4f0f4fc7967d44a998f23999c5
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 189d951cd04b629710c4267ea1ef3df0751d635725c1a9dccf7179a150b52fb0
+  timestamp: '2026-08-28T23:34:19Z'
+  output_hash: 2a6046e3dfecfdc4319e2bee85ceea30acd15adbdaef8cd5b21b1fa8041dcfa9
   usage:
-    prompt_tokens: 2351
-    completion_tokens: 807
-    total_tokens: 3158
-    reasoning_tokens: 512
+    prompt_tokens: 3305
+    completion_tokens: 433
+    total_tokens: 3738
+    reasoning_tokens: 123
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:19Z'
+  previous_text: A wicked messenger falls into trouble, but a trustworthy representative[a] brings healing.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:19Z'
+  previous_text: A wicked messenger falls into trouble,[a] but a trustworthy representative[b] brings healing.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 48dbc59a7a0404d8b690b8e3a14c682a1a538b07083369386eeeabcade856c61
+  review_summary: The change from “faithful” to “trustworthy” is warranted by the POB lexical audit and improves present-day clarity. However, “representative” obscures the source word’s messenger-bearing function. “Trustworthy messenger” is clearer than “faithful envoy,” preserves that function, and the note can retain the source-level distinction between the two Hebrew terms.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

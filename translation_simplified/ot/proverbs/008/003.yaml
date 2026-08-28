@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/008/003.yaml
-  text: Beside the gates[a], at the mouth of the city, at the entrance of the doorways[b], she cries out.
+  text: Beside the gates, at the mouth of the city[a], at the entrances, she cries out[b].
   footnotes:
   - marker: a
-    text: Or 'at the opening of the city.' The Hebrew literally reads 'at the mouth of the city.'
+    text: Or “at the opening of the city.” The Hebrew literally reads “at the mouth of the city.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'she calls aloud.'
+    text: Or “she calls aloud.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,51 +34,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Beside the city gates, at the city’s entrance, at the doorways, she cries out.
+  text: She cries out beside the city gates, at the entrances into the city.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew pictures this location as “the mouth of the city.”
+    reason: source_note
 simplification_decisions:
-- pob_phrase: Beside the gates
-  simplified_phrase: Beside the city gates
-  preserved_meaning: The gates are the public gates of the city.
-  reasoning_layer_used: POB lexical rationale for שְׁעָרִים and the urban context
-  rationale: Adding “city” makes the civic setting immediately clear.
-- pob_phrase: at the mouth of the city
-  simplified_phrase: at the city’s entrance
-  preserved_meaning: Wisdom stands at the city’s opening or point of entry.
-  reasoning_layer_used: POB lexical alternatives for לְפִי and footnote a
-  rationale: The familiar spatial phrase communicates the image without an explanatory footnote.
-- pob_phrase: at the entrance of the doorways
-  simplified_phrase: at the doorways
-  preserved_meaning: Wisdom calls from the city’s access points.
-  reasoning_layer_used: POB lexical decisions for מְבוֹא and פְתָחִים
-  rationale: The shorter phrase avoids stacked entrance terms while retaining the distinct doorway location.
+- pob_phrase: Beside the gates, at the mouth of the city, at the entrances
+  simplified_phrase: beside the city gates, at the entrances into the city
+  preserved_meaning: Wisdom publicly calls from the main places where people enter the city.
+  reasoning_layer_used: POB lexical decisions and applied source-audit revision
+  rationale: The wording identifies the gates as city gates and combines overlapping location phrases for immediate clarity.
+- pob_phrase: she cries out
+  simplified_phrase: She cries out
+  preserved_meaning: Her call is loud and public without implying a particular emotion.
+  reasoning_layer_used: POB lexical decision for תָּרֹנָּה
+  rationale: The established wording is already clear and preserves the force of public proclamation.
 translation_notes:
   risk_flags:
-  - risk: Replacing “mouth” makes the Hebrew body-part image less visible.
-    mitigation: The audit-supported “entrance” preserves its spatial meaning in natural English.
+  - risk: Combining “the mouth of the city” with the entrances may obscure the Hebrew image.
+    mitigation: The footnote preserves the literal image for readers and reviewers.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/008/003.yaml
   source_text_sha256: df46dc942a7e6855d01021ddad83a26a29d170cfc306e7adea4a9b0368ef3c35
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 706173e229f58694b10c7bca54a448784bbcf9257ffbda6d12c0e69c347b8954
-  timestamp: '2026-07-12T09:52:21Z'
-  output_hash: d6120d70c5322951e24855253ac1e08cde7f05296801936f5850ef5dbd45b079
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 36744d03243bb941d15044d1a331e91e8b8e4237fa7937ac75ba5d834d405aaf
+  timestamp: '2026-08-28T23:02:18Z'
+  output_hash: 089a56862d37c18d4dfb034f0d1ada32301867d528c2f11aa6eb8f5e80ad778a
   usage:
-    prompt_tokens: 3165
-    completion_tokens: 336
-    total_tokens: 3501
-    reasoning_tokens: 0
+    prompt_tokens: 2618
+    completion_tokens: 816
+    total_tokens: 3434
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:21Z'
   previous_text: Beside the city gates, at the mouth of the city[a], where its doorways open, she cries out.
@@ -90,3 +87,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:18Z'
+  previous_text: Beside the city gates, at the city’s entrance, at the doorways, she cries out.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

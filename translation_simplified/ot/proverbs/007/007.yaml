@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/007/007.yaml
-  text: and I saw among the simple[a]; I discerned among the young men a youth lacking sense.
+  text: and I saw among the simple; I discerned among the young men a youth lacking sense[a].
   footnotes:
   - marker: a
-    text: Literally, 'lacking heart,' an idiom for lacking judgment or understanding.
+    text: Literally, “lacking heart,” an idiom for lacking judgment or understanding.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I saw some inexperienced people. Among the young men, I recognized one youth who lacked good judgment.
+  text: Among the naive people, I saw a youth; among the young men, I recognized that he lacked good judgment.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Literally, “lacking heart”; in Hebrew wisdom language, the heart includes judgment and understanding.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: and I saw among the simple
-  simplified_phrase: I saw some inexperienced people
-  preserved_meaning: The group consists of naive people who are vulnerable to being led astray.
-  reasoning_layer_used: The lexical decision lists “inexperienced” as a contextual alternative for “simple.”
-  rationale: This replaces an opaque wisdom-literature label without identifying the whole group as young men.
+- pob_phrase: among the simple
+  simplified_phrase: among the naive people
+  preserved_meaning: The youth is seen within a group of inexperienced people who are easily led astray.
+  reasoning_layer_used: POB lexical decision for בַּפְּתָאיִם and grounding review
+  rationale: “Naive people” clarifies the wisdom category while retaining the group setting.
 - pob_phrase: I discerned among the young men a youth
-  simplified_phrase: Among the young men, I recognized one youth
-  preserved_meaning: The observer evaluates and singles out one youth within the group of young men.
-  reasoning_layer_used: The lexical rationale gives the verb an evaluative force beyond merely seeing.
-  rationale: “Recognized” preserves discernment while keeping the two observational phrases distinct.
+  simplified_phrase: among the young men, I recognized that he
+  preserved_meaning: The observer evaluates one particular youth within the group of young men.
+  reasoning_layer_used: POB lexical decisions for אָבִינָה, בַּבָּנִים, and נַעַר
+  rationale: “Recognized” preserves the evaluative force more clearly than “noticed.”
 - pob_phrase: lacking sense
   simplified_phrase: lacked good judgment
-  preserved_meaning: The youth lacks the understanding and moral judgment needed to act wisely.
-  reasoning_layer_used: The lexical rationale explains “lacking heart” as an idiom for deficient understanding and moral sense.
-  rationale: “Lacked good judgment” states the idiom naturally for modern readers.
+  preserved_meaning: The youth lacks practical and moral understanding.
+  reasoning_layer_used: POB lexical decision and footnote for חֲסַר לֵב
+  rationale: “Lacked good judgment” clearly conveys the Hebrew heart idiom.
 translation_notes:
   risk_flags:
-  - risk: Replacing the established Proverbs category “simple” may reduce its literary resonance.
-    mitigation: “Inexperienced people” preserves the controlling sense of those vulnerable to being led astray.
-  - risk: “Recognized” may suggest prior familiarity in some contexts.
-    mitigation: Its placement after “saw” and before the youth’s evaluation signals perceptive identification.
+  - risk: “Naive” may not sound like a formal Proverbs wisdom category.
+    mitigation: The wording retains the category’s core sense of inexperience and susceptibility to being misled.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/007/007.yaml
   source_text_sha256: a84331005ddf2dd8b0d4a08aa219d6b2bedbc48be6f101110cc908dceb3432cc
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: ea19207894e7734c39d720aff1cbc70d80f9ebcbc0437e8813048140b52d5523
-  timestamp: '2026-07-12T09:51:47Z'
-  output_hash: b4d1dc77372e5981ba8953fcf7475cb2176fb6f5aba20d55f46567ceb52ec97d
+  prompt_sha256: 4318ca39b6ef39e9fa3f34d447683498c70b277fbbf2c13d1828e1c518c8d9cc
+  timestamp: '2026-08-28T23:34:15Z'
+  output_hash: 518e783858208d5fddca3d235c5de58741d505e61437dca00a0c3f08e3c7ec25
   usage:
-    prompt_tokens: 3148
-    completion_tokens: 397
-    total_tokens: 3545
-    reasoning_tokens: 0
+    prompt_tokens: 3361
+    completion_tokens: 924
+    total_tokens: 4285
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -86,6 +88,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 6a0016428df58d357d3ca9a0d3bce5998dc3763f1cb425fa3e9e5804e1a2f2d6
   review_summary: The draft appropriately clarifies the wisdom idioms “simple” and “lacking sense”; “inexperienced” and “lacked good judgment” are warranted by the supplied lexical audit and improve readability. A small revision should preserve the two Hebrew parallel phrases rather than explicitly collapsing them with “among them,” and should use a verb stronger than mere noticing for the narrator’s discernment.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:11Z'
+  previous_text: I saw some inexperienced people. Among the young men, I recognized one youth who lacked good judgment.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:15Z'
+  previous_text: I saw the naive, and among the young men I noticed one youth who lacked good judgment.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: cfa45cfa5a8ab8a958882d5d94b1afdc4c5154fbc89426b65b0c598326894105
+  review_summary: “Naive” and “lacked good judgment” are warranted, clearer renderings of Proverbs’ wisdom-language categories, and the footnote responsibly preserves the Hebrew idiom. Revise slightly to retain the source text’s first “among” construction and its parallel grouping. The draft does not introduce doctrinal material or improperly resolve an ambiguity.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

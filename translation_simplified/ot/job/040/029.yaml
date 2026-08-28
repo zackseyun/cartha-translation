@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/040/029.yaml
-  text: Will you play with him like a bird[b][a], or tie him up for your girls?
+  text: Will you play with him[a] like a bird, or tie him up for your girls?[b]
   footnotes:
   - marker: a
     text: Or 'with it' instead of 'with him'; the Hebrew uses a masculine singular pronoun referring to Leviathan.
@@ -34,47 +34,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Could you play with him as if he were a pet bird, or tie him up for your girls?
+  text: Can you play with him[a] as you would with a pet bird, or tie him up for your girls?[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “it.” Hebrew uses a masculine singular pronoun for Leviathan.
+    reason: lexical_alternative
+  - marker: b
+    text: Or “your young women.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Will you play with him like a bird
-  simplified_phrase: Could you play with him as if he were a pet bird
-  preserved_meaning: Leviathan cannot be treated as a tame bird used for play.
-  reasoning_layer_used: POB lexical rationale for הֲתְשַׂחֶק and כַּצִּפּוֹר
-  rationale: The recast simile makes the domestic image immediately clear while keeping its rhetorical force.
+- pob_phrase: Will you play with him
+  simplified_phrase: Can you play with him
+  preserved_meaning: The rhetorical question challenges whether Job is able to handle Leviathan this way.
+  reasoning_layer_used: POB rhetorical form and immediate context
+  rationale: “Can you” states the challenge in natural modern English.
+- pob_phrase: like a bird
+  simplified_phrase: as you would with a pet bird
+  preserved_meaning: Leviathan is pictured as though he could be treated like a tame bird.
+  reasoning_layer_used: POB lexical rationale and chapter context
+  rationale: “Pet” makes the domestic comparison clear without weakening the image.
 interpretive_expansions:
 - pob_phrase: like a bird
-  rendering: as if he were a pet bird
-  claim: The bird in the comparison is imagined as tame and kept for play.
+  rendering: as you would with a pet bird
+  claim: The comparison imagines a tame bird kept for play.
   evidence:
-  - The POB lexical rationale identifies the image as treating Leviathan like a tame pet or toy.
-  - The following clause pictures him restrained for the household's girls.
+  - The POB rationale identifies the bird as a pet or toy.
+  - The preceding words ask about playing with Leviathan.
   confidence: high
   alternatives_preserved:
   - like a bird
-  - as with a bird
 translation_notes:
   risk_flags:
-  - risk: The word “pet” is implied rather than directly stated in the Hebrew.
-    mitigation: It is bounded by “as if” and follows the domestic-play image documented in the POB rationale.
+  - risk: “Pet” is implied rather than directly stated in the Hebrew noun for bird.
+    mitigation: The immediate play image and POB lexical rationale support this bounded clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/040/029.yaml
   source_text_sha256: 838952598fbec42918bdf162d5d7441dc97175867b9cd159e8ac9dcb56adb76b
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ec354a90a63c3186bef06ead85e3a85b65796db66ebabdf8a0fb0280bdfae026
-  timestamp: '2026-07-11T19:59:13Z'
-  output_hash: d5a60cadf537330f1cf481057088c1c0330bc2e933a88e726b3479f07481f62a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 20f61fff16425187c6e1876e5c63843444b236abf923b7b5a75ed4345ee1571a
+  timestamp: '2026-08-28T23:35:03Z'
+  output_hash: 7170169ccce651a8bcb25a3874418fa972e83cd50a13029dc37e00cab6046e02
   usage:
-    prompt_tokens: 2308
-    completion_tokens: 555
-    total_tokens: 2863
-    reasoning_tokens: 232
+    prompt_tokens: 3443
+    completion_tokens: 385
+    total_tokens: 3828
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:22Z'
+  previous_text: Could you play with him as if he were a pet bird, or tie him up for your girls?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:03Z'
+  previous_text: Can you play with him[a] as you would with a pet bird, or tie him up for your girls to play with?[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 7d85dbfacacf089356b7a0c2c162c0a4c4fa1f4b0074470aa1d96e2b7db94178
+  review_summary: 'Retain “as you would with a pet bird”: it makes the simile understandable and is warranted by the immediate comparison and the POB rationale’s tame-pet/toy explanation. Remove “to play with” after “your girls,” because it turns a plausible implication of the paired imagery into the stated purpose of the binding. The replacement remains clearer than POB while preserving the source’s open wording.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

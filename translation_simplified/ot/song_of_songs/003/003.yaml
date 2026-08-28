@@ -34,46 +34,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The watchmen making their rounds through the city found me. “Have you seen the one my soul loves?”
+  text: The watchmen making their rounds through the city found me. I asked them, “Have you seen the one I love with my whole being?”[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Hebrew literally says, “the one whom my soul loves,” a recurring poetic expression in the Song.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: The watchmen who go about the city
-  simplified_phrase: The watchmen making their rounds through the city
-  preserved_meaning: The city watchmen were moving around the city as part of their watch.
-  reasoning_layer_used: Lexical decision for הַסֹּבְבִים and immediate setting
-  rationale: “Making their rounds” expresses the ongoing movement more naturally than “go about.”
-- pob_phrase: 'found me:'
-  simplified_phrase: found me.
-  preserved_meaning: The watchmen encountered the speaker before her direct question.
-  reasoning_layer_used: Lexical decision for מְצָאוּנִי and discourse structure
-  rationale: A sentence break makes the encounter and question easier to follow.
+- pob_phrase: who go about the city
+  simplified_phrase: making their rounds through the city
+  preserved_meaning: The watchmen move around the city while keeping watch.
+  reasoning_layer_used: lexical decision for הַסֹּבְבִים
+  rationale: “Making their rounds” is clear modern English without imposing a modern police role.
 - pob_phrase: the one whom my soul loves
-  simplified_phrase: the one my soul loves
-  preserved_meaning: She speaks of the person she loves with the poetic force of her soul or whole self.
-  reasoning_layer_used: Lexical decisions for אֵת שֶׁאָהֲבָה נַפְשִׁי and נַפְשִׁי
-  rationale: Removing “whom” makes the line natural while retaining the recurring soul image.
+  simplified_phrase: the one I love with my whole being
+  preserved_meaning: She loves this person deeply from her inner self.
+  reasoning_layer_used: lexical decisions for אֵת שֶׁאָהֲבָה נַפְשִׁי and נַפְשִׁי
+  rationale: “My whole being” conveys the personal depth of “my soul” without adding the quantifier “all.”
+interpretive_expansions:
+- pob_phrase: 'found me: “Have you seen'
+  rendering: found me. I asked them, “Have you seen
+  claim: The woman directs the question to the watchmen.
+  evidence:
+  - The question immediately follows the watchmen finding her.
+  - The plural verb addresses the plural watchmen.
+  confidence: high
+  alternatives_preserved:
+  - The Hebrew introduces the question without an explicit verb such as “asked.”
 translation_notes:
   risk_flags:
-  - risk: “Making their rounds” may suggest a somewhat organized patrol.
-    mitigation: It preserves the watchmen’s ongoing movement without using the more modern term “patrol.”
+  - risk: “My whole being” explains rather than directly reproduces the Hebrew soul image.
+    mitigation: The footnote preserves the literal wording and its recurring poetic role.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/003/003.yaml
   source_text_sha256: b66c7fdf9ae13ae0aa96ac77dee37585c0debc813f91cb03eb62ae776e887b5e
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: e0f99fa9703bee22b0895276f2ba1de828339b579efa094a6e933dd73f4c4018
-  timestamp: '2026-07-11T21:26:14Z'
-  output_hash: 8953186f55bf9eb8acef31119a3cf57ae280bbfbf5726779eaa3adf1eba051ec
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0a354ccf50b560eee3cee5f512b5c1f04aab5d09ac59f91468050347162d986b
+  timestamp: '2026-08-28T23:33:32Z'
+  output_hash: 953369363180526690c27e6f6629a729c3d66d184553ffb090f4289dcd54ba01
   usage:
-    prompt_tokens: 2509
-    completion_tokens: 613
-    total_tokens: 3122
-    reasoning_tokens: 228
+    prompt_tokens: 3421
+    completion_tokens: 434
+    total_tokens: 3855
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:10:20Z'
+  previous_text: The watchmen making their rounds through the city found me. “Have you seen the one my soul loves?”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:32Z'
+  previous_text: The watchmen making their rounds through the city found me. I asked them, “Have you seen the one I love with all my soul?”[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a1a37ed434db6f6aa386d09cbffae0134f7a04f3b8e8741c037a68035685df11
+  review_summary: The revision usefully clarifies both the watchmen’s movement and that the woman addresses them; the immediate sequence and plural verb warrant “I asked them.” Replace “with all my soul” with “with my whole being” to communicate the force of נפש in clear contemporary English without adding an unexpressed quantifier. The footnote appropriately preserves the recurring Hebrew poetic wording.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

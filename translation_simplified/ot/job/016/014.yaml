@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/016/014.yaml
-  text: He breaks through me with breach upon breach[b][a]; he rushes at me like a warrior.
-  footnotes:
-  - marker: a
-    text: Or 'breach upon breach,' preserving the Hebrew repetition more literally.
-    reason: lexical_alternative
-  - marker: b
-    text: '''Warrior'' could also be rendered ''mighty man'' or ''champion.'''
-    reason: lexical_alternative
+  text: He breaks me open, breach upon breach; he rushes at me like a warrior.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,36 +27,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He breaks through me again and again; he rushes at me like a warrior.
+  text: He breaks me open again and again, making one opening after another. He rushes at me like a warrior.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: with breach upon breach
-  simplified_phrase: again and again
-  preserved_meaning: The violent breaking happens repeatedly, one attack after another.
-  reasoning_layer_used: POB lexical decision for עַל־פְּנֵי פָרֶץ
-  rationale: The clearer repetition expresses the Hebrew idiom’s succession without awkward wording.
+- pob_phrase: breach upon breach
+  simplified_phrase: making one opening after another
+  preserved_meaning: Job suffers successive violent openings or ruptures.
+  reasoning_layer_used: POB lexical decision and revision rationale for פֶרֶץ עַל־פְּנֵי פָרֶץ
+  rationale: “Opening” explains the breach image, while “one after another” preserves its repetition.
+- pob_phrase: He breaks me open, breach upon breach
+  simplified_phrase: He breaks me open again and again, making one opening after another.
+  preserved_meaning: The attacker repeatedly breaks Job open rather than merely attacking him in general.
+  reasoning_layer_used: POB lexical decision for יִפְרְצֵנִי and source-audit revision
+  rationale: The added verb connects each repeated opening directly to what is done to Job.
+- pob_phrase: he rushes at me like a warrior
+  simplified_phrase: He rushes at me like a warrior.
+  preserved_meaning: The attacker advances rapidly and violently against Job like a fighter.
+  reasoning_layer_used: POB lexical decisions for יָרוּץ, עָלַי, and כגבור
+  rationale: A separate sentence presents the hostile warrior image clearly without weakening it.
+interpretive_expansions:
+- pob_phrase: breach upon breach
+  rendering: again and again, making one opening after another
+  claim: The breaches are successive openings made in Job.
+  evidence:
+  - The POB rationale says the idiom expresses succession or piling up.
+  - The repeated noun depicts successive violent ruptures.
+  confidence: high
+  alternatives_preserved:
+  - breach upon breach
+  - one breach after another
 translation_notes:
   risk_flags:
-  - risk: Replacing “breach upon breach” reduces the image of breaches piling up.
-    mitigation: “Breaks through me” retains the central image of a violent breach, while “again and again” preserves repetition.
+  - risk: “Opening” may sound less forceful than “breach.”
+    mitigation: “Breaks me open” and the warrior comparison preserve the violence of the image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/016/014.yaml
   source_text_sha256: 2d181d80da224459adceec647835917229a9fc8c4497e8cc9ed0c85e923bdb19
-  pob_commit_sha: ff75f2c7860bc9b60e238877535adfae80a37e0d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: e925b3f8690fbb3d15259dcc09db3a526c264626b1e8411edc433ecd861ed527
-  timestamp: '2026-07-11T19:57:08Z'
-  output_hash: d16b69088e067d3985c73fce4b6599b56f16565572a0dec1cbf507c768637b75
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8efaa959c5804e0256ff8e232e8f50f21a6070d07001172e0d673d701c5c422d
+  timestamp: '2026-08-28T23:34:24Z'
+  output_hash: ffc5d8046df2d199e827856b58eb766ec58fa029e2ab2abb88c37de469e2f5b0
   usage:
-    prompt_tokens: 2333
-    completion_tokens: 320
-    total_tokens: 2653
-    reasoning_tokens: 123
+    prompt_tokens: 3374
+    completion_tokens: 589
+    total_tokens: 3963
+    reasoning_tokens: 112
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:06Z'
+  previous_text: He breaks through me again and again; he rushes at me like a warrior.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:24Z'
+  previous_text: He breaks me open again and again—breach after breach. He rushes at me like a warrior.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 8bdb6fd945d6a3ba406f2f68a90ba2cf586d27361fad9c45e5c982edc85e7fa5
+  review_summary: Revision is needed for clearer communication of the concrete, repeated breach image. The proposed replacement retains the violent action, the succession of ruptures, and the warrior comparison, while making explicit that the repeated “breaches” are openings made in Job. No doctrinal issue is present.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

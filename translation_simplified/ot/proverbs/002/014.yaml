@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/002/014.yaml
-  text: who rejoice to do evil[a], and exult in the perversities of evil[b],
-  footnotes:
-  - marker: a
-    text: Or 'who delight to do evil.'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'and rejoice in perverse things of evil' or 'in acts of perversity.'
-    reason: lexical_alternative
+  text: who rejoice in doing evil and exult in evil perversities,
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,48 +27,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: who rejoice in doing evil and celebrate twisted acts of evil,
+  text: who rejoice in doing evil and take great delight in evil, twisted acts,
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: rejoice to do evil
-  simplified_phrase: rejoice in doing evil
-  preserved_meaning: They take pleasure in actions that are morally evil.
-  reasoning_layer_used: POB lexical decisions for הַשְּׂמֵחִים, לַעֲשׂוֹת, and רָע
-  rationale: The natural English construction preserves both their joy and their active doing of evil.
-- pob_phrase: exult in the perversities of evil
-  simplified_phrase: celebrate twisted acts of evil
-  preserved_meaning: They show heightened delight in morally perverse acts.
-  reasoning_layer_used: POB lexical decisions for יָגִילוּ, בְּתַהְפֻּכוֹת, and רָע
-  rationale: “Celebrate” conveys exultation, while “twisted acts of evil” keeps the final “evil” tied to the perverse acts.
+- pob_phrase: exult
+  simplified_phrase: take great delight
+  preserved_meaning: heightened joy in evil
+  reasoning_layer_used: POB lexical decision for יָגִילוּ
+  rationale: The common phrase preserves the stronger delight distinguished from “rejoice.”
+- pob_phrase: evil perversities
+  simplified_phrase: evil, twisted acts
+  preserved_meaning: plural actions that are morally evil and perverse
+  reasoning_layer_used: POB lexical decision and final source audit for בְּתַהְפֻּכוֹת רָע
+  rationale: The wording makes the moral image clear while retaining both evil and twistedness.
+interpretive_expansions:
+- pob_phrase: perversities
+  rendering: twisted acts
+  claim: The plural perversities are expressed as concrete acts.
+  evidence:
+  - The POB lexical rationale says the Hebrew denotes perverse or twisted acts or things.
+  - The preceding phrase speaks of doing evil.
+  confidence: high
+  alternatives_preserved:
+  - perverse things
+  - acts of perversity
 translation_notes:
   risk_flags:
-  - risk: “Celebrate” is less elevated than “exult.”
-    mitigation: It retains heightened delight and remains distinct from “rejoice.”
-  - risk: “Twisted acts” makes the abstract plural more concrete.
-    mitigation: It follows the POB-supported alternative “acts of perversity” and preserves the image of moral distortion.
+  - risk: “Acts” is narrower than the possible sense “things.”
+    mitigation: The immediate parallel with “doing evil” strongly supports actions here.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/002/014.yaml
   source_text_sha256: 9f89626c37b3852c42495e5d35cf70bee4c5ec3865502c22ca0314a50ef4d12c
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 0f8f60fc68f1a0de7481a7718068417dc51064e3d655df18a2aaa13d1c0e0676
-  timestamp: '2026-07-12T09:51:26Z'
-  output_hash: 027e8edc70b31f2ef93d5b46a0466ff85af3efa63736739dd22d9494f42fe6ab
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: ae3987117cebe066dcc6a2ee6d9212fe93790274e364547af4dc0e84b5f0288a
+  timestamp: '2026-08-28T23:09:10Z'
+  output_hash: db210ced909c42a61ea2b0d7fa2a6f61701f76dd6a0d3119c7db0f14516a0949
   usage:
-    prompt_tokens: 3088
-    completion_tokens: 341
-    total_tokens: 3429
-    reasoning_tokens: 0
+    prompt_tokens: 2648
+    completion_tokens: 605
+    total_tokens: 3253
+    reasoning_tokens: 272
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:51:26Z'
   previous_text: who rejoice in doing evil and celebrate evil, twisted acts,
@@ -87,3 +87,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:09:10Z'
+  previous_text: who rejoice in doing evil and celebrate twisted acts of evil,
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

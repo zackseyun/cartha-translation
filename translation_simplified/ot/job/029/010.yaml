@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/029/010.yaml
-  text: The voice of nobles was hushed[b][a], and their tongue stuck to the roof of their mouth.
+  text: The voice of nobles was hushed[a], and their tongue stuck to the roof of their mouth[b].
   footnotes:
   - marker: a
-    text: Or 'The voice of princes fell silent.'
+    text: Or “The voice of princes fell silent.”
     reason: lexical_alternative
   - marker: b
-    text: Literally, 'their tongue clung to their palate,' an idiom for being unable or unwilling to speak.
-    reason: lexical_alternative
+    text: Literally, “their tongue clung to their palate,” an idiom for being unable or unwilling to speak.
+    reason: literal_rendering
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,41 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The nobles fell silent; their tongues stuck to the roofs of their mouths.
+  text: The nobles stopped speaking, and their tongues stuck to the roofs of their mouths.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: This image means that they were unable or unwilling to speak.
+    reason: simplification_note
 simplification_decisions:
 - pob_phrase: The voice of nobles was hushed
-  simplified_phrase: The nobles fell silent
-  preserved_meaning: The prominent men stopped speaking.
-  reasoning_layer_used: POB lexical decisions for קוֹל, נְגִידִים, and נֶחְבָּאוּ
-  rationale: The direct wording makes the idiomatic silence immediately clear while retaining “nobles.”
+  simplified_phrase: The nobles stopped speaking
+  preserved_meaning: The prominent men fell silent.
+  reasoning_layer_used: POB lexical decision for נֶחְבָּאוּ and chapter context
+  rationale: The direct wording makes the idiomatic silence immediately clear.
 - pob_phrase: their tongue stuck to the roof of their mouth
   simplified_phrase: their tongues stuck to the roofs of their mouths
-  preserved_meaning: The nobles were unable or unwilling to speak.
-  reasoning_layer_used: POB lexical decisions and lexical footnote b
-  rationale: Natural English plurals clarify that the image applies to each noble without removing it.
+  preserved_meaning: Their speechlessness is pictured as tongues adhering inside their mouths.
+  reasoning_layer_used: POB lexical decisions for וּלְשׁוֹנָם, לְחִכָּם, and דָּבֵקָה
+  rationale: English plurals clarify whose mouths are meant while preserving the Hebrew image.
 translation_notes:
   risk_flags:
-  - risk: “Fell silent” states the effect more directly than the Hebrew image of a voice becoming hidden.
-    mitigation: The POB lexical rationale explicitly identifies silence as the idiomatic sense.
+  - risk: Readers may take the tongue image as only physical inability to speak.
+    mitigation: The footnote preserves the POB ambiguity between inability and unwillingness.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/029/010.yaml
   source_text_sha256: 454b99fadb8471a3275b744ccc36571cc6e61f9e3ffe74f1402711b6f8a7e2f9
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2d968d19a388543d87b1f6bf4b79eeb6010255abe040c0de27ef10b9f74f495b
-  timestamp: '2026-07-11T19:41:31Z'
-  output_hash: dea3a19b1ac8125d79818b35deea336fdb16201cdbcf0d9c00fae6d96d2e17ca
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 3ce9267ca2fe2bf0440dfc2460dd3f2861e9e9dc2e4508c022d9e2664e4a09bc
+  timestamp: '2026-08-28T22:52:00Z'
+  output_hash: df9d97ccd90fb5f3c336041dc12f859104ee9fb125767eed63a268b7b4ad5364
   usage:
-    prompt_tokens: 2306
-    completion_tokens: 570
-    total_tokens: 2876
-    reasoning_tokens: 291
+    prompt_tokens: 2488
+    completion_tokens: 447
+    total_tokens: 2935
+    reasoning_tokens: 135
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:03Z'
+  previous_text: The nobles fell silent; their tongues stuck to the roofs of their mouths.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:00Z'
+  previous_text: The nobles fell silent, and their tongues stuck to the roofs of their mouths.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

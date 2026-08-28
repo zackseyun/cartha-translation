@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/038/001.yaml
-  text: O Yahweh[a], do not rebuke me in your anger[b][c], nor discipline me in your wrath.
+  text: O Yahweh[a], do not rebuke me[b] in your anger, nor discipline me[c] in your wrath.
   footnotes:
   - marker: a
-    text: 'Hebrew: ''YHWH''; alternatively rendered ''Yahweh.'''
-    reason: alternative_reading
+    text: 'Hebrew: “YHWH,” the divine name.'
+    reason: source_form
   - marker: b
-    text: Or 'chasten me.'
+    text: Or “reprove me.”
     reason: lexical_alternative
   - marker: c
-    text: Or 'reprove me.'
+    text: Or “chasten me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,41 +37,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Yahweh, do not rebuke me in your anger. Do not discipline me in your wrath.
+  text: Yahweh,[a] do not rebuke me in your anger. Do not discipline me in your wrath.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Yahweh is the personal name of God represented by the Hebrew letters YHWH.
+    reason: source_note
 simplification_decisions:
 - pob_phrase: O Yahweh
   simplified_phrase: Yahweh
-  preserved_meaning: The prayer directly addresses God by his covenant name.
-  reasoning_layer_used: Lexical and theological decisions on יְהוָה.
-  rationale: Dropping “O” makes the direct address natural in modern English without replacing the divine name.
+  preserved_meaning: The prayer directly addresses God by his personal name.
+  reasoning_layer_used: POB theological decision on YHWH
+  rationale: Natural English omits the formal vocative “O” while retaining the divine name.
 - pob_phrase: do not rebuke me in your anger, nor discipline me in your wrath
   simplified_phrase: do not rebuke me in your anger. Do not discipline me in your wrath.
-  preserved_meaning: Both pleas and the poetic parallel between anger and wrath remain distinct.
-  reasoning_layer_used: Lexical decisions for אַל, יכח, חֵמָה, and יסר.
-  rationale: Two short sentences make the parallel requests easier to understand.
-translation_notes:
-  risk_flags:
-  - risk: Splitting the line may make its poetic parallelism less visually obvious.
-    mitigation: The repeated sentence pattern preserves the parallel structure and force.
+  preserved_meaning: The speaker asks Yahweh not to correct him in either anger or wrath.
+  reasoning_layer_used: POB lexical decisions and poetic parallelism
+  rationale: Two sentences clarify the paired plea without weakening its verbs or anger imagery.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/038/001.yaml
   source_text_sha256: d473631a09c0ba93e3254b7650584072e38a36ba47695997ca0175d0c1827173
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2cdf94974d5c1964a14a0bb6c997d6a3a084964ec0779e41fc7b107e71e87873
-  timestamp: '2026-07-11T20:46:06Z'
-  output_hash: 748afe9ff10afeda6da66d8cf1fe0a6f81ffceded2cd5a0ccefd30c94d7cb850
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cf3fcd07c8a5c32722b8ff82769ed94fee846e99d14c896e1ac1a35312a03f83
+  timestamp: '2026-08-28T23:35:18Z'
+  output_hash: e64e86c68bdf7740e92e907ac10e2b974ba65e3d922140e435703a15e9b36830
   usage:
-    prompt_tokens: 2600
-    completion_tokens: 426
-    total_tokens: 3026
-    reasoning_tokens: 142
+    prompt_tokens: 3673
+    completion_tokens: 353
+    total_tokens: 4026
+    reasoning_tokens: 82
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: in your anger ... in your wrath
+  rendering: while you are angry ... while you are furious
+  claim: The plea concerns rebuke and discipline carried out under Yahweh’s anger, not correction in every circumstance.
+  evidence:
+  - The Hebrew preposition is attached to both words for anger.
+  - The negative plea governs each parallel corrective verb.
+  - The POB rationale identifies the wording as a paired negative plea.
+  confidence: high
+  alternatives_preserved:
+  - in your anger ... in your wrath
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:33Z'
+  previous_text: Yahweh, do not rebuke me in your anger. Do not discipline me in your wrath.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:18Z'
+  previous_text: Yahweh,[a] do not rebuke me while you are angry. Do not discipline me while you are furious.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 6d636de46016bfb01ceadfdb0483ea927c3e335442bd92c50adacb8eb360851b
+  review_summary: Revise the temporal paraphrase. Splitting the parallel plea into two sentences meaningfully improves readability, and omitting vocative “O” is natural English. Retain “in your anger” and “in your wrath,” however, because they preserve the Hebrew’s relational/manner force without introducing a merely temporal sense. The divine-name footnote is appropriate.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

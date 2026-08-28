@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/006/033.yaml
-  text: He will find injury and disgrace[b][a], and his reproach will not be wiped away.
-  footnotes:
-  - marker: a
-    text: Or 'wound and dishonor'; the Hebrew terms can also be rendered more concretely as bodily harm and public shame.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'his disgrace will not be erased.'
-    reason: lexical_alternative
+  text: He will receive injury and disgrace, and his reproach will not be wiped away.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,52 +27,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He will suffer injury and disgrace, and his public shame will never be wiped away.
+  text: He will suffer injury and disgrace. His public shame will not be wiped away.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: He will find injury and disgrace
+- pob_phrase: He will receive injury and disgrace
   simplified_phrase: He will suffer injury and disgrace
-  preserved_meaning: Injury and social dishonor will come upon him as consequences.
-  reasoning_layer_used: POB lexical decisions for יִמְצָא, נֶגַע, and קָלוֹן
-  rationale: “Suffer” makes the consequence idiom clear while keeping “injury” broad enough for physical or other harm.
-- pob_phrase: his reproach
-  simplified_phrase: his public shame
-  preserved_meaning: His wrongdoing leaves him with lasting shame before others.
-  reasoning_layer_used: POB lexical decision for חֶרְפָּתוֹ
-  rationale: “Public shame” expresses the social force of the less familiar word “reproach.”
+  preserved_meaning: The offender experiences harmful consequences and social dishonor.
+  reasoning_layer_used: POB lexical decisions for נֶגַע, קָלוֹן, and יִמְצָא
+  rationale: “Suffer” states the adverse consequence naturally while keeping “injury” broad.
+- pob_phrase: and his reproach will not be wiped away
+  simplified_phrase: His public shame will not be wiped away.
+  preserved_meaning: His dishonor before others will endure and cannot be erased.
+  reasoning_layer_used: POB lexical decisions for חֶרְפָּתוֹ and לֹא תִמָּחֶה
+  rationale: A separate sentence and common wording clarify the reproach while preserving the wiping image.
 interpretive_expansions:
 - pob_phrase: his reproach
-  rendering: his public shame
-  claim: The shame is social and visible before others, not merely an inward feeling.
+  rendering: His public shame
+  claim: The shame is dishonor before other people, not merely an inward feeling.
   evidence:
-  - The POB lexical rationale says חֶרְפָּה carries a public, lasting dimension.
-  - The paired term קָלוֹן also denotes public dishonor.
+  - The POB lexical rationale identifies a public dimension in חֶרְפָּה.
+  - The paired term קָלוֹן denotes public dishonor or disgrace.
   confidence: high
   alternatives_preserved:
   - reproach
   - disgrace
 translation_notes:
   risk_flags:
-  - risk: “Suffer” is less literal than the Hebrew verb “find.”
-    mitigation: It states the idiomatic sense already identified in the POB rationale.
+  - risk: “Shame” may sound primarily inward to some readers.
+    mitigation: “Public” preserves the source term’s social dimension.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/006/033.yaml
   source_text_sha256: 68ee75404d1d23641b22dde7a8f3823aee572d359e9d4da94e83773af03aa43e
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c4d67750c099876ee01ab651e288d88ce7c0ba13d4a03634c1094bb81afce4bc
-  timestamp: '2026-07-11T21:08:34Z'
-  output_hash: dec21065e691cc112e7ba5d5c8efbe65f7b11f64fb68bd05f16919b5478d8cca
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 51c377a1583fd5a152f19711b2a45b7060635b5059e4d35b247e60c456570b1b
+  timestamp: '2026-08-28T23:34:08Z'
+  output_hash: 9028b9a3eefc80d18b86f9c481582e8365e2946dbda7b9d3c3777671378777c8
   usage:
-    prompt_tokens: 2298
-    completion_tokens: 710
-    total_tokens: 3008
-    reasoning_tokens: 332
+    prompt_tokens: 3180
+    completion_tokens: 425
+    total_tokens: 3605
+    reasoning_tokens: 42
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:07Z'
+  previous_text: He will suffer injury and disgrace, and his public shame will never be wiped away.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:08Z'
+  previous_text: He will suffer injury and disgrace. His public shame will never be wiped away.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 1da93a5c2e2c43ec989d4ca23f5aff189f04e3a0698c9355285c791118fe0561
+  review_summary: 'The draft meaningfully improves readability: “suffer” naturally conveys adverse consequences, and “public shame” appropriately makes explicit the social dimension of reproach supported by the POB lexical rationale and the paired term for disgrace. Revise only “never” to “will not,” which retains the force and image of the source without adding an unnecessary temporal absolute.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

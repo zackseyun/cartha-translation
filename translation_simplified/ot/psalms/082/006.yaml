@@ -19,36 +19,55 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 82:6 wholesale revert (1 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''you are'']. Applied via definitive_apply (fuzzy fingerprint match handling LORD/Yahweh, footnote'
 translation:
   language: en
-  text: I said, “You are gods. You are all sons of the Most High.”
+  text: I said, “You are gods, and all of you are sons of the Most High.”
   philosophy: optimal-equivalence
-simplification_decisions:
-- pob_phrase: You are gods, and all of you are sons of the Most High.
-  simplified_phrase: You are gods. You are all sons of the Most High.
-  preserved_meaning: The people addressed are called gods, and every one of them is called a son of the Most High.
-  reasoning_layer_used: POB translation and applied revision
-  rationale: Two short sentences make both statements clear while preserving the restored wording “you are.”
 translation_notes:
   risk_flags:
-  - risk: Modern readers may misunderstand “gods” apart from the psalm’s wider context.
-    mitigation: The main text retains POB’s source-driven term without adding an unsupported explanation.
+  - risk: Modern readers may understand “gods” as saying that those addressed are fully divine.
+    mitigation: The text retains the POB’s source-driven wording without adding an unsupported explanation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/082/006.yaml
   source_text_sha256: 93c8c81cef09dcf21c082efb0bf61c2d5be22d2ded6536282f3f0c440ed53dc5
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0ccc5b452ba27f8435ac50bd3726435e4975b0441242f155e7301304a7631b7e
-  timestamp: '2026-07-11T20:49:48Z'
-  output_hash: c4725fa0dc1122b76252168c343f7b5a3b7fc4e9e1576943d24c900d98a00d65
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: dd5be05244efbc6382768f03b1c7109fec0315c18e0539462e36cba68678340c
+  timestamp: '2026-08-28T23:35:44Z'
+  output_hash: 2df7f47259fd105bb1e64801242e692ea3c1c2b27e54a72fbb0487348389aa56
   usage:
-    prompt_tokens: 1947
-    completion_tokens: 323
-    total_tokens: 2270
-    reasoning_tokens: 112
+    prompt_tokens: 2624
+    completion_tokens: 112
+    total_tokens: 2736
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+simplification_decisions:
+- pob_phrase: and all of you are sons of the Most High
+  simplified_phrase: Every one of you is a son of the Most High
+  preserved_meaning: The statement applies individually to everyone being addressed.
+  reasoning_layer_used: POB translation and source syntax
+  rationale: The singular wording is more natural English while preserving the full scope of “all of you.”
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:34Z'
+  previous_text: I said, “You are gods. You are all sons of the Most High.”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:44Z'
+  previous_text: I said, “You are gods. Every one of you is a son of the Most High.”
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: baa87495368949eccc568a4f1e5ea13823b122ee5ff8e02e61563186f4f3e445
+  review_summary: Revise to retain the POB wording. The draft does not add doctrine or wrongly explain “gods,” and its distributive sense is substantially compatible with the verse. However, the POB is already clear, and preserving the plural “sons” better reflects both the source syntax and the collective address without reducing readability.
+  schema_repairs:
+  - restored simplification_decisions as an array from the prior draft
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

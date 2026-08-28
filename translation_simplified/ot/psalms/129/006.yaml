@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/129/006.yaml
-  text: May they be like grass on the rooftops[a], which withers before it grows up.
+  text: May they be like grass on the rooftops, which withers before it is pulled up.[a]
   footnotes:
   - marker: a
     text: Or 'which dries up before it is plucked up.'
@@ -31,52 +31,54 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 129:6 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''is pulled up''].'
 translation:
   language: en
-  text: May they be like grass on rooftops that dries up before anyone can pull it up.
+  text: May they be like grass on a roof. It dries up before anyone pulls it up.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: grass on the rooftops, which withers
-  simplified_phrase: grass on rooftops that dries up
-  preserved_meaning: The image remains grass growing on multiple rooftops and quickly drying out.
-  reasoning_layer_used: POB translation and lexical decisions for כַּחֲצִיר, גַּגּוֹת, and יָבֵשׁ
-  rationale: The direct relative clause is clear while preserving the plural rooftop image.
-- pob_phrase: before it is pulled up
-  simplified_phrase: before anyone can pull it up
-  preserved_meaning: The grass dries before a person can pull or gather it.
-  reasoning_layer_used: POB lexical decision and rationale for שָׁלַף
-  rationale: Naming the implied person makes the pulling image natural in modern English.
+- pob_phrase: grass on the rooftops
+  simplified_phrase: grass on a roof
+  preserved_meaning: The concrete image of grass growing in shallow soil on a flat roof remains intact.
+  reasoning_layer_used: POB lexical decision for גַּגּוֹת
+  rationale: The singular generic form is more natural in plain English without changing the image.
+- pob_phrase: which withers before it is pulled up
+  simplified_phrase: It dries up before anyone pulls it up
+  preserved_meaning: The grass dries before it can be gathered by pulling it from the roof.
+  reasoning_layer_used: POB lexical decisions and wisdom-source audit for יָבֵשׁ and שָׁלַף
+  rationale: Two short active clauses make the sequence easier to understand while preserving “pulled up.”
 interpretive_expansions:
 - pob_phrase: before it is pulled up
-  rendering: before anyone can pull it up
-  claim: A person who might pull or gather the grass is implied.
+  rendering: before anyone pulls it up
+  claim: The passive action is expressed with an unspecified human agent.
   evidence:
-  - The lexical rationale says the grass dries before anyone can pull or gather it.
+  - The POB and source audit identify שָׁלַף as drawing out or pulling up the grass.
   confidence: high
+  alternatives_preserved:
+  - before it is pulled up
+  - before it is plucked up
 translation_notes:
   risk_flags:
-  - risk: The displayed POB text says “grows up,” but its lexical audit supports “pulled up.”
-    mitigation: The main text follows the audited source-word decision and the grounding review.
+  - risk: “Dries up” is less figurative than POB’s “withers.”
+    mitigation: It is a documented lexical alternative that directly conveys יָבֵשׁ for vegetation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/129/006.yaml
   source_text_sha256: 0027495e49db31324938a59ac0ccfd443ff2c12ffa38e5ec97b52e2530b67273
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: f6641678c9e3d6d9296ba4c0581078a9457c19e2dfbf0de5b551c3185dc24e9e
-  timestamp: '2026-07-12T10:03:09Z'
-  output_hash: 3d4cfde5bf7c1daa8c56e309cd776cc1ed98ac141b555381f93aefb1b0f6bf82
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 1df4fd3da919ebc1978a4a08193d06d85250e768564ec8c69fba0652569c537b
+  timestamp: '2026-08-28T22:59:05Z'
+  output_hash: 779f68807aa52c47cb087a6d6662c23f87e830821c76fb6981a2a5a2121b9d6b
   usage:
-    prompt_tokens: 3578
-    completion_tokens: 360
-    total_tokens: 3938
-    reasoning_tokens: 0
+    prompt_tokens: 2797
+    completion_tokens: 667
+    total_tokens: 3464
+    reasoning_tokens: 282
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:09Z'
   previous_text: 'May they be like grass on a rooftop: it withers before it can fully grow.[a]'
@@ -87,3 +89,8 @@ spob_revision_history:
   review_summary: Revision is required. The colon construction is clear, but “fully grow” imports a maturity idea where the audited lexical evidence for שָׁלַף points to grass being pulled up or gathered. Put that concrete source image in the main text; it remains natural and readily understandable for modern readers.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:05Z'
+  previous_text: May they be like grass on rooftops that dries up before anyone can pull it up.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

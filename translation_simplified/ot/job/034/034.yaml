@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/034/034.yaml
-  text: Men of understanding will say to me[a], and a wise man who hears me,
+  text: 'Men of understanding[a] will say to me, and a wise man who listens to me will say:'
   footnotes:
   - marker: a
     text: Hebrew literally, 'men of heart,' an idiom for people of understanding or discernment.
@@ -31,43 +31,73 @@ base_translation:
     changes_summary: Added the final comma to reflect the Hebrew pause before the next verse and slightly improve readability; otherwise retained the draft as accurate and complete.
 translation:
   language: en
-  text: Those who understand will say to me—and so will any wise person who listens to me—
+  text: 'People with understanding[a] will say to me, and so will a wise person who listens to me:'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Hebrew literally says “people of heart,” an expression for people with understanding or discernment.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Men of understanding
-  simplified_phrase: Those who understand
-  preserved_meaning: People characterized by understanding or discernment are in view.
+  simplified_phrase: People with understanding
+  preserved_meaning: The phrase refers generally to people who have discernment.
   reasoning_layer_used: POB lexical decision for אַנְשֵׁי לֵבָב
-  rationale: This expresses the Hebrew idiom naturally without suggesting only males are meant.
-- pob_phrase: and a wise man who hears me
-  simplified_phrase: and so will any wise person who listens to me
-  preserved_meaning: A wise hearer is expected to make the same statement.
-  reasoning_layer_used: POB lexical decisions and Hebrew parallelism
-  rationale: The recast supplies the shared verb and makes attentive hearing clear.
+  rationale: “People” clearly conveys the generic sense in modern English.
+- pob_phrase: and a wise man who listens to me will say
+  simplified_phrase: and so will a wise person who listens to me
+  preserved_meaning: A wise listener is the second subject who will speak to Elihu.
+  reasoning_layer_used: POB source audit of Hebrew ellipsis and parallelism
+  rationale: “And so will” expresses the repeated verb naturally without changing it to agreement.
 translation_notes:
   risk_flags:
-  - risk: “Listens” may imply more active attention than the literal “hears.”
-    mitigation: The POB lexical record recognizes “listening to me” as a valid contextual rendering.
-  - risk: The verse is an unfinished lead-in to the statement in the next verse.
-    mitigation: The final dash clearly marks that the sentence continues.
+  - risk: “Wise person” uses gender-inclusive wording for the singular masculine expression.
+    mitigation: The parallel phrase refers generically to discerning hearers while preserving the singular form.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/034/034.yaml
   source_text_sha256: 834850510cd16eff6ef2380e6ea961b9ff6af941401779446a0cac7030fd0f71
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2527abc07e0da42831add401462d45c89ccea44674d5fba1c41dcc6c6255b2f4
-  timestamp: '2026-07-11T19:54:15Z'
-  output_hash: 9d877d67a99a51f589ed8e5bebb4e3d6af68d6646a9f7709a813f36f1eea5573
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b2cbba3975d1016e2d8e69f7a17da1d5c2774a60e0a5b11d72d51543e2ecd557
+  timestamp: '2026-08-28T23:35:03Z'
+  output_hash: fddc1c14c59e9f6b2ea85ac3b7c81ffb934209a450025cceb7e68c670a713a49
   usage:
-    prompt_tokens: 2335
-    completion_tokens: 576
-    total_tokens: 2911
-    reasoning_tokens: 277
+    prompt_tokens: 3665
+    completion_tokens: 820
+    total_tokens: 4485
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: will say to me
+  rendering: will agree with me
+  claim: Their words express agreement with Elihu’s judgment.
+  evidence:
+  - The following verse supplies the judgment that discerning hearers are expected to voice.
+  - The POB rationale describes what discerning hearers would conclude.
+  confidence: high
+  alternatives_preserved:
+  - will say to me
+  - will tell me
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:17Z'
+  previous_text: Those who understand will say to me—and so will any wise person who listens to me—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:03Z'
+  previous_text: 'People with understanding[a] will agree with me. So will any wise man who listens to me:'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 88ca14b6ed3cacf8470fe68c975fe968a64549b715485a210429f4bad1cee1e9
+  review_summary: The gender-inclusive simplification of “men of understanding” is clear and supported by the Hebrew idiom’s generic reference. However, “agree with me” makes explicit a relational conclusion that the text conveys more cautiously through anticipated speech, immediately followed by the words they will say. Retain that speech formulation while simplifying the parallel structure.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

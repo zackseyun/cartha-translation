@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/015/010.yaml
-  text: Both the gray-haired and the aged are among us[a], older in days than your father.
-  footnotes:
-  - marker: a
-    text: Literally, 'great/mighty from your father in days'; the sense in context is 'older than your father.'
-    reason: lexical_alternative
+  text: Among us are both gray-haired and aged men, older than your father.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,43 +27,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Among us are both gray-haired people and very old people, older than your father.
+  text: There are gray-haired and very old men among us—men older than your father.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Both the gray-haired and the aged are among us
-  simplified_phrase: Among us are both gray-haired people and very old people
-  preserved_meaning: Eliphaz appeals to two parallel groups marked by advanced age within his community.
-  reasoning_layer_used: POB lexical decisions for גַּם, שָׂב, יָשִׁישׁ, and בָּנוּ
-  rationale: “Both” preserves the paired emphasis, while “very old people” clearly distinguishes the second description.
-- pob_phrase: older in days than your father
-  simplified_phrase: older than your father
-  preserved_meaning: Their age surpasses that of Job’s father.
+- pob_phrase: Among us are
+  simplified_phrase: There are ... among us
+  preserved_meaning: The older men belong to Eliphaz’s company.
+  reasoning_layer_used: POB lexical decision for בָּנוּ and applied revision
+  rationale: The new clause order is more natural while retaining the Hebrew location, “among us.”
+- pob_phrase: both gray-haired and aged men
+  simplified_phrase: gray-haired and very old men
+  preserved_meaning: The paired terms distinguish gray-haired men from those of especially advanced age.
+  reasoning_layer_used: POB lexical decisions for גַּם ... גַּם, שָׂב, and יָשִׁישׁ
+  rationale: “Very old” is clearer than “aged” and preserves the second term’s stronger age emphasis.
+- pob_phrase: older than your father
+  simplified_phrase: men older than your father
+  preserved_meaning: Some men in the company surpass Job’s father in age.
   reasoning_layer_used: POB lexical decision for כַּבִּיר מֵאָבִיךָ יָמִים
-  rationale: Natural English states the age comparison without the opaque phrase “in days.”
-translation_notes: {}
+  rationale: Repeating “men” makes the comparison immediately clear without restoring the Hebrew-shaped phrase “in days.”
+translation_notes:
+  risk_flags:
+  - risk: “Very old” may sound less formal than “aged.”
+    mitigation: It remains dignified and clearly expresses advanced age in common English.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/015/010.yaml
   source_text_sha256: a6d59ff4b59abe50659dee8e1a499a9960958b203d4886e1efc82805185f529a
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 21b7d2623b36a47a1457665052cdac9dbed95b6f4b968299674448e3fe98658c
-  timestamp: '2026-07-12T09:39:29Z'
-  output_hash: e5ab297bdb87ca034228bc1fc0c581d60b8c71b2b9dcaae5d8bee2edb2c7389f
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 64592e20d37601fbc4c8e605a10a98144c7a87ed6c6a7595005cf9c374ca8700
+  timestamp: '2026-08-28T22:50:31Z'
+  output_hash: ff11485b2793723553a1f04334a59343fefb94a531349a3d90e4bea2b5b93028
   usage:
-    prompt_tokens: 2978
-    completion_tokens: 266
-    total_tokens: 3244
-    reasoning_tokens: 0
+    prompt_tokens: 2545
+    completion_tokens: 612
+    total_tokens: 3157
+    reasoning_tokens: 238
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:29Z'
   previous_text: Among us are gray-haired and very old people, older than your father.
@@ -79,3 +81,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:50:22Z'
+  previous_text: Among us are both gray-haired people and very old people, older than your father.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:50:31Z'
+  previous_text: There are both gray-haired men and very old men among us. They are older than your father.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

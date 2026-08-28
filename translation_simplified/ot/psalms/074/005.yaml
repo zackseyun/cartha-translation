@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/074/005.yaml
-  text: He was known like one who lifts up axes in a thicket of trees[a].
+  text: They were like men raising axes against a thicket of trees.[a]
   footnotes:
   - marker: a
-    text: Or 'He became known like one bringing axes upward into a thicket of wood.' The Hebrew is compact and somewhat difficult, so a more formal rendering is preserved here.
-    reason: lexical_alternative
+    text: The Hebrew is difficult. More formally, it reads approximately, “He/it was known like one bringing axes upward in a thicket of trees.”
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,50 +31,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 74:5 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''like one who raises''].'
 translation:
   language: en
-  text: He was known like a man lifting axes high in a thicket of trees.[a]
+  text: They looked like woodcutters lifting their axes to cut down a dense thicket.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The compact Hebrew is difficult; it may also mean, “He became known like someone bringing axes upward into a thicket of trees.”
-    reason: lexical_alternative
+    text: The Hebrew wording is difficult; more literally, it says approximately, “He or it was known like someone bringing axes upward in a thicket of trees.”
+    reason: source_note
 simplification_decisions:
-- pob_phrase: like one who lifts up axes
-  simplified_phrase: like a man lifting axes high
-  preserved_meaning: The wording remains a comparison with a representative woodcutter raising axes upward.
-  reasoning_layer_used: POB lexical decisions for כְּמֵבִיא and לְמָעְלָה
-  rationale: The natural participial phrase preserves both the simile and the upward motion.
-- pob_phrase: in a thicket of trees
-  simplified_phrase: in a thicket of trees
-  preserved_meaning: The action takes place within dense growth made up of trees.
-  reasoning_layer_used: POB lexical decisions and applied revision for בִּסֲבָךְ עֵץ
-  rationale: The direct phrase is clearer than the redundant wording “among the trees in a thicket.”
+- pob_phrase: They were like men raising axes
+  simplified_phrase: They looked like woodcutters lifting their axes
+  preserved_meaning: The enemies are compared to people raising axes for chopping.
+  reasoning_layer_used: POB lexical decisions and final source audit
+  rationale: “Woodcutters” makes the comparison immediately understandable while retaining the raised-axe image.
+- pob_phrase: against a thicket of trees
+  simplified_phrase: to cut down a dense thicket
+  preserved_meaning: The axes are directed destructively against thick tree growth.
+  reasoning_layer_used: POB lexical decisions and contextual audit
+  rationale: The wording states the obvious purpose of the axes and expresses the density already conveyed by “thicket.”
+interpretive_expansions:
+- pob_phrase: raising axes against a thicket of trees
+  rendering: lifting their axes to cut down a dense thicket
+  claim: The axes are being raised for destructive chopping.
+  evidence:
+  - The POB lexical rationale identifies a woodcutting context.
+  - The final audit describes the image as destructive action against the trees.
+  confidence: high
+  alternatives_preserved:
+  - raising axes against a thicket of trees
 translation_notes:
   risk_flags:
-  - risk: The compact Hebrew also permits “became known” and “bringing axes upward.”
-    mitigation: The footnote preserves these alternatives without replacing the POB's main reading.
+  - risk: The plural subject is a contextual reconstruction of the difficult Hebrew singular construction.
+    mitigation: The footnote preserves the approximate formal wording and marks the uncertainty.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/074/005.yaml
   source_text_sha256: 668b47c50d473e3734f6c0b3fdbcaccb9227922e060d085f6af14324ba6b9d91
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 055ff3da03bd021bfa456232d0f6e6166a0910e882478772c6c5d548a66ec799
-  timestamp: '2026-07-12T10:00:52Z'
-  output_hash: ccdca3371197b7890d86763fcc70d7e2198e1a9aca94836864b179e8b9741b1c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 1136218ffcb764323c9d4fb91b8c249b8d9919f94536f87c076ac47b6f4ddfb0
+  timestamp: '2026-08-28T22:56:00Z'
+  output_hash: 308481cd440420632c3149997eae204b7a782e177400ad4eabc84285c8e30c1b
   usage:
-    prompt_tokens: 3956
-    completion_tokens: 487
-    total_tokens: 4443
-    reasoning_tokens: 151
+    prompt_tokens: 3449
+    completion_tokens: 672
+    total_tokens: 4121
+    reasoning_tokens: 269
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:52Z'
   previous_text: He was known as a man who lifted axes among the trees in a thicket.[a]
@@ -86,3 +94,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:00Z'
+  previous_text: He was known like a man lifting axes high in a thicket of trees.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

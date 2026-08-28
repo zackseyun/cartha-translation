@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/056/008.yaml
-  text: You have counted my wanderings[a]; put my tears in your bottle—are they not in your book?
+  text: You have counted my wanderings; put my tears in your bottle[a]—are they not in your book?
   footnotes:
   - marker: a
-    text: Or 'in your wineskin.' The Hebrew refers to a skin bottle rather than a modern glass bottle.
+    text: Or “in your wineskin.” The Hebrew refers to a skin bottle rather than a modern glass bottle.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,47 +31,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You have kept count of my wanderings. Put my tears in your bottle.[a] Are they not in your book?
+  text: You have counted every time I wandered from place to place. Put my tears in your bottle.[a] Are they not recorded in your book?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: This bottle was an ancient container made from animal skin, like a wineskin.
-    reason: cultural_note
+    text: Or “wineskin.” This was an ancient container made from animal skin, not a glass bottle.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: You have counted my wanderings
-  simplified_phrase: You have kept count of my wanderings
-  preserved_meaning: God has carefully counted the psalmist’s restless movements.
-  reasoning_layer_used: Lexical decision for סָפַרְתָּה and נֹדִי
-  rationale: “Kept count” sounds natural while preserving the concrete act of counting.
-- pob_phrase: put my tears in your bottle—are they not in your book?
-  simplified_phrase: Put my tears in your bottle. Are they not in your book?
-  preserved_meaning: The prayer and rhetorical question remain distinct while retaining both images.
-  reasoning_layer_used: Theological decision to retain anthropomorphic imagery
-  rationale: Two sentences make the movement easier to follow without abstracting the imagery.
+- pob_phrase: my wanderings
+  simplified_phrase: every time I wandered from place to place
+  preserved_meaning: The psalmist repeatedly moved or roamed without specifying what caused it.
+  reasoning_layer_used: POB lexical rationale and grounding review
+  rationale: The wording explains the movement while preserving ambiguity about its cause.
+- pob_phrase: You have counted
+  simplified_phrase: You have counted every time
+  preserved_meaning: God has carefully counted each occasion of wandering.
+  reasoning_layer_used: POB lexical decision
+  rationale: “Every time” gives “counted” a natural object in common English.
+- pob_phrase: are they not in your book?
+  simplified_phrase: Are they not recorded in your book?
+  preserved_meaning: The rhetorical question expects that the tears are in God's written record.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “Recorded” clarifies the book image without turning the question into an assertion.
+interpretive_expansions:
+- pob_phrase: my wanderings
+  rendering: every time I wandered from place to place
+  claim: The plural idea refers to repeated occasions of roaming or wandering.
+  evidence:
+  - The POB rationale defines the term as wandering, fugitive movement, or restless roaming.
+  confidence: high
+  alternatives_preserved:
+  - restless roaming
+  - fugitive movement
 translation_notes:
   risk_flags:
-  - risk: Modern readers may picture a glass bottle.
-    mitigation: The footnote identifies the ancient skin container without changing the main image.
-  - risk: The images of stored tears and a divine book could be mistaken for literal descriptions of God’s physical actions.
-    mitigation: The translation preserves the poem’s concrete language as POB requires rather than explaining it away.
+  - risk: “From place to place” makes the movement more explicit than the compact Hebrew noun.
+    mitigation: It preserves wandering without claiming that another person caused it.
+  - risk: “Recorded” explains how the tears relate to the book.
+    mitigation: It is a documented lexical alternative, and the concrete book image remains.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/056/008.yaml
   source_text_sha256: 6a1c961c8da190cdd0ad2423f916e197f3d046d4252b49d1e1d94a78a919a42d
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 48cd1ba53c648bef9466f0b13373781796b0c0545722c934da56c97e4618c267
-  timestamp: '2026-07-11T20:49:06Z'
-  output_hash: 659ef614d7cfc4a5e922f9a6296b08ee8fef3e1fbe866f789eb062b97af644a3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 3999a8a87a12ce60f3187f95b063a12905028251aca69c834d5499ce2746d9fa
+  timestamp: '2026-08-28T23:35:28Z'
+  output_hash: 9bb2ebdc70ddfadd84d26c91721adfc2d1999b27acf6d529b135da82a402ac02
   usage:
-    prompt_tokens: 2564
-    completion_tokens: 670
-    total_tokens: 3234
-    reasoning_tokens: 309
+    prompt_tokens: 3739
+    completion_tokens: 476
+    total_tokens: 4215
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:35Z'
+  previous_text: You have kept count of my wanderings. Put my tears in your bottle.[a] Are they not in your book?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:28Z'
+  previous_text: You have counted every time I was driven from place to place. Put my tears in your bottle.[a] Are they not recorded in your book?
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 458a3e43429f9860286c7b1110410275941a2877399e120ebba759fa6f733f21
+  review_summary: 'The draft substantially improves accessibility: “from place to place” makes “wanderings” understandable, and “recorded” appropriately explains the book image while preserving both the rhetorical question and the concrete bottle/book imagery. However, “was driven” unnecessarily settles the cause and involuntary character of the wandering. Replacing it with “I wandered” preserves the source expression’s live ambiguity while retaining the intended clarity. The footnote is accurate and useful.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

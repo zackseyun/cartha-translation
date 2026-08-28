@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/028/024.yaml
-  text: Whoever robs his father and his mother and says[a], “It is no transgression,” is a companion of a destructive man.
-  footnotes:
-  - marker: a
-    text: Or, “is a companion with a destroyer” / “is a companion to one who destroys.”
-    reason: lexical_alternative
+  text: Whoever robs his father and his mother and says, “It is no wrong,” is a companion of a destroyer.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,46 +27,67 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 28:24 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''to a destructive man''].'
 translation:
   language: en
-  text: Anyone who robs his father and mother and says, “There is nothing wrong with it,” is a companion of a destroyer.
+  text: Anyone who robs his father and his mother and says, “I have done nothing wrong,” is a companion of someone who destroys.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: Whoever
-  simplified_phrase: Anyone who
-  preserved_meaning: The saying applies to every person who acts this way.
-  reasoning_layer_used: POB translation and source syntax
-  rationale: “Anyone who” is more natural in common English.
-- pob_phrase: It is no transgression
-  simplified_phrase: There is nothing wrong with it
-  preserved_meaning: The person denies that robbing his father and mother is morally wrong.
-  reasoning_layer_used: POB lexical decision for אֵין פָּשַׁע
-  rationale: The wording makes the denial immediately clear without limiting it to a legal offense.
-- pob_phrase: a destructive man
-  simplified_phrase: a destroyer
-  preserved_meaning: The person is morally associated with someone who causes destruction or ruin.
-  reasoning_layer_used: POB lexical alternatives for לְאִישׁ מַשְׁחִית
-  rationale: “A destroyer” directly expresses the participial image in ordinary English.
+- pob_phrase: Whoever robs his father and his mother and says
+  simplified_phrase: Anyone who robs his father and his mother and says
+  preserved_meaning: The statement applies to any person who wrongfully takes from both named parents and denies wrongdoing.
+  reasoning_layer_used: POB lexical decisions for גּוֹזֵל, אָבִיו וְאִמּוֹ, and וְאֹמֵר
+  rationale: “Anyone” is more conversational, while simple “and” avoids adding a temporal sequence.
+- pob_phrase: is a companion of a destroyer
+  simplified_phrase: is a companion of someone who destroys
+  preserved_meaning: The offender is morally associated with a person who brings ruin.
+  reasoning_layer_used: POB lexical decisions for חָבֵר and מַשְׁחִית
+  rationale: “Someone who destroys” explains the noun while retaining the Hebrew image and direct association.
+interpretive_expansions:
+- pob_phrase: It is no wrong
+  rendering: I have done nothing wrong
+  claim: The speaker personally denies that the robbery is wrongdoing.
+  evidence:
+  - The immediate clause identifies the robbery as the act being denied.
+  - The POB rationale states that the speaker denies his act is wrongdoing.
+  confidence: high
+  alternatives_preserved:
+  - There is nothing wrong with it.
 translation_notes:
   risk_flags:
-  - risk: “Nothing wrong” is less technical than “transgression.”
-    mitigation: The wording preserves the broad moral denial and avoids narrowing it to crime or ritual sin.
+  - risk: “Someone who destroys” does not specify what the person destroys.
+    mitigation: The broad wording preserves the source sense of one who destroys or brings ruin.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/028/024.yaml
   source_text_sha256: 6b8a835892f79a379b7e5f14ad44fd973115ea96f75668374248e2f2bfbfd344
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5c7537414454bb67720c1fe00dc1fdf71903e776584ce597c45345ab688da1f1
-  timestamp: '2026-07-11T21:09:31Z'
-  output_hash: 5501235291812d14ceee8296f74e9850844a92f0077d617815ac77fbef143a77
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 346d99b29993023e09498ca62e57db6af21a5644abc7b3cc2d04dd30872f24d2
+  timestamp: '2026-08-28T23:34:55Z'
+  output_hash: 26c6f0afd789ba7b4d6e06b20536f95694a6681450d681a0b40cfb84629f59e3
   usage:
-    prompt_tokens: 2764
-    completion_tokens: 852
-    total_tokens: 3616
-    reasoning_tokens: 512
+    prompt_tokens: 3753
+    completion_tokens: 768
+    total_tokens: 4521
+    reasoning_tokens: 358
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:06:48Z'
+  previous_text: Anyone who robs his father and mother and says, “There is nothing wrong with it,” is a companion of a destroyer.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:55Z'
+  previous_text: Anyone who robs his father and his mother, then says, “I have done nothing wrong,” is in the company of a destroyer.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 6104c46a004fdd39f836adce10342ac38efb1f619da9e3b7b0db36ef02e97d44
+  review_summary: 'The first-person clarification is warranted: in context, the speaker denies wrongdoing in the robbery, and the POB audit explicitly supports that sense. Revise the added “then,” which imposes an unnecessary sequence, and replace the potentially proximity-focused “in the company of” with direct association language. “Someone who destroys” makes “destroyer” more immediately understandable without adding interpretation.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

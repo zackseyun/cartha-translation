@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/145/009.yaml
-  text: Yahweh is good to all[a], and his mercies are over all his works.
+  text: Yahweh is good to all, and his compassion[a] is over all his works.
   footnotes:
   - marker: a
-    text: Or 'his compassion' or 'his tender mercies.' The Hebrew uses a plural form, emphasizing the abundance of his compassionate acts.
+    text: Or 'his mercies' or 'his tender mercies.' The Hebrew uses a plural form for compassion.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,54 +31,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Yahweh is good to all. His many acts of mercy extend over everything he has made.
+  text: Yahweh is good to all. His compassion[a] extends over everything he has made.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew uses a plural form that can also be translated “his mercies” or “his tender mercies.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: and his mercies are over all his works
-  simplified_phrase: His many acts of mercy extend over everything he has made
-  preserved_meaning: Yahweh’s abundant compassion encompasses all creation.
-  reasoning_layer_used: POB lexical decisions for רַחֲמָיו, עַל, and מַעֲשָׂיו
-  rationale: The rewrite explains “mercies” and “works” while retaining the image of mercy extending over creation.
+- pob_phrase: Yahweh is good to all, and
+  simplified_phrase: Yahweh is good to all.
+  preserved_meaning: Yahweh’s goodness reaches all without limiting its scope to people.
+  reasoning_layer_used: POB lexical decision for לַכֹּל and the grounding review
+  rationale: A sentence break improves readability while retaining the unrestricted word “all.”
+- pob_phrase: his compassion is over
+  simplified_phrase: His compassion extends over
+  preserved_meaning: His compassion encompasses all its objects while preserving the spatial image.
+  reasoning_layer_used: POB lexical decision and applied revision for עַל
+  rationale: “Extends over” states the encompassing sense in natural English without losing the image.
+- pob_phrase: all his works
+  simplified_phrase: everything he has made
+  preserved_meaning: The phrase refers to the whole of God’s creation.
+  reasoning_layer_used: POB lexical decision for מַעֲשָׂיו
+  rationale: This concrete wording is clearer than the biblical expression “his works.”
 interpretive_expansions:
-- pob_phrase: his mercies
-  rendering: his many acts of mercy
-  claim: The plural points to abundant expressions of compassion.
-  evidence:
-  - The POB lexical rationale says the plural can convey acts of compassion and emphasizes their abundance.
-  confidence: high
-  alternatives_preserved:
-  - his compassion
-  - his tender mercies
 - pob_phrase: all his works
   rendering: everything he has made
-  claim: Here God’s works refers to the whole created order.
+  claim: God’s works here means the whole of what he created.
   evidence:
-  - The POB lexical rationale identifies God’s created works as the most natural contextual sense.
+  - The POB lexical rationale identifies created works as the most natural contextual sense.
+  - The parallel universal expressions support a creation-wide scope.
   confidence: high
   alternatives_preserved:
   - all his works
+  - all his deeds
 translation_notes:
   risk_flags:
-  - risk: “Acts of mercy” may sound more specific than the broader plural “mercies.”
-    mitigation: “Many” preserves the abundance, while the POB lexical rationale supports expressions or acts of compassion.
+  - risk: “Everything he has made” selects the creation sense of the broader word “works.”
+    mitigation: The POB lexical rationale identifies created works as the most natural meaning in this context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/145/009.yaml
   source_text_sha256: 3cf6d135c161be11c94d36ad57914b4cb0055610007499605d92f6b15c071849
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c468da9abed1ba77a0f7e03009cfcfd92bee6dc3ab258f2c9ee794e12a5793ae
-  timestamp: '2026-07-11T21:05:10Z'
-  output_hash: 7db515e663271f3b076294a7974dfb3212c3b098bedc7de8730757ccb9218728
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f39cc95b5119d67201f3df0313a2768ab16b86404bf8bfdae6bd68247d251a7c
+  timestamp: '2026-08-28T23:36:28Z'
+  output_hash: f8dfefcfdc2fe13642b4bd84f34ed13f1cd46c73a9a9ea4b4f38abdcdfd472d4
   usage:
-    prompt_tokens: 2474
-    completion_tokens: 593
-    total_tokens: 3067
-    reasoning_tokens: 220
+    prompt_tokens: 3510
+    completion_tokens: 559
+    total_tokens: 4069
+    reasoning_tokens: 91
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:10Z'
+  previous_text: Yahweh is good to all. His many acts of mercy extend over everything he has made.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:28Z'
+  previous_text: Yahweh is good to everyone. His compassion[a] extends over everything he has made.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 91a277891c4f544777d1780bda573cf1d6bd277c2990d5b6a0a680169c13d763
+  review_summary: The draft helpfully clarifies “his works” as what Yahweh has made; this is warranted by the POB lexical rationale and makes the phrase more accessible. However, “everyone” improperly narrows the first “all” to people. Retain the unrestricted “all” while keeping the clear rendering “everything he has made.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

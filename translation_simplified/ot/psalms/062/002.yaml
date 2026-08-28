@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/062/002.yaml
-  text: He alone is my rock and my salvation[a], my stronghold; I will not be greatly shaken.
+  text: He alone is my rock and my salvation, my stronghold; I will not be greatly shaken[a].
   footnotes:
   - marker: a
-    text: Or, 'I will not be shaken.' The Hebrew includes a modifier meaning 'greatly' or 'much,' which softens the statement slightly compared with the absolute wording in Psalm 62:2 [Eng. 62:6].
+    text: The Hebrew includes a degree word, “greatly” or “much,” unlike the absolute wording in verse 6.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,55 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He alone is my rock, my salvation, and my secure fortress. I will not be badly shaken.[a]
+  text: He alone is my solid rock and my salvation. He is the stronghold that protects me. I will not be greatly shaken.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Literally, “greatly shaken.” The Hebrew keeps this statement slightly less absolute than “I will not be shaken.”
+    text: The Hebrew says “greatly shaken,” not simply “shaken,” unlike verse 6.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: my stronghold
-  simplified_phrase: my secure fortress
-  preserved_meaning: God is pictured as a protected, defensible place.
-  reasoning_layer_used: POB lexical decision for מִשְׂגַּבִּי
-  rationale: “Secure fortress” makes the military image immediately clear.
-- pob_phrase: I will not be greatly shaken
-  simplified_phrase: I will not be badly shaken
-  preserved_meaning: The speaker will not be shaken to a great degree.
-  reasoning_layer_used: POB lexical and theological decisions for רַבָּה
-  rationale: “Badly” expresses the degree modifier in common English.
 - pob_phrase: He alone is my rock and my salvation, my stronghold
-  simplified_phrase: He alone is my rock, my salvation, and my secure fortress
-  preserved_meaning: God alone provides stability, rescue, and protection.
-  reasoning_layer_used: POB lexical decision for אַךְ and source syntax
-  rationale: One coordinated sentence keeps “alone” in scope over all three images.
+  simplified_phrase: He alone is my solid rock and my salvation. He is the stronghold that protects me.
+  preserved_meaning: God alone provides stability, rescue, and secure protection.
+  reasoning_layer_used: POB lexical decisions for אַךְ, צוּרִי, יְשׁוּעָתִי, and מִשְׂגַּבִּי
+  rationale: Two sentences clarify the three images while preserving their distinct meanings.
+- pob_phrase: I will not be greatly shaken
+  simplified_phrase: I will not be greatly shaken
+  preserved_meaning: The speaker may be disturbed but will not be shaken severely.
+  reasoning_layer_used: POB theological decision on רַבָּה
+  rationale: The degree word remains because the Hebrew is less absolute here than in verse 6.
+interpretive_expansions:
+- pob_phrase: my stronghold
+  rendering: the stronghold that protects me
+  claim: The stronghold image presents God as the speaker’s secure protection.
+  evidence:
+  - The POB lexical rationale defines מִשְׂגָּב as a secure high place or fortress.
+  confidence: high
+  alternatives_preserved:
+  - my stronghold
+  - my high fortress
 translation_notes:
   risk_flags:
-  - risk: “Badly shaken” is less elevated than traditional psalm wording.
-    mitigation: It preserves the Hebrew degree modifier, while the footnote gives the literal wording.
+  - risk: “Solid” explains the rock image more directly than the POB wording.
+    mitigation: The concrete image “rock” remains, and solidity is the stability emphasized in the POB rationale.
+  - risk: Readers may expect the absolute promise “I will not be shaken.”
+    mitigation: The main text and footnote preserve the Hebrew degree modifier and its contrast with verse 6.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/062/002.yaml
   source_text_sha256: 9933db633e435ba363ccbc462afbea2b462f79fd59405bf23d3503d856974e47
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: abee7ef2cc4b5e613473d0463c0364789bd8297d0b903004cb4544c239b83f43
-  timestamp: '2026-07-12T10:00:38Z'
-  output_hash: e6ded340b20f305fa7a928ab767721c7d02d249f145026bd2e8066617e2fcf19
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 22eb9872bd28d5fbf6d8aa95069a4afdab2b970bfc62664d55cabb68756039aa
+  timestamp: '2026-08-28T22:56:46Z'
+  output_hash: ba63f3afc581fcb53d6766b23342f68596341e93253088dbc45ef8f8a218a848
   usage:
-    prompt_tokens: 3386
-    completion_tokens: 382
-    total_tokens: 3768
-    reasoning_tokens: 0
+    prompt_tokens: 2701
+    completion_tokens: 697
+    total_tokens: 3398
+    reasoning_tokens: 212
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:38Z'
   previous_text: He alone is my rock and my salvation. He is my secure fortress. I will not be badly shaken.[a]
@@ -91,3 +96,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:46Z'
+  previous_text: He alone is my rock, my salvation, and my secure fortress. I will not be badly shaken.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

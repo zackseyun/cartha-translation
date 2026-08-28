@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/024/003.yaml
-  text: Who may ascend the mountain of Yahweh? And who may stand in his holy place?[a]
-  footnotes:
-  - marker: a
-    text: Or 'the hill of the LORD.' The Hebrew הַר can mean 'mountain' or 'hill'; 'mountain' is retained here as the more standard rendering in this Psalm.
-    reason: lexical_alternative
+  text: Who may ascend the mountain of Yahweh? And who may stand in his holy place?
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,46 +27,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Who may go up Yahweh’s mountain? And who may stand in his holy place?[a]
+  text: Who may go up Yahweh’s mountain? Who may stand in his holy place?
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “Yahweh’s hill.” The Hebrew word can mean “mountain” or “hill.”
-    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: ascend the mountain of Yahweh
   simplified_phrase: go up Yahweh’s mountain
-  preserved_meaning: A qualified person approaches Yahweh’s elevated holy place.
-  reasoning_layer_used: POB lexical decisions for יַעֲלֶה and בְהַר, with the divine-name doctrine
-  rationale: “Go up” is clearer than “ascend,” while “may” retains the question of qualification.
+  preserved_meaning: The upward movement to the mountain belonging to Yahweh remains clear.
+  reasoning_layer_used: POB lexical decisions for יַעֲלֶה, בְהַר, and יְהוָה
+  rationale: “Go up” is more familiar than “ascend” while preserving the mountain and pilgrimage image.
 - pob_phrase: And who may stand
-  simplified_phrase: And who may stand
-  preserved_meaning: The second question remains explicitly joined to the first in poetic parallel.
-  reasoning_layer_used: POB lexical decision for וּמִי and cross-check review
-  rationale: Retaining “And” preserves the Hebrew conjunction and the verse’s parallel structure.
-translation_notes: {}
+  simplified_phrase: Who may stand
+  preserved_meaning: The second question still asks who is qualified to stand in the sacred place.
+  reasoning_layer_used: POB theological decision on the imperfect verbs and poetic parallelism
+  rationale: Removing the opening “And” makes the paired questions flow naturally without merging them.
+translation_notes:
+  risk_flags:
+  - risk: “May” could be understood as possibility rather than qualification.
+    mitigation: The paired questions retain POB’s wording and contextually ask who is permitted and fit to approach.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/024/003.yaml
   source_text_sha256: b942330369094981ba841cd134c24fadc7f609c6ed6ff3389d6159a1ad2305c7
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 58b91dbc809d30ba95270d69bd7a648fd168f850ff721f0dd483cf21d87b7b83
-  timestamp: '2026-07-12T09:59:17Z'
-  output_hash: d498e041eea91deff6d7146dd87ccdad98a980a87d38ffcdecae1349a9e9d5ce
+  prompt_sha256: ffc56a03ff3650b19217b61104f14e2be0862e5b2831f3b8434496217dd5d728
+  timestamp: '2026-08-28T23:35:07Z'
+  output_hash: f2556639aa41edb475e35d09b1eec2c07d11421f5814cea20ea787fbd4241d81
   usage:
-    prompt_tokens: 3292
-    completion_tokens: 281
-    total_tokens: 3573
-    reasoning_tokens: 0
+    prompt_tokens: 3749
+    completion_tokens: 327
+    total_tokens: 4076
+    reasoning_tokens: 38
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: stand in his holy place
+  rendering: stand before him in his holy place
+  claim: Standing there means being in Yahweh’s presence.
+  evidence:
+  - The POB rationale identifies this as a temple-access context involving God’s presence.
+  - The possessive “his” identifies the holy place as Yahweh’s.
+  confidence: high
+  alternatives_preserved:
+  - stand in his holy place
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:17Z'
@@ -80,6 +84,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 3b6e695613431c05a725aa2f20503f4dff2f4bfc27d56c408e1a57a5f558c695
   review_summary: “Go up” is a warranted, clearer rendering of “ascend” and retains the qualification sense supplied by “may.” “Yahweh’s mountain” accurately conveys the construct and preserves the divine name. Retain “And” at the start of the second question to reflect the source conjunction and preserve the stated poetic parallelism.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:55:21Z'
+  previous_text: Who may go up Yahweh’s mountain? And who may stand in his holy place?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:07Z'
+  previous_text: Who may go up Yahweh’s mountain? Who may stand before him in his holy place?
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: beab3aef06f383da10dd979008f3e7fb7e9266502c074564a929d7ddb45642e8
+  review_summary: '“Go up Yahweh’s mountain” is a clear, warranted simplification of “ascend the mountain of Yahweh,” preserving the upward/pilgrimage image and the divine-name reference. Omitting the repeated “And” is also a harmless English smoothing that preserves the two parallel questions. Revise only the added “before him”: the temple-access implication is contextually real, but the source deliberately states the location as “in his holy place,” and the explicit addition is not needed for modern-reader clarity.'
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

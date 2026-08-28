@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/029.yaml
-  text: He turned their waters to blood and caused their fish to die[a].
+  text: He turned their waters to blood[a] and caused their fish to die.
   footnotes:
   - marker: a
-    text: Or 'He turned their waters into blood.'
+    text: Or “He turned their waters into blood.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,38 +31,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He turned their waters into blood and made their fish die.
+  text: He turned the Egyptians’ rivers and other waters into blood, and he caused their fish to die.
   philosophy: optimal-equivalence
 simplification_decisions:
+- pob_phrase: their waters
+  simplified_phrase: the Egyptians’ rivers and other waters
+  preserved_meaning: The plural refers collectively to the Egyptians’ bodies of water.
+  reasoning_layer_used: POB lexical rationale and plague context
+  rationale: This identifies the pronoun’s referent and makes the collective plural easier to picture.
+- pob_phrase: to blood
+  simplified_phrase: into blood
+  preserved_meaning: The waters were changed so that blood was their resulting state.
+  reasoning_layer_used: POB lexical alternative
+  rationale: “Into blood” is the more natural modern English form already approved by the POB audit.
 - pob_phrase: caused their fish to die
-  simplified_phrase: made their fish die
-  preserved_meaning: He directly caused the fish to die.
-  reasoning_layer_used: The lexical decision identifies the Hebrew verb as causative.
-  rationale: “Made” expresses the same causative force in more common English.
-- pob_phrase: turned their waters to blood
-  simplified_phrase: turned their waters into blood
-  preserved_meaning: Their bodies of water became blood.
-  reasoning_layer_used: The lexical decision allows “into blood” as natural English for the resulting state.
-  rationale: “Into” makes the change of state immediately clear.
-translation_notes: {}
+  simplified_phrase: he caused their fish to die
+  preserved_meaning: God directly caused the death of the fish.
+  reasoning_layer_used: POB Hiphil lexical decision
+  rationale: Repeating “he” keeps the Hebrew verb’s causative force clear.
+interpretive_expansions:
+- pob_phrase: their waters
+  rendering: the Egyptians’ rivers and other waters
+  claim: The pronoun refers to the Egyptians, and the plural includes their bodies of water.
+  evidence:
+  - The POB lexical rationale identifies these as the Egyptians’ bodies of water in the plague context.
+  confidence: high
+  alternatives_preserved:
+  - their waters
+  - their bodies of water
+translation_notes:
+  risk_flags:
+  - risk: “Rivers and other waters” is more specific than the compact Hebrew plural.
+    mitigation: “Other waters” keeps the phrase broad rather than limiting it to rivers alone.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/029.yaml
   source_text_sha256: 09110f13f2b1f44e9bbd3971daecdf0f54ff18300f0f94b0f87c9e3ed76add98
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 1bb7888002c58583f77fef8ebcb8466895e4a33746380ef099dd063f5783adf7
-  timestamp: '2026-07-11T21:01:55Z'
-  output_hash: 36fcba405fb05bd04213cf32aaf5096832443b0bad431aaec86068d277199fb4
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: e2106ed8fc5b269b0359af684a61f4a289b6371cecf05723a471d57e9fa109b4
+  timestamp: '2026-08-28T23:03:11Z'
+  output_hash: 583edf34aaad6c9ce6c4c10644e69d15dcb24e356cf481c1aee363cab5f05f0f
   usage:
-    prompt_tokens: 2172
-    completion_tokens: 525
-    total_tokens: 2697
-    reasoning_tokens: 319
+    prompt_tokens: 2338
+    completion_tokens: 1162
+    total_tokens: 3500
+    reasoning_tokens: 753
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:03:11Z'
+  previous_text: He turned their waters into blood and made their fish die.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

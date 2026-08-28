@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/025/017.yaml
-  text: The troubles of my heart have multiplied[a][b]; bring me out of my distresses.
+  text: The troubles of my heart have grown[a]; bring me out of my distresses[b].
   footnotes:
   - marker: a
-    text: Or 'bring me out from my straits.'
+    text: Literally, “have widened” or “have enlarged.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'The troubles of my heart have widened/enlarged,' preserving the Hebrew image more literally.
+    text: Or “bring me out of my straits,” preserving the image of release from a confined place.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,68 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 25:17 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''have grown''].'
 translation:
   language: en
-  text: My heart’s troubles have grown.[a] Bring me out of all my distress.
+  text: The troubles in my heart have grown. Bring me out of the troubles that close in around me.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew can also be pictured as “My heart’s troubles have widened.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: The troubles of my heart have multiplied
-  simplified_phrase: My heart’s troubles have grown
-  preserved_meaning: The psalmist’s inner troubles have increased.
-  reasoning_layer_used: POB lexical decisions and applied revision record
-  rationale: “Have grown” follows the audited lexical choice and reads naturally.
+- pob_phrase: The troubles of my heart have grown
+  simplified_phrase: The troubles in my heart have grown
+  preserved_meaning: The psalmist’s inner troubles have become greater.
+  reasoning_layer_used: POB lexical decisions for לְבָבִי and הִרְחִיבוּ
+  rationale: “In my heart” is more natural English while preserving the heart image and completed growth.
 - pob_phrase: bring me out of my distresses
-  simplified_phrase: Bring me out of all my distress
-  preserved_meaning: The psalmist asks God to rescue him from constricting suffering.
-  reasoning_layer_used: POB lexical decisions
-  rationale: The wording keeps the concrete rescue image while making the plural natural in English.
+  simplified_phrase: Bring me out of the troubles that close in around me
+  preserved_meaning: The psalmist asks to be rescued from constricting troubles.
+  reasoning_layer_used: POB lexical decisions for מִמְּצוּקוֹתַי and הוֹצִיאֵנִי
+  rationale: The wording clearly preserves the paired images of confinement and being brought out.
+interpretive_expansions:
+- pob_phrase: my distresses
+  rendering: the troubles that close in around me
+  claim: The troubles are pictured as constricting the psalmist.
+  evidence:
+  - The POB lexical rationale says מְצוּקוֹת conveys tightness or straits.
+  - The command “bring me out” pictures rescue as movement out of confinement.
+  confidence: high
+  alternatives_preserved:
+  - distresses
+  - straits
 translation_notes:
   risk_flags:
-  - risk: Using collective “distress” may obscure the Hebrew plural.
-    mitigation: “All” retains the sense that the prayer covers his many distresses.
+  - risk: “Close in around me” makes the source’s confinement image more explicit than POB’s main text.
+    mitigation: The wording is limited to the documented sense of tightness and the verb “bring out.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/025/017.yaml
   source_text_sha256: 49593d87ae49f44fed29b2aaa94bfe7c059620e348c48525a4d1143701936b2f
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 9fd4be9903cf7a9cf4b88e8f0cb5e1109fa7e0730140c2c28b8e6b4f6dd79f90
-  timestamp: '2026-07-11T20:48:43Z'
-  output_hash: a3519877e41866d0274634e365db609cf63425e441c2eb67038fdafd10acea17
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6680f65e7b041132c733b13ba08c34354726c46f7e475507694d4968d8f923fe
+  timestamp: '2026-08-28T23:35:09Z'
+  output_hash: 5675b3ef6cf18e0294a8e8db87a51bfec7ffb45cdae6eb16feebe19bee74d1f5
   usage:
-    prompt_tokens: 2592
-    completion_tokens: 794
-    total_tokens: 3386
-    reasoning_tokens: 512
+    prompt_tokens: 3590
+    completion_tokens: 449
+    total_tokens: 4039
+    reasoning_tokens: 39
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:05Z'
+  previous_text: My heart’s troubles have grown.[a] Bring me out of all my distress.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:09Z'
+  previous_text: The troubles in my heart keep growing. Bring me out of the troubles that close in around me.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 59df3a786de2edbbbc7df613ce0de5ff147f8932cc503ea25258244903b10975
+  review_summary: 'The draft meaningfully improves readability, especially by making the constricting image in “distresses/straits” explicit. “Troubles that close in around me” is warranted by the documented lexical sense of tightness or straits and by the request to be brought out. Revise only “keep growing”: it adds an ongoing temporal claim not established by the source or POB audit. “Have grown” remains clear while preserving the source’s stated sense.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

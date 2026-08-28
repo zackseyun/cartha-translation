@@ -21,38 +21,61 @@ base_translation:
     output_hash: 1e0c478d049a50c3382ea1b61df2161300b2dedbf4964690a632311615fe3037
 translation:
   language: en
-  text: I will sing with my tongue about your promise, because all your commandments are right.
+  text: I will sing about your promise, because all your commandments are right.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: My tongue will sing of
-  simplified_phrase: I will sing with my tongue about
-  preserved_meaning: The speaker will personally sing while retaining the source image of the tongue.
-  reasoning_layer_used: POB translation and Hebrew source image
-  rationale: The active wording is easier to follow without removing the tongue image.
-- pob_phrase: for all your commandments are righteous
-  simplified_phrase: because all your commandments are right
-  preserved_meaning: Every divine commandment conforms to what is right.
-  reasoning_layer_used: POB lexical decision for מִצְוֺתֶיךָ
-  rationale: “Because” makes the logic direct, and “right” expresses “righteous” in common English.
-translation_notes: {}
+  simplified_phrase: I will sing about
+  preserved_meaning: The psalmist will sing openly about what God has promised.
+  reasoning_layer_used: POB translation and source image
+  rationale: The singer is stated directly because the tongue is a Hebrew body-part image for the person speaking or singing.
+- pob_phrase: all your commandments are righteous
+  simplified_phrase: all your commandments are right
+  preserved_meaning: Every command from God conforms to what is morally right.
+  reasoning_layer_used: POB translation and lexical decision for מִצְוֺתֶיךָ
+  rationale: “Right” communicates “righteous” in common English while preserving “commandments” as the psalm’s consistent term.
+translation_notes:
+  risk_flags:
+  - risk: Removing “my tongue” reduces the visible force of the source-language image.
+    mitigation: The image functions metonymically here, and “I will sing” preserves its substantive meaning in natural English.
+  - risk: “Right” may sound less morally weighty than “righteous.”
+    mitigation: The clause still directly affirms the moral rightness of every divine command.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/119/172.yaml
   source_text_sha256: e84d3d18d70bef659978a2ccecaa762e1896f47812989c1fd1f415329e0a161b
-  pob_commit_sha: 10975b14a09f35fcd9d540512a844c945cec1b29
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 7ecd80c5129e102ed58945e024ffba0e09fa4236220a92cbc63195ea4ab27572
-  timestamp: '2026-07-27T04:23:10Z'
-  output_hash: b5c01be910a4684368dc8230ba8c3a15e270b54bd238f858e9fc64c6d23e9e5f
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ba4070567cc79286886037f2f0a69f60801c38369f39402d9daffd99fd948c28
+  timestamp: '2026-08-28T23:36:15Z'
+  output_hash: 6a0e0e730064b0aa9f45e6fab3cba4194f57bb0dc4f7f26f79f44d5994519145
   usage:
-    prompt_tokens: 1843
-    completion_tokens: 415
-    total_tokens: 2258
-    reasoning_tokens: 184
+    prompt_tokens: 2488
+    completion_tokens: 310
+    total_tokens: 2798
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:00Z'
+  previous_text: I will sing with my tongue about your promise, because all your commandments are right.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:15Z'
+  previous_text: With my tongue I will sing about your promise, because all your commandments are right.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f0f467c8765f3fdc4258309f067e4a1b320db35f4142af83573f3ef409d352a4
+  review_summary: 'The draft preserves the meaning of both clauses: the psalmist sings concerning God’s promise, and the reason given is that every divine command is morally right. “Right” is a warranted common-English simplification of “righteous” in this context. However, the retained tongue image produces unnecessary redundancy rather than a meaningful readability gain. Omitting that metonymy improves clarity without removing any substantive claim.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/034/031.yaml
-  text: For has anyone said to God[a], ‘I have borne punishment; I will not offend again’?
+  text: For has anyone said to God, “I have borne punishment[a]; I will not do wrong?”
   footnotes:
   - marker: a
-    text: Or, more literally, 'I have borne; I will not act corruptly.' The Hebrew leaves the object of 'borne' unstated, which may imply punishment, chastisement, or guilt borne.
-    reason: lexical_alternative
+    text: Hebrew “I have borne”; the object is unstated and may refer to punishment or chastisement.
+    reason: supplied_object
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,55 +31,43 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For has anyone ever said to God, “I have endured punishment[a]. I will not do wrong again”?
+  text: For has anyone said to God, “I have endured punishment[a]; I will not do wrong”?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: More literally, “I have borne.” The Hebrew does not say what was borne; it may mean punishment, correction, or guilt.
-    reason: lexical_alternative
+    text: Hebrew says only “I have endured”; what was endured is not stated and may mean punishment or correction.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: has anyone said
-  simplified_phrase: has anyone ever said
-  preserved_meaning: The question remains rhetorical and applies to any person.
-  reasoning_layer_used: lexical decision for הֶאָמַר
-  rationale: “Ever” makes the rhetorical question sound natural in modern English.
 - pob_phrase: I have borne punishment
   simplified_phrase: I have endured punishment
-  preserved_meaning: The speaker claims to have borne an unstated consequence, probably punishment.
-  reasoning_layer_used: lexical decision for נָשָׂאתִי and POB footnote
-  rationale: “Endured” clearly expresses bearing punishment while the footnote preserves the Hebrew ambiguity.
-- pob_phrase: I will not offend again
-  simplified_phrase: I will not do wrong again
-  preserved_meaning: The speaker promises to stop acting wrongly or corruptly.
-  reasoning_layer_used: lexical decision for אֶחְבֹּל
-  rationale: “Do wrong” avoids the narrower modern sense of merely upsetting someone.
+  preserved_meaning: The speaker says he has undergone an unstated burden, plausibly punishment or correction.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: “Endured” expresses the contextual sense of “borne” in clearer modern English while the footnote preserves the unstated object.
 translation_notes:
   risk_flags:
-  - risk: “Punishment” supplies an object that is unstated in Hebrew.
-    mitigation: The footnote preserves the literal wording and other possible implications.
+  - risk: “Punishment” supplies an object that is absent from the Hebrew.
+    mitigation: The footnote identifies the supply and preserves correction as another possibility.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/034/031.yaml
   source_text_sha256: 92ec14806cc2b4de473de0bf9732fe2e96eb33417e876c8ad75825483ab933d2
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 66369d7a33c6279b3398eb2feb203839344053276369a4f9ba872b35ac3c6c5d
-  timestamp: '2026-07-12T09:44:59Z'
-  output_hash: 6d65ec4b7e810bcef3de581b7699e9501765111b90663829d6ff80fd65ae0138
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: c8cc0ddc2e041a265cb17e505ca927ebd4a33a9a20a32ed2688bb0a8df82706b
+  timestamp: '2026-08-28T22:51:13Z'
+  output_hash: bb925d46389a8194dc435de34e45312b707f09ac32cfdada07f0daa775801c97
   usage:
-    prompt_tokens: 3097
-    completion_tokens: 369
-    total_tokens: 3466
-    reasoning_tokens: 0
+    prompt_tokens: 2438
+    completion_tokens: 477
+    total_tokens: 2915
+    reasoning_tokens: 246
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:44:59Z'
   previous_text: For has anyone ever said to God, “I have endured punishment[a]. I will not do wrong again”?”
@@ -91,3 +79,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:13Z'
+  previous_text: For has anyone ever said to God, “I have endured punishment[a]. I will not do wrong again”?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

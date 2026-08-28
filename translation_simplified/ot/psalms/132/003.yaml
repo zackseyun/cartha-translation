@@ -11,14 +11,17 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/132/003.yaml
-  text: Surely I will not enter the tent of my house[a][b]; surely I will not go up onto the bed of my couch—
+  text: Surely[a] I will not enter my house[b]; surely I will not go up onto my bed[c]—
   footnotes:
   - marker: a
-    text: Or 'the bed of my bedchamber' / 'the couch of my resting place'; the Hebrew uses two closely related terms for a sleeping place in poetic parallelism.
-    reason: lexical_alternative
+    text: 'Hebrew uses an oath formula with repeated “if”: literally, “If I enter ... if I go up ...,” meaning “Surely I will not enter ... surely I will not go up ...” in context.'
+    reason: idiom
   - marker: b
-    text: 'Hebrew uses an oath formula with repeated ''if'': literally, ''If I enter ... if I go up ...,'' meaning ''Surely I will not enter ... surely I will not go up ...'' in context.'
-    reason: lexical_alternative
+    text: Hebrew more literally, “the tent of my house.”
+    reason: literal_form
+  - marker: c
+    text: Hebrew more literally, “go up onto the bed of my lying place.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,57 +37,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I will certainly not enter the tent that is my home,[a] and I will not climb into bed to rest—
+  text: I solemnly swear:[a] I will not enter my house; I will not get onto my bed—[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 'Hebrew uses a repeated oath formula: literally, “If I enter … if I go up …,” meaning “I will certainly not enter … I will certainly not go up.”'
-    reason: lexical_alternative
+    text: Hebrew states this oath with repeated “if” clauses, which here mean, “Surely I will not.”
+    reason: simplification_note
+  - marker: b
+    text: Hebrew more literally says, “the tent of my house” and “go up onto the bed of my lying place.”
+    reason: source_note
 simplification_decisions:
-- pob_phrase: Surely I will not enter the tent of my house
-  simplified_phrase: I will certainly not enter the tent that is my home
-  preserved_meaning: The speaker vows not to enter his dwelling, while the concrete tent image remains.
-  reasoning_layer_used: POB lexical decisions for אִם, אֹהֶל, and בַּיִת
-  rationale: The wording makes the unusual tent-house relationship understandable without replacing the Hebrew image.
-- pob_phrase: go up onto the bed of my couch
-  simplified_phrase: climb into bed to rest
-  preserved_meaning: The speaker vows not to get onto his sleeping place.
-  reasoning_layer_used: POB lexical decisions for עָלָה, עֶרֶשׂ, and יְצוּעַ
-  rationale: The natural English expression preserves the movement toward a place for lying down.
+- pob_phrase: Surely I will not ... surely I will not
+  simplified_phrase: 'I solemnly swear: I will not ... I will not'
+  preserved_meaning: The speaker makes an emphatic vow not to do either action.
+  reasoning_layer_used: POB lexical decision and oath-formula footnote
+  rationale: Stating the oath directly makes the Hebrew idiom immediately clear.
+- pob_phrase: go up onto my bed
+  simplified_phrase: get onto my bed
+  preserved_meaning: The speaker refuses to get onto his bed.
+  reasoning_layer_used: POB lexical decision and independent grounding review
+  rationale: “Get onto” is natural English without implying strenuous climbing.
 interpretive_expansions:
-- pob_phrase: the bed of my couch
-  rendering: bed to rest
-  claim: The sleeping place is explicitly described by its purpose.
+- pob_phrase: Surely ... not
+  rendering: 'I solemnly swear: I will not'
+  claim: The speaker is making an emphatic vow.
   evidence:
-  - The POB rationale defines יְצוּעַ as a place of lying down or resting place.
+  - The POB audit identifies the repeated Hebrew אִם as an oath formula.
+  - The preceding verse supplies the oath context.
   confidence: high
   alternatives_preserved:
-  - my couch
-  - my resting place
+  - Surely I will not
 translation_notes:
   risk_flags:
-  - risk: “The tent that is my home” may sound historically specific.
-    mitigation: This preserves POB’s deliberate concrete image rather than flattening it to “house.”
-  - risk: “Climb into bed” is less spatially literal than “go up onto the bed.”
-    mitigation: It is natural English and still expresses movement onto the sleeping place.
+  - risk: “Get onto” does not explicitly retain the Hebrew verb’s upward-motion nuance.
+    mitigation: Footnote b preserves the more literal wording “go up onto.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/132/003.yaml
   source_text_sha256: fdbd20598179a739c0e44b940cea5bc9bf29dfc3288fc856bb5190a5817d4c5f
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ba66f5453a1984ad4a2ed65e2a4edf544be36ff1408a4689711dc731af914b6f
-  timestamp: '2026-07-11T21:06:29Z'
-  output_hash: fb31ac79eeb13aa2f43ed41a5b51011800fb93c3469772400fd2cca95848b5fe
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5d2896cd7c19f305e739a4d71df76c1e6df7cd040abfb9a9c40c753575da9418
+  timestamp: '2026-08-28T23:36:18Z'
+  output_hash: c8775948d3868080bbc3deced40e32e6fb95bf7d5381760fe6e98cb885524fce
   usage:
-    prompt_tokens: 2641
-    completion_tokens: 933
-    total_tokens: 3574
-    reasoning_tokens: 455
+    prompt_tokens: 3932
+    completion_tokens: 418
+    total_tokens: 4350
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:31Z'
+  previous_text: I will certainly not enter the tent that is my home,[a] and I will not climb into bed to rest—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:18Z'
+  previous_text: I solemnly swear:[a] I will not enter my house; I will not climb onto my bed—[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b4aa71a8a4d7c2b5062635b31914604f0de2cc184c3af61ae1b34a86b40d898b
+  review_summary: The direct statement “I solemnly swear” is a warranted and helpful clarification of the Hebrew oath formula in its preceding-verse context; it does not impose a doctrinal interpretation. The draft is clearer than POB overall. Revise only “climb onto,” since it adds a possible physical-effort nuance absent from the source. “Get onto” is idiomatic, clear, and leaves the literal upward-motion wording available in the source note.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

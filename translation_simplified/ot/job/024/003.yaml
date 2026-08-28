@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/024/003.yaml
-  text: They drive away the orphan's donkey[b][a]; they take the widow's ox as a pledge.
+  text: They drive away the orphan’s donkey[a]; they take the widow’s ox as a pledge[b].
   footnotes:
   - marker: a
-    text: Or 'They lead off the donkeys of orphans.' The Hebrew uses a plural for 'orphans,' which may be read distributively or collectively.
+    text: Or “They lead off the donkeys of orphans.” The Hebrew uses a plural for “orphans,” which may be read distributively or collectively.
     reason: lexical_alternative
   - marker: b
-    text: Or 'they seize the widow's ox in pledge' or 'as collateral.' The verb refers specifically to taking property as security for a debt.
+    text: Or “they seize the widow’s ox in pledge” or “as collateral.” The verb refers specifically to taking property as security for a debt.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,59 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They drive away an orphan’s donkey.[a] They seize a widow’s ox to hold as security for a debt.
+  text: They drive away an orphan’s donkey.[a] They take a widow’s ox as security for a debt.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may also mean “the donkeys of orphans.”
+    text: The Hebrew may refer to one representative orphan or to multiple orphans and their donkeys.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the orphan's donkey
-  simplified_phrase: an orphan’s donkey
-  preserved_meaning: The donkey belongs to a representative member of this vulnerable group.
-  reasoning_layer_used: POB lexical decision for יְתוֹמִים
-  rationale: The indefinite singular is natural English, while the note preserves the Hebrew plural.
-- pob_phrase: take the widow's ox as a pledge
-  simplified_phrase: seize a widow’s ox to hold as security for a debt
-  preserved_meaning: They take the widow’s work animal as collateral for a debt.
+- pob_phrase: They drive away the orphan’s donkey
+  simplified_phrase: They drive away an orphan’s donkey
+  preserved_meaning: The oppressors wrongfully remove a donkey belonging to a vulnerable orphan.
+  reasoning_layer_used: POB lexical decisions and Hebrew number audit
+  rationale: The indefinite singular reads naturally while preserving the Hebrew’s collective or distributive range.
+- pob_phrase: take the widow’s ox as a pledge
+  simplified_phrase: take a widow’s ox as security for a debt
+  preserved_meaning: They take the widow’s work animal as property guaranteeing repayment.
   reasoning_layer_used: POB lexical decision for יַחְבְּלוּ
-  rationale: This explains the legal practice without implying that repayment is guaranteed.
+  rationale: The wording explains the unfamiliar legal sense of “pledge” without reducing it to theft.
 interpretive_expansions:
 - pob_phrase: as a pledge
-  rendering: to hold as security for a debt
-  claim: The ox is taken as property securing a debt.
+  rendering: as security for a debt
+  claim: The ox is taken to guarantee repayment of a debt.
   evidence:
-  - The POB lexical rationale defines the verb as taking property as security for a debt.
+  - The POB lexical rationale identifies the act as taking property as security for a debt.
   confidence: high
   alternatives_preserved:
   - as a pledge
   - as collateral
 translation_notes:
   risk_flags:
-  - risk: The singular “an orphan” may obscure the Hebrew plural.
-    mitigation: The footnote preserves the possible plural or collective reading.
+  - risk: The singular orphan could be mistaken for a strict numerical claim.
+    mitigation: The footnote preserves the Hebrew’s possible collective or distributive sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/024/003.yaml
   source_text_sha256: 0c0642d119efc9f234c635417680d27499be28df00c125459dae146b20a75d34
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 658384d9835359d7e80f423443f9ebd2a5a2b8bcd589eeb148cee0fb048cfa83
-  timestamp: '2026-07-12T09:39:38Z'
-  output_hash: fdaddae744d5ce7e2d38b9914db7f009290bef742cb18e27b5c5bd339e3e3886
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 99afda7788e8e1053a4c94737bb9d43bfb6c6127b4b7adfee124ad1c1d997e1a
+  timestamp: '2026-08-28T22:54:46Z'
+  output_hash: b4d1c920dcb8ef76670ae9789cb77897e551ab3c4ab89d9aa28b4bb47ab5fdbe
   usage:
-    prompt_tokens: 3074
-    completion_tokens: 370
-    total_tokens: 3444
-    reasoning_tokens: 0
+    prompt_tokens: 2522
+    completion_tokens: 703
+    total_tokens: 3225
+    reasoning_tokens: 317
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:38Z'
   previous_text: They drive away an orphan’s donkey.[a] They seize a widow’s ox as a guarantee that a debt will be paid.
@@ -97,3 +96,13 @@ spob_revision_history:
   review_summary: The draft appropriately makes the legal-economic sense of “pledge” understandable and does not turn the act into simple theft. “An orphan” is a defensible English collective singular, with the note preserving the plural alternative. Revise the debt explanation so it states the supported collateral/security function without implying certain repayment.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:50Z'
+  previous_text: They drive away an orphan’s donkey.[a] They seize a widow’s ox to hold as security for a debt.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:46Z'
+  previous_text: They drive away an orphan’s donkey.[a] They take a widow’s ox and hold it as security for a debt.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

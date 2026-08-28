@@ -31,55 +31,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: This praise will please Yahweh more than a sacrificial ox—a bull with horns and split hooves.
+  text: My praise and thanksgiving will please Yahweh more than the sacrifice of an ox—a bull with horns and split hooves.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: And it will please
-  simplified_phrase: This praise will please
-  preserved_meaning: The psalmist’s praise and thanksgiving are pleasing to Yahweh.
-  reasoning_layer_used: POB lexical rationale and preceding context
-  rationale: Naming the antecedent makes the sentence clear without changing its reference.
+- pob_phrase: And it will please Yahweh
+  simplified_phrase: My praise and thanksgiving will please Yahweh
+  preserved_meaning: The praise and thanksgiving in the preceding verse are what will please Yahweh.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: Naming both parts of the antecedent removes the unclear pronoun without narrowing its meaning.
 - pob_phrase: more than an ox, a bull
-  simplified_phrase: more than a sacrificial ox—a bull
-  preserved_meaning: Praise is compared with a bull suitable for sacrifice, while both animal terms remain represented.
-  reasoning_layer_used: POB lexical decisions and footnote
-  rationale: “Sacrificial” explains the comparison, and the dash shows that “bull” further describes the ox.
+  simplified_phrase: more than the sacrifice of an ox—a bull
+  preserved_meaning: Praise and thanksgiving are compared with offering a sacrificial bull, while both animal terms remain represented.
+  reasoning_layer_used: POB footnote and lexical decisions
+  rationale: The wording makes the ritual comparison clear and presents “bull” as a restatement of “ox.”
 interpretive_expansions:
 - pob_phrase: it
-  rendering: This praise
-  claim: The subject is the psalmist’s praise and thanksgiving in the preceding verse.
+  rendering: My praise and thanksgiving
+  claim: The verb refers back to the psalmist’s praise and thanksgiving in the preceding verse.
   evidence:
   - The POB lexical rationale identifies praise and thanksgiving as the antecedent.
   confidence: high
-- pob_phrase: an ox, a bull with horns and split hooves
-  rendering: a sacrificial ox—a bull with horns and split hooves
-  claim: The animal is being described as qualified for sacrifice.
+- pob_phrase: more than an ox, a bull
+  rendering: more than the sacrifice of an ox—a bull
+  claim: The ox is understood as a sacrificial offering rather than merely as livestock.
   evidence:
-  - The POB footnote explicitly identifies a fully qualified sacrificial animal.
-  - The horn and hoof details support the sacrificial setting.
+  - The POB footnote says the comparison is with a fully qualified sacrificial animal.
+  - The horns and split hooves describe the bull’s suitability for sacrifice.
   confidence: high
+  alternatives_preserved:
+  - more pleasing than an ox—a bull
 translation_notes:
   risk_flags:
-  - risk: “Sacrificial” is contextual rather than a separate Hebrew word.
-    mitigation: The POB footnote and animal qualifications directly support this clarification.
+  - risk: “The sacrifice of” is implicit rather than directly stated in the Hebrew wording.
+    mitigation: The POB footnote and the qualified animal description establish the sacrificial setting.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/069/031.yaml
   source_text_sha256: 7b9f71b0ed90ec514ec33d1f6041e0e206d47142cdb9f241afc278a9660428b5
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ec7c56f64a44c1e056beda21d97a525efd3c43afeaff1b62c53acd464dfae96a
-  timestamp: '2026-07-11T20:50:44Z'
-  output_hash: c94067214111a5c5e7adcb396bfaf35088f7945830c4a80cf5385944754a1339
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b3500d500d273cab175e45d2d1a6f043cce7cb07b774d055a9287d8c5aa77353
+  timestamp: '2026-08-28T23:35:37Z'
+  output_hash: c39d7b0edfe6d5fff4e4befd668b9050f248eea138f9b79d1e49dfbdfde4a1f0
   usage:
-    prompt_tokens: 2394
-    completion_tokens: 688
-    total_tokens: 3082
-    reasoning_tokens: 267
+    prompt_tokens: 3337
+    completion_tokens: 486
+    total_tokens: 3823
+    reasoning_tokens: 29
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:22Z'
+  previous_text: This praise will please Yahweh more than a sacrificial ox—a bull with horns and split hooves.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:37Z'
+  previous_text: My praise will please Yahweh more than sacrificing an ox—a bull with horns and split hooves.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e9e5bfdd368f252b05117a2ae3e86987bb8fca4d6eb5a3e62337758f13dd66b7
+  review_summary: The draft makes the implicit sacrificial comparison clear in a way supported by the immediate context and POB audit trail. It should be revised because “My praise” omits the preceding verse’s explicit thanksgiving, which is central to the feminine antecedent and the stated POB rationale. The recommended text preserves that referent while retaining the clear sacrificial sense.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

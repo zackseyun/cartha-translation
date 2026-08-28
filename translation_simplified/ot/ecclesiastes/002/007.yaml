@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/002/007.yaml
-  text: I acquired male slaves and female slaves[a], and homeborn slaves were mine; I also had great herds of cattle and flocks[b], more than all who were before me in Jerusalem.
+  text: I acquired male and female slaves, and I had slaves born in my household[a]. I also had livestock in abundance—cattle and flocks[b]—more than all who were before me in Jerusalem.
   footnotes:
   - marker: a
-    text: Literally, 'sons of the house,' referring to persons born into the household; in this context, likely household slaves born there.
+    text: Literally, “sons of the house,” referring here to slaves born within the household.
     reason: cultural_note
   - marker: b
-    text: Or 'livestock ... in abundance'; the Hebrew uses collective terms for animal holdings.
+    text: The Hebrew collective terms refer to bovine livestock and flocks of smaller livestock, commonly sheep and goats.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,46 +34,75 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I acquired both male and female servants, and I had servants who were born in my household. I also had more cattle and flocks than anyone before me in Jerusalem.
+  text: I obtained both male and female slaves. I also had slaves who were born in my household. I had abundant livestock—cattle and flocks—more than anyone before me in Jerusalem.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: male slaves and female slaves
-  simplified_phrase: both male and female slaves
-  preserved_meaning: The wording keeps both gender and enslaved status explicit.
-  reasoning_layer_used: POB lexical decisions for עֲבָדִים and שְׁפָחוֹת
-  rationale: “Both” makes the paired categories read naturally without weakening their status.
-- pob_phrase: homeborn slaves were mine
-  simplified_phrase: I had slaves who were born in my household
-  preserved_meaning: These were enslaved people born within the household.
+- pob_phrase: I acquired male and female slaves
+  simplified_phrase: I obtained both male and female slaves
+  preserved_meaning: He acquired enslaved people of both sexes.
+  reasoning_layer_used: POB lexical decisions for קָנִיתִי and עֲבָדִים וּשְׁפָחוֹת
+  rationale: “Obtained” is familiar English and does not specify how he acquired them.
+- pob_phrase: I had slaves born in my household
+  simplified_phrase: I also had slaves who were born in my household
+  preserved_meaning: These enslaved people were born within his household.
   reasoning_layer_used: POB lexical decision and cultural note for וּבְנֵי בַיִת
-  rationale: The idiom is stated directly instead of using the unfamiliar word “homeborn.”
-- pob_phrase: great herds of cattle and flocks, more than all who were before me
-  simplified_phrase: more cattle and flocks than anyone before me
-  preserved_meaning: His livestock holdings surpassed those of every predecessor in Jerusalem.
-  reasoning_layer_used: POB lexical decisions for מִקְנֶה, בָקָר, צֹאן, and the comparative phrase
-  rationale: The comparative itself clearly conveys the exceptional abundance.
+  rationale: The relative clause makes their household-born status immediately clear.
+- pob_phrase: livestock in abundance—cattle and flocks—more than all who were before me in Jerusalem
+  simplified_phrase: abundant livestock—cattle and flocks—more than anyone before me in Jerusalem
+  preserved_meaning: His cattle and smaller livestock surpassed those of every predecessor in Jerusalem.
+  reasoning_layer_used: POB lexical decisions for מִקְנֶה בָקָר וָצֹאן הַרְבֵּה and מִכֹּל שֶׁהָיוּ לְפָנַי
+  rationale: The wording is more direct while retaining the collective term “flocks” and the full comparison.
 translation_notes:
   risk_flags:
-  - risk: “Anyone before me” may leave the exact group of predecessors unspecified.
-    mitigation: This preserves the same open wording and scope found in the POB.
+  - risk: “Slaves” is stark language for modern readers.
+    mitigation: It is retained because the POB audit finds that “servants” would understate their enslaved status.
+  - risk: “Flocks” may not tell readers which smaller livestock were present.
+    mitigation: The collective term is retained because the Hebrew does not specify that both sheep and goats were present.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/002/007.yaml
   source_text_sha256: b0281a99fd7ed12e3c0e7d1c4c401a56a2e0717afaac7c36245d152f86b58c90
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4f25525fcec27e8a112d52ecf6c1452f354df2ce82fe0874a617c0e0f140abd8
-  timestamp: '2026-07-11T21:22:19Z'
-  output_hash: 2896f85fbf4ea9ebb2c8e740d698b72ee2cb794a0bbe4d33710a71b2d94e5ce4
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c7ae333983d695fad98f571c6db41c1e00032db59bd39438a2c151f62a540cae
+  timestamp: '2026-08-28T23:32:32Z'
+  output_hash: 6ed0044b2b8ac51141e247f117da7f6ecc92ed861d2b936d78e4235fd2967b62
   usage:
-    prompt_tokens: 2801
-    completion_tokens: 754
-    total_tokens: 3555
-    reasoning_tokens: 362
+    prompt_tokens: 4130
+    completion_tokens: 585
+    total_tokens: 4715
+    reasoning_tokens: 86
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: cattle and flocks
+  rendering: cattle, sheep, and goats
+  claim: The flocks consisted of smaller livestock such as sheep and goats.
+  evidence:
+  - The POB lexical note identifies צֹאן as a collective term commonly covering sheep and goats.
+  confidence: high
+  alternatives_preserved:
+  - cattle and flocks
+  - cattle and small livestock
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:12:20Z'
+  previous_text: I acquired both male and female servants, and I had servants who were born in my household. I also had more cattle and flocks than anyone before me in Jerusalem.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:32Z'
+  previous_text: I obtained both male and female slaves. I also had slaves who were born in my household. I owned an abundance of livestock—cattle, sheep, and goats—more than anyone before me in Jerusalem.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 547a2c72a6739e044a29635f1a40a250b675c5b7fd20244a44cd90e16f539170
+  review_summary: The draft improves readability by separating the acquisition and household-born-slave statements and by using an explicit relative clause. Its treatment of slavery appropriately retains the bonded status established in the POB audit. However, “sheep and goats” turns a usual lexical range for “flocks” into a definite claim about this verse’s livestock. Retain “flocks” (or “small livestock”) in the main text; the broader range may be given in a note if needed.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

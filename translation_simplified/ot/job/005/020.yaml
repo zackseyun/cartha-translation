@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/005/020.yaml
-  text: In famine he will redeem you from death[b][a], and in war from the power of the sword.
+  text: In famine he will rescue[a] you from death, and in war from the power of the sword[b].
   footnotes:
   - marker: a
-    text: Or 'he will ransom you' or 'he will deliver you.' The Hebrew verb carries the sense of release or rescue.
+    text: Or “ransom you” or “redeem you.” The Hebrew verb denotes release or rescue.
     reason: lexical_alternative
   - marker: b
-    text: Literally, 'from the hands of the sword,' an idiom meaning 'from the power of the sword.'
-    reason: lexical_alternative
+    text: Literally, “from the hands of the sword,” an idiom for the sword’s power.
+    reason: idiom_note
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,47 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: During famine, he will redeem[a] you from death. In war, he will rescue you from the power of the sword.
+  text: During famine, he will rescue[a] you from death. In war, he will rescue you from the sword’s power.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Here “redeem” means to release or rescue from danger; it may also be translated “ransom.”
+    text: “Rescue” may also be translated “ransom” or “redeem”; the Hebrew word means being released or saved from danger.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: In famine
   simplified_phrase: During famine
-  preserved_meaning: Famine is the disaster during which God acts.
-  reasoning_layer_used: Lexical decision for בְּרָעָב
-  rationale: “During” makes the circumstance clearer in ordinary English.
+  preserved_meaning: Famine is the disastrous circumstance in which God rescues the person.
+  reasoning_layer_used: POB lexical decision for בְּרָעָב
+  rationale: “During” makes the circumstance immediately clear.
 - pob_phrase: and in war from the power of the sword
-  simplified_phrase: In war, he will rescue you from the power of the sword.
-  preserved_meaning: The implied act of redemption continues in the second parallel line.
-  reasoning_layer_used: Hebrew parallel structure and lexical decisions for מִידֵי חָרֶב
-  rationale: A complete second sentence makes the Hebrew ellipsis immediately understandable.
+  simplified_phrase: In war, he will rescue you from the sword’s power.
+  preserved_meaning: God rescues the person from the sword’s deadly power in war.
+  reasoning_layer_used: POB lexical decisions for מִלְחָמָה, מִידֵי, and חָרֶב
+  rationale: A separate sentence repeats the understood verb and clarifies the parallel thought.
 translation_notes:
   risk_flags:
-  - risk: Modern readers may take “redeem” as referring only to spiritual salvation.
-    mitigation: The footnote defines its immediate sense as release or rescue from danger.
-  - risk: Using “rescue” in the second sentence may appear to weaken the repeated redemption idea.
-    mitigation: The first sentence retains “redeem,” while “rescue” clearly expresses its implied continuation.
+  - risk: Repeating “he will rescue you” makes the second clause’s implied verb explicit.
+    mitigation: The Hebrew parallel carries the same verb into the clause about war.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/005/020.yaml
   source_text_sha256: b4fd263ce6f45e783856ab152c911616be61222566c69997ae7f8c656b334645
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4e2c45b8622e585ff88b2df016d911eaec8d0c8e9bee02e4c84a056cc583f485
-  timestamp: '2026-07-11T19:53:38Z'
-  output_hash: 30fd360aa33150ae1c9031eb08bc12a980010b366ace942e11bc50adb6db749a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4a2d103be8bb326e905a10d19592e3a5fa89e8547f29be2e64424d669cce1a43
+  timestamp: '2026-08-28T23:32:43Z'
+  output_hash: ed523c6317b0cb8747deb69657a20e3ff8e03f958790265c93def4ee8a4a94f8
   usage:
-    prompt_tokens: 2468
-    completion_tokens: 752
-    total_tokens: 3220
-    reasoning_tokens: 400
+    prompt_tokens: 3412
+    completion_tokens: 323
+    total_tokens: 3735
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:49:01Z'
+  previous_text: During famine, he will redeem[a] you from death. In war, he will rescue you from the power of the sword.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:43Z'
+  previous_text: During famine, he will rescue you from death. In war, he will rescue you from the sword’s power.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a23d32c91c15c3eaa8df7a5d2ade12e4fb31d805182283ef3f17ba2d9b2b8dfb
+  review_summary: 'The simplification is warranted and improves readability: “During” makes the famine circumstance explicit, and repeating the governing verb in the second parallel clause accurately represents the Hebrew sense without adding doctrine. “The sword’s power” faithfully conveys the source idiom. Revise only the footnote placement so that the lexical note clearly modifies “rescue,” its actual referent.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/037/009.yaml
-  text: From its chamber comes the storm[b][a], and from the scattering winds comes cold.
+  text: From the chamber comes the storm[a], and from the scattering winds comes cold[b].
   footnotes:
   - marker: a
-    text: Or 'From the south comes the storm'; the Hebrew literally says 'from the chamber,' which may be a poetic reference to a southern quarter or hidden storehouse.
+    text: The “chamber” may poetically denote the storm’s hidden storehouse or a southern quarter.
     reason: alternative_reading
   - marker: b
-    text: Or 'from the north comes cold' or 'from the dispersing winds, cold'; the Hebrew term is rare and its precise sense is uncertain.
-    reason: alternative_reading
+    text: The Hebrew term is rare and uncertain; it may refer to northern winds or to dispersing/scattering winds.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,64 +34,54 @@ base_translation:
     changes_summary: Added 'comes' before 'cold' for complete and natural English, matching the implied verb structure of the Hebrew.
 translation:
   language: en
-  text: A storm comes from its chamber,[a] and cold comes from scattering winds.[b]
+  text: The storm comes from the chamber.[a] Cold comes from the scattering winds.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “A storm comes from the south.” The Hebrew says “from the chamber,” perhaps referring poetically to a southern region or a concealed place of origin.
+    text: The “chamber” may picture the storm’s hidden storehouse or refer to a southern region.
     reason: alternative_reading
   - marker: b
-    text: The rare Hebrew term may instead mean “the north” or “dispersing winds.”
-    reason: alternative_reading
+    text: The Hebrew word is rare and uncertain; it may mean northern winds or scattering winds.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: From its chamber comes the storm
-  simplified_phrase: A storm comes from its chamber
-  preserved_meaning: The storm comes from a chamber, whose poetic location remains uncertain.
-  reasoning_layer_used: POB lexical decision for מִן הַחֶדֶר and grounding review
-  rationale: Natural word order improves clarity while retaining the chamber image and its ambiguity.
-- pob_phrase: from the scattering winds comes cold
-  simplified_phrase: cold comes from scattering winds
-  preserved_meaning: Cold comes from winds described by a rare term associated with scattering.
-  reasoning_layer_used: POB lexical decision for וּמִמְּזָרִים
-  rationale: The reordered clause reads naturally without resolving the rare term’s uncertain meaning.
+- pob_phrase: From the chamber comes the storm
+  simplified_phrase: The storm comes from the chamber
+  preserved_meaning: The storm comes from what the poem calls the chamber.
+  reasoning_layer_used: POB lexical decision and footnote
+  rationale: Subject-first order is easier to read and does not add a literal emergence image.
+- pob_phrase: and from the scattering winds comes cold
+  simplified_phrase: Cold comes from the scattering winds
+  preserved_meaning: Cold comes from winds described by a rare and uncertain Hebrew term.
+  reasoning_layer_used: POB lexical decision and source audit
+  rationale: A separate sentence clarifies the parallel line without resolving the disputed term.
 translation_notes:
   risk_flags:
-  - risk: Modern readers may not immediately understand the poetic chamber image.
-    mitigation: Footnote a explains possible locations without settling the image’s meaning.
-  - risk: The Hebrew term rendered “scattering winds” has an uncertain sense.
-    mitigation: Footnote b preserves the north and dispersing-winds alternatives.
+  - risk: “Chamber” may sound like a literal room.
+    mitigation: The footnote gives both the poetic storehouse and southern-region possibilities.
+  - risk: “Scattering winds” is unusual because the Hebrew term is uncertain.
+    mitigation: The footnote preserves the possible northern-winds interpretation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/037/009.yaml
   source_text_sha256: 517548947cd39ae556335f1615d197e0bc57ec65253e019eb2cd4ad56b0ee328
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 29d5b426a951bd3246d1a97512d2d49898eedce1c3f6eaf8605ac5cd6d5f409d
-  timestamp: '2026-07-12T09:41:02Z'
-  output_hash: 2087beb4319a6828c84790cdcc622208052aeb71690e1614b958d6a1ae3e7a10
+  prompt_sha256: 1b2986a878c29e54679aff8e9ba1b54e2354cee1ffea2bbfd636d05d700bd028
+  timestamp: '2026-08-28T23:35:02Z'
+  output_hash: a2f132dfd31b648ffd327a879e93758791ee2680e45d08d1e95e485c077aac3f
   usage:
-    prompt_tokens: 3538
-    completion_tokens: 374
-    total_tokens: 3912
-    reasoning_tokens: 0
+    prompt_tokens: 3390
+    completion_tokens: 483
+    total_tokens: 3873
+    reasoning_tokens: 136
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: its chamber
-  rendering: its hidden storehouse
-  claim: The chamber is a poetic place from which the storm emerges.
-  evidence:
-  - The POB lexical rationale identifies a metaphorical hidden storehouse or quarter of origin.
-  - The storm’s motion from the chamber supports a place-of-origin image.
-  confidence: moderate
-  alternatives_preserved:
-  - the chamber
-  - the south
+interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:41:02Z'
@@ -101,6 +91,26 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: b0f4727dd4d1c788603ed3653f891ac18aa379e13420c561c6360169c7f8248b
   review_summary: Revise the first line to retain the chamber image rather than making the possible “hidden storehouse” explanation the main text. The revised wording is still clearer than POB through normal English word order while preserving the live ambiguity between a literal-poetic chamber, a concealed origin, and a possible southern quarter. The second line responsibly follows POB’s cautious rendering and preserves the significant lexical uncertainty in a footnote.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:21Z'
+  previous_text: A storm comes from its chamber,[a] and cold comes from scattering winds.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:51:32Z'
+  previous_text: A storm comes out of the chamber[a], and cold comes from the scattering winds.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:02Z'
+  previous_text: The storm comes out from the chamber.[a] Cold comes from the scattering winds.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5b355cd81d628e387d957b1dfeded716a5c5fd2791ef7596084c9c7cf660cb48
+  review_summary: 'The subject-first order and two short clauses make the verse meaningfully easier to read while preserving the poetic parallel and the lexical uncertainty in the notes. Revise only “comes out from” to “comes from”: this retains the source relation without adding an emergence image that can over-literalize “chamber” and sit awkwardly with its possible directional sense.'
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

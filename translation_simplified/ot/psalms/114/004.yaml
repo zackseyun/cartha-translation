@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/114/004.yaml
-  text: The mountains skipped like rams[a], the hills like lambs of the flock.
+  text: The mountains skipped like rams, the hills like lambs of the flock[a].
   footnotes:
   - marker: a
     text: Hebrew literally, 'like sons of the flock,' that is, young sheep or lambs.
@@ -31,36 +31,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The mountains skipped like rams, and the hills skipped like lambs in a flock.
+  text: The mountains skipped like rams; the hills skipped like lambs.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: the hills like lambs of the flock
-  simplified_phrase: the hills skipped like lambs in a flock
-  preserved_meaning: The hills share the mountains’ lively skipping motion and are compared to young sheep.
-  reasoning_layer_used: POB lexical decisions for רָקְדוּ and כִּבְנֵי צֹאן
-  rationale: Repeating “skipped” makes the implied action clear, while “in a flock” keeps the flock image natural.
-translation_notes:
-  risk_flags:
-  - risk: Repeating “skipped” makes the second poetic line more explicit than the compact Hebrew form.
-    mitigation: The repeated verb only supplies the action already required by the parallel structure.
+- pob_phrase: The mountains skipped like rams, the hills like lambs of the flock
+  simplified_phrase: The mountains skipped like rams; the hills skipped like lambs
+  preserved_meaning: Both mountains and hills are pictured making the lively jumps of sheep.
+  reasoning_layer_used: POB lexical decisions and Hebrew poetic parallelism
+  rationale: Repeating “skipped” makes the second half clear while preserving the parallel image.
+- pob_phrase: lambs of the flock
+  simplified_phrase: lambs
+  preserved_meaning: The hills are compared to young sheep.
+  reasoning_layer_used: POB lexical decision for כִּבְנֵי צֹאן
+  rationale: “Lambs” clearly expresses the Hebrew idiom without a redundant phrase.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/114/004.yaml
   source_text_sha256: 12051934eba1f5329439682449c9671a0e507b7a10abf9f459bb2de2bdf540ee
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6a3d27b365e3fae5fb8725818c92daac8cb015bd26b52ee5e13a468c77803783
-  timestamp: '2026-07-11T21:04:22Z'
-  output_hash: ae0a171badd10e5a3a673055ec1787963de7f23a23740f8d940ba8b0d597024a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 233a3469b8261722f9d89284929b8211c28a489458fa6e5a74cad36c79fb8ed4
+  timestamp: '2026-08-28T23:36:08Z'
+  output_hash: 7633916703ef248b36688a446f395f19a358644c3bf21f0fb9a9744deb3cdb2e
   usage:
-    prompt_tokens: 2184
-    completion_tokens: 403
-    total_tokens: 2587
-    reasoning_tokens: 182
+    prompt_tokens: 2967
+    completion_tokens: 299
+    total_tokens: 3266
+    reasoning_tokens: 61
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:15Z'
+  previous_text: The mountains skipped like rams, and the hills skipped like lambs in a flock.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:08Z'
+  previous_text: Like rams, the mountains skipped about; like lambs, the hills skipped too.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 6fb17e1d1d65f0b1f859738459147d282a2b68ca17c203a7654597269198507e
+  review_summary: The draft rightly makes the elided second verb explicit and appropriately simplifies the idiom “sons of the flock” to “lambs.” However, “skipped about” adds an unnecessary nuance not established by the source or POB audit trail. Removing it yields a clear, publication-ready rendering that preserves the poetic parallelism and imagery.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

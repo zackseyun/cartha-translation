@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/148/003.yaml
-  text: Praise him[a], sun and moon; praise him, all shining stars.
+  text: Praise him, sun and moon; praise him, all shining stars[a].
   footnotes:
   - marker: a
-    text: Or more idiomatically, 'all shining stars.'
+    text: Literally, 'stars of light.'
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,36 +31,51 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 148:3 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''stars of''].'
 translation:
   language: en
-  text: Sun and moon, praise him! All you shining stars, praise him!
+  text: Sun and moon, praise him! All you shining stars,[a] praise him!
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Literally, “stars of light.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Praise him, sun and moon; praise him, all shining stars.
-  simplified_phrase: Sun and moon, praise him! All you shining stars, praise him!
-  preserved_meaning: The sun, moon, and every shining star are directly commanded to praise God.
-  reasoning_layer_used: The lexical decisions and theological decision require repeated imperatives addressed to the heavenly bodies.
-  rationale: Putting each addressee first makes the poetic summons immediately clear in natural English.
+- pob_phrase: Praise him, sun and moon
+  simplified_phrase: Sun and moon, praise him!
+  preserved_meaning: The sun and moon are directly commanded to praise God.
+  reasoning_layer_used: Theological decision on personification and Hebrew imperative syntax
+  rationale: Putting those addressed first makes the poetic command immediately clear.
+- pob_phrase: praise him, all shining stars
+  simplified_phrase: All you shining stars, praise him!
+  preserved_meaning: Every shining star is directly summoned to praise God.
+  reasoning_layer_used: Lexical decisions for הַלְלוּהוּ, כָּל, and כּוֹכְבֵי אוֹר
+  rationale: Adding “you” clarifies the direct address while retaining the repeated command and luminous image.
 translation_notes:
   risk_flags:
-  - risk: Reordering the clauses could weaken the Hebrew repetition.
-    mitigation: Both commands to “praise him” remain explicit and emphatic.
+  - risk: Reordering the clauses could sound less formally parallel to the Hebrew.
+    mitigation: The repeated imperative and direct address remain intact in both lines.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/148/003.yaml
   source_text_sha256: 954371245c4b0c8154fbed6944b651c599c9babdf89dc8f7b1c3b5ee6a2d2ebd
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 82cf79f0d4b92c653be082648d59b5c43426d70b735b7e40276b3fde9ffb860e
-  timestamp: '2026-07-11T21:02:10Z'
-  output_hash: 04cea2862001f077f0b1e5edf20d4f6c03f0027ab79dbcc1e37328a786387c99
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: ceb25c462af595290e17806e39cc693b52222859bd1484217f7bf7b662320940
+  timestamp: '2026-08-28T23:01:37Z'
+  output_hash: 6bdbaa9f9dfca1315c350e82cf6b56f7bb05d6dbde4e6c4554b13bb903bd92ef
   usage:
-    prompt_tokens: 2555
-    completion_tokens: 424
-    total_tokens: 2979
-    reasoning_tokens: 218
+    prompt_tokens: 2730
+    completion_tokens: 593
+    total_tokens: 3323
+    reasoning_tokens: 294
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:37Z'
+  previous_text: Sun and moon, praise him! All you shining stars, praise him!
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

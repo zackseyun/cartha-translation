@@ -11,16 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/038/015.yaml
-  text: For I wait for you[a], O Yahweh; you will answer[b][c], O Lord my God.
+  text: For I wait for you[a], Yahweh; you will answer[b], O Lord my God.
   footnotes:
   - marker: a
-    text: 'Hebrew: ''For to/for you, O LORD, I have waited/hoped.'' The verb can also be rendered ''I have hoped'' or ''I have waited in hope.'''
+    text: The Hebrew is literally “For you, Yahweh, I have waited/hoped.” The verb can also be rendered “I have hoped” or “I have waited in hope.”
     reason: lexical_alternative
   - marker: b
-    text: '''LORD'' represents the divine name YHWH; alternatively transliterated ''Yahweh.'''
-    reason: alternative_reading
-  - marker: c
-    text: Or 'you will respond.' The Hebrew does not state the object explicitly; English may supply 'me' by sense.
+    text: 'The Hebrew leaves the object unstated: “you will answer.”'
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,45 +34,54 @@ base_translation:
     changes_summary: Added 'O' before 'Lord my God' to reflect the vocative address more naturally and consistently in formal English. Kept 'wait for' and 'answer' as accurate renderings.
 translation:
   language: en
-  text: For I wait for you[a], Yahweh. You will answer, Lord my God.
+  text: For I wait for you with hope, Yahweh. You will answer, Lord my God.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew can also mean “I have hoped” or “I have waited in hope.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: For I wait for you, O Yahweh; you will answer, O Lord my God.
-  simplified_phrase: For I wait for you, Yahweh. You will answer, Lord my God.
-  preserved_meaning: The psalmist waits expectantly for Yahweh and trusts that God will answer.
-  reasoning_layer_used: POB lexical decisions and revision record
-  rationale: Two direct sentences and modern forms of address improve readability without changing the claims.
+- pob_phrase: I wait for you
+  simplified_phrase: I wait for you with hope
+  preserved_meaning: The psalmist continues to wait expectantly for Yahweh.
+  reasoning_layer_used: POB lexical decision for הוֹחָלְתִּי
+  rationale: The added phrase expresses the hopeful nuance already carried by the Hebrew verb.
+- pob_phrase: you will answer, O Lord my God
+  simplified_phrase: You will answer, Lord my God
+  preserved_meaning: The psalmist directly addresses God with confidence that he will respond.
+  reasoning_layer_used: POB lexical decisions for תַעֲנֶה and אֲדֹנָי אֱלֹהָי
+  rationale: Removing archaic “O” keeps the direct address clear without supplying an object for “answer.”
+interpretive_expansions:
+- pob_phrase: I wait
+  rendering: I wait for you with hope
+  claim: The waiting is hopeful expectation, not merely delay.
+  evidence:
+  - The POB lexical note says the verb may mean “hope” or “wait in hope.”
+  confidence: high
+  alternatives_preserved:
+  - I wait
+  - I hope
 translation_notes:
   risk_flags:
-  - risk: “Wait” alone may not fully convey the verb’s hopeful expectancy.
-    mitigation: The footnote preserves the documented alternatives “hoped” and “waited in hope.”
+  - risk: Readers may expect an object after “answer.”
+    mitigation: The wording deliberately preserves the Hebrew and POB omission rather than adding “me.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/038/015.yaml
   source_text_sha256: 705bfaa06e15c62aa6295e7bf41ad9fe03c2ff80ee0d47e0995fd0e814e2a413
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 945ec1a73025d4c3e9622ff6e6e3bca2cbdf8ff1225262a8712dc5ee27b5178b
-  timestamp: '2026-07-12T09:59:28Z'
-  output_hash: 09a56ad243be76222be3ce747707a9a278c3dc34bb6aa993fd755bfc8a325811
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 5e15c49818fb1ab3d7c082e24ca1db8516df2c7f08e248cc00877002bc69961d
+  timestamp: '2026-08-28T22:54:27Z'
+  output_hash: 609c1f88974fa3723f2409492b4a0df3c5f6e0f67aec60556e26bec39919c037
   usage:
-    prompt_tokens: 3566
-    completion_tokens: 241
-    total_tokens: 3807
-    reasoning_tokens: 0
+    prompt_tokens: 3035
+    completion_tokens: 825
+    total_tokens: 3860
+    reasoning_tokens: 457
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:28Z'
   previous_text: For I wait for you[a], Yahweh. You will answer, Lord my God.
@@ -87,3 +93,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:27Z'
+  previous_text: For I wait for you[a], Yahweh. You will answer, Lord my God.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

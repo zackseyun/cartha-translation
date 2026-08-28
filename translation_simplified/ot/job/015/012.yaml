@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/015/012.yaml
-  text: Why does your heart carry you away[a], and why do your eyes flash?
+  text: Why does your heart carry you away, and why do your eyes wink?[a]
   footnotes:
   - marker: a
-    text: Or 'wink,' 'signal,' or possibly 'roll' your eyes; the Hebrew verb is rare and its precise nuance is uncertain.
+    text: The Hebrew verb is rare and may mean “signal” or possibly “roll” the eyes.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Why is your heart sweeping you away? Why do your eyes flash like that?[a]
+  text: Why does your heart carry you away? Why do your eyes wink?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The rare Hebrew verb may instead mean “wink,” “signal,” or possibly “roll your eyes.”
+    text: The rare Hebrew verb may instead mean “signal” or possibly “roll” the eyes.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Why does your heart carry you away
-  simplified_phrase: Why is your heart sweeping you away
-  preserved_meaning: The heart is pictured as overpowering and carrying the person along.
-  reasoning_layer_used: POB lexical decision for יִקָּחֲךָ and לִבֶּךָ
-  rationale: The progressive wording makes the rebuke immediate while preserving the heart image.
-- pob_phrase: why do your eyes flash?
-  simplified_phrase: Why do your eyes flash like that?
-  preserved_meaning: Eliphaz challenges Job’s visible, heated expression without defining it more precisely.
-  reasoning_layer_used: POB lexical decision and footnote for יִרְזְמוּן
-  rationale: “Like that” makes the spoken challenge natural while the footnote preserves uncertainty.
+- pob_phrase: Why does your heart carry you away, and why do your eyes wink?
+  simplified_phrase: Why does your heart carry you away? Why do your eyes wink?
+  preserved_meaning: Eliphaz asks two rhetorical questions about Job’s inner state and visible eye gesture.
+  reasoning_layer_used: POB syntax and audited lexical decisions
+  rationale: Splitting the sentence makes the parallel rebuke easier to follow without changing agency or meaning.
 translation_notes:
   risk_flags:
-  - risk: “Flash” may suggest anger more specifically than the rare Hebrew verb warrants.
-    mitigation: The main text avoids naming an emotion, and the footnote gives the principal alternatives.
+  - risk: The exact eye gesture is uncertain because the Hebrew verb is rare.
+    mitigation: The footnote preserves the viable alternatives “signal” and “roll.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/015/012.yaml
   source_text_sha256: 3382ab5a3dd4c8e719245e1dd56e063ddf054fcfd7874ed3f1eee45fb0f80e1c
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b53663f2d11f35ac75d802d01aa3fb0ab0bc41a1ecc23072a7f765e5cb8c069c
-  timestamp: '2026-07-11T18:51:50Z'
-  output_hash: 20dd0577f0615215a9b733cb12dc903f2f51faa86b5d4cc78a7dfddfad6ae486
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 34bbe1d6099135213786522be9e314fb81afe567ae2257127cc48d5b10f7bf1f
+  timestamp: '2026-08-28T23:34:22Z'
+  output_hash: e431bce675bc0aae1b61e7b3189101aa326f3e518b36f291b03cdacd5d0d608e
   usage:
-    prompt_tokens: 2257
-    completion_tokens: 632
-    total_tokens: 2889
-    reasoning_tokens: 303
+    prompt_tokens: 3349
+    completion_tokens: 527
+    total_tokens: 3876
+    reasoning_tokens: 67
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: your heart carry you away
+  rendering: you let your heart carry you away
+  claim: The rebuke presents Job as yielding to the impulses of his inner person.
+  evidence:
+  - The heart remains the grammatical source of the figurative movement in the Hebrew.
+  - The immediate context is Eliphaz’s direct rebuke of Job.
+  confidence: moderate
+  alternatives_preserved:
+  - your heart carries you away
+  - your heart sweeps you along
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:31Z'
+  previous_text: Why is your heart sweeping you away? Why do your eyes flash like that?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:41Z'
+  previous_text: Why is your heart sweeping you away? Why do your eyes wink?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:22Z'
+  previous_text: Why do you let your heart carry you away? Why do you wink with your eyes?[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: cd22c4efe7f3a9a4e4c4cf7af47cd420107777095426100aa7b3128e87cfa152
+  review_summary: Revise to remove “let,” which adds an unsupported element of deliberate permission and weakens the Hebrew image of the heart sweeping Job along. Splitting the two rhetorical clauses into separate questions is clear and does not alter the meaning. The retained footnote appropriately preserves the live lexical uncertainty concerning the eye gesture.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

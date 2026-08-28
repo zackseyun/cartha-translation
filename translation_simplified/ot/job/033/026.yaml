@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/033/026.yaml
-  text: He prays to God[a], and he accepts him; he sees his face with a shout of joy[c][b], and he restores to man his righteousness.
+  text: He prays to God[a], and God accepts him; he sees God’s face[b] with a shout of joy, and God restores his righteousness to him[c].
   footnotes:
   - marker: a
-    text: Or 'he entreats God.' The Hebrew verb can emphasize earnest pleading in prayer.
+    text: Or “he entreats God.” The Hebrew verb can emphasize earnest pleading in prayer.
     reason: lexical_alternative
   - marker: b
-    text: That is, he sees God's face; the Hebrew simply says 'his face.'
-    reason: alternative_reading
+    text: Hebrew “his face.” The sequence most naturally refers to the man seeing God’s face.
+    reason: ambiguity
   - marker: c
-    text: Or 'his vindication' or 'his right standing.' The Hebrew 'righteousness' may refer to restored standing before God.
+    text: Or “his vindication” or “his right standing.” Hebrew says that God restores it “to a man” or “to a mortal.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,60 +37,83 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He prays to God, and God accepts him. He sees God’s face with a shout of joy, and God restores his righteousness.[a]
+  text: He earnestly prays to God, and God accepts him. He sees God’s face[a] and shouts for joy. Then God restores his righteousness—his right standing—to him.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “his right standing” or “his vindication.”
+    text: Hebrew says “his face”; the context most naturally identifies it as God’s face.
+    reason: source_note
+  - marker: b
+    text: “Righteousness” may also mean his vindication, but the wording does not specify how God restores it.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: and he accepts him
-  simplified_phrase: and God accepts him
-  preserved_meaning: God receives the praying man favorably.
-  reasoning_layer_used: POB theological decision on pronoun referents
-  rationale: Naming God makes the change of subject immediately clear.
-- pob_phrase: he sees his face
-  simplified_phrase: He sees God’s face
-  preserved_meaning: The restored man is allowed renewed access to God’s favor.
-  reasoning_layer_used: POB lexical and theological decisions on the face referent
-  rationale: The explicit referent prevents readers from mistaking whose face is seen.
-- pob_phrase: and he restores to man his righteousness
-  simplified_phrase: and God restores his righteousness
-  preserved_meaning: God restores the man’s righteousness or right standing.
-  reasoning_layer_used: POB lexical decision on וַיָּשֶׁב and theological decision on צִדְקָתוֹ
-  rationale: Ordinary clause order clarifies the action while retaining the key term “righteousness.”
+- pob_phrase: He prays to God
+  simplified_phrase: He earnestly prays to God
+  preserved_meaning: The man directs a serious plea to God.
+  reasoning_layer_used: POB lexical decision for יֶעְתַּר
+  rationale: “Earnestly” communicates the verb’s force of pleading in familiar English.
+- pob_phrase: he sees God’s face with a shout of joy
+  simplified_phrase: He sees God’s face and shouts for joy.
+  preserved_meaning: Seeing God’s face leads to an audible expression of joy.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: A direct verb preserves the audible shout while making the action easier to picture.
+- pob_phrase: God restores his righteousness to him
+  simplified_phrase: God restores his righteousness—his right standing—to him
+  preserved_meaning: God gives the man back his righteousness or right standing.
+  reasoning_layer_used: POB lexical and theological decisions for צִדְקָתוֹ
+  rationale: The brief gloss explains “righteousness” without replacing or doctrinally narrowing it.
 interpretive_expansions:
-- pob_phrase: he accepts him; he sees his face ... and he restores
-  rendering: God accepts him. He sees God’s face ... and God restores
-  claim: God accepts and restores the man, who then sees God’s face.
+- pob_phrase: prays
+  rendering: earnestly prays
+  claim: The prayer has the force of an earnest plea.
   evidence:
-  - The surrounding context describes a person turning to God and receiving divine favor.
-  - The POB theological audit identifies this as the preferred pronoun sequence.
+  - The POB lexical audit says עתר can emphasize earnest prayer or entreaty.
+  - The POB footnote offers “entreats God” as an alternative.
   confidence: high
   alternatives_preserved:
-  - God sees the man’s face is grammatically possible but contextually less likely.
+  - prays
+  - entreats
+  - pleads
+- pob_phrase: his righteousness
+  rendering: his righteousness—his right standing
+  claim: Here righteousness includes the man’s restored right standing.
+  evidence:
+  - The POB lexical audit identifies “right standing” as a likely contextual sense.
+  - The surrounding passage concerns the man’s restoration after turning to God.
+  confidence: moderate
+  alternatives_preserved:
+  - righteousness
+  - vindication
 translation_notes:
   risk_flags:
-  - risk: “His righteousness” may mean righteousness, right standing, or vindication.
-    mitigation: The main text retains the broad term, and the footnote preserves the principal alternatives.
+  - risk: “Right standing” could be read as exhausting the broader meaning of righteousness.
+    mitigation: The main term “righteousness” remains, and the gloss is explanatory rather than substitutive.
+  - risk: The Hebrew pronouns permit other referent assignments.
+    mitigation: The main text follows the POB’s preferred contextual reading, while footnote a retains the ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/033/026.yaml
   source_text_sha256: bed15c3a37d6ab6ca6094f6eae0b6e172243477bdfa75d2123723017811d24cc
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4136e24a2b4be7ded0257b90dec8c02cf786a2b67f2e6bb32c555fed1d08e284
-  timestamp: '2026-07-11T20:23:36Z'
-  output_hash: 78cc6b5e117900cd7f1021e3ac4432f933db972ea6b038779b8e625f122450ff
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 276a714a3b8459edff0ba9644b24fc5e4abe569b18e6bd6bb18d28cd5c7a219d
+  timestamp: '2026-08-28T22:52:20Z'
+  output_hash: 7547b0973e651dc7d316eab360b6c11b1968a663f52bb839f82bd07808b0cfd1
   usage:
-    prompt_tokens: 2973
-    completion_tokens: 729
-    total_tokens: 3702
-    reasoning_tokens: 235
+    prompt_tokens: 3222
+    completion_tokens: 1170
+    total_tokens: 4392
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:20Z'
+  previous_text: He prays to God, and God accepts him. He sees God’s face with a shout of joy, and God restores his righteousness.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

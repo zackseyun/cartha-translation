@@ -31,26 +31,26 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If you find honey, eat only as much as you need. Otherwise, you will become too full and vomit it.
+  text: If you find honey, eat only what you need. Otherwise, you may become too full of it and vomit it.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: eat only enough for you
-  simplified_phrase: eat only as much as you need
-  preserved_meaning: The command limits the amount eaten to what is sufficient.
+  simplified_phrase: eat only what you need
+  preserved_meaning: Eat no more honey than is sufficient for you.
   reasoning_layer_used: POB lexical decision for דַּיֶּךָ
-  rationale: The approved lexical alternative is more natural in contemporary English.
+  rationale: The common phrase “what you need” clearly preserves the limit on how much to eat.
 - pob_phrase: lest you become full of it and vomit it
-  simplified_phrase: Otherwise, you will become too full and vomit it
-  preserved_meaning: Overeating leads to physical fullness and vomiting as the consequence to avoid.
+  simplified_phrase: Otherwise, you may become too full of it and vomit it
+  preserved_meaning: The warning presents fullness and vomiting as consequences to avoid, not inevitable results.
   reasoning_layer_used: POB lexical decisions for פֶּן, תִּשְׂבָּעֶנּוּ, and וַהֲקֵאתוֹ
-  rationale: A separate sentence states the warning directly without weakening its force.
+  rationale: “Otherwise, you may” expresses the warning clearly while retaining both physical consequences.
 interpretive_expansions:
 - pob_phrase: become full of it
-  rendering: become too full
-  claim: The fullness is excessive rather than merely satisfying.
+  rendering: become too full of it
+  claim: The fullness is excessive because it results from eating beyond the sufficient amount.
   evidence:
-  - The command limits how much honey is eaten.
-  - Vomiting is the stated result of the fullness.
+  - The preceding command limits consumption to דַּיֶּךָ, “enough for you.”
+  - Vomiting identifies the fullness as harmful excess.
   confidence: high
   alternatives_preserved:
   - become full of it
@@ -61,20 +61,20 @@ source_grounding:
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/025/016.yaml
   source_text_sha256: d831644cc9bca890d10b987b36a76d4fd472790d0eb62c07b318d95e1c41a76e
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7d30cee0443a13bfd9cc3e8bf06aff3d5b9a8e04bc4085ef6cfe0f750c7a1ae8
-  timestamp: '2026-07-12T09:53:04Z'
-  output_hash: b1ffecd6960f9b6aa57dcf81fcf42cfe06bc324220e46e4e9320a9c5f86f3df9
+  prompt_sha256: 7e2c0a457b7969c855bc307363538904ca9630dca4e8879e98e9b0934e996950
+  timestamp: '2026-08-28T23:34:48Z'
+  output_hash: c31d5596c497db1306d2a28b550c07bead0b0110ef8b403371f6581e5500ccdc
   usage:
-    prompt_tokens: 2990
-    completion_tokens: 341
-    total_tokens: 3331
-    reasoning_tokens: 0
+    prompt_tokens: 3071
+    completion_tokens: 581
+    total_tokens: 3652
+    reasoning_tokens: 205
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -86,5 +86,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 0fae5bf7a2589619155966d8a1b8c530498748ed4568d0b492c9a969278add7c
   review_summary: The draft appropriately retains the concrete honey image and the forceful physical outcome; “too full” is a warranted contextual clarification because the command limits consumption and the stated result is vomiting. Revision is needed for idiomatic clarity in the first sentence and to avoid the slight weakening introduced by “may.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:05:48Z'
+  previous_text: If you find honey, eat only as much as you need. Otherwise, you will become too full and vomit it.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:48Z'
+  previous_text: If you find honey, eat only what you need. If you eat too much, you will vomit it.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 34a7382aa6b5a79c5766931883b8fbdda22aeb6620aff6013d27ed5ad3ff6c9d
+  review_summary: The draft appropriately makes “enough for you” clear as “what you need,” and its concrete language is easy to understand. However, it strengthens the warning into an unconditional prediction and removes the intermediate image of becoming full. The recommended text remains clear while preserving the source’s warning relationship and physical sequence.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

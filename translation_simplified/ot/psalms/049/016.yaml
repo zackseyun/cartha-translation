@@ -31,60 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Do not be afraid when a man grows rich, when his household[a] becomes more impressive.
+  text: Do not be afraid when a man becomes rich, when his whole house becomes more impressive.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “estate.” The Hebrew says “house,” which can mean a person’s household, family, or estate, not only the building where he lives.
+    text: Hebrew “his house” can refer to his family or estate as well as the building where he lives.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Do not fear
   simplified_phrase: Do not be afraid
-  preserved_meaning: The command not to fear another man’s prosperity remains direct.
-  reasoning_layer_used: Lexical decision for תִּירָא
-  rationale: “Be afraid” is more natural in common English and preserves the prohibition.
+  preserved_meaning: The verse forbids being intimidated by another man’s prosperity.
+  reasoning_layer_used: POB lexical decision for תִּירָא
+  rationale: “Do not be afraid” is more natural common English while preserving the prohibition.
 - pob_phrase: the glory of his house increases
-  simplified_phrase: his household becomes more impressive
-  preserved_meaning: The growing prominence, splendor, or abundance associated with the man’s house remains broad.
-  reasoning_layer_used: Lexical decisions for כְּבוֹד, יִרְבֶּה, and בֵּיתוֹ, plus the POB footnote
-  rationale: This wording avoids a building-only reading without splitting “glory” into separate gains of wealth and honor.
-interpretive_expansions:
-- pob_phrase: his house
-  rendering: his household
-  claim: Here “house” refers more broadly to the man’s household rather than only his residence.
-  evidence:
-  - The POB footnote explicitly allows “household” or “estate.”
-  - The clause concerns the increasing glory associated with the rich man’s house.
-  confidence: high
-  alternatives_preserved:
-  - estate
-  - family
-  - physical house
+  simplified_phrase: his whole house becomes more impressive
+  preserved_meaning: Everything associated with the man’s house gains splendor and elevated standing.
+  reasoning_layer_used: POB lexical decisions for כְּבוֹד, יִרְבֶּה, and בֵּיתוֹ
+  rationale: This keeps the broad singular idea without turning glory into a list of separate qualities.
 translation_notes:
   risk_flags:
-  - risk: “More impressive” may sound less poetic than the POB image of increasing glory.
-    mitigation: It preserves the broad idea of rising splendor or status without over-specifying wealth and honor.
+  - risk: “More impressive” replaces the source-language image of increasing glory.
+    mitigation: The wording preserves glory’s documented force of splendor and elevated status without reducing it to wealth.
+  - risk: Modern readers may understand “house” as only a building.
+    mitigation: “Whole house” broadens the expression, and the footnote preserves the family-or-estate ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/049/016.yaml
   source_text_sha256: b0de589f01e953aba9537c9a9b23924cd156dedef0aadc7807728460863db6c0
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: de3af769f70d224d68db295a25649ff215df15f9993a0a39d643bb9229117dae
-  timestamp: '2026-07-12T10:00:09Z'
-  output_hash: 6c16c3e58ae2dfba307a25403d60d0906e24e55ee47912d2e136205bbc1efcff
+  prompt_sha256: 34190d139e36663c567d3bc428b3f0780bbd78594af0d07e3c8dd48973ebe614
+  timestamp: '2026-08-28T23:35:35Z'
+  output_hash: 4bd08a6c842cfefb1e12440f50b24ed64f11544e536602d32cecc7263bb597a2
   usage:
-    prompt_tokens: 3354
-    completion_tokens: 428
-    total_tokens: 3782
-    reasoning_tokens: 0
+    prompt_tokens: 3357
+    completion_tokens: 1091
+    total_tokens: 4448
+    reasoning_tokens: 726
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: the glory of his house
+  rendering: the wealth and honor of his household
+  claim: The household’s “glory” includes both material prosperity and elevated status.
+  evidence:
+  - The POB lexical rationale says כְּבוֹד denotes impressive status or abundance in this context.
+  - The verse links this increasing glory with the man becoming rich.
+  confidence: high
+  alternatives_preserved:
+  - splendor
+  - estate
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:09Z'
@@ -95,4 +96,19 @@ spob_revision_history:
   review_output_hash: f0b2f8a085ed84fb8e90b10bb1411a16ce9446492c045b4d4df7334fde07d8df
   review_summary: The first clause is a sound and useful simplification. The second clause correctly seeks to make “glory” intelligible, but “wealth and honor” over-specifies the broad Hebrew expression as two distinct gains. “Becomes more impressive” conveys the increase of household glory/status without asserting more than the text says, and “household” removes an avoidable physical-building misunderstanding in the main text.
   schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:29Z'
+  previous_text: Do not be afraid when a man grows rich, when his household[a] becomes more impressive.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:35Z'
+  previous_text: Do not be afraid when a man becomes rich, when the wealth and honor of his household increase.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bd9d2a980f81162c13f292cb544ce6c781628dff2813de81d657fc54cfe57079
+  review_summary: The draft is clearer than POB, especially “Do not be afraid,” and its explanation correctly recognizes that the verse concerns more than a literal building. However, “wealth and honor” turns the broad singular image of a household’s glory into an explicit two-item list. Since the preceding clause already states that the man becomes rich, the revised wording preserves the prosperity/status setting without making wealth a separately asserted component of כָּבוֹד. “All that belongs to him” also more naturally includes family, household, and estate; retain footnote a to explain the Hebrew “house.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

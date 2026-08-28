@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/005/008.yaml
-  text: 'I adjure you[a], daughters of Jerusalem: if you find my beloved, what will you tell him? That I am sick with love.'
+  text: 'I adjure you, daughters of Jerusalem: if you find my beloved, what will you tell him? That I am sick with love.[a]'
   footnotes:
   - marker: a
-    text: Or, 'that I am lovesick.' The Hebrew literally says 'sick with love.'
+    text: Or “that I am lovesick.” The Hebrew literally says “sick with love.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -36,36 +36,52 @@ translation:
 simplification_decisions:
 - pob_phrase: I adjure you
   simplified_phrase: I make you swear
-  preserved_meaning: She urgently places the women under a solemn oath.
+  preserved_meaning: The speaker urgently places the women under a solemn oath.
   reasoning_layer_used: POB lexical decision for הִשְׁבַּעְתִּי
-  rationale: This replaces an uncommon word while preserving the formal force of the oath.
-- pob_phrase: what will you tell him? That I am sick with love.
-  simplified_phrase: what will you tell him? Tell him that I am sick with love.
-  preserved_meaning: She gives the women the message they must deliver to her beloved.
-  reasoning_layer_used: POB lexical decisions for מַה תַּגִּידוּ לוֹ and שֶׁחוֹלַת אַהֲבָה
-  rationale: Repeating “Tell him” makes the question and answer clear in natural English.
+  rationale: The common wording preserves the oath's force without the unfamiliar verb “adjure.”
+- pob_phrase: That I am sick with love.
+  simplified_phrase: Tell him that I am sick with love.
+  preserved_meaning: Her requested message is that longing for her beloved has made her lovesick.
+  reasoning_layer_used: Hebrew syntax and POB lexical decision for שֶׁחוֹלַת אַהֲבָה
+  rationale: Supplying “Tell him” turns the fragment into a clear English sentence while retaining the Hebrew image.
+interpretive_expansions:
+- pob_phrase: That I am sick with love.
+  rendering: Tell him that I am sick with love.
+  claim: The final clause gives the message the women are to deliver to the beloved.
+  evidence:
+  - The preceding question asks what they will tell him.
+  - The Hebrew conjunction introduces the content of their answer.
+  confidence: high
+  alternatives_preserved:
+  - That I am lovesick.
 translation_notes:
   risk_flags:
-  - risk: “I make you swear” may sound more direct than the formal word “adjure.”
-    mitigation: The wording accurately retains the source idiom of placing someone under oath.
+  - risk: “I make you swear” may sound more direct than the elevated “I adjure you.”
+    mitigation: It preserves the documented sense of placing someone under oath and the speaker's urgency.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/005/008.yaml
   source_text_sha256: 2aabbd45561cf34f8f409cc3a56fdb8a07a660a09d8d1102dd492c6c34631300
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 3c63424f51c24f53a9f6dc14fc9c7bc5894d20084692f4e9e67b178071ca7ca5
-  timestamp: '2026-07-11T21:36:59Z'
-  output_hash: af911239b3dad766b87aff9c854139d7317c69d0b88d054219782cb1695bbd94
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d3f9d699c370a669b0406b6d842ba7be104fbb82e795cd4c3ea72db065b1458a
+  timestamp: '2026-08-28T23:10:30Z'
+  output_hash: 8021dac10c471a439d7d8c9d5aced1b807e735eabcac1e8d9d4ee8809f0e347b
   usage:
-    prompt_tokens: 2497
-    completion_tokens: 610
-    total_tokens: 3107
-    reasoning_tokens: 287
+    prompt_tokens: 2718
+    completion_tokens: 763
+    total_tokens: 3481
+    reasoning_tokens: 364
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:10:30Z'
+  previous_text: 'Daughters of Jerusalem, I make you swear: if you find my beloved, what will you tell him? Tell him that I am sick with love.'
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

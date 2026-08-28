@@ -11,17 +11,17 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/014/010.yaml
-  text: But a man dies and is laid low[a]; a human being expires[c][b], and where is he?
+  text: But a man dies and grows weak[a]; a human being[b] breathes his last[c], and where is he?
   footnotes:
   - marker: a
-    text: Or 'grows weak' / 'becomes weak' for 'is laid low.'
+    text: Or “becomes powerless.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'expires' for 'breathes his last.'
-    reason: lexical_alternative
+    text: Hebrew uses both גבר (“man”) and אדם (“human being” or “man”) in parallel, emphasizing human mortality.
+    reason: literary_note
   - marker: c
-    text: Hebrew uses both גבר ('man') and אדם ('human being/man') in parallel, emphasizing the mortality of humanity.
-    reason: cultural_note
+    text: Or “expires.”
+    reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,46 +37,58 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 14:10 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''breathes his last''].'
 translation:
   language: en
-  text: But a man dies and falls powerless. A human being breathes his last—and then where is he?
+  text: But a man dies and has no strength left. A human being breathes his last—then where is he?
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: dies and is laid low
-  simplified_phrase: dies and falls powerless
-  preserved_meaning: Death brings the man down into a state of complete weakness.
-  reasoning_layer_used: POB lexical decision for וַיֶּחֱלָשׁ
-  rationale: “Falls powerless” makes the source sense of becoming weak clear without suggesting a temporary illness.
-- pob_phrase: expires
-  simplified_phrase: breathes his last
-  preserved_meaning: The human being reaches the end of life.
-  reasoning_layer_used: POB lexical decision and doctrine-realignment revision for וַיִּגְוַע
-  rationale: The vivid phrase expresses death plainly while preserving the image of life-breath ending.
+- pob_phrase: dies and grows weak
+  simplified_phrase: dies and has no strength left
+  preserved_meaning: Death leaves the man weak and powerless.
+  reasoning_layer_used: Lexical decision for וַיֶּחֱלָשׁ and the source audit
+  rationale: The wording makes the intransitive loss of strength clear without adding an outside agent.
+- pob_phrase: a human being breathes his last, and where is he?
+  simplified_phrase: A human being breathes his last—then where is he?
+  preserved_meaning: The person dies and is no longer found among the living.
+  reasoning_layer_used: Lexical decisions for וַיִּגְוַע and וְאַיּוֹ
+  rationale: The dash and “then” clarify the poetic movement from death to the question of the person's absence.
+interpretive_expansions:
 - pob_phrase: and where is he?
-  simplified_phrase: and then where is he?
-  preserved_meaning: The question asks where the person has gone after death.
-  reasoning_layer_used: POB lexical decision for וְאַיּוֹ
-  rationale: “Then” clarifies the sequence while leaving the question unresolved.
+  rendering: then where is he?
+  claim: The question asks where the person is after death.
+  evidence:
+  - The lexical rationale says the question concerns the vanished person following death.
+  - The preceding parallel lines both describe dying.
+  confidence: high
+  alternatives_preserved:
+  - and where is he?
+  - but where is he?
 translation_notes:
   risk_flags:
-  - risk: “Falls powerless” may sound like an event before death rather than a parallel description of death's result.
-    mitigation: The preceding “dies” and the sentence break keep the phrase tied to death.
+  - risk: “Has no strength left” is more absolute than the literal “grows weak.”
+    mitigation: It reflects the documented alternative “becomes powerless” in the immediate context of death.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/014/010.yaml
   source_text_sha256: fc6b6affd2bc1a56a59154812a193c3487af8084aed924384799621cb355e1bf
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 01cfdc76152152347040450f161415b0569d264bf448ca7fba92a4ecc8c2bc84
-  timestamp: '2026-07-11T19:39:47Z'
-  output_hash: 03ba96862e3139da7b1932aa21233e0ae8c84ee42da4c2362e43a8f6b1d840f1
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 5b7181a45a775914f66c1e795dbf342aeb100393e0da74bb5b082ffc6a0a70bc
+  timestamp: '2026-08-28T22:50:12Z'
+  output_hash: d1aabefa9b269aaabaf38974f930d4b52a8e9caf81f765eede4c108e25922901
   usage:
-    prompt_tokens: 2753
-    completion_tokens: 348
-    total_tokens: 3101
-    reasoning_tokens: 0
+    prompt_tokens: 3004
+    completion_tokens: 780
+    total_tokens: 3784
+    reasoning_tokens: 386
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:12Z'
+  previous_text: But a man dies and falls powerless. A human being breathes his last—and then where is he?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

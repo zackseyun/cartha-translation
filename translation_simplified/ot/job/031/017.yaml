@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/031/017.yaml
-  text: if I ate my morsel by myself[a], and the fatherless did not eat from it—
+  text: if I ate my morsel by myself, and the fatherless[a] did not eat from it—
   footnotes:
   - marker: a
-    text: Or 'the orphan.' The Hebrew literally refers to one who is fatherless.
+    text: Or “the orphan.” The Hebrew literally refers to one who is fatherless.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,47 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: if I ate my small portion of food by myself, and a fatherless child[a] ate none of it—
+  text: if I ate my food alone, without the fatherless[a] eating any of it—
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “an orphan.” The Hebrew specifically refers to a child without a father.
+    text: Or “the orphan.” The Hebrew literally refers to someone who is fatherless.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: my morsel
-  simplified_phrase: my small portion of food
-  preserved_meaning: Job speaks of a modest amount of food that belonged to him.
-  reasoning_layer_used: Lexical decision for פִּתִּי
-  rationale: This replaces the uncommon “morsel” while preserving its concrete, modest sense.
-- pob_phrase: the fatherless
-  simplified_phrase: a fatherless child
-  preserved_meaning: The person is vulnerable because they have lost their father.
-  reasoning_layer_used: Lexical decision for יָתוֹם
-  rationale: Adding “child” makes the singular social category immediately clear without broadening it to all orphans.
-- pob_phrase: did not eat from it
-  simplified_phrase: ate none of it
-  preserved_meaning: The fatherless child received no part of Job’s food.
-  reasoning_layer_used: Lexical decisions for אָכַל and מִמֶּנָּה
-  rationale: The natural English wording keeps the same negative action and reference to the food.
-translation_notes: {}
+  simplified_phrase: my food
+  preserved_meaning: Job speaks of food that was his to eat.
+  reasoning_layer_used: POB lexical decision for פִּתִּי and grounding review
+  rationale: “Food” is immediately clear and avoids the unintended allotment sense of “portion.”
+- pob_phrase: and the fatherless did not eat from it
+  simplified_phrase: without the fatherless eating any of it
+  preserved_meaning: The fatherless person received none of Job’s food.
+  reasoning_layer_used: POB lexical decisions and conditional syntax
+  rationale: The recast clause expresses the same exclusion in natural English.
+translation_notes:
+  risk_flags:
+  - risk: “Food” is broader than the concrete image of a morsel.
+    mitigation: The wording retains the personal meal context without adding an allocation nuance.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/031/017.yaml
   source_text_sha256: 9740cb936f614a0cc3dada00a5389d8a14eceef2067239a6faa7f45fe7c77072
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 721535dd872adc455c845089147010ab59f84df0a3722514a54b3a91051142e4
-  timestamp: '2026-07-11T19:46:47Z'
-  output_hash: dcd211e8e74dd8a0c34f8a8cb0b0c2fef9653683b94026885b7e4eff9067b489
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6d19c2b32a53a33fa303c75eff12ad86fc67f351629cb0dc4f984b006a8aca1f
+  timestamp: '2026-08-28T23:34:54Z'
+  output_hash: 1e7fd5b51409c6cf48b0c93d83d109bbe2993bb2bc752206c395365e92988b52
   usage:
-    prompt_tokens: 2460
-    completion_tokens: 525
-    total_tokens: 2985
-    reasoning_tokens: 189
+    prompt_tokens: 3429
+    completion_tokens: 592
+    total_tokens: 4021
+    reasoning_tokens: 307
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:35Z'
+  previous_text: if I ate my small portion of food by myself, and a fatherless child[a] ate none of it—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:53Z'
+  previous_text: if I ate my small portion of food alone, while the fatherless[a] ate none of it—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:54Z'
+  previous_text: if I ate my portion of food alone, without the fatherless[a] eating any of it—
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a109f2bf9a7b23208bb4e7be1f1df18ea016ae38ae76a1e16cba0376c569e449
+  review_summary: 'The recast second clause is a warranted, clear expression of the same deprivation: Job ate while the fatherless received none of that food. No doctrinal expansion is introduced. Revision is needed because “portion” adds an unnecessary share/allotment nuance, and because the footnote incorrectly makes paternal death part of the Hebrew word’s literal meaning. “My food” is current and clear while avoiding that added nuance.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

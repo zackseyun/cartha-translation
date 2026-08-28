@@ -31,7 +31,7 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If your enemy[a] is hungry, give him bread to eat. If he is thirsty, give him water to drink.
+  text: If your enemy[a] is hungry, give him bread. If he is thirsty, give him water to drink.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
@@ -39,34 +39,55 @@ translation:
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: feed him bread
-  simplified_phrase: give him bread to eat
-  preserved_meaning: He must respond to his enemy’s hunger by providing bread.
-  reasoning_layer_used: The lexical decisions retain “bread” while allowing the natural sense of “feed him.”
-  rationale: The new wording is immediately clear while preserving the concrete image of bread.
+  simplified_phrase: give him bread
+  preserved_meaning: The command still requires providing bread to satisfy the enemy’s hunger.
+  reasoning_layer_used: Lexical decisions for הַאֲכִלֵהוּ and לָחֶם
+  rationale: This direct wording removes redundancy while preserving the concrete image of bread.
 - pob_phrase: and if he is thirsty
   simplified_phrase: If he is thirsty
   preserved_meaning: The second condition remains parallel to the first.
-  reasoning_layer_used: The source syntax coordinates two conditional clauses.
-  rationale: A new sentence makes the parallel commands easier to read without changing their relationship.
-translation_notes: {}
+  reasoning_layer_used: Lexical decision for וְאִם
+  rationale: A new sentence makes the parallel commands easier to read.
+translation_notes:
+  risk_flags:
+  - risk: “Enemy” is less literal than the Hebrew participle “the one who hates you.”
+    mitigation: The footnote preserves the literal alternative while the main text follows POB’s idiomatic choice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/025/021.yaml
   source_text_sha256: 9833a0896fd3efe0e86a91ac951986b80ab3ce259eb31de831e223f440fae92e
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 361c6df55943d019542c89587c3148d33ba9f83bf10af81b488b4d8e50d518c8
-  timestamp: '2026-07-11T21:06:20Z'
-  output_hash: 85393065b6af3103e8ee18d035de9ef360c885d91a1a3699de55bd0a2e096e75
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c4c7c462cf7e66f183b3c2530c9c2cec9888188dc79467b3f5a2511ad3df6717
+  timestamp: '2026-08-28T23:34:48Z'
+  output_hash: 3903ef82afea1b057b228b2c23cc90770d92d12b809e02b4499baa58e2099151
   usage:
-    prompt_tokens: 2607
-    completion_tokens: 377
-    total_tokens: 2984
-    reasoning_tokens: 127
+    prompt_tokens: 3335
+    completion_tokens: 338
+    total_tokens: 3673
+    reasoning_tokens: 44
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:27Z'
+  previous_text: If your enemy[a] is hungry, give him bread to eat. If he is thirsty, give him water to drink.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:48Z'
+  previous_text: If your enemy[a] is hungry, give him bread to eat. If he is thirsty, give him water to drink.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 148e2584e37c692ad398414254ed8ab76f0b5144794d902c21439cc409b01a7f
+  review_summary: The draft preserves the proverb’s instruction, its concrete bread-and-water imagery, and the lexical footnote. Separating the parallel clauses into two sentences is a warranted readability adjustment and does not erase their relationship. Revise the first command only to remove the unnecessary “to eat”; the resulting wording is more direct while remaining fully supported by the source and POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

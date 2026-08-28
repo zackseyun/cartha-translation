@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/007/012.yaml
-  text: Am I the sea[a], or a sea monster[b], that you set a guard over me?
+  text: Am I the sea, or a sea monster[a], that you set a guard over me[b]?
   footnotes:
   - marker: a
-    text: Or 'dragon' or 'serpent' for 'sea monster' (Hebrew tannin), a term for a great threatening creature, often in sea/chaos imagery.
+    text: Or “dragon” or “serpent.” The Hebrew term can denote a great threatening creature and here stands alongside the sea.
     reason: lexical_alternative
   - marker: b
-    text: Or 'set a watch over me.'
+    text: Or “set a watch over me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,54 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Am I the sea or a sea monster,[a] so dangerous that you keep me under guard?
+  text: Am I as dangerous as the sea or a sea monster,[a] so that you keep me under guard?[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew term may also be translated “dragon” or “serpent”; it describes a great threatening creature.
+    text: Or “dragon” or “serpent.” The Hebrew refers to a great threatening creature associated here with the sea.
+    reason: lexical_alternative
+  - marker: b
+    text: Or “keep watch over me.”
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: Am I the sea, or a sea monster
+  simplified_phrase: Am I as dangerous as the sea or a sea monster
+  preserved_meaning: Job compares his treatment to the restraint of threatening forces.
+  reasoning_layer_used: POB theological decision on poetic chaos imagery
+  rationale: Adding “as dangerous as” makes the comparison clear without turning the images into literal identities.
 - pob_phrase: that you set a guard over me
-  simplified_phrase: that you keep me under guard
-  preserved_meaning: Job complains that he is being watched and restrained as though he were a threat.
-  reasoning_layer_used: Lexical decision for מִשְׁמָר and theological decision on poetic chaos imagery.
-  rationale: This wording expresses imposed surveillance and restraint in ordinary English.
+  simplified_phrase: so that you keep me under guard
+  preserved_meaning: God subjects Job to continuing supervision or restraint.
+  reasoning_layer_used: POB lexical decisions for כִּי, תָשִׂים, and מִשְׁמָר
+  rationale: The recast clause uses ordinary English while retaining the rhetorical link and imposed watch.
 interpretive_expansions:
 - pob_phrase: Am I the sea, or a sea monster
-  rendering: Am I the sea or a sea monster, so dangerous
-  claim: The comparison presents Job as a supposed danger requiring restraint.
+  rendering: Am I as dangerous as the sea or a sea monster
+  claim: The sea and sea monster represent threats considered dangerous enough to restrain.
   evidence:
-  - The POB lexical rationale describes the sea monster as a great threatening creature.
-  - The theological audit says God treats Job like a cosmic threat needing restraint.
+  - The POB theological rationale identifies both as poetic images of threatening chaos.
+  - The following guard clause presents Job as being treated like a threat needing restraint.
   confidence: high
   alternatives_preserved:
-  - The wording remains a rhetorical question rather than a direct accusation.
+  - A more literal reading that leaves the comparison implicit
 translation_notes:
   risk_flags:
-  - risk: “So dangerous” makes the threatening force of the poetic images explicit.
-    mitigation: The clarification stays within the threat imagery documented in the POB audit.
+  - risk: “As dangerous as” explains an implication rather than directly reproducing the Hebrew form.
+    mitigation: The concrete images of the sea and sea monster remain in the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/007/012.yaml
   source_text_sha256: bc7ea329fd95868ca6c7e2e435da32695437987dce89a540b093e5c9080e3c7d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 27acf7977a4341c73934ead85e76eb78c958285bfe0410a6d2567989477abc85
-  timestamp: '2026-07-12T09:36:09Z'
-  output_hash: 14fc461ed722d08d330d83cafceb9ed4a24ddb921bef67096f350a34f0f7932c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: aa964d0c7fd53a8e0cdf2845780456c6817de714bf6f274c5f2fa28d7ffb9b83
+  timestamp: '2026-08-28T22:51:33Z'
+  output_hash: a9c97d5609c79bd60bf422254090799ad46c1b83e4097273a362b1a4d4004270
   usage:
-    prompt_tokens: 3384
-    completion_tokens: 336
-    total_tokens: 3720
-    reasoning_tokens: 0
+    prompt_tokens: 2797
+    completion_tokens: 930
+    total_tokens: 3727
+    reasoning_tokens: 471
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:09Z'
   previous_text: Am I the sea or a sea monster,[a] so dangerous that you have to keep me under guard?
@@ -92,3 +99,8 @@ spob_revision_history:
   review_summary: 'The draft substantially improves accessibility: “under guard” clearly conveys the surveillance/restraint implicit in setting a guard over Job, and “so dangerous” is a warranted, restrained clarification of the sea/sea-monster threat imagery documented in the POB audit. Revise “have to,” however, because it adds an unstated divine necessity. “You keep me under guard” preserves Job''s complaint without that addition.'
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:33Z'
+  previous_text: Am I the sea or a sea monster,[a] so dangerous that you keep me under guard?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

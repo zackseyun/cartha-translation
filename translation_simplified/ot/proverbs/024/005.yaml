@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/024/005.yaml
-  text: A wise man is strong[b][a], and a man of knowledge strengthens his might.
+  text: A wise man is strong[a], and a man of knowledge increases strength[b].
   footnotes:
   - marker: a
-    text: Or 'A wise strong man' / 'A wise man is in strength.' The Hebrew construction with בַּעֹז is compact and may be taken either attributively or predicatively; the main text adopts the predicative sense for clearer English.
-    reason: lexical_alternative
+    text: The Hebrew is compact, literally, “A wise man in strength.”
+    reason: literal_form
   - marker: b
-    text: Or 'a man of knowledge increases strength.'
+    text: Or “makes power strong.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,54 +34,54 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 24:5 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''his power''].'
 translation:
   language: en
-  text: A wise man is strong,[a] and a man with knowledge strengthens his power.[b]
+  text: A wise man has strength, and a man with knowledge increases strength.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew may also be understood as “a wise, strong man.”
-    reason: lexical_alternative
-  - marker: b
-    text: Or “a man with knowledge increases strength.”
-    reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: is strong
+  simplified_phrase: has strength
+  preserved_meaning: Wisdom gives the man real strength.
+  reasoning_layer_used: POB lexical decision for בַּעֹז
+  rationale: The noun phrasing is clear English and keeps the source image of strength.
 - pob_phrase: a man of knowledge
   simplified_phrase: a man with knowledge
   preserved_meaning: The man is characterized by knowledge.
-  reasoning_layer_used: The lexical decisions for אִישׁ and דַּעַת.
-  rationale: “With knowledge” is more familiar English than “of knowledge.”
-- pob_phrase: strengthens his might
-  simplified_phrase: strengthens his power
-  preserved_meaning: Knowledge makes the man’s personal capacity stronger.
-  reasoning_layer_used: The lexical decisions for מְאַמֶּץ and כֹּחַ and the restored choice “his power.”
-  rationale: “Power” clearly expresses personal capacity while “strengthens” preserves the verb’s force.
+  reasoning_layer_used: POB lexical decisions for אִישׁ and דַּעַת
+  rationale: “With knowledge” is more natural for common readers without changing the meaning.
 translation_notes:
   risk_flags:
-  - risk: The compact Hebrew first clause can also describe “a wise, strong man.”
-    mitigation: Footnote a preserves this documented alternative without weakening the main predicative reading.
-  - risk: “His power” selects a personal sense where the Hebrew can more broadly mean “strength.”
-    mitigation: Footnote b preserves the alternative “increases strength.”
+  - risk: “Has strength” may sound like simple possession rather than wisdom-conferring strength.
+    mitigation: The parallel clause still directly links wisdom and knowledge with strength.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/024/005.yaml
   source_text_sha256: 6a77e284e496e40b646fd9425342b86263f6a6b55e95c78b4c818263d0a23cee
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 3c4d66cf6e539a21aab9b3b801605df6802ee22be16a32334651916bd17d003e
-  timestamp: '2026-07-12T09:54:29Z'
-  output_hash: 3ca80b3a7e7fc359480b2fa3acbfedc990cc40db8f60239e621bdffda062a02b
+  prompt_sha256: beb12092c92549e400403d1795e473fa8510d40038ef81a7ba7f4c96ee9d84ca
+  timestamp: '2026-08-28T23:34:42Z'
+  output_hash: cbab9eff13c32ef13eeb299da677da925793f949852825dfe447ea9485b37b9d
   usage:
-    prompt_tokens: 3638
-    completion_tokens: 352
-    total_tokens: 3990
-    reasoning_tokens: 0
+    prompt_tokens: 3696
+    completion_tokens: 298
+    total_tokens: 3994
+    reasoning_tokens: 55
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: increases strength
+  rendering: builds up even more strength
+  claim: The second clause presents strength as increasing beyond what is already present.
+  evidence:
+  - The POB renders מְאַמֶּץ as “increases.”
+  - The parallel clauses connect both wisdom and knowledge with strength.
+  confidence: high
+  alternatives_preserved:
+  - makes power strong
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:54:29Z'
@@ -91,6 +91,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: bcbba121575727e90c29698c930fc737bf78ca39339113eb2aad7f3a821815bb
   review_summary: The revision rightly makes “a man of knowledge” more natural as “a man with knowledge,” and “power” is supported by the POB lexical audit. However, “has strength” weakens POB’s warranted predicative reading, while “builds up” introduces avoidable process imagery. The recommended wording remains clear while retaining the source-supported force of both lines.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:10:37Z'
+  previous_text: A wise man is strong,[a] and a man with knowledge strengthens his power.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:42Z'
+  previous_text: A wise man has strength, and a man with knowledge builds up even more strength.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a958f480957ce5e6d761d11f6ca02f9f2eff1f38fcab50e5576a3bc1f4aa79af
+  review_summary: The draft improves accessibility by recasting “is strong” as “has strength” and by making the second clause’s strengthening sense plain. However, “even more” goes beyond the warranted sense of increase by supplying an explicit comparison not stated in the source or supported by the POB audit trail. Removing it preserves the proverb’s parallelism and its live ambiguity concerning the precise strength being increased, while retaining a clear, publication-ready rendering.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

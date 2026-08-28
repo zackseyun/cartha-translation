@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/024/028.yaml
-  text: Do not be a witness against your neighbor without cause[b][a], and do not deceive with your lips.
+  text: Do not be a witness against your neighbor without cause[a]. Would you deceive with your lips[b]?
   footnotes:
   - marker: a
-    text: Or 'and deceive with your lips.' The Hebrew conjunction can be read simply as 'and'; 'or' is used in the main text to express the paired prohibitions more naturally in English.
+    text: Or “for nothing” or “without reason.”
     reason: lexical_alternative
   - marker: b
-    text: '''Without cause'' may also be rendered ''for nothing'' or ''without reason.'''
-    reason: lexical_alternative
+    text: The rhetorical question has prohibitive force and may be rendered, “and do not deceive with your lips.”
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,50 +34,50 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 24:28 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''or deceive''].'
 translation:
   language: en
-  text: Do not give testimony against your neighbor without a good reason, or[a] deceive with your words.
+  text: Do not testify against your neighbor when there is no valid reason. Would you deceive with your words?[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also be translated “and deceive with your words.”
-    reason: lexical_alternative
+    text: 'This rhetorical question also has the force of a command: “Do not deceive with your words.”'
+    reason: alternative_reading
 simplification_decisions:
 - pob_phrase: be a witness against your neighbor
-  simplified_phrase: give testimony against your neighbor
-  preserved_meaning: It still prohibits acting as a witness against one’s neighbor.
-  reasoning_layer_used: The lexical decision identifies a legal or quasi-legal setting.
-  rationale: “Give testimony” makes the witness’s action immediately clear.
+  simplified_phrase: testify against your neighbor
+  preserved_meaning: It retains the legal or quasi-legal act of giving testimony against someone.
+  reasoning_layer_used: POB lexical decisions for עֵד and בְּרֵעֶךָ
+  rationale: “Testify” states the action directly in common English.
 - pob_phrase: without cause
-  simplified_phrase: without a good reason
-  preserved_meaning: The testimony is prohibited when it is groundless or unjustified.
-  reasoning_layer_used: The lexical decision allows “without reason” and explains the sense as unjustified.
-  rationale: “Without a good reason” is clearer in common English.
-- pob_phrase: deceive with your lips
-  simplified_phrase: deceive with your words
-  preserved_meaning: The prohibition still concerns using speech to deceive.
-  reasoning_layer_used: The lexical rationale identifies “lips” as an idiom for speech and permits “with your words.”
-  rationale: “With your words” states the idiom’s meaning naturally.
+  simplified_phrase: when there is no valid reason
+  preserved_meaning: It forbids testimony that is groundless or unjustified.
+  reasoning_layer_used: POB lexical decision for חִנָּם
+  rationale: “No valid reason” makes the ethical and legal sense clear.
+- pob_phrase: Would you deceive with your lips?
+  simplified_phrase: Would you deceive with your words?
+  preserved_meaning: It retains the rhetorical question and identifies the lips as an image for deceptive speech.
+  reasoning_layer_used: Wisdom source audit and POB lexical decisions for וַהֲפִתִּיתָ and בִּשְׂפָתֶיךָ
+  rationale: “With your words” communicates the Hebrew speech idiom naturally.
 translation_notes:
   risk_flags:
-  - risk: “Or” could sound as though it offers a choice between two wrong actions.
-    mitigation: Both actions remain prohibitions, and the footnote preserves the Hebrew alternative “and.”
+  - risk: Some readers may not recognize the second sentence as a prohibition.
+    mitigation: The footnote explains its prohibitive force while preserving the Hebrew rhetorical question.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/024/028.yaml
   source_text_sha256: 0cd34ea3e8f1d2c4e910f2ee05bb3186365fc781c76cbf95a78307504ee1233d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: af219327f13b22a798836cf8e5bfc953870bf923b97ca680fdc6c571ea79c66a
-  timestamp: '2026-07-12T09:53:00Z'
-  output_hash: 9a59d5b7a10e1b656fa73e87d96887778af6e5b4149f8b79e2e45ff9d4abe568
+  prompt_sha256: a1727f1c15a1ac2ea084452ebde1bd44b41194595b69209283ebe188d0ac22ee
+  timestamp: '2026-08-28T23:34:43Z'
+  output_hash: 780a458f731c6f1f28534c4ab30c76e3404f47a861a3e895b26d88e23b482857
   usage:
-    prompt_tokens: 3415
-    completion_tokens: 363
-    total_tokens: 3778
+    prompt_tokens: 3707
+    completion_tokens: 397
+    total_tokens: 4104
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
@@ -91,6 +91,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 463096524022095da632b0efb9fd9314c6baa302bd494c9f36a289a7ad8604bd
   review_summary: '“Give testimony” appropriately makes the witness action explicit, and “without a good reason” is warranted by the audit trail’s “without reason” alternative and its groundless/unjustified sense. The draft should revise only the final idiom: “use your lips to deceive” is awkward and obscures that the deception occurs through speech. “Deceive with your words” preserves the source meaning while improving readability.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:11:09Z'
+  previous_text: Do not give testimony against your neighbor without a good reason, or[a] deceive with your words.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:43Z'
+  previous_text: Do not testify against your neighbor when there is no valid reason. Would you use your lips to deceive?[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 71da3fcc105e8b48f8ce9ce154789235149f6a7d3462c6a356aaefe9958cde29
+  review_summary: 'The first sentence is a warranted and helpful simplification: “testify” directly expresses the witness-bearing action, and “no valid reason” appropriately conveys groundless or unjustified testimony. The second sentence should revise “use your lips” to “with your words.” This follows the POB’s own lexical audit that “lips” is an idiom for speech, preserves the rhetorical Hebrew form and its prohibitive force, and makes the actual meaning readily understandable to modern readers.'
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/037/017.yaml
-  text: you whose garments are hot when the earth is still because of the south wind?[a]
+  text: You whose garments grow hot when the land becomes still from the south—[a]
   footnotes:
   - marker: a
-    text: Or 'from the south.' The Hebrew literally says 'from the south,' which may refer more generally to the southern quarter; 'south wind' makes the meteorological sense explicit.
-    reason: lexical_alternative
+    text: That is, apparently, when the land becomes still because of a wind from the south; the Hebrew says simply “from the south.”
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,55 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Your clothes are hot when the earth is still because of the south wind, aren’t they?[a]
+  text: You, whose clothes grow hot when the land grows still from the south—[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “when the earth is still from the south.” The Hebrew says “from the south,” probably referring to the hot south wind.
-    reason: lexical_alternative
+    text: The Hebrew says simply “from the south,” probably referring to still weather associated with a wind from the south.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: you whose garments are hot
-  simplified_phrase: Your clothes are hot
-  preserved_meaning: Job’s clothing is hot in the oppressive weather.
-  reasoning_layer_used: POB lexical decisions for בְּגָדֶיךָ and חַמִּים
-  rationale: “Clothes” is common English, while “are hot” retains the source’s stative meaning.
-- pob_phrase: when the earth is still because of the south wind
-  simplified_phrase: when the earth is still because of the south wind
-  preserved_meaning: The south wind is presented as the cause of the still, hot conditions.
-  reasoning_layer_used: POB lexical decisions for בְּהַשְׁקִיט, אֶרֶץ, and מִדָּרוֹם
-  rationale: The POB wording clearly preserves the temporal and causal relationship without making the wind an active agent.
-- pob_phrase: you whose ... ?
-  simplified_phrase: '..., aren’t they?'
-  preserved_meaning: The line remains a rhetorical question addressed directly to Job.
-  reasoning_layer_used: POB lexical decision for אֲשֶׁר and immediate syntax
-  rationale: The question tag makes the difficult relative construction natural in English.
+- pob_phrase: You whose garments
+  simplified_phrase: You, whose clothes
+  preserved_meaning: Elihu continues addressing Job with a relative clause.
+  reasoning_layer_used: POB lexical decision for אֲשֶׁר and בְּגָדֶיךָ
+  rationale: “Clothes” is more familiar than “garments,” while the relative form and poetic continuation remain.
+- pob_phrase: when the land becomes still
+  simplified_phrase: when the land grows still
+  preserved_meaning: The land enters a state of weather-related stillness.
+  reasoning_layer_used: Final source audit for בְּהַשְׁקִיט אֶרֶץ
+  rationale: “Grows still” is natural English and retains the change of state.
 translation_notes:
   risk_flags:
-  - risk: The Hebrew may mean only “from the south,” without explicitly naming a wind.
-    mitigation: The footnote preserves the broader lexical alternative.
+  - risk: “From the south” leaves the precise weather relationship unclear.
+    mitigation: The main text preserves the Hebrew ambiguity, while the footnote gives the likely wind-related sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/037/017.yaml
   source_text_sha256: a089eb036560aef6c8e5f4dfbac1c35b023ec56b7e9d78b453b8ed92104212a8
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 71b7602b0d02fa2bb960a49eb834191a1eeafad8739444e52d92a1c20568a896
-  timestamp: '2026-07-12T09:39:54Z'
-  output_hash: 07a89a4b7fed551e1bebccd43f73231b0ed4e317a365e60bc6140368cfd6cae1
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7f09b827d3e2adb87a66cea264df42907bfaa619cde3fd455b15cccb83bd7d16
+  timestamp: '2026-08-28T22:54:28Z'
+  output_hash: dfebe5a47b6abcf1b309d0c81e053942c2130b689187ca01246a58de4c01d61c
   usage:
-    prompt_tokens: 3280
-    completion_tokens: 419
-    total_tokens: 3699
-    reasoning_tokens: 0
+    prompt_tokens: 2629
+    completion_tokens: 591
+    total_tokens: 3220
+    reasoning_tokens: 272
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:54Z'
   previous_text: Your clothes grow hot when the south wind leaves the earth still, do they not?[a]
@@ -91,3 +84,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:10Z'
+  previous_text: Your clothes are hot when the earth is still because of the south wind, aren’t they?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:28Z'
+  previous_text: You, whose clothes grow hot when the land becomes still from the south—[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

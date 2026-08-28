@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/144/014.yaml
-  text: Our cattle are heavy with young[a]; there is no breach and no going out[b], and no cry in our streets.
+  text: Our oxen are heavily laden[a]; there is no breach, no one carried away[b], and no cry in our streets.
   footnotes:
   - marker: a
-    text: Or 'Our oxen are heavily laden.' The Hebrew אַלּוּפֵינוּ can also mean 'our oxen/cattle,' and מְסֻבָּלִים literally means 'loaded' or 'bearing a burden.' In this context many understand the line as describing livestock fertility or abundance.
-    reason: lexical_alternative
+    text: The Hebrew is uncertain. “Our cattle are bearing burdens” is also possible; some interpret the terms as referring instead to leaders or clans who are well supported.
+    reason: alternative_reading
   - marker: b
-    text: Or 'and no exile' or 'and no one going out.' The Hebrew is terse and may refer to no forced departure from the city, rather than simply no movement outward.
+    text: Literally, “and no going out.” The phrase may refer to exile, captivity, a military sortie, or another calamitous departure.
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -34,77 +34,82 @@ base_translation:
     changes_summary: Replaced 'no one going forth' with 'no going out' to more closely reflect the Hebrew's impersonal phrasing and maintain formal consistency with the parallel negatives.
 translation:
   language: en
-  text: Our cattle are heavy with young.[a] Our defenses are not breached, no one is forced to leave,[b] and no cries of distress are heard in our streets.
+  text: Our oxen carry heavy loads.[a] No breach occurs, no one is carried away,[b] and no cries of distress are heard in our streets.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Our oxen are heavily loaded.” The line may describe either fertile livestock or burden-bearing animals.
-    reason: lexical_alternative
+    text: The Hebrew is uncertain. It may mean that the cattle bear burdens; some interpret it as referring to well-supported leaders or clans.
+    reason: alternative_reading
   - marker: b
-    text: The Hebrew literally says “no going out”; it may refer to exile, someone leaving, or another forced departure.
+    text: Literally, “no going out.” This may refer to exile, captivity, a military action, or another disastrous departure.
     reason: alternative_reading
 simplification_decisions:
+- pob_phrase: Our oxen are heavily laden
+  simplified_phrase: Our oxen carry heavy loads
+  preserved_meaning: The oxen bear loads rather than being described as pregnant.
+  reasoning_layer_used: Final source audit and lexical decision for מְסֻבָּלִים
+  rationale: The active wording preserves the burden-bearing image in ordinary English.
 - pob_phrase: there is no breach
-  simplified_phrase: Our defenses are not breached
-  preserved_meaning: The community remains secure from a disruptive breakthrough.
-  reasoning_layer_used: lexical decision and civic-security context
-  rationale: This turns an opaque noun into a clear statement while preserving the breach image.
-- pob_phrase: and no going out
-  simplified_phrase: no one is forced to leave
-  preserved_meaning: No calamitous departure from the city occurs.
-  reasoning_layer_used: lexical rationale and preserved alternative reading
-  rationale: This gives the terse phrase natural English while the footnote retains its ambiguity.
+  simplified_phrase: No breach occurs
+  preserved_meaning: There is no breach, collapse, or disruptive breakthrough.
+  reasoning_layer_used: Lexical decision for אֵין פֶּרֶץ and civic-security context
+  rationale: This keeps the source image without introducing a specific actor.
 - pob_phrase: and no cry in our streets
   simplified_phrase: and no cries of distress are heard in our streets
-  preserved_meaning: The public places contain no outcry caused by suffering or disaster.
-  reasoning_layer_used: lexical decision for צְוָחָה
-  rationale: Adding “of distress” makes the kind of cry clear from the documented lexical nuance.
+  preserved_meaning: No public outcry caused by calamity occurs.
+  reasoning_layer_used: Lexical decision for צְוָחָה and immediate context
+  rationale: The wording distinguishes distress cries from ordinary street noise.
 interpretive_expansions:
-- pob_phrase: there is no breach
-  rendering: Our defenses are not breached
-  claim: The breach concerns the community’s civic defenses or security.
+- pob_phrase: no cry
+  rendering: no cries of distress are heard
+  claim: The cry is an outcry caused by distress.
   evidence:
-  - The lexical rationale places the phrase in a civic-security sequence.
-  - The neighboring lines describe departure and public cries.
-  confidence: moderate
+  - The lexical audit says צְוָחָה often denotes a cry of distress.
+  - The surrounding clauses describe freedom from civic calamity.
+  confidence: high
   alternatives_preserved:
-  - a disruptive breaking through
-  - a collapse
-- pob_phrase: and no going out
-  rendering: no one is forced to leave
-  claim: The departure is calamitous rather than ordinary movement.
-  evidence:
-  - The POB rationale says the phrase most naturally refers to forced departure from the city.
-  - The surrounding breach and distress language indicates civic disaster.
-  confidence: moderate
-  alternatives_preserved:
-  - exile
-  - someone going out
-  - another forced departure
+  - no outcry
+  - no wailing
 translation_notes:
   risk_flags:
-  - risk: “Forced to leave” may sound more definite than the elliptical Hebrew.
-    mitigation: The footnote gives the literal wording and preserves multiple possible meanings.
-  - risk: “Defenses” specifies what the Hebrew calls only a breach.
-    mitigation: The wording follows the POB civic-security rationale without specifying walls or an enemy.
+  - risk: The first Hebrew clause is unusually uncertain.
+    mitigation: Footnote a preserves the burden-bearing and human-group alternatives.
+  - risk: “No one is carried away” selects one likely sense of a terse movement phrase.
+    mitigation: Footnote b preserves the literal wording and other calamitous possibilities.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/144/014.yaml
   source_text_sha256: fa7a21a33ee3a17241563fe5635eda2697fe1bc7312bc119e9f238cedfc455c5
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0c8b8805e37172ba45f112b325f27aea3337b0b1612270acd9a350cda6388cfc
-  timestamp: '2026-07-11T21:08:31Z'
-  output_hash: c6ce6291f8071c41fc26345d18afd8eb9bb141957fbfb429bd67f38460573bfd
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2031fcfca853453884b97666f9be5b468489f330dea90a22dffe3978aff50ade
+  timestamp: '2026-08-28T23:36:26Z'
+  output_hash: eeb0b310c5763fcd348674ba169f629684056ae95ecc08018dd51e6c5ee9a3b6
   usage:
-    prompt_tokens: 2955
-    completion_tokens: 1065
-    total_tokens: 4020
-    reasoning_tokens: 445
+    prompt_tokens: 4278
+    completion_tokens: 535
+    total_tokens: 4813
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:08:35Z'
+  previous_text: Our cattle are heavy with young.[a] Our defenses are not breached, no one is forced to leave,[b] and no cries of distress are heard in our streets.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:26Z'
+  previous_text: Our oxen carry heavy loads.[a] No one breaks through, no one is carried away,[b] and no cries of distress are heard in our streets.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 241e74661ec6f7c1cb3a4eb18ee510943959f71b553bb0129bf02b3a6a05f414
+  review_summary: The draft usefully clarifies that the final public cry is a cry of distress, and “carry heavy loads” is a warranted, readable expression of the selected livestock reading. However, “No one breaks through” narrows an actor-unspecified noun phrase into a personal action. “No breach occurs” remains clear while preserving the source’s broader image and the POB audit’s stated alternatives.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

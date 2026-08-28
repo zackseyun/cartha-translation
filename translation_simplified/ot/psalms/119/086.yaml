@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/119/086.yaml
-  text: All your commandments are faithful; they persecute me with falsehood; help me!
+  text: All your commandments are trustworthy; they persecute me with lies. Help me!
   ai_draft:
     model_id: claude-opus-4-8
     model_version: claude-opus-4-8
@@ -21,41 +21,59 @@ base_translation:
     output_hash: 63f896e997ffee98d7b2a8bcc6aeb7c08b259d86c4450ead793e79bcc6585e1f
 translation:
   language: en
-  text: All your commandments can be trusted. They persecute me with lies—help me!
+  text: Every one of your commandments can be trusted. They persecute me with lies. Help me!
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: All your commandments are faithful
-  simplified_phrase: All your commandments can be trusted
-  preserved_meaning: God's commandments are completely reliable and faithful.
-  reasoning_layer_used: POB translation and lexical decision
-  rationale: This states the force of “faithful” in direct, common English while retaining “commandments.”
-- pob_phrase: they persecute me with falsehood
+- pob_phrase: All your commandments are trustworthy
+  simplified_phrase: Every one of your commandments can be trusted
+  preserved_meaning: God’s commandments are entirely reliable.
+  reasoning_layer_used: POB lexical decision for אֱמוּנָה
+  rationale: This states “trustworthy” in direct, common English while keeping “commandments.”
+- pob_phrase: they persecute me with lies
   simplified_phrase: They persecute me with lies
-  preserved_meaning: The psalmist's persecutors act against him falsely.
-  reasoning_layer_used: POB translation
-  rationale: “Lies” is the natural plain-English equivalent of the abstract word “falsehood.”
+  preserved_meaning: Unidentified enemies subject the speaker to hostile treatment involving lies.
+  reasoning_layer_used: Applied lexical revision and immediate context
+  rationale: Keeping “persecute” preserves the hostile force without specifying how the lies are used.
 translation_notes:
   risk_flags:
-  - risk: The unnamed subject of “they” remains unclear in this isolated verse.
-    mitigation: The draft preserves the POB's ambiguity rather than identifying the persecutors without explicit evidence.
+  - risk: The identity of “they” remains unstated.
+    mitigation: The Hebrew and POB leave the subject contextually supplied, so the draft preserves that ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/119/086.yaml
   source_text_sha256: bc5c6572016fe0a71d411e718f98804ec56599aee828df06d58d19965a91cfb5
-  pob_commit_sha: 10975b14a09f35fcd9d540512a844c945cec1b29
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b1d0e2c5933ad3b9017be34e12c3cb06a0f01bcaeeabdc54a8b48b73950ef3e0
-  timestamp: '2026-07-27T04:22:05Z'
-  output_hash: 7e030949c80840f40e5690a9e19a3e6f68adaf39ef3c03d5da19090b8bc9572a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cf852288ebd2dd6905349d342a1e9b03d03ae6e9241b49e907161c6af580873c
+  timestamp: '2026-08-28T23:36:12Z'
+  output_hash: d7d5d90613848bc7ea96f7a7957a408b1b714dea6f7c5ee882ba68ecfdb11ccc
   usage:
-    prompt_tokens: 1748
-    completion_tokens: 485
-    total_tokens: 2233
-    reasoning_tokens: 227
+    prompt_tokens: 2704
+    completion_tokens: 257
+    total_tokens: 2961
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:37Z'
+  previous_text: All your commandments can be trusted. They persecute me with lies—help me!
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:12Z'
+  previous_text: Every one of your commandments can be trusted. They pursue me with lies. Help me!
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 22008193879b09dc40adbbc8dede1c4ee3955707eae0daa50346f5314771a23c
+  review_summary: The first sentence is a warranted, clearer explanation of “trustworthy” and retains the universal scope. The second sentence should retain “persecute,” since “pursue” weakens the hostile force and does not improve readability. The unidentified subject rightly remains unstated.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/009/000.yaml
-  text: 'For the choirmaster: according to “Death of the Son.”[a] A psalm of David.'
+  text: 'For the choirmaster: according to “The Death of the Son.”[a] A psalm of David.'
   footnotes:
   - marker: a
-    text: Hebrew עַלְמוּת לַבֵּן ('Alamoth-labben' in transliteration) is uncertain. It is likely a musical direction or tune title; traditionally it has also been left untranslated as a proper name-like expression.
+    text: The Hebrew עַלְמוּת לַבֵּן is uncertain. It is likely a musical direction or tune title and may instead be transliterated “Alamoth-labben.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,54 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For the choirmaster, according to “Death of the Son.”[a] A psalm of David.
+  text: 'For the choir director: according to “The Death of the Son.”[a] A psalm of David.'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew expression is uncertain. It probably names a tune or gives another musical direction, but it may instead be written as the name “Alamoth-labben.”
+    text: The meaning of this Hebrew phrase is uncertain. It is probably a musical direction or title, but it could instead be written as “Alamoth-labben.”
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: 'For the choirmaster: according to “Death of the Son.”'
-  simplified_phrase: For the choirmaster, according to “Death of the Son.”
-  preserved_meaning: The heading addresses the musical leader without defining the uncertain instruction more narrowly.
-  reasoning_layer_used: POB lexical decisions for לַמְנַצֵּחַ and עַלְמוּת לַבֵּן
-  rationale: A single flowing clause is easier to read while “according to” preserves the documented ambiguity.
+- pob_phrase: For the choirmaster
+  simplified_phrase: For the choir director
+  preserved_meaning: The heading addresses the leader responsible for the psalm’s musical performance.
+  reasoning_layer_used: POB lexical decision for לַמְנַצֵּחַ
+  rationale: “Choir director” is a familiar modern equivalent for this musical leader.
+- pob_phrase: according to “The Death of the Son”
+  simplified_phrase: according to “The Death of the Son”
+  preserved_meaning: The wording keeps the translated title without deciding whether it names a tune or another musical direction.
+  reasoning_layer_used: POB lexical rationale, footnote, and grounding review
+  rationale: Retaining “according to” avoids presenting the uncertain phrase as definitely a tune.
 translation_notes:
   risk_flags:
-  - risk: “Death of the Son” may not be the correct meaning or a tune title.
-    mitigation: The footnote states the uncertainty and preserves “Alamoth-labben” and other musical directions as possibilities.
+  - risk: The phrase “according to” remains somewhat unclear in English.
+    mitigation: The footnote explains its likely musical function while preserving the uncertainty.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/009/000.yaml
   source_text_sha256: cd2eef6db8543c3d739b66fdc001927bb1d81ede4913c45d23bb016209771cd4
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 914f1d80a044fc7069baff10a524b375c398758cdd6e055d4e609eccc1983e97
-  timestamp: '2026-07-12T09:53:50Z'
-  output_hash: dbc1d25483e4929f5f835d7555d6f6b85a3b2a11750e140d009dff3368fabe23
+  prompt_sha256: f10ec9ef588e32aa92fb40b17ec9faf0424111c3412797b4460afa104a16a751
+  timestamp: '2026-08-28T23:35:02Z'
+  output_hash: 88853f2e29b6ec12bf11b26f431983059f4ad23e8469b49d4b02b3736e8ff78f
   usage:
-    prompt_tokens: 3346
-    completion_tokens: 623
-    total_tokens: 3969
-    reasoning_tokens: 332
+    prompt_tokens: 3449
+    completion_tokens: 507
+    total_tokens: 3956
+    reasoning_tokens: 179
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions:
-- pob_phrase: according to “Death of the Son”
-  rendering: To be sung to the tune “Death of the Son”
-  claim: The phrase probably directs the performance of the psalm using a named tune.
+- pob_phrase: according to “The Death of the Son”
+  rendering: Set to the tune “The Death of the Son”
+  claim: The title likely identifies the tune or musical setting for the psalm.
   evidence:
-  - The POB lexical rationale identifies the expression as a likely musical or tune notation.
-  - Its position in the psalm heading supports a performance direction.
+  - The POB note identifies the phrase as likely a musical direction or tune title.
+  - The psalm heading addresses the musical leader.
   confidence: moderate
   alternatives_preserved:
-  - It may be another kind of musical direction.
-  - The uncertain Hebrew may be retained as “Alamoth-labben.”
+  - The phrase may be another kind of musical direction.
+  - It may be transliterated “Alamoth-labben.”
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:50Z'
@@ -88,6 +93,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 9dca2955653b13824c902905829f24ee3435468217ccdc07a701b444bf86555a
   review_summary: The draft is more immediately understandable, but its added wording, “To be sung to the tune,” goes beyond the level of certainty supported by the source and the POB audit trail. Retain the POB’s noncommittal superscriptional wording and let the footnote explain that the phrase probably concerns a tune or other musical direction.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:23Z'
+  previous_text: For the choirmaster, according to “Death of the Son.”[a] A psalm of David.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:02Z'
+  previous_text: For the choir director. Set to the tune “The Death of the Son.”[a] A psalm of David.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 8d68a4f8944668d4a02f0bd7552ede5df39677b3178acd8163a8edff4898bd64
+  review_summary: “Choir director” is a warranted, clearer modernization of “choirmaster.” However, “Set to the tune” over-specifies an uncertain phrase as a tune rather than retaining the live possibility that it is another kind of musical direction. Use “according to” in the main text and let the footnote explain the likely musical function and transliterated alternative.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

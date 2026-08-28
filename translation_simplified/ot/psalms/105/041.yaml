@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/041.yaml
-  text: He opened the rock[a], and water gushed out; they flowed through the dry places like a river.
+  text: He opened the rock, and water gushed out; it flowed through the dry places like a river.[a]
   footnotes:
   - marker: a
-    text: Or 'it flowed in the dry places, a river.' The Hebrew can be read more literally without the explicit 'like,' but the comparison is likely the sense in English.
+    text: Or “it flowed through the dry places, a river.” The Hebrew has no explicit word for “like.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 105:41 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''it flowed''].'
 translation:
   language: en
-  text: He opened the rock. Water gushed out and flowed across the dry land like a river.[a]
+  text: He opened the rock, and water came gushing out. It flowed through the dry places like a river.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may also be translated more literally, “It flowed in the dry places—a river.”
+    text: Or “It flowed through the dry places, a river.” The Hebrew does not explicitly say “like.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: He opened the rock, and water gushed out; they flowed
-  simplified_phrase: He opened the rock. Water gushed out and flowed
-  preserved_meaning: God caused abundant water to come from the known wilderness rock and continue flowing.
-  reasoning_layer_used: Lexical decisions and theological decision
-  rationale: Two direct clauses remove the difficult pronoun shift while preserving the historical image.
-- pob_phrase: through the dry places
-  simplified_phrase: across the dry land
-  preserved_meaning: The water moved through parched terrain.
-  reasoning_layer_used: Lexical decision for בַּצִּיּוֹת
-  rationale: “Dry land” is more natural common English without narrowing the setting to a desert.
+- pob_phrase: water gushed out
+  simplified_phrase: water came gushing out
+  preserved_meaning: Water suddenly and abundantly emerged from the rock.
+  reasoning_layer_used: POB lexical decision for וַיָּזֻבוּ
+  rationale: The recast wording is natural while retaining the force of “gushed.”
+- pob_phrase: it flowed through the dry places
+  simplified_phrase: It flowed through the dry places
+  preserved_meaning: The water moved across arid places.
+  reasoning_layer_used: POB lexical decision for בַּצִּיּוֹת and grounding review
+  rationale: “Dry places” clearly conveys arid terrain and avoids the land-versus-sea sense of “dry land.”
 translation_notes:
   risk_flags:
-  - risk: “Dry land” compresses the Hebrew plural “dry places.”
-    mitigation: The phrase still conveys the same broad image of water crossing arid terrain.
+  - risk: The word “like” is supplied to make the river image natural in English.
+    mitigation: The footnote preserves the Hebrew’s less explicit construction as an alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/041.yaml
   source_text_sha256: 88f18bce1dbd86fc3c0f8d18742937fbb69d585b2bdf0419121bf2ea4d26acd6
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 244d90c105148dc7f73c42c9eddb547fb1a209ed4d5fc78a37d48afb5329132f
-  timestamp: '2026-07-11T20:52:35Z'
-  output_hash: 3f06ddaa17eac2521df0b4835d6164b06b9bd9deea0ceabc984306d6d0c8d0bb
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 72ae2d2940ffca615e5e64bfa78506387d27d556abb56fe67dbfdc8aed5c56e1
+  timestamp: '2026-08-28T23:36:01Z'
+  output_hash: 638553f29bdef0b93e6a46284d956f1bb31cc97b37898ee173e41662fc61042f
   usage:
-    prompt_tokens: 2791
-    completion_tokens: 816
-    total_tokens: 3607
-    reasoning_tokens: 506
+    prompt_tokens: 3729
+    completion_tokens: 337
+    total_tokens: 4066
+    reasoning_tokens: 19
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:00:20Z'
+  previous_text: He opened the rock. Water gushed out and flowed across the dry land like a river.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:01Z'
+  previous_text: He opened the rock, and water came gushing out. It flowed through the dry land like a river.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 24af1ad3c9e93adc6d7f2b4a119685d1f4599ed9dc5ae1e7320e8bad5d3c5120
+  review_summary: 'The draft properly retains the historical-poetic depiction of God’s wilderness provision and introduces no doctrinal expansion. “Water came gushing out” is a natural, source-warranted simplification. Revise “dry land” to “dry places,” however: the latter is already clear modern English and more directly conveys the Hebrew’s arid places, whereas “dry land” may be heard merely as non-sea land.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

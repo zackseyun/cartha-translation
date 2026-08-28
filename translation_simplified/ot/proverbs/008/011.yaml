@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/008/011.yaml
-  text: For wisdom is better than jewels[a], and all desirable things cannot compare with her.
+  text: For wisdom is better than jewels[a], and no desirable thing can compare with her.
   footnotes:
   - marker: a
-    text: Or 'pearls' or 'rubies' for 'jewels'; the Hebrew term refers generally to precious gems.
+    text: Or “pearls” or “rubies.” The exact kind of precious object denoted by the Hebrew term is uncertain.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For wisdom is better than jewels,[a] and no desirable thing can compare with her.
+  text: For wisdom is more valuable than jewels.[a] Nothing anyone could desire can compare with her.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word may also be translated “pearls” or “rubies”; it refers generally to precious gems.
+    text: The Hebrew word may refer to pearls, rubies, or another kind of precious jewel.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: all desirable things cannot compare with her
-  simplified_phrase: no desirable thing can compare with her
-  preserved_meaning: Every object of desire is inferior to wisdom.
-  reasoning_layer_used: Lexical decisions for וְכָל חֲפָצִים and לֹא יִשְׁווּ בָהּ
-  rationale: The direct universal negative is natural English without making desire reader-specific.
+- pob_phrase: wisdom is better than jewels
+  simplified_phrase: wisdom is more valuable than jewels
+  preserved_meaning: Wisdom surpasses costly treasures in value.
+  reasoning_layer_used: POB lexical decision for טוֹבָה with מִן and the valuables comparison
+  rationale: “More valuable” makes the intended comparison immediately clear.
+- pob_phrase: and no desirable thing
+  simplified_phrase: Nothing anyone could desire
+  preserved_meaning: The comparison includes every object of desire or delight.
+  reasoning_layer_used: POB lexical decision for וְכָל חֲפָצִים and source audit
+  rationale: The recasting expresses the universal negative in ordinary English.
+- pob_phrase: one sentence joined by “and”
+  simplified_phrase: two short sentences
+  preserved_meaning: The second statement reinforces wisdom’s unmatched value.
+  reasoning_layer_used: POB syntax and clause relationship
+  rationale: Dividing the clauses makes the comparison easier to follow.
+interpretive_expansions:
+- pob_phrase: desirable thing
+  rendering: anything anyone could desire
+  claim: Desirable things are things that a person might want or value.
+  evidence:
+  - The documented lexical range includes “things one may desire.”
+  - The Hebrew universal covers the whole class of desired things.
+  confidence: high
+  alternatives_preserved:
+  - no desirable thing
+  - nothing of value
 translation_notes:
   risk_flags:
-  - risk: “Her” may initially surprise readers because wisdom is not a person.
-    mitigation: Retaining “her” preserves the feminine personification of Wisdom throughout Proverbs 8.
+  - risk: “More valuable” may sound narrower than the broader word “better.”
+    mitigation: The immediate comparison with jewels and desirable things clearly concerns surpassing worth.
+  - risk: Adding “anyone” makes the implied human desirer explicit.
+    mitigation: The indefinite wording preserves the source’s broad, non-reader-specific scope.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/008/011.yaml
   source_text_sha256: a74c4d39d29f82fb0404bcd8c94d91cc6ac1fa35c3fe7983d4d6122817be6f5e
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 9216f5abe2e35aaa9c94c3756138270dd23624c4f1126c1a4b6361fd7230d432
-  timestamp: '2026-07-12T09:51:51Z'
-  output_hash: ecdff28a1f2147ed5dc2266096d3a7d6f8b00a8cf5eb8e9ae9b28135629eeaf8
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 76e5ec0f38ab03efe3fa9fc60f642abf9d7070be7c1c31ceb190fda37ab41fff
+  timestamp: '2026-08-28T23:00:54Z'
+  output_hash: 8f0b4203b255b559941338e39a318efcd3e3e93c046400cf12accc442f69a3b5
   usage:
-    prompt_tokens: 3104
-    completion_tokens: 242
-    total_tokens: 3346
-    reasoning_tokens: 0
+    prompt_tokens: 2671
+    completion_tokens: 1299
+    total_tokens: 3970
+    reasoning_tokens: 818
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:51:51Z'
   previous_text: For wisdom is better than jewels,[a] and nothing you desire can compare with her.
@@ -81,3 +102,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:00:54Z'
+  previous_text: For wisdom is better than jewels,[a] and no desirable thing can compare with her.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

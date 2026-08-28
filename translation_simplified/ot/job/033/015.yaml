@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/033/015.yaml
-  text: In a dream[a], a vision of the night, when deep sleep falls on men, in slumbers on the bed,
-  footnotes:
-  - marker: a
-    text: Or 'on people'; the Hebrew says 'men' as a generic reference to human beings.
-    reason: lexical_alternative
+  text: In a dream, a vision in the night, when deep sleep falls on people as they slumber on their beds,
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,52 +27,66 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: In a dream, in a vision in the night, when deep sleep falls on men[a] as they slumber on the bed,
+  text: In a dream, a vision at night, when deep sleep comes over people as they sleep in their beds,
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Here “men” refers generally to human beings.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: a vision of the night
-  simplified_phrase: a vision in the night
-  preserved_meaning: The vision occurs at night and remains parallel to the dream.
+- pob_phrase: a vision in the night
+  simplified_phrase: a vision at night
+  preserved_meaning: The vision occurs during the night.
   reasoning_layer_used: POB lexical decision for חֶזְיוֹן לַיְלָה
-  rationale: The preposition “in” makes the nighttime setting immediately clear.
-- pob_phrase: in slumbers on the bed
-  simplified_phrase: as they slumber on the bed
-  preserved_meaning: The men are sleeping on the bed when the dream comes.
-  reasoning_layer_used: POB lexical decisions for בִּתְנוּמוֹת and עֲלֵי מִשְׁכָּב
-  rationale: A finite clause replaces an unnatural English plural while retaining the poetic act of slumber.
-- pob_phrase: men
-  simplified_phrase: men[a]
-  preserved_meaning: The grammatically masculine Hebrew term is retained with its generic human reference.
-  reasoning_layer_used: POB theological decision on gender-accurate rendering
-  rationale: The main text keeps the audited choice, while the note prevents an exclusively male reading.
-translation_notes:
-  risk_flags:
-  - risk: Modern readers may understand “men” as excluding women.
-    mitigation: The footnote states that the Hebrew expression refers generally to human beings.
-  - risk: Changing plural “slumbers” to a verb may soften the Hebrew poetic plurality.
-    mitigation: The rendering retains slumber as a distinct image rather than flattening it to ordinary sleep.
+  rationale: “At night” is the most natural common-English expression of the time setting.
+- pob_phrase: when deep sleep falls on people
+  simplified_phrase: when deep sleep comes over people
+  preserved_meaning: Deep sleep overtakes people rather than being initiated by them.
+  reasoning_layer_used: POB lexical decision for תַּרְדֵּמָה and source image
+  rationale: “Comes over” preserves the image of sleep overtaking people in natural English.
+- pob_phrase: as they slumber on their beds
+  simplified_phrase: as they sleep in their beds
+  preserved_meaning: The deep sleep comes while each person is sleeping in bed.
+  reasoning_layer_used: Applied source-audit revision and distributive reading
+  rationale: “Sleep in their beds” is clearer than “slumber on their beds” while retaining the dependent time clause.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/033/015.yaml
   source_text_sha256: 6c6155f8e1e0ccb672ba667e8b7654f13e35e9e6fef198b7cf741949c4f5a92f
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 472e9d68bf5a919e098b238f0ef3192f509994c414223f4fb838578f5df64503
-  timestamp: '2026-07-11T19:57:44Z'
-  output_hash: 4d3bdb530dac395f862cc12d66684872bdc33117010147b7f3bf0e32d8c12679
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 72b3c0a23141ef38fb533d35c05d55babfee634f85a4180579859fb6271a16bc
+  timestamp: '2026-08-28T23:34:54Z'
+  output_hash: 1f0066e4ed83d3f6097f6625d3fd29f4d0dcd37b0af309fa4015b3455e0f3afb
   usage:
-    prompt_tokens: 2565
-    completion_tokens: 681
-    total_tokens: 3246
-    reasoning_tokens: 250
+    prompt_tokens: 3409
+    completion_tokens: 372
+    total_tokens: 3781
+    reasoning_tokens: 47
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:18Z'
+  previous_text: In a dream, in a vision in the night, when deep sleep falls on men[a] as they slumber on the bed,
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:55:30Z'
+  previous_text: In a dream—a vision at night—when deep sleep comes over people as they lie in bed,
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:54Z'
+  previous_text: In a dream, in a vision at night, when people slumber in their beds and deep sleep comes over them,
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e9a5acd46f507a5f8553463632286645cddb9e0b72f23b9518fa07b81f9b4a39
+  review_summary: “Comes over” is a warranted, accessible rendering of deep sleep falling on people, and “sleep” is clearer than “slumber.” Retain the source/POB clause relationship rather than coordinating and reversing the two descriptions.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

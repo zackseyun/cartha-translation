@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/044/010.yaml
-  text: You make us turn back from the foe[a][b], and those who hate us plunder for themselves.
-  footnotes:
-  - marker: a
-    text: Or 'those who hate us have taken spoil for themselves.'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'You turn us back before the enemy.'
-    reason: lexical_alternative
+  text: You make us retreat from the foe, and those who hate us plunder for themselves.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,55 +27,47 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You make us retreat from the enemy, and those who hate us take what belongs to us for themselves.
+  text: You make us retreat from the enemy, and those who hate us plunder for themselves.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: turn back from the foe
-  simplified_phrase: retreat from the enemy
-  preserved_meaning: God causes the people to withdraw from an opponent in battle.
-  reasoning_layer_used: POB lexical decisions for תְּשִׁיבֵנוּ, אָחוֹר, and מִנִּי צָר
-  rationale: “Retreat from the enemy” expresses the forced military withdrawal in familiar English.
-- pob_phrase: plunder for themselves
-  simplified_phrase: take what belongs to us for themselves
-  preserved_meaning: The attackers seize the people's possessions for their own benefit.
-  reasoning_layer_used: POB lexical decisions for שָׁסוּ and לָמוֹ
-  rationale: The wording explains plunder without suggesting that the attackers take anything they desire.
-interpretive_expansions:
-- pob_phrase: plunder for themselves
-  rendering: take what belongs to us for themselves
-  claim: The hostile people seize the speakers' possessions for their own benefit.
-  evidence:
-  - The POB says שָׁסוּ denotes taking spoil.
-  - 'The POB reads לָמוֹ as indicating benefit: “for themselves.”'
-  confidence: high
-  alternatives_preserved:
-  - plunder for themselves
-  - have taken spoil for themselves
-translation_notes:
-  risk_flags:
-  - risk: “What belongs to us” explains the implied spoil rather than retaining the military term.
-    mitigation: The wording preserves hostile seizure while “for themselves” retains the attackers' benefit.
+- pob_phrase: the foe
+  simplified_phrase: the enemy
+  preserved_meaning: The opposing force in battle remains in view.
+  reasoning_layer_used: POB lexical alternatives and military context
+  rationale: “Enemy” is more familiar than “foe” and preserves the battle setting.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/044/010.yaml
   source_text_sha256: 0c9ba7d61584c43ee59b916eb3c8058d57ee99f928f87a6cbe470ee3fc6eeffb
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 29d448031240232104cf42c73964da4f1e5d6e5ace4a7e21b2d71f359c941280
-  timestamp: '2026-07-12T09:59:33Z'
-  output_hash: 54ca4aa15debc56b96fdf59286bf4a5837ca684603efae3e2414d168adf65f6e
+  prompt_sha256: 457b41b0487adada81509e0672cc9a8057f44fd0c8642c2aed1c69f8b7f6c26b
+  timestamp: '2026-08-28T23:35:18Z'
+  output_hash: 4971e4058c83b618afa544932b12dca78f4bf09bc356751ac27b7b6e7892e9d4
   usage:
-    prompt_tokens: 3125
-    completion_tokens: 387
-    total_tokens: 3512
+    prompt_tokens: 3337
+    completion_tokens: 133
+    total_tokens: 3470
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: plunder for themselves
+  rendering: take our possessions for themselves
+  claim: The implied spoil consists of possessions taken from the defeated people.
+  evidence:
+  - The Hebrew verb שָׁסוּ denotes taking spoil in this military context.
+  - The preceding retreat identifies the speakers as the defeated group.
+  confidence: high
+  alternatives_preserved:
+  - plunder for themselves
+  - seize spoil for themselves
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:33Z'
@@ -93,4 +78,19 @@ spob_revision_history:
   review_output_hash: 0fcf07a6c88b3561370d22f8c18384fc8dad7e49ea3db9fce9c7ef2509127d31
   review_summary: “Retreat from the enemy” is a clear, warranted rendering of the forced military withdrawal. The second clause helpfully makes plunder concrete, but “whatever they want” overstates the audited sense of taking spoil. Replacing it with “what belongs to us” retains the understandable concrete sense of hostile seizure while preserving the source’s focus on plunder for the enemies’ own benefit.
   schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:47Z'
+  previous_text: You make us retreat from the enemy, and those who hate us take what belongs to us for themselves.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:18Z'
+  previous_text: You make us retreat from the enemy, and those who hate us take our possessions for themselves.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f2d6ef2c216f8f6d62d74aee73eec855fa94240e2c157e1414c074c98e6cb2ae
+  review_summary: Changing “foe” to “enemy” is a warranted and useful simplification. The proposed second change over-specifies the unstated object and softens the military sense of plundering. Retain “plunder for themselves,” which is already understandable and preserves both the source expression and the POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/039/009.yaml
-  text: I am mute[a]; I do not open my mouth[b], because you have done it.
+  text: I am mute[a]; I will not open my mouth, because you have done it[b].
   footnotes:
   - marker: a
-    text: Or, 'I was silenced' or 'I am silent.'
+    text: Or “I was silenced” or “I am silent.”
     reason: lexical_alternative
   - marker: b
-    text: Hebrew literally, 'because you have done [it],' with the object left unstated.
-    reason: lexical_alternative
+    text: Hebrew literally says “because you have done,” leaving the object unstated.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,45 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I remain silent; I do not open my mouth, because you have done it.[a]
+  text: I remain silent[a]. I will not say a word, because you have done this[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew does not state exactly what God has done.
+    text: Or “I was silenced” or “I am unable to speak.”
+    reason: lexical_alternative
+  - marker: b
+    text: Hebrew says only “because you have done,” without stating what God has done.
     reason: source_note
 simplification_decisions:
 - pob_phrase: I am mute
   simplified_phrase: I remain silent
-  preserved_meaning: The psalmist is in a continuing state of restrained speech.
-  reasoning_layer_used: POB lexical decision for נֶאֱלַמְתִּי and its contextual rationale
-  rationale: “Remain silent” avoids a likely disability-related reading of “mute” while preserving the resulting state of silence.
-- pob_phrase: I do not open my mouth
-  simplified_phrase: I do not open my mouth
-  preserved_meaning: The Hebrew image presents the psalmist as refusing to speak.
-  reasoning_layer_used: POB lexical decision for לֹא אֶפְתַּח פִּי
-  rationale: The concrete image is already clear and should not be flattened to “I do not speak.”
+  preserved_meaning: The speaker is in a state of restrained speech without implying a physical inability to speak.
+  reasoning_layer_used: POB lexical decision and psalm context
+  rationale: “Remain silent” is clearer today while preserving the chosen stative sense.
+- pob_phrase: I will not open my mouth
+  simplified_phrase: I will not say a word
+  preserved_meaning: The speaker firmly resolves not to speak.
+  reasoning_layer_used: POB lexical decision and applied revision
+  rationale: The common idiom preserves the force and volitional sense of the Hebrew image.
+- pob_phrase: because you have done it
+  simplified_phrase: because you have done this
+  preserved_meaning: The speaker acknowledges God’s action without specifying the circumstance further.
+  reasoning_layer_used: POB theological decision on the unstated object
+  rationale: “This” is natural English but remains deliberately nonspecific.
 translation_notes:
   risk_flags:
-  - risk: Readers may assume that “it” identifies a specific divine action more clearly than the Hebrew does.
-    mitigation: The footnote states that the object of God’s action is left unstated.
+  - risk: “Remain silent” may understate the possible sense “was silenced.”
+    mitigation: The lexical alternative is retained in footnote a.
+  - risk: Supplying “this” could appear more specific than the objectless Hebrew.
+    mitigation: Footnote b identifies the unstated object, and the main text adds no explanation of the event.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/039/009.yaml
   source_text_sha256: 0bf6145241d4054d5353298e091103467aa329fc19fcf0eaa7d59698fd8ac86e
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5eedfc81d80ee1dec7feabccf587d2e303439bb9678ab6164de7a02e38c83f4d
-  timestamp: '2026-07-11T20:25:02Z'
-  output_hash: 3be37b84f3f88018ef3c31c3ccede79e7adf7431c2e1a336532184f03ae5ea4b
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 47c9e68196339d4e7f677195b2d2dac3cc2ce1c10ef563aa4dc14e0a9e3bcddf
+  timestamp: '2026-08-28T22:54:38Z'
+  output_hash: 1f967235ecd5c2035df5de611ef410365042b70d187018519f61f231961be226
   usage:
-    prompt_tokens: 2440
-    completion_tokens: 648
-    total_tokens: 3088
-    reasoning_tokens: 329
+    prompt_tokens: 2582
+    completion_tokens: 729
+    total_tokens: 3311
+    reasoning_tokens: 311
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:38Z'
+  previous_text: I remain silent; I do not open my mouth, because you have done it.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

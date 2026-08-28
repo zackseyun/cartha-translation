@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/003/021.yaml
-  text: Who knows whether the spirit of the sons of man goes upward[b][a], and whether the spirit of the beast goes down to the earth?
+  text: Who knows whether the spirit[a] of human beings goes upward and whether the spirit of the animal goes down to the earth?
   footnotes:
   - marker: a
-    text: Or 'the spirit of human beings.' The Hebrew reads 'the spirit of the sons of man,' using a masculine expression with representative force for humanity.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'breath' instead of 'spirit' in both occurrences of רוּחַ; Ecclesiastes can use the term with overlapping senses.
+    text: Or “breath” in both occurrences; the Hebrew word can carry overlapping senses here.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,47 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Who knows whether the human spirit goes upward and whether an animal’s spirit goes down to the earth?[a]
+  text: Who knows whether the spirit[a] of human beings goes upward and whether an animal’s spirit goes down to the earth?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word translated “spirit” can also mean “breath” in both places.
+    text: Or “breath” in both places; the Hebrew word can have overlapping meanings here.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the spirit of the sons of man
-  simplified_phrase: the human spirit
-  preserved_meaning: The masculine Hebrew expression represents humanity as a whole.
-  reasoning_layer_used: POB lexical decision for בְּנֵי הָאָדָם
-  rationale: “Human” states the representative meaning directly for modern readers.
-- pob_phrase: the spirit of the beast
+- pob_phrase: the spirit of the animal
   simplified_phrase: an animal’s spirit
-  preserved_meaning: The singular expression refers to animal life in contrast with humanity.
-  reasoning_layer_used: POB lexical decision for בְּהֵמָה
-  rationale: “Animal” is clearer in common English while keeping the human-animal contrast.
+  preserved_meaning: The generic animal life-principle remains contrasted with that of human beings.
+  reasoning_layer_used: POB lexical decision for וְרוּחַ הַבְּהֵמָה
+  rationale: The possessive wording is more natural while preserving the generic comparison.
+- pob_phrase: whether ... and whether
+  simplified_phrase: whether ... and whether
+  preserved_meaning: Each directional claim remains explicitly within the question’s uncertainty.
+  reasoning_layer_used: POB theological decision on interrogative scope
+  rationale: Repeating “whether” prevents the two uncertain claims from becoming one packaged proposition.
 translation_notes:
   risk_flags:
-  - risk: “Spirit” may sound more definite than the Hebrew word’s overlapping sense.
-    mitigation: The footnote preserves “breath” as a possible meaning.
-  - risk: Readers may take the upward and downward destinies as asserted facts.
-    mitigation: The repeated “whether” keeps both clauses within the question’s uncertainty.
+  - risk: Readers may understand “spirit” more narrowly than the Hebrew permits.
+    mitigation: The footnote preserves “breath” as a possible overlapping sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/003/021.yaml
   source_text_sha256: 2919daaa47e06acf14754cc171704ee7a065987b92087cd7bf22e69a60f6cfa9
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a8ffcacf1c8a523a4a295db342eb66030e3c80c3e16b3d3b20afe5ca032fc3d0
-  timestamp: '2026-07-11T21:07:23Z'
-  output_hash: d4ccdb581e551cc9880aba9a4ab19d3e3b8601acc1146ea12a8c5562ab85a853
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c918c97c37300d416e6c6e3f422e26060f9d30952d8ed87433357ee4012e01e4
+  timestamp: '2026-08-28T23:32:41Z'
+  output_hash: 820e1bde313b1766b0d3050e3160b851d644046c507488b6121878b4c7191075
   usage:
-    prompt_tokens: 2911
-    completion_tokens: 438
-    total_tokens: 3349
-    reasoning_tokens: 107
+    prompt_tokens: 3885
+    completion_tokens: 733
+    total_tokens: 4618
+    reasoning_tokens: 431
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:07:49Z'
+  previous_text: Who knows whether the human spirit goes upward and whether an animal’s spirit goes down to the earth?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:41Z'
+  previous_text: Who knows if the human spirit[a] goes upward and the animal’s spirit goes down to the earth?
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 4d7249b8919313a79108f245e39627d9c537b06823197c9072f5f92b43880159
+  review_summary: The draft correctly preserves Ecclesiastes’ uncertainty and does not impose a settled doctrine about human and animal destiny. However, the proposed reduction of the two “whether” clauses risks packaging two separately questioned directions into one combined assertion, despite the POB audit trail’s explicit decision to mark both clauses as uncertain. Retain the repeated “whether.” The POB wording is also clearer than “the human spirit” about the generic comparison of human and animal life-principles.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

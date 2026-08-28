@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/064/004.yaml
-  text: to shoot at the blameless from hiding places[a][b]; suddenly they shoot at him and do not fear.
+  text: to shoot at the blameless[a] from hiding places[b]; suddenly they shoot at him and do not fear.
   footnotes:
   - marker: a
-    text: Or 'the innocent.' The Hebrew term can denote moral integrity or innocence.
+    text: Or “the innocent.” The Hebrew term can denote moral integrity or innocence.
     reason: lexical_alternative
   - marker: b
-    text: Or 'in secret places'; the Hebrew preposition is literally 'in,' but the sense in context is that they attack from concealed positions.
+    text: Or “in secret places”; the Hebrew preposition is literally “in,” but the sense in context is that they attack from concealed positions.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: From their hiding places, they shoot at a blameless person.[a] They shoot at him without warning and are not afraid.
+  text: They shoot at a blameless person[a] from hiding places. Suddenly they shoot at him and are not afraid.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “an innocent person.” The Hebrew word can refer to moral integrity or innocence.
+    text: Or “an innocent person.” The Hebrew term can refer to moral integrity or innocence.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: to shoot at the blameless from hiding places
-  simplified_phrase: From their hiding places, they shoot at a blameless person
-  preserved_meaning: The attackers fire from concealed positions at someone marked by moral integrity or innocence.
+  simplified_phrase: They shoot at a blameless person from hiding places
+  preserved_meaning: The attackers shoot from concealed positions at someone of moral integrity.
   reasoning_layer_used: POB lexical decisions for בַּמִּסְתָּרִים and תָּם
-  rationale: The reordered sentence uses natural English while preserving the ambush image and ethical description.
-- pob_phrase: suddenly they shoot at him
-  simplified_phrase: They shoot at him without warning
-  preserved_meaning: The attack is abrupt and unexpected.
-  reasoning_layer_used: POB lexical decision for פִּתְאֹם
-  rationale: “Without warning” makes the sudden nature of the ambush immediately clear.
+  rationale: The complete active sentence states the concealed attack clearly without adding that they wait.
+- pob_phrase: suddenly they shoot at him and do not fear
+  simplified_phrase: Suddenly they shoot at him and are not afraid
+  preserved_meaning: The attackers shoot without warning and act without fear, whose object remains unstated.
+  reasoning_layer_used: POB lexical decisions for פִּתְאֹם, יֹרֻהוּ, and וְלֹא יִירָאוּ
+  rationale: The wording retains the repeated shooting image while using a common expression for fearlessness.
+interpretive_expansions:
+- pob_phrase: the blameless
+  rendering: a blameless person
+  claim: The victim is expressed as a representative individual.
+  evidence:
+  - The following singular pronoun “him” refers back to the victim.
+  confidence: high
+  alternatives_preserved:
+  - an innocent person
 translation_notes:
   risk_flags:
-  - risk: Modern readers may picture a firearm even though the Hebrew does not name the weapon.
-    mitigation: The wording retains POB’s deliberate choice not to specify arrows or another weapon.
+  - risk: Modern readers may associate “shoot” only with firearms.
+    mitigation: The wording avoids naming a weapon because the source does not explicitly name one.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/064/004.yaml
   source_text_sha256: 505d04d096f2adde12697cc3c4d6d4a914475dc873a25a8930efbd6e66dbb8d2
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ed644d1ebc43cf498b6d33cdfcd076ce20a0cba03508930218f3ea02200bd2b6
-  timestamp: '2026-07-11T20:51:10Z'
-  output_hash: 244fdf5748c55fc44dad92b9ec1635361615cc640b87b7447405a82f90c57b3f
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2edf6c2bd3d6e9a16e0a63394729080f8a06cba4d118178b1ec008cd9f63cc16
+  timestamp: '2026-08-28T23:35:35Z'
+  output_hash: baecf9754b98d437cf289edd0e8554d5a27d468b69f5eaf82f086e3b5832062d
   usage:
-    prompt_tokens: 2453
-    completion_tokens: 578
-    total_tokens: 3031
-    reasoning_tokens: 247
+    prompt_tokens: 3511
+    completion_tokens: 601
+    total_tokens: 4112
+    reasoning_tokens: 175
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:18Z'
+  previous_text: From their hiding places, they shoot at a blameless person.[a] They shoot at him without warning and are not afraid.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:35Z'
+  previous_text: They hide and wait to shoot at a blameless person.[a] They attack him suddenly and are not afraid.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 18b1051eab8c069a3b1f5123957925d3d407b673929b8ed48bdc08d7bd5b016d
+  review_summary: The draft is generally clear and correctly treats the victim as an individual represented by the singular. However, “hide and wait” adds an unstated action, and “attack” loses the second occurrence of the verse’s central shooting image. Retaining “shoot” in both clauses and expressing the concealed location directly preserves the source and remains readily understandable.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

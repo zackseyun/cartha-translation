@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/019/018.yaml
-  text: Even little children despise me; when I rise[a], they speak against me.
+  text: Even young boys[a] despise me; when I rise, they speak against me.
   footnotes:
   - marker: a
-    text: Or 'fools,' 'the insolent,' or 'young boys.' The Hebrew term עֲוִילִים usually denotes foolish or morally senseless people, but in this context many understand it to refer to immature or low-status youths who mock Job.
+    text: The Hebrew term is uncertain here; it may instead mean “children,” “fools,” or “the insolent.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Even little children despise me. When I stand up, they speak against me.[a]
+  text: Even young boys[a] despise me. Whenever I stand up, they speak against me.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may also mean “fools,” “the insolent,” or “young boys.” Here it likely refers to immature or low-status youths who mock Job.
+    text: The Hebrew term is uncertain; it may instead mean “children,” “fools,” or “the insolent.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: when I rise
-  simplified_phrase: When I stand up
-  preserved_meaning: Job’s rising is the circumstance in which the hostile speech occurs.
-  reasoning_layer_used: POB lexical decision for אָקוּמָה
-  rationale: “Stand up” is clearer modern English without implying that this happens every time.
-- pob_phrase: Even little children despise me; when I rise, they speak against me.
-  simplified_phrase: Even little children despise me. When I stand up, they speak against me.
-  preserved_meaning: Job suffers both contempt and hostile speech from children.
-  reasoning_layer_used: POB translation and lexical decisions
-  rationale: Two sentences make the related complaints easier to follow while keeping them distinct.
+  simplified_phrase: Whenever I stand up
+  preserved_meaning: Each time Job gets up, hostile speech follows.
+  reasoning_layer_used: POB lexical rationale and contextual audit
+  rationale: “Whenever” conveys repetition, and “stand up” is clearer than “rise.”
+- pob_phrase: Even young boys despise me; when I rise, they speak against me.
+  simplified_phrase: Even young boys despise me. Whenever I stand up, they speak against me.
+  preserved_meaning: The two linked signs of Job’s rejection remain distinct.
+  reasoning_layer_used: POB translation and clause structure
+  rationale: Two sentences make the lament easier to follow without changing its sequence.
+interpretive_expansions:
+- pob_phrase: when I rise
+  rendering: Whenever I stand up
+  claim: The clause describes repeated occasions rather than one isolated event.
+  evidence:
+  - The POB rationale explicitly explains the clause as “whenever Job rises.”
+  confidence: high
+  alternatives_preserved:
+  - when I rise
+  - if I arise
 translation_notes:
   risk_flags:
-  - risk: “Little children” represents a difficult Hebrew term that may instead describe fools, insolent people, or young boys.
-    mitigation: The main text retains the POB choice, and the footnote preserves the lexical alternatives.
+  - risk: “Young boys” is only one possible meaning of the uncertain Hebrew term.
+    mitigation: The footnote preserves the audited lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/019/018.yaml
   source_text_sha256: 60e79a92157542f708aee5437b5921992ffa3870d6e16aaeb26c428179818f21
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: a36d56bda3ff58590990e4dbd570f183a335b70dba6f976fdce69075e2a34062
-  timestamp: '2026-07-12T09:39:34Z'
-  output_hash: 583b95af72512a8c76cf7fbb2913d297cb23bcd47a445f016a1c42dd9f334e68
+  prompt_sha256: 8f0ece6052b80819c08fe2141f7b306d0b366bfa02ff6659fcbd62172e4f7244
+  timestamp: '2026-08-28T23:34:34Z'
+  output_hash: a3e1510f7a619752cdc9ae3bed372b2d5f9f5366deeba5c5ecbb3651ecb2edb0
   usage:
-    prompt_tokens: 3003
-    completion_tokens: 326
-    total_tokens: 3329
-    reasoning_tokens: 0
+    prompt_tokens: 3180
+    completion_tokens: 452
+    total_tokens: 3632
+    reasoning_tokens: 79
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:34Z'
@@ -85,4 +94,18 @@ spob_revision_history:
   review_summary: Splitting the sentence and using “stand up” are clear, natural simplifications that preserve Job’s two related complaints. Revise “Whenever” to “When,” because the source and POB audit trail warrant a temporal connection but do not clearly warrant the added repeated-event force. The lexical footnote responsibly retains the live ambiguity of the difficult Hebrew term.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:50:15Z'
+  previous_text: Even little children despise me. When I stand up, they speak against me.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:34Z'
+  previous_text: Even young boys[a] treat me with contempt. Whenever I stand up, they speak against me.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 525cb71ce4e08fd832d14916ed2e7a2a1196a706b30b9570b5336e4f739dbb4d
+  review_summary: The rendering preserves the uncertain lexical choice through the footnote and rightly retains the hostile force of their speech. “Whenever I stand up” is warranted by the POB audit trail’s repeated-temporal explanation and is clearer than “when I rise.” Revise the first clause because “treat me with contempt” is not a meaningful readability improvement over POB’s direct “despise me.”
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

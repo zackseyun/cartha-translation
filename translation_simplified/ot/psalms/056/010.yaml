@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/056/010.yaml
-  text: In God I will praise the word[a]; in Yahweh I will praise the word.
+  text: In God, whose word I praise; in Yahweh, whose word I praise.[a]
   footnotes:
   - marker: a
-    text: Or 'promise' for 'word' in both lines; Hebrew דָּבָר can mean 'word,' 'matter,' or 'promise' depending on context.
-    reason: lexical_alternative
+    text: Or “promise” in both lines. Hebrew dabar can mean “word,” “matter,” or, in context, “promise.”
+    reason: Retains a genuine contextual lexical alternative without detaching the word from God in the main text.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,60 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'In God, I will praise his word.[a]
-
-    In Yahweh, I will praise his word.'
+  text: In God I praise his word. In Yahweh I praise his word.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “promise” instead of “word” in both lines.
+    text: Or “his promise” in both lines.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the word
+- pob_phrase: In God, whose word I praise; in Yahweh, whose word I praise.
+  simplified_phrase: In God I praise his word. In Yahweh I praise his word.
+  preserved_meaning: The psalmist praises God's word in relation to both God and Yahweh.
+  reasoning_layer_used: POB lexical decisions and applied source-audit revision
+  rationale: Two direct parallel sentences make the poetic thought easier to follow while retaining “in” and the divine name Yahweh.
+- pob_phrase: whose word
   simplified_phrase: his word
-  preserved_meaning: The word being praised is God’s spoken word, while “word” retains the documented lexical breadth.
-  reasoning_layer_used: Immediate psalm context and POB lexical decision
-  rationale: The pronoun makes the relationship clear without narrowing “word” to “promise.”
-- pob_phrase: In God I will praise ...; in Yahweh I will praise
-  simplified_phrase: In God, I will praise ... In Yahweh, I will praise
-  preserved_meaning: The repeated wording locates the speaker’s praise in relation to God without specifying trust as the phrase’s meaning.
-  reasoning_layer_used: POB lexical rationale and poetic parallelism
-  rationale: Natural punctuation clarifies both lines while preserving the broader force of “in.”
-interpretive_expansions:
-- pob_phrase: the word
-  rendering: his word
-  claim: The praised word belongs to God, who has spoken it.
-  evidence:
-  - The parallel wording and immediate psalm context connect the word with God.
-  confidence: high
-  alternatives_preserved:
-  - “Word” may carry the contextual sense “promise.”
+  preserved_meaning: The word being praised belongs to God.
+  reasoning_layer_used: POB source audit and immediate context
+  rationale: The possessive pronoun states the established referent more simply.
+- pob_phrase: Or “promise” in both lines. Hebrew dabar can mean “word,” “matter,” or, in context, “promise.”
+  simplified_phrase: Or “his promise” in both lines.
+  preserved_meaning: Promise remains a genuine contextual alternative to word.
+  reasoning_layer_used: POB lexical footnote
+  rationale: The shorter note keeps the meaningful alternative without technical detail.
 translation_notes:
   risk_flags:
-  - risk: The phrase “in God” remains less explicit than ordinary modern English usually prefers.
-    mitigation: It is retained because specifying “trusting in” would erase the Hebrew phrase’s broader relational force.
+  - risk: The phrase “In God” remains less ordinary than everyday English.
+    mitigation: It is retained because the POB audit treats the relational wording as source-significant.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/056/010.yaml
   source_text_sha256: a6fa6f9330d451edeb99638bccb56a7cee6f5ec0eb7751d0ccb3de65e8ff09d9
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7cfcfaa18376eb6d207fb63a6d6bdccb46a1c6d9b0198286e734605f8cdab92c
-  timestamp: '2026-07-12T09:59:58Z'
-  output_hash: 7f47fd589bcf6a7379269e216e2dacda0568a416008381ba8bbdac6abcda4703
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 09dddaf0685c9f3422bedfe2bea4b141fcd5cb94d23e68cb596511b34f3a7cb5
+  timestamp: '2026-08-28T22:56:11Z'
+  output_hash: c0979906ec146ca18aa1041dc90eaa16adaad45956431597b81722dc49b01114
   usage:
-    prompt_tokens: 3230
-    completion_tokens: 509
-    total_tokens: 3739
-    reasoning_tokens: 111
+    prompt_tokens: 2573
+    completion_tokens: 894
+    total_tokens: 3467
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:58Z'
   previous_text: Trusting in God, I will praise his word.[a] Trusting in Yahweh, I will praise his word.
@@ -95,3 +88,10 @@ spob_revision_history:
   review_summary: The draft helpfully identifies the praised word as God’s word, a clarification supported by the closely parallel wording in Psalm 56:4. However, replacing the repeated relational “in God / in Yahweh” with “Trusting in” turns a strongly contextual association into the asserted meaning of this phrase. Retain the broader wording while preserving the useful pronoun clarification and the lexical footnote.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:11Z'
+  previous_text: 'In God, I will praise his word.[a]
+
+    In Yahweh, I will praise his word.'
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

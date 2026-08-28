@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/026.yaml
-  text: He sent Moses his servant[a], Aaron whom he had chosen.
-  footnotes:
-  - marker: a
-    text: Or 'he chose.' The Hebrew verb may be rendered as a simple past; 'had chosen' makes explicit that Aaron's choosing preceded his being sent.
-    reason: lexical_alternative
+  text: He sent Moses his servant, Aaron whom he chose.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,45 +27,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He sent his servant Moses together with Aaron, whom he had already chosen.[a]
+  text: He sent Moses, his servant, and Aaron, whom he chose.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “whom he chose.” The Hebrew can use the simple past, but “had already chosen” shows that Aaron was chosen before he was sent.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: He sent Moses his servant, Aaron
-  simplified_phrase: He sent his servant Moses together with Aaron
-  preserved_meaning: God sent both Moses and Aaron, while Moses is identified as his servant.
-  reasoning_layer_used: POB syntax and lexical decisions
-  rationale: “Together with” makes the compact Hebrew list natural and clear in English.
-- pob_phrase: whom he had chosen
-  simplified_phrase: whom he had already chosen
-  preserved_meaning: God chose Aaron before sending him.
-  reasoning_layer_used: POB lexical decision and footnote
-  rationale: “Already” makes the intended time relationship immediately clear.
+- pob_phrase: Moses his servant, Aaron whom he chose
+  simplified_phrase: Moses, his servant, and Aaron, whom he chose
+  preserved_meaning: God sent both Moses, who is called his servant, and Aaron, whom he chose.
+  reasoning_layer_used: Hebrew syntax, lexical decisions, and immediate context
+  rationale: Adding simple coordination makes both men objects of “sent” without implying that either one was subordinate to the other.
 translation_notes:
   risk_flags:
-  - risk: “Together with” explicitly links Moses and Aaron although Hebrew places their names side by side.
-    mitigation: The POB syntax already presents both men as objects of “sent.”
+  - risk: The pronoun “He” does not name its subject within this verse.
+    mitigation: It preserves the Hebrew discourse flow, while the surrounding context identifies God as the one who sent them.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/026.yaml
   source_text_sha256: 1a48cef7b03d4cb19098963d48f8a6ef23ffe74286cb992e329d9357e67e9258
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ad1557042918f76d5e7d45a323024163eacb9ede4506b0faf9dc9fa3095a581c
-  timestamp: '2026-07-11T21:02:30Z'
-  output_hash: 2fdb741f91e5f1a63982584b5c4720f9599d2233b227c1102d10ccf7e3830581
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9576e20147b70e00dec8a7edf5826bd29c6f7ce266fcd50e5675e74d6fff99f1
+  timestamp: '2026-08-28T23:36:00Z'
+  output_hash: b27715b02c996d417e347d87536da9cb30f9f2b57401a579800e3966f831f46a
   usage:
-    prompt_tokens: 2313
-    completion_tokens: 769
-    total_tokens: 3082
-    reasoning_tokens: 471
+    prompt_tokens: 3013
+    completion_tokens: 255
+    total_tokens: 3268
+    reasoning_tokens: 44
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:55Z'
+  previous_text: He sent his servant Moses together with Aaron, whom he had already chosen.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:00Z'
+  previous_text: He sent his servant Moses, together with Aaron, whom he chose.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: ad7dbf9adbb82ca9a2e4396f4539e0d33ad0065ed5a926c39fc01ac2b19f102c
+  review_summary: The draft helpfully clarifies that both Moses and Aaron are governed by “sent” and preserves Moses as God’s servant and Aaron as chosen. However, “together with” adds a slight asymmetry not marked by the Hebrew. Simple coordination is equally clear and more faithful to the parallel presentation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

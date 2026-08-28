@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/007/021.yaml
-  text: Also[a], do not give your heart to every word that is spoken[b], lest you hear your servant cursing you.
+  text: Also, do not take to heart everything people say[a], lest you hear your servant[b] cursing you.
   footnotes:
   - marker: a
-    text: Or 'do not take to heart everything that is said.' The Hebrew literally reads 'do not give your heart to every word that they speak.'
-    reason: lexical_alternative
+    text: 'Hebrew: “do not give your heart to every word that they speak.”'
+    reason: literal_rendering
   - marker: b
-    text: '''Your servant'' may also be rendered ''your slave''; the Hebrew עֶבֶד can refer to either, depending on context.'
+    text: Or “slave.” The Hebrew עֶבֶד can refer to a servant or a slave, depending on the context.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Ecclesiastes 7:21 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''to every word that people speak''].'
 translation:
   language: en
-  text: Also, do not take every word people say to heart, or you may hear your servant[a] cursing you.
+  text: Also, do not pay attention to everything people say. Otherwise, you will hear your servant[a] curse you.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word can mean “servant” or “slave.”
+    text: Or “slave.” The Hebrew word can mean either a servant or a slave, depending on the context.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: do not give your heart to every word that is spoken
-  simplified_phrase: do not take every word people say to heart
-  preserved_meaning: Do not direct inward attention or concern toward everything people say.
-  reasoning_layer_used: POB lexical decisions for the Hebrew heart idiom and indefinite speakers
-  rationale: The familiar phrase “take to heart” keeps the heart image while making the warning immediately clear.
-- pob_phrase: lest you hear
-  simplified_phrase: or you may hear
-  preserved_meaning: Taking every remark seriously may expose you to an upsetting insult.
-  reasoning_layer_used: POB lexical decision for the undesirable-result clause
-  rationale: “Or you may” expresses the warning in ordinary modern English.
+- pob_phrase: do not take to heart everything people say
+  simplified_phrase: do not pay attention to everything people say
+  preserved_meaning: Do not give heed to every comment people make.
+  reasoning_layer_used: POB lexical decision for אַל תִּתֵּן לִבֶּךָ
+  rationale: “Pay attention” clearly expresses the Hebrew heart idiom in this context.
+- pob_phrase: lest you hear your servant cursing you
+  simplified_phrase: Otherwise, you will hear your servant curse you
+  preserved_meaning: Listening to every comment can result in hearing a subordinate curse you.
+  reasoning_layer_used: POB lexical decisions for אֲשֶׁר לֹא תִשְׁמַע and מְקַלְלֶךָ
+  rationale: “Otherwise” preserves the adverse warning without the uncommon word “lest.”
 translation_notes:
   risk_flags:
-  - risk: “Servant” may sound less restrictive than the Hebrew term can be.
-    mitigation: A footnote preserves “slave” as a possible lexical alternative.
+  - risk: “Pay attention” does not directly retain the Hebrew heart image.
+    mitigation: The POB lexical rationale explicitly supports this clear contextual equivalent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/007/021.yaml
   source_text_sha256: dea7a0c0a42b81fd4a0158e05b1ec2c741464eca50536786929b85ea7691adeb
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 93f55137c81ca2e7d0ec7a7180b0a5ea478224ffed24ab0453743fba5fee3e71
-  timestamp: '2026-07-11T21:24:41Z'
-  output_hash: 422c6512db99f048c11d06ef4d8500125e8a17944c0ce97fa114ef607f6f9317
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8168057e7e73f2dbd702e0d124e80f9997f539d0c4be7a5bd9a98e8beb2bb1a1
+  timestamp: '2026-08-28T23:32:38Z'
+  output_hash: a9eb21cc443bd4ab3771ed28d3c212b916790a0fb2f99fbd781db045c5eb825d
   usage:
-    prompt_tokens: 2864
-    completion_tokens: 470
-    total_tokens: 3334
-    reasoning_tokens: 169
+    prompt_tokens: 3853
+    completion_tokens: 571
+    total_tokens: 4424
+    reasoning_tokens: 231
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:08:33Z'
+  previous_text: Also, do not take every word people say to heart, or you may hear your servant[a] cursing you.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:38Z'
+  previous_text: Also, do not take everything people say to heart, so you do not hear your servant[a] curse you.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 0667e7c1b4882ff1c4b9de0d66fb56a226c6a6b8c8f1d7e653b8fe80e882992b
+  review_summary: Revise the result clause so it communicates the Hebrew caution (“otherwise/lest”) rather than making avoidance of hearing sound like the command’s purpose. “Pay attention” is a warranted, clearer contextual rendering of the heart idiom and better connects the command with overhearing the servant’s curse. Retain the existing lexical-alternative footnote for “servant.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

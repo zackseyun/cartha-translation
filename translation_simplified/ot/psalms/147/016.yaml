@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/147/016.yaml
-  text: He gives snow like wool[a]; he scatters frost like ashes.
+  text: He gives snow like wool; he scatters frost[a] like ashes.
   footnotes:
   - marker: a
-    text: Or 'hoarfrost' for 'frost.'
+    text: Or 'hoarfrost.'
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,53 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He gives snow like wool; he scatters frost[a] like ashes.
+  text: God gives snow like wool. He scatters frost[a] like ashes.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “hoarfrost,” a white frost that forms on surfaces.
+    text: Or “hoarfrost.”
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: He gives snow like wool
+  simplified_phrase: God gives snow like wool
+  preserved_meaning: God is the one who continually gives the snow.
+  reasoning_layer_used: Immediate hymnic context and POB lexical rationale for הַנֹּתֵן
+  rationale: Naming God clarifies the pronoun without narrowing the poetic image.
 - pob_phrase: He gives snow like wool; he scatters frost like ashes.
-  simplified_phrase: He gives snow like wool; he scatters frost like ashes.
-  preserved_meaning: God gives snow and disperses frost, with both poetic comparisons intact.
-  reasoning_layer_used: POB lexical decisions for הַנֹּתֵן, כַּצָּמֶר, יְפַזֵּר, and כָּאֵפֶר
-  rationale: The POB wording is already clear and avoids adding an unstated object or action.
+  simplified_phrase: God gives snow like wool. He scatters frost like ashes.
+  preserved_meaning: God's two ongoing actions and both Hebrew similes remain distinct.
+  reasoning_layer_used: POB syntax and lexical decisions for both comparisons
+  rationale: Two short sentences make the parallel images easier to follow.
+interpretive_expansions:
+- pob_phrase: He
+  rendering: God
+  claim: The pronoun refers to God.
+  evidence:
+  - The surrounding hymn names the LORD as the actor whose commands govern nature.
+  confidence: high
 translation_notes:
   risk_flags:
-  - risk: Modern readers may not know the more specific term “hoarfrost.”
-    mitigation: The main text uses familiar “frost,” while the footnote preserves and briefly defines the lexical alternative.
+  - risk: The wool comparison may suggest whiteness, softness, or covering.
+    mitigation: The translation retains the open-ended simile without adding a location or mechanism.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/147/016.yaml
   source_text_sha256: 2d8d9a7ff23065eef8509a59525b64e8306fd7a435bf559e7cfe75c2019c8ed3
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: e518a814749516f8aeab72763cc192976299133c438251e8cbf15ac5efae9139
-  timestamp: '2026-07-12T10:03:45Z'
-  output_hash: e59771536af4a11e78d8ddf0596195d5a1538a400273558921ef64fd3e6d0005
+  prompt_sha256: 2d5b6f65fcf6e48d68be1071e4059c5552edc254e2b505fb8ac068f6031bd254
+  timestamp: '2026-08-28T23:36:27Z'
+  output_hash: 4cc10a39544d8d7065415c1a6a917abd1710487bea30edceba3db56f69582047
   usage:
-    prompt_tokens: 3223
-    completion_tokens: 259
-    total_tokens: 3482
-    reasoning_tokens: 0
+    prompt_tokens: 3182
+    completion_tokens: 474
+    total_tokens: 3656
+    reasoning_tokens: 131
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: He gives snow like wool
-  rendering: He covers the earth with snow like wool
-  claim: The snow is presented as a woollike covering over the earth.
-  evidence:
-  - The lexical rationale identifies a soft white covering in the wool comparison.
-  - The surrounding line portrays God broadly distributing frost.
-  confidence: high
-  alternatives_preserved:
-  - He gives snow like wool
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:45Z'
@@ -89,4 +91,18 @@ spob_revision_history:
   review_summary: The draft improves concreteness, but its main clarification overstates one possible implication of the wool comparison. The source and POB rationale support retaining the poetic image, not asserting that the verse specifically says God covers the earth. Keeping “gives” and “scatters” preserves the source actions and leaves the simile’s rich force open. The revised footnote retains the helpful lexical clarification with a more accurate definition.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:48Z'
+  previous_text: He gives snow like wool; he scatters frost[a] like ashes.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:27Z'
+  previous_text: God lays snow over the ground like wool. He scatters frost[a] across it like ashes.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5db7a02329c237b06e459c8e7c14df28b2af7cd85c7b0a2364fd80f4b5847a6d
+  review_summary: Identifying “He” as God improves accessibility in this hymnic context. However, the added ground-covering scene is not sufficiently warranted as the verse’s stated meaning and narrows the poetic simile. Retain the explicit subject while preserving the source’s broader imagery.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

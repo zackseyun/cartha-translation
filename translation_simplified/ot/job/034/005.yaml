@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/034/005.yaml
-  text: For Job has said[a], ‘I am in the right, and God has taken away my justice.’
+  text: For Job has said, “I am in the right, and God has taken away my right.”[a]
   footnotes:
   - marker: a
-    text: Or “my right” or “the justice due me.”
+    text: Or “has denied me the justice due me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,40 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For Job has said, “I am in the right, and God has deprived me of justice.”[a]
+  text: For Job has said, “I am right in my case, and God has taken away the justice due to me.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “taken away my right” or “taken away the justice due me.”
+    text: Or “has denied me the justice due me.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: God has taken away my justice
-  simplified_phrase: God has deprived me of justice
-  preserved_meaning: Job claims that God has withheld the justice or legal right owed to him.
-  reasoning_layer_used: POB lexical and theological decisions for מִשְׁפָּטִי
-  rationale: The recasting is natural English while preserving the term’s legal and moral force.
+- pob_phrase: I am in the right
+  simplified_phrase: I am right in my case
+  preserved_meaning: Job claims to be right in his dispute, not morally perfect.
+  reasoning_layer_used: POB lexical and theological decisions on צָדַקְתִּי
+  rationale: The added case language makes the forensic setting clear.
+- pob_phrase: God has taken away my right
+  simplified_phrase: God has taken away the justice due to me
+  preserved_meaning: Job claims that God has deprived him of the just treatment owed to him.
+  reasoning_layer_used: POB lexical decision and applied revision on מִשְׁפָּטִי
+  rationale: This natural wording explains “my right” while retaining the image of removal.
+interpretive_expansions:
+- pob_phrase: I am in the right
+  rendering: I am right in my case
+  claim: Job’s statement concerns his standing in the dispute before God.
+  evidence:
+  - The POB theological decision limits the claim to Job’s case rather than moral perfection.
+  - The chapter context presents Elihu’s summary of Job’s argument.
+  confidence: high
+  alternatives_preserved:
+  - I am in the right
+  - I am righteous
 translation_notes:
   risk_flags:
-  - risk: “Deprived me of justice” may sound narrower than the Hebrew term’s range.
-    mitigation: The footnote preserves the alternatives “my right” and “the justice due me.”
+  - risk: “The justice due to me” could sound like the narrator endorses Job’s claim.
+    mitigation: The reporting frame clearly attributes the claim to Job.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/034/005.yaml
   source_text_sha256: 386970205c951e4770df4dfd8c4507f22049de4c6b6208e51de19eeeba5392ef
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0c680219b68d7cd6323d8f4eed879f0affc4a47b961a7380f54b425e130f787f
-  timestamp: '2026-07-11T20:25:16Z'
-  output_hash: 49b4016e456f6893b5198767e6fdcd932566c74bcfb432cb28eed34a721acf6d
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1d94a18c70211eb72ae669603621fac0c8c9b428ecfe174e85c947c5e0c11f3c
+  timestamp: '2026-08-28T23:34:56Z'
+  output_hash: 0b0b2ff91e2aa80d90f027b1975c92a1feda06eb9aaeac3ab92e775d67b80fe5
   usage:
-    prompt_tokens: 2650
-    completion_tokens: 523
-    total_tokens: 3173
-    reasoning_tokens: 281
+    prompt_tokens: 3579
+    completion_tokens: 471
+    total_tokens: 4050
+    reasoning_tokens: 64
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:55Z'
+  previous_text: For Job has said, “I am in the right, and God has deprived me of justice.”[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:56Z'
+  previous_text: For Job has said, “I am right in my case, and God has taken away the justice I am due.”[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 50efed85ce388f1440644e1c09c23dafb2bed432f1380ce0e9d749abadf4cc7c
+  review_summary: The clarification “I am right in my case” is warranted by the forensic/disputational sense identified in the POB audit and makes clear that Elihu is summarizing Job’s claim in this dispute, not necessarily a claim of moral perfection. “The justice due to me” likewise appropriately explains “my right” in the immediate legal context and preserves Job’s attributed accusation against God. Revise only the awkward possessive construction for publication-ready English.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

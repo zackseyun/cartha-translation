@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/029/016.yaml
-  text: I was a father to the poor[a], and I investigated the case of one I did not know.
+  text: I was a father to the poor, and I investigated a case unfamiliar to me[a].
   footnotes:
   - marker: a
-    text: Or, 'I searched out the dispute of one I did not know.'
-    reason: lexical_alternative
+    text: Or “I investigated the case of someone I did not know.” The Hebrew can refer either to an unfamiliar case or to a stranger’s case.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,51 +31,76 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I cared for the poor like a father. I investigated the case of someone I did not know.
+  text: I cared for the poor like a father, and I investigated a case I did not know about.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “I investigated the case of someone I did not know.” The Hebrew may refer either to an unfamiliar case or to a stranger’s case.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: I was a father to the poor
   simplified_phrase: I cared for the poor like a father
-  preserved_meaning: Job gave the poor the protective care a father gives while retaining the father image.
+  preserved_meaning: Job gave the poor the protective care of a father.
   reasoning_layer_used: POB lexical decision for אָב
-  rationale: The simile makes the metaphor immediately clear without replacing its biblical image.
-- pob_phrase: and I investigated the case of one I did not know
-  simplified_phrase: I investigated the case of someone I did not know
-  preserved_meaning: Job deliberately examined a legal or social case involving a stranger.
-  reasoning_layer_used: POB lexical decisions for רִיב, לֹא יָדַעְתִּי, and אֶחְקְרֵהוּ
-  rationale: “Someone” is more natural than “one” in common modern English.
+  rationale: The wording explains the metaphor while preserving the father image.
+- pob_phrase: a case unfamiliar to me
+  simplified_phrase: a case I did not know about
+  preserved_meaning: Job investigated a legal matter about which he had no prior knowledge.
+  reasoning_layer_used: POB source audit for וְרִיב לֹא יָדַעְתִּי
+  rationale: The rewrite uses ordinary English without broadening the scope or adding an owner to the case.
 interpretive_expansions:
-- pob_phrase: I was a father to the poor
-  rendering: I cared for the poor like a father
-  claim: The father language describes Job’s protective care rather than biological parenthood.
+- pob_phrase: a father to the poor
+  rendering: cared for the poor like a father
+  claim: The father metaphor describes protective care for the poor.
   evidence:
-  - The POB lexical rationale identifies “father” as a metaphor for protective care and advocacy.
-  - The immediate clause concerns Job’s conduct toward the poor.
+  - The POB lexical rationale identifies protective care and advocacy as the metaphor’s force.
   confidence: high
   alternatives_preserved:
-  - The concrete father image remains in the text.
+  - father as protector
+  - father as advocate
 translation_notes:
   risk_flags:
-  - risk: “Cared for” may sound broader and less judicial than the surrounding context.
-    mitigation: The next sentence retains Job’s specific investigation of another person’s case.
+  - risk: The Hebrew may describe either an unfamiliar case or the case of an unknown person.
+    mitigation: The main text follows the audited POB reading, while the footnote preserves the personal-reference reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/029/016.yaml
   source_text_sha256: a2f76c76f95e14f5b042d6741916d5eb910f4e60ebbedb767707b8aa83903598
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 11bc96f9f348361723df7dddbc20f8a12ebaeaf3f8432b238237738677e28036
-  timestamp: '2026-07-11T20:04:33Z'
-  output_hash: af18bfa5a35ed0453b7e4353cc03e9c2f15a134bc4ea10c63519490f38639fbe
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 412d4b69fdc7e33134be49e6a87ac67f97880edaf253542575fa8b4e970d79ca
+  timestamp: '2026-08-28T23:34:47Z'
+  output_hash: 8a1c294c1eaa42bfaecaede9722570ec0c3da08e1c260501c20c388a5c54cf7a
   usage:
-    prompt_tokens: 2339
-    completion_tokens: 912
-    total_tokens: 3251
-    reasoning_tokens: 512
+    prompt_tokens: 3394
+    completion_tokens: 486
+    total_tokens: 3880
+    reasoning_tokens: 79
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:56Z'
+  previous_text: I cared for the poor like a father. I investigated the case of someone I did not know.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:55:08Z'
+  previous_text: I cared for the poor like a father. I also investigated cases I did not already know about.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:47Z'
+  previous_text: I cared for the poor like a father, and I carefully investigated any case I did not already know about.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 62aef9fd706927d89c42afd9a20cf15895dc90d849f539c033bdc140d137d60e
+  review_summary: The father simile is a warranted, clearer explanation of Job’s protective care for poor people and retains the image. The footnote appropriately preserves the live ambiguity that the unknown referent may be a person rather than a case. Revise the second clause to remove “carefully” and “any,” which add manner and unrestricted scope beyond the audited wording, while keeping the clear everyday-English sense.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

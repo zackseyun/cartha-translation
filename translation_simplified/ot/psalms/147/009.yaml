@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/147/009.yaml
-  text: He gives food to the animals[a][b], and to the young ravens that cry out.
+  text: He gives food to the animals, and to the young ravens that cry out[a].
   footnotes:
   - marker: a
-    text: Hebrew 'that call'; the text does not explicitly state the one to whom they cry out.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'to the raven's young' or more literally 'to the sons of the raven.'
-    reason: lexical_alternative
+    text: Hebrew “that call”; the text does not state to whom they cry out.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,38 +31,43 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He gives animals their food, including young ravens that cry out.
+  text: He feeds the animals and the young ravens that cry out.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew does not say whom the young ravens cry out to.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: He gives food to the animals, and to the young ravens that cry out.
-  simplified_phrase: He gives animals their food, including young ravens that cry out.
-  preserved_meaning: God regularly provides food for animals, including young ravens characterized by their cries.
-  reasoning_layer_used: POB lexical decisions and theological decision
-  rationale: The natural recasting keeps the ravens’ cry descriptive and leaves its addressee unstated.
-translation_notes: {}
+- pob_phrase: He gives food to the animals
+  simplified_phrase: He feeds the animals
+  preserved_meaning: God habitually provides animals with food.
+  reasoning_layer_used: POB lexical decisions for נוֹתֵן, לִבְהֵמָה, and לַחְמָהּ
+  rationale: The direct verb “feeds” expresses “gives food” in simpler natural English.
+translation_notes:
+  risk_flags:
+  - risk: Readers may assume the ravens cry specifically to God.
+    mitigation: The footnote preserves the Hebrew text’s unstated addressee.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/147/009.yaml
   source_text_sha256: a4a78115616c430843ab6d0912d8949b355d6ccdc49fcd7c4382032936a5967f
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: df24408508a21f54192b1e0c0e66f0e60f5b529c32bb6716641b83a8e6644874
-  timestamp: '2026-07-12T10:03:43Z'
-  output_hash: 764251850bf5e6c90fd736e7f19bd422006901531ed67630a782b025da98c980
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: f91355125886787f34928eb2b95d101476c2ef28217bf81e1faa5406f7532ae7
+  timestamp: '2026-08-28T23:00:38Z'
+  output_hash: 4448c08c3d4d8c37dbde49004ff8dc464d6258f078e6e9a562c568ba22d951b5
   usage:
-    prompt_tokens: 2970
-    completion_tokens: 164
-    total_tokens: 3134
-    reasoning_tokens: 0
+    prompt_tokens: 2546
+    completion_tokens: 373
+    total_tokens: 2919
+    reasoning_tokens: 149
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:43Z'
   previous_text: He gives animals their food and feeds young ravens when they cry out.
@@ -77,3 +79,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:00:38Z'
+  previous_text: He gives animals their food, including young ravens that cry out.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

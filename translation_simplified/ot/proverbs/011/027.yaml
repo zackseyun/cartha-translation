@@ -11,17 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/011/027.yaml
-  text: Whoever diligently seeks good seeks favor[c][b][a], but evil comes to the one who searches for it.
+  text: Whoever diligently seeks good seeks favor[a], but whoever seeks evil—it will come upon him.
   footnotes:
   - marker: a
-    text: Or 'seeks early for good'; the Hebrew verb can carry the sense of earnest or early seeking.
-    reason: lexical_alternative
-  - marker: b
-    text: '''Favor'' may refer broadly to acceptance or goodwill, whether from God, from people, or both.'
-    reason: lexical_alternative
-  - marker: c
-    text: Or 'evil will come upon him.'
-    reason: lexical_alternative
+    text: “Favor” may mean acceptance or goodwill from God, from people, or from both; the Hebrew does not specify.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,50 +31,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Whoever earnestly looks for what is good seeks favor.[a] But evil will come to whoever looks for it.
+  text: Anyone who eagerly looks for what is good is seeking favor.[a] But anyone who looks for evil will have that same evil come upon them.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: This may mean favor from God, from people, or both.
+    text: “Favor” may mean acceptance or goodwill from God, from people, or from both; the Hebrew does not specify.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: diligently seeks good
-  simplified_phrase: earnestly looks for what is good
-  preserved_meaning: The person actively and seriously pursues good.
-  reasoning_layer_used: POB lexical decisions for שֹׁחֵר and טוֹב
-  rationale: This makes both the intensity of the search and its object immediately clear.
-- pob_phrase: evil comes to the one who searches for it
-  simplified_phrase: evil will come to whoever looks for it
-  preserved_meaning: The evil a person pursues comes back upon that person.
-  reasoning_layer_used: POB lexical decisions for וְדֹרֵשׁ, רָעָה, and תְבוֹאֶנּוּ
-  rationale: The direct wording preserves the image of evil coming to the person who seeks it.
+- pob_phrase: Whoever diligently seeks good
+  simplified_phrase: Anyone who eagerly looks for what is good
+  preserved_meaning: The person earnestly pursues good rather than merely noticing it.
+  reasoning_layer_used: Lexical decision for שֹׁחֵר and טוֹב
+  rationale: “Eagerly looks for what is good” expresses the intensive search in familiar English.
+- pob_phrase: but whoever seeks evil—it will come upon him
+  simplified_phrase: But anyone who looks for evil will have that same evil come upon them
+  preserved_meaning: The evil being sought returns upon its seeker.
+  reasoning_layer_used: Source audit and applied revision
+  rationale: The wording identifies evil as both the object sought and what comes upon the seeker.
+interpretive_expansions:
+- pob_phrase: it will come upon him
+  rendering: that same evil come upon them
+  claim: The pronoun refers back to the evil the person seeks.
+  evidence:
+  - The Hebrew suffix follows רָעָה, “evil.”
+  - The POB source audit requires evil to remain the subject of the consequence.
+  confidence: high
+  alternatives_preserved:
+  - it will come upon him
+  - evil will come upon that person
 translation_notes:
   risk_flags:
-  - risk: “Evil” can refer both to wrongdoing and to the harm that follows it.
-    mitigation: The broad term is retained in both clauses to preserve the Hebrew range and wordplay.
+  - risk: Readers may assume that “favor” comes only from God or only from people.
+    mitigation: The footnote preserves the Hebrew’s unspecified source of favor.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/011/027.yaml
   source_text_sha256: 321beb2b4ba40effd27260b55bde310e14225a36831392cf79b5ea94ecc7a2bb
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: ebea7ac96f017ee1cfee60faf3c909f7de423121b647447f8c214bba212db3dc
-  timestamp: '2026-07-12T09:52:01Z'
-  output_hash: ac9ad9fe51d74d15446ad154d479f0c983957730cb47ab32c76820c5acdf7190
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 452f399b1e524792c6960882f613d4090d404d971ba9669ea34ccfbf7e79897b
+  timestamp: '2026-08-28T23:05:12Z'
+  output_hash: 5b34152ee2ceac02ce1c0e5980c5d6dc78f52c45c04176524a340bfe6bd506cd
   usage:
-    prompt_tokens: 3430
-    completion_tokens: 324
-    total_tokens: 3754
-    reasoning_tokens: 0
+    prompt_tokens: 2856
+    completion_tokens: 822
+    total_tokens: 3678
+    reasoning_tokens: 401
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:01Z'
   previous_text: Whoever earnestly looks for what is good also seeks favor.[a] But whoever looks for evil will have evil come to them.
@@ -92,3 +95,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:05:12Z'
+  previous_text: Whoever earnestly looks for what is good seeks favor.[a] But evil will come to whoever looks for it.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

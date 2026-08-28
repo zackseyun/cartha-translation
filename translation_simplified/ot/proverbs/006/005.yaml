@@ -11,17 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/006/005.yaml
-  text: Rescue yourself like a gazelle from the hand[c][b][a], and like a bird from the hand of the fowler.
+  text: Rescue yourself like a gazelle from the hand[a], and like a bird from the hand of the trapper.
   footnotes:
   - marker: a
-    text: Or 'Deliver yourself' or 'Escape.' The Hebrew imperative carries the sense of urgently getting free.
-    reason: lexical_alternative
-  - marker: b
-    text: '''Gazelle'' may also be rendered ''deer'' or traditionally ''roe.'''
-    reason: lexical_alternative
-  - marker: c
-    text: Or 'from the hand of the trapper.' The Hebrew names the person who sets snares.
-    reason: lexical_alternative
+    text: The Hebrew leaves unstated whose hand the gazelle escapes; the parallel line names the bird’s trapper.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,41 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Rescue yourself as a gazelle escapes from someone’s grasp, and as a bird escapes from a trapper’s hand.
+  text: Get yourself free, like a gazelle escaping from someone’s hand[a] and a bird escaping from a trapper’s hand.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew does not say whose hand the gazelle escapes from; the second image names the bird’s trapper.
+    reason: source_note
 simplification_decisions:
+- pob_phrase: Rescue yourself
+  simplified_phrase: Get yourself free
+  preserved_meaning: The command urges the listener to act urgently to escape another’s control.
+  reasoning_layer_used: POB lexical decision for הִנָּצֵל
+  rationale: This uses ordinary English while preserving the reflexive command.
 - pob_phrase: like a gazelle from the hand
-  simplified_phrase: as a gazelle escapes from someone’s grasp
-  preserved_meaning: The gazelle vividly portrays urgent escape from another’s control.
-  reasoning_layer_used: POB lexical decisions for כִּצְבִי and מִיָּד
-  rationale: The active clause makes the image natural while “grasp” preserves the idiomatic force of “hand.”
-- pob_phrase: like a bird from the hand of the fowler
-  simplified_phrase: as a bird escapes from a trapper’s hand
-  preserved_meaning: The bird gets free from the person who sets snares.
+  simplified_phrase: like a gazelle escaping from someone’s hand
+  preserved_meaning: The gazelle gets away from an unidentified person’s grasp or control.
+  reasoning_layer_used: POB lexical decision and ambiguity footnote for מִיָּד
+  rationale: Adding “escaping” completes the comparison without identifying whose hand it is.
+- pob_phrase: and like a bird from the hand of the trapper
+  simplified_phrase: and a bird escaping from a trapper’s hand
+  preserved_meaning: The second image portrays a bird getting free from the person who traps it.
   reasoning_layer_used: POB lexical decision for מִיַּד יָקוּשׁ
-  rationale: “Trapper” replaces the unfamiliar “fowler” without changing the agent or hunting image.
+  rationale: The recast clause removes repetition while retaining the trapper and hand image.
+interpretive_expansions:
+- pob_phrase: from the hand
+  rendering: escaping from someone’s hand
+  claim: The unstated hand belongs to an unidentified person from whose control the gazelle escapes.
+  evidence:
+  - The Hebrew leaves the possessor unstated while using “hand” as the point of escape.
+  - The parallel line explicitly names the bird’s trapper.
+  confidence: high
+  alternatives_preserved:
+  - The hand’s owner remains unidentified.
+  - “Hand” may suggest either literal grasp or control.
 translation_notes:
   risk_flags:
-  - risk: “Grasp” does not retain the first occurrence of the literal hand image.
-    mitigation: The second comparison keeps “hand,” while “grasp” clearly conveys the documented sense of control.
+  - risk: “Someone’s” could sound more specific than the Hebrew’s unstated possessor.
+    mitigation: The footnote states that the Hebrew does not identify whose hand it is.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/006/005.yaml
   source_text_sha256: 4fdcf43df3422769c4f30599c6fe9c073fdae00fede022a4f145d0005376f2c2
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: f002640cbab386697cc5d6ef3c8ad1babab1136a0f3bc86d9fec1f5bbc46beb6
-  timestamp: '2026-07-11T21:07:44Z'
-  output_hash: 4df718de65aefe68533bea92d39c6d425f7b4dad801d9d172bcf96af60f313b6
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 07dc08e0286ab2d0ac0e0d97f3f491d51d16c410a7217702136a0b9adc37754e
+  timestamp: '2026-08-28T23:01:14Z'
+  output_hash: 5a35314b3bfc10a523e375c09199229267adbf99eb3ecbeafdef7c0af34b956a
   usage:
-    prompt_tokens: 2401
-    completion_tokens: 905
-    total_tokens: 3306
-    reasoning_tokens: 585
+    prompt_tokens: 2499
+    completion_tokens: 990
+    total_tokens: 3489
+    reasoning_tokens: 479
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:14Z'
+  previous_text: Rescue yourself as a gazelle escapes from someone’s grasp, and as a bird escapes from a trapper’s hand.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

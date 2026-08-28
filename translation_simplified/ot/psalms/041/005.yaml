@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/041/005.yaml
-  text: 'My enemies say evil against me: “When will he die and his name perish?”[a][b]'
+  text: 'My enemies speak evil about me[a]: “When will he die and his name perish?”[b]'
   footnotes:
   - marker: a
-    text: Or 'say harmful things about me.' The Hebrew phrase literally speaks of saying 'evil' toward the psalmist.
-    reason: lexical_alternative
+    text: Hebrew “speak evil concerning me.”
+    reason: literal_form
   - marker: b
-    text: '''His name perish'' can imply the end of his reputation or remembrance, not only the loss of the spoken name.'
+    text: The perishing of his name implies the loss of his reputation or remembrance.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,52 +34,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My enemies say harmful things about me. They ask, “When will he die and his name be forgotten?”
+  text: 'My enemies say evil things about me: “When will he die and his name vanish?”[a]'
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: His name vanishing means that his reputation or memory of him would be lost.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: say evil against me
-  simplified_phrase: say harmful things about me
-  preserved_meaning: The enemies speak with malicious intent against the psalmist.
-  reasoning_layer_used: POB lexical decision and footnote a
-  rationale: The approved lexical alternative expresses the hostile speech in natural modern English.
-- pob_phrase: “When will he die and his name perish?”
-  simplified_phrase: They ask, “When will he die and his name be forgotten?”
-  preserved_meaning: The enemies want both his death and the end of his name and remembrance.
-  reasoning_layer_used: POB lexical decision and footnote b
-  rationale: A separate reporting sentence clarifies the quotation while keeping its two hostile wishes.
-interpretive_expansions:
+- pob_phrase: speak evil about me
+  simplified_phrase: say evil things about me
+  preserved_meaning: The enemies speak harmful, hostile words about the psalmist.
+  reasoning_layer_used: POB lexical decision and source audit for יֹאמְרוּ רַע לִי
+  rationale: The concrete wording is easier to understand without reducing evil to merely an angry manner.
 - pob_phrase: his name perish
-  rendering: his name be forgotten
-  claim: The loss of his name includes the end of remembrance after his death.
-  evidence:
-  - POB footnote b says the phrase can imply the end of reputation or remembrance.
-  - The POB lexical rationale notes that “name” often implies reputation or remembrance.
-  confidence: high
-  alternatives_preserved:
-  - the end of his reputation
-  - his name disappear
+  simplified_phrase: his name vanish
+  preserved_meaning: The enemies want his name, reputation, or remembrance to disappear.
+  reasoning_layer_used: POB lexical decision and footnote for וְאָבַד שְׁמוֹ
+  rationale: “Vanish” is natural English while preserving the Hebrew image of the person’s name disappearing.
 translation_notes:
   risk_flags:
-  - risk: “Be forgotten” foregrounds remembrance more than the broader idea of reputation.
-    mitigation: The wording retains “his name” and does not exclude the loss of reputation.
+  - risk: Modern readers may take “name” as only a label rather than reputation or remembrance.
+    mitigation: The footnote explains the image without choosing between its documented implications.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/041/005.yaml
   source_text_sha256: 874011613ad4f85d4c387b89f4f40149289790de3fc8fafd85d9692bf4a7a183
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b029505940178cfaabf5563ef252dc207aa15408ac5ba9bcb55677bd3dc5f2d3
-  timestamp: '2026-07-11T20:26:26Z'
-  output_hash: 9d4a840089921b497f56f5f72920d3a6b33820e536a0768153d3ba596fb4122c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 3aa02dc3c67a43dad03b154c11d4440ad57d1f6e9a02fdc77cff7033696bd61a
+  timestamp: '2026-08-28T22:53:57Z'
+  output_hash: bd02f2982d6ae256787fd0165994d6467d6edf4a58f4e5e8af2ffb4e5ca7fed3
   usage:
-    prompt_tokens: 2422
-    completion_tokens: 664
-    total_tokens: 3086
-    reasoning_tokens: 294
+    prompt_tokens: 2625
+    completion_tokens: 657
+    total_tokens: 3282
+    reasoning_tokens: 342
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:57Z'
+  previous_text: My enemies say harmful things about me. They ask, “When will he die and his name be forgotten?”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

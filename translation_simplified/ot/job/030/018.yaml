@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/030/018.yaml
-  text: By great force my garment is disfigured[b][a]; like the collar of my tunic it binds me.
+  text: With great force my garment is distorted[a]; it binds me like the opening of my tunic.
   footnotes:
   - marker: a
-    text: Or 'my garment is changed,' 'my garment is disfigured,' or possibly 'he seizes my garment.' The Hebrew verb is difficult, and the line is commonly understood as describing Job's affliction as distorting or constricting him like clothing.
-    reason: lexical_alternative
-  - marker: b
-    text: Literally 'like the mouth/opening of my tunic.'
-    reason: lexical_alternative
+    text: The Hebrew verb is difficult and may mean that the garment is changed, distorted, or possibly seized.
+    reason: lexical_uncertainty
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,46 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: With great force, my clothing is distorted.[a] It binds me like the collar of my tunic.
+  text: With great force, my clothing is badly distorted.[a] It grips me like the opening of my tunic.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew verb is difficult. It may mean that Job’s clothing is changed or disfigured, or possibly that someone seizes it.
+    text: The Hebrew verb is difficult and may mean changed, distorted, or possibly seized.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: By great force my garment is disfigured
-  simplified_phrase: With great force, my clothing is distorted
-  preserved_meaning: Great force alters Job’s garment while leaving the exact kind of distortion uncertain.
-  reasoning_layer_used: Lexical decisions for בְּרָב כֹּחַ, יִתְחַפֵּשׂ, and לְבוּשִׁי
-  rationale: This keeps the force explicit without implying an unsupported twisting action.
-- pob_phrase: like the collar of my tunic it binds me
-  simplified_phrase: It binds me like the collar of my tunic
-  preserved_meaning: The clothing constricts Job like a garment opening around him.
-  reasoning_layer_used: Lexical decisions for כְּפִי, כֻתָּנְתִּי, and יַאַזְרֵנִי
-  rationale: The reordered sentence reads naturally while preserving the restrictive clothing image.
+- pob_phrase: my garment is distorted
+  simplified_phrase: my clothing is badly distorted
+  preserved_meaning: Job’s clothing is forcefully altered, though the exact action remains uncertain.
+  reasoning_layer_used: POB lexical decision and final source audit
+  rationale: “Clothing” is more familiar than “garment,” while “distorted” avoids specifying how it was altered.
+- pob_phrase: it binds me
+  simplified_phrase: It grips me
+  preserved_meaning: The clothing holds Job tightly and restrictively.
+  reasoning_layer_used: POB lexical rationale for יַאַזְרֵנִי
+  rationale: “Grips” makes the restrictive force immediately clear in modern English.
 translation_notes:
   risk_flags:
-  - risk: The difficult Hebrew verb may describe change, disfigurement, or seizure of the garment.
-    mitigation: The main text follows POB’s preferred distortion sense, and the footnote preserves the alternatives.
+  - risk: “Badly distorted” selects the likely sense of a difficult Hebrew verb.
+    mitigation: The footnote preserves the uncertainty and major alternatives.
+  - risk: The comparison with a tunic opening remains unusual in English.
+    mitigation: The source-language clothing image is retained without narrowing “opening” to “collar.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/030/018.yaml
   source_text_sha256: 9bb43850181f9d54bdb69501496821ec6298d82d90bcf8eef9414ab297cf74e1
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 07c09c02e357aa0d50fca438371f58872d390dc22f73a632fea604e2f0548bc4
-  timestamp: '2026-07-12T09:39:42Z'
-  output_hash: 26f898a0b21378a0724a027e6b0ff4523a8b33980eb5f870ae85375f81c8fb58
+  prompt_sha256: e02533e43c3457d1d51c6cf19506e76ba747d519feb709e3099f31d25c6fea8e
+  timestamp: '2026-08-28T23:34:49Z'
+  output_hash: 23b9bb9e22ca8afb1ecb083feef2e1c15f658105c08da24ff59986882d0a5700
   usage:
-    prompt_tokens: 3330
-    completion_tokens: 369
-    total_tokens: 3699
-    reasoning_tokens: 0
+    prompt_tokens: 3498
+    completion_tokens: 383
+    total_tokens: 3881
+    reasoning_tokens: 55
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -86,6 +85,26 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 8a0adc79ee1749316772872fbaba070ae94f3d5fc6cb213cdeda6825cff29fc1
   review_summary: The draft is clearer than POB, and its constricting-clothing image is contextually warranted. However, “twisted out of shape” over-specifies the disputed Hebrew verb, while “violently” and “tightly” slightly intensify or redirect elements already expressed in the source. Use the broader, source-supported “distorted” and retain “with great force” explicitly. The existing footnote appropriately preserves the lexical uncertainty.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:12Z'
+  previous_text: With great force, my clothing is distorted.[a] It binds me like the collar of my tunic.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:51:24Z'
+  previous_text: With great force, my garment is twisted out of shape. It grips me tightly like the opening of my tunic.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:49Z'
+  previous_text: With great force, my clothing is twisted out of shape.[a] It grips me like the opening of my tunic.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 939f69332a5d0980ffbd54bbb63e43dd1c07459169b9596a2d61e32e58ef3382
+  review_summary: The draft usefully replaces the somewhat formal “garment” with “clothing” and makes the restrictive image of “binds me” more immediate with “grips me.” However, “twisted out of shape” introduces a specific physical process that neither the source audit nor the POB rationale can establish. “Badly distorted” preserves the forceful effect while retaining the deliberate lexical breadth signaled by the footnote.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

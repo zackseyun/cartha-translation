@@ -34,54 +34,62 @@ base_translation:
     changes_summary: Removed the repeated verb 'bring' in the second clause to reflect the Hebrew more closely, and retained 'in righteousness' rather than turning it into a separate object ('bring righteousness').
 translation:
   language: en
-  text: May the mountains bring peace to the people, and may the hills bring peace in righteousness.[a]
+  text: May the mountains bring peace to the people,[a] and may the hills bring peace in righteousness.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Righteousness” may also be translated “justice.”
+    text: Or “for the people.”
+    reason: lexical_alternative
+  - marker: b
+    text: Or “through righteousness” or “in justice.” The Hebrew may describe the manner in which peace comes or the means by which it comes.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: and the hills, in righteousness
-  simplified_phrase: and may the hills bring peace in righteousness
-  preserved_meaning: The hills share in bringing peace, while righteousness describes its manner or means.
-  reasoning_layer_used: POB lexical decision and latest revision pass
-  rationale: Supplying the implied prayer and object makes the poetic parallel clear without narrowing “in” to means alone.
-interpretive_expansions:
-- pob_phrase: and the hills, in righteousness
-  rendering: and may the hills bring peace in righteousness
-  claim: The second line continues the prayer that the landscape bring peace.
-  evidence:
-  - The hills form a poetic parallel with the mountains.
-  - The POB retains an implied verb in the second clause.
-  confidence: moderate
-  alternatives_preserved:
-  - Righteousness may describe either manner or means.
-  - The hills may instead be understood as bringing righteousness.
+- pob_phrase: and the hills bring it
+  simplified_phrase: and may the hills bring peace
+  preserved_meaning: The second poetic line continues the prayer that peace be brought.
+  reasoning_layer_used: POB lexical decision and source-audit revision
+  rationale: Repeating “may” and “peace” makes the implied words immediately clear.
+- pob_phrase: in righteousness
+  simplified_phrase: in righteousness
+  preserved_meaning: Peace is associated with what is righteous or just without choosing between manner and means.
+  reasoning_layer_used: POB lexical rationale and grounding review
+  rationale: Retaining “in” preserves the documented ambiguity while the note explains it.
 translation_notes:
   risk_flags:
-  - risk: Repeating “bring peace” makes an implicit poetic element explicit.
-    mitigation: The audit preserves the alternate reading that the hills bring righteousness.
+  - risk: “In righteousness” may remain less natural than a more specific rendering.
+    mitigation: The footnote explains the possible manner, means, and justice senses.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/072/003.yaml
   source_text_sha256: f6da1321775d14f72282498db3e4c4a8a5243cc33b58180c45027479ace3f240
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 24a3bbb284316d68724e39c6648b8daf996b081aa75cc89d5962bcdb17f1816c
-  timestamp: '2026-07-12T10:01:13Z'
-  output_hash: 80a02047214d2d4df79378e12b819a092c333e7a8748b8950ddfc35e9c76c37e
+  prompt_sha256: 92354c7ea4467517775a2c9bb770a82bc8e4f732a740dfdc6e41aef9f84e5c69
+  timestamp: '2026-08-28T23:35:39Z'
+  output_hash: bcd1c0c6f8c65b646a076850b9a4566f5c902b17495d1c09c5504a6f4e6ac520
   usage:
-    prompt_tokens: 3762
-    completion_tokens: 317
-    total_tokens: 4079
-    reasoning_tokens: 0
+    prompt_tokens: 3948
+    completion_tokens: 504
+    total_tokens: 4452
+    reasoning_tokens: 181
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: in righteousness
+  rendering: through righteousness
+  claim: Righteousness may be the means by which peace comes.
+  evidence:
+  - The POB lexical rationale says the preposition can mark manner or means.
+  - The POB footnote explicitly preserves “through righteousness.”
+  confidence: moderate
+  alternatives_preserved:
+  - in righteousness
+  - in justice
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:01:13Z'
@@ -92,4 +100,19 @@ spob_revision_history:
   review_output_hash: 32ebea0f430bdbc6767a4f73888cf2b07417770f392605640b9b8c46a2910fb7
   review_summary: Repeating “may ... bring peace” helpfully makes the second poetic line understandable and is supported by the shared verbal construction and parallelism. Revise “through righteousness” to “in righteousness,” however, because the source and POB audit retain a live manner/means ambiguity that the stronger causal wording unnecessarily resolves.
   schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:57:28Z'
+  previous_text: May the mountains bring peace to the people, and may the hills bring peace in righteousness.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:39Z'
+  previous_text: May the mountains bring peace to the people,[a] and may the hills bring peace through righteousness.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e954cbe751eae35aeabe614562135059c67651b4928dcf0eed03c9bba3cd8bce
+  review_summary: 'Repeating “may” and “peace” is a warranted readability improvement: it makes the ellipsis in the second poetic line explicit without adding a new idea. However, changing “in righteousness” to “through righteousness” makes one live grammatical nuance—instrumental means—the asserted main-text sense. Retain “in righteousness” in the main text and preserve the instrumental and justice alternatives in the note.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

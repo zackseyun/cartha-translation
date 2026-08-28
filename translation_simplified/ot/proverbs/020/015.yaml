@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/020/015.yaml
-  text: There is gold[a], and an abundance of pearls, but lips of knowledge are a precious vessel.
+  text: There is gold and an abundance of precious stones, but knowledgeable lips are a precious vessel.[a]
   footnotes:
   - marker: a
-    text: Or 'rubies,' 'corals,' or more generally 'precious gems' for פְּנִינִים; the exact referent is uncertain.
+    text: The Hebrew word translated “precious stones” has an uncertain referent; proposed meanings include corals, rubies, and pearls.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,62 +31,82 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: There is gold, and there are plenty of pearls,[a] but lips that speak with knowledge are like a precious vessel.
+  text: You can find gold and plenty of precious stones,[a] but lips that speak with knowledge are a precious object.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may refer to pearls, rubies, corals, or precious gems in general.
+    text: The exact kind of valuable material meant by the Hebrew word is uncertain; possibilities include coral, rubies, and pearls.
     reason: lexical_alternative
+  - marker: b
+    text: The Hebrew word can mean a vessel, article, or other object.
+    reason: simplification_note
 simplification_decisions:
-- pob_phrase: an abundance of pearls
-  simplified_phrase: plenty of pearls
-  preserved_meaning: The precious items are available in great quantity.
-  reasoning_layer_used: POB lexical decision for וְרָב
-  rationale: “Plenty of” states the same quantity in more common English.
-- pob_phrase: lips of knowledge
+- pob_phrase: There is gold and an abundance of precious stones
+  simplified_phrase: You can find gold and plenty of precious stones
+  preserved_meaning: Gold and valuable stones exist in abundance.
+  reasoning_layer_used: POB lexical decisions for יֵשׁ and וְרָב
+  rationale: The documented alternative “One may find” and the common word “plenty” make the observation natural.
+- pob_phrase: knowledgeable lips
   simplified_phrase: lips that speak with knowledge
-  preserved_meaning: The lips represent speech marked by true knowledge.
+  preserved_meaning: The lips represent speech characterized by knowledge.
   reasoning_layer_used: POB lexical decision for שִׂפְתֵי דָעַת
-  rationale: The verbal form makes the image immediately understandable while retaining “lips.”
-- pob_phrase: are a precious vessel
-  simplified_phrase: are like a precious vessel
+  rationale: This makes the speech function clear while preserving the image of lips.
+- pob_phrase: a precious vessel
+  simplified_phrase: a precious object
   preserved_meaning: Knowledgeable speech is compared to a valuable concrete object.
-  reasoning_layer_used: POB lexical decision for וּכְלִי יְקָר
-  rationale: “Like” makes the comparison explicit without removing the vessel image.
+  reasoning_layer_used: POB lexical decision for וּכְלִי יְקָר and grounding review
+  rationale: “Object” is readily understood and remains within the Hebrew word’s documented range.
 interpretive_expansions:
-- pob_phrase: lips of knowledge
+- pob_phrase: knowledgeable lips
   rendering: lips that speak with knowledge
-  claim: The lips refer to knowledgeable speech rather than knowledge physically possessed by lips.
+  claim: The lips refer to speech that expresses knowledge.
   evidence:
-  - The POB lexical rationale says the phrase refers to speech marked by true knowledge.
+  - The POB rationale describes lips characterized by knowledge.
+  - The proverb uses lips as a concrete image for speech.
   confidence: high
   alternatives_preserved:
   - knowledgeable lips
-  - lips of knowledge
+  - lips that know
 translation_notes:
   risk_flags:
-  - risk: “Vessel” may still sound unusual to some modern readers.
-    mitigation: It is retained because the POB reasoning protects the source’s concrete image.
-  - risk: The exact object denoted by “pearls” is uncertain.
-    mitigation: The footnote preserves the documented lexical alternatives.
+  - risk: “Precious stones” may imply a more specific material than the uncertain Hebrew term identifies.
+    mitigation: Footnote [a] preserves the documented lexical uncertainty.
+  - risk: “Object” is broader than the POB wording “vessel.”
+    mitigation: Footnote [b] retains “vessel” as part of the Hebrew word’s range.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/020/015.yaml
   source_text_sha256: d04174210decc83c76ea3ad54950be3b98a412b52c10a261063e26f27bafb9d8
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 678cb6d548a36f9c194baa240630db5d985619535d6e3879c904fa2a43713f9c
-  timestamp: '2026-07-11T21:08:10Z'
-  output_hash: 368ea39f81983c7f7d7ef93f4f05d576e5808c6b6d41a1d534edf7386739fdee
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1b2726129f290e5553837d234bd169642dc887201e010f34be27c91199913edf
+  timestamp: '2026-08-28T23:34:38Z'
+  output_hash: 4d91ecab6f70e986ebbfe20f49cb3a44b20602bb4929a6b4e7deeb5bc3173370
   usage:
-    prompt_tokens: 2306
-    completion_tokens: 731
-    total_tokens: 3037
-    reasoning_tokens: 252
+    prompt_tokens: 3474
+    completion_tokens: 646
+    total_tokens: 4120
+    reasoning_tokens: 101
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:16Z'
+  previous_text: There is gold, and there are plenty of pearls,[a] but lips that speak with knowledge are like a precious vessel.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:38Z'
+  previous_text: You can find gold and plenty of precious stones,[a] but lips that speak with knowledge are a precious treasure.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 43123b1cea5f67f446b129b938df31684c5fdf5f4d070f152b6a9165ab7df547
+  review_summary: 'The first clause is a warranted, clearer use of the POB’s documented alternative “One may find,” and “plenty” accurately communicates abundance. “Lips that speak with knowledge” appropriately makes the speech function of “knowledgeable lips” understandable without imposing a doctrinal interpretation. Revise only the final comparison: “treasure” is clear but changes the source’s concrete valuable-object image. “A precious object” is both accessible and textually supported.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/032/016.yaml
-  text: And I waited[a], because they did not speak[b], because they stood still and answered no more.
+  text: And I waited[a], but they did not speak; they had stopped[b] and answered no more.
   footnotes:
   - marker: a
-    text: Or 'And I hoped,' since the verb can carry the sense of waiting with expectation; here the context favors 'waited.'
+    text: Or “And I waited expectantly.” The Hebrew verb can also carry the sense of hope.
     reason: lexical_alternative
   - marker: b
-    text: Literally, 'they stood'; the phrase likely means they had stopped and remained silent.
-    reason: lexical_alternative
+    text: Literally, “they stood”; in context, they had stopped speaking.
+    reason: idiom
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,46 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I waited because they said nothing, because they had stopped speaking and gave no further answer.
+  text: I waited,[a] but they said nothing. They had stopped speaking[b] and gave no further answer.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew may also mean “I waited expectantly.”
+    reason: lexical_alternative
+  - marker: b
+    text: Literally, “they stood”; here it means that they stopped speaking.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: because they did not speak
-  simplified_phrase: because they said nothing
-  preserved_meaning: Their silence was one reason Elihu waited.
-  reasoning_layer_used: POB lexical decisions for לֹא יְדַבֵּרוּ and the first כִּי
-  rationale: The common phrase states their silence clearly while retaining the causal link.
-- pob_phrase: because they stood still and answered no more
-  simplified_phrase: because they had stopped speaking and gave no further answer
-  preserved_meaning: Their speech and replies had come to an end, further explaining why Elihu waited.
-  reasoning_layer_used: POB lexical decisions for the second כִּי, עָמְדוּ, and לֹא עָנוּ עוֹד
-  rationale: This keeps the repeated causal structure and makes the stopping image clear in its speech context.
+- pob_phrase: And I waited, but they did not speak
+  simplified_phrase: I waited, but they said nothing
+  preserved_meaning: Elihu waited, yet the others remained silent.
+  reasoning_layer_used: Final source audit and lexical decision for לֹא יְדַבֵּרוּ
+  rationale: “Said nothing” expresses the same contrast in more natural English.
+- pob_phrase: they had stopped and answered no more
+  simplified_phrase: They had stopped speaking and gave no further answer
+  preserved_meaning: The men had ceased their replies entirely.
+  reasoning_layer_used: Final idiom revision for עָמְדוּ and lexical decision for לֹא עָנוּ עוֹד
+  rationale: The wording identifies what had stopped and replaces the archaic “no more.”
+- pob_phrase: single sentence joined by a semicolon
+  simplified_phrase: two short sentences
+  preserved_meaning: Their silence is explained by the end of their replies.
+  reasoning_layer_used: POB clause structure and applied revision
+  rationale: The sentence break makes the progression easier to follow without changing it.
+interpretive_expansions:
+- pob_phrase: they had stopped
+  rendering: They had stopped speaking
+  claim: What stopped was their speaking, not their bodily movement.
+  evidence:
+  - The immediate context concerns whether the men would continue speaking.
+  - The final source audit identifies עָמְדוּ as an idiom for cessation here.
+  confidence: high
+  alternatives_preserved:
+  - The literal image “they stood” is retained in a footnote.
 translation_notes:
   risk_flags:
-  - risk: Rendering “stood still” as “stopped speaking” makes its contextual sense explicit rather than preserving the physical wording.
-    mitigation: The POB audit identifies speech ceasing as the likely force of the image here.
+  - risk: The first כִּי can be read causally rather than as a contrast marker.
+    mitigation: The draft follows the POB final audit’s adversative “but” while avoiding further interpretation.
+  - risk: Rendering עָמְדוּ idiomatically removes its literal standing image from the main text.
+    mitigation: A source note preserves the literal wording and explains its contextual sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/032/016.yaml
   source_text_sha256: 4b0b7bca4e5b90ab2d09ff7550ebe94b02ceaa298e4227130630fac992212748
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 69e6cac1f601f5026b5fe71f43839ed61f9ff2e61c7ab4dad1488897f18a220d
-  timestamp: '2026-07-12T09:40:57Z'
-  output_hash: 4acb66b80f5ad3b75078682799770ab0e1b507e0fc7d653d38c30b71095b42c9
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: e1746c70b589c9140fdc79ad781069897c647b026475284a951fe98c58530d88
+  timestamp: '2026-08-28T22:52:10Z'
+  output_hash: 6050eab6072ae0761befd775503c3579eee142bd9e1642903042f4ec71eef2fa
   usage:
-    prompt_tokens: 3089
-    completion_tokens: 304
-    total_tokens: 3393
-    reasoning_tokens: 0
+    prompt_tokens: 2728
+    completion_tokens: 990
+    total_tokens: 3718
+    reasoning_tokens: 440
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:40:57Z'
   previous_text: I waited because they said nothing. They had come to a standstill and gave no further answer.
@@ -85,3 +107,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:10Z'
+  previous_text: I waited because they said nothing, because they had stopped speaking and gave no further answer.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

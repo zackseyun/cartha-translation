@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/006.yaml
-  text: offspring of Abraham[a], his servant, sons of Jacob, his chosen ones[b][c],
+  text: offspring of Abraham[a], his servant, sons of Jacob[b], his chosen ones[c],
   footnotes:
   - marker: a
-    text: Or 'seed of Abraham.' The Hebrew singular can function collectively for Abraham's descendants.
+    text: Or “seed of Abraham.” The Hebrew singular can function collectively for Abraham’s descendants.
     reason: lexical_alternative
   - marker: b
-    text: Or 'his elect.'
+    text: Or “children of Jacob.”
     reason: lexical_alternative
   - marker: c
-    text: Or 'children of Jacob.' Hebrew 'sons of' is retained to match the masculine plural form.
+    text: Or “his elect.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,59 +37,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You descendants of Abraham, God’s servant; you sons of Jacob,[a] God’s chosen ones.
+  text: Descendants of Abraham, God’s servant; sons of Jacob,[a] God’s chosen ones,
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Sons of Jacob” can also refer to the wider people descended from Jacob.
+    text: “Sons of Jacob” can also mean “children of Jacob,” referring to Jacob’s family line.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: offspring of Abraham
+  simplified_phrase: Descendants of Abraham
+  preserved_meaning: Abraham’s posterity is addressed collectively.
+  reasoning_layer_used: POB lexical decision for זֶרַע
+  rationale: “Descendants” states the collective family-line meaning more directly for modern readers.
 - pob_phrase: offspring of Abraham ... sons of Jacob
-  simplified_phrase: You descendants of Abraham ... you sons of Jacob
-  preserved_meaning: The parallel phrases identify the community as the people descended from Abraham and Jacob.
-  reasoning_layer_used: lexical decisions on זֶרַע and the parallel pair, with immediate context
-  rationale: “Descendants” clearly expresses the collective lineage, while “you” makes the direct address explicit.
-- pob_phrase: his servant ... his chosen ones
-  simplified_phrase: God’s servant ... God’s chosen ones
-  preserved_meaning: Abraham is God’s servant, and Jacob’s line consists of God’s chosen people.
-  reasoning_layer_used: theological decision on the possessive suffixes
-  rationale: Naming God removes pronoun ambiguity while preserving the approved referents.
+  simplified_phrase: Descendants of Abraham ... sons of Jacob
+  preserved_meaning: The two parallel descriptions of the covenant community remain distinct.
+  reasoning_layer_used: POB lexical decision for the parallel pair
+  rationale: The semicolon makes the Hebrew parallelism easier to follow without collapsing either line.
 interpretive_expansions:
 - pob_phrase: his servant ... his chosen ones
   rendering: God’s servant ... God’s chosen ones
   claim: Both possessives refer to God.
   evidence:
   - The POB theological decision identifies God as the referent of both suffixes.
-  - The covenant context supports Abraham as God’s servant and Jacob’s people as God’s chosen ones.
+  - The psalm’s covenant context presents Abraham as God’s servant and Jacob’s line as God’s chosen people.
   confidence: high
   alternatives_preserved:
-  - A nearest-antecedent reading is grammatically possible but contextually unlikely.
+  - A mechanical reading could connect each suffix with the nearest patriarch.
 translation_notes:
   risk_flags:
-  - risk: “Sons of Jacob” may sound limited to Jacob’s immediate male children.
-    mitigation: The footnote explains that the phrase can include the wider people descended from Jacob.
+  - risk: “Sons of Jacob” may sound as though only males are meant.
+    mitigation: The footnote explains that the phrase can refer broadly to Jacob’s family line.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/006.yaml
   source_text_sha256: d5a82ced086a6524d3fef5c0faec47b63e8e24348d9fc0d8826cb848a1a602e6
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 13722cbb85ab756592c9e0c068cb96a21a76dce36d53695d90591ef4ab6b1863
-  timestamp: '2026-07-12T10:02:25Z'
-  output_hash: 06f57c6ca4b319fc06720558080ea1ac623ee808089e4f729b3b87d7339bef57
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 84eb4ba7d39289aee976c41cb179b92b3e9d74e960ace214d64d9b2f83890d03
+  timestamp: '2026-08-28T22:59:26Z'
+  output_hash: a4a4fd80ba5a5c66a056716074b732ff21e5a102e68c1178d87a65ac8a6d3b41
   usage:
-    prompt_tokens: 3258
-    completion_tokens: 421
-    total_tokens: 3679
-    reasoning_tokens: 0
+    prompt_tokens: 2656
+    completion_tokens: 791
+    total_tokens: 3447
+    reasoning_tokens: 391
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:25Z'
   previous_text: You offspring of Abraham, God’s servant; you sons of Jacob,[a] God’s chosen ones.
@@ -100,3 +99,8 @@ spob_revision_history:
   review_summary: 'The explicit “you” correctly clarifies the verse’s vocative address, and replacing the possessive pronouns with “God’s” is directly warranted by the POB audit trail and the psalm’s covenant context. The two parallel lines remain distinct. Revision is needed only for contemporary readability: “offspring” is a valid collective rendering but is less clear and natural here than “descendants.” Retain the supplied footnote explaining that “sons of Jacob” can encompass Jacob’s wider descendants.'
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:26Z'
+  previous_text: You descendants of Abraham, God’s servant; you sons of Jacob,[a] God’s chosen ones.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

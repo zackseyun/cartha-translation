@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/039/001.yaml
-  text: Do you know the time when the mountain goats give birth? Do you watch over the deer in labor?[a][b][c]
+  text: Do you know the time when the mountain goats give birth? Do you observe the deer in labor?[a][b][c]
   footnotes:
   - marker: a
-    text: Or 'the wild goats of the rock'; the Hebrew refers to mountain-dwelling wild goats, possibly ibexes.
+    text: Or “the wild goats of the rock”; the Hebrew refers to mountain-dwelling wild goats, possibly ibexes.
     reason: lexical_alternative
   - marker: b
-    text: Or 'the does' or 'the hinds.'
+    text: Or “the does.”
     reason: lexical_alternative
   - marker: c
-    text: The verb can also mean 'observe' or 'keep watch over.'
+    text: Or “keep watch on.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,45 +37,61 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 39:1 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''Do you watch over''].'
 translation:
   language: en
-  text: Do you know when mountain goats give birth? Do you watch over deer while they are in labor?[a]
+  text: Do you know when mountain goats[a] give birth? Do you watch the female deer while they are in labor?
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also mean “observe” or “keep watch over.”
+    text: The Hebrew refers to wild goats that live among the rocks, possibly ibexes.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the time when the mountain goats give birth
-  simplified_phrase: when mountain goats give birth
-  preserved_meaning: The question still asks whether Job knows their time of giving birth.
-  reasoning_layer_used: POB lexical decision for עֵת לֶדֶת
-  rationale: Removing “the time” avoids redundant wording in natural English.
-- pob_phrase: the deer in labor
-  simplified_phrase: deer while they are in labor
-  preserved_meaning: The deer are being watched during the process of giving birth.
-  reasoning_layer_used: POB lexical decisions for חֹלֵל and אַיָּלוֹת
-  rationale: A full temporal clause makes the relationship immediately clear.
+- pob_phrase: Do you know the time when the mountain goats give birth?
+  simplified_phrase: Do you know when mountain goats give birth?
+  preserved_meaning: God asks whether Job knows their time of giving birth.
+  reasoning_layer_used: POB lexical decisions for עֵת and לֶדֶת
+  rationale: The shorter question expresses the same time reference in more natural English.
+- pob_phrase: Do you observe the deer in labor?
+  simplified_phrase: Do you watch the female deer while they are in labor?
+  preserved_meaning: God asks whether Job attentively witnesses their labor, not whether he protects them.
+  reasoning_layer_used: Wisdom source audit and lexical decisions for אַיָּלוֹת and תִּשְׁמֹר
+  rationale: “Watch” is common English, and “while” clearly connects the watching to labor.
+interpretive_expansions:
+- pob_phrase: the deer
+  rendering: the female deer
+  claim: The animals are specifically female deer.
+  evidence:
+  - The POB lexical decision states that אַיָּלוֹת denotes female deer.
+  confidence: high
+  alternatives_preserved:
+  - the deer
+  - the does
 translation_notes:
   risk_flags:
-  - risk: “Watch over” may suggest protection rather than attentive observation.
-    mitigation: The footnote preserves the documented lexical alternative “observe.”
+  - risk: “Watch” could suggest supervision rather than observation.
+    mitigation: The wording avoids “watch over” and limits the action to watching them during labor.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/039/001.yaml
   source_text_sha256: 65acdb61af6ff812acecb10146e985be4e7c763a28ec7e35ca8e20e1bcf0b2d7
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 38b5a350617a7b0653ae30b5e7c53242ab7a76530d59543e60ace8622a5a5e12
-  timestamp: '2026-07-11T20:45:59Z'
-  output_hash: d7cb560217b5da3a3975f8972d6ac2c8674c35460f7d66d3bf4ed731b2a195a4
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 76b441ee64945a6a78da92810765f827b8d38e6dfd264dd3755b546f8d225bad
+  timestamp: '2026-08-28T22:52:35Z'
+  output_hash: 571a88fa46d38110e03d7eb9af8ffdee6dd04852bfd5b8bedd4dc277f9cfa28b
   usage:
-    prompt_tokens: 2789
-    completion_tokens: 511
-    total_tokens: 3300
-    reasoning_tokens: 218
+    prompt_tokens: 2961
+    completion_tokens: 917
+    total_tokens: 3878
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:35Z'
+  previous_text: Do you know when mountain goats give birth? Do you watch over deer while they are in labor?[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

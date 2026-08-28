@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/096/001.yaml
-  text: Sing to Yahweh a new song; sing to Yahweh[a], all the earth.
+  text: Sing to Yahweh[a] a new song; sing to Yahweh, all the earth.
   footnotes:
   - marker: a
-    text: 'Hebrew: ''YHWH'' (the divine name), traditionally rendered ''the LORD''; alternatively, ''Yahweh.'''
+    text: Hebrew YHWH, traditionally rendered “the LORD.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Sing a new song to Yahweh.[a] All the earth, sing to Yahweh.
+  text: Sing a new song to Yahweh![a] All the earth, sing to Yahweh!
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Yahweh is the Hebrew divine name YHWH, traditionally rendered “the LORD.”
-    reason: source_note
+    text: Hebrew YHWH, traditionally rendered “the LORD.”
+    reason: alternative_reading
 simplification_decisions:
 - pob_phrase: Sing to Yahweh a new song
-  simplified_phrase: Sing a new song to Yahweh
+  simplified_phrase: Sing a new song to Yahweh!
   preserved_meaning: The command calls for a new song directed to Yahweh.
-  reasoning_layer_used: POB lexical decisions for שִׁירוּ, לַיהוָה, שִׁיר, and חָדָשׁ
-  rationale: Natural English places “a new song” directly after “sing.”
+  reasoning_layer_used: POB lexical decisions and English syntax
+  rationale: Reordering the phrase gives it natural English emphasis without changing its meaning.
 - pob_phrase: sing to Yahweh, all the earth
-  simplified_phrase: All the earth, sing to Yahweh.
-  preserved_meaning: The command summons the whole earth to sing to Yahweh.
-  reasoning_layer_used: POB lexical decision for כָּל הָאָרֶץ and the source repetition of שִׁירוּ לַיהוָה
-  rationale: A separate sentence makes the universal call immediately clear while preserving the repeated command.
-translation_notes:
-  risk_flags:
-  - risk: The repeated command may sound redundant in modern English.
-    mitigation: The repetition is retained because it gives the Hebrew verse its poetic force.
+  simplified_phrase: All the earth, sing to Yahweh!
+  preserved_meaning: Everyone throughout the earth is directly commanded to sing to Yahweh.
+  reasoning_layer_used: Hebrew imperative, POB lexical rationale, and psalm context
+  rationale: Placing the addressee first keeps the universal summons clear and direct.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/096/001.yaml
   source_text_sha256: 779ad12e3cf843c1287cade3373b855ff9ebdc60c38bb14ada005914a8caa2f4
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4cbe5638c1ff67f4a310f2fea048b6a29d9cab82428acaba7269e60be10066d2
-  timestamp: '2026-07-11T21:04:15Z'
-  output_hash: fd81bea14986930206045dda8d69e06cdd1b359ecdbec7d2f6d54034bf8251e1
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: e9b6abd7f384ff8e28aa2405e7ef15d6af0e15132b9fabc3861069c37eb41732
+  timestamp: '2026-08-28T23:35:54Z'
+  output_hash: 81db0a87e84676fb91117d4290fa7f489979fe0e42d52ef534d544984c4f6d5b
   usage:
-    prompt_tokens: 2311
-    completion_tokens: 543
-    total_tokens: 2854
-    reasoning_tokens: 206
+    prompt_tokens: 3160
+    completion_tokens: 342
+    total_tokens: 3502
+    reasoning_tokens: 81
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:54Z'
+  previous_text: Sing a new song to Yahweh.[a] All the earth, sing to Yahweh.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:54Z'
+  previous_text: Sing a new song to Yahweh![a] Let the whole earth sing to Yahweh!
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5be594acc83973f146435c6337d2e44f5af834971ab9664c764f48bd31471c2f
+  review_summary: The first sentence is a clear, faithful English reordering of the POB. The second should retain the source text's direct imperative and vocative universal address rather than shifting it to “Let the whole earth sing.” The recommended wording remains natural and accessible while preserving the psalm's forceful summons.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

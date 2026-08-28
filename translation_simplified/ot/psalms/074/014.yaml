@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/074/014.yaml
-  text: You crushed the heads of Leviathan[a]; you gave him as food for the creatures of the desert.
+  text: You crushed the heads of Leviathan; you gave him as food to the desert creatures.[a]
   footnotes:
   - marker: a
-    text: Or 'for the desert-dwellers' or 'for the wild creatures of the desert.' The Hebrew term is difficult and may refer to inhabitants or creatures of arid regions.
-    reason: lexical_alternative
+    text: The Hebrew phrase is difficult; it may refer to desert creatures, a people inhabiting the desert, or desert dwellers.
+    reason: textual_or_lexical_ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,47 +31,53 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 74:14 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''for the people of''].'
 translation:
   language: en
-  text: You crushed Leviathan’s heads, then gave him to the desert creatures for food.[a]
+  text: You crushed Leviathan’s heads. You gave him to the desert creatures for food.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew is difficult and may refer to people living in the desert or to wild desert animals.
+    text: The Hebrew is difficult and may instead mean people who live in the desert or desert dwellers more generally.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: the heads of Leviathan
   simplified_phrase: Leviathan’s heads
-  preserved_meaning: Leviathan remains the named, many-headed figure in the poem.
-  reasoning_layer_used: lexical and theological decisions
-  rationale: The possessive form is more natural while preserving the plural heads and unresolved imagery.
-- pob_phrase: you gave him as food for the creatures of the desert
-  simplified_phrase: gave him to the desert creatures for food
-  preserved_meaning: The defeated Leviathan is handed over as food in the desert.
-  reasoning_layer_used: POB translation and lexical decisions
-  rationale: The recast clause uses ordinary English without weakening the image of being eaten.
+  preserved_meaning: Leviathan remains named, and the source text’s plural “heads” is retained.
+  reasoning_layer_used: POB lexical decisions and theological decision on Leviathan imagery
+  rationale: The possessive form is easier to read without defining what Leviathan represents.
+- pob_phrase: you gave him as food to the desert creatures
+  simplified_phrase: You gave him to the desert creatures for food
+  preserved_meaning: Leviathan is given as food to recipients associated with the desert.
+  reasoning_layer_used: Final WLC lexical audit and POB footnote
+  rationale: Ordinary English word order improves clarity while the note preserves the difficult Hebrew phrase.
 translation_notes:
   risk_flags:
-  - risk: The difficult Hebrew recipient term may refer to human desert dwellers rather than animals.
-    mitigation: The main text follows the POB wording, while the footnote preserves the lexical ambiguity.
-  - risk: Leviathan may be read only as a literal animal.
-    mitigation: The text retains the name and imagery without identifying Leviathan as a literal creature, mythic being, or historical enemy.
+  - risk: “Desert creatures” may suggest animals more strongly than the difficult Hebrew warrants.
+    mitigation: The footnote preserves the possible human or broader desert-dweller readings.
+  - risk: Readers may assume Leviathan is only a literal many-headed animal.
+    mitigation: The text retains the poetic name and does not identify its literal or symbolic referent.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/074/014.yaml
   source_text_sha256: 141b55fafd3efe931a37384d960a6c408bcbf2f4ca429f219a70d5caf71eab4f
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 9a09476e232707e5d44ea405380e009ac8f42f0ae46623c6a34c32f80289dbe5
-  timestamp: '2026-07-11T20:52:29Z'
-  output_hash: ab8fa9e8bb5810acd69292a4cd4b6d11cbd8d68ba9ba7d8ebd62e9be02f52811
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: add119a0edece467394d6596407fc48154152266a5d8dd901093badf2deb98f3
+  timestamp: '2026-08-28T22:57:27Z'
+  output_hash: 6ee8a6b4f7230adfbbbc3032ef6cb40f21ba5b304990f5d103ba7a8e70a278eb
   usage:
-    prompt_tokens: 2956
-    completion_tokens: 709
-    total_tokens: 3665
-    reasoning_tokens: 366
+    prompt_tokens: 3238
+    completion_tokens: 498
+    total_tokens: 3736
+    reasoning_tokens: 148
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:27Z'
+  previous_text: You crushed Leviathan’s heads, then gave him to the desert creatures for food.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

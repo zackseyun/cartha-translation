@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/122/006.yaml
-  text: 'Pray for the peace of Jerusalem: may those who love you prosper[a][b].'
+  text: 'Pray[a] for the peace of Jerusalem: may those who love you prosper[b].'
   footnotes:
   - marker: a
-    text: Or 'Ask for the peace of Jerusalem.'
+    text: Or “Ask for.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'may those who love you prosper' or 'those who love you shall prosper.'
+    text: Or “may those who love you be secure”; the Hebrew may also be understood as a prediction, “those who love you will prosper.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,65 @@ base_translation:
     changes_summary: Changed 'be secure' to 'prosper' to better reflect the sense of יִשְׁלָיוּ ('be at ease/prosper') and preserve the wordplay with 'peace' more naturally.
 translation:
   language: en
-  text: Pray that Jerusalem will have peace. Jerusalem, may those who love you prosper.[a]
+  text: Pray that Jerusalem will have peace. May those who love her prosper.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The second sentence may also be read, “Those who love you will prosper.”
+    text: 'Or “be secure”; this may also be a prediction: “Those who love her will prosper.”'
     reason: alternative_reading
 simplification_decisions:
 - pob_phrase: Pray for the peace of Jerusalem
   simplified_phrase: Pray that Jerusalem will have peace
-  preserved_meaning: The people are urged to pray to God for Jerusalem’s peace and well-being.
-  reasoning_layer_used: POB lexical decision for שַׁאֲלוּ and שְׁלוֹם
-  rationale: The clause states the requested outcome directly in ordinary English.
-- pob_phrase: may those who love you prosper
-  simplified_phrase: Jerusalem, may those who love you prosper
-  preserved_meaning: The pronoun “you” addresses Jerusalem, and the line remains a prayer-wish.
-  reasoning_layer_used: POB lexical and theological decisions for אֹהֲבָיִךְ and יִשְׁלָיוּ
-  rationale: Repeating Jerusalem makes the direct address immediately clear without resolving the verbal ambiguity.
+  preserved_meaning: The people are urged to ask God to give Jerusalem peace and well-being.
+  reasoning_layer_used: POB lexical decisions for שַׁאֲלוּ and שְׁלוֹם
+  rationale: The revised clause states the requested outcome in ordinary English.
+- pob_phrase: those who love you
+  simplified_phrase: those who love her
+  preserved_meaning: The line refers to people who love Jerusalem, which the Hebrew addresses directly as a city.
+  reasoning_layer_used: POB lexical decision for אֹהֲבָיִךְ
+  rationale: The pronoun clearly identifies Jerusalem after the sentence break without adding “all.”
 translation_notes:
   risk_flags:
-  - risk: Modern readers may hear “prosper” as a promise of material wealth.
-    mitigation: The wording “may” keeps it as a prayer-wish connected to Jerusalem’s peace rather than an unconditional guarantee.
+  - risk: “Prosper” may be understood only as gaining wealth.
+    mitigation: The footnote preserves the contextual sense “be secure.”
+  - risk: The Hebrew may express either a wish or a prediction.
+    mitigation: The main text keeps the POB wish, while the footnote preserves the predictive reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/122/006.yaml
   source_text_sha256: 229b7cbef2fd98b127dee374ea8b58f982a2c42dbb5f37a6f70f1796cb88c8dd
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 097d8c29e7630cfc35dfbec027a95229d3e9f679e32c5c60659d7eafc0fa0307
-  timestamp: '2026-07-11T21:06:54Z'
-  output_hash: 353cd298bc1b6aa1b07539be376068b6f4535bfa36f903200f5b95e58bcccbe7
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cf4870125c12817706ac464086d0906afbb1f5afe4661468eeb07cf8bf7539ed
+  timestamp: '2026-08-28T23:36:16Z'
+  output_hash: 004588812e01e79f3d726f8542293341168ba9359ec61474090251fec354d098
   usage:
-    prompt_tokens: 2580
-    completion_tokens: 698
-    total_tokens: 3278
-    reasoning_tokens: 355
+    prompt_tokens: 3548
+    completion_tokens: 385
+    total_tokens: 3933
+    reasoning_tokens: 41
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:49Z'
+  previous_text: Pray that Jerusalem will have peace. Jerusalem, may those who love you prosper.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:16Z'
+  previous_text: Pray that Jerusalem will have peace. May all who love her prosper.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: eecc65f982384af05310a3791858f6a35eb93b4dbefcb42fc135e3dfbcf5266b
+  review_summary: 'The first sentence is a warranted and meaningfully clearer unpacking of “Pray for the peace of Jerusalem”: it retains the prayer imperative, Jerusalem as the object, and peace as the requested good. Replacing the city-directed “you” with “her” clearly identifies Jerusalem after the sentence break without adding doctrine. The footnote appropriately retains both the security sense of the verb and the possible predictive reading. Remove only “all,” since it is an unnecessary universalizing addition.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

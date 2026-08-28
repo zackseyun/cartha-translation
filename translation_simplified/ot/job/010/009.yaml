@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/010/009.yaml
-  text: Remember[a], please, that you made me like clay[b], and will you return me to dust?
+  text: Please remember that you made me like clay[a], and will you return me to dust[b]?
   footnotes:
   - marker: a
-    text: Or 'as clay'; the Hebrew expression is comparative, not explicitly 'from clay,' though the creation imagery is clearly evoked.
+    text: Or “as clay.” The Hebrew is comparative, not explicitly “from clay,” though it evokes creation imagery.
     reason: lexical_alternative
   - marker: b
-    text: Or 'and you will return me to dust.' The Hebrew form itself can be read as either a statement or, in context, a rhetorical question.
+    text: Or “and you will return me to dust.” The Hebrew clause has no explicit interrogative marker and can be read as either a statement or, in context, a rhetorical question.
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -34,48 +34,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You made me like clay—please remember that.[a] Will you turn me back to dust?[b]
+  text: 'Please remember this: you made me like clay.[a] And will you return me to dust?[b]'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew says “like clay,” not explicitly “from clay,” though it recalls the creation of humanity from the earth.
+    text: Or “as clay.” The Hebrew compares Job to clay; it does not explicitly say that he was made from clay.
     reason: lexical_alternative
   - marker: b
-    text: 'The last sentence may also be read as a statement: “You will turn me back to dust.”'
+    text: Or “And you will return me to dust.” The Hebrew may be read as either a statement or a rhetorical question.
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Remember, please, that you made me like clay
-  simplified_phrase: You made me like clay—please remember that
-  preserved_meaning: Job appeals directly to God to remember that God made him like clay.
-  reasoning_layer_used: Lexical decisions for זְכָר, נָא, כַחֹמֶר, and עֲשִׂיתָנִי
-  rationale: Reordering the appeal makes it easier to follow while retaining its prayerful force and clay image.
-- pob_phrase: will you return me to dust?
-  simplified_phrase: Will you turn me back to dust?
-  preserved_meaning: Job protests that God may bring him back to the dust of death.
-  reasoning_layer_used: Lexical decision for תְּשִׁיבֵנִי and the theological decision on interrogative force
-  rationale: “Turn me back” expresses caused return in natural English without weakening the rhetorical question.
+- pob_phrase: Please remember that you made me like clay, and will you return me to dust?
+  simplified_phrase: 'Please remember this: you made me like clay. And will you return me to dust?'
+  preserved_meaning: Job asks God to remember making him and challenges whether God will return him to dust.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: Two short sentences clarify the appeal while “And” preserves the clauses’ close connection.
 translation_notes:
   risk_flags:
-  - risk: The Hebrew permits either a rhetorical question or a statement in the final clause.
-    mitigation: The main text follows POB’s rhetorical question, while footnote b preserves the statement reading.
+  - risk: Starting a sentence with “And” may seem stylistically unusual to some readers.
+    mitigation: It preserves the Hebrew coordination and clearly links Job’s creation to his return to dust.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/010/009.yaml
   source_text_sha256: b89f6ccc1314fb8134620a2510f2d62b62051b58e13d0a187f21de0214157583
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b3130c992cd0c76d296b7f78df567c9bf876f7190a8ea182862244d5a081ae1a
-  timestamp: '2026-07-11T19:36:27Z'
-  output_hash: d10259b43a576ab8942eb2b0bf32524b0259b83014891b330a237d3246dd756d
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b7622488b4debaae4fe9a5d912e22400e1cba41eaffc521b5228ec8071015c59
+  timestamp: '2026-08-28T23:32:48Z'
+  output_hash: 9457eca7a92d5f89d0d9d02ee643090600c42f074e73fbb11ad479a83091829c
   usage:
-    prompt_tokens: 2617
-    completion_tokens: 896
-    total_tokens: 3513
-    reasoning_tokens: 495
+    prompt_tokens: 3547
+    completion_tokens: 352
+    total_tokens: 3899
+    reasoning_tokens: 52
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:49:52Z'
+  previous_text: You made me like clay—please remember that.[a] Will you turn me back to dust?[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:48Z'
+  previous_text: 'Please remember this: you made me like clay.[a] Will you return me to dust?[b]'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 941a8d847cd488638c88028540cda3e3bceba67c447e5a25902bfe771c362802
+  review_summary: The draft is clearer through shorter sentences and rightly preserves both the comparative “like clay” and the contextually warranted rhetorical question. Retain “And” at the start of the second sentence so the simplified wording continues to show the close creation-and-death contrast marked by the Hebrew conjunction and retained in POB.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

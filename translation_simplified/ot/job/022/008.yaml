@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/022/008.yaml
-  text: But the land belonged to the strong man[b][a], and the favored man lived in it.
+  text: But the land belonged to the strong man[a], and the favored man[b] lived in it.
   footnotes:
   - marker: a
     text: Literally, 'man of arm,' an idiom for a powerful or strong man.
@@ -34,57 +34,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But a powerful man held the land, and a man who was shown favor lived there.[a]
+  text: But a powerful man controlled the land, and a favored man lived there.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: This may mean a man who was honored, shown favor, or treated with partiality.
+    text: “Favored man” may also mean an honored man or one treated with partiality.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the strong man
-  simplified_phrase: a powerful man
-  preserved_meaning: The singular man is characterized by strength or power.
-  reasoning_layer_used: POB lexical decision for זְרוֹעַ
-  rationale: “Powerful” clearly conveys the idiom “man of arm” while retaining the singular form.
-- pob_phrase: the land belonged to
-  simplified_phrase: held the land
-  preserved_meaning: The powerful man possessed or controlled the land.
-  reasoning_layer_used: POB lexical decision for לוֹ הָאָרֶץ
-  rationale: “Held the land” expresses possession or control in concise modern English.
+- pob_phrase: the land belonged to the strong man
+  simplified_phrase: a powerful man controlled the land
+  preserved_meaning: The man’s strength was social power expressed through possession or control of the land.
+  reasoning_layer_used: POB lexical decisions for זְרוֹעַ and לוֹ הָאָרֶץ
+  rationale: “Powerful” and “controlled” state the idiom and possessive relationship in direct modern English.
 - pob_phrase: the favored man lived in it
-  simplified_phrase: a man who was shown favor lived there
-  preserved_meaning: A singular man who received social favor occupied the land.
+  simplified_phrase: a favored man lived there
+  preserved_meaning: A man who received favor or honor occupied the land.
   reasoning_layer_used: POB lexical decisions for נְשׂוּא פָנִים and יֵשֶׁב בָּהּ
-  rationale: The active wording around the recipient makes the received favor clearer while the footnote preserves its range.
+  rationale: “There” avoids the less natural pronoun while the note preserves the idiom’s range.
 translation_notes:
   risk_flags:
-  - risk: “Held the land” may suggest control more strongly than simple possession.
-    mitigation: The POB audit supports both possession and control for the underlying phrase.
-  - risk: “Shown favor” does not specify whether the treatment was honor or unjust partiality.
-    mitigation: The footnote preserves both possibilities without resolving the ambiguity.
+  - risk: “Favored” can suggest deserved approval rather than social privilege or partiality.
+    mitigation: The footnote preserves the possible senses of honor and partial treatment.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/022/008.yaml
   source_text_sha256: 8421f53f9f07c47f06b0b3574c1e544843ed08856a4776939a0170298fd06335
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 497a32effe1a613fb86f1912f4b9de069f7bd2ff328b38aa2b25ee9c355088e5
-  timestamp: '2026-07-12T09:39:41Z'
-  output_hash: 6a4b7f5af670b24cbe85823b869e3ebd856ec4fd829a6a473e283e18765c4daf
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 981740e21f33f93df979d87b9e2318fab156f5fc11782e6179128a732b93d5c9
+  timestamp: '2026-08-28T22:53:08Z'
+  output_hash: 3682636594915c2a70df9b8a6803cd6b55829141f35dc759f9d6c19e3bf28181
   usage:
-    prompt_tokens: 3258
-    completion_tokens: 565
-    total_tokens: 3823
-    reasoning_tokens: 145
+    prompt_tokens: 2514
+    completion_tokens: 708
+    total_tokens: 3222
+    reasoning_tokens: 372
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:41Z'
   previous_text: But powerful men held the land, and men treated with favor lived there.[a]
@@ -96,3 +87,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:08Z'
+  previous_text: But a powerful man held the land, and a man who was shown favor lived there.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:08Z'
+  previous_text: But a powerful man controlled the land, and a man who received favor lived there.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

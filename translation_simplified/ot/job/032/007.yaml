@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/032/007.yaml
-  text: I said[a], ‘Days should speak, and many years should make wisdom known.’
+  text: I thought, ‘Age should speak, and many years should make wisdom known.’[a]
   footnotes:
   - marker: a
-    text: Or 'I thought, “Age should speak, and many years should make wisdom known.”' The Hebrew uses 'days' and 'many years' metonymically for advanced age.
-    reason: lexical_alternative
+    text: More literally, “I said, ‘Days should speak.’”
+    reason: literal_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,55 +31,73 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I said[a], “Older people should speak, and those who have lived many years should make wisdom known.”
+  text: I thought, “Older people should speak, and those who have lived many years should make wisdom known.”
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “I thought.” Here “I said” introduces what Elihu had assumed.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Days should speak
+- pob_phrase: Age should speak
   simplified_phrase: Older people should speak
-  preserved_meaning: Advanced age is expected to give older people a reason to speak wisely.
+  preserved_meaning: Elihu expected people of advanced age to speak.
   reasoning_layer_used: POB lexical decision for יָמִים
-  rationale: This states the documented metonymy plainly for readers unfamiliar with the poetic use of “days.”
+  rationale: Naming the older people makes the metonymy clear without changing its meaning.
 - pob_phrase: many years should make wisdom known
   simplified_phrase: those who have lived many years should make wisdom known
-  preserved_meaning: Long experience is expected to communicate wisdom.
+  preserved_meaning: Elihu expected long-lived people to communicate wisdom.
   reasoning_layer_used: POB lexical decisions for וְרֹב שָׁנִים and יֹדִיעוּ
-  rationale: Adding the people implied by “many years” makes the sentence natural without reducing “make known” to “teach.”
+  rationale: The recasting identifies the people implied by “many years” while retaining the broad phrase “make wisdom known.”
 interpretive_expansions:
-- pob_phrase: Days
-  rendering: Older people
-  claim: “Days” refers to people of advanced age.
+- pob_phrase: many years
+  rendering: those who have lived many years
+  claim: The years represent the people who have lived them.
   evidence:
-  - The POB footnote identifies “days” as a metonym for advanced age.
-  - The plural verb “should speak” presents the days as people who can speak.
+  - The parallel phrase “Age should speak” points to older speakers.
+  - The POB rationale treats “days” as a reference to advanced age.
   confidence: high
   alternatives_preserved:
-  - The parallel phrase “those who have lived many years” retains the source image of accumulated years.
+  - many years
+  - length of years
 translation_notes:
   risk_flags:
-  - risk: Replacing the personified “Days” with “Older people” reduces the compact poetic image.
-    mitigation: The parallel reference to people who have lived many years preserves the age-and-years imagery.
+  - risk: Turning “many years” into people makes the poetic metonymy explicit.
+    mitigation: The parallel wording and POB lexical reasoning directly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/032/007.yaml
   source_text_sha256: 4583080e9e2834cd461d6da82f1e7cd6c9d78edf0fcde09a6e8343a6c00af4ab
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6a4815d80af9ad7aa3b6f6984954df8550a0451c34d6685c0a1dc283f31c14dd
-  timestamp: '2026-07-11T20:24:54Z'
-  output_hash: ce2827d0895c2a671b5184d67362e4eae937cbccbe1d98599efd65ae2e19704b
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4ea0f8a8bb6806d1e48834f39b54ffb89433d21a9d62ba94aaf8b81010065ec6
+  timestamp: '2026-08-28T23:34:52Z'
+  output_hash: e94c7115cafcfa5664129a67a07752b19c0fd702c37fa9a971d4d0c5b538453f
   usage:
-    prompt_tokens: 2404
-    completion_tokens: 936
-    total_tokens: 3340
-    reasoning_tokens: 512
+    prompt_tokens: 3273
+    completion_tokens: 421
+    total_tokens: 3694
+    reasoning_tokens: 53
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:05Z'
+  previous_text: I said[a], “Older people should speak, and those who have lived many years should make wisdom known.”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:51:13Z'
+  previous_text: I thought, “Older people should speak, and those who have lived many years should make wisdom known.”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:52Z'
+  previous_text: I thought, “Older people should speak, and those who have lived many years should share their wisdom.”
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: dfa261b6aa48f8ab28f99b1da5ea389ddad84a360b1a86973c797bb6fe295a9c
+  review_summary: 'The concrete recasting of “Age” as “Older people,” and of “many years” as people who have lived many years, is a warranted and helpful clarification of the verse’s metonymy and parallelism. Revise only the final verb phrase: retain “make wisdom known” rather than adding the unsupported possessive implication in “share their wisdom.”'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

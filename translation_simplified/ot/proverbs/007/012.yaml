@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/007/012.yaml
-  text: In the street[a], now in the squares[b], and beside every corner she lies in wait.
-  footnotes:
-  - marker: a
-    text: Or 'Sometimes outside, sometimes in the plazas.' The Hebrew repeats 'פַּעַם' for alternating movement from place to place.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'she lurks' or 'she waits in ambush.' The verb suggests stealthy, predatory waiting.
-    reason: lexical_alternative
+  text: Sometimes outside, sometimes in the squares, and beside every corner she lies in wait.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,55 +27,44 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: She is sometimes in the street, sometimes in the public squares, lying in wait near every corner.
+  text: She is sometimes outside and sometimes in the public squares. She lies in wait near every corner.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: In the street, now in the squares
-  simplified_phrase: She is sometimes in the street, sometimes in the public squares
-  preserved_meaning: She appears first in one public location and then another.
-  reasoning_layer_used: POB lexical decisions for פַּעַם ... פַּעַם, בַּחוּץ, and בָּרְחֹבוֹת
-  rationale: “Sometimes ... sometimes” clearly conveys alternation without asserting travel between locations.
-- pob_phrase: beside every corner she lies in wait
-  simplified_phrase: lying in wait near every corner
-  preserved_meaning: She waits stealthily at strategic corners for someone to approach.
-  reasoning_layer_used: POB lexical decisions for וְאֵצֶל, כָּל פִּנָּה, and תֶאֱרֹב
-  rationale: The recast clause improves flow while preserving the predatory image.
-interpretive_expansions:
-- pob_phrase: In the street, now in the squares
-  rendering: She is sometimes in the street, sometimes in the public squares
-  claim: The repeated expression presents her at alternating public locations.
-  evidence:
-  - The POB lexical rationale says פַּעַם ... פַּעַם marks alternation or shifting location.
-  confidence: high
-  alternatives_preserved:
-  - Now in the street, now in the public squares.
-  - At one time in the street, at another in the public squares.
+- pob_phrase: Sometimes outside, sometimes in the squares
+  simplified_phrase: She is sometimes outside and sometimes in the public squares
+  preserved_meaning: Her location alternates between being outside and being in open public gathering places.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: Adding the subject and “public” makes the locations immediately clear while preserving the repeated alternation.
+- pob_phrase: and beside every corner she lies in wait
+  simplified_phrase: She lies in wait near every corner
+  preserved_meaning: She waits close to each corner with a predatory purpose.
+  reasoning_layer_used: POB lexical decisions
+  rationale: A separate sentence and ordinary word order make the warning easier to follow without weakening the ambush image.
 translation_notes:
   risk_flags:
-  - risk: “Sometimes” may sound less vivid than the Hebrew repetition.
-    mitigation: Repeating “sometimes” preserves the source pattern and avoids implying continuous travel.
+  - risk: “Public squares” may suggest formal civic plazas more specifically than the Hebrew requires.
+    mitigation: The POB rationale identifies open public places or plazas, so the wording remains within its documented range.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/007/012.yaml
   source_text_sha256: 29655b5a73d4e845f2edd6136b0bf0d088b271fc12a0ca1013f69bfd88208370
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 455ea70bcef1e9445a72fe4128154970233e374d7c70e55ddb3382e22783cd8c
-  timestamp: '2026-07-12T09:51:48Z'
-  output_hash: 0affffbd026bce313d717073786c94dbc08f57d8faeafda0328f99d4650e2d92
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 233c09e84e4a5a2a54664ba88221b33775b486fdfc75dd05e55a4552599cea42
+  timestamp: '2026-08-28T23:04:28Z'
+  output_hash: 76d42873b58825217076f0d57d2c4e83d08a36d14290e6496a1b8f5a5b082b61
   usage:
-    prompt_tokens: 3304
-    completion_tokens: 420
-    total_tokens: 3724
-    reasoning_tokens: 0
+    prompt_tokens: 2558
+    completion_tokens: 401
+    total_tokens: 2959
+    reasoning_tokens: 121
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:51:48Z'
   previous_text: She moves between the street and the public squares, lying in wait near every corner.
@@ -93,3 +75,8 @@ spob_revision_history:
   review_summary: The draft is clearer than the POB, especially by identifying the locations as public squares and retaining the predatory sense of lying in wait. However, “moves between” adds a specific action—travel between the two locations—that the alternating Hebrew expression need not state. “Sometimes ... sometimes” communicates the warranted alternation plainly without narrowing the picture to continuous movement.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:04:28Z'
+  previous_text: She is sometimes in the street, sometimes in the public squares, lying in wait near every corner.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

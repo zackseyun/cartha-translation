@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/112/006.yaml
-  text: For he will never be shaken[a]; the righteous will be remembered forever.
+  text: For he will never be shaken; the righteous[a] will be remembered forever.
   footnotes:
   - marker: a
-    text: Hebrew 'the righteous man'; the singular masculine form is representative of the righteous person in general.
+    text: Hebrew “the righteous man”; the singular masculine form represents a righteous person generally.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,72 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 112:6 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the righteous man''].'
 translation:
   language: en
-  text: For a righteous man will always stand firm, and he will be remembered forever.[a]
+  text: For he will never be shaken. A righteous person[a] will be remembered forever.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew uses a masculine singular form to represent any righteous person.
+    text: Hebrew “the righteous man”; the singular masculine form represents a righteous person generally.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: he will never be shaken
-  simplified_phrase: a righteous man will always stand firm
-  preserved_meaning: The righteous person has lasting stability and will not be made to totter.
-  reasoning_layer_used: The lexical decision for לְעוֹלָם with לֹא יִמּוֹט and the psalmic stability image.
-  rationale: The positive wording is easier to grasp while preserving the image of firm stability.
-- pob_phrase: the righteous will be remembered forever
-  simplified_phrase: he will be remembered forever
-  preserved_meaning: The righteous man's memory will endure.
-  reasoning_layer_used: The lexical decision for לְזֵכֶר עוֹלָם and the representative masculine decision for צַדִּיק.
-  rationale: The pronoun avoids repetition while keeping the enduring-remembrance theme and singular referent.
+- pob_phrase: For he will never be shaken;
+  simplified_phrase: For he will never be shaken.
+  preserved_meaning: The righteous person has enduring stability and cannot be made to totter.
+  reasoning_layer_used: POB lexical decisions for לְעוֹלָם and יִמּוֹט
+  rationale: A sentence break makes the verse easier to read while retaining the passive stability image.
+- pob_phrase: the righteous
+  simplified_phrase: A righteous person
+  preserved_meaning: The Hebrew singular describes a representative righteous individual.
+  reasoning_layer_used: POB footnote and theological decision on צַדִּיק
+  rationale: The wording makes the generic singular clear while the note preserves the Hebrew masculine form.
+interpretive_expansions:
+- pob_phrase: the righteous
+  rendering: A righteous person
+  claim: The singular refers generally to a person characterized as righteous.
+  evidence:
+  - The POB footnote says the masculine singular represents a righteous person generally.
+  - The theological rationale identifies a representative wisdom-category individual.
+  confidence: high
+  alternatives_preserved:
+  - the righteous
+  - the righteous man
 translation_notes:
   risk_flags:
-  - risk: Changing “never be shaken” to “always stand firm” reverses the grammatical form of the image.
-    mitigation: The wording retains the same emphatic permanence and stability rather than replacing the image with an abstract claim.
+  - risk: “A righteous person” does not display the Hebrew masculine singular in the main text.
+    mitigation: The footnote preserves the source form and explains its representative function.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/112/006.yaml
   source_text_sha256: ad7995c7030ba0567235ba0f04bec45db06b2335792d86fa0e039d71dc1d1adb
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2662114326fe1f161d15c853f43f50f008761c39f2fa1807e9c11007e328009a
-  timestamp: '2026-07-11T21:04:00Z'
-  output_hash: 242662ceb2796c0ee4617e129b027bd8b8c22eafa87cf2d74663fe79b6957ffc
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f2f824735c348e377539edf58e3544ca2afe687d1b76f2edc8f160e232a8072b
+  timestamp: '2026-08-28T23:36:07Z'
+  output_hash: 19a2fd22ea9cd64ea2e746be26747b1f0f848170fd5935c8fcaeaba89f720dea
   usage:
-    prompt_tokens: 2677
-    completion_tokens: 576
-    total_tokens: 3253
-    reasoning_tokens: 238
+    prompt_tokens: 3811
+    completion_tokens: 375
+    total_tokens: 4186
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:00:25Z'
+  previous_text: For a righteous man will always stand firm, and he will be remembered forever.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:07Z'
+  previous_text: For he will always stand firm. A righteous person[a] will be remembered for all time.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f3723a8abd5f43c7ccad26a8c6bbb6a734c07068189687e3efe0e542174bbddb
+  review_summary: 'The generic-singular clarification “A righteous person” is warranted by the Hebrew and the POB audit trail and improves readability without imposing doctrine. Revise the two altered stability/duration expressions: they do not improve clarity enough to justify softening or recasting the POB’s more exact assurance of unshakable, everlasting remembrance.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

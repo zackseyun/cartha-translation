@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/035.yaml
-  text: It ate all the vegetation in their land[a][b], and it ate the fruit of their ground.
+  text: It ate all the vegetation[a] in their land, and it ate the fruit of their ground[b].
   footnotes:
   - marker: a
-    text: Or 'produce of their soil' for 'fruit of their ground.'
+    text: Or “grass.” The Hebrew עֵשֶׂב can refer specifically to grass or more broadly to plant growth.
     reason: lexical_alternative
   - marker: b
-    text: Or 'grass' for 'vegetation.' The Hebrew עֵשֶׂב can refer specifically to grass or more broadly to plant growth.
+    text: Or “the produce of their soil.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,79 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: It ate all the plants in their land,[a] and it ate the crops their soil produced.
+  text: The swarm ate every plant in their land and all the produce from their soil.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “grass.” The Hebrew word can mean grass specifically or plant growth more broadly.
+    text: The Hebrew can refer specifically to grass and can describe the ground’s yield as its fruit or produce.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: It ate
+  simplified_phrase: The swarm ate
+  preserved_meaning: The singular collective agent was the locust swarm mentioned just before this verse.
+  reasoning_layer_used: POB lexical rationale and immediate context
+  rationale: Naming the swarm makes the pronoun’s referent clear.
 - pob_phrase: all the vegetation
-  simplified_phrase: all the plants
+  simplified_phrase: every plant
   preserved_meaning: The swarm ate all the plant growth in the land.
   reasoning_layer_used: POB lexical decision for עֵשֶׂב
-  rationale: “Plants” is more familiar than “vegetation” while preserving the broad collective sense.
+  rationale: “Every plant” expresses the broad sense in common English.
 - pob_phrase: the fruit of their ground
-  simplified_phrase: the crops their soil produced
-  preserved_meaning: The swarm ate the agricultural yield that came from their soil.
-  reasoning_layer_used: POB lexical decisions for פְּרִי and אַדְמָתָם
-  rationale: This wording makes the agricultural image clear and keeps soil distinct from land.
+  simplified_phrase: all the produce from their soil
+  preserved_meaning: The swarm ate the full agricultural yield of their soil without limiting it to field crops.
+  reasoning_layer_used: POB lexical decisions for פְּרִי and אֲדָמָה
+  rationale: “Produce” clearly conveys the phrase’s broad agricultural sense.
+interpretive_expansions:
+- pob_phrase: It
+  rendering: The swarm
+  claim: The singular subject refers to the locust swarm sent in the preceding context.
+  evidence:
+  - The POB lexical rationale identifies a singular collective locust or devouring swarm.
+  - The preceding verse supplies the locusts as the agent.
+  confidence: high
+  alternatives_preserved:
+  - it
+  - they
 translation_notes:
   risk_flags:
-  - risk: “Crops” is less literally pictorial than “fruit.”
-    mitigation: The POB lexical record permits “produce,” and the agricultural context supports this clear equivalent.
+  - risk: “Every plant” may obscure the narrower possible meaning “grass.”
+    mitigation: The footnote preserves that lexical alternative.
+  - risk: “Produce” makes the agricultural sense of “fruit” explicit.
+    mitigation: The footnote preserves the source image of the ground’s fruit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/035.yaml
   source_text_sha256: f024fb96168e50daebdb75f998c4f1a60ea18e425825e0afcd07ea35e9776d85
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 9b06500bdd4afe0cdb31191c6e86a7d5f018c8c5c805bfecccc621e45c2155f4
-  timestamp: '2026-07-11T21:01:53Z'
-  output_hash: 320328a6873aed7c963a154c2234202fad507a3aad95ef4c2f294c3abc00af2d
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 7ddda3a8e17ad72dc378091d0f17c26693b19482b0794bf077ca4f0144c6365d
+  timestamp: '2026-08-28T23:36:01Z'
+  output_hash: 7ef0a0709deff9f9a39a9e86a99f97a418264eb415a13b9fb75ef6bd6c70264d
   usage:
-    prompt_tokens: 2345
-    completion_tokens: 812
-    total_tokens: 3157
-    reasoning_tokens: 512
+    prompt_tokens: 3478
+    completion_tokens: 462
+    total_tokens: 3940
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:01:25Z'
+  previous_text: It ate all the plants in their land,[a] and it ate the crops their soil produced.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:01Z'
+  previous_text: The swarm ate every plant in their land and every crop that grew from their soil.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 1075f659914a8fdaa8770c65a5944043db871ecc87c1621fb7f9a882b1e14dbc
+  review_summary: 'Naming the swarm is a warranted and useful clarification: the preceding verse supplies the locust/devouring swarm, and the POB audit trail identifies a singular collective agent. “Every plant” clearly communicates the total destruction of vegetation while the footnote retains the possible narrower sense, “grass.” Revise only the second phrase: “every crop” may restrict the broad fruit/yield of the ground. “All the produce from their soil” preserves the agricultural sense and the source’s breadth in clear modern English.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

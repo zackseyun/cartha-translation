@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/079/007.yaml
-  text: For they have devoured Jacob and laid waste his dwelling place[a].
-  footnotes:
-  - marker: a
-    text: Or 'Because they have consumed Jacob and made his habitation desolate.'
-    reason: lexical_alternative
+  text: For they have devoured Jacob and laid waste his dwelling place.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,47 +27,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For they have devoured Jacob and left his dwelling place in ruins.[a]
+  text: For they have devoured Jacob’s people and devastated their home.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: “Jacob” is the poetic covenant name for the people of Israel; “his dwelling place” refers broadly to where they lived, not necessarily only to the temple.
-    reason: source_note
 simplification_decisions:
+- pob_phrase: Jacob
+  simplified_phrase: Jacob’s people
+  preserved_meaning: Jacob is the covenant name for the people being attacked.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: The added word “people” prevents readers from mistaking Jacob for the individual patriarch.
 - pob_phrase: laid waste
-  simplified_phrase: left ... in ruins
-  preserved_meaning: The attackers caused Jacob’s dwelling place to become desolate.
-  reasoning_layer_used: The lexical decision for הֵשַׁמּוּ and its Hiphil force.
-  rationale: The new wording states the destructive result in familiar English while retaining the verb’s force.
+  simplified_phrase: devastated
+  preserved_meaning: The attackers caused severe destruction and desolation.
+  reasoning_layer_used: POB lexical decision for הֵשַׁמּוּ
+  rationale: “Devastated” expresses the destructive force in direct modern English.
 - pob_phrase: his dwelling place
-  simplified_phrase: his dwelling place
-  preserved_meaning: The wording refers broadly to Jacob or Israel’s habitation without limiting it to the temple.
-  reasoning_layer_used: The theological decision on the referent of נָוֵהוּ.
-  rationale: The phrase is retained because a narrower modern equivalent would resolve an ambiguity the POB preserves.
+  simplified_phrase: their home
+  preserved_meaning: The place inhabited by Jacob’s people was destroyed without specifying the temple or the land.
+  reasoning_layer_used: POB lexical and theological decisions for נָוֵהוּ
+  rationale: “Their home” is readily understood while keeping the place itself broad.
+interpretive_expansions:
+- pob_phrase: Jacob
+  rendering: Jacob’s people
+  claim: The name Jacob refers corporately to the covenant people descended from him.
+  evidence:
+  - The POB identifies “the descendants of Jacob” and “Israel” as viable senses.
+  - The hostile nations attack a living community rather than the long-dead patriarch.
+  - The parallel reference to their habitation supports a corporate referent.
+  confidence: high
+  alternatives_preserved:
+  - Jacob as the poetic covenant name
+  - Israel
+  - the descendants of Jacob
 translation_notes:
   risk_flags:
-  - risk: Modern readers may mistake Jacob for the individual patriarch rather than Israel collectively.
-    mitigation: The footnote identifies Jacob as the poetic covenant name for Israel.
-  - risk: Readers may assume the dwelling place means only the temple.
-    mitigation: The footnote preserves the broader corporate and geographical sense.
+  - risk: “Jacob’s people” makes the corporate sense more explicit than the Hebrew form.
+    mitigation: The clarification follows the immediate context while retaining the covenant name Jacob.
+  - risk: “Home” may sound narrower than Israel’s full habitation.
+    mitigation: It remains unqualified so it does not specify the temple, city, or land.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/079/007.yaml
   source_text_sha256: ec8b2600b59f5e139cf73ad091e6dc0322b81f6e1f6d7a389be510fb1fa67051
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: d162222f15d234f49a404121d98b427c09a1522688ce1047e5b54f8c36a50b32
-  timestamp: '2026-07-11T21:02:33Z'
-  output_hash: a7828190d8a9eee022f21169cfae02827d90a94e75b93b4c5984bb66b42514b3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a7f654d3e7f28622b6c7bfdf927c869e1eae9b87d346c31736fad26091887079
+  timestamp: '2026-08-28T23:35:50Z'
+  output_hash: 6bf5dd3c5e82c12777cd8a523fdc22666968017b92a2337e7b4463c05a365b51
   usage:
-    prompt_tokens: 2363
-    completion_tokens: 592
-    total_tokens: 2955
-    reasoning_tokens: 248
+    prompt_tokens: 3219
+    completion_tokens: 773
+    total_tokens: 3992
+    reasoning_tokens: 314
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:32Z'
+  previous_text: For they have devoured Jacob and left his dwelling place in ruins.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:50Z'
+  previous_text: For they have devoured Jacob and devastated his home.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a8841e4a7ea27640270c8fe493cd79e44821183052116e0dfb7e43e4a30ccc9a
+  review_summary: “Devastated” is a warranted, clearer rendering of “laid waste.” “Home” can also serve as a clear broad rendering of “dwelling place.” However, the current text preserves “Jacob” in a way that can obscure the actual corporate referent for modern readers. “Jacob’s people” makes the personification understandable while retaining the covenant-name connection and leaving the nature of their habitation appropriately open.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

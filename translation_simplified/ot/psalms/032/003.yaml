@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/032/003.yaml
-  text: For when I kept silent[a], my bones wasted away through my groaning all day long.
+  text: For when I kept silent, my bones wasted away through my groaning[a] all day long.
   footnotes:
   - marker: a
-    text: Or 'through my roaring.' The Hebrew term can denote a loud cry like roaring, but here likely refers to anguished groaning.
+    text: Or “through my roaring.” The Hebrew term can denote a loud cry like roaring, but here likely refers to anguished groaning.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,50 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For when I kept silent, my bones wasted away through my groaning[a] all day long.
+  text: For while I kept silent, my bones wasted away as I groaned all day long.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “roaring.” The Hebrew can describe a loud cry like a roar, but here it likely expresses anguished groaning.
+    text: Or “as I roared.” The Hebrew describes a loud cry of anguish.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: For when I kept silent
+  simplified_phrase: For while I kept silent
+  preserved_meaning: His continuing silence was the circumstance in which his suffering continued.
+  reasoning_layer_used: POB lexical decision for כִּי and הֶחֱרַשְׁתִּי
+  rationale: “While” makes the ongoing relationship natural without stating what he kept silent about.
 - pob_phrase: through my groaning all day long
-  simplified_phrase: through my groaning[a] all day long
-  preserved_meaning: His anguished cries accompanied his deterioration throughout the day.
-  reasoning_layer_used: Lexical decisions for בְּשַׁאֲגָתִי and כָּל הַיּוֹם
-  rationale: The footnote explains the forceful Hebrew image while the main text uses clear contextual English.
+  simplified_phrase: as I groaned all day long
+  preserved_meaning: His anguished cries accompanied his suffering throughout the day.
+  reasoning_layer_used: POB lexical decision for בְּשַׁאֲגָתִי and כָּל הַיּוֹם
+  rationale: The verb “groaned” is easier to process while retaining the anguish and duration.
 translation_notes:
   risk_flags:
-  - risk: Readers may not know what the psalmist kept silent about.
-    mitigation: The verse leaves the object unstated, as the Hebrew and POB do, so the surrounding context supplies it.
+  - risk: Readers may not know that the silence concerns sin.
+    mitigation: The verse leaves this implicit, as the Hebrew and POB do, so the surrounding context supplies it.
+  - risk: “Groaned” softens the possible image of roaring.
+    mitigation: The footnote preserves the stronger lexical alternative and identifies the cry as anguished.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/032/003.yaml
   source_text_sha256: 8bc36f9b7d1dcdd43d8c6a5865f509ca5cd058cba58f8a3f328d6013f199fafa
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 9647c6500e67f0ec56e615e27602c2361ef2e607e4667210c91b9d2f2096583b
-  timestamp: '2026-07-12T09:59:27Z'
-  output_hash: 075f0dbb01245d0323e35e24bdbae0b16a3cd6192c7caf07a56a57e5bca18b46
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: c17243e23ee19a70e12c091e997c85969665d1e310750cfd01a77e7d6ac4ad40
+  timestamp: '2026-08-28T22:53:19Z'
+  output_hash: 984c188e3a263a91aecd7cfd602c381a986d5e12fd8af92f055a0503fdb1176d
   usage:
-    prompt_tokens: 3365
-    completion_tokens: 370
-    total_tokens: 3735
-    reasoning_tokens: 108
+    prompt_tokens: 2648
+    completion_tokens: 599
+    total_tokens: 3247
+    reasoning_tokens: 232
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:27Z'
   previous_text: When I kept silent, my bones wasted away as I groaned[a] all day long.
@@ -81,3 +86,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:19Z'
+  previous_text: For when I kept silent, my bones wasted away through my groaning[a] all day long.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

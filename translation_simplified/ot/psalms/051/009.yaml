@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/051/009.yaml
-  text: Let me hear joy and gladness[a][b][c]; let the bones you have crushed rejoice.
+  text: Let me hear joy and gladness[c]; let the bones[b] you have crushed[a] rejoice.
   footnotes:
   - marker: a
-    text: Or 'the bones you have broken.'
+    text: Or 'broken.'
     reason: alternative_reading
   - marker: b
     text: Hebrew 'the bones'; context implies the psalmist's own bones.
@@ -37,52 +37,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Let me hear joy and gladness; let my bones you have crushed rejoice.
+  text: Let me hear sounds of joy and gladness. Let my bones, which you have crushed[a], rejoice.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “broken.”
+    reason: alternative_reading
 simplification_decisions:
+- pob_phrase: Let me hear joy and gladness
+  simplified_phrase: Let me hear sounds of joy and gladness
+  preserved_meaning: The psalmist asks God to cause him to hear expressions of renewed joy.
+  reasoning_layer_used: lexical decision and poetic context
+  rationale: Adding “sounds of” makes the hearing image natural without weakening the petition.
 - pob_phrase: the bones you have crushed
-  simplified_phrase: my bones you have crushed
-  preserved_meaning: The bones are the psalmist’s, and the crushing remains a vivid image of affliction directly attributed to God.
-  reasoning_layer_used: Lexical and theological decisions for עֲצָמוֹת and דִּכִּיתָ
-  rationale: Making the implied possessor explicit improves clarity without weakening the image or divine agency.
+  simplified_phrase: my bones, which you have crushed
+  preserved_meaning: The crushed bones are the psalmist’s, and God remains directly named as the one who crushed them.
+  reasoning_layer_used: lexical and theological decisions
+  rationale: “My” clarifies the context while preserving the Hebrew image and divine agency.
 interpretive_expansions:
+- pob_phrase: hear joy and gladness
+  rendering: hear sounds of joy and gladness
+  claim: Joy and gladness are presented as something the psalmist can hear.
+  evidence:
+  - The verb takes “joy and gladness” as what is heard.
+  - The POB retains the hearing image as a petition.
+  confidence: high
+  alternatives_preserved:
+  - Let me hear joy and gladness
+  - Cause me to hear joy and gladness
 - pob_phrase: the bones
   rendering: my bones
-  claim: The bones belong to the psalmist.
+  claim: The bones belong to the praying psalmist.
   evidence:
-  - The surrounding prayer is in the first person.
-  - The POB rationale says the context strongly implies the psalmist’s own bones.
+  - The immediate prayer is spoken in the first person.
+  - The POB footnote says the context implies the psalmist’s own bones.
   confidence: high
   alternatives_preserved:
   - the bones
 translation_notes:
   risk_flags:
-  - risk: “My bones” states a possessor that is implicit in Hebrew.
-    mitigation: The immediate context and POB reasoning strongly support the first-person reference.
-  - risk: Readers may soften the crushing into general suffering.
-    mitigation: The direct wording still says that God crushed the bones.
+  - risk: “Sounds of” is implied rather than directly stated in Hebrew.
+    mitigation: The wording only clarifies the auditory image already required by “hear.”
+  - risk: “My” is contextual rather than morphologically explicit.
+    mitigation: The POB footnote identifies this implication, while the bone image remains intact.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/051/009.yaml
   source_text_sha256: f611146d9c48c4ce53325cdd85367159ea8a8e05df5a9d25194792c02cfa3d0a
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7ef934989067c3088acd5ecd4ac6f6c0c21d493f496234b35b2d7d71ff16ced8
-  timestamp: '2026-07-12T10:01:50Z'
-  output_hash: f17902526259b0c6e270d8a9b876fbe177fbdf10a426c4f60e65830d60ab7314
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 0e09a2238d329a010b8ca175b1d9ad995509f19a6ad999e370d26a60f8b88242
+  timestamp: '2026-08-28T22:54:40Z'
+  output_hash: 364ba2a19a256c9ad019ac8d8e78eeffcb4db00cefcac9aa01fc5b4763b86087
   usage:
-    prompt_tokens: 3441
-    completion_tokens: 302
-    total_tokens: 3743
-    reasoning_tokens: 0
+    prompt_tokens: 2724
+    completion_tokens: 833
+    total_tokens: 3557
+    reasoning_tokens: 333
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:01:50Z'
   previous_text: Let joy and gladness reach my ears; let my bones, which you have crushed, rejoice.
@@ -93,3 +111,8 @@ spob_revision_history:
   review_summary: 'The explicit “my bones” is warranted: the immediate first-person prayer and the POB audit trail both strongly identify the implied possessor, while the direct attribution of crushing to God remains intact. However, “reach my ears” is neither a necessary clarification nor a reliably equivalent simplification of the causative request to hear joy and gladness. Restore the POB’s natural first clause. The recommended wording makes the implicit possessor clear without weakening the image or resolving theological tension.'
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:54:40Z'
+  previous_text: Let me hear joy and gladness; let my bones you have crushed rejoice.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

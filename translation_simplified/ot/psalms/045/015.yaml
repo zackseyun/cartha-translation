@@ -34,43 +34,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They will be escorted with gladness and rejoicing. They will go into the king’s palace.
+  text: They will be led with gladness and rejoicing. They will enter the king’s palace.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew word can mean “palace,” “hall,” or, in other settings, “temple.” Here the royal wedding setting points to the king’s palace.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: They will be led
-  simplified_phrase: They will be escorted
-  preserved_meaning: They are brought along as part of the royal wedding procession.
-  reasoning_layer_used: Lexical decision for תּוּבַלְנָה and the immediate wedding context
-  rationale: “Escorted” is a clear accepted alternative that keeps the passive processional sense.
-- pob_phrase: they will enter the palace of the king
-  simplified_phrase: They will go into the king’s palace
-  preserved_meaning: They proceed inside the specific king’s royal residence.
-  reasoning_layer_used: Lexical decisions for תְּבֹאֶינָה, בְּהֵיכַל, and מֶלֶךְ
-  rationale: The possessive form and “go into” express the same meaning in more familiar English.
+- pob_phrase: They will be led with gladness and rejoicing; they will enter
+  simplified_phrase: They will be led with gladness and rejoicing. They will enter
+  preserved_meaning: The women are led in celebration and then enter the palace.
+  reasoning_layer_used: POB syntax and immediate wedding context
+  rationale: Two sentences make the sequence easier to follow without adding direction to the Hebrew verb.
+- pob_phrase: the palace of the king
+  simplified_phrase: the king’s palace
+  preserved_meaning: They enter the specific royal residence in the wedding setting.
+  reasoning_layer_used: Lexical decision for הֵיכָל and contextual definiteness of מֶלֶךְ
+  rationale: The possessive form is more natural modern English and keeps the same royal reference.
 translation_notes:
   risk_flags:
-  - risk: “They” does not identify the women in the procession.
-    mitigation: The pronoun is retained so the bridal-party referent is not specified beyond the Hebrew and context.
-  - risk: “Palace” could obscure that the Hebrew word can mean a hall or temple elsewhere.
-    mitigation: The royal wedding setting supports “palace” as the controlling contextual meaning.
+  - risk: “Palace” narrows a Hebrew word that can also mean “hall” or “temple.”
+    mitigation: The footnote preserves the alternatives while the royal wedding context supports “palace.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/045/015.yaml
   source_text_sha256: 46ac761e87d14c42129d780671764069e825e55a2fafae10d679061ce9776db9
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 60a403f21ccc46f439f85de715cb32636a4b9a8039083c006e972bb309b9031e
-  timestamp: '2026-07-11T20:25:52Z'
-  output_hash: c5bdab37acd0fa4caf860cc98dcbd3dc6d67de17c8cbe54173d02269c681dd5d
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 86ca37f5ef31cb97c0da04b352d5a8a16996f870990a521fe02daacd29c182a1
+  timestamp: '2026-08-28T23:35:23Z'
+  output_hash: b0e731661679e172210dfa95aad4ad30358fa56a54fc9fc825395454fb0cf4c3
   usage:
-    prompt_tokens: 2456
-    completion_tokens: 1085
-    total_tokens: 3541
-    reasoning_tokens: 742
+    prompt_tokens: 3235
+    completion_tokens: 401
+    total_tokens: 3636
+    reasoning_tokens: 59
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:56Z'
+  previous_text: They will be escorted with gladness and rejoicing. They will go into the king’s palace.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:23Z'
+  previous_text: They will be led forward amid gladness and rejoicing. They will enter the king’s palace.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: f2efba50a931f00eb2bfd0983ad64ed5543549b00545b0fbe8de26676cbdbd0d
+  review_summary: 'The draft correctly retains the feminine-plural referent without over-identifying the women, preserves the paired celebration terms, and rightly renders הֵיכָל as a palace in this royal-wedding context. “The king’s palace” is a natural modern-English improvement. Revise only the phrase “led forward amid”: it is not needed for comprehension and is less direct than the POB’s contextually sound wording.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

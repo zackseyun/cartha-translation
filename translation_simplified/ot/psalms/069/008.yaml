@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/069/008.yaml
-  text: I have become a stranger to my brothers[a][b], and a foreigner to my mother's sons.
+  text: I have become[b] a stranger to my brothers, and a foreigner to my mother's sons[a].
   footnotes:
   - marker: a
     text: Hebrew 'my mother's sons,' a poetic way of referring to close family members, especially brothers.
@@ -34,45 +34,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I have become a stranger to my own brothers,[a] a foreigner to my mother’s sons.
+  text: I have become[b] an outsider to my brothers, a foreigner to my own mother’s sons.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may also mean “I was a stranger” or “I became a stranger.”
+    text: “My mother’s sons” is a poetic way of referring to close family members, especially brothers.
+    reason: cultural_note
+  - marker: b
+    text: Or “I was an outsider” or “I became an outsider”; the Hebrew may describe either the past state or the change into it.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: to my brothers
-  simplified_phrase: to my own brothers
-  preserved_meaning: The psalmist is estranged from his actual brothers.
-  reasoning_layer_used: Lexical and theological decisions on gendered kinship language
-  rationale: “Own” makes the painful closeness of the relationship immediately clear without generalizing “brothers.”
+- pob_phrase: a stranger to my brothers
+  simplified_phrase: an outsider to my brothers
+  preserved_meaning: He has become alienated from his brothers and is treated as someone who does not belong.
+  reasoning_layer_used: POB lexical decision for מוּזָר
+  rationale: “Outsider” communicates relational estrangement more directly in common English.
 - pob_phrase: and a foreigner to my mother's sons
-  simplified_phrase: a foreigner to my mother’s sons
-  preserved_meaning: The parallel line intensifies his alienation from his closest male family members.
-  reasoning_layer_used: Lexical decision and Hebrew poetic parallelism
-  rationale: Removing “and” gives the English line a smoother parallel structure while retaining both family terms and the foreigner image.
+  simplified_phrase: a foreigner to my own mother’s sons
+  preserved_meaning: The intensified second predicate says that even his closest male relatives regard him as foreign.
+  reasoning_layer_used: POB lexical and theological decisions for וְנָכְרִי and לִבְנֵי אִמִּי
+  rationale: The coordinated predicate retains the categorical foreigner image and masculine kinship language.
+interpretive_expansions:
+- pob_phrase: my mother's sons
+  rendering: my own mother’s sons
+  claim: The men described are the speaker’s especially close family members.
+  evidence:
+  - The first-person phrase identifies them as sons of the speaker’s mother.
+  - The POB cultural note explains the phrase as close family members, especially brothers.
+  confidence: high
+  alternatives_preserved:
+  - my mother’s sons
 translation_notes:
   risk_flags:
-  - risk: “My mother’s sons” may sound less natural than “my brothers.”
-    mitigation: It is retained because the Hebrew repeats masculine kinship language for poetic force.
+  - risk: “Outsider” is less concrete than POB’s “stranger.”
+    mitigation: The parallel predicate “a foreigner” preserves the concrete image and intensifies the alienation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/069/008.yaml
   source_text_sha256: 4d36bcc3250c75ba1873cf1c5ae23678d694f6d6aa0c5297ed9f7d5a35028fb8
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6f396e054ea7633a610da5b014781e7a83d879d267d7f06a33115aa5f36b7b49
-  timestamp: '2026-07-11T20:51:12Z'
-  output_hash: 0afa4b5c737579f339bebaca906b63b739015c81cb1d816b78d43f80cc250b39
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 01a78053d541c7bad79cbbee87c9b5ae17d245b0c86c20b90c2275508741d948
+  timestamp: '2026-08-28T23:35:39Z'
+  output_hash: c18278f25ea09699c4240eff2ee15746441373f408ee1b163a7512aa70b94de0
   usage:
-    prompt_tokens: 2372
-    completion_tokens: 603
-    total_tokens: 2975
-    reasoning_tokens: 290
+    prompt_tokens: 3392
+    completion_tokens: 660
+    total_tokens: 4052
+    reasoning_tokens: 191
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:30Z'
+  previous_text: I have become a stranger to my own brothers,[a] a foreigner to my mother’s sons.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:39Z'
+  previous_text: I have become[b] an outsider to my brothers. I am like a foreigner to my own mother’s sons.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b48f59d88a352ff39550c7908ab2d2dec6dd043a4953ce9d8a1d1a8768d9a1e3
+  review_summary: “Outsider” is a warranted and clearer rendering of the relational alienation expressed by “stranger.” Retaining “my own mother’s sons” preserves the masculine kinship wording and makes the closeness of the relationship more immediately apparent. Revise the second sentence so that it remains the second intensified predicate of the same “I have become” statement, rather than an added simile with a shifted tense.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

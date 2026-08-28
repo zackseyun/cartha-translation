@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/007/026.yaml
-  text: For she has cast down many wounded[a], and all her slain are mighty.
-  footnotes:
-  - marker: a
-    text: Or 'many are the slain she has brought down'; the first noun may also be rendered 'slain' rather than 'wounded,' but 'wounded' is retained in the main text to preserve the intensification with the next line, 'all her slain are mighty.'
-    reason: lexical_alternative
+  text: For many are the slain she has brought down, and numerous are all her slain.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,59 +27,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For she has brought down many wounded people; all the people she has killed were mighty.[a]
+  text: For she has brought many people down to death; the full number of those she has slain is very great.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The first line may also mean, “Many are the slain she has brought down.”
+    text: The Hebrew word translated “very great” can also mean “strong” or “powerful,” but here it most likely emphasizes the large number of victims.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: has cast down many wounded
-  simplified_phrase: has brought down many wounded people
-  preserved_meaning: She has caused many people described as wounded to fall.
+- pob_phrase: many are the slain she has brought down
+  simplified_phrase: she has brought many people down to death
+  preserved_meaning: She has caused many people to die.
   reasoning_layer_used: POB lexical decisions for חֲלָלִים and הִפִּילָה
-  rationale: “Brought down” and “wounded people” express the image clearly without adding a separate act of wounding.
-- pob_phrase: all her slain
-  simplified_phrase: all the people she has killed
-  preserved_meaning: Every person in this group was killed by her.
-  reasoning_layer_used: POB lexical decision for הֲרֻגֶיהָ
-  rationale: The verbal wording makes the possessive relationship clear in common English.
+  rationale: The rewrite makes the fatal result clear while retaining the image of bringing people down.
+- pob_phrase: numerous are all her slain
+  simplified_phrase: the full number of those she has slain is very great
+  preserved_meaning: Her total number of victims is large.
+  reasoning_layer_used: POB lexical decision for quantitative וַעֲצֻמִים and revision audit
+  rationale: The natural English wording preserves the quantitative sense and the force of “all.”
 translation_notes:
   risk_flags:
-  - risk: The first noun can mean “slain” rather than “wounded.”
-    mitigation: The lexical alternative is preserved in a footnote.
+  - risk: The Hebrew adjective may describe the victims as strong or powerful rather than numerous.
+    mitigation: The main text follows the audited POB choice, while the footnote preserves the lexical alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/007/026.yaml
   source_text_sha256: d2d6932195276784fb073404670742897863bdd9340f03491995210560023cfe
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: b5dc684f7dbf86506961007581d646fee4c69b83c2639fc5ba4702e757196cdd
-  timestamp: '2026-07-12T09:52:19Z'
-  output_hash: 760efc5f33d5c47a6312110275b15b6412bbf2dcbc2bb0954ccaccc44e8585cd
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d1418d75dfd1d6318690696696e3a6560a967b685add92ce1002e5e05dbb944e
+  timestamp: '2026-08-28T23:03:57Z'
+  output_hash: 79cf9a7a11d16ecf54f5a9f241adeaa1218f4fa06d53dda8a7a8ca1f29ddb5bd
   usage:
-    prompt_tokens: 3220
-    completion_tokens: 303
-    total_tokens: 3523
-    reasoning_tokens: 0
+    prompt_tokens: 2486
+    completion_tokens: 905
+    total_tokens: 3391
+    reasoning_tokens: 558
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: cast down many wounded
-  rendering: brought down many people and left them wounded
-  claim: The woman is the cause of both their fall and their wounded condition.
-  evidence:
-  - The causative verb presents her as bringing the victims down.
-  - The POB retains “wounded” to distinguish this line from the following “slain.”
-  confidence: moderate
-  alternatives_preserved:
-  - Many are the slain she has brought down.
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:19Z'
   previous_text: For she has brought down many people and left them wounded; all those she has killed were mighty.[a]
@@ -95,3 +80,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:57Z'
+  previous_text: For she has brought down many wounded people; all the people she has killed were mighty.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

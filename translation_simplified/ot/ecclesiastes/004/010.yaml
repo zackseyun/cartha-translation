@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/004/010.yaml
-  text: For if they fall[a], one will lift up his companion[b]; but woe to the one who falls when there is not a second to lift him up.
+  text: For if they fall, one will lift up his companion[a]; but woe to the one who falls and there is no second to lift him up.
   footnotes:
   - marker: a
-    text: Or 'his friend' for 'his companion.'
-    reason: lexical_alternative
-  - marker: b
-    text: Literally, 'and there is no second to lift him up.'
+    text: Or “his friend.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,51 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For if they fall, one will lift up the other. But woe to anyone who falls when no one else is there to lift them up.
+  text: If either one falls, the other will lift him up. But woe to someone who falls with no second person there to lift him up!
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: one will lift up his companion
-  simplified_phrase: one will lift up the other
-  preserved_meaning: One of the two will raise the companion who falls.
-  reasoning_layer_used: Lexical decisions for הָאֶחָד, יָקִים, and חֲבֵרוֹ, with the immediate context of two people.
-  rationale: “The other” naturally identifies the second person while “will” preserves the expected result.
-- pob_phrase: the one who falls
-  simplified_phrase: anyone who falls
-  preserved_meaning: The warning concerns a solitary person who falls.
-  reasoning_layer_used: Lexical decision for הָאֶחָד שֶׁיִּפּוֹל and the wisdom-saying context.
-  rationale: “Anyone” presents the warning as a general truth without weakening its force.
-- pob_phrase: when there is not a second to lift him up
-  simplified_phrase: when no one else is there to lift them up
-  preserved_meaning: A person alone has no other person available to raise them.
-  reasoning_layer_used: Lexical decisions for וְאֵין שֵׁנִי and לַהֲקִימוֹ.
-  rationale: “No one else is there” makes the numerical contrast clear in ordinary English.
+- pob_phrase: if they fall, one will lift up his companion
+  simplified_phrase: If either one falls, the other will lift him up
+  preserved_meaning: One of the pair raises the other after a fall.
+  reasoning_layer_used: Lexical decisions and immediate context
+  rationale: The distributive wording makes the relationship between the two people immediately clear.
+- pob_phrase: the one who falls and there is no second
+  simplified_phrase: someone who falls with no second person there
+  preserved_meaning: A solitary person has no other person available to help after a fall.
+  reasoning_layer_used: Applied revision and lexical decision for וְאֵין שֵׁנִי
+  rationale: The wording remains natural while retaining the deliberate numerical image of a second person.
+interpretive_expansions:
+- pob_phrase: if they fall
+  rendering: If either one falls
+  claim: The plural condition describes a fall that may happen to either member of the pair.
+  evidence:
+  - The following singular clauses distinguish the fallen person from the companion who lifts him up.
+  - The chapter context contrasts two people with one person alone.
+  confidence: high
+  alternatives_preserved:
+  - If they fall
 translation_notes:
   risk_flags:
-  - risk: Singular “them” does not reproduce the Hebrew masculine pronoun.
-    mitigation: The gender-neutral pronoun naturally conveys the saying’s general application.
+  - risk: Changing the plural “they fall” to “either one falls” makes its distributive sense explicit.
+    mitigation: The following singular helper-and-companion structure directly supports this reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/004/010.yaml
   source_text_sha256: be66b5435a31d7c46155ee5f85d218afc8ff59131437c4dd70f771a7bb4c5f00
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: f25d619ed5cc7afed7e35abb82708ca453833602df68393e32edbc07ae74729a
-  timestamp: '2026-07-12T09:10:05Z'
-  output_hash: c2d65d5aeef073e15e07a6f713192242a4b4464e9f8223793361612d7f37942c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: a86e1ba8e19a059f6956e0e32e0753b2f250dcb764264fd1a059c025358d9c8b
+  timestamp: '2026-08-28T23:02:43Z'
+  output_hash: f5e8b15a98e6c0384e7eeb0af36fe4169c2c4e6a65a2174d973aae3b5a85f6ed
   usage:
-    prompt_tokens: 3579
-    completion_tokens: 401
-    total_tokens: 3980
-    reasoning_tokens: 0
+    prompt_tokens: 2879
+    completion_tokens: 652
+    total_tokens: 3531
+    reasoning_tokens: 271
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:10:05Z'
   previous_text: If they fall, one can lift up the other. But woe to anyone who falls when no one else is there to lift them up.
@@ -90,3 +90,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:43Z'
+  previous_text: For if they fall, one will lift up the other. But woe to anyone who falls when no one else is there to lift them up.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

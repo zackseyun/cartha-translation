@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/067/006.yaml
-  text: The earth has yielded its produce[a]; God, our God[b], blesses us.
+  text: The earth[a] has yielded its produce; God, our God, will bless us[b].
   footnotes:
   - marker: a
-    text: Or 'may God, our God, bless us,' or 'God, our God, will bless us.' The Hebrew verb can be read as present, jussive, or future in context.
-    reason: alternative_reading
-  - marker: b
     text: Or 'The land has yielded its produce.' Hebrew אֶרֶץ can mean 'earth' or 'land.'
     reason: lexical_alternative
+  - marker: b
+    text: Or 'may God, our God, bless us.' The Hebrew verb can express a prayer or a confident expectation in this context.
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,50 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The earth has given its produce.[a] God, our God, blesses us.[b]
+  text: The earth[a] has produced its food. God, our God, will bless us[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “the land has given its produce.” The Hebrew word can mean “earth” or “land.”
+    text: Or “The land.” The Hebrew word can mean either “earth” or “land.”
     reason: lexical_alternative
   - marker: b
-    text: Or “may God, our God, bless us,” or “God, our God, will bless us.” The Hebrew verb may express a present blessing, a prayer, or a future blessing here.
+    text: Or “May God, our God, bless us.” The Hebrew can express either a prayer or confident expectation here.
     reason: alternative_reading
 simplification_decisions:
 - pob_phrase: has yielded its produce
-  simplified_phrase: has given its produce
-  preserved_meaning: The earth has already provided agricultural produce.
-  reasoning_layer_used: Lexical decision for נָתְנָה and יְבוּלָהּ
-  rationale: “Given” uses a listed lexical alternative and keeps the earth’s active role in the image.
-- pob_phrase: The earth has yielded its produce; God, our God, blesses us.
-  simplified_phrase: The earth has given its produce. God, our God, blesses us.
-  preserved_meaning: The realized produce and God’s blessing remain closely linked statements.
-  reasoning_layer_used: Optimal-equivalence style and theological decision
-  rationale: Two short sentences make the relationship easier to follow without merging the distinct clauses.
+  simplified_phrase: has produced its food
+  preserved_meaning: The earth has brought forth what it provides for nourishment.
+  reasoning_layer_used: POB lexical decisions for נָתְנָה and יְבוּלָהּ
+  rationale: Common words replace the more formal agricultural phrase without changing its basic sense.
+- pob_phrase: The earth has yielded its produce; God, our God, will bless us.
+  simplified_phrase: The earth has produced its food. God, our God, will bless us.
+  preserved_meaning: The completed yield is followed by confidence in God's blessing.
+  reasoning_layer_used: Applied revision and clause sequence
+  rationale: Two sentences make the movement from harvest to expected blessing easier to follow.
 translation_notes:
   risk_flags:
-  - risk: “Blesses” may sound more certain than the ambiguous Hebrew imperfect.
-    mitigation: The footnote preserves the prayer and future readings.
-  - risk: “Earth” may exclude the narrower possible sense “land.”
-    mitigation: The footnote retains “land” while the main text follows the psalm’s universal scope.
+  - risk: “Food” is slightly narrower than the broader agricultural term “produce.”
+    mitigation: The immediate agricultural context supports it, while the wording avoids specifying any particular crop.
+  - risk: “Will bless us” may sound more certain than the Hebrew form alone requires.
+    mitigation: Footnote b preserves the possible prayer reading.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/067/006.yaml
   source_text_sha256: 3aa0843734249a129415742f2700a126ecf1082066cedb43ca331f607c5dd6a9
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5454df85f48a301d99fed1c06bab55300d3f17f3e586c766496d69b90a9ab57b
-  timestamp: '2026-07-11T20:48:58Z'
-  output_hash: ff04f7e4532b82eb1f94c0a5a6f981d1564d860dcdab6f84dec4fcbf7fdcb2ae
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7801dd2ee2e51fe6181308dfc01a77bc681ea63dfb53cc400d5d606b181f0ec0
+  timestamp: '2026-08-28T22:55:17Z'
+  output_hash: d281ea6e6333a86e81a879bff7ce75fffb4b87b9a9e3922a6b464409f201b326
   usage:
-    prompt_tokens: 2499
-    completion_tokens: 1537
-    total_tokens: 4036
-    reasoning_tokens: 1119
+    prompt_tokens: 2688
+    completion_tokens: 808
+    total_tokens: 3496
+    reasoning_tokens: 428
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:17Z'
+  previous_text: The earth has given its produce.[a] God, our God, blesses us.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/016/024.yaml
-  text: Pleasant words are a honeycomb[b][a], sweet to the soul and healing to the bones.
+  text: Pleasant words are honey from the comb, sweet to the soul[a] and healing to the bones.
   footnotes:
   - marker: a
-    text: Or 'Pleasant sayings are comb-honey'; the Hebrew image is literally 'honeycomb' or 'comb-honey.'
-    reason: lexical_alternative
-  - marker: b
-    text: '''Soul'' here can also mean ''life,'' ''self,'' or ''inner being.'''
-    reason: lexical_alternative
+    text: Here “soul” may denote the life or self; in the food image, “appetite” is also possible.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,45 +31,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Pleasant words are like honey in the comb. They are sweet to the soul[a] and bring healing to the bones.
+  text: Pleasant words are like honey from the comb. They are sweet to a person’s life[a] and bring healing to the bones.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Soul” can also mean one’s life, self, or inner being.
+    text: The Hebrew can also mean one’s self; in this food image, “appetite” is possible.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: are a honeycomb
-  simplified_phrase: are like honey in the comb
-  preserved_meaning: Pleasant speech is compared to the sweetness of comb-honey.
+- pob_phrase: Pleasant words are honey from the comb
+  simplified_phrase: Pleasant words are like honey from the comb
+  preserved_meaning: Pleasant speech is compared to comb honey, not to the wax comb itself.
   reasoning_layer_used: POB lexical decision for צוּף דְּבַשׁ
-  rationale: This wording makes the comparison natural while preserving the concrete honeycomb image.
-- pob_phrase: sweet to the soul and healing to the bones
-  simplified_phrase: They are sweet to the soul and bring healing to the bones
-  preserved_meaning: Pleasant words benefit both the inner person and the embodied person.
-  reasoning_layer_used: POB lexical decisions and Hebrew poetic parallelism
-  rationale: A second sentence and an active verb make the parallel easier to follow without flattening its imagery.
+  rationale: The explicit comparison is natural English and preserves the honey image.
+- pob_phrase: sweet to the soul
+  simplified_phrase: They are sweet to a person’s life
+  preserved_meaning: Pleasant words benefit a person’s life or self, while appetite remains possible.
+  reasoning_layer_used: POB lexical decision and footnote for לַנֶּפֶשׁ
+  rationale: “A person’s life” avoids a narrow immaterial sense without claiming the total-person reading.
+- pob_phrase: and healing to the bones
+  simplified_phrase: and bring healing to the bones
+  preserved_meaning: Pleasant words have a deeply restorative effect expressed through the concrete image of bones.
+  reasoning_layer_used: POB lexical decisions for וּמַרְפֵּא and לָעָצֶם
+  rationale: Adding a verb produces natural English while retaining the bodily image.
+interpretive_expansions:
+- pob_phrase: to the soul
+  rendering: to a person’s life
+  claim: The Hebrew term can refer to a person’s life rather than only an immaterial soul.
+  evidence:
+  - The POB footnote lists “life” as a possible meaning.
+  - The POB rationale preserves a range including life and self.
+  confidence: high
+  alternatives_preserved:
+  - self
+  - appetite in the food image
 translation_notes:
   risk_flags:
-  - risk: Modern readers may take “soul” to mean only an immaterial part of a person.
-    mitigation: The footnote preserves the broader Hebrew senses of life, self, and inner being.
+  - risk: “Life” may sound narrower than the Hebrew term’s full range.
+    mitigation: The footnote preserves the possible senses “self” and “appetite.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/016/024.yaml
   source_text_sha256: ff69b094b502b182ef9d71ef6cb28eb9e05b458a35709e6de0ae9fa6f22a9397
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 16b5709dd5017e305c6f27e7bfe40eb11e2c909feab0b656732f6c95ec4d6b00
-  timestamp: '2026-07-11T21:04:05Z'
-  output_hash: bbcf017e6c2ab35deabdb536a5b98f9a8cc0586e309432a6a77598fcce225d24
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c7214f88e15366708b170c7fe793754385f8edbf94d9e559e11e223f2004e1a2
+  timestamp: '2026-08-28T23:34:34Z'
+  output_hash: 1fef8f559ff445126dc3b831312371b2b8fbf0bcfbac735d9e4b24f0980e6088
   usage:
-    prompt_tokens: 2427
-    completion_tokens: 733
-    total_tokens: 3160
-    reasoning_tokens: 411
+    prompt_tokens: 3643
+    completion_tokens: 834
+    total_tokens: 4477
+    reasoning_tokens: 322
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:07:12Z'
+  previous_text: Pleasant words are like honey in the comb. They are sweet to the soul[a] and bring healing to the bones.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:34Z'
+  previous_text: Pleasant words are like honey from the comb. They are sweet to the whole person[a] and bring healing to the bones.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 93dc5524afd18e973a240346d926e4e9ffff8941b600fef65abd2681e4182446
+  review_summary: The explicit comparison (“like honey from the comb”) and the added verb (“bring healing”) are clear, faithful simplifications. Revision is needed because “whole person” turns a broad and live lexical range into a total-person interpretation. “A person’s life,” with the retained footnote, is clear modern English while preserving the POB’s primary alternative senses and the food-image possibility.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

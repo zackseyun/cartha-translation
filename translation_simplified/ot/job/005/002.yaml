@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/005/002.yaml
-  text: For vexation kills the fool[a], and jealousy puts the simple to death.
+  text: For anger kills the fool, and jealousy puts the simple to death.[a]
   footnotes:
   - marker: a
-    text: Or 'envy' for 'jealousy.' The Hebrew term can denote either, but here it refers to a destructive passion.
+    text: Or “envy.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,55 +31,43 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For anger kills a foolish person, and jealousy[a] brings death to a person who is easily led.
+  text: For anger kills a fool, and jealousy causes the easily misled to die.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “envy.” The Hebrew word can mean either; here it describes a destructive passion.
+    text: Or “envy.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: vexation
-  simplified_phrase: anger
-  preserved_meaning: A destructive, agitated emotion kills the foolish person.
-  reasoning_layer_used: POB lexical decision for כָּעַשׂ
-  rationale: “Anger” is familiar English and stays within the documented range without narrowing it to resentment.
-- pob_phrase: the fool
-  simplified_phrase: a foolish person
-  preserved_meaning: The person is morally and practically foolish, not merely unintelligent.
-  reasoning_layer_used: POB lexical decision for אֱוִיל
-  rationale: The fuller phrase is natural modern English and retains the wisdom-literature sense.
-- pob_phrase: the simple
-  simplified_phrase: a person who is easily led
-  preserved_meaning: The person is naive and easily persuaded rather than intellectually disabled.
-  reasoning_layer_used: POB lexical decision for פֹּתֶה
-  rationale: This directly explains the intended kind of simplicity.
+- pob_phrase: puts the simple to death
+  simplified_phrase: causes the easily misled to die
+  preserved_meaning: Jealousy causes the death of a naive person who is easily persuaded.
+  reasoning_layer_used: POB lexical decision for פֹּתֶה and causative analysis of תָּמִית
+  rationale: This replaces an opaque wisdom term while preserving the verb’s causative force.
 translation_notes:
   risk_flags:
-  - risk: “Anger” is narrower than the full possible range of vexation or agitation.
-    mitigation: It is a documented lexical alternative and preserves the destructive emotional force in this context.
+  - risk: “Easily misled” may sound less proverbial than “the simple.”
+    mitigation: The wording preserves the documented sense of a naive, easily persuaded person.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/005/002.yaml
   source_text_sha256: 96e439c06d407a648d2c2abe2a3b131abaf27e71c18806e918876227d7c56bf7
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 3629f98ca22fe043428c10731667e4a4ce48ebb05946099b7506ce92015b04cb
-  timestamp: '2026-07-12T09:36:03Z'
-  output_hash: ea3c85fcb11755bb723603e69662c4e3ce266978ef67b62b76073355be3dda69
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 677bcfa30a43d2a2984dfd674ef356b635bb14b64ae63ecf1f18762700c5c4a8
+  timestamp: '2026-08-28T22:48:46Z'
+  output_hash: 8a42c1322534dfdd20522e7ee5057d3013d17c678e46ab227285bc8a16e0f688
   usage:
-    prompt_tokens: 3207
-    completion_tokens: 351
-    total_tokens: 3558
-    reasoning_tokens: 0
+    prompt_tokens: 2644
+    completion_tokens: 535
+    total_tokens: 3179
+    reasoning_tokens: 311
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:03Z'
   previous_text: For resentful anger kills a foolish person, and jealousy[a] brings death to a person who is easily led.
@@ -91,3 +79,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:48:46Z'
+  previous_text: For anger kills a foolish person, and jealousy[a] brings death to a person who is easily led.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

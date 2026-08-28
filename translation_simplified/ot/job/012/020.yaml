@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/012/020.yaml
-  text: He removes speech from the trusted[b][a], and takes away discernment from the elders.
+  text: He takes away speech from the trusted[a] and removes judgment from the elders.[b]
   footnotes:
   - marker: a
-    text: Or 'He removes the lip from the faithful'—that is, he deprives them of speech or eloquence.
-    reason: lexical_alternative
+    text: Literally “the lip of the trusted”; “lip” here represents their ability to speak.
+    reason: idiom
   - marker: b
-    text: Or 'judgment' or 'understanding' for 'discernment.'
+    text: Or “discernment” or “understanding.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,50 +34,59 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He takes away the speech of trusted people,[a] and takes away the good judgment of elders.
+  text: He silences trusted people and leaves elders without good judgment.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Literally, “removes the lip”; this may mean depriving them of speech or eloquence.
+    text: Or “discernment” or “understanding.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: removes speech from the trusted
-  simplified_phrase: takes away the speech of trusted people
-  preserved_meaning: God deprives even reliable, respected people of speech or eloquence.
-  reasoning_layer_used: POB lexical decisions for מֵסִיר, שָׂפָה, and לְנֶאֱמָנִים
-  rationale: This clear wording preserves the broader loss of speaking ability without implying total muteness.
-- pob_phrase: takes away discernment from the elders
-  simplified_phrase: takes away the good judgment of elders
-  preserved_meaning: Elders lose the seasoned understanding expected of them.
-  reasoning_layer_used: POB lexical decisions for טַעַם and זְקֵנִים
-  rationale: “Good judgment” expresses discernment in familiar English while retaining “elders.”
+- pob_phrase: takes away speech from the trusted
+  simplified_phrase: silences trusted people
+  preserved_meaning: Even reliable, respected people can lose their ability to speak effectively.
+  reasoning_layer_used: POB lexical decisions for שָׂפָה and לְנֶאֱמָנִים
+  rationale: The active verb expresses the Hebrew speech-loss image in direct modern English.
+- pob_phrase: removes judgment from the elders
+  simplified_phrase: leaves elders without good judgment
+  preserved_meaning: Elders can be deprived of the judgment expected from their age and status.
+  reasoning_layer_used: POB lexical decisions for טַעַם, זְקֵנִים, and יִקָּח
+  rationale: The recast clause makes the loss immediately clear while retaining elders and judgment.
+interpretive_expansions:
+- pob_phrase: judgment
+  rendering: good judgment
+  claim: The lost judgment is the elders’ capacity to assess matters wisely.
+  evidence:
+  - The POB lexical alternatives are “sense” and “understanding.”
+  - The wisdom context concerns a valued capacity being taken away.
+  confidence: high
+  alternatives_preserved:
+  - discernment
+  - understanding
 translation_notes:
   risk_flags:
-  - risk: “Speech” may not by itself convey the possible nuance of eloquence.
-    mitigation: The footnote preserves both senses documented in the POB audit.
+  - risk: “Silences” may suggest forced quiet rather than loss of speaking ability.
+    mitigation: The wording remains anchored to the POB note that “lip” represents the ability to speak.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/012/020.yaml
   source_text_sha256: cebbdef1d1f5923b8d5ad3a89b16d6abfc572f8ca71ce8a6b31a66dc7c646cde
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 622af21c7c4808c7a70daf01fe0efc6bbb09386aff43b71d3c45286478ffc378
-  timestamp: '2026-07-12T09:36:28Z'
-  output_hash: 27890eb500a58554b7099ba82e9024e2cf18747fcf966b2e0cccf82a373a1856
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 4a5ff3faa8f478bf6c32b79417d9cd93dc59495941911a44c853687c2945342a
+  timestamp: '2026-08-28T22:52:15Z'
+  output_hash: 7bb849ce3d19bb0c5fba4a594a26762536c9d4e6da1adcc63ad897344713e940
   usage:
-    prompt_tokens: 3146
-    completion_tokens: 327
-    total_tokens: 3473
-    reasoning_tokens: 0
+    prompt_tokens: 2540
+    completion_tokens: 1020
+    total_tokens: 3560
+    reasoning_tokens: 610
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:28Z'
   previous_text: He silences trusted people,[a] and takes away the good judgment of elders.
@@ -89,3 +98,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:50:37Z'
+  previous_text: He takes away the speech of trusted people,[a] and takes away the good judgment of elders.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:15Z'
+  previous_text: He takes away the ability of trusted people to speak, and he takes sound judgment away from elders.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

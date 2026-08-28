@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/009/006.yaml
-  text: who shakes the earth from its place[a], and its pillars tremble.
+  text: who shakes the earth from its place, and its pillars tremble.[a]
   footnotes:
   - marker: a
-    text: Or 'quake' or 'shudder' for 'tremble.'
+    text: Or “quake” or “shudder.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,41 +31,80 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He shakes the earth out of its place, and its pillars quake.
+  text: who shakes the earth from its place, while its pillars[b] tremble.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “quake” or “shudder.”
+    reason: lexical_alternative
+  - marker: b
+    text: The pillars are part of the verse’s ancient poetic picture of the earth.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: who shakes the earth from its place
-  simplified_phrase: He shakes the earth out of its place
-  preserved_meaning: God causes the earth to be displaced from its place.
-  reasoning_layer_used: POB lexical decisions and immediate poetic syntax
-  rationale: A direct sentence is easier to read while preserving the causative cosmic image.
-- pob_phrase: its pillars tremble
-  simplified_phrase: its pillars quake
-  preserved_meaning: The earth's poetic pillars shake violently.
-  reasoning_layer_used: POB lexical and theological decisions
-  rationale: “Quake” conveys violent shaking while keeping the source image of pillars.
+- pob_phrase: and its pillars tremble
+  simplified_phrase: while its pillars tremble
+  preserved_meaning: The earth’s poetic pillars tremble as God shakes the earth from its place.
+  reasoning_layer_used: Hebrew parallelism and the POB theological decision to retain the cosmological image
+  rationale: “While” makes the connection between the two poetic actions easier to follow.
+- pob_phrase: its pillars
+  simplified_phrase: its pillars[b]
+  preserved_meaning: The source’s concrete cosmological image remains in the main text.
+  reasoning_layer_used: POB lexical and theological decisions for וְעַמּוּדֶיהָ
+  rationale: The note explains the ancient poetic picture without replacing it with modern cosmology.
+interpretive_expansions:
+- pob_phrase: and its pillars tremble
+  rendering: while its pillars tremble
+  claim: The pillars tremble in connection with the shaking of the earth.
+  evidence:
+  - The coordinated clauses present the two actions as parts of one poetic description.
+  confidence: moderate
+  alternatives_preserved:
+  - and its pillars tremble
 translation_notes:
   risk_flags:
-  - risk: Modern readers may take the earth's pillars as a scientific claim.
-    mitigation: The main text retains the clearly poetic image without replacing it with modern cosmology.
+  - risk: “While” may suggest simultaneity more explicitly than the Hebrew conjunction does.
+    mitigation: It only connects the parallel actions and does not add a sequence or cause.
+  - risk: Modern readers may take the earth’s pillars as a scientific claim.
+    mitigation: Footnote b identifies them as ancient poetic imagery while preserving the source image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/009/006.yaml
   source_text_sha256: ccd6bd96e389c8f86ef67540f49bd007baecd05f3bc93fa39ec29cc245b4cec4
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c587f4b795393fb8990adb889cc7c8d9570366ede54e4134a993a81bb2067a3d
-  timestamp: '2026-07-11T19:37:50Z'
-  output_hash: 2eba5d82f0ca614637fd1d782229653ddcedba371ed1288f0e5a3e584f967863
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: cc2197063621e1a442a5b28c275306dfb2815ecacb84a9e950944ce02c435a9d
+  timestamp: '2026-08-28T23:34:18Z'
+  output_hash: 455dbcc2e1d5f35dd7da41a60eccd99f7f250214f42e90ec861e192bbb65cee1
   usage:
-    prompt_tokens: 2340
-    completion_tokens: 412
-    total_tokens: 2752
-    reasoning_tokens: 168
+    prompt_tokens: 3407
+    completion_tokens: 617
+    total_tokens: 4024
+    reasoning_tokens: 180
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:03Z'
+  previous_text: He shakes the earth out of its place, and its pillars quake.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:51:49Z'
+  previous_text: He shakes the earth out of its place, and its pillars tremble.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:18Z'
+  previous_text: who shakes the earth until it moves from its place, while its pillars[b] tremble.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 6c40efd5816bdf3d6b3acc923e700fa0eea92b3e70f0b7b6a015ad1f6e24724e
+  review_summary: The draft helpfully retains the poetic “pillars” and its cultural footnote appropriately prevents a modern scientific misreading without redefining the image. “While” is a modest, intelligible connection between the parallel actions. However, “until it moves” imports a temporal/result sequence and makes displacement the stated outcome of shaking, rather than preserving the compact direct portrayal in the source and POB. Restore “from its place”; it is already clear modern English and better preserves the text’s phrasing.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/119/011.yaml
-  text: I have treasured your promise in my heart, that I might not sin against you.
+  text: I have stored up your word in my heart, so that I may not sin against you.
   ai_draft:
     model_id: claude-opus-4-8
     model_version: claude-opus-4-8
@@ -21,38 +21,59 @@ base_translation:
     output_hash: 2042b50b07d262441c283d44c8cdabd6c093704ba2bfd2526302ece20dc921ab
 translation:
   language: en
-  text: I keep your promise as a treasure in my heart, so that I will not sin against you.
+  text: I have stored your word in my heart so that I will not sin against you.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: I have treasured your promise in my heart
-  simplified_phrase: I keep your promise as a treasure in my heart
-  preserved_meaning: The psalmist holds God's committed promise within himself as something precious that guides his conduct.
-  reasoning_layer_used: POB translation and lexical decision for אִמְרָתֶךָ
-  rationale: The concrete phrase “as a treasure” makes “treasured” immediately understandable while retaining “promise” rather than the alternatives “word” or “saying.”
-- pob_phrase: that I might not sin against you
+- pob_phrase: stored up your word
+  simplified_phrase: stored your word
+  preserved_meaning: God’s word is kept within as something reserved for use.
+  reasoning_layer_used: POB lexical decisions for צָפַנְתִּי and אִמְרָתֶךָ
+  rationale: Removing “up” makes the phrase more natural while preserving the concrete image of storing God’s word.
+- pob_phrase: so that I may not sin against you
   simplified_phrase: so that I will not sin against you
-  preserved_meaning: Keeping God's promise in his heart is intended to guard the psalmist from sinning against God.
-  reasoning_layer_used: POB translation and source clause purpose
-  rationale: “So that” states the purpose in ordinary modern English without changing the relationship between the clauses.
-translation_notes: {}
+  preserved_meaning: The speaker stores God’s word with the purpose of not sinning against God.
+  reasoning_layer_used: Hebrew purpose clause and POB revision rationale
+  rationale: “Will not” states the intended outcome clearly without shifting the clause toward personal ability.
+translation_notes:
+  risk_flags:
+  - risk: “Will not” could be read as an absolute guarantee rather than intended purpose.
+    mitigation: The words “so that” keep the statement tied to the speaker’s purpose in storing God’s word.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/119/011.yaml
   source_text_sha256: 7b2878fd37d7faba7ac168adafec8f7c3baa8f90b25f669d7107a90bcdd9863b
-  pob_commit_sha: 10975b14a09f35fcd9d540512a844c945cec1b29
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ad1891d205eb560738bee000f99821269524669bb5f5690a7ed93973e13b4585
-  timestamp: '2026-07-27T04:20:28Z'
-  output_hash: 806a01c3b201cc3c6e9181cee8ab48f37caa8c940bf69376c26e7b9187bce196
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8d54ec4f6c005383ddd1f1ecc16b2ae3224b4864bef7380acd2c1476e7e28d50
+  timestamp: '2026-08-28T23:36:10Z'
+  output_hash: 0a914cc154c1a2d53efd158356de5c30d66c7cdac36362d7dace5d465ddd19b1
   usage:
-    prompt_tokens: 1772
-    completion_tokens: 448
-    total_tokens: 2220
-    reasoning_tokens: 173
+    prompt_tokens: 2597
+    completion_tokens: 287
+    total_tokens: 2884
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:20Z'
+  previous_text: I keep your promise as a treasure in my heart, so that I will not sin against you.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:10Z'
+  previous_text: I have stored your word in my heart so I can avoid sinning against you.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 97e88578ab3026a6a274761e03b80ed47c661f5cf9e91d46a4b21bc7ea549fb8
+  review_summary: Revision is warranted. The draft is slightly smoother, but “can avoid” unnecessarily shifts the verse from its stated purpose to personal ability and may weaken the direct contrast with sinning. “So I will not sin against you” is clear modern English and retains the purpose-oriented sense without adding a doctrinal claim that sin is impossible.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

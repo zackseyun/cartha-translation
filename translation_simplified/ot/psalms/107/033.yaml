@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/107/033.yaml
-  text: He turns rivers into a wilderness[a], and springs of water into thirsty ground.
+  text: He turns rivers into a wilderness, and springs of water into thirsty ground[a].
   footnotes:
   - marker: a
-    text: Or 'into parched land.' The Hebrew noun literally denotes 'thirst' or 'thirstiness,' used here for a dry, waterless condition.
+    text: Or “parched land.” The Hebrew noun denotes thirst or thirstiness and here describes a waterless place.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,56 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He turns rivers into a wilderness. He turns springs of water into parched ground.
+  text: He turns rivers into desolate land, and springs of water into dry, thirsty ground.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: He turns rivers into a wilderness, and springs of water into thirsty ground.
-  simplified_phrase: He turns rivers into a wilderness. He turns springs of water into parched ground.
-  preserved_meaning: God transforms rivers and springs into desolate, waterless places.
-  reasoning_layer_used: POB lexical decisions and footnote
-  rationale: Two short parallel sentences preserve the distinct images while making the transformation easier to follow.
+- pob_phrase: a wilderness
+  simplified_phrase: desolate land
+  preserved_meaning: The rivers become barren, uninhabited land.
+  reasoning_layer_used: POB lexical decision for לְמִדְבָּר
+  rationale: “Desolate land” makes the contextual sense of “wilderness” immediately clear.
+- pob_phrase: springs of water into thirsty ground
+  simplified_phrase: springs of water into dry, thirsty ground
+  preserved_meaning: Water sources become waterless ground while the Hebrew image of thirst remains.
+  reasoning_layer_used: POB lexical decision and footnote for לְצִמָּאוֹן
+  rationale: Adding “dry” explains the poetic image without replacing it.
+interpretive_expansions:
 - pob_phrase: thirsty ground
-  simplified_phrase: parched ground
-  preserved_meaning: The ground is severely dry and without water.
-  reasoning_layer_used: POB lexical decision for לְצִמָּאוֹן
-  rationale: “Parched ground” states the Hebrew image’s physical sense in natural modern English.
+  rendering: dry, thirsty ground
+  claim: The ground is called thirsty because it has no water.
+  evidence:
+  - The POB footnote says the Hebrew noun describes a waterless place.
+  - The POB lexical rationale identifies a parched condition and desiccation.
+  confidence: high
+  alternatives_preserved:
+  - parched land
 translation_notes:
   risk_flags:
-  - risk: “Parched ground” does not reproduce the Hebrew metaphor of thirst literally.
-    mitigation: It follows the POB’s documented lexical alternative and clearly preserves the dry, waterless condition.
+  - risk: “Desolate land” is less traditional than “wilderness.”
+    mitigation: It preserves the POB rationale’s sense of barren, uninhabited land.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/107/033.yaml
   source_text_sha256: 228e030189c738bb69ec6604d7ee212515b331b3e704d4c6b4ff3573950b68b6
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 2c38939ef15006b7bcd512263cee20c64a2a7d14a35d6057dddebed2f6855d52
-  timestamp: '2026-07-12T10:02:40Z'
-  output_hash: fe6f3a274984d04394c8237d24fcd311dd8427a44f8bb0211eb1e28a013dd42e
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: cb31d0f3b4dd2bf7a372ab5f7f8e7f2beb554089b99a4a0c2b86e9f61279af45
+  timestamp: '2026-08-28T22:58:40Z'
+  output_hash: f36ae4c966bacd8a9f7f8fc6338c93bb922f7808fbb3125515d07b02a71f1c6e
   usage:
-    prompt_tokens: 3092
-    completion_tokens: 275
-    total_tokens: 3367
-    reasoning_tokens: 0
+    prompt_tokens: 2442
+    completion_tokens: 734
+    total_tokens: 3176
+    reasoning_tokens: 376
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: a wilderness
-  rendering: dry wilderness
-  claim: The wilderness here is dry because it results from rivers being removed.
-  evidence:
-  - The immediate contrast changes rivers into wilderness.
-  - The POB footnote identifies a dry, waterless condition.
-  confidence: high
-  alternatives_preserved:
-  - wilderness
-  - parched land
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:02:40Z'
   previous_text: He turns rivers into dry wilderness. He turns springs of water into parched ground.
@@ -92,3 +90,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:58:40Z'
+  previous_text: He turns rivers into a wilderness. He turns springs of water into parched ground.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

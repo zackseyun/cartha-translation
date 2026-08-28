@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/031/011.yaml
-  text: For that is a disgraceful act[a], and it is an iniquity for the judges.
-  footnotes:
-  - marker: a
-    text: Or, 'an iniquity punishable by judges.'
-    reason: lexical_alternative
+  text: For that is a disgraceful act, and it is an offense punishable by judges.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,55 +27,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For that is a disgraceful act—a serious offense for the courts to judge.[a]
+  text: For committing adultery is disgraceful. It is a crime punishable by the courts.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or, “an offense punishable by judges.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: an iniquity
-  simplified_phrase: a serious offense
-  preserved_meaning: The act remains a morally culpable violation, not merely a mistake.
-  reasoning_layer_used: POB lexical decision for עָוֺן
-  rationale: “Serious offense” expresses the moral and legal weight in common English.
-- pob_phrase: for the judges
-  simplified_phrase: for the courts to judge
-  preserved_meaning: The act is a matter for legal judgment.
-  reasoning_layer_used: POB lexical decision for פְּלִילִים
-  rationale: The active wording makes the judicial sense immediately clear.
+- pob_phrase: For that is a disgraceful act
+  simplified_phrase: For committing adultery is disgraceful
+  preserved_meaning: The act just described is sexually immoral and morally shameful.
+  reasoning_layer_used: Context and POB lexical decisions for הוא and זִמָּה
+  rationale: Naming adultery makes the backward reference clear to readers.
+- pob_phrase: an offense punishable by judges
+  simplified_phrase: a crime punishable by the courts
+  preserved_meaning: The wrongdoing is subject to formal judicial punishment.
+  reasoning_layer_used: Applied source-audit revision for עָוֺן פְּלִילִים
+  rationale: “The courts” naturally expresses the judicial institution involved.
 interpretive_expansions:
-- pob_phrase: for the judges
-  rendering: for the courts to judge
-  claim: The offense properly comes under judicial review.
+- pob_phrase: that
+  rendering: committing adultery
+  claim: The act in view is adultery with another woman.
   evidence:
-  - The POB rationale says the act is a matter for the courts.
-  - The lexical alternatives include “for judgment” and “of the court(s).”
+  - Job 31:9–10 describes the sexual unfaithfulness in view.
+  - The POB rationale identifies the referent as adultery in context.
   confidence: high
   alternatives_preserved:
-  - an offense punishable by judges
+  - sexual unfaithfulness
 translation_notes:
   risk_flags:
-  - risk: “For the courts to judge” may sound less explicitly punitive than the lexical alternative.
-    mitigation: The footnote preserves the possible sense “punishable by judges.”
+  - risk: “Adultery” makes the contextual referent explicit rather than leaving it as “that.”
+    mitigation: The immediate context and POB lexical rationale both identify the act as adultery.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/031/011.yaml
   source_text_sha256: e815c695c2826bec5bede4fdd34b74b8433b63545e24eadb2080a57ffaef1c30
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b743f39b081000af1068e94d0380776d4f70b180a1055f6b719c06b808950f69
-  timestamp: '2026-07-11T19:33:40Z'
-  output_hash: a365194ddc0193f21bf7c36ad3bfebbbecd12c264633e9f7991fa56cdd8ea94d
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 87e3e7d0057b92bad4e6b2df2d2973c7b4e7e06b62c752778aacbd403e35491c
+  timestamp: '2026-08-28T23:34:51Z'
+  output_hash: 53660a247660d021f76c9d49225919eae826ea47c864cf5c61377f1dd1d2d040
   usage:
-    prompt_tokens: 2284
-    completion_tokens: 746
-    total_tokens: 3030
-    reasoning_tokens: 384
+    prompt_tokens: 3217
+    completion_tokens: 498
+    total_tokens: 3715
+    reasoning_tokens: 141
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:17Z'
+  previous_text: For that is a disgraceful act—a serious offense for the courts to judge.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:51Z'
+  previous_text: For doing this is disgraceful. It is a crime subject to punishment by the courts.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: ec4b01c6a5f61864ace91ac5aeb39e04b0e049b063f8d62df3abae40c6d6797e
+  review_summary: 'The legal sense of the second sentence is well supported by the POB source audit: the offense is liable to judicial punishment, and “the courts” is a natural institutional expression. The first sentence should explicitly name adultery rather than use the vague “doing this”; this is a contextual clarification already established in the POB audit, not an added doctrinal interpretation.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

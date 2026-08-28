@@ -11,17 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/024/017.yaml
-  text: For deep darkness is morning to them all[c][b][a], for they are familiar with the terrors of deep darkness.
+  text: For morning is deep darkness to them all[a], for he knows the terrors of deep darkness[b].
   footnotes:
   - marker: a
-    text: Or 'For morning is to them all like deep darkness'; the Hebrew order is compact and allows a slightly more literal rendering.
-    reason: alternative_reading
+    text: Hebrew צַלְמָוֶת can also be rendered “deathly darkness” or, traditionally, “the shadow of death.”
+    reason: lexical_alternative
   - marker: b
-    text: Hebrew צַלְמָוֶת (tsalmaveth) can also be rendered 'shadow of death.' Here it likely means 'deep darkness' or 'gloom' rather than death itself.
-    reason: lexical_alternative
-  - marker: c
-    text: The verb is singular in Hebrew ('he knows/recognizes'), but it likely has a generic sense referring to the wicked as a class; hence the plural in English.
-    reason: lexical_alternative
+    text: Hebrew has singular “he knows”; the referent may be a representative evildoer from the group just described.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,50 +34,88 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For all of them, deep darkness is like morning, because they are familiar with its terrors.[a][b]
+  text: For all of them, morning is deep darkness.[a] For he knows the terrors of deep darkness.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The compact Hebrew may instead mean, “For morning is like deep darkness to them all.”
-    reason: alternative_reading
-  - marker: b
-    text: The Hebrew expression translated “deep darkness” can also mean “the shadow of death,” but here the emphasis is probably on darkness and gloom.
+    text: “Deep darkness” can also be translated “deathly darkness” or, traditionally, “the shadow of death.”
     reason: lexical_alternative
+  - marker: b
+    text: Hebrew says “he knows”; this may refer to one representative evildoer from the group.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: deep darkness is morning to them all
-  simplified_phrase: for all of them, deep darkness is like morning
-  preserved_meaning: Deep darkness functions as morning for the whole group.
-  reasoning_layer_used: POB lexical decisions and alternative-reading footnote
-  rationale: The comparison is stated in natural English while the Hebrew ambiguity remains in a footnote.
+- pob_phrase: morning is deep darkness to them all
+  simplified_phrase: For all of them, morning is deep darkness
+  preserved_meaning: Morning remains the subject, and the paradox applies to the whole group.
+  reasoning_layer_used: POB lexical decisions and grammar revision
+  rationale: Fronting the group makes the relationship clearer without reversing the image.
+- pob_phrase: for he knows
+  simplified_phrase: For he knows
+  preserved_meaning: The explanatory link and the unresolved Hebrew singular remain visible.
+  reasoning_layer_used: POB lexical decision and ambiguity footnote
+  rationale: Keeping “he” avoids presenting a possible referent as certain.
 - pob_phrase: the terrors of deep darkness
-  simplified_phrase: its terrors
-  preserved_meaning: They know the terrors associated with deep darkness.
-  reasoning_layer_used: POB lexical decision for בַלְהוֹת and repeated צַלְמָוֶת
-  rationale: The pronoun avoids a heavy repetition without weakening the link to deep darkness.
+  simplified_phrase: the terrors of deep darkness
+  preserved_meaning: The repeated darkness image and its connection with terror are retained.
+  reasoning_layer_used: POB lexical decisions for בַּלְהוֹת and צַלְמָוֶת
+  rationale: The vivid source image is understandable and should not be flattened.
 translation_notes:
   risk_flags:
-  - risk: The Hebrew clause order also permits the comparison to run from morning to deep darkness.
-    mitigation: Footnote a preserves that important alternative.
-  - risk: Using “its” could make the repeated Hebrew image less visible.
-    mitigation: The antecedent remains explicit in the same sentence, and footnote b explains the key term.
+  - risk: The referent of “he” may be unclear to readers.
+    mitigation: Footnote [b] preserves the possible representative sense without settling it.
+  - risk: “Deep darkness” may not convey every nuance of the Hebrew term.
+    mitigation: Footnote [a] gives the principal lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/024/017.yaml
   source_text_sha256: 5c058fe910f84bde9fc8a19e0595da9a0eaafed13ca0aec41ca2e876203708f7
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 59e88b2169b0ed23b73e2354020749cbc910ba1b4f91200c61548ace160aae74
-  timestamp: '2026-07-11T19:56:42Z'
-  output_hash: a097e6cc5b9d1a8a8e3ce36e26e690e1b64f146c2a2f62086accff68960c8d1d
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 05181e6fc44628d0e4c41eabdbee7e7da5369667a28353fcd098a3660d584477
+  timestamp: '2026-08-28T23:34:43Z'
+  output_hash: ba3c654c33d47c46fa0926e69fd822542c8044776f6d88ffe7e696d63cc26633
   usage:
-    prompt_tokens: 2550
-    completion_tokens: 736
-    total_tokens: 3286
-    reasoning_tokens: 351
+    prompt_tokens: 3747
+    completion_tokens: 560
+    total_tokens: 4307
+    reasoning_tokens: 116
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: he knows
+  rendering: such a man knows
+  claim: The singular portrays a representative member of the evildoers just described.
+  evidence:
+  - The POB footnote identifies a representative evildoer as a possible referent.
+  - The chapter context describes a group of people who act under cover of darkness.
+  confidence: moderate
+  alternatives_preserved:
+  - The Hebrew may simply be rendered “he knows.”
+  - The precise singular referent remains uncertain.
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:00Z'
+  previous_text: For all of them, deep darkness is like morning, because they are familiar with its terrors.[a][b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:25Z'
+  previous_text: To them all, morning is deep darkness—for he[a] knows the terrors of deep darkness.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:43Z'
+  previous_text: For all of them, morning is deep darkness.[a] After all, such a man knows the terrors of deep darkness.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 210b6e3b69be548b3a4742002a52c851102dfce810679f6cbab729c77d034d48
+  review_summary: The fronted “For all of them” clearly expresses the collective force while preserving morning as the subject and deep darkness as the predicate. However, “such a man” turns a possible explanation of the singular Hebrew pronoun into the asserted main-text referent. Retain “he knows” and let the footnote preserve the contextual possibility without resolving the ambiguity.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

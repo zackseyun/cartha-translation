@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/073/007.yaml
-  text: Their eyes bulge out from fatness[a]; the imaginations of their heart overflow.
+  text: Their eyes bulge from fatness; the imaginings of their heart overflow.[a]
   footnotes:
   - marker: a
-    text: Or 'Their eyes protrude from fat; the thoughts/devices of the heart go beyond measure.'
-    reason: lexical_alternative
+    text: Or “the thoughts of their heart exceed all bounds.” The Hebrew noun may denote imaginings, thoughts, desires, or plans.
+    reason: lexical_ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,50 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They have grown so fat that their eyes bulge. The imaginings of their hearts overflow.[a]
+  text: Their eyes bulge because of their fatness; what they imagine in their hearts overflows.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “Their eyes protrude from fat; the thoughts or schemes of their hearts go beyond measure.”
+    text: Or “the thoughts of their heart exceed all bounds.” The Hebrew word may refer to thoughts, desires, or plans.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Their eyes bulge out from fatness
-  simplified_phrase: They have grown so fat that their eyes bulge
+- pob_phrase: Their eyes bulge from fatness
+  simplified_phrase: Their eyes bulge because of their fatness
   preserved_meaning: Their excessive fatness is pictured as making their eyes protrude.
-  reasoning_layer_used: POB lexical decisions for יָצָא and מֵחֵלֶב
-  rationale: The causal wording clarifies the bodily image without reducing fatness to wealth alone.
-- pob_phrase: the imaginations of their heart overflow
-  simplified_phrase: The imaginings of their hearts overflow
-  preserved_meaning: Their inward thoughts and conceptions exceed proper limits.
-  reasoning_layer_used: POB lexical decisions for עָבְרוּ, מַשְׂכִּיּוֹת, and לֵבָב
-  rationale: The natural plural phrasing keeps the imaginings as what overflows.
+  reasoning_layer_used: POB lexical decision and final source audit
+  rationale: The causal wording makes the grotesque Hebrew image easier to understand without reducing fatness to wealth.
+- pob_phrase: the imaginings of their heart overflow
+  simplified_phrase: what they imagine in their hearts overflows
+  preserved_meaning: Their inner thoughts, desires, or plans pass beyond proper limits.
+  reasoning_layer_used: POB lexical decisions and ambiguity footnote
+  rationale: The verbal form replaces the uncommon noun “imaginings” while the note preserves its broad and uncertain sense.
+interpretive_expansions:
+- pob_phrase: from fatness
+  rendering: because of their fatness
+  claim: The fatness is presented as the cause or condition of their bulging eyes.
+  evidence:
+  - The POB lexical rationale says the idiom describes eyes bulging because of fatness.
+  - The final source audit describes eyes protruding amid fatness.
+  confidence: high
+  alternatives_preserved:
+  - from fatness
 translation_notes:
   risk_flags:
-  - risk: Modern readers may take fatness only as a comment on body size.
-    mitigation: The concrete image remains, while the surrounding psalm supplies the setting of excessive prosperity.
+  - risk: “Fatness” may be read only as body size rather than also suggesting excessive prosperity.
+    mitigation: The concrete bodily image is retained because the POB audit rejects reducing it solely to wealth.
+  - risk: “What they imagine” may sound narrower than the rare Hebrew noun.
+    mitigation: The footnote preserves the possible senses of thoughts, desires, and plans.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/073/007.yaml
   source_text_sha256: 70bfdf9a698c92d8a83f6bc4cb06b342c89134bc84498ea74b6972dadc25fc2b
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 3d47fb8c33fa48dcf58c2287a35f64f65accfe65feadbd38d0170657f59334ec
-  timestamp: '2026-07-12T10:00:45Z'
-  output_hash: 97c117a737c95afd034c01fe9345416a4ccc3b886385dd756ebc4bef35ef07af
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 35c1254df26be4b4034d83b5c1a6167e2cbb7b39deb1fb625e3f0188ff724379
+  timestamp: '2026-08-28T22:57:36Z'
+  output_hash: 373349bf1363daa0720af590dcd5e8e1ad2c72a465d3923a6402b39fe3f29e77
   usage:
-    prompt_tokens: 3287
-    completion_tokens: 335
-    total_tokens: 3622
-    reasoning_tokens: 0
+    prompt_tokens: 2672
+    completion_tokens: 1129
+    total_tokens: 3801
+    reasoning_tokens: 673
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:45Z'
   previous_text: They have grown so fat that their eyes bulge. Their hearts overflow with all they imagine.[a]
@@ -86,3 +96,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:57:36Z'
+  previous_text: They have grown so fat that their eyes bulge. The imaginings of their hearts overflow.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/149/004.yaml
-  text: For Yahweh delights in his people[a]; he adorns the humble with salvation.
+  text: For Yahweh delights in his people; he adorns the humble with salvation[a].
   footnotes:
   - marker: a
-    text: Or 'with victory' or 'with deliverance.' The Hebrew term can denote rescue, deliverance, or victory.
+    text: Or “with deliverance” or “with victory.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For Yahweh delights in his people. He makes the humble beautiful with salvation.[a]
+  text: For Yahweh delights in his people; he makes the humble beautiful with salvation.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “with victory” or “with deliverance.” The Hebrew word can refer to rescue, deliverance, or victory.
+    text: Or “deliverance” or “victory.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: For Yahweh delights in his people;
-  simplified_phrase: For Yahweh delights in his people.
-  preserved_meaning: Yahweh’s loving pleasure in his people is the reason for their praise.
-  reasoning_layer_used: Lexical decision for כִּי and רוֹצֶה, supported by the psalm’s context.
-  rationale: Ending the clause as a sentence makes the explanation easier to follow.
 - pob_phrase: he adorns the humble with salvation
-  simplified_phrase: He makes the humble beautiful with salvation
-  preserved_meaning: Yahweh bestows beauty and honor on humble people through salvation.
-  reasoning_layer_used: Lexical decisions for יְפָאֵר, עֲנָוִים, and בִּישׁוּעָה.
-  rationale: “Makes beautiful” clearly expresses the adornment image without using a less common verb.
+  simplified_phrase: he makes the humble beautiful with salvation
+  preserved_meaning: Yahweh beautifies the humble, and salvation is what beautifies them.
+  reasoning_layer_used: POB lexical rationale for יְפָאֵר and בִּישׁוּעָה
+  rationale: This uses familiar language while preserving the image of salvation beautifying the humble.
 translation_notes:
   risk_flags:
-  - risk: “Makes beautiful” could be mistaken for physical appearance alone.
-    mitigation: The phrase “with salvation” keeps the beauty tied to Yahweh’s saving gift.
+  - risk: “Makes beautiful” may sound less like the concrete image of putting on an adornment.
+    mitigation: The wording preserves the verb’s beautifying force and keeps salvation as what beautifies the humble.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/149/004.yaml
   source_text_sha256: 2df02d108d0b4fe04f7fbb208c47ad3fed9bbc468c7103d57d0e94a3a5c6731f
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 3d5fc22a7089ecef277393a0c5446d84250d760e5f70c63bc26787060ebe8d2f
-  timestamp: '2026-07-11T21:09:51Z'
-  output_hash: f9b11a1f9c2f6ef9056cd74fecef960e7cdbeeff5c7b1bca92de98c9b8c71cd5
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ff46cfe624b93c95ce1e04993a2c22c1cbbd8781983db1f7a1e08da1086cf90b
+  timestamp: '2026-08-28T23:36:27Z'
+  output_hash: 9fae9e41afee605553a754d19be589df87e8fccdf6ee3956f860867a243c4504
   usage:
-    prompt_tokens: 2652
-    completion_tokens: 623
-    total_tokens: 3275
-    reasoning_tokens: 276
+    prompt_tokens: 3734
+    completion_tokens: 324
+    total_tokens: 4058
+    reasoning_tokens: 83
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: adorns
+  rendering: gives ... the beauty and honor
+  claim: The adornment presents salvation as bringing beauty and honor to the humble.
+  evidence:
+  - The POB lexical rationale says the verb preserves imagery of bestowed beauty and honor.
+  - The Hebrew construction presents salvation as what adorns the humble.
+  confidence: high
+  alternatives_preserved:
+  - adorns
+  - beautifies
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:00:06Z'
+  previous_text: For Yahweh delights in his people. He makes the humble beautiful with salvation.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:27Z'
+  previous_text: For Yahweh delights in his people. He gives the humble the beauty and honor of salvation.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: ecd420fbb2a0fdb0e8caaaa14656b4c158e9eaeddfa2ac12ecb9eb71df4a4113
+  review_summary: The draft rightly seeks to explain the poetic adornment image, but its expansion alters how the image works and is less clear than intended. “Makes the humble beautiful with salvation” preserves the causative beautifying/adornment sense of יְפָאֵר, keeps salvation as the adornment, and uses accessible English without adding an independent claim about honor.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

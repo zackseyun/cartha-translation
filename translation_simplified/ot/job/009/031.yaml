@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/009/031.yaml
-  text: then you would plunge me into the pit[b][a], and my own clothes would abhor me.
+  text: then you would plunge me into the pit[a], and my clothes would abhor me.[b]
   footnotes:
   - marker: a
-    text: Or 'into the ditch.' The Hebrew שַׁחַת can mean 'pit,' 'ditch,' or, in some contexts, 'destruction.'
+    text: Or “into the ditch.” The Hebrew שַׁחַת can mean “pit,” “ditch,” or, in some contexts, “destruction.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'my garments would loathe me.'
+    text: Or “my garments would loathe me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,49 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then you would plunge me into the pit,[a] and my own clothes would be disgusted by me.
+  text: Then you would plunge me into the pit.[a] Even my clothes would be disgusted with me.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “into a ditch.”
+    text: Or “the ditch.” The Hebrew word can also mean “destruction” in some contexts.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: my own clothes would abhor me
-  simplified_phrase: my own clothes would be disgusted by me
-  preserved_meaning: Job’s clothes are pictured as finding him utterly unclean and repulsive.
-  reasoning_layer_used: POB lexical decisions for וְתִעֲבוּנִי and שַׂלְמוֹתַי
-  rationale: “Be disgusted by me” expresses strong revulsion in ordinary modern English.
 - pob_phrase: then you would plunge me into the pit
-  simplified_phrase: Then you would plunge me into the pit
-  preserved_meaning: Job directly says that God would forcefully immerse him in the pit.
-  reasoning_layer_used: POB lexical and theological decisions for בַּשַּׁחַת and תִּטְבְּלֵנִי
-  rationale: This keeps the vivid plunging image and God’s direct agency.
+  simplified_phrase: Then you would plunge me into the pit.
+  preserved_meaning: Job directly says that God would plunge him into the pit.
+  reasoning_layer_used: The theological decision on divine agency and the lexical decisions for שַׁחַת and טבל.
+  rationale: A separate sentence makes Job’s complaint easier to follow while preserving its forceful image.
+- pob_phrase: and my clothes would abhor me
+  simplified_phrase: Even my clothes would be disgusted with me.
+  preserved_meaning: Job personifies his clothes as reacting to him with intense revulsion.
+  reasoning_layer_used: The lexical decisions for תעב and שַׂלְמוֹתַי.
+  rationale: “Be disgusted with” communicates strong revulsion in familiar modern English.
 translation_notes:
   risk_flags:
-  - risk: The personification of clothes may seem unusual to modern readers.
-    mitigation: The wording preserves Job’s vivid image rather than explaining it away.
+  - risk: “Even” makes the striking personification more explicit than the Hebrew conjunction alone.
+    mitigation: It highlights the clothes’ unexpected reaction without adding a cause for their revulsion.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/009/031.yaml
   source_text_sha256: aae3fd81a6f8307647b44b7b0553149cadd346b223666219064850218470197d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: cb2d351b7173ac43eab543fde887bcb5ae741a3ca7bdcddaa71eefd6710056ea
-  timestamp: '2026-07-12T09:36:20Z'
-  output_hash: 38b497d365cb183e3a960a660092c4353466035be2903e155ea536b40c301bd0
+  prompt_sha256: 04c364ce443d0b3c7f6a22b1e250fc2f2c01a589efef621b130de4be12bc3b13
+  timestamp: '2026-08-28T23:32:49Z'
+  output_hash: 9e4237987f332887a62ac11a009b612c6bf4be540301e9ea8113160cef70c3e2
   usage:
-    prompt_tokens: 3204
-    completion_tokens: 330
-    total_tokens: 3534
-    reasoning_tokens: 0
+    prompt_tokens: 3496
+    completion_tokens: 386
+    total_tokens: 3882
+    reasoning_tokens: 55
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: my clothes would abhor me
+  rendering: I would be so filthy that even my clothes would be disgusted with me
+  claim: The clothes’ revulsion pictures Job as utterly filthy after being plunged into the pit.
+  evidence:
+  - The previous verse describes Job washing himself.
+  - The POB rationale says the pit image returns Job to uncleanness.
+  confidence: high
+  alternatives_preserved:
+  - The clothes remain personified as reacting with revulsion.
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:20Z'
@@ -86,6 +95,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 31cf7525a6ef2eade078364628fe45316447982a5c85a8f88d12d0f2a8dc141d
   review_summary: The draft correctly retains Job’s direct address to God and the forceful plunging image, without adding doctrine or resolving the passage’s theological tension. However, “recoil from me” is a plausible associated image but is weaker and less direct than the source verb’s abhorrence/disgust. “Would be disgusted by me” is clear modern English and preserves the personified, strong-revulsion sense. Retaining “the pit” also stays closer to the POB’s selected concrete image.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:49:50Z'
+  previous_text: Then you would plunge me into the pit,[a] and my own clothes would be disgusted by me.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:49Z'
+  previous_text: Then you would plunge me into the pit.[a] I would be so filthy that even my clothes would be disgusted with me.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a0a9d94fa070d906ec661bf8ff411bd4b087e6943c2eaa0727aa4091ed67f011
+  review_summary: The draft clearly preserves Job’s direct address to God and successfully updates “abhor” to familiar language. However, its added sentence, “I would be so filthy,” turns a strongly suggested implication of the washing-and-pit imagery into an explicit explanatory assertion. Retain the personified revulsion in clear modern English without specifying its cause. The revised wording remains meaningfully clearer than POB while preserving the verse’s figurative compression.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/071/010.yaml
-  text: For my enemies speak against me[a][b], and those who watch for my life consult together.
+  text: For my enemies speak against me, and those who watch for my life[a] consult together[b].
   footnotes:
   - marker: a
-    text: Or 'take counsel together'; the verb can also carry the hostile sense 'conspire' in context.
+    text: Or “those who lie in wait for my life” or “those who seek my life.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'those who lie in wait for my life' or 'those who seek my life.'
+    text: Or “take counsel together”; in context, “conspire together.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,56 +34,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For my enemies speak against me, and those who watch for a chance to harm me make plans together.[a]
+  text: For my enemies speak against me, and those who lie in wait to take my life[a] make plans together.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “those who seek my life consult together.”
+    text: The wording can refer to enemies seeking to seize or kill him.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: those who watch for my life
-  simplified_phrase: those who watch for a chance to harm me
-  preserved_meaning: They watch with hostile intent toward the psalmist’s life or person.
+  simplified_phrase: those who lie in wait to take my life
+  preserved_meaning: They are watching with hostile intent to seize or kill the psalmist.
   reasoning_layer_used: POB lexical decision for וְשֹׁמְרֵי נַפְשִׁי
-  rationale: This makes the hostility clear without limiting the threat to killing.
+  rationale: “Lie in wait” clearly conveys hostile watching without adding a separate opportunity-seeking claim.
 - pob_phrase: consult together
   simplified_phrase: make plans together
-  preserved_meaning: The enemies deliberate in coordination without requiring the stronger sense “conspire.”
+  preserved_meaning: The enemies deliberate in coordination.
   reasoning_layer_used: POB lexical decisions for נוֹעֲצוּ and יַחְדָּו
-  rationale: “Make plans” is natural common English for coordinated deliberation.
+  rationale: “Make plans” expresses joint deliberation in ordinary English without strengthening it to “conspire.”
 interpretive_expansions:
 - pob_phrase: watch for my life
-  rendering: watch for a chance to harm me
-  claim: Their watching is hostile and seeks an opportunity to act against the psalmist.
+  rendering: lie in wait to take my life
+  claim: Their watching is hostile and threatens the psalmist’s life or person.
   evidence:
-  - The POB lexical rationale identifies watching in order to harm or seize.
-  - The immediate context identifies the watchers as the psalmist’s enemies.
+  - The POB lexical rationale says the hostile setting indicates watching in order to harm or seize.
+  - The surrounding clauses identify them as enemies who speak against him and plan together.
   confidence: high
   alternatives_preserved:
+  - those who lie in wait for my life
   - those who seek my life
 translation_notes:
   risk_flags:
-  - risk: “Harm me” is broader than the concrete Hebrew expression involving the psalmist’s life.
-    mitigation: The footnote preserves the more literal alternative “seek my life.”
+  - risk: “Take my life” may suggest only killing, though the Hebrew can also include seizing the person.
+    mitigation: The footnote preserves the broader range of hostile danger.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/071/010.yaml
   source_text_sha256: 63bd9fe46c8c91fd912a79b8268835f63d245f28c490aed3648689dd63415beb
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: ed593c35025078ade468c924ff6605211a8659c9957634abd9126cff84bd34c5
-  timestamp: '2026-07-12T10:00:42Z'
-  output_hash: e608d9b9a5ce0fc28c7115176dbadd84b0743b5d7993ad6899dee3cb2d0c1837
+  prompt_sha256: 0ec296b0439a2504cd60466caafc18249bc32fd7c1710e2527d49f52c3aeaac3
+  timestamp: '2026-08-28T23:35:42Z'
+  output_hash: 0472e3bcd673d7b7d92e514a2015afe5312d49a701e114fa94a2cdd39ff1dd10
   usage:
-    prompt_tokens: 3289
-    completion_tokens: 407
-    total_tokens: 3696
-    reasoning_tokens: 0
+    prompt_tokens: 3438
+    completion_tokens: 787
+    total_tokens: 4225
+    reasoning_tokens: 356
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -95,5 +96,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 73cd2a4fe41d5d8a42f8de1e38225b04db1fe8361e0e2da51571e7bdb60f54ab
   review_summary: The draft usefully makes clear that the watching is hostile and that the group is coordinating plans. However, “take my life” narrows the hostile threat to killing, whereas the source idiom and the POB audit trail retain a broader danger to the psalmist’s life/person, including harm or seizure. “Watch for a chance to harm me” preserves the hostile surveillance and makes the meaning clear without imposing the narrower lethal sense.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:57:51Z'
+  previous_text: For my enemies speak against me, and those who watch for a chance to harm me make plans together.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:42Z'
+  previous_text: For my enemies speak against me, and those watching for a chance to take my life make plans together.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 79b653f52e5509122b843443e76c55c2ff80e9063aacf4227eea16368915bff0
+  review_summary: The draft rightly clarifies that the watchers are hostile and that their consultation is coordinated; these points are warranted by the immediate context and POB audit trail. Revise “watching for a chance” to the POB’s supported lexical alternative “lie in wait,” which is vivid, understandable, and avoids adding an unneeded opportunity-focused detail. “Make plans together” is an appropriate simplification of “consult together.”
   schema_repairs:
   - restored retained_terms as an array from the prior draft

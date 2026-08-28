@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/033/017.yaml
-  text: A horse is a false hope for deliverance[a][b], and by its great strength it cannot rescue.
+  text: A horse is a false hope for deliverance[a][b], and despite its great strength it cannot rescue.
   footnotes:
   - marker: a
     text: '''Deliverance'' could also be rendered ''salvation'' or ''victory'' depending on context.'
@@ -34,38 +34,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A horse is a false hope for rescue. Even its great strength cannot bring deliverance.
+  text: A horse gives false hope of rescue.[a] Despite all its strength, it cannot rescue.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew can also be rendered “A horse is a lie for salvation,” meaning that it proves unreliable as a means of rescue.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: for deliverance
-  simplified_phrase: for rescue
-  preserved_meaning: The horse cannot provide safety or victory in danger.
-  reasoning_layer_used: POB lexical decision for לִתְשׁוּעָה
-  rationale: “Rescue” is more immediate for common readers while staying within the documented meaning.
-- pob_phrase: and by its great strength it cannot rescue
-  simplified_phrase: Even its great strength cannot bring deliverance
-  preserved_meaning: The horse’s physical power is still unable to save.
-  reasoning_layer_used: POB lexical decisions for וּבְרֹב חֵילוֹ and לֹא יְמַלֵּט
-  rationale: The new clause makes the contrast clear without weakening the horse’s inability.
-translation_notes: {}
+- pob_phrase: A horse is a false hope for deliverance
+  simplified_phrase: A horse gives false hope of rescue
+  preserved_meaning: Relying on a horse for deliverance is deceptive and futile.
+  reasoning_layer_used: Lexical decisions for שֶׁקֶר and לִתְשׁוּעָה
+  rationale: This uses familiar wording while preserving the warning against trusting a horse for deliverance.
+- pob_phrase: and despite its great strength
+  simplified_phrase: Despite all its strength
+  preserved_meaning: The horse cannot rescue even though it is very powerful.
+  reasoning_layer_used: Applied grammar revision for וּבְרֹב חֵילוֹ
+  rationale: A new sentence makes the contrast between strength and inability easy to follow.
+- pob_phrase: it cannot rescue
+  simplified_phrase: it cannot rescue
+  preserved_meaning: The horse is unable to provide the deliverance expected from it.
+  reasoning_layer_used: Lexical decision for לֹא יְמַלֵּט and immediate military context
+  rationale: Leaving the object unstated avoids extending the claim beyond the source.
+translation_notes:
+  risk_flags:
+  - risk: “Rescue” has no stated object and may sound slightly abrupt in English.
+    mitigation: The object remains unstated to preserve the Hebrew and POB scope.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/033/017.yaml
   source_text_sha256: 4eb9e063d570b49255610639787a3e3a5f102d5b79a7a6f562390faaa2fe28be
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a6e1850bcc5284c1efa2b98513d14b88a326ab10ce7abe745f6e62d61ebf5c19
-  timestamp: '2026-07-11T20:50:06Z'
-  output_hash: c23a66493fced52fe217e5d00849ac1da928a7cbec849ff62dacff13a60d51a9
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f4ab51130d938a281da64e6b3d1b04da89fcb11f626031af1e3f86382d6701de
+  timestamp: '2026-08-28T23:35:15Z'
+  output_hash: 6086321e9ae570c06c58796413f6cdf9f65107b7a96879217bda06e0f1121ce4
   usage:
-    prompt_tokens: 2413
-    completion_tokens: 499
-    total_tokens: 2912
-    reasoning_tokens: 255
+    prompt_tokens: 3644
+    completion_tokens: 478
+    total_tokens: 4122
+    reasoning_tokens: 79
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: it cannot rescue
+  rendering: it cannot rescue anyone
+  claim: The negated rescue applies generally to any person relying on the horse.
+  evidence:
+  - The verse presents the horse generically as an unreliable means of deliverance.
+  - POB identifies the horse or its strength as the subject of “cannot rescue.”
+  confidence: high
+  alternatives_preserved:
+  - it cannot rescue
+  - it cannot save
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:24Z'
+  previous_text: A horse is a false hope for rescue. Even its great strength cannot bring deliverance.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:15Z'
+  previous_text: A horse gives false hope of rescue.[a] Despite all its strength, it cannot rescue anyone.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 7bebe6d005eb7e45762bcf7773eaefca58f0b35847b75526326b132f25fcc955
+  review_summary: 'The first sentence is a warranted, clearer expression of the POB’s “false hope for deliverance,” and “Despite all its strength” clearly preserves the concessive contrast. Remove “anyone,” however: it turns an unstated object into a universal claim and can suggest a broader assertion than the military-deliverance context makes. The revised wording remains natural English while preserving the source’s scope.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

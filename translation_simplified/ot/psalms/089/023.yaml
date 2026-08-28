@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/089/023.yaml
-  text: And I will crush his adversaries before him[a][b], and strike down those who hate him.
+  text: I will crush his adversaries before him[a] and strike down those who hate him.
   footnotes:
   - marker: a
-    text: Or 'smite' or 'plague'; the Hebrew verb can denote a forceful striking in judgment or battle.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'from before him,' more literally preserving the Hebrew idiom of removing enemies from his presence.
-    reason: lexical_alternative
+    text: Or “from before him.”
+    reason: literal_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,52 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I will crush the enemies who stand in his way and strike down those who hate him.
+  text: I will crush his enemies before him[a] and strike down those who hate him.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “from before him.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: his adversaries before him
-  simplified_phrase: the enemies who stand in his way
-  preserved_meaning: God will remove the king’s active opponents from before him.
-  reasoning_layer_used: POB lexical decisions for מִפָּנָיו and צָרָיו
-  rationale: The wording makes the Hebrew idiom understandable while preserving hostile opposition.
-- pob_phrase: strike down those who hate him
-  simplified_phrase: strike down those who hate him
-  preserved_meaning: God will decisively defeat those characterized by hatred toward the king.
-  reasoning_layer_used: POB lexical and theological decisions for אֶגּוֹף
-  rationale: The strong martial wording remains clear and natural in modern English.
-interpretive_expansions:
-- pob_phrase: before him
-  rendering: who stand in his way
-  claim: The enemies are hostile opponents whom God will clear from the king’s path.
-  evidence:
-  - The lexical rationale says the phrase concerns hostile opposition cleared away in front of the king.
-  confidence: high
-  alternatives_preserved:
-  - before him
-  - from before him
-  - from his presence
+- pob_phrase: his adversaries
+  simplified_phrase: his enemies
+  preserved_meaning: They are hostile opponents of the king.
+  reasoning_layer_used: POB lexical decision for צָרָיו
+  rationale: “Enemies” is more familiar than “adversaries” and remains a documented lexical option.
 translation_notes:
   risk_flags:
-  - risk: “Stand in his way” may sound less spatial than the Hebrew image of being before his face.
-    mitigation: The phrase retains the image of opponents positioned ahead of him and preserves their removal as active opposition.
+  - risk: “Before him” may suggest location alone rather than enemies being removed from his presence.
+    mitigation: The footnote preserves the documented alternative “from before him” without adding obstruction imagery.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/089/023.yaml
   source_text_sha256: f24e14804afad4959a6f90ccc3b41968c72875e2f2e2218ae749271628a0f3d0
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: e37d946b44adceb0d12c4da2d174f6ac47df52f93bc9273d66da2105ed1c65a6
-  timestamp: '2026-07-11T20:52:30Z'
-  output_hash: 222f90bc5745fb0b47a537ab21edb562511d6de03644b98711ad8d2374617a41
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: c3bf9d174d1c155c8436efedc5d57d7524fd13f156acea0a5f19744a1f9d274d
+  timestamp: '2026-08-28T23:35:50Z'
+  output_hash: 300f9b6438b6bc8f22fcebaf5a3a7e49d1d3737292a4a8881b68de8a351b8ae9
   usage:
-    prompt_tokens: 2484
-    completion_tokens: 558
-    total_tokens: 3042
-    reasoning_tokens: 197
+    prompt_tokens: 3450
+    completion_tokens: 267
+    total_tokens: 3717
+    reasoning_tokens: 62
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: before him
+  rendering: who stand in his way
+  claim: The enemies before the king are opposing and obstructing him.
+  evidence:
+  - The POB rationale says the phrase depicts hostile opposition being cleared away in front of the king.
+  - The surrounding martial verbs describe God’s decisive action against enemies.
+  confidence: high
+  alternatives_preserved:
+  - before him
+  - from before him
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:24Z'
+  previous_text: I will crush the enemies who stand in his way and strike down those who hate him.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:50Z'
+  previous_text: I will crush the enemies who stand in his way[a] and strike down those who hate him.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 79b82f3486713f6ccdc7f2d382ec378ce41b707fb9191bf5f6c13f3e1168f97b
+  review_summary: Replacing “adversaries” with “enemies” is a sound readability improvement. However, “who stand in his way” adds a particular obstruction image beyond what the source and POB audit trail require. Retain the clear modern term “enemies” while keeping the source’s “before him” wording and its footnoted alternative.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

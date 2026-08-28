@@ -34,45 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Moab is my basin for washing.[a] I throw my sandal on Edom. Philistia, shout in triumph over me![b]
+  text: Moab is my washing basin.[a] I throw my sandal onto Edom. Philistia, shout in triumph for me![b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The basin and sandal images present Moab and Edom as humiliated and conquered.
-    reason: cultural_note
+    text: Traditionally, “washpot.” The picture shows Moab humiliated and brought under God’s rule.
+    reason: lexical_alternative
   - marker: b
-    text: The Hebrew is difficult. Many translations instead read, “Over Philistia I shout in triumph.”
+    text: 'The Hebrew gives Philistia an ironic command: though subdued, it must acclaim God. Many translations instead read, “Over Philistia I shout in triumph.”'
     reason: textual_variant
 simplification_decisions:
-- pob_phrase: Moab is my washbasin; on Edom I cast my sandal; over me, O Philistia, shout in triumph!
-  simplified_phrase: Moab is my basin for washing. I throw my sandal on Edom. Philistia, shout in triumph over me!
-  preserved_meaning: Kept Philistia as the person addressed and represented the Masoretic 'over me.'
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Kept Philistia as the person addressed and represented the Masoretic 'over me.'
+- pob_phrase: Moab is my washbasin
+  simplified_phrase: Moab is my washing basin
+  preserved_meaning: Moab is pictured as a basin used for washing, expressing humiliation and subjection.
+  reasoning_layer_used: lexical decision and footnote a
+  rationale: The familiar phrase keeps the concrete image while making its purpose clear.
+- pob_phrase: on Edom I cast my sandal
+  simplified_phrase: I throw my sandal onto Edom
+  preserved_meaning: The speaker throws his sandal onto Edom as a sign of dominance.
+  reasoning_layer_used: lexical decisions for אַשְׁלִיךְ נַעֲלִי and עַל אֱדוֹם
+  rationale: Natural word order and “throw” clarify the action without weakening the image.
+- pob_phrase: over me, O Philistia, shout in triumph
+  simplified_phrase: Philistia, shout in triumph for me
+  preserved_meaning: Philistia is directly commanded to acclaim the divine speaker as a subdued nation.
+  reasoning_layer_used: theological decision on הִתְרֹעָעִי and conquest context
+  rationale: “For me” prevents the false impression that Philistia has defeated the speaker.
+interpretive_expansions:
+- pob_phrase: over me, O Philistia, shout in triumph
+  rendering: Philistia, shout in triumph for me
+  claim: The ironic command requires subdued Philistia to acclaim the divine victor.
+  evidence:
+  - Moab and Edom are also portrayed as subjected nations.
+  - The POB theological decision glosses the command as “shout in triumph for me.”
+  confidence: moderate
+  alternatives_preserved:
+  - Over Philistia I shout in triumph.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: “For me” expresses the contextual force rather than the Hebrew preposition’s surface form “over me.”
+    mitigation: Footnote b explains the ironic command and preserves the major alternate reading.
+  - risk: The basin and sandal images may be culturally unfamiliar.
+    mitigation: Footnote a explains the shared subjugation imagery while retaining both images.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/060/008.yaml
   source_text_sha256: de9063184e3f7729d94d1360e3f111e3533b72df88e88361a3dc9d85c09675e7
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 3f666705a60c4a9bbe36fcf028a3c101b0e40641c0fdff11334f0cade8bd272a
-  timestamp: '2026-07-12T10:00:07Z'
-  output_hash: 5d468a78d4bbab063c5dc890e25e08c4a48d395ec395b450f90e446791cd7d13
+  prompt_sha256: f4572fc3da6f1a1b101406a947b60268f460d8ea35810dd77175b91948180ccf
+  timestamp: '2026-08-28T23:35:35Z'
+  output_hash: 7173b4e32afe6877ae7af04d3bcc593a115f4a12860dcb4c15219dca2df686d7
   usage:
-    prompt_tokens: 3762
-    completion_tokens: 435
-    total_tokens: 4197
-    reasoning_tokens: 0
+    prompt_tokens: 3921
+    completion_tokens: 758
+    total_tokens: 4679
+    reasoning_tokens: 138
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:07Z'
@@ -91,3 +114,17 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Kept Philistia as the person addressed and represented the Masoretic 'over me.'
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:56:59Z'
+  previous_text: Moab is my basin for washing.[a] I throw my sandal on Edom. Philistia, shout in triumph over me![b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:35Z'
+  previous_text: Moab is my washing basin.[a] I throw my sandal onto Edom. Philistia, shout in triumph over me![b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bde5eae2550907049e4b31420ac3374e62803266ad233217271db3124e6aa825
+  review_summary: 'The first two sentences are clear, source-warranted simplifications that retain the basin and sandal images. Revise the final line: the current word order makes Philistia’s triumph over God sound like the plain meaning. “For me” follows the audit trail’s contextual reading and communicates the intended ironic subjugation. The footnote should name God as the antecedent of “his rule” and explain the irony consistently with the revised main text.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

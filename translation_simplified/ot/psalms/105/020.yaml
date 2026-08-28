@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/105/020.yaml
-  text: The king sent and released him[a][b]; the ruler of peoples set him free.
+  text: The king sent and released him[a]; the ruler of peoples set him free.[b]
   footnotes:
   - marker: a
-    text: Literally 'opened him' or 'opened for him'; the idiom means that he was freed from confinement.
+    text: Or “loosed him.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'loosed him' / 'freed him' for 'released him' (וַיַּתִּירֵהוּ).
+    text: Literally, “opened him”; in context, the expression means that the ruler freed him from confinement.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,43 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The king sent for him and released him; the ruler of peoples set him free.
+  text: The king sent for him and released him; the ruler over peoples set him free.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: The king sent and released him
   simplified_phrase: The king sent for him and released him
-  preserved_meaning: The king ordered Joseph to be brought out and released from confinement.
-  reasoning_layer_used: Lexical decision for שָׁלַח and immediate prison context
-  rationale: Adding “for him” makes the unstated object natural in English without changing the king’s action.
+  preserved_meaning: The king first sent for the prisoner and then released him.
+  reasoning_layer_used: Immediate prison context and the POB lexical decision for שָׁלַח
+  rationale: “Sent for him” supplies a natural English complement without specifying orders or merging the two actions.
+- pob_phrase: the ruler of peoples
+  simplified_phrase: the ruler over peoples
+  preserved_meaning: The king is portrayed as ruling multiple peoples.
+  reasoning_layer_used: POB lexical decision for מֹשֵׁל עַמִּים
+  rationale: Adding “over” makes the title natural in English while preserving the plural “peoples.”
 interpretive_expansions:
-- pob_phrase: The king sent
-  rendering: The king sent for him
-  claim: The king summoned Joseph so that he could release him.
+- pob_phrase: sent
+  rendering: sent for him
+  claim: In context, the king had the imprisoned man summoned.
   evidence:
-  - The following verb says that the king released Joseph.
-  - The lexical rationale allows English to supply what was sent in context.
-  confidence: high
+  - The surrounding account concerns Joseph being brought out of confinement.
+  - The next distinct action is the king releasing him.
+  confidence: moderate
   alternatives_preserved:
-  - The king sent word and released him.
-translation_notes: {}
+  - sent
+  - sent word
+translation_notes:
+  risk_flags:
+  - risk: “Sent for him” makes the direction of the king’s sending explicit.
+    mitigation: The prison context supports a summons, while the wording avoids naming an unstated messenger or order.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/105/020.yaml
   source_text_sha256: 251acb333cf549a995e434909262c9ed5b887fa74b73df76d590b6f6e8eb4a41
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 3e7d8595b71e7d6b082cd076e8e7936e5232f132a5d77a1b4de7781398c65a5e
-  timestamp: '2026-07-11T20:49:10Z'
-  output_hash: 7fef9c7a9608aca5249e361e98dd3656ad26fa708a5fbc17977787b86c1f2736
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: f842e77a48cad4596411abc1f1c66de0064ed24919fefab84a0429b34a0c68d0
+  timestamp: '2026-08-28T23:36:02Z'
+  output_hash: f179ec0c08f3fdce873547edc988a54dfb7ffbeee16e69decf060e938b500075
   usage:
-    prompt_tokens: 2331
-    completion_tokens: 239
-    total_tokens: 2570
-    reasoning_tokens: 0
+    prompt_tokens: 3459
+    completion_tokens: 442
+    total_tokens: 3901
+    reasoning_tokens: 86
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:20Z'
+  previous_text: The king sent for him and released him; the ruler of peoples set him free.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:02Z'
+  previous_text: The king sent orders to release him; the ruler over peoples set him free.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 91be16a314cdb5a66bb7c38c66d3a7c996ab7277849cdf7dd89df1d68ab9d22b
+  review_summary: Revision is needed. “Ruler over peoples” is a warranted, clear modernization of the title. However, “sent orders to release him” adds a particular instrument and converts two coordinated actions into one order-and-purpose event. “Sent for him and released him” makes the prison-context sense understandable while preserving the verse’s distinct actions and avoiding the unsupported claim that orders were sent.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/006/001.yaml
-  text: My son[a], if you have gone surety for your neighbor, if you have struck your hands in pledge to a stranger[b],
+  text: My son, if you have become a guarantor for your neighbor[a], if you have struck your hands in pledge to a stranger[b],
   footnotes:
   - marker: a
-    text: Or 'if you have become a guarantor for your friend.'
+    text: Or “if you have become a guarantor for your friend.”
     reason: lexical_alternative
   - marker: b
-    text: Literally 'if you have struck your hands to a stranger'; that is, sealed a pledge by a handclasp.
+    text: Literally “if you have struck your hands to a stranger”; striking or clasping hands could seal a pledge.
     reason: cultural_note
   ai_draft:
     model_id: gpt-5.4
@@ -34,56 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My son, if you have agreed to be responsible for your neighbor’s debt,[a] if you clasped hands with a stranger to seal the pledge,
+  text: My son, if you have agreed to be responsible for your neighbor’s[a] debt, if you have made a pledge with a stranger by clasping hands,
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also refer more broadly to another person’s obligation.
+    text: Or “friend” or “companion.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: have gone surety for your neighbor
+- pob_phrase: have become a guarantor for your neighbor
   simplified_phrase: have agreed to be responsible for your neighbor’s debt
-  preserved_meaning: The person has become the guarantor of what another person owes.
-  reasoning_layer_used: POB lexical decision for עָרַבְתָּ
-  rationale: This replaces an unfamiliar legal expression with its clear financial meaning.
+  preserved_meaning: The son has accepted financial responsibility on another person’s behalf.
+  reasoning_layer_used: POB lexical decision and revision rationale for עָרַבְתָּ
+  rationale: This explains the unfamiliar legal term “guarantor” in common English.
 - pob_phrase: have struck your hands in pledge to a stranger
-  simplified_phrase: clasped hands with a stranger to seal the pledge
-  preserved_meaning: A handclasp formally confirms the pledge involving an outsider.
-  reasoning_layer_used: POB lexical decisions and cultural footnote for תָּקַעְתָּ and כַּפֶּיךָ
-  rationale: This keeps the physical image while explaining what the gesture accomplishes.
+  simplified_phrase: have made a pledge with a stranger by clasping hands
+  preserved_meaning: A physical hand-clasping gesture accompanies a pledge involving an outsider.
+  reasoning_layer_used: POB lexical decisions and cultural note for תָּקַעְתָּ and כַּפֶּיךָ
+  rationale: This retains the hand image while explaining what the gesture means.
 interpretive_expansions:
-- pob_phrase: have gone surety
-  rendering: have agreed to be responsible for your neighbor’s debt
-  claim: The guarantor accepts responsibility for another person’s debt.
+- pob_phrase: guarantor for your neighbor
+  rendering: responsible for your neighbor’s debt
+  claim: The guarantee involves financial liability accepted on another person’s behalf.
   evidence:
-  - The POB lexical rationale defines the verb as becoming security for another person’s debt or obligation.
+  - The POB rationale identifies a legal-financial guarantee undertaken for another person.
   confidence: high
   alternatives_preserved:
-  - A broader nonfinancial obligation is noted in the footnote.
+  - The second clause may describe a distinct party or aspect of the arrangement.
 translation_notes:
   risk_flags:
-  - risk: “Debt” may sound narrower than the Hebrew term’s possible range.
-    mitigation: The footnote preserves the broader sense of an obligation.
-  - risk: The stranger’s exact role in the arrangement is not specified.
-    mitigation: The text retains “stranger” without identifying that person as debtor or creditor.
+  - risk: “Debt” is implicit rather than directly stated in the Hebrew.
+    mitigation: The POB lexical audit establishes the legal-financial sense of the guarantee.
+  - risk: “Clasping” is less forceful than the literal image of striking hands.
+    mitigation: It is a documented lexical alternative that preserves the physical pledge gesture.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/006/001.yaml
   source_text_sha256: 1c1bc15308992843f7bbf7b116c9ab2d2332c01398abcd9dbc2002b15e1526b2
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 04bd405c65439af4df174f3cc84c55d79ba9134a0168bdfdbffe19b9bc6373f5
-  timestamp: '2026-07-11T21:08:25Z'
-  output_hash: c1cf33096a20502bfa554fc05e6822ba462553f304175b54771f38b97abd236b
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fac5da4d57aa2b03d855623b81a12ce3bae90f8c772f875df41b2956f668f3e2
+  timestamp: '2026-08-28T23:34:04Z'
+  output_hash: f1043e50707a368f3041ec84c84e18e027a9942e80681889b8b6f1df91c865c3
   usage:
-    prompt_tokens: 2427
-    completion_tokens: 1312
-    total_tokens: 3739
-    reasoning_tokens: 856
+    prompt_tokens: 3660
+    completion_tokens: 623
+    total_tokens: 4283
+    reasoning_tokens: 167
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:10Z'
+  previous_text: My son, if you have agreed to be responsible for your neighbor’s debt,[a] if you clasped hands with a stranger to seal the pledge,
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:04Z'
+  previous_text: My son, if you have agreed to be responsible for your neighbor’s[a] debt, if you have sealed that pledge by clasping hands with a stranger,
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bf608a691dc73f0da79e644cf88a57cc698f36af6cf52f3c7eed393ebb0d9a2c
+  review_summary: The draft successfully makes the unfamiliar idea of becoming a guarantor understandable, and the financial sense is supported by the POB audit trail. However, “that pledge” collapses the two source clauses into one explicitly identified transaction. Remove the unsupported backward reference while retaining the clear explanation of the hand-clasping gesture. The lexical footnote for “neighbor” may be retained unchanged.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

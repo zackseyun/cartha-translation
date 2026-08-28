@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/015/013.yaml
-  text: A joyful heart makes the face cheerful[b][a], but by the sorrow of the heart the spirit is crushed.
+  text: A joyful heart brightens the face[a], but heartache crushes the spirit.
   footnotes:
   - marker: a
-    text: Or 'brightens the face.' The Hebrew literally says 'makes good the face,' an idiom for improving one's outward expression.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'a broken spirit' for 'the spirit is crushed.'
-    reason: lexical_alternative
+    text: Literally “makes the face good.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,42 +31,39 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A joyful heart brightens the face, but sorrow in the heart crushes the spirit.
+  text: A joyful heart makes the face light up, but sorrow in the heart crushes the spirit.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: makes the face cheerful
-  simplified_phrase: brightens the face
-  preserved_meaning: Inner joy improves a person's outward expression while preserving the image of the face.
-  reasoning_layer_used: POB lexical decision for יֵיטִב and lexical footnote a
-  rationale: “Brightens” states the Hebrew idiom in natural English.
-- pob_phrase: by the sorrow of the heart the spirit is crushed
+- pob_phrase: brightens the face
+  simplified_phrase: makes the face light up
+  preserved_meaning: Inner joy becomes visible in a person’s face.
+  reasoning_layer_used: POB lexical decision for יֵיטִב פָּנִים and source audit
+  rationale: This common expression preserves both the cause and the concrete facial image.
+- pob_phrase: heartache crushes the spirit
   simplified_phrase: sorrow in the heart crushes the spirit
-  preserved_meaning: Inner sorrow causes a person's spirit to be beaten down.
-  reasoning_layer_used: POB lexical decisions for וּבְעַצְּבַת, לֵב, רוּחַ, and נְכֵאָה
-  rationale: The wording keeps sorrow as the cause without making the heart itself the agent.
-translation_notes:
-  risk_flags:
-  - risk: “Brightens” could be read as literal light.
-    mitigation: Its connection with the face signals a changed outward expression.
+  preserved_meaning: Sorrow within a person directly beats down the person’s spirit.
+  reasoning_layer_used: POB lexical decisions for עַצְּבַת לֵב and רוּחַ נְכֵאָה
+  rationale: The wording clearly locates the sorrow in the heart while retaining the direct force of “crushes.”
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/015/013.yaml
   source_text_sha256: 19c7413c34b64d1224efcceb2158e4b9de057f4ec0e19f598bfb1c9fb05c34a6
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 4642932f9f127c2decacb32dbc265a625d7afa7f436ef8f08e4d68dfa48b59f0
-  timestamp: '2026-07-12T09:52:21Z'
-  output_hash: af26df761df6f8e2d6009d1c21797a2e26a7744ae55b468ca0127019dd4a4879
+  prompt_sha256: 1f1d9657cf57b67b79d231ab295d33260f7aa93ff3c4d2b771c34dd1926bc5f0
+  timestamp: '2026-08-28T23:34:22Z'
+  output_hash: 9ca463a451e6c969dc065d342ed5e3e5b63432d49e24df9682895f32c124287d
   usage:
-    prompt_tokens: 3202
-    completion_tokens: 281
-    total_tokens: 3483
-    reasoning_tokens: 0
+    prompt_tokens: 3508
+    completion_tokens: 303
+    total_tokens: 3811
+    reasoning_tokens: 48
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -82,6 +76,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 796e33721ae46a6416c1ae5a460f878a85005a3a086fb34dd1a2016c399bf6ba
   review_summary: “Brightens the face” is a warranted, clearer use of the POB’s stated lexical alternative and preserves the concrete outward-expression image. The second line should retain sorrow as the causal reality rather than recast the sorrowful heart itself as an active crushing agent. “Sorrow in the heart crushes the spirit” is simple, preserves the contrast and force, and is supported by the source and POB audit trail.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:35Z'
+  previous_text: A joyful heart brightens the face, but sorrow in the heart crushes the spirit.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:22Z'
+  previous_text: A joyful heart makes the face light up, but a heart in pain leaves the spirit crushed.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 12018825cb127deaa4e7133f73d1c519ce8f273f3762a22e9ba0c282da9e6815
+  review_summary: The first clause is a warranted and clearer rendering of the facial-brightening idiom. Revise the second clause to retain the source and POB’s direct causal force while making explicit that the sorrow is within the heart.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

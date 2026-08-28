@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/026/002.yaml
-  text: Examine me[a], O Yahweh, and test me; refine my mind and my heart.
+  text: Examine me, O Yahweh, and test me; refine my kidneys[a] and my heart.
   footnotes:
   - marker: a
-    text: Hebrew 'kidneys,' a figure for the innermost thoughts or affections.
+    text: Hebrew “kidneys,” a figure for the innermost thoughts or affections.
     reason: cultural_note
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,57 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 26:2 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''my kidneys''].'
 translation:
   language: en
-  text: Yahweh, examine me and put me to the test. Refine my mind and my heart.
+  text: Yahweh, examine me and put me to the test. Refine my kidneys[a] and my heart, as metal is refined.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: In Hebrew poetry, the kidneys represent a person’s deepest thoughts and affections.
+    reason: cultural_note
 simplification_decisions:
 - pob_phrase: Examine me, O Yahweh
   simplified_phrase: Yahweh, examine me
   preserved_meaning: The speaker directly asks Yahweh to examine him.
-  reasoning_layer_used: Lexical decisions for יְהוָה and בְּחָנֵנִי
-  rationale: Natural English word order removes the archaic form of address.
-- pob_phrase: and test me
-  simplified_phrase: and put me to the test
-  preserved_meaning: The second request asks Yahweh to prove the speaker through testing.
-  reasoning_layer_used: Lexical distinction between בחן and נסה
-  rationale: The fuller phrase remains distinct from the request to examine him.
-- pob_phrase: refine my mind and my heart
-  simplified_phrase: Refine my mind and my heart
-  preserved_meaning: The metal-refining image applies to the speaker's inner thoughts and affections.
-  reasoning_layer_used: POB published rendering and lexical rationale for צרף and כִלְיוֹתַי
-  rationale: The contextual wording makes the inner-person metaphor immediately clear while retaining refining imagery.
+  reasoning_layer_used: POB lexical decisions for יְהוָה and בְּחָנֵנִי
+  rationale: Placing the name first makes the direct address more natural without weakening it.
+- pob_phrase: and test me; refine
+  simplified_phrase: and put me to the test. Refine
+  preserved_meaning: The requests to examine, test, and refine remain distinct.
+  reasoning_layer_used: POB lexical decisions and Hebrew poetic parallelism
+  rationale: The fuller phrase and sentence break make the sequence easier to follow.
+interpretive_expansions:
+- pob_phrase: refine
+  rendering: Refine ... as metal is refined
+  claim: The refining language uses the image of processing metal.
+  evidence:
+  - The POB lexical rationale identifies צרף as a metallurgical term for refining or smelting.
+  confidence: high
+  alternatives_preserved:
+  - The image can suggest both proving and purification.
 translation_notes:
   risk_flags:
-  - risk: Rendering the Hebrew body-part image as “mind” makes the literal reference to kidneys invisible.
-    mitigation: The wording follows the controlling POB text and preserves its stated sense of the innermost thoughts and affections.
+  - risk: Modern readers may find “kidneys” strange as imagery for the inner person.
+    mitigation: The source image is retained, and a footnote explains its poetic sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/026/002.yaml
   source_text_sha256: 1ec3a558ce31e5ddaf439da6f6956a8ae883d45bcf689afe26ae25975c6b7e58
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: fb27b7522df37101f8c088ad05c54b7af65377426b1b1a55a01fcfa9a028900a
-  timestamp: '2026-07-12T09:59:20Z'
-  output_hash: 0fe9ffaa466103f5b0eb591e627dfcedd10ae1f21ae9aaa0877604b061e7b755
+  prompt_sha256: 4ca3ad38ca5098b98307d5f2077d317692d5de8df568689c6e15281ac24c192a
+  timestamp: '2026-08-28T23:35:08Z'
+  output_hash: 9f9b6000f386f988f8bfa1049c42c216eb344edb61b2b9433685d5a517d51194
   usage:
-    prompt_tokens: 3618
-    completion_tokens: 361
-    total_tokens: 3979
-    reasoning_tokens: 0
+    prompt_tokens: 3734
+    completion_tokens: 404
+    total_tokens: 4138
+    reasoning_tokens: 13
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:20Z'
@@ -86,4 +93,18 @@ spob_revision_history:
   review_summary: Revise for readability, not doctrine. The direct address and “put me to the test” are warranted, natural simplifications that retain the paired requests to examine and test. But restoring “kidneys” in the main text makes the line opaque for modern readers and is a regression from POB’s already warranted contextual rendering. “Mind and heart” communicates the Hebrew inner-person imagery clearly without adding interpretation or collapsing a live theological ambiguity.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:06Z'
+  previous_text: Yahweh, examine me and put me to the test. Refine my mind and my heart.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:08Z'
+  previous_text: Yahweh, examine me and put me to the test. Refine my kidneys[a] and my heart as metal is refined.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5696a0c1efaef244e8d4996a17dbad9783aadd8897230b65956461cbe87423cb
+  review_summary: The revision preserves the three distinct petitions—examine, test, and refine—and retains the Hebrew body-part imagery with an adequate cultural note. “Put me to the test” is a clear rendering of the second imperative. The explicit metal comparison is supported by the POB’s lexical rationale for צרף and helpfully explains an image that may otherwise be missed; it does not impose a theological interpretation. A comma is needed before the comparative phrase for polished publication style.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

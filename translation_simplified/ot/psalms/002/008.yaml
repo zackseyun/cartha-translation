@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/002/008.yaml
-  text: Ask of me[a], and I will give the nations as your inheritance, and the ends of the earth as your possession.
+  text: Ask of me, and I will give the nations as your inheritance, and the ends of the earth[a] as your possession.
   footnotes:
   - marker: a
-    text: Or 'the farthest reaches of the earth.'
+    text: Or “the farthest reaches of the earth.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,46 +31,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Ask me, and I will give you the nations as your inheritance. The farthest reaches of the earth will be your possession.
+  text: Ask me, and I will give you the nations as your inheritance, and the farthest reaches of the earth as your possession.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Literally, “the ends of the earth.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Ask of me
   simplified_phrase: Ask me
   preserved_meaning: The addressed king or son is commanded to petition the speaker.
-  reasoning_layer_used: Lexical decision for שְׁאַל מִמֶּנִּי
-  rationale: Modern English normally expresses the same petition as “ask me.”
-- pob_phrase: and I will give the nations as your inheritance
-  simplified_phrase: and I will give you the nations as your inheritance
-  preserved_meaning: The nations are promised as an inherited possession.
+  reasoning_layer_used: Lexical decisions for שְׁאַל and מִמֶּנִּי
+  rationale: Modern English expresses this direct petition as “ask me.”
+- pob_phrase: I will give the nations as your inheritance
+  simplified_phrase: I will give you the nations as your inheritance
+  preserved_meaning: The speaker promises the nations to the addressed person as an inherited allotment.
   reasoning_layer_used: Lexical decisions for וְאֶתְּנָה, גּוֹיִם, and נַחֲלָתֶךָ
-  rationale: Adding “you” makes the recipient clear without changing the promise.
-- pob_phrase: and the ends of the earth as your possession
-  simplified_phrase: The farthest reaches of the earth will be your possession
-  preserved_meaning: The promise extends to the earth’s remotest limits.
-  reasoning_layer_used: Lexical decision and documented alternative for אַפְסֵי אָרֶץ
-  rationale: A new sentence and the clearer lexical alternative make the worldwide scope easy to understand.
+  rationale: Adding “you” clearly identifies the recipient without changing the promise.
+- pob_phrase: the ends of the earth
+  simplified_phrase: the farthest reaches of the earth
+  preserved_meaning: The possession extends to the earth’s remotest limits.
+  reasoning_layer_used: Lexical decision for אַפְסֵי אָרֶץ and grounding review
+  rationale: This clear lexical alternative preserves the geographic image without adding “the whole earth.”
 translation_notes:
   risk_flags:
-  - risk: “Inheritance” may suggest only property received after a death to some readers.
-    mitigation: The term is retained because it preserves the important biblical idea of an allotted heritage.
+  - risk: The verse has a traditional messianic reading.
+    mitigation: The wording preserves the promise to the addressed king or son without explicitly identifying him.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/002/008.yaml
   source_text_sha256: 039f9fc5d7671f3e62d3b5522679730f677382f108dcfc8a36caca6e8e5127e9
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 44029de30f28e4a625daad39c19f9848a5fbc7bb67c2ca48151c61b50ec70429
-  timestamp: '2026-07-11T20:24:27Z'
-  output_hash: 0681c94d9d7ba733422b9f107c9a3abad8f8a8e2f2bc7f539b5243df8aa12037
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 910200dc92d2bb7d87fe4fd2477345b5f5d5bc78ce90b9108b11887519ffeae6
+  timestamp: '2026-08-28T23:34:58Z'
+  output_hash: 2bfcc7933b52ce1f7e5db41618912ea33e5e1ee3318ab0e2b1586a6e1babebf8
   usage:
-    prompt_tokens: 2540
-    completion_tokens: 607
-    total_tokens: 3147
-    reasoning_tokens: 223
+    prompt_tokens: 3813
+    completion_tokens: 517
+    total_tokens: 4330
+    reasoning_tokens: 115
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: the ends of the earth
+  rendering: The whole earth, even its farthest reaches
+  claim: The idiom presents a possession extending throughout the earth to its remotest limits.
+  evidence:
+  - The lexical rationale defines אַפְסֵי אָרֶץ as the extremities or farthest limits of the earth.
+  - The parallel promise gives the nations and the earth’s farthest reaches as the king’s inheritance and possession.
+  confidence: high
+  alternatives_preserved:
+  - The footnote retains the literal image “the ends of the earth.”
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:04Z'
+  previous_text: Ask me, and I will give you the nations as your inheritance. The farthest reaches of the earth will be your possession.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:58Z'
+  previous_text: Ask me, and I will give you the nations as your inheritance. The whole earth, even its farthest reaches, will be your possession.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: fb683606336ef53913bb3f151549c3690c5550e24e1e56a93174896089158515
+  review_summary: The draft helpfully modernizes “Ask of me” to “Ask me” and supplies the implicit recipient (“give you”), both of which are warranted and improve readability. However, “The whole earth, even its farthest reaches” expands the source’s specific extremities image into a totalizing assertion. Retain the clear lexical alternative “the farthest reaches of the earth” in the main text; it communicates the worldwide scope without adding a further interpretive formulation.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

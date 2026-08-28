@@ -36,28 +36,58 @@ translation:
 simplification_decisions:
 - pob_phrase: Will the Lord reject forever, and never again show favor?
   simplified_phrase: Will the Lord reject forever? Will he never show favor again?
-  preserved_meaning: The two linked questions still express fear of lasting rejection and the permanent loss of the Lord’s favor.
-  reasoning_layer_used: POB lexical decisions and lament context
-  rationale: Splitting the long question makes the lament easier to follow without weakening its force.
-translation_notes: {}
+  preserved_meaning: The two questions express fear of lasting rejection and the permanent loss of the Lord’s favor.
+  reasoning_layer_used: POB lexical decisions and independent grounding review
+  rationale: Splitting the sentence makes the lament easier to follow without supplying an unstated recipient.
+translation_notes:
+  risk_flags:
+  - risk: English readers may expect an object after “reject.”
+    mitigation: Leaving the object unstated preserves the source ambiguity between personal, communal, and general reference.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/077/007.yaml
   source_text_sha256: aaba25a9db1b3841d6192946740186d0648280d0f73501d0c6e17de093055cc1
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: cc0afc5c6d6f08cb4afdf2301c694b2d5e8ffbd121736b1dffd6bd514ea51704
-  timestamp: '2026-07-11T20:52:25Z'
-  output_hash: f8ae7d574ed7e67ddd37389d6d17fc9bee3b8db36da34022816162461253e758
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 80ef11e713f9427bbe9a85967ded17ede36b80629f027924a051501170304571
+  timestamp: '2026-08-28T23:35:40Z'
+  output_hash: 21a3754ea819db1666cf83004ac7360ca9ebbf9311ca4f71e05dbd1f747195d8
   usage:
-    prompt_tokens: 2511
-    completion_tokens: 379
-    total_tokens: 2890
-    reasoning_tokens: 213
+    prompt_tokens: 3341
+    completion_tokens: 236
+    total_tokens: 3577
+    reasoning_tokens: 34
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: reject forever ... show favor
+  rendering: reject us forever ... show us favor
+  claim: The unstated recipients of the Lord’s rejection and favor are the speaker and those he represents.
+  evidence:
+  - The lament presents the speaker as questioning the Lord’s continuing relationship with his people.
+  - The verbs naturally imply recipients even though Hebrew leaves the object unstated.
+  confidence: high
+  alternatives_preserved:
+  - Leave the object unstated, as in POB.
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:08Z'
+  previous_text: Will the Lord reject forever? Will he never show favor again?
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:40Z'
+  previous_text: Will the Lord reject us forever? Will he never show us favor again?
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 4e65aa2871470ec850aeb7c58b6b4c0574f3b44118dcf7c4a3cc33c024130d6b
+  review_summary: Splitting the lament into two direct questions is a warranted readability improvement and preserves its force. However, the repeated “us” is not licensed by the verse or required for comprehension; it converts an unexpressed and contextually open object into a definite corporate referent. Remove it while retaining the clear two-question form.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

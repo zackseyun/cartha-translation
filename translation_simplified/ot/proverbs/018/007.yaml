@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/018/007.yaml
-  text: A fool’s mouth is his ruin[b][a], and his lips are a snare to his life.
+  text: A fool’s mouth is his ruin[a], and his lips are a snare to his life[b].
   footnotes:
   - marker: a
-    text: Or 'A fool’s mouth is destruction to him.'
+    text: Or “A fool’s mouth is destruction to him.”
     reason: lexical_alternative
   - marker: b
-    text: Hebrew 'his soul'; here likely meaning 'his life' or 'himself.'
+    text: Hebrew “his soul”; here likely meaning “his life” or “himself.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,52 +34,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A fool’s words bring him to ruin. His own lips are a trap that threatens his life.
+  text: A fool’s mouth brings him to ruin. His lips are a trap that threatens his life.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: A fool’s mouth is his ruin
-  simplified_phrase: A fool’s words bring him to ruin
-  preserved_meaning: The fool’s own speech causes his downfall.
-  reasoning_layer_used: POB lexical decisions for פִּי, כְסִיל, and מְחִתָּה
-  rationale: This recasts the Hebrew mouth image as its clear contextual meaning while retaining the result of ruin.
-- pob_phrase: his lips are a snare
-  simplified_phrase: His own lips are a trap
-  preserved_meaning: The fool’s speech becomes dangerous to him.
-  reasoning_layer_used: POB lexical decisions for וּשְׂפָתָיו and מוֹקֵשׁ
-  rationale: “Trap” is more familiar than “snare,” while “lips” preserves the concrete image and poetic parallel.
+  simplified_phrase: A fool’s mouth brings him to ruin
+  preserved_meaning: The fool’s speech causes his downfall.
+  reasoning_layer_used: POB lexical decisions for “mouth” and “ruin”
+  rationale: The active wording makes the causal relationship clear while preserving the mouth image.
+- pob_phrase: his lips are a snare to his life
+  simplified_phrase: His lips are a trap that threatens his life
+  preserved_meaning: The fool’s speech traps and endangers his life.
+  reasoning_layer_used: POB lexical decisions for “lips,” “snare,” and “his life”
+  rationale: “Trap” is clearer than “snare,” while the direct present statement and concrete imagery remain.
 interpretive_expansions:
 - pob_phrase: a snare to his life
   rendering: a trap that threatens his life
-  claim: The trap image means the fool’s speech puts his own life in danger.
+  claim: The trap image presents the fool’s speech as a danger to his life.
   evidence:
-  - The parallel phrase says his speech brings him to ruin.
-  - The POB lexical decision understands נַפְשׁוֹ as his life.
+  - The parallel statement says his mouth brings him to ruin.
+  - POB identifies “his life” as the likely contextual meaning of the Hebrew idiom.
   confidence: high
   alternatives_preserved:
-  - a trap for his life
-  - a snare to himself
+  - a trap for himself
+  - a snare to his life
 translation_notes:
   risk_flags:
-  - risk: “Fool” may be mistaken for a comment only about intelligence.
-    mitigation: It is retained as Proverbs’ established term for moral and practical folly.
+  - risk: “Threatens” explains the harmful force of the trap image.
+    mitigation: The rendering retains both the trap metaphor and POB’s chosen sense “his life.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/018/007.yaml
   source_text_sha256: 17e9762a1b68e3a9943b3f3d938167d9057fd4afb597226f3f82f0230a35fc1d
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 21b16a7f3a23c1903c7f9ba15c18f7559b09ed2be194b6ec170226460c66a5c6
-  timestamp: '2026-07-11T21:20:51Z'
-  output_hash: 416eaf4666a7286ebf816b4ca33c4c9a058e85ff0908dbcee662374aed92f18f
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fe119d83dfa6276c1ca0f3ec67cd7758b756467495e8cc118fc73ed6b67e6f56
+  timestamp: '2026-08-28T23:34:31Z'
+  output_hash: 06e5c6bdfd2b02e4273163cf7fa0f4c355878b29d8bd73e0d9477cf875d82039
   usage:
-    prompt_tokens: 2361
-    completion_tokens: 882
-    total_tokens: 3243
-    reasoning_tokens: 480
+    prompt_tokens: 3465
+    completion_tokens: 442
+    total_tokens: 3907
+    reasoning_tokens: 60
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:24Z'
+  previous_text: A fool’s words bring him to ruin. His own lips are a trap that threatens his life.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:31Z'
+  previous_text: A fool’s own mouth brings him to ruin. His own lips become a trap that puts his life in danger.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 32d69b5fc068ab9be533ba664ea0d263bab26868af1f87d71bfb42f31d62b0d7
+  review_summary: The causal clarification in the first line is warranted by the proverb and POB’s audit trail. Explaining “a snare to his life” as a trap that threatens his life is also warranted and substantially clearer. Revise only to preserve the source’s direct present statement rather than introducing “become,” and omit unnecessary emphatic “own.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

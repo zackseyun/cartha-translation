@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/026/007.yaml
-  text: Like the legs that hang limp from a lame man[a], so is a proverb in the mouth of fools.
-  footnotes:
-  - marker: a
-    text: Or, 'The legs of a lame man dangle; so does a proverb in the mouth of fools.'
-    reason: lexical_alternative
+  text: The legs of a lame person hang limp, and so does a proverb in the mouth of fools.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,49 +27,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A proverb in the mouth of fools is like limp legs on a lame person.[a]
+  text: The legs of a person who cannot walk properly hang limp. In the same way, a proverb is useless in the mouth of fools.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or, “The legs of a lame person dangle; so does a proverb in the mouth of fools.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Like the legs that hang limp from a lame man, so is a proverb in the mouth of fools.
-  simplified_phrase: A proverb in the mouth of fools is like limp legs on a lame person.
-  preserved_meaning: The comparison links a fool’s proverb with legs that hang slack on a lame person.
-  reasoning_layer_used: POB translation and lexical decisions for דַּלְיוּ, מִפִּסֵּחַ, and וּמָשָׁל
-  rationale: Reversing the comparison gives readers the subject first while keeping the vivid image clear.
-- pob_phrase: legs that hang limp from a lame man
-  simplified_phrase: limp legs on a lame person
-  preserved_meaning: The legs remain slack in association with a person who is lame.
-  reasoning_layer_used: POB lexical decisions for דַּלְיוּ, שֹׁקַיִם, and מִפִּסֵּחַ
-  rationale: This concise wording avoids wrongly implying that the person is entirely unable to walk.
+- pob_phrase: a lame person
+  simplified_phrase: a person who cannot walk properly
+  preserved_meaning: The person cannot use the legs normally for walking.
+  reasoning_layer_used: POB lexical decision for מִפִּסֵּחַ
+  rationale: This gives the concrete limitation in direct, nonclinical language.
+- pob_phrase: and so does
+  simplified_phrase: In the same way
+  preserved_meaning: The limp legs are directly compared with a proverb spoken by fools.
+  reasoning_layer_used: Applied grammar revision and Hebrew parallel structure
+  rationale: A new sentence makes the compressed comparison easier to follow.
+interpretive_expansions:
+- pob_phrase: a proverb in the mouth of fools
+  rendering: a proverb is useless in the mouth of fools
+  claim: A proverb does not serve its proper purpose when fools possess or speak it.
+  evidence:
+  - The limp legs portray something unable to perform its proper function.
+  - The POB lexical record lists “are useless” as an alternative for דַּלְיוּ.
+  - Proverbs 26:9 also portrays a fool as handling a proverb improperly.
+  confidence: high
+  alternatives_preserved:
+  - The image may also imply that fools misuse or misapply proverbs.
 translation_notes:
   risk_flags:
-  - risk: “Limp legs” compresses the verbal image of legs hanging slack.
-    mitigation: The footnote retains the explicit alternative “dangle.”
+  - risk: “Useless” states the simile’s functional implication explicitly.
+    mitigation: The first sentence retains the physical image, while the audit preserves the related idea of improper use.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/026/007.yaml
   source_text_sha256: e983d10d9b793016d95991c10d325bd20128e92b8073355aed300086a7d4c5f7
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: aed3a2e21ae54400c63725bf788a197b14927c400b782d8dc2120ec3a1f0ca2b
-  timestamp: '2026-07-12T09:53:07Z'
-  output_hash: 460271545063fc21d651c25b8dd5de7622c099133a177607686464b56dd659a5
+  prompt_sha256: a2982704982280810529c2b72d04108d99ddfbb0b073a0891205f3528f059f96
+  timestamp: '2026-08-28T23:34:49Z'
+  output_hash: 59ce29f97890a633e61079e52933e4b55f857d9ca4f5895f40e65cef198f7f6a
   usage:
-    prompt_tokens: 3227
-    completion_tokens: 369
-    total_tokens: 3596
-    reasoning_tokens: 0
+    prompt_tokens: 3381
+    completion_tokens: 523
+    total_tokens: 3904
+    reasoning_tokens: 138
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:07Z'
@@ -85,4 +87,18 @@ spob_revision_history:
   review_summary: The draft rightly preserves the central comparison, but it both narrows the source’s description of the lame person and makes the transferred image less clear through an ambiguous pronoun. The replacement keeps the vivid, source-supported image in direct modern English without asserting that the person cannot walk.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:11:17Z'
+  previous_text: A proverb in the mouth of fools is like limp legs on a lame person.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:49Z'
+  previous_text: The legs of a person with a walking disability hang limp. In the same way, a proverb hangs useless in the mouth of fools.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 196e4c045171587931e36903eaf1100409b58102d3329caba9db6f3340cb991e
+  review_summary: Revise slightly. The draft helpfully makes the proverb’s implied lack of useful function clear, which is supported by the limp-leg image, the POB lexical alternatives, and the nearby sayings about fools mishandling wisdom. However, “hangs useless” transfers the physical predicate too rigidly and awkwardly to the proverb. State the functional point directly, while preserving the comparison and using a simpler description of the lame person.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

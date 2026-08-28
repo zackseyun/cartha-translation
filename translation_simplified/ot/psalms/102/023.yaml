@@ -34,42 +34,70 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 102:24 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''his strength''].'
 translation:
   language: en
-  text: He weakened my strength along the way; he cut my days short.[a]
+  text: He weakened me[a] on life’s journey.[b] He cut my days short.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The written text says “his strength,” while the Masoretic reading tradition says “my strength.” “Along the way” may mean “in the course of life.”
+    text: The traditional reading has “my strength,” expressed here as “me”; the written Hebrew text has “his strength.”
     reason: textual_variant
+  - marker: b
+    text: Literally, “on the way,” which here likely means during the course of life.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: He weakened my strength on the way; he shortened my days.
-  simplified_phrase: He weakened my strength along the way; he cut my days short.
-  preserved_meaning: Used the Masoretic reading tradition and the surrounding first-person context.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Used the Masoretic reading tradition and the surrounding first-person context.
+- pob_phrase: He weakened my strength
+  simplified_phrase: He weakened me
+  preserved_meaning: God actively caused the speaker’s strength to fail.
+  reasoning_layer_used: Lexical decision for עִנָּה with “strength” as its object
+  rationale: The direct verb preserves the action in natural English.
+- pob_phrase: on the way
+  simplified_phrase: on life’s journey
+  preserved_meaning: The journey image likely refers to the speaker’s course through life.
+  reasoning_layer_used: Lexical rationale for בַדֶּרֶךְ and immediate context
+  rationale: The wording keeps the image while clarifying its likely sense.
+- pob_phrase: he shortened my days
+  simplified_phrase: He cut my days short
+  preserved_meaning: God shortened the speaker’s lifespan.
+  reasoning_layer_used: Lexical decisions for קִצַּר and יָמָי
+  rationale: This familiar expression preserves the force and poetic image.
+interpretive_expansions:
+- pob_phrase: on the way
+  rendering: on life’s journey
+  claim: The way likely represents the speaker’s course through life.
+  evidence:
+  - The lexical rationale identifies the course of life as the likely metaphorical sense.
+  - The parallel statement about shortened days concerns the speaker’s lifespan.
+  confidence: moderate
+  alternatives_preserved:
+  - The footnote retains the literal wording “on the way.”
+  - A physical journey remains possible at the image level.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: “Life’s journey” makes the likely metaphor more explicit than the Hebrew does.
+    mitigation: The footnote preserves the literal wording and marks the interpretation as likely.
+  - risk: Rendering “my strength” as “me” could hide the written-text variant.
+    mitigation: The adjacent footnote identifies both the traditional and written readings.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/102/023.yaml
   source_text_sha256: e7d943fbf37af112ada6441db01a29f55258d876e907aa19bf2f43a0ab936fbc
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0646ddd57ab7610cb5a60055f42d25373efece277486502b751234d4d9ee353f
-  timestamp: '2026-07-11T21:01:49Z'
-  output_hash: ec1fd45071862133a1207859d237912fbce5dee4580954bfded2b95a298cbca4
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 528c845f8d932485ae40bc700b51059511b106672cc9f517fc078b6903f1b1b8
+  timestamp: '2026-08-28T23:36:00Z'
+  output_hash: 830e12de5675b1cc86232ef4a76ca82fc3196c71b4c395e0c009dd1912f00e0a
   usage:
-    prompt_tokens: 2637
-    completion_tokens: 558
-    total_tokens: 3195
-    reasoning_tokens: 144
+    prompt_tokens: 3977
+    completion_tokens: 587
+    total_tokens: 4564
+    reasoning_tokens: 61
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+retained_terms: []
 spob_revision_history:
 - timestamp: '2026-08-27T11:16:55Z'
   previous_text: He weakened his strength along the way; he cut my days short.[a][b]
@@ -77,3 +105,17 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Used the Masoretic reading tradition and the surrounding first-person context.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:57:33Z'
+  previous_text: He weakened my strength along the way; he cut my days short.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:00Z'
+  previous_text: He left me weak while I was still on life’s journey.[a] He cut my days short.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 00e29ee5cd1c07c5d51f2ddf2c8230fed4e52b5f1b618a5e07a6ff69ddf7cdde
+  review_summary: The draft appropriately makes the likely life-course sense of “on the way” understandable and preserves the textual variant in a note. Revision is needed because “still” is an unsupported added nuance, and “left me weak” weakens the active causation of the Hebrew. The replacement retains the warranted clarification, restores the direct action, and associates the notes with the clauses they explain.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

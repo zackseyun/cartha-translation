@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/006/002.yaml
-  text: My beloved has gone down to his garden[a], to the beds of spices[b], to graze in the gardens and to gather lilies.
+  text: My beloved has gone down to his garden, to the beds of spices, to graze[a] in the gardens and to gather lilies[b].
   footnotes:
   - marker: a
     text: Or 'to feed' or 'to pasture.' The Hebrew verb can denote grazing or feeding and may intentionally preserve pastoral ambiguity.
@@ -34,55 +34,64 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My beloved has gone down to his garden, to the beds of fragrant plants, to graze in the gardens[a] and gather lilies.[b]
+  text: My beloved has gone down to his garden, to the beds where fragrant plants grow. He is there to graze[a] in the gardens and gather lilies[b].
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may mean “feed” or “pasture” and may intentionally leave the pastoral picture open.
+    text: Or “to feed” or “to pasture.” The Hebrew may intentionally leave the pastoral image open.
     reason: lexical_alternative
   - marker: b
     text: The exact kind of flower is uncertain; “lilies” is the traditional translation.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: to the beds of spices
-  simplified_phrase: to the beds of fragrant plants
-  preserved_meaning: The cultivated garden beds contain aromatic plants.
-  reasoning_layer_used: POB lexical decision for לַעֲרוּגוֹת הַבֹּשֶׂם
-  rationale: “Fragrant plants” makes the garden image clearer than the potentially culinary word “spices.”
+  simplified_phrase: to the beds where fragrant plants grow
+  preserved_meaning: The cultivated beds and their aromatic character remain part of the garden image.
+  reasoning_layer_used: POB lexical decision for לַעֲרוּגוֹת הַבֹּשֶׂם
+  rationale: This avoids suggesting that prepared spices are lying in the beds.
 - pob_phrase: to graze in the gardens and to gather lilies
-  simplified_phrase: to graze in the gardens and gather lilies
-  preserved_meaning: Both actions remain connected to the beloved’s going down.
-  reasoning_layer_used: Source syntax and POB lexical decisions for לִרְעוֹת and וְלִלְקֹט
-  rationale: Shared infinitive wording keeps the purpose sequence while avoiding repetition.
+  simplified_phrase: He is there to graze in the gardens and gather lilies
+  preserved_meaning: Both purposes remain distinct, including the pastoral image of grazing.
+  reasoning_layer_used: POB lexical decisions for לִרְעוֹת, בַּגַּנִּים, and וְלִלְקֹט
+  rationale: A new sentence makes the two purposes easier to follow without resolving who or what grazes.
+interpretive_expansions:
+- pob_phrase: beds of spices
+  rendering: beds where fragrant plants grow
+  claim: The spices are presented as fragrant plants growing in cultivated garden beds.
+  evidence:
+  - The POB rationale identifies cultivated beds and lists “rows of perfume plants” as an alternative.
+  - The immediate setting is the beloved’s garden.
+  confidence: high
+  alternatives_preserved:
+  - beds of spices
+  - beds of balsam
 translation_notes:
   risk_flags:
-  - risk: “Graze” may sound as though the beloved himself is eating grass.
-    mitigation: The footnote preserves the possibilities of feeding or pasturing without resolving the poetic ambiguity.
-  - risk: “Lilies” may imply a more exact botanical identification than the Hebrew supports.
-    mitigation: The footnote states that the flower species is uncertain.
+  - risk: Modern readers may assume that the beloved himself is grazing.
+    mitigation: The lexical footnote preserves the Hebrew options “feed” and “pasture” without identifying the subject more narrowly.
+  - risk: “Lilies” may imply a more exact flower species than the Hebrew establishes.
+    mitigation: The footnote states that the precise flower is uncertain.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/006/002.yaml
   source_text_sha256: f6c8ff2128c3b4766312feb55a3bedfa78959bd07a96d9c137a7a873b2d81d04
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7b5a01b2f82ed9f97dff498ccdd256d36e781e6bf69e0a1e9fdc92d17ad40364
-  timestamp: '2026-07-12T10:04:17Z'
-  output_hash: be309d456b566bbaaadd93b49f5314dc716d33f466d05fdf4016d7d6ff716ce1
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 0bd8ef255ba0ade4dd54644d1c2c76e5442d17e6cce4858dcd8daf6581bf2fd9
+  timestamp: '2026-08-28T23:10:32Z'
+  output_hash: eaca51453665b654ccb25c10dbb3b540581fe494c8def5a5d4d98859920ae47a
   usage:
-    prompt_tokens: 3521
-    completion_tokens: 402
-    total_tokens: 3923
-    reasoning_tokens: 0
+    prompt_tokens: 2786
+    completion_tokens: 1033
+    total_tokens: 3819
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:04:17Z'
   previous_text: My beloved has gone down to his garden, to the beds of fragrant plants. He grazes in the gardens[a] and gathers lilies.[b]
@@ -94,3 +103,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:10:32Z'
+  previous_text: My beloved has gone down to his garden, to the beds of fragrant plants, to graze in the gardens[a] and gather lilies.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

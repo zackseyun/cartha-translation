@@ -34,43 +34,67 @@ base_translation:
     changes_summary: Added 'me' after 'given' to reflect the pronominal sense in the Hebrew and complete the clause naturally in English.
 translation:
   language: en
-  text: For you, God, have heard the vows I made. You have given me[a] the inheritance that belongs to those who fear your name.[b]
+  text: For you, God, have heard my solemn vows. You have given me[a] the inheritance that belongs to those who fear your name.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew leaves “me” implicit; the context supplies the recipient.
+    text: The Hebrew does not explicitly say “me,” but the context implies the recipient.
     reason: alternative_reading
   - marker: b
-    text: To “fear your name” means to live in reverent awe of God.
+    text: To fear God’s name is to live in reverent awe of God himself.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: For you, O God, have heard my vows; you have given me the inheritance of those who fear your name.
-  simplified_phrase: For you, God, have heard the vows I made. You have given me the inheritance that belongs to those who fear your name.
-  preserved_meaning: Made the implied recipient explicit and kept the reverent-fear explanation attached to its phrase.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Made the implied recipient explicit and kept the reverent-fear explanation attached to its phrase.
-interpretive_expansions: []
+- pob_phrase: O God
+  simplified_phrase: God
+  preserved_meaning: The speaker is still addressing God directly.
+  reasoning_layer_used: POB lexical decision on אֱלֹהִים
+  rationale: Ordinary English direct address does not require the formal vocative “O.”
+- pob_phrase: my vows
+  simplified_phrase: my solemn vows
+  preserved_meaning: The speaker refers to binding promises made before God.
+  reasoning_layer_used: POB lexical decision on לִנְדָרַי
+  rationale: “Solemn” helps new readers distinguish a vow from an ordinary statement.
+- pob_phrase: the inheritance of those
+  simplified_phrase: the inheritance that belongs to those
+  preserved_meaning: The inheritance is associated with people who fear God’s name.
+  reasoning_layer_used: POB theological decision on the final clause
+  rationale: The relative clause makes the Hebrew construct relationship easier to understand.
+interpretive_expansions:
+- pob_phrase: my vows
+  rendering: my solemn vows
+  claim: These vows are serious, binding promises rather than casual intentions.
+  evidence:
+  - The POB lexical rationale identifies נדר as a vow.
+  - The prayer context presents the vows as heard by God.
+  confidence: high
+  alternatives_preserved:
+  - my vows
+  - what I vowed
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: Including “me” states a recipient that is implicit rather than explicit in Hebrew.
+    mitigation: Footnote a identifies the omission while retaining the POB’s current main-text reading.
+  - risk: Modern readers may understand “fear” as mere terror.
+    mitigation: Footnote b explains its sense of reverent awe without weakening the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/061/005.yaml
   source_text_sha256: 0d0ec8b02002ab2d72763dddf7beb7eb90820ac9f78e0cf6d0d495ac91304df7
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: b94bc42c981bc95485fd5260462dbfb87457ccb8767d1a163b4844b8ef371d78
-  timestamp: '2026-07-11T20:49:36Z'
-  output_hash: 3f0a65af0f48dd2dbdf5e35dc712428d0b23e60bad418130e5c0b4644258c127
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: dcdc56372653dfef48d895e669265bb1da670da861dd19fc17dbfda4e843873c
+  timestamp: '2026-08-28T22:56:18Z'
+  output_hash: e5a91de979c67d7863486a4c34c7d2b1c3f9402de97ff77a86baaad99f63060c
   usage:
-    prompt_tokens: 2770
-    completion_tokens: 824
-    total_tokens: 3594
-    reasoning_tokens: 273
+    prompt_tokens: 2918
+    completion_tokens: 1012
+    total_tokens: 3930
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
 spob_revision_history:
@@ -80,3 +104,8 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Made the implied recipient explicit and kept the reverent-fear explanation attached to its phrase.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:56:19Z'
+  previous_text: For you, God, have heard the vows I made. You have given me[a] the inheritance that belongs to those who fear your name.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

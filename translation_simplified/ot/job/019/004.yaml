@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/019/004.yaml
-  text: And even if I truly have gone astray[a], my error remains with me.
+  text: And even if I truly have gone astray, my error remains with me.[a]
   footnotes:
   - marker: a
-    text: Or, more literally, 'my error lodges with me.'
+    text: More literally, “my error lodges with me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,52 +31,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: And even if I really have gone astray, my error is my own concern.
+  text: Even if I really have gone astray, my error stays with me.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: More literally, “my error lodges with me.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: truly
-  simplified_phrase: really
-  preserved_meaning: The word still emphasizes that Job is making a genuine concession.
-  reasoning_layer_used: POB lexical decision for אָמְנָם
-  rationale: “Really” is more natural in common English while keeping the emphasis.
+- pob_phrase: And even if I truly
+  simplified_phrase: Even if I really
+  preserved_meaning: Job emphatically concedes the possibility that he has erred.
+  reasoning_layer_used: POB lexical decisions for וְאַף and אָמְנָם
+  rationale: The shorter wording expresses the concession naturally without weakening its emphasis.
 - pob_phrase: my error remains with me
-  simplified_phrase: my error is my own concern
-  preserved_meaning: Any error belongs to Job and is not his friends’ matter.
-  reasoning_layer_used: POB lexical decisions for אִתִּי and תָּלִין
-  rationale: The recast wording makes the idiom understandable without using the obscure lodging image.
-interpretive_expansions:
-- pob_phrase: remains with me
-  rendering: is my own concern
-  claim: Job says that any error he has made is his matter, not his friends’ concern.
-  evidence:
-  - The POB rationale for אִתִּי says the matter remains Job’s own concern rather than his friends’.
-  - The POB rationale for תָּלִין identifies continuance or resting upon Job as the idiomatic sense.
-  confidence: high
-  alternatives_preserved:
-  - remains with me
-  - lodges with me
+  simplified_phrase: my error stays with me
+  preserved_meaning: Job’s error continues with him and remains his own.
+  reasoning_layer_used: POB lexical decisions for אִתִּי, תָּלִין, and מְשׁוּגָתִי
+  rationale: “Stays with me” is plain English and preserves the continuing, personal force of the Hebrew.
 translation_notes:
   risk_flags:
-  - risk: “My own concern” makes the contextual implication more explicit than the Hebrew idiom.
-    mitigation: The wording follows the POB lexical rationale and does not specify moral guilt or consequences.
+  - risk: “Stays with me” does not fully display the Hebrew image of lodging overnight.
+    mitigation: The footnote preserves the literal image without burdening the main text.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/019/004.yaml
   source_text_sha256: e2d7b5f6db5007fed27fd62ad727b4b860f5b4b9838e7f5a3904eb005352b455
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 98107c7cbce6e8d62d8fd2df89f298ef6117a3c6d333c94fbca700fae84a5da1
-  timestamp: '2026-07-11T19:42:24Z'
-  output_hash: 0f7340cacd3d0518daddd7bbbda46b4a725fd815940ee5fa530a34281623e471
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 183383aee4dfaddd80876245c87a4231f6b0a7007fe639d495c6f5667745bc3a
+  timestamp: '2026-08-28T23:34:31Z'
+  output_hash: 79f843e8f4ef0e131a9bb85b18f919a119c0d041642f2777ca064233b781314a
   usage:
-    prompt_tokens: 2333
-    completion_tokens: 744
-    total_tokens: 3077
-    reasoning_tokens: 362
+    prompt_tokens: 3425
+    completion_tokens: 500
+    total_tokens: 3925
+    reasoning_tokens: 186
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: remains with me
+  rendering: remains my own concern
+  claim: Job says that any error he has made is his matter, not his friends’ concern.
+  evidence:
+  - The POB rationale for אִתִּי says the error remains Job’s own concern rather than his friends’.
+  - The immediate context is Job’s answer to his friends’ accusations.
+  confidence: high
+  alternatives_preserved:
+  - The footnote preserves the literal image “lodges with me.”
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:48Z'
+  previous_text: And even if I really have gone astray, my error is my own concern.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:37Z'
+  previous_text: And even if I really did go astray, the mistake is still mine.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:31Z'
+  previous_text: Even if I really have gone astray, my error remains my own concern.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 335a91a7b9e4c46501f40e877a91c9b39df786b07eb32eb0741deb456d555d1e
+  review_summary: The draft improves accessibility, but “my own concern” adds a pragmatic conclusion that is somewhat stronger and narrower than the Hebrew image and POB wording. “Stays with me” is natural modern English, preserves the continuing/personal force of תָּלִין אִתִּי, and avoids implying that Job’s error could not affect or concern anyone else.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

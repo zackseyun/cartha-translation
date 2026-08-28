@@ -31,56 +31,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: She gets up while it is still night. She gives her household food and gives her female servants their assigned portions.
+  text: She gets up while it is still night. She gives food to her household and gives her female servants their allotted shares.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew may also mean “an assigned share” or “a fixed allotment.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: She rises while it is still night
   simplified_phrase: She gets up while it is still night
-  preserved_meaning: She begins her work very early, while night continues.
-  reasoning_layer_used: POB lexical decision for וַתָּקָם and בְּעוֹד לַיְלָה
-  rationale: “Gets up” is more ordinary English without changing the time or habitual action.
+  preserved_meaning: She rises early while it is still nighttime.
+  reasoning_layer_used: POB lexical decisions for וַתָּקָם and בְּעוֹד לַיְלָה
+  rationale: “Gets up” is familiar English without specifying a more precise time.
 - pob_phrase: gives food to her household
-  simplified_phrase: gives her household food
-  preserved_meaning: She provides food for all those belonging to her household.
+  simplified_phrase: gives food to her household
+  preserved_meaning: She provides food for the people of her household.
   reasoning_layer_used: POB lexical decisions for טֶרֶף and לְבֵיתָהּ
-  rationale: The reordered phrase is easier to read while keeping the domestic meaning.
-- pob_phrase: portions to her servant girls
-  simplified_phrase: gives her female servants their assigned portions
-  preserved_meaning: She distributes the allotted shares due to the women who serve in her household.
-  reasoning_layer_used: POB lexical decisions and footnote for וְחֹק and לְנַעֲרֹתֶיהָ
-  rationale: “Female servants” is clearer and “assigned portions” preserves the idea of a fixed allotment.
-interpretive_expansions:
-- pob_phrase: portions
-  rendering: assigned portions
-  claim: The portions are allotted shares rather than unspecified amounts.
-  evidence:
-  - The POB footnote says the Hebrew can mean a prescribed due or fixed allotment.
-  - The food-related parallel supports portions rather than assigned tasks.
-  confidence: high
-  alternatives_preserved:
-  - fixed allotments
+  rationale: Keeping “household” avoids the unsupported exhaustive sense of “everyone.”
+- pob_phrase: and portions to her servant girls
+  simplified_phrase: and gives her female servants their allotted shares
+  preserved_meaning: She provides the prescribed portions due to the women who serve her.
+  reasoning_layer_used: POB lexical decisions for וְחֹק and לְנַעֲרֹתֶיהָ
+  rationale: The full clause is easier to follow while avoiding an unsupported “each.”
 translation_notes:
   risk_flags:
-  - risk: The Hebrew term for “portions” can have a broader sense of a prescribed due.
-    mitigation: “Assigned portions” keeps both the food context and the allotment sense.
+  - risk: The Hebrew term may denote a prescribed due or fixed allotment rather than separate food portions.
+    mitigation: The footnote preserves this lexical range without adopting the less likely meaning “task.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/031/015.yaml
   source_text_sha256: 556d34f7eecf61ba10c770610e6c2a83c975b657c09b6a963c756298c1209a2b
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6453ce6ef50bde8542214f08fb8318f845094a89a58ddc70422fe458670b58b8
-  timestamp: '2026-07-11T21:25:09Z'
-  output_hash: de7e75c6c4dd8da98e5a21b3e800aa6dea31c86348dbeb9a93524c5f2cbcf6e3
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: bfd08bc6efb2e9dd73ac2675ed77691ec54f38d4aeabcca307d684c8b70738b4
+  timestamp: '2026-08-28T23:34:56Z'
+  output_hash: a5f368c6137ba4eeef4c084d9d9847990bff97d87ec777be9577ea6f64b3b9d3
   usage:
-    prompt_tokens: 2460
-    completion_tokens: 916
-    total_tokens: 3376
-    reasoning_tokens: 441
+    prompt_tokens: 3512
+    completion_tokens: 574
+    total_tokens: 4086
+    reasoning_tokens: 155
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: her household
+  rendering: everyone in her household
+  claim: The food is given to the household members rather than to the house as a building.
+  evidence:
+  - The POB lexical rationale says בַּיִת here denotes the household’s social unit.
+  confidence: high
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:11:45Z'
+  previous_text: She gets up while it is still night. She gives her household food and gives her female servants their assigned portions.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:56Z'
+  previous_text: She gets up while it is still night. She gives food to everyone in her household and each of her female servants her allotted share.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a12d738b2d3d1ee69edb7e570586ba79ded0ef09ecc49c7dab4126dee77c3d7e
+  review_summary: The draft appropriately makes “rises” more familiar as “gets up” and makes the servant group clear in contemporary English. However, “everyone” and “each” add distributive scope not required by the source or POB audit trail and risk obscuring the verse’s separate household/servant clauses. The recommended wording remains clear while retaining the source’s scope and the lexical sense of prescribed portions.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

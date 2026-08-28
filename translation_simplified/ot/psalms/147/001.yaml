@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/147/001.yaml
-  text: Praise Yah[a], for it is good to sing praises to our God[b]; for it is pleasant and praise is fitting.
+  text: Praise Yah[a], for it is good to sing praises to our God; for praise is pleasant and fitting[b].
   footnotes:
   - marker: a
-    text: 'Hebrew: ''Yah,'' the short form of the divine name; many translations render it ''the LORD.'''
+    text: 'Hebrew: “Yah,” the short form of the divine name; many translations render it “the LORD.”'
     reason: alternative_reading
   - marker: b
-    text: Or 'for praise is beautiful' / 'for praise is becoming,' reflecting the sense of what is lovely or fitting.
+    text: Or “beautiful” or “becoming” instead of “fitting.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,71 @@ base_translation:
     changes_summary: Removed the unnecessary comma after 'pleasant' for smoother, more natural English. The wording otherwise accurately and completely reflects the source.
 translation:
   language: en
-  text: Praise Yah![a] It is good to sing praises to our God. It is pleasant to praise him, and praise is fitting.
+  text: Praise Yah![a] How good it is to sing praises to our God! Praising him is pleasant and fitting.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Yah” is the short form of God’s divine name; many translations use “the LORD.”
+    text: “Yah” is the short form of the divine name; many translations have “the LORD.”
     reason: alternative_reading
+  - marker: b
+    text: Or “beautiful” or “becoming.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Praise Yah, for it is good to sing praises to our God
-  simplified_phrase: Praise Yah! It is good to sing praises to our God.
-  preserved_meaning: The direct call to praise and the goodness of musical praise remain distinct.
-  reasoning_layer_used: POB lexical decisions for הַ֥לְלוּ, ט֭וֹב, and זַמְּרָ֣ה
-  rationale: Two short sentences make the summons and its reason easier to follow.
-- pob_phrase: for it is pleasant and praise is fitting
-  simplified_phrase: It is pleasant to praise him, and praise is fitting.
+- pob_phrase: for it is good to sing praises to our God
+  simplified_phrase: How good it is to sing praises to our God!
+  preserved_meaning: Singing praise to God is declared good and supports the opening command.
+  reasoning_layer_used: POB lexical decisions and source syntax
+  rationale: The exclamation states the reason in a direct, natural form.
+- pob_phrase: for praise is pleasant and fitting
+  simplified_phrase: Praising him is pleasant and fitting.
   preserved_meaning: Praise is both pleasant and appropriate.
-  reasoning_layer_used: POB lexical decisions for נָ֝עִים, נָאוָ֥ה, and תְהִלָּֽה
-  rationale: Repeating the action removes an unclear pronoun while keeping both descriptions.
+  reasoning_layer_used: POB lexical decisions and wisdom-source audit
+  rationale: The verbal form clearly presents praise as an action while retaining both qualities.
+interpretive_expansions:
+- pob_phrase: praise
+  rendering: Praising him
+  claim: The one being praised is God.
+  evidence:
+  - The preceding clause explicitly names “our God” as the recipient of praise.
+  confidence: high
 translation_notes:
   risk_flags:
-  - risk: Adding “him” supplies an English object not stated separately in the Hebrew.
-    mitigation: The immediately preceding “our God” clearly identifies the one being praised.
+  - risk: “How good” is more exclamatory than POB’s causal wording.
+    mitigation: Its placement still presents goodness as the basis for the command to praise.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/147/001.yaml
   source_text_sha256: 9a9a40587a18539328ad4eaf607427a365d9c414880727084b76f7d8f1b44ae9
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c3d76628bacf5f97ca2baa0cddaed6dfeb608b7df3f2212bc793abf995e91a2f
-  timestamp: '2026-07-11T21:03:48Z'
-  output_hash: a5d7d8fb509b233950e4e17626191e3574414c394f7e2432009e78b074db01ce
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9d0c05eadd4f7b1b598b5e98e71eba2f788c0bbaac66182db9735467252d2432
+  timestamp: '2026-08-28T23:36:28Z'
+  output_hash: 5e890e16d9e3c90b644550342c76c9089f5c4df63be0b91bda31e593184d19a1
   usage:
-    prompt_tokens: 2802
-    completion_tokens: 615
-    total_tokens: 3417
-    reasoning_tokens: 252
+    prompt_tokens: 3723
+    completion_tokens: 609
+    total_tokens: 4332
+    reasoning_tokens: 223
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:09Z'
+  previous_text: Praise Yah![a] It is good to sing praises to our God. It is pleasant to praise him, and praise is fitting.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:28Z'
+  previous_text: Praise Yah![a] How good it is to sing to our God in praise! Praising him is pleasant and fitting.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c8a9e705503eb74b753602bb7918b02013a020ffb7fcd6b0f502bfbce1fd8346
+  review_summary: 'The draft’s exclamatory restatement of the goodness clause is warranted and keeps its grounding function in the summons to praise. “Praising him” is a clear contextual unpacking of the concluding abstract noun: the preceding clause explicitly identifies God as the one praised. Revise only the awkward “sing to our God in praise” to the direct, source-supported “sing praises to our God.” The supplied POB theological-decision rationale incorrectly calls יָהּ the full Tetragrammaton, but the actual POB and SPOB rendering “Yah,” with its accurate footnote identifying the short form, is sound and should be retained.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

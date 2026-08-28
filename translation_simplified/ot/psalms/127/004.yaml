@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/127/004.yaml
-  text: Like arrows in the hand of a warrior[a], so are the sons of one's youth.
+  text: Like arrows in the hand of a warrior, so are sons born in one’s youth.[a]
   footnotes:
   - marker: a
-    text: Or, more idiomatically, 'sons born in one's youth.'
-    reason: lexical_alternative
+    text: Literally, “sons of one’s youth.”
+    reason: literal_rendering
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,50 +31,48 @@ base_translation:
     changes_summary: Added 'one's' to render the genitive more naturally and accurately in English; 'sons of youth' was too bare and potentially unclear.
 translation:
   language: en
-  text: Sons born in one’s youth are like arrows in a warrior’s hand.
+  text: Sons born while you are young are like arrows in a warrior’s hand.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew expression is literally “sons of youth.”
+    reason: source_note
 simplification_decisions:
-- pob_phrase: Like arrows in the hand of a warrior, so are the sons of one's youth.
-  simplified_phrase: Sons born in one’s youth are like arrows in a warrior’s hand.
-  preserved_meaning: Sons from one’s younger years are compared to arrows controlled by a warrior.
-  reasoning_layer_used: POB lexical decisions, theological decision, footnote, and revision rationale
-  rationale: The reordered sentence states the subject first while preserving masculine “sons” and the full warrior-and-arrows image.
-interpretive_expansions:
-- pob_phrase: the sons of one's youth
-  rendering: Sons born in one’s youth
-  claim: The phrase refers to sons born during one’s younger years.
-  evidence:
-  - The POB footnote gives “sons born in one’s youth” as the idiomatic sense.
-  - The lexical rationale identifies “youth” as one’s youthful years.
-  confidence: high
-  alternatives_preserved:
-  - sons of one’s youth
+- pob_phrase: Like arrows in the hand of a warrior, so are sons
+  simplified_phrase: Sons … are like arrows in a warrior’s hand
+  preserved_meaning: Sons are still compared to arrows controlled by a warrior.
+  reasoning_layer_used: POB lexical decisions and source image
+  rationale: Reversing the comparison gives the verse a more natural English sentence structure.
+- pob_phrase: born in one’s youth
+  simplified_phrase: born while you are young
+  preserved_meaning: The sons are born during the parent’s younger years.
+  reasoning_layer_used: POB idiom revision and lexical rationale
+  rationale: The generic “you” states the same time relationship in familiar English.
 translation_notes:
   risk_flags:
-  - risk: Adding “born” makes the idiomatic relationship more explicit than the Hebrew wording alone.
-    mitigation: The clarification follows the POB footnote while leaving whose youth is meant unspecified.
+  - risk: The generic “you” is more directly personal than POB’s “one’s.”
+    mitigation: It functions as an ordinary proverbial address and does not change who the sons are.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/127/004.yaml
   source_text_sha256: 35e9336b25b3dca391dbad9ddb75b03a834436ce8c8783f8acfdd272f018ed66
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7778545c787a8175611fc648b850ee47e75f1ac6be523d862860a3f12d7d9298
-  timestamp: '2026-07-12T10:03:05Z'
-  output_hash: 5823b6de65b472ff975d7a6a2fd2a1cfcabb3dd01a465f5efc6ec308048628ac
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d709ed3bb013c80905153c62503c025ce855a43d3fc6df7d84327ff35db9bb18
+  timestamp: '2026-08-28T22:59:00Z'
+  output_hash: 6611dc7857ee647019ad01795b8ef6768f25b9f0d3f3ceb28db3728e0b17a074
   usage:
-    prompt_tokens: 3411
-    completion_tokens: 313
-    total_tokens: 3724
-    reasoning_tokens: 0
+    prompt_tokens: 2819
+    completion_tokens: 1098
+    total_tokens: 3917
+    reasoning_tokens: 800
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:03:05Z'
   previous_text: Sons born while a man is young are like arrows in a warrior’s hand.
@@ -85,3 +83,8 @@ spob_revision_history:
   review_summary: The draft successfully makes the idiom explicit and preserves the comparison, masculine “sons,” and warrior imagery. However, changing the unspecified “one’s youth” to “while a man is young” adds a male-parent referent not stated by the Hebrew or required by the POB audit trail. “Sons born in one’s youth” supplies the warranted idiomatic clarification while retaining the source’s live ambiguity.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:59:00Z'
+  previous_text: Sons born in one’s youth are like arrows in a warrior’s hand.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

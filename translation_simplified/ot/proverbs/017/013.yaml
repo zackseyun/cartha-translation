@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/017/013.yaml
-  text: Whoever repays evil for good[a], evil will not depart from his house.
+  text: Whoever repays evil for good—calamity[a] will not depart from his house.
   footnotes:
   - marker: a
-    text: Or 'calamity will not depart from his house.' The second 'evil' (רָעָה) can denote either moral evil or harmful consequence/disaster; the main text preserves the Hebrew repetition.
+    text: Hebrew repeats the same word rendered “evil” in the first clause; here it can denote calamity or disaster.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,53 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If anyone repays good with evil, evil[a] will not leave their household.
+  text: If anyone repays good with evil, disaster[a] will not leave their household.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “disaster.” The second occurrence of the Hebrew word can mean evil or the disaster that follows.
+    text: The Hebrew repeats the word translated “evil” earlier; here it can also mean calamity or disaster.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Whoever repays evil for good
   simplified_phrase: If anyone repays good with evil
-  preserved_meaning: A person responds to good by doing evil in return.
-  reasoning_layer_used: POB lexical decisions for מֵשִׁיב, תַּחַת, רָעָה, and טוֹבָה
-  rationale: The conditional form and familiar word order make the exchange easier to grasp.
-- pob_phrase: evil will not depart from his house
-  simplified_phrase: evil will not leave their household
-  preserved_meaning: Evil or its harmful consequence remains attached to the offender’s home or family sphere.
-  reasoning_layer_used: POB lexical decisions for לֹא תמיש, רָעָה, and מִבֵּיתוֹ
-  rationale: “Will not leave” avoids overstating duration, while “household” clarifies the wider scope of “house.”
+  preserved_meaning: A person responds to good treatment by doing evil in return.
+  reasoning_layer_used: POB lexical decisions for מֵשִׁיב, תַּחַת, and טוֹבָה
+  rationale: The conditional form and ordinary English word order make the exchange easier to grasp.
+- pob_phrase: calamity
+  simplified_phrase: disaster
+  preserved_meaning: Harmful misfortune follows the offender’s wrongdoing.
+  reasoning_layer_used: Applied wisdom-source audit revision for the second רָעָה
+  rationale: “Disaster” is more familiar than “calamity” while preserving the consequence.
+- pob_phrase: from his house
+  simplified_phrase: their household
+  preserved_meaning: The consequence remains within the offender’s wider home or family sphere.
+  reasoning_layer_used: POB lexical decision for מִבֵּיתוֹ
+  rationale: “Household” clearly conveys more than the physical building and avoids generic masculine wording.
 translation_notes:
   risk_flags:
-  - risk: The second “evil” may mean moral evil or resulting disaster.
-    mitigation: The main text preserves the Hebrew repetition, and the footnote states the consequential alternative.
+  - risk: Using “disaster” in the main text hides the Hebrew repetition of the word for “evil.”
+    mitigation: The footnote preserves the repeated wording and its lexical range.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/017/013.yaml
   source_text_sha256: 2caf729506120b716f4b1b08667b718e99f7d60a451eb647f30bb591cf2f02ce
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: dd311692d008154afc5b190b8b439f6ce01020775816afb12aa808213735e255
-  timestamp: '2026-07-12T09:52:59Z'
-  output_hash: 6e1e9f92954ca0ea6f84758dc95edb52fd89bfb32a8d52b1a0720e8f671ffe73
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: acf55da05a7018278f95adc77da0ea7c3a4d3f75ba57d64bed0047b4a33f89f0
+  timestamp: '2026-08-28T23:04:48Z'
+  output_hash: fb952b6238d70fa248b29e6b4fd29851bfdaac0c078354484c10407813831765
   usage:
-    prompt_tokens: 3222
-    completion_tokens: 344
-    total_tokens: 3566
-    reasoning_tokens: 0
+    prompt_tokens: 2685
+    completion_tokens: 620
+    total_tokens: 3305
+    reasoning_tokens: 231
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:59Z'
   previous_text: If anyone repays good with evil, evil[a] will never leave their household.
@@ -86,3 +89,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:04:48Z'
+  previous_text: If anyone repays good with evil, evil[a] will not leave their household.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

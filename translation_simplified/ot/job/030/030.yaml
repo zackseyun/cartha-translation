@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/030/030.yaml
-  text: My skin turns black and falls from me[b][a], and my bones burn with heat.
+  text: My skin has turned black on me, and my bones burn with heat.[a]
   footnotes:
   - marker: a
-    text: Or 'My skin turns black from upon me'; the Hebrew expression may describe skin blackening and peeling away or hanging darkened on the body.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'my bones burn from fever.'
-    reason: lexical_alternative
+    text: Or “my bones burn from parching heat.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,53 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My skin turns black and peels away,[a] and my bones burn with heat.[b]
+  text: My skin has become black. My bones burn with heat.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may instead describe his skin hanging darkened on his body.
-    reason: lexical_alternative
-  - marker: b
-    text: Or “my bones burn with fever.”
+    text: Or “my bones burn from parching heat.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: falls from me
-  simplified_phrase: peels away
-  preserved_meaning: Job’s blackened, diseased skin separates from his body.
-  reasoning_layer_used: POB lexical decision and footnote a
-  rationale: “Peels away” makes the likely bodily image immediately understandable.
-interpretive_expansions:
-- pob_phrase: falls from me
-  rendering: peels away
-  claim: The skin is peeling or separating rather than merely dropping.
-  evidence:
-  - The POB lexical rationale identifies implied motion in the context of diseased skin.
-  - POB footnote a explicitly includes skin blackening and peeling away.
-  confidence: moderate
-  alternatives_preserved:
-  - His skin may hang darkened on his body.
+- pob_phrase: My skin has turned black on me
+  simplified_phrase: My skin has become black
+  preserved_meaning: Job’s skin has changed until it is blackened.
+  reasoning_layer_used: WLC source audit and lexical decision for שָׁחַר מֵעָלָי
+  rationale: This removes the awkward “on me” without adding the rejected idea that his skin falls off.
+- pob_phrase: My skin has turned black on me, and my bones burn with heat
+  simplified_phrase: My skin has become black. My bones burn with heat.
+  preserved_meaning: The two parallel descriptions of Job’s bodily suffering remain distinct.
+  reasoning_layer_used: POB translation and bodily parallelism
+  rationale: Two short sentences make the verse easier to grasp while preserving both vivid images.
 translation_notes:
   risk_flags:
-  - risk: “Peels away” could overstate one possible sense of the difficult Hebrew phrase.
-    mitigation: Footnote a preserves the alternative image of skin hanging darkened on the body.
+  - risk: Omitting “on me” reduces the formal trace of the difficult Hebrew bodily relation.
+    mitigation: The possessive “my” and the completed change still clearly locate the condition in Job’s body.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/030/030.yaml
   source_text_sha256: 8ad72e2ae69d3ea27aee67786e437ecb27f0d734d7f4437438fb085d40c66098
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: e0eb39591f7eb63043cd8ef80340eaa4f664b53d8c68bd50f588f0d77324b9e8
-  timestamp: '2026-07-11T19:44:57Z'
-  output_hash: 3f1d540300303e9ba2c1cad1882cbe3ce41e789e220eab0eb878351d245d0c75
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d01dd2de033ffd5ac17f5ec77de7ddd4b71467fb81a0ad4fe53c638c53452be4
+  timestamp: '2026-08-28T22:51:10Z'
+  output_hash: 1823dfb86ec6b227aaa7f7aeb456f9163e4b9f605e78e53f9a1beb3a422a5bc0
   usage:
-    prompt_tokens: 2353
-    completion_tokens: 661
-    total_tokens: 3014
-    reasoning_tokens: 336
+    prompt_tokens: 2568
+    completion_tokens: 1012
+    total_tokens: 3580
+    reasoning_tokens: 690
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:10Z'
+  previous_text: My skin turns black and peels away,[a] and my bones burn with heat.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

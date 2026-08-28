@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/001/014.yaml
-  text: And a messenger came to Job and said[a], “The oxen were plowing, and the donkeys were grazing beside them,”
-  footnotes:
-  - marker: a
-    text: Hebrew 'female donkeys' or 'she-donkeys.'
-    reason: lexical_alternative
+  text: And a messenger came to Job and said, “The oxen were plowing, and the donkeys were grazing beside them,”
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,45 +27,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 1:14 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''and a messenger''].'
 translation:
   language: en
-  text: Then a messenger came to Job and said, “The oxen were plowing while the donkeys[a] grazed beside them,”
+  text: 'Then a messenger came to Job with this news: “The oxen were plowing while the donkeys were grazing beside them,”'
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Hebrew specifies female donkeys.
-    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: And a messenger came to Job and said
-  simplified_phrase: Then a messenger came to Job and said
-  preserved_meaning: A human messenger arrived and began reporting to Job.
-  reasoning_layer_used: Lexical decisions and narrative context
-  rationale: “Then” presents the Hebrew narrative sequence naturally without changing the event.
+  simplified_phrase: Then a messenger came to Job with this news
+  preserved_meaning: A human messenger arrives and begins reporting to Job.
+  reasoning_layer_used: POB lexical decisions and immediate narrative context
+  rationale: This recast clearly introduces the messenger’s report without changing his identity.
 - pob_phrase: The oxen were plowing, and the donkeys were grazing beside them
-  simplified_phrase: The oxen were plowing while the donkeys grazed beside them
-  preserved_meaning: Both groups of animals were peacefully occupied near each other.
-  reasoning_layer_used: Lexical decisions for plowing, grazing, and spatial proximity
-  rationale: “While” clearly connects the two actions as happening at the same time.
-translation_notes:
-  risk_flags:
-  - risk: The main text does not state that the donkeys were female.
-    mitigation: The anchored footnote preserves the source-language detail.
+  simplified_phrase: The oxen were plowing while the donkeys were grazing beside them
+  preserved_meaning: Both groups of animals were engaged in ordinary activities at the same time and place.
+  reasoning_layer_used: Hebrew ongoing-action forms and POB lexical decisions
+  rationale: “While” smoothly links the simultaneous actions, and both progressive verbs preserve their ongoing nature.
+interpretive_expansions:
+- pob_phrase: and said
+  rendering: with this news
+  claim: The messenger’s speech is a report delivered to Job.
+  evidence:
+  - The speaker is a messenger who comes to Job and speaks.
+  - The surrounding narrative presents his words as a disaster report.
+  confidence: high
+  alternatives_preserved:
+  - and said
+  - and reported
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/001/014.yaml
   source_text_sha256: 2344402410fc47fe476b2884f666b9d7ac4ecb6872ca09878e0f14ca93d37ff6
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: d162203bad64b255e5156c16f89b83b560abdcc2f69ae31d86e57fc1434a0947
-  timestamp: '2026-07-11T18:55:50Z'
-  output_hash: d5fd73eafae470877243adf73559d643ab0ebd1518131549714aef2fd5e60d15
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: a4ed01de4eea093c1f040f3366615c7ed2b0bc8bba0e2ce7d7f24133047feeea
+  timestamp: '2026-08-28T23:32:41Z'
+  output_hash: 08340494baefbe293a0acfdb2944eff03f40170636ccb73e024d73e7dea58df3
   usage:
-    prompt_tokens: 2962
-    completion_tokens: 575
-    total_tokens: 3537
-    reasoning_tokens: 274
+    prompt_tokens: 3812
+    completion_tokens: 329
+    total_tokens: 4141
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:48:46Z'
+  previous_text: Then a messenger came to Job and said, “The oxen were plowing while the donkeys[a] grazed beside them,”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:41Z'
+  previous_text: 'Then a messenger came to Job with this news: “The oxen were plowing while the donkeys grazed beside them,”'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 979b612aaf238d747671ac10d2dd941901f8cb5ccd3588d276d5d291de81bfdd
+  review_summary: 'The opening clarification, ''with this news,'' is warranted: the messenger''s words are immediately presented as a report, and the surrounding disaster narrative confirms that function without importing doctrine. ''Then'' is also an acceptable smooth rendering of the narrative progression. Retain the progressive ''were grazing,'' however, so that both simultaneous ongoing actions expressed in the source and preserved by POB remain explicit.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

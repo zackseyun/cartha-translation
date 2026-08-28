@@ -11,14 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/008/008.yaml
-  text: the birds of the heavens[a], and the fish of the sea[b], whatever passes along the paths of the seas.
-  footnotes:
-  - marker: a
-    text: Or 'all that passes through the paths of the sea.' The Hebrew participle is singular but likely collective, summarizing sea life more broadly.
-    reason: lexical_alternative
-  - marker: b
-    text: Hebrew 'the paths of the seas'; some English versions smooth this to 'the paths of the sea.'
-    reason: lexical_alternative
+  text: the birds of the sky and the fish of the sea, whatever passes along the paths of the seas.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,55 +27,44 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: the birds in the heavens, the fish in the sea, whatever passes along the paths of the seas.[a]
+  text: the birds in the sky, the fish in the sea, and everything that travels the paths of the seas.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: The Hebrew says “whatever passes” in the singular. This may describe sea life broadly or continue the description of the fish.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the birds of the heavens
-  simplified_phrase: the birds in the heavens
-  preserved_meaning: Birds are creatures occupying the heavens.
-  reasoning_layer_used: Lexical decisions for צִפּוֹר and שָׁמַיִם
-  rationale: “In” states the relationship naturally while retaining the poetic “heavens.”
-- pob_phrase: the fish of the sea
-  simplified_phrase: the fish in the sea
-  preserved_meaning: Fish are creatures living in the sea.
-  reasoning_layer_used: Lexical decision for וּדְגֵי הַיָּם
-  rationale: “In the sea” is clearer modern English without changing the category.
-- pob_phrase: whatever passes along the paths of the seas
-  simplified_phrase: whatever passes along the paths of the seas
-  preserved_meaning: The phrase may summarize sea life broadly or continue the description of the fish.
-  reasoning_layer_used: Lexical decisions for עֹבֵר, אָרְחוֹת, and יַמִּים, plus POB footnote a
-  rationale: Keeping the phrase unattached preserves its ambiguity and the poetic image of paths through many seas.
+- pob_phrase: the birds of the sky
+  simplified_phrase: the birds in the sky
+  preserved_meaning: The sky remains the place where the birds fly.
+  reasoning_layer_used: lexical decision and source audit
+  rationale: “In the sky” is more natural English for the birds’ sphere.
+- pob_phrase: whatever passes along
+  simplified_phrase: everything that travels
+  preserved_meaning: The collective expression includes all sea creatures moving through the water.
+  reasoning_layer_used: lexical rationale and creature-list context
+  rationale: This wording makes the collective sense immediately clear.
 translation_notes:
   risk_flags:
-  - risk: Readers may be unsure whether the final phrase describes the fish or sea life more broadly.
-    mitigation: The main text preserves this ambiguity, and the footnote explains both possibilities.
+  - risk: “Paths of the seas” may sound unusual to modern readers.
+    mitigation: The concrete poetic image is retained because it reflects the Hebrew wording.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/008/008.yaml
   source_text_sha256: 9ddd1f842dc40129e0833259983a7598a85e677586469515d02c77b6381aed84
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: a472fe53657dbfba71453542e0515f61b97abf16af0d0c0589148bd8616ad1ce
-  timestamp: '2026-07-12T09:53:45Z'
-  output_hash: 6625d428c057beb1780fb42d2b1a3aa7276d8eafeff307bf1f3f04b8f88df896
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 11584ea82328845f36d2654ed9723245fef25750106e9d1021b442d01e7cf154
+  timestamp: '2026-08-28T22:53:17Z'
+  output_hash: d988675f4f1a2571c8606b69cd732fc47274f3a9ee53f47fb4ef2038b35e40dc
   usage:
-    prompt_tokens: 3129
-    completion_tokens: 411
-    total_tokens: 3540
-    reasoning_tokens: 0
+    prompt_tokens: 2536
+    completion_tokens: 441
+    total_tokens: 2977
+    reasoning_tokens: 202
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:45Z'
   previous_text: the birds in the heavens, the fish in the sea, and all that travel the paths of the seas.[a]
@@ -94,3 +76,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:17Z'
+  previous_text: the birds in the heavens, the fish in the sea, whatever passes along the paths of the seas.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:17Z'
+  previous_text: the birds in the sky and the fish in the sea—everything that travels the paths of the seas.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

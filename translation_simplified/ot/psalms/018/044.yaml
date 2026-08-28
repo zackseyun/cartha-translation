@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/018/044.yaml
-  text: At the hearing of the ear they obey me[a][b][c]; foreigners feign obedience to me.
+  text: As soon as they hear, they obey me[a]; foreigners feign obedience to me[b][c].
   footnotes:
   - marker: a
-    text: The final clause may also be rendered 'submit cringingly to me' or 'yield feigned allegiance to me,' expressing reluctant or insincere submission.
-    reason: lexical_alternative
+    text: Literally, “at the hearing of the ear.”
+    reason: literal_form
   - marker: b
-    text: Literally, 'sons of foreignness' or 'sons of a foreign land.'
-    reason: lexical_alternative
+    text: Literally, “sons of foreignness” or “sons of a foreign land.”
+    reason: literal_form
   - marker: c
-    text: Or, more dynamically, 'As soon as they hear, they obey me.'
+    text: The final clause may also be rendered “submit cringingly to me” or “yield feigned allegiance to me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,42 +37,46 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: As soon as they hear, they obey me; foreigners pretend to submit to me.
+  text: As soon as they hear, they obey me. Foreigners pretend to obey me.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: This may also mean, “Foreigners submit cringingly to me” or “Foreigners offer me false allegiance.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: At the hearing of the ear they obey me
-  simplified_phrase: As soon as they hear, they obey me
-  preserved_meaning: They respond with obedience immediately upon hearing.
-  reasoning_layer_used: POB lexical decision and footnote a
-  rationale: The natural English wording preserves the Hebrew idiom’s force of immediate response.
 - pob_phrase: foreigners feign obedience to me
-  simplified_phrase: foreigners pretend to submit to me
-  preserved_meaning: Foreign peoples offer submission that is not genuine.
-  reasoning_layer_used: POB lexical decisions for בְּנֵי נֵכָר and יְכַחֲשׁוּ לִי
-  rationale: Common wording clearly conveys both foreign identity and insincere submission.
+  simplified_phrase: Foreigners pretend to obey me
+  preserved_meaning: Their outward submission is presented as insincere.
+  reasoning_layer_used: POB lexical decision for יְכַחֲשׁוּ לִי and the contrast between the two lines
+  rationale: “Pretend to obey” expresses the same contrast in familiar English.
+- pob_phrase: As soon as they hear, they obey me; foreigners...
+  simplified_phrase: As soon as they hear, they obey me. Foreigners...
+  preserved_meaning: Immediate obedience and the foreigners’ contrasting response remain distinct.
+  reasoning_layer_used: POB translation and Hebrew parallelism
+  rationale: Two sentences make the contrast easier to follow.
 translation_notes:
   risk_flags:
-  - risk: The concrete phrase “hearing of the ear” is not retained word for word.
-    mitigation: “As soon as they hear” preserves its contextual force without adding an object to “hear.”
+  - risk: The final Hebrew verb may describe cringing or forced submission rather than deliberate pretense.
+    mitigation: The footnote preserves this lexical alternative while the main text follows the POB decision.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/018/044.yaml
   source_text_sha256: 73236a2daff13973cba0049ef1ab1ed300f4c794f31556de98a75b0b8d3579c3
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: a25c83063e71c073dbecc5cd340e148520b7ff8aa4bd78afb0a58c6725b9a7c8
-  timestamp: '2026-07-12T09:59:12Z'
-  output_hash: 94abbb0088fe9d2ffa782bd7cb209d409644fc426659331993e21216220e9e5f
+  prompt_sha256: 50d271b5813074813a95f455c02bbcfd1c79339d4aa5fc56e671213e304863fe
+  timestamp: '2026-08-28T23:35:06Z'
+  output_hash: 6103152cdb22fa535dcddd21e8040498147bdb720ed7552d4f0c3265e4d5708a
   usage:
-    prompt_tokens: 3124
-    completion_tokens: 280
-    total_tokens: 3404
-    reasoning_tokens: 0
+    prompt_tokens: 3311
+    completion_tokens: 491
+    total_tokens: 3802
+    reasoning_tokens: 163
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -85,6 +89,26 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 01ddf62005db7514efa91eb823467c3ed79641e83bad672dd4084531fb047b16
   review_summary: 'The draft appropriately makes the Hebrew hearing idiom immediate and clearly conveys the foreigners’ insincere submission. A small revision better follows the POB audit trail: do not supply “me” as the object of “hear,” and omit the unnecessary intensifier “only.”'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:15Z'
+  previous_text: As soon as they hear, they obey me; foreigners pretend to submit to me.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:55:15Z'
+  previous_text: As soon as they hear, they obey me. Foreigners pretend to submit to me.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:06Z'
+  previous_text: As soon as they hear, they obey me. Foreigners pretend to obey me.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: e8c1d4f10532c754bf1c2d7d8250fee42b7532dd27ac118e0e023bfc96e76abf
+  review_summary: “Pretend to obey me” is a clear, warranted simplification of “feign obedience to me” and preserves the POB’s contrast between genuine obedience and outward, insincere submission. The sentence break also leaves the two parallel claims distinct. Revise the footnote so that its alternate rendering preserves the POB’s attested nuance of cringing or forced submission rather than the broader—and potentially genuinely obedient—idea of submitting “in fear.”
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

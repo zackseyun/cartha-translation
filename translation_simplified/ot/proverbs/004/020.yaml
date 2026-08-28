@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/004/020.yaml
-  text: My son[a], pay attention to my words[b]; incline your ear to my sayings.
+  text: My son, pay attention to my words; incline your ear[a] to my sayings.
   footnotes:
   - marker: a
-    text: Or 'listen attentively to my words.'
-    reason: lexical_alternative
-  - marker: b
-    text: Hebrew 'incline your ear,' an idiom meaning to listen carefully.
-    reason: cultural_note
+    text: “Incline your ear” means to listen carefully.
+    reason: idiom
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,38 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My son, pay close attention to my words. Turn your ear toward what I say.
+  text: My son, pay attention to my words. Turn your ear toward my sayings—listen carefully.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: pay attention to my words
-  simplified_phrase: pay close attention to my words
-  preserved_meaning: The command calls for active, careful listening to the teacher’s instruction.
-  reasoning_layer_used: POB lexical decision for הַקְשִׁיבָה
-  rationale: Adding “close” makes the required attentiveness immediately clear.
+- pob_phrase: pay attention to my words; incline your ear
+  simplified_phrase: pay attention to my words. Turn your ear
+  preserved_meaning: The two commands still call for active, attentive listening.
+  reasoning_layer_used: POB lexical decisions and Hebrew poetic structure
+  rationale: Two sentences make the parallel commands easier to follow.
+- pob_phrase: incline your ear
+  simplified_phrase: Turn your ear toward
+  preserved_meaning: The physical image of directing the ear toward instruction remains intact.
+  reasoning_layer_used: POB lexical decision for הַט and אָזְנֶךָ
+  rationale: “Turn” is more common than “incline” while preserving the Hebrew image.
+interpretive_expansions:
 - pob_phrase: incline your ear to my sayings
-  simplified_phrase: Turn your ear toward what I say
-  preserved_meaning: The wording keeps both the ear image and the command to listen carefully.
-  reasoning_layer_used: POB lexical decisions for הַט, אָזְנֶךָ, and לַאֲמָרַי
-  rationale: The common verb “turn” explains the older idiom without removing its physical image.
-translation_notes: {}
+  rendering: Turn your ear toward my sayings—listen carefully.
+  claim: Turning the ear is an image for careful listening.
+  evidence:
+  - The POB footnote explicitly explains the idiom as “listen carefully.”
+  - The lexical rationale identifies the phrase as a conventional idiom for attentive listening.
+  confidence: high
+  alternatives_preserved:
+  - The concrete ear image remains in the main text.
+translation_notes:
+  risk_flags:
+  - risk: Adding “listen carefully” could sound like a third command.
+    mitigation: The dash presents it as an explanation of the ear image, not a separate instruction.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/004/020.yaml
   source_text_sha256: 614d320007681ff4911f12e73270487bb2f7fada15fac9080e93c07912d173ff
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 3dc66f9a3e79bc6a9d16dd67020f1614b4ed62fc844fd25097b484d72fb9c5d8
-  timestamp: '2026-07-11T21:05:28Z'
-  output_hash: df4dc82735e518981ec4bc655d4efea27b8e4552d0927e03a324848eb7a8a607
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: ed71a31fc07661e1283dc00d747a56aa072b5735956a130e0828b616ac14da4f
+  timestamp: '2026-08-28T22:59:59Z'
+  output_hash: d9279ca54f77834ae50905875e69abfbdd9ac54ebde310b7d695467d39c9fe8c
   usage:
-    prompt_tokens: 2292
-    completion_tokens: 455
-    total_tokens: 2747
-    reasoning_tokens: 202
+    prompt_tokens: 2452
+    completion_tokens: 664
+    total_tokens: 3116
+    reasoning_tokens: 301
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:59:59Z'
+  previous_text: My son, pay close attention to my words. Turn your ear toward what I say.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

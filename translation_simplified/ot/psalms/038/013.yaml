@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/038/013.yaml
-  text: But I[a], like a deaf man, do not hear; and like a mute man, I do not open my mouth.
-  footnotes:
-  - marker: a
-    text: 'Hebrew shifts from first person (''I do not hear'') to third person in the second line (''he does not open his mouth''), likely continuing the simile: ''like a mute man, he does not open his mouth.'' Some translations smooth this to ''I do not open my mouth.'''
-    reason: lexical_alternative
+  text: But I, like a deaf man, do not hear; I am like a mute man who does not open his mouth.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,45 +27,59 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 38:14 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''he does not open his mouth''].'
 translation:
   language: en
-  text: But I am like a deaf man and do not hear. I am like a mute man and do not open my mouth.[a]
+  text: But I am like a deaf man; I do not hear. I am like a mute man who does not open his mouth.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Hebrew shifts to “he does not open his mouth,” likely describing the mute man in the comparison.
-    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: But I, like a deaf man, do not hear
-  simplified_phrase: But I am like a deaf man and do not hear
-  preserved_meaning: The psalmist contrasts his silence with the hostile speakers while keeping the image of deafness.
-  reasoning_layer_used: POB lexical decisions for וַאֲנִי, כְחֵרֵשׁ, and לֹא אֶשְׁמָע
-  rationale: The direct comparison is recast in ordinary English without weakening the sensory image.
-- pob_phrase: and like a mute man, I do not open my mouth
-  simplified_phrase: I am like a mute man and do not open my mouth
-  preserved_meaning: The psalmist remains silent, pictured as a mute man whose mouth stays closed.
-  reasoning_layer_used: POB lexical decision for וּכְאִלֵּם and לֹא יִפְתַּח פִּיו
-  rationale: A new sentence makes the parallel image easier to follow while retaining the mouth-opening idiom.
+  simplified_phrase: But I am like a deaf man; I do not hear
+  preserved_meaning: The psalmist compares his lack of response to a deaf man's lack of hearing.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: Ordinary sentence order preserves both the contrast and the sensory image without making the statement absolute.
+- pob_phrase: I am like a mute man who does not open his mouth
+  simplified_phrase: I am like a mute man who does not open his mouth
+  preserved_meaning: The mute man remains the subject of the third-person relative clause.
+  reasoning_layer_used: WLC grammar and wisdom-source audit
+  rationale: The natural relative clause preserves the source's audited shift to third person.
 translation_notes:
   risk_flags:
-  - risk: The main text smooths the Hebrew shift from first person to third person.
-    mitigation: The footnote preserves the source wording and its likely continuation of the simile.
+  - risk: The words “I do not hear” may be taken as literal deafness.
+    mitigation: The explicit comparison marks the statement as an image, while the surrounding context indicates nonresponse to hostile speech.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/038/013.yaml
   source_text_sha256: 2b0f6da65a3fe7609bbfedf9cbd770e6d8d634e1ca629ab2d32c4945848bc481
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4d556ee8e0d0d045c950e3af16cd17dc6dfe722e4ef287150f46587f9711aa26
-  timestamp: '2026-07-11T20:45:47Z'
-  output_hash: 7abc030e82f79e77e0653413f5ee3d62954d655db157020b117d78b212363943
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 1b7b3fd88ffdd72e4715754dd0a7338f5d7406540c6737eab33c0779631da845
+  timestamp: '2026-08-28T23:35:17Z'
+  output_hash: aeab4eff96d6e98593f99f80d0f2877bb4698a66afb51a3b3e78b4a5407b1c28
   usage:
-    prompt_tokens: 2902
-    completion_tokens: 976
-    total_tokens: 3878
-    reasoning_tokens: 578
+    prompt_tokens: 3688
+    completion_tokens: 346
+    total_tokens: 4034
+    reasoning_tokens: 44
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:01Z'
+  previous_text: But I am like a deaf man and do not hear. I am like a mute man and do not open my mouth.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:17Z'
+  previous_text: But I am like a deaf man and hear nothing. I am like a mute man who does not open his mouth.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5b5b8d1eefdd36d2c0fdfaede2f0763dc837809d191d4c74f894c9e5ba8e92aa
+  review_summary: The recast into ordinary sentence order is a warranted readability improvement. However, “hear nothing” adds an absolute object not present in the source and can overstate the image. Retain “I do not hear,” which is clear in this sentence structure and preserves the source's live rhetorical scope.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

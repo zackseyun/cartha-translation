@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/068/022.yaml
-  text: The Lord said[a], “I will bring them back from Bashan; I will bring them back from the depths of the sea,”
+  text: The Lord said, “I will bring them back from Bashan; I will bring them back from the depths of the sea,”[a]
   footnotes:
   - marker: a
-    text: Or, more formally, 'I will bring back from Bashan; I will bring back from the depths of the sea.' The Hebrew leaves the object unstated.
-    reason: lexical_alternative
+    text: The Hebrew leaves the object of both verbs unstated; “them” is supplied from context.
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,49 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: The Lord said,[a] “I will bring them back from Bashan. I will bring them back from the deep parts of the sea.”
+  text: The Lord said, “I will bring them back from Bashan. I will bring them back from the deep places of the sea.”[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: The Hebrew does not state whom the Lord will bring back; “them” is supplied from the context.
-    reason: lexical_alternative
+    reason: alternative_reading
 simplification_decisions:
 - pob_phrase: I will bring them back from Bashan; I will bring them back
   simplified_phrase: I will bring them back from Bashan. I will bring them back
-  preserved_meaning: The repeated promise remains emphatic and distinct.
-  reasoning_layer_used: POB lexical decision on אָשִׁיב ... אָשִׁיב
-  rationale: Two sentences make the repeated promise easier to follow without weakening it.
+  preserved_meaning: The Lord repeats his promise to bring them back from both locations.
+  reasoning_layer_used: POB lexical decision and source repetition
+  rationale: Two sentences make the repeated promise easier to follow without weakening its emphasis.
 - pob_phrase: the depths of the sea
-  simplified_phrase: the deep parts of the sea
-  preserved_meaning: The image of inaccessible places deep in the sea remains intact.
+  simplified_phrase: the deep places of the sea
+  preserved_meaning: The wording retains the image of remote and dangerous sea depths.
   reasoning_layer_used: POB lexical rationale for מִמְּצֻלוֹת יָם
-  rationale: “Deep parts” expresses the spatial image in common English without adding a superlative.
+  rationale: “Deep places” expresses the concrete image in immediately understandable English.
 translation_notes:
   risk_flags:
-  - risk: The supplied object “them” is not explicit in Hebrew.
-    mitigation: The text follows POB’s contextual decision, and the footnote preserves the Hebrew ambiguity.
+  - risk: The object “them” is not explicit in Hebrew.
+    mitigation: The footnote discloses that it is supplied from context, following the POB decision.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/068/022.yaml
   source_text_sha256: 0a973afb0574739e97b481e05bc6195824d2626e169ade223f88a30061ff259d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 2b98b8fde6621ff037c39fe3dd086eb72927f5f7e398170bc0445706b3bae4fe
-  timestamp: '2026-07-12T10:00:26Z'
-  output_hash: b6c82193cda97ebb30b1ffe9feaab4fd29c388a1b978f1864b8060d4a4b14483
+  prompt_sha256: f385e5f5cb5b876ffcede61ac2cde97ccad4de92d753dcbd4ffdeba5c60b241c
+  timestamp: '2026-08-28T23:35:34Z'
+  output_hash: a248f73ceb9d587ff880eb59d985dfe1c0e9ffa11711b7103181092030cd69a2
   usage:
-    prompt_tokens: 3311
-    completion_tokens: 333
-    total_tokens: 3644
-    reasoning_tokens: 0
+    prompt_tokens: 3582
+    completion_tokens: 369
+    total_tokens: 3951
+    reasoning_tokens: 41
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: from the depths of the sea
+  rendering: even from the deep places of the sea
+  claim: The second location emphasizes that the Lord can retrieve them from an extreme place.
+  evidence:
+  - The POB lexical rationale identifies imagery of extreme remoteness or danger.
+  - The repeated verb emphasizes the Lord’s promise to bring them back.
+  confidence: high
+  alternatives_preserved:
+  - from the deep places of the sea
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:26Z'
@@ -83,6 +92,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: b3204c40282f92901cfd6ea3b43918f0058d1f05721ba990d49fac79596b6717
   review_summary: The sentence break usefully makes the repeated divine promise easier to follow and preserves its emphasis. Supplying “them” is warranted by the POB audit trail and is responsibly disclosed in the footnote. However, “deepest parts” overstates the Hebrew plural “depths/deep places” by adding an absolute superlative. “Deep parts” retains the accessible spatial image without narrowing or intensifying the source expression.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:48Z'
+  previous_text: The Lord said,[a] “I will bring them back from Bashan. I will bring them back from the deep parts of the sea.”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:34Z'
+  previous_text: The Lord said, “I will bring them back from Bashan. I will bring them back even from the deep places of the sea.”[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 81d422f0a43ca4b62b85802ceff4e7c93ab79605d81c4cf76f574ee42e02bd3e
+  review_summary: The sentence break and “deep places” are warranted readability improvements that retain the repeated divine promise and concrete sea imagery. Revise only to remove “even,” which turns a possible rhetorical implication into an explicit comparative claim not established by the source or POB audit trail. The supplied “them” remains appropriately disclosed in the footnote.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

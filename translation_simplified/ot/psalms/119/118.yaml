@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/119/118.yaml
-  text: You reject all who stray from your statutes, for their cunning is in vain.
+  text: You reject all who stray from your statutes, for their deceit is a lie.
   ai_draft:
     model_id: claude-opus-4-8
     model_version: claude-opus-4-8
@@ -21,41 +21,59 @@ base_translation:
     output_hash: 8d6513ba2a8b376d989bfe46f0654a1a796e117e1a5291007560e6eead269e4a
 translation:
   language: en
-  text: You reject all who wander away from your statutes, because their deceitful schemes come to nothing.
+  text: You reject everyone who wanders away from your laws, because their deceit is false.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: stray from your statutes
-  simplified_phrase: wander away from your statutes
-  preserved_meaning: They depart from the standards God has prescribed.
-  reasoning_layer_used: POB lexical decision for מֵחֻקֶיךָ
-  rationale: “Wander away” makes the image of straying clearer while retaining “statutes” as the audited term.
-- pob_phrase: their cunning is in vain
-  simplified_phrase: their deceitful schemes come to nothing
-  preserved_meaning: Their deceptive plans ultimately fail.
-  reasoning_layer_used: POB translation and Hebrew clause context
-  rationale: The wording clearly expresses both deception and futility in natural English.
+- pob_phrase: all who stray from your statutes
+  simplified_phrase: everyone who wanders away from your laws
+  preserved_meaning: They depart from the commands God has established.
+  reasoning_layer_used: POB lexical decision and immediate context
+  rationale: “Laws” clarifies the prescribed statutes, while “wanders away” preserves the image of straying.
+- pob_phrase: their deceit is a lie
+  simplified_phrase: their deceit is false
+  preserved_meaning: Their deceptive conduct is characterized as falsehood.
+  reasoning_layer_used: WLC source audit and applied revision
+  rationale: This avoids an added intensifier and keeps both deceit and falsehood in natural English.
 translation_notes:
   risk_flags:
-  - risk: “Schemes” presents cunning as deliberate plans rather than a general quality.
-    mitigation: “Deceitful” preserves the POB clause’s negative sense without adding a specific plot.
+  - risk: “Laws” is broader than the more exact term “statutes.”
+    mitigation: In context it still clearly refers to God’s established commands.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/119/118.yaml
   source_text_sha256: fe2657d6e110be949202e6b754dd8bc6fb55a675d33e81d2a2d0e7dceacbdaf4
-  pob_commit_sha: 10975b14a09f35fcd9d540512a844c945cec1b29
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a8af51573d86ca63842485619d7e7e8a2be6693d8279289deaba059ac3451039
-  timestamp: '2026-07-27T04:22:35Z'
-  output_hash: 7f203f5ae7b8808f235018e7540ceef9e328301687843bb03de8f1e2a8c8a65c
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 9e52b06bc51a349e0a2d5cb91a7374cc404444ac949ce42fe9518e08b95489a9
+  timestamp: '2026-08-28T23:36:12Z'
+  output_hash: 60059c0dddedf441e62d7bf194b89ad6ec5cda8dcfc0de18dfd189689009f2fd
   usage:
-    prompt_tokens: 1747
-    completion_tokens: 258
-    total_tokens: 2005
+    prompt_tokens: 2688
+    completion_tokens: 250
+    total_tokens: 2938
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:44Z'
+  previous_text: You reject all who wander away from your statutes, because their deceitful schemes come to nothing.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:12Z'
+  previous_text: You reject everyone who wanders away from your laws, because their deceit is nothing but lies.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 876ea146e297c16c2a986f792b9d063fc54d8f472883de1a29cbcbf21ba38d07
+  review_summary: 'The first simplification is warranted: “everyone who wanders away from your laws” clearly conveys those who stray from God’s prescribed statutes. Revise the final phrase to avoid adding the plural and emphatic force of “nothing but lies,” while retaining the source meaning in clear modern English.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

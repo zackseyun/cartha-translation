@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/013/028.yaml
-  text: while he wastes away like something rotten[a], like a garment eaten by moths.
+  text: And he wastes away like something rotten[a], like a garment eaten by a moth.
   footnotes:
   - marker: a
-    text: Or 'and he decays like rottenness, like a garment eaten by a moth.'
+    text: Or “like rot.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,40 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: while he wastes away like something rotten,[a] like a piece of clothing eaten by moths.
+  text: And he wastes away like something rotten,[a] like clothing eaten by a moth.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “and he decays like rottenness, like a piece of clothing eaten by a moth.”
+    text: Or “like rot.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: like a garment
-  simplified_phrase: like a piece of clothing
-  preserved_meaning: The image remains a single item of clothing being destroyed by moths.
-  reasoning_layer_used: POB lexical decision for כְּבֶגֶד
-  rationale: “Piece of clothing” is more familiar than “garment” while preserving the poetic comparison.
-translation_notes:
-  risk_flags:
-  - risk: “Piece of clothing” has a less elevated poetic register than “garment.”
-    mitigation: The concrete image and singular sense are fully preserved.
+- pob_phrase: like something rotten
+  simplified_phrase: like something rotten
+  preserved_meaning: The comparison pictures him as decaying like a rotten object.
+  reasoning_layer_used: POB lexical decision for כְּרָקָב and grounding review
+  rationale: Retaining “rotten” avoids adding an unsupported ongoing-process nuance.
+- pob_phrase: like a garment eaten by a moth
+  simplified_phrase: like clothing eaten by a moth
+  preserved_meaning: The image remains fabric consumed by a single moth.
+  reasoning_layer_used: POB lexical decisions for כְּבֶגֶד, אֲכָלוֹ, and עָשׁ
+  rationale: “Clothing” is more familiar than “garment” while preserving the source image.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/013/028.yaml
   source_text_sha256: 2d3e3d6fe74a1994d35ba21f536abb1f08a784b091474e7b23291cb3a038291e
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c6cde09f1fad77e0cb758ccb3c7d6092b4eb94b1dd08972f41602958b286cbab
-  timestamp: '2026-07-11T19:35:12Z'
-  output_hash: 588af8a63c2a35b44e75ea4741b1d7f987c6d9fd7488ce2a0bcd811e510952d7
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: be75f5c0238e8b1ce641f7e3c34053501314ac8975cf505e865f45a119ff9aee
+  timestamp: '2026-08-28T23:34:21Z'
+  output_hash: 802aa3bc5d79fe592acd88afda52efdd21cf322851b0d2fcbdae3fb97b9458ca
   usage:
-    prompt_tokens: 2322
-    completion_tokens: 409
-    total_tokens: 2731
-    reasoning_tokens: 181
+    prompt_tokens: 3149
+    completion_tokens: 328
+    total_tokens: 3477
+    reasoning_tokens: 67
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:12Z'
+  previous_text: while he wastes away like something rotten,[a] like a piece of clothing eaten by moths.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:50:22Z'
+  previous_text: And he wastes away like something rotten,[a] like a piece of clothing eaten by a moth.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:21Z'
+  previous_text: And he wastes away like something that is rotting,[a] like clothing eaten by a moth.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: ee0183ffa70bbf8bc4c97bc88e0722c7feb654a951715bc39f011e4e9931eb5b
+  review_summary: Revise the first simile to retain the POB’s concrete, readily understandable resulting-state image. “Clothing” is a warranted common-language rendering of “garment” and does not introduce a doctrinal or contextual claim; the principal concern is the unsupported ongoing-process nuance introduced by “rotting.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -31,49 +31,65 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I have spoken once, and I will not answer; twice, and I will say nothing more.[a]
+  text: I have spoken once, and I will not answer. I have spoken twice, and I will say no more.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The last words may also mean, “I will go no further.” The Hebrew word can mean either to add something or to continue an action.
+    text: The last words may also be translated, “I will go no further.” The Hebrew verb can mean to add, continue, or repeat an action.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: I have spoken once ... twice
-  simplified_phrase: I have spoken once ... twice
-  preserved_meaning: Job acknowledges his prior speech through the Hebrew once-and-twice progression.
-  reasoning_layer_used: POB lexical decisions for אַחַת and וּשְׁתַּיִם
-  rationale: Keeping each number with its refusal preserves the verse’s parallel movements.
-- pob_phrase: I will add nothing more
-  simplified_phrase: I will say nothing more
+  simplified_phrase: I have spoken once ... I have spoken twice
+  preserved_meaning: Job refers to his prior speech through the Hebrew once-and-twice parallel.
+  reasoning_layer_used: POB lexical decisions for אַחַת, דִּבַּרְתִּי, and וּשְׁתַּיִם
+  rationale: Repeating “I have spoken” makes the compressed parallel clear without reducing it to a simple count.
+- pob_phrase: and I will not answer
+  simplified_phrase: and I will not answer
+  preserved_meaning: Job resolves not to reply when the LORD calls on him to answer.
+  reasoning_layer_used: POB lexical decision for וְלֹא אֶעֱנֶה and immediate context
+  rationale: Keeping “answer” preserves the response dimension that “say no more” alone would lose.
+- pob_phrase: and I will add nothing more
+  simplified_phrase: and I will say no more
   preserved_meaning: Job resolves not to continue speaking.
-  reasoning_layer_used: POB lexical decision for וְלֹא אוֹסִיף
-  rationale: Naming speech directly makes the intended action clear while the note preserves the broader wording.
+  reasoning_layer_used: POB lexical decision and footnote for וְלֹא אוֹסִיף
+  rationale: The direct wording clearly expresses what Job will not continue doing.
+interpretive_expansions:
+- pob_phrase: I will add nothing more
+  rendering: I will say no more
+  claim: What Job will add no more of is speech.
+  evidence:
+  - The POB lexical rationale identifies continuing to speak as the contextual sense.
+  confidence: high
+  alternatives_preserved:
+  - I will add nothing more
+  - I will go no further
 translation_notes:
   risk_flags:
-  - risk: “Say nothing more” makes the Hebrew image of adding less visible.
-    mitigation: The footnote records the broader senses of adding and continuing.
+  - risk: The once-and-twice wording may sound like a precise count rather than emphatic parallelism.
+    mitigation: The repeated clause preserves the Hebrew structure without asserting that Job made exactly two formal speeches.
+  - risk: Replacing “add” with “say” removes the Hebrew metaphor of adding words.
+    mitigation: The footnote preserves the verb’s broader sense while the main text states its contextual meaning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/040/005.yaml
   source_text_sha256: df61eddce6223982fcd8b24020ae162423dff33d5c3bbb3859f4f0ccacd18c28
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 4c9d3ea0e8d25ce0945bfc528f1b58c7e7030ee81a93185dabd51f5052c338a1
-  timestamp: '2026-07-12T09:40:06Z'
-  output_hash: a535be5eda773b8f4d3698870b1ea295fedba827a7aa4d975cb2c728304d015d
+  prompt_sha256: 62f5f2be2c8ebc9793262ad1774f6df77cef2f96bc265eea9f11823117eab3b1
+  timestamp: '2026-08-28T23:35:11Z'
+  output_hash: 8a6000422390643582b3357a0a1dbd6d7bf809af8f1f3f7eb1189ba273b49d58
   usage:
-    prompt_tokens: 3231
-    completion_tokens: 311
-    total_tokens: 3542
-    reasoning_tokens: 0
+    prompt_tokens: 3101
+    completion_tokens: 1061
+    total_tokens: 4162
+    reasoning_tokens: 495
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:40:06Z'
@@ -85,4 +101,18 @@ spob_revision_history:
   review_summary: “Say nothing more” is a warranted and helpful clarification of “add nothing more,” and the footnote appropriately preserves the lexical alternative. However, the proposed dash punctuation and “indeed” collapse the verse’s two parallel clauses and introduce an unwarranted exact-count/corrective nuance. Retain the parallel structure while using the clearer speech-based wording.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:26Z'
+  previous_text: I have spoken once, and I will not answer; twice, and I will say nothing more.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:11Z'
+  previous_text: I have already spoken once—twice—and now I will say no more.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5e719abf912ea24d253e8a4d99c103ed73a3126a28fa5b7e29c2ca791e053415
+  review_summary: Revision is needed. Directly stating that Job will “say no more” is a warranted clarification of his resolve not to add further words, but the current draft omits his refusal to answer and makes the once/twice parallel unnecessarily opaque. The recommended text preserves both source clauses while remaining clear for modern readers.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

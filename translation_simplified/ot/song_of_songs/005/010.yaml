@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/005/010.yaml
-  text: My beloved is radiant and ruddy[a], distinguished among ten thousand.
+  text: My beloved is radiant and ruddy, distinguished[a] among ten thousand.
   footnotes:
   - marker: a
-    text: Or 'conspicuous among ten thousand,' or more literally, 'bannered among ten thousand.'
+    text: Or “conspicuous among ten thousand,” or more literally, “bannered among ten thousand.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,43 +31,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My beloved is radiant and rosy. He stands out among ten thousand.
+  text: My beloved is radiant and rosy. He stands out[a] among ten thousand.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “is conspicuous among ten thousand”; more literally, “is bannered among ten thousand.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: radiant and ruddy
   simplified_phrase: radiant and rosy
-  preserved_meaning: His appearance is bright and has a reddish coloring.
+  preserved_meaning: He has a shining appearance and reddish coloring.
   reasoning_layer_used: POB lexical decisions for צַח and אָדוֹם
-  rationale: “Rosy” expresses visible reddish coloring more clearly than the less familiar “ruddy.”
+  rationale: “Rosy” expresses the unfamiliar word “ruddy” without asserting health or limiting the description to his complexion.
 - pob_phrase: distinguished among ten thousand
-  simplified_phrase: He stands out among ten thousand
-  preserved_meaning: He is noticeably prominent within a vast multitude.
+  simplified_phrase: stands out among ten thousand
+  preserved_meaning: He is clearly marked out from a vast multitude.
   reasoning_layer_used: POB lexical decisions for דָּגוּל and מֵרְבָבָה
-  rationale: The direct phrase “stands out” makes his prominence immediately understandable.
+  rationale: “Stands out” communicates his prominence in common English while the note preserves the more literal image.
 translation_notes:
   risk_flags:
-  - risk: “Rosy” can sound softer than the bodily descriptor “ruddy.”
-    mitigation: It retains the source idea of reddish coloring without adding a specific complexion claim.
-  - risk: “Stands out” does not preserve the possible banner image in דָּגוּל.
-    mitigation: It follows POB’s controlling choice “distinguished” rather than the obscure literal alternative.
+  - risk: “Stands out” is less stately than “distinguished.”
+    mitigation: It preserves his prominence, while the footnote records the lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/005/010.yaml
   source_text_sha256: 6c73f226af086049cf214a4a17305aa02b5dc3d53bba2604f8b74bf6386148ea
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5c109c2a525d8851e2f28680456187672b7750f2f7b65a84e2e82540231eada2
-  timestamp: '2026-07-11T21:25:28Z'
-  output_hash: fa9db9684caf7780e80b11ffafe68f5c2d025cb30664474282c661d4f64f8517
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 0fdaff6d9c9cea871ea4d4fd487998be2e27b5150de3aa898facbc1f8722f0f2
+  timestamp: '2026-08-28T23:33:39Z'
+  output_hash: 0ff0bde698e74cbff9f59e51b512b6eb406cc08e9475424de9346c637f783bc3
   usage:
-    prompt_tokens: 2241
-    completion_tokens: 521
-    total_tokens: 2762
-    reasoning_tokens: 212
+    prompt_tokens: 3249
+    completion_tokens: 459
+    total_tokens: 3708
+    reasoning_tokens: 148
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: ruddy
+  rendering: with a healthy, rosy complexion
+  claim: The redness describes his healthy-looking facial coloring.
+  evidence:
+  - The POB lexical rationale defines “ruddy” as healthy reddish coloring in a person's appearance.
+  - The immediate context praises the beloved's physical appearance.
+  confidence: high
+  alternatives_preserved:
+  - ruddy
+  - red
+  - rosy
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:10:35Z'
+  previous_text: My beloved is radiant and rosy. He stands out among ten thousand.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:39Z'
+  previous_text: My beloved is radiant, with a healthy, rosy complexion. He stands out[a] among ten thousand.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 567992dfbd7def8f176eb328a64f1eeeb3479a91343cd4ba3148f52dce479b32
+  review_summary: 'The revision appropriately makes “distinguished” more accessible with “stands out,” and the retained footnote preserves the lexical image. However, “healthy” is an unnecessary interpretive addition: the text describes reddish/rosy appearance, not his state of health. “Radiant and rosy” is clear, preserves both Hebrew descriptors, and avoids that added claim.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

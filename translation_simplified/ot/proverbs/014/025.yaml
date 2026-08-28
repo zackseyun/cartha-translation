@@ -11,16 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/014/025.yaml
-  text: A truthful witness rescues lives[c][b][a], but one who breathes out lies is deceitful.
+  text: A truthful witness rescues lives, but one who breathes out lies is deceitful.[a]
   footnotes:
   - marker: a
-    text: Or, 'A true witness delivers souls/persons.' Here 'lives' reflects Hebrew nephashot in the sense of persons or lives preserved, not specifically immaterial souls.
-    reason: lexical_alternative
-  - marker: b
-    text: Literally, 'breathes out lies.' The Hebrew uses vivid speech imagery for uttering falsehood.
-    reason: lexical_alternative
-  - marker: c
-    text: The final phrase may also be rendered more literally, 'and one who breathes out lies is deceit,' or understood adverbially, 'breathes out lies deceitfully.'
+    text: Or, “but one who breathes out lies is deceit.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -37,49 +31,57 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A witness who tells the truth rescues lives, but one who speaks lies is deceitful.[a]
+  text: A witness who tells the truth rescues lives. But a witness who breathes out lies is deceitful.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Literally, “breathes out lies.” The last words may also mean that the person speaks lies deceitfully.
-    reason: lexical_alternative
+    text: Or, “But a witness who breathes out lies is deceit.”
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: A truthful witness
-  simplified_phrase: A witness who tells the truth
-  preserved_meaning: The witness is characterized by truthful testimony.
-  reasoning_layer_used: POB lexical decision for עֵד אֱמֶת
-  rationale: The relative clause states the quality directly without turning it into a temporal condition.
+- pob_phrase: A truthful witness rescues lives
+  simplified_phrase: A witness who tells the truth rescues lives
+  preserved_meaning: The witness actively delivers people from serious harm or death by giving truthful testimony.
+  reasoning_layer_used: POB lexical decisions for עֵד אֱמֶת, מַצִּיל, and נְפָשׁוֹת
+  rationale: The relative clause explains “truthful” while keeping the witness as the active rescuer.
+- pob_phrase: but one who breathes out lies
+  simplified_phrase: But a witness who breathes out lies
+  preserved_meaning: The contrasting person gives false testimony while retaining the Hebrew breathing image.
+  reasoning_layer_used: Hebrew parallelism and the POB lexical decision for וְיָפִחַ כְּזָבִים
+  rationale: Repeating “witness” makes the parallel contrast clear without weakening the source image.
+interpretive_expansions:
 - pob_phrase: one who breathes out lies
-  simplified_phrase: one who speaks lies
-  preserved_meaning: The person utters false statements.
-  reasoning_layer_used: POB lexical decisions for וְיָפִחַ and כְּזָבִים
-  rationale: The main text makes the figurative speech sense clear while the note preserves the Hebrew image.
+  rendering: a witness who breathes out lies
+  claim: The person in the second line is also a witness.
+  evidence:
+  - The immediate parallelism contrasts this person with the truthful witness.
+  confidence: high
+  alternatives_preserved:
+  - one who breathes out lies
 translation_notes:
   risk_flags:
-  - risk: Replacing “breathes out” in the main text could hide the vivid Hebrew image.
-    mitigation: The footnote retains the literal image and explains the alternate reading.
+  - risk: “Breathes out lies” is less familiar than “speaks lies.”
+    mitigation: It remains understandable and preserves the Hebrew verb’s vivid image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/014/025.yaml
   source_text_sha256: 29540503fcbada4dcd6e7a5122f9b463545878acb3f09679287b10946f41f176
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: e0eaf9485b062408433f4fa2425102144ca3488593768b544e4060d714230ab3
-  timestamp: '2026-07-12T09:52:19Z'
-  output_hash: a7dc22ecb4d4e1b6fe918db17acdc90c7df39efb8a4957c9be3cbd5c538d1d79
+  prompt_sha256: a4c4c68344cee85177165ef27b8f84b65add5658fc55c55ea7ac0174a3a0d148
+  timestamp: '2026-08-28T23:34:25Z'
+  output_hash: ce7fcb58442f9b34509d99ad044789fcbf7b2ddc2ceeb14c79494091832c567e
   usage:
-    prompt_tokens: 3300
-    completion_tokens: 303
-    total_tokens: 3603
-    reasoning_tokens: 0
+    prompt_tokens: 3318
+    completion_tokens: 589
+    total_tokens: 3907
+    reasoning_tokens: 164
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:19Z'
@@ -91,4 +93,18 @@ spob_revision_history:
   review_summary: Revision is needed for clearer, more direct communication. “A witness who tells the truth” explains the truthful-witness phrase without changing it into a conditional “when” statement. Replacing “breathe out lies” in the main text with “speaks lies” makes the figurative Hebrew speech image understandable, while the footnote can preserve both the literal wording and the alternative construal. No doctrinal concern is present.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:02:48Z'
+  previous_text: A witness who tells the truth rescues lives, but one who speaks lies is deceitful.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:25Z'
+  previous_text: When a witness tells the truth, lives are rescued. But a witness who breathes out lies is deceitful.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 33659625c484cc81479bf0bc678818acbc2e1639017eef7adb5426e77265fb6b
+  review_summary: Explaining “a truthful witness” as “a witness who tells the truth” is a warranted and clearer simplification. Repeating “witness” in the contrasting line is supported by the immediate parallelism and the witness context, rather than importing a doctrinal claim. However, the first line must retain the active agency expressed by the Hebrew and preserved in POB. The recommended revision does so while maintaining the draft's accessible wording and its footnote.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/022/027.yaml
-  text: You will pray to him[a], and he will hear you, and you will fulfill your vows.
+  text: You will pray to him, and he will hear you, and you will fulfill your vows.[a]
   footnotes:
   - marker: a
-    text: Or, more literally, 'you will pay your vows.'
+    text: More literally, “pay your vows.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You will pray to God, and he will listen to you. You will keep the vows you made to him.
+  text: You will pray to him, and he will hear you. You will keep your vows—the promises you made to him.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: he will hear you
-  simplified_phrase: he will listen to you
-  preserved_meaning: God will give favorable attention to the prayer without promising a specific answer.
-  reasoning_layer_used: POB lexical decision for וְיִשְׁמָעֶךָּ
-  rationale: “Listen” sounds more natural while preserving the source verb’s sense.
-- pob_phrase: you will fulfill your vows
-  simplified_phrase: You will keep the vows you made to him
-  preserved_meaning: The person will carry out what was solemnly promised to God.
-  reasoning_layer_used: POB lexical and theological decisions for נְדָרֶיךָ תְשַׁלֵּם
-  rationale: “Keep the vows you made” explains the Hebrew idiom without suggesting a monetary payment.
+- pob_phrase: and he will hear you, and you will fulfill
+  simplified_phrase: and he will hear you. You will keep
+  preserved_meaning: God hears the prayer, and the worshiper carries out the vows.
+  reasoning_layer_used: POB syntax and lexical decisions
+  rationale: Dividing the clauses makes the sequence easier to follow without changing it.
+- pob_phrase: fulfill your vows
+  simplified_phrase: keep your vows—the promises you made to him
+  preserved_meaning: The worshiper must carry out what was vowed to God.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: “Keep” and the brief explanation express the Hebrew vow idiom in common English.
 interpretive_expansions:
-- pob_phrase: to him ... your vows
-  rendering: to God ... the vows you made to him
-  claim: The pronoun refers to God, and the vows are commitments made to God.
+- pob_phrase: your vows
+  rendering: your vows—the promises you made to him
+  claim: The vows are solemn promises made to God.
   evidence:
-  - The immediate context identifies God as the antecedent of “him.”
-  - The POB lexical rationale says a נֶדֶר is especially a vow made to God.
+  - The immediate antecedent of “him” is God.
+  - The POB lexical rationale defines a vow as one made to God.
   confidence: high
   alternatives_preserved:
-  - to him
   - your vows
-translation_notes: {}
+  - what you vowed to do
+translation_notes:
+  risk_flags:
+  - risk: “Keep” is less literal than the Hebrew image of paying a vow.
+    mitigation: The wording retains “vows” and clearly conveys carrying out the obligation.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/022/027.yaml
   source_text_sha256: 8c2dcb5764f1b6405b92f47f1c1015398d22a3f11dbd6ac5d763c8bc0a2c7d17
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ac48220ad6e2c0886e318112312ec3e1c8da5bc7a2a7387e414e386212625466
-  timestamp: '2026-07-11T19:42:32Z'
-  output_hash: 6ee4055589f6f87fb597b54ce96e74609fb2f7c9f2292d28c7f741f89765548c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 59c8030bc67b949d8ee2bce1a96e7e3d98a9bd3c9268dcd7ebbdab79fe57a6a4
+  timestamp: '2026-08-28T22:55:25Z'
+  output_hash: 596ad9fe5204ca6dba05a3e32e18bad5a799d9ab80262eb7e842bf2cb29cb89e
   usage:
-    prompt_tokens: 2401
-    completion_tokens: 621
-    total_tokens: 3022
-    reasoning_tokens: 262
+    prompt_tokens: 2573
+    completion_tokens: 595
+    total_tokens: 3168
+    reasoning_tokens: 239
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:43Z'
+  previous_text: You will pray to God, and he will listen to you. You will keep the vows you made to him.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:55:25Z'
+  previous_text: You will pray to him, and he will listen to you. You will carry out the vows you made to him.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

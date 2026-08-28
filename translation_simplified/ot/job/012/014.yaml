@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/012/014.yaml
-  text: Look[a], if he tears down, it cannot be rebuilt; if he shuts a man in[b], it cannot be opened.
+  text: Look[a], he tears down, and it cannot be rebuilt; he shuts a man in[b], and it cannot be opened.
   footnotes:
   - marker: a
-    text: Or 'Indeed' or 'Behold' for the opening particle.
+    text: Or “Indeed” or “Behold” for the opening particle.
     reason: lexical_alternative
   - marker: b
-    text: Or 'if he shuts a man up' or 'confines a man.'
+    text: Or “he shuts a man up” or “confines a man.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,53 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: 'Look: what he tears down cannot be rebuilt. If he shuts a man in, no one can open what he has shut.'
+  text: 'Look at what he does: what he tears down cannot be rebuilt. He shuts a man in, and there is no way out.'
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: if he tears down, it cannot be rebuilt
+- pob_phrase: Look
+  simplified_phrase: Look at what he does
+  preserved_meaning: The opening calls attention to an emphatic statement about his actions.
+  reasoning_layer_used: POB lexical decision for הֵן
+  rationale: The added words make the attention-getter natural in modern English.
+- pob_phrase: he tears down, and it cannot be rebuilt
   simplified_phrase: what he tears down cannot be rebuilt
-  preserved_meaning: His act of tearing down has an irreversible result.
+  preserved_meaning: What he demolishes cannot be restored, while the building image remains intact.
   reasoning_layer_used: POB lexical decisions for יַהֲרוֹס and וְלֹא יִבָּנֶה
-  rationale: The recast sentence supplies a natural object while preserving the building image.
-- pob_phrase: if he shuts a man in, it cannot be opened
-  simplified_phrase: If he shuts a man in, no one can open what he has shut
-  preserved_meaning: What he closes around the confined man cannot be opened by anyone.
-  reasoning_layer_used: POB lexical decisions for יִסְגֹּר and וְלֹא יִפָּתֵחַ
-  rationale: The wording clarifies the passive clause without specifying an exit or formal prison.
+  rationale: The recast clause is easier to follow without adding an agent to the passive verb.
+- pob_phrase: he shuts a man in, and it cannot be opened
+  simplified_phrase: He shuts a man in, and there is no way out
+  preserved_meaning: The man remains confined because the closure cannot be reversed.
+  reasoning_layer_used: POB lexical decisions for יִסְגֹּר, עַל אִישׁ, and וְלֹא יִפָּתֵחַ
+  rationale: The wording clearly expresses the result of the opening image without implying formal imprisonment.
 interpretive_expansions:
 - pob_phrase: it cannot be opened
-  rendering: no one can open what he has shut
-  claim: The closure caused by his action cannot be opened by anyone.
+  rendering: there is no way out
+  claim: The irreversible closure leaves the confined man without an exit.
   evidence:
-  - The passive verb means that what is shut cannot be opened.
-  - The POB rationale treats the outcome as an irreversible closure.
+  - The preceding clause says that the man is shut in.
+  - The POB rationale derives the implicit object from the shutting image.
   confidence: high
   alternatives_preserved:
   - it cannot be opened
   - he cannot be released
 translation_notes:
   risk_flags:
-  - risk: “What he has shut” supplies an implicit object not named in Hebrew.
-    mitigation: It leaves the object unspecified and preserves the concrete shutting and opening imagery.
+  - risk: “There is no way out” states the result rather than explicitly repeating the opening image.
+    mitigation: “Shuts a man in” retains the concrete closure image, and the POB identifies irreversible confinement as the sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/012/014.yaml
   source_text_sha256: 843e7f1c46fa10448a3ccc4c1415aefa2fd5cf9cb1b17dfbf8cda158ef1061f4
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 6da8598e4c29ab8bd3c54f5cca7751040d11aa153102f25e8c706ada0e9076ea
-  timestamp: '2026-07-12T09:36:28Z'
-  output_hash: f2c7bcc3a14a2009c22ff617349733700de57798981fe681bdea5665bf5cd41a
+  prompt_sha256: cc19b64a8bb0ad38b318e15dacdc5eb57f67c80edc998ee7d25b4c7c00a7ad41
+  timestamp: '2026-08-28T23:34:23Z'
+  output_hash: 378ed5715ad5e472706f3ff6b4ca961fc4e382924c79c8306a2de0b6f1148c77
   usage:
-    prompt_tokens: 3435
-    completion_tokens: 403
-    total_tokens: 3838
-    reasoning_tokens: 0
+    prompt_tokens: 3807
+    completion_tokens: 703
+    total_tokens: 4510
+    reasoning_tokens: 207
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -92,5 +97,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 90f5f1f1beb5d9c3fe607c453b26a260d7e3aaf27e72ae65f56f74f4303d71f9
   review_summary: The first sentence is a clear, warranted recasting of the irreversible result. The second rightly makes the force of the passive clause understandable, but “a way out” narrows the unspecified opening image beyond the source and POB audit trail. “What he has shut” clarifies the referent while retaining the source's concrete closure imagery and avoiding a specific escape-route inference.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:50:16Z'
+  previous_text: 'Look: what he tears down cannot be rebuilt. If he shuts a man in, no one can open what he has shut.'
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:23Z'
+  previous_text: 'Look at what he does: no one can rebuild what he tears down. No one can open a way out for a man he shuts in.'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d04ae290037dd004e4932a4c5bd168c3dd7812677272c3265cfad37dd4348cb5
+  review_summary: The draft substantially improves readability, and “a way out” is a contextually warranted clarification of the opening image after a man is shut in. However, changing both passive impossibility statements into “No one can” adds a universal agent not expressed by the text. Retain the source/POB’s impersonal irreversible-result wording in the first clause while using the clear, contextually grounded exit clarification in the second.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

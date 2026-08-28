@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/029/022.yaml
-  text: After my words they did not speak again[b][a], and my word dripped upon them.
+  text: After I spoke, they did not speak again, and my word dripped upon them.[a]
   footnotes:
   - marker: a
-    text: Or 'they did not answer again'; the Hebrew verb can suggest not repeating or not responding after Job had spoken.
-    reason: lexical_alternative
-  - marker: b
-    text: Literally 'my word dripped upon them,' a poetic image for speech falling gently yet authoritatively on listeners.
-    reason: lexical_alternative
+    text: Hebrew “after my words … my word dripped upon them.” The second clause retains the poetic image of Job’s speech dripping upon its hearers.
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,55 +31,63 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 29:22 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''my speech''].'
 translation:
   language: en
-  text: After I spoke, they did not speak again.[a] My speech fell on them like gentle drops.
+  text: After I spoke, they said nothing more. What I said fell on them, drop by drop.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “they did not answer again.”
-    reason: lexical_alternative
+    text: Hebrew pictures Job’s word dripping upon his listeners.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: After my words
-  simplified_phrase: After I spoke
-  preserved_meaning: The next action occurred once Job had spoken.
-  reasoning_layer_used: POB lexical decision for אַחֲרֵי and דְבָרִי
-  rationale: The verbal form is more natural while keeping the same sequence.
+- pob_phrase: they did not speak again
+  simplified_phrase: they said nothing more
+  preserved_meaning: Job’s listeners did not continue speaking after he spoke.
+  reasoning_layer_used: POB lexical decision for לֹא יִשְׁנוּ and the discourse context
+  rationale: This expresses their response in more natural English.
 - pob_phrase: my word dripped upon them
-  simplified_phrase: My speech fell on them like gentle drops
-  preserved_meaning: Job’s speech is pictured as drops falling on his listeners.
+  simplified_phrase: What I said fell on them, drop by drop
+  preserved_meaning: Job’s speech is pictured as drops falling upon his listeners.
   reasoning_layer_used: POB lexical decisions for תִּטֹּף and מִלָּתִי
-  rationale: The explicit comparison preserves the poetic image in clear English.
-interpretive_expansions:
-- pob_phrase: my word dripped upon them
-  rendering: My speech fell on them like gentle drops
-  claim: The dripping describes the manner in which Job’s speech reached his listeners.
-  evidence:
-  - The POB lexical rationale identifies a poetic metaphor of dripping speech.
-  - The POB footnote describes the speech as falling gently on listeners.
-  confidence: high
-  alternatives_preserved:
-  - my word dripped upon them
+  rationale: This makes the poetic image clear without adding an unsupported quality.
 translation_notes:
   risk_flags:
-  - risk: The Hebrew may mean that they did not answer again rather than that they stopped speaking.
-    mitigation: A footnote preserves this lexical alternative.
+  - risk: “Fell on them” could obscure the specific image of dripping.
+    mitigation: “Drop by drop” and the footnote preserve the Hebrew image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/029/022.yaml
   source_text_sha256: 0a85406f5dce2dd25624383fe7b304b1316f8d3ae80d10da49c77ecb502a587d
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 3b244fa74418c03a65c3aca7b63f2219aea247904f2e7552bfb0830bf2fb2780
-  timestamp: '2026-07-11T19:51:17Z'
-  output_hash: 1d0303f597f67ecd8dccd9950fbc599354dbe20b6b17b7737f0f778f81c8f435
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 29739cf969f4792bfc40809217bedc9c1c5c7d253565819e3cb42096a5179977
+  timestamp: '2026-08-28T23:34:48Z'
+  output_hash: b238e72e9f6ac4fed9caa895f7bfef416863cfb0943bf4bf62081b50fb39602a
   usage:
-    prompt_tokens: 2643
-    completion_tokens: 727
-    total_tokens: 3370
-    reasoning_tokens: 343
+    prompt_tokens: 3528
+    completion_tokens: 328
+    total_tokens: 3856
+    reasoning_tokens: 28
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:59Z'
+  previous_text: After I spoke, they did not speak again.[a] My speech fell on them like gentle drops.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:48Z'
+  previous_text: After I spoke, they said nothing more. What I said fell gently on them, drop by drop.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d30c6c7942badd3305d945e7016716e35eb69fa7a051ed49ae28f914dd4de331
+  review_summary: The first sentence is a warranted, clearer rendering of the listeners’ silence. The second successfully makes the poetic image accessible, but “gently” is an unnecessary interpretive addition that can soften Job’s authoritative speech. Removing it retains the drop-by-drop metaphor and the clarity gain without adding a quality not stated by the text.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

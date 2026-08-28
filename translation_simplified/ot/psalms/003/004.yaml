@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/003/004.yaml
-  text: With my voice I cry to Yahweh[a], and he answers me from his holy mountain[b]. Selah
+  text: I cry aloud to Yahweh, and he answers me[a] from his holy mountain[b]. Selah
   footnotes:
   - marker: a
-    text: Or, 'and he answered me from his holy mountain.' The Hebrew verb may be rendered as a past tense in context.
+    text: Or “and he answered me.” The Hebrew verb may describe a past answer in context.
     reason: alternative_reading
   - marker: b
-    text: Traditional English often has 'from his holy hill.' The Hebrew word more basically means 'mountain,' likely referring to Zion.
+    text: Or “his holy hill,” likely referring to Zion.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,48 +34,69 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: I cry aloud to Yahweh, and he answers me from his holy mountain.[a] Selah[b]
+  text: I cry out to Yahweh, and he answers me from his holy mountain.[a][b] Selah.[c]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “he answered me from his holy mountain.” The Hebrew may refer to a past answer.
+    text: Or “he answered me.” The Hebrew may refer to a past answer here.
     reason: alternative_reading
   - marker: b
-    text: The precise meaning of “Selah” is uncertain.
+    text: Or “holy hill,” probably referring to Zion.
+    reason: lexical_alternative
+  - marker: c
+    text: The meaning of “Selah” is uncertain.
     reason: source_note
 simplification_decisions:
-- pob_phrase: With my voice I cry to Yahweh
-  simplified_phrase: I cry aloud to Yahweh
+- pob_phrase: I cry aloud to Yahweh
+  simplified_phrase: I cry out to Yahweh
   preserved_meaning: The psalmist audibly calls to Yahweh in distress.
-  reasoning_layer_used: POB lexical decision for קוֹלִי and אֶקְרָא
-  rationale: “Cry aloud” expresses the voice image in direct, natural English.
-- pob_phrase: and he answers me from his holy mountain
-  simplified_phrase: and he answers me from his holy mountain
-  preserved_meaning: Yahweh responds from his sacred mountain, likely Zion.
-  reasoning_layer_used: POB lexical and theological decisions
-  rationale: The wording stays clear while preserving the source image and present-tense confidence.
+  reasoning_layer_used: Lexical decision for קרא and the source audit of קוֹלִי.
+  rationale: “Cry out” naturally conveys both calling and doing so aloud.
+- pob_phrase: and he answers me
+  simplified_phrase: and he answers me
+  preserved_meaning: The psalmist expresses immediate confidence that Yahweh responds.
+  reasoning_layer_used: Theological decision on poetic tense.
+  rationale: The present tense remains primary while the possible past sense stays in a note.
+- pob_phrase: Selah
+  simplified_phrase: Selah
+  preserved_meaning: The uncertain Hebrew term remains untranslated.
+  reasoning_layer_used: Lexical decision for סֶלָה.
+  rationale: Retaining the term avoids assigning it an unsupported meaning.
 translation_notes:
   risk_flags:
-  - risk: The present tense could obscure the legitimate past-tense reading.
-    mitigation: Footnote [a] preserves the past-tense alternative.
+  - risk: Readers may take the present tense as excluding a past answer.
+    mitigation: Footnote a preserves the legitimate past-tense reading.
+  - risk: Readers may not know what “holy mountain” or “Selah” means.
+    mitigation: Footnotes identify the likely reference to Zion and acknowledge that Selah is uncertain.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/003/004.yaml
   source_text_sha256: 9d795ddf5bdcaba5a34f82c9c1afffd2673c91554ed51a6f7ba38560f7554e36
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 28365f53af2e17b8d70c1481b5f15a460b817a659f3466370e75983f9fe6f785
-  timestamp: '2026-07-11T19:57:49Z'
-  output_hash: 137cdf3f5c567a61b6d870b235d6c98cc48edb73965229bae3f9926ff017c3f0
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 75273f3a0b9eb838d243e7dc52308fd400f34e5793784def339288506a8bc005
+  timestamp: '2026-08-28T22:53:02Z'
+  output_hash: 795c9923b4e0030baab5e750d4a4c4439cb84c7caadf91a180181ee064ce250c
   usage:
-    prompt_tokens: 2712
-    completion_tokens: 688
-    total_tokens: 3400
-    reasoning_tokens: 361
+    prompt_tokens: 2937
+    completion_tokens: 773
+    total_tokens: 3710
+    reasoning_tokens: 345
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:02Z'
+  previous_text: I cry aloud to Yahweh, and he answers me from his holy mountain.[a] Selah[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:02Z'
+  previous_text: I cry out to Yahweh. He answers me[a] from his holy mountain[b]. Selah
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

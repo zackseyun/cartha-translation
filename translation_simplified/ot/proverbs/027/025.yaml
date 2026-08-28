@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/027/025.yaml
-  text: The hay is removed[a], and the new growth appears[c][b], and the grasses of the mountains are gathered.
+  text: The grass is gone[a], and fresh growth appears[b], and the plants of the mountains are gathered.[c]
   footnotes:
   - marker: a
-    text: Or 'The grass is gone,' or 'The hay is uncovered.' The Hebrew verb can denote being uncovered or removed; the context suggests the hay has been cut or has disappeared.
+    text: Or “The grass is removed” or “The grass is uncovered.” The Hebrew verb can describe departure, removal, or uncovering.
     reason: lexical_alternative
   - marker: b
-    text: Or 'tender grass' or 'fresh grass' for 'new growth.'
+    text: Or “tender grass” or “new growth.”
     reason: lexical_alternative
   - marker: c
-    text: Or 'the herbs/plants of the mountains are gathered.'
+    text: Or “the grasses” or “the herbs of the mountains.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,55 +37,48 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 27:25 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''of the hills''].'
 translation:
   language: en
-  text: The hay is taken away[a]. Fresh grass appears, and grass from the mountains is gathered.
+  text: The grass is gone.[a] Fresh growth appears, and plants from the mountains are gathered.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may also mean “the grass is gone” or “the hay is uncovered.”
+    text: The Hebrew can also mean that the grass is removed or uncovered.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: The hay is removed
-  simplified_phrase: The hay is taken away
-  preserved_meaning: The hay or fodder no longer covers the ground.
-  reasoning_layer_used: POB lexical decisions for גָּלָה and חָצִיר
-  rationale: “Taken away” expresses the agricultural action in common English while the footnote preserves the Hebrew ambiguity.
-- pob_phrase: the new growth appears
-  simplified_phrase: Fresh grass appears
-  preserved_meaning: Tender green vegetation becomes visible after the hay is removed.
-  reasoning_layer_used: POB lexical decision for דֶשֶׁא
-  rationale: “Fresh grass” is a concrete POB alternative that is immediately understandable.
-- pob_phrase: the grasses of the mountains are gathered
-  simplified_phrase: grass from the mountains is gathered
-  preserved_meaning: Vegetation from the mountains is collected.
-  reasoning_layer_used: POB lexical decisions for עִשְּׂבוֹת, הָרִים, and נֶאֶסְפוּ
-  rationale: “From the mountains” clearly describes the vegetation’s source rather than a type of grass.
+- pob_phrase: The grass is gone, and fresh growth appears
+  simplified_phrase: The grass is gone. Fresh growth appears
+  preserved_meaning: The grass has departed or been removed, followed by visible new growth.
+  reasoning_layer_used: POB lexical decisions and source audit
+  rationale: Splitting the sequence into two sentences makes it easier to follow without changing its order.
+- pob_phrase: the plants of the mountains
+  simplified_phrase: plants from the mountains
+  preserved_meaning: The gathered vegetation comes from the mountain country.
+  reasoning_layer_used: POB lexical decisions for עִשְּׂבוֹת and הָרִים
+  rationale: “From the mountains” expresses the setting in more natural English while keeping the broad word “plants.”
 translation_notes:
   risk_flags:
-  - risk: “Taken away” may sound more definite than the ambiguous Hebrew verb.
-    mitigation: The footnote preserves the alternatives “gone” and “uncovered.”
+  - risk: “From the mountains” may sound slightly more directional than the Hebrew phrase “of the mountains.”
+    mitigation: The wording still identifies the mountain plants as the things gathered and does not specify where they are taken.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/027/025.yaml
   source_text_sha256: b9cb0c56ca4f89fa9c1f52edc1a4eb770eb8fca9bef7cba1f706a94df7fe1235
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 493f753b9b80a9c722bc349be5ce50f13ae016b14211b452742ba993122135b6
-  timestamp: '2026-07-12T09:53:13Z'
-  output_hash: eb5a3061bd297904eebefccb51cd58bb6cd45c024b4ec3993a6766ee2fc0c362
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 5b025b3be27baae9baafb87d82b7c0b5c44f793892e9af91bfd0321ccb5ca8ec
+  timestamp: '2026-08-28T23:06:59Z'
+  output_hash: 9c332e59f6118620e7a65d899d1ddc6b3dba0d27d18279f2f029b6da333a3b09
   usage:
-    prompt_tokens: 3630
-    completion_tokens: 387
-    total_tokens: 4017
-    reasoning_tokens: 0
+    prompt_tokens: 3061
+    completion_tokens: 828
+    total_tokens: 3889
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:13Z'
   previous_text: The hay is taken away[a]. Fresh grass appears, and the mountain grasses are gathered.
@@ -97,3 +90,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:06:59Z'
+  previous_text: The hay is taken away[a]. Fresh grass appears, and grass from the mountains is gathered.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

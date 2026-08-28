@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/042/015.yaml
-  text: And nowhere in all the land were women found as beautiful as Job’s daughters[a], and their father gave them an inheritance among their brothers.
+  text: And nowhere in all the land[a] were women found as beautiful as Job’s daughters, and their father gave them an inheritance among their brothers.
   footnotes:
   - marker: a
-    text: Or, “in all the earth.”
+    text: Or “in all the earth.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,74 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: No women anywhere in the land[a] were as beautiful as Job’s daughters. Their father also gave them an inheritance along with their brothers.
+  text: No other women anywhere in the land[a] were as beautiful as Job’s daughters. Their father gave them an inheritance along with their brothers.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “earth.”
+    text: Or “anywhere on earth.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: And nowhere in all the land were women found as beautiful as Job’s daughters
-  simplified_phrase: No women anywhere in the land were as beautiful as Job’s daughters
-  preserved_meaning: Job’s daughters were unmatched in beauty throughout the land.
-  reasoning_layer_used: Lexical decisions for נִמְצָא, נָשִׁים יָפוֹת, and בְּכָל הָאָרֶץ
-  rationale: The direct sentence removes an awkward passive while keeping the comparison and its full scope.
+- pob_phrase: nowhere in all the land were women found
+  simplified_phrase: No other women anywhere in the land were
+  preserved_meaning: No women apart from Job’s daughters matched them in beauty.
+  reasoning_layer_used: POB lexical decisions for נִמְצָא and בְּכָל הָאָרֶץ
+  rationale: The direct construction makes the intended comparison clear in natural English.
 - pob_phrase: among their brothers
   simplified_phrase: along with their brothers
-  preserved_meaning: The daughters received an inheritance in the same family setting as their male heirs.
-  reasoning_layer_used: Lexical and theological decisions for בְּתוֹךְ אֲחֵיהֶם
-  rationale: “Along with” makes the notable inclusion clear while retaining the gender-specific term “brothers.”
+  preserved_meaning: The daughters received an inheritance as their brothers also did.
+  reasoning_layer_used: POB lexical and theological decisions for בְּתוֹךְ אֲחֵיהֶם
+  rationale: This wording clearly preserves the notable inclusion of the daughters with the male heirs.
+interpretive_expansions:
+- pob_phrase: women found as beautiful as Job’s daughters
+  rendering: other women ... as beautiful as Job’s daughters
+  claim: The women being compared with Job’s daughters are women other than the daughters themselves.
+  evidence:
+  - The daughters serve as the standard in the Hebrew comparison.
+  - The context uses the comparison as a superlative statement about their beauty.
+  confidence: high
 translation_notes:
   risk_flags:
-  - risk: “No women anywhere” may sound broader than the narrative setting intends.
-    mitigation: The main text retains “land,” and the footnote preserves “earth” as the lexical alternative.
+  - risk: “Along with” might suggest that all the children received equal shares.
+    mitigation: The wording indicates shared participation but does not state the size of any share.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/042/015.yaml
   source_text_sha256: b21bf9a877563d63c7cd466422190dfd0931ff0a9befbae070ae244a6f6258ee
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 7f989cd67d693b7b8b02ea1e9e4483100333973f6a21de7f82f1abb8ceb302c1
-  timestamp: '2026-07-11T20:25:13Z'
-  output_hash: bc6bbe85b271b623e2f9a8dbe9a7e9ad57b633ff3c2ad370661219f8c3a9cded
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 80f88b78d92864b470fd11628affa746d03a3122dae7f2375931f377fa1f9428
+  timestamp: '2026-08-28T23:35:06Z'
+  output_hash: 6253252f6ba9c3011ca007def5092008308e8cfa5d02f5d86d464c22cd784b23
   usage:
-    prompt_tokens: 2660
-    completion_tokens: 605
-    total_tokens: 3265
-    reasoning_tokens: 253
+    prompt_tokens: 3615
+    completion_tokens: 459
+    total_tokens: 4074
+    reasoning_tokens: 53
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:07Z'
+  previous_text: No women anywhere in the land[a] were as beautiful as Job’s daughters. Their father also gave them an inheritance along with their brothers.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:22Z'
+  previous_text: Nowhere in the whole land[a] could anyone find women as beautiful as Job’s daughters. Their father gave his daughters an inheritance among their brothers.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:06Z'
+  previous_text: No women anywhere in the land[a] were as beautiful as Job’s daughters. Their father gave them an inheritance along with their brothers.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: db5c9df6431c65079e3cd8e870fd02bf21fadf2462e5d72a043f74ae4ee91276
+  review_summary: The inheritance clause is a warranted, clearer rendering of the POB’s “among their brothers” and does not require equal shares. The first sentence should say “No other women” so modern readers receive the intended superlative comparison without a logical exception problem. The land/earth footnote appropriately preserves the lexical alternative.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

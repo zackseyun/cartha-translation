@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/024/013.yaml
-  text: Eat honey[a], my son, for it is good[b], and honey from the comb is sweet to your taste.
+  text: Eat honey, my son, for it is good, and honey from the comb[a] is sweet to your taste.[b]
   footnotes:
   - marker: a
-    text: Or 'and honeycomb is sweet to your palate.' The Hebrew נֹפֶת can denote comb honey or honey drippings; 'honey from the comb' makes the sense clearer in contemporary English.
+    text: The Hebrew נֹפֶת can denote comb honey or honey drippings.
     reason: lexical_alternative
   - marker: b
-    text: Literally 'upon your palate.'
+    text: Literally “upon your palate.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,38 +34,51 @@ base_translation:
     changes_summary: 'doctrine_realignment: Prov 24:13 honey from the comb. Azure substituted ''the drippings of the honeycomb'' — drafter''s rejected alternative. Drafter chose ''honey from the comb'' with documented rationale; azure asserted preference without engaging.'
 translation:
   language: en
-  text: My son, eat honey because it is good. Honey from the comb tastes sweet to you.
+  text: My son, eat honey, because it is good. Honey from the comb tastes sweet.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew may also refer to honey dripping from the comb.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Eat honey, my son, for it is good
-  simplified_phrase: My son, eat honey because it is good
+  simplified_phrase: My son, eat honey, because it is good.
   preserved_meaning: The father directly urges his son to eat honey and gives its goodness as the reason.
   reasoning_layer_used: POB lexical decisions for אֱכָל, בְּנִי, and כִּי טוֹב
-  rationale: The reordered address and common word “because” make the instruction easier to follow.
-- pob_phrase: and honey from the comb is sweet to your taste
-  simplified_phrase: Honey from the comb tastes sweet to you
-  preserved_meaning: Comb honey is experienced as sweet by the son.
-  reasoning_layer_used: POB lexical decisions for וְנֹפֶת, מָתוֹק, and עַל חִכֶּךָ
-  rationale: A new sentence and the natural verb “tastes” preserve both the comb-honey image and the sensory meaning.
-translation_notes: {}
+  rationale: Natural clause order and “because” make the instruction easier to follow.
+- pob_phrase: honey from the comb is sweet to your taste
+  simplified_phrase: Honey from the comb tastes sweet.
+  preserved_meaning: Comb honey gives a sweet sensation when tasted.
+  reasoning_layer_used: POB lexical decisions for נֹפֶת, מָתוֹק, and עַל חִכֶּךָ
+  rationale: The active phrase “tastes sweet” expresses the sensory meaning in ordinary English.
+translation_notes:
+  risk_flags:
+  - risk: The Hebrew term may emphasize honey dripping from the comb rather than comb honey generally.
+    mitigation: The footnote preserves this lexical alternative without displacing the audited main-text choice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/024/013.yaml
   source_text_sha256: f4467a0eb4b5515aadc5c0f342eb86052d68623ee4e41c896b1892166c819a23
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: fa8ba028b2d2e8cdf061813bd7d2f41057d066d98347e60f34777c22d0805cc8
-  timestamp: '2026-07-11T21:06:17Z'
-  output_hash: 35793a9ddd966d5c9ef0e8f493d5f25e47a69e615d5097bcc0d3a64c17c144e5
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 0ad11647367a71ca67c25202dc498cdb354e8b1fa7e7effc04c6ba2cc9bb218a
+  timestamp: '2026-08-28T23:05:50Z'
+  output_hash: d08ae2f78292dc060405bd961874f5bb7de1d19e1df59a217c41f9747317d524
   usage:
-    prompt_tokens: 2706
-    completion_tokens: 562
-    total_tokens: 3268
-    reasoning_tokens: 275
+    prompt_tokens: 2866
+    completion_tokens: 544
+    total_tokens: 3410
+    reasoning_tokens: 203
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T23:05:50Z'
+  previous_text: My son, eat honey because it is good. Honey from the comb tastes sweet to you.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

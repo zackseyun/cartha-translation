@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/019/024.yaml
-  text: with an iron stylus and lead[b][a], may they be engraved in the rock forever!
+  text: with an iron stylus and lead[b], may they be engraved in the rock forever[a]!
   footnotes:
   - marker: a
-    text: Or 'may they be hewn into the rock forever.' The Hebrew verb ordinarily means 'to hew' or 'cut out'; here it refers to words being permanently inscribed.
+    text: Or “may they be hewn into the rock forever.” The Hebrew verb ordinarily means “to hew” or “cut out”; here it refers to words being permanently inscribed.
     reason: lexical_alternative
   - marker: b
-    text: Lead may refer to the metal used alongside the iron tool, possibly to fill the incised letters for visibility, though the text does not explicitly state this.
+    text: Lead may refer to metal used alongside the iron tool, possibly to fill the incised letters for visibility, though the text does not state this explicitly.
     reason: cultural_note
   ai_draft:
     model_id: gpt-5.4
@@ -38,36 +38,52 @@ translation:
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The lead may have been used to make the carved letters more visible, but the Hebrew does not say how it was used.
+    text: The lead may have been used with the iron tool, perhaps to fill the carved letters so they could be seen, but the text does not say exactly how it was used.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: with an iron stylus and lead, may they be engraved in the rock forever
-  simplified_phrase: May they be carved into the rock forever with an iron engraving tool and lead
-  preserved_meaning: The words are to be permanently cut into rock by means of iron and lead.
-  reasoning_layer_used: POB lexical decisions for בְּעֵט, יֵחָצְבוּן, and בַּצּוּר
-  rationale: The reordered sentence is natural English, while “carved” and “engraving tool” clearly convey cutting words into rock.
+- pob_phrase: with an iron stylus
+  simplified_phrase: with an iron engraving tool
+  preserved_meaning: The instrument is made of iron and is used to inscribe words in rock.
+  reasoning_layer_used: POB lexical decision for בְּעֵט and immediate rock-inscription context
+  rationale: “Engraving tool” is clearer than “stylus” and avoids suggesting an ink pen.
+- pob_phrase: may they be engraved in the rock forever
+  simplified_phrase: May they be carved into the rock forever
+  preserved_meaning: The wish is for the words to be permanently cut into rock.
+  reasoning_layer_used: POB lexical decisions for יֵחָצְבוּן, בַּצּוּר, and לָעַד
+  rationale: “Carved into” uses common wording while preserving the Hebrew image of cutting words into rock.
+- pob_phrase: with an iron stylus and lead, may they be engraved
+  simplified_phrase: May they be carved ... with an iron engraving tool and lead
+  preserved_meaning: The engraving wish and both named materials remain distinct.
+  reasoning_layer_used: POB syntax and lexical audit
+  rationale: Reordering the sentence makes the wish easier to follow without changing its content.
 translation_notes:
   risk_flags:
-  - risk: Readers may not know what role the lead played.
-    mitigation: The footnote gives the likely explanation while clearly preserving the text’s uncertainty.
+  - risk: The precise role of the lead is uncertain.
+    mitigation: The main text simply retains “lead,” and the footnote labels the proposed use as only a possibility.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/019/024.yaml
   source_text_sha256: 6b99b971c2391f3ac8d51b266225ba50c3b8b3ae2e9928bba94280997c631d71
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 8e22d8773e2f1541199be7c60793c519197320d33b501152415df8916a52f11d
-  timestamp: '2026-07-11T19:37:08Z'
-  output_hash: e1995b1da0d4d70fa96737858956fc362c90b08582849c6e729ce6199b51bb68
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 25c3d2adc68eb4ee0e6cb0d01a8c06f4091a7725343cb2a5e5839f1d17e669c1
+  timestamp: '2026-08-28T22:51:32Z'
+  output_hash: 23271b38938936a25fd0d0bad089a77c7857cdc10dfc0f80ce7ec51b6e225caa
   usage:
-    prompt_tokens: 2358
-    completion_tokens: 511
-    total_tokens: 2869
-    reasoning_tokens: 235
+    prompt_tokens: 2535
+    completion_tokens: 748
+    total_tokens: 3283
+    reasoning_tokens: 314
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:32Z'
+  previous_text: May they be carved into the rock forever with an iron engraving tool and lead![a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/040/006.yaml
-  text: Then Yahweh answered Job out of the storm and said:[a]
+  text: 'Then Yahweh answered Job out of the storm[a] and said:'
   footnotes:
   - marker: a
     text: Or "out of the whirlwind."
@@ -31,37 +31,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then Yahweh answered Job from the storm. He said:[a]
+  text: 'Then Yahweh answered Job out of the storm[a]:'
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Or “from the whirlwind.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: 'Then Yahweh answered Job out of the storm and said:'
-  simplified_phrase: 'Then Yahweh answered Job from the storm. He said:'
-  preserved_meaning: Yahweh responds to Job while speaking from the storm and introduces the speech that follows.
-  reasoning_layer_used: POB lexical decisions for וַיַּעַן, מִן סְעָרָה, and וַיֹּאמַר
-  rationale: Two short sentences make the narrative introduction easier to follow without dropping either verb.
-translation_notes: {}
+- pob_phrase: 'answered Job out of the storm and said:'
+  simplified_phrase: 'answered Job out of the storm:'
+  preserved_meaning: Yahweh replies directly to Job from the storm, and the words that follow are his reply.
+  reasoning_layer_used: Lexical decisions for וַיַּעַן and וַיֹּאמַר, together with ordinary English speech introduction.
+  rationale: The colon introduces Yahweh’s coming words clearly without the repetitive phrase “and said.”
+translation_notes:
+  risk_flags:
+  - risk: Omitting “and said” compresses a distinct Hebrew speech verb.
+    mitigation: “Answered” and the colon still clearly introduce the direct speech that follows.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/040/006.yaml
   source_text_sha256: 5424111a0615a202764d1112f50c318373a845c37c4df052aa46eadf5c0a415d
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: f5a6f3b77b23137c7a23b3113732b29b89fdaf3276e0666e5b98854326ef0b41
-  timestamp: '2026-07-11T19:58:13Z'
-  output_hash: 7ae8b96dc9ba7c1680cbd8208a9e6b94e5d82d2607313e1e93f6633eaf32de42
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4ed0b3d329aa06bcc80833d0bf52f84a89033e7134d1f99d01c6d730fa1c79fb
+  timestamp: '2026-08-28T23:35:01Z'
+  output_hash: 9f5704fc9f9f6fecd90d2daef8a1239257f554bb9efbc3a89cd6aa7e5cd61a9e
   usage:
-    prompt_tokens: 2302
-    completion_tokens: 358
-    total_tokens: 2660
-    reasoning_tokens: 147
+    prompt_tokens: 3311
+    completion_tokens: 318
+    total_tokens: 3629
+    reasoning_tokens: 84
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: out of the storm
+  rendering: from within the storm
+  claim: Yahweh’s answer comes from the storm rather than merely away from it.
+  evidence:
+  - The Hebrew preposition מִן marks the storm as the point from which Yahweh speaks.
+  - The POB renders the phrase “out of the storm.”
+  confidence: high
+  alternatives_preserved:
+  - from within the whirlwind
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:50Z'
+  previous_text: Then Yahweh answered Job from the storm. He said:[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:15Z'
+  previous_text: 'Then Yahweh answered Job from the storm[a]:'
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:01Z'
+  previous_text: 'Then Yahweh answered Job from within the storm[a]:'
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 0105cf0a8535683f9062c6bc95250cbe5671c16393ee768bcb7670d297b6078c
+  review_summary: 'The shortened speech introduction is acceptable: in English, “answered Job …:” clearly introduces the following direct speech, so retaining a separate “and said” is not necessary. However, “from within” is an unwarranted spatial specification. Retain “out of the storm,” which is clear, matches the source and POB audit trail, and preserves the storm’s role as the source of the voice without asserting where within or relative to it Yahweh is located.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

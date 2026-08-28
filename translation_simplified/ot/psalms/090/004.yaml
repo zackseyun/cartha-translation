@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/090/004.yaml
-  text: For a thousand years in your sight are like yesterday when it is past[a][b], or like a watch in the night.
+  text: For a thousand years in your sight are like yesterday when it is past, or like a watch in the night.[a]
   footnotes:
   - marker: a
-    text: A 'watch' was a division of the night for keeping guard.
+    text: A “watch” was a division of the night for keeping guard.
     reason: cultural_note
-  - marker: b
-    text: Or, 'when it is past.' The Hebrew clause can be rendered with a slightly different temporal nuance.
-    reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,52 +31,68 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For in your sight, a thousand years are like yesterday once it has passed, or like one part of the night when a guard keeps watch.
+  text: For in your sight, a thousand years are like yesterday after it has passed, or like one guard shift during the night.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: like yesterday when it is past
-  simplified_phrase: like yesterday once it has passed
-  preserved_meaning: Yesterday is pictured as a day already gone and fleeting.
-  reasoning_layer_used: applied revision and lexical decision for כִּי יַעֲבֹר
-  rationale: “Once it has passed” expresses the completed passing in more natural English.
+- pob_phrase: a thousand years in your sight are like yesterday when it is past
+  simplified_phrase: in your sight, a thousand years are like yesterday after it has passed
+  preserved_meaning: God sees a thousand years as a day that has passed.
+  reasoning_layer_used: POB lexical and theological decisions
+  rationale: The clause clearly modifies yesterday while preserving the perspective image without adding a theory of divine timelessness.
 - pob_phrase: a watch in the night
-  simplified_phrase: one part of the night when a guard keeps watch
-  preserved_meaning: The second image is a limited period of nighttime guard duty.
-  reasoning_layer_used: lexical decision and cultural footnote for אַשְׁמוּרָה
-  rationale: The wording explains the unfamiliar historical term while retaining the guard-watch image.
+  simplified_phrase: one guard shift during the night
+  preserved_meaning: The image is one limited period of nighttime guard duty.
+  reasoning_layer_used: POB lexical decision and cultural note
+  rationale: “Guard shift” directly explains the ancient division of the night.
 interpretive_expansions:
 - pob_phrase: a watch in the night
-  rendering: one part of the night when a guard keeps watch
-  claim: A watch is a division of the night used for keeping guard.
+  rendering: one guard shift during the night
+  claim: The watch is a period of nighttime guard duty.
   evidence:
-  - The POB cultural note defines a watch as a division of the night for keeping guard.
-  - The lexical rationale identifies אַשְׁמוּרָה as a night division used for keeping watch.
+  - The POB note defines a watch as a division of the night for keeping guard.
+  - The lexical rationale identifies it as a nighttime period used for keeping watch.
   confidence: high
   alternatives_preserved:
   - a watch in the night
   - a night watch
 translation_notes:
   risk_flags:
-  - risk: Expanding “watch” could shift attention from the time period to the guard's activity.
-    mitigation: “One part of the night” keeps the duration central while “keeps watch” preserves the source image.
+  - risk: “Guard shift” could suggest the guards rather than the period.
+    mitigation: “One” and “during the night” frame it as a unit of time.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/090/004.yaml
   source_text_sha256: 3e00bc06a79caf7b25057f42f56c0119f4965dd806f754b5b3b54f2e1605fb9b
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 826b4ed890d83ef224233fe49fd5177a5e31c806037be68a40182459f7ac3699
-  timestamp: '2026-07-11T21:03:20Z'
-  output_hash: b52129789a13c7e69da260dbfc7e13455cfdb78db58c354677c48e67c6107aba
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 5f0be36aa079d54659a45ea00fb1b75a8493714cdeea153d1fa1450941a5af6f
+  timestamp: '2026-08-28T23:35:52Z'
+  output_hash: d10a822259602a1b67a60e7deefa6526d99b2b9ce3bc457361e593ea08198b43
   usage:
-    prompt_tokens: 2820
-    completion_tokens: 695
-    total_tokens: 3515
-    reasoning_tokens: 284
+    prompt_tokens: 3701
+    completion_tokens: 459
+    total_tokens: 4160
+    reasoning_tokens: 88
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:19Z'
+  previous_text: For in your sight, a thousand years are like yesterday once it has passed, or like one part of the night when a guard keeps watch.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:52Z'
+  previous_text: For in your sight, a thousand years are like yesterday, already gone, or like one guard shift during the night.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 647304df5f3172695d2da9edd25d575f9377e47b2f1af587569136c153b7da59
+  review_summary: The clarification “one guard shift during the night” is well supported by the POB lexical rationale and cultural note, and it makes the ancient time-unit understandable without importing doctrine. The first comparison likewise preserves the psalm’s poetic contrast without asserting a philosophical theory of divine timelessness. A small wording revision removes the possible modifier ambiguity in “yesterday, already gone.”
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

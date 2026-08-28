@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/058/004.yaml
-  text: Their venom is like the venom of a serpent[a], like a deaf cobra that stops up its ear,
-  footnotes:
-  - marker: a
-    text: Or 'asp' for 'cobra'; the Hebrew פֶתֶן refers to a venomous snake, traditionally rendered 'asp.'
-    reason: lexical_alternative
+  text: Their venom is like a serpent’s venom, like that of a deaf venomous snake that stops up its ear,
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,58 +27,45 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Their venom is like a serpent’s venom, like a deaf cobra[a] that blocks its ear,
+  text: Their venom is like a snake’s venom, like the venom of a deaf venomous snake that blocks its ear.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “asp”; the Hebrew word refers to a venomous snake.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: like the venom of a serpent
-  simplified_phrase: like a serpent’s venom
-  preserved_meaning: Their venom is compared to a serpent’s venom.
-  reasoning_layer_used: POB lexical decisions for חֲמַת and נָחָשׁ
-  rationale: The possessive form is natural English while keeping the venom image explicit.
-- pob_phrase: stops up its ear
-  simplified_phrase: blocks its ear
-  preserved_meaning: The cobra shuts its ear so that it does not hear.
-  reasoning_layer_used: POB lexical decision for יַאְטֵם
-  rationale: “Blocks” is common English and preserves the physical image.
+- pob_phrase: Their venom is like a serpent’s venom
+  simplified_phrase: Their venom is like a snake’s venom
+  preserved_meaning: Their venom is compared to the venom of a snake.
+  reasoning_layer_used: POB lexical decision for נָחָשׁ and the source simile
+  rationale: “Snake” is more familiar than “serpent” and preserves the venom image.
+- pob_phrase: like that of a deaf venomous snake that stops up its ear
+  simplified_phrase: like the venom of a deaf venomous snake that blocks its ear
+  preserved_meaning: Their venom remains the focus of the second comparison, and the snake physically shuts its ear.
+  reasoning_layer_used: POB lexical decisions for פֶתֶן, חֵרֵשׁ, יַאְטֵם, and the audited possessive ellipsis
+  rationale: Repeating “the venom” clarifies the comparison, while “blocks” preserves the physical image.
 translation_notes:
   risk_flags:
-  - risk: The comparison between venom and a deaf cobra is unusual in English.
-    mitigation: The wording keeps the linked source images without changing the subject to the people.
+  - risk: Using “snake” slightly lowers the poetic register of “serpent.”
+    mitigation: The repeated venom image and the distinction between a general snake and a venomous snake remain clear.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/058/004.yaml
   source_text_sha256: 18416d1c8f4e0cf5516cd3e31279cdd806e1f69736218748d36d190921ab3781
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 9edaf969b0754ad9756cd69e1ba711c8760c321f5b38b6a5a557e322ad01e74e
-  timestamp: '2026-07-12T09:59:59Z'
-  output_hash: 8dff9338f79eaa845d8dba890d323a5f1fa85711f539c280da80e0eb904dd25e
+  prompt_sha256: e63d79942bef5d3ab034a8e276220dadfb5b1b3d91f1725293ade059bf9be827
+  timestamp: '2026-08-28T23:35:29Z'
+  output_hash: 532da191f3b3ce8f213c120605dd34892557ed9af248f2f6eeb257cfe891f461
   usage:
-    prompt_tokens: 3393
-    completion_tokens: 285
-    total_tokens: 3678
-    reasoning_tokens: 0
+    prompt_tokens: 3382
+    completion_tokens: 405
+    total_tokens: 3787
+    reasoning_tokens: 73
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: like a deaf cobra
-  rendering: They are like a deaf cobra
-  claim: The second comparison describes the same people whose venom is mentioned first.
-  evidence:
-  - The possessive “their” establishes the people being compared.
-  - The parallel similes describe one subject through connected snake imagery.
-  confidence: high
-  alternatives_preserved:
-  - Their venom is like that of a deaf cobra.
+interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:59Z'
@@ -92,6 +75,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 0f7d1f64321950297c1fd8388049e7538573b29031f1601b9ed8d3cad49ac07d
   review_summary: 'The draft improves accessibility in “blocks its ear” and the modernized footnote is acceptable. However, supplying “They are” is not merely a needed clarification: it shifts the grammatical subject and separates connected comparisons. Keep the explicit subject, “their venom,” across both images. Repeating “venom” is slightly less concise but prevents the possessive ellipsis from becoming unclear and preserves the source structure.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:20:03Z'
+  previous_text: Their venom is like a serpent’s venom, like a deaf cobra[a] that blocks its ear,
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:29Z'
+  previous_text: Their venom is like a snake’s venom. They are like a deaf venomous snake that blocks its ear.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 02c40712fb2330a230be31bea33afe0c9d6ead01d9ab234661935559156eeeda
+  review_summary: “Snake” is a warranted and clearer modernization of “serpent.” However, making “They” the subject of the second comparison shifts the verse’s focus from their venom to the people themselves. State the repeated but elliptical noun explicitly so modern readers can follow the image without changing what is compared.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

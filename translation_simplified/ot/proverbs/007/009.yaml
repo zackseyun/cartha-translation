@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/007/009.yaml
-  text: at twilight[a], in the evening of the day, in the black of night and darkness.
+  text: at twilight, at the close of day, in the black of night[a] and darkness.
   footnotes:
   - marker: a
-    text: Or 'in deep night'; literally, 'in the pupil of night,' a Hebrew idiom for the darkest part of the night.
+    text: Or “in deep night”; literally, “in the pupil of night,” a Hebrew idiom for the darkest part of the night.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,55 +31,48 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: at twilight, in the evening, in the blackness of night and darkness.
+  text: at twilight, as the day gave way to black night and darkness.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Literally, “in the pupil of night,” a Hebrew expression for the darkest part of the night.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: in the evening of the day
-  simplified_phrase: in the evening
-  preserved_meaning: The phrase still marks the day's evening within the accumulating time descriptions.
-  reasoning_layer_used: lexical decision for עֶרֶב יוֹם
-  rationale: Natural English can omit the redundant “of the day” without losing the time reference.
-- pob_phrase: in the black of night
-  simplified_phrase: in the blackness of night
-  preserved_meaning: The wording keeps the image of night at its darkest.
-  reasoning_layer_used: lexical decision for אִישׁוֹן לַיְלָה
-  rationale: “Blackness of night” conveys the Hebrew idiom more naturally than “black of night.”
+- pob_phrase: at twilight, at the close of day
+  simplified_phrase: at twilight, as the day gave way
+  preserved_meaning: The day is ending and twilight is moving toward night.
+  reasoning_layer_used: POB lexical decisions and source audit
+  rationale: The verbal phrasing makes the staged transition into night easier to follow.
+- pob_phrase: in the black of night and darkness
+  simplified_phrase: to black night and darkness
+  preserved_meaning: The scene progresses into the darkest part of the night.
+  reasoning_layer_used: POB lexical decisions for אִישׁוֹן לַיְלָה and וַאֲפֵלָה
+  rationale: This keeps both the image of black night and the cumulative mention of darkness.
 translation_notes:
   risk_flags:
-  - risk: The stacked phrases may suggest either successive stages or cumulative descriptions of the time.
-    mitigation: The text retains prepositional phrases and adds no verbs of change, preserving both readings.
+  - risk: “Gave way” presents the Hebrew time phrases as a continuous progression.
+    mitigation: The POB audit explicitly identifies a staged descent from twilight into darkness.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/007/009.yaml
   source_text_sha256: 2de102e2976c25407c01d455e5397a520c5dd02e626d5a25bd6e3492fe37b40d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 9874643a4d4e8abe83d0c0b4661b2c88b280ff3516818c7ce833ff50d2457ae6
-  timestamp: '2026-07-12T09:51:47Z'
-  output_hash: 826406ec024da112f037931c54393b963874e201ecafff13cb0274992f3d608e
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: df70dc543568894b7ab31e8d85ba5cab10829172833891d1b63c034aab8d1e22
+  timestamp: '2026-08-28T23:01:25Z'
+  output_hash: e927af0f2abd9b03921f9c65f9ccfa483494a802e184348cdb7a08278b146f84
   usage:
-    prompt_tokens: 3274
-    completion_tokens: 270
-    total_tokens: 3544
-    reasoning_tokens: 0
+    prompt_tokens: 2587
+    completion_tokens: 996
+    total_tokens: 3583
+    reasoning_tokens: 676
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: at twilight, in the evening of the day, in the black of night and darkness
-  rendering: at twilight, as the day faded into evening and the night became black and dark
-  claim: The successive time phrases present darkness deepening from twilight into night.
-  evidence:
-  - The repeated temporal preposition marks a stepwise progression.
-  - The sequence moves from twilight to evening to the darkest part of night.
-  confidence: high
-  alternatives_preserved:
-  - The phrases may also be read as cumulative descriptions of the same late period.
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:51:47Z'
   previous_text: at twilight, as the day faded into evening and the night became black and dark.
@@ -91,3 +84,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:01:25Z'
+  previous_text: at twilight, in the evening, in the blackness of night and darkness.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

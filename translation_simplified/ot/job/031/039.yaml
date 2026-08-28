@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/031/039.yaml
-  text: if I have eaten its produce without payment[a], or caused its owners to lose heart—
+  text: if I have eaten its produce without payment, or caused its owners to breathe their last[a]—
   footnotes:
   - marker: a
-    text: Or, more literally, 'caused the life of its owners to expire' or 'made its owners gasp.' The Hebrew verb is rare and the clause may express either extreme oppression or causing death.
-    reason: lexical_alternative
+    text: The Hebrew is difficult. It may mean “caused its owners to breathe out their life,” that is, to die; alternatively, “made its owners gasp.”
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,54 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: if I have eaten what the land produced without paying for it,[a] or made its owners lose heart—
+  text: if I have eaten what the land produced without paying for it, or caused the land’s owners to die[a]—
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The rare Hebrew verb may mean “made its owners gasp” or “caused them to die.” It may refer either to severe oppression or to death.
-    reason: lexical_alternative
+    text: The Hebrew is difficult and may instead mean “made the land’s owners gasp.”
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: eaten its produce
-  simplified_phrase: eaten what the land produced
-  preserved_meaning: Job speaks of consuming the yield of the land.
-  reasoning_layer_used: Lexical decision for כֹּחָהּ and the surrounding land context.
-  rationale: This identifies the land clearly while preserving the agricultural image.
+- pob_phrase: its produce
+  simplified_phrase: what the land produced
+  preserved_meaning: The phrase still refers to the land’s agricultural yield.
+  reasoning_layer_used: POB lexical decision for כֹּחָהּ and the surrounding field context
+  rationale: The concrete clause is easier to understand than the abstract noun.
 - pob_phrase: without payment
   simplified_phrase: without paying for it
-  preserved_meaning: Job denies taking the land’s yield without giving due payment.
-  reasoning_layer_used: Lexical decision for בְלִי כָסֶף.
-  rationale: The verbal wording is more natural in common English.
-- pob_phrase: caused its owners to lose heart
-  simplified_phrase: made its owners lose heart
-  preserved_meaning: Job denies severely distressing or exhausting the land’s owners.
-  reasoning_layer_used: Lexical decisions for נֶפֶשׁ and הִפָּחְתִּי.
-  rationale: The shorter construction retains POB’s cautious interpretation.
+  preserved_meaning: Job denies consuming the yield without giving the owners what was owed.
+  reasoning_layer_used: POB lexical decision for בְלִי כָסֶף
+  rationale: The verbal wording expresses the economic action in ordinary English.
+- pob_phrase: its owners
+  simplified_phrase: the land’s owners
+  preserved_meaning: The owners are those who possess the land.
+  reasoning_layer_used: POB lexical decision for בְּעָלֶיהָ
+  rationale: Naming the land makes the pronoun’s reference immediately clear.
+interpretive_expansions:
+- pob_phrase: breathe their last
+  rendering: die
+  claim: The breath image refers to the owners dying.
+  evidence:
+  - The audited revision identifies death as the likely life-and-breath sense.
+  - The POB footnote explains breathing out one’s life as dying.
+  confidence: moderate
+  alternatives_preserved:
+  - made the land’s owners gasp
 translation_notes:
   risk_flags:
-  - risk: The rare final Hebrew verb may describe severe oppression or causing death.
-    mitigation: The main text remains cautious, while the footnote preserves both possibilities.
+  - risk: The rare Hebrew verb may describe gasping rather than death.
+    mitigation: The main text follows the audited POB choice, while the footnote preserves the live alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/031/039.yaml
   source_text_sha256: 177253ac7cbab60c742daf30cc6c2d3914ee3784014240a16aa0430646ce8eec
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 529b4fd4610ee47eaf90ac9ca9304cf0aec28dd5aa3295ff5eeea04960a2e264
-  timestamp: '2026-07-12T09:46:58Z'
-  output_hash: 8eff98b89052b957697ed89d68da1084fbb5d6b8e44df0dba7ffa4b5db571510
+  prompt_sha256: 4ba09e18d5eaf5b06729745e5ca7ac5bdff456ad90a2650096fd7b3f99c1faf4
+  timestamp: '2026-08-28T23:34:51Z'
+  output_hash: 11a9201ad2c17bca9751d37be3a0c11f77b531aa30db08cececa618f173075db
   usage:
-    prompt_tokens: 3283
-    completion_tokens: 374
-    total_tokens: 3657
-    reasoning_tokens: 0
+    prompt_tokens: 3627
+    completion_tokens: 468
+    total_tokens: 4095
+    reasoning_tokens: 28
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:46:58Z'
@@ -90,4 +99,23 @@ spob_revision_history:
   review_summary: The main text is a warranted and genuinely clearer simplification. "What the land produced" appropriately makes explicit the land antecedent established by the immediate context, and "without paying for it" naturally conveys the economic sense without changing it. Retain the POB’s cautious main rendering of the difficult final clause. Revise only the footnote so that it preserves, rather than ranks or blends, the audit trail’s distinct possibilities of severe oppression and death.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:47Z'
+  previous_text: if I have eaten what the land produced without paying for it,[a] or made its owners lose heart—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:53:49Z'
+  previous_text: if I took the land’s harvest without paying for it, or made its owners breathe their last[a]—
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:51Z'
+  previous_text: if I have eaten what the land produced without paying for it, or caused the land’s owners to breathe their last—to die[a]—
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 7e6e9e410fce6340d4e506f1e10fadc54c119461d7bc072890729a1bbbcf321f
+  review_summary: The draft’s clarifications of the land’s produce, payment, and the referent of “owners” are well grounded in the POB lexical audit and make the line more immediately understandable. Explicitly rendering the likely breath-and-life sense as “die” is warranted by the POB audit trail, while the footnote responsibly retains the live alternative, “made the land’s owners gasp.” Revise only to remove the redundant and awkward “breathe their last—to die”; use the direct, publication-ready wording above.
+  schema_repairs:
   - restored retained_terms as an array from the prior draft

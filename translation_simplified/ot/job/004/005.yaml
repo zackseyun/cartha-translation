@@ -34,61 +34,79 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But[a] now trouble[b] comes to you, and you lose strength. It touches you, and you are alarmed.
+  text: But[a] now suffering[b] comes to you, and you grow weary. It touches you, and you become alarmed.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “For now.” The Hebrew word can express either connection, but “But” best fits the contrast here.
+    text: Or “For now.” The Hebrew conjunction can express either explanation or contrast; “But” best fits the contrast here.
     reason: lexical_alternative
   - marker: b
-    text: The Hebrew leaves “trouble” unstated but likely implies calamity or suffering.
-    reason: source_note
+    text: Hebrew says “it”; the feminine verb likely points implicitly to suffering or trouble.
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: you are weary
-  simplified_phrase: you lose strength
-  preserved_meaning: Job’s suffering drains his strength and endurance.
-  reasoning_layer_used: POB lexical decision for לאה
-  rationale: The clearer phrase preserves weariness without implying moral impatience.
-- pob_phrase: you are dismayed
-  simplified_phrase: you are alarmed
-  preserved_meaning: Job reacts with emotional disturbance rather than sheer terror.
-  reasoning_layer_used: POB lexical decision for בהל
-  rationale: “Alarmed” is common English and retains the measured emotional force.
+  simplified_phrase: you grow weary
+  preserved_meaning: Job becomes weary as suffering reaches him, without implying total collapse.
+  reasoning_layer_used: POB lexical decision for וַתֵּלֶא and grounding review
+  rationale: “Grow weary” clearly expresses increasing weariness without overstating it.
+- pob_phrase: and you are dismayed
+  simplified_phrase: and you become alarmed
+  preserved_meaning: Job reacts with agitation and dismay without implying sheer terror.
+  reasoning_layer_used: POB lexical decision for וַתִּבָּהֵל
+  rationale: “Become alarmed” uses familiar English while keeping the restrained emotional force.
+- pob_phrase: it comes to you ... it touches you
+  simplified_phrase: suffering comes to you ... It touches you
+  preserved_meaning: Trouble first approaches Job and then makes personal contact with him.
+  reasoning_layer_used: POB lexical decisions for תָּבֹוא and תִּגַּע
+  rationale: Naming the likely subject clarifies the sentence while preserving the touch image and progression.
 interpretive_expansions:
 - pob_phrase: it comes to you
-  rendering: trouble comes to you
-  claim: The unstated subject is trouble or calamity reaching Job personally.
+  rendering: suffering comes to you
+  claim: The implicit subject is the suffering or trouble that has reached Job.
   evidence:
-  - The feminine singular verbs imply an unstated feminine subject.
-  - The immediate context contrasts Job’s former counsel with his present suffering.
-  - The POB lexical rationale identifies calamity, trouble, or testing as likely.
-  confidence: high
+  - The POB lexical rationale identifies calamity, trouble, or testing as the likely implicit subject.
+  - The immediate context contrasts Job’s former counsel with his response to present suffering.
+  confidence: moderate
   alternatives_preserved:
-  - calamity
-  - suffering
-  - testing
+  - The footnote preserves the Hebrew’s less explicit “it.”
 translation_notes:
   risk_flags:
-  - risk: Naming “trouble” could seem more definite than the Hebrew’s implicit subject.
-    mitigation: A footnote states that the noun is supplied and preserves the likely alternatives.
+  - risk: Naming “suffering” is more explicit than the Hebrew’s implicit subject.
+    mitigation: The footnote preserves “it” and identifies suffering or trouble only as likely.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/004/005.yaml
   source_text_sha256: 937123f14843472b81cd53cfb4217ed0cbceaa687028e3d30bff43487b7e3fb8
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: ae6b57f0c5fec0bce2105f3fb78ed304292e09820df1c80e1004be9573a6a564
-  timestamp: '2026-07-11T18:55:04Z'
-  output_hash: f970855faeea97a547554c7e4ba529aa6822dee255dbb56239bbf20f9053f967
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6c60768db7c797aee7cd32b14dd221e342ed84a327316d0e89988ac5c0a75904
+  timestamp: '2026-08-28T23:32:46Z'
+  output_hash: cbb86f91323c45b75d99efd30afd95828ff0ee759dbae90aebf628405108604f
   usage:
-    prompt_tokens: 2495
-    completion_tokens: 846
-    total_tokens: 3341
-    reasoning_tokens: 431
+    prompt_tokens: 3505
+    completion_tokens: 651
+    total_tokens: 4156
+    reasoning_tokens: 111
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:49:05Z'
+  previous_text: But[a] now trouble[b] comes to you, and you lose strength. It touches you, and you are alarmed.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:46Z'
+  previous_text: But[a] now suffering[b] comes to you, and your strength gives out. It touches you, and you become alarmed.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c26fd1134a51128da1d2cbe7457eb52495cdd1691d488f952760f6f9ddfb9052
+  review_summary: 'The explicit “suffering” is a warranted contextual clarification: the feminine implicit subject naturally refers to the trouble/calamity now reaching Job, and the footnote candidly preserves the Hebrew wording. “You become alarmed” is also a clear, appropriately restrained rendering of dismay. Revise only “your strength gives out,” which overstates the Hebrew’s weariness/exhaustion nuance; “you grow weary” is clear, preserves the unfolding contrast, and avoids implying total collapse.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

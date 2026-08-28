@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/040/007.yaml
-  text: Then I said[a], “Behold, I have come[b]; in the scroll of the book it is written about me.”
+  text: Then I said, “Behold, I have come[a]; in the scroll of the book it is written about me[b].”
   footnotes:
   - marker: a
-    text: Or 'written for me' or 'prescribed for me.' The Hebrew phrase can mean what is written concerning the speaker or what is laid down for him.
-    reason: alternative_reading
-  - marker: b
     text: Quoted in Hebrews 10:7 in connection with the Messiah.
     reason: cross_reference
+  - marker: b
+    text: Or “written for me” or “prescribed for me.” The Hebrew can refer either to what is written concerning the speaker or to what is laid down for him.
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,49 +34,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Then I said, “Here I am—I have come. It is written about me in the scroll.”[a][b]
+  text: Then I said, “Look, I have come.[a] In the scroll of the book, it is written about me.[b]”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also mean “written for me” or “prescribed for me.”
-    reason: alternative_reading
-  - marker: b
-    text: This verse is quoted in Hebrews 10:7 in connection with the Messiah.
+    text: Hebrews 10:7 quotes this verse in connection with the Messiah.
     reason: cross_reference
+  - marker: b
+    text: Or “written for me” or “prescribed for me.” The Hebrew can refer either to what is written concerning the speaker or to what is laid down for him.
+    reason: alternative_reading
 simplification_decisions:
 - pob_phrase: Behold, I have come
-  simplified_phrase: Here I am—I have come
-  preserved_meaning: The speaker emphatically presents himself as having arrived.
-  reasoning_layer_used: Lexical decisions for הִנֵּה and בָאתִי
-  rationale: “Here I am” expresses the emphatic self-presentation in natural modern English.
+  simplified_phrase: Look, I have come
+  preserved_meaning: The speaker emphatically calls attention to his coming.
+  reasoning_layer_used: POB lexical decisions for הִנֵּה and בָאתִי
+  rationale: “Look” expresses the attention-directing force of “behold” in familiar English.
 - pob_phrase: in the scroll of the book it is written about me
-  simplified_phrase: It is written about me in the scroll
-  preserved_meaning: The scroll explicitly contains writing concerning the speaker.
-  reasoning_layer_used: Lexical and theological decisions for בִּמְגִלַּת סֵפֶר, כָּתוּב, and עָלַי
-  rationale: The rewrite keeps the scroll image, the passive “is written,” and the chosen sense “about me.”
+  simplified_phrase: In the scroll of the book, it is written about me
+  preserved_meaning: The written document concerns the speaker while retaining the Hebrew scroll image.
+  reasoning_layer_used: POB lexical decisions for בִּמְגִלַּת סֵפֶר and כָּתוּב עָלַי
+  rationale: Moving the phrase to a new sentence clarifies the structure without inventing a container relationship.
 translation_notes:
   risk_flags:
-  - risk: “About me” may also mean “for me” or “prescribed for me.”
-    mitigation: Footnote a preserves the documented Hebrew ambiguity.
+  - risk: “Look” is less elevated than “behold” and may sound visual.
+    mitigation: Its context still directs attention to the speaker’s coming rather than asking readers to see him physically.
+  - risk: “The scroll of the book” remains unusual English.
+    mitigation: Retaining it preserves both the scroll image and the document qualifier required by the source audit.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/040/007.yaml
   source_text_sha256: 7b0c5f889acf294b8d7d5a3e3ed8330fcb3437ab278906f8ef0df0cd6cd072cd
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: f600f965a9093c54cd318b1d8dc356dd977376b49ecd07255ad65899250f370f
-  timestamp: '2026-07-12T09:59:30Z'
-  output_hash: 5b43998f70008f493c830e9a4d38ab661e8ed95969794609143cbf6825a229de
+  prompt_sha256: e662a537a7d8ef9a238d5d5fe50c75d4ed312fdf0a15965e7b94b78a4a1bfe5a
+  timestamp: '2026-08-28T23:35:21Z'
+  output_hash: c0c28f769ec4553a6be5af41f49e9bd594586c324fa8dab415de77d6451f7e4f
   usage:
-    prompt_tokens: 3358
-    completion_tokens: 362
-    total_tokens: 3720
-    reasoning_tokens: 0
+    prompt_tokens: 3954
+    completion_tokens: 550
+    total_tokens: 4504
+    reasoning_tokens: 119
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -89,6 +91,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: ca5a497034d4c1145990887dd88be7ee4cb85220d2833d0e9f79f6966f46a932
   review_summary: 'The opening simplification is warranted: “Here I am” naturally communicates the emphatic self-presentation of הִנֵּה without importing a theological interpretation. Footnote a appropriately preserves the live ambiguity of עָלַי, and footnote b accurately labels Hebrews’ messianic use as a cross-reference rather than making it the psalm’s main-text meaning. Revise the second sentence to retain the source’s explicit passive claim that something “is written,” while still using clear modern English.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:53:51Z'
+  previous_text: Then I said, “Here I am—I have come. It is written about me in the scroll.”[a][b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:21Z'
+  previous_text: Then I said, “See, I have come.[a] It is written about me in the scroll containing the book.[b]”
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: fdb1f2470b27e85d6636ab489de05d7d5d993df6ccb1a0a56aead122d4231330
+  review_summary: The replacement of “Behold” with “Look” is a warranted readability improvement that retains the attention-directing force. However, “scroll containing the book” introduces an unsupported physical relationship and is less clear in ordinary English. Retain the POB’s construct-phrase rendering rather than explain it inaccurately. Also retain “prescribed for me,” not the stronger “commanded for me,” in the alternative-reading footnote.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

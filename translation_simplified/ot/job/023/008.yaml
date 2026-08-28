@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/023/008.yaml
-  text: Look[a], I go east, but he is not there; and west, but I do not perceive him.
+  text: Look, I go east, but he is not there; I go west[a], but I do not perceive him.
   footnotes:
   - marker: a
-    text: Or 'forward ... backward.' The Hebrew uses directional terms that can be understood either spatially or as east/west.
+    text: Or “forward ... backward.” The Hebrew directional terms can be understood spatially or as east and west.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,58 +31,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Look, I go east,[a] but he is not there. I go west, but I cannot find him.
+  text: I go east, but God is not there. I go west, but I cannot detect him.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “forward ... backward.” The Hebrew directional words can have either meaning.
+    text: Or “I go forward ... I go backward.” The Hebrew directional terms can be understood spatially or as east and west.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: and west
-  simplified_phrase: I go west
-  preserved_meaning: Job moves in the opposite direction as he searches for God.
-  reasoning_layer_used: POB lexical decision for אָחוֹר and poetic parallelism
-  rationale: Repeating the verb makes the second sentence complete and immediately clear.
+- pob_phrase: Look, I go east, but he is not there
+  simplified_phrase: I go east, but God is not there
+  preserved_meaning: Job goes in one direction but does not encounter God there.
+  reasoning_layer_used: Lexical decisions, theological decision, and immediate context
+  rationale: Naming God clarifies the pronoun’s contextual referent while retaining Job’s movement east.
 - pob_phrase: I do not perceive him
-  simplified_phrase: I cannot find him
-  preserved_meaning: Job is unable to detect or apprehend God despite searching for him.
-  reasoning_layer_used: POB lexical rationale for לֹא אָבִין לוֹ and immediate context
-  rationale: “Find” expresses the failed search in more familiar English.
+  simplified_phrase: I cannot detect him
+  preserved_meaning: Job is unable to discern God’s presence.
+  reasoning_layer_used: Lexical rationale for לֹא אָבִין לוֹ
+  rationale: “Detect” expresses failed perception in more familiar language without changing it to finding.
 interpretive_expansions:
-- pob_phrase: I do not perceive him
-  rendering: I cannot find him
-  claim: The failure to perceive God is expressed as failure to locate him during Job’s search.
+- pob_phrase: he is not there
+  rendering: God is not there
+  claim: God is the referent of the third-person pronoun.
   evidence:
-  - The immediate context describes Job moving in opposite directions to seek God.
-  - The POB rationale identifies this as a search for God’s presence.
+  - The surrounding context concerns Job’s search for God.
+  - The POB theological decision identifies God as the pronouns’ referent.
   confidence: high
   alternatives_preserved:
-  - I do not perceive him
-  - I do not discern him
+  - The second clause retains the pronoun “him.”
 translation_notes:
   risk_flags:
-  - risk: East and west may also mean forward and backward.
-    mitigation: The footnote preserves the documented directional ambiguity.
-  - risk: “Find” is more concrete than the broader verb “perceive.”
-    mitigation: The surrounding search imagery supports it, while the audit records the broader alternative.
+  - risk: “Detect” may suggest sensory perception more narrowly than the Hebrew verb.
+    mitigation: In context it naturally conveys Job’s inability to discern God’s presence.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/023/008.yaml
   source_text_sha256: 67fe8307a7d1131d35f341988abc3b7dbe59897ecef68ab23758e5e6b58a8ab2
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 285b76c43eaef99ad5b79614671db4a7edc0eda4644b724fbcc48405177a1f8e
-  timestamp: '2026-07-11T19:42:53Z'
-  output_hash: 59f260e8ed380005d714cb428610954131c6be6b671b2798dbca330a87d37b12
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 691d090109b7636119156b44591c66e874593fba5de12f4eab02ec9649269bc2
+  timestamp: '2026-08-28T23:34:45Z'
+  output_hash: 60c8d0521a1ccdbf22dc2a57f89dc606ea541a21f609a544365a7ca4c4423082
   usage:
-    prompt_tokens: 2438
-    completion_tokens: 853
-    total_tokens: 3291
-    reasoning_tokens: 436
+    prompt_tokens: 3809
+    completion_tokens: 663
+    total_tokens: 4472
+    reasoning_tokens: 262
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:47Z'
+  previous_text: Look, I go east,[a] but he is not there. I go west, but I cannot find him.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:45Z'
+  previous_text: I look for God in the east, but he is not there. I go west, but I cannot find him.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5c8e405cf8f2157935dba438418063f8084b4f6bada0d918977147c492c03eb1
+  review_summary: Revision is needed. Making God explicit is warranted by the immediate context and POB audit trail, and the proposed wording is clearer in intent. But the draft unnecessarily replaces the first directional movement with an explicit search construction, makes the two clauses syntactically uneven, and changes 'perceive' to the more specific result-language 'find.' Retain Job's balanced movement through opposite directions, use an accessible perception verb, and repair the lexical-alternative footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

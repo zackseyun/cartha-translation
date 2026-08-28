@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/006/024.yaml
-  text: Teach me[a], and I will be silent; make me understand how I have gone astray.
+  text: Teach me, and I will be silent; make me understand how I have gone astray.[a]
   footnotes:
   - marker: a
-    text: Or, 'make me understand in what I have erred.'
+    text: Or “make me understand where I have erred.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,49 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Teach me, and I will stop speaking. Show me how I have gone astray.[a]
+  text: Teach me, and I will be silent; make me understand how I have gone astray.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “Help me understand what error I have made.”
+    text: Or “show me where I have gone wrong.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: I will be silent
-  simplified_phrase: I will stop speaking
-  preserved_meaning: Job promises not to answer while receiving instruction.
-  reasoning_layer_used: POB lexical decision for אַחֲרִישׁ
-  rationale: The concrete wording makes Job’s promised silence immediately clear.
-- pob_phrase: make me understand how I have gone astray
-  simplified_phrase: Show me how I have gone astray
-  preserved_meaning: Job asks his friends to identify how he has departed from the right way.
-  reasoning_layer_used: POB lexical decisions for וּמַה, שָׁגִיתִי, and הָבִינוּ לִי
-  rationale: “Show me how” clearly asks them to specify his error while preserving the path image.
-translation_notes:
-  risk_flags:
-  - risk: “Gone astray” may be understood as moral failure rather than error more broadly.
-    mitigation: The footnote preserves the broader sense of making an error.
+- pob_phrase: make me understand where I have erred
+  simplified_phrase: show me where I have gone wrong
+  preserved_meaning: The alternative asks Job’s friends to identify his error clearly.
+  reasoning_layer_used: POB lexical alternative and footnote rationale
+  rationale: “Gone wrong” is more familiar than “erred,” while “show me” keeps the request direct.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/006/024.yaml
   source_text_sha256: 1605a699d99e5e54128bb2d5a645b9266f6ba7cad8dcbdf2a1dd371092c85c5a
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 176811e4a7ff838ebe47d02a8982b8898377598e029417ed0977bc08369716c7
-  timestamp: '2026-07-12T09:36:08Z'
-  output_hash: 80329a2743808f53f1a401164f5a1deb4bae3c786c69d8b254ff104d7fb67dfc
+  prompt_sha256: 9602c5aa85ff2029adb1b19d4c306e7df362fc1bcf32cf2d41b700150c2aa577
+  timestamp: '2026-08-28T23:32:48Z'
+  output_hash: 4f959dee4ea96207c59d6957a1002432864320d3dcbef230b30c1b48e98d28f8
   usage:
-    prompt_tokens: 3010
-    completion_tokens: 310
-    total_tokens: 3320
-    reasoning_tokens: 0
+    prompt_tokens: 3394
+    completion_tokens: 481
+    total_tokens: 3875
+    reasoning_tokens: 293
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: I will be silent
+  rendering: I will listen in silence
+  claim: Job’s promised silence means he is willing to hear instruction without answering back.
+  evidence:
+  - The promise directly follows “Teach me.”
+  - The POB rationale identifies the verse as Job’s appeal for correction from his friends.
+  confidence: high
+  alternatives_preserved:
+  - I will be silent
+  - I will keep quiet
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:36:08Z'
@@ -83,6 +85,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 86a315b2198b714aa0715303d2fa703327e9ba37e6ac76520dd663cb7ec6edb9
   review_summary: The draft appropriately makes Job’s promised silence concrete with “I will stop speaking,” and it does not introduce doctrinal content. Revise “where” to “how,” however, because the source and POB audit trail concern the nature of Job’s supposed error, not a spatial location. The resulting wording remains simple while preserving the question’s intended sense.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:49:03Z'
+  previous_text: Teach me, and I will stop speaking. Show me how I have gone astray.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:48Z'
+  previous_text: Teach me, and I will listen in silence. Help me understand how I have gone astray.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 04254f8c38d34857746636acd0dc67b19c0712e5b6e916264cf1f59d6a65e387
+  review_summary: The draft is readable and does not introduce a doctrinal claim. However, its added “listen” makes an inferred posture of receptivity part of Job’s spoken promise, whereas the text expressly says only that he will be silent. Retain the clear, faithful POB wording; the alternate footnote remains a suitable lexical/contextual alternative.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

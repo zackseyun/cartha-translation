@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/039/023.yaml
-  text: Over him the quiver rattles[b][a], the flashing spear and javelin.
+  text: Over him the quiver rattles[a], the flashing spear and javelin.[b]
   footnotes:
   - marker: a
-    text: Or 'against him the quiver rings out.' The Hebrew preposition and verb can be rendered with slightly different spatial and auditory nuance.
+    text: Or “against him the quiver rings out.” The Hebrew preposition and verb allow somewhat different spatial and auditory nuances.
     reason: lexical_alternative
   - marker: b
-    text: Literally 'the flame/blade of the spear and javelin,' a poetic expression for their flashing brightness.
+    text: Literally “the flame/blade of the spear and javelin,” a poetic expression for their flashing brightness.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,48 +34,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Over him,[a] the case of arrows rattles, and the spear and javelin flash.[b]
+  text: Over the horse, the case of arrows rattles. The spear and javelin flash.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “Against him, the case of arrows rings out.” The Hebrew allows both spatial and auditory nuances.
-    reason: lexical_alternative
-  - marker: b
-    text: The Hebrew poetically describes the spear and javelin as a “flame” or flashing blade.
+    text: The Hebrew can also suggest that the weapons sound against the horse; its image for their brightness is literally “the flame” or “the blade.”
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: the quiver
   simplified_phrase: the case of arrows
-  preserved_meaning: The container holding the arrows remains distinct from the other weapons.
+  preserved_meaning: This is the container that holds the warrior’s arrows.
   reasoning_layer_used: POB lexical decision for אַשְׁפָּה
-  rationale: The common description is clearer than the specialized word “quiver.”
+  rationale: The descriptive phrase explains an unfamiliar weapon term immediately.
 - pob_phrase: the flashing spear and javelin
-  simplified_phrase: the spear and javelin flash
-  preserved_meaning: Both weapons gleam brightly while remaining distinct kinds of weapons.
-  reasoning_layer_used: POB lexical decisions for לַהַב, חֲנִית, and כִידוֹן
-  rationale: Turning the adjective into a verb makes the poetic image immediate in natural English.
+  simplified_phrase: The spear and javelin flash
+  preserved_meaning: The weapons gleam brightly like flame or a shining blade.
+  reasoning_layer_used: POB lexical decision for לַהַב and applied revision
+  rationale: The new sentence clearly expresses brightness without making the weapons subjects of “rattles.”
+interpretive_expansions:
+- pob_phrase: Over him
+  rendering: Over the horse
+  claim: The pronoun refers to the horse described in the surrounding passage.
+  evidence:
+  - Job 39:19–25 describes the horse.
+  - The POB rationale explicitly identifies the horse as the referent.
+  confidence: high
+  alternatives_preserved:
+  - The footnote preserves “against the horse” as a spatial alternative.
 translation_notes:
   risk_flags:
-  - risk: “Over him” may suggest only vertical position, while the Hebrew can also mean “against him.”
-    mitigation: Footnote a preserves the documented alternative without resolving the ambiguity.
+  - risk: Dividing the poetic line may make its compressed structure less visible.
+    mitigation: The two sentences preserve the distinct images of rattling arrows and flashing weapons.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/039/023.yaml
   source_text_sha256: 2e684b8a4587fd92bc8be358c3c49b34b30c2e861cf7fda4594d3b88d0c77ef6
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 31c1f5c0f3edfddad2bd341c3bb9bc7cefb62e9e32d8d3f9f09de1da07a5b9b2
-  timestamp: '2026-07-11T20:23:16Z'
-  output_hash: 153383ba6d0af87f35272cf38f8f66c3d58df0c919edb430dc2396f05d4d333c
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ded1db85b1981e19cc9d68e73782d09923329a7170655cddc72bf9e26a4a5bb7
+  timestamp: '2026-08-28T23:35:03Z'
+  output_hash: 0253440ff4889698437f771e254d0d2e71bf9673f552abfac47bfca2f523a59c
   usage:
-    prompt_tokens: 2305
-    completion_tokens: 589
-    total_tokens: 2894
-    reasoning_tokens: 236
+    prompt_tokens: 3290
+    completion_tokens: 496
+    total_tokens: 3786
+    reasoning_tokens: 101
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:53Z'
+  previous_text: Over him,[a] the case of arrows rattles, and the spear and javelin flash.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:03Z'
+  previous_text: Over him, the case of arrows rattles. The spear and javelin flash.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 10f7e6b6ec698d9264884558fac75ef4397055334be03d46478dc4750505c84b
+  review_summary: The draft’s two-sentence form and “case of arrows” are warranted clarity improvements. Rendering the poetic “flame/blade of the spear and javelin” as “The spear and javelin flash” faithfully communicates the brightness image without importing doctrine or an unsupported application. Revise only to identify the horse, the clear immediate-context referent of “him,” and correspondingly update the footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/116/019.yaml
-  text: in the courts of the house of Yahweh[a], in your midst, Jerusalem[b]. Praise Yah!
+  text: in the courts[a] of the house of Yahweh, in your midst, Jerusalem. Praise Yah![b]
   footnotes:
   - marker: a
-    text: Or 'in the courtyards of the house of the LORD.'
+    text: Or “courtyards.”
     reason: lexical_alternative
   - marker: b
-    text: Hebrew 'Praise Yah'—the expression behind 'Hallelujah.'
-    reason: lexical_alternative
+    text: Hebrew “Praise Yah,” the expression from which “Hallelujah” comes.
+    reason: source_expression
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,49 +34,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: in the courtyards of Yahweh’s house[a], within you, Jerusalem. Praise Yah![b]
+  text: in the courtyards of Yahweh’s house, within you, Jerusalem. Praise Yah![a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Yahweh’s house is his temple in Jerusalem.
-    reason: cultural_note
-  - marker: b
-    text: “Praise Yah” is the Hebrew expression behind “Hallelujah.”
-    reason: lexical_alternative
+    text: “Praise Yah” is the Hebrew expression from which “Hallelujah” comes.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: in the courts of the house of Yahweh
-  simplified_phrase: in the courtyards of Yahweh’s house
-  preserved_meaning: The worship takes place in the enclosed court areas of Yahweh’s temple.
-  reasoning_layer_used: POB lexical decisions for חָצֵר and בֵּית יְהוָה
-  rationale: “Courtyards” is easier to picture, while the possessive wording preserves the house image.
+- pob_phrase: in the courts
+  simplified_phrase: in the courtyards
+  preserved_meaning: The setting remains the enclosed court areas of Yahweh’s house.
+  reasoning_layer_used: POB lexical decision for בְּחַצְרוֹת
+  rationale: “Courtyards” makes the physical setting clearer for readers unfamiliar with temple language.
+- pob_phrase: of the house of Yahweh
+  simplified_phrase: of Yahweh’s house
+  preserved_meaning: The sanctuary is still pictured as Yahweh’s house.
+  reasoning_layer_used: POB lexical and theological decisions for בֵּית יְהוָה and יְהוָה
+  rationale: The possessive form is natural English while retaining Yahweh’s name and the source image.
 - pob_phrase: in your midst, Jerusalem
   simplified_phrase: within you, Jerusalem
-  preserved_meaning: Jerusalem is addressed as a city containing Yahweh’s house and its courtyards.
-  reasoning_layer_used: POB lexical decision for בְּתוֹכֵכִי and grounding review
-  rationale: “Within you” keeps the direct singular address and avoids suggesting Jerusalem’s inhabitants.
+  preserved_meaning: Jerusalem is still addressed directly as the place where the praise occurs.
+  reasoning_layer_used: POB lexical decision for בְּתוֹכֵכִי
+  rationale: “Within you” preserves the personified address without adding an unsupported locator.
 translation_notes:
   risk_flags:
-  - risk: Some readers may mistake Yahweh’s house for an ordinary residence.
-    mitigation: Footnote a identifies it as the temple without replacing the Hebrew house image.
+  - risk: “Yahweh’s house” may not immediately signal the temple to every new reader.
+    mitigation: The reference to its courtyards supplies the sanctuary setting while preserving the source image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/116/019.yaml
   source_text_sha256: 8ecb486e8c53d4986e028c4f4b706262a28cd9831a101d2429459e4034efd6a2
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: b34b97fb51786bc9d130a136d97656d1765a2912c4d907edb4979da8af133441
-  timestamp: '2026-07-12T10:02:55Z'
-  output_hash: d144bf2aee49bd08a812b00a1dd5fe1ff3828b37173e07f4466b61371c898d83
+  prompt_sha256: 774beafc474ab263280168ac55e2d290ad2c49860cba9c862ae0d9be7d1d446a
+  timestamp: '2026-08-28T23:36:10Z'
+  output_hash: 0564d20f5ba2b2458be540abc10e158d380da52d9cf327ce8ef09a8829cde659
   usage:
-    prompt_tokens: 3349
-    completion_tokens: 350
-    total_tokens: 3699
-    reasoning_tokens: 0
+    prompt_tokens: 3622
+    completion_tokens: 482
+    total_tokens: 4104
+    reasoning_tokens: 84
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions: []
@@ -89,6 +91,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: c8b0f9c1751b885e1b49ac9e23e151cad2197e92da7283cf283c28e33f0de0ae
   review_summary: '“Courtyards” is a warranted, clearer rendering of the temple court areas, and “Yahweh’s house” retains the Hebrew house image; the supplied cultural footnote appropriately clarifies that this is the temple. The closing “Praise Yah!” and its footnote are faithful and clear. Revise the city clause: “there among you” weakens the direct, singular locative address to Jerusalem and introduces an unnecessary “there.” “Within you, Jerusalem” preserves the source sense while remaining understandable.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:58:45Z'
+  previous_text: in the courtyards of Yahweh’s house[a], within you, Jerusalem. Praise Yah![b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:10Z'
+  previous_text: in the courtyards of Yahweh’s house, there within you, Jerusalem. Praise Yah![a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: a8908bf9f8ebc9bd6edebe38f249eb1437609c6eb079ad61d2053ccd03f7a77d
+  review_summary: “Courtyards” is a warranted and genuinely clearer lexical alternative to “courts,” and “Yahweh’s house” preserves both the divine name and the house imagery. Retain the direct address to Jerusalem, but remove the unhelpful added “there.” The supplied footnote remains suitable.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

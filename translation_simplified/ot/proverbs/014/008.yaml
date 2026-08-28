@@ -11,14 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/014/008.yaml
-  text: The wisdom of the prudent is to understand his way[b][a], but the folly of fools is deceit.
+  text: The wisdom of the prudent is to understand his way[a], but the folly of fools is deceit[b].
   footnotes:
   - marker: a
-    text: Or 'The wisdom of the shrewd is to discern his path.'
+    text: Or “The wisdom of the shrewd is to discern his path.”
     reason: lexical_alternative
   - marker: b
-    text: '''Deceit'' may refer either to deceptive behavior or to self-deception as the defining mark of fools'' folly.'
-    reason: lexical_alternative
+    text: “Deceit” may refer to deceptive conduct or to the fools’ own delusion; the Hebrew does not resolve the nuance.
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,50 +34,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A prudent person’s wisdom is understanding his own path. In contrast, the folly of fools is deceit.[a]
+  text: For a prudent person, wisdom means understanding the path he is taking. But fools’ folly is deceit.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “Deceit” may mean deceiving others or deceiving oneself.
-    reason: lexical_alternative
+    text: “Deceit” may mean that fools deceive others or that they deceive themselves; the Hebrew leaves this open.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: The wisdom of the prudent is to understand his way
-  simplified_phrase: A prudent person’s wisdom is understanding his own path
-  preserved_meaning: Wisdom consists in discerning one’s course or manner of life.
-  reasoning_layer_used: POB lexical decisions for עָרוּם, הָבִין, and דַּרְכּוֹ
-  rationale: This wording clarifies the life-path image while preserving the definition-like statement.
-- pob_phrase: but the folly of fools is deceit
-  simplified_phrase: In contrast, the folly of fools is deceit
-  preserved_meaning: Deceit characterizes or constitutes the folly of fools.
-  reasoning_layer_used: POB lexical decision for מִרְמָה and conjunction rationale
-  rationale: A separate sentence makes the contrast clear without resolving the kind of deceit.
+- pob_phrase: The wisdom of the prudent is to understand
+  simplified_phrase: For a prudent person, wisdom means understanding
+  preserved_meaning: True prudence includes understanding one’s course.
+  reasoning_layer_used: POB lexical decision for הָבִין
+  rationale: The recast states the proverb’s defining force in ordinary English.
+- pob_phrase: his way
+  simplified_phrase: the path he is taking
+  preserved_meaning: The prudent person discerns his own course or manner of life.
+  reasoning_layer_used: POB lexical decision for דַּרְכּוֹ and representative-masculine decision
+  rationale: The concrete path image and singular masculine reference are both retained.
+interpretive_expansions:
+- pob_phrase: his way
+  rendering: the path he is taking
+  claim: The way is the person’s present course of life or conduct.
+  evidence:
+  - The POB lexical rationale says דֶּרֶךְ can denote one’s path, course, or manner of life.
+  confidence: high
+  alternatives_preserved:
+  - his way
+  - his course
 translation_notes:
   risk_flags:
-  - risk: Readers may take “deceit” to mean only deceiving other people.
-    mitigation: The footnote preserves the possible sense of self-deception.
+  - risk: Readers may take “deceit” only as deceiving others.
+    mitigation: The footnote preserves both deceptive conduct and self-delusion.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/014/008.yaml
   source_text_sha256: a116ba13bc1d334494e032c3b7c4bb5d2c2c80345e8490d5a01442aecd2bfd4c
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: f40b9af57cdee603fcc3b1bf01e84cba516eb0458e6bec50b76bf4a224a3957f
-  timestamp: '2026-07-12T09:52:45Z'
-  output_hash: acfa926ec9bbe4f1baaa338b06b0b26979fbfc866ad5af6a82875cf99c4b0597
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: bf58ca1ea08e032a93134c90e38d27e205820e99de2364b0d3fe61c91a8ac856
+  timestamp: '2026-08-28T23:01:57Z'
+  output_hash: 0a03f62772787deef1ee3757effde26128a111f6a5f95c7caa3d5582f3c5a194
   usage:
-    prompt_tokens: 3409
-    completion_tokens: 323
-    total_tokens: 3732
-    reasoning_tokens: 0
+    prompt_tokens: 2868
+    completion_tokens: 1074
+    total_tokens: 3942
+    reasoning_tokens: 681
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:45Z'
   previous_text: The prudent person shows wisdom by understanding his own path. In contrast, fools’ folly is deceit.[a]
@@ -89,3 +97,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:01:57Z'
+  previous_text: A prudent person’s wisdom is understanding his own path. In contrast, the folly of fools is deceit.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

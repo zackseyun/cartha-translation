@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/013/010.yaml
-  text: Only by arrogance comes strife[a], but wisdom is with those who take counsel.
+  text: Only through arrogance comes strife, but wisdom is with those who accept counsel.[a]
   footnotes:
   - marker: a
-    text: Or 'Only through insolence comes contention, but wisdom is with the well-advised.'
+    text: Or “the well-advised.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,46 +31,48 @@ base_translation:
     changes_summary: 'doctrine_realignment: Proverbs 13:10 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''those who receive counsel''].'
 translation:
   language: en
-  text: Conflict comes only from arrogance, but wisdom is with those who receive advice.
+  text: Conflict comes only from arrogance, but wisdom is found among those who accept advice.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “those who are well advised.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Only by arrogance comes strife
+- pob_phrase: Only through arrogance comes strife
   simplified_phrase: Conflict comes only from arrogance
-  preserved_meaning: Arrogant self-assertion is presented as the source of conflict in view.
-  reasoning_layer_used: Lexical decisions for רַק, בְּזָדוֹן, יִתֵּן, and מַצָּה
-  rationale: Ordinary English word order preserves the emphatic restriction and the link between arrogance and conflict.
-- pob_phrase: wisdom is with those who take counsel
-  simplified_phrase: wisdom is with those who receive advice
-  preserved_meaning: Wisdom characterizes people who receive counsel from others.
-  reasoning_layer_used: Lexical decision for נֹועָצִים and doctrine-realignment revision
-  rationale: “Receive advice” is plain English without implying that the advice is accepted or followed.
+  preserved_meaning: Arrogance is presented as the source of conflict, with the restrictive force retained.
+  reasoning_layer_used: POB lexical decisions for רַק, בְּזָדוֹן, יִתֵּן, and מַצָּה
+  rationale: The reordered clause uses ordinary English while preserving the emphatic causal claim.
+- pob_phrase: wisdom is with those who accept counsel
+  simplified_phrase: wisdom is found among those who accept advice
+  preserved_meaning: Wisdom characterizes people who are receptive to counsel.
+  reasoning_layer_used: POB lexical decisions for נֹועָצִים and חָכְמָה
+  rationale: “Advice” is more familiar than “counsel,” while “wisdom” remains the key Proverbs term.
 translation_notes:
   risk_flags:
-  - risk: “Only” may sound like a universal claim that every conflict has one cause.
-    mitigation: It is retained because the POB audit requires the proverb’s emphatic restrictive force.
+  - risk: Placing “only” after “comes” could appear to shift its emphasis.
+    mitigation: The phrase “only from arrogance” still explicitly restricts the source of conflict rather than its result.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/013/010.yaml
   source_text_sha256: 63eac2e08d2f325a48f1454ef1f7c9ba52eab2582180625440501c0c172688ce
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 97ec394c054970e8cbf3631e59553381fd4b3f65dba1ef8c39014c4bbcb5c7e6
-  timestamp: '2026-07-12T09:52:08Z'
-  output_hash: 2f0c28b597603462b13c06278aaa47324c7292f2414461d286308e5856c01290
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7b33fdb24375f34e2dcd5fe0efc635eca1e94d570c9bfb794ade17919167804a
+  timestamp: '2026-08-28T23:01:39Z'
+  output_hash: d84f959f7820d761be41f85501394f4020fc32e31e11b0a55784d325f164fe19
   usage:
-    prompt_tokens: 3403
-    completion_tokens: 295
-    total_tokens: 3698
-    reasoning_tokens: 0
+    prompt_tokens: 2846
+    completion_tokens: 756
+    total_tokens: 3602
+    reasoning_tokens: 417
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:52:08Z'
   previous_text: Conflict comes only from arrogance, but wisdom is found among those who accept advice.
@@ -82,3 +84,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:01:39Z'
+  previous_text: Conflict comes only from arrogance, but wisdom is with those who receive advice.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

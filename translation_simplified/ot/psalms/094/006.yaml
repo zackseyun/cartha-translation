@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/094/006.yaml
-  text: They kill the widow and the sojourner[a][b]; they murder the fatherless.
+  text: They kill the widow and the sojourner[b]; they murder the fatherless[a].
   footnotes:
   - marker: a
-    text: Or 'orphans.' The Hebrew is more literally 'the fatherless.'
+    text: Or “orphans.” The Hebrew is more literally “the fatherless.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'the sojourner' or 'the resident alien.' The Hebrew גֵר refers to a foreign resident living among the people.
+    text: Or “foreigner” or “resident alien.” The Hebrew גֵּר refers to a foreign resident living among the people.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,51 +34,64 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 94:6 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the foreigner''].'
 translation:
   language: en
-  text: They kill widows and foreigners who live among them; they murder fatherless children.
+  text: They kill widows and foreigners living among the people; they murder the fatherless.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “orphans.” The Hebrew specifically refers to those without a father.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the widow and the sojourner
-  simplified_phrase: widows and foreigners who live among them
-  preserved_meaning: Both expressions name vulnerable social groups, and the foreigners are residents rather than passing visitors.
-  reasoning_layer_used: POB lexical decisions for אַלְמָנָה and גֵר
-  rationale: The plural sounds natural for groups, while the added clause preserves the resident sense of the Hebrew term.
-- pob_phrase: the fatherless
-  simplified_phrase: fatherless children
-  preserved_meaning: The victims are children deprived of fathers, a recognized vulnerable class.
-  reasoning_layer_used: POB lexical decision for יְתוֹמִים
-  rationale: Adding “children” makes the referent immediately clear without broadening it to all orphans.
+- pob_phrase: the widow
+  simplified_phrase: widows
+  preserved_meaning: The singular represents widows as a vulnerable social class.
+  reasoning_layer_used: POB lexical decision for אַלְמָנָה
+  rationale: The plural makes the generic meaning immediately clear in natural English.
+- pob_phrase: the sojourner
+  simplified_phrase: foreigners living among the people
+  preserved_meaning: These are non-native residents, not merely travelers passing through.
+  reasoning_layer_used: POB lexical decision for גֵר
+  rationale: The wording replaces an unfamiliar biblical term with its stated modern meaning.
 interpretive_expansions:
 - pob_phrase: the sojourner
-  rendering: foreigners who live among them
-  claim: These foreigners reside among the people rather than merely passing through.
+  rendering: foreigners living among the people
+  claim: The foreigners reside within the community.
   evidence:
   - The POB lexical rationale defines גֵר as a non-native residing among Israel.
   confidence: high
   alternatives_preserved:
-  - sojourner
+  - foreigner
   - resident alien
+  - sojourner
 translation_notes:
   risk_flags:
-  - risk: Changing representative singulars to plurals slightly alters the Hebrew form.
-    mitigation: The plurals clearly retain the generic reference to vulnerable social classes.
+  - risk: Changing the representative singular “widow” to a plural could obscure the Hebrew form.
+    mitigation: The plural preserves the POB rationale that the singular denotes the whole vulnerable class.
+  - risk: “Foreigners” alone could suggest visitors rather than resident outsiders.
+    mitigation: “Living among the people” preserves the residential force of גֵר.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/094/006.yaml
   source_text_sha256: 90f9762128937cf1a3aebd39507dd0cdd1dd0d8d7efedba05e7587469932d6cd
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a3edfe21001f2160fdc5293325bb591697c373a33594678852580504b4aa8e07
-  timestamp: '2026-07-11T21:03:40Z'
-  output_hash: 0ad14b4dd1b34beceb1ad648e1180598f99f014fd4bd710c22b760589395f968
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7d55634cdee0aa431b91617f1a22c979258d882308de633460d2cfb478e408f1
+  timestamp: '2026-08-28T22:56:54Z'
+  output_hash: 673a71ceaa540d17ea5c96e714e5c4bf370d9a9937bf0515d81b85248293a0e6
   usage:
-    prompt_tokens: 2595
-    completion_tokens: 615
-    total_tokens: 3210
-    reasoning_tokens: 259
+    prompt_tokens: 2765
+    completion_tokens: 689
+    total_tokens: 3454
+    reasoning_tokens: 298
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:54Z'
+  previous_text: They kill widows and foreigners who live among them; they murder fatherless children.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

@@ -34,50 +34,77 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: We hung our lyres[a] on the poplar trees[b] there.
+  text: We hung our lyres on the poplar trees in the middle of Babylon.[a][b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “harps.” A lyre was an ancient stringed instrument.
-    reason: lexical_alternative
-  - marker: b
     text: Or “willow trees.” The Hebrew word may refer to willows or poplar-type trees.
     reason: lexical_alternative
+  - marker: b
+    text: Or “harps.” A lyre is an ancient stringed instrument.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: On the poplars in its midst
-  simplified_phrase: on the poplar trees there
-  preserved_meaning: The trees were within the place described in the preceding verse.
-  reasoning_layer_used: POB lexical decision for בְּתוֹכָהּ and immediate context
-  rationale: “There” expresses the location naturally without adding an unstated noun.
-- pob_phrase: we hung our lyres
-  simplified_phrase: We hung our lyres
-  preserved_meaning: The exiles physically placed their stringed instruments on the trees.
-  reasoning_layer_used: POB lexical decisions for תָּלִינוּ and כִּנֹּרוֹתֵינוּ
-  rationale: Leading with the subject and action gives the short verse ordinary English word order.
+- pob_phrase: On the poplars in its midst we hung our lyres
+  simplified_phrase: We hung our lyres on the poplar trees in the middle of Babylon
+  preserved_meaning: The exiles placed their instruments on trees located within Babylon.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: The reordered sentence uses natural English while retaining the action, objects, and location.
+- pob_phrase: poplars
+  simplified_phrase: poplar trees
+  preserved_meaning: The probable tree type remains the main reading.
+  reasoning_layer_used: POB lexical decision for עֲרָבִים
+  rationale: Adding “trees” makes the botanical term immediately clear.
+interpretive_expansions:
+- pob_phrase: in its midst
+  rendering: in the middle of Babylon
+  claim: The feminine pronoun refers to Babylon, where the trees were located.
+  evidence:
+  - The preceding verse identifies Babylon as the setting.
+  - The POB lexical rationale identifies Babylon as the pronoun’s most natural referent.
+  confidence: high
+  alternatives_preserved:
+  - in its midst
+  - in the middle of it
 translation_notes:
   risk_flags:
-  - risk: The Hebrew tree name may mean willows rather than poplars.
-    mitigation: The main text keeps POB’s choice and the footnote preserves the plausible alternative.
-  - risk: Some readers may not know what a lyre is.
-    mitigation: The footnote identifies it as an ancient stringed instrument and notes “harps” as an alternative.
+  - risk: The Hebrew tree term may also refer to willows.
+    mitigation: Footnote a preserves this plausible traditional alternative.
+  - risk: The ancient instrument may traditionally be called a harp.
+    mitigation: Footnote b preserves that alternative and briefly explains “lyre.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/137/002.yaml
   source_text_sha256: 246dc1dbaaab919948647f14eee38599c60d9880f847c9f9b0bd4819837de116
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 175f7a7a4c2f3b4592203c7271994cb4978a54a7e4cd6f145c4b3aba767242df
-  timestamp: '2026-07-11T21:02:03Z'
-  output_hash: b5da6d54938284152b3fb17ec9a274ebd16bc7a1fa30c87e3de8fa0842129ffa
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 82300e93e996a90a84aaddb992f191c41999fa078fbf74b3b6504fedee96c133
+  timestamp: '2026-08-28T23:36:24Z'
+  output_hash: 9a8bbc40dbd757b23181077183f9f9bfd972c02b178fa27eb77d1e00a141cf9c
   usage:
-    prompt_tokens: 2259
-    completion_tokens: 687
-    total_tokens: 2946
-    reasoning_tokens: 305
+    prompt_tokens: 3021
+    completion_tokens: 672
+    total_tokens: 3693
+    reasoning_tokens: 232
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:02:47Z'
+  previous_text: We hung our lyres[a] on the poplar trees[b] there.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:24Z'
+  previous_text: We hung our lyres on the poplar trees there.[a][b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b0ebfb186837fe62017ac4c0beacfd8cfd2aefcf3ffe0feb2a9e55a1d8db2969
+  review_summary: The draft is clearer in its word order and in adding “trees,” and its lexical footnotes responsibly preserve the live tree and instrument alternatives. However, “there” reduces “in its midst” to an unspecified general location. Since the immediate context and POB audit trail support Babylon as the referent, naming Babylon and retaining “in the middle of” better preserves the source meaning while remaining accessible.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

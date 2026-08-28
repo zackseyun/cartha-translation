@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/003/003.yaml
-  text: May the day perish on which I was born[a], and the night that said, ‘A man is conceived.’
-  footnotes:
-  - marker: a
-    text: Or 'and the night that said, “A male child is conceived.”'
-    reason: lexical_alternative
+  text: May the day on which I was born perish, and the night that said, “A male child has been conceived.”
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,45 +27,64 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 3:3 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''has been conceived''].'
 translation:
   language: en
-  text: May the day I was born perish. May the night that announced, “A man[a] is conceived,” perish too.
+  text: May the day I was born perish, and may the night that announced, “A male child has been conceived,” perish too.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “a male child.”
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: May the day perish on which I was born
+- pob_phrase: May the day on which I was born perish
   simplified_phrase: May the day I was born perish
-  preserved_meaning: Job wishes for the specific day of his birth to perish.
-  reasoning_layer_used: Lexical decisions for יֹאבַד, יוֹם, and אִוָּלֶד בּוֹ
-  rationale: Natural word order makes the curse-wish easier to grasp without weakening it.
+  preserved_meaning: Job curses the specific day of his birth and wishes it to perish.
+  reasoning_layer_used: POB lexical decisions for יֹאבַד and אִוָּלֶד בּוֹ
+  rationale: Removing “on which” makes the line more natural without weakening the curse-wish.
 - pob_phrase: and the night that said
-  simplified_phrase: May the night that announced ... perish too
-  preserved_meaning: The night is personified and included as the second object of Job’s curse.
-  reasoning_layer_used: Lexical decisions for וְהַלַּיְלָה and אָמַר
-  rationale: Repeating the verb makes the parallel curse explicit and turns the dense line into two clear sentences.
+  simplified_phrase: and may the night that announced
+  preserved_meaning: The night is personified as proclaiming the conception and is also cursed.
+  reasoning_layer_used: POB lexical decision for אָמַר and Hebrew poetic parallelism
+  rationale: “Announced” clarifies the personification, while repeating “may” makes the parallel curse easy to follow.
+- pob_phrase: “A male child has been conceived.”
+  simplified_phrase: “A male child has been conceived,” perish too.
+  preserved_meaning: The conception is complete, the child is male, and the night of conception shares the day’s fate.
+  reasoning_layer_used: POB lexical decisions for הֹרָה and גָבֶר
+  rationale: The source-driven announcement is retained, and “perish too” completes the parallel in clear English.
 translation_notes:
   risk_flags:
-  - risk: Repeating “May ... perish” states a verb that is implicit in the second Hebrew clause.
-    mitigation: The coordinated parallelism identifies the night as the second object of the same curse.
+  - risk: Applying “perish” to a day and night is an unusual poetic image in modern English.
+    mitigation: The wording is retained because it preserves the full force of Job’s curse.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/003/003.yaml
   source_text_sha256: a39657f7edb05d9c2e63b7087abef10ba1d5e8fdae028293573e96093e141496
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 866029b2913b02bd521d4059a37f0c0eaadef1d5ea36df9d7e89e68059168c50
-  timestamp: '2026-07-11T19:46:26Z'
-  output_hash: 8fa1f0fe53f82165af32364f8eeadd17ec159ff872bafdda93e0296479e45382
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: d18f3fe94e73470808c586738d4b4effed486d70b6b58e32336287843d2bf8f7
+  timestamp: '2026-08-28T23:32:45Z'
+  output_hash: 1a174ccbd837978438e64784a0e6e732ed46de527052c19880c5538b53c658c2
   usage:
-    prompt_tokens: 2652
-    completion_tokens: 630
-    total_tokens: 3282
-    reasoning_tokens: 295
+    prompt_tokens: 3581
+    completion_tokens: 486
+    total_tokens: 4067
+    reasoning_tokens: 77
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:48:42Z'
+  previous_text: May the day I was born perish. May the night that announced, “A man[a] is conceived,” perish too.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:45Z'
+  previous_text: May the day I was born vanish, and may the night that announced, “A male child has been conceived,” vanish too.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 1f60d6a84a85cdc6ad70361713f0e1a215ec5749b56594663781e9ec96493fa9
+  review_summary: The revised syntax helpfully makes the parallel curse on both the day and the night explicit, and “announced” appropriately retains the night’s personification. However, “vanish” weakens the source-supported curse force of יֹאבַד. Retain “perish” while keeping the clearer SPOB structure.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

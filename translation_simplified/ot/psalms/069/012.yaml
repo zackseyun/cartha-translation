@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/069/012.yaml
-  text: Those who sit in the gate talk about me[a][b], and I am the song of those who drink strong drink.
+  text: Those who sit at the gate talk about me[a], and I am the song of those who drink strong drink.[b]
   footnotes:
   - marker: a
-    text: The 'gate' was the public place of civic life and judgment in an ancient city; the phrase likely points to public, socially influential mockery rather than merely to gatekeepers.
+    text: The city gate was a public place of civic life and judgment; those sitting there were socially prominent members of the community.
     reason: cultural_note
   - marker: b
-    text: Or 'Those who sit at the gate speak of me, and drunkards sing about me.'
+    text: Or “and those who drink intoxicating drink sing about me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,45 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: People who gather at the city gate talk about me,[a] and those who drink strong drink make me the subject of their songs.
+  text: People sitting at the city gate[a] talk about me. Those who drink intoxicating drink make me the subject of their songs.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The city gate was a public place for civic life and judgment, so this suggests public mockery by socially influential people.
+    text: The city gate was a public center for community affairs and judgment, where prominent members of society gathered.
     reason: cultural_note
 simplification_decisions:
-- pob_phrase: Those who sit in the gate
-  simplified_phrase: People who gather at the city gate
-  preserved_meaning: The speakers occupy the gate as a public civic place without being narrowed to gatekeepers or officials.
-  reasoning_layer_used: POB lexical decision and cultural note
-  rationale: “Gather at the city gate” keeps the ancient setting while making the activity natural in English.
-- pob_phrase: I am the song of
-  simplified_phrase: make me the subject of their songs
-  preserved_meaning: The psalmist is what the drinkers sing about.
-  reasoning_layer_used: POB lexical decision for וּנְגִינוֹת
-  rationale: The recast sentence states the implied relationship clearly rather than suggesting he literally becomes a song.
+- pob_phrase: Those who sit at the gate talk about me, and I am the song
+  simplified_phrase: People sitting at the city gate talk about me. Those ... make me the subject of their songs.
+  preserved_meaning: The psalmist is discussed at the public gate and becomes the theme of the drinkers’ songs.
+  reasoning_layer_used: POB lexical decisions and applied revision
+  rationale: Two direct sentences clarify the parallel ideas while preserving the gate and song images.
+- pob_phrase: strong drink
+  simplified_phrase: intoxicating drink
+  preserved_meaning: The beverage is alcoholic without being narrowed to distilled liquor.
+  reasoning_layer_used: POB lexical decision for שֵׁכָר and grounding review
+  rationale: This common wording clearly conveys intoxication while retaining the term’s broad reference.
+interpretive_expansions:
+- pob_phrase: I am the song
+  rendering: make me the subject of their songs
+  claim: The psalmist is the theme of what the drinkers sing.
+  evidence:
+  - The POB lexical rationale identifies the psalmist as the content of their singing.
+  - The parallel line presents him as the topic of public speech.
+  confidence: high
+  alternatives_preserved:
+  - I am the song of those who drink intoxicating drink.
+  - Those who drink intoxicating drink sing about me.
 translation_notes:
   risk_flags:
-  - risk: “Gather” is less literal than the Hebrew image of sitting at the gate.
-    mitigation: “At the city gate” preserves the setting, and the footnote explains its civic significance.
+  - risk: “Make me the subject” states the implied relationship more directly than the Hebrew noun phrase.
+    mitigation: The wording retains the concrete songs and follows the POB lexical rationale.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/069/012.yaml
   source_text_sha256: 33cb308f37b26c65b16ddf4f646191a074f2b99f45bf0b60d406b875aaf78d21
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2ced01e7368c626cfe5da715bcb62ace175af3a5869a2f00bc07fe1738ca500e
-  timestamp: '2026-07-11T20:49:54Z'
-  output_hash: 67c8fdbec3ad5b4d5e6774445e01e66baa15ed1cf8c0b211b64412779d0ccfc0
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 2e580c2cd1d2fa40e21e9c2e5d389589888661de82ea785937651ea6f5cc61ec
+  timestamp: '2026-08-28T23:35:37Z'
+  output_hash: ac6deabef8c37add8147de5bbd77f6b7d88a6aae4c61772faa9b60ccdfc7a539
   usage:
-    prompt_tokens: 2512
-    completion_tokens: 323
-    total_tokens: 2835
-    reasoning_tokens: 0
+    prompt_tokens: 3542
+    completion_tokens: 600
+    total_tokens: 4142
+    reasoning_tokens: 161
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:42Z'
+  previous_text: People who gather at the city gate talk about me,[a] and those who drink strong drink make me the subject of their songs.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:37Z'
+  previous_text: People sitting at the city gate talk about me. Those drinking intoxicating liquor make me the subject of their songs.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 17a2149d6535ea6ec947b153be58f484c3864f575dd87555f807088c95d12b70
+  review_summary: The two-sentence rendering is meaningfully clearer and its explicit statement that the psalmist is the subject of the songs is warranted by the Hebrew construction, the parallel line, and the POB audit trail. Revise only the potentially over-narrow modern term “liquor” to “intoxicating drink” and move the cultural-note marker to the phrase it explains.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

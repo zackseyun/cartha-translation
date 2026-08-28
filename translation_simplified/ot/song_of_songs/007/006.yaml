@@ -11,16 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/007/006.yaml
-  text: Your head upon you is like Carmel[a], and the flowing hair of your head like purple[c][b]; a king is held captive in the tresses.
+  text: Your head crowns you like Carmel[a], and the hair of your head is like purple cloth; a king is held captive in the tresses[b].
   footnotes:
   - marker: a
-    text: Carmel likely refers to Mount Carmel, evoking stately height and beauty.
+    text: Carmel probably refers to Mount Carmel.
     reason: cultural_note
   - marker: b
-    text: Or 'the locks of your head.' The Hebrew term is rare and may refer to hanging or flowing hair.
-    reason: lexical_alternative
-  - marker: c
-    text: Or 'a king is bound in the galleries.' The final Hebrew term is difficult and has been understood in more than one way; the main text follows the hair imagery of the surrounding lines.
+    text: The final Hebrew word is uncertain. In this context it may refer to tresses or flowing locks; others understand it as “channels” or “galleries.”
     reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
@@ -37,74 +34,88 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Your head stands tall like Mount Carmel.[a] Your flowing hair is like rich purple, and its tresses hold even a king captive.[b]
+  text: Your head adorns you, majestic like Mount Carmel. Your hair looks like purple cloth; its flowing locks hold a king captive.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Mount Carmel suggests stately height and beauty.
-    reason: cultural_note
-  - marker: b
-    text: The difficult Hebrew may instead mean, “A king is bound in the galleries.”
+    text: The final Hebrew word is uncertain. Here it is understood as “flowing locks,” but it may instead mean “channels” or “galleries.”
     reason: alternative_reading
 simplification_decisions:
-- pob_phrase: Your head upon you is like Carmel
-  simplified_phrase: Your head stands tall like Mount Carmel
-  preserved_meaning: Her head is compared to Mount Carmel’s stately height and beauty.
-  reasoning_layer_used: POB lexical decision and cultural note
-  rationale: The awkward spatial wording becomes a clear comparison without losing the mountain image.
-- pob_phrase: the flowing hair of your head like purple
-  simplified_phrase: Your flowing hair is like rich purple
-  preserved_meaning: Her descending hair is compared to costly purple.
-  reasoning_layer_used: POB lexical decisions
-  rationale: A complete sentence clarifies the image, while “rich” retains purple’s luxurious association.
+- pob_phrase: Your head crowns you like Carmel
+  simplified_phrase: Your head adorns you, majestic like Mount Carmel
+  preserved_meaning: Her head adorns her and is compared to the stately mountain.
+  reasoning_layer_used: POB lexical decisions and final source audit
+  rationale: “Adorns you” preserves the relational image, while “Mount” identifies Carmel clearly.
+- pob_phrase: the hair of your head is like purple cloth
+  simplified_phrase: Your hair looks like purple cloth
+  preserved_meaning: Her hair is compared to purple-dyed material.
+  reasoning_layer_used: POB lexical decision for אַרְגָּמָן
+  rationale: The shorter wording keeps the concrete cloth comparison.
 - pob_phrase: a king is held captive in the tresses
-  simplified_phrase: its tresses hold even a king captive
-  preserved_meaning: The hair is pictured as so captivating that it binds a king.
-  reasoning_layer_used: POB lexical decision and immediate-context rationale
-  rationale: The active wording makes the metaphor easier to follow while preserving its force.
+  simplified_phrase: its flowing locks hold a king captive
+  preserved_meaning: The hair metaphorically binds and captivates even royalty.
+  reasoning_layer_used: POB lexical decisions for אָסוּר and בָּרְהָטִים
+  rationale: The active wording is easier to follow and preserves the captivity image.
 interpretive_expansions:
-- pob_phrase: Your head upon you is like Carmel
-  rendering: Your head stands tall like Mount Carmel
-  claim: The comparison evokes the mountain’s stately height.
+- pob_phrase: like Carmel
+  rendering: majestic like Mount Carmel
+  claim: The comparison evokes Mount Carmel’s stately appearance.
   evidence:
-  - The POB cultural note identifies Mount Carmel and its association with stately height and beauty.
-  - The POB lexical rationale says the head is poetically borne upon the body.
-  confidence: moderate
-  alternatives_preserved:
-  - Your head upon you is like Carmel.
-- pob_phrase: like purple
-  rendering: like rich purple
-  claim: Purple carries an association with costly luxury.
-  evidence:
-  - The POB lexical rationale states that the Hebrew denotes costly purple dye or fabric.
+  - The POB rationale links Carmel with stately height and beauty.
+  - The POB note identifies Carmel as probably Mount Carmel.
   confidence: high
   alternatives_preserved:
-  - like purple
-  - like purple cloth
+  - like Carmel
+- pob_phrase: in the tresses
+  rendering: its flowing locks
+  claim: The uncertain final word contextually refers to flowing hair.
+  evidence:
+  - The immediate clause describes the woman’s hair.
+  - The POB rationale supports “tresses” or “flowing locks” here.
+  confidence: moderate
+  alternatives_preserved:
+  - channels
+  - galleries
 translation_notes:
   risk_flags:
-  - risk: “Stands tall” makes the implied force of the Carmel comparison explicit.
-    mitigation: The footnote and moderate-confidence expansion preserve the more literal comparison.
-  - risk: The final rare Hebrew term may refer to galleries rather than hair.
-    mitigation: The main text follows the surrounding hair imagery, while the alternate reading remains in a footnote.
+  - risk: The final Hebrew word has substantial lexical uncertainty.
+    mitigation: The text follows the POB choice, while the note preserves major alternatives.
+  - risk: “Majestic” states the likely force of the Carmel image explicitly.
+    mitigation: The clarification is bounded by the POB rationale about stately height and beauty.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/007/006.yaml
   source_text_sha256: be5aa4d748042460339dbdebacaec29d18c06812317edb21c58bd8d8c5ece712
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2e38e9941014853531ea62fdbd5cbd0660e7008f07142973861c298c16c3a2b0
-  timestamp: '2026-07-11T21:25:09Z'
-  output_hash: a56775af38c269c998d80371d33824706c6005c628f9010102902ba745512a7a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 31278f8e9da1933e37f630a74c39943fb8ed3dd704a4925e9e7b7d2095bc5ce6
+  timestamp: '2026-08-28T23:33:39Z'
+  output_hash: 264a1a59ab8ced7bc718e8b475cf82a86c59b69e4180a0714f83c5d535f0e586
   usage:
-    prompt_tokens: 2664
-    completion_tokens: 1017
-    total_tokens: 3681
-    reasoning_tokens: 415
+    prompt_tokens: 3920
+    completion_tokens: 591
+    total_tokens: 4511
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:13:49Z'
+  previous_text: Your head stands tall like Mount Carmel.[a] Your flowing hair is like rich purple, and its tresses hold even a king captive.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:33:39Z'
+  previous_text: Your head is your crown, majestic like Mount Carmel. Your hair looks like purple cloth; its flowing locks hold a king captive.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 4599369f84924fd59bae44a3535195042e555e78e62aebde600e4ac01ffb42c0
+  review_summary: 'The draft is substantially clearer and rightly retains a footnote for the uncertain final Hebrew word. “Majestic like Mount Carmel” is a warranted contextual clarification because the POB audit explicitly identifies Carmel’s stately beauty and height. The active wording about the locks holding a king captive also preserves the poem’s metaphor. Revise the opening only: replace the identity claim “is your crown” with “adorns you,” which communicates the POB’s intended relational image without recasting her head as an actual crown.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/069/026.yaml
-  text: For they persecute the one you struck[a], and they recount the pain of those you wounded.
+  text: For they pursue the one you struck, and they talk about the pain of those you wounded[a].
   footnotes:
   - marker: a
-    text: Or 'the pain of your slain.' The Hebrew חֲלָלֶיךָ can also denote 'your slain' or 'your pierced ones.'
+    text: Or “the pain of your slain” or “your pierced ones.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,58 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For they persecute the person you struck, and they talk about the pain of those you wounded.[a]
+  text: For they chase after the one you struck, and they talk about the pain of those you wounded.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “the pain of those you killed” or “the pain of those you pierced.”
+    text: Or “the pain of your slain” or “the pain of your pierced ones.”
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the one you struck
-  simplified_phrase: the person you struck
-  preserved_meaning: God struck one particular person whom the enemies persecute.
-  reasoning_layer_used: POB lexical decision for אַתָּה אֲשֶׁר הִכִּיתָ
-  rationale: “The person” is natural English and keeps the singular reference clear.
-- pob_phrase: they recount the pain
-  simplified_phrase: they talk about the pain
-  preserved_meaning: The enemies speak about the suffering of those God wounded.
-  reasoning_layer_used: POB lexical decisions for יְסַפֵּרוּ and מַכְאוֹב
-  rationale: “Talk about” is more familiar than “recount” while preserving the act of speaking about their pain.
+- pob_phrase: they pursue the one you struck
+  simplified_phrase: they chase after the one you struck
+  preserved_meaning: They continue hostile pursuit of the singular person God struck.
+  reasoning_layer_used: POB lexical decisions for רָדָפוּ and אַתָּה אֲשֶׁר הִכִּיתָ
+  rationale: “Chase after” makes the hostile pursuit immediately clear without narrowing it to persecution.
+- pob_phrase: they talk about the pain of those you wounded
+  simplified_phrase: they talk about the pain of those you wounded
+  preserved_meaning: They speak about the suffering of people already afflicted by God.
+  reasoning_layer_used: POB lexical and theological decisions for מַכְאוֹב and חֲלָלֶיךָ
+  rationale: The clear POB wording is retained, while the footnote preserves the term’s genuine alternatives.
 translation_notes:
   risk_flags:
-  - risk: “Those you wounded” can also mean those killed or pierced.
-    mitigation: The footnote preserves both important lexical alternatives.
+  - risk: “Talk about” does not by itself state that the speech is hostile.
+    mitigation: The surrounding pursuit and wounding convey the hostile setting without added commentary.
+  - risk: The Hebrew term may refer to wounded, slain, or pierced people.
+    mitigation: The main text keeps POB’s chosen sense, and the footnote preserves the alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/069/026.yaml
   source_text_sha256: cafe4a896c51afefe042de19c7bfd086a6b64a7bd54b7e05206f526222cea4a9
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 5b7952075174a7209eae228637a5acc5fffcec6a125127bb6d4f6bd97dd6cdf9
-  timestamp: '2026-07-12T10:00:38Z'
-  output_hash: e6f37fa22835831a1e83d0657311c447c0c357b24df462f01551e9e7ba7ffcba
+  prompt_sha256: acc292695a07c310051a63830899a557d48592e5cf2bdb09b2861613ef716125
+  timestamp: '2026-08-28T23:35:41Z'
+  output_hash: f9c4e86495c651a2b8c4b63e5ec78516e9c288dcb4e9d394aa50393cdc912be3
   usage:
-    prompt_tokens: 3456
-    completion_tokens: 309
-    total_tokens: 3765
-    reasoning_tokens: 0
+    prompt_tokens: 3670
+    completion_tokens: 796
+    total_tokens: 4466
+    reasoning_tokens: 410
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: they persecute the one you struck
-  rendering: even after you struck someone, they still persecute that person
-  claim: The enemies continue afflicting someone already struck by God.
-  evidence:
-  - The POB theological rationale describes enemies intensifying existing suffering.
-  - The immediate parallel joins persecution with pain already caused by wounding.
-  confidence: high
-  alternatives_preserved:
-  - they persecute the one you struck
+interpretive_expansions: []
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:00:38Z'
@@ -92,6 +85,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 3c469d8e2d337f9daa6ce5e2b91cf2dffeae222687b3316fd034db69325dd004
   review_summary: The draft improves accessibility by replacing “the one” with “the person” and “recount” with the familiar “talk about.” Its lexical footnote responsibly retains the live alternatives for “those you wounded.” However, “even after” and “still” turn a contextually plausible implication into the stated meaning. Remove those temporal-continuation additions while retaining the otherwise clear simplification.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:55:31Z'
+  previous_text: For they persecute the person you struck, and they talk about the pain of those you wounded.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:41Z'
+  previous_text: For they chase after the one you struck, and they speak of the pain of those you wounded.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 896716129fd44d92a9a91cb9e31446b80c1f8d563e099adc6902d76981bff75a
+  review_summary: “Chase after” is a warranted, clearer expression of hostile pursuit and preserves the singular person struck by God. Retain POB’s clearer “talk about” rather than the less direct “speak of.” Restore a footnote that accurately and grammatically preserves the POB-documented lexical alternatives, without resolving whether the affected people are wounded, slain, or pierced.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

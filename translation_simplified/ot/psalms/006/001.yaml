@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/006/001.yaml
-  text: O Yahweh[a], do not rebuke me in your anger[b][c], and do not discipline me in your wrath.
+  text: O Yahweh[a], do not rebuke me[b] in your anger, and do not discipline me[c] in your wrath.
   footnotes:
   - marker: a
-    text: 'Hebrew: ''O Yahweh.'' The divine name יְהוָה is rendered ''the LORD'' in keeping with the project''s default practice.'
+    text: Hebrew YHWH; traditionally rendered “the LORD.”
     reason: alternative_reading
   - marker: b
-    text: Or 'do not chasten me.'
+    text: Or “reprove me.”
     reason: lexical_alternative
   - marker: c
-    text: Or 'do not reprove me.'
+    text: Or “chasten me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,38 +37,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Yahweh, do not rebuke me in your anger. Do not discipline me in your wrath.
+  text: Yahweh,[a] do not rebuke me while you are angry. Do not discipline me in your wrath.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Yahweh is the Hebrew personal name YHWH, traditionally rendered “the LORD.”
+    reason: alternative_reading
 simplification_decisions:
 - pob_phrase: O Yahweh
   simplified_phrase: Yahweh
-  preserved_meaning: The prayer directly addresses God by his covenant name.
-  reasoning_layer_used: Theological decision on the divine name and lexical rationale for direct address.
-  rationale: Modern English does not need “O” to show direct address.
-- pob_phrase: do not rebuke me in your anger, and do not discipline me in your wrath
-  simplified_phrase: do not rebuke me in your anger. Do not discipline me in your wrath.
-  preserved_meaning: The two distinct pleas and the anger/wrath parallel remain intact.
-  reasoning_layer_used: Lexical decisions for the verbs and theological decision preserving the parallel terms.
-  rationale: Two short sentences make the poetic parallel easier to grasp.
-translation_notes: {}
+  preserved_meaning: The direct plea still addresses God by his personal name.
+  reasoning_layer_used: POB lexical and theological decisions on YHWH
+  rationale: Removing “O” makes the address natural in modern English without changing its solemn force.
+- pob_phrase: do not rebuke me in your anger
+  simplified_phrase: do not rebuke me while you are angry
+  preserved_meaning: The speaker asks not to be rebuked under Yahweh’s anger.
+  reasoning_layer_used: POB lexical decision for בְּאַפְּךָ
+  rationale: “While you are angry” makes the Hebrew anger idiom immediately clear.
+- pob_phrase: and do not discipline me in your wrath
+  simplified_phrase: Do not discipline me in your wrath.
+  preserved_meaning: The second plea remains distinct and retains “wrath” beside “anger.”
+  reasoning_layer_used: POB lexical decisions and theological parallelism
+  rationale: A new sentence clarifies the parallel plea without merging its distinct terms.
+translation_notes:
+  risk_flags:
+  - risk: “While you are angry” may sound more temporal than the Hebrew phrase.
+    mitigation: It remains within the POB-approved alternative and preserves anger as the setting of the rebuke.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/006/001.yaml
   source_text_sha256: a7757e5567d9431c159a4c500b5fe221c05e0f81fce40d5bd5d65af2e35538d9
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: c97248c8db88e93de4fe907e0d65e1ed56b234b445b612c184c925329f36659e
-  timestamp: '2026-07-11T19:50:51Z'
-  output_hash: eb429b88b09005b08e18c5c32190a7f2519a4d1f33eb5dadf32a2faa82081c67
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 221840fdf17890bad55f8a5527225c873ec339fae63e5b68c775319203d5cc3b
+  timestamp: '2026-08-28T22:54:51Z'
+  output_hash: 15f35744d0b3f0586bc70c239d078cebb96c75662b35208800874271da2d5c17
   usage:
-    prompt_tokens: 2689
-    completion_tokens: 527
-    total_tokens: 3216
-    reasoning_tokens: 284
+    prompt_tokens: 2852
+    completion_tokens: 543
+    total_tokens: 3395
+    reasoning_tokens: 156
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:52:44Z'
+  previous_text: Yahweh, do not rebuke me in your anger. Do not discipline me in your wrath.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:54:51Z'
+  previous_text: Yahweh,[a] please do not rebuke me in your anger. Do not discipline me in your wrath.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

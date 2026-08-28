@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/031/016.yaml
-  text: If I have withheld the poor from their desire[a], or caused the eyes of the widow to fail[b],
+  text: If I have denied the poor what they desired[a], or caused the eyes of the widow to fail[b],
   footnotes:
   - marker: a
-    text: Or 'withheld from the poor what they desired' or, contextually, 'withheld from the poor what they needed.'
+    text: Or, contextually, “what they needed.”
     reason: lexical_alternative
   - marker: b
-    text: 'Hebrew idiom: ''caused the eyes of the widow to fail,'' expressing prolonged disappointment, longing, or hope deferred.'
+    text: 'Hebrew idiom: “caused the eyes of the widow to fail,” expressing prolonged disappointment, longing, or hope deferred.'
     reason: cultural_note
   ai_draft:
     model_id: gpt-5.4
@@ -34,53 +34,82 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: If I have kept the poor from receiving what they wanted or needed, or made a widow’s eyes grow weary from waiting,
+  text: If I have denied the poor what they longed for,[a] or made a widow wait until her hope faded,[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “what they needed.”
+    reason: lexical_alternative
+  - marker: b
+    text: The Hebrew pictures the widow’s eyes failing from prolonged waiting, disappointment, or fading hope.
+    reason: cultural_note
 simplification_decisions:
-- pob_phrase: withheld the poor from their desire
-  simplified_phrase: kept the poor from receiving what they wanted or needed
-  preserved_meaning: Job denies depriving poor people of something they desired or needed.
-  reasoning_layer_used: POB lexical decision for מֵחֵפֶץ and its documented alternatives
-  rationale: The rewrite uses ordinary English while preserving the lexical range between desire and need.
+- pob_phrase: what they desired
+  simplified_phrase: what they longed for
+  preserved_meaning: The poor were denied something they strongly wanted or needed.
+  reasoning_layer_used: POB lexical decision for חֵפֶץ
+  rationale: “Longed for” expresses strong desire clearly while the footnote preserves the contextual sense of need.
 - pob_phrase: caused the eyes of the widow to fail
-  simplified_phrase: made a widow’s eyes grow weary from waiting
-  preserved_meaning: Job denies leaving a widow in prolonged longing and disappointment.
-  reasoning_layer_used: POB lexical rationale and cultural note for אֲכַלֶּה
-  rationale: The wording keeps the image of weary eyes while making the Hebrew idiom understandable.
+  simplified_phrase: made a widow wait until her hope faded
+  preserved_meaning: Job speaks of disappointing a widow through prolonged waiting until her hope weakened.
+  reasoning_layer_used: POB idiom footnote and lexical rationale for אֲכַלֶּה
+  rationale: The wording states the idiom’s intended force while its eye image is retained in the footnote.
 interpretive_expansions:
 - pob_phrase: caused the eyes of the widow to fail
-  rendering: made a widow’s eyes grow weary from waiting
-  claim: The failing eyes describe prolonged waiting and deferred hope rather than physical blindness.
+  rendering: made a widow wait until her hope faded
+  claim: The failing eyes portray hope fading through prolonged waiting and disappointment.
   evidence:
-  - The POB cultural note identifies prolonged disappointment, longing, or hope deferred.
-  - The POB lexical rationale says the idiom conveys longing or hope being exhausted.
+  - The POB cultural note identifies prolonged disappointment, longing, and hope deferred.
+  - The lexical rationale says the idiom conveys longing or exhausted hope.
   confidence: high
   alternatives_preserved:
   - prolonged disappointment
-  - longing
-  - hope deferred
+  - exhausted hope
 translation_notes:
   risk_flags:
-  - risk: “Wanted or needed” is broader than either lexical option alone.
-    mitigation: Both senses are retained because the POB audit documents desire as lexical and need as contextual.
+  - risk: “Longed for” could sound like a mere wish rather than a genuine need.
+    mitigation: Footnote [a] preserves the contextually supported alternative “what they needed.”
+  - risk: The main text does not retain the Hebrew image of failing eyes.
+    mitigation: Footnote [b] preserves the image while the main text communicates its meaning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/031/016.yaml
   source_text_sha256: 9adfe471cea905d4901e33c874d6814aecdbdb1f933092b920a29785f04a41ef
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 816912d2fe40cfed8d667f0d57048aca2339e6c15472385306e147cef7e945b4
-  timestamp: '2026-07-11T20:25:51Z'
-  output_hash: 6f468c3e39432c37cc9e06b7c6689341bff9efb242f59a3688d9b5ff42a722d1
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fd1e2c653e39dda4e64c6261ccc062ad22f62dc2a3e5e923e336ae33e43a9bad
+  timestamp: '2026-08-28T23:34:55Z'
+  output_hash: 0d61a8dcc3931686ae5a2feda38529abfcfe26d010fab7067e3ed7cfcf97630f
   usage:
-    prompt_tokens: 2516
-    completion_tokens: 742
-    total_tokens: 3258
-    reasoning_tokens: 340
+    prompt_tokens: 3646
+    completion_tokens: 776
+    total_tokens: 4422
+    reasoning_tokens: 293
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:13Z'
+  previous_text: If I have kept the poor from receiving what they wanted or needed, or made a widow’s eyes grow weary from waiting,
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:08Z'
+  previous_text: If I have denied the poor what they longed for,[a] or made a widow wait so long that her eyes grew weary,[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:55Z'
+  previous_text: If I have denied the poor what they longed for,[a] or made a widow’s eyes grow weary from waiting,[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 19dc240c2057d6ca0c5ae5db33577aa2302eabbf4d846648f872e798a0116b82
+  review_summary: The first clause is a clear, warranted simplification of “what they desired”; its lexical breadth is appropriately retained by footnote a. The second clause rightly makes the idiom’s prolonged expectation explicit, as authorized by the POB audit trail, but “eyes grow weary” risks recasting an idiom of disappointed or exhausted hope as literal physical eye fatigue. Revising it to state lost hope while retaining waiting preserves the source-supported force and improves readability without importing doctrine.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

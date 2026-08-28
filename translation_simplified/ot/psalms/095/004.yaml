@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/095/004.yaml
-  text: in whose hand are the depths of the earth[a][b], and the heights of the mountains are his.
+  text: in whose hand are the depths of the earth, and the heights of the mountains are his.[a]
   footnotes:
   - marker: a
-    text: Or 'the peaks of the mountains belong to him.'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'the deep places of the earth.'
+    text: Or “the peaks of the mountains.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,41 +31,63 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He holds the depths of the earth in his hand, and the heights of the mountains belong to him.
+  text: The deep places of the earth are in his hand, and the mountain heights belong to him.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “the mountain peaks.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: in whose hand are the depths of the earth
-  simplified_phrase: He holds the depths of the earth in his hand
-  preserved_meaning: The LORD possesses and rules even the earth’s deepest places.
-  reasoning_layer_used: Lexical decision for בְּיָדוֹ and theological decision on divine ownership
-  rationale: The active sentence is easier to follow while preserving the concrete hand image.
+  simplified_phrase: The deep places of the earth are in his hand
+  preserved_meaning: The LORD sovereignly possesses even the earth’s deep or inaccessible places.
+  reasoning_layer_used: POB lexical decisions and theological decision
+  rationale: The reordered clause reads naturally while preserving the concrete image of God’s hand.
 - pob_phrase: the heights of the mountains are his
-  simplified_phrase: the heights of the mountains belong to him
-  preserved_meaning: The highest parts of the mountains are the LORD’s possession.
-  reasoning_layer_used: Lexical decisions for וְתוֹעֲפוֹת and לוֹ
-  rationale: “Belong to him” states the possessive relationship in familiar English.
+  simplified_phrase: the mountain heights belong to him
+  preserved_meaning: The lofty parts of the mountains are the LORD’s possession.
+  reasoning_layer_used: POB lexical decisions
+  rationale: “Belong to him” expresses the possession plainly while retaining the depths-and-heights contrast.
 translation_notes:
   risk_flags:
-  - risk: Changing the relative clause to “He” depends on the LORD named in the preceding verse.
-    mitigation: The verse remains grammatically clear in context and keeps the same referent.
+  - risk: Making the relative clause a sentence slightly reduces its grammatical link to the previous verse.
+    mitigation: The pronouns still refer clearly to the LORD in the immediate context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/095/004.yaml
   source_text_sha256: 0e74d64b3d372517156d266a3b87331fc2b742cd878d6100909aeaca92f14a92
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: d8c45c096b78254635d13e97ce6908a63176821fb23889e84ef1a33f3251d104
-  timestamp: '2026-07-11T20:55:39Z'
-  output_hash: 88b9b4778a9fa197805df74e5864e21e70e78e4dff11dd216fbd0535b914f3ce
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 4e6ef2f3475b460c56d8f2517405430bda7775c0724cf8b743f49eeaa8df75ed
+  timestamp: '2026-08-28T23:35:55Z'
+  output_hash: 852e5f40c4941adfcf75d8250f548e56d31d5dafd992d88424798a13fcdf100f
   usage:
-    prompt_tokens: 2502
-    completion_tokens: 439
-    total_tokens: 2941
-    reasoning_tokens: 148
+    prompt_tokens: 3352
+    completion_tokens: 458
+    total_tokens: 3810
+    reasoning_tokens: 166
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:56Z'
+  previous_text: He holds the depths of the earth in his hand, and the heights of the mountains belong to him.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:55Z'
+  previous_text: The deepest places of the earth are in his hand, and the mountain heights belong to him.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: de3ae26af4eae86878a89e4912a82eb182fa88e5610ec46df8c797ed544b0161
+  review_summary: The reordering makes the first clause substantially easier to read, and “belong to him” is a warranted, clear rendering of possession. The concrete image of God’s hand and the depths/heights contrast remain intact. Replace “deepest places” with “deep places” to avoid adding an unwarranted superlative while retaining the intended sense.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

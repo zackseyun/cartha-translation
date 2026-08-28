@@ -11,17 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/078/013.yaml
-  text: He split the sea and made them pass through[a][b][c]; he made the waters stand like a heap.
-  footnotes:
-  - marker: a
-    text: Or 'like a wall'; Hebrew 'like a heap,' emphasizing the waters piled up.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'caused them to cross.'
-    reason: lexical_alternative
-  - marker: c
-    text: Or 'divided the sea.'
-    reason: lexical_alternative
+  text: He split the sea and brought them through; he made the waters stand like a heap.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,41 +27,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He split open the sea and brought them through it. He made the waters stand like a heap.
+  text: He split open the sea and brought them through. He made the water stand like a heap.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: He split the sea and made them pass through
-  simplified_phrase: He split open the sea and brought them through it
-  preserved_meaning: God opened the sea and caused the people to go through it.
-  reasoning_layer_used: Lexical decisions for בָּקַע and וַיַּעֲבִירֵם
-  rationale: “Split open” clarifies the action, while “brought them through” naturally retains God as its cause.
+- pob_phrase: He split the sea
+  simplified_phrase: He split open the sea
+  preserved_meaning: God opened the sea by splitting it.
+  reasoning_layer_used: Lexical decision for בָּקַע
+  rationale: “Open” makes the result of splitting the sea immediately clear.
+- pob_phrase: the waters
+  simplified_phrase: the water
+  preserved_meaning: The sea water stood in a mass.
+  reasoning_layer_used: Lexical decision for מַיִם
+  rationale: Singular “water” is more natural in common modern English.
 - pob_phrase: he made the waters stand like a heap
-  simplified_phrase: He made the waters stand like a heap
-  preserved_meaning: The waters were piled up by God's action.
-  reasoning_layer_used: Lexical and theological decisions for וַיַּצֶּב and נֵד
-  rationale: The concrete heap image remains because it carries the verse's vivid description without explaining the mechanism.
+  simplified_phrase: He made the water stand like a heap
+  preserved_meaning: God caused the water to stand in a heap-like mass.
+  reasoning_layer_used: Lexical decisions for וַיַּצֶּב and נֵד; theological decision on miracle imagery
+  rationale: The wording keeps the vivid heap image without redundantly adding “piled up.”
+interpretive_expansions:
+- pob_phrase: split the sea
+  rendering: split open the sea
+  claim: Splitting the sea opened a way through it.
+  evidence:
+  - The lexical rationale says בָּקַע denotes splitting or cleaving open.
+  - The next clause says God brought the people through the sea.
+  confidence: high
+  alternatives_preserved:
+  - The wording does not explain the miracle’s mechanism.
 translation_notes:
   risk_flags:
-  - risk: “Brought them through” states the causative force less explicitly than “made them pass through.”
-    mitigation: God remains the active subject, and the wording is an approved POB lexical alternative.
+  - risk: “Split open” states the result of the splitting more explicitly than POB.
+    mitigation: The lexical rationale and the people’s passage directly support this clarification.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/078/013.yaml
   source_text_sha256: b0a7f5bff06b46ab02ba4bc200808ef5882a5a1c40f10e4f0e107599d79539bb
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: dab286904f60f76d47cc7418b8dee41d8fb52bbe2906fbe4a0a91f08b37ebf37
-  timestamp: '2026-07-11T20:49:38Z'
-  output_hash: 528192b8b5f5c7d3af0e68e90d614d1ca05a5854729d10ccb7e8e01f6b4500bd
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8beb0f792d1d6ff22df34d3d310a53f39a80e7d0e40f7fc07c27ce7f969a29db
+  timestamp: '2026-08-28T23:35:44Z'
+  output_hash: bfcebbbf201252ebdcc73a5b185b9e09ccff3e30f47a490752280db0fe522452
   usage:
-    prompt_tokens: 2480
-    completion_tokens: 808
-    total_tokens: 3288
-    reasoning_tokens: 493
+    prompt_tokens: 3434
+    completion_tokens: 544
+    total_tokens: 3978
+    reasoning_tokens: 127
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:33Z'
+  previous_text: He split open the sea and brought them through it. He made the waters stand like a heap.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:44Z'
+  previous_text: He split the sea open and brought them through. He made the water stand piled up like a heap.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: d73c00a1887d2d2fe327ad77737933e7c3401fef603a433897b155eb16bd8a66
+  review_summary: “Split open” is a warranted, useful clarification of splitting the sea and retains God’s action and the people’s passage. Singular “water” is also an acceptable modern-English simplification. However, “stand piled up like a heap” redundantly restates the same image and is stylistically clumsy. Remove “piled up” while retaining the source’s vivid comparison and without explaining the miracle’s mechanism.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

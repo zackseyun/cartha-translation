@@ -11,11 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/027/003.yaml
-  text: A stone is heavy[a], and sand is weighty, but a fool’s anger is heavier than both of them.
-  footnotes:
-  - marker: a
-    text: Or 'A stone is heavy and a load of sand [is heavy], but a fool’s vexation is heavier than both.' The Hebrew uses closely related terms for heaviness in the first and third lines.
-    reason: lexical_alternative
+  text: A stone is heavy, and a load of sand is burdensome, but a fool’s anger is heavier than both.
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,52 +27,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A stone is heavy, and so is a load of sand. But a fool’s anger is heavier than both.
+  text: A stone is heavy, and a load of sand is hard to carry. But a fool’s anger weighs more heavily than either one.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: sand is weighty
-  simplified_phrase: so is a load of sand
-  preserved_meaning: Sand is pictured as a heavy load that is difficult to bear.
-  reasoning_layer_used: POB lexical decision and lexical-alternative footnote for נֵטֶל
-  rationale: “A load of sand” is natural English and preserves the concrete burden image.
-- pob_phrase: a fool’s anger is heavier than both of them
-  simplified_phrase: a fool’s anger is heavier than both
-  preserved_meaning: A fool’s anger is a greater burden than the stone and the load of sand.
+- pob_phrase: a load of sand is burdensome
+  simplified_phrase: a load of sand is hard to carry
+  preserved_meaning: The sand remains a concrete load whose weight burdens the person bearing it.
+  reasoning_layer_used: POB lexical decision for נֵטֶל and the applied source-audit revision
+  rationale: The common phrase “hard to carry” makes the burden immediately understandable.
+- pob_phrase: a fool’s anger is heavier than both
+  simplified_phrase: a fool’s anger weighs more heavily than either one
+  preserved_meaning: A fool’s anger is more burdensome than the stone or the sand.
   reasoning_layer_used: POB lexical decisions for כַעַס, כָּבֵד, and מִשְּׁנֵיהֶם
-  rationale: The direct comparison keeps the source’s heaviness metaphor clear.
+  rationale: This wording keeps the weight comparison while making its figurative use natural in English.
 interpretive_expansions:
-- pob_phrase: sand is weighty
-  rendering: a load of sand
-  claim: The sand is presented as a quantity borne as a load.
+- pob_phrase: a load of sand is burdensome
+  rendering: a load of sand is hard to carry
+  claim: The load is burdensome because someone must bear its weight.
   evidence:
-  - The POB lexical note says נֵטֶל refers to a load or something borne.
-  - The POB footnote explicitly offers “a load of sand.”
+  - The POB lexical rationale defines נֵטֶל as a load or something borne.
+  - The immediate context compares the load’s weight with a stone and a fool’s anger.
   confidence: high
   alternatives_preserved:
-  - sand is weighty
-translation_notes: {}
+  - a load of sand is burdensome
+translation_notes:
+  risk_flags:
+  - risk: “Weighs more heavily” may sound less concrete than “is heavier.”
+    mitigation: The stone and sand keep the physical weight image clear while the idiom communicates the greater burden of anger.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/027/003.yaml
   source_text_sha256: 5a5c2a5b617063a3d24dc1185e86ea2be400e294faf7dafd3a4ebcc0994a45d9
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: e885d2202d96d10a76e64b6d29874ea9cf6db22cb3e7d9daea81e380d144cbd4
-  timestamp: '2026-07-12T09:53:09Z'
-  output_hash: 6295278b4c3fdab4981e5241a4bc323409bb7d18349b2b02ef0ffb2cd9ab3d92
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: bc8d226b850c58a3352ce416bd95c2526ccf738bc39870b680ca8fe36e9b3c7b
+  timestamp: '2026-08-28T23:03:44Z'
+  output_hash: 1b0b65b0b686a2d611852d8ae303a37645b7bcfe3809094237c8b3e33b8e18b5
   usage:
-    prompt_tokens: 3262
-    completion_tokens: 348
-    total_tokens: 3610
-    reasoning_tokens: 0
+    prompt_tokens: 2660
+    completion_tokens: 657
+    total_tokens: 3317
+    reasoning_tokens: 235
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:09Z'
   previous_text: A stone is heavy, and so is a load of sand. But a fool’s anger weighs more heavily than both.
@@ -87,3 +85,8 @@ spob_revision_history:
   review_summary: 'The clarification “a load of sand” is warranted by נֵטֶל, the POB audit trail, and the explicit POB footnote alternative, and it makes the proverb’s concrete burden image easier to understand. Revise only the final predicate: “is heavier” follows the source comparison more directly and is clearer than “weighs more heavily,” while preserving the intended metaphor and comparison.'
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:03:44Z'
+  previous_text: A stone is heavy, and so is a load of sand. But a fool’s anger is heavier than both.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

@@ -21,52 +21,62 @@ base_translation:
     output_hash: 364b8605ddd0d7ebf8dbf3ee38784eee3d299d88d801cd91a5dd47d4accf114e
 translation:
   language: en
-  text: My devotion to you burns so fiercely that it consumes me, because my enemies have forgotten your words.
+  text: My zeal consumes me, because my enemies have forgotten your words.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: My zeal consumes me
-  simplified_phrase: My devotion to you burns so fiercely that it consumes me
-  preserved_meaning: The speaker’s intense loyalty is overwhelming him like a consuming fire.
-  reasoning_layer_used: POB translation and immediate poetic context
-  rationale: “Devotion” explains zeal, while “burns” preserves the force of the consuming image.
 - pob_phrase: my foes
   simplified_phrase: my enemies
-  preserved_meaning: The people opposed to the speaker remain clearly identified.
+  preserved_meaning: The people who oppose the speaker remain in view.
   reasoning_layer_used: POB translation
-  rationale: “Enemies” is more common modern English than “foes.”
-interpretive_expansions:
-- pob_phrase: My zeal
-  rendering: My devotion to you
-  claim: The speaker’s zeal is directed toward God and his honor.
-  evidence:
-  - The zeal is provoked by enemies forgetting God’s words.
-  - The repeated second-person address throughout the psalm centers the speaker’s devotion on God.
-  confidence: moderate
-  alternatives_preserved:
-  - Devotion to God’s words
-  - Zeal for God’s honor
+  rationale: “Enemies” is more familiar modern English than “foes.”
 translation_notes:
   risk_flags:
-  - risk: “Devotion to you” makes the object of zeal explicit although Hebrew leaves it unstated.
-    mitigation: The wording remains broad enough to include devotion to God, his honor, and his words.
+  - risk: “Zeal” does not state whether it is for God, for God's words, or indignation at their neglect.
+    mitigation: The wording preserves the source's ambiguity while the causal clause supplies the context.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/119/139.yaml
   source_text_sha256: 831ef0e85cac0599b47a7f34302c920bf4e8b773c448d4d2ac19045d76b5763a
-  pob_commit_sha: 10975b14a09f35fcd9d540512a844c945cec1b29
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 6043cb72925b4a2c6768aaa523ff58d313f1c678f0a465cf2bb01668fd28164f
-  timestamp: '2026-07-27T04:22:57Z'
-  output_hash: 701bc5f4752b9b88288888bc10854af63db9cf3b2ae9f8798dabd852bef768b4
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 67e4fd4e5a308572a905f4bcd984fee2c449431403a81c2404799df7be251c6f
+  timestamp: '2026-08-28T23:36:14Z'
+  output_hash: e233e1cbeff50632c328f6bc793f176aac4f6025d0074d58622ec2249d644191
   usage:
-    prompt_tokens: 1742
-    completion_tokens: 864
-    total_tokens: 2606
-    reasoning_tokens: 512
+    prompt_tokens: 2463
+    completion_tokens: 264
+    total_tokens: 2727
+    reasoning_tokens: 91
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: My zeal
+  rendering: My passion for you
+  claim: The speaker's zeal is directed toward God and his words.
+  evidence:
+  - The following clause grounds the zeal in the enemies' forgetting God's words.
+  confidence: high
+  alternatives_preserved:
+  - passion for God's words
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:58:45Z'
+  previous_text: My devotion to you burns so fiercely that it consumes me, because my enemies have forgotten your words.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:14Z'
+  previous_text: My passion for you consumes me, because my enemies have forgotten your words.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bc800d356eb68b978aa426fe4000ce40a9ab8bffba02903f737ad7447f8da2dd
+  review_summary: Replace “foes” with the clearer “enemies,” but do not add “for you.” That addition resolves an unexpressed object and narrows the verse beyond what the source and immediate context require. The recommended wording preserves the forceful consuming image and the source-text ambiguity while still improving accessibility over POB.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

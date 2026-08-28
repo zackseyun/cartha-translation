@@ -31,42 +31,49 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: So he raised his hand and swore to them that he would make them fall in the wilderness.[a]
+  text: So he lifted his hand and swore to them that he would make them fall in the wilderness.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Raising the hand was the gesture used when taking an oath.
-    reason: cultural_note
 simplification_decisions:
-- pob_phrase: So he lifted his hand and swore to them that he would make them fall in the wilderness.
-  simplified_phrase: So he raised his hand and swore to them that he would make them fall in the wilderness.
-  preserved_meaning: Made the oath meaning explicit without losing the raised-hand image.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Made the oath meaning explicit without losing the raised-hand image.
-interpretive_expansions: []
+- pob_phrase: lifted his hand and swore to them
+  simplified_phrase: lifted his hand and swore to them
+  preserved_meaning: The raised-hand image remains, while its meaning as an oath is explicit.
+  reasoning_layer_used: POB lexical and theological decisions on the oath-taking idiom
+  rationale: The wording is already clear, so no added intensifier is needed.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: Modern readers could mistake lifting the hand for a threat or attack.
+    mitigation: The words “swore to them” directly explain the gesture as oath-taking.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/106/026.yaml
   source_text_sha256: f2150b9932022b2821022b51296a53a5dec611b1f252916b6914d7ff3f84f77b
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: f9088b3f1ee6780089a10d58e2684c5cd60f59bb8aa695d10e18c0d79f4e0bd8
-  timestamp: '2026-07-11T20:52:58Z'
-  output_hash: 9a751f3fab5442e2bda9b6131d77c760a5f7cf7797b3a4d80c0a6e644736a649
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fc88ad6fa61d15df48de3e5bf1fc51c6946129a761afadcde58cf168fa62952c
+  timestamp: '2026-08-28T23:36:09Z'
+  output_hash: 79cd4d52a92415089f1ed96dc02b3f0a201ada26169e8814781578bac5f580a5
   usage:
-    prompt_tokens: 2406
-    completion_tokens: 784
-    total_tokens: 3190
-    reasoning_tokens: 356
+    prompt_tokens: 3149
+    completion_tokens: 820
+    total_tokens: 3969
+    reasoning_tokens: 615
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: swore to them
+  rendering: solemnly swore to them
+  claim: The oath was a grave declaration of judgment.
+  evidence:
+  - The POB rationale identifies the gesture as a solemn judicial oath in the wilderness judgment context.
+  confidence: high
+  alternatives_preserved:
+  - swore to them
+retained_terms: []
 spob_revision_history:
 - timestamp: '2026-08-27T11:16:55Z'
   previous_text: So he raised his hand against them in judgment, intending to make them fall in the wilderness.[a]
@@ -74,3 +81,18 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Made the oath meaning explicit without losing the raised-hand image.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:59:01Z'
+  previous_text: So he raised his hand and swore to them that he would make them fall in the wilderness.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:09Z'
+  previous_text: So he lifted his hand and solemnly swore to them that he would make them fall in the wilderness.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 894c5087ed6ba254946e0108e3225d34007b551276e88e214fbb79cf6381ee57
+  review_summary: Revise by removing “solemnly.” Making the oath explicit is warranted by the Hebrew idiom and is already present in POB; retaining “lifted his hand” preserves the gesture. The added intensifier is compatible with the context but is redundant and imports a degree of interpretive emphasis without a necessary clarity benefit.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

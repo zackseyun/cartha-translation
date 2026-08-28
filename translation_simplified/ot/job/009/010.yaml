@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/009/010.yaml
-  text: who does great things beyond searching out[b][a], and wonders beyond number.
+  text: who does great things beyond searching out[a], and wonders beyond number.[b]
   footnotes:
   - marker: a
-    text: Or 'past finding out.' The Hebrew idiom means that his great acts cannot be fully investigated or comprehended.
+    text: Or “past finding out.” The Hebrew idiom means that his great acts cannot be fully investigated or comprehended.
     reason: lexical_alternative
   - marker: b
-    text: Or 'without number.'
+    text: Or “without number.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,49 +34,62 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: He does great things no one can fully understand, and wonders too many to count.
+  text: who does great things no one can fully understand and wonders no one can count.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: who does great things beyond searching out
-  simplified_phrase: He does great things no one can fully understand
-  preserved_meaning: God’s great acts exceed human comprehension.
-  reasoning_layer_used: POB lexical decision and footnote a
-  rationale: The concrete wording explains the Hebrew idiom in common English.
+- pob_phrase: great things beyond searching out
+  simplified_phrase: great things no one can fully understand
+  preserved_meaning: God’s great acts cannot be fully investigated or comprehended.
+  reasoning_layer_used: POB lexical decision for עַד אֵין חֵקֶר
+  rationale: The direct wording communicates the Hebrew idiom without the opaque phrase “searching out.”
 - pob_phrase: wonders beyond number
-  simplified_phrase: wonders too many to count
+  simplified_phrase: wonders no one can count
   preserved_meaning: God’s extraordinary acts are innumerable.
-  reasoning_layer_used: POB lexical decision for עַד אֵין מִסְפָּר
-  rationale: The new phrase states the same numerical image naturally.
+  reasoning_layer_used: POB lexical decisions for וְנִפְלָאוֹת and עַד אֵין מִסְפָּר
+  rationale: The active clause is natural English while retaining both the wonders and their countless number.
 interpretive_expansions:
 - pob_phrase: beyond searching out
   rendering: no one can fully understand
-  claim: The limit is human inability to comprehend God’s great acts fully.
+  claim: The limit concerns human ability to comprehend God’s acts completely.
   evidence:
-  - POB footnote a explicitly identifies investigation and comprehension.
-  - The lexical rationale describes the acts as beyond human comprehension.
+  - The POB footnote and lexical rationale explicitly identify human investigation and comprehension.
   confidence: high
   alternatives_preserved:
   - past finding out
-  - impossible to investigate fully
-translation_notes: {}
+  - cannot be fully investigated
+translation_notes:
+  risk_flags:
+  - risk: “No one” makes the implied human limitation explicit.
+    mitigation: The POB audit expressly defines the idiom as beyond human comprehension.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/009/010.yaml
   source_text_sha256: 6841480cfab46e2b86a9e711b0f867c954dac04e8830b50a42dbee14d2cdccea
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 8384673aaf8cc838d2b135a03d4c9da153e4c19397489a90a29c5687691cfd6f
-  timestamp: '2026-07-11T18:56:03Z'
-  output_hash: 57d2bd839c23bac810261275cc83cb9ebae020c62639ee58a997133f15740a15
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: bb2f01029c16d52a2df210b4d48a7da6eeb582aeeef693c283039d5ec7dcfa69
+  timestamp: '2026-08-28T22:52:04Z'
+  output_hash: 6915e3a8fe2c18ba4a58c8f6e14229584e532f7af3ee8af658e52c3afa0abf6b
   usage:
-    prompt_tokens: 2252
-    completion_tokens: 562
-    total_tokens: 2814
-    reasoning_tokens: 260
+    prompt_tokens: 2419
+    completion_tokens: 527
+    total_tokens: 2946
+    reasoning_tokens: 172
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:31Z'
+  previous_text: He does great things no one can fully understand, and wonders too many to count.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:04Z'
+  previous_text: who does great things that cannot be fully understood, and wonders too many to count.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

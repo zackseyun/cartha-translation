@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/086/005.yaml
-  text: For you[a], Lord, are good and forgiving, abounding in steadfast love to all who call on you.
+  text: For you, Lord, are good and forgiving[a], abounding in steadfast love to all who call on you.
   footnotes:
   - marker: a
-    text: Or 'Because you, Lord, are good and ready to forgive, and great in steadfast love to all who call on you.'
+    text: Or “ready to forgive.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,41 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For you are good, Lord, and you forgive. Your steadfast love overflows to everyone who calls on you.
+  text: For you, Lord, are good and forgiving.[a] You have abundant steadfast love for everyone who calls on you.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “ready to forgive.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: you, Lord, are good and forgiving
-  simplified_phrase: you are good, Lord, and you forgive
-  preserved_meaning: God is both good and disposed to forgive.
-  reasoning_layer_used: Lexical decisions for אַתָּה, אֲדֹנָי, טוֹב, and סַלָּח
-  rationale: The predicate adjective is recast as a direct verb while keeping God's forgiving character.
-- pob_phrase: abounding in steadfast love to all
-  simplified_phrase: Your steadfast love overflows to everyone
-  preserved_meaning: God's loyal, enduring love is abundant toward all who invoke him.
-  reasoning_layer_used: Lexical and theological decisions for רַב חֶסֶד and לְכָל
-  rationale: A new sentence and the familiar image of overflowing make the abundance easier to grasp.
-translation_notes:
-  risk_flags:
-  - risk: “Overflows” makes the abundance more pictorial than the Hebrew construction itself.
-    mitigation: It preserves the POB’s force of “abounding” without changing steadfast love into mercy alone.
+- pob_phrase: are good and forgiving, abounding in steadfast love
+  simplified_phrase: are good and forgiving. You have abundant steadfast love
+  preserved_meaning: God is good, disposed to forgive, and rich in loyal, enduring love.
+  reasoning_layer_used: POB lexical decisions for סַלָּח and רַב חֶסֶד
+  rationale: Two sentences ease comprehension, while “abundant” preserves the source’s direct emphasis on greatness without adding an image.
+- pob_phrase: to all who call on you
+  simplified_phrase: for everyone who calls on you
+  preserved_meaning: God’s steadfast love benefits every person who invokes him in prayer.
+  reasoning_layer_used: POB lexical decision for לְכָל קֹרְאֶיךָ
+  rationale: “For everyone” expresses the same beneficiaries and inclusive scope in common English.
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/086/005.yaml
   source_text_sha256: fe106bb2efeeb47d689f067da31b1a4b416a598232add330fff78bd14d962c78
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5ee69a5e6c4fcf23394fed3d5a7068f7a1067631dd57467a69c24847ba0fd993
-  timestamp: '2026-07-11T21:04:25Z'
-  output_hash: c213a5d9886ae474b7a11abcedc5b1f6c917dba4a380b4352fa9b11c397daee6
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b7a26b44f086e105a2f24e51574548a1a820fe8bbcd73adb2c3081ed026444bb
+  timestamp: '2026-08-28T23:35:51Z'
+  output_hash: ff07ae4cfe1e43bab32165f796bc9eecb00acc80bcff9a620f67ed466ab4f2e5
   usage:
-    prompt_tokens: 2791
-    completion_tokens: 671
-    total_tokens: 3462
-    reasoning_tokens: 360
+    prompt_tokens: 3712
+    completion_tokens: 571
+    total_tokens: 4283
+    reasoning_tokens: 281
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:49Z'
+  previous_text: For you are good, Lord, and you forgive. Your steadfast love overflows to everyone who calls on you.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:51Z'
+  previous_text: For you, Lord, are good and forgiving.[a] Your steadfast love overflows to everyone who calls on you.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bd0007b6ba7c3d3e8d95ffc2287d69b845250ff135e96e2e0df431348655606a
+  review_summary: 'The two-sentence structure and “everyone” are warranted readability improvements that preserve the direct address and inclusive scope. Revise only the figurative “overflows”: use a direct expression of abundance so the simplification does not add an image beyond the Hebrew while still making the POB’s “abounding in” easier to understand.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

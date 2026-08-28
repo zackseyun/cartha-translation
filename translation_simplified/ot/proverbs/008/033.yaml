@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/008/033.yaml
-  text: Hear instruction and become wise[a], and do not neglect it.
+  text: Listen to instruction and become wise, and do not neglect it[a].
   footnotes:
   - marker: a
-    text: Or 'do not cast it off' or 'do not let it go.' The Hebrew verb can carry the sense of rejecting or neglecting instruction.
+    text: Or “do not cast it off” or “do not let it go.” The Hebrew verb can carry the sense of rejecting or neglecting instruction.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,67 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Listen to instruction and become wise. Do not ignore it.[a]
+  text: Listen carefully to instruction and become wise. Do not ignore it.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “do not cast it off” or “do not let it go.” The Hebrew can mean rejecting or neglecting instruction.
+    text: Or “do not cast it off” or “do not let it go.” The Hebrew verb can carry the sense of rejecting or neglecting instruction.
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Hear instruction
-  simplified_phrase: Listen to instruction
-  preserved_meaning: The command calls for attentive listening that can lead to obedience.
-  reasoning_layer_used: POB lexical decision for שִׁמְעוּ
-  rationale: “Listen to” expresses attentive hearing more naturally in modern English without narrowing it to “obey.”
-- pob_phrase: and do not neglect it
-  simplified_phrase: Do not ignore it
-  preserved_meaning: The warning forbids failing to hold on to the instruction just mentioned.
-  reasoning_layer_used: POB lexical decision for תִּפְרָעוּ
-  rationale: “Ignore” is more immediate for common readers, while the footnote preserves the stronger alternatives.
-- pob_phrase: Hear instruction and become wise, and do not neglect it.
-  simplified_phrase: Listen to instruction and become wise. Do not ignore it.
-  preserved_meaning: The two coordinated commands remain distinct and equally forceful.
-  reasoning_layer_used: POB translation structure and Hebrew imperative clauses
-  rationale: Two short sentences make the commands easier to follow without changing their relationship.
+- pob_phrase: Listen to instruction and become wise, and do not neglect it.
+  simplified_phrase: Listen carefully to instruction and become wise. Do not ignore it.
+  preserved_meaning: Receive formative teaching attentively, gain wisdom, and do not disregard that teaching.
+  reasoning_layer_used: POB lexical decisions and applied source-audit revision
+  rationale: Two short sentences separate the commands, while “ignore” expresses neglect in common English.
+interpretive_expansions:
+- pob_phrase: Listen to instruction
+  rendering: Listen carefully to instruction
+  claim: The command calls for attentive listening, not merely hearing sounds.
+  evidence:
+  - The POB lexical rationale identifies attentive listening as part of the Hebrew verb’s broad sense.
+  - The source audit says “Listen” retains the attentiveness called for by שִׁמְעוּ.
+  confidence: high
+  alternatives_preserved:
+  - Listen to instruction
+  - Hear instruction
 translation_notes:
   risk_flags:
-  - risk: “Ignore” may sound less forceful than deliberately casting instruction off.
-    mitigation: The footnote preserves the Hebrew verb’s stronger senses of rejection and letting go.
+  - risk: “Ignore” may suggest passive neglect more readily than active rejection.
+    mitigation: The footnote preserves “cast it off” and “let it go” as lexical alternatives.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/008/033.yaml
   source_text_sha256: 89309108f0f7c2964055e880f1dc113d1cedcb59342931a8914767eb2ef8b4c6
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 5f52d032bd285fc6d3198601f7b8c614242d4435afe00f713e6606eacf57c7ef
-  timestamp: '2026-07-11T21:04:43Z'
-  output_hash: 3fa5ca17253a36c973e9c92eb22940feb55d9bffe5d469c29c96402e18b9166a
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fc760e1fc32e46863cd5851423c500281ff36e347b67503a55b337f89bbab9e7
+  timestamp: '2026-08-28T23:34:09Z'
+  output_hash: 2a0dd9e549ca44f226e52a737f3b034a205a694ba5cc77dd2547ea864aa02af5
   usage:
-    prompt_tokens: 2212
-    completion_tokens: 574
-    total_tokens: 2786
-    reasoning_tokens: 187
+    prompt_tokens: 3253
+    completion_tokens: 448
+    total_tokens: 3701
+    reasoning_tokens: 99
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:06:18Z'
+  previous_text: Listen to instruction and become wise. Do not ignore it.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:09Z'
+  previous_text: Listen carefully to instruction and become wise. Do not ignore it.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 18876d443fac42e2ea742efc64ce2c762f3e0433f1de2b28c5bccbdee71d1ea3
+  review_summary: 'The main text is clearer than POB and remains warranted: “carefully” appropriately makes explicit the attentive reception inherent in the imperative, while “ignore” is an idiomatic expression of neglect in this context. No doctrinal expansion is introduced. Revise the footnote only, because it collapses lexical alternatives into a claim that both are simultaneously asserted by the Hebrew.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

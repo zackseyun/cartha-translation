@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/032/021.yaml
-  text: Please[a], let me not show partiality to any man[b], nor flatter any person.
+  text: Please, let me not show partiality to any man[a], nor give anyone a flattering title[b].
   footnotes:
   - marker: a
-    text: Literally, 'lift up the face of a man,' a Hebrew idiom meaning to show favoritism or partiality.
+    text: Literally, “lift up the face of a man,” a Hebrew idiom for showing favor or partiality.
     reason: lexical_alternative
   - marker: b
-    text: Or, 'nor give flattering titles to any person.'
+    text: Or, “address anyone by an honorific.” The Hebrew verb refers to naming or addressing someone by a title; the context gives the act its flattering or deferential sense.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,41 +34,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: Job 32:21 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''show partiality to a man''].'
 translation:
   language: en
-  text: Please, let me show no favoritism to any man or flatter anyone.
+  text: Please let me show no man special favor or address anyone with a flattering title.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: let me not show partiality
-  simplified_phrase: let me show no favoritism
-  preserved_meaning: Elihu earnestly asks not to favor one person over another.
-  reasoning_layer_used: POB lexical decision for אַל נָא and אֶשָּׂא פְנֵי אִישׁ
-  rationale: The rewrite keeps the earnest request while using the more familiar word “favoritism.”
-- pob_phrase: nor flatter any person
-  simplified_phrase: or flatter anyone
-  preserved_meaning: Elihu refuses to use flattering speech toward any person.
-  reasoning_layer_used: POB lexical decisions for וְאֶל אָדָם and לֹא אֲכַנֶּה
-  rationale: “Anyone” removes stiff repetition without changing the universal scope.
-translation_notes:
-  risk_flags:
-  - risk: “Any man” may sound limited to males to some modern readers.
-    mitigation: It is retained for the source’s masculine singular, while “anyone” makes the broader human scope clear.
+- pob_phrase: show partiality to any man
+  simplified_phrase: show no man special favor
+  preserved_meaning: Elihu asks not to favor one man over others.
+  reasoning_layer_used: POB lexical decision for אֶשָּׂא פְנֵי אִישׁ
+  rationale: This uses familiar English while retaining the source’s masculine singular “man.”
+- pob_phrase: give anyone a flattering title
+  simplified_phrase: address anyone with a flattering title
+  preserved_meaning: Elihu refuses to use deferential titles as flattery.
+  reasoning_layer_used: POB lexical decision and footnote for לֹא אֲכַנֶּה
+  rationale: This clarifies that the title is used in addressing someone without asserting a purpose to flatter.
+interpretive_expansions:
+- pob_phrase: give anyone a flattering title
+  rendering: address anyone with a flattering title
+  claim: The act involves addressing someone by a deferential or flattering title.
+  evidence:
+  - The POB lexical rationale says the verb concerns naming or addressing someone by a title.
+  - The POB footnote says the context gives the act its flattering or deferential sense.
+  confidence: high
+  alternatives_preserved:
+  - give anyone a flattering title
+  - address anyone by an honorific
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/032/021.yaml
   source_text_sha256: 663f294e95ad2f458af6e06f2097eafa95e58cf43981267121bb444914337ed5
-  pob_commit_sha: 308294cd708c214686cd9ee9d231e5af7ddf41de
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: a59d3d8bc0e4324928fd1defd08a1dddcc90fd023ec6a713499839600cff2396
-  timestamp: '2026-07-11T20:04:02Z'
-  output_hash: b854668acc17d568c40fa75e9097788fb108c58ae56909f05b615f986a90be23
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: fb52caeaa67f2f6ecd28d1913eff359dff47c8bb4c79fba16b1f245116aaa75d
+  timestamp: '2026-08-28T23:34:54Z'
+  output_hash: dec069d37507ee04afa6c8872f9438e6416d7966886dc5b280182a9a4036c012
   usage:
-    prompt_tokens: 2691
-    completion_tokens: 661
-    total_tokens: 3352
-    reasoning_tokens: 364
+    prompt_tokens: 3717
+    completion_tokens: 547
+    total_tokens: 4264
+    reasoning_tokens: 196
     estimated_cost_usd: 0.0
 status: simplified_draft
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:51:21Z'
+  previous_text: Please, let me show no favoritism to any man or flatter anyone.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:54Z'
+  previous_text: Please let me treat no man with special favor or address anyone by a title meant to flatter them.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 5360cfbcb9535ec5c9adafed834853f2e2cefd27361aa61192b9ea84c01980eb
+  review_summary: The first clause is a clear, warranted unpacking of the Hebrew idiom for partiality. The second clause appropriately clarifies that the verb concerns addressing or naming someone by a title, but “meant to flatter” adds an intent claim not required by the source or POB audit trail. “With a flattering title” preserves the contextual flattering/deferential force while remaining clear and publication-ready.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/078/031.yaml
-  text: Then the anger of God rose against them[a], and he killed the stoutest among them; he struck down the young men of Israel.
+  text: Then the anger of God rose against them, and he killed the stoutest among them[a]; he struck down the young men of Israel.
   footnotes:
   - marker: a
-    text: 'Hebrew: ''their fat ones''; likely meaning their stoutest or strongest men.'
+    text: 'Hebrew: “their fat ones”; likely meaning their stoutest or strongest men.'
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,78 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 78:31 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the strongest among them''].'
 translation:
   language: en
-  text: Then God’s anger rose against them. He killed their strongest men[a] and struck down Israel’s young men.
+  text: Then God’s anger rose against them. He killed the strongest men among them[a] and struck down Israel’s young men.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: 'Hebrew: “their fat ones,” probably meaning their strongest or most robust men.'
+    text: 'Hebrew: “their fat ones,” likely meaning their most robust or strongest men.'
     reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: the anger of God rose against them
-  simplified_phrase: God’s anger rose against them
-  preserved_meaning: God’s anger rose in hostility against the people.
-  reasoning_layer_used: lexical and theological decisions
-  rationale: The possessive form is easier while preserving the Hebrew image of rising anger.
+- pob_phrase: Then the anger of God rose against them
+  simplified_phrase: Then God’s anger rose against them
+  preserved_meaning: God’s anger rose against the people in judgment.
+  reasoning_layer_used: Lexical and theological decisions on וְאַף and עָלָה בָהֶם
+  rationale: The possessive wording is more natural while preserving the image of rising anger.
 - pob_phrase: the stoutest among them
-  simplified_phrase: their strongest men
-  preserved_meaning: God killed the robust or choice members of the people.
-  reasoning_layer_used: lexical decision and footnote
-  rationale: “Strongest men” communicates the likely sense more clearly than “stoutest.”
-- pob_phrase: and he killed ...; he struck down
-  simplified_phrase: He killed ... and struck down
-  preserved_meaning: God’s judgment caused the death and downfall of Israel’s men.
-  reasoning_layer_used: source parallelism and lexical decisions
-  rationale: A new sentence makes the sequence easier to follow without merging the two actions.
+  simplified_phrase: the strongest men among them
+  preserved_meaning: God killed the robust or choice men among the people.
+  reasoning_layer_used: Lexical decision and footnote on בְּמִשְׁמַנֵּיהֶם
+  rationale: “Strongest men” clearly conveys the contextual sense without asserting that they were well-fed.
+- pob_phrase: the young men of Israel
+  simplified_phrase: Israel’s young men
+  preserved_meaning: God struck down Israelite men in the prime of life.
+  reasoning_layer_used: Lexical decision on וּבַחוּרֵי יִשְׂרָאֵל
+  rationale: The possessive form is shorter and more natural without changing the reference.
 translation_notes:
   risk_flags:
-  - risk: “Strongest” may narrow a Hebrew expression that literally refers to fat or well-fed people.
-    mitigation: The footnote preserves the literal image and marks the contextual meaning as probable.
+  - risk: “Strongest” does not retain the Hebrew phrase’s literal image of fatness.
+    mitigation: The footnote gives the literal wording and explains its likely contextual meaning.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/078/031.yaml
   source_text_sha256: 647dfb8f4be2e6a3e1029dce36201fdbe6ef9d6ebef219e40bbbcc83fac09da1
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 0734521110b4c08dd266125f6e7475c21abcd33917ed0404fa06807454438038
-  timestamp: '2026-07-11T20:49:40Z'
-  output_hash: 5755af8192ef31b6b070f89684dc9ca43aae9e4225e93e9b09150baefebb9056
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 382c1efdf6949f773ad856ed78e16f9fb0407cdda64a7b62ba4089a4979eaba6
+  timestamp: '2026-08-28T23:35:42Z'
+  output_hash: da077d093852241f660a7b87bc629c2463ae28373e0b8777c2ee7a341feb34cb
   usage:
-    prompt_tokens: 3097
-    completion_tokens: 521
-    total_tokens: 3618
-    reasoning_tokens: 159
+    prompt_tokens: 4250
+    completion_tokens: 405
+    total_tokens: 4655
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: the stoutest among them
+  rendering: the strongest, best-fed men among them
+  claim: The expression identifies robust or choice men rather than merely men with large bodies.
+  evidence:
+  - The Hebrew literally refers to “their fat ones.”
+  - The POB lexical rationale understands the phrase as robust or choice members.
+  confidence: high
+  alternatives_preserved:
+  - their fat ones
+  - their most robust men
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:56:27Z'
+  previous_text: Then God’s anger rose against them. He killed their strongest men[a] and struck down Israel’s young men.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:42Z'
+  previous_text: Then God’s anger rose against them. He killed the strongest, best-fed men among them[a] and struck down Israel’s young men.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 2976bb0e7364e1f376644c55f72fcb222c3e023d4e38a93a821ace4249def171
+  review_summary: 'The possessive wording and shorter “Israel’s young men” are clear, faithful simplifications. “Strongest” appropriately makes POB’s “stoutest” understandable in this context. Remove “best-fed” from the main text: the literal association can remain in the footnote, while the main line should state the audit trail’s contextual meaning without adding a dietary characterization.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -18,41 +18,54 @@ base_translation:
     reason: lexical_alternative
 translation:
   language: en
-  text: For the choir director. A song and a psalm.
+  text: For the choir director. A song, a psalm.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: A song, a psalm.
-  simplified_phrase: A song and a psalm.
-  preserved_meaning: The heading identifies the work as both a song and a psalm.
-  reasoning_layer_used: POB text and source superscription
-  rationale: Adding “and” makes the two-part heading natural in common English.
+  simplified_phrase: A song, a psalm.
+  preserved_meaning: Both source labels remain without defining their exact relationship.
+  reasoning_layer_used: POB base text, source payload, and grounding review
+  rationale: The comma preserves the compact labels without suggesting that one explains the other.
 translation_notes:
-  source_alignment_notes: "Structural repair only: retained this record's existing simplified superscription and removed the duplicated verse 1 content after canonical POB numbering was corrected."
+  risk_flags:
+  - risk: The exact relationship between “song” and “psalm” is unstated.
+    mitigation: The comma keeps both labels without imposing a more specific relationship.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/066/000.yaml
   source_text_sha256: 0cada62b5191f0c1514569dba504b1033864833e24126a17e81510db914ff76f
-  pob_commit_sha: 804a4ce86483bc97cac867d063b82609102c8015
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 42e8e22d45c29097b4f82bef4fa95fc6eeb75aeb3487b3116cc020d246d868dd
-  timestamp: '2026-07-11T20:50:25Z'
-  output_hash: a0fb80cf2c252313419fdf80d3753d15d571149d79fb4c7b1aa3079f8520d8f6
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: b0a2d114d7baaf7502f93e931bf4b24a5c6b763ce476304a5a78af6afe12eaa5
+  timestamp: '2026-08-28T23:35:32Z'
+  output_hash: cfce1c6f871187fe30ebd7bb544df53d2a8565288b4834ae6dc1d49de57101db
   usage:
-    prompt_tokens: 2191
-    completion_tokens: 448
-    total_tokens: 2639
-    reasoning_tokens: 183
+    prompt_tokens: 2302
+    completion_tokens: 247
+    total_tokens: 2549
+    reasoning_tokens: 69
     estimated_cost_usd: 0.0
 status: simplified_draft
-spob_structural_repair:
-  method: canonical-slot-preservation-v1
-  canonical_pob_commit: 804a4ce86483bc97cac867d063b82609102c8015
-  slot: superscription
-  previous_text_sha256: 0a3a72544c5291c27405501867686bb090e98ae900f6463e8a2bcb58d8bb3e7e
-  wording_policy: preserved existing simplified slot wording; no similarity-based or model-authored replacement
-is_superscription: true
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:57:09Z'
+  previous_text: For the choir director. A song and a psalm.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:32Z'
+  previous_text: For the choir director. A song—a psalm.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 6345066be6e6d023287794daade2811ef502fe9ca8d3e33174f08195ac9d4cbd
+  review_summary: Revise to retain the POB punctuation. The draft preserves both labels and introduces no doctrinal expansion, but the dash is not meaningfully clearer and may subtly over-connect labels whose exact relationship remains unstated.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

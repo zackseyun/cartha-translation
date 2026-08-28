@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/041/004.yaml
-  text: As for me[a], I said, “O Yahweh, be gracious to me; heal my soul, for I have sinned against you.”
+  text: As for me, I said, “Yahweh, be gracious to me; heal me[a], for I have sinned against you.”
   footnotes:
   - marker: a
-    text: Or 'heal my life' or 'heal me'; Hebrew 'my soul' (nephesh) can also mean 'life' or 'self.'
+    text: Hebrew “heal my nephesh”; the word can mean life, self, or person.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,50 +31,70 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But I said, “Yahweh, show me grace. Heal my soul,[a] because I have sinned against you.”
+  text: I said, “Yahweh, show me grace. Heal me,[a] because I have sinned against you.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew can also mean “heal my life” or simply “heal me.”
+    text: Hebrew “heal my nephesh”; the word can mean my life, self, or whole person.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: As for me, I said
-  simplified_phrase: But I said
-  preserved_meaning: The speaker is emphasized in contrast with others while recounting his words.
-  reasoning_layer_used: Lexical decision for אֲנִי and immediate discourse context
-  rationale: “But I” expresses the contrast more naturally in common English.
+  simplified_phrase: I said
+  preserved_meaning: The psalmist reports his own prayer without adding an unsupported contrast.
+  reasoning_layer_used: POB lexical decision for אֲנִי and grounding review
+  rationale: A direct “I” keeps the explicit speaker clear in natural English.
 - pob_phrase: be gracious to me
   simplified_phrase: show me grace
-  preserved_meaning: The psalmist asks Yahweh for gracious favor and mercy.
-  reasoning_layer_used: Lexical decision for חָנֵּנִי
-  rationale: “Show me grace” is clearer while keeping the request broad.
+  preserved_meaning: The speaker asks Yahweh for gracious favor and mercy.
+  reasoning_layer_used: POB lexical decision for חָנֵּנִי
+  rationale: The active wording is easier to understand without narrowing grace to pity.
 - pob_phrase: for I have sinned against you
   simplified_phrase: because I have sinned against you
-  preserved_meaning: His confession gives the reason for his plea.
-  reasoning_layer_used: Lexical decisions for כִּי, חָטָאתִי, and לָךְ
-  rationale: “Because” makes the logical connection immediately clear.
+  preserved_meaning: His sin against Yahweh is given as the reason for his plea.
+  reasoning_layer_used: POB lexical decisions for כִּי and לָךְ
+  rationale: “Because” makes the reason for the plea immediately clear.
 translation_notes:
   risk_flags:
-  - risk: English “soul” may sound narrower than Hebrew nephesh.
-    mitigation: The footnote preserves the broader senses “life” and “me.”
+  - risk: Removing “As for me” reduces the source pronoun’s slight discourse emphasis.
+    mitigation: The explicit “I” still identifies the speaker without introducing an unwarranted adversative meaning.
+  - risk: Readers may take “heal me” as exclusively physical healing.
+    mitigation: The footnote preserves the Hebrew word’s broad possible reference to life, self, or whole person.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/041/004.yaml
   source_text_sha256: 6927a1cafc25793f48c18b5b87fa18ded9c0444e62cacbf9eb7e6da90b1526e8
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 776534879d9a1b702d870fc791f0bf58402abec19dadb49300c08ed886d1487d
-  timestamp: '2026-07-11T21:01:46Z'
-  output_hash: 2a35a3ea39f8dc525a7b9695cd8b8a8dc3a5161c8584d40a3fc8f44afe6006d9
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: be49886be26b96b18913769c634483f0e1b616bf7c28cd1557ce98c3e89da558
+  timestamp: '2026-08-28T23:35:19Z'
+  output_hash: 42127f927016507c924aba54b96d3dff5b0b0832a48264341d2be882e103c1d5
   usage:
-    prompt_tokens: 2752
-    completion_tokens: 612
-    total_tokens: 3364
-    reasoning_tokens: 236
+    prompt_tokens: 3837
+    completion_tokens: 416
+    total_tokens: 4253
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:10Z'
+  previous_text: But I said, “Yahweh, show me grace. Heal my soul,[a] because I have sinned against you.”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:19Z'
+  previous_text: But I said, “Yahweh, show me grace. Heal me,[a] because I have sinned against you.”
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 645dd993d0c57d9f3204987790071e34217f768fbd7625fd980492e07fda8391
+  review_summary: 'The revision is clearer than POB in “show me grace” and “because,” and it properly retains the broad object of “heal” in a footnote. Remove “But,” however: the source’s explicit “I” can be emphatic without encoding an adversative relationship. Also revise the note to express the lexical alternatives as possibilities, preserving the Hebrew breadth.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/064/001.yaml
-  text: Hear[a], O God, my voice in my complaint; preserve my life from the fear of the enemy.
+  text: Hear, O God, my voice in my complaint[a]; preserve my life from the fear of the enemy.
   footnotes:
   - marker: a
-    text: Or 'in my meditation' or 'in my musing.' The Hebrew term can refer to inward reflection as well as spoken complaint.
+    text: Or “in my meditation” or “in my musing.” The Hebrew term can refer to inward reflection as well as spoken complaint.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,45 +31,78 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 64:2 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''from the dread of''].'
 translation:
   language: en
-  text: God, hear my voice as I make my complaint.[a] Protect my life from the dread of the enemy.
+  text: God, hear my voice as I bring you my complaint.[a] Protect my life from fear of the enemy.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew may also mean “as I meditate” or “as I muse.”
+    text: The Hebrew can also mean “as I meditate” or “as I reflect.” It may refer to inward reflection as well as a spoken complaint.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: Hear, O God, my voice in my complaint
-  simplified_phrase: God, hear my voice as I make my complaint
+  simplified_phrase: God, hear my voice as I bring you my complaint
   preserved_meaning: The psalmist directly asks God to hear his spoken lament.
   reasoning_layer_used: POB lexical and theological decisions on שְׁמַע, קוֹלִי, and בְשִׂיחִי
   rationale: Ordinary clause order clarifies the prayer while retaining “my voice” and the chosen sense “complaint.”
-- pob_phrase: preserve my life from the fear of the enemy
-  simplified_phrase: Protect my life from the dread of the enemy
-  preserved_meaning: The psalmist asks God to guard his life amid the enemy’s fearful threat.
-  reasoning_layer_used: POB lexical decisions on מִפַּחַד, תִּצֹּר, and חַיָּי
-  rationale: “Protect” is clearer than “preserve,” while “dread” keeps the force of the documented lexical choice.
+- pob_phrase: preserve my life
+  simplified_phrase: Protect my life
+  preserved_meaning: The psalmist asks God to guard his life from danger.
+  reasoning_layer_used: POB lexical decisions on תִּצֹּר and חַיָּי
+  rationale: “Protect” is more familiar than “preserve” and retains the documented guarding sense.
+- pob_phrase: from the fear of the enemy
+  simplified_phrase: from fear of the enemy
+  preserved_meaning: The psalmist asks protection from dread associated with or directed toward the enemy.
+  reasoning_layer_used: POB lexical decision on מִפַּחַד אוֹיֵב and independent grounding review
+  rationale: Removing “the” makes the phrase natural while avoiding an added causal claim.
 translation_notes:
   risk_flags:
-  - risk: “Complaint” may suggest mere dissatisfaction rather than lament.
-    mitigation: The retained footnote preserves the Hebrew term’s wider range without weakening the contextual choice.
+  - risk: “Complaint” may suggest only spoken lament, though the Hebrew can also refer to inward reflection.
+    mitigation: The footnote preserves the documented alternatives without weakening the contextual choice.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/064/001.yaml
   source_text_sha256: f43d5bb0803b87cf361db23496d950c2b09a65a0ad5da85f3f9dcce28ddd49d5
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: df92c389a786e511326c0581809eed9e60813c15defdf8b97f78b6bfac1f4006
-  timestamp: '2026-07-11T20:49:34Z'
-  output_hash: fd97dfb7b968fd1cf33c6c3278af12fc9f87c95be1019508c76d4ef33ca5c699
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 8ca7aef239c611e1d04e8e827cab6d3f8760cc1e969afa6dc8f84eb5cef96cb2
+  timestamp: '2026-08-28T23:35:32Z'
+  output_hash: eb85240fde39d56e03670c1f524e6b4e7e019ffef231f1056a3fc26cec959eaf
   usage:
-    prompt_tokens: 2887
-    completion_tokens: 823
-    total_tokens: 3710
-    reasoning_tokens: 450
+    prompt_tokens: 3978
+    completion_tokens: 441
+    total_tokens: 4419
+    reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: from the fear of the enemy
+  rendering: from the fear the enemy causes
+  claim: The enemy is the source of the psalmist’s fear.
+  evidence:
+  - The Hebrew phrase links fear with the enemy.
+  - The surrounding lament asks for protection from hostile enemies.
+  confidence: high
+  alternatives_preserved:
+  - from fear of the enemy
+  - from dread of the enemy
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:54:55Z'
+  previous_text: God, hear my voice as I make my complaint.[a] Protect my life from the dread of the enemy.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:32Z'
+  previous_text: God, hear my voice as I bring you my complaint.[a] Protect my life from the fear the enemy causes.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: fe69571adbc1758cfee25ee3ff5a41033bfb4fa41df527f95879fabb68fe0709
+  review_summary: The draft meaningfully improves readability through ordinary word order and “Protect.” Its treatment of the complaint is warranted by the POB’s contextual reading, while the footnote responsibly preserves the lexical alternative. Revise the final clause to retain the source expression’s relationship between fear and enemy rather than making enemy-caused fear the sole meaning.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

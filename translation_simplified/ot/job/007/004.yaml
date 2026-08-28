@@ -11,16 +11,16 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/007/004.yaml
-  text: When I lie down[a], I say, ‘When will I arise?’ But the evening drags on[c][b], and I am full of tossing until dawn.
+  text: When I lie down[a], I say, “When will I arise?” But the evening drags on[b], and I am full of tossing until dawn[c].
   footnotes:
   - marker: a
-    text: 'Or ''If I lie down.'' The Hebrew particle can be read conditionally, but here it likely introduces a repeated circumstance: ''When I lie down.'''
+    text: Or “If I lie down.” Here the Hebrew particle likely introduces a repeated circumstance.
     reason: lexical_alternative
   - marker: b
-    text: Literally, 'and the evening is measured.' The sense is that the evening seems to stretch out slowly.
-    reason: lexical_alternative
+    text: Literally, “and the evening is measured out,” portraying the evening as stretching on.
+    reason: literal_form
   - marker: c
-    text: Hebrew נָשֶׁף can mean 'twilight' and may refer specifically here to morning twilight, that is, dawn.
+    text: Hebrew נָשֶׁף can denote twilight; here the context points to morning twilight, or dawn.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,53 +37,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: When I lie down,[a] I say, “When will I get up?” But the evening drags on, and I am overwhelmed by restless tossing until dawn.[b]
+  text: When I go to bed,[a] I ask, “When will I get up?” But the evening drags on, and I toss and turn until dawn.[b]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or “If I lie down.” Here the Hebrew most likely describes what happens repeatedly.
+    text: The Hebrew may also be translated “If I lie down,” but it probably describes what happens repeatedly.
     reason: lexical_alternative
   - marker: b
-    text: The Hebrew word can mean “twilight”; here it most likely means the morning twilight, or dawn.
+    text: The Hebrew word can mean twilight; here it refers to the morning twilight, or dawn.
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: When I lie down
+  simplified_phrase: When I go to bed
+  preserved_meaning: Job describes his repeated experience of lying down for the night.
+  reasoning_layer_used: POB lexical decisions and immediate context
+  rationale: “Go to bed” makes the nighttime setting immediately clear.
 - pob_phrase: When will I arise?
   simplified_phrase: When will I get up?
-  preserved_meaning: Job longs for the night to end so he can rise from bed.
-  reasoning_layer_used: POB lexical decision for מָתַי אָקוּם
-  rationale: “Get up” expresses the same action in more common English.
+  preserved_meaning: Job impatiently asks when the long night will end.
+  reasoning_layer_used: POB lexical rationale for מָתַי אָקוּם
+  rationale: “Will I get up” preserves the temporal question without suggesting ability or permission.
 - pob_phrase: I am full of tossing
-  simplified_phrase: I am overwhelmed by restless tossing
-  preserved_meaning: Job experiences an oppressive abundance of sleepless movement.
-  reasoning_layer_used: POB lexical decisions for וְשָׂבַעְתִּי and נְדֻדִים
-  rationale: This makes the negative sense of being filled with bodily restlessness immediately clear.
-- pob_phrase: the evening drags on
-  simplified_phrase: the evening drags on
-  preserved_meaning: The evening seems to stretch out slowly during Job’s suffering.
-  reasoning_layer_used: POB lexical decision for וּמִדַּד עָרֶב
-  rationale: The existing idiom is already plain and preserves the force of the measuring image.
+  simplified_phrase: I toss and turn
+  preserved_meaning: Job remains physically restless through the night.
+  reasoning_layer_used: POB lexical decision for נְדֻדִים
+  rationale: The familiar expression clearly conveys sleepless bodily restlessness.
 translation_notes:
   risk_flags:
-  - risk: “Dawn” selects morning twilight from a Hebrew word that can refer to twilight more broadly.
-    mitigation: The footnote preserves the lexical ambiguity while explaining the contextual choice.
+  - risk: “Go to bed” is more specific than the literal “lie down.”
+    mitigation: The references to evening and dawn clearly establish a nighttime setting.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/007/004.yaml
   source_text_sha256: f2305acf604396b1879c4438ea2b647b1f2f29fef46c2bb643c5d1c9547efdba
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 67d1a99785a076a735175678b038f84cbdcca03f73c32ea1372aff3199d1bff1
-  timestamp: '2026-07-11T19:30:29Z'
-  output_hash: 18bfb252c347ff0e406131d1a0066a44af586f69f0d7c8c5d1a62a8546112037
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: ac4508806375f232611579372c6734b6b067ab9e51417b6868ef0402c34308f8
+  timestamp: '2026-08-28T23:32:47Z'
+  output_hash: 44d1ae2eca68805a7a76d81d85846f9e96ef74e49bdef982532fcf91522efdc5
   usage:
-    prompt_tokens: 2670
-    completion_tokens: 955
-    total_tokens: 3625
-    reasoning_tokens: 508
+    prompt_tokens: 3658
+    completion_tokens: 476
+    total_tokens: 4134
+    reasoning_tokens: 73
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:49:20Z'
+  previous_text: When I lie down,[a] I say, “When will I get up?” But the evening drags on, and I am overwhelmed by restless tossing until dawn.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:32:47Z'
+  previous_text: When I go to bed,[a] I ask, “When can I get up?” But the evening drags on, and I toss and turn until dawn.[b]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: c5cfe852740c7c83eaa989281c36793a7ecfcd78a65315cb4c9544d112f26bc4
+  review_summary: 'The draft is substantially clearer and its expansions are warranted: “go to bed” is supported by the evening-to-dawn context, and “toss and turn” naturally conveys the Hebrew’s nocturnal restless tossing. Revise only “can I get up” to “will I get up” so the question retains Job’s temporal longing for the night to end rather than suggesting ability or permission.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

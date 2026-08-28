@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/050/020.yaml
-  text: You sit and speak against your brother[a]; you slander your own mother's son.
+  text: You sit and speak against your brother; you slander your own mother's son.[a]
   footnotes:
   - marker: a
-    text: Or 'you cast reproach on your own mother's son.' The Hebrew idiom is literally 'you give דפי,' meaning to place reproach, blame, or defaming speech on someone.
+    text: Or “you cast reproach on your own mother’s son.” The Hebrew idiom is literally “you give דפי,” meaning to place reproach, blame, or defaming speech on someone.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,55 +31,58 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: You sit and speak against your brother; you slander your own mother’s son.[a]
+  text: You sit there and attack your brother with your words. You slander your own mother’s son.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Or, “you heap disgrace on your own mother’s son.” The Hebrew expression includes blame or speech that damages someone’s reputation.
+    text: Or “you bring disgrace on your own mother’s son.” The Hebrew describes placing blame, disgrace, or damaging accusations on someone.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: You sit and speak against your brother
-  simplified_phrase: You sit and speak against your brother
-  preserved_meaning: The concrete image of sitting and speaking against a close relative remains.
-  reasoning_layer_used: POB lexical decisions for תֵּשֵׁב and בְּאָחִיךָ תְדַבֵּר
-  rationale: The wording is already clear and preserves the Hebrew image and hostile sense.
-- pob_phrase: you slander
-  simplified_phrase: you slander
-  preserved_meaning: The speech brings reproach and damages the family member’s reputation.
-  reasoning_layer_used: POB lexical decisions for נתן דפי
-  rationale: “Slander” avoids adding the unsupported ideas of spreading or making specific accusations.
-- pob_phrase: your own mother’s son
-  simplified_phrase: your own mother’s son
-  preserved_meaning: The emphatic reference to a very close family member remains intact.
-  reasoning_layer_used: POB lexical decision for בְּבֶן אִמְּךָ
-  rationale: The direct family image is clear and should not be generalized to “relative.”
+  simplified_phrase: You sit there and attack your brother with your words
+  preserved_meaning: The concrete image of sitting remains, while the speech is clearly hostile.
+  reasoning_layer_used: POB lexical decisions for תֵּשֵׁב, בְּאָחִיךָ, and תְדַבֵּר
+  rationale: The recasting makes the verbal hostility immediately clear without suggesting physical violence.
+- pob_phrase: you slander your own mother’s son
+  simplified_phrase: You slander your own mother’s son
+  preserved_meaning: The damaging speech and emphatic close family relationship remain distinct.
+  reasoning_layer_used: POB lexical decisions for בְּבֶן אִמְּךָ and דֹּפִי
+  rationale: The wording is already clear, and changing it would weaken either the slander or the close-kin emphasis.
+interpretive_expansions:
+- pob_phrase: speak against your brother
+  rendering: attack your brother with your words
+  claim: The speech is a hostile verbal attack, not neutral discussion about the brother.
+  evidence:
+  - The POB reads the preposition with דבר adversatively in this accusatory context.
+  - The parallel clause explicitly describes slander.
+  confidence: high
+  alternatives_preserved:
+  - speak against your brother
 translation_notes:
   risk_flags:
-  - risk: “Slander” can suggest specifically false claims, while the Hebrew idiom also includes reproach and defaming speech.
-    mitigation: The footnote preserves the idiom’s broader range.
+  - risk: “Attack” could be mistaken for physical violence.
+    mitigation: The phrase “with your words” explicitly limits the attack to hostile speech.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/050/020.yaml
   source_text_sha256: 7a2363bfe488f297a22bfa19d1ce9e5844cd854baba2cc6f8c120c9565dfb038
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 2e1806df774e8309977eef30208a6b3e70f0c76c6540e1310f69b28695ee8acf
-  timestamp: '2026-07-12T09:59:42Z'
-  output_hash: 2e413c0ca984dbb494b0b98440738d49744a11f858ae2de8fb13c1571c0ac096
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 2b50c233d933f7c6ae6fb10750530b1e9de959d7125f0cd5d8ed18a1e97a17e4
+  timestamp: '2026-08-28T22:56:09Z'
+  output_hash: 5476f11c884f0a7c36452cb0c7cafbe91a0a9158c23e225504a388dfca4943d0
   usage:
-    prompt_tokens: 3173
-    completion_tokens: 536
-    total_tokens: 3709
-    reasoning_tokens: 129
+    prompt_tokens: 2518
+    completion_tokens: 1570
+    total_tokens: 4088
+    reasoning_tokens: 1112
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:42Z'
   previous_text: You sit there speaking against your brother. You spread harmful accusations about your own mother’s son.[a]
@@ -91,3 +94,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:09Z'
+  previous_text: You sit and speak against your brother; you slander your own mother’s son.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

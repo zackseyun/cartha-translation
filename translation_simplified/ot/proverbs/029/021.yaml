@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/029/021.yaml
-  text: Whoever pampers his slave from youth[a], in the end he will become a son.
+  text: Whoever pampers his slave from youth, in the end he will become like a son.[a]
   footnotes:
   - marker: a
-    text: Hebrew מָנוֹן is uncertain. It has also been understood as 'a son' or 'one acting like a son,' yielding the sense that an indulged slave may presume on filial status; others take it more generally as 'trouble' or 'insubordination.'
-    reason: alternative_reading
+    text: The meaning of the final Hebrew word, מָנוֹן, is uncertain. It has been understood as “a son” or “like a son,” but proposed negative senses include “insolence” and “trouble.”
+    reason: textual_ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,61 +31,60 @@ base_translation:
     changes_summary: 'Replaced ''slave'' with ''servant'' for a more standard formal rendering of עבדו, and changed ''will have grief'' to ''he will become a son'' to reflect the Hebrew מָנוֹן as represented in the source text rather than an interpretive paraphrase. [Regression fix applied: slave restored (revision_pass had changed δοῦλος → servant against DOCTRINE.md policy)]'
 translation:
   language: en
-  text: If someone pampers his servant from a young age, in the end the servant will become a son.[a]
+  text: If a master pampers his slave from childhood, that slave will eventually become like a son.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew word here is uncertain. It may mean that the slave acts as though he were a son, or it may refer more generally to trouble or insubordination.
-    reason: alternative_reading
+    text: The final Hebrew word is uncertain. It may mean “like a son,” but it has also been understood negatively as “insolence” or “trouble.”
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Whoever pampers his slave from youth
-  simplified_phrase: If someone pampers his slave from a young age
-  preserved_meaning: The master treats a bonded household subordinate indulgently from early in life.
-  reasoning_layer_used: POB lexical decisions for מְפַנֵּק, מִנֹּעַר, and עַבְדּוֹ
-  rationale: The conditional form and “from a young age” make the warning natural while retaining “pampers” and “slave.”
-- pob_phrase: in the end he will become a son
-  simplified_phrase: in the end the slave will become a son
-  preserved_meaning: The indulged slave eventually reaches the outcome described by the POB as becoming a son.
-  reasoning_layer_used: POB main-text choice for מָנוֹן and its alternative-reading footnote
-  rationale: Naming the slave removes pronoun ambiguity without weakening the POB’s direct predicate.
+- pob_phrase: Whoever pampers his slave
+  simplified_phrase: If a master pampers his slave
+  preserved_meaning: The person doing the pampering has authority over the enslaved person.
+  reasoning_layer_used: POB lexical decision for עַבְדּוֹ
+  rationale: Naming the person as a master makes the household relationship immediately clear while retaining “slave.”
+- pob_phrase: from youth
+  simplified_phrase: from childhood
+  preserved_meaning: The indulgent treatment begins early in the slave’s life.
+  reasoning_layer_used: POB lexical decision for מִנֹּעַר
+  rationale: “From childhood” states the early-life timing in more familiar English.
+- pob_phrase: in the end he will become like a son
+  simplified_phrase: that slave will eventually become like a son
+  preserved_meaning: The traditional reading describes the slave’s eventual son-like position without claiming legal sonship.
+  reasoning_layer_used: POB lexical decisions and final ambiguity revision for יִהְיֶה מָנוֹן
+  rationale: The rewrite identifies the pronoun’s subject and uses “eventually” for a natural statement of outcome.
+interpretive_expansions:
+- pob_phrase: he will become
+  rendering: that slave will eventually become
+  claim: The slave, not the master, is the understood subject of the final clause.
+  evidence:
+  - The POB lexical rationale identifies the slave as the understood subject.
+  confidence: high
 translation_notes:
   risk_flags:
-  - risk: The rare Hebrew word מָנוֹן has several disputed meanings.
-    mitigation: The main text retains the POB’s chosen reading, while the footnote preserves the principal alternatives.
+  - risk: The uncertain final Hebrew word may carry a negative sense rather than “like a son.”
+    mitigation: The main text follows the POB’s traditional reading, while the footnote preserves the materially different proposals.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/029/021.yaml
   source_text_sha256: 9dedddfffaf9462a490cce041d5e59eb538e484a3cc397a708801c4e54d60675
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: f147f365099e1e0100a5e13e95d05fb639e4f38a90f029e4ed1d0909b370d1a8
-  timestamp: '2026-07-12T09:53:20Z'
-  output_hash: 46e1568b7850d1de44dcc90cf159a8d94e7d657b7a2c6d75c1a80526a3c25f87
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: c108d19257980beaf60880f16ab5b852d46769a08607409e84c4c74616c773e7
+  timestamp: '2026-08-28T23:04:04Z'
+  output_hash: 15895face2757d7ee3441797a1e9a8655ce309769dbe15abdfc8bc03c1fd46bd
   usage:
-    prompt_tokens: 3701
-    completion_tokens: 372
-    total_tokens: 4073
-    reasoning_tokens: 0
+    prompt_tokens: 2868
+    completion_tokens: 1007
+    total_tokens: 3875
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions:
-- pob_phrase: he will become a son
-  rendering: the slave will become like a son
-  claim: The outcome concerns the slave taking on a son's status rather than becoming a biological son.
-  evidence:
-  - The POB footnote explicitly includes “one acting like a son” as an understanding of the uncertain Hebrew word.
-  - The proverb contrasts the slave's household status with the resulting filial status.
-  confidence: moderate
-  alternatives_preserved:
-  - a son
-  - trouble
-  - insubordination
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:20Z'
   previous_text: If someone pampers his slave from a young age, in the end the slave will become like a son.[a]
@@ -97,3 +96,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:04:04Z'
+  previous_text: If someone pampers his servant from a young age, in the end the servant will become a son.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

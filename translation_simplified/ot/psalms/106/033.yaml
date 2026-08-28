@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/106/033.yaml
-  text: For they rebelled against his Spirit[a], and Moses spoke rashly with his lips[b].
+  text: For they rebelled against his spirit[a], and he spoke rashly with his lips.
   footnotes:
   - marker: a
-    text: The first pronoun most naturally refers to God's Spirit; compare Isaiah 63:10.
-    reason: cross_reference
-  - marker: b
-    text: The second pronoun refers to Moses at Meribah; compare Numbers 20:10.
-    reason: cross_reference
+    text: Or “defied his spirit.” The pronoun most naturally refers to Moses in the preceding verse.
+    reason: alternative_reading
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,43 +31,61 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For they rebelled against God’s Spirit,[a] and Moses spoke rashly with his lips.[b]
+  text: For the people rebelled against Moses’ spirit,[a] and he spoke rashly with his lips.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: Compare Isaiah 63:10.
-    reason: cross_reference
-  - marker: b
-    text: This happened at Meribah; see Numbers 20:10.
-    reason: cross_reference
+    text: The Hebrew says “his spirit.” The pronoun most naturally refers to Moses, though another antecedent is possible.
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: For they rebelled against his Spirit, and Moses spoke rashly with his lips.
-  simplified_phrase: For they rebelled against God’s Spirit, and Moses spoke rashly with his lips.
-  preserved_meaning: Corrected the Hebrew root to 'rebel' and clarified the change from God's Spirit to Moses.
-  reasoning_layer_used: 2026-08-27 POB Psalms source audit
-  rationale: Corrected the Hebrew root to 'rebel' and clarified the change from God's Spirit to Moses.
-interpretive_expansions: []
+- pob_phrase: they
+  simplified_phrase: the people
+  preserved_meaning: The rebels are the people in the surrounding account.
+  reasoning_layer_used: immediate context
+  rationale: Naming the people makes the participants clear.
+- pob_phrase: his spirit
+  simplified_phrase: Moses’ spirit
+  preserved_meaning: The pronoun most naturally refers to Moses while retaining the spirit image.
+  reasoning_layer_used: POB footnote and theological decision
+  rationale: Naming Moses clarifies the likely referent without hiding the alternative.
+- pob_phrase: he spoke rashly with his lips
+  simplified_phrase: he spoke rashly with his lips
+  preserved_meaning: Moses actively spoke without proper restraint.
+  reasoning_layer_used: lexical decision
+  rationale: The wording preserves both Moses’ agency and the concrete image of his lips.
+interpretive_expansions:
+- pob_phrase: they ... his spirit
+  rendering: the people ... Moses’ spirit
+  claim: The contextual participants are the people and, most naturally, Moses.
+  evidence:
+  - The preceding verse names Moses as the salient masculine singular antecedent.
+  - The POB theological decision identifies Moses as the natural referent.
+  confidence: moderate
+  alternatives_preserved:
+  - The pronoun may refer to the people collectively or another antecedent.
 translation_notes:
-  risk_flags: []
+  risk_flags:
+  - risk: Naming Moses narrows the Hebrew pronoun’s ambiguity in the main text.
+    mitigation: The footnote preserves the documented alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/106/033.yaml
   source_text_sha256: 4012d9ebc936019b29d8476275142e79ee194718515c164baecba320440d8914
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: ccd467494d14185e9191d023d12080fdee27b2e21075ed977e0ed249e34239da
-  timestamp: '2026-07-12T10:02:36Z'
-  output_hash: a226e43a48274a9a00077905706704becf27d7ab6f77333c2c8e6d10d9d80814
+  prompt_sha256: 1a0720cdee1f9cf0b6c71529dfad4c39345695dff70f1bab1042b9471e2964b6
+  timestamp: '2026-08-28T23:36:11Z'
+  output_hash: fa600a5a172bd20575845be31f4a1cc6f8c292fbd1e7e0dc851129bd7851c3af
   usage:
-    prompt_tokens: 3379
-    completion_tokens: 739
-    total_tokens: 4118
-    reasoning_tokens: 340
+    prompt_tokens: 3942
+    completion_tokens: 933
+    total_tokens: 4875
+    reasoning_tokens: 512
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -90,3 +105,17 @@ spob_revision_history:
   review_verdict: revise
   review_summary: Corrected the Hebrew root to 'rebel' and clarified the change from God's Spirit to Moses.
   revision_status: editorial_adjudication
+- timestamp: '2026-08-28T22:59:19Z'
+  previous_text: For they rebelled against God’s Spirit,[a] and Moses spoke rashly with his lips.[b]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:36:11Z'
+  previous_text: For the people rebelled against Moses and stirred up his spirit,[a] so rash words came from his lips.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bf923be2d2b5bbfcc105b27b83ec1ba990d36423bc6c0dc6c7c01823aca3d789
+  review_summary: The draft helpfully identifies “they” as the people and “he” as Moses, both supported by the immediate Meribah context and the POB audit. However, “rebelled against Moses and stirred up his spirit” expands one source predicate into two and presents a contextual effect as stated meaning. The impersonal “rash words came” also weakens the text's explicit attribution of rash speech to Moses. Retain the warranted identification of Moses while keeping the single predicate and Moses' active speech.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft

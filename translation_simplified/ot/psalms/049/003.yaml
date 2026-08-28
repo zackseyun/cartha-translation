@@ -31,45 +31,60 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: My mouth will speak wise words, and my heart will reflect with understanding.
+  text: My mouth will speak words of wisdom, and what I reflect on in my heart will be understanding.
   philosophy: optimal-equivalence
 simplification_decisions:
 - pob_phrase: My mouth will speak wisdom
-  simplified_phrase: My mouth will speak wise words
-  preserved_meaning: The psalmist declares that his speech will express wisdom.
-  reasoning_layer_used: The lexical decisions retain the mouth image and identify “wise things” as a possible sense.
-  rationale: “Wise words” sounds natural while preserving wisdom as the quality of his speech.
-- pob_phrase: the meditation of my heart will be understanding
-  simplified_phrase: my heart will reflect with understanding
-  preserved_meaning: The psalmist’s inward reflection is characterized by understanding.
-  reasoning_layer_used: The lexical rationales define the heart as the inner thinking center, meditation as reflection, and understanding as an abstract quality.
-  rationale: The active wording is easier to follow and avoids implying that reflection produces understanding in others.
+  simplified_phrase: My mouth will speak words of wisdom
+  preserved_meaning: The psalmist intends to communicate wisdom while retaining the Hebrew image of the mouth speaking.
+  reasoning_layer_used: Lexical decisions for פִּי, יְדַבֵּר, and חָכְמוֹת
+  rationale: Adding “words of” makes the abstract object of speaking natural in English.
+- pob_phrase: the meditation of my heart
+  simplified_phrase: what I reflect on in my heart
+  preserved_meaning: The heart remains the inner center of thoughtful reflection.
+  reasoning_layer_used: Lexical decisions for הָגוּת and לִבִּי
+  rationale: The verbal wording makes inward meditation easier to understand.
+- pob_phrase: will be understanding
+  simplified_phrase: will be understanding
+  preserved_meaning: Understanding characterizes the content of the psalmist’s reflection rather than being presented as its result.
+  reasoning_layer_used: Lexical decision for תְּבוּנוֹת and the grounding review
+  rationale: Keeping the linking verb avoids adding an unsupported causal claim.
 translation_notes:
   risk_flags:
-  - risk: “With understanding” may sound slightly less emphatic than saying the meditation itself is understanding.
-    mitigation: It still characterizes the heart’s reflection by understanding without adding a causal result.
+  - risk: The phrase “will be understanding” is less idiomatic than a causal paraphrase.
+    mitigation: It preserves the Hebrew and POB content relationship without implying that reflection produces understanding.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/049/003.yaml
   source_text_sha256: cf114697b15d443591b8f61d1b59ce8dcb9cc83c0bea2af707b7361f63377daa
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 8c801c98bd2596564f3449e3bf7e949dcdee5eb47d753f90ff7392f18c734672
-  timestamp: '2026-07-12T09:59:41Z'
-  output_hash: f6a778f5d621e99288c48e683128436ccd7224616953aa6f1d6267250d1a661f
+  prompt_sha256: 28f4e0eed2d7e2c899b00df71ecb6522188d2027e57e0909005673b0574cb8ac
+  timestamp: '2026-08-28T23:35:27Z'
+  output_hash: 60fd88eda3cf6fe4123d4aa2db1525a078454e400502cb96129646211b01430c
   usage:
-    prompt_tokens: 3030
-    completion_tokens: 281
-    total_tokens: 3311
-    reasoning_tokens: 0
+    prompt_tokens: 3155
+    completion_tokens: 549
+    total_tokens: 3704
+    reasoning_tokens: 184
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
+interpretive_expansions:
+- pob_phrase: the meditation of my heart will be understanding
+  rendering: what I reflect on in my heart will bring understanding
+  claim: The heart’s inward reflection produces or conveys understanding.
+  evidence:
+  - The lexical rationale says the heart’s reflective activity underlies the spoken teaching.
+  - The parallel first line presents wisdom as the content communicated.
+  confidence: high
+  alternatives_preserved:
+  - what I reflect on will express understanding
+  - my heart’s reflection will be understanding
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:41Z'
@@ -79,6 +94,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 5968aeb5c761a5d746782e0e42a783ab836f4b71ce721625eb96afe3e18982dc
   review_summary: 'The first clause is a warranted and clearer modernization: “wise words” naturally communicates speech characterized by wisdom. The second clause rightly makes the heart’s meditation an active, inward reflection, but “will bring understanding” adds a causal/result claim not established by the source or POB audit trail. Rendering the reflection as done “with understanding” retains the parallel quality while remaining clear in ordinary English.'
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:11Z'
+  previous_text: My mouth will speak wise words, and my heart will reflect with understanding.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:27Z'
+  previous_text: My mouth will speak words of wisdom; what I reflect on in my heart will bring understanding.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: aadb3b7b266c6722552b968b6fb46ab5b09ce59cf110b026f0086647d89a3f90
+  review_summary: 'The first clause is a warranted and clearer rendering: “words of wisdom” naturally expresses the abstract object of speaking without adding substantive content. The second clause helpfully explains “meditation,” but “will bring” inserts a causal relationship not established by the Hebrew or POB audit trail. Retain the clearer verbal phrasing while preserving the copular/content relationship.'
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

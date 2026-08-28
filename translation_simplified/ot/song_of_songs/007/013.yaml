@@ -11,16 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/song_of_songs/007/013.yaml
-  text: Let us rise early for the vineyards[a]; let us see whether the vine has budded, whether the blossom has opened, whether the pomegranates are in bloom[c][b]. There I will give you my love.
+  text: Let us rise early and go to the vineyards; let us see whether the vine has budded,[a] whether the blossom has opened, whether the pomegranates are in bloom. There I will give you my love.[b]
   footnotes:
   - marker: a
-    text: Or 'to the vineyards.' The Hebrew preposition can be rendered either way in English.
+    text: Or “the vine has blossomed.” The Hebrew verb can refer to budding or flowering.
     reason: lexical_alternative
   - marker: b
-    text: Or 'the vine has blossomed.' The Hebrew may refer broadly to flowering, though the translation 'has budded' preserves the apparent progression into the next clause about the blossom opening.
-    reason: lexical_alternative
-  - marker: c
-    text: Hebrew 'my loves,' likely an intensive or collective expression meaning 'my love' or 'my caresses.'
+    text: Hebrew “my loves,” a plural expression that may refer to love or caresses.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -37,60 +34,78 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Let us get up early and go to the vineyards. Let us see whether the vines have budded, the blossoms have opened, and the pomegranates are in bloom. There I will give you my love.
+  text: Let us get up early and go to the vineyards. Let us see if the grapevine has budded,[a] if its blossoms have opened, and if the pomegranate trees are in bloom. There I will give you my love.[b]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “has blossomed.” The Hebrew verb can refer to budding or flowering.
+    reason: lexical_alternative
+  - marker: b
+    text: Hebrew “my loves,” a plural expression that may mean love or caresses.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: Let us rise early for the vineyards
+- pob_phrase: Let us rise early and go to the vineyards
   simplified_phrase: Let us get up early and go to the vineyards
-  preserved_meaning: They will rise early and set out toward the vineyards.
-  reasoning_layer_used: The lexical decisions preserve both the early timing and the direction toward the vineyards.
-  rationale: The rewrite makes the movement clear in ordinary English.
-- pob_phrase: let us see whether the vine has budded, whether the blossom has opened, whether the pomegranates are in bloom
-  simplified_phrase: Let us see whether the vines have budded, the blossoms have opened, and the pomegranates are in bloom
-  preserved_meaning: They will look for three distinct signs of flowering and growth.
-  reasoning_layer_used: The lexical rationale distinguishes budding, opening blossoms, and pomegranates blooming.
-  rationale: A coordinated list is easier to read while preserving each image.
-- pob_phrase: There I will give you my love
-  simplified_phrase: There I will give you my love
-  preserved_meaning: In that place, she promises to give her romantic and intimate love.
-  reasoning_layer_used: The lexical decisions retain the location marked by “there” and the collective sense of “my love.”
-  rationale: The wording is already clear and does not over-specify the intimacy.
+  preserved_meaning: The couple is invited to rise early and travel to the vineyards.
+  reasoning_layer_used: POB lexical decision for נַשְׁכִּימָה לַכְּרָמִים
+  rationale: “Get up early” is more common English while retaining both time and destination.
+- pob_phrase: let us see whether
+  simplified_phrase: Let us see if
+  preserved_meaning: The speaker invites the beloved to examine the plants’ growth.
+  reasoning_layer_used: POB lexical decision for נִרְאֶה and אִם
+  rationale: “See if” expresses the indirect questions naturally in everyday English.
+- pob_phrase: whether the vine has budded, whether the blossom has opened, whether the pomegranates are in bloom
+  simplified_phrase: if the grapevine has budded, if its blossoms have opened, and if the pomegranate trees are in bloom
+  preserved_meaning: The three distinct signs of new growth remain in their original progression.
+  reasoning_layer_used: POB lexical decisions for פָּרְחָה, סְּמָדַר, and הֵנֵצוּ
+  rationale: Explicit plant names make the vineyard imagery immediately understandable.
 interpretive_expansions:
-- pob_phrase: for the vineyards
-  rendering: and go to the vineyards
-  claim: The vineyards are the destination of their early departure.
+- pob_phrase: the blossom
+  rendering: its blossoms
+  claim: The blossoms belong to the grapevine just mentioned.
   evidence:
-  - The lexical rationale says the Hebrew preposition marks direction toward the vineyards.
+  - The POB lexical rationale identifies סְּמָדַר as grape blossom or early vine bloom.
+  - The immediate clause follows the reference to the grapevine.
   confidence: high
   alternatives_preserved:
-  - for the vineyards
-  - to the vineyards
+  - the blossom
+  - the vine blossom
+- pob_phrase: the pomegranates
+  rendering: the pomegranate trees
+  claim: The phrase refers to the pomegranate plants that produce blossoms.
+  evidence:
+  - The verb describes putting forth blossoms.
+  - The surrounding clauses describe plants in stages of growth.
+  confidence: high
+  alternatives_preserved:
+  - the pomegranates
 translation_notes:
   risk_flags:
-  - risk: Using natural English plurals reduces formal correspondence with the singular vine and blossom.
-    mitigation: The vineyard setting and all three distinct stages of growth remain clear.
+  - risk: “Its blossoms” specifies the connection between the blossom and the grapevine.
+    mitigation: The immediate context and POB lexical rationale strongly support that connection.
+  - risk: “My love” can also suggest intimate caresses or lovemaking.
+    mitigation: Footnote b preserves the Hebrew plural and its broader romantic sense.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/song_of_songs/007/013.yaml
   source_text_sha256: 171973a74e8140cdef68ee4c4f2725f7855ff0620e30bbf68c9363bc982b2cb0
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: b5909fb4bdec92d47084cd19711f2ae8ca2c1d089c44c0d764db8f30c90235c5
-  timestamp: '2026-07-12T10:04:20Z'
-  output_hash: 9e68fdb2c7aca3130d174097814d78b0fbe7708fadde699d9aaa71b44c657065
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: b679af901b973653d07324832347d27c49f862a2d2664d2a2a9993a0ee1cbb60
+  timestamp: '2026-08-28T23:11:04Z'
+  output_hash: 3e17d5a44e2bbb9396c9fc08a908e025cae2b13749d578856ec2e69b949f8508
   usage:
-    prompt_tokens: 3689
-    completion_tokens: 477
-    total_tokens: 4166
-    reasoning_tokens: 0
+    prompt_tokens: 3115
+    completion_tokens: 1003
+    total_tokens: 4118
+    reasoning_tokens: 311
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T10:04:20Z'
   previous_text: Let us get up early and go to the vineyards. Let us see whether the vines have budded, the blossoms have opened, and the pomegranate trees are in bloom. There I will give you my love.
@@ -101,3 +116,8 @@ spob_revision_history:
   review_summary: The explicit “get up early and go to the vineyards” is a warranted, clearer rendering of the early departure and directional preposition, as supported by the POB audit trail. The coordinated observations retain the three distinct growth images and are readily understood. Revise only the unnecessary addition “trees”; “pomegranates are in bloom” is clear in context and stays closer to the source and POB.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:11:04Z'
+  previous_text: Let us get up early and go to the vineyards. Let us see whether the vines have budded, the blossoms have opened, and the pomegranates are in bloom. There I will give you my love.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

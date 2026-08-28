@@ -11,7 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/010/003.yaml
-  text: 'For the wicked man boasts in the desire of his soul, and the greedy man blesses himself and despises Yahweh.'
+  text: For the wicked man boasts about his own desire, and the greedy man curses and rejects Yahweh.[a]
+  footnotes:
+  - marker: a
+    text: The Hebrew is compressed and difficult. Literally, the verb rendered “curses” is “blesses”; it is likely a euphemistic use in reference to God. Or, “the greedy man blesses and rejects Yahweh.”
+    reason: alternative_reading
   revision_pass:
     model: doctrine-realignment
     timestamp: '2026-05-18T03:54:00Z'
@@ -19,46 +23,53 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 10:3 wholesale revert (4 override) [post-swarm tail]. Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''the wicked man'', ''the desire of his soul'', ''the greedy man'', ''blesses himself'']. Applied via de'
 translation:
   language: en
-  text: For the wicked man boasts about his own desires, and the greedy man praises himself and despises the LORD.
+  text: Wicked people brag about what they crave, and greedy people curse and reject Yahweh.[a]
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: The Hebrew is compressed and difficult. The word translated “curse” literally means “bless” but is likely used here as a respectful substitute for “curse.” Another possible reading is, “greedy people bless and reject Yahweh.”
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: boasts in the desire of his soul
-  simplified_phrase: boasts about his own desires
-  preserved_meaning: The wicked man boasts about the desires within him.
-  reasoning_layer_used: POB translation and applied revision
-  rationale: This keeps the focus on his desires rather than on the things he wants.
-- pob_phrase: blesses himself
-  simplified_phrase: praises himself
-  preserved_meaning: The greedy man speaks approvingly of himself.
-  reasoning_layer_used: POB translation and applied revision
-  rationale: This states the reflexive self-approval in clear modern English.
+- pob_phrase: the wicked man
+  simplified_phrase: wicked people
+  preserved_meaning: The statement describes the wicked as a general class.
+  reasoning_layer_used: POB translation and source context
+  rationale: A natural plural avoids the awkward generic phrase “the wicked man.”
+- pob_phrase: boasts about his own desire
+  simplified_phrase: brag about what they crave
+  preserved_meaning: The wicked proudly speak of their own desires.
+  reasoning_layer_used: POB lexical decision for עַל תַּאֲוַת נַפְשׁוֹ
+  rationale: “What they crave” expresses strong personal desire in common English.
+- pob_phrase: the greedy man curses and rejects Yahweh
+  simplified_phrase: greedy people curse and reject Yahweh
+  preserved_meaning: Greedy people direct both cursing and contemptuous rejection toward Yahweh.
+  reasoning_layer_used: POB lexical audit and 2026-08-28 revision
+  rationale: The wording stays direct while preserving Yahweh as the object of both verbs.
 translation_notes:
   risk_flags:
-  - risk: “Praises himself” narrows the image of blessing himself.
-    mitigation: It preserves the POB's controlling sense of approving speech directed toward oneself.
+  - risk: The Hebrew verb rendered “curse” literally reads “bless” and may permit another interpretation.
+    mitigation: The footnote preserves the literal wording and the documented alternative.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/010/003.yaml
   source_text_sha256: b7c5bfe9b89b713e967c4cee6edee0808b4dc0b7068c1f8311bd588043c9758b
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: afd309fe3ccb23fe347a1e11f4f237b6f8d0d434e6cba4bd825dece0cc6b81a4
-  timestamp: '2026-07-12T09:53:48Z'
-  output_hash: 1e662db1bc3bbee20588ff9a0f44eb18a90aa6295fc2cacbf0eeb5778762d855
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 5c43a9b6e0b7a63aa2df639484c2b8fe2644afc49d83cc1b456b5f1523a2ddeb
+  timestamp: '2026-08-28T22:52:51Z'
+  output_hash: cb97e2e7b881cdfe1b15b4d3e04efac4251175d0ceb5194511b98ad9f6b17585
   usage:
-    prompt_tokens: 2626
-    completion_tokens: 239
-    total_tokens: 2865
-    reasoning_tokens: 0
+    prompt_tokens: 2486
+    completion_tokens: 605
+    total_tokens: 3091
+    reasoning_tokens: 198
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:53:48Z'
   previous_text: For the wicked man boasts about what he craves, and the greedy man praises himself and despises the LORD.
@@ -70,3 +81,13 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:52:08Z'
+  previous_text: For the wicked man boasts about his own desires, and the greedy man praises himself and despises the LORD.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T22:52:51Z'
+  previous_text: For the wicked man brags about what he wants. The greedy man curses Yahweh and rejects him.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_wisdom_source_audit_v1
+  reason: forced doctrine-calibrated redraft

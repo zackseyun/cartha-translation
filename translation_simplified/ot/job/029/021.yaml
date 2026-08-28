@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/029/021.yaml
-  text: They listened to me and waited[b][a], and they kept silent for my counsel.
+  text: They listened to me and waited, and they were silent for my counsel.[a]
   footnotes:
   - marker: a
-    text: Or 'They listened to me and waited in expectation.' The verb can also carry the nuance of hoping or expecting.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'they were silent at my counsel.' The final phrase may express silence in response to Job's counsel.
-    reason: lexical_alternative
+    text: Or “they were silent at my counsel.” The Hebrew preposition leaves the precise relation between their silence and Job’s counsel somewhat open.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,59 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They listened to me and waited. They were silent in response to my counsel.[a]
+  text: They listened carefully to me and waited. They were silent at my counsel.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The first sentence may mean “They listened to me and waited expectantly.” The second may be rendered “They remained silent for my counsel.”
-    reason: lexical_alternative
+    text: Or “They were silent for my counsel.” The Hebrew does not specify exactly how their silence related to Job’s counsel.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: They listened to me and waited, and they kept silent for my counsel.
-  simplified_phrase: They listened to me and waited. They were silent in response to my counsel.
-  preserved_meaning: People listened attentively, waited for Job, and kept silent in relation to his counsel.
-  reasoning_layer_used: POB lexical decisions and sentence-level readability
-  rationale: Two sentences present the three distinct actions in a clear sequence.
-- pob_phrase: kept silent for my counsel
-  simplified_phrase: were silent in response to my counsel
-  preserved_meaning: Their restrained silence was connected with Job’s respected counsel.
-  reasoning_layer_used: POB footnote b and lexical rationale for לְמוֹ and וְיִדְּמוּ
-  rationale: The response wording makes the difficult poetic relation understandable while the footnote preserves the broader wording.
+- pob_phrase: They listened to me and waited
+  simplified_phrase: They listened carefully to me and waited.
+  preserved_meaning: They listened attentively to Job and waited expectantly.
+  reasoning_layer_used: POB lexical decisions for שׁמע and יחל
+  rationale: “Carefully” clarifies that they were attentive rather than merely hearing him.
+- pob_phrase: they were silent for my counsel
+  simplified_phrase: They were silent at my counsel.
+  preserved_meaning: Their silence was connected with Job’s respected counsel, though the precise relation remains open.
+  reasoning_layer_used: POB lexical decision and footnote for לְמוֹ עֲצָתִי
+  rationale: “At” gives natural English while the note preserves the broader Hebrew relation.
 interpretive_expansions:
-- pob_phrase: for my counsel
-  rendering: in response to my counsel
-  claim: Their silence occurred in response to Job’s counsel.
+- pob_phrase: listened to me
+  rendering: listened carefully to me
+  claim: Their listening was attentive rather than merely auditory.
   evidence:
-  - POB footnote b identifies silence in response to Job’s counsel as a possible sense.
-  - The lexical rationale links their silence to Job’s counsel.
-  confidence: moderate
+  - The POB lexical rationale explicitly identifies attentive listening in this context.
+  confidence: high
   alternatives_preserved:
-  - for my counsel
-  - at my counsel
+  - listened to me
 translation_notes:
   risk_flags:
-  - risk: “In response to” may narrow the poetic relation between their silence and Job’s counsel.
-    mitigation: The footnote preserves the broader rendering “for my counsel.”
-  - risk: Plain “waited” does not state the possible nuance of expectation.
-    mitigation: The footnote preserves “waited expectantly” as a lexical alternative.
+  - risk: “At my counsel” may sound less natural or imply a reaction after Job spoke.
+    mitigation: The footnote states that the Hebrew leaves the relationship open and preserves “for my counsel.”
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/029/021.yaml
   source_text_sha256: 906955dbaa12b03ebcaab8874d9a9c295a61dcc819a8bb09abc92284608c05da
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 29bd785da4145add25a242626e66dfd089232dc6386a1f55fae3b17f49e2a1f9
-  timestamp: '2026-07-12T09:39:46Z'
-  output_hash: 9296c079e0f59d940691bc06adc25a8c29c47338cae103b130c7fb3fff050963
+  prompt_sha256: 8a0525cbdf93b11d05d10f2ef6d530bff3258ff865585cd2436e37d124860d45
+  timestamp: '2026-08-28T23:34:48Z'
+  output_hash: 40aa5817502346a4af8c4c5370850f9eb976f3d86dc0b764f140c419ef5fdc25
   usage:
-    prompt_tokens: 3295
-    completion_tokens: 651
-    total_tokens: 3946
-    reasoning_tokens: 189
+    prompt_tokens: 3337
+    completion_tokens: 543
+    total_tokens: 3880
+    reasoning_tokens: 154
     estimated_cost_usd: 0.0
 status: simplified_draft
 retained_terms: []
@@ -98,5 +91,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 5f269bb9e6f471b1f936679182a3e3fd8c87ad03532dc6e13083408b74c272d9
   review_summary: The draft’s two-sentence structure is a warranted readability improvement, and “remained silent” adequately conveys continuing silence. However, making “expectantly” part of the main text narrows the POB’s retained lexical range without preserving the broader alternative, while “for my counsel” remains opaque despite the audit trail’s clearer, contextually warranted explanation. The recommended text keeps the sequential actions clear, uses the supported sense of silence in response to Job’s counsel, and preserves both relevant alternatives in a footnote.
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:06Z'
+  previous_text: They listened to me and waited. They were silent in response to my counsel.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:48Z'
+  previous_text: They listened carefully to me and waited. They were silent, awaiting my counsel.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: bc847c2471bbfe5024dcda24c3af413166045a787da1c39f72d03c8204c6b7de
+  review_summary: “Listened carefully” is a warranted and useful clarification of attentive listening. However, “awaiting my counsel” resolves a live grammatical ambiguity into one particular scenario. Retain a broader relation in the main text and use the footnote to explain, rather than replace, the ambiguity.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

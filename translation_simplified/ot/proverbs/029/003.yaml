@@ -11,10 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/029/003.yaml
-  text: A man who loves wisdom makes his father glad[a], but one who keeps company with prostitutes destroys wealth.
+  text: A man who loves wisdom makes his father glad, but one who keeps company with prostitutes[a] destroys wealth.
   footnotes:
   - marker: a
-    text: Literally, 'one who shepherds/feeds with prostitutes'; the Hebrew idiom means associating with or frequenting them.
+    text: The Hebrew uses a verb associated with shepherding or grazing; here it means associating with or frequenting prostitutes.
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -31,57 +31,55 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A man who loves wisdom brings joy to his father. But a man who spends time with prostitutes[a] ruins his wealth.
+  text: A man who loves wisdom brings joy to his father, but a man who associates with prostitutes[a] destroys his wealth.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew literally uses a shepherding or feeding image; here it means associating with or frequenting prostitutes.
+    text: The Hebrew verb usually describes shepherding or grazing; here it means regularly associating with or frequenting prostitutes.
     reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: makes his father glad
   simplified_phrase: brings joy to his father
   preserved_meaning: His love of wisdom causes his father to rejoice.
-  reasoning_layer_used: Lexical decision for יְשַׂמַּח
-  rationale: This keeps the verb’s causative force in familiar English.
+  reasoning_layer_used: POB lexical decision for יְשַׂמַּח
+  rationale: This familiar wording keeps the verb’s causative force.
 - pob_phrase: one who keeps company with prostitutes
-  simplified_phrase: a man who spends time with prostitutes
-  preserved_meaning: He habitually associates with or frequents prostitutes.
-  reasoning_layer_used: Lexical decisions for וְרֹעֶה and זֹנוֹת
-  rationale: This naturally conveys ongoing association without narrowing it to a specific act.
-- pob_phrase: destroys wealth
-  simplified_phrase: ruins his wealth
-  preserved_meaning: His conduct causes the ruinous loss of wealth.
-  reasoning_layer_used: Lexical decisions for יְאַבֶּד and הוֹן
-  rationale: “Ruins” clearly describes severe financial loss without weakening the verb.
+  simplified_phrase: a man who associates with prostitutes
+  preserved_meaning: The man habitually associates with or frequents prostitutes.
+  reasoning_layer_used: POB lexical decision and footnote for וְרֹעֶה זֹנוֹת
+  rationale: This preserves the idiom’s breadth without using its opaque shepherding image.
 interpretive_expansions:
 - pob_phrase: destroys wealth
-  rendering: ruins his wealth
-  claim: The wealth being ruined is the man’s own wealth.
+  rendering: destroys his wealth
+  claim: The wealth being ruined belongs to the man who associates with prostitutes.
   evidence:
-  - The POB lexical rationale says English naturally understands the object as one’s wealth.
+  - The immediate subject is the man whose conduct causes the loss.
+  - The POB lexical rationale says English naturally understands this as one’s own wealth.
   confidence: high
+  alternatives_preserved:
+  - destroys wealth
 translation_notes:
   risk_flags:
-  - risk: “Spends time with” does not retain the Hebrew shepherding image in the main text.
-    mitigation: The footnote preserves the image and explains its idiomatic meaning.
+  - risk: “Associates with” may not by itself convey habitual conduct.
+    mitigation: The footnote states that the idiom means regularly associating with or frequenting prostitutes.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/029/003.yaml
   source_text_sha256: 919c8b0693c2746275bb6b2cb4c36e55fdcf8e299bdeb89704d685b9c48461f2
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 7a026e1c61bd574e52f2cd7b832e8f7b395c77136609a000999c61b3307eb52e
-  timestamp: '2026-07-12T09:53:18Z'
-  output_hash: e9299fa3453fab62abab7d349b0c5c34e733eaf4ee26af732480e202063181fc
+  prompt_sha256: 4c19e37b0b09f28f1a15fa421601fd5f44f1191783525898f11564444effcee6
+  timestamp: '2026-08-28T23:34:49Z'
+  output_hash: 6eaec016c17ab92a7c06ffb5ccbbc9ab9afc6e6bbf23fa5ca32b3ab102d577f9
   usage:
-    prompt_tokens: 3372
-    completion_tokens: 439
-    total_tokens: 3811
+    prompt_tokens: 3528
+    completion_tokens: 389
+    total_tokens: 3917
     reasoning_tokens: 0
     estimated_cost_usd: 0.0
 status: simplified_draft
@@ -94,5 +92,19 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: c04b2fe3ff0cf367fd0be98e2c78b0c511f226bd1cad3ae70d29ad905529560b
   review_summary: 'The first clause is a warranted, clear modernization that preserves the causative meaning. “Ruins his wealth” is also supported by the POB lexical rationale and clearly conveys ruinous financial loss. Revise only the second-clause verb phrase: “goes to prostitutes” is clearer in one possible application but is narrower than the Hebrew idiom and the POB audit trail. “Spends time with prostitutes” remains natural while retaining the intended broader sense of habitual association.'
+  schema_repairs:
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:08:16Z'
+  previous_text: A man who loves wisdom brings joy to his father. But a man who spends time with prostitutes[a] ruins his wealth.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:49Z'
+  previous_text: A man who loves wisdom brings joy to his father, but a man who keeps going to prostitutes[a] destroys his wealth.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 651a40ae8c02acb999757d81379bbdc2800eda1a8f8860645e99a54f7d10aad3
+  review_summary: The first clause is a clear, faithful simplification. Adding “his” to wealth is warranted by the immediate subject and the POB audit trail. Revise the second clause because “keeps going to” unnecessarily narrows the source idiom; “associates with” is clear modern English and retains the contextual breadth.
   schema_repairs:
   - restored retained_terms as an array from the prior draft

@@ -11,11 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/036/027.yaml
-  text: For he draws up the drops of water[a]; they distill rain from his mist.
+  text: For he draws off drops of water; they distill rain from his mist.[a]
   footnotes:
   - marker: a
-    text: Or 'they pour down rain from his vapor.' The Hebrew of the second line is difficult, and 'mist' may also be rendered 'vapor.'
-    reason: lexical_alternative
+    text: The Hebrew of the second line is difficult. It may also be rendered “they pour down rain as his vapor”; “mist” may be rendered “vapor.”
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -31,63 +31,54 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: For he draws up drops of water; they drip down as rain from his mist.[a]
+  text: For he draws away drops of water; they distill rain from his mist.[a]
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: The Hebrew of the second line is difficult. It may also mean, “they pour down rain from his vapor.”
-    reason: lexical_alternative
+    text: The Hebrew of the second line is difficult. It may also mean, “They pour down rain as his vapor”; “mist” may also be translated “vapor.”
+    reason: alternative_reading
 simplification_decisions:
-- pob_phrase: the drops of water
-  simplified_phrase: drops of water
-  preserved_meaning: God draws water droplets upward.
-  reasoning_layer_used: POB lexical decision for נִטְפֵי מָיִם
-  rationale: Removing the article makes the phrase more natural without changing its meaning.
-- pob_phrase: they distill rain
-  simplified_phrase: they drip down as rain
-  preserved_meaning: The water is pictured as being released in drops of rain.
-  reasoning_layer_used: POB lexical decision and rationale for יָזֹקּוּ
-  rationale: “Drip down” expresses the poetic water-droplet image without asserting a specific scientific process.
-- pob_phrase: from his mist
-  simplified_phrase: from his mist
-  preserved_meaning: The mist is associated with God and his rule over the weather.
-  reasoning_layer_used: POB theological decision on the suffix in לְאֵדוֹ
-  rationale: Retaining “his” preserves the chosen reference to God.
+- pob_phrase: draws off drops of water
+  simplified_phrase: draws away drops of water
+  preserved_meaning: God withdraws drops of water without specifying an upward direction.
+  reasoning_layer_used: POB lexical decision for יְגָרַע and final source audit
+  rationale: “Draws away” states the withdrawing sense in more familiar English without adding the direction “up.”
 translation_notes:
   risk_flags:
-  - risk: “Drip down” selects one plausible image from a difficult Hebrew line.
-    mitigation: The footnote preserves the alternative “pour down rain from his vapor.”
+  - risk: The Hebrew syntax behind the second line is unusually difficult.
+    mitigation: The main text retains the POB construction, while the footnote gives the principal alternative without resolving the ambiguity.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/036/027.yaml
   source_text_sha256: 96e37828bde3b72a9de604bbffcbd47af0effbc84614269b83f32a3dd19c9a3e
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
   prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: 9b8f5a21833ca94e6143e4ed697a36429da6d80784b9d982c595184c2ad4b36a
-  timestamp: '2026-07-12T09:39:50Z'
-  output_hash: 362ddd1b5774cebf5a84a45bac2e82ccd5ee099f3d0334bccb1252ae7ed1ca77
+  prompt_sha256: 6906b5a5749e2dc50db62464a8d48cd16236c15a2a285e096de56d612f4a960a
+  timestamp: '2026-08-28T23:35:00Z'
+  output_hash: 1da20441af21a65f83dc97d41de16f4aa94c34144ad5d983295b558e56774fb3
   usage:
-    prompt_tokens: 3358
-    completion_tokens: 364
-    total_tokens: 3722
-    reasoning_tokens: 0
+    prompt_tokens: 3691
+    completion_tokens: 451
+    total_tokens: 4142
+    reasoning_tokens: 200
     estimated_cost_usd: 0.0
 status: simplified_draft
 interpretive_expansions:
 - pob_phrase: they distill rain
-  rendering: they condense into rain
-  claim: The poetic line describes water forming rain through condensation.
+  rendering: they distill into rain
+  claim: The water drops are presented as becoming rain.
   evidence:
-  - The meteorological context concerns God drawing up water droplets.
-  - The POB rationale says “distill” preserves the imagery of condensation.
+  - The POB lexical rationale understands the line as describing rain formation.
+  - The immediate wording links drops of water, distilling, rain, and mist.
   confidence: moderate
   alternatives_preserved:
-  - They pour down rain from his vapor.
+  - They pour down rain as his vapor.
+  - Mist may be rendered vapor.
 retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:39:50Z'
@@ -97,6 +88,21 @@ spob_revision_history:
   review_verdict: revise
   review_output_hash: 0069386a964d98956891290f2fcec2a908674aa1a2d08018935eaf9ff3e5d365
   review_summary: The removal of “the” is a harmless and useful simplification, and retaining “his mist” properly follows the POB’s contextual decision that the suffix refers to God. However, “condense into rain” introduces a more specific scientific-process claim than the difficult Hebrew and POB audit trail establish. “Drip rain” retains the distillation/dripping imagery while using plainer English; the footnote can continue to preserve the alternative “pour down rain from his vapor.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:51:42Z'
+  previous_text: For he draws up drops of water; they drip down as rain from his mist.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:00Z'
+  previous_text: For he draws away drops of water; they distill into rain from his mist.[a]
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 93d49864770f46c7a9ddb06e16099e7167e5057238956b4392e17cebe00db538
+  review_summary: “Draws away” is a warranted, clearer rendering of the POB’s “draws off.” However, adding “into” makes a moderately supported contextual picture—water drops becoming rain—the asserted grammatical meaning of a line the POB correctly identifies as difficult. Keep the POB construction and the uncertainty note rather than resolving that syntax in the main text.
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft

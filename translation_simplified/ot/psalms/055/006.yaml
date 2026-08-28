@@ -11,7 +11,7 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/055/006.yaml
-  text: And I said[a], “Who will give me wings like a dove? I would fly away and dwell.”
+  text: And I said, “Who will give me wings like a dove?[a] I would fly away and dwell.”
   footnotes:
   - marker: a
     text: Or, more idiomatically, “Oh that I had wings like a dove! I would fly away and be at rest.”
@@ -31,60 +31,65 @@ base_translation:
     changes_summary: 'doctrine_realignment: Psalms 55:7 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''and settle down''].'
 translation:
   language: en
-  text: I said, “If only I had wings like a dove![a] I would fly away and settle down.”
+  text: Then I said, “If only I had wings like a dove![a] I would fly away and settle somewhere.”
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
     text: Literally, “Who will give me wings like a dove?”
     reason: lexical_alternative
 simplification_decisions:
+- pob_phrase: And I said
+  simplified_phrase: Then I said
+  preserved_meaning: The psalmist now speaks in sequence.
+  reasoning_layer_used: POB lexical decision for וָאֹמַר
+  rationale: “Then” makes the narrative progression natural in modern English.
 - pob_phrase: Who will give me wings like a dove?
   simplified_phrase: If only I had wings like a dove!
-  preserved_meaning: The speaker longs to have a dove’s wings.
-  reasoning_layer_used: POB lexical decision and footnote for מִי יִתֶּן לִּי
-  rationale: The idiomatic wish is immediately clear, while the literal question remains in a footnote.
-- pob_phrase: I would fly away and dwell
-  simplified_phrase: I would fly away and settle down
-  preserved_meaning: The speaker wishes to fly away and live elsewhere.
-  reasoning_layer_used: POB lexical decision for וְאֶשְׁכֹּנָה
-  rationale: “Settle down” clearly expresses dwelling without adding a search for a place.
+  preserved_meaning: The question expresses a strong wish for the dove’s ability to escape.
+  reasoning_layer_used: POB lexical rationale and footnote for מִי יִתֶּן לִּי
+  rationale: The idiomatic wish is clearer, while the literal question remains in a footnote.
+- pob_phrase: dwell
+  simplified_phrase: settle somewhere
+  preserved_meaning: He longs to reach a place where he can remain.
+  reasoning_layer_used: POB lexical decision for וְאֶשְׁכֹּנָה
+  rationale: “Settle somewhere” expresses dwelling in ordinary English without adding the broader idea of rest.
 interpretive_expansions:
 - pob_phrase: Who will give me
   rendering: If only I had
-  claim: The Hebrew question functions as a wish expressing longing.
+  claim: The formal question voices longing rather than merely requesting information.
   evidence:
-  - The POB lexical rationale identifies the phrase as an idiom expressing a wish.
-  - The POB footnote gives the same optative sense.
+  - The POB lexical rationale identifies the Hebrew expression as an idiom of longing or wish.
+  - The following cohortative describes the desired flight away.
   confidence: high
   alternatives_preserved:
-  - Who will give me
-  - Who would give me
+  - The literal question is retained in footnote a.
 translation_notes:
   risk_flags:
-  - risk: The main text does not retain the Hebrew question form.
-    mitigation: The footnote preserves the literal wording.
+  - risk: The optative wording replaces the Hebrew question form.
+    mitigation: Footnote a preserves the literal form and its documented ambiguity.
+  - risk: “Settle somewhere” may sound less poetic than “dwell.”
+    mitigation: It retains the source sense of residing while making the incomplete English phrase immediately clear.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/055/006.yaml
   source_text_sha256: fe7a2414915c18aa8403fc75b303c07164f9cf72598c294b6c1acd660d45040d
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: aa7fa8473ff9c4dbd4be8296f78404065a6257c566ff161d32c4947d68cccea3
-  timestamp: '2026-07-12T09:59:48Z'
-  output_hash: 4d0849f2a3100d0234fbd774327c3a4ad47ee6f3998d199324d55e5cb8eac19c
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: df06c40af3f9b6bcf79bbb0e98645011ce89c57eda6201dff196530c7a6c5ece
+  timestamp: '2026-08-28T22:56:29Z'
+  output_hash: f78b350d1daf57ab5d4180686d9828f095bdd6c793091c327ee6fa17914209a0
   usage:
-    prompt_tokens: 3522
-    completion_tokens: 394
-    total_tokens: 3916
-    reasoning_tokens: 0
+    prompt_tokens: 2933
+    completion_tokens: 865
+    total_tokens: 3798
+    reasoning_tokens: 361
     estimated_cost_usd: 0.0
 status: simplified_draft
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:59:48Z'
   previous_text: I said, “If only I had wings like a dove![a] I would fly away and find a place to settle.”
@@ -95,3 +100,8 @@ spob_revision_history:
   review_summary: The optative wording “If only I had” is a warranted and clearer rendering of the Hebrew wish idiom, explicitly supported by the POB audit trail and retained in a literal footnote. The final clause should not add “find a place,” since the text expresses dwelling/settling after flight rather than the process of locating a place. “Settle down” is both clear and supported by the lexical decision.
   schema_repairs:
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T22:56:29Z'
+  previous_text: I said, “If only I had wings like a dove![a] I would fly away and settle down.”
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft

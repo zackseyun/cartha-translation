@@ -11,13 +11,13 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/026/011.yaml
-  text: But as for me[a], I will walk in my integrity[b]; redeem me and be gracious to me.
+  text: But as for me, I will walk in my integrity[a]; redeem me and be gracious to me[b].
   footnotes:
   - marker: a
-    text: Or 'in my blamelessness' or 'in my innocence.'
+    text: Or “in my blamelessness” or “in my innocence.”
     reason: lexical_alternative
   - marker: b
-    text: Or 'have mercy on me.'
+    text: Or “have mercy on me.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,48 +34,72 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: But I will walk with integrity. Redeem me and show me grace.
+  text: But as for me, I will walk with integrity.[a] Redeem me and show me your grace.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “in my blamelessness” or “in my innocence.” Here the psalmist is claiming upright conduct, not absolute sinlessness.
+    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: But as for me
-  simplified_phrase: But I
-  preserved_meaning: The psalmist emphatically contrasts his own path with that of the wicked.
-  reasoning_layer_used: POB lexical decision for וַאֲנִי and immediate context
-  rationale: The shorter wording keeps the contrast in clear modern English.
 - pob_phrase: I will walk in my integrity
   simplified_phrase: I will walk with integrity
-  preserved_meaning: The walking image describes an upright way of life without claiming sinlessness.
-  reasoning_layer_used: POB lexical and theological decisions for בְּתֻמִּי and אֵלֵךְ
-  rationale: “With integrity” is more natural while preserving both the image and moral force.
+  preserved_meaning: The psalmist commits to an upright way of life while retaining the walking image.
+  reasoning_layer_used: lexical and theological decisions
+  rationale: “Walk with integrity” is natural English and preserves upright conduct without implying sinlessness.
 - pob_phrase: be gracious to me
-  simplified_phrase: show me grace
-  preserved_meaning: The psalmist asks God to grant him undeserved favor.
-  reasoning_layer_used: POB lexical decision for וְחָנֵּנִי
-  rationale: The active wording expresses the same request more directly.
+  simplified_phrase: show me your grace
+  preserved_meaning: The psalmist asks God to grant him gracious favor.
+  reasoning_layer_used: lexical decision
+  rationale: The active wording is easier to understand while preserving the theological force of grace.
 translation_notes:
   risk_flags:
-  - risk: “Integrity” could be mistaken for a claim of absolute sinlessness.
-    mitigation: The wording follows POB’s covenantal sense of upright conduct, not perfection.
-  - risk: “Redeem” may be unfamiliar to some readers.
-    mitigation: It is retained because POB identifies its rescue and ransom weight as theologically important.
+  - risk: “Walk” may be mistaken for literal movement rather than a way of life.
+    mitigation: The phrase “with integrity” and the footnote make the moral sense clear while preserving the Hebrew image.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/026/011.yaml
   source_text_sha256: 67acbbb670cbeaa77bd9c84f8540fd323119f7aed23db465b44ff00dd7da30d6
-  pob_commit_sha: 4a65ec9b6caad353392b8ef9d0cd0f2c6c4a190c
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 4c66c6762cd8f297aad6bf17c8981246c5904aa2bebc28ae5e549004339b1f7b
-  timestamp: '2026-07-11T20:46:05Z'
-  output_hash: 1eab6826e668d70575b45c214de2491d7d3b6b7da9d7246a67816f297d880c27
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 308ab3ffce7b0a8fa36bd0c73f73f75e1c56caa9d500e0bb9cded7ba38ebe074
+  timestamp: '2026-08-28T23:35:10Z'
+  output_hash: 2e691b6c5bf192456aef11671c78c2b1d636c8a6001c6ec6053c332332683849
   usage:
-    prompt_tokens: 2426
-    completion_tokens: 619
-    total_tokens: 3045
-    reasoning_tokens: 240
+    prompt_tokens: 3625
+    completion_tokens: 404
+    total_tokens: 4029
+    reasoning_tokens: 95
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: I will walk
+  rendering: I will keep walking
+  claim: The commitment concerns continued conduct, not a single act of walking.
+  evidence:
+  - The lexical rationale says the walking metaphor can imply ongoing conduct.
+  - The psalm contrasts the speaker’s manner of life with that of the wicked.
+  confidence: high
+  alternatives_preserved:
+  - I will walk
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:53:41Z'
+  previous_text: But I will walk with integrity. Redeem me and show me grace.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:10Z'
+  previous_text: But as for me, I will keep walking with integrity.[a] Redeem me and show me your grace.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 6b8007652440c66e4573403d63d405e02c01017f56c5606439ace577992f43d1
+  review_summary: The active, accessible “show me your grace” is a warranted clarification of “be gracious to me.” “Walk with integrity” keeps the life-conduct metaphor while reading naturally. Remove “keep,” since it turns a possible ongoing implication into an explicit persistence claim. The footnote may explain the contextual sense of integrity, but its lexical alternatives should preserve the POB's wording and relation to the Hebrew.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

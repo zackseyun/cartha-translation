@@ -11,13 +11,10 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/psalms/069/024.yaml
-  text: Pour out your indignation on them[a][b], and let your burning anger overtake them.
+  text: Pour out your indignation on them[a], and let your burning anger overtake them.
   footnotes:
   - marker: a
-    text: 'Literally, ''the burning of your anger'' (Hebrew idiom: ''the burning of your nose'').'
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'your wrath' for 'your indignation.'
+    text: Or “wrath.”
     reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
@@ -34,46 +31,71 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: Pour out your outrage on them. Let your burning anger catch up with them.
+  text: Pour out your anger on them[a]. Let your burning anger catch up with them.
   philosophy: optimal-equivalence
+  footnotes:
+  - marker: a
+    text: Or “wrath.”
+    reason: lexical_alternative
 simplification_decisions:
 - pob_phrase: your indignation
-  simplified_phrase: your outrage
-  preserved_meaning: God’s intense anger with a moral dimension remains distinct from the following phrase.
-  reasoning_layer_used: POB lexical decision for זַעְמֶךָ
-  rationale: “Outrage” is more familiar than “indignation” while preserving morally charged anger.
-- pob_phrase: overtake them
-  simplified_phrase: catch up with them
-  preserved_meaning: God’s anger is pictured as pursuing its targets until it reaches them.
-  reasoning_layer_used: POB lexical decision for יַשִּׂיגֵם
-  rationale: “Catch up with” makes the pursuing image immediately clear.
-- pob_phrase: Pour out ... and let
-  simplified_phrase: Pour out ... . Let
-  preserved_meaning: Both direct petitions for divine judgment retain their full force.
-  reasoning_layer_used: POB theological decision on imprecatory language
-  rationale: Two short sentences clarify the parallel requests without softening them.
+  simplified_phrase: your anger
+  preserved_meaning: The direct request for God to pour out his wrath remains unsoftened.
+  reasoning_layer_used: POB lexical and theological decisions for זַעְמֶךָ
+  rationale: “Anger” is more familiar than “indignation,” while the footnote preserves “wrath” as an alternative.
+- pob_phrase: and let your burning anger overtake them
+  simplified_phrase: Let your burning anger catch up with them
+  preserved_meaning: The heat image and the picture of pursuing judgment reaching its targets remain intact.
+  reasoning_layer_used: POB lexical decisions for וַחֲרוֹן אַפְּךָ and יַשִּׂיגֵם
+  rationale: A separate sentence and “catch up with” express the pursuit image in ordinary English.
 translation_notes:
   risk_flags:
-  - risk: “Outrage” can suggest uncontrolled emotion in modern English.
-    mitigation: The divine addressee and judgment context preserve the intended morally grounded sense.
+  - risk: Using “anger” may express the moral force less distinctly than “indignation.”
+    mitigation: The “wrath” footnote and the intensified phrase “burning anger” preserve the severity of divine judgment.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/psalms/069/024.yaml
   source_text_sha256: 4b28aa349b7b8f7a7a5100ccaf623d5d9d700b47aa45d4ea188f40ba903243b4
-  pob_commit_sha: d3beab91d5e4158e9db84586fa443de4f805289d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 7bdb15293e63d3d5ce60569b98090961ca5f176f0cbfd86e75ebcf0608369408
-  timestamp: '2026-07-11T20:50:35Z'
-  output_hash: 339fd87ce8ada784339a4a6e2d3ed26a855eaef85b1aa669a12f1f6ebbd16691
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6d7c5ee6f32c3c4c64cb173e137ec9a4d7daa1b62d5946e4d611ac73f8339916
+  timestamp: '2026-08-28T23:35:39Z'
+  output_hash: 13bbd9ee196a5e0ff4f0cb5267021dc10e8efdedcabbfd6b4056b9e962bccd6b
   usage:
-    prompt_tokens: 2424
-    completion_tokens: 623
-    total_tokens: 3047
-    reasoning_tokens: 297
+    prompt_tokens: 3466
+    completion_tokens: 568
+    total_tokens: 4034
+    reasoning_tokens: 236
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions:
+- pob_phrase: your indignation
+  rendering: your just anger
+  claim: The anger is presented as morally grounded, not as an uncontrolled emotion.
+  evidence:
+  - The POB rationale says “indignation” preserves the term’s moral dimension.
+  confidence: high
+  alternatives_preserved:
+  - wrath
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T22:55:26Z'
+  previous_text: Pour out your outrage on them. Let your burning anger catch up with them.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:35:39Z'
+  previous_text: Pour out your just anger on them.[a] Let your burning anger catch up with them.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: 529cd63128db2a6941d897f179d8ae643ee5a78db012a24b452c901f5de390ee
+  review_summary: The draft improves accessibility, and “catch up with” clearly conveys the pursuing-force image of the second clause without softening the imprecation. However, “just anger” makes an interpretive and doctrinal assertion more explicit than the source and POB audit trail warrant. “Your anger” is plain modern English and preserves the direct request for judgment; “burning anger” in the following sentence retains the verse’s intensified anger imagery.
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

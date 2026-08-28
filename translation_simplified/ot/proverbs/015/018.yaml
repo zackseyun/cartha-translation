@@ -11,17 +11,14 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/proverbs/015/018.yaml
-  text: A hot-tempered man stirs up strife[c][b][a], but one who is slow to anger quiets a dispute.
+  text: A hot-tempered man stirs up strife[a], but one who is slow to anger calms a quarrel[b].
   footnotes:
   - marker: a
-    text: Or 'A man of wrath provokes contention.'
-    reason: lexical_alternative
+    text: Literally “a man of wrath.”
+    reason: literal_form
   - marker: b
-    text: Literally 'long of nostrils,' a Hebrew idiom for being slow to anger.
+    text: The Hebrew expression translated “slow to anger” literally means “long of nostrils.”
     reason: cultural_note
-  - marker: c
-    text: Or 'calms a quarrel.'
-    reason: lexical_alternative
   ai_draft:
     model_id: gpt-5.4
     model_version: openai/gpt-5.4-20260305
@@ -37,43 +34,56 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: A man who gets angry quickly starts conflict, but a man who is slow to anger calms a quarrel.
+  text: A man with a quick temper stirs up conflict, but a man who is slow to anger calms a quarrel.
   philosophy: optimal-equivalence
 simplification_decisions:
-- pob_phrase: A hot-tempered man
-  simplified_phrase: A man who gets angry quickly
-  preserved_meaning: The man is characterized by becoming angry easily.
-  reasoning_layer_used: POB lexical decision for חֵמָה
-  rationale: The clause explains “hot-tempered” in direct everyday language.
-- pob_phrase: stirs up strife
-  simplified_phrase: starts conflict
-  preserved_meaning: His anger causes contention to arise.
-  reasoning_layer_used: POB lexical decisions for יְגָרֶה and מָדוֹן
-  rationale: The simpler wording keeps the verb’s causative force and the noun’s broad sense of discord.
-- pob_phrase: quiets a dispute
-  simplified_phrase: calms a quarrel
-  preserved_meaning: The slow-to-anger man causes an interpersonal conflict to settle down.
-  reasoning_layer_used: POB lexical decisions for יַשְׁקִיט and רִיב
-  rationale: The approved lexical alternatives sound more natural in common English without suggesting a legal case.
+- pob_phrase: A hot-tempered man stirs up strife
+  simplified_phrase: A man with a quick temper stirs up conflict
+  preserved_meaning: An anger-prone man actively provokes discord.
+  reasoning_layer_used: POB lexical decisions for חֵמָה, יְגָרֶה, and מָדוֹן
+  rationale: “Quick temper” and “conflict” are familiar terms, while “stirs up” retains the active sense of provoking trouble.
+- pob_phrase: one who is slow to anger
+  simplified_phrase: a man who is slow to anger
+  preserved_meaning: The contrasting man does not become angry quickly.
+  reasoning_layer_used: POB lexical decisions for אִישׁ and אֶרֶך אַפַּיִם
+  rationale: Repeating “a man” makes the contrast clear and preserves the representative masculine form.
 translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/proverbs/015/018.yaml
   source_text_sha256: ff6cc8e41a9e546c292c3a2f786d488d21d1830c323ae7cf2d3e6b816d0e9ac1
-  pob_commit_sha: 9c299a639c062350eb376502e77451f7f793d32d
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 2a65c4f07a326ff6fff6aff99cda6755275ea8a2dbddb205dde812373344aafa
-  timestamp: '2026-07-11T21:03:32Z'
-  output_hash: 0a1cc58c92b9c0406683a9dc68a1f33648748132f49990e0a1ee3777827c6584
+  prompt_id: simplified_pob_grounding_revision_v1
+  prompt_sha256: 6a6a54baa64d4c8427434e9f4ad916be9691f3532c5567b3858618244baed79f
+  timestamp: '2026-08-28T23:34:22Z'
+  output_hash: 4e191116801428fe39d19d00f9625489d81c3e778562603073271a81d9952c60
   usage:
-    prompt_tokens: 2423
-    completion_tokens: 780
-    total_tokens: 3203
-    reasoning_tokens: 472
+    prompt_tokens: 3328
+    completion_tokens: 359
+    total_tokens: 3687
+    reasoning_tokens: 83
     estimated_cost_usd: 0.0
 status: simplified_draft
+interpretive_expansions: []
+retained_terms: []
+spob_revision_history:
+- timestamp: '2026-08-28T23:04:33Z'
+  previous_text: A man who gets angry quickly starts conflict, but a man who is slow to anger calms a quarrel.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft
+- timestamp: '2026-08-28T23:34:22Z'
+  previous_text: A man with a quick temper causes conflict, but a man who is slow to anger calms a quarrel.
+  previous_model: gpt-5.6-sol
+  reviewer_model: gpt-5.6-terra-wisdom-audit
+  review_verdict: revise
+  review_output_hash: b63be0bc9d1b9f0480eb52294bfba05ca07b23a9e4919c9d80bc8512ac3e3d6f
+  review_summary: The draft appropriately makes “hot-tempered” more familiar as “with a quick temper” and preserves the representative masculine form without adding doctrine. However, “causes conflict” loses some of the source-supported active sense of provoking or fomenting strife. Retain “stirs up” while using the clearer “conflict.”
+  schema_repairs:
+  - restored interpretive_expansions as an array from the prior draft
+  - restored retained_terms as an array from the prior draft

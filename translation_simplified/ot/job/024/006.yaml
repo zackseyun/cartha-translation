@@ -11,17 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/job/024/006.yaml
-  text: In the field they harvest fodder[c][b][a], and they glean in the vineyard of the wicked.
+  text: In the field they harvest his fodder[a], and they glean the vineyard of the wicked.
   footnotes:
   - marker: a
-    text: Or 'provender' or 'mixed fodder'; the Hebrew refers to animal feed rather than ordinary grain.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'they glean the vineyard of the wicked.' The Hebrew does not explicitly repeat the preposition 'in.'
-    reason: lexical_alternative
-  - marker: c
-    text: '''The wicked'' may refer generically to a wicked owner; alternatively, ''a wicked man.'''
-    reason: lexical_alternative
+    text: Hebrew, “his fodder.” The pronoun likely anticipates “the wicked” in the second line.
+    reason: ambiguity
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -37,45 +31,51 @@ base_translation:
     changes_summary: No changes needed.
 translation:
   language: en
-  text: They harvest animal feed in the field, and they gather leftover produce in the vineyard of the wicked.[a]
+  text: In the field they harvest his[a] feed for livestock, and they gather what is left in the vineyard of the wicked.
   philosophy: optimal-equivalence
   footnotes:
   - marker: a
-    text: “The wicked” may mean a wicked owner or wicked people generally.
-    reason: lexical_alternative
+    text: The Hebrew says “his.” This likely refers ahead to “the wicked” in the second part of the verse.
+    reason: source_note
 simplification_decisions:
-- pob_phrase: harvest fodder
-  simplified_phrase: harvest animal feed
-  preserved_meaning: The crop is feed for animals, not ordinary grain for people.
-  reasoning_layer_used: POB lexical decision for בְּלִילוֹ
-  rationale: “Animal feed” makes the meaning of the uncommon word “fodder” immediately clear.
-- pob_phrase: they glean
-  simplified_phrase: they gather leftover produce
-  preserved_meaning: They collect gleanings or late-picked produce from the vineyard.
+- pob_phrase: his fodder
+  simplified_phrase: his feed for livestock
+  preserved_meaning: The crop is food intended for animals, and the masculine singular pronoun remains explicit.
+  reasoning_layer_used: POB lexical decision for בְּלִילוֹ and applied source-audit revision
+  rationale: “Feed for livestock” explains the uncommon word “fodder” without dropping “his.”
+- pob_phrase: they glean the vineyard
+  simplified_phrase: they gather what is left in the vineyard
+  preserved_meaning: They collect the remaining or late produce from the vineyard.
   reasoning_layer_used: POB lexical decision for יְלַקֵּשׁוּ
-  rationale: The phrase explains the unfamiliar farming term without losing its agricultural sense.
+  rationale: The wording makes the agricultural action understandable to readers unfamiliar with “glean.”
 translation_notes:
   risk_flags:
-  - risk: “Leftover produce” may sound broader than vineyard gleanings.
-    mitigation: Keeping “in the vineyard” preserves the specific agricultural setting.
+  - risk: Readers may not know whose feed “his” refers to.
+    mitigation: The footnote preserves the ambiguity while identifying the likely forward reference to the wicked.
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/job/024/006.yaml
   source_text_sha256: 301592e3077cce513117bae7c6cc79b5ecb45275eb9f12982f40d7af5d0aa5d8
-  pob_commit_sha: bf2041bc1b10a1e1945d22f27531cf79a2fb5a27
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_understanding_first_compact_v3
-  prompt_sha256: 9927c9881f74ca04492e49568a6f5394c590519110a3b8c99dfbc80c05c080c1
-  timestamp: '2026-07-11T19:53:41Z'
-  output_hash: 33620c8061cf3b504f8375522d6f305242359497c0e2469412f47dcf2e4c74c1
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: d0f17d5669b679cb0b0625638ebb23c46cdbfa939fc523cd1de9e4f5adc14cc1
+  timestamp: '2026-08-28T22:50:51Z'
+  output_hash: c0a8c9c8689ab4fa838f65ce8506df91d579ff371b167e8ad32dadf4b775c98e
   usage:
-    prompt_tokens: 2401
-    completion_tokens: 605
-    total_tokens: 3006
-    reasoning_tokens: 314
+    prompt_tokens: 2489
+    completion_tokens: 674
+    total_tokens: 3163
+    reasoning_tokens: 355
     estimated_cost_usd: 0.0
 status: simplified_draft
+spob_revision_history:
+- timestamp: '2026-08-28T22:50:51Z'
+  previous_text: They harvest animal feed in the field, and they gather leftover produce in the vineyard of the wicked.[a]
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_understanding_first_compact_v3
+  reason: forced doctrine-calibrated redraft

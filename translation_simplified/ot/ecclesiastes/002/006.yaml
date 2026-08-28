@@ -11,14 +11,11 @@ base_translation:
   language: en
   edition: POB
   yaml_path: translation/ot/ecclesiastes/002/006.yaml
-  text: I made for myself pools of water, to irrigate from them a grove sprouting trees.
+  text: I made pools of water for myself to irrigate a woodland of growing trees[a].
   footnotes:
   - marker: a
-    text: Or 'a forest growing trees' or 'a woodland with growing trees.' The Hebrew יַעַר can denote a forest or wooded area; 'grove' is chosen here because the context is cultivated and irrigated.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'to water from them.' The verb can mean 'to give drink to' or 'to water'; 'to irrigate' makes explicit the agricultural setting.
-    reason: lexical_alternative
+    text: More literally, “to water from them a forest growing trees.”
+    reason: literal_form
   ai_draft:
     model_id: gpt-5.4
     model_version: gpt-5.4-2026-03-05
@@ -34,50 +31,52 @@ base_translation:
     changes_summary: 'doctrine_realignment: Ecclesiastes 2:6 wholesale revert (1 override). Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''sprouting trees''].'
 translation:
   language: en
-  text: I made pools of water for myself to use in irrigating a grove[a] where trees were growing.
+  text: I made pools for myself and used their water to irrigate a woodland where trees were growing.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or “a forest” or “a wooded area.” “Grove” fits the cultivated, irrigated setting.
-    reason: lexical_alternative
 simplification_decisions:
-- pob_phrase: to irrigate from them
-  simplified_phrase: to use in irrigating
-  preserved_meaning: The pools are explicitly the source of water used to irrigate the grove.
-  reasoning_layer_used: Lexical decision for מֵהֶם and independent grounding review
-  rationale: This natural phrasing keeps the pools’ stated role as the water source.
-- pob_phrase: a grove sprouting trees
-  simplified_phrase: a grove where trees were growing
-  preserved_meaning: The grove is a wooded area whose trees are in ongoing growth.
-  reasoning_layer_used: Lexical decisions for יַעַר and צוֹמֵחַ עֵצִים
-  rationale: A relative clause expresses the participial image in clear English.
-translation_notes:
-  risk_flags:
-  - risk: “Grove” is narrower than a Hebrew term that can also mean forest or wooded area.
-    mitigation: The footnote preserves the alternatives, while the cultivated setting supports “grove.”
+- pob_phrase: pools of water
+  simplified_phrase: pools
+  preserved_meaning: The pools held water for irrigation.
+  reasoning_layer_used: POB lexical decision for בְּרֵכוֹת מָיִם and immediate context
+  rationale: The following reference to their water makes “pools of water” needlessly repetitive.
+- pob_phrase: to irrigate a woodland of growing trees
+  simplified_phrase: used their water to irrigate a woodland where trees were growing
+  preserved_meaning: The pools supplied water to a wooded area containing growing trees.
+  reasoning_layer_used: POB lexical decisions for לְהַשְׁקוֹת מֵהֶם, יַעַר, and צוֹמֵחַ עֵצִים
+  rationale: A direct statement with a relative clause is easier to understand than the dense noun phrase.
+interpretive_expansions:
+- pob_phrase: to irrigate
+  rendering: used their water to irrigate
+  claim: The pools were the source of water used for irrigation.
+  evidence:
+  - The Hebrew מֵהֶם means “from them” and refers back to the pools.
+  - The POB lexical audit identifies the pools as the irrigation source.
+  confidence: high
+  alternatives_preserved:
+  - to irrigate from them
+  - to water with them
+translation_notes: {}
 source_grounding:
   pob_role: primary_derivative_base
   source_payload_role: audit_guardrail
   pob_path: translation/ot/ecclesiastes/002/006.yaml
   source_text_sha256: cbcc388159889e5d373043a710b3d6f97a9c0725b7955cbb3724324dfed1bc60
-  pob_commit_sha: b96904311cafbd598c6123c6a6af0991fc43a112
+  pob_commit_sha: 776f86401b0c907fd3e83e7e2f0ebe70625d3c74
 ai_draft:
   model_id: gpt-5.6-sol
   model_version: gpt-5.6-sol-2026-07-09
   azure_deployment: gpt-5-6-sol-atlas
-  prompt_id: simplified_pob_grounding_revision_v1
-  prompt_sha256: da8c810a499d70e58f63c6bef1296895dc181d7f017fea973f987eed9fc867b8
-  timestamp: '2026-07-12T09:09:21Z'
-  output_hash: 97da55e1c6076c73a7c1548c6969877e20872e373dcf908fb08e6c6ce7a2f897
+  prompt_id: simplified_pob_wisdom_source_audit_v1
+  prompt_sha256: 7272876cf1a74cd9da157231edf31a7a36580e244a0f7ac877abd71e7e27c5d5
+  timestamp: '2026-08-28T23:09:16Z'
+  output_hash: 9e3b7c7ec56c96040c0a3743077e878f19541f20ce78d63b0183d24f050932e4
   usage:
-    prompt_tokens: 3532
-    completion_tokens: 313
-    total_tokens: 3845
-    reasoning_tokens: 0
+    prompt_tokens: 2955
+    completion_tokens: 590
+    total_tokens: 3545
+    reasoning_tokens: 228
     estimated_cost_usd: 0.0
 status: simplified_draft
-interpretive_expansions: []
-retained_terms: []
 spob_revision_history:
 - timestamp: '2026-07-12T09:09:21Z'
   previous_text: I made pools of water for myself to irrigate a grove[a] where trees were sprouting.
@@ -89,3 +88,8 @@ spob_revision_history:
   schema_repairs:
   - restored interpretive_expansions as an array from the prior draft
   - restored retained_terms as an array from the prior draft
+- timestamp: '2026-08-28T23:09:16Z'
+  previous_text: I made pools of water for myself to use in irrigating a grove[a] where trees were growing.
+  previous_model: gpt-5.6-sol
+  previous_prompt_id: simplified_pob_grounding_revision_v1
+  reason: forced doctrine-calibrated redraft
