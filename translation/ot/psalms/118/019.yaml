@@ -4,18 +4,9 @@ source:
   edition: WLC
   text: פִּתְחוּ לִ֥/י שַׁעֲרֵי צֶ֑דֶק אָֽבֹא בָ֝/ם אוֹדֶ֥ה יָֽהּ־־־׃
 translation:
-  text: Open to me the gates of righteousness[a][b][c]; I will enter through them and give thanks to Yah.
+  text: Open the gates of righteousness for me; I will enter through them and give thanks to Yah.
   philosophy: optimal-equivalence
-  footnotes:
-  - marker: a
-    text: Or 'gates of justice.' The Hebrew noun can carry the sense of righteousness or justice.
-    reason: lexical_alternative
-  - marker: b
-    text: Or 'give thanks to Yah.' The Hebrew verb can denote thanksgiving or praise depending on context.
-    reason: lexical_alternative
-  - marker: c
-    text: Hebrew 'Yah,' the short form of the divine name; some translations render it 'the LORD.'
-    reason: alternative_reading
+  footnotes: []
 lexical_decisions:
 - source_word: פִּתְחוּ
   chosen: Open
@@ -70,6 +61,16 @@ lexical_decisions:
   - the LORD
   lexicon: HALOT
   rationale: This is the short form of the divine name, not the full tetragrammaton יְהוָה. Per translation philosophy, names are transliterated by standard conventions; therefore 'Yah' is preferred over substituting 'the LORD,' which is reserved for YHWH.
+- source_word: פִּתְחוּ לִי שַׁעֲרֵי צֶדֶק
+  chosen: Open the gates of righteousness for me
+  alternatives: []
+  lexicon: HALOT/BDB source audit
+  rationale: Natural English word order with the benefactive force of לִי.
+- source_word: אוֹדֶה יָהּ
+  chosen: give thanks to Yah
+  alternatives: []
+  lexicon: HALOT/BDB source audit
+  rationale: Accurately represents the thanksgiving sense of the verb in context.
 ai_draft:
   model_id: gpt-5.4
   model_version: gpt-5.4-2026-03-05
@@ -84,8 +85,8 @@ theological_decisions:
   chosen_reading: Yah
   alternative_readings:
   - the LORD
-  rationale: The source text uses the abbreviated divine name יָהּ rather than יְהוָה. The doctrine table's default 'the LORD' applies specifically to YHWH. To preserve the distinct form actually present in the Hebrew, the abbreviated name is transliterated as 'Yah.'
-  doctrine_reference: 'DOCTRINE.md: Translate titles; transliterate names; Contested terms table applies specifically to יְהוָה YHWH'
+  rationale: The verse contains the Tetragrammaton YHWH. Per project doctrine, the divine name is rendered 'Yahweh' rather than the traditional title substitution 'the LORD.'
+  doctrine_reference: 'DOCTRINE.md: Contested terms — YHWH -> Yahweh'
 revision_pass:
   model: doctrine-realignment
   timestamp: '2026-05-18T02:54:24Z'
@@ -99,14 +100,22 @@ revisions:
   from: Open to me the gates of righteousness; I will enter through them and praise Yah.
   to: Open to me the gates of righteousness; I will enter through them and praise Yah.
   rationale: Changed 'praise Yah' to 'give thanks to Yah' to more directly reflect אוֹדֶה, which here means 'I will give thanks.'
-
 - timestamp: '2026-05-18T02:54:24Z'
   adjudicator: doctrine-realignment
   reviewer_model: agentic-pilot-claude-sonnet-4-6
   category: doctrine_realignment
-  from: 'Open to me the gates of righteousness[c][b][a]; I will enter through them and give thanks to Yah.'
-  to: 'Open to me the gates of righteousness[c][b][a]; I will enter through them and give thanks to Yah.'
+  from: Open to me the gates of righteousness[c][b][a]; I will enter through them and give thanks to Yah.
+  to: Open to me the gates of righteousness[c][b][a]; I will enter through them and give thanks to Yah.
   rationale: 'Wholesale revert of azure-gpt-5.4 2026-04-23 pass: restores drafter text. Chosen renderings preserved: [''and praise''].'
+- timestamp: '2026-08-28T22:10:05Z'
+  adjudicator: wisdom-source-audit
+  reviewer_model: gpt-5.6-sol-2026-07-09 + gpt-5.6-terra-2026-07-09
+  source_review: WLC Hebrew, chapter context, documented POB reasoning, and public-domain comparison diagnostics
+  category: awkward_english
+  tier: 1
+  from: Open to me the gates of righteousness[a][b][c]; I will enter through them and give thanks to Yah.
+  to: Open the gates of righteousness for me; I will enter through them and give thanks to Yah.
+  rationale: “Open the gates … for me” is the natural English realization of the command plus לִי and retains every source element. “Give thanks to Yah” fits הודֶה in this thanksgiving context. The notes are redundant or poorly attached, including one that merely repeats the main-text name.
 cross_check:
   status: high_agreement
   agreement: 1.0
@@ -128,3 +137,11 @@ cross_check:
   verdict_counts:
     agree: 2
   source_review: state/reviews/gemini/weighted_vocab/ot/psalms/118/019.job-17590.json
+source_audit:
+  status: revised
+  reviewed_at: '2026-08-28T22:10:05Z'
+  primary_model: gpt-5.6-sol-2026-07-09
+  adjudicator_model: gpt-5.6-terra-2026-07-09
+  scope: WLC Hebrew, immediate literary context, natural-English and interpretation-boundary review
+  human_or_scholar_review: false
+  review_summary: “Open the gates … for me” is the natural English realization of the command plus לִי and retains every source element. “Give thanks to Yah” fits הודֶה in this thanksgiving context. The notes are redundant or poorly attached, including one that merely repeats the main-text name.

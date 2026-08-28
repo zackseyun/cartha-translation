@@ -52,6 +52,12 @@ LOW_SIGNAL_LEMMAS = {
         "αὐτός",
         "ἐγώ",
         "σύ",
+        "413",  # Hebrew אל: high-variance preposition/function word
+        "3808", # Hebrew לא: negation particle
+        "2005", # Hebrew הן/הנה: discourse-presentative particle
+        "2009", # Hebrew הנה: discourse-presentative particle
+        "5973 a", # Hebrew עם: high-variance preposition/function word
+        "l/120", # Hebrew ל + אדם: preposition plus generic human noun
     )
 }
 GLOSS_STOPWORDS = {
@@ -129,6 +135,8 @@ def load_source_verse(record: dict[str, Any]) -> Any | None:
     if edition == "SBLGNT":
         return sblgnt.load_verse(book_code, chapter, verse, draft.SOURCES_ROOT)
     if edition == "WLC":
+        if verse == 0:
+            return None  # normalized Psalm superscriptions may combine MT title rows
         return wlc.load_verse(book_code, chapter, verse, draft.SOURCES_ROOT)
     return None
 

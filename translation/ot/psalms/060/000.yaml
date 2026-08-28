@@ -2,7 +2,7 @@ id: PSA.60.0
 reference: Psalms 60:0
 source:
   edition: WLC
-  text: לַ֭/מְנַצֵּחַ עַל שׁוּשַׁ֣ן עֵד֑וּת מִכְתָּ֖ם לְ/דָוִ֣ד לְ/לַמֵּֽד־׃
+  text: לַ֭/מְנַצֵּחַ עַל שׁוּשַׁ֣ן עֵד֑וּת מִכְתָּ֖ם לְ/דָוִ֣ד לְ/לַמֵּֽד־׃ בְּ/הַצּוֹת֨/וֹ ׀ אֶ֥ת אֲרַ֣ם נַהֲרַיִם֮ וְ/אֶת־אֲרַ֪ם צ֫וֹבָ֥ה וַ/יָּ֤שָׁב יוֹאָ֗ב וַ/יַּ֣ךְ אֶת־אֱד֣וֹם בְּ/גֵיא־מֶ֑לַח שְׁנֵ֖ים עָשָׂ֣ר אָֽלֶף׃
 translation:
   text: 'For the choirmaster: according to “Lily of Testimony.”[a] A miktam[b] of David[c], for teaching when he fought against Aram-naharaim and Aram-zobah, and Joab returned and struck down twelve thousand of Edom in the Valley of Salt.'
   philosophy: optimal-equivalence
@@ -62,6 +62,11 @@ lexical_decisions:
   - for instruction
   lexicon: HALOT
   rationale: The infinitive/purpose form indicates intended instructional use. 'For teaching' is natural English and preserves the purposive sense of the Hebrew.
+- source_word: בְּהַצּוֹתוֹ ... שְׁנֵים עָשָׂר אָלֶף
+  chosen: when he fought ... twelve thousand
+  alternatives: []
+  lexicon: WLC source-corpus repair
+  rationale: POB normalizes the two Masoretic superscription verses into verse 0. The complete WLC historical notice must therefore remain in both the source payload and translation rather than being dropped because the earlier normalized record contained only the first source row.
 ai_draft:
   model_id: gpt-5.4
   model_version: gpt-5.4-2026-03-05
@@ -86,7 +91,24 @@ revisions:
   from: “Lily of Testimony.” A miktam of David[a], for teaching when he fought against Aram-naharaim and Aram-zobah[c][b]
   to: “Lily of Testimony.”[a] A miktam[b] of David[c], for teaching when he fought against Aram-naharaim and Aram-zobah
   rationale: The footnote markers are misplaced and attached to the wrong words. Footnote [a] discusses 'Lily of Testimony' but is attached to 'David'. Footnote [b] discusses 'miktam' and [c] discusses 'Of David', but both are attached to 'Aram-zobah'.
-
+- timestamp: '2026-08-28T22:06:48Z'
+  adjudicator: wisdom-source-audit
+  reviewer_model: gpt-5.6-sol-2026-07-09 + gpt-5.6-terra-2026-07-09
+  source_review: WLC Hebrew, chapter context, documented POB reasoning, and public-domain comparison diagnostics
+  category: mistranslation
+  tier: 1
+  from: 'For the choirmaster: according to “Lily of Testimony.”[a] A miktam[b] of David[c], for teaching when he fought against Aram-naharaim and Aram-zobah, and Joab returned and struck down twelve thousand of Edom in the Valley of Salt.'
+  to: 'For the choirmaster: according to “Lily of Testimony.”[a] A miktam[b] of David[c], for teaching.'
+  rationale: The supplied WLC text ends with לְלַמֵּד, “for teaching,” and does not include the historical notice. Retaining that notice in this record would translate material absent from its supplied source. The existing footnote placements are accurate.
+- timestamp: '2026-08-28T23:05:00Z'
+  adjudicator: wisdom-source-audit-corpus-repair
+  reviewer_model: editorial source verification
+  source_review: WLC Ps 60:1-2 in sources/ot/wlc/Ps.xml; normalized POB verse-0 mapping
+  category: source_completeness
+  tier: 1
+  from: 'For the choirmaster: according to “Lily of Testimony.”[a] A miktam[b] of David[c], for teaching.'
+  to: 'For the choirmaster: according to “Lily of Testimony.”[a] A miktam[b] of David[c], for teaching when he fought against Aram-naharaim and Aram-zobah, and Joab returned and struck down twelve thousand of Edom in the Valley of Salt.'
+  rationale: Restored the second Masoretic superscription line and added it to the source payload. POB verse 0 intentionally combines WLC Psalm 60:1-2; the automated audit had mistaken the incomplete normalized source field for evidence that the historical notice was extraneous.
 cross_check:
   status: moderate_agreement
   agreement: 0.8
@@ -106,3 +128,11 @@ cross_check:
   verdict_counts:
     major-issues: 1
   source_review: state/reviews/gemini/vertex_gap_closure_2026_04/ot/psalms/060/000.job-75201.json
+source_audit:
+  status: revised
+  reviewed_at: '2026-08-28T22:06:48Z'
+  primary_model: gpt-5.6-sol-2026-07-09
+  adjudicator_model: gpt-5.6-terra-2026-07-09
+  scope: WLC Hebrew, immediate literary context, natural-English and interpretation-boundary review
+  human_or_scholar_review: false
+  review_summary: Verified against WLC Psalm 60:1-2. The normalized POB verse 0 combines both Masoretic superscription lines; the complete historical notice is retained and the source payload now includes both lines.
