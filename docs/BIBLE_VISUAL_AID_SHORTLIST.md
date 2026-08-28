@@ -14,10 +14,11 @@ reuse anchors are listed inline — publish the same image at every reuse
 anchor. Format is a proposal and labels are candidates; the editor generating
 each asset owns the final label set (3–5, up to 6 on maps/object plates).
 
-**Production status (2026-08-08): complete.** All 87 planned assets (the full
-absolute set, including distinct Acts 3:2 and Acts 3:11 views, plus all 13 nice-to-have plates) are generated and published in
-catalog v3. They produce 127 verse placements across 36 books after reuse
-anchors are expanded.
+**Current direction (2026-08-28): necessity, not coverage.** The live v55
+catalog had expanded to 433 images / 681 placements. A complete audit removed
+231 images and 296 placements, plus 51 repeated or low-value reuse placements.
+Catalog v56 retains 202 images / 334 placements. The historical lists below
+are discovery records, not an instruction to republish every row.
 
 Production order: the original launch set (marked ★) first, then the rest of
 the absolute set roughly in canon order, weighting high-traffic books (Gospels,
@@ -150,8 +151,9 @@ Completed supplemental set; all 13 plates are generated and published in catalog
 
 ## Wave 2 — produced and published (catalog v4, 2026-08-16)
 
-The absolute set is the floor, not the ceiling. These pass the three gate
-tests and materially improve comprehension. This wave shipped 42 new images;
+The earlier “floor, not the ceiling” direction is retired. Every item must now
+pass the stricter necessity test in `BIBLE_VISUAL_AIDS.md`; relevance or visual
+interest is not enough. This historical wave shipped 42 new images;
 the synagogue and Solomon's temple furnishings reuse two already-published
 assets. Catalog v4 now contains **129 unique assets / 201 placements across
 46 books**. The broader canon-wide map remains an editorial discovery queue,

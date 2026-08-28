@@ -9,21 +9,23 @@ like**. Codex Image Gen sessions must follow the Art direction section below;
 it overrides any older prompt guidance (`historical-scene-v1` is retired — see
 [Catalog dispositions](#catalog-dispositions)).
 
-## Art direction — two complementary lanes
+## Art direction — comprehension before illustration
 
-A visual aid may be either a **reference figure** or an opt-in **narrative
-reconstruction**. Reference figures are the labeled reconstructions found in a
-study Bible or on a museum placard: they explain the physical world a passage
-assumes — places, structures, objects, routes, practices — without acting out
-the event. Narrative reconstructions help a reader picture a passage whose
-positions, participants, or emotional setting are otherwise difficult to hold
-together. They may show the event, but must remain visibly interpretive rather
-than presenting invented details as history, portraiture, or doctrine.
+A visual aid is primarily a **reference figure**: a labeled reconstruction,
+diagram, map, or object plate that explains physical information the passage
+assumes and a modern reader would otherwise struggle to reconstruct. It is not
+an illustration program and it does not exist merely to make a verse visual.
 
-Both lanes are supplemental. Scripture remains the narrator, and every sheet
-retains the artist-reconstruction disclaimer. Prefer the reference lane when
-the setting or object is sufficient; use the narrative lane only when seeing
-the described moment adds material teaching or comprehension value.
+A **narrative reconstruction** is the rare exception. It qualifies only when a
+specific arrangement or causal action is genuinely confusing without the
+image—for example, Joseph understanding his brothers through an interpreter,
+Gideon threshing below a winepress rim, or Moab mistaking sunrise-reflected
+water for blood. Visible emotion, a familiar action, or a beautiful scene is
+not enough.
+
+Scripture remains the narrator, and every sheet retains the
+artist-reconstruction disclaimer. If the passage is already easy to follow,
+the correct editorial decision is **no visual aid**.
 
 The approved house-style example is the annotated Temple-courts image for Acts
 3: a wide reconstruction of the outer courts with callout labels for the
@@ -37,10 +39,11 @@ the second competes with the text by acting the story out.
 Every candidate image must pass all three before it is generated, and again at
 review:
 
-1. **Teaching-value test.** The image must explain a physical setting, object,
-   process, quantity, route, position, or symbol that materially helps the
-   reader. Calm anonymous action may be shown when the action itself explains
-   how something worked; cinematic reenactment is still rejected.
+1. **Necessity test.** The image must resolve an important comprehension
+   problem involving geography, architecture, an unfamiliar ancient practice
+   or object, unusual scale, or confusing spatial or causal action. “Helpful,”
+   interesting, attractive, or relevant is not enough. If removing it leaves
+   the passage just as easy to follow, remove it.
 2. **Clarity test.** A reference figure needs 3–6 genuinely useful labels
    (places, parts, functions, distances, quantities, or process steps), not
    decorative copy. A narrative reconstruction normally has no baked-in text;
@@ -130,9 +133,9 @@ schematic prophetic-metaphor diagram.
 
 ### What earns an aid
 
-Anchor verses qualify through whatever concrete information they leave hard
-to picture—not only the world they assume. The taxonomy of aid types (expanded
-2026-08-12 for the abundant catalog — see [Density](#density)):
+Anchor verses qualify only when important concrete information remains hard to
+understand from the prose. The taxonomy describes possible formats, not an
+entitlement to illustrate every matching noun, measurement, route, or action:
 
 | Type key | Aid type | What it is | Examples |
 | --- | --- | --- | --- |
@@ -148,22 +151,24 @@ to picture—not only the world they assume. The taxonomy of aid types (expanded
 | `people` | Who's who | Relationship, succession, or genealogy chart with named nodes and neutral silhouettes | Herod's family, the twelve, the tribes, the priestly line |
 | `structure` | Structure of the passage | Typographic infographic of a list, parallel, chiasm, or argument | Beatitudes, fruit of the Spirit, the armor of God, the Ten Commandments |
 | `symbol` | Symbol explainer | Labeled diagram explaining what each element of a symbolic image stands for — clearly schematic, never a literal scene | the seven lampstands, Daniel's statue, Ezekiel's temple plan |
-| `scene` | Narrative reconstruction | Clearly interpretive, text-free reconstruction of a described moment whose people, positions, or emotional setting materially aid comprehension | the angels at the head and feet of the empty burial place, Ruth approaching the threshing floor, Paul before the Areopagus |
+| `scene` | Narrative reconstruction | Exceptional, text-free reconstruction where a confusing position or causal action cannot be conveyed as clearly by a reference figure | Joseph and the interpreter, Gideon threshing in a winepress, water appearing red at sunrise |
 
-The first five are the original reference-figure lanes; the rest were added
-so the catalog can go wider without becoming cinematic. Every type still
-passes the teaching-first tests: the bird's-eye scene may chart anonymous
-positions and movement, the symbol explainer diagrams rather than literalizes,
-and who's-who charts use neutral silhouettes rather than invented portraits.
+The first five are the default reference-figure lanes. Every type still passes
+the necessity tests: a valid format does not make an unnecessary image valid.
 
 ### What never gets an aid
 
-- Sensational, manipulative, or devotionalized reenactments that add spectacle
-  beyond the passage. Miracles, healings, resurrection appearances, the
-  crucifixion, the transfiguration, Gethsemane, and Pentecost require heightened
-  editorial care, but may qualify as restrained narrative reconstructions when
-  the depicted relationship is genuinely helpful and invented details are kept
-  visibly interpretive.
+- Straightforward narrative action or emotion merely because it can be painted:
+  reunions, greetings, embraces, blessings, grief, prayer, teaching, travel,
+  or a person standing before another person.
+- Miracles, healings, resurrection appearances, the crucifixion,
+  transfiguration, Gethsemane, and Pentecost. Scripture narrates these events;
+  a speculative reconstruction competes with rather than clarifies the text.
+- Understandable metaphors, poetic images, and symbols merely converted into
+  pictures. An aid must explain unfamiliar physical information, not restate
+  “fortress,” “tree by water,” “yoke,” or similar imagery.
+- Incidental inventories, quantities, dates, minor routes, and generic settings
+  that do not affect a reader's ability to follow the passage.
 - Symbolic and visionary imagery: Revelation's beasts and throne room,
   Ezekiel 1, Daniel 7–8, Zechariah's visions. Never literalize a vision.
   Schematic diagram lanes are allowed: measured architecture, scale diagrams,
@@ -175,111 +180,36 @@ and who's-who charts use neutral silhouettes rather than invented portraits.
 
 ### Density
 
-**Direction (2026-08-12): step up toward abundance.** The original doctrine
-was rarity — a handful per book. The absolute set shipped as catalog v3; the
-curated Wave 2 expansion shipped on 2026-08-16 as catalog v4. Teaching-first
-Waves 3–48 plus Narrative Reconstruction Waves 1–7 and the full semantic audit
-now ship as catalog v54 (**420 unique assets, 669 placements across
-53 books**). Zack's direction is now that aids should be plentiful wherever they
-genuinely help, stepping up in tiers rather than
-flooding at once. Subtlety is preserved by the affordance (the wrapped verse
-number costs nothing when unopened), not by scarcity.
+**Direction (2026-08-28): return to necessity and restraint.** Catalog v55 had
+grown to 433 images and 681 verse placements. A complete relevance audit
+removed 231 images and 296 placements, then retired 51 additional repeated or
+low-value placements. Catalog v56 contains **202 images / 334 placements**.
 
-The tiers come from `tools/bible_visual_aid_map.py`, which scores every
-canonical verse and caps anchors per chapter. Counts are anchors (verse
-placements), not unique images — reuse brings the image count down.
-
-| Tier | Settings | Anchors | Coverage | What it feels like |
-| --- | --- | --- | --- | --- |
-| Shipped (v55) | curated Waves 2–48 + Narrative Waves 1–8 + semantic corrections | 681 | 2.2% | audited reference figures and text-grounded scenes across 52 books |
-| **Wave A — next broad step** | published exclusions + editorial dispositions | 0 new (+681 shipped) | 2.2% | roughly one aid every chapter or two |
-| Wave B | `--min-score 5 --per-chapter-cap 2` | ~1,400 | 4.5% | one to two per chapter in narrative books |
-| Wave C (abundant) | `--min-score 5 --per-chapter-cap 3` | ~1,800 | 5.8% | most chapters have an aid; dense chapters have several |
-| Ceiling | `--min-score 4 --per-chapter-cap 4` | ~3,500 | 11% | picture-book territory — do not ship |
-
-Catalog v17's contextual-caption update is now live. The refreshed map remains an
-editorial queue, not an auto-generation list; it lives at
-`~/Documents/New project/output/bible-visual-aid-map/wave-a-v48-reviewed/`
-beside the Codex publish staging tree, with
-`published_anchor_ids-v48.json` and the cumulative
-`editorial-dispositions.json` one level up. Review every row against the
-teaching-first tests before generation, then read `pob_visual_aid_opened`
-analytics by aid type before deciding
-whether Wave B or C is worth it. Pass `--exclude-ids` with the current
-published anchor set on every rerun so the queue proposes only new
-placements. Per-chapter caps stay in place at every
-tier: no chapter becomes a picture book. One image is still reused across
-every anchor it serves (the tabernacle cutaway serves Exodus 26, Exodus 40,
-and Hebrews 9).
+There is no numeric coverage target and no “abundant” tier. Discovery scripts
+may propose candidates, but a score is never permission to generate or
+publish. Density is evidence to be more skeptical, not a goal. Reuse also
+requires a separate necessity review; ordinarily the same image appears no
+more than once in a chapter.
 
 ### Narrative reconstruction expansion
 
-`tools/bible_narrative_scene_map.py` is the separate discovery pass for the
-scene lane. It scores narrated moments where visible position, movement,
-embodied emotion, encounter, or passage-described heavenly participation adds
-real comprehension value; it rejects discourse-only and symbolic-vision rows,
-flags sensitive scenes for heightened review, and writes text-grounded
-`narrative-reconstruction-v3-identity-isolated` prompts. Named recurring
-figures are resolved through the persistent character registry, so the queue
-records exact cards and reference files rather than relying on prose
-resemblance. A locked reference may produce that named character exactly once
-unless the passage explicitly requires another appearance; all other people
-must have visibly distinct faces, hair silhouettes, beards, ages, and clothing.
-Any frame containing a Jesus-, Peter-, Paul-, Moses-, or Elijah-lookalike is an
-automatic rejection and regeneration. It never auto-approves an image.
+The narrative-wave expansion is retired. The v56 audit removed the large
+majority of narrative reconstructions because they reenacted clear actions or
+emotions. Only a small exceptional set remains where the image resolves a
+specific spatial or causal difficulty. `tools/bible_narrative_scene_map.py`
+may be used for research, but its output is not a publication queue and there
+is no narrative-image target.
 
-The current expanded published-text scan lives at
-`~/Documents/New project/output/bible-narrative-scene-map/wave-a-v51-character-locked-reviewed/`.
-Narrative Wave 1 shipped eight reviewed scenes in catalog v42: Jacob and Esau's
-reunion, Joseph listening through an interpreter, Abigail's intercession,
-Jehoiakim cutting and burning the scroll, the father welcoming the returning
-son, Jesus blessing the children, Dorcas's widows showing her garments, and
-the sealing of Daniel's den. Wave 2 adds the Shunammite mother's reunion,
-David's fast, Joseph weeping in private, David sparing Saul, the unconsumed
-bush, Jesus raising the boy by the hand, Naomi's roadside farewell, and Peter
-raising Cornelius. Wave 3 adds Hagar at bowshot distance, Rebekah at the spring,
-Ruth at Boaz's feet, Eli awaiting the messenger, Saul's anointing, Naaman in the
-Jordan, David mourning Absalom, and Mordecai's public honor in Susa. Catalog
-Wave 4 adds Gideon threshing in the winepress, Ananias welcoming Saul, Peter at
-the gate, Mary meeting Jesus outside Bethany, Mary and Elizabeth's greeting,
-Abraham's three visitors, Josiah hearing the discovered law, and Jonah waiting
-east of Nineveh. Wave 5 adds Jairus's plea, Elisha crossing the Jordan, Joseph
-reuniting with Israel, Jesus touching the man with a skin disease, Solomon
-hearing the two women, Uriah receiving the sealed letter, Moab's red-water
-mistake, and Paul's guarded lodging in Rome. Wave 6 adds Joseph reassuring his
-brothers, the Syrophoenician mother's plea, Ittai's loyal crossing, Elisha's
-acted arrow prophecy, Saul's spear beside David's lyre, Daniel's open-window
-prayer, Mordecai at the palace gate, and Paul's garment-shaking gesture. Wave
-7 begins the larger identity-consistent expansion with the Transfiguration,
-Jesus washing Peter's feet, and Paul in the midst of the Areopagus. Wave 8 adds
-Jesus' baptism, the woman at the well, Peter leaving the boat, the Emmaus-road
-conversation, Thomas seeing the risen Jesus, Paul and Silas in prison, Philip
-approaching the Ethiopian official, Elijah beside the repaired Carmel altar,
-Samuel hearing his name at Shiloh, David and the Philistine across the Valley
-of Elah, Esther entering the inner court, the three Judean friends before the
-king, and Ruth gleaning behind the reapers. Catalog v55 now contains **66 unique
-narrative images / 68 narrative placements**.
-The refreshed character-locked queue contains 83 high-confidence candidates
-after published-anchor proximity and prior dispositions are removed. The
-long-term target is roughly 150–250 carefully selected narrative images, so
-future editorial passes may add important hand-curated scenes that the text
-heuristic misses; neither count is an automatic publication target. The
-narrative disposition ledger records 143 rejected candidates and 51
-published candidates so neither class can silently re-enter the queue. The
-queue count is not a promise to publish every match.
+### Full semantic and necessity audit
 
-### Full semantic audit
+Catalog v56 completed the stricter asset-and-placement review of the live
+catalog:
 
-Catalog v44 completed a placement-by-placement audit of the live catalog:
-
-- **632 live placements** received explicit pass or corrected dispositions.
-- **95 placements or shared source captions** were corrected for literary form,
-  uncertainty, target-specific reuse wording, or reader-copy quality.
-- **21 misleading placements** were retired, including anachronistic reuse,
-  wrong locations, debated theories presented as settled, and literalized
-  prophetic imagery.
-- Matthew 3:1–3 now shows John preaching in the wilderness; Isaiah 40:3–4 now
-  uses a schematic road-metaphor explainer.
+- **433 image assets / 681 placements** received an explicit necessity
+  decision.
+- **231 assets / 296 placements** failed the necessity test and were removed.
+- **51 additional placements** were retired as repeated or low-value reuse.
+- **202 assets / 334 placements** remain.
 
 The reproducible check is `tools/audit_bible_visual_aid_semantics.py`. It joins
 every catalog row to the published verse text, rejects production language in
@@ -304,9 +234,10 @@ current ledger and report live beside the publish tree as
   as "diagram only," "no people," "published," "map lane," or "flagged for
   editorial care." Those constraints belong in production metadata, not the
   caption.
-- Reused images need placement-specific wording whenever the reason they help
-  changes. A reclining-table diagram, for example, explains physical proximity
-  in John 13 but banquet arrangement in Luke 5 and Matthew 22.
+- Reused images need a fresh necessity decision and placement-specific wording.
+  A valid primary image can still be unnecessary at another verse; the
+  reclining-table diagram, for example, remains at John 13 but was retired from
+  ordinary banquet references in Luke 5 and Matthew 22.
 - Keep the `historical_certainty` field and the compact on-image-sheet
   disclaimer: "Visual details may be interpreted or created. Artist
   reconstruction."
@@ -400,9 +331,11 @@ Historical care: [ERA, CLOTHING, ARCHITECTURE, AND UNCERTAINTIES].
 
 Before an image enters the manifest:
 
-- [ ] Passes the teaching-value, clarity, and focus tests.
+- [ ] Passes the necessity, clarity, and focus tests; removing it would leave a
+      material comprehension problem.
 - [ ] Reference figures contain no named characters or heavenly beings;
-      narrative figures are text-grounded, non-authoritative, and dignified.
+      an exceptional narrative figure resolves a documented spatial or causal
+      ambiguity rather than merely depicting the scene.
 - [ ] Every required reference label is spelled exactly; narrative scenes have
       no stray text artifacts anywhere in frame.
 - [ ] Style matches the library (matte reconstruction, daylight, no drama).
@@ -419,23 +352,20 @@ Before an image enters the manifest:
 
 ## Pipeline
 
-1. **Select:** the curated shortlist in
-   [`BIBLE_VISUAL_AID_SHORTLIST.md`](BIBLE_VISUAL_AID_SHORTLIST.md) is the
-   shipped absolute set. For the abundant waves, run
-   `tools/bible_visual_aid_map.py` against the compiled reader corpus at the
-   wave's tier settings; its per-book `books/*.json` output is the editorial
-   queue (each row carries aid type, format, working title, cues, and a
-   typed prompt). `tools/bible_visual_aid_candidates.py` is the older,
-   narrower discovery net and is superseded by the map for selection.
+1. **Discover:** the historical shortlist and
+   `tools/bible_visual_aid_map.py` may surface candidates, but neither is a
+   publication queue or coverage target. A candidate proceeds only after an
+   editor documents the material comprehension problem it solves.
 
    ```bash
    python tools/bible_visual_aid_map.py \
      --books-root ../cartha.website/public/bibles/pob/books \
      --out-dir /tmp/bible-visual-aid-map --min-score 6 --per-chapter-cap 2
    ```
-2. **Review:** an editor confirms a visual would clarify the passage, chooses
-   the format (reconstruction, cutaway, map, diagram, object plate), fixes
-   the label set, and adds historical/source constraints.
+2. **Review:** an editor first attempts to reject the candidate under the
+   necessity test. Only when the passage is materially harder to understand
+   without it does the editor choose a format, fix the label set, and add
+   historical/source constraints.
 3. **Generate:** use Codex Image Gen with the `annotated-reference-v2`
    template. One approved concept produces one final asset; discarded
    variants do not enter the catalog.
@@ -462,9 +392,9 @@ and review timestamp. An entry may also carry an `images` array (each item:
 `image_url`, `thumbnail_url`, `alt_text`) when one anchor benefits from more
 than one figure — e.g., a labeled overview plus an interior view (Acts 3:11).
 The sheet renders them stacked in order under the entry's single caption;
-`image_url` stays set to the first figure for single-image clients. The reader displays a **Visual aid** pill only when an
-approved entry exists, then opens a dismissible full-image sheet with the
-caption and reconstruction disclaimer.
+`image_url` stays set to the first figure for single-image clients. The reader
+wraps the verse number only when an approved entry exists; tapping it opens a
+dismissible full-image sheet with the caption and reconstruction disclaimer.
 
 ## Catalog dispositions
 
