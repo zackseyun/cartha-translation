@@ -1,17 +1,17 @@
 # the People's Open Bible
 
-Maintained by [cartha.com](https://cartha.com), which stewards the
-public revision process, hosting infrastructure, and this open-source
-project.
+Maintained by [peoplesbible.com](https://peoplesbible.com), which
+stewards the public revision process, hosting infrastructure, and this
+open-source project.
 
 This is the people’s Bible — the most accurate-to-original translation
 from Hebrew, Greek, and Latin into English that we can build. Every
 decision is publicly defensible and publicly revisable. Our data,
 methods, and code are published as openly as possible.
 
-[Read the Bible](https://cartha.com/peoples-open-bible/) ·
-[About the project](https://cartha.com/peoples-open-bible/about/) ·
-[Our philosophy](https://cartha.com/peoples-open-bible/docs/philosophy/) ·
+[Read the Bible](https://peoplesbible.com/bible/) ·
+[About the project](https://peoplesbible.com/about/) ·
+[Our philosophy](https://peoplesbible.com/peoples-open-bible/docs/philosophy/) ·
 [Simplified POB](SPOB.md)
 
 ## What makes this different
