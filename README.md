@@ -332,8 +332,10 @@ date, manuscript provenance, and theological-literary character.
 Orthodox canonical), Jubilees (Ethiopian Orthodox canonical),
 Psalms of Solomon (in some early LXX manuscripts).
 
-**Tier 2 — Apostolic Fathers and pseudepigrapha:** Didache, 1 Clement,
-Shepherd of Hermas, 2 Baruch, Testaments of the Twelve Patriarchs.
+**Tier 2 — Apostolic Fathers, ancient church orders, and pseudepigrapha:**
+Didache, 1 Clement, Shepherd of Hermas, Didascalia Apostolorum,
+Apostolic Tradition, Apostolic Church Order, Apostolic Constitutions,
+2 Baruch, and Testaments of the Twelve Patriarchs.
 
 **Tier 3 — early Christian mystical, apocryphal, and Nag Hammadi
 texts (with framing):** Gospel of Thomas, Gospel of Truth, Thunder,
@@ -344,9 +346,9 @@ Instead, every work is labeled by manuscript, approximate date,
 literary form, and theological tradition, and is explicitly separated
 from canonical Scripture.
 
-The active expansion adds **23 historically important works**: eleven
+The active expansion adds **27 historically important works**: eleven
 Nag Hammadi works, five other early Christian apocrypha, and seven
-Apostolic Fathers works. The catalog is the authoritative list and
+Apostolic Fathers works, plus four ancient church orders. The catalog is the authoritative list and
 publication gate. A catalog entry can be prepared, drafted, reviewed,
 and tested without being presented as canonical Scripture or as a
 finished direct translation.

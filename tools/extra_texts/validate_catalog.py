@@ -110,8 +110,8 @@ def validate_catalog(catalog_path: pathlib.Path = CATALOG_PATH) -> list[str]:
     except Exception as exc:
         return errors + [str(exc)]
 
-    if len(entries) != 25:
-        errors.append(f"catalog must contain 25 works; found {len(entries)}")
+    if len(entries) != 29:
+        errors.append(f"catalog must contain 29 works; found {len(entries)}")
     for entry in entries:
         if entry.get("summary_corpus") not in SUMMARY_CORPORA:
             errors.append(f"{entry['id']}: unsupported summary_corpus")
@@ -145,7 +145,7 @@ def main() -> int:
         for error in errors:
             print(f"ERROR: {error}", file=sys.stderr)
         return 1
-    print("Validated 25 catalog entries and all published catalog artifacts.")
+    print("Validated 29 catalog entries and all published catalog artifacts.")
     return 0
 
 

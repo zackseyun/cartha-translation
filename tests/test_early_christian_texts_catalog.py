@@ -18,9 +18,9 @@ ROOT = pathlib.Path(__file__).resolve().parents[1]
 
 
 class EarlyChristianTextsCatalogTests(unittest.TestCase):
-    def test_catalog_contains_all_25_ordered_works_with_stable_codes(self):
+    def test_catalog_contains_all_29_ordered_works_with_stable_codes(self):
         entries = load_entries()
-        self.assertEqual(len(entries), 25)
+        self.assertEqual(len(entries), 29)
         self.assertEqual(
             {entry["id"]: entry["code"] for entry in entries},
             {
@@ -49,6 +49,10 @@ class EarlyChristianTextsCatalogTests(unittest.TestCase):
                 "martyrdom_of_polycarp": "MPOL",
                 "epistle_to_diognetus": "DIOG",
                 "fragments_of_papias": "PAPI",
+                "didascalia_apostolorum": "DASC",
+                "apostolic_tradition": "APTR",
+                "apostolic_church_order": "ACHO",
+                "apostolic_constitutions": "ACON",
             },
         )
         for entry in entries:
@@ -57,8 +61,8 @@ class EarlyChristianTextsCatalogTests(unittest.TestCase):
             self.assertTrue(entry["source"]["license"])
 
     def test_all_artifact_complete_entries_are_published(self):
-        self.assertEqual(len(published_entries()), 25)
-        self.assertEqual(len(flat_export_entries()), 25)
+        self.assertEqual(len(published_entries()), 29)
+        self.assertEqual(len(flat_export_entries()), 29)
         self.assertTrue(all(expected_units(entry) > 0 for entry in flat_export_entries()))
         self.assertEqual(witness_bridge.TEXTS["gospel_of_judas"]["code"], "GJUD")
         self.assertEqual(witness_bridge.TEXTS["protoevangelium_of_james"]["unit"], "chapter")
@@ -83,7 +87,7 @@ class EarlyChristianTextsCatalogTests(unittest.TestCase):
 
     def test_catalog_books_export_with_existing_reader_shape(self):
         payload = chapter_export.build_payload([entry["id"] for entry in published_entries()])
-        self.assertEqual(len(payload["books"]), 25)
+        self.assertEqual(len(payload["books"]), 29)
         self.assertTrue(all(book["chapters"] for book in payload["books"]))
         philip = mobile_export.export_extra_canonical_book("GPHIL")
         mary = mobile_export.export_extra_canonical_book("GMARY")

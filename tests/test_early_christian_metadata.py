@@ -36,10 +36,19 @@ class EarlyChristianMetadataTest(unittest.TestCase):
                         len(record["localized"]["es"][field].strip()), 40
                     )
 
-    def test_expansion_contains_exactly_the_23_requested_new_titles(self):
+    def test_expansion_contains_23_prior_titles_plus_four_church_orders(self):
         existing_bridges = {"gospel_of_philip", "gospel_of_mary"}
         expansion = [e for e in self.entries if e["id"] not in existing_bridges]
-        self.assertEqual(len(expansion), 23)
+        self.assertEqual(len(expansion), 27)
+        self.assertEqual(
+            [e["id"] for e in expansion[-4:]],
+            [
+                "didascalia_apostolorum",
+                "apostolic_tradition",
+                "apostolic_church_order",
+                "apostolic_constitutions",
+            ],
+        )
 
     def test_traditional_titles_do_not_create_false_authorship_claims(self):
         anonymous_titles = {

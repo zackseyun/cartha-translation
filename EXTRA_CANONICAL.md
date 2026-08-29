@@ -9,12 +9,18 @@ dedicated Latin-primary sub-phase for 2 Esdras), and
 [`REFERENCE_SOURCES.md`](REFERENCE_SOURCES.md) (the three-zone
 scholarly-source policy applied throughout).
 
-> **Status: active provisional expansion (2026-07-11).** The shared
-> catalog now tracks 25 early-Christian works: Gospel of Philip and
-> Gospel of Mary plus the 23-work expansion documented below. Source
+> **Status: active provisional expansion (updated 2026-08-29).** The shared
+> catalog now tracks 29 early-Christian works: Gospel of Philip and
+> Gospel of Mary, the earlier 23-work expansion, and four ancient church
+> orders. Source
 > acquisition, bridge drafting, grounding review, metadata, and client
 > publication are independently gated. A prepared or published bridge
 > is **not** a claim of final direct source-language translation.
+
+The four church-order witness bridges are **Didascalia Apostolorum →
+Apostolic Tradition → Apostolic Church Order → Apostolic Constitutions**.
+Their sources, cautions, and direct-review plan are recorded in
+[`docs/church_orders_source_plan.md`](docs/church_orders_source_plan.md).
 
 ## Why we include these
 
