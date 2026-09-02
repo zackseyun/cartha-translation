@@ -12,6 +12,13 @@ current local POB source snapshot. Read the
 [three-passage demonstration](../../docs/HEBREW_COMPARISON_SAMPLE.md). These are
 reported witness readings, not new image restorations or approved POB changes.
 
+The next applied pass is
+[`decisions/hebrew_pilot.v1.json`](decisions/hebrew_pilot.v1.json), rendered as
+the [multi-witness adjudication report](../../docs/HEBREW_PILOT_ADJUDICATION.md).
+It adds witness relationships, modest chronological preference, counterarguments,
+and separate working choices under the
+[adjudication method](../../docs/TEXTUAL_ADJUDICATION_METHOD.md).
+
 ## Planned packages
 
 The source packages will be created in this order:

@@ -47,6 +47,11 @@ Confidence scores alone do not substitute for exact agreement.
 
 ## Restoration priority queue
 
+Text selection follows the [source-wording adjudication method](TEXTUAL_ADJUDICATION_METHOD.md):
+older manuscripts have a modest preference when other evidence is comparable,
+but legibility, textual relationships, and transmission explanations can
+outweigh age. The method is applied in the [three-passage report](HEBREW_PILOT_ADJUDICATION.md).
+
 ### Priority 0 — Build the comparison system first
 
 First working demonstration: [three Hebrew variants and their English

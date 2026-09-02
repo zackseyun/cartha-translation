@@ -179,6 +179,11 @@ reader or export to distinguish and optionally exclude restored wording.
    omission, addition, transposition, harmonization, or larger literary form.
 4. Record both agreement and non-comparability; silence is not agreement.
 
+Apply the [source-wording adjudication method](TEXTUAL_ADJUDICATION_METHOD.md)
+when choosing among readings. Older manuscripts receive a modest preference,
+not an automatic win; transcription acceptance and historical text selection
+remain separate decisions.
+
 ### Phase 5 — English translation adjudication
 
 Codex receives the visible source, diplomatic transcription, normalized text,

@@ -35,6 +35,13 @@ lexical defaults, see [DOCTRINE.md](DOCTRINE.md) and
 [PHILOSOPHY.md](PHILOSOPHY.md). For the source-licensing inventory,
 see [REFERENCE_SOURCES.md](REFERENCE_SOURCES.md).
 
+For selecting between ancient source readings, use the
+[source-wording adjudication method](docs/TEXTUAL_ADJUDICATION_METHOD.md).
+It gives older manuscripts a modest preference without making age decisive,
+separates witness transcription from critical-text selection, and requires
+explicit alternatives and uncertainty. Its first applied pilot is the
+[multi-witness Hebrew report](docs/HEBREW_PILOT_ADJUDICATION.md).
+
 ## Reproducible workflow at a glance
 
 The translation came together across four overlapping corpora. The
