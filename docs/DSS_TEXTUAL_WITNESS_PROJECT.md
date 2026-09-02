@@ -41,8 +41,10 @@ inspired or erase the historical and theological work of canon discernment.
 - **Canonical status stays explicit.** Biblical, deuterocanonical,
   extra-canonical, sectarian, documentary, and unidentified material remain
   distinguishable in data and readers.
-- **AI never promotes its own reading.** A source-language reviewer must approve
-  any restored letter, token, alignment, or English rendering before release.
+- **A model cannot corroborate itself.** Because this project cannot depend on
+  new human transcriptions, a novel Codex-only reading remains a hypothesis.
+  Promotion requires an independent manuscript, open transcription, critical
+  apparatus, or ancient version whose relationship is documented.
 
 ## Evidence lanes
 
@@ -51,7 +53,7 @@ inspired or erase the historical and theological work of canon discernment.
 | A — Source image | Lawfully vendored original or externally linked restricted image | Yes, when legible |
 | B — Deterministic derivative | Crop, grayscale, contrast, threshold, or non-generative spectral combination | Yes, checked against A |
 | C — Diplomatic transcription | Visible characters, line breaks, scribal marks, and lacunae | Yes |
-| D — Restoration hypotheses | Ranked completions with method, parallel, confidence, and reviewer | Only after review |
+| D — Restoration hypotheses | Ranked completions with method, parallel, confidence, and corroboration status | Only after independent textual corroboration |
 | E — Normalized text | Searchable Hebrew/Aramaic/Greek with orthographic normalization mapped to C | Yes |
 | F — Alignment and apparatus | Witness-to-witness units, variants, omissions, additions, and transpositions | Yes |
 | G — POB translation | English rendering plus rationale and alternatives | Publication output |
@@ -140,7 +142,8 @@ as direct surviving originals.
 3. Preserve word spacing, line endings, damaged glyphs, supralinear additions,
    cancellations, and scribal marks.
 4. Reconcile only after independent passes are frozen.
-5. Require human source-language review before marking a token `accepted`.
+5. Mark tokens `machine-observed`, `machine-corroborated`,
+   `machine-hypothesis`, or `lost`; do not represent them as human-verified.
 
 ### Phase 3 — Restoration hypotheses
 
@@ -152,7 +155,7 @@ For each lacuna, store zero or more candidate restorations with:
 - grammatical and orthographic rationale;
 - model and prompt provenance;
 - confidence and competing candidates;
-- reviewer identity and decision.
+- comparison source IDs and the machine-corroboration decision.
 
 The diplomatic layer continues to show the lacuna even when a candidate is
 accepted. Translation records must be able to exclude conjectural restorations.
@@ -169,9 +172,8 @@ accepted. Translation records must be able to exclude conjectural restorations.
 
 ### Phase 5 — English translation adjudication
 
-The English editor receives the visible source, diplomatic transcription,
-normalized text, alignment, and variants—not merely a consensus string. The
-editor then records:
+Codex receives the visible source, diplomatic transcription, normalized text,
+alignment, and variants—not merely a consensus string. It records:
 
 - the earliest attainable reading used;
 - why one witness or reading was preferred;
@@ -180,12 +182,16 @@ editor then records:
 - whether an English footnote is required;
 - whether canonical-status or source-survival disclosure is required.
 
-### Phase 6 — Review and publication
+### Phase 6 — Machine corroboration and publication
 
-- Two source-language reviewers for high-impact or conjectural readings.
+- At least two blinded Codex passes, followed by comparison with independent
+  textual witnesses; repeated Codex passes are replication, not independent
+  manuscript evidence.
+- Novel uncorroborated readings stay in the hypothesis apparatus and do not
+  change the main POB text.
 - Public issue/discussion link for disputed units.
 - Corpus release only after license, hash, schema, image-region, transcription,
-  and reviewer checks pass.
+  corroboration, and uncertainty checks pass.
 - Reader surfaces show the actual lawful manuscript image when making a
   manuscript claim; otherwise they say that the image is unavailable or
   representative.
@@ -195,5 +201,9 @@ editor then records:
 A manuscript is not “reconstructed” merely because a model produced fluent
 Hebrew or English. A unit is complete only when the source image and rights are
 recorded, the diplomatic text is image-addressable, every supplied character is
-marked, independent passes are reconciled, the comparison apparatus is stored,
-and human review is complete. Publication and deployment remain separate steps.
+marked, blinded passes are reconciled, the comparison apparatus is stored, and
+the machine-corroboration status is explicit. Without human review, public
+claims must say **machine-restored and source-compared**, not human-verified.
+Publication and deployment remain separate steps. The target order and source
+packages are defined in
+[`TEXTUAL_RESTORATION_PRIORITIES.md`](TEXTUAL_RESTORATION_PRIORITIES.md).

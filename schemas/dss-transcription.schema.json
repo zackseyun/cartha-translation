@@ -42,7 +42,7 @@
     "language": { "enum": ["Hebrew", "Aramaic", "Greek"] },
     "script": { "type": "string" },
     "status": {
-      "enum": ["queued", "independent-passes", "reconciliation", "human-review", "accepted", "rejected"]
+      "enum": ["queued", "independent-passes", "reconciliation", "machine-corroboration", "machine-observed", "machine-corroborated", "hypothesis-only", "rejected"]
     },
     "lines": {
       "type": "array",
@@ -81,10 +81,10 @@
         "properties": {
           "lacuna_id": { "type": "string", "minLength": 1 },
           "candidate": { "type": "string" },
-          "method": { "enum": ["parallel-witness", "formulaic-context", "grammar", "orthography", "model-proposal", "human-proposal"] },
+          "method": { "enum": ["parallel-witness", "formulaic-context", "grammar", "orthography", "model-proposal"] },
           "parallel_reference": { "type": ["string", "null"] },
           "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-          "status": { "enum": ["proposed", "rejected", "accepted-after-review"] },
+          "status": { "enum": ["proposed", "rejected", "machine-corroborated"] },
           "rationale": { "type": "string" }
         }
       },
@@ -98,7 +98,7 @@
         "required": ["pass_id", "agent_type", "model_or_reviewer", "timestamp", "output_sha256"],
         "properties": {
           "pass_id": { "type": "string", "minLength": 1 },
-          "agent_type": { "enum": ["vision-model", "ocr", "human"] },
+          "agent_type": { "enum": ["vision-model", "ocr"] },
           "model_or_reviewer": { "type": "string", "minLength": 1 },
           "prompt_sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
           "timestamp": { "type": "string", "format": "date-time" },
@@ -107,13 +107,16 @@
         }
       }
     },
-    "review": {
+    "machine_corroboration": {
       "type": ["object", "null"],
       "additionalProperties": false,
-      "required": ["reviewer", "decision", "timestamp"],
+      "required": ["decision", "source_refs", "timestamp"],
       "properties": {
-        "reviewer": { "type": "string", "minLength": 1 },
-        "decision": { "enum": ["accept", "revise", "reject"] },
+        "decision": { "enum": ["observed", "corroborated", "hypothesis-only", "lost", "rejected"] },
+        "source_refs": {
+          "type": "array",
+          "items": { "type": "string", "minLength": 1 }
+        },
         "timestamp": { "type": "string", "format": "date-time" },
         "notes": { "type": "string" }
       }

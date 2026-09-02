@@ -395,6 +395,8 @@ commit with a clear message documenting what changed and why.
 - [`../DOCTRINE.md`](../DOCTRINE.md) — translation principles
 - [`../REFERENCE_SOURCES.md`](../REFERENCE_SOURCES.md) — three-zone
   consultation policy for non-vendored references
+- [`textual_restoration/README.md`](textual_restoration/README.md) — Codex-only
+  OT/NT restoration comparison-source landing zone and creation order
 - [`../DEUTEROCANONICAL.md`](../DEUTEROCANONICAL.md) — per-book
   deuterocanon source matrix
 - [`../EXTRA_CANONICAL.md`](../EXTRA_CANONICAL.md) — extra-canonical

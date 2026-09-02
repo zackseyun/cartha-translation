@@ -38,6 +38,17 @@ class DssProjectTest(unittest.TestCase):
         self.assertIn("ink", source)
         self.assertIn("editorial-conjecture", source)
 
+    def test_transcription_schema_supports_machine_only_corroboration(self):
+        schema = json.loads((ROOT / "schemas/dss-transcription.schema.json").read_text())
+        statuses = schema["properties"]["status"]["enum"]
+        agent_types = schema["properties"]["passes"]["items"]["properties"]["agent_type"]["enum"]
+        self.assertIn("machine-observed", statuses)
+        self.assertIn("machine-corroborated", statuses)
+        self.assertIn("hypothesis-only", statuses)
+        self.assertNotIn("human-review", statuses)
+        self.assertNotIn("human", agent_types)
+        self.assertIn("machine_corroboration", schema["properties"])
+
 
 if __name__ == "__main__":
     unittest.main()

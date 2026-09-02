@@ -137,6 +137,10 @@ Hebrew–Aramaic–Greek comparison. The accompanying
 Pentateuch, early Hebrew inscriptions and papyri, the Cairo Genizah, Masoretic
 codices, Septuagint witnesses, Targums, and the Peshitta. It is a textual
 evidence program, not an algorithmic declaration of canon or divine authority.
+The [Old and New Testament restoration priority plan](docs/TEXTUAL_RESTORATION_PRIORITIES.md)
+records the Codex-only target order, the comparison-source packages to create,
+and the strict separation between textual evidence and optional ImageGen
+visual reconstructions.
 
 ## The Deuterocanonical Books (Apocrypha)
 

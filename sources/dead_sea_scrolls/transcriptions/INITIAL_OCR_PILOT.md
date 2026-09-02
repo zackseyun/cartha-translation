@@ -31,10 +31,12 @@ diplomatic transcription, comparison apparatus, or translation.
 
 ## Next gate
 
-Crop and identify exact columns/lines, then run two independent vision passes
+Crop and identify exact columns/lines, then run two blinded Codex vision passes
 that are prompted for ancient Hebrew/Aramaic diplomatic transcription. Freeze
-both outputs before reconciliation. A qualified paleographer must approve any
-word, and supplied letters remain separately encoded as restoration candidates.
+both outputs before reconciliation. A novel reading must remain a hypothesis
+until an independent manuscript, open transcription, critical apparatus, or
+ancient version corroborates it. Supplied letters remain separately encoded as
+restoration candidates.
 
 This failed baseline is retained because rejecting fluent-looking garbage is a
 core requirement of the project.

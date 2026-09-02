@@ -19,8 +19,10 @@ acceptance or live-reader publication.
   Habakkuk previews) and verify SHA-256 hashes.
 - [x] Retrieve the four corresponding LOC TIFF masters locally and record their
   hashes; keep the 145 MB rehydratable masters outside normal Git history.
-- [ ] Obtain two qualified Hebrew/Aramaic paleographic reviewers.
-- [ ] Publish a reviewer guide and inter-reviewer agreement procedure.
+- [ ] Publish a Codex-only adjudication guide and blinded-pass agreement
+  procedure.
+- [ ] Add machine-corroboration states that distinguish visible ink,
+  independently supported readings, hypotheses, and physical loss.
 
 ## Rights and acquisition
 
@@ -98,21 +100,27 @@ acceptance or live-reader publication.
   for accepted independent transcription, and no guessed words were promoted.
 - [ ] Run two blinded vision-model passes on each full-resolution pilot region.
 - [ ] Reconcile at glyph level; calculate character and token agreement.
-- [ ] Send all uncertain or restored units to a paleographic reviewer.
+- [ ] Keep uncertain or restored units as hypotheses unless an independent
+  witness, open transcription, critical apparatus, or ancient version
+  corroborates them.
 - [ ] Add multispectral channel support when licensed data is available.
 - [ ] Add fragment-joint proposals as annotations, never destructive image edits.
-- [ ] Add a benchmark set of reviewer-approved lines before scaling automation.
+- [ ] Add a benchmark set of independently attested control lines before
+  scaling automation.
 
 ## Collation, translation, and reader delivery
 
 - [ ] Build the reference/fragment mapping layer.
 - [ ] Emit machine-readable variant units and a human-readable apparatus.
 - [ ] Add source-weight rationale instead of simple majority voting.
-- [ ] Draft English only from reviewed source units.
+- [ ] Draft English only from machine-corroborated source units; keep novel
+  Codex-only restorations out of the main text.
 - [ ] Show alternate English renderings for materially uncertain variants.
 - [ ] Preserve canonical/tradition labels for every composition.
 - [ ] Add source-image regions to POB reader citations where redistribution is
   allowed.
 - [ ] Add explicit “image unavailable” and “educational reconstruction” labels.
-- [ ] Run source-language review, schema validation, reader QA, and public
-  revision review before any release.
+- [ ] Run blinded Codex reconciliation, cross-witness corroboration, schema
+  validation, reader QA, and public revision review before any release.
+- [ ] Create optional ImageGen reconstructions only after textual adjudication;
+  watermark and exclude them from all OCR and translation inputs.
