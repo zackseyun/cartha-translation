@@ -1,0 +1,122 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://peoplesbible.com/schemas/dss-transcription.schema.json",
+  "title": "POB manuscript transcription unit",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema_version",
+    "id",
+    "manuscript_id",
+    "image",
+    "language",
+    "status",
+    "lines",
+    "passes"
+  ],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "id": { "type": "string", "minLength": 1 },
+    "manuscript_id": { "type": "string", "minLength": 1 },
+    "composition": { "type": "string" },
+    "image": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["registry_image_id", "sha256", "region"],
+      "properties": {
+        "registry_image_id": { "type": "string", "minLength": 1 },
+        "sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+        "region": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["x", "y", "width", "height"],
+          "properties": {
+            "x": { "type": "integer", "minimum": 0 },
+            "y": { "type": "integer", "minimum": 0 },
+            "width": { "type": "integer", "minimum": 1 },
+            "height": { "type": "integer", "minimum": 1 }
+          }
+        }
+      }
+    },
+    "language": { "enum": ["Hebrew", "Aramaic", "Greek"] },
+    "script": { "type": "string" },
+    "status": {
+      "enum": ["queued", "independent-passes", "reconciliation", "human-review", "accepted", "rejected"]
+    },
+    "lines": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["line_id", "diplomatic", "normalized", "tokens"],
+        "properties": {
+          "line_id": { "type": "string", "minLength": 1 },
+          "diplomatic": { "type": "string" },
+          "normalized": { "type": ["string", "null"] },
+          "tokens": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["surface", "certainty", "source"],
+              "properties": {
+                "surface": { "type": "string" },
+                "certainty": { "enum": ["visible", "uncertain", "lost", "supplied"] },
+                "source": { "enum": ["ink", "parallel", "grammar", "editorial-conjecture"] },
+                "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+                "notes": { "type": "string" }
+              }
+            }
+          }
+        }
+      }
+    },
+    "restoration_candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["lacuna_id", "candidate", "method", "confidence", "status"],
+        "properties": {
+          "lacuna_id": { "type": "string", "minLength": 1 },
+          "candidate": { "type": "string" },
+          "method": { "enum": ["parallel-witness", "formulaic-context", "grammar", "orthography", "model-proposal", "human-proposal"] },
+          "parallel_reference": { "type": ["string", "null"] },
+          "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
+          "status": { "enum": ["proposed", "rejected", "accepted-after-review"] },
+          "rationale": { "type": "string" }
+        }
+      },
+      "default": []
+    },
+    "passes": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["pass_id", "agent_type", "model_or_reviewer", "timestamp", "output_sha256"],
+        "properties": {
+          "pass_id": { "type": "string", "minLength": 1 },
+          "agent_type": { "enum": ["vision-model", "ocr", "human"] },
+          "model_or_reviewer": { "type": "string", "minLength": 1 },
+          "prompt_sha256": { "type": ["string", "null"], "pattern": "^[0-9a-f]{64}$" },
+          "timestamp": { "type": "string", "format": "date-time" },
+          "output_sha256": { "type": "string", "pattern": "^[0-9a-f]{64}$" },
+          "independent_of": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "review": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["reviewer", "decision", "timestamp"],
+      "properties": {
+        "reviewer": { "type": "string", "minLength": 1 },
+        "decision": { "enum": ["accept", "revise", "reject"] },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      }
+    }
+  }
+}

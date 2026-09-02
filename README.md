@@ -127,6 +127,17 @@ source-text rescue work specifically — how the Swete corpus was improved,
 rescued, and confidence-promoted from direct scan inspection — see
 [docs/PHASE8_CORPUS_QUALITY_RESCUE.md](docs/PHASE8_CORPUS_QUALITY_RESCUE.md).
 
+### Dead Sea Scrolls and ancient witnesses
+
+The [Dead Sea Scrolls and Ancient Witness Project](docs/DSS_TEXTUAL_WITNESS_PROJECT.md)
+extends POB's source-image method to lawful Qumran/Judaean Desert images, fresh
+diplomatic transcription, explicitly marked restoration hypotheses, and
+Hebrew–Aramaic–Greek comparison. The accompanying
+[backlog](docs/DSS_TEXTUAL_WITNESS_TODO.md) also covers the Samaritan
+Pentateuch, early Hebrew inscriptions and papyri, the Cairo Genizah, Masoretic
+codices, Septuagint witnesses, Targums, and the Peshitta. It is a textual
+evidence program, not an algorithmic declaration of canon or divine authority.
+
 ## The Deuterocanonical Books (Apocrypha)
 
 The People's Open Bible includes the Deuterocanonical books — Tobit, Judith,

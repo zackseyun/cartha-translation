@@ -39,6 +39,9 @@ sources/
 │
 ├── aramaic_tobit/qumran/              4Q196–4Q200 status notes
 │
+├── dead_sea_scrolls/                  rights-gated DSS image/transcription
+│                                      registry and lawful LOC pilot images
+│
 ├── greek_extra/                       group-A pipeline landing zone
 ├── 1_clement/                         Lightfoot 1889, Funk 1901 (PD)
 ├── didache/                           Hitchcock & Brown 1884, Schaff 1885 (PD)
@@ -63,6 +66,11 @@ that defines a three-zone policy for *consultation-only* references
 adjudication but never reproduced. Anything in this directory is **Zone
 1** — vendored, safe to redistribute, and used as actual translation
 input.
+
+The `dead_sea_scrolls/` registry is the exception at the directory level: its
+inventory also includes metadata-only, permission-gated records, while only the
+explicitly rights-cleared files under `images/original/` are vendored. Read its
+README and the per-image rights object before treating an entry as Zone 1.
 
 ## Vendored sources — canonical Old & New Testament
 
