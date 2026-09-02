@@ -13,6 +13,8 @@ from urllib.parse import urlparse
 ROOT = Path(__file__).resolve().parents[2]
 DATA = ROOT / "sources/textual_restoration/decisions/hebrew_pilot.v1.json"
 REPORT = ROOT / "docs/HEBREW_PILOT_ADJUDICATION.md"
+NT_DATA = ROOT / "sources/textual_restoration/decisions/nt_pilot.v1.json"
+NT_REPORT = ROOT / "docs/NT_PILOT_ADJUDICATION.md"
 
 
 def validate(data: dict, check_current_baseline: bool = False) -> list[str]:
@@ -77,11 +79,11 @@ def validate(data: dict, check_current_baseline: bool = False) -> list[str]:
             if witness.get("archival_image_checked") is not False:
                 errors.append(f"{wid}: no archival-image check was performed in this pilot")
             if witness.get("dating", {}).get("kind") not in (
-                "physical-copy", "work-composition", "translation-tradition", "textual-tradition"
+                "physical-copy", "work-composition", "translation-tradition", "textual-tradition", "edition-publication"
             ):
                 errors.append(f"{wid}: distinguish object dates from tradition or work dates")
             if witness.get("role") in ("ancient-version", "retelling") and witness.get("support_scope") == "direct-wording":
-                errors.append(f"{wid}: translation or retelling is not direct Hebrew wording")
+                errors.append(f"{wid}: translation or retelling is not direct source-language wording")
         decision = unit.get("decision", {})
         preferred = decision.get("preferred")
         if decision.get("status") == "working-preference":
@@ -89,6 +91,8 @@ def validate(data: dict, check_current_baseline: bool = False) -> list[str]:
                 errors.append(f"{uid}: preferred candidate does not exist")
             elif not any(w.get("supports") == preferred for w in witnesses):
                 errors.append(f"{uid}: preferred candidate has no cited attestation")
+            elif all(w.get("role") == "critical-edition" for w in witnesses if w.get("supports") == preferred):
+                errors.append(f"{uid}: edition choices alone are not manuscript corroboration")
         elif decision.get("status") != "unresolved" or preferred is not None:
             errors.append(f"{uid}: invalid decision status or unresolved preference")
         if decision.get("priority_confidence") not in ("low", "moderate", "strong"):
@@ -119,9 +123,12 @@ def cell(value: str | None) -> str:
 
 
 def render(data: dict) -> str:
-    lines = ["# Hebrew pilot: applied multi-witness adjudication", "",
+    title = data.get("title", "Hebrew pilot: applied multi-witness adjudication")
+    dataset = data.get("dataset_path", "sources/textual_restoration/decisions/hebrew_pilot.v1.json")
+    language = data.get("source_language", "Hebrew")
+    lines = [f"# {title}", "",
              f"Checked: {data['checked_date']} · Method {data['method_version']}", "",
-             "Generated from the [decision dataset](../sources/textual_restoration/decisions/hebrew_pilot.v1.json). "
+             f"Generated from the [decision dataset](../{dataset}). "
              "These are working editorial choices from published readings, not new image restorations, "
              "cross-model-reviewed decisions, or published POB changes.", "",
              "Older witnesses receive a modest preference; no numerical vote or authenticity percentage is used.", ""]
@@ -131,9 +138,9 @@ def render(data: dict) -> str:
                   f"**Working preference:** {decision['summary']}",
                   f"**Priority confidence:** {decision['priority_confidence']} (editorial judgment, not a probability).",
                   f"**Wording-level outcome:** {'provisional selection within this unit' if decision['exact_wording_resolved'] else 'exact earlier form unresolved'}.", "",
-                  "| Candidate | Hebrew excerpt | English effect |", "|---|---|---|"]
+                  f"| Candidate | {language} excerpt | English effect |", "|---|---|---|"]
         for candidate in unit["candidates"]:
-            lines.append(f"| {cell(candidate['id'])} | {cell(candidate.get('hebrew'))} | {cell(candidate['english'])} |")
+            lines.append(f"| {cell(candidate['id'])} | {cell(candidate.get('source_text', candidate.get('hebrew')))} | {cell(candidate['english'])} |")
             if candidate.get("display_note"):
                 lines.append("")
                 lines.append(candidate["display_note"])
@@ -165,15 +172,17 @@ def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--check-current-baseline", action="store_true")
     parser.add_argument("--report", action="store_true", help="regenerate the fixed Markdown report")
+    parser.add_argument("--track", choices=("hebrew", "nt"), default="hebrew")
     args = parser.parse_args()
-    data = json.loads(DATA.read_text())
+    source_path, report_path = (NT_DATA, NT_REPORT) if args.track == "nt" else (DATA, REPORT)
+    data = json.loads(source_path.read_text())
     errors = validate(data, args.check_current_baseline)
     if errors:
         print("\n".join("FAIL: " + error for error in errors))
         return 1
     if args.report:
-        REPORT.write_text(render(data))
-        print(f"Report written: {REPORT}")
+        report_path.write_text(render(data))
+        print(f"Report written: {report_path}")
     print(f"Validated {len(data['units'])} decisions; "
           f"{sum(len(u['witnesses']) for u in data['units'])} passage-level witness rows. "
           "Canonical text was not modified.")

@@ -391,6 +391,11 @@ commit with a clear message documenting what changed and why.
 
 ## See also
 
+- [`nt/sblgnt_apparatus/README.md`](nt/sblgnt_apparatus/README.md) — pinned official
+  CC-BY Greek edition-comparison apparatus, separate from the MorphGNT base
+- [`textual_restoration/inventory/README.md`](textual_restoration/inventory/README.md) —
+  corpus-wide Hebrew/NT source-note and reading-tradition screening map
+
 - [`../METHODOLOGY.md`](../METHODOLOGY.md) — drafting pipeline
 - [`../DOCTRINE.md`](../DOCTRINE.md) — translation principles
 - [`../REFERENCE_SOURCES.md`](../REFERENCE_SOURCES.md) — three-zone

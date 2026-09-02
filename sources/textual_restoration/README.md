@@ -19,7 +19,18 @@ It adds witness relationships, modest chronological preference, counterarguments
 and separate working choices under the
 [adjudication method](../../docs/TEXTUAL_ADJUDICATION_METHOD.md).
 
+The Greek track has its first [Mark 1:41 decision](decisions/nt_pilot.v1.json)
+and [rendered report](../../docs/NT_PILOT_ADJUDICATION.md). This is a working
+assessment of published attestations, not a new image reading or canonical edit.
+
 ## Planned packages
+
+The [inventory](inventory/README.md) now contains a canonical corpus-wide note
+screen, WLC written/read and editorial annotations, and all 27 books of the
+licensed SBLGNT edition apparatus. Inspect the
+[book-level map](../../docs/HEBREW_AND_NT_VARIANT_MAP.md) and
+[priority casebook](../../docs/TEXTUAL_VARIANT_CASEBOOK.md). These are separate
+evidence layers, not a claim to have collated all surviving manuscripts.
 
 The source packages will be created in this order:
 

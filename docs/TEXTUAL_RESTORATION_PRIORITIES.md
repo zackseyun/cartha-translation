@@ -58,6 +58,13 @@ First working demonstration: [three Hebrew variants and their English
 effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.
 It compares published readings; it does not claim new image restoration.
 
+The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
+all 66 canonical books, WLC written/read variants, and the official 27-book
+SBLGNT edition apparatus. The [48-case shortlist](TEXTUAL_VARIANT_CASEBOOK.md)
+prioritizes passage-level work; the [NT method](NT_TEXTUAL_WITNESS_METHOD.md)
+defines the move from edition comparisons to actual Greek manuscript evidence.
+This is screening coverage, not completion of all manuscript adjudications.
+
 This is the highest priority because the current canonical sources are WLC/UHB
 for the Old Testament and SBLGNT for the New Testament. Restoring isolated
 images without a full comparison apparatus would not reliably improve the

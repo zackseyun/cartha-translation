@@ -61,7 +61,7 @@ class TextualAdjudicationTest(unittest.TestCase):
 
     def test_versions_are_not_direct_hebrew(self):
         self.data["units"][0]["witnesses"][2]["support_scope"] = "direct-wording"
-        self.assertIn("not direct Hebrew", self.errors())
+        self.assertIn("not direct source-language", self.errors())
 
     def test_preference_requires_attestation(self):
         unit = self.data["units"][0]
@@ -77,6 +77,20 @@ class TextualAdjudicationTest(unittest.TestCase):
     def test_report_is_reproducible(self):
         self.assertEqual(MODULE.REPORT.read_text(), MODULE.render(self.data))
         self.assertIn("not new image restorations", MODULE.render(self.data))
+
+    def test_nt_track_uses_greek_without_relabeling_it_hebrew(self):
+        data = json.loads(MODULE.NT_DATA.read_text())
+        self.assertEqual(MODULE.validate(data), [])
+        report = MODULE.render(data)
+        self.assertIn("Greek excerpt", report)
+        self.assertNotIn("Hebrew excerpt", report)
+        self.assertEqual(MODULE.NT_REPORT.read_text(), report)
+        self.assertEqual(data["units"][0]["publication_status"], "not-promoted")
+
+    def test_edition_choices_alone_do_not_adjudicate_manuscripts(self):
+        for witness in self.data["units"][0]["witnesses"]:
+            witness["role"] = "critical-edition"
+        self.assertIn("edition choices alone", self.errors())
 
 
 if __name__ == "__main__":
