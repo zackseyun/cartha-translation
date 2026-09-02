@@ -100,6 +100,14 @@ acceptance or live-reader publication.
   for accepted independent transcription, and no guessed words were promoted.
 - [ ] Run two blinded vision passes from different model families on each
   full-resolution pilot region.
+  - [x] Prepare neutral-labeled, pixel-exact 1QM and 1QpHab master-image crops,
+    shared prompt/schema, provider runner, and fail-closed comparison tests.
+  - [x] Save a real GPT-5.6 Sol image-only structured proposal and its provenance;
+    this is a single-model proposal, not two-model acceptance.
+  - [ ] Restore authorized Claude inference access; the service currently
+    reports that the organization disabled Claude Code subscription access.
+  - [ ] Complete both successful responses; pilot configuration is not proof
+    that either model returned a transcription.
 - [ ] Reconcile at glyph level and calculate exact character/token agreement.
 - [ ] Promote exact visible-text agreement to `machine-consensus-accepted`.
 - [ ] Promote matching supplied-text restorations to

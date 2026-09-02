@@ -57,3 +57,12 @@ Every derivative receives a JSON sidecar containing the exact input/output
 hashes and parameters. A transcription must conform to
 `schemas/dss-transcription.schema.json` and must map lines or tokens back to an
 image region.
+
+## Original-image vision pilot
+
+The [2026-09-02 pilot](pilots/2026-09-02-dual-vision/README.md) adds two
+pixel-exact crops from the full-resolution TIFF masters, neutral-labeled blind
+inputs, provider-specific response records, and a tested comparison gate.
+Results remain research proposals; the pilot never writes translation or
+reader-export files. See its `RESULTS.md` for actual provider outcomes rather
+than inferring success from a configured model name.

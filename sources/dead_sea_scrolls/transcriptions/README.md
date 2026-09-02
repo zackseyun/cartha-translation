@@ -1,11 +1,15 @@
 # Diplomatic transcriptions
 
-No Hebrew or Aramaic word has been accepted from the four pilot photographs
-yet. The preview images establish the acquisition and enhancement pipeline, but
-they do not provide enough controlled detail for a defensible independent
-transcription. The full-resolution TIFFs improve the source, but the first
-automated pass still requires a stronger ancient Hebrew/Aramaic vision pass and
-a second, different model family before any reading can affect POB.
+No Hebrew or Aramaic word has been accepted by two-model consensus yet. A
+[fresh GPT-5.6 Sol vision proposal](../pilots/2026-09-02-dual-vision/RESULTS.md)
+now exists for two original-resolution TIFF crops. Most readings are marked
+uncertain. Claude Code's service blocked inference because organization access
+is disabled, so there is no second reading and no published POB change.
+
+The saved pilot includes the exact blind inputs, first-pass data, failed-attempt
+history, provider rerun tool, and fail-closed comparison tests. The ordinary
+Tesseract baseline remains a separate historical result, not evidence that all
+vision-model transcription is unusable.
 
 This is a deliberate **no-guess** result, not missing provenance. A future
 record must:

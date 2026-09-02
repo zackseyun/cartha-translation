@@ -1,0 +1,9 @@
+Perform an image-only diplomatic transcription of the two provided ancient Hebrew manuscript crops, in attachment order region-a then region-b. The labels are neutral; no composition title or reference is supplied.
+
+Read the actual pixels at original resolution. Do not browse, use editions, consult other model outputs, identify the passage from memory, or complete a familiar quotation. If you recognize a text, do not substitute remembered wording for visible ink.
+
+For each crop, enumerate every visible text line from top to bottom as line_index 1, 2, etc. Tokens within each line must follow Hebrew reading order (right to left on the image, normal logical Hebrew in JSON). Transcribe consonants only unless vowel/diacritic marks are visibly present. Preserve spelling, final letter forms, prefixes, and word divisions as seen. Do not normalize orthography or translate.
+
+Use one token object per visible word. Set certainty=clear only if all letters in the word are visibly readable; otherwise use uncertain. For an unreadable glyph use □ within the word. Use a gap token with text=[—] for missing parchment or a crop-edge loss that intersects text; do not guess its length. A blank interval that is ordinary spacing is not a gap. Never supply missing letters or restored words in this pass. Explain unresolved shapes or crop-boundary problems briefly in notes without guessing a preferred restoration.
+
+Return only JSON matching the provided schema. These are independent first-pass proposals, not a claim of paleographic correctness.
