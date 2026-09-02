@@ -4,6 +4,16 @@ This is the landing zone for the Codex-only Old and New Testament restoration
 program defined in
 [`../../docs/TEXTUAL_RESTORATION_PRIORITIES.md`](../../docs/TEXTUAL_RESTORATION_PRIORITIES.md).
 
+## Working sample
+
+[`samples/hebrew_comparison.v1.json`](samples/hebrew_comparison.v1.json) records
+three published Hebrew variants and their English effects, alongside the
+current local POB source snapshot. Read the
+[three-passage demonstration](../../docs/HEBREW_COMPARISON_SAMPLE.md). These are
+reported witness readings, not new image restorations or approved POB changes.
+
+## Planned packages
+
 The source packages will be created in this order:
 
 1. **OT Masoretic controls:** WLC/UHB mappings, then Aleppo, Sassoon, and

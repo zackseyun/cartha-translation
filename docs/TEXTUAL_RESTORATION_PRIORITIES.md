@@ -49,6 +49,10 @@ Confidence scores alone do not substitute for exact agreement.
 
 ### Priority 0 — Build the comparison system first
 
+First working demonstration: [three Hebrew variants and their English
+effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.
+It compares published readings; it does not claim new image restoration.
+
 This is the highest priority because the current canonical sources are WLC/UHB
 for the Old Testament and SBLGNT for the New Testament. Restoring isolated
 images without a full comparison apparatus would not reliably improve the
