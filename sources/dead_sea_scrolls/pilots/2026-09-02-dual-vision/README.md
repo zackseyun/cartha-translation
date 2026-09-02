@@ -1,5 +1,10 @@
 # Original-image vision pilot — 2026-09-02
 
+For Zack's independently operated Claude Code pass, start with
+[`docs/CLAUDE_CODE_DSS_HANDOFF.md`](../../../../docs/CLAUDE_CODE_DSS_HANDOFF.md)
+instead of this page. The handoff withholds Codex's readings and manuscript
+identities until Claude has saved and frozen its own response.
+
 ## Scope
 
 Two neutral-labeled crops were extracted from the registered LOC TIFF masters:

@@ -104,6 +104,8 @@ acceptance or live-reader publication.
     shared prompt/schema, provider runner, and fail-closed comparison tests.
   - [x] Save a real GPT-5.6 Sol image-only structured proposal and its provenance;
     this is a single-model proposal, not two-model acceptance.
+  - [x] Prepare `docs/CLAUDE_CODE_DSS_HANDOFF.md` for Zack's independent Claude
+    session, with a blind input allowlist, exact hashes, and frozen deliverables.
   - [ ] Restore authorized Claude inference access; the service currently
     reports that the organization disabled Claude Code subscription access.
   - [ ] Complete both successful responses; pilot configuration is not proof
