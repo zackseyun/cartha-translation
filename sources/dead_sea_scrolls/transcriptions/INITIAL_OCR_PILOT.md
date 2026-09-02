@@ -31,12 +31,11 @@ diplomatic transcription, comparison apparatus, or translation.
 
 ## Next gate
 
-Crop and identify exact columns/lines, then run two blinded Codex vision passes
-that are prompted for ancient Hebrew/Aramaic diplomatic transcription. Freeze
-both outputs before reconciliation. A novel reading must remain a hypothesis
-until an independent manuscript, open transcription, critical apparatus, or
-ancient version corroborates it. Supplied letters remain separately encoded as
-restoration candidates.
+Crop and identify exact columns/lines, then run two blinded ancient
+Hebrew/Aramaic vision passes from different model families. Freeze both outputs
+before reconciliation. Exact agreement is accepted as model consensus;
+matching supplied letters are accepted as restorations but remain bracketed.
+Disagreements remain hypotheses until another independent model resolves them.
 
 This failed baseline is retained because rejecting fluent-looking garbage is a
 core requirement of the project.

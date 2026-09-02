@@ -43,11 +43,26 @@ class DssProjectTest(unittest.TestCase):
         statuses = schema["properties"]["status"]["enum"]
         agent_types = schema["properties"]["passes"]["items"]["properties"]["agent_type"]["enum"]
         self.assertIn("machine-observed", statuses)
+        self.assertIn("machine-consensus-accepted", statuses)
+        self.assertIn("machine-consensus-restored", statuses)
         self.assertIn("machine-corroborated", statuses)
         self.assertIn("hypothesis-only", statuses)
         self.assertNotIn("human-review", statuses)
         self.assertNotIn("human", agent_types)
         self.assertIn("machine_corroboration", schema["properties"])
+        self.assertIn("model_consensus", schema["properties"])
+        consensus = schema["properties"]["model_consensus"]
+        self.assertEqual(consensus["properties"]["different_model_families"]["const"], True)
+        self.assertEqual(consensus["properties"]["pass_refs"]["minItems"], 2)
+        accepted_rule = consensus["allOf"][0]
+        self.assertEqual(
+            accepted_rule["then"]["properties"]["exact_match"]["const"], True
+        )
+        restoration_statuses = (
+            schema["properties"]["restoration_candidates"]["items"]
+            ["properties"]["status"]["enum"]
+        )
+        self.assertIn("machine-consensus-restored", restoration_statuses)
 
 
 if __name__ == "__main__":

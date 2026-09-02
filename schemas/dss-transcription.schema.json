@@ -42,7 +42,7 @@
     "language": { "enum": ["Hebrew", "Aramaic", "Greek"] },
     "script": { "type": "string" },
     "status": {
-      "enum": ["queued", "independent-passes", "reconciliation", "machine-corroboration", "machine-observed", "machine-corroborated", "hypothesis-only", "rejected"]
+      "enum": ["queued", "independent-passes", "reconciliation", "machine-corroboration", "machine-observed", "machine-consensus-accepted", "machine-consensus-restored", "machine-corroborated", "hypothesis-only", "rejected"]
     },
     "lines": {
       "type": "array",
@@ -84,7 +84,7 @@
           "method": { "enum": ["parallel-witness", "formulaic-context", "grammar", "orthography", "model-proposal"] },
           "parallel_reference": { "type": ["string", "null"] },
           "confidence": { "type": "number", "minimum": 0, "maximum": 1 },
-          "status": { "enum": ["proposed", "rejected", "machine-corroborated"] },
+          "status": { "enum": ["proposed", "rejected", "machine-consensus-restored", "machine-corroborated"] },
           "rationale": { "type": "string" }
         }
       },
@@ -120,6 +120,39 @@
         "timestamp": { "type": "string", "format": "date-time" },
         "notes": { "type": "string" }
       }
+    },
+    "model_consensus": {
+      "type": ["object", "null"],
+      "additionalProperties": false,
+      "required": ["decision", "pass_refs", "different_model_families", "exact_match", "agreement_scope", "timestamp"],
+      "properties": {
+        "decision": { "enum": ["accepted-visible", "accepted-restored", "disagreement", "not-run"] },
+        "pass_refs": {
+          "type": "array",
+          "minItems": 2,
+          "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "different_model_families": { "const": true },
+        "exact_match": { "type": "boolean" },
+        "agreement_scope": { "enum": ["glyph", "token", "line"] },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "notes": { "type": "string" }
+      },
+      "allOf": [
+        {
+          "if": {
+            "properties": {
+              "decision": { "enum": ["accepted-visible", "accepted-restored"] }
+            }
+          },
+          "then": {
+            "properties": {
+              "exact_match": { "const": true }
+            }
+          }
+        }
+      ]
     }
   }
 }

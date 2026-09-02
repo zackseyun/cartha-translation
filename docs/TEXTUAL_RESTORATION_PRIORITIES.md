@@ -24,20 +24,26 @@ things separate:
 
 ## No-human operating standard
 
-Two Codex passes are useful replication, but they are not two independent
-historical witnesses. A reading receives one of these statuses:
+Two genuinely different model families, run blind from one another, are the
+project's working accuracy gate. Exact agreement is accepted even when a second
+historical witness is unavailable. Two runs of the same model do not count. A
+reading receives one of these statuses:
 
 | Status | Meaning | May change the POB main text? |
 |---|---|---|
 | `machine-observed` | Codex consistently identifies visible strokes in multiple deterministic views of the same archival image. | Only when the reading is not materially disputed. |
+| `machine-consensus-accepted` | Two different blinded models return the exact same visible diplomatic glyphs or tokens. | Yes. This is the standard accepted transcription state. |
+| `machine-consensus-restored` | Two different blinded models independently supply the exact same damaged or missing letters. | Yes, with brackets and an explicit machine-restoration note. |
 | `machine-corroborated` | The visible reading also agrees with an independent manuscript, open transcription, critical apparatus, or ancient version whose relationship is documented. | Yes, after the comparison record and rationale are complete. |
 | `machine-hypothesis` | A plausible completion based on spacing, grammar, orthography, or a parallel, but the letters are not fully visible. | No. It remains in the apparatus or research record. |
 | `lost` | The material is physically absent or no reading survives. | No. Missing text is never presented as recovered ink. |
 | `visual-reconstruction` | ImageGen rendering made from an already documented reading or hypothesis. | Never. Display only. |
 
-A novel reading inferred from one damaged image must remain
-`machine-hypothesis` unless an independent source corroborates it. Confidence
-scores do not override this rule.
+A reading produced by only one model remains `machine-hypothesis`. Exact
+agreement by two different blinded models promotes it to the appropriate
+machine-consensus state. Independent historical corroboration is stronger and
+must be recorded when available, but it is not required for working acceptance.
+Confidence scores alone do not substitute for exact agreement.
 
 ## Restoration priority queue
 
@@ -164,15 +170,18 @@ For each target:
 3. Generate only deterministic evidence derivatives: crop, registration,
    grayscale, contrast, channel separation, threshold, denoise, and permitted
    spectral combinations.
-4. Run at least two blinded Codex transcription passes over different useful
-   derivatives and freeze both outputs.
-5. Reconcile at glyph level while preserving disagreements.
+4. Run blinded transcription passes from at least two different model families
+   over the same registered region and freeze both outputs.
+5. Reconcile at glyph level. Exact agreement becomes
+   `machine-consensus-accepted` for visible text or
+   `machine-consensus-restored` for supplied text; preserve disagreements.
 6. Compare against independent manuscripts, open transcriptions, critical
    apparatuses, and ancient versions.
-7. Assign `machine-observed`, `machine-corroborated`, `machine-hypothesis`, or
-   `lost` at token level.
-8. Emit the apparatus and a POB decision record. Never auto-promote a novel,
-   uncorroborated restoration into the main text.
+7. Assign the observed, model-consensus, historically corroborated,
+   hypothesis, or lost status at token level.
+8. Emit the apparatus and a POB decision record. Two-model exact agreement may
+   enter the main text; matching supplied letters remain visibly bracketed and
+   labeled as machine-restored.
 9. Optionally ask ImageGen to create a complete-looking educational image from
    the already documented text. Watermark it **RECONSTRUCTED — NOT MANUSCRIPT
    EVIDENCE**, store the prompt and source IDs, and prevent the image from

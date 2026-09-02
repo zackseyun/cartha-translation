@@ -41,10 +41,15 @@ inspired or erase the historical and theological work of canon discernment.
 - **Canonical status stays explicit.** Biblical, deuterocanonical,
   extra-canonical, sectarian, documentary, and unidentified material remain
   distinguishable in data and readers.
-- **A model cannot corroborate itself.** Because this project cannot depend on
-  new human transcriptions, a novel Codex-only reading remains a hypothesis.
-  Promotion requires an independent manuscript, open transcription, critical
-  apparatus, or ancient version whose relationship is documented.
+- **Two different models can establish working accuracy.** When two genuinely
+  different model families independently return the exact same diplomatic
+  glyphs or tokens from the same image region, POB treats that reading as
+  `machine-consensus-accepted`. The models may not see one another's output.
+  Two runs of the same model do not satisfy this rule.
+- **Agreement does not turn supplied ink into visible ink.** If both models
+  independently supply the same damaged or missing letters, the result is
+  `machine-consensus-restored`: accepted for comparison and translation, but
+  still bracketed and disclosed as a restoration rather than an observation.
 
 ## Evidence lanes
 
@@ -53,7 +58,7 @@ inspired or erase the historical and theological work of canon discernment.
 | A — Source image | Lawfully vendored original or externally linked restricted image | Yes, when legible |
 | B — Deterministic derivative | Crop, grayscale, contrast, threshold, or non-generative spectral combination | Yes, checked against A |
 | C — Diplomatic transcription | Visible characters, line breaks, scribal marks, and lacunae | Yes |
-| D — Restoration hypotheses | Ranked completions with method, parallel, confidence, and corroboration status | Only after independent textual corroboration |
+| D — Restoration hypotheses | Ranked completions with method, parallel, confidence, and model-consensus status | Yes after exact two-model agreement, with supplied letters disclosed |
 | E — Normalized text | Searchable Hebrew/Aramaic/Greek with orthographic normalization mapped to C | Yes |
 | F — Alignment and apparatus | Witness-to-witness units, variants, omissions, additions, and transpositions | Yes |
 | G — POB translation | English rendering plus rationale and alternatives | Publication output |
@@ -137,13 +142,15 @@ as direct surviving originals.
 ### Phase 2 — Diplomatic transcription
 
 1. Segment by fragment, column, line, and image region.
-2. Run at least two independent model passes without showing one pass to the
-   other.
+2. Run at least two independent passes from different model families without
+   showing one pass to the other.
 3. Preserve word spacing, line endings, damaged glyphs, supralinear additions,
    cancellations, and scribal marks.
 4. Reconcile only after independent passes are frozen.
-5. Mark tokens `machine-observed`, `machine-corroborated`,
-   `machine-hypothesis`, or `lost`; do not represent them as human-verified.
+5. Promote exact agreement on visible text to `machine-consensus-accepted`.
+   Promote exact agreement on supplied text to `machine-consensus-restored`
+   while preserving brackets and the restoration rationale. Disagreements stay
+   `machine-hypothesis` until another independent pass resolves them.
 
 ### Phase 3 — Restoration hypotheses
 
@@ -155,10 +162,12 @@ For each lacuna, store zero or more candidate restorations with:
 - grammatical and orthographic rationale;
 - model and prompt provenance;
 - confidence and competing candidates;
-- comparison source IDs and the machine-corroboration decision.
+- both model/pass IDs, exact-agreement scope, comparison source IDs, and the
+  model-consensus decision.
 
-The diplomatic layer continues to show the lacuna even when a candidate is
-accepted. Translation records must be able to exclude conjectural restorations.
+The diplomatic layer continues to show the lacuna and brackets even when a
+candidate is accepted by model consensus. Translation records must allow a
+reader or export to distinguish and optionally exclude restored wording.
 
 ### Phase 4 — Witness alignment and collation
 
@@ -184,11 +193,12 @@ alignment, and variants—not merely a consensus string. It records:
 
 ### Phase 6 — Machine corroboration and publication
 
-- At least two blinded Codex passes, followed by comparison with independent
-  textual witnesses; repeated Codex passes are replication, not independent
-  manuscript evidence.
-- Novel uncorroborated readings stay in the hypothesis apparatus and do not
-  change the main POB text.
+- At least two blinded passes from different model families. Exact agreement is
+  the working accuracy gate; historical textual witnesses add a stronger,
+  separately recorded form of corroboration.
+- Exact agreement between two different, blinded model families is sufficient
+  for working acceptance. Independent manuscript or version support is still
+  recorded when available and raises the evidentiary strength further.
 - Public issue/discussion link for disputed units.
 - Corpus release only after license, hash, schema, image-region, transcription,
   corroboration, and uncertainty checks pass.
@@ -201,9 +211,10 @@ alignment, and variants—not merely a consensus string. It records:
 A manuscript is not “reconstructed” merely because a model produced fluent
 Hebrew or English. A unit is complete only when the source image and rights are
 recorded, the diplomatic text is image-addressable, every supplied character is
-marked, blinded passes are reconciled, the comparison apparatus is stored, and
-the machine-corroboration status is explicit. Without human review, public
-claims must say **machine-restored and source-compared**, not human-verified.
+marked, two different blinded models have been reconciled, the comparison
+apparatus is stored, and the model-consensus status is explicit. Public claims
+must say **dual-model transcribed** or **dual-model restored and source-compared**,
+not human-verified.
 Publication and deployment remain separate steps. The target order and source
 packages are defined in
 [`TEXTUAL_RESTORATION_PRIORITIES.md`](TEXTUAL_RESTORATION_PRIORITIES.md).

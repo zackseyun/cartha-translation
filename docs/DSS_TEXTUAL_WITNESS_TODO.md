@@ -98,15 +98,18 @@ acceptance or live-reader publication.
   images without adding or replacing strokes.
 - [x] Document the initial OCR feasibility result: previews are insufficient
   for accepted independent transcription, and no guessed words were promoted.
-- [ ] Run two blinded vision-model passes on each full-resolution pilot region.
-- [ ] Reconcile at glyph level; calculate character and token agreement.
-- [ ] Keep uncertain or restored units as hypotheses unless an independent
-  witness, open transcription, critical apparatus, or ancient version
-  corroborates them.
+- [ ] Run two blinded vision passes from different model families on each
+  full-resolution pilot region.
+- [ ] Reconcile at glyph level and calculate exact character/token agreement.
+- [ ] Promote exact visible-text agreement to `machine-consensus-accepted`.
+- [ ] Promote matching supplied-text restorations to
+  `machine-consensus-restored`, retaining brackets and both rationales.
+- [ ] Keep disagreements as hypotheses until another independent model pass
+  resolves them.
 - [ ] Add multispectral channel support when licensed data is available.
 - [ ] Add fragment-joint proposals as annotations, never destructive image edits.
-- [ ] Add a benchmark set of independently attested control lines before
-  scaling automation.
+- [ ] Add a benchmark set of independently attested control lines to measure
+  the real error rate of the two-model rule while scaling automation.
 
 ## Collation, translation, and reader delivery
 
