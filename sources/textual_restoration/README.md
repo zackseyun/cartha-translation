@@ -23,6 +23,12 @@ The Greek track has its first [Mark 1:41 decision](decisions/nt_pilot.v1.json)
 and [rendered report](../../docs/NT_PILOT_ADJUDICATION.md). This is a working
 assessment of published attestations, not a new image reading or canonical edit.
 
+The [English impact check](../../docs/ENGLISH_TRANSLATION_IMPACT_CHECK.md)
+compares the working choices with ten current local English records and shows
+exact draft replacements, possible additions, and unchanged or pending cases.
+Its [data](decisions/english_impact_check.v1.json) explicitly distinguish a
+proposed English change from a canonical change actually applied.
+
 ## Planned packages
 
 The [inventory](inventory/README.md) now contains a canonical corpus-wide note
