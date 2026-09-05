@@ -564,21 +564,9 @@ def run_once(enabled_tiers: set[int], dry_run: bool, limit: int) -> dict[str, in
 
 
 def regenerate_revisions_index() -> None:
-    """Regenerate revisions.json so the public revisions page stays fresh."""
-    import subprocess
-    script = REPO_ROOT / "tools" / "build_revisions_index.py"
-    if not script.exists():
-        return
-    try:
-        subprocess.run(
-            [sys.executable, str(script)],
-            cwd=REPO_ROOT,
-            check=False,
-            capture_output=True,
-            timeout=120,
-        )
-    except Exception as exc:
-        print(f"[auto-apply] revisions.json regen skipped: {exc}", flush=True)
+    """Queue one deduplicated refresh after actual applied work, never per poll."""
+    from revisions_refresh import request_after_batch
+    request_after_batch(REPO_ROOT)
 
 
 def run_daemon(enabled_tiers: set[int], dry_run: bool, poll_seconds: int = 60) -> int:
@@ -616,6 +604,8 @@ def main() -> int:
 
     totals = run_once(enabled, args.dry_run, args.limit)
     print(f"\nFinished: {totals}")
+    if totals.get("applied") and not args.dry_run:
+        regenerate_revisions_index()
     return 0
 
 

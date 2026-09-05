@@ -49,6 +49,9 @@ if [[ "$PUBLISH_ONLY" != "1" ]]; then
   python3 tools/chapter_merge.py --coord-root "$COORD" --limit "$MERGE_LIMIT" --push
 fi
 
+# A completed merge/publication batch requests a refresh; no timer is involved.
+bash "$SCRIPT_DIR/pob-revisions-flywheel.sh" --background || say "dashboard refresh could not be queued"
+
 if [[ "$MERGE_ONLY" == "1" ]]; then
   say "merge-only requested — skipping publish"
   exit 0

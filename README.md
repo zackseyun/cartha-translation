@@ -507,3 +507,9 @@ peoples-open-bible/
 └── .github/
     └── ISSUE_TEMPLATE/  Public disagreement and concern templates
 ```
+
+## Revisions dashboard maintenance
+
+Progress statistics refresh after completed translation/review batches, not on a
+30-minute timer. Unchanged inputs skip the full rebuild; laptop battery work is
+deferred. See [batch refresh triggers and manual retry](scripts/REVISIONS_REFRESH.md).

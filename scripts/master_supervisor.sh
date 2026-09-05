@@ -241,6 +241,7 @@ while :; do
 
   if [[ "$remaining" == "0" ]]; then
     log "🎉 all chapter-translation jobs done. master supervisor exiting."
+    bash "$COORD/scripts/pob-revisions-flywheel.sh" --background || log "dashboard refresh could not be queued"
     exit 0
   fi
 

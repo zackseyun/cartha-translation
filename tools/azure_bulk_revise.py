@@ -563,6 +563,10 @@ def main() -> None:
         flush=True,
     )
 
+    if _stats["processed"]:
+        from revisions_refresh import request_after_batch
+        request_after_batch(pathlib.Path(__file__).resolve().parent.parent)
+
 
 if __name__ == "__main__":
     main()
