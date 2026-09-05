@@ -37,6 +37,12 @@ could hallucinate letters. Any future educational reconstruction must be stored
 outside the evidence lanes, labeled on the pixels, and excluded from OCR,
 transcription, collation, and translation.
 
+## Open publication
+
+Publish completed DSS transcriptions and their provenance in the public repository
+under the [open transcription policy](../OPEN_TRANSCRIPTION_POLICY.md). Keep
+photograph permissions separate; this does not bypass the rights or review gates.
+
 ## Commands
 
 ```bash
