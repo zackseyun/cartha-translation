@@ -157,6 +157,43 @@ Path('revisions-summary.json').write_text('{}')
                     with self.assertRaises(RuntimeError): r.prepare_publish(self.repo)
                     self.assertFalse(any('merge' in call.args for call in git.call_args_list))
 
+    def test_changed_or_truncated_output_is_rebuilt(self):
+        self.request(); self.run_pending()
+        (self.repo/'revisions-summary.json').write_text('{truncated')
+        self.request(); self.run_pending()
+        self.assertEqual(self.builds(), 2)
+        self.assertEqual(json.loads((self.repo/'revisions-summary.json').read_text()), {})
+
+    def test_invalid_builder_output_is_not_completed(self):
+        (self.repo/'tools/build_revisions_index.py').write_text(
+            "from pathlib import Path\nPath('revisions.json').write_text('{bad')\nPath('revisions-summary.json').write_text('{}')\n")
+        self.request()
+        self.assertEqual(self.run_pending(), 1)
+        self.assertFalse((r.state_dir(self.repo)/'completed.json').exists())
+
+    def test_real_local_git_publish_includes_new_snapshots_and_preserves_other_files(self):
+        remote = self.repo/'remote.git'
+        def command(*args):
+            return subprocess.run(args, cwd=self.repo, capture_output=True, text=True, check=True)
+        command('git','init','-b','main')
+        command('git','config','user.name','Fixture')
+        command('git','config','user.email','fixture@example.invalid')
+        (self.repo/'.gitignore').write_text('state/\nbuild-count\nremote.git/\n')
+        command('git','add','.gitignore','tools','translation')
+        command('git','commit','-m','fixture source')
+        command('git','init','--bare',str(remote))
+        command('git','remote','add','origin',str(remote))
+        command('git','push','-u','origin','main')
+        (self.repo/'unrelated.txt').write_text('leave this local file alone')
+        self.request()
+        self.assertEqual(self.run_pending(publish_changes=True), 0)
+        self.assertEqual(command('git','show','origin/main:revisions.json').stdout, '{}')
+        self.assertEqual(command('git','show','origin/main:revisions-summary.json').stdout, '{}')
+        self.assertNotIn('unrelated.txt',command('git','ls-tree','--name-only','HEAD').stdout)
+        self.assertEqual(self.builds(), 1)
+        self.request(); self.assertEqual(self.run_pending(publish_changes=True), 0)
+        self.assertEqual(self.builds(), 1)
+
     def test_no_periodic_revisions_template_remains(self):
         self.assertFalse((ROOT/'scripts/com.cartha.pob-revisions-flywheel.plist').exists())
         self.assertIn('--background', (ROOT/'scripts/sync_pob.sh').read_text())

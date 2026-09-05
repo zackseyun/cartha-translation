@@ -95,6 +95,11 @@ def source_fingerprint(repo: Path) -> str:
     return digest.hexdigest()
 
 
+def output_stamp(repo: Path) -> dict:
+    return {name: [int((repo/name).stat().st_size), (repo/name).stat().st_mtime_ns]
+            for name in OUTPUTS if (repo/name).is_file()}
+
+
 def git(repo: Path, *args: str) -> str:
     return subprocess.check_output(['git', *args], cwd=repo, text=True,
                                    stderr=subprocess.STDOUT).strip()
@@ -117,7 +122,7 @@ def prepare_publish(repo: Path) -> None:
 
 
 def publish(repo: Path) -> None:
-    if git(repo, 'diff', 'HEAD', '--', *OUTPUTS):
+    if git(repo, 'status', '--porcelain', '--untracked-files=normal', '--', *OUTPUTS):
         git(repo, 'add', '--', *OUTPUTS)
         git(repo, 'commit', '--only', '-m', 'revisions: refresh after completed batch [skip ci]', '--', *OUTPUTS)
     # Retry an earlier successful commit whose push failed, even when clean.
@@ -148,9 +153,10 @@ def run_pending(repo: Path, *, publish_changes: bool = False,
                 if publish_changes:
                     prepare_publish(repo)
                 signature = source_fingerprint(repo)
-                cached = read_json(state / 'built.json').get('signature')
+                cached = read_json(state / 'built.json')
+                outputs_changed = cached.get('outputs') != output_stamp(repo)
                 missing = any(not (repo / name).is_file() for name in OUTPUTS)
-                if signature != cached or missing:
+                if signature != cached.get('signature') or missing or outputs_changed:
                     subprocess.run([sys.executable, str(repo / 'tools/build_revisions_index.py')],
                                    cwd=repo, check=True, timeout=3600)
                     if source_fingerprint(repo) != signature:
@@ -159,7 +165,10 @@ def run_pending(repo: Path, *, publish_changes: bool = False,
                         if read_json(state / 'request.json').get('id') != request['id']:
                             continue
                         return 0
-                    write_json(state / 'built.json', {'signature': signature})
+                    for name in OUTPUTS:
+                        if not isinstance(json.loads((repo/name).read_text()), dict):
+                            raise RuntimeError(f'invalid generated snapshot: {name}')
+                    write_json(state / 'built.json', {'signature': signature, 'outputs': output_stamp(repo)})
                 else:
                     print('[revisions-refresh] inputs unchanged; skipped rebuild', flush=True)
                 if publish_changes:
@@ -172,7 +181,7 @@ def run_pending(repo: Path, *, publish_changes: bool = False,
                 write_json(state / 'completed.json', {'id': request['id']})
                 # A request arriving mid-build is consumed on the next iteration;
                 # identical inputs skip the expensive builder and remain serialized.
-            except (OSError, subprocess.SubprocessError, RuntimeError) as exc:
+            except (OSError, ValueError, subprocess.SubprocessError, RuntimeError) as exc:
                 print(f'[revisions-refresh] pending; refresh failed: {exc}', flush=True)
                 return 1
 
