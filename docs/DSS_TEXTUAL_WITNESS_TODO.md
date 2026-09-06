@@ -11,6 +11,26 @@ limits and open gates. It is also the target for a possible later About link.
 
 ## Immediate delivery order — revised 2026-09-04
 
+- [x] Reconcile the Psalms copy/literary-context catalogue against both QDR
+  files and the full pinned modern index;
+  [report](PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md).
+- [ ] Collate Psalm-bearing portions of 11Q11, 4Q522 and the pesharim; resolve
+  MasPsa's Psalm18 conflict and 4Q173a identity before new coverage claims.
+- [x] Revisit Genesis4:8 with actual Hebrew/Greek/Latin/Syriac edition evidence
+  and competing explanations; [report](GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md).
+- [ ] Review/apply the tighter Genesis4:8 disclosure separately; source-form
+  priority and any English-only smoothing remain unapproved.
+
+- [x] Add a three-codex, all-39-book Masoretic navigation spine with explicit
+  Aleppo loss/surrogate categories, Sassoon coverage limits, local source-release
+  metadata and digital-versus-manuscript controls;
+  [report](MASORETIC_CODEX_COVERAGE_SPINE_2026-09-06.md).
+- [ ] Complete those codices' passage/hand/pointing maps and expand to other
+  Masoretic codices and Genizah fragments; the three targets are not a census.
+- [ ] Acquire a pinned UXLC release and collate relevant changes against local
+  OSHB/WLC, actual LC images and POB. Keep source corrections, normalization,
+  supplied vowels and earlier-text selection separate; no automatic upgrade.
+
 - [x] Apply the bounded independently reviewed Jeremiah 10:10 literary-form
   disclosure with exact-byte ledgers, historical replay and actual full-book
   export checks; [application](JEREMIAH_10_10_NOTE_APPLICATION_2026-09-06.md).

@@ -156,6 +156,26 @@ The [Jeremiah application checkpoint](JEREMIAH_10_10_NOTE_APPLICATION_2026-09-06
 now executes this bounded path, including actual full-book export checks.
 It does not complete the broader source-selection/publication workflow.
 
+The later [Masoretic coverage spine](MASORETIC_CODEX_COVERAGE_SPINE_2026-09-06.md)
+makes one further distinction operational: **a manuscript, a digital edition of
+that manuscript and a critical text are different objects**. A complete codex
+can omit verses found in a complete digital edition, and a digital edition can
+supply vowels absent from surviving parchment. Keep first-hand text, corrections,
+vowels, accents and Masorah distinct. Historical photographs can attest material
+no longer physically available; their existence is not fresh restoration.
+Compare newer transcription releases against actual manuscript evidence before
+adopting changes; do not treat newer software or additional websites as more
+ancient witnesses.
+
+The [Psalms follow-up](PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md) demonstrates
+why searching a dataset labeled biblical is insufficient: quoted Psalms and
+liturgical contexts occur in a separately classified file, with some of the
+same collection labels in both. Discover them without treating quotations as
+continuous copies or the two files as independent witnesses. The
+[Genesis follow-up](GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md) likewise shows
+why a version's broad agreement should not erase its particular wording or the
+actual manuscript underlying an edition at that location.
+
 ### September 4 snapshot table
 
 | Completed work | What it establishes | What remains open |

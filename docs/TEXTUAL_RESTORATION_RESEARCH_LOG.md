@@ -2183,6 +2183,87 @@ English and repeated 21 transaction tests after application. This checkpoint
 is ready for the standing main/commit/push workflow with `[skip ci]`; that Git
 publication is not Bible deployment or source-form approval.
 
+## 2026-09-06 — Masoretic coverage, Psalms discovery and Genesis wording controls
+
+The preceding note-application checkpoint was real progress, not a status-only
+turn: `398e15cad50dda6911aaf7c70d2414b974afd9da` was committed and pushed, and
+this continuation independently confirmed the clean starting worktree and
+matching configured remote tip. The goal remains the full source-comparison
+program; one applied note does not redefine its completion criteria.
+
+**Masoretic controls:** the [all-book spine](MASORETIC_CODEX_COVERAGE_SPINE_2026-09-06.md)
+joins the frozen 39-book discovery map to Leningrad, Aleppo and Sassoon catalogue
+evidence, while retaining 24 Tanakh navigation groups. NLI's exact Leningrad
+shelfmark/date/representation metadata were directly read. NLR's indexed
+caption/prose date discrepancy remains a discrepancy. Aleppo's project page
+separates absent main-body parchment from reported recovered pieces, old
+photographs and testimony; the map does not erase those surrogate leads or
+assume POB book order matches codex order. The ANU Hebrew page succeeded after
+two English-route timeouts. Its aggregate Sassoon extent and two Masorah hands
+are not a per-verse survival map or new hand adjudication.
+
+Actual local XML headers and all 39 file hashes establish the digital source
+snapshot; the UHB manifest records its distinct version and declared source.
+The directly consulted UXLC About/Changes pages describe another fork and two
+important editorial exceptions. The executed local probe finds ten word nodes
+in each of Joshua21:36–37, despite the editor's report that the unit is absent
+in LC, and 59 vowel codepoints in Numbers7:19, a repeated-offering example for
+the reported supplied pointing. Numbers7:13 is explicitly the first-offering
+control, not another claimed omission. These are encoded-text measurements
+paired with source-reported manuscript claims, not new pixel observations.
+No verse deletion, source upgrade, repointing or English edit follows. The
+judge independently checked the institutional/editor claims and passed the
+bounded eight-test package. New image/manuscript access failures are retained
+in the observation record; no restrictions were bypassed. Observation hashes
+do not purport to fingerprint original web responses.
+
+**Psalms:** the [catalogue reconciliation](PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md)
+consulted Flint's 2014 Oxford appendices and institutional IAA metadata, then
+reconciled the actual pinned biblical and nonbiblical QDR files with the full
+saved modern catalogue index. All 39 existing Psalms labels/1,261 reference
+anchors are accounted for. Fourteen additional literary-context targets are
+kept separately; thirteen have exact nonbiblical labels. Three collection
+labels occur in both files, so their sixteen nonbiblical matches do not mean
+sixteen added manuscripts. The check did not scan nonbiblical passage words.
+4Q173a remains unmatched; MasPsa's Psalm18 allocation conflicts with the local
+Mas1e Psalm81–85 tags; source spelling/numbering conflicts and three historical
+provenance leads remain held. This supplies concrete quotation/liturgical
+acquisition targets, not accepted readings or a complete Psalms census.
+
+The parent caught one reporting defect before freezing the Psalms receipt:
+the checker described the consulted sources as human-consulted. These were
+agent consultations. The author corrected that field and regenerated the
+code-bound receipt; no human review is invented. No PDF or manuscript image
+was inspected in that catalogue pass.
+
+**Genesis4:8:** the [comparison](GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md)
+revisits an existing shorter-text disclosure, rather than claiming a new case.
+The published 4Q2 junction supports the shorter transition while much of the
+preceding speech clause is supplied. Actual Swete page and introduction checks
+identify Alexandrinus as the base at this location; Vaticanus must not acquire
+an attestation from the edition's general title. Pinned Samaritan Hebrew,
+official Latin and CAL Syriac distinguish field, outside and plain/valley
+wording. Jerome's primary discussion and Hendel's full argument in the accessed
+preview inform competing loss/completion explanations without closing priority.
+The agent used the PDF skill for actual edition-page inspection; no new
+manuscript decipherment is claimed.
+
+The proposed note tightens survival and versional wording, retaining the
+existing appropriate anchor. It is unapplied. “Spoke to” is separately identified
+as a possible English-only alternative to the awkward retained “said to”; its
+smoothing tradeoff needs its own review. No source or English promotion follows
+from the age of 4Q2 or a simple count of agreeing versions. Unconsulted full
+modern apparatuses and unresolved transmission explanations remain explicit.
+
+Parent validation passed 391 repository tests and 39 numerical tests (430
+distinct tests). Real-input Psalms and Masoretic receipt reproduction passed;
+the Genesis baseline/source hashes and exact proposal/report agreement were
+checked. At the pre-judgment checkpoint, five new JSON files parsed and 253
+local Markdown links resolved across 17 scoped files, with no file over 5 MiB.
+No canonical verse or previously frozen research artifact was edited in this
+pass. Tests certify the recorded invariants and unchanged history, not the
+earliest biblical text or newly recovered ink.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

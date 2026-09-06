@@ -255,6 +255,25 @@ confirmation before being promoted to attestation.
 
 ## Next evidence checks
 
+The [Psalms targets](psalms_catalogue_targets.v1.json) and
+[reconciliation](psalms_catalogue_check.v1.json) distinguish 39 existing biblical
+labels from 14 literary-context discovery targets, including label-only checks
+of the sibling nonbiblical QDR file. See the
+[report](../../../docs/PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md) for source
+conflicts, duplicate collection labels and non-Qumran/provenance holds.
+
+The [Genesis4:8 comparison](genesis4_8_comparison.v1.json) records the precise
+4Q2 junction and versional wording behind an unapplied disclosure proposal;
+[report](../../../docs/GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md). It does not
+promote an earlier source form or count editions as independent witnesses.
+
+The [Masoretic observations](masoretic_codex_sources.v1.json) and
+[all-book spine](masoretic_codex_spine.v1.json) attach institutional Leningrad,
+Aleppo and Sassoon coverage controls to all 39 books. They preserve edition
+versions, surrogate evidence and actual digital-encoding probes without
+claiming full surviving words or independent manuscript votes. See the
+[report](../../../docs/MASORETIC_CODEX_COVERAGE_SPINE_2026-09-06.md).
+
 The [4Q37 numbering receipt](deut32_8_numbering_check.v1.json) distinguishes
 direct publisher/inventory evidence from the still-inferred section-to-column
 crosswalk. See the [bounded report](../../../docs/DEUT32_8_NUMBERING_CHECK_2026-09-05.md).

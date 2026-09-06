@@ -19,6 +19,28 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
 
 ## What exists locally
 
+- The [Psalms catalogue reconciliation](PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md)
+  accounts for all 39 existing Psalms labels and adds 14 separately classified
+  literary-context targets. Thirteen have exact labels in the sibling
+  nonbiblical dataset; that is discovery metadata, not newly collated Psalm
+  wording. Cross-file duplicates, 4Q173a's absence, MasPsa's conflicting passage
+  allocation and historical provenance holds remain explicit.
+- The [Genesis 4:8 follow-up](GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md)
+  distinguishes the published surviving short-form junction in 4Q2 from its
+  supplied surrounding speech clause, identifies Swete's actual Alexandrinus
+  base here, and compares distinct Samaritan/Greek, Latin and Syriac invitations.
+  A tighter reader note is proposed, not applied; earlier-form priority remains
+  unresolved and the shorter source is provisionally retained.
+
+- The [Masoretic coverage spine](MASORETIC_CODEX_COVERAGE_SPINE_2026-09-06.md)
+  now gives all 39 POB books an explicit Leningrad/Aleppo/Sassoon comparison
+  row, with 24 Tanakh navigation groups and no inferred independent-branch
+  count. It separates Aleppo parchment, photographs and documentary leads,
+  Sassoon aggregate extent from unknown passage survival, and digital editions
+  from physical marks. Four actual local encoding probes identify why complete
+  digital text cannot certify complete manuscript wording/vocalization. This
+  is institutional metadata plus local inspection, not completed collation.
+
 - The [Deuteronomy numbering check](DEUT32_8_NUMBERING_CHECK_2026-09-05.md)
   consults the publisher preview and historical photo inventory but does not
   obtain DJD XIV's decisive page/plate. Qumran-Digital section `12` is not a
