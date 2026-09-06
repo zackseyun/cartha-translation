@@ -2717,6 +2717,83 @@ markers with the preserved old note body/reason. Link existence is not external
 URL or heading-anchor validation; file dimensions do not certify manuscript
 legibility. These are scoped checks, not new independent textual votes.
 
+## Genizah local abbreviation and guarded Samuel preparation — 2026-09-06
+
+The [Psalm77 follow-up](GENIZAH_PSALM_77_NAME_FOLLOWUP_2026-09-06.md)
+advances the prior catalogue lead to actual institutional images, source-native
+regions, same-leaf abbreviation controls and publisher-selected Hebrew/Greek
+texts. The target is Hebrew77:8 = POB77:7. Two yod-like bodies occur where the
+base has Adonai; a nearby Adonai slot uses alef/dalet. This supports a local
+written-form difference, not four visible יהוה consonants or its exemplar's
+wording. Occasional scribal/recitational substitution remains a counterargument;
+Greek κύριος cannot discriminate the proposed Hebrew contrast. Priority is
+held, current Lord retained provisionally, and no new note applied.
+
+Cambridge attributes AS67.19 and four other sampled shelfmarks to one manuscript.
+That is institutional relationship evidence, not a new independently verified
+join or five votes. Both image sides and text order fit the catalogue's
+back-to-front conservation warning. Copy dating remains unavailable in the
+record. Initial incomplete-download viewing and crops needing supplementary
+context are disclosed; successful completed assets, not partial views, support
+the final report.
+
+The [Psalm145 check](GENIZAH_PSALM_145_ABBREVIATION_CHECK_2026-09-06.md)
+finds T-S A43.8's target on canvas2/1v using the title, acrostic context and
+actual source-coordinate regions. The visible mem and samech entries are
+adjacent; no separate nun row is between them. But the mem entry and nearby
+entries abbreviate text. The result is therefore a located layout observation,
+not secure continuous-copy omission evidence. No claim about every margin or
+all eight canvases, no expanded shorthand and no historical-priority change.
+This pass newly viewed canvases1/2; the prior pilot viewed8. Canvases3–7 were
+not newly read once the target was located. The fresh native-coordinate regions
+are institutional JPEG derivatives, not full raw masters or generated letters.
+
+The method consequence is to inspect abbreviation at the decisive unit,
+separate digital/physical/textual order, and preserve related-object statements
+before counting support. Both manuscripts remain useful evidence without
+forcing a source or English replacement. Images stay private under the actual
+institutional terms; metadata CC0 is not image republication permission.
+
+Samuel application preparation also exposed two integration hazards: the
+exact approved candidate retains historical “unapproved-unapplied” proposal
+metadata, and frozen Genesis guards pin a current test consumer. An application
+must explicitly distinguish historical snapshot status from actual live state,
+and must not silently weaken old input bindings to make tests pass. These are
+implementation gates, not reasons to alter the reviewed name/source decision.
+The [readiness record](SAMUEL_13_37_NOTE_APPLICATION_READINESS_2026-09-06.md)
+pins the actual consumers and migration state. The implementation agent and
+its bounded retry failed on transport before saving an executor or readiness
+file. Parent read the actual dependency code and wrote the held readiness
+record. No intent, virtual-applied test, canonical change, application receipt
+or post-application export occurred. An initial lookup in the wrong manifest
+returned null; the correct frozen migration record was then located and read.
+
+The independent [Psalm145 judgment](../sources/textual_restoration/discovery/genizah_psalm145_abbreviation_review.v1.json)
+and [Psalm77 judgment](../sources/textual_restoration/discovery/genizah_psalm77_name_review.v1.json)
+approve the bounded reports, with no mandatory repairs. They accept neither
+historical priority nor a new restored transcription. The judge's Psalm77
+connection initially failed and its resumed turn completed the actual review;
+the author also failed after saving the report/record, so the parent performed
+and recorded its pending structural validation. No failed agent turn is
+counted as a completed independent review.
+
+Fresh parent checks passed79 tests: QDR discovery14 (0.002s), UXLC/WLC14
+(0.241s), and OT registry51 (0.157s). Parent also verified10 repository input
+pins,20 private asset hashes (including two reused inputs),18 new byte counts,
+14 image dimensions, and13 exact source-review bindings. These are integrity
+and regression results, not palaeographic truth or a whole-repository pass.
+All inspected canonical/code/frozen-policy files remain unchanged.
+
+The additional confirmed baseline process completed28 Genesis transaction tests
+in167.668s and4 unflagged-sample tests in19.611s, all passing: **111 distinct
+tests across five modules** including the79 above. During the longer run its
+specific session remained live, produced progress and was re-polled; it was
+not restarted on an observation timeout. This verifies the existing applied
+Genesis state, not a virtual or actual Samuel application. The judge separately
+verified the readiness report's five dependency pins and showed an injected
+unknown test hash is rejected without changing the actual file. That diagnostic
+is not an additional full test suite or a Samuel transaction approval.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

@@ -30,6 +30,35 @@ arguments; its identity supplies no additional manuscript evidence.
 
 ## What the work actually establishes
 
+### Application architecture remains a delivery constraint — 2026-09-06
+
+The [Samuel readiness check](SAMUEL_13_37_NOTE_APPLICATION_READINESS_2026-09-06.md)
+documents why adding another historical overlay is not yet a safe application
+plan: the prior Genesis guard pins a current test consumer as well as the
+canonical state. Its candidate lifecycle labels also need an explicit
+historical/current-state distinction. No Samuel executor or application was
+completed. Prefer an explicit immutable historical corpus interface, or a
+narrowly reviewed adapter with full dependent integration, before scaling
+applications. Do not trade faithful replay for green tests or confuse a
+candidate's old full-book export with verification of a live change.
+
+### Local abbreviation and manuscript relationships — 2026-09-06
+
+Two [Genizah follow-ups](GENIZAH_PSALM_77_NAME_FOLLOWUP_2026-09-06.md)
+show why we should keep the evidence-first approach while tightening its local
+inference rules. Psalm 77's target abbreviation differs from a nearby Adonai
+abbreviation, but does not spell out four Hebrew consonants or prove its
+exemplar's wording. Five sampled shelfmarks are catalogued as parts of one
+manuscript: catalogue entries cannot become independent votes. The copy's
+back-to-front conservation and Hebrew/POB numbering offset are explicitly mapped.
+
+At [Psalm 145](GENIZAH_PSALM_145_ABBREVIATION_CHECK_2026-09-06.md), actual
+images locate adjacent mem/samech entries, but the mem entry itself abbreviates
+the verse. A preserved interval therefore does not prove a continuous exemplar
+omitted the nun line. “Mostly full text” is not a sufficient passage-level
+classification. Keep written abbreviation, inferred expansion and historical
+priority separate. Neither follow-up changes the Hebrew source or English.
+
 ### Coverage and application refinement — 2026-09-06
 
 The [Genizah pilot](GENIZAH_BIBLICAL_CATALOGUE_PILOT_2026-09-06.md)

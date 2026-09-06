@@ -429,6 +429,16 @@ An uncertain source may be important without supporting either reading.
 
 ## Reconciling into the POB source
 
+The 2026-09-06 Genizah follow-ups add two concrete census cautions.
+[T-S AS 67.19](GENIZAH_PSALM_77_NAME_FOLLOWUP_2026-09-06.md) is catalogued
+with four other sampled shelfmarks as parts of the same manuscript; that
+relationship must accompany any future deduplicated count, pending verification
+of its basis. Its target is Hebrew Psalm 77:8 = POB 77:7, on digital canvas 2
+despite reversed conservation. [T-S A43.8](GENIZAH_PSALM_145_ABBREVIATION_CHECK_2026-09-06.md)
+now has an actual Psalm 145 locator on canvas 2, but abbreviation at the decisive
+unit prevents treating its mem/samech sequence as secure continuous-text
+omission evidence. No global denominator, registry count or NT coverage changed.
+
 Preserve each diplomatic witness first. Align by variation unit, allowing
 different numbering, passage order, omissions and literary forms. Then test
 which reading best explains the others through copying, revision, translation

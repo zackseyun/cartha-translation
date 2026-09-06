@@ -440,3 +440,19 @@ published-word fit. See [report](../../../docs/4Q122_DEUT11_IMAGE_FOLLOWUP_2026-
 Its exact bounded image/source judgment is `4q122_deut11_image_review.v1.json`.
 No fresh accepted transcription, full-verse reconstruction, recovered divine
 name, physical-count increase or source/English change follows.
+
+## Genizah abbreviation follow-ups, 2026-09-06
+
+`genizah_psalm77_name_followup.v1.json` binds actual two-yod and alef/dalet
+controls, reverse conservation, Hebrew77:8/POB77:7 alignment, institutional
+same-manuscript attribution for five sampled shelfmarks, and non-discriminating
+Greek title evidence. See the [report](../../../docs/GENIZAH_PSALM_77_NAME_FOLLOWUP_2026-09-06.md).
+The abbreviation does not establish a four-letter exemplar or priority.
+
+`genizah_psalm145_abbreviation_check.v1.json` locates T-S A43.8's Psalm145
+mem/samech sequence on canvas2/1v. See the
+[report](../../../docs/GENIZAH_PSALM_145_ABBREVIATION_CHECK_2026-09-06.md).
+Local abbreviation prevents equating adjacent entries with a continuous-copy
+omission. Neither record applies a canonical change, completes the catalogue
+census or accepts a newly restored reading. Exact independent judgments are
+separate records, not model-agreement manuscript votes.

@@ -400,6 +400,16 @@ and the distinction between completed safeguards and planned machinery.
 
 ## Transcription and restoration
 
+- [x] Locate T-S A43.8's Psalm 145 mem/samech region in actual institutional
+  images; [hold omission inference](GENIZAH_PSALM_145_ABBREVIATION_CHECK_2026-09-06.md)
+  because the decisive entry uses abbreviation. This does not complete its
+  eight-canvas collation or resolve the nun-line source question.
+- [x] Follow T-S AS 67.19's [Psalm 77 divine-name lead](GENIZAH_PSALM_77_NAME_FOLLOWUP_2026-09-06.md)
+  through actual signs, same-leaf controls, numbering and conservation order.
+- [ ] Verify abbreviation practice/dating and the basis of Cambridge's
+  five-shelfmark same-manuscript attribution; seek full-word/apparatus controls
+  before a Psalm 77 source/name decision. Catalogue grouping is not a new join.
+
 - [x] Produce deterministic grayscale/contrast derivatives for the four pilot
   images without adding or replacing strokes.
 - [x] Document the initial OCR feasibility result: previews are insufficient
