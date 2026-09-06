@@ -183,3 +183,13 @@ Parent full relevant repository regression passed301 tests, plus30 numerical
 tests, for331 distinct tests. Existing publication gates remain failed or
 unapproved; the user's later Git-push authorization is a repository workflow
 instruction, not scholarly certification or a request to deploy the Bible.
+
+Final coordinate repair received a bounded PASS from `/root/judge_v2_final`,
+a fresh separately briefed read-only agent. The prior judge was reported by
+the collaboration runtime as pending initialization, so its uncompleted final
+review was not counted as a live measurement or an additional verdict. The
+fresh judge independently derived matrix conjugation, verified all372 pairs
+and residuals, ran ten registration tests and exactly reproduced both
+receipts from actual images. It found no actionable defect in that narrow
+scope. The failed scientific registration/reading/publication gates were not
+converted to passes. No different-model-family or human review is claimed.

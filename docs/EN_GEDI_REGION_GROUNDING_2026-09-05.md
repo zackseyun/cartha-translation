@@ -153,3 +153,11 @@ tests passed, including the earlier measured-CT suites. The parent reproduced
 v1 exactly from the actual images before constructing v2. The v2 correction
 command has the same evidence-directory argument and default read-only mode
 as the original registration command.
+
+Final independent coordinate-review outcome: bounded PASS. A fresh separately
+briefed judge derived the3×3 matrix conjugation, checked all372 corrected
+coordinate/residual rows, ran all ten registration tests and reproduced v2
+exactly from the actual images (including the complete frozen v1 run).
+Both receipt hashes matched. No actionable repair defect remained; the
+scientific registration gate still FAILS. This review did not supply new
+PDF/ink inspection, a different-model-family experiment or publication approval.

@@ -1813,6 +1813,16 @@ documentation, not canonical Hebrew, main English, notes or review flags.
 No About integration, commit, deployment or new manuscript coverage was
 claimed. The full goal remains active and incomplete, with safe next work.
 
+Final coordinate-repair review: a fresh separately briefed read-only judge
+independently derived the3×3 conjugation, checked all372 corrected pairs and
+residuals, ran ten registration tests and exactly reproduced both receipts
+from actual images. It gave a bounded repair/report PASS, with scientific
+registration still FAILED and no new ink or publication approval. The prior
+judge's continuation was reported as pending initialization, not a live
+experiment; that uncompleted final review was not counted and was stopped
+after the fresh review completed. Source-agent reviews above remain their
+actually completed separate dispositions.
+
 ### 2026-09-05 — Standing Git publication authorization
 
 The user explicitly authorized committing completed task changes, merging into
@@ -1839,6 +1849,18 @@ those jobs. This research checkpoint therefore uses that documented marker;
 local validation is reported explicitly, and no separate deployment or
 production-readiness claim is made. Final commit/merge/push outcomes are to
 be verified against Git and the configured remote, not inferred from intent.
+
+The research checkpoint was committed as `574f204de7`; ordinary merge
+`883ae9160b` retained incoming origin/main `d7f7277027` without conflicts.
+Both shared README additions survived. The incoming superseded revision-job
+plist removal and replacement tooling were retained as remote history, not
+discarded or independently redesigned by this task. Post-merge numerical
+regression passed30 tests; the combined repository regression passed318 tests,
+including the incoming revision-refresh suite (348 distinct tests total).
+Its logged fixture failures are tested failure paths, not real failed pushes
+or publication jobs. A final documentation checkpoint records
+the completed coordinate review before pushing main. Push completion is not
+inferred from these local commits.
 
 ## Remaining work
 
