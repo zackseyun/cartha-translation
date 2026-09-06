@@ -80,9 +80,10 @@ retains the current text pending its recorded reopening evidence. Do not repeat
 that acquisition. The [Job 13:15 comparison](JOB_13_15_SOURCE_COMPARISON_2026-09-06.md)
 now tests the waiting/hope interpretation against published counterarguments and
 the book's annotated verb occurrences. Its exact full-record rationale/note
-candidate has passed scoped editorial review and simulated full-book export;
-it remains unapplied pending the documented corpus-verifier integration gate.
-Do not repeat the same Job source search to resolve that engineering constraint.
+candidate has now been applied after scoped editorial/application review and
+actual full-book export checks. The reusable successor verifier resolves the
+prior corpus-integrity integration gate without changing frozen receipts.
+Hebrew and main English remain unchanged; do not repeat the completed disclosure.
 Neither pass establishes historical priority. The separate
 [2 Samuel 13:37 disclosure](SAMUEL_13_37_NOTE_APPLICATION_2026-09-06.md) was applied
 at `d73c9aecc4` after resolving the earlier integration constraint; source and

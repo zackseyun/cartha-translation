@@ -3108,6 +3108,41 @@ mechanism preserving prior package verification. Job editorial preparation stops
 here pending that integration; main-English selection and historical priority
 remain unresolved on their separate evidentiary grounds.
 
+### 2026-09-06 — Unblock successors and apply the Job disclosure correction
+
+Completed one enabling implementation and its consequential editorial outcome.
+The reusable [successor verifier](CORPUS_SUCCESSOR_VERIFICATION.md) checks the
+current OT state against a fixed Git checkpoint plus an exact, independently
+reviewed note/metadata plan. It preserves frozen Samuel records and all prior
+completed-note obligations; only the reviewed Samuel test consumer is migrated
+to run the original eleven tests in an actual checkpoint archive. Explicit
+trusted review/application hashes prevent mutable plans or stale receipts from
+silently certifying changes. This is not textual-confidence measurement.
+
+Independent `/root/successor_review` approved the exact mechanism and Job plan,
+including source/main-English/history preservation. Preserved the actual
+baseline verification, applied the already reviewed candidate using apply_patch,
+then verified the actual candidate corpus and complete Job/Samuel exports.
+The [Job case record](JOB_13_15_SOURCE_COMPARISON_2026-09-06.md#scoped-application-verified--2026-09-06)
+links the plan, approval, preflight, application record and reproducible command.
+Only the Job reader note and related metadata change; Hebrew/main English and
+historical revision entries are retained. Prior reviews are archived, not reused
+as full-verse approval. No derivative synchronization or deployment.
+
+Initial tests exposed a missing Genesis derivative dependency in the historical
+archive, a schema-exception expectation and the temporary directory's macOS
+symlink alias. Fixed those failures rather than counting them as passes. Final
+post-application integration passed 13 parent tests in 53.631 seconds: twelve
+current successor tests plus a wrapper running all eleven original Samuel
+tests. Five prior live-integrity tests and eight reader-footnote tests also
+passed during pre-application validation. Checks cover scope, protected bytes,
+full exports, malformed/unapproved states and rollback, not scholarly truth.
+
+No new apparatus or image claim was needed. Stop Job disclosure work here;
+the separately unresolved source-priority and complete-English questions retain
+their original reopening criteria. The earlier broad-corpus blocker is resolved
+for this reviewed successor path, not hidden by repinning old receipts.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
