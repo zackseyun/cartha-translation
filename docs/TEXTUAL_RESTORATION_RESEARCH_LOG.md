@@ -3143,6 +3143,33 @@ the separately unresolved source-priority and complete-English questions retain
 their original reopening criteria. The earlier broad-corpus blocker is resolved
 for this reviewed successor path, not hidden by repinning old receipts.
 
+### 2026-09-06 — Compare Amos 9:12 with the Greek forms and Acts quotation
+
+The [Amos comparison](AMOS_9_12_SOURCE_COMPARISON_2026-09-06.md) answers a
+consequential source question without another application framework. A bounded
+Hebrew-control agent checked pinned QDR coverage and the versioned primary
+transcription: Mur. 88 supports Edom as unbracketed text, but only the verb's
+ending survives in that transcription. Its supplied beginning cannot establish
+“possess” over “seek.” The pinned 4Q82 record supplies no 9:11–12 anchor; related
+9:11 quotations are not direct 9:12 noun/verb witnesses.
+
+Inspected the original Swete vol. III page 27 image and its apparatus. The main
+Greek text lacks an explicit seeking-object, while Swete reports “the Lord” in
+Alexandrinus; Acts explicitly has that object. The local AI apparatus string
+`των αν` is a corruption of printed `τον κν`. Recorded an erratum while preserving
+the original model output and its provenance. No physical codex image or modern
+Göttingen apparatus was consulted; no Greek form was retroverted into supposedly
+surviving Hebrew. Existing POB Amos/Acts main translations are retained.
+
+Independent `/root/amos_comparison_judge` inspected the original Greek scan,
+primary Hebrew HTML, WLC and canonical records and passed the exact report
+SHA256 `0772baf858136279d56f95a534156f2fe57fda4c96619aa3cb4798c555eb477d`.
+Local links, canonical/input hashes, WLC no-qere and Acts object checks passed.
+The report records unavailable NET/web-reader access and the successful direct
+HTML retrieval after an unavailable parser dependency. No canonical, source-data,
+executable or test change; no corpus-wide test run, ImageGen or deployment.
+Stop at retain; only discriminating new evidence reopens historical selection.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
