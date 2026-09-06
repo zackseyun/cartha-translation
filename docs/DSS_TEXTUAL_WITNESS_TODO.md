@@ -17,6 +17,14 @@ limits and open gates. It is also the target for a possible later About link.
 - [ ] Execute dated catalogue-backed coverage discovery for every canonical
   book, including non-Qumran OT witnesses and NT minuscules/lectionaries;
   reconcile registry gaps and record unavailable or excluded material.
+- [x] Build an executed all-39-OT-book QDR discovery map with zero hits,
+  book-unassigned records, exact label/record locators, family gaps and
+  conservative supplied-text syntax diagnostics; see the
+  [book map](HEBREW_BIBLE_BOOK_WITNESS_MAP_2026-09-05.md).
+  This completes a dataset map, not the broader catalogue task above.
+- [ ] Resolve the map's book-specific identity/genre queues and exact-word
+  preservation using primary editions and physical locators; investigate
+  bracket-unresolved contexts instead of treating them as surviving text.
 - [x] Reconcile the entire current Qumran-Digital transcription index against
   the pinned QDR labels, retaining outside-category matches and identity gaps;
   [report](QUMRAN_DIGITAL_CATALOGUE_INDEX_RECONCILIATION_2026-09-05.md).
@@ -57,6 +65,18 @@ limits and open gates. It is also the target for a possible later About link.
   first non-promoted source/English selection bundle.
 - [ ] Freeze development/evaluation controls and acceptance criteria for the
   two-family image workflow; execute and report calibration by damage class.
+- [x] Acquire and inspect all six remaining En-Gedi textures under fixed
+  member/batch budgets; preserve all outcomes and choose a non-blind
+  development target. See the [triage](EN_GEDI_TEXTURE_TRIAGE_2026-09-05.md).
+- [ ] Acquire `remerge` mapping/mask, establish actual segment/master/edition
+  correspondence and independently checked labels before CT letter controls.
+  The failed merge5 registration and lack of a reading benchmark remain open.
+- [x] Consult direct publisher Greek and CAL Syriac for Lev 2:8–9, separating
+  clause-specific grammar from Hebrew retroversion; see the
+  [version controls](LEVITICUS_2_VERSION_CONTROLS_2026-09-05.md).
+- [ ] Consult the full relevant Greek/Leiden apparatus and identify CAL's
+  displayed variant siglum; then adjudicate source/English with the unresolved
+  4Q24 physical and preservation evidence. No new source promotion yet.
 - [ ] Complete the thirteen current comparison cases with an explicit retain,
   propose-change, or unresolved outcome under method 2.0.
 - [ ] Implement a reviewed change package with base/source/English/notes hashes,

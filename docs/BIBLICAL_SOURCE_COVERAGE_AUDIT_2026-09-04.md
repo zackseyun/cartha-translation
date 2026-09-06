@@ -19,6 +19,13 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
 
 ## What exists locally
 
+- The [all-39-book discovery map](HEBREW_BIBLE_BOOK_WITNESS_MAP_2026-09-05.md)
+  accounts for all 218,217 word records in the pinned QDR corpus: 318
+  book–record pairs across 36 books, with explicit zero-hit and unassigned
+  rows. It adds per-book label/genre/acquisition queues and conservative
+  bracket-syntax diagnostics, not direct-ink coverage or a complete witness
+  census. No positive tags in 1 Chronicles, Nehemiah or Esther mean absence
+  from this tagged dataset, not absence of all ancient evidence.
 - WLC/OSHB and UHB provide Hebrew/Aramaic base/control texts. They do not count
   as two independent ancient witnesses.
 - The OT restoration registry has 31 witness/edition/family entries. Some are
@@ -38,6 +45,11 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
   replacing the prior abstract-only limitation. The target Lev2:8–9 DJD
   transcription/physical-fragment/pixel crosswalk remains open; this is not
   added direct-word coverage or independent hand adjudication.
+  The [direct version controls](LEVITICUS_2_VERSION_CONTROLS_2026-09-05.md)
+  now consult publisher Greek and CAL Syriac at 2:8–9, keeping clause-specific
+  person/agency differences, CAL's unidentified aroma-variant siglum and
+  full-apparatus limitations separate. No Hebrew spelling is recovered by
+  retroverting their aroma vocabulary; no new physical witness is counted.
   The subsequent [Leviticus catalogue screen](LEVITICUS_CATALOGUE_RECONCILIATION_2026-09-05.md)
   checks 30 published-table target names against QDR: 18 have scoped hits across
   17 legacy labels; 12 have no queried label. Missing Greek/Aramaic and

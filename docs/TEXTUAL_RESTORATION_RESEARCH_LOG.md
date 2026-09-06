@@ -1862,6 +1862,133 @@ or publication jobs. A final documentation checkpoint records
 the completed coordinate review before pushing main. Push completion is not
 inferred from these local commits.
 
+### 2026-09-05 — Published checkpoint, all-book map, version controls and texture triage
+
+The preceding turn made progress: the documented research checkpoint and
+ordinary merge were pushed successfully. Local and remote main both resolved
+to `b95cb7e473b2ad8c286da8377e8888335d2459ea`; the public revision-pinned
+research-log URL returned HTTP 200. The next turn began with a clean main
+tracking origin/main. This verifies Git publication, not Bible deployment or
+scientific acceptance. No newly completed independent transcription was claimed.
+
+The user explicitly requested parallel task agents and an independent judge
+with repair/re-review loops. Two bounded agents handled all-book discovery and
+Leviticus version controls while the parent acquired and inspected En-Gedi
+textures. The judge received each completed artifact set for read-only review;
+its actual disposition must be recorded separately, not inferred from test
+results. No model upgrade supplies new manuscript evidence.
+
+**All-book discovery:** the [39-book map](HEBREW_BIBLE_BOOK_WITNESS_MAP_2026-09-05.md)
+actually processes all 218,217 word records in the pinned QDR file, with hashes
+for all 39 WLC controls and preceding identity/genre evidence. It exposes 318
+book–record pairs across 36 books. 1 Chronicles, Nehemiah and Esther have no
+positive book tag here; Pam43113, Pam43124 and X4 remain book-unassigned.
+Josh 5:0 is retained as an off-WLC numbering/alignment issue. No source record
+or nonbiblical reference is silently dropped. This is a completed map of one
+dataset, not a completed census of discovered manuscripts.
+
+The supplied-text diagnostic is intentionally conservative: 134,985 biblical-tagged
+word records belong to fragments with unbalanced/nested bracket syntax and
+remain unresolved. The other syntax bins do not establish surviving ink either.
+This is a concrete reason to require edition-context and exact-letter evidence,
+not a reason to assume that most words are present or absent. Book-specific
+label discrepancies, the 18 held Isaiah/Leviticus missing-label targets and
+all-book family gaps now provide actionable acquisition queues. Ten new tests
+and actual receipt/report regeneration passed before independent review.
+
+**Leviticus 2:8–9:** the [version-control pass](LEVITICUS_2_VERSION_CONTROLS_2026-09-05.md)
+directly consulted Rahlfs–Hanhart's publisher chapter and CAL's current Syriac
+chapter/lexical/file-information pages. Greek has third-person opening and
+delivery; its approach participle must be read with the explicit priest in
+2:9. Syriac context supports second-person opening and delivery, then third-person
+altar action. Opening agreement therefore does not establish whole-verse
+agreement with stored Hebrew pointing or settle every agent.
+
+CAL's displayed aroma alternative and shared lexical parse must not become
+a claimed Hebrew waw reading or an identified manuscript variant; its siglum
+identity and full Leiden apparatus remain unverified. CAL identifies its
+edition-derived text as including some 7a1 corrections; no particular target
+word was established as such a correction. The checker binds 15 local inputs
+and two manually retained selected observation transcripts. Their hashes do
+not represent raw page bytes. Publisher curl 403, obsolete CAL route 404,
+unsupported browser export and CAL's no-scraping response were recorded;
+ordinary bounded browser consultation succeeded without bypassing restrictions.
+Seven new tests and five prior agency tests passed. Source priority, best
+English, full apparatus and 4Q24 target pixels remain open; no canonical edit.
+
+**En-Gedi:** the [texture triage](EN_GEDI_TEXTURE_TRIAGE_2026-09-05.md) froze
+all six remaining `textured.png` selections and explicit member/batch budgets
+before downloading their payloads. The actual verified-range acquisition
+retained 62,316,462 expanded PNG bytes, with 65,415,587 HTTP body bytes logged.
+The previous strong archive ETag and a fresh central-directory match were
+required; all six payloads passed length/CRC checks and were rehashed locally.
+The full archive was not hash-verified. Private payloads retain upstream
+CC BY-NC terms; only protocols, hashes, ranges and observations enter Git.
+
+All six unaltered full-image overviews were inspected at display-downsampled
+resolution. Several show repeated bright text-shaped rows; `remerge` was
+selected after inspection for the next mapping/CT development step, with
+merge1/merge2 retained as alternatives. This is neither blind validation nor
+six independent witnesses. No letters, verse locators or blank controls are
+accepted. The earlier merge5 registration still fails. No image was enhanced,
+edited or generated, and no new mapping/mask/CT payload was acquired in this
+pass. Ten new tests plus nine existing ZIP tests passed; the actual six-payload
+checker passed separately. Tests verify integrity and bounded claims, not ink.
+
+The approach review, source-coverage audit, discovery index and backlog now
+link these three completed bounded results. Historical frozen methods, receipts,
+canonical Hebrew/English/notes, review flags and the registry are unchanged.
+The next scientific gates are primary book-specific identity/preservation
+work, full version apparatus and actual text-region mapping with separately
+frozen evaluation labels. The broad OT/NT restoration goal remains incomplete.
+
+Parent validation of this checkpoint passed 345 repository tests and 30
+separate numerical tests (375 distinct tests). The actual 39-book map regenerated
+exactly; the version checker passed all 15 local and two private transcript
+bindings; the texture checker reverified all six actual private payloads.
+Registry validation remains 31 mixed entries / 20 coverage records / 13 cases /
+one unpromoted selection. Five new JSON files parsed and all 203 local Markdown
+targets in the 20 scoped files resolved. Whitespace checks passed. Revision-job
+test fixture failures are expected failure-path output, not real failed pushes.
+A fresh origin fetch succeeded; publication of this new batch is not inferred
+from the earlier checkpoint. An additional separately briefed read-only image
+judge was assigned the texture batch to divide final review from the textual
+judge's two dossiers.
+
+The image judge subsequently completed its review and gave a bounded
+acquisition/overview PASS, with no blocking defect. Beyond the parent checker,
+it independently verified each whole-file ZIP CRC and internal PNG chunk CRCs,
+the exact prior-index member selection and byte-identical public/private
+receipts. It reproduced all budget/range totals, inspected all six unaltered
+overviews and passed the 19 focused/ZIP tests. The additional index/header/name
+range bodies total 3,114,519 bytes. Its PASS does not accept any letter, ink,
+verse coordinate, blind evaluation or publication claim. Prefetch timing rests
+on the recorded execution history, not on an independently provable ordering
+in the retained files alone. The parent wrote the protocol before acquisition.
+
+The textual judge then completed both dossiers with bounded PASS verdicts and
+no actionable defect. It independently counted the entire pinned QDR corpus
+without importing the builder, verified every one of the 39 book counts and
+all 318 first locators against nested source data, reproduced the outputs and
+passed ten focused tests. The book-map receipt SHA-256 is
+`122adba01e0dbbbfba9ff68d4039a692c20499c3cd6af5a09781db9e5951328a`.
+This is census/accounting/reproduction approval, not complete witness coverage
+or letter survival.
+
+For Leviticus, the judge independently consulted the publisher Greek chapter
+and edition credit, CAL chapter and edition metadata, four decisive verb lexical
+pages and the aroma/shared-parse page in its own browser session. The retained
+observations agree; all 15 local and two private bindings and seven focused
+tests passed. Receipt SHA-256 is
+`379d79d7283eb0303f399d9efad32803e4f4b956077a136121ed1d686d2e8957`.
+Its PASS covers source fidelity and clause-specific person/agent/retroversion
+distinctions. Full apparatus, CAL siglum identity, Hebrew priority and best
+English remain open. The judge also checked integrated summaries for matching
+limits. Neither judge found a defect requiring a repair loop in this batch;
+the earlier recorded failures and repairs remain intact. This checkpoint is
+ready for a routine scoped Git commit/push under the user's standing authority,
+with `[skip ci]` and no direct deployment or scientific-promotion claim.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

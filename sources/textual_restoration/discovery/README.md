@@ -1,5 +1,28 @@
 # Biblical source discovery receipts
 
+## All-book QDR discovery and current Leviticus controls
+
+`hebrew_bible_book_map.v1.json` accounts for all 39 OT books, all 266 QDR
+records and all 218,217 word records. It retains per-book record/label locators,
+unassigned/zero-hit rows, conservative bracket diagnostics and inherited
+identity/genre/acquisition queues. It is not preserved-word coverage or an
+all-institutional census. See the [book map](../../../docs/HEBREW_BIBLE_BOOK_WITNESS_MAP_2026-09-05.md).
+
+`lev2_version_controls.v1.json` binds direct publisher Greek and CAL Syriac
+observations to current local sources and the prior dossiers. Its private
+selected observation transcripts are not original-page byte captures. Person,
+agent, lexical variant and Hebrew-spelling questions stay separate; no source
+or English selection follows. See the [report](../../../docs/LEVITICUS_2_VERSION_CONTROLS_2026-09-05.md).
+
+## En-Gedi six-texture acquisition and development triage
+
+`en_gedi_texture_triage_protocol.v1.json` fixes all six remaining texture members
+and byte budgets before acquisition. `en_gedi_texture_acquisition.v1.json`
+retains actual verified-range/member receipts. `en_gedi_texture_triage.v1.json`
+records all six visual overviews and the post-inspection `remerge` development
+choice, with no accepted letters, blank controls or verse locators. The previous
+registration remains failed. See the [triage report](../../../docs/EN_GEDI_TEXTURE_TRIAGE_2026-09-05.md).
+
 ## Whole-index catalogue reconciliation
 
 `qumran_digital_catalogue_index.v1.json` compares all 1,173 entries in a pinned

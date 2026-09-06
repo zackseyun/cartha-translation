@@ -88,6 +88,29 @@ The project is worth continuing. Its present achievement is a more auditable
 and self-correcting research process, not a demonstrated recovery of originals
 or proof that POB is globally the best translation.
 
+The later [all-39-book map](HEBREW_BIBLE_BOOK_WITNESS_MAP_2026-09-05.md)
+makes the coverage discipline operational: every book gets a row, including
+zero hits and unassigned records, while reference tags and supplied-text syntax
+remain distinct from preserved letters. Its large bracket-unresolved remainder
+must not be converted into a confident survival percentage. Book-by-book
+coverage should next combine these leads with independent catalogue and
+critical-apparatus work; QDR alone does not close any all-source claim.
+
+The [Leviticus version controls](LEVITICUS_2_VERSION_CONTROLS_2026-09-05.md)
+illustrate the practical translation rule: compare clauses in context, not
+whole witnesses by a single agreeing word. Syriac agrees with the second-person
+opening but differs from the stored Hebrew's third-person delivery clause.
+Keep that distinction, the Greek cross-verse syntax and uncertain agents visible
+before choosing English. A version's aroma vocabulary cannot recover a Hebrew
+spelling detail. Where only manually preserved observation excerpts are retained,
+label their hashes as observation records, not original-page fingerprints.
+
+The [six-texture triage](EN_GEDI_TEXTURE_TRIAGE_2026-09-05.md) moves the imaging
+work toward a visibly text-shaped development region while retaining all six
+acquired alternatives. Choosing `remerge` after inspecting the images is an
+explicit development decision, not blind validation. No letter or blank-control
+label follows from an overview; the failed earlier registration stays failed.
+
 ### Earlier review snapshot
 
 | Completed work | What it establishes | What remains open |
