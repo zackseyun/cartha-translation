@@ -3199,6 +3199,78 @@ batch with an explicit effort ceiling and expected decision, then stop at
 retain, propose or unresolved. Reopen only for evidence that could change the
 decision. Research completeness and the larger project goal remain unclaimed.
 
+### 2026-09-06 — Concrete Isaiah candidate and identity-blinded English review
+
+The previous pass completed a reviewed source-unit report and an efficiency
+stop (progress, not a verified wait). Goal continuation resumed with one
+deliverable and a roughly ten-minute effort ceiling: materialize the existing
+Isaiah finding, without new source acquisition or application infrastructure.
+
+The [complete candidate](../sources/textual_restoration/applications/isaiah53_11_candidate.v1.json)
+is an unapproved WLC-based editorial composite, labeled `POB-critical-draft`,
+not WLC. Its unpointed source adds only אור; the English adds only “light.”
+Both footnote anchors now attach to their own phrases. The exact original
+source and English are retained in the candidate's baseline block; Git
+`78732e3150576aea40c690de957add7373c63a0f` preserves the full original record.
+Historical draft/revision data are preserved, old status/review metadata are
+archived without claiming verified original review-input bindings, and the
+candidate has no inherited 0.95 approval. The earlier lexical claim “he himself”
+is aligned with the unchanged sentence's “he”; that stronger alternative remains
+documented. The knowledge rationale no longer claims the suffix settles its
+interpretation. Unchanged lexical entries are carried forward, not newly checked
+against their named lexicons.
+
+Before review, the contract fixed the proposed consonantal source, retained
+base analysis elsewhere, a close gloss, Isaiah 53:10–12 context, and POB's
+source-fidelity/ambiguity/readability policy. Inputs are the verse records at
+the Git revision above. The reviewer received the source and context, not the
+current POB identity or the source-selection report. Meaning and unsupported
+additions took priority over literary effect, readability and consistency.
+One fresh agent, `/root/isaiah_full_english_review`, assessed these anonymous
+sentences in A/B/C order; no repeated-order experiment was performed:
+
+- A: “From the anguish of his soul he will see light and be satisfied; by his
+  knowledge my righteous servant will justify many, and he himself will bear
+  their iniquities.”
+- B: “After his suffering he will see the light of life and be satisfied; by
+  knowledge of him my righteous servant will justify many, and he will bear
+  their iniquities.”
+- C: “From the anguish of his soul he will see light and be satisfied; by his
+  knowledge my righteous servant will justify many, and he will bear their
+  iniquities.”
+
+Actual verdict: slight preference for C, with A defensible and neither blocked
+under the supplied source/analysis constraints. A's “himself” makes plausible
+emphasis more explicit than necessary. B selects a temporal relationship,
+adds “of life,” and chooses the alternative knowledge interpretation; the
+reviewer rejected it for this narrowly sourced candidate. C preserves the light
+image and leaves the disputed character of justification open. This confirms
+the minimal candidate preference, not earliest Hebrew priority.
+
+The reviewer retained three cautions: knowledge-of-him remains consequential;
+attachment of the knowledge phrase to satisfaction rather than justification
+remains a clause-level question; “the many” would represent the article more
+explicitly. None was judged a blocker while retaining the stipulated base
+analysis. “From” was preferred to the more determinate “after.” The light note
+must distinguish Hebrew attestation from the Greek's different construction;
+the candidate does so. One AI review of supplied sentences and summaries is
+not independent witness verification, a calibrated translation benchmark, or
+approval of every field in the full candidate. Existing full-source/editorial/
+English-promotion/export gates therefore remain pending.
+
+Read-only checks passed: exact pinned baseline and report, normalized Hebrew
+with only the object addition (including retained final punctuation), English
+with only “light” added after removing markers, correct unique note anchors,
+unchanged original AI/revision history, and exact archived review values.
+Candidate SHA256:
+`34d14ddf897b5f1c5fb0b07f0012ae3428ed929bd9762f53cf39130e815de706`.
+The current verse schema rejects only the candidate's honest critical-draft
+edition label; the enum was not loosened to force acceptance. No actual export
+or canonical application was attempted. No fresh web, image, lexicon, code,
+test framework, or publication work. Stop here; the next enabling decision is
+the existing shared critical-source representation/application gap, not another
+Isaiah attestation search or review loop.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
