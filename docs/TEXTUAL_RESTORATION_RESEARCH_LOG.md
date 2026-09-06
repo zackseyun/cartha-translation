@@ -3271,6 +3271,66 @@ test framework, or publication work. Stop here; the next enabling decision is
 the existing shared critical-source representation/application gap, not another
 Isaiah attestation search or review loop.
 
+### 2026-09-06 — Shared Hebrew composition contract, not a promotion shortcut
+
+Previous turn: progress through the complete Isaiah candidate and independent
+English comparison. This continuation implements the base-plus-patch provenance
+portion of the critical-source integration gap. The production schema and
+application gap are **not closed** by this change.
+
+One [composition bundle](../sources/textual_restoration/applications/source_compositions.v1.json)
+now binds the existing Isaiah and Deuteronomy candidates to their exact canonical
+baseline bytes and evidence records. One
+[read-only verifier](../tools/textual_restoration/verify_source_composition.py)
+reconstructs both sources. The contract explicitly normalizes using Unicode NFD,
+removes combining marks and slash token separators, and retains consonants and
+punctuation. Patch offsets count Unicode code points in that normalized original
+base; ordered, nonoverlapping patches carry exact before/after text and evidence
+indices. No intermediate-string offset drift or unlisted source edit is allowed.
+This is a common representation for two existing cases, not another per-verse
+application executor. Candidates, old schemas and frozen receipts are unchanged.
+
+Pins establish which documents were consulted, not whether their claims are
+true. Matching the source proves composition only; it does not prove historical
+priority, legitimate rights, correct English, or independent editorial approval.
+The verifier accepts only unapproved Hebrew research candidates and cannot write
+canonical files or waive pending gates. It rejects composite-as-WLC labels and
+inherited current approval scores. Proposed readings remain proposed. Images
+cannot serve as the manifest's textual provenance records, but file type/hashing
+alone cannot establish that a textual document used legitimate evidence; that
+remains an editorial check. No generated image was used in this pass.
+
+Seven focused tests passed, including both real candidates, normalization,
+multi-patch coordinates, overlap/mismatch, missing evidence, pin drift, unsafe
+paths, symlinks, and repinned-but-unexplained candidate changes or approval flags.
+These checks do not replace the existing whole-record application requirements.
+
+The unchanged actual mobile exporter was also exercised across Isaiah with a
+single in-memory candidate overlay: candidate English and note bodies survive,
+and all other exported book content is unchanged. The full source object is
+absent from that payload; no deployed reader was inspected. Exporter SHA256:
+`4f77493c1818896d63f5df1e229225a3034559b059f8cd20038f4cd1df06b20c`.
+No exporter modification, bundle write, schema relaxation or canonical edit.
+
+Reproduce from the repository root:
+
+```bash
+.venv/bin/python tools/textual_restoration/verify_source_composition.py sources/textual_restoration/applications/source_compositions.v1.json
+.venv/bin/python -m unittest tests.test_source_composition
+```
+
+Independent `/root/source_composition_review` passed the bounded contract after
+running all seven tests and the CLI, with no substantive defects. Exact tool
+SHA256: `e35fbe38d0a0b33a6eb6ed7653ebb4f1a6e391f259093918cc69fa97291d4195`.
+The reviewer confirmed there is no canonical write path and did not claim
+production compatibility or evidence truth. System Python lacks PyYAML; the
+documented repository virtual environment works. No repeat review was needed.
+
+Stop after this shared validation step and its independent code review. The
+next integration must connect verified provenance and actual editorial review
+to the production source representation and reader disclosure; changing only
+an edition enum or treating this composition result as approval is insufficient.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
