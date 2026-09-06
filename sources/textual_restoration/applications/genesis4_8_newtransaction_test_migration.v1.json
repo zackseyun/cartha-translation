@@ -1,0 +1,30 @@
+{
+  "baseline_sha256": "74a9826a65bef6433dd7e795c2f6e1103e4d81d6831ac49a31e434438c93e50b",
+  "candidate_sha256": "acc1eea85b5051b5f2779cfc2b4a7ab9d6b49eef4feb4d9546879e71a371e4b0",
+  "edits": [
+    {
+      "from": "from tools.textual_restoration import jeremiah_note_transaction as note_package",
+      "to": "from tools import genesis_note_transaction as note_package"
+    },
+    {
+      "from": "        # transaction provenance. Both explicit overlays preserve the original",
+      "to": "        # transaction provenance. Three explicit overlays preserve the original"
+    },
+    {
+      "from": "            \"translation/ot/numbers/022/019.yaml\", \"translation/ot/jeremiah/010/010.yaml\"])\n        self.assertTrue(result[\"numbers_probe_under_jeremiah_baseline_view\"][\"historical_selection_reproduced\"])",
+      "to": "            \"translation/ot/numbers/022/019.yaml\", \"translation/ot/jeremiah/010/010.yaml\",\n            \"translation/ot/genesis/004/008.yaml\"])\n        self.assertTrue(result[\"jeremiah_probe_under_genesis_baseline_view\"][\"historical_selection_reproduced\"])\n        self.assertTrue(result[\"current_digest_computed_outside_all_overlays\"])"
+    },
+    {
+      "from": "        with note_package.historical_view():",
+      "to": "        with note_package.historical_view(), note_package.jeremiah.historical_view():"
+    },
+    {
+      "from": "                    raw = note_package.numbers.historical_bytes(ROOT / path)",
+      "to": "                    raw = note_package.numbers.historical_bytes(ROOT / path, current_reader=Path.read_bytes)"
+    }
+  ],
+  "schema_version": "1.0.0",
+  "scope": "Only current test entrypoint and explicitly composed Genesis/Jeremiah/Numbers historical replay. Frozen selectors, checkers, receipts, fixtures and candidate tests remain unchanged. Parent applies separately after independent transaction review.",
+  "status": "unapplied-exact-current-test-migration",
+  "target": "tests/test_unflagged_english_sample.py"
+}

@@ -4,6 +4,9 @@ import json
 import unittest
 import tempfile
 from pathlib import Path
+from unittest.mock import patch
+
+from tools import genesis_note_transaction as genesis_note
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -34,10 +37,9 @@ class OtWitnessRegistryTests(unittest.TestCase):
         self.selections = json.loads(MODULE.SELECTIONS.read_text())
         self.adjudication = json.loads(MODULE.ADJUDICATION.read_text())
 
-    def test_current_registry(self):
+    def test_current_registry_coverage_and_selections(self):
         self.assertEqual(MODULE.validate(self.data), [])
         self.assertEqual(MODULE.validate_coverage(self.coverage, self.data), [])
-        self.assertEqual(MODULE.validate_comparison(self.comparison), [])
         self.assertEqual(MODULE.validate_coverage(self.samuel_coverage, self.data), [])
         self.assertEqual(MODULE.validate_comparison(self.samuel_comparison), [])
         self.assertEqual(
@@ -46,6 +48,40 @@ class OtWitnessRegistryTests(unittest.TestCase):
         summary = MODULE.summarize(self.data)
         self.assertGreaterEqual(summary["registered_witnesses_or_families"], 10)
         self.assertGreater(summary["restoration_candidates"], 0)
+
+    def test_historical_pentateuch_comparison_with_named_genesis_baseline_view(self):
+        # This reproduces the old snapshot, not a current-corpus validation.
+        # Only the reviewed Genesis target is overlaid; provenance stays guarded.
+        current = genesis_note.TARGET.read_bytes()
+        with genesis_note.historical_view():
+            self.assertEqual(genesis_note.TARGET.read_bytes(), genesis_note.BASELINE.read_bytes())
+            self.assertEqual(MODULE.validate_comparison(self.comparison), [])
+        self.assertEqual(genesis_note.TARGET.read_bytes(), current)
+
+    def test_live_pentateuch_snapshot_reports_applied_genesis_note_drift(self):
+        self.assertEqual(genesis_note.TARGET.read_bytes(), genesis_note.CANDIDATE.read_bytes())
+        # The unmodified live validator/CLI must still report this stale snapshot.
+        self.assertEqual(MODULE.validate_comparison(self.comparison),
+                         ["GEN.4.8.speech: canonical baseline drift"])
+
+    def test_historical_comparison_rejects_unknown_genesis_canonical_bytes(self):
+        reader = Path.read_bytes
+        unknown = genesis_note.CANDIDATE.read_bytes() + b"\n"
+        with patch.object(Path, "read_bytes", lambda p: unknown if p == genesis_note.TARGET else reader(p)):
+            with self.assertRaisesRegex(ValueError, "unknown Genesis state"):
+                with genesis_note.historical_view():
+                    MODULE.validate_comparison(self.comparison)
+
+    def test_historical_comparison_does_not_hide_unrelated_canonical_drift(self):
+        case = next(c for c in self.comparison["cases"] if c["id"] == "EXO.30.6.mercy-seat-clause")
+        target = ROOT / case["baseline"]["repo_path"]
+        unknown = target.read_bytes() + b"\n"
+        with genesis_note.historical_view():
+            self.assertEqual(MODULE.validate_comparison(self.comparison), [])
+            reader = Path.read_bytes
+            with patch.object(Path, "read_bytes", lambda p: unknown if p == target else reader(p)):
+                self.assertEqual(MODULE.validate_comparison(self.comparison),
+                                 ["EXO.30.6.mercy-seat-clause: canonical baseline drift"])
 
     def test_psalms_case_and_coverage_validate(self):
         comparison = json.loads(MODULE.PSALMS_COMPARISON.read_text())
@@ -175,10 +211,16 @@ class OtWitnessRegistryTests(unittest.TestCase):
         data["cases"][0]["preferred_reading"] = "longer"
         self.assertTrue(any("cannot select" in e for e in MODULE.validate_comparison(data)))
 
-    def test_control_comparison_detects_baseline_drift(self):
+    def test_historical_control_comparison_detects_specific_mutated_baseline_hash(self):
         data = copy.deepcopy(self.comparison)
-        data["cases"][0]["baseline"]["sha256"] = "0" * 64
-        self.assertTrue(any("baseline drift" in e for e in MODULE.validate_comparison(data)))
+        case = next(c for c in data["cases"] if c["id"] == "GEN.4.8.speech")
+        with genesis_note.historical_view():
+            # Clean positive control prevents the known live GEN drift from
+            # making this deliberate hash-mutation test pass vacuously.
+            self.assertEqual(MODULE.validate_comparison(data), [])
+            case["baseline"]["sha256"] = "0" * 64
+            self.assertEqual(MODULE.validate_comparison(data),
+                             ["GEN.4.8.speech: canonical baseline drift"])
 
     def test_direct_transcription_requires_a_locator(self):
         data = copy.deepcopy(self.comparison)

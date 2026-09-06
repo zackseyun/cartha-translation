@@ -34,12 +34,31 @@ arguments; its identity supplies no additional manuscript evidence.
 
 The [whole-OT transcription screen](UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md)
 now checks all 39 books against a pinned UXLC release, separately measuring
-consonants, pointing, accents, punctuation and qere representation. Its five
-consonant leads are manageable source-image follow-ups; its thousands of mark-
+consonants, pointing, accents, punctuation and qere representation. It produced
+five consonant leads for source-image follow-up; its thousands of mark-
 level differences must not be sold as thousands of translation corrections.
 Two transcriptions of Leningrad are not two independent ancient witnesses.
 
-The next improvement is therefore **targeted source verification after broad
+All five leads now have actual full-folio and native-crop checks: the
+[Samuel/Ezekiel follow-up](SAMUEL_EZEKIEL_CODEX_IMAGE_FOLLOWUP_2026-09-06.md)
+and [three orthographic checks](UXLC_ORTHOGRAPHIC_IMAGE_FOLLOWUP_2026-09-06.md).
+Samuel 13:37's final character favors the published dalet; its preceding
+vav/yod remains separate and unresolved. Ezekiel 16:36 remains inconclusive
+between bet and kaf. The other three images fit the published spelling changes
+without establishing any new English wording. Samuel's current sole note,
+misanchored after Ammihur, explains David as mourner; it does **not** disclose
+the name's variant. That source/name question and note-anchor repair require
+their own review, not an automatic edit after an image match.
+
+Both packages received report-aware independent agent checks of actual images
+and exact crop reproduction ([Samuel/Ezekiel judgment](../sources/textual_restoration/discovery/samuel_ezekiel_image_review.v1.json),
+[orthographic judgment](../sources/textual_restoration/discovery/uxlc_orthographic_image_review.v1.json)).
+These are not blinded two-family outputs, fresh-reading acceptance, specialist
+sign-off or historical-priority decisions. Image availability and local identity
+have advanced; damage questions, apparatus work, new genuinely blinded controls,
+photograph redistribution rights and separate application gates remain open.
+
+The delivery priority remains **targeted source verification after broad
 screening**: check each consequential difference against the actual object,
 editorial history and discriminating independent witnesses before proposing
 source or English changes. Keep the source-stable English evaluation separate.
@@ -53,6 +72,19 @@ specialist's endorsement, model-independent calibration, or proof of textual
 priority. Record failures and repairs before the final judgment. Freeze research
 receipts once approved; later canonical changes need new, explicitly linked
 application/history records rather than rewriting prior evidence.
+
+The Genesis application also exposed a scaling issue: its broad regression
+found a historical-comparison consumer still expecting the old whole-record
+hash after a note-only update. The narrow repair preserves that snapshot and
+labels historical replay; it must not imply that the original validator now
+accepts the live corpus. Before bulk changes, replace growing chains of bespoke
+per-verse historical views with a separately reviewed, explicit immutable-corpus
+snapshot interface. Inventory every consumer of source, translation, note and
+review hashes, distinguish which component a judgment actually certifies, and
+test snapshot replay separately from current-corpus validation. This is a
+proposed architectural improvement, not an implemented migration or permission
+to weaken existing full-record pins. See the
+[actual failure and verification record](GENESIS_4_8_NOTE_VERIFICATION_2026-09-06.md).
 
 ### Current reassessment — 2026-09-05
 
@@ -199,6 +231,18 @@ continuous copies or the two files as independent witnesses. The
 [Genesis follow-up](GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md) likewise shows
 why a version's broad agreement should not erase its particular wording or the
 actual manuscript underlying an edition at that location.
+
+The Genesis source comparison and exact candidate review are distinct from the
+[guarded transaction implementation](GENESIS_4_8_NOTE_APPLICATION_2026-09-06.md),
+whose frozen document describes its unapplied implementation state. Actual
+local application is now recorded in a separate
+[verification checkpoint](GENESIS_4_8_NOTE_VERIFICATION_2026-09-06.md): only the
+reviewed note/connected metadata changed, with Hebrew, main English and anchor
+unchanged, and actual full-GEN export checked. Parent and
+[independent post-check](../sources/textual_restoration/applications/genesis4_8_newtransaction_postverification.v1.json)
+passed. The verification checkpoint carries detailed regression status; local
+application does not certify source-form priority, derivative synchronization
+or deployed publication.
 
 ### September 4 snapshot table
 

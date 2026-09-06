@@ -29,8 +29,34 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
   distinguishes the published surviving short-form junction in 4Q2 from its
   supplied surrounding speech clause, identifies Swete's actual Alexandrinus
   base here, and compares distinct Samaritan/Greek, Latin and Syriac invitations.
-  A tighter reader note is proposed, not applied; earlier-form priority remains
-  unresolved and the shorter source is provisionally retained.
+  That source-comparison record proposes a tighter note; it is not an application
+  receipt. The [guarded transaction document](GENESIS_4_8_NOTE_APPLICATION_2026-09-06.md)
+  preserves its unapplied implementation state. The later
+  [actual verification checkpoint](GENESIS_4_8_NOTE_VERIFICATION_2026-09-06.md)
+  records local application of the exact note/connected-metadata candidate and
+  actual full-GEN export, with Hebrew, main English and anchor unchanged.
+  Parent and [independent post-check](../sources/textual_restoration/applications/genesis4_8_newtransaction_postverification.v1.json)
+  passed; the verification checkpoint carries detailed regression status.
+  Earlier-form priority, derivative synchronization and deployed publication
+  remain unapproved. The shorter source is provisionally retained.
+
+- All five consonant leads from the pinned UXLC/WLC screen now have actual
+  Leningrad image checks, not merely publisher reports or image links. The
+  [Samuel/Ezekiel check](SAMUEL_EZEKIEL_CODEX_IMAGE_FOLLOWUP_2026-09-06.md)
+  favors a final dalet at 2 Samuel 13:37 while retaining the separate preceding
+  vav/yod ambiguity; Ezekiel 16:36 remains bet/kaf-inconclusive. The
+  [orthographic follow-up](UXLC_ORTHOGRAPHIC_IMAGE_FOLLOWUP_2026-09-06.md)
+  supports the two extra-yod spellings and Amos's defective spelling, with
+  Samuel 14:7 more damage-cautious. No English change follows from those three
+  spelling fits. The current 2 Samuel 13:37 note after Ammihur concerns the
+  implicit mourner David, not the name variant; its misplaced anchor is a
+  separate unapproved repair. Both image packages received
+  [report-aware](../sources/textual_restoration/discovery/samuel_ezekiel_image_review.v1.json)
+  [independent checks](../sources/textual_restoration/discovery/uxlc_orthographic_image_review.v1.json),
+  not blinded two-family acceptance or a manuscript census. Native crop/hash
+  checks certify derivatives, not textual priority. Fresh blinded work, relevant
+  apparatuses, unresolved letter questions and image-specific reuse rights
+  remain open; no canonical repair was approved by the image reviews.
 
 - The [Masoretic coverage spine](MASORETIC_CODEX_COVERAGE_SPINE_2026-09-06.md)
   now gives all 39 POB books an explicit Leningrad/Aleppo/Sassoon comparison
@@ -405,6 +431,13 @@ means the source has been adjudicated or the English approved.
 - [x] Check the 4Q52 and 1Q7 Samuel index leads against published transcriptions
   and identification constraints; record uncertain coverage and improve notes
   without promoting a source or main-text selection.
+- [x] Inspect actual full folios and native regions for all five UXLC/WLC
+  consonant leads, with page/neighbor identity and report-aware second reviews.
+  This closes targeted image availability, not blinded acceptance or priority.
+- [ ] Obtain genuinely blinded image outputs and reconcile them separately;
+  inspect relevant Masoretic apparatuses and resolve remaining Samuel/Ezekiel
+  marks before any proposed source/name/English application. Sample the much
+  larger pointing/qere queue without treating normalization as source change.
 - [ ] Reconcile the OT registry with sources already cited in comparisons;
   add missing critical-edition/version families without counting them as objects.
 - [ ] Create a catalogue-backed NT object/coverage ledger. No such completed

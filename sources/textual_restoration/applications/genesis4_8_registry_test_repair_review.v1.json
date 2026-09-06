@@ -1,0 +1,52 @@
+{
+  "schema_version": "1.0.0",
+  "review_date": "2026-09-06",
+  "reviewer": "independent agent /root/disclosure_registration_judge",
+  "decision": "APPROVE",
+  "scope": "Exact current registry-test repair separating historical Pentateuch comparison replay from the deliberately stale live-canonical snapshot check; not a change to frozen validator, source evidence or canonical text",
+  "before_test_sha256": "c44a17b6aad02e48d82068ad2f2bebc13764ddb62809064994bb30589c09b191",
+  "bindings": {
+    "tests/test_ot_witness_registry.py": "0b082a1c3d29fb9fecd4025f8beb76061f39f839252454c2c81591346dfe1891",
+    "tools/textual_restoration/validate_ot_witness_registry.py": "72ade3b5770d6b08ace8d579f8ee57468d9629029600aa5494d3b8c72952889e",
+    "sources/textual_restoration/comparisons/pentateuch_controls.v1.json": "4a7fa95ab768474773e93eb146a8589d9a2cc8f77530553049c23b8a59b5df6d",
+    "tools/genesis_note_transaction.py": "a0555416eaafa6e7d81b6400ffc974f785b5254c3830c89f81e876208e84b2fb",
+    "sources/textual_restoration/applications/genesis4_8_newtransaction_review.v1.json": "08f344ae021f6d86bde7b774682638e306c0256309e795efe90d8b9ead517af7",
+    "sources/textual_restoration/applications/genesis4_8_newtransaction_postverification.v1.json": "7194b56ed490a6ec741b993ea9b27770143308b767c09d087affaee30f1f6f85",
+    "translation/ot/genesis/004/008.yaml": "81e5cd475506a97c8acfd1bcbc353a7c6ffa2b5c27a942a7fff53d8b6865973f"
+  },
+  "failure_review": {
+    "parent_reported_full_regression": "442 tests in197.019s:441 passed,1 failed",
+    "independently_reproduced_original_single_test_failure": true,
+    "failure": "test_current_registry expected an empty error list, but the frozen Pentateuch comparison returned GEN.4.8.speech: canonical baseline drift",
+    "cause": "The comparison pins the complete preapplication YAML bytes. A valid note-only change still stales that historical canonical snapshot.",
+    "preapplication_dependency_inventory_was_exhaustive": false,
+    "earlier_bounded_approvals_retroactively_expanded": false
+  },
+  "independent_validation": {
+    "command": ".venv/bin/python -m unittest tests.test_ot_witness_registry -v",
+    "tests_run": 51,
+    "duration_seconds": 0.153,
+    "exit_code": 0,
+    "diff_insertions": 47,
+    "diff_deletions": 5,
+    "frozen_validator_and_comparison_unchanged_from_HEAD": true,
+    "whitespace_check": "PASS",
+    "direct_live_validator_command": ".venv/bin/python tools/textual_restoration/validate_ot_witness_registry.py",
+    "direct_live_validator_expected_exit_code": 1,
+    "direct_live_validator_output": "GEN.4.8.speech: canonical baseline drift"
+  },
+  "review_rationale": [
+    "Live registry, coverage, Samuel comparison and source-selection checks remain outside the Genesis historical overlay. The renamed test no longer mislabels historical Pentateuch validation as live validation.",
+    "A separately named historical test uses the already reviewed Genesis-only guarded baseline view, asserts the historical target bytes while inside it, and verifies restoration of actual current bytes afterward.",
+    "A separate direct live test requires exact current candidate bytes and the exact one-element stale-snapshot error list. It does not filter away the error or claim the current standalone validator succeeds.",
+    "The deliberately corrupted GEN baseline-hash test first requires a clean historical result and then the exact targeted error, preventing the already-stale live snapshot from making the negative test pass vacuously.",
+    "Unknown current Genesis bytes are rejected before historical replay, and an unrelated Exodus30:6 byte mutation remains visible under the Genesis-only overlay. These checks establish the repair is narrowly scoped.",
+    "The original integration gap is retained as a real newly discovered dependency. The 28 implementation tests and13 postapplication tests did not establish full repository compatibility; this separate review does not revise those frozen judgments."
+  ],
+  "mandatory_repairs": [],
+  "full_repository_rerun_completed_by_this_review": false,
+  "frozen_live_validator_passes": false,
+  "canonical_change_applied_by_reviewer": false,
+  "source_priority_approved": false,
+  "publication_approved": false
+}

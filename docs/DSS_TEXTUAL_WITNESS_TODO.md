@@ -25,10 +25,18 @@ limits and open gates. It is also the target for a possible later About link.
 - [x] Independently review the exact tighter Genesis4:8 disclosure candidate,
   connected metadata/archive scope and complete GEN export;
   [judgment](../sources/textual_restoration/applications/genesis_4_8_note_judgment.v1.json).
-- [ ] Implement and independently review the guarded Genesis4:8 application
-  transaction, preserving historical sampling/application receipts, then verify
-  actual application. Source-form priority and English-only smoothing remain
-  unapproved; canonical target is still unchanged.
+- [x] Implement and independently review the guarded Genesis4:8 transaction,
+  then apply the exact approved note/connected metadata and verify actual
+  full-GEN export; [actual checkpoint](GENESIS_4_8_NOTE_VERIFICATION_2026-09-06.md).
+  Hebrew, main English and anchor are unchanged. The
+  [implementation document](GENESIS_4_8_NOTE_APPLICATION_2026-09-06.md) remains
+  a frozen pre-application description, not a rewritten receipt.
+- [x] Complete parent and independent post-application checks;
+  [independent receipt](../sources/textual_restoration/applications/genesis4_8_newtransaction_postverification.v1.json).
+  Detailed regression status is recorded in the actual verification checkpoint.
+- [ ] Resolve source-form priority, whole-verse review, derivative-note
+  synchronization and deployed-reader publication as separate work; these are
+  not approved by the scoped note application or post-check.
 
 - [x] Add a three-codex, all-39-book Masoretic navigation spine with explicit
   Aleppo loss/surrogate categories, Sassoon coverage limits, local source-release
@@ -39,10 +47,24 @@ limits and open gates. It is also the target for a possible later About link.
 - [x] Acquire pinned UXLC2.5 and screen all39 ordinary book files against actual
   OSHB/WLC, joining all five consonant leads to POB and publisher change history;
   [report](UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md).
-- [ ] Check those five against actual LC images/apparatus, retaining the Ezekiel
-  bet/kaf uncertainty; sample pointing/qere classes for further triage. Keep
-  corrections, normalization, supplied vowels and earlier-text selection
-  separate; no automatic upgrade.
+- [x] Inspect actual full LC folios and native crops for all five consonant
+  leads, with exact image/neighbor identity and report-aware independent checks;
+  [Samuel/Ezekiel report](SAMUEL_EZEKIEL_CODEX_IMAGE_FOLLOWUP_2026-09-06.md),
+  [orthographic report](UXLC_ORTHOGRAPHIC_IMAGE_FOLLOWUP_2026-09-06.md).
+  Samuel13:37 favors final dalet, with preceding vav/yod unresolved; Ezekiel
+  bet/kaf remains inconclusive. The three spelling fits establish no new English.
+  [Review one](../sources/textual_restoration/discovery/samuel_ezekiel_image_review.v1.json)
+  and [review two](../sources/textual_restoration/discovery/uxlc_orthographic_image_review.v1.json)
+  are not blinded two-family acceptance, specialist review or source promotion.
+- [ ] Obtain stored genuinely blinded outputs and reconcile against the
+  contextual checks; consult relevant Masoretic apparatuses and alternative
+  photographic evidence for unresolved marks. Keep source labels, corrections,
+  pointing, spelling and earliest-text selection separate; no automatic upgrade.
+- [ ] Review Samuel13:37's source/name question and its separate note-anchor
+  defect: the sole current note explains David as mourner but is attached after
+  Ammihur, not a name-variant disclosure. No repair is approved by image review.
+- [ ] Sample pointing/qere classes for further triage and establish image-specific
+  redistribution permission before publishing any of the private photographs.
 
 - [x] Apply the bounded independently reviewed Jeremiah 10:10 literary-form
   disclosure with exact-byte ledgers, historical replay and actual full-book

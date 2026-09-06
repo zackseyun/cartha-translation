@@ -2382,6 +2382,160 @@ tests. The backlog now distinguishes completed bounded comparisons from open
 image/apparatus/application work. No canonical files or frozen earlier research
 artifacts changed. About-page integration and deployment remain unperformed.
 
+## 2026-09-06 — Actual Leningrad photographs and guarded Genesis application
+
+The previous turn was verified progress, committed/pushed as
+`17ff36ca71255b6bdab11dce91bbadac295c101c`; the remote tip matched and the
+worktree was clean. This pass pursues actual evidence behind the five written-
+consonant leads rather than treating the edition screen as final adjudication.
+
+All five mapped full-color folios were legitimately accessible. The
+[three orthographic checks](UXLC_ORTHOGRAPHIC_IMAGE_FOLLOWUP_2026-09-06.md)
+cover 2Samuel14:7, 2Chronicles27:4 and Amos7:2; the
+[Samuel/Ezekiel check](SAMUEL_EZEKIEL_CODEX_IMAGE_FOLLOWUP_2026-09-06.md)
+covers 2Samuel13:37 and Ezekiel16:36. Sefaria's actual documented manuscript API
+provides page IDs, verse intervals, exact full-image URLs and photographer/
+institutional attribution. The source metadata's USC link currently serves a
+DSS page; the actual Biblical Manuscripts page and date/campaign distinctions
+are recorded without silently converting API1008 versus USC1010 into new
+objects or exact JPEG capture dates. Photo redistribution clearance is absent,
+so the raw photographs, native crops and downloaded metadata remain private.
+No generic biblical-text license is asserted over the photographs.
+
+Whole-page displays established context and were explicitly downsampled by the
+viewer. Native-resolution, lossless rectangular crops then supplied local
+letter observations. The orthographic author verified21 hashes, three image
+dimensions/byte lengths, three API mappings and six exact crop rectangles.
+The parent verified16 hashes, two image dimensions/byte lengths, two API
+mappings and seven exact rectangles. No resizing, enhancement, threshold,
+spectral reconstruction or ImageGen was used on the letter crops. All bounds
+and hashes are retained. The image selector's unsuccessful Go action, guessed
+URL failure and web-reader failures remain documented; no popup/security
+setting or access restriction was bypassed.
+
+The three orthographic crops favor the publisher's extra-yod/defective-spelling
+observations, with Samuel's pale trace less decisive. Samuel13:37's final letter
+locally favors dalet against nearby controls, but its preceding vav/yod remains
+separate and unresolved. Ezekiel16:36 remains an abstention between bet and kaf;
+its irregular contour and conflicting c/t metadata do not permit certainty.
+These are known-reading, context-informed inspections and report-aware second
+checks, not a blinded two-family transcription experiment, calibrated acceptance
+or historical-priority decision. The held image questions are not made to pass
+by a model vote. No Hebrew or English source-selection patch follows here.
+
+Reading the actual Samuel13:37 YAML also clarified a reader-facing defect:
+the marker after Ammihur points to a note about David as the implicit subject
+of mourning, not a name-variant disclosure. The name/source question and note
+anchor therefore need a separately scoped proposal; the old note cannot count
+as already disclosing the ketiv/qere. Ezekiel's separate bronze/wealth revision
+history was read but is not reapproved by this one-letter check.
+
+The Genesis agent prepared a [guarded implementation](GENESIS_4_8_NOTE_APPLICATION_2026-09-06.md)
+for the already approved exact note candidate. It has no canonical writer:
+exclusive intent and completion ledgers surround a separate parent apply_patch.
+It composes an explicit third historical overlay around the frozen Jeremiah
+and Numbers replay helpers, measures the actual corpus digest outside every
+overlay, rechecks exact review/input/ledger bytes, and verifies full current
+GEN export separately from the historical candidate preflight. The exact
+current-test migration also passes the active Path reader explicitly, so
+outer overlays are not bypassed by an import-time default. No frozen checker,
+candidate, receipt or policy is rewritten.
+
+The parent raised a possible lifecycle concern about the nine frozen Genesis
+candidate tests. Actual file inspection, prompted by the judge, disproved it:
+they read frozen baseline/candidate records and test scope only, not live
+canonical preflight. They remain in the complete suite unchanged. Only the old
+checker's CLI/run is baseline-specific and needs the explicit historical view.
+No invented failure or test exclusion was introduced. Parent execution of all
+28 new transaction tests passed before application; those tests include actual
+full GEN exports and historical replay using simulated candidate reads.
+
+Seventeen derivative/simplified Genesis4:8 records are pinned unchanged, not
+synchronized or certified. Existing simplified English supplies an invitation;
+a German record retains older note wording. These predate the new candidate.
+An unchanged Hebrew source hash cannot demonstrate note freshness, and English
+GEN validation is not multilingual validation. This scope limit is explicit in
+the implementation and review rather than hidden by a coverage-test pass.
+
+### Actual Genesis application and image-review decisions
+
+The independent judge approved the exact Genesis executor package, then the
+parent prepared an exclusive intent at 09:08:26 UTC, applied the frozen YAML
+candidate and exact five-replacement current-test migration with apply_patch,
+and completed the application at 09:09:37 UTC. The resulting target and test
+hashes match their approved candidates. The
+[actual verification record](GENESIS_4_8_NOTE_VERIFICATION_2026-09-06.md)
+separates this applied state from the preserved implementation draft.
+No Hebrew, main English or note-anchor change was made. The old review values
+are archived and the current verse remains draft/needs_review rather than
+inheriting historical agreement scores as approval of new note bytes.
+
+The completion receipt and fresh parent post-check both verify the actual
+50-chapter/1,533-verse Genesis export against the frozen candidate export
+`908ddbcef18f990ba77df4622e82d595c027301646fee572b2ceca51789cfca3`.
+Only the target note differs in that book export. The actual OT corpus digest,
+outside all historical overlays, is
+`89d6910840ac91c621fe2c929edd8add3eebb17e2229831a7a12ca253c936ec0`.
+The original sample and its 101 context files are reproduced only under the
+three explicitly named baseline views; this does not certify an unchanged
+current corpus. Publication, derivative synchronization and historical source
+priority remain unapproved.
+
+Both image reports passed independent faithfulness/reproducibility review:
+[orthographic review](../sources/textual_restoration/discovery/uxlc_orthographic_image_review.v1.json)
+and [Samuel/Ezekiel review](../sources/textual_restoration/discovery/samuel_ezekiel_image_review.v1.json).
+The reviewer inspected actual full-page context and native crops but already
+knew the reported alternatives. These are report-aware second checks, not
+blinded two-family transcription acceptance. The Samuel dalet fit is qualified,
+the three orthographic fits do not supply new English, and Ezekiel remains
+inconclusive. No canonical source-selection patch follows from these reviews.
+
+Fresh [independent Genesis post-verification](../sources/textual_restoration/applications/genesis4_8_newtransaction_postverification.v1.json)
+also passed, reproducing the exact completion result and checking the actual
+source/main/anchor invariance, old-review archival, 22 prior package pins,
+17 derivative pins and exact five test edits. Its 13 post-application tests
+passed without removing the nine frozen candidate tests. The previous
+implementation-stage review remains a separate artifact, not a retrospective
+claim that it had already inspected the applied state.
+
+The first full post-application regression exposed an additional integration
+gap: 442 tests ran in 197.019 s, with 441 passing and one failing. The current
+registry test passed a frozen Pentateuch comparison directly to its original
+validator, which correctly reported `GEN.4.8.speech: canonical baseline drift`.
+The 28-test executor review and 13-test post-check had not exercised this
+consumer. The parent sent this real failure to the implementer and independent
+judge for a separate current-test repair, preserving the frozen comparison,
+validator and completed transaction. A historical view must be explicitly
+labeled, direct current snapshot staleness must remain detectable, and the
+baseline-drift negative test must not pass merely because of an unrelated
+already-known mismatch. All 39 numerical tests passed separately. There is no
+all-pass claim at this stage and no forced scientific conclusion from testing.
+
+The separate [registry-test repair review](../sources/textual_restoration/applications/genesis4_8_registry_test_repair_review.v1.json)
+then approved only the current test-file diff. It adds four tests and makes the
+corrupted-hash negative clean-first and specific. All 51 registry tests passed
+for both implementer and judge; the judge independently reproduced the original
+failure and confirmed that the unchanged standalone live validator still exits
+1 with the exact Genesis baseline mismatch. Current registry/coverage/selection
+checks and historical comparison checks are now explicitly separated. The
+parent started a complete rerun of the selected research regression suite;
+the later result must be recorded separately, not inferred from targeted passes.
+The approach review now proposes an immutable-corpus snapshot interface and
+component-specific dependency audit before bulk changes; no such broader
+architecture was implemented in this repair.
+
+The complete selected research rerun then passed: 446 tests in 186.482 s,
+plus 39 numerical tests in 0.053 s, for 485 distinct tests. The
+[regression receipt](../sources/textual_restoration/applications/genesis4_8_integration_regression.v1.json)
+records exact module lists, runtimes, before/after outcomes and bindings.
+Overlapping targeted runs are not counted again, and this is not a claim that
+every repository test was run. Passing negative fixtures emitted simulated
+refresh/push failures; those are distinguished from the genuine registry
+failure. Parent final package/transaction validation and 13 new review-map
+bindings passed. Only Genesis4:8 changed under translation in this checkpoint;
+the two image packages changed no canonical source or English. Final reporting
+review and Git publication are separate from textual/publication approval.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

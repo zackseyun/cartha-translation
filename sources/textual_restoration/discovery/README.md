@@ -263,9 +263,18 @@ of the sibling nonbiblical QDR file. See the
 conflicts, duplicate collection labels and non-Qumran/provenance holds.
 
 The [Genesis4:8 comparison](genesis4_8_comparison.v1.json) records the precise
-4Q2 junction and versional wording behind an unapplied disclosure proposal;
+4Q2 junction and versional wording behind its then-unapplied disclosure proposal;
 [report](../../../docs/GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md). It does not
 promote an earlier source form or count editions as independent witnesses.
+The [transaction implementation](../../../docs/GENESIS_4_8_NOTE_APPLICATION_2026-09-06.md)
+is a separate frozen pre-application document. The later
+[actual verification checkpoint](../../../docs/GENESIS_4_8_NOTE_VERIFICATION_2026-09-06.md)
+records the exact local note/connected-metadata application and full-GEN export,
+with Hebrew, main English and anchor unchanged. Parent and
+[independent post-check](../applications/genesis4_8_newtransaction_postverification.v1.json)
+passed; the verification checkpoint carries detailed regression status. Neither
+the old discovery receipt nor this local application certifies earlier-form
+priority, synchronized derivative notes or deployed-reader publication.
 
 The [Masoretic observations](masoretic_codex_sources.v1.json) and
 [all-book spine](masoretic_codex_spine.v1.json) attach institutional Leningrad,
@@ -359,6 +368,29 @@ the aggregate discovery indexes. See the
 [report](../../../docs/UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md) for layered counts,
 acquisition, failed attempts and limits. Same-codex edition screening is not
 new manuscript evidence or approval of any canonical change.
+
+## Five Leningrad image leads inspected, 2026-09-06
+
+`samuel_ezekiel_image_followup.v1.json` and
+`uxlc_orthographic_image_followup.v1.json` now bind actual full-color folios,
+native crops, API page identities, neighboring text and published change
+histories for all five consonant leads. See the
+[Samuel/Ezekiel report](../../../docs/SAMUEL_EZEKIEL_CODEX_IMAGE_FOLLOWUP_2026-09-06.md)
+and [orthographic report](../../../docs/UXLC_ORTHOGRAPHIC_IMAGE_FOLLOWUP_2026-09-06.md).
+Samuel13:37's final letter favors dalet, but the preceding vav/yod is unresolved
+and no full-word blind transcription is accepted. Ezekiel16:36 remains
+inconclusive between bet and kaf. The two extra-yod and one defective-spelling
+fits establish no new English wording. Samuel's sole current note is about
+David as mourner, misleadingly placed after Ammihur; it is not name disclosure.
+
+`samuel_ezekiel_image_review.v1.json` and
+`uxlc_orthographic_image_review.v1.json` preserve report-aware independent
+checks of the actual images and exact pixel rectangles. Neither is a blinded
+two-family experiment, human/specialist endorsement or application approval.
+Raw images/crops remain private pending image-specific redistribution clearance.
+Genuinely blinded work, apparatus consultation and explicit source/name/note
+application decisions remain separate gates. These five image checks do not
+complete the NT ledger, broader OT/NT catalogue census, or pointing/qere queue.
 
 ## Psalm 91 in 11Q11, 2026-09-06
 
