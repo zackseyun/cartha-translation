@@ -3025,6 +3025,27 @@ version support were not verified; no such claims were adopted. Corrected stale
 priority-document references to the now-completed Samuel application. The
 unrelated B7.14 draft remains untouched.
 
+### 2026-09-06 — Proverbs 8:16 source variant, not an English synonym
+
+Added the [Proverbs comparison](PROVERBS_8_16_SOURCE_COMPARISON_2026-09-06.md)
+and linked it from the existing casebook. Read the published critical apparatus
+and its competing NET argument; the PDF skill prompted visual verification of
+the decisive printed pages. Checked local Hebrew context and parallel phrases,
+and the existing pinned Greek surface text. The earth alternative is reported
+within Hebrew transmission; it is not merely another translation of justice.
+POB's lexical note does not disclose that difference. Proposed a source-variant
+note, while retaining source/main English because assimilation and thematic
+arguments do not conclusively establish direction. No fresh restoration claim.
+
+The independent reviewer verified current Proverbs YAML/XML, NET, pinned Greek
+and rendered Fox pp. 154–155, returning PASS for the report, not application.
+Ancillary sigla/policy pages, local parallels and edition-status checks are parent
+checks, not independently repeated review. Exact inputs, retrieval failures,
+unconsulted witnesses and reopening conditions are in the case record. Target
+and Hebrew hashes, final-word/no-qere assertions, local links and diff checks
+passed. No canonical edit, new transaction code, corpus-wide tests, external
+corpus vendoring or generated reconstruction image. Preserved the B7.14 draft.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

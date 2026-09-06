@@ -35,6 +35,13 @@ Three Hebrew cases have the earlier [provisional adjudication](HEBREW_PILOT_ADJU
 | [Amos 9:12](../translation/ot/amos/009/012.yaml) — Edom / humanity and verbs; quotation in Acts 15 | versional-comparison | 1 | not applicable | MT; Old Greek; Acts quotation is reception, not another Hebrew manuscript |
 | [Habakkuk 1:12](../translation/ot/habakkuk/001/012.yaml) — We shall not die / proposed divine-subject wording | conjecture-control | 1 | not applicable | MT; versions; scribal-correction traditions distinguished from extant variants |
 
+The [Proverbs 8:16 comparison](PROVERBS_8_16_SOURCE_COMPARISON_2026-09-06.md)
+now distinguishes the Hebrew justice/earth variant from POB's existing lexical
+note. It proposes disclosure while retaining source and main English pending
+further adjudication; published apparatus reports are not fresh manuscript
+transcriptions. The table's source-note signal describes the existing POB note,
+not the new research proposal.
+
 ## Greek New Testament
 
 | Passage / issue | Evidence question | Existing POB source-note signals | Edition entries at anchor | Sources to collate |
