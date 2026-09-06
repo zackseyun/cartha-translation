@@ -2962,6 +2962,46 @@ tested consumer migration, not Samuel application, source-selection approval or
 publication. Existing receipts/executors remain unchanged; no source research,
 ImageGen, new per-verse overlay or canonical edit was added.
 
+### 2026-09-06 — Apply the reviewed Samuel name disclosure
+
+After the maintainer's renewed efficiency check, closed the existing application
+rather than starting another research or infrastructure task. The exact reviewed
+candidate is now in `translation/ot/2_samuel/013/037.yaml`: an 84-word name-variant
+note and the unchanged mourning explanation anchored at “he mourned.” Hebrew,
+marker-free English, lexical decisions and the original AI draft are unchanged.
+Old review flags are archived, not reused to certify the edited verse.
+
+The [scoped transaction review](../sources/textual_restoration/applications/samuel13_37_transaction_review.v1.json)
+approved the exact implementation before application; no new research judgment
+or repeated independent review was requested in this pass. The existing prepared
+intent was verified, the exact candidate applied, and `confirm` followed by the
+read-only `check` succeeded. The [application record](../sources/textual_restoration/applications/samuel13_37_application.v1.json)
+records the live scoped state. The embedded `note_proposal` block is historical
+preparation metadata as specified in the reviewed
+[contract](SAMUEL_13_37_NOTE_APPLICATION_2026-09-06.md), not current status.
+
+Actual post-application OT digest:
+`ebc5a784b4f4dc8773c6818297fb2d5e531329a685ab016171c6ee6f2df496c4`.
+Actual complete 2SA export (24 chapters, 695 verses):
+`a434d6e5d515c8d1fd5135c07dd6d8e56ae12036d641d70a077895e5fc102289`.
+The current 83-file prior-note integrity check passed. A single real-checkout
+integration batch passed 121 parent tests in 245.309 seconds: Genesis transaction,
+unflagged sample, witness registry, Genesis candidate, Numbers application,
+Jeremiah transaction, historical replay, sample replay, live integrity and Samuel
+transaction suites. The historical wrappers also executed 37 original tests in
+their immutable snapshot; these do not validate the current corpus. Current
+export/integrity checks ran separately from those historical snapshots. Internal
+Samuel tests simulate both allowed states; the actual post-application `check`
+provided the live-state evidence. Diff whitespace checks passed.
+
+Fifteen derivative contexts remain pinned but unsynchronized; no deployment,
+source-priority decision, whole-verse reapproval or new manuscript reading.
+Preserved the unrelated untracked B7.14 discovery draft. Updated the approach
+review's current application status and reiterated that bespoke per-verse
+transaction machinery is not the default. The broader OT/NT inventory,
+comparison and confidence-calibration work remains incomplete; the next research
+pass should address discriminating evidence, not add another framework.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

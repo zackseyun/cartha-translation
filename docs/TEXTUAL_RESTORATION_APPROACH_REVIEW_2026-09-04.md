@@ -63,28 +63,34 @@ For subsequent work:
 
 Report substantive decisions and remaining evidence, not file counts or test
 counts as proxies for translation quality. ImageGen remains display-only.
-The next application target is the already reviewed Samuel disclosure; evaluate
-a bounded integration solution before authorizing another general framework.
+The already reviewed Samuel disclosure is now applied as described below.
+Do not treat its bespoke transaction machinery as the default for every verse;
+subsequent work should reuse checks and prioritize discriminating source evidence.
 
-### Application architecture remains a delivery constraint — 2026-09-06
+### Samuel disclosure applied; architecture must not dominate research — 2026-09-06
 
 Later operational update: the [historical-test migration](HISTORICAL_TEST_MIGRATION_2026-09-06.md)
 now runs the old receipt-bound checks unchanged in a fixed Git snapshot while
 retaining separate current registry, completed-note integrity and GEN export
-checks. The exact Samuel candidate passed simulated current-consumer integration
-and its full-book export comparison. This resolves the identified current-test
-coupling, not the whole application: no Samuel executor, application ledger or
-canonical edit has been completed. Frozen readiness/review records remain
-historical rather than being rewritten to describe this later work.
+checks. The exact Samuel candidate is now applied under the independently
+reviewed [application contract](SAMUEL_13_37_NOTE_APPLICATION_2026-09-06.md).
+Confirmation and a subsequent read-only check verified the actual changed OT
+corpus, complete 695-verse 2SA export and prior completed-note integrity.
+The [application record](../sources/textual_restoration/applications/samuel13_37_application.v1.json)
+records this scoped result; the candidate's old `note_proposal` block remains
+historical preparation metadata. Source and marker-free English are unchanged.
+This is not whole-verse reapproval, derivative synchronization or deployment.
+Integration results are recorded in the research log. Frozen readiness/review
+records remain historical rather than being rewritten to describe later work.
 
 The [Samuel readiness check](SAMUEL_13_37_NOTE_APPLICATION_READINESS_2026-09-06.md)
-documents why adding another historical overlay is not yet a safe application
+documents why adding another historical overlay was not a safe application
 plan: the prior Genesis guard pins a current test consumer as well as the
 canonical state. Its candidate lifecycle labels also need an explicit
-historical/current-state distinction. No Samuel executor or application was
-completed. Prefer an explicit immutable historical corpus interface, or a
-narrowly reviewed adapter with full dependent integration, before scaling
-applications. Do not trade faithful replay for green tests or confuse a
+historical/current-state distinction. These were delivery constraints at that
+checkpoint, addressed by the migration and scoped application above. Reuse the
+historical/current distinction rather than multiplying per-verse frameworks.
+Do not trade faithful replay for green tests or confuse a
 candidate's old full-book export with verification of a live change.
 
 ### Local abbreviation and manuscript relationships — 2026-09-06
@@ -122,8 +128,9 @@ source. Multiple exposures of the same fragment remain one object.
 
 The [Samuel disclosure candidate](SAMUEL_13_37_DISCLOSURE_CANDIDATE_2026-09-06.md)
 has now passed exact-candidate review and a complete book-export comparison.
-It remains unapplied. The next application must audit historical and current
-consumers without rewriting frozen evidence. This advances an actual reader
+It was subsequently applied with historical and current consumers checked
+separately, without rewriting frozen evidence (see application update above).
+This advances an actual reader
 improvement while retaining the unresolved source/name decision; the earlier
 research-only reports and unapproved candidate snapshot remain historical.
 
@@ -138,7 +145,8 @@ and Syriac d-ending forms, Vulgate r-ending Amiur, and a distinct Old Latin
 Amiot reported in the Cambridge apparatus. This does not establish earliest
 priority. It strengthens the case for a precise disclosure candidate, while
 keeping the current source/name and the unrelated mourning-note anchor as
-separate decisions. No Samuel change has been applied.
+separate decisions. The later application changes disclosure and its note anchor
+only; it does not select a different Hebrew name or main-English rendering.
 
 The methodological improvement is **unit-level, source-specific adjudication**:
 identify a codex's written text, its reading tradition, the edition's editorial
