@@ -371,6 +371,11 @@ new manuscript evidence or approval of any canonical change.
 
 ## Samuel13:37 and Leviticus identity follow-ups, 2026-09-06
 
+The subsequent exact Samuel note/anchor candidate lives separately under
+`applications/samuel13_37_disclosure_candidate.v1.json`, with its candidate-only
+review. See the [candidate report](../../../docs/SAMUEL_13_37_DISCLOSURE_CANDIDATE_2026-09-06.md).
+It has not been applied and does not promote a new source or English name.
+
 `samuel13_37_hebrew_controls.v1.json` and
 `samuel13_37_version_controls.v1.json` record actual Aleppo image observations,
 same-codex ketiv/qere controls, QDR's wholly supplied patronymic, and differing
@@ -419,3 +424,19 @@ bracket-sensitive private QDR follow-up and inspected Swete Greek pages.
 See the [report](../../../docs/PSALM_91_11Q11_COMPARISON_2026-09-06.md).
 The damaged verse9 speech verb is not fully preserved; later lines outside
 the published preview remain explicitly provisional. No canonical change.
+
+## Genizah and 4Q122 image pilots, 2026-09-06
+
+`genizah_biblical_catalogue_pilot.v1.json` records all40 ordered Cambridge
+search hits, two full TEI/IIIF records, actual images and digital/physical
+locator conflicts. See [report](../../../docs/GENIZAH_BIBLICAL_CATALOGUE_PILOT_2026-09-06.md).
+Its exact source/coverage judgment is `genizah_biblical_catalogue_pilot_review.v1.json`.
+The sample is not representative or a census; quotations and shorthand remain
+separate evidence lanes, not false full-word witnesses.
+
+`4q122_deut11_image_followup.v1.json` records actual IAA color/IR images,
+their received resolution, a matching scholarly thumbnail and a qualified
+published-word fit. See [report](../../../docs/4Q122_DEUT11_IMAGE_FOLLOWUP_2026-09-06.md).
+Its exact bounded image/source judgment is `4q122_deut11_image_review.v1.json`.
+No fresh accepted transcription, full-verse reconstruction, recovered divine
+name, physical-count increase or source/English change follows.

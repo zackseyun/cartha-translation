@@ -19,6 +19,21 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
 
 ## What exists locally
 
+- The [Genizah pilot](GENIZAH_BIBLICAL_CATALOGUE_PILOT_2026-09-06.md)
+  screens 40 first-page Cambridge hits across Genesis and Psalms, with two
+  full institutional records and actual contextual images. Most sampled hits
+  are shorthand/commentary rather than continuous full-word Bible copies.
+  Digital canvas labels, catalogue folios, bifolia and structured column counts
+  need explicit reconciliation. This convenience sample is not representative
+  and its approximate search totals cannot be summed into a manuscript census.
+- The [4Q122 follow-up](4Q122_DEUT11_IMAGE_FOLLOWUP_2026-09-06.md)
+  now inspects actual color/infrared images and a scholarly thumbnail of the
+  same apparent fragment. A damaged, context-informed fit with the published
+  Greek red-word does not recover Hebrew wording, geography, a divine-name
+  slot, or the entire aligned verse. Actual images are 1200 pixels square,
+  not the advertised 3296-pixel pyramid. DJD numbering/apparatus remain open.
+  A separate misplaced POB sea-note anchor is identified but not changed.
+
 - The [2 Samuel13:37 Hebrew controls](SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md)
   add an actually inspected Aleppo manuscript photograph: written resh-ending
   name and a different marginal reading, with contextual rather than blinded

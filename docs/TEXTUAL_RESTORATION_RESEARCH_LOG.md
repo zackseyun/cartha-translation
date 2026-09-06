@@ -2624,6 +2624,99 @@ is claimed. A Git diff against HEAD confirmed no changes under translation,
 tools, tests or sources/ot. Final review bindings and Git publication remain
 separate from these checks and from any future source/translation decision.
 
+### 2026-09-06 — Reviewed Samuel candidate, Genizah pilot and actual4Q122 images
+
+The previous goal turn made progress: `b7ad6bd106b88ba90b6ecd9a1d3a82573cf7774e`
+committed and pushed the reviewed Samuel/Leviticus research. This pass began
+with a clean main at that commit. The full restoration/source-comparison goal
+remains active; this is not a completion or blocker declaration.
+
+Parallel researchers prepared an exact Samuel disclosure candidate and a
+bounded Cambridge Genizah pilot while the parent followed an existing Greek
+fragment target into actual images. The independent judge reviewed the
+candidate and source packages against their actual evidence. No new model
+identity or agreeing contextual review is treated as an ancient witness.
+
+The [Samuel candidate](SAMUEL_13_37_DISCLOSURE_CANDIDATE_2026-09-06.md)
+adds a name-variation note at Ammihur and moves the existing mourning note,
+unchanged in body/reason, to “he mourned.” Conventional a/b order replaces an
+initial design that would have kept the old note's letter but confused reading
+order. Before/after records preserve that identity change explicitly. All
+source bytes and marker-free English remain unchanged. Old review/status
+values are archived without inventing their original input bindings; candidate
+status is draft/needs_review. The old ai_draft and lexical blocks are preserved.
+The record embeds exact original and proposed YAML, seven declared path changes,
+input hashes,15 derivative contexts and full-book export results.
+
+The [independent candidate judgment](../sources/textual_restoration/applications/samuel13_37_disclosure_candidate_review.v1.json)
+approves only the exact6146-byte candidate, SHA256
+`63d80b610ed4c20bc4da1b4716447727cdda57a70c1a75bd8545fc7b90c8ada1`.
+Both author and judge exported the full24-chapter/695-verse book with one
+in-memory overlay and checked every other exported row and the695-file input
+manifest. Four negative mutations were rejected. Existing baseline schema
+failure for `status: revised` was disclosed; candidate validation passes.
+The exporter omits source metadata by design, so source equality was verified
+separately. No executor or canonical write occurred. Exact application guards,
+historical snapshot dependencies, derivative freshness and publication remain
+separate gates; no earliest-name choice is made.
+
+The [Genizah pilot](GENIZAH_BIBLICAL_CATALOGUE_PILOT_2026-09-06.md)
+screens every description on the first Cambridge Genesis and Psalms search
+pages:40 distinct shelfmarks. Approximate totals529/738 are overlapping keyword
+universes, not an independently verified manuscript denominator. Only three
+sampled descriptions qualify as fuller-text targets; the other37 remain
+usable for the quotations, abbreviations, commentary or liturgy they actually
+preserve. Two complete records, TEIs/manifests and contextual images were
+examined. T-S B6.24 canvas1r bears handwritten2a and Genesis17:24–26 context,
+supporting a local catalogue-folio2 alignment. T-S A43.8's last canvas has
+nonadjacent Psalm contexts, not a verified Psalm145/nun-line locator.
+Structured/prose column-count conflicts, bilingual Hebrew/Aramaic lanes,
+server-limited whole images, native regional requests and image/metadata rights
+are explicit. No representative sample, global census or new textual priority.
+The [Genizah review](../sources/textual_restoration/discovery/genizah_biblical_catalogue_pilot_review.v1.json)
+passes these bounded claims after actual queries, records and image checks.
+
+The [4Q122 follow-up](4Q122_DEUT11_IMAGE_FOLLOWUP_2026-09-06.md)
+acquires IAA full-spectrum/infrared images of plate265 fragment24 and the
+scholarly Kraft thumbnail. They fit the same apparent physical fragment.
+Received images are1200×1200, not the3296×3296 advertised tile pyramid.
+The damaged middle line fits published Greek ERUQRAS contextually; locally
+broken strokes, fragile identification, uncertain dating and missing full
+DJD/associated-fragment controls remain explicit. No accepted new diplomatic
+transcription or restored divine-name slot. Greek “red” does not prove a
+Hebrew word for red, crossing geography, or the preferred English rendering.
+Current DEU11:4's Sea-of-Reeds note is wrongly anchored after Egypt; that is
+an identified but unapplied note-placement candidate, separate from lexical
+adjudication. Old review scores cannot approve its future repair.
+The [4Q122 review](../sources/textual_restoration/discovery/4q122_deut11_image_review.v1.json)
+passes the exact source/image report and record, including11 private-asset
+hashes and actual dimensions. It accepts no new transcription or text selection.
+
+The parent browser was unavailable because the Mac was locked; ordinary
+public-source HTTPS retrieval remained usable. Tov's author-PDF route failed
+TLS hostname verification, which was not disabled. Failed web routes did not
+become absence claims. An accessible BIOSCS PDF's opening page was visually
+checked as an edition-search lead, not misreported as the4Q122 edition.
+Manuscript images remain private; no generated or enhanced letters were used.
+The PDF skill required visual inspection rather than trusting extracted text.
+
+Fresh focused regression passed79 tests in0.387s: QDR discovery, UXLC/WLC
+comparison and OT witness-registry modules. This is not a whole-repository
+test result or another application/export receipt. The candidate's export and
+negative checks are separately recorded; overlapping judge checks do not add
+new distinct cases. Source/candidate reviews, final reporting checks and Git
+publication are separate from scientific/source-selection approval.
+
+Parent final checks also passed:21 private asset hashes/byte counts, nine
+received image dimensions (including the PDF search-lead render),338 local
+Markdown target occurrences across eight documents, two embedded YAML
+hashes/byte counts,21 candidate input pins,15 derivative pins and the current
+695-file Samuel manifest. Parent separately confirmed exact live baseline,
+source/ai_draft/lexical equality, marker-free English equality and exact a/b
+markers with the preserved old note body/reason. Link existence is not external
+URL or heading-anchor validation; file dimensions do not certify manuscript
+legibility. These are scoped checks, not new independent textual votes.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

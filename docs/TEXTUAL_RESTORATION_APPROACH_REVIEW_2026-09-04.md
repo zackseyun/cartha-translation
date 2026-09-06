@@ -30,6 +30,29 @@ arguments; its identity supplies no additional manuscript evidence.
 
 ## What the work actually establishes
 
+### Coverage and application refinement — 2026-09-06
+
+The [Genizah pilot](GENIZAH_BIBLICAL_CATALOGUE_PILOT_2026-09-06.md)
+extends actual catalogue and image work beyond DSS. It demonstrates why
+book-keyword hits and digital page labels cannot be imported as a surviving-
+verse inventory: shorthand, commentary, bilingual text, discontiguous leaves
+and differing physical/digital order must be mapped explicitly. Preserve these
+materials as evidence for their own contents; do not discard them merely
+because they are not continuous full-word copies.
+
+The [4Q122 image check](4Q122_DEUT11_IMAGE_FOLLOWUP_2026-09-06.md)
+adds another resolution safeguard: advertised image dimensions and the size
+actually received are separate fields. A visible fit with a published damaged
+Greek word does not establish an entire verse or a uniquely recoverable Hebrew
+source. Multiple exposures of the same fragment remain one object.
+
+The [Samuel disclosure candidate](SAMUEL_13_37_DISCLOSURE_CANDIDATE_2026-09-06.md)
+has now passed exact-candidate review and a complete book-export comparison.
+It remains unapplied. The next application must audit historical and current
+consumers without rewriting frozen evidence. This advances an actual reader
+improvement while retaining the unresolved source/name decision; the earlier
+research-only reports and unapproved candidate snapshot remain historical.
+
 ### Source-specific decisions, not a consensus spelling — 2026-09-06
 
 The [Samuel Hebrew follow-up](SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md)

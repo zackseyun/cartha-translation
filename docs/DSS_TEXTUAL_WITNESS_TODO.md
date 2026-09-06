@@ -16,9 +16,22 @@ limits and open gates. It is also the target for a possible later About link.
   [Hebrew](SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md),
   [versions](SAMUEL_13_37_VERSION_CONTROLS_2026-09-06.md).
   This is a held source/name investigation, not an adopted correction.
-- [ ] Draft and separately review exact Samuel name-disclosure and mourning-
-  anchor changes; resolve source-specific apparatus/letter questions before
-  any source/name promotion. Do not count supplied 4Q51 name letters as ink.
+- [x] Draft and independently review exact Samuel name-disclosure and mourning-
+  anchor candidate, with full 24-chapter/695-verse export comparison;
+  [candidate](SAMUEL_13_37_DISCLOSURE_CANDIDATE_2026-09-06.md),
+  [candidate-only judgment](../sources/textual_restoration/applications/samuel13_37_disclosure_candidate_review.v1.json).
+- [ ] Design/review a guarded Samuel application and its current-versus-
+  historical dependencies before writing canonical bytes. Candidate approval
+  is not application approval. Source/name promotion remains separate.
+- [x] Execute a bounded institutional Genizah catalogue/image pilot beyond DSS;
+  [40-hit sample/two-record report](GENIZAH_BIBLICAL_CATALOGUE_PILOT_2026-09-06.md).
+- [ ] Expand Genizah book/page/institution coverage; map remaining canvases,
+  shorthand/quotation scope and physical joins before verse-level comparisons.
+  Locate T-S A43.8 Psalm145 and inspect the T-S AS67.19 name-abbreviation lead.
+- [x] Inspect actual 4Q122 color/infrared images with identity and preservation
+  limits; [report](4Q122_DEUT11_IMAGE_FOLLOWUP_2026-09-06.md).
+- [ ] Obtain DJD/source-specific controls for 4Q122 and its associated scraps;
+  separately review DEU11:4's Sea-of-Reeds note wrongly anchored after Egypt.
 - [x] Obtain actual ArugLev2005/2006 editions and Cave11 publisher index for
   the named alias/fragment holds;
   [follow-up](LEVITICUS_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-06.md).
