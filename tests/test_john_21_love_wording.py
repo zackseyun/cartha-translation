@@ -1,5 +1,6 @@
 """Guard the approved Greek-word mapping and its public revision trail."""
 import hashlib
+import json
 from pathlib import Path
 import re
 import unittest
@@ -71,6 +72,19 @@ class JohnLoveWordingTests(unittest.TestCase):
             self.assertEqual(pob['cross_check_history'][-1]['applies_to_translation_text'], revision['from'])
             self.assertIn('ai_draft', pob)
             self.assertNotIn('cross_check', pob)
+
+    def test_view_history_index_contains_the_approved_revision_and_reasoning(self):
+        index = json.loads((ROOT / 'revisions.json').read_text())
+        posted = [r for r in index['revisions']
+                  if r.get('source_review') == 'docs/JOHN_21_LOVE_WORDING_REVISION.md']
+        self.assertEqual({r['id'] for r in posted}, {'JHN.21.15', 'JHN.21.16', 'JHN.21.17'})
+        self.assertEqual(len(posted), 3)
+        for item in posted:
+            self.assertTrue(item['approved_proposal'])
+            self.assertEqual(item['proposal_source'], 'maintainer')
+            revision = record('translation', item['verse'])['revisions'][-1]
+            for key in ('from', 'to', 'rationale'):
+                self.assertEqual(item[key], revision[key])
 
 
 if __name__ == '__main__':
