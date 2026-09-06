@@ -2930,6 +2930,20 @@ test rerun. Local links and diff checks passed. The independent reviewer checked
 the rendered Yale argument, PDF hash and local Hebrew against the stated revision,
 and returned PASS for this bounded addition, not source selection or publication.
 
+### 2026-09-06 — Job 13:15 source-local alternative
+
+The [Job comparison](JOB_13_15_SOURCE_COMPARISON_2026-09-06.md) verifies both
+ketiv and qere in vendored OSHB/WLC, compares the pinned Greek clause and local
+verb contexts, and identifies a misleading original-language-versus-tradition
+rationale in current POB. The qere is Hebrew-source evidence, not merely an
+English preference. Proposed a clearer note/rationale without adopting either
+historical priority or a new English rendering. Canonical application, full
+apparatus, physical-witness coverage and independent versional inference remain
+open. Exact inputs, consulted context and failed retrievals are in the case
+record. No generated images or new validation framework. Local links and diff
+checks passed; the independent reviewer verified XML/YAML, contextual controls,
+the Greek download and all three hashes, returning PASS for the report only.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
