@@ -2895,6 +2895,25 @@ as incomplete work, not committed or approved by this checkpoint. No snapshot
 interface or Samuel executor was saved. Further exploration remains paused
 while the next bounded translation-relevant deliverable is selected.
 
+### 2026-09-06 — Remove the image-first routing conflict
+
+Current-file inspection found that `TEXTUAL_RESTORATION_PRIORITIES.md` still
+instructed “build the comparison system first” and applied fresh image passes
+to every target, contradicting the approach review's efficiency correction.
+Revised that operational document to default to published-source comparison,
+reserve new image work for discriminating uncertainty, and label outputs by the
+work actually done. Existing case-specific promotion/application gates remain.
+Selected the existing 1 Samuel 1:24–25 dossier as the next substantive research
+question: animal expression, bread and literary form must be assessed together;
+the current verse and note were inspected, not newly adjudicated. Samuel 13:37's
+application tooling remains held. No new external sources, manuscript readings,
+canonical changes or generated images in this pass. Validation: local-link and
+diff checks, plus one bounded independent method review. The reviewer caught a
+too-categorical image exemption; corrected it to require image checks for claims
+depending on disputed marks, corrections, joins or fresh decipherment. The
+reviewer checked that repair and returned PASS for method consistency only.
+No corpus test rerun for these prose-only changes.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

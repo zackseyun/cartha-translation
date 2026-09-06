@@ -2,7 +2,7 @@
 
 ## Decision
 
-Revised 2026-09-04 under [method 2.0](TEXTUAL_ADJUDICATION_METHOD.md).
+Revised 2026-09-06 under [method 2.0](TEXTUAL_ADJUDICATION_METHOD.md).
 The [approach review](TEXTUAL_RESTORATION_APPROACH_REVIEW_2026-09-04.md) gives
 the current assessment and immediate delivery order. The source lists below
 are the long-range research queue, not a requirement to restore every image
@@ -62,13 +62,29 @@ older manuscripts have a modest preference when other evidence is comparable,
 but legibility, textual relationships, and transmission explanations can
 outweigh age. The method is applied in the [three-passage report](HEBREW_PILOT_ADJUDICATION.md).
 
-### Priority 0 — Build the comparison system first
+### Priority 0 — Resolve consequential differences using the existing system
 
-The registry, coverage, comparison records, and one research selection bundle
-now exist. Next, calibrate the image workflow, close the thirteen current dossiers,
-and implement one fully reviewable source/English application package. Run an
-English-only fidelity track alongside this work. See the review's ordered
-delivery sequence; avoid expanding scaffolding without finishing cases.
+The registry, coverage map, comparison records and application pilots already
+exist. Do not rebuild them as prerequisites for each case. Choose one question
+whose answer could affect source selection, English meaning or necessary reader
+disclosure. Start from the existing dossier and current POB wording. Obtain only
+the evidence that can distinguish the remaining alternatives; stop with retain,
+propose change, or unresolved with a precise reopening condition. A research
+decision is not application approval. Image-workflow calibration remains required
+for new machine-transcription claims, not for accurately reporting a published
+edition's reading.
+
+Current next research choice: [1 Samuel 1:24–25](SAMUEL_SOURCE_COMPARISON_PASS_3.md).
+The dossier already compares the animal expression, bread and narrative sequence;
+do not repeat that acquisition. Test whether a complete proposed Hebrew phrase
+and declared literary form are justified against the recorded counterarguments.
+The current POB says “three bulls” and already discloses the age-related alternative.
+If decisive counterargument/apparatus access remains unavailable, record the
+specific unresolved choice and leave the text unchanged. This prioritization
+does not waive that dossier's existing promotion gates or imply source selection.
+The separate 2 Samuel 13:37 disclosure application remains held on the
+[documented integration constraint](SAMUEL_13_37_NOTE_APPLICATION_READINESS_2026-09-06.md);
+more manuscript searches cannot resolve that software dependency.
 
 First working demonstration: [three Hebrew variants and their English
 effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.
@@ -81,12 +97,12 @@ prioritizes passage-level work; the [NT method](NT_TEXTUAL_WITNESS_METHOD.md)
 defines the move from edition comparisons to actual Greek manuscript evidence.
 This is screening coverage, not completion of all manuscript adjudications.
 
-This is the highest priority because the current canonical sources are WLC/UHB
-for the Old Testament and SBLGNT for the New Testament. Restoring isolated
-images without a full comparison apparatus would not reliably improve the
-translation.
+Use the declared source in each verse as the starting point; do not silently
+replace it with an eclectic reading. Broad catalogue screening supplies leads
+and coverage gaps, while passage-level comparison supplies textual decisions.
+Neither requires completing a universal image-restoration apparatus first.
 
-Create:
+Maintain and extend these existing capabilities only when the active case needs them:
 
 - a unified witness registry with shelfmark, language, date, passage coverage,
   textual role, image provenance, rights, and hashes;
@@ -194,7 +210,20 @@ Each comparison package must say whether its source is:
 
 ## Codex execution loop
 
-For each target:
+Select the evidence route before starting. **Published-reading comparison is the
+default:** identify the exact edition/apparatus and passage, preserve its
+observed-versus-supplied distinctions, compare the discriminating witnesses and
+strongest counterargument, and record the source/English consequence. Do not
+require fresh image crops, model transcription or a new restoration receipt
+merely to report a published reading. If the proposed claim depends on disputed
+marks, corrections, joins or fresh decipherment, the controlling method's image
+checks are required. Label published-only results “published-source comparison,”
+not “machine-restored.”
+
+**Fresh image transcription is a separate route**, required when the proposed
+claim depends on those image-level questions. Use the steps
+below for that route; previously imposed case-specific image gates remain in
+force unless explicitly reassessed and reviewed:
 
 1. Register the object, image, rights, hash, passage coverage, and comparison
    witnesses.
@@ -222,11 +251,18 @@ For each target:
 
 ## Completion standard
 
-A target is complete when its source provenance, image regions, frozen Codex
-passes, diplomatic/normalized text, comparison sources, variant apparatus,
-uncertainty statuses, and POB decision are stored and validated. ImageGen output
-is optional and never raises textual confidence.
+A bounded comparison is complete when its actual evidence, serious alternatives,
+uncertainty, source/English decision and reopening condition are documented.
+Published-reading cases cite their consulted editions; new transcription cases
+add source images, regions, frozen passes and diplomatic/normalized text under
+the image gates above. Neither kind closes whole-book or all-source coverage.
+An accepted change additionally needs the separate application checks; an
+unresolved or no-change decision must not be advertised as a recovered reading.
+Use one concise case record and one independent review, repeating review only for
+substantive defects or changed evidence. ImageGen is optional and never raises
+textual confidence.
 
-Without human review, the public claim must remain **machine-restored and
-source-compared**, not human-verified or definitive. The project should favor
-an explicit unresolved reading over a fluent invented one.
+Public claims must describe the work actually performed: published-source
+comparison, machine transcription, or explicitly hypothetical reconstruction.
+None is human-verified or definitive merely because an agent review passed.
+The project should favor an explicit unresolved reading over a fluent invented one.
