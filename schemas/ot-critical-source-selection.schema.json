@@ -1,0 +1,133 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://peoplesbible.com/schemas/ot-critical-source-selection.schema.json",
+  "title": "POB Old Testament critical-source and English selection bundle",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "checked_date", "scope", "policy", "selections"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "checked_date": { "type": "string", "format": "date" },
+    "scope": { "type": "string", "minLength": 1 },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "source_and_english_promote_atomically", "imagegen_is_evidence",
+        "automatic_canonical_writes"
+      ],
+      "properties": {
+        "source_and_english_promote_atomically": { "const": true },
+        "imagegen_is_evidence": { "const": false },
+        "automatic_canonical_writes": { "const": false }
+      }
+    },
+    "selections": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id", "reference", "comparison_case_id", "adjudication_unit_id",
+          "baseline", "critical_source", "english_candidate", "retained_readings",
+          "evidence_links", "review_gates", "promotion_status",
+          "canonical_change_applied", "generated_images_used", "open_questions"
+        ],
+        "properties": {
+          "id": { "type": "string", "minLength": 1 },
+          "reference": { "type": "string", "minLength": 1 },
+          "comparison_case_id": { "type": "string", "minLength": 1 },
+          "adjudication_unit_id": { "type": "string", "minLength": 1 },
+          "baseline": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "repo_path", "sha256", "declared_source_edition",
+              "declared_source_text", "english_text"
+            ],
+            "properties": {
+              "repo_path": { "type": "string", "pattern": "^translation/ot/" },
+              "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+              "declared_source_edition": { "type": "string", "minLength": 1 },
+              "declared_source_text": { "type": "string", "minLength": 1 },
+              "english_text": { "type": "string", "minLength": 1 }
+            }
+          },
+          "critical_source": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": [
+              "status", "scope", "language", "normalized_variation_unit",
+              "diplomatic_anchor", "reading_class", "source_manuscripts",
+              "priority_confidence", "exact_wording_resolved", "full_verse_text"
+            ],
+            "properties": {
+              "status": { "enum": ["working-selection", "approved-selection"] },
+              "scope": { "enum": ["variation-unit", "full-verse"] },
+              "language": { "const": "Hebrew" },
+              "normalized_variation_unit": { "type": "string", "minLength": 1 },
+              "diplomatic_anchor": { "type": "string", "minLength": 1 },
+              "reading_class": { "type": "string", "minLength": 1 },
+              "source_manuscripts": {
+                "type": "array", "minItems": 1, "uniqueItems": true,
+                "items": { "type": "string", "minLength": 1 }
+              },
+              "priority_confidence": { "enum": ["low", "moderate", "strong"] },
+              "exact_wording_resolved": { "type": "boolean" },
+              "full_verse_text": { "type": ["string", "null"] }
+            }
+          },
+          "english_candidate": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["source_phrase", "rendering", "full_verse_text", "apparatus_note"],
+            "properties": {
+              "source_phrase": { "type": "string", "minLength": 1 },
+              "rendering": { "type": "string", "minLength": 1 },
+              "full_verse_text": { "type": "string", "minLength": 1 },
+              "apparatus_note": { "type": "string", "minLength": 1 }
+            }
+          },
+          "retained_readings": {
+            "type": "array", "minItems": 1,
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["source_ref", "language", "text", "reading_class", "role"],
+              "properties": {
+                "source_ref": { "type": "string", "minLength": 1 },
+                "language": { "type": "string", "minLength": 1 },
+                "text": { "type": "string", "minLength": 1 },
+                "reading_class": { "type": "string", "minLength": 1 },
+                "role": { "enum": ["direct-source-control", "daughter-version-control"] }
+              }
+            }
+          },
+          "evidence_links": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["comparison_reading_class", "adjudication_candidate_id"],
+            "properties": {
+              "comparison_reading_class": { "type": "string", "minLength": 1 },
+              "adjudication_candidate_id": { "type": "string", "minLength": 1 }
+            }
+          },
+          "review_gates": {
+            "type": "object",
+            "required": ["image_verification", "djd_material_review", "independent_editorial_review", "full_verse_critical_source", "english_review", "export_sync"],
+            "propertyNames": { "enum": ["image_verification", "djd_material_review", "independent_editorial_review", "full_verse_critical_source", "english_review", "export_sync"] },
+            "additionalProperties": { "enum": ["complete", "pending"] }
+          },
+          "promotion_status": { "const": "not-promoted" },
+          "canonical_change_applied": { "const": false },
+          "generated_images_used": { "const": false },
+          "open_questions": {
+            "type": "array",
+            "items": { "type": "string", "minLength": 1 }
+          }
+        }
+      }
+    }
+  }
+}

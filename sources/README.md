@@ -67,10 +67,13 @@ adjudication but never reproduced. Anything in this directory is **Zone
 1** — vendored, safe to redistribute, and used as actual translation
 input.
 
-The `dead_sea_scrolls/` registry is the exception at the directory level: its
-inventory also includes metadata-only, permission-gated records, while only the
+The `dead_sea_scrolls/` and `textual_restoration/` registries are exceptions at
+the directory level: their inventories include metadata-only and
+permission-gated records. In `dead_sea_scrolls/`, only the
 explicitly rights-cleared files under `images/original/` are vendored. Read its
 README and the per-image rights object before treating an entry as Zone 1.
+The restoration comparison records also identify consultation sources and
+limited excerpts; a path under `sources/` is not itself a blanket rights grant.
 
 ## Vendored sources — canonical Old & New Testament
 
@@ -122,18 +125,21 @@ README and the per-image rights object before treating an entry as Zone 1.
   according to the Septuagint*, Cambridge University Press, vols.
   I–III.
 - **Status:** Public domain (Swete d. 1917; volumes pre-1929).
-- **Why Swete and not Rahlfs:** every available digital Rahlfs is
-  CC-BY-NC, NC-derived, or otherwise restrictive. Swete is fully PD,
-  was OCR'd in-house, and covers every deuterocanonical book we need.
-  See `lxx/swete/README.md` for the full rationale.
+- **Why Swete was selected:** the earlier source review chose its
+  public-domain volumes for in-house transcription. This is an operational
+  source choice, not proof that Swete is textually definitive or that every
+  other digital edition is restricted. See `lxx/swete/README.md` and the
+  [updated coverage audit](../docs/BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md).
 - **Our work:** OCR + cleaned UTF-8 transcription is our own,
   released as part of the POB output corpus under CC-BY 4.0.
 
 ### Rahlfs LXX (1935) — not vendored
 - **Directory:** `lxx/rahlfs/`
-- **Status:** **NOT vendored.** No CC-BY-compatible Rahlfs
-  digitization exists. The directory is intentionally empty of source
-  text. See `lxx/rahlfs/README.md` for the rationale and
+- **Status:** **No full corpus vendored in this directory.** The directory
+  is intentionally empty of source text. Limited pinned Rahlfs comparison
+  excerpts exist in `textual_restoration/`; these do not constitute a
+  full-corpus rights clearance or source replacement.
+  See `lxx/rahlfs/README.md` for the current status and
   [`../REFERENCE_SOURCES.md`](../REFERENCE_SOURCES.md) for the policy
   governing Zone 2 references.
 

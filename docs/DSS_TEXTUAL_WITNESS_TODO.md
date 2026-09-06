@@ -5,6 +5,178 @@ This is the implementation backlog for the
 Checkboxes mean repository evidence exists; they do not imply scholarly
 acceptance or live-reader publication.
 
+Maintain the [central research log](TEXTUAL_RESTORATION_RESEARCH_LOG.md) after
+every substantive pass, linking evidence, decisions, corrections, validation
+limits and open gates. It is also the target for a possible later About link.
+
+## Immediate delivery order — revised 2026-09-04
+
+- [x] Audit OT/NT source classes and current critical-edition status; correct
+  supplied-text overclaims in the Exodus pilot. See the
+  [coverage audit](BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md).
+- [ ] Execute dated catalogue-backed coverage discovery for every canonical
+  book, including non-Qumran OT witnesses and NT minuscules/lectionaries;
+  reconcile registry gaps and record unavailable or excluded material.
+- [x] Reconcile the entire current Qumran-Digital transcription index against
+  the pinned QDR labels, retaining outside-category matches and identity gaps;
+  [report](QUMRAN_DIGITAL_CATALOGUE_INDEX_RECONCILIATION_2026-09-05.md).
+- [ ] Resolve the 13/9 unmatched catalogue/local-label queues and 19 typography
+  candidates with object-specific evidence; apply the recorded XAmos research
+  hold and distinguish XLeviticus/Arugleviticus from En-Gedi.
+  The [identity follow-up](QUMRAN_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-05.md)
+  now exposes exact-label conflicts in 4Q8a/b, reciprocal 4Q54b/69c locators,
+  a 4Q54a/47a reassignment challenge and the distinct 4Q483 records. Their
+  physical/edition adjudications remain open; original 13/9 syntax counts
+  are not updated into a misleading resolved-manuscript total.
+- [x] Register four individual Greek Judean Desert comparison targets with
+  actual institutional metadata and edition/image candidates; see the
+  [Greek report](JUDEAN_GREEK_SOURCE_FOLLOWUP_2026-09-05.md).
+- [ ] Collate those exact Greek fragments and later reassessments; verify
+  image regions, rights and letter survival. Resolve Ra 943's competing
+  physical models before a physical-count migration.
+- [x] Extend the named catalogue/index screen to Isaiah: 22 copy-list matches
+  and six separately classified commentary gaps. See the
+  [Isaiah screen](ISAIAH_CATALOGUE_RECONCILIATION_2026-09-05.md).
+  This does not complete the all-book task above.
+- [ ] Acquire Isaiah pesher lemmas separately from commentary; check later
+  manuscript/hand updates, physical preservation and non-DSS versional sources.
+  The [4Q164 bounded check](ISAIAH_54_PESHER_REVIEW_2026-09-05.md) now separates
+  its Isaiah 54 quotation tail and fixes two verses' note anchors. Full edition,
+  image and apparatus review, plus the other pesharim, remain open. Swete III
+  (1905), p. 202, now supplies a visually checked selected Greek apparatus;
+  full Göttingen XIV *Isaias* (Ziegler, third edition, 1983) is still pending.
+  Its Greek/Peshitta/Targum and BDB follow-up now documents non-uniform
+  architectural senses and local quantifier behavior without a further POB edit.
+- [x] Screen all word-reference fields in the pinned QDR biblical dataset;
+  retain duplicate-label and unparsed-reference diagnostics, map the 24 OT
+  priority anchors by actual source text, and correct the Isaiah joy-case
+  anchor. See the [discovery receipt](../sources/textual_restoration/discovery/README.md).
+- [x] Review and reconcile the method, charter, and priorities under
+  [method 2.0](TEXTUAL_ADJUDICATION_METHOD.md).
+- [x] Record seven source comparisons, fourteen coverage records, and the
+  first non-promoted source/English selection bundle.
+- [ ] Freeze development/evaluation controls and acceptance criteria for the
+  two-family image workflow; execute and report calibration by damage class.
+- [ ] Complete the thirteen current comparison cases with an explicit retain,
+  propose-change, or unresolved outcome under method 2.0.
+- [ ] Implement a reviewed change package with base/source/English/notes hashes,
+  review receipts, affected metadata, and export verification.
+- [x] Materialize one unapproved full-record draft with before/after component
+  hashes, archived historical reviews and an actual full-book export probe;
+  see the [preflight](APPLICATION_DRAFT_PREFLIGHT_2026-09-05.md).
+- [ ] Resolve the demonstrated critical-source schema and reader-disclosure
+  gaps, verify actual consumer paths, and implement the application transaction.
+  The draft does not satisfy the reviewed-package task above.
+- [x] Trace publisher/native/web note paths and repair the local canonical
+  exporter; preserve the failed preflight and produce v2. See the
+  [disclosure trace](READER_DISCLOSURE_TRACE_2026-09-05.md).
+- [ ] Resolve and visually verify the website POB loader's note-stripping
+  policy before treating reader disclosure as complete. Component support
+  alone does not prove that the loader delivers notes.
+- [ ] Run source-stable English fidelity reviews and sample unflagged verses
+  to measure omissions in the note-driven discovery queue.
+  A [first frozen three-verse sample](UNFLAGGED_ENGLISH_SAMPLE_2026-09-05.md)
+  is complete: two retain/tie, one unresolved, no established semantic gain.
+  It does not measure a corpus-wide rate. The
+  [Numbers note-only package](NUMBERS_22_19_NOTE_APPLICATION_2026-09-05.md)
+  is now locally applied after exact-byte review, preserving the frozen sample
+  via a guarded historical overlay and verifying actual full-book export.
+  Samuel's note/readability proposals remain unapplied; application must also
+  synchronize affected lexical metadata. No whole-verse or publication pass
+  follows from this one note repair.
+  The [2 Samuel 20:6 follow-up](SAMUEL_20_6_SOURCE_ENGLISH_FOLLOWUP_2026-09-05.md)
+  now directly checks Greek/Syriac and GKC/Driver controls; the whole verse
+  remains unresolved and its proposed repairs remain unapplied.
+- [x] Run an independent judge cycle on the bounded research and new tools;
+  repair and re-review the parser's concrete failures. See the
+  [review record](INDEPENDENT_RESEARCH_REVIEW_2026-09-05.md). Full production
+  readiness still fails; this checkbox is not manuscript/corpus approval.
+
+### Deuteronomy 32:8 completion — 2026-09-05
+
+- [x] Identify later 4Q37 genre reassessment and specific Greek acquisition
+  targets; record actual consultation limits in the
+  [pass-4 follow-up](PENTATEUCH_SOURCE_COMPARISON_PASS_4.md).
+- [x] Check Amherst 192's printed decisive noun and Cambridge's correction
+  report with their editorial conventions. The preserved prefix supports the
+  angel noun only; the Cambridge p/106 correction report contradicts the
+  secondary complete-phrase “sons of God” attribution. See the same report
+  and its hash-pinned Greek review receipt.
+- [x] Locate 848's photographic-edition verse-8 fragment and inspect its
+  printed note: fragment 177, plate 46, column 73. The sons prefix survives
+  with uncertainty; God/Israel remains a supplied complement. Record the
+  agreeing 106-correction report without counting another manuscript.
+- [ ] Review the full later reassessment and DJD/image crosswalk; inspect
+  the exact modern Greek apparatus and reported 106 correction. Obtain a
+  stable higher-resolution 848 source for full letter-level review.
+  Complete 916's letter-level image review separately from the published
+  prefix check. Do not count a verse-range hit as a reading.
+- [x] Consult the 2008 OHB sample's 32:8 text, apparatus and commentary;
+  distinguish its explicitly conjectural El phrase from attested Elohim.
+  Browser consultation succeeded; no local PDF acquisition/hash claimed.
+- [ ] Evaluate that conjecture against the attested working candidate in
+  the full-verse decision; the sample does not resolve 106 or inspect 848.
+- [ ] Complete the existing source/English/application gates; retain the
+  pinned WLC baseline until an approved synchronized package exists.
+
+### En-Gedi follow-up — 2026-09-05
+
+- [x] Screen all 30 Himbaza Leviticus table names against pinned QDR with
+  explicit aliases, chapter filters and unassigned fragments; see the
+  [catalogue reconciliation](LEVITICUS_CATALOGUE_RECONCILIATION_2026-09-05.md).
+- [ ] Acquire/check primary 4Q119, 4Q120 and 4Q156 evidence missing from this
+  QDR file; resolve quoted/reworked and unpublished candidates separately.
+  Candidate index reconciliation is not authenticated physical coverage.
+  The [4Q120 preservation pass](4Q120_LEVITICUS_PRESERVATION_REVIEW_2026-09-05.md)
+  checks a published partial word and registers the object; its supplied ending
+  leaves the person question open, and DJD/image collation is still required.
+  The [4Q119 clause review](4Q119_LEVITICUS_26_12_REVIEW_2026-09-05.md) now checks
+  actual published Greek and its supplied ending at Lev 26:12, retaining “my
+  people.” Greek priority, DJD/plate mapping and ancient-image collation remain
+  open. Separately review the misplaced Lev 26:12 “walk in your midst” note
+  anchor; this read-only source comparison did not alter it.
+
+- [x] Check all twelve explicitly listed 2016 edition comparison units against
+  current POB and pinned SP/QDR controls, with supplied prefixes separated;
+  see the [bounded comparison report](EN_GEDI_APPARATUS_COMPARISON_2026-09-05.md).
+- [ ] Complete the two-column diplomatic line/loss map; inspect primary 4Q24
+  evidence at Lev 2:8-9 and full Greek/Syriac controls before adjudicating those
+  alternatives. A selective apparatus is not complete witness coverage.
+- [ ] Resolve the [4Q24 split and fragment crosswalk](LEVITICUS_WITNESS_IDENTITY_REVIEW_2026-09-05.md)
+  against Tigchelaar, DJD and exact image regions; preserve upstream IDs and
+  do not count the legacy whole plus proposed parts as independent witnesses.
+  The [full reassessment follow-up](4Q24_LEVITICUS_2_PRIMARY_FOLLOWUP_2026-09-05.md)
+  has now inspected the fourteen-page institutional paper and explicit
+  retained-fragment-number argument. Target words' DJD transcription,
+  physical-fragment assignment and IAA pixels still need verification.
+- [ ] Review the later agents and lexical rationale in POB Lev 2:8 separately
+  from its already checked opening verb; the recorded old review JSON is absent
+  at its local path, so its status flag is not a consulted rationale.
+  The [September 5 agency review](LEVITICUS_2_8_AGENCY_REVIEW_2026-09-05.md)
+  repairs two rationales only; main English and pointing alternatives remain
+  unpromoted and require comparative review.
+- [ ] Extend the nine-pixel renderer result to predeclared wider/multi-segment
+  checks, then register the edition's ghost-stroke region against measurements
+  before using it as an independently labeled recovery control.
+  The [wider check](EN_GEDI_WIDER_RENDERER_CHECK_2026-09-05.md) now freezes 288
+  new targets and reproduces nine additional available values exactly. It
+  initially left 128 valid targets unavailable for the primary model. The
+  [subsequent distant-row acquisition](EN_GEDI_DISTANT_ROWS_CHECK_2026-09-05.md)
+  adds 36 CT slices and ten newly evaluable exact values, for 19/19 observed
+  matches and 118 unavailable valid targets. Distant rows are now sampled, but
+  lateral coverage, a second segment and labeled reading calibration remain
+  incomplete. This does not close the wider spatial/calibration gate.
+  The [region-grounding experiment](EN_GEDI_REGION_GROUNDING_2026-09-05.md)
+  failed fixed coarse-registration criteria; merge5's apparent initial-margin
+  location remains a visual hypothesis, not a validated pixel crosswalk.
+  Prioritize a text-bearing segment's texture/mask/mapping and CT neighborhoods
+  before further reading controls. Preserve the failed affine receipt and do
+  not reuse conjectural drawings as independent truth labels.
+
+The wider queues below remain future work. See the
+[approach review](TEXTUAL_RESTORATION_APPROACH_REVIEW_2026-09-04.md) for rationale
+and the distinction between completed safeguards and planned machinery.
+
 ## Foundation
 
 - [x] Create the project charter and evidence-lane rules.
@@ -112,10 +284,11 @@ acceptance or live-reader publication.
     that either model returned a transcription.
 - [ ] Reconcile at glyph level and calculate exact character/token agreement.
 - [ ] Promote exact visible-text agreement to `machine-consensus-accepted`.
-- [ ] Promote matching supplied-text restorations to
-  `machine-consensus-restored`, retaining brackets and both rationales.
-- [ ] Keep disagreements as hypotheses until another independent model pass
-  resolves them.
+- [ ] Assign matching supplied-text proposals `machine-consensus-restored`,
+  retaining brackets and both rationales; require separate source adjudication
+  before translation adoption.
+- [ ] Keep disagreements as hypotheses until additional evidence resolves
+  them; another model's agreement alone does not establish historical priority.
 - [ ] Add multispectral channel support when licensed data is available.
 - [ ] Add fragment-joint proposals as annotations, never destructive image edits.
 - [ ] Add a benchmark set of independently attested control lines to measure

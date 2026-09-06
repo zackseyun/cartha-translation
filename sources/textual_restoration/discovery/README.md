@@ -1,0 +1,272 @@
+# Biblical source discovery receipts
+
+## Whole-index catalogue reconciliation
+
+`qumran_digital_catalogue_index.v1.json` compares all 1,173 entries in a pinned
+Qumran-Digital index with the separate QDR dataset's 265 labels. It retains
+263 biblical-class entries plus six exact matches outside that class, separates
+exact names from 19 typography candidates, and exposes the unresolved 13/9
+discrepancy queues. None of these is an authenticated manuscript count.
+See the [report](../../../docs/QUMRAN_DIGITAL_CATALOGUE_INDEX_RECONCILIATION_2026-09-05.md).
+`catalogue_identity_holds.v1.json` records follow-up provenance/authenticity
+holds without altering raw catalogue evidence or claiming automated enforcement.
+
+`qumran_catalogue_identity_followup.v1.json` records actual content conflicts
+under identical labels, reciprocal alternative locators, specific reassignment
+challenges and distinct records hidden under 4Q483. See the
+[identity report](../../../docs/QUMRAN_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-05.md).
+It is a content/locator crosswalk, not a physical-object merge.
+
+## Greek Judean Desert catalogue follow-up
+
+`judean_greek_catalogue_followup.v1.json` records seven selected identified
+catalogue units, four new registry targets, image/edition candidates and
+related leads, with catalogue and reading support kept separate. See the
+[report](../../../docs/JUDEAN_GREEK_SOURCE_FOLLOWUP_2026-09-05.md).
+It also corrects Ra 943's forced physical grouping. No new pixels or exact
+source readings were acquired in this follow-up.
+
+## Wider En-Gedi numerical check
+
+`en_gedi_wider_renderer_protocol.v1.json` freezes 288 additional target pixels;
+`en_gedi_wider_renderer_check.v1.json` preserves every candidate's measurements,
+missing coverage and residuals. The primary model exactly matches nine new
+values, but 128 other mask-valid targets lack measurements. See the
+[report](../../../docs/EN_GEDI_WIDER_RENDERER_CHECK_2026-09-05.md).
+This is a bounded renderer check, not letter-recovery validation.
+
+## Isaiah 54 pesher and note-anchor check
+
+`isaiah54_pesher_review.v1.json` separates 4Q164's published quotation tail
+from supplied wording and commentary, and keeps 4Q57/4Q69a lacunae from voting
+for omission. It binds two marker-only POB repairs with reversible before/after
+hashes. The extractor's opt-in line context exposes a verse-boundary supply
+bracket; it does not automatically adjudicate preservation. See the
+[report](../../../docs/ISAIAH_54_PESHER_REVIEW_2026-09-05.md).
+
+`isaiah54_versions_review.v1.json` adds pinned Greek and consulted Syriac/Targum
+controls plus lexical sources. The Greek and Syriac omit the local WLC boundary
+quantifier as well as the proposed architectural one; their silence does not
+uniquely recover Hebrew. BDB permits both pinnacles and battlements. No further
+POB edit or source promotion follows.
+
+`isaiah54_swete_review.v1.json` adds visually inspected printed page 202
+(PDF page 226) of Swete III, third edition (1905), with the existing PDF hash.
+Main text, selected apparatus reports, correction labels and uncertain readings
+stay separate. No additional quantifier is reported in that apparatus entry;
+this is not exhaustive Greek agreement or a fresh manuscript collation.
+
+## Deuteronomy 32:8 OHB conjecture review
+
+`deut32_8_ohb_review.v1.json` records direct visual consultation of the 2008
+sample's text, apparatus and commentary. It distinguishes the editorial
+`בני אל` conjecture from the attested working candidate `בני אלוהים`.
+The institutional PDF loaded in the browser but was not saved locally;
+there is no invented acquisition hash. No Greek correction conflict or
+promotion gate was resolved. See the [pass-4 report](../../../docs/PENTATEUCH_SOURCE_COMPARISON_PASS_4.md).
+
+## Deuteronomy 32:8 Greek preservation and correction review
+
+`deut32_8_greek_review.v1.json` pins the inspected Amherst and Cambridge
+editions, separates the surviving angel-noun prefix from supplied letters,
+and records a conflicting p/106 correction report without promoting the
+secondary “sons of God” attribution. The formal comparison includes the
+bounded Amherst reading; the modern apparatus and manuscript checks remain
+open. See the [pass-4 follow-up](../../../docs/PENTATEUCH_SOURCE_COMPARISON_PASS_4.md).
+
+## 4Q120 discriminating preservation check
+
+`4q120_lev2_preservation_review.v1.json` records a published partial-word
+boundary at tentative Lev 2:7-8, keeping underdots and supplied completion
+separate. The prefix alone does not decide second/third person; illustrative
+Greek forms are not claimed as two attested apparatus readings. IAA image
+metadata is verified, but target pixels and passage alignment are not. See the
+[report](../../../docs/4Q120_LEVITICUS_PRESERVATION_REVIEW_2026-09-05.md).
+
+## Leviticus catalogue reconciliation
+
+`leviticus_catalogue_targets.v1.json` records all 30 names in Himbaza's 2020
+DSS table (27 categorized as published, three as unpublished then), with
+explicit candidate aliases and identity/genre cautions.
+`leviticus_catalogue_check.v1.json` screens these against the pinned QDR file:
+18 target names have hits across 17 legacy labels; 12 names have no queried
+label. The 4Q24 chapter scopes do not assign its two untagged fragments or
+establish independent physical witnesses. No full external text or verse index
+is exported. See the [report and reproduction commands](../../../docs/LEVITICUS_CATALOGUE_RECONCILIATION_2026-09-05.md).
+
+## En-Gedi published textual comparisons
+
+`en_gedi_apparatus_units.v1.json` enumerates all twelve comparison items printed
+on pp. 10-11 of the 2016 edition. `en_gedi_apparatus_check.v1.json` checks their
+bounded contexts against current POB and pinned SP/QDR controls. Two units have
+supplied prefixes; agreement is not new image verification or complete column
+collation. No main Hebrew/English change is selected. The
+[report](../../../docs/EN_GEDI_APPARATUS_COMPARISON_2026-09-05.md) records the
+selective Greek/Syriac reporting, ghost-stroke qualification and separate
+Leviticus 2:8 English-agency review lead. The original three-word receipt remains
+an unchanged earlier snapshot.
+
+## En-Gedi measured-data acquisition
+
+`en_gedi_renderer_protocol.v1.json` freezes eight candidate samplers and nine
+geometric comparison points. `en_gedi_renderer_probe.v1.json` records the
+results from six acquired CT slices: one candidate matches all nine archived
+texture values exactly. This supports local numerical reproduction, not global
+renderer identification, ink/letter accuracy or better recovery. The
+[candidate-test report](../../../docs/NON_QUMRAN_SOURCE_RECONCILIATION_2026-09-04.md#en-gedi-fixed-candidate-renderer-test--2026-09-05)
+explains why reproducing historical interpolation is distinct from optimizing
+the source-data recovery method. No candidate is automatically promoted.
+
+`en_gedi_volume_probe.v1.json` extends acquisition to the legacy mapping, scan
+reconstruction log and four CT slices. It verifies bounded coordinate/intensity
+calculations, not the published renderer, coordinate origin, ink or transcription
+accuracy. The [report](../../../docs/NON_QUMRAN_SOURCE_RECONCILIATION_2026-09-04.md#en-gedi-coordinate-and-intensity-probe--2026-09-05)
+distinguishes reconstructed volume data from raw X-ray projections.
+
+`en_gedi_asset_check.v1.json` records a downloaded, checksum-verified published
+master and four selected segmentation payloads (material/mesh/texture/mask).
+It is not a raw CT validation, recovery benchmark, transcription or source
+selection. Assets remain outside Git under the dataset's noncommercial license.
+See the [follow-up and reproduction commands](../../../docs/NON_QUMRAN_SOURCE_RECONCILIATION_2026-09-04.md#en-gedi-asset-follow-up--2026-09-05)
+and [central research log](../../../docs/TEXTUAL_RESTORATION_RESEARCH_LOG.md).
+
+## Psalm 145 local control check
+
+`psalm145_control_check.v1.json` verifies WLC stanza openings, bounded
+11Q5 XVII 2–3 token mapping, and Greek suffixed reference 144:13a. It does not
+adjudicate omission versus addition or prove manuscript legibility.
+The [report](../../../docs/PSALM_145_SOURCE_COMPARISON_2026-09-05.md) records
+Syriac/Targum consultation, reader-note impact and remaining gates.
+
+## Samaritan whole-Torah screen
+
+`samaritan_wlc_screen.v1.json` screens all 5,841 verse nodes of the pinned
+DT-UCPH SP 7.1.3 dataset against five WLC books. It records 1,872 same-label
+consonantal matches, 3,969 differences, twelve WLC-only labels and bounded
+review leads. These are not counts of errors or completed adjudications.
+No full source text is exported. See the
+[report and reproduction commands](../../../docs/SAMARITAN_CORPUS_SCREEN_2026-09-04.md)
+for the verified Exodus relocation, normalization and rights boundaries.
+
+`exodus_incense_alignment.v1.json` adds an explicit, lossless 11-segment map
+from extended SP 26:35 to WLC/Greek 26:35 and 30:1–10. It records hashes and
+character spans, not full external text or adjudicated selections. See the
+[September 5 report and commands](../../../docs/EXODUS_INCENSE_ALIGNMENT_2026-09-05.md).
+Order and local wording have separate support patterns; the added 30:6 case
+does not add manuscript coverage or change the Hebrew/English main wording.
+
+## Judean Desert discovery receipts
+
+`qdr_biblical_screen.v1.json` records a complete scan of the **word-reference
+fields in one pinned QDR biblical dataset**, not a complete scan of all
+discovered manuscripts. No transcription, morphology, image, or reconstructed
+reading is exported. The upstream dataset remains outside the repository and
+retains its own terms; this receipt does not relicense it.
+
+## Verified results, 2026-09-04
+
+- 266 source records, **265 distinct labels**. `4Q483` appears in two records
+  with different fragment/reference coverage. We retain record ordinals and
+  flag the collision; we do not assume two independent manuscripts or silently
+  discard either record.
+- 218,217 word records inspected. 212,374 have recognized biblical-reference
+  syntax; 5,843 have other/empty reference values, preserved as audit counts.
+  Many non-biblical-shaped values are manuscript/fragment locators. They are
+  not counted as Bible verses and are not silently discarded as irrelevant.
+- 8,024 distinct reference anchors across 36 of the 39 canonical OT book
+  labels. One anchor, `Josh.5.0`, is absent from the local WLC verse inventory
+  and remains flagged rather than forced onto a numbered verse.
+- No indexed anchors for 1 Chronicles, Nehemiah or Esther in this dataset.
+  This is an index result, **not a universal claim of manuscript absence**.
+- The dataset includes labels for Murabba'at, Nahal Hever/Seiyal and Masada,
+  despite its Qumran-oriented description. External catalogue reconciliation
+  must assess these records too, not assume every non-Qumran find is missing.
+- All 24 OT priority anchors map uniquely to local WLC by complete consonantal
+  source-field comparison. Eighteen have index hits; six have none. Full
+  passage ranges, additions between numbered verses, decisive-letter survival,
+  and textual support have **not** been established by this join.
+
+An index hit means “inspect this candidate.” It may consist entirely of
+editorially supplied text. A no-hit can also occur because the very question
+concerns absent text, a different passage order, unnumbered material, or index
+limitations. Neither result decides a reading.
+
+## A reference error caught and corrected
+
+The joy/not/to-it case was incorrectly anchored to `translation/ot/isaiah/009/003.yaml`,
+whose text concerns the broken yoke. The actual POB joy passage is 9:2, matching
+WLC `Isa.9.2` (9:3 in many English Bibles). The casebook target and generated
+inventory now point to that verse. No Isaiah source or English wording changed.
+
+The same matching process correctly maps POB Psalm 22:16 to WLC `Ps.22.17`.
+It excludes qere and editorial notes from the written-text match. When POB
+includes paragraph signs, only signs explicitly encoded in that WLC verse may
+participate; arbitrary final letters are never stripped to manufacture a match.
+QDR-to-WLC reference-label agreement still requires published passage
+confirmation before being promoted to attestation.
+
+## Next evidence checks
+
+The [Isaiah target list](isaiah_catalogue_targets.v1.json) and
+[reconciliation](isaiah_catalogue_check.v1.json) extend the catalogue/index
+screen beyond Leviticus: 22 published copy-list names match QDR, while six
+separately classified Isaiah pesharim have no labels in its biblical JSON.
+See the [report](../../../docs/ISAIAH_CATALOGUE_RECONCILIATION_2026-09-05.md)
+for the 2008/2011 source dates, IAA supplements, preserved-text limitations,
+rights and exact reproducible command. The counts do not certify all Isaiah
+sources or complete physical passage coverage.
+
+The [Fouad 848 supplement](deut32_8_fouad_review.v1.json) records a browser-only
+visual check of the 1980 photographic edition at Deuteronomy 32:8. It maps
+fragment 177 to plate 46/column 73 and separates the published sons prefix
+from supplied God/Israel continuations. It supplements, rather than rewrites,
+the earlier Greek receipt and frozen preflight evidence set. No local PDF hash,
+blind transcription, new recovered letters or source promotion is claimed.
+
+Among the newly surfaced candidates are 4Q51 at 1 Samuel 1:24 and 10:27,
+4Q52 at 14:41, 1Q7 at 2 Samuel 21:19, 4Q88 and `5/6hev1b` at Psalm 22,
+11Q5 at Psalm 145, Isaiah witnesses, and Mur88 at Amos 9:12 and Habakkuk 1:12.
+These are upstream labels, not yet normalized shelfmarks or proven supporters.
+Check institutional identity, exact published transcription, preservation
+boundaries, and the competing readings before editing reader notes.
+
+The [second Samuel pass](../../../docs/SAMUEL_SOURCE_COMPARISON_PASS_2.md) has
+now checked 4Q52 at 1 Samuel 14:41 and 1Q7 at 2 Samuel 21:19. The former has a
+disputed fragment identification and largely supplied prayer; the latter has
+isolated traces, not the disputed names. Both remain excluded from positive
+reading support. This receipt preserves the upstream index hits without
+mistaking them for independently established attestations.
+
+The [third Samuel pass](../../../docs/SAMUEL_SOURCE_COMPARISON_PASS_3.md) checks
+4Q51 at 1 Samuel 1:24. Unlike those two cases, the published transcription
+preserves the age-related word and bread, although the preceding animal phrase
+is partly supplied. Positive support is limited to that preserved material;
+source selection remains pending.
+
+## Reproduce
+
+The separate `qdr_non_qumran_screen.v1.json` selects 22 site-associated labels
+and leaves eight other nonstandard labels unassigned. It exports label-level
+counts, not the full verse index. Classification by label is not proof of
+provenance, genre or surviving letters. See the
+[non-Qumran audit](../../../docs/NON_QUMRAN_SOURCE_RECONCILIATION_2026-09-04.md)
+for the En-Gedi/Arugot distinction, Greek Minor Prophets gap and CT benchmark.
+`en_gedi_published_spot_check.v1.json` separately records three published-word
+matches with current POB; it is not image evidence or a complete case dossier.
+
+Use a lawful local copy of
+[QDR at the pinned commit](https://github.com/evenderekh/qdr/tree/f54f38464e18409eed8286fe24dd24f88d4735dd).
+The tool rejects an unexpected input hash. Current WLC inputs, priority queue,
+and verse snapshots are hashed, and verification recomputes the receipt.
+
+```bash
+.venv/bin/python tools/textual_restoration/build_qdr_discovery.py /path/to/qdr.1.1.biblical.json
+.venv/bin/python tools/textual_restoration/build_qdr_discovery.py /path/to/qdr.1.1.biblical.json --verify-only
+.venv/bin/python tools/textual_restoration/build_qdr_discovery.py /path/to/qdr.1.1.biblical.json --non-qumran
+.venv/bin/python tools/textual_restoration/build_qdr_discovery.py /path/to/qdr.1.1.biblical.json --non-qumran --verify-only
+.venv/bin/python -m unittest discover -s tests -p 'test_qdr_discovery.py'
+```
+
+The unit tests do not require the external QDR dataset. Full recomputation does.
+See the [coverage audit](../../../docs/BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md)
+for the still-uncompleted, multi-catalogue discovery scope.

@@ -1,0 +1,41 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-09-05",
+  "scope": "Development-only merge5-to-published-master region registration; not a letter benchmark",
+  "prior_exposure": "Both complete images, prior numeric results and Segal edition context already viewed. Visual hypothesis: merge5 belongs to the right initial blank margin. Not blind or held out from project development.",
+  "inputs": {
+    "master_sha256": "1c2da746935f00b0020daf8d72fb0f3ff81b929811907eb5d75eb06d5a0faf10",
+    "texture_sha256": "2899f925fc7be7346772e36b5814e7c5b7efd70c291677e88b68d1a8bce76b9c",
+    "mask_sha256": "053e96cb8658e68ab2d62a1ea99947f69115093fd40d93838663a55dd26d9087"
+  },
+  "algorithm": {
+    "opencv_version": "4.13.0",
+    "read": "IMREAD_GRAYSCALE; source PNGs immutable; analysis arrays only, no image output",
+    "master_downsample": 4,
+    "texture_downsample": 2,
+    "resize": "INTER_AREA image; INTER_NEAREST mask; exact original/analysis scale recorded",
+    "sift_nfeatures": 15000,
+    "sift_contrast_threshold": 0.01,
+    "sift_other_parameters": "OpenCV defaults",
+    "matching": "L2 BF 2-nearest; forward ratio<0.75 and mutual best; unique descriptor pair",
+    "partition": "Sort by original texture y,x and master y,x; every third pair (index modulo3 equals2) is validation, all other pairs fitting",
+    "fit": "estimateAffine2D RANSAC on fitting pairs only, original pixel coordinates",
+    "ransac_reprojection_threshold": 10,
+    "max_iterations": 10000,
+    "confidence": 0.999,
+    "refine_iterations": 10,
+    "rng_seed": 20260905,
+    "no_refit_on_validation": true
+  },
+  "provisional_region_gate": {
+    "minimum_training_inliers": 12,
+    "minimum_validation_pairs": 8,
+    "minimum_validation_fraction_within_20_master_pixels": 0.8,
+    "minimum_texture_inlier_y_span_fraction": 0.5,
+    "minimum_texture_inlier_x_span_fraction": 0.25,
+    "limits": "Coarse development-region localization only. Correlated features, not independent reading controls. An affine may fail on a locally warped composite. Retain all residuals and failure; no parameter search to force pass. No pixel-exact or letter-scale gate."
+  },
+  "evaluation": "Report all fit/validation pair residuals, all prior19 measured target projections, image bounds and feature coverage. Compare coordinate result with edition fig2/initial-margin description; do not infer a letter from intensity or declare all blank pixels authenticated. If gate fails, retain unresolved registration.",
+  "reading_benchmark_executed": false,
+  "generated_images_used": false
+}

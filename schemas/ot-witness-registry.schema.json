@@ -1,0 +1,89 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://peoplesbible.com/schemas/ot-witness-registry.schema.json",
+  "title": "POB Old Testament witness discovery registry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "updated", "scope", "policy", "witnesses"],
+  "properties": {
+    "schema_version": { "const": "1.0.0" },
+    "updated": { "type": "string", "format": "date" },
+    "scope": { "const": "Old Testament source discovery and comparison" },
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["target", "imagegen_is_evidence", "automatic_translation_changes"],
+      "properties": {
+        "target": { "const": "earliest-attainable-text" },
+        "imagegen_is_evidence": { "const": false },
+        "automatic_translation_changes": { "const": false }
+      }
+    },
+    "witnesses": {
+      "type": "array",
+      "minItems": 1,
+      "items": { "$ref": "#/$defs/witness" }
+    }
+  },
+  "$defs": {
+    "access": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["provider", "url", "kind", "availability", "rights_status"],
+      "properties": {
+        "provider": { "type": "string", "minLength": 1 },
+        "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+        "kind": { "enum": ["images", "multispectral-images", "transcription", "edition", "apparatus", "metadata"] },
+        "availability": { "enum": ["open", "partial", "restricted", "temporarily-unavailable", "local"] },
+        "rights_status": { "enum": ["public-domain", "open-license", "study-only", "permission-required", "unknown", "local-project-license"] },
+        "rights_note": { "type": "string" },
+        "machine_access": { "enum": ["download", "iiif", "web-viewer", "manual-consultation", "local-files"] }
+      }
+    },
+    "witness": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id", "label", "witness_class", "languages", "date_basis",
+        "corpus_coverage", "coverage_status", "textual_role",
+        "relationship_group", "source_state", "access",
+        "restoration_suitability", "priority", "next_action"
+      ],
+      "properties": {
+        "id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+        "label": { "type": "string", "minLength": 1 },
+        "shelfmark_or_edition": { "type": ["string", "null"] },
+        "witness_class": {
+          "enum": [
+            "direct-hebrew-aramaic-manuscript", "direct-hebrew-inscription",
+            "ancient-daughter-version", "masoretic-control",
+            "modern-transcription", "critical-edition", "critical-apparatus"
+          ]
+        },
+        "languages": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": { "enum": ["Hebrew", "Aramaic", "Samaritan Hebrew", "Greek", "Syriac", "Latin", "Coptic", "Ge'ez", "Armenian", "Georgian"] }
+        },
+        "date_basis": {
+          "type": "object", "additionalProperties": false,
+          "required": ["kind", "description"],
+          "properties": {
+            "kind": { "enum": ["physical-object", "textual-tradition", "edition-publication"] },
+            "description": { "type": "string", "minLength": 1 }
+          }
+        },
+        "corpus_coverage": { "type": "string", "minLength": 1 },
+        "coverage_status": { "enum": ["mapped", "partial-map", "unmapped"] },
+        "textual_role": { "type": "string", "minLength": 1 },
+        "relationship_group": { "type": "string", "minLength": 1 },
+        "source_state": { "enum": ["vendored", "registered", "discovery", "blocked-rights", "blocked-access"] },
+        "repo_path": { "type": "string", "pattern": "^sources/" },
+        "access": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/access" } },
+        "restoration_suitability": { "enum": ["none", "targeted", "high"] },
+        "restoration_note": { "type": "string" },
+        "priority": { "enum": ["P0", "P1", "P2", "P3", "P4"] },
+        "next_action": { "type": "string", "minLength": 1 }
+      }
+    }
+  }
+}

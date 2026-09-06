@@ -2,6 +2,14 @@
 
 ## Decision
 
+Revised 2026-09-04. [Method 2.0](TEXTUAL_ADJUDICATION_METHOD.md) governs
+source selection and publication; the [approach review](TEXTUAL_RESTORATION_APPROACH_REVIEW_2026-09-04.md)
+documents the revised calibration and acceptance policy.
+
+The [central research log](TEXTUAL_RESTORATION_RESEARCH_LOG.md) records the
+evidence-linked history, decisions, corrections and unresolved work. Add an
+entry after each substantive pass; the detailed reports remain its evidence.
+
 The People's Open Bible will maintain a dedicated, source-grounded program for
 the Dead Sea Scrolls and other ancient Hebrew, Aramaic, and Greek witnesses.
 The program has two related outputs:
@@ -41,15 +49,17 @@ inspired or erase the historical and theological work of canon discernment.
 - **Canonical status stays explicit.** Biblical, deuterocanonical,
   extra-canonical, sectarian, documentary, and unidentified material remain
   distinguishable in data and readers.
-- **Two different models can establish working accuracy.** When two genuinely
+- **Two different models provide a working transcription check.** When two
   different model families independently return the exact same diplomatic
   glyphs or tokens from the same image region, POB treats that reading as
   `machine-consensus-accepted`. The models may not see one another's output.
-  Two runs of the same model do not satisfy this rule.
+  Two runs of the same model do not satisfy this rule. Accuracy must still be
+  measured on frozen controls; consensus is not historical corroboration.
 - **Agreement does not turn supplied ink into visible ink.** If both models
   independently supply the same damaged or missing letters, the result is
-  `machine-consensus-restored`: accepted for comparison and translation, but
-  still bracketed and disclosed as a restoration rather than an observation.
+  `machine-consensus-restored`: accepted as a working comparison hypothesis,
+  bracketed and disclosed as a restoration. Translation adoption requires a
+  separate source-selection argument and application review.
 
 ## Evidence lanes
 
@@ -58,7 +68,7 @@ inspired or erase the historical and theological work of canon discernment.
 | A — Source image | Lawfully vendored original or externally linked restricted image | Yes, when legible |
 | B — Deterministic derivative | Crop, grayscale, contrast, threshold, or non-generative spectral combination | Yes, checked against A |
 | C — Diplomatic transcription | Visible characters, line breaks, scribal marks, and lacunae | Yes |
-| D — Restoration hypotheses | Ranked completions with method, parallel, confidence, and model-consensus status | Yes after exact two-model agreement, with supplied letters disclosed |
+| D — Restoration hypotheses | Ranked completions with method, parallel, confidence, and model-consensus status | Only after a separate textual argument and review; agreement alone is insufficient |
 | E — Normalized text | Searchable Hebrew/Aramaic/Greek with orthographic normalization mapped to C | Yes |
 | F — Alignment and apparatus | Witness-to-witness units, variants, omissions, additions, and transpositions | Yes |
 | G — POB translation | English rendering plus rationale and alternatives | Publication output |
@@ -150,7 +160,12 @@ as direct surviving originals.
 5. Promote exact agreement on visible text to `machine-consensus-accepted`.
    Promote exact agreement on supplied text to `machine-consensus-restored`
    while preserving brackets and the restoration rationale. Disagreements stay
-   `machine-hypothesis` until another independent pass resolves them.
+   `machine-hypothesis` until evidence resolves them. These are working
+   transcription states, not source-selection or publication approvals.
+
+Measure the workflow on frozen controls before scaling acceptance. Separate
+image-only reading from context-informed completion and record their different
+error modes. A later model reviewing prior outputs is not a blind pass.
 
 ### Phase 3 — Restoration hypotheses
 
@@ -166,7 +181,7 @@ For each lacuna, store zero or more candidate restorations with:
   model-consensus decision.
 
 The diplomatic layer continues to show the lacuna and brackets even when a
-candidate is accepted by model consensus. Translation records must allow a
+candidate receives working model consensus. Translation records must allow a
 reader or export to distinguish and optionally exclude restored wording.
 
 ### Phase 4 — Witness alignment and collation
@@ -198,12 +213,14 @@ alignment, and variants—not merely a consensus string. It records:
 
 ### Phase 6 — Machine corroboration and publication
 
-- At least two blinded passes from different model families. Exact agreement is
-  the working accuracy gate; historical textual witnesses add a stronger,
-  separately recorded form of corroboration.
-- Exact agreement between two different, blinded model families is sufficient
-  for working acceptance. Independent manuscript or version support is still
-  recorded when available and raises the evidentiary strength further.
+- At least two blinded passes from different model families for fresh image
+  transcription. Exact agreement is a working consistency check; measured
+  accuracy and historical corroboration are separate fields.
+- Working transcription acceptance does not confer publication authority.
+  Complete the source-selection argument, English review, and synchronized
+  source/English/notes/export checks. Published-text research uses its own
+  documented evidence and review route; fresh images are required for claims
+  that depend on fresh decipherment or unresolved marks.
 - Public issue/discussion link for disputed units.
 - Corpus release only after license, hash, schema, image-region, transcription,
   corroboration, and uncertainty checks pass.
@@ -219,7 +236,9 @@ recorded, the diplomatic text is image-addressable, every supplied character is
 marked, two different blinded models have been reconciled, the comparison
 apparatus is stored, and the model-consensus status is explicit. Public claims
 must say **dual-model transcribed** or **dual-model restored and source-compared**,
-not human-verified.
+not human-verified. These descriptions must match work actually performed.
+For published-text cases, say “published-source comparison.” Completion of
+research does not certify a novel reading, recovered autograph, or publication.
 Publication and deployment remain separate steps. The target order and source
 packages are defined in
 [`TEXTUAL_RESTORATION_PRIORITIES.md`](TEXTUAL_RESTORATION_PRIORITIES.md).

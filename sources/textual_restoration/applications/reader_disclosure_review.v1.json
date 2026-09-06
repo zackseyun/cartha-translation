@@ -1,0 +1,84 @@
+{
+  "schema_version": "1.0.0",
+  "checked_date": "2026-09-05",
+  "scope": "Local source-code trace, local export repair and isolated web-filter execution; not a deployed-reader audit",
+  "consulted_sources": [
+    {
+      "repository": "CarthaCdkService",
+      "path": "lambdas/cob-publisher/index.mjs",
+      "sha256": "21c11b8156ef5ed8afba34443abe2aae89e4123b5ff4c44308fb2c2932abd938",
+      "locators": "331-353 inline-note extraction; 629 onward compileBooks",
+      "observation": "Publisher carries referenced marker/text pairs into compiled records; optional reason is omitted here. No Lambda execution or deployment was performed."
+    },
+    {
+      "repository": "cartha.website",
+      "path": "src/app/(main)/peoples-open-bible/BibleReader.jsx",
+      "sha256": "dceb26ab849cb30966b8539f3afb27dc5043e36922a1a950aa45678ccff18775",
+      "locators": "18535-18621 marker lookup and render plan; 18729 hover text",
+      "observation": "Rendering components accept marker/text/reason, but their existence does not prove the loader delivers note arrays."
+    },
+    {
+      "repository": "cartha.website",
+      "path": "src/app/(main)/peoples-open-bible/bibleData.js",
+      "sha256": "9d97b47c95ce9a3c5b37010846229c4acbce731dd9490dc3dcb5606ebb957d97",
+      "locators": "213-261 stripping policy and sanitizer; 360-384 full/lazy-book loader",
+      "observation": "The POB sanitizer selects a filter that removes markers and deletes note arrays before rendering. This is a separate remaining gap, not repaired in this pass."
+    },
+    {
+      "repository": "cartha.ai.mobile",
+      "path": "cartha_ai_mobile/lib/screens/bible/bible_data.dart",
+      "sha256": "3a7e193ae59ef05c78e9a2b99ea4ae628bab2a86a2d537034b3f3841792ac563",
+      "locators": "992-1053 BibleFootnote/BibleVerse parsing; 1114-1171 runtime/bundle selection",
+      "observation": "Native parser retains nonempty note bodies and optional reasons; downloaded runtime content is preferred with applicable bundle fallback. This is code inspection, not a running app check."
+    },
+    {
+      "repository": "cartha.ai.mobile",
+      "path": "cartha_ai_mobile/lib/screens/bible/bible_footnote_render.dart",
+      "sha256": "6dd6499622636811a61819be6dbbbb0f11b7de93592628a321edd89acc80fbd0",
+      "locators": "module contract; 506 onward rendering; 1065-1181 note display",
+      "observation": "Native rendering has note-body and optional-reason display paths. No Flutter rendering or device test was run."
+    },
+    {
+      "repository": "cartha.ai.mobile",
+      "path": "cartha_ai_mobile/lib/services/bible/pob_runtime_sync.dart",
+      "sha256": "2584c3c403817e9122a37d720f5b1b6823bafbbba3a38ee1b4e755902cf67e06",
+      "locators": "292-333 fetch; 350-384 runtime normalization",
+      "observation": "Inspected normal JSON path applies metadata overrides and re-encodes the payload rather than deleting its verse footnotes. Network fetching was not executed."
+    }
+  ],
+  "web_filter_probe": {
+    "mode": "isolated-execution-of-actual-web-note-filter-block",
+    "web_data_sha256": "9d97b47c95ce9a3c5b37010846229c4acbce731dd9490dc3dcb5606ebb957d97",
+    "candidate_sha256": "7f7ee48c97c0d8ef54419ba653f075f5a7b40baa784bf9e2d96231dda02f6797",
+    "block_sha256": "62691e36da30d941ba66e0e7c0474d8b7263a1e85978ae7e30f6fab5c70e09ff",
+    "first_line": 213,
+    "last_line": 251,
+    "cases": [
+      {
+        "translation_id": "pob", "filter_selected": true,
+        "before_note_count": 2, "after_note_count": 0,
+        "after_has_note_array": false, "text_changed": true,
+        "after_text": "When the Most High gave the nations their inheritance, when he separated the sons of man, he fixed the boundaries of the peoples according to the number of the sons of God."
+      },
+      {
+        "translation_id": "kjv", "filter_selected": false,
+        "before_note_count": 2, "after_note_count": 2,
+        "after_has_note_array": true, "text_changed": false,
+        "after_text": "When the Most High gave the nations their inheritance, when he separated the sons of man[b], he fixed the boundaries of the peoples according to the number of the sons of God[a]."
+      }
+    ],
+    "entire_sanitizer_executed": false,
+    "react_rendered": false,
+    "deployed_reader_checked": false
+  },
+  "local_export_result": {
+    "current_preflight": "sources/textual_restoration/applications/deut32_8_preflight.v2.json",
+    "historical_preflight_retained": "sources/textual_restoration/applications/deut32_8_preflight.v1.json",
+    "note_bodies_preserved_after_fix": true,
+    "full_critical_source_object_exported": false,
+    "canonical_text_changed": false,
+    "review_gates_advanced": false,
+    "other_repositories_modified": false,
+    "deployment_performed": false
+  }
+}

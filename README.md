@@ -54,6 +54,10 @@ inspect the alternatives, and propose a better one.
 See [PHILOSOPHY.md](PHILOSOPHY.md) for the full statement on openness,
 transparency, and our theological commitments.
 
+For the ongoing biblical source-comparison and restoration program, see the
+[research log](docs/TEXTUAL_RESTORATION_RESEARCH_LOG.md): method, evidence,
+decisions, corrections, unsuccessful attempts, and work still outstanding.
+
 ## Use it freely
 
 ### Free to use in any way

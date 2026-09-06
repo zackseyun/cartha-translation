@@ -1,0 +1,67 @@
+{
+  "schema_version": "1.0.0",
+  "declared_date": "2026-09-05",
+  "stage": "wider-spatial-candidate-renderer-check",
+  "selection_before_target_values": true,
+  "segment": "merge5",
+  "asset_availability": "Only merge5 has a local mapping/texture/mask bundle; CT numbered slices 1648–1653 only. No acquisition or second-segment inference.",
+  "columns": [
+    0,
+    123,
+    246,
+    369,
+    492,
+    615,
+    738,
+    861,
+    984,
+    1107,
+    1230,
+    1353,
+    1476,
+    1599,
+    1722,
+    1845,
+    1968
+  ],
+  "whole_height_rows": [
+    0,
+    419,
+    839,
+    1258,
+    1678,
+    2098,
+    2517,
+    2937,
+    3357
+  ],
+  "acquisition_band_rows": [
+    1675,
+    1676,
+    1677,
+    1678,
+    1679,
+    1680,
+    1681,
+    1682,
+    1683
+  ],
+  "selection_rule": "Cartesian product columns × union of whole_height_rows and acquisition_band_rows; increasing y then x; remove the nine coordinates in prior en_gedi_renderer_protocol.v1.json. Assign overlap rows to acquisition-band. No texture/CT intensity-based selection; no redraw.",
+  "prior_renderer_protocol": "sources/textual_restoration/discovery/en_gedi_renderer_protocol.v1.json",
+  "candidate_rule": "All eight combinations of the previous frozen radii [3.5,7], slice offsets [0,2], and standard/historical-c10 interpolation. Reuse exact existing line_positions and sample_line implementation; half-voxel spacing, duplicated center, float32 coordinates, nearest-even rounding and maximum aggregation unchanged.",
+  "primary_candidate": {
+    "radius_parameter": 7,
+    "slice_index_offset": 0,
+    "interpolator": "historical-c10-corner"
+  },
+  "primary_candidate_origin": "Supported by the prior nine-pixel experiment; those values are development evidence and excluded from this new sample.",
+  "coordinate_conventions": "Unmodified merge5 PNG: integer x column, y row, top-left origin, no flips. Mapping row-major six scalars x,y,z,nx,ny,nz. Volume access slices[z][y,x], integer filenames with optional predeclared +2 hypothesis. No registration to master image.",
+  "exclusion_policy": "Mask not255 → mask-invalid for all candidates. For valid mappings preflight every sampled trilinear neighborhood using coordinates and dimensions only, before any target texture value. Record exact missing slice numbers or out-of-volume coordinates; keep unavailable outcomes in full denominator and do not substitute zeros. Invalid/nonfinite/zero-normal data fail the run. No replacement coordinates or new acquisition.",
+  "criterion": {
+    "residual_definition": "predicted_uint16_max minus archived_texture_uint16",
+    "observed_exact_match": "Every evaluable target has residual exactly0; no contrast fit, tolerance tuning or outlier removal.",
+    "full_predeclared_sample_pass": "Requires at least one evaluable point, no mask-valid unavailable points and zero nonzero residuals. Mask-invalid points remain in denominator but are not valid texture predictions.",
+    "failure_reporting": "Any nonzero residual fails observed exact-match; any mask-valid unavailable point makes full spatial validation incomplete. Report primary and all controls, per-group exact count, signed residual histogram, MAE, RMSE, maximum absolute error, full per-point raw residuals and common-coverage comparison. Report candidate ties without automatic winner."
+  },
+  "limits": "Acquisition-band is purposeful availability-informed geometry, not representative of all segment heights. Other rows expose missing coverage. No independent ink/damage labels, original-renderer execution, recovered letters, new imagery, master registration, source change or publication approval."
+}

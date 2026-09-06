@@ -1,0 +1,119 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://peoplesbible.com/schemas/ot-passage-coverage.schema.json",
+  "title": "POB Old Testament passage coverage record",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schema_version", "updated", "records"],
+  "properties": {
+    "schema_version": { "const": "1.3.0" },
+    "updated": { "type": "string", "format": "date" },
+    "records": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": [
+          "id", "reference", "witness_id", "coverage_status", "passage_span",
+          "coverage_basis", "mapping_source", "holding_source", "rights_status",
+          "pixels_acquired", "transcription_collated", "next_gate"
+        ],
+        "properties": {
+          "id": { "type": "string", "pattern": "^[A-Z0-9.]+@[a-z0-9-]+$" },
+          "reference": { "type": "string", "minLength": 1 },
+          "witness_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+          "manuscript_id": { "type": "string", "pattern": "^[a-z0-9][a-z0-9-]*$" },
+          "standard_siglum": { "type": "string", "minLength": 1 },
+          "coverage_status": { "enum": ["present", "attested-absence", "no-coverage", "uncertain"] },
+          "passage_span": { "type": "string", "minLength": 1 },
+          "coverage_basis": { "enum": ["institutional-image-map", "published-transcription-index"] },
+          "page_label": { "type": "string", "minLength": 1 },
+          "canvas_id": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "image_service_id": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "source_snapshot": { "type": "string", "minLength": 1 },
+          "transcription_source": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "transcription_locators": {
+            "type": "array", "minItems": 1, "uniqueItems": true,
+            "items": { "type": "string", "minLength": 1 }
+          },
+          "mapping_source": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "holding_source": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "rights_status": { "enum": ["public-domain", "open-license", "study-only", "permission-required", "unknown"] },
+          "image_rights_status": { "enum": ["public-domain", "open-license", "study-only", "permission-required", "unknown"] },
+          "official_image_record": { "type": "string", "format": "uri", "pattern": "^https://" },
+          "image_plate_id": { "type": "string", "minLength": 1 },
+          "image_region_status": { "enum": ["not-located", "visually-located-unmeasured", "coordinates-recorded"] },
+          "reading_support_status": { "enum": ["supports-reading", "indeterminate-lacuna", "coverage-only"] },
+          "pixels_acquired": { "type": "boolean" },
+          "image_inspection": {
+            "type": "object", "additionalProperties": false,
+            "required": ["checked_date", "mode", "generated_images_used", "publication_authorized", "complete_image_verification", "private_copy_key", "rights_url", "locator", "assessment", "assets"],
+            "properties": {
+              "checked_date": { "type": "string", "format": "date" },
+              "mode": { "const": "single-editor-context-informed" },
+              "generated_images_used": { "const": false },
+              "publication_authorized": { "const": false },
+              "complete_image_verification": { "const": false },
+              "private_copy_key": { "type": "string", "pattern": "^[a-zA-Z0-9-]+$" },
+              "rights_url": { "type": "string", "format": "uri", "pattern": "^https://" },
+              "locator": { "type": "string", "minLength": 1 },
+              "assessment": { "type": "string", "minLength": 1 },
+              "assets": {
+                "type": "array", "minItems": 1,
+                "items": {
+                  "type": "object", "additionalProperties": false,
+                  "required": ["file_name", "url", "sha256", "width", "height", "tile"],
+                  "properties": {
+                    "file_name": { "type": "string", "pattern": "^[a-f0-9]{16}$" },
+                    "url": { "type": "string", "format": "uri", "pattern": "^https://" },
+                    "sha256": { "type": "string", "pattern": "^[a-f0-9]{64}$" },
+                    "width": { "type": "integer", "minimum": 1 },
+                    "height": { "type": "integer", "minimum": 1 },
+                    "tile": { "type": "string", "pattern": "^x[0-9]+-y[0-9]+-z[0-9]+$" }
+                  }
+                }
+              }
+            }
+          },
+          "transcription_collated": { "type": "boolean" },
+          "next_gate": { "enum": ["rights-review", "image-acquisition", "image-verification", "transcription", "collation", "adjudication"] },
+          "notes": { "type": "string" }
+        },
+        "allOf": [
+          {
+            "if": { "properties": { "pixels_acquired": { "const": true } } },
+            "then": {
+              "required": ["image_inspection", "official_image_record", "image_plate_id"],
+              "properties": {
+                "image_rights_status": { "const": "study-only" },
+                "coverage_basis": { "const": "published-transcription-index" },
+                "image_region_status": { "enum": ["visually-located-unmeasured", "coordinates-recorded"] }
+              }
+            },
+            "else": { "not": { "required": ["image_inspection"] } }
+          },
+          {
+            "if": { "properties": { "coverage_basis": { "const": "institutional-image-map" } } },
+            "then": {
+              "required": ["page_label", "canvas_id", "image_service_id"],
+              "properties": {
+                "pixels_acquired": { "const": false },
+                "transcription_collated": { "const": false }
+              }
+            }
+          },
+          {
+            "if": { "properties": { "coverage_basis": { "const": "published-transcription-index" } } },
+            "then": {
+              "required": ["manuscript_id", "standard_siglum", "source_snapshot", "transcription_source", "transcription_locators", "image_rights_status", "reading_support_status"],
+              "properties": {
+                "transcription_collated": { "const": true }
+              }
+            }
+          }
+        ]
+      }
+    }
+  }
+}

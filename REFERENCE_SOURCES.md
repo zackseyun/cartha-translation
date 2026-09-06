@@ -15,24 +15,29 @@ for our AI-assisted pipeline.
 
 ## Position assessment — where we stand per book
 
-Our source position across the deuterocanonical corpus, as of
-**2026-04-20**:
+Reassessed **2026-09-04**. The former “optimal,” “near-optimal,” “definitive,”
+and “sole witness” labels are withdrawn. They confused an available translation
+input with a demonstrated best critical text. The former numerical prediction
+of how little Tobit would differ from a Qumran-first translation was untested.
+This correction does not change the consultation/reproduction policy below.
 
-| Book | Original language | Position | Why |
-|---|---|---|---|
-| **Sirach** (SIR) | Hebrew | **Strongest** | Schechter 1899 Cairo Geniza (PD) covers ~½ directly; Sefaria/Kahana composite covers ~⅔. Translate from Hebrew for most of it, LXX (Swete) for the rest — exactly what NRSV does. |
-| **Tobit** (TOB) | Aramaic | **Near-optimal** | LXX Long Recension (Codex Sinaiticus via Swete, PD) tracks the same textual tradition as Qumran 4Q196-200. Neubauer 1878 Hebrew back-translation (PD, via Sefaria) supplies Semitic phrasing. Fitzmyer DJD XIX consulted as reference for the ~20% Qumran overlap. Result is nearly indistinguishable from a Qumran-first translation — a specialist would notice maybe 5-10 verses. |
-| **1 Esdras** (1ES) | Greek | **Optimal** | 1ES is a Greek composition. Swete LXX (PD) is the primary source. Our MT alignment table maps 1ES verses to WLC Hebrew parallels in 2 Chr / Ezra / Neh for name-spelling and idiom locks. The "Three Youths" block (3:1-5:6) is Greek-only; no Hebrew parallel exists. |
-| **Wisdom of Solomon** (WIS) | Greek | **Optimal** | Greek is the original language. No older source exists. Swete LXX (PD) is definitive. |
-| **Judith** (JDT) | Hebrew (lost) | **Optimal** | The Hebrew Vorlage is entirely lost. Swete LXX (PD) is the sole surviving witness. |
-| **Baruch** (BAR) | Hebrew (lost) | **Optimal** | Hebrew lost. Swete LXX (PD) sole witness. |
-| **Letter of Jeremiah** (LJE) | Hebrew (lost) | **Optimal** | Hebrew lost. Swete LXX (PD) sole witness. |
-| **1 Maccabees** (1MA) | Hebrew (lost) | **Optimal** | Hebrew lost. Swete LXX (PD) sole witness. |
-| **2 Maccabees** (2MA) | Greek | **Optimal** | Greek original. Swete LXX (PD). |
-| **3 Maccabees** (3MA) | Greek | **Optimal** | Greek original. Swete LXX (PD). |
-| **4 Maccabees** (4MA) | Greek | **Optimal** | Greek original. Swete LXX (PD). |
-| **Greek Additions to Esther** (ADE) | Greek | **Optimal** | Greek is the original for the additions proper. Swete LXX (PD). |
-| **Greek Additions to Daniel** (ADA — Susanna, Bel, Prayer of Azariah, Song of Three) | Greek | **Optimal** | Greek is the original. Swete LXX (PD). |
+| Book / group | Available working route | Required comparison before a quality claim |
+|---|---|---|
+| **Sirach** | Hebrew witness/composite resources and Greek control | Keep each Hebrew manuscript separate; map actual survival and compare Greek/Syriac. A composite is not an independent manuscript |
+| **Tobit** | Greek long-form control plus Hebrew/Aramaic witness research | Compare Greek recensions, 4Q196–200 where extant, and relevant versions. A modern or late Hebrew back-translation cannot replace direct Aramaic evidence |
+| **1 Esdras** | Greek control and Hebrew parallel mapping | Assess Greek variants and literary relationships; Hebrew parallels are not automatically the lost source of every Greek sentence |
+| **Wisdom; 2–4 Maccabees** | Greek working texts | Compare manuscript and critical-edition evidence; Greek composition does not make Swete definitive |
+| **Judith; Baruch; Letter of Jeremiah; 1 Maccabees** | Greek working texts and versional controls | Establish each book's textual history and relevant language hypotheses without treating Swete as its only surviving witness |
+| **Esther additions** | Greek working texts | Identify the textual form and compare relevant Greek traditions; distinguish attested Greek from hypotheses about prior composition |
+| **Daniel additions** | Greek working texts | Keep Old Greek and Theodotion-associated forms distinct and assess passage-specific variants and source-language questions |
+
+The [IOSCS edition guide](https://septuaginta.uni-goettingen.de/ioscs/editions/)
+distinguishes Swete's edition from broader critical work. The IAA also records
+[7Q2, a Greek Letter of Jeremiah manuscript](https://www.deadseascrolls.org.il/explore-the-archive/manuscript/7Q2-1?locale=en_US):
+it is plainly not the same thing as a modern Swete volume. See the
+[OT/NT coverage audit](docs/BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md)
+for the catalogue-backed comparison plan. None of these rows certifies a
+completed critical collation or changes the chosen canonical text.
 
 **Operational note.** `ADE` and `ADA` are now best thought of as
 aggregate source-stream labels. The active translation units are:
@@ -43,11 +48,13 @@ aggregate source-stream labels. The active translation units are:
 This keeps the source-preparation history auditable while giving Phase 9
 clean reader-facing drafting targets.
 
-**Net assessment:** We are at optimal — or within a hair of it — for
-the entire deuterocanonical corpus. The only meaningful original-
-language gap is Tobit's ~20% Qumran coverage, and the consulted-
-reference approach defined below closes most of that gap in practice
-without any licensing risk.
+**Net assessment — corrected 2026-09-05:** Available working texts do not
+establish an optimal critical source. The book-specific comparisons above
+remain necessary; consultation does not recover missing original-language
+material or settle source rights. This replaces an obsolete paragraph that
+contradicted the September 4 reassessment. The
+[restoration research log](docs/TEXTUAL_RESTORATION_RESEARCH_LOG.md) records
+the correction and the evidence-linked program history.
 
 ## The three zones
 

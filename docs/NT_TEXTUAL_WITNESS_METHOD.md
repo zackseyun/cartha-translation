@@ -2,6 +2,11 @@
 
 ## Scope
 
+Revised 2026-09-04 under method 2.0. The
+[approach review](TEXTUAL_RESTORATION_APPROACH_REVIEW_2026-09-04.md) also applies
+to this track: calibrate model review, separate transcription certainty from
+historical priority, and test English fidelity independently of source changes.
+
 Apply the [shared source-wording method](TEXTUAL_ADJUDICATION_METHOD.md) to
 Greek, not to a guessed Hebrew original of the New Testament. The working
 target is the earliest attainable Greek text within a documented textual
@@ -11,6 +16,15 @@ behavior and relationships can outweigh date.
 The [66-book map](HEBREW_AND_NT_VARIANT_MAP.md) and
 [priority casebook](TEXTUAL_VARIANT_CASEBOOK.md) are the initial research queue.
 They do not authorize silent source replacement.
+
+The [2026-09-04 source coverage audit](BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md)
+adds the catalogue-backed discovery requirements, including minuscules,
+lectionaries, commentary manuscripts, versions and quotations. UBS6 is an
+available consultation target; the publisher currently schedules NA29 for
+2027-02-28. Neither has been imported by this audit. Record the actual edition
+consulted rather than calling SBLGNT the latest apparatus.
+[UBS6](https://shop.die-bibel.de/Greek-New-Testament-GNT6.-Standardausgabe/5310),
+[NA29](https://shop.die-bibel.de/Novum-Testamentum-Graece-NA29./5320).
 
 ## Three evidence levels
 
@@ -36,6 +50,11 @@ transmission, not an automatic count of manuscripts or proof of an autograph.
 
 - Original scribe, immediate correction, later correction, retracing, marginal
   annotation, and modern editorial supply stay separate.
+- A version label is not a uniform text. Record the Latin/Syriac/Coptic or
+  other version's precise revision, edition and manuscript basis; check its
+  own variants and apparatus conventions before inferring Greek. The
+  [Psalm 145 Latin follow-up](PSALM_145_SOURCE_COMPARISON_2026-09-05.md) is an
+  OT demonstration of this shared safeguard, not an NT attestation.
 - A missing leaf is not an omission; a manuscript with no coverage is not
   counted on either side. Being an early papyrus does not imply it preserves
   the passage under discussion.
@@ -89,6 +108,13 @@ not itself a surviving manuscript of that date. No numeral has been newly
 deciphered or selected by this import.
 
 ## Publication boundary
+
+Treat the current Mark 1:41 assessment as a version-1 working decision until
+its dossier has been re-reviewed. A newer model reading the old argument does
+not constitute a second blinded review. For fresh image work, model consensus
+is a working transcription state; publication still requires a separate source
+decision and review evidence. Existing scholarly apparatuses may support
+published-text decisions without repeating every image transcription.
 
 For each case, store its witness matrix, exact attestation, alternatives,
 dependency cautions, chronological effect, counterargument, and reasoned

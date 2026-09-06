@@ -1,10 +1,22 @@
 # Swete Septuagint (LXX) — Public Domain
 
-**Status: in progress.** Swete's 1909–1930 *The Old Testament in Greek* is
+**Status: in progress.** Swete's *The Old Testament in Greek* is
 our working Septuagint source. It is fully public domain and includes all
 deuterocanonical books.
 
+Edition correction, checked 2026-09-05: the hash-pinned volume III PDF is
+the **third edition, Cambridge 1905** (title/imprint PDF pages 7–8). The former
+1909–1930 blanket date was incorrect for this file. Volumes I/II were not
+newly checked in this pass; cite each actual scan's imprint separately.
+See the [manifest](MANIFEST.md) and
+[Isaiah 54 inspection](../../../docs/ISAIAH_54_PESHER_REVIEW_2026-09-05.md#printed-greek-apparatus-follow-up--2026-09-05).
+
 ## Why Swete and not Rahlfs
+
+The following is historical acquisition rationale, not a current exhaustive
+licensing survey or a reason to exclude scholarly comparisons. Subsequent
+research also uses a pinned digital Rahlfs control; see the updated
+[Rahlfs record](../rahlfs/README.md). Swete is not the sole textual authority.
 
 Rahlfs 1935 is also public domain, but no clean CC-BY-4.0 digital
 transcription of Rahlfs exists that we can vendor. The available digital
@@ -15,7 +27,7 @@ editions are either:
 - `CCAT/CATSS LXXM` — restrictive non-redistribution license
 - STEPBible `TAGOT` — announced but not yet released as of 2026-04-18
 
-Swete's 1909–1930 edition is on the Internet Archive as scanned PDFs and
+Swete's edition is on the Internet Archive as scanned PDFs and
 contains every deuterocanonical book we need:
 
 - **Vol. I** — Genesis through 4 Kingdoms (= 2 Kings)
@@ -71,7 +83,8 @@ See `tools/transcribe_lxx.py` (planned) for the pipeline implementation.
 
 ## License
 
-Swete's text is in the public domain (published 1909–1930; author died 1917).
+Swete's printed text is treated here as public domain; the checked volume III
+imprint is 1905. This pass corrects bibliography, not the project's legal policy.
 Archive.org hosts the digitized scans under a non-copyright rights statement;
 the underlying printed text carries no copyright.
 
@@ -83,6 +96,6 @@ of the People's Open Bible.
 When quoting from our transcription:
 
 > Greek text transcribed from Henry Barclay Swete, *The Old Testament in
-> Greek according to the Septuagint*, Vols. I–III (Cambridge University
-> Press, 1909–1930), public-domain scans hosted at Internet Archive.
+> Greek according to the Septuagint* (Cambridge University Press; cite the
+> particular volume, edition and imprint), public-domain scans hosted at Internet Archive.
 > Transcription by People's Open Bible, CC-BY 4.0.

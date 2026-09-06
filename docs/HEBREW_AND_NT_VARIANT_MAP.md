@@ -4,7 +4,7 @@ This is a corpus-wide **screening map**, not a completed manuscript apparatus or
 
 Scanned **31,221 canonical verse files across 66 books**.
 
-- Local POB footnote signals: **588 passages**. Some are lexical or interpretive false positives requiring review.
+- Local POB footnote signals: **592 passages**. Some are lexical or interpretive false positives requiring review.
 - WLC written/read variants: **1,260 qere/ketiv records**. These are Masoretic reading traditions, not that many independent manuscript disagreements.
 - WLC editorial/transcription annotations: **1,072 records**. Accent, vowel, consonant, and other editorial notes remain a separate layer.
 - NT edition apparatus: **6,934 entries at 4,468 reference anchors**, across all 27 NT books.
@@ -25,7 +25,7 @@ Hebrew XML references retain WLC numbering. POB numbering, especially Psalms, mu
 |---|---:|---:|---:|---:|---:|
 | ot/1 chronicles | 943 | 45 | 41 | 6 | 0 |
 | ot/1 kings | 817 | 5 | 45 | 15 | 0 |
-| ot/1 samuel | 811 | 23 | 70 | 23 | 0 |
+| ot/1 samuel | 811 | 24 | 70 | 23 | 0 |
 | ot/2 chronicles | 822 | 12 | 38 | 19 | 0 |
 | ot/2 kings | 719 | 10 | 73 | 23 | 0 |
 | ot/2 samuel | 695 | 27 | 89 | 26 | 0 |
@@ -34,7 +34,7 @@ Hebrew XML references retain WLC numbering. POB numbering, especially Psalms, mu
 | ot/deuteronomy | 959 | 8 | 25 | 115 | 0 |
 | ot/ecclesiastes | 222 | 3 | 12 | 21 | 0 |
 | ot/esther | 167 | 0 | 12 | 14 | 0 |
-| ot/exodus | 1213 | 6 | 12 | 32 | 0 |
+| ot/exodus | 1213 | 8 | 12 | 32 | 0 |
 | ot/ezekiel | 1273 | 18 | 134 | 40 | 0 |
 | ot/ezra | 280 | 5 | 37 | 27 | 0 |
 | ot/genesis | 1533 | 15 | 16 | 64 | 0 |
@@ -57,7 +57,7 @@ Hebrew XML references retain WLC numbering. POB numbering, especially Psalms, mu
 | ot/numbers | 1289 | 9 | 9 | 33 | 0 |
 | ot/obadiah | 21 | 0 | 1 | 6 | 0 |
 | ot/proverbs | 915 | 13 | 69 | 73 | 0 |
-| ot/psalms | 2578 | 29 | 68 | 65 | 0 |
+| ot/psalms | 2578 | 30 | 68 | 65 | 0 |
 | ot/ruth | 85 | 4 | 13 | 23 | 0 |
 | ot/song of songs | 117 | 0 | 4 | 29 | 0 |
 | ot/zechariah | 211 | 4 | 6 | 19 | 0 |

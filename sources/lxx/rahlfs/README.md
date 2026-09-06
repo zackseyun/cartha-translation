@@ -2,20 +2,26 @@
 
 **Status: NOT vendored.**
 
-This directory is intentionally empty of source text. Earlier plans
-called for vendoring a CC-BY digital transcription of the 1935
-Rahlfs Septuagint here; that plan was abandoned in Phase 8 after
-field research (2026-04-18) confirmed that every digital Rahlfs
-edition is either CC-BY-NC, CC-BY-SA-derived-from-NC, or restrictive
-(CCAT). No CC-BY-compatible Rahlfs exists.
+This directory is intentionally empty of source text. Earlier plans to vendor
+a full digital Rahlfs corpus here were abandoned after the project's
+2026-04-18 source review. That historical review does not establish that every
+present or future digital Rahlfs edition has the same license.
+
+Update, 2026-09-04: the textual-restoration comparisons now contain limited
+pinned Rahlfs control excerpts from OpenScriptorium/lxx-morph, whose metadata
+identifies the text as public domain and morphology as CC BY 4.0. This is not
+a full-corpus import or a completed redistribution-rights review. Keep each
+edition, digital transcription and license snapshot distinct. See the
+[source coverage audit](../../../docs/BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md).
 
 ## What we do instead
 
 Our LXX source is **Swete 1909–1930** (fully public domain;
 [`../swete/`](../swete/)), which we transcribe ourselves via AI
-vision and release under CC-BY 4.0. Swete covers every LXX book
-we need, including the entire deuterocanon. Nothing from Rahlfs
-appears in POB output.
+vision and release under CC-BY 4.0. Swete is a working edition, not a guarantee
+of the best reading or a complete account of all witnesses. The restoration
+pilot's reference excerpts do not replace the canonical source or authorize
+unreviewed changes to reader exports.
 
 For the policy that governs scholarly references not vendored in
 this repository, see
@@ -33,9 +39,10 @@ vendoring a full Rahlfs text. Footnote form:
 *"The NT quotation follows the LXX reading, which differs from the
 Hebrew here."*
 
-## If a clean Rahlfs ever appears
+## Before any full Rahlfs import
 
-If STEPBible's announced TAGOT ships with a CC-BY license, or if
-another clean-licensed Rahlfs appears, this directory can be
-populated and the policy re-evaluated. Until then: Swete is
-primary, Rahlfs is consultation-only.
+Verify the specific project's provenance, terms, and compatibility with the
+intended distribution, then document any policy change explicitly. Until then,
+this directory remains unpopulated and Swete remains the current working
+source where declared. Scholarly comparison with newer critical editions does
+not depend on importing their entire copyrighted apparatuses.

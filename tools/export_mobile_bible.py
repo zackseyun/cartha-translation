@@ -611,6 +611,33 @@ def load_translation_record(book_code: str, chapter: int, verse: int) -> dict[st
     return yaml.safe_load(path.read_text(encoding="utf-8"))
 
 
+def reader_footnotes(record: dict[str, Any], text: str) -> list[dict[str, str]]:
+    """Carry inline-referenced notes in the existing web/mobile reader shape.
+
+    Archival/background notes without a marker in this text are not reader
+    footnotes. Match the publisher's bracket normalization; retain the optional
+    reason understood by both clients. Do not reinterpret manuscript brackets
+    as notes or change the translation string.
+    """
+    raw = (record.get('translation') or {}).get('footnotes')
+    if not isinstance(raw, list):
+        return []
+    notes = []
+    for note in raw:
+        if not isinstance(note, dict) or note.get('text') is None:
+            continue
+        raw_marker = note.get('marker')
+        marker = re.sub(r'^\[|\]$', '', str(raw_marker if raw_marker is not None else '').strip())
+        body = str(note['text']).strip()
+        if not marker or not body or f'[{marker}]' not in text:
+            continue
+        exported = {'marker': marker, 'text': body}
+        if isinstance(note.get('reason'), str) and note['reason'].strip():
+            exported['reason'] = note['reason'].strip()
+        notes.append(exported)
+    return notes
+
+
 def _export_record_verse(verse_num: int, record: dict[str, Any]) -> dict[str, Any] | None:
     text = str(((record.get("translation") or {}).get("text", "")) or "").strip()
     if not text:
@@ -619,6 +646,9 @@ def _export_record_verse(verse_num: int, record: dict[str, Any]) -> dict[str, An
         "verse": verse_num,
         "text": text,
     }
+    notes = reader_footnotes(record, text)
+    if notes:
+        out['footnotes'] = notes
     if record.get("is_superscription") or verse_num == 0:
         out["is_superscription"] = True
     return out
@@ -696,15 +726,12 @@ def export_book(book_code: str) -> dict[str, Any] | None:
                 chapter_complete = False
                 break
 
-            text = str(((record.get("translation") or {}).get("text", "")) or "").strip()
-            if not text:
+            verse_out = _export_record_verse(verse, record)
+            if verse_out is None:
                 chapter_complete = False
                 break
 
-            verses_out.append({
-                "verse": verse,
-                "text": text,
-            })
+            verses_out.append(verse_out)
 
         if not chapter_complete:
             continue

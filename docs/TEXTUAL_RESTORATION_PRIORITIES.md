@@ -2,6 +2,12 @@
 
 ## Decision
 
+Revised 2026-09-04 under [method 2.0](TEXTUAL_ADJUDICATION_METHOD.md).
+The [approach review](TEXTUAL_RESTORATION_APPROACH_REVIEW_2026-09-04.md) gives
+the current assessment and immediate delivery order. The source lists below
+are the long-range research queue, not a requirement to restore every image
+before improving any translation.
+
 The People's Open Bible will attempt this work independently with **Codex as
 the transcription, collation, and textual-reasoning system**. The project will
 not depend on commissioning new human diplomatic transcriptions or
@@ -24,26 +30,30 @@ things separate:
 
 ## No-human operating standard
 
-Two genuinely different model families, run blind from one another, are the
-project's working accuracy gate. Exact agreement is accepted even when a second
-historical witness is unavailable. Two runs of the same model do not count. A
-reading receives one of these statuses:
+Two different model families, run blind from one another, remain the project's
+working transcription gate. Exact agreement may be accepted as a working
+transcription or restoration proposal even when a second historical witness is
+unavailable. Two runs of the same model do not count. Agreement does not
+establish historical priority or authorize publication. Calibration against
+frozen controls is still pending. A reading receives one of these statuses:
 
 | Status | Meaning | May change the POB main text? |
 |---|---|---|
-| `machine-observed` | Codex consistently identifies visible strokes in multiple deterministic views of the same archival image. | Only when the reading is not materially disputed. |
-| `machine-consensus-accepted` | Two different blinded models return the exact same visible diplomatic glyphs or tokens. | Yes. This is the standard accepted transcription state. |
-| `machine-consensus-restored` | Two different blinded models independently supply the exact same damaged or missing letters. | Yes, with brackets and an explicit machine-restoration note. |
-| `machine-corroborated` | The visible reading also agrees with an independent manuscript, open transcription, critical apparatus, or ancient version whose relationship is documented. | Yes, after the comparison record and rationale are complete. |
+| `machine-observed` | Codex identifies visible strokes in deterministic views checked against the original. | Only after separate source selection and application review. |
+| `machine-consensus-accepted` | Two different blinded models return the same visible diplomatic glyphs or tokens. | Working transcription only; separate source selection and review required. |
+| `machine-consensus-restored` | Two different blinded models supply the same damaged or missing letters. | Agreement alone is insufficient; retain supplied status and a separate textual argument. |
+| `machine-corroborated` | A reading has comparison support with documented relationships. | Only after source selection, English review, and application checks. |
 | `machine-hypothesis` | A plausible completion based on spacing, grammar, orthography, or a parallel, but the letters are not fully visible. | No. It remains in the apparatus or research record. |
 | `lost` | The material is physically absent or no reading survives. | No. Missing text is never presented as recovered ink. |
 | `visual-reconstruction` | ImageGen rendering made from an already documented reading or hypothesis. | Never. Display only. |
 
 A reading produced by only one model remains `machine-hypothesis`. Exact
-agreement by two different blinded models promotes it to the appropriate
-machine-consensus state. Independent historical corroboration is stronger and
-must be recorded when available, but it is not required for working acceptance.
-Confidence scores alone do not substitute for exact agreement.
+agreement by two different blinded models assigns the appropriate working
+machine-consensus state. Independent historical corroboration must be recorded
+when available, but is not required for working transcription acceptance.
+An edition or transcription of the same manuscript is not an independent
+historical witness. Neither confidence scores nor exact agreement establish
+the accuracy of a supplied reconstruction.
 
 ## Restoration priority queue
 
@@ -53,6 +63,12 @@ but legibility, textual relationships, and transmission explanations can
 outweigh age. The method is applied in the [three-passage report](HEBREW_PILOT_ADJUDICATION.md).
 
 ### Priority 0 — Build the comparison system first
+
+The registry, coverage, comparison records, and one research selection bundle
+now exist. Next, calibrate the image workflow, close the thirteen current dossiers,
+and implement one fully reviewable source/English application package. Run an
+English-only fidelity track alongside this work. See the review's ordered
+delivery sequence; avoid expanding scaffolding without finishing cases.
 
 First working demonstration: [three Hebrew variants and their English
 effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.
@@ -195,9 +211,10 @@ For each target:
    apparatuses, and ancient versions.
 7. Assign the observed, model-consensus, historically corroborated,
    hypothesis, or lost status at token level.
-8. Emit the apparatus and a POB decision record. Two-model exact agreement may
-   enter the main text; matching supplied letters remain visibly bracketed and
-   labeled as machine-restored.
+8. Emit the apparatus and a POB decision record. Main-text use requires a
+   separate source-selection argument, English review, and synchronized
+   application. Matching supplied letters retain their restoration status.
+   Consensus flags alone cannot authorize a canonical change.
 9. Optionally ask ImageGen to create a complete-looking educational image from
    the already documented text. Watermark it **RECONSTRUCTED — NOT MANUSCRIPT
    EVIDENCE**, store the prompt and source IDs, and prevent the image from

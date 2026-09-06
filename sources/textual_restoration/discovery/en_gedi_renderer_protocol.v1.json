@@ -1,0 +1,21 @@
+{
+  "schema_version": "1.0.0",
+  "declared_date": "2026-09-05",
+  "stage": "candidate-renderer-numerical-check",
+  "historical_code_commit": "f8483920c3587f96c5866e9c8e7336f697a86935",
+  "exact_export_revision_known": false,
+  "selection_basis": "Geometric horizontal neighbors of the previously observed center; no glyph or new texture-value selection. All candidates fixed before reading the new texture values.",
+  "development_texture_xy": [[984, 1679]],
+  "held_out_texture_xy": [[968, 1679], [972, 1679], [976, 1679], [980, 1679], [988, 1679], [992, 1679], [996, 1679], [1000, 1679]],
+  "radius_parameters_voxels": [3.5, 7.0],
+  "radius_rationale": "Preserve the unresolved half-axis versus radius interpretation of the paper's seven-voxel axis; do not fit a radius to texture values.",
+  "sampling_interval_voxels": 0.5,
+  "sampling_loop": "i=0 through int(radius/interval)-1; both signs; center duplicated",
+  "slice_index_offsets": [0, 2],
+  "interpolators": ["standard-trilinear", "historical-c10-corner"],
+  "numeric_conventions": "Cast position and normal to float32; normalize normal with a float64 norm and cast to float32; form scaled normal in float64 then cast to float32; add/subtract in float32. Interpolate in float64; nearest-even integer rounding. Candidate emulation, not verified bit-exact OpenCV execution.",
+  "aggregation": "maximum of rounded samples",
+  "missing_data_policy": "Fail on invalid mask, nonfinite data or unavailable neighborhood; do not substitute zero or exclude points after observing residuals.",
+  "comparison_policy": "Report all eight candidates, signed residuals, exact-match counts and absolute errors by development/held-out group; choose no winner automatically.",
+  "limits": "These adjacent same-row coordinates are locally correlated numerical controls, not independently labeled ink or letters, a representative scan sample, or a transcription accuracy benchmark. No parameter tuning or contrast fitting in this pass."
+}
