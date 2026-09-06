@@ -3046,6 +3046,24 @@ and Hebrew hashes, final-word/no-qere assertions, local links and diff checks
 passed. No canonical edit, new transaction code, corpus-wide tests, external
 corpus vendoring or generated reconstruction image. Preserved the B7.14 draft.
 
+### 2026-09-06 — Consult the Hebrew transmission report behind Proverbs 8:16
+
+The [Proverbs follow-up](PROVERBS_8_16_SOURCE_COMPARISON_2026-09-06.md#norzis-correction-reports--follow-up-2026-09-06)
+now reads Norzi's Aramaic/Hebrew commentary directly in its digital edition.
+It reports corrections in both directions and combined readings, making these
+documentary evidence rather than only hypothetical explanations. Preserved both
+public-domain source segments in a compact snapshot: the available community
+English translation omits the second. No website chronology was imported and
+no physical erasure was claimed. This is the same underlying report used by
+the critical edition, not an additional independent ancient witness.
+
+Keep source/main English and the existing unapplied note proposal unchanged;
+further source selection needs identified witness/hand evidence. Direct API
+retrieval succeeded after web-reader failures. Source-segment and phrase checks,
+canonical hash, local links and diff checks passed. The independent reviewer
+reproduced both segments and the complete response hash, returning PASS for the
+addition and snapshot only. No new framework, image work or corpus test run.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

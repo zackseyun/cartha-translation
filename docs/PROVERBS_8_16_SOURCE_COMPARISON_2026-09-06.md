@@ -77,7 +77,42 @@ then test assimilation in both directions; a larger count of dependent editions
 or another model's agreement is insufficient. No new restoration images or
 per-verse application framework are needed to report this published variant.
 
-## Reproduction and limits
+## Norzi's correction reports — follow-up, 2026-09-06
+
+The [Minchat Shai unit at 8:16](https://www.sefaria.org/Minchat_Shai_on_Proverbs.8.16?lang=he)
+was read directly in Sefaria's original-language digital edition, rather than
+only through Fox's summary. The [source snapshot](../sources/textual_restoration/discovery/proverbs8_16_minchat_shai.v1.json)
+preserves both Aramaic/Hebrew segments, version metadata and retrieval hash.
+The API's community English translation contains only the first segment; it
+was not used as evidence. No identified print exemplar is given in the returned
+version source, so this is not a verified edition-to-manuscript collation.
+
+The first segment reports copies altered from `צדק` to `ארץ`, others altered
+the other way, copies combining `ארץ צדק`, and inner/outer placement of the two
+readings. It does not give us photographs, shelfmarks or datable hands for these
+interventions. The second segment continues the preceding lexical-reference
+list, then describes earth erased and justice written in the Or Torah author's
+book. In the quoted discussion, Hilleli is invoked for a correction to earth,
+but justice is preferred, with a mnemonic linking the endings of adjacent
+verses. The abbreviation `בס"ס` is retained without speculative expansion.
+
+**Effect on adjudication:** bidirectional correction is now a directly consulted
+historical report, not merely our hypothetical pair of copying explanations.
+It does not establish which reading is earliest, why a particular scribe changed
+it, or whether the combined form was original. Norzi's report and Fox's use of
+that report must not be counted twice as independent witness support. The
+two digital segments likewise form one commentary unit, not two witnesses.
+Retain the existing source and the unapplied disclosure proposal. For source
+selection, the remaining discriminator is identified witness/hand evidence and
+its transmission relationship—not more copies of this same report.
+
+The web reader could not open the Sefaria page/API; direct API retrieval
+succeeded. Original-language contents are labeled public domain by that API.
+No website composition date or medieval-category label was adopted. This pass
+does not verify Rossi 314, the Hilleli attribution, the 1525 printed Bible or any
+physical erasure; the narrower documentary finding must retain that boundary.
+
+## Reproduction and limits of the initial comparison
 
 - Target YAML SHA256: `eb4426f203a6b05bc79c4b7ef0ae1b82ea50e622a05babcae73c54b6a4a87148`.
 - `Prov.xml`: `964f99c00239b53b854c4686c99490c8d1ac7664784a30afdfc23781a3abb161`.
