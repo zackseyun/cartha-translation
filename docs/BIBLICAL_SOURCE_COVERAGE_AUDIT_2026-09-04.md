@@ -19,6 +19,24 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
 
 ## What exists locally
 
+- The [2 Samuel13:37 Hebrew controls](SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md)
+  add an actually inspected Aleppo manuscript photograph: written resh-ending
+  name and a different marginal reading, with contextual rather than blinded
+  transcription. The QDR4Q51 hit supplies the entire name in a gap; it is
+  coverage, not surviving patronymic evidence. The
+  [version controls](SAMUEL_13_37_VERSION_CONTROLS_2026-09-06.md) compare actual
+  Greek/Vulgate/Syriac selected texts and Cambridge1927 apparatus pages,
+  preserving d-ending versus r-ending controls and distinct Old Latin evidence.
+  BHL AppendixA, modern full apparatuses, Sassoon's actual locus and historical
+  priority remain open. No canonical Samuel or English-name change.
+- The [Leviticus identity follow-up](LEVITICUS_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-06.md)
+  consults complete ArugLev2005/2006 publications and the2019 Cave11 publisher
+  preview. It maps exact edition/transcription units, preserves disputed and
+  supplied letters, and identifies P1038B targets including a Judges-or-Leviticus
+  fragment. Actual Cave11 body arguments/images and inventory bridges remain
+  unavailable. No formal alias merge or additional independent witness is
+  counted. NT coverage is unchanged by these OT follow-ups.
+
 - The [Psalms catalogue reconciliation](PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md)
   accounts for all 39 existing Psalms labels and adds 14 separately classified
   literary-context targets. Thirteen have exact labels in the sibling

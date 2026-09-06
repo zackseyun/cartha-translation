@@ -30,6 +30,36 @@ arguments; its identity supplies no additional manuscript evidence.
 
 ## What the work actually establishes
 
+### Source-specific decisions, not a consensus spelling — 2026-09-06
+
+The [Samuel Hebrew follow-up](SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md)
+now supplies a useful counter-control: Aleppo's photographed written name
+appears resh-ending, whereas the prior Leningrad image favors final dalet.
+The entire name in the indexed 4Q51 transcription is supplied. The
+[version comparison](SAMUEL_13_37_VERSION_CONTROLS_2026-09-06.md) adds Greek
+and Syriac d-ending forms, Vulgate r-ending Amiur, and a distinct Old Latin
+Amiot reported in the Cambridge apparatus. This does not establish earliest
+priority. It strengthens the case for a precise disclosure candidate, while
+keeping the current source/name and the unrelated mourning-note anchor as
+separate decisions. No Samuel change has been applied.
+
+The methodological improvement is **unit-level, source-specific adjudication**:
+identify a codex's written text, its reading tradition, the edition's editorial
+choice, an earlier-form hypothesis, and the English consequence separately.
+Record contrary readings before deciding; do not turn shared digital ancestry,
+supplied gaps or repeated edition reports into additional manuscript votes.
+Read each apparatus unit with its own sigla and volume conventions. A group's
+support for a name is not support for the adjoining mourning clause.
+
+The [Leviticus identity follow-up](LEVITICUS_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-06.md)
+also acquired actual primary editions and a publisher fragment index. Those
+advance comparison targets without certifying physical aliases, secure Cave11
+book assignments, or a larger independent-witness count. The correct census
+unit is a documented object/hand/passage relationship, not a webpage label.
+These refinements apply equally to the still-incomplete NT manuscript ledger;
+this pass acquired no new NT readings. They supplement the existing controlling
+method, not replace its frozen acceptance requirements.
+
 ### Delivery refinement — 2026-09-06
 
 The [whole-OT transcription screen](UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md)

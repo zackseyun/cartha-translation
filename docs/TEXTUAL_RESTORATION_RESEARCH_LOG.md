@@ -2536,6 +2536,94 @@ bindings passed. Only Genesis4:8 changed under translation in this checkpoint;
 the two image packages changed no canonical source or English. Final reporting
 review and Git publication are separate from textual/publication approval.
 
+### 2026-09-06 — Samuel13:37 contrary controls and Leviticus identity targets
+
+This follows the committed `d1ad333fc6c595f129bd5a7f883f85eecca5a295`
+checkpoint, which was verified clean and equal to remote main at the start of
+this pass. That prior turn made substantive progress; it was not a blocker.
+The broader goal remains active and incomplete. This entry records source
+research and documentation, not another canonical application.
+
+The user authorized parallel research and independent judge loops. One agent
+investigated Hebrew controls, one the remaining Leviticus catalogue holds,
+and an independent agent checked source claims while the parent examined
+Greek/Latin/Syriac editions and updated documentation. Reviews are contextual,
+not blind or human-specialist certification. A reporting PASS must never turn
+an unresolved source question into a scientific PASS.
+
+The [Samuel Hebrew report](SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md)
+finds the exact4Q51 verse hit but the entire patronymic inside a supplied gap.
+It also inspects the actual Aleppo publisher photograph, whose written form
+appears resh-ending and whose marginal reading is different. The prior
+Leningrad dalet fit remains source-specific, with its penultimate stroke held.
+The initial Aleppo URL used the public one-based book number instead of the
+reader script's zero-based number; actual1Kings text exposed the mistake.
+That acquisition was rejected and the correct2Samuel image acquired. The
+publisher's processing, private image/crop hashes, neighboring text and exact
+rectangles are documented. No original raw camera file, Sassoon locus, or
+fresh BHL AppendixA/modern Hebrew apparatus was obtained.
+
+The [version report](SAMUEL_13_37_VERSION_CONTROLS_2026-09-06.md)
+consults publisher Rahlfs–Hanhart Greek, Weber–Gryson Vulgate and CAL's
+Leiden-derived Syriac text. Greek and Syriac have d-ending forms; Vulgate
+has r-ending Amiur. Cambridge1927 pp149–150 and its preface additionally
+report Old Latin Amiot, distinct Coptic forms and precise Greek/Ethiopic
+supports. Independent page inspection corrected the working patronymic
+group to include n and confirmed Old Latin final t. Mourning-clause variants
+were kept in their own apparatus units across the page break. The ordinary
+browser succeeded at CAL after web retrieval failures; unsupported tab export
+was not presented as a successful page archive. Short observations, not a
+full copyrighted chapter, were retained. Full modern apparatuses remain open.
+
+Decision: hold Samuel's source/name bytes and earliest-form priority. A
+Leningrad transcription correction, qere choice and historical reconstruction
+are different decisions. A precise name-disclosure candidate and relocation
+of the unrelated David-mourning note marker remain actionable next work,
+but no exact candidate or new review status is approved here. The parent also
+viewed the native Aleppo target crop with context; this repeats a contextual
+check, not a new blinded witness. Contrary forms remain visible rather than
+being resolved by a count of editions or reconstructed letters.
+
+The [Leviticus report](LEVITICUS_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-06.md)
+obtains complete2005/2006 ArugLev publications through the Jeselsohn Center
+and a2019 Cave11 publisher preview. Exact QDR/current-XLeviticus units now
+map to edition targets, with A4 and ii12 discrepancies retained. Supplied
+verse19 context is not surviving text. The actual P1038B fragment list
+retains a Judges-or-Leviticus alternative; it is not a secure whole-label book
+identification. Older box988/plate988a records are not equated with P1038B
+by matching numbers. Failed download/security-check routes were not bypassed.
+Actual Cave11 body arguments/photos, source-project alias documentation and
+original ArugLev image questions remain open. The
+[independent review](../sources/textual_restoration/discovery/leviticus_catalogue_identity_review.v1.json)
+passes these bounded claims after actual edition/preview inspection and
+integrity checks; it approves no physical merger or additional witness count.
+
+The approach review, source-coverage audit, backlog and discovery index now
+link these results. The central log remains the future About-link target;
+no About page, public image redistribution, NT reading, registry count,
+canonical text or executable code changed in this pass. Historical comparison
+and application receipts remain frozen. The previous485-test regression is
+historical evidence, not a fresh test result for this documentation checkpoint.
+Final current checks and reporting review are recorded separately below.
+
+The [combined Samuel review](../sources/textual_restoration/discovery/samuel13_37_controls_review.v1.json)
+then passed the two exact reports and receipts with no mandatory repairs.
+The judge independently inspected Aleppo pixels/crop reproduction, full QDR
+bracket context, the published Greek/Latin pages and actual CAL browser row,
+metadata and token, alongside Cambridge's pages/conventions. It confirmed
+unchanged canonical bytes. This approves the bounded reporting, not a name,
+source, note-anchor or earliest-form decision.
+
+Parent checks passed: 27 file-hash checks, one archive-member hash, three
+native-crop pixel-equality comparisons, and320 local Markdown targets across
+the eight new/updated reports and central documents. These establish artifact
+integrity and local link existence, not external URL availability or historical
+priority. Current QDR discovery and UXLC/WLC comparison modules each passed
+14 tests (28 distinct;0.003s and0.257s). No broader regression or fresh export
+is claimed. A Git diff against HEAD confirmed no changes under translation,
+tools, tests or sources/ot. Final review bindings and Git publication remain
+separate from these checks and from any future source/translation decision.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

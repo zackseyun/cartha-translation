@@ -11,6 +11,21 @@ limits and open gates. It is also the target for a possible later About link.
 
 ## Immediate delivery order — revised 2026-09-04
 
+- [x] Compare Samuel13:37 Hebrew ketiv/qere, actual Aleppo photograph and QDR
+  preservation against Greek/Latin/Syriac controls and Cambridge apparatus;
+  [Hebrew](SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md),
+  [versions](SAMUEL_13_37_VERSION_CONTROLS_2026-09-06.md).
+  This is a held source/name investigation, not an adopted correction.
+- [ ] Draft and separately review exact Samuel name-disclosure and mourning-
+  anchor changes; resolve source-specific apparatus/letter questions before
+  any source/name promotion. Do not count supplied 4Q51 name letters as ink.
+- [x] Obtain actual ArugLev2005/2006 editions and Cave11 publisher index for
+  the named alias/fragment holds;
+  [follow-up](LEVITICUS_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-06.md).
+- [ ] Obtain Cave11 bodypp224–228 and238/associated photographs; resolve
+  box988/plate988a/P1038B relationships and formal ArugLev/XLeviticus alias
+  documentation. Keep uncertain assignments and A4/ii12 differences held.
+
 - [x] Reconcile the Psalms copy/literary-context catalogue against both QDR
   files and the full pinned modern index;
   [report](PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md).

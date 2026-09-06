@@ -369,6 +369,26 @@ the aggregate discovery indexes. See the
 acquisition, failed attempts and limits. Same-codex edition screening is not
 new manuscript evidence or approval of any canonical change.
 
+## Samuel13:37 and Leviticus identity follow-ups, 2026-09-06
+
+`samuel13_37_hebrew_controls.v1.json` and
+`samuel13_37_version_controls.v1.json` record actual Aleppo image observations,
+same-codex ketiv/qere controls, QDR's wholly supplied patronymic, and differing
+Greek/Latin/Syriac edition evidence. See [Hebrew](../../../docs/SAMUEL_13_37_HEBREW_CONTROLS_2026-09-06.md)
+and [versions](../../../docs/SAMUEL_13_37_VERSION_CONTROLS_2026-09-06.md).
+The source/name remains held; note disclosure and the misplaced mourning anchor
+are separate future candidates. No blanket version agreement or new decipherment.
+`samuel13_37_controls_review.v1.json` binds both reports and records after an
+independent, report-aware source/image check. Its PASS does not approve a
+source/name change or the future note/anchor candidate.
+
+`leviticus_catalogue_identity_followup.v1.json` and its
+`leviticus_catalogue_identity_review.v1.json` record exact ArugLev edition-target
+correspondence and Cave11 publisher-preview fragment locators. See the
+[report](../../../docs/LEVITICUS_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-06.md).
+Digital targets are not additional physical manuscripts; no formal registry
+merge, count migration, source priority or canonical change was approved.
+
 ## Five Leningrad image leads inspected, 2026-09-06
 
 `samuel_ezekiel_image_followup.v1.json` and
