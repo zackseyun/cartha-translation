@@ -63,7 +63,9 @@ Proposed reader note, **research-only, unapplied**:
 > waiting or expectation; “I have no hope” is another interpretation of the
 > written form. Which reading is earlier remains uncertain.
 
-This is not a complete YAML application candidate. Review the note, related
+This initial prose proposal was not a complete YAML application candidate.
+The full-record candidate below now supersedes it for editorial preparation;
+neither is applied. Review the note, related
 lexical/theological metadata and English alternatives together before applying
 anything; preserve the historical reviews. To reopen historical selection,
 obtain a discriminating manuscript/apparatus or versional argument and test
@@ -136,6 +138,54 @@ lost expectation and waiting for God; reopen historical priority with actual
 discriminating apparatus/versional evidence. No new image work or transaction
 framework follows from this result. Local XML and target YAML hashes below
 were rechecked unchanged at repository baseline `d73c9aecc4`.
+
+## Exact disclosure candidate and editorial review — 2026-09-06
+
+The [full-record candidate](../sources/textual_restoration/applications/job13_15_disclosure_candidate.v1.yaml)
+turns the findings into an exact proposed correction, not another source search.
+It identifies both Hebrew forms in the reader note, separates negation from
+wait/hope semantics, and corrects the lexical, theological and live source-audit
+explanations. It removes the unsupported “in him” from the negated lexical
+alternative. The note makes no claim to establish the earlier reading.
+
+Source, exact main English including its marker, philosophy, original AI draft,
+historical revisions and unrelated lexical entries are unchanged. Old status,
+revision-pass, cross-check and source-audit objects are archived intact with
+their baseline provenance, without inventing original review-input bindings.
+Current review fields require review; the modified lexical citation names the
+published contextual comparison instead of implying a fresh HALOT consultation.
+
+Candidate SHA256:
+`5d32a6ef2913547460cacdc7e0192dfb6468c9c331af5325fee9f5f217ddc033`.
+Baseline YAML and Hebrew XML hashes are the unchanged values below. Independent
+agent `/root/job_disclosure_judge` checked this exact candidate, the XML, baseline
+field preservation, archived reviews, NET notes and authorized Reyburn excerpt;
+verdict **PASS — editorial candidate only**. This does not approve application,
+historical priority, the full verse or publication.
+
+Local preflight passed the verse JSON schema, exact source/English and historical
+record preservation, single-marker/note correspondence and review-state checks.
+The actual Job export contains 42 chapters and 1,070 verses. A separate simulated
+export substituted this candidate only at `load_translation_record('JOB',13,15)`;
+deep comparison found only footnote a changed. This is projected reader output,
+not an applied or deployed export. Reproduce using `export_book('JOB')` normally,
+then with that one loader override; compare all output after replacing only the
+expected target note. Hash serialization is UTF-8 JSON, `ensure_ascii=False`,
+`sort_keys=True`, separators `(',', ':')`:
+
+- Actual export: `b7d20eb2076ab7755ff0b38fb883d8a6afcfe144e2121e24b05dd8202f59d56b`.
+- Projected export: `84e15083b995f89b034e3fc69fa97c06e5b617258d401b298b4fa460c367e40f`.
+
+**Stop: editorial correction ready; application not approved.** The existing
+`tools/samuel_note_transaction.py` binds its current check to a fixed digest of
+every OT canonical YAML, so even this disjoint Job edit would invalidate that
+check. Do not repin its frozen receipt or build another per-verse transaction.
+A separately reviewed successor-state mechanism must preserve verification of
+the Samuel package while allowing explicitly authorized later corpus changes.
+That is the concrete enabling issue before applying this candidate; new Job
+image searches or more reviews of unchanged wording will not resolve it.
+Schema/export preflight and editorial review do not waive this integration gate.
+No canonical, executable, test or derivative file changed in this preparation.
 
 ## Reproduction and limits
 

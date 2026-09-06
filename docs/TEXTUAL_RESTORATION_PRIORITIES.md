@@ -79,8 +79,11 @@ tested the singular-bull argument against a published grammatical control and
 retains the current text pending its recorded reopening evidence. Do not repeat
 that acquisition. The [Job 13:15 comparison](JOB_13_15_SOURCE_COMPARISON_2026-09-06.md)
 now tests the waiting/hope interpretation against published counterarguments and
-the book's annotated verb occurrences; its proposed rationale/note repair remains
-unapplied. Neither pass establishes historical priority. The separate
+the book's annotated verb occurrences. Its exact full-record rationale/note
+candidate has passed scoped editorial review and simulated full-book export;
+it remains unapplied pending the documented corpus-verifier integration gate.
+Do not repeat the same Job source search to resolve that engineering constraint.
+Neither pass establishes historical priority. The separate
 [2 Samuel 13:37 disclosure](SAMUEL_13_37_NOTE_APPLICATION_2026-09-06.md) was applied
 at `d73c9aecc4` after resolving the earlier integration constraint; source and
 main English are unchanged. Existing promotion gates remain in force. Select
