@@ -2813,6 +2813,22 @@ Detailed backlog: [DSS TODO](DSS_TEXTUAL_WITNESS_TODO.md) and
 
 ## How future work must be logged
 
+### Existing B7.14 lead triaged without expansion — 2026-09-06
+
+Parent inspected the interrupted agent's Genesis42:18 comparison, current POB
+source/lexical rationale, and its two saved institutional image regions. The
+visible Hebrew `זאת עשו וחיו` fits current “Do this and live”; `האלהים` in the
+neighboring region is also compatible with the retained source. A generic
+catalogue divine-name description therefore does not establish a Yahweh/God
+variant at this unit. No source or main-wording change is justified by these
+observations. This is contextual triage, not full diplomatic transcription or
+approval of the unfinished six-image record. The square image was displayed
+at1600×1600 from2000×2000; no fine pointing claim follows. Both asset hashes
+matched the draft (main `d3c4bfca…be48080`, context `82cf8760…84f34c0`), stored
+privately under `/private/tmp/pob-genizah-b714.nWiFws/`. Reopen for a specific
+contrary reading, not merely more photographs. The broader draft stays untracked
+and unapproved; no agents restarted or additional source requests were made.
+
 ### Bounded historical replay implemented — 2026-09-06
 
 Added `tools/textual_restoration/replay_unflagged_sample.py` and four focused
