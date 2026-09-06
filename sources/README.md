@@ -12,6 +12,12 @@ Each per-verse YAML in `translation/` records which source(s) it drew
 from via the `edition` enum on its `source` block (see
 `schema/verse.schema.json`).
 
+## Our own transcriptions
+
+Completed transcriptions we produce must be published openly with source citations,
+review status, and separate text/image rights records. Follow the
+[open transcription completion checklist](OPEN_TRANSCRIPTION_POLICY.md).
+
 ## Layout at a glance
 
 ```text

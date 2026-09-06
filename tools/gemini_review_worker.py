@@ -709,13 +709,19 @@ def main() -> int:
     )
     args = ap.parse_args()
 
+    from revisions_refresh import request_after_batch
+
     done = 0
     failures = 0
+    unreported = 0
     with contextlib.closing(connect()) as conn:
         rq.ensure_schema(conn)
         while done < args.max_jobs:
             job = claim_next(conn, args.worker_id, args.strategy, args.book)
             if not job:
+                if unreported:
+                    request_after_batch(REPO_ROOT)
+                    unreported = 0
                 if args.stop_when_empty:
                     print(f"[{args.worker_id}] queue empty, stopping.", flush=True)
                     return 0
@@ -725,6 +731,7 @@ def main() -> int:
             try:
                 record = run_job(conn, job, model_override=args.model_override)
                 done += 1
+                unreported += 1
                 print(
                     f"[{args.worker_id}] ✓ {job['strategy']} {job['book_slug']} {job['chapter']}:{job['verse']} "
                     f"(agreement={record.get('agreement_score','—')}, issues={len(record.get('issues') or [])}, "
@@ -740,6 +747,8 @@ def main() -> int:
                     print(f"[{args.worker_id}] too many failures with no successes, stopping.", flush=True)
                     return 2
             time.sleep(args.sleep)
+    if unreported:
+        request_after_batch(REPO_ROOT)
     return 0
 
 
