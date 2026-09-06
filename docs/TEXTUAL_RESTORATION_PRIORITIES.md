@@ -74,17 +74,18 @@ decision is not application approval. Image-workflow calibration remains require
 for new machine-transcription claims, not for accurately reporting a published
 edition's reading.
 
-Current next research choice: [1 Samuel 1:24–25](SAMUEL_SOURCE_COMPARISON_PASS_3.md).
-The dossier already compares the animal expression, bread and narrative sequence;
-do not repeat that acquisition. Test whether a complete proposed Hebrew phrase
-and declared literary form are justified against the recorded counterarguments.
-The current POB says “three bulls” and already discloses the age-related alternative.
-If decisive counterargument/apparatus access remains unavailable, record the
-specific unresolved choice and leave the text unchanged. This prioritization
-does not waive that dossier's existing promotion gates or imply source selection.
-The separate 2 Samuel 13:37 disclosure application remains held on the
-[documented integration constraint](SAMUEL_13_37_NOTE_APPLICATION_READINESS_2026-09-06.md);
-more manuscript searches cannot resolve that software dependency.
+Current bounded results: the [1 Samuel 1:24–25 comparison](SAMUEL_SOURCE_COMPARISON_PASS_3.md)
+tested the singular-bull argument against a published grammatical control and
+retains the current text pending its recorded reopening evidence. Do not repeat
+that acquisition. The [Job 13:15 comparison](JOB_13_15_SOURCE_COMPARISON_2026-09-06.md)
+now tests the waiting/hope interpretation against published counterarguments and
+the book's annotated verb occurrences; its proposed rationale/note repair remains
+unapplied. Neither pass establishes historical priority. The separate
+[2 Samuel 13:37 disclosure](SAMUEL_13_37_NOTE_APPLICATION_2026-09-06.md) was applied
+at `d73c9aecc4` after resolving the earlier integration constraint; source and
+main English are unchanged. Existing promotion gates remain in force. Select
+the next case by its discriminating evidence and translation consequence, not
+by an obsolete blocker or the availability of another infrastructure task.
 
 First working demonstration: [three Hebrew variants and their English
 effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.

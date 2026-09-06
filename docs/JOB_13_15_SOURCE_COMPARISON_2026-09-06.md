@@ -70,6 +70,73 @@ obtain a discriminating manuscript/apparatus or versional argument and test
 the competing transmission explanations. Do not equate qere with inferior
 translation tradition, or take digital absence as an attested ancient omission.
 
+## Published counterarguments and book-wide verb control — 2026-09-06
+
+Question: does retaining `לא` establish POB's “I will not wait,” understood as
+refusal to delay presenting a case? **No.** The negation, verb sense and implied
+object of expectation need separate justification. This follow-up adds actual
+published arguments and a reproducible lexical control, not a manuscript vote.
+
+- The [NET notes, Job 13:15, notes 1–3](https://classic.net.bible.org/verse.php?book=Job&chapter=13&theme=false&verse=15)
+  prefer the qere with hopeful expectation: Job risks death while anticipating
+  vindication. They report Davidson's negative waiting interpretation as an
+  alternative, not the NET conclusion. Their separate discussion allows an
+  emphatic connective and defending one's case without emending the final verb.
+- [Reyburn's *A Handbook on Job* (UBS, 1992), authorized excerpt at Job 13:15](https://tips.translation.bible/story/translation-commentary-on-job-1315/),
+  acknowledges waiting as the verb's usual sense but recommends expressing
+  absent hope/expectation in this context. Its strong rejection of the familiar
+  trust rendering is an interpretive judgment, not an apparatus demonstration
+  that the qere is historically secondary.
+- The [Cambridge commentary, chapter 13, section 15](https://biblehub.com/commentaries/cambridge/job/13.htm)
+  supplies the argument behind the negative waiting interpretation: Job does
+  not postpone the fatal confrontation until death comes later. This is more
+  specific than POB's explanation about ceasing to wait passively. The same
+  commentary also discusses the qere as awaiting God's fatal action, rather
+  than necessarily trusting for a favorable outcome. Read here as a digital
+  reproduction of the commentary; no printed page or scan was verified.
+  Its broad claims about ancient versions are not adopted as a collation.
+
+### Local control and limits of the inference
+
+In the unchanged OSHB/WLC `Job.xml`, enumerate direct `w` children of each
+`verse` whose slash-delimited `lemma` ends in `3176`. This returns eight loci:
+6:11, 13:15, 14:14, 29:21, 29:23, 30:26, 32:11 and 32:16. This is coverage of
+the edition's annotation, not a claim to an independently re-lemmatized corpus.
+The first three have the same pointed verb form; the other forms and speakers
+must not be flattened into identical constructions.
+
+The Hebrew of 29:21 and 32:11,16 connects waiting with speech. Conversely,
+30:26 sets awaiting light alongside expecting good, each disappointed by its
+opposite; 29:23 compares expectation to rain. Our inference: temporal waiting
+can involve desired outcomes. These controls do not make “wait” mean impatience
+by default, nor establish “hope” as the only English rendering. In 13:13–19,
+readiness to speak despite danger supports the confrontation interpretation,
+while anticipated vindication in 13:18 also explains the NET's counterargument.
+The context constrains, but does not uniquely settle, either source choice.
+Current POB translations were inspected only as implementation context, not
+used to prove the Hebrew's meaning. No fresh HALOT consultation is claimed.
+
+### Decision and concrete application implications
+
+Retain source and main English provisionally; do not promote a new historical
+reading. The published waiting argument supports plausibility, **not superiority
+of POB's exact wording or explanation**. The proposed note above remains useful
+but unapplied. A later scoped repair must cover not only `theological_decisions`
+but the live `source_audit.review_summary`: its inference from WLC negation to
+preferred “not wait” overstates what the consonants establish. Preserve the
+past `revisions` entries as history, rather than silently rewriting their claims.
+The lexical rationale should identify refusal to delay confrontation as an
+interpretation and distinguish it from absence of hope. Review the opening
+and connective with the whole sentence; changing ketiv/qere alone cannot settle
+them. Do not append certainty percentages from agreement among commentators.
+
+Stop this contextual pass here. Reopen main-English selection with a full
+sentence-level comparison that explicitly weighs postponed confrontation,
+lost expectation and waiting for God; reopen historical priority with actual
+discriminating apparatus/versional evidence. No new image work or transaction
+framework follows from this result. Local XML and target YAML hashes below
+were rechecked unchanged at repository baseline `d73c9aecc4`.
+
 ## Reproduction and limits
 
 Repository baseline: `276b39ce5c` (no Job changes during this pass).

@@ -3002,6 +3002,29 @@ transaction machinery is not the default. The broader OT/NT inventory,
 comparison and confidence-calibration work remains incomplete; the next research
 pass should address discriminating evidence, not add another framework.
 
+### 2026-09-06 — Test Job's waiting interpretation against published arguments
+
+Extended the existing [Job comparison](JOB_13_15_SOURCE_COMPARISON_2026-09-06.md#published-counterarguments-and-book-wide-verb-control--2026-09-06).
+Read NET notes 1–3, the authorized Reyburn/UBS excerpt, and the reproduced
+Cambridge commentary's section 15. Reproduced all eight direct-word Job XML
+occurrences annotated with lemma 3176 and read 13:13–19. The Cambridge waiting
+argument concerns a potentially earlier fatal confrontation; it is not blanket
+endorsement of POB's explanation. The Hebrew controls allow desired expectation
+within waiting. Thus negation alone cannot choose waiting over lost hope, and
+qere alone cannot compel hopeful trust. Identified the live source-audit summary,
+alongside the theological rationale, as needing a later scoped correction.
+Retain main text provisionally; the existing note proposal remains unapplied.
+Historical priority still requires discriminating apparatus/versional evidence.
+
+XML/YAML hashes remained unchanged; exact locus/form assertions, local links
+and diff checks passed. The independent reviewer checked the three published
+arguments and reproduced the XML controls, returning PASS for the addition only.
+No new receipt, application tooling, corpus test run, manuscript transcription,
+image generation or canonical change. Cambridge print pagination and reported
+version support were not verified; no such claims were adopted. Corrected stale
+priority-document references to the now-completed Samuel application. The
+unrelated B7.14 draft remains untouched.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
