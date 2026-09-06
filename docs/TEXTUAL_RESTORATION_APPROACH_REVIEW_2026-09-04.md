@@ -30,6 +30,42 @@ arguments; its identity supplies no additional manuscript evidence.
 
 ## What the work actually establishes
 
+### Efficiency correction after maintainer review — 2026-09-06
+
+The maintainer explicitly questioned cost and value. The three commits ending
+at `10df559ce9` added 4,871 lines across 32 files without canonical translation
+changes. Some findings improved source interpretation, but documentation volume,
+repeated integrity reviews and bespoke replay infrastructure became excessive.
+This is an operational correction, not a claim that unchanged text is failure.
+
+For subsequent work:
+
+- Start with one consequential question, the current POB wording, the evidence
+  needed to decide it, and a bounded deliverable. A no-change finding is useful
+  when it resolves that question or identifies decisive missing evidence.
+- Prefer published critical apparatuses for collation. Request image work when
+  a disputed mark, preservation claim, correction or identity affects the result.
+- Keep one concise case record and one independent review. Repeat review only
+  for a substantive defect or changed evidence; do not create reviews of reviews
+  merely to obtain more passing receipts. This does not waive existing frozen
+  application or blinded-transcription requirements.
+- Batch integrity checks once at the handoff. Run tests affected by the change;
+  do not repeatedly run corpus-wide checks for prose-only additions.
+- Allow at most one research deliverable and one directly enabling engineering
+  deliverable concurrently. Delegate only genuinely independent bounded work.
+- Stop a case at retain, propose change, or unresolved with a precise reopening
+  condition. Do not expand a difficult case indefinitely into adjacent catalogues,
+  whole-book collation or a new infrastructure project.
+- Maintain the full OT/NT coverage objective, but distinguish catalogue inventory
+  from actual collation. Record missing coverage once; repeated absence reports
+  do not count as progress. No main-text edit is required to justify a research
+  pass, and no edit may be forced to improve an output metric.
+
+Report substantive decisions and remaining evidence, not file counts or test
+counts as proxies for translation quality. ImageGen remains display-only.
+The next application target is the already reviewed Samuel disclosure; evaluate
+a bounded integration solution before authorizing another general framework.
+
 ### Application architecture remains a delivery constraint — 2026-09-06
 
 The [Samuel readiness check](SAMUEL_13_37_NOTE_APPLICATION_READINESS_2026-09-06.md)

@@ -2813,6 +2813,39 @@ Detailed backlog: [DSS TODO](DSS_TEXTUAL_WITNESS_TODO.md) and
 
 ## How future work must be logged
 
+### Efficiency review and paused exploratory work — 2026-09-06
+
+The maintainer requested a quick cost/value check. Git inspection found 4,871
+insertions across32files in the last three commits, with no canonical changes.
+The goal tracker reported16,505,374 cumulative tokens; this is its accounting
+value, not a verified billing total. Active Genizah and snapshot-interface
+agents were interrupted. The approach review now limits concurrency, repetitive
+reviews, documentation duplication and open-ended case expansion. No scientific
+or existing application gate was waived. This entry preserves prior work rather
+than commissioning another evidence/reporting review loop.
+
+Before the pause, public INTF queries retrieved a complete response for the
+specific `featureCode=Liste` filter:6,146 distinct document IDs, matching the
+separate count response. This is **not**6,146 surviving or independent Greek
+manuscripts: the filter includes removed entries and T/Os appendix records.
+The official UI supplied the filter; its search limit is measured in pages.
+Raw responses remain private at `/private/tmp/pob-ntvmr-census.DPlLll/`:
+`liste-feature-documents.json` SHA256
+`d75a306fdb8b3789b6dc2f58f4d7f2979ff499f8db4fa79aa87af2248590fd13`;
+`liste-feature-count.json` SHA256
+`b0a133359e6268d23cfd43bd809c7cc5c5caf5d740837eeb5ef2c6d85b0a3705`.
+Twenty-seven book-count requests also completed; no deduplicated book inventory,
+manuscript collation or new Greek reading follows. The judge's preliminary
+source check identified P14 as both Liste and Removed, and the institutional
+[2024 appendix explanation](https://ntvmr.uni-muenster.de/intfblog/-/blogs/amulets-and-ostraca)
+as a reason to retain category/alias distinctions. No exact NT package review
+was completed and no catalogue data was publicly vendored.
+
+The interrupted B7.14 agent left an untracked discovery JSON; it is preserved
+as incomplete work, not committed or approved by this checkpoint. No snapshot
+interface or Samuel executor was saved. Further exploration remains paused
+while the next bounded translation-relevant deliverable is selected.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
