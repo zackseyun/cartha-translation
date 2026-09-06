@@ -1,6 +1,7 @@
 # Samuel source comparison - pass 3
 
-Checked: 2026-09-04. Target: 1 Samuel 1:24, in its 1:22-25 context.
+Checked: 2026-09-04; grammatical counter-control added 2026-09-06.
+Target: 1 Samuel 1:24, in its 1:22-25 context.
 
 ## Assessment
 
@@ -241,3 +242,60 @@ records. Those responses were rejected as evidence snapshots. The dated URLs
 and brief excerpts document consultation, not a frozen full CAL corpus. The
 initial peshitta.eu lead is not counted as another witness or as the provenance
 authority; the recorded comparison uses CAL's explicit source attribution.
+
+## Grammatical counter-control and bounded decision — 2026-09-06
+
+**Result: retain the current source and English provisionally, with the existing
+variant note.** The age-related alternative remains a reasonable research
+preference, not an approved complete Hebrew reading. This pass strengthens a
+previously reported objection with a directly checked grammatical example;
+it neither overturns the published 4Q51 evidence nor establishes MT priority.
+
+Ben Zvi, Hancock and Beinert, *Readings in Biblical Hebrew* (Yale, 1993),
+[publisher excerpt](https://drupal.yalebooks.yale.edu/sites/default/files/files/Media/9780300055733_Zvi_Readings%20in%20Biblical%20Hebrew/9780300055733_Excerpt.pdf),
+printed p. 37 (PDF page 36), discusses collective reference by a definite
+singular after a plural and applies that possibility to the bull in verse 25.
+The complete printed page and preceding page were visually inspected. This is
+the textbook's argument, including its citation of Ratner, not consultation of
+Ratner's original article. His [publisher access page](https://poj.peeters-leuven.be/content.php?download=yes&id=3217901&journal_code=BIB&url=article.php)
+still required subscription or purchase; neither was attempted.
+
+The cited Numbers 21:6–7 control was checked in local WLC source fields:
+`הנחשים` in verse 6 is followed by `הנחש` in verse 7 in the request to remove
+the snakes. This verifies a relevant plural-to-singular construction, not a
+manuscript variant. Genesis 15:9–10 separately supplies two bird terms followed
+by singular `הצפר`; it is a related semantic control, not the identical noun
+sequence. Local inputs were inspected at repository revision
+`2c95c143228ea125815ceddfecbc366428cf76ec`.
+
+**Our inference:** singular `הפר` in 1 Samuel 1:25 cannot alone demonstrate that
+“three bulls” in verse 24 is corrupt. Collective reference is possible, while
+a single animal selected from several is another live explanation. Neither is
+proved for Samuel by the Numbers parallel. Do not translate verse 25 as “the
+bulls” automatically, or reuse its current singular English as independent
+evidence for emending verse 24.
+
+The three decisions therefore remain distinct:
+
+- **Animal:** published early Hebrew and Greek support still favor investigating
+  the age reading; the singular-context argument is non-decisive. A proposed
+  `בפר משלש` is not the complete surviving phrase of 4Q51, whose edition supplies
+  preceding words. No exact replacement source phrase is approved.
+- **Bread:** support already recorded in Hebrew/Greek does not itself resolve
+  omission versus expansion. Retain the current shorter text provisionally;
+  do not infer rejection of bread from the animal decision.
+- **Narrative:** the shorter Peshitta control shows that animal age and narrative
+  length can vary separately, but does not establish independent Hebrew ancestry
+  or authorize an eclectic Hebrew reconstruction.
+
+Close this bounded grammatical check as **no canonical change**. Reopen source
+selection with an explicit full Hebrew candidate, declared narrative form and
+a transmission argument addressing the recorded objections, together with the
+existing image/apparatus gates above. Repeated checks of the same singular or
+another general photograph search would not resolve those requirements.
+
+Private consultation PDF SHA256:
+`504314f806377b6b3d5b46f35064c0a0e9fbec817ca86d639c77170a38749b58`.
+The publisher PDF was rendered using the PDF skill because Hebrew extraction
+was unavailable; no manuscript enhancement, new transcription, ImageGen output,
+public PDF redistribution or canonical application occurred.

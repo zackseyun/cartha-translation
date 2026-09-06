@@ -2914,6 +2914,22 @@ depending on disputed marks, corrections, joins or fresh decipherment. The
 reviewer checked that repair and returned PASS for method consistency only.
 No corpus test rerun for these prose-only changes.
 
+### 2026-09-06 — Test the Samuel singular-bull argument
+
+Extended the existing [Samuel dossier](SAMUEL_SOURCE_COMPARISON_PASS_3.md#grammatical-counter-control-and-bounded-decision--2026-09-06),
+not a new framework. Visually checked Yale's printed pp. 36–37 and verified
+its Numbers 21:6–7 grammatical control against local WLC; also checked Genesis
+15:9–10 and the current Samuel wording. A singular noun can refer back to a
+plural group, so Samuel's singular does not alone justify emending verse 24.
+That possibility does not prove collective reference in Samuel or MT priority.
+Ratner's original article remains access-limited. Retain source/English and
+the existing disclosure provisionally; animal, bread and narrative decisions
+remain separate. PDF provenance and precise reopening requirements are in the
+dossier. No images or external PDFs vendored; no canonical changes or corpus
+test rerun. Local links and diff checks passed. The independent reviewer checked
+the rendered Yale argument, PDF hash and local Hebrew against the stated revision,
+and returned PASS for this bounded addition, not source selection or publication.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
