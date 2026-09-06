@@ -3084,6 +3084,30 @@ application statements. No new framework, manuscript counts, text restoration,
 canonical changes or corpus test run: this closes a routing gap, not the broader
 inventory, apparatus-access or collation gaps.
 
+### 2026-09-06 — Prepare the exact Job disclosure correction, stop at integration
+
+Following the efficiency check, converted the existing Job findings into one
+[full-record candidate and reviewed outcome](JOB_13_15_SOURCE_COMPARISON_2026-09-06.md#exact-disclosure-candidate-and-editorial-review--2026-09-06).
+Rechecked the actual Job XML ketiv/qere and the NET/authorized Reyburn notes.
+Corrected the proposed reader note and lexical/theological/audit explanations;
+retained Hebrew and main English, and archived old review objects without
+reusing their scores as candidate approval. No additional manuscript claim.
+
+One independent reviewer passed exact candidate bytes for editorial scope only.
+Schema, field-preservation and marker checks passed. Actual and separately
+simulated Job exports each cover 42 chapters/1,070 verses; only the proposed
+footnote differs. Hashes and the one-record simulation boundary are in the case
+record. Canonical YAML, executables, tests and derivatives remain untouched.
+
+The existing Samuel current-state verifier hashes every OT verse, so a disjoint
+Job application would invalidate its frozen corpus check. This is an identified
+integration constraint from inspecting the verifier, not a failed application
+or a reason to repeat research. Did not relax its bindings or create another
+per-verse tool. Next enabling work is a separately reviewed successor-state
+mechanism preserving prior package verification. Job editorial preparation stops
+here pending that integration; main-English selection and historical priority
+remain unresolved on their separate evidentiary grounds.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
