@@ -2813,6 +2813,39 @@ Detailed backlog: [DSS TODO](DSS_TEXTUAL_WITNESS_TODO.md) and
 
 ## How future work must be logged
 
+### Bounded historical replay implemented — 2026-09-06
+
+Added `tools/textual_restoration/replay_unflagged_sample.py` and four focused
+tests. Run `.venv/bin/python -m tools.textual_restoration.replay_unflagged_sample`.
+It extracts only required inputs from immutable Git commit
+`574f204de77e89c8abba04c72209bdf5efb317f9` into a private temporary directory,
+checks installed selector-code hashes, and compares the entire rebuilt receipt.
+It never imports archived code, monkeypatches global file reads, or edits the
+working corpus. Unsafe archive paths, links, special files, duplicate members
+and mutable Git references are refused. Git replacement objects are disabled.
+
+The first actual run failed equality: Numbers22:19 had already changed in the
+receipt's commit. Its separately preserved baseline in that same commit matches
+the receipt's original selected-file hash. The repaired replay verifies both
+committed and baseline hashes, then substitutes that one file in the private
+tree only. The second actual run passed full receipt equality:23,264 records,
+historical digest `d7ba46056931eb8f23844b388ca2adeef5e6c7588e40ad3b6b5e8c6336fb5381`.
+Four focused tests passed. No source interpretation or English decision changed.
+
+One independent code review passed after the substantive repair. The judge
+checked the actual Git baseline/target hashes, reran the four tests, and tested
+five negative cases: changed baseline, committed target, selected path, selected
+hash and nonselected receipt data. The full-corpus replay above is parent-run,
+not duplicated as an independent experiment. Review of exact tool SHA256
+`bea23f0b67c47f219f2914cdcc90e0ad54b2f55e670a1254bb23bac4134aab57`
+approved historical reproducibility only; no additional review ledger was made.
+
+This is historical reproducibility, explicitly **not** validation of current
+corpus drift, transaction provenance, or permission to apply Samuel. Existing
+frozen guards/tests remain untouched. Next integrate this separate historical
+check with explicit current-state checks; do not present this tool alone as a
+completed Samuel application. The untracked B7.14 draft remains untouched.
+
 ### Efficiency review and paused exploratory work — 2026-09-06
 
 The maintainer requested a quick cost/value check. Git inspection found 4,871
