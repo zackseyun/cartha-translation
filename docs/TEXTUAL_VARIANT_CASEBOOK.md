@@ -44,6 +44,12 @@ not the new research proposal.
 
 ## Greek New Testament
 
+The [Amos 9:12 comparison](AMOS_9_12_SOURCE_COMPARISON_2026-09-06.md) separates
+Mur. 88's unbracketed Edom from its restored verb opening and distinguishes
+Swete's Greek main text, its reported Alexandrinus addition and Acts 15:17.
+It identifies a consequential apparatus-transcription error, but retains both
+current main translations. No Hebrew reconstruction is promoted from the quotation.
+
 | Passage / issue | Evidence question | Existing POB source-note signals | Edition entries at anchor | Sources to collate |
 |---|---|---:|---:|---|
 | [Matthew 6:13](../translation/nt/matthew/006/013.yaml) — Lord’s Prayer doxology | passage-presence | 0 | 1 | Greek Gospel manuscripts; liturgical reception; ancient versions |
