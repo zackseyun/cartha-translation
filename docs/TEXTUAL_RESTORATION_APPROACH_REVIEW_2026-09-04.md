@@ -68,6 +68,15 @@ a bounded integration solution before authorizing another general framework.
 
 ### Application architecture remains a delivery constraint — 2026-09-06
 
+Later operational update: the [historical-test migration](HISTORICAL_TEST_MIGRATION_2026-09-06.md)
+now runs the old receipt-bound checks unchanged in a fixed Git snapshot while
+retaining separate current registry, completed-note integrity and GEN export
+checks. The exact Samuel candidate passed simulated current-consumer integration
+and its full-book export comparison. This resolves the identified current-test
+coupling, not the whole application: no Samuel executor, application ledger or
+canonical edit has been completed. Frozen readiness/review records remain
+historical rather than being rewritten to describe this later work.
+
 The [Samuel readiness check](SAMUEL_13_37_NOTE_APPLICATION_READINESS_2026-09-06.md)
 documents why adding another historical overlay is not yet a safe application
 plan: the prior Genesis guard pins a current test consumer as well as the

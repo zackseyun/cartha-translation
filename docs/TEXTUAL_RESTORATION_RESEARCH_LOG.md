@@ -2944,6 +2944,24 @@ record. No generated images or new validation framework. Local links and diff
 checks passed; the independent reviewer verified XML/YAML, contextual controls,
 the Greek download and all three hashes, returning PASS for the report only.
 
+### 2026-09-06 — Migrate historical test consumers without changing evidence
+
+Implemented the [historical-test migration](HISTORICAL_TEST_MIGRATION_2026-09-06.md)
+and a separate live completed-note audit; three current test entrypoints now
+separate snapshot checks from current behavior. An implementer was interrupted
+after producing no files; the parent completed the code. Under simulated exact
+Samuel-candidate reads, 105 parent tests passed, including wrappers executing
+37 original tests against fixed Git bytes. Full-2SA baseline/candidate exports
+matched; actual canonical bytes/digest stayed unchanged. An export-field typo
+after the successful tests was corrected and its assertion rerun separately.
+Independent review required restoring live target/package integrity and a
+missing application-document pin; both repairs passed. The final live suite's
+five tests passed in 19.867 seconds, including actual full-GEN export; the final
+83-file integrity check also passed under virtual Samuel reads. This is a
+tested consumer migration, not Samuel application, source-selection approval or
+publication. Existing receipts/executors remain unchanged; no source research,
+ImageGen, new per-verse overlay or canonical edit was added.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
