@@ -4,7 +4,7 @@ import json
 from pathlib import Path
 import unittest
 
-from tools.textual_restoration import apply_numbers_22_19_note as note_package
+from tools.textual_restoration import jeremiah_note_transaction as note_package
 
 ROOT = Path(__file__).resolve().parents[1]
 SPEC = importlib.util.spec_from_file_location("unflagged", ROOT / "tools/textual_restoration/build_unflagged_english_sample.py")
@@ -21,13 +21,16 @@ class UnflaggedEnglishSampleTests(unittest.TestCase):
 
     def test_frozen_selection_reproduces_with_guarded_historical_baseline(self):
         # The selector and original receipts stay frozen. The overlay accepts
-        # only the exact baseline, or this package's approved candidate with
-        # bound transaction provenance; all unrelated/unknown drift still fails.
+        # only each exact baseline, or its approved candidate with bound
+        # transaction provenance. Both explicit overlays preserve the original
+        # experiment; unrelated/unknown drift still fails.
         result = note_package.historical_sample_probe()
         self.assertTrue(result["historical_selection_reproduced"])
         self.assertEqual(result["historical_corpus_digest"], self.selection["corpus_digest"])
         self.assertEqual(result["context_files_verified"], 101)
-        self.assertEqual(result["overlay_paths"], ["translation/ot/numbers/022/019.yaml"])
+        self.assertEqual(result["overlay_paths"], [
+            "translation/ot/numbers/022/019.yaml", "translation/ot/jeremiah/010/010.yaml"])
+        self.assertTrue(result["numbers_probe_under_jeremiah_baseline_view"]["historical_selection_reproduced"])
 
     def test_pointed_spelling_not_silently_repointed(self):
         self.assertNotEqual(sample.normalized("שָׁב"), sample.normalized("שֵׁב"))
@@ -37,12 +40,14 @@ class UnflaggedEnglishSampleTests(unittest.TestCase):
     def test_review_binds_source_and_context(self):
         receipt = RECEIPTS / "unflagged_english_sample.selection.v1.json"
         self.assertEqual(sample.sha(receipt.read_bytes()), self.review["selection_receipt_sha256"])
-        for row in self.review["records"]:
-            winner = self.selection["strata"][row["stratum"]]["selected"]
-            self.assertEqual(row["id"], winner["id"])
-            self.assertEqual(row["yaml_sha256"], winner["yaml_sha256"])
-            for path, digest in row["context_files"].items():
-                self.assertEqual(sample.sha(note_package.historical_bytes(ROOT / path)), digest, path)
+        with note_package.historical_view():
+            for row in self.review["records"]:
+                winner = self.selection["strata"][row["stratum"]]["selected"]
+                self.assertEqual(row["id"], winner["id"])
+                self.assertEqual(row["yaml_sha256"], winner["yaml_sha256"])
+                for path, digest in row["context_files"].items():
+                    raw = note_package.numbers.historical_bytes(ROOT / path)
+                    self.assertEqual(sample.sha(raw), digest, path)
 
     def test_bounded_judgments_and_no_promotion(self):
         self.assertFalse(self.review["canonical_promotion_approved"])

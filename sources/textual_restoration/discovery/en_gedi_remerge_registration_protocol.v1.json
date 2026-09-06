@@ -1,0 +1,49 @@
+{
+  "schema_version": "1.0.0",
+  "date": "2026-09-05",
+  "scope": "Development-only remerge-to-master coarse affine registration; retain failure, no reading benchmark.",
+  "prior_exposure": "Both textures/master and prior merge5 failure known. Remerge chosen from six-texture triage. New correspondence outcomes not yet inspected.",
+  "inputs": {
+    "master_sha256": "1c2da746935f00b0020daf8d72fb0f3ff81b929811907eb5d75eb06d5a0faf10",
+    "texture_sha256": "f53d150d4bca1ff648dd237a68bd3c56547e351085b6f951af3627ad0fcc4edc",
+    "mask_sha256": "4f7697c20c2ac741eaa34408cd60bcc5dedba28b09467c6391b1e18d099b1a3a",
+    "mapping_receipt_sha256": "e5e0693833d6604cdff7e13583b771f8775c3c8183b81487a034d9da5ef7aa46"
+  },
+  "algorithm": {
+    "opencv_version": "4.13.0",
+    "read": "IMREAD_GRAYSCALE, source bytes immutable; arrays only",
+    "texture_divisor": 2,
+    "master_divisor": 4,
+    "resize": "INTER_AREA image; INTER_NEAREST mask",
+    "coordinate_lift": "original=(analysis+0.5)*scale-0.5, using exact native/analysis dimensions",
+    "sift_nfeatures": 15000,
+    "sift_contrast_threshold": 0.01,
+    "match_ratio": 0.75,
+    "matching": "L2 forward ratio strict threshold and mutual best",
+    "geometric_dedup": "Sort ascending descriptor distance, second distance, texture y,x, master y,x; greedily retain only pairs with neither native texture nor master floor(x),floor(y) pixel-bin previously retained. Preserve every rejected pair.",
+    "partition": "256-native-texture-pixel tiles; validation iff (tile_x+2*tile_y)%3==2. All retained pairs in a tile share a partition. No fit on validation.",
+    "tile_size": 256,
+    "fit": "estimateAffine2D RANSAC, original coordinates, fitting pairs only",
+    "ransac_reprojection_threshold": 10,
+    "max_iterations": 10000,
+    "confidence": 0.999,
+    "refine_iterations": 10,
+    "rng_seed": 20260905,
+    "no_refit_on_validation": true
+  },
+  "coarse_gate": {
+    "minimum_training_inliers": 12,
+    "minimum_validation_pairs": 8,
+    "minimum_validation_fraction_within_20_master_pixels": 0.8,
+    "minimum_texture_inlier_y_span_fraction": 0.5,
+    "minimum_texture_inlier_x_span_fraction": 0.25
+  },
+  "limits": [
+    "Spatial holdout and dedup reduce leakage; still correlated image features, not independent reading labels.",
+    "Affine may fail on warped composite. No retuning to force pass.",
+    "All 68 prior mapping points projected only if finite fit; none becomes an accepted verse/letter locator.",
+    "No-finite-fit is recorded as failed outcome, not discarded run."
+  ],
+  "reading_benchmark_executed": false,
+  "generated_images_used": false
+}

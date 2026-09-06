@@ -19,6 +19,16 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
 
 ## What exists locally
 
+- The [Deuteronomy numbering check](DEUT32_8_NUMBERING_CHECK_2026-09-05.md)
+  consults the publisher preview and historical photo inventory but does not
+  obtain DJD XIV's decisive page/plate. Qumran-Digital section `12` is not a
+  certified DJD fragment number. The newly checked top-line parallel belongs
+  to 4Q45, not additional surviving letters in 4Q37.
+- The [En-Gedi remerge registration](EN_GEDI_REMERGE_REGISTRATION_2026-09-06.md)
+  is an executed, failed geometric experiment. All projected coordinates remain
+  unaccepted; neither the map nor the feature matches add a textual witness
+  or a recovered reading.
+
 - The [Jeremiah 10 literary-form dossier](JEREMIAH_10_LITERARY_FORM_COMPARISON_2026-09-05.md)
   checks DJD's partial 4Q70 verse-10 wording and 4Q71 spatial reconstruction
   against Swete's shorter continuous text and opposing Q marginal evidence.
@@ -26,6 +36,9 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
   4Q72a belongs to chapter 43. Dating/hand relationships remain disputed.
   This is a bounded research supplement, not a new formal registry case or
   a complete Jeremiah literary-form collation; current POB is retained.
+  The subsequent [note application](JEREMIAH_10_10_NOTE_APPLICATION_2026-09-06.md)
+  adds reviewed reader disclosure and repairs related anchors/metadata; source
+  and marker-free English are unchanged, and publication remains unapproved.
 - The [Deuteronomy image/full-verse supplement](DEUT32_8_ADJUDICATION_FOLLOWUP_2026-09-05.md)
   identifies a specific IAA color/IR object pair and records an opening-word
   orthography decision alongside the final variant. Native-region/DJD

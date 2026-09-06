@@ -2087,6 +2087,102 @@ repair, not source/English selection. This checkpoint uses the standing
 commit/main/push authority and `[skip ci]`; actual push success must be checked
 against the configured remote rather than inferred from the validation.
 
+## 2026-09-06 — bounded note delivery, numbering controls and failed registration
+
+The preceding checkpoint was actually committed and pushed as
+`bbc3c51188a61fc04bcb0dc8241d47581950bbbe`; a direct remote-tip check confirmed
+that revision before this continuation. Previously frozen September 5 artifacts
+keep their original dates. This entry records the September 6 continuation.
+
+**Deuteronomy:** the [numbering check](DEUT32_8_NUMBERING_CHECK_2026-09-05.md)
+consulted the Lexham/Pfann publisher preview, ABMC's historical photograph
+inventory and the versioned Qumran-Digital transcription. Opening sections 1–5
+correspond to columns I–V in the preview; extension to XII remains inference
+because the preview stops during V.8. PAM 43.054 and Duncan's dissertation
+plates VI–VII are acquisition leads, not inspected target photographs. The
+source's top-line circle belongs to 4Q37; the nearby complete parallel belongs
+to 4Q45. Actual DJD XIV p. 90/plate access remains unsuccessful. The separate
+judge accepted this bounded report, not a completed crosswalk or source choice.
+No source, English, registry count or historical frozen candidate changed.
+
+**En-Gedi:** the [new registration](EN_GEDI_REMERGE_REGISTRATION_2026-09-06.md)
+fixed SIFT matching, mutual/ratio filters, both-endpoint deduplication,
+pixel-center coordinate lifts, whole-tile fitting/validation assignment and
+affine-fit/gate parameters before the observed outcome. The actual run retained
+957 of 1,065 pairs and rejected 108 duplicates. It found 116 fitting inliers,
+but only 82 of 352 validation pairs were within 20 master pixels (23.30%,
+required 80%); x/y spans were 22.68%/34.08% (required 25%/50%). This is FAIL,
+not a partial reading success. All 68 projected prior points retain null
+accepted verse/letter labels. The judge independently recomputed residuals,
+partition and endpoint checks and reproduced the saved result from actual
+images. That is reporting-integrity approval only. No threshold retuning,
+new recovered letters, edited images, ImageGen evidence or source selection
+resulted. Local deformation or incorrect correspondences remain possible;
+the experiment does not decide their cause.
+
+The numerical runtime requested one OpenCV thread but reported eight. The
+judge's full replay reproduced that field too, and a separate diagnostic found
+eight reported before and after the request on the GCD-backed build. Frozen
+bytes remain intact; no effective single-thread execution is claimed.
+
+**Jeremiah candidate review:** the separate source judge inspected the actual
+DJD, Swete and Langlois pages identified in the hash-bound
+[judgment](../sources/textual_restoration/applications/jeremiah_10_10_note_judgment.v2.json).
+It approved v2's bounded literary-form disclosure, repaired a/b/c anchor
+placement, Yahweh connective metadata and explicit archiving of old review
+states. Source YAML and marker-free English are unchanged. v1 remains frozen
+as the narrower predecessor that left connected defects in place; v2 and both
+preflights remain separately preserved. Whole-verse approval, earliest-form
+selection, fresh verification of inherited lexicon citations and publication
+remain explicitly outside that approval.
+
+The judge's first handoff encountered a usage limit after a complete judgment
+had already been saved. The parent inspected that artifact and the resumed
+judge confirmed the completed review. No usage reset or purchase was made.
+This was an interrupted handoff, not an invented or incomplete source review.
+
+**Application safeguards:** the new transaction tool has no canonical writer.
+It requires a separately reviewed executor, exact baseline/candidate/evidence
+hashes, a write-once intent, an explicit separate patch and actual post-edit
+full-book export verification. Historical replay overlays only the two named
+approved note targets and reports the real current corpus digest separately.
+The transaction judge identified a lifecycle gap: exact baseline bytes could
+otherwise be accepted after an application receipt existed. The parent repaired
+this by rejecting an unrecorded rollback and validating an existing intent even
+at baseline. Tests and re-review must pass before the canonical patch.
+
+The repaired exact executor received the separate transaction APPROVE. Actual
+prepare, separate `apply_patch`, and completion then succeeded; see the
+[application report](JEREMIAH_10_10_NOTE_APPLICATION_2026-09-06.md) and its linked
+immutable ledgers. Canonical Jeremiah 10:10 now exactly matches approved v2.
+The actual export covers 52 chapters/1,364 verses, retains all four notes and
+matches the approved candidate; every other exported Jeremiah item is unchanged.
+The real current OT corpus digest changed from `f717bc7f9904942cbb2c9d4748d176bef195ad2c108a713a4ae269e00bee082d`
+to `c1fba2b816d99268b268e8a175c6be6181e5e66b373872f1f701449272262093`.
+The frozen historical digest remains `d7ba46056931eb8f23844b388ca2adeef5e6c7588e40ad3b6b5e8c6336fb5381`.
+All 101 historical context bindings and the eleven dossier contexts reproduce
+through explicitly identified approved baselines, not by rewriting history.
+Sixty relevant tests passed again after the canonical edit. This is a completed
+bounded note application, not a complete source/English adjudication or a
+deployed-reader change. The all-book research goal remains active.
+
+The complete post-edit repository regression passed 375 tests; the numerical
+suite passed 39, for 414 distinct passing tests. The unchanged registry still
+validates 31 mixed entries, 20 coverage records, 13 formal comparisons and one
+unpromoted selection. Pre-publication file checks parsed all 11 new JSON files
+and resolved 241 local Markdown links across the then-current 30 scoped files;
+whitespace checks passed and no file exceeded 5 MiB. Revision-refresh fixtures
+exercise failure paths intentionally; their printed fixture errors are not an
+actual research-branch push failure.
+
+The [final independent verification](../sources/textual_restoration/applications/jeremiah_10_10_note_post_application_verification.v2.json)
+then passed actual canonical bytes, approval/intent/application bindings,
+full-book export and historical replay, with no mandatory reporting correction.
+The judge independently compared the unchanged source block and marker-free
+English and repeated 21 transaction tests after application. This checkpoint
+is ready for the standing main/commit/push workflow with `[skip ci]`; that Git
+publication is not Bible deployment or source-form approval.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

@@ -11,6 +11,22 @@ limits and open gates. It is also the target for a possible later About link.
 
 ## Immediate delivery order — revised 2026-09-04
 
+- [x] Apply the bounded independently reviewed Jeremiah 10:10 literary-form
+  disclosure with exact-byte ledgers, historical replay and actual full-book
+  export checks; [application](JEREMIAH_10_10_NOTE_APPLICATION_2026-09-06.md).
+  Whole-verse adjudication, source-form priority and deployed-reader publication
+  remain separate open tasks.
+
+- [x] Run and preserve the fixed remerge affine registration experiment,
+  including all failed gates; [result](EN_GEDI_REMERGE_REGISTRATION_2026-09-06.md).
+  This completes the experiment, not geometric acceptance or reading recovery.
+- [ ] Resolve local distortion/segment-to-master correspondence using a new
+  development protocol and independent controls before accepting coordinates.
+- [x] Separate 4Q37 transcription section, reconstructed-column and photo/fragment
+  numbering with a bounded [primary-source check](DEUT32_8_NUMBERING_CHECK_2026-09-05.md).
+- [ ] Obtain DJD XIV p. 90 and associated plate context or an explicitly verified
+  dissertation-to-DJD concordance; do not equate the competing number systems.
+
 - [x] Audit OT/NT source classes and current critical-edition status; correct
   supplied-text overclaims in the Exodus pilot. See the
   [coverage audit](BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md).

@@ -255,6 +255,17 @@ confirmation before being promoted to attestation.
 
 ## Next evidence checks
 
+The [4Q37 numbering receipt](deut32_8_numbering_check.v1.json) distinguishes
+direct publisher/inventory evidence from the still-inferred section-to-column
+crosswalk. See the [bounded report](../../../docs/DEUT32_8_NUMBERING_CHECK_2026-09-05.md).
+
+The [remerge registration protocol](en_gedi_remerge_registration_protocol.v1.json)
+and [actual result](en_gedi_remerge_registration_check.v1.json) preserve a failed
+affine fit evaluation: held-out agreement and both coverage spans fail. Projected
+points carry no accepted verse or letter labels. The
+[report](../../../docs/EN_GEDI_REMERGE_REGISTRATION_2026-09-06.md) separates geometric
+development from textual evidence and records the independent bounded review.
+
 The [Isaiah target list](isaiah_catalogue_targets.v1.json) and
 [reconciliation](isaiah_catalogue_check.v1.json) extend the catalogue/index
 screen beyond Leviticus: 22 published copy-list names match QDR, while six

@@ -1,0 +1,27 @@
+# Deuteronomy 32:8: bounded numbering and historical-photo check
+
+Checked 2026-09-05. This supplements the [preceding image follow-up](DEUT32_8_ADJUDICATION_FOLLOWUP_2026-09-05.md); it does not certify the DJD-to-IAA crosswalk. The new [receipt](../sources/textual_restoration/discovery/deut32_8_numbering_check.v1.json) distinguishes direct consultation, inference, and acquisition leads. Canonical text, the registry, selections, and frozen application records were not edited.
+
+The defensible citation remains **4Q37, Qumran-Digital section labeled `12`, lines 13–14**. Its identification as reconstructed column XII is strongly indicated, but actual DJD XIV p. 90 and the corresponding plate were not obtained in this check. Calling it “DJD fragment 12” remains unsupported. Neither the twelve nor the IAA's ten should be converted into the other's numbering system.
+
+## New direct evidence
+
+The publisher's lawful [Lexham/Pfann 4Q37 preview](https://biblia.com/api/plugins/embeddedpreview?historybuttons=false&layout=minimal&navigationbox=false&resourceName=LLS%3A4Q37DEUTERONOMYJ&sharebutton=false) explicitly labels the opening sections Col. I–V. Their Deuteronomy passages and local lines correspond to Qumran-Digital's unqualified headings 1–5: 5:1–11, 5:13–15/21, 5:22–28, 5:29–33/6:1–3, and 8:5–10. This directly establishes the column convention for those opening sections. The preview stops during V.8, so **it does not directly label or transcribe XII**. Extending that convention to Qumran-Digital `12` is an inference, not inspection of the missing DJD page. The preview credits Stephen Pfann with the transcriptions; it is not Duncan's DJD edition or an additional ancient witness.
+
+The historical [ABMC inventory, Fascicle 7, now hosted by the University of Agder project](https://lyingpen.uia.no/dssinventoryproject/fascicle7/), supplies a concrete acquisition chain. Its document entry 4Q37 associates C30b and museum plate 172 with PAM photograph 43.054. Its photograph entry 43.054 points to Duncan's **1989 dissertation**, plate VI, fragments 9–15, and plate VII, unidentified fragments. The separate museum-plate entry 172 again points to 43.054. These entries were actually read, along with the preface and numbering conventions; the historical photograph itself was not viewed. Thus the next historical image target is PAM 43.054, and an alternative primary-edition target is Duncan's dissertation plates VI–VII. The inventory does not identify which dissertation fragment is today's IAA fragment 10, or which DJD fragment carries column XII.
+
+The inventory describes its lists as preliminary and explicitly anticipates changes to prepublication fragment numbers. Its introduction explains why document, photographic, and museum-plate lists are all necessary. Accordingly, dissertation fragment 12, reconstructed column XII, and IAA plate-position fragment 12 cannot be treated as equivalent. The IAA color/IR pair B-359054/B-359055 and its plate 172/fragment 10 identity are inherited from the preceding consultation, not a new pixel check here.
+
+## Three-line preservation control
+
+Inspection of the [versioned Qumran-Digital source](https://lexicon.qumran-digital.org/transcriptions/4Q37/2026-05-21/index.html?v=2026-05-21) separated the manuscript's own `line-verse` rows from the following `parallel-line` comparisons. The top row of section `12`, `c311976-i311976`, prints `בינ○[` before the supplied continuation of Deuteronomy 32:7. Its displayed circle must remain a circle: the nearby `בינו[` belongs to the parallel **4Q45**, not 4Q37. This is a new check of the top-line control, not a new decipherment or a proposed change to verse 7.
+
+Lines 13–14 repeat the already recorded `בהנחי[ל … למספר]` and `בני אלוהים[ -- ]`. Their survival assessment has not changed. The source HTML's generic `chapter-column` class is used for both the unqualified `12` and explicitly labeled `frg. 35`; that class alone cannot prove a column identity.
+
+No English change follows from these numbering findings. The earlier candidate remains an editorial composite; its middle clause is not newly certified by surviving 4Q37 ink. The opening plene/defective spelling question and final sons-of-God source preference remain for adjudication. No confidence or review gate advances here.
+
+## Edition acquisition limits
+
+Google Books' [DJD XIV catalogue record](https://books.google.com/books/about/Qumran_Cave_4_IX.html?id=ZEWS0AEACAAJ) opened in the ordinary browser and displayed no eBook or readable edition preview. The Orion DJD contents page timed out in the web reader and returned no body in a normal HTTP fetch. A direct Oxford product route produced no readable book content. Search leads to the 1999 Study Edition identify column XII with Deuteronomy 32:7–8 and catalogue Duncan at pp. 75–91, plates XX–XXIII; a University of Chicago dissertation specifically cites DJD p. 90. These remain **unconsulted target-page leads**, not a claim to have read DJD. The earlier IAA-reported 70–91 range remains preserved as that site's report.
+
+No purchase, account access, access-wall bypass, image download, image generation, or restricted-pixel vendoring occurred. The PDF skill was read for potential edition inspection; no PDF was successfully consulted or authored in this check. Obtain DJD p. 90 with its column/fragment heading and plate context, or the actual dissertation plates followed by a verified DJD concordance, before claiming the exact crosswalk.

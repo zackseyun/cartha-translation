@@ -130,7 +130,33 @@ actual scan coordinates for selected development points but no authenticated
 letters. Its byte-count repair also demonstrates that a judge's technical
 PASS must be scoped to the checked invariant, not extended into reading quality.
 
-### Earlier review snapshot
+### Continuation — 2026-09-06
+
+The [Deuteronomy numbering check](DEUT32_8_NUMBERING_CHECK_2026-09-05.md)
+adds a general rule: a transcription's section number, an edition's reconstructed
+column, a historical photograph and a museum fragment position are separate
+identifiers until an explicit concordance joins them. Nearby parallel-witness
+rows must not be copied as the target manuscript's surviving text. The actual
+DJD XIV target page and plate remain unconsulted; the neutral section locator
+is safer than claiming the crosswalk has been established.
+
+The [remerge registration experiment](EN_GEDI_REMERGE_REGISTRATION_2026-09-06.md)
+fails its fixed geometric criteria. Do not repeat parameter searches until one
+passes and present that selected run as validation. A new development model
+requires a new protocol, preserved failed alternatives and independent controls.
+Even successful geometric alignment would not authenticate a Hebrew letter.
+
+For editorial delivery, distinguish three approvals: the evidence/wording of a
+bounded note, the transaction that installs its exact reviewed bytes, and actual
+reader publication. The Jeremiah note package adds balanced literary-form
+disclosure without claiming the earliest form has been recovered. Historical
+corpus replays must identify the exact approved overlays and report the real
+current corpus separately; old review labels cannot silently certify new text.
+The [Jeremiah application checkpoint](JEREMIAH_10_10_NOTE_APPLICATION_2026-09-06.md)
+now executes this bounded path, including actual full-book export checks.
+It does not complete the broader source-selection/publication workflow.
+
+### September 4 snapshot table
 
 | Completed work | What it establishes | What remains open |
 |---|---|---|
