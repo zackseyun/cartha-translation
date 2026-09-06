@@ -30,6 +30,30 @@ arguments; its identity supplies no additional manuscript evidence.
 
 ## What the work actually establishes
 
+### Delivery refinement — 2026-09-06
+
+The [whole-OT transcription screen](UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md)
+now checks all 39 books against a pinned UXLC release, separately measuring
+consonants, pointing, accents, punctuation and qere representation. Its five
+consonant leads are manageable source-image follow-ups; its thousands of mark-
+level differences must not be sold as thousands of translation corrections.
+Two transcriptions of Leningrad are not two independent ancient witnesses.
+
+The next improvement is therefore **targeted source verification after broad
+screening**: check each consequential difference against the actual object,
+editorial history and discriminating independent witnesses before proposing
+source or English changes. Keep the source-stable English evaluation separate.
+Preserve no-change conclusions and failed tests alongside successful disclosures.
+The [NT operational refinements](BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md#operational-nt-refinements--2026-09-06)
+likewise distinguish a resource's existence from evidence actually acquired.
+
+Continue independent agent review, with exact artifacts and reproducible checks.
+A passing agent judge certifies only its stated scope; it is not a human
+specialist's endorsement, model-independent calibration, or proof of textual
+priority. Record failures and repairs before the final judgment. Freeze research
+receipts once approved; later canonical changes need new, explicitly linked
+application/history records rather than rewriting prior evidence.
+
 ### Current reassessment — 2026-09-05
 
 The table below preserves the September 4 snapshot. The current ledger is

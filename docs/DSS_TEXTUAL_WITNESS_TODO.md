@@ -14,12 +14,21 @@ limits and open gates. It is also the target for a possible later About link.
 - [x] Reconcile the Psalms copy/literary-context catalogue against both QDR
   files and the full pinned modern index;
   [report](PSALMS_CATALOGUE_RECONCILIATION_2026-09-06.md).
-- [ ] Collate Psalm-bearing portions of 11Q11, 4Q522 and the pesharim; resolve
+- [x] Compare accessible published 11Q11 Psalm91 transcription and inspected
+  Greek edition pages, distinguishing later QDR-only lines and supplied wording;
+  [report](PSALM_91_11Q11_COMPARISON_2026-09-06.md). No reading adopted.
+- [ ] Obtain DJDXXIII pp.202–204 and associated column-VI image for remaining
+  11Q11 preservation/space questions; collate 4Q522 and the pesharim; resolve
   MasPsa's Psalm18 conflict and 4Q173a identity before new coverage claims.
 - [x] Revisit Genesis4:8 with actual Hebrew/Greek/Latin/Syriac edition evidence
   and competing explanations; [report](GENESIS_4_8_SOURCE_COMPARISON_2026-09-06.md).
-- [ ] Review/apply the tighter Genesis4:8 disclosure separately; source-form
-  priority and any English-only smoothing remain unapproved.
+- [x] Independently review the exact tighter Genesis4:8 disclosure candidate,
+  connected metadata/archive scope and complete GEN export;
+  [judgment](../sources/textual_restoration/applications/genesis_4_8_note_judgment.v1.json).
+- [ ] Implement and independently review the guarded Genesis4:8 application
+  transaction, preserving historical sampling/application receipts, then verify
+  actual application. Source-form priority and English-only smoothing remain
+  unapproved; canonical target is still unchanged.
 
 - [x] Add a three-codex, all-39-book Masoretic navigation spine with explicit
   Aleppo loss/surrogate categories, Sassoon coverage limits, local source-release
@@ -27,9 +36,13 @@ limits and open gates. It is also the target for a possible later About link.
   [report](MASORETIC_CODEX_COVERAGE_SPINE_2026-09-06.md).
 - [ ] Complete those codices' passage/hand/pointing maps and expand to other
   Masoretic codices and Genizah fragments; the three targets are not a census.
-- [ ] Acquire a pinned UXLC release and collate relevant changes against local
-  OSHB/WLC, actual LC images and POB. Keep source corrections, normalization,
-  supplied vowels and earlier-text selection separate; no automatic upgrade.
+- [x] Acquire pinned UXLC2.5 and screen all39 ordinary book files against actual
+  OSHB/WLC, joining all five consonant leads to POB and publisher change history;
+  [report](UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md).
+- [ ] Check those five against actual LC images/apparatus, retaining the Ezekiel
+  bet/kaf uncertainty; sample pointing/qere classes for further triage. Keep
+  corrections, normalization, supplied vowels and earlier-text selection
+  separate; no automatic upgrade.
 
 - [x] Apply the bounded independently reviewed Jeremiah 10:10 literary-form
   disclosure with exact-byte ledgers, historical replay and actual full-book

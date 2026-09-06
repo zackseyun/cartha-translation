@@ -348,3 +348,22 @@ and verse snapshots are hashed, and verification recomputes the receipt.
 The unit tests do not require the external QDR dataset. Full recomputation does.
 See the [coverage audit](../../../docs/BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md)
 for the still-uncompleted, multi-catalogue discovery scope.
+
+## Whole-OT transcription comparison, 2026-09-06
+
+`uxlc_wlc_comparison_protocol.v1.json` and `uxlc_wlc_comparison.v1.json`
+record the pinned UXLC 2.5 versus vendored OSHB/WLC screen: 39 books,
+23,213 shared labels, five written-consonant leads. The full receipt retains
+raw parsed evidence for 4,535 flagged rows and is intentionally larger than
+the aggregate discovery indexes. See the
+[report](../../../docs/UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md) for layered counts,
+acquisition, failed attempts and limits. Same-codex edition screening is not
+new manuscript evidence or approval of any canonical change.
+
+## Psalm 91 in 11Q11, 2026-09-06
+
+`psalm91_11q11_comparison.v1.json` records actual published-preview Hebrew,
+bracket-sensitive private QDR follow-up and inspected Swete Greek pages.
+See the [report](../../../docs/PSALM_91_11Q11_COMPARISON_2026-09-06.md).
+The damaged verse9 speech verb is not fully preserved; later lines outside
+the published preview remain explicitly provisional. No canonical change.

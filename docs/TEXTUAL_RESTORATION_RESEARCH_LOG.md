@@ -2264,6 +2264,124 @@ No canonical verse or previously frozen research artifact was edited in this
 pass. Tests certify the recorded invariants and unchanged history, not the
 earliest biblical text or newly recovered ink.
 
+## 2026-09-06 — Whole-OT edition screen and exact Genesis candidate
+
+The previous source-workstream checkpoint was committed and pushed as
+`9b504eac484390728f68e0d2e415c898cba5875c`; main and the remote tip were verified
+equal and the worktree clean before this pass. The broader restoration goal
+remains active. The user-authorized agent split assigned Psalm91/11Q11 primary
+published evidence, an exact Genesis4:8 disclosure candidate, and independent
+judgment; the parent executed the whole-OT digital-transcription screen.
+
+The [UXLC/WLC report](UXLC_WLC_WHOLE_OT_SCREEN_2026-09-06.md) records an actual
+hash-verified publisher ZIP and all 39 ordinary-book comparisons. All 23,213 verse
+labels align by label; five verses differ in the written-consonant lane. Final
+first differences are 374 pointing, 3,897 accent/meteg and 203 full-stream format;
+18,734 are equal through all declared lanes. Separate qere and token-boundary
+diagnostics overlap these categories. These are edition diagnostics, not
+independent witnesses, restored letters or automatic English corrections.
+The result joins all five consonant leads to current canonical Hebrew and
+English without changing either. Four source fields match WLC; the fifth's
+literal neither-match includes a separately recognized paragraph-marker issue.
+
+The acquisition retained full archive/header/site assets privately and exports
+only biblical text and factual metadata under the publisher's terms. Direct
+web XML reading was unsupported; ordinary HTTPS acquisition succeeded. An
+initial member-path error and an initial parser rejection of nested decorated
+letters are documented in the report; neither was concealed as a successful
+run. Explicit mixed-content and punctuation handling repaired the parser before
+the saved comparison. Tests cover actual multiword, empty and insertion-only
+qere examples, exclude descendant-word duplication, retain decorated letters
+and tails, and verify the saved inputs and layer partition.
+
+The Genesis author prepared an [exact unapplied candidate](../sources/textual_restoration/applications/genesis_4_8_note_candidate.v1.yaml),
+[plan](../sources/textual_restoration/applications/genesis_4_8_note_plan.v1.json)
+and [preflight](../sources/textual_restoration/applications/genesis_4_8_note_preflight.v1.json).
+The previously approved note is verbatim; only connected invitation descriptions
+and explicit archival of old review/status fields accompany it. The source,
+main English and existing anchor remain byte-identical. Both real full-Genesis
+exports contain 50 chapters/1,533 verses with only the target disclosure changed
+in the candidate output; all canonical inputs remain unchanged. This is not
+a deployed-reader test, a transaction, a source-priority promotion or whole-
+verse reapproval. In particular, the English “said to” versus “spoke to” question
+has not been smuggled into a note-only edit. Any later application must also
+preserve the frozen historical sampling and prior application records.
+
+A second bounded source review found the existing NT categories appropriate
+and proposed operational refinements now recorded in the
+[coverage audit](BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md#operational-nt-refinements--2026-09-06):
+distinguish catalogue/image/transcription/apparatus/survival access, pin
+ECM/CBGM book and dataset, name specific versional acquisition routes, record
+patristic citation transmission, and track editorial dependence. Official
+NTVMR page attempts exposed navigation rather than passage evidence. No NT
+manuscript collation or restricted apparatus import is claimed.
+
+Parent validation at this checkpoint passed 413 repository tests, including 13 new
+comparison tests and 9 Genesis candidate tests, plus 39 numerical tests: 452 distinct
+tests. This is validation of the defined invariants, not scientific proof of
+textual priority or model accuracy. Independent judgment and any resulting
+repairs are recorded separately below before final freeze/commit.
+
+The independent judge rejected the first saved UXLC result for normalization
+order: removing blockers after NFD can leave combining marks noncanonically
+ordered, generating false differences. The parent applied NFD after each lane's
+filtering too, added a blocker/mark-order regression, and reran all 39 books.
+The private rejected result is retained at SHA-256
+`515b365164a135a545f95765bb669cd0efb7c481d00c111b9108c8f181bcb6b8`;
+its earlier 824 pointing/4,277 accent/197 full-stream counts are superseded.
+The corrected receipt has 4,535 flagged rows and 67 qere-payload flags rather
+than 5,356 and 75. The five consonant leads, 13 qere-presence/word-count flags,
+24 token-boundary/payload flags and all raw inputs are unchanged. The new test
+raises the current distinct test total to 453 (414 repository plus 39 numeric).
+No rejected result is being presented as a scientific pass.
+
+The subsequent publisher-history follow-up located all five consonant changes
+in pinned book headers and the actual dated change records. These are reported
+same-codex transcription corrections. Ezekiel16:36 remains explicitly uncertain:
+the summary/TEI's c versus detailed action/current XML's t discrepancy is kept,
+not resolved by majority of descriptions. Samuel13:37's uncertainty concerns
+the preceding vav/yod, not the publisher's final dalet reading. A diagnostic
+removing only Samuel14:7's terminal paragraph פ establishes an exact WLC match;
+the receipt's literal neither-match remains unchanged. Folio/column/line and
+word locators in the report now provide concrete next image targets. No pixels
+or BHL apparatus were newly examined in this follow-up.
+
+The [Psalm91/11Q11 comparison](PSALM_91_11Q11_COMPARISON_2026-09-06.md)
+advances the catalogue lead to published transcription and actual Greek edition
+pages. The accessible Lexham/Biblia preview reaches columnVI.3–9; QDR's private
+surface text continuesVI.10–14 but receives an explicitly lower evidence status.
+The Qumran-Digital web page stops before the Psalm despite its presence in the
+other resources. Švarc's actual2026publication of a2025issue paper supplies
+competing reconstructions; SweteII's printed336–337 and apparatus were visually
+inspected, along with relevant study/thesis pages using the PDF skill.
+No DJDXXIII or scroll-pixel consultation is claimed.
+
+Most importantly, the proposed speech verb in verse9 is [קר]את: the initial
+letters are supplied, not a fully preserved word that compels inserting
+“said/called” into POB. Verse2/4 alternatives merit focused consideration;
+verse13 and the ending rely on QDR beyond the accessible published preview.
+The parent caught wording that initially blurred that preview boundary for
+verse13; the author qualified both the result and table before final review.
+Greek apparatus evidence also prevents an unqualified claim that all Greek
+witnesses omit “all” in verse11. Collection-specific adaptation remains a live
+alternative to earliest-text priority. All sixteen POB Psalm91 files are
+unchanged, and no restoration or source selection is accepted.
+
+Final package review: the independent judge reproduced the repaired full UXLC
+receipt exactly, passed all 14 comparator tests, and checked the five publisher
+change entries with their retained uncertainties. The Psalm91 review checked
+21 source/control hashes, the actual private column-VI transcription, accessible
+preview boundary, Greek apparatus and consulted scholarly pages. The bounded
+packages pass; no manuscript restoration or historical-priority claim passes
+by implication. The exact Genesis candidate judgment is
+`2017263197fe6d548e0b058b975fe68d2b397b3f84e8fed4c93849e5471ed525`:
+note/connected-metadata approval only, transaction approval still false.
+After the normalization repair, the parent reran the full repository suite:
+414 tests passed; the unchanged numerical suite passed 39, totaling 453 distinct
+tests. The backlog now distinguishes completed bounded comparisons from open
+image/apparatus/application work. No canonical files or frozen earlier research
+artifacts changed. About-page integration and deployment remain unperformed.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

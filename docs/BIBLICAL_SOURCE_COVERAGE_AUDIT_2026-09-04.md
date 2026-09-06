@@ -319,6 +319,38 @@ locally, without imposing fixed text-type rankings on every book.
 
 ## Which sources are worth comparing?
 
+### Operational NT refinements — 2026-09-06
+
+The required NT source classes above remain appropriate. This follow-up checked
+official resource descriptions, not a new manuscript census or passage apparatus.
+For every acquisition distinguish catalogue identity, image availability,
+transcription availability, apparatus consultation and actual passage survival.
+The web reader exposed navigation at the [NTVMR Liste](https://ntvmr.uni-muenster.de/liste)
+and [ECM Digital](https://ntvmr.uni-muenster.de/ecm), not usable passage evidence;
+these access attempts do not count as collations.
+
+Pin ECM/CBGM book, edition, dataset and analytical phase. INTF describes a
+reasoned manuscript selection, not a census of every extant reading, and
+[Genealogical Queries 2.0](https://intf.uni-muenster.de/cbgm/index_en.html)
+specifically uses the 2013 Catholic Letters edition. Do not extrapolate that
+dataset's coverage to the whole NT. [ECM method](https://www.uni-muenster.de/INTF/en/forschung/ecm/index.html).
+
+For ancient versions and commentary witnesses, use the specific GALaCSy,
+CATENA and Vetus Latina acquisition routes within the
+[ITSEE projects](https://www.birmingham.ac.uk/research/centres-institutes/textual-scholarship-and-electronic-editing/projects),
+including Gothic where relevant. For patristic evidence require author,
+work/section, consulted critical edition, original/translated language,
+surviving transmission and quotation-versus-commentary-lemma status. An author's
+date is not the date of the surviving copy or a guarantee of verbatim quotation.
+[Beuron's editorial description](https://www.herder.de/vetus-latina/institut/)
+provides a concrete route to individual Latin witness wording.
+
+Track editorial inheritance explicitly: UBS6's adoption of ECM decisions does
+not add independent attestations to them. Agreement among editions is useful
+for discovery, not manuscript voting.
+[Publisher's UBS6 description](https://www.die-bibel.de/en/en/the-sixth-edition-of-the-greek-new-testament-ubs6).
+No restricted apparatus was imported and no NT source was changed by this review.
+
 Discover broadly; prioritize detailed collation by the question being asked.
 For every candidate, record:
 
