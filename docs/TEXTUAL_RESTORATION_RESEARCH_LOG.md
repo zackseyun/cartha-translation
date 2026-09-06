@@ -3331,6 +3331,63 @@ next integration must connect verified provenance and actual editorial review
 to the production source representation and reader disclosure; changing only
 an edition enum or treating this composition result as approval is insufficient.
 
+### 2026-09-06 — Isaiah editorial approval and existing source-page path
+
+Previous turn: progress through shared source composition verification. This
+pass closes a different question: whether the complete candidate is editorially
+adoptable, rather than whether a research report is accurate or its strings
+recompose. The independent agent `/root/isaiah_editorial_gate` approved the exact
+candidate for **provisional source selection and full-record editorial adoption**.
+The [review record](../sources/textual_restoration/applications/isaiah53_11_editorial_review.v1.json)
+preserves the actual decision, input pins, counter-explanation, unchanged-base
+scope and cautions. No new source search or manuscript reading was commissioned.
+Knowledge attachment and “the many” were judged nonblocking under the declared
+base analysis. No substantive new source/English prerequisite was identified.
+Technical application and publication approval remain false. The candidate's
+preparation flags are not rewritten; the external review is the later decision,
+not permission to treat every old pending flag as complete.
+
+Read-only inspection of `cartha.website` at
+`25bb34e1cd769dde85dbd72e23bb56cd60582add` found an existing source-record route,
+which narrows the earlier lightweight-export gap:
+
+- `BibleReader.jsx`, lines 1578–1590, 4971–4975 and 23029–23038: “Check
+  Provenance” opens `/peoples-open-bible/verse?ref=ISA.53.11` for this verse.
+- `bibleData.js`, `parsePobProvenanceRef`: source references resolve to canonical
+  verse YAML paths. The ordinary reader's separate POB footnote-stripping branch
+  remains present; this finding does not repair or deny that branch.
+- `verse/page.jsx`, lines 101–126 and 258–284: the route loads the canonical
+  YAML from the repository's main branch and its body displays source text,
+  edition and apparatus. It also renders footnotes and links the raw YAML.
+
+The actual `VerseProvenanceBody` was server-rendered with the unchanged candidate
+as props using installed Next SWC and ReactDOM. The whole JSX module was compiled
+as CommonJS (ECMAScript JSX parser, classic React transform); framework imports
+for navigation/theme/footer and the unused route-data import were stubbed, while
+the actual body, helpers and styles executed. This was not a full Next route,
+network fetch, browser interaction, visual-layout check or deployment. Results:
+Hebrew text, draft edition, every apparatus note, both footnote bodies and the
+raw-YAML link were present. The full `source.note` composition disclosure was
+absent. Thus absence from the mobile payload does **not** establish absence of
+an accessible source path; the existing page avoids needing a new provenance
+reader. It still needs deliberate composite-source disclosure and deployed-path
+verification before publication. No website or other repository was modified.
+
+Exact inspected website file SHA256 values:
+
+- `src/app/(main)/peoples-open-bible/verse/page.jsx`:
+  `6c57d7407f960e9c88c54e381420f5777536572c8913ad1c8f1a268c7b442c0e`.
+- `src/app/(main)/peoples-open-bible/bibleData.js`:
+  `9d97b47c95ce9a3c5b37010846229c4acbce731dd9490dc3dcb5606ebb957d97`.
+- `src/app/(main)/peoples-open-bible/BibleReader.jsx`:
+  `dceb26ab849cb30966b8539f3afb27dc5043e36922a1a950aa45678ccff18775`.
+
+The shell had no Node on PATH and local Babel packages were unavailable; the
+bundled Node executable and existing Next SWC worked without installing anything.
+Review input hashes and scope were checked against current files; the canonical
+Isaiah baseline remains unchanged. Stop at this editorial approval plus precise
+reader-gap finding, with production source/application integration still open.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
