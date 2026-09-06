@@ -3064,6 +3064,26 @@ canonical hash, local links and diff checks passed. The independent reviewer
 reproduced both segments and the complete response hash, returning PASS for the
 addition and snapshot only. No new framework, image work or corpus test run.
 
+### 2026-09-06 — Route Greek apparatus acquisition across all OT books
+
+Extended the [existing coverage audit](BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md#greek-apparatus-routes-for-all-39-pob-ot-books--2026-09-06)
+with a dated book-to-edition route: 17 volumes on Göttingen's current publication
+list cover 30 POB books; IOSCS supplies fallback/alternate routes for the other
+nine. A direct assertion checked all 39 repository book directories occur once.
+Mapped Esdrae II and Threni explicitly and noted the IOSCS Reigns label error.
+FAU's catalogue clarifies that Psalms 2025 is a reprint with a supplement, not a
+newly collated biblical text. Publisher links returned 403; no apparatus was
+acquired or passage re-adjudicated. An incidental project blog was opened while
+locating the Psalms edition; its unrelated variant discussion was not promoted
+into evidence or a new case.
+
+The independent reviewer checked the exact routes/dates against the official
+lists and the Psalms qualification against the library record, returning PASS.
+Local-link and diff checks passed. Corrected the audit's obsolete Samuel-note
+application statements. No new framework, manuscript counts, text restoration,
+canonical changes or corpus test run: this closes a routing gap, not the broader
+inventory, apparatus-access or collation gaps.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

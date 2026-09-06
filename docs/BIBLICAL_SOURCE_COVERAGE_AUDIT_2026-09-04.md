@@ -43,7 +43,9 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
   Greek/Vulgate/Syriac selected texts and Cambridge1927 apparatus pages,
   preserving d-ending versus r-ending controls and distinct Old Latin evidence.
   BHL AppendixA, modern full apparatuses, Sassoon's actual locus and historical
-  priority remain open. No canonical Samuel or English-name change.
+  priority remain open. No Hebrew-source or English-name change. The later
+  [scoped disclosure application](SAMUEL_13_37_NOTE_APPLICATION_2026-09-06.md)
+  changes the notes only and is recorded separately from these image reviews.
 - The [Leviticus identity follow-up](LEVITICUS_CATALOGUE_IDENTITY_FOLLOWUP_2026-09-06.md)
   consults complete ArugLev2005/2006 publications and the2019 Cave11 publisher
   preview. It maps exact edition/transcription units, preserves disputed and
@@ -81,9 +83,10 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
   [orthographic follow-up](UXLC_ORTHOGRAPHIC_IMAGE_FOLLOWUP_2026-09-06.md)
   supports the two extra-yod spellings and Amos's defective spelling, with
   Samuel 14:7 more damage-cautious. No English change follows from those three
-  spelling fits. The current 2 Samuel 13:37 note after Ammihur concerns the
-  implicit mourner David, not the name variant; its misplaced anchor is a
-  separate unapproved repair. Both image packages received
+  spelling fits. At that image-review checkpoint, the 2 Samuel 13:37 note after
+  Ammihur concerned the implicit mourner David, not the name variant. Its anchor
+  was repaired in the later scoped disclosure application linked above, not
+  authorized by either image review. Both image packages received
   [report-aware](../sources/textual_restoration/discovery/samuel_ezekiel_image_review.v1.json)
   [independent checks](../sources/textual_restoration/discovery/uxlc_orthographic_image_review.v1.json),
   not blinded two-family acceptance or a manuscript census. Native crop/hash
@@ -328,6 +331,71 @@ meaning without becoming a manuscript witness to that biblical passage.
    Decalogue/Shema witness, not an early complete Pentateuch.
    [NLI access guidance](https://www.nli.org.il/en/at-your-service/reference/online-access),
    [Nash Papyrus](https://exhibitions.lib.cam.ac.uk/linesofthought/artifacts/the-ten-commandments/).
+
+### Greek apparatus routes for all 39 POB OT books — 2026-09-06
+
+The [current Göttingen publication list](https://septuaginta.uni-goettingen.de/publications/septuaginta/)
+provides 17 volume routes covering 30 POB books. This is bibliographic coverage,
+not 30 consulted apparatuses or completed collations. Grouped rows account for
+each book once; dates/edition numbers are those listed, not independently
+verified contents of purchased volumes.
+
+| POB book(s) | Göttingen volume; listed edition |
+|---|---|
+| Genesis | I; 1974 |
+| Exodus | II/1; 1991 |
+| Leviticus | II/2; 1986 |
+| Numbers | III/1; 2020, second |
+| Deuteronomy | III/2; 2006, second |
+| Ruth | IV/3; 2009, second |
+| 2 Chronicles | VII/2; 2014 |
+| Ezra, Nehemiah | VIII/2; 2017, second |
+| Esther | VIII/3; 1983, second |
+| Psalms | X; 2025, fourth |
+| Ecclesiastes | XI/2; 2019 |
+| Job | XI/4; 1982 |
+| Hosea, Joel, Amos, Obadiah, Jonah, Micah, Nahum, Habakkuk, Zephaniah, Haggai, Zechariah, Malachi | XIII; 1984, third |
+| Isaiah | XIV; 1983, third |
+| Jeremiah, Lamentations | XV; 2006, third |
+| Ezekiel | XVI/1; 2015, fourth |
+| Daniel | XVI/2; 1999, second |
+
+The other nine are not listed there. The [IOSCS edition guide](https://septuaginta.uni-goettingen.de/ioscs/editions/)
+supplies these alternative routes; Rahlfs is its common fallback, not a complete
+manuscript apparatus. Its explanatory statement dates to 2005, while the live
+book list includes later publications. Use the dated current list rather than
+treating every entry as a 2005 recommendation or a new collation.
+
+| Remaining POB book(s) | Additional IOSCS route to investigate |
+|---|---|
+| Joshua | Margolis's Greek Joshua edition and organized apparatus |
+| Judges, Proverbs | Rahlfs; investigate passage-specific apparatus evidence |
+| 1 Samuel, 2 Samuel, 1 Kings, 2 Kings, 1 Chronicles | Fernández Marcos–Busto Saiz Antiochene edition; retain its distinct textual role |
+| Song of Songs | Treat's dissertation edition |
+
+Esdrae II maps to Ezra–Nehemiah, not the separate Esdrae I volume. Threni maps
+to Lamentations. Greek Reigns I–II maps to Samuel, III–IV to Kings; the IOSCS
+page's “Regnorum II–IV” alongside its Kings entry is a label error, not a third
+POB book. The guide warns that the Antiochene text's relationship to Old Greek
+in the kaige sections is disputed: it cannot be substituted wholesale for OG.
+
+**Psalms caveat:** the [Erlangen university catalogue's 2025 acquisition record](https://ub.fau.de/neuerwerb/neuerwerbungen-im-november-2025-21/)
+describes the fourth edition as an unchanged reprint with Albrecht's substantial
+supplement. Therefore “2025 edition” does not mean a newly recollated biblical
+text. The supplement's actual witness discussion remains an acquisition target,
+not consulted evidence in our Psalm cases. Publisher links for Psalms and
+Esdrae II returned 403 in this pass; no restricted apparatus was obtained.
+
+Operationally, add the applicable volume/alternate edition to a case's source
+request before pursuing more photographs. Record actual access and consulted
+pages in that case, preserve competing Greek forms, and verify passage alignment
+before inferring Hebrew or Aramaic. Swete remains a useful digital control;
+its availability must not silently cap the evidence search. For Esther and
+Daniel, preserve distinct Greek forms and additions rather than forcing one
+undifferentiated Greek-to-Hebrew alignment. Extra books within these volumes do
+not automatically expand POB's canon or count as extra coverage of its 39 books.
+This pass changes routing only: no apparatus contents, new manuscripts,
+restored letters, registry attestations or translation decisions were added.
 
 ## New Testament: required evidence map
 
