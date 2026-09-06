@@ -3170,6 +3170,35 @@ HTML retrieval after an unavailable parser dependency. No canonical, source-data
 executable or test change; no corpus-wide test run, ImageGen or deployment.
 Stop at retain; only discriminating new evidence reopens historical selection.
 
+### 2026-09-06 — Isaiah light recommendation and renewed efficiency stop
+
+The [Isaiah 53:11 comparison](ISAIAH_53_11_LIGHT_COMPARISON_2026-09-06.md)
+provisionally favors the attested Hebrew object אור, “light.” Two published
+Hebrew transcriptions preserve the complete word; a third supplies partial
+support. Greek supports light with different syntax. The report preserves the
+contrary clarification/expansion explanation and separates published readings
+from fresh manuscript inspection. No canonical source or English was changed.
+Independent `/root/isaiah_light_judge` passed report SHA256
+`97764669c753de18ea538eb8f90d817898d8c9ed1bb930df0368060f89757c0d`;
+this is a research-report verdict, not approval to apply a full verse.
+
+The maintainer again requested a quick efficiency check. The goal tracker now
+reports 17,991,140 cumulative tokens, versus 16,505,374 in the earlier check:
+1,485,766 additional reported tokens. These are tracker values, not a verified
+billing total or per-deliverable attribution. Recent work produced a Job
+disclosure correction, an Amos retain decision and this Isaiah proposal, but
+that does not justify calling the overall process efficient. Repeated review
+and application bookkeeping have consumed disproportionate effort.
+
+Stop additional exploration at this checkpoint; all current subagents are
+completed or interrupted. Save the finished report without another judge loop,
+framework, corpus-wide test run or new research task. For resumed work, use one
+prioritized textual question, one concise case record, and at most one initial
+independent review; re-review only a concrete substantive defect. Start each
+batch with an explicit effort ceiling and expected decision, then stop at
+retain, propose or unresolved. Reopen only for evidence that could change the
+decision. Research completeness and the larger project goal remain unclaimed.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
