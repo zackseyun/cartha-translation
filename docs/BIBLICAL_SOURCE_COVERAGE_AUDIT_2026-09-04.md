@@ -19,6 +19,18 @@ as covered. A newly digitized copy is not necessarily a newly discovered text.
 
 ## What exists locally
 
+- The [Jeremiah 10 literary-form dossier](JEREMIAH_10_LITERARY_FORM_COMPARISON_2026-09-05.md)
+  checks DJD's partial 4Q70 verse-10 wording and 4Q71 spatial reconstruction
+  against Swete's shorter continuous text and opposing Q marginal evidence.
+  Its three QDR identity locators do not create three chapter-10 witnesses:
+  4Q72a belongs to chapter 43. Dating/hand relationships remain disputed.
+  This is a bounded research supplement, not a new formal registry case or
+  a complete Jeremiah literary-form collation; current POB is retained.
+- The [Deuteronomy image/full-verse supplement](DEUT32_8_ADJUDICATION_FOLLOWUP_2026-09-05.md)
+  identifies a specific IAA color/IR object pair and records an opening-word
+  orthography decision alongside the final variant. Native-region/DJD
+  correspondence, full modern Greek apparatus and source/English approval
+  remain open. No whole-verse attestation or new independent witness follows.
 - The [all-39-book discovery map](HEBREW_BIBLE_BOOK_WITNESS_MAP_2026-09-05.md)
   accounts for all 218,217 word records in the pinned QDR corpus: 318
   book–record pairs across 36 books, with explicit zero-hit and unassigned

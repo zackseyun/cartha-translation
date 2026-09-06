@@ -111,6 +111,25 @@ acquired alternatives. Choosing `remerge` after inspecting the images is an
 explicit development decision, not blind validation. No letter or blank-control
 label follows from an overview; the failed earlier registration stays failed.
 
+The [Deuteronomy full-verse follow-up](DEUT32_8_ADJUDICATION_FOLLOWUP_2026-09-05.md)
+adds a concrete color/IR object pair while retaining the unresolved DJD
+numbering crosswalk. It also makes an inherited spelling decision explicit:
+a composite critical candidate must explain retained baseline words as well
+as its headline variant. A supplied middle clause cannot certify a whole verse.
+
+The [Jeremiah literary-form comparison](JEREMIAH_10_LITERARY_FORM_COMPARISON_2026-09-05.md)
+shows why source reconciliation sometimes needs parallel forms, not a single
+verse-by-verse blend. Partial Hebrew support, spatial reconstruction and
+Greek marginal additions have different evidential roles. A shorter Greek
+form is not obtained by mechanically deleting and moving current English
+verses, because wording differs too. Keep source-form selection distinct from
+translation fluency and from manuscript-age ranking.
+
+The [remerge geometry check](EN_GEDI_REMERGE_MAPPING_2026-09-05.md) provides
+actual scan coordinates for selected development points but no authenticated
+letters. Its byte-count repair also demonstrates that a judge's technical
+PASS must be scoped to the checked invariant, not extended into reading quality.
+
 ### Earlier review snapshot
 
 | Completed work | What it establishes | What remains open |

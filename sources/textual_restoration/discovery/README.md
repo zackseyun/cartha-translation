@@ -1,5 +1,30 @@
 # Biblical source discovery receipts
 
+## Deuteronomy full-verse and Jeremiah literary-form follow-ups
+
+`deut32_8_adjudication_followup.v1.json` pins the existing candidate and prior
+evidence, adds a directly viewed IAA color/IR object pair and an unselected
+opening-word spelling alternative, and keeps the uncertain DJD numbering
+crosswalk and all selection gates pending. See the
+[report](../../../docs/DEUT32_8_ADJUDICATION_FOLLOWUP_2026-09-05.md).
+
+`jeremiah10_literary_forms.v1.json` distinguishes 4Q70's partial surviving
+verse-10 core, 4Q71's spatially reconstructed shorter order, and Swete B's
+continuous Greek from the Q marginal addition. It pins eleven current POB
+contexts and three label/ordinal mappings, with a draft disclosure unapplied.
+See the [report](../../../docs/JEREMIAH_10_LITERARY_FORM_COMPARISON_2026-09-05.md).
+
+## En-Gedi remerge geometry
+
+`en_gedi_remerge_mapping_protocol.v1.json` fixes two assets, byte budgets and
+68 development coordinates. `en_gedi_remerge_acquisition.v1.json` preserves
+the original acquisition; `en_gedi_remerge_mapping_check.v1.json` records the
+full parse and all sample outcomes. `en_gedi_remerge_acquisition_tool.v1.txt`
+archives the exact pre-repair implementation as provenance, not an executable
+entry point. The corrected inspection counts unmodified ASCII newlines;
+38 valid samples are geometry, not ink. See the
+[repair and result](../../../docs/EN_GEDI_REMERGE_MAPPING_2026-09-05.md).
+
 ## All-book QDR discovery and current Leviticus controls
 
 `hebrew_bible_book_map.v1.json` accounts for all 39 OT books, all 266 QDR

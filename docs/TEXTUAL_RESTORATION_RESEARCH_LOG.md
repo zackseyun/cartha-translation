@@ -1989,6 +1989,104 @@ the earlier recorded failures and repairs remain intact. This checkpoint is
 ready for a routine scoped Git commit/push under the user's standing authority,
 with `[skip ci]` and no direct deployment or scientific-promotion claim.
 
+### 2026-09-05 — Full-verse, literary-form and text-region geometry follow-up
+
+The previous turn was progress: 20 reviewed research files were committed and
+pushed as `fa0f994c339370cf3796e101237ac7fadc081cbc`. Local/remote main matched,
+the worktree was clean and the revision-pinned public log returned HTTP 200.
+This turn rechecked a clean main before continuing. Git publication does not
+close scientific or Bible-deployment gates.
+
+Two parallel agents investigated consequential Deuteronomy and Jeremiah
+questions while the parent acquired En-Gedi geometry. A separately briefed
+read-only judge reviewed their primary evidence and the parent's actual-data
+check. This division follows the user's explicit authorization, without
+counting agents as additional historical witnesses.
+
+**Deuteronomy:** the [new full-verse supplement](DEUT32_8_ADJUDICATION_FOLLOWUP_2026-09-05.md)
+narrows image consultation to IAA B-359054/B-359055, color/IR, both catalogued
+as 4Q37 plate 172 fragment 10 recto, Shai Halevi April 2013. Actual pixels were
+viewed nonblind and the IR designation is compatible with the published
+reading. No new letter is claimed. The section labeled `12` in Qumran-Digital
+is not yet certified as the repository's “DJD fragment 12” or linked by a
+verified edition crosswalk to IAA fragment 10.
+
+Fresh published-transcription consultation also exposes `בהנחי[ל` at the
+opening versus retained WLC `בהנחל` in the composite draft. This is an explicit
+orthographic review item, not an automatic English change. The bracketed
+middle cannot certify the whole verse. An alternative spelling is recorded
+but unselected; the existing moderate working preference is not promoted.
+Official Göttingen/Brill browser access revealed purchase/login or no readable
+sample, rather than proving universal unavailability from web-tool 403s.
+Dayfani full text and the adjacent modern Greek apparatus units remain unread.
+The independent judge verified all eight local bindings, actual IAA metadata
+and color/IR pixels, the two Qumran-Digital lines and cautious access wording.
+It gave a bounded evidence/documentation PASS, not source/English approval.
+
+**Jeremiah:** the [literary-form dossier](JEREMIAH_10_LITERARY_FORM_COMPARISON_2026-09-05.md)
+advances a previously queued unit with actual DJD XV and Swete pages. At
+10:10, 4Q70 preserves the core `מלך עולם מקצ` with editorial probability marks
+on the first two letters; the true/living-God opening is supplied. 4Q71's
+shorter 5a–9–5b sequence and absence of 6–8/10 are a spatial reconstruction
+from very short line endings, not a surviving whole omission boundary.
+4Q72a is chapter-43 evidence and not another chapter-10 vote. Langlois's
+later hand/date reassessment is recorded as a competing published view.
+
+Swete's continuous B text has the shorter form, but its Q marginal apparatus
+explicitly includes a Greek form of verse 10. The Greek wording also differs
+within aligned units: mechanically cutting/reordering current POB would not
+translate it faithfully. The longer POB form is provisionally retained and a
+literary-form disclosure drafted but unapplied. Full modern Greek/HUB apparatus,
+later spatial reconstruction and earliest-form priority remain open. The
+agent used the PDF skill for visual preservation/apparatus checks; the judge
+independently hash-checked all three PDFs and read the decisive complete pages,
+sigla and conventions, passing the eleven-context/three-label checker. Its
+bounded documentation PASS does not approve the proposed note or a source form.
+
+**En-Gedi:** the [remerge mapping check](EN_GEDI_REMERGE_MAPPING_2026-09-05.md)
+fixed the same-segment map/mask, two 256 MiB ZIP batch ceilings, a separate
+2 GiB expanded ASCII ceiling and 68 coordinates before fetching mapping bytes.
+The actual acquisition completed with 237,811,326 ZIP-expanded payload bytes;
+240,845,435 HTTP body bytes were logged in 64 verified ranges. Full decoding
+checked 58,564,800 scalars at 2400 × 4067 positions, with 1,169,004,178 ASCII
+bytes. All 68 samples remain: 38 mask-valid and 30 zero-mask. All twelve
+upper/central development points are valid, with recorded z about 852.586–1477.817.
+These are useful scan-geometry leads, not validated CT indexing or letter labels.
+
+The judge found a real byte-cap defect before any numeric result was accepted:
+default universal-newline handling could count a six-byte CRLF fixture as four
+characters. The original acquisition implementation was preserved byte-for-byte
+as a hash-bound historical text artifact; its private receipt was not altered.
+The corrected inspector uses `newline=""` and separately identifies its code.
+Regression tests demonstrate the old undercount and repaired cap rejection,
+including bare-CR/non-ASCII checks. A separate parent binary scan found zero
+CR bytes and 20,719,247 line feeds in the actual mapping, matching the expanded
+size, so no observed payload value changed. The judge independently replayed
+the full corrected result, checked system-gzip byte count/end decode, verified
+public/private receipt equality and range totals, and passed all 18 new/ZIP
+tests. Repair/acquisition/geometry received bounded PASS; the earlier failed
+registration and all reading-evaluation gates remain open.
+
+The initial broad index listing accidentally included thousands of projection
+entries and was truncated; a subsequent exact two-name query supplied the
+bounded member metadata actually used. The texture was viewed again with
+original-detail requested, but the display still downsampled it; no native-scale
+paleographic inspection is claimed from that view. No image editing, generated
+image, new CT slice, full transcription, canonical source/English/notes change,
+registry migration or deployment occurred. The source audit, approach review,
+backlog and discovery index link the results. The full goal remains active.
+
+Final parent validation passed 354 repository tests plus 30 numerical tests
+(384 distinct tests), the eight Deuteronomy input bindings, the Jeremiah
+eleven-context/three-label checker and the unchanged registry validator.
+All five new JSON files parsed and 215 local Markdown targets in 17 scoped
+text files resolved; no file exceeded 5 MiB. The judge's final prose check
+passed the completed mapping report and integrated summaries with no mandatory
+wording correction. Its verdict remains bounded to the actual evidence and
+repair, not source/English selection. This checkpoint uses the standing
+commit/main/push authority and `[skip ci]`; actual push success must be checked
+against the configured remote rather than inferred from the validation.
+
 ## Remaining work
 
 - Dated institutional-catalogue coverage across all relevant books/sources.

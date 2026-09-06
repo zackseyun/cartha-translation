@@ -68,9 +68,18 @@ limits and open gates. It is also the target for a possible later About link.
 - [x] Acquire and inspect all six remaining En-Gedi textures under fixed
   member/batch budgets; preserve all outcomes and choose a non-blind
   development target. See the [triage](EN_GEDI_TEXTURE_TRIAGE_2026-09-05.md).
-- [ ] Acquire `remerge` mapping/mask, establish actual segment/master/edition
-  correspondence and independently checked labels before CT letter controls.
-  The failed merge5 registration and lack of a reading benchmark remain open.
+- [x] Acquire `remerge` mapping/mask and parse the full coordinate stream;
+  preserve 38 valid and 30 invalid fixed samples and the judge-found
+  expanded-byte accounting repair. See the [geometry check](EN_GEDI_REMERGE_MAPPING_2026-09-05.md).
+- [ ] Establish actual segment/master/edition correspondence, CT indexing
+  and independently checked labels before CT letter controls. The failed
+  merge5 registration and lack of a reading benchmark remain open.
+- [x] Compare a bounded Jeremiah literary-form unit using DJD preservation
+  conventions and Greek continuous/marginal evidence; see the
+  [Jeremiah 10 dossier](JEREMIAH_10_LITERARY_FORM_COMPARISON_2026-09-05.md).
+- [ ] Review later Jeremiah spatial reconstructions and full Greek/HUB
+  apparatus; adjudicate parallel source forms and the proposed disclosure
+  without treating a reconstructed omission as an intact boundary.
 - [x] Consult direct publisher Greek and CAL Syriac for Lev 2:8–9, separating
   clause-specific grammar from Hebrew retroversion; see the
   [version controls](LEVITICUS_2_VERSION_CONTROLS_2026-09-05.md).
@@ -114,6 +123,12 @@ limits and open gates. It is also the target for a possible later About link.
 
 ### Deuteronomy 32:8 completion — 2026-09-05
 
+- [x] Identify and inspect the IAA color/IR pair B-359054/B-359055 and
+  explicitly surface the candidate's opening-word orthographic decision;
+  [full-verse supplement](DEUT32_8_ADJUDICATION_FOLLOWUP_2026-09-05.md).
+- [ ] Resolve section/column/fragment `12` against IAA plate 172 fragment 10
+  from DJD and native-region evidence; the nonblind visual compatibility
+  check does not complete the image gate.
 - [x] Identify later 4Q37 genre reassessment and specific Greek acquisition
   targets; record actual consultation limits in the
   [pass-4 follow-up](PENTATEUCH_SOURCE_COMPARISON_PASS_4.md).
