@@ -1,7 +1,9 @@
 # Job 13:15 — written/read Hebrew and English impact
 
 Checked 2026-09-06. Published/digital-source comparison, not fresh manuscript
-transcription or an exhaustive Job apparatus. No canonical change applied.
+transcription or an exhaustive Job apparatus. The scoped note/rationale
+correction is now applied as recorded below; Hebrew and main English are
+unchanged. Earlier research sections preserve their pre-application observations.
 
 ## Finding
 
@@ -56,7 +58,7 @@ written form (ketiv), while the same source records the traditional reading
 (qere). Retention is provisional, not proof that the written form is earlier;
 the English sense of the verb requires separate contextual judgment.”
 
-Proposed reader note, **research-only, unapplied**:
+Initial prose note, superseded by the exact candidate below:
 
 > The Hebrew written form (ketiv) has “not”; its traditional reading (qere)
 > has “to him,” often rendered “I will hope in him.” The verb also involves
@@ -65,7 +67,7 @@ Proposed reader note, **research-only, unapplied**:
 
 This initial prose proposal was not a complete YAML application candidate.
 The full-record candidate below now supersedes it for editorial preparation;
-neither is applied. Review the note, related
+neither was applied at that preparation stage. Review the note, related
 lexical/theological metadata and English alternatives together before applying
 anything; preserve the historical reviews. To reopen historical selection,
 obtain a discriminating manuscript/apparatus or versional argument and test
@@ -176,7 +178,8 @@ expected target note. Hash serialization is UTF-8 JSON, `ensure_ascii=False`,
 - Actual export: `b7d20eb2076ab7755ff0b38fb883d8a6afcfe144e2121e24b05dd8202f59d56b`.
 - Projected export: `84e15083b995f89b034e3fc69fa97c06e5b617258d401b298b4fa460c367e40f`.
 
-**Stop: editorial correction ready; application not approved.** The existing
+**Preparation checkpoint, superseded by the application below:** the editorial
+correction was ready but application was not yet approved. The existing
 `tools/samuel_note_transaction.py` binds its current check to a fixed digest of
 every OT canonical YAML, so even this disjoint Job edit would invalidate that
 check. Do not repin its frozen receipt or build another per-verse transaction.
@@ -186,6 +189,42 @@ That is the concrete enabling issue before applying this candidate; new Job
 image searches or more reviews of unchanged wording will not resolve it.
 Schema/export preflight and editorial review do not waive this integration gate.
 No canonical, executable, test or derivative file changed in this preparation.
+
+## Scoped application verified — 2026-09-06
+
+Applied the exact candidate above after resolving the integration gate through
+the reusable [successor verifier](CORPUS_SUCCESSOR_VERIFICATION.md), not a Job
+transaction executable. The [exact plan](../sources/textual_restoration/applications/job13_15_successor_plan.v1.json)
+and [independent review](../sources/textual_restoration/applications/job13_15_successor_review.v1.json)
+bind its source, candidate, implementation and checks. Review scope covers only
+this disclosure/metadata application, not historical priority or the full verse.
+
+Preserved the [actual baseline check](../sources/textual_restoration/applications/job13_15_successor_preflight.v1.json)
+before the separate canonical edit. The [application record](../sources/textual_restoration/applications/job13_15_successor_application.v1.json)
+records both actual states: all 23,264 OT YAML paths/bytes match the checkpoint
+plus this one approved change. Actual Job export matches the previously projected
+42-chapter/1,070-verse hash above; actual Samuel export remains unchanged at
+`a434d6e5d515c8d1fd5135c07dd6d8e56ae12036d641d70a077895e5fc102289`.
+This is no longer an in-memory candidate export. The separate application record
+is current; the candidate's `note_proposal` block is historical preparation
+metadata, including its earlier unapproved/unapplied labels.
+
+For a read-only check of the applied state, use:
+
+```sh
+.venv/bin/python -m tools.textual_restoration.verify_corpus_successor \
+  sources/textual_restoration/applications/job13_15_successor_plan.v1.json \
+  sources/textual_restoration/applications/job13_15_successor_review.v1.json \
+  --review-sha256 26e6e02bfe089a3eb448441b1bffefa0d9ce4029316397d419e245d8bc34c4f2 \
+  --application sources/textual_restoration/applications/job13_15_successor_application.v1.json \
+  --application-sha256 fb85aa879265820e344666e917bdbe0feea03bcc3252e65de09d639b90626803
+```
+
+The current source/English selection remains provisional. Review history is
+preserved, current review flags require review, and no prior scores certify the
+edited record. No derivative synchronization or reader deployment occurred.
+Do not reopen this disclosure merely to obtain another passing review; historical
+priority or main-English changes still require their stated new evidence.
 
 ## Reproduction and limits
 
