@@ -46,6 +46,31 @@ class OtWitnessRegistryTests(unittest.TestCase):
         self.assertGreaterEqual(summary["registered_witnesses_or_families"], 10)
         self.assertGreater(summary["restoration_candidates"], 0)
 
+    def test_current_registry_matches_json_schema(self):
+        schema = json.loads((ROOT / "schemas/ot-witness-registry.schema.json").read_text())
+        validator = MODULE.Draft202012Validator(schema, format_checker=MODULE.FormatChecker())
+        self.assertEqual(list(validator.iter_errors(self.data)), [])
+
+    def test_registry_review_and_license_schema_rejects_invalid_claims(self):
+        schema = json.loads((ROOT / "schemas/ot-witness-registry.schema.json").read_text())
+        validator = MODULE.Draft202012Validator(schema, format_checker=MODULE.FormatChecker())
+        mutations = [
+            ("http license", lambda w: w["access"][0].update(license_url="http://example.org/license")),
+            ("invalid license URI", lambda w: w["access"][0].update(license_url="https://bad host/license")),
+            ("unknown access field", lambda w: w["access"][0].update(invented=True)),
+            ("consultation is not availability", lambda w: w["access"][1].update(availability="abstract-only-consulted")),
+            ("unsupported verification", lambda w: w["identification_review"].update(status="physically-verified")),
+            ("invalid date", lambda w: w["identification_review"].update(date="2026-02-30")),
+            ("missing report", lambda w: w["identification_review"].pop("report")),
+            ("empty locators", lambda w: w["identification_review"].update(source_locators=[])),
+            ("unknown review field", lambda w: w["identification_review"].update(invented=True)),
+        ]
+        for label, mutate in mutations:
+            with self.subTest(label=label):
+                data = copy.deepcopy(self.data)
+                mutate(next(w for w in data["witnesses"] if w["id"] == "4q176"))
+                self.assertTrue(list(validator.iter_errors(data)))
+
     def test_five_frozen_genesis_registry_checks_in_historical_snapshot(self):
         from tools.textual_restoration.replay_historical_tests import run_suite
 

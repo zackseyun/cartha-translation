@@ -37,7 +37,25 @@
         "availability": { "enum": ["open", "partial", "restricted", "temporarily-unavailable", "local"] },
         "rights_status": { "enum": ["public-domain", "open-license", "study-only", "permission-required", "unknown", "local-project-license"] },
         "rights_note": { "type": "string" },
+        "license_url": { "type": "string", "format": "uri", "pattern": "^https://[^\\s/]+(?:/[^\\s]*)?$" },
         "machine_access": { "enum": ["download", "iiif", "web-viewer", "manual-consultation", "local-files"] }
+      }
+    },
+    "identification_review": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["date", "status", "source_locators", "relationship", "report"],
+      "properties": {
+        "date": { "type": "string", "format": "date" },
+        "status": { "const": "published-proposal-not-independent-physical-verification" },
+        "source_locators": {
+          "type": "array", "minItems": 1, "uniqueItems": true,
+          "items": { "type": "string", "minLength": 1 }
+        },
+        "relationship": { "type": "string", "minLength": 1 },
+        "hand_status": { "type": "string", "minLength": 1 },
+        "other_reassignment": { "type": "string", "minLength": 1 },
+        "report": { "type": "string", "pattern": "^docs/[A-Za-z0-9_/-]+\\.md(#[A-Za-z0-9_-]+)?$" }
       }
     },
     "witness": {
@@ -77,6 +95,7 @@
         "textual_role": { "type": "string", "minLength": 1 },
         "relationship_group": { "type": "string", "minLength": 1 },
         "source_state": { "enum": ["vendored", "registered", "discovery", "blocked-rights", "blocked-access"] },
+        "identification_review": { "$ref": "#/$defs/identification_review" },
         "repo_path": { "type": "string", "pattern": "^sources/" },
         "access": { "type": "array", "minItems": 1, "items": { "$ref": "#/$defs/access" } },
         "restoration_suitability": { "enum": ["none", "targeted", "high"] },

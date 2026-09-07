@@ -4513,6 +4513,42 @@ and 1 Samuel 17:4 baseline drift and unchanged registry schema mismatches
 (`identification_review`, `license_url`, `abstract-only-consulted`). These were
 not repaired or silently repinned in this research update.
 
+### 2026-09-07 — Repair source-registry validation without rewriting history
+
+The preceding Samuel follow-up was progress and exposed three schema errors
+in the recently registered 4Q176 entry. A separate read-only agent reviewed the
+contract while root traced the baseline warnings. Added closed, typed schema
+definitions for the existing identification-review object and HTTPS license
+link. Unknown fields and unsupported physical-verification status still fail.
+Corrected the Peeters access item to open publisher **metadata**, not a claim
+of full-text access: consultation extent stays explicit in its note. Access,
+rights, consultation, and physical verification are different facts; no new
+source consultation or license determination occurred in this repair.
+
+The existing unit check called the procedural validator but skipped the JSON
+Schema checks used by the CLI. Added direct current-registry schema coverage
+and nine invalid-input cases. The first run exposed that URI format checking
+in this environment did not reject whitespace; the license pattern now also
+rejects it explicitly. Final registry suite: 49/50 tests pass, with only the
+existing Samuel baseline assertion failing. The aggregate validator now reports
+only three baseline drifts and no schema errors. Git whitespace checks pass.
+
+All three comparison pins match exact historical verse bytes at Git commit
+`574f204de77e89c8abba04c72209bdf5efb317f9`:
+
+- Genesis 4:8: subsequent disclosure/metadata changes; source and main English
+  unchanged (application commit `d1ad333fc6`).
+- Exodus 12:40: subsequent disclosure/metadata changes; source and main English
+  unchanged (application commit `6fc394300e`).
+- 1 Samuel 17:4: subsequent critical Hebrew and English selection changed the
+  baseline (application commit `657b2b9ffd`).
+
+No historical hash, comparison, canonical verse, or validator drift rule was
+changed to silence these warnings. They still prevent treating old comparisons
+as certification of current files. Future reconciliation must preserve that
+lineage rather than blindly repin. No new manuscript evidence, restoration,
+translation improvement, or deployment is claimed for this contract repair.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
