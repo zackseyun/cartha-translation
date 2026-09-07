@@ -3812,6 +3812,32 @@ Independent `dss_annotation_guard_review` passed the two-file repair and reran
 all 21 focused tests successfully. Documentation/code diff-check passed. The
 review was scoped to this concrete safeguard, not the full restoration system.
 
+### 2026-09-06 — Explicit image abstentions for future calibration
+
+Closed the response-format defect identified in the preceding pass by adding
+opt-in [observation protocol 2.0](../sources/dead_sea_scrolls/protocols/README.md).
+The existing validator/comparator now distinguishes text-present, no-visible-text
+and unassessable regions; empty observations require an explicit version/status
+and explanation. Matching no-text observations never create accepted letters;
+unassessable and conflicting observations remain unresolved. The old protocol
+and saved pilot outputs remain unchanged and validate normally.
+
+Added a versioned schema/prompt and ten regression tests, not a new runner or
+model call. The existing runner and saved-pilot validator now enforce the
+frozen response schema locally as well as semantic observation rules; the
+review identified why relying on schema alone or semantic checks alone was
+insufficient. Actual final focused validation reported 31 passes in 0.019 seconds.
+These tests prove response handling, not calibration accuracy. A frozen labelled
+control set and legitimate second-provider inference are still needed; the user
+was asked whether access has changed, without requesting credentials. No new
+attempt was inferred from the historical failure or launched without a new
+access lead. No manuscript image, source reading, or translation was changed.
+
+Independent `dss_abstention_review` passed the bounded protocol change and the
+specific schema-enforcement correction, independently rerunning all 31 tests.
+Diff-check passed; the historical pilot directory and canonical translation
+tree have no changes in this pass. Provider compatibility remains untested.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

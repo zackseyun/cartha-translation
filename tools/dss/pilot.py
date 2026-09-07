@@ -62,14 +62,32 @@ def prepare(pilot: Path) -> None:
             raise ValueError(f"Crop hash mismatch: {region['id']}")
 
 
-def validate_result(result: dict, region_ids: list[str]) -> None:
+def validate_result(result: dict, region_ids: list[str], *, response_schema: dict | None = None) -> None:
+    if response_schema is not None:
+        from jsonschema import Draft202012Validator
+        if next(Draft202012Validator(response_schema).iter_errors(result), None) is not None:
+            raise ValueError("Response does not match the frozen JSON schema")
+    protocol = result.get("observation_protocol", "1.0")
+    if protocol not in ("1.0", "2.0"):
+        raise ValueError("Unsupported observation protocol")
     regions = result.get("regions")
-    if not isinstance(regions, list):
+    if not isinstance(regions, list) or not regions:
         raise ValueError("Response has no region list")
     if [region.get("region_id") for region in regions] != region_ids:
         raise ValueError("Missing, duplicate, or reordered regions")
     for region in regions:
         lines = region.get("lines")
+        if protocol == "2.0" and not isinstance(region.get("notes"), str):
+            raise ValueError("Protocol 2.0 requires region notes")
+        observation = region.get("observation", "text-present" if protocol == "1.0" else None)
+        if protocol == "1.0" and "observation" in region:
+            raise ValueError("Explicit observations require protocol 2.0")
+        if observation not in ("text-present", "no-visible-text", "unassessable"):
+            raise ValueError("Missing or invalid observation status")
+        if observation != "text-present":
+            if lines != [] or not isinstance(region.get("notes"), str) or not region["notes"].strip():
+                raise ValueError("Non-text observations require empty lines and an explanation")
+            continue
         if not isinstance(lines, list) or not lines:
             raise ValueError("Empty transcription is not a successful response")
         if [line.get("line_index") for line in lines] != list(range(1, len(lines) + 1)):
@@ -132,9 +150,28 @@ def compare(left: dict, right: dict) -> dict:
     region_ids = [region["region_id"] for region in left["result"]["regions"]]
     validate_result(left["result"], region_ids)
     validate_result(right["result"], region_ids)
+    protocol = left["result"].get("observation_protocol", "1.0")
+    if protocol != right["result"].get("observation_protocol", "1.0"):
+        raise ValueError("Observation protocols differ")
+    if protocol == "2.0":
+        report["schema_version"] = "2.0.0"
+        report["region_observations"] = []
     report["status"] = "compared"
     for a, b in zip(left["result"]["regions"], right["result"]["regions"]):
         rid = a["region_id"]
+        if protocol == "2.0":
+            oa, ob = a["observation"], b["observation"]
+            report["region_observations"].append({
+                "region_id": rid, "left": oa, "right": ob,
+                "status": ("unassessable" if "unassessable" in (oa, ob)
+                           else "matching-observations" if oa == ob else "disagreement"),
+                "notes_left": a["notes"], "notes_right": b["notes"],
+            })
+            if oa != "text-present" or ob != "text-present":
+                if oa != ob or oa == "unassessable":
+                    report["unresolved_lines"].append({
+                        "region_id": rid, "reason": "region-observation-unresolved"})
+                continue
         if len(a["lines"]) != len(b["lines"]):
             report["unresolved_lines"].append({"region_id": rid, "reason": "line-count-disagreement"})
             continue
@@ -190,7 +227,7 @@ def validate(pilot: Path) -> None:
         if run["status"] == "succeeded":
             if run.get("effective_model") != run["requested_model"]:
                 raise ValueError("Effective model mismatch")
-            validate_result(run["result"], ids)
+            validate_result(run["result"], ids, response_schema=read_json(pilot / "response.schema.json"))
         elif run.get("result") is not None:
             raise ValueError("Failed provider must not contain a usable result")
     comparison = pilot / "comparison.json"

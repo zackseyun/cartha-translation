@@ -239,10 +239,12 @@ measured image-reading accuracy or proof that a model's clear label is correct.
 The frozen two-crop pilot still has only one successful provider response; its
 saved second-provider access failure is not a live process or a second reading.
 Do not repeat inference without a legitimate new access route. Before adding
-blank controls, a new versioned response protocol must distinguish no visible
-text from failure to assess: the old validator requires a nonempty token row
-for every region and cannot represent a successful empty observation. Preserve
-the old prompts, schemas and receipts rather than retroactively changing them.
+blank controls, use the new opt-in [observation protocol 2.0](../sources/dead_sea_scrolls/protocols/README.md)
+to distinguish no visible text from failure to assess. The legacy protocol
+requires a nonempty token row for every region and cannot represent a successful
+empty observation. The new schema, prompt and tested validator support that
+distinction, but provider execution and benchmark evaluation remain pending.
+The old prompts, schemas and receipts are preserved, not retroactively upgraded.
 
 Published-text comparisons may proceed without freshly transcribing every
 image. Require image checks where the proposed claim depends on disputed marks,

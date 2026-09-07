@@ -129,7 +129,7 @@ def run(pilot: Path, provider: str, executable: str, timeout: int, replace: bool
         try:
             if effective != model:
                 raise ValueError("Requested model was not the effective model")
-            validate_result(result, [region["id"] for region in regions])
+            validate_result(result, [region["id"] for region in regions], response_schema=schema)
         except ValueError as exc:
             status, result, error = "failed", None, str(exc)
     record = {

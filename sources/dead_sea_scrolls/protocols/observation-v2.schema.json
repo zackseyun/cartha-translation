@@ -1,0 +1,53 @@
+{
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["observation_protocol", "regions"],
+  "properties": {
+    "observation_protocol": {"type": "string", "enum": ["2.0"]},
+    "regions": {
+      "type": "array",
+      "minItems": 1,
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["region_id", "observation", "lines", "notes"],
+        "properties": {
+          "region_id": {"type": "string", "minLength": 1},
+          "observation": {
+            "type": "string",
+            "enum": ["text-present", "no-visible-text", "unassessable"]
+          },
+          "notes": {"type": "string"},
+          "lines": {
+            "type": "array",
+            "items": {
+              "type": "object",
+              "additionalProperties": false,
+              "required": ["line_index", "tokens", "notes"],
+              "properties": {
+                "line_index": {"type": "integer", "minimum": 1},
+                "notes": {"type": "string"},
+                "tokens": {
+                  "type": "array",
+                  "minItems": 1,
+                  "items": {
+                    "type": "object",
+                    "additionalProperties": false,
+                    "required": ["text", "certainty"],
+                    "properties": {
+                      "text": {"type": "string", "minLength": 1},
+                      "certainty": {
+                        "type": "string",
+                        "enum": ["clear", "uncertain", "unreadable", "gap"]
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}
