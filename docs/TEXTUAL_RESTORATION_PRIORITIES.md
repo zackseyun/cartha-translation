@@ -82,6 +82,13 @@ Do not rerun settled acquisition or build new validation infrastructure without
 a specific unresolved defect. Model agreement is neither a new witness nor a
 reason to raise historical confidence.
 
+Following the user's efficiency audit, image calibration is paused unless a
+specific translation-relevant question requires a new image reading. The
+unfinished Leningrad label check is retained, not a prerequisite for using
+published editions. Finish actionable disclosures from existing comparisons
+before opening another acquisition or calibration cycle. This does not waive
+calibration for future machine-transcription claims or narrow the OT/NT scope.
+
 Current bounded results: the [1 Samuel 1:24–25 comparison](SAMUEL_SOURCE_COMPARISON_PASS_3.md)
 tested the singular-bull argument against a published grammatical control and
 retains the current text pending its recorded reopening evidence. Do not repeat

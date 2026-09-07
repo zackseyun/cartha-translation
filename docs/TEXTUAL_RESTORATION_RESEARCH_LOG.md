@@ -3911,6 +3911,34 @@ Direct checks passed for source/crop hashes, source dimensions and exact pixel
 correspondence between the saved crop and its declared rectangle. Diff-check
 passed. These checks verify the image preparation, not the disputed label.
 
+### 2026-09-06 — Efficiency action: finish Proverbs 8:16 disclosure
+
+The preceding user-requested audit verified disproportionate cumulative effort
+and changed the next action: pause image calibration and finish a consequential
+pending disclosure using existing evidence. The broad source-comparison goal
+remains open; unresolved Leningrad labels are not a prerequisite for reporting
+published readings. The priorities document now states that pause explicitly.
+
+Reused the Proverbs comparison and saved Minchat Shai source, and freshly opened
+[NET Proverbs 8:14–17, note 5](https://classic.net.bible.org/passage.php?passage=Pro+8:14-17).
+It reports both Hebrew readings and Greek earth wording, while favoring justice
+as the harder reading. No new PDF, manuscript image or broad acquisition was
+needed. The evidence warrants disclosing the alternative, not selecting its
+historical priority. No added witness count or confidence claim follows.
+
+One independent, nonblind `proverbs_disclosure_review` approved the exact
+footnote/review-state edits conditionally; all conditions passed. Applied the
+expanded note while retaining its lexical alternatives and unchanged Hebrew,
+main English and rationales. Preserved the former cross-check verbatim under a
+historical key and reset active status to draft/needs_review. The
+[receipt](../sources/textual_restoration/applications/proverbs8_16_disclosure_application.v1.json)
+pins before/after bytes and review scope. Schema and exact-record checks passed;
+actual full-book exports covered 31 chapters/915 verses with only the note text
+and reason changed. Eight reader-footnote tests and diff-check passed. No new
+framework, provider run, repeat judge loop or deployment occurred. Source choice
+still requires the specific witness/hand and versional evidence identified in
+the existing report, not further copies of the same published argument.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

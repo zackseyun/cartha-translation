@@ -1,5 +1,12 @@
 # Proverbs 8:16 — justice or earth?
 
+**Application update:** the scoped disclosure is now applied to the repository
+verse, retaining the lexical alternatives, Hebrew and main English. The earlier
+unapplied language below records the research stage, not current status. See the
+[application receipt](../sources/textual_restoration/applications/proverbs8_16_disclosure_application.v1.json)
+for the exact change, bounded review and export checks. This is not a new source
+selection or a deployed-reader claim.
+
 Checked 2026-09-06 against repository `80edc42da2`. Published-source comparison;
 no new manuscript transcription, reconstructed ink or canonical change.
 
