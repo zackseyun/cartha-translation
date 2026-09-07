@@ -5,7 +5,8 @@ for WLC and not a claim of recovered autographs. Currently it contains only
 [Isaiah 53:11](isaiah/053/011.json). Its selected Hebrew has independent AI
 editorial approval. Its exact full-verse candidate has now been applied to the
 canonical repository YAML, including English "he will see light" and the
-uncertainty note. Downstream reader release has not been verified.
+uncertainty note. The public provenance page now displays them; the public
+chapter reader was checked and still displays the older wording (see below).
 
 Each record retains the full source text, contrary apparatus, composition
 disclosure, original Git baseline, candidate, explicit patch bundle and exact
@@ -60,9 +61,17 @@ independently recorded review and receipt hashes:
 .venv/bin/python -m tools.textual_restoration.verify_critical_successor sources/textual_restoration/applications/isaiah53_11_successor_plan.v1.json sources/textual_restoration/applications/isaiah53_11_successor_review.v1.json --trusted-review-sha256 66d8f2fee1d76aa2b0285659d347b1738af6bde8ef620f60c5961638bcb4d34d --application sources/textual_restoration/applications/isaiah53_11_successor_application.v1.json --trusted-application-sha256 0b486ef4d070e9b9d24307ff3c1480b325cb50bb47addd0f154fa40a16543b96
 ```
 
-Repository adoption is publicly inspectable and may be fetched by the existing
-provenance page. It is not a claim that bundled reader assets were synchronized,
-the website was deployed, or all words in the retained base were freshly judged.
+On 2026-09-06, the live
+[provenance page](https://peoplesbible.com/verse/?ref=ISA.53.11) displayed the
+adopted wording, full Hebrew, composite-source note, apparatus and both footnotes.
+The light footnote link navigated correctly and its disclosure was visibly
+readable. This verifies that specific deployed surface, not the entire reader.
+The [POB chapter reader](https://peoplesbible.com/bible?book=Isaiah&chapter=53&verse=11)
+still displayed "he will see and be satisfied" without light. Both its public
+manifest and the upstream Bible CDN manifest identified commit
+`b6717921daaa86c38c599a4b294bd792626b2631`, before the Isaiah application.
+The existing whole-corpus publisher/sync was not triggered. No claim that
+bundled assets are synchronized or every retained word freshly adjudicated.
 
 ### Compatibility with the updated source-distinction policy
 

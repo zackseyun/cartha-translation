@@ -3687,6 +3687,61 @@ candidate SHA256 remains
 `7f7ee48c97c0d8ef54419ba653f075f5a7b40baa784bf9e2d96231dda02f6797`.
 This documentation-only pass adds no code, new restoration or publication claim.
 
+### 2026-09-06 — Live Isaiah reader check and misleading review-count repair
+
+The previous Deuteronomy report was pushed as `4c3e0c8910`. This pass verified
+whether the completed Isaiah source work reaches actual readers. In ordinary
+Chrome, the legacy source URL redirected to
+`https://peoplesbible.com/verse/?ref=ISA.53.11`. Its loaded UI displayed “he will
+see light,” the POB-critical Hebrew, the provisional composite-source note,
+all apparatus entries and both note bodies. Clicking footnote a navigated to
+`#footnote-a`; a screenshot confirmed the disclosure was readable. No mock
+server, repository-only rendering or new manuscript evidence is claimed here.
+
+The live chapter route, `https://peoplesbible.com/bible?book=Isaiah&chapter=53&verse=11`,
+still displayed the old “he will see and be satisfied.” Opened settings confirmed
+POB, not another translation. Read-only HTTP checks found both
+`https://bible.cartha.com/manifest.json` and
+`https://peoplesbible.com/bibles/pob_manifest.json` identify commit
+`b6717921daaa86c38c599a4b294bd792626b2631`, timestamp
+`2026-09-07T00:07:45.773Z`, 135 books, 2,651 chapters, 45,109 verses. Git ancestry
+and the bounded OT diff establish that this precedes the Isaiah application.
+The website manifest's content-derived version is
+`ee8d08e331ee2eca51eb810e85899516b860af5954522c573de9cd7f5ed1596f`;
+its upstream version and CDN version are `b6717921daaa`.
+
+Independent asset tracing confirmed local preview and Isaiah book assets also
+contain the older wording. The existing single-book exporter returns light
+and both notes correctly. Website `sync:pob` fetches the upstream bundle and
+rewrites all lazy books, not one selected verse. `scripts/publish_pob.sh` runs
+corpus validation, invokes the publisher and triggers a website rebuild.
+Neither command was run. The user was asked whether to authorize that broader
+publication; no approval was assumed. Runtime removal of POB main-reader notes
+was not changed; the verified provenance route remains the disclosure path.
+
+The live source page also exposed a real display defect: `cross_check` containing
+only `status: needs_review` was shown as one completed pass, zero concerns, a
+success checkmark and generic passed-review prose. In `cartha.website`, repaired
+only `src/app/(main)/peoples-open-bible/verse/page.jsx` and added
+`test/pob-provenance-review-status.test.mjs`. Missing/malformed counters now stay
+unknown; pending/recheck status cannot imply current approval; valid populated
+records retain their actual counts. Generic explanatory copy no longer claims
+that merely having a cross-check section proves review happened or passed.
+
+Independent `/root/provenance_count_fix_judge` passed the bounded repair and
+independently ran its eight new tests. Root's combined actual-component/source
+tests reported 13 passes, zero failures/skips, in about 0.43 seconds; diff-check
+passed. Implementation commit `80eafe75` was merged with unrelated upstream
+changes and pushed as `d7831fca58b3db5f284764c429d3b00022d31b8d`. Reviewed page SHA256:
+`abcc61460cbd4b85752c0e7f2c4d9a53514eed19bc2dc21e794a5d27e6e2b2bf`;
+new test SHA256:
+`b09a5727451ec815e73b039cccb6fe9765298bbca6bb53a895e75ad6c4d62a7f`.
+No source/candidate YAML or reader asset changed. Website main is picked up by
+its documented scheduled deployment; no manual deployment was triggered and
+the new count repair is not yet claimed verified live. The canonical record
+also carries old preparation-era pending language in a rationale; this check
+does not relabel those historical statements as a new source decision.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
