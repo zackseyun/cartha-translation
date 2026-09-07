@@ -85,7 +85,7 @@ def source_fingerprint(repo: Path) -> str:
                 if name.endswith(('.yaml', '.json')):
                     paths.append(Path(parent) / name)
     paths.extend(repo / name for name in ('tools/build_revisions_index.py',
-                 'tools/lxx_swete.py', 'book_metadata.json'))
+                 'tools/lxx_swete.py', 'book_metadata.json', 'data/revision-notices.json'))
     for path in paths:
         try:
             st = path.stat()

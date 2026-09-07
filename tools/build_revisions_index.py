@@ -659,6 +659,22 @@ def walk_review_records() -> dict[str, Any]:
 
 def build_index() -> dict[str, Any]:
     revisions = walk_verses()
+    # Reviewed application records can freeze canonical YAML bytes. Keep their
+    # public revision notices separately rather than invalidating those records
+    # just to add presentation metadata. These are historical applied changes.
+    notices_path = REPO_ROOT / "data" / "revision-notices.json"
+    if notices_path.exists():
+        for notice in json.loads(notices_path.read_text(encoding="utf-8")):
+            if not (REPO_ROOT / notice["source_review"]).is_file():
+                raise ValueError(f"Missing revision evidence: {notice['source_review']}")
+            key = (notice["id"], notice["timestamp"], notice["from"], notice["to"])
+            if any((r["id"], r["timestamp"], r["from"], r["to"]) == key for r in revisions):
+                continue
+            item = dict(notice)
+            source, reason = proposal_source_for(item, None)
+            if source:
+                item.update(approved_proposal=True, proposal_source=source, approval_reason=reason)
+            revisions.append(item)
     # Sort newest first
     revisions.sort(key=lambda r: r.get("timestamp") or "", reverse=True)
 
