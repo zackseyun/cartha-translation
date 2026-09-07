@@ -228,6 +228,22 @@ accepted readings. Stratify results by script and damage; uncertain published
 labels remain uncertain. Record actual outputs and measured performance.
 Benchmark execution is pending; no current result is certified by this plan.
 
+Implementation check, 2026-09-06: the existing DSS pilot comparator now excludes
+editorial annotations from automatic clear-token agreement using a conservative
+Hebrew-character filter. Before the repair, matching angle-bracket supplies,
+Latin restoration comments and generic combining uncertainty dots could be
+counted as accepted. Annotated tokens remain in the report for adjudication;
+valid Hebrew points remain eligible. This is a tested software safeguard, not
+measured image-reading accuracy or proof that a model's clear label is correct.
+
+The frozen two-crop pilot still has only one successful provider response; its
+saved second-provider access failure is not a live process or a second reading.
+Do not repeat inference without a legitimate new access route. Before adding
+blank controls, a new versioned response protocol must distinguish no visible
+text from failure to assess: the old validator requires a nonempty token row
+for every region and cannot represent a successful empty observation. Preserve
+the old prompts, schemas and receipts rather than retroactively changing them.
+
 Published-text comparisons may proceed without freshly transcribing every
 image. Require image checks where the proposed claim depends on disputed marks,
 corrections, joins, or a fresh decipherment. Existing case-specific pending

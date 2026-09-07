@@ -3787,6 +3787,31 @@ after correction. The schema/field/canonical-target checks passed; the complete
 reports the retained terminal blank line, not a clean result. Historical
 whole-corpus policy-pin verifiers remain outside this scoped validation claim.
 
+### 2026-09-06 — Repair a demonstrated image-consensus annotation leak
+
+Reviewed the saved dual-vision pilot, its actual outputs, response protocol and
+comparison code to test restoration readiness. The historical second-provider
+run remains a saved access failure, not current inference; no retry or new
+model call occurred. Broad calibration remains unexecuted. A separate protocol
+limitation prevents successful empty observations on blank controls and is now
+explicit in the method; the frozen pilot artifacts remain unchanged.
+
+Reproduced a concrete comparator defect before editing: matching clear tokens
+containing a parenthesized Latin restoration comment, a generic combining
+underdot, or angle-bracket supplied text each yielded one accepted token.
+Changed only `tools/dss/pilot.py` to restrict automatic eligibility to Hebrew
+letters and Hebrew combining marks. Punctuation, mixed prose and editorial
+annotations stay available in the comparison report but require adjudication.
+Added regression tests in `tests/test_dss_pilot.py` for these cases and retained
+eligibility of matching pointed Hebrew. The actual pilot/project test command
+reported 21 passes in 0.007 seconds, including validation of the saved crops
+and unchanged comparison. This is not an accuracy benchmark, new manuscript
+reading, historical-confidence increase or translation change.
+
+Independent `dss_annotation_guard_review` passed the two-file repair and reran
+all 21 focused tests successfully. Documentation/code diff-check passed. The
+review was scoped to this concrete safeguard, not the full restoration system.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

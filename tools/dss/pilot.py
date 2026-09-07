@@ -89,6 +89,21 @@ def normal(text: str) -> str:
     return unicodedata.normalize("NFC", text).strip()
 
 
+def plain_hebrew_token(text: str) -> bool:
+    """Conservative eligibility, not proof that any glyph is actually visible.
+
+    Keep Hebrew vowel/cantillation marks, but refuse editorial brackets,
+    generic combining uncertainty dots, prose and other annotation syntax.
+    Such tokens remain in the report for adjudication rather than being
+    automatically counted as clear agreement.
+    """
+    return any("\u05d0" <= c <= "\u05ea" for c in text) and all(
+        "\u05d0" <= c <= "\u05ea"
+        or ("\u0591" <= c <= "\u05c7" and unicodedata.category(c).startswith("M"))
+        for c in text
+    )
+
+
 def compare(left: dict, right: dict) -> dict:
     report = {
         "schema_version": "1.0.0",
@@ -135,8 +150,7 @@ def compare(left: dict, right: dict) -> dict:
                 accepted = (
                     text == normal(tb["text"])
                     and ta["certainty"] == tb["certainty"] == "clear"
-                    and not any(mark in text for mark in "□[]?…—")
-                    and any("\u05d0" <= character <= "\u05ea" for character in text)
+                    and plain_hebrew_token(text)
                 )
                 report["tokens"].append({
                     "region_id": rid, "line_index": la["line_index"], "token_index": index,

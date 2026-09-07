@@ -84,6 +84,21 @@ class DssPilotTests(unittest.TestCase):
         report = compare(proposal(text="מלך"), proposal("anthropic", text="מלכ"))
         self.assertEqual(report["accepted_tokens"], 0)
 
+    def test_editorial_annotations_never_count_as_clear_agreement(self):
+        for text in ("אלהים (restored)", "⟨אלהים⟩", "(אלהים)",
+                     "אלהים\u0323", "אלהים\u0307", "אלהים/אלים", "אל הים"):
+            with self.subTest(text=text):
+                report = compare(proposal(text=text), proposal("anthropic", text=text))
+                self.assertEqual(report["accepted_tokens"], 0)
+                self.assertEqual(report["compared_tokens"], 1)
+                self.assertEqual(len(report["tokens"]), 1)
+
+    def test_matching_hebrew_points_remain_eligible_not_proven(self):
+        for text in ("אֱלֹהִים", "מֶ֫לֶךְ"):
+            with self.subTest(text=text):
+                report = compare(proposal(text=text), proposal("anthropic", text=text))
+                self.assertEqual(report["accepted_tokens"], 1)
+
     def test_segmentation_disagreement_is_not_positionally_aligned(self):
         second = proposal("anthropic")
         second["result"]["regions"][0]["lines"][0]["tokens"].append({"text": "אמר", "certainty": "clear"})
