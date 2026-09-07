@@ -1,4 +1,5 @@
 import copy
+import hashlib
 import json
 import unittest
 from pathlib import Path
@@ -20,6 +21,20 @@ def observation(provider="openai", status="no-visible-text"):
 
 
 class ObservationProtocolTests(unittest.TestCase):
+    def test_frozen_development_control_inputs(self):
+        root = Path(__file__).resolve().parents[1]
+        directory = root / "sources/dead_sea_scrolls/pilots/2026-09-06-observation-development"
+        freeze = json.loads((directory / "freeze.json").read_text())
+        for path, digest in freeze["sha256"].items():
+            self.assertEqual(hashlib.sha256((directory / path).read_bytes()).hexdigest(), digest, path)
+        labels = json.loads((directory / "reference-labels.json").read_text())["labels"]
+        regions = json.loads((directory / "regions.json").read_text())["regions"]
+        self.assertEqual([r["id"] for r in regions], [r["region_id"] for r in labels])
+        self.assertEqual(sum(r["expected_observation"] == "text-present" for r in labels), 2)
+        self.assertEqual(sum(r["expected_observation"] == "no-visible-text" for r in labels), 2)
+        self.assertFalse(freeze["held_out"])
+        self.assertFalse(freeze["glyph_accuracy_evaluation"])
+
     def test_all_explicit_observations_validate(self):
         schema = json.loads((Path(__file__).resolve().parents[1] /
                              "sources/dead_sea_scrolls/protocols/observation-v2.schema.json").read_text())

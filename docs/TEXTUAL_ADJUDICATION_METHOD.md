@@ -246,6 +246,14 @@ empty observation. The new schema, prompt and tested validator support that
 distinction, but provider execution and benchmark evaluation remain pending.
 The old prompts, schemas and receipts are preserved, not retroactively upgraded.
 
+A [four-region development control set](../sources/dead_sea_scrolls/pilots/2026-09-06-observation-development/README.md)
+now freezes actual image crops, observation-only labels, prompt/schema and
+pre-run criteria. It has two writing regions and two negative regions from one
+already-used manuscript photograph. Inputs were visually checked and labels
+independently reviewed without expected labels; no provider run or character
+accuracy result exists. It is not held out and does not replace the varied,
+manuscript-disjoint evaluation required before broad acceptance.
+
 Published-text comparisons may proceed without freshly transcribing every
 image. Require image checks where the proposed claim depends on disputed marks,
 corrections, joins, or a fresh decipherment. Existing case-specific pending

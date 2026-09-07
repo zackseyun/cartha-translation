@@ -1,0 +1,10 @@
+Perform an image-only diplomatic observation of the attached ancient Hebrew manuscript crops. Use region IDs region-1, region-2, and so on, in attachment order. Do not browse, consult editions or other model outputs, use tools, or supply remembered wording. Return only JSON matching the supplied schema, with observation_protocol set to 2.0.
+
+First classify each crop independently:
+- text-present: you can identify text or text-like manuscript strokes, even if individual letters are unreadable. Enumerate visible lines top-to-bottom. Use uncertain or unreadable tokens where necessary; do not invent readable letters.
+- no-visible-text: you can inspect the crop and see no text-like strokes. Return lines as an empty array and explain the observation briefly. Do not invent a gap token or reconstruct text merely because the material is missing. This is an observation about this image, not a claim that no text ever existed there.
+- unassessable: you cannot assess whether text is visible, for example because resolution or image quality is inadequate. Return lines as an empty array and explain the limitation. Do not treat inability to assess as evidence of blank parchment.
+
+For text-present regions, enumerate line_index consecutively starting at 1. Tokens follow Hebrew reading order, in normal logical Hebrew in JSON. Preserve spelling, final letter forms, word divisions, and actually visible vowel or diacritic marks. Set certainty=clear only when every letter is visibly readable; otherwise use uncertain or unreadable. Use square placeholder glyphs for unreadable characters. A gap token [—] is permitted only where a physical or crop-edge loss intersects an identifiable text line. Ordinary spacing is not a gap. Do not guess missing letters or gap length. Keep explanations in notes rather than inside token text.
+
+Return every crop exactly once. Never replace a missing response with a no-visible-text observation. These are model observations, not verified readings or restoration hypotheses.

@@ -3838,6 +3838,33 @@ specific schema-enforcement correction, independently rerunning all 31 tests.
 Diff-check passed; the historical pilot directory and canonical translation
 tree have no changes in this pass. Provider compatibility remains untested.
 
+### 2026-09-06 — Freeze actual observation development controls
+
+Prepared [four exact-image controls](../sources/dead_sea_scrolls/pilots/2026-09-06-observation-development/README.md)
+instead of another framework. Rehydrated only the needed registered 1QM TIFF,
+whose full-resolution local copy was absent, and verified its existing SHA256.
+The existing preparation script made exact RGB crops; root inspected all four.
+The repository virtualenv lacked Pillow, so the bundled runtime was used without
+installation. The LOC item page returned 403; the source download matched the
+prior registered bytes and prior rights classification, not a new rights audit.
+
+Two positive text-presence and two negative observation labels were independently
+checked by `observation_control_labels`, which saw only the images and no expected
+labels. This was label review, not a provider run or a different-family accuracy
+test. One crop repeats the earlier development pilot and all four share one
+manuscript: no held-out, independent-witness or character-ground-truth claim.
+
+The freeze pins images, labels, prompt/schema and pre-run criteria; failed or
+abstaining outputs cannot count as correct blanks, and negative-crop text claims
+remain errors even when two models agree. Input/crop validation passed. No model
+call, generated image, restoration, Hebrew selection or English change occurred.
+Legitimate second-model access and the later varied held-out evaluation remain
+separate unfinished requirements.
+
+All 32 focused tests passed, including the new frozen-input hash/label-coverage
+check. The existing pilot validator verified all four new crop hashes, and
+diff-check passed. These checks establish input integrity, not model accuracy.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
