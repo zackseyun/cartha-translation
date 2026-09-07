@@ -4265,6 +4265,30 @@ report. No new infrastructure, failed acquisition or deployment. The unrelated
 untracked Geniza file remains untouched. Park the opening unless new evidence
 discriminates the recorded historical directions; no repeat article acquisition.
 
+### 2026-09-06 — Ecclesiastes: published/QDR scope reconciliation and noun comparison
+
+Previous turn was progress: the reviewed Lamentations 1:7 disclosure was pushed.
+The [Ecclesiastes report](ECCLESIASTES_DSS_COMPARISON_2026-09-06.md) broadens
+actual witness comparison to both pinned records. Root compared all 36 published
+4Q109 lines against current source fields; one bounded agent compared all eight
+published 4Q110 lines and eleven older QDR lines. Complementary labor is not
+independent replication. The 44/47 line-count difference and final unidentified
+4Q110 traces expose a concrete limit on the older contextual reconstruction.
+No new fragment identity or pixel reading was asserted.
+
+Ten local Greek selected-text contexts were read. The 7:2 noun comparison
+provisionally favors retaining the feasting/joy distinction, while preserving
+the reverse-development explanation. A full-verse check is recorded without
+claiming the noun-only alternative translates the complete scroll form. Remaining
+lexical, conditional and correction candidates are screened, not adjudicated.
+The earlier WLC-based wisdom audit does not certify this new witness coverage.
+One Brill preview attempt returned 403; its body was not read or retried.
+No canonical source, English, notes, historical review, infrastructure or deployment
+changed. Both input pins, QDR counts, the unchanged 222-record canonical manifest,
+exact full-verse check, Greek noun anchors, report links and diff checks passed.
+The unrelated untracked Geniza file remains untouched. Do not reopen 7:2 or
+repair its incidental note anchor merely to prolong this comparison.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

@@ -171,6 +171,14 @@ disclosure. Other candidates remain open, not an instruction to rescreen these
 records or restart image calibration. Supplied 5Q7 wording and a Greek row-boundary
 mismatch must not become false manuscript variants.
 
+The [Ecclesiastes screen](ECCLESIASTES_DSS_COMPARISON_2026-09-06.md) compares
+44 published lines across two records, not the 47 older QDR lines. 4Q110's
+supplied contexts exceed current published coverage and cannot support a
+“mighty” reading at 1:15. The 7:2 feasting/joy comparison provisionally favors
+the distinct WLC noun using a local Greek contrast and an explicit contrary
+explanation; it is parked. Other 4Q109 candidates have named evidence needs,
+not blanket source adoption. No canonical change or new image work followed.
+
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
 all 66 canonical books, WLC written/read variants, and the official 27-book
 SBLGNT edition apparatus. The [48-case shortlist](TEXTUAL_VARIANT_CASEBOOK.md)
