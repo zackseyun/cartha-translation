@@ -4421,6 +4421,20 @@ arguments. No paid acquisition, agent loop, new infrastructure or deployment.
 Checked the retained verse/hash and new JSON against the unchanged record,
 local links and Git whitespace; no runtime-test claim for documentation-only work.
 
+### 2026-09-07 — Added the 4Q176 Lamentations excerpt target
+
+The prior 5:3 pass made documented progress and remains parked. Checked a
+separate source-coverage lead: 4Q176 was a label-only Psalms-context target,
+not a registered Lamentations excerpt. Consulted the 2019 primary publisher
+abstract and relevant current QDR transcription lines. Added one registry
+entry for partial 4:21–22 coverage, recording linked fragment presentations,
+possible secondary addition, access limits and unverified physical placement.
+The [report](LAMENTATIONS_DSS_COMPARISON_2026-09-06.md#excerpt-coverage-follow-up--2026-09-07)
+distinguishes the original four-copy screen from this excerpt target. No
+canonical changes, new manuscript votes, image generation, frozen-receipt
+rewrites or deployment. Checked registry validity and exact preservation of
+all earlier entries and canonical records. No new validator or agent loop.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

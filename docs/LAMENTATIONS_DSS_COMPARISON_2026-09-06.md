@@ -11,6 +11,10 @@ No canonical Hebrew, English or notes changed in the initial screen. The
 follow-up below subsequently applies a disclosure to 1:7. This is not a complete census
 of discovered witnesses or a completed Lamentations critical text.
 
+The [excerpt follow-up](#excerpt-coverage-follow-up--2026-09-07) adds 4Q176
+as a separately classified Lamentations source target. The four-record/103-line
+totals below remain the scope of the original screen, not the complete source set.
+
 The [receipt](../sources/textual_restoration/comparisons/lamentations_dss_screen.v1.json)
 pins inputs, all physical-line identifiers and tagged references. Root read
 4Q111's 33 published line records; one bounded agent read the other 70 against
@@ -248,3 +252,41 @@ the cited pages), independent attestation of the daughter-loss clause, or a
 published correction to the uncertain letters. No canonical edit, new image
 work, validator, independent-review claim or deployment. Unchanged 5:3 SHA256:
 `9ad012d6e3832ef468fdf350be2429672ef2f43dac29eb710ad2f5f5cf467d56`.
+
+## Excerpt coverage follow-up — 2026-09-07
+
+Added **4Q176 (Tanhumim)** to the working OT witness registry as a Hebrew
+excerpt target for 4:21–22, not a fifth continuous Lamentations manuscript.
+The earlier Psalms catalogue already registered its label in the nonbiblical
+QDR file, but only as a literary-context lead without consulted contents.
+That historical receipt remains unchanged.
+
+Actually consulted: [Tigchelaar's 2019 publisher abstract](https://poj.peeters-leuven.be/content.php?id=3286503&url=article),
+*Lamentations 4:21–22 as Another Word of Consolation in 4Q176*, DOI
+10.2143/RQ.31.1.3286503, pp. 3–9. It places fragment 24 within fragments 8–11,
+identifies the Lamentations passage, and reports a possible secondary addition
+in a different script style. Its appendix reassigns old fragment 40 to 4Q84.
+These are the author's reported conclusions: full argument, figures, joins,
+hand and manuscript date were not independently checked.
+
+Also consulted the [2026-05-21 transcription](https://lexicon.qumran-digital.org/transcriptions/4Q176/2026-05-21/index.html?v=2026-05-21),
+fragments 8–11 lines 15–17 and fragment 24 lines 1–3 with surrounding context.
+The displayed placement links overlap: do not concatenate both presentations
+or count them as separate support. Brief anchors include `ץ עוץ גם ע֯[ליך`
+and `ב]ת֯ ציון לוא֯[`. They locate partial text, not complete verses. Brackets,
+alternative readings and uncertain letters remain significant. This does not
+establish survival of the cup wording or all clauses in 4:21–22.
+
+Decision: worth comparing for these loci, conditional on excerpt adaptation,
+placement and preservation checks. Its genre does not disqualify direct Hebrew
+evidence; conversely, a consolatory excerpt may adapt its source. Neither
+possibility establishes textual priority. No canonical source/English edit,
+new physical-coverage receipt, fresh transcription or restoration claim.
+
+The registry stores the relationship and access limits; its discovery count is
+not a count of independent supporting manuscripts. Existing frozen maps and
+screen denominators are unchanged. Stop label acquisition here; consult the
+full identification argument only when testing a consequential reading at
+these loci. No fresh image work or general Lamentations rescreen is required
+to record this source. Registry validation and preservation checks passed;
+they establish metadata consistency, not the proposed physical placement.
