@@ -114,3 +114,34 @@ images; collate the relevant Greek manuscript traditions; continue the
 1 Samuel 1:24 and 10:27-11:1 candidates. No generated image has been used as
 manuscript evidence, and no critical Hebrew or English main-text selection is
 promoted by this pass.
+
+## 1 Samuel 14:41: later argument accessed — 2026-09-07
+
+The [author-hosted 2024 article](https://www.academia.edu/119887795/Correcting_Some_Claims_of_LXX_Readings_in_the_Publication_of_the_Samuel_Scrolls_from_Qumran_DJD_XVII_)
+now provides readable extracted text of section 5, pp. 36–41, including its
+footnotes. This advances the earlier abstract-only review, but is **not** a
+visual review of the PDF or its figures. The publisher PDF returned HTTP 403;
+the author download link failed, and no local PDF was acquired.
+
+Yardney's argument concentrates on line 2: the proposed aleph–vav fits poorly;
+the reconstructed “and he said” lacks space for aleph and has an incompatible
+medial mem shape. She leaves line 1 and the replacement identification open.
+Crucially, footnote 53 still favors the longer prayer: repeated “Israel” could
+have triggered omission, leaving the difficult Masoretic phrase. Her rejection
+of the fragment therefore does not amount to rejection of the longer reading.
+
+POB consequence: keep the fragment outside positive support and retain the
+current translation provisionally. Omission from a longer Hebrew prayer and
+expansion of a difficult shorter prayer remain competing explanations; this
+pass does not settle them or establish exact retroverted Hebrew. The existing
+reader note already distinguishes these issues, so it needs no new edit.
+
+The remaining physical check is now specific: figures 40–44 against IAA
+[B-359488](https://www.deadseascrolls.org.il/explore-the-archive/image/B-359488)
+and historical PAM 43.072,
+[B-284874](https://www.deadseascrolls.org.il/explore-the-archive/image/B-284874).
+These are article-cited locators, not newly inspected images. Greek
+manuscript-level comparison remains a separate source-selection gate.
+Do not repeat abstract searches or the failed download routes without new
+access evidence. No ImageGen, fresh transcription, independent review,
+canonical change, or deployment occurred.

@@ -4495,6 +4495,24 @@ dataset restrictions and image-rights limits. The Lamentations report records
 the correction and per-artifact rule. Registry validation passed; no new
 infrastructure, corpus import, canonical edit or deployment.
 
+### 2026-09-07 — Advanced the 1 Samuel 14:41 identification review
+
+The efficiency audit narrowed the next action to an existing consequential
+case. The [Samuel follow-up](SAMUEL_SOURCE_COMPARISON_PASS_2.md#1-samuel-1441-later-argument-accessed--2026-09-07)
+records newly accessible author-hosted argument text, the still-uninspected
+figures, failed PDF routes, and precise remaining checks. Updated the comparison
+and coverage access notes without promoting the disputed fragment or changing
+Hebrew, English, or reader notes. Interrupted closeout turns made no edits;
+this entry preserves the actual research result, not a new research pass.
+
+Validation: both edited JSON documents pass their schemas; before/after
+comparison and coverage validation errors are identical. Eight reader-footnote
+tests and Git whitespace checks pass; no canonical files changed. The aggregate
+registry validator remains non-green on existing Genesis 4:8, Exodus 12:40,
+and 1 Samuel 17:4 baseline drift and unchanged registry schema mismatches
+(`identification_review`, `license_url`, `abstract-only-consulted`). These were
+not repaired or silently repinned in this research update.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
