@@ -4474,6 +4474,15 @@ archived history, exact hashes, source controls and successful 38-verse export
 and eight-test checks. No new manuscript attestation, restoration image,
 judge loop, frozen-manifest rewrite or deployment.
 
+### 2026-09-07 — Checked the plural-rider error family across the OT
+
+The prior Haggai English correction was progress. A follow-up checked the 17
+matching WLC participles across 16 verses against POB, finding no further
+explicit singular-rider rendering. Recorded the exact verse set, matching
+limits and no-repeat stop in the Haggai report. No canonical changes or new
+review loop; this is a bounded negative result, not corpus-wide translation
+approval. Documentation-only validation used Git whitespace checks.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

@@ -125,3 +125,23 @@ both source forms. No parser change was necessary. Record SHA256 before
 `bca88068dc771fbe981c396c16c986b478fa052d9e92389374a6c9d1f187e69a`.
 This is an English fidelity repair, not a new Hebrew restoration or a general
 rule that every collective expression must be translated mechanically.
+
+### Related-form batch check — 2026-09-07
+
+After the correction, screened all 39 vendored WLC/OSHB XML books for lemma
+7392 with masculine-plural active-participle morphology (`Vqrmp`). Found 17
+forms in 16 verses: Judges 5:10; 10:4; 12:14; 2 Kings 9:25; 18:23;
+Esther 8:10,14; Isaiah 36:8; Jeremiah 17:25; 22:4; Ezekiel 23:6,12,23;
+38:15; Haggai 2:22; Zechariah 10:5. Checked the corresponding POB English.
+No further explicit singular “rider” rendering was found: other expressions
+use riders/horsemen, plural subjects with riding/mounted, or “you who ride.”
+English “you” does not overtly mark number; this is not a claim that every
+grammatical distinction is explicit or every rendering optimal.
+
+The initial source-form search traversed all 23,264 OT records; the follow-up
+used book/chapter references. Esther's repeated form matches both verses, so
+word-string matches are navigation, not unique verse alignment. This check
+excludes singular participles, other verb stems/forms and other Hebrew lemmas.
+It closes the analogous explicit singular-rider issue in this bounded set;
+no extra canonical edits, agent review, infrastructure or runtime tests were
+needed. Reopen only for a specific counterexample, not another identical scan.
