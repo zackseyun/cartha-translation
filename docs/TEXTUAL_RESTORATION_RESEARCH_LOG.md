@@ -3388,6 +3388,43 @@ Review input hashes and scope were checked against current files; the canonical
 Isaiah baseline remains unchanged. Stop at this editorial approval plus precise
 reader-gap finding, with production source/application integration still open.
 
+### 2026-09-06 — Display the existing source-composition disclosure
+
+Previous turn: progress through Isaiah editorial approval and the missing
+`source.note` display finding. Implemented that specific shared reader change
+in `cartha.website`, `src/app/(main)/peoples-open-bible/verse/page.jsx`: render
+nonempty string notes as labeled, escaped text below the Hebrew/source text.
+Exterior whitespace is trimmed; interior line breaks are retained. Missing,
+blank and nonstring notes create no empty disclosure. No script/HTML execution,
+new source claims, Scripture edits, footnote-filtering policy change or About
+integration is part of this patch.
+
+The new `test/pob-provenance-source-note.test.mjs` compiles the actual page with
+Next SWC and server-renders its actual body with React; it checks preservation
+of the source, apparatus and footnotes, record nonmutation, missing/malformed
+notes and HTML escaping. Together with the existing source-text and original-
+source-YAML tests, eight focused tests passed. The actual unchanged Isaiah
+candidate was separately supplied to that component: its source note, Hebrew,
+all apparatus notes and both footnote bodies now render. Framework route
+dependencies were stubbed; no full-route fetch or browser layout test is claimed.
+
+Independent `/root/source_note_ui_review` returned PASS after running the same
+eight tests and inspecting the bounded change. Page SHA256:
+`d9514dbefb47224ab8d8161b18c71325e0c1938d2d9f11d427da9cff17c348b7`;
+new test SHA256:
+`c4dde108e8257c565a854d89b4668d0963a160904648a82b9d185b59f0c976e0`.
+Website implementation commit `f043e3df` was merged with current remote main
+without target-file conflicts and pushed as `d07491b948d22e49cf4d1d5db37fb73be3f98fb0`.
+The eight tests passed again after integration and the reviewed page hash stayed
+identical. Unrelated upstream website/bundle changes were preserved, not authored
+or reviewed by this task.
+
+The website workflow documentation says main is picked up by a scheduled
+deployment. The user was informed before push; no deployment was manually
+triggered and no live release was verified. This closes the local component's
+missing-note behavior, not deployed disclosure or the source-schema/application
+requirements. The canonical Isaiah verse and its candidate remain unchanged.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
