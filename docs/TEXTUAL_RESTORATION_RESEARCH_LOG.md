@@ -3963,6 +3963,25 @@ subagent, PDF/image acquisition or new comparison infrastructure was used.
 Only these two documentation files changed; diff-check is the relevant local
 check, not a claim to have validated a new textual result.
 
+### 2026-09-06 — Saul's regnal numbers: separate evidence from conjecture
+
+Did not retry the failed ECM lookup. The previous pass documented an access
+limit, not a textual advance. This pass used the existing Samuel target,
+local WLC and Acts source, and directly consulted NET textual notes to resolve
+an actionable disclosure ambiguity. The
+[comparison and application record](SAMUEL_13_1_NUMBERS_REVIEW_2026-09-06.md)
+distinguishes published readings from proposed restoration without promoting
+new Hebrew or English wording. Sefaria returned no usable verse body.
+
+One independent scoped reviewer approved the exact note and review-state
+correction, conditional on local checks. Preserved historical cross-check data;
+active draft/needs_review does not borrow its scores. The first export check
+failed my assumed 810-verse count: POB's actual Hebrew source map and export
+both contain 811 records. Replaced that assumption with an exact chapter/verse
+map comparison. The receipt records the final result and hashes, not an
+unqualified first-attempt pass. No image work, apparatus acquisition loop,
+new validation framework or reader deployment was undertaken.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
