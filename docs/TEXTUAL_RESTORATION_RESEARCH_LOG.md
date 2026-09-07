@@ -3470,6 +3470,46 @@ schema/tests remain unchanged. Next integrate this verified source object with
 the full canonical verse and reviewed application mechanism; source-record
 acceptance alone does not finish that migration or synchronize reader editions.
 
+### 2026-09-06 — Full critical-verse schema and exact candidate integration
+
+Previous turn: progress through the first reviewed Hebrew source record.
+Added the [alternative full-verse schema](../schemas/ot-critical-verse.schema.json)
+and [in-memory integration](../tools/textual_restoration/critical_verse.py).
+All legacy non-source field contracts are reused through an explicit offline
+schema registry; the source uses the strict reviewed-source contract. The full
+record must also link its independently trusted source record. No permissive
+edition addition or modification of the frozen old schema was made.
+
+The approved candidate is copied in memory, replacing only its source with the
+reviewed source-stage representation and adding a provenance link. Every English
+phrase, footnote, rationale, draft history and current review flag is retained.
+The old restoration-draft block is explicitly historical preparation, not the
+current source-selection status. No additional full-candidate artifact is saved.
+Validation requires externally supplied source-record, review and composition
+hashes; equality to the approved integration is checked after schema validation.
+
+Independent `/root/critical_verse_integration_judge` found a real first-pass
+defect: Python dictionary equality allowed a historical false flag to become
+JSON number zero. Replaced it with type-sensitive canonical JSON comparison,
+rejecting nonfinite values. Added regression cases for preparation and archived
+review flags. The reviewer rechecked the specific repair and passed; all 24
+focused tests pass. Final integration-tool SHA256:
+`e30b17f3bce07a6617f98ea359c2872ece47113fb7a52338b33ef4595dd0d68b`.
+
+The full integrated record also passed the actual full-book Isaiah exporter
+with a one-record memory overlay: English and note bodies survive and all other
+exported book content is unchanged. The lightweight payload still omits the
+source object, whose existing provenance-page path was addressed separately.
+No canonical write, asset synchronization or deployed-reader claim was made.
+
+Read-only inspection of the frozen safeguards confirmed Isaiah 53:11 is not in
+the Samuel or three-note protected-file pins, but the old verse schema is pinned.
+The current successor verifier explicitly forbids source/main-English changes.
+That is the remaining application boundary, not a failed source or full-verse
+schema decision. This pass does not repin old reviews or claim the note-only
+transaction can already apply Isaiah. Next implement the explicitly reviewed
+source-changing successor while preserving the prior completed-note checks.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

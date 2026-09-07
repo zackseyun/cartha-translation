@@ -27,6 +27,14 @@ does not erase the earlier reading. Candidate and review files remain historical
 artifacts. The record's source-selection status is separate from application
 and publication approval, which remain false. Do not replace a pending gate
 with a matching hash, use ImageGen as evidence, or infer permission to change
-English from source-record validation. The existing canonical verse schema and
-application mechanism still need a deliberate integration/migration; this new
-source format does not silently bypass their restrictions.
+English from source-record validation. The existing canonical verse schema is
+unchanged. The alternative
+[`ot-critical-verse.schema.json`](../../../schemas/ot-critical-verse.schema.json)
+reuses its non-source field contracts and requires the strict source and link.
+[`critical_verse.compose_record` and `validate`](../../../tools/textual_restoration/critical_verse.py)
+compose the full reviewed verse in memory using separately trusted source,
+review and composition hashes. They permit no unreviewed English, note,
+rationale or historical-metadata change. Both APIs are read-only; the existing
+note-only application mechanism still requires deliberate migration before it
+can handle a source/main-English change. Neither schema acceptance nor this
+integration bypasses that restriction.

@@ -1,0 +1,65 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "urn:pob:critical-verse:1",
+  "title": "POB full verse with an independently verified critical-source record",
+  "description": "Alternative full-record schema; does not relax the frozen legacy schema or authorize application.",
+  "type": "object",
+  "required": [
+    "id",
+    "reference",
+    "source",
+    "translation",
+    "ai_draft",
+    "status",
+    "cross_check",
+    "critical_source_integration"
+  ],
+  "properties": {
+    "id": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/id"
+    },
+    "reference": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/reference"
+    },
+    "translation": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/translation"
+    },
+    "lexical_decisions": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/lexical_decisions"
+    },
+    "theological_decisions": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/theological_decisions"
+    },
+    "ai_draft": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/ai_draft"
+    },
+    "cross_check": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/cross_check"
+    },
+    "status": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/status"
+    },
+    "discussion": {
+      "$ref": "https://github.com/zackseyun/peoples-open-bible/schema/verse.schema.json#/properties/discussion"
+    },
+    "source": {
+      "$ref": "urn:pob:reviewed-critical-source:1#/properties/source"
+    },
+    "critical_source_integration": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "record",
+        "restoration_draft_role"
+      ],
+      "properties": {
+        "record": {
+          "$ref": "urn:pob:reviewed-critical-source:1#/$defs/pin"
+        },
+        "restoration_draft_role": {
+          "const": "historical-preparation-not-current-selection-status"
+        }
+      }
+    }
+  }
+}
