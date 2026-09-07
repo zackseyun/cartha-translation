@@ -4191,6 +4191,28 @@ new validation infrastructure or deployment. The untracked Geniza file was
 left untouched. Next textual priority is the consequential source candidates,
 not reopening the completed 3:15 gender test or polishing spelling-only variants.
 
+### 2026-09-06 — Adjudicate five Ruth leads using local Greek controls
+
+Previous turn was progress: whole-set Ruth screening and the 2:21 English
+correction were pushed. This pass tested five consequential leads together,
+reusing published fragment evidence and consulting actual CATSS target units.
+The [follow-up](RUTH_DSS_COMPARISON_2026-09-06.md#consequential-candidate-adjudication-follow-up--2026-09-06)
+records the local Greek being/residence discriminator at 1:2, exact birth-clause
+position of uncertain “again” at 1:12, separate 3:14 omission and 3:15 locative
+questions, and Hebrew/Greek interrogative variation at 3:16. A published
+handbook's generalized Greek-omission claim is narrowed to the inspected
+witness report. One agent handled chapter 1 alongside root's chapter 3 work;
+its additional objection/note checks used disclosed root observations.
+
+No Hebrew changes selected. Applied 3:16 note/anchor/rationale correction with
+source and marker-free English unchanged. Retained interpretive alternatives,
+historical reviews and the uncertain priority; current draft/needs-review does
+not inherit old approval. The report gives actual target/export hashes and
+the passing schema, exact-delta, whole-Ruth identifier/output and eight-test
+checks. No new infrastructure, acquisition failure, image work or deployment.
+The five source leads now have explicit stopping/reopening conditions. Full
+Ruth and broader OT/NT comparison remain incomplete.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

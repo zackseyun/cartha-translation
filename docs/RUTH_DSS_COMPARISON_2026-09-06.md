@@ -148,3 +148,88 @@ English/anchor/note output differences, eight reader-footnote tests and diff
 integrity. No other canonical verse changed. The full-book check verifies
 integration, not scholarly correctness of all 85 verses. No image calibration,
 new validation infrastructure, restricted acquisition or deployment occurred.
+
+## Consequential-candidate adjudication follow-up — 2026-09-06
+
+This supersedes the five corresponding unadjudicated leads above, not their
+observations. No Hebrew change is selected. The results are not equally strong:
+1:2 has a concrete local translation/copying discriminator; the other holds
+remain lower-confidence choices. Do not keep repeating the same arguments.
+
+### Published controls actually checked
+
+The [CATSS larger-Cambridge-based apparatus](https://ccat.sas.upenn.edu/gopher/text/religion/biblical/lxxvar/2Historical/08Ruth.html)
+was consulted at 1:2(5200–5400), 1:4(1800–2001), 1:12(3600–3900),
+3:14(3300–4002), 3:15(2300–3002), and 3:16(1601–1802), with surrounding units.
+The first two locations distinguish being from residence; 1:12 has no reported
+“again” in the inspected unit. At 3:14 its selected text includes “woman”;
+3:15 has no locative equivalent to שם in the inspected measuring unit.
+At 3:16 it reports who/what alternatives and B's omission of “who are you,”
+while retaining “daughter.” These are scoped edition reports, not manuscript
+unanimity, fresh readings of codex images or Göttingen apparatus inspection.
+Root checked chapter 3; the independent agent checked chapter 1. Root also
+verified the corresponding local Rahlfs surface texts in both chapters.
+
+[SIL/UBS on 3:16](https://tips.translation.bible/tip_verse/ruth-316/)
+argues for an inquiry about circumstances rather than identity. Its broader
+claim that the Septuagint omits the question needs qualification by the
+inspected apparatus: that is not all Greek witnesses. Its Syriac explanatory
+answer is an attributed report, not newly collated Syriac. Interpreting מי as
+a status question and selecting the attested alternative מה are separate acts.
+
+### Decisions and strongest contrary explanations
+
+| Unit | Working decision | Discriminating argument and limitation |
+|---|---|---|
+| 1:2 ויהיו / וישבו | Prefer current ויהיו; moderate confidence in priority | Greek 1:2 ἦσαν, 1:4 κατῴκησαν, 1:7 ἦν tracks Hebrew היה / ישב / היה. The exact וישבו שם nearby in 1:4 supplies a concrete assimilation model for 4Q104. Conversely, Greek copular wording can describe residence, and Hebrew stylistic variation could produce the shorter/copular form. |
+| 1:12 added שנית | Retain shorter provisionally; lower confidence | 4Q105 places uncertain שני֯ת֯ after ילדתי and before supplied בנים: potential “bore sons again,” not “married again.” Previous motherhood motivates clarification. Conversely, original emphasis could be dropped as redundant. Greek also does not separately represent לכן, first גם or הלילה here, so its missing adverb is weak evidence of a Hebrew omission. |
+| 3:14 האשה present/absent | Retain subject noun provisionally; priority unresolved | A skip between repeated initial ה in האשה הגרן could explain the 2Q17 short form; explanatory subject insertion could explain the longer form. Greek's noun does not by itself establish the entire Hebrew phrase or a single direction of change. |
+| 3:15 שם after וימד | Retain no locative provisionally; lower confidence | Local clarification can explain added “there”; omission of an original redundant locative remains plausible. The published 2Q17 word is evidence, not a restoration to disregard. This does not reopen the separate arrival-subject question. |
+| 3:16 מי / מה | Retain מי provisionally; priority unresolved | “Who are you?” repeats the actual מי את question in 3:9. That could be intentional narrative repetition or scribal assimilation. What could clarify an unusual status question, but could also be earlier. Greek variation cannot simply be converted into independent Hebrew spellings. |
+
+4Q105's verb at 1:2 and 4Q104's corresponding birth clause at 1:12 are supplied,
+not opposing early Hebrew votes. Physical antiquity makes the alternative DSS
+readings important but does not resolve these local transmission explanations.
+Removing the modest chronological preference strengthens the 1:2 retention;
+it does not reverse the other cautious dispositions or prove them original.
+
+The independent `/root/ruth_opening_adjudication` read the method, chapter-1
+Hebrew/Greek controls and published fragment/apparatus units. It supplied the
+local verb discriminator and the exact “again” position. Its chapter-3 objection
+check used root's supplied observations, not a second external collation.
+No judge-until-agreement loop, new image experiment or failed acquisition.
+
+### Applied 3:16 disclosure, not a new source selection
+
+The footnote now distinguishes published מה from the current מי, keeps the
+existing interpretive “How did it go?” alternative, and qualifies Greek
+variation. Its marker moves from the arrival clause to the question. The
+connected rationale records the possible 3:9 echo without treating it as proof.
+The reviewer approved the note/anchor scope and corrected an overbroad
+“omission of the question” to omission of “who are you”: daughter remains in B.
+Root retained the existing interpretive alternative in the final note.
+Hebrew and marker-free English are unchanged. Historical reviews remain
+verbatim; live status is draft/needs-review, not full-verse reapproval.
+
+Checkpoint `2bd158aca4`; target `translation/ot/ruth/003/016.yaml`:
+
+- Before SHA256: `26cc1708457e17f7a7dc9b5edd8aa27acb9dfb6d91dca0a7b52afb3e2e8567b0`.
+- Applied SHA256: `cdbc50a41ea0167245b84d79980464c111fbbf075f8331af6c65dd2934113024`.
+- Full Ruth export before: `8204c6150cece2a641010f79ecbdd63b5e73f3387a9f8b443d86ad49ba78f3a7`.
+- Full Ruth export after: `efc4002aa34485e28f5d56c090dc39adfbfb186752412e1976e555f277c5be80`.
+
+Hashes use the prior receipt's compact sorted Unicode JSON convention. Executed
+checks: schema, exact record delta, unchanged source/plain English, historical
+review equality, corrected marker, all four chapters/85 source-export verse
+identifiers, sole target marker/note-text/note-reason export changes, eight
+reader-footnote tests and diff check. No new validator or frozen receipt repin.
+No deployment or exhaustive Ruth-source claim.
+
+### Stop / reopen
+
+The five candidates now have decisions and contrary explanations. Reopen for
+an identified manuscript/hand reading or critical-apparatus argument capable of
+changing the respective copying/translation explanation, not just another
+endorsement. A spelling-only pass or another model vote is not that condition.
+Proceed to remaining source coverage; this does not close Ruth's wider Greek,
+Masoretic, versional or quotation corpus.
