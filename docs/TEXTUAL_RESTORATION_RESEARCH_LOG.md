@@ -4213,6 +4213,36 @@ checks. No new infrastructure, acquisition failure, image work or deployment.
 The five source leads now have explicit stopping/reopening conditions. Full
 Ruth and broader OT/NT comparison remain incomplete.
 
+### 2026-09-06 — Preserve completed Lamentations screen after efficiency audit
+
+The preceding efficiency audit verified recent results and stopped further
+expansion, but did not advance the textual comparison itself: conservatively
+classified as no progress toward corpus completion. This pass rechecked the
+current repository and preserved previously completed, uncommitted research
+rather than repeating acquisition. The [report](LAMENTATIONS_DSS_COMPARISON_2026-09-06.md)
+and [receipt](../sources/textual_restoration/comparisons/lamentations_dss_screen.v1.json)
+record four pinned QDR records, 103 physical line records and 62 tagged anchors.
+Root's 4Q111 work and one agent's other-three-record screen were complementary,
+not independent replication. No additional agent or judge loop was launched.
+
+The consequential result is a linked literary-form comparison in 4Q111 and
+specific 5Q6 candidates; no historical-priority or restoration claim follows.
+Local Greek controls expose an adjacent-row boundary that must not be called
+an omission. Reference-only diffing also misses a cross-verse short junction.
+Published supply, uncertain brackets and unassigned traces remain distinguished
+from preserved readings. The article abstract/bibliography, not its PDF body
+or cited DJD edition, were consulted. No acquisition was retried this pass.
+
+Input hashes and the 154-record canonical manifest were revalidated against
+the earlier screen. No canonical source, English, note, application approval
+or reader deployment changed. JSON, both input pins, all line/unit/reference
+and untagged inventories, 103/939/62 totals, the unchanged canonical manifest,
+Greek adjacent-row anchors, report local links and `git diff --check` passed.
+These checks establish record consistency, not historical priority. The
+unrelated untracked Geniza file remains untouched.
+Next work requires evidence addressing a named source-choice question, not
+more scaffolding or repetition of this screen.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

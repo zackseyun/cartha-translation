@@ -158,6 +158,16 @@ holds; the 3:16 disclosure is applied without changing Hebrew or main English.
 Those five leads now have reopening conditions, not an automatic repeat queue.
 This is bounded source comparison, not complete Ruth collation.
 
+The [Lamentations DSS screen](LAMENTATIONS_DSS_COMPARISON_2026-09-06.md)
+now records all 103 published line records in four pinned scroll records.
+4Q111's voice, short junction and order require linked-form adjudication,
+not word-by-word adoption; 5Q6 adds specific lexical/grammatical candidates.
+Local Greek controls are not an apparatus or independent manuscript census.
+Keep POB unchanged pending discriminating evidence. Next justified work is a
+targeted published-argument comparison, not rescreening these records or
+restarting image calibration. Supplied 5Q7 wording and a Greek row-boundary
+mismatch must not become false manuscript variants.
+
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
 all 66 canonical books, WLC written/read variants, and the official 27-book
 SBLGNT edition apparatus. The [48-case shortlist](TEXTUAL_VARIANT_CASEBOOK.md)
