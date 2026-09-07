@@ -3982,6 +3982,36 @@ map comparison. The receipt records the final result and hashes, not an
 unqualified first-attempt pass. No image work, apparatus acquisition loop,
 new validation framework or reader deployment was undertaken.
 
+### 2026-09-06 — Goliath: directly checked Greek four/five/six apparatus
+
+The preceding Saul disclosure was completed progress. Returned to an open
+source-selection question instead of another calibration run. Used the PDF
+skill to inspect the already-downloaded Cambridge Samuel edition, printed55 /
+PDF71, its Samuel prefacev and the general 1906 conventionsi–ii. Extraction
+missed Greek search strings; bounded page-header inspection located the target,
+then the complete page was rendered and read at original resolution. Private
+PDF hash matches the recorded source; no new PDF or manuscript was acquired.
+
+The [Samuel supplement](SAMUEL_SOURCE_COMPARISON_PASS_1.md#greek-numeral-apparatus-directly-checked--2026-09-06)
+records the decisive new evidence and limits: B-based main text four, explicit
+N five and A six in the apparatus, plus a separate bottom attribution. This
+resolves the earlier conflicting Alexandrinus summaries at edition-report
+level and advances the formerly uncollated five lead. It does not resolve
+earliest priority. The primary Qumran URL failed; earlier Hebrew evidence was
+reused without claiming a fresh consultation. NET's actual note was read but
+its height-plausibility argument was not used to decide the source.
+
+One independent apparatus check confirmed the finding, then approved the exact
+connected note correction in a single scoped follow-up. Changed the Greek
+attribution to “some Greek witnesses” and removed the outdated universal
+image-reading prerequisite; no source promotion was authorized. Preserved
+historical cross-check, reset active review state, and left Hebrew/main English
+and other rationales unchanged. Schema, exact-record and full source-mapped
+31-chapter/811-verse export comparisons passed with only note b changed; eight
+footnote tests and diff-check passed. The
+[receipt](../sources/textual_restoration/applications/goliath17_4_apparatus_disclosure.v1.json)
+pins the evidence and application. No corpus publication or deployment occurred.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
