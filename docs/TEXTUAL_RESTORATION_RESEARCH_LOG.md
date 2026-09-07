@@ -3939,6 +3939,30 @@ framework, provider run, repeat judge loop or deployment occurred. Source choice
 still requires the specific witness/hand and versional evidence identified in
 the existing report, not further copies of the same published argument.
 
+### 2026-09-06 — Mark 1:41 direct-apparatus attempt; no new reading
+
+The preceding Proverbs application was completed progress. Selected the
+existing NT pilot's consequential anger/compassion question instead of more
+image calibration. Read its current SBLGNT-based verse and prior published-report
+review. The official INTF directory links Mark Phase 3.5; direct application
+metadata confirmed public read access. Web retrieval of that application timed
+out, while direct HTTP and browser access loaded its shell. The NTVMR ECM page
+also supplied navigation but no usable apparatus in the inspected browser state.
+
+Read the public app configuration and bounded code excerpts to identify its
+read-only lookup route. Requests to `api/mark/ph35/passage.json/0` with
+`siglum=Mc&chapter=1&verse=41&word=4`, then the same with `button=Go`, both
+returned HTTP 500. No successful navigator response established those parameter
+values; the failure is not proof of a service outage or absent evidence.
+Stopped without further endpoint probing. No manuscript readings, stemma,
+apparatus support counts or ECM preference were obtained, so source selection,
+confidence and canonical text remain unchanged. The
+[pilot update](NT_PILOT_ADJUDICATION.md#direct-ecm-access-check--2026-09-06)
+records this precise limitation and no-repeat condition. No inference run,
+subagent, PDF/image acquisition or new comparison infrastructure was used.
+Only these two documentation files changed; diff-check is the relevant local
+check, not a claim to have validated a new textual result.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

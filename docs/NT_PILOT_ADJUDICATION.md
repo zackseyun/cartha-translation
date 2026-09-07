@@ -43,6 +43,25 @@ Still unresolved:
 - Inspect exact manuscript regions and correction layers before declaring an image-verified result.
 - Compare ECM evidence directly and evaluate the competing internal arguments, including the cited Williams and Johnson studies.
 
+### Direct ECM access check — 2026-09-06
+
+The [INTF database directory](https://www.uni-muenster.de/INTF/datenbanken/index.html)
+links [Mark Phase 3.5](https://ntg.uni-muenster.de/mark/ph35). Its public
+[application metadata](https://ntg.uni-muenster.de/api/mark/ph35/application.json)
+returned `name: Mark Phase 3.5` and `read_access: public`. This identifies the
+comparison application, not a passage reading or an ECM publication revision.
+The NTVMR ECM page and the Mark application did not render a usable apparatus
+in the inspected browser state. Direct passage lookup attempts returned HTTP
+500; the cause, including possible parameter mismatch, was not established.
+No Mark 1:41 witness list, correction layer, local stemma or editorial decision
+was retrieved. Do not cite this access check as consulted ECM evidence for
+either reading or as confirmation of the provisional preference above.
+
+The bounded attempt stops here. Do not repeat these failed lookups without a
+working passage locator or documented parameter correction. Existing published
+arguments remain available for further adjudication; the current POB source
+and English and the version-1 decision dataset are unchanged.
+
 Not used to force a result:
 - SBLGNT/WH/NA/RP edition agreement is not manuscript corroboration.
 - Combined commentary language is not treated as an exact two-word reading of Mark.
