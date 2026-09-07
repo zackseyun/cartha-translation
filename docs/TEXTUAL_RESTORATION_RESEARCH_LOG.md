@@ -4379,6 +4379,18 @@ drift. No manuscript restoration claim, fresh acquisition, image generation,
 canonical punctuation rewrite or deployment. Psalms' source-context/heading
 mapping remains a separate limitation, not a license to delete repeated context.
 
+### 2026-09-07 — Judges 18:30 source/English divergence remains unresolved
+
+Checked the name-choice issue exposed by the parser repair. NET's editorial
+note supports Moses; a 2025 primary research abstract challenges that consensus,
+but its full argument was inaccessible. No historical-priority decision or Hebrew
+emendation follows. Corrected the misleading “Hebrew: Moses” reader note and
+added explicit unresolved source/English readings while preserving both texts.
+The [bounded report](JUDGES_18_30_SOURCE_SELECTION_2026-09-07.md) distinguishes
+actually inspected evidence from inaccessible pages and unconsulted manuscript
+claims, with a concrete reopening gate. No extra agent, paid access, image work,
+repeated failed acquisition, source replacement or deployment.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
