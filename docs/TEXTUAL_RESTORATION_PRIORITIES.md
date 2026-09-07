@@ -127,9 +127,12 @@ It compares published readings; it does not claim new image restoration.
 The [Exodus 1:5 count adjudication](EXODUS_1_5_COUNT_ADJUDICATION_2026-09-06.md)
 now tests opposing genealogical histories and actual Greek clause-order
 evidence. Priority remains unresolved; seventy-five is a serious candidate,
-not confined to omission/preposition of the Joseph clause. Next consult the
-specific DJD XII discussions identified there, not another general argument
-or cosmetic note correction. Source and English remain unchanged.
+not confined to omission/preposition of the Joseph clause. Its bounded follow-up
+has now consulted the DJD English discussions and relevant thesis pages and
+checked a local Greek/Hebrew numeral-order control. **Park the case** unless
+identified new evidence can discriminate the histories or test a decisive
+locus-specific reconstruction. Do not repeat the now-completed DJD argument
+acquisition or make a cosmetic note correction. Source and English remain unchanged.
 
 The [Exodus 12:40 adjudication](EXODUS_12_40_SOURCE_ADJUDICATION_2026-09-06.md)
 now provisionally retains the base with low confidence in priority, after

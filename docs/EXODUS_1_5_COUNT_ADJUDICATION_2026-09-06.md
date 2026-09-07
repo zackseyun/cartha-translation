@@ -109,7 +109,8 @@ list related to Numbers 26. He also proposes a marginal origin for the Joseph
 clause. Distinct numeral orders and clause locations make these possibilities
 worth testing but do not establish independent additions or original omission.
 All three authors' relevant arguments were actually read, not inferred from
-search snippets. Their cited underlying monographs/DJD discussions were not.
+search snippets. Their cited underlying monographs/DJD discussions were not
+read at that checkpoint; the bounded follow-up below supersedes the DJD gap.
 
 The independent agent `/root/exodus_count_context` audited local context and
 then read these three essays. It relied on root's printed-apparatus observations;
@@ -124,7 +125,7 @@ Here relationships and direction of change remain too uncertain to treat the
 comparison as a settled tie. Without that chronological tilt the result is
 still unresolved; with it, no promotion is justified in this pass.
 
-## Bounded next step and verification
+## Original next step and verification (superseded below)
 
 Consult the actual opposing DJD XII discussions identified by Tov: Davila p. 19
 and Cross p. 85, with their transcription/material context. Test whether they
@@ -145,3 +146,70 @@ integrity and unchanged canonical state only. No image calibration, ImageGen,
 new infrastructure, canonical-note rewrite or deployment was performed. The
 next source-selection step is the named publication comparison, not repeating
 this completed general-argument pass. The broader OT/NT goal remains open.
+
+## DJD follow-up and stopping decision — 2026-09-06
+
+**Park this case: priority remains unresolved.** The named DJD arguments have
+now been consulted; their previous unread status is no longer a reason to
+continue acquisition. No source, English or note change follows.
+
+### Sources actually consulted
+
+[DJD XII public text rendering](https://www.scribd.com/document/929201148/Qumran-Cave-4-VII-Genesis-to-Numbers-Discoveries-in-the-Eugene-Ulrich-Frank-Moore-Cross-James-R-Davila-Jastram-WeLib-org),
+Davila pp. 18–19 and Cross pp. 83–86: both favor seventy, opposing the
+seventy-five proposal rather than each other. Davila connects expansion with
+genealogy and different numeral orders. Cross's recalculation history is
+conditional; his wider Greek-affiliation argument does not establish direction.
+He distinguishes preserved variants from spatial reconstructions: the shortened
+count introduction and omission of Joseph before it depend on reconstruction.
+Davila reports lost fragment 18 and older photograph PAM 43.010; this does not
+identify the numeral-bearing leather by itself. Cross's target is headed
+fragment 1, followed by fragment 2 at Exodus 1:16–21. These remain source-local
+locators, not a resolved physical crosswalk. This was English OCR consultation,
+not DJD page-image inspection; corrupted Hebrew and sigla support no new glyph claims.
+
+[Longacre's institutional doctoral thesis](https://etheses.bham.ac.uk/5780/1/Longacre15PhD.pdf),
+printed pp. 107–110, 183–184, 245 (PDF 122–125, 198–199, 260), was visually
+inspected, not read in full. SHA256:
+`5249bc05ff4f622a469dad4f6d2a71e96776af51936447d1e1cb55dd0b0a5dff`.
+Its revised column estimates for 4Q1 and 4Q13 are broader material arguments,
+not new surviving letters at the numeral. It assigns 4Q11 fragment 39 to
+Exodus 1:1–5 more firmly than DJD; that still does not make a supplied count
+preserved. Its discussion reports disputed classifications of 4Q13, so Cross's
+Greek affiliation is not a settled family assignment. Table 4.15 visibly gives
+4Q1 as `[שבעים] וחמש`; extraction dropped the five, demonstrating why the
+table's text and supply marks needed visual checking. Page 245's footnote
+identifies a Greek/Hebrew numeral-order control, tested separately below.
+The PDF remains private research material, not redistributed in Git.
+
+### New local control and its limits
+
+The already-pinned Rahlfs surface-text file (Exodus hash above) has
+`ἑβδομήκοντα πέντε` in both `Exod 39:2` and `Exod 39:5`.
+The corresponding WLC source fields in
+[Exodus 38:25](../translation/ot/exodus/038/025.yaml) and
+[38:28](../translation/ot/exodus/038/028.yaml) instead put five before seventy.
+These are aligned silver-accounting clauses, not matching modern verse numbers.
+Only surface text was used, not generated morphological confidence labels.
+
+Inference: Greek order cannot mechanically establish the Hebrew Vorlage's
+order. This weakens an inference from Greek agreement to a particular Hebrew
+numeral sequence. It does not explain away the different orders in the direct
+Hebrew witnesses or decide whether seventy or seventy-five came first. These
+are edition controls, not newly inspected manuscript hands.
+
+One independent agent, `/root/djd_exodus_arguments`, checked the English DJD
+arguments and likewise retained unresolved priority. It did not inspect DJD
+images or independently read the thesis. No repeated review or consensus vote.
+
+### Reopening condition
+
+Reopen only for an identified source that can discriminate the remaining
+histories or materially test a locus-specific reconstruction: for example,
+preserved wording or a documented spatial constraint excluding an alternative.
+A newly accessible page, another scholarly preference, unresolved fragment
+numbering alone, or another model opinion is insufficient without that link.
+Broader column-height revisions alone do not invalidate local line-width claims.
+Until then, retain seventy and the following Joseph clause provisionally and
+move research to other source-coverage gaps. No image calibration or new
+validation infrastructure is warranted by this result.

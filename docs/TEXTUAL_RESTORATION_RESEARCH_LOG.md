@@ -4109,6 +4109,32 @@ local PDFs were reused; no restoration experiment or new validation code.
 Checks cover baseline preservation, links and diff integrity; no export or
 whole-corpus test is claimed for this documentation-only pass. Not deployed.
 
+### 2026-09-06 — Close the Exodus count follow-up; enforce the efficiency stop
+
+The preceding user-requested efficiency check was progress in choosing the next
+action: it verified that no other agent was running and identified repeated
+Exodus reasoning as diminishing-return work. It made no repository changes.
+This pass preserves the previously obtained DJD/thesis findings in the
+[existing report](EXODUS_1_5_COUNT_ADJUDICATION_2026-09-06.md#djd-follow-up-and-stopping-decision--2026-09-06)
+and replaces the obsolete unread-DJD next step in the priority queue.
+The report distinguishes English DJD OCR, visually inspected thesis pages and
+the single independent agent's narrower review. No fresh agent was launched.
+
+New local check: Greek Exod 39:2,5 and WLC Exodus 38:25,28 reverse the seventy/five
+order, limiting mechanical retroversion without settling Exodus 1:5 priority.
+The report records the thesis table-extraction omission corrected by visual
+inspection. No new acquisition, restoration claim, canonical edit or infrastructure.
+The numeral and Joseph questions remain unresolved and are parked behind a
+discriminating-evidence condition, not another opinion-gathering cycle.
+
+Verification: existing Greek and thesis SHA256 values and the unchanged Exodus
+1:5 baseline were checked. Local links and Git diff checks cover documentation
+integrity only; no corpus export, exhaustive collation or deployment is claimed.
+The existing coverage audit still distinguishes all-book screening from actual
+passage collation; broader OT/NT work remains unfinished. Next selection must
+use an underexamined source/reading with a consequential test, not reopen this
+case simply because its scholarly disagreement persists.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
