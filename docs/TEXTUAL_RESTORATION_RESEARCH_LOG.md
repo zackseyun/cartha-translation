@@ -3510,6 +3510,73 @@ schema decision. This pass does not repin old reviews or claim the note-only
 transaction can already apply Isaiah. Next implement the explicitly reviewed
 source-changing successor while preserving the prior completed-note checks.
 
+### 2026-09-06 — Efficiency reset and actual Isaiah 53:11 application
+
+The user asked whether this work was proportionate to its cost. A read-only
+audit found valuable source decisions and real defects caught by review, but
+also diminishing returns from successive validation layers while Isaiah was
+still unapplied. The goal tracker reported approximately 18.37 million cumulative
+tokens; that is not a billing figure. This pass therefore finishes the existing
+case without new manuscript research or another general framework.
+
+Working rule going forward: prioritize comparisons that can change a source
+reading, English wording or explanatory note; reuse the existing source and
+application contracts. Use one independent review per bounded deliverable and
+repeat it only for concrete repairs. Record concise decisions and link evidence;
+do not duplicate prior dossiers or count infrastructure as textual progress.
+The previous status-only exchange supplied evidence for this change of course,
+not a new textual result. ImageGen remains inadmissible as manuscript evidence.
+
+Applied the exact [integrated Isaiah candidate](../sources/textual_restoration/applications/isaiah53_11_full_record.v1.yaml)
+to [the canonical verse](../translation/ot/isaiah/053/011.yaml). English now reads
+"he will see light"; the Hebrew composite adds אור to the declared retained base.
+The shorter Masoretic alternative, partial third-scroll support, Greek syntax
+difference and uncertainty remain disclosed. No fresh parchment inspection,
+lexicon consultation or new witness claim was made in this implementation pass.
+Earlier source-priority and full-record editorial approval remain provisional.
+
+The [source-changing verifier](../tools/textual_restoration/verify_critical_successor.py)
+checks all 23,264 current OT YAML files against checkpoint
+`783e61ec70c5a152468f5cbe619656e0857182d4`, accepting only the whole baseline
+or the exact reviewed replacement. It validates the trusted source/English
+integration and real ISA, JOB and 2SA exports. Original Job/Samuel packages and
+all 83 earlier-note protected files stay fixed. Old note-only tests were migrated
+to an explicit historical replay: the migration agent ran all 19 original tests,
+zero skips/expected failures; both wrappers passed in 56.087 seconds. That run
+was reused, not repeated. Current source-changing tests are separate.
+
+Independent `/root/isaiah_application_review` passed the bounded application,
+not publication. It inspected the exact plan/candidate, validation chain and
+historical migration, and independently checked the actual baseline and prior
+notes. Twenty-six focused tests passed in 33.772 seconds; the added receipt
+regression passed separately in 0.002 seconds. The reviewer inspected that
+test-only addition and reaffirmed its verdict. No general re-review was needed.
+
+Actual [preflight](../sources/textual_restoration/applications/isaiah53_11_successor_preflight.v1.json)
+was saved before the canonical edit; the
+[application receipt](../sources/textual_restoration/applications/isaiah53_11_successor_application.v1.json)
+records the successful real postflight. All other canonical OT files are byte-
+identical to the fixed baseline. Isaiah's actual export contains 66 chapters and
+1,291 verse records; its digest changed from
+`5fb07a70ce313fa729b77378f6dfce179e01038db5b066bf62a9bfa9d7b85cb1`
+to `c4fc4c4e7b33b7a744f2ff1f63c44aa1274f982bef25a416439e1915715a450b`.
+Job and Samuel exports remain unchanged. Application review SHA256:
+`66d8f2fee1d76aa2b0285659d347b1738af6bde8ef620f60c5961638bcb4d34d`;
+application receipt SHA256:
+`0b486ef4d070e9b9d24307ff3c1480b325cb50bb47addd0f154fa40a16543b96`.
+The [source README](../sources/ot/pob_critical/README.md) gives the verification command.
+The separate applied-receipt check then passed against the real current corpus,
+returning `application_record_verified: true`; `git diff --check` also passed.
+
+This supersedes earlier log statements that canonical Isaiah application was
+pending; it does not rewrite historical draft-stage flags or reviews. No reader
+asset synchronization or manual deployment was performed. The public repository
+and existing raw-YAML provenance route can expose this adoption, but deployed
+reader behavior is not verified. The next useful follow-through is to verify
+that reader presentation preserves these disclosures, then apply the same
+bounded process to the next substantive textual decision. Comprehensive OT/NT
+comparison and a recovered autograph are not claimed.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
