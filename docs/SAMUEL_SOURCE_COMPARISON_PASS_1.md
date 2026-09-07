@@ -68,7 +68,9 @@ English selection bundle.
 ## Next Samuel cases
 
 1. 1 Samuel 10:27–11:1 — the Nahash narrative material in 4Q51 and its relation
-   to Josephus and the shorter Masoretic transition.
+   to Josephus and the shorter Masoretic transition. The
+   [September 7 comparison](SAMUEL_NAHASH_COMPARISON_2026-09-07.md) now supplies
+   qualified reader disclosure; source priority remains open.
 2. 1 Samuel 14:41 — the shorter prayer and longer Urim–Thummim form, while
    keeping Greek retroversion distinct from surviving Hebrew ink.
 3. 1 Samuel 1:24 — three bulls versus a three-year-old bull.

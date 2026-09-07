@@ -4549,6 +4549,19 @@ as certification of current files. Future reconciliation must preserve that
 lineage rather than blindly repin. No new manuscript evidence, restoration,
 translation improvement, or deployment is claimed for this contract repair.
 
+### 2026-09-07 — Compared the Nahash transition and added reader disclosure
+
+After the source-registry repair, returned to a consequential Samuel queue
+item. Root checked the published 4Q51 transition and current WLC/Greek controls;
+one agent checked Josephus and then reviewed the proposed note and anchors.
+The [Nahash report](SAMUEL_NAHASH_COMPARISON_2026-09-07.md) distinguishes the
+long paragraph, month transition, supplied wording and partial narrative
+overlap. Added a qualified 11:1 note and moved two misplaced existing note
+anchors. Hebrew and marker-free English are unchanged; source priority remains
+open. Archived old review objects rather than reusing their scores. Both verse
+schemas, exact preservation checks, 811-verse export comparison and eight
+footnote tests pass. No new validator, image work, or deployment.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
