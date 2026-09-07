@@ -4562,6 +4562,19 @@ open. Archived old review objects rather than reusing their scores. Both verse
 schemas, exact preservation checks, 811-verse export comparison and eight
 footnote tests pass. No new validator, image work, or deployment.
 
+### 2026-09-07 — Tested competing Nahash literary explanations
+
+The preceding Nahash disclosure was progress. Read and visually inspected
+Seppänen's complete relevant argument pages, recorded in the
+[follow-up](SAMUEL_NAHASH_COMPARISON_2026-09-07.md#literary-priority-follow-up--2026-09-07).
+This yields a weak working preference for the shorter narrative, not blanket
+endorsement of the Masoretic transition or proof of expansion. The source's
+arguments, root's assessment, contrary explanation, actual page scope and
+remaining apparatus gates are separated. The PDF skill governed local page
+inspection after web screenshots failed. No agents, new tests, manuscript
+readings, or canonical edits were needed. Both verse hashes remain unchanged;
+Git whitespace checks pass. No deployment.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

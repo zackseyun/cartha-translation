@@ -74,3 +74,47 @@ retains all 811 verse keys and changes only 10:27 and 11:1; the new note is
 present in exported output. Source, marker-free English, existing notes and
 archived review objects passed exact-equality checks. Eight existing reader
 footnote tests and Git whitespace checks pass. No deployment occurred.
+
+## Literary-priority follow-up — 2026-09-07
+
+Read Christian Seppänen, *The Hebrew Text of Samuel* (Helsinki dissertation,
+2018), §§4.2–4.5, printed pp. 160–168 / PDF pp. 166–174, including complete
+pages, tables and footnotes. The
+[institutional PDF](https://helda.helsinki.fi/server/api/core/bitstreams/6e381d49-3bc5-4e67-a8d2-b2afa567a1a2/content)
+was downloaded for private consultation and rendered locally after web
+screenshots failed; SHA256
+`9d96ad2af8dfc4c6600cc9f77bb7c079adb64b52338abf59430581346e21ce36`.
+Earlier glyph analysis in §4.1 was not reviewed in full. No fresh ink reading
+or PDF redistribution is claimed.
+
+The author weighs the royal title, narrative coherence and Josephus for the
+longer text against explanatory expansion. The proposed eye-skip requires a
+duplicated month phrase unattested in the compared texts. He favors expansion,
+discussing unusual verbal sequence, topic-first syntax and the tension with
+12:12. His language discussion allows northern usage, not only lateness. He
+separately favors the month transition and interprets the superscript as a
+copyist's repair. These are published arguments, not independently verified
+scribal history. Cross, Ulrich and Rofé are discussed through this treatment;
+their cited works were not thereby directly consulted.
+
+**Root assessment:** weak working preference for the shorter narrative, with
+historical priority still unresolved. Contextual explanation is a credible
+reason for expansion; in contrast, the specific deletion mechanism needs an
+additional hypothetical textual state. However, narrative coherence can also
+reflect preservation, and an older source could retain distinctive syntax.
+Absence of an established deletion mechanism does not prove expansion.
+
+Checked POB/WLC 10:24 and 12:12 directly: the public acclamation precedes the
+Jabesh episode, while the later speech relates the demand for a king to Nahash.
+That tension can motivate a supplement or preserve an earlier event; it does
+not independently decide the issue. The early Hebrew witness keeps the longer
+form a serious alternative but does not override these local uncertainties.
+Removing chronological preference would not change this weak lean.
+
+Do not turn this into blanket MT priority: the month/silence variant remains
+separate. No new full-verse English or critical-Hebrew candidate was adopted.
+The just-added reader note remains accurate and unchanged, as do both recorded
+verse hashes. Further source adjudication requires the named DJD reading notes
+and Greek transition apparatus, not another general Nahash search or model
+agreement round. This completes the present literary-argument check; no
+independent adjudication or canonical change occurred in this follow-up.
