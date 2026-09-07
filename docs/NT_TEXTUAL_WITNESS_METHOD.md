@@ -67,6 +67,12 @@ transmission, not an automatic count of manuscripts or proof of an autograph.
 - Source-text selection and translation ambiguity are separate. For example,
   Acts 20:28's God/Lord wording is not the same question as how to understand
   the following blood/own construction.
+- Written spelling and intended grammatical mood can also separate. The
+  [Romans 5:1 comparison](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md) records
+  omicron/omega interchange and competing interpretations. Keep the attested
+  letters, their regular morphological analysis, any proposed spelling variation
+  and contextual interpretation distinct. Do not silently normalize a witness
+  or let a fluent English rendering certify its earliest Greek spelling.
 - Do not select a variant to make the text more orthodox, less supernatural,
   more familiar, or more dramatic. Record arguments on both sides.
 
@@ -89,6 +95,12 @@ compassion, while retaining anger and its strongest argument. It is not an
 image-verified or cross-model-reviewed result, and POB's wording is unchanged.
 The other examples remain queued; no result is decided by which printed
 edition has more supporters.
+
+The [Romans 5:1 comparison](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md) now
+adds actually consulted THGNT manuscript/hand reports and opposing scholarly
+arguments. It retains indicative meaning provisionally while leaving earliest
+spelling unresolved; its qualified note and repaired anchors were applied.
+Neither it nor the initial Mark dossier constitutes full NT manuscript coverage.
 
 ## A deliberate completeness check: Revelation 13:18
 

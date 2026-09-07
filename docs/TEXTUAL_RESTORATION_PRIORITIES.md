@@ -64,6 +64,13 @@ outweigh age. The method is applied in the [three-passage report](HEBREW_PILOT_A
 
 ### Priority 0 — Resolve consequential differences using the existing system
 
+Immediate delivery gate after the Romans 5:1 closeout: the mobile exporter
+includes 430 Romans source IDs but excludes the three existing supplementary
+records at 16:25–27. Reconcile the supplementary-record publication policy,
+provenance/disclosure and export coverage before another low-impact note case.
+Do not treat this as a parser loss, invent missing source rows, or claim full
+Romans coverage. See the [diagnosis and validation](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#validation-and-export-limitation--2026-09-06).
+
 The registry, coverage map, comparison records and application pilots already
 exist. Do not rebuild them as prerequisites for each case. Choose one question
 whose answer could affect source selection, English meaning or necessary reader
@@ -178,6 +185,14 @@ supplied contexts exceed current published coverage and cannot support a
 the distinct WLC noun using a local Greek contrast and an explicit contrary
 explanation; it is parked. Other 4Q109 candidates have named evidence needs,
 not blanket source adoption. No canonical change or new image work followed.
+
+The NT [Romans 5:1 comparison](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md)
+consults a manuscript/hand apparatus rather than only counting modern editions.
+The 0220 reading remains qualified; spelling is not automatically intended mood.
+Indicative meaning is retained provisionally, with qualified disclosure and
+anchor repairs applied but no Greek or marker-free English change. Park the
+case under its named evidence conditions; do not repeat the old argument or
+infer an ECM result from speculation about a future edition.
 
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
 all 66 canonical books, WLC written/read variants, and the official 27-book

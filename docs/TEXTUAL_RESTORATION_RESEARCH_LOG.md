@@ -4289,6 +4289,50 @@ exact full-verse check, Greek noun anchors, report links and diff checks passed.
 The unrelated untracked Geniza file remains untouched. Do not reopen 7:2 or
 repair its incidental note anchor merely to prolong this comparison.
 
+### 2026-09-06 — Romans 5:1: manuscript reports, spelling/mood and disclosure
+
+Previous turn was progress: Ecclesiastes comparison was committed and pushed.
+This pass advanced an NT priority beyond edition comparison. The
+[report](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md) records the licensed THGNT
+apparatus with original/corrected hands and 0220 vid, Wallace's article, the
+Head/Williams/Holmes/Heide discussion, Hsieh's locator excerpt and institutional
+Wyman-fragment information. No manuscript pixels, complete ECM apparatus or
+new versional collation were obtained. Older publication and correction stories
+were not treated as observed history; a future-ECM prediction is not evidence.
+
+Root and one bounded agent read Romans 4:23–5:11. The agent independently
+assessed the contextual objection and then passed the exact scoped application.
+Two full-verse alternatives are recorded. Greek and marker-free English remain
+unchanged; qualified note a, repaired a/b anchors and connected rationale were
+applied, preserving b/c notes and historical review/revision objects. Current
+status is draft/needs-review, not inherited full approval. The NT method now
+explicitly separates attested spelling from regular morphology and intended mood.
+Validation results and an unresolved export limitation are recorded in the report. No new validator,
+PDF/image workflow, repeated acquisition, judge loop or deployment. The unrelated
+untracked Geniza file remains untouched; the source question is parked unless
+specified discriminating evidence appears.
+
+### 2026-09-06 — Efficiency check and bounded Romans closeout
+
+The user's quick efficiency check confirmed excessive cumulative expenditure
+relative to applied translation changes. The goal tracker reported approximately
+21 million tokens (not a dollar-cost measure); no subagents were doing additional
+research. Stop open-ended expansion and repeated unresolved-case debate; the
+existing proportional-documentation and bounded-review rules remain controlling.
+The preceding check changed the next action to closing the pending work rather
+than opening another comparison case.
+
+The full Romans ID check exposed 433 canonical records versus 430 exported
+verses. Read the parser, source iterator, exporter and supplementary drafting
+records; verified the vendored Romans file against the upstream MorphGNT file
+byte-for-byte. Its verse list ends at 16:24; the three supplementary doxology
+records are outside the export's source-driven list. This is an open coverage
+limitation, not a parser failure or a newly adjudicated textual omission.
+The scoped 5:1 preservation/export checks and eight footnote tests pass; no
+full-Romans coverage pass is claimed. The report records hashes and the next
+delivery gate. No new agent, restoration experiment, exporter change or
+deployment was used in this closeout. Keep the unrelated Geniza file untouched.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
