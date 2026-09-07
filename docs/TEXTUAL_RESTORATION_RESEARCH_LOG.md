@@ -4405,6 +4405,22 @@ performed. No new acquisition, agent, reconstruction or deployment; Judges 18:30
 remains parked. Source-context completeness does not certify English span or
 versification alignment, manuscript coverage or historical priority.
 
+### 2026-09-07 — Efficiency constraint and Lamentations 5:3 follow-up
+
+The preceding efficiency check supplied measured usage and changed the next
+action: defer Psalm 107 wording polish and bound subsequent source questions.
+Recorded that constraint in the priorities. Followed the existing Lamentations
+lead with current 5:1–7 context, 5Q6 column iv line 7 and van Rooy's published
+2012 discussion of 5:3. The [follow-up](LAMENTATIONS_DSS_COMPARISON_2026-09-06.md#lamentations-53-targeted-follow-up--2026-09-07)
+records the daughter-loss interpretation, expansion/simplification alternatives,
+source uncertainties, full-verse comparison and a precise reopening condition.
+Provisional retention, no canonical change or new manuscript-priority claim.
+Initial broad search results were unhelpful; a siglum-specific follow-up found
+the relevant discussion. Other search hits were not treated as consulted
+arguments. No paid acquisition, agent loop, new infrastructure or deployment.
+Checked the retained verse/hash and new JSON against the unchanged record,
+local links and Git whitespace; no runtime-test claim for documentation-only work.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

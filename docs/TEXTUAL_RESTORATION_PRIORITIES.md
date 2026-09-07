@@ -92,6 +92,15 @@ Do not rerun settled acquisition or build new validation infrastructure without
 a specific unresolved defect. Model agreement is neither a new witness nor a
 reason to raise historical confidence.
 
+Efficiency audit, 2026-09-07: the goal tracker reported about 21.3 million
+cumulative tokens and 30 hours of tracked execution, excessive for the demonstrated
+results. These are tracker totals, not a monetary invoice or measured human
+labor. Prioritize consequential source/meaning defects over marginal wording
+polish; Psalm 107 refrain normalization is deferred. Before each batch, name
+the question, evidence that could change the decision, and stopping point.
+End with the actual source/English effect, including a no-change result; do not
+expand a hold into recurring searches. Existing scope and promotion gates remain.
+
 Following the user's efficiency audit, image calibration is paused unless a
 specific translation-relevant question requires a new image reading. The
 unfinished Leningrad label check is retained, not a prerequisite for using

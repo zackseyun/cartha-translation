@@ -198,3 +198,53 @@ No new validator or deployment. SHA256 pins:
 
 Export hash serialization: UTF-8 JSON, sorted keys, compact separators,
 `ensure_ascii=False`. These checks verify application, not historical priority.
+
+## Lamentations 5:3 targeted follow-up — 2026-09-07
+
+Outcome: retain the current source provisionally; historical priority remains
+unresolved. Reconsulted the versioned 5Q6 transcription, fragment 1, column iv,
+line 7 and adjacent lines: `לא֯ ב֯נ֯ות ואלמנות` contrasts with WLC
+`כְּ/אַלְמָנוֹת`. Preserve the uncertainty dots and the preceding supply
+`[היינו אין]`. This is published-reading evidence, not newly read ink.
+
+New evidence: Herrie F. van Rooy, [“Klaagliedere by Qumran: ’n Tweede
+redaksie?” (2012)](https://hts.org.za/index.php/hts/rt/printerFriendly/1265/2541),
+DOI 10.4102/hts.v68i1.1265, section “Variante wat van die lesing van die
+Masoretiese Teks verskil,” paragraph on 5:3. His Afrikaans gloss interprets
+the mothers as daughterless and widows; he considers this probably a scribal
+expansion, citing Kotzé 2009:186–190. His discussion was read, not those cited
+pages. His HTML Hebrew image placeholders were not used as transcriptions;
+the Hebrew above comes from Qumran-Digital. No BHQ/DJD or full versional
+apparatus consultation is claimed.
+
+Our inference: expansion could develop the preceding fatherlessness into
+another family-loss description. Conversely, the longer form could be earlier
+and the shorter form a simplification of difficult wording. Neither history
+was observed. Antiquity favors taking the alternative seriously, not resolving
+its uncertainty or automatically selecting it. Removing the chronological
+preference leaves the same hold. The earlier Greek selected-text control is
+not an independently collated manuscript or evidence of versional unanimity.
+
+Read POB Hebrew/English 5:1–7 and the complete 5:3 record. The difference changes
+meaning, not merely English style. The following is a source-selection comparison,
+not a comprehensive certification of every English choice:
+
+```json
+{
+  "source_distinction_checks": [{
+    "candidate_id": "lam53-daughterless-source-form",
+    "disposition": "retain_after_comparison",
+    "source_evidence": "WLC אִמֹּתֵי/נוּ כְּ/אַלְמָנוֹת; published 5Q6 אמו֯ת֯ינו לא֯ ב֯נ֯ות ואלמנות, with uncertain letters.",
+    "proposed_text": "We have become orphans[a], without a father; our mothers are like widows.",
+    "alternative_text": "We have become orphans[a], without a father; our mothers are without daughters and are widows.",
+    "rationale": "The alternative illustrates the reported scroll interpretation, not an approved diplomatic translation; its opening draws partly on supplied Hebrew. Retain the WLC-based sentence provisionally: it preserves the explicit comparison and paternal-loss parallel without introducing the disputed daughter-loss clause. Expansion plausibly explains the longer form, but simplification in the opposite direction remains possible. Unfamiliarity is not grounds for rejecting the scroll reading."
+  }]
+}
+```
+
+Stop/reopen: no repeated transcription retrieval or general search. Reopen for
+a locus-specific analysis testing syntax and transmission direction (including
+the cited pages), independent attestation of the daughter-loss clause, or a
+published correction to the uncertain letters. No canonical edit, new image
+work, validator, independent-review claim or deployment. Unchanged 5:3 SHA256:
+`9ad012d6e3832ef468fdf350be2429672ef2f43dac29eb710ad2f5f5cf467d56`.
