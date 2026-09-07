@@ -3577,6 +3577,28 @@ that reader presentation preserves these disclosures, then apply the same
 bounded process to the next substantive textual decision. Comprehensive OT/NT
 comparison and a recovered autograph are not claimed.
 
+#### Integration outcome: local application verified; remote publication withheld
+
+Implementation commit `b6c87caad0` was merged with the then-current remote's
+status-only update as `3779bf013912949e7cdf5868bb49ddc19343cc1a`.
+The push was rejected because remote main advanced concurrently to
+`d5a458706f9984276e7787e4a62d125bcd2f0b59`. A subsequent fetch and inspection
+found substantive changes to `DOCTRINE.md`, `METHODOLOGY.md`, drafting/review
+tools and a new source-distinction policy. That second update is not merged
+locally and this application has not been pushed.
+
+The new doctrine prioritizes source-transparent English comparisons and explicitly
+preserves approved John 21 agape-love/phileo-love distinctions. This pass does not
+reverse or adjudicate those unrelated changes. The Isaiah editorial review pins
+the earlier doctrine bytes, and the source validator checks that pin against the
+live file. Therefore the successful local receipts do not establish compatibility
+with the newly advanced remote. Do not silently repin the old review, weaken the
+check, or present this local result as published. Next reconcile the historical
+policy evidence and current policy in one bounded compatibility review before
+merging/pushing; no repeat manuscript research is needed. This is also concrete
+evidence that global live-document pins are imposing maintenance cost and should
+not be multiplied in future casework.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
