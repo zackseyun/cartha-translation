@@ -3271,6 +3271,245 @@ test framework, or publication work. Stop here; the next enabling decision is
 the existing shared critical-source representation/application gap, not another
 Isaiah attestation search or review loop.
 
+### 2026-09-06 — Shared Hebrew composition contract, not a promotion shortcut
+
+Previous turn: progress through the complete Isaiah candidate and independent
+English comparison. This continuation implements the base-plus-patch provenance
+portion of the critical-source integration gap. The production schema and
+application gap are **not closed** by this change.
+
+One [composition bundle](../sources/textual_restoration/applications/source_compositions.v1.json)
+now binds the existing Isaiah and Deuteronomy candidates to their exact canonical
+baseline bytes and evidence records. One
+[read-only verifier](../tools/textual_restoration/verify_source_composition.py)
+reconstructs both sources. The contract explicitly normalizes using Unicode NFD,
+removes combining marks and slash token separators, and retains consonants and
+punctuation. Patch offsets count Unicode code points in that normalized original
+base; ordered, nonoverlapping patches carry exact before/after text and evidence
+indices. No intermediate-string offset drift or unlisted source edit is allowed.
+This is a common representation for two existing cases, not another per-verse
+application executor. Candidates, old schemas and frozen receipts are unchanged.
+
+Pins establish which documents were consulted, not whether their claims are
+true. Matching the source proves composition only; it does not prove historical
+priority, legitimate rights, correct English, or independent editorial approval.
+The verifier accepts only unapproved Hebrew research candidates and cannot write
+canonical files or waive pending gates. It rejects composite-as-WLC labels and
+inherited current approval scores. Proposed readings remain proposed. Images
+cannot serve as the manifest's textual provenance records, but file type/hashing
+alone cannot establish that a textual document used legitimate evidence; that
+remains an editorial check. No generated image was used in this pass.
+
+Seven focused tests passed, including both real candidates, normalization,
+multi-patch coordinates, overlap/mismatch, missing evidence, pin drift, unsafe
+paths, symlinks, and repinned-but-unexplained candidate changes or approval flags.
+These checks do not replace the existing whole-record application requirements.
+
+The unchanged actual mobile exporter was also exercised across Isaiah with a
+single in-memory candidate overlay: candidate English and note bodies survive,
+and all other exported book content is unchanged. The full source object is
+absent from that payload; no deployed reader was inspected. Exporter SHA256:
+`4f77493c1818896d63f5df1e229225a3034559b059f8cd20038f4cd1df06b20c`.
+No exporter modification, bundle write, schema relaxation or canonical edit.
+
+Reproduce from the repository root:
+
+```bash
+.venv/bin/python tools/textual_restoration/verify_source_composition.py sources/textual_restoration/applications/source_compositions.v1.json
+.venv/bin/python -m unittest tests.test_source_composition
+```
+
+Independent `/root/source_composition_review` passed the bounded contract after
+running all seven tests and the CLI, with no substantive defects. Exact tool
+SHA256: `e35fbe38d0a0b33a6eb6ed7653ebb4f1a6e391f259093918cc69fa97291d4195`.
+The reviewer confirmed there is no canonical write path and did not claim
+production compatibility or evidence truth. System Python lacks PyYAML; the
+documented repository virtual environment works. No repeat review was needed.
+
+Stop after this shared validation step and its independent code review. The
+next integration must connect verified provenance and actual editorial review
+to the production source representation and reader disclosure; changing only
+an edition enum or treating this composition result as approval is insufficient.
+
+### 2026-09-06 — Isaiah editorial approval and existing source-page path
+
+Previous turn: progress through shared source composition verification. This
+pass closes a different question: whether the complete candidate is editorially
+adoptable, rather than whether a research report is accurate or its strings
+recompose. The independent agent `/root/isaiah_editorial_gate` approved the exact
+candidate for **provisional source selection and full-record editorial adoption**.
+The [review record](../sources/textual_restoration/applications/isaiah53_11_editorial_review.v1.json)
+preserves the actual decision, input pins, counter-explanation, unchanged-base
+scope and cautions. No new source search or manuscript reading was commissioned.
+Knowledge attachment and “the many” were judged nonblocking under the declared
+base analysis. No substantive new source/English prerequisite was identified.
+Technical application and publication approval remain false. The candidate's
+preparation flags are not rewritten; the external review is the later decision,
+not permission to treat every old pending flag as complete.
+
+Read-only inspection of `cartha.website` at
+`25bb34e1cd769dde85dbd72e23bb56cd60582add` found an existing source-record route,
+which narrows the earlier lightweight-export gap:
+
+- `BibleReader.jsx`, lines 1578–1590, 4971–4975 and 23029–23038: “Check
+  Provenance” opens `/peoples-open-bible/verse?ref=ISA.53.11` for this verse.
+- `bibleData.js`, `parsePobProvenanceRef`: source references resolve to canonical
+  verse YAML paths. The ordinary reader's separate POB footnote-stripping branch
+  remains present; this finding does not repair or deny that branch.
+- `verse/page.jsx`, lines 101–126 and 258–284: the route loads the canonical
+  YAML from the repository's main branch and its body displays source text,
+  edition and apparatus. It also renders footnotes and links the raw YAML.
+
+The actual `VerseProvenanceBody` was server-rendered with the unchanged candidate
+as props using installed Next SWC and ReactDOM. The whole JSX module was compiled
+as CommonJS (ECMAScript JSX parser, classic React transform); framework imports
+for navigation/theme/footer and the unused route-data import were stubbed, while
+the actual body, helpers and styles executed. This was not a full Next route,
+network fetch, browser interaction, visual-layout check or deployment. Results:
+Hebrew text, draft edition, every apparatus note, both footnote bodies and the
+raw-YAML link were present. The full `source.note` composition disclosure was
+absent. Thus absence from the mobile payload does **not** establish absence of
+an accessible source path; the existing page avoids needing a new provenance
+reader. It still needs deliberate composite-source disclosure and deployed-path
+verification before publication. No website or other repository was modified.
+
+Exact inspected website file SHA256 values:
+
+- `src/app/(main)/peoples-open-bible/verse/page.jsx`:
+  `6c57d7407f960e9c88c54e381420f5777536572c8913ad1c8f1a268c7b442c0e`.
+- `src/app/(main)/peoples-open-bible/bibleData.js`:
+  `9d97b47c95ce9a3c5b37010846229c4acbce731dd9490dc3dcb5606ebb957d97`.
+- `src/app/(main)/peoples-open-bible/BibleReader.jsx`:
+  `dceb26ab849cb30966b8539f3afb27dc5043e36922a1a950aa45678ccff18775`.
+
+The shell had no Node on PATH and local Babel packages were unavailable; the
+bundled Node executable and existing Next SWC worked without installing anything.
+Review input hashes and scope were checked against current files; the canonical
+Isaiah baseline remains unchanged. Stop at this editorial approval plus precise
+reader-gap finding, with production source/application integration still open.
+
+### 2026-09-06 — Display the existing source-composition disclosure
+
+Previous turn: progress through Isaiah editorial approval and the missing
+`source.note` display finding. Implemented that specific shared reader change
+in `cartha.website`, `src/app/(main)/peoples-open-bible/verse/page.jsx`: render
+nonempty string notes as labeled, escaped text below the Hebrew/source text.
+Exterior whitespace is trimmed; interior line breaks are retained. Missing,
+blank and nonstring notes create no empty disclosure. No script/HTML execution,
+new source claims, Scripture edits, footnote-filtering policy change or About
+integration is part of this patch.
+
+The new `test/pob-provenance-source-note.test.mjs` compiles the actual page with
+Next SWC and server-renders its actual body with React; it checks preservation
+of the source, apparatus and footnotes, record nonmutation, missing/malformed
+notes and HTML escaping. Together with the existing source-text and original-
+source-YAML tests, eight focused tests passed. The actual unchanged Isaiah
+candidate was separately supplied to that component: its source note, Hebrew,
+all apparatus notes and both footnote bodies now render. Framework route
+dependencies were stubbed; no full-route fetch or browser layout test is claimed.
+
+Independent `/root/source_note_ui_review` returned PASS after running the same
+eight tests and inspecting the bounded change. Page SHA256:
+`d9514dbefb47224ab8d8161b18c71325e0c1938d2d9f11d427da9cff17c348b7`;
+new test SHA256:
+`c4dde108e8257c565a854d89b4668d0963a160904648a82b9d185b59f0c976e0`.
+Website implementation commit `f043e3df` was merged with current remote main
+without target-file conflicts and pushed as `d07491b948d22e49cf4d1d5db37fb73be3f98fb0`.
+The eight tests passed again after integration and the reviewed page hash stayed
+identical. Unrelated upstream website/bundle changes were preserved, not authored
+or reviewed by this task.
+
+The website workflow documentation says main is picked up by a scheduled
+deployment. The user was informed before push; no deployment was manually
+triggered and no live release was verified. This closes the local component's
+missing-note behavior, not deployed disclosure or the source-schema/application
+requirements. The canonical Isaiah verse and its candidate remain unchanged.
+
+### 2026-09-06 — First strictly verified, provisionally reviewed Hebrew source record
+
+Previous turn: progress through the source-note renderer repair. This pass adds
+the source-record portion of production integration without loosening the
+historically pinned canonical verse schema or rewriting completed receipts.
+[Isaiah 53:11](../sources/ot/pob_critical/isaiah/053/011.json) is now the first
+record in a deliberately partial `sources/ot/pob_critical` corpus. It contains
+the exact editorially approved Hebrew and apparatus, explicitly labeled
+`POB-critical`, with a provisional composite-source disclosure. This is one
+reviewed source record, not all Isaiah, a canonical English change, a new
+manuscript discovery, or publication approval.
+
+The [strict source schema](../schemas/ot-reviewed-critical-source.schema.json)
+requires provenance rather than merely accepting a new edition string. The
+[read-only validator](../tools/textual_restoration/reviewed_critical_source.py)
+checks the actual editorial review, candidate, evidence and explicit composition.
+It reads the original canonical base from its pinned Git revision and verifies
+its exact bytes, preserving provenance after a future live-verse change. The
+source text and apparatus must equal the reviewed candidate; only source-stage
+labeling and the specified generic composition disclosure differ from the
+historical draft. Application/publication authority remain false.
+
+Independent `/root/reviewed_source_contract_judge` found a substantive first-pass
+defect: although approved text was protected, a replacement composition bundle
+could describe a whole-verse patch, cite the candidate itself, and be repinned
+inside the source record. Fixed this by requiring a separately trusted composition
+hash as well as the separately trusted editorial-review hash. A mutable source
+record can no longer select its own replacement provenance. The exact bypass
+is now a regression test; no editorial judgment was changed to make tests pass.
+
+The reviewer rechecked that repair and passed. Sixteen focused tests pass,
+including actual records, malformed source/provenance, text/apparatus drift,
+approval boundaries, replacement-plus-repin, multiple-patch coordinates, and
+use of the Git baseline rather than a live canonical-file pin. No broader
+corpus or deployed-reader claim follows. Final validator SHA256:
+`b15c6b416adf5e260ba035f38f64b34d96a1ee68720d4c8150805d1cd34d54d1`.
+Schema SHA256: `bf56e6e1d4d71bb8ec0600c5d4b8017ebef957ebd5532c09afe7bb79d822d1fc`.
+Source record SHA256: `f7014f607b0344d8a3b5723cd7edcc314029916dfeee4c341d9dd9b394f0f9e9`.
+
+The [corpus README](../sources/ot/pob_critical/README.md) gives the exact
+verification command and trust inputs. Existing research candidates and old
+schema/tests remain unchanged. Next integrate this verified source object with
+the full canonical verse and reviewed application mechanism; source-record
+acceptance alone does not finish that migration or synchronize reader editions.
+
+### 2026-09-06 — Full critical-verse schema and exact candidate integration
+
+Previous turn: progress through the first reviewed Hebrew source record.
+Added the [alternative full-verse schema](../schemas/ot-critical-verse.schema.json)
+and [in-memory integration](../tools/textual_restoration/critical_verse.py).
+All legacy non-source field contracts are reused through an explicit offline
+schema registry; the source uses the strict reviewed-source contract. The full
+record must also link its independently trusted source record. No permissive
+edition addition or modification of the frozen old schema was made.
+
+The approved candidate is copied in memory, replacing only its source with the
+reviewed source-stage representation and adding a provenance link. Every English
+phrase, footnote, rationale, draft history and current review flag is retained.
+The old restoration-draft block is explicitly historical preparation, not the
+current source-selection status. No additional full-candidate artifact is saved.
+Validation requires externally supplied source-record, review and composition
+hashes; equality to the approved integration is checked after schema validation.
+
+Independent `/root/critical_verse_integration_judge` found a real first-pass
+defect: Python dictionary equality allowed a historical false flag to become
+JSON number zero. Replaced it with type-sensitive canonical JSON comparison,
+rejecting nonfinite values. Added regression cases for preparation and archived
+review flags. The reviewer rechecked the specific repair and passed; all 24
+focused tests pass. Final integration-tool SHA256:
+`e30b17f3bce07a6617f98ea359c2872ece47113fb7a52338b33ef4595dd0d68b`.
+
+The full integrated record also passed the actual full-book Isaiah exporter
+with a one-record memory overlay: English and note bodies survive and all other
+exported book content is unchanged. The lightweight payload still omits the
+source object, whose existing provenance-page path was addressed separately.
+No canonical write, asset synchronization or deployed-reader claim was made.
+
+Read-only inspection of the frozen safeguards confirmed Isaiah 53:11 is not in
+the Samuel or three-note protected-file pins, but the old verse schema is pinned.
+The current successor verifier explicitly forbids source/main-English changes.
+That is the remaining application boundary, not a failed source or full-verse
+schema decision. This pass does not repin old reviews or claim the note-only
+transaction can already apply Isaiah. Next implement the explicitly reviewed
+source-changing successor while preserving the prior completed-note checks.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
