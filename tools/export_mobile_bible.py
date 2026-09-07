@@ -785,6 +785,7 @@ def reviewed_supplements(
             or record.get("textual_status") != "secondary_witness"
             or not isinstance(source, dict)
             or not str(source.get("edition") or "").strip()
+            or source.get("edition") == "unverified-supplementary-greek"
             or not str(source.get("text") or "").strip()
             or not text
             or not any(n.get("reason") in {"textual_critical", "textual_variant"} for n in notes)

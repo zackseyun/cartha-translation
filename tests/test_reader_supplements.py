@@ -1,4 +1,5 @@
 import copy
+import json
 from pathlib import Path
 import tempfile
 import unittest
@@ -46,6 +47,7 @@ class ReaderSupplementTests(unittest.TestCase):
         mutations = [
             ('id', 'ROM.16.26'), ('textual_status', 'primary'),
             ('source', {}), ('translation', {'text': ''}),
+            ('source', {'edition': 'unverified-supplementary-greek', 'text': 'Τῷ'}),
             ('translation', {'text': 'No visible marker', 'footnotes': original['translation']['footnotes']}),
             ('translation', {'text': 'Text[a]', 'footnotes': [
                 {'marker': 'a', 'text': 'Lexical gloss only.', 'reason': 'lexical'}]}),
@@ -92,6 +94,23 @@ class ReaderSupplementTests(unittest.TestCase):
             self.assertTrue(verse['footnotes'])
             self.assertIn('[a]', verse['text'])
             self.assertIn('14:', verse['footnotes'][0]['text'])
+
+    def test_attribution_audit_preserves_greek_and_blocks_unverified_sources(self):
+        root = Path(__file__).resolve().parents[1]
+        audit = json.loads((root / 'sources/textual_restoration/inventory/nt_supplement_attribution.v1.json').read_text())
+        self.assertEqual(len(audit['records']), 27)
+        self.assertEqual(len({r['id'] for r in audit['records']}), 27)
+        held = 0
+        for item in audit['records']:
+            record = yaml.safe_load((root / item['path']).read_text())
+            self.assertEqual(record['source']['text'], item['local_greek'])
+            self.assertIsNot(record.get('reader_supplement'), True)
+            if item['disposition'] == 'attribution_unverified_hold':
+                held += 1
+                self.assertEqual(record['source']['edition'], 'unverified-supplementary-greek')
+                self.assertEqual(record['source']['claimed_edition_before_audit'], item['claimed_edition'])
+                self.assertEqual(record['textual_restoration_review']['status'], 'needs_review')
+        self.assertEqual(held, 13)
 
 
 if __name__ == '__main__':

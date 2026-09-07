@@ -68,8 +68,11 @@ Romans export coverage is now 433/433 canonical IDs: three explicitly reviewed
 supplements disclose RP2005-era wording relocated from 14:24–26. No SBLGNT rows
 were invented. This does not approve the whole translation, cure missing legacy
 draft hashes, or establish original placement. The NT inventory still has 27
-excluded supplementary records requiring provenance/disclosure checks before
-opt-in. See the [delivery result](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#supplementary-doxology-delivery--2026-09-06).
+excluded supplementary records: the [batch audit](NT_SUPPLEMENT_ATTRIBUTION_AUDIT_2026-09-06.md)
+found 14 digital wording matches needing disclosure/context checks and 13
+unresolved attributions, now explicitly flagged. Do not insert individual
+verses from a linked passage or silently relabel mixed wording as RP/TR.
+See also the [Romans delivery result](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#supplementary-doxology-delivery--2026-09-06).
 
 The registry, coverage map, comparison records and application pilots already
 exist. Do not rebuild them as prerequisites for each case. Choose one question

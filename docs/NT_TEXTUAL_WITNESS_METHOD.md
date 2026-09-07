@@ -28,6 +28,11 @@ structural safeguards; the boolean records a scoped editorial inclusion decision
 not an automated provenance check, earliest-text judgment or whole-verse approval.
 Unreviewed supplementary records stay excluded. Check both base-edition and POB
 record coverage so a successful export cannot be mistaken for complete coverage.
+The [batch attribution audit](NT_SUPPLEMENT_ATTRIBUTION_AUDIT_2026-09-06.md)
+found 13 unresolved source labels among the 27 remaining supplements. Preserve
+their Greek with `unverified-supplementary-greek` attribution and the prior claim
+in an archival field; do not substitute an edition to obtain a passing check.
+The exporter rejects that unresolved label even with an accidental inclusion flag.
 The [Romans pilot](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#supplementary-doxology-delivery--2026-09-06)
 has 433/433 IDs with three disclosed supplements; its missing legacy generation
 hashes remain explicit schema debt, not reconstructed evidence.

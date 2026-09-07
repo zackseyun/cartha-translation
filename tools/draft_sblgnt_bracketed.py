@@ -57,6 +57,10 @@ SLUG_TO_DISPLAY = {
 }
 
 # The 30 verses, with Robinson-Pierpont 2005 Byzantine Greek readings.
+# Historical attribution claim, not a verified source registry: the 2026-09-06
+# audit found 13 unresolved attributions in the stored supplements. Consult
+# sources/textual_restoration/inventory/nt_supplement_attribution.v1.json before
+# reusing these entries; do not infer an edition from this legacy header.
 # Where multiple major Byzantine witnesses agree, RP2005 is preferred;
 # Stephanus 1550 TR is a fallback cited in the footnote when relevant.
 BRACKETED_VERSES: list[dict] = [

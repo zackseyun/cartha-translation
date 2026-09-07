@@ -4346,6 +4346,23 @@ no provenance values were invented. The 27 other source-absent NT records remain
 outside the opt-in gate. No manuscript-priority debate, source replacement,
 main-English rewrite, generated reader bundle or deployment occurred.
 
+### 2026-09-07 — Closeout of the September 6 supplementary attribution batch
+
+The preceding Romans pass made verified progress; this pass tested the remaining
+27 records together rather than opening 27 research cases. Compared seven pinned
+byztxt v2.0.3 CSV files, preserving URLs, hashes and primary rows in one
+[inventory](../sources/textual_restoration/inventory/nt_supplement_attribution.v1.json).
+Found 14 word-level matches and 13 unresolved attributions (including changed
+reference order and Greek wording, not merely punctuation). Changed only the
+13 active attribution labels and review status, preserved original labels and
+historical review objects, and blocked unresolved sources from supplementary
+export. Greek and English remain unchanged; no new reader inclusions or deployment.
+One independent check corroborated John 8:5 and the three absent references.
+The [report](NT_SUPPLEMENT_ATTRIBUTION_AUDIT_2026-09-06.md) records scope, contrary
+possibilities, linked-passage hazards, checks and exact reopening conditions.
+The old generation script is labeled as a historical attribution list, not a
+verified registry; its paid drafting workflow was not executed.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
