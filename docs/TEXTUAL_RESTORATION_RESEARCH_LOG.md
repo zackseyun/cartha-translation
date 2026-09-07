@@ -3888,6 +3888,29 @@ and the score against the actual response, passing the observation-only claim.
 All 32 focused tests, four-crop validation and diff-check passed. No repeat
 inference was needed to verify these counts.
 
+### 2026-09-06 — Sharper Leningrad image; control label withheld
+
+After the blurred-photo run produced no letters, acquired one sharper Leningrad
+Codex photograph through the public file linked in its Commons description.
+The original download matched the publisher's SHA-1; local SHA256, dimensions,
+provenance/rights qualifications and final crop are in the
+[control candidate](../sources/textual_restoration/controls/2026-09-06-leningrad-clear/README.md).
+The web image fetch timed out; the direct original download succeeded. No archive
+bulk download or new custodian-provenance certification occurred.
+
+Root inspected the page/crop, then checked the corresponding local WLC substring.
+The expected words were withheld from `leningrad_control_letters`, which reported
+a different tentative reading and ambiguity. Both readings remain recorded.
+This is not a manuscript variant, second-family consensus or a usable frozen
+glyph answer key. No additional vote was sought to turn the disagreement into
+a pass. The next step requires explicit glyph-label resolution, not assuming
+that a high-resolution file guarantees accurate model reading. No canonical
+source/English or earlier frozen evaluation inputs changed.
+
+Direct checks passed for source/crop hashes, source dimensions and exact pixel
+correspondence between the saved crop and its declared rectangle. Diff-check
+passed. These checks verify the image preparation, not the disputed label.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

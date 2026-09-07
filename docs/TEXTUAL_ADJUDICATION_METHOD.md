@@ -256,6 +256,13 @@ tokens were unreadable/gap placeholders. No character-accuracy result exists.
 The set is not held out and does not replace the varied,
 manuscript-disjoint evaluation required before broad acceptance.
 
+The [Leningrad clear-image candidate](../sources/textual_restoration/controls/2026-09-06-leningrad-clear/README.md)
+illustrates the next limit: sharper images alone do not certify reference labels.
+Root's reading agrees with local WLC, but the independent image-only label review
+disagreed. The answer key remains provisional, not a scored character control
+or evidence of a manuscript variant. Preserve this disagreement when resolving
+the glyphs; do not count contextual agreement as independent historical support.
+
 Published-text comparisons may proceed without freshly transcribing every
 image. Require image checks where the proposed claim depends on disputed marks,
 corrections, joins, or a fresh decipherment. Existing case-specific pending
