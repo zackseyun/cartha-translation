@@ -4062,6 +4062,30 @@ application; no claim that those repairs or corpus-wide collation are complete.
 Documentation checks cover baseline hash, local links and diff integrity only.
 No deployment. The full OT/NT source-comparison goal remains open.
 
+### 2026-09-06 — Apply the reviewed Exodus 12:40 disclosure
+
+Previous goal turn classified as progress: new Greek apparatus evidence and
+a reasoned source hold were committed. This pass finishes its concrete reader
+disclosure correction using the existing dossier, without new acquisition.
+The [application receipt](../sources/textual_restoration/applications/exodus12_40_disclosure.v1.json)
+pins baseline/applied verse bytes, research checkpoint, policy and exporter.
+It records actual independent scoped review, including confirmation of the
+exact written metadata, not a new historical witness or a blinded comparison.
+
+Canonical changes: qualified source note; separate Samaritan/Greek theological
+alternatives; provisional-retention rationale recognizing Samaritan Hebrew;
+relative-clause metadata accurately describing current English; old review
+objects archived verbatim with live draft/needs-review status. No Hebrew,
+main-English, anchor, other lexical-entry, ai_draft or revision-history change.
+The source-priority and full-verse rendering questions remain open.
+
+Actual checks passed: verse schema, exact record delta, complete before/after
+EXO export against every source identifier (40 chapters, 1,213 verses), sole
+export difference at the target note, eight reader-footnote tests, diff check.
+No validation infrastructure added or frozen comparison receipts repinned;
+known unrelated Isaiah fixture drift was not rerun. No new access failure or
+image experiment. No deployed-reader or exhaustive-corpus claim.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

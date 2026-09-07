@@ -127,8 +127,11 @@ It compares published readings; it does not claim new image restoration.
 The [Exodus 12:40 adjudication](EXODUS_12_40_SOURCE_ADJUDICATION_2026-09-06.md)
 now provisionally retains the base with low confidence in priority, after
 checking distinct Greek fathers positions and first-hand/corrected numerals.
-Do not repeat this apparatus acquisition. Its source reopening conditions and
-separate, actionable note/metadata issues are recorded in that report.
+Do not repeat this apparatus acquisition. Its source reopening conditions are
+recorded in that report. The identified note/metadata correction is now
+[applied and export-verified](../sources/textual_restoration/applications/exodus12_40_disclosure.v1.json);
+do not repeat that completed disclosure. The source and main English remain
+unchanged, and full-verse rendering review is a separate open question.
 
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
 all 66 canonical books, WLC written/read variants, and the official 27-book

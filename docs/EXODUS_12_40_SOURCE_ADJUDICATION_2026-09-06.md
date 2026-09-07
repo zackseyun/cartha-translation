@@ -2,6 +2,12 @@
 
 Checked 2026-09-06 under [method 2.0](TEXTUAL_ADJUDICATION_METHOD.md).
 
+Later application, also 2026-09-06: the scoped disclosure and related metadata
+corrections identified below are now applied; see the
+[application receipt](../sources/textual_restoration/applications/exodus12_40_disclosure.v1.json).
+Hebrew, main English and note anchor remain unchanged. The research findings
+and earlier unapplied-state statements below describe the preceding checkpoint.
+
 ## Decision
 
 Provisionally retain the declared Hebrew base and current Egypt-only English.
@@ -111,3 +117,21 @@ use the evidence now available without waiting for source priority to be settled
 Both PDFs remain privately in the task's `research_sources/`; no PDF, manuscript
 image or generated reconstruction is redistributed in Git. Documentation-only
 checks verify links, baseline preservation and patch integrity, not textual truth.
+
+## Scoped disclosure application
+
+The subsequent application qualifies the edition/witness/hand attributions,
+preserves the fragmentary Hebrew limits, separates the theological alternatives,
+and states the existing relative-clause attachment without deciding the best
+rendering. Old cross-check and revision-pass objects are archived verbatim;
+the active verse remains draft/needs-review. One independent agent approved the
+exact note and then confirmed the exact written metadata. That approval is
+limited to disclosure, not earliest-source selection or whole-verse translation.
+
+Verse-schema and exact structural-delta checks passed. Actual before/after EXO
+exports both match every source chapter/verse identifier: 40 chapters and 1,213
+verses. The only exported difference is the target footnote's text; source,
+main English, marker and unrelated history remain unchanged. Eight reader-note
+tests passed. The receipt records hashes and the actual exported target; it
+pins this report's reviewed research version at the preceding Git checkpoint,
+not this later application annotation. No deployment or corpus-wide validation.
