@@ -74,6 +74,12 @@ retain the same full source verse as context. Do not treat these flags as 53
 textual variants or automatically delete duplicate-looking Hebrew. Explicit
 source-span alignment is required before claiming full Psalms source coverage.
 
+Follow-up: the [Psalms source-context map](PSALMS_SOURCE_CONTEXT_MAP_2026-09-07.md)
+now maps all 2,578 records to all 2,527 vendored source references. This resolves
+the context-reference gap above, but not English sub-verse alignment or the
+separately identified reader-numbering inconsistencies. The original screen's
+counts and qualifications remain historical, not retroactively replaced.
+
 ## Verification
 
 Regression tests cover all direct written words in all 39 vendored XML books,

@@ -4391,6 +4391,20 @@ actually inspected evidence from inaccessible pages and unconsulted manuscript
 claims, with a concrete reopening gate. No extra agent, paid access, image work,
 repeated failed acquisition, source replacement or deployment.
 
+### 2026-09-07 — Mapped all Psalms source contexts without renumbering readers
+
+Resolved the preceding Hebrew-screen mapping gap in one batch: 2,564 unique
+exact matches, 13 repeated-string matches resolved by neighboring references,
+and Psalm 60's combined two-verse heading. The [map and report](PSALMS_SOURCE_CONTEXT_MAP_2026-09-07.md)
+cover all 2,578 POB records and 2,527 vendored WLC references; 52 source verses
+are shared as heading/body context. Verified every current source
+string and coverage set rather than assuming matching chapter totals suffice.
+Found 36 body IDs differing from explicit XML KJV-reference notes, chiefly the
+two-part headings in Psalms 51/52/54. No text, note, ID or reader migration was
+performed. No new acquisition, agent, reconstruction or deployment; Judges 18:30
+remains parked. Source-context completeness does not certify English span or
+versification alignment, manuscript coverage or historical priority.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
