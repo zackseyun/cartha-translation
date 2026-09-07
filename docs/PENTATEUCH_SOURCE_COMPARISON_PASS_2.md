@@ -2,6 +2,11 @@
 
 Checked: 2026-09-04
 
+Later [Exodus 12:40 adjudication](EXODUS_12_40_SOURCE_ADJUDICATION_2026-09-06.md)
+adds directly consulted Greek apparatus and a low-confidence provisional
+retention decision. The comparison states below describe this earlier pass;
+the later research hold changes no canonical source or English.
+
 Re-audit correction, 2026-09-04: the first version overstated three Exodus
 attestations by treating supplied text or partial coverage as whole-reading
 support. This revision supersedes those claims. No new manuscript was

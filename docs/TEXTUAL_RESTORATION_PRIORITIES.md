@@ -124,6 +124,12 @@ First working demonstration: [three Hebrew variants and their English
 effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.
 It compares published readings; it does not claim new image restoration.
 
+The [Exodus 12:40 adjudication](EXODUS_12_40_SOURCE_ADJUDICATION_2026-09-06.md)
+now provisionally retains the base with low confidence in priority, after
+checking distinct Greek fathers positions and first-hand/corrected numerals.
+Do not repeat this apparatus acquisition. Its source reopening conditions and
+separate, actionable note/metadata issues are recorded in that report.
+
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
 all 66 canonical books, WLC written/read variants, and the official 27-book
 SBLGNT edition apparatus. The [48-case shortlist](TEXTUAL_VARIANT_CASEBOOK.md)

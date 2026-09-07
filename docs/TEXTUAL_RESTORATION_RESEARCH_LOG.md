@@ -4041,6 +4041,27 @@ No frozen Isaiah receipts are repinned or overridden. The
 [application receipt](../sources/textual_restoration/applications/goliath17_4_source_application.v1.json)
 separates these results. No deployment or exhaustive critical-edition claim.
 
+### 2026-09-06 — Exodus 12:40 source adjudication and Greek hand distinctions
+
+Previous goal turn classified as progress: Goliath's reviewed source and
+English application reached canonical Git state. This pass reused the
+Pentateuch dossier to test whether Canaan belongs in Exodus 12:40's source.
+The [new report](EXODUS_12_40_SOURCE_ADJUDICATION_2026-09-06.md) records actual
+Cambridge1909 page inspection, exact locators/hashes, separate Greek variation
+units, competing loss/expansion explanations and a low-confidence retention
+decision. It preserves the edition's uncertainty about the corrector and the
+limits of the existing Hebrew fragments. One independent agent checked the
+new evidence and decision; no judge-until-agreement loop occurred.
+
+The publisher-directory open failed, but search provided a working PDF link;
+the PDF downloaded successfully. No repeated failed acquisition, image
+calibration, model inference experiment or new validation infrastructure.
+The canonical verse, source, English and old review fields remain unchanged.
+The report flags narrower disclosure/metadata repairs for a separate scoped
+application; no claim that those repairs or corpus-wide collation are complete.
+Documentation checks cover baseline hash, local links and diff integrity only.
+No deployment. The full OT/NT source-comparison goal remains open.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
