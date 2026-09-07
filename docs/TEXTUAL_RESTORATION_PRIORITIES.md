@@ -148,6 +148,11 @@ A newly examined local-note lead,
 the masculine subject after published DSS preservation and Greek variant
 comparison. Its qualified disclosure and two anchor repairs are applied and
 full-book export-checked; do not repeat the completed bare-Greek gender check.
+The subsequent [whole-set Ruth DSS screen](RUTH_DSS_COMPARISON_2026-09-06.md)
+compares all four pinned Ruth records and 72 published line records, distinguishes
+supplied/unassigned coverage, and identifies lexical candidates for adjudication.
+It also applies the reviewed 2:21 young-men correction with a generic-reference
+qualification. This is bounded source comparison, not complete Ruth collation.
 
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
 all 66 canonical books, WLC written/read variants, and the official 27-book

@@ -4163,6 +4163,34 @@ Context inspection also exposed misplaced notes in Ruth 3:16 and 4:1; those
 are separate preexisting defects, not silently included in this application.
 This adds one actual passage comparison, not full Ruth or all-source coverage.
 
+### 2026-09-06 — Whole-set Ruth DSS screen and a source-faithful English repair
+
+Previous turn was progress: Ruth 3:15's reviewed disclosure was applied and
+pushed. This pass expanded from one disputed verse to all four Ruth records
+in the pinned QDR dataset. The [report](RUTH_DSS_COMPARISON_2026-09-06.md) and
+[receipt](../sources/textual_restoration/comparisons/ruth_dss_screen.v1.json)
+record full published-line context, input hashes, all 42 tagged anchors and
+72 line records, with supplied text, unresolved brackets and unassigned traces
+excluded from preserved-reading claims. Root compared Cave 2; one agent
+compared Cave 4. The older bracket-syntax counters were not mistaken for
+automatic preservation assessments. No new collation engine was built.
+
+Identified lexical, prepositional and grammatical candidates alongside spelling
+differences, without promoting supplied words or declaring all witnesses
+collated. A concrete result at 2:21 changes “young women” to “young men,”
+preserving the source contrast while disclosing potentially generic reference.
+The reviewer compared full-verse men/workers/current-women alternatives under
+the source-distinction contract. Its note-preservation correction was accepted.
+The prior historical review/revision records are retained, with live review
+status reset rather than inherited. Hebrew is unchanged.
+
+Exact application/schema checks, all 85 Ruth source/export identifiers, sole
+target export delta, eight reader-footnote tests and diff checks passed; hashes
+and scope reside in the receipt. No access failure, new image claim, judge loop,
+new validation infrastructure or deployment. The untracked Geniza file was
+left untouched. Next textual priority is the consequential source candidates,
+not reopening the completed 3:15 gender test or polishing spelling-only variants.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
