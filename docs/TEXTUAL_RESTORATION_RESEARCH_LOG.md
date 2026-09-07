@@ -3865,6 +3865,29 @@ All 32 focused tests passed, including the new frozen-input hash/label-coverage
 check. The existing pilot validator verified all four new crop hashes, and
 diff-check passed. These checks establish input integrity, not model accuracy.
 
+### 2026-09-06 — First actual frozen-control provider result
+
+Executed one OpenAI low-effort pass against the frozen four-region development
+set, using the existing read-only/no-tool runner and installed Codex CLI 0.153.4.
+OpenAI Docs required official documentation and local invocation checks first;
+the [result report](../sources/dead_sea_scrolls/pilots/2026-09-06-observation-development/RESULTS.md)
+links the actual official source and records observed invocation evidence.
+No labels, other readings or repository context were supplied to the isolated
+model. No second-provider retry or new configuration followed the result.
+
+The run succeeded in 41.58 seconds: 4/4 observation classes matched, with zero
+negative-crop tokens, region abstentions or missing/invalid regions. However,
+the writing regions yielded only 43 unreadable and two gap placeholders, no
+Hebrew letters. This passes only the predefined observation smoke test, not
+transcription, restoration, two-family comparison or held-out calibration.
+The score records actual CLI token counters and hashes. Frozen files remain
+unchanged, raw envelopes remain ignored, and no canonical text changed.
+
+Independent `observation_run_score_check` verified all nine frozen input hashes
+and the score against the actual response, passing the observation-only claim.
+All 32 focused tests, four-crop validation and diff-check passed. No repeat
+inference was needed to verify these counts.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
