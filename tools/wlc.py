@@ -65,6 +65,9 @@ class Word:
     lemma: str
     morph: str
     word_id: str
+    # Inline letter formatting is part of the written word, not an alternate
+    # reading. Offsets are Unicode code points in the assembled word text.
+    annotations: list[dict[str, str | int]] = field(default_factory=list)
 
 
 @dataclass
@@ -117,6 +120,22 @@ def parse_osis_id(osis_id: str) -> tuple[int, int]:
     return int(parts[1]), int(parts[2])
 
 
+def word_text(element: ET.Element) -> tuple[str, list[dict[str, str | int]]]:
+    """Retain inline special letters and tails without absorbing reading notes."""
+    text = element.text or ""
+    annotations = []
+    for child in element:
+        kind = child.attrib.get("type", "")
+        if (child.tag.rsplit("}", 1)[-1] != "seg"
+                or kind not in {"x-large", "x-small", "x-suspended"}
+                or len(child)):
+            raise ValueError(f"Unexpected inline WLC word markup: {child.tag} {kind}")
+        letters = child.text or ""
+        annotations.append({"type": kind, "text": letters, "offset": len(text)})
+        text += letters + (child.tail or "")
+    return text.strip(), annotations
+
+
 def load_verse(
     book_code: str,
     chapter: int,
@@ -139,12 +158,14 @@ def load_verse(
         tag = child.tag.rsplit("}", 1)[-1]
         text = (child.text or "").strip()
         if tag == "w":
+            text, annotations = word_text(child)
             words.append(
                 Word(
                     text=text,
                     lemma=child.attrib.get("lemma", ""),
                     morph=child.attrib.get("morph", ""),
                     word_id=child.attrib.get("id", ""),
+                    annotations=annotations,
                 )
             )
         elif tag == "seg" and text:

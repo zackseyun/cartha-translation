@@ -4363,6 +4363,22 @@ possibilities, linked-passage hazards, checks and exact reopening conditions.
 The old generation script is labeled as a historical attribution list, not a
 verified registry; its paid drafting workflow was not executed.
 
+### 2026-09-07 — Whole-OT base screen exposed dropped inline Hebrew letters
+
+Returned to the Hebrew corpus after the NT batch. Reused existing parsers to
+screen all 23,264 canonical OT records; separated paragraph/heading representation
+from meaningful source letters. Found production `.text` extraction dropped 11
+inline-annotated words across ten verses, including Deuteronomy 6:4. Fixed the
+parser and ten WLC source strings; preserved critical-source adoptions and main
+English. One independent XML/context check confirmed the defect and identified
+the already-existing Moses/Manasseh choice in Judges, which was not re-adjudicated.
+Corrected four connected lexical citations and Isaiah's truncated Hebrew note
+quotation. The [report and receipt](HEBREW_INLINE_LETTER_REPAIR_2026-09-07.md)
+record exact inputs, repairs, normalization limits, tests and preexisting snapshot
+drift. No manuscript restoration claim, fresh acquisition, image generation,
+canonical punctuation rewrite or deployment. Psalms' source-context/heading
+mapping remains a separate limitation, not a license to delete repeated context.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
