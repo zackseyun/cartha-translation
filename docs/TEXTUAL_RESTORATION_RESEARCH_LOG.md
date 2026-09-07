@@ -4243,6 +4243,28 @@ unrelated untracked Geniza file remains untouched.
 Next work requires evidence addressing a named source-choice question, not
 more scaffolding or repetition of this screen.
 
+### 2026-09-06 — Lamentations 1:7: test historical directions and apply disclosure
+
+Previous turn was progress: completed Lamentations screening was committed and
+pushed. This pass read the previously unconsulted Kotzé PDF argument, printed
+pp.596–607, with critical Hebrew/argument pages checked visually under the PDF
+skill. The [follow-up report](LAMENTATIONS_DSS_COMPARISON_2026-09-06.md#lamentations-17-argument-and-disclosure-follow-up--2026-09-06)
+records the PDF pin, actually read scope, opposing historical explanations,
+source-distinction full-verse alternatives and the limit of the independent
+review. Cited editions were not silently promoted into directly consulted sources.
+The earlier abstract-only status is superseded for this article, not for DJD.
+
+Retained the opening provisionally; no restoration or historical certainty claimed.
+Applied source disclosure and lexical-note/anchor corrections, with Hebrew and
+marker-free English unchanged. Historical reviews preserved; current status is
+draft/needs-review. One bounded independent objection review and exact-application
+check passed; no consensus loop. Current/local Greek context was inspected by root.
+Schema, exact record delta, preservation/history checks, all 154 source/export
+IDs, sole target output delta and eight footnote tests passed; hashes are in the
+report. No new infrastructure, failed acquisition or deployment. The unrelated
+untracked Geniza file remains untouched. Park the opening unless new evidence
+discriminates the recorded historical directions; no repeat article acquisition.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

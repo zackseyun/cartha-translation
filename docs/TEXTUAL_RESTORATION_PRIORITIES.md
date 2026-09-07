@@ -163,9 +163,12 @@ now records all 103 published line records in four pinned scroll records.
 4Q111's voice, short junction and order require linked-form adjudication,
 not word-by-word adoption; 5Q6 adds specific lexical/grammatical candidates.
 Local Greek controls are not an apparatus or independent manuscript census.
-Keep POB unchanged pending discriminating evidence. Next justified work is a
-targeted published-argument comparison, not rescreening these records or
-restarting image calibration. Supplied 5Q7 wording and a Greek row-boundary
+The subsequent 1:7 follow-up read Kotzé's actual argument and opposing proposals,
+provisionally retained the WLC opening, and applied qualified disclosure with
+Hebrew and marker-free English unchanged. The opening is parked behind a
+discriminating-evidence condition; do not reacquire that article or repeat its
+disclosure. Other candidates remain open, not an instruction to rescreen these
+records or restart image calibration. Supplied 5Q7 wording and a Greek row-boundary
 mismatch must not become false manuscript variants.
 
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
