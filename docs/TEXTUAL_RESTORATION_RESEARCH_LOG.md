@@ -4435,6 +4435,18 @@ canonical changes, new manuscript votes, image generation, frozen-receipt
 rewrites or deployment. Checked registry validity and exact preservation of
 all earlier entries and canonical records. No new validator or agent loop.
 
+### 2026-09-07 — Restored three missing OT textual-note anchors
+
+The preceding 4Q176 registration was progress. Shifted from acquisition to
+delivery: an OT scan found three unlinked textual-variant notes. Attached them
+at the relevant dates/counts in 2 Kings 15:30 and 1 Chronicles 18:4; 25:3,
+preserving Hebrew, marker-free English, note bodies and archived reviews.
+One bounded independent review passed. The [application report](OT_TEXTUAL_NOTE_DELIVERY_2026-09-07.md)
+records local evidence, exact hashes, schema checks, eight passing tests and
+full-book export comparisons (719/943 verse keys, only three changed objects).
+No manuscript-priority claim, unrelated lexical-note repair, new infrastructure,
+image work or deployment.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
