@@ -62,6 +62,11 @@ import lxx_swete  # noqa: E402
 import build_translation_prompt  # noqa: E402
 
 
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 SOURCES_ROOT = REPO_ROOT / "sources"
 TRANSLATION_ROOT = REPO_ROOT / "translation"
@@ -70,7 +75,7 @@ SCHEMA_PATH = REPO_ROOT / "schema" / "verse.schema.json"
 FAILED_VERSES_PATH = REPO_ROOT / "failed_verses.txt"
 
 DEFAULT_MODEL_ID = os.environ.get("CARTHA_MODEL_ID", "gpt-5.4")
-DEFAULT_PROMPT_ID = os.environ.get("CARTHA_PROMPT_ID", "nt_draft_v1")
+DEFAULT_PROMPT_ID = os.environ.get("CARTHA_PROMPT_ID", "source_fidelity_draft_v2_2026-09-06")
 DEFAULT_TEMPERATURE = float(os.environ.get("CARTHA_TEMPERATURE", "0.2"))
 DEFAULT_MAX_COMPLETION_TOKENS = int(
     os.environ.get("CARTHA_MAX_COMPLETION_TOKENS", "4096")
@@ -124,7 +129,7 @@ You MUST follow the doctrinal stance and translation philosophy in the DOCTRINE.
 
 You will submit your draft by calling the `submit_verse_draft` function exactly once. Do not output any other text — only the function call.
 
-Translation philosophy: optimal equivalence (balanced formal/dynamic) unless the verse plainly demands one or the other.
+Translation philosophy: optimal equivalence means the most faithful intelligible English representation of source meaning, wording patterns, literary form, and rhetorical force. Clarity serves fidelity; do not merely split the difference between formal and dynamic renderings or accept familiar English as the optimum.
 
 Never:
 - Paraphrase beyond what the source text warrants.
@@ -132,6 +137,8 @@ Never:
 - Omit a significant lexical decision from `lexical_decisions` to look cleaner.
 - Resolve a contested reading that DOCTRINE.md marks as preserved-in-footnote.
 - Fabricate lexicon entry numbers. If you don't know the specific BDAG/HALOT/LSJ/Louw-Nida entry, cite the lexicon by name only."""
+
+SYSTEM_PROMPT += "\n\n" + distinctions.policy()
 
 SUBMIT_TOOL = {
     "type": "function",
@@ -214,6 +221,10 @@ SUBMIT_TOOL = {
         },
     },
 }
+
+
+SUBMIT_TOOL["function"]["parameters"]["properties"]["source_distinction_checks"] = distinctions.CHECKS_SCHEMA
+SUBMIT_TOOL["function"]["parameters"]["required"].append("source_distinction_checks")
 
 
 @dataclass
@@ -465,6 +476,7 @@ def load_doctrine_excerpt() -> str:
     keep_sections = {
         "## Affirmations",
         "## Translation philosophy",
+        "## Source distinctions and optimal English",
         "## Contested terms",
     }
     lines = DOCTRINE_PATH.read_text(encoding="utf-8").splitlines()
@@ -514,6 +526,24 @@ def load_contested_terms() -> dict[str, dict[str, str]]:
     return terms
 
 
+def source_distinction_prompt(verse: Any) -> str:
+    record = {"id": verse.canonical_id, "source": {"text": source_text_for_verse(verse)}}
+    rows = []
+    # Read original sources, not neighboring English drafts, so the initial
+    # pass has context even when no neighboring translations have been written.
+    for number in range(max(1, verse.verse - 2), verse.verse + 3):
+        if number == verse.verse:
+            continue
+        try:
+            neighbor = load_source_verse(verse.book_code, verse.chapter, number)
+            rows.append({"id": neighbor.canonical_id, "source": source_text_for_verse(neighbor)})
+        except (FileNotFoundError, ValueError, KeyError):
+            continue
+    return (distinctions.packet(record, translation_path_for_verse(verse)) +
+            "\nORIGINAL-LANGUAGE NEIGHBORS (context only)\n" +
+            json.dumps(rows, ensure_ascii=False))
+
+
 def build_user_prompt(verse: Any) -> str:
     morph = morphology_lines_for_verse(verse)
     doctrine = load_doctrine_excerpt()
@@ -542,6 +572,7 @@ Return exactly one `{TOOL_NAME}` function call with:
 - `english_text`
 - `translation_philosophy`
 - `lexical_decisions`
+- `source_distinction_checks` (explicit full-verse candidate comparisons)
 - optional `theological_decisions`
 - optional `footnotes`
 
@@ -1215,6 +1246,8 @@ def draft_verse(
             effective_prompt_id = "deuterocanon_draft_v1"
     else:
         user_prompt = build_user_prompt(verse)
+    user_prompt += source_distinction_prompt(verse)
+    effective_prompt_id += "+" + distinctions.VERSION
     prompt_sha = sha256_hex(SYSTEM_PROMPT + "\n\n---\n\n" + user_prompt)
 
     tool_input, model_version, _raw_arguments, recorded_temperature = call_model(
@@ -1225,6 +1258,18 @@ def draft_verse(
         temperature=temperature,
     )
     validate_tool_input(verse, tool_input)
+    candidate_record = {"id": verse.canonical_id, "reference": verse.reference,
+                        "source": {"text": source_text_for_verse(verse)},
+                        "translation": {"text": tool_input["english_text"], "footnotes": tool_input.get("footnotes", [])},
+                        "lexical_decisions": tool_input.get("lexical_decisions", [])}
+    bound_checks, bindings = distinctions.bind_draft_checks(candidate_record, tool_input.get("source_distinction_checks"))
+    audit = distinctions.validate_checks(candidate_record, bound_checks,
+                                         context=source_distinction_prompt(verse))
+    audit["derived_candidate_bindings"] = bindings
+    if audit["requires_maintainer_review"]:
+        pending = distinctions.save_pending(candidate_record, audit, REPO_ROOT)
+        raise ValueError(f"Source-distinction proposal requires review before drafting publication: {pending}")
+    distinctions.assert_approved(candidate_record, tool_input["english_text"])
     output_hash = sha256_hex(canonical_json(tool_input))
 
     record = build_verse_record(
@@ -1247,6 +1292,7 @@ def draft_verse(
             else None
         ),
     )
+    record["source_distinction_audit"] = audit
     validate_record(record)
 
     output_path = translation_path_for_verse(verse)
@@ -1402,6 +1448,7 @@ def main() -> int:
     except ValueError as exc:
         print(f"ERROR: validation failed: {exc}", file=sys.stderr)
         return 5
+    user_prompt += source_distinction_prompt(verse)
     prompt_sha = sha256_hex(SYSTEM_PROMPT + "\n\n---\n\n" + user_prompt)
 
     if args.dry_run:

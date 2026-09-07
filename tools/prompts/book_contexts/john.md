@@ -27,3 +27,14 @@
 - **Harmonizing John to the Synoptics.** John's distinctive vocabulary and theology should be rendered on its own terms.
 - **Importing Synoptic wording.** John's Jesus speaks differently; keep the Johannine voice.
 - **Rendering ἐγώ εἰμι at 8:58 as "I have been."** This destroys the point of the grammar.
+
+
+## Approved source-word visibility: John 21:15–17 (2026-09-06)
+
+Compare all three questions and answers, not just one isolated verse. POB and
+SPOB preserve ἀγαπάω as **agape-love** and φιλέω as **phileo-love**. Jesus uses
+the first in verses 15–16 and the second in verse 17; Peter uses the second
+in every answer. The narrative repetition in verse 17 also uses phileo-love.
+Do not replace these with generic love or move this approved distinction back
+into a debate footnote. See `source_distinction_policy.md` for the general
+source-visible comparison and proposal requirement.

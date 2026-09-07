@@ -28,6 +28,11 @@ from typing import Any
 
 import yaml
 
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 SIMPLIFIED_ROOT = REPO_ROOT / "translation_simplified"
@@ -132,6 +137,7 @@ should be one short, non-repetitive sentence.
 
 Never:
 - ignore the POB lexical/theological decisions;
+- simplify approved source-qualified words back to a generic gloss: John 21:15–17 retains agape-love / phileo-love exactly;
 - flatten a documented ambiguity into a confident claim;
 - remove the force of a source-language image unless you preserve it another way;
 - turn translation into devotional commentary;
@@ -841,6 +847,7 @@ def build_simplified_record(
     usage: dict[str, Any],
     deployment: str,
 ) -> dict[str, Any]:
+    distinctions.assert_approved(pob_record, str(tool_input.get("simplified_text") or ""))
     footnotes = normalize_footnotes(tool_input.get("footnotes") or [])
     simplification_decisions = normalize_simplification_decisions(
         tool_input.get("simplification_decisions") or []
@@ -1031,6 +1038,7 @@ def validate_simplified_record(path: pathlib.Path) -> list[str]:
         return [f"{type(exc).__name__}: {exc}"]
     text = str(((record.get("translation") or {}).get("text") or "")).strip()
     base_text = str(((record.get("base_translation") or {}).get("text") or "")).strip()
+    errors.extend(distinctions.approved_errors(record, text))
     if not text:
         errors.append("translation.text missing")
     if ((record.get("translation") or {}).get("philosophy")) not in {"formal", "dynamic", "optimal-equivalence"}:

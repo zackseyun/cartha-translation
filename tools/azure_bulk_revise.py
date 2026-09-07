@@ -41,6 +41,11 @@ from typing import Any
 
 import yaml
 
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 REVISION_POLICY_FILE = REPO_ROOT / "tools" / "prompts" / "revision_policy.md"
@@ -91,8 +96,7 @@ For every verse:
 reasoning (lexical_decisions, footnotes, prior revisions).
 - You apply the three-question framework (Q1 author intent in context → Q2 does the \
 English carry that → Q3 does this engage with the drafter's reasoning, not bypass it).
-- The default outcome is unchanged. Every verse you leave alone is a verse you have \
-validated. Change is the exception, justified by a named defect — not by a different \
+- An unchanged editing action is not proof of optimal fidelity; complete the source-distinction checks first. Change is the exception, justified by a named defect — not by a different \
 gloss preference.
 - If a SECONDARY WITNESS is provided alongside the primary source, use it to cross-check \
 completeness (words/clauses present in one but missing from the other).
@@ -105,7 +109,7 @@ English misses that), and Q3 (how this engages with — does not bypass — the 
 documented reasoning). A changes_summary that names only a lexicon preference \
 ("closer to source word X") is invalid and will be rejected as a regression."""
 
-SYSTEM_PROMPT = _BASE_SYSTEM_PROMPT + _load_revision_policy()
+SYSTEM_PROMPT = _BASE_SYSTEM_PROMPT + _load_revision_policy() + "\n\n" + distinctions.policy()
 
 REVISION_TOOL = {
     "type": "function",
@@ -141,6 +145,10 @@ REVISION_TOOL = {
 # Thread-safe counters
 _lock = threading.Lock()
 _stats: dict[str, int] = {"processed": 0, "changed": 0, "unchanged": 0, "errors": 0, "skipped": 0}
+
+
+REVISION_TOOL["function"]["parameters"]["properties"]["source_distinction_checks"] = distinctions.CHECKS_SCHEMA
+REVISION_TOOL["function"]["parameters"]["required"].append("source_distinction_checks")
 
 
 def utc_now() -> str:
@@ -255,11 +263,11 @@ def call_azure(
 
     choices = body.get("choices") or []
     if not choices:
-        raise RuntimeError(f"No choices in response: {str(body)[:200]}")
+        raise RuntimeError(f"No choices in response: {str(body)}")
     message = choices[0].get("message") or {}
     tool_calls = message.get("tool_calls") or []
     if not tool_calls:
-        raise RuntimeError(f"No tool calls in response: {str(message)[:200]}")
+        raise RuntimeError(f"No tool calls in response: {str(message)}")
     fn = tool_calls[0].get("function") or {}
     if fn.get("name") != REVISION_TOOL_NAME:
         raise RuntimeError(f"Wrong tool called: {fn.get('name')!r}")
@@ -339,16 +347,16 @@ def revise_verse(
     lexical = data.get("lexical_decisions") or []
     if lexical:
         lex_lines = []
-        for ld in lexical[:6]:  # cap at 6 to stay within token budget
+        for ld in lexical:  # cap at 6 to stay within token budget
             word = ld.get("source_word", "")
             chosen = ld.get("chosen", "")
-            rationale = str(ld.get("rationale") or "")[:200]
+            rationale = str(ld.get("rationale") or "")
             alts = ", ".join(ld.get("alternatives") or [])
             lex_lines.append(f"  {word} → '{chosen}' (alts: {alts})\n    Rationale: {rationale}")
-        context_parts.append("ESTABLISHED LEXICAL DECISIONS (do not override these):\n" + "\n".join(lex_lines))
+        context_parts.append("PRIOR LEXICAL DECISIONS (evidence to examine, not an answer key):\n" + "\n".join(lex_lines))
     footnotes = (translation.get("footnotes") or [])
     if footnotes:
-        fn_lines = [f"  [{f.get('marker')}] {str(f.get('text',''))[:150]}" for f in footnotes[:4]]
+        fn_lines = [f"  [{f.get('marker')}] {str(f.get('text',''))}" for f in footnotes]
         context_parts.append("TRANSLATION FOOTNOTES (reflect translator intent):\n" + "\n".join(fn_lines))
     prior_revisions = data.get("revisions") or []
     if prior_revisions:
@@ -360,6 +368,8 @@ def revise_verse(
             f"  Reason:  {str(last.get('rationale',''))[:150]}"
         )
     context_block = ("\n\n" + "\n\n".join(context_parts)) if context_parts else ""
+
+    context_block += distinctions.packet(data, path)
 
     # Append Dillmann secondary witness for 1 Enoch verses
     context_block += _enoch_witness_block(path, data)
@@ -384,12 +394,24 @@ def revise_verse(
     if not revised_text:
         return {"path": str(path), "error": "empty revised_text from model"}
 
+    try:
+        audit = distinctions.validate_checks(data, args.get("source_distinction_checks"), context=context_block, result_text=revised_text)
+        if audit["requires_maintainer_review"]:
+            pending = distinctions.save_pending(data, audit, REPO_ROOT)
+            return {"path": str(path), "status": "review_required", "proposal_path": str(pending), "changed": False}
+        distinctions.assert_approved(data, revised_text)
+        if unchanged and revised_text != current_text:
+            raise ValueError("unchanged=true must copy the current translation exactly")
+    except ValueError as exc:
+        return {"path": str(path), "error": str(exc)}
+
     # Build revision_pass block
     revision_pass = {
         "model": MODEL_LABEL,
         "timestamp": utc_now(),
         "unchanged": unchanged,
         "changes_summary": changes_summary,
+        "source_distinction_audit": audit,
     }
 
     # Update data
@@ -516,6 +538,9 @@ def main() -> None:
         with _lock:
             if result.get("status") == "skipped":
                 _stats["skipped"] += 1
+            elif result.get("status") == "review_required":
+                _stats["review_required"] = _stats.get("review_required", 0) + 1
+                print(f"  REVIEW REQUIRED {path.name}: {result.get('proposal_path', '')}", flush=True)
             elif "error" in result:
                 _stats["errors"] += 1
                 print(f"  ERROR {path.name}: {result['error'][:120]}", flush=True)
@@ -559,7 +584,7 @@ def main() -> None:
     print(
         f"\nDone in {elapsed/60:.1f} min. "
         f"processed={_stats['processed']} changed={_stats['changed']} "
-        f"unchanged={_stats['unchanged']} errors={_stats['errors']}",
+        f"unchanged={_stats['unchanged']} review_required={_stats.get('review_required', 0)} errors={_stats['errors']}",
         flush=True,
     )
 

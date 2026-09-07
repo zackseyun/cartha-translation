@@ -8,6 +8,20 @@ shows the sources, review layers, and public artifacts someone would
 need in order to inspect or reproduce the results without replaying
 our internal work log step by step.
 
+## Source-distinction checkpoint (2026-09-06)
+
+Drafting and the main review lanes now require an explicit source-distinction
+check, including concrete full-verse English proposals where a source pattern
+is hidden. An unchanged verdict alone is not a fidelity certification. Pending
+proposals are retained outside publishable translation files for maintainer
+review; they are not automatically applied. Existing records are not silently
+relabeled as having passed this new checkpoint.
+
+See [the John 21 root-cause investigation](docs/TRANSLATION_DISTINCTION_ROOT_CAUSE.md)
+and `tools/prompts/source_distinction_policy.md`. A read-only heuristic scan is
+available with `python3 tools/source_distinction_audit.py --output /tmp/pob-distinction-leads.json`.
+It detects review leads, not every semantic issue, and never rewrites Scripture.
+
 ## Pipeline overview
 
 ```

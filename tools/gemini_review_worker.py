@@ -29,6 +29,7 @@ import base64
 import contextlib
 import datetime as dt
 import json
+import hashlib
 import os
 import pathlib
 import random
@@ -43,6 +44,11 @@ from typing import Any
 sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import chapter_queue  # noqa: E402
 import gemini_review_queue as rq  # noqa: E402
+
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
 
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 DB_PATH = chapter_queue.DEFAULT_DB_PATH
@@ -176,7 +182,7 @@ You will receive:
   - The current English draft, produced by GPT-5.4.
   - The drafter's lexical/translation decisions (which senses they picked for ambiguous words).
   - Footnotes + alternatives already attached to the verse.
-  - The drafter's translation philosophy ("optimal-equivalence" — a balance between formal and dynamic).
+  - The translation objective: the most source-faithful intelligible English, including wording patterns and rhetorical force.
 
 Your job is to flag REAL issues — not stylistic preferences. The current draft is allowed to stand as-is unless you can point to a specific improvement grounded in the source text.
 
@@ -191,7 +197,7 @@ Flag if:
 Do NOT flag:
   - Style preferences where the current reading is defensible.
   - Paraphrase-vs-literal balance, unless the current rendering is wrong.
-  - Footnote gloss choices already present as lexical alternatives.
+  - Purely stylistic preferences with no source-visible loss. A footnoted lexical distinction is NOT exempt: compare a main-text candidate.
   - Settled project doctrine decisions unless this specific verse applies them incorrectly.
 
 Prefer 0–2 issues. If a concern is only about a footnote, lexical-decision note, or metadata, set `target` accordingly and do NOT attach it to the main translation text.
@@ -259,6 +265,11 @@ RESPONSE_SCHEMA: dict[str, Any] = {
     "required": ["agreement_score", "verdict", "issues", "notes"],
     "propertyOrdering": ["agreement_score", "verdict", "issues", "notes"],
 }
+
+
+RESPONSE_SCHEMA["properties"]["source_distinction_checks"] = distinctions.checks_schema(gemini=True)
+RESPONSE_SCHEMA["required"].append("source_distinction_checks")
+RESPONSE_SCHEMA["propertyOrdering"].append("source_distinction_checks")
 
 
 def utc_now() -> str:
@@ -415,6 +426,10 @@ def call_gemini_review(
     system_prompt: str | None = None,
     context_block: str = "",
 ) -> tuple[dict[str, Any], str]:
+    import yaml
+    target = yaml.safe_load(verse_yaml)
+    system_prompt = (system_prompt or SYSTEM_PROMPT) + "\n\n" + distinctions.policy()
+    context_block += distinctions.packet(target, include_context=not bool(context_block))
     url, headers = _gemini_endpoint(model)
 
     user_parts: list[str] = [
@@ -515,6 +530,12 @@ def call_gemini_review(
     except json.JSONDecodeError as exc:
         raise RuntimeError(f"Gemini response was not valid JSON: {exc}; head={raw[:300]!r}")
     model_id = body.get("modelVersion") or model
+    parsed = distinctions.review_gate(target, parsed, context_block)
+    parsed["prompt_provenance"] = {
+        "source_distinction_version": distinctions.VERSION,
+        "system_sha256": hashlib.sha256(system_prompt.encode()).hexdigest(),
+        "user_sha256": hashlib.sha256(user_text.encode()).hexdigest(),
+    }
     return parsed, model_id
 
 
@@ -638,9 +659,10 @@ def run_job(
         prompt_version = PROMPT_VERSION_V2
     else:
         system_prompt = SYSTEM_PROMPT
-        context_block = ""
+        context_block = read_context_snippet(testament, book_slug, chapter, verse)
         prompt_version = PROMPT_VERSION
 
+    prompt_version += "+" + distinctions.VERSION
     t0 = time.time()
     review, model_id = call_gemini_review(
         verse_yaml,
@@ -673,7 +695,7 @@ def run_job(
         "reviewer_model": model_id,
         "prompt_version": prompt_version,
         "vertex_location": VERTEX_LOCATION,
-        "context_window_verses": CONTEXT_WINDOW_VERSES if (is_v2 or is_v3) else 0,
+        "context_window_verses": CONTEXT_WINDOW_VERSES,
         "book_context_loaded": bool(is_v3 and load_book_context(book_slug)),
         "reviewed_at": utc_now(),
         "duration_seconds": duration,
@@ -681,7 +703,15 @@ def run_job(
         "verdict": review.get("verdict"),
         "issues": issues,
         "notes": review.get("notes") or "",
+        "source_distinction_audit": review["source_distinction_audit"],
+        "requires_maintainer_review": review.get("requires_maintainer_review", False),
+        "held_issues": review.get("held_issues", []),
+        "prompt_provenance": review["prompt_provenance"],
     }
+    if record["requires_maintainer_review"]:
+        import yaml
+        pending = distinctions.save_pending(yaml.safe_load(verse_yaml), record["source_distinction_audit"], REPO_ROOT)
+        record["source_distinction_proposal_path"] = str(pending.relative_to(REPO_ROOT))
     out_path.write_text(json.dumps(record, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
 
     mark_complete(
@@ -689,7 +719,7 @@ def run_job(
         job_id,
         review_path=str(out_path.relative_to(REPO_ROOT)),
         agreement_score=agreement,
-        issues_found=len(issues),
+        issues_found=len(issues) + len(record.get("held_issues", [])),
     )
     return record
 
@@ -735,6 +765,7 @@ def main() -> int:
                 print(
                     f"[{args.worker_id}] ✓ {job['strategy']} {job['book_slug']} {job['chapter']}:{job['verse']} "
                     f"(agreement={record.get('agreement_score','—')}, issues={len(record.get('issues') or [])}, "
+                    f"held={len(record.get('held_issues') or [])}, review_required={record.get('requires_maintainer_review', False)}, "
                     f"location={record.get('vertex_location')})",
                     flush=True,
                 )
