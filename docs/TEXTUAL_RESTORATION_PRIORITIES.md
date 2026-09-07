@@ -74,6 +74,14 @@ decision is not application approval. Image-workflow calibration remains require
 for new machine-transcription claims, not for accurately reporting a published
 edition's reading.
 
+Efficiency constraint reaffirmed 2026-09-06: reuse existing evidence, record one
+consequential decision per pass, and keep documentation proportional to the
+finding. Use one bounded independent review for a substantive change; repeat
+only to check concrete corrections, not until agreement can be manufactured.
+Do not rerun settled acquisition or build new validation infrastructure without
+a specific unresolved defect. Model agreement is neither a new witness nor a
+reason to raise historical confidence.
+
 Current bounded results: the [1 Samuel 1:24–25 comparison](SAMUEL_SOURCE_COMPARISON_PASS_3.md)
 tested the singular-bull argument against a published grammatical control and
 retains the current text pending its recorded reopening evidence. Do not repeat

@@ -3742,6 +3742,34 @@ the new count repair is not yet claimed verified live. The canonical record
 also carries old preparation-era pending language in a rationale; this check
 does not relabel those historical statements as a new source decision.
 
+### 2026-09-06 — Efficiency check and Habakkuk 1:12 preservation decision
+
+The user requested an efficiency check. The goal tracker reported 18,767,479
+cumulative tokens at that check (not a dollar-cost estimate); no subagents
+were then running. Retain useful source decisions and tested repairs, but
+stop repetitive acquisition, overgrown audit scaffolding and open-ended
+judge loops. The priorities page now records that operating constraint.
+
+The next bounded [Habakkuk comparison](HABAKKUK_1_12_SOURCE_COMPARISON_2026-09-06.md)
+consulted the actual versioned 1QpHab IV.17/V.3 and Mur. 88 XVIII.10
+transcriptions and Rashi's verse-12 commentary. The disputed biblical clause
+is supplied in 1QpHab; Mur. 88 supplies the distinguishing prefix. The pesher
+commentary is indirect interpretation evidence. The report therefore retains
+the current wording provisionally and proposes a footnote identifying the
+scribal-correction tradition accurately. It does not claim recovered letters,
+all-witness comparison, increased historical confidence or application approval.
+Access failures and the unconsulted Greek/critical-apparatus step are explicit.
+No canonical verse, frozen screening inventory, image, software or publication
+asset was changed. The casebook links the new decision without rewriting its
+historical screening snapshot.
+
+Independent `habakkuk_preservation_check` reviewed the three published passages
+and the report and passed the bounded preservation/tradition distinction; it
+did not approve canonical application or establish earliest wording. Root
+rechecked the canonical SHA256 against the report, unchanged, and checked the
+documentation diff for whitespace errors. No software test or deployment
+claim follows from these documentation checks.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
