@@ -124,6 +124,13 @@ First working demonstration: [three Hebrew variants and their English
 effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.
 It compares published readings; it does not claim new image restoration.
 
+The [Exodus 1:5 count adjudication](EXODUS_1_5_COUNT_ADJUDICATION_2026-09-06.md)
+now tests opposing genealogical histories and actual Greek clause-order
+evidence. Priority remains unresolved; seventy-five is a serious candidate,
+not confined to omission/preposition of the Joseph clause. Next consult the
+specific DJD XII discussions identified there, not another general argument
+or cosmetic note correction. Source and English remain unchanged.
+
 The [Exodus 12:40 adjudication](EXODUS_12_40_SOURCE_ADJUDICATION_2026-09-06.md)
 now provisionally retains the base with low confidence in priority, after
 checking distinct Greek fathers positions and first-hand/corrected numerals.

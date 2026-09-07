@@ -4086,6 +4086,29 @@ No validation infrastructure added or frozen comparison receipts repinned;
 known unrelated Isaiah fixture drift was not rerun. No new access failure or
 image experiment. No deployed-reader or exhaustive-corpus claim.
 
+### 2026-09-06 — Exodus 1:5: test genealogical histories before numeral promotion
+
+Previous turn was progress: Exodus 12:40's reviewed disclosure was applied and
+export-verified. This pass addressed the consequential seventy/seventy-five
+source question rather than continuing disclosure cleanup. The
+[adjudication report](EXODUS_1_5_COUNT_ADJUDICATION_2026-09-06.md) records new
+Cambridge Exodus/Genesis apparatus consultation, contextual Hebrew and Greek
+controls, full-line published DSS preservation checks, and actual opposing
+arguments by Kislev, Tov and Longacre. Numeral and Joseph-clause decisions stay
+separate. Root's tentative inclination toward seventy-five and the independent
+agent's unresolved-priority verdict are retained, with the substantive reason
+for the final hold. No historical witness count is increased by model review.
+
+The source remains provisionally seventy; no canonical file or note changed.
+The new evidence removes an overly rigid literary-splice concern but does not
+settle direction of genealogy revision. DJD XII pp. 19 and 85 are the precise
+next source discussions, not newly consulted sources. Shell-only IAA responses,
+a corrected out-of-range PDF locator scan and a corrected source-label lookup
+are documented without treating access failures as textual absence. Existing
+local PDFs were reused; no restoration experiment or new validation code.
+Checks cover baseline preservation, links and diff integrity; no export or
+whole-corpus test is claimed for this documentation-only pass. Not deployed.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
