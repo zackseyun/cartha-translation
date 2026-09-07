@@ -4012,6 +4012,35 @@ footnote tests and diff-check passed. The
 [receipt](../sources/textual_restoration/applications/goliath17_4_apparatus_disclosure.v1.json)
 pins the evidence and application. No corpus publication or deployment occurred.
 
+### 2026-09-06 — Goliath four-cubit source applied after DJD and editorial review
+
+Completed the previous pass's named Hebrew reading-note gate using the existing
+DJD XVII consultation copy, pp78–80, not another acquisition. The PDF skill
+required complete-page visual inspection after locating the poorly OCRed text.
+The [Samuel report](SAMUEL_SOURCE_COMPARISON_PASS_1.md#djd-reading-notes-and-provisional-critical-source-application--2026-09-06)
+records qualified numeral preservation, limited longer-form17:41 evidence,
+the contrary reduction explanation and the rejection of assumed scribal piety
+as a decisive criterion. One independent agent separately approved the source
+unit and exact full verse/application, with actual evidence limits retained.
+
+Applied a disclosed POB-critical Hebrew source and corresponding four-cubit
+English, preserving WLC exactly in history, six/five alternatives, uncertainty,
+and the existing draft/needs_review state. Repaired the champion-note anchor.
+Reused existing composition/source/full-verse validators and separate receipts;
+no executor, schema or image-model change. An unsupported in-memory clone helper
+failed before writes and was replaced without repeating research.
+
+The exact candidate integration, explicit externally recorded trusted hashes,
+schema, historical preservation and complete31-chapter/811-record reader export
+passed. Export differences are confined to the target sentence and note.
+Eight reader-footnote tests passed. The additional18-test regression invocation
+returned11 errors: the Isaiah-based reviewed-source/full-verse fixtures reject
+their older pinned inputs. It is not an all-green suite; the actual new Goliath
+record passes the same validators with its separately reviewed current pins.
+No frozen Isaiah receipts are repinned or overridden. The
+[application receipt](../sources/textual_restoration/applications/goliath17_4_source_application.v1.json)
+separates these results. No deployment or exhaustive critical-edition claim.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
