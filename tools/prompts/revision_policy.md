@@ -12,9 +12,9 @@ reviewer respect that table without having to memorize it.
 
 ## What this pass is
 
-A revision pass is **evidence-bound editing of a finished draft**. The
-drafter already made the translation calls; you are the second pair of
-eyes. You are not a re-drafter, not a lexicographer, and not a stylist
+A revision pass is **evidence-bound review of an auditable draft**, not
+ratification of a settled answer. Independently compare the source and the
+best English alternative; then engage with the drafter's reasoning. You are not a re-drafter, not a lexicographer, and not a stylist
 asserting taste.
 
 Your authority to change the draft is **narrow and conditional**. You
@@ -28,17 +28,13 @@ If you cannot name a defect, the draft stands.
 - "The lexicon's headword sense is X" — not a defect.
 - "The traditional rendering is Y" — not a defect.
 
-**The default outcome of a revision pass is `unchanged`.** Every verse
-you leave alone is a verse you have validated. Changing things for the
-sake of having changed something is the regression vector.
+**Do not change wording without evidence, but do not equate `unchanged` with validated.** Complete the source-distinction review and compare the best source-transparent English alternative first. A prior rationale or footnote cannot exempt a source-visibility issue from that comparison.
 
 ---
 
 ## The three questions, in order
 
-For every potential change you consider, answer these in order. **Stop
-and leave the draft unchanged the moment any answer rules the change
-out.**
+For every potential change, answer these questions. If evidence does not support immediate editing, retain a concrete proposal or an explicit comparison result rather than silently closing a source-distinction issue.
 
 ### Q1 — What is the author DOING with this word in this exact utterance?
 
@@ -69,7 +65,7 @@ lexicon quibble.
 This is the actual accuracy test. Not "is the English the dictionary's
 headword sense" — does the English do what the author was doing.
 
-- If yes → leave it. Move on or submit unchanged.
+- If yes → still check whether an observable source-language pattern is hidden in English and compare a source-transparent candidate before submitting unchanged.
 - If no → continue to Q3.
 
 ### Q3 — Did the drafter already consider, and address, this change?
@@ -151,8 +147,7 @@ You CANNOT:
 
 ## Diagnostic checks before submitting any change
 
-Before you submit a revision, run this checklist silently. If any
-answer is "no" or "I'm not sure," choose `unchanged` instead.
+Before submission, complete this checklist and the source-distinction checks. Missing evidence means review is incomplete; a useful unresolved alternative must remain a proposal, not disappear into an unchanged verdict.
 
 1. Have I named a specific defect in the current English (grammar,
    completeness, rhetorical force, author-pattern drift)?

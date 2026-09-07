@@ -35,9 +35,11 @@ translation.
 
 ## Translation philosophy
 
-The People's Open Bible aims at **optimal equivalence**: a middle
-path between formal ("word-for-word") and dynamic
-("thought-for-thought") approaches.
+The People's Open Bible aims at **optimal equivalence**: the most faithful,
+intelligible English representation of the source's meaning, wording patterns,
+literary form, and rhetorical force. This is not an automatic midpoint between
+formal and dynamic translation. Readability serves source fidelity; convention
+and familiarity do not override it.
 
 Specifically:
 
@@ -74,6 +76,23 @@ Specifically:
    weight. We avoid both ecclesiastical jargon ("propitiation" is
    footnoted, not required) and informality that undersells the
    text's gravity.
+
+## Source distinctions and optimal English
+
+Source fidelity takes priority over mere familiarity or defensibility. A
+significant Greek or Hebrew wording pattern must receive an explicit comparison
+with the best source-transparent English candidate, even when a prior draft
+already discusses it in a footnote. Prior rationale is evidence, not a veto.
+Do not infer different meanings from morphology alone or invent theology to
+justify different glosses; preserve observable wording without adding claims.
+A concise source-qualified or hyphenated rendering is available when ordinary
+English otherwise conceals the source pattern. Record unresolved proposals for
+maintainer review; do not silently certify them as unchanged or auto-publish.
+
+**Approved scoped rendering:** John 21:15–17 uses **agape-love** for ἀγαπάω
+and **phileo-love** for φιλέω, including the repeated question in verse 17.
+The ἀγάπη noun's general table entry below is not a rule erasing that verb
+pattern. Do not revert this approved POB/SPOB wording to generic “love”.
 
 ## Contested terms
 

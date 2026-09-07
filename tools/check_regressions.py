@@ -20,6 +20,11 @@ import sys
 
 import yaml
 
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 REGRESSIONS_FILE = REPO_ROOT / "tools" / "known_regressions.yaml"
 
@@ -108,6 +113,10 @@ def check_file(path: pathlib.Path) -> list[dict]:
     if not text:
         return []
 
+    if path.relative_to(REPO_ROOT).parts[0] in {"translation", "translation_simplified"}:
+        for error in distinctions.approved_errors(data, text):
+            violations.append({"file": str(path.relative_to(REPO_ROOT)),
+                               "rule": "john21-approved-love-distinction", "details": error})
     nt = is_nt(path)
 
     # Rule 1: Χριστός → "Christ" regression (NT only)

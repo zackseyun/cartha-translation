@@ -72,6 +72,11 @@ sys.path.insert(0, str(pathlib.Path(__file__).resolve().parent))
 import chapter_queue  # noqa: E402
 import gemini_review_queue  # noqa: E402
 
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 DB_PATH = chapter_queue.DEFAULT_DB_PATH
 
@@ -312,6 +317,7 @@ def apply_revision_to_yaml(
     new_text = current_text.replace(find, replace, 1)
     if new_text == current_text:
         raise ValueError("replace produced no change")
+    distinctions.assert_approved(data, new_text)
     translation["text"] = new_text
 
     # Preserve original rendering as a footnote
@@ -350,6 +356,8 @@ def classify_issue(
     verse_yaml: dict[str, Any] | None,
 ) -> tuple[int, str]:
     """Return (tier, reason). Tier 0 means skip entirely."""
+    if issue.get("source_distinction_proposal") or issue.get("requires_maintainer_review"):
+        return 3, "source-distinction-proposal-requires-maintainer"
     target = (issue.get("target") or "translation_text").lower()
     severity = (issue.get("severity") or "").lower()
     category = (issue.get("category") or "").lower()
@@ -431,6 +439,11 @@ def process_review_job(
             )
         return {"skipped": f"bad-json:{exc}"}
 
+    if review.get("requires_maintainer_review") or (review.get("source_distinction_audit") or {}).get("requires_maintainer_review"):
+        if not dry_run:
+            update_processing_state(conn, int(row["id"]), process_status="manual_review_required",
+                                    apply_summary="source-distinction proposal retained for maintainer", applied=0)
+        return {"applied": 0, "escalated": 0, "skipped_noop": 0, "manual_review_required": 1}
     issues = review.get("issues") or []
     if not issues:
         return {"applied": 0, "escalated": 0, "skipped_noop": 0}
@@ -554,6 +567,7 @@ def run_once(enabled_tiers: set[int], dry_run: bool, limit: int) -> dict[str, in
             result = process_review_job(conn, row, enabled_tiers=enabled_tiers, dry_run=dry_run)
             totals["applied"] += result.get("applied", 0)
             totals["escalated"] += result.get("escalated", 0)
+            totals["manual_review_required"] += result.get("manual_review_required", 0)
             totals["skipped_noop"] += result.get("skipped_noop", 0)
             totals["errors"] += result.get("errors", 0)
             totals["verses"] += 1

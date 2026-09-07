@@ -32,6 +32,11 @@ from typing import Any
 
 import yaml
 
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 REVISION_POLICY_FILE = REPO_ROOT / "tools" / "prompts" / "revision_policy.md"
@@ -67,8 +72,7 @@ For every verse:
 reasoning (lexical_decisions, footnotes, prior revisions).
 - You apply the three-question framework (Q1 author intent in context → Q2 does the \
 English carry that → Q3 does this engage with the drafter's reasoning, not bypass it).
-- The default outcome is unchanged. Every verse you leave alone is a verse you have \
-validated. Change is the exception, justified by a named defect — not by a different \
+- An unchanged editing action is not proof of optimal fidelity; complete the source-distinction checks first. Change is the exception, justified by a named defect — not by a different \
 gloss preference.
 
 If you submit a change (unchanged=false), the changes_summary field is your rationale. \
@@ -81,8 +85,9 @@ Respond with valid JSON only — no markdown fences, no commentary:
 {
   "revised_text": "<full revised translation>",
   "unchanged": true|false,
-  "changes_summary": "<brief note or 'No changes needed.'>"
-}""" + load_policy()
+  "changes_summary": "<brief note or 'No changes needed.'>",
+  "source_distinction_checks": []
+}""" + load_policy() + "\n\n" + distinctions.policy()
 
 
 def resolve_gemini_key() -> str:
@@ -136,7 +141,7 @@ def call_gemini(api_key: str, reference: str, source_text: str,
                 resp = json.loads(r.read())
             candidates = resp.get("candidates", [])
             if not candidates:
-                raise RuntimeError(f"no candidates: {str(resp)[:200]}")
+                raise RuntimeError(f"no candidates: {str(resp)}")
             parts = candidates[0].get("content", {}).get("parts", [])
             raw_text = "".join(p.get("text", "") for p in parts).strip()
             if not raw_text:
@@ -191,16 +196,16 @@ def revise_verse(path: pathlib.Path, api_key: str) -> dict[str, Any]:
     lexical = data.get("lexical_decisions") or []
     if lexical:
         lex_lines = []
-        for ld in lexical[:6]:
+        for ld in lexical:
             word = ld.get("source_word", "")
             chosen = ld.get("chosen", "")
-            rationale = str(ld.get("rationale") or "")[:200]
+            rationale = str(ld.get("rationale") or "")
             alts = ", ".join(ld.get("alternatives") or [])
             lex_lines.append(f"  {word} → '{chosen}' (alts: {alts})\n    Rationale: {rationale}")
-        context_parts.append("ESTABLISHED LEXICAL DECISIONS (do not override these):\n" + "\n".join(lex_lines))
+        context_parts.append("PRIOR LEXICAL DECISIONS (evidence to examine, not an answer key):\n" + "\n".join(lex_lines))
     footnotes = (translation.get("footnotes") or [])
     if footnotes:
-        fn_lines = [f"  [{f.get('marker')}] {str(f.get('text',''))[:150]}" for f in footnotes[:4]]
+        fn_lines = [f"  [{f.get('marker')}] {str(f.get('text',''))}" for f in footnotes]
         context_parts.append("TRANSLATION FOOTNOTES (reflect translator intent):\n" + "\n".join(fn_lines))
     prior_revisions = data.get("revisions") or []
     if prior_revisions:
@@ -212,6 +217,8 @@ def revise_verse(path: pathlib.Path, api_key: str) -> dict[str, Any]:
             f"  Reason:  {str(last.get('rationale',''))[:150]}"
         )
     context_block = ("\n\n" + "\n\n".join(context_parts)) if context_parts else ""
+
+    context_block += distinctions.packet(data, path)
 
     try:
         result = call_gemini(
@@ -232,11 +239,23 @@ def revise_verse(path: pathlib.Path, api_key: str) -> dict[str, Any]:
     if not revised_text:
         return {"path": str(path), "error": "empty revised_text from Gemini"}
 
+    try:
+        audit = distinctions.validate_checks(data, result.get("source_distinction_checks"), context=context_block, result_text=revised_text)
+        if audit["requires_maintainer_review"]:
+            pending = distinctions.save_pending(data, audit, REPO_ROOT)
+            return {"path": str(path), "status": "review_required", "proposal_path": str(pending), "changed": False}
+        distinctions.assert_approved(data, revised_text)
+        if unchanged and revised_text != current_text:
+            raise ValueError("unchanged=true must copy the current translation exactly")
+    except ValueError as exc:
+        return {"path": str(path), "error": str(exc)}
+
     revision_pass = {
         "model": GEMINI_MODEL,
         "timestamp": utc_now(),
         "unchanged": unchanged,
         "changes_summary": changes_summary,
+        "source_distinction_audit": audit,
     }
     data["revision_pass"] = revision_pass
 
@@ -314,6 +333,9 @@ def main() -> None:
         with _lock:
             if result.get("status") == "skipped":
                 _stats["skipped"] += 1
+            elif result.get("status") == "review_required":
+                _stats["review_required"] = _stats.get("review_required", 0) + 1
+                print(f"  REVIEW REQUIRED {path.name}: {result.get('proposal_path', '')}", flush=True)
             elif "error" in result:
                 _stats["errors"] += 1
                 print(f"  ERROR {path.name}: {result['error'][:100]}", flush=True)
@@ -350,7 +372,7 @@ def main() -> None:
     print(
         f"\nDone in {elapsed/60:.1f} min. "
         f"processed={_stats['processed']} changed={_stats['changed']} "
-        f"unchanged={_stats['unchanged']} errors={_stats['errors']}",
+        f"unchanged={_stats['unchanged']} review_required={_stats.get('review_required', 0)} errors={_stats['errors']}",
         flush=True,
     )
 

@@ -60,6 +60,11 @@ from typing import Any
 
 import yaml
 
+try:
+    from tools import source_distinction_audit as distinctions
+except ModuleNotFoundError:
+    import source_distinction_audit as distinctions
+
 REPO_ROOT = pathlib.Path(__file__).resolve().parent.parent
 TRANSLATION_ROOT = REPO_ROOT / "translation"
 DOCTRINE_FILE = REPO_ROOT / "DOCTRINE.md"
@@ -382,7 +387,7 @@ TOOL_SCHEMAS = [
     },
     {
         "name": "submit_unchanged",
-        "description": "Terminal: the draft stands. This is the default outcome — every verse you leave alone is a verse you have validated.",
+        "description": "Terminal: the draft stands. Requires a completed source-distinction audit; unchanged alone does not certify fidelity.",
         "input_schema": {
             "type": "object",
             "properties": {"brief_reason": {"type": "string"}},
@@ -391,6 +396,11 @@ TOOL_SCHEMAS = [
     },
 ]
 
+
+for _tool in TOOL_SCHEMAS:
+    if _tool["name"] in {"submit_revision", "submit_unchanged"}:
+        _tool["input_schema"]["properties"]["source_distinction_checks"] = distinctions.CHECKS_SCHEMA
+        _tool["input_schema"]["required"].append("source_distinction_checks")
 
 TOOL_DISPATCH = {
     "lookup_doctrine": lambda i: tool_lookup_doctrine(i["source_word"]),
@@ -499,6 +509,7 @@ def run_lemma_analyst(lemma: str, question: str) -> dict:
         f"Question from reviewer: {question}\n\n"
         f"Gather corpus evidence via tools, then submit_verdict."
     )
+    user_msg += distinctions.packet(data, verse_path)
     messages: list[dict] = [{"role": "user", "content": user_msg}]
 
     for iteration in range(MAX_ANALYST_ITERATIONS):
@@ -556,8 +567,7 @@ lookup_book_context, read_drafter_reasoning) and two terminal actions \
 then call exactly one terminal action.
 
 The framework that governs your job is in the POLICY block below. Apply it. \
-The default outcome is submit_unchanged. Every verse you leave alone is a verse \
-you have validated. Submit a revision only when you can name a specific defect \
+Complete the source-distinction checks before an unchanged decision; unchanged is not a fidelity certification. Submit a revision only when you can name a specific defect \
 AND show the drafter's documented reasoning either does not address it or is \
 wrong on the evidence.
 
@@ -567,8 +577,8 @@ lookup_doctrine and (where the word has a documented decision) \
 read_drafter_reasoning.
 """
     if POLICY_FILE.exists():
-        return base + "\n\n---\n\n" + POLICY_FILE.read_text(encoding="utf-8")
-    return base
+        return base + "\n\n---\n\n" + POLICY_FILE.read_text(encoding="utf-8") + "\n\n" + distinctions.policy()
+    return base + "\n\n" + distinctions.policy()
 
 
 def anthropic_call(messages: list[dict], system: str, model: str, tools: list[dict] | None = None) -> dict:
@@ -643,10 +653,10 @@ def review_verse(verse_path: pathlib.Path, model: str = DEFAULT_MODEL) -> dict:
             tname = block["name"]
             tin = block.get("input") or {}
             if tname == "submit_revision":
-                terminal = {"kind": "revision", "revised_text": tin.get("revised_text", ""), "rationale": tin.get("rationale", "")}
+                terminal = {"kind": "revision", "revised_text": tin.get("revised_text", ""), "rationale": tin.get("rationale", ""), "source_distinction_checks": tin.get("source_distinction_checks")}
                 break
             if tname == "submit_unchanged":
-                terminal = {"kind": "unchanged", "brief_reason": tin.get("brief_reason", "")}
+                terminal = {"kind": "unchanged", "brief_reason": tin.get("brief_reason", ""), "source_distinction_checks": tin.get("source_distinction_checks")}
                 break
             handler = TOOL_DISPATCH.get(tname)
             if handler is None:
@@ -659,6 +669,12 @@ def review_verse(verse_path: pathlib.Path, model: str = DEFAULT_MODEL) -> dict:
                 tool_results.append({"type": "tool_result", "tool_use_id": block["id"], "content": json.dumps({"error": str(exc)}), "is_error": True})
 
         if terminal is not None:
+            audit = distinctions.validate_checks(data, terminal.get("source_distinction_checks"),
+                                                  context=distinctions.context_block(verse_path),
+                                                  result_text=terminal.get("revised_text", current))
+            if terminal["kind"] == "unchanged" and audit["requires_maintainer_review"]:
+                terminal["kind"] = "review_required"
+            terminal["source_distinction_audit"] = audit
             result = {
                 "verse_path": str(verse_path.relative_to(REPO_ROOT)),
                 "reference": reference,
@@ -945,6 +961,9 @@ def apply_proposals(manifest_path: pathlib.Path) -> None:
         data = yaml.safe_load(path.read_text(encoding="utf-8"))
         new_text = decision["revised_text"]
         old_text = data["translation"]["text"]
+        if prop.get("current_text") is not None and prop["current_text"] != old_text:
+            raise ValueError("Approved proposal input is stale; review the current verse before applying")
+        distinctions.assert_approved(data, new_text)
         if new_text == old_text:
             skipped += 1
             continue
@@ -1046,7 +1065,8 @@ def main() -> None:
     n_unchanged = sum(1 for p in proposals if p.get("decision", {}).get("kind") == "unchanged")
     n_cap = sum(1 for p in proposals if p.get("decision", {}).get("kind") == "cap_reached_unchanged")
     n_err = sum(1 for p in proposals if p.get("error"))
-    print(f"\nproposals: revise={n_revise} unchanged={n_unchanged} cap={n_cap} err={n_err} → {args.out}")
+    n_manual = sum(1 for p in proposals if p.get("decision", {}).get("kind") == "review_required")
+    print(f"\nproposals: revise={n_revise} unchanged={n_unchanged} review_required={n_manual} cap={n_cap} err={n_err} → {args.out}")
     print("\nReview the proposals manifest. To apply approved ones, set 'approved': true on each\n"
           "and run:  python3 tools/agentic_revise.py --apply " + args.out)
 
