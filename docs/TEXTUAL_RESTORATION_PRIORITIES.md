@@ -91,6 +91,20 @@ main English are unchanged. Existing promotion gates remain in force. Select
 the next case by its discriminating evidence and translation consequence, not
 by an obsolete blocker or the availability of another infrastructure task.
 
+Isaiah 53:11's provisional “light” source and English have now been adopted in
+the canonical repository and integrated with the updated source-distinction
+policy at `a90a1d9954`; see the research log and
+[policy compatibility record](../sources/textual_restoration/applications/isaiah53_11_policy_compatibility.v1.json).
+Do not restart its completed source/schema/application work. Reader deployment
+is a separate, still-unverified claim.
+
+The [Deuteronomy 32:8 triage](DEUT32_8_EVIDENCE_TRIAGE_2026-09-06.md) retains
+the current canonical text for now and keeps the divine-referent proposal
+provisional. It identifies the precise remaining Greek/4Q37 evidence questions,
+distinguishes completed image/Fouad consultations from uncompleted claims, and
+sets a no-repeat acquisition stop until a new resource is available. Other
+consequential cases need not wait for its inaccessible apparatus.
+
 First working demonstration: [three Hebrew variants and their English
 effects](HEBREW_COMPARISON_SAMPLE.md), with a machine-readable source snapshot.
 It compares published readings; it does not claim new image restoration.

@@ -3655,6 +3655,38 @@ deployed disclosure, a complete OT/NT comparison or recovered autographs. The
 earlier remote-publication blocker is resolved editorially; the Git push result
 must still be checked before claiming the result is on remote main.
 
+### 2026-09-06 — Deuteronomy 32:8 evidence triage and explicit stop condition
+
+The preceding Isaiah work was pushed to main as `a90a1d9954`. Returned to
+textual evidence rather than extending its validation machinery. Read the
+current Deuteronomy verse, existing candidate and successive Greek, Fouad,
+Hebrew-image, numbering and OHB records. Independent triage separated genuinely
+discriminating evidence from partly stale acquisition instructions.
+
+The [new bounded report](DEUT32_8_EVIDENCE_TRIAGE_2026-09-06.md) records actual
+consultation of Bar-On/Paz pp. 29–31, especially the complete note 5, with PDF
+hash and locators. The PDF skill prompted rendered-page verification after web
+screenshots timed out; the institutional download and local rendering succeeded.
+The independent agent confirmed the interpretation of the relevant printed
+note. Neither model consultation counts as a new manuscript or modern apparatus
+inspection. Temporary source PDF/renderings were not committed.
+
+Wevers's ordinary p. 513 preview explicitly refused viewing; no bypass or
+purchase followed. Dayfani's institutional abstract was read, not the full
+reconstruction. Second-hand apparatus transcriptions were search leads only.
+The report records remaining complement/hand and excerpt-adaptation questions,
+without treating every unfinished archival task as an automatic editorial veto.
+
+Decision: no canonical change, no confidence increase; preserve the moderate
+divine-referent working proposal and contrary readings. Do not repeatedly chase
+the same unavailable pages or repeat the completed Fouad/IAA consultations.
+The priorities page now reflects this stop/reopening condition and Isaiah's
+completed repository adoption. Canonical Deut 32:8 SHA256 remains
+`1caf32ddf68b552d662a94cff90970e5eacd9028ac0a4b8c89228634b14702af`;
+candidate SHA256 remains
+`7f7ee48c97c0d8ef54419ba653f075f5a7b40baa784bf9e2d96231dda02f6797`.
+This documentation-only pass adds no code, new restoration or publication claim.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
