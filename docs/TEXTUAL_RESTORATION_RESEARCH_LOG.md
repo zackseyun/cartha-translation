@@ -3425,6 +3425,51 @@ triggered and no live release was verified. This closes the local component's
 missing-note behavior, not deployed disclosure or the source-schema/application
 requirements. The canonical Isaiah verse and its candidate remain unchanged.
 
+### 2026-09-06 — First strictly verified, provisionally reviewed Hebrew source record
+
+Previous turn: progress through the source-note renderer repair. This pass adds
+the source-record portion of production integration without loosening the
+historically pinned canonical verse schema or rewriting completed receipts.
+[Isaiah 53:11](../sources/ot/pob_critical/isaiah/053/011.json) is now the first
+record in a deliberately partial `sources/ot/pob_critical` corpus. It contains
+the exact editorially approved Hebrew and apparatus, explicitly labeled
+`POB-critical`, with a provisional composite-source disclosure. This is one
+reviewed source record, not all Isaiah, a canonical English change, a new
+manuscript discovery, or publication approval.
+
+The [strict source schema](../schemas/ot-reviewed-critical-source.schema.json)
+requires provenance rather than merely accepting a new edition string. The
+[read-only validator](../tools/textual_restoration/reviewed_critical_source.py)
+checks the actual editorial review, candidate, evidence and explicit composition.
+It reads the original canonical base from its pinned Git revision and verifies
+its exact bytes, preserving provenance after a future live-verse change. The
+source text and apparatus must equal the reviewed candidate; only source-stage
+labeling and the specified generic composition disclosure differ from the
+historical draft. Application/publication authority remain false.
+
+Independent `/root/reviewed_source_contract_judge` found a substantive first-pass
+defect: although approved text was protected, a replacement composition bundle
+could describe a whole-verse patch, cite the candidate itself, and be repinned
+inside the source record. Fixed this by requiring a separately trusted composition
+hash as well as the separately trusted editorial-review hash. A mutable source
+record can no longer select its own replacement provenance. The exact bypass
+is now a regression test; no editorial judgment was changed to make tests pass.
+
+The reviewer rechecked that repair and passed. Sixteen focused tests pass,
+including actual records, malformed source/provenance, text/apparatus drift,
+approval boundaries, replacement-plus-repin, multiple-patch coordinates, and
+use of the Git baseline rather than a live canonical-file pin. No broader
+corpus or deployed-reader claim follows. Final validator SHA256:
+`b15c6b416adf5e260ba035f38f64b34d96a1ee68720d4c8150805d1cd34d54d1`.
+Schema SHA256: `bf56e6e1d4d71bb8ec0600c5d4b8017ebef957ebd5532c09afe7bb79d822d1fc`.
+Source record SHA256: `f7014f607b0344d8a3b5723cd7edcc314029916dfeee4c341d9dd9b394f0f9e9`.
+
+The [corpus README](../sources/ot/pob_critical/README.md) gives the exact
+verification command and trust inputs. Existing research candidates and old
+schema/tests remain unchanged. Next integrate this verified source object with
+the full canonical verse and reviewed application mechanism; source-record
+acceptance alone does not finish that migration or synchronize reader editions.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
