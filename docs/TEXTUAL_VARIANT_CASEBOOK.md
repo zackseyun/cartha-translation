@@ -36,7 +36,8 @@ Three Hebrew cases have the earlier [provisional adjudication](HEBREW_PILOT_ADJU
 | [Habakkuk 1:12](../translation/ot/habakkuk/001/012.yaml) — We shall not die / proposed divine-subject wording | conjecture-control | 1 | not applicable | MT; versions; scribal-correction traditions distinguished from extant variants |
 
 The [Habakkuk 1:12 comparison](HABAKKUK_1_12_SOURCE_COMPARISON_2026-09-06.md)
-provisionally retains the current text and proposes clearer disclosure. In the
+provisionally retains the current source/main English; its clearer disclosure
+has now been applied after scoped review and complete-book export checks. In the
 consulted published transcriptions, neither 1QpHab nor Mur. 88 preserves the
 letter distinguishing “we” from “you”; supplied text is not an extra witness
 vote. The generated inventory above remains a screening snapshot, not an

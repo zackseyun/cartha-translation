@@ -3770,6 +3770,23 @@ rechecked the canonical SHA256 against the report, unchanged, and checked the
 documentation diff for whitespace errors. No software test or deployment
 claim follows from these documentation checks.
 
+### 2026-09-06 — Habakkuk disclosure applied without new infrastructure
+
+Applied the [Habakkuk report's scoped disclosure](HABAKKUK_1_12_SOURCE_COMPARISON_2026-09-06.md)
+after one independent unblinded editorial/application review. The
+[application record](../sources/textual_restoration/applications/habakkuk1_12_disclosure_application.v1.json)
+records exact baseline/candidate hashes, judgment, actual complete-book export
+comparison and field checks. Only the footnote, two rationales and review-state
+handling change. Old cross-check contents are preserved separately; no old
+agreement score certifies the revised note. No new tool, image acquisition,
+source selection, historical receipt rewrite or whole-corpus publication.
+
+The initial exact-byte comparison caught a missing final blank line and passed
+after correction. The schema/field/canonical-target checks passed; the complete
+56-verse export differs only at the intended footnote. The whitespace check
+reports the retained terminal blank line, not a clean result. Historical
+whole-corpus policy-pin verifiers remain outside this scoped validation claim.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

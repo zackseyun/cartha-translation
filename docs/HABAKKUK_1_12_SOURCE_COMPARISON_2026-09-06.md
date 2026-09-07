@@ -1,5 +1,9 @@
 # Habakkuk 1:12: preserved text versus scribal-correction tradition
 
+**Application update:** the scoped footnote/rationale correction described at
+the end of this report is now applied in the repository. The original research
+decision below is retained as preparation history, not current application status.
+
 Checked 2026-09-06. **Retain “We will not die” provisionally; propose a more
 precise footnote.** No canonical source, English, or review metadata is changed
 by this report. This is a bounded comparison, not exhaustive manuscript collation.
@@ -67,3 +71,22 @@ against actual preservation. Reopen these two Hebrew transcriptions only for
 a concrete contrary reading or new material evidence, not another identical
 search. The disclosure proposal can receive a separate editorial decision
 without pretending those remaining historical questions have been settled.
+
+## Scoped disclosure application — 2026-09-06
+
+The [exact candidate](../sources/textual_restoration/applications/habakkuk1_12_disclosure_candidate.v1.yaml)
+uses plainer reader wording than the research proposal: it explains the tradition
+as a reverent substitution and limits the preservation claim to the manuscript
+passages checked. It also corrects the two relevant rationales, archives the
+unchanged former cross-check, and resets live review status. Independent
+`habakkuk_disclosure_editor` approved that exact candidate for scoped application
+after reading the report, current policy and Habakkuk 1:11–13; this was unblinded.
+
+The [application record](../sources/textual_restoration/applications/habakkuk1_12_disclosure_application.v1.json)
+binds before/after bytes, preserves the review decision, and records actual
+checks. Hebrew, main English, unrelated decisions and historical revisions are
+unchanged. Schema and exact-byte checks passed. The full actual Habakkuk export
+(3 chapters, 56 verses) changes only the verse-12 footnote text. The tracked
+canonical diff from the recorded checkpoint contains only this verse. A terminal
+blank line remains to preserve the exact reviewed candidate; the whitespace
+check reports it. No full-corpus historical-verifier pass or deployment is claimed.
