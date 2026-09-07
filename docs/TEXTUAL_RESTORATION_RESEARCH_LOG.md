@@ -4447,6 +4447,20 @@ full-book export comparisons (719/943 verse keys, only three changed objects).
 No manuscript-priority claim, unrelated lexical-note repair, new infrastructure,
 image work or deployment.
 
+### 2026-09-07 — Haggai source comparison and 2:1 disclosure
+
+The preceding OT note-delivery repair was progress. Compared the Haggai portions
+of the three existing QDR book-map records, with 87 indexed lines and 36 reference
+tags distinguished from surviving verse coverage. Root read the canonical book
+and Mur88; one agent handled 4Q77/4Q80. Found Mur88 22:15's recipient formula
+against WLC's explicit agency formula at 2:1; consulted selected local Greek
+controls without treating them as manuscript votes. Added qualified disclosure
+and repaired its existing agency-note anchor after one independent locus check.
+The [report and receipt](HAGGAI_DSS_COMPARISON_2026-09-07.md) record preservation
+limits, contrary transmission explanations, unchanged source/main English,
+38-verse export verification and the stop condition. No new image reading,
+all-source completeness claim, validator, frozen-receipt rewrite or deployment.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
