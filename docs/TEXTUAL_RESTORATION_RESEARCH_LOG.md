@@ -4135,6 +4135,34 @@ passage collation; broader OT/NT work remains unfinished. Next selection must
 use an underexamined source/reading with a consequential test, not reopen this
 case simply because its scholarly disagreement persists.
 
+### 2026-09-06 — Ruth 3:15: distinguish gender evidence and apply disclosure
+
+Previous goal turn was progress: the Exodus follow-up was committed and parked
+behind a discriminating-evidence condition. This pass chose an unexamined Ruth
+lead from the existing local-note inventory rather than reopening that case.
+The [Ruth report](RUTH_3_15_SOURCE_COMPARISON_2026-09-06.md) records the actually
+read versioned 2Q17 transcription, CATSS Greek target apparatus, local Greek
+and Hebrew context, and SIL's attributed versional report. 2Q17's disputed verb
+is supplied; the Greek base verb is gender-neutral, but published variants
+explicitly add either Ruth or Boaz. Neither modern translations nor separate
+editions of the same fragment count as additional ancient witnesses.
+
+Retained masculine Hebrew and “he” provisionally, preserving the competing
+narrative explanation. Applied qualified note `b`, two anchor corrections,
+and connected rationale updates; historical reviews preserved and current
+record marked draft/needs-review. One independent local comparison and its
+bounded candidate review supported this scope; external-source observations
+were root's, not independently reread by the agent. Access failures and the
+precise reopening condition are in the report. No image work or new validator.
+
+Schema, exact record delta, source/plain-English preservation, archived-review
+equality, all 85 Ruth source/export identifiers, exact full-book output delta,
+eight reader-footnote tests and diff checks passed. The report holds actual
+input/output hashes. No other verse was changed and no deployment occurred.
+Context inspection also exposed misplaced notes in Ruth 3:16 and 4:1; those
+are separate preexisting defects, not silently included in this application.
+This adds one actual passage comparison, not full Ruth or all-source coverage.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

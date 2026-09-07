@@ -143,6 +143,12 @@ recorded in that report. The identified note/metadata correction is now
 do not repeat that completed disclosure. The source and main English remain
 unchanged, and full-verse rendering review is a separate open question.
 
+A newly examined local-note lead,
+[Ruth 3:15](RUTH_3_15_SOURCE_COMPARISON_2026-09-06.md), provisionally retains
+the masculine subject after published DSS preservation and Greek variant
+comparison. Its qualified disclosure and two anchor repairs are applied and
+full-book export-checked; do not repeat the completed bare-Greek gender check.
+
 The [corpus-wide Hebrew and NT map](HEBREW_AND_NT_VARIANT_MAP.md) now indexes
 all 66 canonical books, WLC written/read variants, and the official 27-book
 SBLGNT edition apparatus. The [48-case shortlist](TEXTUAL_VARIANT_CASEBOOK.md)
