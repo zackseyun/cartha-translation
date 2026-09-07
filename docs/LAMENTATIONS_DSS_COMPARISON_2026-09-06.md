@@ -290,3 +290,22 @@ full identification argument only when testing a consequential reading at
 these loci. No fresh image work or general Lamentations rescreen is required
 to record this source. Registry validation and preservation checks passed;
 they establish metadata consistency, not the proposed physical placement.
+
+### Access-record correction — 2026-09-07
+
+The new 4Q176 registry entry mistakenly carried the local QDR dataset's
+noncommercial restriction onto the scholarly transcription URL. Corrected that
+access record: the versioned page's Copyright section explicitly displays
+**CC BY-SA 4.0**, attributed to DFG project 465277421, *Qumran-Digital: Text und
+Lexikon*, © 2022, with predecessor-text attribution. Its linked [license](https://creativecommons.org/licenses/by-sa/4.0/legalcode)
+retains attribution and applicable ShareAlike conditions; this correction is
+not permission to strip them or relicense imported editorial text as POB's own.
+
+The separate Qumran Digital Reader [README at the pinned commit](https://github.com/evenderekh/qdr/blob/f54f38464e18409eed8286fe24dd24f88d4735dd/README.md)
+(local lines 80–93, consulted) distinguishes MIT platform software from the
+ETCBC/Naaijer/Abegg-derived DSS data under CC BY-NC 4.0. The registry's general
+Judean Desert entry already kept these licenses separate and remains unchanged.
+No corpus was imported or relicensed, no image rights changed, and no translation
+changed. Record rights per actual artifact/provider/version, not merely by the
+shared manuscript name or the similar project names. This corrects a metadata
+error; it is not a legal clearance of every downstream use.

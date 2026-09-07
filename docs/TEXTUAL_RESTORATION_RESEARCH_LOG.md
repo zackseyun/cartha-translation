@@ -4483,6 +4483,18 @@ limits and no-repeat stop in the Haggai report. No canonical changes or new
 review loop; this is a bounded negative result, not corpus-wide translation
 approval. Documentation-only validation used Git whitespace checks.
 
+### 2026-09-07 — Corrected 4Q176's source-specific license attribution
+
+The preceding related-form scan was a bounded negative result. Verified a
+separate practical access issue against the versioned transcription's copyright
+notice, linked Creative Commons terms and pinned local QDR README. The general
+registry distinction was already correct, but the recently added 4Q176 entry
+incorrectly inherited the dataset's NC restriction. Corrected that access entry
+to the page's displayed BY-SA license; preserved all other witness data, JSON
+dataset restrictions and image-rights limits. The Lamentations report records
+the correction and per-artifact rule. Registry validation passed; no new
+infrastructure, corpus import, canonical edit or deployment.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;
