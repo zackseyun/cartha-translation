@@ -4461,6 +4461,19 @@ limits, contrary transmission explanations, unchanged source/main English,
 38-verse export verification and the stop condition. No new image reading,
 all-source completeness claim, validator, frozen-receipt rewrite or deployment.
 
+### 2026-09-07 — Haggai 2:22 English number corrected
+
+The prior Haggai source comparison made progress but did not certify all its
+English. Tested the existing singular “rider” against both Hebrew plural rider
+forms and the rationale that had deliberately smoothed the first one. One
+independent comparison favored “the chariot and its riders”; applied that
+one-word correction, preserving Hebrew and all other words/notes. The
+[follow-up](HAGGAI_DSS_COMPARISON_2026-09-07.md#english-consequence-plural-riders-at-222--2026-09-07)
+records the strongest collective alternative, old-rationale correction,
+archived history, exact hashes, source controls and successful 38-verse export
+and eight-test checks. No new manuscript attestation, restoration image,
+judge loop, frozen-manifest rewrite or deployment.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

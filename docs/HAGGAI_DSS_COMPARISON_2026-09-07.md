@@ -5,7 +5,9 @@
 Compared the Haggai portions of all three source records in the existing QDR
 book map against POB: 4Q77, 4Q80 and Mur88. Found a source-relevant preposition
 difference at 2:1 and added qualified disclosure. Hebrew and marker-free English
-remain unchanged; historical priority is unresolved. This is not a complete
+were unchanged in that source pass; historical priority is unresolved. The
+separate 2:22 English-number correction below subsequently changes one word.
+This is not a complete
 Haggai manuscript census, all-version collation or new manuscript transcription.
 
 The [receipt](../sources/textual_restoration/comparisons/haggai_dss_screen.v1.json)
@@ -68,3 +70,58 @@ notes exported intact. Checked receipt input hashes, all 38 baseline hashes and
 the exact full-verse comparison JSON. Eight reader-footnote tests pass. Canonical
 2:1 SHA256 before `afde1f231b25cd676bc0d75663a3f278f71583d573b26e087d355123b7b3eb3a`,
 after `cc6ec19b5402c3594fb8a3104143b2f9cfd21aefc83548dd7a2fbb068ab5fa4a`.
+
+## English consequence: plural riders at 2:22 — 2026-09-07
+
+Changed **“the chariot and its rider” → “the chariot and its riders.”**
+The source has singular `מֶרְכָּבָה` but plural `רֹכְבֶיהָ`, followed by
+another plural rider form, `רֹכְבֵיהֶם`. Canonical Hebrew and the vendored
+WLC/OSHB XML agree; both participles have `Vqrmpc` morphology, with different
+possessive suffixes. The [publisher's BHS text](https://www.die-bibel.de/bibel/BHS/HAG.2)
+was also consulted at 2:22; this is another edition control, not an independent
+ancient witness. Mur88's supplied word does not corroborate the plural as ink.
+
+The old rationale acknowledged the plural but imposed singular occupants for
+“paired singular imagery,” then claimed a broadening in the following clause.
+That number contrast is not in the Hebrew. The revised wording retains the
+singular chariot image and plural occupants/repetition in intelligible English.
+The strongest alternative, “the chariots and their riders,” makes a plausible
+collective referent explicit but loses the singular vehicle image. The objection
+that one chariot may sound overly specific is real; the kingdom/military context
+supports generic “the chariot” without requiring one occupant.
+
+One independent agent selected among three anonymized phrase alternatives
+in the same full-verse frame before reading the existing draft/rationale,
+then reviewed that rationale. Its scoped pass favored the plural correction;
+this was one candidate order, not a randomized benchmark or full-verse scholarly
+approval. Root read 2:20–23 and made the separate application decision. Existing
+source-distinction and doctrine files retain their previously verified hashes.
+
+```json
+{
+  "source_distinction_checks": [{
+    "candidate_id": "HAG.2.22-chariot-riders",
+    "disposition": "propose",
+    "source_evidence": "מֶרְכָּבָה וְרֹכְבֶיהָ … סוּסִים וְרֹכְבֵיהֶם: singular chariot; both rider forms plural.",
+    "proposed_text": "I will overturn the throne of kingdoms[a], and I will destroy the strength of the kingdoms of the nations. I will overturn the chariot and its riders, and horses and their riders will go down[b], each by the sword of his brother.",
+    "alternative_text": "",
+    "rationale": "Preserve singular chariot, plural occupants and repeated plural riders. The previous singular rider introduces a number contrast not expressed by the source. All other words and note anchors remain unchanged."
+  }]
+}
+```
+
+Applied the proposal to canonical YAML after review, without deploying it.
+Updated only the connected lexical choice/rationale and review status; archived
+the exact old lexical decision and review objects. Source, notes/anchors,
+draft provenance and theological decisions are unchanged. The earlier source
+screen's baseline manifest is historical and was not repinned for this edit.
+
+Checks passed: one-word text delta, one lexical-entry delta, exact source/note/
+historical preservation, schema, all 38 exported verse keys, only 2:22 changed,
+unchanged exported notes, eight reader-footnote tests. An initial one-off XML
+lookup missed the OSIS namespace; the corrected namespace-aware check verified
+both source forms. No parser change was necessary. Record SHA256 before
+`0ef541736dbe460fcacb55ca7469bf1ffd7220a59fb21c0fdd0f2146debf5846`, after
+`bca88068dc771fbe981c396c16c986b478fa052d9e92389374a6c9d1f187e69a`.
+This is an English fidelity repair, not a new Hebrew restoration or a general
+rule that every collective expression must be translated mechanically.
