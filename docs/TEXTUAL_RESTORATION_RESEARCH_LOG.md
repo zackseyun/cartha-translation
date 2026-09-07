@@ -4333,6 +4333,19 @@ full-Romans coverage pass is claimed. The report records hashes and the next
 delivery gate. No new agent, restoration experiment, exporter change or
 deployment was used in this closeout. Keep the unrelated Geniza file untouched.
 
+### 2026-09-06 — Verified doxology source placement and restored reader coverage
+
+Resolved the prior Romans coverage limitation with three explicit supplementary
+export opt-ins, not fabricated SBLGNT rows or a global inclusion of unreviewed
+material. Official byztxt v2.0.3 Greek matches the three existing source strings
+apart from case; its references are 14:24–26, unlike POB's 16:25–27. Corrected
+the placement disclosures and restored missing note anchors. The [existing report](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#supplementary-doxology-delivery--2026-09-06)
+records evidence, independent review, hashes, 433/433-ID validation and 15 passing
+tests. Two missing historical draft hashes per record remain schema errors;
+no provenance values were invented. The 27 other source-absent NT records remain
+outside the opt-in gate. No manuscript-priority debate, source replacement,
+main-English rewrite, generated reader bundle or deployment occurred.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

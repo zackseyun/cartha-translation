@@ -17,6 +17,21 @@ The [66-book map](HEBREW_AND_NT_VARIANT_MAP.md) and
 [priority casebook](TEXTUAL_VARIANT_CASEBOOK.md) are the initial research queue.
 They do not authorize silent source replacement.
 
+### Supplementary reader records
+
+An absent base-edition verse is not a missing row to invent. Where POB already
+has a secondary-witness translation, verify the cited edition/version, exact
+wording and source-to-reader reference mapping before setting
+`reader_supplement: true`. Preserve the secondary status and disclose editorial
+placement in an anchored textual note. The mobile exporter requires those
+structural safeguards; the boolean records a scoped editorial inclusion decision,
+not an automated provenance check, earliest-text judgment or whole-verse approval.
+Unreviewed supplementary records stay excluded. Check both base-edition and POB
+record coverage so a successful export cannot be mistaken for complete coverage.
+The [Romans pilot](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#supplementary-doxology-delivery--2026-09-06)
+has 433/433 IDs with three disclosed supplements; its missing legacy generation
+hashes remain explicit schema debt, not reconstructed evidence.
+
 The [2026-09-04 source coverage audit](BIBLICAL_SOURCE_COVERAGE_AUDIT_2026-09-04.md)
 adds the catalogue-backed discovery requirements, including minuscules,
 lectionaries, commentary manuscripts, versions and quotations. UBS6 is an

@@ -714,14 +714,19 @@ def export_book(book_code: str) -> dict[str, Any] | None:
         return export_psalms_book()
 
     expected = expected_chapter_map(book_code)
+    supplements = reviewed_supplements(book_code, expected)
+    for chapter, verse in supplements:
+        expected.setdefault(chapter, []).append(verse)
     chapters_out: list[dict[str, Any]] = []
 
     for chapter in sorted(expected):
         verses_out: list[dict[str, Any]] = []
         chapter_complete = True
 
-        for verse in expected[chapter]:
-            record = load_translation_record(book_code, chapter, verse)
+        for verse in sorted(expected[chapter]):
+            record = supplements.get((chapter, verse))
+            if record is None:
+                record = load_translation_record(book_code, chapter, verse)
             if record is None:
                 chapter_complete = False
                 break
@@ -748,6 +753,45 @@ def export_book(book_code: str) -> dict[str, Any] | None:
         "name": book_title(book_code),
         "chapters": chapters_out,
     }
+
+
+def reviewed_supplements(
+    book_code: str, expected: dict[int, list[int]],
+) -> dict[tuple[int, int], dict[str, Any]]:
+    """Opt-in NT supplements, never inferred from a numbering gap.
+
+    Inclusion is an editorial reader decision, not an assertion that the base
+    edition contains the verse or that its historical priority is established.
+    Require an explicit per-record decision and a visible textual disclosure.
+    Unreviewed records remain excluded; malformed opted-in records fail closed.
+    """
+    if book_code not in sblgnt.NT_BOOKS:
+        return {}
+    directory = TRANSLATION_ROOT / "nt" / sblgnt.NT_BOOKS[book_code][1]
+    supplements = {}
+    for path in sorted(directory.glob("[0-9][0-9][0-9]/[0-9][0-9][0-9].yaml")):
+        chapter, verse = int(path.parent.name), int(path.stem)
+        if verse in expected.get(chapter, []):
+            continue
+        record = yaml.safe_load(path.read_text(encoding="utf-8"))
+        if not isinstance(record, dict) or record.get("reader_supplement") is not True:
+            continue
+        source = record.get("source") or {}
+        text = str((record.get("translation") or {}).get("text") or "").strip()
+        notes = reader_footnotes(record, text)
+        if (
+            chapter < 1 or verse < 1
+            or record.get("id") != f"{book_code}.{chapter}.{verse}"
+            or record.get("textual_status") != "secondary_witness"
+            or not isinstance(source, dict)
+            or not str(source.get("edition") or "").strip()
+            or not str(source.get("text") or "").strip()
+            or not text
+            or not any(n.get("reason") in {"textual_critical", "textual_variant"} for n in notes)
+        ):
+            raise ValueError(f"Invalid reader supplement or missing visible textual note: {path}")
+        supplements[(chapter, verse)] = record
+    return supplements
 
 
 def export_apocrypha_book(book_code: str) -> dict[str, Any] | None:

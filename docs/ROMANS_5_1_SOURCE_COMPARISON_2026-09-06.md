@@ -112,6 +112,9 @@ because disagreement persists. No new restoration, infrastructure or deployment.
 
 ## Validation and export limitation — 2026-09-06
 
+Historical closeout below: the coverage limitation was subsequently resolved for
+Romans only by the explicitly reviewed supplements described in the next section.
+
 The first whole-book audit failed its assertion that every canonical YAML ID
 appears in the mobile export. Diagnosis: `expected_chapter_map` follows
 `draft.iter_source_verses`, and the vendored MorphGNT Romans file ends at 16:24.
@@ -148,3 +151,57 @@ SHA-256 audit anchors (export JSON uses `ensure_ascii=False, sort_keys=True`):
 - Romans export before: `cc4e3ccf25720871b01d0a05c2581a31e5745392474d8975fbea19ed5ec6101f`
 - Romans export after: `e11cd4bfd9dd9bd22e954e680add5af37556313bbd25e9de9dc81d80276f5ab8`
 - Vendored/upstream MorphGNT Romans: `364b3b57c70e731920c7fa8a61f09ecd53eed858f7f3590596066484d0638cc6`
+
+## Supplementary doxology delivery — 2026-09-06
+
+The next pass was progress on the diagnosed coverage gap, not another reading
+debate. An independent bounded provenance check and a direct local comparison
+used the [official byztxt v2.0.3 Romans text](https://github.com/byztxt/byzantine-majority-text/blob/v2.0.3/csv-unicode/accents/no-variants/RO.csv#L375-L377).
+The [repository's version guidance](https://github.com/byztxt/byzantine-majority-text#versions)
+identifies this as the closest Unicode version to RP2005; current main represents
+RP2018. This is a digital-edition verification, not a new printed-volume or
+manuscript collation.
+
+| POB location | Cited digital edition location |
+|---|---|
+| Romans 16:25 | Romans 14:24 |
+| Romans 16:26 | Romans 14:25 |
+| Romans 16:27 | Romans 14:26 |
+
+All three Greek strings match after whitespace/case normalization; the observed
+case differences are Χριστοῦ/χριστοῦ in the first and last verses. Greek is
+unchanged. Corrected the misleading claim of Byzantine chapter-16 placement,
+added digital source references and explicit reader disclosures, and repaired
+the missing/case-mismatched anchors in 16:25 and 16:27. Marker-free English,
+lexical/theological decisions and historical generation/revision objects are
+preserved. Current review remains draft/needs-review; no claim of earliest-text
+or full-translation approval follows from allowing supplementary reader access.
+
+The existing drafting workflow intended supplementary readings to be available
+with textual notes. `reader_supplement: true` now explicitly opts these three
+records into the mobile export without adding fictional SBLGNT rows. The gate
+requires secondary-witness status, matching ID, nonempty source/text and a
+visible textual note. Other absent records are not automatically admitted.
+The exporter retains chapter completeness checks and avoids duplicate IDs.
+The schema recognizes the existing RP edition label; notes use its existing
+`textual_variant` reason. The drafting-script placement comment is corrected.
+
+Verified: 433 unique exported Romans IDs equal all canonical file IDs; the 430
+previously exported verse objects are unchanged. All three added records carry
+visible placement notes. A scan of all 27 NT books finds only these three explicit
+opt-ins. The initial inventory found 30 source-absent secondary records across
+the NT, six without reader-visible notes; 27 records remain excluded and their
+provenance/disclosures are not certified by this pass. One independent code and
+application review found no concrete defect. The reviewer could not run tests
+under system Python (missing PyYAML); the root used the project's virtualenv.
+
+All 15 footnote/supplement tests pass. The full verse-schema check initially
+failed on legacy metadata; after aligning edition/note/status fields, exactly
+two preexisting errors per record remain: missing historical `ai_draft`
+`prompt_sha256` and `output_hash`. These were not fabricated or waived as a
+schema pass. Retain them as provenance debt before claiming fully schema-valid
+publication records. No generated bundle or deployment was produced.
+
+Primary CSV SHA-256: `9a42c4ab2e0dbf9dc3d5f695a3a96737f738ceb2acc9c88ccdf31a2d43b03a06`.
+Final 433-record export SHA-256 (same JSON convention as above):
+`e925c15857adf41a93828f89d730bba7bcdc1e46c8ffe38296b11a24fc2833d4`.

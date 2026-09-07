@@ -64,12 +64,12 @@ outweigh age. The method is applied in the [three-passage report](HEBREW_PILOT_A
 
 ### Priority 0 — Resolve consequential differences using the existing system
 
-Immediate delivery gate after the Romans 5:1 closeout: the mobile exporter
-includes 430 Romans source IDs but excludes the three existing supplementary
-records at 16:25–27. Reconcile the supplementary-record publication policy,
-provenance/disclosure and export coverage before another low-impact note case.
-Do not treat this as a parser loss, invent missing source rows, or claim full
-Romans coverage. See the [diagnosis and validation](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#validation-and-export-limitation--2026-09-06).
+Romans export coverage is now 433/433 canonical IDs: three explicitly reviewed
+supplements disclose RP2005-era wording relocated from 14:24–26. No SBLGNT rows
+were invented. This does not approve the whole translation, cure missing legacy
+draft hashes, or establish original placement. The NT inventory still has 27
+excluded supplementary records requiring provenance/disclosure checks before
+opt-in. See the [delivery result](ROMANS_5_1_SOURCE_COMPARISON_2026-09-06.md#supplementary-doxology-delivery--2026-09-06).
 
 The registry, coverage map, comparison records and application pilots already
 exist. Do not rebuild them as prerequisites for each case. Choose one question
