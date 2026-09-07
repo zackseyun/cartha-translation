@@ -3599,6 +3599,62 @@ merging/pushing; no repeat manuscript research is needed. This is also concrete
 evidence that global live-document pins are imposing maintenance cost and should
 not be multiplied in future casework.
 
+### 2026-09-06 — Current-policy compatibility resolved without another validator layer
+
+The previous turn made real progress: exact Isaiah adoption and verification,
+followed by discovery of a concurrent policy update. This pass fetched and
+inspected that update, then merged it as
+`4b42db932de29181e76ad17ac76d620f8cf8d208`. It changes no OT verse files.
+Four historical protected paths changed upstream: `DOCTRINE.md`,
+`METHODOLOGY.md`, `tools/draft.py`, `tools/prompts/revision_policy.md`.
+No unrelated policy or John 21 rendering was reverted.
+
+Independent `/root/isaiah_current_policy_review` read the new policies, Isaiah
+53:10–12, the frozen source report, earlier editorial judgment and recorded
+A/B/C English alternatives. It approved public repository adoption of the exact
+provisional Isaiah record, without bundled-reader/deployment approval. The
+[compatibility record](../sources/textual_restoration/applications/isaiah53_11_policy_compatibility.v1.json)
+preserves the policy hashes, actual full-sentence comparisons and limitations.
+It is a new judgment, not a silent replacement of old review inputs.
+
+The reviewer compared explicit "he himself" with "he"; "light of life" and
+"by knowledge of him" with the current wording; and "declare many righteous"
+with "justify many" to make the צדק root repetition visible. It retained the
+current sentence provisionally. The last comparison exposes a real tradeoff:
+"declare ... righteous" preserves the English root repetition but narrows the
+action toward a declarative mechanism; "justify" does not reproduce that root
+pattern in English. This remains open to stronger linguistic evidence, not an
+assertion that the present wording is uniquely optimal. No new manuscript or
+lexicon retrieval was performed. The incoming heuristic scanner returned no
+Isaiah candidates; the model-noticed root pattern demonstrates why that result
+is not evidence of exhaustive coverage.
+
+Direct current-state checks compared every one of 23,264 actual OT YAML blobs
+to the verified application commit `b6c87caad0b9c737dc670b89912af2e4d9e966f5`.
+All match exactly. The current Isaiah bytes equal the approved candidate and
+pass the full critical-verse schema. All application-review implementation pins
+remain unchanged. Actual ISA/JOB/2SA exports match the application receipt;
+the corpus was inventoried again afterward to detect concurrent mutation.
+The union of historical note-protection and Job input pins differs only in the
+four upstream paths above. All these results are in the compatibility record.
+
+The incoming source-distinction suite passed all 27 tests in 0.230 seconds using
+its native unittest runner. An initial pytest invocation failed because pytest
+is unavailable; no installation was needed. The old applied-receipt verifier
+was also actually tried and rejects `Prior protected input drift: DOCTRINE.md`.
+This expected historical-policy mismatch is explicitly documented, not hidden
+with skips, repins or a green full-suite claim. The older 27 source/application
+test passes remain evidence for their original checkpoint, not the new policy.
+
+To avoid compounding maintenance cost, no new validation framework or replay
+layer was added. Frozen tools and receipts remain unchanged; their current
+scope limitation is stated in the source README. A concrete source change,
+separately reviewed policy compatibility, exact whole-corpus preservation and
+real export checks justify repository integration here. They do not establish
+deployed disclosure, a complete OT/NT comparison or recovered autographs. The
+earlier remote-publication blocker is resolved editorially; the Git push result
+must still be checked before claiming the result is on remote main.
+
 Append a dated entry for every substantive research pass: question; actually
 consulted sources and locators/versions; observations versus hypotheses;
 decision and contrary explanation; changed files and source/English effect;

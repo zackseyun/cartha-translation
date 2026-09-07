@@ -17,7 +17,11 @@ remain the declared context; unchanged words are not freshly adjudicated.
 
 Schema validation alone is insufficient. The read-only verifier recomposes the
 source and checks its linked records using review and composition hashes independently supplied
-by the caller. For the actually reviewed Isaiah record:
+by the caller. **Historical commands:** these passed under the original policy,
+but now reject changed live policy pins after the incoming source-distinction
+policy update. They are not current-policy certification. To reproduce that
+historical state, use a separate checkout at `b6c87caad0`; do not reset a working
+checkout or replace the old review hashes. For that historical Isaiah record:
 
 ```bash
 .venv/bin/python -m tools.textual_restoration.reviewed_critical_source sources/ot/pob_critical/isaiah/053/011.json --trusted-review-sha256 2695236defe6209ccdd7806bd7f9e8696d261125ef09e1a6fd485c837b50043f --trusted-composition-sha256 d7f01021de7d9b3817d1d75799958c6c0e87fca3320e36f74a7417ebb7f72b1e
@@ -48,7 +52,8 @@ The two predecessor test suites replay their original 19 tests unchanged at
 that checkpoint; they do not certify the current corpus.
 
 The [application receipt](../../textual_restoration/applications/isaiah53_11_successor_application.v1.json)
-records actual before/after corpus checks and exports. Verify it with the
+records actual before/after corpus checks and exports. At that same historical
+checkout, verify it with the
 independently recorded review and receipt hashes:
 
 ```bash
@@ -58,3 +63,20 @@ independently recorded review and receipt hashes:
 Repository adoption is publicly inspectable and may be fetched by the existing
 provenance page. It is not a claim that bundled reader assets were synchronized,
 the website was deployed, or all words in the retained base were freshly judged.
+
+### Compatibility with the updated source-distinction policy
+
+The [separate compatibility review](../../textual_restoration/applications/isaiah53_11_policy_compatibility.v1.json)
+approves the exact provisional Isaiah record under the new policy without
+rewriting historical approvals. It records concrete full-sentence alternatives
+and the tradeoffs in retaining the present wording. Direct integration checks
+confirmed the entire current OT equals the previously verified application,
+the exact candidate passes the full schema, and actual ISA/JOB/2SA exports are
+unchanged. The 27 incoming source-distinction tests passed.
+
+Four old protected paths changed upstream: `DOCTRINE.md`, `METHODOLOGY.md`,
+`tools/draft.py`, and `tools/prompts/revision_policy.md`. All other historical
+protected paths checked remain unchanged. The old live-pin verifier correctly
+rejects that policy drift; it was not weakened, and the full test suite is not
+claimed green. The compatibility record is a bounded editorial judgment plus
+observed integration evidence, not a newly generalized automatic approval tool.
